@@ -76,8 +76,9 @@ public abstract class ReferenceInfo {
     if (srcModel != null && trgModel != null) {
       if (srcModel == trgModel) {
         // it's very tempting to use ResolveInfo.of(target) but this breaks 1 scenario in MPS-extensions
-        // (no transient models, no in-place) - for some reason FullCopyFacility and ReferenceInfo_CopiedInputNode fails to copy reference
-        // (smth like EditorComponentWithParameters in conditionalEditor, manifested with IOOBE)
+        // (no transient models, no in-place) - there's FullCopyFacility and ReferenceInfo_CopiedInputNode that copy
+        // EditorComponentWithParameters in conditionalEditor, but once model hits replaceEditorComponentDeclarationsWithEditorComponent
+        // pre-processing script, link target is replaced (keeping node id), and AD.DirectNode is not updated, pointing to a detached node.
         return ResolveInfo.of(target.getNodeId(), SNodeOperations.getResolveInfo(target));
       }
       // 'mature' reference (includes source node into condition to make sure indirect reference could get resolved later,
