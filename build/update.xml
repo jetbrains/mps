@@ -522,9 +522,9 @@
     <channel id="MPS251EAP" name="MPS 2025.1" status="eap"
              url="https://www.jetbrains.com/mps/nextversion"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
-             majorVersion="2024" minorVersoin="3">
-      <build number="251.23774.153" version="2025.1 EAP1">
-        <message>JetBrains MPS 2025.1 EAP1 is now available.</message>
+             majorVersion="2025" minorVersoin="1">
+      <build number="251.23774.284" version="2025.1 RC">
+        <message>JetBrains MPS 2025.1 RC is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/nextversion" download="true"/>
       </build>
     </channel>
