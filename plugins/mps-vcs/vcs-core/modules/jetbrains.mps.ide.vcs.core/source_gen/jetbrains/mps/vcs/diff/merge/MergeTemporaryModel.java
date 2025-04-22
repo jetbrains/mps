@@ -14,6 +14,8 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.smodel.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.SNodeImplAccess;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.DefaultSModel;
 import org.jetbrains.annotations.Nullable;
@@ -45,6 +47,11 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
     // TODO generalize merge for any SModel
     jetbrains.mps.smodel.SModel resModel = CopyUtil.copyModel(((SModelBase) origin).getSModel());
     rv.replace(new ModelLoadResult<jetbrains.mps.smodel.SModel>(resModel, ModelLoadingState.FULLY_LOADED));
+    // FIXME CopyUtil replaces all LocalNodePtr with IndirectNodePtr, and subsequent change of model references doesn't update these IndirectNodePtr, making them point to another model.
+    //      here, sort of hack to ensure IndirectNodePtr for the same model get replaced back with LocalNodePtr
+    for (SNode root : resModel.getRootNodes()) {
+      new SNodeImplAccess(root).rerouteAssociationDeep(rv.getReference(), rv.getReference());
+    }
     return rv;
   }
 
