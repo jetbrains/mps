@@ -16,7 +16,7 @@
 package jetbrains.mps.library;
 
 import com.intellij.openapi.components.PersistentStateComponent;
-import jetbrains.mps.core.tool.environment.util.SetLibraryContributor;
+import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.library.BaseLibraryManager.LibraryState;
 import jetbrains.mps.library.contributor.LibDescriptor;
 import jetbrains.mps.library.contributor.LibraryContributor;
@@ -33,10 +33,37 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.stream.Collectors;
 
 public abstract class BaseLibraryManager implements PersistentStateComponent<LibraryState> {
+  private volatile boolean myContributorCreated = false;
+
+  private static class Contributor implements LibraryContributor {
+    private final String myName;
+    private final Supplier<Set<LibDescriptor>> mySource;
+
+    /*package*/Contributor(String name, Supplier<Set<LibDescriptor>> source) {
+      myName = name;
+      mySource = source;
+    }
+
+    @Override
+    public boolean hiddenLanguages() {
+      return false;
+    }
+
+    @Override
+    public Set<LibDescriptor> getPaths() {
+      return mySource.get();
+    }
+
+    @Override
+    public String toString() {
+      return "LibraryContributor " + myName;
+    }
+  }
 
   protected BaseLibraryManager() {
   }
@@ -45,29 +72,36 @@ public abstract class BaseLibraryManager implements PersistentStateComponent<Lib
 
   @NotNull
   public LibraryContributor createContributor(final IFileSystem fs) {
-    // XXX can I pass MacroHelper or similar here for greater control?
-    // XXX also would be great to keep names of original macros not to overwrite when few macros resolve to same location
-    Set<LibDescriptor> result = new HashSet<>();
-    for (Library lib : getUILibraries()) {
-      String path = lib.getPath();
-      if (path != null) {
-        try {
-          IFile file = fs.getFile(path);
-          // Guess, the idea here is to make project/app contributed modules always visible (hiddenLanguages() == false)
-          // Don't want to contradict at the moment, hence explicit 'false'.
-          result.add(new LibDescriptor(file, null, lib.getName(), false));
-        } catch (PathFormatException e) {
-          // fixme apyshkin
-          Matcher matcher = MacroHelper.MACRO_PATTERN.matcher(e.getProblemPath());
-          if (matcher.find()) {
-            Logger.getLogger(BaseLibraryManager.class).warning("Some paths might contain unknown macros, please define them in 'Path variables'");
-          } else {
-            throw e;
+    // the way library editing is perfomed, we are supposed to keep LibraryContributor and provide different set of paths, rather than change
+    // number of contributors.
+    Supplier<Set<LibDescriptor>> f = () -> {
+      // indicate there's need to reload libraries when persistent state changes
+      myContributorCreated = true;
+      // XXX can I pass MacroHelper or similar here for greater control?
+      // XXX also would be great to keep names of original macros not to overwrite when few macros resolve to same location
+      Set<LibDescriptor> result = new HashSet<>();
+      for (Library lib : getUILibraries()) {
+        String path = lib.getPath();
+        if (path != null) {
+          try {
+            IFile file = fs.getFile(path);
+            // Guess, the idea here is to make project/app contributed modules always visible (hiddenLanguages() == false)
+            // Don't want to contradict at the moment, hence explicit 'false'.
+            result.add(new LibDescriptor(file, null, lib.getName(), false));
+          } catch (PathFormatException e) {
+            // fixme apyshkin
+            Matcher matcher = MacroHelper.MACRO_PATTERN.matcher(e.getProblemPath());
+            if (matcher.find()) {
+              Logger.getLogger(BaseLibraryManager.class).warning("Some paths might contain unknown macros, please define them in 'Path variables'");
+            } else {
+              throw e;
+            }
           }
         }
       }
-    }
-    return SetLibraryContributor.fromSet(getClass().getSimpleName(), result);
+      return result;
+    };
+    return new Contributor(getClass().getSimpleName(), f);
   }
 
   public Library addLibrary(@NotNull String name) {
@@ -134,7 +168,11 @@ public abstract class BaseLibraryManager implements PersistentStateComponent<Lib
   @Override
   public void loadState(@NotNull LibraryState state) {
     myLibraryState = state;
-//    MPSCoreComponents.getInstance().getLibraryInitializer().update(); OMG - repo reload on component state init?!
+    if (myContributorCreated) {
+      // not nice, but there's no other way to figure out LibraryInitializer needs update when IDEA decides to load new state
+      // myContributorCreated condition at least avoids update() for the first state initialization
+      MPSCoreComponents.getInstance().getLibraryInitializer().update();
+    }
   }
 
   static class LibraryState {
