@@ -71,6 +71,7 @@ teamcity-info.xml
 /plugins/settingsSync
 /plugins/tasks
 /plugins/vcs-git
+/plugins/vcs-git-commit-modal
 /plugins/vcs-svn
 /plugins/vcs-github-IC
 /plugins/yaml

@@ -56,6 +56,10 @@
     <copy todir="${build.layout}/plugins/vcs-github">
       <fileset dir="${basedir}/plugins/vcs-github-IC" />
     </copy>
+    <mkdir dir="${build.layout}/plugins/vcs-git-commit-modal" />
+    <copy todir="${build.layout}/plugins/vcs-git-commit-modal">
+      <fileset dir="${basedir}/plugins/vcs-git-commit-modal" />
+    </copy>
     <mkdir dir="${build.layout}/plugins/platform-images" />
     <copy todir="${build.layout}/plugins/platform-images">
       <fileset dir="${basedir}/plugins/platform-images" />

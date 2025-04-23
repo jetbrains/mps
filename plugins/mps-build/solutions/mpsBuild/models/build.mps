@@ -28957,13 +28957,13 @@
               </node>
             </node>
             <node concept="398223" id="6xv$4WsFwyK" role="39821P">
-              <node concept="3_I8Xc" id="1Up7vLvslbk" role="39821P">
-                <ref role="3_I8Xa" node="3$BamnXnUZ_" />
-              </node>
               <node concept="3_J27D" id="6xv$4WsFwyL" role="Nbhlr">
                 <node concept="3Mxwew" id="6xv$4WsFwyM" role="3MwsjC">
                   <property role="3MwjfP" value="Resources" />
                 </node>
+              </node>
+              <node concept="3_I8Xc" id="1Up7vLvslbk" role="39821P">
+                <ref role="3_I8Xa" node="3$BamnXnUZ_" />
               </node>
               <node concept="28jJK3" id="2lgcjg3akLH" role="39821P">
                 <node concept="55IIr" id="2lgcjg3akLJ" role="28jJRO">
@@ -29445,13 +29445,13 @@
               </node>
             </node>
             <node concept="398223" id="1dONgcPskHB" role="39821P">
-              <node concept="3_I8Xc" id="1Up7vLvslbg" role="39821P">
-                <ref role="3_I8Xa" node="3$BamnXnUZ_" />
-              </node>
               <node concept="3_J27D" id="1dONgcPskHC" role="Nbhlr">
                 <node concept="3Mxwew" id="1dONgcPskHD" role="3MwsjC">
                   <property role="3MwjfP" value="Resources" />
                 </node>
+              </node>
+              <node concept="3_I8Xc" id="1Up7vLvslbg" role="39821P">
+                <ref role="3_I8Xa" node="3$BamnXnUZ_" />
               </node>
               <node concept="28jJK3" id="1dONgcPskHE" role="39821P">
                 <node concept="55IIr" id="1dONgcPskHF" role="28jJRO">
@@ -45455,6 +45455,23 @@
             <property role="3MwjfP" value="plugins" />
           </node>
         </node>
+        <node concept="398223" id="AoCiVXTy_b" role="39821P">
+          <node concept="3_J27D" id="AoCiVXTy_c" role="Nbhlr">
+            <node concept="3Mxwew" id="AoCiVXTyGP" role="3MwsjC">
+              <property role="3MwjfP" value="vcs-git-commit-modal" />
+            </node>
+          </node>
+          <node concept="2HvfSZ" id="AoCiVXTy_e" role="39821P">
+            <node concept="55IIr" id="AoCiVXTy_f" role="2HvfZ0">
+              <node concept="2Ry0Ak" id="AoCiVXTy_g" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="AoCiVXTyQz" role="2Ry0An">
+                  <property role="2Ry0Am" value="vcs-git-commit-modal" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="398223" id="HldV2vivoE" role="39821P">
           <node concept="3_J27D" id="HldV2vivoG" role="Nbhlr">
             <node concept="3Mxwew" id="HldV2vivpG" role="3MwsjC">
@@ -57498,6 +57515,16 @@
             </node>
           </node>
         </node>
+        <node concept="1E1SXE" id="2wylC1jBIcx" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="3dkXFAFkSFA" resolve="mps-persistence" />
+          <node concept="398BVA" id="2wylC1jBIcy" role="17Grwy">
+            <ref role="398BVh" node="5MjKXSexX$G" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="2wylC1jBIcF" role="iGT6I">
+              <property role="2Ry0Am" value="kotlinx-metadata-klib-0.0.6.jar" />
+            </node>
+          </node>
+        </node>
         <node concept="1BupzO" id="3PMETvlny6h" role="3bR31x">
           <property role="3ZfqAx" value="models" />
           <property role="1Hdu6h" value="true" />
@@ -57517,16 +57544,6 @@
             </node>
             <node concept="3qWCbU" id="3PMETvlny6j" role="3LXTna">
               <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
-            </node>
-          </node>
-        </node>
-        <node concept="1E1SXE" id="2wylC1jBIcx" role="3bR37C">
-          <property role="1E1SXH" value="true" />
-          <ref role="1E1SXG" node="3dkXFAFkSFA" resolve="mps-persistence" />
-          <node concept="398BVA" id="2wylC1jBIcy" role="17Grwy">
-            <ref role="398BVh" node="5MjKXSexX$G" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="2wylC1jBIcF" role="iGT6I">
-              <property role="2Ry0Am" value="kotlinx-metadata-klib-0.0.6.jar" />
             </node>
           </node>
         </node>
