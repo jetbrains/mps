@@ -31789,8 +31789,17 @@
       <node concept="m$_yB" id="5lGJ4TaqfND" role="m$_yh">
         <ref role="m$_yA" node="4IP11oWmB07" resolve="jetbrains.mps.ide.modelchecker.platform" />
       </node>
+      <node concept="m$_yC" id="6kwQMZtf$pp" role="m$_yJ">
+        <ref role="m$_y1" node="ymnOULATpW" resolve="jetbrains.mps.testing" />
+      </node>
       <node concept="m$_yC" id="5lGJ4TaqfOv" role="m$_yJ">
         <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
+      </node>
+      <node concept="m$_yB" id="6kwQMZtf$n5" role="m$_yh">
+        <ref role="m$_yA" node="1_7hqbu4mXQ" resolve="jetbrains.mps.ide.modelchecker" />
+      </node>
+      <node concept="m$_yC" id="6kwQMZtf$v3" role="m$_yJ">
+        <ref role="m$_y1" node="4k71ibbLe59" resolve="com.intellij.modules.mps" />
       </node>
     </node>
     <node concept="398b33" id="42kMDMFt6h4" role="3989C9">
