@@ -953,7 +953,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
       <plugin path="${artifacts.mps}/plugins/mps-junit5" id="jetbrains.mps.junit5" />
@@ -993,9 +993,9 @@
   <target name="java.compile.testAnnotatedType" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testAnnotatedType/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testAnnotatedType" />
-    <javac2 destdir="${build.tmp}/java/out/testAnnotatedType" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testAnnotatedType" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="testAnnotatedType">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1063,9 +1063,9 @@
   <target name="java.compile.testOverridingType" depends="java.compile.testAnnotatedType, fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingType/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testOverridingType" />
-    <javac2 destdir="${build.tmp}/java/out/testOverridingType" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testOverridingType" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="testOverridingType">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1134,9 +1134,9 @@
   <target name="java.compile.testOverridingRule" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingRule/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testOverridingRule" />
-    <javac2 destdir="${build.tmp}/java/out/testOverridingRule" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testOverridingRule" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="testOverridingRule">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1201,9 +1201,9 @@
   <target name="java.compile.testWrappedType" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testWrappedType/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testWrappedType" />
-    <javac2 destdir="${build.tmp}/java/out/testWrappedType" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testWrappedType" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="testWrappedType">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1271,9 +1271,9 @@
   <target name="java.compile.testPrimitiveType" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testPrimitiveType/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testPrimitiveType" />
-    <javac2 destdir="${build.tmp}/java/out/testPrimitiveType" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testPrimitiveType" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="testPrimitiveType">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1341,9 +1341,9 @@
   <target name="java.compile.testSubtypingA" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingA/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testSubtypingA" />
-    <javac2 destdir="${build.tmp}/java/out/testSubtypingA" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testSubtypingA" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="testSubtypingA">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1411,9 +1411,9 @@
   <target name="java.compile.testSubtypingB" depends="java.compile.testSubtypingA, fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingB/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testSubtypingB" />
-    <javac2 destdir="${build.tmp}/java/out/testSubtypingB" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testSubtypingB" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="testSubtypingB">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1482,9 +1482,9 @@
   <target name="java.compile.jetbrains.mps.lang.typesystem.test" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/typesystem.test/jetbrains.mps.lang.typesystem.test/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.typesystem.test" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.typesystem.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.typesystem.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.typesystem.test">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1564,9 +1564,9 @@
   <target name="java.compile.testSubstituteType" depends="java.compile.testOverridingRule, fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testSubstituteType" />
-    <javac2 destdir="${build.tmp}/java/out/testSubstituteType" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testSubstituteType" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="testSubstituteType">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1651,9 +1651,9 @@
   <target name="java.compile.testSubtypingTest" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testSubtypingTest" />
-    <javac2 destdir="${build.tmp}/java/out/testSubtypingTest" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testSubtypingTest" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="testSubtypingTest">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

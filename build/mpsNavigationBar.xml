@@ -92,9 +92,9 @@
   <target name="java.compile.navbar" depends="fetchDependencies">
     <mkdir dir="${plugin_home}/sources" />
     <mkdir dir="${build.tmp}/java/out/navbar" />
-    <javac2 destdir="${build.tmp}/java/out/navbar" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/navbar" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="navbar">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

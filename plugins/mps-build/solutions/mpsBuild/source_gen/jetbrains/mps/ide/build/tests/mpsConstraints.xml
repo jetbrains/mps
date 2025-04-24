@@ -450,7 +450,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
       <plugin path="${artifacts.mps}/plugins/mps-junit5" id="jetbrains.mps.junit5" />
@@ -483,9 +483,9 @@
   <target name="java.compile.constraints.test" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/modules/testConstraints/languages/constraints.test/source_gen" />
     <mkdir dir="${build.tmp}/java/out/constraints.test" />
-    <javac2 destdir="${build.tmp}/java/out/constraints.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/constraints.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="constraints.test">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -552,9 +552,9 @@
   <target name="java.compile.TestConstraints" depends="java.compile.constraints.test, fetchDependencies">
     <mkdir dir="${basedir}/testbench/modules/testConstraints/solutions/TestConstraints/source_gen" />
     <mkdir dir="${build.tmp}/java/out/TestConstraints" />
-    <javac2 destdir="${build.tmp}/java/out/TestConstraints" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/TestConstraints" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="TestConstraints">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -641,9 +641,9 @@
   <target name="java.compile.constraints.rules.test" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/modules/testConstraints/languages/constraints.rules.test/source_gen" />
     <mkdir dir="${build.tmp}/java/out/constraints.rules.test" />
-    <javac2 destdir="${build.tmp}/java/out/constraints.rules.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/constraints.rules.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="constraints.rules.test">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -717,9 +717,9 @@
   <target name="java.compile.constraints.rules.test#1839194279618937625" depends="java.compile.constraints.rules.test, fetchDependencies">
     <mkdir dir="${basedir}/testbench/modules/testConstraints/languages/constraints.rules.test/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/constraints.rules.test#1839194279618937625" />
-    <javac2 destdir="${build.tmp}/java/out/constraints.rules.test#1839194279618937625" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/constraints.rules.test#1839194279618937625" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="constraints.rules.test#1839194279618937625">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -780,9 +780,9 @@
   <target name="java.compile.TestRulesConstraints" depends="java.compile.constraints.rules.test, fetchDependencies">
     <mkdir dir="${basedir}/testbench/modules/testConstraints/solutions/TestRulesConstraints/source_gen" />
     <mkdir dir="${build.tmp}/java/out/TestRulesConstraints" />
-    <javac2 destdir="${build.tmp}/java/out/TestRulesConstraints" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/TestRulesConstraints" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="TestRulesConstraints">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

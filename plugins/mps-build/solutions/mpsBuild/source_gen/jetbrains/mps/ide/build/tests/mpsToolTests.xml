@@ -199,7 +199,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
       <plugin path="${artifacts.mps}/plugins/mps-junit5" id="jetbrains.mps.junit5" />
@@ -264,9 +264,9 @@
   
   <target name="java.compile.jetbrains.mps.ide.depanalyzer.test" depends="fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ide.depanalyzer.test" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.depanalyzer.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.depanalyzer.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.ide.depanalyzer.test">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -334,9 +334,9 @@
   <target name="java.compile.tests.testDepViewer" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/modules/testDepViewer/source_gen" />
     <mkdir dir="${build.tmp}/java/out/tests.testDepViewer" />
-    <javac2 destdir="${build.tmp}/java/out/tests.testDepViewer" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/tests.testDepViewer" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="tests.testDepViewer">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

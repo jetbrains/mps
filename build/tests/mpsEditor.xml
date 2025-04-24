@@ -1670,7 +1670,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
       <plugin path="${artifacts.mpsTesting}/mps-junit5" id="jetbrains.mps.junit5" />
@@ -1721,9 +1721,9 @@
   <target name="java.compile.jetbrains.mps.lang.actions.testLanguage" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testlangs/lang.actions.testLang/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.actions.testLanguage" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.actions.testLanguage" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.actions.testLanguage" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.actions.testLanguage">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1789,9 +1789,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.tableTests" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testlangs/editor.tableTests.testLang/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tableTests" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tableTests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tableTests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.editor.tableTests">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1860,9 +1860,9 @@
   <target name="java.compile.testDefaultEditor" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/modules/testDefaultEditor/languages/testDefaultEditor/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testDefaultEditor" />
-    <javac2 destdir="${build.tmp}/java/out/testDefaultEditor" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testDefaultEditor" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="testDefaultEditor">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1937,9 +1937,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/modules/testDefaultEditor/languages/editor.languageForDeletedConcepts/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2006,9 +2006,9 @@
   <target name="java.compile.testMoveElements" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/modules/testMoveElements/languages/testMoveElements/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testMoveElements" />
-    <javac2 destdir="${build.tmp}/java/out/testMoveElements" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testMoveElements" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="testMoveElements">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2076,9 +2076,9 @@
   <target name="java.compile.testSpaceCompletion" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/modules/testSpaceCompletion/languages/testSpaceCompletion/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testSpaceCompletion" />
-    <javac2 destdir="${build.tmp}/java/out/testSpaceCompletion" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testSpaceCompletion" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="testSpaceCompletion">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2146,9 +2146,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.styleTests" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testlangs/editor.style.testLang/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.styleTests" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.styleTests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.styleTests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.editor.styleTests">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2210,9 +2210,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.multiple.testLanguage" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testlangs/editor.mult.testLang/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.multiple.testLanguage" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.multiple.testLanguage" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.multiple.testLanguage" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.editor.multiple.testLanguage">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2277,9 +2277,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.multiple.extension.testLanguage" depends="java.compile.jetbrains.mps.lang.editor.multiple.testLanguage, fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testlangs/editor.mult.ext.testLang/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.multiple.extension.testLanguage" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.multiple.extension.testLanguage" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.multiple.extension.testLanguage" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.editor.multiple.extension.testLanguage">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2345,9 +2345,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.editorTest" depends="fetchDependencies">
     <mkdir dir="${basedir}/languages.test/languageDesign/lang.editor.editorTest/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.editor.editorTest">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2425,9 +2425,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.editorTest.extension" depends="java.compile.jetbrains.mps.lang.editor.editorTest, fetchDependencies">
     <mkdir dir="${basedir}/languages.test/languageDesign/lang.editor.editorTest.extension/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest.extension" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest.extension" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest.extension" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.editor.editorTest.extension">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2496,9 +2496,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.editorTest.extension#01" depends="java.compile.jetbrains.mps.lang.editor.editorTest, java.compile.jetbrains.mps.lang.editor.editorTest.extension, fetchDependencies">
     <mkdir dir="${basedir}/languages.test/languageDesign/lang.editor.editorTest.extension/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest.extension#01" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest.extension#01" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest.extension#01" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.editor.editorTest.extension#01">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2563,9 +2563,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.formsTests" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testlangs/editor.formsTests.testLang/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.formsTests" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.formsTests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.formsTests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.editor.formsTests">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2641,9 +2641,9 @@
   
   <target name="java.compile.jetbrains.mps.lang.editor.table.tests" depends="fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.table.tests" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.table.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.table.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.editor.table.tests">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2719,9 +2719,9 @@
   
   <target name="java.compile.jetbrains.mps.lang.actions.test" depends="fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.actions.test" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.actions.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.actions.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.actions.test">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2798,9 +2798,9 @@
   <target name="java.compile.jetbrains.mps.baseLanguage.test" depends="java.compile.testDefaultEditor, fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/bl.test/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.test" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.baseLanguage.test">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2894,9 +2894,9 @@
   <target name="java.compile.jetbrains.mps.lang.smodel.query.test" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/lang.smodel.query.test/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.test" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.smodel.query.test">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2978,9 +2978,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.multiple.tests" depends="java.compile.jetbrains.mps.lang.editor.multiple.extension.testLanguage, java.compile.jetbrains.mps.lang.editor.multiple.testLanguage, fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/editor.multiple.test/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.multiple.tests" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.multiple.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.multiple.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.editor.multiple.tests">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -3064,9 +3064,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.tests" depends="java.compile.jetbrains.mps.lang.editor.editorTest, java.compile.jetbrains.mps.lang.editor.styleTests, fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/editor.test/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tests" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.editor.tests">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -3158,9 +3158,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.ide.tests" depends="fetchDependencies">
     <mkdir dir="${basedir}/languages.test/languageDesign/lang.editor.ide.tests/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.ide.tests" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.ide.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.ide.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.editor.ide.tests">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -3244,9 +3244,9 @@
   
   <target name="java.compile.jetbrains.mps.lang.editor.forms.tests" depends="fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.forms.tests" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.forms.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.forms.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.lang.editor.forms.tests">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

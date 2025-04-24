@@ -181,7 +181,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mps}/lib/mps-workbench.jar" id="com.intellij.modules.mps" />
       <plugin path="${artifacts.mps}/plugins/mps-build" id="jetbrains.mps.build" />
@@ -222,7 +222,7 @@
   <target name="java.compile.refactoring.test" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/refactoring.test/source_gen" />
     <mkdir dir="${build.tmp}/java/out/refactoring.test" />
-    <javac2 destdir="${build.tmp}/java/out/refactoring.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/refactoring.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/refactoring.test/source_gen" />

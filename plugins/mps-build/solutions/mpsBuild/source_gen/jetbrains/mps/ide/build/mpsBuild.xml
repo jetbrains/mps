@@ -1610,7 +1610,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
       <library file="${artifacts.mpsWorkbench}/languages/editor/jetbrains.mps.ide.editor.jar" />
@@ -1666,9 +1666,9 @@
   <target name="java.compile.jetbrains.mps.build" depends="java.compile.jetbrains.mps.build.workflow, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1738,9 +1738,9 @@
   <target name="java.compile.jetbrains.mps.build#3595702787188034882" depends="java.compile.jetbrains.mps.build, java.compile.jetbrains.mps.build.workflow, java.compile.jetbrains.mps.build.workflow#2769948622284786808, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build#3595702787188034882" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build#3595702787188034882" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build#3595702787188034882" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build#3595702787188034882">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1806,9 +1806,9 @@
   <target name="java.compile.jetbrains.mps.build.workflow" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build.workflow/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.workflow" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.workflow" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.workflow" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.workflow">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1876,9 +1876,9 @@
   <target name="java.compile.jetbrains.mps.build.workflow#2769948622284786808" depends="java.compile.jetbrains.mps.build.workflow, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build.workflow/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.workflow#2769948622284786808" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.workflow#2769948622284786808" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.workflow#2769948622284786808" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.workflow#2769948622284786808">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1942,9 +1942,9 @@
   <target name="java.compile.jetbrains.mps.build.mps" depends="java.compile.jetbrains.mps.build, java.compile.jetbrains.mps.build.workflow, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build.mps/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.mps" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.mps">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2021,9 +2021,9 @@
   <target name="java.compile.jetbrains.mps.build.mps#3189788309732033979" depends="java.compile.jetbrains.mps.build, java.compile.jetbrains.mps.build#3595702787188034882, java.compile.jetbrains.mps.build.mps, java.compile.jetbrains.mps.build.workflow, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build.mps/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.mps#3189788309732033979" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps#3189788309732033979" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps#3189788309732033979" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.mps#3189788309732033979">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2090,9 +2090,9 @@
   <target name="java.compile.jetbrains.mps.build.mps.tests" depends="java.compile.jetbrains.mps.build, java.compile.jetbrains.mps.build.mps, java.compile.jetbrains.mps.build.workflow, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build.mps.tests/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.mps.tests" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.mps.tests">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2163,9 +2163,9 @@
   <target name="java.compile.jetbrains.mps.build.mps.tests#4560297596904874237" depends="java.compile.jetbrains.mps.build, java.compile.jetbrains.mps.build#3595702787188034882, java.compile.jetbrains.mps.build.mps, java.compile.jetbrains.mps.build.mps#3189788309732033979, java.compile.jetbrains.mps.build.mps.tests, java.compile.jetbrains.mps.build.workflow, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build.mps.tests/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.mps.tests#4560297596904874237" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps.tests#4560297596904874237" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps.tests#4560297596904874237" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.mps.tests#4560297596904874237">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2234,9 +2234,9 @@
   <target name="java.compile.jetbrains.mps.build.mps.testManifest" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build.mps.testManifest/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.mps.testManifest" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps.testManifest" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps.testManifest" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.mps.testManifest">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2302,9 +2302,9 @@
   <target name="java.compile.jetbrains.mps.build.mps.testManifest#3298469228705179758" depends="java.compile.jetbrains.mps.build.mps.testManifest, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build.mps.testManifest/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.mps.testManifest#3298469228705179758" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps.testManifest#3298469228705179758" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps.testManifest#3298469228705179758" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.mps.testManifest#3298469228705179758">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2366,9 +2366,9 @@
   <target name="java.compile.jetbrains.mps.build.mps.runner" depends="java.compile.jetbrains.mps.build, java.compile.jetbrains.mps.build.mps, java.compile.jetbrains.mps.build.workflow, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build.mps.runner/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.mps.runner" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps.runner" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps.runner" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.mps.runner">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2441,9 +2441,9 @@
   <target name="java.compile.jetbrains.mps.build.mps.runner#4173297143638823031" depends="java.compile.jetbrains.mps.build, java.compile.jetbrains.mps.build#3595702787188034882, java.compile.jetbrains.mps.build.mps, java.compile.jetbrains.mps.build.mps#3189788309732033979, java.compile.jetbrains.mps.build.mps.runner, java.compile.jetbrains.mps.build.workflow, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build.mps.runner/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.mps.runner#4173297143638823031" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps.runner#4173297143638823031" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps.runner#4173297143638823031" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.mps.runner#4173297143638823031">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2512,9 +2512,9 @@
   <target name="java.compile.jetbrains.mps.build.migration" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/solutions/jetbrains.mps.build.mps.migration/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.migration" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.migration" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.migration" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.migration">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2569,9 +2569,9 @@
   <target name="java.compile.jetbrains.mps.build.startup.util" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/solutions/jetbrains.mps.build.startup.util/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.startup.util" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.startup.util" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.startup.util" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.startup.util">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2593,9 +2593,9 @@
   <target name="java.compile.jetbrains.mps.build.startup" depends="java.compile.jetbrains.mps.build, java.compile.jetbrains.mps.build.mps, java.compile.jetbrains.mps.build.startup.util, java.compile.jetbrains.mps.build.workflow, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build.startup/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.startup" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.startup" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.startup" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.startup">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2671,9 +2671,9 @@
   <target name="java.compile.jetbrains.mps.build.startup#3885435385580635037" depends="java.compile.jetbrains.mps.build, java.compile.jetbrains.mps.build.mps, java.compile.jetbrains.mps.build.startup, java.compile.jetbrains.mps.build.startup.util, java.compile.jetbrains.mps.build.workflow, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build.startup/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.startup#3885435385580635037" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.startup#3885435385580635037" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.startup#3885435385580635037" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.startup#3885435385580635037">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2744,9 +2744,9 @@
   <target name="java.compile.jetbrains.mps.build.workflow.preset">
     <mkdir dir="${mps_home}/plugins/mps-build/solutions/workflow.preset/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.workflow.preset" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.workflow.preset" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.workflow.preset" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.workflow.preset">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2763,9 +2763,9 @@
   <target name="java.compile.jetbrains.mps.build.tips" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build.tips/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.tips" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.tips" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.tips" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.tips">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2834,9 +2834,9 @@
   <target name="java.compile.jetbrains.mps.build.tips#8393267706617981255" depends="java.compile.jetbrains.mps.build.tips, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build.tips/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.tips#8393267706617981255" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.tips#8393267706617981255" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.tips#8393267706617981255" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.build.tips#8393267706617981255">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

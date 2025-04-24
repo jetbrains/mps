@@ -242,7 +242,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
       <plugin path="${artifacts.mps}/plugins/mps-junit5" id="jetbrains.mps.junit5" />
@@ -273,9 +273,9 @@
   <target name="java.compile.messages.customization" depends="fetchDependencies">
     <mkdir dir="${basedir}/samples/messagesCustomization/languages/messages.customization/source_gen" />
     <mkdir dir="${build.tmp}/java/out/messages.customization" />
-    <javac2 destdir="${build.tmp}/java/out/messages.customization" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/messages.customization" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="messages.customization">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -345,9 +345,9 @@
   <target name="java.compile.messages.sandbox" depends="java.compile.messages.customization, fetchDependencies">
     <mkdir dir="${basedir}/samples/messagesCustomization/solutions/sandbox/source_gen" />
     <mkdir dir="${build.tmp}/java/out/messages.sandbox" />
-    <javac2 destdir="${build.tmp}/java/out/messages.sandbox" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/messages.sandbox" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="messages.sandbox">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

@@ -462,7 +462,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mps}/lib/mps-workbench.jar" id="com.intellij.modules.mps" />
       <plugin path="${artifacts.mps}/plugins/mps-build" id="jetbrains.mps.build" />
@@ -513,9 +513,9 @@
   
   <target name="java.compile.jetbrains.mps.execution.impl.tests.sandbox" depends="java.compile.testLangWithRT.runtime, fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.impl.tests.sandbox" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.impl.tests.sandbox" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.impl.tests.sandbox" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.execution.impl.tests.sandbox">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -593,9 +593,9 @@
   <target name="java.compile.testLangWithRT.runtime" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testlangs/test.lang.with.RT/runtime/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testLangWithRT.runtime" />
-    <javac2 destdir="${build.tmp}/java/out/testLangWithRT.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testLangWithRT.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="testLangWithRT.runtime">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -615,9 +615,9 @@
   <target name="java.compile.testLangWithRT" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testlangs/test.lang.with.RT/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testLangWithRT" />
-    <javac2 destdir="${build.tmp}/java/out/testLangWithRT" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testLangWithRT" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="testLangWithRT">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -685,9 +685,9 @@
   <target name="java.compile.testLangWithRT#01" depends="java.compile.testLangWithRT, fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testlangs/test.lang.with.RT/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testLangWithRT#01" />
-    <javac2 destdir="${build.tmp}/java/out/testLangWithRT#01" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testLangWithRT#01" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="testLangWithRT#01">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -750,9 +750,9 @@
   
   <target name="java.compile.jetbrains.mps.execution.impl.tests" depends="java.compile.jetbrains.mps.execution.impl.tests.sandbox, fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.impl.tests" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.impl.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.impl.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.execution.impl.tests">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -840,9 +840,9 @@
   
   <target name="java.compile.jetbrains.mps.debugger.java.runtime.tests" depends="fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.debugger.java.runtime.tests" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.debugger.java.runtime.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.debugger.java.runtime.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.debugger.java.runtime.tests">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

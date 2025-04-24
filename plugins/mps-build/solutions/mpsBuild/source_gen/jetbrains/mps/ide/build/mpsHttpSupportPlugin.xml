@@ -436,7 +436,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.lang.extension.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/editor/jetbrains.mps.ide.editor.jar" />
@@ -491,9 +491,9 @@
   <target name="java.compile.http-support" depends="fetchDependencies">
     <mkdir dir="${plugin_home}/source_gen" />
     <mkdir dir="${build.tmp}/java/out/http-support" />
-    <javac2 destdir="${build.tmp}/java/out/http-support" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/http-support" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="http-support">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -542,9 +542,9 @@
   <target name="java.compile.jetbrains.mps.ide.httpsupport" depends="java.compile.http-support, fetchDependencies">
     <mkdir dir="${plugin_home}/language/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.ide.httpsupport">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -620,9 +620,9 @@
   <target name="java.compile.jetbrains.mps.ide.httpsupport#4517832885627178591" depends="java.compile.http-support, java.compile.jetbrains.mps.ide.httpsupport, fetchDependencies">
     <mkdir dir="${plugin_home}/language/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport#4517832885627178591" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport#4517832885627178591" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport#4517832885627178591" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.ide.httpsupport#4517832885627178591">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -694,9 +694,9 @@
   <target name="java.compile.jetbrains.mps.ide.httpsupport.nodeaccess" depends="java.compile.http-support, java.compile.jetbrains.mps.ide.httpsupport.runtime, fetchDependencies">
     <mkdir dir="${plugin_home}/solutions/nodeaccess/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.nodeaccess" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.nodeaccess" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.nodeaccess" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.ide.httpsupport.nodeaccess">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -755,9 +755,9 @@
   <target name="java.compile.jetbrains.mps.ide.httpsupport.runtime" depends="java.compile.http-support, fetchDependencies">
     <mkdir dir="${plugin_home}/solutions/runtime/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.runtime" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.ide.httpsupport.runtime">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

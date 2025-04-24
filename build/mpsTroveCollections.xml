@@ -276,7 +276,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.lang.extension.jar" />
@@ -315,9 +315,9 @@
   <target name="java.compile.jetbrains.mps.baseLanguage.collections.trove" depends="java.compile.collections_trove.runtime, fetchDependencies">
     <mkdir dir="${mps_home}/languages/baseLanguage/collections/languages/trove/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.collections.trove" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.collections.trove" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.collections.trove" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.baseLanguage.collections.trove">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -362,9 +362,9 @@
   <target name="java.compile.jetbrains.mps.baseLanguage.collections.trove#5499565529811308574" depends="java.compile.jetbrains.mps.baseLanguage.collections.trove, fetchDependencies">
     <mkdir dir="${mps_home}/languages/baseLanguage/collections/languages/trove/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.collections.trove#5499565529811308574" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.collections.trove#5499565529811308574" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.collections.trove#5499565529811308574" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.baseLanguage.collections.trove#5499565529811308574">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -406,9 +406,9 @@
   <target name="java.compile.collections_trove.runtime" depends="fetchDependencies">
     <mkdir dir="${mps_home}/languages/baseLanguage/collections/languages/trove/runtime/source_gen" />
     <mkdir dir="${build.tmp}/java/out/collections_trove.runtime" />
-    <javac2 destdir="${build.tmp}/java/out/collections_trove.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/collections_trove.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="collections_trove.runtime">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

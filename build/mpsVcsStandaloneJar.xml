@@ -92,9 +92,9 @@
   
   <target name="java.compile.vcs-ide" depends="fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/vcs-ide" />
-    <javac2 destdir="${build.tmp}/java/out/vcs-ide" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/vcs-ide" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="vcs-ide">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

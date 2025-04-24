@@ -160,7 +160,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mps}/lib/mps-workbench.jar" id="com.intellij.modules.mps" />
       <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
@@ -215,9 +215,9 @@
   <target name="java.compile.jetbrains.mps.ide.httpsupport.tests" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/httpsupport.test/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.tests" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.ide.httpsupport.tests">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

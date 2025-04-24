@@ -216,7 +216,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mps}/lib/mps-workbench.jar" id="com.intellij.modules.mps" />
       <plugin path="${artifacts.mps}/plugins/mps-build" id="jetbrains.mps.build" />
@@ -369,7 +369,7 @@
   <target name="java.compile.jetbrains.mps.build.tests" depends="fetchDependencies">
     <mkdir dir="${basedir}/test/jetbrains.mps.build.tests/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.tests" />
-    <javac destdir="${build.tmp}/java/out/jetbrains.mps.build.tests" fork="false" encoding="utf8" includeantruntime="false" source="11" target="11">
+    <javac destdir="${build.tmp}/java/out/jetbrains.mps.build.tests" fork="false" encoding="utf8" includeantruntime="false" source="17" target="17">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/test/jetbrains.mps.build.tests/source_gen" />

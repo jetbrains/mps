@@ -758,7 +758,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
       <plugin path="${artifacts.mpsVcsPlatform}/mps-git4idea" id="jetbrains.mps.git4idea.stubs" />
@@ -844,9 +844,9 @@
   <target name="java.compile.jetbrains.mps.ide.vcs.modelmetadata" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-vcs/vcs-platform/languages/modelmetadata/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ide.vcs.modelmetadata" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.vcs.modelmetadata" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.vcs.modelmetadata" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.ide.vcs.modelmetadata">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -911,9 +911,9 @@
   <target name="java.compile.jetbrains.mps.vcs.mergehints" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-vcs/languages/mergehints/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.vcs.mergehints">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1006,9 +1006,9 @@
   <target name="java.compile.jetbrains.mps.vcs.mergehints#1277106018273766025" depends="java.compile.jetbrains.mps.vcs.mergehints, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-vcs/languages/mergehints/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints#1277106018273766025" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints#1277106018273766025" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints#1277106018273766025" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.vcs.mergehints#1277106018273766025">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1080,9 +1080,9 @@
   <target name="java.compile.jetbrains.mps.vcs.mergehints.plugin" depends="java.compile.jetbrains.mps.vcs.mergehints, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-vcs/languages/mergehints.plugin/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints.plugin" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints.plugin" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints.plugin" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="jetbrains.mps.vcs.mergehints.plugin">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

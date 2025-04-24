@@ -490,7 +490,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mps}/lib/mps-workbench.jar" id="com.intellij.modules.mps" />
       <plugin path="${artifacts.mps}/plugins/mps-build" id="jetbrains.mps.build" />
@@ -529,7 +529,7 @@
   <target name="java.compile.jetbrains.mps.persistence.transients" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/smodel.transient/transients.lang/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.persistence.transients" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.persistence.transients" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.persistence.transients" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/smodel.transient/transients.lang/source_gen" />
@@ -584,7 +584,7 @@
   <target name="java.compile.tests.testPersistence" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/modules/testPersistence/source_gen" />
     <mkdir dir="${build.tmp}/java/out/tests.testPersistence" />
-    <javac2 destdir="${build.tmp}/java/out/tests.testPersistence" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/tests.testPersistence" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testPersistence/source_gen" />
@@ -662,7 +662,7 @@
   <target name="java.compile.CloneModule.test" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/clone.module.test/source_gen" />
     <mkdir dir="${build.tmp}/java/out/CloneModule.test" />
-    <javac2 destdir="${build.tmp}/java/out/CloneModule.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/CloneModule.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/clone.module.test/source_gen" />
@@ -733,7 +733,7 @@
   <target name="java.compile.JavaCompilationXmlConflict.test" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/JavaCompilationXmlConflict.test/source_gen" />
     <mkdir dir="${build.tmp}/java/out/JavaCompilationXmlConflict.test" />
-    <javac2 destdir="${build.tmp}/java/out/JavaCompilationXmlConflict.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/JavaCompilationXmlConflict.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/JavaCompilationXmlConflict.test/source_gen" />
@@ -802,7 +802,7 @@
   <target name="java.compile.mps.test.findusages" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/modules/testFindUsages/source_gen" />
     <mkdir dir="${build.tmp}/java/out/mps.test.findusages" />
-    <javac2 destdir="${build.tmp}/java/out/mps.test.findusages" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/mps.test.findusages" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testFindUsages/source_gen" />
@@ -882,7 +882,7 @@
   <target name="java.compile.jetbrains.mps.persistence.transients.tests" depends="java.compile.jetbrains.mps.persistence.transients, fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/smodel.transient/transients.test/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.persistence.transients.tests" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.persistence.transients.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.persistence.transients.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/smodel.transient/transients.test/source_gen" />
@@ -961,7 +961,7 @@
   <target name="java.compile.testModelRenaming" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/modules/testModelRenaming/source_gen" />
     <mkdir dir="${build.tmp}/java/out/testModelRenaming" />
-    <javac2 destdir="${build.tmp}/java/out/testModelRenaming" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/testModelRenaming" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testModelRenaming/source_gen" />

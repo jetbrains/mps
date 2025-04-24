@@ -94,9 +94,9 @@
     <mkdir dir="${plugin_home}/migration-platform/solutions/component/source_gen" />
     <mkdir dir="${plugin_home}/migration-platform/sources" />
     <mkdir dir="${build.tmp}/java/out/migration-platform" />
-    <javac2 destdir="${build.tmp}/java/out/migration-platform" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/migration-platform" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="migration-platform">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

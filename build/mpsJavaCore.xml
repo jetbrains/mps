@@ -155,7 +155,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
       <chunk>
@@ -191,9 +191,9 @@
   <target name="java.compile.mps-java-core" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-java/core/modules/jetbrains.mps.java.core/source_gen" />
     <mkdir dir="${build.tmp}/java/out/mps-java-core" />
-    <javac2 destdir="${build.tmp}/java/out/mps-java-core" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/mps-java-core" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="mps-java-core">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=17" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
