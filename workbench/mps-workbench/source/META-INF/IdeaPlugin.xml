@@ -3671,6 +3671,18 @@
   <xi:include href="/jetbrains/mps/ide/editor/actions/MPSEditorActions.xml"/> <!--only MPS editor actions-->
 
   <extensions defaultExtensionNs="com.intellij">
+    <postStartupActivity implementation="com.intellij.platform.whatsNew.WhatsNewShowOnStartCheckService" order="last"/>
+    <applicationService serviceImplementation="com.intellij.platform.whatsNew.WhatsNewInVisionContentProvider" />
+    <statistics.counterUsagesCollector implementationClass="com.intellij.platform.whatsNew.reaction.ReactionCollector"/>
+    <statistics.counterUsagesCollector implementationClass="com.intellij.platform.whatsNew.collectors.WhatsNewCounterUsageCollector"/>
+
+    <registryKey defaultValue="false" description="Whats new test mode" key="whats.new.test.mode" restartRequired="false" />
+  </extensions>
+  <actions resource-bundle="messages.ActionsBundle">
+    <action id="WhatsNewAction" class="com.intellij.platform.whatsNew.WhatsNewAction" overrides="true"/>
+  </actions>
+
+  <extensions defaultExtensionNs="com.intellij">
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
     <!-- The only reason this contribution is here is that it replaces Ide_PluginInitializer app component that used to be registered here -->
     <mps.PluginComponentContributor application="jetbrains.mps.ide.actions.Ide_ApplicationPlugin" project="jetbrains.mps.ide.actions.Ide_ProjectPlugin" />
@@ -3712,7 +3724,9 @@
     <applicationService serviceInterface="com.intellij.openapi.fileEditor.impl.EditorEmptyTextPainter"
                         serviceImplementation="jetbrains.mps.ide.ui.fileEditor.MPSEditorEmptyTextPainter"
                         overrides="true"/>
-
+    <applicationService serviceInterface="com.intellij.platform.whatsNew.WhatsNewInVisionContentProvider"
+                        serviceImplementation="jetbrains.mps.MPSWhatsNewInVisionContentProvider"
+                        overrides="true"/>
     <!-- Similar to community/java/ide-customization/resources/META-INF/plugin.xml -->
     <!-- preload because in any case will be requested to reopen last projects -->
     <applicationService serviceInterface="com.intellij.ide.RecentProjectsManager"
