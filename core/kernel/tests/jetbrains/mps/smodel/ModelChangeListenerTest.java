@@ -17,6 +17,8 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleReference;
+import jetbrains.mps.smodel.TestModelFactory.TestModelAccess;
+import jetbrains.mps.smodel.TestModelFactory.TestRepository;
 import jetbrains.mps.smodel.adapter.structure.language.InvalidLanguage;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.event.SNodeAddEvent;
@@ -31,6 +33,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -114,6 +117,10 @@ public class ModelChangeListenerTest {
   public void testDependencyChangeNotifications() {
     final TestModelFactory m1f = new TestModelFactory();
     final SModel m1 = m1f.createModel(1);
+    TestModelAccess testModelAccess = new TestModelAccess();
+    SRepository testRepo = new TestRepository(testModelAccess);
+    testModelAccess.enableWrite();
+    m1f.attachTo(testRepo); // see MPS-38551, "dependency changed" notification comes for attached models only
     final ModelImports mi = new ModelImports(m1);
 
     GenericModelChangeListener l1 = new GenericModelChangeListener();

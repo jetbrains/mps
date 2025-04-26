@@ -152,7 +152,8 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
   @Override
   public void deleteLanguageId(@NotNull SLanguage ref) {
     assertCanChange();
-    if (getSModel().deleteLanguage(ref)) {
+    jetbrains.mps.smodel.SModel md = getSModel();
+    if (md.deleteLanguage(ref) && md.canFireEvent()) {
       fireUsedLanguageRemoved(ref);
     }
   }
@@ -160,7 +161,8 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
   @Override
   public void addLanguage(@NotNull SLanguage language) {
     assertCanChange();
-    if (getSModel().addLanguage(language)) {
+    jetbrains.mps.smodel.SModel md = getSModel();
+    if (md.addLanguage(language) && md.canFireEvent()) {
       fireUsedLanguageAdded(language);
     }
   }
@@ -194,7 +196,8 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
   @Override
   public final void addDevKit(SModuleReference ref) {
     assertCanChange();
-    if (getSModel().addDevKit(ref)) {
+    jetbrains.mps.smodel.SModel md = getSModel();
+    if (md.addDevKit(ref) && md.canFireEvent()) {
       fireDevKitAdded(ref);
     }
   }
@@ -202,7 +205,8 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
   @Override
   public final void deleteDevKit(@NotNull SModuleReference ref) {
     assertCanChange();
-    if (getSModel().deleteDevKit(ref)) {
+    jetbrains.mps.smodel.SModel md = getSModel();
+    if (md.deleteDevKit(ref) && md.canFireEvent()) {
       fireDevKitRemoved(ref);
     }
   }
@@ -233,7 +237,8 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
       // don't add references to self
       return;
     }
-    if (getSModel().addModelImport(new ImportElement(ref))) {
+    jetbrains.mps.smodel.SModel md = getSModel();
+    if (md.addModelImport(new ImportElement(ref)) && md.canFireEvent()) {
       fireModelImportAdded(ref);
     }
   }
@@ -248,7 +253,7 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
         deleted |= modelData.deleteModelImport(importElement);
       }
     }
-    if (deleted) {
+    if (deleted && modelData.canFireEvent()) {
       fireModelImportRemoved(modelReference);
     }
   }
