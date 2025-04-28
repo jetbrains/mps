@@ -19,6 +19,8 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.smodel.language.CreateAspectContext;
+import java.util.function.Consumer;
+import java.util.Optional;
 
 @GeneratedClass(node = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/1929018697514833165", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
 public interface NodeLocation {
@@ -80,10 +82,10 @@ public interface NodeLocation {
       myLanguage = languageModule.getModuleReference();
       myAspect = aspect;
     }
-    public boolean canInsert(@NotNull SRepository repository, @NotNull final SNode nodeToMove) {
+    public boolean canInsert(@NotNull SRepository repository, @NotNull SNode nodeToMove) {
       final ComponentHost platform = MPSCoreComponents.getInstance().getPlatform();
-      CreateAspectContext cac = CreateAspectContext.create(myLanguage.resolve(repository), platform, (m) -> m.addRootNode(nodeToMove));
-      return myAspect.canCreate(cac) && ((SConcept) SNodeOperations.getConcept(nodeToMove)).isRootable();
+      CreateAspectContext cac = CreateAspectContext.create(myLanguage.resolve(repository), platform, null);
+      return (existingWritableAspectModel(cac).isPresent() || myAspect.canCreate(cac)) && ((SConcept) SNodeOperations.getConcept(nodeToMove)).isRootable();
     }
     public boolean isRoot() {
       return true;
@@ -91,8 +93,17 @@ public interface NodeLocation {
     public void insertNode(@NotNull SRepository repository, @NotNull final SNode nodeToMove) {
       // see LanguageStructureMigrationParticipant.MigrationBuilder for comments about CH access
       final ComponentHost platform = MPSCoreComponents.getInstance().getPlatform();
-      CreateAspectContext cac = CreateAspectContext.create(myLanguage.resolve(repository), platform, (m) -> m.addRootNode(nodeToMove));
-      myAspect.create(cac);
+      Consumer<SModel> insert = (m) -> m.addRootNode(nodeToMove);
+      CreateAspectContext cac = CreateAspectContext.create(myLanguage.resolve(repository), platform, insert);
+      Optional<SModel> am = existingWritableAspectModel(cac);
+      if (am.isPresent()) {
+        am.ifPresent(insert);
+      } else {
+        myAspect.create(cac);
+      }
+    }
+    private Optional<SModel> existingWritableAspectModel(CreateAspectContext cac) {
+      return myAspect.getAspectModels(cac.getOwner()).stream().filter((m) -> !(m.isReadOnly())).findAny();
     }
   }
 }
