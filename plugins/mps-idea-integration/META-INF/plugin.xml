@@ -4,6 +4,9 @@
   <name>Idea Integration for MPS</name>
   <description>Connects MPS to IDEA</description>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
+  <dependencies>
+    <plugin id="jetbrains.mps.core"/>
+  </dependencies>
 
   <application-components>
     <component>

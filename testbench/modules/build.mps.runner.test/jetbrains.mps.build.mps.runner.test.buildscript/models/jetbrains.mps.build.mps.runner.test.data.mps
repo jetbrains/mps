@@ -97,6 +97,18 @@
             <property role="3o6i5n" value="JetBrains" />
           </node>
         </node>
+        <node concept="2pNNFK" id="3Y1g3g8LlXu" role="3o6s8t">
+          <property role="2pNNFO" value="dependencies" />
+          <node concept="2pNNFK" id="3Y1g3g8Lm0I" role="3o6s8t">
+            <property role="2pNNFO" value="plugin" />
+            <node concept="2pNUuL" id="3Y1g3g8Lm3Z" role="2pNNFR">
+              <property role="2pNUuO" value="id" />
+              <node concept="2pMdtt" id="3Y1g3g8Lm40" role="2pMdts">
+                <property role="2pMdty" value="jetbrains.mps.core" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3o6iSG" id="1XGsQcRF6IE" role="3o6s8t" />
         <node concept="2pNNFK" id="1XGsQcRF6IH" role="3o6s8t">
           <property role="2pNNFO" value="extensions" />

@@ -406,10 +406,17 @@
             <ref role="3cqZAo" node="4OPNMy2crcL" resolve="config" />
           </node>
         </node>
-        <node concept="3clFbF" id="6ZbvD_FEYL2" role="3cqZAp">
-          <node concept="2YIFZM" id="6ZbvD_FF4nk" role="3clFbG">
-            <ref role="1Pybhc" to="9w4s:~PlatformUtils" resolve="PlatformUtils" />
-            <ref role="37wK5l" to="9w4s:~PlatformUtils.setDefaultPrefixForCE()" resolve="setDefaultPrefixForCE" />
+        <node concept="3clFbF" id="1o99khfT2Nx" role="3cqZAp">
+          <node concept="2YIFZM" id="1o99khfT38S" role="3clFbG">
+            <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String)" resolve="setProperty" />
+            <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+            <node concept="10M0yZ" id="1o99khfT4f1" role="37wK5m">
+              <ref role="3cqZAo" to="9w4s:~PlatformUtils.PLATFORM_PREFIX_KEY" resolve="PLATFORM_PREFIX_KEY" />
+              <ref role="1PxDUh" to="9w4s:~PlatformUtils" resolve="PlatformUtils" />
+            </node>
+            <node concept="Xl_RD" id="1o99khfT4Q$" role="37wK5m">
+              <property role="Xl_RC" value="MPS" />
+            </node>
           </node>
         </node>
       </node>

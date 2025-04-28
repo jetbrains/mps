@@ -4,6 +4,9 @@
   <name>dummy-mps</name>
   <description>Dummy plugin for MPS</description>
   <vendor url="http://www.jetbrains.com/mps">JetBrains</vendor>
+  <dependencies>
+    <plugin id="jetbrains.mps.core"></plugin>
+  </dependencies>
   
   <extensions defaultExtensionNs="com.intellij">
     <registryKey key="dummy.key" defaultValue="1" description="dummy registry key" />

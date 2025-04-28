@@ -5,6 +5,10 @@
   <description>Provides generic debugger support for MPS</description>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
 
+  <dependencies>
+    <plugin id="jetbrains.mps.core"/>
+  </dependencies>
+
   <depends>jetbrains.mps.execution.api</depends>
   <depends>jetbrains.mps.core</depends>
   <depends>com.intellij.modules.mps</depends>

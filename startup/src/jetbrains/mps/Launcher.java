@@ -31,7 +31,7 @@ public class Launcher {
     // LogInitializer.init(); // getAdditionalMPSClasspathString() might have logged something, but it's no longer in use
     System.setProperty("ide.slow.operations.assertion.mps.find-usage", Boolean.toString(false));
     // System.setProperty("idea.additional.classpath", getAdditionalMPSClasspathString());
-    System.setProperty("idea.platform.prefix", "Idea");
+    System.setProperty("idea.platform.prefix", "MPS");
     System.setProperty("ide.new.project.model", Boolean.toString(false)); // Temporary disable new project model in all places
     System.setProperty("splash", Boolean.toString(true));
 

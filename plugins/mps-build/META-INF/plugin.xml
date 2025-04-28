@@ -24,6 +24,9 @@
   <idea-version since-build="251.1" until-build="252.1"/>
   <depends>jetbrains.mps.core</depends>
   <depends optional="true" config-file="pluginSolutions.xml">jetbrains.mps.execution.configurations</depends>
+  <dependencies>
+    <plugin id="jetbrains.mps.core"/>
+  </dependencies>
 
   <extensions defaultExtensionNs="com.intellij">
     <mps.LanguageLibrary dir="/languages" hide="true"/>

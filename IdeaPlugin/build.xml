@@ -344,7 +344,7 @@
       <sysproperty key="idea.force.use.core.classloader" value="true"/>
       <sysproperty key="jna.boot.library.path" value="${ideaPath}/lib/jna/${os.arch}"/>
       <sysproperty key="jdk.home.path" value="${jdkPath}"/>
-      <sysproperty key="idea.platform.prefix" value="Idea"/>
+      <sysproperty key="idea.platform.prefix" value="MPS"/>
       <sysproperty key="idea.config.path" value="${test.platform.sandbox.dir}/config"/>
       <sysproperty key="idea.system.path" value="${test.platform.sandbox.dir}/system"/>
       <sysproperty key="idea.plugins.path" value="${test.platform.sandbox.dir}/plugins"/>

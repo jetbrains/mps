@@ -70,7 +70,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
 
   public IdeaEnvironment(@NotNull EnvironmentConfig config) {
     super(config);
-    PlatformUtils.setDefaultPrefixForCE();
+    System.setProperty(PlatformUtils.PLATFORM_PREFIX_KEY, "MPS");
   }
 
   public void init() {
