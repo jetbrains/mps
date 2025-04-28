@@ -41,6 +41,13 @@ public final class IdeaPluginDependenciesHelper {
       collectVisible(SLinkOperations.getTarget(dep, LINKS.target$cxAi), seen);
     }
   }
+
+  public Iterable<SNode> getPluginContent() {
+    // same logic as in #collectVisible(), above. I wonder why there's no BuildMps_IdeaPlugin.getModules() or similar to hide the knowledge about specific content kind
+    List<SNode> pc = Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginModule$rY), LINKS.target$ccfo)).union(Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginGroup$_R), LINKS.group$qLbS), LINKS.modules$JlQo))).toList();
+    return ListSequence.fromList(pc).union(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(pc, CONCEPTS.BuildMps_Language$RA), LINKS.generator$OCOG)));
+  }
+
   public Iterable<SNode> getUnsatisfiedDependencies(SNode module) {
     if (visible == null) {
       buildVisible();
