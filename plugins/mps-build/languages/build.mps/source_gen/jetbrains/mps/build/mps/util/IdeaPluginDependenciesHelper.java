@@ -10,8 +10,9 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.Collections;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import java.util.Collections;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -21,6 +22,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class IdeaPluginDependenciesHelper {
   private SNode plugin;
   private Set<SNode> visible;
+  private final Set<String> myIgnored = new HashSet<>();
+
   public IdeaPluginDependenciesHelper(SNode plugin) {
     this.plugin = plugin;
   }
@@ -42,6 +45,10 @@ public final class IdeaPluginDependenciesHelper {
     }
   }
 
+  public void ignoreMPSWorkbenchDependency() {
+    myIgnored.add(PersistenceFacade.getInstance().createModuleReference("86441d7a-e194-42da-81a5-2161ec62a379(MPS.Workbench)").getModuleId().toString());
+  }
+
   public Iterable<SNode> getPluginContent() {
     // same logic as in #collectVisible(), above. I wonder why there's no BuildMps_IdeaPlugin.getModules() or similar to hide the knowledge about specific content kind
     List<SNode> pc = Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginModule$rY), LINKS.target$ccfo)).union(Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginGroup$_R), LINKS.group$qLbS), LINKS.modules$JlQo))).toList();
@@ -54,7 +61,7 @@ public final class IdeaPluginDependenciesHelper {
     }
     if (SNodeOperations.isInstanceOf(module, CONCEPTS.BuildMps_Module$JW)) {
       MPSModulesClosure runtimeDependencies = new MPSModulesClosure(SNodeOperations.cast(module, CONCEPTS.BuildMps_Module$JW), new MPSModulesClosure.ModuleDependenciesOptions()).runtimeClosure();
-      Iterable<SNode> seq = Sequence.fromIterable(runtimeDependencies.getAllModules()).where((it) -> !(visible.contains(it)));
+      Iterable<SNode> seq = Sequence.fromIterable(runtimeDependencies.getAllModules()).where((it) -> !(visible.contains(it)) && !(myIgnored.contains(SPropertyOperations.getString(it, PROPS.uuid$pC01))));
       return seq;
     }
     return Sequence.fromIterable(Collections.<SNode>emptyList());
@@ -88,6 +95,7 @@ public final class IdeaPluginDependenciesHelper {
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty uuid$pC01 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

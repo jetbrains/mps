@@ -1613,6 +1613,7 @@ public class QueriesGenerated extends QueryProviderBase {
 
       for (SNode plugin : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.parts$mGDj), CONCEPTS.BuildMps_IdeaPlugin$po))) {
         IdeaPluginDependenciesHelper dh = new IdeaPluginDependenciesHelper(plugin);
+        dh.ignoreMPSWorkbenchDependency();
         for (SNode m : Sequence.fromIterable(dh.getPluginContent())) {
           if (Sequence.fromIterable(dh.getUnsatisfiedDependencies(m)).isNotEmpty()) {
             StringBuilder sb = new StringBuilder();
