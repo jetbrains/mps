@@ -921,15 +921,7 @@
           <node concept="2tJIrI" id="3fHwAfryx_v" role="jymVt">
             <node concept="raruj" id="3fHwAfryxQV" role="lGtFl" />
             <node concept="5jKBG" id="3fHwAfryxR8" role="lGtFl">
-              <ref role="2rW$FS" node="7KQFBrEx8w7" resolve="patternClassL" />
               <ref role="v9R2y" node="2g69lt1_GCm" resolve="reduce_PatternBuilder_Class" />
-              <node concept="3NFfHV" id="3fHwAfryxRW" role="5jGum">
-                <node concept="3clFbS" id="3fHwAfryxRX" role="2VODD2">
-                  <node concept="3clFbF" id="3fHwAfryxTZ" role="3cqZAp">
-                    <node concept="30H73N" id="3fHwAfryxTY" role="3clFbG" />
-                  </node>
-                </node>
-              </node>
             </node>
           </node>
           <node concept="3Tm1VV" id="3fHwAfrxhhx" role="1B3o_S" />
