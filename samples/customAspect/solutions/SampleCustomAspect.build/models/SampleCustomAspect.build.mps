@@ -199,13 +199,13 @@
       <node concept="m$f5U" id="4FBizC0NEuN" role="m$_yh">
         <ref role="m$f5T" node="4FBizC0NEuH" resolve="SampleCustomAspect" />
       </node>
-      <node concept="m$_yC" id="6xueyVzRueL" role="m$_yJ">
-        <ref role="m$_y1" to="ffeo:4k71ibbLe59" resolve="com.intellij.modules.mps" />
-      </node>
       <node concept="3_J27D" id="4FBizC0NEuP" role="m_cZH">
         <node concept="3Mxwew" id="4FBizC0NEuQ" role="3MwsjC">
           <property role="3MwjfP" value="SampleCustomAspect" />
         </node>
+      </node>
+      <node concept="m$_yC" id="6xueyVzRueL" role="m$_yJ">
+        <ref role="m$_y1" to="ffeo:4k71ibbLe59" resolve="com.intellij.modules.mps" />
       </node>
     </node>
     <node concept="2G$12M" id="4FBizC0NEuH" role="3989C9">
