@@ -63,6 +63,9 @@ import jetbrains.mps.messages.IMessage;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.build.mps.util.ModuleChecker;
+import jetbrains.mps.build.mps.util.IdeaPluginDependenciesHelper;
+import jetbrains.mps.util.NameUtil;
+import java.util.stream.Collectors;
 import jetbrains.mps.build.util.FetchDependenciesProcessor;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.build.util.LocalSourcePathArtifact;
@@ -1609,6 +1612,26 @@ public class QueriesGenerated extends QueryProviderBase {
         }
       });
       ml.checkAllModules(ModuleChecker.CheckType.LOAD_ALL);
+
+      for (SNode plugin : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.parts$mGDj), CONCEPTS.BuildMps_IdeaPlugin$po))) {
+        IdeaPluginDependenciesHelper dh = new IdeaPluginDependenciesHelper(plugin);
+        // provisional default to avoid modifying a lot of build scripts to get rid of an error
+        dh.ignoreMPSWorkbenchDependency();
+        final Set<String> missing = new HashSet<>();
+        Set<String> modules = new HashSet<>();
+        for (SNode m : Sequence.fromIterable(dh.getPluginContent())) {
+          Iterable<SNode> unsatisfiedDependencies = dh.getUnsatisfiedDependencies(m);
+          if (Sequence.fromIterable(unsatisfiedDependencies).isNotEmpty()) {
+            modules.add(SPropertyOperations.getString(m, PROPS.name$MnvL));
+            Sequence.fromIterable(unsatisfiedDependencies).visitAll((it) -> missing.add(SPropertyOperations.getString(it, PROPS.name$MnvL)));
+          }
+        }
+        if (!(missing.isEmpty())) {
+          String mm1 = missing.stream().map((n) -> NameUtil.compactNamespace(n)).collect(Collectors.joining(","));
+          String mm2 = modules.stream().map((n) -> NameUtil.compactNamespace(n)).collect(Collectors.joining(","));
+          _context.showErrorMessage(plugin, String.format("Plugin %s needs other plugins to satisfy missing dependencies %s, required for %s", SPropertyOperations.getString(plugin, PROPS.id$W4AX), mm1, mm2));
+        }
+      }
 
       // move generators outside language, respect languages under Group project parts (hence, descendants), and
       // do not touch Generators that are not child of a generator (i.e. standalone generator modules, once we have them)
@@ -3480,6 +3503,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept BuildMps_TipsDir$LO = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a22c0160L, "jetbrains.mps.build.mps.structure.BuildMps_TipsDir");
     /*package*/ static final SConcept BuildMps_Group$Jc = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, "jetbrains.mps.build.mps.structure.BuildMps_Group");
     /*package*/ static final SConcept BuildMps_AbstractModule$FZ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule");
+    /*package*/ static final SConcept BuildMps_IdeaPlugin$po = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin");
     /*package*/ static final SConcept BuildMps_GeneratorRef$aa = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6d1df6c2700aeb81L, "jetbrains.mps.build.mps.structure.BuildMps_GeneratorRef");
     /*package*/ static final SConcept BuildLayout_Jar$bd = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f9aL, "jetbrains.mps.build.structure.BuildLayout_Jar");
     /*package*/ static final SConcept BuildRelativePath$Kc = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath");

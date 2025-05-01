@@ -155,6 +155,9 @@
       <node concept="m$_yB" id="2Wb4ucKmnHM" role="m$_yh">
         <ref role="m$_yA" node="2Wb4ucKmnFy" resolve="jetbrains.mps.build.tests" />
       </node>
+      <node concept="m$_yC" id="4O8Iq91ELvL" role="m$_yJ">
+        <ref role="m$_y1" to="ffeo:ymnOULATpW" />
+      </node>
     </node>
     <node concept="2sgV4H" id="2Wb4ucKlQZl" role="1l3spa">
       <ref role="1l3spb" to="ffeo:3IKDaVZmzS6" resolve="mps" />

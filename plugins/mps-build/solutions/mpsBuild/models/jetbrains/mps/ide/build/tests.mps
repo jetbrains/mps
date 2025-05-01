@@ -1990,6 +1990,12 @@
         <ref role="398BVh" node="53PdBITeUc4" resolve="mps_home" />
       </node>
     </node>
+    <node concept="398rNT" id="5JEVmB_r8c4" role="1l3spd">
+      <property role="TrG5h" value="artifacts.mps" />
+      <node concept="398BVA" id="5JEVmB_r8c6" role="398pKh">
+        <ref role="398BVh" node="53PdBITeUc4" resolve="mps_home" />
+      </node>
+    </node>
     <node concept="13uUGR" id="53PdBITeUc6" role="1l3spa">
       <ref role="13uUGO" to="ffeo:6eCuTcwOnJO" resolve="IDEA" />
       <node concept="398BVA" id="53PdBITeUc7" role="13uUGP">
@@ -2781,12 +2787,6 @@
     <node concept="10PD9b" id="53PdBITeUcS" role="10PD9s" />
     <node concept="3b7kt6" id="53PdBITeUcT" role="10PD9s" />
     <node concept="1gjT0q" id="53PdBITeUcU" role="10PD9s" />
-    <node concept="398rNT" id="5JEVmB_r8c4" role="1l3spd">
-      <property role="TrG5h" value="artifacts.mps" />
-      <node concept="398BVA" id="5JEVmB_r8c6" role="398pKh">
-        <ref role="398BVh" node="53PdBITeUc4" resolve="mps_home" />
-      </node>
-    </node>
     <node concept="398rNT" id="2KA2zfKHO0W" role="1l3spd">
       <property role="TrG5h" value="kotlinc_home" />
       <node concept="398BVA" id="2KA2zfKHO0X" role="398pKh">
@@ -9632,6 +9632,9 @@
       </node>
       <node concept="m$_yC" id="6sT62Z6SkkC" role="m$_yJ">
         <ref role="m$_y1" to="ffeo:4k71ibbKLe8" resolve="jetbrains.mps.core" />
+      </node>
+      <node concept="m$_yC" id="6IbFeTz9Lax" role="m$_yJ">
+        <ref role="m$_y1" to="ffeo:ymnOULATpW" />
       </node>
     </node>
     <node concept="398rNT" id="2KA2zfKHNUv" role="1l3spd">
