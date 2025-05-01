@@ -134,6 +134,9 @@
       <node concept="m$_yC" id="JexYrmfkE2" role="m$_yJ">
         <ref role="m$_y1" to="ffeo:5HVSRHdVm9a" resolve="jetbrains.mps.build" />
       </node>
+      <node concept="m$_yC" id="4O8Iq91ELvL" role="m$_yJ">
+        <ref role="m$_y1" to="ffeo:ymnOULATpW" />
+      </node>
       <node concept="3_J27D" id="2Wb4ucKlR0$" role="m$_yQ">
         <node concept="3Mxwew" id="2Wb4ucKlR1c" role="3MwsjC">
           <property role="3MwjfP" value="test plugin" />

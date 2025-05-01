@@ -72,7 +72,7 @@
         <name>SampleCustomAspect</name>
         <version>1.0</version>
         <depends>com.intellij.modules.platform</depends>
-        <depends>jetbrains.mps.core</depends>
+        <depends>com.intellij.modules.mps</depends>
         
         <extensions defaultExtensionNs="com.intellij">
           <mps.LanguageLibrary dir="/languages" />

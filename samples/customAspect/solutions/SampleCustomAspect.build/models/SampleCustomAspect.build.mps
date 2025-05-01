@@ -200,7 +200,7 @@
         <ref role="m$f5T" node="4FBizC0NEuH" resolve="SampleCustomAspect" />
       </node>
       <node concept="m$_yC" id="4FBizC0NEuO" role="m$_yJ">
-        <ref role="m$_y1" to="ffeo:4k71ibbKLe8" resolve="jetbrains.mps.core" />
+        <ref role="m$_y1" to="ffeo:4k71ibbLe59" />
       </node>
       <node concept="3_J27D" id="4FBizC0NEuP" role="m_cZH">
         <node concept="3Mxwew" id="4FBizC0NEuQ" role="3MwsjC">

@@ -50836,7 +50836,7 @@
         <property role="2iUeEu" value="http://www.jetbrains.com/mps/" />
       </node>
       <node concept="m$_yC" id="1JaUSFUm4GS" role="m$_yJ">
-        <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
+        <ref role="m$_y1" node="4k71ibbLe59" />
       </node>
       <node concept="m$f5U" id="EPbpPrikW8" role="m$_yh">
         <ref role="m$f5T" node="1JaUSFUm4EW" resolve="mps-context-actions-tool" />
