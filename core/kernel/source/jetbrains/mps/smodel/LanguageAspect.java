@@ -105,7 +105,7 @@ public enum LanguageAspect {
   }
 
   public SModel getOrCreate(Language l) {
-    // there's one last use in MPS sources (MoveAbstractConceptSpecialization), and no known uses in mps-extensions/mbeddr
+    Logger.getLogger(LanguageAspect.class).warnDeprecatedUse("Don't use legacy LanguageAspect class to create new aspect models");
     return get_internal(l, true);
   }
 
