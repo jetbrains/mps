@@ -20,13 +20,17 @@ import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.editor.menus.transformation.ActionItemBase;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
+import jetbrains.mps.smodel.language.LanguageAspectSupport;
+import jetbrains.mps.smodel.language.CreateAspectContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.kernel.language.ConceptAspectsHelper;
-import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
@@ -105,7 +109,22 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
 
           @Override
           public void execute(@NotNull String pattern) {
-            SNode editor = ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.EDITOR, _context.getNode(), SNodeFactoryOperations.createNewNode(CONCEPTS.ConceptEditorDeclaration$BH, null));
+            // FIXME same code in "Create Editor For ..." action, below, asl well as in "Editor" tab
+            SModule langModule = SNodeOperations.getModel(_context.getNode()).getModule();
+            SModel editorAspectModel = SModuleOperations.getAspect(langModule, "editor");
+            if (editorAspectModel == null) {
+              LanguageAspectDescriptor ad = LanguageAspectSupport.getAspectDescriptorById("editor");
+              CreateAspectContext cac = CreateAspectContext.create(langModule, _context.getEditorContext().getOperationContext().getProject().getPlatform(), null);
+              if (ad != null && ad.canCreate(cac)) {
+                ad.create(cac);
+                editorAspectModel = SModuleOperations.getAspect(langModule, "editor");
+              }
+            }
+            if (editorAspectModel == null) {
+              return;
+            }
+            SNode editor = SNodeFactoryOperations.createNewRootNode(editorAspectModel, CONCEPTS.ConceptEditorDeclaration$BH, null);
+            ConceptAspectsHelper.attachNewConceptAspect(_context.getNode(), editor, editorAspectModel);
             _context.getEditorContext().getEditorPanelManager().openEditor(editor);
           }
 
@@ -153,13 +172,29 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
           @Nullable
           @Override
           public String getLabelText(String pattern) {
+            // XXX I wonder why it's not a parameterised action, to avoid calculating "structurally equal concepts" again and again?
             return "Create Editor for " + SPropertyOperations.getString(ListSequence.fromList(new ConceptDeclarationAssistantUtil(_context.getNode()).getStructurallyEqualSuperConcepts()).last(), PROPS.name$MnvL);
           }
 
           @Override
           public void execute(@NotNull String pattern) {
+            SModule langModule = SNodeOperations.getModel(_context.getNode()).getModule();
+            SModel editorAspectModel = SModuleOperations.getAspect(langModule, "editor");
+            if (editorAspectModel == null) {
+              LanguageAspectDescriptor ad = LanguageAspectSupport.getAspectDescriptorById("editor");
+              // FIXME this use of OperationContext.getProject() waits for the moment EditorComponent/EditorContext answers with CH right away
+              CreateAspectContext cac = CreateAspectContext.create(langModule, _context.getEditorContext().getOperationContext().getProject().getPlatform(), null);
+              if (ad != null && ad.canCreate(cac)) {
+                ad.create(cac);
+                editorAspectModel = SModuleOperations.getAspect(langModule, "editor");
+              }
+            }
+            if (editorAspectModel == null) {
+              return;
+            }
             SNode concept = ListSequence.fromList(new ConceptDeclarationAssistantUtil(_context.getNode()).getStructurallyEqualSuperConcepts()).last();
-            SNode editor = ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.EDITOR, concept, SNodeFactoryOperations.createNewNode(CONCEPTS.ConceptEditorDeclaration$BH, null));
+            SNode editor = SNodeFactoryOperations.createNewRootNode(editorAspectModel, CONCEPTS.ConceptEditorDeclaration$BH, null);
+            ConceptAspectsHelper.attachNewConceptAspect(concept, editor, editorAspectModel);
             _context.getEditorContext().getEditorPanelManager().openEditor(editor);
           }
 

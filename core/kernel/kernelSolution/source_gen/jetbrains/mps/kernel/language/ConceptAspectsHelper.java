@@ -10,14 +10,14 @@ import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.LanguageAspect;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.kernel.model.SModelUtil;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import java.util.concurrent.atomic.AtomicReference;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import java.util.stream.Stream;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -36,54 +36,28 @@ public class ConceptAspectsHelper {
     return aspectNode;
   }
 
-  /**
-   * 
-   * @deprecated use LanguageAspectDescriptor#create() instead
-   */
-  @Deprecated
-  public static <T extends SNode> T attachNewConceptAspect(LanguageAspect aspect, SNode conceptNode, T aspectNode) {
-    // [MM] this LanguageAspect usage is reviewed
-    Language language = SModelUtil.getDeclaringLanguage(conceptNode);
-    assert language != null : "Language shouldn't be null for " + SNodeOperations.present(conceptNode);
-
-    SModel md = aspect.get(language);
-    if (md == null) {
-      md = aspect.createNew(language);
-    }
-    attachNewConceptAspect(conceptNode, aspectNode, md);
-    return aspectNode;
-  }
+  @Nullable
   public static ConceptPresentation getPresentationAspect(SNode n) {
-    SRepository repo = check_b9zw68_a0a0d(check_b9zw68_a0a0a3(n));
+    SRepository repo = check_b9zw68_a0a0c(check_b9zw68_a0a0a2(n));
     if (repo == null) {
       return null;
     }
 
-    LanguageRuntime lang = LanguageRegistry.getInstance(repo).getLanguage(SNodeOperations.getConcept(n).getLanguage());
-    return check_b9zw68_a4a3(check_b9zw68_a0e0d(lang), n);
+    final SAbstractConcept concept = SNodeOperations.getConcept(n);
+    final AtomicReference<ConceptPresentationAspect> cp = new AtomicReference<>(null);
+    LanguageRegistry.getInstance(repo).withAvailableAspects(Stream.of(concept.getLanguage()), ConceptPresentationAspect.class, cp::set);
+    return (cp.get() == null ? null : cp.get().getDescriptor(concept));
   }
 
-  private static SRepository check_b9zw68_a0a0d(SModel checkedDotOperand) {
+  private static SRepository check_b9zw68_a0a0c(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRepository();
     }
     return null;
   }
-  private static SModel check_b9zw68_a0a0a3(SNode checkedDotOperand) {
+  private static SModel check_b9zw68_a0a0a2(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModel();
-    }
-    return null;
-  }
-  private static ConceptPresentation check_b9zw68_a4a3(ConceptPresentationAspect checkedDotOperand, SNode n) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getDescriptor(SNodeOperations.getConcept(n));
-    }
-    return null;
-  }
-  private static ConceptPresentationAspect check_b9zw68_a0e0d(LanguageRuntime checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getAspect(ConceptPresentationAspect.class);
     }
     return null;
   }
