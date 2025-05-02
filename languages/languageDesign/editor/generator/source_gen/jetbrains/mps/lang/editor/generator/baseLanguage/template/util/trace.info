@@ -99,73 +99,62 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902a0(jetbrains.mps.lang.editor.generator.baseLanguage.template.util)/6718020819490797825">
     <file name="MenuRoots.java">
-      <node id="4096547952826814058" at="21,131,22,92" concept="6" />
-      <node id="4096547952826906536" at="22,92,23,95" concept="6" />
-      <node id="4096547952826730132" at="23,95,24,26" concept="6" />
-      <node id="4096547952826825921" at="25,27,26,122" concept="2" />
-      <node id="4096547952826914147" at="26,122,27,143" concept="2" />
-      <node id="4096547952826877002" at="27,143,28,369" concept="2" />
-      <node id="4096547952826838916" at="29,12,30,114" concept="2" />
-      <node id="4096547952826929043" at="30,114,31,135" concept="2" />
-      <node id="4096547952826891198" at="31,135,32,357" concept="2" />
-      <node id="4096547952826858617" at="33,5,34,208" concept="6" />
-      <node id="4096547952826730157" at="34,208,35,304" concept="6" />
-      <node id="4096547952826730178" at="35,304,36,128" concept="7" />
-      <node id="1630016958697896125" at="39,98,40,60" concept="7" />
-      <node id="1630016958697982077" at="43,96,44,61" concept="7" />
-      <node id="1630016958697986028" at="47,94,48,61" concept="7" />
-      <node id="1630016958697987822" at="51,92,52,62" concept="7" />
-      <node id="6718020819490797825" at="56,0,57,0" concept="9" trace="TransformationMenu_Default$TY" />
-      <node id="6718020819490797825" at="57,0,58,0" concept="9" trace="TransformationMenu_Named$dh" />
-      <node id="6718020819490797825" at="58,0,59,0" concept="9" trace="TransformationMenuReference_Default$sG" />
-      <node id="6718020819490797825" at="59,0,60,0" concept="9" trace="TransformationMenuReference_Named$rf" />
-      <node id="6718020819490797825" at="60,0,61,0" concept="9" trace="TransformationMenu$bn" />
-      <node id="6718020819490797825" at="61,0,62,0" concept="9" trace="SubstituteMenu_Default$sV" />
-      <node id="6718020819490797825" at="62,0,63,0" concept="9" trace="SubstituteMenu_Named$cm" />
-      <node id="6718020819490797825" at="63,0,64,0" concept="9" trace="SubstituteMenuReference_Default$5l" />
-      <node id="6718020819490797825" at="64,0,65,0" concept="9" trace="SubstituteMenuReference_Named$5O" />
-      <node id="6718020819490797825" at="65,0,66,0" concept="9" trace="SubstituteMenu$EF" />
-      <node id="6718020819490797825" at="66,0,67,0" concept="9" trace="IMenu$HX" />
-      <node id="6718020819490797825" at="67,0,68,0" concept="9" trace="IMenu_Contribution$Qb" />
-      <node id="1630016958697895701" at="39,0,42,0" concept="10" trace="getDefaultTransformationMenusAndContributions#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/Iterable;" />
-      <node id="1630016958697982073" at="43,0,46,0" concept="10" trace="getNamedTransformationMenusAndContributions#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/Iterable;" />
-      <node id="1630016958697986024" at="47,0,50,0" concept="10" trace="getDefaultSubstituteMenusAndContributions#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/Iterable;" />
-      <node id="1630016958697987818" at="51,0,54,0" concept="10" trace="getNamedSubstituteMenusAndContributions#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/Iterable;" />
-      <node id="4096547952826723359" at="29,10,33,5" concept="0" />
-      <node id="4096547952826717560" at="24,26,33,5" concept="5" />
-      <node id="6718020819490811460" at="21,0,38,0" concept="10" trace="getMenusAndContributions#(Lorg/jetbrains/mps/openapi/model/SModel;ZZ)Ljava/lang/Iterable;" />
-      <scope id="1630016958697895704" at="39,98,40,60" />
-      <scope id="1630016958697982076" at="43,96,44,61" />
-      <scope id="1630016958697986027" at="47,94,48,61" />
-      <scope id="1630016958697987821" at="51,92,52,62" />
-      <scope id="4096547952826717562" at="25,27,28,369" />
-      <scope id="4096547952826723360" at="29,12,32,357" />
-      <scope id="1630016958697895701" at="39,0,42,0">
+      <node id="4096547952826906536" at="21,131,22,95" concept="6" />
+      <node id="4096547952826730132" at="22,95,23,26" concept="6" />
+      <node id="4096547952826914147" at="24,27,25,143" concept="2" />
+      <node id="4096547952826877002" at="25,143,26,213" concept="2" />
+      <node id="4096547952826929043" at="27,12,28,135" concept="2" />
+      <node id="4096547952826891198" at="28,135,29,209" concept="2" />
+      <node id="4096547952826730157" at="30,5,31,304" concept="6" />
+      <node id="4096547952826730178" at="31,304,32,85" concept="7" />
+      <node id="1630016958697896125" at="35,98,36,60" concept="7" />
+      <node id="1630016958697982077" at="39,96,40,61" concept="7" />
+      <node id="1630016958697986028" at="43,94,44,61" concept="7" />
+      <node id="1630016958697987822" at="47,92,48,62" concept="7" />
+      <node id="6718020819490797825" at="52,0,53,0" concept="9" trace="TransformationMenuReference_Default$sG" />
+      <node id="6718020819490797825" at="53,0,54,0" concept="9" trace="TransformationMenuReference_Named$rf" />
+      <node id="6718020819490797825" at="54,0,55,0" concept="9" trace="TransformationMenu$bn" />
+      <node id="6718020819490797825" at="55,0,56,0" concept="9" trace="SubstituteMenuReference_Default$5l" />
+      <node id="6718020819490797825" at="56,0,57,0" concept="9" trace="SubstituteMenuReference_Named$5O" />
+      <node id="6718020819490797825" at="57,0,58,0" concept="9" trace="SubstituteMenu$EF" />
+      <node id="6718020819490797825" at="58,0,59,0" concept="9" trace="IMenu_Contribution$Qb" />
+      <node id="4096547952826723359" at="27,10,30,5" concept="0" />
+      <node id="1630016958697895701" at="35,0,38,0" concept="10" trace="getDefaultTransformationMenusAndContributions#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/Iterable;" />
+      <node id="1630016958697982073" at="39,0,42,0" concept="10" trace="getNamedTransformationMenusAndContributions#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/Iterable;" />
+      <node id="1630016958697986024" at="43,0,46,0" concept="10" trace="getDefaultSubstituteMenusAndContributions#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/Iterable;" />
+      <node id="1630016958697987818" at="47,0,50,0" concept="10" trace="getNamedSubstituteMenusAndContributions#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/Iterable;" />
+      <node id="4096547952826717560" at="23,26,30,5" concept="5" />
+      <node id="6718020819490811460" at="21,0,34,0" concept="10" trace="getMenusAndContributions#(Lorg/jetbrains/mps/openapi/model/SModel;ZZ)Ljava/lang/Iterable;" />
+      <scope id="1630016958697895704" at="35,98,36,60" />
+      <scope id="1630016958697982076" at="39,96,40,61" />
+      <scope id="1630016958697986027" at="43,94,44,61" />
+      <scope id="1630016958697987821" at="47,92,48,62" />
+      <scope id="4096547952826717562" at="24,27,26,213" />
+      <scope id="4096547952826723360" at="27,12,29,209" />
+      <scope id="1630016958697895701" at="35,0,38,0">
         <var name="inputModel" id="1630016958697896024" />
       </scope>
-      <scope id="1630016958697982073" at="43,0,46,0">
+      <scope id="1630016958697982073" at="39,0,42,0">
         <var name="inputModel" id="1630016958697982074" />
       </scope>
-      <scope id="1630016958697986024" at="47,0,50,0">
+      <scope id="1630016958697986024" at="43,0,46,0">
         <var name="inputModel" id="1630016958697986025" />
       </scope>
-      <scope id="1630016958697987818" at="51,0,54,0">
+      <scope id="1630016958697987818" at="47,0,50,0">
         <var name="inputModel" id="1630016958697987819" />
       </scope>
-      <scope id="6718020819490811463" at="21,131,36,128">
+      <scope id="6718020819490811463" at="21,131,32,85">
         <var name="contributions" id="4096547952826730158" />
-        <var name="legacyConcept" id="4096547952826814059" />
-        <var name="legacyMenus" id="4096547952826858618" />
         <var name="menus" id="4096547952826730133" />
         <var name="referenceConcept" id="4096547952826906537" />
       </scope>
-      <scope id="6718020819490811460" at="21,0,38,0">
+      <scope id="6718020819490811460" at="21,0,34,0">
         <var name="inputModel" id="6718020819490811476" />
         <var name="isTransformation" id="7629741244768862000" />
         <var name="takeDefault" id="4096547952826735233" />
       </scope>
-      <unit id="6718020819490797825" at="55,0,69,0" name="jetbrains.mps.lang.editor.generator.baseLanguage.template.util.MenuRoots$CONCEPTS" />
-      <unit id="6718020819490797825" at="19,0,70,0" name="jetbrains.mps.lang.editor.generator.baseLanguage.template.util.MenuRoots" />
+      <unit id="6718020819490797825" at="51,0,60,0" name="jetbrains.mps.lang.editor.generator.baseLanguage.template.util.MenuRoots$CONCEPTS" />
+      <unit id="6718020819490797825" at="19,0,61,0" name="jetbrains.mps.lang.editor.generator.baseLanguage.template.util.MenuRoots" />
     </file>
   </root>
 </debug-info>
