@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -35,7 +36,7 @@ public enum LanguageAspect {
   //mostly migrated
   EDITOR("editor"),
 
-  //mostly migrated
+  //mostly migrated (no uses in MPS)
   ACTIONS("actions"),
 
   //mostly migrated
@@ -47,28 +48,29 @@ public enum LanguageAspect {
   //mostly migrated
   TYPESYSTEM("typesystem"),
 
-  //mostly migrated
+  //mostly migrated (no uses in MPS)
   REFACTORINGS("refactorings"),
 
-  //mostly migrated
+  //mostly migrated (no uses in MPS)
   SCRIPTS("scripts"),
 
-  //mostly migrated
+  //mostly migrated (no uses in MPS)
   INTENTIONS("intentions"),
 
   //mostly migrated
   FIND_USAGES("findUsages"),
 
   //migrated, uncomment when migration is finished [compatibility] and deprecate this class
+  // (no uses in MPS)
   PLUGIN("plugin"),
 
-  //mostly migrated
+  //mostly migrated (no uses in MPS)
   DATA_FLOW("dataFlow"),
 
-  //mostly migrated
+  //mostly migrated (no uses in MPS)
   TEST("test"),
 
-  //mostly migrated
+  //mostly migrated (no uses in MPS)
   TEXT_GEN("textGen"),
 
   //mostly migrated. No uses in MPS, 1 in mbeddr
@@ -103,6 +105,7 @@ public enum LanguageAspect {
   }
 
   public SModel getOrCreate(Language l) {
+    // there's one last use in MPS sources (MoveAbstractConceptSpecialization), and no known uses in mps-extensions/mbeddr
     return get_internal(l, true);
   }
 
@@ -120,12 +123,23 @@ public enum LanguageAspect {
     return myName;
   }
 
+  /**
+   * @deprecated use {@link jetbrains.mps.smodel.language.LanguageAspectDescriptor} alternative.
+   *             There are no known uses, the method will be removed after 2025.2
+   */
+  @Deprecated(forRemoval = true)
   public SModel createNew(Language l) {
     return createNew(l, true);
   }
 
+  /**
+   * @deprecated use {@link jetbrains.mps.smodel.language.LanguageAspectDescriptor} alternative.
+   *             There are no known uses, the method will be removed after 2025.2
+   */
+  @Deprecated(forRemoval = true)
   public SModel createNew(final Language l, final boolean saveModel) {
     assert get(l) == null;
+    Logger.getLogger(LanguageAspect.class).warnDeprecatedUse("Don't use legacy LanguageAspect class to create new aspect models");
 
     SModel structureModel = l.getStructureModelDescriptor();
     ModelRoot modelRoot;
