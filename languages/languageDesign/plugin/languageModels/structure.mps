@@ -757,12 +757,6 @@
     <node concept="PrWs8" id="4lITsQs6oBu" role="PzmwI">
       <ref role="PrY4T" to="4j10:4cWf37B8oWS" resolve="ICheckedNamePolicy" />
     </node>
-    <node concept="1TJgyi" id="hByz$4F" role="1TKVEl">
-      <property role="TrG5h" value="iconPath" />
-      <property role="IQ2nx" value="1210686783787" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-      <node concept="asaX9" id="XPkXgFePpT" role="lGtFl" />
-    </node>
     <node concept="1TJgyi" id="1msw07ZFuCh" role="1TKVEl">
       <property role="TrG5h" value="helpTopic" />
       <property role="IQ2nx" value="1557260317236259345" />

@@ -836,8 +836,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_PopupCreator;
       case LanguageConceptSwitch.PreferencePage:
         if (props_PreferencePage == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119e269a79fL);
-          cpb.deprecateProperty(0x119e28e412bL, "iconPath");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
           props_PreferencePage = cpb.create();
         }
