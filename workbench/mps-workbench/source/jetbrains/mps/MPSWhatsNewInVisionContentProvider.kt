@@ -7,7 +7,7 @@ import com.intellij.platform.whatsNew.WhatsNewInVisionContentProvider
 class MPSWhatsNewInVisionContentProvider : WhatsNewInVisionContentProvider() {
     override fun getResource(): ContentSource {
         // return a vision file for the current version
-        val resourceName = "jetbrains/mps/whatsNew/vision.json"
+        val resourceName = "jetbrains/mps/whatsNew/vision-in-product-pages.json"
         val resourceContentSource = ResourceContentSource(jetbrains.mps.MPSWhatsNewInVisionContentProvider::class.java.classLoader, resourceName)
         return resourceContentSource
     }

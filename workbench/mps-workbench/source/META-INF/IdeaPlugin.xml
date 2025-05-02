@@ -3854,6 +3854,12 @@
   </actions>
 
   <actions>
+    <action id="WhatsNewShowProjectView"
+            class="jetbrains.mps.workbench.actions.whatsnew.WhatsNewShowProjectView">
+    </action>
+    <action id="WhatsNewProjectWizard"
+            class="jetbrains.mps.workbench.actions.whatsnew.WhatsNewProjectWizard">
+    </action>
     <action id="MPSProjectView.ShowErrorsOnly"
             class="jetbrains.mps.ide.projectView.ProjectViewImpl$Action$ShowErrorsOnly">
       <add-to-group group-id="ProjectView.ToolWindow.Appearance.Actions" anchor="after" relative-to-action="ProjectView.ShowLibraryContents"/>
