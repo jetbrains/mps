@@ -47,61 +47,7 @@ public class BootstrapLanguages {
   public static SModuleReference coreLanguageRef() {
     return PersistenceFacade.getInstance().createModuleReference("ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)");
   }
-  public static SModuleReference structureLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)");
-  }
-  public static SModuleReference editorLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("18bc6592-03a6-4e29-a83a-7ff23bde13ba(jetbrains.mps.lang.editor)");
-  }
-  public static SModuleReference actionsLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("aee9cad2-acd4-4608-aef2-0004f6a1cdbd(jetbrains.mps.lang.actions)");
-  }
-  public static SModuleReference constraintsLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1(jetbrains.mps.lang.constraints)");
-  }
-  public static SModuleReference behaviorLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("af65afd8-f0dd-4942-87d9-63a55f2a9db1(jetbrains.mps.lang.behavior)");
-  }
-  public static SModuleReference typesystemLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("7a5dda62-9140-4668-ab76-d5ed1746f2b2(jetbrains.mps.lang.typesystem)");
-  }
-  public static SModuleReference baseLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)");
-  }
-  public static SModuleReference refactoringLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("3ecd7c84-cde3-45de-886c-135ecc69b742(jetbrains.mps.lang.refactoring)");
-  }
-  public static SModuleReference scriptLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("0eddeefa-c2d6-4437-bc2c-de50fd4ce470(jetbrains.mps.lang.script)");
-  }
-  public static SModuleReference intentionsLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("d7a92d38-f7db-40d0-8431-763b0c3c9f20(jetbrains.mps.lang.intentions)");
-  }
-  public static SModuleReference findUsagesLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("64d34fcd-ad02-4e73-aff8-a581124c2e30(jetbrains.mps.lang.findUsages)");
-  }
-  public static SModuleReference pluginLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("28f9e497-3b42-4291-aeba-0a1039153ab1(jetbrains.mps.lang.plugin)");
-  }
-  public static SModuleReference aspectLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("f159adf4-3c93-40f9-9c5a-1f245a8697af(jetbrains.mps.lang.aspect)");
-  }
-  public static SModuleReference dataFlowLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("7fa12e9c-b949-4976-b4fa-19accbc320b4(jetbrains.mps.lang.dataFlow)");
-  }
-  public static SModuleReference testLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("8585453e-6bfb-4d80-98de-b16074f1d86c(jetbrains.mps.lang.test)");
-  }
-  public static SModuleReference textGenLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("b83431fe-5c8f-40bc-8a36-65e25f4dd253(jetbrains.mps.lang.textGen)");
-  }
-  public static SModuleReference migrationLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("90746344-04fd-4286-97d5-b46ae6a81709(jetbrains.mps.lang.migration)");
-  }
   public static SModuleReference jdkRef() {
     return PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)");
-  }
-  public static SModuleReference jdkToolsRef() {
-    return PersistenceFacade.getInstance().createModuleReference("b387285c-3448-452c-b3bb-a3f8de8eaf08(JDK-tools)");
   }
 }
