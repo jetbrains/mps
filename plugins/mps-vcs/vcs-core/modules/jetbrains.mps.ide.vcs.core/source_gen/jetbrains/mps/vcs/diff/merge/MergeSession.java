@@ -61,10 +61,14 @@ public final class MergeSession {
   private ChangesInvalidateHandler myChangesInvalidateHandler;
 
   public static MergeSession createMergeSession(SModel base, SModel mine, SModel repository) {
-    return createMergeSession(base, mine, repository, createTemporaryResultModel(base, mine, repository), false);
+    return createMergeSession(base, mine, repository, false);
   }
 
-  public static MergeTemporaryModel createTemporaryResultModel(SModel base, SModel mine, SModel repository) {
+  public static MergeSession createMergeSession(SModel base, SModel mine, SModel repository, boolean isTrackMovedNodes) {
+    return createMergeSession(base, mine, repository, createTemporaryResultModel(base, mine, repository), isTrackMovedNodes);
+  }
+
+  /*package*/ static MergeTemporaryModel createTemporaryResultModel(SModel base, SModel mine, SModel repository) {
     MergeTemporaryModel result = MergeTemporaryModel.writableCloneOf(base);
     int pv = Math.max(getPersistenceVersion(base), Math.max(getPersistenceVersion(mine), getPersistenceVersion(repository)));
     result.setPersistenceVersion(pv);
@@ -75,8 +79,13 @@ public final class MergeSession {
     return new MergeSession(base, mine, repository, resultModel, isTrackMovedNodes);
   }
 
+  public static MergeSession createMergeSession(MergeSession other, boolean isTrackMovedNodes) {
+    return new MergeSession(other.getBaseModel(), other.getMyModel(), other.getRepositoryModel(), other.myResultModel, isTrackMovedNodes);
+  }
+
   private MergeSession(SModel base, SModel mine, SModel repository, MergeTemporaryModel result, boolean isTrackMovedNodes) {
     myIsTrackMovedNodes = isTrackMovedNodes;
+    // FIXME why on earth MovesAwareMergeConflictsBuilder uses result model as BASE? Indeed, they are of the same content, yet it makes me puzzled, is it intentional or not?!
     ChangeConflictsBuilder conflictsBuilder = (isTrackMovedNodes ? new MovesAwareMergeConflictsBuilder(result, mine, repository, false) : new MergeConflictsBuilder(base, mine, repository));
     myMineChangeSet = conflictsBuilder.getMyChangeSet();
     myRepositoryChangeSet = conflictsBuilder.getRepositoryChangeSet();
@@ -257,7 +266,7 @@ public final class MergeSession {
       for (NodeGroupChange ch : ListSequence.fromList(ngcConflictedChanges)) {
         // add new changes only for insertions, we need ChangeSetImpl to manually add one change there
         // original conflicted changes will be resolved
-        ChangeSetImpl changeSet = as_bow6nj_a0a2a5a3a06(ch.getChangeSet(), ChangeSetImpl.class);
+        ChangeSetImpl changeSet = as_bow6nj_a0a2a5a3a46(ch.getChangeSet(), ChangeSetImpl.class);
         assert changeSet != null;
         NodeGroupChange newChange = new NodeGroupChange(changeSet, ch.getOldParentNodeId(), ch.getNewParentNodeId(), ch.getRoleLink(), anchorIndex, anchorIndex, ch.getResultBegin(), ch.getResultEnd());
         if (isNotEmptyChange(newChange)) {
@@ -327,6 +336,10 @@ public final class MergeSession {
     return change.getChangeSet() == myMineChangeSet;
   }
 
+  public boolean tracksMovedNodes() {
+    return myIsTrackMovedNodes;
+  }
+
   @NotNull
   public MergeSessionFullState getCurrentFullState() {
     final MergeSessionFullState state = new MergeSessionFullState();
@@ -366,54 +379,6 @@ public final class MergeSession {
     final Map<SNodeId, SNodeId> idReplacementCache = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>(MapSequence.fromMap(state.myIdReplacementCache).count()));
     MapSequence.fromMap(state.myIdReplacementCache).visitAll((it) -> MapSequence.fromMap(idReplacementCache).put(it.key(), it.value()));
     myNodeCopier.setState(idReplacementCache, myResultModel);
-  }
-
-  /**
-   * Use getCurrentFullState()
-   * 
-   * @deprecated 
-   */
-  @Deprecated
-  public MergeSessionState getCurrentState() {
-    return new MergeSessionState(myResultModel, myResolvedChanges, myNodeCopier.getState());
-  }
-
-  /**
-   * Use restoreFullState()
-   * 
-   * @deprecated 
-   */
-  @Deprecated
-  public void restoreState(MergeSessionState state) {
-    MergeSessionState stateCopy = new MergeSessionState(state);
-    myResultModel.setSModelInternal(stateCopy.myResultModel.getSModel());
-
-    restoreHierarchicalChanges();
-    SetSequence.fromSet(myResolvedChanges).clear();
-    SetSequence.fromSet(myResolvedChanges).addSequence(SetSequence.fromSet(stateCopy.myResolvedChanges));
-    myNodeCopier.setState(stateCopy.myIdReplacementCache, myResultModel);
-  }
-
-  /**
-   * 
-   * @deprecated 
-   */
-  @Deprecated
-  private void restoreHierarchicalChanges() {
-    setHierarchicalChangesNotApplied(myMineChangeSet, myResultModel);
-    setHierarchicalChangesNotApplied(myRepositoryChangeSet, myResultModel);
-  }
-
-  /**
-   * 
-   * @deprecated 
-   */
-  @Deprecated
-  private static void setHierarchicalChangesNotApplied(ChangeSet changeSet, final SModel model) {
-    ListSequence.fromList(changeSet.getModelChanges()).ofType(HierarchicalNodeGroupChange.class).visitAll((it) -> {
-      it.getGroup(true).setIsNotApplied(model);
-      it.getGroup(false).setIsNotApplied(model);
-    });
   }
 
   public boolean hasResolvedChanges() {
@@ -537,7 +502,7 @@ public final class MergeSession {
     private Set<ModelChange> myResolvedChanges;
     private Map<SNodeId, SNodeId> myIdReplacementCache;
   }
-  private static <T> T as_bow6nj_a0a2a5a3a06(Object o, Class<T> type) {
+  private static <T> T as_bow6nj_a0a2a5a3a46(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 
