@@ -5314,91 +5314,6 @@
             </node>
           </node>
         </node>
-        <node concept="3SKdUt" id="30J9Cm_7npU" role="3cqZAp">
-          <node concept="1PaTwC" id="30J9Cm_7npV" role="1aUNEU">
-            <node concept="3oM_SD" id="30J9Cm_7npW" role="1PaTwD">
-              <property role="3oM_SC" value="FIXME" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pF5" role="1PaTwD">
-              <property role="3oM_SC" value="why" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pO3" role="1PaTwD">
-              <property role="3oM_SC" value="on" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pO4" role="1PaTwD">
-              <property role="3oM_SC" value="earth" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pPB" role="1PaTwD">
-              <property role="3oM_SC" value="MovesAwareMergeConflictsBuilder" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pPC" role="1PaTwD">
-              <property role="3oM_SC" value="uses" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pPD" role="1PaTwD">
-              <property role="3oM_SC" value="result" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pPU" role="1PaTwD">
-              <property role="3oM_SC" value="model" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pPV" role="1PaTwD">
-              <property role="3oM_SC" value="as" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pPW" role="1PaTwD">
-              <property role="3oM_SC" value="BASE?" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pQH" role="1PaTwD">
-              <property role="3oM_SC" value="Indeed," />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pQY" role="1PaTwD">
-              <property role="3oM_SC" value="they" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pQZ" role="1PaTwD">
-              <property role="3oM_SC" value="are" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pR0" role="1PaTwD">
-              <property role="3oM_SC" value="of" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pRh" role="1PaTwD">
-              <property role="3oM_SC" value="the" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pRi" role="1PaTwD">
-              <property role="3oM_SC" value="same" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pRj" role="1PaTwD">
-              <property role="3oM_SC" value="content," />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pRk" role="1PaTwD">
-              <property role="3oM_SC" value="yet" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pRP" role="1PaTwD">
-              <property role="3oM_SC" value="it" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pS6" role="1PaTwD">
-              <property role="3oM_SC" value="makes" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pS7" role="1PaTwD">
-              <property role="3oM_SC" value="me" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pS8" role="1PaTwD">
-              <property role="3oM_SC" value="puzzled," />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pTF" role="1PaTwD">
-              <property role="3oM_SC" value="is" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pTG" role="1PaTwD">
-              <property role="3oM_SC" value="it" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pTX" role="1PaTwD">
-              <property role="3oM_SC" value="intentional" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pTY" role="1PaTwD">
-              <property role="3oM_SC" value="or" />
-            </node>
-            <node concept="3oM_SD" id="30J9Cm_7pUf" role="1PaTwD">
-              <property role="3oM_SC" value="not?!" />
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="1KUoCipvCqQ" role="3cqZAp">
           <node concept="3cpWsn" id="1KUoCipvCqR" role="3cpWs9">
             <property role="TrG5h" value="conflictsBuilder" />
@@ -5414,7 +5329,7 @@
                   <property role="373rjd" value="true" />
                   <ref role="37wK5l" node="1WB5d2ED6uE" resolve="MovesAwareMergeConflictsBuilder" />
                   <node concept="37vLTw" id="5ilXZU3x$_y" role="37wK5m">
-                    <ref role="3cqZAo" node="62HG2toBDiT" resolve="result" />
+                    <ref role="3cqZAo" node="3$YpntjF4sp" resolve="base" />
                   </node>
                   <node concept="37vLTw" id="5ilXZU3x$_z" role="37wK5m">
                     <ref role="3cqZAo" node="3$YpntjF4sr" resolve="mine" />

@@ -85,8 +85,7 @@ public final class MergeSession {
 
   private MergeSession(SModel base, SModel mine, SModel repository, MergeTemporaryModel result, boolean isTrackMovedNodes) {
     myIsTrackMovedNodes = isTrackMovedNodes;
-    // FIXME why on earth MovesAwareMergeConflictsBuilder uses result model as BASE? Indeed, they are of the same content, yet it makes me puzzled, is it intentional or not?!
-    ChangeConflictsBuilder conflictsBuilder = (isTrackMovedNodes ? new MovesAwareMergeConflictsBuilder(result, mine, repository, false) : new MergeConflictsBuilder(base, mine, repository));
+    ChangeConflictsBuilder conflictsBuilder = (isTrackMovedNodes ? new MovesAwareMergeConflictsBuilder(base, mine, repository, false) : new MergeConflictsBuilder(base, mine, repository));
     myMineChangeSet = conflictsBuilder.getMyChangeSet();
     myRepositoryChangeSet = conflictsBuilder.getRepositoryChangeSet();
     myConflictingChanges = conflictsBuilder.getConflictingChanges();
