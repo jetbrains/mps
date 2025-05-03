@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,7 +64,9 @@ public class ModelGenerationStatusManager implements CoreComponent {
 
     @Override
     public void beforeModuleRemoved(@NotNull SModule module) {
-      ModelGenerationStatusManager.this.invalidateData(module.getModels());
+      ArrayList<SModel> models = new ArrayList<>();
+      module.forEachRegisteredModel(models::add);
+      ModelGenerationStatusManager.this.invalidateData(models);
       super.beforeModuleRemoved(module);
     }
 
