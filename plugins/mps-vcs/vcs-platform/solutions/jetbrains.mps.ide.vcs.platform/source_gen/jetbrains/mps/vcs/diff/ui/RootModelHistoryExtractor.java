@@ -23,7 +23,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 
 @GeneratedClass(nodeId = "4799633552517352046", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
@@ -160,9 +159,7 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
     if (prevModel == model || prevModel == null || model == null) {
       return false;
     }
-    final Wrappers._boolean modelsHaveChanges = new Wrappers._boolean();
-    myProject.getModelAccess().runReadAction(() -> modelsHaveChanges.value = ChangeSetBuilder.hasChangesForNodeId(prevModel, model, myRootId));
-    return modelsHaveChanges.value;
+    return myProject.getModelAccess().computeReadAction(() -> ChangeSetBuilder.hasChangesForNodeId(prevModel, model, myRootId));
   }
 
   private void addNodeToHistory(CommitsGraphNode node) {

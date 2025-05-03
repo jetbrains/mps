@@ -382,7 +382,7 @@ public final class ChangeSetBuilder {
   public static boolean hasChangesForNodeId(@NotNull SModel oldModel, @NotNull SModel newModel, SNodeId nodeId) {
     SNode oldNode = oldModel.getNode(nodeId);
     SNode newNode = newModel.getNode(nodeId);
-    return MovesAwareChangeSetBuilder.hasChanges(oldNode, newNode, new ChangeSetImpl(oldModel, newModel));
+    return ModifiedNodesBuilder.hasChanges(oldNode, newNode);
   }
 
   public static ModelChangeSet buildChangeSetForNode(@NotNull SModel oldModel, @NotNull SModel newModel, SNodeId rootId, boolean withOpposite, boolean trackMovedNodes) {

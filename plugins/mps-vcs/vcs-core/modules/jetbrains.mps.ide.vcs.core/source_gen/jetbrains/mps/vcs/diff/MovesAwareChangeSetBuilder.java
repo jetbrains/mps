@@ -30,16 +30,6 @@ import java.util.ArrayList;
     myChangeSet = changeSet;
   }
 
-  /*package*/ static boolean hasChanges(@Nullable SNode oldRootNode, @Nullable SNode newRootNode, ChangeSetImpl changeSet) {
-    if (oldRootNode == null && newRootNode == null) {
-      return false;
-    }
-    if (oldRootNode == null || newRootNode == null) {
-      return true;
-    }
-    return ModifiedNodesBuilder.hasChanges(changeSet, oldRootNode, newRootNode);
-  }
-
   /*package*/ List<ModelChange> getChanges() {
 
     if (myOldRootNode == null && myNewRootNode == null) {

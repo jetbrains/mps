@@ -80,7 +80,6 @@
     <import index="5p6x" ref="r:2897a5d4-aed7-4a4e-ac07-fbc830f9ed9b(jetbrains.mps.vcs.history)" />
     <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
     <import index="cyi7" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.changes.ui(MPS.IDEA/)" />
-    <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="z2i8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.icons(MPS.IDEA/)" />
   </imports>
   <registry>
@@ -24516,12 +24515,6 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="47LNfLM$TUh" role="3cqZAp">
-          <node concept="3cpWsn" id="47LNfLM$TUk" role="3cpWs9">
-            <property role="TrG5h" value="modelsHaveChanges" />
-            <node concept="10P_77" id="47LNfLM$TUf" role="1tU5fm" />
-          </node>
-        </node>
         <node concept="3clFbF" id="47LNfLM_4IW" role="3cqZAp">
           <node concept="2OqwBi" id="47LNfLM_7BT" role="3clFbG">
             <node concept="2OqwBi" id="47LNfLM_4IY" role="2Oq$k0">
@@ -24533,37 +24526,27 @@
               </node>
             </node>
             <node concept="liA8E" id="47LNfLM_98g" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
+              <ref role="37wK5l" to="lui2:~ModelAccess.computeReadAction(java.util.function.Supplier)" resolve="computeReadAction" />
               <node concept="1bVj0M" id="47LNfLM_bj1" role="37wK5m">
                 <node concept="3clFbS" id="47LNfLM_bj2" role="1bW5cS">
                   <node concept="3clFbF" id="47LNfLM_gd6" role="3cqZAp">
-                    <node concept="37vLTI" id="47LNfLM_jFy" role="3clFbG">
-                      <node concept="37vLTw" id="47LNfLM_gd5" role="37vLTJ">
-                        <ref role="3cqZAo" node="47LNfLM$TUk" resolve="modelsHaveChanges" />
+                    <node concept="2YIFZM" id="47LNfLM_m$D" role="3clFbG">
+                      <ref role="37wK5l" to="bfxj:2xMl_AdxWDH" resolve="hasChangesForNodeId" />
+                      <ref role="1Pybhc" to="bfxj:42hl10VHbfH" resolve="ChangeSetBuilder" />
+                      <node concept="37vLTw" id="47LNfLM_m$E" role="37wK5m">
+                        <ref role="3cqZAo" node="6E_IjBsndV0" resolve="prevModel" />
                       </node>
-                      <node concept="2YIFZM" id="47LNfLM_m$D" role="37vLTx">
-                        <ref role="37wK5l" to="bfxj:2xMl_AdxWDH" resolve="hasChangesForNodeId" />
-                        <ref role="1Pybhc" to="bfxj:42hl10VHbfH" resolve="ChangeSetBuilder" />
-                        <node concept="37vLTw" id="47LNfLM_m$E" role="37wK5m">
-                          <ref role="3cqZAo" node="6E_IjBsndV0" resolve="prevModel" />
-                        </node>
-                        <node concept="37vLTw" id="47LNfLM_m$F" role="37wK5m">
-                          <ref role="3cqZAo" node="6E_IjBsndV3" resolve="model" />
-                        </node>
-                        <node concept="37vLTw" id="47LNfLM_m$G" role="37wK5m">
-                          <ref role="3cqZAo" node="4arIk_lPWDJ" resolve="myRootId" />
-                        </node>
+                      <node concept="37vLTw" id="47LNfLM_m$F" role="37wK5m">
+                        <ref role="3cqZAo" node="6E_IjBsndV3" resolve="model" />
+                      </node>
+                      <node concept="37vLTw" id="47LNfLM_m$G" role="37wK5m">
+                        <ref role="3cqZAo" node="4arIk_lPWDJ" resolve="myRootId" />
                       </node>
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="47LNfLM_qrE" role="3cqZAp">
-          <node concept="37vLTw" id="47LNfLM_vLK" role="3cqZAk">
-            <ref role="3cqZAo" node="47LNfLM$TUk" resolve="modelsHaveChanges" />
           </node>
         </node>
       </node>

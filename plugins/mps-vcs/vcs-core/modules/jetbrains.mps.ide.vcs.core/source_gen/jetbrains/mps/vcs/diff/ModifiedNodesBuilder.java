@@ -15,6 +15,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -24,7 +25,6 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -72,8 +72,14 @@ import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
     return myNodeChanges;
   }
 
-  /*package*/ static boolean hasChanges(ChangeSet changeSet, SNode oldRoot, SNode newRoot) {
-    ModifiedNodesBuilder builder = new ModifiedNodesBuilder(changeSet, oldRoot, newRoot, false);
+  /*package*/ static boolean hasChanges(SNode oldRoot, SNode newRoot) {
+    if (oldRoot == null && newRoot == null) {
+      return false;
+    }
+    if (oldRoot == null || newRoot == null) {
+      return true;
+    }
+    ModifiedNodesBuilder builder = new ModifiedNodesBuilder(new BlankChangeSet(SNodeOperations.getModel(oldRoot), SNodeOperations.getModel(newRoot)), oldRoot, newRoot, false);
     return Sequence.fromIterable(builder.collectNodeChanges()).isNotEmpty() || Sequence.fromIterable(builder.collectModifiedNodes()).isNotEmpty();
   }
 
