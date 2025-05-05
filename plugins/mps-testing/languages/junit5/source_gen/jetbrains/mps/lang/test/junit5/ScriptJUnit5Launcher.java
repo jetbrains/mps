@@ -76,6 +76,7 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
           testClasses.add(moduleClassLoader.loadClass(testClassName));
 
         } catch (ClassNotFoundException e) {
+          myWorkerCallback.setForceFailOnError();
           myWorkerCallback.error("error building test suite", e);
         }
       }
