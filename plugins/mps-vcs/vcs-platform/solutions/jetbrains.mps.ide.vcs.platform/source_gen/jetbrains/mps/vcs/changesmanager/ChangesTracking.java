@@ -53,6 +53,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.vcs.diff.BasicNodeChangesBuilder;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.project.MPSProject;
@@ -404,11 +405,12 @@ public final class ChangesTracking {
     }
   }
 
-  private void buildAndAddChanges(_FunctionTypes._void_P1_E0<? super ChangeSetBuilder> buildAction) {
+  private void buildAndAddChanges(_FunctionTypes._void_P1_E0<? super BasicNodeChangesBuilder> buildAction) {
     ChangeSet cs = myDifference.getChangeSet();
-    ChangeSetBuilder builder = ChangeSetBuilder.createBuilder(cs);
+    // we are in UI, hence true to respect commented-out nodes; use change builder unaware of node moves as ChangeSetBuilder.createBuilder(ChangeSet) didn that
+    BasicNodeChangesBuilder builder = new BasicNodeChangesBuilder(cs, true);
     buildAction.invoke(builder);
-    ListSequence.fromList(builder.getNewChanges()).visitAll((ch) -> addChange(ch));
+    ListSequence.fromList(builder.buildChanges()).visitAll((ch) -> addChange(ch));
   }
 
   @Nullable
@@ -572,7 +574,7 @@ public final class ChangesTracking {
           }
           return;
         }
-        buildAndAddChanges((ChangeSetBuilder b) -> b.buildForProperty(oldNode, node, property));
+        buildAndAddChanges((BasicNodeChangesBuilder b) -> b.buildForProperty(oldNode, node, property));
       }, node, event);
     }
 
@@ -602,7 +604,7 @@ public final class ChangesTracking {
           }
           return;
         }
-        buildAndAddChanges((ChangeSetBuilder b) -> b.buildForReference(oldNode, sourceNode, role));
+        buildAndAddChanges((BasicNodeChangesBuilder b) -> b.buildForReference(oldNode, sourceNode, role));
       }, event.getReference().getSourceNode(), event);
     }
 
@@ -637,7 +639,7 @@ public final class ChangesTracking {
         removeChanges(parentId, NodeIdChange.class, (NodeIdChange ch) -> ch.isAbout(childRole));
         removeDescendantChanges(parentId, childRole);
         myLastParentAndNewChildrenIds = MultiTuple.<SNodeId,List<SNodeId>>from(parentId, childrenRightAfterEvent);
-        buildAndAddChanges((ChangeSetBuilder b) -> {
+        buildAndAddChanges((BasicNodeChangesBuilder b) -> {
           SNode oldParentNode = getOldNode(parentId);
           if (oldParentNode != null && ListSequence.fromList(childrenRightAfterEvent).all((it) -> check_5iuzi5_a0a0a0a0b0a0e0a0p0j07(check_5iuzi5_a0a0a0a0a0b0a0e0a0p0j07(myDifference.getChangeSet()), it) != null)) {
             List<SNodeId> oldChildrenIds = Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(oldParentNode, childRole)).select((it) -> it.getNodeId()).toList();
@@ -666,12 +668,12 @@ public final class ChangesTracking {
       runUpdateTask(() -> {
         if (added) {
           removeChanges(rootId, DeleteRootChange.class, (DeleteRootChange ch) -> true);
-          buildAndAddChanges((ChangeSetBuilder b) -> b.buildForNode(getOldNode(rootId), event.getRoot()));
+          buildAndAddChanges((BasicNodeChangesBuilder b) -> b.buildForRoot(getOldNode(rootId), event.getRoot()));
         } else {
           if (removeChanges(rootId, AddRootChange.class, (AddRootChange ch) -> true) == 0) {
             // root was not added
             removeDescendantChanges(rootId);
-            buildAndAddChanges((ChangeSetBuilder b) -> b.buildForNode(getOldNode(rootId), null));
+            buildAndAddChanges((BasicNodeChangesBuilder b) -> b.buildForRoot(getOldNode(rootId), null));
           }
         }
       }, null, event);

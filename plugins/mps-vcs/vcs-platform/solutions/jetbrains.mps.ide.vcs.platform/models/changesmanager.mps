@@ -9499,17 +9499,89 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="735o_gm15de" role="3cqZAp">
+          <node concept="1PaTwC" id="735o_gm15df" role="1aUNEU">
+            <node concept="3oM_SD" id="735o_gm15dg" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1jPX" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1jPZ" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1jQ0" role="1PaTwD">
+              <property role="3oM_SC" value="UI," />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1jQh" role="1PaTwD">
+              <property role="3oM_SC" value="hence" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1jQi" role="1PaTwD">
+              <property role="3oM_SC" value="true" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1qrE" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1qrV" role="1PaTwD">
+              <property role="3oM_SC" value="respect" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1qse" role="1PaTwD">
+              <property role="3oM_SC" value="commented-out" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1qsJ" role="1PaTwD">
+              <property role="3oM_SC" value="nodes;" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1qt0" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1qth" role="1PaTwD">
+              <property role="3oM_SC" value="change" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1qu2" role="1PaTwD">
+              <property role="3oM_SC" value="builder" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1quj" role="1PaTwD">
+              <property role="3oM_SC" value="unaware" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1qu$" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1qu_" role="1PaTwD">
+              <property role="3oM_SC" value="node" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1quA" role="1PaTwD">
+              <property role="3oM_SC" value="moves" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1quB" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1s3r" role="1PaTwD">
+              <property role="3oM_SC" value="ChangeSetBuilder.createBuilder(ChangeSet)" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1sCj" role="1PaTwD">
+              <property role="3oM_SC" value="didn" />
+            </node>
+            <node concept="3oM_SD" id="735o_gm1sCk" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="35ve9_LJsQN" role="3cqZAp">
           <node concept="3cpWsn" id="35ve9_LJsQO" role="3cpWs9">
             <property role="TrG5h" value="builder" />
             <node concept="3uibUv" id="35ve9_LJsQP" role="1tU5fm">
-              <ref role="3uigEE" to="bfxj:42hl10VHbfH" resolve="ChangeSetBuilder" />
+              <ref role="3uigEE" to="bfxj:735o_gl1UsO" resolve="BasicNodeChangesBuilder" />
             </node>
-            <node concept="2YIFZM" id="35ve9_LJsQQ" role="33vP2m">
-              <ref role="37wK5l" to="bfxj:1XuTulVDMok" resolve="createBuilder" />
-              <ref role="1Pybhc" to="bfxj:42hl10VHbfH" resolve="ChangeSetBuilder" />
-              <node concept="37vLTw" id="3GM_nagTx$u" role="37wK5m">
-                <ref role="3cqZAo" node="35ve9_LJsQI" resolve="cs" />
+            <node concept="2ShNRf" id="735o_glZfXh" role="33vP2m">
+              <node concept="1pGfFk" id="735o_glZYob" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="bfxj:735o_glOFdd" resolve="BasicNodeChangesBuilder" />
+                <node concept="37vLTw" id="735o_gm0dim" role="37wK5m">
+                  <ref role="3cqZAo" node="35ve9_LJsQI" resolve="cs" />
+                </node>
+                <node concept="3clFbT" id="735o_gm0Ny7" role="37wK5m">
+                  <property role="3clFbU" value="true" />
+                </node>
               </node>
             </node>
           </node>
@@ -9533,7 +9605,7 @@
                 <ref role="3cqZAo" node="35ve9_LJsQO" resolve="builder" />
               </node>
               <node concept="liA8E" id="35ve9_LJsRb" role="2OqNvi">
-                <ref role="37wK5l" to="bfxj:1XuTulVDRxB" resolve="getNewChanges" />
+                <ref role="37wK5l" to="bfxj:25TBtyry4zQ" resolve="buildChanges" />
               </node>
             </node>
             <node concept="2es0OD" id="35ve9_LJsRc" role="2OqNvi">
@@ -9562,7 +9634,7 @@
         <node concept="1ajhzC" id="35ve9_LJsRo" role="1tU5fm">
           <node concept="3cqZAl" id="35ve9_LJsRs" role="1ajl9A" />
           <node concept="3uibUv" id="35ve9_LJsRr" role="1ajw0F">
-            <ref role="3uigEE" to="bfxj:42hl10VHbfH" resolve="ChangeSetBuilder" />
+            <ref role="3uigEE" to="bfxj:735o_gl1UsO" resolve="BasicNodeChangesBuilder" />
           </node>
         </node>
       </node>
@@ -11212,7 +11284,7 @@
                         <node concept="37vLTG" id="2QnDi8QvAJR" role="1bW2Oz">
                           <property role="TrG5h" value="b" />
                           <node concept="3uibUv" id="2QnDi8QvAJS" role="1tU5fm">
-                            <ref role="3uigEE" to="bfxj:42hl10VHbfH" resolve="ChangeSetBuilder" />
+                            <ref role="3uigEE" to="bfxj:735o_gl1UsO" resolve="BasicNodeChangesBuilder" />
                           </node>
                         </node>
                         <node concept="3clFbS" id="2QnDi8QvAJT" role="1bW5cS">
@@ -11559,7 +11631,7 @@
                         <node concept="37vLTG" id="2QnDi8QvAMV" role="1bW2Oz">
                           <property role="TrG5h" value="b" />
                           <node concept="3uibUv" id="2QnDi8QvAMW" role="1tU5fm">
-                            <ref role="3uigEE" to="bfxj:42hl10VHbfH" resolve="ChangeSetBuilder" />
+                            <ref role="3uigEE" to="bfxj:735o_gl1UsO" resolve="BasicNodeChangesBuilder" />
                           </node>
                         </node>
                         <node concept="3clFbS" id="2QnDi8QvAMX" role="1bW5cS">
@@ -12243,7 +12315,7 @@
                         <node concept="37vLTG" id="2QnDi8QvAPA" role="1bW2Oz">
                           <property role="TrG5h" value="b" />
                           <node concept="3uibUv" id="2QnDi8QvAPB" role="1tU5fm">
-                            <ref role="3uigEE" to="bfxj:42hl10VHbfH" resolve="ChangeSetBuilder" />
+                            <ref role="3uigEE" to="bfxj:735o_gl1UsO" resolve="BasicNodeChangesBuilder" />
                           </node>
                         </node>
                         <node concept="3clFbS" id="2QnDi8QvAPC" role="1bW5cS">
@@ -12318,7 +12390,7 @@
                                     <ref role="3cqZAo" node="2QnDi8QvAPA" resolve="b" />
                                   </node>
                                   <node concept="liA8E" id="2QnDi8QvAPG" role="2OqNvi">
-                                    <ref role="37wK5l" to="bfxj:2_s9gYo$aO7" resolve="buildForNodeRole" />
+                                    <ref role="37wK5l" to="bfxj:735o_glLVG7" resolve="buildForNodeRole" />
                                     <node concept="37vLTw" id="58$PzbkcMUG" role="37wK5m">
                                       <ref role="3cqZAo" node="2QnDi8QvAQf" resolve="childRole" />
                                     </node>
@@ -12643,7 +12715,7 @@
                             <node concept="37vLTG" id="2QnDi8QvB1v" role="1bW2Oz">
                               <property role="TrG5h" value="b" />
                               <node concept="3uibUv" id="2QnDi8QvB1w" role="1tU5fm">
-                                <ref role="3uigEE" to="bfxj:42hl10VHbfH" resolve="ChangeSetBuilder" />
+                                <ref role="3uigEE" to="bfxj:735o_gl1UsO" resolve="BasicNodeChangesBuilder" />
                               </node>
                             </node>
                             <node concept="3clFbS" id="2QnDi8QvB1x" role="1bW5cS">
@@ -12653,7 +12725,7 @@
                                     <ref role="3cqZAo" node="2QnDi8QvB1v" resolve="b" />
                                   </node>
                                   <node concept="liA8E" id="2QnDi8QvB1_" role="2OqNvi">
-                                    <ref role="37wK5l" to="bfxj:1HIZsCuIWnf" resolve="buildForNode" />
+                                    <ref role="37wK5l" to="bfxj:25TBtyrya2x" resolve="buildForRoot" />
                                     <node concept="1rXfSq" id="4hiugqyyU9S" role="37wK5m">
                                       <ref role="37wK5l" node="35ve9_LJsRM" resolve="getOldNode" />
                                       <node concept="37vLTw" id="3GM_nagTAx9" role="37wK5m">
@@ -12711,7 +12783,7 @@
                                   <node concept="37vLTG" id="2QnDi8QvB1R" role="1bW2Oz">
                                     <property role="TrG5h" value="b" />
                                     <node concept="3uibUv" id="2QnDi8QvB1S" role="1tU5fm">
-                                      <ref role="3uigEE" to="bfxj:42hl10VHbfH" resolve="ChangeSetBuilder" />
+                                      <ref role="3uigEE" to="bfxj:735o_gl1UsO" resolve="BasicNodeChangesBuilder" />
                                     </node>
                                   </node>
                                   <node concept="3clFbS" id="2QnDi8QvB1T" role="1bW5cS">
@@ -12721,7 +12793,7 @@
                                           <ref role="3cqZAo" node="2QnDi8QvB1R" resolve="b" />
                                         </node>
                                         <node concept="liA8E" id="2QnDi8QvB1X" role="2OqNvi">
-                                          <ref role="37wK5l" to="bfxj:1HIZsCuIWnf" resolve="buildForNode" />
+                                          <ref role="37wK5l" to="bfxj:25TBtyrya2x" resolve="buildForRoot" />
                                           <node concept="1rXfSq" id="4hiugqyzePs" role="37wK5m">
                                             <ref role="37wK5l" node="35ve9_LJsRM" resolve="getOldNode" />
                                             <node concept="37vLTw" id="3GM_nagTAcD" role="37wK5m">

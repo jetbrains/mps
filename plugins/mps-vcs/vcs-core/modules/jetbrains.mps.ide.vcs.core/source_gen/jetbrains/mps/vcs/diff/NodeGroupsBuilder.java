@@ -32,7 +32,6 @@ import jetbrains.mps.util.LongestCommonSubsequenceFinder;
 import java.util.Map;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.util.HashMap;
 import jetbrains.mps.vcs.diff.changes.WrappingNodesGroup;
@@ -46,9 +45,11 @@ import jetbrains.mps.vcs.diff.changes.WrappingNodesGroup;
   private final Collection<ModifiedNodesGroup> myNewGroups = CollectionSequence.fromCollection(new HashSet<ModifiedNodesGroup>());
   private final Collection<NodeIdChange> myNodeIdChanges = CollectionSequence.fromCollection(new ArrayList<NodeIdChange>());
   private final Queue<ParentsLink> myLinks = QueueSequence.fromQueue(new LinkedList<ParentsLink>());
+  private final boolean myRespectCommentedOutNodes;
 
 
-  /*package*/ NodeGroupsBuilder(@NotNull ModifiedNodesBuilder nodesBuilder, SNode oldRootNode, SNode newRootNode) {
+  /*package*/ NodeGroupsBuilder(@NotNull ModifiedNodesBuilder nodesBuilder, SNode oldRootNode, SNode newRootNode, boolean respectCommentedOutNodes) {
+    myRespectCommentedOutNodes = respectCommentedOutNodes;
     myNodesBuilder = nodesBuilder;
     collectGroups();
     setOppositeMoves();
@@ -248,13 +249,14 @@ __switch__:
     SNode oldNode = getModel(false).getNode(oldGroup.getId());
     SNode newNode = getModel(true).getNode(newGroup.getId());
 
-    final Map<SContainmentLink, List<SNode>> oldChildren = ChangeSetBuilder.getRoleToChildCollectionMap(oldNode);
-    final Map<SContainmentLink, List<SNode>> newChildren = ChangeSetBuilder.getRoleToChildCollectionMap(newNode);
+    final AggregationToChildMap oldChildren = new AggregationToChildMap(oldNode, myRespectCommentedOutNodes);
+    final AggregationToChildMap newChildren = new AggregationToChildMap(newNode, myRespectCommentedOutNodes);
 
-    SetSequence.fromSet(MapSequence.fromMap(oldChildren).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(newChildren).keySet())).distinct().visitAll((childLink) -> {
+
+    Sequence.fromIterable(oldChildren.roles()).concat(Sequence.fromIterable(newChildren.roles())).distinct().visitAll((childLink) -> {
 
       // remove moves caused by this ID change
-      removeIdChangeCausedMovedGroups(MapSequence.fromMap(oldChildren).get(childLink), MapSequence.fromMap(newChildren).get(childLink));
+      removeIdChangeCausedMovedGroups(oldChildren.getIDs(childLink), newChildren.getIDs(childLink));
 
       ParentsLink newLink = new ParentsLink(oldGroup.getId(), newGroup.getId(), childLink);
 
@@ -278,17 +280,15 @@ __switch__:
     return QueueSequence.fromQueue(myLinks).where((it) -> Objects.equals(it.myLink, parentsLink.myLink) && (Objects.equals(it.myOldParentId, parentsLink.myOldParentId) || Objects.equals(it.myNewParentId, parentsLink.myNewParentId)) && Objects.equals(it.myOldParentId, it.myNewParentId)).toList();
   }
 
-  private void removeIdChangeCausedMovedGroups(List<SNode> oldNodes, List<SNode> newNodes) {
-    final List<SNodeId> oldIds = ListSequence.fromList(oldNodes).select((it) -> it.getNodeId()).toList();
-    final List<SNodeId> newIds = ListSequence.fromList(newNodes).select((it) -> it.getNodeId()).toList();
+  private void removeIdChangeCausedMovedGroups(final List<SNodeId> oldIds, final List<SNodeId> newIds) {
     Collection<ModifiedNodesGroup> oldMoves = CollectionSequence.fromCollection(myOldGroups).where((it) -> ListSequence.fromList(oldIds).contains(it.getFirstNodeId())).toList();
     Collection<ModifiedNodesGroup> newMoves = CollectionSequence.fromCollection(myNewGroups).where((it) -> ListSequence.fromList(newIds).contains(it.getFirstNodeId())).toList();
     CollectionSequence.fromCollection(oldMoves).concat(CollectionSequence.fromCollection(newMoves)).visitAll((it) -> removeGroup(it));
   }
 
   private void removeGroup(ModifiedNodesGroup group) {
-    check_ceu2he_a0a54(group.getPrevGroup(), group);
-    check_ceu2he_a1a54(group.getPrevGroup(), group);
+    check_ceu2he_a0a64(group.getPrevGroup(), group);
+    check_ceu2he_a1a64(group.getPrevGroup(), group);
     CollectionSequence.fromCollection(getGroups(group.isNew())).removeElement(group);
   }
 
@@ -472,8 +472,8 @@ __switch__:
     if (notMoveGroup.getWrappingGroup() != null && notMoveGroup.getNextNodeId() == null) {
       // this is the last wrapped group since it does not have next group.
       // we should take last unwrapped group as an opposite group.
-      ModifiedNodesGroup lastUnwrappedGroup = check_ceu2he_a0c0d0tc(notMoveGroup.getWrappingGroup());
-      return check_ceu2he_a3a3a17(lastUnwrappedGroup);
+      ModifiedNodesGroup lastUnwrappedGroup = check_ceu2he_a0c0d0uc(notMoveGroup.getWrappingGroup());
+      return check_ceu2he_a3a3a27(lastUnwrappedGroup);
     }
     return getRenamedNodeId(notMoveGroup.getNextNodeId(), notMoveGroup.isNew());
   }
@@ -510,25 +510,25 @@ __switch__:
     }
     return id;
   }
-  private static void check_ceu2he_a0a54(ModifiedNodesGroup checkedDotOperand, ModifiedNodesGroup group) {
+  private static void check_ceu2he_a0a64(ModifiedNodesGroup checkedDotOperand, ModifiedNodesGroup group) {
     if (null != checkedDotOperand) {
       checkedDotOperand.setNextGroup(group.getNextGroup());
     }
 
   }
-  private static void check_ceu2he_a1a54(ModifiedNodesGroup checkedDotOperand, ModifiedNodesGroup group) {
+  private static void check_ceu2he_a1a64(ModifiedNodesGroup checkedDotOperand, ModifiedNodesGroup group) {
     if (null != checkedDotOperand) {
       checkedDotOperand.setNextNodeId(group.getNextNodeId());
     }
 
   }
-  private static ModifiedNodesGroup check_ceu2he_a0c0d0tc(WrappingNodesGroup checkedDotOperand) {
+  private static ModifiedNodesGroup check_ceu2he_a0c0d0uc(WrappingNodesGroup checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getLastUnwrappedGroup();
     }
     return null;
   }
-  private static SNodeId check_ceu2he_a3a3a17(ModifiedNodesGroup checkedDotOperand) {
+  private static SNodeId check_ceu2he_a3a3a27(ModifiedNodesGroup checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getActualNextNodeId();
     }
