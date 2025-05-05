@@ -728,7 +728,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-diagram-editor/test/jetbrains.mps.lang.editor.diagram.tests/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-diagram-editor/test/jetbrains.mps.lang.editor.figures.sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-diagram-editor/test/jetbrains.mps.testHybridEditor.diagram.generated/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-diagram-editor/test/jetbrains.mps.testHybridEditor.sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-diagram-editor/test/jetbrains.mps.testHybridEditor/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language">
@@ -1150,7 +1149,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../samples/generator_demo/solutions/test_models/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/heating/jetbrains.mps.samples.heating.tabular/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/heating/jetbrains.mps.samples.heating/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../samples/heating/jetbrains.mps.samples.heating/sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/highLevelMetaLanguages/languages/jetbrains.mps.samples.highlevel.sampleLanguage/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/highLevelMetaLanguages/languages/jetbrains.mps.samples.highlevel.simpleEditor/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/highLevelMetaLanguages/languages/jetbrains.mps.samples.highlevel.simpleEditor/generator/classes_gen" />
@@ -1338,6 +1336,7 @@
       <excludeFolder url="file://$MODULE_DIR$/../../testbench/modules/build.mps.runner.test/jetbrains.mps.build.mps.runner.test.test6/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../testbench/modules/buildLangTarget/lang/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../testbench/modules/buildLangTarget/lang/generator/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../testbench/modules/buildLangTarget/sample/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../testbench/modules/jetbrains.mps.baseLanguage.testRefs/classes_gen" />
@@ -1425,7 +1424,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/testsolutions/generator.test/test_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/testsolutions/httpsupport.test/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/testsolutions/httpsupport.test/test_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../testbench/testsolutions/jetbrains.mps.baseLanguage.methodReferences.test/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../testbench/testsolutions/jetbrains.mps.baseLanguage.methodReferences.test/test_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/testsolutions/jetbrains.mps.build.stripping.tests/test_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/testsolutions/jetbrains.mps.lang.editor.imageGen.tests/test_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/testsolutions/jetbrains.mps.tests.sraMigration/test_gen" isTestSource="false" />
@@ -1643,3 +1642,4 @@
     <orderEntry type="library" name="junit.platform.reporting" level="project" />
   </component>
 </module>
+
