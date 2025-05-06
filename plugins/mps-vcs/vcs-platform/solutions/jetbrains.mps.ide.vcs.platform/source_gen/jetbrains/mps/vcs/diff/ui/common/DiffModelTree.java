@@ -25,7 +25,6 @@ import com.intellij.openapi.actionSystem.ActionPlaces;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collections;
-import java.util.Enumeration;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.tree.TreePath;
 import java.util.Objects;
@@ -106,13 +105,18 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
 
   protected TreeNode rebuild() {
     ModelTreeNode modelNode = new ModelTreeNode((myModelName == null ? "" : myModelName));
-    myRootNodes = Sequence.fromIterable(getAffectedRoots()).where(new NotNullWhereFilter()).select((r) -> new RootTreeNode(r)).sort((rtn) -> rtn.myVirtualPackage + "|" + rtn.myPresentation, true).toList();
+    Iterable<RootTreeNode> rtnodes = Sequence.fromIterable(getAffectedRoots()).where(new NotNullWhereFilter()).select((r) -> new RootTreeNode(r)).toList();
+    Sequence.fromIterable(rtnodes).visitAll((it) -> {
+      it.doUpdatePresentation(getModels(), isMultipleRootNames());
+      updateRootCustomPresentation(it);
+    });
+    myRootNodes = Sequence.fromIterable(rtnodes).sort((rtn) -> rtn.myVirtualPackage + "|" + rtn.getText(), true).toList();
     for (RootTreeNode rtn : ListSequence.fromList(myRootNodes)) {
       TreeNode parentNode = modelNode;
       if (isNotEmptyString(rtn.myVirtualPackage)) {
         for (final String sub : Sequence.fromArray(rtn.myVirtualPackage.split("\\."))) {
-          Iterable<TreeNode> children = Collections.list(((Enumeration) parentNode.children()));
-          TreeNode child = Sequence.fromIterable(children).findFirst((c) -> c instanceof PackageTreeNode && sub.equals(c.getText()));
+          Iterable<? extends javax.swing.tree.TreeNode> children = Collections.list(parentNode.children());
+          PackageTreeNode child = Sequence.fromIterable(children).ofType(PackageTreeNode.class).findFirst((c) -> sub.equals(c.getText()));
           if (child == null) {
             child = new PackageTreeNode(sub);
             parentNode.add(child);
@@ -125,6 +129,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     // TODO replace this condition with explicit configuration method #needsModelPropertiesNode(boolean)
     if (Sequence.fromIterable(getAffectedRoots()).any((r) -> r == null)) {
       RootTreeNode metadataNode = new MetadataTreeNode();
+      updateRootCustomPresentation(metadataNode);
       ListSequence.fromList(myRootNodes).addElement(metadataNode);
       modelNode.add(metadataNode);
     }
@@ -222,34 +227,33 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     }
   }
 
-  public class RootTreeNode extends TreeNode {
+  public static class RootTreeNode extends TreeNode {
     private SNodeId myRootId;
-    private String myPresentation = null;
     private String myVirtualPackage = null;
 
     public RootTreeNode(SNodeId rootId) {
       super("" + rootId);
       myRootId = rootId;
-      doUpdatePresentation();
     }
-    @Override
-    protected void doUpdatePresentation() {
-      myPresentation = null;
+
+    /*package*/ final void doUpdatePresentation(Iterable<SModel> models, boolean multipleRootNames) {
+      String text = null;
       Icon icon = null;
-      for (SModel model : Sequence.fromIterable(getModels())) {
+      for (SModel model : Sequence.fromIterable(models)) {
         SNode root = (model != null ? model.getNode(myRootId) : null);
         if (root != null && SNodeOperations.getParent(root) == null) {
           String presentation = root.getPresentation();
-          if (myPresentation == null) {
-            myPresentation = presentation;
-          } else if (isMultipleRootNames()) {
-            if (("/ " + myPresentation + " /").contains("/ " + presentation + " /")) {
+          if (text == null) {
+            text = presentation;
+          } else if (multipleRootNames) {
+            if (("/ " + text + " /").contains("/ " + presentation + " /")) {
             } else {
-              myPresentation += " / " + presentation;
+              text += " / " + presentation;
             }
           }
 
           if (myVirtualPackage == null) {
+            // XXX unlike icon, we take the first available VP here
             myVirtualPackage = (SPropertyOperations.getString(root, PROPS.virtualPackage$EkXl) == null ? "" : SPropertyOperations.getString(root, PROPS.virtualPackage$EkXl));
           }
           if (icon == null) {
@@ -257,36 +261,22 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
           }
         }
       }
-      setText("" + myPresentation);
+      setText(String.valueOf(text));
       setIcon(icon);
-      updateRootCustomPresentation(this);
     }
     @Nullable
     public SNodeId getRootId() {
       return myRootId;
-    }
-    public String getPresentation() {
-      return myPresentation;
     }
   }
   public class MetadataTreeNode extends RootTreeNode {
     public MetadataTreeNode() {
       super(null);
       setText("Model Properties");
-      doUpdatePresentation();
-    }
-    @Override
-    protected void doUpdatePresentation() {
       setIcon(IdeIcons.PROPERTIES_ICON);
-      updateRootCustomPresentation(this);
-    }
-    @Override
-    public String getPresentation() {
-      return "Model Properties";
     }
   }
   public static abstract class TreeNode extends DefaultMutableTreeNode {
-    @NotNull
     private String myText;
     private int myTextStyle = SimpleTextAttributes.STYLE_PLAIN;
     private String myAdditionalText;
@@ -298,8 +288,6 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
       myText = text;
     }
 
-    protected void doUpdatePresentation() {
-    }
     @NotNull
     public String getText() {
       return myText;
@@ -340,7 +328,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   }
   private static String check_5x0uld_a0a33(RootTreeNode checkedDotOperand, DiffModelTree checkedDotThisExpression) {
     if (null != checkedDotOperand) {
-      return checkedDotOperand.getPresentation();
+      return checkedDotOperand.getText();
     }
     return null;
   }
