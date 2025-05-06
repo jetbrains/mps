@@ -112,6 +112,7 @@ public class ModelDifferenceViewer implements DataProvider {
     myPanel.setSecondComponent(myNoRootPanel);
     if (showTree) {
       myTree = new ModelDifferenceTree(project.getRepository());
+      myTree.withModelName(myModels);
       JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(myTree);
       scrollPane.setViewportBorder(IdeBorderFactory.createBorder());
       myPanel.setFirstComponent(scrollPane);

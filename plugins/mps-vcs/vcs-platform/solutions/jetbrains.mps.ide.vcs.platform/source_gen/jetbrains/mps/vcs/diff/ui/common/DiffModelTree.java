@@ -14,8 +14,10 @@ import com.intellij.ui.ColoredTreeCellRenderer;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.event.TreeSelectionEvent;
-import jetbrains.mps.workbench.action.BaseAction;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.workbench.action.ActionUtils;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
@@ -25,13 +27,10 @@ import java.util.Enumeration;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.tree.TreePath;
 import java.util.Objects;
-import jetbrains.mps.smodel.ModelAccessHelper;
 import javax.swing.tree.DefaultTreeModel;
 import com.intellij.util.ui.tree.TreeUtil;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NonNls;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.ide.icons.IdeIcons;
 import javax.swing.Icon;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -49,6 +48,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   public static DataKey<Ref<SNodeId>> NODE_ID_DATAKEY = DataKey.create("MPS_SNodeId");
   private List<RootTreeNode> myRootNodes;
   private final SRepository myRepo;
+  private String myModelName;
 
   public DiffModelTree(SRepository repo) {
     // FIXME This code deserves a refactoring much like MergeModelsPanel, as there's unlikely need for repository lock when we diff detached models.
@@ -77,6 +77,20 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     });
   }
 
+  /**
+   * Text to represent model in the tree, likely to become mandatory cons argument
+   */
+  public void withModelName(String modelName) {
+    myModelName = modelName;
+  }
+
+  /**
+   * handy alternative when there's
+   */
+  public void withModelName(Iterable<SModel> models) {
+    withModelName(SModelOperations.getModelName(Sequence.fromIterable(models).findFirst((it) -> isNotEmptyString(SModelOperations.getModelName(it)))));
+  }
+
   protected void setActions(Iterable<BaseAction> actions) {
     Sequence.fromIterable(actions).visitAll((a) -> a.registerCustomShortcutSet(a.getShortcutSet(), DiffModelTree.this));
     setPopupGroup(ActionUtils.groupFromActions(Sequence.fromIterable(actions).toGenericArray(BaseAction.class)), ActionPlaces.CHANGES_VIEW_POPUP);
@@ -88,7 +102,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   }
 
   protected TreeNode rebuild() {
-    ModelTreeNode modelNode = new ModelTreeNode(getModels());
+    ModelTreeNode modelNode = new ModelTreeNode((myModelName == null ? "" : myModelName));
     myRootNodes = Sequence.fromIterable(getAffectedRoots()).where(new NotNullWhereFilter()).select((r) -> new RootTreeNode(r)).sort((rtn) -> rtn.myVirtualPackage + "|" + rtn.myPresentation, true).toList();
     for (RootTreeNode rtn : ListSequence.fromList(myRootNodes)) {
       TreeNode parentNode = modelNode;
@@ -119,7 +133,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     // todo: find path by rootId
     TreePath path = null;
     for (int i = 0; i < getRowCount(); ++i) {
-      RootTreeNode node = as_5x0uld_a0a0a4a21(getPathForRow(i).getLastPathComponent(), RootTreeNode.class);
+      RootTreeNode node = as_5x0uld_a0a0a4a71(getPathForRow(i).getLastPathComponent(), RootTreeNode.class);
       if (node != null && Objects.equals(node.getRootId(), rootId)) {
         path = getPathForRow(i);
         break;
@@ -138,7 +152,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   }
 
   public void rebuildNow() {
-    TreeNode root = new ModelAccessHelper(myRepo).runReadAction(() -> rebuild());
+    TreeNode root = myRepo.getModelAccess().computeReadAction(() -> rebuild());
     setModel(new DefaultTreeModel(root));
     setRootVisible(true);
     TreeUtil.expandAll(this);
@@ -176,7 +190,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     return ListSequence.fromList(myRootNodes).getElement(index).myRootId;
   }
   public String getNameForRoot(@Nullable SNodeId nodeId) {
-    return check_5x0uld_a0a82(findRootNode(nodeId), this);
+    return check_5x0uld_a0a33(findRootNode(nodeId), this);
   }
   @Nullable
   @Override
@@ -191,16 +205,10 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   }
 
   public static class ModelTreeNode extends TreeNode {
-    public ModelTreeNode(Iterable<SModel> models) {
-      super("model");
-      String modelName = SModelOperations.getModelName(Sequence.fromIterable(models).findFirst((it) -> isNotEmptyString(SModelOperations.getModelName(it))));
-      if (!(modelName == null || modelName.length() == 0)) {
-        setText(modelName);
-      }
+    public ModelTreeNode(String text) {
+      super(text);
+      // there's little value in dedicated subclass except for exact tree node class check for some weird scenarios (worth revisiting)
       setIcon(IdeIcons.MODEL_ICON);
-    }
-    private static boolean isNotEmptyString(String str) {
-      return str != null && str.length() > 0;
     }
   }
 
@@ -330,7 +338,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
       myTextStyle = textStyle;
     }
   }
-  private static String check_5x0uld_a0a82(RootTreeNode checkedDotOperand, DiffModelTree checkedDotThisExpression) {
+  private static String check_5x0uld_a0a33(RootTreeNode checkedDotOperand, DiffModelTree checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getPresentation();
     }
@@ -339,7 +347,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
-  private static <T> T as_5x0uld_a0a0a4a21(Object o, Class<T> type) {
+  private static <T> T as_5x0uld_a0a0a4a71(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

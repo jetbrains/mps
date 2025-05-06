@@ -35,6 +35,7 @@ import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import java.util.ArrayList;
 import com.intellij.openapi.actionSystem.Separator;
 import com.intellij.openapi.ui.Messages;
+import java.util.Arrays;
 import com.intellij.ui.ScrollPaneFactory;
 import java.awt.Dimension;
 import com.intellij.openapi.util.DimensionService;
@@ -50,7 +51,6 @@ import com.intellij.openapi.actionSystem.ActionPlaces;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelTree;
 import jetbrains.mps.util.NameUtil;
-import java.util.Arrays;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import com.intellij.ui.SimpleTextAttributes;
@@ -179,6 +179,7 @@ public class MergeModelsPanel extends JPanel {
   protected void init() {
     myPanel.setSplitterProportionKey(getClass().getName() + "ModelTreeSplitter");
     myMergeTree = new MergeModelsTree(myProjectRepository);
+    myMergeTree.withModelName(Arrays.asList(myMergeSession.getBaseModel(), myMergeSession.getMyModel(), myMergeSession.getRepositoryModel()));
     myPanel.setFirstComponent(ScrollPaneFactory.createScrollPane(myMergeTree));
     myPanel.setSecondComponent(myNoRootPanel);
     // the rebuild of the tree should not happen before the second component of the panel
