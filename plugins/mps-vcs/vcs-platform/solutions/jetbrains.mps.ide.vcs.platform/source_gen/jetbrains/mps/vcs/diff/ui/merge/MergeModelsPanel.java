@@ -355,8 +355,8 @@ public class MergeModelsPanel extends JPanel {
       applyUnresolvedChanges(myMetadataMergeSession, myMetadataMergeSession.getAllChanges(), mine);
       applyMetadataChanges();
     }
-    // XXX tree.rebuildNow as model command, really?
-    myProjectRepository.getModelAccess().executeCommand(() -> myMergeTree.rebuildNow());
+    // this method is invoked from an action that runs in EDT, hence 'now'
+    myMergeTree.rebuildNow();
   }
 
   private void applyMetadataChanges() {
