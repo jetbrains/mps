@@ -68,7 +68,7 @@ public final class MergeSession {
     return createMergeSession(base, mine, repository, createTemporaryResultModel(base, mine, repository), isTrackMovedNodes);
   }
 
-  /*package*/ static MergeTemporaryModel createTemporaryResultModel(SModel base, SModel mine, SModel repository) {
+  public static MergeTemporaryModel createTemporaryResultModel(SModel base, SModel mine, SModel repository) {
     MergeTemporaryModel result = MergeTemporaryModel.writableCloneOf(base);
     int pv = Math.max(getPersistenceVersion(base), Math.max(getPersistenceVersion(mine), getPersistenceVersion(repository)));
     result.setPersistenceVersion(pv);

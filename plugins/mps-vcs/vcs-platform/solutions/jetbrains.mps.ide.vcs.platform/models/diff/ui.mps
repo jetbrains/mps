@@ -1390,47 +1390,36 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="1JmNOmfdeEg" role="3cqZAp">
-          <node concept="2OqwBi" id="1JmNOmfdfRP" role="3clFbG">
-            <node concept="37vLTw" id="62HG2toK3QI" role="2Oq$k0">
-              <ref role="3cqZAo" node="1B5M0L_gLns" resolve="metadataModel" />
+        <node concept="3cpWs8" id="568jgXHzHKr" role="3cqZAp">
+          <node concept="3cpWsn" id="568jgXHzHKs" role="3cpWs9">
+            <property role="TrG5h" value="util" />
+            <node concept="3uibUv" id="568jgXHzGsp" role="1tU5fm">
+              <ref role="3uigEE" node="444ZSQ06W$a" resolve="MetadataUtil" />
             </node>
-            <node concept="liA8E" id="1JmNOmfdgym" role="2OqNvi">
-              <ref role="37wK5l" to="g3l6:~SModelDescriptorStub.addLanguage(org.jetbrains.mps.openapi.language.SLanguage)" resolve="addLanguage" />
-              <node concept="pHN19" id="6m8$_veaJzL" role="37wK5m">
-                <node concept="2V$Bhx" id="6m8$_veaJAj" role="2V$M_3">
-                  <property role="2V$B1T" value="6df0089f-3288-4998-9d57-e698e7c8e145" />
-                  <property role="2V$B1Q" value="jetbrains.mps.ide.vcs.modelmetadata" />
+            <node concept="2ShNRf" id="568jgXHzHKt" role="33vP2m">
+              <node concept="1pGfFk" id="568jgXHzHKu" role="2ShVmc">
+                <ref role="37wK5l" node="444ZSQ06W$c" resolve="MetadataUtil" />
+                <node concept="37vLTw" id="568jgXHzHKv" role="37wK5m">
+                  <ref role="3cqZAo" node="1B5M0L_gLns" resolve="metadataModel" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="1JmNOmfdVHL" role="3cqZAp">
-          <node concept="2OqwBi" id="1JmNOmfdVHM" role="3clFbG">
-            <node concept="37vLTw" id="62HG2toK5vD" role="2Oq$k0">
-              <ref role="3cqZAo" node="1B5M0L_gLns" resolve="metadataModel" />
+        <node concept="3clFbF" id="568jgXH_kVg" role="3cqZAp">
+          <node concept="2OqwBi" id="568jgXH_nNu" role="3clFbG">
+            <node concept="37vLTw" id="568jgXH_kVe" role="2Oq$k0">
+              <ref role="3cqZAo" node="568jgXHzHKs" resolve="util" />
             </node>
-            <node concept="liA8E" id="1JmNOmfdVHN" role="2OqNvi">
-              <ref role="37wK5l" to="g3l6:~SModelDescriptorStub.addLanguage(org.jetbrains.mps.openapi.language.SLanguage)" resolve="addLanguage" />
-              <node concept="pHN19" id="6m8$_veaJSU" role="37wK5m">
-                <node concept="2V$Bhx" id="6m8$_veaJVs" role="2V$M_3">
-                  <property role="2V$B1T" value="86ef8290-12bb-4ca7-947f-093788f263a9" />
-                  <property role="2V$B1Q" value="jetbrains.mps.lang.project" />
-                </node>
-              </node>
+            <node concept="liA8E" id="568jgXH_s1j" role="2OqNvi">
+              <ref role="37wK5l" node="568jgXHzRdK" resolve="addUsedLanguages" />
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="67J6_UwoFAU" role="3cqZAp">
           <node concept="2OqwBi" id="67J6_UwpxQQ" role="3clFbG">
-            <node concept="2ShNRf" id="67J6_UwoFAQ" role="2Oq$k0">
-              <node concept="1pGfFk" id="67J6_Uwpn39" role="2ShVmc">
-                <ref role="37wK5l" node="444ZSQ06W$c" resolve="MetadataUtil" />
-                <node concept="37vLTw" id="67J6_Uwpr80" role="37wK5m">
-                  <ref role="3cqZAo" node="1B5M0L_gLns" resolve="metadataModel" />
-                </node>
-              </node>
+            <node concept="37vLTw" id="568jgXHzHKw" role="2Oq$k0">
+              <ref role="3cqZAo" node="568jgXHzHKs" resolve="util" />
             </node>
             <node concept="liA8E" id="67J6_UwpP_N" role="2OqNvi">
               <ref role="37wK5l" node="67J6_UwpKrN" resolve="createModelRoot" />
@@ -1576,6 +1565,74 @@
         <node concept="10P_77" id="1B5M0L_hQK7" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="568jgXH_x4J" role="jymVt" />
+    <node concept="2YIFZL" id="568jgXH__vU" role="jymVt">
+      <property role="TrG5h" value="populate" />
+      <node concept="3cqZAl" id="568jgXH__vW" role="3clF45" />
+      <node concept="3Tm1VV" id="568jgXH__vX" role="1B3o_S" />
+      <node concept="3clFbS" id="568jgXH__vY" role="3clF47">
+        <node concept="3cpWs8" id="568jgXH_H3h" role="3cqZAp">
+          <node concept="3cpWsn" id="568jgXH_H3i" role="3cpWs9">
+            <property role="TrG5h" value="util" />
+            <node concept="3uibUv" id="568jgXH_H3j" role="1tU5fm">
+              <ref role="3uigEE" node="444ZSQ06W$a" resolve="MetadataUtil" />
+            </node>
+            <node concept="2ShNRf" id="568jgXH_H3k" role="33vP2m">
+              <node concept="1pGfFk" id="568jgXH_H3l" role="2ShVmc">
+                <ref role="37wK5l" node="444ZSQ06W$c" resolve="MetadataUtil" />
+                <node concept="37vLTw" id="568jgXH_H3m" role="37wK5m">
+                  <ref role="3cqZAo" node="568jgXH_E45" resolve="mm" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="568jgXH_H3n" role="3cqZAp">
+          <node concept="2OqwBi" id="568jgXH_H3o" role="3clFbG">
+            <node concept="37vLTw" id="568jgXH_H3p" role="2Oq$k0">
+              <ref role="3cqZAo" node="568jgXH_H3i" resolve="util" />
+            </node>
+            <node concept="liA8E" id="568jgXH_H3q" role="2OqNvi">
+              <ref role="37wK5l" node="568jgXHzRdK" resolve="addUsedLanguages" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="568jgXH_H3r" role="3cqZAp">
+          <node concept="2OqwBi" id="568jgXH_H3s" role="3clFbG">
+            <node concept="37vLTw" id="568jgXH_H3t" role="2Oq$k0">
+              <ref role="3cqZAo" node="568jgXH_H3i" resolve="util" />
+            </node>
+            <node concept="liA8E" id="568jgXH_H3u" role="2OqNvi">
+              <ref role="37wK5l" node="67J6_UwpKrN" resolve="createModelRoot" />
+              <node concept="37vLTw" id="568jgXH_H3v" role="37wK5m">
+                <ref role="3cqZAo" node="568jgXH_F7w" resolve="origin" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="568jgXH_Mpx" role="3cqZAp">
+          <node concept="2OqwBi" id="568jgXH_Nn2" role="3clFbG">
+            <node concept="37vLTw" id="568jgXH_Mpv" role="2Oq$k0">
+              <ref role="3cqZAo" node="568jgXH_E45" resolve="mm" />
+            </node>
+            <node concept="liA8E" id="568jgXH_OMr" role="2OqNvi">
+              <ref role="37wK5l" to="w1kc:~EditableModelDescriptor.setChanged(boolean)" resolve="setChanged" />
+              <node concept="3clFbT" id="568jgXH_QaD" role="37wK5m" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="568jgXH_E45" role="3clF46">
+        <property role="TrG5h" value="mm" />
+        <node concept="3uibUv" id="568jgXH_E44" role="1tU5fm">
+          <ref role="3uigEE" to="bmv6:1m2uLwrRQWq" resolve="MergeTemporaryModel" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="568jgXH_F7w" role="3clF46">
+        <property role="TrG5h" value="origin" />
+        <node concept="H_c77" id="568jgXH_FU3" role="1tU5fm" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="67J6_UwpBiG" role="jymVt" />
     <node concept="2YIFZL" id="1B5M0L_ud2d" role="jymVt">
       <property role="TrG5h" value="dispose" />
@@ -1622,6 +1679,63 @@
           </node>
         </node>
       </node>
+    </node>
+    <node concept="2tJIrI" id="568jgXHzIQ5" role="jymVt" />
+    <node concept="3clFb_" id="568jgXHzRdK" role="jymVt">
+      <property role="TrG5h" value="addUsedLanguages" />
+      <node concept="3clFbS" id="568jgXHzRdN" role="3clF47">
+        <node concept="3cpWs8" id="568jgXH_2Qc" role="3cqZAp">
+          <node concept="3cpWsn" id="568jgXH_2Qd" role="3cpWs9">
+            <property role="TrG5h" value="mi" />
+            <node concept="3uibUv" id="568jgXH_1wc" role="1tU5fm">
+              <ref role="3uigEE" to="w1kc:~ModelImports" resolve="ModelImports" />
+            </node>
+            <node concept="2ShNRf" id="568jgXH_2Qe" role="33vP2m">
+              <node concept="1pGfFk" id="568jgXH_2Qf" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="w1kc:~ModelImports.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel)" resolve="ModelImports" />
+                <node concept="37vLTw" id="568jgXH_2Qg" role="37wK5m">
+                  <ref role="3cqZAo" node="67J6_Uwof2n" resolve="myMetadataModel" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="568jgXH$8iZ" role="3cqZAp">
+          <node concept="2OqwBi" id="568jgXH$LUP" role="3clFbG">
+            <node concept="37vLTw" id="568jgXH_2Qh" role="2Oq$k0">
+              <ref role="3cqZAo" node="568jgXH_2Qd" resolve="mi" />
+            </node>
+            <node concept="liA8E" id="568jgXH$OxR" role="2OqNvi">
+              <ref role="37wK5l" to="w1kc:~ModelImports.addUsedLanguage(org.jetbrains.mps.openapi.language.SLanguage)" resolve="addUsedLanguage" />
+              <node concept="pHN19" id="568jgXHzUQa" role="37wK5m">
+                <node concept="2V$Bhx" id="568jgXHzUQb" role="2V$M_3">
+                  <property role="2V$B1T" value="6df0089f-3288-4998-9d57-e698e7c8e145" />
+                  <property role="2V$B1Q" value="jetbrains.mps.ide.vcs.modelmetadata" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="568jgXHzUQc" role="3cqZAp">
+          <node concept="2OqwBi" id="568jgXHzUQd" role="3clFbG">
+            <node concept="37vLTw" id="568jgXHzUQe" role="2Oq$k0">
+              <ref role="3cqZAo" node="568jgXH_2Qd" resolve="mi" />
+            </node>
+            <node concept="liA8E" id="568jgXHzUQf" role="2OqNvi">
+              <ref role="37wK5l" to="w1kc:~ModelImports.addUsedLanguage(org.jetbrains.mps.openapi.language.SLanguage)" resolve="addUsedLanguage" />
+              <node concept="pHN19" id="568jgXHzUQg" role="37wK5m">
+                <node concept="2V$Bhx" id="568jgXHzUQh" role="2V$M_3">
+                  <property role="2V$B1T" value="86ef8290-12bb-4ca7-947f-093788f263a9" />
+                  <property role="2V$B1Q" value="jetbrains.mps.lang.project" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="568jgXHzNgu" role="1B3o_S" />
+      <node concept="3cqZAl" id="568jgXHzQHF" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="6RkMMcXjdv5" role="jymVt" />
     <node concept="3clFb_" id="67J6_UwpKrN" role="jymVt">

@@ -1262,7 +1262,7 @@
       <node id="4515621863031846289" at="61,0,62,0" concept="6" trace="myChangesInvalidateHandler" />
       <node id="6095050343213662082" at="63,94,64,61" concept="12" />
       <node id="3472036193171094868" at="67,121,68,125" concept="12" />
-      <node id="3555799108262230990" at="71,114,72,75" concept="11" />
+      <node id="3555799108262230990" at="71,109,72,75" concept="11" />
       <node id="6966417881648619125" at="72,75,73,125" concept="11" />
       <node id="6966417881648619137" at="73,125,74,37" concept="5" />
       <node id="8568174121961804344" at="74,37,75,18" concept="12" />
@@ -1678,7 +1678,7 @@
         <var name="o" id="4700415369621369771" />
         <var name="type" id="4700415369621369771" />
       </scope>
-      <scope id="8568174121961745175" at="71,114,75,18">
+      <scope id="8568174121961745175" at="71,109,75,18">
         <var name="pv" id="6966417881648619124" />
         <var name="result" id="3555799108262230991" />
       </scope>
@@ -1874,6 +1874,118 @@
         <var name="resultModel" id="4124845871897266114" />
       </scope>
       <unit id="4124845871897266050" at="20,0,39,0" name="jetbrains.mps.vcs.diff.merge.MergeSessionState" />
+    </file>
+  </root>
+  <root nodeRef="r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/5875030442559387592">
+    <file name="ModelLot.java">
+      <node id="5875030442559455483" at="28,0,29,0" concept="6" trace="myRepo" />
+      <node id="5875030442559884375" at="29,0,30,0" concept="6" trace="myModels" />
+      <node id="5875030442560410733" at="30,0,31,0" concept="6" trace="myModels2Register" />
+      <node id="5875030442559836754" at="31,0,32,0" concept="6" trace="myModelCounter" />
+      <node id="5875030442560264884" at="32,0,33,0" concept="6" trace="myTempModuleFactory" />
+      <node id="5875030442559592036" at="33,0,34,0" concept="6" trace="myModule" />
+      <node id="5875030442559455487" at="36,51,37,18" concept="5" />
+      <node id="5875030442563527439" at="40,101,41,118" concept="12" />
+      <node id="5875030442563443407" at="44,127,45,21" concept="5" />
+      <node id="5875030442563443409" at="45,21,46,71" concept="11" />
+      <node id="5875030442563443419" at="46,71,47,166" concept="11" />
+      <node id="5875030442563443433" at="47,166,48,42" concept="11" />
+      <node id="5875030442563443440" at="48,42,49,33" concept="5" />
+      <node id="5875030442563443445" at="49,33,50,17" concept="12" />
+      <node id="5875030442567998950" at="54,40,55,43" concept="19" />
+      <node id="5875030442567885924" at="56,5,57,33" concept="5" />
+      <node id="5875030442560587584" at="61,38,62,13" concept="12" />
+      <node id="5875030442560526275" at="63,5,64,44" concept="11" />
+      <node id="5875030442560511234" at="65,63,66,39" concept="5" />
+      <node id="5875030442560812810" at="67,5,68,30" concept="5" />
+      <node id="5875030442560841754" at="71,34,72,44" concept="11" />
+      <node id="5875030442560756951" at="73,29,74,13" concept="12" />
+      <node id="5875030442560857701" at="76,54,77,41" concept="5" />
+      <node id="5875030442560894321" at="78,5,79,21" concept="5" />
+      <node id="5875030442560655542" at="83,54,84,74" concept="5" />
+      <node id="5875030442559915739" at="89,27,90,13" concept="12" />
+      <node id="5875030442560283473" at="91,5,92,39" concept="0" />
+      <node id="5875030442560263001" at="92,39,93,78" concept="5" />
+      <node id="5875030442560236577" at="93,78,94,50" concept="5" />
+      <node id="5875030442560321626" at="98,27,99,13" concept="12" />
+      <node id="5875030442560347049" at="100,5,101,43" concept="13" />
+      <node id="5875030442560252984" at="101,43,102,20" concept="5" />
+      <node id="5875030442560302136" at="102,20,103,40" concept="5" />
+      <node id="5875030442560333796" at="103,40,104,31" concept="5" />
+      <node id="5875030442560355598" at="104,31,105,21" concept="5" />
+      <node id="5875030442559454071" at="36,0,39,0" concept="3" trace="ModelLot#(Ljetbrains/mps/smodel/RepositoryFacade;)V" />
+      <node id="5875030442559473501" at="40,0,43,0" concept="10" trace="addCloneOf#(Lorg/jetbrains/mps/openapi/model/SModel;Ljava/lang/String;Z)Ljetbrains/mps/vcs/diff/merge/MergeTemporaryModel;" />
+      <node id="5875030442567968667" at="53,44,56,5" concept="9" />
+      <node id="5875030442560556946" at="60,32,63,5" concept="9" />
+      <node id="5875030442560493446" at="64,44,67,5" concept="8" />
+      <node id="5875030442560756949" at="72,44,75,5" concept="9" />
+      <node id="5875030442560775044" at="75,5,78,5" concept="8" />
+      <node id="5875030442560635085" at="82,43,85,5" concept="8" />
+      <node id="5875030442559905305" at="88,33,91,5" concept="9" />
+      <node id="5875030442560306929" at="97,25,100,5" concept="9" />
+      <node id="5875030442560610400" at="82,0,87,0" concept="10" trace="fixModelDependencies#()V" />
+      <node id="5875030442567864579" at="53,0,59,0" concept="10" trace="track#(Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="5875030442563443405" at="44,0,52,0" concept="10" trace="deriveModel#(Lorg/jetbrains/mps/openapi/model/SModel;Ljava/lang/String;Ljava/util/function/BiFunction;)null" />
+      <node id="5875030442559898812" at="88,0,96,0" concept="10" trace="initTempModule#()V" />
+      <node id="5875030442560462712" at="60,0,70,0" concept="10" trace="registerModels#()V" />
+      <node id="5875030442560481516" at="71,0,81,0" concept="10" trace="unregisterModels#()V" />
+      <node id="5875030442560249253" at="97,0,107,0" concept="10" trace="discard#()V" />
+      <scope id="5875030442559454074" at="36,51,37,18" />
+      <scope id="5875030442559473504" at="40,101,41,118" />
+      <scope id="5875030442567968669" at="54,40,55,43" />
+      <scope id="5875030442560556948" at="61,38,62,13" />
+      <scope id="5875030442560493449" at="65,63,66,39" />
+      <scope id="5875030442560756950" at="73,29,74,13" />
+      <scope id="5875030442560775050" at="76,54,77,41" />
+      <scope id="5875030442560635091" at="83,54,84,74" />
+      <scope id="5875030442559905307" at="89,27,90,13" />
+      <scope id="5875030442560306931" at="98,27,99,13" />
+      <scope id="5875030442559454071" at="36,0,39,0">
+        <var name="repo" id="5875030442559455412" />
+      </scope>
+      <scope id="5875030442559473501" at="40,0,43,0">
+        <var name="original" id="5875030442559474693" />
+        <var name="readOnly" id="5875030442559476242" />
+        <var name="stereotype" id="5875030442559474903" />
+      </scope>
+      <scope id="5875030442560493446" at="64,44,67,5">
+        <var name="m" id="5875030442560493447" />
+      </scope>
+      <scope id="5875030442560775044" at="75,5,78,5">
+        <var name="m" id="5875030442560775046" />
+      </scope>
+      <scope id="5875030442560610403" at="82,43,85,5" />
+      <scope id="5875030442560635085" at="82,43,85,5">
+        <var name="m" id="5875030442560635087" />
+      </scope>
+      <scope id="5875030442567864582" at="53,44,57,33" />
+      <scope id="5875030442560610400" at="82,0,87,0" />
+      <scope id="5875030442563443406" at="44,127,50,17">
+        <var name="model" id="5875030442563443434" />
+        <var name="mp" id="5875030442563443420" />
+        <var name="newName" id="5875030442563443410" />
+      </scope>
+      <scope id="5875030442567864579" at="53,0,59,0">
+        <var name="model" id="5875030442567871086" />
+      </scope>
+      <scope id="5875030442559898815" at="88,33,94,50" />
+      <scope id="5875030442563443405" at="44,0,52,0">
+        <var name="factory" id="5875030442563504399" />
+        <var name="original" id="5875030442563443448" />
+        <var name="stereotype" id="5875030442563443450" />
+      </scope>
+      <scope id="5875030442560462715" at="60,32,68,30">
+        <var name="mb" id="5875030442560526276" />
+      </scope>
+      <scope id="5875030442560481518" at="71,34,79,21">
+        <var name="mb" id="5875030442560841755" />
+      </scope>
+      <scope id="5875030442559898812" at="88,0,96,0" />
+      <scope id="5875030442560249256" at="97,25,105,21" />
+      <scope id="5875030442560462712" at="60,0,70,0" />
+      <scope id="5875030442560481516" at="71,0,81,0" />
+      <scope id="5875030442560249253" at="97,0,107,0" />
+      <unit id="5875030442559387592" at="26,0,108,0" name="jetbrains.mps.vcs.diff.merge.ModelLot" />
     </file>
   </root>
   <root nodeRef="r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/6095050343213851618">

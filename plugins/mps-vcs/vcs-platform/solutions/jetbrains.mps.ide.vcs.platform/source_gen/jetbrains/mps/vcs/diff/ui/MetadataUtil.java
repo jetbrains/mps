@@ -6,10 +6,11 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.extapi.model.SModelBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -42,14 +43,21 @@ public class MetadataUtil {
 
   public static SModel createMetadataModel(SModel model, String version, boolean editable) {
     MergeTemporaryModel metadataModel = new MergeTemporaryModel(SModelOperations.getPointer(model), !(editable));
-    metadataModel.addLanguage(MetaAdapterFactory.getLanguage(0x6df0089f32884998L, 0x9d57e698e7c8e145L, "jetbrains.mps.ide.vcs.modelmetadata"));
-    metadataModel.addLanguage(MetaAdapterFactory.getLanguage(0x86ef829012bb4ca7L, 0x947f093788f263a9L, "jetbrains.mps.lang.project"));
-    new MetadataUtil(metadataModel).createModelRoot(model);
+    MetadataUtil util = new MetadataUtil(metadataModel);
+    util.addUsedLanguages();
+    util.createModelRoot(model);
     DiffModelUtil.renameModelAndRegister(metadataModel, version);
     // XXX it looks isChanged used as indication whether there's anything in the model to apply.
     // If yes, why not use dedicated flag in MergeTemporaryModel, and cease being EditableSModel?
     metadataModel.setChanged(false);
     return metadataModel;
+  }
+
+  public static void populate(MergeTemporaryModel mm, SModel origin) {
+    MetadataUtil util = new MetadataUtil(mm);
+    util.addUsedLanguages();
+    util.createModelRoot(origin);
+    mm.setChanged(false);
   }
 
   public static void dispose(SModel model) {
@@ -58,6 +66,12 @@ public class MetadataUtil {
 
   public static SNodeId getMetadataRootId() {
     return PersistenceFacade.getInstance().createNodeId("~root");
+  }
+
+  private void addUsedLanguages() {
+    ModelImports mi = new ModelImports(myMetadataModel);
+    mi.addUsedLanguage(MetaAdapterFactory.getLanguage(0x6df0089f32884998L, 0x9d57e698e7c8e145L, "jetbrains.mps.ide.vcs.modelmetadata"));
+    mi.addUsedLanguage(MetaAdapterFactory.getLanguage(0x86ef829012bb4ca7L, 0x947f093788f263a9L, "jetbrains.mps.lang.project"));
   }
 
   private void createModelRoot(SModel origin) {

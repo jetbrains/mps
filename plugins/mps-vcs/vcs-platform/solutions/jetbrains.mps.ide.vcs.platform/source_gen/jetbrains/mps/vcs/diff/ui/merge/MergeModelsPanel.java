@@ -9,6 +9,7 @@ import com.intellij.icons.AllIcons;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
+import jetbrains.mps.vcs.diff.merge.ModelLot;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SModel;
 import com.intellij.ui.JBSplitter;
@@ -30,6 +31,10 @@ import com.intellij.openapi.diff.DiffBundle;
 import com.intellij.diff.util.DiffUserDataKeysEx;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
+import jetbrains.mps.smodel.RepositoryFacade;
+import java.util.function.BiFunction;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
 import jetbrains.mps.vcs.diff.ui.MetadataUtil;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import java.util.ArrayList;
@@ -43,7 +48,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.changes.MetadataChange;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -66,6 +70,7 @@ public class MergeModelsPanel extends JPanel {
   private final Project myProject;
   private final SRepository myProjectRepository;
   private MergeSession myMergeSession;
+  private final ModelLot myMetadataModels;
   private MergeSession myMetadataMergeSession;
   private MergeSession.MergeSessionFullState myInitialState;
   private MergeSession.MergeSessionFullState myMetadataInitialState;
@@ -105,15 +110,34 @@ public class MergeModelsPanel extends JPanel {
     assert myProjectRepository != null;
     myMergeSession = myProjectRepository.getModelAccess().computeReadAction(() -> MergeSession.createMergeSession(baseModel, mineModel, repoModel, DiffSettingsUtil.getTrackMovedNodesMergeOption()));
 
+    // XXX once we use distinct repo for both MergeSessions, shall use this repo for all read/write operations
+    RepositoryFacade repo = RepositoryFacade.createPlainRegistrationRepo();
+    myMetadataModels = new ModelLot(repo);
     // create metamodels before renaming the models in order to avoid problems
     // with stereotypes like in MPS-32651 and MPS-33991
     if (ListSequence.fromList(myMergeSession.getMetadataChanges()).isNotEmpty()) {
-      myProjectRepository.getModelAccess().runWriteAction(() -> {
-        SModel baseMetaModel = MetadataUtil.createMetadataModel(myMergeSession.getBaseModel(), "metadata_base", false);
-        SModel mineMetaModel = MetadataUtil.createMetadataModel(myMergeSession.getMyModel(), "metadata_mine", false);
-        SModel repoMetaModel = MetadataUtil.createMetadataModel(myMergeSession.getRepositoryModel(), "metadata_repo", false);
-        myMetadataMergeSession = MergeSession.createMergeSession(baseMetaModel, mineMetaModel, repoMetaModel);
-        DiffModelUtil.renameModelAndRegister(myMetadataMergeSession.getResultModel(), "metadata_result");
+      // XXX is there need for project repo read - we do access models of a merge session, but aren't they come detached?
+      myProjectRepository.getModelAccess().runReadAction(() -> {
+        BiFunction<SModelReference, SModel, MergeTemporaryModel> mmFactory = (mp, m) -> {
+          MergeTemporaryModel mm = new MergeTemporaryModel(mp, true);
+          MetadataUtil.populate(mm, m);
+          // XXX it looks isChanged used as indication whether there's anything in the model to apply.
+          // If yes, why not use dedicated flag in MergeTemporaryModel, and cease being EditableSModel?
+          // Check MetadataUtil.createMetadataModel for history.
+          mm.setChanged(false);
+          return mm;
+        };
+        SModel m1 = myMetadataModels.deriveModel(myMergeSession.getBaseModel(), "metadata_base", mmFactory);
+        SModel m2 = myMetadataModels.deriveModel(myMergeSession.getMyModel(), "metadata_mine", mmFactory);
+        SModel m3 = myMetadataModels.deriveModel(myMergeSession.getRepositoryModel(), "metadata_repo", mmFactory);
+        MergeTemporaryModel m4 = MergeSession.createTemporaryResultModel(m1, m2, m3);
+        // FIXME refactor this DiffModelUtil use as well, but have to deal with logic inside createTemporaryResultModel() first
+        //      to produce MTM with proper reference right away. Shall address PersistenceVersionAware case as well, although PWA is not essential to track model attributes!
+        //      Therefore, keep old logic as a first step.
+        DiffModelUtil.renameModel(m4, "metadata_result");
+        myMetadataModels.track(m4);
+        myMetadataMergeSession = MergeSession.createMergeSession(m1, m2, m3, m4, false);
+        myMetadataModels.registerModels();
         myMetadataInitialState = myMetadataMergeSession.getCurrentFullState();
       });
     }
@@ -132,6 +156,7 @@ public class MergeModelsPanel extends JPanel {
 
     init();
   }
+
 
   public void trackMovedNodes() {
 
@@ -249,12 +274,7 @@ public class MergeModelsPanel extends JPanel {
 
   private void unregisterModels() {
     myProjectRepository.getModelAccess().runWriteAction(() -> {
-      if (myMetadataMergeSession != null) {
-        DiffModelUtil.unregisterModel(myMetadataMergeSession.getResultModel());
-        MetadataUtil.dispose(myMetadataMergeSession.getRepositoryModel());
-        MetadataUtil.dispose(myMetadataMergeSession.getMyModel());
-        MetadataUtil.dispose(myMetadataMergeSession.getBaseModel());
-      }
+      myMetadataModels.discard();
       DiffModelUtil.unregisterModel(myMergeSession.getResultModel());
       DiffModelUtil.unregisterModel(myMergeSession.getRepositoryModel());
       DiffModelUtil.unregisterModel(myMergeSession.getMyModel());
