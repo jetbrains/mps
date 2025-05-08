@@ -19,23 +19,19 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.diff.contents.FileContent;
 import java.io.File;
 import jetbrains.mps.vcs.platform.util.MergeBackupUtil;
-import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
-import jetbrains.mps.vcs.util.MergeConstants;
-import jetbrains.mps.extapi.model.SModelBase;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.vcs.diff.ui.merge.ISaveMergedModel;
-import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.extapi.persistence.ModelFactoryService;
+import jetbrains.mps.vcspersistence.ModelSack;
+import jetbrains.mps.vcs.util.MergeConstants;
+import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.vcs.diff.ui.merge.ISaveMergedModel;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.io.IOException;
+import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import javax.swing.JComponent;
 import javax.swing.Action;
 import com.intellij.diff.merge.MergeResult;
@@ -43,7 +39,6 @@ import com.intellij.diff.merge.MergeUtil;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import com.intellij.openapi.diff.DiffBundle;
-import com.intellij.diff.contents.DiffContent;
 import com.intellij.openapi.editor.Document;
 import java.nio.charset.Charset;
 import com.intellij.openapi.vfs.CharsetToolkit;
@@ -66,6 +61,7 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
   @Nullable
   public static ModelMergeViewer createComponent(@NotNull MergeContext context, @NotNull MergeRequest request) {
     try {
+      // FIXME why do we care about TextMergeRequest only, I believe we can handle BinaryMergeRequest, too!
       TextMergeRequest textRequest = (TextMergeRequest) request;
       List<DocumentContent> contents = textRequest.getContents();
       byte[][] byteContents = {getContentBytes(ListSequence.fromList(contents).getElement(0)), getContentBytes(ListSequence.fromList(contents).getElement(1)), getContentBytes(ListSequence.fromList(contents).getElement(2))};
@@ -73,46 +69,34 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
       final VirtualFile file = ((FileContent) textRequest.getOutputContent()).getFile();
       final File backupFile = MergeBackupUtil.zipModel(byteContents, file);
 
-      final String ext;
-      // FIXME see VCSPersistenceUtil.saveModel, it's odd code that deals with persistence kind and extension both to select proper model factory
-      //      Besides, there's similar code in ConflictinModelsUtil!
-      boolean perRootPersistenceFile = ConflictingModelsUtil.isPerRootPersistenceFile(file);
-      if (perRootPersistenceFile) {
-        // load model partially from per-root persistence with "normal" persistence loading
-        ext = MPSExtentions.MODEL;
-      } else {
-        ext = file.getExtension();
-      }
-      final SModel baseModel = VCSPersistenceUtil.loadModel(byteContents[MergeConstants.ORIGINAL], ext);
-      SModel mineModel = loadModel(byteContents[MergeConstants.CURRENT], ext);
-      SModel newModel = loadModel(byteContents[MergeConstants.LAST_REVISION], ext);
+      final MPSProject mpsProject = ProjectHelper.fromIdeaProjectOrFail(context.getProject());
+      final ModelSack ms = ModelSack.discover(mpsProject.getPlatform(), file.getName());
+      final SModel baseModel = ms.load(byteContents[MergeConstants.ORIGINAL]);
+      final SModel mineModel = (byteContents[MergeConstants.CURRENT].length == 0 ? null : ms.load(byteContents[MergeConstants.CURRENT]));
+      final SModel newModel = (byteContents[MergeConstants.LAST_REVISION].length == 0 ? null : ms.load(byteContents[MergeConstants.LAST_REVISION]));
       if (baseModel != null && mineModel != null && newModel != null) {
-        if (MPSExtentions.MODEL_ROOT.equals(file.getExtension())) {
+        if (ms.isPerRootPersistenceRoot()) {
           // fix imports and languages for per-root persistence root file to allow completion
-          SModel repoModel = baseModel.getReference().resolve(null);
-          for (jetbrains.mps.smodel.SModel.ImportElement imp : ListSequence.fromList(((SModelBase) repoModel).getSModel().importedModels())) {
-            ((SModelBase) baseModel).getSModel().addModelImport(imp);
-          }
-          for (SLanguage lang : CollectionSequence.fromCollection(((SModelBase) repoModel).getSModel().usedLanguages())) {
-            ((SModelBase) baseModel).getSModel().addLanguage(lang);
-          }
-          for (SModuleReference devkit : ListSequence.fromList(((SModelBase) repoModel).getSModel().importedDevkits())) {
-            ((SModelBase) baseModel).getSModel().addDevKit(devkit);
-          }
+          ModelImports mi = new ModelImports(baseModel);
+          // FIXME there's a very odd code, `model repoModel = baseModel/.getReference().resolve(null);`!!!
+          //      and (a) it's wrong to use null as a repo; (b) wrong to assume actual model is there and got the same identity
+          //      However, as it's relatively fresh fix which seems to address in-IDE merge with actual model present, keep it, with the only fix for context repo
+          SModel repoModel = baseModel.getReference().resolve(mpsProject.getRepository());
+          mi.copyImportedModelsFrom(repoModel);
+          mi.copyUsedLanguagesFrom(repoModel);
+          mi.copyEmployedDevKitsFrom(repoModel);
         }
-        final ModelMergeViewer viewer = new ModelMergeViewer(context, textRequest, baseModel, mineModel, newModel, perRootPersistenceFile);
+        final ModelMergeViewer viewer = new ModelMergeViewer(context, textRequest, baseModel, mineModel, newModel, ms.isPerRootPersistence());
 
         ISaveMergedModel saver = new ISaveMergedModel() {
           public boolean save(MergeModelsPanel parent, final SModel resultModel) {
             ApplicationManager.getApplication().assertIsDispatchThread();
 
-            final MPSProject mpsProject = ProjectHelper.fromIdeaProject(parent.getProject());
-            final ModelFactoryService modelFactoryService = mpsProject.getComponent(ModelFactoryService.class);
             boolean closeDialog = true;
             final Wrappers._T<byte[]> resultContent = new Wrappers._T<byte[]>(null);
 
             try {
-              resultContent.value = VCSPersistenceUtil.saveModel(modelFactoryService, resultModel, file.getExtension(), ext);
+              resultContent.value = ms.save(resultModel);
             } catch (Throwable error) {
               // this can be when saving in 9 persistence after merge with 8 persistence => trying to save in 8th
               if (baseModel instanceof PersistenceVersionAware && resultModel instanceof PersistenceVersionAware && ((PersistenceVersionAware) baseModel).getPersistenceVersion() == 8 && ((PersistenceVersionAware) resultModel).getPersistenceVersion() == 9) {
@@ -120,8 +104,13 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
                 int result = Messages.showYesNoCancelDialog(viewer.getComponent(), message, "Save model " + SModelOperations.getModelName(resultModel), "Save in 8th persistence", "Revert changes", "Return to merge", Messages.getWarningIcon());
                 switch (result) {
                   case Messages.YES:
+                    // FIXME wrong code, our standard MF implementation forcefully upgrades persistence version on save!
                     ((PersistenceVersionAware) resultModel).setPersistenceVersion(8);
-                    resultContent.value = VCSPersistenceUtil.saveModel(modelFactoryService, resultModel, file.getExtension(), ext);
+                    try {
+                      resultContent.value = ms.save(resultModel);
+                    } catch (Exception ex) {
+                      resultContent.value = null;
+                    }
                     break;
                   case Messages.NO:
                     resultContent.value = null;
@@ -156,7 +145,7 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
 
         return viewer;
       }
-    } catch (IOException e) {
+    } catch (IOException | IllegalArgumentException | ModelLoadException e) {
       if (LOG.isErrorLevel()) {
         LOG.error("Failed to create merge view", e);
       }
@@ -216,21 +205,13 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
     return Messages.showYesNoDialog(getComponent().getRootPane(), DiffBundle.message("merge.dialog.exit.without.applying.changes.confirmation.message"), DiffBundle.message("cancel.visual.merge.dialog.title"), Messages.getQuestionIcon()) == Messages.YES;
   }
 
-  @Nullable
-  private static byte[] getContentBytes(@NotNull DiffContent content) {
-    Document document = ((DocumentContent) content).getDocument();
-    Charset charset = ((DocumentContent) content).getCharset();
+  @NotNull
+  private static byte[] getContentBytes(@NotNull DocumentContent content) {
+    Document document = content.getDocument();
+    Charset charset = content.getCharset();
     if (charset == null) {
       charset = CharsetToolkit.getDefaultSystemCharset();
     }
     return document.getText().getBytes(charset);
   }
-  @Nullable
-  private static SModel loadModel(byte[] bytes, String ext) {
-    if (bytes.length == 0) {
-      return null;
-    }
-    return VCSPersistenceUtil.loadModel(bytes, ext);
-  }
-
 }

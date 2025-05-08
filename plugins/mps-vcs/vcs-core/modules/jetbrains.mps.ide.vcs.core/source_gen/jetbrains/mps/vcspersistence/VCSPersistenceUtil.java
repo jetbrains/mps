@@ -90,8 +90,8 @@ public class VCSPersistenceUtil {
     return (resultString == null ? null : resultString.getBytes(FileUtil.DEFAULT_CHARSET));
   }
 
-  private static String savePerRootModel(ModelFactoryService modelFactories, final SModel model, boolean isHeader) {
-    // FIXME this odd code has been copied as is form PersistenceUtil, desperately needs a refactoring!
+  /*package*/ static String savePerRootModel(ModelFactoryService modelFactories, final SModel model, boolean isHeader) {
+    // FIXME this odd code has been copied as is from PersistenceUtil, desperately needs a refactoring!
     ModelFactory factory = modelFactories.getFactoryByType(PreinstalledModelFactoryTypes.PER_ROOT_XML);
     if (factory == null) {
       return null;
@@ -156,7 +156,7 @@ public class VCSPersistenceUtil {
 
     return new MyModel(model, header);
   }
-  private static class MyModel extends TrivialModelDescriptor implements PersistenceVersionAware, ModelWithAttributes {
+  /*package*/ static class MyModel extends TrivialModelDescriptor implements PersistenceVersionAware, ModelWithAttributes {
     private final SModelHeader myHeader;
 
     public void setPersistenceVersion(int pv) {

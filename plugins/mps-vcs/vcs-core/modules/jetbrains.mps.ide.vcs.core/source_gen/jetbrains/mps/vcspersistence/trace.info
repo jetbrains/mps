@@ -37,7 +37,7 @@
       <node id="1210573262412692299" at="85,49,86,123" concept="3" />
       <node id="1210573262413844662" at="87,12,88,60" concept="3" />
       <node id="3906446107942788357" at="89,5,90,91" concept="9" />
-      <node id="3906446107942826027" at="93,116,94,103" concept="10" />
+      <node id="3906446107942826027" at="93,120,94,103" concept="10" />
       <node id="3906446107942755401" at="94,103,95,103" concept="8" />
       <node id="3906446107942755413" at="96,26,97,18" concept="9" />
       <node id="3906446107942755418" at="99,9,100,113" concept="8" />
@@ -323,7 +323,7 @@
         <var name="content" id="2076945889653644163" />
         <var name="extension" id="2076945889653644166" />
       </scope>
-      <scope id="3906446107942755399" at="93,116,118,16">
+      <scope id="3906446107942755399" at="93,120,118,16">
         <var name="factory" id="3906446107942755400" />
       </scope>
       <scope id="3906446107942755394" at="93,0,120,0">
@@ -375,6 +375,148 @@
         <var name="conceptQualifiedName" id="2469893808083746736" />
       </scope>
       <unit id="2469893808083746703" at="12,0,28,0" name="jetbrains.mps.vcspersistence.SNodeFactory" />
+    </file>
+  </root>
+  <root nodeRef="r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)/3381696175115146301">
+    <file name="ModelSack.java">
+      <node id="3381696175115262022" at="41,0,42,0" concept="4" trace="myModelFactory" />
+      <node id="3381696175115546768" at="42,0,43,0" concept="4" trace="myRPHeader" />
+      <node id="3381696175115548011" at="43,0,44,0" concept="4" trace="myRPRoot" />
+      <node id="3381696175119565384" at="44,0,45,0" concept="4" trace="myModelFactoryService" />
+      <node id="3381696175115262026" at="46,123,47,34" concept="3" />
+      <node id="3381696175115546772" at="47,34,48,31" concept="3" />
+      <node id="3381696175115548015" at="48,31,49,27" concept="3" />
+      <node id="3381696175119576071" at="49,27,50,86" concept="10" />
+      <node id="3381696175119565388" at="50,86,51,38" concept="3" />
+      <node id="3381696175115549341" at="54,41,55,34" concept="9" />
+      <node id="3381696175117084269" at="58,45,59,20" concept="9" />
+      <node id="3381696175115829544" at="62,70,63,104" concept="10" />
+      <node id="3381696175115846184" at="64,9,65,117" concept="8" />
+      <node id="3381696175115966204" at="66,86,67,149" concept="10" />
+      <node id="3381696175115846193" at="67,149,68,155" concept="8" />
+      <node id="3381696175115984413" at="68,155,69,71" concept="8" />
+      <node id="3381696175115984427" at="70,54,71,63" concept="9" />
+      <node id="3381696175116004740" at="72,9,73,53" concept="10" />
+      <node id="3381696175115879569" at="75,51,76,43" concept="10" />
+      <node id="3381696175115834388" at="77,5,78,0" concept="11" />
+      <node id="3381696175115711134" at="79,9,80,98" concept="10" />
+      <node id="3381696175115712141" at="80,98,81,73" concept="8" />
+      <node id="3381696175115741170" at="81,73,82,109" concept="10" />
+      <node id="3381696175115733556" at="82,109,83,119" concept="10" />
+      <node id="3381696175115719606" at="83,119,84,16" concept="3" />
+      <node id="3381696175115729632" at="84,16,85,16" concept="9" />
+      <node id="3381696175115747865" at="86,48,87,139" concept="15" />
+      <node id="3381696175119667289" at="93,35,94,70" concept="10" />
+      <node id="3381696175119613264" at="94,70,95,104" concept="8" />
+      <node id="3381696175119649869" at="95,104,96,95" concept="9" />
+      <node id="3381696175118389990" at="97,14,98,42" concept="10" />
+      <node id="3381696175118404907" at="98,42,99,105" concept="8" />
+      <node id="3381696175118404912" at="99,105,100,39" concept="3" />
+      <node id="3381696175118404918" at="100,39,101,40" concept="9" />
+      <node id="3381696175118435177" at="102,7,103,0" concept="11" />
+      <node id="3381696175118502233" at="104,30,105,97" concept="15" />
+      <node id="3381696175115172774" at="109,130,110,83" concept="8" />
+      <node id="3381696175115505267" at="110,83,111,0" concept="11" />
+      <node id="3381696175115507277" at="111,0,112,57" concept="8" />
+      <node id="3906446107942488985" at="112,57,113,143" concept="10" />
+      <node id="3906446107942550893" at="113,143,114,66" concept="10" />
+      <node id="3381696175115457783" at="114,66,115,141" concept="10" />
+      <node id="3381696175115442900" at="115,141,116,93" concept="8" />
+      <node id="3381696175115498905" at="116,93,117,82" concept="8" />
+      <node id="6307035416371070381" at="117,82,118,94" concept="8" />
+      <node id="3381696175115175023" at="118,94,119,23" concept="8" />
+      <node id="5085852630258095519" at="120,33,121,89" concept="10" />
+      <node id="5085852630258095521" at="121,89,122,46" concept="3" />
+      <node id="7373315286333326516" at="123,12,124,50" concept="3" />
+      <node id="3381696175115533115" at="125,5,126,102" concept="10" />
+      <node id="3381696175115178561" at="127,22,128,116" concept="15" />
+      <node id="3381696175115170917" at="129,5,130,62" concept="8" />
+      <node id="3381696175115207665" at="131,30,132,134" concept="15" />
+      <node id="3381696175115176379" at="133,5,134,98" concept="9" />
+      <node id="7373315286333318525" at="123,10,125,5" concept="0" />
+      <node id="3381696175115279125" at="54,0,57,0" concept="7" trace="isPerRootPersistence#()Z" />
+      <node id="3381696175117084265" at="58,0,61,0" concept="7" trace="isPerRootPersistenceRoot#()Z" />
+      <node id="3381696175115984419" at="69,71,72,9" concept="6" />
+      <node id="3381696175115176825" at="126,102,129,5" concept="6" />
+      <node id="3381696175115200459" at="130,62,133,5" concept="6" />
+      <node id="3381696175118385614" at="97,12,102,7" concept="0" />
+      <node id="5085852630258095517" at="119,23,125,5" concept="6" />
+      <node id="3381696175115146419" at="46,0,53,0" concept="1" trace="ModelSack#(ZZLorg/jetbrains/mps/openapi/persistence/ModelFactory;Ljetbrains/mps/extapi/persistence/ModelFactoryService;)V" />
+      <node id="3381696175115890949" at="65,117,74,7" concept="6" />
+      <node id="3381696175115742828" at="78,0,88,5" concept="16" />
+      <node id="3381696175118377216" at="92,9,102,7" concept="6" />
+      <node id="3381696175115864914" at="63,104,77,5" concept="16" />
+      <node id="3381696175118435176" at="91,67,106,5" concept="16" />
+      <node id="3381696175118333703" at="91,0,108,0" concept="7" trace="save#(Lorg/jetbrains/mps/openapi/model/SModel;)[B" />
+      <node id="3381696175115146616" at="109,0,136,0" concept="13" trace="discover#(Ljetbrains/mps/components/ComponentHost;Ljava/lang/String;)Ljetbrains/mps/vcspersistence/ModelSack;" />
+      <node id="3381696175115597433" at="62,0,90,0" concept="7" trace="load#([B)Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <scope id="3381696175115279129" at="54,41,55,34" />
+      <scope id="3381696175117084268" at="58,45,59,20" />
+      <scope id="3381696175115984420" at="70,54,71,63" />
+      <scope id="3381696175115866199" at="75,51,76,43" />
+      <scope id="3381696175115742832" at="86,48,87,139" />
+      <scope id="3381696175118437014" at="104,30,105,97" />
+      <scope id="7373315286333318526" at="123,12,124,50" />
+      <scope id="3381696175115176827" at="127,22,128,116" />
+      <scope id="3381696175115200461" at="131,30,132,134" />
+      <scope id="3381696175115866196" at="75,5,77,5">
+        <var name="ex" id="3381696175115866197" />
+      </scope>
+      <scope id="3381696175115742831" at="86,5,88,5">
+        <var name="e" id="3381696175115742833" />
+      </scope>
+      <scope id="3381696175118437011" at="104,5,106,5">
+        <var name="ex" id="3381696175118437012" />
+      </scope>
+      <scope id="5085852630258095518" at="120,33,122,46" />
+      <scope id="3381696175115279125" at="54,0,57,0" />
+      <scope id="3381696175117084265" at="58,0,61,0" />
+      <scope id="3381696175118377218" at="93,35,96,95">
+        <var name="resultString" id="3381696175119613265" />
+      </scope>
+      <scope id="3381696175118385615" at="97,14,101,40">
+        <var name="source" id="3381696175118404908" />
+      </scope>
+      <scope id="3381696175115146423" at="46,123,51,38" />
+      <scope id="3381696175115742829" at="79,9,85,16">
+        <var name="rv" id="3381696175115712142" />
+      </scope>
+      <scope id="3381696175115146419" at="46,0,53,0">
+        <var name="mfService" id="3381696175119560483" />
+        <var name="modelFactory" id="3381696175115259840" />
+        <var name="perRootHeader" id="3381696175115146467" />
+        <var name="perRootRoot" id="3381696175115541161" />
+      </scope>
+      <scope id="3381696175115890951" at="66,86,73,53">
+        <var name="model" id="3381696175115984414" />
+        <var name="modelLoadResult" id="3381696175115846194" />
+      </scope>
+      <scope id="3381696175115864916" at="64,9,74,7">
+        <var name="header" id="3381696175115846185" />
+      </scope>
+      <scope id="3381696175118435178" at="92,9,103,0" />
+      <scope id="3381696175118333706" at="91,67,106,5" />
+      <scope id="3381696175118333703" at="91,0,108,0">
+        <var name="m" id="3381696175118341095" />
+      </scope>
+      <scope id="3381696175115146620" at="109,130,134,98">
+        <var name="dst" id="3381696175115175024" />
+        <var name="factories" id="3381696175115170918" />
+        <var name="fnExt" id="3381696175115507276" />
+        <var name="mfs" id="3381696175115172775" />
+        <var name="perRootPersistenceFile" id="6307035416371070382" />
+        <var name="perRootPersistenceHeader" id="3381696175115442901" />
+        <var name="perRootPersistenceRoot" id="3381696175115498906" />
+      </scope>
+      <scope id="3381696175115597437" at="62,70,88,5" />
+      <scope id="3381696175115146616" at="109,0,136,0">
+        <var name="fileName" id="3381696175115146785" />
+        <var name="mpsPlatform" id="3381696175115171043" />
+      </scope>
+      <scope id="3381696175115597433" at="62,0,90,0">
+        <var name="content" id="3381696175115638743" />
+      </scope>
+      <unit id="3381696175115146301" at="39,0,137,0" name="jetbrains.mps.vcspersistence.ModelSack" />
     </file>
   </root>
   <root nodeRef="r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)/5317173964874516731">
