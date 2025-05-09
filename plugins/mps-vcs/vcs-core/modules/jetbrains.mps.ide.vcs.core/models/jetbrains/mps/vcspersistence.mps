@@ -5980,31 +5980,6 @@
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="2VIcG4o4rqd" role="3cqZAp">
-              <node concept="3cpWsn" id="2VIcG4o4rqe" role="3cpWs9">
-                <property role="TrG5h" value="rv" />
-                <node concept="3uibUv" id="2VIcG4o4u8c" role="1tU5fm">
-                  <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
-                </node>
-                <node concept="2OqwBi" id="2VIcG4o4rqf" role="33vP2m">
-                  <node concept="37vLTw" id="2VIcG4o4rqg" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2VIcG4o2Hx6" resolve="myModelFactory" />
-                  </node>
-                  <node concept="liA8E" id="2VIcG4o4rqh" role="2OqNvi">
-                    <ref role="37wK5l" to="dush:~ModelFactory.load(org.jetbrains.mps.openapi.persistence.DataSource,org.jetbrains.mps.openapi.persistence.ModelLoadingOption...)" resolve="load" />
-                    <node concept="2ShNRf" id="2VIcG4o4rqi" role="37wK5m">
-                      <node concept="1pGfFk" id="2VIcG4o4rqj" role="2ShVmc">
-                        <property role="373rjd" value="true" />
-                        <ref role="37wK5l" to="pa15:~ByteArrayInputSource.&lt;init&gt;(byte[])" resolve="ByteArrayInputSource" />
-                        <node concept="37vLTw" id="2VIcG4o4rqk" role="37wK5m">
-                          <ref role="3cqZAo" node="2VIcG4o49vn" resolve="content" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="3SKdUt" id="2VIcG4o4yvM" role="3cqZAp">
               <node concept="1PaTwC" id="2VIcG4o4yvN" role="1aUNEU">
                 <node concept="3oM_SD" id="2VIcG4o4yvO" role="1PaTwD">
@@ -6055,8 +6030,109 @@
                 <node concept="3oM_SD" id="2VIcG4o4yOE" role="1PaTwD">
                   <property role="3oM_SC" value="Poor" />
                 </node>
-                <node concept="3oM_SD" id="2VIcG4o4yOV" role="1PaTwD">
+                <node concept="3oM_SD" id="2VIcG4okdms" role="1PaTwD">
                   <property role="3oM_SC" value="design" />
+                </node>
+              </node>
+            </node>
+            <node concept="3SKdUt" id="2VIcG4okeN3" role="3cqZAp">
+              <node concept="1PaTwC" id="2VIcG4okeN4" role="1aUNEU">
+                <node concept="3oM_SD" id="2VIcG4okeN5" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okeN8" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okfx5" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okfx6" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okfx7" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okfx8" role="1PaTwD">
+                  <property role="3oM_SC" value="Perhaps," />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okfx9" role="1PaTwD">
+                  <property role="3oM_SC" value="could" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okfHC" role="1PaTwD">
+                  <property role="3oM_SC" value="address" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okfHD" role="1PaTwD">
+                  <property role="3oM_SC" value="this" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okfHE" role="1PaTwD">
+                  <property role="3oM_SC" value="with" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okfHF" role="1PaTwD">
+                  <property role="3oM_SC" value="ContentOption.FLAG" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okkJV" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okkJW" role="1PaTwD">
+                  <property role="3oM_SC" value="indicate" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okkO7" role="1PaTwD">
+                  <property role="3oM_SC" value="DataSource" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okkWs" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okkWt" role="1PaTwD">
+                  <property role="3oM_SC" value="transitional" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okl8W" role="1PaTwD">
+                  <property role="3oM_SC" value="and" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okld7" role="1PaTwD">
+                  <property role="3oM_SC" value="shall" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okld8" role="1PaTwD">
+                  <property role="3oM_SC" value="not" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okld9" role="1PaTwD">
+                  <property role="3oM_SC" value="get" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4oklda" role="1PaTwD">
+                  <property role="3oM_SC" value="associated" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4oklhl" role="1PaTwD">
+                  <property role="3oM_SC" value="with" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4oklhm" role="1PaTwD">
+                  <property role="3oM_SC" value="resulting" />
+                </node>
+                <node concept="3oM_SD" id="2VIcG4okllx" role="1PaTwD">
+                  <property role="3oM_SC" value="model?" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs8" id="2VIcG4o4rqd" role="3cqZAp">
+              <node concept="3cpWsn" id="2VIcG4o4rqe" role="3cpWs9">
+                <property role="TrG5h" value="rv" />
+                <node concept="3uibUv" id="2VIcG4o4u8c" role="1tU5fm">
+                  <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
+                </node>
+                <node concept="2OqwBi" id="2VIcG4o4rqf" role="33vP2m">
+                  <node concept="37vLTw" id="2VIcG4o4rqg" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2VIcG4o2Hx6" resolve="myModelFactory" />
+                  </node>
+                  <node concept="liA8E" id="2VIcG4o4rqh" role="2OqNvi">
+                    <ref role="37wK5l" to="dush:~ModelFactory.load(org.jetbrains.mps.openapi.persistence.DataSource,org.jetbrains.mps.openapi.persistence.ModelLoadingOption...)" resolve="load" />
+                    <node concept="2ShNRf" id="2VIcG4o4rqi" role="37wK5m">
+                      <node concept="1pGfFk" id="2VIcG4o4rqj" role="2ShVmc">
+                        <property role="373rjd" value="true" />
+                        <ref role="37wK5l" to="pa15:~ByteArrayInputSource.&lt;init&gt;(byte[])" resolve="ByteArrayInputSource" />
+                        <node concept="37vLTw" id="2VIcG4o4rqk" role="37wK5m">
+                          <ref role="3cqZAo" node="2VIcG4o49vn" resolve="content" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -6847,6 +6923,9 @@
       </node>
       <node concept="3uibUv" id="2VIcG4o2mqP" role="Sfmx6">
         <ref role="3uigEE" to="wyt6:~IllegalArgumentException" resolve="IllegalArgumentException" />
+      </node>
+      <node concept="2AHcQZ" id="2VIcG4onw$Y" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
     <node concept="3Tm1VV" id="2VIcG4o2hgY" role="1B3o_S" />

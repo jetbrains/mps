@@ -78,8 +78,9 @@ public class ModelSack {
 
     try {
       // XXX perhaps, shall introduce an option "LOAD COMPLETELY" to avoid extra model.load() step
-      SModel rv = myModelFactory.load(new ByteArrayInputSource(content));
       // FIXME the fact model keeps track of its DataSource keeps complete byte[] in memory here. Poor design
+      //      Perhaps, could address this with ContentOption.FLAG to indicate DataSource is transitional and shall not get associated with resulting model?
+      SModel rv = myModelFactory.load(new ByteArrayInputSource(content));
       // make sure model has been loaded "completely" (with no unexpected attempts to read afterwards on a walk attempt
       rv.load();
       return rv;
@@ -106,6 +107,7 @@ public class ModelSack {
     }
   }
 
+  @NotNull
   public static ModelSack discover(@NotNull ComponentHost mpsPlatform, @NotNull String fileName) throws IllegalArgumentException {
     ModelFactoryService mfs = mpsPlatform.findComponent(ModelFactoryService.class);
 

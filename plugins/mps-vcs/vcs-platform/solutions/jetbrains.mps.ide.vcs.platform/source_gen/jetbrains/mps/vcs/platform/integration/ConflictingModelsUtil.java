@@ -20,32 +20,29 @@ import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.ProgressIndicator;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import com.intellij.openapi.vcs.merge.MergeData;
-import com.intellij.openapi.vcs.VcsException;
-import jetbrains.mps.project.MPSExtentions;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.vcs.diff.merge.MergeSession;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.persistence.FilePerRootDataSource;
-import java.io.File;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.vcspersistence.ModelSack;
+import com.intellij.openapi.vcs.merge.MergeData;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.vcs.diff.merge.MergeSession;
+import com.intellij.openapi.vcs.VcsException;
+import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.ModelAccess;
-import jetbrains.mps.extapi.persistence.ModelFactoryService;
-import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import jetbrains.mps.persistence.PersistenceVersionAware;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.ide.ThreadUtils;
 import com.intellij.openapi.application.ApplicationManager;
 import java.io.IOException;
 import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 
 @GeneratedClass(nodeId = "7075964554776710007", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
 public class ConflictingModelsUtil {
@@ -73,6 +70,9 @@ public class ConflictingModelsUtil {
     return SetSequence.fromSet(conflictedFiles).where((f) -> SetSequence.fromSet(ModelMergeTool.SUPPORTED_TYPES).contains(f.getFileType())).toList();
   }
 
+  /**
+   * Tells if conflicts at least one of the files could get resolved/merged
+   */
   public static boolean hasResolvableConflicts(final Project project, final MergeProvider provider, final Iterable<VirtualFile> conflictedFiles) {
 
     final boolean[] result = {false};
@@ -80,6 +80,7 @@ public class ConflictingModelsUtil {
     ProgressManager.getInstance().run(new Task.Modal(project, "Loading revisions...", true) {
       @Override
       public void run(@NotNull ProgressIndicator progressIndicator) {
+        final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
 
         for (VirtualFile file : Sequence.fromIterable(conflictedFiles)) {
           if (progressIndicator.isCanceled()) {
@@ -87,39 +88,40 @@ public class ConflictingModelsUtil {
           }
           progressIndicator.setText2(file.getPresentableName());
 
-          MergeData mergeData = null;
           try {
-            mergeData = provider.loadRevisions(file);
+            ModelSack ms = ModelSack.discover(mpsProject.getPlatform(), file.getName());
+            MergeData mergeData = provider.loadRevisions(file);
+            final SModel baseModel = loadModel(mergeData.ORIGINAL, ms);
+            final SModel mineModel = loadModel(mergeData.CURRENT, ms);
+            final SModel repoModel = loadModel(mergeData.LAST, ms);
+
+            if (baseModel == null || mineModel == null || repoModel == null) {
+              if (LOG.isWarningLevel()) {
+                LOG.warning("Couldn't read model " + file.getPath());
+              }
+              continue;
+            }
+
+            final MergeSession mergeSession = mpsProject.getModelAccess().computeReadAction(() -> MergeSession.createMergeSession(baseModel, mineModel, repoModel));
+
+            int conflictingChangesCount = Sequence.fromIterable(mergeSession.getAllChanges()).where((c) -> Sequence.fromIterable(mergeSession.getConflictedWith(c)).isNotEmpty()).count();
+            if (conflictingChangesCount == 0) {
+              result[0] = true;
+              return;
+            }
+          } catch (IllegalArgumentException ex) {
+            // can't detect models in the file, ignore, continue
+            if (LOG.isInfoLevel()) {
+              LOG.info(ex.getMessage());
+            }
           } catch (VcsException e) {
             if (LOG.isErrorLevel()) {
               LOG.error("Error loading revisions of " + file, e);
             }
-          }
-          if (mergeData == null) {
-            continue;
-          }
-
-          String ext = file.getExtension();
-          if (isPerRootPersistenceFile(file)) {
-            ext = MPSExtentions.MODEL;
-          }
-          final SModel baseModel = loadModel(mergeData.ORIGINAL, ext);
-          final SModel mineModel = loadModel(mergeData.CURRENT, ext);
-          final SModel repoModel = loadModel(mergeData.LAST, ext);
-          if (baseModel == null || mineModel == null || repoModel == null) {
-            if (LOG.isWarningLevel()) {
-              LOG.warning("Couldn't read model " + file.getPath());
+          } catch (ModelLoadException ex) {
+            if (LOG.isInfoLevel()) {
+              LOG.info(ex.getMessage());
             }
-            continue;
-          }
-
-          final Wrappers._T<MergeSession> mergeSession = new Wrappers._T<MergeSession>();
-          ProjectHelper.getModelAccess(project).runReadAction(() -> mergeSession.value = MergeSession.createMergeSession(baseModel, mineModel, repoModel));
-
-          int conflictingChangesCount = Sequence.fromIterable(mergeSession.value.getAllChanges()).where((c) -> Sequence.fromIterable(mergeSession.value.getConflictedWith(c)).isNotEmpty()).count();
-          if (conflictingChangesCount == 0) {
-            result[0] = true;
-            return;
           }
         }
       }
@@ -128,11 +130,6 @@ public class ConflictingModelsUtil {
     return result[0];
   }
 
-  /*package*/ static boolean isPerRootPersistenceFile(VirtualFile file) {
-    // FIXME seems that the code uses extension of file name to select proper model factory, instead of
-    //      supplying proper model factory directly
-    return FilePerRootDataSource.isPerRootPersistenceFile(new File(file.getPath()));
-  }
   public static ModelConflictResolver getModelConflictResolverTask(Project project, MergeProvider provider, com.intellij.openapi.vcs.merge.MergeSession session, List<? extends VirtualFile> conflictedFiles) {
     return new ModelConflictResolver(project, provider, session, conflictedFiles);
   }
@@ -166,103 +163,100 @@ public class ConflictingModelsUtil {
       monitor.start("Resolving...", ListSequence.fromList(myConflictedModelFiles).count());
       MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
       final ModelAccess ma = mpsProject.getModelAccess();
-      final ModelFactoryService modelFactoryService = mpsProject.getComponent(ModelFactoryService.class);
       try {
         for (final VirtualFile file : ListSequence.fromList(myConflictedModelFiles)) {
           monitor.step(file.getCanonicalPath());
 
-          final Wrappers._T<String> ext = new Wrappers._T<String>(file.getExtension());
-          if (isPerRootPersistenceFile(file)) {
-            ext.value = MPSExtentions.MODEL;
-          }
-          final Wrappers._T<SModel> baseModel = new Wrappers._T<SModel>(null);
-          final Wrappers._T<SModel> mineModel = new Wrappers._T<SModel>(null);
-          final Wrappers._T<SModel> repoModel = new Wrappers._T<SModel>(null);
-          if (modelFactoryService.getDefaultModelFactory(FileExtensionDataSourceType.of(ext.value)) != null) {
-            MergeData mergeData = null;
-            try {
-              mergeData = myProvider.loadRevisions(file);
-            } catch (VcsException e) {
-              if (LOG.isErrorLevel()) {
-                LOG.error("Error loading revisions to merge", e);
+
+          try {
+            final ModelSack ms = ModelSack.discover(mpsProject.getPlatform(), file.getName());
+            MergeData mergeData = myProvider.loadRevisions(file);
+            final SModel baseModel = loadModel(mergeData.ORIGINAL, ms);
+            final SModel mineModel = loadModel(mergeData.CURRENT, ms);
+            final SModel repoModel = loadModel(mergeData.LAST, ms);
+
+            if (baseModel == null || mineModel == null || repoModel == null) {
+              monitor.advance(1);
+              if (monitor.isCanceled()) {
+                return;
               }
+              continue;
             }
 
-            if (mergeData != null) {
-              baseModel.value = loadModel(mergeData.ORIGINAL, ext.value);
-              mineModel.value = loadModel(mergeData.CURRENT, ext.value);
-              repoModel.value = loadModel(mergeData.LAST, ext.value);
-            }
-          }
-          if (baseModel.value == null || mineModel.value == null || repoModel.value == null) {
-            monitor.advance(1);
-            if (monitor.isCanceled()) {
-              return;
-            }
-            continue;
-          }
-
-          final Wrappers._T<MergeSession> mergeSession = new Wrappers._T<MergeSession>(null);
-          // read action:
-          ma.runReadAction(() -> mergeSession.value = MergeSession.createMergeSession(baseModel.value, mineModel.value, repoModel.value));
-          int conflictingChangesCount = Sequence.fromIterable(mergeSession.value.getAllChanges()).where((c) -> Sequence.fromIterable(mergeSession.value.getConflictedWith(c)).isNotEmpty()).count();
-          if (conflictingChangesCount != 0) {
-            if (LOG.isInfoLevel()) {
-              LOG.info("there are still conflicted changes in " + SModelOperations.getModelName(baseModel.value));
-            }
-            monitor.advance(1);
-            if (monitor.isCanceled()) {
-              return;
-            }
-            continue;
-          }
-          if (LOG.isInfoLevel()) {
-            LOG.info("no conflicting changes in " + SModelOperations.getModelName(baseModel.value));
-          }
-          final Wrappers._T<byte[]> resultContent = new Wrappers._T<byte[]>(null);
-          ma.runReadAction(() -> {
-            mergeSession.value.applyChanges(mergeSession.value.getAllChanges());
-            SModel resultModel = mergeSession.value.getResultModel();
-            if (resultModel == null) {
-            } else if (mergeSession.value.hasIdsToRestore()) {
+            // read action:
+            final MergeSession mergeSession = ma.computeReadAction(() -> MergeSession.createMergeSession(baseModel, mineModel, repoModel));
+            int conflictingChangesCount = Sequence.fromIterable(mergeSession.getAllChanges()).where((c) -> Sequence.fromIterable(mergeSession.getConflictedWith(c)).isNotEmpty()).count();
+            if (conflictingChangesCount != 0) {
               if (LOG.isInfoLevel()) {
-                LOG.info(String.format("%s: node id duplication detected, should merge in UI.", SModelOperations.getModelName(baseModel.value)));
+                LOG.info("there are still conflicted changes in " + SModelOperations.getModelName(baseModel));
               }
-            } else {
-              try {
-                resultContent.value = VCSPersistenceUtil.saveModel(modelFactoryService, resultModel, file.getExtension(), ext.value);
-              } catch (Throwable error) {
-                // this can be when saving in 9 persistence after merge with 8 persistence => leave it for UI merge
-                if (baseModel.value instanceof PersistenceVersionAware && resultModel instanceof PersistenceVersionAware && ((PersistenceVersionAware) baseModel.value).getPersistenceVersion() == 8 && ((PersistenceVersionAware) resultModel).getPersistenceVersion() == 9) {
-                  ListSequence.fromList(myUnresolvedModelFiles).addElement(file);
-                } else {
-                  if (LOG.isErrorLevel()) {
-                    LOG.error("Cannot save merge resulting model " + SModelOperations.getModelName(resultModel), error);
+              monitor.advance(1);
+              if (monitor.isCanceled()) {
+                return;
+              }
+              continue;
+            }
+            if (LOG.isInfoLevel()) {
+              LOG.info("no conflicting changes in " + SModelOperations.getModelName(baseModel));
+            }
+            final byte[] resultContent = ma.computeReadAction(() -> {
+              mergeSession.applyChanges(mergeSession.getAllChanges());
+              SModel resultModel = mergeSession.getResultModel();
+              if (resultModel == null) {
+                return null;
+              } else if (mergeSession.hasIdsToRestore()) {
+                if (LOG.isInfoLevel()) {
+                  LOG.info(String.format("%s: node id duplication detected, should merge in UI.", SModelOperations.getModelName(baseModel)));
+                }
+              } else {
+                try {
+                  return ms.save(resultModel);
+                } catch (Throwable error) {
+                  // this can be when saving in 9 persistence after merge with 8 persistence => leave it for UI merge
+                  if (baseModel instanceof PersistenceVersionAware && resultModel instanceof PersistenceVersionAware && ((PersistenceVersionAware) baseModel).getPersistenceVersion() == 8 && ((PersistenceVersionAware) resultModel).getPersistenceVersion() == 9) {
+                    ListSequence.fromList(myUnresolvedModelFiles).addElement(file);
+                  } else {
+                    if (LOG.isErrorLevel()) {
+                      LOG.error("Cannot save merge resulting model " + SModelOperations.getModelName(resultModel), error);
+                    }
                   }
                 }
               }
-            }
-          });
+              return null;
+            });
 
-          if (resultContent.value != null) {
-            final Wrappers._boolean isWritten = new Wrappers._boolean(false);
-            ThreadUtils.runInUIThreadAndWait(() -> ApplicationManager.getApplication().runWriteAction(() -> {
-              try {
-                file.setBinaryContent(resultContent.value);
-                isWritten.value = true;
-              } catch (IOException e) {
-                if (LOG.isErrorLevel()) {
-                  LOG.error("Cannot save merge result into " + file.getPath(), e);
+            if (resultContent != null) {
+              final Wrappers._boolean isWritten = new Wrappers._boolean(false);
+              ThreadUtils.runInUIThreadAndWait(() -> ApplicationManager.getApplication().runWriteAction(() -> {
+                try {
+                  file.setBinaryContent(resultContent);
+                  isWritten.value = true;
+                } catch (IOException e) {
+                  if (LOG.isErrorLevel()) {
+                    LOG.error("Cannot save merge result into " + file.getPath(), e);
+                  }
                 }
+              }));
+              if (isWritten.value) {
+                check_2bxr1q_a0a2a51a3a0a4a21g(mySession, file);
+                VcsDirtyScopeManager.getInstance(myProject).fileDirty(file);
+                ListSequence.fromList(myResolvedModelFiles).addElement(file);
               }
-            }));
-            if (isWritten.value) {
-              check_2bxr1q_a0a2a91a0a5a21h(mySession, file);
-              VcsDirtyScopeManager.getInstance(myProject).fileDirty(file);
-              ListSequence.fromList(myResolvedModelFiles).addElement(file);
+            }
+          } catch (IllegalArgumentException ex) {
+            // can't detect models in the file, ignore, continue
+            if (LOG.isInfoLevel()) {
+              LOG.info(ex.getMessage());
+            }
+          } catch (VcsException e) {
+            if (LOG.isErrorLevel()) {
+              LOG.error("Error loading revisions to merge", e);
+            }
+          } catch (ModelLoadException ex) {
+            if (LOG.isInfoLevel()) {
+              LOG.info(ex.getMessage());
             }
           }
-
           monitor.advance(1);
           if (monitor.isCanceled()) {
             return;
@@ -272,7 +266,7 @@ public class ConflictingModelsUtil {
         monitor.done();
       }
     }
-    private static void check_2bxr1q_a0a2a91a0a5a21h(com.intellij.openapi.vcs.merge.MergeSession checkedDotOperand, VirtualFile file) {
+    private static void check_2bxr1q_a0a2a51a3a0a4a21g(com.intellij.openapi.vcs.merge.MergeSession checkedDotOperand, VirtualFile file) {
       if (null != checkedDotOperand) {
         checkedDotOperand.conflictResolvedForFile(file, com.intellij.openapi.vcs.merge.MergeSession.Resolution.Merged);
       }
@@ -281,11 +275,11 @@ public class ConflictingModelsUtil {
   }
 
   @Nullable
-  private static SModel loadModel(byte[] bytes, String ext) {
+  private static SModel loadModel(byte[] bytes, ModelSack ms) throws ModelLoadException {
     if (bytes.length == 0) {
       return null;
     }
-    SModel model = VCSPersistenceUtil.loadModel(bytes, ext);
+    SModel model = ms.load(bytes);
     return (VCSPersistenceUtil.isModelFullyLoaded(model) ? model : null);
   }
 }
