@@ -9,25 +9,21 @@ import jetbrains.mps.core.platform.Platform;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.vcspersistence.ModelSack;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
-import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import java.io.File;
 import jetbrains.mps.vcs.util.MergeDriverBackupUtil;
 import java.io.IOException;
 import jetbrains.mps.persistence.PersistenceVersionAware;
-import org.jetbrains.mps.openapi.persistence.ModelFactory;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import org.jetbrains.mps.openapi.persistence.ContentOption;
-import jetbrains.mps.persistence.MetaModelInfoProvider;
-import org.jetbrains.mps.openapi.persistence.ModelLoadException;
-import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import jetbrains.mps.smodel.DefaultSModel;
+import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 
@@ -35,11 +31,11 @@ import jetbrains.mps.extapi.model.SModelData;
 /*package*/ class ModelMerger extends SimpleMerger {
   private static final Logger LOG = Logger.getLogger(ModelMerger.class);
   private SModelName myModelName;
-  private String myExtension;
+  private FileType myFileKind;
   private final Platform myPlatform;
 
-  public ModelMerger(Platform mpsPlatform, String extension) {
-    myExtension = extension;
+  public ModelMerger(Platform mpsPlatform, FileType fileType) {
+    myFileKind = fileType;
     myPlatform = mpsPlatform;
   }
   @Override
@@ -52,36 +48,29 @@ import jetbrains.mps.extapi.model.SModelData;
 
     RuntimeFlags.setMergeDriverMode(true);
 
-    String ext = (myExtension == null ? MPSExtentions.MODEL : myExtension);
-    if (MPSExtentions.MODEL_HEADER.equals(myExtension) || MPSExtentions.MODEL_ROOT.equals(myExtension)) {
-      // special support for per-root persistence
-      ext = MPSExtentions.MODEL;
-    }
-
-    if (LOG.isInfoLevel()) {
-      LOG.info("Reading models...");
-    }
-    SModel baseModel = loadModel(baseContent, ext);
-    SModel localModel = loadModel(localContent, ext);
-    SModel latestModel = loadModel(latestContent, ext);
-    if (baseModel == null || localModel == null || latestModel == null) {
-      return backup(baseContent, localContent, latestContent);
-    }
-    myModelName = baseModel.getName();
-
-    int baseP = getPersistenceVersion(baseModel);
-    int localP = getPersistenceVersion(localModel);
-    int latestP = getPersistenceVersion(latestModel);
-    if (baseP >= 7 && localP >= 7 && latestP >= 7 || baseP < 7 && localP < 7 && latestP < 7) {
-      // ok, can merge
-    } else {
-      if (LOG.isErrorLevel()) {
-        LOG.error(String.format("%s: Conflicting model persistence versions", myModelName));
-      }
-      return backup(baseContent, localContent, latestContent);
-    }
-
     try {
+      if (LOG.isInfoLevel()) {
+        LOG.info("Reading models...");
+      }
+      final ModelSack ms = ModelSack.discover(myPlatform, myFileKind);
+      SModel baseModel = loadModel(baseContent, ms);
+      SModel localModel = loadModel(localContent, ms);
+      SModel latestModel = loadModel(latestContent, ms);
+
+      myModelName = baseModel.getName();
+
+      int baseP = getPersistenceVersion(baseModel);
+      int localP = getPersistenceVersion(localModel);
+      int latestP = getPersistenceVersion(latestModel);
+      if (baseP >= 7 && localP >= 7 && latestP >= 7 || baseP < 7 && localP < 7 && latestP < 7) {
+        // ok, can merge
+      } else {
+        if (LOG.isErrorLevel()) {
+          LOG.error(String.format("%s: Conflicting model persistence versions", myModelName));
+        }
+        return backup(baseContent, localContent, latestContent);
+      }
+
       if (LOG.isInfoLevel()) {
         LOG.info("Merging " + baseModel.getReference() + "...");
       }
@@ -109,7 +98,7 @@ import jetbrains.mps.extapi.model.SModelData;
           LOG.info(String.format("%s: Saving merged model...", myModelName));
         }
         updateMetaModelInfo(resultModel, baseModel, localModel, latestModel);
-        resultBytes = VCSPersistenceUtil.saveModel(myPlatform.findComponent(ModelFactoryService.class), resultModel, myExtension, ext);
+        resultBytes = ms.save(resultModel);
         if (resultBytes == null) {
           if (LOG.isErrorLevel()) {
             LOG.error("Error while saving result model");
@@ -122,10 +111,18 @@ import jetbrains.mps.extapi.model.SModelData;
         backup(baseContent, localContent, latestContent);
         return MultiTuple.<Integer,byte[]>from(MERGED, resultBytes);
       }
+    } catch (ModelLoadException ex) {
+      if (LOG.isWarningLevel()) {
+        LOG.warning("Failed to read model", ex);
+      }
+      return backup(baseContent, localContent, latestContent);
     } catch (Throwable e) {
       if (LOG.isErrorLevel()) {
         LOG.error("Exception while merging", e);
       }
+    } finally {
+      // XXX I wonder why not at once in MergeDriverMain, rather than in ModelMerger
+      RuntimeFlags.setMergeDriverMode(false);
     }
 
     return backup(baseContent, localContent, latestContent);
@@ -140,7 +137,7 @@ import jetbrains.mps.extapi.model.SModelData;
       }
     } catch (IOException e) {
       if (LOG.isErrorLevel()) {
-        LOG.error(String.format("%s: exception while backuping", myModelName), e);
+        LOG.error(String.format("%s: exception while creating merge backup", myModelName), e);
       }
     }
     return null;
@@ -152,24 +149,15 @@ import jetbrains.mps.extapi.model.SModelData;
     return -1;
   }
 
-  /*package*/ static SModel loadModel(FileContent content, String fnameExtension) {
-    ModelFactory modelFactory = PersistenceFacade.getInstance().getModelFactory(fnameExtension);
-    if (modelFactory == null) {
-      return null;
+  @NotNull
+  private static SModel loadModel(FileContent content, ModelSack ms) throws ModelLoadException {
+    // XXX for some reason, this class didn't use VCSPersistenceUtil.load() - the one that supports legacy persistence. Is it intentional
+    SModel m = ms.loadContemporaryPersistenceOnly(content);
+    if (VCSPersistenceUtil.isModelFullyLoaded(m)) {
+      return m;
+    } else {
+      throw new ModelLoadException(String.format("Can't load complete model from %s", content.getLocation()));
     }
-    try {
-      SModel model = modelFactory.load(content, ContentOption.CONTENT_ONLY, MetaModelInfoProvider.MetaInfoLoadingOption.KEEP_READ);
-      return (VCSPersistenceUtil.isModelFullyLoaded(model) ? model : null);
-    } catch (ModelLoadException ex) {
-      if (LOG.isWarningLevel()) {
-        LOG.warning("Failed to read model", ex);
-      }
-    } catch (UnsupportedDataSourceException ex) {
-      if (LOG.isWarningLevel()) {
-        LOG.warning("Failed to read model", ex);
-      }
-    }
-    return null;
   }
 
   private static void updateMetaModelInfo(SModel resultModel, SModel baseModel, SModel localModel, SModel remoteModel) {

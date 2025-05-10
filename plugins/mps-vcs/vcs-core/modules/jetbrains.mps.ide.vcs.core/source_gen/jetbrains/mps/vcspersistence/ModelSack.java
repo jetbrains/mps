@@ -17,6 +17,9 @@ import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.InvalidSModel;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import java.io.IOException;
+import org.jetbrains.mps.openapi.persistence.StreamDataSource;
+import org.jetbrains.mps.openapi.persistence.ContentOption;
+import jetbrains.mps.persistence.MetaModelInfoProvider;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import java.util.Collections;
 import org.jetbrains.annotations.NotNull;
@@ -29,6 +32,7 @@ import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 import java.util.List;
+import jetbrains.mps.vcs.core.mergedriver.FileType;
 
 /**
  * Model and associated information relevant for the purposes of VCS.
@@ -76,11 +80,17 @@ public class ModelSack {
       // ignore, try new persistence format
     }
 
+    return loadContemporaryPersistenceOnly(new ByteArrayInputSource(content));
+
+  }
+
+  public SModel loadContemporaryPersistenceOnly(StreamDataSource dataSource) throws ModelLoadException {
     try {
       // XXX perhaps, shall introduce an option "LOAD COMPLETELY" to avoid extra model.load() step
       // FIXME the fact model keeps track of its DataSource keeps complete byte[] in memory here. Poor design
       //      Perhaps, could address this with ContentOption.FLAG to indicate DataSource is transitional and shall not get associated with resulting model?
-      SModel rv = myModelFactory.load(new ByteArrayInputSource(content));
+      // no-op CONTENT_ONLY here is just a reminder to address ^^^ issues
+      SModel rv = myModelFactory.load(dataSource, ContentOption.CONTENT_ONLY, MetaModelInfoProvider.MetaInfoLoadingOption.KEEP_READ);
       // make sure model has been loaded "completely" (with no unexpected attempts to read afterwards on a walk attempt
       rv.load();
       return rv;
@@ -121,7 +131,11 @@ public class ModelSack {
     DataSourceType dst;
     if (perRootPersistenceFile) {
       // load model partially from per-root persistence with "normal" persistence loading
-      dst = PreinstalledDataSourceTypes.MODEL;
+      // FIXME I believe the proper fix is for PreinstalledModelFactoryTypes.PER_ROOT_XML to support "partial" loading from a single file (or, perhaps, 2 files
+      //      we could supply here, one being original root and another - fake header stream, likely empty, just to satisfy multistream DS.
+      //      per-root MF supports save(), see VCSPersistenceUtil.savePerRootModel() code, and I don't see any reason for all these crazy checks here
+      //      just not to modify its load()!
+      dst = PreinstalledDataSourceTypes.MPS;
     } else {
       dst = FileExtensionDataSourceType.of(fnExt);
     }
@@ -134,5 +148,26 @@ public class ModelSack {
       throw new IllegalArgumentException(String.format("No model factory to handle '%' data source for %s", dst.getName(), fileName));
     }
     return new ModelSack(perRootPersistenceHeader, perRootPersistenceRoot, factories.get(0), mfs);
+  }
+
+  @NotNull
+  public static ModelSack discover(@NotNull ComponentHost mpsPlatform, @NotNull FileType fileKind) throws IllegalArgumentException {
+    final boolean perRootPersistenceHeader = fileKind == FileType.MODEL_HEADER;
+    final boolean perRootPersistenceRoot = fileKind == FileType.MODEL_ROOT;
+    final DataSourceType dst;
+    if (perRootPersistenceHeader || perRootPersistenceRoot) {
+      // see another #discover(), above
+      dst = PreinstalledDataSourceTypes.MPS;
+    } else {
+      // check FileType.get(filetype == null) - regardless of actual extension, we get FileType.MODEL, assuming it's ".mps" file
+      dst = PreinstalledDataSourceTypes.MPS;
+    }
+    ModelFactoryService mfs = mpsPlatform.findComponent(ModelFactoryService.class);
+    List<ModelFactory> factories = mfs.getModelFactories(dst);
+    if (factories.isEmpty()) {
+      throw new IllegalArgumentException(String.format("No model factory to handle '%' data source for %s", dst.getName(), fileKind));
+    }
+    return new ModelSack(perRootPersistenceHeader, perRootPersistenceRoot, factories.get(0), mfs);
+
   }
 }

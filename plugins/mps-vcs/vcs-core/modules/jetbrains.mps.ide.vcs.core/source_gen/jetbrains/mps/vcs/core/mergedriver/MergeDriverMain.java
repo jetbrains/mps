@@ -97,6 +97,8 @@ public class MergeDriverMain {
   }
   @Nullable
   private static AbstractContentMerger selectMerger(final Platform mpsPlatform, final String filetype, File... files) {
+    // according to GitMergeDriverInstaller&SvnInstaller history, filetype is always null ( ==  "undefined" cmdline arg)
+    // FIXME why not DataSourceType (or ModelFactoryType) right away in case of a model file???
     FileType fileType = Sequence.fromIterable(Sequence.fromArray(files)).select((f) -> FileType.get(mpsPlatform.findComponent(ModelFactoryService.class), filetype, f)).findFirst((f) -> f != null);
     if (fileType == null) {
       return null;
@@ -105,7 +107,7 @@ public class MergeDriverMain {
       case MODEL_HEADER:
       case MODEL_ROOT:
       case MODEL:
-        return new CompositeMerger(new ModelMerger(mpsPlatform, (filetype != null ? filetype : fileType.getSuffix())), new SimpleMerger());
+        return new CompositeMerger(new ModelMerger(mpsPlatform, fileType), new SimpleMerger());
       case LANGUAGE:
       case SOLUTION:
       case DEVKIT:
