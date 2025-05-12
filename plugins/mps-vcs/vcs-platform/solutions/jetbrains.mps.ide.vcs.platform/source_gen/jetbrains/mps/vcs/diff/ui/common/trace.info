@@ -1391,156 +1391,160 @@
       <node id="4652592318748335118" at="27,0,28,0" concept="7" trace="myButtons" />
       <node id="4652592318748335123" at="28,0,29,0" concept="7" trace="myCurrentButton" />
       <node id="4652592318748335151" at="29,110,30,54" concept="18" />
-      <node id="4652592318748335155" at="30,54,31,58" concept="6" />
-      <node id="4652592318748335166" at="31,58,32,44" concept="6" />
-      <node id="4652592318748335170" at="32,44,33,78" concept="6" />
-      <node id="4652592318748335178" at="33,78,34,64" concept="6" />
-      <node id="4652592318748335133" at="36,39,37,27" concept="13" />
-      <node id="4652592318748335145" at="40,26,41,13" concept="13" />
-      <node id="4652592318748335196" at="44,33,45,43" concept="13" />
-      <node id="4652592318748335206" at="48,34,49,43" concept="13" />
-      <node id="4652592318748335218" at="52,61,53,27" concept="6" />
-      <node id="4652592318748335220" at="53,27,54,0" concept="15" />
-      <node id="4652592318748335225" at="55,66,56,24" concept="6" />
-      <node id="4652592318748335237" at="60,28,61,76" concept="6" />
-      <node id="4652592318748335243" at="61,76,62,0" concept="15" />
-      <node id="4652592318748335244" at="62,0,63,44" concept="12" />
-      <node id="3289683577578505586" at="63,44,64,304" concept="12" />
-      <node id="3289683577578431326" at="64,304,65,0" concept="15" />
-      <node id="4652592318748335254" at="66,66,67,107" concept="12" />
-      <node id="445023375369696951" at="67,107,68,81" concept="12" />
-      <node id="4652592318748335269" at="69,77,70,114" concept="6" />
-      <node id="4652592318748335276" at="70,114,71,28" concept="6" />
-      <node id="4652592318748335283" at="76,0,77,0" concept="11" trace="createButtonsForChangeGroup#(Ljetbrains/mps/vcs/diff/ui/common/ChangeGroup;I)Ljava/lang/Iterable;" />
-      <node id="4652592318748335298" at="78,44,79,56" concept="6" />
-      <node id="4652592318748335310" at="80,34,81,43" concept="6" />
-      <node id="4652592318748335319" at="82,12,83,85" concept="6" />
-      <node id="4652592318748335332" at="87,34,88,47" concept="13" />
-      <node id="4652592318748335356" at="92,95,93,44" concept="6" />
-      <node id="4652592318748335360" at="93,44,94,22" concept="6" />
-      <node id="4652592318748335371" at="98,45,99,27" concept="6" />
-      <node id="4652592318748335375" at="99,27,100,41" concept="6" />
-      <node id="4652592318748335386" at="103,69,104,27" concept="6" />
-      <node id="4652592318748335388" at="104,27,105,0" concept="15" />
-      <node id="4652592318748335389" at="105,0,106,63" concept="12" />
-      <node id="4652592318748335399" at="106,63,107,191" concept="13" />
-      <node id="4652592318748335464" at="110,26,111,21" concept="6" />
-      <node id="4652592318748335473" at="113,33,114,59" concept="12" />
-      <node id="4652592318748335490" at="115,26,116,34" concept="6" />
-      <node id="4652592318748335499" at="117,5,118,13" concept="13" />
-      <node id="4652592318748335333" at="121,36,122,48" concept="13" />
-      <node id="4652592318748335333" at="123,5,124,16" concept="13" />
-      <node id="4652592318748335357" at="127,36,128,40" concept="6" />
-      <node id="4652592318748335357" at="129,5,130,0" concept="15" />
-      <node id="4652592318748335317" at="82,10,84,5" concept="1" />
-      <node id="4652592318748335129" at="36,0,39,0" concept="11" trace="isHighlightLeft#()Z" />
-      <node id="4652592318748335221" at="54,0,57,5" concept="9" />
-      <node id="4652592318748335488" at="114,59,117,5" concept="10" />
-      <node id="4652592318748335333" at="120,81,123,5" concept="10" />
-      <node id="4652592318748335357" at="126,81,129,5" concept="10" />
-      <node id="4652592318748335141" at="39,0,43,0" concept="11" trace="getWeight#()I" />
-      <node id="4652592318748335192" at="43,0,47,0" concept="11" trace="getLeftAreaWidth#()I" />
-      <node id="4652592318748335202" at="47,0,51,0" concept="11" trace="getRightAreaWidth#()I" />
-      <node id="445023375369709089" at="68,81,72,9" concept="10" />
-      <node id="4652592318748335328" at="86,0,90,0" concept="11" trace="getToolTipText#()Ljava/lang/String;" />
-      <node id="4652592318748335343" at="91,46,95,5" concept="10" />
-      <node id="4652592318748335460" at="109,0,113,0" concept="11" trace="relayout#()V" />
-      <node id="4652592318748335305" at="79,56,84,5" concept="10" />
-      <node id="4652592318748335365" at="97,0,102,0" concept="11" trace="mouseExited#(Ljava/awt/event/MouseEvent;)V" />
-      <node id="4652592318748335333" at="120,0,126,0" concept="17" trace="check_of7u5x_a0a71#(Ljetbrains/mps/vcs/diff/ui/common/FoldingAreaButton;)Ljava/lang/String;" />
-      <node id="4652592318748335357" at="126,0,132,0" concept="17" trace="check_of7u5x_a0a0a81#(Ljetbrains/mps/vcs/diff/ui/common/FoldingAreaButton;)V" />
-      <node id="4652592318748335147" at="29,0,36,0" concept="3" trace="ButtonsPainter#(ILjetbrains/mps/nodeEditor/EditorComponent;Ljetbrains/mps/vcs/diff/ui/common/ChangeGroupLayout;)V" />
-      <node id="4652592318748335337" at="90,0,97,0" concept="11" trace="mousePressed#(Ljava/awt/event/MouseEvent;)V" />
-      <node id="4652592318748335383" at="102,0,109,0" concept="11" trace="findButtonUnder#(Ljava/awt/Point;)Ljetbrains/mps/vcs/diff/ui/common/FoldingAreaButton;" />
-      <node id="4652592318748335469" at="113,0,120,0" concept="11" trace="getX#(I)I" />
-      <node id="4652592318748335212" at="51,0,59,0" concept="11" trace="paintInLocalCoordinates#(Ljava/awt/Graphics;)V" />
-      <node id="4652592318748335248" at="65,0,73,7" concept="9" />
-      <node id="4652592318748335292" at="77,0,86,0" concept="11" trace="mouseMoved#(Ljava/awt/event/MouseEvent;)V" />
-      <node id="4652592318748335235" at="59,39,74,5" concept="10" />
-      <node id="4652592318748335231" at="59,0,76,0" concept="11" trace="ensureButtonsCreated#()V" />
-      <scope id="4652592318748335132" at="36,39,37,27" />
-      <scope id="4652592318748335144" at="40,26,41,13" />
-      <scope id="4652592318748335195" at="44,33,45,43" />
-      <scope id="4652592318748335205" at="48,34,49,43" />
-      <scope id="4652592318748335224" at="55,66,56,24" />
-      <scope id="4652592318748335283" at="76,0,77,0">
+      <node id="170740902473977599" at="30,54,31,35" concept="14" />
+      <node id="4652592318748335155" at="31,35,32,58" concept="6" />
+      <node id="4652592318748335166" at="32,58,33,44" concept="6" />
+      <node id="170740902473983015" at="33,44,34,170" concept="14" />
+      <node id="4652592318748335170" at="34,170,35,78" concept="6" />
+      <node id="4652592318748335178" at="35,78,36,64" concept="6" />
+      <node id="4652592318748335133" at="38,39,39,27" concept="13" />
+      <node id="4652592318748335145" at="42,26,43,13" concept="13" />
+      <node id="170740902474495055" at="46,33,47,92" concept="14" />
+      <node id="4652592318748335196" at="47,92,48,43" concept="13" />
+      <node id="4652592318748335206" at="51,34,52,43" concept="13" />
+      <node id="4652592318748335218" at="55,61,56,27" concept="6" />
+      <node id="4652592318748335220" at="56,27,57,0" concept="15" />
+      <node id="4652592318748335225" at="58,66,59,24" concept="6" />
+      <node id="4652592318748335237" at="63,28,64,76" concept="6" />
+      <node id="4652592318748335243" at="64,76,65,0" concept="15" />
+      <node id="4652592318748335244" at="65,0,66,44" concept="12" />
+      <node id="3289683577578505586" at="66,44,67,304" concept="12" />
+      <node id="3289683577578431326" at="67,304,68,0" concept="15" />
+      <node id="4652592318748335254" at="69,66,70,107" concept="12" />
+      <node id="445023375369696951" at="70,107,71,81" concept="12" />
+      <node id="4652592318748335269" at="72,58,73,87" concept="6" />
+      <node id="4652592318748335276" at="73,87,74,28" concept="6" />
+      <node id="4652592318748335283" at="79,0,80,0" concept="11" trace="createButtonsForChangeGroup#(Ljetbrains/mps/vcs/diff/ui/common/ChangeGroup;I)Ljava/lang/Iterable;" />
+      <node id="4652592318748335298" at="81,44,82,56" concept="6" />
+      <node id="4652592318748335310" at="83,34,84,43" concept="6" />
+      <node id="4652592318748335319" at="85,12,86,85" concept="6" />
+      <node id="4652592318748335332" at="90,34,91,47" concept="13" />
+      <node id="4652592318748335356" at="95,95,96,44" concept="6" />
+      <node id="4652592318748335360" at="96,44,97,22" concept="6" />
+      <node id="4652592318748335371" at="101,45,102,27" concept="6" />
+      <node id="4652592318748335375" at="102,27,103,41" concept="6" />
+      <node id="4652592318748335386" at="106,69,107,27" concept="6" />
+      <node id="4652592318748335388" at="107,27,108,0" concept="15" />
+      <node id="4652592318748335389" at="108,0,109,63" concept="12" />
+      <node id="4652592318748335399" at="109,63,110,191" concept="13" />
+      <node id="170740902473912829" at="113,26,114,131" concept="14" />
+      <node id="4652592318748335464" at="114,131,115,21" concept="6" />
+      <node id="4652592318748335473" at="118,33,119,59" concept="12" />
+      <node id="4652592318748335490" at="120,26,121,34" concept="6" />
+      <node id="4652592318748335499" at="122,5,123,13" concept="13" />
+      <node id="4652592318748335333" at="126,36,127,48" concept="13" />
+      <node id="4652592318748335333" at="128,5,129,16" concept="13" />
+      <node id="4652592318748335357" at="132,36,133,40" concept="6" />
+      <node id="4652592318748335357" at="134,5,135,0" concept="15" />
+      <node id="4652592318748335317" at="85,10,87,5" concept="1" />
+      <node id="4652592318748335129" at="38,0,41,0" concept="11" trace="isHighlightLeft#()Z" />
+      <node id="4652592318748335221" at="57,0,60,5" concept="9" />
+      <node id="4652592318748335488" at="119,59,122,5" concept="10" />
+      <node id="4652592318748335333" at="125,81,128,5" concept="10" />
+      <node id="4652592318748335357" at="131,81,134,5" concept="10" />
+      <node id="4652592318748335141" at="41,0,45,0" concept="11" trace="getWeight#()I" />
+      <node id="4652592318748335202" at="50,0,54,0" concept="11" trace="getRightAreaWidth#()I" />
+      <node id="445023375369709089" at="71,81,75,9" concept="10" />
+      <node id="4652592318748335328" at="89,0,93,0" concept="11" trace="getToolTipText#()Ljava/lang/String;" />
+      <node id="4652592318748335343" at="94,46,98,5" concept="10" />
+      <node id="4652592318748335192" at="45,0,50,0" concept="11" trace="getLeftAreaWidth#()I" />
+      <node id="4652592318748335305" at="82,56,87,5" concept="10" />
+      <node id="4652592318748335365" at="100,0,105,0" concept="11" trace="mouseExited#(Ljava/awt/event/MouseEvent;)V" />
+      <node id="4652592318748335460" at="112,0,117,0" concept="11" trace="relayout#()V" />
+      <node id="4652592318748335333" at="125,0,131,0" concept="17" trace="check_of7u5x_a0a71#(Ljetbrains/mps/vcs/diff/ui/common/FoldingAreaButton;)Ljava/lang/String;" />
+      <node id="4652592318748335357" at="131,0,137,0" concept="17" trace="check_of7u5x_a0a0a81#(Ljetbrains/mps/vcs/diff/ui/common/FoldingAreaButton;)V" />
+      <node id="4652592318748335337" at="93,0,100,0" concept="11" trace="mousePressed#(Ljava/awt/event/MouseEvent;)V" />
+      <node id="4652592318748335383" at="105,0,112,0" concept="11" trace="findButtonUnder#(Ljava/awt/Point;)Ljetbrains/mps/vcs/diff/ui/common/FoldingAreaButton;" />
+      <node id="4652592318748335469" at="118,0,125,0" concept="11" trace="getX#(I)I" />
+      <node id="4652592318748335212" at="54,0,62,0" concept="11" trace="paintInLocalCoordinates#(Ljava/awt/Graphics;)V" />
+      <node id="4652592318748335248" at="68,0,76,7" concept="9" />
+      <node id="4652592318748335147" at="29,0,38,0" concept="3" trace="ButtonsPainter#(ILjetbrains/mps/nodeEditor/EditorComponent;Ljetbrains/mps/vcs/diff/ui/common/ChangeGroupLayout;)V" />
+      <node id="4652592318748335292" at="80,0,89,0" concept="11" trace="mouseMoved#(Ljava/awt/event/MouseEvent;)V" />
+      <node id="4652592318748335235" at="62,39,77,5" concept="10" />
+      <node id="4652592318748335231" at="62,0,79,0" concept="11" trace="ensureButtonsCreated#()V" />
+      <scope id="4652592318748335132" at="38,39,39,27" />
+      <scope id="4652592318748335144" at="42,26,43,13" />
+      <scope id="4652592318748335205" at="51,34,52,43" />
+      <scope id="4652592318748335224" at="58,66,59,24" />
+      <scope id="4652592318748335283" at="79,0,80,0">
         <var name="changeGroup" id="4652592318748335288" />
         <var name="y" id="4652592318748335290" />
       </scope>
-      <scope id="4652592318748335309" at="80,34,81,43" />
-      <scope id="4652592318748335318" at="82,12,83,85" />
-      <scope id="4652592318748335331" at="87,34,88,47" />
-      <scope id="4652592318748335463" at="110,26,111,21" />
-      <scope id="4652592318748335489" at="115,26,116,34" />
-      <scope id="4652592318748335333" at="121,36,122,48" />
-      <scope id="4652592318748335357" at="127,36,128,40" />
-      <scope id="445023375369709091" at="69,77,71,28" />
-      <scope id="4652592318748335355" at="92,95,94,22" />
-      <scope id="4652592318748335370" at="98,45,100,41" />
-      <scope id="4652592318748335129" at="36,0,39,0" />
-      <scope id="4652592318748335221" at="54,0,57,5">
+      <scope id="4652592318748335309" at="83,34,84,43" />
+      <scope id="4652592318748335318" at="85,12,86,85" />
+      <scope id="4652592318748335331" at="90,34,91,47" />
+      <scope id="4652592318748335489" at="120,26,121,34" />
+      <scope id="4652592318748335333" at="126,36,127,48" />
+      <scope id="4652592318748335357" at="132,36,133,40" />
+      <scope id="4652592318748335195" at="46,33,48,43" />
+      <scope id="445023375369709091" at="72,58,74,28" />
+      <scope id="4652592318748335355" at="95,95,97,22" />
+      <scope id="4652592318748335370" at="101,45,103,41" />
+      <scope id="4652592318748335463" at="113,26,115,21" />
+      <scope id="4652592318748335129" at="38,0,41,0" />
+      <scope id="4652592318748335221" at="57,0,60,5">
         <var name="b" id="4652592318748335222" />
       </scope>
-      <scope id="4652592318748335141" at="39,0,43,0" />
-      <scope id="4652592318748335192" at="43,0,47,0" />
-      <scope id="4652592318748335202" at="47,0,51,0" />
-      <scope id="4652592318748335328" at="86,0,90,0" />
-      <scope id="4652592318748335342" at="91,46,95,5" />
-      <scope id="4652592318748335385" at="103,69,107,191">
+      <scope id="4652592318748335141" at="41,0,45,0" />
+      <scope id="4652592318748335202" at="50,0,54,0" />
+      <scope id="4652592318748335328" at="89,0,93,0" />
+      <scope id="4652592318748335342" at="94,46,98,5" />
+      <scope id="4652592318748335385" at="106,69,110,191">
         <var name="x" id="4652592318748335390" />
       </scope>
-      <scope id="4652592318748335460" at="109,0,113,0" />
-      <scope id="4652592318748335333" at="120,81,124,16" />
-      <scope id="4652592318748335357" at="126,81,130,0" />
-      <scope id="4652592318748335150" at="29,110,34,64" />
-      <scope id="4652592318748335217" at="52,61,57,5" />
-      <scope id="4652592318748335365" at="97,0,102,0">
+      <scope id="4652592318748335333" at="125,81,129,16" />
+      <scope id="4652592318748335357" at="131,81,135,0" />
+      <scope id="4652592318748335192" at="45,0,50,0" />
+      <scope id="4652592318748335217" at="55,61,60,5" />
+      <scope id="4652592318748335365" at="100,0,105,0">
         <var name="event" id="4652592318748335368" />
       </scope>
-      <scope id="4652592318748335472" at="113,33,118,13">
+      <scope id="4652592318748335460" at="112,0,117,0" />
+      <scope id="4652592318748335472" at="118,33,123,13">
         <var name="x" id="4652592318748335474" />
       </scope>
-      <scope id="4652592318748335253" at="66,66,72,9">
+      <scope id="4652592318748335253" at="69,66,75,9">
         <var name="buttons" id="445023375369696954" />
         <var name="y" id="4652592318748335255" />
       </scope>
-      <scope id="4652592318748335297" at="78,44,84,5" />
-      <scope id="4652592318748335333" at="120,0,126,0">
+      <scope id="4652592318748335297" at="81,44,87,5" />
+      <scope id="4652592318748335333" at="125,0,131,0">
         <var name="checkedDotOperand" id="4652592318748335333" />
       </scope>
-      <scope id="4652592318748335357" at="126,0,132,0">
+      <scope id="4652592318748335357" at="131,0,137,0">
         <var name="checkedDotOperand" id="4652592318748335357" />
       </scope>
-      <scope id="4652592318748335147" at="29,0,36,0">
+      <scope id="4652592318748335150" at="29,110,36,64" />
+      <scope id="4652592318748335337" at="93,0,100,0">
+        <var name="event" id="4652592318748335340" />
+      </scope>
+      <scope id="4652592318748335383" at="105,0,112,0">
+        <var name="p" id="4652592318748335455" />
+      </scope>
+      <scope id="4652592318748335469" at="118,0,125,0">
+        <var name="index" id="4652592318748335501" />
+      </scope>
+      <scope id="4652592318748335212" at="54,0,62,0">
+        <var name="graphics" id="4652592318748335215" />
+      </scope>
+      <scope id="4652592318748335248" at="68,0,76,7">
+        <var name="cg" id="4652592318748335249" />
+      </scope>
+      <scope id="4652592318748335147" at="29,0,38,0">
         <var name="changeGroupLayout" id="4652592318748335190" />
         <var name="editorComponent" id="4652592318748335188" />
         <var name="iconCount" id="4652592318748335186" />
       </scope>
-      <scope id="4652592318748335337" at="90,0,97,0">
-        <var name="event" id="4652592318748335340" />
-      </scope>
-      <scope id="4652592318748335383" at="102,0,109,0">
-        <var name="p" id="4652592318748335455" />
-      </scope>
-      <scope id="4652592318748335469" at="113,0,120,0">
-        <var name="index" id="4652592318748335501" />
-      </scope>
-      <scope id="4652592318748335212" at="51,0,59,0">
-        <var name="graphics" id="4652592318748335215" />
-      </scope>
-      <scope id="4652592318748335248" at="65,0,73,7">
-        <var name="cg" id="4652592318748335249" />
-      </scope>
-      <scope id="4652592318748335292" at="77,0,86,0">
+      <scope id="4652592318748335292" at="80,0,89,0">
         <var name="event" id="4652592318748335295" />
       </scope>
-      <scope id="4652592318748335236" at="60,28,73,7">
+      <scope id="4652592318748335236" at="63,28,76,7">
         <var name="changeGroups" id="3289683577578505589" />
         <var name="previousStart" id="4652592318748335245" />
       </scope>
-      <scope id="4652592318748335234" at="59,39,74,5" />
-      <scope id="4652592318748335231" at="59,0,76,0" />
-      <unit id="4652592318748335093" at="19,0,133,0" name="jetbrains.mps.vcs.diff.ui.common.ButtonsPainter" />
+      <scope id="4652592318748335234" at="62,39,77,5" />
+      <scope id="4652592318748335231" at="62,0,79,0" />
+      <unit id="4652592318748335093" at="19,0,138,0" name="jetbrains.mps.vcs.diff.ui.common.ButtonsPainter" />
     </file>
   </root>
   <root nodeRef="r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748335554">

@@ -18,8 +18,8 @@ import java.awt.Point;
 
 @GeneratedClass(nodeId = "4652592318748335093", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public abstract class ButtonsPainter extends AbstractFoldingAreaPainter {
-  private static final int ICON_SIZE = 11;
-  private static final int GAP = 3;
+  private static final int ICON_SIZE = 14;
+  private static final int GAP = 4;
   private static final int LEFT_MARGIN = 5;
   private int myWidth;
   private ChangeGroupLayout myChangeGroupLayout;
@@ -28,8 +28,10 @@ public abstract class ButtonsPainter extends AbstractFoldingAreaPainter {
   private FoldingAreaButton myCurrentButton = null;
   public ButtonsPainter(int iconCount, EditorComponent editorComponent, ChangeGroupLayout changeGroupLayout) {
     super(editorComponent.getLeftEditorHighlighter());
+    // FIXME see #relayout(), below
     myWidth = (GAP + ICON_SIZE) * iconCount + LEFT_MARGIN;
     myChangeGroupLayout = changeGroupLayout;
+    // XXX highlightLeft - seems to mean "highlighter area to the left of the middle editor", i.e. given A B C as editors, highlightLeft == true for the space b/w A and B
     myHighlightLeft = changeGroupLayout.getLeftComponent() == editorComponent;
     myChangeGroupLayout.addInvalidateListener(() -> relayout());
   }
@@ -42,6 +44,7 @@ public abstract class ButtonsPainter extends AbstractFoldingAreaPainter {
   }
   @Override
   public int getLeftAreaWidth() {
+    // FTR, folding area consists of 2 areas, to the left and to the right of "folding line"
     return (myHighlightLeft ? 0 : myWidth);
   }
   @Override
@@ -66,8 +69,8 @@ public abstract class ButtonsPainter extends AbstractFoldingAreaPainter {
       for (ChangeGroup cg : ListSequence.fromList(changeGroups)) {
         int y = Math.max((int) cg.getBounds(myHighlightLeft).start() + 1, previousStart + GAP + ICON_SIZE);
         Iterable<FoldingAreaButton> buttons = createButtonsForChangeGroup(cg, y);
-        if (buttons != null && Sequence.fromIterable(buttons).isNotEmpty()) {
-          ListSequence.fromList(myButtons).addSequence(Sequence.fromIterable(createButtonsForChangeGroup(cg, y)));
+        if (Sequence.fromIterable(buttons).isNotEmpty()) {
+          ListSequence.fromList(myButtons).addSequence(Sequence.fromIterable(buttons));
           previousStart = y;
         }
       }
@@ -108,8 +111,10 @@ public abstract class ButtonsPainter extends AbstractFoldingAreaPainter {
   }
   @Override
   public void relayout() {
+    // FIXME I see no reason to calculate myWidth with constants and not to create buttons here and take their actual size, instead
     myButtons = null;
   }
+
   protected int getX(int index) {
     int x = (1 + index) * (-GAP - ICON_SIZE) - LEFT_MARGIN;
     if (myHighlightLeft) {

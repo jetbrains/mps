@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ import java.awt.event.MouseEvent;
  */
 public abstract class AbstractHighlighterPainter {
 
-  private LeftEditorHighlighter myLeftHighlighter;
+  private final LeftEditorHighlighter myLeftHighlighter;
 
   public AbstractHighlighterPainter(@NotNull LeftEditorHighlighter leftHighlighter) {
     myLeftHighlighter = leftHighlighter;
@@ -46,7 +46,7 @@ public abstract class AbstractHighlighterPainter {
   }
 
   /**
-   * This method will be called to notify painter that it should be relayouted in accordance
+   * This method will be called to notify painter that it should be re-layouted in accordance
    * with latest changes in editor. This method will be called in the edit of associated
    * EditorComponent rebuild process
    */
@@ -93,9 +93,4 @@ public abstract class AbstractHighlighterPainter {
   protected EditorComponent getEditorComponent() {
     return getLeftHighlighter().getEditorComponent();
   }
-
-  protected void repaint(int y, int height) {
-
-  }
-
 }
