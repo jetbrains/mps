@@ -8,27 +8,31 @@ import jetbrains.mps.extapi.module.SRepositoryExt;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModuleId;
-import org.jetbrains.mps.openapi.module.SModule;
 import java.util.HashMap;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.AbstractModule;
 import java.util.Set;
 import java.util.Collections;
+import java.util.stream.Collectors;
 import org.jetbrains.annotations.Nullable;
-import java.util.ArrayList;
 
+/**
+ * Straightforward {@link jetbrains.mps.extapi.module.SRepositoryExt } implementation, with a limitation of single owner per module (unlike e.g. {@code MPSModuleRepository)}
+ */
 @GeneratedClass(nodeId = "2204323622700131110", model = "r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)")
 /*package*/ class Repo extends SRepositoryBase implements SRepositoryExt {
   private final ModelAccess myModelAccess;
-  private final Map<SModuleId, SModule> myModules;
+  private final Map<SModuleId, ModuleRecord> myModules;
 
   public Repo(ModelAccess ma) {
     myModelAccess = ma;
-    myModules = new HashMap<SModuleId, SModule>();
+    myModules = new HashMap<>();
   }
 
   public <T extends SModule> T registerModule(@NotNull T module, @NotNull MPSModuleOwner owner) {
-    SModule existing = myModules.putIfAbsent(module.getModuleId(), module);
+    myModelAccess.checkWriteAccess();
+    ModuleRecord existing = myModules.putIfAbsent(module.getModuleId(), new ModuleRecord(module, owner));
     if (existing != null) {
       throw new IllegalStateException("Duplicate modules with id '" + module.getModuleId() + "'");
     }
@@ -40,8 +44,9 @@ import java.util.ArrayList;
 
   @Override
   public void unregisterModule(@NotNull SModule module, @NotNull MPSModuleOwner owner) {
-    SModule removed = myModules.remove(module.getModuleId());
-    if (removed != module) {
+    myModelAccess.checkWriteAccess();
+    ModuleRecord removed = myModules.remove(module.getModuleId());
+    if (removed.module != module || removed.owner != owner) {
       throw new IllegalStateException();
     }
     if (module instanceof AbstractModule) {
@@ -51,23 +56,29 @@ import java.util.ArrayList;
 
   @Override
   public Set<MPSModuleOwner> getOwners(@NotNull SModule module) {
-    // as we ignore MPSModuleOwner when registering a module, there's no way to return a proper value
-    // OTOH, UnsupportedOperationException, though technically right, is no appropriate as there's generic code
-    // that expects this method not to throw an exception (i.e. Language unregistering its Generators)
-    return Collections.<MPSModuleOwner>emptySet();
+    myModelAccess.checkReadAccess();
+    ModuleRecord rec = myModules.get(module.getModuleId());
+    if (rec == null) {
+      return Collections.<MPSModuleOwner>emptySet();
+    }
+    if (rec.module != module) {
+      throw new IllegalStateException();
+    }
+    return Collections.singleton(rec.owner);
   }
 
-
   @Override
-  public Set<SModule> getModules(MPSModuleOwner owner) {
-    // see getOwners(), above, for reasone why empty collection, not exception
-    return Collections.<SModule>emptySet();
+  public Set<SModule> getModules(final MPSModuleOwner owner) {
+    myModelAccess.checkReadAccess();
+    return myModules.values().stream().filter((rec) -> rec.owner == owner).map((rec) -> rec.module).collect(Collectors.<SModule>toSet());
   }
 
   @Nullable
   @Override
   public SModule getModule(@NotNull SModuleId mid) {
-    return myModules.get(mid);
+    myModelAccess.checkReadAccess();
+    ModuleRecord rec = myModules.get(mid);
+    return (rec == null ? null : rec.module);
   }
 
   @Override
@@ -78,12 +89,22 @@ import java.util.ArrayList;
   @NotNull
   @Override
   public Iterable<SModule> getModules() {
-    return new ArrayList<SModule>(myModules.values());
+    myModelAccess.checkReadAccess();
+    return myModules.values().stream().map((rec) -> rec.module).toList();
   }
 
   @NotNull
   @Override
   public ModelAccess getModelAccess() {
     return myModelAccess;
+  }
+
+  private static class ModuleRecord {
+    /*package*/ final SModule module;
+    /*package*/ final MPSModuleOwner owner;
+    /*package*/ ModuleRecord(SModule m, MPSModuleOwner o) {
+      module = m;
+      owner = o;
+    }
   }
 }

@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 
 /**
  * PROVISIONAL CODE, FOR MPS INTERNAL USE
@@ -22,6 +22,9 @@ public abstract class RepositoryFacade {
 
   public abstract void registerModule(@NotNull SModule module);
 
+  /**
+   * unregisters modules earlier registered through {@link jetbrains.mps.smodel.RepositoryFacade#registerModule(SModule) } (any other module, if any, is left intact)
+   */
   public void dispose() {
   }
 
@@ -46,14 +49,12 @@ public abstract class RepositoryFacade {
 
       @Override
       public void registerModule(@NotNull SModule module) {
-        // FIXME add assertCanWrite either here or into repo impl,
         repo.registerModule(module, owner);
       }
 
       @Override
       public void dispose() {
-        // FIXME only with 'owner' (Repo has to track owners)
-        for (SModule m : Sequence.fromIterable(repo.getModules())) {
+        for (SModule m : SetSequence.fromSet(repo.getModules(owner))) {
           repo.unregisterModule(m, owner);
         }
       }
