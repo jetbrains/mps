@@ -25385,7 +25385,7 @@
       <property role="3fwGa$" value="IntelliJ" />
       <property role="TZNOO" value="17" />
       <node concept="3qWCbU" id="6Za9XhmfePi" role="2_Ic$A">
-        <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+        <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.json" />
       </node>
     </node>
     <node concept="398b33" id="2eDSGe9d1ou" role="3989C9">
@@ -25431,7 +25431,7 @@
       <property role="2_Ic$y" value="mps-workbench-specific" />
       <property role="TZNOO" value="17" />
       <node concept="3qWCbU" id="79wGYVsEpzE" role="2_Ic$A">
-        <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+        <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.json" />
       </node>
       <node concept="3LWZYq" id="79wGYVsEuM7" role="2_Ic$A">
         <property role="3LWZYl" value="idea/IdeaApplicationInfo.xml" />
@@ -50393,7 +50393,7 @@
         <property role="2iUeEu" value="http://www.jetbrains.com/mps/" />
       </node>
       <node concept="m$_yC" id="1JaUSFUm4GS" role="m$_yJ">
-        <ref role="m$_y1" node="4k71ibbLe59" />
+        <ref role="m$_y1" node="4k71ibbLe59" resolve="com.intellij.modules.mps" />
       </node>
       <node concept="m$f5U" id="EPbpPrikW8" role="m$_yh">
         <ref role="m$f5T" node="1JaUSFUm4EW" resolve="mps-context-actions-tool" />
