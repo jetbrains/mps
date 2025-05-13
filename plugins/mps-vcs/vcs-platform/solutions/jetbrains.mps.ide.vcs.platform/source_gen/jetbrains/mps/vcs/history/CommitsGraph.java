@@ -13,6 +13,9 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.vcs.history.CurrentRevision;
+import org.jetbrains.mps.openapi.model.SModel;
+import com.intellij.openapi.vcs.VcsException;
+import java.io.IOException;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import com.intellij.openapi.vcs.FilePath;
 import com.intellij.vcsUtil.VcsUtil;
@@ -51,6 +54,7 @@ public final class CommitsGraph {
   public VirtualFile getFile() {
     // FIXME provisional code, as there's a file traveling along with CommitsGraph, and I see no reason to pass both when can keep it here
     //     OTOH, don't quite get the idea of VF for a commit graph of a model. If indeed is ok, remove fixme and document like "actual file used to build the graph"
+    //     Provided there's single use, perhaps, shall remove notion of the file as CommitsGraph's public attribute? Still, need to keep it as a field.
     return myFile;
   }
 
@@ -66,11 +70,21 @@ public final class CommitsGraph {
   }
 
   public void addLocalRevisionNode(@NotNull CurrentRevision revision) {
-    addLocalRevisionNode(new CommitsGraphNode(revision, VCSPersistenceUtil.loadModel(revision.loadContent(), myFile.getExtension())));
+    SModel loadModel = null;
+    try {
+      loadModel = loadModel(revision);
+    } catch (Exception ex) {
+      // ignore as it was in RootModelHistoryExtractor prior to the refactoring. However, shall not happen and is likely an error - current revision w/o a model?
+    }
+    addLocalRevisionNode(new CommitsGraphNode(revision, loadModel));
   }
 
   public Collection<CommitsGraphNode> getNodes() {
     return myNodes;
+  }
+
+  /*package*/ SModel loadModel(VcsFileRevision revision) throws VcsException, IOException {
+    return VCSPersistenceUtil.loadModel(revision.loadContent(), myFile.getExtension());
   }
 
   public static class BuildException extends Exception {
@@ -92,7 +106,7 @@ public final class CommitsGraph {
   @Nullable
   private static VcsLogData getDataManager(Project project) {
     VcsLogManager logManager = VcsProjectLog.getInstance(project).getLogManager();
-    return check_2ne4bd_a1a02(logManager);
+    return check_2ne4bd_a1a22(logManager);
   }
 
   @NotNull
@@ -186,7 +200,7 @@ public final class CommitsGraph {
     }
     return nodes;
   }
-  private static VcsLogData check_2ne4bd_a1a02(VcsLogManager checkedDotOperand) {
+  private static VcsLogData check_2ne4bd_a1a22(VcsLogManager checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getDataManager();
     }

@@ -26,7 +26,6 @@ import git4idea.GitRevisionNumber;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.vcs.VcsException;
 import java.io.IOException;
-import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import com.intellij.diff.contents.DiffContent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.AbstractVcs;
@@ -176,12 +175,14 @@ public final class CommitsGraphNode implements Comparable {
     return myIsIgnored;
   }
 
-  /*package*/ void loadModel(@Nullable CommitsGraphNode childNode, String fileExtension) throws VcsException, IOException {
+  /*package*/ void loadModel(@Nullable CommitsGraphNode childNode, CommitsGraph graph) throws VcsException, IOException {
+    // this is indeed a weird logic, parentNode.loadModel(childNode). It's more about "propagate from child if not loaded", where we
+    //  go from child nodes up to parents and eventually to grandparents (children being more recent commits, AFAIU)
     if (isModelLoaded()) {
       return;
     }
     try {
-      myModel = VCSPersistenceUtil.loadModel(myRevision.loadContent(), fileExtension);
+      myModel = graph.loadModel(myRevision);
     } finally {
       setLoadedModel(childNode);
     }
