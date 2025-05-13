@@ -12,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.diff.DiffContext;
 import com.intellij.diff.requests.ContentDiffRequest;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.project.ProjectHelper;
 import java.util.List;
 import com.intellij.diff.contents.DiffContent;
 import com.intellij.openapi.fileTypes.FileType;
@@ -32,20 +33,19 @@ import javax.swing.JLabel;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.ActionManager;
 import java.util.Arrays;
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
 import jetbrains.mps.smodel.SModelReference;
 import jetbrains.mps.smodel.SModelId;
 import com.intellij.openapi.vfs.VirtualFile;
 import java.io.InputStream;
 import jetbrains.mps.util.ReadUtil;
-import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
-import java.io.IOException;
-import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.ide.vfs.IdeaFileSystem;
+import jetbrains.mps.vcspersistence.ModelSack;
+import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import com.intellij.openapi.project.Project;
 import org.jetbrains.mps.openapi.model.SNode;
 
 @GeneratedClass(nodeId = "2146316116462344446", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
@@ -57,7 +57,7 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
   private ModelDifferenceViewer myViewer;
 
   public ModelDiffViewer(@NotNull DiffContext context, @NotNull ContentDiffRequest request) {
-    final MPSProject mpsProject = check_qg7y9c_a0a0g(context.getProject());
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(context.getProject());
 
     List<DiffContent> contents = request.getContents();
     final FileType type = (ListSequence.fromList(contents).getElement(0).getContentType() != null ? ListSequence.fromList(contents).getElement(0).getContentType() : ListSequence.fromList(contents).getElement(1).getContentType());
@@ -172,7 +172,7 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
   }
 
   @Nullable
-  private static SModel readModel(DiffContent content, FileType type) {
+  private static SModel readModel(DiffContent content, FileType type, ComponentHost mpsPlatform) {
     // already a model?
     if (content instanceof ModelDiffContent) {
       return ((ModelDiffContent) content).getModel();
@@ -183,21 +183,38 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
 
     if (content instanceof FileContent) {
       VirtualFile file = ((FileContent) content).getFile();
-      InputStream inputStream = null;
-      try {
-        inputStream = file.getInputStream();
+      try (InputStream inputStream = file.getInputStream()) {
         // I'm fine with exception in case file length is > than 2^31
+        // FIXME although not a big deal to craft a StreamDataSource here
         byte[] data = ReadUtil.read(inputStream, (int) file.getLength());
-        return VCSPersistenceUtil.loadModel(data, file.getExtension());
-      } catch (IOException ex) {
-        // ignore error
-        FileUtil.closeFileSafe(inputStream);
+        return ModelSack.discover(mpsPlatform, file.getName()).load(data);
+      } catch (Exception ex) {
+        // ignore any error
         return null;
       }
     }
     if (content instanceof DocumentContent) {
-      String text = ((DocumentContent) content).getDocument().getText();
-      return VCSPersistenceUtil.loadModel(text.getBytes(), type.getDefaultExtension());
+      try {
+        DocumentContent dc = (DocumentContent) content;
+        String text = dc.getDocument().getText();
+        String fileName;
+        if (dc.getHighlightFile() != null) {
+          fileName = dc.getHighlightFile().getName();
+        } else {
+          if (type == MPSFileTypeFactory.MPS_HEADER_FILE_TYPE) {
+            // ".model" is the only case from ModelDiffTool.DIFF_SUPPORTED_TYPES that comes w/o a file name
+            fileName = MPSExtentions.DOT_MODEL_HEADER;
+          } else {
+            // hack, we know discover() looks into extension part only, can get any name here
+            // however, still a hack, and I'd like to get rid of it eventually (once there's no need in discover() or its per-root-aware logic (i.e. once per-root MF supports single roots/headers)
+            fileName = "fakeFileName." + type.getDefaultExtension();
+          }
+        }
+        return ModelSack.discover(mpsPlatform, fileName).load(text.getBytes());
+      } catch (Exception ex) {
+        // ignore any error
+        return null;
+      }
     }
     return null;
   }
@@ -211,7 +228,7 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
     // try to find model in repository
     if (content instanceof FileContent) {
       VirtualFile file = ((FileContent) content).getFile();
-      IdeaFileSystem fs = mpsProject.getFileSystem();
+      FileSystemBridge fs = mpsProject.getFileSystem();
       SModel model = null;
       if (fs.canConvert(file)) {
         model = SModelFileTracker.getInstance(mpsProject.getRepository()).findModel(fs.fromVirtualFile(file));
@@ -221,20 +238,20 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
       }
     }
     // read model from content
-    return readModel(content, type);
+    return readModel(content, type, mpsProject.getPlatform());
   }
 
   @Nullable
   private static Tuples._2<SModel, SNodeId> getModelAndRoot(MPSProject mpsProject, DiffContent content, FileType type) {
     // first read model from file and get root Id
-    SModel model = readModel(content, type);
+    SModel model = readModel(content, type, mpsProject.getPlatform());
     // there should be no more than one root in the model from this file 
     SNodeId rootId = check_qg7y9c_a0d0x(ListSequence.fromList(SModelOperations.roots(model, null)).first());
 
     // try to find model in repository
     if (content instanceof FileContent) {
       VirtualFile file = ((FileContent) content).getFile().getParent();
-      IdeaFileSystem fs = mpsProject.getFileSystem();
+      FileSystemBridge fs = mpsProject.getFileSystem();
       if (fs.canConvert(file)) {
         SModel repoModel = SModelFileTracker.getInstance(mpsProject.getRepository()).findModel(fs.fromVirtualFile(file));
         if (repoModel != null) {
@@ -243,12 +260,6 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
       }
     }
     return MultiTuple.<SModel,SNodeId>from(model, rootId);
-  }
-  private static MPSProject check_qg7y9c_a0a0g(Project checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getComponent(MPSProject.class);
-    }
-    return null;
   }
   private static SNodeId check_qg7y9c_a0d0x(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
