@@ -56,6 +56,9 @@
       <library location="${platform_lib}/util_rt.jar" />
       <library location="${platform_lib}/jps-model.jar" />
       <library location="${platform_lib}/forms_rt.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.impl.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.dvcs.impl.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.log.impl.jar" />
     </facet>
   </facets>
   <sourcePath />
