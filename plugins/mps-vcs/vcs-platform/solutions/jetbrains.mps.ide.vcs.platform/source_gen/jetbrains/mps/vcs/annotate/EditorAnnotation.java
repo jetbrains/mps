@@ -67,8 +67,9 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.diff.DiffManager;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
-import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
+import jetbrains.mps.vcspersistence.ModelSack;
 import java.io.IOException;
+import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -85,7 +86,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   private final MergingUpdateQueue myUpdateQueue;
   private final List<RevisionChanges> myVcsChangesGroups = ListSequence.fromList(new ArrayList<RevisionChanges>());
   private AtomicReference<List<LineAnnotation>> myLineAnnotationsRef = new AtomicReference<List<LineAnnotation>>(ListSequence.fromList(new ArrayList<LineAnnotation>()));
-  private List<VcsFileRevision> myAllRevisions;
+  private final List<VcsFileRevision> myAllRevisions;
   private LineAnnotationsUpdateListener myLineAnnotationsUpdateListener;
   private CommitsGraphNode myCommitUnderMouse;
   @Nullable
@@ -646,18 +647,18 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
 
   @Nullable
   private SModel loadRevisionModel(VcsFileRevision revision) {
-    SModel commitModel;
     try {
-      commitModel = VCSPersistenceUtil.loadModel(revision.loadContent(), myFile.getExtension());
-    } catch (IOException ex) {
-      return null;
-    } catch (VcsException ex) {
+      // FWIW, old code with VCSPersistenceUtil.loadModel(file.extension) worked for per-root persistence w/o magic of ModelSack
+      //     due to fallback to v9 persistence in VCSPersistenceSupport.getPersistence(). OTOH, the fallback shall be gone eventually
+      ModelSack md = ModelSack.discover(myMpsProject.getPlatform(), myFile.getName());
+      SModel commitModel = md.load(revision.loadContent());
+      if (!(commitModel.isLoaded())) {
+        return null;
+      }
+      return commitModel;
+    } catch (IOException | VcsException | ModelLoadException | IllegalArgumentException ex) {
       return null;
     }
-    if (commitModel == null || !(commitModel.isLoaded())) {
-      return null;
-    }
-    return commitModel;
   }
   private static void check_coav66_a3a27(LineAnnotationsUpdateListener checkedDotOperand) {
     if (null != checkedDotOperand) {

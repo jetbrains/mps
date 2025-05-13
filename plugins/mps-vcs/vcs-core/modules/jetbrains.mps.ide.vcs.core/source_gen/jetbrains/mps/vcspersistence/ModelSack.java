@@ -5,6 +5,7 @@ package jetbrains.mps.vcspersistence;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import jetbrains.mps.smodel.SModelHeader;
@@ -22,7 +23,6 @@ import org.jetbrains.mps.openapi.persistence.ContentOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import java.util.Collections;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.persistence.PersistenceUtil;
@@ -63,6 +63,7 @@ public class ModelSack {
     return myRPRoot;
   }
 
+  @NotNull
   public SModel load(final byte[] content) throws ModelLoadException {
     // here we inline what used to be in VCSPersistenceUtil.loadModel() and .loadFromOldMPSPersistence()
     try {
@@ -84,6 +85,7 @@ public class ModelSack {
 
   }
 
+  @NotNull
   public SModel loadContemporaryPersistenceOnly(StreamDataSource dataSource) throws ModelLoadException {
     try {
       // XXX perhaps, shall introduce an option "LOAD COMPLETELY" to avoid extra model.load() step
@@ -119,6 +121,7 @@ public class ModelSack {
 
   @NotNull
   public static ModelSack discover(@NotNull ComponentHost mpsPlatform, @NotNull String fileName) throws IllegalArgumentException {
+    // XXX check comment in EditorAnnotation (using this method), perhaps can simplify this logic - e.g. not to check filename at all?
     ModelFactoryService mfs = mpsPlatform.findComponent(ModelFactoryService.class);
 
     final String fnExt = FileUtil.getExtension(fileName);

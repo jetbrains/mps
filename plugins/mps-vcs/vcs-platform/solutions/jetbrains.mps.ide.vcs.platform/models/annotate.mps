@@ -86,7 +86,9 @@
     <import index="7lvn" ref="r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)" />
     <import index="zyr2" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.inspector(MPS.Editor/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
+    <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="hq8m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.options(MPS.IDEA/)" implicit="true" />
+    <import index="z1c4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -14862,6 +14864,7 @@
     </node>
     <node concept="312cEg" id="5uC3ja$9JqW" role="jymVt">
       <property role="TrG5h" value="myAllRevisions" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="5uC3ja$9qKE" role="1B3o_S" />
       <node concept="_YKpA" id="5uC3ja$9Boq" role="1tU5fm">
         <node concept="3uibUv" id="5uC3ja$9FNI" role="_ZDj9">
@@ -21360,14 +21363,6 @@
     <node concept="3clFb_" id="7GdQgoXzABG" role="jymVt">
       <property role="TrG5h" value="loadRevisionModel" />
       <node concept="3clFbS" id="7GdQgoXzABI" role="3clF47">
-        <node concept="3cpWs8" id="7GdQgoXzABJ" role="3cqZAp">
-          <node concept="3cpWsn" id="7GdQgoXzABK" role="3cpWs9">
-            <property role="TrG5h" value="commitModel" />
-            <node concept="3uibUv" id="7GdQgoXzABL" role="1tU5fm">
-              <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
-            </node>
-          </node>
-        </node>
         <node concept="3J1_TO" id="7GdQgoXzABM" role="3cqZAp">
           <node concept="3uVAMA" id="7GdQgoXzABN" role="1zxBo5">
             <node concept="XOnhg" id="7GdQgoXzABO" role="1zc67B">
@@ -21375,6 +21370,15 @@
               <node concept="nSUau" id="7GdQgoXzABP" role="1tU5fm">
                 <node concept="3uibUv" id="7GdQgoXzABQ" role="nSUat">
                   <ref role="3uigEE" to="guwi:~IOException" resolve="IOException" />
+                </node>
+                <node concept="3uibUv" id="5Lno_XGD67Q" role="nSUat">
+                  <ref role="3uigEE" to="jlcu:~VcsException" resolve="VcsException" />
+                </node>
+                <node concept="3uibUv" id="5Lno_XGC9I8" role="nSUat">
+                  <ref role="3uigEE" to="dush:~ModelLoadException" resolve="ModelLoadException" />
+                </node>
+                <node concept="3uibUv" id="5Lno_XGEcWc" role="nSUat">
+                  <ref role="3uigEE" to="wyt6:~IllegalArgumentException" resolve="IllegalArgumentException" />
                 </node>
               </node>
             </node>
@@ -21384,79 +21388,185 @@
               </node>
             </node>
           </node>
-          <node concept="3uVAMA" id="7GdQgoXzABU" role="1zxBo5">
-            <node concept="XOnhg" id="7GdQgoXzABV" role="1zc67B">
-              <property role="TrG5h" value="ex" />
-              <node concept="nSUau" id="7GdQgoXzABW" role="1tU5fm">
-                <node concept="3uibUv" id="7GdQgoXzABX" role="nSUat">
-                  <ref role="3uigEE" to="jlcu:~VcsException" resolve="VcsException" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbS" id="7GdQgoXzABY" role="1zc67A">
-              <node concept="3cpWs6" id="7GdQgoXzABZ" role="3cqZAp">
-                <node concept="10Nm6u" id="7GdQgoXzAC0" role="3cqZAk" />
-              </node>
-            </node>
-          </node>
           <node concept="3clFbS" id="7GdQgoXzAC1" role="1zxBo7">
-            <node concept="3clFbF" id="7GdQgoXzAC2" role="3cqZAp">
-              <node concept="37vLTI" id="7GdQgoXzAC3" role="3clFbG">
-                <node concept="37vLTw" id="7GdQgoXzAC4" role="37vLTJ">
-                  <ref role="3cqZAo" node="7GdQgoXzABK" resolve="commitModel" />
+            <node concept="3SKdUt" id="5Lno_XGHs57" role="3cqZAp">
+              <node concept="1PaTwC" id="5Lno_XGHs58" role="1aUNEU">
+                <node concept="3oM_SD" id="5Lno_XGHs59" role="1PaTwD">
+                  <property role="3oM_SC" value="FWIW," />
                 </node>
-                <node concept="2YIFZM" id="7GdQgoXzAC5" role="37vLTx">
-                  <ref role="1Pybhc" to="iho:1NiMOxiwPcH" resolve="VCSPersistenceUtil" />
-                  <ref role="37wK5l" to="iho:1NiMOxiwPI2" resolve="loadModel" />
-                  <node concept="2OqwBi" id="7GdQgoXzAC6" role="37wK5m">
-                    <node concept="37vLTw" id="7GdQgoXzAC7" role="2Oq$k0">
-                      <ref role="3cqZAo" node="7GdQgoXzACs" resolve="revision" />
+                <node concept="3oM_SD" id="5Lno_XGHMed" role="1PaTwD">
+                  <property role="3oM_SC" value="old" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGHMjU" role="1PaTwD">
+                  <property role="3oM_SC" value="code" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGHMjV" role="1PaTwD">
+                  <property role="3oM_SC" value="with" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGHMjW" role="1PaTwD">
+                  <property role="3oM_SC" value="VCSPersistenceUtil.loadModel(file.extension)" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGHMId" role="1PaTwD">
+                  <property role="3oM_SC" value="worked" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGHMNT" role="1PaTwD">
+                  <property role="3oM_SC" value="for" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGHMT_" role="1PaTwD">
+                  <property role="3oM_SC" value="per-root" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGHN3y" role="1PaTwD">
+                  <property role="3oM_SC" value="persistence" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGHN9e" role="1PaTwD">
+                  <property role="3oM_SC" value="w/o" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGHN9f" role="1PaTwD">
+                  <property role="3oM_SC" value="magic" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGHNee" role="1PaTwD">
+                  <property role="3oM_SC" value="of" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGHNef" role="1PaTwD">
+                  <property role="3oM_SC" value="ModelSack" />
+                </node>
+              </node>
+            </node>
+            <node concept="3SKdUt" id="5Lno_XGHUfh" role="3cqZAp">
+              <node concept="1PaTwC" id="5Lno_XGHUfi" role="1aUNEU">
+                <node concept="3oM_SD" id="5Lno_XGHUfj" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGHUfm" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIdxz" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIdx$" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIdx_" role="1PaTwD">
+                  <property role="3oM_SC" value="due" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIdA$" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIdFz" role="1PaTwD">
+                  <property role="3oM_SC" value="fallback" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIdLf" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIdLg" role="1PaTwD">
+                  <property role="3oM_SC" value="v9" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIdQf" role="1PaTwD">
+                  <property role="3oM_SC" value="persistence" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIdVV" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIqA4" role="1PaTwD">
+                  <property role="3oM_SC" value="VCSPersistenceSupport.getPersistence()." />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIJBo" role="1PaTwD">
+                  <property role="3oM_SC" value="OTOH," />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIJBp" role="1PaTwD">
+                  <property role="3oM_SC" value="the" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIJBq" role="1PaTwD">
+                  <property role="3oM_SC" value="fallback" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIJBr" role="1PaTwD">
+                  <property role="3oM_SC" value="shall" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIJBs" role="1PaTwD">
+                  <property role="3oM_SC" value="be" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIJH8" role="1PaTwD">
+                  <property role="3oM_SC" value="gone" />
+                </node>
+                <node concept="3oM_SD" id="5Lno_XGIJMO" role="1PaTwD">
+                  <property role="3oM_SC" value="eventually" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs8" id="5Lno_XGy_iB" role="3cqZAp">
+              <node concept="3cpWsn" id="5Lno_XGy_iC" role="3cpWs9">
+                <property role="TrG5h" value="md" />
+                <node concept="3uibUv" id="5Lno_XGymx4" role="1tU5fm">
+                  <ref role="3uigEE" to="iho:2VIcG4o2hgX" resolve="ModelSack" />
+                </node>
+                <node concept="2YIFZM" id="5Lno_XGy_iD" role="33vP2m">
+                  <ref role="37wK5l" to="iho:2VIcG4o2hlS" resolve="discover" />
+                  <ref role="1Pybhc" to="iho:2VIcG4o2hgX" resolve="ModelSack" />
+                  <node concept="2OqwBi" id="5Lno_XGA2HN" role="37wK5m">
+                    <node concept="37vLTw" id="5Lno_XGy_iE" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1jG3ZCaUNa3" resolve="myMpsProject" />
                     </node>
-                    <node concept="liA8E" id="7GdQgoXzAC8" role="2OqNvi">
-                      <ref role="37wK5l" to="yah0:~VcsFileContent.loadContent()" resolve="loadContent" />
+                    <node concept="liA8E" id="5Lno_XGApjn" role="2OqNvi">
+                      <ref role="37wK5l" to="z1c4:~ProjectBase.getPlatform()" resolve="getPlatform" />
                     </node>
                   </node>
-                  <node concept="2OqwBi" id="7GdQgoXzAC9" role="37wK5m">
-                    <node concept="37vLTw" id="7GdQgoXzLb4" role="2Oq$k0">
+                  <node concept="2OqwBi" id="5Lno_XGy_iF" role="37wK5m">
+                    <node concept="37vLTw" id="5Lno_XGy_iG" role="2Oq$k0">
                       <ref role="3cqZAo" node="1jG3ZCb58F2" resolve="myFile" />
                     </node>
-                    <node concept="liA8E" id="7GdQgoXzACb" role="2OqNvi">
-                      <ref role="37wK5l" to="jlff:~VirtualFile.getExtension()" resolve="getExtension" />
+                    <node concept="liA8E" id="5Lno_XGy_iH" role="2OqNvi">
+                      <ref role="37wK5l" to="jlff:~VirtualFile.getName()" resolve="getName" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="7GdQgoXzACc" role="3cqZAp">
-          <node concept="3clFbS" id="7GdQgoXzACd" role="3clFbx">
-            <node concept="3cpWs6" id="7GdQgoXzACe" role="3cqZAp">
-              <node concept="10Nm6u" id="7GdQgoXzACf" role="3cqZAk" />
-            </node>
-          </node>
-          <node concept="22lmx$" id="7GdQgoXzACg" role="3clFbw">
-            <node concept="3fqX7Q" id="7GdQgoXzACh" role="3uHU7w">
-              <node concept="2OqwBi" id="7GdQgoXzACi" role="3fr31v">
-                <node concept="37vLTw" id="7GdQgoXzACj" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7GdQgoXzABK" resolve="commitModel" />
+            <node concept="3cpWs8" id="7GdQgoXzABJ" role="3cqZAp">
+              <node concept="3cpWsn" id="7GdQgoXzABK" role="3cpWs9">
+                <property role="TrG5h" value="commitModel" />
+                <node concept="3uibUv" id="7GdQgoXzABL" role="1tU5fm">
+                  <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
                 </node>
-                <node concept="liA8E" id="7GdQgoXzACk" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SModel.isLoaded()" resolve="isLoaded" />
+                <node concept="2OqwBi" id="5Lno_XGzdLh" role="33vP2m">
+                  <node concept="37vLTw" id="5Lno_XGy_iI" role="2Oq$k0">
+                    <ref role="3cqZAo" node="5Lno_XGy_iC" resolve="md" />
+                  </node>
+                  <node concept="liA8E" id="5Lno_XGzxJx" role="2OqNvi">
+                    <ref role="37wK5l" to="iho:2VIcG4o3ZpT" resolve="load" />
+                    <node concept="2OqwBi" id="5Lno_XGzXHL" role="37wK5m">
+                      <node concept="37vLTw" id="5Lno_XGzXHM" role="2Oq$k0">
+                        <ref role="3cqZAo" node="7GdQgoXzACs" resolve="revision" />
+                      </node>
+                      <node concept="liA8E" id="5Lno_XGzXHN" role="2OqNvi">
+                        <ref role="37wK5l" to="yah0:~VcsFileContent.loadContent()" resolve="loadContent" />
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbC" id="7GdQgoXzACl" role="3uHU7B">
-              <node concept="37vLTw" id="7GdQgoXzACm" role="3uHU7B">
+            <node concept="3clFbJ" id="7GdQgoXzACc" role="3cqZAp">
+              <node concept="3clFbS" id="7GdQgoXzACd" role="3clFbx">
+                <node concept="3cpWs6" id="7GdQgoXzACe" role="3cqZAp">
+                  <node concept="10Nm6u" id="7GdQgoXzACf" role="3cqZAk" />
+                </node>
+              </node>
+              <node concept="3fqX7Q" id="7GdQgoXzACh" role="3clFbw">
+                <node concept="2OqwBi" id="7GdQgoXzACi" role="3fr31v">
+                  <node concept="37vLTw" id="7GdQgoXzACj" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7GdQgoXzABK" resolve="commitModel" />
+                  </node>
+                  <node concept="liA8E" id="7GdQgoXzACk" role="2OqNvi">
+                    <ref role="37wK5l" to="mhbf:~SModel.isLoaded()" resolve="isLoaded" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs6" id="7GdQgoXzACo" role="3cqZAp">
+              <node concept="37vLTw" id="7GdQgoXzACp" role="3cqZAk">
                 <ref role="3cqZAo" node="7GdQgoXzABK" resolve="commitModel" />
               </node>
-              <node concept="10Nm6u" id="7GdQgoXzACn" role="3uHU7w" />
             </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="7GdQgoXzACo" role="3cqZAp">
-          <node concept="37vLTw" id="7GdQgoXzACp" role="3cqZAk">
-            <ref role="3cqZAo" node="7GdQgoXzABK" resolve="commitModel" />
           </node>
         </node>
       </node>
