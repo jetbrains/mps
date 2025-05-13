@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -30,7 +29,7 @@ public final class RootCommitsGraphTraverser {
   private final Deque<CommitsGraphNode> myBranches = DequeSequence.fromDeque(new LinkedList<CommitsGraphNode>());
   private final Map<CommitsGraphNode, Set<CommitsGraphNode>> myForkCommits = MapSequence.fromMap(new HashMap<CommitsGraphNode, Set<CommitsGraphNode>>());
   private final CommitsGraphNodeConsumer myCommitConsumer;
-  private final VirtualFile myFile;
+  private final CommitsGraph myGraph;
   private final SNodeId myRootId;
   private final boolean myTolerateReadModelFailure = true;
   private boolean myIsStopped = false;
@@ -39,17 +38,20 @@ public final class RootCommitsGraphTraverser {
   private final CommitsGraphNode myStartNode;
 
 
-  public RootCommitsGraphTraverser(@NotNull CommitsGraphNode startNode, SNodeId rootId, VirtualFile file, CommitsGraphNodeConsumer commitConsumer) {
+  public RootCommitsGraphTraverser(CommitsGraph graph, @NotNull CommitsGraphNode startNode, SNodeId rootId, CommitsGraphNodeConsumer commitConsumer) {
     myRootId = rootId;
-    myFile = file;
+    myGraph = graph;
     myCommitConsumer = commitConsumer;
     myStartNode = startNode;
   }
 
+  public RootCommitsGraphTraverser(CommitsGraph graph, SNodeId rootId, CommitsGraphNodeConsumer commitConsumer) {
+    this(graph, graph.getHeadNode(), rootId, commitConsumer);
+  }
 
   public void run() {
     try {
-      myStartNode.loadModel(null, myFile.getExtension());
+      myStartNode.loadModel(null, myGraph.getFile().getExtension());
     } catch (Throwable e) {
       myException = new ModelReadException(myStartNode.getRevision(), e.getMessage());
     }
@@ -94,7 +96,7 @@ public final class RootCommitsGraphTraverser {
       return;
     }
     try {
-      parent.loadModel(node, myFile.getExtension());
+      parent.loadModel(node, myGraph.getFile().getExtension());
     } catch (Throwable e) {
       if (!(myTolerateReadModelFailure)) {
         throw new ModelReadException(parent.getRevision(), e.getMessage());

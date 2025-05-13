@@ -99,7 +99,7 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
 
     SNodeId rootId = myEditor.getEditedNode().getNodeId();
     ModelAccess modelAccess = myEditor.getEditorContext().getRepository().getModelAccess();
-    final RootAnnotation rootAnnotation = new RootAnnotation(myActualFile, rootId, modelAccess, commitsGraph);
+    final RootAnnotation rootAnnotation = new RootAnnotation(rootId, modelAccess, commitsGraph);
     EditorAnnotation editorAnnotation = new EditorAnnotation(myEditor, myActualFile, myActiveVcs, myMpsProject, rootAnnotation, revisions.value, null);
     final AnnotationColumn annotationColumn = new AnnotationColumn(myProject, myEditor.getLeftEditorHighlighter(), editorAnnotation, null);
 

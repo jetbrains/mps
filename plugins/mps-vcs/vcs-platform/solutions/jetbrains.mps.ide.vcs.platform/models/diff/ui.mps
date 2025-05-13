@@ -24170,17 +24170,9 @@
               <ref role="3cqZAo" node="4aYE7Kdmsiq" resolve="myCommitsGraph" />
             </node>
             <node concept="liA8E" id="6STmDFFbxmN" role="2OqNvi">
-              <ref role="37wK5l" to="5p6x:6STmDFFasZ_" resolve="addLocalRevisionNode" />
-              <node concept="2ShNRf" id="4sA_pTWE6Ik" role="37wK5m">
-                <node concept="1pGfFk" id="4sA_pTWE6Il" role="2ShVmc">
-                  <ref role="37wK5l" to="5p6x:6STmDFF9sb3" resolve="CommitsGraphNode" />
-                  <node concept="37vLTw" id="4sA_pTWEa44" role="37wK5m">
-                    <ref role="3cqZAo" node="45Dc_DepLd_" resolve="myLocalRevision" />
-                  </node>
-                  <node concept="1rXfSq" id="4sA_pTWNf32" role="37wK5m">
-                    <ref role="37wK5l" node="2Iw6HC1S6AL" resolve="loadLocalModel" />
-                  </node>
-                </node>
+              <ref role="37wK5l" to="5p6x:5Lno_XH4azx" resolve="addLocalRevisionNode" />
+              <node concept="37vLTw" id="5Lno_XH58rD" role="37wK5m">
+                <ref role="3cqZAo" node="45Dc_DepLd_" resolve="myLocalRevision" />
               </node>
             </node>
           </node>
@@ -24192,20 +24184,12 @@
             </node>
             <node concept="2ShNRf" id="3szaEXSAP2T" role="37vLTx">
               <node concept="1pGfFk" id="3szaEXSAP2U" role="2ShVmc">
-                <ref role="37wK5l" to="5p6x:3TI60oO49vk" resolve="RootCommitsGraphTraverser" />
-                <node concept="2OqwBi" id="4sA_pTWDxHO" role="37wK5m">
-                  <node concept="37vLTw" id="3szaEXSAP2V" role="2Oq$k0">
-                    <ref role="3cqZAo" node="4aYE7Kdmsiq" resolve="myCommitsGraph" />
-                  </node>
-                  <node concept="liA8E" id="4sA_pTWDyEB" role="2OqNvi">
-                    <ref role="37wK5l" to="5p6x:4aYE7KddEyX" resolve="getHeadNode" />
-                  </node>
+                <ref role="37wK5l" to="5p6x:5Lno_XH9J50" resolve="RootCommitsGraphTraverser" />
+                <node concept="37vLTw" id="3szaEXSAP2X" role="37wK5m">
+                  <ref role="3cqZAo" node="4aYE7Kdmsiq" resolve="myCommitsGraph" />
                 </node>
                 <node concept="37vLTw" id="3szaEXSAP2W" role="37wK5m">
                   <ref role="3cqZAo" node="4arIk_lPWDJ" resolve="myRootId" />
-                </node>
-                <node concept="37vLTw" id="3szaEXSAP2X" role="37wK5m">
-                  <ref role="3cqZAo" node="1oWcoIBNLvj" resolve="myFile" />
                 </node>
                 <node concept="Xjq3P" id="3szaEXSAP2Y" role="37wK5m" />
               </node>
@@ -24473,38 +24457,6 @@
       </node>
       <node concept="2AHcQZ" id="3szaEXSAyIF" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="2Iw6HC1RYbH" role="jymVt" />
-    <node concept="3clFb_" id="2Iw6HC1S6AL" role="jymVt">
-      <property role="TrG5h" value="loadLocalModel" />
-      <node concept="3clFbS" id="2Iw6HC1S6AO" role="3clF47">
-        <node concept="3clFbF" id="2Iw6HC1ScIZ" role="3cqZAp">
-          <node concept="2YIFZM" id="2Iw6HC1ScJ1" role="3clFbG">
-            <ref role="1Pybhc" to="iho:1NiMOxiwPcH" resolve="VCSPersistenceUtil" />
-            <ref role="37wK5l" to="iho:1NiMOxiwPI2" resolve="loadModel" />
-            <node concept="2OqwBi" id="2Iw6HC1ScJ2" role="37wK5m">
-              <node concept="37vLTw" id="2Iw6HC1ScJ3" role="2Oq$k0">
-                <ref role="3cqZAo" node="45Dc_DepLd_" resolve="myLocalRevision" />
-              </node>
-              <node concept="liA8E" id="2Iw6HC1ScJ4" role="2OqNvi">
-                <ref role="37wK5l" to="yah0:~CurrentRevision.loadContent()" resolve="loadContent" />
-              </node>
-            </node>
-            <node concept="2OqwBi" id="2Iw6HC1ScJ5" role="37wK5m">
-              <node concept="37vLTw" id="2Iw6HC1ScJ6" role="2Oq$k0">
-                <ref role="3cqZAo" node="1oWcoIBNLvj" resolve="myFile" />
-              </node>
-              <node concept="liA8E" id="2Iw6HC1ScJ7" role="2OqNvi">
-                <ref role="37wK5l" to="jlff:~VirtualFile.getExtension()" resolve="getExtension" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="2Iw6HC1S2Zi" role="1B3o_S" />
-      <node concept="3uibUv" id="2Iw6HC1S6t0" role="3clF45">
-        <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
       </node>
     </node>
     <node concept="2tJIrI" id="2Iw6HC26DdU" role="jymVt" />

@@ -20,9 +20,8 @@ import jetbrains.mps.vcs.history.CommitsGraph;
 import jetbrains.mps.vcs.history.RootCommitsGraphTraverser;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 
 @GeneratedClass(nodeId = "4799633552517352046", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
@@ -50,8 +49,8 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
     myOnUpdate = onUpdate;
     myTotalRevisions = revisions.size();
     myCommitsGraph = new CommitsGraph(project.getProject(), file, revisions.subList(1, revisions.size()));
-    myCommitsGraph.addLocalRevisionNode(new CommitsGraphNode(myLocalRevision, loadLocalModel()));
-    myRootCommitsGraphTraverser = new RootCommitsGraphTraverser(myCommitsGraph.getHeadNode(), myRootId, myFile, this);
+    myCommitsGraph.addLocalRevisionNode(myLocalRevision);
+    myRootCommitsGraphTraverser = new RootCommitsGraphTraverser(myCommitsGraph, myRootId, this);
   }
 
   @Override
@@ -102,10 +101,6 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
   public boolean stop() {
     myRootCommitsGraphTraverser.stop();
     return true;
-  }
-
-  private SModel loadLocalModel() {
-    return VCSPersistenceUtil.loadModel(myLocalRevision.loadContent(), myFile.getExtension());
   }
 
   @Override
