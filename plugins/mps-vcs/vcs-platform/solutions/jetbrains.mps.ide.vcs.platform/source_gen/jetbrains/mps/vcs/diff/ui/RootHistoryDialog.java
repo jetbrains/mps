@@ -61,12 +61,12 @@ import com.intellij.openapi.ui.MessageType;
 import com.intellij.util.ui.update.Update;
 import java.util.Collections;
 import com.intellij.diff.requests.NoDiffRequest;
+import com.intellij.diff.requests.LoadingDiffRequest;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.diff.contents.DiffContent;
-import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
+import com.intellij.diff.contents.EmptyContent;
 import com.intellij.diff.requests.SimpleDiffRequest;
 import jetbrains.mps.vcs.platform.integration.ModelDiffViewer;
-import com.intellij.diff.requests.LoadingDiffRequest;
 import com.intellij.diff.requests.MessageDiffRequest;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -81,9 +81,11 @@ import com.intellij.util.containers.ContainerUtil;
 import com.intellij.openapi.util.Conditions;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import org.jetbrains.annotations.Nullable;
-import com.intellij.diff.contents.EmptyContent;
+import org.jetbrains.mps.openapi.persistence.ModelLoadException;
+import com.intellij.openapi.vcs.VcsException;
+import java.io.IOException;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
+import jetbrains.mps.vcspersistence.ModelSack;
 import jetbrains.mps.vfs.tracking.ModelDiffContent;
 import com.intellij.openapi.util.Disposer;
 
@@ -290,33 +292,41 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
       myDiffPanel.setRequest(NoDiffRequest.INSTANCE);
       return;
     }
+    if (myRevisionsExtractor.isLoading() && myRevisionsExtractor.getRevisions().isEmpty()) {
+      // Previous use of LoadingDiffRequest was in a strange place, derived from VcsSelectionHistoryDialog code,
+      // here I try to mimic similar logic in the mentioned dialog (blockData.getRevisions().size() == 0), assuming 
+      // revisions in RevisionsExtractor get populated over time, and if there are none, no reason even to look into revision parents (didn't quite get what's that - 
+      // if these are all file revisions, why do we try to get node diff for file revision, which not necessarily contains a change for this node)
+      myDiffPanel.setRequest(new LoadingDiffRequest());
+      return;
+    }
+
     List<VcsFileRevision> selection = myList.getSelectedObjects();
     VcsFileRevision revision = ListSequence.fromList(selection).first();
     List<VcsFileRevision> parents = myRevisionsExtractor.getRevisionParents(revision);
     VcsFileRevision oldRevision1 = (ListSequence.fromList(parents).count() > 0 ? ListSequence.fromList(parents).getElement(0) : null);
     List<DiffContent> contents = ListSequence.fromList(new ArrayList<DiffContent>());
     List<String> titles = ListSequence.fromList(new ArrayList<String>());
-    ListSequence.fromList(contents).addElement(createDiffContent(oldRevision1));
-    ListSequence.fromList(titles).addElement(createTitle(oldRevision1));
-    ListSequence.fromList(contents).addElement(createDiffContent(revision));
-    ListSequence.fromList(titles).addElement(createTitle(revision));
-    if (ListSequence.fromList(parents).count() == 2) {
-      VcsFileRevision oldRevision2 = ListSequence.fromList(parents).getElement(1);
-      ListSequence.fromList(contents).addElement(createDiffContent(oldRevision2));
-      ListSequence.fromList(titles).addElement(createTitle(oldRevision2));
-    }
-    if (ListSequence.fromList(contents).count() == ListSequence.fromList(contents).where(new NotNullWhereFilter()).count()) {
+    // oldRevision1 is the only revision we tolerate as null and treat as 'empty' content. Others are expected to produce a model, and we fail diff if not
+    try {
+      ListSequence.fromList(contents).addElement((oldRevision1 == null ? new EmptyContent() : createDiffContent(oldRevision1)));
+      ListSequence.fromList(titles).addElement(createTitle(oldRevision1));
+      ListSequence.fromList(contents).addElement(createDiffContent(revision));
+      ListSequence.fromList(titles).addElement(createTitle(revision));
+      if (ListSequence.fromList(parents).count() == 2) {
+        VcsFileRevision oldRevision2 = ListSequence.fromList(parents).getElement(1);
+        ListSequence.fromList(contents).addElement(createDiffContent(oldRevision2));
+        ListSequence.fromList(titles).addElement(createTitle(oldRevision2));
+      }
+
       SimpleDiffRequest rq = new SimpleDiffRequest(null, contents, titles);
       ModelDiffViewer.DIFF_SHOW_ROOTID.set(rq, myRoot);
       ModelDiffViewer.DIFF_SHOW_TREE.set(rq, false);
       myDiffPanel.setRequest(rq, titles);
-      return;
-    }
-    if (myRevisionsExtractor.isLoading()) {
-      myDiffPanel.setRequest(new LoadingDiffRequest());
-    } else {
-      // FIXME throw an exception from createDiffContent, catch it here and present to user through MessageDiffRequest (there's no DiffContent that could do that instead)
-      myDiffPanel.setRequest(new MessageDiffRequest("Error", "Failed to build diff for selected revisions"));
+
+    } catch (Exception ex) {
+      // exception from createDiffContent presented to a user through MessageDiffRequest (there's no DiffContent that could do that instead)
+      myDiffPanel.setRequest(new MessageDiffRequest("Error", String.format("Failed to build diff for selected revisions (%s)", ex.getMessage())));
     }
   }
 
@@ -381,19 +391,11 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
     return (revision == null ? null : revision.getRevisionNumber().asString());
   }
 
-  @Nullable
-  private DiffContent createDiffContent(@Nullable VcsFileRevision revision) {
-    if (revision == null) {
-      return new EmptyContent();
-    }
-    SModel loaded;
-    try {
-      loaded = VCSPersistenceUtil.loadModel(revision.loadContent(), myActualFile.getExtension());
-    } catch (Exception ex) {
-      return null;
-    }
+  @NotNull
+  private DiffContent createDiffContent(@NotNull VcsFileRevision revision) throws ModelLoadException, VcsException, IOException, IllegalArgumentException {
+    SModel loaded = ModelSack.discover(myMPSProject.getPlatform(), myActualFile.getName()).load(revision.loadContent());
     // ModelDiffViewer doesn't tolerate reusable detached models, it registers and disposes such models solely on its own discretion
-    return (loaded == null ? new EmptyContent() : new ModelDiffContent(loaded, myActualFile.getFileType()));
+    return new ModelDiffContent(loaded, myActualFile.getFileType());
   }
 
   @Override
