@@ -12,6 +12,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.SimpleTextAttributes;
 import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.icons.MPSIcons.Nodes.Models;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
@@ -105,6 +106,11 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
         return sObject.testIfHasSModule(module -> Objects.equals(module, parentValue)) &&
                sObject.testIfHasSModel(sModel -> !filterModels(List.of(sModel)).isEmpty());
       }
+      return false;
+    }
+
+    @Override
+    protected boolean shouldMarkModified(ReportItem reportItem) {
       return false;
     }
 
