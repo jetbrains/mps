@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.persistence.ContentOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import java.util.Collections;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.persistence.PersistenceUtil;
@@ -101,7 +102,9 @@ public class ModelSack {
     }
   }
 
+  @Nullable
   public byte[] save(@NotNull SModel m) throws ModelSaveException {
+    // FIXME NotNull return value, the rest is exception
     try {
       if (isPerRootPersistence()) {
         // FIXME inline, no need for byte[]->string->byte[] conversion

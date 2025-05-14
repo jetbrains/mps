@@ -26,11 +26,9 @@ import jetbrains.mps.vcs.util.MergeConstants;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.vcs.diff.ui.merge.ISaveMergedModel;
 import com.intellij.openapi.application.ApplicationManager;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.persistence.PersistenceVersionAware;
-import com.intellij.openapi.ui.Messages;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.io.IOException;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import com.intellij.openapi.ui.Messages;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import javax.swing.JComponent;
 import javax.swing.Action;
@@ -93,49 +91,42 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
             ApplicationManager.getApplication().assertIsDispatchThread();
 
             boolean closeDialog = true;
-            final Wrappers._T<byte[]> resultContent = new Wrappers._T<byte[]>(null);
 
             try {
-              resultContent.value = ms.save(resultModel);
-            } catch (Throwable error) {
-              // this can be when saving in 9 persistence after merge with 8 persistence => trying to save in 8th
-              if (baseModel instanceof PersistenceVersionAware && resultModel instanceof PersistenceVersionAware && ((PersistenceVersionAware) baseModel).getPersistenceVersion() == 8 && ((PersistenceVersionAware) resultModel).getPersistenceVersion() == 9) {
-                String message = "The merged model cannot be saved using the new 9th persistence." + " The most-likely reason: one of the languages used in this model has not yet been generated." + " You can revert the changes, merge and generate the used languages first and only then merge this model again." + " Alternatively, you can save the model in old 8th persistence version and then migrate it to the latest persistence, after all used languages will have been merged manually.";
-                int result = Messages.showYesNoCancelDialog(viewer.getComponent(), message, "Save model " + SModelOperations.getModelName(resultModel), "Save in 8th persistence", "Revert changes", "Return to merge", Messages.getWarningIcon());
-                switch (result) {
-                  case Messages.YES:
-                    // FIXME wrong code, our standard MF implementation forcefully upgrades persistence version on save!
-                    ((PersistenceVersionAware) resultModel).setPersistenceVersion(8);
-                    try {
-                      resultContent.value = ms.save(resultModel);
-                    } catch (Exception ex) {
-                      resultContent.value = null;
+              final byte[] resultContent = ms.save(resultModel);
+              if (resultContent != null) {
+                ApplicationManager.getApplication().runWriteAction(() -> {
+                  try {
+                    file.setBinaryContent(resultContent);
+                  } catch (IOException e) {
+                    if (LOG.isErrorLevel()) {
+                      LOG.error("Cannot save merge result into " + file.getPath(), e);
                     }
-                    break;
-                  case Messages.NO:
-                    resultContent.value = null;
-                    break;
-                  default:
-                    closeDialog = false;
-                    break;
-                }
-              } else {
-                if (LOG.isErrorLevel()) {
-                  LOG.error("Cannot save merge resulting model " + SModelOperations.getModelName(resultModel), error);
-                }
-              }
-            }
-            if (resultContent.value != null) {
-              ApplicationManager.getApplication().runWriteAction(() -> {
-                try {
-                  file.setBinaryContent(resultContent.value);
-                } catch (IOException e) {
-                  if (LOG.isErrorLevel()) {
-                    LOG.error("Cannot save merge result into " + file.getPath(), e);
                   }
-                }
-              });
-              MergeBackupUtil.packMergeResult(backupFile, file.getName(), resultContent.value);
+                });
+                MergeBackupUtil.packMergeResult(backupFile, file.getName(), resultContent);
+              }
+            } catch (Throwable error) {
+              if (LOG.isErrorLevel()) {
+                LOG.error("Cannot save merge resulting model " + SModelOperations.getModelName(resultModel), error);
+              }
+              // if this happens saving in 9 persistence after merge with older persistence, we can try to save using earlier version,
+              // however, (a) our standard MF implementation forcefully upgrades persistence version on save (which could get addressed with another way to specify version or
+              // a save flag to indicate 'no upgrade' (worth adding anyway); (b) lack of write support for earlier versions (we dropped all respective IModelWriter implementations.
+              String message = String.format("Failed to save model due to %s. You can return to the merge editor and try to fix model", error.getMessage());
+              int result = Messages.showOkCancelDialog(viewer.getComponent(), message, "Merging " + SModelOperations.getModelName(resultModel), "Abandon changes", "Return to merge", Messages.getWarningIcon());
+              // FIXME there's no support to "revert changes", on false, from save() merge simply doesn't complete. Why was this option there?!
+              switch (result) {
+                case Messages.OK:
+                  closeDialog = true;
+                  break;
+                case Messages.CANCEL:
+                  closeDialog = false;
+                  break;
+                default:
+                  closeDialog = false;
+                  break;
+              }
             }
 
             return closeDialog;

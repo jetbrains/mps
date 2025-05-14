@@ -71,6 +71,7 @@ public final class MergeSession {
   public static MergeTemporaryModel createTemporaryResultModel(SModel base, SModel mine, SModel repository) {
     MergeTemporaryModel result = MergeTemporaryModel.writableCloneOf(base);
     int pv = Math.max(getPersistenceVersion(base), Math.max(getPersistenceVersion(mine), getPersistenceVersion(repository)));
+    // XXX without non-functional forced save version in ModelMergeViewer, there's little value to keep track of persistence version here, revisit!
     result.setPersistenceVersion(pv);
     return result;
   }
