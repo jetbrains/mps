@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package org.jetbrains.mps.openapi.persistence;
 
 import org.jetbrains.mps.openapi.model.SModelName;
 
+import java.util.Arrays;
+
 /**
  * Marker interface for the model creation/loading option
  *
@@ -26,4 +28,7 @@ import org.jetbrains.mps.openapi.model.SModelName;
  * Created by apyshkin on 12/20/16.
  */
 public interface ModelLoadingOption {
+  default boolean presentIn(ModelLoadingOption... options) {
+    return Arrays.asList(options).contains(this);
+  }
 }

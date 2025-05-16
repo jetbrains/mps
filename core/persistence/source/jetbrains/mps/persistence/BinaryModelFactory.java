@@ -23,6 +23,7 @@ import jetbrains.mps.persistence.MetaModelInfoProvider.MetaInfoLoadingOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
 import jetbrains.mps.persistence.binary.BinaryPersistence;
+import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.SModelId;
@@ -36,6 +37,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.persistence.ContentOption;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.DataSourceNotSupportedProblem;
 import org.jetbrains.mps.openapi.persistence.MFProblem;
@@ -111,7 +113,21 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory,
       throw new UnsupportedDataSourceException(dataSource);
     }
 
-    StreamDataSource source = (StreamDataSource) dataSource;
+    final StreamDataSource source = (StreamDataSource) dataSource;
+
+    if (ContentOption.CONTENT_ONLY.presentIn(options)) {
+      try (InputStream is = source.openInputStream()) {
+        SModelData modelData = BinaryPersistence.getModelData(is, MetaInfoLoadingOption.KEEP_READ.presentIn(options));
+        if (modelData instanceof DefaultSModel dsm) {
+          return new ContentOnlySModelDescriptor(dsm, this);
+        }
+        // fall-through, try regular path
+      } catch (IOException ex) {
+        // if it fails to read, why bother with another attempt
+        throw new ModelLoadException(ex.getMessage());
+      }
+    }
+
     SModelHeader binaryModelHeader;
     try {
       binaryModelHeader = BinaryPersistence.readHeader(source);
@@ -119,7 +135,7 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory,
       throw new ModelLoadException("Could not read the model header while loading from the '" + dataSource + "'", Collections.emptyList(),
                                    getCause(e));
     }
-    if (Arrays.asList(options).contains(MetaInfoLoadingOption.KEEP_READ)) {
+    if (MetaInfoLoadingOption.KEEP_READ.presentIn(options)) {
       binaryModelHeader.setMetaInfoProvider(new StuffedMetaModelInfo(new RegularMetaModelInfo()));
     }
     return new DefaultSModelDescriptor(new PersistenceFacility(this, source), binaryModelHeader);
@@ -174,7 +190,7 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory,
 
   @Override
   public SModelData parseSingleStream(@NotNull String name, @NotNull InputStream input) throws IOException {
-    return BinaryPersistence.getModelData(input);
+    return BinaryPersistence.getModelData(input, false);
   }
 
   @Nullable

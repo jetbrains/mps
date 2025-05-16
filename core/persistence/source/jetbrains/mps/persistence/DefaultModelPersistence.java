@@ -43,6 +43,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.persistence.ContentOption;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.DataSourceNotSupportedProblem;
 import org.jetbrains.mps.openapi.persistence.MFProblem;
@@ -145,16 +146,29 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
   @Override
   public SModel load(@NotNull DataSource dataSource, @NotNull ModelLoadingOption... options) throws UnsupportedDataSourceException,
                                                                                                     ModelLoadException {
-    if (!(dataSource instanceof StreamDataSource)) {
+    if (!(dataSource instanceof StreamDataSource source)) {
       throw new UnsupportedDataSourceException(dataSource);
     }
 
-    StreamDataSource source = (StreamDataSource) dataSource;
+    if (ContentOption.CONTENT_ONLY.presentIn(options)) {
+      // aka parseSingleStream(), just with extra option to keep MMIP
+      try (InputStream is = source.openInputStream()) {
+        SModelData modelData = ModelPersistence.getModelData(is, MetaInfoLoadingOption.KEEP_READ.presentIn(options));
+        if (modelData instanceof DefaultSModel dsm) {
+          return new ContentOnlySModelDescriptor(dsm, this);
+        }
+        // fall-through, try regular path
+      } catch (IOException | ModelReadException ex) {
+        // if it fails to read, why bother with another attempt
+        throw new ModelLoadException(ex.getMessage());
+      }
+    }
+
     PersistenceFacility persistenceFacility = new PersistenceFacility(this, source);
     SModelHeader header = readHeader(dataSource, source, persistenceFacility);
     LOG.debug("Getting model " + header.getModelReference() + " from " + dataSource.getLocation());
 
-    if (Arrays.asList(options).contains(MetaInfoLoadingOption.KEEP_READ)) {
+    if (MetaInfoLoadingOption.KEEP_READ.presentIn(options)) {
       header.setMetaInfoProvider(new StuffedMetaModelInfo(new RegularMetaModelInfo()));
     }
 
@@ -277,7 +291,7 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
 
   @Override
   public SModelData parseSingleStream(@NotNull String name, @NotNull InputStream input) throws IOException, ModelReadException {
-    return ModelPersistence.getModelData(input);
+    return ModelPersistence.getModelData(input, false);
   }
 
   @NotNull

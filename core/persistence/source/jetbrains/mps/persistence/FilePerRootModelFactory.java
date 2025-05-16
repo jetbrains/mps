@@ -22,7 +22,11 @@ import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.generator.ModelDigestUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.persistence.MetaModelInfoProvider.MetaInfoLoadingOption;
+import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
+import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
 import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.SModelId;
@@ -35,11 +39,11 @@ import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.util.FileUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.persistence.ContentOption;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.DataSourceNotSupportedProblem;
 import org.jetbrains.mps.openapi.persistence.MFProblem;
@@ -117,6 +121,19 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
   public SModel load(@NotNull DataSource dataSource, @NotNull ModelLoadingOption... options) throws UnsupportedDataSourceException,
                                                                                                     ModelLoadException {
     if (!supports(dataSource)) {
+      if (dataSource instanceof StreamDataSource sds && ContentOption.CONTENT_ONLY.presentIn(options)) {
+        try (InputStream is = sds.openInputStream()) {
+          SModelData modelData = ModelPersistence.getModelData(is, MetaInfoLoadingOption.KEEP_READ.presentIn(options));
+          if (modelData instanceof DefaultSModel dsm) {
+            return new ContentOnlySModelDescriptor(dsm, this);
+          } else {
+            // no fall-through as the rest of the code needs MultiStreamDataSource
+            throw new ModelLoadException("Unexpected model data: " + modelData);
+          }
+        } catch (IOException | ModelReadException ex) {
+          throw new ModelLoadException(ex.getMessage());
+        }
+      }
       throw new UnsupportedDataSourceException(dataSource);
     }
 
@@ -132,6 +149,10 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
 
     if (header.getModelReference() == null) {
       throw new ModelLoadException("Could not find model reference in the model header while loading from the " + source);
+    }
+
+    if (MetaInfoLoadingOption.KEEP_READ.presentIn(options)) {
+      header.setMetaInfoProvider(new StuffedMetaModelInfo(new RegularMetaModelInfo()));
     }
 
     LOG.debug("Getting model " + header.getModelReference() + " from " + source.getLocation());
@@ -169,7 +190,7 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
 
   @Override
   public SModelData parseSingleStream(@NotNull String name, @NotNull InputStream input) throws IOException, ModelReadException {
-    return ModelPersistence.getModelData(input);
+    return ModelPersistence.getModelData(input, false);
   }
 
   @Override
