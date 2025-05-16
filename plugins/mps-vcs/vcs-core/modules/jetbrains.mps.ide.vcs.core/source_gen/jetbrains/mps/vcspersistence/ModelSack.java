@@ -18,22 +18,20 @@ import jetbrains.mps.smodel.InvalidSModel;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import java.io.IOException;
 import org.jetbrains.mps.openapi.persistence.DataSource;
-import jetbrains.mps.persistence.PersistenceUtil;
-import java.io.OutputStream;
-import jetbrains.mps.project.MPSExtentions;
-import java.util.regex.Pattern;
-import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.persistence.ByteArrayInputSource;
 import org.jetbrains.mps.openapi.persistence.ContentOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
-import java.util.Collections;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
+import jetbrains.mps.persistence.PersistenceUtil;
+import jetbrains.mps.project.MPSExtentions;
 import java.util.Iterator;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
+import java.util.Collections;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
+import jetbrains.mps.util.FileUtil;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
@@ -95,46 +93,17 @@ public class ModelSack {
   @NotNull
   public SModel loadContemporaryPersistenceOnly(byte[] content) throws ModelLoadException {
     try {
-      DataSource dataSource;
-      if (isPerRootPersistence()) {
-        // == myModelFactory.getType == PER_ROOT_XML
-        PersistenceUtil.InMemoryMultiStreamDataSource ds = new PersistenceUtil.InMemoryMultiStreamDataSource();
-        // FIXME I still believe the proper fix is for PreinstalledModelFactoryTypes.PER_ROOT_XML to support "partial" loading from a single-stream DataSource
-        //      but for now fool it with 2 identical files - one being original root (.mpsr) and another - fake header stream. Note, when it's myPRHeader, no need to add any fake roots.
-        //      ALT: indeed, could use VCSPersistenceSupport/ModelPersistence directly (if we keep isPerRootHeader/isPerRootRoot knowledge, but my intention is to get rid of this logic altogether
-        //      ALT: FWIW, there's also IndexAwareModelFactory.parseSingleStream() which is capable of reading single .model or .mpsr stream
-        if (myRPHeader) {
-          try (OutputStream os = ds.getStreamByNameOrCreate(MPSExtentions.DOT_MODEL_HEADER).openOutputStream()) {
-            os.write(content);
-          }
-        } else {
-          assert myRPRoot;
-          // XXX indeed, would be nice if we could use original root stream for header, as they are quite similar (except for node data). However, there's a check 
-          //    for ModelLoadResult.contentKind in FilePerRootFormatUtil, therefore has to hack the stream. That's why it's better to handle this in MF
-          try (OutputStream os1 = ds.getStreamByNameOrCreate(MPSExtentions.DOT_MODEL_HEADER).openOutputStream();OutputStream os2 = ds.getStreamByNameOrCreate("Root" + MPSExtentions.DOT_MODEL_ROOT).openOutputStream()) {
-            Pattern pp = Pattern.compile(" content=\"root\"");
-            String editedContentKind = pp.matcher(new String(content, FileUtil.DEFAULT_CHARSET)).replaceFirst(" content=\"header\"");
-            os1.write(editedContentKind.getBytes(FileUtil.DEFAULT_CHARSET));
-            os2.write(content);
-          }
-        }
-        dataSource = ds;
-      } else {
-        dataSource = new ByteArrayInputSource(content);
-      }
-      // XXX perhaps, shall introduce an option "LOAD COMPLETELY" to avoid extra model.load() step
-      // FIXME the fact model keeps track of its DataSource keeps complete byte[] in memory here. Poor design
-      //      Perhaps, could address this with ContentOption.FLAG to indicate DataSource is transitional and shall not get associated with resulting model?
-      // no-op CONTENT_ONLY here is just a reminder to address ^^^ issues (also see comment below, where we can substitute return value w/o MF flag)
+      DataSource dataSource = new ByteArrayInputSource(content);
+      // Note, CONTENT_ONLY here suggests loading complete model, discarding supplied DataSource (so that no later load() would attempt to access the data (and releasing a memory!)
+      // We could also substitute return value (see below), w/o the need for MF flag. The benefit is we don't rely on MF impl to support the flag then. But for now, use flag as it 
+      // also helps with per-root persistence story (its MF reads single file properly)
       SModel rv = myModelFactory.load(dataSource, ContentOption.CONTENT_ONLY, MetaModelInfoProvider.MetaInfoLoadingOption.KEEP_READ);
       // make sure model has been loaded "completely" (with no unexpected attempts to read afterwards on a walk attempt
       rv.load();
       // XXX perhaps, shall take SModelData and, if it's DefaultSModel, put into MyModel, to drop DataSource/byte[]. I.e. unless we can do this in model factory itself (with a flag)
       return rv;
     } catch (UnsupportedDataSourceException ex) {
-      throw new ModelLoadException("Unexpected, failed to detect proper factory<->datasource", Collections.<SModel.Problem>emptyList(), ex);
-    } catch (IOException ex) {
-      throw new ModelLoadException("Failed to load model contents", Collections.<SModel.Problem>emptyList(), ex);
+      throw new ModelLoadException(String.format("ModelFactory '%s' can't load content from single stream of bytes: %s", myModelFactory, ex.getMessage()));
     }
   }
 
@@ -176,9 +145,8 @@ public class ModelSack {
     ModelFactoryService mfs = mpsPlatform.findComponent(ModelFactoryService.class);
 
     final String fnExt = FileUtil.getExtension(fileName);
-    // FIXME see VCSPersistenceUtil.saveModel, it's odd code that deals with persistence kind and extension both to select proper model factory
-    //      Besides, there's similar code in ConflictinModelsUtil!
-    // Instead of using ConflictinModelsUtil/FilePerRootDataSource.isPerRootPersistenceFile(File(fileName)), just inline method contents here
+    // FIXME would be great to get rid of per-root detection code eventually. Now, with ContentOption, we got load() covered, but there are still uses in save()
+    //      the tricky part with save is how to tell model with deleted single root - for a per-root model w/o a root, there's still .model stream
     final boolean perRootPersistenceHeader = MPSExtentions.DOT_MODEL_HEADER.equals(fileName);
     final boolean perRootPersistenceRoot = MPSExtentions.MODEL_ROOT.equals(fnExt);
     final boolean perRootPersistenceFile = perRootPersistenceHeader || perRootPersistenceRoot;

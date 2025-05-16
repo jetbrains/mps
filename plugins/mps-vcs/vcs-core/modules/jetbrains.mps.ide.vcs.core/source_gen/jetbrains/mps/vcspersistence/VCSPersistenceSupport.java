@@ -114,7 +114,7 @@ public class VCSPersistenceSupport {
     }
 
     // FIXME remove this after removing usages of VCSPersistenceSupport from everywhere except VCSPersistenceUtil
-    // There are 2 external uses ATM: 1 through readModel (MergeBackupUtil, as well as local ModelSack, explicit old persistence attempt) + 1 getLineToContentMap in RootFileHistoryExtractor
+    // There are 2 external uses ATM: 1 through readModel (MergeBackupUtil. local ModelSack guards against newer version once header has been read) + 1 getLineToContentMap in RootFileHistoryExtractor
     return ModelPersistence.getPersistence(version);
   }
 
