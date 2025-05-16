@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import jetbrains.mps.persistence.MetaModelInfoProvider.MetaInfoLoadingOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
 import jetbrains.mps.persistence.binary.BinaryPersistence;
-import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.SModelId;
@@ -33,7 +32,6 @@ import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -179,21 +177,6 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory,
   @Override
   public SModelData parseSingleStream(@NotNull String name, @NotNull InputStream input) throws IOException {
     return BinaryPersistence.getModelData(input);
-  }
-
-  /**
-   * This is provisional workaround to deal with performance tuning in jps/plugin (see CachedRepositoryData, CachedModelData)
-   * where header is serialized to get passed to another process, where model is instantiated without need to read model file.
-   *
-   * If there's real benefit in this optimization (commit comment suggests it's 0.5 second in process startup time, which doesn't look too much, imo)
-   * this serialization shall be addressed with an object supplied by descriptor itself, rather than by external means, so that full control over
-   * serialize/restore is inside implementation, and all the internal stuff (like model header) doesn't get exposed.
-   * FIXME revisit, reconsider approach
-   */
-  public static SModel createFromHeader(@NotNull SModelHeader header, @NotNull StreamDataSource dataSource) {
-    final ModelFactory modelFactory = FACADE().getModelFactory(MPSExtentions.MODEL_BINARY);
-    assert modelFactory instanceof BinaryModelFactory;
-    return new DefaultSModelDescriptor(new PersistenceFacility((BinaryModelFactory) modelFactory, dataSource), header.createCopy());
   }
 
   @Nullable

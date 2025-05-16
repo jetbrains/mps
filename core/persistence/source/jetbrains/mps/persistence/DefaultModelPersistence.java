@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MetaModelInfoProvider.MetaInfoLoadingOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
-import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.SModelHeader;
@@ -326,15 +325,6 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     if (dataSource.isReadOnly()) {
       throw new ModelSaveException(PersistenceProblem.errorSave(String.format("`%s' is read-only", dataSource.getLocation()), dataSource));
     }
-  }
-
-  /**
-   * hack, @see BinaryModelPersistence#createFromHeader for details
-   */
-  public static SModel createFromHeader(@NotNull SModelHeader header, @NotNull StreamDataSource dataSource) {
-    final ModelFactory modelFactory = PersistenceFacade.getInstance().getModelFactory(MPSExtentions.MODEL);
-    assert modelFactory instanceof DefaultModelPersistence;
-    return new DefaultSModelDescriptor(new PersistenceFacility((DefaultModelPersistence) modelFactory, dataSource), header.createCopy());
   }
 
   private static class PersistenceFacility extends LazyLoadFacility {

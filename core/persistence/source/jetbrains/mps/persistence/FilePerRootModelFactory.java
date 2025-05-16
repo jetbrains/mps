@@ -82,15 +82,6 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
     // do not delete, it is a java service
   }
 
-  /**
-   * see BinaryModelPersistence#createFromHeader() for details, same motivation here
-   */
-  public static SModel createFromHeader(@NotNull SModelHeader header, @NotNull FilePerRootDataSource dataSource) {
-    final ModelFactory modelFactory = PersistenceFacade.getInstance().getModelFactory(MPSExtentions.MODEL_HEADER);
-    assert modelFactory instanceof FilePerRootModelFactory;
-    return new DefaultSModelDescriptor(new PersistenceFacility((FilePerRootModelFactory) modelFactory, dataSource), header.createCopy());
-  }
-
   @NotNull
   @Override
   public MFProblem canCreate(@NotNull DataSource dataSource, @NotNull SModelName modelName, @NotNull ModelLoadingOption... options) {
