@@ -4,10 +4,10 @@ package jetbrains.mps.vcspersistence;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
-import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
+import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.smodel.SModelHeader;
 import org.xml.sax.InputSource;
 import java.io.ByteArrayInputStream;
@@ -17,21 +17,26 @@ import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.InvalidSModel;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import java.io.IOException;
+import org.jetbrains.mps.openapi.persistence.DataSource;
+import jetbrains.mps.persistence.PersistenceUtil;
+import java.io.OutputStream;
+import jetbrains.mps.project.MPSExtentions;
+import java.util.regex.Pattern;
+import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.persistence.ByteArrayInputSource;
-import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.jetbrains.mps.openapi.persistence.ContentOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import java.util.Collections;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
-import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.persistence.PersistenceUtil;
+import java.util.Iterator;
+import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import jetbrains.mps.components.ComponentHost;
-import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
-import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
+import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import java.util.List;
 import jetbrains.mps.vcs.core.mergedriver.FileType;
 
@@ -46,14 +51,11 @@ public class ModelSack {
   private final ModelFactory myModelFactory;
   private final boolean myRPHeader;
   private final boolean myRPRoot;
-  private final ModelFactoryService myModelFactoryService;
 
-  private ModelSack(boolean perRootHeader, boolean perRootRoot, ModelFactory modelFactory, ModelFactoryService mfService) {
+  private ModelSack(boolean perRootHeader, boolean perRootRoot, ModelFactory modelFactory) {
     myModelFactory = modelFactory;
     myRPHeader = perRootHeader;
     myRPRoot = perRootRoot;
-    // provisional, just to use existing methods of VCSPersistenceUtil; shall refactor
-    myModelFactoryService = mfService;
   }
 
   public boolean isPerRootPersistence() {
@@ -66,52 +68,98 @@ public class ModelSack {
 
   @NotNull
   public SModel load(final byte[] content) throws ModelLoadException {
-    // here we inline what used to be in VCSPersistenceUtil.loadModel() and .loadFromOldMPSPersistence()
-    try {
-      SModelHeader header = VCSPersistenceSupport.loadDescriptor(new InputSource(new ByteArrayInputStream(content)));
-      if (header.getPersistenceVersion() < ModelPersistence.FIRST_SUPPORTED_VERSION) {
-        // likely, an old persistence, try it (FIXME however, check against ModelPersistence here is an implicit assumption it's an XML persistence!)
-        final ModelLoadResult modelLoadResult = VCSPersistenceSupport.readModel(header, new InputSource(new ByteArrayInputStream(content)), ModelLoadingState.FULLY_LOADED);
-        jetbrains.mps.smodel.SModel model = modelLoadResult.getModel();
-        if (false == model instanceof InvalidSModel) {
-          return new VCSPersistenceUtil.MyModel(model, header);
+    // we've got some old xml format support for .mps/.mpsr files, try loading these first
+    // XXX in fact, used to load actual v9, too, due to to fallback in VCSPersistenceSupport.getPersistence(int). Now guarded w/ version check
+    if (myModelFactory.getType() == PreinstalledModelFactoryTypes.PLAIN_XML || myModelFactory.getType() == PreinstalledModelFactoryTypes.PER_ROOT_XML) {
+      // here we inline what used to be in VCSPersistenceUtil.loadModel() and .loadFromOldMPSPersistence()
+      try {
+        SModelHeader header = VCSPersistenceSupport.loadDescriptor(new InputSource(new ByteArrayInputStream(content)));
+        if (header.getPersistenceVersion() < ModelPersistence.FIRST_SUPPORTED_VERSION) {
+          // likely, an old persistence, try it
+          final ModelLoadResult modelLoadResult = VCSPersistenceSupport.readModel(header, new InputSource(new ByteArrayInputStream(content)), ModelLoadingState.FULLY_LOADED);
+          jetbrains.mps.smodel.SModel model = modelLoadResult.getModel();
+          if (false == model instanceof InvalidSModel) {
+            return new VCSPersistenceUtil.MyModel(model, header);
+          }
+          // fallthrough, try new one, with detected MF
         }
-        // fallthrough, try new one, with detected MF
+      } catch (ModelReadException | IOException ex) {
+        // ignore, try new persistence format
       }
-    } catch (ModelReadException | IOException ex) {
-      // ignore, try new persistence format
     }
 
-    return loadContemporaryPersistenceOnly(new ByteArrayInputSource(content));
+    return loadContemporaryPersistenceOnly(content);
 
   }
 
   @NotNull
-  public SModel loadContemporaryPersistenceOnly(StreamDataSource dataSource) throws ModelLoadException {
+  public SModel loadContemporaryPersistenceOnly(byte[] content) throws ModelLoadException {
     try {
+      DataSource dataSource;
+      if (isPerRootPersistence()) {
+        // == myModelFactory.getType == PER_ROOT_XML
+        PersistenceUtil.InMemoryMultiStreamDataSource ds = new PersistenceUtil.InMemoryMultiStreamDataSource();
+        // FIXME I still believe the proper fix is for PreinstalledModelFactoryTypes.PER_ROOT_XML to support "partial" loading from a single-stream DataSource
+        //      but for now fool it with 2 identical files - one being original root (.mpsr) and another - fake header stream. Note, when it's myPRHeader, no need to add any fake roots.
+        //      ALT: indeed, could use VCSPersistenceSupport/ModelPersistence directly (if we keep isPerRootHeader/isPerRootRoot knowledge, but my intention is to get rid of this logic altogether
+        //      ALT: FWIW, there's also IndexAwareModelFactory.parseSingleStream() which is capable of reading single .model or .mpsr stream
+        if (myRPHeader) {
+          try (OutputStream os = ds.getStreamByNameOrCreate(MPSExtentions.DOT_MODEL_HEADER).openOutputStream()) {
+            os.write(content);
+          }
+        } else {
+          assert myRPRoot;
+          // XXX indeed, would be nice if we could use original root stream for header, as they are quite similar (except for node data). However, there's a check 
+          //    for ModelLoadResult.contentKind in FilePerRootFormatUtil, therefore has to hack the stream. That's why it's better to handle this in MF
+          try (OutputStream os1 = ds.getStreamByNameOrCreate(MPSExtentions.DOT_MODEL_HEADER).openOutputStream();OutputStream os2 = ds.getStreamByNameOrCreate("Root" + MPSExtentions.DOT_MODEL_ROOT).openOutputStream()) {
+            Pattern pp = Pattern.compile(" content=\"root\"");
+            String editedContentKind = pp.matcher(new String(content, FileUtil.DEFAULT_CHARSET)).replaceFirst(" content=\"header\"");
+            os1.write(editedContentKind.getBytes(FileUtil.DEFAULT_CHARSET));
+            os2.write(content);
+          }
+        }
+        dataSource = ds;
+      } else {
+        dataSource = new ByteArrayInputSource(content);
+      }
       // XXX perhaps, shall introduce an option "LOAD COMPLETELY" to avoid extra model.load() step
       // FIXME the fact model keeps track of its DataSource keeps complete byte[] in memory here. Poor design
       //      Perhaps, could address this with ContentOption.FLAG to indicate DataSource is transitional and shall not get associated with resulting model?
-      // no-op CONTENT_ONLY here is just a reminder to address ^^^ issues
+      // no-op CONTENT_ONLY here is just a reminder to address ^^^ issues (also see comment below, where we can substitute return value w/o MF flag)
       SModel rv = myModelFactory.load(dataSource, ContentOption.CONTENT_ONLY, MetaModelInfoProvider.MetaInfoLoadingOption.KEEP_READ);
       // make sure model has been loaded "completely" (with no unexpected attempts to read afterwards on a walk attempt
       rv.load();
+      // XXX perhaps, shall take SModelData and, if it's DefaultSModel, put into MyModel, to drop DataSource/byte[]. I.e. unless we can do this in model factory itself (with a flag)
       return rv;
-    } catch (UnsupportedDataSourceException e) {
-      throw new ModelLoadException("Unexpected, failed to detect proper factory<->datasource", Collections.<SModel.Problem>emptyList(), e);
+    } catch (UnsupportedDataSourceException ex) {
+      throw new ModelLoadException("Unexpected, failed to detect proper factory<->datasource", Collections.<SModel.Problem>emptyList(), ex);
+    } catch (IOException ex) {
+      throw new ModelLoadException("Failed to load model contents", Collections.<SModel.Problem>emptyList(), ex);
     }
   }
 
   @Nullable
   public byte[] save(@NotNull SModel m) throws ModelSaveException {
-    // FIXME NotNull return value, the rest is exception
+    // FIXME NotNull return value, the rest is exception (now, getContentBytes() could silently produce null)
     try {
       if (isPerRootPersistence()) {
-        // FIXME inline, no need for byte[]->string->byte[] conversion
-        String resultString = VCSPersistenceUtil.savePerRootModel(myModelFactoryService, m, myRPHeader);
-        return (resultString == null ? null : resultString.getBytes(FileUtil.DEFAULT_CHARSET));
+        PersistenceUtil.InMemoryMultiStreamDataSource source = new PersistenceUtil.InMemoryMultiStreamDataSource();
+        myModelFactory.save(m, source);
+        if (myRPHeader) {
+          return source.getContentBytes(MPSExtentions.DOT_MODEL_HEADER);
+        } else {
+          for (Iterator<StreamDataSource> ids = source.getSubStreams().iterator(); ids.hasNext();) {
+            final String name = ids.next().getStreamName();
+            if (name.equals(MPSExtentions.DOT_MODEL_HEADER)) {
+              continue;
+            }
+            // InMemoryMSDS doesn't support openInputStream(), it's intended for write, hence use of getContent(name).
+            // FTR, this explanation doesn't make this code any better nor justifies its existence, still cries out loud for refactoring.
+            return source.getContentBytes(name);
+          }
+          return null;
+        }
       } else {
-        // VCSPersistenceUtil.saveModel(3)
         PersistenceUtil.InMemoryStreamDataSource source = new PersistenceUtil.InMemoryStreamDataSource();
         myModelFactory.save(m, source);
         return source.getContentBytes();
@@ -134,46 +182,48 @@ public class ModelSack {
     final boolean perRootPersistenceHeader = MPSExtentions.DOT_MODEL_HEADER.equals(fileName);
     final boolean perRootPersistenceRoot = MPSExtentions.MODEL_ROOT.equals(fnExt);
     final boolean perRootPersistenceFile = perRootPersistenceHeader || perRootPersistenceRoot;
-    DataSourceType dst;
+    // XXX is it right to go with ModelFactoryType, not through DataSourceType?
+    ModelFactory modelFactory;
     if (perRootPersistenceFile) {
-      // load model partially from per-root persistence with "normal" persistence loading
-      // FIXME I believe the proper fix is for PreinstalledModelFactoryTypes.PER_ROOT_XML to support "partial" loading from a single file (or, perhaps, 2 files
-      //      we could supply here, one being original root and another - fake header stream, likely empty, just to satisfy multistream DS.
-      //      per-root MF supports save(), see VCSPersistenceUtil.savePerRootModel() code, and I don't see any reason for all these crazy checks here
-      //      just not to modify its load()!
-      dst = PreinstalledDataSourceTypes.MPS;
+      modelFactory = mfs.getFactoryByType(PreinstalledModelFactoryTypes.PER_ROOT_XML);
     } else {
-      dst = FileExtensionDataSourceType.of(fnExt);
+      final DataSourceType dst = FileExtensionDataSourceType.of(fnExt);
+      // XXX not sure I like this code, just need to move on with per-root hacks first. Nevertheless, shall refactor this, not to keep one more DS->MF mapping here (would like to get rid of PER_ROOT_XML, above, too)
+      if (PreinstalledDataSourceTypes.MPS.equals(dst)) {
+        modelFactory = mfs.getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML);
+      } else if (PreinstalledDataSourceTypes.BINARY.equals(dst)) {
+        modelFactory = mfs.getFactoryByType(PreinstalledModelFactoryTypes.BINARY);
+      } else {
+        List<ModelFactory> factories = mfs.getModelFactories(dst);
+        if (factories.isEmpty()) {
+          throw new IllegalArgumentException(String.format("No model factory to handle '%s' data source for %s", dst.getName(), fileName));
+        }
+        modelFactory = factories.get(0);
+      }
     }
-    // FIXME why can't we decide on ModelFactoryType instead of going long way through DataSourceType?
-    if (dst == null) {
-      throw new IllegalArgumentException(String.format("Could not detect data source type from name %s", fileName));
+    if (modelFactory == null) {
+      throw new IllegalArgumentException(String.format("Could not model factory from file name '%s'", fileName));
     }
-    List<ModelFactory> factories = mfs.getModelFactories(dst);
-    if (factories.isEmpty()) {
-      throw new IllegalArgumentException(String.format("No model factory to handle '%' data source for %s", dst.getName(), fileName));
-    }
-    return new ModelSack(perRootPersistenceHeader, perRootPersistenceRoot, factories.get(0), mfs);
+    return new ModelSack(perRootPersistenceHeader, perRootPersistenceRoot, modelFactory);
   }
 
   @NotNull
   public static ModelSack discover(@NotNull ComponentHost mpsPlatform, @NotNull FileType fileKind) throws IllegalArgumentException {
+    ModelFactoryService mfs = mpsPlatform.findComponent(ModelFactoryService.class);
     final boolean perRootPersistenceHeader = fileKind == FileType.MODEL_HEADER;
     final boolean perRootPersistenceRoot = fileKind == FileType.MODEL_ROOT;
-    final DataSourceType dst;
+    ModelFactory modelFactory;
     if (perRootPersistenceHeader || perRootPersistenceRoot) {
-      // see another #discover(), above
-      dst = PreinstalledDataSourceTypes.MPS;
+      modelFactory = mfs.getFactoryByType(PreinstalledModelFactoryTypes.PER_ROOT_XML);
     } else {
       // check FileType.get(filetype == null) - regardless of actual extension, we get FileType.MODEL, assuming it's ".mps" file
-      dst = PreinstalledDataSourceTypes.MPS;
+      // FIXME and this is plain wrong, shall refactor to support merge of different models!
+      modelFactory = mfs.getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML);
     }
-    ModelFactoryService mfs = mpsPlatform.findComponent(ModelFactoryService.class);
-    List<ModelFactory> factories = mfs.getModelFactories(dst);
-    if (factories.isEmpty()) {
-      throw new IllegalArgumentException(String.format("No model factory to handle '%' data source for %s", dst.getName(), fileKind));
+    if (modelFactory == null) {
+      throw new IllegalArgumentException(String.format("No model factory to handle detected file kind '%s'", fileKind));
     }
-    return new ModelSack(perRootPersistenceHeader, perRootPersistenceRoot, factories.get(0), mfs);
+    return new ModelSack(perRootPersistenceHeader, perRootPersistenceRoot, modelFactory);
 
   }
 }

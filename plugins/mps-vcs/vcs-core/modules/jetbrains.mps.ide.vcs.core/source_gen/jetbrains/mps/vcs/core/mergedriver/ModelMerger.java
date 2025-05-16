@@ -152,7 +152,7 @@ import jetbrains.mps.extapi.model.SModelData;
   @NotNull
   private static SModel loadModel(FileContent content, ModelSack ms) throws ModelLoadException {
     // XXX for some reason, this class didn't use VCSPersistenceUtil.load() - the one that supports legacy persistence. Is it intentional
-    SModel m = ms.loadContemporaryPersistenceOnly(content);
+    SModel m = ms.loadContemporaryPersistenceOnly(content.getData());
     if (VCSPersistenceUtil.isModelFullyLoaded(m)) {
       return m;
     } else {

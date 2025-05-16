@@ -4345,8 +4345,13 @@
               </node>
               <node concept="liA8E" id="2VIcG4o_a_q" role="2OqNvi">
                 <ref role="37wK5l" to="iho:2VIcG4o$NJ1" resolve="loadContemporaryPersistenceOnly" />
-                <node concept="37vLTw" id="2VIcG4o_a_r" role="37wK5m">
-                  <ref role="3cqZAo" node="7vnu9rGL_QL" resolve="content" />
+                <node concept="2OqwBi" id="3AVjwg142_5" role="37wK5m">
+                  <node concept="37vLTw" id="2VIcG4o_a_r" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7vnu9rGL_QL" resolve="content" />
+                  </node>
+                  <node concept="liA8E" id="3AVjwg145YD" role="2OqNvi">
+                    <ref role="37wK5l" node="1nBtCnD_OYI" resolve="getData" />
+                  </node>
                 </node>
               </node>
             </node>
