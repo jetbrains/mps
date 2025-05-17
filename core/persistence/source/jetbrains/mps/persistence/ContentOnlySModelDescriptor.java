@@ -8,6 +8,7 @@ import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 
 import java.util.function.BiConsumer;
@@ -53,5 +54,19 @@ final class ContentOnlySModelDescriptor extends TrivialModelDescriptor implement
   @Override
   public void forEachAttribute(@NotNull BiConsumer<String, String> action) {
     ((DefaultSModel) getCurrentModelInternal()).getSModelHeader().getOptionalProperties().forEach(action);
+  }
+
+  @Override
+  public void addRootNode(@NotNull SNode node) {
+    // on one hand, I don't understand why SModelBase doesn't implement these methods of SModel (note, not EditableSModel)
+    // on the other, not sure that editing capabilities for any model is right.
+    assertCanChange();
+    getModelData().addRootNode(node);
+  }
+
+  @Override
+  public void removeRootNode(@NotNull SNode node) {
+    assertCanChange();
+    getModelData().removeRootNode(node);
   }
 }
