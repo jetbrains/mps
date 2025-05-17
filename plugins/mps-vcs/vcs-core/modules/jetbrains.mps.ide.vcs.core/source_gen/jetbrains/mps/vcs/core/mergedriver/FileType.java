@@ -6,11 +6,11 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.MPSExtentions;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import java.io.File;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 import jetbrains.mps.util.FileUtil;
 import java.io.InputStream;
 import java.io.FileInputStream;
@@ -32,8 +32,8 @@ public enum FileType {
   TRACE_CACHE("trace.info", "debug-info"),
   GENERATOR_DEPENDENCIES("generated", "dependencies"),
   GENERATOR_DEPENDENCIES_V3("generated", "product"),
-  JAVA_DEPENDENCIES("dependencies", "dependenciesRoot");
-
+  JAVA_DEPENDENCIES("dependencies", "dependenciesRoot"),
+  UNKNOWN("", "");
 
   public static final FileType[] BY_NAME = {FileType.TRACE_CACHE, FileType.GENERATOR_DEPENDENCIES, FileType.JAVA_DEPENDENCIES};
   public static final FileType[] BY_EXT = {FileType.LANGUAGE, FileType.SOLUTION, FileType.DEVKIT, FileType.PROJECT, FileType.MODEL_ROOT, FileType.MODEL_HEADER, FileType.MODEL};
@@ -51,17 +51,13 @@ public enum FileType {
   }
 
   @Nullable
-  public static FileType get(@NotNull ModelFactoryService service, @Nullable final String filetype, File file) {
+  public static FileType findFromFileType(@NotNull final String filetype) {
     // try to recognize by filetype
-    if (filetype != null) {
-      FileType type = Sequence.fromIterable(Sequence.fromArray(FileType.values())).findFirst((t) -> filetype.equals(t.mySuffix));
-      if (type != null) {
-        return type;
-      }
-      if (service.getDefaultModelFactory(FileExtensionDataSourceType.of(filetype)) != null) {
-        return FileType.MODEL;
-      }
-    }
+    return Sequence.fromIterable(Sequence.fromArray(FileType.values())).findFirst((t) -> filetype.equals(t.mySuffix));
+  }
+
+  @NotNull
+  public static FileType get(@NotNull ModelFactoryService service, File file) {
     // try to get file type from SVN filename
     final Wrappers._T<String> fileName = new Wrappers._T<String>(file.getName());
     if (fileName.value.endsWith(SVN_BASE)) {
@@ -75,19 +71,16 @@ public enum FileType {
       }
     }
     // try to get file type by file content
-    return getTypeByXmlRoot(file);
+    FileType rv = getTypeByXmlRoot(file);
+    return (rv == null ? FileType.UNKNOWN : rv);
   }
 
   @Nullable
   private static FileType getTypeByXmlRoot(File file) {
     final XMLRootHandler handler = new XMLRootHandler();
-    InputStream is = null;
-    try {
-      is = new FileInputStream(file);
+    try (InputStream is = new FileInputStream(file)) {
       JDOMUtil.createSAXParser().parse(is, handler);
-    } catch (Exception e) {
-    } finally {
-      FileUtil.closeFileSafe(is);
+    } catch (Exception ex) {
     }
     // return null if no XML root was found by parser
     if (handler.rootName == null) {

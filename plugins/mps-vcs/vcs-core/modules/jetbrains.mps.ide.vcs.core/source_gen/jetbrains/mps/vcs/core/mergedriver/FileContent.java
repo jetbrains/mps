@@ -6,12 +6,12 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.extapi.persistence.DataSourceBase;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import java.io.File;
+import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.FileInputStream;
 import jetbrains.mps.util.ReadUtil;
 import jetbrains.mps.util.FileUtil;
-import org.jetbrains.annotations.NotNull;
 import java.io.ByteArrayInputStream;
 import java.io.OutputStream;
 import java.io.FileOutputStream;
@@ -20,15 +20,21 @@ import java.io.FileOutputStream;
 public class FileContent extends DataSourceBase implements StreamDataSource {
   private final File myFile;
   private final byte[] myData;
+  private final FileType myKind;
 
-  public FileContent(File file) throws IOException {
+  public FileContent(@NotNull File file, @NotNull FileType kind) throws IOException {
     myFile = file;
+    myKind = kind;
     InputStream stream = new FileInputStream(file);
     try {
       myData = ReadUtil.read(stream);
     } finally {
       FileUtil.closeFileSafe(stream);
     }
+  }
+
+  public FileType getKind() {
+    return myKind;
   }
 
   @Override
@@ -43,6 +49,17 @@ public class FileContent extends DataSourceBase implements StreamDataSource {
 
   public byte[] getData() {
     return myData;
+  }
+
+  public boolean hasCRLF() {
+    // See MPS-13781 for explanation of the method
+    // getting directly from the file, but can get from git core.autcrlf + core.eol
+    for (int c = 1; c < myData.length; c++) {
+      if (myData[c] == '\n' && myData[c - 1] == '\r') {
+        return true;
+      }
+    }
+    return false;
   }
 
   @NotNull
