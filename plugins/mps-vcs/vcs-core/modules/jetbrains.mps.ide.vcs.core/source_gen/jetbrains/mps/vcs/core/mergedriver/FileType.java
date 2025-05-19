@@ -4,17 +4,14 @@ package jetbrains.mps.vcs.core.mergedriver;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.MPSExtentions;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import java.io.File;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
-import jetbrains.mps.util.FileUtil;
+import org.jetbrains.annotations.Nullable;
 import java.io.InputStream;
 import java.io.FileInputStream;
 import jetbrains.mps.util.JDOMUtil;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -37,10 +34,11 @@ public enum FileType {
 
   public static final FileType[] BY_NAME = {FileType.TRACE_CACHE, FileType.GENERATOR_DEPENDENCIES, FileType.JAVA_DEPENDENCIES};
   public static final FileType[] BY_EXT = {FileType.LANGUAGE, FileType.SOLUTION, FileType.DEVKIT, FileType.PROJECT, FileType.MODEL_ROOT, FileType.MODEL_HEADER, FileType.MODEL};
-  private static final String SVN_BASE = ".svn-base";
+  /*package*/ static final String SVN_BASE = ".svn-base";
 
-  private String mySuffix;
-  private String myXmlRoot;
+  private final String mySuffix;
+  private final String myXmlRoot;
+
   private FileType(String suffix, String xmlRoot) {
     mySuffix = suffix;
     myXmlRoot = xmlRoot;
@@ -50,26 +48,12 @@ public enum FileType {
     return mySuffix;
   }
 
-  @Nullable
-  public static FileType findFromFileType(@NotNull final String filetype) {
-    // try to recognize by filetype
-    return Sequence.fromIterable(Sequence.fromArray(FileType.values())).findFirst((t) -> filetype.equals(t.mySuffix));
+  /*package*/ boolean hasExtension(String suffix) {
+    return mySuffix.equals(suffix);
   }
 
   @NotNull
   public static FileType get(@NotNull ModelFactoryService service, File file) {
-    // try to get file type from SVN filename
-    final Wrappers._T<String> fileName = new Wrappers._T<String>(file.getName());
-    if (fileName.value.endsWith(SVN_BASE)) {
-      fileName.value = fileName.value.substring(0, fileName.value.length() - FileType.SVN_BASE.length());
-      FileType type = Sequence.fromIterable(Sequence.fromArray(FileType.values())).findFirst((t) -> fileName.value.endsWith(t.mySuffix));
-      if (type != null) {
-        return type;
-      }
-      if (service.getDefaultModelFactory(FileExtensionDataSourceType.of(FileUtil.getExtension(fileName.value))) != null) {
-        return FileType.MODEL;
-      }
-    }
     // try to get file type by file content
     FileType rv = getTypeByXmlRoot(file);
     return (rv == null ? FileType.UNKNOWN : rv);

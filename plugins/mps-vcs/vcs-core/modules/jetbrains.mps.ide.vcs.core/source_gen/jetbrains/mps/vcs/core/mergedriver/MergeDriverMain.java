@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.core.platform.PlatformFactory;
 import jetbrains.mps.core.platform.PlatformOptionsBuilder;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import java.io.File;
 import jetbrains.mps.vcs.util.MergeDriverBackupUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -17,9 +18,6 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.extapi.persistence.ModelFactoryService;
-import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 
 @GeneratedClass(nodeId = "3342666646761693517", model = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)")
 public class MergeDriverMain {
@@ -39,6 +37,7 @@ public class MergeDriverMain {
     if (NO_FILETYPE.equals(filetype)) {
       filetype = null;
     }
+    // FIXME I suppose %O, %A and %B arguments don't give name of original file (so that we can't use it to detect proper ModelFactory), but what about %P?
     if (SVN_OPTION.equals(args[1])) {
       if (args.length >= 8) {
         fileMerger.conflictMarker(FileMerger.CONFLICT_START + " " + args[6], FileMerger.CONFLICT_END + " " + args[7], FileMerger.CONFLICT_SEPARATOR);
@@ -51,11 +50,16 @@ public class MergeDriverMain {
       return;
     }
     configureLog();
-    Platform platform = PlatformFactory.initPlatform(PlatformOptionsBuilder.PERSISTENCE);
+    final Platform platform = PlatformFactory.initPlatform(PlatformOptionsBuilder.PERSISTENCE);
 
-    FileContent baseFile = detect(new File(args[2]), platform, filetype);
-    FileContent currentFile = detect(new File(args[3]), platform, filetype);
-    FileContent otherFile = detect(new File(args[4]), platform, filetype);
+    final ModelFactoryService mfs = platform.findComponent(ModelFactoryService.class);
+    if (mfs == null) {
+      throw new IllegalStateException();
+    }
+
+    FileContent baseFile = FileContent.discover(new File(args[2]), mfs, filetype);
+    FileContent currentFile = FileContent.discover(new File(args[3]), mfs, filetype);
+    FileContent otherFile = FileContent.discover(new File(args[4]), mfs, filetype);
 
     String systemPath = new File(System.getProperty(LOG_PROPERTY)).getParentFile().getParentFile().getAbsolutePath();
     MergeDriverBackupUtil.setMergeBackupDirPath(systemPath + File.separator + "merge-backup");
@@ -117,38 +121,5 @@ public class MergeDriverMain {
     // to write custom formatter, and decided to stick to default log format. If anyone complains, 
     // there's always a workaround to have system property "java.util.logging.SimpleFormatter.format" specified.
     rootLogger.addHandler(fh);
-  }
-
-  @NotNull
-  public static FileContent detect(File file, Platform mpsPlatform, @Nullable String fileKindHint) throws IOException {
-
-    FileType ft = null;
-    ModelFactoryService mfs = mpsPlatform.findComponent(ModelFactoryService.class);
-    if (mfs == null) {
-      throw new IllegalStateException();
-    }
-    // according to GitMergeDriverInstaller&SvnInstaller history, filetype is always null ( ==  "undefined" cmdline arg), therefore next if is dead code.
-    // according to [mikev] it's a functionality planned but never implemented (requires tailored .gitattributes and numerous merge driver records, 
-    // as Git doesn't supply detected type, e.g. .gitattributes:
-    //      *.mps text merge=mpsmps
-    //      *.mpsr text merge=mpsperrootroot
-    //      .model text merge=mpsperrootheader
-    //      dependencies text merge=mpsdependencies
-    //      generated text merge=mpsgenerated
-    //      ...
-    // along with respective driver registration records.
-    // As long as we have access to proper file names, I don't see any value in this approach. Only if Git would give us files with mangled names.
-    if (fileKindHint != null) {
-      ft = FileType.findFromFileType(fileKindHint);
-      if (ft == null && mfs.getDefaultModelFactory(FileExtensionDataSourceType.of(fileKindHint)) != null) {
-        ft = FileType.MODEL;
-      }
-    }
-    if (ft == null) {
-      // FIXME whatever actual ModelFactory is there for the file, FT.get() interprets it as ".mps" (MODEL). Refactor to support any persistence
-      ft = FileType.get(mfs, file);
-    }
-    // FIXME why not DataSourceType (or ModelFactoryType) right away in case of a model file???
-    return new FileContent(file, ft);
   }
 }
