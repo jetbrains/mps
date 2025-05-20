@@ -89,8 +89,7 @@ public class MergeDriverMain {
       case MODEL_HEADER:
       case MODEL_ROOT:
       case MODEL:
-        // XXX note, with FileContent holding information about specific kind/model factory, there's no reason to pass fileType
-        return new CompositeMerger(new ModelMerger(mpsPlatform, fileType), new SimpleMerger());
+        return new CompositeMerger(new ModelMerger(mpsPlatform), new SimpleMerger());
       case LANGUAGE:
       case SOLUTION:
       case DEVKIT:

@@ -36,6 +36,7 @@ import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import java.util.List;
+import jetbrains.mps.vcs.core.mergedriver.FileContent;
 import jetbrains.mps.vcs.core.mergedriver.FileType;
 
 /**
@@ -143,6 +144,9 @@ public class ModelSack {
   public static ModelSack discover(@NotNull ComponentHost mpsPlatform, @NotNull String fileName) throws IllegalArgumentException {
     // XXX check comment in EditorAnnotation (using this method), perhaps can simplify this logic - e.g. not to check filename at all?
     ModelFactoryService mfs = mpsPlatform.findComponent(ModelFactoryService.class);
+    if (mfs == null) {
+      throw new IllegalArgumentException("MPS Platform hasn't been properly initialized");
+    }
 
     final String fnExt = FileUtil.getExtension(fileName);
     // FIXME would be great to get rid of per-root detection code eventually. Now, with ContentOption, we got load() covered, but there are still uses in save()
@@ -176,20 +180,20 @@ public class ModelSack {
   }
 
   @NotNull
-  public static ModelSack discover(@NotNull ComponentHost mpsPlatform, @NotNull FileType fileKind) throws IllegalArgumentException {
+  public static ModelSack discover(@NotNull ComponentHost mpsPlatform, @NotNull FileContent file) throws IllegalArgumentException {
     ModelFactoryService mfs = mpsPlatform.findComponent(ModelFactoryService.class);
-    final boolean perRootPersistenceHeader = fileKind == FileType.MODEL_HEADER;
-    final boolean perRootPersistenceRoot = fileKind == FileType.MODEL_ROOT;
-    ModelFactory modelFactory;
-    if (perRootPersistenceHeader || perRootPersistenceRoot) {
-      modelFactory = mfs.getFactoryByType(PreinstalledModelFactoryTypes.PER_ROOT_XML);
-    } else {
-      // check FileType.get(filetype == null) - regardless of actual extension, we get FileType.MODEL, assuming it's ".mps" file
-      // FIXME and this is plain wrong, shall refactor to support merge of different models!
-      modelFactory = mfs.getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML);
+    if (mfs == null) {
+      throw new IllegalArgumentException("MPS Platform hasn't been properly initialized");
     }
+
+    final boolean perRootPersistenceHeader = file.getKind() == FileType.MODEL_HEADER;
+    final boolean perRootPersistenceRoot = file.getKind() == FileType.MODEL_ROOT;
+    if (file.getModelFactoryType() == null) {
+      throw new IllegalArgumentException(String.format("File with model content expected, (was: '%s')", file.getKind()));
+    }
+    ModelFactory modelFactory = mfs.getFactoryByType(file.getModelFactoryType());
     if (modelFactory == null) {
-      throw new IllegalArgumentException(String.format("No model factory to handle detected file kind '%s'", fileKind));
+      throw new IllegalArgumentException(String.format("No model factory to handle detected file kind '%s' with factory kind '%s'", file.getKind(), file.getModelFactoryType()));
     }
     return new ModelSack(perRootPersistenceHeader, perRootPersistenceRoot, modelFactory);
 

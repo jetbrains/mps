@@ -9,11 +9,11 @@ import jetbrains.mps.core.platform.Platform;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.vcspersistence.ModelSack;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.vcspersistence.ModelSack;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import java.io.File;
@@ -31,11 +31,10 @@ import jetbrains.mps.extapi.model.SModelData;
 /*package*/ class ModelMerger extends SimpleMerger {
   private static final Logger LOG = Logger.getLogger(ModelMerger.class);
   private SModelName myModelName;
-  private FileType myFileKind;
+
   private final Platform myPlatform;
 
-  public ModelMerger(Platform mpsPlatform, FileType fileType) {
-    myFileKind = fileType;
+  public ModelMerger(Platform mpsPlatform) {
     myPlatform = mpsPlatform;
   }
   @Override
@@ -52,10 +51,10 @@ import jetbrains.mps.extapi.model.SModelData;
       if (LOG.isInfoLevel()) {
         LOG.info("Reading models...");
       }
-      final ModelSack ms = ModelSack.discover(myPlatform, myFileKind);
-      SModel baseModel = loadModel(baseContent, ms);
-      SModel localModel = loadModel(localContent, ms);
-      SModel latestModel = loadModel(latestContent, ms);
+
+      SModel baseModel = loadModel(baseContent);
+      SModel localModel = loadModel(localContent);
+      SModel latestModel = loadModel(latestContent);
 
       myModelName = baseModel.getName();
 
@@ -98,7 +97,10 @@ import jetbrains.mps.extapi.model.SModelData;
           LOG.info(String.format("%s: Saving merged model...", myModelName));
         }
         updateMetaModelInfo(resultModel, baseModel, localModel, latestModel);
-        resultBytes = ms.save(resultModel);
+        // XXX need to detect proper MF, could use any content (base, repo or local) as we assume they are the same at the moment 
+        //    see MergeDriverMain.selectMerger. However, shall eventually stop assuming same persistence, and then would need to 
+        //    be more careful which content to pick here. Perhaps, shall stick to 'local', as it's the one we are more or less sure would work.
+        resultBytes = ModelSack.discover(myPlatform, baseContent).save(resultModel);
         if (resultBytes == null) {
           if (LOG.isErrorLevel()) {
             LOG.error("Error while saving result model");
@@ -150,7 +152,9 @@ import jetbrains.mps.extapi.model.SModelData;
   }
 
   @NotNull
-  private static SModel loadModel(FileContent content, ModelSack ms) throws ModelLoadException {
+  private SModel loadModel(FileContent content) throws ModelLoadException, IllegalArgumentException {
+    final ModelSack ms = ModelSack.discover(myPlatform, content);
+
     // XXX for some reason, this class didn't use VCSPersistenceUtil.load() - the one that supports legacy persistence. Is it intentional
     SModel m = ms.loadContemporaryPersistenceOnly(content.getData());
     if (VCSPersistenceUtil.isModelFullyLoaded(m)) {
