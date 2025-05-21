@@ -21,8 +21,8 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
+import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.illegal.IllegalConstraintsDescriptor;
-import jetbrains.mps.smodel.runtime.interpreted.ConstraintsAspectInterpreted;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
@@ -71,15 +71,15 @@ public final class ConstraintsRegistry implements CoreAspectRegistry {
         }
         if (aspectDescriptor == null) {
           // @see jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor
-          aspectDescriptor = ConstraintsAspectInterpreted.getInstance();
+          descriptor = new BaseConstraintsDescriptor(concept);
+        } else {
+          descriptor = aspectDescriptor.getConstraints(concept, new ConstraintsDescriptorInitContext() {
+            @Override
+            public ConstraintsRegistry getConstraintsRegistry() {
+              return ConstraintsRegistry.this;
+            }
+          });
         }
-
-        descriptor = aspectDescriptor.getConstraints(concept, new ConstraintsDescriptorInitContext() {
-          @Override
-          public ConstraintsRegistry getConstraintsRegistry() {
-            return ConstraintsRegistry.this;
-          }
-        });
       } catch (Throwable e) {
         LOG.error("Exception while constraints descriptor creating", e);
       }
