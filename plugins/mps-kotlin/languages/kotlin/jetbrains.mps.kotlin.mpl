@@ -24,8 +24,8 @@
   <generators>
     <generator alias="main" namespace="jetbrains.mps.kotlin.generator00" uuid="d3337a44-d215-4189-8a03-b5053e6ae21d">
       <models>
-        <modelRoot contentPath="${mps_home}/plugins/mps-kotlin/languages/kotlin/generator" type="default">
-          <sourceRoot path="${mps_home}/plugins/mps-kotlin/languages/kotlin/generator/templates" />
+        <modelRoot contentPath="${module}/generator" type="default">
+          <sourceRoot location="templates" />
         </modelRoot>
       </models>
       <facets>
