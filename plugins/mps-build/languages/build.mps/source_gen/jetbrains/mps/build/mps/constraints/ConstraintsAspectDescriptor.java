@@ -4,7 +4,9 @@ package jetbrains.mps.build.mps.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,67 +17,67 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new BuildMpsAspect_Constraints();
+        return new BuildMpsAspect_Constraints(context);
       case 1:
-        return new BuildMpsLayout_Manifest_Constraints();
+        return new BuildMpsLayout_Manifest_Constraints(context);
       case 2:
-        return new BuildMpsLayout_ModuleJars_Constraints();
+        return new BuildMpsLayout_ModuleJars_Constraints(context);
       case 3:
-        return new BuildMpsLayout_ModuleSources_Constraints();
+        return new BuildMpsLayout_ModuleSources_Constraints(context);
       case 4:
-        return new BuildMpsLayout_ModuleXml_Constraints();
+        return new BuildMpsLayout_ModuleXml_Constraints(context);
       case 5:
-        return new BuildMpsLayout_Plugin_Constraints();
+        return new BuildMpsLayout_Plugin_Constraints(context);
       case 6:
-        return new BuildMpsLayout_PluginDescriptor_Constraints();
+        return new BuildMpsLayout_PluginDescriptor_Constraints(context);
       case 7:
-        return new BuildMps_Branding_Constraints();
+        return new BuildMps_Branding_Constraints(context);
       case 8:
-        return new BuildMps_DevKit_Constraints();
+        return new BuildMps_DevKit_Constraints(context);
       case 9:
-        return new BuildMps_DevKitExportLanguage_Constraints();
+        return new BuildMps_DevKitExportLanguage_Constraints(context);
       case 10:
-        return new BuildMps_DevKitExportSolution_Constraints();
+        return new BuildMps_DevKitExportSolution_Constraints(context);
       case 11:
-        return new BuildMps_DevKitRef_Constraints();
+        return new BuildMps_DevKitRef_Constraints(context);
       case 12:
-        return new BuildMps_Generator_Constraints();
+        return new BuildMps_Generator_Constraints(context);
       case 13:
-        return new BuildMps_Group_Constraints();
+        return new BuildMps_Group_Constraints(context);
       case 14:
-        return new BuildMps_IdeaPlugin_Constraints();
+        return new BuildMps_IdeaPlugin_Constraints(context);
       case 15:
-        return new BuildMps_IdeaPluginDependency_Constraints();
+        return new BuildMps_IdeaPluginDependency_Constraints(context);
       case 16:
-        return new BuildMps_IdeaPluginGroup_Constraints();
+        return new BuildMps_IdeaPluginGroup_Constraints(context);
       case 17:
-        return new BuildMps_IdeaPluginGroupCustomModule_Constraints();
+        return new BuildMps_IdeaPluginGroupCustomModule_Constraints(context);
       case 18:
-        return new BuildMps_IdeaPluginModule_Constraints();
+        return new BuildMps_IdeaPluginModule_Constraints(context);
       case 19:
-        return new BuildMps_Language_Constraints();
+        return new BuildMps_Language_Constraints(context);
       case 20:
-        return new BuildMps_ModuleDependencyExtendLanguage_Constraints();
+        return new BuildMps_ModuleDependencyExtendLanguage_Constraints(context);
       case 21:
-        return new BuildMps_ModuleDependencyOnDevKit_Constraints();
+        return new BuildMps_ModuleDependencyOnDevKit_Constraints(context);
       case 22:
-        return new BuildMps_ModuleDependencyOnJavaModule_Constraints();
+        return new BuildMps_ModuleDependencyOnJavaModule_Constraints(context);
       case 23:
-        return new BuildMps_ModuleDependencyOnModule_Constraints();
+        return new BuildMps_ModuleDependencyOnModule_Constraints(context);
       case 24:
-        return new BuildMps_ModuleDependencyUseLanguage_Constraints();
+        return new BuildMps_ModuleDependencyUseLanguage_Constraints(context);
       case 25:
-        return new BuildMps_ModuleSolutionRuntime_Constraints();
+        return new BuildMps_ModuleSolutionRuntime_Constraints(context);
       case 26:
-        return new BuildMps_Solution_Constraints();
+        return new BuildMps_Solution_Constraints(context);
       case 27:
-        return new BuildMps_Tips_Constraints();
+        return new BuildMps_Tips_Constraints(context);
       case 28:
-        return new BuildMps_TipsPackage_Constraints();
+        return new BuildMps_TipsPackage_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

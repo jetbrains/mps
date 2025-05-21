@@ -4,7 +4,9 @@ package jetbrains.mps.baseLanguage.builders.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,33 +17,33 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new AsTypeBuilder_Constraints();
+        return new AsTypeBuilder_Constraints(context);
       case 1:
-        return new BaseSimpleBuilderDeclaration_Constraints();
+        return new BaseSimpleBuilderDeclaration_Constraints(context);
       case 2:
-        return new BeanBuilder_Constraints();
+        return new BeanBuilder_Constraints(context);
       case 3:
-        return new BeanPropertyBuilder_Constraints();
+        return new BeanPropertyBuilder_Constraints(context);
       case 4:
-        return new ResultExpression_Constraints();
+        return new ResultExpression_Constraints(context);
       case 5:
-        return new SimpleBuilder_Constraints();
+        return new SimpleBuilder_Constraints(context);
       case 6:
-        return new SimpleBuilderChildExpression_Constraints();
+        return new SimpleBuilderChildExpression_Constraints(context);
       case 7:
-        return new SimpleBuilderDeclaration_Constraints();
+        return new SimpleBuilderDeclaration_Constraints(context);
       case 8:
-        return new SimpleBuilderExpression_Constraints();
+        return new SimpleBuilderExpression_Constraints(context);
       case 9:
-        return new SimpleBuilderParameterReference_Constraints();
+        return new SimpleBuilderParameterReference_Constraints(context);
       case 10:
-        return new SimpleBuilderPropertyBuilder_Constraints();
+        return new SimpleBuilderPropertyBuilder_Constraints(context);
       case 11:
-        return new SimpleBuilderPropertyExpression_Constraints();
+        return new SimpleBuilderPropertyExpression_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

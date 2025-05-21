@@ -4,7 +4,9 @@ package jetbrains.mps.console.base.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,17 +17,17 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new AbstractPrintExpression_Constraints();
+        return new AbstractPrintExpression_Constraints(context);
       case 1:
-        return new Command_Constraints();
+        return new Command_Constraints(context);
       case 2:
-        return new CommandHolder_Constraints();
+        return new CommandHolder_Constraints(context);
       case 3:
-        return new HelpConceptReference_Constraints();
+        return new HelpConceptReference_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

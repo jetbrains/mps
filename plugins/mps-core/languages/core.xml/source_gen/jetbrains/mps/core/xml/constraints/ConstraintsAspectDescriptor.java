@@ -4,7 +4,9 @@ package jetbrains.mps.core.xml.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,41 +17,41 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new XmlAttribute_Constraints();
+        return new XmlAttribute_Constraints(context);
       case 1:
-        return new XmlCDATA_Constraints();
+        return new XmlCDATA_Constraints(context);
       case 2:
-        return new XmlCharRef_Constraints();
+        return new XmlCharRef_Constraints(context);
       case 3:
-        return new XmlCharRefValue_Constraints();
+        return new XmlCharRefValue_Constraints(context);
       case 4:
-        return new XmlCommentLine_Constraints();
+        return new XmlCommentLine_Constraints(context);
       case 5:
-        return new XmlContent_Constraints();
+        return new XmlContent_Constraints(context);
       case 6:
-        return new XmlDeclaration_Constraints();
+        return new XmlDeclaration_Constraints(context);
       case 7:
-        return new XmlDoctypeDeclaration_Constraints();
+        return new XmlDoctypeDeclaration_Constraints(context);
       case 8:
-        return new XmlElement_Constraints();
+        return new XmlElement_Constraints(context);
       case 9:
-        return new XmlEntityRef_Constraints();
+        return new XmlEntityRef_Constraints(context);
       case 10:
-        return new XmlEntityRefValue_Constraints();
+        return new XmlEntityRefValue_Constraints(context);
       case 11:
-        return new XmlExternalId_Constraints();
+        return new XmlExternalId_Constraints(context);
       case 12:
-        return new XmlText_Constraints();
+        return new XmlText_Constraints(context);
       case 13:
-        return new XmlTextValue_Constraints();
+        return new XmlTextValue_Constraints(context);
       case 14:
-        return new XmlValuePart_Constraints();
+        return new XmlValuePart_Constraints(context);
       case 15:
-        return new XmlWhitespace_Constraints();
+        return new XmlWhitespace_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

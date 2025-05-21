@@ -4,7 +4,9 @@ package jetbrains.mps.baseLanguage.lightweightdsl.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,23 +17,23 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new CustomMemberDescriptor_Constraints();
+        return new CustomMemberDescriptor_Constraints(context);
       case 1:
-        return new DSLDescriptor_Constraints();
+        return new DSLDescriptor_Constraints(context);
       case 2:
-        return new DefaultModifier_Constraints();
+        return new DefaultModifier_Constraints(context);
       case 3:
-        return new ImplementationCode_Constraints();
+        return new ImplementationCode_Constraints(context);
       case 4:
-        return new MemberModifier_Constraints();
+        return new MemberModifier_Constraints(context);
       case 5:
-        return new MethodInstance_Constraints();
+        return new MethodInstance_Constraints(context);
       case 6:
-        return new MultipleModifier_Constraints();
+        return new MultipleModifier_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

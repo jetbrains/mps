@@ -4,7 +4,9 @@ package jetbrains.mps.lang.modelapi.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,19 +17,19 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new ModelName_Constraints();
+        return new ModelName_Constraints(context);
       case 1:
-        return new ModelPointer_Constraints();
+        return new ModelPointer_Constraints(context);
       case 2:
-        return new ModulePointer_Constraints();
+        return new ModulePointer_Constraints(context);
       case 3:
-        return new NamedNodeReference_Constraints();
+        return new NamedNodeReference_Constraints(context);
       case 4:
-        return new NodePointer_Constraints();
+        return new NodePointer_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

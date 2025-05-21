@@ -4,7 +4,9 @@ package jetbrains.mps.lang.behavior.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,23 +17,23 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new ConceptBehavior_Constraints();
+        return new ConceptBehavior_Constraints(context);
       case 1:
-        return new ConceptMethodDeclaration_Constraints();
+        return new ConceptMethodDeclaration_Constraints(context);
       case 2:
-        return new LocalBehaviorMethodCall_Constraints();
+        return new LocalBehaviorMethodCall_Constraints(context);
       case 3:
-        return new SuperConceptExpression_Constraints();
+        return new SuperConceptExpression_Constraints(context);
       case 4:
-        return new SuperNodeExpression_Constraints();
+        return new SuperNodeExpression_Constraints(context);
       case 5:
-        return new ThisConceptExpression_Constraints();
+        return new ThisConceptExpression_Constraints(context);
       case 6:
-        return new ThisNodeExpression_Constraints();
+        return new ThisNodeExpression_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

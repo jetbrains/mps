@@ -4,7 +4,9 @@ package jetbrains.mps.lang.typesystem.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,55 +17,55 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new AbstractEquationStatement_Constraints();
+        return new AbstractEquationStatement_Constraints(context);
       case 1:
-        return new AbstractReportStatement_Constraints();
+        return new AbstractReportStatement_Constraints(context);
       case 2:
-        return new ApplicableNodeReference_Constraints();
+        return new ApplicableNodeReference_Constraints(context);
       case 3:
-        return new CheckingRuleReference_Constraints();
+        return new CheckingRuleReference_Constraints(context);
       case 4:
-        return new ComparisonRule_Constraints();
+        return new ComparisonRule_Constraints(context);
       case 5:
-        return new ConceptReference_Constraints();
+        return new ConceptReference_Constraints(context);
       case 6:
-        return new InequationReference_Constraints();
+        return new InequationReference_Constraints(context);
       case 7:
-        return new InequationReplacementRule_Constraints();
+        return new InequationReplacementRule_Constraints(context);
       case 8:
-        return new InferenceRule_Constraints();
+        return new InferenceRule_Constraints(context);
       case 9:
-        return new LinkPatternVariableReference_Constraints();
+        return new LinkPatternVariableReference_Constraints(context);
       case 10:
-        return new NonTypesystemRule_Constraints();
+        return new NonTypesystemRule_Constraints(context);
       case 11:
-        return new PatternVariableReference_Constraints();
+        return new PatternVariableReference_Constraints(context);
       case 12:
-        return new PropertyMessageTarget_Constraints();
+        return new PropertyMessageTarget_Constraints(context);
       case 13:
-        return new PropertyPatternVariableReference_Constraints();
+        return new PropertyPatternVariableReference_Constraints(context);
       case 14:
-        return new QuickFixArgumentReference_Constraints();
+        return new QuickFixArgumentReference_Constraints(context);
       case 15:
-        return new QuickFixFieldReference_Constraints();
+        return new QuickFixFieldReference_Constraints(context);
       case 16:
-        return new ReferenceMessageTarget_Constraints();
+        return new ReferenceMessageTarget_Constraints(context);
       case 17:
-        return new SubstituteTypeRule_Constraints();
+        return new SubstituteTypeRule_Constraints(context);
       case 18:
-        return new SubtypingRule_Constraints();
+        return new SubtypingRule_Constraints(context);
       case 19:
-        return new TypeVarReference_Constraints();
+        return new TypeVarReference_Constraints(context);
       case 20:
-        return new TypesystemIntentionArgument_Constraints();
+        return new TypesystemIntentionArgument_Constraints(context);
       case 21:
-        return new TypesystemQuickFix_Constraints();
+        return new TypesystemQuickFix_Constraints(context);
       case 22:
-        return new WhenConcreteVariableReference_Constraints();
+        return new WhenConcreteVariableReference_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

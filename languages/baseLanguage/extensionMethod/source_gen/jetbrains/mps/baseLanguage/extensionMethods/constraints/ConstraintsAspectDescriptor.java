@@ -4,7 +4,9 @@ package jetbrains.mps.baseLanguage.extensionMethods.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,21 +17,21 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new ExtensionMethodCall_Constraints();
+        return new ExtensionMethodCall_Constraints(context);
       case 1:
-        return new ExtensionMethodDeclaration_Constraints();
+        return new ExtensionMethodDeclaration_Constraints(context);
       case 2:
-        return new ExtensionStaticFieldReference_Constraints();
+        return new ExtensionStaticFieldReference_Constraints(context);
       case 3:
-        return new LocalExtendedMethodCall_Constraints();
+        return new LocalExtendedMethodCall_Constraints(context);
       case 4:
-        return new ThisExtensionExpression_Constraints();
+        return new ThisExtensionExpression_Constraints(context);
       case 5:
-        return new TypeExtension_Constraints();
+        return new TypeExtension_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

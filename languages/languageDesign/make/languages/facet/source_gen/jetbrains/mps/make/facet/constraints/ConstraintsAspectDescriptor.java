@@ -4,7 +4,9 @@ package jetbrains.mps.make.facet.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,31 +17,31 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new ExtendsFacetReference_Constraints();
+        return new ExtendsFacetReference_Constraints(context);
       case 1:
-        return new FacetDeclaration_Constraints();
+        return new FacetDeclaration_Constraints(context);
       case 2:
-        return new FacetReference_Constraints();
+        return new FacetReference_Constraints(context);
       case 3:
-        return new ForeignParametersExpression_Constraints();
+        return new ForeignParametersExpression_Constraints(context);
       case 4:
-        return new NamedFacetReference_Constraints();
+        return new NamedFacetReference_Constraints(context);
       case 5:
-        return new RelatedFacetReference_Constraints();
+        return new RelatedFacetReference_Constraints(context);
       case 6:
-        return new ResourceClassifierType_Constraints();
+        return new ResourceClassifierType_Constraints(context);
       case 7:
-        return new ResourceTypeDeclaration_Constraints();
+        return new ResourceTypeDeclaration_Constraints(context);
       case 8:
-        return new TargetDeclaration_Constraints();
+        return new TargetDeclaration_Constraints(context);
       case 9:
-        return new TargetDependency_Constraints();
+        return new TargetDependency_Constraints(context);
       case 10:
-        return new TargetReferenceExpression_Constraints();
+        return new TargetReferenceExpression_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

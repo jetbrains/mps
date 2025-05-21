@@ -4,7 +4,9 @@ package jetbrains.mps.lang.pattern.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,39 +17,39 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new ActionAsPattern_Constraints();
+        return new ActionAsPattern_Constraints(context);
       case 1:
-        return new ActionStatement_Constraints();
+        return new ActionStatement_Constraints(context);
       case 2:
-        return new ExpressionPatternProvider_Constraints();
+        return new ExpressionPatternProvider_Constraints(context);
       case 3:
-        return new LabeledNode_Constraints();
+        return new LabeledNode_Constraints(context);
       case 4:
-        return new LinkPatternVariableDeclaration_Constraints();
+        return new LinkPatternVariableDeclaration_Constraints(context);
       case 5:
-        return new LocalPatternReference_Constraints();
+        return new LocalPatternReference_Constraints(context);
       case 6:
-        return new OrPatternVariableReference_Constraints();
+        return new OrPatternVariableReference_Constraints(context);
       case 7:
-        return new PatternBuilder_Constraints();
+        return new PatternBuilder_Constraints(context);
       case 8:
-        return new PatternBuilderVariableReference_Constraints();
+        return new PatternBuilderVariableReference_Constraints(context);
       case 9:
-        return new PatternVariableDeclaration_Constraints();
+        return new PatternVariableDeclaration_Constraints(context);
       case 10:
-        return new PatternVariableNode_Constraints();
+        return new PatternVariableNode_Constraints(context);
       case 11:
-        return new PatternVariableProperty_Constraints();
+        return new PatternVariableProperty_Constraints(context);
       case 12:
-        return new PatternVariableReference_Constraints();
+        return new PatternVariableReference_Constraints(context);
       case 13:
-        return new PropertyPatternVariableDeclaration_Constraints();
+        return new PropertyPatternVariableDeclaration_Constraints(context);
       case 14:
-        return new QualifiedPatternReference_Constraints();
+        return new QualifiedPatternReference_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

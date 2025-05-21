@@ -4,7 +4,9 @@ package jetbrains.mps.kotlin.javaRefs.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,25 +17,25 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new JavaConstructorSuperSpecifier_Constraints();
+        return new JavaConstructorSuperSpecifier_Constraints(context);
       case 1:
-        return new JavaDefaultConstructorCall_Constraints();
+        return new JavaDefaultConstructorCall_Constraints(context);
       case 2:
-        return new JavaDefaultConstructorSuperSpecifier_Constraints();
+        return new JavaDefaultConstructorSuperSpecifier_Constraints(context);
       case 3:
-        return new JavaEnumConstantReference_Constraints();
+        return new JavaEnumConstantReference_Constraints(context);
       case 4:
-        return new JavaMemberTarget_Constraints();
+        return new JavaMemberTarget_Constraints(context);
       case 5:
-        return new JavaMethodCall_Constraints();
+        return new JavaMethodCall_Constraints(context);
       case 6:
-        return new JavaMethodVariableReference_Constraints();
+        return new JavaMethodVariableReference_Constraints(context);
       case 7:
-        return new JavaVariableReference_Constraints();
+        return new JavaVariableReference_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

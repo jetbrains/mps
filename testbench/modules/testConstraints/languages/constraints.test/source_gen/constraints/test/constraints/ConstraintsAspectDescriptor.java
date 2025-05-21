@@ -4,7 +4,9 @@ package constraints.test.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,35 +17,35 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new TestConstraintsInheritance_Base_Constraints();
+        return new TestConstraintsInheritance_Base_Constraints(context);
       case 1:
-        return new TestConstraintsInheritance_Derived1_Constrained_Constraints();
+        return new TestConstraintsInheritance_Derived1_Constrained_Constraints(context);
       case 2:
-        return new TestConstraintsInheritance_Derived2_Constrained_Constraints();
+        return new TestConstraintsInheritance_Derived2_Constrained_Constraints(context);
       case 3:
-        return new TestConstraintsInvocation_CanBeAncestorFail_Constraints();
+        return new TestConstraintsInvocation_CanBeAncestorFail_Constraints(context);
       case 4:
-        return new TestConstraintsInvocation_CanBeChildFail_Constraints();
+        return new TestConstraintsInvocation_CanBeChildFail_Constraints(context);
       case 5:
-        return new TestConstraintsInvocation_CanBeParentFail_Constraints();
+        return new TestConstraintsInvocation_CanBeParentFail_Constraints(context);
       case 6:
-        return new TestRefConstraints_BaseReference_Handler_Constraints();
+        return new TestRefConstraints_BaseReference_Handler_Constraints(context);
       case 7:
-        return new TestRefConstraints_BaseReference_Scoping_Constraints();
+        return new TestRefConstraints_BaseReference_Scoping_Constraints(context);
       case 8:
-        return new TestRefConstraints_SubReference_HandlerSuperHandler_Constraints();
+        return new TestRefConstraints_SubReference_HandlerSuperHandler_Constraints(context);
       case 9:
-        return new TestRefConstraints_SubReference_HandlerSuperScoping_Constraints();
+        return new TestRefConstraints_SubReference_HandlerSuperScoping_Constraints(context);
       case 10:
-        return new TestRefConstraints_SubReference_ScopingSuperHandler_Constraints();
+        return new TestRefConstraints_SubReference_ScopingSuperHandler_Constraints(context);
       case 11:
-        return new TestRefConstraints_SubReference_ScopingSuperScoping_Constraints();
+        return new TestRefConstraints_SubReference_ScopingSuperScoping_Constraints(context);
       case 12:
-        return new TestRefConstraints_Target_Constraints();
+        return new TestRefConstraints_Target_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

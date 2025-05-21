@@ -4,7 +4,9 @@ package org.jetbrains.mps.samples.Money.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,17 +17,17 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new ConvertTo_Constraints();
+        return new ConvertTo_Constraints(context);
       case 1:
-        return new GetAmount_Constraints();
+        return new GetAmount_Constraints(context);
       case 2:
-        return new GetCurrency_Constraints();
+        return new GetCurrency_Constraints(context);
       case 3:
-        return new MoneyLiteral_Constraints();
+        return new MoneyLiteral_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

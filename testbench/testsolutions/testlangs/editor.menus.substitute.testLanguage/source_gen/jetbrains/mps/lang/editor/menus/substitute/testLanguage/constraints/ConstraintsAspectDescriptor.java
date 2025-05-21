@@ -4,7 +4,9 @@ package jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,21 +17,21 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new TestSubstituteChildWithConstraints1_Constraints();
+        return new TestSubstituteChildWithConstraints1_Constraints(context);
       case 1:
-        return new TestSubstituteChildWithConstraintsWrapper1_Constraints();
+        return new TestSubstituteChildWithConstraintsWrapper1_Constraints(context);
       case 2:
-        return new TestSubstituteParentPropertyAndReference_Constraints();
+        return new TestSubstituteParentPropertyAndReference_Constraints(context);
       case 3:
-        return new TestSubstituteParentWithConstraints_Constraints();
+        return new TestSubstituteParentWithConstraints_Constraints(context);
       case 4:
-        return new TestSubstituteSmartRef_WithoutExplicitMenu_Constraints();
+        return new TestSubstituteSmartRef_WithoutExplicitMenu_Constraints(context);
       case 5:
-        return new TestSubstituteSmartRef_WithoutExplicitMenu_Subconcept_Constraints();
+        return new TestSubstituteSmartRef_WithoutExplicitMenu_Subconcept_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

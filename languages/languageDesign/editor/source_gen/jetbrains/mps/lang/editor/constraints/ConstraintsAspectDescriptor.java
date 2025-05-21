@@ -4,7 +4,9 @@ package jetbrains.mps.lang.editor.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,121 +17,121 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new AbstractComponent_Constraints();
+        return new AbstractComponent_Constraints(context);
       case 1:
-        return new AttributeStyleClassItem_Constraints();
+        return new AttributeStyleClassItem_Constraints(context);
       case 2:
-        return new CellActionMapDeclaration_Constraints();
+        return new CellActionMapDeclaration_Constraints(context);
       case 3:
-        return new CellActionMapImport_Constraints();
+        return new CellActionMapImport_Constraints(context);
       case 4:
-        return new CellIdReferenceSelector_Constraints();
+        return new CellIdReferenceSelector_Constraints(context);
       case 5:
-        return new CellKeyMapDeclaration_Constraints();
+        return new CellKeyMapDeclaration_Constraints(context);
       case 6:
-        return new CellMenuComponent_Constraints();
+        return new CellMenuComponent_Constraints(context);
       case 7:
-        return new CellMenuComponentFeature_Link_Constraints();
+        return new CellMenuComponentFeature_Link_Constraints(context);
       case 8:
-        return new CellMenuComponentFeature_Property_Constraints();
+        return new CellMenuComponentFeature_Property_Constraints(context);
       case 9:
-        return new CellMenuPart_ReplaceNode_CustomNodeConcept_Constraints();
+        return new CellMenuPart_ReplaceNode_CustomNodeConcept_Constraints(context);
       case 10:
-        return new CellModel_Component_Constraints();
+        return new CellModel_Component_Constraints(context);
       case 11:
-        return new CellModel_NextEditor_Constraints();
+        return new CellModel_NextEditor_Constraints(context);
       case 12:
-        return new CellModel_Property_Constraints();
+        return new CellModel_Property_Constraints(context);
       case 13:
-        return new CellModel_RefCell_Constraints();
+        return new CellModel_RefCell_Constraints(context);
       case 14:
-        return new CellModel_RefNode_Constraints();
+        return new CellModel_RefNode_Constraints(context);
       case 15:
-        return new CellModel_RefNodeList_Constraints();
+        return new CellModel_RefNodeList_Constraints(context);
       case 16:
-        return new CellModel_ReferencePresentation_Constraints();
+        return new CellModel_ReferencePresentation_Constraints(context);
       case 17:
-        return new CellModel_TransactionalProperty_Constraints();
+        return new CellModel_TransactionalProperty_Constraints(context);
       case 18:
-        return new CellModel_WithRole_Constraints();
+        return new CellModel_WithRole_Constraints(context);
       case 19:
-        return new CompletionCustomizationContextSpecificator_Concept_Constraints();
+        return new CompletionCustomizationContextSpecificator_Concept_Constraints(context);
       case 20:
-        return new CompletionCustomization_LinkFeature_Constraints();
+        return new CompletionCustomization_LinkFeature_Constraints(context);
       case 21:
-        return new CompletionCustomization_PropertyFeature_Constraints();
+        return new CompletionCustomization_PropertyFeature_Constraints(context);
       case 22:
-        return new ConceptEditorDeclaration_Constraints();
+        return new ConceptEditorDeclaration_Constraints(context);
       case 23:
-        return new ConceptEditorHintDeclaration_Constraints();
+        return new ConceptEditorHintDeclaration_Constraints(context);
       case 24:
-        return new ContextVariable_Constraints();
+        return new ContextVariable_Constraints(context);
       case 25:
-        return new EditorCellModel_Constraints();
+        return new EditorCellModel_Constraints(context);
       case 26:
-        return new EditorComponentDeclaration_Constraints();
+        return new EditorComponentDeclaration_Constraints(context);
       case 27:
-        return new IMenuPartParameterized_Constraints();
+        return new IMenuPartParameterized_Constraints(context);
       case 28:
-        return new IMenuReference_Default_Constraints();
+        return new IMenuReference_Default_Constraints(context);
       case 29:
-        return new IMenu_Concept_Constraints();
+        return new IMenu_Concept_Constraints(context);
       case 30:
-        return new IMenu_Default_Constraints();
+        return new IMenu_Default_Constraints(context);
       case 31:
-        return new IMenu_Named_Constraints();
+        return new IMenu_Named_Constraints(context);
       case 32:
-        return new IStyle_Constraints();
+        return new IStyle_Constraints(context);
       case 33:
-        return new InlineStyleDeclaration_Constraints();
+        return new InlineStyleDeclaration_Constraints(context);
       case 34:
-        return new NavigatableReferenceStyleClassItem_Constraints();
+        return new NavigatableReferenceStyleClassItem_Constraints(context);
       case 35:
-        return new PropertyDeclarationCellSelector_Constraints();
+        return new PropertyDeclarationCellSelector_Constraints(context);
       case 36:
-        return new RGBColor_Constraints();
+        return new RGBColor_Constraints(context);
       case 37:
-        return new StyleSheet_Constraints();
+        return new StyleSheet_Constraints(context);
       case 38:
-        return new SubstituteMenu_Constraints();
+        return new SubstituteMenu_Constraints(context);
       case 39:
-        return new SubstituteMenuItem_AbstractOperation_Constraints();
+        return new SubstituteMenuItem_AbstractOperation_Constraints(context);
       case 40:
-        return new SubstituteMenuPart_ReferenceScope_Constraints();
+        return new SubstituteMenuPart_ReferenceScope_Constraints(context);
       case 41:
-        return new SubstituteMenuReference_DefaultWithFunction_Constraints();
+        return new SubstituteMenuReference_DefaultWithFunction_Constraints(context);
       case 42:
-        return new SubstituteMenuReference_Named_Constraints();
+        return new SubstituteMenuReference_Named_Constraints(context);
       case 43:
-        return new SubstituteMenuVariableReference_Constraints();
+        return new SubstituteMenuVariableReference_Constraints(context);
       case 44:
-        return new SubstituteMenu_Contribution_Constraints();
+        return new SubstituteMenu_Contribution_Constraints(context);
       case 45:
-        return new SubstituteMenu_Default_Constraints();
+        return new SubstituteMenu_Default_Constraints(context);
       case 46:
-        return new SubstituteMenu_Named_Constraints();
+        return new SubstituteMenu_Named_Constraints(context);
       case 47:
-        return new TransformationMenu_Constraints();
+        return new TransformationMenu_Constraints(context);
       case 48:
-        return new TransformationMenuContribution_Constraints();
+        return new TransformationMenuContribution_Constraints(context);
       case 49:
-        return new TransformationMenuPart_IncludeSubstituteMenu_Constraints();
+        return new TransformationMenuPart_IncludeSubstituteMenu_Constraints(context);
       case 50:
-        return new TransformationMenuPart_PropertyMenu_Constraints();
+        return new TransformationMenuPart_PropertyMenu_Constraints(context);
       case 51:
-        return new TransformationMenuPart_ReferenceMenu_Constraints();
+        return new TransformationMenuPart_ReferenceMenu_Constraints(context);
       case 52:
-        return new TransformationMenuReference_Named_Constraints();
+        return new TransformationMenuReference_Named_Constraints(context);
       case 53:
-        return new TransformationMenuVariableReference_Constraints();
+        return new TransformationMenuVariableReference_Constraints(context);
       case 54:
-        return new TransformationMenu_Default_Constraints();
+        return new TransformationMenu_Default_Constraints(context);
       case 55:
-        return new TransformationMenu_Named_Constraints();
+        return new TransformationMenu_Named_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

@@ -4,7 +4,9 @@ package jetbrains.mps.samples.fincalculator.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,21 +17,21 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new CalculationReference_Constraints();
+        return new CalculationReference_Constraints(context);
       case 1:
-        return new CalculationValueReference_Constraints();
+        return new CalculationValueReference_Constraints(context);
       case 2:
-        return new Command_Constraints();
+        return new Command_Constraints(context);
       case 3:
-        return new FieldReference_Constraints();
+        return new FieldReference_Constraints(context);
       case 4:
-        return new LogicalReference_Constraints();
+        return new LogicalReference_Constraints(context);
       case 5:
-        return new SelectorReference_Constraints();
+        return new SelectorReference_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

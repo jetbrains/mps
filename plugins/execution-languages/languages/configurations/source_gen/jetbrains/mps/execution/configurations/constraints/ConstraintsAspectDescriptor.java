@@ -4,7 +4,9 @@ package jetbrains.mps.execution.configurations.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,37 +17,37 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new AbstractRunConfigurationExecutor_Constraints();
+        return new AbstractRunConfigurationExecutor_Constraints(context);
       case 1:
-        return new BeforeTaskParameterReference_Constraints();
+        return new BeforeTaskParameterReference_Constraints(context);
       case 2:
-        return new ConfigurationFromExecutorReference_Constraints();
+        return new ConfigurationFromExecutorReference_Constraints(context);
       case 3:
-        return new ContextExpression_Constraints();
+        return new ContextExpression_Constraints(context);
       case 4:
-        return new Create_ConceptFunction_Constraints();
+        return new Create_ConceptFunction_Constraints(context);
       case 5:
-        return new EnvironmentExpression_Constraints();
+        return new EnvironmentExpression_Constraints(context);
       case 6:
-        return new GetProjectOperation_Constraints();
+        return new GetProjectOperation_Constraints(context);
       case 7:
-        return new IsConfigurationFromContext_ConceptFunction_Constraints();
+        return new IsConfigurationFromContext_ConceptFunction_Constraints(context);
       case 8:
-        return new RunConfigurationCreator_Constraints();
+        return new RunConfigurationCreator_Constraints(context);
       case 9:
-        return new RunConfigurationExecutor_Constraints();
+        return new RunConfigurationExecutor_Constraints(context);
       case 10:
-        return new RunConfigurationProducer_Constraints();
+        return new RunConfigurationProducer_Constraints(context);
       case 11:
-        return new RunConfigurationProducerPart_Constraints();
+        return new RunConfigurationProducerPart_Constraints(context);
       case 12:
-        return new RunConfigurationSource_Constraints();
+        return new RunConfigurationSource_Constraints(context);
       case 13:
-        return new StartProcessHandlerStatement_Constraints();
+        return new StartProcessHandlerStatement_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

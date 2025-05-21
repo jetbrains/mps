@@ -4,7 +4,9 @@ package jetbrains.mps.lang.quotation.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,27 +17,27 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new AbstractAntiquotation_Constraints();
+        return new AbstractAntiquotation_Constraints(context);
       case 1:
-        return new NodeBuilderExpression_Constraints();
+        return new NodeBuilderExpression_Constraints(context);
       case 2:
-        return new NodeBuilderInitLink_Constraints();
+        return new NodeBuilderInitLink_Constraints(context);
       case 3:
-        return new NodeBuilderInitProperty_Constraints();
+        return new NodeBuilderInitProperty_Constraints(context);
       case 4:
-        return new NodeBuilderList_Constraints();
+        return new NodeBuilderList_Constraints(context);
       case 5:
-        return new NodeBuilderNode_Constraints();
+        return new NodeBuilderNode_Constraints(context);
       case 6:
-        return new NodeBuilderPropertyExpression_Constraints();
+        return new NodeBuilderPropertyExpression_Constraints(context);
       case 7:
-        return new NodeBuilderRef_Constraints();
+        return new NodeBuilderRef_Constraints(context);
       case 8:
-        return new Quotation_Constraints();
+        return new Quotation_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

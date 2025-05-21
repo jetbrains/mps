@@ -4,7 +4,9 @@ package jetbrains.mps.make.script.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,25 +17,25 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new AdvanceWorkStatement_Constraints();
+        return new AdvanceWorkStatement_Constraints(context);
       case 1:
-        return new ConfigDefinition_Constraints();
+        return new ConfigDefinition_Constraints(context);
       case 2:
-        return new FinishWorkStatement_Constraints();
+        return new FinishWorkStatement_Constraints(context);
       case 3:
-        return new GetMakeSessionExpression_Constraints();
+        return new GetMakeSessionExpression_Constraints(context);
       case 4:
-        return new JobDefinition_Constraints();
+        return new JobDefinition_Constraints(context);
       case 5:
-        return new RelayQueryExpression_Constraints();
+        return new RelayQueryExpression_Constraints(context);
       case 6:
-        return new ResourceType_Constraints();
+        return new ResourceType_Constraints(context);
       case 7:
-        return new ResultStatement_Constraints();
+        return new ResultStatement_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

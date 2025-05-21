@@ -4,7 +4,9 @@ package jetbrains.mps.baseLanguage.regexp.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,29 +17,29 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new LiteralReplacement_Constraints();
+        return new LiteralReplacement_Constraints(context);
       case 1:
-        return new MatchRegexpOperation_Constraints();
+        return new MatchRegexpOperation_Constraints(context);
       case 2:
-        return new MatchVariableReference_Constraints();
+        return new MatchVariableReference_Constraints(context);
       case 3:
-        return new MatchVariableReferenceRegexp_Constraints();
+        return new MatchVariableReferenceRegexp_Constraints(context);
       case 4:
-        return new MatchVariableReferenceReplacement_Constraints();
+        return new MatchVariableReferenceReplacement_Constraints(context);
       case 5:
-        return new PredefinedSymbolClassDeclaration_Constraints();
+        return new PredefinedSymbolClassDeclaration_Constraints(context);
       case 6:
-        return new RegexpDeclaration_Constraints();
+        return new RegexpDeclaration_Constraints(context);
       case 7:
-        return new ReplaceRegexpOperation_Constraints();
+        return new ReplaceRegexpOperation_Constraints(context);
       case 8:
-        return new ReplaceWithRegexpOperation_Constraints();
+        return new ReplaceWithRegexpOperation_Constraints(context);
       case 9:
-        return new StringLiteralRegexp_Constraints();
+        return new StringLiteralRegexp_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

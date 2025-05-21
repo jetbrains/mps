@@ -4,7 +4,9 @@ package jetbrains.mps.samples.heating.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,19 +17,19 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new Applicability_Constraints();
+        return new Applicability_Constraints(context);
       case 1:
-        return new ChangeEvent_Constraints();
+        return new ChangeEvent_Constraints(context);
       case 2:
-        return new DailyPlan_Constraints();
+        return new DailyPlan_Constraints(context);
       case 3:
-        return new DailyPlanReference_Constraints();
+        return new DailyPlanReference_Constraints(context);
       case 4:
-        return new Slot_Constraints();
+        return new Slot_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

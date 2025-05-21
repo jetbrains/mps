@@ -4,7 +4,9 @@ package jetbrains.mps.lang.html.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,27 +17,27 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new HtmlAttribute_Constraints();
+        return new HtmlAttribute_Constraints(context);
       case 1:
-        return new HtmlClosingTag_Constraints();
+        return new HtmlClosingTag_Constraints(context);
       case 2:
-        return new HtmlContent_Constraints();
+        return new HtmlContent_Constraints(context);
       case 3:
-        return new HtmlEntityRef_Constraints();
+        return new HtmlEntityRef_Constraints(context);
       case 4:
-        return new HtmlEntityRefValue_Constraints();
+        return new HtmlEntityRefValue_Constraints(context);
       case 5:
-        return new HtmlOpeningTag_Constraints();
+        return new HtmlOpeningTag_Constraints(context);
       case 6:
-        return new HtmlTag_Constraints();
+        return new HtmlTag_Constraints(context);
       case 7:
-        return new HtmlTextValue_Constraints();
+        return new HtmlTextValue_Constraints(context);
       case 8:
-        return new HtmlWord_Constraints();
+        return new HtmlWord_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

@@ -4,7 +4,9 @@ package jetbrains.mps.build.workflow.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,23 +17,23 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new BwfFileSet_Constraints();
+        return new BwfFileSet_Constraints(context);
       case 1:
-        return new BwfJavaClassPath_Constraints();
+        return new BwfJavaClassPath_Constraints(context);
       case 2:
-        return new BwfSubTask_Constraints();
+        return new BwfSubTask_Constraints(context);
       case 3:
-        return new BwfSubTaskDependency_Constraints();
+        return new BwfSubTaskDependency_Constraints(context);
       case 4:
-        return new BwfTask_Constraints();
+        return new BwfTask_Constraints(context);
       case 5:
-        return new BwfTaskLibrary_Constraints();
+        return new BwfTaskLibrary_Constraints(context);
       case 6:
-        return new XmlForeignRefValue_Constraints();
+        return new XmlForeignRefValue_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

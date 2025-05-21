@@ -4,7 +4,9 @@ package jetbrains.mps.lang.generator.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,39 +17,39 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new AbstractNodeMacroNamespace_Constraints();
+        return new AbstractNodeMacroNamespace_Constraints(context);
       case 1:
-        return new CreateRootRule_Constraints();
+        return new CreateRootRule_Constraints(context);
       case 2:
-        return new GeneratorParameterReference_Constraints();
+        return new GeneratorParameterReference_Constraints(context);
       case 3:
-        return new ReferenceReductionRule_Constraints();
+        return new ReferenceReductionRule_Constraints(context);
       case 4:
-        return new Root_MappingRule_Constraints();
+        return new Root_MappingRule_Constraints(context);
       case 5:
-        return new TemplateArgumentLinkPatternRefExpression_Constraints();
+        return new TemplateArgumentLinkPatternRefExpression_Constraints(context);
       case 6:
-        return new TemplateArgumentParameterExpression_Constraints();
+        return new TemplateArgumentParameterExpression_Constraints(context);
       case 7:
-        return new TemplateArgumentPatternVarRefExpression_Constraints();
+        return new TemplateArgumentPatternVarRefExpression_Constraints(context);
       case 8:
-        return new TemplateArgumentPropertyPatternRefExpression_Constraints();
+        return new TemplateArgumentPropertyPatternRefExpression_Constraints(context);
       case 9:
-        return new TemplateArgumentQueryExpression_Constraints();
+        return new TemplateArgumentQueryExpression_Constraints(context);
       case 10:
-        return new TemplateArgumentVarRefExpression2_Constraints();
+        return new TemplateArgumentVarRefExpression2_Constraints(context);
       case 11:
-        return new TemplateCallMacro_Constraints();
+        return new TemplateCallMacro_Constraints(context);
       case 12:
-        return new TemplateDeclarationReference_Constraints();
+        return new TemplateDeclarationReference_Constraints(context);
       case 13:
-        return new TemplateSwitch_Constraints();
+        return new TemplateSwitch_Constraints(context);
       case 14:
-        return new TemplateSwitchMacro_Constraints();
+        return new TemplateSwitchMacro_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

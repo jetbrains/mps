@@ -4,7 +4,9 @@ package jetbrains.mps.baseLanguage.javadoc.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,31 +17,31 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new ClassifierDocReference_Constraints();
+        return new ClassifierDocReference_Constraints(context);
       case 1:
-        return new DeprecatedBlockDocTag_Constraints();
+        return new DeprecatedBlockDocTag_Constraints(context);
       case 2:
-        return new DocMethodParameterReference_Constraints();
+        return new DocMethodParameterReference_Constraints(context);
       case 3:
-        return new DocTypeParameterReference_Constraints();
+        return new DocTypeParameterReference_Constraints(context);
       case 4:
-        return new FieldDocReference_Constraints();
+        return new FieldDocReference_Constraints(context);
       case 5:
-        return new MethodDocReference_Constraints();
+        return new MethodDocReference_Constraints(context);
       case 6:
-        return new ParameterBlockDocTag_Constraints();
+        return new ParameterBlockDocTag_Constraints(context);
       case 7:
-        return new ReturnBlockDocTag_Constraints();
+        return new ReturnBlockDocTag_Constraints(context);
       case 8:
-        return new StaticFieldDocReference_Constraints();
+        return new StaticFieldDocReference_Constraints(context);
       case 9:
-        return new ThrowsBlockDocTag_Constraints();
+        return new ThrowsBlockDocTag_Constraints(context);
       case 10:
-        return new ValueInlineDocTag_Constraints();
+        return new ValueInlineDocTag_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

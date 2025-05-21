@@ -4,7 +4,9 @@ package jetbrains.mps.execution.commands.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,27 +17,27 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new CommandBuilderExpression_Constraints();
+        return new CommandBuilderExpression_Constraints(context);
       case 1:
-        return new CommandDebuggerOperation_Constraints();
+        return new CommandDebuggerOperation_Constraints(context);
       case 2:
-        return new CommandParameterAssignment_Constraints();
+        return new CommandParameterAssignment_Constraints(context);
       case 3:
-        return new CommandParameterReference_Constraints();
+        return new CommandParameterReference_Constraints(context);
       case 4:
-        return new CommandPartLengthOperation_Constraints();
+        return new CommandPartLengthOperation_Constraints(context);
       case 5:
-        return new CommandPartToListOperation_Constraints();
+        return new CommandPartToListOperation_Constraints(context);
       case 6:
-        return new DebuggerSettingsCommandParameterDeclaration_Constraints();
+        return new DebuggerSettingsCommandParameterDeclaration_Constraints(context);
       case 7:
-        return new ExecuteCommandPart_Constraints();
+        return new ExecuteCommandPart_Constraints(context);
       case 8:
-        return new StartAndWaitOperation_Constraints();
+        return new StartAndWaitOperation_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

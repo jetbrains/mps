@@ -4,7 +4,9 @@ package jetbrains.mps.execution.settings.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,27 +17,27 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new EditorExpression_Constraints();
+        return new EditorExpression_Constraints(context);
       case 1:
-        return new EditorOperationCall_Constraints();
+        return new EditorOperationCall_Constraints(context);
       case 2:
-        return new EditorOperationDeclaration_Constraints();
+        return new EditorOperationDeclaration_Constraints(context);
       case 3:
-        return new EditorPropertyReference_Constraints();
+        return new EditorPropertyReference_Constraints(context);
       case 4:
-        return new GetEditorOperation_Constraints();
+        return new GetEditorOperation_Constraints(context);
       case 5:
-        return new PersistentPropertyReferenceOperation_Constraints();
+        return new PersistentPropertyReferenceOperation_Constraints(context);
       case 6:
-        return new ProjectAccessExpression_Constraints();
+        return new ProjectAccessExpression_Constraints(context);
       case 7:
-        return new SettingsEditor_Constraints();
+        return new SettingsEditor_Constraints(context);
       case 8:
-        return new TemplateParameterReference_Constraints();
+        return new TemplateParameterReference_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

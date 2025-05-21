@@ -4,7 +4,9 @@ package jetbrains.mps.baseLanguageInternal.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,29 +17,29 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new ConstantValue_Constraints();
+        return new ConstantValue_Constraints(context);
       case 1:
-        return new ExtractStatementListInnerExpression_Constraints();
+        return new ExtractStatementListInnerExpression_Constraints(context);
       case 2:
-        return new ExtractStaticInnerClassConcept_Constraints();
+        return new ExtractStaticInnerClassConcept_Constraints(context);
       case 3:
-        return new ExtractStaticInnerClassCreator_Constraints();
+        return new ExtractStaticInnerClassCreator_Constraints(context);
       case 4:
-        return new ExtractStaticMethod_CallExpression_Constraints();
+        return new ExtractStaticMethod_CallExpression_Constraints(context);
       case 5:
-        return new ExtractToConstantRefExpression_Constraints();
+        return new ExtractToConstantRefExpression_Constraints(context);
       case 6:
-        return new InternalAnonymousClass_Constraints();
+        return new InternalAnonymousClass_Constraints(context);
       case 7:
-        return new InternalPartialInstanceMethodCall_Constraints();
+        return new InternalPartialInstanceMethodCall_Constraints(context);
       case 8:
-        return new InternalSuperMethodCallOperation_Constraints();
+        return new InternalSuperMethodCallOperation_Constraints(context);
       case 9:
-        return new WeakClassReference_Constraints();
+        return new WeakClassReference_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

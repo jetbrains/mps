@@ -4,7 +4,9 @@ package jetbrains.mps.lang.textGen.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,29 +17,29 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new AttributedNodePart_Constraints();
+        return new AttributedNodePart_Constraints(context);
       case 1:
-        return new BinaryWriteOperation_Constraints();
+        return new BinaryWriteOperation_Constraints(context);
       case 2:
-        return new ConceptTextGenDeclaration_Constraints();
+        return new ConceptTextGenDeclaration_Constraints(context);
       case 3:
-        return new EncodingLiteral_Constraints();
+        return new EncodingLiteral_Constraints(context);
       case 4:
-        return new LanguageTextGenDeclaration_Constraints();
+        return new LanguageTextGenDeclaration_Constraints(context);
       case 5:
-        return new OperationDeclaration_Constraints();
+        return new OperationDeclaration_Constraints(context);
       case 6:
-        return new TextUnitLayout_Constraints();
+        return new TextUnitLayout_Constraints(context);
       case 7:
-        return new UnitContextDeclaration_Constraints();
+        return new UnitContextDeclaration_Constraints(context);
       case 8:
-        return new UnitContextReference_Constraints();
+        return new UnitContextReference_Constraints(context);
       case 9:
-        return new UtilityMethodDeclaration_Constraints();
+        return new UtilityMethodDeclaration_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

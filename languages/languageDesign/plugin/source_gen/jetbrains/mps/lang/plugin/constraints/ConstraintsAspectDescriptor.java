@@ -4,7 +4,9 @@ package jetbrains.mps.lang.plugin.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,57 +17,57 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new ActionConstructionParameterDeclaration_Constraints();
+        return new ActionConstructionParameterDeclaration_Constraints(context);
       case 1:
-        return new ActionDataParameterDeclaration_Constraints();
+        return new ActionDataParameterDeclaration_Constraints(context);
       case 2:
-        return new ActionDeclaration_Constraints();
+        return new ActionDeclaration_Constraints(context);
       case 3:
-        return new ActionGroupDeclaration_Constraints();
+        return new ActionGroupDeclaration_Constraints(context);
       case 4:
-        return new ActionInstance_Constraints();
+        return new ActionInstance_Constraints(context);
       case 5:
-        return new ActionParameterDeclaration_Constraints();
+        return new ActionParameterDeclaration_Constraints(context);
       case 6:
-        return new ActionParameterReference_Constraints();
+        return new ActionParameterReference_Constraints(context);
       case 7:
-        return new AddElementStatement_Constraints();
+        return new AddElementStatement_Constraints(context);
       case 8:
-        return new AddStatement_Constraints();
+        return new AddStatement_Constraints(context);
       case 9:
-        return new BaseProjectOperation_Constraints();
+        return new BaseProjectOperation_Constraints(context);
       case 10:
-        return new BaseToolDeclaration_Constraints();
+        return new BaseToolDeclaration_Constraints(context);
       case 11:
-        return new ConceptCondition_Constraints();
+        return new ConceptCondition_Constraints(context);
       case 12:
-        return new EditableModel_Constraints();
+        return new EditableModel_Constraints(context);
       case 13:
-        return new GroupAnchor_Constraints();
+        return new GroupAnchor_Constraints(context);
       case 14:
-        return new IdeaInitializerDescriptor_Constraints();
+        return new IdeaInitializerDescriptor_Constraints(context);
       case 15:
-        return new InterfaceExtentionPoint_Constraints();
+        return new InterfaceExtentionPoint_Constraints(context);
       case 16:
-        return new ModificationStatement_Constraints();
+        return new ModificationStatement_Constraints(context);
       case 17:
-        return new Order_Constraints();
+        return new Order_Constraints(context);
       case 18:
-        return new Separator_Constraints();
+        return new Separator_Constraints(context);
       case 19:
-        return new ShortcutChange_Constraints();
+        return new ShortcutChange_Constraints(context);
       case 20:
-        return new SmartDisposeClosureParameterDeclaration_Constraints();
+        return new SmartDisposeClosureParameterDeclaration_Constraints(context);
       case 21:
-        return new TabbedToolOperation_Constraints();
+        return new TabbedToolOperation_Constraints(context);
       case 22:
-        return new ToolInstanceExpression_Constraints();
+        return new ToolInstanceExpression_Constraints(context);
       case 23:
-        return new UpdateBlock_Constraints();
+        return new UpdateBlock_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

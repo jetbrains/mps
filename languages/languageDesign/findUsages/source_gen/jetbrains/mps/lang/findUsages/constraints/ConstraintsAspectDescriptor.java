@@ -4,7 +4,9 @@ package jetbrains.mps.lang.findUsages.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,25 +17,25 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new CheckCancelledStatusStatement_Constraints();
+        return new CheckCancelledStatusStatement_Constraints(context);
       case 1:
-        return new ExecuteFinderExpression_Constraints();
+        return new ExecuteFinderExpression_Constraints(context);
       case 2:
-        return new FinderDeclaration_Constraints();
+        return new FinderDeclaration_Constraints(context);
       case 3:
-        return new ForEachNodeFoundClosureParameterDeclaration_Constraints();
+        return new ForEachNodeFoundClosureParameterDeclaration_Constraints(context);
       case 4:
-        return new NodeStatement_Constraints();
+        return new NodeStatement_Constraints(context);
       case 5:
-        return new OnEachFoundNodeCallback_Constraints();
+        return new OnEachFoundNodeCallback_Constraints(context);
       case 6:
-        return new ResultStatement_Constraints();
+        return new ResultStatement_Constraints(context);
       case 7:
-        return new ResultStatement2_Constraints();
+        return new ResultStatement2_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

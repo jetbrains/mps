@@ -4,7 +4,9 @@ package jetbrains.mps.lang.structure.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,39 +17,39 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new AbstractConceptDeclaration_Constraints();
+        return new AbstractConceptDeclaration_Constraints(context);
       case 1:
-        return new ConceptDeclaration_Constraints();
+        return new ConceptDeclaration_Constraints(context);
       case 2:
-        return new ConstrainedDataTypeDeclaration_Constraints();
+        return new ConstrainedDataTypeDeclaration_Constraints(context);
       case 3:
-        return new DataTypeDeclaration_Constraints();
+        return new DataTypeDeclaration_Constraints(context);
       case 4:
-        return new EnumerationDataTypeDeclaration_Old_Constraints();
+        return new EnumerationDataTypeDeclaration_Old_Constraints(context);
       case 5:
-        return new EnumerationDeclaration_Constraints();
+        return new EnumerationDeclaration_Constraints(context);
       case 6:
-        return new EnumerationMemberDeclaration_Constraints();
+        return new EnumerationMemberDeclaration_Constraints(context);
       case 7:
-        return new ExperimentalAPINodeAttribute_Constraints();
+        return new ExperimentalAPINodeAttribute_Constraints(context);
       case 8:
-        return new INamedAspect_Constraints();
+        return new INamedAspect_Constraints(context);
       case 9:
-        return new INamedStructureElement_Constraints();
+        return new INamedStructureElement_Constraints(context);
       case 10:
-        return new InterfaceConceptDeclaration_Constraints();
+        return new InterfaceConceptDeclaration_Constraints(context);
       case 11:
-        return new LinkDeclaration_Constraints();
+        return new LinkDeclaration_Constraints(context);
       case 12:
-        return new PropertyDeclaration_Constraints();
+        return new PropertyDeclaration_Constraints(context);
       case 13:
-        return new SmartReferenceAttribute_Constraints();
+        return new SmartReferenceAttribute_Constraints(context);
       case 14:
-        return new StructureAspectDeputy_Constraints();
+        return new StructureAspectDeputy_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

@@ -4,7 +4,9 @@ package jetbrains.mps.baseLanguage.closures.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,27 +17,27 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new AbstractFunctionType_Constraints();
+        return new AbstractFunctionType_Constraints(context);
       case 1:
-        return new ClosureVarType_Constraints();
+        return new ClosureVarType_Constraints(context);
       case 2:
-        return new CompactInvokeFunctionExpression_Constraints();
+        return new CompactInvokeFunctionExpression_Constraints(context);
       case 3:
-        return new ControlAbstractionContainer_Constraints();
+        return new ControlAbstractionContainer_Constraints(context);
       case 4:
-        return new ControlAbstractionDeclaration_Constraints();
+        return new ControlAbstractionDeclaration_Constraints(context);
       case 5:
-        return new FunctionMethodDeclaration_Constraints();
+        return new FunctionMethodDeclaration_Constraints(context);
       case 6:
-        return new FunctionType_Constraints();
+        return new FunctionType_Constraints(context);
       case 7:
-        return new InvokeFunctionOperation_Constraints();
+        return new InvokeFunctionOperation_Constraints(context);
       case 8:
-        return new UnboundClosureParameterDeclaration_Constraints();
+        return new UnboundClosureParameterDeclaration_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

@@ -4,7 +4,9 @@ package jetbrains.mps.lang.dataFlow.analyzers.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,33 +17,33 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new Analyzer_Constraints();
+        return new Analyzer_Constraints(context);
       case 1:
-        return new AnalyzerConstructorParameterReference_Constraints();
+        return new AnalyzerConstructorParameterReference_Constraints(context);
       case 2:
-        return new AnalyzerRunnerAnalyzeOperation_Constraints();
+        return new AnalyzerRunnerAnalyzeOperation_Constraints(context);
       case 3:
-        return new AnalyzerRunnerCreator_Constraints();
+        return new AnalyzerRunnerCreator_Constraints(context);
       case 4:
-        return new ApplicableNodeReference_Constraints();
+        return new ApplicableNodeReference_Constraints(context);
       case 5:
-        return new ConceptCondition_Constraints();
+        return new ConceptCondition_Constraints(context);
       case 6:
-        return new CustomInstructionsContainerReference_Constraints();
+        return new CustomInstructionsContainerReference_Constraints(context);
       case 7:
-        return new InstructionReference_Constraints();
+        return new InstructionReference_Constraints(context);
       case 8:
-        return new IsOperation_Constraints();
+        return new IsOperation_Constraints(context);
       case 9:
-        return new PatternCondition_Constraints();
+        return new PatternCondition_Constraints(context);
       case 10:
-        return new ProgramParameter_Constraints();
+        return new ProgramParameter_Constraints(context);
       case 11:
-        return new Rule_Constraints();
+        return new Rule_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

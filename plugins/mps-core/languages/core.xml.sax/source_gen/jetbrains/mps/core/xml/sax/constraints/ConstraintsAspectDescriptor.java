@@ -4,7 +4,9 @@ package jetbrains.mps.core.xml.sax.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,21 +17,21 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new XMLSAXAttributeReference_Constraints();
+        return new XMLSAXAttributeReference_Constraints(context);
       case 1:
-        return new XMLSAXBreakStatement_Constraints();
+        return new XMLSAXBreakStatement_Constraints(context);
       case 2:
-        return new XMLSAXChildRule_Constraints();
+        return new XMLSAXChildRule_Constraints(context);
       case 3:
-        return new XMLSAXFieldReference_Constraints();
+        return new XMLSAXFieldReference_Constraints(context);
       case 4:
-        return new XMLSAXLocatorExpression_Constraints();
+        return new XMLSAXLocatorExpression_Constraints(context);
       case 5:
-        return new XMLSAXNodeRuleParamRef_Constraints();
+        return new XMLSAXNodeRuleParamRef_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

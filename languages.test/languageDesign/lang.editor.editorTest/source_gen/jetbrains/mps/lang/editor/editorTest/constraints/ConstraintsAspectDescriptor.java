@@ -4,7 +4,9 @@ package jetbrains.mps.lang.editor.editorTest.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,27 +17,27 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new Container_Constraints();
+        return new Container_Constraints(context);
       case 1:
-        return new DelTestChildWithSmartReference_Constraints();
+        return new DelTestChildWithSmartReference_Constraints(context);
       case 2:
-        return new DelTestChildWithUsualReference_Constraints();
+        return new DelTestChildWithUsualReference_Constraints(context);
       case 3:
-        return new NotEditableVarableReference_Constraints();
+        return new NotEditableVarableReference_Constraints(context);
       case 4:
-        return new SmartCompletionParent_Constraints();
+        return new SmartCompletionParent_Constraints(context);
       case 5:
-        return new SmartCompletionSimpleRef_Constraints();
+        return new SmartCompletionSimpleRef_Constraints(context);
       case 6:
-        return new SmartCompletionSmartRef_Constraints();
+        return new SmartCompletionSmartRef_Constraints(context);
       case 7:
-        return new SubstTestAbstractChild_WithDefaultConcreteConcept_Constraints();
+        return new SubstTestAbstractChild_WithDefaultConcreteConcept_Constraints(context);
       case 8:
-        return new VariableDeclarationReference_Constraints();
+        return new VariableDeclarationReference_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

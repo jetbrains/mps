@@ -4,7 +4,9 @@ package jetbrains.mps.baseLanguage.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,131 +17,131 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new AbstractCatchClause_Constraints();
+        return new AbstractCatchClause_Constraints(context);
       case 1:
-        return new AdditionalForLoopVariable_Constraints();
+        return new AdditionalForLoopVariable_Constraints(context);
       case 2:
-        return new AlternativeType_Constraints();
+        return new AlternativeType_Constraints(context);
       case 3:
-        return new Annotation_Constraints();
+        return new Annotation_Constraints(context);
       case 4:
-        return new AnnotationInstance_Constraints();
+        return new AnnotationInstance_Constraints(context);
       case 5:
-        return new AnnotationInstanceValue_Constraints();
+        return new AnnotationInstanceValue_Constraints(context);
       case 6:
-        return new AnnotationMethodDeclaration_Constraints();
+        return new AnnotationMethodDeclaration_Constraints(context);
       case 7:
-        return new AnonymousClass_Constraints();
+        return new AnonymousClass_Constraints(context);
       case 8:
-        return new ArrayCloneOperation_Constraints();
+        return new ArrayCloneOperation_Constraints(context);
       case 9:
-        return new ArrayLengthOperation_Constraints();
+        return new ArrayLengthOperation_Constraints(context);
       case 10:
-        return new ArrayLiteral_Constraints();
+        return new ArrayLiteral_Constraints(context);
       case 11:
-        return new BaseStringOperation_Constraints();
+        return new BaseStringOperation_Constraints(context);
       case 12:
-        return new BaseVariableDeclaration_Constraints();
+        return new BaseVariableDeclaration_Constraints(context);
       case 13:
-        return new CatchVariable_Constraints();
+        return new CatchVariable_Constraints(context);
       case 14:
-        return new ClassConcept_Constraints();
+        return new ClassConcept_Constraints(context);
       case 15:
-        return new ClassCreator_Constraints();
+        return new ClassCreator_Constraints(context);
       case 16:
-        return new Classifier_Constraints();
+        return new Classifier_Constraints(context);
       case 17:
-        return new ClassifierClassExpression_Constraints();
+        return new ClassifierClassExpression_Constraints(context);
       case 18:
-        return new ClassifierType_Constraints();
+        return new ClassifierType_Constraints(context);
       case 19:
-        return new ClosureParameterReference_Constraints();
+        return new ClosureParameterReference_Constraints(context);
       case 20:
-        return new ConstructorDeclaration_Constraints();
+        return new ConstructorDeclaration_Constraints(context);
       case 21:
-        return new DefaultClassCreator_Constraints();
+        return new DefaultClassCreator_Constraints(context);
       case 22:
-        return new DefaultModifier_Constraints();
+        return new DefaultModifier_Constraints(context);
       case 23:
-        return new EnumConstantDeclaration_Constraints();
+        return new EnumConstantDeclaration_Constraints(context);
       case 24:
-        return new EnumConstantReference_Constraints();
+        return new EnumConstantReference_Constraints(context);
       case 25:
-        return new EnumValueOfExpression_Constraints();
+        return new EnumValueOfExpression_Constraints(context);
       case 26:
-        return new EnumValuesExpression_Constraints();
+        return new EnumValuesExpression_Constraints(context);
       case 27:
-        return new FieldReferenceOperation_Constraints();
+        return new FieldReferenceOperation_Constraints(context);
       case 28:
-        return new IHasModifiers_Constraints();
+        return new IHasModifiers_Constraints(context);
       case 29:
-        return new IOperation_Constraints();
+        return new IOperation_Constraints(context);
       case 30:
-        return new IValidIdentifier_Constraints();
+        return new IValidIdentifier_Constraints(context);
       case 31:
-        return new ImplicitAnnotationInstanceValue_Constraints();
+        return new ImplicitAnnotationInstanceValue_Constraints(context);
       case 32:
-        return new InstanceMethodCallOperation_Constraints();
+        return new InstanceMethodCallOperation_Constraints(context);
       case 33:
-        return new InstanceMethodDeclaration_Constraints();
+        return new InstanceMethodDeclaration_Constraints(context);
       case 34:
-        return new Interface_Constraints();
+        return new Interface_Constraints(context);
       case 35:
-        return new LocalInstanceFieldReference_Constraints();
+        return new LocalInstanceFieldReference_Constraints(context);
       case 36:
-        return new LocalInstanceMethodCall_Constraints();
+        return new LocalInstanceMethodCall_Constraints(context);
       case 37:
-        return new LocalMethodCall_Constraints();
+        return new LocalMethodCall_Constraints(context);
       case 38:
-        return new LocalPropertyReference_Constraints();
+        return new LocalPropertyReference_Constraints(context);
       case 39:
-        return new LocalStaticFieldReference_Constraints();
+        return new LocalStaticFieldReference_Constraints(context);
       case 40:
-        return new LocalStaticMethodCall_Constraints();
+        return new LocalStaticMethodCall_Constraints(context);
       case 41:
-        return new LocalVariableDeclaration_Constraints();
+        return new LocalVariableDeclaration_Constraints(context);
       case 42:
-        return new LocalVariableDeclarationStatement_Constraints();
+        return new LocalVariableDeclarationStatement_Constraints(context);
       case 43:
-        return new LoopLabelReference_Constraints();
+        return new LoopLabelReference_Constraints(context);
       case 44:
-        return new NestedNewExpression_Constraints();
+        return new NestedNewExpression_Constraints(context);
       case 45:
-        return new Property_Constraints();
+        return new Property_Constraints(context);
       case 46:
-        return new PropertyReference_Constraints();
+        return new PropertyReference_Constraints(context);
       case 47:
-        return new PropertyValueReference_Constraints();
+        return new PropertyValueReference_Constraints(context);
       case 48:
-        return new QualifiedSuperMethodCall_Constraints();
+        return new QualifiedSuperMethodCall_Constraints(context);
       case 49:
-        return new StaticFieldDeclaration_Constraints();
+        return new StaticFieldDeclaration_Constraints(context);
       case 50:
-        return new StaticFieldReference_Constraints();
+        return new StaticFieldReference_Constraints(context);
       case 51:
-        return new StaticFieldReferenceOperation_Constraints();
+        return new StaticFieldReferenceOperation_Constraints(context);
       case 52:
-        return new StaticMethodCall_Constraints();
+        return new StaticMethodCall_Constraints(context);
       case 53:
-        return new StaticMethodCallOperation_Constraints();
+        return new StaticMethodCallOperation_Constraints(context);
       case 54:
-        return new SuperConstructorInvocation_Constraints();
+        return new SuperConstructorInvocation_Constraints(context);
       case 55:
-        return new SuperInterfaceMethodCall_Constraints();
+        return new SuperInterfaceMethodCall_Constraints(context);
       case 56:
-        return new SuperMethodCall_Constraints();
+        return new SuperMethodCall_Constraints(context);
       case 57:
-        return new ThisConstructorInvocation_Constraints();
+        return new ThisConstructorInvocation_Constraints(context);
       case 58:
-        return new ThisExpression_Constraints();
+        return new ThisExpression_Constraints(context);
       case 59:
-        return new TypeVariableReference_Constraints();
+        return new TypeVariableReference_Constraints(context);
       case 60:
-        return new VariableReference_Constraints();
+        return new VariableReference_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

@@ -4,7 +4,9 @@ package jetbrains.mps.build.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,75 +17,75 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new BuildAspect_Constraints();
+        return new BuildAspect_Constraints(context);
       case 1:
-        return new BuildCompositePath_Constraints();
+        return new BuildCompositePath_Constraints(context);
       case 2:
-        return new BuildExternalLayout_Constraints();
+        return new BuildExternalLayout_Constraints(context);
       case 3:
-        return new BuildExternalLayoutDependency_Constraints();
+        return new BuildExternalLayoutDependency_Constraints(context);
       case 4:
-        return new BuildLayout_Constraints();
+        return new BuildLayout_Constraints(context);
       case 5:
-        return new BuildLayout_CompileOutputOf_Constraints();
+        return new BuildLayout_CompileOutputOf_Constraints(context);
       case 6:
-        return new BuildLayout_File_Constraints();
+        return new BuildLayout_File_Constraints(context);
       case 7:
-        return new BuildLayout_FileStub_Constraints();
+        return new BuildLayout_FileStub_Constraints(context);
       case 8:
-        return new BuildLayout_Filemode_Constraints();
+        return new BuildLayout_Filemode_Constraints(context);
       case 9:
-        return new BuildLayout_FilesOf_Constraints();
+        return new BuildLayout_FilesOf_Constraints(context);
       case 10:
-        return new BuildLayout_Import_Constraints();
+        return new BuildLayout_Import_Constraints(context);
       case 11:
-        return new BuildLayout_ImportContent_Constraints();
+        return new BuildLayout_ImportContent_Constraints(context);
       case 12:
-        return new BuildLayout_JarManifest_Constraints();
+        return new BuildLayout_JarManifest_Constraints(context);
       case 13:
-        return new BuildLayout_JarManifest_Section_Constraints();
+        return new BuildLayout_JarManifest_Section_Constraints(context);
       case 14:
-        return new BuildLayout_NamedContainer_Constraints();
+        return new BuildLayout_NamedContainer_Constraints(context);
       case 15:
-        return new BuildProjectDependency_Constraints();
+        return new BuildProjectDependency_Constraints(context);
       case 16:
-        return new BuildSourceMacroRelativePath_Constraints();
+        return new BuildSourceMacroRelativePath_Constraints(context);
       case 17:
-        return new BuildSourcePath_Constraints();
+        return new BuildSourcePath_Constraints(context);
       case 18:
-        return new BuildSource_JavaClassFolder_Constraints();
+        return new BuildSource_JavaClassFolder_Constraints(context);
       case 19:
-        return new BuildSource_JavaDependencyLibrary_Constraints();
+        return new BuildSource_JavaDependencyLibrary_Constraints(context);
       case 20:
-        return new BuildSource_JavaExternalJarFolderRef_Constraints();
+        return new BuildSource_JavaExternalJarFolderRef_Constraints(context);
       case 21:
-        return new BuildSource_JavaExternalJarRef_Constraints();
+        return new BuildSource_JavaExternalJarRef_Constraints(context);
       case 22:
-        return new BuildSource_JavaLibrary_Constraints();
+        return new BuildSource_JavaLibrary_Constraints(context);
       case 23:
-        return new BuildSource_JavaModule_Constraints();
+        return new BuildSource_JavaModule_Constraints(context);
       case 24:
-        return new BuildSource_JavaModuleOptions_Constraints();
+        return new BuildSource_JavaModuleOptions_Constraints(context);
       case 25:
-        return new BuildSource_JavaOptions_Constraints();
+        return new BuildSource_JavaOptions_Constraints(context);
       case 26:
-        return new BuildSource_JavaSources_Constraints();
+        return new BuildSource_JavaSources_Constraints(context);
       case 27:
-        return new BuildStringPart_Constraints();
+        return new BuildStringPart_Constraints(context);
       case 28:
-        return new BuildTextStringPart_Constraints();
+        return new BuildTextStringPart_Constraints(context);
       case 29:
-        return new BuildVarRefStringPart_Constraints();
+        return new BuildVarRefStringPart_Constraints(context);
       case 30:
-        return new BuildVariableMacro_Constraints();
+        return new BuildVariableMacro_Constraints(context);
       case 31:
-        return new BuildVariableMacroInitValue_Constraints();
+        return new BuildVariableMacroInitValue_Constraints(context);
       case 32:
-        return new BuildVariableMacroInitWithDate_Constraints();
+        return new BuildVariableMacroInitWithDate_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

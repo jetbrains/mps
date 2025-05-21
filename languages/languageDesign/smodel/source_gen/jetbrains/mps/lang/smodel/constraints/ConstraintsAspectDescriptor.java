@@ -4,7 +4,9 @@ package jetbrains.mps.lang.smodel.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,83 +17,83 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new ChildAttributeQualifier_Constraints();
+        return new ChildAttributeQualifier_Constraints(context);
       case 1:
-        return new ChildNodeRefExpression_Constraints();
+        return new ChildNodeRefExpression_Constraints(context);
       case 2:
-        return new EnumMemberOperation_Constraints();
+        return new EnumMemberOperation_Constraints(context);
       case 3:
-        return new EnumMemberReference_Constraints();
+        return new EnumMemberReference_Constraints(context);
       case 4:
-        return new EnumMemberReference_Old_Constraints();
+        return new EnumMemberReference_Old_Constraints(context);
       case 5:
-        return new EnumMemberValueRefExpression_Constraints();
+        return new EnumMemberValueRefExpression_Constraints(context);
       case 6:
-        return new EnumOperation_Constraints();
+        return new EnumOperation_Constraints(context);
       case 7:
-        return new EnumSwitchExpression_Constraints();
+        return new EnumSwitchExpression_Constraints(context);
       case 8:
-        return new Enum_MemberLiteral_Constraints();
+        return new Enum_MemberLiteral_Constraints(context);
       case 9:
-        return new IReferenceOperation_Constraints();
+        return new IReferenceOperation_Constraints(context);
       case 10:
-        return new IfInstanceOfVarReference_Constraints();
+        return new IfInstanceOfVarReference_Constraints(context);
       case 11:
-        return new LinkAttributeQualifier_Constraints();
+        return new LinkAttributeQualifier_Constraints(context);
       case 12:
-        return new LinkIdRefExpression_Constraints();
+        return new LinkIdRefExpression_Constraints(context);
       case 13:
-        return new LinkQualifier_Constraints();
+        return new LinkQualifier_Constraints(context);
       case 14:
-        return new LinkRefExpression_Constraints();
+        return new LinkRefExpression_Constraints(context);
       case 15:
-        return new LinkRefQualifier_Constraints();
+        return new LinkRefQualifier_Constraints(context);
       case 16:
-        return new ModelPointer_ResolveOperation_Constraints();
+        return new ModelPointer_ResolveOperation_Constraints(context);
       case 17:
-        return new ModelReferenceExpression_Constraints();
+        return new ModelReferenceExpression_Constraints(context);
       case 18:
-        return new ModuleReferenceExpression_Constraints();
+        return new ModuleReferenceExpression_Constraints(context);
       case 19:
-        return new NodeAttributeQualifier_Constraints();
+        return new NodeAttributeQualifier_Constraints(context);
       case 20:
-        return new NodePointerExpression_Old_Constraints();
+        return new NodePointerExpression_Old_Constraints(context);
       case 21:
-        return new NodePointer_GetModelOperation_Constraints();
+        return new NodePointer_GetModelOperation_Constraints(context);
       case 22:
-        return new NodePointer_ResolveOperation_Constraints();
+        return new NodePointer_ResolveOperation_Constraints(context);
       case 23:
-        return new NodeRefExpression_Constraints();
+        return new NodeRefExpression_Constraints(context);
       case 24:
-        return new Node_ConceptMethodCall_Constraints();
+        return new Node_ConceptMethodCall_Constraints(context);
       case 25:
-        return new Node_IsRoleOperation_Constraints();
+        return new Node_IsRoleOperation_Constraints(context);
       case 26:
-        return new PropertyAttributeQualifier_Constraints();
+        return new PropertyAttributeQualifier_Constraints(context);
       case 27:
-        return new PropertyIdRefExpression_Constraints();
+        return new PropertyIdRefExpression_Constraints(context);
       case 28:
-        return new PropertyQualifier_Constraints();
+        return new PropertyQualifier_Constraints(context);
       case 29:
-        return new SEnumOperationInvocation_Constraints();
+        return new SEnumOperationInvocation_Constraints(context);
       case 30:
-        return new SEnumOperation_Old_Constraints();
+        return new SEnumOperation_Old_Constraints(context);
       case 31:
-        return new SEnum_MemberOperation_Old_Constraints();
+        return new SEnum_MemberOperation_Old_Constraints(context);
       case 32:
-        return new SLinkAccess_Constraints();
+        return new SLinkAccess_Constraints(context);
       case 33:
-        return new SLinkImplicitSelect_Constraints();
+        return new SLinkImplicitSelect_Constraints(context);
       case 34:
-        return new SLinkListAccess_Constraints();
+        return new SLinkListAccess_Constraints(context);
       case 35:
-        return new SPropertyAccess_Constraints();
+        return new SPropertyAccess_Constraints(context);
       case 36:
-        return new SearchScope_ContainsOperation_Constraints();
+        return new SearchScope_ContainsOperation_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);

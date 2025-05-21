@@ -4,7 +4,9 @@ package jetbrains.mps.baseLanguage.kotlinRefs.constraints;
 
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -15,21 +17,21 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   }
 
   @Override
-  public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
+  public ConstraintsDescriptor getConstraints(@NotNull SAbstractConcept concept, @NotNull ConstraintsDescriptorInitContext context) {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new IKotlinFunctionLikeCall_Constraints();
+        return new IKotlinFunctionLikeCall_Constraints(context);
       case 1:
-        return new KotlinClassCreator_Constraints();
+        return new KotlinClassCreator_Constraints(context);
       case 2:
-        return new KotlinFunctionArgument_Constraints();
+        return new KotlinFunctionArgument_Constraints(context);
       case 3:
-        return new KotlinFunctionCall_Constraints();
+        return new KotlinFunctionCall_Constraints(context);
       case 4:
-        return new KotlinPropertyGetterCall_Constraints();
+        return new KotlinPropertyGetterCall_Constraints(context);
       case 5:
-        return new KotlinPropertySetterCall_Constraints();
+        return new KotlinPropertySetterCall_Constraints(context);
       default:
     }
     return new BaseConstraintsDescriptor(concept);
