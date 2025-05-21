@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsRegistry;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
 import jetbrains.mps.smodel.runtime.illegal.IllegalConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.interpreted.ConstraintsAspectInterpreted;
 import org.jetbrains.annotations.NotNull;
@@ -73,8 +74,12 @@ public final class ConstraintsRegistry implements CoreAspectRegistry {
           aspectDescriptor = ConstraintsAspectInterpreted.getInstance();
         }
 
-        //todo simplify following if after 3.4
-        descriptor = aspectDescriptor.getConstraints(concept);
+        descriptor = aspectDescriptor.getConstraints(concept, new ConstraintsDescriptorInitContext() {
+          @Override
+          public ConstraintsRegistry getConstraintsRegistry() {
+            return ConstraintsRegistry.this;
+          }
+        });
       } catch (Throwable e) {
         LOG.error("Exception while constraints descriptor creating", e);
       }
