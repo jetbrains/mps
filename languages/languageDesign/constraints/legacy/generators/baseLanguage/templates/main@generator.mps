@@ -1107,7 +1107,7 @@
       <node concept="3cqZAl" id="1UB_YWUhqYy" role="3clF45" />
       <node concept="3clFbS" id="1UB_YWUhqYz" role="3clF47">
         <node concept="XkiVB" id="3g99cIN5jgI" role="3cqZAp">
-          <ref role="37wK5l" to="79pm:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
+          <ref role="37wK5l" to="79pm:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept,jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext)" resolve="BaseConstraintsDescriptor" />
           <node concept="10Nm6u" id="23CHI7KI1sl" role="37wK5m">
             <node concept="5jKBG" id="za$VMvkNMD" role="lGtFl">
               <ref role="v9R2y" to="tp27:5DcBNiM8Rtt" resolve="reduce_ConceptDeclaration2SAbstractConcept" />
@@ -1124,6 +1124,9 @@
                 </node>
               </node>
             </node>
+          </node>
+          <node concept="37vLTw" id="1TgnCKU7ev0" role="37wK5m">
+            <ref role="3cqZAo" node="5rFw5E6smo0" resolve="initContext" />
           </node>
         </node>
       </node>
@@ -3867,6 +3870,9 @@
       <node concept="2AHcQZ" id="5FFmclY22zv" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
+      <node concept="2AHcQZ" id="6xXuCx_QEao" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
       <node concept="3Tm1VV" id="1TWFJuL$UeM" role="1B3o_S" />
       <node concept="3uibUv" id="1TWFJuL$UeN" role="3clF45">
         <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
@@ -3965,14 +3971,7 @@
           <node concept="3clFbS" id="1CTTqHRaL2v" role="1prKM_" />
         </node>
         <node concept="3cpWs6" id="1TWFJuLAF3M" role="3cqZAp">
-          <node concept="2ShNRf" id="1TWFJuLAF3N" role="3cqZAk">
-            <node concept="1pGfFk" id="1TWFJuLAF3O" role="2ShVmc">
-              <ref role="37wK5l" to="79pm:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
-              <node concept="37vLTw" id="1TWFJuLAF3P" role="37wK5m">
-                <ref role="3cqZAo" node="1TWFJuL$UeO" resolve="concept" />
-              </node>
-            </node>
-          </node>
+          <node concept="10Nm6u" id="6xXuCx_QE$e" role="3cqZAk" />
         </node>
       </node>
     </node>

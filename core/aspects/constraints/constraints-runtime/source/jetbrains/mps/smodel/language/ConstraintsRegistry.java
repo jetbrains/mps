@@ -79,17 +79,22 @@ public final class ConstraintsRegistry implements CoreAspectRegistry {
         // there could be up to 5 uses of parentDescriptors, therefore use cached value
         BasicInitContext initContext = new BasicInitContext(this, concept, parentDescriptors);
 
-        if (aspectDescriptor == null) {
+        if (aspectDescriptor != null) {
+          descriptor = aspectDescriptor.getConstraints(concept, initContext);
+        }
+        // note, here we cover both scenarios: no 'constraints' aspect (it's ok, just go with defaults),
+        // and 'no specific constraints for given concept in existing aspect'. There's no reason for ConstraintsAspectDescriptor
+        // to care about specific class of default descriptor (and whether it's necessary or not)
+        if (descriptor == null) {
           // @see jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor
           descriptor = new BaseConstraintsDescriptor(concept, initContext);
-        } else {
-          descriptor = aspectDescriptor.getConstraints(concept, initContext);
         }
       } catch (Throwable e) {
         LOG.error("Exception while constraints descriptor creating", e);
       }
 
       if (descriptor == null) {
+        // e.g. if there's exception
         descriptor = new IllegalConstraintsDescriptor(concept);
       }
 
