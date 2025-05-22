@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TypeVarReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TypeVarReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TypeVarReference$hk);
+    super(CONCEPTS.TypeVarReference$hk, initContext);
   }
 
   @Override

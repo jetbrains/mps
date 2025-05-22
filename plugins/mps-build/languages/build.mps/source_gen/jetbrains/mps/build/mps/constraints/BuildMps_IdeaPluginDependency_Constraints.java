@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildMps_IdeaPluginDependency_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildMps_IdeaPluginDependency_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildMps_IdeaPluginDependency$ds);
+    super(CONCEPTS.BuildMps_IdeaPluginDependency$ds, initContext);
   }
 
   @Override

@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class AttributedNodePart_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AttributedNodePart_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AttributedNodePart$8o);
+    super(CONCEPTS.AttributedNodePart$8o, initContext);
   }
 
   @Override

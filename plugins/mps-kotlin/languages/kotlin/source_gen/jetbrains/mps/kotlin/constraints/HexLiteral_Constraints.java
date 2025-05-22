@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class HexLiteral_Constraints extends BaseConstraintsDescriptor {
   /*package*/ HexLiteral_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.HexLiteral$7D);
+    super(CONCEPTS.HexLiteral$7D, initContext);
   }
 
   private static final class CONCEPTS {

@@ -27,7 +27,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SPropertyAccess_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SPropertyAccess_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SPropertyAccess$d9);
+    super(CONCEPTS.SPropertyAccess$d9, initContext);
   }
 
   @Override

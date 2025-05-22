@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ChildConcept_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ChildConcept_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ChildConcept$v);
+    super(CONCEPTS.ChildConcept$v, initContext);
   }
 
   private static final class CONCEPTS {

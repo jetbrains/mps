@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class UsagesExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ UsagesExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.UsagesExpression$8y);
+    super(CONCEPTS.UsagesExpression$8y, initContext);
   }
 
   private static final class CONCEPTS {

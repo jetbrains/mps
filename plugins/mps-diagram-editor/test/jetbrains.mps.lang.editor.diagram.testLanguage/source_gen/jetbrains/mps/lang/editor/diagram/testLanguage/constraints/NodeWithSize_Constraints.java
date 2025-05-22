@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NodeWithSize_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NodeWithSize_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NodeWithSize$1u);
+    super(CONCEPTS.NodeWithSize$1u, initContext);
   }
 
   private static final class CONCEPTS {

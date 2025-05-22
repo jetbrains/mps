@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Create_ConceptFunction_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Create_ConceptFunction_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Create_ConceptFunction$3w);
+    super(CONCEPTS.Create_ConceptFunction$3w, initContext);
   }
 
   @Override

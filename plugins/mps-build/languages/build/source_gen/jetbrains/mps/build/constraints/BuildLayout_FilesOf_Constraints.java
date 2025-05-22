@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class BuildLayout_FilesOf_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildLayout_FilesOf_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildLayout_FilesOf$nI);
+    super(CONCEPTS.BuildLayout_FilesOf$nI, initContext);
   }
 
   @Override

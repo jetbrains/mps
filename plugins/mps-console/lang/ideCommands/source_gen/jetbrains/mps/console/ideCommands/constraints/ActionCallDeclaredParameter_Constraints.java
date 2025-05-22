@@ -32,7 +32,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ActionCallDeclaredParameter_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ActionCallDeclaredParameter_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ActionCallDeclaredParameter$sK);
+    super(CONCEPTS.ActionCallDeclaredParameter$sK, initContext);
   }
 
   @Override

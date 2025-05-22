@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PropertyPatternVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyPatternVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyPatternVariableReference$N9);
+    super(CONCEPTS.PropertyPatternVariableReference$N9, initContext);
   }
 
   @Override

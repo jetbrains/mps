@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ClosureParameterReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ClosureParameterReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ClosureParameterReference$ES);
+    super(CONCEPTS.ClosureParameterReference$ES, initContext);
   }
 
   @Override

@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class InfixCallOperator_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InfixCallOperator_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InfixCallOperator$j$);
+    super(CONCEPTS.InfixCallOperator$j$, initContext);
   }
 
   @Override

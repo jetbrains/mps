@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ConstructorDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConstructorDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConstructorDeclaration$yG);
+    super(CONCEPTS.ConstructorDeclaration$yG, initContext);
   }
 
   @Override

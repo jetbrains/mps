@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MigrationScriptPart_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MigrationScriptPart_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MigrationScriptPart$92);
+    super(CONCEPTS.MigrationScriptPart$92, initContext);
   }
 
   private static final class CONCEPTS {

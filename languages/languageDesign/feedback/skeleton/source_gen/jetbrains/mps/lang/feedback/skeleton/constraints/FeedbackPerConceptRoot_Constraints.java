@@ -39,7 +39,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FeedbackPerConceptRoot_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FeedbackPerConceptRoot_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FeedbackPerConceptRoot$Vm);
+    super(CONCEPTS.FeedbackPerConceptRoot$Vm, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

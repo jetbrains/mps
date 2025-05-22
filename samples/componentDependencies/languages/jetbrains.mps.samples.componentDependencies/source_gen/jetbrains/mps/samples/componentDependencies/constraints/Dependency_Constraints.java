@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Dependency_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Dependency_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Dependency$tq);
+    super(CONCEPTS.Dependency$tq, initContext);
   }
 
   @Override

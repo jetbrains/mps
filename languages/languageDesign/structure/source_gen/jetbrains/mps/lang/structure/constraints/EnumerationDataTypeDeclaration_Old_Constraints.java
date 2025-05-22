@@ -38,7 +38,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EnumerationDataTypeDeclaration_Old_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EnumerationDataTypeDeclaration_Old_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EnumerationDataTypeDeclaration_Old$B8);
+    super(CONCEPTS.EnumerationDataTypeDeclaration_Old$B8, initContext);
   }
 
   @Override

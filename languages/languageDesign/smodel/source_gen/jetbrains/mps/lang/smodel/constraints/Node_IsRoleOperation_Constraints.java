@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Node_IsRoleOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Node_IsRoleOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Node_IsRoleOperation$X2);
+    super(CONCEPTS.Node_IsRoleOperation$X2, initContext);
   }
 
   @Override

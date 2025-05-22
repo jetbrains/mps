@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ComponentDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ComponentDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ComponentDeclaration$qJ);
+    super(CONCEPTS.ComponentDeclaration$qJ, initContext);
   }
 
   @Override

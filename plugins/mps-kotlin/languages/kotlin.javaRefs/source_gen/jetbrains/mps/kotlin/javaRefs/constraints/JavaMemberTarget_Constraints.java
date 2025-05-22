@@ -27,7 +27,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class JavaMemberTarget_Constraints extends BaseConstraintsDescriptor {
   /*package*/ JavaMemberTarget_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.JavaMemberTarget$Gs);
+    super(CONCEPTS.JavaMemberTarget$Gs, initContext);
   }
 
   @Override

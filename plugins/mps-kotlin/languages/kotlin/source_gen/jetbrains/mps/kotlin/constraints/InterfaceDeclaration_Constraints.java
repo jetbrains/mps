@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InterfaceDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InterfaceDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InterfaceDeclaration$fL);
+    super(CONCEPTS.InterfaceDeclaration$fL, initContext);
   }
 
   private static final class CONCEPTS {

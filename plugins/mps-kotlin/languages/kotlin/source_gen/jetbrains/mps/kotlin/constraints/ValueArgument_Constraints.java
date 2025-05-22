@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ValueArgument_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ValueArgument_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ValueArgument$RI);
+    super(CONCEPTS.ValueArgument$RI, initContext);
   }
 
   @Override

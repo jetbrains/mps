@@ -35,7 +35,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EditorExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EditorExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EditorExpression$zO);
+    super(CONCEPTS.EditorExpression$zO, initContext);
   }
 
   @Override

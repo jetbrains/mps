@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class BuildLayout_CompileOutputOf_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildLayout_CompileOutputOf_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildLayout_CompileOutputOf$1E);
+    super(CONCEPTS.BuildLayout_CompileOutputOf$1E, initContext);
   }
 
   @Override

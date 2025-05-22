@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PutDataExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PutDataExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PutDataExpression$yR);
+    super(CONCEPTS.PutDataExpression$yR, initContext);
   }
 
   @Override

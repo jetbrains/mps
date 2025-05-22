@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class NodeFactory_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NodeFactory_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NodeFactory$TJ);
+    super(CONCEPTS.NodeFactory$TJ, initContext);
   }
 
   @Override

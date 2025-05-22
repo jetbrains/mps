@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class UtilityMethodDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ UtilityMethodDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.UtilityMethodDeclaration$bl);
+    super(CONCEPTS.UtilityMethodDeclaration$bl, initContext);
   }
 
   @Override

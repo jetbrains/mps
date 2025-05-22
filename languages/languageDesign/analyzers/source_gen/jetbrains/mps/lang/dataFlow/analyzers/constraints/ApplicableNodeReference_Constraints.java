@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ApplicableNodeReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ApplicableNodeReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ApplicableNodeReference$20);
+    super(CONCEPTS.ApplicableNodeReference$20, initContext);
   }
 
   @Override

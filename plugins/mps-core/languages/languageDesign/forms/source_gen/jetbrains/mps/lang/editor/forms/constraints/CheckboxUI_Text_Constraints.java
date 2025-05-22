@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CheckboxUI_Text_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CheckboxUI_Text_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CheckboxUI_Text$kO);
+    super(CONCEPTS.CheckboxUI_Text$kO, initContext);
   }
 
   @Override

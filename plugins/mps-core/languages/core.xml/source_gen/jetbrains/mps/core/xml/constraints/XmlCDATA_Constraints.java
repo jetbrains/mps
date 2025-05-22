@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlCDATA_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XmlCDATA_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XmlCDATA$3U);
+    super(CONCEPTS.XmlCDATA$3U, initContext);
   }
 
   public static class Content_Property extends BasePropertyConstraintsDescriptor {

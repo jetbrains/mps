@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class IPropertyAssignment_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IPropertyAssignment_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IPropertyAssignment$ML);
+    super(CONCEPTS.IPropertyAssignment$ML, initContext);
   }
 
   @Override

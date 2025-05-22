@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DispatchModifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DispatchModifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DispatchModifier$PK);
+    super(CONCEPTS.DispatchModifier$PK, initContext);
   }
 
   @Override

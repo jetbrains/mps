@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class IMethodReferenceTarget_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IMethodReferenceTarget_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IMethodReferenceTarget$LB);
+    super(CONCEPTS.IMethodReferenceTarget$LB, initContext);
   }
 
   @Override

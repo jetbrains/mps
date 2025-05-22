@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PropertyDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyDeclaration$1S);
+    super(CONCEPTS.PropertyDeclaration$1S, initContext);
   }
 
   public static class PropertyId_Property extends BasePropertyConstraintsDescriptor {

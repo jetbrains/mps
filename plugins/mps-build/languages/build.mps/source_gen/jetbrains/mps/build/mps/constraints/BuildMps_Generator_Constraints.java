@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildMps_Generator_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildMps_Generator_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildMps_Generator$RQ);
+    super(CONCEPTS.BuildMps_Generator$RQ, initContext);
   }
 
   @Override

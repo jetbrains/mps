@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractReportStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractReportStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AbstractReportStatement$8d);
+    super(CONCEPTS.AbstractReportStatement$8d, initContext);
   }
 
   @Override

@@ -38,7 +38,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IMenu_Concept_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IMenu_Concept$6_);
+    super(CONCEPTS.IMenu_Concept$6_, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ContainerImport_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ContainerImport_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ContainerImport$sY);
+    super(CONCEPTS.ContainerImport$sY, initContext);
   }
 
   @Override

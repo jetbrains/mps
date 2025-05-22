@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildMpsLayout_ModuleJars_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildMpsLayout_ModuleJars_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildMpsLayout_ModuleJars$MZ);
+    super(CONCEPTS.BuildMpsLayout_ModuleJars$MZ, initContext);
   }
 
   @Override

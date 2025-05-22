@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExtensionRegistrar_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExtensionRegistrar_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExtensionRegistrar$ex);
+    super(CONCEPTS.ExtensionRegistrar$ex, initContext);
   }
 
   @Override

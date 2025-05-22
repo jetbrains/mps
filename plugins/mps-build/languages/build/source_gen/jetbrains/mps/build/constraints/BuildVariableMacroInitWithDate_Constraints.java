@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildVariableMacroInitWithDate_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildVariableMacroInitWithDate_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildVariableMacroInitWithDate$_z);
+    super(CONCEPTS.BuildVariableMacroInitWithDate$_z, initContext);
   }
 
   public static class Pattern_Property extends BasePropertyConstraintsDescriptor {

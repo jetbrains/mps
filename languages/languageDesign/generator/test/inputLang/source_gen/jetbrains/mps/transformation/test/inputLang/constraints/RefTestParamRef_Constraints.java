@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RefTestParamRef_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RefTestParamRef_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RefTestParamRef$2I);
+    super(CONCEPTS.RefTestParamRef$2I, initContext);
   }
 
   @Override

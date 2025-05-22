@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class PropertyMessageTarget_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyMessageTarget_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyMessageTarget$3N);
+    super(CONCEPTS.PropertyMessageTarget$3N, initContext);
   }
 
   @Override

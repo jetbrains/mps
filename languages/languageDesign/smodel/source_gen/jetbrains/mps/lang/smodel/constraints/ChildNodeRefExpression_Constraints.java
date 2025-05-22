@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ChildNodeRefExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ChildNodeRefExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ChildNodeRefExpression$jQ);
+    super(CONCEPTS.ChildNodeRefExpression$jQ, initContext);
   }
 
   @Override

@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BeanBuilder_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BeanBuilder_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BeanBuilder$s8);
+    super(CONCEPTS.BeanBuilder$s8, initContext);
   }
 
   @Override

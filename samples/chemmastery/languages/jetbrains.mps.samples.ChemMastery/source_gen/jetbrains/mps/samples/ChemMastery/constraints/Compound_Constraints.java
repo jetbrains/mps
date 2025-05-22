@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Compound_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Compound_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Compound$vn);
+    super(CONCEPTS.Compound$vn, initContext);
   }
 
   public static class Cardinality_Property extends BasePropertyConstraintsDescriptor {

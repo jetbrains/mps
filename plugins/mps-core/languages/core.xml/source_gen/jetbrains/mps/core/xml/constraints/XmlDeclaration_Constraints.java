@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XmlDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XmlDeclaration$13);
+    super(CONCEPTS.XmlDeclaration$13, initContext);
   }
 
   @Override

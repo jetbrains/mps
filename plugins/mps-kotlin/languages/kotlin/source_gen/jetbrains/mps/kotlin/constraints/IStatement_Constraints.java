@@ -10,7 +10,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IStatement$fj);
+    super(CONCEPTS.IStatement$fj, initContext);
   }
 
   @Override

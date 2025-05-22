@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XMLSAXBreakStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XMLSAXBreakStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XMLSAXBreakStatement$6U);
+    super(CONCEPTS.XMLSAXBreakStatement$6U, initContext);
   }
 
   @Override

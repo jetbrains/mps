@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class IKotlinFunctionLikeCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IKotlinFunctionLikeCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IKotlinFunctionLikeCall$lJ);
+    super(CONCEPTS.IKotlinFunctionLikeCall$lJ, initContext);
   }
 
   public static class FunctionName_Property extends BasePropertyConstraintsDescriptor {

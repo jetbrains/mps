@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AnnotationInstanceValue_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AnnotationInstanceValue_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AnnotationInstanceValue$T7);
+    super(CONCEPTS.AnnotationInstanceValue$T7, initContext);
   }
 
   @Override

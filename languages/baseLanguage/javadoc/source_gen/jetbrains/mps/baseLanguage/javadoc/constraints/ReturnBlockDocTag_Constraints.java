@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ReturnBlockDocTag_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ReturnBlockDocTag_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ReturnBlockDocTag$KD);
+    super(CONCEPTS.ReturnBlockDocTag$KD, initContext);
   }
 
   @Override

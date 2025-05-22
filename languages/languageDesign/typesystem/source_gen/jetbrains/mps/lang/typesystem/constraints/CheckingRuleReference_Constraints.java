@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CheckingRuleReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CheckingRuleReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CheckingRuleReference$BA);
+    super(CONCEPTS.CheckingRuleReference$BA, initContext);
   }
 
   @Override

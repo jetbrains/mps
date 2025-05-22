@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellModel_Diagram_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellModel_Diagram_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CellModel_Diagram$rp);
+    super(CONCEPTS.CellModel_Diagram$rp, initContext);
   }
 
   private static final class CONCEPTS {

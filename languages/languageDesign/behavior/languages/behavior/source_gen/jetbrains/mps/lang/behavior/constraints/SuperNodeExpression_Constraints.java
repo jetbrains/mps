@@ -34,7 +34,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SuperNodeExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SuperNodeExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SuperNodeExpression$tM);
+    super(CONCEPTS.SuperNodeExpression$tM, initContext);
   }
 
   @Override

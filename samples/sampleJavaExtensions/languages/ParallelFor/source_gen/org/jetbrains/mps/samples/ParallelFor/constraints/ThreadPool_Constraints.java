@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ThreadPool_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ThreadPool_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ThreadPool$fN);
+    super(CONCEPTS.ThreadPool$fN, initContext);
   }
 
   public static class NumberOfThreads_Property extends BasePropertyConstraintsDescriptor {

@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class AbstractTestNodeAnnotation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractTestNodeAnnotation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AbstractTestNodeAnnotation$lh);
+    super(CONCEPTS.AbstractTestNodeAnnotation$lh, initContext);
   }
 
   @Override

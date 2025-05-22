@@ -27,7 +27,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LocalPatternReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LocalPatternReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LocalPatternReference$ZT);
+    super(CONCEPTS.LocalPatternReference$ZT, initContext);
   }
 
   @Override

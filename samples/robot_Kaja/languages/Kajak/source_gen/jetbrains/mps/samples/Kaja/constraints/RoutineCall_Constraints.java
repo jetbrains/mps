@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class RoutineCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RoutineCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RoutineCall$mS);
+    super(CONCEPTS.RoutineCall$mS, initContext);
   }
 
   @Override

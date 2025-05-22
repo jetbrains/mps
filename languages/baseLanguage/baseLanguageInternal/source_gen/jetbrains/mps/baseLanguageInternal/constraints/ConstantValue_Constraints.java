@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ConstantValue_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConstantValue_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConstantValue$Pq);
+    super(CONCEPTS.ConstantValue$Pq, initContext);
   }
 
   public static class ClassName_Property extends BasePropertyConstraintsDescriptor {

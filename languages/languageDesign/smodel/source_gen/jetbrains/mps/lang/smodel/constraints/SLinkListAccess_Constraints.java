@@ -29,7 +29,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SLinkListAccess_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SLinkListAccess_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SLinkListAccess$oO);
+    super(CONCEPTS.SLinkListAccess$oO, initContext);
   }
 
   @Override

@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AllConstant_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AllConstant_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AllConstant$My);
+    super(CONCEPTS.AllConstant$My, initContext);
   }
 
   @Override

@@ -14,7 +14,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InequationReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InequationReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InequationReference$fC);
+    super(CONCEPTS.InequationReference$fC, initContext);
   }
 
   @Override

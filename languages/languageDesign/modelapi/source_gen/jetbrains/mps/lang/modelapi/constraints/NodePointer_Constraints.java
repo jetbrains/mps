@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NodePointer_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NodePointer_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NodePointer$6k);
+    super(CONCEPTS.NodePointer$6k, initContext);
   }
 
   public static class NodeId_Property extends BasePropertyConstraintsDescriptor {

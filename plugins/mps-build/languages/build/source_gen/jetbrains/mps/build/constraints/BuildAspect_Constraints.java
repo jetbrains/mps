@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildAspect_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildAspect_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildAspect$nv);
+    super(CONCEPTS.BuildAspect$nv, initContext);
   }
 
   @Override

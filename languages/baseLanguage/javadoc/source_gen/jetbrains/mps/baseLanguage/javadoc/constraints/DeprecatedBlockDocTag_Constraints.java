@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DeprecatedBlockDocTag_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DeprecatedBlockDocTag_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DeprecatedBlockDocTag$8n);
+    super(CONCEPTS.DeprecatedBlockDocTag$8n, initContext);
   }
 
   @Override

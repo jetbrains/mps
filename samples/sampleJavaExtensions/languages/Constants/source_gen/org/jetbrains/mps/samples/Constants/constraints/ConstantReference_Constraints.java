@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConstantReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConstantReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConstantReference$t4);
+    super(CONCEPTS.ConstantReference$t4, initContext);
   }
 
   @Override

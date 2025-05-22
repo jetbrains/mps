@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlCommentLine_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XmlCommentLine_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XmlCommentLine$S9);
+    super(CONCEPTS.XmlCommentLine$S9, initContext);
   }
 
   public static class Text_Property extends BasePropertyConstraintsDescriptor {

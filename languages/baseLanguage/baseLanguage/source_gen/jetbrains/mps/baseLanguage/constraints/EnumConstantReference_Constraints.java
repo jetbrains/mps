@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EnumConstantReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EnumConstantReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EnumConstantReference$kA);
+    super(CONCEPTS.EnumConstantReference$kA, initContext);
   }
 
   @Override

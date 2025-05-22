@@ -234,94 +234,90 @@
       <node concept="2AHcQZ" id="9" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
-      <node concept="3Tm1VV" id="a" role="1B3o_S" />
-      <node concept="3uibUv" id="b" role="3clF45">
+      <node concept="2AHcQZ" id="a" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+      <node concept="3Tm1VV" id="b" role="1B3o_S" />
+      <node concept="3uibUv" id="c" role="3clF45">
         <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
       </node>
-      <node concept="37vLTG" id="c" role="3clF46">
+      <node concept="37vLTG" id="d" role="3clF46">
         <property role="TrG5h" value="concept" />
-        <node concept="3bZ5Sz" id="f" role="1tU5fm" />
-        <node concept="2AHcQZ" id="g" role="2AJF6D">
+        <node concept="3bZ5Sz" id="g" role="1tU5fm" />
+        <node concept="2AHcQZ" id="h" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
-      <node concept="37vLTG" id="d" role="3clF46">
+      <node concept="37vLTG" id="e" role="3clF46">
         <property role="TrG5h" value="context" />
-        <node concept="3uibUv" id="h" role="1tU5fm">
+        <node concept="3uibUv" id="i" role="1tU5fm">
           <ref role="3uigEE" to="ze1j:~ConstraintsDescriptorInitContext" resolve="ConstraintsDescriptorInitContext" />
         </node>
-        <node concept="2AHcQZ" id="i" role="2AJF6D">
+        <node concept="2AHcQZ" id="j" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
-      <node concept="3clFbS" id="e" role="3clF47">
-        <node concept="1_3QMa" id="j" role="3cqZAp">
-          <node concept="37vLTw" id="l" role="1_3QMn">
-            <ref role="3cqZAo" node="c" resolve="concept" />
+      <node concept="3clFbS" id="f" role="3clF47">
+        <node concept="1_3QMa" id="k" role="3cqZAp">
+          <node concept="37vLTw" id="m" role="1_3QMn">
+            <ref role="3cqZAo" node="d" resolve="concept" />
           </node>
-          <node concept="1pnPoh" id="m" role="1_3QMm">
-            <node concept="3clFbS" id="o" role="1pnPq1">
-              <node concept="3cpWs6" id="q" role="3cqZAp">
-                <node concept="2ShNRf" id="r" role="3cqZAk">
-                  <node concept="1pGfFk" id="s" role="2ShVmc">
+          <node concept="1pnPoh" id="n" role="1_3QMm">
+            <node concept="3clFbS" id="p" role="1pnPq1">
+              <node concept="3cpWs6" id="r" role="3cqZAp">
+                <node concept="2ShNRf" id="s" role="3cqZAk">
+                  <node concept="1pGfFk" id="t" role="2ShVmc">
                     <property role="373rjd" value="true" />
-                    <ref role="37wK5l" node="$" resolve="CreateBreakpointOperation_Constraints" />
-                    <node concept="37vLTw" id="t" role="37wK5m">
-                      <ref role="3cqZAo" node="d" resolve="context" />
+                    <ref role="37wK5l" node="z" resolve="CreateBreakpointOperation_Constraints" />
+                    <node concept="37vLTw" id="u" role="37wK5m">
+                      <ref role="3cqZAo" node="e" resolve="context" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3gn64h" id="p" role="1pnPq6">
+            <node concept="3gn64h" id="q" role="1pnPq6">
               <ref role="3gnhBz" to="86gq:2eCkIB4eWFD" resolve="CreateBreakpointOperation" />
             </node>
           </node>
-          <node concept="3clFbS" id="n" role="1prKM_" />
+          <node concept="3clFbS" id="o" role="1prKM_" />
         </node>
-        <node concept="3cpWs6" id="k" role="3cqZAp">
-          <node concept="2ShNRf" id="u" role="3cqZAk">
-            <node concept="1pGfFk" id="v" role="2ShVmc">
-              <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
-              <node concept="37vLTw" id="w" role="37wK5m">
-                <ref role="3cqZAo" node="c" resolve="concept" />
-              </node>
-            </node>
-          </node>
+        <node concept="3cpWs6" id="l" role="3cqZAp">
+          <node concept="10Nm6u" id="v" role="3cqZAk" />
         </node>
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="x">
+  <node concept="312cEu" id="w">
     <property role="3GE5qa" value="breakpoints" />
     <property role="TrG5h" value="CreateBreakpointOperation_Constraints" />
     <uo k="s:originTrace" v="n:5365453833390579711" />
-    <node concept="3Tm1VV" id="y" role="1B3o_S">
+    <node concept="3Tm1VV" id="x" role="1B3o_S">
       <uo k="s:originTrace" v="n:5365453833390579711" />
     </node>
-    <node concept="3uibUv" id="z" role="1zkMxy">
+    <node concept="3uibUv" id="y" role="1zkMxy">
       <ref role="3uigEE" to="79pl:~BaseConstraintsDescriptor" resolve="BaseConstraintsDescriptor" />
       <uo k="s:originTrace" v="n:5365453833390579711" />
     </node>
-    <node concept="3clFbW" id="$" role="jymVt">
+    <node concept="3clFbW" id="z" role="jymVt">
       <uo k="s:originTrace" v="n:5365453833390579711" />
-      <node concept="37vLTG" id="C" role="3clF46">
+      <node concept="37vLTG" id="B" role="3clF46">
         <property role="TrG5h" value="initContext" />
         <uo k="s:originTrace" v="n:5365453833390579711" />
-        <node concept="3uibUv" id="F" role="1tU5fm">
+        <node concept="3uibUv" id="E" role="1tU5fm">
           <ref role="3uigEE" to="ze1j:~ConstraintsDescriptorInitContext" resolve="ConstraintsDescriptorInitContext" />
           <uo k="s:originTrace" v="n:5365453833390579711" />
         </node>
       </node>
-      <node concept="3cqZAl" id="D" role="3clF45">
+      <node concept="3cqZAl" id="C" role="3clF45">
         <uo k="s:originTrace" v="n:5365453833390579711" />
       </node>
-      <node concept="3clFbS" id="E" role="3clF47">
+      <node concept="3clFbS" id="D" role="3clF47">
         <uo k="s:originTrace" v="n:5365453833390579711" />
-        <node concept="XkiVB" id="G" role="3cqZAp">
-          <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
+        <node concept="XkiVB" id="F" role="3cqZAp">
+          <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept,jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext)" resolve="BaseConstraintsDescriptor" />
           <uo k="s:originTrace" v="n:5365453833390579711" />
-          <node concept="1BaE9c" id="H" role="37wK5m">
+          <node concept="1BaE9c" id="G" role="37wK5m">
             <property role="1ouuDV" value="CONCEPTS" />
             <property role="1BaxDp" value="CreateBreakpointOperation$J4" />
             <uo k="s:originTrace" v="n:5365453833390579711" />
@@ -347,13 +343,17 @@
               </node>
             </node>
           </node>
+          <node concept="37vLTw" id="H" role="37wK5m">
+            <ref role="3cqZAo" node="B" resolve="initContext" />
+            <uo k="s:originTrace" v="n:5365453833390579711" />
+          </node>
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="_" role="jymVt">
+    <node concept="2tJIrI" id="$" role="jymVt">
       <uo k="s:originTrace" v="n:5365453833390579711" />
     </node>
-    <node concept="3clFb_" id="A" role="jymVt">
+    <node concept="3clFb_" id="_" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="calculateCanBeChildConstraint" />
       <property role="DiZV1" value="false" />
@@ -442,7 +442,7 @@
                           <uo k="s:originTrace" v="n:5365453833390579711" />
                         </node>
                         <node concept="1rXfSq" id="1i" role="33vP2m">
-                          <ref role="37wK5l" node="B" resolve="staticCanBeAChild" />
+                          <ref role="37wK5l" node="A" resolve="staticCanBeAChild" />
                           <uo k="s:originTrace" v="n:5365453833390579711" />
                           <node concept="2OqwBi" id="1j" role="37wK5m">
                             <uo k="s:originTrace" v="n:5365453833390579711" />
@@ -583,7 +583,7 @@
         <uo k="s:originTrace" v="n:5365453833390579711" />
       </node>
     </node>
-    <node concept="2YIFZL" id="B" role="jymVt">
+    <node concept="2YIFZL" id="A" role="jymVt">
       <property role="TrG5h" value="staticCanBeAChild" />
       <uo k="s:originTrace" v="n:5365453833390579711" />
       <node concept="10P_77" id="1K" role="3clF45">
@@ -682,7 +682,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="2d" role="39e2AY">
-          <ref role="39e2AS" node="x" resolve="CreateBreakpointOperation_Constraints" />
+          <ref role="39e2AS" node="w" resolve="CreateBreakpointOperation_Constraints" />
         </node>
       </node>
     </node>
@@ -697,7 +697,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="2h" role="39e2AY">
-          <ref role="39e2AS" node="$" resolve="CreateBreakpointOperation_Constraints" />
+          <ref role="39e2AS" node="z" resolve="CreateBreakpointOperation_Constraints" />
         </node>
       </node>
     </node>

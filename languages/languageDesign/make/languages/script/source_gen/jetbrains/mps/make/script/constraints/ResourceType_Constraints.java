@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ResourceType_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ResourceType_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ResourceType$sR);
+    super(CONCEPTS.ResourceType$sR, initContext);
   }
 
   private static final class CONCEPTS {

@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class InPlaceCheckpointRefSpec_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InPlaceCheckpointRefSpec_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InPlaceCheckpointRefSpec$H6);
+    super(CONCEPTS.InPlaceCheckpointRefSpec$H6, initContext);
   }
 
   @Override

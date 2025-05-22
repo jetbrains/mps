@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class BasicExtensionDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BasicExtensionDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BasicExtensionDeclaration$tJ);
+    super(CONCEPTS.BasicExtensionDeclaration$tJ, initContext);
   }
 
   @Override

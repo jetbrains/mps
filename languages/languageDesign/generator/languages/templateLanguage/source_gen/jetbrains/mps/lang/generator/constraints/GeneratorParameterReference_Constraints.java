@@ -14,7 +14,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GeneratorParameterReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GeneratorParameterReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GeneratorParameterReference$oD);
+    super(CONCEPTS.GeneratorParameterReference$oD, initContext);
   }
 
   @Override

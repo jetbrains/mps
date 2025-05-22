@@ -16,7 +16,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EnumValuesExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EnumValuesExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EnumValuesExpression$YB);
+    super(CONCEPTS.EnumValuesExpression$YB, initContext);
   }
 
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {

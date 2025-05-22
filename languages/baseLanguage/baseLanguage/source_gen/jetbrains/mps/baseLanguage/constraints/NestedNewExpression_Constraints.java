@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NestedNewExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NestedNewExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NestedNewExpression$zV);
+    super(CONCEPTS.NestedNewExpression$zV, initContext);
   }
 
   @Override

@@ -32,7 +32,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TestVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TestVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TestVariableReference$Ck);
+    super(CONCEPTS.TestVariableReference$Ck, initContext);
   }
 
   @Override

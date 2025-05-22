@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class DailyPlan_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DailyPlan_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DailyPlan$zP);
+    super(CONCEPTS.DailyPlan$zP, initContext);
   }
 
   public static class DisplayName_Property extends BasePropertyConstraintsDescriptor {

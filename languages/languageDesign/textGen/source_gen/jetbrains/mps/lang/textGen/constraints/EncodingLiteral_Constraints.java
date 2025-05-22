@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EncodingLiteral_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EncodingLiteral_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EncodingLiteral$91);
+    super(CONCEPTS.EncodingLiteral$91, initContext);
   }
 
   public static class Encoding_Property extends BasePropertyConstraintsDescriptor {

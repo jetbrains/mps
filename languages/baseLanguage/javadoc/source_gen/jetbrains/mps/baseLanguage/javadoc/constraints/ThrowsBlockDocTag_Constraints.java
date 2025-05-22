@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ThrowsBlockDocTag_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ThrowsBlockDocTag_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ThrowsBlockDocTag$bu);
+    super(CONCEPTS.ThrowsBlockDocTag$bu, initContext);
   }
 
   @Override

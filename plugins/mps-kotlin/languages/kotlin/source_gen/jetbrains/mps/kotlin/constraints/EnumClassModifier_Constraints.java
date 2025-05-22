@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EnumClassModifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EnumClassModifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EnumClassModifier$uP);
+    super(CONCEPTS.EnumClassModifier$uP, initContext);
   }
 
   @Override

@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CompletionCustomization_PropertyFeature_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CompletionCustomization_PropertyFeature_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CompletionCustomization_PropertyFeature$U);
+    super(CONCEPTS.CompletionCustomization_PropertyFeature$U, initContext);
   }
 
   @Override

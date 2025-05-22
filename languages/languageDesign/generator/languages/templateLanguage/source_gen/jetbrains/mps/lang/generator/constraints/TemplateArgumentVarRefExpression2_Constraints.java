@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TemplateArgumentVarRefExpression2_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TemplateArgumentVarRefExpression2_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TemplateArgumentVarRefExpression2$1W);
+    super(CONCEPTS.TemplateArgumentVarRefExpression2$1W, initContext);
   }
 
   @Override

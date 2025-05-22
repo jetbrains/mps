@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ElementReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ElementReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ElementReference$XB);
+    super(CONCEPTS.ElementReference$XB, initContext);
   }
 
   @Override

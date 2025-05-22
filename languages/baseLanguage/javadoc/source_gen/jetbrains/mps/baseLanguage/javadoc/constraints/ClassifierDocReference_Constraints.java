@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ClassifierDocReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ClassifierDocReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ClassifierDocReference$$o);
+    super(CONCEPTS.ClassifierDocReference$$o, initContext);
   }
 
   @Override

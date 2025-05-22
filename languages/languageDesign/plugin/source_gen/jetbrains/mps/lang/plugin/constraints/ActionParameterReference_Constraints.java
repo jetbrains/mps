@@ -31,7 +31,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ActionParameterReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ActionParameterReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ActionParameterReference$U9);
+    super(CONCEPTS.ActionParameterReference$U9, initContext);
   }
 
   @Override

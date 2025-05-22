@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ConceptMethodDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConceptMethodDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConceptMethodDeclaration$N0);
+    super(CONCEPTS.ConceptMethodDeclaration$N0, initContext);
   }
 
   @Override

@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LinkRefExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LinkRefExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LinkRefExpression$nK);
+    super(CONCEPTS.LinkRefExpression$nK, initContext);
   }
 
   @Override

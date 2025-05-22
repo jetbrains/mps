@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractPrintExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractPrintExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AbstractPrintExpression$Qx);
+    super(CONCEPTS.AbstractPrintExpression$Qx, initContext);
   }
 
   @Override

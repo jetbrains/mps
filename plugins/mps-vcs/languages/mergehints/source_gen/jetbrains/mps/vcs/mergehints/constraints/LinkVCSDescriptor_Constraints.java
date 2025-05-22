@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class LinkVCSDescriptor_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LinkVCSDescriptor_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LinkVCSDescriptor$hA);
+    super(CONCEPTS.LinkVCSDescriptor$hA, initContext);
   }
 
   @Override

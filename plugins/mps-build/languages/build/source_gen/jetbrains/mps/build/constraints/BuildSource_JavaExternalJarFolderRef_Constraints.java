@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class BuildSource_JavaExternalJarFolderRef_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildSource_JavaExternalJarFolderRef_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildSource_JavaExternalJarFolderRef$kv);
+    super(CONCEPTS.BuildSource_JavaExternalJarFolderRef$kv, initContext);
   }
 
   @Override

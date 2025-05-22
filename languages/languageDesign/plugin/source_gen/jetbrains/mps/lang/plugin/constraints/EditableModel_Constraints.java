@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class EditableModel_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EditableModel_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EditableModel$9z);
+    super(CONCEPTS.EditableModel$9z, initContext);
   }
 
   @Override

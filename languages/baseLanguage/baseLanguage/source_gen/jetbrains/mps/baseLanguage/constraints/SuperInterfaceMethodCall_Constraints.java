@@ -37,7 +37,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SuperInterfaceMethodCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SuperInterfaceMethodCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SuperInterfaceMethodCall$oI);
+    super(CONCEPTS.SuperInterfaceMethodCall$oI, initContext);
   }
 
   @Override

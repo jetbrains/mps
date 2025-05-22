@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExternalViewFigureParameter_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExternalViewFigureParameter_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExternalViewFigureParameter$gW);
+    super(CONCEPTS.ExternalViewFigureParameter$gW, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

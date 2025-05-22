@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class RefactoringFieldReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RefactoringFieldReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RefactoringFieldReference$Lx);
+    super(CONCEPTS.RefactoringFieldReference$Lx, initContext);
   }
 
   @Override

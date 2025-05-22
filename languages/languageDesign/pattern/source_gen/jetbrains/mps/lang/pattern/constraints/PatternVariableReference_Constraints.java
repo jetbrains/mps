@@ -35,7 +35,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class PatternVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PatternVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PatternVariableReference$jy);
+    super(CONCEPTS.PatternVariableReference$jy, initContext);
   }
 
   @Override

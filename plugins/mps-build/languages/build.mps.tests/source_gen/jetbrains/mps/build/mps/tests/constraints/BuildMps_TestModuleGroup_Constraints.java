@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildMps_TestModuleGroup_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildMps_TestModuleGroup_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildMps_TestModuleGroup$bo);
+    super(CONCEPTS.BuildMps_TestModuleGroup$bo, initContext);
   }
 
   @Override

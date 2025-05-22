@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Slot_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Slot_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Slot$rU);
+    super(CONCEPTS.Slot$rU, initContext);
   }
 
   public static class Start_Property extends BasePropertyConstraintsDescriptor {

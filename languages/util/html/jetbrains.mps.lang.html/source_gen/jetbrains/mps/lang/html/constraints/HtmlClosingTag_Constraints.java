@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class HtmlClosingTag_Constraints extends BaseConstraintsDescriptor {
   /*package*/ HtmlClosingTag_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.HtmlClosingTag$wO);
+    super(CONCEPTS.HtmlClosingTag$wO, initContext);
   }
 
   public static class TagName_Property extends BasePropertyConstraintsDescriptor {

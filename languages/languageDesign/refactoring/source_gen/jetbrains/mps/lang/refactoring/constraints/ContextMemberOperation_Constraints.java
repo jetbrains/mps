@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ContextMemberOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ContextMemberOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ContextMemberOperation$yC);
+    super(CONCEPTS.ContextMemberOperation$yC, initContext);
   }
 
   @Override

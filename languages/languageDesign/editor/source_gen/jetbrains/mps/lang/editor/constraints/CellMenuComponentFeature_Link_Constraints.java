@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellMenuComponentFeature_Link_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellMenuComponentFeature_Link_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CellMenuComponentFeature_Link$Sg);
+    super(CONCEPTS.CellMenuComponentFeature_Link$Sg, initContext);
   }
 
   @Override

@@ -33,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class EditorOperationCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EditorOperationCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EditorOperationCall$Wd);
+    super(CONCEPTS.EditorOperationCall$Wd, initContext);
   }
 
   @Override

@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IMenu_Named_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IMenu_Named_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IMenu_Named$Q7);
+    super(CONCEPTS.IMenu_Named$Q7, initContext);
   }
 
   @Override

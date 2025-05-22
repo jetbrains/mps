@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MatchVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MatchVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MatchVariableReference$eW);
+    super(CONCEPTS.MatchVariableReference$eW, initContext);
   }
 
   @Override

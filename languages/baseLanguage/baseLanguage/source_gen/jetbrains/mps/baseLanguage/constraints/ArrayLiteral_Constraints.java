@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ArrayLiteral_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ArrayLiteral_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ArrayLiteral$Ey);
+    super(CONCEPTS.ArrayLiteral$Ey, initContext);
   }
 
   @Override

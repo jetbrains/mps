@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class PropertyMemberTarget_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyMemberTarget_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyMemberTarget$nM);
+    super(CONCEPTS.PropertyMemberTarget$nM, initContext);
   }
 
   @Override

@@ -32,7 +32,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ClassConcept_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ClassConcept_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ClassConcept$bK);
+    super(CONCEPTS.ClassConcept$bK, initContext);
   }
   public IconResource getInstanceIcon(SNode node) {
     if ((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(node, SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Throwable"))) {

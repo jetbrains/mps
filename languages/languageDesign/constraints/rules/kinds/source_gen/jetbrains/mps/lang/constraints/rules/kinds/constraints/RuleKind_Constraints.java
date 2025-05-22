@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RuleKind_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RuleKind_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RuleKind$7C);
+    super(CONCEPTS.RuleKind$7C, initContext);
   }
 
   @Override

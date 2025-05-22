@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SuperClassSpecifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SuperClassSpecifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SuperClassSpecifier$ZV);
+    super(CONCEPTS.SuperClassSpecifier$ZV, initContext);
   }
 
   @Override

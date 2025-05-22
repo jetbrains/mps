@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ConceptCondition_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConceptCondition_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConceptCondition$E);
+    super(CONCEPTS.ConceptCondition$E, initContext);
   }
 
   @Override

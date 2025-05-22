@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ControlAbstractionContainer_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ControlAbstractionContainer_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ControlAbstractionContainer$KX);
+    super(CONCEPTS.ControlAbstractionContainer$KX, initContext);
   }
 
   @Override

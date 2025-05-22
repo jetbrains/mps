@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GetHighLevelWatchablesBlock_ConceptFunction_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GetHighLevelWatchablesBlock_ConceptFunction_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GetHighLevelWatchablesBlock_ConceptFunction$Xs);
+    super(CONCEPTS.GetHighLevelWatchablesBlock_ConceptFunction$Xs, initContext);
   }
 
   @Override

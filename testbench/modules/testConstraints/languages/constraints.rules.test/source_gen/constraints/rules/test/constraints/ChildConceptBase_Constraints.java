@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ChildConceptBase_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ChildConceptBase_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ChildConceptBase$W7);
+    super(CONCEPTS.ChildConceptBase$W7, initContext);
   }
 
   @Override

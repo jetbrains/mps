@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class LowLevelVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LowLevelVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LowLevelVariableReference$GJ);
+    super(CONCEPTS.LowLevelVariableReference$GJ, initContext);
   }
 
   @Override

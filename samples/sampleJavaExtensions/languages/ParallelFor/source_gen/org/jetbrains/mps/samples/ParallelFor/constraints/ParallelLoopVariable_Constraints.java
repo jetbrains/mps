@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ParallelLoopVariable_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ParallelLoopVariable_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ParallelLoopVariable$2L);
+    super(CONCEPTS.ParallelLoopVariable$2L, initContext);
   }
 
   @Override

@@ -35,7 +35,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ResourceClassifierType_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ResourceClassifierType_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ResourceClassifierType$$Z);
+    super(CONCEPTS.ResourceClassifierType$$Z, initContext);
   }
 
   @Override

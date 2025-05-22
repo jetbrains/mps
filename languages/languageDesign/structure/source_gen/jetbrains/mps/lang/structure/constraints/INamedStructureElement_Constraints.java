@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class INamedStructureElement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ INamedStructureElement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.INamedStructureElement$gD);
+    super(CONCEPTS.INamedStructureElement$gD, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

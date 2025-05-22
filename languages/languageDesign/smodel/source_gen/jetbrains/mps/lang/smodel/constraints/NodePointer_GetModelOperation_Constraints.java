@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NodePointer_GetModelOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NodePointer_GetModelOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NodePointer_GetModelOperation$aY);
+    super(CONCEPTS.NodePointer_GetModelOperation$aY, initContext);
   }
 
   @Override

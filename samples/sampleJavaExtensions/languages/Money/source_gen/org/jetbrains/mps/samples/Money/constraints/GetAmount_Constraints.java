@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GetAmount_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GetAmount_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GetAmount$vs);
+    super(CONCEPTS.GetAmount$vs, initContext);
   }
 
   @Override

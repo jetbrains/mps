@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InlineMessageProvider_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InlineMessageProvider_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InlineMessageProvider$bB);
+    super(CONCEPTS.InlineMessageProvider$bB, initContext);
   }
 
   @Override

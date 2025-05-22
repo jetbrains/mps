@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class AbstractRunConfigurationExecutor_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractRunConfigurationExecutor_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AbstractRunConfigurationExecutor$Fp);
+    super(CONCEPTS.AbstractRunConfigurationExecutor$Fp, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

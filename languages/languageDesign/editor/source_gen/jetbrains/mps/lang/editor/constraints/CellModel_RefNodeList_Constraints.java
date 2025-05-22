@@ -29,7 +29,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellModel_RefNodeList_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellModel_RefNodeList_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CellModel_RefNodeList$Uo);
+    super(CONCEPTS.CellModel_RefNodeList$Uo, initContext);
   }
 
   @Override

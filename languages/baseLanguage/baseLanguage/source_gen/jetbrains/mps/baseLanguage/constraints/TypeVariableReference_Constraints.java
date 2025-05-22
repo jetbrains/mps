@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TypeVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TypeVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TypeVariableReference$WL);
+    super(CONCEPTS.TypeVariableReference$WL, initContext);
   }
 
   @Override

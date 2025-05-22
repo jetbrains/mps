@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Singer_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Singer_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Singer$Ri);
+    super(CONCEPTS.Singer$Ri, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

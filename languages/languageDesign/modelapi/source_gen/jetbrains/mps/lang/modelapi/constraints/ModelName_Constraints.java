@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ModelName_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ModelName_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ModelName$A4);
+    super(CONCEPTS.ModelName$A4, initContext);
   }
 
   public static class Value_Property extends BasePropertyConstraintsDescriptor {

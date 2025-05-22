@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TypeTest_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TypeTest_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TypeTest$U8);
+    super(CONCEPTS.TypeTest$U8, initContext);
   }
 
   @Override

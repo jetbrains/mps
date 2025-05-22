@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TemplateArgumentParameterExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TemplateArgumentParameterExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TemplateArgumentParameterExpression$$z);
+    super(CONCEPTS.TemplateArgumentParameterExpression$$z, initContext);
   }
 
   @Override

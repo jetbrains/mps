@@ -35,7 +35,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CustomConstructorParameterReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CustomConstructorParameterReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CustomConstructorParameterReference$j6);
+    super(CONCEPTS.CustomConstructorParameterReference$j6, initContext);
   }
 
   @Override

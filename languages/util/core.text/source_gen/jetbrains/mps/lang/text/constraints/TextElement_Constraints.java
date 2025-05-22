@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TextElement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TextElement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TextElement$WN);
+    super(CONCEPTS.TextElement$WN, initContext);
   }
 
   @Override

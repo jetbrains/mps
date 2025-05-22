@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildVarRefStringPart_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildVarRefStringPart_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildVarRefStringPart$2T);
+    super(CONCEPTS.BuildVarRefStringPart$2T, initContext);
   }
 
   @Override

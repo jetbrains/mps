@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class DirectMethodSpecification_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DirectMethodSpecification_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DirectMethodSpecification$xq);
+    super(CONCEPTS.DirectMethodSpecification$xq, initContext);
   }
 
   @Override

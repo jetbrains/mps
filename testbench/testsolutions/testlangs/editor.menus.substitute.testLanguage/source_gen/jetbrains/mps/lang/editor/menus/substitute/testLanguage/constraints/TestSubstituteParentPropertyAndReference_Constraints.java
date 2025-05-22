@@ -35,7 +35,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class TestSubstituteParentPropertyAndReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TestSubstituteParentPropertyAndReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TestSubstituteParentPropertyAndReference$Xs);
+    super(CONCEPTS.TestSubstituteParentPropertyAndReference$Xs, initContext);
   }
 
   public static class EnumPropertyWithIsValidConstraints_Property extends BasePropertyConstraintsDescriptor {

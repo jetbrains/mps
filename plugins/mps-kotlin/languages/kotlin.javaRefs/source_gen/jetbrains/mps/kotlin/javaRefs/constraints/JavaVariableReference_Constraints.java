@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class JavaVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ JavaVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.JavaVariableReference$Eg);
+    super(CONCEPTS.JavaVariableReference$Eg, initContext);
   }
 
   @Override

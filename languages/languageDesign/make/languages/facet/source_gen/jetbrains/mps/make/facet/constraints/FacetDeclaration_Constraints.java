@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FacetDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FacetDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FacetDeclaration$Nd);
+    super(CONCEPTS.FacetDeclaration$Nd, initContext);
   }
 
   @Override

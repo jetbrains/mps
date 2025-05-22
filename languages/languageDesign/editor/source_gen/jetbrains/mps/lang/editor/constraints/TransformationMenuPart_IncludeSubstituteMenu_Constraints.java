@@ -32,7 +32,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TransformationMenuPart_IncludeSubstituteMenu_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TransformationMenuPart_IncludeSubstituteMenu_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TransformationMenuPart_IncludeSubstituteMenu$uG);
+    super(CONCEPTS.TransformationMenuPart_IncludeSubstituteMenu$uG, initContext);
   }
 
   @Override

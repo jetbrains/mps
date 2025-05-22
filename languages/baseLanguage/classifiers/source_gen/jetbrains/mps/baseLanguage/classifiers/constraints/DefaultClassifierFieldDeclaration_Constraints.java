@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class DefaultClassifierFieldDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DefaultClassifierFieldDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DefaultClassifierFieldDeclaration$Hv);
+    super(CONCEPTS.DefaultClassifierFieldDeclaration$Hv, initContext);
   }
 
   @Override

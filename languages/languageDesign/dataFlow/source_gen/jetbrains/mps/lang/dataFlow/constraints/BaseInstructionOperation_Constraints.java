@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BaseInstructionOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BaseInstructionOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BaseInstructionOperation$BM);
+    super(CONCEPTS.BaseInstructionOperation$BM, initContext);
   }
 
   @Override

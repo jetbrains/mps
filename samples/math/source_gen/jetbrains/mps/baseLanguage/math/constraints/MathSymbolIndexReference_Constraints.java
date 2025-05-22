@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MathSymbolIndexReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MathSymbolIndexReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MathSymbolIndexReference$m_);
+    super(CONCEPTS.MathSymbolIndexReference$m_, initContext);
   }
 
   @Override

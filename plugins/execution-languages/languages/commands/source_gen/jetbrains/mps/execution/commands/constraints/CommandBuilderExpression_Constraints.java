@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class CommandBuilderExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CommandBuilderExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CommandBuilderExpression$rV);
+    super(CONCEPTS.CommandBuilderExpression$rV, initContext);
   }
 
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {

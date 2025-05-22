@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LinkPatternVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LinkPatternVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LinkPatternVariableReference$uS);
+    super(CONCEPTS.LinkPatternVariableReference$uS, initContext);
   }
 
   @Override

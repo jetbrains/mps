@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class BuildLayout_ImportContent_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildLayout_ImportContent_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildLayout_ImportContent$wC);
+    super(CONCEPTS.BuildLayout_ImportContent$wC, initContext);
   }
 
   @Override

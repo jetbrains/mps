@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StateMachineTest_Constraints extends BaseConstraintsDescriptor {
   /*package*/ StateMachineTest_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.StateMachineTest$oe);
+    super(CONCEPTS.StateMachineTest$oe, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class Interface_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Interface_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Interface$db);
+    super(CONCEPTS.Interface$db, initContext);
   }
 
   @Override

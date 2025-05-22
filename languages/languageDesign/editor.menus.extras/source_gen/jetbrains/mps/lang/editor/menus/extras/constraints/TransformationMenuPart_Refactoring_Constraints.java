@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TransformationMenuPart_Refactoring_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TransformationMenuPart_Refactoring_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TransformationMenuPart_Refactoring$8K);
+    super(CONCEPTS.TransformationMenuPart_Refactoring$8K, initContext);
   }
 
   @Override

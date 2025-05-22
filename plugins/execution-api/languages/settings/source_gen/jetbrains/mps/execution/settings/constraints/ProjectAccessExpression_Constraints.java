@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ProjectAccessExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ProjectAccessExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ProjectAccessExpression$oo);
+    super(CONCEPTS.ProjectAccessExpression$oo, initContext);
   }
 
   @Override

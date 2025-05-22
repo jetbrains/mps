@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class KotlinFunctionArgument_Constraints extends BaseConstraintsDescriptor {
   /*package*/ KotlinFunctionArgument_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.KotlinFunctionArgument$f_);
+    super(CONCEPTS.KotlinFunctionArgument$f_, initContext);
   }
 
   private static final class CONCEPTS {

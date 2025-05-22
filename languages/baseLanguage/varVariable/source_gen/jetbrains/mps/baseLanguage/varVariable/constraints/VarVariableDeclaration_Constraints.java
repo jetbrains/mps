@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class VarVariableDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ VarVariableDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.VarVariableDeclaration$pa);
+    super(CONCEPTS.VarVariableDeclaration$pa, initContext);
   }
 
   @Override

@@ -31,7 +31,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class UnitContextReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ UnitContextReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.UnitContextReference$sc);
+    super(CONCEPTS.UnitContextReference$sc, initContext);
   }
 
   @Override

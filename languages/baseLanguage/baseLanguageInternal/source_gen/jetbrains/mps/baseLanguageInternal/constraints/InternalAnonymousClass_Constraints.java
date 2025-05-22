@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InternalAnonymousClass_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InternalAnonymousClass_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InternalAnonymousClass$21);
+    super(CONCEPTS.InternalAnonymousClass$21, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

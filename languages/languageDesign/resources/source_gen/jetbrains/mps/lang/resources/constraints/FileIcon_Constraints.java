@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FileIcon_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FileIcon_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FileIcon$Z0);
+    super(CONCEPTS.FileIcon$Z0, initContext);
   }
 
   private static final class CONCEPTS {

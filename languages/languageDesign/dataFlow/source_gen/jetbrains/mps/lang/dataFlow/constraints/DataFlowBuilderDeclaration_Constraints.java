@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class DataFlowBuilderDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DataFlowBuilderDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DataFlowBuilderDeclaration$NP);
+    super(CONCEPTS.DataFlowBuilderDeclaration$NP, initContext);
   }
 
   @Override

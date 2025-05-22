@@ -31,7 +31,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EditorPropertyReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EditorPropertyReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EditorPropertyReference$8N);
+    super(CONCEPTS.EditorPropertyReference$8N, initContext);
   }
 
   @Override

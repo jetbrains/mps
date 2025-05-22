@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MessageExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MessageExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MessageExpression$zD);
+    super(CONCEPTS.MessageExpression$zD, initContext);
   }
 
   @Override

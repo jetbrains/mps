@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class OperationDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ OperationDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.OperationDeclaration$hY);
+    super(CONCEPTS.OperationDeclaration$hY, initContext);
   }
 
   @Override

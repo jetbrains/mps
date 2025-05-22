@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class TransformationMenuPart_ReferenceMenu_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TransformationMenuPart_ReferenceMenu_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TransformationMenuPart_ReferenceMenu$gu);
+    super(CONCEPTS.TransformationMenuPart_ReferenceMenu$gu, initContext);
   }
 
   @Override

@@ -10,12 +10,12 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="15,0,31,0" name="jetbrains.mps.lang.feedback.problem.scopes.constraints.ConstraintsAspectDescriptor" />
+      <unit at="15,0,32,0" name="jetbrains.mps.lang.feedback.problem.scopes.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:bb0a30e0-9916-4d29-97fa-68ace0b06403(jetbrains.mps.lang.feedback.problem.scopes.constraints)/1592627013225801575">
     <file name="RefOutOfScopeProblem_Constraints.java">
-      <node id="1592627013225801575" at="28,94,29,44" concept="7" />
+      <node id="1592627013225801575" at="28,94,29,57" concept="7" />
       <node id="24399255755617834" at="40,63,41,155" concept="5" />
       <node id="1938781798615313045" at="45,54,46,98" concept="4" />
       <node id="1938781798615280312" at="46,98,47,248" concept="4" />
@@ -39,7 +39,7 @@
       <node id="24399255755617834" at="35,0,58,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="24399255755617834" at="33,90,58,6" concept="4" />
       <node id="1592627013225801575" at="32,0,63,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1592627013225801575" at="28,94,29,44" />
+      <scope id="1592627013225801575" at="28,94,29,57" />
       <scope id="24399255755617834" at="40,63,41,155" />
       <scope id="1592627013225801575" at="28,0,31,0">
         <var name="initContext" id="1592627013225801575" />

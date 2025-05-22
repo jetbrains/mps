@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellMenuPart_ReplaceNode_CustomNodeConcept_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellMenuPart_ReplaceNode_CustomNodeConcept_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CellMenuPart_ReplaceNode_CustomNodeConcept$iP);
+    super(CONCEPTS.CellMenuPart_ReplaceNode_CustomNodeConcept$iP, initContext);
   }
 
   private static final class CONCEPTS {

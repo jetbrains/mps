@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TypesystemIntentionArgument_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TypesystemIntentionArgument_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TypesystemIntentionArgument$W1);
+    super(CONCEPTS.TypesystemIntentionArgument$W1, initContext);
   }
 
   @Override

@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CustomInstructionsContainerReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CustomInstructionsContainerReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CustomInstructionsContainerReference$hI);
+    super(CONCEPTS.CustomInstructionsContainerReference$hI, initContext);
   }
 
   private static final class CONCEPTS {

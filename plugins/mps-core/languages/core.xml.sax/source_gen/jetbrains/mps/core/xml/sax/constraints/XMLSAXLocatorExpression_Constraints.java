@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XMLSAXLocatorExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XMLSAXLocatorExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XMLSAXLocatorExpression$NX);
+    super(CONCEPTS.XMLSAXLocatorExpression$NX, initContext);
   }
 
   @Override

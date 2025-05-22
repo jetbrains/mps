@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CreateBreakpointOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CreateBreakpointOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CreateBreakpointOperation$J4);
+    super(CONCEPTS.CreateBreakpointOperation$J4, initContext);
   }
 
   @Override

@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BuildMps_TipsPackage_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildMps_TipsPackage_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildMps_TipsPackage$uN);
+    super(CONCEPTS.BuildMps_TipsPackage$uN, initContext);
   }
 
   @Override

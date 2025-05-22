@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SearchScope_ContainsOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SearchScope_ContainsOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SearchScope_ContainsOperation$mQ);
+    super(CONCEPTS.SearchScope_ContainsOperation$mQ, initContext);
   }
 
   @Override

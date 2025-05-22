@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TestSubstituteChildWithConstraintsWrapper1_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TestSubstituteChildWithConstraintsWrapper1_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TestSubstituteChildWithConstraintsWrapper1$UK);
+    super(CONCEPTS.TestSubstituteChildWithConstraintsWrapper1$UK, initContext);
   }
 
   @Override

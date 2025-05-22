@@ -29,7 +29,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class JavaMethodVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ JavaMethodVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.JavaMethodVariableReference$l$);
+    super(CONCEPTS.JavaMethodVariableReference$l$, initContext);
   }
 
   public static class VisibleName_Property extends BasePropertyConstraintsDescriptor {

@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class PatternBuilder_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PatternBuilder_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PatternBuilder$2H);
+    super(CONCEPTS.PatternBuilder$2H, initContext);
   }
 
   @Override

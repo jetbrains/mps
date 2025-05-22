@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class RefactoringParameterReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RefactoringParameterReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RefactoringParameterReference$Hp);
+    super(CONCEPTS.RefactoringParameterReference$Hp, initContext);
   }
 
   @Override

@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class LabeledNode_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LabeledNode_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LabeledNode$wl);
+    super(CONCEPTS.LabeledNode$wl, initContext);
   }
 
   @Override

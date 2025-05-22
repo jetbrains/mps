@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ClosureVarType_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ClosureVarType_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ClosureVarType$CP);
+    super(CONCEPTS.ClosureVarType$CP, initContext);
   }
 
   @Override

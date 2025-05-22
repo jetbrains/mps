@@ -10,12 +10,12 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="15,0,31,0" name="jetbrains.mps.lang.editor.table.constraints.ConstraintsAspectDescriptor" />
+      <unit at="15,0,32,0" name="jetbrains.mps.lang.editor.table.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:a310da22-eca6-4f58-b266-8f97a737583f(jetbrains.mps.lang.editor.table.constraints)/6216065619544939788">
     <file name="CellModel_HierarchycalTable_Constraints.java">
-      <node id="6216065619544939788" at="29,101,30,51" concept="7" />
+      <node id="6216065619544939788" at="29,101,30,64" concept="7" />
       <node id="6216065619544939789" at="41,63,42,146" concept="5" />
       <node id="6836281137582841574" at="45,80,46,406" concept="5" />
       <node id="6216065619544941679" at="57,63,58,146" concept="5" />
@@ -51,7 +51,7 @@
       <node id="6216065619544944313" at="68,0,85,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="6216065619544944313" at="66,6,85,6" concept="4" />
       <node id="6216065619544939788" at="33,0,92,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="6216065619544939788" at="29,101,30,51" />
+      <scope id="6216065619544939788" at="29,101,30,64" />
       <scope id="6216065619544939789" at="41,63,42,146" />
       <scope id="6216065619544939789" at="45,80,46,406" />
       <scope id="6216065619544941679" at="57,63,58,146" />

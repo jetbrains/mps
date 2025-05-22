@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LocalInstanceFieldReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LocalInstanceFieldReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LocalInstanceFieldReference$pt);
+    super(CONCEPTS.LocalInstanceFieldReference$pt, initContext);
   }
 
   @Override

@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExtractToConstantRefExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExtractToConstantRefExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExtractToConstantRefExpression$H7);
+    super(CONCEPTS.ExtractToConstantRefExpression$H7, initContext);
   }
 
   @Override

@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class BuildMps_Branding_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildMps_Branding_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildMps_Branding$M0);
+    super(CONCEPTS.BuildMps_Branding$M0, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

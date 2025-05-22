@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ObjectLiteral_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ObjectLiteral_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ObjectLiteral$r9);
+    super(CONCEPTS.ObjectLiteral$r9, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

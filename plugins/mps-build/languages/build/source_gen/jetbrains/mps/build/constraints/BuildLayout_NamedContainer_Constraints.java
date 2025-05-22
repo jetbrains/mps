@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class BuildLayout_NamedContainer_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildLayout_NamedContainer_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildLayout_NamedContainer$Ug);
+    super(CONCEPTS.BuildLayout_NamedContainer$Ug, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class HelpConceptReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ HelpConceptReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.HelpConceptReference$Y8);
+    super(CONCEPTS.HelpConceptReference$Y8, initContext);
   }
 
   @Override

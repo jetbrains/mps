@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SmartReferenceAttribute_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SmartReferenceAttribute_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SmartReferenceAttribute$B3);
+    super(CONCEPTS.SmartReferenceAttribute$B3, initContext);
   }
 
   @Override

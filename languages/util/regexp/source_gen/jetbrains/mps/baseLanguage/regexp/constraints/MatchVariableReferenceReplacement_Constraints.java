@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MatchVariableReferenceReplacement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MatchVariableReferenceReplacement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MatchVariableReferenceReplacement$dc);
+    super(CONCEPTS.MatchVariableReferenceReplacement$dc, initContext);
   }
 
   @Override

@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ThisConstructorInvocation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ThisConstructorInvocation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ThisConstructorInvocation$q$);
+    super(CONCEPTS.ThisConstructorInvocation$q$, initContext);
   }
 
   @Override

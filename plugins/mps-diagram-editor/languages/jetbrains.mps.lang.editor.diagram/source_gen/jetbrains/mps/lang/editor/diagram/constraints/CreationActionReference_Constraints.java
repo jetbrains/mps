@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class CreationActionReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CreationActionReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CreationActionReference$UR);
+    super(CONCEPTS.CreationActionReference$UR, initContext);
   }
 
   @Override

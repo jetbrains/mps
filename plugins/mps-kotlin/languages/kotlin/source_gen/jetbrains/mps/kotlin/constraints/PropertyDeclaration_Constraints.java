@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class PropertyDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyDeclaration$SE);
+    super(CONCEPTS.PropertyDeclaration$SE, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

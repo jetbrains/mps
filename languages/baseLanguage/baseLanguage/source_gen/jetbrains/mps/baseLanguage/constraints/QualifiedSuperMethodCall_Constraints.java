@@ -35,7 +35,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class QualifiedSuperMethodCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ QualifiedSuperMethodCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.QualifiedSuperMethodCall$SF);
+    super(CONCEPTS.QualifiedSuperMethodCall$SF, initContext);
   }
 
   @Override

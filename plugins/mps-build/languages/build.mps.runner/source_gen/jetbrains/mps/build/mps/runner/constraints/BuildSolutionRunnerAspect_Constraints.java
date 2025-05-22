@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildSolutionRunnerAspect_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildSolutionRunnerAspect_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildSolutionRunnerAspect$YM);
+    super(CONCEPTS.BuildSolutionRunnerAspect$YM, initContext);
   }
 
   @Override

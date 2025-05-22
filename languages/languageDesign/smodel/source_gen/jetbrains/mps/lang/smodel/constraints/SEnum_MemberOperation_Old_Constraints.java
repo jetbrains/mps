@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class SEnum_MemberOperation_Old_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SEnum_MemberOperation_Old_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SEnum_MemberOperation_Old$my);
+    super(CONCEPTS.SEnum_MemberOperation_Old$my, initContext);
   }
 
   @Override

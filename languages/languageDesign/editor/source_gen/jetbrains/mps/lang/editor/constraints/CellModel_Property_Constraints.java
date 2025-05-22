@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellModel_Property_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellModel_Property_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CellModel_Property$uh);
+    super(CONCEPTS.CellModel_Property$uh, initContext);
   }
 
   @Override

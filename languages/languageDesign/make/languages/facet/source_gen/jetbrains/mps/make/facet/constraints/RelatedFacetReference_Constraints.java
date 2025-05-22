@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RelatedFacetReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RelatedFacetReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RelatedFacetReference$Oy);
+    super(CONCEPTS.RelatedFacetReference$Oy, initContext);
   }
 
   @Override

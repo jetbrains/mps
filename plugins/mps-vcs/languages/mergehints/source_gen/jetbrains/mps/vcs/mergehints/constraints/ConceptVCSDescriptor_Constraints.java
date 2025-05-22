@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConceptVCSDescriptor_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConceptVCSDescriptor_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConceptVCSDescriptor$rz);
+    super(CONCEPTS.ConceptVCSDescriptor$rz, initContext);
   }
 
   @Override

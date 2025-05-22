@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MoneyLiteral_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MoneyLiteral_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MoneyLiteral$zI);
+    super(CONCEPTS.MoneyLiteral$zI, initContext);
   }
 
   private static final class CONCEPTS {

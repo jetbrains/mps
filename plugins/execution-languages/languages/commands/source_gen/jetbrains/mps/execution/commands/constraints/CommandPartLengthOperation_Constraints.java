@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CommandPartLengthOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CommandPartLengthOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CommandPartLengthOperation$9L);
+    super(CONCEPTS.CommandPartLengthOperation$9L, initContext);
   }
 
   @Override

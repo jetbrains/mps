@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TestConstraintsInvocation_CanBeAncestorFail_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TestConstraintsInvocation_CanBeAncestorFail_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TestConstraintsInvocation_CanBeAncestorFail$Ue);
+    super(CONCEPTS.TestConstraintsInvocation_CanBeAncestorFail$Ue, initContext);
   }
 
   @Override

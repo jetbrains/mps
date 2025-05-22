@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ReferenceMessageTarget_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ReferenceMessageTarget_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ReferenceMessageTarget$Iz);
+    super(CONCEPTS.ReferenceMessageTarget$Iz, initContext);
   }
 
   @Override

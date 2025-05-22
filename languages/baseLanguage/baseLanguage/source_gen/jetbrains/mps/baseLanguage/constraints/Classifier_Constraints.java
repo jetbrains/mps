@@ -30,7 +30,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Classifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Classifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Classifier$Ix);
+    super(CONCEPTS.Classifier$Ix, initContext);
   }
 
   @Override

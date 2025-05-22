@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class IReferenceOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IReferenceOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IReferenceOperation$nm);
+    super(CONCEPTS.IReferenceOperation$nm, initContext);
   }
 
   @Override

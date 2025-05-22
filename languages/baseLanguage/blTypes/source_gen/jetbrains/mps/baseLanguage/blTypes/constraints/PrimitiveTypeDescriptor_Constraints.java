@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PrimitiveTypeDescriptor_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PrimitiveTypeDescriptor_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PrimitiveTypeDescriptor$At);
+    super(CONCEPTS.PrimitiveTypeDescriptor$At, initContext);
   }
 
   private static final class CONCEPTS {

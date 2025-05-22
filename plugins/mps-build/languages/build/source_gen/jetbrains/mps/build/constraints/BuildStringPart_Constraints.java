@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildStringPart_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildStringPart_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildStringPart$1V);
+    super(CONCEPTS.BuildStringPart$1V, initContext);
   }
 
   private static final class CONCEPTS {

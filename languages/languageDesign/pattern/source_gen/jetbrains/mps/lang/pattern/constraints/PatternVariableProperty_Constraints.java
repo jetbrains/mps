@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class PatternVariableProperty_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PatternVariableProperty_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PatternVariableProperty$Xh);
+    super(CONCEPTS.PatternVariableProperty$Xh, initContext);
   }
 
   @Override

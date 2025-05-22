@@ -34,7 +34,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SuperConceptExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SuperConceptExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SuperConceptExpression$_4);
+    super(CONCEPTS.SuperConceptExpression$_4, initContext);
   }
 
   @Override

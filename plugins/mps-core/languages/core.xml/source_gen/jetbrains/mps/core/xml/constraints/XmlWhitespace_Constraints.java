@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlWhitespace_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XmlWhitespace_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XmlWhitespace$9F);
+    super(CONCEPTS.XmlWhitespace$9F, initContext);
   }
 
   public static class Value_Property extends BasePropertyConstraintsDescriptor {

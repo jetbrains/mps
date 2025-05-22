@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class CommandHolder_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CommandHolder_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CommandHolder$K4);
+    super(CONCEPTS.CommandHolder$K4, initContext);
   }
 
   @Override

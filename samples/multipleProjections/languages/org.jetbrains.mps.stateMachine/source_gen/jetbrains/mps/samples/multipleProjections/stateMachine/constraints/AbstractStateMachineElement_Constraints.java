@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractStateMachineElement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractStateMachineElement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AbstractStateMachineElement$xm);
+    super(CONCEPTS.AbstractStateMachineElement$xm, initContext);
   }
 
   @Override

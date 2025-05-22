@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildCompositePath_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildCompositePath_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildCompositePath$Eh);
+    super(CONCEPTS.BuildCompositePath$Eh, initContext);
   }
 
   public static class Head_Property extends BasePropertyConstraintsDescriptor {

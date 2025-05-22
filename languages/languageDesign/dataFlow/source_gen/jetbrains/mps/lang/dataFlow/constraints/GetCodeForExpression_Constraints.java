@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GetCodeForExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GetCodeForExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GetCodeForExpression$V);
+    super(CONCEPTS.GetCodeForExpression$V, initContext);
   }
 
   @Override

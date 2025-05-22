@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class NoteMetaInfo_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NoteMetaInfo_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NoteMetaInfo$Yf);
+    super(CONCEPTS.NoteMetaInfo$Yf, initContext);
   }
 
   @Override

@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EvaluatorsThisExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EvaluatorsThisExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EvaluatorsThisExpression$N4);
+    super(CONCEPTS.EvaluatorsThisExpression$N4, initContext);
   }
 
   @Override

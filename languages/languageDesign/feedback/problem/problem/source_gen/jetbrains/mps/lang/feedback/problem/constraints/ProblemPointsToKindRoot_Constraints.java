@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ProblemPointsToKindRoot_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ProblemPointsToKindRoot_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ProblemPointsToKindRoot$AQ);
+    super(CONCEPTS.ProblemPointsToKindRoot$AQ, initContext);
   }
 
   @Override

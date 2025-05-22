@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Rule_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Rule_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Rule$N8);
+    super(CONCEPTS.Rule$N8, initContext);
   }
 
   @Override

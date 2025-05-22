@@ -29,7 +29,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellModel_Checkbox_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellModel_Checkbox_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CellModel_Checkbox$cL);
+    super(CONCEPTS.CellModel_Checkbox$cL, initContext);
   }
 
   @Override

@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TypeExtension_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TypeExtension_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TypeExtension$Er);
+    super(CONCEPTS.TypeExtension$Er, initContext);
   }
 
   @Override

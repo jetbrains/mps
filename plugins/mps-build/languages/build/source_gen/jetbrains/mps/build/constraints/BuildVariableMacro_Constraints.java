@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildVariableMacro_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildVariableMacro_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildVariableMacro$Rk);
+    super(CONCEPTS.BuildVariableMacro$Rk, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

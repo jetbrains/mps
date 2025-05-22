@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CompactInvokeFunctionExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CompactInvokeFunctionExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CompactInvokeFunctionExpression$_X);
+    super(CONCEPTS.CompactInvokeFunctionExpression$_X, initContext);
   }
 
   private static final class CONCEPTS {

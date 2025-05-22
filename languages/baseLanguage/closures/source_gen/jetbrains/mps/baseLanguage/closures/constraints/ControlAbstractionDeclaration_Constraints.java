@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ControlAbstractionDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ControlAbstractionDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ControlAbstractionDeclaration$uC);
+    super(CONCEPTS.ControlAbstractionDeclaration$uC, initContext);
   }
 
   @Override

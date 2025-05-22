@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ResultStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ResultStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ResultStatement$fI);
+    super(CONCEPTS.ResultStatement$fI, initContext);
   }
 
   @Override

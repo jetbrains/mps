@@ -33,7 +33,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IsOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IsOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IsOperation$ed);
+    super(CONCEPTS.IsOperation$ed, initContext);
   }
 
   @Override

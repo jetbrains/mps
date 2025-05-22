@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class PatternVariableNode_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PatternVariableNode_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PatternVariableNode$ro);
+    super(CONCEPTS.PatternVariableNode$ro, initContext);
   }
 
   @Override

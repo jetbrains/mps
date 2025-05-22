@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class TransformationMenu_Default_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TransformationMenu_Default_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TransformationMenu_Default$TY);
+    super(CONCEPTS.TransformationMenu_Default$TY, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

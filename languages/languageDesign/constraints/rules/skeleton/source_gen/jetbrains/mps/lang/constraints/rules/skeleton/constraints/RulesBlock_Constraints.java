@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class RulesBlock_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RulesBlock_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RulesBlock$W);
+    super(CONCEPTS.RulesBlock$W, initContext);
   }
 
   @Override

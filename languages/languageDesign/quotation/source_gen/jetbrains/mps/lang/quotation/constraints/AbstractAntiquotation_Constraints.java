@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractAntiquotation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractAntiquotation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AbstractAntiquotation$TS);
+    super(CONCEPTS.AbstractAntiquotation$TS, initContext);
   }
 
   @Override

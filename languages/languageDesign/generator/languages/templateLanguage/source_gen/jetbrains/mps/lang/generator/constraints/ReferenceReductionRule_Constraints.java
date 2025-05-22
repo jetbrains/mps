@@ -32,7 +32,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ReferenceReductionRule_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ReferenceReductionRule_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ReferenceReductionRule$t0);
+    super(CONCEPTS.ReferenceReductionRule$t0, initContext);
   }
 
   @Override

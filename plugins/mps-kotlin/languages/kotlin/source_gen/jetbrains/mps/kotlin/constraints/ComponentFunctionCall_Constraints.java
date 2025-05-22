@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ComponentFunctionCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ComponentFunctionCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ComponentFunctionCall$S1);
+    super(CONCEPTS.ComponentFunctionCall$S1, initContext);
   }
 
   @Override

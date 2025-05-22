@@ -36,7 +36,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExecuteCommandPart_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExecuteCommandPart_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExecuteCommandPart$hx);
+    super(CONCEPTS.ExecuteCommandPart$hx, initContext);
   }
 
   @Override

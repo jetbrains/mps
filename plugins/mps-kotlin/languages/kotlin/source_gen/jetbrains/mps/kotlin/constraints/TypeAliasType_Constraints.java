@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TypeAliasType_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TypeAliasType_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TypeAliasType$sB);
+    super(CONCEPTS.TypeAliasType$sB, initContext);
   }
 
   private static final class CONCEPTS {

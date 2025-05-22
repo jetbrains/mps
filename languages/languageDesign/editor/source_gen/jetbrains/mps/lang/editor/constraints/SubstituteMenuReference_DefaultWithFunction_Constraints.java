@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class SubstituteMenuReference_DefaultWithFunction_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SubstituteMenuReference_DefaultWithFunction_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SubstituteMenuReference_DefaultWithFunction$8o);
+    super(CONCEPTS.SubstituteMenuReference_DefaultWithFunction$8o, initContext);
   }
 
   @Override

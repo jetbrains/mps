@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class TransformationMatchAssertion_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TransformationMatchAssertion_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TransformationMatchAssertion$SC);
+    super(CONCEPTS.TransformationMatchAssertion$SC, initContext);
   }
 
   @Override

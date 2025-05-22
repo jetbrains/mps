@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class KotlinClassCreator_Constraints extends BaseConstraintsDescriptor {
   /*package*/ KotlinClassCreator_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.KotlinClassCreator$HL);
+    super(CONCEPTS.KotlinClassCreator$HL, initContext);
   }
 
   @Override

@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CopyPasteHandlers_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CopyPasteHandlers_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CopyPasteHandlers$At);
+    super(CONCEPTS.CopyPasteHandlers$At, initContext);
   }
 
   @Override

@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildMps_DevKitExportLanguage_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildMps_DevKitExportLanguage_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildMps_DevKitExportLanguage$EV);
+    super(CONCEPTS.BuildMps_DevKitExportLanguage$EV, initContext);
   }
 
   @Override

@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class PropertyRefExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyRefExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyRefExpression$8m);
+    super(CONCEPTS.PropertyRefExpression$8m, initContext);
   }
 
   @Override

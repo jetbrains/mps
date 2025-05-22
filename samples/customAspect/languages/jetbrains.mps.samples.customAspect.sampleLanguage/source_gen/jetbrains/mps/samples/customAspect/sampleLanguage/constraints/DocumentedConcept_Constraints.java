@@ -16,7 +16,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DocumentedConcept_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DocumentedConcept_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DocumentedConcept$2K);
+    super(CONCEPTS.DocumentedConcept$2K, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

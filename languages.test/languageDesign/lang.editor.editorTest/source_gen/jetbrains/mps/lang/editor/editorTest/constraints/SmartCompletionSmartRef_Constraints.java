@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SmartCompletionSmartRef_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SmartCompletionSmartRef_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SmartCompletionSmartRef$o8);
+    super(CONCEPTS.SmartCompletionSmartRef$o8, initContext);
   }
 
   @Override

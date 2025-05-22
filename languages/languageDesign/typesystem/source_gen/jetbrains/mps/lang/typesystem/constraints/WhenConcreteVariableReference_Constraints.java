@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class WhenConcreteVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ WhenConcreteVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.WhenConcreteVariableReference$mi);
+    super(CONCEPTS.WhenConcreteVariableReference$mi, initContext);
   }
 
   @Override

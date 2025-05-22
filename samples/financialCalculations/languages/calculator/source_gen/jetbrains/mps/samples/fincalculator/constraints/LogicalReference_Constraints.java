@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LogicalReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LogicalReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LogicalReference$$S);
+    super(CONCEPTS.LogicalReference$$S, initContext);
   }
 
   @Override

@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LabelPosition_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LabelPosition_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LabelPosition$Bw);
+    super(CONCEPTS.LabelPosition$Bw, initContext);
   }
 
   @Override

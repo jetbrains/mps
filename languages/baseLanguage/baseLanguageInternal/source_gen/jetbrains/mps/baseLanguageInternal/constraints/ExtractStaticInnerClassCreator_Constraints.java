@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ExtractStaticInnerClassCreator_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExtractStaticInnerClassCreator_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExtractStaticInnerClassCreator$tF);
+    super(CONCEPTS.ExtractStaticInnerClassCreator$tF, initContext);
   }
 
   @Override

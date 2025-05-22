@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CompletionCustomizationContextSpecificator_Concept_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CompletionCustomizationContextSpecificator_Concept_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CompletionCustomizationContextSpecificator_Concept$tH);
+    super(CONCEPTS.CompletionCustomizationContextSpecificator_Concept$tH, initContext);
   }
 
   @Override

@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SubstituteTypeRule_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SubstituteTypeRule_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SubstituteTypeRule$ei);
+    super(CONCEPTS.SubstituteTypeRule$ei, initContext);
   }
 
   @Override

@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EditorOperationDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EditorOperationDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EditorOperationDeclaration$VI);
+    super(CONCEPTS.EditorOperationDeclaration$VI, initContext);
   }
 
   private static final class CONCEPTS {

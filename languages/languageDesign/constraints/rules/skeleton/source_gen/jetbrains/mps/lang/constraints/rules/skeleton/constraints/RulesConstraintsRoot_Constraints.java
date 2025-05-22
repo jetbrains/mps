@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class RulesConstraintsRoot_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RulesConstraintsRoot_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RulesConstraintsRoot$vG);
+    super(CONCEPTS.RulesConstraintsRoot$vG, initContext);
   }
 
   @Override

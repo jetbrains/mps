@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StaticFieldDocReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ StaticFieldDocReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.StaticFieldDocReference$sH);
+    super(CONCEPTS.StaticFieldDocReference$sH, initContext);
   }
 
   @Override

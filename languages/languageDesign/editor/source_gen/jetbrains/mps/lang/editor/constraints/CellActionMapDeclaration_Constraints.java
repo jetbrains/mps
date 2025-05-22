@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellActionMapDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellActionMapDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CellActionMapDeclaration$QS);
+    super(CONCEPTS.CellActionMapDeclaration$QS, initContext);
   }
 
   @Override

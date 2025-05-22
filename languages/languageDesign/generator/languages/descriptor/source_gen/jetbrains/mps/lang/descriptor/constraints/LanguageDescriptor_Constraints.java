@@ -16,7 +16,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LanguageDescriptor_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LanguageDescriptor_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LanguageDescriptor$uh);
+    super(CONCEPTS.LanguageDescriptor$uh, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

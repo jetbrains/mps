@@ -32,7 +32,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ModificationStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ModificationStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ModificationStatement$sT);
+    super(CONCEPTS.ModificationStatement$sT, initContext);
   }
 
   @Override

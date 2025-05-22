@@ -29,7 +29,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ScopesTest_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ScopesTest_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ScopesTest$TD);
+    super(CONCEPTS.ScopesTest$TD, initContext);
   }
 
   @Override

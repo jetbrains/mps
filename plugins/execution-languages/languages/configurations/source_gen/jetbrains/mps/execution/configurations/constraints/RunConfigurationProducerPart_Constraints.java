@@ -16,7 +16,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RunConfigurationProducerPart_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RunConfigurationProducerPart_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RunConfigurationProducerPart$x7);
+    super(CONCEPTS.RunConfigurationProducerPart$x7, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

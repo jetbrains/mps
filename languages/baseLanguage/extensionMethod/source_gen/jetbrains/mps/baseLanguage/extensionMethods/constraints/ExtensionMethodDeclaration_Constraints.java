@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExtensionMethodDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExtensionMethodDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExtensionMethodDeclaration$mW);
+    super(CONCEPTS.ExtensionMethodDeclaration$mW, initContext);
   }
 
   @Override

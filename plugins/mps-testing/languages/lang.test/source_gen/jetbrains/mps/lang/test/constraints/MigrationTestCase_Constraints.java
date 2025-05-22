@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MigrationTestCase_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MigrationTestCase_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MigrationTestCase$7Q);
+    super(CONCEPTS.MigrationTestCase$7Q, initContext);
   }
 
   public static class CanNotRunInProcess_Property extends BasePropertyConstraintsDescriptor {

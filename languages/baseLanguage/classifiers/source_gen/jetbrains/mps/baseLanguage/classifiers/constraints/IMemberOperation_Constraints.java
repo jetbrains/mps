@@ -32,7 +32,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class IMemberOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IMemberOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IMemberOperation$iZ);
+    super(CONCEPTS.IMemberOperation$iZ, initContext);
   }
 
   @Override

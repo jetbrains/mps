@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Transition_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Transition_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Transition$wN);
+    super(CONCEPTS.Transition$wN, initContext);
   }
 
   @Override

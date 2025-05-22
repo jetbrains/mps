@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellKeyMapDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellKeyMapDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CellKeyMapDeclaration$4K);
+    super(CONCEPTS.CellKeyMapDeclaration$4K, initContext);
   }
 
   @Override

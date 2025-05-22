@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NativeTypedNodeDef_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NativeTypedNodeDef_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NativeTypedNodeDef$PM);
+    super(CONCEPTS.NativeTypedNodeDef$PM, initContext);
   }
 
   @Override

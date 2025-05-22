@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class UnitContextDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ UnitContextDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.UnitContextDeclaration$uz);
+    super(CONCEPTS.UnitContextDeclaration$uz, initContext);
   }
 
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {

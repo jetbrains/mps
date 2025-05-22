@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IgnoreMigrationDataOption_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IgnoreMigrationDataOption_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IgnoreMigrationDataOption$BF);
+    super(CONCEPTS.IgnoreMigrationDataOption$BF, initContext);
   }
 
   @Override

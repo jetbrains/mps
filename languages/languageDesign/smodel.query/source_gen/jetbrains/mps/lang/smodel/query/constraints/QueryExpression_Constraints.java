@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class QueryExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ QueryExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.QueryExpression$lN);
+    super(CONCEPTS.QueryExpression$lN, initContext);
   }
 
   @Override

@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PropertyDeclarationCellSelector_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyDeclarationCellSelector_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyDeclarationCellSelector$XF);
+    super(CONCEPTS.PropertyDeclarationCellSelector$XF, initContext);
   }
 
   @Override

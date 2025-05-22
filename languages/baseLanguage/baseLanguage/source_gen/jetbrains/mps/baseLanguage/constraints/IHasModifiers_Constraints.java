@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IHasModifiers_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IHasModifiers_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IHasModifiers$et);
+    super(CONCEPTS.IHasModifiers$et, initContext);
   }
 
   @Override

@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class UpdateBlock_Constraints extends BaseConstraintsDescriptor {
   /*package*/ UpdateBlock_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.UpdateBlock$oY);
+    super(CONCEPTS.UpdateBlock$oY, initContext);
   }
 
   @Override

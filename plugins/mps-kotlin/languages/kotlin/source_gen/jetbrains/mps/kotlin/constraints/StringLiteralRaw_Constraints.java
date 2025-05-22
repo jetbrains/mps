@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StringLiteralRaw_Constraints extends BaseConstraintsDescriptor {
   /*package*/ StringLiteralRaw_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.StringLiteralRaw$ar);
+    super(CONCEPTS.StringLiteralRaw$ar, initContext);
   }
 
   public static class Content_Property extends BasePropertyConstraintsDescriptor {

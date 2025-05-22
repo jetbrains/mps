@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildMpsLayout_Plugin_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildMpsLayout_Plugin_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildMpsLayout_Plugin$cj);
+    super(CONCEPTS.BuildMpsLayout_Plugin$cj, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

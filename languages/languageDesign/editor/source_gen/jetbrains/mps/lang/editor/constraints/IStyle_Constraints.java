@@ -34,7 +34,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IStyle_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IStyle_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IStyle$eb);
+    super(CONCEPTS.IStyle$eb, initContext);
   }
 
   @Override

@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PropertyQualifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyQualifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyQualifier$7l);
+    super(CONCEPTS.PropertyQualifier$7l, initContext);
   }
 
   @Override

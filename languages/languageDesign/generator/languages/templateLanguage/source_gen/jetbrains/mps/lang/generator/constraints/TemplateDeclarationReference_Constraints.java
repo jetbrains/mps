@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TemplateDeclarationReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TemplateDeclarationReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TemplateDeclarationReference$QT);
+    super(CONCEPTS.TemplateDeclarationReference$QT, initContext);
   }
 
   @Override

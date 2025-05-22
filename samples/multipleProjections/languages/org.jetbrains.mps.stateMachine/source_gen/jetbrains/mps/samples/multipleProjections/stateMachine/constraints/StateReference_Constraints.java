@@ -32,7 +32,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StateReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ StateReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.StateReference$cR);
+    super(CONCEPTS.StateReference$cR, initContext);
   }
 
   @Override

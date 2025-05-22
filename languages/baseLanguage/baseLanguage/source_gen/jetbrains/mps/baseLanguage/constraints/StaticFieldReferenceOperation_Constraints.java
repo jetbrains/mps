@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class StaticFieldReferenceOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ StaticFieldReferenceOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.StaticFieldReferenceOperation$nE);
+    super(CONCEPTS.StaticFieldReferenceOperation$nE, initContext);
   }
 
   @Override

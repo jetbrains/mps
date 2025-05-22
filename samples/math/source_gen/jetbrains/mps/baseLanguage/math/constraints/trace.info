@@ -14,12 +14,12 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="15,0,37,0" name="jetbrains.mps.baseLanguage.math.constraints.ConstraintsAspectDescriptor" />
+      <unit at="15,0,38,0" name="jetbrains.mps.baseLanguage.math.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:d37b3f1e-89c7-4936-a6de-207bf5ae7643(jetbrains.mps.baseLanguage.math.constraints)/1236430656078">
     <file name="MathSymbolIndexReference_Constraints.java">
-      <node id="1236430656078" at="28,98,29,48" concept="10" />
+      <node id="1236430656078" at="28,98,29,61" concept="10" />
       <node id="1237825206570" at="40,63,41,146" concept="6" />
       <node id="6836281137582848031" at="44,80,45,119" concept="5" />
       <node id="6836281137582848040" at="45,119,46,100" concept="5" />
@@ -38,7 +38,7 @@
       <node id="1237825206570" at="35,0,52,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="1237825206570" at="33,90,52,6" concept="5" />
       <node id="1236430656078" at="32,0,57,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1236430656078" at="28,98,29,48" />
+      <scope id="1236430656078" at="28,98,29,61" />
       <scope id="1237825206570" at="40,63,41,146" />
       <scope id="1236430656078" at="28,0,31,0">
         <var name="initContext" id="1236430656078" />
@@ -67,7 +67,7 @@
   </root>
   <root nodeRef="r:d37b3f1e-89c7-4936-a6de-207bf5ae7643(jetbrains.mps.baseLanguage.math.constraints)/6219660258344759919">
     <file name="MatrixInitializerIndexReference_Constraints.java">
-      <node id="6219660258344759919" at="32,105,33,55" concept="10" />
+      <node id="6219660258344759919" at="32,105,33,68" concept="10" />
       <node id="6219660258344759922" at="44,63,45,146" concept="6" />
       <node id="6836281137582848192" at="48,80,49,133" concept="5" />
       <node id="6836281137582848201" at="49,133,50,57" concept="5" />
@@ -111,7 +111,7 @@
       <node id="6219660258344759922" at="39,0,85,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="6219660258344759922" at="37,90,85,6" concept="5" />
       <node id="6219660258344759919" at="36,0,90,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="6219660258344759919" at="32,105,33,55" />
+      <scope id="6219660258344759919" at="32,105,33,68" />
       <scope id="6219660258344759922" at="44,63,45,146" />
       <scope id="6836281137582848214" at="58,74,59,158" />
       <scope id="6836281137582848231" at="69,76,70,160" />
@@ -160,7 +160,7 @@
   </root>
   <root nodeRef="r:d37b3f1e-89c7-4936-a6de-207bf5ae7643(jetbrains.mps.baseLanguage.math.constraints)/964810815943407926">
     <file name="MatrixIndexWildcard_Constraints.java">
-      <node id="964810815943407926" at="23,93,24,43" concept="10" />
+      <node id="964810815943407926" at="23,93,24,56" concept="10" />
       <node id="964810815943407926" at="31,127,32,128" concept="5" />
       <node id="964810815943407926" at="32,128,33,0" concept="7" />
       <node id="964810815943407926" at="34,55,35,71" concept="2" />
@@ -182,7 +182,7 @@
       <node id="964810815943407926" at="30,0,40,0" concept="4" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="964810815943407926" at="28,103,40,6" concept="6" />
       <node id="964810815943407926" at="27,0,42,0" concept="4" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="964810815943407926" at="23,93,24,43" />
+      <scope id="964810815943407926" at="23,93,24,56" />
       <scope id="964810815943407926" at="34,55,35,71" />
       <scope id="1227128029536582623" at="43,97,44,19" />
       <scope id="1227128029536582632" at="45,12,47,172">
@@ -215,10 +215,10 @@
   </root>
   <root nodeRef="r:d37b3f1e-89c7-4936-a6de-207bf5ae7643(jetbrains.mps.baseLanguage.math.constraints)/964810815943559912">
     <file name="MatrixElementAccessExpression_Constraints.java">
-      <node id="964810815943559912" at="11,103,12,53" concept="10" />
+      <node id="964810815943559912" at="11,103,12,66" concept="10" />
       <node id="964810815943559912" at="16,0,17,0" concept="8" trace="MatrixElementAccessExpression$rG" />
       <node id="964810815943559912" at="11,0,14,0" concept="1" trace="MatrixElementAccessExpression_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <scope id="964810815943559912" at="11,103,12,53" />
+      <scope id="964810815943559912" at="11,103,12,66" />
       <scope id="964810815943559912" at="11,0,14,0">
         <var name="initContext" id="964810815943559912" />
       </scope>

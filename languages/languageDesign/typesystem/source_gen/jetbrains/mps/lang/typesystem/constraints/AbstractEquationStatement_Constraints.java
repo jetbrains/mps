@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractEquationStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractEquationStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AbstractEquationStatement$If);
+    super(CONCEPTS.AbstractEquationStatement$If, initContext);
   }
 
   @Override

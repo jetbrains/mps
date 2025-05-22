@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Square_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Square_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Square$jR);
+    super(CONCEPTS.Square$jR, initContext);
   }
 
   public static class Size_Property extends BasePropertyConstraintsDescriptor {

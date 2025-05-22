@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CompiledStubStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CompiledStubStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CompiledStubStatement$Af);
+    super(CONCEPTS.CompiledStubStatement$Af, initContext);
   }
 
   @Override

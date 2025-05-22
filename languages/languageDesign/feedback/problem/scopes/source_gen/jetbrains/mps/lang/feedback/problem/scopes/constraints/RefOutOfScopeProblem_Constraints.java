@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RefOutOfScopeProblem_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RefOutOfScopeProblem_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RefOutOfScopeProblem$nG);
+    super(CONCEPTS.RefOutOfScopeProblem$nG, initContext);
   }
 
   @Override

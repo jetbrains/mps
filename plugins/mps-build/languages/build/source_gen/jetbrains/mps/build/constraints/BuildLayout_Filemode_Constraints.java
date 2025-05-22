@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class BuildLayout_Filemode_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildLayout_Filemode_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildLayout_Filemode$sx);
+    super(CONCEPTS.BuildLayout_Filemode$sx, initContext);
   }
 
   @Override

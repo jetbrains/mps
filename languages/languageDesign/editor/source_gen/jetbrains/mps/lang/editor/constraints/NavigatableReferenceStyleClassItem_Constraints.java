@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NavigatableReferenceStyleClassItem_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NavigatableReferenceStyleClassItem_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NavigatableReferenceStyleClassItem$uY);
+    super(CONCEPTS.NavigatableReferenceStyleClassItem$uY, initContext);
   }
 
   @Override

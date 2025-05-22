@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LocalInstanceMethodCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LocalInstanceMethodCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LocalInstanceMethodCall$mP);
+    super(CONCEPTS.LocalInstanceMethodCall$mP, initContext);
   }
 
   @Override

@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class BuildExternalLayout_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildExternalLayout_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildExternalLayout$8z);
+    super(CONCEPTS.BuildExternalLayout$8z, initContext);
   }
 
   @Override

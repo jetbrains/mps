@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PropertyPatternVariableDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyPatternVariableDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyPatternVariableDeclaration$aQ);
+    super(CONCEPTS.PropertyPatternVariableDeclaration$aQ, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

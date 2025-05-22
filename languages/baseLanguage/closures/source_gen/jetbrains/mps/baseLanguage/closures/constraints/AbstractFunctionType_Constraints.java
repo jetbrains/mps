@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractFunctionType_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractFunctionType_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AbstractFunctionType$w5);
+    super(CONCEPTS.AbstractFunctionType$w5, initContext);
   }
 
   @Override

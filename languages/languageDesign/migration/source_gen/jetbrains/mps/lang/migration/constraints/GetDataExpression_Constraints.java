@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GetDataExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GetDataExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GetDataExpression$Na);
+    super(CONCEPTS.GetDataExpression$Na, initContext);
   }
 
   @Override

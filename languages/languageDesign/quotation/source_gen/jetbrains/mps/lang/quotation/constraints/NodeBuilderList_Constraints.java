@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class NodeBuilderList_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NodeBuilderList_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NodeBuilderList$md);
+    super(CONCEPTS.NodeBuilderList$md, initContext);
   }
 
   @Override

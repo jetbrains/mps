@@ -27,7 +27,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ScopesExpectedNode_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ScopesExpectedNode_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ScopesExpectedNode$ol);
+    super(CONCEPTS.ScopesExpectedNode$ol, initContext);
   }
 
   @Override

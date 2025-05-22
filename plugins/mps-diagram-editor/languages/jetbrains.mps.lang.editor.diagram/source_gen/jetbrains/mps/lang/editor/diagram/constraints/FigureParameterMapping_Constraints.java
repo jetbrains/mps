@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FigureParameterMapping_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FigureParameterMapping_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FigureParameterMapping$LN);
+    super(CONCEPTS.FigureParameterMapping$LN, initContext);
   }
 
   @Override

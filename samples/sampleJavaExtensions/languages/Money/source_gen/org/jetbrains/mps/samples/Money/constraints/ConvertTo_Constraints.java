@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConvertTo_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConvertTo_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConvertTo$6S);
+    super(CONCEPTS.ConvertTo$6S, initContext);
   }
 
   @Override

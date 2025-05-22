@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class EnumerationDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EnumerationDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EnumerationDeclaration$hv);
+    super(CONCEPTS.EnumerationDeclaration$hv, initContext);
   }
 
   @Override

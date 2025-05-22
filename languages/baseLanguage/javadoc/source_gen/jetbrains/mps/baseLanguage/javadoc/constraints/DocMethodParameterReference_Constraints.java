@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class DocMethodParameterReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DocMethodParameterReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DocMethodParameterReference$OR);
+    super(CONCEPTS.DocMethodParameterReference$OR, initContext);
   }
 
   @Override

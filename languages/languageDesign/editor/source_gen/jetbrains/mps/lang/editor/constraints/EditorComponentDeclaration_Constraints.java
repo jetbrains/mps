@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EditorComponentDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EditorComponentDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EditorComponentDeclaration$WM);
+    super(CONCEPTS.EditorComponentDeclaration$WM, initContext);
   }
 
   @Override

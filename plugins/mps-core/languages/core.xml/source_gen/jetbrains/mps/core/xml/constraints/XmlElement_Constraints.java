@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlElement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XmlElement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XmlElement$fP);
+    super(CONCEPTS.XmlElement$fP, initContext);
   }
 
   public static class TagName_Property extends BasePropertyConstraintsDescriptor {

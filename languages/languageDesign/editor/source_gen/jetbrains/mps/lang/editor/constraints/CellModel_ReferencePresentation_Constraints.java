@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellModel_ReferencePresentation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellModel_ReferencePresentation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CellModel_ReferencePresentation$82);
+    super(CONCEPTS.CellModel_ReferencePresentation$82, initContext);
   }
 
   @Override

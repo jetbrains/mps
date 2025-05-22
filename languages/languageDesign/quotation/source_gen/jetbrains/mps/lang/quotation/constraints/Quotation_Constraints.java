@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Quotation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Quotation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Quotation$Vl);
+    super(CONCEPTS.Quotation$Vl, initContext);
   }
 
   @Override

@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DebuggerSettingsCommandParameterDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DebuggerSettingsCommandParameterDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DebuggerSettingsCommandParameterDeclaration$7J);
+    super(CONCEPTS.DebuggerSettingsCommandParameterDeclaration$7J, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

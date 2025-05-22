@@ -30,7 +30,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildSource_JavaOptions_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildSource_JavaOptions_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildSource_JavaOptions$D);
+    super(CONCEPTS.BuildSource_JavaOptions$D, initContext);
   }
 
   @Override

@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InvokeFunctionOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InvokeFunctionOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InvokeFunctionOperation$cv);
+    super(CONCEPTS.InvokeFunctionOperation$cv, initContext);
   }
 
   @Override

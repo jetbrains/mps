@@ -37,7 +37,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BeanPropertyBuilder_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BeanPropertyBuilder_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BeanPropertyBuilder$$);
+    super(CONCEPTS.BeanPropertyBuilder$$, initContext);
   }
 
   @Override

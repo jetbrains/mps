@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MigrationReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MigrationReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MigrationReference$R6);
+    super(CONCEPTS.MigrationReference$R6, initContext);
   }
 
   @Override

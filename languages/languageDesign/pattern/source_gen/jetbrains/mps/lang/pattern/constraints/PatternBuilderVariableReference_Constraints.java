@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class PatternBuilderVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PatternBuilderVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PatternBuilderVariableReference$5T);
+    super(CONCEPTS.PatternBuilderVariableReference$5T, initContext);
   }
 
   @Override

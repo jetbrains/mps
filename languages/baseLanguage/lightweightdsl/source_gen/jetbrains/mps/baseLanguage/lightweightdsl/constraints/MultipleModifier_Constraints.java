@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MultipleModifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MultipleModifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MultipleModifier$o9);
+    super(CONCEPTS.MultipleModifier$o9, initContext);
   }
 
   @Override

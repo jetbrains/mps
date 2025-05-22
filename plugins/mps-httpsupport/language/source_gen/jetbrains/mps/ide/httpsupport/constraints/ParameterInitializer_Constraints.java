@@ -34,7 +34,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ParameterInitializer_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ParameterInitializer$k5);
+    super(CONCEPTS.ParameterInitializer$k5, initContext);
   }
 
   @Override

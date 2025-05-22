@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SEnumOperation_Old_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SEnumOperation_Old_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SEnumOperation_Old$hZ);
+    super(CONCEPTS.SEnumOperation_Old$hZ, initContext);
   }
 
   @Override

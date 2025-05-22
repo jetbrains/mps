@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TextMacro_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TextMacro_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TextMacro$gT);
+    super(CONCEPTS.TextMacro$gT, initContext);
   }
 
   @Override

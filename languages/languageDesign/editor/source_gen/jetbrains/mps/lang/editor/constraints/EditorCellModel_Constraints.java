@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class EditorCellModel_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EditorCellModel_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EditorCellModel$gN);
+    super(CONCEPTS.EditorCellModel$gN, initContext);
   }
 
   @Override

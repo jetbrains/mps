@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CreateRootRule_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CreateRootRule_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CreateRootRule$wZ);
+    super(CONCEPTS.CreateRootRule$wZ, initContext);
   }
 
   @Override

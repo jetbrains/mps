@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class CellModel_Component_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellModel_Component_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CellModel_Component$d$);
+    super(CONCEPTS.CellModel_Component$d$, initContext);
   }
 
   @Override

@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class TabbedToolOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TabbedToolOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TabbedToolOperation$zd);
+    super(CONCEPTS.TabbedToolOperation$zd, initContext);
   }
 
   @Override

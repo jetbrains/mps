@@ -32,7 +32,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CommandParameterAssignment_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CommandParameterAssignment_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CommandParameterAssignment$ZP);
+    super(CONCEPTS.CommandParameterAssignment$ZP, initContext);
   }
 
   @Override

@@ -38,7 +38,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BinaryOperationReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BinaryOperationReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BinaryOperationReference$wm);
+    super(CONCEPTS.BinaryOperationReference$wm, initContext);
   }
 
   @Override

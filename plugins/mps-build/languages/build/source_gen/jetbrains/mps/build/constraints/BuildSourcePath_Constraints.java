@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildSourcePath_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildSourcePath_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildSourcePath$H);
+    super(CONCEPTS.BuildSourcePath$H, initContext);
   }
 
   @Override

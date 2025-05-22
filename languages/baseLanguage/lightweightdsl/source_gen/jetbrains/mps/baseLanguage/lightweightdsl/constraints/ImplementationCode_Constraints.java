@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class ImplementationCode_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ImplementationCode_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ImplementationCode$Dn);
+    super(CONCEPTS.ImplementationCode$Dn, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

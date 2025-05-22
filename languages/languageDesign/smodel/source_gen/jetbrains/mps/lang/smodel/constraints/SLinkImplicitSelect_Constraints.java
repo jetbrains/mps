@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SLinkImplicitSelect_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SLinkImplicitSelect_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SLinkImplicitSelect$sG);
+    super(CONCEPTS.SLinkImplicitSelect$sG, initContext);
   }
 
   @Override

@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SubtreeStatisticsTarget_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SubtreeStatisticsTarget_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SubtreeStatisticsTarget$5l);
+    super(CONCEPTS.SubtreeStatisticsTarget$5l, initContext);
   }
 
   @Override

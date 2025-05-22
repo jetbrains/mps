@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ExtensionMethodCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExtensionMethodCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExtensionMethodCall$xm);
+    super(CONCEPTS.ExtensionMethodCall$xm, initContext);
   }
 
   @Override

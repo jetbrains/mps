@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConstantFieldIcon_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConstantFieldIcon_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConstantFieldIcon$r);
+    super(CONCEPTS.ConstantFieldIcon$r, initContext);
   }
 
   @Override

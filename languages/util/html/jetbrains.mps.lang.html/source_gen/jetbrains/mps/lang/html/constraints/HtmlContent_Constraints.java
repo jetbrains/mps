@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class HtmlContent_Constraints extends BaseConstraintsDescriptor {
   /*package*/ HtmlContent_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.HtmlContent$q8);
+    super(CONCEPTS.HtmlContent$q8, initContext);
   }
 
   @Override

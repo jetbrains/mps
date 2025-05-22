@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SubtypingRule_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SubtypingRule_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SubtypingRule$pW);
+    super(CONCEPTS.SubtypingRule$pW, initContext);
   }
 
   @Override

@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class FieldReferenceOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FieldReferenceOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FieldReferenceOperation$fU);
+    super(CONCEPTS.FieldReferenceOperation$fU, initContext);
   }
 
   @Override

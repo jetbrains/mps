@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExecuteFinderExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExecuteFinderExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExecuteFinderExpression$Aj);
+    super(CONCEPTS.ExecuteFinderExpression$Aj, initContext);
   }
 
   @Override

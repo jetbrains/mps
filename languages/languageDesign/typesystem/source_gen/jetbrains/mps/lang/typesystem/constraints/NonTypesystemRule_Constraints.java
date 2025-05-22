@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NonTypesystemRule_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NonTypesystemRule_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NonTypesystemRule$um);
+    super(CONCEPTS.NonTypesystemRule$um, initContext);
   }
 
   @Override

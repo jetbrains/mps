@@ -17,7 +17,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TestRefConstraints_SubReference_HandlerSuperScoping_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TestRefConstraints_SubReference_HandlerSuperScoping_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TestRefConstraints_SubReference_HandlerSuperScoping$GQ);
+    super(CONCEPTS.TestRefConstraints_SubReference_HandlerSuperScoping$GQ, initContext);
   }
 
   @Override

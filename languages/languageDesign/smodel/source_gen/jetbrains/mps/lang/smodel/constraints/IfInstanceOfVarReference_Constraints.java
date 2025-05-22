@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class IfInstanceOfVarReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IfInstanceOfVarReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IfInstanceOfVarReference$VR);
+    super(CONCEPTS.IfInstanceOfVarReference$VR, initContext);
   }
 
   @Override

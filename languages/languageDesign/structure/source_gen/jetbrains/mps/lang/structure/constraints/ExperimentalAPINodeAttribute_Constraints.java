@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExperimentalAPINodeAttribute_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExperimentalAPINodeAttribute_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExperimentalAPINodeAttribute$rc);
+    super(CONCEPTS.ExperimentalAPINodeAttribute$rc, initContext);
   }
 
   private static final class CONCEPTS {

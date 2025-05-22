@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildSource_JavaSources_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildSource_JavaSources_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildSource_JavaSources$xh);
+    super(CONCEPTS.BuildSource_JavaSources$xh, initContext);
   }
 
   private static final class CONCEPTS {

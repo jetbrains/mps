@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StructureAspectDeputy_Constraints extends BaseConstraintsDescriptor {
   /*package*/ StructureAspectDeputy_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.StructureAspectDeputy$Us);
+    super(CONCEPTS.StructureAspectDeputy$Us, initContext);
   }
 
   @Override

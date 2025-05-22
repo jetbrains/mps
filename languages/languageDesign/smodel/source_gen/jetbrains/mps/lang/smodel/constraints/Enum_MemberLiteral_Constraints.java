@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Enum_MemberLiteral_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Enum_MemberLiteral_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Enum_MemberLiteral$sj);
+    super(CONCEPTS.Enum_MemberLiteral$sj, initContext);
   }
 
   @Override

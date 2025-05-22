@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PropertyArgument_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyArgument_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyArgument$Fz);
+    super(CONCEPTS.PropertyArgument$Fz, initContext);
   }
 
   @Override

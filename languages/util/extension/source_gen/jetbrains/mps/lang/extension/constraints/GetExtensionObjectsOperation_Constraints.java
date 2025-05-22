@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GetExtensionObjectsOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GetExtensionObjectsOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GetExtensionObjectsOperation$5a);
+    super(CONCEPTS.GetExtensionObjectsOperation$5a, initContext);
   }
 
   @Override

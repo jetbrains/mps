@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class SubstituteMenuPart_ReferenceScope_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SubstituteMenuPart_ReferenceScope_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SubstituteMenuPart_ReferenceScope$$Z);
+    super(CONCEPTS.SubstituteMenuPart_ReferenceScope$$Z, initContext);
   }
 
   @Override

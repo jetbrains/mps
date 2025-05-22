@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CommandPartToListOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CommandPartToListOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CommandPartToListOperation$tC);
+    super(CONCEPTS.CommandPartToListOperation$tC, initContext);
   }
 
   @Override

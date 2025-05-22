@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractNodeMacroNamespace_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractNodeMacroNamespace_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AbstractNodeMacroNamespace$Cq);
+    super(CONCEPTS.AbstractNodeMacroNamespace$Cq, initContext);
   }
 
   @Override

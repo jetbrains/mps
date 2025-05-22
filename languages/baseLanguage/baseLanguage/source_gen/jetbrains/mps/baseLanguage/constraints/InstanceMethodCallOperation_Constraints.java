@@ -33,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class InstanceMethodCallOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InstanceMethodCallOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InstanceMethodCallOperation$uu);
+    super(CONCEPTS.InstanceMethodCallOperation$uu, initContext);
   }
 
   @Override

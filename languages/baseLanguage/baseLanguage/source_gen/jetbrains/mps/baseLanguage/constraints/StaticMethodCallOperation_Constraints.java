@@ -33,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class StaticMethodCallOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ StaticMethodCallOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.StaticMethodCallOperation$Uo);
+    super(CONCEPTS.StaticMethodCallOperation$Uo, initContext);
   }
 
   @Override

@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XMLSAXNodeRuleParamRef_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XMLSAXNodeRuleParamRef_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XMLSAXNodeRuleParamRef$F7);
+    super(CONCEPTS.XMLSAXNodeRuleParamRef$F7, initContext);
   }
 
   @Override

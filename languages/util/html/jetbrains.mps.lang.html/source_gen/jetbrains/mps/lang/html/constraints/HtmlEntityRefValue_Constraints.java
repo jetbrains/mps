@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class HtmlEntityRefValue_Constraints extends BaseConstraintsDescriptor {
   /*package*/ HtmlEntityRefValue_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.HtmlEntityRefValue$Cb);
+    super(CONCEPTS.HtmlEntityRefValue$Cb, initContext);
   }
 
   public static class EntityName_Property extends BasePropertyConstraintsDescriptor {

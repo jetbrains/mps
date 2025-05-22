@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ClassifierClassExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ClassifierClassExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ClassifierClassExpression$lN);
+    super(CONCEPTS.ClassifierClassExpression$lN, initContext);
   }
 
   @Override

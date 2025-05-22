@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IMenu_Default_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IMenu_Default_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IMenu_Default$QA);
+    super(CONCEPTS.IMenu_Default$QA, initContext);
   }
 
   @Override

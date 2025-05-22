@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class OfAspectOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ OfAspectOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.OfAspectOperation$cT);
+    super(CONCEPTS.OfAspectOperation$cT, initContext);
   }
 
   @Override

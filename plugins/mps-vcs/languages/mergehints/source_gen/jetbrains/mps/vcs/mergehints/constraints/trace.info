@@ -12,12 +12,12 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="15,0,35,0" name="jetbrains.mps.vcs.mergehints.constraints.ConstraintsAspectDescriptor" />
+      <unit at="15,0,36,0" name="jetbrains.mps.vcs.mergehints.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:db2ce397-cf4f-423c-9613-b88195c6529a(jetbrains.mps.vcs.mergehints.constraints)/1611756961204470243">
     <file name="ConceptVCSDescriptor_Constraints.java">
-      <node id="1611756961204470243" at="30,94,31,44" concept="9" />
+      <node id="1611756961204470243" at="30,94,31,57" concept="9" />
       <node id="1611756961204470244" at="42,63,43,143" concept="5" />
       <node id="6836281137582781554" at="47,108,48,38" concept="5" />
       <node id="6836281137582781557" at="49,13,50,0" concept="6" />
@@ -44,7 +44,7 @@
       <node id="1611756961204470244" at="37,0,60,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="1611756961204470244" at="35,90,60,6" concept="4" />
       <node id="1611756961204470243" at="34,0,65,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1611756961204470243" at="30,94,31,44" />
+      <scope id="1611756961204470243" at="30,94,31,57" />
       <scope id="1611756961204470244" at="42,63,43,143" />
       <scope id="6836281137582781553" at="47,108,48,38" />
       <scope id="6836281137582781567" at="52,36,53,38" />
@@ -79,7 +79,7 @@
   </root>
   <root nodeRef="r:db2ce397-cf4f-423c-9613-b88195c6529a(jetbrains.mps.vcs.mergehints.constraints)/4382682660187986727">
     <file name="PropertyVCSDescriptor_Constraints.java">
-      <node id="4382682660187986727" at="30,95,31,45" concept="9" />
+      <node id="4382682660187986727" at="30,95,31,58" concept="9" />
       <node id="4382682660187986731" at="42,63,43,143" concept="5" />
       <node id="4382682660187991295" at="46,80,47,177" concept="4" />
       <node id="4382682660187999820" at="50,69,51,105" concept="5" />
@@ -100,7 +100,7 @@
       <node id="4382682660187986731" at="37,0,57,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="4382682660187986731" at="35,90,57,6" concept="4" />
       <node id="4382682660187986727" at="34,0,62,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="4382682660187986727" at="30,95,31,45" />
+      <scope id="4382682660187986727" at="30,95,31,58" />
       <scope id="4382682660187986731" at="42,63,43,143" />
       <scope id="4382682660187999074" at="50,69,51,105" />
       <scope id="4382682660187986727" at="30,0,33,0">
@@ -133,7 +133,7 @@
   </root>
   <root nodeRef="r:db2ce397-cf4f-423c-9613-b88195c6529a(jetbrains.mps.vcs.mergehints.constraints)/4382682660188133838">
     <file name="LinkVCSDescriptor_Constraints.java">
-      <node id="4382682660188133838" at="30,91,31,41" concept="9" />
+      <node id="4382682660188133838" at="30,91,31,54" concept="9" />
       <node id="4382682660188133842" at="42,63,43,143" concept="5" />
       <node id="4382682660188134037" at="46,80,47,177" concept="4" />
       <node id="4382682660188134060" at="50,69,51,105" concept="5" />
@@ -154,7 +154,7 @@
       <node id="4382682660188133842" at="37,0,57,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="4382682660188133842" at="35,90,57,6" concept="4" />
       <node id="4382682660188133838" at="34,0,62,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="4382682660188133838" at="30,91,31,41" />
+      <scope id="4382682660188133838" at="30,91,31,54" />
       <scope id="4382682660188133842" at="42,63,43,143" />
       <scope id="4382682660188134059" at="50,69,51,105" />
       <scope id="4382682660188133838" at="30,0,33,0">

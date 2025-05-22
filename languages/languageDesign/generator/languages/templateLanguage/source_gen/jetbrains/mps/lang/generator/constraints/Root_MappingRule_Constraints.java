@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Root_MappingRule_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Root_MappingRule_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Root_MappingRule$NH);
+    super(CONCEPTS.Root_MappingRule$NH, initContext);
   }
 
   @Override

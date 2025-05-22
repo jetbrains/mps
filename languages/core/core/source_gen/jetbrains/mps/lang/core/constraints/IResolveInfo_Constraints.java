@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IResolveInfo_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IResolveInfo_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IResolveInfo$$k);
+    super(CONCEPTS.IResolveInfo$$k, initContext);
   }
 
   public static class ResolveInfo_Property extends BasePropertyConstraintsDescriptor {

@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ModelsToGenerateByDefault_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ModelsToGenerateByDefault_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ModelsToGenerateByDefault$LS);
+    super(CONCEPTS.ModelsToGenerateByDefault$LS, initContext);
   }
 
   @Override

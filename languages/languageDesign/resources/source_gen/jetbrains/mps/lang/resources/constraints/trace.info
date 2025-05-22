@@ -13,15 +13,15 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="15,0,35,0" name="jetbrains.mps.lang.resources.constraints.ConstraintsAspectDescriptor" />
+      <unit at="15,0,36,0" name="jetbrains.mps.lang.resources.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:91a4131e-4695-42c0-aafd-5099770207dd(jetbrains.mps.lang.resources.constraints)/2756621024541397651">
     <file name="FileIcon_Constraints.java">
-      <node id="2756621024541397651" at="11,82,12,32" concept="10" />
+      <node id="2756621024541397651" at="11,82,12,45" concept="10" />
       <node id="2756621024541397651" at="16,0,17,0" concept="8" trace="FileIcon$Z0" />
       <node id="2756621024541397651" at="11,0,14,0" concept="0" trace="FileIcon_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <scope id="2756621024541397651" at="11,82,12,32" />
+      <scope id="2756621024541397651" at="11,82,12,45" />
       <scope id="2756621024541397651" at="11,0,14,0">
         <var name="initContext" id="2756621024541397651" />
       </scope>
@@ -31,7 +31,7 @@
   </root>
   <root nodeRef="r:91a4131e-4695-42c0-aafd-5099770207dd(jetbrains.mps.lang.resources.constraints)/5917655937629124434">
     <file name="Text_Constraints.java">
-      <node id="5917655937629124434" at="21,78,22,28" concept="10" />
+      <node id="5917655937629124434" at="21,78,22,41" concept="10" />
       <node id="5917655937629124435" at="26,59,27,60" concept="10" />
       <node id="5917655937629124435" at="30,109,31,99" concept="4" />
       <node id="5917655937629124435" at="32,53,33,169" concept="1" />
@@ -48,7 +48,7 @@
       <node id="5917655937629124435" at="37,0,40,0" concept="9" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
       <node id="5917655937629124434" at="41,0,47,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />
       <node id="5917655937629124435" at="29,0,37,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-      <scope id="5917655937629124434" at="21,78,22,28" />
+      <scope id="5917655937629124434" at="21,78,22,41" />
       <scope id="5917655937629124435" at="26,59,27,60" />
       <scope id="5917655937629124435" at="32,53,33,169" />
       <scope id="5917655937629124438" at="37,85,38,98" />
@@ -82,7 +82,7 @@
   </root>
   <root nodeRef="r:91a4131e-4695-42c0-aafd-5099770207dd(jetbrains.mps.lang.resources.constraints)/7927811850891361852">
     <file name="ConstantFieldIcon_Constraints.java">
-      <node id="7927811850891361852" at="21,91,22,40" concept="10" />
+      <node id="7927811850891361852" at="21,91,22,53" concept="10" />
       <node id="7927811850891361852" at="29,127,30,128" concept="4" />
       <node id="7927811850891361852" at="30,128,31,0" concept="7" />
       <node id="7927811850891361852" at="32,55,33,71" concept="1" />
@@ -102,7 +102,7 @@
       <node id="7927811850891361852" at="28,0,38,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="7927811850891361852" at="26,103,38,6" concept="5" />
       <node id="7927811850891361852" at="25,0,40,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="7927811850891361852" at="21,91,22,40" />
+      <scope id="7927811850891361852" at="21,91,22,53" />
       <scope id="7927811850891361852" at="32,55,33,71" />
       <scope id="7927811850891361852" at="21,0,24,0">
         <var name="initContext" id="7927811850891361852" />

@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StaticFieldReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ StaticFieldReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.StaticFieldReference$cU);
+    super(CONCEPTS.StaticFieldReference$cU, initContext);
   }
 
   @Override

@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ProblemKind_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ProblemKind_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ProblemKind$fY);
+    super(CONCEPTS.ProblemKind$fY, initContext);
   }
 
   @Override

@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConceptCondition_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConceptCondition_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConceptCondition$lI);
+    super(CONCEPTS.ConceptCondition$lI, initContext);
   }
 
   private static final class CONCEPTS {

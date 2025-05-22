@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Element_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Element_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Element$LI);
+    super(CONCEPTS.Element$LI, initContext);
   }
 
   public static class Details_url_Property extends BasePropertyConstraintsDescriptor {

@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class IMenuReference_Default_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IMenuReference_Default_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IMenuReference_Default$T0);
+    super(CONCEPTS.IMenuReference_Default$T0, initContext);
   }
 
   @Override

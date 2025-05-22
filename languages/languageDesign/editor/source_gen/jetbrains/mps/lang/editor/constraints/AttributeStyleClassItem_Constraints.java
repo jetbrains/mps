@@ -36,7 +36,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AttributeStyleClassItem_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AttributeStyleClassItem_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AttributeStyleClassItem$Ec);
+    super(CONCEPTS.AttributeStyleClassItem$Ec, initContext);
   }
 
   @Override

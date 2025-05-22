@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CommandDebuggerOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CommandDebuggerOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CommandDebuggerOperation$gj);
+    super(CONCEPTS.CommandDebuggerOperation$gj, initContext);
   }
 
   @Override

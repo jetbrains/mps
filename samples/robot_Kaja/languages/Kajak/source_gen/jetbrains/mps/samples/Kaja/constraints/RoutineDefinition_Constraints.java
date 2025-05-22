@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RoutineDefinition_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RoutineDefinition_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RoutineDefinition$Gg);
+    super(CONCEPTS.RoutineDefinition$Gg, initContext);
   }
 
   @Override

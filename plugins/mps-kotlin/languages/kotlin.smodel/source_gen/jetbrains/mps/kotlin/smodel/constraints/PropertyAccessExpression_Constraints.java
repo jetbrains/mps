@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PropertyAccessExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyAccessExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyAccessExpression$bC);
+    super(CONCEPTS.PropertyAccessExpression$bC, initContext);
   }
 
   @Override

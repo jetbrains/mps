@@ -16,7 +16,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FunctionMethodDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FunctionMethodDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FunctionMethodDeclaration$ee);
+    super(CONCEPTS.FunctionMethodDeclaration$ee, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

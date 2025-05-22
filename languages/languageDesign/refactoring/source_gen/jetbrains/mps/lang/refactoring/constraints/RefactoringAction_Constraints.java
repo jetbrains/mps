@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RefactoringAction_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RefactoringAction_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RefactoringAction$rn);
+    super(CONCEPTS.RefactoringAction$rn, initContext);
   }
 
   @Override

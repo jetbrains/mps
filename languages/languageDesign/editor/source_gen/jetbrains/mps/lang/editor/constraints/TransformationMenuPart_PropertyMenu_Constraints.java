@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TransformationMenuPart_PropertyMenu_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TransformationMenuPart_PropertyMenu_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TransformationMenuPart_PropertyMenu$8j);
+    super(CONCEPTS.TransformationMenuPart_PropertyMenu$8j, initContext);
   }
 
   @Override

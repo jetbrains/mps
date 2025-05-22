@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ChartOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ChartOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ChartOperation$pl);
+    super(CONCEPTS.ChartOperation$pl, initContext);
   }
 
   @Override

@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Box_ValueOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Box_ValueOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Box_ValueOperation$Jm);
+    super(CONCEPTS.Box_ValueOperation$Jm, initContext);
   }
 
   @Override

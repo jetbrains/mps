@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ForEachNodeFoundClosureParameterDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ForEachNodeFoundClosureParameterDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ForEachNodeFoundClosureParameterDeclaration$PJ);
+    super(CONCEPTS.ForEachNodeFoundClosureParameterDeclaration$PJ, initContext);
   }
 
   @Override

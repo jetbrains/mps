@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ForeignParametersExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ForeignParametersExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ForeignParametersExpression$2$);
+    super(CONCEPTS.ForeignParametersExpression$2$, initContext);
   }
 
   @Override

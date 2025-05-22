@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BwfSubTask_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BwfSubTask_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BwfSubTask$X);
+    super(CONCEPTS.BwfSubTask$X, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

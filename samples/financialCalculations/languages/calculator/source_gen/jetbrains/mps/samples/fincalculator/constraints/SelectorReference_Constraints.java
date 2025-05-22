@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SelectorReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SelectorReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SelectorReference$6m);
+    super(CONCEPTS.SelectorReference$6m, initContext);
   }
 
   @Override

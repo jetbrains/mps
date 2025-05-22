@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CanWrapHighLevelValue_ConceptFunction_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CanWrapHighLevelValue_ConceptFunction_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CanWrapHighLevelValue_ConceptFunction$a2);
+    super(CONCEPTS.CanWrapHighLevelValue_ConceptFunction$a2, initContext);
   }
 
   @Override

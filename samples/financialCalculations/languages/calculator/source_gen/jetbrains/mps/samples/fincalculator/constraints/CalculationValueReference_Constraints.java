@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CalculationValueReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CalculationValueReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CalculationValueReference$nS);
+    super(CONCEPTS.CalculationValueReference$nS, initContext);
   }
 
   @Override

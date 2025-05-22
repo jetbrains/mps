@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExtractStaticInnerClassConcept_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExtractStaticInnerClassConcept_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExtractStaticInnerClassConcept$e5);
+    super(CONCEPTS.ExtractStaticInnerClassConcept$e5, initContext);
   }
 
   public static class ResolveInfo_Property extends BasePropertyConstraintsDescriptor {

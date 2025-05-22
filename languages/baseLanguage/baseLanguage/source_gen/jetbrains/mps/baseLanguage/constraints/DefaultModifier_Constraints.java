@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class DefaultModifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DefaultModifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DefaultModifier$rO);
+    super(CONCEPTS.DefaultModifier$rO, initContext);
   }
 
   @Override

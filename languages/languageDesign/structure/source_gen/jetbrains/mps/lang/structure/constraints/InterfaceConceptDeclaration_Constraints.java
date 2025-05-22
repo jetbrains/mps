@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InterfaceConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InterfaceConceptDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InterfaceConceptDeclaration$CG);
+    super(CONCEPTS.InterfaceConceptDeclaration$CG, initContext);
   }
 
   @Override

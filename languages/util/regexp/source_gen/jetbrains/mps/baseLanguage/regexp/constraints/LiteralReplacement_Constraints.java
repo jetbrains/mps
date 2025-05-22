@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LiteralReplacement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LiteralReplacement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LiteralReplacement$ce);
+    super(CONCEPTS.LiteralReplacement$ce, initContext);
   }
 
   public static class Text_Property extends BasePropertyConstraintsDescriptor {

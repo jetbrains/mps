@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ConceptReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConceptReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConceptReference$14);
+    super(CONCEPTS.ConceptReference$14, initContext);
   }
 
   @Override

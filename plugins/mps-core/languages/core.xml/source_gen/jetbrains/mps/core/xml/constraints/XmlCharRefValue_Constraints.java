@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlCharRefValue_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XmlCharRefValue_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XmlCharRefValue$ZC);
+    super(CONCEPTS.XmlCharRefValue$ZC, initContext);
   }
 
   public static class CharCode_Property extends BasePropertyConstraintsDescriptor {

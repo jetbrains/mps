@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BaseProjectOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BaseProjectOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BaseProjectOperation$nP);
+    super(CONCEPTS.BaseProjectOperation$nP, initContext);
   }
 
   @Override

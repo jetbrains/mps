@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Raise_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Raise_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Raise$Hj);
+    super(CONCEPTS.Raise$Hj, initContext);
   }
 
   @Override

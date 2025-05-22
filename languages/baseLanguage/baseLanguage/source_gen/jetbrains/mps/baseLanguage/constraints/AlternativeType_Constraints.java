@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AlternativeType_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AlternativeType_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AlternativeType$B$);
+    super(CONCEPTS.AlternativeType$B$, initContext);
   }
 
   @Override

@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PortProvider_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PortProvider_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PortProvider$LM);
+    super(CONCEPTS.PortProvider$LM, initContext);
   }
 
   private static final class CONCEPTS {

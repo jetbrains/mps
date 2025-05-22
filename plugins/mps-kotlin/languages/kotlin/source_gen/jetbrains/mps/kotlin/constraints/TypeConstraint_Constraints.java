@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TypeConstraint_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TypeConstraint_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TypeConstraint$NN);
+    super(CONCEPTS.TypeConstraint$NN, initContext);
   }
 
   @Override

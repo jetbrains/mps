@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BTestCase_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BTestCase_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BTestCase$_a);
+    super(CONCEPTS.BTestCase$_a, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

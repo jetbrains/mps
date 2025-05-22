@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LiteralMessageExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LiteralMessageExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LiteralMessageExpression$$8);
+    super(CONCEPTS.LiteralMessageExpression$$8, initContext);
   }
 
   public static class Message_Property extends BasePropertyConstraintsDescriptor {

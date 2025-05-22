@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class FunctionCallTarget_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FunctionCallTarget_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FunctionCallTarget$SS);
+    super(CONCEPTS.FunctionCallTarget$SS, initContext);
   }
 
   @Override

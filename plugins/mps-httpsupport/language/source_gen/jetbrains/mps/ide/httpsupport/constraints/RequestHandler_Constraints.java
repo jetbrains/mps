@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RequestHandler_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RequestHandler_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RequestHandler$A6);
+    super(CONCEPTS.RequestHandler$A6, initContext);
   }
 
   private static final class CONCEPTS {

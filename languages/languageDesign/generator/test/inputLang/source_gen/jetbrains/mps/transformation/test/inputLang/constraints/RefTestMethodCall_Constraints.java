@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RefTestMethodCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RefTestMethodCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RefTestMethodCall$3G);
+    super(CONCEPTS.RefTestMethodCall$3G, initContext);
   }
 
   @Override

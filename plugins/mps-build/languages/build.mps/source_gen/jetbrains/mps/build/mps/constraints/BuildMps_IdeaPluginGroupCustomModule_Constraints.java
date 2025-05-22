@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class BuildMps_IdeaPluginGroupCustomModule_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildMps_IdeaPluginGroupCustomModule_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildMps_IdeaPluginGroupCustomModule$sH);
+    super(CONCEPTS.BuildMps_IdeaPluginGroupCustomModule$sH, initContext);
   }
 
   @Override

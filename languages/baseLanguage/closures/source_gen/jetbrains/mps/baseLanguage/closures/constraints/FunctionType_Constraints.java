@@ -27,7 +27,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FunctionType_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FunctionType_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FunctionType$9U);
+    super(CONCEPTS.FunctionType$9U, initContext);
   }
 
   @Override

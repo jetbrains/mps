@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class RequirementEntryReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RequirementEntryReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RequirementEntryReference$aD);
+    super(CONCEPTS.RequirementEntryReference$aD, initContext);
   }
 
   @Override

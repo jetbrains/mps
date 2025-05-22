@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TestPropertyVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TestPropertyVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TestPropertyVariableReference$5C);
+    super(CONCEPTS.TestPropertyVariableReference$5C, initContext);
   }
 
   @Override

@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ReferenceMessageTarget_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ReferenceMessageTarget_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ReferenceMessageTarget$8r);
+    super(CONCEPTS.ReferenceMessageTarget$8r, initContext);
   }
 
   @Override

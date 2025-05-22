@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GetEditorOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GetEditorOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GetEditorOperation$ki);
+    super(CONCEPTS.GetEditorOperation$ki, initContext);
   }
 
   @Override

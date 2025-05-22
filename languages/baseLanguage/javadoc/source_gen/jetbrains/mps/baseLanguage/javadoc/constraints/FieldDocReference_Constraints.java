@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FieldDocReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FieldDocReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FieldDocReference$tM);
+    super(CONCEPTS.FieldDocReference$tM, initContext);
   }
 
   @Override

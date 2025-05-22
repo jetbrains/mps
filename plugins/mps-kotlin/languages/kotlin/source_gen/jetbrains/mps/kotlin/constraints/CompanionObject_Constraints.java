@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CompanionObject_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CompanionObject_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CompanionObject$TE);
+    super(CONCEPTS.CompanionObject$TE, initContext);
   }
 
   @Override

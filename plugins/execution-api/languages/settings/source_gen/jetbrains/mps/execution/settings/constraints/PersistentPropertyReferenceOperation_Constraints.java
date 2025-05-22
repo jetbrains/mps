@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class PersistentPropertyReferenceOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PersistentPropertyReferenceOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PersistentPropertyReferenceOperation$iR);
+    super(CONCEPTS.PersistentPropertyReferenceOperation$iR, initContext);
   }
 
   @Override

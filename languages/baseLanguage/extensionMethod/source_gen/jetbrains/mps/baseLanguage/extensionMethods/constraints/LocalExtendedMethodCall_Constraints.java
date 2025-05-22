@@ -41,7 +41,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class LocalExtendedMethodCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LocalExtendedMethodCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LocalExtendedMethodCall$_e);
+    super(CONCEPTS.LocalExtendedMethodCall$_e, initContext);
   }
 
   @Override

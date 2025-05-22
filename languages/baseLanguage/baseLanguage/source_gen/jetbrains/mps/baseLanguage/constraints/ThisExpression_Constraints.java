@@ -32,7 +32,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ThisExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ThisExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ThisExpression$$o);
+    super(CONCEPTS.ThisExpression$$o, initContext);
   }
 
   @Override

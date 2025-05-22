@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class AbstractConstructorDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractConstructorDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AbstractConstructorDeclaration$GC);
+    super(CONCEPTS.AbstractConstructorDeclaration$GC, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

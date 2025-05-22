@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildSourceMacroRelativePath_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildSourceMacroRelativePath_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildSourceMacroRelativePath$b7);
+    super(CONCEPTS.BuildSourceMacroRelativePath$b7, initContext);
   }
 
   @Override

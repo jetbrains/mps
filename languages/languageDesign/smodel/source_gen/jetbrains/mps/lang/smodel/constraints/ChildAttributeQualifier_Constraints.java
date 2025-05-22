@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ChildAttributeQualifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ChildAttributeQualifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ChildAttributeQualifier$2j);
+    super(CONCEPTS.ChildAttributeQualifier$2j, initContext);
   }
 
   @Override

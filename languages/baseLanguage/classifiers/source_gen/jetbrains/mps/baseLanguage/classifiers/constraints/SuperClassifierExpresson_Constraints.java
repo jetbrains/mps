@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class SuperClassifierExpresson_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SuperClassifierExpresson_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SuperClassifierExpresson$RG);
+    super(CONCEPTS.SuperClassifierExpresson$RG, initContext);
   }
 
   @Override

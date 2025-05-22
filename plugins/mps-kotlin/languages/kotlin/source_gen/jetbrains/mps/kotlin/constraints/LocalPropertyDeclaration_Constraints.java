@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LocalPropertyDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LocalPropertyDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LocalPropertyDeclaration$eD);
+    super(CONCEPTS.LocalPropertyDeclaration$eD, initContext);
   }
 
   private static final class CONCEPTS {

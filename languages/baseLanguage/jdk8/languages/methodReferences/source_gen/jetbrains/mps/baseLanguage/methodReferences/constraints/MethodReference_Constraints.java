@@ -33,7 +33,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MethodReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MethodReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MethodReference$G8);
+    super(CONCEPTS.MethodReference$G8, initContext);
   }
 
   @Override

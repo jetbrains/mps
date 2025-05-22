@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ShortcutChange_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ShortcutChange_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ShortcutChange$ZG);
+    super(CONCEPTS.ShortcutChange$ZG, initContext);
   }
 
   private static final class CONCEPTS {

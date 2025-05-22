@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class FinishWorkStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FinishWorkStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FinishWorkStatement$Ck);
+    super(CONCEPTS.FinishWorkStatement$Ck, initContext);
   }
 
   @Override

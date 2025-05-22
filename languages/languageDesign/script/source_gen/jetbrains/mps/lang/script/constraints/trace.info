@@ -12,12 +12,12 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="15,0,35,0" name="jetbrains.mps.lang.script.constraints.ConstraintsAspectDescriptor" />
+      <unit at="15,0,36,0" name="jetbrains.mps.lang.script.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959031e(jetbrains.mps.lang.script.constraints)/338341484719580003">
     <file name="DirectMethodSpecification_Constraints.java">
-      <node id="338341484719580003" at="30,99,31,49" concept="9" />
+      <node id="338341484719580003" at="30,99,31,62" concept="9" />
       <node id="338341484719581302" at="42,63,43,140" concept="5" />
       <node id="6836281137582797332" at="46,80,47,140" concept="4" />
       <node id="6836281137582797341" at="47,140,48,169" concept="4" />
@@ -41,7 +41,7 @@
       <node id="338341484719581302" at="37,0,56,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="338341484719581302" at="35,90,56,6" concept="4" />
       <node id="338341484719580003" at="34,0,61,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="338341484719580003" at="30,99,31,49" />
+      <scope id="338341484719580003" at="30,99,31,62" />
       <scope id="338341484719581302" at="42,63,43,140" />
       <scope id="6836281137582797353" at="49,50,50,38" />
       <scope id="338341484719580003" at="30,0,33,0">
@@ -71,10 +71,10 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959031e(jetbrains.mps.lang.script.constraints)/6970965131508596231">
     <file name="MigrationScriptPart_Constraints.java">
-      <node id="6970965131508596231" at="11,93,12,43" concept="9" />
+      <node id="6970965131508596231" at="11,93,12,56" concept="9" />
       <node id="6970965131508596231" at="16,0,17,0" concept="7" trace="MigrationScriptPart$92" />
       <node id="6970965131508596231" at="11,0,14,0" concept="0" trace="MigrationScriptPart_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <scope id="6970965131508596231" at="11,93,12,43" />
+      <scope id="6970965131508596231" at="11,93,12,56" />
       <scope id="6970965131508596231" at="11,0,14,0">
         <var name="initContext" id="6970965131508596231" />
       </scope>
@@ -84,7 +84,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959031e(jetbrains.mps.lang.script.constraints)/849077997121906173">
     <file name="PullUpMethod_Constraints.java">
-      <node id="849077997121906173" at="34,86,35,36" concept="9" />
+      <node id="849077997121906173" at="34,86,35,49" concept="9" />
       <node id="849077997121906173" at="42,127,43,128" concept="4" />
       <node id="849077997121906173" at="43,128,44,0" concept="6" />
       <node id="849077997121906173" at="45,55,46,71" concept="1" />
@@ -115,7 +115,7 @@
       <node id="4242940223545087956" at="56,0,71,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="4242940223545087956" at="54,90,71,6" concept="4" />
       <node id="849077997121906173" at="53,0,76,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="849077997121906173" at="34,86,35,36" />
+      <scope id="849077997121906173" at="34,86,35,49" />
       <scope id="849077997121906173" at="45,55,46,71" />
       <scope id="4242940223545087956" at="61,63,62,140" />
       <scope id="1227128029536563367" at="76,128,77,91" />

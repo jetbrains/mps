@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class EnumOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EnumOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EnumOperation$Xg);
+    super(CONCEPTS.EnumOperation$Xg, initContext);
   }
 
   @Override

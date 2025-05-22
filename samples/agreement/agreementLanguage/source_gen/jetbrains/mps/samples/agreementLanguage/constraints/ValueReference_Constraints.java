@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ValueReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ValueReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ValueReference$QC);
+    super(CONCEPTS.ValueReference$QC, initContext);
   }
 
   @Override

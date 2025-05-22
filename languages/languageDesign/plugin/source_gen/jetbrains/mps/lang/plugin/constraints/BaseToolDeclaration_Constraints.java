@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BaseToolDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BaseToolDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BaseToolDeclaration$cK);
+    super(CONCEPTS.BaseToolDeclaration$cK, initContext);
   }
 
   public static class Position_Property extends BasePropertyConstraintsDescriptor {

@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TransformationMenu_Named_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TransformationMenu_Named_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TransformationMenu_Named$dh);
+    super(CONCEPTS.TransformationMenu_Named$dh, initContext);
   }
 
   @Override

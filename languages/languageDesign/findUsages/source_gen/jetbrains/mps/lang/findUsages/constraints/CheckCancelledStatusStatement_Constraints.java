@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CheckCancelledStatusStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CheckCancelledStatusStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CheckCancelledStatusStatement$g0);
+    super(CONCEPTS.CheckCancelledStatusStatement$g0, initContext);
   }
 
   @Override

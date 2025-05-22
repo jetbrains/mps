@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ProgramParameter_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ProgramParameter_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ProgramParameter$YJ);
+    super(CONCEPTS.ProgramParameter$YJ, initContext);
   }
 
   @Override

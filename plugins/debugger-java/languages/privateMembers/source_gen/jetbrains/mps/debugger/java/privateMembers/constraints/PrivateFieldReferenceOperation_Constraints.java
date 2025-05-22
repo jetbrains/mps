@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class PrivateFieldReferenceOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PrivateFieldReferenceOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PrivateFieldReferenceOperation$xF);
+    super(CONCEPTS.PrivateFieldReferenceOperation$xF, initContext);
   }
 
   @Override

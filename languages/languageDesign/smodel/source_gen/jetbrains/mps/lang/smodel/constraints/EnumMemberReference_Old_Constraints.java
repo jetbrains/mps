@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class EnumMemberReference_Old_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EnumMemberReference_Old_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EnumMemberReference_Old$15);
+    super(CONCEPTS.EnumMemberReference_Old$15, initContext);
   }
 
   @Override

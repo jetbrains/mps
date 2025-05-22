@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BwfJavaClassPath_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BwfJavaClassPath_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BwfJavaClassPath$at);
+    super(CONCEPTS.BwfJavaClassPath$at, initContext);
   }
 
   @Override

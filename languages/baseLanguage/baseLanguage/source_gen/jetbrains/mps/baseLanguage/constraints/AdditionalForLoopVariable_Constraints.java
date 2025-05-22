@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AdditionalForLoopVariable_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AdditionalForLoopVariable_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AdditionalForLoopVariable$dI);
+    super(CONCEPTS.AdditionalForLoopVariable$dI, initContext);
   }
 
   @Override

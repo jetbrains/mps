@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SubstTestAbstractChild_WithDefaultConcreteConcept_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SubstTestAbstractChild_WithDefaultConcreteConcept_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SubstTestAbstractChild_WithDefaultConcreteConcept$mA);
+    super(CONCEPTS.SubstTestAbstractChild_WithDefaultConcreteConcept$mA, initContext);
   }
 
   @Override

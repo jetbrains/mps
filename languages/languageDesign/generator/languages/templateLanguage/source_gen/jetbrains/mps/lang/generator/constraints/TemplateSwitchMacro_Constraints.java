@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TemplateSwitchMacro_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TemplateSwitchMacro_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TemplateSwitchMacro$3G);
+    super(CONCEPTS.TemplateSwitchMacro$3G, initContext);
   }
 
   @Override

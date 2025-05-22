@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class HttpRequestOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ HttpRequestOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.HttpRequestOperation$ao);
+    super(CONCEPTS.HttpRequestOperation$ao, initContext);
   }
 
   @Override

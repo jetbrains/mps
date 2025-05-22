@@ -16,7 +16,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LambdaLiteral_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LambdaLiteral_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LambdaLiteral$Bd);
+    super(CONCEPTS.LambdaLiteral$Bd, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

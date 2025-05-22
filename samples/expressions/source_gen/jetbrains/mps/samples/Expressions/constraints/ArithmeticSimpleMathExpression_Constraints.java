@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ArithmeticSimpleMathExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ArithmeticSimpleMathExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ArithmeticSimpleMathExpression$kg);
+    super(CONCEPTS.ArithmeticSimpleMathExpression$kg, initContext);
   }
 
   public static class Operator_Property extends BasePropertyConstraintsDescriptor {

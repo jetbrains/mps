@@ -32,7 +32,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class DefaultClassCreator_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DefaultClassCreator_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DefaultClassCreator$TC);
+    super(CONCEPTS.DefaultClassCreator$TC, initContext);
   }
 
   @Override

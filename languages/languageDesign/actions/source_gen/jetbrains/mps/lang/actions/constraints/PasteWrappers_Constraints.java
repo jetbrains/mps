@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PasteWrappers_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PasteWrappers_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PasteWrappers$el);
+    super(CONCEPTS.PasteWrappers$el, initContext);
   }
 
   @Override

@@ -31,7 +31,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DSLDescriptor_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DSLDescriptor_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DSLDescriptor$zD);
+    super(CONCEPTS.DSLDescriptor$zD, initContext);
   }
 
   @Override

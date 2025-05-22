@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RegexpDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RegexpDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RegexpDeclaration$6D);
+    super(CONCEPTS.RegexpDeclaration$6D, initContext);
   }
 
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {

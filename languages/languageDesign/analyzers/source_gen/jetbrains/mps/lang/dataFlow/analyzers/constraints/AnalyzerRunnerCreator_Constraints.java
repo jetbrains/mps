@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AnalyzerRunnerCreator_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AnalyzerRunnerCreator_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AnalyzerRunnerCreator$aY);
+    super(CONCEPTS.AnalyzerRunnerCreator$aY, initContext);
   }
 
   @Override

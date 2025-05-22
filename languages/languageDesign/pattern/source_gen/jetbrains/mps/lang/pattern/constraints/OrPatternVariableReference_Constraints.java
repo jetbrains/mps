@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class OrPatternVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ OrPatternVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.OrPatternVariableReference$O0);
+    super(CONCEPTS.OrPatternVariableReference$O0, initContext);
   }
 
   @Override

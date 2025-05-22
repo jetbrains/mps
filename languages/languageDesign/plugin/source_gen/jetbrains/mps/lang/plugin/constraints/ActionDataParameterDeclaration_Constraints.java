@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ActionDataParameterDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ActionDataParameterDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ActionDataParameterDeclaration$Tg);
+    super(CONCEPTS.ActionDataParameterDeclaration$Tg, initContext);
   }
 
   @Override

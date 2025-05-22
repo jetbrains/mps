@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class ConceptTextGenDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConceptTextGenDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConceptTextGenDeclaration$vd);
+    super(CONCEPTS.ConceptTextGenDeclaration$vd, initContext);
   }
 
   @Override

@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IValidIdentifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IValidIdentifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IValidIdentifier$V_);
+    super(CONCEPTS.IValidIdentifier$V_, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FinderDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FinderDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FinderDeclaration$R8);
+    super(CONCEPTS.FinderDeclaration$R8, initContext);
   }
 
   @Override

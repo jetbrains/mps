@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConceptEditorHintDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConceptEditorHintDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConceptEditorHintDeclaration$e2);
+    super(CONCEPTS.ConceptEditorHintDeclaration$e2, initContext);
   }
 
   @Override

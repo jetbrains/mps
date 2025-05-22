@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ExpressionPatternProvider_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExpressionPatternProvider_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExpressionPatternProvider$3i);
+    super(CONCEPTS.ExpressionPatternProvider$3i, initContext);
   }
 
   @Override

@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FacetReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FacetReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FacetReference$PX);
+    super(CONCEPTS.FacetReference$PX, initContext);
   }
 
   private static final class CONCEPTS {

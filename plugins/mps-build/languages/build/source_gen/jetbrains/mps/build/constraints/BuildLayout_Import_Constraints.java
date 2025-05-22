@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildLayout_Import_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildLayout_Import_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildLayout_Import$wO);
+    super(CONCEPTS.BuildLayout_Import$wO, initContext);
   }
 
   @Override

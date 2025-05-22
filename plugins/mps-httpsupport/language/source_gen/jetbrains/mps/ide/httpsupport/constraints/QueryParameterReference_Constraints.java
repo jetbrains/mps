@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class QueryParameterReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ QueryParameterReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.QueryParameterReference$9h);
+    super(CONCEPTS.QueryParameterReference$9h, initContext);
   }
 
   @Override

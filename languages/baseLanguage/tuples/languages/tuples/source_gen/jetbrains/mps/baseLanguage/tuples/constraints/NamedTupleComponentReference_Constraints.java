@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class NamedTupleComponentReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NamedTupleComponentReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NamedTupleComponentReference$e7);
+    super(CONCEPTS.NamedTupleComponentReference$e7, initContext);
   }
 
   @Override

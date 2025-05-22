@@ -9,15 +9,15 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="15,0,33,0" name="org.jetbrains.mps.samples.Constants.constraints.ConstraintsAspectDescriptor" />
+      <unit at="15,0,34,0" name="org.jetbrains.mps.samples.Constants.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:af985d7a-c914-498c-96e5-c3fe0f4471b1(org.jetbrains.mps.samples.Constants.constraints)/2001769927721048297">
     <file name="Constant_Constraints.java">
-      <node id="2001769927721048297" at="11,82,12,32" concept="6" />
+      <node id="2001769927721048297" at="11,82,12,45" concept="6" />
       <node id="2001769927721048297" at="16,0,17,0" concept="5" trace="Constant$Ym" />
       <node id="2001769927721048297" at="11,0,14,0" concept="0" trace="Constant_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <scope id="2001769927721048297" at="11,82,12,32" />
+      <scope id="2001769927721048297" at="11,82,12,45" />
       <scope id="2001769927721048297" at="11,0,14,0">
         <var name="initContext" id="2001769927721048297" />
       </scope>
@@ -27,7 +27,7 @@
   </root>
   <root nodeRef="r:af985d7a-c914-498c-96e5-c3fe0f4471b1(org.jetbrains.mps.samples.Constants.constraints)/3990190717072399938">
     <file name="ConstantReference_Constraints.java">
-      <node id="3990190717072399938" at="19,91,20,41" concept="6" />
+      <node id="3990190717072399938" at="19,91,20,54" concept="6" />
       <node id="3990190717072399939" at="28,56,29,206" concept="4" />
       <node id="3990190717072399938" at="31,6,32,131" concept="3" />
       <node id="3990190717072399939" at="32,131,33,42" concept="1" />
@@ -39,7 +39,7 @@
       <node id="3990190717072399939" at="26,0,31,0" concept="2" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="3990190717072399939" at="24,90,31,6" concept="3" />
       <node id="3990190717072399938" at="23,0,36,0" concept="2" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="3990190717072399938" at="19,91,20,41" />
+      <scope id="3990190717072399938" at="19,91,20,54" />
       <scope id="3990190717072399939" at="28,56,29,206" />
       <scope id="3990190717072399938" at="19,0,22,0">
         <var name="initContext" id="3990190717072399938" />

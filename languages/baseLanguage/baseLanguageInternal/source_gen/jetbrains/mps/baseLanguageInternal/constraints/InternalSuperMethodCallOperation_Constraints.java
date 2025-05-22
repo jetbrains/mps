@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InternalSuperMethodCallOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InternalSuperMethodCallOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InternalSuperMethodCallOperation$FP);
+    super(CONCEPTS.InternalSuperMethodCallOperation$FP, initContext);
   }
 
   @Override

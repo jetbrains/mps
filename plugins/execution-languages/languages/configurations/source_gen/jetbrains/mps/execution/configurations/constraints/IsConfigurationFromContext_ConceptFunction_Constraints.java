@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IsConfigurationFromContext_ConceptFunction_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IsConfigurationFromContext_ConceptFunction_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IsConfigurationFromContext_ConceptFunction$bF);
+    super(CONCEPTS.IsConfigurationFromContext_ConceptFunction$bF, initContext);
   }
 
   @Override

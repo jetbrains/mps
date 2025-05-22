@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ThisExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ThisExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ThisExpression$_g);
+    super(CONCEPTS.ThisExpression$_g, initContext);
   }
 
   @Override

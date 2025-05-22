@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ILabelTarget_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ILabelTarget_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ILabelTarget$Ms);
+    super(CONCEPTS.ILabelTarget$Ms, initContext);
   }
 
   @Override

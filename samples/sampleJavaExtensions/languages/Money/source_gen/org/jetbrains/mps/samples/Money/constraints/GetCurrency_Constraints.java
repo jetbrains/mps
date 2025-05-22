@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GetCurrency_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GetCurrency_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GetCurrency$LD);
+    super(CONCEPTS.GetCurrency$LD, initContext);
   }
 
   @Override

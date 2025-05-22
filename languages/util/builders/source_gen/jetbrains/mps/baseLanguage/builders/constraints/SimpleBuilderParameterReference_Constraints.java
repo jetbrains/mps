@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class SimpleBuilderParameterReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SimpleBuilderParameterReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SimpleBuilderParameterReference$6D);
+    super(CONCEPTS.SimpleBuilderParameterReference$6D, initContext);
   }
 
   @Override

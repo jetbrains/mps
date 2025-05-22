@@ -13,12 +13,12 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="15,0,37,0" name="jetbrains.mps.build.mps.tests.constraints.ConstraintsAspectDescriptor" />
+      <unit at="15,0,38,0" name="jetbrains.mps.build.mps.tests.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)/3655813416643585307">
     <file name="BuildAspect_MpsTestModules_Constraints.java">
-      <node id="3655813416643585307" at="24,100,25,50" concept="10" />
+      <node id="3655813416643585307" at="24,100,25,63" concept="10" />
       <node id="3655813416643585307" at="32,127,33,128" concept="4" />
       <node id="3655813416643585307" at="33,128,34,0" concept="7" />
       <node id="3655813416643585307" at="35,55,36,71" concept="1" />
@@ -44,7 +44,7 @@
       <node id="3655813416643585307" at="29,103,41,6" concept="5" />
       <node id="3655813416643585307" at="43,0,56,0" concept="9" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <node id="3655813416643585307" at="28,0,43,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="3655813416643585307" at="24,100,25,50" />
+      <scope id="3655813416643585307" at="24,100,25,63" />
       <scope id="3655813416643585307" at="35,55,36,71" />
       <scope id="8421617199856307878" at="44,95,46,18" />
       <scope id="8421617199856307894" at="49,33,51,174" />
@@ -77,7 +77,7 @@
   </root>
   <root nodeRef="r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)/6593674873640691652">
     <file name="BuildMps_TestModules_Options_Constraints.java">
-      <node id="6593674873640691652" at="21,102,22,52" concept="10" />
+      <node id="6593674873640691652" at="21,102,22,65" concept="10" />
       <node id="6593674873640691652" at="29,127,30,128" concept="4" />
       <node id="6593674873640691652" at="30,128,31,0" concept="7" />
       <node id="6593674873640691652" at="32,55,33,71" concept="1" />
@@ -93,7 +93,7 @@
       <node id="6593674873640691652" at="28,0,38,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="6593674873640691652" at="26,103,38,6" concept="5" />
       <node id="6593674873640691652" at="25,0,40,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="6593674873640691652" at="21,102,22,52" />
+      <scope id="6593674873640691652" at="21,102,22,65" />
       <scope id="6593674873640691652" at="32,55,33,71" />
       <scope id="6593674873640691654" at="40,128,41,92" />
       <scope id="6593674873640691652" at="21,0,24,0">
@@ -121,7 +121,7 @@
   </root>
   <root nodeRef="r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)/8574011380719962596">
     <file name="BuildMps_TestModule_Constraints.java">
-      <node id="8574011380719962596" at="27,93,28,43" concept="10" />
+      <node id="8574011380719962596" at="27,93,28,56" concept="10" />
       <node id="8574011380719962596" at="35,127,36,128" concept="4" />
       <node id="8574011380719962596" at="36,128,37,0" concept="7" />
       <node id="8574011380719962596" at="38,55,39,71" concept="1" />
@@ -146,7 +146,7 @@
       <node id="8574011380719962596" at="32,103,44,6" concept="5" />
       <node id="8574011380719962596" at="46,0,59,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <node id="8574011380719962596" at="31,0,46,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="8574011380719962596" at="27,93,28,43" />
+      <scope id="8574011380719962596" at="27,93,28,56" />
       <scope id="8574011380719962596" at="38,55,39,71" />
       <scope id="8574011380719962707" at="51,56,52,208" />
       <scope id="1227128029536566778" at="59,128,60,92" />
@@ -183,7 +183,7 @@
   </root>
   <root nodeRef="r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)/8574011380873424207">
     <file name="BuildMps_TestModuleGroup_Constraints.java">
-      <node id="8574011380873424207" at="27,98,28,48" concept="10" />
+      <node id="8574011380873424207" at="27,98,28,61" concept="10" />
       <node id="8574011380873424207" at="35,127,36,128" concept="4" />
       <node id="8574011380873424207" at="36,128,37,0" concept="7" />
       <node id="8574011380873424207" at="38,55,39,71" concept="1" />
@@ -208,7 +208,7 @@
       <node id="8574011380873424207" at="32,103,44,6" concept="5" />
       <node id="8574011380873424207" at="46,0,59,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <node id="8574011380873424207" at="31,0,46,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="8574011380873424207" at="27,98,28,48" />
+      <scope id="8574011380873424207" at="27,98,28,61" />
       <scope id="8574011380873424207" at="38,55,39,71" />
       <scope id="4005526075816137860" at="51,56,52,205" />
       <scope id="1227128029536566863" at="59,128,60,92" />

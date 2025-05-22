@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildVariableMacroInitValue_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildVariableMacroInitValue_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildVariableMacroInitValue$$g);
+    super(CONCEPTS.BuildVariableMacroInitValue$$g, initContext);
   }
 
   @Override

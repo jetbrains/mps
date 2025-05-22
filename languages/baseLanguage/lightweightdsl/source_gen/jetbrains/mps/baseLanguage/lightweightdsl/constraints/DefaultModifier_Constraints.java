@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DefaultModifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DefaultModifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DefaultModifier$9Q);
+    super(CONCEPTS.DefaultModifier$9Q, initContext);
   }
 
   @Override

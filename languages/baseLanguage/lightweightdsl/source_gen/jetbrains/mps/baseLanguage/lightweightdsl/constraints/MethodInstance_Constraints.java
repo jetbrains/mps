@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MethodInstance_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MethodInstance_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MethodInstance$jE);
+    super(CONCEPTS.MethodInstance$jE, initContext);
   }
 
   @Override

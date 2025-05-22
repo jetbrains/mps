@@ -33,7 +33,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Require_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Require_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Require$2c);
+    super(CONCEPTS.Require$2c, initContext);
   }
 
   @Override

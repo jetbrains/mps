@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MatrixInitializerIndexReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MatrixInitializerIndexReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MatrixInitializerIndexReference$AV);
+    super(CONCEPTS.MatrixInitializerIndexReference$AV, initContext);
   }
 
   @Override

@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class InlineStyleDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InlineStyleDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InlineStyleDeclaration$bn);
+    super(CONCEPTS.InlineStyleDeclaration$bn, initContext);
   }
 
   @Override

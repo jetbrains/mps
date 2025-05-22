@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CustomContainerDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CustomContainerDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CustomContainerDeclaration$iP);
+    super(CONCEPTS.CustomContainerDeclaration$iP, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

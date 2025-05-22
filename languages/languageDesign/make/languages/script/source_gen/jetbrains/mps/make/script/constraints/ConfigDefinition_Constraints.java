@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ConfigDefinition_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConfigDefinition_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConfigDefinition$YG);
+    super(CONCEPTS.ConfigDefinition$YG, initContext);
   }
 
   @Override

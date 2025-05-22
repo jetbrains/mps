@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildTextStringPart_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildTextStringPart_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildTextStringPart$3R);
+    super(CONCEPTS.BuildTextStringPart$3R, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

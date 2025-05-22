@@ -30,7 +30,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BeforeTaskParameterReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BeforeTaskParameterReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BeforeTaskParameterReference$g9);
+    super(CONCEPTS.BeforeTaskParameterReference$g9, initContext);
   }
 
   @Override

@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class IOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IOperation$ga);
+    super(CONCEPTS.IOperation$ga, initContext);
   }
 
   @Override

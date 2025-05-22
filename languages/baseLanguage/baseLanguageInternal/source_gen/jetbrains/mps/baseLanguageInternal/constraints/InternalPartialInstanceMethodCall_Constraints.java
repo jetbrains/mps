@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InternalPartialInstanceMethodCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InternalPartialInstanceMethodCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InternalPartialInstanceMethodCall$s_);
+    super(CONCEPTS.InternalPartialInstanceMethodCall$s_, initContext);
   }
 
   @Override

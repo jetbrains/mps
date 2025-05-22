@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IRootWithUniqueName_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IRootWithUniqueName_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IRootWithUniqueName$GJ);
+    super(CONCEPTS.IRootWithUniqueName$GJ, initContext);
   }
 
   @Override

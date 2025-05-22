@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class TypeParameterReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TypeParameterReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TypeParameterReference$ya);
+    super(CONCEPTS.TypeParameterReference$ya, initContext);
   }
 
   @Override

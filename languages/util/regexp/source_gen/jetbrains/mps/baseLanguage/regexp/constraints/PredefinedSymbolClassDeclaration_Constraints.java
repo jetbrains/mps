@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PredefinedSymbolClassDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PredefinedSymbolClassDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PredefinedSymbolClassDeclaration$K0);
+    super(CONCEPTS.PredefinedSymbolClassDeclaration$K0, initContext);
   }
 
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {

@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PropertyReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyReference$2w);
+    super(CONCEPTS.PropertyReference$2w, initContext);
   }
 
   @Override

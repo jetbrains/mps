@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ValueInlineDocTag_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ValueInlineDocTag_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ValueInlineDocTag$yw);
+    super(CONCEPTS.ValueInlineDocTag$yw, initContext);
   }
 
   @Override

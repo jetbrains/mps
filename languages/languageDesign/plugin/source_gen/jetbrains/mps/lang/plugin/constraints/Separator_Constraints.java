@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Separator_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Separator_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Separator$fe);
+    super(CONCEPTS.Separator$fe, initContext);
   }
 
   @Override

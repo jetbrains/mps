@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class TemplateArgumentQueryExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TemplateArgumentQueryExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TemplateArgumentQueryExpression$Zq);
+    super(CONCEPTS.TemplateArgumentQueryExpression$Zq, initContext);
   }
 
   @Override

@@ -16,7 +16,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MultiLambdaParameter_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MultiLambdaParameter_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MultiLambdaParameter$2f);
+    super(CONCEPTS.MultiLambdaParameter$2f, initContext);
   }
 
   public static class ForceDeconstructing_Property extends BasePropertyConstraintsDescriptor {

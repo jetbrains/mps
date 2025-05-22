@@ -27,7 +27,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LinkQualifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LinkQualifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LinkQualifier$6Q);
+    super(CONCEPTS.LinkQualifier$6Q, initContext);
   }
 
   @Override

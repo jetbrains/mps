@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MatrixElementAccessExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MatrixElementAccessExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MatrixElementAccessExpression$rG);
+    super(CONCEPTS.MatrixElementAccessExpression$rG, initContext);
   }
 
   private static final class CONCEPTS {

@@ -13,12 +13,12 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="15,0,33,0" name="jetbrains.mps.lang.test.generator.constraints.ConstraintsAspectDescriptor" />
+      <unit at="15,0,34,0" name="jetbrains.mps.lang.test.generator.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:d9fe9834-daa9-425b-9f8a-1debaf95f372(jetbrains.mps.lang.test.generator.constraints)/6346338635721157190">
     <file name="TransformationMatchManyAssertion_Constraints.java">
-      <node id="6346338635721157190" at="24,106,25,56" concept="10" />
+      <node id="6346338635721157190" at="24,106,25,69" concept="10" />
       <node id="6346338635721157190" at="32,128,33,133" concept="4" />
       <node id="6346338635721157190" at="33,133,34,0" concept="7" />
       <node id="6346338635721157190" at="35,55,36,72" concept="1" />
@@ -45,7 +45,7 @@
       <node id="6346338635721157190" at="43,0,54,0" concept="9" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <node id="6346338635721157190" at="29,105,41,6" concept="5" />
       <node id="6346338635721157190" at="28,0,43,0" concept="3" trace="calculateCanBeParentConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="6346338635721157190" at="24,106,25,56" />
+      <scope id="6346338635721157190" at="24,106,25,69" />
       <scope id="6346338635721157190" at="35,55,36,72" />
       <scope id="6346338635721189778" at="47,136,49,149">
         <var name="arg" id="6346338635721157663" />
@@ -78,7 +78,7 @@
   </root>
   <root nodeRef="r:d9fe9834-daa9-425b-9f8a-1debaf95f372(jetbrains.mps.lang.test.generator.constraints)/7985317431306261563">
     <file name="TransformationMatchAssertion_Constraints.java">
-      <node id="7985317431306261563" at="24,102,25,52" concept="10" />
+      <node id="7985317431306261563" at="24,102,25,65" concept="10" />
       <node id="7985317431306261563" at="32,128,33,133" concept="4" />
       <node id="7985317431306261563" at="33,133,34,0" concept="7" />
       <node id="7985317431306261563" at="35,55,36,72" concept="1" />
@@ -110,7 +110,7 @@
       <node id="7985317431306261563" at="29,105,41,6" concept="5" />
       <node id="7985317431306261563" at="28,0,43,0" concept="3" trace="calculateCanBeParentConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
       <node id="7985317431306261563" at="43,0,58,0" concept="9" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <scope id="7985317431306261563" at="24,102,25,52" />
+      <scope id="7985317431306261563" at="24,102,25,65" />
       <scope id="7985317431306261563" at="35,55,36,72" />
       <scope id="6346338635721168383" at="46,135,48,149">
         <var name="arg" id="2681075272524284114" />

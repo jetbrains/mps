@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ActionTestSidetransformTestContainer_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ActionTestSidetransformTestContainer_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ActionTestSidetransformTestContainer$fB);
+    super(CONCEPTS.ActionTestSidetransformTestContainer$fB, initContext);
   }
 
   @Override

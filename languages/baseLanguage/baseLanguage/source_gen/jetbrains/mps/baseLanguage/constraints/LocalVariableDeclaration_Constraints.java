@@ -16,7 +16,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LocalVariableDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LocalVariableDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LocalVariableDeclaration$41);
+    super(CONCEPTS.LocalVariableDeclaration$41, initContext);
   }
 
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {

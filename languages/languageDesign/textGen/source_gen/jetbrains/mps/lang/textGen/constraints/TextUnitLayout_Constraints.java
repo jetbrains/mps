@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TextUnitLayout_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TextUnitLayout_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TextUnitLayout$Yv);
+    super(CONCEPTS.TextUnitLayout$Yv, initContext);
   }
 
   @Override

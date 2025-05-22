@@ -35,7 +35,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class TemplateArgumentPatternVarRefExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TemplateArgumentPatternVarRefExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TemplateArgumentPatternVarRefExpression$2q);
+    super(CONCEPTS.TemplateArgumentPatternVarRefExpression$2q, initContext);
   }
 
   @Override

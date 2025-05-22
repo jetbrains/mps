@@ -27,7 +27,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NotEditableVarableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NotEditableVarableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NotEditableVarableReference$ZP);
+    super(CONCEPTS.NotEditableVarableReference$ZP, initContext);
   }
 
   @Override

@@ -34,7 +34,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TestConcept_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TestConcept_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TestConcept$cw);
+    super(CONCEPTS.TestConcept$cw, initContext);
   }
 
   public static class Prop_Property extends BasePropertyConstraintsDescriptor {

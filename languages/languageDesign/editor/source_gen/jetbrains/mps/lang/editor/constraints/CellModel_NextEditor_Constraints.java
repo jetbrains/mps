@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellModel_NextEditor_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellModel_NextEditor_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CellModel_NextEditor$8X);
+    super(CONCEPTS.CellModel_NextEditor$8X, initContext);
   }
 
   @Override

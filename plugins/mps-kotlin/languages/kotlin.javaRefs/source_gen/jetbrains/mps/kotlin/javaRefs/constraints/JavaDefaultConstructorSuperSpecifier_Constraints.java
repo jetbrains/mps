@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class JavaDefaultConstructorSuperSpecifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ JavaDefaultConstructorSuperSpecifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.JavaDefaultConstructorSuperSpecifier$YV);
+    super(CONCEPTS.JavaDefaultConstructorSuperSpecifier$YV, initContext);
   }
 
   @Override

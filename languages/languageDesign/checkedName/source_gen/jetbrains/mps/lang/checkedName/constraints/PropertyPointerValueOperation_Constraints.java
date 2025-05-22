@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PropertyPointerValueOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyPointerValueOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyPointerValueOperation$xq);
+    super(CONCEPTS.PropertyPointerValueOperation$xq, initContext);
   }
 
   @Override

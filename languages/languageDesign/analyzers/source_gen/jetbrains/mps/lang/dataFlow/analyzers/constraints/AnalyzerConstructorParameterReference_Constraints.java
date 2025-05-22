@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class AnalyzerConstructorParameterReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AnalyzerConstructorParameterReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AnalyzerConstructorParameterReference$hK);
+    super(CONCEPTS.AnalyzerConstructorParameterReference$hK, initContext);
   }
 
   @Override

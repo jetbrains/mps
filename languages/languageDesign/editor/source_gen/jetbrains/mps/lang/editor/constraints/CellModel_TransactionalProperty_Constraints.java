@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellModel_TransactionalProperty_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellModel_TransactionalProperty_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CellModel_TransactionalProperty$zZ);
+    super(CONCEPTS.CellModel_TransactionalProperty$zZ, initContext);
   }
 
   @Override

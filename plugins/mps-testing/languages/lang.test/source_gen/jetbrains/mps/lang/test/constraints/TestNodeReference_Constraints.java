@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TestNodeReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TestNodeReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TestNodeReference$hm);
+    super(CONCEPTS.TestNodeReference$hm, initContext);
   }
 
   @Override

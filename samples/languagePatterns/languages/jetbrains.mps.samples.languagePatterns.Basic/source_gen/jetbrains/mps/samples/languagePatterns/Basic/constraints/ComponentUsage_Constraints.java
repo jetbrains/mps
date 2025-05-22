@@ -29,7 +29,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ComponentUsage_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ComponentUsage_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ComponentUsage$p$);
+    super(CONCEPTS.ComponentUsage$p$, initContext);
   }
 
   @Override

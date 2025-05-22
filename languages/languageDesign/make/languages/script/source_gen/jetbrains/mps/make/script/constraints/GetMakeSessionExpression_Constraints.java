@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GetMakeSessionExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GetMakeSessionExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GetMakeSessionExpression$CM);
+    super(CONCEPTS.GetMakeSessionExpression$CM, initContext);
   }
 
   @Override

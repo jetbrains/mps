@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TypesystemQuickFix_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TypesystemQuickFix_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TypesystemQuickFix$$8);
+    super(CONCEPTS.TypesystemQuickFix$$8, initContext);
   }
 
   @Override

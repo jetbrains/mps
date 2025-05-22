@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildMps_ModuleDependencyExtendLanguage_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildMps_ModuleDependencyExtendLanguage_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W);
+    super(CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W, initContext);
   }
 
   @Override

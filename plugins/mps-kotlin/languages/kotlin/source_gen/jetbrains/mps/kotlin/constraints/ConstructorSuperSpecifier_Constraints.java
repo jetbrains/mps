@@ -34,7 +34,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConstructorSuperSpecifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConstructorSuperSpecifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConstructorSuperSpecifier$SH);
+    super(CONCEPTS.ConstructorSuperSpecifier$SH, initContext);
   }
 
   @Override

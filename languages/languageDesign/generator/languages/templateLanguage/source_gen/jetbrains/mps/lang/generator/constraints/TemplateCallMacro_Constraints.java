@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TemplateCallMacro_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TemplateCallMacro_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TemplateCallMacro$qa);
+    super(CONCEPTS.TemplateCallMacro$qa, initContext);
   }
 
   @Override

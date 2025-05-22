@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ComparisonRule_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ComparisonRule_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ComparisonRule$sZ);
+    super(CONCEPTS.ComparisonRule$sZ, initContext);
   }
 
   @Override

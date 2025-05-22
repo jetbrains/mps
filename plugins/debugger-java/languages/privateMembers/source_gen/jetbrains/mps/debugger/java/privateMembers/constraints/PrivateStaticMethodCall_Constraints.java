@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PrivateStaticMethodCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PrivateStaticMethodCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PrivateStaticMethodCall$BY);
+    super(CONCEPTS.PrivateStaticMethodCall$BY, initContext);
   }
 
   @Override

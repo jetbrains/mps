@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TargetDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TargetDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TargetDeclaration$Kf);
+    super(CONCEPTS.TargetDeclaration$Kf, initContext);
   }
 
   @Override

@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class OperationOnAddress_Constraints extends BaseConstraintsDescriptor {
   /*package*/ OperationOnAddress_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.OperationOnAddress$yW);
+    super(CONCEPTS.OperationOnAddress$yW, initContext);
   }
 
   @Override

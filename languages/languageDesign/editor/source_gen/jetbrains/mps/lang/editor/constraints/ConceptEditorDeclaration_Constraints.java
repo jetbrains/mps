@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ConceptEditorDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConceptEditorDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConceptEditorDeclaration$BH);
+    super(CONCEPTS.ConceptEditorDeclaration$BH, initContext);
   }
 
   @Override

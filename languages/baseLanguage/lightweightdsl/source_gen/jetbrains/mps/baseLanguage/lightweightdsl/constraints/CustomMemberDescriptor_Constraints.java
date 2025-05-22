@@ -32,7 +32,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class CustomMemberDescriptor_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CustomMemberDescriptor_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CustomMemberDescriptor$8z);
+    super(CONCEPTS.CustomMemberDescriptor$8z, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

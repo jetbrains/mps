@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class QueryParameter_Constraints extends BaseConstraintsDescriptor {
   /*package*/ QueryParameter_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.QueryParameter$XL);
+    super(CONCEPTS.QueryParameter$XL, initContext);
   }
 
   private static final class CONCEPTS {

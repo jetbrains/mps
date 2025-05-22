@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ChangeEvent_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ChangeEvent_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ChangeEvent$WH);
+    super(CONCEPTS.ChangeEvent$WH, initContext);
   }
 
   public static class Temperature_Property extends BasePropertyConstraintsDescriptor {

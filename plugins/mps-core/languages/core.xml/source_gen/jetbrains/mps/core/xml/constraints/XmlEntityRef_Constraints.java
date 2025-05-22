@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlEntityRef_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XmlEntityRef_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XmlEntityRef$IB);
+    super(CONCEPTS.XmlEntityRef$IB, initContext);
   }
 
   public static class EntityName_Property extends BasePropertyConstraintsDescriptor {

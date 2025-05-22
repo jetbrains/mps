@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildLayout_FileStub_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildLayout_FileStub_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildLayout_FileStub$8k);
+    super(CONCEPTS.BuildLayout_FileStub$8k, initContext);
   }
 
   @Override

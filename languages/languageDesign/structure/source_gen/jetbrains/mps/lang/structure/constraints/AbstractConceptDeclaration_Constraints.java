@@ -30,7 +30,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractConceptDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AbstractConceptDeclaration$KA);
+    super(CONCEPTS.AbstractConceptDeclaration$KA, initContext);
   }
 
   @Override

@@ -32,7 +32,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class CustomMapCreator_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CustomMapCreator_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CustomMapCreator$j2);
+    super(CONCEPTS.CustomMapCreator$j2, initContext);
   }
 
   @Override

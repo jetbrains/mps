@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class GenerationContextOp_GenParameterRef_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GenerationContextOp_GenParameterRef_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GenerationContextOp_GenParameterRef$h_);
+    super(CONCEPTS.GenerationContextOp_GenParameterRef$h_, initContext);
   }
 
   @Override

@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DataFlowAspectDeputy_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DataFlowAspectDeputy_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DataFlowAspectDeputy$N4);
+    super(CONCEPTS.DataFlowAspectDeputy$N4, initContext);
   }
 
   @Override

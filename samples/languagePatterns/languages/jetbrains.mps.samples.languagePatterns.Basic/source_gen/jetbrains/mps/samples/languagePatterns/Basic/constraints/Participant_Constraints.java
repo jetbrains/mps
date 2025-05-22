@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Participant_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Participant_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Participant$Y_);
+    super(CONCEPTS.Participant$Y_, initContext);
   }
 
   @Override

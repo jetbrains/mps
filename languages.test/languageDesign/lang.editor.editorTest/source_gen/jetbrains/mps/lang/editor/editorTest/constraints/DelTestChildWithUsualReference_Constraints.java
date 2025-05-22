@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DelTestChildWithUsualReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DelTestChildWithUsualReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DelTestChildWithUsualReference$3j);
+    super(CONCEPTS.DelTestChildWithUsualReference$3j, initContext);
   }
 
   @Override

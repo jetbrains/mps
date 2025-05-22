@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NodeReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NodeReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NodeReference$En);
+    super(CONCEPTS.NodeReference$En, initContext);
   }
 
   @Override

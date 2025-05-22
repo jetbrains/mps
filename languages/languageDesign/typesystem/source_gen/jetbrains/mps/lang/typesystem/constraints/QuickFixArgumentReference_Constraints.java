@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class QuickFixArgumentReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ QuickFixArgumentReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.QuickFixArgumentReference$P9);
+    super(CONCEPTS.QuickFixArgumentReference$P9, initContext);
   }
 
   @Override

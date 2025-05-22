@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BwfSubTaskDependency_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BwfSubTaskDependency_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BwfSubTaskDependency$OB);
+    super(CONCEPTS.BwfSubTaskDependency$OB, initContext);
   }
 
   @Override

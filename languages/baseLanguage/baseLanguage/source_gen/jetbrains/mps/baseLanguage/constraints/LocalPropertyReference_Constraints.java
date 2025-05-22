@@ -38,7 +38,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class LocalPropertyReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LocalPropertyReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LocalPropertyReference$x2);
+    super(CONCEPTS.LocalPropertyReference$x2, initContext);
   }
 
   @Override

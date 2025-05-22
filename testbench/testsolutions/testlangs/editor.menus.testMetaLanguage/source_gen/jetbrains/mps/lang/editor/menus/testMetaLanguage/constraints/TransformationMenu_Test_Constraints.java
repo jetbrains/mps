@@ -16,7 +16,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TransformationMenu_Test_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TransformationMenu_Test_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TransformationMenu_Test$v2);
+    super(CONCEPTS.TransformationMenu_Test$v2, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

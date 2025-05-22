@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ContextVariable_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ContextVariable_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ContextVariable$cu);
+    super(CONCEPTS.ContextVariable$cu, initContext);
   }
 
   @Override

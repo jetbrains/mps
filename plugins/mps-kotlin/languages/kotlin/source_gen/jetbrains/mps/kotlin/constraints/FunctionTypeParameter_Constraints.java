@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FunctionTypeParameter_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FunctionTypeParameter_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FunctionTypeParameter$9_);
+    super(CONCEPTS.FunctionTypeParameter$9_, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

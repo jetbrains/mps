@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class WeakClassReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ WeakClassReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.WeakClassReference$6D);
+    super(CONCEPTS.WeakClassReference$6D, initContext);
   }
 
   @Override

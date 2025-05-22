@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SerializeFunction_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SerializeFunction_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SerializeFunction$nA);
+    super(CONCEPTS.SerializeFunction$nA, initContext);
   }
 
   @Override

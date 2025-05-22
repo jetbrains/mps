@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ThisExtensionExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ThisExtensionExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ThisExtensionExpression$8t);
+    super(CONCEPTS.ThisExtensionExpression$8t, initContext);
   }
 
   @Override

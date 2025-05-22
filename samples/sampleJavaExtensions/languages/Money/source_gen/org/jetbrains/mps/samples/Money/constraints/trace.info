@@ -12,12 +12,12 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="15,0,37,0" name="org.jetbrains.mps.samples.Money.constraints.ConstraintsAspectDescriptor" />
+      <unit at="15,0,38,0" name="org.jetbrains.mps.samples.Money.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:287f3730-82f2-4e81-b8c8-89838004f6d4(org.jetbrains.mps.samples.Money.constraints)/1790427706118304183">
     <file name="GetCurrency_Constraints.java">
-      <node id="1790427706118304183" at="23,85,24,35" concept="9" />
+      <node id="1790427706118304183" at="23,85,24,48" concept="9" />
       <node id="1790427706118304183" at="31,127,32,128" concept="4" />
       <node id="1790427706118304183" at="32,128,33,0" concept="6" />
       <node id="1790427706118304183" at="34,55,35,71" concept="1" />
@@ -35,7 +35,7 @@
       <node id="1790427706118304183" at="30,0,40,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="1790427706118304183" at="28,103,40,6" concept="5" />
       <node id="1790427706118304183" at="27,0,42,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="1790427706118304183" at="23,85,24,35" />
+      <scope id="1790427706118304183" at="23,85,24,48" />
       <scope id="1790427706118304183" at="34,55,35,71" />
       <scope id="1227128029536582886" at="42,128,43,315" />
       <scope id="1790427706118304183" at="23,0,26,0">
@@ -64,7 +64,7 @@
   </root>
   <root nodeRef="r:287f3730-82f2-4e81-b8c8-89838004f6d4(org.jetbrains.mps.samples.Money.constraints)/1790427706118381728">
     <file name="ConvertTo_Constraints.java">
-      <node id="1790427706118381728" at="23,83,24,33" concept="9" />
+      <node id="1790427706118381728" at="23,83,24,46" concept="9" />
       <node id="1790427706118381728" at="31,127,32,128" concept="4" />
       <node id="1790427706118381728" at="32,128,33,0" concept="6" />
       <node id="1790427706118381728" at="34,55,35,71" concept="1" />
@@ -82,7 +82,7 @@
       <node id="1790427706118381728" at="30,0,40,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="1790427706118381728" at="28,103,40,6" concept="5" />
       <node id="1790427706118381728" at="27,0,42,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="1790427706118381728" at="23,83,24,33" />
+      <scope id="1790427706118381728" at="23,83,24,46" />
       <scope id="1790427706118381728" at="34,55,35,71" />
       <scope id="1227128029536582905" at="42,128,43,315" />
       <scope id="1790427706118381728" at="23,0,26,0">
@@ -111,10 +111,10 @@
   </root>
   <root nodeRef="r:287f3730-82f2-4e81-b8c8-89838004f6d4(org.jetbrains.mps.samples.Money.constraints)/3607579524910558859">
     <file name="MoneyLiteral_Constraints.java">
-      <node id="3607579524910558859" at="11,86,12,36" concept="9" />
+      <node id="3607579524910558859" at="11,86,12,49" concept="9" />
       <node id="3607579524910558859" at="16,0,17,0" concept="7" trace="MoneyLiteral$zI" />
       <node id="3607579524910558859" at="11,0,14,0" concept="0" trace="MoneyLiteral_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <scope id="3607579524910558859" at="11,86,12,36" />
+      <scope id="3607579524910558859" at="11,86,12,49" />
       <scope id="3607579524910558859" at="11,0,14,0">
         <var name="initContext" id="3607579524910558859" />
       </scope>
@@ -124,7 +124,7 @@
   </root>
   <root nodeRef="r:287f3730-82f2-4e81-b8c8-89838004f6d4(org.jetbrains.mps.samples.Money.constraints)/5447719361346553527">
     <file name="GetAmount_Constraints.java">
-      <node id="5447719361346553527" at="23,83,24,33" concept="9" />
+      <node id="5447719361346553527" at="23,83,24,46" concept="9" />
       <node id="5447719361346553527" at="31,127,32,128" concept="4" />
       <node id="5447719361346553527" at="32,128,33,0" concept="6" />
       <node id="5447719361346553527" at="34,55,35,71" concept="1" />
@@ -142,7 +142,7 @@
       <node id="5447719361346553527" at="30,0,40,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="5447719361346553527" at="28,103,40,6" concept="5" />
       <node id="5447719361346553527" at="27,0,42,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="5447719361346553527" at="23,83,24,33" />
+      <scope id="5447719361346553527" at="23,83,24,46" />
       <scope id="5447719361346553527" at="34,55,35,71" />
       <scope id="1227128029536582867" at="42,128,43,315" />
       <scope id="5447719361346553527" at="23,0,26,0">

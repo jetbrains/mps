@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Performance_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Performance_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Performance$QQ);
+    super(CONCEPTS.Performance$QQ, initContext);
   }
 
   @Override

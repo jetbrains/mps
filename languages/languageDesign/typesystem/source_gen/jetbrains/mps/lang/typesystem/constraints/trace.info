@@ -17,12 +17,12 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="15,0,75,0" name="jetbrains.mps.lang.typesystem.constraints.ConstraintsAspectDescriptor" />
+      <unit at="15,0,76,0" name="jetbrains.mps.lang.typesystem.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1213104837475">
     <file name="WhenConcreteVariableReference_Constraints.java">
-      <node id="1213104837475" at="31,103,32,53" concept="13" />
+      <node id="1213104837475" at="31,103,32,66" concept="13" />
       <node id="1213104837476" at="43,63,44,144" concept="9" />
       <node id="6836281137582806291" at="47,80,48,151" concept="8" />
       <node id="6836281137582806299" at="48,151,49,62" concept="8" />
@@ -45,7 +45,7 @@
       <node id="1213104837476" at="38,0,60,0" concept="7" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="1213104837476" at="36,90,60,6" concept="8" />
       <node id="1213104837475" at="35,0,65,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1213104837475" at="31,103,32,53" />
+      <scope id="1213104837475" at="31,103,32,66" />
       <scope id="1213104837476" at="43,63,44,144" />
       <scope id="6836281137582806314" at="52,48,53,84" />
       <scope id="1213104837475" at="31,0,34,0">
@@ -81,7 +81,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1213104844579">
     <file name="PropertyPatternVariableReference_Constraints.java">
-      <node id="1213104844579" at="32,106,33,56" concept="13" />
+      <node id="1213104844579" at="32,106,33,69" concept="13" />
       <node id="1213104844580" at="44,63,45,144" concept="9" />
       <node id="6836281137582806775" at="48,80,49,56" concept="8" />
       <node id="6836281137582806781" at="49,56,50,124" concept="8" />
@@ -119,7 +119,7 @@
       <node id="1213104844580" at="39,0,72,0" concept="7" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="1213104844580" at="37,90,72,6" concept="8" />
       <node id="1213104844579" at="36,0,77,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1213104844579" at="32,106,33,56" />
+      <scope id="1213104844579" at="32,106,33,69" />
       <scope id="1213104844580" at="44,63,45,144" />
       <scope id="6836281137582806796" at="51,137,52,355" />
       <scope id="6836281137582806832" at="56,143,57,361" />
@@ -155,7 +155,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1213104844757">
     <file name="LinkPatternVariableReference_Constraints.java">
-      <node id="1213104844757" at="32,102,33,52" concept="13" />
+      <node id="1213104844757" at="32,102,33,65" concept="13" />
       <node id="1213104844758" at="44,63,45,144" concept="9" />
       <node id="6836281137582806996" at="48,80,49,56" concept="8" />
       <node id="6836281137582807002" at="49,56,50,124" concept="8" />
@@ -193,7 +193,7 @@
       <node id="1213104844758" at="39,0,72,0" concept="7" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="1213104844758" at="37,90,72,6" concept="8" />
       <node id="1213104844757" at="36,0,77,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1213104844757" at="32,102,33,52" />
+      <scope id="1213104844757" at="32,102,33,65" />
       <scope id="1213104844758" at="44,63,45,144" />
       <scope id="6836281137582807017" at="51,137,52,351" />
       <scope id="6836281137582807053" at="56,143,57,357" />
@@ -229,7 +229,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1213104846662">
     <file name="PatternVariableReference_Constraints.java">
-      <node id="1213104846662" at="32,98,33,48" concept="13" />
+      <node id="1213104846662" at="32,98,33,61" concept="13" />
       <node id="1213104846663" at="44,63,45,144" concept="9" />
       <node id="6836281137582806010" at="48,80,49,56" concept="8" />
       <node id="6836281137582806016" at="49,56,50,124" concept="8" />
@@ -279,7 +279,7 @@
       <node id="1213104846663" at="39,0,84,0" concept="7" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="1213104846663" at="37,90,84,6" concept="8" />
       <node id="1213104846662" at="36,0,89,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1213104846662" at="32,98,33,48" />
+      <scope id="1213104846662" at="32,98,33,61" />
       <scope id="1213104846663" at="44,63,45,144" />
       <scope id="6836281137582806031" at="51,137,52,347" />
       <scope id="6836281137582806058" at="56,94,57,304" />
@@ -323,7 +323,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1213104847200">
     <file name="TypeVarReference_Constraints.java">
-      <node id="1213104847200" at="24,90,25,40" concept="13" />
+      <node id="1213104847200" at="24,90,25,53" concept="13" />
       <node id="1213104847201" at="36,63,37,144" concept="9" />
       <node id="1229172087075620198" at="40,80,41,162" concept="9" />
       <node id="1213104847200" at="45,6,46,131" concept="8" />
@@ -338,7 +338,7 @@
       <node id="1213104847201" at="31,0,45,0" concept="7" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="1213104847201" at="29,90,45,6" concept="8" />
       <node id="1213104847200" at="28,0,50,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1213104847200" at="24,90,25,40" />
+      <scope id="1213104847200" at="24,90,25,53" />
       <scope id="1213104847201" at="36,63,37,144" />
       <scope id="1213104847201" at="40,80,41,162" />
       <scope id="1213104847200" at="24,0,27,0">
@@ -364,7 +364,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1213104856925">
     <file name="ConceptReference_Constraints.java">
-      <node id="1213104856925" at="29,90,30,40" concept="13" />
+      <node id="1213104856925" at="29,90,30,53" concept="13" />
       <node id="1213104856926" at="37,116,38,20" concept="9" />
       <node id="1213104856931" at="42,78,43,154" concept="3" />
       <node id="1213104856943" at="44,114,45,221" concept="3" />
@@ -389,7 +389,7 @@
       <node id="1213104856926" at="49,0,63,0" concept="7" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="1213104856926" at="34,90,63,6" concept="8" />
       <node id="1213104856925" at="33,0,68,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1213104856925" at="29,90,30,40" />
+      <scope id="1213104856925" at="29,90,30,53" />
       <scope id="1213104856926" at="37,116,38,20" />
       <scope id="1213104856942" at="44,114,45,221" />
       <scope id="1213104856926" at="54,63,55,144" />
@@ -430,7 +430,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1213104858863">
     <file name="ApplicableNodeReference_Constraints.java">
-      <node id="1213104858863" at="31,97,32,47" concept="13" />
+      <node id="1213104858863" at="31,97,32,60" concept="13" />
       <node id="1213104858864" at="43,63,44,144" concept="9" />
       <node id="6836281137582806524" at="47,80,48,56" concept="8" />
       <node id="6836281137582806530" at="48,56,49,124" concept="8" />
@@ -480,7 +480,7 @@
       <node id="1213104858864" at="38,0,86,0" concept="7" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="1213104858864" at="36,90,86,6" concept="8" />
       <node id="1213104858863" at="35,0,91,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1213104858863" at="31,97,32,47" />
+      <scope id="1213104858863" at="31,97,32,60" />
       <scope id="1213104858864" at="43,63,44,144" />
       <scope id="6836281137582806550" at="52,36,53,66" />
       <scope id="6836281137582806570" at="57,39,58,69" />
@@ -527,7 +527,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1213104860682">
     <file name="TypesystemIntentionArgument_Constraints.java">
-      <node id="1213104860682" at="31,101,32,51" concept="13" />
+      <node id="1213104860682" at="31,101,32,64" concept="13" />
       <node id="1216387787517" at="43,63,44,144" concept="9" />
       <node id="6836281137582807613" at="47,80,48,55" concept="8" />
       <node id="6836281137582807619" at="48,55,49,142" concept="8" />
@@ -549,7 +549,7 @@
       <node id="1216387787517" at="38,0,57,0" concept="7" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="1216387787517" at="36,90,57,6" concept="8" />
       <node id="1213104860682" at="35,0,62,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1213104860682" at="31,101,32,51" />
+      <scope id="1213104860682" at="31,101,32,64" />
       <scope id="1216387787517" at="43,63,44,144" />
       <scope id="6836281137582807629" at="50,43,51,202" />
       <scope id="1213104860682" at="31,0,34,0">
@@ -579,7 +579,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1216390479216">
     <file name="QuickFixArgumentReference_Constraints.java">
-      <node id="1216390479216" at="31,99,32,49" concept="13" />
+      <node id="1216390479216" at="31,99,32,62" concept="13" />
       <node id="1216390505376" at="43,63,44,144" concept="9" />
       <node id="6836281137582806411" at="47,80,48,55" concept="8" />
       <node id="6836281137582806417" at="48,55,49,134" concept="8" />
@@ -600,7 +600,7 @@
       <node id="1216390505376" at="38,0,57,0" concept="7" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="1216390505376" at="36,90,57,6" concept="8" />
       <node id="1216390479216" at="35,0,62,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1216390479216" at="31,99,32,49" />
+      <scope id="1216390479216" at="31,99,32,62" />
       <scope id="1216390505376" at="43,63,44,144" />
       <scope id="6836281137582806426" at="50,37,51,146" />
       <scope id="1216390479216" at="31,0,34,0">
@@ -630,7 +630,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1227088436106">
     <file name="InferenceRule_Constraints.java">
-      <node id="1227088436106" at="20,87,21,37" concept="13" />
+      <node id="1227088436106" at="20,87,21,50" concept="13" />
       <node id="1227088436106" at="28,126,29,62" concept="8" />
       <node id="1227088436106" at="29,62,30,0" concept="10" />
       <node id="1227088436106" at="31,55,32,70" concept="3" />
@@ -645,7 +645,7 @@
       <node id="1227088436106" at="27,0,37,0" concept="7" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeRoot;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="1227088436106" at="25,98,37,6" concept="9" />
       <node id="1227088436106" at="24,0,39,0" concept="7" trace="calculateCanBeRootConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="1227088436106" at="20,87,21,37" />
+      <scope id="1227088436106" at="20,87,21,50" />
       <scope id="1227088436106" at="31,55,32,70" />
       <scope id="1227088438467" at="39,57,40,103" />
       <scope id="1227088436106" at="20,0,23,0">
@@ -670,7 +670,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1227088545213">
     <file name="ComparisonRule_Constraints.java">
-      <node id="1227088545213" at="20,88,21,38" concept="13" />
+      <node id="1227088545213" at="20,88,21,51" concept="13" />
       <node id="1227088545213" at="28,126,29,62" concept="8" />
       <node id="1227088545213" at="29,62,30,0" concept="10" />
       <node id="1227088545213" at="31,55,32,70" concept="3" />
@@ -685,7 +685,7 @@
       <node id="1227088545213" at="27,0,37,0" concept="7" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeRoot;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="1227088545213" at="25,98,37,6" concept="9" />
       <node id="1227088545213" at="24,0,39,0" concept="7" trace="calculateCanBeRootConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="1227088545213" at="20,88,21,38" />
+      <scope id="1227088545213" at="20,88,21,51" />
       <scope id="1227088545213" at="31,55,32,70" />
       <scope id="1227088546715" at="39,57,40,103" />
       <scope id="1227088545213" at="20,0,23,0">
@@ -710,7 +710,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1227088567867">
     <file name="TypesystemQuickFix_Constraints.java">
-      <node id="1227088567867" at="20,92,21,42" concept="13" />
+      <node id="1227088567867" at="20,92,21,55" concept="13" />
       <node id="1227088567867" at="28,126,29,62" concept="8" />
       <node id="1227088567867" at="29,62,30,0" concept="10" />
       <node id="1227088567867" at="31,55,32,70" concept="3" />
@@ -725,7 +725,7 @@
       <node id="1227088567867" at="27,0,37,0" concept="7" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeRoot;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="1227088567867" at="25,98,37,6" concept="9" />
       <node id="1227088567867" at="24,0,39,0" concept="7" trace="calculateCanBeRootConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="1227088567867" at="20,92,21,42" />
+      <scope id="1227088567867" at="20,92,21,55" />
       <scope id="1227088567867" at="31,55,32,70" />
       <scope id="1227088570447" at="39,57,40,103" />
       <scope id="1227088567867" at="20,0,23,0">
@@ -750,7 +750,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1227088583369">
     <file name="InequationReplacementRule_Constraints.java">
-      <node id="1227088583369" at="20,99,21,49" concept="13" />
+      <node id="1227088583369" at="20,99,21,62" concept="13" />
       <node id="1227088583369" at="28,126,29,62" concept="8" />
       <node id="1227088583369" at="29,62,30,0" concept="10" />
       <node id="1227088583369" at="31,55,32,70" concept="3" />
@@ -765,7 +765,7 @@
       <node id="1227088583369" at="27,0,37,0" concept="7" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeRoot;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="1227088583369" at="25,98,37,6" concept="9" />
       <node id="1227088583369" at="24,0,39,0" concept="7" trace="calculateCanBeRootConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="1227088583369" at="20,99,21,49" />
+      <scope id="1227088583369" at="20,99,21,62" />
       <scope id="1227088583369" at="31,55,32,70" />
       <scope id="1227088585371" at="39,57,40,103" />
       <scope id="1227088583369" at="20,0,23,0">
@@ -790,7 +790,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1227088611953">
     <file name="NonTypesystemRule_Constraints.java">
-      <node id="1227088611953" at="20,91,21,41" concept="13" />
+      <node id="1227088611953" at="20,91,21,54" concept="13" />
       <node id="1227088611953" at="28,126,29,62" concept="8" />
       <node id="1227088611953" at="29,62,30,0" concept="10" />
       <node id="1227088611953" at="31,55,32,70" concept="3" />
@@ -805,7 +805,7 @@
       <node id="1227088611953" at="27,0,37,0" concept="7" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeRoot;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="1227088611953" at="25,98,37,6" concept="9" />
       <node id="1227088611953" at="24,0,39,0" concept="7" trace="calculateCanBeRootConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="1227088611953" at="20,91,21,41" />
+      <scope id="1227088611953" at="20,91,21,54" />
       <scope id="1227088611953" at="31,55,32,70" />
       <scope id="1227088613159" at="39,57,40,103" />
       <scope id="1227088611953" at="20,0,23,0">
@@ -830,7 +830,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1227088639814">
     <file name="SubtypingRule_Constraints.java">
-      <node id="1227088639814" at="20,87,21,37" concept="13" />
+      <node id="1227088639814" at="20,87,21,50" concept="13" />
       <node id="1227088639814" at="28,126,29,62" concept="8" />
       <node id="1227088639814" at="29,62,30,0" concept="10" />
       <node id="1227088639814" at="31,55,32,70" concept="3" />
@@ -845,7 +845,7 @@
       <node id="1227088639814" at="27,0,37,0" concept="7" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeRoot;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="1227088639814" at="25,98,37,6" concept="9" />
       <node id="1227088639814" at="24,0,39,0" concept="7" trace="calculateCanBeRootConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="1227088639814" at="20,87,21,37" />
+      <scope id="1227088639814" at="20,87,21,50" />
       <scope id="1227088639814" at="31,55,32,70" />
       <scope id="1227088641113" at="39,57,40,103" />
       <scope id="1227088639814" at="20,0,23,0">
@@ -870,7 +870,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1227098342559">
     <file name="PropertyMessageTarget_Constraints.java">
-      <node id="1227098342559" at="32,95,33,45" concept="13" />
+      <node id="1227098342559" at="32,95,33,58" concept="13" />
       <node id="1227098346884" at="44,63,45,144" concept="9" />
       <node id="6836281137582807873" at="48,80,49,146" concept="8" />
       <node id="6836281137582807884" at="50,43,51,108" concept="9" />
@@ -898,7 +898,7 @@
       <node id="1227098346884" at="39,0,65,0" concept="7" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="1227098346884" at="37,90,65,6" concept="8" />
       <node id="1227098342559" at="36,0,70,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1227098342559" at="32,95,33,45" />
+      <scope id="1227098342559" at="32,95,33,58" />
       <scope id="1227098346884" at="44,63,45,144" />
       <scope id="6836281137582807883" at="50,43,51,108" />
       <scope id="6836281137582807902" at="56,64,57,228" />
@@ -933,7 +933,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1227101197786">
     <file name="ReferenceMessageTarget_Constraints.java">
-      <node id="1227101197786" at="32,96,33,46" concept="13" />
+      <node id="1227101197786" at="32,96,33,59" concept="13" />
       <node id="1227101201949" at="44,63,45,144" concept="9" />
       <node id="6836281137582807661" at="48,80,49,146" concept="8" />
       <node id="6836281137582807672" at="50,43,51,108" concept="9" />
@@ -961,7 +961,7 @@
       <node id="1227101201949" at="39,0,65,0" concept="7" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="1227101201949" at="37,90,65,6" concept="8" />
       <node id="1227101197786" at="36,0,70,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1227101197786" at="32,96,33,46" />
+      <scope id="1227101197786" at="32,96,33,59" />
       <scope id="1227101201949" at="44,63,45,144" />
       <scope id="6836281137582807671" at="50,43,51,108" />
       <scope id="6836281137582807690" at="56,64,57,224" />
@@ -1126,7 +1126,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/2329696648449887824">
     <file name="CheckingRuleReference_Constraints.java">
-      <node id="2329696648449887824" at="19,95,20,45" concept="13" />
+      <node id="2329696648449887824" at="19,95,20,58" concept="13" />
       <node id="2329696648449887825" at="28,56,29,209" concept="9" />
       <node id="2329696648449887824" at="31,6,32,131" concept="8" />
       <node id="2329696648449887825" at="32,131,33,42" concept="3" />
@@ -1138,7 +1138,7 @@
       <node id="2329696648449887825" at="26,0,31,0" concept="7" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="2329696648449887825" at="24,90,31,6" concept="8" />
       <node id="2329696648449887824" at="23,0,36,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="2329696648449887824" at="19,95,20,45" />
+      <scope id="2329696648449887824" at="19,95,20,58" />
       <scope id="2329696648449887825" at="28,56,29,209" />
       <scope id="2329696648449887824" at="19,0,22,0">
         <var name="initContext" id="2329696648449887824" />
@@ -1157,7 +1157,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/3097693430729551390">
     <file name="AbstractEquationStatement_Constraints.java">
-      <node id="3097693430729551390" at="21,99,22,49" concept="13" />
+      <node id="3097693430729551390" at="21,99,22,62" concept="13" />
       <node id="3097693430729551390" at="29,127,30,128" concept="8" />
       <node id="3097693430729551390" at="30,128,31,0" concept="10" />
       <node id="3097693430729551390" at="32,55,33,71" concept="3" />
@@ -1172,7 +1172,7 @@
       <node id="3097693430729551390" at="28,0,38,0" concept="7" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="3097693430729551390" at="26,103,38,6" concept="9" />
       <node id="3097693430729551390" at="25,0,40,0" concept="7" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="3097693430729551390" at="21,99,22,49" />
+      <scope id="3097693430729551390" at="21,99,22,62" />
       <scope id="3097693430729551390" at="32,55,33,71" />
       <scope id="3097693430729551392" at="40,128,41,53" />
       <scope id="3097693430729551390" at="21,0,24,0">
@@ -1200,7 +1200,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/6405009306797516357">
     <file name="SubstituteTypeRule_Constraints.java">
-      <node id="6405009306797516357" at="20,92,21,42" concept="13" />
+      <node id="6405009306797516357" at="20,92,21,55" concept="13" />
       <node id="6405009306797516357" at="28,126,29,62" concept="8" />
       <node id="6405009306797516357" at="29,62,30,0" concept="10" />
       <node id="6405009306797516357" at="31,55,32,70" concept="3" />
@@ -1215,7 +1215,7 @@
       <node id="6405009306797516357" at="27,0,37,0" concept="7" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeRoot;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="6405009306797516357" at="25,98,37,6" concept="9" />
       <node id="6405009306797516357" at="24,0,39,0" concept="7" trace="calculateCanBeRootConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="6405009306797516357" at="20,92,21,42" />
+      <scope id="6405009306797516357" at="20,92,21,55" />
       <scope id="6405009306797516357" at="31,55,32,70" />
       <scope id="6405009306797516359" at="39,57,40,103" />
       <scope id="6405009306797516357" at="20,0,23,0">
@@ -1240,7 +1240,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/7857223919215948959">
     <file name="InequationReference_Constraints.java">
-      <node id="7857223919215948959" at="16,93,17,43" concept="13" />
+      <node id="7857223919215948959" at="16,93,17,56" concept="13" />
       <node id="7857223919215948960" at="21,90,22,129" concept="8" />
       <node id="7857223919215948959" at="22,129,23,131" concept="8" />
       <node id="7857223919215948960" at="23,131,24,42" concept="3" />
@@ -1249,7 +1249,7 @@
       <node id="7857223919215948959" at="33,0,34,0" concept="11" trace="inequation$xlaQ" />
       <node id="7857223919215948959" at="16,0,19,0" concept="2" trace="InequationReference_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
       <node id="7857223919215948959" at="20,0,27,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="7857223919215948959" at="16,93,17,43" />
+      <scope id="7857223919215948959" at="16,93,17,56" />
       <scope id="7857223919215948959" at="16,0,19,0">
         <var name="initContext" id="7857223919215948959" />
       </scope>
@@ -1266,7 +1266,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/8090891477833132962">
     <file name="QuickFixFieldReference_Constraints.java">
-      <node id="8090891477833132962" at="31,96,32,46" concept="13" />
+      <node id="8090891477833132962" at="31,96,32,59" concept="13" />
       <node id="8090891477833132963" at="43,63,44,144" concept="9" />
       <node id="6836281137582805897" at="47,80,48,55" concept="8" />
       <node id="6836281137582805903" at="48,55,49,134" concept="8" />
@@ -1287,7 +1287,7 @@
       <node id="8090891477833132963" at="38,0,57,0" concept="7" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="8090891477833132963" at="36,90,57,6" concept="8" />
       <node id="8090891477833132962" at="35,0,62,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="8090891477833132962" at="31,96,32,46" />
+      <scope id="8090891477833132962" at="31,96,32,59" />
       <scope id="8090891477833132963" at="43,63,44,144" />
       <scope id="6836281137582805912" at="50,37,51,143" />
       <scope id="8090891477833132962" at="31,0,34,0">
@@ -1317,7 +1317,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/919572754501607735">
     <file name="AbstractReportStatement_Constraints.java">
-      <node id="919572754501607735" at="21,97,22,47" concept="13" />
+      <node id="919572754501607735" at="21,97,22,60" concept="13" />
       <node id="919572754501607735" at="29,127,30,128" concept="8" />
       <node id="919572754501607735" at="30,128,31,0" concept="10" />
       <node id="919572754501607735" at="32,55,33,71" concept="3" />
@@ -1332,7 +1332,7 @@
       <node id="919572754501607735" at="28,0,38,0" concept="7" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="919572754501607735" at="26,103,38,6" concept="9" />
       <node id="919572754501607735" at="25,0,40,0" concept="7" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="919572754501607735" at="21,97,22,47" />
+      <scope id="919572754501607735" at="21,97,22,60" />
       <scope id="919572754501607735" at="32,55,33,71" />
       <scope id="1227128029536563822" at="40,128,41,52" />
       <scope id="919572754501607735" at="21,0,24,0">

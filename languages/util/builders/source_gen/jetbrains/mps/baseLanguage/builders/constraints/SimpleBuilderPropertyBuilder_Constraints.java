@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class SimpleBuilderPropertyBuilder_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SimpleBuilderPropertyBuilder_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SimpleBuilderPropertyBuilder$NO);
+    super(CONCEPTS.SimpleBuilderPropertyBuilder$NO, initContext);
   }
 
   @Override

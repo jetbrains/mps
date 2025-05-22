@@ -27,7 +27,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConstrainedDataTypeDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConstrainedDataTypeDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConstrainedDataTypeDeclaration$Ch);
+    super(CONCEPTS.ConstrainedDataTypeDeclaration$Ch, initContext);
   }
 
   @Override

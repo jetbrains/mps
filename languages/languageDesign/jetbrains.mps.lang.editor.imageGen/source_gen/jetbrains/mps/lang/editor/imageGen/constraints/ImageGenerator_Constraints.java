@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ImageGenerator_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ImageGenerator_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ImageGenerator$Ng);
+    super(CONCEPTS.ImageGenerator$Ng, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

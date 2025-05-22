@@ -33,7 +33,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LocalBehaviorMethodCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LocalBehaviorMethodCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LocalBehaviorMethodCall$Y1);
+    super(CONCEPTS.LocalBehaviorMethodCall$Y1, initContext);
   }
 
   @Override

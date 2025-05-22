@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CustomOperatorUsage_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CustomOperatorUsage_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CustomOperatorUsage$Hd);
+    super(CONCEPTS.CustomOperatorUsage$Hd, initContext);
   }
 
   @Override

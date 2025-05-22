@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ArrayCloneOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ArrayCloneOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ArrayCloneOperation$pt);
+    super(CONCEPTS.ArrayCloneOperation$pt, initContext);
   }
 
   @Override

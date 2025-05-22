@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ActionGroupDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ActionGroupDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ActionGroupDeclaration$VO);
+    super(CONCEPTS.ActionGroupDeclaration$VO, initContext);
   }
 
   @Override

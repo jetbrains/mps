@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MatrixIndexWildcard_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MatrixIndexWildcard_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MatrixIndexWildcard$MC);
+    super(CONCEPTS.MatrixIndexWildcard$MC, initContext);
   }
 
   @Override

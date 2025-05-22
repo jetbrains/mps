@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PrivateStaticFieldReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PrivateStaticFieldReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PrivateStaticFieldReference$oq);
+    super(CONCEPTS.PrivateStaticFieldReference$oq, initContext);
   }
 
   @Override

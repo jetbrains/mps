@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TestSubstituteSmartRef_WithoutExplicitMenu_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TestSubstituteSmartRef_WithoutExplicitMenu_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TestSubstituteSmartRef_WithoutExplicitMenu$AF);
+    super(CONCEPTS.TestSubstituteSmartRef_WithoutExplicitMenu$AF, initContext);
   }
 
   @Override

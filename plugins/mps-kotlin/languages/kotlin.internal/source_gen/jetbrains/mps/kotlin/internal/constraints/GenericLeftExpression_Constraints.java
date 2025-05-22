@@ -16,7 +16,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GenericLeftExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GenericLeftExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GenericLeftExpression$Z4);
+    super(CONCEPTS.GenericLeftExpression$Z4, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

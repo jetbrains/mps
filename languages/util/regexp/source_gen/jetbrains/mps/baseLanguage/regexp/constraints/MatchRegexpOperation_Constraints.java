@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MatchRegexpOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MatchRegexpOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MatchRegexpOperation$VK);
+    super(CONCEPTS.MatchRegexpOperation$VK, initContext);
   }
 
   @Override

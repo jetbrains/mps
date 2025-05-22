@@ -33,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Node_ConceptMethodCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Node_ConceptMethodCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Node_ConceptMethodCall$mz);
+    super(CONCEPTS.Node_ConceptMethodCall$mz, initContext);
   }
 
   @Override

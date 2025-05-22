@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MultiForEachVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MultiForEachVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MultiForEachVariableReference$4f);
+    super(CONCEPTS.MultiForEachVariableReference$4f, initContext);
   }
 
   @Override

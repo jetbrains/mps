@@ -34,7 +34,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FailingRuleProblem_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FailingRuleProblem_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FailingRuleProblem$j3);
+    super(CONCEPTS.FailingRuleProblem$j3, initContext);
   }
 
   @Override

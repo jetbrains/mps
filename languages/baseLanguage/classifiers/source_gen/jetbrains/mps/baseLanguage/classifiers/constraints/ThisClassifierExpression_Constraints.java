@@ -32,7 +32,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ThisClassifierExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ThisClassifierExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ThisClassifierExpression$xB);
+    super(CONCEPTS.ThisClassifierExpression$xB, initContext);
   }
 
   @Override

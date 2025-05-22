@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TestConstraintsInheritance_Derived2_Constrained_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TestConstraintsInheritance_Derived2_Constrained_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TestConstraintsInheritance_Derived2_Constrained$UD);
+    super(CONCEPTS.TestConstraintsInheritance_Derived2_Constrained$UD, initContext);
   }
 
   @Override

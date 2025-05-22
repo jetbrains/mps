@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlContent_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XmlContent_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XmlContent$Mu);
+    super(CONCEPTS.XmlContent$Mu, initContext);
   }
 
   private static final class CONCEPTS {

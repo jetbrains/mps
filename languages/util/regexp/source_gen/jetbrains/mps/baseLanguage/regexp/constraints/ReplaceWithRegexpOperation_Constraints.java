@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ReplaceWithRegexpOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ReplaceWithRegexpOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ReplaceWithRegexpOperation$XH);
+    super(CONCEPTS.ReplaceWithRegexpOperation$XH, initContext);
   }
 
   @Override

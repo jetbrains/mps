@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellIdReferenceSelector_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellIdReferenceSelector_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CellIdReferenceSelector$vW);
+    super(CONCEPTS.CellIdReferenceSelector$vW, initContext);
   }
 
   @Override

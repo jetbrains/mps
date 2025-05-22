@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InputFieldReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InputFieldReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InputFieldReference$fQ);
+    super(CONCEPTS.InputFieldReference$fQ, initContext);
   }
 
   @Override

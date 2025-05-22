@@ -34,7 +34,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NamedTupleComponentAccessOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NamedTupleComponentAccessOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NamedTupleComponentAccessOperation$DA);
+    super(CONCEPTS.NamedTupleComponentAccessOperation$DA, initContext);
   }
 
   @Override

@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StringLiteralRegexp_Constraints extends BaseConstraintsDescriptor {
   /*package*/ StringLiteralRegexp_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.StringLiteralRegexp$SX);
+    super(CONCEPTS.StringLiteralRegexp$SX, initContext);
   }
 
   public static class Text_Property extends BasePropertyConstraintsDescriptor {

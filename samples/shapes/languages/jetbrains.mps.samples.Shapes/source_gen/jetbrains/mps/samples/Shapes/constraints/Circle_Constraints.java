@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Circle_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Circle_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Circle$4Q);
+    super(CONCEPTS.Circle$4Q, initContext);
   }
 
   public static class Radius_Property extends BasePropertyConstraintsDescriptor {

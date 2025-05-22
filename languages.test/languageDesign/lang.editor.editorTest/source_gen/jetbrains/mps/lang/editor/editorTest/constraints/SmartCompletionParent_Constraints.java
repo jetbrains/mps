@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SmartCompletionParent_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SmartCompletionParent_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SmartCompletionParent$SA);
+    super(CONCEPTS.SmartCompletionParent$SA, initContext);
   }
 
   private static final class CONCEPTS {

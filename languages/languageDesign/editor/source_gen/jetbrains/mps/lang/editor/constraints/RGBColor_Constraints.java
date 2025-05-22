@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RGBColor_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RGBColor_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RGBColor$ds);
+    super(CONCEPTS.RGBColor$ds, initContext);
   }
 
   public static class Value_Property extends BasePropertyConstraintsDescriptor {

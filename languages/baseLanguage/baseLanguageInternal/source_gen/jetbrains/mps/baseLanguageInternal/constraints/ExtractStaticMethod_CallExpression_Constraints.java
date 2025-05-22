@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExtractStaticMethod_CallExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExtractStaticMethod_CallExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExtractStaticMethod_CallExpression$dg);
+    super(CONCEPTS.ExtractStaticMethod_CallExpression$dg, initContext);
   }
 
   @Override

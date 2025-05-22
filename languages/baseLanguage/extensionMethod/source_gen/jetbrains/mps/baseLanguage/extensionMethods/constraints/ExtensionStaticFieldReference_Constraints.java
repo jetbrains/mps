@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ExtensionStaticFieldReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExtensionStaticFieldReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExtensionStaticFieldReference$hd);
+    super(CONCEPTS.ExtensionStaticFieldReference$hd, initContext);
   }
 
   @Override

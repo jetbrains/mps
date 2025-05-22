@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class IApplicableToNothing_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IApplicableToNothing_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IApplicableToNothing$j7);
+    super(CONCEPTS.IApplicableToNothing$j7, initContext);
   }
 
   @Override

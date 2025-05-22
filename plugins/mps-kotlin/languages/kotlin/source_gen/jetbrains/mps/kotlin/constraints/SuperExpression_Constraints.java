@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class SuperExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SuperExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SuperExpression$QK);
+    super(CONCEPTS.SuperExpression$QK, initContext);
   }
 
   @Override

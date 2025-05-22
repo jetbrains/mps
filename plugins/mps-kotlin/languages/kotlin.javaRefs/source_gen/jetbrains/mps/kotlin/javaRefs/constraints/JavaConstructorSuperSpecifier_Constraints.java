@@ -32,7 +32,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class JavaConstructorSuperSpecifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ JavaConstructorSuperSpecifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.JavaConstructorSuperSpecifier$OZ);
+    super(CONCEPTS.JavaConstructorSuperSpecifier$OZ, initContext);
   }
 
   @Override

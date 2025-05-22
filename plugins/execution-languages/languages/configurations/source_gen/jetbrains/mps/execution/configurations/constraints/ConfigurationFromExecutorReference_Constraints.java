@@ -27,7 +27,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConfigurationFromExecutorReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConfigurationFromExecutorReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConfigurationFromExecutorReference$3p);
+    super(CONCEPTS.ConfigurationFromExecutorReference$3p, initContext);
   }
 
   @Override

@@ -31,7 +31,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CommandParameterReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CommandParameterReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CommandParameterReference$LM);
+    super(CONCEPTS.CommandParameterReference$LM, initContext);
   }
 
   @Override

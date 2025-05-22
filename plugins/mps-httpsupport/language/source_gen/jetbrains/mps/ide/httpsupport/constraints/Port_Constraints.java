@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Port_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Port_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Port$OX);
+    super(CONCEPTS.Port$OX, initContext);
   }
 
   public static class PortNumber_Property extends BasePropertyConstraintsDescriptor {

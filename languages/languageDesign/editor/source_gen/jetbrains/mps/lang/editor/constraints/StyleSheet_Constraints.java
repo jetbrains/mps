@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StyleSheet_Constraints extends BaseConstraintsDescriptor {
   /*package*/ StyleSheet_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.StyleSheet$Sg);
+    super(CONCEPTS.StyleSheet$Sg, initContext);
   }
 
   @Override

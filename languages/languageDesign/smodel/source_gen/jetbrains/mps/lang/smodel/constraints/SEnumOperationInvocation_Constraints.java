@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SEnumOperationInvocation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SEnumOperationInvocation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SEnumOperationInvocation$_F);
+    super(CONCEPTS.SEnumOperationInvocation$_F, initContext);
   }
 
   @Override

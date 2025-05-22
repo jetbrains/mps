@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildExternalLayoutDependency_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildExternalLayoutDependency_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildExternalLayoutDependency$oL);
+    super(CONCEPTS.BuildExternalLayoutDependency$oL, initContext);
   }
 
   @Override

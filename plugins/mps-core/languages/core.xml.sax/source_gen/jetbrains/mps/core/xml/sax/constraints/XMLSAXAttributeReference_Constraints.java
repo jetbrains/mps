@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XMLSAXAttributeReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XMLSAXAttributeReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XMLSAXAttributeReference$40);
+    super(CONCEPTS.XMLSAXAttributeReference$40, initContext);
   }
 
   @Override

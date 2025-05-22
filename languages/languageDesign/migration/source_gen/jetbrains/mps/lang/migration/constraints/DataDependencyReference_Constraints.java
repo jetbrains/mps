@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DataDependencyReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DataDependencyReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DataDependencyReference$QA);
+    super(CONCEPTS.DataDependencyReference$QA, initContext);
   }
 
   @Override

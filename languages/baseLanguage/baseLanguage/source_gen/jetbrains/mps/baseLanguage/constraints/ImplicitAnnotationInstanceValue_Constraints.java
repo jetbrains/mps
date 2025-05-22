@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ImplicitAnnotationInstanceValue_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ImplicitAnnotationInstanceValue_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ImplicitAnnotationInstanceValue$OQ);
+    super(CONCEPTS.ImplicitAnnotationInstanceValue$OQ, initContext);
   }
 
   @Override

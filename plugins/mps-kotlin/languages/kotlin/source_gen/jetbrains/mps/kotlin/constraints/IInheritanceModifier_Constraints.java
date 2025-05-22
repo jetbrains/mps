@@ -10,7 +10,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IInheritanceModifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IInheritanceModifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IInheritanceModifier$G7);
+    super(CONCEPTS.IInheritanceModifier$G7, initContext);
   }
 
   @Override

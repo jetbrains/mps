@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class KotlinFunctionCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ KotlinFunctionCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.KotlinFunctionCall$xX);
+    super(CONCEPTS.KotlinFunctionCall$xX, initContext);
   }
 
   @Override

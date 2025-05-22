@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NamedTupleComponentDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NamedTupleComponentDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NamedTupleComponentDeclaration$r7);
+    super(CONCEPTS.NamedTupleComponentDeclaration$r7, initContext);
   }
 
   private static final class CONCEPTS {

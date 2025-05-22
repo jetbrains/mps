@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InterfaceExtentionPoint_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InterfaceExtentionPoint_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InterfaceExtentionPoint$5p);
+    super(CONCEPTS.InterfaceExtentionPoint$5p, initContext);
   }
 
   @Override

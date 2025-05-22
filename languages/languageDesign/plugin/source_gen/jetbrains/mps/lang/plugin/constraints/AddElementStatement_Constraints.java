@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AddElementStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AddElementStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AddElementStatement$dU);
+    super(CONCEPTS.AddElementStatement$dU, initContext);
   }
 
   @Override

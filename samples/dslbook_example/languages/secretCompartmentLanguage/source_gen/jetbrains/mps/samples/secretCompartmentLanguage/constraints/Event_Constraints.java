@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Event_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Event_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Event$Td);
+    super(CONCEPTS.Event$Td, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

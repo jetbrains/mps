@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ComeFromExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ComeFromExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ComeFromExpression$4V);
+    super(CONCEPTS.ComeFromExpression$4V, initContext);
   }
 
   @Override

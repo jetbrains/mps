@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExportAsImage_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExportAsImage_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExportAsImage$xS);
+    super(CONCEPTS.ExportAsImage$xS, initContext);
   }
 
   @Override

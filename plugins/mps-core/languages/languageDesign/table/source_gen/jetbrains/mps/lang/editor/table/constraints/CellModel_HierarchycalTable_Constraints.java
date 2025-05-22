@@ -27,7 +27,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellModel_HierarchycalTable_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CellModel_HierarchycalTable$aJ);
+    super(CONCEPTS.CellModel_HierarchycalTable$aJ, initContext);
   }
 
   @Override

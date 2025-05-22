@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class HtmlAttribute_Constraints extends BaseConstraintsDescriptor {
   /*package*/ HtmlAttribute_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.HtmlAttribute$Ke);
+    super(CONCEPTS.HtmlAttribute$Ke, initContext);
   }
 
   public static class AttrName_Property extends BasePropertyConstraintsDescriptor {

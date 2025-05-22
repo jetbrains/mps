@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildProjectDependency_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildProjectDependency_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildProjectDependency$sN);
+    super(CONCEPTS.BuildProjectDependency$sN, initContext);
   }
 
   @Override

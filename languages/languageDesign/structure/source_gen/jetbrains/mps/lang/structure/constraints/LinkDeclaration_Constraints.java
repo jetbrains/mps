@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LinkDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LinkDeclaration$1p);
+    super(CONCEPTS.LinkDeclaration$1p, initContext);
   }
 
   public static class SourceCardinality_Property extends BasePropertyConstraintsDescriptor {

@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MatchVariableReferenceRegexp_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MatchVariableReferenceRegexp_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MatchVariableReferenceRegexp$AQ);
+    super(CONCEPTS.MatchVariableReferenceRegexp$AQ, initContext);
   }
 
   @Override

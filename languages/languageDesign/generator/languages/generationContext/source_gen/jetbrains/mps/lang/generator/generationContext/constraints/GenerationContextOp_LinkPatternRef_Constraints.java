@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class GenerationContextOp_LinkPatternRef_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GenerationContextOp_LinkPatternRef_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GenerationContextOp_LinkPatternRef$mf);
+    super(CONCEPTS.GenerationContextOp_LinkPatternRef$mf, initContext);
   }
 
   @Override

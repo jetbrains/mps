@@ -30,7 +30,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class KotlinPropertyGetterCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ KotlinPropertyGetterCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.KotlinPropertyGetterCall$V$);
+    super(CONCEPTS.KotlinPropertyGetterCall$V$, initContext);
   }
 
   public static class FunctionName_Property extends BasePropertyConstraintsDescriptor {

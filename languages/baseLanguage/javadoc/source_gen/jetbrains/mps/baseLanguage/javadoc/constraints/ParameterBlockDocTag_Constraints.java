@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ParameterBlockDocTag_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ParameterBlockDocTag_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ParameterBlockDocTag$ie);
+    super(CONCEPTS.ParameterBlockDocTag$ie, initContext);
   }
 
   @Override

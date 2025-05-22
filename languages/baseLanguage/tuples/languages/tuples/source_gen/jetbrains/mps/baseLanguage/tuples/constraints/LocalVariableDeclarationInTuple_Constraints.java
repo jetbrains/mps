@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LocalVariableDeclarationInTuple_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LocalVariableDeclarationInTuple_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LocalVariableDeclarationInTuple$Gg);
+    super(CONCEPTS.LocalVariableDeclarationInTuple$Gg, initContext);
   }
 
   @Override

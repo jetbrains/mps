@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class UnboundClosureParameterDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ UnboundClosureParameterDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.UnboundClosureParameterDeclaration$vX);
+    super(CONCEPTS.UnboundClosureParameterDeclaration$vX, initContext);
   }
 
   @Override

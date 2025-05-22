@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ThisConstructorDelegationCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ThisConstructorDelegationCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ThisConstructorDelegationCall$nG);
+    super(CONCEPTS.ThisConstructorDelegationCall$nG, initContext);
   }
 
   @Override

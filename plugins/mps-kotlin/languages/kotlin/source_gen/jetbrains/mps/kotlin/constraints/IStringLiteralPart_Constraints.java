@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IStringLiteralPart_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IStringLiteralPart_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IStringLiteralPart$ZO);
+    super(CONCEPTS.IStringLiteralPart$ZO, initContext);
   }
 
   @Override

@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class DefaultGenerationParameterId_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DefaultGenerationParameterId_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DefaultGenerationParameterId$tJ);
+    super(CONCEPTS.DefaultGenerationParameterId$tJ, initContext);
   }
 
   @Override

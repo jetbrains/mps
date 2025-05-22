@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class VariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ VariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.VariableReference$FA);
+    super(CONCEPTS.VariableReference$FA, initContext);
   }
 
   @Override

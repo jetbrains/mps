@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BwfFileSet_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BwfFileSet_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BwfFileSet$8N);
+    super(CONCEPTS.BwfFileSet$8N, initContext);
   }
 
   @Override

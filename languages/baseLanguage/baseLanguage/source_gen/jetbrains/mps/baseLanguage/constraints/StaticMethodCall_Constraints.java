@@ -31,7 +31,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StaticMethodCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ StaticMethodCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.StaticMethodCall$Fg);
+    super(CONCEPTS.StaticMethodCall$Fg, initContext);
   }
 
   @Override

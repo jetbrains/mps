@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ToolInstanceExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ToolInstanceExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ToolInstanceExpression$Py);
+    super(CONCEPTS.ToolInstanceExpression$Py, initContext);
   }
 
   @Override

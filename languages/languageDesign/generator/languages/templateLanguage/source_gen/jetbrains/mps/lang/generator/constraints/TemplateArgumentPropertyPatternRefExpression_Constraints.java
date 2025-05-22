@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TemplateArgumentPropertyPatternRefExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TemplateArgumentPropertyPatternRefExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TemplateArgumentPropertyPatternRefExpression$xv);
+    super(CONCEPTS.TemplateArgumentPropertyPatternRefExpression$xv, initContext);
   }
 
   @Override

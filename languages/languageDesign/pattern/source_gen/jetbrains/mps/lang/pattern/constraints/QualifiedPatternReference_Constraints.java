@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class QualifiedPatternReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ QualifiedPatternReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.QualifiedPatternReference$ym);
+    super(CONCEPTS.QualifiedPatternReference$ym, initContext);
   }
 
   @Override

@@ -32,7 +32,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class CustomContainerCreator_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CustomContainerCreator_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CustomContainerCreator$gu);
+    super(CONCEPTS.CustomContainerCreator$gu, initContext);
   }
 
   @Override

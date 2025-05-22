@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class DefaultClassifierType_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DefaultClassifierType_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DefaultClassifierType$in);
+    super(CONCEPTS.DefaultClassifierType$in, initContext);
   }
 
   @Override

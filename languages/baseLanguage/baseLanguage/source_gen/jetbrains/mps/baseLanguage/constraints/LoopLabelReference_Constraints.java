@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LoopLabelReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LoopLabelReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LoopLabelReference$uM);
+    super(CONCEPTS.LoopLabelReference$uM, initContext);
   }
 
   @Override

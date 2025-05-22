@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class State_Constraints extends BaseConstraintsDescriptor {
   /*package*/ State_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.State$lb);
+    super(CONCEPTS.State$lb, initContext);
   }
 
   public static class IsInitial_Property extends BasePropertyConstraintsDescriptor {

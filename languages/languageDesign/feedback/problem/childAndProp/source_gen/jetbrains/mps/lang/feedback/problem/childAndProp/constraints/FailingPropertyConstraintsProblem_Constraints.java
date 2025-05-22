@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FailingPropertyConstraintsProblem_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FailingPropertyConstraintsProblem_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FailingPropertyConstraintsProblem$It);
+    super(CONCEPTS.FailingPropertyConstraintsProblem$It, initContext);
   }
 
   @Override

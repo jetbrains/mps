@@ -27,7 +27,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlDoctypeDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XmlDoctypeDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XmlDoctypeDeclaration$GQ);
+    super(CONCEPTS.XmlDoctypeDeclaration$GQ, initContext);
   }
 
   @Override

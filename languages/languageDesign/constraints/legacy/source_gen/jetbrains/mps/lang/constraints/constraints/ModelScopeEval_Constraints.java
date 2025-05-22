@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ModelScopeEval_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ModelScopeEval_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ModelScopeEval$oz);
+    super(CONCEPTS.ModelScopeEval$oz, initContext);
   }
 
   @Override

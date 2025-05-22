@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlForeignRefValue_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XmlForeignRefValue_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XmlForeignRefValue$54);
+    super(CONCEPTS.XmlForeignRefValue$54, initContext);
   }
 
   @Override

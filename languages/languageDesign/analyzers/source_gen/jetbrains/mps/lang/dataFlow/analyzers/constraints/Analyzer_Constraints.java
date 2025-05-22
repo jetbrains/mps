@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Analyzer_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Analyzer_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Analyzer$GL);
+    super(CONCEPTS.Analyzer$GL, initContext);
   }
 
   @Override

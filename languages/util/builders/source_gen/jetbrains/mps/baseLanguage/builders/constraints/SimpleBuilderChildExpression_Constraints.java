@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SimpleBuilderChildExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SimpleBuilderChildExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SimpleBuilderChildExpression$Hb);
+    super(CONCEPTS.SimpleBuilderChildExpression$Hb, initContext);
   }
 
   private static final class CONCEPTS {

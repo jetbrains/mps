@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EnumerationMemberDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EnumerationMemberDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EnumerationMemberDeclaration$s9);
+    super(CONCEPTS.EnumerationMemberDeclaration$s9, initContext);
   }
 
   public static class MemberId_Property extends BasePropertyConstraintsDescriptor {

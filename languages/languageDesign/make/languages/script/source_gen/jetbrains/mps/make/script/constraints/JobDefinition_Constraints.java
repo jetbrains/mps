@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class JobDefinition_Constraints extends BaseConstraintsDescriptor {
   /*package*/ JobDefinition_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.JobDefinition$Sj);
+    super(CONCEPTS.JobDefinition$Sj, initContext);
   }
 
   @Override

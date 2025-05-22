@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ActionInstance_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ActionInstance_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ActionInstance$Zi);
+    super(CONCEPTS.ActionInstance$Zi, initContext);
   }
 
   @Override

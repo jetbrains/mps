@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class SubstituteMenu_Default_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SubstituteMenu_Default_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SubstituteMenu_Default$sV);
+    super(CONCEPTS.SubstituteMenu_Default$sV, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

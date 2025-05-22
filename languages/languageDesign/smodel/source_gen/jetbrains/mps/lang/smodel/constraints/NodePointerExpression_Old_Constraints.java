@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class NodePointerExpression_Old_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NodePointerExpression_Old_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NodePointerExpression_Old$34);
+    super(CONCEPTS.NodePointerExpression_Old$34, initContext);
   }
 
   @Override

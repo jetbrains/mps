@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class XMLSAXFieldReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XMLSAXFieldReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XMLSAXFieldReference$zv);
+    super(CONCEPTS.XMLSAXFieldReference$zv, initContext);
   }
 
   @Override

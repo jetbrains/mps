@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class HighLevelWatchableCreator_Constraints extends BaseConstraintsDescriptor {
   /*package*/ HighLevelWatchableCreator_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.HighLevelWatchableCreator$q0);
+    super(CONCEPTS.HighLevelWatchableCreator$q0, initContext);
   }
 
   @Override

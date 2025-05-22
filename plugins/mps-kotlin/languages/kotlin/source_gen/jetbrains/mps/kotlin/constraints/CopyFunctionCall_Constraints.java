@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CopyFunctionCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CopyFunctionCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CopyFunctionCall$2A);
+    super(CONCEPTS.CopyFunctionCall$2A, initContext);
   }
 
   @Override

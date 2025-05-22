@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class PropertyPatternVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyPatternVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyPatternVariableReference$UR);
+    super(CONCEPTS.PropertyPatternVariableReference$UR, initContext);
   }
 
   @Override

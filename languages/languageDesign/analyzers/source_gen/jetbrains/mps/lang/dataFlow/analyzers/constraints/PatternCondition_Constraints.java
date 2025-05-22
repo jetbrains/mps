@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PatternCondition_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PatternCondition_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PatternCondition$G9);
+    super(CONCEPTS.PatternCondition$G9, initContext);
   }
 
   @Override

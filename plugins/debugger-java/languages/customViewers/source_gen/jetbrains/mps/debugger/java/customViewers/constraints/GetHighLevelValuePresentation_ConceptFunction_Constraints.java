@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GetHighLevelValuePresentation_ConceptFunction_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GetHighLevelValuePresentation_ConceptFunction_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GetHighLevelValuePresentation_ConceptFunction$Vw);
+    super(CONCEPTS.GetHighLevelValuePresentation_ConceptFunction$Vw, initContext);
   }
 
   @Override

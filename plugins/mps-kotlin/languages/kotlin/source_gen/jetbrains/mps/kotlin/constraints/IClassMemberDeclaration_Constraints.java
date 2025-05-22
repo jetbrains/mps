@@ -10,7 +10,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IClassMemberDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IClassMemberDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IClassMemberDeclaration$LK);
+    super(CONCEPTS.IClassMemberDeclaration$LK, initContext);
   }
 
   @Override

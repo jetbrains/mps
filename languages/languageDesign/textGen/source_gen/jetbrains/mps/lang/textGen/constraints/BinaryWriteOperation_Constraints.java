@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BinaryWriteOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BinaryWriteOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BinaryWriteOperation$Nc);
+    super(CONCEPTS.BinaryWriteOperation$Nc, initContext);
   }
 
   @Override

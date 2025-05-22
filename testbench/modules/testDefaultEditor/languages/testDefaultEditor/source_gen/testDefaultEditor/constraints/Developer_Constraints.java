@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Developer_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Developer_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Developer$Oi);
+    super(CONCEPTS.Developer$Oi, initContext);
   }
 
   @Override

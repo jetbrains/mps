@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InequationReplacementRule_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InequationReplacementRule_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InequationReplacementRule$m3);
+    super(CONCEPTS.InequationReplacementRule$m3, initContext);
   }
 
   @Override

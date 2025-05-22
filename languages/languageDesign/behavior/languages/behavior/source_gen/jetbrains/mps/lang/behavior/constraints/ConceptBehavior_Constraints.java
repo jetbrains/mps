@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class ConceptBehavior_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConceptBehavior_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConceptBehavior$2);
+    super(CONCEPTS.ConceptBehavior$2, initContext);
   }
 
   @Override

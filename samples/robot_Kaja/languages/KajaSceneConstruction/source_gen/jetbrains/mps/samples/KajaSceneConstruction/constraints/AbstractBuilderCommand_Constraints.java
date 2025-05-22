@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractBuilderCommand_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractBuilderCommand_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AbstractBuilderCommand$VJ);
+    super(CONCEPTS.AbstractBuilderCommand$VJ, initContext);
   }
 
   public static class Col_Property extends BasePropertyConstraintsDescriptor {

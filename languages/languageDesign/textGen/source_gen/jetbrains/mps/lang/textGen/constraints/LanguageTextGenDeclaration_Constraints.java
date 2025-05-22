@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LanguageTextGenDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LanguageTextGenDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LanguageTextGenDeclaration$mH);
+    super(CONCEPTS.LanguageTextGenDeclaration$mH, initContext);
   }
 
   @Override

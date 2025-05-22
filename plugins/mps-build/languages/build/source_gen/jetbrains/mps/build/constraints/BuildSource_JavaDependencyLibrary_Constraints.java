@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildSource_JavaDependencyLibrary_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildSource_JavaDependencyLibrary_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildSource_JavaDependencyLibrary$TO);
+    super(CONCEPTS.BuildSource_JavaDependencyLibrary$TO, initContext);
   }
 
   @Override

@@ -40,7 +40,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AnonymousClass_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AnonymousClass_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AnonymousClass$Bt);
+    super(CONCEPTS.AnonymousClass$Bt, initContext);
   }
 
   @Override

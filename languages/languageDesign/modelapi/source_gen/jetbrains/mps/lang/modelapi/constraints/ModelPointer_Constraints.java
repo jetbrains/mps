@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ModelPointer_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ModelPointer_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ModelPointer$6N);
+    super(CONCEPTS.ModelPointer$6N, initContext);
   }
 
   public static class ModelId_Property extends BasePropertyConstraintsDescriptor {

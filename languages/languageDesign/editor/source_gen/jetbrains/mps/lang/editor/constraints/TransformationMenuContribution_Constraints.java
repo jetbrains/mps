@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TransformationMenuContribution_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TransformationMenuContribution_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TransformationMenuContribution$jD);
+    super(CONCEPTS.TransformationMenuContribution$jD, initContext);
   }
 
   @Override

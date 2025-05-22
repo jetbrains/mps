@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExtractStatementListInnerExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExtractStatementListInnerExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExtractStatementListInnerExpression$3v);
+    super(CONCEPTS.ExtractStatementListInnerExpression$3v, initContext);
   }
 
   @Override

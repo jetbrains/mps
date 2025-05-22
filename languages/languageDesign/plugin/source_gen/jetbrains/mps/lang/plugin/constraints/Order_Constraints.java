@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Order_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Order_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Order$Mz);
+    super(CONCEPTS.Order$Mz, initContext);
   }
 
   @Override

@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RunConfigurationSource_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RunConfigurationSource_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RunConfigurationSource$Bo);
+    super(CONCEPTS.RunConfigurationSource$Bo, initContext);
   }
 
   @Override

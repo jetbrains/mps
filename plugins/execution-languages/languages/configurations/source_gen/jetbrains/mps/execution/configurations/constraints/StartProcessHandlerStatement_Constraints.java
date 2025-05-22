@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StartProcessHandlerStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ StartProcessHandlerStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.StartProcessHandlerStatement$JF);
+    super(CONCEPTS.StartProcessHandlerStatement$JF, initContext);
   }
 
   @Override

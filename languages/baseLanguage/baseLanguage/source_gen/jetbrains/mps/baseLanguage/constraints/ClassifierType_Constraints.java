@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ClassifierType_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ClassifierType_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ClassifierType$bL);
+    super(CONCEPTS.ClassifierType$bL, initContext);
   }
 
   @Override

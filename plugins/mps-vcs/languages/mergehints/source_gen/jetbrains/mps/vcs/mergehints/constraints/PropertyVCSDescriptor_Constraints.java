@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class PropertyVCSDescriptor_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyVCSDescriptor_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyVCSDescriptor$sJ);
+    super(CONCEPTS.PropertyVCSDescriptor$sJ, initContext);
   }
 
   @Override

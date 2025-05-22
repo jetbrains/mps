@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class SuperMethodCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SuperMethodCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SuperMethodCall$pW);
+    super(CONCEPTS.SuperMethodCall$pW, initContext);
   }
 
   @Override

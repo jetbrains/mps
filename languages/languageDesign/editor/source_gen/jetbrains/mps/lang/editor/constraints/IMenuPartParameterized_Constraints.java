@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IMenuPartParameterized_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IMenuPartParameterized_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IMenuPartParameterized$_u);
+    super(CONCEPTS.IMenuPartParameterized$_u, initContext);
   }
 
   @Override

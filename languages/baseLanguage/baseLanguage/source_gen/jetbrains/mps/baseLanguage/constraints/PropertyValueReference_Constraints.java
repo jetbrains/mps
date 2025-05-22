@@ -37,7 +37,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class PropertyValueReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PropertyValueReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PropertyValueReference$iy);
+    super(CONCEPTS.PropertyValueReference$iy, initContext);
   }
 
   @Override

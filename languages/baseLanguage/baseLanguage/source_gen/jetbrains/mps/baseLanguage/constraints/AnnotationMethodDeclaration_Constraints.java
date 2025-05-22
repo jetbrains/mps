@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AnnotationMethodDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AnnotationMethodDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AnnotationMethodDeclaration$4O);
+    super(CONCEPTS.AnnotationMethodDeclaration$4O, initContext);
   }
 
   @Override

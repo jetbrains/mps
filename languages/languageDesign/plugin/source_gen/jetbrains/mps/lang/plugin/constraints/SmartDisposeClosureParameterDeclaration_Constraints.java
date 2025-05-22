@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SmartDisposeClosureParameterDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SmartDisposeClosureParameterDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SmartDisposeClosureParameterDeclaration$MU);
+    super(CONCEPTS.SmartDisposeClosureParameterDeclaration$MU, initContext);
   }
 
   @Override

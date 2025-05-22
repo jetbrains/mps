@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class AdvanceWorkStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AdvanceWorkStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AdvanceWorkStatement$AR);
+    super(CONCEPTS.AdvanceWorkStatement$AR, initContext);
   }
 
   @Override

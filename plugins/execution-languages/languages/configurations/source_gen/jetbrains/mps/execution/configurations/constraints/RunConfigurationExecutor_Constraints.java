@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RunConfigurationExecutor_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RunConfigurationExecutor_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RunConfigurationExecutor$5U);
+    super(CONCEPTS.RunConfigurationExecutor$5U, initContext);
   }
 
   private static final class CONCEPTS {

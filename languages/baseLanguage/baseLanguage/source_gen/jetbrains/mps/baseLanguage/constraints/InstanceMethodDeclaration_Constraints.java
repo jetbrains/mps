@@ -12,7 +12,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InstanceMethodDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InstanceMethodDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InstanceMethodDeclaration$39);
+    super(CONCEPTS.InstanceMethodDeclaration$39, initContext);
   }
   public IconResource getInstanceIcon(SNode node) {
     return ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(node) ? IconContainer.RESOURCE_3 : null);

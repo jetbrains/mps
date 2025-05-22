@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellModel_WithRole_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellModel_WithRole_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CellModel_WithRole$kn);
+    super(CONCEPTS.CellModel_WithRole$kn, initContext);
   }
 
   @Override

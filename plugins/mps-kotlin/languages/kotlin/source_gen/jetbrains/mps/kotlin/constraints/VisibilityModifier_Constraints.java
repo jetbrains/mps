@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class VisibilityModifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ VisibilityModifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.VisibilityModifier$c5);
+    super(CONCEPTS.VisibilityModifier$c5, initContext);
   }
 
   @Override

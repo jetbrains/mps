@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class WithStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ WithStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.WithStatement$FO);
+    super(CONCEPTS.WithStatement$FO, initContext);
   }
 
   @Override

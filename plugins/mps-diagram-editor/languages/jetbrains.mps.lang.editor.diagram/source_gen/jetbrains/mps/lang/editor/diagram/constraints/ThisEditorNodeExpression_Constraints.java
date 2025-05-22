@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ThisEditorNodeExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ThisEditorNodeExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ThisEditorNodeExpression$yN);
+    super(CONCEPTS.ThisEditorNodeExpression$yN, initContext);
   }
 
   @Override

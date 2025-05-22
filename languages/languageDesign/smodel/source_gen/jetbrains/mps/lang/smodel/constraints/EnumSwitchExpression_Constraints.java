@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EnumSwitchExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EnumSwitchExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EnumSwitchExpression$Sw);
+    super(CONCEPTS.EnumSwitchExpression$Sw, initContext);
   }
 
   @Override

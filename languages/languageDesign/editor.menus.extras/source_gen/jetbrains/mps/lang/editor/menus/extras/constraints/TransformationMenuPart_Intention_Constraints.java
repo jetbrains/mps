@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class TransformationMenuPart_Intention_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TransformationMenuPart_Intention_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TransformationMenuPart_Intention$jb);
+    super(CONCEPTS.TransformationMenuPart_Intention$jb, initContext);
   }
 
   @Override

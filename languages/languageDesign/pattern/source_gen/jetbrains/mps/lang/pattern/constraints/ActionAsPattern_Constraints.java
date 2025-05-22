@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ActionAsPattern_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ActionAsPattern_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ActionAsPattern$7o);
+    super(CONCEPTS.ActionAsPattern$7o, initContext);
   }
 
   @Override

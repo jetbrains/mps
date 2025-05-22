@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SettingsEditor_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SettingsEditor_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SettingsEditor$nO);
+    super(CONCEPTS.SettingsEditor$nO, initContext);
   }
 
   @Override

@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NodeAttributeQualifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NodeAttributeQualifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NodeAttributeQualifier$qh);
+    super(CONCEPTS.NodeAttributeQualifier$qh, initContext);
   }
 
   @Override

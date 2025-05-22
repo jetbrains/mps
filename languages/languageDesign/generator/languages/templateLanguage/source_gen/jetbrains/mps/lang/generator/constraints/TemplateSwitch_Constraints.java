@@ -30,7 +30,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TemplateSwitch_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TemplateSwitch_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TemplateSwitch$j_);
+    super(CONCEPTS.TemplateSwitch$j_, initContext);
   }
 
   public static class NeedCallSite_Property extends BasePropertyConstraintsDescriptor {

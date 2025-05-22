@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ArrayLengthOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ArrayLengthOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ArrayLengthOperation$fn);
+    super(CONCEPTS.ArrayLengthOperation$fn, initContext);
   }
 
   @Override

@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IIdentifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IIdentifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IIdentifier$wg);
+    super(CONCEPTS.IIdentifier$wg, initContext);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {

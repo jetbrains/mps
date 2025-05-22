@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ModelPointer_ResolveOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ModelPointer_ResolveOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ModelPointer_ResolveOperation$wi);
+    super(CONCEPTS.ModelPointer_ResolveOperation$wi, initContext);
   }
 
   @Override

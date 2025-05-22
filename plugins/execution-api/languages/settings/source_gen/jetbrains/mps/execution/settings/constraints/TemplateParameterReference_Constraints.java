@@ -33,7 +33,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TemplateParameterReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TemplateParameterReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TemplateParameterReference$2p);
+    super(CONCEPTS.TemplateParameterReference$2p, initContext);
   }
 
   @Override

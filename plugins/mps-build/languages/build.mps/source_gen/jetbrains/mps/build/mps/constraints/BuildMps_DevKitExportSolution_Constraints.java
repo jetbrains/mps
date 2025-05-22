@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildMps_DevKitExportSolution_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildMps_DevKitExportSolution_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildMps_DevKitExportSolution$71);
+    super(CONCEPTS.BuildMps_DevKitExportSolution$71, initContext);
   }
 
   @Override

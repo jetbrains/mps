@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SurroundWithIntentionDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SurroundWithIntentionDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SurroundWithIntentionDeclaration$U9);
+    super(CONCEPTS.SurroundWithIntentionDeclaration$U9, initContext);
   }
 
   @Override

@@ -12,12 +12,12 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="15,0,41,0" name="jetbrains.mps.core.xml.sax.constraints.ConstraintsAspectDescriptor" />
+      <unit at="15,0,42,0" name="jetbrains.mps.core.xml.sax.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:a2a452cd-a0b4-4774-9b7e-00f9c8226bfa(jetbrains.mps.core.xml.sax.constraints)/2264311582634140674">
     <file name="XMLSAXAttributeReference_Constraints.java">
-      <node id="2264311582634140674" at="27,98,28,48" concept="9" />
+      <node id="2264311582634140674" at="27,98,28,61" concept="9" />
       <node id="2264311582634140674" at="35,127,36,128" concept="4" />
       <node id="2264311582634140674" at="36,128,37,0" concept="6" />
       <node id="2264311582634140674" at="38,55,39,71" concept="1" />
@@ -42,7 +42,7 @@
       <node id="2264311582634140674" at="32,103,44,6" concept="5" />
       <node id="2264311582634140674" at="46,0,59,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <node id="2264311582634140674" at="31,0,46,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="2264311582634140674" at="27,98,28,48" />
+      <scope id="2264311582634140674" at="27,98,28,61" />
       <scope id="2264311582634140674" at="38,55,39,71" />
       <scope id="2264311582634140675" at="51,56,52,207" />
       <scope id="1227128029536581178" at="59,128,60,104" />
@@ -79,7 +79,7 @@
   </root>
   <root nodeRef="r:a2a452cd-a0b4-4774-9b7e-00f9c8226bfa(jetbrains.mps.core.xml.sax.constraints)/2264311582634140739">
     <file name="XMLSAXFieldReference_Constraints.java">
-      <node id="2264311582634140739" at="29,94,30,44" concept="9" />
+      <node id="2264311582634140739" at="29,94,30,57" concept="9" />
       <node id="2264311582634140740" at="41,63,42,141" concept="5" />
       <node id="6836281137582840699" at="45,80,46,120" concept="4" />
       <node id="6836281137582840710" at="47,30,48,212" concept="5" />
@@ -100,7 +100,7 @@
       <node id="2264311582634140740" at="36,0,54,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="2264311582634140740" at="34,90,54,6" concept="4" />
       <node id="2264311582634140739" at="33,0,59,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="2264311582634140739" at="29,94,30,44" />
+      <scope id="2264311582634140739" at="29,94,30,57" />
       <scope id="2264311582634140740" at="41,63,42,141" />
       <scope id="6836281137582840709" at="47,30,48,212" />
       <scope id="2264311582634140739" at="29,0,32,0">
@@ -129,7 +129,7 @@
   </root>
   <root nodeRef="r:a2a452cd-a0b4-4774-9b7e-00f9c8226bfa(jetbrains.mps.core.xml.sax.constraints)/2264311582634140768">
     <file name="XMLSAXLocatorExpression_Constraints.java">
-      <node id="2264311582634140768" at="21,97,22,47" concept="9" />
+      <node id="2264311582634140768" at="21,97,22,60" concept="9" />
       <node id="2264311582634140768" at="29,127,30,128" concept="4" />
       <node id="2264311582634140768" at="30,128,31,0" concept="6" />
       <node id="2264311582634140768" at="32,55,33,71" concept="1" />
@@ -145,7 +145,7 @@
       <node id="2264311582634140768" at="28,0,38,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="2264311582634140768" at="26,103,38,6" concept="5" />
       <node id="2264311582634140768" at="25,0,40,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="2264311582634140768" at="21,97,22,47" />
+      <scope id="2264311582634140768" at="21,97,22,60" />
       <scope id="2264311582634140768" at="32,55,33,71" />
       <scope id="1227128029536581189" at="40,128,41,105" />
       <scope id="2264311582634140768" at="21,0,24,0">
@@ -173,7 +173,7 @@
   </root>
   <root nodeRef="r:a2a452cd-a0b4-4774-9b7e-00f9c8226bfa(jetbrains.mps.core.xml.sax.constraints)/2264311582634140779">
     <file name="XMLSAXBreakStatement_Constraints.java">
-      <node id="2264311582634140779" at="21,94,22,44" concept="9" />
+      <node id="2264311582634140779" at="21,94,22,57" concept="9" />
       <node id="2264311582634140779" at="29,127,30,128" concept="4" />
       <node id="2264311582634140779" at="30,128,31,0" concept="6" />
       <node id="2264311582634140779" at="32,55,33,71" concept="1" />
@@ -189,7 +189,7 @@
       <node id="2264311582634140779" at="28,0,38,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="2264311582634140779" at="26,103,38,6" concept="5" />
       <node id="2264311582634140779" at="25,0,40,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="2264311582634140779" at="21,94,22,44" />
+      <scope id="2264311582634140779" at="21,94,22,57" />
       <scope id="2264311582634140779" at="32,55,33,71" />
       <scope id="1227128029536581156" at="40,128,41,113" />
       <scope id="2264311582634140779" at="21,0,24,0">
@@ -217,7 +217,7 @@
   </root>
   <root nodeRef="r:a2a452cd-a0b4-4774-9b7e-00f9c8226bfa(jetbrains.mps.core.xml.sax.constraints)/2264311582634140791">
     <file name="XMLSAXChildRule_Constraints.java">
-      <node id="2264311582634140791" at="26,89,27,39" concept="9" />
+      <node id="2264311582634140791" at="26,89,27,52" concept="9" />
       <node id="2264311582634140792" at="38,63,39,141" concept="5" />
       <node id="6836281137582840883" at="42,80,43,210" concept="5" />
       <node id="2264311582634140791" at="47,6,48,131" concept="4" />
@@ -233,7 +233,7 @@
       <node id="2264311582634140792" at="33,0,47,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="2264311582634140792" at="31,90,47,6" concept="4" />
       <node id="2264311582634140791" at="30,0,52,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="2264311582634140791" at="26,89,27,39" />
+      <scope id="2264311582634140791" at="26,89,27,52" />
       <scope id="2264311582634140792" at="38,63,39,141" />
       <scope id="2264311582634140792" at="42,80,43,210" />
       <scope id="2264311582634140791" at="26,0,29,0">
@@ -259,7 +259,7 @@
   </root>
   <root nodeRef="r:a2a452cd-a0b4-4774-9b7e-00f9c8226bfa(jetbrains.mps.core.xml.sax.constraints)/4720003541456853028">
     <file name="XMLSAXNodeRuleParamRef_Constraints.java">
-      <node id="4720003541456853028" at="27,96,28,46" concept="9" />
+      <node id="4720003541456853028" at="27,96,28,59" concept="9" />
       <node id="4720003541456853028" at="35,127,36,128" concept="4" />
       <node id="4720003541456853028" at="36,128,37,0" concept="6" />
       <node id="4720003541456853028" at="38,55,39,71" concept="1" />
@@ -284,7 +284,7 @@
       <node id="4720003541456853028" at="32,103,44,6" concept="5" />
       <node id="4720003541456853028" at="46,0,59,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <node id="4720003541456853028" at="31,0,46,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="4720003541456853028" at="27,96,28,46" />
+      <scope id="4720003541456853028" at="27,96,28,59" />
       <scope id="4720003541456853028" at="38,55,39,71" />
       <scope id="4720003541456853029" at="51,56,52,208" />
       <scope id="1227128029536581167" at="59,128,60,104" />

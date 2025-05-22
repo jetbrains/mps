@@ -12,18 +12,18 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="15,0,37,0" name="jetbrains.mps.lang.messages.constraints.ConstraintsAspectDescriptor" />
+      <unit at="15,0,38,0" name="jetbrains.mps.lang.messages.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:a692cc04-06b7-49e7-9956-49ba1dc83c45(jetbrains.mps.lang.messages.constraints)/5258059200641720568">
     <file name="MessageExpression_Constraints.java">
-      <node id="5258059200641720568" at="11,91,12,41" concept="9" />
+      <node id="5258059200641720568" at="11,91,12,54" concept="9" />
       <node id="5258059200641720568" at="16,47,17,48" concept="5" />
       <node id="5258059200641720568" at="21,0,22,0" concept="7" trace="MessageExpression$zD" />
       <node id="5258059200641720568" at="22,0,23,0" concept="7" trace="LiteralMessageExpression$$8" />
       <node id="5258059200641720568" at="11,0,14,0" concept="0" trace="MessageExpression_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
       <node id="5258059200641720568" at="15,0,19,0" concept="3" trace="getDefaultConcreteConcept#()Lorg/jetbrains/mps/openapi/language/SConcept;" />
-      <scope id="5258059200641720568" at="11,91,12,41" />
+      <scope id="5258059200641720568" at="11,91,12,54" />
       <scope id="5258059200641720568" at="16,47,17,48" />
       <scope id="5258059200641720568" at="11,0,14,0">
         <var name="initContext" id="5258059200641720568" />
@@ -35,7 +35,7 @@
   </root>
   <root nodeRef="r:a692cc04-06b7-49e7-9956-49ba1dc83c45(jetbrains.mps.lang.messages.constraints)/5258059200641965860">
     <file name="LiteralMessageExpression_Constraints.java">
-      <node id="5258059200641965860" at="21,98,22,48" concept="9" />
+      <node id="5258059200641965860" at="21,98,22,61" concept="9" />
       <node id="5258059200641965861" at="26,62,27,63" concept="9" />
       <node id="5258059200641965861" at="30,109,31,99" concept="4" />
       <node id="5258059200641965861" at="32,53,33,168" concept="1" />
@@ -52,7 +52,7 @@
       <node id="5258059200641965861" at="37,0,40,0" concept="8" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
       <node id="5258059200641965860" at="41,0,47,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />
       <node id="5258059200641965861" at="29,0,37,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-      <scope id="5258059200641965860" at="21,98,22,48" />
+      <scope id="5258059200641965860" at="21,98,22,61" />
       <scope id="5258059200641965861" at="26,62,27,63" />
       <scope id="5258059200641965861" at="32,53,33,168" />
       <scope id="5258059200641965864" at="37,85,38,52" />
@@ -86,7 +86,7 @@
   </root>
   <root nodeRef="r:a692cc04-06b7-49e7-9956-49ba1dc83c45(jetbrains.mps.lang.messages.constraints)/5258059200642172323">
     <file name="CombinedMessageExpression_Constraints.java">
-      <node id="5258059200642172323" at="21,99,22,49" concept="9" />
+      <node id="5258059200642172323" at="21,99,22,62" concept="9" />
       <node id="5258059200642172323" at="29,128,30,133" concept="4" />
       <node id="5258059200642172323" at="30,133,31,0" concept="6" />
       <node id="5258059200642172323" at="32,55,33,72" concept="1" />
@@ -101,7 +101,7 @@
       <node id="5258059200642172323" at="28,0,38,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeParent;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="5258059200642172323" at="26,105,38,6" concept="5" />
       <node id="5258059200642172323" at="25,0,40,0" concept="3" trace="calculateCanBeParentConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="5258059200642172323" at="21,99,22,49" />
+      <scope id="5258059200642172323" at="21,99,22,62" />
       <scope id="5258059200642172323" at="32,55,33,72" />
       <scope id="5258059200642172325" at="40,128,41,93" />
       <scope id="5258059200642172323" at="21,0,24,0">
@@ -129,10 +129,10 @@
   </root>
   <root nodeRef="r:a692cc04-06b7-49e7-9956-49ba1dc83c45(jetbrains.mps.lang.messages.constraints)/5258059200644194848">
     <file name="MacroMessageExpression_Constraints.java">
-      <node id="5258059200644194848" at="11,96,12,46" concept="9" />
+      <node id="5258059200644194848" at="11,96,12,59" concept="9" />
       <node id="5258059200644194848" at="16,0,17,0" concept="7" trace="MacroMessageExpression$DF" />
       <node id="5258059200644194848" at="11,0,14,0" concept="0" trace="MacroMessageExpression_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <scope id="5258059200644194848" at="11,96,12,46" />
+      <scope id="5258059200644194848" at="11,96,12,59" />
       <scope id="5258059200644194848" at="11,0,14,0">
         <var name="initContext" id="5258059200644194848" />
       </scope>

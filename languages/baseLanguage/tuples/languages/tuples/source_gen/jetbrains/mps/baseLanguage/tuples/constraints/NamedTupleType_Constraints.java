@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NamedTupleType_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NamedTupleType_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NamedTupleType$DW);
+    super(CONCEPTS.NamedTupleType$DW, initContext);
   }
 
   @Override

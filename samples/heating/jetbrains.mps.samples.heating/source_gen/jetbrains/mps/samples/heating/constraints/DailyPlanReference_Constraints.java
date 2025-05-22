@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class DailyPlanReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DailyPlanReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.DailyPlanReference$uf);
+    super(CONCEPTS.DailyPlanReference$uf, initContext);
   }
 
   @Override

@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MemberModifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MemberModifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MemberModifier$px);
+    super(CONCEPTS.MemberModifier$px, initContext);
   }
 
   @Override

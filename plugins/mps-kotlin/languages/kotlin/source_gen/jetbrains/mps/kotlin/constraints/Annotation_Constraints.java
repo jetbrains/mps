@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class Annotation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Annotation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.Annotation$q5);
+    super(CONCEPTS.Annotation$q5, initContext);
   }
 
   @Override

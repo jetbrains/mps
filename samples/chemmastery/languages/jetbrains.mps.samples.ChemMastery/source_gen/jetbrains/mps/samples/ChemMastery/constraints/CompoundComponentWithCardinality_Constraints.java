@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CompoundComponentWithCardinality_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CompoundComponentWithCardinality_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CompoundComponentWithCardinality$_V);
+    super(CONCEPTS.CompoundComponentWithCardinality$_V, initContext);
   }
 
   public static class Cardinality_Property extends BasePropertyConstraintsDescriptor {

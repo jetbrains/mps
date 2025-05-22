@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InferenceRule_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InferenceRule_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.InferenceRule$S3);
+    super(CONCEPTS.InferenceRule$S3, initContext);
   }
 
   @Override

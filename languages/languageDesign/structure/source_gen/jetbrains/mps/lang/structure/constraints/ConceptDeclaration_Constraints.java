@@ -39,7 +39,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConceptDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ConceptDeclaration$gH);
+    super(CONCEPTS.ConceptDeclaration$gH, initContext);
   }
   public IconResource getInstanceIcon(SNode node) {
     return (SPropertyOperations.getBoolean(node, PROPS.rootable$_9pz) ? IconContainer.RESOURCE_0 : IconContainer.RESOURCE_1);

@@ -254,303 +254,299 @@
       <node concept="2AHcQZ" id="9" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
-      <node concept="3Tm1VV" id="a" role="1B3o_S" />
-      <node concept="3uibUv" id="b" role="3clF45">
+      <node concept="2AHcQZ" id="a" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+      <node concept="3Tm1VV" id="b" role="1B3o_S" />
+      <node concept="3uibUv" id="c" role="3clF45">
         <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
       </node>
-      <node concept="37vLTG" id="c" role="3clF46">
+      <node concept="37vLTG" id="d" role="3clF46">
         <property role="TrG5h" value="concept" />
-        <node concept="3bZ5Sz" id="f" role="1tU5fm" />
-        <node concept="2AHcQZ" id="g" role="2AJF6D">
+        <node concept="3bZ5Sz" id="g" role="1tU5fm" />
+        <node concept="2AHcQZ" id="h" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
-      <node concept="37vLTG" id="d" role="3clF46">
+      <node concept="37vLTG" id="e" role="3clF46">
         <property role="TrG5h" value="context" />
-        <node concept="3uibUv" id="h" role="1tU5fm">
+        <node concept="3uibUv" id="i" role="1tU5fm">
           <ref role="3uigEE" to="ze1j:~ConstraintsDescriptorInitContext" resolve="ConstraintsDescriptorInitContext" />
         </node>
-        <node concept="2AHcQZ" id="i" role="2AJF6D">
+        <node concept="2AHcQZ" id="j" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
-      <node concept="3clFbS" id="e" role="3clF47">
-        <node concept="1_3QMa" id="j" role="3cqZAp">
-          <node concept="37vLTw" id="l" role="1_3QMn">
-            <ref role="3cqZAo" node="c" resolve="concept" />
+      <node concept="3clFbS" id="f" role="3clF47">
+        <node concept="1_3QMa" id="k" role="3cqZAp">
+          <node concept="37vLTw" id="m" role="1_3QMn">
+            <ref role="3cqZAo" node="d" resolve="concept" />
           </node>
-          <node concept="1pnPoh" id="m" role="1_3QMm">
-            <node concept="3clFbS" id="s" role="1pnPq1">
-              <node concept="3cpWs6" id="u" role="3cqZAp">
-                <node concept="2ShNRf" id="v" role="3cqZAk">
-                  <node concept="1pGfFk" id="w" role="2ShVmc">
+          <node concept="1pnPoh" id="n" role="1_3QMm">
+            <node concept="3clFbS" id="t" role="1pnPq1">
+              <node concept="3cpWs6" id="v" role="3cqZAp">
+                <node concept="2ShNRf" id="w" role="3cqZAk">
+                  <node concept="1pGfFk" id="x" role="2ShVmc">
                     <property role="373rjd" value="true" />
-                    <ref role="37wK5l" node="1I" resolve="InstancesExpression_Constraints" />
-                    <node concept="37vLTw" id="x" role="37wK5m">
-                      <ref role="3cqZAo" node="d" resolve="context" />
+                    <ref role="37wK5l" node="1H" resolve="InstancesExpression_Constraints" />
+                    <node concept="37vLTw" id="y" role="37wK5m">
+                      <ref role="3cqZAo" node="e" resolve="context" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3gn64h" id="t" role="1pnPq6">
+            <node concept="3gn64h" id="u" role="1pnPq6">
               <ref role="3gnhBz" to="3xdn:6H$fNdLyE4d" resolve="InstancesExpression" />
             </node>
           </node>
-          <node concept="1pnPoh" id="n" role="1_3QMm">
-            <node concept="3clFbS" id="y" role="1pnPq1">
-              <node concept="3cpWs6" id="$" role="3cqZAp">
-                <node concept="2ShNRf" id="_" role="3cqZAk">
-                  <node concept="1pGfFk" id="A" role="2ShVmc">
+          <node concept="1pnPoh" id="o" role="1_3QMm">
+            <node concept="3clFbS" id="z" role="1pnPq1">
+              <node concept="3cpWs6" id="_" role="3cqZAp">
+                <node concept="2ShNRf" id="A" role="3cqZAk">
+                  <node concept="1pGfFk" id="B" role="2ShVmc">
                     <property role="373rjd" value="true" />
-                    <ref role="37wK5l" node="5x" resolve="UsagesExpression_Constraints" />
-                    <node concept="37vLTw" id="B" role="37wK5m">
-                      <ref role="3cqZAo" node="d" resolve="context" />
+                    <ref role="37wK5l" node="5z" resolve="UsagesExpression_Constraints" />
+                    <node concept="37vLTw" id="C" role="37wK5m">
+                      <ref role="3cqZAo" node="e" resolve="context" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3gn64h" id="z" role="1pnPq6">
+            <node concept="3gn64h" id="$" role="1pnPq6">
               <ref role="3gnhBz" to="3xdn:7mV0m3L$trF" resolve="UsagesExpression" />
             </node>
           </node>
-          <node concept="1pnPoh" id="o" role="1_3QMm">
-            <node concept="3clFbS" id="C" role="1pnPq1">
-              <node concept="3cpWs6" id="E" role="3cqZAp">
-                <node concept="2ShNRf" id="F" role="3cqZAk">
-                  <node concept="1pGfFk" id="G" role="2ShVmc">
+          <node concept="1pnPoh" id="p" role="1_3QMm">
+            <node concept="3clFbS" id="D" role="1pnPq1">
+              <node concept="3cpWs6" id="F" role="3cqZAp">
+                <node concept="2ShNRf" id="G" role="3cqZAk">
+                  <node concept="1pGfFk" id="H" role="2ShVmc">
                     <property role="373rjd" value="true" />
-                    <ref role="37wK5l" node="3J" resolve="QueryParameter_Constraints" />
-                    <node concept="37vLTw" id="H" role="37wK5m">
-                      <ref role="3cqZAo" node="d" resolve="context" />
+                    <ref role="37wK5l" node="3K" resolve="QueryParameter_Constraints" />
+                    <node concept="37vLTw" id="I" role="37wK5m">
+                      <ref role="3cqZAo" node="e" resolve="context" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3gn64h" id="D" role="1pnPq6">
+            <node concept="3gn64h" id="E" role="1pnPq6">
               <ref role="3gnhBz" to="3xdn:3J6h25Q2URP" resolve="QueryParameter" />
             </node>
           </node>
-          <node concept="1pnPoh" id="p" role="1_3QMm">
-            <node concept="3clFbS" id="I" role="1pnPq1">
-              <node concept="3cpWs6" id="K" role="3cqZAp">
-                <node concept="2ShNRf" id="L" role="3cqZAk">
-                  <node concept="1pGfFk" id="M" role="2ShVmc">
+          <node concept="1pnPoh" id="q" role="1_3QMm">
+            <node concept="3clFbS" id="J" role="1pnPq1">
+              <node concept="3cpWs6" id="L" role="3cqZAp">
+                <node concept="2ShNRf" id="M" role="3cqZAk">
+                  <node concept="1pGfFk" id="N" role="2ShVmc">
                     <property role="373rjd" value="true" />
                     <ref role="37wK5l" node="1Y" resolve="QueryExpression_Constraints" />
-                    <node concept="37vLTw" id="N" role="37wK5m">
-                      <ref role="3cqZAo" node="d" resolve="context" />
+                    <node concept="37vLTw" id="O" role="37wK5m">
+                      <ref role="3cqZAo" node="e" resolve="context" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3gn64h" id="J" role="1pnPq6">
+            <node concept="3gn64h" id="K" role="1pnPq6">
               <ref role="3gnhBz" to="3xdn:3J6h25Q2UNX" resolve="QueryExpression" />
             </node>
           </node>
-          <node concept="1pnPoh" id="q" role="1_3QMm">
-            <node concept="3clFbS" id="O" role="1pnPq1">
-              <node concept="3cpWs6" id="Q" role="3cqZAp">
-                <node concept="2ShNRf" id="R" role="3cqZAk">
-                  <node concept="1pGfFk" id="S" role="2ShVmc">
+          <node concept="1pnPoh" id="r" role="1_3QMm">
+            <node concept="3clFbS" id="P" role="1pnPq1">
+              <node concept="3cpWs6" id="R" role="3cqZAp">
+                <node concept="2ShNRf" id="S" role="3cqZAk">
+                  <node concept="1pGfFk" id="T" role="2ShVmc">
                     <property role="373rjd" value="true" />
-                    <ref role="37wK5l" node="5L" resolve="WithStatement_Constraints" />
-                    <node concept="37vLTw" id="T" role="37wK5m">
-                      <ref role="3cqZAo" node="d" resolve="context" />
+                    <ref role="37wK5l" node="5O" resolve="WithStatement_Constraints" />
+                    <node concept="37vLTw" id="U" role="37wK5m">
+                      <ref role="3cqZAo" node="e" resolve="context" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3gn64h" id="P" role="1pnPq6">
+            <node concept="3gn64h" id="Q" role="1pnPq6">
               <ref role="3gnhBz" to="3xdn:3F2FyKbNNqb" resolve="WithStatement" />
             </node>
           </node>
-          <node concept="3clFbS" id="r" role="1prKM_" />
+          <node concept="3clFbS" id="s" role="1prKM_" />
         </node>
-        <node concept="3cpWs6" id="k" role="3cqZAp">
-          <node concept="2ShNRf" id="U" role="3cqZAk">
-            <node concept="1pGfFk" id="V" role="2ShVmc">
-              <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
-              <node concept="37vLTw" id="W" role="37wK5m">
-                <ref role="3cqZAo" node="c" resolve="concept" />
-              </node>
-            </node>
-          </node>
+        <node concept="3cpWs6" id="l" role="3cqZAp">
+          <node concept="10Nm6u" id="V" role="3cqZAk" />
         </node>
       </node>
     </node>
   </node>
-  <node concept="39dXUE" id="X">
-    <node concept="39e2AJ" id="Y" role="39e2AI">
+  <node concept="39dXUE" id="W">
+    <node concept="39e2AJ" id="X" role="39e2AI">
       <property role="39e3Y2" value="constraintClass" />
-      <node concept="39e2AG" id="11" role="39e3Y0">
+      <node concept="39e2AG" id="10" role="39e3Y0">
         <ref role="39e2AK" to="d5lf:30Cvt28Y34P" resolve="InstancesExpression_Constraints" />
-        <node concept="385nmt" id="16" role="385vvn">
+        <node concept="385nmt" id="15" role="385vvn">
           <property role="385vuF" value="InstancesExpression_Constraints" />
-          <node concept="3u3nmq" id="18" role="385v07">
+          <node concept="3u3nmq" id="17" role="385v07">
             <property role="3u3nmv" value="3470161847493603637" />
           </node>
         </node>
-        <node concept="39e2AT" id="17" role="39e2AY">
-          <ref role="39e2AS" node="1F" resolve="InstancesExpression_Constraints" />
+        <node concept="39e2AT" id="16" role="39e2AY">
+          <ref role="39e2AS" node="1E" resolve="InstancesExpression_Constraints" />
         </node>
       </node>
-      <node concept="39e2AG" id="12" role="39e3Y0">
+      <node concept="39e2AG" id="11" role="39e3Y0">
         <ref role="39e2AK" to="d5lf:s5v6K2pKyY" resolve="QueryExpression_Constraints" />
-        <node concept="385nmt" id="19" role="385vvn">
+        <node concept="385nmt" id="18" role="385vvn">
           <property role="385vuF" value="QueryExpression_Constraints" />
-          <node concept="3u3nmq" id="1b" role="385v07">
+          <node concept="3u3nmq" id="1a" role="385v07">
             <property role="3u3nmv" value="505947336487667902" />
           </node>
         </node>
-        <node concept="39e2AT" id="1a" role="39e2AY">
+        <node concept="39e2AT" id="19" role="39e2AY">
           <ref role="39e2AS" node="1V" resolve="QueryExpression_Constraints" />
         </node>
       </node>
-      <node concept="39e2AG" id="13" role="39e3Y0">
+      <node concept="39e2AG" id="12" role="39e3Y0">
         <ref role="39e2AK" to="d5lf:5YxQmqOA_1t" resolve="QueryParameter_Constraints" />
-        <node concept="385nmt" id="1c" role="385vvn">
+        <node concept="385nmt" id="1b" role="385vvn">
           <property role="385vuF" value="QueryParameter_Constraints" />
-          <node concept="3u3nmq" id="1e" role="385v07">
+          <node concept="3u3nmq" id="1d" role="385v07">
             <property role="3u3nmv" value="6891027939993473117" />
           </node>
         </node>
-        <node concept="39e2AT" id="1d" role="39e2AY">
-          <ref role="39e2AS" node="3G" resolve="QueryParameter_Constraints" />
+        <node concept="39e2AT" id="1c" role="39e2AY">
+          <ref role="39e2AS" node="3H" resolve="QueryParameter_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="13" role="39e3Y0">
+        <ref role="39e2AK" to="d5lf:30Cvt28Y6EN" resolve="UsagesExpression_Constraints" />
+        <node concept="385nmt" id="1e" role="385vvn">
+          <property role="385vuF" value="UsagesExpression_Constraints" />
+          <node concept="3u3nmq" id="1g" role="385v07">
+            <property role="3u3nmv" value="3470161847493618355" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="1f" role="39e2AY">
+          <ref role="39e2AS" node="5w" resolve="UsagesExpression_Constraints" />
         </node>
       </node>
       <node concept="39e2AG" id="14" role="39e3Y0">
-        <ref role="39e2AK" to="d5lf:30Cvt28Y6EN" resolve="UsagesExpression_Constraints" />
-        <node concept="385nmt" id="1f" role="385vvn">
-          <property role="385vuF" value="UsagesExpression_Constraints" />
-          <node concept="3u3nmq" id="1h" role="385v07">
-            <property role="3u3nmv" value="3470161847493618355" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="1g" role="39e2AY">
-          <ref role="39e2AS" node="5u" resolve="UsagesExpression_Constraints" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="15" role="39e3Y0">
         <ref role="39e2AK" to="d5lf:15xzdwHxePf" resolve="WithStatement_Constraints" />
-        <node concept="385nmt" id="1i" role="385vvn">
+        <node concept="385nmt" id="1h" role="385vvn">
           <property role="385vuF" value="WithStatement_Constraints" />
-          <node concept="3u3nmq" id="1k" role="385v07">
+          <node concept="3u3nmq" id="1j" role="385v07">
             <property role="3u3nmv" value="1252437031490219343" />
           </node>
         </node>
-        <node concept="39e2AT" id="1j" role="39e2AY">
-          <ref role="39e2AS" node="5I" resolve="WithStatement_Constraints" />
-        </node>
-      </node>
-    </node>
-    <node concept="39e2AJ" id="Z" role="39e2AI">
-      <property role="39e3Y2" value="constraintClassCons" />
-      <node concept="39e2AG" id="1l" role="39e3Y0">
-        <ref role="39e2AK" to="d5lf:30Cvt28Y34P" resolve="InstancesExpression_Constraints" />
-        <node concept="385nmt" id="1q" role="385vvn">
-          <property role="385vuF" value="InstancesExpression_Constraints" />
-          <node concept="3u3nmq" id="1s" role="385v07">
-            <property role="3u3nmv" value="3470161847493603637" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="1r" role="39e2AY">
-          <ref role="39e2AS" node="1I" resolve="InstancesExpression_Constraints" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="1m" role="39e3Y0">
-        <ref role="39e2AK" to="d5lf:s5v6K2pKyY" resolve="QueryExpression_Constraints" />
-        <node concept="385nmt" id="1t" role="385vvn">
-          <property role="385vuF" value="QueryExpression_Constraints" />
-          <node concept="3u3nmq" id="1v" role="385v07">
-            <property role="3u3nmv" value="505947336487667902" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="1u" role="39e2AY">
-          <ref role="39e2AS" node="1Y" resolve="QueryExpression_Constraints" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="1n" role="39e3Y0">
-        <ref role="39e2AK" to="d5lf:5YxQmqOA_1t" resolve="QueryParameter_Constraints" />
-        <node concept="385nmt" id="1w" role="385vvn">
-          <property role="385vuF" value="QueryParameter_Constraints" />
-          <node concept="3u3nmq" id="1y" role="385v07">
-            <property role="3u3nmv" value="6891027939993473117" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="1x" role="39e2AY">
-          <ref role="39e2AS" node="3J" resolve="QueryParameter_Constraints" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="1o" role="39e3Y0">
-        <ref role="39e2AK" to="d5lf:30Cvt28Y6EN" resolve="UsagesExpression_Constraints" />
-        <node concept="385nmt" id="1z" role="385vvn">
-          <property role="385vuF" value="UsagesExpression_Constraints" />
-          <node concept="3u3nmq" id="1_" role="385v07">
-            <property role="3u3nmv" value="3470161847493618355" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="1$" role="39e2AY">
-          <ref role="39e2AS" node="5x" resolve="UsagesExpression_Constraints" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="1p" role="39e3Y0">
-        <ref role="39e2AK" to="d5lf:15xzdwHxePf" resolve="WithStatement_Constraints" />
-        <node concept="385nmt" id="1A" role="385vvn">
-          <property role="385vuF" value="WithStatement_Constraints" />
-          <node concept="3u3nmq" id="1C" role="385v07">
-            <property role="3u3nmv" value="1252437031490219343" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="1B" role="39e2AY">
+        <node concept="39e2AT" id="1i" role="39e2AY">
           <ref role="39e2AS" node="5L" resolve="WithStatement_Constraints" />
         </node>
       </node>
     </node>
-    <node concept="39e2AJ" id="10" role="39e2AI">
+    <node concept="39e2AJ" id="Y" role="39e2AI">
+      <property role="39e3Y2" value="constraintClassCons" />
+      <node concept="39e2AG" id="1k" role="39e3Y0">
+        <ref role="39e2AK" to="d5lf:30Cvt28Y34P" resolve="InstancesExpression_Constraints" />
+        <node concept="385nmt" id="1p" role="385vvn">
+          <property role="385vuF" value="InstancesExpression_Constraints" />
+          <node concept="3u3nmq" id="1r" role="385v07">
+            <property role="3u3nmv" value="3470161847493603637" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="1q" role="39e2AY">
+          <ref role="39e2AS" node="1H" resolve="InstancesExpression_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="1l" role="39e3Y0">
+        <ref role="39e2AK" to="d5lf:s5v6K2pKyY" resolve="QueryExpression_Constraints" />
+        <node concept="385nmt" id="1s" role="385vvn">
+          <property role="385vuF" value="QueryExpression_Constraints" />
+          <node concept="3u3nmq" id="1u" role="385v07">
+            <property role="3u3nmv" value="505947336487667902" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="1t" role="39e2AY">
+          <ref role="39e2AS" node="1Y" resolve="QueryExpression_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="1m" role="39e3Y0">
+        <ref role="39e2AK" to="d5lf:5YxQmqOA_1t" resolve="QueryParameter_Constraints" />
+        <node concept="385nmt" id="1v" role="385vvn">
+          <property role="385vuF" value="QueryParameter_Constraints" />
+          <node concept="3u3nmq" id="1x" role="385v07">
+            <property role="3u3nmv" value="6891027939993473117" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="1w" role="39e2AY">
+          <ref role="39e2AS" node="3K" resolve="QueryParameter_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="1n" role="39e3Y0">
+        <ref role="39e2AK" to="d5lf:30Cvt28Y6EN" resolve="UsagesExpression_Constraints" />
+        <node concept="385nmt" id="1y" role="385vvn">
+          <property role="385vuF" value="UsagesExpression_Constraints" />
+          <node concept="3u3nmq" id="1$" role="385v07">
+            <property role="3u3nmv" value="3470161847493618355" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="1z" role="39e2AY">
+          <ref role="39e2AS" node="5z" resolve="UsagesExpression_Constraints" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="1o" role="39e3Y0">
+        <ref role="39e2AK" to="d5lf:15xzdwHxePf" resolve="WithStatement_Constraints" />
+        <node concept="385nmt" id="1_" role="385vvn">
+          <property role="385vuF" value="WithStatement_Constraints" />
+          <node concept="3u3nmq" id="1B" role="385v07">
+            <property role="3u3nmv" value="1252437031490219343" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="1A" role="39e2AY">
+          <ref role="39e2AS" node="5O" resolve="WithStatement_Constraints" />
+        </node>
+      </node>
+    </node>
+    <node concept="39e2AJ" id="Z" role="39e2AI">
       <property role="39e3Y2" value="aspectDescriptorClass" />
-      <node concept="39e2AG" id="1D" role="39e3Y0">
+      <node concept="39e2AG" id="1C" role="39e3Y0">
         <property role="2mV_xN" value="true" />
-        <node concept="39e2AT" id="1E" role="39e2AY">
+        <node concept="39e2AT" id="1D" role="39e2AY">
           <ref role="39e2AS" node="0" resolve="ConstraintsAspectDescriptor" />
         </node>
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="1F">
+  <node concept="312cEu" id="1E">
     <property role="3GE5qa" value="query" />
     <property role="TrG5h" value="InstancesExpression_Constraints" />
     <uo k="s:originTrace" v="n:3470161847493603637" />
-    <node concept="3Tm1VV" id="1G" role="1B3o_S">
+    <node concept="3Tm1VV" id="1F" role="1B3o_S">
       <uo k="s:originTrace" v="n:3470161847493603637" />
     </node>
-    <node concept="3uibUv" id="1H" role="1zkMxy">
+    <node concept="3uibUv" id="1G" role="1zkMxy">
       <ref role="3uigEE" to="79pl:~BaseConstraintsDescriptor" resolve="BaseConstraintsDescriptor" />
       <uo k="s:originTrace" v="n:3470161847493603637" />
     </node>
-    <node concept="3clFbW" id="1I" role="jymVt">
+    <node concept="3clFbW" id="1H" role="jymVt">
       <uo k="s:originTrace" v="n:3470161847493603637" />
-      <node concept="37vLTG" id="1K" role="3clF46">
+      <node concept="37vLTG" id="1J" role="3clF46">
         <property role="TrG5h" value="initContext" />
         <uo k="s:originTrace" v="n:3470161847493603637" />
-        <node concept="3uibUv" id="1N" role="1tU5fm">
+        <node concept="3uibUv" id="1M" role="1tU5fm">
           <ref role="3uigEE" to="ze1j:~ConstraintsDescriptorInitContext" resolve="ConstraintsDescriptorInitContext" />
           <uo k="s:originTrace" v="n:3470161847493603637" />
         </node>
       </node>
-      <node concept="3cqZAl" id="1L" role="3clF45">
+      <node concept="3cqZAl" id="1K" role="3clF45">
         <uo k="s:originTrace" v="n:3470161847493603637" />
       </node>
-      <node concept="3clFbS" id="1M" role="3clF47">
+      <node concept="3clFbS" id="1L" role="3clF47">
         <uo k="s:originTrace" v="n:3470161847493603637" />
-        <node concept="XkiVB" id="1O" role="3cqZAp">
-          <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
+        <node concept="XkiVB" id="1N" role="3cqZAp">
+          <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept,jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext)" resolve="BaseConstraintsDescriptor" />
           <uo k="s:originTrace" v="n:3470161847493603637" />
-          <node concept="1BaE9c" id="1P" role="37wK5m">
+          <node concept="1BaE9c" id="1O" role="37wK5m">
             <property role="1ouuDV" value="CONCEPTS" />
             <property role="1BaxDp" value="InstancesExpression$nT" />
             <uo k="s:originTrace" v="n:3470161847493603637" />
@@ -576,10 +572,14 @@
               </node>
             </node>
           </node>
+          <node concept="37vLTw" id="1P" role="37wK5m">
+            <ref role="3cqZAo" node="1J" resolve="initContext" />
+            <uo k="s:originTrace" v="n:3470161847493603637" />
+          </node>
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="1J" role="jymVt">
+    <node concept="2tJIrI" id="1I" role="jymVt">
       <uo k="s:originTrace" v="n:3470161847493603637" />
     </node>
   </node>
@@ -610,33 +610,37 @@
       <node concept="3clFbS" id="24" role="3clF47">
         <uo k="s:originTrace" v="n:505947336487667902" />
         <node concept="XkiVB" id="26" role="3cqZAp">
-          <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
+          <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept,jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext)" resolve="BaseConstraintsDescriptor" />
           <uo k="s:originTrace" v="n:505947336487667902" />
           <node concept="1BaE9c" id="27" role="37wK5m">
             <property role="1ouuDV" value="CONCEPTS" />
             <property role="1BaxDp" value="QueryExpression$lN" />
             <uo k="s:originTrace" v="n:505947336487667902" />
-            <node concept="2YIFZM" id="28" role="1Bazha">
+            <node concept="2YIFZM" id="29" role="1Bazha">
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
               <uo k="s:originTrace" v="n:505947336487667902" />
-              <node concept="11gdke" id="29" role="37wK5m">
+              <node concept="11gdke" id="2a" role="37wK5m">
                 <property role="11gdj1" value="1a8554c4eb8443baL" />
                 <uo k="s:originTrace" v="n:505947336487667902" />
               </node>
-              <node concept="11gdke" id="2a" role="37wK5m">
+              <node concept="11gdke" id="2b" role="37wK5m">
                 <property role="11gdj1" value="8c346f0d90c6e75aL" />
                 <uo k="s:originTrace" v="n:505947336487667902" />
               </node>
-              <node concept="11gdke" id="2b" role="37wK5m">
+              <node concept="11gdke" id="2c" role="37wK5m">
                 <property role="11gdj1" value="3bc64421760bacfdL" />
                 <uo k="s:originTrace" v="n:505947336487667902" />
               </node>
-              <node concept="Xl_RD" id="2c" role="37wK5m">
+              <node concept="Xl_RD" id="2d" role="37wK5m">
                 <property role="Xl_RC" value="jetbrains.mps.lang.smodel.query.structure.QueryExpression" />
                 <uo k="s:originTrace" v="n:505947336487667902" />
               </node>
             </node>
+          </node>
+          <node concept="37vLTw" id="28" role="37wK5m">
+            <ref role="3cqZAo" node="22" resolve="initContext" />
+            <uo k="s:originTrace" v="n:505947336487667902" />
           </node>
         </node>
       </node>
@@ -650,131 +654,131 @@
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
       <uo k="s:originTrace" v="n:505947336487667902" />
-      <node concept="3Tmbuc" id="2d" role="1B3o_S">
+      <node concept="3Tmbuc" id="2e" role="1B3o_S">
         <uo k="s:originTrace" v="n:505947336487667902" />
       </node>
-      <node concept="3uibUv" id="2e" role="3clF45">
+      <node concept="3uibUv" id="2f" role="3clF45">
         <ref role="3uigEE" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
         <uo k="s:originTrace" v="n:505947336487667902" />
-        <node concept="3uibUv" id="2h" role="11_B2D">
+        <node concept="3uibUv" id="2i" role="11_B2D">
           <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
           <uo k="s:originTrace" v="n:505947336487667902" />
         </node>
-        <node concept="3uibUv" id="2i" role="11_B2D">
+        <node concept="3uibUv" id="2j" role="11_B2D">
           <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
           <uo k="s:originTrace" v="n:505947336487667902" />
         </node>
       </node>
-      <node concept="3clFbS" id="2f" role="3clF47">
+      <node concept="3clFbS" id="2g" role="3clF47">
         <uo k="s:originTrace" v="n:505947336487667902" />
-        <node concept="3clFbF" id="2j" role="3cqZAp">
+        <node concept="3clFbF" id="2k" role="3cqZAp">
           <uo k="s:originTrace" v="n:505947336487667902" />
-          <node concept="2ShNRf" id="2k" role="3clFbG">
+          <node concept="2ShNRf" id="2l" role="3clFbG">
             <uo k="s:originTrace" v="n:505947336487667902" />
-            <node concept="YeOm9" id="2l" role="2ShVmc">
+            <node concept="YeOm9" id="2m" role="2ShVmc">
               <uo k="s:originTrace" v="n:505947336487667902" />
-              <node concept="1Y3b0j" id="2m" role="YeSDq">
+              <node concept="1Y3b0j" id="2n" role="YeSDq">
                 <property role="2bfB8j" value="true" />
                 <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
                 <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                 <uo k="s:originTrace" v="n:505947336487667902" />
-                <node concept="3Tm1VV" id="2n" role="1B3o_S">
+                <node concept="3Tm1VV" id="2o" role="1B3o_S">
                   <uo k="s:originTrace" v="n:505947336487667902" />
                 </node>
-                <node concept="3clFb_" id="2o" role="jymVt">
+                <node concept="3clFb_" id="2p" role="jymVt">
                   <property role="1EzhhJ" value="false" />
                   <property role="TrG5h" value="invoke" />
                   <property role="DiZV1" value="false" />
                   <property role="od$2w" value="false" />
                   <uo k="s:originTrace" v="n:505947336487667902" />
-                  <node concept="3Tm1VV" id="2r" role="1B3o_S">
+                  <node concept="3Tm1VV" id="2s" role="1B3o_S">
                     <uo k="s:originTrace" v="n:505947336487667902" />
                   </node>
-                  <node concept="2AHcQZ" id="2s" role="2AJF6D">
+                  <node concept="2AHcQZ" id="2t" role="2AJF6D">
                     <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
                     <uo k="s:originTrace" v="n:505947336487667902" />
                   </node>
-                  <node concept="3uibUv" id="2t" role="3clF45">
+                  <node concept="3uibUv" id="2u" role="3clF45">
                     <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
                     <uo k="s:originTrace" v="n:505947336487667902" />
                   </node>
-                  <node concept="37vLTG" id="2u" role="3clF46">
+                  <node concept="37vLTG" id="2v" role="3clF46">
                     <property role="TrG5h" value="context" />
                     <uo k="s:originTrace" v="n:505947336487667902" />
-                    <node concept="3uibUv" id="2x" role="1tU5fm">
+                    <node concept="3uibUv" id="2y" role="1tU5fm">
                       <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
                       <uo k="s:originTrace" v="n:505947336487667902" />
                     </node>
-                    <node concept="2AHcQZ" id="2y" role="2AJF6D">
+                    <node concept="2AHcQZ" id="2z" role="2AJF6D">
                       <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
                       <uo k="s:originTrace" v="n:505947336487667902" />
                     </node>
                   </node>
-                  <node concept="37vLTG" id="2v" role="3clF46">
+                  <node concept="37vLTG" id="2w" role="3clF46">
                     <property role="TrG5h" value="checkingNodeContext" />
                     <uo k="s:originTrace" v="n:505947336487667902" />
-                    <node concept="3uibUv" id="2z" role="1tU5fm">
+                    <node concept="3uibUv" id="2$" role="1tU5fm">
                       <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
                       <uo k="s:originTrace" v="n:505947336487667902" />
                     </node>
-                    <node concept="2AHcQZ" id="2$" role="2AJF6D">
+                    <node concept="2AHcQZ" id="2_" role="2AJF6D">
                       <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
                       <uo k="s:originTrace" v="n:505947336487667902" />
                     </node>
                   </node>
-                  <node concept="3clFbS" id="2w" role="3clF47">
+                  <node concept="3clFbS" id="2x" role="3clF47">
                     <uo k="s:originTrace" v="n:505947336487667902" />
-                    <node concept="3cpWs8" id="2_" role="3cqZAp">
+                    <node concept="3cpWs8" id="2A" role="3cqZAp">
                       <uo k="s:originTrace" v="n:505947336487667902" />
-                      <node concept="3cpWsn" id="2E" role="3cpWs9">
+                      <node concept="3cpWsn" id="2F" role="3cpWs9">
                         <property role="TrG5h" value="result" />
                         <uo k="s:originTrace" v="n:505947336487667902" />
-                        <node concept="10P_77" id="2F" role="1tU5fm">
+                        <node concept="10P_77" id="2G" role="1tU5fm">
                           <uo k="s:originTrace" v="n:505947336487667902" />
                         </node>
-                        <node concept="1rXfSq" id="2G" role="33vP2m">
+                        <node concept="1rXfSq" id="2H" role="33vP2m">
                           <ref role="37wK5l" node="21" resolve="staticCanBeAChild" />
                           <uo k="s:originTrace" v="n:505947336487667902" />
-                          <node concept="2OqwBi" id="2H" role="37wK5m">
-                            <uo k="s:originTrace" v="n:505947336487667902" />
-                            <node concept="37vLTw" id="2L" role="2Oq$k0">
-                              <ref role="3cqZAo" node="2u" resolve="context" />
-                              <uo k="s:originTrace" v="n:505947336487667902" />
-                            </node>
-                            <node concept="liA8E" id="2M" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getNode()" resolve="getNode" />
-                              <uo k="s:originTrace" v="n:505947336487667902" />
-                            </node>
-                          </node>
                           <node concept="2OqwBi" id="2I" role="37wK5m">
                             <uo k="s:originTrace" v="n:505947336487667902" />
-                            <node concept="37vLTw" id="2N" role="2Oq$k0">
-                              <ref role="3cqZAo" node="2u" resolve="context" />
+                            <node concept="37vLTw" id="2M" role="2Oq$k0">
+                              <ref role="3cqZAo" node="2v" resolve="context" />
                               <uo k="s:originTrace" v="n:505947336487667902" />
                             </node>
-                            <node concept="liA8E" id="2O" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getParentNode()" resolve="getParentNode" />
+                            <node concept="liA8E" id="2N" role="2OqNvi">
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getNode()" resolve="getNode" />
                               <uo k="s:originTrace" v="n:505947336487667902" />
                             </node>
                           </node>
                           <node concept="2OqwBi" id="2J" role="37wK5m">
                             <uo k="s:originTrace" v="n:505947336487667902" />
-                            <node concept="37vLTw" id="2P" role="2Oq$k0">
-                              <ref role="3cqZAo" node="2u" resolve="context" />
+                            <node concept="37vLTw" id="2O" role="2Oq$k0">
+                              <ref role="3cqZAo" node="2v" resolve="context" />
                               <uo k="s:originTrace" v="n:505947336487667902" />
                             </node>
-                            <node concept="liA8E" id="2Q" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getConcept()" resolve="getConcept" />
+                            <node concept="liA8E" id="2P" role="2OqNvi">
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getParentNode()" resolve="getParentNode" />
                               <uo k="s:originTrace" v="n:505947336487667902" />
                             </node>
                           </node>
                           <node concept="2OqwBi" id="2K" role="37wK5m">
                             <uo k="s:originTrace" v="n:505947336487667902" />
-                            <node concept="37vLTw" id="2R" role="2Oq$k0">
-                              <ref role="3cqZAo" node="2u" resolve="context" />
+                            <node concept="37vLTw" id="2Q" role="2Oq$k0">
+                              <ref role="3cqZAo" node="2v" resolve="context" />
                               <uo k="s:originTrace" v="n:505947336487667902" />
                             </node>
-                            <node concept="liA8E" id="2S" role="2OqNvi">
+                            <node concept="liA8E" id="2R" role="2OqNvi">
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getConcept()" resolve="getConcept" />
+                              <uo k="s:originTrace" v="n:505947336487667902" />
+                            </node>
+                          </node>
+                          <node concept="2OqwBi" id="2L" role="37wK5m">
+                            <uo k="s:originTrace" v="n:505947336487667902" />
+                            <node concept="37vLTw" id="2S" role="2Oq$k0">
+                              <ref role="3cqZAo" node="2v" resolve="context" />
+                              <uo k="s:originTrace" v="n:505947336487667902" />
+                            </node>
+                            <node concept="liA8E" id="2T" role="2OqNvi">
                               <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getLink()" resolve="getLink" />
                               <uo k="s:originTrace" v="n:505947336487667902" />
                             </node>
@@ -782,37 +786,37 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="3clFbH" id="2A" role="3cqZAp">
+                    <node concept="3clFbH" id="2B" role="3cqZAp">
                       <uo k="s:originTrace" v="n:505947336487667902" />
                     </node>
-                    <node concept="3clFbJ" id="2B" role="3cqZAp">
+                    <node concept="3clFbJ" id="2C" role="3cqZAp">
                       <uo k="s:originTrace" v="n:505947336487667902" />
-                      <node concept="3clFbS" id="2T" role="3clFbx">
+                      <node concept="3clFbS" id="2U" role="3clFbx">
                         <uo k="s:originTrace" v="n:505947336487667902" />
-                        <node concept="3clFbF" id="2V" role="3cqZAp">
+                        <node concept="3clFbF" id="2W" role="3cqZAp">
                           <uo k="s:originTrace" v="n:505947336487667902" />
-                          <node concept="2OqwBi" id="2W" role="3clFbG">
+                          <node concept="2OqwBi" id="2X" role="3clFbG">
                             <uo k="s:originTrace" v="n:505947336487667902" />
-                            <node concept="37vLTw" id="2X" role="2Oq$k0">
-                              <ref role="3cqZAo" node="2v" resolve="checkingNodeContext" />
+                            <node concept="37vLTw" id="2Y" role="2Oq$k0">
+                              <ref role="3cqZAo" node="2w" resolve="checkingNodeContext" />
                               <uo k="s:originTrace" v="n:505947336487667902" />
                             </node>
-                            <node concept="liA8E" id="2Y" role="2OqNvi">
+                            <node concept="liA8E" id="2Z" role="2OqNvi">
                               <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                               <uo k="s:originTrace" v="n:505947336487667902" />
-                              <node concept="1dyn4i" id="2Z" role="37wK5m">
+                              <node concept="1dyn4i" id="30" role="37wK5m">
                                 <property role="1dyqJU" value="canBeChildBreakingPoint" />
                                 <uo k="s:originTrace" v="n:505947336487667902" />
-                                <node concept="2ShNRf" id="30" role="1dyrYi">
+                                <node concept="2ShNRf" id="31" role="1dyrYi">
                                   <uo k="s:originTrace" v="n:505947336487667902" />
-                                  <node concept="1pGfFk" id="31" role="2ShVmc">
+                                  <node concept="1pGfFk" id="32" role="2ShVmc">
                                     <ref role="37wK5l" to="w1kc:~SNodePointer.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="SNodePointer" />
                                     <uo k="s:originTrace" v="n:505947336487667902" />
-                                    <node concept="Xl_RD" id="32" role="37wK5m">
+                                    <node concept="Xl_RD" id="33" role="37wK5m">
                                       <property role="Xl_RC" value="r:aef526b1-5019-472a-a761-72ac88ef58a4(jetbrains.mps.lang.smodel.query.constraints)" />
                                       <uo k="s:originTrace" v="n:505947336487667902" />
                                     </node>
-                                    <node concept="Xl_RD" id="33" role="37wK5m">
+                                    <node concept="Xl_RD" id="34" role="37wK5m">
                                       <property role="Xl_RC" value="505947336487667903" />
                                       <uo k="s:originTrace" v="n:505947336487667902" />
                                     </node>
@@ -823,44 +827,44 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="1Wc70l" id="2U" role="3clFbw">
+                      <node concept="1Wc70l" id="2V" role="3clFbw">
                         <uo k="s:originTrace" v="n:505947336487667902" />
-                        <node concept="3y3z36" id="34" role="3uHU7w">
+                        <node concept="3y3z36" id="35" role="3uHU7w">
                           <uo k="s:originTrace" v="n:505947336487667902" />
-                          <node concept="10Nm6u" id="36" role="3uHU7w">
+                          <node concept="10Nm6u" id="37" role="3uHU7w">
                             <uo k="s:originTrace" v="n:505947336487667902" />
                           </node>
-                          <node concept="37vLTw" id="37" role="3uHU7B">
-                            <ref role="3cqZAo" node="2v" resolve="checkingNodeContext" />
+                          <node concept="37vLTw" id="38" role="3uHU7B">
+                            <ref role="3cqZAo" node="2w" resolve="checkingNodeContext" />
                             <uo k="s:originTrace" v="n:505947336487667902" />
                           </node>
                         </node>
-                        <node concept="3fqX7Q" id="35" role="3uHU7B">
+                        <node concept="3fqX7Q" id="36" role="3uHU7B">
                           <uo k="s:originTrace" v="n:505947336487667902" />
-                          <node concept="37vLTw" id="38" role="3fr31v">
-                            <ref role="3cqZAo" node="2E" resolve="result" />
+                          <node concept="37vLTw" id="39" role="3fr31v">
+                            <ref role="3cqZAo" node="2F" resolve="result" />
                             <uo k="s:originTrace" v="n:505947336487667902" />
                           </node>
                         </node>
                       </node>
                     </node>
-                    <node concept="3clFbH" id="2C" role="3cqZAp">
+                    <node concept="3clFbH" id="2D" role="3cqZAp">
                       <uo k="s:originTrace" v="n:505947336487667902" />
                     </node>
-                    <node concept="3clFbF" id="2D" role="3cqZAp">
+                    <node concept="3clFbF" id="2E" role="3cqZAp">
                       <uo k="s:originTrace" v="n:505947336487667902" />
-                      <node concept="37vLTw" id="39" role="3clFbG">
-                        <ref role="3cqZAo" node="2E" resolve="result" />
+                      <node concept="37vLTw" id="3a" role="3clFbG">
+                        <ref role="3cqZAo" node="2F" resolve="result" />
                         <uo k="s:originTrace" v="n:505947336487667902" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3uibUv" id="2p" role="2Ghqu4">
+                <node concept="3uibUv" id="2q" role="2Ghqu4">
                   <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
                   <uo k="s:originTrace" v="n:505947336487667902" />
                 </node>
-                <node concept="3uibUv" id="2q" role="2Ghqu4">
+                <node concept="3uibUv" id="2r" role="2Ghqu4">
                   <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
                   <uo k="s:originTrace" v="n:505947336487667902" />
                 </node>
@@ -869,7 +873,7 @@
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="2g" role="2AJF6D">
+      <node concept="2AHcQZ" id="2h" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:505947336487667902" />
       </node>
@@ -877,81 +881,81 @@
     <node concept="2YIFZL" id="21" role="jymVt">
       <property role="TrG5h" value="staticCanBeAChild" />
       <uo k="s:originTrace" v="n:505947336487667902" />
-      <node concept="10P_77" id="3a" role="3clF45">
+      <node concept="10P_77" id="3b" role="3clF45">
         <uo k="s:originTrace" v="n:505947336487667902" />
       </node>
-      <node concept="3Tm6S6" id="3b" role="1B3o_S">
+      <node concept="3Tm6S6" id="3c" role="1B3o_S">
         <uo k="s:originTrace" v="n:505947336487667902" />
       </node>
-      <node concept="3clFbS" id="3c" role="3clF47">
+      <node concept="3clFbS" id="3d" role="3clF47">
         <uo k="s:originTrace" v="n:505947336487667904" />
-        <node concept="3clFbJ" id="3h" role="3cqZAp">
+        <node concept="3clFbJ" id="3i" role="3cqZAp">
           <uo k="s:originTrace" v="n:1227128029536564504" />
-          <node concept="2OqwBi" id="3i" role="3clFbw">
+          <node concept="2OqwBi" id="3j" role="3clFbw">
             <uo k="s:originTrace" v="n:1227128029536564505" />
-            <node concept="2OqwBi" id="3l" role="2Oq$k0">
+            <node concept="2OqwBi" id="3m" role="2Oq$k0">
               <uo k="s:originTrace" v="n:1227128029536564506" />
-              <node concept="37vLTw" id="3n" role="2Oq$k0">
-                <ref role="3cqZAo" node="3e" resolve="parentNode" />
+              <node concept="37vLTw" id="3o" role="2Oq$k0">
+                <ref role="3cqZAo" node="3f" resolve="parentNode" />
                 <uo k="s:originTrace" v="n:1227128029536564507" />
               </node>
-              <node concept="2Xjw5R" id="3o" role="2OqNvi">
+              <node concept="2Xjw5R" id="3p" role="2OqNvi">
                 <uo k="s:originTrace" v="n:1227128029536564508" />
-                <node concept="1xMEDy" id="3p" role="1xVPHs">
+                <node concept="1xMEDy" id="3q" role="1xVPHs">
                   <uo k="s:originTrace" v="n:1227128029536564509" />
-                  <node concept="chp4Y" id="3r" role="ri$Ld">
+                  <node concept="chp4Y" id="3s" role="ri$Ld">
                     <ref role="cht4Q" to="tpee:htgVS9_" resolve="IStatementListContainer" />
                     <uo k="s:originTrace" v="n:505947336487794978" />
                   </node>
                 </node>
-                <node concept="1xIGOp" id="3q" role="1xVPHs">
+                <node concept="1xIGOp" id="3r" role="1xVPHs">
                   <uo k="s:originTrace" v="n:1227128029536564511" />
                 </node>
               </node>
             </node>
-            <node concept="3x8VRR" id="3m" role="2OqNvi">
+            <node concept="3x8VRR" id="3n" role="2OqNvi">
               <uo k="s:originTrace" v="n:1227128029536564512" />
             </node>
           </node>
-          <node concept="3clFbS" id="3j" role="3clFbx">
+          <node concept="3clFbS" id="3k" role="3clFbx">
             <uo k="s:originTrace" v="n:1227128029536564513" />
-            <node concept="3cpWs6" id="3s" role="3cqZAp">
+            <node concept="3cpWs6" id="3t" role="3cqZAp">
               <uo k="s:originTrace" v="n:1227128029536564514" />
-              <node concept="2OqwBi" id="3t" role="3cqZAk">
+              <node concept="2OqwBi" id="3u" role="3cqZAk">
                 <uo k="s:originTrace" v="n:7110053837829300535" />
-                <node concept="2OqwBi" id="3u" role="2Oq$k0">
+                <node concept="2OqwBi" id="3v" role="2Oq$k0">
                   <uo k="s:originTrace" v="n:505947336487796066" />
-                  <node concept="37vLTw" id="3w" role="2Oq$k0">
-                    <ref role="3cqZAo" node="3e" resolve="parentNode" />
+                  <node concept="37vLTw" id="3x" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3f" resolve="parentNode" />
                     <uo k="s:originTrace" v="n:505947336487796067" />
                   </node>
-                  <node concept="2Xjw5R" id="3x" role="2OqNvi">
+                  <node concept="2Xjw5R" id="3y" role="2OqNvi">
                     <uo k="s:originTrace" v="n:505947336487796068" />
-                    <node concept="1xMEDy" id="3y" role="1xVPHs">
+                    <node concept="1xMEDy" id="3z" role="1xVPHs">
                       <uo k="s:originTrace" v="n:505947336487796069" />
-                      <node concept="chp4Y" id="3$" role="ri$Ld">
+                      <node concept="chp4Y" id="3_" role="ri$Ld">
                         <ref role="cht4Q" to="3xdn:s5v6K2pSK7" resolve="QueryExpressionScopeProvider" />
                         <uo k="s:originTrace" v="n:7110053837829297036" />
                       </node>
                     </node>
-                    <node concept="1xIGOp" id="3z" role="1xVPHs">
+                    <node concept="1xIGOp" id="3$" role="1xVPHs">
                       <uo k="s:originTrace" v="n:505947336487796071" />
                     </node>
                   </node>
                 </node>
-                <node concept="3x8VRR" id="3v" role="2OqNvi">
+                <node concept="3x8VRR" id="3w" role="2OqNvi">
                   <uo k="s:originTrace" v="n:7110053837829301409" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="9aQIb" id="3k" role="9aQIa">
+          <node concept="9aQIb" id="3l" role="9aQIa">
             <uo k="s:originTrace" v="n:1227128029536564534" />
-            <node concept="3clFbS" id="3_" role="9aQI4">
+            <node concept="3clFbS" id="3A" role="9aQI4">
               <uo k="s:originTrace" v="n:1227128029536564535" />
-              <node concept="3cpWs6" id="3A" role="3cqZAp">
+              <node concept="3cpWs6" id="3B" role="3cqZAp">
                 <uo k="s:originTrace" v="n:1227128029536564536" />
-                <node concept="3clFbT" id="3B" role="3cqZAk">
+                <node concept="3clFbT" id="3C" role="3cqZAk">
                   <property role="3clFbU" value="true" />
                   <uo k="s:originTrace" v="n:1227128029536564537" />
                 </node>
@@ -960,16 +964,8 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="3d" role="3clF46">
-        <property role="TrG5h" value="node" />
-        <uo k="s:originTrace" v="n:505947336487667902" />
-        <node concept="3uibUv" id="3C" role="1tU5fm">
-          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-          <uo k="s:originTrace" v="n:505947336487667902" />
-        </node>
-      </node>
       <node concept="37vLTG" id="3e" role="3clF46">
-        <property role="TrG5h" value="parentNode" />
+        <property role="TrG5h" value="node" />
         <uo k="s:originTrace" v="n:505947336487667902" />
         <node concept="3uibUv" id="3D" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
@@ -977,215 +973,227 @@
         </node>
       </node>
       <node concept="37vLTG" id="3f" role="3clF46">
-        <property role="TrG5h" value="childConcept" />
+        <property role="TrG5h" value="parentNode" />
         <uo k="s:originTrace" v="n:505947336487667902" />
         <node concept="3uibUv" id="3E" role="1tU5fm">
-          <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
+          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
           <uo k="s:originTrace" v="n:505947336487667902" />
         </node>
       </node>
       <node concept="37vLTG" id="3g" role="3clF46">
-        <property role="TrG5h" value="link" />
+        <property role="TrG5h" value="childConcept" />
         <uo k="s:originTrace" v="n:505947336487667902" />
         <node concept="3uibUv" id="3F" role="1tU5fm">
+          <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
+          <uo k="s:originTrace" v="n:505947336487667902" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3h" role="3clF46">
+        <property role="TrG5h" value="link" />
+        <uo k="s:originTrace" v="n:505947336487667902" />
+        <node concept="3uibUv" id="3G" role="1tU5fm">
           <ref role="3uigEE" to="c17a:~SContainmentLink" resolve="SContainmentLink" />
           <uo k="s:originTrace" v="n:505947336487667902" />
         </node>
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="3G">
+  <node concept="312cEu" id="3H">
     <property role="3GE5qa" value="query.parameter" />
     <property role="TrG5h" value="QueryParameter_Constraints" />
     <uo k="s:originTrace" v="n:6891027939993473117" />
-    <node concept="3Tm1VV" id="3H" role="1B3o_S">
+    <node concept="3Tm1VV" id="3I" role="1B3o_S">
       <uo k="s:originTrace" v="n:6891027939993473117" />
     </node>
-    <node concept="3uibUv" id="3I" role="1zkMxy">
+    <node concept="3uibUv" id="3J" role="1zkMxy">
       <ref role="3uigEE" to="79pl:~BaseConstraintsDescriptor" resolve="BaseConstraintsDescriptor" />
       <uo k="s:originTrace" v="n:6891027939993473117" />
     </node>
-    <node concept="3clFbW" id="3J" role="jymVt">
+    <node concept="3clFbW" id="3K" role="jymVt">
       <uo k="s:originTrace" v="n:6891027939993473117" />
-      <node concept="37vLTG" id="3N" role="3clF46">
+      <node concept="37vLTG" id="3O" role="3clF46">
         <property role="TrG5h" value="initContext" />
         <uo k="s:originTrace" v="n:6891027939993473117" />
-        <node concept="3uibUv" id="3Q" role="1tU5fm">
+        <node concept="3uibUv" id="3R" role="1tU5fm">
           <ref role="3uigEE" to="ze1j:~ConstraintsDescriptorInitContext" resolve="ConstraintsDescriptorInitContext" />
           <uo k="s:originTrace" v="n:6891027939993473117" />
         </node>
       </node>
-      <node concept="3cqZAl" id="3O" role="3clF45">
+      <node concept="3cqZAl" id="3P" role="3clF45">
         <uo k="s:originTrace" v="n:6891027939993473117" />
       </node>
-      <node concept="3clFbS" id="3P" role="3clF47">
+      <node concept="3clFbS" id="3Q" role="3clF47">
         <uo k="s:originTrace" v="n:6891027939993473117" />
-        <node concept="XkiVB" id="3R" role="3cqZAp">
-          <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
+        <node concept="XkiVB" id="3S" role="3cqZAp">
+          <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept,jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext)" resolve="BaseConstraintsDescriptor" />
           <uo k="s:originTrace" v="n:6891027939993473117" />
-          <node concept="1BaE9c" id="3S" role="37wK5m">
+          <node concept="1BaE9c" id="3T" role="37wK5m">
             <property role="1ouuDV" value="CONCEPTS" />
             <property role="1BaxDp" value="QueryParameter$2S" />
             <uo k="s:originTrace" v="n:6891027939993473117" />
-            <node concept="2YIFZM" id="3T" role="1Bazha">
+            <node concept="2YIFZM" id="3V" role="1Bazha">
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
               <uo k="s:originTrace" v="n:6891027939993473117" />
-              <node concept="11gdke" id="3U" role="37wK5m">
+              <node concept="11gdke" id="3W" role="37wK5m">
                 <property role="11gdj1" value="1a8554c4eb8443baL" />
                 <uo k="s:originTrace" v="n:6891027939993473117" />
               </node>
-              <node concept="11gdke" id="3V" role="37wK5m">
+              <node concept="11gdke" id="3X" role="37wK5m">
                 <property role="11gdj1" value="8c346f0d90c6e75aL" />
                 <uo k="s:originTrace" v="n:6891027939993473117" />
               </node>
-              <node concept="11gdke" id="3W" role="37wK5m">
+              <node concept="11gdke" id="3Y" role="37wK5m">
                 <property role="11gdj1" value="3bc64421760badf5L" />
                 <uo k="s:originTrace" v="n:6891027939993473117" />
               </node>
-              <node concept="Xl_RD" id="3X" role="37wK5m">
+              <node concept="Xl_RD" id="3Z" role="37wK5m">
                 <property role="Xl_RC" value="jetbrains.mps.lang.smodel.query.structure.QueryParameter" />
                 <uo k="s:originTrace" v="n:6891027939993473117" />
               </node>
             </node>
           </node>
+          <node concept="37vLTw" id="3U" role="37wK5m">
+            <ref role="3cqZAo" node="3O" resolve="initContext" />
+            <uo k="s:originTrace" v="n:6891027939993473117" />
+          </node>
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="3K" role="jymVt">
+    <node concept="2tJIrI" id="3L" role="jymVt">
       <uo k="s:originTrace" v="n:6891027939993473117" />
     </node>
-    <node concept="3clFb_" id="3L" role="jymVt">
+    <node concept="3clFb_" id="3M" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="calculateCanBeChildConstraint" />
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
       <uo k="s:originTrace" v="n:6891027939993473117" />
-      <node concept="3Tmbuc" id="3Y" role="1B3o_S">
+      <node concept="3Tmbuc" id="40" role="1B3o_S">
         <uo k="s:originTrace" v="n:6891027939993473117" />
       </node>
-      <node concept="3uibUv" id="3Z" role="3clF45">
+      <node concept="3uibUv" id="41" role="3clF45">
         <ref role="3uigEE" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
         <uo k="s:originTrace" v="n:6891027939993473117" />
-        <node concept="3uibUv" id="42" role="11_B2D">
+        <node concept="3uibUv" id="44" role="11_B2D">
           <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
           <uo k="s:originTrace" v="n:6891027939993473117" />
         </node>
-        <node concept="3uibUv" id="43" role="11_B2D">
+        <node concept="3uibUv" id="45" role="11_B2D">
           <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
           <uo k="s:originTrace" v="n:6891027939993473117" />
         </node>
       </node>
-      <node concept="3clFbS" id="40" role="3clF47">
+      <node concept="3clFbS" id="42" role="3clF47">
         <uo k="s:originTrace" v="n:6891027939993473117" />
-        <node concept="3clFbF" id="44" role="3cqZAp">
+        <node concept="3clFbF" id="46" role="3cqZAp">
           <uo k="s:originTrace" v="n:6891027939993473117" />
-          <node concept="2ShNRf" id="45" role="3clFbG">
+          <node concept="2ShNRf" id="47" role="3clFbG">
             <uo k="s:originTrace" v="n:6891027939993473117" />
-            <node concept="YeOm9" id="46" role="2ShVmc">
+            <node concept="YeOm9" id="48" role="2ShVmc">
               <uo k="s:originTrace" v="n:6891027939993473117" />
-              <node concept="1Y3b0j" id="47" role="YeSDq">
+              <node concept="1Y3b0j" id="49" role="YeSDq">
                 <property role="2bfB8j" value="true" />
                 <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
                 <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                 <uo k="s:originTrace" v="n:6891027939993473117" />
-                <node concept="3Tm1VV" id="48" role="1B3o_S">
+                <node concept="3Tm1VV" id="4a" role="1B3o_S">
                   <uo k="s:originTrace" v="n:6891027939993473117" />
                 </node>
-                <node concept="3clFb_" id="49" role="jymVt">
+                <node concept="3clFb_" id="4b" role="jymVt">
                   <property role="1EzhhJ" value="false" />
                   <property role="TrG5h" value="invoke" />
                   <property role="DiZV1" value="false" />
                   <property role="od$2w" value="false" />
                   <uo k="s:originTrace" v="n:6891027939993473117" />
-                  <node concept="3Tm1VV" id="4c" role="1B3o_S">
+                  <node concept="3Tm1VV" id="4e" role="1B3o_S">
                     <uo k="s:originTrace" v="n:6891027939993473117" />
                   </node>
-                  <node concept="2AHcQZ" id="4d" role="2AJF6D">
+                  <node concept="2AHcQZ" id="4f" role="2AJF6D">
                     <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
                     <uo k="s:originTrace" v="n:6891027939993473117" />
                   </node>
-                  <node concept="3uibUv" id="4e" role="3clF45">
+                  <node concept="3uibUv" id="4g" role="3clF45">
                     <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
                     <uo k="s:originTrace" v="n:6891027939993473117" />
                   </node>
-                  <node concept="37vLTG" id="4f" role="3clF46">
+                  <node concept="37vLTG" id="4h" role="3clF46">
                     <property role="TrG5h" value="context" />
                     <uo k="s:originTrace" v="n:6891027939993473117" />
-                    <node concept="3uibUv" id="4i" role="1tU5fm">
+                    <node concept="3uibUv" id="4k" role="1tU5fm">
                       <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
                       <uo k="s:originTrace" v="n:6891027939993473117" />
                     </node>
-                    <node concept="2AHcQZ" id="4j" role="2AJF6D">
+                    <node concept="2AHcQZ" id="4l" role="2AJF6D">
                       <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
                       <uo k="s:originTrace" v="n:6891027939993473117" />
                     </node>
                   </node>
-                  <node concept="37vLTG" id="4g" role="3clF46">
+                  <node concept="37vLTG" id="4i" role="3clF46">
                     <property role="TrG5h" value="checkingNodeContext" />
                     <uo k="s:originTrace" v="n:6891027939993473117" />
-                    <node concept="3uibUv" id="4k" role="1tU5fm">
+                    <node concept="3uibUv" id="4m" role="1tU5fm">
                       <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
                       <uo k="s:originTrace" v="n:6891027939993473117" />
                     </node>
-                    <node concept="2AHcQZ" id="4l" role="2AJF6D">
+                    <node concept="2AHcQZ" id="4n" role="2AJF6D">
                       <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
                       <uo k="s:originTrace" v="n:6891027939993473117" />
                     </node>
                   </node>
-                  <node concept="3clFbS" id="4h" role="3clF47">
+                  <node concept="3clFbS" id="4j" role="3clF47">
                     <uo k="s:originTrace" v="n:6891027939993473117" />
-                    <node concept="3cpWs8" id="4m" role="3cqZAp">
+                    <node concept="3cpWs8" id="4o" role="3cqZAp">
                       <uo k="s:originTrace" v="n:6891027939993473117" />
-                      <node concept="3cpWsn" id="4r" role="3cpWs9">
+                      <node concept="3cpWsn" id="4t" role="3cpWs9">
                         <property role="TrG5h" value="result" />
                         <uo k="s:originTrace" v="n:6891027939993473117" />
-                        <node concept="10P_77" id="4s" role="1tU5fm">
+                        <node concept="10P_77" id="4u" role="1tU5fm">
                           <uo k="s:originTrace" v="n:6891027939993473117" />
                         </node>
-                        <node concept="1rXfSq" id="4t" role="33vP2m">
-                          <ref role="37wK5l" node="3M" resolve="staticCanBeAChild" />
+                        <node concept="1rXfSq" id="4v" role="33vP2m">
+                          <ref role="37wK5l" node="3N" resolve="staticCanBeAChild" />
                           <uo k="s:originTrace" v="n:6891027939993473117" />
-                          <node concept="2OqwBi" id="4u" role="37wK5m">
-                            <uo k="s:originTrace" v="n:6891027939993473117" />
-                            <node concept="37vLTw" id="4y" role="2Oq$k0">
-                              <ref role="3cqZAo" node="4f" resolve="context" />
-                              <uo k="s:originTrace" v="n:6891027939993473117" />
-                            </node>
-                            <node concept="liA8E" id="4z" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getNode()" resolve="getNode" />
-                              <uo k="s:originTrace" v="n:6891027939993473117" />
-                            </node>
-                          </node>
-                          <node concept="2OqwBi" id="4v" role="37wK5m">
+                          <node concept="2OqwBi" id="4w" role="37wK5m">
                             <uo k="s:originTrace" v="n:6891027939993473117" />
                             <node concept="37vLTw" id="4$" role="2Oq$k0">
-                              <ref role="3cqZAo" node="4f" resolve="context" />
+                              <ref role="3cqZAo" node="4h" resolve="context" />
                               <uo k="s:originTrace" v="n:6891027939993473117" />
                             </node>
                             <node concept="liA8E" id="4_" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getParentNode()" resolve="getParentNode" />
-                              <uo k="s:originTrace" v="n:6891027939993473117" />
-                            </node>
-                          </node>
-                          <node concept="2OqwBi" id="4w" role="37wK5m">
-                            <uo k="s:originTrace" v="n:6891027939993473117" />
-                            <node concept="37vLTw" id="4A" role="2Oq$k0">
-                              <ref role="3cqZAo" node="4f" resolve="context" />
-                              <uo k="s:originTrace" v="n:6891027939993473117" />
-                            </node>
-                            <node concept="liA8E" id="4B" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getConcept()" resolve="getConcept" />
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getNode()" resolve="getNode" />
                               <uo k="s:originTrace" v="n:6891027939993473117" />
                             </node>
                           </node>
                           <node concept="2OqwBi" id="4x" role="37wK5m">
                             <uo k="s:originTrace" v="n:6891027939993473117" />
+                            <node concept="37vLTw" id="4A" role="2Oq$k0">
+                              <ref role="3cqZAo" node="4h" resolve="context" />
+                              <uo k="s:originTrace" v="n:6891027939993473117" />
+                            </node>
+                            <node concept="liA8E" id="4B" role="2OqNvi">
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getParentNode()" resolve="getParentNode" />
+                              <uo k="s:originTrace" v="n:6891027939993473117" />
+                            </node>
+                          </node>
+                          <node concept="2OqwBi" id="4y" role="37wK5m">
+                            <uo k="s:originTrace" v="n:6891027939993473117" />
                             <node concept="37vLTw" id="4C" role="2Oq$k0">
-                              <ref role="3cqZAo" node="4f" resolve="context" />
+                              <ref role="3cqZAo" node="4h" resolve="context" />
                               <uo k="s:originTrace" v="n:6891027939993473117" />
                             </node>
                             <node concept="liA8E" id="4D" role="2OqNvi">
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getConcept()" resolve="getConcept" />
+                              <uo k="s:originTrace" v="n:6891027939993473117" />
+                            </node>
+                          </node>
+                          <node concept="2OqwBi" id="4z" role="37wK5m">
+                            <uo k="s:originTrace" v="n:6891027939993473117" />
+                            <node concept="37vLTw" id="4E" role="2Oq$k0">
+                              <ref role="3cqZAo" node="4h" resolve="context" />
+                              <uo k="s:originTrace" v="n:6891027939993473117" />
+                            </node>
+                            <node concept="liA8E" id="4F" role="2OqNvi">
                               <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getLink()" resolve="getLink" />
                               <uo k="s:originTrace" v="n:6891027939993473117" />
                             </node>
@@ -1193,37 +1201,37 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="3clFbH" id="4n" role="3cqZAp">
+                    <node concept="3clFbH" id="4p" role="3cqZAp">
                       <uo k="s:originTrace" v="n:6891027939993473117" />
                     </node>
-                    <node concept="3clFbJ" id="4o" role="3cqZAp">
+                    <node concept="3clFbJ" id="4q" role="3cqZAp">
                       <uo k="s:originTrace" v="n:6891027939993473117" />
-                      <node concept="3clFbS" id="4E" role="3clFbx">
+                      <node concept="3clFbS" id="4G" role="3clFbx">
                         <uo k="s:originTrace" v="n:6891027939993473117" />
-                        <node concept="3clFbF" id="4G" role="3cqZAp">
+                        <node concept="3clFbF" id="4I" role="3cqZAp">
                           <uo k="s:originTrace" v="n:6891027939993473117" />
-                          <node concept="2OqwBi" id="4H" role="3clFbG">
+                          <node concept="2OqwBi" id="4J" role="3clFbG">
                             <uo k="s:originTrace" v="n:6891027939993473117" />
-                            <node concept="37vLTw" id="4I" role="2Oq$k0">
-                              <ref role="3cqZAo" node="4g" resolve="checkingNodeContext" />
+                            <node concept="37vLTw" id="4K" role="2Oq$k0">
+                              <ref role="3cqZAo" node="4i" resolve="checkingNodeContext" />
                               <uo k="s:originTrace" v="n:6891027939993473117" />
                             </node>
-                            <node concept="liA8E" id="4J" role="2OqNvi">
+                            <node concept="liA8E" id="4L" role="2OqNvi">
                               <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                               <uo k="s:originTrace" v="n:6891027939993473117" />
-                              <node concept="1dyn4i" id="4K" role="37wK5m">
+                              <node concept="1dyn4i" id="4M" role="37wK5m">
                                 <property role="1dyqJU" value="canBeChildBreakingPoint" />
                                 <uo k="s:originTrace" v="n:6891027939993473117" />
-                                <node concept="2ShNRf" id="4L" role="1dyrYi">
+                                <node concept="2ShNRf" id="4N" role="1dyrYi">
                                   <uo k="s:originTrace" v="n:6891027939993473117" />
-                                  <node concept="1pGfFk" id="4M" role="2ShVmc">
+                                  <node concept="1pGfFk" id="4O" role="2ShVmc">
                                     <ref role="37wK5l" to="w1kc:~SNodePointer.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="SNodePointer" />
                                     <uo k="s:originTrace" v="n:6891027939993473117" />
-                                    <node concept="Xl_RD" id="4N" role="37wK5m">
+                                    <node concept="Xl_RD" id="4P" role="37wK5m">
                                       <property role="Xl_RC" value="r:aef526b1-5019-472a-a761-72ac88ef58a4(jetbrains.mps.lang.smodel.query.constraints)" />
                                       <uo k="s:originTrace" v="n:6891027939993473117" />
                                     </node>
-                                    <node concept="Xl_RD" id="4O" role="37wK5m">
+                                    <node concept="Xl_RD" id="4Q" role="37wK5m">
                                       <property role="Xl_RC" value="1227128029536563386" />
                                       <uo k="s:originTrace" v="n:6891027939993473117" />
                                     </node>
@@ -1234,44 +1242,44 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="1Wc70l" id="4F" role="3clFbw">
+                      <node concept="1Wc70l" id="4H" role="3clFbw">
                         <uo k="s:originTrace" v="n:6891027939993473117" />
-                        <node concept="3y3z36" id="4P" role="3uHU7w">
+                        <node concept="3y3z36" id="4R" role="3uHU7w">
                           <uo k="s:originTrace" v="n:6891027939993473117" />
-                          <node concept="10Nm6u" id="4R" role="3uHU7w">
+                          <node concept="10Nm6u" id="4T" role="3uHU7w">
                             <uo k="s:originTrace" v="n:6891027939993473117" />
                           </node>
-                          <node concept="37vLTw" id="4S" role="3uHU7B">
-                            <ref role="3cqZAo" node="4g" resolve="checkingNodeContext" />
+                          <node concept="37vLTw" id="4U" role="3uHU7B">
+                            <ref role="3cqZAo" node="4i" resolve="checkingNodeContext" />
                             <uo k="s:originTrace" v="n:6891027939993473117" />
                           </node>
                         </node>
-                        <node concept="3fqX7Q" id="4Q" role="3uHU7B">
+                        <node concept="3fqX7Q" id="4S" role="3uHU7B">
                           <uo k="s:originTrace" v="n:6891027939993473117" />
-                          <node concept="37vLTw" id="4T" role="3fr31v">
-                            <ref role="3cqZAo" node="4r" resolve="result" />
+                          <node concept="37vLTw" id="4V" role="3fr31v">
+                            <ref role="3cqZAo" node="4t" resolve="result" />
                             <uo k="s:originTrace" v="n:6891027939993473117" />
                           </node>
                         </node>
                       </node>
                     </node>
-                    <node concept="3clFbH" id="4p" role="3cqZAp">
+                    <node concept="3clFbH" id="4r" role="3cqZAp">
                       <uo k="s:originTrace" v="n:6891027939993473117" />
                     </node>
-                    <node concept="3clFbF" id="4q" role="3cqZAp">
+                    <node concept="3clFbF" id="4s" role="3cqZAp">
                       <uo k="s:originTrace" v="n:6891027939993473117" />
-                      <node concept="37vLTw" id="4U" role="3clFbG">
-                        <ref role="3cqZAo" node="4r" resolve="result" />
+                      <node concept="37vLTw" id="4W" role="3clFbG">
+                        <ref role="3cqZAo" node="4t" resolve="result" />
                         <uo k="s:originTrace" v="n:6891027939993473117" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3uibUv" id="4a" role="2Ghqu4">
+                <node concept="3uibUv" id="4c" role="2Ghqu4">
                   <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
                   <uo k="s:originTrace" v="n:6891027939993473117" />
                 </node>
-                <node concept="3uibUv" id="4b" role="2Ghqu4">
+                <node concept="3uibUv" id="4d" role="2Ghqu4">
                   <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
                   <uo k="s:originTrace" v="n:6891027939993473117" />
                 </node>
@@ -1280,97 +1288,97 @@
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="41" role="2AJF6D">
+      <node concept="2AHcQZ" id="43" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6891027939993473117" />
       </node>
     </node>
-    <node concept="2YIFZL" id="3M" role="jymVt">
+    <node concept="2YIFZL" id="3N" role="jymVt">
       <property role="TrG5h" value="staticCanBeAChild" />
       <uo k="s:originTrace" v="n:6891027939993473117" />
-      <node concept="10P_77" id="4V" role="3clF45">
+      <node concept="10P_77" id="4X" role="3clF45">
         <uo k="s:originTrace" v="n:6891027939993473117" />
       </node>
-      <node concept="3Tm6S6" id="4W" role="1B3o_S">
+      <node concept="3Tm6S6" id="4Y" role="1B3o_S">
         <uo k="s:originTrace" v="n:6891027939993473117" />
       </node>
-      <node concept="3clFbS" id="4X" role="3clF47">
+      <node concept="3clFbS" id="4Z" role="3clF47">
         <uo k="s:originTrace" v="n:1227128029536563387" />
-        <node concept="3clFbJ" id="52" role="3cqZAp">
+        <node concept="3clFbJ" id="54" role="3cqZAp">
           <uo k="s:originTrace" v="n:1227128029536563388" />
-          <node concept="3clFbS" id="54" role="3clFbx">
+          <node concept="3clFbS" id="56" role="3clFbx">
             <uo k="s:originTrace" v="n:1227128029536563389" />
-            <node concept="3cpWs6" id="56" role="3cqZAp">
+            <node concept="3cpWs6" id="58" role="3cqZAp">
               <uo k="s:originTrace" v="n:1227128029536563390" />
-              <node concept="3clFbT" id="57" role="3cqZAk">
+              <node concept="3clFbT" id="59" role="3cqZAk">
                 <property role="3clFbU" value="false" />
                 <uo k="s:originTrace" v="n:1227128029536563391" />
               </node>
             </node>
           </node>
-          <node concept="17QLQc" id="55" role="3clFbw">
+          <node concept="17QLQc" id="57" role="3clFbw">
             <uo k="s:originTrace" v="n:1227128029536563392" />
-            <node concept="359W_D" id="58" role="3uHU7w">
+            <node concept="359W_D" id="5a" role="3uHU7w">
               <ref role="359W_E" to="3xdn:3J6h25Q2UNX" resolve="QueryExpression" />
               <ref role="359W_F" to="3xdn:3J6h25Q5Il8" resolve="parameter" />
               <uo k="s:originTrace" v="n:1227128029536563393" />
             </node>
-            <node concept="2OqwBi" id="59" role="3uHU7B">
+            <node concept="2OqwBi" id="5b" role="3uHU7B">
               <uo k="s:originTrace" v="n:1227128029536563394" />
-              <node concept="37vLTw" id="5a" role="2Oq$k0">
-                <ref role="3cqZAo" node="4Z" resolve="parentNode" />
+              <node concept="37vLTw" id="5c" role="2Oq$k0">
+                <ref role="3cqZAo" node="51" resolve="parentNode" />
                 <uo k="s:originTrace" v="n:1227128029536563395" />
               </node>
-              <node concept="2NL2c5" id="5b" role="2OqNvi">
+              <node concept="2NL2c5" id="5d" role="2OqNvi">
                 <uo k="s:originTrace" v="n:1227128029536563396" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="53" role="3cqZAp">
+        <node concept="3clFbF" id="55" role="3cqZAp">
           <uo k="s:originTrace" v="n:1227128029536563397" />
-          <node concept="2OqwBi" id="5c" role="3clFbG">
+          <node concept="2OqwBi" id="5e" role="3clFbG">
             <uo k="s:originTrace" v="n:1227128029536563398" />
-            <node concept="2OqwBi" id="5d" role="2Oq$k0">
+            <node concept="2OqwBi" id="5f" role="2Oq$k0">
               <uo k="s:originTrace" v="n:1227128029536563399" />
-              <node concept="2OqwBi" id="5f" role="2Oq$k0">
+              <node concept="2OqwBi" id="5h" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:1227128029536563400" />
-                <node concept="1PxgMI" id="5h" role="2Oq$k0">
+                <node concept="1PxgMI" id="5j" role="2Oq$k0">
                   <uo k="s:originTrace" v="n:1227128029536563401" />
-                  <node concept="2OqwBi" id="5j" role="1m5AlR">
+                  <node concept="2OqwBi" id="5l" role="1m5AlR">
                     <uo k="s:originTrace" v="n:1227128029536563402" />
-                    <node concept="37vLTw" id="5l" role="2Oq$k0">
-                      <ref role="3cqZAo" node="4Z" resolve="parentNode" />
+                    <node concept="37vLTw" id="5n" role="2Oq$k0">
+                      <ref role="3cqZAo" node="51" resolve="parentNode" />
                       <uo k="s:originTrace" v="n:1227128029536563403" />
                     </node>
-                    <node concept="1mfA1w" id="5m" role="2OqNvi">
+                    <node concept="1mfA1w" id="5o" role="2OqNvi">
                       <uo k="s:originTrace" v="n:1227128029536563404" />
                     </node>
                   </node>
-                  <node concept="chp4Y" id="5k" role="3oSUPX">
+                  <node concept="chp4Y" id="5m" role="3oSUPX">
                     <ref role="cht4Q" to="3xdn:3J6h25Q2UNX" resolve="QueryExpression" />
                     <uo k="s:originTrace" v="n:1227128029536563405" />
                   </node>
                 </node>
-                <node concept="2yIwOk" id="5i" role="2OqNvi">
+                <node concept="2yIwOk" id="5k" role="2OqNvi">
                   <uo k="s:originTrace" v="n:1227128029536563406" />
                 </node>
               </node>
-              <node concept="2qgKlT" id="5g" role="2OqNvi">
+              <node concept="2qgKlT" id="5i" role="2OqNvi">
                 <ref role="37wK5l" to="fq2o:3J6h25QXCDW" resolve="getSupportedParameters" />
                 <uo k="s:originTrace" v="n:1227128029536563407" />
               </node>
             </node>
-            <node concept="3JPx81" id="5e" role="2OqNvi">
+            <node concept="3JPx81" id="5g" role="2OqNvi">
               <uo k="s:originTrace" v="n:1227128029536563408" />
-              <node concept="2CBFar" id="5n" role="25WWJ7">
+              <node concept="2CBFar" id="5p" role="25WWJ7">
                 <uo k="s:originTrace" v="n:1227128029536563409" />
-                <node concept="chp4Y" id="5o" role="3oSUPX">
+                <node concept="chp4Y" id="5q" role="3oSUPX">
                   <ref role="cht4Q" to="3xdn:3J6h25Q2URP" resolve="QueryParameter" />
                   <uo k="s:originTrace" v="n:1227128029536563410" />
                 </node>
-                <node concept="37vLTw" id="5p" role="1m5AlR">
-                  <ref role="3cqZAo" node="50" resolve="childConcept" />
+                <node concept="37vLTw" id="5r" role="1m5AlR">
+                  <ref role="3cqZAo" node="52" resolve="childConcept" />
                   <uo k="s:originTrace" v="n:1227128029536563414" />
                 </node>
               </node>
@@ -1378,294 +1386,302 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="4Y" role="3clF46">
+      <node concept="37vLTG" id="50" role="3clF46">
         <property role="TrG5h" value="node" />
         <uo k="s:originTrace" v="n:6891027939993473117" />
-        <node concept="3uibUv" id="5q" role="1tU5fm">
-          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-          <uo k="s:originTrace" v="n:6891027939993473117" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="4Z" role="3clF46">
-        <property role="TrG5h" value="parentNode" />
-        <uo k="s:originTrace" v="n:6891027939993473117" />
-        <node concept="3uibUv" id="5r" role="1tU5fm">
-          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-          <uo k="s:originTrace" v="n:6891027939993473117" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="50" role="3clF46">
-        <property role="TrG5h" value="childConcept" />
-        <uo k="s:originTrace" v="n:6891027939993473117" />
         <node concept="3uibUv" id="5s" role="1tU5fm">
-          <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
+          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
           <uo k="s:originTrace" v="n:6891027939993473117" />
         </node>
       </node>
       <node concept="37vLTG" id="51" role="3clF46">
-        <property role="TrG5h" value="link" />
+        <property role="TrG5h" value="parentNode" />
         <uo k="s:originTrace" v="n:6891027939993473117" />
         <node concept="3uibUv" id="5t" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+          <uo k="s:originTrace" v="n:6891027939993473117" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="52" role="3clF46">
+        <property role="TrG5h" value="childConcept" />
+        <uo k="s:originTrace" v="n:6891027939993473117" />
+        <node concept="3uibUv" id="5u" role="1tU5fm">
+          <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
+          <uo k="s:originTrace" v="n:6891027939993473117" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="53" role="3clF46">
+        <property role="TrG5h" value="link" />
+        <uo k="s:originTrace" v="n:6891027939993473117" />
+        <node concept="3uibUv" id="5v" role="1tU5fm">
           <ref role="3uigEE" to="c17a:~SContainmentLink" resolve="SContainmentLink" />
           <uo k="s:originTrace" v="n:6891027939993473117" />
         </node>
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="5u">
+  <node concept="312cEu" id="5w">
     <property role="3GE5qa" value="query" />
     <property role="TrG5h" value="UsagesExpression_Constraints" />
     <uo k="s:originTrace" v="n:3470161847493618355" />
-    <node concept="3Tm1VV" id="5v" role="1B3o_S">
+    <node concept="3Tm1VV" id="5x" role="1B3o_S">
       <uo k="s:originTrace" v="n:3470161847493618355" />
     </node>
-    <node concept="3uibUv" id="5w" role="1zkMxy">
+    <node concept="3uibUv" id="5y" role="1zkMxy">
       <ref role="3uigEE" to="79pl:~BaseConstraintsDescriptor" resolve="BaseConstraintsDescriptor" />
       <uo k="s:originTrace" v="n:3470161847493618355" />
     </node>
-    <node concept="3clFbW" id="5x" role="jymVt">
+    <node concept="3clFbW" id="5z" role="jymVt">
       <uo k="s:originTrace" v="n:3470161847493618355" />
-      <node concept="37vLTG" id="5z" role="3clF46">
+      <node concept="37vLTG" id="5_" role="3clF46">
         <property role="TrG5h" value="initContext" />
         <uo k="s:originTrace" v="n:3470161847493618355" />
-        <node concept="3uibUv" id="5A" role="1tU5fm">
+        <node concept="3uibUv" id="5C" role="1tU5fm">
           <ref role="3uigEE" to="ze1j:~ConstraintsDescriptorInitContext" resolve="ConstraintsDescriptorInitContext" />
           <uo k="s:originTrace" v="n:3470161847493618355" />
         </node>
       </node>
-      <node concept="3cqZAl" id="5$" role="3clF45">
+      <node concept="3cqZAl" id="5A" role="3clF45">
         <uo k="s:originTrace" v="n:3470161847493618355" />
       </node>
-      <node concept="3clFbS" id="5_" role="3clF47">
+      <node concept="3clFbS" id="5B" role="3clF47">
         <uo k="s:originTrace" v="n:3470161847493618355" />
-        <node concept="XkiVB" id="5B" role="3cqZAp">
-          <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
+        <node concept="XkiVB" id="5D" role="3cqZAp">
+          <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept,jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext)" resolve="BaseConstraintsDescriptor" />
           <uo k="s:originTrace" v="n:3470161847493618355" />
-          <node concept="1BaE9c" id="5C" role="37wK5m">
+          <node concept="1BaE9c" id="5E" role="37wK5m">
             <property role="1ouuDV" value="CONCEPTS" />
             <property role="1BaxDp" value="UsagesExpression$8y" />
             <uo k="s:originTrace" v="n:3470161847493618355" />
-            <node concept="2YIFZM" id="5D" role="1Bazha">
+            <node concept="2YIFZM" id="5G" role="1Bazha">
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
               <uo k="s:originTrace" v="n:3470161847493618355" />
-              <node concept="11gdke" id="5E" role="37wK5m">
+              <node concept="11gdke" id="5H" role="37wK5m">
                 <property role="11gdj1" value="1a8554c4eb8443baL" />
                 <uo k="s:originTrace" v="n:3470161847493618355" />
               </node>
-              <node concept="11gdke" id="5F" role="37wK5m">
+              <node concept="11gdke" id="5I" role="37wK5m">
                 <property role="11gdj1" value="8c346f0d90c6e75aL" />
                 <uo k="s:originTrace" v="n:3470161847493618355" />
               </node>
-              <node concept="11gdke" id="5G" role="37wK5m">
+              <node concept="11gdke" id="5J" role="37wK5m">
                 <property role="11gdj1" value="75bb0160f191d6ebL" />
                 <uo k="s:originTrace" v="n:3470161847493618355" />
               </node>
-              <node concept="Xl_RD" id="5H" role="37wK5m">
+              <node concept="Xl_RD" id="5K" role="37wK5m">
                 <property role="Xl_RC" value="jetbrains.mps.lang.smodel.query.structure.UsagesExpression" />
                 <uo k="s:originTrace" v="n:3470161847493618355" />
               </node>
             </node>
           </node>
+          <node concept="37vLTw" id="5F" role="37wK5m">
+            <ref role="3cqZAo" node="5_" resolve="initContext" />
+            <uo k="s:originTrace" v="n:3470161847493618355" />
+          </node>
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="5y" role="jymVt">
+    <node concept="2tJIrI" id="5$" role="jymVt">
       <uo k="s:originTrace" v="n:3470161847493618355" />
     </node>
   </node>
-  <node concept="312cEu" id="5I">
+  <node concept="312cEu" id="5L">
     <property role="3GE5qa" value="" />
     <property role="TrG5h" value="WithStatement_Constraints" />
     <uo k="s:originTrace" v="n:1252437031490219343" />
-    <node concept="3Tm1VV" id="5J" role="1B3o_S">
+    <node concept="3Tm1VV" id="5M" role="1B3o_S">
       <uo k="s:originTrace" v="n:1252437031490219343" />
     </node>
-    <node concept="3uibUv" id="5K" role="1zkMxy">
+    <node concept="3uibUv" id="5N" role="1zkMxy">
       <ref role="3uigEE" to="79pl:~BaseConstraintsDescriptor" resolve="BaseConstraintsDescriptor" />
       <uo k="s:originTrace" v="n:1252437031490219343" />
     </node>
-    <node concept="3clFbW" id="5L" role="jymVt">
+    <node concept="3clFbW" id="5O" role="jymVt">
       <uo k="s:originTrace" v="n:1252437031490219343" />
-      <node concept="37vLTG" id="5P" role="3clF46">
+      <node concept="37vLTG" id="5S" role="3clF46">
         <property role="TrG5h" value="initContext" />
         <uo k="s:originTrace" v="n:1252437031490219343" />
-        <node concept="3uibUv" id="5S" role="1tU5fm">
+        <node concept="3uibUv" id="5V" role="1tU5fm">
           <ref role="3uigEE" to="ze1j:~ConstraintsDescriptorInitContext" resolve="ConstraintsDescriptorInitContext" />
           <uo k="s:originTrace" v="n:1252437031490219343" />
         </node>
       </node>
-      <node concept="3cqZAl" id="5Q" role="3clF45">
+      <node concept="3cqZAl" id="5T" role="3clF45">
         <uo k="s:originTrace" v="n:1252437031490219343" />
       </node>
-      <node concept="3clFbS" id="5R" role="3clF47">
+      <node concept="3clFbS" id="5U" role="3clF47">
         <uo k="s:originTrace" v="n:1252437031490219343" />
-        <node concept="XkiVB" id="5T" role="3cqZAp">
-          <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
+        <node concept="XkiVB" id="5W" role="3cqZAp">
+          <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept,jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext)" resolve="BaseConstraintsDescriptor" />
           <uo k="s:originTrace" v="n:1252437031490219343" />
-          <node concept="1BaE9c" id="5U" role="37wK5m">
+          <node concept="1BaE9c" id="5X" role="37wK5m">
             <property role="1ouuDV" value="CONCEPTS" />
             <property role="1BaxDp" value="WithStatement$FO" />
             <uo k="s:originTrace" v="n:1252437031490219343" />
-            <node concept="2YIFZM" id="5V" role="1Bazha">
+            <node concept="2YIFZM" id="5Z" role="1Bazha">
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
               <uo k="s:originTrace" v="n:1252437031490219343" />
-              <node concept="11gdke" id="5W" role="37wK5m">
+              <node concept="11gdke" id="60" role="37wK5m">
                 <property role="11gdj1" value="1a8554c4eb8443baL" />
                 <uo k="s:originTrace" v="n:1252437031490219343" />
               </node>
-              <node concept="11gdke" id="5X" role="37wK5m">
+              <node concept="11gdke" id="61" role="37wK5m">
                 <property role="11gdj1" value="8c346f0d90c6e75aL" />
                 <uo k="s:originTrace" v="n:1252437031490219343" />
               </node>
-              <node concept="11gdke" id="5Y" role="37wK5m">
+              <node concept="11gdke" id="62" role="37wK5m">
                 <property role="11gdj1" value="3ac2ae2c0bcf368bL" />
                 <uo k="s:originTrace" v="n:1252437031490219343" />
               </node>
-              <node concept="Xl_RD" id="5Z" role="37wK5m">
+              <node concept="Xl_RD" id="63" role="37wK5m">
                 <property role="Xl_RC" value="jetbrains.mps.lang.smodel.query.structure.WithStatement" />
                 <uo k="s:originTrace" v="n:1252437031490219343" />
               </node>
             </node>
           </node>
+          <node concept="37vLTw" id="5Y" role="37wK5m">
+            <ref role="3cqZAo" node="5S" resolve="initContext" />
+            <uo k="s:originTrace" v="n:1252437031490219343" />
+          </node>
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="5M" role="jymVt">
+    <node concept="2tJIrI" id="5P" role="jymVt">
       <uo k="s:originTrace" v="n:1252437031490219343" />
     </node>
-    <node concept="3clFb_" id="5N" role="jymVt">
+    <node concept="3clFb_" id="5Q" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="calculateCanBeChildConstraint" />
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
       <uo k="s:originTrace" v="n:1252437031490219343" />
-      <node concept="3Tmbuc" id="60" role="1B3o_S">
+      <node concept="3Tmbuc" id="64" role="1B3o_S">
         <uo k="s:originTrace" v="n:1252437031490219343" />
       </node>
-      <node concept="3uibUv" id="61" role="3clF45">
+      <node concept="3uibUv" id="65" role="3clF45">
         <ref role="3uigEE" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
         <uo k="s:originTrace" v="n:1252437031490219343" />
-        <node concept="3uibUv" id="64" role="11_B2D">
+        <node concept="3uibUv" id="68" role="11_B2D">
           <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
           <uo k="s:originTrace" v="n:1252437031490219343" />
         </node>
-        <node concept="3uibUv" id="65" role="11_B2D">
+        <node concept="3uibUv" id="69" role="11_B2D">
           <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
           <uo k="s:originTrace" v="n:1252437031490219343" />
         </node>
       </node>
-      <node concept="3clFbS" id="62" role="3clF47">
+      <node concept="3clFbS" id="66" role="3clF47">
         <uo k="s:originTrace" v="n:1252437031490219343" />
-        <node concept="3clFbF" id="66" role="3cqZAp">
+        <node concept="3clFbF" id="6a" role="3cqZAp">
           <uo k="s:originTrace" v="n:1252437031490219343" />
-          <node concept="2ShNRf" id="67" role="3clFbG">
+          <node concept="2ShNRf" id="6b" role="3clFbG">
             <uo k="s:originTrace" v="n:1252437031490219343" />
-            <node concept="YeOm9" id="68" role="2ShVmc">
+            <node concept="YeOm9" id="6c" role="2ShVmc">
               <uo k="s:originTrace" v="n:1252437031490219343" />
-              <node concept="1Y3b0j" id="69" role="YeSDq">
+              <node concept="1Y3b0j" id="6d" role="YeSDq">
                 <property role="2bfB8j" value="true" />
                 <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
                 <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                 <uo k="s:originTrace" v="n:1252437031490219343" />
-                <node concept="3Tm1VV" id="6a" role="1B3o_S">
+                <node concept="3Tm1VV" id="6e" role="1B3o_S">
                   <uo k="s:originTrace" v="n:1252437031490219343" />
                 </node>
-                <node concept="3clFb_" id="6b" role="jymVt">
+                <node concept="3clFb_" id="6f" role="jymVt">
                   <property role="1EzhhJ" value="false" />
                   <property role="TrG5h" value="invoke" />
                   <property role="DiZV1" value="false" />
                   <property role="od$2w" value="false" />
                   <uo k="s:originTrace" v="n:1252437031490219343" />
-                  <node concept="3Tm1VV" id="6e" role="1B3o_S">
+                  <node concept="3Tm1VV" id="6i" role="1B3o_S">
                     <uo k="s:originTrace" v="n:1252437031490219343" />
                   </node>
-                  <node concept="2AHcQZ" id="6f" role="2AJF6D">
+                  <node concept="2AHcQZ" id="6j" role="2AJF6D">
                     <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
                     <uo k="s:originTrace" v="n:1252437031490219343" />
                   </node>
-                  <node concept="3uibUv" id="6g" role="3clF45">
+                  <node concept="3uibUv" id="6k" role="3clF45">
                     <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
                     <uo k="s:originTrace" v="n:1252437031490219343" />
                   </node>
-                  <node concept="37vLTG" id="6h" role="3clF46">
+                  <node concept="37vLTG" id="6l" role="3clF46">
                     <property role="TrG5h" value="context" />
                     <uo k="s:originTrace" v="n:1252437031490219343" />
-                    <node concept="3uibUv" id="6k" role="1tU5fm">
+                    <node concept="3uibUv" id="6o" role="1tU5fm">
                       <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
                       <uo k="s:originTrace" v="n:1252437031490219343" />
                     </node>
-                    <node concept="2AHcQZ" id="6l" role="2AJF6D">
+                    <node concept="2AHcQZ" id="6p" role="2AJF6D">
                       <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
                       <uo k="s:originTrace" v="n:1252437031490219343" />
                     </node>
                   </node>
-                  <node concept="37vLTG" id="6i" role="3clF46">
+                  <node concept="37vLTG" id="6m" role="3clF46">
                     <property role="TrG5h" value="checkingNodeContext" />
                     <uo k="s:originTrace" v="n:1252437031490219343" />
-                    <node concept="3uibUv" id="6m" role="1tU5fm">
+                    <node concept="3uibUv" id="6q" role="1tU5fm">
                       <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
                       <uo k="s:originTrace" v="n:1252437031490219343" />
                     </node>
-                    <node concept="2AHcQZ" id="6n" role="2AJF6D">
+                    <node concept="2AHcQZ" id="6r" role="2AJF6D">
                       <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
                       <uo k="s:originTrace" v="n:1252437031490219343" />
                     </node>
                   </node>
-                  <node concept="3clFbS" id="6j" role="3clF47">
+                  <node concept="3clFbS" id="6n" role="3clF47">
                     <uo k="s:originTrace" v="n:1252437031490219343" />
-                    <node concept="3cpWs8" id="6o" role="3cqZAp">
+                    <node concept="3cpWs8" id="6s" role="3cqZAp">
                       <uo k="s:originTrace" v="n:1252437031490219343" />
-                      <node concept="3cpWsn" id="6t" role="3cpWs9">
+                      <node concept="3cpWsn" id="6x" role="3cpWs9">
                         <property role="TrG5h" value="result" />
                         <uo k="s:originTrace" v="n:1252437031490219343" />
-                        <node concept="10P_77" id="6u" role="1tU5fm">
+                        <node concept="10P_77" id="6y" role="1tU5fm">
                           <uo k="s:originTrace" v="n:1252437031490219343" />
                         </node>
-                        <node concept="1rXfSq" id="6v" role="33vP2m">
-                          <ref role="37wK5l" node="5O" resolve="staticCanBeAChild" />
+                        <node concept="1rXfSq" id="6z" role="33vP2m">
+                          <ref role="37wK5l" node="5R" resolve="staticCanBeAChild" />
                           <uo k="s:originTrace" v="n:1252437031490219343" />
-                          <node concept="2OqwBi" id="6w" role="37wK5m">
+                          <node concept="2OqwBi" id="6$" role="37wK5m">
                             <uo k="s:originTrace" v="n:1252437031490219343" />
-                            <node concept="37vLTw" id="6$" role="2Oq$k0">
-                              <ref role="3cqZAo" node="6h" resolve="context" />
+                            <node concept="37vLTw" id="6C" role="2Oq$k0">
+                              <ref role="3cqZAo" node="6l" resolve="context" />
                               <uo k="s:originTrace" v="n:1252437031490219343" />
                             </node>
-                            <node concept="liA8E" id="6_" role="2OqNvi">
+                            <node concept="liA8E" id="6D" role="2OqNvi">
                               <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getNode()" resolve="getNode" />
                               <uo k="s:originTrace" v="n:1252437031490219343" />
                             </node>
                           </node>
-                          <node concept="2OqwBi" id="6x" role="37wK5m">
+                          <node concept="2OqwBi" id="6_" role="37wK5m">
                             <uo k="s:originTrace" v="n:1252437031490219343" />
-                            <node concept="37vLTw" id="6A" role="2Oq$k0">
-                              <ref role="3cqZAo" node="6h" resolve="context" />
+                            <node concept="37vLTw" id="6E" role="2Oq$k0">
+                              <ref role="3cqZAo" node="6l" resolve="context" />
                               <uo k="s:originTrace" v="n:1252437031490219343" />
                             </node>
-                            <node concept="liA8E" id="6B" role="2OqNvi">
+                            <node concept="liA8E" id="6F" role="2OqNvi">
                               <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getParentNode()" resolve="getParentNode" />
                               <uo k="s:originTrace" v="n:1252437031490219343" />
                             </node>
                           </node>
-                          <node concept="2OqwBi" id="6y" role="37wK5m">
+                          <node concept="2OqwBi" id="6A" role="37wK5m">
                             <uo k="s:originTrace" v="n:1252437031490219343" />
-                            <node concept="37vLTw" id="6C" role="2Oq$k0">
-                              <ref role="3cqZAo" node="6h" resolve="context" />
+                            <node concept="37vLTw" id="6G" role="2Oq$k0">
+                              <ref role="3cqZAo" node="6l" resolve="context" />
                               <uo k="s:originTrace" v="n:1252437031490219343" />
                             </node>
-                            <node concept="liA8E" id="6D" role="2OqNvi">
+                            <node concept="liA8E" id="6H" role="2OqNvi">
                               <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getConcept()" resolve="getConcept" />
                               <uo k="s:originTrace" v="n:1252437031490219343" />
                             </node>
                           </node>
-                          <node concept="2OqwBi" id="6z" role="37wK5m">
+                          <node concept="2OqwBi" id="6B" role="37wK5m">
                             <uo k="s:originTrace" v="n:1252437031490219343" />
-                            <node concept="37vLTw" id="6E" role="2Oq$k0">
-                              <ref role="3cqZAo" node="6h" resolve="context" />
+                            <node concept="37vLTw" id="6I" role="2Oq$k0">
+                              <ref role="3cqZAo" node="6l" resolve="context" />
                               <uo k="s:originTrace" v="n:1252437031490219343" />
                             </node>
-                            <node concept="liA8E" id="6F" role="2OqNvi">
+                            <node concept="liA8E" id="6J" role="2OqNvi">
                               <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getLink()" resolve="getLink" />
                               <uo k="s:originTrace" v="n:1252437031490219343" />
                             </node>
@@ -1673,37 +1689,37 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="3clFbH" id="6p" role="3cqZAp">
+                    <node concept="3clFbH" id="6t" role="3cqZAp">
                       <uo k="s:originTrace" v="n:1252437031490219343" />
                     </node>
-                    <node concept="3clFbJ" id="6q" role="3cqZAp">
+                    <node concept="3clFbJ" id="6u" role="3cqZAp">
                       <uo k="s:originTrace" v="n:1252437031490219343" />
-                      <node concept="3clFbS" id="6G" role="3clFbx">
+                      <node concept="3clFbS" id="6K" role="3clFbx">
                         <uo k="s:originTrace" v="n:1252437031490219343" />
-                        <node concept="3clFbF" id="6I" role="3cqZAp">
+                        <node concept="3clFbF" id="6M" role="3cqZAp">
                           <uo k="s:originTrace" v="n:1252437031490219343" />
-                          <node concept="2OqwBi" id="6J" role="3clFbG">
+                          <node concept="2OqwBi" id="6N" role="3clFbG">
                             <uo k="s:originTrace" v="n:1252437031490219343" />
-                            <node concept="37vLTw" id="6K" role="2Oq$k0">
-                              <ref role="3cqZAo" node="6i" resolve="checkingNodeContext" />
+                            <node concept="37vLTw" id="6O" role="2Oq$k0">
+                              <ref role="3cqZAo" node="6m" resolve="checkingNodeContext" />
                               <uo k="s:originTrace" v="n:1252437031490219343" />
                             </node>
-                            <node concept="liA8E" id="6L" role="2OqNvi">
+                            <node concept="liA8E" id="6P" role="2OqNvi">
                               <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                               <uo k="s:originTrace" v="n:1252437031490219343" />
-                              <node concept="1dyn4i" id="6M" role="37wK5m">
+                              <node concept="1dyn4i" id="6Q" role="37wK5m">
                                 <property role="1dyqJU" value="canBeChildBreakingPoint" />
                                 <uo k="s:originTrace" v="n:1252437031490219343" />
-                                <node concept="2ShNRf" id="6N" role="1dyrYi">
+                                <node concept="2ShNRf" id="6R" role="1dyrYi">
                                   <uo k="s:originTrace" v="n:1252437031490219343" />
-                                  <node concept="1pGfFk" id="6O" role="2ShVmc">
+                                  <node concept="1pGfFk" id="6S" role="2ShVmc">
                                     <ref role="37wK5l" to="w1kc:~SNodePointer.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="SNodePointer" />
                                     <uo k="s:originTrace" v="n:1252437031490219343" />
-                                    <node concept="Xl_RD" id="6P" role="37wK5m">
+                                    <node concept="Xl_RD" id="6T" role="37wK5m">
                                       <property role="Xl_RC" value="r:aef526b1-5019-472a-a761-72ac88ef58a4(jetbrains.mps.lang.smodel.query.constraints)" />
                                       <uo k="s:originTrace" v="n:1252437031490219343" />
                                     </node>
-                                    <node concept="Xl_RD" id="6Q" role="37wK5m">
+                                    <node concept="Xl_RD" id="6U" role="37wK5m">
                                       <property role="Xl_RC" value="1252437031490219344" />
                                       <uo k="s:originTrace" v="n:1252437031490219343" />
                                     </node>
@@ -1714,44 +1730,44 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="1Wc70l" id="6H" role="3clFbw">
+                      <node concept="1Wc70l" id="6L" role="3clFbw">
                         <uo k="s:originTrace" v="n:1252437031490219343" />
-                        <node concept="3y3z36" id="6R" role="3uHU7w">
+                        <node concept="3y3z36" id="6V" role="3uHU7w">
                           <uo k="s:originTrace" v="n:1252437031490219343" />
-                          <node concept="10Nm6u" id="6T" role="3uHU7w">
+                          <node concept="10Nm6u" id="6X" role="3uHU7w">
                             <uo k="s:originTrace" v="n:1252437031490219343" />
                           </node>
-                          <node concept="37vLTw" id="6U" role="3uHU7B">
-                            <ref role="3cqZAo" node="6i" resolve="checkingNodeContext" />
+                          <node concept="37vLTw" id="6Y" role="3uHU7B">
+                            <ref role="3cqZAo" node="6m" resolve="checkingNodeContext" />
                             <uo k="s:originTrace" v="n:1252437031490219343" />
                           </node>
                         </node>
-                        <node concept="3fqX7Q" id="6S" role="3uHU7B">
+                        <node concept="3fqX7Q" id="6W" role="3uHU7B">
                           <uo k="s:originTrace" v="n:1252437031490219343" />
-                          <node concept="37vLTw" id="6V" role="3fr31v">
-                            <ref role="3cqZAo" node="6t" resolve="result" />
+                          <node concept="37vLTw" id="6Z" role="3fr31v">
+                            <ref role="3cqZAo" node="6x" resolve="result" />
                             <uo k="s:originTrace" v="n:1252437031490219343" />
                           </node>
                         </node>
                       </node>
                     </node>
-                    <node concept="3clFbH" id="6r" role="3cqZAp">
+                    <node concept="3clFbH" id="6v" role="3cqZAp">
                       <uo k="s:originTrace" v="n:1252437031490219343" />
                     </node>
-                    <node concept="3clFbF" id="6s" role="3cqZAp">
+                    <node concept="3clFbF" id="6w" role="3cqZAp">
                       <uo k="s:originTrace" v="n:1252437031490219343" />
-                      <node concept="37vLTw" id="6W" role="3clFbG">
-                        <ref role="3cqZAo" node="6t" resolve="result" />
+                      <node concept="37vLTw" id="70" role="3clFbG">
+                        <ref role="3cqZAo" node="6x" resolve="result" />
                         <uo k="s:originTrace" v="n:1252437031490219343" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3uibUv" id="6c" role="2Ghqu4">
+                <node concept="3uibUv" id="6g" role="2Ghqu4">
                   <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
                   <uo k="s:originTrace" v="n:1252437031490219343" />
                 </node>
-                <node concept="3uibUv" id="6d" role="2Ghqu4">
+                <node concept="3uibUv" id="6h" role="2Ghqu4">
                   <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
                   <uo k="s:originTrace" v="n:1252437031490219343" />
                 </node>
@@ -1760,80 +1776,80 @@
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="63" role="2AJF6D">
+      <node concept="2AHcQZ" id="67" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:1252437031490219343" />
       </node>
     </node>
-    <node concept="2YIFZL" id="5O" role="jymVt">
+    <node concept="2YIFZL" id="5R" role="jymVt">
       <property role="TrG5h" value="staticCanBeAChild" />
       <uo k="s:originTrace" v="n:1252437031490219343" />
-      <node concept="10P_77" id="6X" role="3clF45">
+      <node concept="10P_77" id="71" role="3clF45">
         <uo k="s:originTrace" v="n:1252437031490219343" />
       </node>
-      <node concept="3Tm6S6" id="6Y" role="1B3o_S">
+      <node concept="3Tm6S6" id="72" role="1B3o_S">
         <uo k="s:originTrace" v="n:1252437031490219343" />
       </node>
-      <node concept="3clFbS" id="6Z" role="3clF47">
+      <node concept="3clFbS" id="73" role="3clF47">
         <uo k="s:originTrace" v="n:1252437031490219345" />
-        <node concept="3cpWs6" id="74" role="3cqZAp">
+        <node concept="3cpWs6" id="78" role="3cqZAp">
           <uo k="s:originTrace" v="n:1252437031490220109" />
-          <node concept="2OqwBi" id="75" role="3cqZAk">
+          <node concept="2OqwBi" id="79" role="3cqZAk">
             <uo k="s:originTrace" v="n:1252437031490220386" />
-            <node concept="2OqwBi" id="76" role="2Oq$k0">
+            <node concept="2OqwBi" id="7a" role="2Oq$k0">
               <uo k="s:originTrace" v="n:1252437031490220387" />
-              <node concept="37vLTw" id="78" role="2Oq$k0">
-                <ref role="3cqZAo" node="71" resolve="parentNode" />
+              <node concept="37vLTw" id="7c" role="2Oq$k0">
+                <ref role="3cqZAo" node="75" resolve="parentNode" />
                 <uo k="s:originTrace" v="n:1252437031490220388" />
               </node>
-              <node concept="2Xjw5R" id="79" role="2OqNvi">
+              <node concept="2Xjw5R" id="7d" role="2OqNvi">
                 <uo k="s:originTrace" v="n:1252437031490220389" />
-                <node concept="1xMEDy" id="7a" role="1xVPHs">
+                <node concept="1xMEDy" id="7e" role="1xVPHs">
                   <uo k="s:originTrace" v="n:1252437031490220390" />
-                  <node concept="chp4Y" id="7c" role="ri$Ld">
+                  <node concept="chp4Y" id="7g" role="ri$Ld">
                     <ref role="cht4Q" to="3xdn:s5v6K2pSK7" resolve="QueryExpressionScopeProvider" />
                     <uo k="s:originTrace" v="n:1252437031490220391" />
                   </node>
                 </node>
-                <node concept="1xIGOp" id="7b" role="1xVPHs">
+                <node concept="1xIGOp" id="7f" role="1xVPHs">
                   <uo k="s:originTrace" v="n:1252437031490220392" />
                 </node>
               </node>
             </node>
-            <node concept="3w_OXm" id="77" role="2OqNvi">
+            <node concept="3w_OXm" id="7b" role="2OqNvi">
               <uo k="s:originTrace" v="n:1252437031490221146" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="70" role="3clF46">
+      <node concept="37vLTG" id="74" role="3clF46">
         <property role="TrG5h" value="node" />
         <uo k="s:originTrace" v="n:1252437031490219343" />
-        <node concept="3uibUv" id="7d" role="1tU5fm">
+        <node concept="3uibUv" id="7h" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
           <uo k="s:originTrace" v="n:1252437031490219343" />
         </node>
       </node>
-      <node concept="37vLTG" id="71" role="3clF46">
+      <node concept="37vLTG" id="75" role="3clF46">
         <property role="TrG5h" value="parentNode" />
         <uo k="s:originTrace" v="n:1252437031490219343" />
-        <node concept="3uibUv" id="7e" role="1tU5fm">
+        <node concept="3uibUv" id="7i" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
           <uo k="s:originTrace" v="n:1252437031490219343" />
         </node>
       </node>
-      <node concept="37vLTG" id="72" role="3clF46">
+      <node concept="37vLTG" id="76" role="3clF46">
         <property role="TrG5h" value="childConcept" />
         <uo k="s:originTrace" v="n:1252437031490219343" />
-        <node concept="3uibUv" id="7f" role="1tU5fm">
+        <node concept="3uibUv" id="7j" role="1tU5fm">
           <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
           <uo k="s:originTrace" v="n:1252437031490219343" />
         </node>
       </node>
-      <node concept="37vLTG" id="73" role="3clF46">
+      <node concept="37vLTG" id="77" role="3clF46">
         <property role="TrG5h" value="link" />
         <uo k="s:originTrace" v="n:1252437031490219343" />
-        <node concept="3uibUv" id="7g" role="1tU5fm">
+        <node concept="3uibUv" id="7k" role="1tU5fm">
           <ref role="3uigEE" to="c17a:~SContainmentLink" resolve="SContainmentLink" />
           <uo k="s:originTrace" v="n:1252437031490219343" />
         </node>

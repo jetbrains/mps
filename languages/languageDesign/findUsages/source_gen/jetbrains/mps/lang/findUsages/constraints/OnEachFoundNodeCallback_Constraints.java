@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class OnEachFoundNodeCallback_Constraints extends BaseConstraintsDescriptor {
   /*package*/ OnEachFoundNodeCallback_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.OnEachFoundNodeCallback$u4);
+    super(CONCEPTS.OnEachFoundNodeCallback$u4, initContext);
   }
 
   @Override

@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EnumConstantDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EnumConstantDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EnumConstantDeclaration$MW);
+    super(CONCEPTS.EnumConstantDeclaration$MW, initContext);
   }
 
   @Override

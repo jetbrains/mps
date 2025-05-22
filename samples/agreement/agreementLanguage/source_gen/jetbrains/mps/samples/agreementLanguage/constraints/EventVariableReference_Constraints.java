@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EventVariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EventVariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EventVariableReference$13);
+    super(CONCEPTS.EventVariableReference$13, initContext);
   }
 
   @Override

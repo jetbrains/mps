@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildSource_JavaClassFolder_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildSource_JavaClassFolder_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildSource_JavaClassFolder$Z_);
+    super(CONCEPTS.BuildSource_JavaClassFolder$Z_, initContext);
   }
 
   @Override

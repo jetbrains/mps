@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class EnumMemberValueRefExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EnumMemberValueRefExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EnumMemberValueRefExpression$QG);
+    super(CONCEPTS.EnumMemberValueRefExpression$QG, initContext);
   }
 
   @Override

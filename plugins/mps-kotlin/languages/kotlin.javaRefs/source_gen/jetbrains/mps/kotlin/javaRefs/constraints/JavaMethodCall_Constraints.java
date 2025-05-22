@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class JavaMethodCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ JavaMethodCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.JavaMethodCall$gD);
+    super(CONCEPTS.JavaMethodCall$gD, initContext);
   }
 
   @Override

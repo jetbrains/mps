@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CatchVariable_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CatchVariable_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CatchVariable$zI);
+    super(CONCEPTS.CatchVariable$zI, initContext);
   }
 
   @Override

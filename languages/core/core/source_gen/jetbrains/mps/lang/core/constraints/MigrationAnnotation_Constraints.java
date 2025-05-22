@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class MigrationAnnotation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MigrationAnnotation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MigrationAnnotation$z7);
+    super(CONCEPTS.MigrationAnnotation$z7, initContext);
   }
 
   public static class CreatedByScript_Property extends BasePropertyConstraintsDescriptor {

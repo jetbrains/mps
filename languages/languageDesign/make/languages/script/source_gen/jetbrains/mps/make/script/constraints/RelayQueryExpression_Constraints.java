@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class RelayQueryExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RelayQueryExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.RelayQueryExpression$3);
+    super(CONCEPTS.RelayQueryExpression$3, initContext);
   }
 
   @Override

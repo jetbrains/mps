@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AnalyzerRunnerAnalyzeOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AnalyzerRunnerAnalyzeOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AnalyzerRunnerAnalyzeOperation$8z);
+    super(CONCEPTS.AnalyzerRunnerAnalyzeOperation$8z, initContext);
   }
 
   @Override

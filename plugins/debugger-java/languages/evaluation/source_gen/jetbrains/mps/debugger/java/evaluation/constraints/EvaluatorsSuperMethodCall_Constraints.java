@@ -36,7 +36,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EvaluatorsSuperMethodCall_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EvaluatorsSuperMethodCall_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EvaluatorsSuperMethodCall$PI);
+    super(CONCEPTS.EvaluatorsSuperMethodCall$PI, initContext);
   }
 
   @Override

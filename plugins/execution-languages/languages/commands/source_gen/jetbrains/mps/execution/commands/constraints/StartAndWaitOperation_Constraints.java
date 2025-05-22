@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StartAndWaitOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ StartAndWaitOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.StartAndWaitOperation$xW);
+    super(CONCEPTS.StartAndWaitOperation$xW, initContext);
   }
 
   @Override

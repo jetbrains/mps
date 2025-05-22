@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SimpleBuilderPropertyExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SimpleBuilderPropertyExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.SimpleBuilderPropertyExpression$nI);
+    super(CONCEPTS.SimpleBuilderPropertyExpression$nI, initContext);
   }
 
   @Override

@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class JavaEnumConstantReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ JavaEnumConstantReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.JavaEnumConstantReference$42);
+    super(CONCEPTS.JavaEnumConstantReference$42, initContext);
   }
 
   @Override

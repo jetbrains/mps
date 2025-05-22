@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GenerationContextOp_VarRef2_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GenerationContextOp_VarRef2_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GenerationContextOp_VarRef2$2B);
+    super(CONCEPTS.GenerationContextOp_VarRef2$2B, initContext);
   }
 
   @Override

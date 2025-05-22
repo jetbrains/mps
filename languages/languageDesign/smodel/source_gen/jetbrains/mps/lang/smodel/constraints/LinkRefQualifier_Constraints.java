@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class LinkRefQualifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LinkRefQualifier_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.LinkRefQualifier$uI);
+    super(CONCEPTS.LinkRefQualifier$uI, initContext);
   }
 
   @Override

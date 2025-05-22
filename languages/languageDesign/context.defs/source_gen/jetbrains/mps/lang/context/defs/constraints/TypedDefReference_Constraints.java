@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class TypedDefReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TypedDefReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.TypedDefReference$yw);
+    super(CONCEPTS.TypedDefReference$yw, initContext);
   }
 
   @Override

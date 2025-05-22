@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CheckpointSynchronization_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CheckpointSynchronization_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.CheckpointSynchronization$DV);
+    super(CONCEPTS.CheckpointSynchronization$DV, initContext);
   }
 
   @Override

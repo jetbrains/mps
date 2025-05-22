@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class VariableReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ VariableReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.VariableReference$TC);
+    super(CONCEPTS.VariableReference$TC, initContext);
   }
 
   @Override

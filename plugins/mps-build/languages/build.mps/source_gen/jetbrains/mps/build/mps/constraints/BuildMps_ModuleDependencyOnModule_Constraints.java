@@ -33,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BuildMps_ModuleDependencyOnModule_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildMps_ModuleDependencyOnModule_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.BuildMps_ModuleDependencyOnModule$1C);
+    super(CONCEPTS.BuildMps_ModuleDependencyOnModule$1C, initContext);
   }
 
   @Override

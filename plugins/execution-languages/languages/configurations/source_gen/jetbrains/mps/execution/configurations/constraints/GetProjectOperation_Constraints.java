@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class GetProjectOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GetProjectOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GetProjectOperation$St);
+    super(CONCEPTS.GetProjectOperation$St, initContext);
   }
 
   @Override

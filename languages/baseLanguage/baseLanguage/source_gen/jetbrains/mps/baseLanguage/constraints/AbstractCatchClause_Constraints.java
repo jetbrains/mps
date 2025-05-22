@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractCatchClause_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractCatchClause_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AbstractCatchClause$sw);
+    super(CONCEPTS.AbstractCatchClause$sw, initContext);
   }
 
   @Override

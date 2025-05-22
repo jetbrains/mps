@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlExternalId_Constraints extends BaseConstraintsDescriptor {
   /*package*/ XmlExternalId_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.XmlExternalId$CW);
+    super(CONCEPTS.XmlExternalId$CW, initContext);
   }
 
   public static class PublicId_Property extends BasePropertyConstraintsDescriptor {

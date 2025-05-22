@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GroupAnchor_Constraints extends BaseConstraintsDescriptor {
   /*package*/ GroupAnchor_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.GroupAnchor$JV);
+    super(CONCEPTS.GroupAnchor$JV, initContext);
   }
 
   @Override

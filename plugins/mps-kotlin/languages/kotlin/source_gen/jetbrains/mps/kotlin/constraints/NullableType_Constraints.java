@@ -16,7 +16,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NullableType_Constraints extends BaseConstraintsDescriptor {
   /*package*/ NullableType_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.NullableType$E0);
+    super(CONCEPTS.NullableType$E0, initContext);
   }
 
   public static class IsNullable_Property extends BasePropertyConstraintsDescriptor {

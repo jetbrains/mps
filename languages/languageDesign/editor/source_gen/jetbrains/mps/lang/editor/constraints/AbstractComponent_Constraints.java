@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractComponent_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractComponent_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.AbstractComponent$YR);
+    super(CONCEPTS.AbstractComponent$YR, initContext);
   }
 
   @Override

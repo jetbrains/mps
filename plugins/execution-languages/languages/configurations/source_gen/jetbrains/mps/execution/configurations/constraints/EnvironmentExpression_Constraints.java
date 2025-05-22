@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EnvironmentExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EnvironmentExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.EnvironmentExpression$DP);
+    super(CONCEPTS.EnvironmentExpression$DP, initContext);
   }
 
   @Override

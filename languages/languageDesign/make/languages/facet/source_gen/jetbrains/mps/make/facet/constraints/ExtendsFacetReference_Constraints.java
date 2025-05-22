@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExtendsFacetReference_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ExtendsFacetReference_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.ExtendsFacetReference$H2);
+    super(CONCEPTS.ExtendsFacetReference$H2, initContext);
   }
 
   @Override

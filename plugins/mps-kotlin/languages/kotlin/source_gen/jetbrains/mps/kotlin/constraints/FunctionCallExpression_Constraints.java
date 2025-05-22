@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class FunctionCallExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ FunctionCallExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.FunctionCallExpression$EQ);
+    super(CONCEPTS.FunctionCallExpression$EQ, initContext);
   }
 
   @Override

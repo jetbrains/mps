@@ -32,7 +32,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PullUpMethod_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PullUpMethod_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.PullUpMethod$FB);
+    super(CONCEPTS.PullUpMethod$FB, initContext);
   }
 
   @Override
