@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,14 @@
  */
 package jetbrains.mps.smodel.runtime.base;
 
-import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.util.DepthFirstConceptIterator;
+
+import java.util.Objects;
 
 public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDescriptor {
   private final SProperty myProperty;
@@ -37,6 +36,7 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDes
    * @since 2021.2
    */
   public BasePropertyConstraintsDescriptor(SProperty property, ConstraintsDescriptor container, boolean ownGet, boolean ownSet, boolean ownValidate) {
+    assert container instanceof BaseConstraintsDescriptor; // need this for extra information (about ancestors)
     myProperty = property;
     myContainer = container;
 
@@ -45,16 +45,14 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDes
     validatorDescriptor = ownValidate ? this : getSomethingUsingInheritance(pd -> pd.validatorDescriptor, property, container);
   }
 
-  @Nullable
-  private static PropertyConstraintsDescriptor getSomethingUsingInheritance(InheritanceCalculateParameters parameters, SProperty property, ConstraintsDescriptor container) {
-    // XXX see ~identical method in BaseReferenceConstraintsDescriptor for extensive comments
-    DepthFirstConceptIterator it = new DepthFirstConceptIterator(container.getConcept());
-    SAbstractConcept parent = it.next();
-    assert container.getConcept().equals(parent);
-    while (it.hasNext()) {
-      parent = it.next();
+  /*package*/ BasePropertyConstraintsDescriptor(SProperty property, BaseConstraintsDescriptor container) {
+    this(property, container, false, false, false);
+  }
 
-      ConstraintsDescriptor parentDescriptor = ConceptRegistry.getInstance().getConstraintsDescriptor(parent);
+  @Nullable
+  private static PropertyConstraintsDescriptor getSomethingUsingInheritance(final InheritanceCalculateParameters parameters, final SProperty property, ConstraintsDescriptor container) {
+    // XXX there's ~identical method in BaseReferenceConstraintsDescriptor
+    return ((BaseConstraintsDescriptor) container).ancestors().map(parentDescriptor -> {
       PropertyConstraintsDescriptor parentPropertyDescriptor = parentDescriptor.getProperty(property);
 
       PropertyConstraintsDescriptor parentCalculated;
@@ -64,13 +62,8 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDes
       } else {
         parentCalculated = parentPropertyDescriptor;
       }
-
-      if (parentCalculated != null) {
-        return parentCalculated;
-      }
-    }
-
-    return null;
+      return parentCalculated;
+    }).filter(Objects::nonNull).findFirst().orElse(null);
   }
 
   public boolean isSetterDefault() {

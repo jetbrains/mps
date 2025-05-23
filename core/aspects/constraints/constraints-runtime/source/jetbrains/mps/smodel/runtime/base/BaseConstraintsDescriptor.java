@@ -40,6 +40,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Supplier;
@@ -47,6 +48,7 @@ import java.util.stream.Stream;
 
 public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
   private final SAbstractConcept myConcept;
+  private final List<ConstraintsDescriptor> myDirectAncestorConstraints;
 
   private final ConstraintFunction<ConstraintContext_CanBeChild, Boolean> myCanBeChildConstraint;
   private final ConstraintFunction<ConstraintContext_CanBeRoot, Boolean> myCanBeRootConstraint;
@@ -70,6 +72,7 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
    */
   @Deprecated(since = "2025.2", forRemoval = true)
   public BaseConstraintsDescriptor(@NotNull final SAbstractConcept concept) {
+    //noinspection removal
     this(concept, new BasicInitContext());
 
     // these methods were overridden in legacy CD only; new (2025.2) CDs use record()
@@ -79,11 +82,12 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
 
   public BaseConstraintsDescriptor(@NotNull final SAbstractConcept concept, @NotNull final ConstraintsDescriptorInitContext initContext) {
     myConcept = concept;
+    myDirectAncestorConstraints = initContext.getAncestorConstraints(concept).toList();
 
     // XXX I see no reason to restrict parents to BCD, this is just the way collectParents() had it the moment I took over.
-    Supplier<Stream<BaseConstraintsDescriptor>> parents = () -> initContext.getAncestorConstraints(concept)
-                                                                       .filter(BaseConstraintsDescriptor.class::isInstance)
-                                                                       .map(BaseConstraintsDescriptor.class::cast);
+    Supplier<Stream<BaseConstraintsDescriptor>> parents = () -> myDirectAncestorConstraints.stream()
+                                                                                           .filter(BaseConstraintsDescriptor.class::isInstance)
+                                                                                           .map(BaseConstraintsDescriptor.class::cast);
     // XXX although there's no warning (IDEA doesn't see through private mediator), the pattern to invoke
     //     overrode protected methods from constructor is awful practice.
     myCanBeChildConstraint = calculateCanBeChildConstraint(parents);
@@ -131,6 +135,10 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
     // this method is invoked for legacy CD implementations only. CD from 2025.2 use record() method from cons
     return Collections.emptyMap();
+  }
+
+  /*package*/ final Stream<ConstraintsDescriptor> ancestors() {
+    return myDirectAncestorConstraints.stream();
   }
 
   private ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint(Supplier<Stream<BaseConstraintsDescriptor>> parents) {
@@ -254,7 +262,7 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
       return null;
     }
 
-    myPropertyConstraints.put(property, new BasePropertyConstraintsDescriptor(property, this, false, false, false));
+    myPropertyConstraints.put(property, new BasePropertyConstraintsDescriptor(property, this));
 
     return myPropertyConstraints.get(property);
   }
@@ -270,7 +278,7 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
       return null;
     }
 
-    myReferenceConstraints.put(ref, new BaseReferenceConstraintsDescriptor(ref, this, false, false));
+    myReferenceConstraints.put(ref, new BaseReferenceConstraintsDescriptor(ref, this));
 
     return myReferenceConstraints.get(ref);
   }
