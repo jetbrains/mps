@@ -13,7 +13,7 @@
 }, {
   "name" : "Amazon Ion Java",
   "url" : "https://github.com/amazon-ion/ion-java",
-  "version" : "1.11.9",
+  "version" : "1.11.10",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/amazon-ion/ion-java/blob/master/LICENSE"
 }, {
@@ -37,7 +37,7 @@
 }, {
   "name" : "Apache Commons Codec",
   "url" : "https://commons.apache.org/proper/commons-codec/",
-  "version" : "1.17.1",
+  "version" : "1.18.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/apache/commons-codec/blob/master/LICENSE.txt"
 }, {
@@ -49,7 +49,7 @@
 }, {
   "name" : "Apache Commons Compress",
   "url" : "https://commons.apache.org/proper/commons-compress/",
-  "version" : "1.26.1",
+  "version" : "1.27.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/apache/commons-compress/blob/master/LICENSE.txt"
 }, {
@@ -67,7 +67,7 @@
 }, {
   "name" : "Apache Commons IO",
   "url" : "https://commons.apache.org/proper/commons-io/",
-  "version" : "2.16.1",
+  "version" : "2.18.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/apache/commons-io/blob/master/LICENSE.txt"
 }, {
@@ -103,7 +103,7 @@
 }, {
   "name" : "AssertJ fluent assertions",
   "url" : "https://github.com/assertj/assertj-core",
-  "version" : "3.26.3",
+  "version" : "3.27.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/assertj/assertj-core/blob/main/LICENSE.txt"
 }, {
@@ -145,7 +145,7 @@
 }, {
   "name" : "Compose Multiplatform",
   "url" : "https://github.com/JetBrains/compose-multiplatform",
-  "version" : "1.7.1",
+  "version" : "1.8.0-alpha04",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/compose-multiplatform/blob/master/LICENSE.txt"
 }, {
@@ -193,13 +193,13 @@
 }, {
   "name" : "Gson",
   "url" : "https://github.com/google/gson",
-  "version" : "2.12.1",
+  "version" : "2.13.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/google/gson/blob/master/LICENSE"
 }, {
   "name" : "Guava",
   "url" : "https://github.com/google/guava",
-  "version" : "33.4.0-jre",
+  "version" : "33.4.8-jre",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/google/guava/raw/master/LICENSE"
 }, {
@@ -295,7 +295,7 @@
 }, {
   "name" : "JNA",
   "url" : "https://github.com/java-native-access/jna",
-  "version" : "5.14.0",
+  "version" : "5.17.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/java-native-access/jna/blob/master/LICENSE"
 }, {
@@ -397,7 +397,7 @@
 }, {
   "name" : "JetBrains Annotations",
   "url" : "https://github.com/JetBrains/java-annotations",
-  "version" : "24.0.0",
+  "version" : "26.0.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/java-annotations/blob/master/LICENSE.txt"
 }, {
@@ -415,7 +415,7 @@
 }, {
   "name" : "JetBrains Runtime API",
   "url" : "https://github.com/JetBrains/JetBrainsRuntime",
-  "version" : "1.2.0",
+  "version" : "1.5.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/JetBrainsRuntime/blob/main/LICENSE"
 }, {
@@ -427,55 +427,61 @@
 }, {
   "name" : "Kotlin Coroutines for Guava",
   "url" : "https://github.com/Kotlin/kotlinx.coroutines",
-  "version" : "1.8.0-intellij-13",
+  "version" : "1.10.1-intellij-4",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.coroutines/blob/master/LICENSE.txt"
 }, {
   "name" : "Kotlin Coroutines for JDK 8",
   "url" : "https://github.com/Kotlin/kotlinx.coroutines",
-  "version" : "1.8.0-intellij-13",
-  "license" : "Apache 2.0",
-  "licenseUrl" : "https://github.com/Kotlin/kotlinx.coroutines/blob/master/LICENSE.txt"
-}, {
-  "name" : "Kotlin Coroutines for Slf4j",
-  "url" : "https://github.com/Kotlin/kotlinx.coroutines",
-  "version" : "1.8.0-intellij-13",
+  "version" : "1.10.1-intellij-4",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.coroutines/blob/master/LICENSE.txt"
 }, {
   "name" : "Kotlin Standard Library",
   "url" : "https://github.com/JetBrains/kotlin",
-  "version" : "2.1.10",
+  "version" : "2.2.0-RC",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt"
 }, {
+  "name" : "Kotlin library providing basic IO primitives",
+  "url" : "https://github.com/Kotlin/kotlinx-io",
+  "version" : "0.6.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/Kotlin/kotlinx-io/blob/master/LICENSE"
+}, {
   "name" : "Kotlin multiplatform / multi-format serialization",
   "url" : "https://github.com/Kotlin/kotlinx.serialization",
-  "version" : "1.7.3",
+  "version" : "1.8.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.serialization/blob/master/LICENSE.txt"
 }, {
   "name" : "Kotlin multiplatform / multi-format serialization",
   "url" : "https://github.com/Kotlin/kotlinx.serialization",
-  "version" : "1.7.3",
+  "version" : "1.8.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.serialization/blob/master/LICENSE.txt"
 }, {
   "name" : "Kotlin multiplatform / multi-format serialization",
   "url" : "https://github.com/Kotlin/kotlinx.serialization",
-  "version" : "1.7.3",
+  "version" : "1.8.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.serialization/blob/master/LICENSE.txt"
 }, {
   "name" : "Kotlin multiplatform / multi-format serialization",
   "url" : "https://github.com/Kotlin/kotlinx.serialization",
-  "version" : "1.7.3",
+  "version" : "1.8.1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/Kotlin/kotlinx.serialization/blob/master/LICENSE.txt"
+}, {
+  "name" : "Kotlin multiplatform / multi-format serialization",
+  "url" : "https://github.com/Kotlin/kotlinx.serialization",
+  "version" : "1.8.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.serialization/blob/master/LICENSE.txt"
 }, {
   "name" : "Kotlin reflection library",
   "url" : "https://github.com/JetBrains/kotlin",
-  "version" : "2.1.10",
+  "version" : "2.2.0-RC",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt"
 }, {
@@ -577,19 +583,19 @@
 }, {
   "name" : "Skiko",
   "url" : "https://github.com/JetBrains/skiko/",
-  "version" : "0.8.18",
+  "version" : "0.9.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/skiko/blob/master/LICENSE"
 }, {
   "name" : "Skiko Runtime",
   "url" : "https://github.com/JetBrains/skiko/",
-  "version" : "0.8.18",
+  "version" : "0.9.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/skiko/blob/master/LICENSE"
 }, {
   "name" : "SnakeYAML",
   "url" : "https://bitbucket.org/snakeyaml/snakeyaml/",
-  "version" : "2.3",
+  "version" : "2.4",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://bitbucket.org/snakeyaml/snakeyaml/src/master/LICENSE.txt"
 }, {
@@ -601,7 +607,7 @@
 }, {
   "name" : "StreamEx",
   "url" : "https://github.com/amaembo/streamex",
-  "version" : "0.8.2",
+  "version" : "0.8.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/amaembo/streamex/blob/master/LICENSE"
 }, {
@@ -715,25 +721,25 @@
 }, {
   "name" : "fastutil",
   "url" : "https://github.com/vigna/fastutil",
-  "version" : "8.5.14-jb1",
+  "version" : "8.5.15-jb1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/vigna/fastutil/blob/master/LICENSE-2.0"
 }, {
   "name" : "gRPC: Core",
   "url" : "https://grpc.io/",
-  "version" : "1.66.0",
+  "version" : "1.71.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/grpc/grpc-java/blob/master/LICENSE"
 }, {
   "name" : "gRPC: Protobuf",
   "url" : "https://grpc.io/",
-  "version" : "1.66.0",
+  "version" : "1.71.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/grpc/grpc-java/blob/master/LICENSE"
 }, {
   "name" : "gRPC: Stub",
   "url" : "https://grpc.io/",
-  "version" : "1.66.0",
+  "version" : "1.71.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/grpc/grpc-java/blob/master/LICENSE"
 }, {
@@ -745,7 +751,7 @@
 }, {
   "name" : "hash4j",
   "url" : "https://github.com/dynatrace-oss/hash4j",
-  "version" : "0.20.0",
+  "version" : "0.22.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/dynatrace-oss/hash4j/blob/main/LICENSE"
 }, {
@@ -779,21 +785,27 @@
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/markdown/blob/master/LICENSE"
 }, {
+  "name" : "jackson-jr-objects",
+  "url" : "https://github.com/FasterXML/jackson-jr",
+  "version" : "2.17.2",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/FasterXML/jackson-jr/blob/2.16/LICENSE"
+}, {
   "name" : "jb-jdi",
   "url" : "https://github.com/JetBrains/intellij-deps-jdi",
-  "version" : "2.41",
+  "version" : "2.42",
   "license" : "GPL 2.0 + Classpath",
   "licenseUrl" : "https://github.com/JetBrains/intellij-deps-jdi/raw/master/LICENSE.txt"
 }, {
   "name" : "jediterm-core",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.50",
+  "version" : "3.53",
   "license" : "LGPL 3.0",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
   "name" : "jediterm-ui",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.50",
+  "version" : "3.53",
   "license" : "LGPL 3.0",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
@@ -811,7 +823,7 @@
 }, {
   "name" : "jsoup",
   "url" : "https://jsoup.org",
-  "version" : "1.18.3",
+  "version" : "1.19.1",
   "license" : "MIT",
   "licenseUrl" : "https://jsoup.org/license"
 }, {
@@ -961,25 +973,25 @@
 }, {
   "name" : "opentelemetry",
   "url" : "https://opentelemetry.io/",
-  "version" : "1.47.0",
+  "version" : "1.48.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
 }, {
   "name" : "opentelemetry-exporter-otlp-common",
   "url" : "https://opentelemetry.io/",
-  "version" : "1.47.0",
+  "version" : "1.48.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
 }, {
   "name" : "opentelemetry-extension-kotlin",
   "url" : "https://opentelemetry.io/",
-  "version" : "1.47.0",
+  "version" : "1.48.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
 }, {
   "name" : "opentelemetry-semconv",
   "url" : "https://opentelemetry.io/",
-  "version" : "1.30.0-rc.1",
+  "version" : "1.30.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/semantic-conventions-java/blob/main/LICENSE"
 }, {
@@ -991,7 +1003,7 @@
 }, {
   "name" : "pty4j",
   "url" : "https://github.com/JetBrains/pty4j",
-  "version" : "0.13.1",
+  "version" : "0.13.4",
   "license" : "EPL 1.0",
   "licenseUrl" : "https://github.com/JetBrains/pty4j/blob/master/LICENSE"
 }, {
@@ -1093,7 +1105,7 @@
 }, {
   "name" : "zstd-jni",
   "url" : "https://github.com/luben/zstd-jni",
-  "version" : "1.5.6-9",
+  "version" : "1.5.7-2",
   "license" : "BSD 2-Clause",
   "licenseUrl" : "https://github.com/luben/zstd-jni/blob/master/LICENSE"
 } ]
