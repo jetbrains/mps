@@ -54,7 +54,7 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
   private final ConstraintFunction<ConstraintContext_CanBeRoot, Boolean> myCanBeRootConstraint;
   private final ConstraintFunction<ConstraintContext_CanBeParent, Boolean> myCanBeParentConstraint;
   private final ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean> myCanBeAncestorConstraint;
-  private final ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> myDefaultScopeConstraint;
+  private final InitOncePtr<ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>> myDefaultScopeConstraint;
 
   private final ConcurrentHashMap<SProperty, PropertyConstraintsDescriptor> myPropertyConstraints = new ConcurrentHashMap<>();
   private final ConcurrentHashMap<SReferenceLink, ReferenceConstraintsDescriptor> myReferenceConstraints = new ConcurrentHashMap<>();
@@ -94,7 +94,7 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
     myCanBeRootConstraint = calculateCanBeRootConstraint(parents);
     myCanBeParentConstraint = calculateCanBeParentConstraint(parents);
     myCanBeAncestorConstraint = calculateCanBeAncestorConstraint(parents);
-    myDefaultScopeConstraint = calculateDefaultScopeConstraint(parents);
+    myDefaultScopeConstraint = new InitOncePtr<>();
   }
 
   protected final void record(@NotNull PropertyConstraintsDescriptor pd) {
@@ -193,12 +193,10 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
     return null;
   }
 
-  private ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint(Supplier<Stream<BaseConstraintsDescriptor>> parents) {
+  // not null
+  private ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> _calculateDefaultScopeConstraint() {
     final ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> rv = calculateDefaultScopeConstraint();
-    if (rv != null) {
-      return rv;
-    }
-    return ConstraintFunctions.createScopeProviderComposition(parents.get().map(ConstraintFunctions::getDefaultScopeConstraintFunction));
+    return rv != null ? rv : ConstraintFunctions.createScopeProviderComposition(ancestors().map(ConstraintFunctions::getDefaultScopeConstraintFunction));
   }
 
   protected ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
@@ -221,8 +219,18 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
     return myCanBeAncestorConstraint;
   }
 
+  // not null
   public ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> getDefaultScopeConstraint() {
-    return myDefaultScopeConstraint;
+    // even if/once we switch to setDefaultScope() in generated code, we shall keep consulting calculateDefaultScopeConstraint() for legacy code
+    // well, unless I'd introduce another base class for CD, which is tricky provided there are casts to BaseCD
+    return myDefaultScopeConstraint.getOrElse(this::_calculateDefaultScopeConstraint);
+  }
+
+  protected final void setDefaultScope(ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> constraint) {
+    // the idea is to use this method from generated subclasses instead of overriding calculateDefaultScopeConstraint(),
+    // i.e. to pass function, which is constructed in overridden method (save the method!)
+    myDefaultScopeConstraint.set(constraint);
+    // unlike other functions, there's no myDefaultScopeConstraintDefined:boolean, but if would be, here's the place to set to TRUE
   }
 
   @NotNull
@@ -285,7 +293,7 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
 
   @Override
   public ReferenceScopeProvider getDefaultScopeProvider() {
-    return myDefaultScopeConstraint.invoke(ConstraintContext_DefaultScopeProvider.getInstance(), null);
+    return getDefaultScopeConstraint().invoke(ConstraintContext_DefaultScopeProvider.getInstance(), null);
   }
 
   @Nullable
