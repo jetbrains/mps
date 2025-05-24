@@ -25,11 +25,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class InterfaceConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InterfaceConceptDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.InterfaceConceptDeclaration$CG, initContext);
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    return new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
+    setDefaultScope(new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
       @Nullable
       public ReferenceScopeProvider invoke(@NotNull ConstraintContext_DefaultScopeProvider context, @Nullable CheckingNodeContext checkingNodeContext) {
         return new BaseScopeProvider() {
@@ -43,11 +39,8 @@ public class InterfaceConceptDeclaration_Constraints extends BaseConstraintsDesc
           }
         };
       }
-    };
-  }
-  @Override
-  public ConstraintFunction<ConstraintContext_CanBeRoot, Boolean> calculateCanBeRootConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
+    });
+    setCanBeRoot(new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeRoot context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeARoot(context.getModel());
@@ -58,8 +51,9 @@ public class InterfaceConceptDeclaration_Constraints extends BaseConstraintsDesc
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeARoot(SModel model) {
     return SModuleOperations.isAspect(model, "structure") || SModelStereotype.isGeneratorModel(model);
   }

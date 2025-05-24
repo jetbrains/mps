@@ -21,11 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class BwfTaskLibrary_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BwfTaskLibrary_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.BwfTaskLibrary$kP, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeParent, Boolean> calculateCanBeParentConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
+    setCanBeParent(new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAParent(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getLink());
@@ -36,8 +32,9 @@ public class BwfTaskLibrary_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     return SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.BwfTask$ZZ) || SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.BwfTaskPart$sR) || SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.BwfMacro$5R) || SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.BwfTaskLibraryDependency$g5);
   }

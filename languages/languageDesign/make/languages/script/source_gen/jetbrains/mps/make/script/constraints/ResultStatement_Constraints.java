@@ -21,11 +21,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public class ResultStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ResultStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.ResultStatement$fI, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -36,8 +32,9 @@ public class ResultStatement_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     SNode anc = SNodeOperations.getNodeAncestorWhereConceptInList(parentNode, new SAbstractConcept[]{CONCEPTS.JobDefinition$Sj, CONCEPTS.ConfigDefinition$YG, CONCEPTS.IStatementListContainer$xz}, false, false);
     return SNodeOperations.isInstanceOf(anc, CONCEPTS.JobDefinition$Sj) || SNodeOperations.isInstanceOf(anc, CONCEPTS.ConfigDefinition$YG);

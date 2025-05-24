@@ -21,11 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class StaticFieldDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ StaticFieldDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.StaticFieldDeclaration$jR, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeParent, Boolean> calculateCanBeParentConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
+    setCanBeParent(new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAParent(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getLink());
@@ -36,8 +32,9 @@ public class StaticFieldDeclaration_Constraints extends BaseConstraintsDescripto
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     if (Objects.equals(link, LINKS.visibility$Yyua)) {
       if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Interface$db)) {

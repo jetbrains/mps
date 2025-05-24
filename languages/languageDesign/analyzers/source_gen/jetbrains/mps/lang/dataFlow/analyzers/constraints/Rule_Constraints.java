@@ -19,11 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class Rule_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Rule_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.Rule$N8, initContext);
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_CanBeRoot, Boolean> calculateCanBeRootConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
+    setCanBeRoot(new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeRoot context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeARoot(context.getModel());
@@ -34,8 +30,9 @@ public class Rule_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeARoot(SModel model) {
     return SModuleOperations.isAspect(model, "dataFlow") || SModelStereotype.isGeneratorModel(model);
   }

@@ -26,11 +26,7 @@ public class XmlDoctypeDeclaration_Constraints extends BaseConstraintsDescriptor
   /*package*/ XmlDoctypeDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.XmlDoctypeDeclaration$GQ, initContext);
     record(new DoctypeName_PD(this));
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -41,8 +37,9 @@ public class XmlDoctypeDeclaration_Constraints extends BaseConstraintsDescriptor
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class DoctypeName_PD extends BasePropertyConstraintsDescriptor {
     public DoctypeName_PD(ConstraintsDescriptor container) {
       super(PROPS.doctypeName$F6Zm, container, false, false, true);

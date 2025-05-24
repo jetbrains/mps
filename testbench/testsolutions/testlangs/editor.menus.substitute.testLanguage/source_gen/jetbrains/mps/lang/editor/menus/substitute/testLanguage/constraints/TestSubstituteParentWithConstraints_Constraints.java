@@ -21,11 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class TestSubstituteParentWithConstraints_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TestSubstituteParentWithConstraints_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.TestSubstituteParentWithConstraints$6i, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeParent, Boolean> calculateCanBeParentConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
+    setCanBeParent(new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAParent(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getLink());
@@ -36,11 +32,8 @@ public class TestSubstituteParentWithConstraints_Constraints extends BaseConstra
 
         return result;
       }
-    };
-  }
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean> calculateCanBeAncestorConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean>() {
+    });
+    setCanBeAncestor(new ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeAncestor context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAnAncestor(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getParentNode(), context.getLink());
@@ -51,8 +44,9 @@ public class TestSubstituteParentWithConstraints_Constraints extends BaseConstra
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     if (Objects.equals(link, LINKS.childCanBeParent$Z7jn)) {
       return Objects.equals(childConcept, CONCEPTS.TestSubstituteChildWithConstraints1$xf);

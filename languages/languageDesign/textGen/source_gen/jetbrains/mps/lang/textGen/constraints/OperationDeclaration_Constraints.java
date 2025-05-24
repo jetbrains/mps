@@ -35,11 +35,7 @@ public class OperationDeclaration_Constraints extends BaseConstraintsDescriptor 
   /*package*/ OperationDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.OperationDeclaration$hY, initContext);
     record(new OperationName_PD(this));
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    return new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
+    setDefaultScope(new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
       @Nullable
       public ReferenceScopeProvider invoke(@NotNull ConstraintContext_DefaultScopeProvider context, @Nullable CheckingNodeContext checkingNodeContext) {
         return new BaseScopeProvider() {
@@ -58,8 +54,9 @@ public class OperationDeclaration_Constraints extends BaseConstraintsDescriptor 
           }
         };
       }
-    };
+    });
   }
+
   /*package*/ static final class OperationName_PD extends BasePropertyConstraintsDescriptor {
     public OperationName_PD(ConstraintsDescriptor container) {
       super(PROPS.operationName$gZKC, container, true, false, false);

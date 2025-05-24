@@ -24,11 +24,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public class AbstractTestNodeAnnotation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractTestNodeAnnotation_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.AbstractTestNodeAnnotation$lh, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -39,8 +35,9 @@ public class AbstractTestNodeAnnotation_Constraints extends BaseConstraintsDescr
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     SModel model = SNodeOperations.getModel(parentNode);
     if (TemporaryModels.isTemporary(model)) {

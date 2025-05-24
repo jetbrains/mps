@@ -11,7 +11,6 @@ public class SubstTestAbstractChild_WithDefaultConcreteConcept_Constraints exten
   /*package*/ SubstTestAbstractChild_WithDefaultConcreteConcept_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.SubstTestAbstractChild_WithDefaultConcreteConcept$mA, initContext);
   }
-
   @Override
   public SConcept getDefaultConcreteConcept() {
     return CONCEPTS.SubstTestChild_DefaultConcreteConcept$Lr;

@@ -31,11 +31,7 @@ public class EnumerationDeclaration_Constraints extends BaseConstraintsDescripto
   /*package*/ EnumerationDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.EnumerationDeclaration$hv, initContext);
     record(new RD1(this));
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_CanBeRoot, Boolean> calculateCanBeRootConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
+    setCanBeRoot(new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeRoot context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeARoot(context.getModel());
@@ -46,8 +42,9 @@ public class EnumerationDeclaration_Constraints extends BaseConstraintsDescripto
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class RD1 extends BaseReferenceConstraintsDescriptor {
     /*package*/ RD1(ConstraintsDescriptor container) {
       super(LINKS.defaultMember$vlmG, container, true, false);

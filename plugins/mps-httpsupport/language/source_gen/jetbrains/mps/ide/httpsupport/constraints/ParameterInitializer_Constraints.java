@@ -34,11 +34,7 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
   /*package*/ ParameterInitializer_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.ParameterInitializer$k5, initContext);
     record(new RD1(this));
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -49,8 +45,9 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class RD1 extends BaseReferenceConstraintsDescriptor {
     /*package*/ RD1(ConstraintsDescriptor container) {
       super(LINKS.parameter$DxS8, container, true, false);
@@ -73,7 +70,7 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
             public boolean isExcluded(final SNode node) {
               return ListSequence.fromList(SLinkOperations.getChildren(bilder, LINKS.initializer$Xe8)).findFirst(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
                 public Boolean invoke(SNode it) {
-                  return check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0b3(SLinkOperations.getTarget(it, LINKS.parameter$DxS8), node);
+                  return check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0b2(SLinkOperations.getTarget(it, LINKS.parameter$DxS8), node);
                 }
               }) != null && !(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.parameter$DxS8) != null);
             }
@@ -81,7 +78,7 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
         }
       };
     }
-    private static boolean check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0b3(SNode checkedDotOperand, SNode node) {
+    private static boolean check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0b2(SNode checkedDotOperand, SNode node) {
       if (null != checkedDotOperand) {
         return checkedDotOperand.equals(node);
       }

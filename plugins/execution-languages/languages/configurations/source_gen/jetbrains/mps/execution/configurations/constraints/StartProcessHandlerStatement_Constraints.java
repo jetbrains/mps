@@ -19,11 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class StartProcessHandlerStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ StartProcessHandlerStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.StartProcessHandlerStatement$JF, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -34,8 +30,9 @@ public class StartProcessHandlerStatement_Constraints extends BaseConstraintsDes
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return true;
   }

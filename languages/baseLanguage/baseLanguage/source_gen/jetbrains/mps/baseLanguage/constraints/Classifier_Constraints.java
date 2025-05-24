@@ -30,11 +30,7 @@ public class Classifier_Constraints extends BaseConstraintsDescriptor {
     super(CONCEPTS.Classifier$Ix, initContext);
     record(new NestedName_PD(this));
     record(new ResolveInfo_PD(this));
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    return new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
+    setDefaultScope(new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
       @Nullable
       public ReferenceScopeProvider invoke(@NotNull ConstraintContext_DefaultScopeProvider context, @Nullable CheckingNodeContext checkingNodeContext) {
         return new BaseScopeProvider() {
@@ -48,8 +44,9 @@ public class Classifier_Constraints extends BaseConstraintsDescriptor {
           }
         };
       }
-    };
+    });
   }
+
   /*package*/ static final class NestedName_PD extends BasePropertyConstraintsDescriptor {
     public NestedName_PD(ConstraintsDescriptor container) {
       super(PROPS.nestedName$Em3S, container, true, false, false);

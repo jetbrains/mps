@@ -29,11 +29,7 @@ public class BuildSource_JavaModule_Constraints extends BaseConstraintsDescripto
   /*package*/ BuildSource_JavaModule_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.BuildSource_JavaModule$NC, initContext);
     record(new Name_PD(this));
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -44,8 +40,9 @@ public class BuildSource_JavaModule_Constraints extends BaseConstraintsDescripto
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class Name_PD extends BasePropertyConstraintsDescriptor {
     public Name_PD(ConstraintsDescriptor container) {
       super(PROPS.name$MnvL, container, false, false, true);

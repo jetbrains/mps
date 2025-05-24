@@ -4,11 +4,6 @@ package jetbrains.mps.baseLanguage.constraints;
 
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
-import jetbrains.mps.smodel.runtime.IconResource;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.runtime.ConstraintFunction;
 import jetbrains.mps.smodel.runtime.ConstraintContext_DefaultScopeProvider;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
@@ -21,6 +16,11 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
+import jetbrains.mps.smodel.runtime.IconResource;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -31,6 +31,21 @@ public class ClassConcept_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ClassConcept_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.ClassConcept$bK, initContext);
     record(new IsStatic_PD(this));
+    setDefaultScope(new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
+      @Nullable
+      public ReferenceScopeProvider invoke(@NotNull ConstraintContext_DefaultScopeProvider context, @Nullable CheckingNodeContext checkingNodeContext) {
+        return new BaseScopeProvider() {
+          @Override
+          public SNodeReference getSearchScopeValidatorNode() {
+            return new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "6836281137582643423");
+          }
+          @Override
+          public Scope createScope(final ReferenceConstraintsContext _context) {
+            return ClassifierScopes.getVisibleClassesScope(_context.getContextNode());
+          }
+        };
+      }
+    });
   }
   public IconResource getInstanceIcon(SNode node) {
     if ((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(node, SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Throwable"))) {
@@ -45,24 +60,6 @@ public class ClassConcept_Constraints extends BaseConstraintsDescriptor {
     return null;
   }
 
-  @Override
-  public ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    return new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
-      @Nullable
-      public ReferenceScopeProvider invoke(@NotNull ConstraintContext_DefaultScopeProvider context, @Nullable CheckingNodeContext checkingNodeContext) {
-        return new BaseScopeProvider() {
-          @Override
-          public SNodeReference getSearchScopeValidatorNode() {
-            return new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "6836281137582643423");
-          }
-          @Override
-          public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ClassifierScopes.getVisibleClassesScope(_context.getContextNode());
-          }
-        };
-      }
-    };
-  }
   /*package*/ static final class IsStatic_PD extends BasePropertyConstraintsDescriptor {
     public IsStatic_PD(ConstraintsDescriptor container) {
       super(PROPS.isStatic$3WAz, container, true, true, false);

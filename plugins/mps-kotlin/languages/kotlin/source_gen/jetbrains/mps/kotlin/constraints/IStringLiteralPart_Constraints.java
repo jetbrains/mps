@@ -11,7 +11,6 @@ public class IStringLiteralPart_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IStringLiteralPart_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.IStringLiteralPart$ZO, initContext);
   }
-
   @Override
   public SConcept getDefaultConcreteConcept() {
     return CONCEPTS.StringLiteralRaw$ar;

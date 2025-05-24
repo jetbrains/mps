@@ -23,11 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class DeprecatedBlockDocTag_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DeprecatedBlockDocTag_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.DeprecatedBlockDocTag$8n, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -38,8 +34,9 @@ public class DeprecatedBlockDocTag_Constraints extends BaseConstraintsDescriptor
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(final SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(parentNode, CONCEPTS.BaseDocComment$bU), LINKS.tags$stUD)).all((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$8n)) || Objects.equals(it, node));
   }

@@ -21,11 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class CheckboxUI_Text_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CheckboxUI_Text_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.CheckboxUI_Text$kO, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeParent, Boolean> calculateCanBeParentConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
+    setCanBeParent(new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAParent(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getLink());
@@ -36,8 +32,9 @@ public class CheckboxUI_Text_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     if (LINKS.styleItem$FgZD.equals(link)) {
       SConcept styleClassItemConcept = (SConcept) childConcept;

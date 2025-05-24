@@ -22,11 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class InvokeFunctionOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ InvokeFunctionOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.InvokeFunctionOperation$cv, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -37,8 +33,9 @@ public class InvokeFunctionOperation_Constraints extends BaseConstraintsDescript
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$yW) && (TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(parentNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.FunctionType$9U) != null);
   }

@@ -73,19 +73,19 @@
   <root nodeRef="r:94b1feee-20bf-48e9-9677-814a5fdcaf90(jetbrains.mps.lang.editor.editorTest.constraints)/3568961255313560025">
     <file name="SubstTestAbstractChild_WithDefaultConcreteConcept_Constraints.java">
       <node id="3568961255313560025" at="11,123,12,86" concept="8" />
-      <node id="3568961255313560025" at="16,47,17,61" concept="6" />
-      <node id="3568961255313560025" at="21,0,22,0" concept="7" trace="SubstTestAbstractChild_WithDefaultConcreteConcept$mA" />
-      <node id="3568961255313560025" at="22,0,23,0" concept="7" trace="SubstTestChild_DefaultConcreteConcept$Lr" />
+      <node id="3568961255313560025" at="15,47,16,61" concept="6" />
+      <node id="3568961255313560025" at="20,0,21,0" concept="7" trace="SubstTestAbstractChild_WithDefaultConcreteConcept$mA" />
+      <node id="3568961255313560025" at="21,0,22,0" concept="7" trace="SubstTestChild_DefaultConcreteConcept$Lr" />
       <node id="3568961255313560025" at="11,0,14,0" concept="0" trace="SubstTestAbstractChild_WithDefaultConcreteConcept_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <node id="3568961255313560025" at="15,0,19,0" concept="4" trace="getDefaultConcreteConcept#()Lorg/jetbrains/mps/openapi/language/SConcept;" />
+      <node id="3568961255313560025" at="14,0,18,0" concept="4" trace="getDefaultConcreteConcept#()Lorg/jetbrains/mps/openapi/language/SConcept;" />
       <scope id="3568961255313560025" at="11,123,12,86" />
-      <scope id="3568961255313560025" at="16,47,17,61" />
+      <scope id="3568961255313560025" at="15,47,16,61" />
       <scope id="3568961255313560025" at="11,0,14,0">
         <var name="initContext" id="3568961255313560025" />
       </scope>
-      <scope id="3568961255313560025" at="15,0,19,0" />
-      <unit id="3568961255313560025" at="20,0,24,0" name="jetbrains.mps.lang.editor.editorTest.constraints.SubstTestAbstractChild_WithDefaultConcreteConcept_Constraints$CONCEPTS" />
-      <unit id="3568961255313560025" at="10,0,25,0" name="jetbrains.mps.lang.editor.editorTest.constraints.SubstTestAbstractChild_WithDefaultConcreteConcept_Constraints" />
+      <scope id="3568961255313560025" at="14,0,18,0" />
+      <unit id="3568961255313560025" at="19,0,23,0" name="jetbrains.mps.lang.editor.editorTest.constraints.SubstTestAbstractChild_WithDefaultConcreteConcept_Constraints$CONCEPTS" />
+      <unit id="3568961255313560025" at="10,0,24,0" name="jetbrains.mps.lang.editor.editorTest.constraints.SubstTestAbstractChild_WithDefaultConcreteConcept_Constraints" />
     </file>
   </root>
   <root nodeRef="r:94b1feee-20bf-48e9-9677-814a5fdcaf90(jetbrains.mps.lang.editor.editorTest.constraints)/4151313971380533695">
@@ -272,19 +272,19 @@
   <root nodeRef="r:94b1feee-20bf-48e9-9677-814a5fdcaf90(jetbrains.mps.lang.editor.editorTest.constraints)/7789927720474629546">
     <file name="Container_Constraints.java">
       <node id="7789927720474629546" at="11,83,12,46" concept="8" />
-      <node id="7789927720474629546" at="16,47,17,43" concept="6" />
-      <node id="7789927720474629546" at="21,0,22,0" concept="7" trace="Container$do" />
-      <node id="7789927720474629546" at="22,0,23,0" concept="7" trace="SelectableContainer$2I" />
+      <node id="7789927720474629546" at="15,47,16,43" concept="6" />
+      <node id="7789927720474629546" at="20,0,21,0" concept="7" trace="Container$do" />
+      <node id="7789927720474629546" at="21,0,22,0" concept="7" trace="SelectableContainer$2I" />
       <node id="7789927720474629546" at="11,0,14,0" concept="0" trace="Container_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <node id="7789927720474629546" at="15,0,19,0" concept="4" trace="getDefaultConcreteConcept#()Lorg/jetbrains/mps/openapi/language/SConcept;" />
+      <node id="7789927720474629546" at="14,0,18,0" concept="4" trace="getDefaultConcreteConcept#()Lorg/jetbrains/mps/openapi/language/SConcept;" />
       <scope id="7789927720474629546" at="11,83,12,46" />
-      <scope id="7789927720474629546" at="16,47,17,43" />
+      <scope id="7789927720474629546" at="15,47,16,43" />
       <scope id="7789927720474629546" at="11,0,14,0">
         <var name="initContext" id="7789927720474629546" />
       </scope>
-      <scope id="7789927720474629546" at="15,0,19,0" />
-      <unit id="7789927720474629546" at="20,0,24,0" name="jetbrains.mps.lang.editor.editorTest.constraints.Container_Constraints$CONCEPTS" />
-      <unit id="7789927720474629546" at="10,0,25,0" name="jetbrains.mps.lang.editor.editorTest.constraints.Container_Constraints" />
+      <scope id="7789927720474629546" at="14,0,18,0" />
+      <unit id="7789927720474629546" at="19,0,23,0" name="jetbrains.mps.lang.editor.editorTest.constraints.Container_Constraints$CONCEPTS" />
+      <unit id="7789927720474629546" at="10,0,24,0" name="jetbrains.mps.lang.editor.editorTest.constraints.Container_Constraints" />
     </file>
   </root>
 </debug-info>

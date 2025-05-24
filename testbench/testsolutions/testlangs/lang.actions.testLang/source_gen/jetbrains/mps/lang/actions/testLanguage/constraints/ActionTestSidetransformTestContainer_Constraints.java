@@ -21,11 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class ActionTestSidetransformTestContainer_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ActionTestSidetransformTestContainer_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.ActionTestSidetransformTestContainer$fB, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeParent, Boolean> calculateCanBeParentConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
+    setCanBeParent(new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAParent(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getLink());
@@ -36,8 +32,9 @@ public class ActionTestSidetransformTestContainer_Constraints extends BaseConstr
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     if (childConcept == CONCEPTS.ActionTestSidetransformChild1$gm && link == LINKS.abstractChildConstrained$oWFz) {
       return false;

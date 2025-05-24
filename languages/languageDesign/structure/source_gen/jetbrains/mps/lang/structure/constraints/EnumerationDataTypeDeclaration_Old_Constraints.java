@@ -37,11 +37,7 @@ public class EnumerationDataTypeDeclaration_Old_Constraints extends BaseConstrai
     super(CONCEPTS.EnumerationDataTypeDeclaration_Old$B8, initContext);
     record(new HasNoDefaultMember_PD(this));
     record(new RD1(this));
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_CanBeRoot, Boolean> calculateCanBeRootConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
+    setCanBeRoot(new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeRoot context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeARoot(context.getModel());
@@ -52,8 +48,9 @@ public class EnumerationDataTypeDeclaration_Old_Constraints extends BaseConstrai
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class HasNoDefaultMember_PD extends BasePropertyConstraintsDescriptor {
     public HasNoDefaultMember_PD(ConstraintsDescriptor container) {
       super(PROPS.hasNoDefaultMember$e7W7, container, false, true, false);

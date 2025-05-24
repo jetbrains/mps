@@ -24,11 +24,7 @@ public class CommandHolder_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CommandHolder_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.CommandHolder$K4, initContext);
     record(new Name_PD(this));
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean> calculateCanBeAncestorConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean>() {
+    setCanBeAncestor(new ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeAncestor context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAnAncestor(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getParentNode(), context.getLink());
@@ -39,8 +35,9 @@ public class CommandHolder_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class Name_PD extends BasePropertyConstraintsDescriptor {
     public Name_PD(ConstraintsDescriptor container) {
       super(PROPS.name$MnvL, container, true, false, false);

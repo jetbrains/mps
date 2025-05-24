@@ -23,11 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class IHasModifiers_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IHasModifiers_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.IHasModifiers$et, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeParent, Boolean> calculateCanBeParentConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
+    setCanBeParent(new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAParent(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getLink());
@@ -38,8 +34,9 @@ public class IHasModifiers_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAParent(SNode node, final SNode childNode, final SAbstractConcept childConcept, SContainmentLink link) {
     if (Objects.equals(link, LINKS.modifiers$F5MM)) {
       return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).all((it) -> Objects.equals(it, childNode) || !(Objects.equals(SNodeOperations.getConcept(it), childConcept)));

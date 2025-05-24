@@ -34,11 +34,7 @@ public class SLinkImplicitSelect_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SLinkImplicitSelect_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.SLinkImplicitSelect$sG, initContext);
     record(new RD1(this));
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -49,8 +45,9 @@ public class SLinkImplicitSelect_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class RD1 extends BaseReferenceConstraintsDescriptor {
     /*package*/ RD1(ConstraintsDescriptor container) {
       super(LINKS.link$FZO0, container, true, false);
@@ -65,11 +62,11 @@ public class SLinkImplicitSelect_Constraints extends BaseConstraintsDescriptor {
         }
         @Override
         public Scope createScope(final ReferenceConstraintsContext _context) {
-          return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), new Pattern_f4oi2a_a0a0a0a0a0b0a0a0b3(_quotation_createNode_f4oi2a_a0b0a0a0a0a0b0a0a0b3())), LINKS.elementType$KpjL), CONCEPTS.SNodeType$hR), LINKS.concept$OMgE)));
+          return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), new Pattern_f4oi2a_a0a0a0a0a0b0a0a0b2(_quotation_createNode_f4oi2a_a0b0a0a0a0a0b0a0a0b2())), LINKS.elementType$KpjL), CONCEPTS.SNodeType$hR), LINKS.concept$OMgE)));
         }
       };
     }
-    private static SNode _quotation_createNode_f4oi2a_a0b0a0a0a0a0b0a0a0b3() {
+    private static SNode _quotation_createNode_f4oi2a_a0b0a0a0a0a0b0a0a0b2() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType"));
@@ -82,9 +79,9 @@ public class SLinkImplicitSelect_Constraints extends BaseConstraintsDescriptor {
     }
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return (TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(parentNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), new Pattern_f4oi2a_a0a0a0e(_quotation_createNode_f4oi2a_a0b0a0a0e())) != null);
+    return (TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(parentNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), new Pattern_f4oi2a_a0a0a0d(_quotation_createNode_f4oi2a_a0b0a0a0d())) != null);
   }
-  private static SNode _quotation_createNode_f4oi2a_a0b0a0a0e() {
+  private static SNode _quotation_createNode_f4oi2a_a0b0a0a0d() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10c260e9444L, "SequenceType"));

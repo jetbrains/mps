@@ -23,11 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class BuildAspect_MpsTestModules_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildAspect_MpsTestModules_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.BuildAspect_MpsTestModules$cm, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -38,8 +34,9 @@ public class BuildAspect_MpsTestModules_Constraints extends BaseConstraintsDescr
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     if ((boolean) BaseConcept__BehaviorDescriptor.isInTemplates_idhEwIMij.invoke(parentNode)) {
       // anything in generator

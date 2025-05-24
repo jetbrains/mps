@@ -20,11 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class LocalVariableDeclarationStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ LocalVariableDeclarationStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.LocalVariableDeclarationStatement$4w, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -35,8 +31,9 @@ public class LocalVariableDeclarationStatement_Constraints extends BaseConstrain
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return !(Objects.equals(link, LINKS.ifFalseStatement$psZK));
   }

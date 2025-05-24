@@ -4,9 +4,6 @@ package jetbrains.mps.lang.structure.constraints;
 
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptorInitContext;
-import jetbrains.mps.smodel.runtime.IconResource;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.runtime.ConstraintFunction;
 import jetbrains.mps.smodel.runtime.ConstraintContext_DefaultScopeProvider;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
@@ -21,6 +18,9 @@ import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeParent;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeRoot;
+import jetbrains.mps.smodel.runtime.IconResource;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
@@ -39,14 +39,7 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConceptDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.ConceptDeclaration$gH, initContext);
     record(new RD1(this));
-  }
-  public IconResource getInstanceIcon(SNode node) {
-    return (SPropertyOperations.getBoolean(node, PROPS.rootable$_9pz) ? IconContainer.RESOURCE_0 : IconContainer.RESOURCE_1);
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    return new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
+    setDefaultScope(new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
       @Nullable
       public ReferenceScopeProvider invoke(@NotNull ConstraintContext_DefaultScopeProvider context, @Nullable CheckingNodeContext checkingNodeContext) {
         return new BaseScopeProvider() {
@@ -60,11 +53,8 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
           }
         };
       }
-    };
-  }
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeParent, Boolean> calculateCanBeParentConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
+    });
+    setCanBeParent(new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAParent(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getLink());
@@ -75,11 +65,8 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
-  }
-  @Override
-  public ConstraintFunction<ConstraintContext_CanBeRoot, Boolean> calculateCanBeRootConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
+    });
+    setCanBeRoot(new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeRoot context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeARoot(context.getModel());
@@ -90,8 +77,12 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+  public IconResource getInstanceIcon(SNode node) {
+    return (SPropertyOperations.getBoolean(node, PROPS.rootable$_9pz) ? IconContainer.RESOURCE_0 : IconContainer.RESOURCE_1);
+  }
+
   /*package*/ static final class RD1 extends BaseReferenceConstraintsDescriptor {
     /*package*/ RD1(ConstraintsDescriptor container) {
       super(LINKS.extends$_Isg, container, true, false);

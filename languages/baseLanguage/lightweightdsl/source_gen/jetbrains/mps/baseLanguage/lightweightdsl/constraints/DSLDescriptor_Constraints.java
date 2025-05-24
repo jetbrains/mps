@@ -31,11 +31,7 @@ public class DSLDescriptor_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DSLDescriptor_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.DSLDescriptor$zD, initContext);
     record(new RD1(this));
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    return new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
+    setDefaultScope(new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
       @Nullable
       public ReferenceScopeProvider invoke(@NotNull ConstraintContext_DefaultScopeProvider context, @Nullable CheckingNodeContext checkingNodeContext) {
         return new BaseScopeProvider() {
@@ -49,8 +45,9 @@ public class DSLDescriptor_Constraints extends BaseConstraintsDescriptor {
           }
         };
       }
-    };
+    });
   }
+
   /*package*/ static final class RD1 extends BaseReferenceConstraintsDescriptor {
     /*package*/ RD1(ConstraintsDescriptor container) {
       super(LINKS.preferredConcept$1q4V, container, true, false);

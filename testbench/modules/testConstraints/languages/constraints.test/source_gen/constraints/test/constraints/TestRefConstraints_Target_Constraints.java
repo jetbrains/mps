@@ -25,11 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class TestRefConstraints_Target_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TestRefConstraints_Target_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.TestRefConstraints_Target$tm, initContext);
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    return new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
+    setDefaultScope(new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
       @Nullable
       public ReferenceScopeProvider invoke(@NotNull ConstraintContext_DefaultScopeProvider context, @Nullable CheckingNodeContext checkingNodeContext) {
         return new BaseScopeProvider() {
@@ -43,7 +39,7 @@ public class TestRefConstraints_Target_Constraints extends BaseConstraintsDescri
           }
         };
       }
-    };
+    });
   }
 
   private static final class CONCEPTS {

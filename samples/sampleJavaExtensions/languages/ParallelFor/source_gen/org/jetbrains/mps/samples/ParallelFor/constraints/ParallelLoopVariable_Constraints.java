@@ -25,11 +25,7 @@ public class ParallelLoopVariable_Constraints extends BaseConstraintsDescriptor 
   /*package*/ ParallelLoopVariable_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.ParallelLoopVariable$2L, initContext);
     record(new IsFinal_PD(this));
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -40,8 +36,9 @@ public class ParallelLoopVariable_Constraints extends BaseConstraintsDescriptor 
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class IsFinal_PD extends BasePropertyConstraintsDescriptor {
     public IsFinal_PD(ConstraintsDescriptor container) {
       super(PROPS.isFinal$gvTP, container, false, false, true);

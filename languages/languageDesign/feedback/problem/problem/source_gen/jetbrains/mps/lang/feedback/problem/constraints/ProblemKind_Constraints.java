@@ -21,11 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class ProblemKind_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ProblemKind_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.ProblemKind$fY, initContext);
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_CanBeRoot, Boolean> calculateCanBeRootConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
+    setCanBeRoot(new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeRoot context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeARoot(context.getModel());
@@ -36,8 +32,9 @@ public class ProblemKind_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeARoot(SModel model) {
     SModelReference pointer = SModelOperations.getPointer(model);
     return Objects.equals(pointer, PersistenceFacade.getInstance().createModelReference("r:9006e6ce-991d-45e3-a20f-0deb45783955(jetbrains.mps.lang.feedback.problem.childAndProp.feedback)")) || Objects.equals(pointer, PersistenceFacade.getInstance().createModelReference("r:63ce0387-25e9-4762-bec1-dac3eb032399(jetbrains.mps.lang.feedback.problem.structural.feedback)")) || Objects.equals(pointer, PersistenceFacade.getInstance().createModelReference("r:b9ce58c5-a751-4b14-8753-25d90bf90204(jetbrains.mps.lang.feedback.problem.scopes.feedback)"));

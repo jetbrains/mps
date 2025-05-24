@@ -23,11 +23,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class TestConstraintsInheritance_Derived2_Constrained_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TestConstraintsInheritance_Derived2_Constrained_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.TestConstraintsInheritance_Derived2_Constrained$UD, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -38,8 +34,9 @@ public class TestConstraintsInheritance_Derived2_Constrained_Constraints extends
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return !(SPropertyOperations.getBoolean((SNodeOperations.cast(parentNode, CONCEPTS.TestConstraintsInheritance_Container$ih)), PROPS.triggerD2$PHGa));
   }

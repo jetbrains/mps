@@ -23,11 +23,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class EnumOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EnumOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.EnumOperation$Xg, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -38,8 +34,9 @@ public class EnumOperation_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return TypecheckingFacade.getFromContext().strongCoerceType(DotExpression__BehaviorDescriptor.getOperandType_id7GulAc9z0dN.invoke(SNodeOperations.as(parentNode, CONCEPTS.DotExpression$yW)), CONCEPTS.SEnumerationType$iV) != null;
   }

@@ -22,11 +22,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public class ConfigDefinition_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ConfigDefinition_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.ConfigDefinition$YG, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean> calculateCanBeAncestorConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean>() {
+    setCanBeAncestor(new ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeAncestor context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAnAncestor(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getParentNode(), context.getLink());
@@ -37,8 +33,9 @@ public class ConfigDefinition_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAnAncestor(SNode node, SNode childNode, SAbstractConcept childConcept, SNode parentNode, SContainmentLink link) {
     SNode ancestor = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.IStatementListContainer$xz, true, false);
     if (ancestor == node) {

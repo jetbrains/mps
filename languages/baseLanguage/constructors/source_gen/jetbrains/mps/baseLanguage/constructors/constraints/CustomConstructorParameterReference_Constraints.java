@@ -35,11 +35,7 @@ public class CustomConstructorParameterReference_Constraints extends BaseConstra
   /*package*/ CustomConstructorParameterReference_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.CustomConstructorParameterReference$j6, initContext);
     record(new RD1(this));
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -50,11 +46,8 @@ public class CustomConstructorParameterReference_Constraints extends BaseConstra
 
         return result;
       }
-    };
-  }
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeParent, Boolean> calculateCanBeParentConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
+    });
+    setCanBeParent(new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAParent(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getLink());
@@ -65,8 +58,9 @@ public class CustomConstructorParameterReference_Constraints extends BaseConstra
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class RD1 extends BaseReferenceConstraintsDescriptor {
     /*package*/ RD1(ConstraintsDescriptor container) {
       super(LINKS.parameter$3II8, container, true, false);

@@ -21,11 +21,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class SEnumOperation_Old_Constraints extends BaseConstraintsDescriptor {
   /*package*/ SEnumOperation_Old_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.SEnumOperation_Old$hZ, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -36,8 +32,9 @@ public class SEnumOperation_Old_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.SEnumOperationInvocation$_F);
   }

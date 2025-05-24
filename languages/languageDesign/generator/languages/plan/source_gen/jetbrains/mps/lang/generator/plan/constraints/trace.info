@@ -70,52 +70,49 @@
   <root nodeRef="r:e831e054-7bbb-4c7b-aebf-31582c0dfa61(jetbrains.mps.lang.generator.plan.constraints)/3750601816087335519">
     <file name="CheckpointSynchronization_Constraints.java">
       <node id="3750601816087335519" at="22,99,23,62" concept="10" />
-      <node id="3750601816087335519" at="30,128,31,133" concept="4" />
-      <node id="3750601816087335519" at="31,133,32,0" concept="7" />
-      <node id="3750601816087335519" at="33,55,34,72" concept="1" />
-      <node id="3750601816087335519" at="35,9,36,0" concept="7" />
-      <node id="3750601816087335519" at="36,0,37,22" concept="5" />
-      <node id="3750601816087367368" at="41,128,42,113" concept="6" />
-      <node id="3750601816087349382" at="43,45,44,232" concept="5" />
-      <node id="3750601816087364754" at="45,5,46,16" concept="5" />
-      <node id="3750601816087335519" at="48,0,49,0" concept="8" trace="canBeParentBreakingPoint" />
-      <node id="3750601816087335519" at="51,0,52,0" concept="8" trace="CheckpointSynchronization$DV" />
-      <node id="3750601816087335519" at="52,0,53,0" concept="8" trace="InPlaceCheckpointRefSpec$H6" />
-      <node id="3750601816087335519" at="53,0,54,0" concept="8" trace="DeclaredCheckpointSpec$HD" />
-      <node id="3750601816087335519" at="57,0,58,0" concept="8" trace="checkpoint$18uq" />
-      <node id="3750601816087335519" at="22,0,25,0" concept="0" trace="CheckpointSynchronization_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <node id="3750601816087335519" at="32,0,35,9" concept="2" />
-      <node id="3750601816087344044" at="42,113,45,5" concept="2" />
-      <node id="3750601816087335519" at="41,0,48,0" concept="9" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <node id="3750601816087335519" at="29,0,39,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeParent;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="3750601816087335519" at="27,105,39,6" concept="5" />
-      <node id="3750601816087335519" at="26,0,41,0" concept="3" trace="calculateCanBeParentConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="3750601816087335519" at="22,99,23,62" />
-      <scope id="3750601816087335519" at="33,55,34,72" />
-      <scope id="3750601816087344046" at="43,45,44,232" />
-      <scope id="3750601816087335519" at="22,0,25,0">
-        <var name="initContext" id="3750601816087335519" />
-      </scope>
-      <scope id="3750601816087336759" at="41,128,46,16" />
-      <scope id="3750601816087335519" at="30,128,37,22">
+      <node id="3750601816087335519" at="26,128,27,133" concept="4" />
+      <node id="3750601816087335519" at="27,133,28,0" concept="7" />
+      <node id="3750601816087335519" at="29,55,30,72" concept="1" />
+      <node id="3750601816087335519" at="31,9,32,0" concept="7" />
+      <node id="3750601816087335519" at="32,0,33,22" concept="5" />
+      <node id="3750601816087367368" at="38,128,39,113" concept="6" />
+      <node id="3750601816087349382" at="40,45,41,232" concept="5" />
+      <node id="3750601816087364754" at="42,5,43,16" concept="5" />
+      <node id="3750601816087335519" at="45,0,46,0" concept="8" trace="canBeParentBreakingPoint" />
+      <node id="3750601816087335519" at="48,0,49,0" concept="8" trace="CheckpointSynchronization$DV" />
+      <node id="3750601816087335519" at="49,0,50,0" concept="8" trace="InPlaceCheckpointRefSpec$H6" />
+      <node id="3750601816087335519" at="50,0,51,0" concept="8" trace="DeclaredCheckpointSpec$HD" />
+      <node id="3750601816087335519" at="54,0,55,0" concept="8" trace="checkpoint$18uq" />
+      <node id="3750601816087335519" at="28,0,31,9" concept="2" />
+      <node id="3750601816087344044" at="39,113,42,5" concept="2" />
+      <node id="3750601816087335519" at="38,0,45,0" concept="9" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="3750601816087335519" at="25,0,35,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeParent;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="3750601816087335519" at="23,62,35,7" concept="1" />
+      <node id="3750601816087335519" at="22,0,37,0" concept="0" trace="CheckpointSynchronization_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <scope id="3750601816087335519" at="29,55,30,72" />
+      <scope id="3750601816087344046" at="40,45,41,232" />
+      <scope id="3750601816087336759" at="38,128,43,16" />
+      <scope id="3750601816087335519" at="26,128,33,22">
         <var name="result" id="3750601816087335519" />
       </scope>
-      <scope id="3750601816087335519" at="41,0,48,0">
+      <scope id="3750601816087335519" at="38,0,45,0">
         <var name="childConcept" id="3750601816087335519" />
         <var name="childNode" id="3750601816087335519" />
         <var name="link" id="3750601816087335519" />
         <var name="node" id="3750601816087335519" />
       </scope>
-      <scope id="3750601816087335519" at="29,0,39,0">
+      <scope id="3750601816087335519" at="25,0,35,0">
         <var name="checkingNodeContext" id="3750601816087335519" />
         <var name="context" id="3750601816087335519" />
       </scope>
-      <scope id="3750601816087335519" at="27,105,39,6" />
-      <scope id="3750601816087335519" at="26,0,41,0" />
-      <unit id="3750601816087335519" at="56,0,59,0" name="jetbrains.mps.lang.generator.plan.constraints.CheckpointSynchronization_Constraints$LINKS" />
-      <unit id="3750601816087335519" at="50,0,55,0" name="jetbrains.mps.lang.generator.plan.constraints.CheckpointSynchronization_Constraints$CONCEPTS" />
-      <unit id="3750601816087335519" at="28,15,39,5" name="jetbrains.mps.lang.generator.plan.constraints.CheckpointSynchronization_Constraints$1" />
-      <unit id="3750601816087335519" at="21,0,60,0" name="jetbrains.mps.lang.generator.plan.constraints.CheckpointSynchronization_Constraints" />
+      <scope id="3750601816087335519" at="22,99,35,7" />
+      <scope id="3750601816087335519" at="22,0,37,0">
+        <var name="initContext" id="3750601816087335519" />
+      </scope>
+      <unit id="3750601816087335519" at="53,0,56,0" name="jetbrains.mps.lang.generator.plan.constraints.CheckpointSynchronization_Constraints$LINKS" />
+      <unit id="3750601816087335519" at="47,0,52,0" name="jetbrains.mps.lang.generator.plan.constraints.CheckpointSynchronization_Constraints$CONCEPTS" />
+      <unit id="3750601816087335519" at="24,23,35,5" name="jetbrains.mps.lang.generator.plan.constraints.CheckpointSynchronization_Constraints$1" />
+      <unit id="3750601816087335519" at="21,0,57,0" name="jetbrains.mps.lang.generator.plan.constraints.CheckpointSynchronization_Constraints" />
     </file>
   </root>
 </debug-info>

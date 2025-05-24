@@ -23,11 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class Order_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Order_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.Order$Mz, initContext);
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    return new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
+    setDefaultScope(new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
       @Nullable
       public ReferenceScopeProvider invoke(@NotNull ConstraintContext_DefaultScopeProvider context, @Nullable CheckingNodeContext checkingNodeContext) {
         return new BaseScopeProvider() {
@@ -41,7 +37,7 @@ public class Order_Constraints extends BaseConstraintsDescriptor {
           }
         };
       }
-    };
+    });
   }
 
   private static final class CONCEPTS {

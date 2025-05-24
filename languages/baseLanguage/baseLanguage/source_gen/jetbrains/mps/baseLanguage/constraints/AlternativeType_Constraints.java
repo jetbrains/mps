@@ -21,11 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class AlternativeType_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AlternativeType_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.AlternativeType$B$, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -36,8 +32,9 @@ public class AlternativeType_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return Objects.equals(link, LINKS.type$a1UY) && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.CatchVariable$zI) && SNodeOperations.hasRole(parentNode, LINKS.throwable$UWM1) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(parentNode), CONCEPTS.MultipleCatchClause$mR);
   }

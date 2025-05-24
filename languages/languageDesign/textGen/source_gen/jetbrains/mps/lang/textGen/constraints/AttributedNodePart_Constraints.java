@@ -23,11 +23,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public class AttributedNodePart_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AttributedNodePart_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.AttributedNodePart$8o, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -38,8 +34,9 @@ public class AttributedNodePart_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     SNode ctgd = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ConceptTextGenDeclaration$vd, false, false);
     return (ctgd == null) || (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(SLinkOperations.getTarget(ctgd, LINKS.conceptDeclaration$$0ms), CONCEPTS.NodeAttribute$x2);

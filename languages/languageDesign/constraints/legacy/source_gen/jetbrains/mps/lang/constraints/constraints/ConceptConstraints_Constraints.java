@@ -43,11 +43,7 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
     record(new Name_PD(this));
     record(new RD1(this));
     record(new RD2(this));
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_CanBeRoot, Boolean> calculateCanBeRootConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
+    setCanBeRoot(new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeRoot context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeARoot(context.getModel());
@@ -58,8 +54,9 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class Name_PD extends BasePropertyConstraintsDescriptor {
     public Name_PD(ConstraintsDescriptor container) {
       super(PROPS.name$MnvL, container, true, false, false);
@@ -93,7 +90,7 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
             return new EmptyScope();
           }
 
-          SModel structure = check_guz8cy_a0c0b0a0a0b4(Language.getLanguageForLanguageAspect(SNodeOperations.getModel(_context.getContextNode())));
+          SModel structure = check_guz8cy_a0c0b0a0a0b3(Language.getLanguageForLanguageAspect(SNodeOperations.getModel(_context.getContextNode())));
           if (structure == null) {
             return new EmptyScope();
           }
@@ -102,7 +99,7 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
         }
       };
     }
-    private static SModel check_guz8cy_a0c0b0a0a0b4(Language checkedDotOperand) {
+    private static SModel check_guz8cy_a0c0b0a0a0b3(Language checkedDotOperand) {
       if (null != checkedDotOperand) {
         return checkedDotOperand.getStructureModelDescriptor();
       }

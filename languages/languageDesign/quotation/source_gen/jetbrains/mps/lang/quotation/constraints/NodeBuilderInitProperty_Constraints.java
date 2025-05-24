@@ -26,11 +26,7 @@ public class NodeBuilderInitProperty_Constraints extends BaseConstraintsDescript
   /*package*/ NodeBuilderInitProperty_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.NodeBuilderInitProperty$xv, initContext);
     record(new RD1(this));
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeParent, Boolean> calculateCanBeParentConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
+    setCanBeParent(new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAParent(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getLink());
@@ -41,8 +37,9 @@ public class NodeBuilderInitProperty_Constraints extends BaseConstraintsDescript
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class RD1 extends BaseReferenceConstraintsDescriptor {
     /*package*/ RD1(ConstraintsDescriptor container) {
       super(LINKS.property$Y_u4, container, true, false);

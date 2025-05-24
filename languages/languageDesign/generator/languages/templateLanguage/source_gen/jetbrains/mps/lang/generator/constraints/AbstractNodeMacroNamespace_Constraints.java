@@ -21,11 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class AbstractNodeMacroNamespace_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractNodeMacroNamespace_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.AbstractNodeMacroNamespace$Cq, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -36,8 +32,9 @@ public class AbstractNodeMacroNamespace_Constraints extends BaseConstraintsDescr
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     SNode templateQueryAncestor = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.TemplateQueryBase$zY, false, false);
     SConcept nsConcept = SNodeOperations.castConcept(childConcept, CONCEPTS.AbstractNodeMacroNamespace$Cq);

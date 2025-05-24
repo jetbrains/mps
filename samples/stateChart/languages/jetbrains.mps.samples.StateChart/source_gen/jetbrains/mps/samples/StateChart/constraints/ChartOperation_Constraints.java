@@ -11,7 +11,6 @@ public class ChartOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ChartOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.ChartOperation$pl, initContext);
   }
-
   @Override
   public SConcept getDefaultConcreteConcept() {
     return CONCEPTS.EmptyOperation$uK;

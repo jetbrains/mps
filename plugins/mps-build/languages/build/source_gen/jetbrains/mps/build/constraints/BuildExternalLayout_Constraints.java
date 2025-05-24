@@ -23,11 +23,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public class BuildExternalLayout_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildExternalLayout_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.BuildExternalLayout$8z, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -38,11 +34,8 @@ public class BuildExternalLayout_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
-  }
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean> calculateCanBeAncestorConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean>() {
+    });
+    setCanBeAncestor(new ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeAncestor context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAnAncestor(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getParentNode(), context.getLink());
@@ -53,8 +46,9 @@ public class BuildExternalLayout_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return false;
   }

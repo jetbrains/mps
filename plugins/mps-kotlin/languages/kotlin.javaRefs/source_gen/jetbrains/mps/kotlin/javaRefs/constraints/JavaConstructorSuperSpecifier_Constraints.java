@@ -32,11 +32,7 @@ public class JavaConstructorSuperSpecifier_Constraints extends BaseConstraintsDe
   /*package*/ JavaConstructorSuperSpecifier_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.JavaConstructorSuperSpecifier$OZ, initContext);
     record(new RD1(this));
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -47,8 +43,9 @@ public class JavaConstructorSuperSpecifier_Constraints extends BaseConstraintsDe
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class RD1 extends BaseReferenceConstraintsDescriptor {
     /*package*/ RD1(ConstraintsDescriptor container) {
       super(LINKS.constructor$5yLG, container, true, false);

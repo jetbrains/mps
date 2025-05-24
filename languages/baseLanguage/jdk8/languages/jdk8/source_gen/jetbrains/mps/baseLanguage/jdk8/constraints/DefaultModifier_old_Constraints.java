@@ -21,11 +21,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public class DefaultModifier_old_Constraints extends BaseConstraintsDescriptor {
   /*package*/ DefaultModifier_old_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.DefaultModifier_old$PN, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -36,8 +32,9 @@ public class DefaultModifier_old_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ClassifierMember$At) && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IHasModifiers$et) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(parentNode), CONCEPTS.Interface$db);
   }

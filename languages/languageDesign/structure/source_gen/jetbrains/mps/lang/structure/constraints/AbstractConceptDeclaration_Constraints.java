@@ -30,11 +30,7 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
     super(CONCEPTS.AbstractConceptDeclaration$KA, initContext);
     record(new ConceptId_PD(this));
     record(new LanguageId_PD(this));
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    return new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
+    setDefaultScope(new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
       @Nullable
       public ReferenceScopeProvider invoke(@NotNull ConstraintContext_DefaultScopeProvider context, @Nullable CheckingNodeContext checkingNodeContext) {
         return new BaseScopeProvider() {
@@ -48,8 +44,9 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
           }
         };
       }
-    };
+    });
   }
+
   /*package*/ static final class ConceptId_PD extends BasePropertyConstraintsDescriptor {
     public ConceptId_PD(ConstraintsDescriptor container) {
       super(PROPS.conceptId$rrGe, container, false, false, true);

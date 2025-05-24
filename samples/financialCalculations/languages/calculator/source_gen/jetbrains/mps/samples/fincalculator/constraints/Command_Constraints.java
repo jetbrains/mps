@@ -11,7 +11,6 @@ public class Command_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Command_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.Command$Do, initContext);
   }
-
   @Override
   public SConcept getDefaultConcreteConcept() {
     return CONCEPTS.EmptyLine$CT;

@@ -36,11 +36,7 @@ public class ExecuteCommandPart_Constraints extends BaseConstraintsDescriptor {
     super(CONCEPTS.ExecuteCommandPart$hx, initContext);
     record(new Name_PD(this));
     record(new ShortDescription_PD(this));
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    return new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
+    setDefaultScope(new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
       @Nullable
       public ReferenceScopeProvider invoke(@NotNull ConstraintContext_DefaultScopeProvider context, @Nullable CheckingNodeContext checkingNodeContext) {
         return new BaseScopeProvider() {
@@ -54,17 +50,18 @@ public class ExecuteCommandPart_Constraints extends BaseConstraintsDescriptor {
           }
         };
       }
-    };
+    });
   }
+
   /*package*/ static final class Name_PD extends BasePropertyConstraintsDescriptor {
     public Name_PD(ConstraintsDescriptor container) {
       super(PROPS.name$MnvL, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {
-      return check_kwfdao_a0a1d(ExecuteCommandPart__BehaviorDescriptor.getCommandDeclaration_id5keEkmeCqIg.invoke(node));
+      return check_kwfdao_a0a1c(ExecuteCommandPart__BehaviorDescriptor.getCommandDeclaration_id5keEkmeCqIg.invoke(node));
     }
-    private static String check_kwfdao_a0a1d(SNode checkedDotOperand) {
+    private static String check_kwfdao_a0a1c(SNode checkedDotOperand) {
       if (null != checkedDotOperand) {
         return SPropertyOperations.getString(checkedDotOperand, PROPS.name$MnvL);
       }

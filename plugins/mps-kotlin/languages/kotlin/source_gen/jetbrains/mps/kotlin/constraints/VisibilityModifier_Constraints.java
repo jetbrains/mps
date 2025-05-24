@@ -11,7 +11,6 @@ public class VisibilityModifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ VisibilityModifier_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.VisibilityModifier$c5, initContext);
   }
-
   @Override
   public SConcept getDefaultConcreteConcept() {
     return CONCEPTS.PublicVisibility$Me;

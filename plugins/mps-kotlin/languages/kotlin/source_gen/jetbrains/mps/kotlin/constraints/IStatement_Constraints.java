@@ -12,7 +12,6 @@ public class IStatement_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IStatement_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.IStatement$fj, initContext);
   }
-
   @Override
   public SConcept getDefaultConcreteConcept() {
     return CONCEPTS.EmptyStatement$cT;

@@ -11,7 +11,6 @@ public class BuildSourcePath_Constraints extends BaseConstraintsDescriptor {
   /*package*/ BuildSourcePath_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.BuildSourcePath$H, initContext);
   }
-
   @Override
   public SConcept getDefaultConcreteConcept() {
     return CONCEPTS.BuildSourceProjectRelativePath$uc;

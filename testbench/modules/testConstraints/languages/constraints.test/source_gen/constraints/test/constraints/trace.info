@@ -276,310 +276,289 @@
   <root nodeRef="r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)/2614955748380194136">
     <file name="TestRefConstraints_Target_Constraints.java">
       <node id="2614955748380194136" at="26,99,27,62" concept="9" />
-      <node id="2614955748380194136" at="37,63,38,131" concept="5" />
-      <node id="2614955748380194333" at="41,80,42,210" concept="5" />
-      <node id="2614955748380194136" at="50,0,51,0" concept="7" trace="TestRefConstraints_Target$tm" />
-      <node id="2614955748380194136" at="51,0,52,0" concept="7" trace="TestRefConstraints_Container$Wp" />
-      <node id="2614955748380194136" at="55,0,56,0" concept="7" trace="targets$T$Wx" />
-      <node id="2614955748380194136" at="26,0,29,0" concept="0" trace="TestRefConstraints_Target_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <node id="2614955748380194136" at="36,0,40,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="2614955748380194136" at="40,0,44,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="2614955748380194136" at="34,152,44,10" concept="5" />
-      <node id="2614955748380194136" at="33,0,46,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_DefaultScopeProvider;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="2614955748380194136" at="31,127,46,6" concept="5" />
-      <node id="2614955748380194136" at="30,0,48,0" concept="3" trace="calculateDefaultScopeConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="2614955748380194136" at="26,99,27,62" />
-      <scope id="2614955748380194136" at="37,63,38,131" />
-      <scope id="2614955748380194136" at="41,80,42,210" />
-      <scope id="2614955748380194136" at="26,0,29,0">
-        <var name="initContext" id="2614955748380194136" />
-      </scope>
-      <scope id="2614955748380194136" at="36,0,40,0" />
-      <scope id="2614955748380194136" at="40,0,44,0">
+      <node id="2614955748380194136" at="33,63,34,131" concept="5" />
+      <node id="2614955748380194333" at="37,80,38,210" concept="5" />
+      <node id="2614955748380194136" at="46,0,47,0" concept="7" trace="TestRefConstraints_Target$tm" />
+      <node id="2614955748380194136" at="47,0,48,0" concept="7" trace="TestRefConstraints_Container$Wp" />
+      <node id="2614955748380194136" at="51,0,52,0" concept="7" trace="targets$T$Wx" />
+      <node id="2614955748380194136" at="32,0,36,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="2614955748380194136" at="36,0,40,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="2614955748380194136" at="30,152,40,10" concept="5" />
+      <node id="2614955748380194136" at="29,0,42,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_DefaultScopeProvider;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="2614955748380194136" at="27,62,42,7" concept="1" />
+      <node id="2614955748380194136" at="26,0,44,0" concept="0" trace="TestRefConstraints_Target_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <scope id="2614955748380194136" at="33,63,34,131" />
+      <scope id="2614955748380194136" at="37,80,38,210" />
+      <scope id="2614955748380194136" at="32,0,36,0" />
+      <scope id="2614955748380194136" at="36,0,40,0">
         <var name="_context" id="2614955748380194136" />
       </scope>
-      <scope id="2614955748380194136" at="34,152,44,10" />
-      <scope id="2614955748380194136" at="33,0,46,0">
+      <scope id="2614955748380194136" at="30,152,40,10" />
+      <scope id="2614955748380194136" at="29,0,42,0">
         <var name="checkingNodeContext" id="2614955748380194136" />
         <var name="context" id="2614955748380194136" />
       </scope>
-      <scope id="2614955748380194136" at="31,127,46,6" />
-      <scope id="2614955748380194136" at="30,0,48,0" />
-      <unit id="2614955748380194136" at="54,0,57,0" name="constraints.test.constraints.TestRefConstraints_Target_Constraints$LINKS" />
-      <unit id="2614955748380194136" at="49,0,53,0" name="constraints.test.constraints.TestRefConstraints_Target_Constraints$CONCEPTS" />
-      <unit id="2614955748380194136" at="35,19,44,9" name="constraints.test.constraints.TestRefConstraints_Target_Constraints$1$1" />
-      <unit id="2614955748380194136" at="32,15,46,5" name="constraints.test.constraints.TestRefConstraints_Target_Constraints$1" />
-      <unit id="2614955748380194136" at="25,0,58,0" name="constraints.test.constraints.TestRefConstraints_Target_Constraints" />
+      <scope id="2614955748380194136" at="26,99,42,7" />
+      <scope id="2614955748380194136" at="26,0,44,0">
+        <var name="initContext" id="2614955748380194136" />
+      </scope>
+      <unit id="2614955748380194136" at="50,0,53,0" name="constraints.test.constraints.TestRefConstraints_Target_Constraints$LINKS" />
+      <unit id="2614955748380194136" at="45,0,49,0" name="constraints.test.constraints.TestRefConstraints_Target_Constraints$CONCEPTS" />
+      <unit id="2614955748380194136" at="31,19,40,9" name="constraints.test.constraints.TestRefConstraints_Target_Constraints$1$1" />
+      <unit id="2614955748380194136" at="28,24,42,5" name="constraints.test.constraints.TestRefConstraints_Target_Constraints$1" />
+      <unit id="2614955748380194136" at="25,0,54,0" name="constraints.test.constraints.TestRefConstraints_Target_Constraints" />
     </file>
   </root>
   <root nodeRef="r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)/5816870305080488340">
     <file name="TestConstraintsInheritance_Base_Constraints.java">
       <node id="5816870305080488340" at="24,105,25,68" concept="9" />
-      <node id="5816870305080488340" at="32,127,33,128" concept="4" />
-      <node id="5816870305080488340" at="33,128,34,0" concept="6" />
-      <node id="5816870305080488340" at="35,55,36,71" concept="1" />
-      <node id="5816870305080488340" at="37,9,38,0" concept="6" />
-      <node id="5816870305080488340" at="38,0,39,22" concept="5" />
-      <node id="5816870305080491933" at="43,128,44,155" concept="5" />
-      <node id="5816870305080488340" at="46,0,47,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="5816870305080488340" at="49,0,50,0" concept="7" trace="TestConstraintsInheritance_Base$xL" />
-      <node id="5816870305080488340" at="50,0,51,0" concept="7" trace="TestConstraintsInheritance_Container$ih" />
-      <node id="5816870305080488340" at="54,0,55,0" concept="7" trace="triggerBase$PGx5" />
-      <node id="5816870305080488340" at="24,0,27,0" concept="0" trace="TestConstraintsInheritance_Base_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <node id="5816870305080488340" at="34,0,37,9" concept="2" />
-      <node id="5816870305080488340" at="43,0,46,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <node id="5816870305080488340" at="31,0,41,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="5816870305080488340" at="29,103,41,6" concept="5" />
-      <node id="5816870305080488340" at="28,0,43,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="5816870305080488340" at="24,105,25,68" />
-      <scope id="5816870305080488340" at="35,55,36,71" />
-      <scope id="5816870305080488342" at="43,128,44,155" />
-      <scope id="5816870305080488340" at="24,0,27,0">
-        <var name="initContext" id="5816870305080488340" />
-      </scope>
-      <scope id="5816870305080488340" at="43,0,46,0">
+      <node id="5816870305080488340" at="28,127,29,128" concept="4" />
+      <node id="5816870305080488340" at="29,128,30,0" concept="6" />
+      <node id="5816870305080488340" at="31,55,32,71" concept="1" />
+      <node id="5816870305080488340" at="33,9,34,0" concept="6" />
+      <node id="5816870305080488340" at="34,0,35,22" concept="5" />
+      <node id="5816870305080491933" at="40,128,41,155" concept="5" />
+      <node id="5816870305080488340" at="43,0,44,0" concept="7" trace="canBeChildBreakingPoint" />
+      <node id="5816870305080488340" at="46,0,47,0" concept="7" trace="TestConstraintsInheritance_Base$xL" />
+      <node id="5816870305080488340" at="47,0,48,0" concept="7" trace="TestConstraintsInheritance_Container$ih" />
+      <node id="5816870305080488340" at="51,0,52,0" concept="7" trace="triggerBase$PGx5" />
+      <node id="5816870305080488340" at="30,0,33,9" concept="2" />
+      <node id="5816870305080488340" at="40,0,43,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="5816870305080488340" at="27,0,37,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="5816870305080488340" at="25,68,37,7" concept="1" />
+      <node id="5816870305080488340" at="24,0,39,0" concept="0" trace="TestConstraintsInheritance_Base_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <scope id="5816870305080488340" at="31,55,32,71" />
+      <scope id="5816870305080488342" at="40,128,41,155" />
+      <scope id="5816870305080488340" at="40,0,43,0">
         <var name="childConcept" id="5816870305080488340" />
         <var name="link" id="5816870305080488340" />
         <var name="node" id="5816870305080488340" />
         <var name="parentNode" id="5816870305080488340" />
       </scope>
-      <scope id="5816870305080488340" at="32,127,39,22">
+      <scope id="5816870305080488340" at="28,127,35,22">
         <var name="result" id="5816870305080488340" />
       </scope>
-      <scope id="5816870305080488340" at="31,0,41,0">
+      <scope id="5816870305080488340" at="27,0,37,0">
         <var name="checkingNodeContext" id="5816870305080488340" />
         <var name="context" id="5816870305080488340" />
       </scope>
-      <scope id="5816870305080488340" at="29,103,41,6" />
-      <scope id="5816870305080488340" at="28,0,43,0" />
-      <unit id="5816870305080488340" at="53,0,56,0" name="constraints.test.constraints.TestConstraintsInheritance_Base_Constraints$PROPS" />
-      <unit id="5816870305080488340" at="48,0,52,0" name="constraints.test.constraints.TestConstraintsInheritance_Base_Constraints$CONCEPTS" />
-      <unit id="5816870305080488340" at="30,15,41,5" name="constraints.test.constraints.TestConstraintsInheritance_Base_Constraints$1" />
-      <unit id="5816870305080488340" at="23,0,57,0" name="constraints.test.constraints.TestConstraintsInheritance_Base_Constraints" />
+      <scope id="5816870305080488340" at="24,105,37,7" />
+      <scope id="5816870305080488340" at="24,0,39,0">
+        <var name="initContext" id="5816870305080488340" />
+      </scope>
+      <unit id="5816870305080488340" at="50,0,53,0" name="constraints.test.constraints.TestConstraintsInheritance_Base_Constraints$PROPS" />
+      <unit id="5816870305080488340" at="45,0,49,0" name="constraints.test.constraints.TestConstraintsInheritance_Base_Constraints$CONCEPTS" />
+      <unit id="5816870305080488340" at="26,32,37,5" name="constraints.test.constraints.TestConstraintsInheritance_Base_Constraints$1" />
+      <unit id="5816870305080488340" at="23,0,54,0" name="constraints.test.constraints.TestConstraintsInheritance_Base_Constraints" />
     </file>
   </root>
   <root nodeRef="r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)/5816870305080501533">
     <file name="TestConstraintsInheritance_Derived1_Constrained_Constraints.java">
       <node id="5816870305080501533" at="24,121,25,84" concept="9" />
-      <node id="5816870305080501533" at="32,127,33,128" concept="4" />
-      <node id="5816870305080501533" at="33,128,34,0" concept="6" />
-      <node id="5816870305080501533" at="35,55,36,71" concept="1" />
-      <node id="5816870305080501533" at="37,9,38,0" concept="6" />
-      <node id="5816870305080501533" at="38,0,39,22" concept="5" />
-      <node id="5816870305080501993" at="43,128,44,153" concept="5" />
-      <node id="5816870305080501533" at="46,0,47,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="5816870305080501533" at="49,0,50,0" concept="7" trace="TestConstraintsInheritance_Derived1_Constrained$W_" />
-      <node id="5816870305080501533" at="50,0,51,0" concept="7" trace="TestConstraintsInheritance_Container$ih" />
-      <node id="5816870305080501533" at="54,0,55,0" concept="7" trace="triggerD1$PGZ7" />
-      <node id="5816870305080501533" at="24,0,27,0" concept="0" trace="TestConstraintsInheritance_Derived1_Constrained_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <node id="5816870305080501533" at="34,0,37,9" concept="2" />
-      <node id="5816870305080501533" at="43,0,46,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <node id="5816870305080501533" at="31,0,41,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="5816870305080501533" at="29,103,41,6" concept="5" />
-      <node id="5816870305080501533" at="28,0,43,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="5816870305080501533" at="24,121,25,84" />
-      <scope id="5816870305080501533" at="35,55,36,71" />
-      <scope id="5816870305080501535" at="43,128,44,153" />
-      <scope id="5816870305080501533" at="24,0,27,0">
-        <var name="initContext" id="5816870305080501533" />
-      </scope>
-      <scope id="5816870305080501533" at="43,0,46,0">
+      <node id="5816870305080501533" at="28,127,29,128" concept="4" />
+      <node id="5816870305080501533" at="29,128,30,0" concept="6" />
+      <node id="5816870305080501533" at="31,55,32,71" concept="1" />
+      <node id="5816870305080501533" at="33,9,34,0" concept="6" />
+      <node id="5816870305080501533" at="34,0,35,22" concept="5" />
+      <node id="5816870305080501993" at="40,128,41,153" concept="5" />
+      <node id="5816870305080501533" at="43,0,44,0" concept="7" trace="canBeChildBreakingPoint" />
+      <node id="5816870305080501533" at="46,0,47,0" concept="7" trace="TestConstraintsInheritance_Derived1_Constrained$W_" />
+      <node id="5816870305080501533" at="47,0,48,0" concept="7" trace="TestConstraintsInheritance_Container$ih" />
+      <node id="5816870305080501533" at="51,0,52,0" concept="7" trace="triggerD1$PGZ7" />
+      <node id="5816870305080501533" at="30,0,33,9" concept="2" />
+      <node id="5816870305080501533" at="40,0,43,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="5816870305080501533" at="27,0,37,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="5816870305080501533" at="25,84,37,7" concept="1" />
+      <node id="5816870305080501533" at="24,0,39,0" concept="0" trace="TestConstraintsInheritance_Derived1_Constrained_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <scope id="5816870305080501533" at="31,55,32,71" />
+      <scope id="5816870305080501535" at="40,128,41,153" />
+      <scope id="5816870305080501533" at="40,0,43,0">
         <var name="childConcept" id="5816870305080501533" />
         <var name="link" id="5816870305080501533" />
         <var name="node" id="5816870305080501533" />
         <var name="parentNode" id="5816870305080501533" />
       </scope>
-      <scope id="5816870305080501533" at="32,127,39,22">
+      <scope id="5816870305080501533" at="28,127,35,22">
         <var name="result" id="5816870305080501533" />
       </scope>
-      <scope id="5816870305080501533" at="31,0,41,0">
+      <scope id="5816870305080501533" at="27,0,37,0">
         <var name="checkingNodeContext" id="5816870305080501533" />
         <var name="context" id="5816870305080501533" />
       </scope>
-      <scope id="5816870305080501533" at="29,103,41,6" />
-      <scope id="5816870305080501533" at="28,0,43,0" />
-      <unit id="5816870305080501533" at="53,0,56,0" name="constraints.test.constraints.TestConstraintsInheritance_Derived1_Constrained_Constraints$PROPS" />
-      <unit id="5816870305080501533" at="48,0,52,0" name="constraints.test.constraints.TestConstraintsInheritance_Derived1_Constrained_Constraints$CONCEPTS" />
-      <unit id="5816870305080501533" at="30,15,41,5" name="constraints.test.constraints.TestConstraintsInheritance_Derived1_Constrained_Constraints$1" />
-      <unit id="5816870305080501533" at="23,0,57,0" name="constraints.test.constraints.TestConstraintsInheritance_Derived1_Constrained_Constraints" />
+      <scope id="5816870305080501533" at="24,121,37,7" />
+      <scope id="5816870305080501533" at="24,0,39,0">
+        <var name="initContext" id="5816870305080501533" />
+      </scope>
+      <unit id="5816870305080501533" at="50,0,53,0" name="constraints.test.constraints.TestConstraintsInheritance_Derived1_Constrained_Constraints$PROPS" />
+      <unit id="5816870305080501533" at="45,0,49,0" name="constraints.test.constraints.TestConstraintsInheritance_Derived1_Constrained_Constraints$CONCEPTS" />
+      <unit id="5816870305080501533" at="26,32,37,5" name="constraints.test.constraints.TestConstraintsInheritance_Derived1_Constrained_Constraints$1" />
+      <unit id="5816870305080501533" at="23,0,54,0" name="constraints.test.constraints.TestConstraintsInheritance_Derived1_Constrained_Constraints" />
     </file>
   </root>
   <root nodeRef="r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)/5816870305080509279">
     <file name="TestConstraintsInheritance_Derived2_Constrained_Constraints.java">
       <node id="5816870305080509279" at="24,121,25,84" concept="9" />
-      <node id="5816870305080509279" at="32,127,33,128" concept="4" />
-      <node id="5816870305080509279" at="33,128,34,0" concept="6" />
-      <node id="5816870305080509279" at="35,55,36,71" concept="1" />
-      <node id="5816870305080509279" at="37,9,38,0" concept="6" />
-      <node id="5816870305080509279" at="38,0,39,22" concept="5" />
-      <node id="5816870305080509742" at="43,128,44,153" concept="5" />
-      <node id="5816870305080509279" at="46,0,47,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="5816870305080509279" at="49,0,50,0" concept="7" trace="TestConstraintsInheritance_Derived2_Constrained$UD" />
-      <node id="5816870305080509279" at="50,0,51,0" concept="7" trace="TestConstraintsInheritance_Container$ih" />
-      <node id="5816870305080509279" at="54,0,55,0" concept="7" trace="triggerD2$PHGa" />
-      <node id="5816870305080509279" at="24,0,27,0" concept="0" trace="TestConstraintsInheritance_Derived2_Constrained_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <node id="5816870305080509279" at="34,0,37,9" concept="2" />
-      <node id="5816870305080509279" at="43,0,46,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <node id="5816870305080509279" at="31,0,41,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="5816870305080509279" at="29,103,41,6" concept="5" />
-      <node id="5816870305080509279" at="28,0,43,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="5816870305080509279" at="24,121,25,84" />
-      <scope id="5816870305080509279" at="35,55,36,71" />
-      <scope id="5816870305080509284" at="43,128,44,153" />
-      <scope id="5816870305080509279" at="24,0,27,0">
-        <var name="initContext" id="5816870305080509279" />
-      </scope>
-      <scope id="5816870305080509279" at="43,0,46,0">
+      <node id="5816870305080509279" at="28,127,29,128" concept="4" />
+      <node id="5816870305080509279" at="29,128,30,0" concept="6" />
+      <node id="5816870305080509279" at="31,55,32,71" concept="1" />
+      <node id="5816870305080509279" at="33,9,34,0" concept="6" />
+      <node id="5816870305080509279" at="34,0,35,22" concept="5" />
+      <node id="5816870305080509742" at="40,128,41,153" concept="5" />
+      <node id="5816870305080509279" at="43,0,44,0" concept="7" trace="canBeChildBreakingPoint" />
+      <node id="5816870305080509279" at="46,0,47,0" concept="7" trace="TestConstraintsInheritance_Derived2_Constrained$UD" />
+      <node id="5816870305080509279" at="47,0,48,0" concept="7" trace="TestConstraintsInheritance_Container$ih" />
+      <node id="5816870305080509279" at="51,0,52,0" concept="7" trace="triggerD2$PHGa" />
+      <node id="5816870305080509279" at="30,0,33,9" concept="2" />
+      <node id="5816870305080509279" at="40,0,43,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="5816870305080509279" at="27,0,37,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="5816870305080509279" at="25,84,37,7" concept="1" />
+      <node id="5816870305080509279" at="24,0,39,0" concept="0" trace="TestConstraintsInheritance_Derived2_Constrained_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <scope id="5816870305080509279" at="31,55,32,71" />
+      <scope id="5816870305080509284" at="40,128,41,153" />
+      <scope id="5816870305080509279" at="40,0,43,0">
         <var name="childConcept" id="5816870305080509279" />
         <var name="link" id="5816870305080509279" />
         <var name="node" id="5816870305080509279" />
         <var name="parentNode" id="5816870305080509279" />
       </scope>
-      <scope id="5816870305080509279" at="32,127,39,22">
+      <scope id="5816870305080509279" at="28,127,35,22">
         <var name="result" id="5816870305080509279" />
       </scope>
-      <scope id="5816870305080509279" at="31,0,41,0">
+      <scope id="5816870305080509279" at="27,0,37,0">
         <var name="checkingNodeContext" id="5816870305080509279" />
         <var name="context" id="5816870305080509279" />
       </scope>
-      <scope id="5816870305080509279" at="29,103,41,6" />
-      <scope id="5816870305080509279" at="28,0,43,0" />
-      <unit id="5816870305080509279" at="53,0,56,0" name="constraints.test.constraints.TestConstraintsInheritance_Derived2_Constrained_Constraints$PROPS" />
-      <unit id="5816870305080509279" at="48,0,52,0" name="constraints.test.constraints.TestConstraintsInheritance_Derived2_Constrained_Constraints$CONCEPTS" />
-      <unit id="5816870305080509279" at="30,15,41,5" name="constraints.test.constraints.TestConstraintsInheritance_Derived2_Constrained_Constraints$1" />
-      <unit id="5816870305080509279" at="23,0,57,0" name="constraints.test.constraints.TestConstraintsInheritance_Derived2_Constrained_Constraints" />
+      <scope id="5816870305080509279" at="24,121,37,7" />
+      <scope id="5816870305080509279" at="24,0,39,0">
+        <var name="initContext" id="5816870305080509279" />
+      </scope>
+      <unit id="5816870305080509279" at="50,0,53,0" name="constraints.test.constraints.TestConstraintsInheritance_Derived2_Constrained_Constraints$PROPS" />
+      <unit id="5816870305080509279" at="45,0,49,0" name="constraints.test.constraints.TestConstraintsInheritance_Derived2_Constrained_Constraints$CONCEPTS" />
+      <unit id="5816870305080509279" at="26,32,37,5" name="constraints.test.constraints.TestConstraintsInheritance_Derived2_Constrained_Constraints$1" />
+      <unit id="5816870305080509279" at="23,0,54,0" name="constraints.test.constraints.TestConstraintsInheritance_Derived2_Constrained_Constraints" />
     </file>
   </root>
   <root nodeRef="r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)/730305212589401485">
     <file name="TestConstraintsInvocation_CanBeParentFail_Constraints.java">
       <node id="730305212589401485" at="20,115,21,78" concept="9" />
-      <node id="730305212589401485" at="28,128,29,133" concept="4" />
-      <node id="730305212589401485" at="29,133,30,0" concept="6" />
-      <node id="730305212589401485" at="31,55,32,72" concept="1" />
-      <node id="730305212589401485" at="33,9,34,0" concept="6" />
-      <node id="730305212589401485" at="34,0,35,22" concept="5" />
-      <node id="730305212589581883" at="39,128,40,79" concept="5" />
-      <node id="730305212589401485" at="42,0,43,0" concept="7" trace="canBeParentBreakingPoint" />
-      <node id="730305212589401485" at="45,0,46,0" concept="7" trace="TestConstraintsInvocation_CanBeParentFail$UH" />
-      <node id="730305212589401485" at="46,0,47,0" concept="7" trace="TestConstraintsInvocation_Child$$t" />
-      <node id="730305212589401485" at="20,0,23,0" concept="0" trace="TestConstraintsInvocation_CanBeParentFail_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <node id="730305212589401485" at="30,0,33,9" concept="2" />
-      <node id="730305212589401485" at="39,0,42,0" concept="8" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <node id="730305212589401485" at="27,0,37,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeParent;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="730305212589401485" at="25,105,37,6" concept="5" />
-      <node id="730305212589401485" at="24,0,39,0" concept="3" trace="calculateCanBeParentConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="730305212589401485" at="20,115,21,78" />
-      <scope id="730305212589401485" at="31,55,32,72" />
-      <scope id="730305212589401487" at="39,128,40,79" />
-      <scope id="730305212589401485" at="20,0,23,0">
-        <var name="initContext" id="730305212589401485" />
-      </scope>
-      <scope id="730305212589401485" at="39,0,42,0">
+      <node id="730305212589401485" at="24,128,25,133" concept="4" />
+      <node id="730305212589401485" at="25,133,26,0" concept="6" />
+      <node id="730305212589401485" at="27,55,28,72" concept="1" />
+      <node id="730305212589401485" at="29,9,30,0" concept="6" />
+      <node id="730305212589401485" at="30,0,31,22" concept="5" />
+      <node id="730305212589581883" at="36,128,37,79" concept="5" />
+      <node id="730305212589401485" at="39,0,40,0" concept="7" trace="canBeParentBreakingPoint" />
+      <node id="730305212589401485" at="42,0,43,0" concept="7" trace="TestConstraintsInvocation_CanBeParentFail$UH" />
+      <node id="730305212589401485" at="43,0,44,0" concept="7" trace="TestConstraintsInvocation_Child$$t" />
+      <node id="730305212589401485" at="26,0,29,9" concept="2" />
+      <node id="730305212589401485" at="36,0,39,0" concept="8" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="730305212589401485" at="23,0,33,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeParent;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="730305212589401485" at="21,78,33,7" concept="1" />
+      <node id="730305212589401485" at="20,0,35,0" concept="0" trace="TestConstraintsInvocation_CanBeParentFail_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <scope id="730305212589401485" at="27,55,28,72" />
+      <scope id="730305212589401487" at="36,128,37,79" />
+      <scope id="730305212589401485" at="36,0,39,0">
         <var name="childConcept" id="730305212589401485" />
         <var name="childNode" id="730305212589401485" />
         <var name="link" id="730305212589401485" />
         <var name="node" id="730305212589401485" />
       </scope>
-      <scope id="730305212589401485" at="28,128,35,22">
+      <scope id="730305212589401485" at="24,128,31,22">
         <var name="result" id="730305212589401485" />
       </scope>
-      <scope id="730305212589401485" at="27,0,37,0">
+      <scope id="730305212589401485" at="23,0,33,0">
         <var name="checkingNodeContext" id="730305212589401485" />
         <var name="context" id="730305212589401485" />
       </scope>
-      <scope id="730305212589401485" at="25,105,37,6" />
-      <scope id="730305212589401485" at="24,0,39,0" />
-      <unit id="730305212589401485" at="44,0,48,0" name="constraints.test.constraints.TestConstraintsInvocation_CanBeParentFail_Constraints$CONCEPTS" />
-      <unit id="730305212589401485" at="26,15,37,5" name="constraints.test.constraints.TestConstraintsInvocation_CanBeParentFail_Constraints$1" />
-      <unit id="730305212589401485" at="19,0,49,0" name="constraints.test.constraints.TestConstraintsInvocation_CanBeParentFail_Constraints" />
+      <scope id="730305212589401485" at="20,115,33,7" />
+      <scope id="730305212589401485" at="20,0,35,0">
+        <var name="initContext" id="730305212589401485" />
+      </scope>
+      <unit id="730305212589401485" at="41,0,45,0" name="constraints.test.constraints.TestConstraintsInvocation_CanBeParentFail_Constraints$CONCEPTS" />
+      <unit id="730305212589401485" at="22,23,33,5" name="constraints.test.constraints.TestConstraintsInvocation_CanBeParentFail_Constraints$1" />
+      <unit id="730305212589401485" at="19,0,46,0" name="constraints.test.constraints.TestConstraintsInvocation_CanBeParentFail_Constraints" />
     </file>
   </root>
   <root nodeRef="r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)/730305212589402675">
     <file name="TestConstraintsInvocation_CanBeAncestorFail_Constraints.java">
       <node id="730305212589402675" at="20,117,21,80" concept="9" />
-      <node id="730305212589402675" at="28,130,29,161" concept="4" />
-      <node id="730305212589402675" at="29,161,30,0" concept="6" />
-      <node id="730305212589402675" at="31,55,32,74" concept="1" />
-      <node id="730305212589402675" at="33,9,34,0" concept="6" />
-      <node id="730305212589402675" at="34,0,35,22" concept="5" />
-      <node id="730305212589592073" at="39,149,40,79" concept="5" />
-      <node id="730305212589402675" at="42,0,43,0" concept="7" trace="canBeAncestorBreakingPoint" />
-      <node id="730305212589402675" at="45,0,46,0" concept="7" trace="TestConstraintsInvocation_CanBeAncestorFail$Ue" />
-      <node id="730305212589402675" at="46,0,47,0" concept="7" trace="TestConstraintsInvocation_Child$$t" />
-      <node id="730305212589402675" at="20,0,23,0" concept="0" trace="TestConstraintsInvocation_CanBeAncestorFail_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <node id="730305212589402675" at="30,0,33,9" concept="2" />
-      <node id="730305212589402675" at="39,0,42,0" concept="8" trace="staticCanBeAnAncestor#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <node id="730305212589402675" at="27,0,37,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeAncestor;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="730305212589402675" at="25,109,37,6" concept="5" />
-      <node id="730305212589402675" at="24,0,39,0" concept="3" trace="calculateCanBeAncestorConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="730305212589402675" at="20,117,21,80" />
-      <scope id="730305212589402675" at="31,55,32,74" />
-      <scope id="730305212589402677" at="39,149,40,79" />
-      <scope id="730305212589402675" at="20,0,23,0">
-        <var name="initContext" id="730305212589402675" />
-      </scope>
-      <scope id="730305212589402675" at="39,0,42,0">
+      <node id="730305212589402675" at="24,130,25,161" concept="4" />
+      <node id="730305212589402675" at="25,161,26,0" concept="6" />
+      <node id="730305212589402675" at="27,55,28,74" concept="1" />
+      <node id="730305212589402675" at="29,9,30,0" concept="6" />
+      <node id="730305212589402675" at="30,0,31,22" concept="5" />
+      <node id="730305212589592073" at="36,149,37,79" concept="5" />
+      <node id="730305212589402675" at="39,0,40,0" concept="7" trace="canBeAncestorBreakingPoint" />
+      <node id="730305212589402675" at="42,0,43,0" concept="7" trace="TestConstraintsInvocation_CanBeAncestorFail$Ue" />
+      <node id="730305212589402675" at="43,0,44,0" concept="7" trace="TestConstraintsInvocation_Child$$t" />
+      <node id="730305212589402675" at="26,0,29,9" concept="2" />
+      <node id="730305212589402675" at="36,0,39,0" concept="8" trace="staticCanBeAnAncestor#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="730305212589402675" at="23,0,33,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeAncestor;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="730305212589402675" at="21,80,33,7" concept="1" />
+      <node id="730305212589402675" at="20,0,35,0" concept="0" trace="TestConstraintsInvocation_CanBeAncestorFail_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <scope id="730305212589402675" at="27,55,28,74" />
+      <scope id="730305212589402677" at="36,149,37,79" />
+      <scope id="730305212589402675" at="36,0,39,0">
         <var name="childConcept" id="730305212589402675" />
         <var name="childNode" id="730305212589402675" />
         <var name="link" id="730305212589402675" />
         <var name="node" id="730305212589402675" />
         <var name="parentNode" id="730305212589402675" />
       </scope>
-      <scope id="730305212589402675" at="28,130,35,22">
+      <scope id="730305212589402675" at="24,130,31,22">
         <var name="result" id="730305212589402675" />
       </scope>
-      <scope id="730305212589402675" at="27,0,37,0">
+      <scope id="730305212589402675" at="23,0,33,0">
         <var name="checkingNodeContext" id="730305212589402675" />
         <var name="context" id="730305212589402675" />
       </scope>
-      <scope id="730305212589402675" at="25,109,37,6" />
-      <scope id="730305212589402675" at="24,0,39,0" />
-      <unit id="730305212589402675" at="44,0,48,0" name="constraints.test.constraints.TestConstraintsInvocation_CanBeAncestorFail_Constraints$CONCEPTS" />
-      <unit id="730305212589402675" at="26,15,37,5" name="constraints.test.constraints.TestConstraintsInvocation_CanBeAncestorFail_Constraints$1" />
-      <unit id="730305212589402675" at="19,0,49,0" name="constraints.test.constraints.TestConstraintsInvocation_CanBeAncestorFail_Constraints" />
+      <scope id="730305212589402675" at="20,117,33,7" />
+      <scope id="730305212589402675" at="20,0,35,0">
+        <var name="initContext" id="730305212589402675" />
+      </scope>
+      <unit id="730305212589402675" at="41,0,45,0" name="constraints.test.constraints.TestConstraintsInvocation_CanBeAncestorFail_Constraints$CONCEPTS" />
+      <unit id="730305212589402675" at="22,25,33,5" name="constraints.test.constraints.TestConstraintsInvocation_CanBeAncestorFail_Constraints$1" />
+      <unit id="730305212589402675" at="19,0,46,0" name="constraints.test.constraints.TestConstraintsInvocation_CanBeAncestorFail_Constraints" />
     </file>
   </root>
   <root nodeRef="r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)/730305212589427420">
     <file name="TestConstraintsInvocation_CanBeChildFail_Constraints.java">
       <node id="730305212589427420" at="20,114,21,77" concept="9" />
-      <node id="730305212589427420" at="28,127,29,128" concept="4" />
-      <node id="730305212589427420" at="29,128,30,0" concept="6" />
-      <node id="730305212589427420" at="31,55,32,71" concept="1" />
-      <node id="730305212589427420" at="33,9,34,0" concept="6" />
-      <node id="730305212589427420" at="34,0,35,22" concept="5" />
-      <node id="730305212589427888" at="39,128,40,17" concept="5" />
-      <node id="730305212589427420" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="730305212589427420" at="45,0,46,0" concept="7" trace="TestConstraintsInvocation_CanBeChildFail$TJ" />
-      <node id="730305212589427420" at="20,0,23,0" concept="0" trace="TestConstraintsInvocation_CanBeChildFail_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <node id="730305212589427420" at="30,0,33,9" concept="2" />
-      <node id="730305212589427420" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <node id="730305212589427420" at="27,0,37,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="730305212589427420" at="25,103,37,6" concept="5" />
-      <node id="730305212589427420" at="24,0,39,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="730305212589427420" at="20,114,21,77" />
-      <scope id="730305212589427420" at="31,55,32,71" />
-      <scope id="730305212589427431" at="39,128,40,17" />
-      <scope id="730305212589427420" at="20,0,23,0">
-        <var name="initContext" id="730305212589427420" />
-      </scope>
-      <scope id="730305212589427420" at="39,0,42,0">
+      <node id="730305212589427420" at="24,127,25,128" concept="4" />
+      <node id="730305212589427420" at="25,128,26,0" concept="6" />
+      <node id="730305212589427420" at="27,55,28,71" concept="1" />
+      <node id="730305212589427420" at="29,9,30,0" concept="6" />
+      <node id="730305212589427420" at="30,0,31,22" concept="5" />
+      <node id="730305212589427888" at="36,128,37,17" concept="5" />
+      <node id="730305212589427420" at="39,0,40,0" concept="7" trace="canBeChildBreakingPoint" />
+      <node id="730305212589427420" at="42,0,43,0" concept="7" trace="TestConstraintsInvocation_CanBeChildFail$TJ" />
+      <node id="730305212589427420" at="26,0,29,9" concept="2" />
+      <node id="730305212589427420" at="36,0,39,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="730305212589427420" at="23,0,33,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="730305212589427420" at="21,77,33,7" concept="1" />
+      <node id="730305212589427420" at="20,0,35,0" concept="0" trace="TestConstraintsInvocation_CanBeChildFail_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <scope id="730305212589427420" at="27,55,28,71" />
+      <scope id="730305212589427431" at="36,128,37,17" />
+      <scope id="730305212589427420" at="36,0,39,0">
         <var name="childConcept" id="730305212589427420" />
         <var name="link" id="730305212589427420" />
         <var name="node" id="730305212589427420" />
         <var name="parentNode" id="730305212589427420" />
       </scope>
-      <scope id="730305212589427420" at="28,127,35,22">
+      <scope id="730305212589427420" at="24,127,31,22">
         <var name="result" id="730305212589427420" />
       </scope>
-      <scope id="730305212589427420" at="27,0,37,0">
+      <scope id="730305212589427420" at="23,0,33,0">
         <var name="checkingNodeContext" id="730305212589427420" />
         <var name="context" id="730305212589427420" />
       </scope>
-      <scope id="730305212589427420" at="25,103,37,6" />
-      <scope id="730305212589427420" at="24,0,39,0" />
-      <unit id="730305212589427420" at="44,0,47,0" name="constraints.test.constraints.TestConstraintsInvocation_CanBeChildFail_Constraints$CONCEPTS" />
-      <unit id="730305212589427420" at="26,15,37,5" name="constraints.test.constraints.TestConstraintsInvocation_CanBeChildFail_Constraints$1" />
-      <unit id="730305212589427420" at="19,0,48,0" name="constraints.test.constraints.TestConstraintsInvocation_CanBeChildFail_Constraints" />
+      <scope id="730305212589427420" at="20,114,33,7" />
+      <scope id="730305212589427420" at="20,0,35,0">
+        <var name="initContext" id="730305212589427420" />
+      </scope>
+      <unit id="730305212589427420" at="41,0,44,0" name="constraints.test.constraints.TestConstraintsInvocation_CanBeChildFail_Constraints$CONCEPTS" />
+      <unit id="730305212589427420" at="22,32,33,5" name="constraints.test.constraints.TestConstraintsInvocation_CanBeChildFail_Constraints$1" />
+      <unit id="730305212589427420" at="19,0,45,0" name="constraints.test.constraints.TestConstraintsInvocation_CanBeChildFail_Constraints" />
     </file>
   </root>
 </debug-info>

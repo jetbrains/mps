@@ -23,11 +23,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public class TabbedToolOperation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TabbedToolOperation_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.TabbedToolOperation$zd, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -38,8 +34,9 @@ public class TabbedToolOperation_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     SNode dotExpression = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.DotExpression$yW, true, false);
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(dotExpression, LINKS.operand$w6IR)), CONCEPTS.ToolType$CP), LINKS.tool$pL83), CONCEPTS.TabbedToolDeclaration$ug);

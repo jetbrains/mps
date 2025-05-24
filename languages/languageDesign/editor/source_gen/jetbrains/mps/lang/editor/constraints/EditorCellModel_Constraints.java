@@ -23,11 +23,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public class EditorCellModel_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EditorCellModel_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.EditorCellModel$gN, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeParent, Boolean> calculateCanBeParentConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
+    setCanBeParent(new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAParent(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getLink());
@@ -38,8 +34,9 @@ public class EditorCellModel_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     if (LINKS.styleItem$FgZD.equals(link)) {
       SConcept styleClassItemConcept = (SConcept) childConcept;

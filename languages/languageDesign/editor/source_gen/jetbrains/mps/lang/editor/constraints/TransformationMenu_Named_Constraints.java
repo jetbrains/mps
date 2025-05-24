@@ -21,11 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class TransformationMenu_Named_Constraints extends BaseConstraintsDescriptor {
   /*package*/ TransformationMenu_Named_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.TransformationMenu_Named$dh, initContext);
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    return new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
+    setDefaultScope(new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
       @Nullable
       public ReferenceScopeProvider invoke(@NotNull ConstraintContext_DefaultScopeProvider context, @Nullable CheckingNodeContext checkingNodeContext) {
         return new BaseScopeProvider() {
@@ -39,7 +35,7 @@ public class TransformationMenu_Named_Constraints extends BaseConstraintsDescrip
           }
         };
       }
-    };
+    });
   }
 
   private static final class CONCEPTS {

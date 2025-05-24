@@ -30,11 +30,7 @@ public class ConceptEditorDeclaration_Constraints extends BaseConstraintsDescrip
   /*package*/ ConceptEditorDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.ConceptEditorDeclaration$BH, initContext);
     record(new Name_PD(this));
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_CanBeRoot, Boolean> calculateCanBeRootConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
+    setCanBeRoot(new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeRoot context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeARoot(context.getModel());
@@ -45,8 +41,9 @@ public class ConceptEditorDeclaration_Constraints extends BaseConstraintsDescrip
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class Name_PD extends BasePropertyConstraintsDescriptor {
     public Name_PD(ConstraintsDescriptor container) {
       super(PROPS.name$MnvL, container, true, false, false);

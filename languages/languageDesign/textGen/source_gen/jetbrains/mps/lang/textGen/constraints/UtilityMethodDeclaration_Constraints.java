@@ -30,11 +30,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public class UtilityMethodDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ UtilityMethodDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.UtilityMethodDeclaration$bl, initContext);
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    return new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
+    setDefaultScope(new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
       @Nullable
       public ReferenceScopeProvider invoke(@NotNull ConstraintContext_DefaultScopeProvider context, @Nullable CheckingNodeContext checkingNodeContext) {
         return new BaseScopeProvider() {
@@ -59,7 +55,7 @@ public class UtilityMethodDeclaration_Constraints extends BaseConstraintsDescrip
           }
         };
       }
-    };
+    });
   }
 
   private static final class CONCEPTS {

@@ -35,11 +35,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class IStyle_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IStyle_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.IStyle$eb, initContext);
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    return new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
+    setDefaultScope(new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
       @Nullable
       public ReferenceScopeProvider invoke(@NotNull ConstraintContext_DefaultScopeProvider context, @Nullable CheckingNodeContext checkingNodeContext) {
         return new BaseScopeProvider() {
@@ -64,7 +60,7 @@ public class IStyle_Constraints extends BaseConstraintsDescriptor {
           }
         };
       }
-    };
+    });
   }
 
   private static final class CONCEPTS {

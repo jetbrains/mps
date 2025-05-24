@@ -22,11 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class PatternCondition_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PatternCondition_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.PatternCondition$G9, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeParent, Boolean> calculateCanBeParentConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
+    setCanBeParent(new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAParent(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getLink());
@@ -37,8 +33,9 @@ public class PatternCondition_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     if (Objects.equals(link, LINKS.pattern$uJzg)) {
       return SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.PatternExpression$YJ);

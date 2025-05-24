@@ -18,47 +18,44 @@
   <root nodeRef="r:cdd73e8d-6dad-4dc5-a775-85eb769628e7(jetbrains.mps.baseLanguage.jdk8.constraints)/1164142520228621411">
     <file name="DefaultModifier_old_Constraints.java">
       <node id="1164142520228621411" at="22,93,23,56" concept="9" />
-      <node id="1164142520228621411" at="30,127,31,128" concept="4" />
-      <node id="1164142520228621411" at="31,128,32,0" concept="6" />
-      <node id="1164142520228621411" at="33,55,34,71" concept="1" />
-      <node id="1164142520228621411" at="35,9,36,0" concept="6" />
-      <node id="1164142520228621411" at="36,0,37,22" concept="5" />
-      <node id="1164142520228621880" at="41,128,42,247" concept="5" />
-      <node id="1164142520228621411" at="44,0,45,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="1164142520228621411" at="47,0,48,0" concept="7" trace="DefaultModifier_old$PN" />
-      <node id="1164142520228621411" at="48,0,49,0" concept="7" trace="IHasModifiers$et" />
-      <node id="1164142520228621411" at="49,0,50,0" concept="7" trace="ClassifierMember$At" />
-      <node id="1164142520228621411" at="50,0,51,0" concept="7" trace="Interface$db" />
-      <node id="1164142520228621411" at="22,0,25,0" concept="0" trace="DefaultModifier_old_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <node id="1164142520228621411" at="32,0,35,9" concept="2" />
-      <node id="1164142520228621411" at="41,0,44,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <node id="1164142520228621411" at="29,0,39,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="1164142520228621411" at="27,103,39,6" concept="5" />
-      <node id="1164142520228621411" at="26,0,41,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="1164142520228621411" at="22,93,23,56" />
-      <scope id="1164142520228621411" at="33,55,34,71" />
-      <scope id="1164142520228621413" at="41,128,42,247" />
-      <scope id="1164142520228621411" at="22,0,25,0">
-        <var name="initContext" id="1164142520228621411" />
-      </scope>
-      <scope id="1164142520228621411" at="41,0,44,0">
+      <node id="1164142520228621411" at="26,127,27,128" concept="4" />
+      <node id="1164142520228621411" at="27,128,28,0" concept="6" />
+      <node id="1164142520228621411" at="29,55,30,71" concept="1" />
+      <node id="1164142520228621411" at="31,9,32,0" concept="6" />
+      <node id="1164142520228621411" at="32,0,33,22" concept="5" />
+      <node id="1164142520228621880" at="38,128,39,247" concept="5" />
+      <node id="1164142520228621411" at="41,0,42,0" concept="7" trace="canBeChildBreakingPoint" />
+      <node id="1164142520228621411" at="44,0,45,0" concept="7" trace="DefaultModifier_old$PN" />
+      <node id="1164142520228621411" at="45,0,46,0" concept="7" trace="IHasModifiers$et" />
+      <node id="1164142520228621411" at="46,0,47,0" concept="7" trace="ClassifierMember$At" />
+      <node id="1164142520228621411" at="47,0,48,0" concept="7" trace="Interface$db" />
+      <node id="1164142520228621411" at="28,0,31,9" concept="2" />
+      <node id="1164142520228621411" at="38,0,41,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="1164142520228621411" at="25,0,35,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="1164142520228621411" at="23,56,35,7" concept="1" />
+      <node id="1164142520228621411" at="22,0,37,0" concept="0" trace="DefaultModifier_old_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <scope id="1164142520228621411" at="29,55,30,71" />
+      <scope id="1164142520228621413" at="38,128,39,247" />
+      <scope id="1164142520228621411" at="38,0,41,0">
         <var name="childConcept" id="1164142520228621411" />
         <var name="link" id="1164142520228621411" />
         <var name="node" id="1164142520228621411" />
         <var name="parentNode" id="1164142520228621411" />
       </scope>
-      <scope id="1164142520228621411" at="30,127,37,22">
+      <scope id="1164142520228621411" at="26,127,33,22">
         <var name="result" id="1164142520228621411" />
       </scope>
-      <scope id="1164142520228621411" at="29,0,39,0">
+      <scope id="1164142520228621411" at="25,0,35,0">
         <var name="checkingNodeContext" id="1164142520228621411" />
         <var name="context" id="1164142520228621411" />
       </scope>
-      <scope id="1164142520228621411" at="27,103,39,6" />
-      <scope id="1164142520228621411" at="26,0,41,0" />
-      <unit id="1164142520228621411" at="46,0,52,0" name="jetbrains.mps.baseLanguage.jdk8.constraints.DefaultModifier_old_Constraints$CONCEPTS" />
-      <unit id="1164142520228621411" at="28,15,39,5" name="jetbrains.mps.baseLanguage.jdk8.constraints.DefaultModifier_old_Constraints$1" />
-      <unit id="1164142520228621411" at="21,0,53,0" name="jetbrains.mps.baseLanguage.jdk8.constraints.DefaultModifier_old_Constraints" />
+      <scope id="1164142520228621411" at="22,93,35,7" />
+      <scope id="1164142520228621411" at="22,0,37,0">
+        <var name="initContext" id="1164142520228621411" />
+      </scope>
+      <unit id="1164142520228621411" at="43,0,49,0" name="jetbrains.mps.baseLanguage.jdk8.constraints.DefaultModifier_old_Constraints$CONCEPTS" />
+      <unit id="1164142520228621411" at="24,32,35,5" name="jetbrains.mps.baseLanguage.jdk8.constraints.DefaultModifier_old_Constraints$1" />
+      <unit id="1164142520228621411" at="21,0,50,0" name="jetbrains.mps.baseLanguage.jdk8.constraints.DefaultModifier_old_Constraints" />
     </file>
   </root>
   <root nodeRef="r:cdd73e8d-6dad-4dc5-a775-85eb769628e7(jetbrains.mps.baseLanguage.jdk8.constraints)/1719162360409958585">
@@ -66,91 +63,88 @@
       <node id="1719162360409958585" at="36,102,37,65" concept="9" />
       <node id="5258834964331983164" at="37,65,38,26" concept="1" />
       <node id="6434457067209972429" at="38,26,39,26" concept="1" />
-      <node id="1719162360409958585" at="46,127,47,128" concept="4" />
-      <node id="1719162360409958585" at="47,128,48,0" concept="6" />
-      <node id="1719162360409958585" at="49,55,50,71" concept="1" />
-      <node id="1719162360409958585" at="51,9,52,0" concept="6" />
-      <node id="1719162360409958585" at="52,0,53,22" concept="5" />
-      <node id="5258834964331983164" at="58,54,59,63" concept="9" />
-      <node id="5258834964331983164" at="63,54,64,209" concept="5" />
-      <node id="6434457067209972429" at="68,54,69,70" concept="9" />
-      <node id="6434457067209972429" at="76,61,77,144" concept="5" />
-      <node id="6836281137582776110" at="80,78,81,116" concept="4" />
-      <node id="6836281137582776118" at="82,40,83,36" concept="5" />
-      <node id="6836281137582776124" at="84,11,85,114" concept="4" />
-      <node id="6836281137582776130" at="85,114,86,276" concept="4" />
-      <node id="6836281137582776150" at="86,276,87,23" concept="5" />
-      <node id="1227128029536560561" at="92,128,93,71" concept="5" />
-      <node id="1719162360409958585" at="95,0,96,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="1719162360409958585" at="98,0,99,0" concept="7" trace="SuperInterfaceMethodCall_old$MH" />
-      <node id="1719162360409958585" at="99,0,100,0" concept="7" trace="SuperInerfaceKind$Si" />
-      <node id="1719162360409958585" at="103,0,104,0" concept="7" trace="classifier_old$ybLO" />
-      <node id="1719162360409958585" at="104,0,105,0" concept="7" trace="baseMethodDeclaration$pyYw" />
-      <node id="1719162360409958585" at="48,0,51,9" concept="2" />
-      <node id="5258834964331983164" at="58,0,61,0" concept="0" trace="RD1#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="6434457067209972429" at="68,0,71,0" concept="0" trace="RD2#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="6836281137582776116" at="81,116,84,11" concept="2" />
-      <node id="1719162360409958585" at="92,0,95,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <node id="6434457067209972429" at="75,0,79,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="1719162360409958585" at="36,0,41,0" concept="0" trace="SuperInterfaceMethodCall_old_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <node id="5258834964331983164" at="61,0,66,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="1719162360409958585" at="45,0,55,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="6434457067209972429" at="79,0,89,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="1719162360409958585" at="43,103,55,6" concept="5" />
-      <node id="1719162360409958585" at="42,0,57,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <node id="6434457067209972429" at="73,54,89,8" concept="5" />
-      <node id="6434457067209972429" at="71,0,91,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <scope id="1719162360409958585" at="49,55,50,71" />
-      <scope id="5258834964331983164" at="58,54,59,63" />
-      <scope id="5258834964331983164" at="63,54,64,209" />
-      <scope id="6434457067209972429" at="68,54,69,70" />
-      <scope id="6434457067209972429" at="76,61,77,144" />
-      <scope id="6836281137582776117" at="82,40,83,36" />
-      <scope id="1227128029536560560" at="92,128,93,71" />
-      <scope id="1719162360409958585" at="36,102,39,26" />
-      <scope id="5258834964331983164" at="58,0,61,0">
+      <node id="1719162360409958585" at="42,127,43,128" concept="4" />
+      <node id="1719162360409958585" at="43,128,44,0" concept="6" />
+      <node id="1719162360409958585" at="45,55,46,71" concept="1" />
+      <node id="1719162360409958585" at="47,9,48,0" concept="6" />
+      <node id="1719162360409958585" at="48,0,49,22" concept="5" />
+      <node id="5258834964331983164" at="55,54,56,63" concept="9" />
+      <node id="5258834964331983164" at="60,54,61,209" concept="5" />
+      <node id="6434457067209972429" at="65,54,66,70" concept="9" />
+      <node id="6434457067209972429" at="73,61,74,144" concept="5" />
+      <node id="6836281137582776110" at="77,78,78,116" concept="4" />
+      <node id="6836281137582776118" at="79,40,80,36" concept="5" />
+      <node id="6836281137582776124" at="81,11,82,114" concept="4" />
+      <node id="6836281137582776130" at="82,114,83,276" concept="4" />
+      <node id="6836281137582776150" at="83,276,84,23" concept="5" />
+      <node id="1227128029536560561" at="89,128,90,71" concept="5" />
+      <node id="1719162360409958585" at="92,0,93,0" concept="7" trace="canBeChildBreakingPoint" />
+      <node id="1719162360409958585" at="95,0,96,0" concept="7" trace="SuperInterfaceMethodCall_old$MH" />
+      <node id="1719162360409958585" at="96,0,97,0" concept="7" trace="SuperInerfaceKind$Si" />
+      <node id="1719162360409958585" at="100,0,101,0" concept="7" trace="classifier_old$ybLO" />
+      <node id="1719162360409958585" at="101,0,102,0" concept="7" trace="baseMethodDeclaration$pyYw" />
+      <node id="1719162360409958585" at="44,0,47,9" concept="2" />
+      <node id="5258834964331983164" at="55,0,58,0" concept="0" trace="RD1#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
+      <node id="6434457067209972429" at="65,0,68,0" concept="0" trace="RD2#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
+      <node id="6836281137582776116" at="78,116,81,11" concept="2" />
+      <node id="1719162360409958585" at="89,0,92,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="6434457067209972429" at="72,0,76,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="5258834964331983164" at="58,0,63,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="1719162360409958585" at="41,0,51,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="6434457067209972429" at="76,0,86,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="1719162360409958585" at="39,26,51,7" concept="1" />
+      <node id="6434457067209972429" at="70,54,86,8" concept="5" />
+      <node id="1719162360409958585" at="36,0,53,0" concept="0" trace="SuperInterfaceMethodCall_old_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <node id="6434457067209972429" at="68,0,88,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <scope id="1719162360409958585" at="45,55,46,71" />
+      <scope id="5258834964331983164" at="55,54,56,63" />
+      <scope id="5258834964331983164" at="60,54,61,209" />
+      <scope id="6434457067209972429" at="65,54,66,70" />
+      <scope id="6434457067209972429" at="73,61,74,144" />
+      <scope id="6836281137582776117" at="79,40,80,36" />
+      <scope id="1227128029536560560" at="89,128,90,71" />
+      <scope id="5258834964331983164" at="55,0,58,0">
         <var name="container" id="5258834964331983164" />
       </scope>
-      <scope id="6434457067209972429" at="68,0,71,0">
+      <scope id="6434457067209972429" at="65,0,68,0">
         <var name="container" id="6434457067209972429" />
       </scope>
-      <scope id="1719162360409958585" at="92,0,95,0">
+      <scope id="1719162360409958585" at="89,0,92,0">
         <var name="childConcept" id="1719162360409958585" />
         <var name="link" id="1719162360409958585" />
         <var name="node" id="1719162360409958585" />
         <var name="parentNode" id="1719162360409958585" />
       </scope>
-      <scope id="6434457067209972429" at="75,0,79,0" />
-      <scope id="1719162360409958585" at="36,0,41,0">
-        <var name="initContext" id="1719162360409958585" />
-      </scope>
-      <scope id="5258834964331983164" at="61,0,66,0" />
-      <scope id="1719162360409958585" at="46,127,53,22">
+      <scope id="6434457067209972429" at="72,0,76,0" />
+      <scope id="5258834964331983164" at="58,0,63,0" />
+      <scope id="1719162360409958585" at="42,127,49,22">
         <var name="result" id="1719162360409958585" />
       </scope>
-      <scope id="6434457067209972429" at="80,78,87,23">
+      <scope id="6434457067209972429" at="77,78,84,23">
         <var name="classifierType" id="6836281137582776125" />
         <var name="scope" id="6836281137582776131" />
         <var name="superClassifier" id="6836281137582776111" />
       </scope>
-      <scope id="1719162360409958585" at="45,0,55,0">
+      <scope id="1719162360409958585" at="41,0,51,0">
         <var name="checkingNodeContext" id="1719162360409958585" />
         <var name="context" id="1719162360409958585" />
       </scope>
-      <scope id="6434457067209972429" at="79,0,89,0">
+      <scope id="6434457067209972429" at="76,0,86,0">
         <var name="_context" id="6434457067209972429" />
       </scope>
-      <scope id="1719162360409958585" at="43,103,55,6" />
-      <scope id="1719162360409958585" at="42,0,57,0" />
-      <scope id="6434457067209972429" at="73,54,89,8" />
-      <scope id="6434457067209972429" at="71,0,91,0" />
-      <unit id="1719162360409958585" at="97,0,101,0" name="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_old_Constraints$CONCEPTS" />
-      <unit id="1719162360409958585" at="102,0,106,0" name="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_old_Constraints$LINKS" />
-      <unit id="5258834964331983164" at="57,0,67,0" name="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_old_Constraints$RD1" />
-      <unit id="1719162360409958585" at="44,15,55,5" name="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_old_Constraints$1" />
-      <unit id="6434457067209972429" at="74,17,89,7" name="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_old_Constraints$RD2$1" />
-      <unit id="6434457067209972429" at="67,0,92,0" name="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_old_Constraints$RD2" />
-      <unit id="1719162360409958585" at="35,0,107,0" name="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_old_Constraints" />
+      <scope id="1719162360409958585" at="36,102,51,7" />
+      <scope id="6434457067209972429" at="70,54,86,8" />
+      <scope id="1719162360409958585" at="36,0,53,0">
+        <var name="initContext" id="1719162360409958585" />
+      </scope>
+      <scope id="6434457067209972429" at="68,0,88,0" />
+      <unit id="1719162360409958585" at="94,0,98,0" name="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_old_Constraints$CONCEPTS" />
+      <unit id="1719162360409958585" at="99,0,103,0" name="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_old_Constraints$LINKS" />
+      <unit id="5258834964331983164" at="54,0,64,0" name="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_old_Constraints$RD1" />
+      <unit id="1719162360409958585" at="40,32,51,5" name="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_old_Constraints$1" />
+      <unit id="6434457067209972429" at="71,17,86,7" name="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_old_Constraints$RD2$1" />
+      <unit id="6434457067209972429" at="64,0,89,0" name="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_old_Constraints$RD2" />
+      <unit id="1719162360409958585" at="35,0,104,0" name="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_old_Constraints" />
     </file>
   </root>
 </debug-info>

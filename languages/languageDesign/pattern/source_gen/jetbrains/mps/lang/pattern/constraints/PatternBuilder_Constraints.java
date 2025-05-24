@@ -26,11 +26,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class PatternBuilder_Constraints extends BaseConstraintsDescriptor {
   /*package*/ PatternBuilder_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.PatternBuilder$2H, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean> calculateCanBeAncestorConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean>() {
+    setCanBeAncestor(new ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeAncestor context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAnAncestor(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getParentNode(), context.getLink());
@@ -41,8 +37,9 @@ public class PatternBuilder_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAnAncestor(SNode node, SNode childNode, SAbstractConcept childConcept, SNode parentNode, SContainmentLink link) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.Expression$mB) && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.NodeBuilderExpression$UJ) && SNodeOperations.hasRole(SNodeOperations.cast(parentNode, CONCEPTS.NodeBuilderExpression$UJ), LINKS.initValue$qHpN) && SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.cast(parentNode, CONCEPTS.NodeBuilderExpression$UJ)), CONCEPTS.NodeBuilderInitLink$XR), LINKS.link$VNT5), PROPS.metaClass$PeKc), 0xfc6f4e95b9L)) {
       return SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.NullLiteral$QQ);

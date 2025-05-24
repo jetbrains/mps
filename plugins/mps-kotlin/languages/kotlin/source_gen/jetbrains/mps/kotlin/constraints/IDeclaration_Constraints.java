@@ -12,7 +12,6 @@ public class IDeclaration_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.IDeclaration$3J, initContext);
   }
-
   @Override
   public SConcept getDefaultConcreteConcept() {
     return CONCEPTS.EmptyDeclaration$V;

@@ -19,11 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class ThisNodeExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ThisNodeExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.ThisNodeExpression$v1, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -34,8 +30,9 @@ public class ThisNodeExpression_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     // todo [MM] remove call with "true" arg after 3.5, needed for compatibility purposes
     return ConstraintsUtil.isInsideOfBehavior(parentNode, false) || ConstraintsUtil.isInsideOfBehavior(parentNode, true);

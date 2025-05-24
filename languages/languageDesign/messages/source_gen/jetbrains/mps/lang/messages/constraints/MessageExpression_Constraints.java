@@ -11,7 +11,6 @@ public class MessageExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MessageExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.MessageExpression$zD, initContext);
   }
-
   @Override
   public SConcept getDefaultConcreteConcept() {
     return CONCEPTS.LiteralMessageExpression$$8;

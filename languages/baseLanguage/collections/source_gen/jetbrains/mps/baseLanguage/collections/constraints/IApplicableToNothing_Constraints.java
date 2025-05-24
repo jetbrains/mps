@@ -25,11 +25,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class IApplicableToNothing_Constraints extends BaseConstraintsDescriptor {
   /*package*/ IApplicableToNothing_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.IApplicableToNothing$j7, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -40,8 +36,9 @@ public class IApplicableToNothing_Constraints extends BaseConstraintsDescriptor 
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, final SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return SetSequence.fromSet(IApplicableToNothing__BehaviorDescriptor.getAllApplicableTypes_id5cL0w3DYWgB.invoke(SNodeOperations.asSConcept(SNodeOperations.castConcept(childConcept, CONCEPTS.IApplicableToNothing$j7)))).any((it) -> TypecheckingFacade.getFromContext().isStrongSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(parentNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), it));
   }

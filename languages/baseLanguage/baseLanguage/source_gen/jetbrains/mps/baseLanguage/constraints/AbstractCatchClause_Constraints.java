@@ -11,7 +11,6 @@ public class AbstractCatchClause_Constraints extends BaseConstraintsDescriptor {
   /*package*/ AbstractCatchClause_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.AbstractCatchClause$sw, initContext);
   }
-
   @Override
   public SConcept getDefaultConcreteConcept() {
     return CONCEPTS.CatchClause$Ig;

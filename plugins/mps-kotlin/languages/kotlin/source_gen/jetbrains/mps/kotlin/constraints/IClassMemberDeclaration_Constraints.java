@@ -12,7 +12,6 @@ public class IClassMemberDeclaration_Constraints extends BaseConstraintsDescript
   /*package*/ IClassMemberDeclaration_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.IClassMemberDeclaration$LK, initContext);
   }
-
   @Override
   public SConcept getDefaultConcreteConcept() {
     return CONCEPTS.EmptyDeclaration$V;

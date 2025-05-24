@@ -112,169 +112,160 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c89590515(jetbrains.mps.baseLanguage.regexp.constraints)/1231768529435">
     <file name="ReplaceWithRegexpOperation_Constraints.java">
       <node id="1231768529435" at="23,100,24,63" concept="12" />
-      <node id="1231768529435" at="31,127,32,128" concept="7" />
-      <node id="1231768529435" at="32,128,33,0" concept="9" />
-      <node id="1231768529435" at="34,55,35,71" concept="3" />
-      <node id="1231768529435" at="36,9,37,0" concept="9" />
-      <node id="1231768529435" at="37,0,38,22" concept="8" />
-      <node id="1227128029536564219" at="42,128,43,24" concept="7" />
-      <node id="1227128029536564225" at="44,78,45,173" concept="7" />
-      <node id="1227128029536564235" at="45,173,46,97" concept="3" />
-      <node id="1227128029536564247" at="47,5,48,15" concept="8" />
-      <node id="1231768529435" at="50,0,51,0" concept="10" trace="canBeChildBreakingPoint" />
-      <node id="1231768529435" at="53,0,54,0" concept="10" trace="ReplaceWithRegexpOperation$XH" />
-      <node id="1231768529435" at="54,0,55,0" concept="10" trace="DotExpression$yW" />
-      <node id="1231768529435" at="55,0,56,0" concept="10" trace="StringType$uX" />
-      <node id="1231768529435" at="59,0,60,0" concept="10" trace="operand$w6IR" />
-      <node id="1231768529435" at="23,0,26,0" concept="2" trace="ReplaceWithRegexpOperation_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <node id="1231768529435" at="33,0,36,9" concept="5" />
-      <node id="1227128029536564223" at="43,24,47,5" concept="5" />
-      <node id="1231768529435" at="42,0,50,0" concept="11" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <node id="1231768529435" at="30,0,40,0" concept="6" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="1231768529435" at="28,103,40,6" concept="8" />
-      <node id="1231768529435" at="27,0,42,0" concept="6" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="1231768529435" at="23,100,24,63" />
-      <scope id="1231768529435" at="34,55,35,71" />
-      <scope id="1227128029536564224" at="44,78,46,97">
+      <node id="1231768529435" at="27,127,28,128" concept="7" />
+      <node id="1231768529435" at="28,128,29,0" concept="9" />
+      <node id="1231768529435" at="30,55,31,71" concept="3" />
+      <node id="1231768529435" at="32,9,33,0" concept="9" />
+      <node id="1231768529435" at="33,0,34,22" concept="8" />
+      <node id="1227128029536564219" at="39,128,40,24" concept="7" />
+      <node id="1227128029536564225" at="41,78,42,173" concept="7" />
+      <node id="1227128029536564235" at="42,173,43,97" concept="3" />
+      <node id="1227128029536564247" at="44,5,45,15" concept="8" />
+      <node id="1231768529435" at="47,0,48,0" concept="10" trace="canBeChildBreakingPoint" />
+      <node id="1231768529435" at="50,0,51,0" concept="10" trace="ReplaceWithRegexpOperation$XH" />
+      <node id="1231768529435" at="51,0,52,0" concept="10" trace="DotExpression$yW" />
+      <node id="1231768529435" at="52,0,53,0" concept="10" trace="StringType$uX" />
+      <node id="1231768529435" at="56,0,57,0" concept="10" trace="operand$w6IR" />
+      <node id="1231768529435" at="29,0,32,9" concept="5" />
+      <node id="1227128029536564223" at="40,24,44,5" concept="5" />
+      <node id="1231768529435" at="39,0,47,0" concept="11" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="1231768529435" at="26,0,36,0" concept="6" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="1231768529435" at="24,63,36,7" concept="3" />
+      <node id="1231768529435" at="23,0,38,0" concept="2" trace="ReplaceWithRegexpOperation_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <scope id="1231768529435" at="30,55,31,71" />
+      <scope id="1227128029536564224" at="41,78,43,97">
         <var name="type" id="1227128029536564226" />
       </scope>
-      <scope id="1231768529435" at="23,0,26,0">
-        <var name="initContext" id="1231768529435" />
-      </scope>
-      <scope id="1227128029536564218" at="42,128,48,15">
+      <scope id="1227128029536564218" at="39,128,45,15">
         <var name="can" id="1227128029536564220" />
       </scope>
-      <scope id="1231768529435" at="31,127,38,22">
+      <scope id="1231768529435" at="27,127,34,22">
         <var name="result" id="1231768529435" />
       </scope>
-      <scope id="1231768529435" at="42,0,50,0">
+      <scope id="1231768529435" at="39,0,47,0">
         <var name="childConcept" id="1231768529435" />
         <var name="link" id="1231768529435" />
         <var name="node" id="1231768529435" />
         <var name="parentNode" id="1231768529435" />
       </scope>
-      <scope id="1231768529435" at="30,0,40,0">
+      <scope id="1231768529435" at="26,0,36,0">
         <var name="checkingNodeContext" id="1231768529435" />
         <var name="context" id="1231768529435" />
       </scope>
-      <scope id="1231768529435" at="28,103,40,6" />
-      <scope id="1231768529435" at="27,0,42,0" />
-      <unit id="1231768529435" at="58,0,61,0" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceWithRegexpOperation_Constraints$LINKS" />
-      <unit id="1231768529435" at="52,0,57,0" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceWithRegexpOperation_Constraints$CONCEPTS" />
-      <unit id="1231768529435" at="29,15,40,5" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceWithRegexpOperation_Constraints$1" />
-      <unit id="1231768529435" at="22,0,62,0" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceWithRegexpOperation_Constraints" />
+      <scope id="1231768529435" at="23,100,36,7" />
+      <scope id="1231768529435" at="23,0,38,0">
+        <var name="initContext" id="1231768529435" />
+      </scope>
+      <unit id="1231768529435" at="55,0,58,0" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceWithRegexpOperation_Constraints$LINKS" />
+      <unit id="1231768529435" at="49,0,54,0" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceWithRegexpOperation_Constraints$CONCEPTS" />
+      <unit id="1231768529435" at="25,32,36,5" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceWithRegexpOperation_Constraints$1" />
+      <unit id="1231768529435" at="22,0,59,0" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceWithRegexpOperation_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590515(jetbrains.mps.baseLanguage.regexp.constraints)/1231768928736">
     <file name="MatchRegexpOperation_Constraints.java">
       <node id="1231768928736" at="23,94,24,57" concept="12" />
-      <node id="1231768928736" at="31,127,32,128" concept="7" />
-      <node id="1231768928736" at="32,128,33,0" concept="9" />
-      <node id="1231768928736" at="34,55,35,71" concept="3" />
-      <node id="1231768928736" at="36,9,37,0" concept="9" />
-      <node id="1231768928736" at="37,0,38,22" concept="8" />
-      <node id="1227128029536564251" at="42,128,43,24" concept="7" />
-      <node id="1227128029536564257" at="44,78,45,173" concept="7" />
-      <node id="1227128029536564267" at="45,173,46,97" concept="3" />
-      <node id="1227128029536564279" at="47,5,48,15" concept="8" />
-      <node id="1231768928736" at="50,0,51,0" concept="10" trace="canBeChildBreakingPoint" />
-      <node id="1231768928736" at="53,0,54,0" concept="10" trace="MatchRegexpOperation$VK" />
-      <node id="1231768928736" at="54,0,55,0" concept="10" trace="DotExpression$yW" />
-      <node id="1231768928736" at="55,0,56,0" concept="10" trace="StringType$uX" />
-      <node id="1231768928736" at="59,0,60,0" concept="10" trace="operand$w6IR" />
-      <node id="1231768928736" at="23,0,26,0" concept="2" trace="MatchRegexpOperation_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <node id="1231768928736" at="33,0,36,9" concept="5" />
-      <node id="1227128029536564255" at="43,24,47,5" concept="5" />
-      <node id="1231768928736" at="42,0,50,0" concept="11" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <node id="1231768928736" at="30,0,40,0" concept="6" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="1231768928736" at="28,103,40,6" concept="8" />
-      <node id="1231768928736" at="27,0,42,0" concept="6" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="1231768928736" at="23,94,24,57" />
-      <scope id="1231768928736" at="34,55,35,71" />
-      <scope id="1227128029536564256" at="44,78,46,97">
+      <node id="1231768928736" at="27,127,28,128" concept="7" />
+      <node id="1231768928736" at="28,128,29,0" concept="9" />
+      <node id="1231768928736" at="30,55,31,71" concept="3" />
+      <node id="1231768928736" at="32,9,33,0" concept="9" />
+      <node id="1231768928736" at="33,0,34,22" concept="8" />
+      <node id="1227128029536564251" at="39,128,40,24" concept="7" />
+      <node id="1227128029536564257" at="41,78,42,173" concept="7" />
+      <node id="1227128029536564267" at="42,173,43,97" concept="3" />
+      <node id="1227128029536564279" at="44,5,45,15" concept="8" />
+      <node id="1231768928736" at="47,0,48,0" concept="10" trace="canBeChildBreakingPoint" />
+      <node id="1231768928736" at="50,0,51,0" concept="10" trace="MatchRegexpOperation$VK" />
+      <node id="1231768928736" at="51,0,52,0" concept="10" trace="DotExpression$yW" />
+      <node id="1231768928736" at="52,0,53,0" concept="10" trace="StringType$uX" />
+      <node id="1231768928736" at="56,0,57,0" concept="10" trace="operand$w6IR" />
+      <node id="1231768928736" at="29,0,32,9" concept="5" />
+      <node id="1227128029536564255" at="40,24,44,5" concept="5" />
+      <node id="1231768928736" at="39,0,47,0" concept="11" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="1231768928736" at="26,0,36,0" concept="6" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="1231768928736" at="24,57,36,7" concept="3" />
+      <node id="1231768928736" at="23,0,38,0" concept="2" trace="MatchRegexpOperation_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <scope id="1231768928736" at="30,55,31,71" />
+      <scope id="1227128029536564256" at="41,78,43,97">
         <var name="type" id="1227128029536564258" />
       </scope>
-      <scope id="1231768928736" at="23,0,26,0">
-        <var name="initContext" id="1231768928736" />
-      </scope>
-      <scope id="1227128029536564250" at="42,128,48,15">
+      <scope id="1227128029536564250" at="39,128,45,15">
         <var name="can" id="1227128029536564252" />
       </scope>
-      <scope id="1231768928736" at="31,127,38,22">
+      <scope id="1231768928736" at="27,127,34,22">
         <var name="result" id="1231768928736" />
       </scope>
-      <scope id="1231768928736" at="42,0,50,0">
+      <scope id="1231768928736" at="39,0,47,0">
         <var name="childConcept" id="1231768928736" />
         <var name="link" id="1231768928736" />
         <var name="node" id="1231768928736" />
         <var name="parentNode" id="1231768928736" />
       </scope>
-      <scope id="1231768928736" at="30,0,40,0">
+      <scope id="1231768928736" at="26,0,36,0">
         <var name="checkingNodeContext" id="1231768928736" />
         <var name="context" id="1231768928736" />
       </scope>
-      <scope id="1231768928736" at="28,103,40,6" />
-      <scope id="1231768928736" at="27,0,42,0" />
-      <unit id="1231768928736" at="58,0,61,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchRegexpOperation_Constraints$LINKS" />
-      <unit id="1231768928736" at="52,0,57,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchRegexpOperation_Constraints$CONCEPTS" />
-      <unit id="1231768928736" at="29,15,40,5" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchRegexpOperation_Constraints$1" />
-      <unit id="1231768928736" at="22,0,62,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchRegexpOperation_Constraints" />
+      <scope id="1231768928736" at="23,94,36,7" />
+      <scope id="1231768928736" at="23,0,38,0">
+        <var name="initContext" id="1231768928736" />
+      </scope>
+      <unit id="1231768928736" at="55,0,58,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchRegexpOperation_Constraints$LINKS" />
+      <unit id="1231768928736" at="49,0,54,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchRegexpOperation_Constraints$CONCEPTS" />
+      <unit id="1231768928736" at="25,32,36,5" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchRegexpOperation_Constraints$1" />
+      <unit id="1231768928736" at="22,0,59,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchRegexpOperation_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590515(jetbrains.mps.baseLanguage.regexp.constraints)/3796137614137203372">
     <file name="ReplaceRegexpOperation_Constraints.java">
       <node id="3796137614137203372" at="23,96,24,59" concept="12" />
-      <node id="3796137614137203372" at="31,127,32,128" concept="7" />
-      <node id="3796137614137203372" at="32,128,33,0" concept="9" />
-      <node id="3796137614137203372" at="34,55,35,71" concept="3" />
-      <node id="3796137614137203372" at="36,9,37,0" concept="9" />
-      <node id="3796137614137203372" at="37,0,38,22" concept="8" />
-      <node id="1227128029536564283" at="42,128,43,24" concept="7" />
-      <node id="1227128029536564289" at="44,78,45,173" concept="7" />
-      <node id="1227128029536564299" at="45,173,46,97" concept="3" />
-      <node id="1227128029536564311" at="47,5,48,15" concept="8" />
-      <node id="3796137614137203372" at="50,0,51,0" concept="10" trace="canBeChildBreakingPoint" />
-      <node id="3796137614137203372" at="53,0,54,0" concept="10" trace="ReplaceRegexpOperation$UY" />
-      <node id="3796137614137203372" at="54,0,55,0" concept="10" trace="DotExpression$yW" />
-      <node id="3796137614137203372" at="55,0,56,0" concept="10" trace="StringType$uX" />
-      <node id="3796137614137203372" at="59,0,60,0" concept="10" trace="operand$w6IR" />
-      <node id="3796137614137203372" at="23,0,26,0" concept="2" trace="ReplaceRegexpOperation_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <node id="3796137614137203372" at="33,0,36,9" concept="5" />
-      <node id="1227128029536564287" at="43,24,47,5" concept="5" />
-      <node id="3796137614137203372" at="42,0,50,0" concept="11" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <node id="3796137614137203372" at="30,0,40,0" concept="6" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="3796137614137203372" at="28,103,40,6" concept="8" />
-      <node id="3796137614137203372" at="27,0,42,0" concept="6" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="3796137614137203372" at="23,96,24,59" />
-      <scope id="3796137614137203372" at="34,55,35,71" />
-      <scope id="1227128029536564288" at="44,78,46,97">
+      <node id="3796137614137203372" at="27,127,28,128" concept="7" />
+      <node id="3796137614137203372" at="28,128,29,0" concept="9" />
+      <node id="3796137614137203372" at="30,55,31,71" concept="3" />
+      <node id="3796137614137203372" at="32,9,33,0" concept="9" />
+      <node id="3796137614137203372" at="33,0,34,22" concept="8" />
+      <node id="1227128029536564283" at="39,128,40,24" concept="7" />
+      <node id="1227128029536564289" at="41,78,42,173" concept="7" />
+      <node id="1227128029536564299" at="42,173,43,97" concept="3" />
+      <node id="1227128029536564311" at="44,5,45,15" concept="8" />
+      <node id="3796137614137203372" at="47,0,48,0" concept="10" trace="canBeChildBreakingPoint" />
+      <node id="3796137614137203372" at="50,0,51,0" concept="10" trace="ReplaceRegexpOperation$UY" />
+      <node id="3796137614137203372" at="51,0,52,0" concept="10" trace="DotExpression$yW" />
+      <node id="3796137614137203372" at="52,0,53,0" concept="10" trace="StringType$uX" />
+      <node id="3796137614137203372" at="56,0,57,0" concept="10" trace="operand$w6IR" />
+      <node id="3796137614137203372" at="29,0,32,9" concept="5" />
+      <node id="1227128029536564287" at="40,24,44,5" concept="5" />
+      <node id="3796137614137203372" at="39,0,47,0" concept="11" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="3796137614137203372" at="26,0,36,0" concept="6" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="3796137614137203372" at="24,59,36,7" concept="3" />
+      <node id="3796137614137203372" at="23,0,38,0" concept="2" trace="ReplaceRegexpOperation_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <scope id="3796137614137203372" at="30,55,31,71" />
+      <scope id="1227128029536564288" at="41,78,43,97">
         <var name="type" id="1227128029536564290" />
       </scope>
-      <scope id="3796137614137203372" at="23,0,26,0">
-        <var name="initContext" id="3796137614137203372" />
-      </scope>
-      <scope id="1227128029536564282" at="42,128,48,15">
+      <scope id="1227128029536564282" at="39,128,45,15">
         <var name="can" id="1227128029536564284" />
       </scope>
-      <scope id="3796137614137203372" at="31,127,38,22">
+      <scope id="3796137614137203372" at="27,127,34,22">
         <var name="result" id="3796137614137203372" />
       </scope>
-      <scope id="3796137614137203372" at="42,0,50,0">
+      <scope id="3796137614137203372" at="39,0,47,0">
         <var name="childConcept" id="3796137614137203372" />
         <var name="link" id="3796137614137203372" />
         <var name="node" id="3796137614137203372" />
         <var name="parentNode" id="3796137614137203372" />
       </scope>
-      <scope id="3796137614137203372" at="30,0,40,0">
+      <scope id="3796137614137203372" at="26,0,36,0">
         <var name="checkingNodeContext" id="3796137614137203372" />
         <var name="context" id="3796137614137203372" />
       </scope>
-      <scope id="3796137614137203372" at="28,103,40,6" />
-      <scope id="3796137614137203372" at="27,0,42,0" />
-      <unit id="3796137614137203372" at="58,0,61,0" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceRegexpOperation_Constraints$LINKS" />
-      <unit id="3796137614137203372" at="52,0,57,0" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceRegexpOperation_Constraints$CONCEPTS" />
-      <unit id="3796137614137203372" at="29,15,40,5" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceRegexpOperation_Constraints$1" />
-      <unit id="3796137614137203372" at="22,0,62,0" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceRegexpOperation_Constraints" />
+      <scope id="3796137614137203372" at="23,96,36,7" />
+      <scope id="3796137614137203372" at="23,0,38,0">
+        <var name="initContext" id="3796137614137203372" />
+      </scope>
+      <unit id="3796137614137203372" at="55,0,58,0" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceRegexpOperation_Constraints$LINKS" />
+      <unit id="3796137614137203372" at="49,0,54,0" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceRegexpOperation_Constraints$CONCEPTS" />
+      <unit id="3796137614137203372" at="25,32,36,5" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceRegexpOperation_Constraints$1" />
+      <unit id="3796137614137203372" at="22,0,59,0" name="jetbrains.mps.baseLanguage.regexp.constraints.ReplaceRegexpOperation_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590515(jetbrains.mps.baseLanguage.regexp.constraints)/3796137614137558190">

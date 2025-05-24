@@ -20,11 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class RuleKind_Constraints extends BaseConstraintsDescriptor {
   /*package*/ RuleKind_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.RuleKind$7C, initContext);
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_CanBeRoot, Boolean> calculateCanBeRootConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
+    setCanBeRoot(new ConstraintFunction<ConstraintContext_CanBeRoot, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeRoot context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeARoot(context.getModel());
@@ -35,8 +31,9 @@ public class RuleKind_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeARoot(SModel model) {
     return Objects.equals(SModelOperations.getPointer(model), PersistenceFacade.getInstance().createModelReference("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)"));
   }

@@ -29,11 +29,7 @@ public class DataTypeDeclaration_Constraints extends BaseConstraintsDescriptor {
     super(CONCEPTS.DataTypeDeclaration$AD, initContext);
     record(new DatatypeId_PD(this));
     record(new LanguageId_PD(this));
-  }
-
-  @Override
-  public ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    return new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
+    setDefaultScope(new ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider>() {
       @Nullable
       public ReferenceScopeProvider invoke(@NotNull ConstraintContext_DefaultScopeProvider context, @Nullable CheckingNodeContext checkingNodeContext) {
         return new BaseScopeProvider() {
@@ -47,8 +43,9 @@ public class DataTypeDeclaration_Constraints extends BaseConstraintsDescriptor {
           }
         };
       }
-    };
+    });
   }
+
   /*package*/ static final class DatatypeId_PD extends BasePropertyConstraintsDescriptor {
     public DatatypeId_PD(ConstraintsDescriptor container) {
       super(PROPS.datatypeId$$gBg, container, false, false, true);

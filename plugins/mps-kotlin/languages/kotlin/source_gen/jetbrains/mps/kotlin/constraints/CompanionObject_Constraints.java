@@ -26,11 +26,7 @@ public class CompanionObject_Constraints extends BaseConstraintsDescriptor {
     super(CONCEPTS.CompanionObject$TE, initContext);
     record(new CustomName_PD(this));
     record(new Name_PD(this));
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -41,8 +37,9 @@ public class CompanionObject_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class CustomName_PD extends BasePropertyConstraintsDescriptor {
     public CustomName_PD(ConstraintsDescriptor container) {
       super(PROPS.customName$sUyF, container, false, false, true);

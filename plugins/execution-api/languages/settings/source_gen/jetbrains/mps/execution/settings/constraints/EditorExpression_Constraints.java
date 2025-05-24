@@ -35,11 +35,7 @@ public class EditorExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ EditorExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.EditorExpression$zO, initContext);
     record(new RD1(this));
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -50,8 +46,9 @@ public class EditorExpression_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class RD1 extends BaseReferenceConstraintsDescriptor {
     /*package*/ RD1(ConstraintsDescriptor container) {
       super(LINKS.persistentPropertyDeclaration$YE4l, container, true, false);
@@ -66,11 +63,11 @@ public class EditorExpression_Constraints extends BaseConstraintsDescriptor {
         }
         @Override
         public Scope createScope(final ReferenceConstraintsContext _context) {
-          return ListScope.forResolvableElements(ListSequence.fromList(PersistentConfiguration__BehaviorDescriptor.getContextPersistentProperties_idO$iR4J$g22.invoke(SNodeOperations.asSConcept(CONCEPTS.PersistentConfiguration$ON), (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))))).where((it) -> TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(it, LINKS.type$a1UY), createTemplatePersistentConfigurationType_lq9qwe_b0a0a0a0a0a1a0a0a1d())));
+          return ListScope.forResolvableElements(ListSequence.fromList(PersistentConfiguration__BehaviorDescriptor.getContextPersistentProperties_idO$iR4J$g22.invoke(SNodeOperations.asSConcept(CONCEPTS.PersistentConfiguration$ON), (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))))).where((it) -> TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(it, LINKS.type$a1UY), createTemplatePersistentConfigurationType_lq9qwe_b0a0a0a0a0a1a0a0a1c())));
         }
       };
     }
-    private static SNode createTemplatePersistentConfigurationType_lq9qwe_b0a0a0a0a0a1a0a0a1d() {
+    private static SNode createTemplatePersistentConfigurationType_lq9qwe_b0a0a0a0a0a1a0a0a1c() {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$Qi);
       return n0.getResult();
     }

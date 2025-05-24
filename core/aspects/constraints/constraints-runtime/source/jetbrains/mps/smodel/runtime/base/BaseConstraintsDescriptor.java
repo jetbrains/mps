@@ -147,6 +147,7 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
   }
 
   protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
+    // not in use from templates, left for compatibility with legacy code, remove 2+ years after 2025.2 release
     return null;
   }
 
@@ -160,6 +161,7 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
   }
 
   protected ConstraintFunction<ConstraintContext_CanBeRoot, Boolean> calculateCanBeRootConstraint() {
+    // not in use from templates, left for compatibility with legacy code, remove 2+ years after 2025.2 release
     return null;
   }
 
@@ -173,6 +175,7 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
   }
 
   protected ConstraintFunction<ConstraintContext_CanBeParent, Boolean> calculateCanBeParentConstraint() {
+    // not in use from templates, left for compatibility with legacy code, remove 2+ years after 2025.2 release
     return null;
   }
 
@@ -186,6 +189,7 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
   }
 
   protected ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean> calculateCanBeAncestorConstraint() {
+    // not in use from templates, left for compatibility with legacy code, remove 2+ years after 2025.2 release
     return null;
   }
 
@@ -196,6 +200,7 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
   }
 
   protected ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
+    // not in use from templates, left for compatibility with legacy code, remove 2+ years after 2025.2 release
     return null;
   }
 

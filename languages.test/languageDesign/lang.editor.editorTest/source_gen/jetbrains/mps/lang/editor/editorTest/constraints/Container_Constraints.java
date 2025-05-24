@@ -11,7 +11,6 @@ public class Container_Constraints extends BaseConstraintsDescriptor {
   /*package*/ Container_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.Container$do, initContext);
   }
-
   @Override
   public SConcept getDefaultConcreteConcept() {
     return CONCEPTS.SelectableContainer$2I;

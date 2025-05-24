@@ -20,11 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class ThisExtensionExpression_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ThisExtensionExpression_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.ThisExtensionExpression$8t, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -35,8 +31,9 @@ public class ThisExtensionExpression_Constraints extends BaseConstraintsDescript
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ExtensionMethodDeclaration$mW, true, false) != null;
   }

@@ -21,11 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class ActionTestSidetransformTestAncestor_Constraints extends BaseConstraintsDescriptor {
   /*package*/ ActionTestSidetransformTestAncestor_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.ActionTestSidetransformTestAncestor$U8, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean> calculateCanBeAncestorConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean>() {
+    setCanBeAncestor(new ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeAncestor context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAnAncestor(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getParentNode(), context.getLink());
@@ -36,8 +32,9 @@ public class ActionTestSidetransformTestAncestor_Constraints extends BaseConstra
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAnAncestor(SNode node, SNode childNode, SAbstractConcept childConcept, SNode parentNode, SContainmentLink link) {
     return childConcept != CONCEPTS.ActionTestSidetransformChild1$gm && !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$yl)) && childConcept != CONCEPTS.ActionTestSidetransformAddConceptChild$mP;
   }

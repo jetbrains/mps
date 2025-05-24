@@ -38,11 +38,7 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
   /*package*/ LocalPropertyReference_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.LocalPropertyReference$x2, initContext);
     record(new RD1(this));
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -53,8 +49,9 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
 
         return result;
       }
-    };
+    });
   }
+
   /*package*/ static final class RD1 extends BaseReferenceConstraintsDescriptor {
     /*package*/ RD1(ConstraintsDescriptor container) {
       super(LINKS.property$n7$M, container, true, false);
@@ -74,13 +71,13 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
             return new EmptyScope();
           }
           final SNode enclosingProperty = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Property$iK, false, false);
-          SNode classifierType = _quotation_createNode_pyukpt_a0d0b0a0a0b3(classifier);
+          SNode classifierType = _quotation_createNode_pyukpt_a0d0b0a0a0b2(classifier);
           // XXX Beware, classifier.getMembers() gives members of that classifier only, unlike classifierType.getMembers() that gives inherited members as well
           return new NamedElementsScope(Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(classifierType), CONCEPTS.Property$iK)).where((it) -> (boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(it, classifier, _context.getContextNode()) && (enclosingProperty == null || !(Objects.equals(it, enclosingProperty)))));
         }
       };
     }
-    private static SNode _quotation_createNode_pyukpt_a0d0b0a0a0b3(Object parameter_1) {
+    private static SNode _quotation_createNode_pyukpt_a0d0b0a0a0b2(Object parameter_1) {
       SNode quotedNode_2 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
       quotedNode_2 = nb.getResult();

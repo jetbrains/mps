@@ -20,11 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class CellModel_ReferencePresentation_Constraints extends BaseConstraintsDescriptor {
   /*package*/ CellModel_ReferencePresentation_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.CellModel_ReferencePresentation$82, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -35,8 +31,9 @@ public class CellModel_ReferencePresentation_Constraints extends BaseConstraints
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     SNode ancestorRef = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.CellModel_RefCell$7g, true, false);
     SNode ancestorList = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.CellModel_ListWithRole$16, true, false);

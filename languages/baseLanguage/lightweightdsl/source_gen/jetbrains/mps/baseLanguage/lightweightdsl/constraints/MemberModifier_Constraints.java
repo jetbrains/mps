@@ -22,11 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class MemberModifier_Constraints extends BaseConstraintsDescriptor {
   /*package*/ MemberModifier_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.MemberModifier$px, initContext);
-  }
-
-  @Override
-  protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
-    return new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
+    setCanBeChildConstraint(new ConstraintFunction<ConstraintContext_CanBeChild, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext) {
         boolean result = staticCanBeAChild(context.getNode(), context.getParentNode(), context.getConcept(), context.getLink());
@@ -37,8 +33,9 @@ public class MemberModifier_Constraints extends BaseConstraintsDescriptor {
 
         return result;
       }
-    };
+    });
   }
+
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.DSLClassMember$rT, true, false), LINKS.modifier$xlAc), SNodeOperations.asSConcept(childConcept))).count() < 2;
   }

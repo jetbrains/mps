@@ -12,7 +12,6 @@ public class IInheritanceModifier_Constraints extends BaseConstraintsDescriptor 
   /*package*/ IInheritanceModifier_Constraints(ConstraintsDescriptorInitContext initContext) {
     super(CONCEPTS.IInheritanceModifier$G7, initContext);
   }
-
   @Override
   public SConcept getDefaultConcreteConcept() {
     return CONCEPTS.FinalInheritanceModifier$H5;
