@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.language;
 
+import jetbrains.mps.annotations.ResourceModule;
 import jetbrains.mps.aspects.OrderParticipant;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.project.DevKit;
@@ -31,8 +32,9 @@ import java.util.Collection;
 import java.util.Collections;
 
 //todo: make identifiers instead of names-as-identifiers
+@ResourceModule("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)")
 public abstract class LanguageAspectDescriptor implements OrderParticipant<String> {
-  private static final IconResource MODEL_ICON = new IconResource("/jetbrains/mps/smodel/language/model.png", LanguageAspectDescriptor.class);
+  private static final IconResource MODEL_ICON = new IconResource("/jetbrains/mps/smodel/language/model.png", null, LanguageAspectDescriptor.class);
 
   public abstract String getPresentableAspectName();
 

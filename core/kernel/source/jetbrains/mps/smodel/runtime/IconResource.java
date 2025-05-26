@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,10 @@ public final class IconResource {
 
   /**
    * iconResId has the same contract as the Class.getResource(String)'s parameter
+   * @deprecated use {@link #IconResource(String, String, Class)} instead.
+   *             Keep for a year to support old code generated with uses of this cons and then drop
    */
+  @Deprecated(since = "2025.2", forRemoval = true)
   public IconResource(@NotNull String iconResId, @NotNull Class<?> resourceProvider) {
     myIconResId = asQualifiedResourcePath(iconResId, resourceProvider);
     myIconResId_newUI = myIconResId;
@@ -86,6 +89,7 @@ public final class IconResource {
    * indicates IconResource generated w/o @ResourceModule annotation, with relative resource id that keeps reference to Class to load actual bytes.
    */
   @Internal
+  @Deprecated(since = "2025.2", forRemoval = true)
   public boolean isLegacy() {
     return myResourceProvider != null;
   }
