@@ -594,7 +594,7 @@
                 <uo k="s:originTrace" v="n:5115399642005556319" />
                 <node concept="1Y3b0j" id="x" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <uo k="s:originTrace" v="n:5115399642005556319" />
                   <node concept="3Tm1VV" id="y" role="1B3o_S">
@@ -614,14 +614,14 @@
                       <uo k="s:originTrace" v="n:5115399642005556319" />
                     </node>
                     <node concept="3uibUv" id="C" role="3clF45">
-                      <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+                      <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
                       <uo k="s:originTrace" v="n:5115399642005556319" />
                     </node>
                     <node concept="37vLTG" id="D" role="3clF46">
                       <property role="TrG5h" value="context" />
                       <uo k="s:originTrace" v="n:5115399642005556319" />
                       <node concept="3uibUv" id="G" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
+                        <ref role="3uigEE" to="ze1j:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
                         <uo k="s:originTrace" v="n:5115399642005556319" />
                       </node>
                       <node concept="2AHcQZ" id="H" role="2AJF6D">
@@ -633,7 +633,7 @@
                       <property role="TrG5h" value="checkingNodeContext" />
                       <uo k="s:originTrace" v="n:5115399642005556319" />
                       <node concept="3uibUv" id="I" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                         <uo k="s:originTrace" v="n:5115399642005556319" />
                       </node>
                       <node concept="2AHcQZ" id="J" role="2AJF6D">
@@ -708,7 +708,7 @@
                                   <property role="3TUv4t" value="true" />
                                   <uo k="s:originTrace" v="n:6836281137582805233" />
                                   <node concept="3uibUv" id="15" role="1tU5fm">
-                                    <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+                                    <ref role="3uigEE" to="ze1j:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
                                     <uo k="s:originTrace" v="n:6836281137582805233" />
                                   </node>
                                 </node>
@@ -723,17 +723,17 @@
                                           <ref role="3cqZAo" node="12" resolve="_context" />
                                         </node>
                                         <node concept="liA8E" id="1b" role="2OqNvi">
-                                          <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getScopeEvaluationContext()" resolve="getScopeEvaluationContext" />
+                                          <ref role="37wK5l" to="ze1j:~ReferenceConstraintsContext.getScopeEvaluationContext()" resolve="getScopeEvaluationContext" />
                                         </node>
                                       </node>
                                       <node concept="liA8E" id="19" role="2OqNvi">
-                                        <ref role="37wK5l" to="ze1i:~EvaluateScopeContext.ofModel(org.jetbrains.mps.openapi.model.SModel,java.lang.Object,java.util.function.Function)" resolve="ofModel" />
+                                        <ref role="37wK5l" to="ze1j:~EvaluateScopeContext.ofModel(org.jetbrains.mps.openapi.model.SModel,java.lang.Object,java.util.function.Function)" resolve="ofModel" />
                                         <node concept="2OqwBi" id="1c" role="37wK5m">
                                           <node concept="37vLTw" id="1f" role="2Oq$k0">
                                             <ref role="3cqZAo" node="12" resolve="_context" />
                                           </node>
                                           <node concept="liA8E" id="1g" role="2OqNvi">
-                                            <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getModel()" resolve="getModel" />
+                                            <ref role="37wK5l" to="ze1j:~ReferenceConstraintsContext.getModel()" resolve="getModel" />
                                           </node>
                                         </node>
                                         <node concept="Xl_RD" id="1d" role="37wK5m">
@@ -792,11 +792,11 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="$" role="2Ghqu4">
-                    <ref role="3uigEE" to="ze1i:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
                     <uo k="s:originTrace" v="n:5115399642005556319" />
                   </node>
                   <node concept="3uibUv" id="_" role="2Ghqu4">
-                    <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+                    <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
                     <uo k="s:originTrace" v="n:5115399642005556319" />
                   </node>
                 </node>
@@ -911,7 +911,7 @@
           <property role="TrG5h" value="checkingNodeContext" />
           <uo k="s:originTrace" v="n:5115399642005556319" />
           <node concept="3uibUv" id="1S" role="1tU5fm">
-            <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+            <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
             <uo k="s:originTrace" v="n:5115399642005556319" />
           </node>
         </node>
@@ -957,7 +957,7 @@
                     <uo k="s:originTrace" v="n:5115399642005556319" />
                   </node>
                   <node concept="liA8E" id="27" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                    <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                     <uo k="s:originTrace" v="n:5115399642005556319" />
                     <node concept="2ShNRf" id="28" role="37wK5m">
                       <uo k="s:originTrace" v="n:5115399642005556319" />
@@ -1220,7 +1220,7 @@
           <property role="TrG5h" value="checkingNodeContext" />
           <uo k="s:originTrace" v="n:5115399642005556319" />
           <node concept="3uibUv" id="3c" role="1tU5fm">
-            <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+            <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
             <uo k="s:originTrace" v="n:5115399642005556319" />
           </node>
         </node>
@@ -1266,7 +1266,7 @@
                     <uo k="s:originTrace" v="n:5115399642005556319" />
                   </node>
                   <node concept="liA8E" id="3r" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                    <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                     <uo k="s:originTrace" v="n:5115399642005556319" />
                     <node concept="2ShNRf" id="3s" role="37wK5m">
                       <uo k="s:originTrace" v="n:5115399642005556319" />
@@ -1516,7 +1516,7 @@
                 <uo k="s:originTrace" v="n:1213104840673" />
                 <node concept="1Y3b0j" id="4y" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <uo k="s:originTrace" v="n:1213104840673" />
                   <node concept="3Tm1VV" id="4z" role="1B3o_S">
@@ -1536,14 +1536,14 @@
                       <uo k="s:originTrace" v="n:1213104840673" />
                     </node>
                     <node concept="3uibUv" id="4D" role="3clF45">
-                      <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+                      <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
                       <uo k="s:originTrace" v="n:1213104840673" />
                     </node>
                     <node concept="37vLTG" id="4E" role="3clF46">
                       <property role="TrG5h" value="context" />
                       <uo k="s:originTrace" v="n:1213104840673" />
                       <node concept="3uibUv" id="4H" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
+                        <ref role="3uigEE" to="ze1j:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
                         <uo k="s:originTrace" v="n:1213104840673" />
                       </node>
                       <node concept="2AHcQZ" id="4I" role="2AJF6D">
@@ -1555,7 +1555,7 @@
                       <property role="TrG5h" value="checkingNodeContext" />
                       <uo k="s:originTrace" v="n:1213104840673" />
                       <node concept="3uibUv" id="4J" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                         <uo k="s:originTrace" v="n:1213104840673" />
                       </node>
                       <node concept="2AHcQZ" id="4K" role="2AJF6D">
@@ -1630,7 +1630,7 @@
                                   <property role="3TUv4t" value="true" />
                                   <uo k="s:originTrace" v="n:6836281137582805239" />
                                   <node concept="3uibUv" id="56" role="1tU5fm">
-                                    <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+                                    <ref role="3uigEE" to="ze1j:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
                                     <uo k="s:originTrace" v="n:6836281137582805239" />
                                   </node>
                                 </node>
@@ -1645,17 +1645,17 @@
                                           <ref role="3cqZAo" node="53" resolve="_context" />
                                         </node>
                                         <node concept="liA8E" id="5c" role="2OqNvi">
-                                          <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getScopeEvaluationContext()" resolve="getScopeEvaluationContext" />
+                                          <ref role="37wK5l" to="ze1j:~ReferenceConstraintsContext.getScopeEvaluationContext()" resolve="getScopeEvaluationContext" />
                                         </node>
                                       </node>
                                       <node concept="liA8E" id="5a" role="2OqNvi">
-                                        <ref role="37wK5l" to="ze1i:~EvaluateScopeContext.ofModel(org.jetbrains.mps.openapi.model.SModel,java.lang.Object,java.util.function.Function)" resolve="ofModel" />
+                                        <ref role="37wK5l" to="ze1j:~EvaluateScopeContext.ofModel(org.jetbrains.mps.openapi.model.SModel,java.lang.Object,java.util.function.Function)" resolve="ofModel" />
                                         <node concept="2OqwBi" id="5d" role="37wK5m">
                                           <node concept="37vLTw" id="5g" role="2Oq$k0">
                                             <ref role="3cqZAo" node="53" resolve="_context" />
                                           </node>
                                           <node concept="liA8E" id="5h" role="2OqNvi">
-                                            <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getModel()" resolve="getModel" />
+                                            <ref role="37wK5l" to="ze1j:~ReferenceConstraintsContext.getModel()" resolve="getModel" />
                                           </node>
                                         </node>
                                         <node concept="Xl_RD" id="5e" role="37wK5m">
@@ -1714,11 +1714,11 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="4_" role="2Ghqu4">
-                    <ref role="3uigEE" to="ze1i:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
                     <uo k="s:originTrace" v="n:1213104840673" />
                   </node>
                   <node concept="3uibUv" id="4A" role="2Ghqu4">
-                    <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+                    <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
                     <uo k="s:originTrace" v="n:1213104840673" />
                   </node>
                 </node>
@@ -1737,7 +1737,7 @@
                 <uo k="s:originTrace" v="n:1213104840673" />
                 <node concept="1Y3b0j" id="5u" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <uo k="s:originTrace" v="n:1213104840673" />
                   <node concept="3Tm1VV" id="5v" role="1B3o_S">
@@ -1776,7 +1776,7 @@
                       <property role="TrG5h" value="checkingNodeContext" />
                       <uo k="s:originTrace" v="n:1213104840673" />
                       <node concept="3uibUv" id="5F" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                         <uo k="s:originTrace" v="n:1213104840673" />
                       </node>
                       <node concept="2AHcQZ" id="5G" role="2AJF6D">
@@ -1860,7 +1860,7 @@
                                 <uo k="s:originTrace" v="n:1213104840673" />
                               </node>
                               <node concept="liA8E" id="66" role="2OqNvi">
-                                <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                                <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                                 <uo k="s:originTrace" v="n:1213104840673" />
                                 <node concept="1dyn4i" id="67" role="37wK5m">
                                   <property role="1dyqJU" value="canBeParentBreakingPoint" />
@@ -1942,7 +1942,7 @@
                 <uo k="s:originTrace" v="n:1213104840673" />
                 <node concept="1Y3b0j" id="6l" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <uo k="s:originTrace" v="n:1213104840673" />
                   <node concept="3Tm1VV" id="6m" role="1B3o_S">
@@ -1981,7 +1981,7 @@
                       <property role="TrG5h" value="checkingNodeContext" />
                       <uo k="s:originTrace" v="n:1213104840673" />
                       <node concept="3uibUv" id="6y" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                         <uo k="s:originTrace" v="n:1213104840673" />
                       </node>
                       <node concept="2AHcQZ" id="6z" role="2AJF6D">
@@ -2032,7 +2032,7 @@
                                 <uo k="s:originTrace" v="n:1213104840673" />
                               </node>
                               <node concept="liA8E" id="6O" role="2OqNvi">
-                                <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                                <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                                 <uo k="s:originTrace" v="n:1213104840673" />
                                 <node concept="1dyn4i" id="6P" role="37wK5m">
                                   <property role="1dyqJU" value="canBeRootBreakingPoint" />
@@ -2234,7 +2234,7 @@
           <uo k="s:originTrace" v="n:1213104840673" />
         </node>
         <node concept="3uibUv" id="7v" role="3clF45">
-          <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+          <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
           <uo k="s:originTrace" v="n:1213104840673" />
         </node>
         <node concept="2AHcQZ" id="7w" role="2AJF6D">
@@ -2308,7 +2308,7 @@
                       <property role="3TUv4t" value="true" />
                       <uo k="s:originTrace" v="n:6836281137582805245" />
                       <node concept="3uibUv" id="7S" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+                        <ref role="3uigEE" to="ze1j:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
                         <uo k="s:originTrace" v="n:6836281137582805245" />
                       </node>
                     </node>
@@ -2682,7 +2682,7 @@
                 <uo k="s:originTrace" v="n:1227087698907" />
                 <node concept="1Y3b0j" id="9q" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <uo k="s:originTrace" v="n:1227087698907" />
                   <node concept="3Tm1VV" id="9r" role="1B3o_S">
@@ -2721,7 +2721,7 @@
                       <property role="TrG5h" value="checkingNodeContext" />
                       <uo k="s:originTrace" v="n:1227087698907" />
                       <node concept="3uibUv" id="9B" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                         <uo k="s:originTrace" v="n:1227087698907" />
                       </node>
                       <node concept="2AHcQZ" id="9C" role="2AJF6D">
@@ -2772,7 +2772,7 @@
                                 <uo k="s:originTrace" v="n:1227087698907" />
                               </node>
                               <node concept="liA8E" id="9T" role="2OqNvi">
-                                <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                                <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                                 <uo k="s:originTrace" v="n:1227087698907" />
                                 <node concept="1dyn4i" id="9U" role="37wK5m">
                                   <property role="1dyqJU" value="canBeRootBreakingPoint" />
@@ -2950,7 +2950,7 @@
           <property role="TrG5h" value="checkingNodeContext" />
           <uo k="s:originTrace" v="n:1227087698907" />
           <node concept="3uibUv" id="az" role="1tU5fm">
-            <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+            <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
             <uo k="s:originTrace" v="n:1227087698907" />
           </node>
         </node>
@@ -2996,7 +2996,7 @@
                     <uo k="s:originTrace" v="n:1227087698907" />
                   </node>
                   <node concept="liA8E" id="aM" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                    <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                     <uo k="s:originTrace" v="n:1227087698907" />
                     <node concept="2ShNRf" id="aN" role="37wK5m">
                       <uo k="s:originTrace" v="n:1227087698907" />
@@ -4088,7 +4088,7 @@
                 <uo k="s:originTrace" v="n:199017432865781648" />
                 <node concept="1Y3b0j" id="gd" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <uo k="s:originTrace" v="n:199017432865781648" />
                   <node concept="3Tm1VV" id="ge" role="1B3o_S">
@@ -4108,14 +4108,14 @@
                       <uo k="s:originTrace" v="n:199017432865781648" />
                     </node>
                     <node concept="3uibUv" id="gk" role="3clF45">
-                      <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+                      <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
                       <uo k="s:originTrace" v="n:199017432865781648" />
                     </node>
                     <node concept="37vLTG" id="gl" role="3clF46">
                       <property role="TrG5h" value="context" />
                       <uo k="s:originTrace" v="n:199017432865781648" />
                       <node concept="3uibUv" id="go" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
+                        <ref role="3uigEE" to="ze1j:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
                         <uo k="s:originTrace" v="n:199017432865781648" />
                       </node>
                       <node concept="2AHcQZ" id="gp" role="2AJF6D">
@@ -4127,7 +4127,7 @@
                       <property role="TrG5h" value="checkingNodeContext" />
                       <uo k="s:originTrace" v="n:199017432865781648" />
                       <node concept="3uibUv" id="gq" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                         <uo k="s:originTrace" v="n:199017432865781648" />
                       </node>
                       <node concept="2AHcQZ" id="gr" role="2AJF6D">
@@ -4202,7 +4202,7 @@
                                   <property role="3TUv4t" value="true" />
                                   <uo k="s:originTrace" v="n:6836281137582805350" />
                                   <node concept="3uibUv" id="gL" role="1tU5fm">
-                                    <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+                                    <ref role="3uigEE" to="ze1j:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
                                     <uo k="s:originTrace" v="n:6836281137582805350" />
                                   </node>
                                 </node>
@@ -4243,11 +4243,11 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="gg" role="2Ghqu4">
-                    <ref role="3uigEE" to="ze1i:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
                     <uo k="s:originTrace" v="n:199017432865781648" />
                   </node>
                   <node concept="3uibUv" id="gh" role="2Ghqu4">
-                    <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+                    <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
                     <uo k="s:originTrace" v="n:199017432865781648" />
                   </node>
                 </node>
@@ -4362,7 +4362,7 @@
           <property role="TrG5h" value="checkingNodeContext" />
           <uo k="s:originTrace" v="n:199017432865781648" />
           <node concept="3uibUv" id="hm" role="1tU5fm">
-            <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+            <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
             <uo k="s:originTrace" v="n:199017432865781648" />
           </node>
         </node>
@@ -4408,7 +4408,7 @@
                     <uo k="s:originTrace" v="n:199017432865781648" />
                   </node>
                   <node concept="liA8E" id="h_" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                    <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                     <uo k="s:originTrace" v="n:199017432865781648" />
                     <node concept="2ShNRf" id="hA" role="37wK5m">
                       <uo k="s:originTrace" v="n:199017432865781648" />
@@ -4671,7 +4671,7 @@
           <property role="TrG5h" value="checkingNodeContext" />
           <uo k="s:originTrace" v="n:199017432865781648" />
           <node concept="3uibUv" id="iE" role="1tU5fm">
-            <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+            <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
             <uo k="s:originTrace" v="n:199017432865781648" />
           </node>
         </node>
@@ -4717,7 +4717,7 @@
                     <uo k="s:originTrace" v="n:199017432865781648" />
                   </node>
                   <node concept="liA8E" id="iT" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                    <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                     <uo k="s:originTrace" v="n:199017432865781648" />
                     <node concept="2ShNRf" id="iU" role="37wK5m">
                       <uo k="s:originTrace" v="n:199017432865781648" />
@@ -4985,7 +4985,7 @@
                 <uo k="s:originTrace" v="n:1213104847155" />
                 <node concept="1Y3b0j" id="k2" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <uo k="s:originTrace" v="n:1213104847155" />
                   <node concept="3Tm1VV" id="k3" role="1B3o_S">
@@ -5024,7 +5024,7 @@
                       <property role="TrG5h" value="checkingNodeContext" />
                       <uo k="s:originTrace" v="n:1213104847155" />
                       <node concept="3uibUv" id="kf" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                         <uo k="s:originTrace" v="n:1213104847155" />
                       </node>
                       <node concept="2AHcQZ" id="kg" role="2AJF6D">
@@ -5075,7 +5075,7 @@
                                 <uo k="s:originTrace" v="n:1213104847155" />
                               </node>
                               <node concept="liA8E" id="kx" role="2OqNvi">
-                                <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                                <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                                 <uo k="s:originTrace" v="n:1213104847155" />
                                 <node concept="1dyn4i" id="ky" role="37wK5m">
                                   <property role="1dyqJU" value="canBeRootBreakingPoint" />
@@ -5442,7 +5442,7 @@
           <uo k="s:originTrace" v="n:1213104847155" />
         </node>
         <node concept="3uibUv" id="lU" role="3clF45">
-          <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+          <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
           <uo k="s:originTrace" v="n:1213104847155" />
         </node>
         <node concept="2AHcQZ" id="lV" role="2AJF6D">
@@ -5516,7 +5516,7 @@
                       <property role="3TUv4t" value="true" />
                       <uo k="s:originTrace" v="n:6836281137582805030" />
                       <node concept="3uibUv" id="mj" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+                        <ref role="3uigEE" to="ze1j:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
                         <uo k="s:originTrace" v="n:6836281137582805030" />
                       </node>
                     </node>
@@ -5720,7 +5720,7 @@
                 <uo k="s:originTrace" v="n:1075010451653674063" />
                 <node concept="1Y3b0j" id="n8" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <uo k="s:originTrace" v="n:1075010451653674063" />
                   <node concept="3Tm1VV" id="n9" role="1B3o_S">
@@ -5759,7 +5759,7 @@
                       <property role="TrG5h" value="checkingNodeContext" />
                       <uo k="s:originTrace" v="n:1075010451653674063" />
                       <node concept="3uibUv" id="nl" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                         <uo k="s:originTrace" v="n:1075010451653674063" />
                       </node>
                       <node concept="2AHcQZ" id="nm" role="2AJF6D">
@@ -5810,7 +5810,7 @@
                                 <uo k="s:originTrace" v="n:1075010451653674063" />
                               </node>
                               <node concept="liA8E" id="nB" role="2OqNvi">
-                                <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                                <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                                 <uo k="s:originTrace" v="n:1075010451653674063" />
                                 <node concept="1dyn4i" id="nC" role="37wK5m">
                                   <property role="1dyqJU" value="canBeRootBreakingPoint" />
@@ -5961,7 +5961,7 @@
           <uo k="s:originTrace" v="n:1075010451653674063" />
         </node>
         <node concept="3uibUv" id="o6" role="3clF45">
-          <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+          <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
           <uo k="s:originTrace" v="n:1075010451653674063" />
         </node>
         <node concept="2AHcQZ" id="o7" role="2AJF6D">
@@ -6035,7 +6035,7 @@
                       <property role="3TUv4t" value="true" />
                       <uo k="s:originTrace" v="n:1075010451653674620" />
                       <node concept="3uibUv" id="ov" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+                        <ref role="3uigEE" to="ze1j:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
                         <uo k="s:originTrace" v="n:1075010451653674620" />
                       </node>
                     </node>
@@ -6317,7 +6317,7 @@
           <property role="TrG5h" value="checkingNodeContext" />
           <uo k="s:originTrace" v="n:1421157252384233207" />
           <node concept="3uibUv" id="pC" role="1tU5fm">
-            <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+            <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
             <uo k="s:originTrace" v="n:1421157252384233207" />
           </node>
         </node>
@@ -6363,7 +6363,7 @@
                     <uo k="s:originTrace" v="n:1421157252384233207" />
                   </node>
                   <node concept="liA8E" id="pR" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                    <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                     <uo k="s:originTrace" v="n:1421157252384233207" />
                     <node concept="2ShNRf" id="pS" role="37wK5m">
                       <uo k="s:originTrace" v="n:1421157252384233207" />
@@ -7392,7 +7392,7 @@
           <property role="TrG5h" value="checkingNodeContext" />
           <uo k="s:originTrace" v="n:7954147563045284353" />
           <node concept="3uibUv" id="uB" role="1tU5fm">
-            <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+            <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
             <uo k="s:originTrace" v="n:7954147563045284353" />
           </node>
         </node>
@@ -7438,7 +7438,7 @@
                     <uo k="s:originTrace" v="n:7954147563045284353" />
                   </node>
                   <node concept="liA8E" id="uQ" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                    <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                     <uo k="s:originTrace" v="n:7954147563045284353" />
                     <node concept="2ShNRf" id="uR" role="37wK5m">
                       <uo k="s:originTrace" v="n:7954147563045284353" />
@@ -7779,7 +7779,7 @@
           <property role="TrG5h" value="checkingNodeContext" />
           <uo k="s:originTrace" v="n:1588368162880631638" />
           <node concept="3uibUv" id="wf" role="1tU5fm">
-            <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+            <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
             <uo k="s:originTrace" v="n:1588368162880631638" />
           </node>
         </node>
@@ -7825,7 +7825,7 @@
                     <uo k="s:originTrace" v="n:1588368162880631638" />
                   </node>
                   <node concept="liA8E" id="wu" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                    <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                     <uo k="s:originTrace" v="n:1588368162880631638" />
                     <node concept="2ShNRf" id="wv" role="37wK5m">
                       <uo k="s:originTrace" v="n:1588368162880631638" />
@@ -8121,7 +8121,7 @@
                 <uo k="s:originTrace" v="n:1227087670687" />
                 <node concept="1Y3b0j" id="xI" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <uo k="s:originTrace" v="n:1227087670687" />
                   <node concept="3Tm1VV" id="xJ" role="1B3o_S">
@@ -8141,14 +8141,14 @@
                       <uo k="s:originTrace" v="n:1227087670687" />
                     </node>
                     <node concept="3uibUv" id="xP" role="3clF45">
-                      <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+                      <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
                       <uo k="s:originTrace" v="n:1227087670687" />
                     </node>
                     <node concept="37vLTG" id="xQ" role="3clF46">
                       <property role="TrG5h" value="context" />
                       <uo k="s:originTrace" v="n:1227087670687" />
                       <node concept="3uibUv" id="xT" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
+                        <ref role="3uigEE" to="ze1j:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
                         <uo k="s:originTrace" v="n:1227087670687" />
                       </node>
                       <node concept="2AHcQZ" id="xU" role="2AJF6D">
@@ -8160,7 +8160,7 @@
                       <property role="TrG5h" value="checkingNodeContext" />
                       <uo k="s:originTrace" v="n:1227087670687" />
                       <node concept="3uibUv" id="xV" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                         <uo k="s:originTrace" v="n:1227087670687" />
                       </node>
                       <node concept="2AHcQZ" id="xW" role="2AJF6D">
@@ -8235,7 +8235,7 @@
                                   <property role="3TUv4t" value="true" />
                                   <uo k="s:originTrace" v="n:6836281137582805227" />
                                   <node concept="3uibUv" id="yi" role="1tU5fm">
-                                    <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+                                    <ref role="3uigEE" to="ze1j:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
                                     <uo k="s:originTrace" v="n:6836281137582805227" />
                                   </node>
                                 </node>
@@ -8250,17 +8250,17 @@
                                           <ref role="3cqZAo" node="yf" resolve="_context" />
                                         </node>
                                         <node concept="liA8E" id="yo" role="2OqNvi">
-                                          <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getScopeEvaluationContext()" resolve="getScopeEvaluationContext" />
+                                          <ref role="37wK5l" to="ze1j:~ReferenceConstraintsContext.getScopeEvaluationContext()" resolve="getScopeEvaluationContext" />
                                         </node>
                                       </node>
                                       <node concept="liA8E" id="ym" role="2OqNvi">
-                                        <ref role="37wK5l" to="ze1i:~EvaluateScopeContext.ofModel(org.jetbrains.mps.openapi.model.SModel,java.lang.Object,java.util.function.Function)" resolve="ofModel" />
+                                        <ref role="37wK5l" to="ze1j:~EvaluateScopeContext.ofModel(org.jetbrains.mps.openapi.model.SModel,java.lang.Object,java.util.function.Function)" resolve="ofModel" />
                                         <node concept="2OqwBi" id="yp" role="37wK5m">
                                           <node concept="37vLTw" id="ys" role="2Oq$k0">
                                             <ref role="3cqZAo" node="yf" resolve="_context" />
                                           </node>
                                           <node concept="liA8E" id="yt" role="2OqNvi">
-                                            <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getModel()" resolve="getModel" />
+                                            <ref role="37wK5l" to="ze1j:~ReferenceConstraintsContext.getModel()" resolve="getModel" />
                                           </node>
                                         </node>
                                         <node concept="Xl_RD" id="yq" role="37wK5m">
@@ -8319,11 +8319,11 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="xL" role="2Ghqu4">
-                    <ref role="3uigEE" to="ze1i:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
                     <uo k="s:originTrace" v="n:1227087670687" />
                   </node>
                   <node concept="3uibUv" id="xM" role="2Ghqu4">
-                    <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+                    <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
                     <uo k="s:originTrace" v="n:1227087670687" />
                   </node>
                 </node>
@@ -8342,7 +8342,7 @@
                 <uo k="s:originTrace" v="n:1227087670687" />
                 <node concept="1Y3b0j" id="yE" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <uo k="s:originTrace" v="n:1227087670687" />
                   <node concept="3Tm1VV" id="yF" role="1B3o_S">
@@ -8381,7 +8381,7 @@
                       <property role="TrG5h" value="checkingNodeContext" />
                       <uo k="s:originTrace" v="n:1227087670687" />
                       <node concept="3uibUv" id="yR" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                         <uo k="s:originTrace" v="n:1227087670687" />
                       </node>
                       <node concept="2AHcQZ" id="yS" role="2AJF6D">
@@ -8432,7 +8432,7 @@
                                 <uo k="s:originTrace" v="n:1227087670687" />
                               </node>
                               <node concept="liA8E" id="z9" role="2OqNvi">
-                                <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                                <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                                 <uo k="s:originTrace" v="n:1227087670687" />
                                 <node concept="1dyn4i" id="za" role="37wK5m">
                                   <property role="1dyqJU" value="canBeRootBreakingPoint" />
@@ -8789,7 +8789,7 @@
           <property role="TrG5h" value="checkingNodeContext" />
           <uo k="s:originTrace" v="n:1213104841300" />
           <node concept="3uibUv" id="$C" role="1tU5fm">
-            <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+            <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
             <uo k="s:originTrace" v="n:1213104841300" />
           </node>
         </node>
@@ -8835,7 +8835,7 @@
                     <uo k="s:originTrace" v="n:1213104841300" />
                   </node>
                   <node concept="liA8E" id="$R" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                    <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                     <uo k="s:originTrace" v="n:1213104841300" />
                     <node concept="2ShNRf" id="$S" role="37wK5m">
                       <uo k="s:originTrace" v="n:1213104841300" />
@@ -9091,7 +9091,7 @@
           <property role="TrG5h" value="checkingNodeContext" />
           <uo k="s:originTrace" v="n:1213104841300" />
           <node concept="3uibUv" id="_U" role="1tU5fm">
-            <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+            <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
             <uo k="s:originTrace" v="n:1213104841300" />
           </node>
         </node>
@@ -9137,7 +9137,7 @@
                     <uo k="s:originTrace" v="n:1213104841300" />
                   </node>
                   <node concept="liA8E" id="A9" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                    <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                     <uo k="s:originTrace" v="n:1213104841300" />
                     <node concept="2ShNRf" id="Aa" role="37wK5m">
                       <uo k="s:originTrace" v="n:1213104841300" />
@@ -9595,7 +9595,7 @@
           <uo k="s:originTrace" v="n:1213104841300" />
         </node>
         <node concept="3uibUv" id="BX" role="3clF45">
-          <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+          <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
           <uo k="s:originTrace" v="n:1213104841300" />
         </node>
         <node concept="2AHcQZ" id="BY" role="2AJF6D">
@@ -9669,7 +9669,7 @@
                       <property role="3TUv4t" value="true" />
                       <uo k="s:originTrace" v="n:6836281137582805253" />
                       <node concept="3uibUv" id="Cm" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+                        <ref role="3uigEE" to="ze1j:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
                         <uo k="s:originTrace" v="n:6836281137582805253" />
                       </node>
                     </node>
@@ -10204,7 +10204,7 @@
           <property role="TrG5h" value="checkingNodeContext" />
           <uo k="s:originTrace" v="n:5115399642005557369" />
           <node concept="3uibUv" id="EE" role="1tU5fm">
-            <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+            <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
             <uo k="s:originTrace" v="n:5115399642005557369" />
           </node>
         </node>
@@ -10250,7 +10250,7 @@
                     <uo k="s:originTrace" v="n:5115399642005557369" />
                   </node>
                   <node concept="liA8E" id="ET" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                    <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                     <uo k="s:originTrace" v="n:5115399642005557369" />
                     <node concept="2ShNRf" id="EU" role="37wK5m">
                       <uo k="s:originTrace" v="n:5115399642005557369" />
@@ -11410,7 +11410,7 @@
           <uo k="s:originTrace" v="n:8842732777748475801" />
         </node>
         <node concept="3uibUv" id="JN" role="3clF45">
-          <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+          <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
           <uo k="s:originTrace" v="n:8842732777748475801" />
         </node>
         <node concept="2AHcQZ" id="JO" role="2AJF6D">
@@ -11484,7 +11484,7 @@
                       <property role="3TUv4t" value="true" />
                       <uo k="s:originTrace" v="n:8842732777748475806" />
                       <node concept="3uibUv" id="Kc" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+                        <ref role="3uigEE" to="ze1j:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
                         <uo k="s:originTrace" v="n:8842732777748475806" />
                       </node>
                     </node>
@@ -11624,7 +11624,7 @@
                 <uo k="s:originTrace" v="n:3086977559645507097" />
                 <node concept="1Y3b0j" id="KJ" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <uo k="s:originTrace" v="n:3086977559645507097" />
                   <node concept="3Tm1VV" id="KK" role="1B3o_S">
@@ -11663,7 +11663,7 @@
                       <property role="TrG5h" value="checkingNodeContext" />
                       <uo k="s:originTrace" v="n:3086977559645507097" />
                       <node concept="3uibUv" id="KW" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                         <uo k="s:originTrace" v="n:3086977559645507097" />
                       </node>
                       <node concept="2AHcQZ" id="KX" role="2AJF6D">
@@ -11714,7 +11714,7 @@
                                 <uo k="s:originTrace" v="n:3086977559645507097" />
                               </node>
                               <node concept="liA8E" id="Le" role="2OqNvi">
-                                <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                                <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                                 <uo k="s:originTrace" v="n:3086977559645507097" />
                                 <node concept="1dyn4i" id="Lf" role="37wK5m">
                                   <property role="1dyqJU" value="canBeRootBreakingPoint" />

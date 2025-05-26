@@ -20,7 +20,6 @@
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="iwwu" ref="r:2c4d9270-b6d6-44af-aecd-e01a223680db(jetbrains.mps.kernel.model)" />
-    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
     <import index="79pl" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime.base(MPS.Core/)" />
@@ -796,7 +795,7 @@
           <node concept="37vLTG" id="1EUJGK9TeWx" role="3clF46">
             <property role="TrG5h" value="_context" />
             <node concept="3uibUv" id="1EUJGK9TeWy" role="1tU5fm">
-              <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+              <ref role="3uigEE" to="ze1j:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
             </node>
           </node>
           <node concept="3clFbS" id="1EUJGK9TdQP" role="3clF47">
@@ -807,17 +806,17 @@
                     <ref role="3cqZAo" node="1EUJGK9TeWx" resolve="_context" />
                   </node>
                   <node concept="liA8E" id="1EUJGK9Tf7v" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getScopeEvaluationContext()" resolve="getScopeEvaluationContext" />
+                    <ref role="37wK5l" to="ze1j:~ReferenceConstraintsContext.getScopeEvaluationContext()" resolve="getScopeEvaluationContext" />
                   </node>
                 </node>
                 <node concept="liA8E" id="1EUJGK9TfiX" role="2OqNvi">
-                  <ref role="37wK5l" to="ze1i:~EvaluateScopeContext.ofModel(org.jetbrains.mps.openapi.model.SModel,java.lang.Object,java.util.function.Function)" resolve="ofModel" />
+                  <ref role="37wK5l" to="ze1j:~EvaluateScopeContext.ofModel(org.jetbrains.mps.openapi.model.SModel,java.lang.Object,java.util.function.Function)" resolve="ofModel" />
                   <node concept="2OqwBi" id="1EUJGK9Tg07" role="37wK5m">
                     <node concept="37vLTw" id="1EUJGK9TfuP" role="2Oq$k0">
                       <ref role="3cqZAo" node="1EUJGK9TeWx" resolve="_context" />
                     </node>
                     <node concept="liA8E" id="1EUJGK9Tg8s" role="2OqNvi">
-                      <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getModel()" resolve="getModel" />
+                      <ref role="37wK5l" to="ze1j:~ReferenceConstraintsContext.getModel()" resolve="getModel" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="1EUJGK9Th17" role="37wK5m">
@@ -873,7 +872,7 @@
           <node concept="37vLTG" id="1EUJGK9TnK3" role="3clF46">
             <property role="TrG5h" value="_context" />
             <node concept="3uibUv" id="1EUJGK9TnK4" role="1tU5fm">
-              <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+              <ref role="3uigEE" to="ze1j:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
             </node>
           </node>
           <node concept="3clFbS" id="1EUJGK9TnK5" role="3clF47">
@@ -884,17 +883,17 @@
                     <ref role="3cqZAo" node="1EUJGK9TnK3" resolve="_context" />
                   </node>
                   <node concept="liA8E" id="1EUJGK9TnKa" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getScopeEvaluationContext()" resolve="getScopeEvaluationContext" />
+                    <ref role="37wK5l" to="ze1j:~ReferenceConstraintsContext.getScopeEvaluationContext()" resolve="getScopeEvaluationContext" />
                   </node>
                 </node>
                 <node concept="liA8E" id="1EUJGK9TnKb" role="2OqNvi">
-                  <ref role="37wK5l" to="ze1i:~EvaluateScopeContext.ofRootsDefault(org.jetbrains.mps.openapi.model.SModel,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="ofRootsDefault" />
+                  <ref role="37wK5l" to="ze1j:~EvaluateScopeContext.ofRootsDefault(org.jetbrains.mps.openapi.model.SModel,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="ofRootsDefault" />
                   <node concept="2OqwBi" id="1EUJGK9TnKc" role="37wK5m">
                     <node concept="37vLTw" id="1EUJGK9TnKd" role="2Oq$k0">
                       <ref role="3cqZAo" node="1EUJGK9TnK3" resolve="_context" />
                     </node>
                     <node concept="liA8E" id="1EUJGK9TnKe" role="2OqNvi">
-                      <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getModel()" resolve="getModel" />
+                      <ref role="37wK5l" to="ze1j:~ReferenceConstraintsContext.getModel()" resolve="getModel" />
                     </node>
                   </node>
                   <node concept="35c_gC" id="1EUJGK9TonK" role="37wK5m">
@@ -936,7 +935,7 @@
           <node concept="37vLTG" id="1EUJGK9Tp0g" role="3clF46">
             <property role="TrG5h" value="_context" />
             <node concept="3uibUv" id="1EUJGK9Tp0h" role="1tU5fm">
-              <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+              <ref role="3uigEE" to="ze1j:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
             </node>
           </node>
           <node concept="3clFbS" id="1EUJGK9Tp0i" role="3clF47">
@@ -947,17 +946,17 @@
                     <ref role="3cqZAo" node="1EUJGK9Tp0g" resolve="_context" />
                   </node>
                   <node concept="liA8E" id="1EUJGK9Tp0n" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getScopeEvaluationContext()" resolve="getScopeEvaluationContext" />
+                    <ref role="37wK5l" to="ze1j:~ReferenceConstraintsContext.getScopeEvaluationContext()" resolve="getScopeEvaluationContext" />
                   </node>
                 </node>
                 <node concept="liA8E" id="1EUJGK9Tp0o" role="2OqNvi">
-                  <ref role="37wK5l" to="ze1i:~EvaluateScopeContext.ofNodesDefault(org.jetbrains.mps.openapi.model.SModel,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="ofNodesDefault" />
+                  <ref role="37wK5l" to="ze1j:~EvaluateScopeContext.ofNodesDefault(org.jetbrains.mps.openapi.model.SModel,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="ofNodesDefault" />
                   <node concept="2OqwBi" id="1EUJGK9Tp0p" role="37wK5m">
                     <node concept="37vLTw" id="1EUJGK9Tp0q" role="2Oq$k0">
                       <ref role="3cqZAo" node="1EUJGK9Tp0g" resolve="_context" />
                     </node>
                     <node concept="liA8E" id="1EUJGK9Tp0r" role="2OqNvi">
-                      <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getModel()" resolve="getModel" />
+                      <ref role="37wK5l" to="ze1j:~ReferenceConstraintsContext.getModel()" resolve="getModel" />
                     </node>
                   </node>
                   <node concept="35c_gC" id="1EUJGK9Tp0s" role="37wK5m">
@@ -1238,7 +1237,7 @@
               <node concept="YeOm9" id="3mZfl$XVcBd" role="2ShVmc">
                 <node concept="1Y3b0j" id="3mZfl$XVcBg" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <node concept="3Tm1VV" id="3mZfl$XVcBh" role="1B3o_S" />
                   <node concept="3clFb_" id="3mZfl$XVcBi" role="jymVt">
@@ -1251,12 +1250,12 @@
                       <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
                     </node>
                     <node concept="3uibUv" id="3mZfl$XVeyU" role="3clF45">
-                      <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+                      <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
                     </node>
                     <node concept="37vLTG" id="3mZfl$XVcBn" role="3clF46">
                       <property role="TrG5h" value="context" />
                       <node concept="3uibUv" id="3mZfl$XVeis" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
+                        <ref role="3uigEE" to="ze1j:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
                       </node>
                       <node concept="2AHcQZ" id="3mZfl$XVcBp" role="2AJF6D">
                         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
@@ -1265,7 +1264,7 @@
                     <node concept="37vLTG" id="3mZfl$XVcBq" role="3clF46">
                       <property role="TrG5h" value="checkingNodeContext" />
                       <node concept="3uibUv" id="3mZfl$XVcBr" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                       </node>
                       <node concept="2AHcQZ" id="3mZfl$XVcBs" role="2AJF6D">
                         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
@@ -1302,10 +1301,10 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="3mZfl$XVdra" role="2Ghqu4">
-                    <ref role="3uigEE" to="ze1i:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintContext_DefaultScopeProvider" resolve="ConstraintContext_DefaultScopeProvider" />
                   </node>
                   <node concept="3uibUv" id="3mZfl$XVdNN" role="2Ghqu4">
-                    <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+                    <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
                   </node>
                 </node>
               </node>
@@ -1336,7 +1335,7 @@
               <node concept="YeOm9" id="7MA894rYrPV" role="2ShVmc">
                 <node concept="1Y3b0j" id="7MA894rYrPW" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <node concept="3Tm1VV" id="7MA894rYrPX" role="1B3o_S" />
                   <node concept="3clFb_" id="7MA894rYrPY" role="jymVt">
@@ -1363,7 +1362,7 @@
                     <node concept="37vLTG" id="7MA894rYrQ5" role="3clF46">
                       <property role="TrG5h" value="checkingNodeContext" />
                       <node concept="3uibUv" id="7MA894rYrQ6" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                       </node>
                       <node concept="2AHcQZ" id="7MA894rYrQ7" role="2AJF6D">
                         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
@@ -1420,7 +1419,7 @@
                                 <ref role="3cqZAo" node="7MA894rYrQ5" resolve="checkingNodeContext" />
                               </node>
                               <node concept="liA8E" id="7MA894rYrQv" role="2OqNvi">
-                                <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                                <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                                 <node concept="1dyn4i" id="7MA894rYrQw" role="37wK5m">
                                   <property role="1dyqJU" value="canBeChildBreakingPoint" />
                                   <node concept="2ShNRf" id="7MA894rYrQx" role="1dyrYi">
@@ -1550,7 +1549,7 @@
               <node concept="YeOm9" id="2H817XX2xAK" role="2ShVmc">
                 <node concept="1Y3b0j" id="2H817XX2xAN" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <node concept="3Tm1VV" id="2H817XX2xAO" role="1B3o_S" />
                   <node concept="3clFb_" id="2H817XX2xAP" role="jymVt">
@@ -1577,7 +1576,7 @@
                     <node concept="37vLTG" id="2H817XX2xAX" role="3clF46">
                       <property role="TrG5h" value="checkingNodeContext" />
                       <node concept="3uibUv" id="2H817XX2xAY" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                       </node>
                       <node concept="2AHcQZ" id="2H817XX2xAZ" role="2AJF6D">
                         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
@@ -1634,7 +1633,7 @@
                                 <ref role="3cqZAo" node="2H817XX2xAX" resolve="checkingNodeContext" />
                               </node>
                               <node concept="liA8E" id="5O58T9kVfBt" role="2OqNvi">
-                                <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                                <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                                 <node concept="1dyn4i" id="5O58T9kVfBu" role="37wK5m">
                                   <property role="1dyqJU" value="canBeParentBreakingPoint" />
                                   <node concept="2ShNRf" id="5O58T9kVfBv" role="1dyrYi">
@@ -1764,7 +1763,7 @@
               <node concept="YeOm9" id="2H817XX3SmO" role="2ShVmc">
                 <node concept="1Y3b0j" id="2H817XX3SmR" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <node concept="3Tm1VV" id="2H817XX3SmS" role="1B3o_S" />
                   <node concept="3clFb_" id="2H817XX3SmT" role="jymVt">
@@ -1791,7 +1790,7 @@
                     <node concept="37vLTG" id="2H817XX3Sn1" role="3clF46">
                       <property role="TrG5h" value="checkingNodeContext" />
                       <node concept="3uibUv" id="2H817XX3Sn2" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                       </node>
                       <node concept="2AHcQZ" id="2H817XX3Sn3" role="2AJF6D">
                         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
@@ -1824,7 +1823,7 @@
                                 <ref role="3cqZAo" node="2H817XX3Sn1" resolve="checkingNodeContext" />
                               </node>
                               <node concept="liA8E" id="5O58T9kVnvD" role="2OqNvi">
-                                <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                                <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                                 <node concept="1dyn4i" id="5O58T9kVnvE" role="37wK5m">
                                   <property role="1dyqJU" value="canBeRootBreakingPoint" />
                                   <node concept="2ShNRf" id="5O58T9kVnvF" role="1dyrYi">
@@ -1954,7 +1953,7 @@
               <node concept="YeOm9" id="2H817XX55zJ" role="2ShVmc">
                 <node concept="1Y3b0j" id="2H817XX55zK" role="YeSDq">
                   <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
+                  <ref role="1Y3XeK" to="ze1j:~ConstraintFunction" resolve="ConstraintFunction" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <node concept="3Tm1VV" id="2H817XX55zL" role="1B3o_S" />
                   <node concept="3clFb_" id="2H817XX55zM" role="jymVt">
@@ -1981,7 +1980,7 @@
                     <node concept="37vLTG" id="2H817XX55zT" role="3clF46">
                       <property role="TrG5h" value="checkingNodeContext" />
                       <node concept="3uibUv" id="2H817XX55zU" role="1tU5fm">
-                        <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+                        <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
                       </node>
                       <node concept="2AHcQZ" id="2H817XX55zV" role="2AJF6D">
                         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
@@ -2046,7 +2045,7 @@
                                 <ref role="3cqZAo" node="2H817XX55zT" resolve="checkingNodeContext" />
                               </node>
                               <node concept="liA8E" id="2H817XX55$a" role="2OqNvi">
-                                <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                                <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                                 <node concept="1dyn4i" id="2H817XX55$b" role="37wK5m">
                                   <property role="1dyqJU" value="canBeAncestorBreakingPoint" />
                                   <node concept="2ShNRf" id="2H817XX55$c" role="1dyrYi">
@@ -2648,7 +2647,7 @@
         <node concept="37vLTG" id="5KWsMXTIGFf" role="3clF46">
           <property role="TrG5h" value="checkingNodeContext" />
           <node concept="3uibUv" id="5KWsMXTJ3w4" role="1tU5fm">
-            <ref role="3uigEE" to="ze1i:~CheckingNodeContext" resolve="CheckingNodeContext" />
+            <ref role="3uigEE" to="ze1j:~CheckingNodeContext" resolve="CheckingNodeContext" />
           </node>
         </node>
         <node concept="3clFbS" id="3g99cIN5jlB" role="3clF47">
@@ -2678,7 +2677,7 @@
                     <ref role="3cqZAo" node="5KWsMXTIGFf" resolve="checkingNodeContext" />
                   </node>
                   <node concept="liA8E" id="5KWsMXTILjr" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
+                    <ref role="37wK5l" to="ze1j:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                     <node concept="2ShNRf" id="5KWsMXTMgX4" role="37wK5m">
                       <node concept="1pGfFk" id="5KWsMXTMgX5" role="2ShVmc">
                         <ref role="37wK5l" to="w1kc:~SNodePointer.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="SNodePointer" />
@@ -3236,7 +3235,7 @@
         </node>
         <node concept="3Tm1VV" id="3g99cIN5jqG" role="1B3o_S" />
         <node concept="3uibUv" id="3g99cIN5jqH" role="3clF45">
-          <ref role="3uigEE" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+          <ref role="3uigEE" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
         </node>
         <node concept="2AHcQZ" id="3g99cIN5jqI" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
@@ -3967,8 +3966,8 @@
       <ref role="30HIoZ" to="tp1t:7ipADkTf7eM" resolve="InheritedNodeScopeFactory" />
       <node concept="gft3U" id="1pvkkjKB0NW" role="1lVwrX">
         <node concept="2YIFZM" id="P1nabEQj3A" role="gfFT$">
-          <ref role="37wK5l" to="ze1i:~ReferenceScopeProvider.fromHierarchy(org.jetbrains.mps.openapi.language.SAbstractConcept,org.jetbrains.mps.openapi.model.SNodeReference)" resolve="fromHierarchy" />
-          <ref role="1Pybhc" to="ze1i:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
+          <ref role="37wK5l" to="ze1j:~ReferenceScopeProvider.fromHierarchy(org.jetbrains.mps.openapi.language.SAbstractConcept,org.jetbrains.mps.openapi.model.SNodeReference)" resolve="fromHierarchy" />
+          <ref role="1Pybhc" to="ze1j:~ReferenceScopeProvider" resolve="ReferenceScopeProvider" />
           <node concept="35c_gC" id="P1nabEQjwb" role="37wK5m">
             <ref role="35c_gD" to="tpck:gw2VY9q" resolve="BaseConcept" />
             <node concept="1ZhdrF" id="P1nabEQjwc" role="lGtFl">
@@ -4156,7 +4155,7 @@
                   <property role="TrG5h" value="_context" />
                   <property role="3TUv4t" value="true" />
                   <node concept="3uibUv" id="P1nabEQwTb" role="1tU5fm">
-                    <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+                    <ref role="3uigEE" to="ze1j:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
                   </node>
                 </node>
                 <node concept="3clFbS" id="P1nabEQwTf" role="3clF47">
