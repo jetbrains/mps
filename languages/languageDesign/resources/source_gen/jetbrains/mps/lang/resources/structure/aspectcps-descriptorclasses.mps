@@ -1960,7 +1960,7 @@
       <node concept="2ShNRf" id="aC" role="33vP2m">
         <uo k="s:originTrace" v="n:4241665505353447278" />
         <node concept="1pGfFk" id="aD" role="2ShVmc">
-          <ref role="37wK5l" to="ze1i:~EnumerationDescriptor$MemberDescriptor.&lt;init&gt;(java.lang.String,java.lang.String,long,java.lang.String,java.lang.String,java.lang.String)" resolve="EnumerationDescriptor.MemberDescriptor" />
+          <ref role="37wK5l" to="ze1i:~EnumerationDescriptor$MemberDescriptor.&lt;init&gt;(java.lang.String,java.lang.String,long,java.lang.String)" resolve="EnumerationDescriptor.MemberDescriptor" />
           <uo k="s:originTrace" v="n:4241665505353447278" />
           <node concept="Xl_RD" id="aE" role="37wK5m">
             <property role="Xl_RC" value="big" />
@@ -1995,7 +1995,7 @@
       <node concept="2ShNRf" id="aK" role="33vP2m">
         <uo k="s:originTrace" v="n:4241665505353447278" />
         <node concept="1pGfFk" id="aL" role="2ShVmc">
-          <ref role="37wK5l" to="ze1i:~EnumerationDescriptor$MemberDescriptor.&lt;init&gt;(java.lang.String,java.lang.String,long,java.lang.String,java.lang.String,java.lang.String)" resolve="EnumerationDescriptor.MemberDescriptor" />
+          <ref role="37wK5l" to="ze1i:~EnumerationDescriptor$MemberDescriptor.&lt;init&gt;(java.lang.String,java.lang.String,long,java.lang.String)" resolve="EnumerationDescriptor.MemberDescriptor" />
           <uo k="s:originTrace" v="n:4241665505353447278" />
           <node concept="Xl_RD" id="aM" role="37wK5m">
             <property role="Xl_RC" value="medium" />
@@ -2030,7 +2030,7 @@
       <node concept="2ShNRf" id="aS" role="33vP2m">
         <uo k="s:originTrace" v="n:4241665505353447278" />
         <node concept="1pGfFk" id="aT" role="2ShVmc">
-          <ref role="37wK5l" to="ze1i:~EnumerationDescriptor$MemberDescriptor.&lt;init&gt;(java.lang.String,java.lang.String,long,java.lang.String,java.lang.String,java.lang.String)" resolve="EnumerationDescriptor.MemberDescriptor" />
+          <ref role="37wK5l" to="ze1i:~EnumerationDescriptor$MemberDescriptor.&lt;init&gt;(java.lang.String,java.lang.String,long,java.lang.String)" resolve="EnumerationDescriptor.MemberDescriptor" />
           <uo k="s:originTrace" v="n:4241665505353447278" />
           <node concept="Xl_RD" id="aU" role="37wK5m">
             <property role="Xl_RC" value="small" />
@@ -2120,7 +2120,7 @@
       <node concept="2ShNRf" id="b9" role="33vP2m">
         <uo k="s:originTrace" v="n:4241665505353447278" />
         <node concept="1pGfFk" id="bb" role="2ShVmc">
-          <ref role="37wK5l" to="ze1i:~EnumerationDescriptorBase$MembersList.&lt;init&gt;(jetbrains.mps.smodel.runtime.EnumerationDescriptorBase,jetbrains.mps.lang.smodel.EnumerationLiteralsIndex,jetbrains.mps.smodel.runtime.EnumerationDescriptor$MemberDescriptor...)" resolve="EnumerationDescriptorBase.MembersList" />
+          <ref role="37wK5l" to="ze1i:~EnumerationDescriptorBase$MembersList0.&lt;init&gt;(jetbrains.mps.lang.smodel.EnumerationLiteralsIndex,jetbrains.mps.smodel.runtime.EnumerationDescriptor$MemberDescriptor...)" resolve="EnumerationDescriptorBase.MembersList0" />
           <uo k="s:originTrace" v="n:4241665505353447278" />
           <node concept="37vLTw" id="bc" role="37wK5m">
             <ref role="3cqZAo" node="aj" resolve="myIndex" />

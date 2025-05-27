@@ -19,7 +19,7 @@ public class EnumerationDescriptor_SelectPosition extends EnumerationDescriptorB
   private final EnumerationDescriptor.MemberDescriptor myMember_after_0 = new EnumerationDescriptor.MemberDescriptor("after", "after", 0x117b13348c5L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446200");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x117b13320c9L, 0x117b13320caL, 0x117b13348c5L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_before_0, myMember_after_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_before_0, myMember_after_0);
 
   @Nullable
   @Override

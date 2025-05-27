@@ -19,7 +19,7 @@ public class EnumerationDescriptor__Enum_Measure extends EnumerationDescriptorBa
   private final EnumerationDescriptor.MemberDescriptor myMember_SPACES_0 = new EnumerationDescriptor.MemberDescriptor("SPACES", "spaces", 0x11d91609804L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446269");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d915f7d98L, 0x11d915f7d99L, 0x11d91609804L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_PIXELS_0, myMember_SPACES_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_PIXELS_0, myMember_SPACES_0);
 
   @Nullable
   @Override

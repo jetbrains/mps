@@ -21,7 +21,7 @@ public class EnumerationDescriptor_FocusPolicy extends EnumerationDescriptorBase
   private final EnumerationDescriptor.MemberDescriptor myMember_attractsRecursively_0 = new EnumerationDescriptor.MemberDescriptor("attractsRecursively", "attractsRecursively", 0x11db3cfb874L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445989");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1075079c80dL, 0x1075079c86cL, 0x107507a4fafL, 0x107507a7b34L, 0x11db3cfb874L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_noAttraction_0, myMember_attractsFocus_0, myMember_firstEditableCell_0, myMember_attractsRecursively_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_noAttraction_0, myMember_attractsFocus_0, myMember_firstEditableCell_0, myMember_attractsRecursively_0);
 
   @Nullable
   @Override

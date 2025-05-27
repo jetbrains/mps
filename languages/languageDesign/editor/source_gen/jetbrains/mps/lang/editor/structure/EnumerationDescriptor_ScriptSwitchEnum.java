@@ -20,7 +20,7 @@ public class EnumerationDescriptor_ScriptSwitchEnum extends EnumerationDescripto
   private final EnumerationDescriptor.MemberDescriptor myMember_SUBSCRIPT_0 = new EnumerationDescriptor.MemberDescriptor("SUBSCRIPT", "subscript", 0x72908ac6c78618c5L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446284");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x72908ac6c786177eL, 0x72908ac6c786177fL, 0x72908ac6c78618c4L, 0x72908ac6c78618c5L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_NORMAL_0, myMember_SUPERSCRIPT_0, myMember_SUBSCRIPT_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_NORMAL_0, myMember_SUPERSCRIPT_0, myMember_SUBSCRIPT_0);
 
   @Nullable
   @Override

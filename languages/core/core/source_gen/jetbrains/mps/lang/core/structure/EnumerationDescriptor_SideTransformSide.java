@@ -19,7 +19,7 @@ public class EnumerationDescriptor_SideTransformSide extends EnumerationDescript
   private final EnumerationDescriptor.MemberDescriptor myMember_left_0 = new EnumerationDescriptor.MemberDescriptor("left", "left", 0xad0053c7aee2e4fL, "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)/4241665505353445573");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7aee25ecL, 0xad0053c7aee25edL, 0xad0053c7aee2e4fL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_right_0, myMember_left_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_right_0, myMember_left_0);
 
   @Nullable
   @Override

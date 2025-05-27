@@ -19,7 +19,7 @@ public class EnumerationDescriptor_ShowBoundariesAreaEnum extends EnumerationDes
   private final EnumerationDescriptor.MemberDescriptor myMember_GUTTER_AND_EDITOR_0 = new EnumerationDescriptor.MemberDescriptor("GUTTER_AND_EDITOR", "gutter-and-editor", 0x49177f9006c13c48L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446310");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x49177f9006c13bdaL, 0x49177f9006c13bdbL, 0x49177f9006c13c48L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_GUTTER_0, myMember_GUTTER_AND_EDITOR_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_GUTTER_0, myMember_GUTTER_AND_EDITOR_0);
 
   @Nullable
   @Override

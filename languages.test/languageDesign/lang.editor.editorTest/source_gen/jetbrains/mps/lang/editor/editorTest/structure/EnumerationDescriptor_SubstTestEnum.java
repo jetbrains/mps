@@ -20,7 +20,7 @@ public class EnumerationDescriptor_SubstTestEnum extends EnumerationDescriptorBa
   private final EnumerationDescriptor.MemberDescriptor myMember_v3_0 = new EnumerationDescriptor.MemberDescriptor("v3", "v3", 0xd4944c0b03f65d6L, "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/4241665505353445425");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03f658cL, 0xd4944c0b03f658dL, 0xd4944c0b03f65d3L, 0xd4944c0b03f65d6L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_v1_0, myMember_v2_0, myMember_v3_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_v1_0, myMember_v2_0, myMember_v3_0);
 
   @Nullable
   @Override

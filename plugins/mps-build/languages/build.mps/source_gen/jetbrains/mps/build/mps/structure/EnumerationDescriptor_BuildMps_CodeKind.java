@@ -20,7 +20,7 @@ public class EnumerationDescriptor_BuildMps_CodeKind extends EnumerationDescript
   private final EnumerationDescriptor.MemberDescriptor myMember_none_0 = new EnumerationDescriptor.MemberDescriptor("none", "no code", 0x352834178d0efa6bL, "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/3830368758834068075");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x352834178d0efa67L, 0x352834178d0efa68L, 0x352834178d0efa69L, 0x352834178d0efa6bL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_compile_mps_0, myMember_compile_ext_0, myMember_none_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_compile_mps_0, myMember_compile_ext_0, myMember_none_0);
 
   @Nullable
   @Override

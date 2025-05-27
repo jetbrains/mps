@@ -20,7 +20,7 @@ public class EnumerationDescriptor_UnderlineStyle extends EnumerationDescriptorB
   private final EnumerationDescriptor.MemberDescriptor myMember_underlined_0 = new EnumerationDescriptor.MemberDescriptor("underlined", "underlined", 0x1074bc88d6dL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445983");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1074bc650e6L, 0x1074bc65106L, 0x1074bc84b33L, 0x1074bc88d6dL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_as_is_0, myMember_not_underlined_0, myMember_underlined_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_as_is_0, myMember_not_underlined_0, myMember_underlined_0);
 
   @Nullable
   @Override

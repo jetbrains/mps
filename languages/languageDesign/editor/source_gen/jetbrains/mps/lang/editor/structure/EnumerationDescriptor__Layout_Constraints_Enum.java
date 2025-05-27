@@ -20,7 +20,7 @@ public class EnumerationDescriptor__Layout_Constraints_Enum extends EnumerationD
   private final EnumerationDescriptor.MemberDescriptor myMember_none_0 = new EnumerationDescriptor.MemberDescriptor("none", "none", 0x10901dd9077L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445994");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10901d9d75fL, 0x10901d9d84bL, 0x10901dd62feL, 0x10901dd9077L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_punctuation_0, myMember_noflow_0, myMember_none_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_punctuation_0, myMember_noflow_0, myMember_none_0);
 
   @Nullable
   @Override

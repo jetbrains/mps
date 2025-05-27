@@ -35,7 +35,7 @@ public class EnumerationDescriptor__Colors_Enum extends EnumerationDescriptorBas
   private final EnumerationDescriptor.MemberDescriptor myMember_black_0 = new EnumerationDescriptor.MemberDescriptor("black", "light: black         | dark: theme's foreground color", 0x633fb1d6ccc28638L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445746");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfc609b3d55L, 0xfc609b3d56L, 0xfc609b3d57L, 0xfc609b3d58L, 0xfc609b3d59L, 0xfc609b3d5aL, 0xfc609b3d5bL, 0x100656b782aL, 0xfc609b3d5cL, 0x100656bb6ddL, 0xfc609b3d5dL, 0xfc609b3d5eL, 0x11b375eefccL, 0x100653ae118L, 0xfc6fdd4165L, 0xfc6fdd4166L, 0xfc6fdd4167L, 0x11abf9b4043L, 0x633fb1d6ccc28638L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_none_0, myMember_red_0, myMember_pink_0, myMember_orange_0, myMember_yellow_0, myMember_green_0, myMember_darkGreen_0, myMember_magenta_0, myMember_darkMagenta_0, myMember_cyan_0, myMember_blue_0, myMember_lightBlue_0, myMember_darkBlue_0, myMember_gray_0, myMember_lightGray_0, myMember_darkGray_0, myMember_white_0, myMember_black_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_none_0, myMember_red_0, myMember_pink_0, myMember_orange_0, myMember_yellow_0, myMember_green_0, myMember_darkGreen_0, myMember_magenta_0, myMember_darkMagenta_0, myMember_cyan_0, myMember_blue_0, myMember_lightBlue_0, myMember_darkBlue_0, myMember_gray_0, myMember_lightGray_0, myMember_darkGray_0, myMember_white_0, myMember_black_0);
 
   @Nullable
   @Override

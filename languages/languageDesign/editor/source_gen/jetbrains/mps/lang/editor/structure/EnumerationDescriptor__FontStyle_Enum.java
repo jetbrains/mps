@@ -22,7 +22,7 @@ public class EnumerationDescriptor__FontStyle_Enum extends EnumerationDescriptor
   private final EnumerationDescriptor.MemberDescriptor myMember_QUERY_0 = new EnumerationDescriptor.MemberDescriptor("QUERY", "query", 0x11c47b3e786L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445978");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, 0x100655257feL, 0x1006552a404L, 0x1006577889aL, 0x1082a1c2aa1L, 0x11c47b3e786L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_BOLD_0, myMember_ITALIC_0, myMember_BOLD_ITALIC_0, myMember_PLAIN_0, myMember_QUERY_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_BOLD_0, myMember_ITALIC_0, myMember_BOLD_ITALIC_0, myMember_PLAIN_0, myMember_QUERY_0);
 
   @Nullable
   @Override

@@ -21,7 +21,7 @@ public class EnumerationDescriptor_CellKeyMapCaretPolicy extends EnumerationDesc
   private final EnumerationDescriptor.MemberDescriptor myMember_INTERMEDIATE_POSITION_0 = new EnumerationDescriptor.MemberDescriptor("INTERMEDIATE_POSITION", "INTERMEDIATE_POSITION", 0x10a424bd3a5L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446116");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109ae53b170L, 0x109ae53b2baL, 0x109ae558032L, 0x109ae5610ccL, 0x10a424bd3a5L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_ANY_POSITION_0, myMember_FIRST_POSITION_0, myMember_LAST_POSITION_0, myMember_INTERMEDIATE_POSITION_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_ANY_POSITION_0, myMember_FIRST_POSITION_0, myMember_LAST_POSITION_0, myMember_INTERMEDIATE_POSITION_0);
 
   @Nullable
   @Override

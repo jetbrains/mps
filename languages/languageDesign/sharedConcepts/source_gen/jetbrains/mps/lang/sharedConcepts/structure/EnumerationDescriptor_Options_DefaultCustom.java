@@ -19,7 +19,7 @@ public class EnumerationDescriptor_Options_DefaultCustom extends EnumerationDesc
   private final EnumerationDescriptor.MemberDescriptor myMember_custom__0 = new EnumerationDescriptor.MemberDescriptor("custom_", "custom_", 0x10e811e894dL, "r:00000000-0000-4000-0000-011c895902bc(jetbrains.mps.lang.sharedConcepts.structure)/4241665505353447369");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x10e811b985dL, 0x10e811b985eL, 0x10e811e894dL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_default__0, myMember_custom__0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_default__0, myMember_custom__0);
 
   @Nullable
   @Override

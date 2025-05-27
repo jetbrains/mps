@@ -20,7 +20,7 @@ public class EnumerationDescriptor__YesNoDefault_Enum extends EnumerationDescrip
   private final EnumerationDescriptor.MemberDescriptor myMember_none_0 = new EnumerationDescriptor.MemberDescriptor("none", "none", 0xfc5f30fc29L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353445666");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfc5f30fc26L, 0xfc5f30fc27L, 0xfc5f30fc28L, 0xfc5f30fc29L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_yes_0, myMember_no_0, myMember_none_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_yes_0, myMember_no_0, myMember_none_0);
 
   @Nullable
   @Override

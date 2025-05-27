@@ -20,7 +20,7 @@ public class EnumerationDescriptor_TrimKind extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_trailing_0 = new EnumerationDescriptor.MemberDescriptor("trailing", "trailing", 0x11d47df9509L, "r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/4241665505353445515");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df9506L, 0x11d47df9507L, 0x11d47df9508L, 0x11d47df9509L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_both_0, myMember_leading_0, myMember_trailing_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_both_0, myMember_leading_0, myMember_trailing_0);
 
   @Nullable
   @Override

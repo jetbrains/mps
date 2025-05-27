@@ -20,7 +20,7 @@ public class EnumerationDescriptor_VarianceModifier extends EnumerationDescripto
   private final EnumerationDescriptor.MemberDescriptor myMember_out_0 = new EnumerationDescriptor.MemberDescriptor("out", "out", 0x21e0c923289a221fL, "r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2441172150877037087");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x21e0c923289a2189L, 0x21e0c923289a2222L, 0x21e0c923289a218aL, 0x21e0c923289a221fL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_inv_0, myMember_in_0, myMember_out_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_inv_0, myMember_in_0, myMember_out_0);
 
   @Nullable
   @Override

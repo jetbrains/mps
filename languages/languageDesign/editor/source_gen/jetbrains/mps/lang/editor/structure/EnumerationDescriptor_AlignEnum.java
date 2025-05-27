@@ -20,7 +20,7 @@ public class EnumerationDescriptor_AlignEnum extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_CENTER_0 = new EnumerationDescriptor.MemberDescriptor("CENTER", "center", 0x11fc753610aL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446274");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11fc752da8aL, 0x11fc752da8bL, 0x11fc75348c9L, 0x11fc753610aL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_LEFT_0, myMember_RIGHT_0, myMember_CENTER_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_LEFT_0, myMember_RIGHT_0, myMember_CENTER_0);
 
   @Nullable
   @Override

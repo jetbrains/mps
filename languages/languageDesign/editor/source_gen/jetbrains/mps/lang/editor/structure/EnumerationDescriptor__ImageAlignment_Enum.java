@@ -20,7 +20,7 @@ public class EnumerationDescriptor__ImageAlignment_Enum extends EnumerationDescr
   private final EnumerationDescriptor.MemberDescriptor myMember_tile_0 = new EnumerationDescriptor.MemberDescriptor("tile", "alignmentTile", 0x1095e119bccL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446110");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1095e10780bL, 0x1095e107973L, 0x1095e11648eL, 0x1095e119bccL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_justify_0, myMember_center_0, myMember_tile_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_justify_0, myMember_center_0, myMember_tile_0);
 
   @Nullable
   @Override

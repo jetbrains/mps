@@ -21,7 +21,7 @@ public class EnumerationDescriptor_Cardinality extends EnumerationDescriptorBase
   private final EnumerationDescriptor.MemberDescriptor myMember__1__n_0 = new EnumerationDescriptor.MemberDescriptor("_1__n", "1..n", 0xfc6f3944c6L, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447572");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, 0xfc6f3944c3L, 0xfc6f3944c4L, 0xfc6f3944c5L, 0xfc6f3944c6L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__0__1_0, myMember__1_0, myMember__0__n_0, myMember__1__n_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember__0__1_0, myMember__1_0, myMember__0__n_0, myMember__1__n_0);
 
   @Nullable
   @Override

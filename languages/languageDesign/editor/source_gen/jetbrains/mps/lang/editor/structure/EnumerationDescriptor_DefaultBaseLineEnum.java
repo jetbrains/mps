@@ -20,7 +20,7 @@ public class EnumerationDescriptor_DefaultBaseLineEnum extends EnumerationDescri
   private final EnumerationDescriptor.MemberDescriptor myMember_LAST_0 = new EnumerationDescriptor.MemberDescriptor("LAST", "last cell baseline", 0x69c06896a0e4b8f0L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446279");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x69c06896a0e4b8a9L, 0x69c06896a0e4b8aaL, 0x69c06896a0e4b8acL, 0x69c06896a0e4b8f0L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_FIRST_0, myMember_CENTER_0, myMember_LAST_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_FIRST_0, myMember_CENTER_0, myMember_LAST_0);
 
   @Nullable
   @Override

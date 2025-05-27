@@ -19,7 +19,7 @@ public class EnumerationDescriptor__LeftRight_Enum extends EnumerationDescriptor
   private final EnumerationDescriptor.MemberDescriptor myMember_right_0 = new EnumerationDescriptor.MemberDescriptor("right", "right", 0x10a55460a2cL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446191");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10a55456475L, 0x10a55456476L, 0x10a55460a2cL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_left_0, myMember_right_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_left_0, myMember_right_0);
 
   @Nullable
   @Override

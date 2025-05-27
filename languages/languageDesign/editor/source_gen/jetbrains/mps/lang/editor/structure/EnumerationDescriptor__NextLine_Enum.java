@@ -20,7 +20,7 @@ public class EnumerationDescriptor__NextLine_Enum extends EnumerationDescriptorB
   private final EnumerationDescriptor.MemberDescriptor myMember_indented_0 = new EnumerationDescriptor.MemberDescriptor("indented", "indented", 0x11b31a0f3f9L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446205");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b31a0f3f8L, 0x11b31a2f1b1L, 0x11b31a2e193L, 0x11b31a0f3f9L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_right_0, myMember_next_line_0, myMember_indented_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_right_0, myMember_next_line_0, myMember_indented_0);
 
   @Nullable
   @Override

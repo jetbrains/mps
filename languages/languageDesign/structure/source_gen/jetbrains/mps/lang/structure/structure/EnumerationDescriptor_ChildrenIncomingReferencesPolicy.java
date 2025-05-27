@@ -20,7 +20,7 @@ public class EnumerationDescriptor_ChildrenIncomingReferencesPolicy extends Enum
   private final EnumerationDescriptor.MemberDescriptor myMember_forbidden_0 = new EnumerationDescriptor.MemberDescriptor("forbidden", "enforce `forbidden'", 0x2cb1ba0af1eb0956L, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447651");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2cb1ba0af1eb0951L, 0x2cb1ba0af1eb0952L, 0x2cb1ba0af1eb0953L, 0x2cb1ba0af1eb0956L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_allowed_0, myMember_local_0, myMember_forbidden_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_allowed_0, myMember_local_0, myMember_forbidden_0);
 
   @Nullable
   @Override

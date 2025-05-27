@@ -20,7 +20,7 @@ public class EnumerationDescriptor__CaretPosition_Enum extends EnumerationDescri
   private final EnumerationDescriptor.MemberDescriptor myMember_LAST_0 = new EnumerationDescriptor.MemberDescriptor("LAST", "last", 0x116e80587e6L, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446196");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x116e8045225L, 0x116e8045226L, 0x116e8057864L, 0x116e80587e6L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_NONE_0, myMember_FIRST_0, myMember_LAST_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_NONE_0, myMember_FIRST_0, myMember_LAST_0);
 
   @Nullable
   @Override

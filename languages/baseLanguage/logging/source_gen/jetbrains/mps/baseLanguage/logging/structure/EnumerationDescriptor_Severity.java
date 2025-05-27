@@ -23,7 +23,7 @@ public class EnumerationDescriptor_Severity extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_trace_0 = new EnumerationDescriptor.MemberDescriptor("trace", "trace", 0x10fc53db5d2L, "r:00000000-0000-4000-0000-011c8959057f(jetbrains.mps.baseLanguage.logging.structure)/4241665505353445548");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, 0x10fc53ae114L, 0x10fc53d1944L, 0x10fc53d472aL, 0x10fc53da2b7L, 0x1104a510496L, 0x10fc53db5d2L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_fatal_0, myMember_error_0, myMember_warn_0, myMember_debug_0, myMember_info_0, myMember_trace_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_fatal_0, myMember_error_0, myMember_warn_0, myMember_debug_0, myMember_info_0, myMember_trace_0);
 
   @Nullable
   @Override

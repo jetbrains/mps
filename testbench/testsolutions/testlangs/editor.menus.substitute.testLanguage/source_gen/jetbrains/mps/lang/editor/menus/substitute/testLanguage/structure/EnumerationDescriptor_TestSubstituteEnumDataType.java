@@ -19,7 +19,7 @@ public class EnumerationDescriptor_TestSubstituteEnumDataType extends Enumeratio
   private final EnumerationDescriptor.MemberDescriptor myMember_mySecondValue_0 = new EnumerationDescriptor.MemberDescriptor("mySecondValue", "second presentation", 0x69b757bd7bd1809L, "r:c9a3f91a-729c-4ebe-a9f0-0bd3bc03e39c(jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure)/4241665505353448663");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1807L, 0x69b757bd7bd1808L, 0x69b757bd7bd1809L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_myFirstValue_0, myMember_mySecondValue_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_myFirstValue_0, myMember_mySecondValue_0);
 
   @Nullable
   @Override

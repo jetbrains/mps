@@ -22,7 +22,7 @@ public class EnumerationDescriptor_ValueKind extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_numeric_0 = new EnumerationDescriptor.MemberDescriptor("numeric", "numeric", 0x1d111c815eee70cdL, "r:87765d2d-a756-4883-9acc-6a42e5bf6c24(jetbrains.mps.samples.fincalculator.structure)/2094486643673034957");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627c2L, 0x1d111c815ee9dbb5L, 0x1d111c815ee9dbb6L, 0x1d111c815ee9dbb7L, 0x20e1c9c3baa061c7L, 0x20e1c9c3baa061ccL, 0x1d111c815eee70cdL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_amount_0, myMember_percent_0, myMember_logical_0, myMember_textual_0, myMember_numeric_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_amount_0, myMember_percent_0, myMember_logical_0, myMember_textual_0, myMember_numeric_0);
 
   @Nullable
   @Override

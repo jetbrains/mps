@@ -19,7 +19,7 @@ public class EnumerationDescriptor_TableComponentEnum extends EnumerationDescrip
   private final EnumerationDescriptor.MemberDescriptor myMember_VERTICAL_COLLECTION_0 = new EnumerationDescriptor.MemberDescriptor("VERTICAL_COLLECTION", "vertical collection", 0x5ea66701cd0a0c8aL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446288");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5ea66701cd0a0c87L, 0x5ea66701cd0a0c89L, 0x5ea66701cd0a0c8aL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_HORIZONTAL_COLLECTION_0, myMember_VERTICAL_COLLECTION_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_HORIZONTAL_COLLECTION_0, myMember_VERTICAL_COLLECTION_0);
 
   @Nullable
   @Override

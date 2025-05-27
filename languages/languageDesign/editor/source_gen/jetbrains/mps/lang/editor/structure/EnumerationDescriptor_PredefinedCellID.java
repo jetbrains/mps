@@ -25,7 +25,7 @@ public class EnumerationDescriptor_PredefinedCellID extends EnumerationDescripto
   private final EnumerationDescriptor.MemberDescriptor myMember_mostRelevant_0 = new EnumerationDescriptor.MemberDescriptor("mostRelevant", "MOST_RELEVANT", 0x52599cc038baeeddL, "r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4241665505353446298");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880a97L, 0x1e02662c4b880a98L, 0x1e02662c4b8811f0L, 0x1e02662c4b8811ecL, 0x1e02662c4b8811e9L, 0x1c8da594685004bdL, 0x1c8da594685004c3L, 0x1c8da594685004caL, 0x52599cc038baeeddL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_first_0, myMember_last_0, myMember_firstEditable_0, myMember_lastEditable_0, myMember_firstError_0, myMember_lastError_0, myMember_focusPolicy_0, myMember_mostRelevant_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_first_0, myMember_last_0, myMember_firstEditable_0, myMember_lastEditable_0, myMember_firstError_0, myMember_lastError_0, myMember_focusPolicy_0, myMember_mostRelevant_0);
 
   @Nullable
   @Override
