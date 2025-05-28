@@ -5065,6 +5065,60 @@
                     </node>
                   </node>
                 </node>
+                <node concept="3cpWs8" id="6gq1gaF_6KX" role="3cqZAp">
+                  <node concept="3cpWsn" id="6gq1gaF_6KY" role="3cpWs9">
+                    <property role="TrG5h" value="wt" />
+                    <node concept="3uibUv" id="6gq1gaF_58Y" role="1tU5fm">
+                      <ref role="3uigEE" to="3ju5:~WriteTransaction" resolve="WriteTransaction" />
+                    </node>
+                    <node concept="2ShNRf" id="6gq1gaF_6KZ" role="33vP2m">
+                      <node concept="1pGfFk" id="6gq1gaF_6L0" role="2ShVmc">
+                        <property role="373rjd" value="true" />
+                        <ref role="37wK5l" to="3ju5:~WriteTransaction.&lt;init&gt;(jetbrains.mps.components.ComponentHost,java.lang.Runnable)" resolve="WriteTransaction" />
+                        <node concept="2OqwBi" id="6gq1gaF_6L1" role="37wK5m">
+                          <node concept="2OqwBi" id="6gq1gaF_6L2" role="2Oq$k0">
+                            <node concept="2_BwXt" id="6gq1gaF_6L3" role="2Oq$k0" />
+                            <node concept="liA8E" id="6gq1gaF_6L4" role="2OqNvi">
+                              <ref role="37wK5l" to="hfuk:2BjwmTxTf34" resolve="getProject" />
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="6gq1gaF_6L5" role="2OqNvi">
+                            <ref role="37wK5l" to="z1c3:~Project.getPlatform()" resolve="getPlatform" />
+                          </node>
+                        </node>
+                        <node concept="1bVj0M" id="6gq1gaF_6L6" role="37wK5m">
+                          <node concept="3clFbS" id="6gq1gaF_6L7" role="1bW5cS">
+                            <node concept="2Gpval" id="6gq1gaF_6L8" role="3cqZAp">
+                              <node concept="2GrKxI" id="6gq1gaF_6L9" role="2Gsz3X">
+                                <property role="TrG5h" value="sfm" />
+                              </node>
+                              <node concept="3clFbS" id="6gq1gaF_6La" role="2LFqv$">
+                                <node concept="3clFbF" id="6gq1gaF_6Lb" role="3cqZAp">
+                                  <node concept="2OqwBi" id="6gq1gaF_6Lc" role="3clFbG">
+                                    <node concept="2GrUjf" id="6gq1gaF_6Ld" role="2Oq$k0">
+                                      <ref role="2Gs0qQ" node="6gq1gaF_6L9" resolve="sfm" />
+                                    </node>
+                                    <node concept="liA8E" id="6gq1gaF_6Le" role="2OqNvi">
+                                      <ref role="37wK5l" node="6Fk9mCuTem2" resolve="flushChanges" />
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="2OqwBi" id="6gq1gaF_6Lf" role="2GsD0m">
+                                <node concept="37vLTw" id="6gq1gaF_6Lg" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="6Fk9mCuR9kL" resolve="moduleStaleFilesMap" />
+                                </node>
+                                <node concept="liA8E" id="6gq1gaF_6Lh" role="2OqNvi">
+                                  <ref role="37wK5l" to="33ny:~Map.values()" resolve="values" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
                 <node concept="3clFbJ" id="3xnl$BhG2gb" role="3cqZAp">
                   <node concept="3clFbS" id="3xnl$BhG2gc" role="3clFbx">
                     <node concept="1daRAt" id="3xnl$BhG2gd" role="3cqZAp">
@@ -5080,40 +5134,10 @@
                   <node concept="3fqX7Q" id="3xnl$BhG2gg" role="3clFbw">
                     <node concept="2OqwBi" id="3xnl$BhG2gh" role="3fr31v">
                       <node concept="liA8E" id="3xnl$BhG2gi" role="2OqNvi">
-                        <ref role="37wK5l" to="3ju5:~FileSystem.runWriteTransaction(java.lang.Runnable)" resolve="runWriteTransaction" />
-                        <node concept="1bVj0M" id="3xnl$BhG2gj" role="37wK5m">
-                          <node concept="3clFbS" id="3xnl$BhG2gk" role="1bW5cS">
-                            <node concept="2Gpval" id="3xnl$BhG2gl" role="3cqZAp">
-                              <node concept="2GrKxI" id="3xnl$BhG2gn" role="2Gsz3X">
-                                <property role="TrG5h" value="sfm" />
-                              </node>
-                              <node concept="3clFbS" id="3xnl$BhG2go" role="2LFqv$">
-                                <node concept="3clFbF" id="3xnl$BhG2gp" role="3cqZAp">
-                                  <node concept="2OqwBi" id="3xnl$BhG2gq" role="3clFbG">
-                                    <node concept="2GrUjf" id="3xnl$BhG2gr" role="2Oq$k0">
-                                      <ref role="2Gs0qQ" node="3xnl$BhG2gn" resolve="sfm" />
-                                    </node>
-                                    <node concept="liA8E" id="3xnl$BhG2gs" role="2OqNvi">
-                                      <ref role="37wK5l" node="6Fk9mCuTem2" resolve="flushChanges" />
-                                    </node>
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="2OqwBi" id="6Fk9mCuT71H" role="2GsD0m">
-                                <node concept="37vLTw" id="6Fk9mCuT71I" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="6Fk9mCuR9kL" resolve="moduleStaleFilesMap" />
-                                </node>
-                                <node concept="liA8E" id="6Fk9mCuT71J" role="2OqNvi">
-                                  <ref role="37wK5l" to="33ny:~Map.values()" resolve="values" />
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                        </node>
+                        <ref role="37wK5l" to="3ju5:~WriteTransaction.executeAndWait()" resolve="executeAndWait" />
                       </node>
-                      <node concept="2YIFZM" id="3xnl$BhG2gt" role="2Oq$k0">
-                        <ref role="37wK5l" to="3ju5:~FileSystem.getInstance()" resolve="getInstance" />
-                        <ref role="1Pybhc" to="3ju5:~FileSystem" resolve="FileSystem" />
+                      <node concept="37vLTw" id="6gq1gaF_fXb" role="2Oq$k0">
+                        <ref role="3cqZAo" node="6gq1gaF_6KY" resolve="wt" />
                       </node>
                     </node>
                   </node>

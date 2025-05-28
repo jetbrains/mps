@@ -18,13 +18,15 @@ import jetbrains.mps.make.resources.IPropertiesAccessor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.smodel.resources.TResource;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.internal.make.runtime.util.DeltaReconciler;
 import jetbrains.mps.internal.make.runtime.util.FilesDelta;
 import java.util.Objects;
 import jetbrains.mps.make.script.IFeedback;
+import jetbrains.mps.vfs.WriteTransaction;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.make.script.IConfig;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
@@ -76,7 +78,8 @@ public class CopyPluginXml_Facet extends IFacet.Stub {
                   String dest = vars(pa.forResource(tres)).pluginRoot();
 
                   if (dest != null) {
-                    final IFile destDir = FileSystem.getInstance().getFile(MacrosFactory.forModule(tres.module()).expandPath(dest));
+                    final IFileSystem localFS = monitor.getSession().getProject().getComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
+                    final IFile destDir = localFS.getFile(MacrosFactory.forModule(tres.module()).expandPath(dest));
                     if (destDir.exists() && destDir.isDirectory()) {
                       final IFile metaInf = destDir.findChild("META-INF");
                       if (!(metaInf.exists()) || metaInf.isDirectory()) {
@@ -93,7 +96,7 @@ public class CopyPluginXml_Facet extends IFacet.Stub {
                           }
                         });
                         if (pluginXml[0] != null) {
-                          FileSystem.getInstance().runWriteTransaction(new Runnable() {
+                          new WriteTransaction(localFS, new Runnable() {
                             @Override
                             public void run() {
                               if (!(metaInf.exists())) {
@@ -101,7 +104,7 @@ public class CopyPluginXml_Facet extends IFacet.Stub {
                               }
                               IFileUtil.copyFileContent(pluginXml[0], metaInf.findChild(pluginXml[0].getName()));
                             }
-                          });
+                          }).executeAndWait();
                         }
                       }
 

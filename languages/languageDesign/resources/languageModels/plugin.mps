@@ -95,6 +95,9 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
+      </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
@@ -174,7 +177,6 @@
         <child id="1235747002942" name="parameter" index="2SgHGx" />
       </concept>
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
-        <property id="890797661671409019" name="forceMultiLine" index="3yWfEV" />
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
       </concept>
@@ -1357,29 +1359,41 @@
                   </node>
                 </node>
                 <node concept="3clFbH" id="3hEqlZ1r0k1" role="3cqZAp" />
-                <node concept="3clFbF" id="20tipxamyqZ" role="3cqZAp">
-                  <node concept="2OqwBi" id="20tipxamza4" role="3clFbG">
-                    <node concept="2YIFZM" id="20tipxamz9A" role="2Oq$k0">
-                      <ref role="37wK5l" to="3ju5:~FileSystem.getInstance()" resolve="getInstance" />
-                      <ref role="1Pybhc" to="3ju5:~FileSystem" resolve="FileSystem" />
-                    </node>
-                    <node concept="liA8E" id="20tipxamzgA" role="2OqNvi">
-                      <ref role="37wK5l" to="3ju5:~FileSystem.runWriteTransaction(java.lang.Runnable)" resolve="runWriteTransaction" />
-                      <node concept="1bVj0M" id="5KGdJjE1QSd" role="37wK5m">
-                        <property role="3yWfEV" value="true" />
-                        <node concept="3clFbS" id="5KGdJjE1QSo" role="1bW5cS">
-                          <node concept="3clFbF" id="Hjn6ojpXhb" role="3cqZAp">
-                            <node concept="2OqwBi" id="Hjn6ojpXqJ" role="3clFbG">
-                              <node concept="37vLTw" id="59L961hZ2Z" role="2Oq$k0">
-                                <ref role="3cqZAo" node="Hjn6ojoKhm" resolve="fp" />
-                              </node>
-                              <node concept="liA8E" id="Hjn6ojpXCN" role="2OqNvi">
-                                <ref role="37wK5l" to="iqmz:3KiLc2_D183" resolve="flushChanges" />
+                <node concept="3clFbF" id="6gq1gaFzPgm" role="3cqZAp">
+                  <node concept="2OqwBi" id="6gq1gaFzROY" role="3clFbG">
+                    <node concept="2ShNRf" id="6gq1gaFzPgi" role="2Oq$k0">
+                      <node concept="1pGfFk" id="6gq1gaFzRBF" role="2ShVmc">
+                        <property role="373rjd" value="true" />
+                        <ref role="37wK5l" to="3ju5:~WriteTransaction.&lt;init&gt;(jetbrains.mps.components.ComponentHost,java.lang.Runnable)" resolve="WriteTransaction" />
+                        <node concept="2OqwBi" id="6gq1gaFzVH$" role="37wK5m">
+                          <node concept="2OqwBi" id="6gq1gaFzVfI" role="2Oq$k0">
+                            <node concept="2_BwXt" id="6gq1gaFzUZz" role="2Oq$k0" />
+                            <node concept="liA8E" id="6gq1gaFzVrT" role="2OqNvi">
+                              <ref role="37wK5l" to="hfuk:2BjwmTxTf34" resolve="getProject" />
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="6gq1gaFzWi$" role="2OqNvi">
+                            <ref role="37wK5l" to="z1c3:~Project.getPlatform()" resolve="getPlatform" />
+                          </node>
+                        </node>
+                        <node concept="1bVj0M" id="5KGdJjE1QSd" role="37wK5m">
+                          <node concept="3clFbS" id="5KGdJjE1QSo" role="1bW5cS">
+                            <node concept="3clFbF" id="Hjn6ojpXhb" role="3cqZAp">
+                              <node concept="2OqwBi" id="Hjn6ojpXqJ" role="3clFbG">
+                                <node concept="37vLTw" id="59L961hZ2Z" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="Hjn6ojoKhm" resolve="fp" />
+                                </node>
+                                <node concept="liA8E" id="Hjn6ojpXCN" role="2OqNvi">
+                                  <ref role="37wK5l" to="iqmz:3KiLc2_D183" resolve="flushChanges" />
+                                </node>
                               </node>
                             </node>
                           </node>
                         </node>
                       </node>
+                    </node>
+                    <node concept="liA8E" id="6gq1gaFzRZe" role="2OqNvi">
+                      <ref role="37wK5l" to="3ju5:~WriteTransaction.executeAndWait()" resolve="executeAndWait" />
                     </node>
                   </node>
                 </node>

@@ -59,7 +59,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.make.java.ModelDependencies;
 import jetbrains.mps.make.delta.IDelta;
 import jetbrains.mps.smodel.resources.DResource;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.WriteTransaction;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import jetbrains.mps.smodel.resources.TResource;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
@@ -400,11 +400,12 @@ public class TextGen_Facet extends IFacet.Stub {
                 _output_21gswx_a0b = Sequence.fromIterable(_output_21gswx_a0b).concat(Sequence.fromIterable(Sequence.<IResource>singleton(new DResource(moduleWideStaleFiles))));
 
                 // flush stream handlers
-                if (!(FileSystem.getInstance().runWriteTransaction(() -> {
+                WriteTransaction wt = new WriteTransaction(monitor.getSession().getProject().getPlatform(), () -> {
                   for (ModuleStaleFileManager sfm : CollectionSequence.fromCollection(moduleStaleFilesMap.values())) {
                     sfm.flushChanges();
                   }
-                }))) {
+                });
+                if (!(wt.executeAndWait())) {
                   monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("Failed to save files")));
                   return new IResult.FAILURE(_output_21gswx_a0b);
                 }
