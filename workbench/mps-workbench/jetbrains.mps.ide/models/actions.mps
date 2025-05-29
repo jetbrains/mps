@@ -17201,21 +17201,6 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="5HMEM3InmUm" role="3cqZAp">
-          <node concept="3cpWsn" id="5HMEM3InmUn" role="3cpWs9">
-            <property role="TrG5h" value="frame" />
-            <property role="3TUv4t" value="true" />
-            <node concept="3uibUv" id="5HMEM3InmUo" role="1tU5fm">
-              <ref role="3uigEE" to="z60i:~Frame" resolve="Frame" />
-            </node>
-            <node concept="2OqwBi" id="5HMEM3InmUp" role="33vP2m">
-              <node concept="2WthIp" id="5HMEM3InmUq" role="2Oq$k0" />
-              <node concept="1DTwFV" id="5HMEM3InmUr" role="2OqNvi">
-                <ref role="2WH_rO" node="4NhTXTAh50q" resolve="frame" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="5HMEM3InmUt" role="3cqZAp">
           <node concept="3cpWsn" id="5HMEM3InmUu" role="3cpWs9">
             <property role="TrG5h" value="node" />
@@ -17231,6 +17216,30 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="4DRx3NbMm4S" role="3cqZAp">
+          <node concept="3cpWsn" id="4DRx3NbMm4T" role="3cpWs9">
+            <property role="TrG5h" value="repo" />
+            <node concept="3uibUv" id="4DRx3NbMkWy" role="1tU5fm">
+              <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
+            </node>
+            <node concept="2OqwBi" id="4DRx3NbMm4U" role="33vP2m">
+              <node concept="2OqwBi" id="4DRx3NbMm4V" role="2Oq$k0">
+                <node concept="2OqwBi" id="4DRx3NbMm4W" role="2Oq$k0">
+                  <node concept="2WthIp" id="4DRx3NbMm4X" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="4DRx3NbMm4Y" role="2OqNvi">
+                    <ref role="2WH_rO" node="4NhTXTAh50s" resolve="editor" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="4DRx3NbMm4Z" role="2OqNvi">
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
+                </node>
+              </node>
+              <node concept="liA8E" id="4DRx3NbMm50" role="2OqNvi">
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="4m$yf161l3u" role="3cqZAp">
           <node concept="3cpWsn" id="4m$yf161l3v" role="3cpWs9">
             <property role="TrG5h" value="text" />
@@ -17238,30 +17247,17 @@
             <node concept="3uibUv" id="4m$yf161l3j" role="1tU5fm">
               <ref role="3uigEE" to="wyt6:~String" resolve="String" />
             </node>
-            <node concept="2OqwBi" id="4m$yf161l3w" role="33vP2m">
-              <node concept="2ShNRf" id="4m$yf161l3x" role="2Oq$k0">
-                <node concept="1pGfFk" id="4m$yf161l3y" role="2ShVmc">
-                  <ref role="37wK5l" to="w1kc:~ModelAccessHelper.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository)" resolve="ModelAccessHelper" />
-                  <node concept="2OqwBi" id="4m$yf161l3z" role="37wK5m">
-                    <node concept="2OqwBi" id="4m$yf161l3$" role="2Oq$k0">
-                      <node concept="2OqwBi" id="4m$yf161l3_" role="2Oq$k0">
-                        <node concept="2WthIp" id="4m$yf161l3A" role="2Oq$k0" />
-                        <node concept="1DTwFV" id="4m$yf161l3B" role="2OqNvi">
-                          <ref role="2WH_rO" node="4NhTXTAh50s" resolve="editor" />
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="4m$yf161l3C" role="2OqNvi">
-                        <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="4m$yf161l3D" role="2OqNvi">
-                      <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
-                    </node>
-                  </node>
+            <node concept="2OqwBi" id="4DRx3NbN6Ii" role="33vP2m">
+              <node concept="2OqwBi" id="4DRx3NbN5Na" role="2Oq$k0">
+                <node concept="37vLTw" id="4DRx3NbN4Yu" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4DRx3NbMm4T" resolve="repo" />
+                </node>
+                <node concept="liA8E" id="4DRx3NbN6Bs" role="2OqNvi">
+                  <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
                 </node>
               </node>
-              <node concept="liA8E" id="4m$yf161l3E" role="2OqNvi">
-                <ref role="37wK5l" to="w1kc:~ModelAccessHelper.runReadAction(jetbrains.mps.util.Computable)" resolve="runReadAction" />
+              <node concept="liA8E" id="4DRx3NbN73b" role="2OqNvi">
+                <ref role="37wK5l" to="lui2:~ModelAccess.computeReadAction(java.util.function.Supplier)" resolve="computeReadAction" />
                 <node concept="1bVj0M" id="4m$yf161l3F" role="37wK5m">
                   <node concept="3clFbS" id="4m$yf161l3G" role="1bW5cS">
                     <node concept="3clFbF" id="4m$yf161l3H" role="3cqZAp">
@@ -17302,7 +17298,7 @@
                           <node concept="2OqwBi" id="5nu2CehIKrB" role="3clFbG">
                             <node concept="2ShNRf" id="5nu2CehIKrC" role="2Oq$k0">
                               <node concept="1pGfFk" id="5nu2CehIKrD" role="2ShVmc">
-                                <ref role="37wK5l" to="exr9:~NodeInformationDialog.&lt;init&gt;(jetbrains.mps.nodeEditor.EditorComponent,java.awt.Frame,java.awt.Point,java.lang.String)" resolve="NodeInformationDialog" />
+                                <ref role="37wK5l" to="exr9:~NodeInformationDialog.&lt;init&gt;(jetbrains.mps.nodeEditor.EditorComponent,java.awt.Point)" resolve="NodeInformationDialog" />
                                 <node concept="2OqwBi" id="4Yazox1U378" role="37wK5m">
                                   <node concept="1DTwFV" id="4Yazox1U37a" role="2OqNvi">
                                     <ref role="2WH_rO" node="4NhTXTAh50s" resolve="editor" />
@@ -17311,21 +17307,15 @@
                                     <ref role="32nkFo" node="4NhTXTAh4kv" resolve="ShowNodeInfo" />
                                   </node>
                                 </node>
-                                <node concept="37vLTw" id="3GM_nagTzwh" role="37wK5m">
-                                  <ref role="3cqZAo" node="5HMEM3InmUn" resolve="frame" />
-                                </node>
                                 <node concept="37vLTw" id="3GM_nagTBoe" role="37wK5m">
                                   <ref role="3cqZAo" node="4NhTXTAhejL" resolve="point" />
                                 </node>
-                                <node concept="37vLTw" id="4m$yf161nya" role="37wK5m">
-                                  <ref role="3cqZAo" node="4m$yf161l3v" resolve="text" />
-                                </node>
                               </node>
                             </node>
-                            <node concept="liA8E" id="5nu2CehIKrL" role="2OqNvi">
-                              <ref role="37wK5l" to="exr9:~NodeInformationDialog.setVisible(boolean)" resolve="setVisible" />
-                              <node concept="3clFbT" id="5nu2CehIKrM" role="37wK5m">
-                                <property role="3clFbU" value="true" />
+                            <node concept="liA8E" id="4DRx3NbNalZ" role="2OqNvi">
+                              <ref role="37wK5l" to="exr9:~NodeInformationDialog.show(java.lang.String)" resolve="show" />
+                              <node concept="37vLTw" id="4DRx3NbNb6X" role="37wK5m">
+                                <ref role="3cqZAo" node="4m$yf161l3v" resolve="text" />
                               </node>
                             </node>
                           </node>
@@ -17344,11 +17334,6 @@
           </node>
         </node>
       </node>
-    </node>
-    <node concept="1DS2jV" id="4NhTXTAh50q" role="1NuT2Z">
-      <property role="TrG5h" value="frame" />
-      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.FRAME" resolve="FRAME" />
-      <node concept="1oajcY" id="7HZe2EwZDlp" role="1oa70y" />
     </node>
     <node concept="1DS2jV" id="4NhTXTAh50s" role="1NuT2Z">
       <property role="TrG5h" value="editor" />

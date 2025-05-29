@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.nodeEditor;
 
@@ -2775,6 +2775,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
   public boolean hasNodeInformationDialog() {
+    // FIXME now that NodeInformationDialog uses popup, not JDialog, and is smart to handle cancellation, is there any reason
+    //       to keep this association and keep handling in Escape_Action?
     return myNodeInformationDialog != null;
   }
 

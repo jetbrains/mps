@@ -7,7 +7,6 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import java.awt.Frame;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -15,7 +14,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import java.awt.Point;
 import javax.swing.SwingUtilities;
-import jetbrains.mps.smodel.ModelAccessHelper;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.nodeEditor.NodeInformationDialog;
 import com.intellij.openapi.application.ApplicationManager;
 
@@ -37,12 +36,6 @@ public class ShowNodeInfo_Action extends BaseAction {
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
-    }
-    {
-      Frame p = event.getData(MPSCommonDataKeys.FRAME);
-      if (p == null) {
-        return false;
-      }
     }
     {
       EditorComponent editorComponent = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT);
@@ -72,13 +65,13 @@ public class ShowNodeInfo_Action extends BaseAction {
     final Point point = new Point(event.getData(MPSEditorDataKeys.EDITOR_CELL).getX() + event.getData(MPSEditorDataKeys.EDITOR_CELL).getWidth(), event.getData(MPSEditorDataKeys.EDITOR_CELL).getY());
     SwingUtilities.convertPointToScreen(point, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
     // Displaying this action in .invokeLater call to let popup menu be disposed first ( <node> will be disposed immediately by the corresponding events otherwise)
-    final Frame frame = event.getData(MPSCommonDataKeys.FRAME);
     final SNode node = event.getData(MPSCommonDataKeys.NODE);
-    final String text = new ModelAccessHelper(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditorContext().getRepository()).runReadAction(() -> NodeInformationDialog.createNodeInfo(node));
+    SRepository repo = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditorContext().getRepository();
+    final String text = repo.getModelAccess().computeReadAction(() -> NodeInformationDialog.createNodeInfo(node));
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       @Override
       public void run() {
-        new NodeInformationDialog(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), frame, point, text).setVisible(true);
+        new NodeInformationDialog(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), point).show(text);
       }
     });
   }
