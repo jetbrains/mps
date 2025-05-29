@@ -49,6 +49,7 @@
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="zdap" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.text(MPS.IDEA/)" />
     <import index="ctgy" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.plugins(MPS.IDEA/)" />
+    <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -65,7 +66,6 @@
         <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
-      <concept id="8010275703121539591" name="jetbrains.mps.baseLanguage.structure.InferredType" flags="ng" index="2yE$l8" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
@@ -506,12 +506,6 @@
         <node concept="3cpWs8" id="7RQMtR$hEgL" role="3cqZAp">
           <node concept="3cpWsn" id="7RQMtR$hEgM" role="3cpWs9">
             <property role="TrG5h" value="errors" />
-            <node concept="_YKpA" id="7RQMtR$hCJX" role="1tU5fm">
-              <node concept="3uibUv" id="7RQMtR$hCK3" role="_ZDj9">
-                <ref role="3uigEE" to="zdap:~HtmlChunk" resolve="HtmlChunk" />
-              </node>
-              <node concept="2yE$l8" id="7RQMtR$hCK2" role="lGtFl" />
-            </node>
             <node concept="2ShNRf" id="7RQMtR$hEgN" role="33vP2m">
               <node concept="Tc6Ow" id="7RQMtR$hEgO" role="2ShVmc">
                 <node concept="2OqwBi" id="5eJ8wgjuOF7" role="I$8f6">
@@ -525,6 +519,14 @@
                 </node>
               </node>
             </node>
+            <node concept="_YKpA" id="2VpW0qBl95D" role="1tU5fm">
+              <node concept="3uibUv" id="2VpW0qBl95E" role="_ZDj9">
+                <ref role="3uigEE" to="82uw:~Supplier" resolve="Supplier" />
+                <node concept="3uibUv" id="2VpW0qBl95F" role="11_B2D">
+                  <ref role="3uigEE" to="zdap:~HtmlChunk" resolve="HtmlChunk" />
+                </node>
+              </node>
+            </node>
           </node>
         </node>
         <node concept="1DcWWT" id="7RQMtR$hTt4" role="3cqZAp">
@@ -532,11 +534,16 @@
             <node concept="RRSsy" id="7RQMtR$i3ZO" role="3cqZAp">
               <property role="RRSoG" value="gZ5fh_4/error" />
               <node concept="3cpWs3" id="7RQMtR$iiax" role="RRSoy">
-                <node concept="2OqwBi" id="7RQMtR$impo" role="3uHU7w">
-                  <node concept="37vLTw" id="7RQMtR$iiko" role="2Oq$k0">
-                    <ref role="3cqZAo" node="7RQMtR$hTt8" resolve="err" />
+                <node concept="2OqwBi" id="2VpW0qBlt2J" role="3uHU7w">
+                  <node concept="2OqwBi" id="7RQMtR$impo" role="2Oq$k0">
+                    <node concept="37vLTw" id="7RQMtR$iiko" role="2Oq$k0">
+                      <ref role="3cqZAo" node="7RQMtR$hTt8" resolve="err" />
+                    </node>
+                    <node concept="liA8E" id="7RQMtR$iqac" role="2OqNvi">
+                      <ref role="37wK5l" to="82uw:~Supplier.get()" resolve="get" />
+                    </node>
                   </node>
-                  <node concept="liA8E" id="7RQMtR$iqac" role="2OqNvi">
+                  <node concept="liA8E" id="2VpW0qBlwOE" role="2OqNvi">
                     <ref role="37wK5l" to="zdap:~HtmlChunk.toString()" resolve="toString" />
                   </node>
                 </node>
@@ -546,8 +553,11 @@
           </node>
           <node concept="3cpWsn" id="7RQMtR$hTt8" role="1Duv9x">
             <property role="TrG5h" value="err" />
-            <node concept="3uibUv" id="7RQMtR$hTtc" role="1tU5fm">
-              <ref role="3uigEE" to="zdap:~HtmlChunk" resolve="HtmlChunk" />
+            <node concept="3uibUv" id="2VpW0qBlgd4" role="1tU5fm">
+              <ref role="3uigEE" to="82uw:~Supplier" resolve="Supplier" />
+              <node concept="3uibUv" id="2VpW0qBlgd5" role="11_B2D">
+                <ref role="3uigEE" to="zdap:~HtmlChunk" resolve="HtmlChunk" />
+              </node>
             </node>
           </node>
           <node concept="37vLTw" id="7RQMtR$hTtd" role="1DdaDG">
