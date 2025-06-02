@@ -26,6 +26,7 @@
 **/.mps/shelf
 
 # Build artifacts
+/workbench/mps-workbench/source/META-INF/MPSPlugin.xml
 /MPSPlugin/apiclasses
 /build/tmp/
 /contrib/build/tmp/

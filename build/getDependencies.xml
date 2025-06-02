@@ -13,6 +13,11 @@
   <loadproperties srcfile="version.properties" description="Load versions of dependencies to download"/>
   <loadproperties srcfile="lib.properties" description="Load destination paths to 3rd party libraries"/>
 
+  <uptodate property="MPSPlugin.upToDate" targetfile="${basedir}/../workbench/mps-workbench/source/META-INF/MPSPlugin.xml">
+    <srcfiles dir="${basedir}/../lib" includes="module-descriptors.xml"/>
+    <srcfiles dir="${basedir}/../workbench/mps-workbench/source/META-INF" includes="MPSPlugin.template.xml"/>
+  </uptodate>
+
   <!-- ===================================================== -->
   <!-- Help and ivy load                        -->
   <!-- ===================================================== -->
@@ -216,7 +221,7 @@
   <!-- Download 3rd party libraries                          -->
   <!-- ===================================================== -->
 
-  <target name="install" depends="download-platform,install-platform,download-3rd-party" description="Download all platform libs and sources"/>
+  <target name="install" depends="download-platform,install-platform,download-3rd-party,embed-module-descriptors" description="Download all platform libs and sources"/>
 
   <!-- ===================================================== -->
   <!-- Download libraries with ivy                           -->
@@ -259,11 +264,10 @@
     <chmod file="${basedir}/../bin/win/WinProcessListHelper.exe" perm="755"/>
   </target>
 
-  <!-- Not used yet -->
-  <target name="embed-module-descriptors">
-    <loadfile property="fileContent" srcFile="${basedir}/../lib/modules/module-descriptors.xml"/>
-    <copy file="${basedir}/../workbench/mps-workbench/source/META-INF/IdeaPlugin.template.xml" tofile="${basedir}/../workbench/mps-workbench/source/META-INF/IdeaPlugin.xml"/>
-    <replace file="${basedir}/../workbench/mps-workbench/source/META-INF/IdeaPlugin.xml" token="@@MODULE_DESCRIPTORS@@" value="${fileContent}"/>
+  <target name="embed-module-descriptors" unless="MPSPlugin.upToDate">
+    <loadfile property="fileContent" srcFile="${basedir}/../lib/module-descriptors.xml"/>
+    <copy overwrite="true" file="${basedir}/../workbench/mps-workbench/source/META-INF/MPSPlugin.template.xml" tofile="${basedir}/../workbench/mps-workbench/source/META-INF/MPSPlugin.xml"/>
+    <replace failOnNoReplacements="true" file="${basedir}/../workbench/mps-workbench/source/META-INF/MPSPlugin.xml" token="@@MODULE_DESCRIPTORS@@" value="${fileContent}"/>
   </target>
 
   <target name="update-licence-info">
