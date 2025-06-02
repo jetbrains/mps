@@ -112,7 +112,7 @@
   <root nodeRef="r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)/1929018697514204727">
     <file name="MoveNodesActionBase.java">
       <node id="5863271989071947374" at="30,27,31,24" concept="9" />
-      <node id="5863271989071947412" at="34,76,35,75" concept="9" />
+      <node id="5863271989071947412" at="34,76,35,231" concept="9" />
       <node id="8647218860633471861" at="37,127,38,26" concept="8" />
       <node id="8647218860633479088" at="38,26,39,50" concept="8" />
       <node id="8647218860633471868" at="39,50,40,97" concept="2" />
@@ -163,7 +163,7 @@
       <node id="5732777125910453289" at="82,0,103,0" concept="7" trace="askLocation#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;)Ljetbrains/mps/ide/platform/refactoring/NodeLocation;" />
       <node id="9192796297014353576" at="59,0,81,0" concept="7" trace="execute#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;Ljava/lang/Object;)V" />
       <scope id="5863271989071947373" at="30,27,31,24" />
-      <scope id="5863271989071947411" at="34,76,35,75" />
+      <scope id="5863271989071947411" at="34,76,35,231" />
       <scope id="5863271989071947509" at="55,80,56,40" />
       <scope id="9192796297014744482" at="69,44,70,82" />
       <scope id="9192796297014770646" at="71,12,72,54" />

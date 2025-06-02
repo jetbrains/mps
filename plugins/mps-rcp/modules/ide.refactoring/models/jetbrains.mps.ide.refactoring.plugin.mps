@@ -959,6 +959,78 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbJ" id="3HcORs6EnFe" role="3cqZAp">
+          <node concept="3clFbS" id="3HcORs6EnFg" role="3clFbx">
+            <node concept="3clFbF" id="3HcORs6Ey9n" role="3cqZAp">
+              <node concept="2OqwBi" id="3HcORs6Ey9o" role="3clFbG">
+                <node concept="2OqwBi" id="3HcORs6Ey9p" role="2Oq$k0">
+                  <node concept="tl45R" id="3HcORs6Ey9q" role="2Oq$k0" />
+                  <node concept="liA8E" id="3HcORs6Ey9r" role="2OqNvi">
+                    <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="3HcORs6Ey9s" role="2OqNvi">
+                  <ref role="37wK5l" to="qkt:~Presentation.setEnabled(boolean)" resolve="setEnabled" />
+                  <node concept="3clFbT" id="3HcORs6Ey9t" role="37wK5m" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs6" id="3HcORs6EzB2" role="3cqZAp" />
+          </node>
+          <node concept="2OqwBi" id="61ZTWDjM1yg" role="3clFbw">
+            <node concept="2OqwBi" id="3HcORs6EpxR" role="2Oq$k0">
+              <node concept="2WthIp" id="3HcORs6EpxU" role="2Oq$k0" />
+              <node concept="3gHZIF" id="3HcORs6EpxW" role="2OqNvi">
+                <ref role="2WH_rO" node="I5wdVHTn$u" resolve="nodesToMove" />
+              </node>
+            </node>
+            <node concept="2HwmR7" id="3HcORs6Ew_o" role="2OqNvi">
+              <node concept="1bVj0M" id="3HcORs6Ew_q" role="23t8la">
+                <node concept="3clFbS" id="3HcORs6Ew_r" role="1bW5cS">
+                  <node concept="3clFbF" id="3HcORs6Ew_s" role="3cqZAp">
+                    <node concept="22lmx$" id="3HcORs6ExI7" role="3clFbG">
+                      <node concept="2OqwBi" id="3HcORs6Ew_C" role="3uHU7B">
+                        <node concept="2JrnkZ" id="3HcORs6Ew_D" role="2Oq$k0">
+                          <node concept="2OqwBi" id="3HcORs6Ew_E" role="2JrQYb">
+                            <node concept="37vLTw" id="3HcORs6Ew_F" role="2Oq$k0">
+                              <ref role="3cqZAo" node="3HcORs6Ew_I" resolve="it" />
+                            </node>
+                            <node concept="I4A8Y" id="3HcORs6Ew_G" role="2OqNvi" />
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="3HcORs6Ew_H" role="2OqNvi">
+                          <ref role="37wK5l" to="mhbf:~SModel.isReadOnly()" resolve="isReadOnly" />
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="3HcORs6Ew_v" role="3uHU7w">
+                        <node concept="2OqwBi" id="3HcORs6Ew_w" role="2Oq$k0">
+                          <node concept="2JrnkZ" id="3HcORs6Ew_x" role="2Oq$k0">
+                            <node concept="2OqwBi" id="3HcORs6Ew_y" role="2JrQYb">
+                              <node concept="37vLTw" id="3HcORs6Ew_z" role="2Oq$k0">
+                                <ref role="3cqZAo" node="3HcORs6Ew_I" resolve="it" />
+                              </node>
+                              <node concept="I4A8Y" id="3HcORs6Ew_$" role="2OqNvi" />
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="3HcORs6Ew__" role="2OqNvi">
+                            <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="3HcORs6Ew_A" role="2OqNvi">
+                          <ref role="37wK5l" to="lui2:~SModule.isReadOnly()" resolve="isReadOnly" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="gl6BB" id="3HcORs6Ew_I" role="1bW2Oz">
+                  <property role="TrG5h" value="it" />
+                  <node concept="2jxLKc" id="3HcORs6Ew_J" role="1tU5fm" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbJ" id="6gEjUfBq$aW" role="3cqZAp">
           <node concept="2YIFZM" id="4X1d9kMBzJ2" role="3clFbw">
             <ref role="1Pybhc" to="lfzw:42LwYUtqJvj" resolve="MoveNodesUtil" />

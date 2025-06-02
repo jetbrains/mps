@@ -37,7 +37,7 @@ public class NewModel_Action extends BaseAction {
     Presentation presentation = event.getPresentation();
     presentation.setText(IdeBundle.message("actions.model.new.text"));
 
-    if (!(((SModule) MapSequence.fromMap(_params).get("module")) instanceof AbstractModule)) {
+    if (!(((SModule) MapSequence.fromMap(_params).get("module")) instanceof AbstractModule) || ((SModule) MapSequence.fromMap(_params).get("module")).isReadOnly()) {
       presentation.setEnabledAndVisible(false);
     } else {
       StereotypeProvider stereotypeProvider = StereotypeProvider.NONE;
