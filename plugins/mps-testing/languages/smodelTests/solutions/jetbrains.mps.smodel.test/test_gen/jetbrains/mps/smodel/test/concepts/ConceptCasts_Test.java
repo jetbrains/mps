@@ -19,14 +19,14 @@ public class ConceptCasts_Test {
   public void test_MPS_31361() throws Exception {
     List<SAbstractConcept> abstractConcepts = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.BaseConcept$gP, CONCEPTS.ExpressionStatement$O8, CONCEPTS.Statement$P6, CONCEPTS.INamedAspect$zw);
     List<SConcept> statementConcepts = ListSequence.fromList(abstractConcepts).where((it) -> SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(it), CONCEPTS.Statement$P6)).select((it) -> SNodeOperations.castConcept(it, CONCEPTS.Statement$P6)).toList();
-    Assert.assertEquals(ListSequence.fromList(statementConcepts).count(), 2);
+    Assert.assertEquals(Integer.valueOf(ListSequence.fromList(statementConcepts).count()), Integer.valueOf(2));
   }
   @Test
   public void test_MPS_31361_PoundExpression() throws Exception {
     List<SAbstractConcept> abstractConcepts = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.BaseConcept$gP, CONCEPTS.ExpressionStatement$O8, CONCEPTS.Statement$P6, CONCEPTS.INamedAspect$zw);
     final SConcept statement = CONCEPTS.Statement$P6;
     List<SConcept> statementConcepts = ListSequence.fromList(abstractConcepts).where((it) -> SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(it), CONCEPTS.Statement$P6)).select((it) -> SNodeOperations.castConcept(it, SNodeOperations.asSConcept(statement))).toList();
-    Assert.assertEquals(ListSequence.fromList(statementConcepts).count(), 2);
+    Assert.assertEquals(Integer.valueOf(ListSequence.fromList(statementConcepts).count()), Integer.valueOf(2));
   }
   @Test
   public void test_castToBaseConcept() throws Exception {

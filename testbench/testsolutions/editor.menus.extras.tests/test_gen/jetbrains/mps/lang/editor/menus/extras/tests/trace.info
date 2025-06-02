@@ -146,7 +146,7 @@
       <node id="6820996345401672814" at="60,10,61,0" concept="6" />
       <node id="6820996345401622575" at="61,0,62,175" concept="4" />
       <node id="6820996345401656667" at="62,175,63,0" concept="6" />
-      <node id="6820996345401657594" at="63,0,64,65" concept="1" />
+      <node id="6820996345401657594" at="63,0,64,99" concept="1" />
       <node id="6820996345401622063" at="29,0,31,0" concept="7" trace="ourParametersCacheExtension" />
       <node id="6820996345401622063" at="32,0,35,0" concept="0" trace="InapplicableIntention_NotIncludedInMenu_Test#()V" />
       <node id="6820996345401622063" at="43,0,46,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -168,7 +168,7 @@
         <var name="context" id="6820996345401628506" />
         <var name="executable" id="6820996345401628509" />
       </scope>
-      <scope id="6820996345401675451" at="53,55,64,65">
+      <scope id="6820996345401675451" at="53,55,64,99">
         <var name="context" id="6820996345401622576" />
         <var name="part" id="6820996345401622807" />
       </scope>
@@ -194,7 +194,7 @@
       <node id="8874023590560440669" at="60,10,61,0" concept="6" />
       <node id="8874023590560440670" at="61,0,62,175" concept="4" />
       <node id="8874023590560440678" at="62,175,63,0" concept="6" />
-      <node id="8874023590560440679" at="63,0,64,65" concept="1" />
+      <node id="8874023590560440679" at="63,0,64,99" concept="1" />
       <node id="8874023590560440629" at="29,0,31,0" concept="7" trace="ourParametersCacheExtension" />
       <node id="8874023590560440629" at="32,0,35,0" concept="0" trace="ApplicableIntention_IncludedInMenu_Test#()V" />
       <node id="8874023590560440629" at="43,0,46,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -216,7 +216,7 @@
         <var name="context" id="8874023590560440654" />
         <var name="executable" id="8874023590560440657" />
       </scope>
-      <scope id="8874023590560440643" at="53,55,64,65">
+      <scope id="8874023590560440643" at="53,55,64,99">
         <var name="context" id="8874023590560440671" />
         <var name="part" id="8874023590560440645" />
       </scope>

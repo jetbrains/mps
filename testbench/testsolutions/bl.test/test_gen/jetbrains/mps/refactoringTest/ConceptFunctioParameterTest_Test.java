@@ -45,7 +45,7 @@ public class ConceptFunctioParameterTest_Test extends BaseTransformationTest {
       initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringAnalyzer analyzer = new ExtractMethodRefactoringAnalyzer(ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("l1"), getAnnotatedNode("l2")));
-        Assert.assertEquals(1, ListSequence.fromList(analyzer.getInputVariables()).count());
+        Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(ListSequence.fromList(analyzer.getInputVariables()).count()));
       });
     }
 

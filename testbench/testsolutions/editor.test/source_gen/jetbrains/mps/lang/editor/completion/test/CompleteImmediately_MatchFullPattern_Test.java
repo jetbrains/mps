@@ -37,7 +37,7 @@ public class CompleteImmediately_MatchFullPattern_Test extends BaseTransformatio
       initEditorComponent("264584657488355529", "264584657488355532");
       typeString("cursor");
       Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
-      Assert.assertEquals(2, getEditorComponent().getNodeSubstituteChooser().getNumberOfActions());
+      Assert.assertEquals(Integer.valueOf(2), Integer.valueOf(getEditorComponent().getNodeSubstituteChooser().getNumberOfActions()));
 
     }
   }

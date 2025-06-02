@@ -12,7 +12,7 @@ public class Child_Test extends Parent_Test {
     this.setFoo(7);
     final int foo = 11;
     int bar = ((_FunctionTypes._return_P0_E0<Integer>) () -> Child_Test.this.foo * foo).invoke();
-    Assert.assertEquals(7 * 11, bar);
+    Assert.assertEquals(Integer.valueOf(7 * 11), Integer.valueOf(bar));
   }
   public void setFoo(int foo) {
     this.foo = foo;

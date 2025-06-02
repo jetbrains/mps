@@ -51,7 +51,7 @@ public class MethodReferences_Test {
   @Test
   public void test_testConstructorInvocation() throws Exception {
     Builder<AtomicInteger, Integer> intBuider = AtomicInteger::new;
-    Assert.assertEquals(intBuider.make(3).intValue(), 3);
+    Assert.assertEquals(Integer.valueOf(intBuider.make(3).intValue()), Integer.valueOf(3));
   }
   @Test
   public void test_testStaticMethodCall() throws Exception {

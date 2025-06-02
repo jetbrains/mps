@@ -24,6 +24,6 @@ public class ClosureList_Test {
     ListSequence.fromList(closures).addElement(calls::addAndGet);
 
     ListSequence.fromList(closures).visitAll((it) -> it.invoke(1));
-    Assert.assertEquals(3, calls.get());
+    Assert.assertEquals(Integer.valueOf(3), Integer.valueOf(calls.get()));
   }
 }

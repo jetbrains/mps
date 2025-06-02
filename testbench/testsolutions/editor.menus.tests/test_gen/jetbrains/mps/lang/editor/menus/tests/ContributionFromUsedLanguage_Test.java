@@ -43,7 +43,7 @@ public class ContributionFromUsedLanguage_Test extends BaseTransformationTest {
       initEditorComponent("3526874291840777615", "");
       UsedLanguagesUtils.assertLanguageUsed(getEditorComponent(), MetaAdapterFactory.getLanguage(0x9b3af7e09a524741L, 0xa75dbecf7e1d5117L, "jetbrains.mps.lang.editor.transformationMenu.testExtendingLanguage"));
       List<TransformationMenuItem> items = MenuLoadingUtils.loadNamedMenu(getEditorComponent(), new SNodePointer("r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)", "3526874291840774961"), "test location");
-      Assert.assertEquals(1, ListSequence.fromList(items).count());
+      Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(ListSequence.fromList(items).count()));
       ActionItem item = (ActionItem) ListSequence.fromList(items).getElement(0);
       Assert.assertEquals("action item from used extending language", item.getLabelText(""));
     }

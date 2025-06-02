@@ -53,7 +53,7 @@ public class Concepts_Test extends BaseTransformationTest {
         List<SourcedSignature> scope = Sequence.fromIterable(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(getAnnotatedNode("typeParameterType"), filter, context, ((boolean) false))).translate((it) -> it.getElements(null)).distinct().toList();
 
         // 6 links (3 for BaseConcept, 3 for A, 3 for B)
-        Assert.assertEquals(9, ListSequence.fromList(scope).count());
+        Assert.assertEquals(Integer.valueOf(9), Integer.valueOf(ListSequence.fromList(scope).count()));
       });
     }
 

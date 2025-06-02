@@ -243,7 +243,7 @@ public class BHTestRef_Test {
   @Test
   public void test_diamond5() throws Exception {
     SNode nodeI = createC5_cc8y9n_a0a0ib0();
-    Assert.assertEquals(TestResults.DEFAULT_RETURN_VALUE, ((Object) BHReflection.invoke0(nodeI, CONCEPTS.I3$IR, SMethodIdV2.create("foo", 8974396607664570390L, 0xafde54350bc867b2L))));
+    Assert.assertEquals(Integer.valueOf(TestResults.DEFAULT_RETURN_VALUE), ((Object) BHReflection.invoke0(nodeI, CONCEPTS.I3$IR, SMethodIdV2.create("foo", 8974396607664570390L, 0xafde54350bc867b2L))));
   }
   @Test
   public void test_diamond6() throws Exception {
@@ -477,13 +477,13 @@ public class BHTestRef_Test {
   public void test_nullability1() throws Exception {
     SNode l = null;
     Assert.assertEquals(null, ((Object) BHReflection.invoke0(l, CONCEPTS.L$fY, SMethodIdV2.create("bar", 7341373813157757302L, 0xf3d9214c9d1f9613L))));
-    Assert.assertEquals(0, ((int) (Integer) BHReflection.invoke0(l, CONCEPTS.L$fY, SMethodIdV2.create("foo", 7341373813157757256L, 0xf3d9214c9d1f9613L))));
+    Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(((int) (Integer) BHReflection.invoke0(l, CONCEPTS.L$fY, SMethodIdV2.create("foo", 7341373813157757256L, 0xf3d9214c9d1f9613L)))));
   }
   @Test
   public void test_nullability2() throws Exception {
     SNode m = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x65e1cc96389f81beL, "BHL7.structure.M"));
     Assert.assertEquals(null, ((Object) BHReflection.invoke0(SLinkOperations.getTarget(m, LINKS.myL$nVu2), CONCEPTS.L$fY, SMethodIdV2.create("bar", 7341373813157757302L, 0xf3d9214c9d1f9613L))));
-    Assert.assertEquals(0, ((int) (Integer) BHReflection.invoke0(SLinkOperations.getTarget(m, LINKS.myL$nVu2), CONCEPTS.L$fY, SMethodIdV2.create("foo", 7341373813157757256L, 0xf3d9214c9d1f9613L))));
+    Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(((int) (Integer) BHReflection.invoke0(SLinkOperations.getTarget(m, LINKS.myL$nVu2), CONCEPTS.L$fY, SMethodIdV2.create("foo", 7341373813157757256L, 0xf3d9214c9d1f9613L)))));
   }
   private static SNode createA_cc8y9n_a0a0a0() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$jy);

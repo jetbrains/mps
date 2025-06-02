@@ -254,7 +254,7 @@ public class BHTest_Test {
   @Test
   public void test_diamond5() throws Exception {
     SNode nodeI = createC5_a2wy8c_a0a0ib0();
-    Assert.assertEquals(TestResults.DEFAULT_RETURN_VALUE, I3__BehaviorDescriptor.foo_id7MbtyEhkk0m.invoke(nodeI));
+    Assert.assertEquals(Integer.valueOf(TestResults.DEFAULT_RETURN_VALUE), I3__BehaviorDescriptor.foo_id7MbtyEhkk0m.invoke(nodeI));
   }
   @Test
   public void test_diamond6() throws Exception {
@@ -496,13 +496,13 @@ public class BHTest_Test {
   public void test_nullability1() throws Exception {
     SNode l = null;
     Assert.assertEquals(null, L__BehaviorDescriptor.bar_id6nxN9oSBS5Q.invoke(l));
-    Assert.assertEquals(0, (int) L__BehaviorDescriptor.foo_id6nxN9oSBS58.invoke(l));
+    Assert.assertEquals(Integer.valueOf(0), Integer.valueOf((int) L__BehaviorDescriptor.foo_id6nxN9oSBS58.invoke(l)));
   }
   @Test
   public void test_nullability2() throws Exception {
     SNode m = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x65e1cc96389f81beL, "BHL7.structure.M"));
     Assert.assertEquals(null, L__BehaviorDescriptor.bar_id6nxN9oSBS5Q.invoke(SLinkOperations.getTarget(m, LINKS.myL$nVu2)));
-    Assert.assertEquals(0, (int) L__BehaviorDescriptor.foo_id6nxN9oSBS58.invoke(SLinkOperations.getTarget(m, LINKS.myL$nVu2)));
+    Assert.assertEquals(Integer.valueOf(0), Integer.valueOf((int) L__BehaviorDescriptor.foo_id6nxN9oSBS58.invoke(SLinkOperations.getTarget(m, LINKS.myL$nVu2))));
   }
   @Test
   public void test_seqConcept() throws Exception {

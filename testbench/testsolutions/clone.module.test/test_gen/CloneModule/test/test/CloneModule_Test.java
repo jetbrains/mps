@@ -98,7 +98,7 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
       originalAccesoryModels.value = originalLang.getAccessoryModels();
       clonedAccesoryModels.value = clonedLang.getAccessoryModels();
     });
-    Assert.assertEquals("Different count of accessory models", originalAccesoryModels.value.size(), clonedAccesoryModels.value.size());
+    Assert.assertEquals("Different count of accessory models", Integer.valueOf(originalAccesoryModels.value.size()), Integer.valueOf(clonedAccesoryModels.value.size()));
     int size = originalAccesoryModels.value.size();
     for (int i = 0; i < size; i++) {
       SModel originalAccesoryModel = originalAccesoryModels.value.get(i);

@@ -78,7 +78,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       initTestNodes();
       runWithinCommand(() -> {
         Assert.assertTrue(ListSequence.fromList(SNodeOperations.getReferences(getAnnotatedNode("emptyReferenceContainer"))).isEmpty());
-        Assert.assertEquals(3, ListSequence.fromList(SNodeOperations.getReferences(getAnnotatedNode("referenceContainer"))).count());
+        Assert.assertEquals(Integer.valueOf(3), Integer.valueOf(ListSequence.fromList(SNodeOperations.getReferences(getAnnotatedNode("referenceContainer"))).count()));
       });
     }
     public void test_target() throws Exception {
@@ -107,10 +107,10 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
         // Adding one unspecified reference and checking if it was added properly
         int initialSize = ListSequence.fromList(SNodeOperations.getReferences(getAnnotatedNode("brokenReferenceContainer"))).count();
         String unspecifiedReferenceName = TestBody.this.addUnspecifiedReference(getAnnotatedNode("brokenReferenceContainer"), getAnnotatedNode("grandChild"));
-        Assert.assertEquals(initialSize + 1, ListSequence.fromList(SNodeOperations.getReferences(getAnnotatedNode("brokenReferenceContainer"))).count());
+        Assert.assertEquals(Integer.valueOf(initialSize + 1), Integer.valueOf(ListSequence.fromList(SNodeOperations.getReferences(getAnnotatedNode("brokenReferenceContainer"))).count()));
         // Checking if unspecified reference is working properly
         Iterable<SReference> unspecifiedReferences = ListSequence.fromList(SNodeOperations.getReferences(getAnnotatedNode("brokenReferenceContainer"))).where((it) -> (SLinkOperations.findLinkDeclaration(it) == null));
-        Assert.assertEquals(1, Sequence.fromIterable(unspecifiedReferences).count());
+        Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(Sequence.fromIterable(unspecifiedReferences).count()));
         SReference theReference = Sequence.fromIterable(unspecifiedReferences).first();
         Assert.assertEquals(unspecifiedReferenceName, check_s3ecl5_a8a0a1a01n(SLinkOperations.getRefLink(theReference)));
         Assert.assertEquals(getAnnotatedNode("grandChild"), SLinkOperations.getTargetNode(theReference));
@@ -131,12 +131,12 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
         Assert.assertTrue(ListSequence.fromList(SNodeOperations.getReferences(getAnnotatedNode("brokenReferenceContainer"))).where((it) -> (SLinkOperations.getTargetNode(it) == null)).isEmpty());
         final SNode deletedNode = SLinkOperations.getTarget(getAnnotatedNode("brokenReferenceContainer"), LINKS.root$cBIX);
         SNodeOperations.deleteNode(deletedNode);
-        Assert.assertEquals(initialSize, ListSequence.fromList(SNodeOperations.getReferences(getAnnotatedNode("brokenReferenceContainer"))).count());
+        Assert.assertEquals(Integer.valueOf(initialSize), Integer.valueOf(ListSequence.fromList(SNodeOperations.getReferences(getAnnotatedNode("brokenReferenceContainer"))).count()));
         // the whole test method runs within a command, our model implementation makes sure reference resolution during
         // command works even for nodes deleted during the same command (UnregisteredNodes)
         // Perhaps, need another test to check association target truly gone once command is over
         Iterable<SReference> brokenReferences = ListSequence.fromList(SNodeOperations.getReferences(getAnnotatedNode("brokenReferenceContainer"))).where((it) -> SNodeOperations.getModel(SLinkOperations.getTargetNode(it)) == null);
-        Assert.assertEquals(1, Sequence.fromIterable(brokenReferences).count());
+        Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(Sequence.fromIterable(brokenReferences).count()));
         SReference theReference = Sequence.fromIterable(brokenReferences).first();
         Assert.assertSame(deletedNode, SLinkOperations.getTargetNode(theReference));
         // make sure that the link target is truly deleted from the model

@@ -61,7 +61,7 @@ public class ApplicableIntention_IncludedInMenu_Test extends BaseTransformationT
 
         DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
 
-        Assert.assertEquals(1, part.createItems(context).size());
+        Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(part.createItems(context).size()));
       });
     }
   }

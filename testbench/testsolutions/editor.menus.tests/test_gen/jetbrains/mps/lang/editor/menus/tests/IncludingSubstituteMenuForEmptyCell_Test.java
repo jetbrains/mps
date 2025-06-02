@@ -42,7 +42,7 @@ public class IncludingSubstituteMenuForEmptyCell_Test extends BaseTransformation
       initEditorComponent("8991930073416032210", "");
       List<TransformationMenuItem> items = MenuLoadingUtils.loadNamedMenu(getEditorComponent(), new SNodePointer("r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)", "8991930073415901008"), "test location");
 
-      Assert.assertEquals(1, ListSequence.fromList(items).count());
+      Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(ListSequence.fromList(items).count()));
       ActionItem item = (ActionItem) ListSequence.fromList(items).getElement(0);
       Assert.assertEquals("substitute child", item.getLabelText(""));
     }

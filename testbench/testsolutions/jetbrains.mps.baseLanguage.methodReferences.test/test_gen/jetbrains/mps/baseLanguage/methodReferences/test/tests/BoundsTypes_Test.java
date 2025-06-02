@@ -22,7 +22,7 @@ public class BoundsTypes_Test {
   public void test_testUpperBoundType() throws Exception {
     List<List<Number>> list = ListSequence.fromListAndArray(new ArrayList<List<Number>>(), ListSequence.fromListAndArray(new ArrayList<Number>(), 3, new BigInteger("7")));
     Iterable<Object> seqNum = ListSequence.fromList(list).select((number) -> UpperBounded.process(number));
-    Assert.assertEquals(Sequence.fromIterable(seqNum).first(), 3);
+    Assert.assertEquals(Sequence.fromIterable(seqNum).first(), Integer.valueOf(3));
   }
   public static class LowerBounded {
     public static <U extends Number> U identity(U number) {

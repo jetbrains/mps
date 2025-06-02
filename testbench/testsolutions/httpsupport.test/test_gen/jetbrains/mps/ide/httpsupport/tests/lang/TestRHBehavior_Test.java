@@ -204,7 +204,7 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
         TestBody.this.testRequestResponse(url, 200, "handled");
 
         // If request handlers conflict with each other, only one of them should handle incoming request
-        Assert.assertEquals(PingStorage.pingCount(), 1);
+        Assert.assertEquals(Integer.valueOf(PingStorage.pingCount()), Integer.valueOf(1));
       });
     }
 
@@ -218,7 +218,7 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
         con.setRequestMethod(method);
         con.connect();
 
-        Assert.assertEquals(exectedRetCode, con.getResponseCode());
+        Assert.assertEquals(Integer.valueOf(exectedRetCode), Integer.valueOf(con.getResponseCode()));
         if (expectedResponse != null) {
           BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
           String inputLine;

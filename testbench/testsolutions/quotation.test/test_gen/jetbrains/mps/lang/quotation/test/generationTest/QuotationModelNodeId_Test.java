@@ -87,7 +87,7 @@ public class QuotationModelNodeId_Test extends BaseTransformationTest {
         SNodeId.Regular id = new SNodeId.Regular(239);
         SNode node = _quotation_createNode_fw7ydn_a0c0a0b0h8(null, id);
         Assert.assertTrue(Objects.equals(node.getNodeId(), id));
-        Assert.assertEquals(2, ListSequence.fromList(SNodeOperations.getChildren(node)).count());
+        Assert.assertEquals(Integer.valueOf(2), Integer.valueOf(ListSequence.fromList(SNodeOperations.getChildren(node)).count()));
         Assert.assertFalse(Objects.equals(ListSequence.fromList(SNodeOperations.getChildren(node)).getElement(0).getNodeId(), id));
         Assert.assertFalse(Objects.equals(ListSequence.fromList(SNodeOperations.getChildren(node)).getElement(1).getNodeId(), id));
       });

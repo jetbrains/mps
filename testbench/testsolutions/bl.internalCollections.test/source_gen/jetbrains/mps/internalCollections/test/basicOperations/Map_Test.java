@@ -39,7 +39,7 @@ public class Map_Test extends Util_Test {
     map.put(1, "a");
     map.put(2, "b");
     map.put(3, "c");
-    Assert.assertEquals(3, map.size());
+    Assert.assertEquals(Integer.valueOf(3), Integer.valueOf(map.size()));
     this.assertIterableEqualsIgnoreOrder(Arrays.asList(1, 2, 3), map.keySet());
     this.assertIterableEqualsIgnoreOrder(Arrays.asList("a", "b", "c"), map.values());
   }
@@ -168,7 +168,7 @@ public class Map_Test extends Util_Test {
   public void test_removeKey() throws Exception {
     Map<String, Integer> map = MapSequence.fromMapAndEntryArray(new HashMap<String, Integer>(), Map.entry("a", 1), Map.entry("b", 2), Map.entry("c", 3));
     int removed = MapSequence.fromMap(map).removeKey("a");
-    Assert.assertEquals(1, removed);
+    Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(removed));
     Assert.assertSame(2, MapSequence.fromMap(map).count());
     Assert.assertSame(2, MapSequence.fromMap(map).get("b"));
     Assert.assertSame(3, MapSequence.fromMap(map).get("c"));

@@ -44,7 +44,7 @@ public class Statements_Test {
         i++;
       }
     }
-    Assert.assertEquals(4, i);
+    Assert.assertEquals(Integer.valueOf(4), Integer.valueOf(i));
   }
   private static final Pattern REGEXP = Pattern.compile("(?:\\w+@\\w(?:.\\w+)*)", 0);
   private static final Pattern REGEXP1 = Pattern.compile("ab", 0);

@@ -681,15 +681,15 @@
       <node id="491383275435186151" at="41,101,42,0" concept="4" />
       <node id="491383275435184922" at="42,0,43,198" concept="3" />
       <node id="8545423393708727755" at="43,198,44,77" concept="1" />
-      <node id="8545423393708740618" at="44,77,45,70" concept="1" />
-      <node id="8545423393708742558" at="45,70,46,0" concept="4" />
+      <node id="8545423393708740618" at="44,77,45,104" concept="1" />
+      <node id="8545423393708742558" at="45,104,46,0" concept="4" />
       <node id="491383275435207134" at="46,0,47,200" concept="3" />
       <node id="8545423393708729870" at="47,200,48,78" concept="1" />
-      <node id="8545423393708734247" at="48,78,49,77" concept="1" />
-      <node id="8545423393708743042" at="49,77,50,0" concept="4" />
+      <node id="8545423393708734247" at="48,78,49,111" concept="1" />
+      <node id="8545423393708743042" at="49,111,50,0" concept="4" />
       <node id="491383275435219921" at="50,0,51,218" concept="3" />
       <node id="8545423393708736182" at="51,218,52,91" concept="1" />
-      <node id="8545423393708743527" at="52,91,53,86" concept="1" />
+      <node id="8545423393708743527" at="52,91,53,120" concept="1" />
       <node id="8545423393708262847" at="20,0,22,0" concept="5" trace="ourParametersCacheExtension" />
       <node id="8545423393708262847" at="23,0,26,0" concept="0" trace="FontStyleInheritanceTest_Test#()V" />
       <node id="8545423393708262847" at="34,0,37,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -704,7 +704,7 @@
         <var name="owner" id="8545423393708262847" />
       </scope>
       <scope id="8545423393708262847" at="27,0,31,0" />
-      <scope id="8545423393708670968" at="41,101,53,86">
+      <scope id="8545423393708670968" at="41,101,53,120">
         <var name="nodeWithCustomFontSizeAndFamily_font" id="491383275435219922" />
         <var name="nodeWithCustomFontSize_font" id="491383275435207135" />
         <var name="nodeWithoutCustomFont_font" id="491383275435184923" />

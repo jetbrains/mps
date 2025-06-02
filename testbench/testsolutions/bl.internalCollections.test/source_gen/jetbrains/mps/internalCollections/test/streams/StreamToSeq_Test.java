@@ -17,13 +17,13 @@ public class StreamToSeq_Test {
     if (Sequence.fromIterable(streamSeq).count() == 4) {
       sum = Sequence.fromIterable(streamSeq).reduceLeft((a, b) -> a + b);
     }
-    Assert.assertEquals(10, sum);
+    Assert.assertEquals(Integer.valueOf(10), Integer.valueOf(sum));
   }
   @Test
   public void test_infiniteStream() throws Exception {
     Stream<Integer> stream = Stream.iterate(0, (p) -> p + 1);
 
     // Stream can also be infinite, conversion to sequence should not take forever
-    Assert.assertEquals(10, (int) Sequence.fromIterable(Sequence.fromStream(stream)).findFirst((it) -> it > 9));
+    Assert.assertEquals(Integer.valueOf(10), Integer.valueOf((int) Sequence.fromIterable(Sequence.fromStream(stream)).findFirst((it) -> it > 9)));
   }
 }

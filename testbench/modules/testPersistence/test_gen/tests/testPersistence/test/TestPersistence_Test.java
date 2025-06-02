@@ -190,7 +190,7 @@ public class TestPersistence_Test extends BaseTransformationTest {
         Iterable<? extends SNode> actualChildren = actualNode.getChildren(role);
         int esize = IterableUtil.asCollection(expectedChildren).size();
         int asize = IterableUtil.asCollection(actualChildren).size();
-        Assert.assertEquals(this.getErrorString("child count in role " + role, expectedNode, actualNode), esize, asize);
+        Assert.assertEquals(this.getErrorString("child count in role " + role, expectedNode, actualNode), Integer.valueOf(esize), Integer.valueOf(asize));
         Iterator<? extends SNode> actualIterator = actualChildren.iterator();
         for (SNode expectedChild : expectedChildren) {
           SNode actualChild = actualIterator.next();
@@ -223,7 +223,7 @@ public class TestPersistence_Test extends BaseTransformationTest {
       Map<SReferenceLink, Set<SReference>> expRoleToReferenceMap = this.createRoleToReferenceMap(expectedNode);
       Map<SReferenceLink, Set<SReference>> actRoleToReferenceMap = this.createRoleToReferenceMap(actualNode);
       for (SReferenceLink role : roles) {
-        Assert.assertEquals(this.getErrorString("different number of referents in role " + role, expectedNode, actualNode), expRoleToReferenceMap.get(role).size(), actRoleToReferenceMap.get(role).size());
+        Assert.assertEquals(this.getErrorString("different number of referents in role " + role, expectedNode, actualNode), Integer.valueOf(expRoleToReferenceMap.get(role).size()), Integer.valueOf(actRoleToReferenceMap.get(role).size()));
         SReference expectedReference = expectedNode.getReference(role);
         SReference actualReference = actualNode.getReference(role);
         this.assertReferenceEquals(this.getErrorString("reference in role " + role, expectedNode, actualNode), expectedReference, actualReference);

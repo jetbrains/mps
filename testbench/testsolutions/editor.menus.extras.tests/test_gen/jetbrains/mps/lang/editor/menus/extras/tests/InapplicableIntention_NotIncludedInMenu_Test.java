@@ -61,7 +61,7 @@ public class InapplicableIntention_NotIncludedInMenu_Test extends BaseTransforma
 
         DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
 
-        Assert.assertEquals(0, part.createItems(context).size());
+        Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(part.createItems(context).size()));
       });
     }
   }

@@ -114,7 +114,7 @@ public class SLinkImplicitSelect_Test extends BaseTransformationTest {
     }
 
     public void assertEquals(Iterable<SNode> expected, final Iterable<SNode> actual) {
-      Assert.assertEquals(Sequence.fromIterable(expected).count(), Sequence.fromIterable(actual).count());
+      Assert.assertEquals(Integer.valueOf(Sequence.fromIterable(expected).count()), Integer.valueOf(Sequence.fromIterable(actual).count()));
       Sequence.fromIterable(expected).visitAll((it) -> Assert.assertTrue(Sequence.fromIterable(actual).contains(it)));
     }
   }

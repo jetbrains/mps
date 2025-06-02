@@ -14,7 +14,7 @@ public class ExternalReferences_Test {
   public void test_localVariableDeclaration() throws Exception {
     final Wrappers._int foo = new Wrappers._int(42);
     int bar = ((_FunctionTypes._return_P0_E0<Integer>) () -> ++foo.value).invoke();
-    Assert.assertEquals(foo.value, bar);
+    Assert.assertEquals(Integer.valueOf(foo.value), Integer.valueOf(bar));
   }
   @Test
   public void test_alteredLocalvariable() throws Exception {
@@ -23,7 +23,7 @@ public class ExternalReferences_Test {
       ((_FunctionTypes._return_P0_E0<Integer>) () -> res.value++).invoke();
     }
     res.value = res.value - 5;
-    Assert.assertEquals(0, res.value);
+    Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(res.value));
   }
   @Test
   public void test_alteredLocalVariable2() throws Exception {
@@ -61,7 +61,7 @@ __switch__:
       }
     }
     res.value = res.value - 5;
-    Assert.assertEquals(0, res.value);
+    Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(res.value));
   }
   @Test
   public void test_lvdsWithYieldFromNestedClosure() throws Exception {
@@ -98,8 +98,8 @@ __switch__:
         };
       };
     }).invoke()).first();
-    Assert.assertEquals(10, res.value);
-    Assert.assertEquals(12, x);
+    Assert.assertEquals(Integer.valueOf(10), Integer.valueOf(res.value));
+    Assert.assertEquals(Integer.valueOf(12), Integer.valueOf(x));
   }
   @Test
   public void test_lvdsNoYieldFromNestedClosure() throws Exception {
@@ -109,8 +109,8 @@ __switch__:
       res.value = ((_FunctionTypes._return_P0_E0<Integer>) () -> ++local.value).invoke();
       return ++local.value;
     }).invoke();
-    Assert.assertEquals(11, res.value);
-    Assert.assertEquals(12, x);
+    Assert.assertEquals(Integer.valueOf(11), Integer.valueOf(res.value));
+    Assert.assertEquals(Integer.valueOf(12), Integer.valueOf(x));
   }
   @Test
   public void test_alteredLocalVariable3() throws Exception {

@@ -48,7 +48,7 @@ public class FindInputVariables_Test extends BaseTransformationTest {
       runWithinCommand(() -> {
         ExtractMethodRefactoringAnalyzer a = new ExtractMethodRefactoringAnalyzer(ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("l1"), getAnnotatedNode("l2"), getAnnotatedNode("l3")));
         List<MethodParameter> vars = a.getInputVariables();
-        Assert.assertEquals(1, ListSequence.fromList(vars).count());
+        Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(ListSequence.fromList(vars).count()));
         Assert.assertEquals(getAnnotatedNode("var"), ListSequence.fromList(vars).first().getDeclaration());
       });
     }

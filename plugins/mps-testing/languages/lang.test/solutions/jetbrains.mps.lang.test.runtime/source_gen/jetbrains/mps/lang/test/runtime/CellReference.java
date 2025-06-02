@@ -58,8 +58,8 @@ public class CellReference {
       Assert.assertEquals(SPropertyOperations.getString(myAnnotation, PROPS.cellId$W9jv), selectedCell.getCellId());
       if (selectedCell instanceof EditorCell_Label) {
         EditorCell_Label label = (EditorCell_Label) selectedCell;
-        Assert.assertEquals(SPropertyOperations.getInteger(myAnnotation, PROPS.selectionStart$arQq), label.getSelectionStart());
-        Assert.assertEquals(SPropertyOperations.getInteger(myAnnotation, PROPS.selectionEnd$asks), label.getSelectionEnd());
+        Assert.assertEquals(Integer.valueOf(SPropertyOperations.getInteger(myAnnotation, PROPS.selectionStart$arQq)), Integer.valueOf(label.getSelectionStart()));
+        Assert.assertEquals(Integer.valueOf(SPropertyOperations.getInteger(myAnnotation, PROPS.selectionEnd$asks)), Integer.valueOf(label.getSelectionEnd()));
       }
       Assert.assertNull(SLinkOperations.getTarget(myAnnotation, LINKS.nodeRangeSelectionStart$Qss5));
       Assert.assertNull(SLinkOperations.getTarget(myAnnotation, LINKS.nodeRangeSelectionEnd$QsF6));

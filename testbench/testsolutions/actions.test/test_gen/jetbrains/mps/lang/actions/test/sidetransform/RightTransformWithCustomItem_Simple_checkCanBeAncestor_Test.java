@@ -40,7 +40,7 @@ public class RightTransformWithCustomItem_Simple_checkCanBeAncestor_Test extends
       typeString(" ");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
-      Assert.assertEquals(1, getEditorComponent().getNodeSubstituteChooser().getNumberOfActions());
+      Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(getEditorComponent().getNodeSubstituteChooser().getNumberOfActions()));
       getEditorComponent().getNodeSubstituteChooser().setVisible(false);
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ESCAPE"));
     }

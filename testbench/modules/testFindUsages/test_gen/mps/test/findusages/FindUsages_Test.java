@@ -72,7 +72,7 @@ public class FindUsages_Test extends BaseTransformationTest {
         final SearchResults sr = FindUtils.getSearchResults(new EmptyProgressMonitor(), query, new LanguageConceptsUsagesFinder());
         Set<Object> results = sr.getResultObjects();
         // there's 1 reference to BL concept inside m1.JustToHoldNodePtr and it's a node.
-        Assert.assertEquals(1, results.size());
+        Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(results.size()));
         Object r = results.iterator().next();
         Assert.assertTrue(r instanceof SNode);
         Assert.assertTrue(((SNode) r).getModel() == TestBody.this.m1());
@@ -93,7 +93,7 @@ public class FindUsages_Test extends BaseTransformationTest {
         //   solution itself as 'uses BL'
         //   m2 as 'written in BL'
         // @tests model itself is not discovered as of this writing, as we use lang.test and lang.smodel here, not BL explicitly
-        Assert.assertEquals(4, results.size());
+        Assert.assertEquals(Integer.valueOf(4), Integer.valueOf(results.size()));
         Set<Object> resultObjects = sr.getResultObjects();
         // there are 3 distinct result objects, solution and its two models
         Assert.assertTrue(resultObjects.contains(TestBody.this.m1()));

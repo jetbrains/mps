@@ -63,7 +63,7 @@ public abstract class BaseMigrationTestBody extends BaseTestBody {
     List<SNode> outputNodes = CollectionSequence.fromCollection(getOutputNodes()).toList();
     postProcess(roots);
     postProcess(outputNodes);
-    Assert.assertEquals(ListSequence.fromList(roots).count(), ListSequence.fromList(outputNodes).count());
+    Assert.assertEquals(Integer.valueOf(ListSequence.fromList(roots).count()), Integer.valueOf(ListSequence.fromList(outputNodes).count()));
     List<NodeDifference> differences = new NodesMatcher(roots, outputNodes).diff();
     for (NodeDifference difference : ListSequence.fromList(differences)) {
       Assert.fail("Migration result differs from expected:\n" + difference.print());

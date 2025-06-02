@@ -125,6 +125,6 @@ public class Iterator_Test extends Util_Test {
         sum += first_var + second_var;
       }
     }
-    Assert.assertEquals(2 * (1 + 2 + 3 + 4 + 5), sum);
+    Assert.assertEquals(Integer.valueOf(2 * (1 + 2 + 3 + 4 + 5)), Integer.valueOf(sum));
   }
 }
