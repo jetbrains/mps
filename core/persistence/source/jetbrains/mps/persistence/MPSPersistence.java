@@ -57,7 +57,7 @@ public final class MPSPersistence extends ComponentPlugin implements ComponentHo
   public void init() {
     super.init();
     myDigestHelper = init(new ModelDigestHelper());
-    init(new DataSourceFactoryRuleCoreService(myDataSourceService));
+    init(new DataSourceFactoryRuleCoreService(myDataSourceService, myVfsManager));
     init(new ModelFactoryCoreService(myModelFactoryService, myPersistenceFacade));
     final ClassStubRootProvider srp = init(new ClassStubRootProvider());
     init(new JavaClassesPersistence(myPersistenceFacade, myVfsManager, srp));

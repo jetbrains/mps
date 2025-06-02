@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,7 +71,7 @@ final class CopyDefaultModelRootHelper extends CopyFileBasedModelRootHelper<Defa
                                  @NotNull IFile targetModelFile,
                                  @NotNull SModelBase modelDataToCopy) throws IOException,
                                                                              ModelCannotBeCreatedException {
-    DataSource targetDataSource = FILE_OR_FOLDER.create(targetModelFile.toPath());
+    DataSource targetDataSource = FILE_OR_FOLDER.createFromFile(targetModelFile);
     ParametersCalculator prmCalculator = new ParametersCalculator(myTargetModelRoot);
     SModelName newModelName = new SModelName(convertNameConsideringModule(modelDataToCopy.getName().getValue()));
     ModelCreationOptions options = prmCalculator.calculate(newModelName);
