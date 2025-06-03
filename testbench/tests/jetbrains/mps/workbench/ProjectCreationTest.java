@@ -159,33 +159,19 @@ public class ProjectCreationTest implements EnvironmentAware {
   }
 
   private void invokeTest(final ProjectOptionsProvider projectOptionsProvider, List<String> expectedPathList) {
-    Assert.fail("This tests hang currently. Make them fail instead.");
-    final Reference<Throwable> refThrowable = new Reference<>();
-    ApplicationManager.getApplication().invokeAndWait(() -> {
-      try {
-        myTmpDir = IFileUtil.createTmpDir(myEnv.getPlatform().findComponent(VFSManager.class).getUmbrellaFileSystemJavaIO());
-        try {
-          ProjectFactory factory = new ProjectFactory(projectOptionsProvider.getProjectOptions(myTmpDir));
-          myProject = factory.createProject();
-          factory.activate(false);
-          myProject.save();
-        } catch (ProjectNotCreatedException e) {
-          Assert.fail();
-        }
-      } catch (Throwable t) {
-        refThrowable.set(t);
-      }
-    }, ModalityState.defaultModalityState());
-    if (!refThrowable.isNull()) {
-      throw new RuntimeException(refThrowable.get());
+    myTmpDir = IFileUtil.createTmpDir(myEnv.getPlatform().findComponent(VFSManager.class).getUmbrellaFileSystemJavaIO());
+    try {
+      ProjectFactory factory = new ProjectFactory(projectOptionsProvider.getProjectOptions(myTmpDir));
+      myProject = factory.createProject();
+      factory.activate(false);
+      myProject.save();
+    } catch (ProjectNotCreatedException e) {
+      Assert.fail();
     }
+
     Exception exception = ThreadUtils.runInUIThreadAndWait(() -> {
-      try {
-        StoreUtil.saveSettings(myProject, true);
-        ProjectManagerEx.getInstanceEx().closeAndDispose(myProject);
-      } catch (Throwable t) {
-        refThrowable.set(t);
-      }
+      StoreUtil.saveSettings(myProject, true);
+      ProjectManagerEx.getInstanceEx().closeAndDispose(myProject);
     });
     if (exception != null) {
       throw new RuntimeException(exception);
