@@ -48,33 +48,8 @@ public class TempModule extends AbstractModule implements SModule, ReloadableMod
   private final ModuleDescriptor myDescriptor;
   private final List<SModuleFacet> myModuleFacets;
 
-  /**
-   * @deprecated don't use directly, rely on {@link TemporaryModels} API to create a temp model
-   */
-  @Deprecated(since = "2025.1", forRemoval = true)
-  public TempModule(Set<ModelRootDescriptor> modelRoots, boolean withSourceGen, boolean withJavaFacet) {
-    super((IFile) null);
-    if (withSourceGen && !withJavaFacet) {
-      throw new IllegalArgumentException("Don't have GenerationTargetFacet implementation other than JavaModuleFacet handy, either write one or re-consider arguments");
-    }
-    SModuleId id = ModuleId.regular();
-    SModuleReference reference = new ModuleReference("TempModule" + id, id);
-    setModuleReference(reference);
-    // FIXME who cares to have MD for a temp module?
-    myDescriptor = new ModuleDescriptor();
-    myDescriptor.getModelRootDescriptors().addAll(modelRoots);
-
-    if (withJavaFacet) {
-      myModuleFacets = List.of(new NaiveJavaModuleFacet(this,
-                                                  withSourceGen ? "TEMP_SOURCE_GEN"
-                                                                : null,
-                                                   "TEMP_CLASSES_GEN"));
-    } else {
-      myModuleFacets = Collections.emptyList();
-    }
-  }
-
   /*package*/ TempModule(SModuleFacet... facets) {
+    super((IFile) null);
     // FIXME remove MD altogether
     myDescriptor = new ModuleDescriptor();
     ModuleId id = ModuleId.regular();

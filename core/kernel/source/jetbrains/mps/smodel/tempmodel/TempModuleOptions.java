@@ -17,17 +17,12 @@ package jetbrains.mps.smodel.tempmodel;
 
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.module.SRepository;
-
-import java.util.Collections;
-import java.util.Set;
 
 public abstract class TempModuleOptions {
   public abstract SModule createModule();
@@ -38,24 +33,8 @@ public abstract class TempModuleOptions {
     return new ExistingModuleOptions(m);
   }
 
-  /**
-   * @deprecated this API is flawed. In most cases, {@link #nonReloadableModule(SRepository)} is a proper replacement
-   */
-  @Deprecated(since = "2025.1", forRemoval = true)
-  public static TempModuleOptions forNewModule(Set<ModelRootDescriptor> modelRoots, boolean withSourceGen, boolean withJavaFacet) {
-    return new NewModuleOptions(modelRoots, withSourceGen, withJavaFacet);
-  }
-
-  /**
-   * @deprecated this API is flawed. In most cases, {@link #nonReloadableModule(SRepository)} is a proper replacement
-   */
-  @Deprecated(since = "2025.1", forRemoval = true)
-  public static TempModuleOptions forNewModule(Set<ModelRootDescriptor> modelRoots) {
-    return forNewModule(modelRoots, false, false);
-  }
-
   public static TempModuleOptions forDefaultModule() {
-    return forNewModule(Collections.emptySet(), false, false);
+    return new NewModuleOptions(MPSModuleRepository.getInstance());
   }
 
   /**
@@ -78,22 +57,12 @@ public abstract class TempModuleOptions {
     return nonReloadableModule(MPSModuleRepository.getInstance());
   }
 
-
-  /**
-   * @deprecated use {@link #forNewModule(SRepository, SModuleFacet...)} instead
-   */
-  @Deprecated(since = "2025.1", forRemoval = true)
-  public static TempModuleOptions forDefaultModuleWithSourceAndClassesGen() {
-    // todo: builder here
-    // XXX I wonder if there are enough options for temp module to have a builder.
-    return new NewModuleOptions(Collections.emptySet(), true, true);
-  }
-
   /**
    * @since 2025.1
    */
   public static TempModuleOptions forNewModule(@NotNull SRepository repository, SModuleFacet... facets ) {
     assert repository instanceof SRepositoryExt;
+    // XXX I wonder if there are enough options for temp module to have a builder (to configure TempModuleOptions).
     return new NewModuleOptions((SRepositoryExt) repository, facets);
   }
 
@@ -110,19 +79,10 @@ public abstract class TempModuleOptions {
     private final SRepositoryExt myRepository;
     private final TempModule myCreatedModule;
 
-    /**
-     * @deprecated use alternative with SModuleFacet instance
-     */
-    @Deprecated(forRemoval = true, since = "2025.1")
-    public NewModuleOptions(Set<ModelRootDescriptor> modelRoots, boolean withSourceGen, boolean withJavaFacet) {
-      myRepository = MPSModuleRepository.getInstance();
-      // Note, this is a change in behavior, before the change, each #createModule() call resulted in a new module. Once
-      // this cons is gone, can get back to that semantics (don't believe clients rely on it)
-      myCreatedModule = new TempModule(modelRoots, withSourceGen, withJavaFacet);
-    }
-
     /*package*/ NewModuleOptions(SRepositoryExt repository, SModuleFacet... facets) {
       myRepository = repository;
+      // Note, before this change, each #createModule() call resulted in a new module.
+      // Now that legacy cons is gone, can get back to that semantics (don't believe clients rely on it, though)
       myCreatedModule = new TempModule(facets);
     }
 

@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel.tempmodel;
 
-import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.util.FileUtil;
@@ -40,16 +39,6 @@ public final class NaiveJavaModuleFacet implements JavaModuleFacet {
   private final IFile mySourceGen;
   private final IFile myClassesGen;
   private final JavaLanguageLevel myJavaLevel;
-
-  /**
-   * Implies AbstractModule comes with a FileSystem
-   */
-  @Deprecated(since = "2025.1", forRemoval = true)
-  public NaiveJavaModuleFacet(@NotNull AbstractModule owningModule, @Nullable String sourceGen, @NotNull String classesGen) {
-    this(owningModule, (f) -> owningModule.getFileSystem().getFile(f.getAbsolutePath()), sourceGen, classesGen);
-    // FIXME to get rid of owningModule.getFileSystem() hack here, need to rework whole TempModel story.
-    //       In fact, owningModule here doesn't have any IFile to get FS from, it's just a weird way to access FS singleton though semi-"api" of AM
-  }
 
   public NaiveJavaModuleFacet(@NotNull SModule owningModule, @NotNull Function<File, IFile> fsMap, @Nullable String sourceGen, @NotNull String classesGen) {
     this(owningModule, sourceGen == null ? null : fsMap.apply(FileUtil.createTmpDir(sourceGen)), fsMap.apply(FileUtil.createTmpDir(classesGen)));

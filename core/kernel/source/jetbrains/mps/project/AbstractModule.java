@@ -134,16 +134,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     return jetbrains.mps.vfs.FileSystem.getInstance();
   }
 
-  @Deprecated
-  protected AbstractModule() {
-    this(getFSSingleton());
-  }
-
-  protected AbstractModule(@NotNull FileSystem fileSystem) {
-    myDescriptorFile = null;
-    myFileSystem = fileSystem;
-  }
-
   protected AbstractModule(@Nullable IFile descriptorFile) {
     myDescriptorFile = descriptorFile;
     if (descriptorFile != null) {
@@ -158,6 +148,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
    */
   @Deprecated(forRemoval = true, since = "2025.1")
   public FileSystem getFileSystem() {
+    // 2 uses in MPS-extension, 1 in mbeddr
     return myFileSystem;
   }
 
