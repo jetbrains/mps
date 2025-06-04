@@ -15,27 +15,17 @@
  */
 package jetbrains.mps.smodel.tempmodel;
 
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.classloading.MPSModuleClassLoader;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModuleId;
-import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
-import org.jetbrains.mps.openapi.module.SModuleId;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 /**
  * FIXME why it's not a TransientSModule, so that we don't need to care about this particular kind of module when we want to
@@ -91,11 +81,5 @@ public class TempModule extends AbstractModule implements SModule, ReloadableMod
   @Override
   public ModuleDescriptor getModuleDescriptor() {
     return myDescriptor;
-  }
-
-  @Override
-  @NotNull
-  public MPSModuleClassLoader getClassLoader() {
-    return ClassLoaderManager.getInstance().getClassLoader(this);
   }
 }

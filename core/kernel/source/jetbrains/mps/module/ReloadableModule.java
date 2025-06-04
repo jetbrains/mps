@@ -120,7 +120,11 @@ public interface ReloadableModule extends SModule {
    * @return not null classloader associated with the module; if a specific module-related class loader is not found than the system classloader is returned
    */
   @NotNull
-  MPSModuleClassLoader getClassLoader();
+  default MPSModuleClassLoader getClassLoader() {
+    // this is provisional code until we split AM and ReloadableModule hierarchy. RM would become a wrapper for CLM own purposes
+    // (and would get CLM instance at construction then)
+    return ClassLoaderManager.getInstance().getClassLoader(getModule());
+  }
 
   /**
    * The only legitimate way to discover source {@code SModule} from {@code ReloadableModule}.
