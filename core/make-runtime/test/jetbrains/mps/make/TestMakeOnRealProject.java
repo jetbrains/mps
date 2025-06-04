@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.make;
 
-import com.intellij.util.CommonProcessors.CollectProcessor;
-import com.intellij.util.FilteringProcessor;
 import jetbrains.mps.make.ModuleAnalyzer.ModuleAnalyzerResult;
 import jetbrains.mps.make.ModuleMaker.BMC;
 import jetbrains.mps.make.ModuleMaker.CompileState;
@@ -62,12 +60,15 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * I assume intention of this test, despite the 'Make' in the name, is to check parts of JavaCompile facet, pretending java files
@@ -236,28 +237,28 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     assert facet != null;
     IFile classesGen = facet.getClassesGen();
     assert classesGen != null;
-    List<File> classes = collectSpecificFilesFromDir(new File(classesGen.getPath()), "class");
-    List<File> sources = new ArrayList<>();
-    for (String path : SModuleOperations.getAllSourcePaths(module)) {
-      collectSpecificFilesFromDir(new File(path), "java", sources);
+    try {
+      List<File> classes = new ArrayList<>();
+      List<File> sources = new ArrayList<>();
+      collectSpecificFilesFromDir(new File(classesGen.getPath()), ".class", classes);
+      for (String path : SModuleOperations.getAllSourcePaths(module)) {
+        collectSpecificFilesFromDir(new File(path), ".java", sources);
+      }
+      if (classes.size() < sources.size()) {
+        System.out.printf("SOURCES:\n\t%s\n", sources.stream().map(File::getName).collect(Collectors.toList()));
+        System.out.printf("CLASSES:\n\t%s\n", classes.stream().map(File::getName).collect(Collectors.toList()));
+      }
+      Assert.assertTrue("classes_gen should contain one class", sources.size() <= classes.size());
+    } catch (IOException ex) {
+      Assert.fail(ex.getMessage());
     }
-    if (classes.size() < sources.size()) {
-      System.out.printf("SOURCES:\n\t%s\n", sources.stream().map(File::getName).collect(Collectors.toList()));
-      System.out.printf("CLASSES:\n\t%s\n", classes.stream().map(File::getName).collect(Collectors.toList()));
-    }
-    Assert.assertTrue("classes_gen should contain one class", sources.size() <= classes.size());
   }
 
-  private ArrayList<File> collectSpecificFilesFromDir(File file, final String extension) {
-    ArrayList<File> classes = new ArrayList<>();
-    collectSpecificFilesFromDir(file, extension, classes);
-    return classes;
-  }
-
-  private void collectSpecificFilesFromDir(File file, final String extension, Collection<File> classes) {
-    com.intellij.openapi.util.io.FileUtil.processFilesRecursively(file,
-            new FilteringProcessor<>(file1 -> file1.getName().endsWith("." + extension),
-                new CollectProcessor<>(classes)));
+  private void collectSpecificFilesFromDir(File file, final String dotExtension, Collection<File> classes) throws IOException {
+    // I don't expect test modules to have deep hierarchies, 10 is more than enough
+    try (Stream<Path> sp = Files.walk(file.toPath(), 10)) {
+      sp.filter(p -> p.getFileName().endsWith(dotExtension)).filter(Files::isRegularFile).map(Path::toFile).forEach(classes::add);
+    }
   }
 
   private void createTmpModules() {
