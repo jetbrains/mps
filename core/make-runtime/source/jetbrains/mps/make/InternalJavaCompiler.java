@@ -21,13 +21,5 @@ package jetbrains.mps.make;
  */
 @Deprecated
 class InternalJavaCompiler {
-  final static String MODULE_WITH_REMOVALS_WAS_NOT_CHANGED = "Module With Removals Is Not In The Changed Modules: %s";
-  final static String CALCULATING_DEPS_MSG = "Calculating Classpath";
-  final static String COMPILING_JAVA_MSG = "Compiling Java";
-  final static String PREPARING_TO_COMPILE_MSG = "Preparing";
-  final static String COPYING_RESOURCES_MSG = "Copying Resources";
-  final static String WRITING_CLASSES_MSG = "Writing Classes";
-  final static String MODULES_CLASSPATH_STR = "Modules: %s;\nClasspath: %s\n";
-  final static String COMPILATION_PROBLEMS = "Compilation problems";
 
 }

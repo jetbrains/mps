@@ -17,6 +17,10 @@ package jetbrains.mps.make;
 
 import com.intellij.util.CommonProcessors.CollectProcessor;
 import com.intellij.util.FilteringProcessor;
+import jetbrains.mps.make.ModuleAnalyzer.ModuleAnalyzerResult;
+import jetbrains.mps.make.ModuleMaker.BMC;
+import jetbrains.mps.make.ModuleMaker.CompileState;
+import jetbrains.mps.make.ModuleMaker.JM;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.AbstractModule;
@@ -46,6 +50,7 @@ import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.junit.After;
@@ -61,6 +66,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -72,7 +78,8 @@ import java.util.stream.Collectors;
  * NOTE, we don't check class loading here, just presence of .class files, see #checkModuleCompiled()
  *
  * TODO rewrite module creation via existing functionality.
- * FIXME shall use LangaugeProducer/SolutionProducer instead of hand-crafted code
+ * FIXME shall use LanguageProducer/SolutionProducer instead of hand-crafted code (although have to deal with their expectations of MPSProject)
+ *       There's also TestModuleFactoryBase which could be helpful
  *
  * @see jetbrains.mps.classloading.ModulesReloadTest
  */
@@ -124,7 +131,7 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     // would be better? OTOH, seems that I care to check ModuleMaker, and don't need CLM update
     ourModelAccess.runReadAction(new Runnable() {
       public void run() {
-        moduleMaker.prepare(myProject.getProjectModules(), true, new EmptyProgressMonitor());
+        moduleMaker.prepare(myProject.getProjectModulesWithGenerators(), true, new EmptyProgressMonitor());
       }
     });
     MPSCompilationResult result = moduleMaker.make(new EmptyProgressMonitor());
@@ -155,9 +162,12 @@ public class TestMakeOnRealProject implements EnvironmentAware {
   public void testNothingToCompileAfterCompilation() throws InterruptedException {
     doSolutionsCompilation();
 
-    ModuleSources sources = new ModuleSources(myCreatedSolution);
-    // getFilesToCompile() just gives set of found source files now; the test is no-op
-    Assert.assertEquals(1, sources.getFilesToCompile().size());
+    var moduleMaker = ourModelAccess.computeReadAction(() -> {
+      ModuleMaker mm = new ModuleMaker();
+      mm.prepare(myProject.getProjectModulesWithGenerators(), false, new EmptyProgressMonitor());
+      return mm;
+    });
+    Assert.assertTrue(moduleMaker.toCompile().isEmpty());
   }
 
   /**
@@ -174,9 +184,22 @@ public class TestMakeOnRealProject implements EnvironmentAware {
       Assert.fail("Can't touch the file " + javaFile);
     }
 
-    ModuleSources sources = new ModuleSources(myCreatedSolution);
-    Collection<JavaFile> filesToCompile = sources.getFilesToCompile();
-    Assert.assertEquals(1, filesToCompile.size());
+    var moduleMaker = ourModelAccess.computeReadAction(() -> {
+      ModuleMaker mm = new ModuleMaker();
+      mm.prepare(myProject.getProjectModulesWithGenerators(), false, new EmptyProgressMonitor());
+      return mm;
+    });
+
+    Assert.assertNotNull(moduleMaker.toCompile());
+    Assert.assertFalse(moduleMaker.toCompile().isEmpty());
+    Assert.assertEquals(1, moduleMaker.toCompile().size());
+    Optional<JM> jmo = moduleMaker.toCompile().get(0).stream().filter(jm -> myCreatedSolution.getModuleReference().equals(jm.moduleReference())).findFirst();
+    Assert.assertTrue(jmo.isPresent());
+    JM jm = jmo.get();
+    Assert.assertEquals(CompileState.DIRTY, jm.compileState());
+    Assert.assertTrue(jm.hasJavaToCompile());
+    Assert.assertTrue(jm.isDirty()); // just sanity check
+    Assert.assertFalse(jm.isClean());
   }
 
   @Test
@@ -186,14 +209,25 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     IFile outputPath = myCreatedSolution.getFacet(JavaModuleFacet.class).getOutputRoot();
     outputPath.findChild(TEST_JAVA_FILE).delete();
 
-    ModuleSources sources = new ModuleSources(myCreatedSolution);
-    Collection<JavaFile> filesToCompile = sources.getFilesToCompile();
+    var moduleMaker = ourModelAccess.computeReadAction(() -> {
+      ModuleMaker mm = new ModuleMaker();
+      mm.prepare(myProject.getProjectModulesWithGenerators(), false, new EmptyProgressMonitor());
+      return mm;
+    });
     // XXX we used to walk output and notice present .class against missing .java to detect "files to delete"
     //     as we don't walk output any longer, just make sure the file doesn't accidentally show up among those
     //     to compile. This doesn't make much sense as we don't use ModuleSources at real ModuleMaker scenarios,
     //     but I don't want to refactor these tests now.
-    Assert.assertFalse(filesToCompile.stream().map(JavaFile::getFile).map(File::getName).anyMatch(TEST_JAVA_FILE::equals));
-    Assert.assertEquals(0, filesToCompile.size());
+
+
+    Assert.assertNotNull(moduleMaker.toCompile());
+    Assert.assertFalse(moduleMaker.toCompile().isEmpty());
+    Assert.assertEquals(1, moduleMaker.toCompile().size());
+
+    BaseModuleContainer<JM> modulesContainer = new BMC(moduleMaker.toCompile().get(0));
+    ModuleAnalyzerResult ar = modulesContainer.analyze();
+    Assert.assertFalse(ar.filesToDelete.isEmpty());
+    Assert.assertFalse(ar.modulesWithRemovals.isEmpty());
   }
 
 
@@ -247,7 +281,7 @@ public class TestMakeOnRealProject implements EnvironmentAware {
         // under the module home as it's easy to construct path there.
         IFile resourceDir = generatorOutputPath.getParent().findChild("resources");
         solutionJMF.setSourcePathSpec(new PathSpecBundle(Collections.singleton(new PathSpec(resourceDir))));
-        createFile(resourceDir, "res.0.1/test.txt", "test");
+        createFile(resourceDir.findChild("res.0.1"), "test.txt", "test");
       }
     });
   }
@@ -258,7 +292,7 @@ public class TestMakeOnRealProject implements EnvironmentAware {
 
   private void createFile(IFile dir, String fileName, String text) {
     // should be invoked in write action
-    IFile ifile = dir.getDescendant(fileName);
+    IFile ifile = dir.findChild(fileName);
     ifile.createNewFile();
     Writer writer = null;
     try {
@@ -341,7 +375,7 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     final Solution rv = (Solution) new GeneralModuleFactory().instantiate(solutionDescriptor, descriptorFile);
     myProject.addModule(rv);
     rv.save();
-    final SModel m1 = rv.getModelRoots().iterator().next().createModel("m1");
+    final SModel m1 = rv.getModelRoots().iterator().next().createModel(new SModelName("m1"));
     new ModelImports(m1).addUsedLanguage(MetaAdapterFactory.getLanguage(myCreatedLanguage.getModuleReference()));
     ((EditableSModel) m1).save();
     return rv;

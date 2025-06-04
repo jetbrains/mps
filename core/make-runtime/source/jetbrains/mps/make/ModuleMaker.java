@@ -47,6 +47,7 @@ import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.TestOnly;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -888,6 +889,11 @@ public final class ModuleMaker {
   }
 
   private List<List<JM>> myToCompile;
+
+  @TestOnly
+  /*package*/ List<List<JM>> toCompile() {
+    return myToCompile;
+  }
 
   // doesn't need model read, deals with what #prepare() got ready
   @NotNull
