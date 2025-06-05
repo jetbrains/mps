@@ -511,7 +511,7 @@ public final class CreateProjectWizard extends DialogWrapper {
     if (proceed) {
       try {
         ProjectFactory factory = new ProjectFactory(myOptions);
-        MPSProject project = factory.createProject();
+        MPSProject project = factory.createProjectMPS();
         myCurrentTemplateItem.fillProjectWithModules(project);
         ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
           @Override

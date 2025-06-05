@@ -161,7 +161,7 @@ public class ProjectCreationTest implements EnvironmentAware {
     myTmpDir = IFileUtil.createTmpDir(myEnv.getPlatform().findComponent(VFSManager.class).getUmbrellaFileSystemJavaIO());
     try {
       ProjectFactory factory = new ProjectFactory(projectOptionsProvider.getProjectOptions(myTmpDir));
-      myProject = factory.createProject().getProject();
+      myProject = factory.createProject();
       factory.activate(false);
       myProject.save();
     } catch (ProjectNotCreatedException e) {

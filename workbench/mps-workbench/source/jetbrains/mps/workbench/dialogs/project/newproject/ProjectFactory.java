@@ -63,7 +63,15 @@ public class ProjectFactory {
     myOptions = options;
   }
 
-  public MPSProject createProject() throws ProjectNotCreatedException {
+  /**
+   * @deprecated use {@link #createProjectMPS()} instead
+   */
+  @Deprecated(forRemoval = true, since = "2025.2")
+  public Project createProject() throws ProjectNotCreatedException {
+    return createProjectMPS().getProject();
+  }
+
+  public MPSProject createProjectMPS() throws ProjectNotCreatedException {
     final String[] error = new String[]{null};
     ProgressManager.getInstance().run(new Task.Modal(null, "Creating Project", false) {
       @Override
@@ -96,8 +104,7 @@ public class ProjectFactory {
       ApplicationManagerEx.getApplicationEx().setSaveAllowed(saveAllowed);
     }
 
-    //noinspection ConstantConditions
-    final MPSProject mpsProject = myCreatedProject.getComponent(MPSProject.class);
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProjectOrFail(myCreatedProject);
     assert mpsProject != null;
 
     StartupManager.getInstance(myCreatedProject).runAfterOpened(() -> {
