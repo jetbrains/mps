@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,14 @@
  */
 package jetbrains.mps.ide.dataExtraction;
 
-import com.intellij.ide.impl.dataRules.GetDataRule;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.actionSystem.DataProvider;
+import com.intellij.openapi.actionSystem.DataMap;
+import com.intellij.openapi.actionSystem.DataSink;
+import com.intellij.openapi.actionSystem.DataSnapshot;
+import com.intellij.openapi.actionSystem.UiDataRule;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -28,33 +32,19 @@ import org.jetbrains.annotations.Nullable;
  * Did not agree with artem on whether we need this.
  * To me it looks like something we could replace with a helper method/class.
  */
-public class MPSProjectRule implements GetDataRule {
+public class MPSProjectRule implements UiDataRule {
+
   @Override
-  @Nullable
-  public MPSProject getData(@NotNull DataProvider dataProvider) {
-    return deduceFromIJProject(dataProvider);
+  public void uiDataSnapshot(@NotNull DataSink dataSink, @NotNull DataSnapshot dataSnapshot) {
+    dataSink.lazyValue(MPSCommonDataKeys.MPS_PROJECT, this::deduceFromIJProject);
   }
 
   @Nullable
-  private MPSProject deduceFromIJProject(@NotNull DataProvider dataProvider) {
-    Project project = CommonDataKeys.PROJECT.getData(dataProvider);
+  private MPSProject deduceFromIJProject(@NotNull DataMap dataProvider) {
+    Project project = dataProvider.get(CommonDataKeys.PROJECT);
     if (project != null) {
-      return project.getComponent(MPSProject.class);
+      return ProjectHelper.fromIdeaProject(project);
     }
     return null;
   }
-
-//  @Nullable
-//  private MPSProject deduceFromModule(@NotNull DataProvider dataProvider) {
-//    SModule module = MPSCommonDataKeys.CONTEXT_MODULE.getData(dataProvider);
-//    if (module != null) {
-//
-//      for (jetbrains.mps.project.Project p : ProjectManager.getInstance().getOpenedProjects()) {
-//        if (p.isProjectModule(module) && p instanceof MPSProject) {
-//          return (MPSProject) p;
-//        }
-//      }
-//    }
-//    return null;
-//  }
 }

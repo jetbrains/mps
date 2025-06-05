@@ -94,8 +94,8 @@
     <getDataRule key="context.ProjectFileDirectory"
                  implementationClass="jetbrains.mps.ide.dataExtraction.fileChooser.ProjectFileRule"/>
 
-    <getDataRule key="MPS_MPSProject" implementationClass="jetbrains.mps.ide.dataExtraction.MPSProjectRule" type="fast"/>
-    <getDataRule key="MPS_Frame" implementationClass="jetbrains.mps.ide.dataExtraction.FrameRule" type="fast"/>
+    <uiDataRule implementation="jetbrains.mps.ide.dataExtraction.MPSProjectRule"/>
+    <uiDataRule implementation="jetbrains.mps.ide.dataExtraction.FrameRule"/>
 
     <fileBasedIndex implementation="jetbrains.mps.workbench.findusages.MPSModelsIndexer"/>
     <fileBasedIndex implementation="jetbrains.mps.workbench.index.RootNodeNameIndex"/>
