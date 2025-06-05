@@ -24,7 +24,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.model.ModelDeleteHelper;
-import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.Language;
@@ -63,6 +62,7 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.migration.AntTaskExecutionUtil;
 import com.intellij.openapi.application.ModalityState;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -132,7 +132,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
     runCommand(() -> {
       List<SModule> projectModules = project.getProjectModulesWithGenerators();
       ListSequence.fromList(projectModules).translate((it) -> it.getModels()).visitAll((it) -> new ModelDeleteHelper(it).removeGeneratedArtifacts());
-      ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getClassLoaderManager().reloadModules(projectModules);
+      MPSCoreComponents.getInstance().getClassLoaderManager().reloadModules(projectModules);
       Iterable<LanguageRuntime> projectLanguages = ListSequence.fromList(projectModules).ofType(Language.class).select((it) -> LanguageRegistry.getInstance(project.getRepository()).getLanguage(it));
       // this is a hack needed to clear global registry to unload languages like no languages were loaded at all
       ConceptRegistry.getInstance().afterLanguagesLoaded(projectLanguages);
@@ -328,7 +328,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
       }
       List<SModule> projectModules = project.getProjectModules();
       ListSequence.fromList(projectModules).translate((it) -> it.getModels()).visitAll((it) -> new ModelDeleteHelper(it).removeGeneratedArtifacts());
-      ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getClassLoaderManager().reloadModules(projectModules);
+      MPSCoreComponents.getInstance().getClassLoaderManager().reloadModules(projectModules);
       Iterable<LanguageRuntime> projectLanguages = ListSequence.fromList(projectModules).ofType(Language.class).select((it) -> LanguageRegistry.getInstance(project.getRepository()).getLanguage(it));
       // this is a hack needed to clear global registry to unload languages like no languages were loaded at all
       ConceptRegistry.getInstance().afterLanguagesLoaded(projectLanguages);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -155,7 +155,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
   }
 
   private void attachConflictResolver() {
-    MPSCoreComponents coreComponents = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
+    MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();
     VFSManager vfsManager = coreComponents.getPlatform().findComponent(VFSManager.class);
     DiskMemoryDialogExposer diskMemoryDialogExposer = (parentComponent, m, source, backupFile) -> myExposer.askUser(parentComponent, m, source, backupFile);
     myResolver = new ConflictResolverImpl(getMPSProject(),

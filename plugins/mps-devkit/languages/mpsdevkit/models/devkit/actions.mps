@@ -123,8 +123,6 @@
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="mk90" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="hfuk" ref="r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)" />
-    <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
-    <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="mte5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)" />
     <import index="g4jo" ref="r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)" />
     <import index="tpci" ref="r:00000000-0000-4000-0000-011c8959028e(jetbrains.mps.lang.structure.findUsages)" />
@@ -13013,26 +13011,15 @@
       <node concept="3clFbS" id="1MoLHx0Ah8K" role="3clF47">
         <node concept="3cpWs6" id="1MoLHx0AsMA" role="3cqZAp">
           <node concept="2EnYce" id="1MoLHx0AvGX" role="3cqZAk">
-            <node concept="2EnYce" id="1MoLHx0Asn2" role="2Oq$k0">
-              <node concept="2EnYce" id="1MoLHx0Asn3" role="2Oq$k0">
-                <node concept="2EnYce" id="1MoLHx0Asn4" role="2Oq$k0">
-                  <node concept="2YIFZM" id="1MoLHx0Asn5" role="2Oq$k0">
-                    <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
-                    <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
-                  </node>
-                  <node concept="liA8E" id="1MoLHx0Asn6" role="2OqNvi">
-                    <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                    <node concept="3VsKOn" id="1MoLHx0Asn7" role="37wK5m">
-                      <ref role="3VsUkX" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="liA8E" id="1MoLHx0Asn8" role="2OqNvi">
-                  <ref role="37wK5l" to="3a50:~MPSCoreComponents.getPlatform()" resolve="getPlatform" />
+            <node concept="2OqwBi" id="4fcW_bTNHNc" role="2Oq$k0">
+              <node concept="2OqwBi" id="4fcW_bTNHCk" role="2Oq$k0">
+                <node concept="2WthIp" id="4fcW_bTNHCn" role="2Oq$k0" />
+                <node concept="1DTwFV" id="4fcW_bTNHCp" role="2OqNvi">
+                  <ref role="2WH_rO" node="1MoLHx0ChDU" resolve="project" />
                 </node>
               </node>
               <node concept="liA8E" id="1MoLHx0Asn9" role="2OqNvi">
-                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="1MoLHx0Asna" role="37wK5m">
                   <ref role="3VsUkX" to="hfuk:4QUA3Sqts3M" resolve="MakeServiceComponent" />
                 </node>

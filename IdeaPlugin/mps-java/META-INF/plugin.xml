@@ -65,7 +65,6 @@
     <debugger.positionManagerFactory implementation="jetbrains.mps.idea.java.debugger.MpsPositionManagerFactory"/>
     <compileServer.plugin classpath="jps/mps-java-jps-plugin.jar;jps/mps-java-jps-plugin-j8.jar;java-platform.jar;java-core.jar"/>
     <referencesSearch implementation="jetbrains.mps.idea.java.usages.MPSReferenceSearch"/>
-    <referencesSearch implementation="jetbrains.mps.idea.java.usages.IdPrefixSearch"/>
     <java.elementFinder implementation="jetbrains.mps.idea.java.psi.impl.MPSJavaClassFinder"/>
     <java.elementFinder implementation="jetbrains.mps.idea.java.psi.impl.MPSPackageFinder"/>
     <java.shortNamesCache implementation="jetbrains.mps.idea.java.psi.impl.MPSJavaShortNamesCache"/>
@@ -77,9 +76,6 @@
     <fileBasedIndex implementation="jetbrains.mps.idea.java.index.MPSShortNameJavaClassIndex"/>
     <fileBasedIndex implementation="jetbrains.mps.idea.java.index.MPSJavaMethodIndex"/>
     <fileBasedIndex implementation="jetbrains.mps.idea.java.index.MPSJavaFieldIndex"/>
-    <fileBasedIndex implementation="jetbrains.mps.idea.java.index.ForeignIdReferenceIndex"/>
-    <projectService serviceInterface="jetbrains.mps.idea.java.psi.ForeignIdReferenceCache"
-                    serviceImplementation="jetbrains.mps.idea.java.psi.impl.ForeignIdReferenceCacheImpl"/>
     <findUsagesHandlerFactory implementation="jetbrains.mps.idea.java.usages.MPSFindUsagesHandlerFactory" id="mps"
                               order="before java"/>
     <refactoring.elementListenerProvider implementation="jetbrains.mps.idea.java.refactoring.PackageRenameListener"/>

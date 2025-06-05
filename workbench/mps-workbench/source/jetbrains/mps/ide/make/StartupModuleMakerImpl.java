@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,7 +79,7 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
     // ProjectLibraryManager used to be cons parameter
     @SuppressWarnings("unused")
     final ProjectLibraryManager plm = ProjectLibraryManager.getInstance(project);
-    myComponents = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
+    myComponents = MPSCoreComponents.getInstance();
     DumbService.getInstance(project).queueTask(new DumbModeTask() {
       @Override
       public @Nullable DumbModeTask tryMergeWith(@NotNull DumbModeTask taskFromQueue) {

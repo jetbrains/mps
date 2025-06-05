@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.workbench.findusages;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.GlobalSearchScope;
@@ -65,7 +64,7 @@ public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
   }
 
   public MPSModelsIndexer() {
-    final Platform mpsPlatform = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform();
+    final Platform mpsPlatform = MPSCoreComponents.getInstance().getPlatform();
     // FTR, (a) there's duplicated code in PropertyValueIndex,
     //      (b) RootNodeNameIndex.doModeParsing() approaches MF detection in a different way (likely, less hacky)
     //      (c)  MPSFileTypeFactory.findByExtension("model") == null, therefore not FilePerRootModelFactory for MPSFileTypeFactory.MPS_HEADER_FILE_TYPE,

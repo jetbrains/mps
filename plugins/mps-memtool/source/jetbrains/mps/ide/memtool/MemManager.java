@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.ide.memtool;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
 import com.intellij.openapi.util.registry.Registry;
@@ -49,7 +48,7 @@ public class MemManager implements StartupActivity.Background {
   @Override
   public void runActivity(@NotNull Project project) {
     myProject = project;
-    final MPSCoreComponents mpsCore = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
+    final MPSCoreComponents mpsCore = MPSCoreComponents.getInstance();
     myComponentHost = mpsCore.getPlatform();
     myAlarm = new Alarm(ThreadToUse.POOLED_THREAD, myProject);
     final RegistryValue rv = Registry.get("ide.memory.cleanup.interval");

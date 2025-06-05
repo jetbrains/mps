@@ -13,8 +13,6 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.MPSCoreComponents;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.Disposer;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -73,14 +71,13 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
       if (mpsProject == null) {
         return;
       }
-      MPSCoreComponents mpsCore = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
-      StubModelsFastFindSupport ffs = new StubModelsFastFindSupport(mpsProject, mpsCore);
+      StubModelsFastFindSupport ffs = new StubModelsFastFindSupport(mpsProject);
       Disposer.register(project, ffs);
     }
   }
 
-  private StubModelsFastFindSupport(MPSProject mpsProject, MPSCoreComponents mpsCore) {
-    myRegistry = mpsCore.getPlatform().findComponent(PersistenceRegistry.class);
+  private StubModelsFastFindSupport(MPSProject mpsProject) {
+    myRegistry = mpsProject.getComponent(PersistenceRegistry.class);
     myModelFilter = new ProjectModelFilter(mpsProject);
     myRegistry.addFindUsagesParticipant(this);
   }

@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.io.DataInput;
 import com.intellij.util.indexing.DataIndexer;
 import com.intellij.util.indexing.FileContent;
-import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.MPSCoreComponents;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
@@ -99,7 +98,7 @@ public class ClassifierSuccessorsIndexer extends FileBasedIndexExtension<SNodeEn
   @NotNull
   @Override
   public DataIndexer<SNodeEntry, List<SNodeEntry>, FileContent> getIndexer() {
-    return new Indexer(ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform());
+    return new Indexer(MPSCoreComponents.getInstance().getPlatform());
   }
 
   private static class InputFilter implements FileBasedIndex.InputFilter {

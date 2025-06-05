@@ -22,7 +22,6 @@
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="1ltj" ref="r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)" />
     <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" />
-    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="jlff" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs(MPS.IDEA/)" />
     <import index="yg2w" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.containers(MPS.Core/)" />
@@ -37,14 +36,12 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="xygl" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.progress(MPS.IDEA/)" />
     <import index="g3l6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.model(MPS.Core/)" />
-    <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
-    <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
     <import index="ospv" ref="r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)" />
     <import index="3s15" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench(MPS.Platform/)" />
@@ -53,7 +50,6 @@
     <import index="mx55" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.roots(MPS.IDEA/)" />
     <import index="3t2s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.module(MPS.IDEA/)" />
     <import index="j9ng" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.util(MPS.Platform/)" />
-    <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -4451,26 +4447,6 @@
               </node>
             </node>
           </node>
-          <node concept="3cpWs8" id="5YiFMyhwOs8" role="3cqZAp">
-            <node concept="3cpWsn" id="5YiFMyhwOs9" role="3cpWs9">
-              <property role="TrG5h" value="mpsCore" />
-              <node concept="3uibUv" id="5YiFMyhwOmo" role="1tU5fm">
-                <ref role="3uigEE" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
-              </node>
-              <node concept="2OqwBi" id="5YiFMyhwOsa" role="33vP2m">
-                <node concept="2YIFZM" id="5YiFMyhwOsb" role="2Oq$k0">
-                  <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
-                  <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
-                </node>
-                <node concept="liA8E" id="5YiFMyhwOsc" role="2OqNvi">
-                  <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                  <node concept="3VsKOn" id="5YiFMyhwOsd" role="37wK5m">
-                    <ref role="3VsUkX" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
           <node concept="3cpWs8" id="5YiFMyhx0ni" role="3cqZAp">
             <node concept="3cpWsn" id="5YiFMyhx0nj" role="3cpWs9">
               <property role="TrG5h" value="ffs" />
@@ -4482,9 +4458,6 @@
                   <ref role="37wK5l" node="2s2BsXxOyzQ" resolve="StubModelsFastFindSupport" />
                   <node concept="37vLTw" id="5YiFMyhxLn2" role="37wK5m">
                     <ref role="3cqZAo" node="5YiFMyhwJrL" resolve="mpsProject" />
-                  </node>
-                  <node concept="37vLTw" id="5YiFMyhxtys" role="37wK5m">
-                    <ref role="3cqZAo" node="5YiFMyhwOs9" resolve="mpsCore" />
                   </node>
                 </node>
               </node>
@@ -4522,16 +4495,11 @@
               <ref role="3cqZAo" node="5aJlj9qOeQm" resolve="myRegistry" />
             </node>
             <node concept="2OqwBi" id="5aJlj9qOkI$" role="37vLTx">
-              <node concept="2OqwBi" id="5aJlj9qOknQ" role="2Oq$k0">
-                <node concept="37vLTw" id="5aJlj9qOke4" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5aJlj9qOaYG" resolve="mpsCore" />
-                </node>
-                <node concept="liA8E" id="5aJlj9qOkBt" role="2OqNvi">
-                  <ref role="37wK5l" to="3a50:~MPSCoreComponents.getPlatform()" resolve="getPlatform" />
-                </node>
+              <node concept="37vLTw" id="4fcW_bTRdaw" role="2Oq$k0">
+                <ref role="3cqZAo" node="5YiFMyhxS0V" resolve="mpsProject" />
               </node>
               <node concept="liA8E" id="5aJlj9qOkSV" role="2OqNvi">
-                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                <ref role="37wK5l" to="z1c3:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="5aJlj9qOl0D" role="37wK5m">
                   <ref role="3VsUkX" to="pa15:~PersistenceRegistry" resolve="PersistenceRegistry" />
                 </node>
@@ -4570,12 +4538,6 @@
         <property role="TrG5h" value="mpsProject" />
         <node concept="3uibUv" id="5YiFMyhxSGM" role="1tU5fm">
           <ref role="3uigEE" to="z1c3:~MPSProject" resolve="MPSProject" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="5aJlj9qOaYG" role="3clF46">
-        <property role="TrG5h" value="mpsCore" />
-        <node concept="3uibUv" id="5aJlj9qOaYF" role="1tU5fm">
-          <ref role="3uigEE" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
         </node>
       </node>
     </node>

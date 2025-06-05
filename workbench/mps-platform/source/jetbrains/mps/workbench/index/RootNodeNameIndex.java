@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.workbench.index;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
@@ -168,7 +167,7 @@ public class RootNodeNameIndex extends SingleEntryFileBasedIndexExtension<ModelR
   @NotNull
   @Override
   public SingleEntryIndexer<ModelRootsData> getIndexer() {
-    return new MyIndexer(ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform());
+    return new MyIndexer(MPSCoreComponents.getInstance().getPlatform());
   }
 
   @NotNull

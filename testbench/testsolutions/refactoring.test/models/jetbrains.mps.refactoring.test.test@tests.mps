@@ -56,7 +56,6 @@
     <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" />
     <import index="snbe" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.io(MPS.IDEA/)" />
     <import index="3qmy" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.classloading(MPS.Core/)" />
-    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
     <import index="ztoz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.model(MPS.Core/)" />
     <import index="vndm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
@@ -4261,20 +4260,12 @@
                         </node>
                       </node>
                       <node concept="2OqwBi" id="3Qz3PJzlyL_" role="2Oq$k0">
-                        <node concept="2OqwBi" id="3Qz3PJzlyLA" role="2Oq$k0">
-                          <node concept="2YIFZM" id="3Qz3PJzlyLB" role="2Oq$k0">
-                            <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
-                            <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
-                          </node>
-                          <node concept="liA8E" id="3Qz3PJzlyLC" role="2OqNvi">
-                            <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                            <node concept="3VsKOn" id="3Qz3PJzlyLD" role="37wK5m">
-                              <ref role="3VsUkX" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
-                            </node>
-                          </node>
-                        </node>
                         <node concept="liA8E" id="3Qz3PJzlyLE" role="2OqNvi">
                           <ref role="37wK5l" to="3a50:~MPSCoreComponents.getClassLoaderManager()" resolve="getClassLoaderManager" />
+                        </node>
+                        <node concept="2YIFZM" id="4fcW_bTPCv2" role="2Oq$k0">
+                          <ref role="37wK5l" to="3a50:~MPSCoreComponents.getInstance()" resolve="getInstance" />
+                          <ref role="1Pybhc" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
                         </node>
                       </node>
                     </node>
@@ -6849,17 +6840,9 @@
                       </node>
                     </node>
                     <node concept="2OqwBi" id="2Z44d$XINF3" role="2Oq$k0">
-                      <node concept="2OqwBi" id="2Z44d$XINF4" role="2Oq$k0">
-                        <node concept="2YIFZM" id="2Z44d$XIO7C" role="2Oq$k0">
-                          <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
-                          <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
-                        </node>
-                        <node concept="liA8E" id="2Z44d$XINF6" role="2OqNvi">
-                          <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                          <node concept="3VsKOn" id="2Z44d$XINF8" role="37wK5m">
-                            <ref role="3VsUkX" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
-                          </node>
-                        </node>
+                      <node concept="2YIFZM" id="4fcW_bTPh3e" role="2Oq$k0">
+                        <ref role="37wK5l" to="3a50:~MPSCoreComponents.getInstance()" resolve="getInstance" />
+                        <ref role="1Pybhc" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
                       </node>
                       <node concept="liA8E" id="2Z44d$XINF9" role="2OqNvi">
                         <ref role="37wK5l" to="3a50:~MPSCoreComponents.getClassLoaderManager()" resolve="getClassLoaderManager" />
