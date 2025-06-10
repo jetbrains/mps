@@ -38,7 +38,7 @@ public class FrameRule implements UiDataRule {
 
   @Override
   public void uiDataSnapshot(@NotNull DataSink dataSink, @NotNull DataSnapshot dataSnapshot) {
-    dataSink.lazyValue(MPSCommonDataKeys.FRAME, this::deduceFrame);
+    dataSink.set(MPSCommonDataKeys.FRAME, deduceFrame(dataSnapshot));
   }
 
   @Nullable

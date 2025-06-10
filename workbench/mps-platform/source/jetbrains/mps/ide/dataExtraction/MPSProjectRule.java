@@ -36,6 +36,7 @@ public class MPSProjectRule implements UiDataRule {
 
   @Override
   public void uiDataSnapshot(@NotNull DataSink dataSink, @NotNull DataSnapshot dataSnapshot) {
+    // XXX fwiw, lazyValue didn't work out in FrameRule (didn't ever get into the method to get value), perhaps, need to change here as well.
     dataSink.lazyValue(MPSCommonDataKeys.MPS_PROJECT, this::deduceFromIJProject);
   }
 
