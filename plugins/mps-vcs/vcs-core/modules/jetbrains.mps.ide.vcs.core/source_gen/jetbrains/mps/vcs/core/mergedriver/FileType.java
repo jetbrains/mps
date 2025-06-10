@@ -5,7 +5,6 @@ package jetbrains.mps.vcs.core.mergedriver;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.MPSExtentions;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import java.io.File;
 import org.jetbrains.annotations.Nullable;
 import java.io.InputStream;
@@ -53,7 +52,7 @@ public enum FileType {
   }
 
   @NotNull
-  public static FileType get(@NotNull ModelFactoryService service, File file) {
+  public static FileType get(File file) {
     // try to get file type by file content
     FileType rv = getTypeByXmlRoot(file);
     return (rv == null ? FileType.UNKNOWN : rv);

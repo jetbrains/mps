@@ -37,7 +37,7 @@ public class MergeDriverMain {
     if (NO_FILETYPE.equals(filetype)) {
       filetype = null;
     }
-    // FIXME I suppose %O, %A and %B arguments don't give name of original file (so that we can't use it to detect proper ModelFactory), but what about %P?
+    // TODO Git: while %O, %A and %B arguments don't give name of original file (so that we can't use it to detect proper ModelFactory), %P does give us original file name, use it!
     if (SVN_OPTION.equals(args[1])) {
       if (args.length >= 8) {
         fileMerger.conflictMarker(FileMerger.CONFLICT_START + " " + args[6], FileMerger.CONFLICT_END + " " + args[7], FileMerger.CONFLICT_SEPARATOR);

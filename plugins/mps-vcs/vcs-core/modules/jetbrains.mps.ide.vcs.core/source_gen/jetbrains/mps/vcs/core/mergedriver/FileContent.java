@@ -37,7 +37,7 @@ public class FileContent extends DataSourceBase implements StreamDataSource {
     // some defaults
     if (kind == FileType.MODEL) {
       myModelFactory = PreinstalledModelFactoryTypes.PLAIN_XML;
-    } else if (kind == FileType.MODEL_ROOT || kind != FileType.MODEL_HEADER) {
+    } else if (kind == FileType.MODEL_ROOT || kind == FileType.MODEL_HEADER) {
       myModelFactory = PreinstalledModelFactoryTypes.PER_ROOT_XML;
     } else {
       myModelFactory = null;
@@ -172,8 +172,7 @@ public class FileContent extends DataSourceBase implements StreamDataSource {
       }
     }
 
-    // FIXME whatever actual ModelFactory is there for the file, FT.get() interprets it as ".mps" (MODEL). Refactor to support any persistence
     // note, here we rely on FileContents cons logic to assign proper MFType if FileType is any of MODEL*. Perhaps, shall do this here, instead
-    return new FileContent(file, FileType.get(mfs, file));
+    return new FileContent(file, FileType.get(file));
   }
 }
