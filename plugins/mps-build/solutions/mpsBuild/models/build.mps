@@ -968,9 +968,6 @@
       <node concept="nCB5N" id="2MtyMjHmmPf" role="nCB5Z">
         <ref role="nCB5Y" node="2MtyMjH3qzU" resolve="mps-typesystem" />
       </node>
-      <node concept="nCB5N" id="47JXWa7IXpQ" role="nCB5Z">
-        <ref role="nCB5Y" node="47JXWa7IVSW" resolve="pattern-runtime" />
-      </node>
     </node>
     <node concept="398b33" id="5RhptgddDxG" role="3989C9">
       <property role="TrG5h" value="feedback-api" />

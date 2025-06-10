@@ -16974,7 +16974,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.mps-generator" depends="java.compile.mps-typesystem, java.compile.pattern-runtime, fetchDependencies">
+  <target name="java.compile.mps-generator" depends="java.compile.mps-typesystem, fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/mps-generator" />
     <javac2 destdir="${build.tmp}/java/out/mps-generator" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
       <withKotlin moduleName="mps-generator">        
@@ -17005,7 +17005,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-persistence.jar" />
         <pathelement path="${build.tmp}/java/out/mps-typesystem" />
-        <pathelement path="${build.tmp}/java/out/pattern-runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/trove.jar" />
