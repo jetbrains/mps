@@ -23,6 +23,7 @@ public class RunMigrationScriptAction extends BaseAction implements DumbAware {
   private boolean myApplyToSelection;
   private List<SModel> myModels;
   private List<SModule> myModules;
+  private Object[] mySelectedItems;
   private MPSProject myProject;
 
   public RunMigrationScriptAction(RefactoringScript script, boolean applyToSelection) {
@@ -33,12 +34,8 @@ public class RunMigrationScriptAction extends BaseAction implements DumbAware {
   }
   @Override
   protected void doExecute(AnActionEvent e, Map<String, Object> _params) {
-    SearchScope scope;
-    if (myApplyToSelection) {
-      scope = AbstractMigrationScriptHelper.createMigrationScope(myModules, myModels);
-    } else {
-      scope = AbstractMigrationScriptHelper.createMigrationScope(myProject);
-    }
+    SearchScope scope = myProject.getModelAccess().computeReadAction(() -> MigrationScriptHelper.combineModulesModelsSelectedItemsIntoScope(!(myApplyToSelection), myProject, mySelectedItems, myModules, myModels));
+
     if (!(scope.getModels().iterator().hasNext())) {
       return;
     }
@@ -65,6 +62,7 @@ public class RunMigrationScriptAction extends BaseAction implements DumbAware {
         myModules.add(module);
       }
     }
+    mySelectedItems = e.getData(MPSCommonDataKeys.SELECTED_ITEMS);
     return true;
   }
 }

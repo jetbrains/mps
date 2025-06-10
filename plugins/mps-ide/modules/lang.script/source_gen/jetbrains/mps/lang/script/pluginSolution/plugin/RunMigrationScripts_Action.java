@@ -15,16 +15,9 @@ import org.jetbrains.mps.openapi.module.SModule;
 import com.intellij.openapi.actionSystem.PlatformCoreDataKeys;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SearchScope;
-import jetbrains.mps.ide.projectPane.logicalview.TopHierarchyProjectViewNode;
-import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import java.util.Arrays;
-import com.intellij.ide.util.treeView.AbstractTreeNode;
-import java.util.Collection;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.script.runtime.RefactoringScript;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 
 public class RunMigrationScripts_Action extends BaseAction {
@@ -73,45 +66,7 @@ public class RunMigrationScripts_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-    SearchScope scope = mpsProject.getModelAccess().computeReadAction(() -> {
-      if (RunMigrationScripts_Action.this.global || event.getData(PlatformCoreDataKeys.SELECTED_ITEMS).length == 1 && event.getData(PlatformCoreDataKeys.SELECTED_ITEMS)[0] instanceof TopHierarchyProjectViewNode) {
-        return AbstractMigrationScriptHelper.createMigrationScope(mpsProject);
-      }
-      int selectedModulesSize = (event.getData(MPSCommonDataKeys.MODULES) != null ? event.getData(MPSCommonDataKeys.MODULES).size() : 0);
-      int selectedModelsSize = (event.getData(MPSCommonDataKeys.MODELS) != null ? event.getData(MPSCommonDataKeys.MODELS).size() : 0);
-      if ((event.getData(MPSCommonDataKeys.MODULES) != null || event.getData(MPSCommonDataKeys.MODELS) != null) && event.getData(PlatformCoreDataKeys.SELECTED_ITEMS) != null && event.getData(PlatformCoreDataKeys.SELECTED_ITEMS).length == selectedModulesSize + selectedModelsSize) {
-        return AbstractMigrationScriptHelper.createMigrationScope(event.getData(MPSCommonDataKeys.MODULES), event.getData(MPSCommonDataKeys.MODELS));
-      }
-
-      if (event.getData(PlatformCoreDataKeys.SELECTED_ITEMS) == null) {
-        return new ModelsScope(ListSequence.fromList(new ArrayList<>()));
-      }
-      List<SModule> extractedModules = ListSequence.fromList(new ArrayList<SModule>());
-      List<SModel> extractedModels = ListSequence.fromList(new ArrayList<SModel>());
-      List<Object> items = ListSequence.fromList(new ArrayList<Object>());
-      ListSequence.fromList(items).addSequence(ListSequence.fromList(Arrays.asList(event.getData(PlatformCoreDataKeys.SELECTED_ITEMS))));
-      while (ListSequence.fromList(items).isNotEmpty()) {
-        Object item = ListSequence.fromList(items).removeElementAt(0);
-        if (item instanceof AbstractTreeNode) {
-          Object value = ((AbstractTreeNode) item).getValue();
-          if (value != null && value instanceof SModule) {
-            ListSequence.fromList(extractedModules).addElement((SModule) value);
-            continue;
-          }
-          if (value != null && value instanceof SModel) {
-            ListSequence.fromList(extractedModels).addElement((SModel) value);
-            continue;
-          }
-          Collection<? extends AbstractTreeNode<?>> children = ((AbstractTreeNode) item).getChildren();
-          ListSequence.fromList(items).addSequence(CollectionSequence.fromCollection(children));
-        }
-      }
-      if (ListSequence.fromList(extractedModules).isEmpty() && ListSequence.fromList(extractedModels).isEmpty()) {
-        return new ModelsScope(ListSequence.fromList(new ArrayList<>()));
-      }
-
-      return AbstractMigrationScriptHelper.createMigrationScope(extractedModules, extractedModels);
-    });
+    SearchScope scope = mpsProject.getModelAccess().computeReadAction(() -> MigrationScriptHelper.combineModulesModelsSelectedItemsIntoScope(RunMigrationScripts_Action.this.global, mpsProject, event.getData(PlatformCoreDataKeys.SELECTED_ITEMS), event.getData(MPSCommonDataKeys.MODULES), event.getData(MPSCommonDataKeys.MODELS)));
     if (!(scope.getModels().iterator().hasNext())) {
       return;
     }

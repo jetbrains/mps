@@ -45,7 +45,7 @@ public class ScriptsGlobally_ActionGroup extends GeneratedActionGroup {
     for (AnAction a : catGroup.getChildren(ActionManager.getInstance())) {
       ScriptsGlobally_ActionGroup.this.add(a);
     }
-    ScriptsGlobally_ActionGroup.this.addParameterizedAction(new RunMigrationScripts_Action(false), false);
+    ScriptsGlobally_ActionGroup.this.addParameterizedAction(new RunMigrationScripts_Action(true), true);
     for (Pair<ActionPlace, Condition<BaseAction>> p : this.myPlaces) {
       this.addPlace(p.first, p.second);
     }
