@@ -21,8 +21,6 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.workbench.action.BaseGroup;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.ActionManager;
 import org.jetbrains.annotations.Nullable;
 
 public class ScriptsForSelection_ActionGroup extends GeneratedActionGroup {
@@ -56,9 +54,7 @@ public class ScriptsForSelection_ActionGroup extends GeneratedActionGroup {
 
     ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(mpsProject);
     BaseGroup catGroup = menuBuilder.createPopup(true);
-    for (AnAction a : catGroup.getChildren(ActionManager.getInstance())) {
-      ScriptsForSelection_ActionGroup.this.add(a);
-    }
+    ScriptsForSelection_ActionGroup.this.add(catGroup);
     ScriptsForSelection_ActionGroup.this.addParameterizedAction(new RunMigrationScripts_Action(false), false);
     for (Pair<ActionPlace, Condition<BaseAction>> p : this.myPlaces) {
       this.addPlace(p.first, p.second);

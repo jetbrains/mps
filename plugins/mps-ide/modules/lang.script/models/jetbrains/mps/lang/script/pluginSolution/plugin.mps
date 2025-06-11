@@ -782,35 +782,13 @@
               </node>
             </node>
           </node>
-          <node concept="1DcWWT" id="4KDfkUwM93M" role="3cqZAp">
-            <node concept="3clFbS" id="4KDfkUwM93N" role="2LFqv$">
-              <node concept="3clFbF" id="70GTXuASVPQ" role="3cqZAp">
-                <node concept="2OqwBi" id="70GTXuASX8W" role="3clFbG">
-                  <node concept="2WthIp" id="70GTXuASVPO" role="2Oq$k0" />
-                  <node concept="liA8E" id="70GTXuASYbB" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
-                    <node concept="37vLTw" id="70GTXuASYh6" role="37wK5m">
-                      <ref role="3cqZAo" node="4KDfkUwM93Q" resolve="a" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWsn" id="4KDfkUwM93Q" role="1Duv9x">
-              <property role="TrG5h" value="a" />
-              <node concept="3uibUv" id="4KDfkUwM93R" role="1tU5fm">
-                <ref role="3uigEE" to="qkt:~AnAction" resolve="AnAction" />
-              </node>
-            </node>
-            <node concept="2OqwBi" id="4KDfkUwM93S" role="1DdaDG">
-              <node concept="37vLTw" id="3GM_nagTySd" role="2Oq$k0">
-                <ref role="3cqZAo" node="4KDfkUwM93H" resolve="catGroup" />
-              </node>
-              <node concept="liA8E" id="4KDfkUwM93U" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DefaultActionGroup.getChildren(com.intellij.openapi.actionSystem.ActionManager)" resolve="getChildren" />
-                <node concept="2YIFZM" id="1XhTWUYSK88" role="37wK5m">
-                  <ref role="37wK5l" to="qkt:~ActionManager.getInstance()" resolve="getInstance" />
-                  <ref role="1Pybhc" to="qkt:~ActionManager" resolve="ActionManager" />
+          <node concept="3clFbF" id="8rpvqLLtYd" role="3cqZAp">
+            <node concept="2OqwBi" id="8rpvqLLviJ" role="3clFbG">
+              <node concept="2WthIp" id="8rpvqLLtYb" role="2Oq$k0" />
+              <node concept="liA8E" id="8rpvqLLws9" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
+                <node concept="37vLTw" id="8rpvqLLwuo" role="37wK5m">
+                  <ref role="3cqZAo" node="4KDfkUwM93H" resolve="catGroup" />
                 </node>
               </node>
             </node>
@@ -1228,35 +1206,13 @@
               </node>
             </node>
           </node>
-          <node concept="1DcWWT" id="4KDfkUwM97m" role="3cqZAp">
-            <node concept="3clFbS" id="4KDfkUwM97n" role="2LFqv$">
-              <node concept="3clFbF" id="70GTXuASYRS" role="3cqZAp">
-                <node concept="2OqwBi" id="70GTXuASZWd" role="3clFbG">
-                  <node concept="2WthIp" id="70GTXuASYRQ" role="2Oq$k0" />
-                  <node concept="liA8E" id="70GTXuAT10x" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
-                    <node concept="37vLTw" id="70GTXuAT157" role="37wK5m">
-                      <ref role="3cqZAo" node="4KDfkUwM97q" resolve="a" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWsn" id="4KDfkUwM97q" role="1Duv9x">
-              <property role="TrG5h" value="a" />
-              <node concept="3uibUv" id="4KDfkUwM97r" role="1tU5fm">
-                <ref role="3uigEE" to="qkt:~AnAction" resolve="AnAction" />
-              </node>
-            </node>
-            <node concept="2OqwBi" id="4KDfkUwM97s" role="1DdaDG">
-              <node concept="37vLTw" id="3GM_nagTxqO" role="2Oq$k0">
-                <ref role="3cqZAo" node="4KDfkUwM97h" resolve="catGroup" />
-              </node>
-              <node concept="liA8E" id="4KDfkUwM97u" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DefaultActionGroup.getChildren(com.intellij.openapi.actionSystem.ActionManager)" resolve="getChildren" />
-                <node concept="2YIFZM" id="6$VEv9dx1tf" role="37wK5m">
-                  <ref role="37wK5l" to="qkt:~ActionManager.getInstance()" resolve="getInstance" />
-                  <ref role="1Pybhc" to="qkt:~ActionManager" resolve="ActionManager" />
+          <node concept="3clFbF" id="8rpvqLLd4x" role="3cqZAp">
+            <node concept="2OqwBi" id="8rpvqLLdMX" role="3clFbG">
+              <node concept="2WthIp" id="8rpvqLLd4v" role="2Oq$k0" />
+              <node concept="liA8E" id="8rpvqLLexM" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
+                <node concept="37vLTw" id="8rpvqLLeA8" role="37wK5m">
+                  <ref role="3cqZAo" node="4KDfkUwM97h" resolve="catGroup" />
                 </node>
               </node>
             </node>
