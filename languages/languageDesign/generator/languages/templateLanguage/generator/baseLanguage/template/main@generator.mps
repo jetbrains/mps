@@ -25611,6 +25611,9 @@
           <node concept="3uibUv" id="1CK_6ZcpLlw" role="1tU5fm">
             <ref role="3uigEE" to="r99j:~TemplateContext" resolve="TemplateContext" />
           </node>
+          <node concept="2AHcQZ" id="7NYNJ3LEhbY" role="2AJF6D">
+            <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+          </node>
         </node>
         <node concept="3clFbS" id="ilNinXgikD" role="3clF47">
           <node concept="3cpWs8" id="1CK_6ZcpXct" role="3cqZAp">
@@ -28901,22 +28904,33 @@
         </node>
       </node>
     </node>
-    <node concept="3clFb_" id="7YwkI8ddSEY" role="jymVt">
+    <node concept="2tJIrI" id="7NYNJ3LE6TO" role="jymVt" />
+    <node concept="3clFb_" id="7NYNJ3LE7zk" role="jymVt">
       <property role="TrG5h" value="apply" />
-      <node concept="3cqZAl" id="7YwkI8ddSF0" role="3clF45" />
-      <node concept="37vLTG" id="7YwkI8ddSF1" role="3clF46">
+      <node concept="3Tm1VV" id="7NYNJ3LE7zm" role="1B3o_S" />
+      <node concept="3cqZAl" id="7NYNJ3LE7zo" role="3clF45" />
+      <node concept="37vLTG" id="7NYNJ3LE7zp" role="3clF46">
         <property role="TrG5h" value="model" />
-        <node concept="3uibUv" id="7YwkI8ddSF2" role="1tU5fm">
+        <node concept="3uibUv" id="7NYNJ3LE7zq" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
         </node>
-      </node>
-      <node concept="37vLTG" id="7YwkI8ddSF3" role="3clF46">
-        <property role="TrG5h" value="env" />
-        <node concept="3uibUv" id="4V_$HCgirfv" role="1tU5fm">
-          <ref role="3uigEE" to="r99j:~TemplateExecutionEnvironment" resolve="TemplateExecutionEnvironment" />
+        <node concept="2AHcQZ" id="7NYNJ3LE7zr" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
-      <node concept="3clFbS" id="7YwkI8ddSF5" role="3clF47">
+      <node concept="37vLTG" id="7NYNJ3LE7zs" role="3clF46">
+        <property role="TrG5h" value="templateContext" />
+        <node concept="3uibUv" id="7NYNJ3LE7zt" role="1tU5fm">
+          <ref role="3uigEE" to="r99j:~TemplateContext" resolve="TemplateContext" />
+        </node>
+        <node concept="2AHcQZ" id="7NYNJ3LE7zu" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3uibUv" id="7NYNJ3LE7zv" role="Sfmx6">
+        <ref role="3uigEE" to="80j5:~GenerationFailureException" resolve="GenerationFailureException" />
+      </node>
+      <node concept="3clFbS" id="7NYNJ3LE7zw" role="3clF47">
         <node concept="3clFbF" id="6yDJ0qeN7gU" role="3cqZAp">
           <node concept="2YIFZM" id="6yDJ0qeN7gW" role="3clFbG">
             <ref role="37wK5l" node="5piO3v59kXA" resolve="mappingScriptCode" />
@@ -28961,22 +28975,24 @@
             </node>
             <node concept="2ShNRf" id="6yDJ0qeN7Ve" role="37wK5m">
               <node concept="1pGfFk" id="6yDJ0qeN7Vg" role="2ShVmc">
-                <ref role="37wK5l" to="q1l7:~MappingScriptContext.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel,org.jetbrains.mps.openapi.model.SNodeReference,jetbrains.mps.generator.runtime.TemplateExecutionEnvironment)" resolve="MappingScriptContext" />
+                <ref role="37wK5l" to="q1l7:~MappingScriptContext.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel,org.jetbrains.mps.openapi.model.SNodeReference,jetbrains.mps.generator.runtime.TemplateContext)" resolve="MappingScriptContext" />
                 <node concept="37vLTw" id="2BHiRxglnTz" role="37wK5m">
-                  <ref role="3cqZAo" node="7YwkI8ddSF1" resolve="model" />
+                  <ref role="3cqZAo" node="7NYNJ3LE7zp" resolve="model" />
                 </node>
                 <node concept="1rXfSq" id="3O43uG7qVqS" role="37wK5m">
                   <ref role="37wK5l" node="7YwkI8ddSFe" resolve="getScriptNode" />
                 </node>
                 <node concept="37vLTw" id="2BHiRxgmzqH" role="37wK5m">
-                  <ref role="3cqZAo" node="7YwkI8ddSF3" resolve="env" />
+                  <ref role="3cqZAo" node="7NYNJ3LE7zs" resolve="templateContext" />
                 </node>
               </node>
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="7YwkI8ddSEZ" role="1B3o_S" />
+      <node concept="2AHcQZ" id="7NYNJ3LE7zx" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
     </node>
     <node concept="3Tm1VV" id="7YwkI8ddSEN" role="1B3o_S" />
     <node concept="n94m4" id="7YwkI8ddSES" role="lGtFl">

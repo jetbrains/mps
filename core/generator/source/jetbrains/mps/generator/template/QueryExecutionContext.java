@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,8 +54,6 @@ public interface QueryExecutionContext extends QueryExecutor {
   boolean applyRule(TemplateWeavingRule rule, TemplateContext context, SNode outputContextNode) throws GenerationException;
 
   SNode getContextNode(TemplateWeavingRule rule, TemplateContext context) throws GenerationFailureException;
-
-  void executeScript(TemplateMappingScript mappingScript, SModel model, TemplateExecutionEnvironment env) throws GenerationFailureException;
 
   /**
    * for QEC that wraps another one, try to get the deepest/topmost executor

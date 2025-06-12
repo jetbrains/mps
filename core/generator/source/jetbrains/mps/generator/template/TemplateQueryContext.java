@@ -72,6 +72,7 @@ public class TemplateQueryContext {
     myTemplateNode = templateNode;
     myEnv = env;
     myGenerator = myEnv.getGenerator();
+    // once last usage in MappingScriptContext gone, re-evaluate myEnv and myGenerator fields.
   }
 
     /**
