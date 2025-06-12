@@ -92,6 +92,8 @@
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" />
     <import index="gk56" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.options.advanced(MPS.IDEA/)" />
     <import index="7e8u" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.ui.tree(MPS.Platform/)" />
+    <import index="fglx" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.fileTypes(MPS.IDEA/)" />
+    <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -1713,11 +1715,13 @@
     </node>
     <node concept="312cEg" id="47QEcUfsm54" role="jymVt">
       <property role="TrG5h" value="needClean" />
+      <property role="3TUv4t" value="true" />
       <node concept="10P_77" id="47QEcUfsm56" role="1tU5fm" />
       <node concept="3Tm6S6" id="47QEcUfsm55" role="1B3o_S" />
     </node>
     <node concept="312cEg" id="47QEcUfsm57" role="jymVt">
       <property role="TrG5h" value="modules" />
+      <property role="3TUv4t" value="true" />
       <node concept="2ShNRf" id="47QEcUfsm5b" role="33vP2m">
         <node concept="32HrFt" id="47QEcUfsm5c" role="2ShVmc">
           <node concept="3uibUv" id="4r0sY_pPkFD" role="HW$YZ">
@@ -1899,19 +1903,51 @@
                 <node concept="3uibUv" id="1KUoCipvBet" role="1tU5fm">
                   <ref role="3uigEE" to="vqh0:~ModuleMaker" resolve="ModuleMaker" />
                 </node>
-                <node concept="2ShNRf" id="1KUoCipvBeu" role="33vP2m">
-                  <node concept="1pGfFk" id="1KUoCipvBev" role="2ShVmc">
-                    <ref role="37wK5l" to="vqh0:~ModuleMaker.&lt;init&gt;(jetbrains.mps.messages.IMessageHandler)" resolve="ModuleMaker" />
-                    <node concept="2OqwBi" id="3D3uKT_RkBG" role="37wK5m">
-                      <node concept="liA8E" id="3D3uKT_RmAO" role="2OqNvi">
-                        <ref role="37wK5l" to="et5u:~IMessageHandler.restrict(jetbrains.mps.messages.MessageKind)" resolve="restrict" />
-                        <node concept="Rm8GO" id="3D3uKT_RoBF" role="37wK5m">
-                          <ref role="Rm8GQ" to="et5u:~MessageKind.ERROR" resolve="ERROR" />
-                          <ref role="1Px2BO" to="et5u:~MessageKind" resolve="MessageKind" />
+                <node concept="2OqwBi" id="3ijg8RSjj_c" role="33vP2m">
+                  <node concept="2ShNRf" id="1KUoCipvBeu" role="2Oq$k0">
+                    <node concept="1pGfFk" id="1KUoCipvBev" role="2ShVmc">
+                      <ref role="37wK5l" to="vqh0:~ModuleMaker.&lt;init&gt;(jetbrains.mps.messages.IMessageHandler)" resolve="ModuleMaker" />
+                      <node concept="2OqwBi" id="3D3uKT_RkBG" role="37wK5m">
+                        <node concept="liA8E" id="3D3uKT_RmAO" role="2OqNvi">
+                          <ref role="37wK5l" to="et5u:~IMessageHandler.restrict(jetbrains.mps.messages.MessageKind)" resolve="restrict" />
+                          <node concept="Rm8GO" id="3D3uKT_RoBF" role="37wK5m">
+                            <ref role="Rm8GQ" to="et5u:~MessageKind.ERROR" resolve="ERROR" />
+                            <ref role="1Px2BO" to="et5u:~MessageKind" resolve="MessageKind" />
+                          </node>
+                        </node>
+                        <node concept="37vLTw" id="7YYozjU3aeB" role="2Oq$k0">
+                          <ref role="3cqZAo" node="7YYozjU3aez" resolve="mh" />
                         </node>
                       </node>
-                      <node concept="37vLTw" id="7YYozjU3aeB" role="2Oq$k0">
-                        <ref role="3cqZAo" node="7YYozjU3aez" resolve="mh" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="3ijg8RSjkxH" role="2OqNvi">
+                    <ref role="37wK5l" to="vqh0:~ModuleMaker.ignoreFiles(java.util.function.Predicate)" resolve="ignoreFiles" />
+                    <node concept="1bVj0M" id="3ijg8RSjTil" role="37wK5m">
+                      <node concept="gl6BB" id="3ijg8RSjTiB" role="1bW2Oz">
+                        <property role="TrG5h" value="f" />
+                        <node concept="2jxLKc" id="3ijg8RSjTiC" role="1tU5fm" />
+                      </node>
+                      <node concept="3clFbS" id="3ijg8RSjTiE" role="1bW5cS">
+                        <node concept="3clFbF" id="3ijg8RSk0kZ" role="3cqZAp">
+                          <node concept="2OqwBi" id="3ijg8RSk3Av" role="3clFbG">
+                            <node concept="2YIFZM" id="3ijg8RSk2Au" role="2Oq$k0">
+                              <ref role="37wK5l" to="fglx:~FileTypeManager.getInstance()" resolve="getInstance" />
+                              <ref role="1Pybhc" to="fglx:~FileTypeManager" resolve="FileTypeManager" />
+                            </node>
+                            <node concept="liA8E" id="3ijg8RSk4xX" role="2OqNvi">
+                              <ref role="37wK5l" to="fglx:~FileTypeManager.isFileIgnored(java.lang.String)" resolve="isFileIgnored" />
+                              <node concept="2OqwBi" id="3ijg8RSk6xY" role="37wK5m">
+                                <node concept="37vLTw" id="3ijg8RSk5Ea" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="3ijg8RSjTiB" resolve="f" />
+                                </node>
+                                <node concept="liA8E" id="3ijg8RSk94K" role="2OqNvi">
+                                  <ref role="37wK5l" to="guwi:~File.getName()" resolve="getName" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
                       </node>
                     </node>
                   </node>

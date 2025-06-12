@@ -15,6 +15,7 @@ import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.ide.messages.DefaultMessageHandler;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.messages.MessageKind;
+import com.intellij.openapi.fileTypes.FileTypeManager;
 import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.messages.Message;
@@ -22,8 +23,8 @@ import jetbrains.mps.classloading.ClassLoaderManager;
 
 public class DefaultMakeTask extends Task.Modal {
   private final MPSProject myProject;
-  private boolean needClean;
-  private Set<SModule> modules = SetSequence.fromSet(new LinkedHashSet<SModule>());
+  private final boolean needClean;
+  private final Set<SModule> modules = SetSequence.fromSet(new LinkedHashSet<SModule>());
 
   public DefaultMakeTask(MPSProject mpsProject, String title, Set<SModule> modules, boolean needClean) {
     super(mpsProject.getProject(), title, true);
@@ -38,7 +39,7 @@ public class DefaultMakeTask extends Task.Modal {
     monitor.start("", (needClean ? 10 : 9));
     try {
       DefaultMessageHandler mh = new DefaultMessageHandler(getProject());
-      final ModuleMaker maker = new ModuleMaker(mh.restrict(MessageKind.ERROR));
+      final ModuleMaker maker = new ModuleMaker(mh.restrict(MessageKind.ERROR)).ignoreFiles((f) -> FileTypeManager.getInstance().isFileIgnored(f.getName()));
       myProject.getModelAccess().runReadAction(() -> {
         if (needClean) {
           maker.clean(modules, monitor.subTask(1));

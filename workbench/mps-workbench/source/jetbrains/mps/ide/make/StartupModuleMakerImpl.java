@@ -20,6 +20,7 @@ import com.intellij.notification.NotificationGroup;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.project.DumbModeTask;
 import com.intellij.openapi.project.DumbService;
@@ -109,6 +110,7 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
   private void doBuild(ProgressMonitor monitor) {
     LOG.info("Building modules on startup");
     final ModuleMaker maker = new ModuleMaker();
+    maker.ignoreFiles(file -> FileTypeManager.getInstance().isFileIgnored(file.getName()));
 
     // Create temporary client file
     final File clientFile = KotlinCompilerOptions.createClientFile();
