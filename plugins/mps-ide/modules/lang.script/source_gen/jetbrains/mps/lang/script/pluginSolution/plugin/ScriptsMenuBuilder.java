@@ -19,6 +19,8 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.Collections;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.util.NameUtil;
 
 /*package*/ final class ScriptsMenuBuilder {
   private final SortedMap<String, List<RefactoringScript>> myAllScriptsByLanguage = new TreeMap<>(new Comparator<String>() {
@@ -35,7 +37,7 @@ import java.util.Collections;
       scriptsForLanguage.addAll(sad.getRefactoringScripts());
       if (scriptsForLanguage.size() > 0) {
         SNodeReference ptr = scriptsForLanguage.get(0).getScriptNode();
-        String key = (ptr == null || ptr.getModelReference() == null ? "<unknown>" : ptr.getModelReference().getModelName());
+        String key = (ptr == null || ptr.getModelReference() == null ? "<unknown>" : extractLanguageName(ptr));
         if (myAllScriptsByLanguage.containsKey(key)) {
           myAllScriptsByLanguage.get(key).addAll(scriptsForLanguage);
         } else {
@@ -66,5 +68,10 @@ import java.util.Collections;
       ListSequence.fromList(allScripts).addSequence(ListSequence.fromList(scriptsInLanguage));
     }
     return Collections.unmodifiableList(allScripts);
+  }
+  private String extractLanguageName(@NotNull SNodeReference ptr) {
+    String modelName = ptr.getModelReference().getModelName();
+    int index = modelName.lastIndexOf(".scripts");
+    return NameUtil.compactNamespace((index > 0 ? modelName.substring(0, index) : modelName));
   }
 }
