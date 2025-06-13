@@ -266,27 +266,13 @@ public class DefaultQueryExecutionContext implements QueryExecutionContext {
   }
 
   @Override
-  public boolean applyRule(TemplateWeavingRule rule, TemplateContext context, SNode outputContextNode) throws GenerationException {
+  public boolean applyRule(@NotNull TemplateWeavingRule rule, @NotNull TemplateContext context) throws GenerationException {
     try {
-      return rule.apply(context.getEnvironment(), context, outputContextNode);
+      return rule.apply(context);
     } catch (GenerationException ex) {
       throw ex;
     } catch (Throwable t) {
       GenerationFailureException ex = new GenerationFailureException("unexpected exception when applying weaving rule", t);
-      ex.setTemplateContext(context);
-      ex.setTemplateModelLocation(rule.getRuleNode());
-      throw ex;
-    }
-  }
-
-  @Override
-  public SNode getContextNode(TemplateWeavingRule rule, TemplateContext context) throws GenerationFailureException {
-    try {
-      return rule.getContextNode(context.getEnvironment(), context);
-    } catch (GenerationFailureException ex) {
-      throw ex;
-    } catch (Throwable t) {
-      TemplateQueryException ex = new TemplateQueryException("cannot evaluate rule context query", t);
       ex.setTemplateContext(context);
       ex.setTemplateModelLocation(rule.getRuleNode());
       throw ex;

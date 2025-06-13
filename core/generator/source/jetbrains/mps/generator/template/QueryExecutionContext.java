@@ -51,10 +51,6 @@ public interface QueryExecutionContext extends QueryExecutor {
 
   Collection<SNode> applyRule(TemplateCreateRootRule rule, TemplateContext context) throws GenerationException;
 
-  boolean applyRule(TemplateWeavingRule rule, TemplateContext context, SNode outputContextNode) throws GenerationException;
-
-  SNode getContextNode(TemplateWeavingRule rule, TemplateContext context) throws GenerationFailureException;
-
   /**
    * for QEC that wraps another one, try to get the deepest/topmost executor
    * @since 2021.2

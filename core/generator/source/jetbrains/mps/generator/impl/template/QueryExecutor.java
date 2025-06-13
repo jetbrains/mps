@@ -27,8 +27,10 @@ import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import jetbrains.mps.generator.impl.query.VariableValueQuery;
+import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateMappingScript;
+import jetbrains.mps.generator.runtime.TemplateWeavingRule;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.InlineSwitchCaseContext;
 import jetbrains.mps.generator.template.InsertMacroContext;
@@ -95,4 +97,6 @@ public interface QueryExecutor {
   // however, it's still a bit odd - when is the proper moment to pipe user's code through QueryExecutor, e.g. macros get their methods piped through #evaluate, while
   // e.g. rule or script have isApplicable() or executeScript() here, but their implementation invokes code blocks w/o piping through QueryExecutor
   void executeScript(@NotNull TemplateMappingScript mappingScript, @NotNull SModel model, @NotNull TemplateContext env) throws GenerationFailureException;
+
+  boolean applyRule(@NotNull TemplateWeavingRule rule, @NotNull TemplateContext context) throws GenerationException;
 }
