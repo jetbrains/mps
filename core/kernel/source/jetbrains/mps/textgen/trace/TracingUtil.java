@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,16 +95,10 @@ public final class TracingUtil {
   /**
    * @deprecated code branching done with boolean flag.
    */
-@Deprecated(since = "2018.2", forRemoval = true)
+  @Deprecated(since = "2018.2", forRemoval = true)
   public static void fillOriginalNode(@NotNull SNode inputNode, @NotNull SNode outputNode, boolean originalInput) {
-    if (originalInput) {
-      putInputNode(outputNode, inputNode);
-    } else {
-      SNodeReference originalInputNode = getInput(inputNode);
-      if (originalInputNode != null) {
-        putInput(outputNode, originalInputNode);
-      }
-    }
+    // keep for couple of releases from now (2025.2, where reduce_TraceMacro has been fixed not to use one), and drop then
+    deriveOriginalNode(inputNode, outputNode);
   }
 
   /**

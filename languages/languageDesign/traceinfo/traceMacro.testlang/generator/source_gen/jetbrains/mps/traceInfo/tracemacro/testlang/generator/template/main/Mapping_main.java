@@ -19,7 +19,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.textgen.trace.TracingUtil;
 import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
@@ -66,16 +65,11 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
         }
         {
           Collection<SNode> tlist4 = null;
-          // calculate input
           final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_0_2(new SourceSubstituteMacroNodeContext(context1, traceMacro));
-          // calculate output
           final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
           SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_0_0(new PropertyMacroContext(context1, "var", propertyMacro)));
           tlist4 = TemplateUtil.singletonList(tnode5);
-          // put input node
-          for (SNode resultNode : CollectionSequence.fromCollection(tlist4)) {
-            TracingUtil.fillOriginalNode(copySrcInput4, resultNode, false);
-          }
+          TracingUtil.deriveOriginalNode(copySrcInput4, tlist4, true);
           environment.aggregate(tnode1, myAggregationLinks[2], tlist4);
         }
       }
