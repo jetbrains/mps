@@ -62,16 +62,16 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       super(new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738863683"), CONCEPTS.InputNode_A$Jt, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_0_1(new WeavingMappingRuleContext(context, getRuleNode()));
     }
-    @NotNull
     @Override
-    public SNode getContextNode(TemplateExecutionEnvironment environment, TemplateContext context) {
-      return QueriesGenerated.weavingRule_ContextQuery_0_0(new WeavingMappingRuleContext(context, getRuleNode()));
-    }
-    @Override
-    public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
+    public boolean apply(@NotNull final TemplateContext context) throws GenerationException {
+      final SNode outputContextNode = QueriesGenerated.weavingRule_ContextQuery_0_0(new WeavingMappingRuleContext(context, getRuleNode()));
+      if (!(checkContextNode(context, outputContextNode))) {
+        return false;
+      }
+      final TemplateExecutionEnvironment environment = context.getEnvironment();
       final TemplateCallSite callSite = environment.callSite(new Template_weave_InputNode_A(), new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738992786"));
       return callSite.weave(context, outputContextNode, WeavingRule0.this);
     }
