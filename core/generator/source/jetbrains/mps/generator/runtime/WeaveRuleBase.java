@@ -46,6 +46,7 @@ public abstract class WeaveRuleBase implements TemplateWeavingRule {
    */
   @Override
   public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    // throws GenerationException, not GenerationFailureException, as we generated "throws GE" overrides until 2025.2
     return true;
   }
 

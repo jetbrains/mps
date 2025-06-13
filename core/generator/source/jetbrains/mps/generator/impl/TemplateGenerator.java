@@ -1210,6 +1210,7 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
         handledReferences = new HashSet<>();
         DefaultTemplateContext templateContext = new DefaultTemplateContext(myEnv, inputNode, null);
         for (ReferenceReductionRule rule : referenceRules) {
+          // XXX I wonder why didn't I pass RRR.isApplicable through QueryExecutionContext?!
           if (rule.isApplicable(templateContext)) {
             handledReferences.add(rule.getApplicableLink());
             rule.apply(templateContext, outputNode);
