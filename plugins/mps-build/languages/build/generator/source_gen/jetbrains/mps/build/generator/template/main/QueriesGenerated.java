@@ -109,10 +109,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
     // BL_Import under an archive (aka BL_CAFS) are processed in reduce_FileSetInArchive
-    return FileSetUtil.getFilesetLayoutContainer(_context.getNode()) == null;
+    return FileSetUtil.getFilesetLayoutContainer(_context.getNode()) != null;
   }
   public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
-    return FileSetUtil.getFilesetLayoutContainer(_context.getNode()) == null;
+    return FileSetUtil.getFilesetLayoutContainer(_context.getNode()) != null;
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.defaultPath$9tbQ) == null);
@@ -1854,6 +1854,8 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
     int i = 0;
+    rrcMethods.put("3576430657786529411", new RRC(i++));
+    rrcMethods.put("3576430657786712772", new RRC(i++));
     rrcMethods.put("687702229765914564", new RRC(i++));
     rrcMethods.put("1117643560963351177", new RRC(i++));
     rrcMethods.put("1330375798088310094", new RRC(i++));
@@ -1874,12 +1876,16 @@ public class QueriesGenerated extends QueryProviderBase {
     public boolean check(ReductionRuleQueryContext ctx) throws GenerationFailureException {
       switch (methodKey) {
         case 0:
-          return QueriesGenerated.rule_Condition_0_5(ctx);
+          return QueriesGenerated.rule_Condition_0_1(ctx);
         case 1:
-          return QueriesGenerated.rule_Condition_2_0(ctx);
+          return QueriesGenerated.rule_Condition_0_2(ctx);
         case 2:
-          return QueriesGenerated.rule_Condition_2_1(ctx);
+          return QueriesGenerated.rule_Condition_0_5(ctx);
         case 3:
+          return QueriesGenerated.rule_Condition_2_0(ctx);
+        case 4:
+          return QueriesGenerated.rule_Condition_2_1(ctx);
+        case 5:
           return QueriesGenerated.rule_Condition_10_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for rule %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -3094,8 +3100,6 @@ public class QueriesGenerated extends QueryProviderBase {
   {
     int i = 0;
     isccMethods.put("5248329904288166449", new ISCC(i++));
-    isccMethods.put("4701820937132270525", new ISCC(i++));
-    isccMethods.put("5610619299013114603", new ISCC(i++));
     isccMethods.put("6921160174096663331", new ISCC(i++));
     isccMethods.put("244868996532694195", new ISCC(i++));
     isccMethods.put("1330375798088685234", new ISCC(i++));
@@ -3121,22 +3125,18 @@ public class QueriesGenerated extends QueryProviderBase {
         case 0:
           return QueriesGenerated.rule_Condition_0_0(ctx);
         case 1:
-          return QueriesGenerated.rule_Condition_0_1(ctx);
-        case 2:
-          return QueriesGenerated.rule_Condition_0_2(ctx);
-        case 3:
           return QueriesGenerated.rule_Condition_0_3(ctx);
-        case 4:
+        case 2:
           return QueriesGenerated.rule_Condition_0_4(ctx);
-        case 5:
+        case 3:
           return QueriesGenerated.rule_Condition_2_2(ctx);
-        case 6:
+        case 4:
           return QueriesGenerated.rule_Condition_10_1(ctx);
-        case 7:
+        case 5:
           return QueriesGenerated.rule_Condition_10_2(ctx);
-        case 8:
+        case 6:
           return QueriesGenerated.rule_Condition_10_3(ctx);
-        case 9:
+        case 7:
           return QueriesGenerated.rule_Condition_10_4(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for inline switch's case %s (key: #%d)", ctx.getTemplateReference(), methodKey));
