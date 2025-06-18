@@ -1759,6 +1759,16 @@
                       </node>
                     </node>
                   </node>
+                  <node concept="2pNNFK" id="3uKXQOhRTOJ" role="3o6s8t">
+                    <property role="2pNNFO" value="arg" />
+                    <property role="qg3DV" value="true" />
+                    <node concept="2pNUuL" id="3uKXQOhRU7t" role="2pNNFR">
+                      <property role="2pNUuO" value="value" />
+                      <node concept="2pMdtt" id="3uKXQOhRU7u" role="2pMdts">
+                        <property role="2pMdty" value="-Dintellij.progress.task.ignoreHeadless=true" />
+                      </node>
+                    </node>
+                  </node>
                 </node>
                 <node concept="3o6iSG" id="1U9_VEsPwoE" role="3o6s8t" />
                 <node concept="3o6iSG" id="HwplGLEhVK" role="3o6s8t" />
