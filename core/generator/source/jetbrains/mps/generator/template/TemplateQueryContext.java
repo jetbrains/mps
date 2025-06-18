@@ -21,6 +21,7 @@ import jetbrains.mps.generator.impl.TemplateExecutionEnvironmentImpl;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.textgen.trace.TracingUtil;
+import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -339,8 +340,18 @@ public class TemplateQueryContext {
    * @since 2025.2
    */
   public List<SNode> copyWithTrace(@NotNull Iterable<? extends SNode> nodes) {
-    CloneUtil cu = new CloneUtil(getInputModel(), getOutputModel()).traceOriginalInput();
-    return StreamSupport.stream(nodes.spliterator(), false).filter(Objects::nonNull).map(cu::clone).toList();
+    return TracingUtil.copyWithTrace(IterableUtil.asList(nodes));
+//    CloneUtil cu = new CloneUtil(getInputModel(), getOutputModel());
+//    return StreamSupport.stream(nodes.spliterator(), false).filter(Objects::nonNull).map(n -> {
+//      SNode o = cu.clone(n);
+//      SNodeReference origin = TracingUtil.getInput(n);
+//      if (origin != null) {
+//        TracingUtil.putInput(o, origin);
+//      } else {
+//        TracingUtil.putInputNode(o, n);
+//      }
+//      return o;
+//    }).toList();
   }
 
   /**
