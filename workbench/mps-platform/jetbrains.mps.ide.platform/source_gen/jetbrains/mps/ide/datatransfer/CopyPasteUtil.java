@@ -21,6 +21,9 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.mps.openapi.model.SReference;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SScope;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import com.intellij.ide.CopyPasteManagerEx;
 import java.awt.datatransfer.StringSelection;
@@ -93,20 +96,24 @@ public final class CopyPasteUtil {
       for (SReference assoc : Sequence.fromIterable(sourceNode.getReferences())) {
         SNode targetNode = assoc.getTargetNode();
         final SModelReference targetModel;
+        SReferenceLink link = assoc.getLink();
         if (targetNode == null) {
           targetModel = assoc.getTargetSModelReference();
-          copiedLinks.add(AssociationLink.create(assoc.getLink(), copiedSourceNode, assoc.describeTarget()));
+          copiedLinks.add(AssociationLink.create(link, copiedSourceNode, assoc.describeTarget()));
         } else {
           SNode newTargetNode = sourceNodesToNewNodes.get(targetNode);
           if (newTargetNode != null) {
             // link within copied node hierarchy
-            copiedLinks.add(AssociationLink.create(assoc.getLink(), copiedSourceNode, newTargetNode));
+            copiedLinks.add(AssociationLink.create(link, copiedSourceNode, newTargetNode));
             targetModel = null;
           } else {
             // outside of copied hierarchy
             // Next comment comes from the original code (is it still relevant):
             // XXX oldTargetNode.model can be null in case it comes from generation process, see MPS-24188; this may be fixed when MPS-23902 is fixed
-            copiedLinks.add(AssociationLink.create(assoc.getLink(), copiedSourceNode, assoc.describeTarget()));
+            // MPS-38564 - get an updated resolve info of the original node to hand it over to the copied reference
+            SScope assocScope = (link != null && sourceNode != null ? link.getScope(sourceNode) : null);
+            final String resolveInfo = (assocScope != null ? assocScope.getReferenceText(targetNode) : null);
+            copiedLinks.add(AssociationLink.create(link, copiedSourceNode, (resolveInfo != null ? ResolveInfo.of(targetNode.getReference(), resolveInfo) : assoc.describeTarget())));
             targetModel = targetNode.getReference().getModelReference();
           }
         }
