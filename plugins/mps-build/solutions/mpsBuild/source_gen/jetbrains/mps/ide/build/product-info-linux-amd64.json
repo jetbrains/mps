@@ -34,6 +34,8 @@
         "java-frontback.jar",
         "java-impl.jar",
         "javac2.jar",
+        "jaxb-api.jar",
+        "jaxb-runtime.jar",
         "jetbrains-annotations.jar",
         "jps-model.jar",
         "junit4.jar",

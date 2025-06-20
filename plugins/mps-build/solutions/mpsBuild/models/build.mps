@@ -43041,6 +43041,12 @@
     <node concept="26EafG" id="4nX__hM7qA1" role="26Ea7d">
       <property role="26EafJ" value="lib/javac2.jar" />
     </node>
+    <node concept="26EafG" id="1RKeUBbef6i" role="26Ea7d">
+      <property role="26EafJ" value="lib/jaxb-api.jar" />
+    </node>
+    <node concept="26EafG" id="1RKeUBbefdc" role="26Ea7d">
+      <property role="26EafJ" value="lib/jaxb-runtime.jar" />
+    </node>
     <node concept="26EafG" id="4nX__hM7qAl" role="26Ea7d">
       <property role="26EafJ" value="lib/jetbrains-annotations.jar" />
     </node>
