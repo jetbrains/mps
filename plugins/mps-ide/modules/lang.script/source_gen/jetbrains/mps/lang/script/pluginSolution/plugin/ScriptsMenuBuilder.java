@@ -48,7 +48,7 @@ import jetbrains.mps.util.NameUtil;
   }
 
   public BaseGroup createPopup(boolean applyToSelection) {
-    BaseGroup group = new BaseGroup("Scripts By Language");
+    BaseGroup group = new BaseGroup("Scripts by Language");
     group.setPopup(true);
     for (Map.Entry<String, List<RefactoringScript>> scriptInLanguage : SetSequence.fromSet(myAllScriptsByLanguage.entrySet())) {
       BaseGroup currentGroup = new BaseGroup(scriptInLanguage.getKey());

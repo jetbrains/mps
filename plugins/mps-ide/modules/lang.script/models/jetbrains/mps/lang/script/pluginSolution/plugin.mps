@@ -1118,7 +1118,7 @@
               <node concept="1pGfFk" id="4KDfkUwM95c" role="2ShVmc">
                 <ref role="37wK5l" to="7bx7:~BaseGroup.&lt;init&gt;(java.lang.String)" resolve="BaseGroup" />
                 <node concept="Xl_RD" id="4KDfkUwM95d" role="37wK5m">
-                  <property role="Xl_RC" value="Scripts By Language" />
+                  <property role="Xl_RC" value="Scripts by Language" />
                 </node>
               </node>
             </node>
