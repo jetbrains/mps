@@ -107,7 +107,7 @@
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/6390717532282583654">
     <file name="mpsVCS.xml">
-      <unit id="6390717532282583654" at="1,0,209,10" name="jetbrains.mps.ide.build.tests.mpsVCS" />
+      <unit id="6390717532282583654" at="1,0,212,10" name="jetbrains.mps.ide.build.tests.mpsVCS" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/7210153263370654627">

@@ -5,6 +5,7 @@
   <property name="build.layout" location="${build.dir}/artifacts/mpsVcsPlatform" />
   <property name="idea_home" location="" />
   <property name="mps_home" location="${basedir}" />
+  <property name="platform_lib" location="${basedir}/lib" />
   <property name="kotlinc_home" location="${mps_home}/plugins/mps-kotlin/kotlinc" />
   <property name="artifacts.mpsBootstrapCore" location="${build.dir}/artifacts/mpsBootstrapCore" />
   <property name="artifacts.mpsCore" location="${build.dir}/artifacts/mpsCore" />
@@ -119,6 +120,24 @@
       <zipfileset file="${basedir}/plugins/mps-git4idea/stubs/jetbrains.mps.git4idea.stubs.msd" prefix="module" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.git4idea.stubs.jar" />
     </jar>
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.vcs.idea.stubs.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.vcs.idea.stubs.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.vcs.idea.stubs.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.vcs.idea.stubs" type="solution" uuid="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b">
+        <dependencies>
+          <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
+        </dependencies>
+        <uses />
+        <library jar="/lib/modules/intellij.platform.vcs.impl.jar" />
+        <library jar="/lib/modules/intellij.platform.vcs.dvcs.impl.jar" />
+        <library jar="/lib/modules/intellij.platform.vcs.log.impl.jar" />
+        <sources jar="." descriptor="jetbrains.mps.vcs.idea.stubs.msd" />
+      </module>
+    </echoxml>
+    <jar destfile="${build.layout}/mps-git4idea/languages/jetbrains.mps.vcs.idea.stubs.jar" duplicate="preserve">
+      <zipfileset file="${basedir}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.vcs.idea.stubs/jetbrains.mps.vcs.idea.stubs.msd" prefix="module" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.vcs.idea.stubs.jar" />
+    </jar>
     <mkdir dir="${build.layout}/lib" />
     <jar destfile="${build.layout}/lib/vcs-core.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/vcs-core" />
@@ -160,6 +179,7 @@
       </jvmargs>
       <macro name="idea_home" path="${idea_home}" />
       <macro name="mps_home" path="${mps_home}" />
+      <macro name="platform_lib" path="${platform_lib}" />
       <macro name="kotlinc_home" path="${kotlinc_home}" />
     </generate>
   </target>
