@@ -15,7 +15,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 @GeneratedClass(nodeId = "4302900529822367990", model = "r:8ff33705-85bf-4855-805c-06d68fbe233c(jetbrains.mps.editor.runtime.descriptor)")
 public abstract class AbstractEditorBuilder implements EditorBuilderEnvironment {
   @NotNull
-  private EditorContext myEditorContext;
+  private final EditorContext myEditorContext;
 
   public AbstractEditorBuilder(@NotNull EditorContext editorContext) {
     myEditorContext = editorContext;

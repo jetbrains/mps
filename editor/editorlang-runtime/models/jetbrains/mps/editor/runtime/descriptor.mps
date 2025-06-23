@@ -39,6 +39,9 @@
         <property id="1075300953594" name="abstractClass" index="1sVAO0" />
         <child id="1095933932569" name="implementedInterface" index="EKbjA" />
       </concept>
+      <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
+        <property id="1176718929932" name="isFinal" index="3TUv4t" />
+      </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
@@ -123,6 +126,7 @@
     <property role="1sVAO0" value="true" />
     <node concept="312cEg" id="4qA9Zh9H5Ic" role="jymVt">
       <property role="TrG5h" value="myEditorContext" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="4qA9Zh9H5Id" role="1B3o_S" />
       <node concept="3uibUv" id="4qA9Zh9H5II" role="1tU5fm">
         <ref role="3uigEE" to="cj4x:~EditorContext" resolve="EditorContext" />

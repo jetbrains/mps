@@ -13,6 +13,7 @@
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="tpco" ref="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)" />
+    <import index="7a0s" ref="r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -42,6 +43,9 @@
         <property id="1186414551515" name="flag" index="VOm3f" />
       </concept>
       <concept id="1186414928363" name="jetbrains.mps.lang.editor.structure.SelectableStyleSheetItem" flags="ln" index="VPM3Z" />
+      <concept id="1103016434866" name="jetbrains.mps.lang.editor.structure.CellModel_JComponent" flags="sg" stub="8104358048506731196" index="3gTLQM">
+        <child id="1176475119347" name="componentProvider" index="3FoqZy" />
+      </concept>
       <concept id="1088013125922" name="jetbrains.mps.lang.editor.structure.CellModel_RefCell" flags="sg" stub="730538219795941030" index="1iCGBv">
         <child id="1088186146602" name="editorComponent" index="1sWHZn" />
       </concept>
@@ -67,6 +71,8 @@
       </concept>
       <concept id="1073389882823" name="jetbrains.mps.lang.editor.structure.CellModel_RefNode" flags="sg" stub="730538219795960754" index="3F1sOY" />
       <concept id="1073390211982" name="jetbrains.mps.lang.editor.structure.CellModel_RefNodeList" flags="sg" stub="2794558372793454595" index="3F2HdR" />
+      <concept id="1176474535556" name="jetbrains.mps.lang.editor.structure.QueryFunction_JComponent" flags="in" index="3Fmcul" />
+      <concept id="1161622981231" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext" flags="nn" index="1Q80Hx" />
       <concept id="1088612959204" name="jetbrains.mps.lang.editor.structure.CellModel_Alternation" flags="sg" stub="8104358048506729361" index="1QoScp">
         <child id="1145918517974" name="alternationCondition" index="3e4ffs" />
         <child id="1088612958265" name="ifTrueCellModel" index="1QoS34" />
@@ -136,6 +142,10 @@
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
+      </concept>
+      <concept id="2644386474302386080" name="jetbrains.mps.lang.smodel.structure.PropertyIdRefExpression" flags="nn" index="355D3s">
+        <reference id="2644386474302386081" name="conceptDeclaration" index="355D3t" />
+        <reference id="2644386474302386082" name="propertyDeclaration" index="355D3u" />
       </concept>
       <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
         <reference id="1138056395725" name="property" index="3TsBF5" />
@@ -295,8 +305,23 @@
             <node concept="2iRfu4" id="4s4uRp_lDgL" role="2iSdaV" />
           </node>
         </node>
-        <node concept="3F0ifn" id="18qFtJYDG_M" role="3EZMnx">
-          <property role="3F0ifm" value="r$swing component$" />
+        <node concept="3gTLQM" id="5KRwKM8gJLA" role="3EZMnx">
+          <node concept="3Fmcul" id="5KRwKM8gJLC" role="3FoqZy">
+            <node concept="3clFbS" id="5KRwKM8gJLE" role="2VODD2">
+              <node concept="3clFbF" id="5KRwKM8gKAe" role="3cqZAp">
+                <node concept="2YIFZM" id="5KRwKM8gKRx" role="3clFbG">
+                  <ref role="37wK5l" to="7a0s:lnREv2ShpJ" resolve="createSelectImageButton" />
+                  <ref role="1Pybhc" to="7a0s:6UDbxo8i0QW" resolve="EditorUtil" />
+                  <node concept="pncrf" id="5KRwKM8gL_c" role="37wK5m" />
+                  <node concept="355D3s" id="5KRwKM8gLW1" role="37wK5m">
+                    <ref role="355D3t" to="kisg:4s4uRp_lzVN" resolve="CustomWatchable" />
+                    <ref role="355D3u" to="kisg:4s4uRp_l$fk" resolve="iconPath" />
+                  </node>
+                  <node concept="1Q80Hx" id="5KRwKM8gLNx" role="37wK5m" />
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
         <node concept="VPM3Z" id="4s4uRp_lDgU" role="3F10Kt">
           <property role="VOm3f" value="false" />
