@@ -25451,7 +25451,7 @@
         <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.json" />
       </node>
       <node concept="3LWZYq" id="79wGYVsEuM7" role="2_Ic$A">
-        <property role="3LWZYl" value="idea/IdeaApplicationInfo.xml" />
+        <property role="3LWZYl" value="idea/MPSApplicationInfo.xml" />
       </node>
     </node>
     <node concept="398b33" id="2eDSGe9d1oD" role="3989C9">

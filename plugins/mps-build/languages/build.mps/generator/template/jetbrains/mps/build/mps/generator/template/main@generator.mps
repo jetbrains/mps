@@ -5649,7 +5649,7 @@
                                 </node>
                               </node>
                               <node concept="37vLTw" id="4myC7yuObFD" role="2cAKU6">
-                                <ref role="3cqZAo" node="4myC7yuObFo" resolve="collect" />
+                                <ref role="3cqZAo" node="4myC7yuObFo" resolve="mm1" />
                               </node>
                               <node concept="37vLTw" id="4myC7yuOgJT" role="2cAKU6">
                                 <ref role="3cqZAo" node="4myC7yuOdVc" resolve="mm2" />
@@ -5678,7 +5678,7 @@
                     <ref role="3cqZAo" node="2L4pT56hNAY" resolve="project" />
                   </node>
                   <node concept="3Tsc0h" id="6Ia7wcCeLRq" role="2OqNvi">
-                    <ref role="3TtcxE" to="3ior:6qcrfIJFfrM" />
+                    <ref role="3TtcxE" to="3ior:6qcrfIJFfrM" resolve="parts" />
                   </node>
                 </node>
                 <node concept="v3k3i" id="6Ia7wcCeLRr" role="2OqNvi">
@@ -10866,7 +10866,7 @@
         <node concept="1kKnMu" id="6Iq8148gMB2" role="39821P">
           <node concept="3_J27D" id="6Iq8148gMB3" role="1kKnMs">
             <node concept="3Mxwew" id="6Iq8148gMB5" role="3MwsjC">
-              <property role="3MwjfP" value="IdeaApplicationInfo.xml" />
+              <property role="3MwjfP" value="MPSApplicationInfo.xml" />
             </node>
           </node>
           <node concept="2pNNFK" id="6Iq8148gMB6" role="1kKnMX">
