@@ -18,8 +18,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.FileSystem;
+import java.io.File;
 import javax.swing.ImageIcon;
 import jetbrains.mps.util.IconCreationUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -44,14 +43,11 @@ public final class Image__BehaviorDescriptor extends BaseBHDescriptor {
       return false;
     }
     MacroHelper macroHelper = MacrosFactory.forModule(module);
-    if (macroHelper == null) {
-      return false;
-    }
     String path = macroHelper.expandPath(SPropertyOperations.getString(__thisNode__, PROPS.file$He6o));
     if (path == null) {
       return false;
     }
-    IFile file = FileSystem.getInstance().getFile(path);
+    File file = new File(path);
     if (!(file.exists())) {
       return false;
     }
@@ -63,7 +59,10 @@ public final class Image__BehaviorDescriptor extends BaseBHDescriptor {
     }
   }
   /*package*/ static byte[] getImageForGeneration_id2p1v3tObywX(@NotNull final SNode __thisNode__) {
-    return IconCreationUtil.drawIcon((IconCreationUtil.DrawContext dc) -> new ImageIcon(SPropertyOperations.getString(__thisNode__, PROPS.file$He6o)).paintIcon(null, dc.g, 0, 0));
+    return IconCreationUtil.drawIcon((IconCreationUtil.DrawContext dc) -> {
+      // XXX why this.file goes w/o MacroHelper.expandPath(), like in isValid, above?
+      new ImageIcon(SPropertyOperations.getString(__thisNode__, PROPS.file$He6o)).paintIcon(null, dc.g, 0, 0);
+    });
   }
 
   /*package*/ Image__BehaviorDescriptor() {

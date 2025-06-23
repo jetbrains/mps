@@ -33,7 +33,8 @@ import jetbrains.mps.util.ReadUtil;
 import java.io.IOException;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.util.MacroHelper;
-import jetbrains.mps.vfs.FileSystem;
+import java.io.File;
+import java.io.FileInputStream;
 import javax.imageio.ImageIO;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -152,27 +153,16 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
       return false;
     }
     MacroHelper macroHelper = MacrosFactory.forModule(module);
-    if (macroHelper == null) {
-      return false;
-    }
     String path = macroHelper.expandPath(name);
     if (path == null) {
       return false;
     }
-    IFile file;
-    try {
-      file = FileSystem.getInstance().getFile(path);
-      if (!(file.exists())) {
-        return false;
-      }
-    } catch (PathFormatChecker.PathFormatException pfe) {
-      return false;
-    }
-    try {
+    File file = new File(path);
+    try (InputStream is = new FileInputStream(file)) {
       // ImageIcon does not throw anything, ImageIO will. Still, it is not a great idea for SVG files
-      ImageIO.read(file.openInputStream());
+      ImageIO.read(is);
       return true;
-    } catch (Throwable t) {
+    } catch (Throwable ex) {
       return false;
     }
   }
