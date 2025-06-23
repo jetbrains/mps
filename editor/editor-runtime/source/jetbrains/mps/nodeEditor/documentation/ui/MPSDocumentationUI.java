@@ -8,6 +8,7 @@ import com.intellij.codeInsight.documentation.DocumentationFontSize;
 import com.intellij.codeInsight.hint.HintManagerImpl;
 import com.intellij.icons.AllIcons;
 import com.intellij.icons.AllIcons.Actions;
+import com.intellij.ide.plugins.newui.EmptyCaret;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
@@ -61,6 +62,7 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
     myCurrentProvider = provider;
     myScrollPane = new MPSDocumentationScrollPane();
     myEditorPane = new MPSDocumentationEditorPane();
+    myEditorPane.setCaret(new EmptyCaret());
     Disposer.register(this, myEditorPane);
     myScrollPane.setViewportView(myEditorPane);
     myEditorPane.setText(provider.getDecoratedDocumentation());

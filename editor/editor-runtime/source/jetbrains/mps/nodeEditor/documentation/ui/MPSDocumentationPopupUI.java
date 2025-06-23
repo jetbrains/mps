@@ -57,7 +57,6 @@ public class MPSDocumentationPopupUI implements Disposable {
     myProject = project;
     myUI = ui;
     myEditorPane = myUI.myEditorPane;
-    myEditorPane.setFocusable(false);
     myScrollPane = myUI.myScrollPane;
 
     List<AnAction> secondaryActions = new ArrayList<>();
