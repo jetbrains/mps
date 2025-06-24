@@ -863,7 +863,7 @@
       <entry name="!*.mpsr" />
       <entry name="!*.model" />
     </wildcardResourcePatterns>
-    <bytecodeTargetLevel target="17" />
+    <bytecodeTargetLevel target="21" />
   </component>
   <component name="EclipseCompilerSettings">
     <option name="MAXIMUM_HEAP_SIZE" value="1024" />
@@ -879,4 +879,3 @@
     <option name="MAXIMUM_HEAP_SIZE" value="1024" />
   </component>
 </project>
-
