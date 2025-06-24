@@ -70,6 +70,8 @@ public final class NodeInformationDialog {
         return content.replaceAll("\n", "")
                       .replaceAll("(?i)<br\\s*/?>", "\n")
                       .replaceAll("\\<.*?\\>", "")
+                      .replaceAll("&lt;", "<")
+                      .replaceAll("&gt;", ">")
                       .replaceAll("[ ]+", " ")
                       .trim();
       }
