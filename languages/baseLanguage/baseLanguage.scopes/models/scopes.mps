@@ -2509,7 +2509,7 @@
             </node>
             <node concept="1PxgMI" id="2DmG$cizolo" role="2Oq$k0">
               <node concept="37vLTw" id="2BHiRxgmyxw" role="1m5AlR">
-                <ref role="3cqZAo" node="7mWjQkQg3mM" resolve="contextNode" />
+                <ref role="3cqZAo" node="7mWjQkQg3mO" resolve="node" />
               </node>
               <node concept="chp4Y" id="714IaVdGYx5" role="3oSUPX">
                 <ref role="cht4Q" to="tpee:fzclF84" resolve="ConstructorDeclaration" />

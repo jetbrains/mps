@@ -50,7 +50,7 @@ public class VisibleClassConstructorsScope extends Scope {
   @Nullable
   @Override
   public String getReferenceText(SNode contextNode, @NotNull SNode node) {
-    return SPropertyOperations.getString(SNodeOperations.cast(contextNode, CONCEPTS.ConstructorDeclaration$yG), PROPS.name$MnvL);
+    return SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.ConstructorDeclaration$yG), PROPS.name$MnvL);
   }
   @Nullable
   @Override
