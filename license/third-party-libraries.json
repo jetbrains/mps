@@ -217,7 +217,7 @@
 }, {
   "name" : "ICU4J",
   "url" : "https://icu.unicode.org/",
-  "version" : "73.2",
+  "version" : "77.1",
   "license" : "Unicode",
   "licenseUrl" : "https://www.unicode.org/copyright.html"
 }, {
@@ -331,31 +331,31 @@
 }, {
   "name" : "Jackson",
   "url" : "https://github.com/FasterXML/jackson",
-  "version" : "2.17.0",
+  "version" : "2.19.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/FasterXML/jackson-core/blob/2.14/LICENSE"
 }, {
   "name" : "Jackson Databind",
   "url" : "https://github.com/FasterXML/jackson-databind",
-  "version" : "2.17.2",
+  "version" : "2.19.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/FasterXML/jackson-databind/blob/2.16/LICENSE"
 }, {
   "name" : "Jackson Dataformat CBOR",
   "url" : "https://github.com/FasterXML/jackson-dataformats-binary",
-  "version" : "2.16.0",
+  "version" : "2.19.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/FasterXML/jackson-dataformats-binary/blob/2.14/pom.xml"
 }, {
   "name" : "Jackson Dataformat YAML",
   "url" : "https://github.com/FasterXML/jackson-dataformats-text",
-  "version" : "2.17.2",
+  "version" : "2.19.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/FasterXML/jackson-dataformats-text/blob/2.16/pom.xml"
 }, {
   "name" : "Jackson Module Kotlin",
   "url" : "https://github.com/FasterXML/jackson-module-kotlin",
-  "version" : "2.17.2",
+  "version" : "2.19.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/FasterXML/jackson-module-kotlin/blob/2.16/LICENSE"
 }, {
@@ -439,13 +439,13 @@
 }, {
   "name" : "Kotlin Standard Library",
   "url" : "https://github.com/JetBrains/kotlin",
-  "version" : "2.2.0-RC",
+  "version" : "2.2.0-RC2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt"
 }, {
   "name" : "Kotlin library providing basic IO primitives",
   "url" : "https://github.com/Kotlin/kotlinx-io",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx-io/blob/master/LICENSE"
 }, {
@@ -481,7 +481,7 @@
 }, {
   "name" : "Kotlin reflection library",
   "url" : "https://github.com/JetBrains/kotlin",
-  "version" : "2.2.0-RC",
+  "version" : "2.2.0-RC2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt"
 }, {
@@ -631,7 +631,7 @@
 }, {
   "name" : "XStream",
   "url" : "https://x-stream.github.io/",
-  "version" : "1.4.20",
+  "version" : "1.4.21",
   "license" : "BSD 3-Clause",
   "licenseUrl" : "https://x-stream.github.io/license.html"
 }, {
@@ -655,7 +655,7 @@
 }, {
   "name" : "Xerial SQLite JDBC",
   "url" : "https://github.com/xerial/sqlite-jdbc",
-  "version" : "3.48.0.0",
+  "version" : "3.49.1.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/xerial/sqlite-jdbc/blob/master/LICENSE"
 }, {
@@ -670,12 +670,6 @@
   "version" : "1.3.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/FasterXML/aalto-xml/blob/master/LICENSE"
-}, {
-  "name" : "ap-validation",
-  "url" : "https://github.com/JetBrains/ap-validation",
-  "version" : "76",
-  "license" : "Apache 2.0",
-  "licenseUrl" : "https://github.com/JetBrains/ap-validation/blob/master/LICENSE"
 }, {
   "name" : "blockmap",
   "url" : "https://github.com/JetBrains/plugin-blockmap-patches",
@@ -727,19 +721,19 @@
 }, {
   "name" : "gRPC: Core",
   "url" : "https://grpc.io/",
-  "version" : "1.71.0",
+  "version" : "1.73.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/grpc/grpc-java/blob/master/LICENSE"
 }, {
   "name" : "gRPC: Protobuf",
   "url" : "https://grpc.io/",
-  "version" : "1.71.0",
+  "version" : "1.73.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/grpc/grpc-java/blob/master/LICENSE"
 }, {
   "name" : "gRPC: Stub",
   "url" : "https://grpc.io/",
-  "version" : "1.71.0",
+  "version" : "1.73.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/grpc/grpc-java/blob/master/LICENSE"
 }, {
@@ -787,7 +781,7 @@
 }, {
   "name" : "jackson-jr-objects",
   "url" : "https://github.com/FasterXML/jackson-jr",
-  "version" : "2.17.2",
+  "version" : "2.19.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/FasterXML/jackson-jr/blob/2.16/LICENSE"
 }, {
@@ -799,13 +793,13 @@
 }, {
   "name" : "jediterm-core",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.53",
+  "version" : "3.54",
   "license" : "LGPL 3.0",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
   "name" : "jediterm-ui",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.53",
+  "version" : "3.54",
   "license" : "LGPL 3.0",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
@@ -835,7 +829,7 @@
 }, {
   "name" : "kotlin-metadata",
   "url" : "https://github.com/JetBrains/kotlin",
-  "version" : "2.1.20-Beta2",
+  "version" : "2.2.0-RC2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt"
 }, {
@@ -876,6 +870,12 @@
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-java",
+  "url" : "https://github.com/ktorio/ktor",
+  "version" : "3.0.3",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
+}, {
+  "name" : "ktor-client-logging",
   "url" : "https://github.com/ktorio/ktor",
   "version" : "3.0.3",
   "license" : "Apache 2.0",
@@ -1003,7 +1003,7 @@
 }, {
   "name" : "pty4j",
   "url" : "https://github.com/JetBrains/pty4j",
-  "version" : "0.13.4",
+  "version" : "0.13.8",
   "license" : "EPL 1.0",
   "licenseUrl" : "https://github.com/JetBrains/pty4j/blob/master/LICENSE"
 }, {
@@ -1105,7 +1105,7 @@
 }, {
   "name" : "zstd-jni",
   "url" : "https://github.com/luben/zstd-jni",
-  "version" : "1.5.7-2",
+  "version" : "1.5.7-3",
   "license" : "BSD 2-Clause",
   "licenseUrl" : "https://github.com/luben/zstd-jni/blob/master/LICENSE"
 } ]
