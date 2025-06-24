@@ -290,7 +290,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="21" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
       <plugin path="${artifacts.mps}/plugins/mps-junit5" id="jetbrains.mps.junit5" />
@@ -322,9 +322,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.imageGen.testLanguage" depends="fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testlangs/jetbrains.mps.lang.editor.imageGen.testLanguage/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.imageGen.testLanguage" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.imageGen.testLanguage" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.imageGen.testLanguage" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.lang.editor.imageGen.testLanguage">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -389,9 +389,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.imageGen.testLanguage#5244026788026447518" depends="java.compile.jetbrains.mps.lang.editor.imageGen.testLanguage, fetchDependencies">
     <mkdir dir="${basedir}/testbench/testsolutions/testlangs/jetbrains.mps.lang.editor.imageGen.testLanguage/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.imageGen.testLanguage#5244026788026447518" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.imageGen.testLanguage#5244026788026447518" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.imageGen.testLanguage#5244026788026447518" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.lang.editor.imageGen.testLanguage#5244026788026447518">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -451,9 +451,9 @@
   
   <target name="java.compile.jetbrains.mps.lang.editor.imageGen.tests" depends="fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.imageGen.tests" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.imageGen.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.imageGen.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.lang.editor.imageGen.tests">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

@@ -487,7 +487,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="21" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
       <library file="${artifacts.mps}/languages/plaf/jetbrains.mps.ide.ui.jar" />
@@ -521,7 +521,7 @@
   <target name="java.compile.jetbrains.mps.samples.customAspect.sampleLanguage.sandbox">
     <mkdir dir="${basedir}/languages/jetbrains.mps.samples.customAspect.sampleLanguage/sandbox/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.sampleLanguage.sandbox" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.sampleLanguage.sandbox" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.sampleLanguage.sandbox" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/languages/jetbrains.mps.samples.customAspect.sampleLanguage/sandbox/source_gen" />
@@ -536,7 +536,7 @@
   <target name="java.compile.jetbrains.mps.samples.customAspect.documentation.pluginSolution" depends="java.compile.jetbrains.mps.samples.customAspect.documentation.runtime, fetchDependencies">
     <mkdir dir="${basedir}/solutions/jetbrains.mps.samples.customAspect.documentation.pluginSolution/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation.pluginSolution" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation.pluginSolution" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation.pluginSolution" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/solutions/jetbrains.mps.samples.customAspect.documentation.pluginSolution/source_gen" />
@@ -592,7 +592,7 @@
   <target name="java.compile.jetbrains.mps.samples.customAspect.sampleLanguage" depends="java.compile.jetbrains.mps.samples.customAspect.documentation.runtime, fetchDependencies">
     <mkdir dir="${basedir}/languages/jetbrains.mps.samples.customAspect.sampleLanguage/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.sampleLanguage" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.sampleLanguage" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.sampleLanguage" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/languages/jetbrains.mps.samples.customAspect.sampleLanguage/source_gen" />
@@ -656,7 +656,7 @@
   <target name="java.compile.jetbrains.mps.samples.customAspect.documentation" depends="fetchDependencies">
     <mkdir dir="${basedir}/languages/jetbrains.mps.samples.customAspect.docLanguage/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/languages/jetbrains.mps.samples.customAspect.docLanguage/source_gen" />
@@ -723,7 +723,7 @@
   <target name="java.compile.jetbrains.mps.samples.customAspect.documentation#2897519568668508166" depends="java.compile.jetbrains.mps.samples.customAspect.documentation, fetchDependencies">
     <mkdir dir="${basedir}/languages/jetbrains.mps.samples.customAspect.docLanguage/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation#2897519568668508166" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation#2897519568668508166" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation#2897519568668508166" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/languages/jetbrains.mps.samples.customAspect.docLanguage/generator/source_gen" />
@@ -782,7 +782,7 @@
   <target name="java.compile.jetbrains.mps.samples.customAspect.documentation.runtime" depends="fetchDependencies">
     <mkdir dir="${basedir}/solutions/jetbrains.mps.samples.customAspect.documentation.runtime/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation.runtime" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/solutions/jetbrains.mps.samples.customAspect.documentation.runtime/source_gen" />

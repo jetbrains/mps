@@ -156,7 +156,7 @@
         <ref role="m$_yA" node="2Wb4ucKmnFy" resolve="jetbrains.mps.build.tests" />
       </node>
       <node concept="m$_yC" id="4O8Iq91ELvL" role="m$_yJ">
-        <ref role="m$_y1" to="ffeo:ymnOULATpW" />
+        <ref role="m$_y1" to="ffeo:ymnOULATpW" resolve="jetbrains.mps.testing" />
       </node>
     </node>
     <node concept="2sgV4H" id="2Wb4ucKlQZl" role="1l3spa">
@@ -368,7 +368,7 @@
     </node>
     <node concept="3b7kt6" id="2Wb4ucKlQKh" role="10PD9s" />
     <node concept="2_Ic$z" id="5e$ORFFkHIj" role="3989C9">
-      <property role="TZNOO" value="17" />
+      <property role="TZNOO" value="21" />
     </node>
   </node>
 </model>

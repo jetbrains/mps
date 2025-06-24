@@ -340,7 +340,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="21" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
       <plugin path="${artifacts.mps}/plugins/mps-junit5" id="jetbrains.mps.junit5" />
@@ -372,9 +372,9 @@
   
   <target name="java.compile.jetbrains.mps.build.stripping.tests" depends="java.compile.jetbrains.mps.samples.JavaKaja, fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.stripping.tests" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.stripping.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.stripping.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.build.stripping.tests">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -452,9 +452,9 @@
   <target name="java.compile.jetbrains.mps.samples.Kaja" depends="java.compile.jetbrains.mps.samples.JavaKaja, fetchDependencies">
     <mkdir dir="${basedir}/samples/robot_Kaja/languages/Kajak/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.samples.Kaja" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.Kaja" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.Kaja" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.samples.Kaja">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -527,9 +527,9 @@
   <target name="java.compile.jetbrains.mps.samples.Kaja#3265739055509559144" depends="java.compile.jetbrains.mps.samples.JavaKaja, java.compile.jetbrains.mps.samples.Kaja, fetchDependencies">
     <mkdir dir="${basedir}/samples/robot_Kaja/languages/Kajak/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.samples.Kaja#3265739055509559144" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.Kaja#3265739055509559144" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.Kaja#3265739055509559144" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.samples.Kaja#3265739055509559144">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -597,9 +597,9 @@
   <target name="java.compile.jetbrains.mps.samples.JavaKaja" depends="fetchDependencies">
     <mkdir dir="${basedir}/samples/robot_Kaja/solutions/JavaKajak/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.samples.JavaKaja" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.JavaKaja" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.samples.JavaKaja" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.samples.JavaKaja">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

@@ -334,7 +334,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="21" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench-stub.jar" />
@@ -378,9 +378,9 @@
   <target name="java.compile.jetbrains.mps.editor.contextActionsTool.pluginSolution" depends="java.compile.jetbrains.mps.editor.contextActionsTool.lang.menus.runtime, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-context-actions/modules/pluginSolution/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.pluginSolution" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.pluginSolution" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.pluginSolution" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.editor.contextActionsTool.pluginSolution">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -439,9 +439,9 @@
   <target name="java.compile.jetbrains.mps.editor.contextActionsTool.lang.menus" depends="java.compile.jetbrains.mps.editor.contextActionsTool.pluginSolution, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.editor.contextActionsTool.lang.menus">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -515,9 +515,9 @@
   <target name="java.compile.jetbrains.mps.editor.contextActionsTool.lang.menus#6917971026853604122" depends="java.compile.jetbrains.mps.editor.contextActionsTool.lang.menus, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus#6917971026853604122" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus#6917971026853604122" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus#6917971026853604122" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.editor.contextActionsTool.lang.menus#6917971026853604122">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -586,9 +586,9 @@
   <target name="java.compile.jetbrains.mps.editor.contextActionsTool.lang.menus.runtime" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-context-actions/modules/runtime/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.editor.contextActionsTool.lang.menus.runtime">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

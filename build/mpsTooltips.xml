@@ -282,7 +282,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="21" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench-stub.jar" />
@@ -326,9 +326,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.tooltips" depends="java.compile.jetbrains.mps.lang.editor.tooltips.runtime, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-tooltips/languages/tooltips/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tooltips" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tooltips" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tooltips" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.lang.editor.tooltips">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -398,9 +398,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.tooltips#0361794385526429345" depends="java.compile.jetbrains.mps.lang.editor.tooltips, java.compile.jetbrains.mps.lang.editor.tooltips.runtime, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-tooltips/languages/tooltips/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tooltips#0361794385526429345" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tooltips#0361794385526429345" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tooltips#0361794385526429345" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.lang.editor.tooltips#0361794385526429345">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -472,9 +472,9 @@
   <target name="java.compile.jetbrains.mps.lang.editor.tooltips.runtime" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-tooltips/languages/tooltips.runtime/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tooltips.runtime" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tooltips.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tooltips.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.lang.editor.tooltips.runtime">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />

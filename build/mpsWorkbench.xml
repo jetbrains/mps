@@ -559,7 +559,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="17" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="21" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.lang.extension.jar" />
@@ -603,9 +603,9 @@
   <target name="java.compile.typesystem-ui" depends="java.compile.mps-workbench, fetchDependencies">
     <mkdir dir="${mps_home}/workbench/typesystemUi/source" />
     <mkdir dir="${build.tmp}/java/out/typesystem-ui" />
-    <javac2 destdir="${build.tmp}/java/out/typesystem-ui" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/typesystem-ui" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="typesystem-ui">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -660,9 +660,9 @@
     <mkdir dir="${mps_home}/workbench/mps-workbench/source" />
     <mkdir dir="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide/source_gen" />
     <mkdir dir="${build.tmp}/java/out/mps-workbench" />
-    <javac2 destdir="${build.tmp}/java/out/mps-workbench" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/mps-workbench" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="mps-workbench">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -724,9 +724,9 @@
   <target name="java.compile.startup" depends="fetchDependencies">
     <mkdir dir="${mps_home}/startup/src" />
     <mkdir dir="${build.tmp}/java/out/startup" />
-    <javac2 destdir="${build.tmp}/java/out/startup" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/startup" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="startup">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -760,9 +760,9 @@
   <target name="java.compile.jetbrains.mps.lang.plugin.standalone" depends="java.compile.mps-workbench, java.compile.typesystem-ui, fetchDependencies">
     <mkdir dir="${mps_home}/languages/languageDesign/plugin-standalone/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.plugin.standalone" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.plugin.standalone" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.plugin.standalone" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.lang.plugin.standalone">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -838,9 +838,9 @@
   <target name="java.compile.jetbrains.mps.lang.plugin.standalone#481983775135098857" depends="java.compile.mps-workbench, java.compile.typesystem-ui, java.compile.jetbrains.mps.lang.plugin.standalone, fetchDependencies">
     <mkdir dir="${mps_home}/languages/languageDesign/plugin-standalone/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.plugin.standalone#481983775135098857" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.plugin.standalone#481983775135098857" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="17" target="17">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.plugin.standalone#481983775135098857" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.lang.plugin.standalone#481983775135098857">        
-        <compilerarg value="-jvm-target=17" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
