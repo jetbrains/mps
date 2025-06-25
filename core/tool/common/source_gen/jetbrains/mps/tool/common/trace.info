@@ -308,26 +308,6 @@
       <unit id="4031029858776329668" at="11,0,82,0" name="jetbrains.mps.tool.common.MigrateTaskProperties" />
     </file>
   </root>
-  <root nodeRef="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/4774692914340655529">
-    <file name="PathManager.java">
-      <node id="121613769942501034" at="20,38,21,70" concept="10" />
-      <node id="4774692914340656027" at="24,38,25,71" concept="10" />
-      <node id="121613769942508070" at="28,41,29,73" concept="10" />
-      <node id="4774692914340655688" at="16,0,19,0" concept="2" trace="PathManager#()V" />
-      <node id="4774692914340655692" at="20,0,23,0" concept="14" trace="getHomePath#()Ljava/lang/String;" />
-      <node id="4774692914340656023" at="24,0,27,0" concept="14" trace="getConfigPath#()Ljava/nio/file/Path;" />
-      <node id="4774692914340656131" at="28,0,31,0" concept="14" trace="getPluginsPath#()Ljava/lang/String;" />
-      <scope id="4774692914340655691" at="17,25,17,25" />
-      <scope id="4774692914340655695" at="20,38,21,70" />
-      <scope id="4774692914340656026" at="24,38,25,71" />
-      <scope id="4774692914340656134" at="28,41,29,73" />
-      <scope id="4774692914340655688" at="16,0,19,0" />
-      <scope id="4774692914340655692" at="20,0,23,0" />
-      <scope id="4774692914340656023" at="24,0,27,0" />
-      <scope id="4774692914340656131" at="28,0,31,0" />
-      <unit id="4774692914340655529" at="13,0,32,0" name="jetbrains.mps.tool.common.PathManager" />
-    </file>
-  </root>
   <root nodeRef="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/496689236032862552">
     <file name="PluginData.java">
       <node id="978600701689991886" at="17,0,18,0" concept="4" trace="path" />

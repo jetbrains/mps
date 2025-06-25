@@ -55180,9 +55180,6 @@
         <property role="2a2d0E" value="false" />
         <ref role="2sjeV2" node="1FaKCGJSzMS" resolve="idea-ant" />
       </node>
-      <node concept="2sjeV3" id="1F1lRkaVb4i" role="nCB5Z">
-        <ref role="2sjeV2" node="4YmhUESdVsA" resolve="com.intellij.openapi" />
-      </node>
       <node concept="2sjeV3" id="5k$na7$gDKn" role="nCB5Z">
         <ref role="2sjeV2" node="6FsijxbePt8" resolve="org.jdom" />
       </node>

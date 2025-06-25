@@ -298,7 +298,6 @@
         <pathelement path="${build.tmp}/java/out/mps-annotations" />
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.idea-ant" />
-        <path refid="path.java.library.com.intellij.openapi" />
         <path refid="path.java.library.org.jdom" />
         <path refid="path.jdk.classpath" />
       </classpath>

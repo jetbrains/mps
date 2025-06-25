@@ -14,12 +14,10 @@
     <import index="7x5y" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.charset(JDK/)" />
     <import index="kart" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:org.xml.sax(JDK/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" />
     <import index="dr5r" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.logging(JDK/)" />
     <import index="mmaq" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom(org.jdom/)" />
     <import index="r9z2" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom.input(org.jdom/)" />
     <import index="se19" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom.output(org.jdom/)" />
-    <import index="bd8o" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:com.intellij.openapi.application(MPS.Boot/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -8945,84 +8943,6 @@
       <node concept="TZ5HA" id="3QFNug6$2az" role="TZ5H$">
         <node concept="1dT_AC" id="3QFNug6$2a$" role="1dT_Ay">
           <property role="1dT_AB" value="" />
-        </node>
-      </node>
-    </node>
-  </node>
-  <node concept="312cEu" id="4937uxYQn6D">
-    <property role="TrG5h" value="PathManager" />
-    <property role="1sVAO0" value="false" />
-    <property role="1EXbeo" value="false" />
-    <node concept="3Tm1VV" id="4937uxYQn6E" role="1B3o_S" />
-    <node concept="3clFbW" id="4937uxYQn98" role="jymVt">
-      <node concept="3Tm6S6" id="s7_iJZJwip" role="1B3o_S" />
-      <node concept="3cqZAl" id="4937uxYQn9a" role="3clF45" />
-      <node concept="3clFbS" id="4937uxYQn9b" role="3clF47" />
-    </node>
-    <node concept="2tJIrI" id="stxyIU1C08" role="jymVt" />
-    <node concept="2YIFZL" id="4937uxYQn9c" role="jymVt">
-      <property role="TrG5h" value="getHomePath" />
-      <property role="DiZV1" value="false" />
-      <node concept="17QB3L" id="57xhZj4x9AL" role="3clF45" />
-      <node concept="3clFbS" id="4937uxYQn9f" role="3clF47">
-        <node concept="3cpWs6" id="6K3Lhle0qE" role="3cqZAp">
-          <node concept="2YIFZM" id="6K3Lhle0Fk" role="3cqZAk">
-            <ref role="37wK5l" to="bd8o:~PathManager.getHomePath()" resolve="getHomePath" />
-            <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="1uEgd4O_2Mj" role="1B3o_S" />
-    </node>
-    <node concept="2tJIrI" id="stxyIU1x75" role="jymVt" />
-    <node concept="2YIFZL" id="4937uxYQnen" role="jymVt">
-      <property role="TrG5h" value="getConfigPath" />
-      <property role="DiZV1" value="false" />
-      <node concept="3clFbS" id="4937uxYQneq" role="3clF47">
-        <node concept="3cpWs6" id="4937uxYQner" role="3cqZAp">
-          <node concept="2YIFZM" id="6K3Lhle2Bv" role="3cqZAk">
-            <ref role="37wK5l" to="bd8o:~PathManager.getConfigDir()" resolve="getConfigDir" />
-            <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="6K3Lhle2JQ" role="1B3o_S" />
-      <node concept="3uibUv" id="6K3Lhle2IL" role="3clF45">
-        <ref role="3uigEE" to="eoo2:~Path" resolve="Path" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="stxyIU1vNg" role="jymVt" />
-    <node concept="2YIFZL" id="4937uxYQng3" role="jymVt">
-      <property role="TrG5h" value="getPluginsPath" />
-      <property role="DiZV1" value="false" />
-      <node concept="17QB3L" id="57xhZj4x9_H" role="3clF45" />
-      <node concept="3Tm1VV" id="4937uxYQng4" role="1B3o_S" />
-      <node concept="3clFbS" id="4937uxYQng6" role="3clF47">
-        <node concept="3cpWs6" id="6K3Lhle28A" role="3cqZAp">
-          <node concept="2YIFZM" id="6K3Lhle2bM" role="3cqZAk">
-            <ref role="37wK5l" to="bd8o:~PathManager.getPluginsPath()" resolve="getPluginsPath" />
-            <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2AHcQZ" id="6K3Lhle3jP" role="2AJF6D">
-      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-    </node>
-    <node concept="3UR2Jj" id="6K3Lhle3e1" role="lGtFl">
-      <node concept="TZ5HA" id="6K3Lhle3e2" role="TZ5H$">
-        <node concept="1dT_AC" id="6K3Lhle3e3" role="1dT_Ay">
-          <property role="1dT_AB" value="delegates to the platform PathManager" />
-        </node>
-      </node>
-      <node concept="TZ5HA" id="6K3Lhle3fr" role="TZ5H$">
-        <node concept="1dT_AC" id="6K3Lhle3fs" role="1dT_Ay">
-          <property role="1dT_AB" value="I suppose that there might be MPS-specific path requests for different kinds of MPS startup." />
-        </node>
-      </node>
-      <node concept="TZ5HA" id="6K3Lhle3hx" role="TZ5H$">
-        <node concept="1dT_AC" id="6K3Lhle3hy" role="1dT_Ay">
-          <property role="1dT_AB" value="I would think that it is better for them to rather go into MPS.Boot/startup module than in here." />
         </node>
       </node>
     </node>
