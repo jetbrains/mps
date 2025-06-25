@@ -18,10 +18,9 @@ public class UnpackHelper extends DependenciesHelper {
   private final Set<SNode> requiredWithContent = new HashSet<SNode>();
   private boolean evaluated = false;
   private PathProvider myPathProvider;
-  private final TemplateQueryContext myGenContext;
 
   /*package*/ UnpackHelper(SNode project, TemplateQueryContext genContext) {
-    super(genContext, project);
+    super(Context.defaultContext(genContext), project);
     // Though I'd prefer no custom ArtifactLookup to avoid conversion to original node, DH doesn't get putArtifact unless I supply one
     // XXX what does ^^^ this comment mean??
     this.visible = new VisibleArtifacts(project) {
@@ -32,7 +31,6 @@ public class UnpackHelper extends DependenciesHelper {
     };
     visible.collectOnlyExternal();
     this.myPathProvider = new PathProvider(genContext, project);
-    myGenContext = genContext;
   }
 
   /*package*/ VisibleArtifacts visibleArtifacts() {
@@ -76,10 +74,5 @@ public class UnpackHelper extends DependenciesHelper {
   }
   public PathProvider getPathProvider() {
     return myPathProvider;
-  }
-
-  public TemplateQueryContext getGenContext() {
-    // FIXME DH/UnpackHelper doesn't need genContext directly, just for casual error reporting and initial configuration
-    return myGenContext;
   }
 }

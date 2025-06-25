@@ -4,11 +4,11 @@ package jetbrains.mps.build.util;
 
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.generator.template.TemplateQueryContext;
 import java.util.HashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.extapi.model.TransientSModel;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -26,13 +26,13 @@ public class DependenciesHelper {
   private final String myLayoutRelativeKey;
   private final String myArtifactIdKey;
 
-  protected DependenciesHelper(TemplateQueryContext genContext, SNode project) {
+  protected DependenciesHelper(Context buildContext, SNode project) {
     // given the usage pattern of DH, with fill from preprocessing script, and reads from rules (that can be run in parallel), 
     // I feel regular, non-concurrent map is enough;
     locationMap = new HashMap<SNode, String>(100);
     contentLocationMap = new HashMap<SNode, String>(100);
     idToArtifactMap = new HashMap<Object, SNode>(100);
-    this.macros = Context.defaultContext(genContext).getMacros(project);
+    this.macros = buildContext.getMacros(project);
     myProject = project;
     final String qualifiedProjectName = SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
     myLocationKey = "location:" + qualifiedProjectName;

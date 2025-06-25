@@ -29,7 +29,7 @@ public class FetchDependenciesProcessor {
     // token and session object is just to access same DH instance in few build.mps/main (and friends) locations without need to pass DH parameter explicitly
     DependenciesHelper.put(genContext, helper, token);
     for (SNode dep : SNodeOperations.getNodeDescendants(project, CONCEPTS.BuildExternalDependency$vq, false, new SAbstractConcept[]{})) {
-      BuildExternalDependency__BehaviorDescriptor.fetchDependencies_id57YmpYyL8F1.invoke(dep, helper.visibleArtifacts(), new RequiredDependenciesBuilderImpl(dep, helper));
+      BuildExternalDependency__BehaviorDescriptor.fetchDependencies_id57YmpYyL8F1.invoke(dep, helper.visibleArtifacts(), new RequiredDependenciesBuilderImpl(dep, helper, genContext));
     }
     helper.eval();
   }
@@ -37,10 +37,12 @@ public class FetchDependenciesProcessor {
   private static class RequiredDependenciesBuilderImpl implements RequiredDependenciesBuilder {
     protected final SNode dep;
     private final UnpackHelper helper;
+    private final TemplateQueryContext myGenContext;
 
-    public RequiredDependenciesBuilderImpl(SNode dep, UnpackHelper helper) {
+    public RequiredDependenciesBuilderImpl(SNode dep, UnpackHelper helper, TemplateQueryContext genContext) {
       this.dep = dep;
       this.helper = helper;
+      myGenContext = genContext;
     }
 
     @Override
@@ -66,7 +68,7 @@ public class FetchDependenciesProcessor {
 
     private boolean check(SNode node) {
       if (!(helper.visibleArtifacts().contains(node))) {
-        helper.getGenContext().showErrorMessage(dep, "returned node which is not available in dependencies: " + jetbrains.mps.util.SNodeOperations.getDebugText(node));
+        myGenContext.showErrorMessage(dep, "returned node which is not available in dependencies: " + jetbrains.mps.util.SNodeOperations.getDebugText(node));
         return false;
       }
       return true;
