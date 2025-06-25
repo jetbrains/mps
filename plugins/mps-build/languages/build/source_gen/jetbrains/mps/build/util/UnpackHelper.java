@@ -20,12 +20,23 @@ public class UnpackHelper extends DependenciesHelper {
   private PathProvider myPathProvider;
   private final TemplateQueryContext myGenContext;
 
-  /*package*/ UnpackHelper(VisibleArtifacts visible, TemplateQueryContext genContext) {
-    super(genContext, visible.getProject());
-    this.visible = visible;
-    // PathProvider shares its state regardless of legacyDH just to make sure temp paths are consistent
-    this.myPathProvider = new PathProvider(genContext, visible.getProject());
+  /*package*/ UnpackHelper(SNode project, TemplateQueryContext genContext) {
+    super(genContext, project);
+    // Though I'd prefer no custom ArtifactLookup to avoid conversion to original node, DH doesn't get putArtifact unless I supply one
+    // XXX what does ^^^ this comment mean??
+    this.visible = new VisibleArtifacts(project) {
+      @Override
+      protected ArtifactLookup createLookup() {
+        return new ArtifactLookup(this, UnpackHelper.this);
+      }
+    };
+    visible.collectOnlyExternal();
+    this.myPathProvider = new PathProvider(genContext, project);
     myGenContext = genContext;
+  }
+
+  /*package*/ VisibleArtifacts visibleArtifacts() {
+    return visible;
   }
 
   /*package*/ void add(SNode n, boolean withContent) {

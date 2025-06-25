@@ -25,31 +25,20 @@ public class FetchDependenciesProcessor {
    * and another for j.m.build language parts (respectively identified as "build.mps" and "j.m.build")
    */
   public void alternativeProcess(final String token) {
-    // Though I'd prefer no custom ArtifactLookup to avoid conversion to original node, DH doesn't get putArtifact unless I supply one
-    VisibleArtifacts artifacts = new VisibleArtifacts(project) {
-      @Override
-      protected ArtifactLookup createLookup() {
-        // i assume createLookup happens *after* I register UnpackHelper instance few lines down from here
-        return new ArtifactLookup(this, DependenciesHelper.get(FetchDependenciesProcessor.this.genContext, this.project, token));
-      }
-    };
-    artifacts.collectOnlyExternal();
-    UnpackHelper helper = new UnpackHelper(artifacts, genContext);
+    UnpackHelper helper = new UnpackHelper(project, genContext);
     // token and session object is just to access same DH instance in few build.mps/main (and friends) locations without need to pass DH parameter explicitly
     DependenciesHelper.put(genContext, helper, token);
     for (SNode dep : SNodeOperations.getNodeDescendants(project, CONCEPTS.BuildExternalDependency$vq, false, new SAbstractConcept[]{})) {
-      BuildExternalDependency__BehaviorDescriptor.fetchDependencies_id57YmpYyL8F1.invoke(dep, artifacts, new RequiredDependenciesBuilderImpl(artifacts, dep, helper));
+      BuildExternalDependency__BehaviorDescriptor.fetchDependencies_id57YmpYyL8F1.invoke(dep, helper.visibleArtifacts(), new RequiredDependenciesBuilderImpl(dep, helper));
     }
     helper.eval();
   }
 
   private static class RequiredDependenciesBuilderImpl implements RequiredDependenciesBuilder {
-    protected final VisibleArtifacts artifacts;
     protected final SNode dep;
     private final UnpackHelper helper;
 
-    public RequiredDependenciesBuilderImpl(VisibleArtifacts artifacts, SNode dep, UnpackHelper helper) {
-      this.artifacts = artifacts;
+    public RequiredDependenciesBuilderImpl(SNode dep, UnpackHelper helper) {
       this.dep = dep;
       this.helper = helper;
     }
@@ -69,7 +58,6 @@ public class FetchDependenciesProcessor {
       helper.add(node, true);
     }
 
-
     @Override
     public void addWithTag(SNode node, String artifactId) {
       add(node);
@@ -77,7 +65,7 @@ public class FetchDependenciesProcessor {
     }
 
     private boolean check(SNode node) {
-      if (!(artifacts.contains(node))) {
+      if (!(helper.visibleArtifacts().contains(node))) {
         helper.getGenContext().showErrorMessage(dep, "returned node which is not available in dependencies: " + jetbrains.mps.util.SNodeOperations.getDebugText(node));
         return false;
       }

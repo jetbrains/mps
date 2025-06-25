@@ -1715,7 +1715,7 @@ public class QueriesGenerated extends QueryProviderBase {
     DependenciesHelper helper = DependenciesHelper.get(_context, project, "build.mps");
     SNode layoutNode = helper.getArtifact(((SNode) _context.getVariable("remotePath")));
 
-    // XXX this code here resembles ArtifactLookup.getResouce() a lot. Can I refactor it into 1 piece?
+    // XXX this code here resembles ArtifactLookup.getResource() a lot. Can I refactor it into 1 piece?
 
     SNode path = ((SNode) _context.getVariable("remotePath"));
     if (layoutNode == null) {

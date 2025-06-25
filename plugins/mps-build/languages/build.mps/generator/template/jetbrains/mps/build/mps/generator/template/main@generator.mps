@@ -8556,7 +8556,7 @@
                       <property role="3oM_SC" value="resembles" />
                     </node>
                     <node concept="3oM_SD" id="4WTY5njevfG" role="1PaTwD">
-                      <property role="3oM_SC" value="ArtifactLookup.getResouce()" />
+                      <property role="3oM_SC" value="ArtifactLookup.getResource()" />
                     </node>
                     <node concept="3oM_SD" id="4WTY5njevjH" role="1PaTwD">
                       <property role="3oM_SC" value="a" />
