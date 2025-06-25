@@ -1763,26 +1763,21 @@ public class QueriesGenerated extends QueryProviderBase {
     if ((jmAntJar != null)) {
       return helper.getLocation(jmAntJar);
     }
-    if (!(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).any((it) -> "mps_home".equals(SPropertyOperations.getString(it, PROPS.name$MnvL))))) {
-      _context.showErrorMessage(null, "${mps_home} macro is required to create `generate' task");
-    }
+
+    _context.showErrorMessage(null, String.format("No '%s' artifact has been found in dependencies, using some ${mps_home}-relative defaults", artifact));
     return null;
   }
   public static Object varMacro_Value_8_1(final TemplateVarContext _context) {
     DependenciesHelper helper = DependenciesHelper.get(_context, _context.getNode(), "build.mps");
     String artifact = "org.jdom";
-    // as of 22.2, org.jdom ([ant-mps-common] dependency), lives in util.jar
     // XXX I wonder why we don't add org.jdom classes right into ant-mps.jar?
     SNode jar = helper.getArtifact(artifact);
     if ((jar != null)) {
-      String libLocation = helper.getLocation(jar);
-      return libLocation.substring(0, libLocation.lastIndexOf('/'));
+      return helper.getLocation(jar);
     }
-    // in fact, [ant-mps] uses annotations and we might need IDEA/lib/annotations.jar dependency,
-    // but so far it works without this dependency
-    if (!(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).any((it) -> "mps_home".equals(SPropertyOperations.getString(it, PROPS.name$MnvL))))) {
-      _context.showErrorMessage(null, "${mps_home} macro is required to create `generate' task");
-    }
+    // in fact, [ant-mps] uses mps-annotations and we might need that dependency as well,
+    // but as long as GeneratedClass annotation is CLASS-level, so far it works without the dependency
+    _context.showErrorMessage(null, String.format("No '%s' artifact has been found in dependencies, using some ${mps_home}-relative defaults", artifact));
     return null;
   }
   public static Object varMacro_Value_8_2(final TemplateVarContext _context) {
@@ -2347,7 +2342,7 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("781140262678258087", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "http://jetbrains.com/idea/statistics/stat-assistant.xml"));
     pvqMethods.put("781140262678263355", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "http://jetbrains.com/idea/statistics/index.jsp"));
     pvqMethods.put("2436117033632111129", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "${mps_home}/lib/ant/lib/ant-mps.jar"));
-    pvqMethods.put("2436117033632111186", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "${mps_home}/lib"));
+    pvqMethods.put("2436117033632111186", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "${mps_home}/lib/util-8.jar"));
     pvqMethods.put("5423338990220413266", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "m2m-defaults"));
     pvqMethods.put("4237431449989321950", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "true"));
     pvqMethods.put("4237431449989321974", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "4"));
