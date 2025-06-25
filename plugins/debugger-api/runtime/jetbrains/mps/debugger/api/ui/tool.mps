@@ -832,7 +832,7 @@
               </node>
             </node>
             <node concept="liA8E" id="3vYYl$GC3Ul" role="2OqNvi">
-              <ref role="37wK5l" to="v7ux:~ContentManager.addDataProvider(com.intellij.openapi.actionSystem.DataProvider)" resolve="addDataProvider" />
+              <ref role="37wK5l" to="v7ux:~ContentManager.addUiDataProvider(com.intellij.openapi.actionSystem.UiDataProvider)" resolve="addUiDataProvider" />
               <node concept="10QFUN" id="3vYYl$GC3Um" role="37wK5m">
                 <node concept="1bVj0M" id="3vYYl$GC3Un" role="10QFUP">
                   <node concept="37vLTG" id="3vYYl$GC3Uo" role="1bW2Oz">
@@ -864,7 +864,7 @@
                   </node>
                 </node>
                 <node concept="3uibUv" id="3vYYl$GC3UA" role="10QFUM">
-                  <ref role="3uigEE" to="qkt:~EdtNoGetDataProvider" resolve="EdtNoGetDataProvider" />
+                  <ref role="3uigEE" to="qkt:~UiDataProvider" resolve="UiDataProvider" />
                 </node>
               </node>
             </node>
