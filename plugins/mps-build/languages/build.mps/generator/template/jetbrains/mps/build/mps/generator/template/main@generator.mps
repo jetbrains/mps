@@ -8538,6 +8538,56 @@
                   </node>
                 </node>
                 <node concept="3clFbH" id="4VmJU8hyc6f" role="3cqZAp" />
+                <node concept="3SKdUt" id="4WTY5njeu_1" role="3cqZAp">
+                  <node concept="1PaTwC" id="4WTY5njeu_2" role="1aUNEU">
+                    <node concept="3oM_SD" id="4WTY5njeu_3" role="1PaTwD">
+                      <property role="3oM_SC" value="XXX" />
+                    </node>
+                    <node concept="3oM_SD" id="4WTY5njeuK8" role="1PaTwD">
+                      <property role="3oM_SC" value="this" />
+                    </node>
+                    <node concept="3oM_SD" id="4WTY5njeve9" role="1PaTwD">
+                      <property role="3oM_SC" value="code" />
+                    </node>
+                    <node concept="3oM_SD" id="4WTY5njevea" role="1PaTwD">
+                      <property role="3oM_SC" value="here" />
+                    </node>
+                    <node concept="3oM_SD" id="4WTY5njeveb" role="1PaTwD">
+                      <property role="3oM_SC" value="resembles" />
+                    </node>
+                    <node concept="3oM_SD" id="4WTY5njevfG" role="1PaTwD">
+                      <property role="3oM_SC" value="ArtifactLookup.getResouce()" />
+                    </node>
+                    <node concept="3oM_SD" id="4WTY5njevjH" role="1PaTwD">
+                      <property role="3oM_SC" value="a" />
+                    </node>
+                    <node concept="3oM_SD" id="4WTY5njevjI" role="1PaTwD">
+                      <property role="3oM_SC" value="lot." />
+                    </node>
+                    <node concept="3oM_SD" id="4WTY5njevjJ" role="1PaTwD">
+                      <property role="3oM_SC" value="Can" />
+                    </node>
+                    <node concept="3oM_SD" id="4WTY5njevjK" role="1PaTwD">
+                      <property role="3oM_SC" value="I" />
+                    </node>
+                    <node concept="3oM_SD" id="4WTY5njevjL" role="1PaTwD">
+                      <property role="3oM_SC" value="refactor" />
+                    </node>
+                    <node concept="3oM_SD" id="4WTY5njevki" role="1PaTwD">
+                      <property role="3oM_SC" value="it" />
+                    </node>
+                    <node concept="3oM_SD" id="4WTY5njevlj" role="1PaTwD">
+                      <property role="3oM_SC" value="into" />
+                    </node>
+                    <node concept="3oM_SD" id="4WTY5njevlk" role="1PaTwD">
+                      <property role="3oM_SC" value="1" />
+                    </node>
+                    <node concept="3oM_SD" id="4WTY5njevml" role="1PaTwD">
+                      <property role="3oM_SC" value="piece?" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbH" id="4WTY5njepPw" role="3cqZAp" />
                 <node concept="3cpWs8" id="4VmJU8hyc3x" role="3cqZAp">
                   <node concept="3cpWsn" id="4VmJU8hyc3y" role="3cpWs9">
                     <property role="TrG5h" value="path" />
@@ -8680,9 +8730,6 @@
                                       <node concept="2qgKlT" id="4VmJU8hycci" role="2OqNvi">
                                         <ref role="37wK5l" to="vbkb:4Kip2_918YF" resolve="getRelativePath" />
                                       </node>
-                                    </node>
-                                    <node concept="3clFbT" id="4VmJU8hyccj" role="37wK5m">
-                                      <property role="3clFbU" value="true" />
                                     </node>
                                   </node>
                                 </node>

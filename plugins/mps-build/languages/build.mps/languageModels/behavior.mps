@@ -6547,30 +6547,18 @@
                     </node>
                   </node>
                 </node>
-                <node concept="22lmx$" id="7zkpphtHfe0" role="3clFbw">
-                  <node concept="3fqX7Q" id="7zkpphtHfdf" role="3uHU7B">
-                    <node concept="2OqwBi" id="7zkpphtHfdA" role="3fr31v">
-                      <node concept="37vLTw" id="3GM_nagTzvS" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2e$pWI0MSAT" resolve="art" />
-                      </node>
-                      <node concept="liA8E" id="7zkpphtHfdF" role="2OqNvi">
-                        <ref role="37wK5l" to="o3n2:2uL$SAGRp7C" resolve="isFolder" />
-                      </node>
+                <node concept="3y3z36" id="7zkpphtHfe3" role="3clFbw">
+                  <node concept="2OqwBi" id="7zkpphtHfe4" role="3uHU7B">
+                    <node concept="37vLTw" id="3GM_nagTr3y" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2e$pWI0MSAT" resolve="art" />
+                    </node>
+                    <node concept="liA8E" id="7zkpphtHfe6" role="2OqNvi">
+                      <ref role="37wK5l" to="o3n2:2uL$SAGRp7q" resolve="getRoot" />
                     </node>
                   </node>
-                  <node concept="3y3z36" id="7zkpphtHfe3" role="3uHU7w">
-                    <node concept="2OqwBi" id="7zkpphtHfe4" role="3uHU7B">
-                      <node concept="37vLTw" id="3GM_nagTr3y" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2e$pWI0MSAT" resolve="art" />
-                      </node>
-                      <node concept="liA8E" id="7zkpphtHfe6" role="2OqNvi">
-                        <ref role="37wK5l" to="o3n2:2uL$SAGRp7q" resolve="getRoot" />
-                      </node>
-                    </node>
-                    <node concept="2OqwBi" id="7zkpphtHfe7" role="3uHU7w">
-                      <node concept="13iPFW" id="7zkpphtHfe8" role="2Oq$k0" />
-                      <node concept="2Rxl7S" id="7zkpphtHfe9" role="2OqNvi" />
-                    </node>
+                  <node concept="2OqwBi" id="7zkpphtHfe7" role="3uHU7w">
+                    <node concept="13iPFW" id="7zkpphtHfe8" role="2Oq$k0" />
+                    <node concept="2Rxl7S" id="7zkpphtHfe9" role="2OqNvi" />
                   </node>
                 </node>
               </node>

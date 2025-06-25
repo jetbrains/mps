@@ -186,7 +186,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
     } else if (artifactId instanceof LocalSourcePathArtifact) {
       // FIXME copied from BuildLayout_Folder.exports to support 'files from' under 'plugin' layout
       LocalSourcePathArtifact art = (LocalSourcePathArtifact) artifactId;
-      if (!(art.isFolder()) || art.getRoot() != SNodeOperations.getContainingRoot(__thisNode__)) {
+      if (art.getRoot() != SNodeOperations.getContainingRoot(__thisNode__)) {
         return false;
       }
 

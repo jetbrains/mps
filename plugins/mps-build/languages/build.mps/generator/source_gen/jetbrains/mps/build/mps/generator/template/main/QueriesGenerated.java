@@ -1715,6 +1715,8 @@ public class QueriesGenerated extends QueryProviderBase {
     DependenciesHelper helper = DependenciesHelper.get(_context, project, "build.mps");
     SNode layoutNode = helper.getArtifact(((SNode) _context.getVariable("remotePath")));
 
+    // XXX this code here resembles ArtifactLookup.getResouce() a lot. Can I refactor it into 1 piece?
+
     SNode path = ((SNode) _context.getVariable("remotePath"));
     if (layoutNode == null) {
       StringBuilder suffix = new StringBuilder();
@@ -1725,7 +1727,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
       SNode containingRoot = SNodeOperations.getContainingRoot(path);
       while (current != null) {
-        SNode res = helper.getArtifact(new LocalSourcePathArtifact(containingRoot, BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(current), true));
+        SNode res = helper.getArtifact(new LocalSourcePathArtifact(containingRoot, BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(current)));
         if (res != null) {
           return MultiTuple.<SNode,String>from(res, suffix.substring(1));
         }
