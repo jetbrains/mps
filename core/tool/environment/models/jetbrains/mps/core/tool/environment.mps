@@ -35,7 +35,6 @@
     <import index="w0gx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.modules(MPS.Core/)" />
     <import index="et5u" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.messages(MPS.Core/)" />
     <import index="bd8o" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:com.intellij.openapi.application(MPS.Boot/)" />
-    <import index="18ex" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:jetbrains.mps.util(MPS.Boot/)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="embf" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.jar(JDK/)" />
     <import index="w827" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.openapi(MPS.Core/)" />
@@ -3912,8 +3911,8 @@
           <node concept="3clFbS" id="7o_691ts_nT" role="1zxBo7">
             <node concept="3clFbF" id="2MkJkJgf$so" role="3cqZAp">
               <node concept="2YIFZM" id="2MkJkJgfCHK" role="3clFbG">
-                <ref role="37wK5l" to="18ex:~LogInitializer.init()" resolve="init" />
-                <ref role="1Pybhc" to="18ex:~LogInitializer" resolve="LogInitializer" />
+                <ref role="37wK5l" to="v9gs:4B1FZuRjhXP" resolve="init" />
+                <ref role="1Pybhc" to="v9gs:4B1FZuRjhXN" resolve="LogInitializer" />
               </node>
             </node>
           </node>

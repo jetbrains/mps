@@ -4,7 +4,7 @@ package jetbrains.mps.tool.environment;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.util.LogInitializer;
+import jetbrains.mps.core.tool.environment.util.LogInitializer;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.TestMode;
