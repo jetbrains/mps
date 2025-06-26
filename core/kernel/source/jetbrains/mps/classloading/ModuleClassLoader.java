@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.reloading.ClassBytesProvider.ClassBytes;
 import jetbrains.mps.reloading.IClassPathItem;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.ProtectionDomainUtil;
 import jetbrains.mps.util.iterable.IterableEnumeration;
 import jetbrains.mps.util.iterable.MergeIterator;
 import org.jetbrains.annotations.NonNls;
@@ -29,7 +28,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.CodeSource;
 import java.security.ProtectionDomain;
+import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -220,7 +221,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
             definePackage(pack, null, null, null, null, null, null, null);
           }
         }
-        ProtectionDomain newProtectionDomain = ProtectionDomainUtil.loadedClassDomain(classBytes.getPath());
+        ProtectionDomain newProtectionDomain = loadedClassDomain(classBytes.getPath());
         byte[] bytes = classBytes.getBytes();
         aClass = defineClass(fqName, bytes, 0, bytes.length, newProtectionDomain);
         return recordClass(fqName, aClass);
@@ -393,6 +394,11 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   public String toString() {
     final String rv = super.toString();
     return myDisposed ? rv + "[DISPOSED]" : rv;
+  }
+
+  private static ProtectionDomain loadedClassDomain(URL url) {
+    CodeSource cs = new CodeSource(url, (Certificate[]) null);
+    return new ProtectionDomain(cs, null);
   }
 
   public static class ModuleClassLoaderIsDisposedException extends IllegalStateException {
