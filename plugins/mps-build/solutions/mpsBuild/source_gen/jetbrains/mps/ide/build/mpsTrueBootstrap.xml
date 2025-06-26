@@ -112,9 +112,6 @@
     <jar destfile="${build.layout}/mps-openapi.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-openapi" />
     </jar>
-    <jar destfile="${build.layout}/mps-boot-util.jar" duplicate="preserve">
-      <fileset dir="${build.tmp}/java/out/mps-boot-util" />
-    </jar>
     <jar destfile="${build.layout}/mps-constraints-runtime.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/constraints-runtime" />
     </jar>
@@ -183,7 +180,7 @@
     <delete dir="${build.layout}" />
   </target>
   
-  <target name="compileJava" depends="java.compile.mps-annotations, java.compile.mps-tuples, java.compile.mps-closures, java.compile.mps-references, java.compile.mps-collections, java.compile.ant-mps, java.compile.mps-openapi, java.compile.mps-logging, java.compile.mps-messaging, java.compile.mps-boot-util, java.compile.mps-core-components, java.compile.util-core, java.compile.vfs, java.compile.mps-smodel, java.compile.java.modules.cycle.1, java.compile.mps-behavior-runtime, java.compile.mps-behavior-api, java.compile.constraints-runtime, java.compile.feeback-context, java.compile.messages-for-legacy-constraints, java.compile.feedback-problem, java.compile.mps-kernel, java.compile.mps-project, java.compile.mps-persistence, java.compile.platform-persistence-only, java.compile.mps-tool-convertModels" />
+  <target name="compileJava" depends="java.compile.mps-annotations, java.compile.mps-tuples, java.compile.mps-closures, java.compile.mps-references, java.compile.mps-collections, java.compile.ant-mps, java.compile.mps-openapi, java.compile.mps-logging, java.compile.mps-messaging, java.compile.mps-core-components, java.compile.util-core, java.compile.vfs, java.compile.mps-smodel, java.compile.java.modules.cycle.1, java.compile.mps-behavior-runtime, java.compile.mps-behavior-api, java.compile.constraints-runtime, java.compile.feeback-context, java.compile.messages-for-legacy-constraints, java.compile.feedback-problem, java.compile.mps-kernel, java.compile.mps-project, java.compile.mps-persistence, java.compile.platform-persistence-only, java.compile.mps-tool-convertModels" />
   
   <target name="processResources" />
   
@@ -371,29 +368,6 @@
     </javac2>
   </target>
   
-  <target name="java.compile.mps-boot-util" depends="java.compile.mps-annotations, java.compile.mps-logging">
-    <mkdir dir="${mps_home}/startup/boot-util/source" />
-    <mkdir dir="${build.tmp}/java/out/mps-boot-util" />
-    <javac2 destdir="${build.tmp}/java/out/mps-boot-util" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
-      <withKotlin moduleName="mps-boot-util">        
-        <compilerarg value="-jvm-target=21" />
-      </withKotlin>
-      <skip pattern="kotlin/Metadata" />
-      <compilerarg value="-Xlint:none" />
-      <src>
-        <path location="${mps_home}/startup/boot-util/source" />
-      </src>
-      <classpath>
-        <pathelement path="${build.tmp}/java/out/mps-annotations" />
-        <pathelement path="${build.tmp}/java/out/mps-logging" />
-        <path refid="path.java.library.annotations-lib" />
-        <path refid="path.java.library.org.apache.log4j" />
-        <path refid="path.java.library.com.intellij.openapi" />
-        <path refid="path.jdk.classpath" />
-      </classpath>
-    </javac2>
-  </target>
-  
   <target name="java.compile.mps-core-components" depends="java.compile.mps-annotations">
     <mkdir dir="${build.tmp}/java/out/mps-core-components" />
     <javac2 destdir="${build.tmp}/java/out/mps-core-components" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
@@ -480,7 +454,7 @@
     </javac2>
   </target>
   
-  <target name="java.compile.java.modules.cycle.1" depends="java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-logging, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-closures, java.compile.mps-collections, java.compile.mps-tuples, java.compile.mps-references, java.compile.mps-core-components, java.compile.mps-behavior-api, java.compile.mps-messaging, java.compile.feeback-context, java.compile.vfs, java.compile.feedback-problem, java.compile.messages-for-legacy-constraints, java.compile.mps-boot-util">
+  <target name="java.compile.java.modules.cycle.1" depends="java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-logging, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-closures, java.compile.mps-collections, java.compile.mps-tuples, java.compile.mps-references, java.compile.mps-core-components, java.compile.mps-behavior-api, java.compile.mps-messaging, java.compile.feeback-context, java.compile.vfs, java.compile.feedback-problem, java.compile.messages-for-legacy-constraints">
     <mkdir dir="${build.tmp}/java.modules.cycle.1" />
     <javac destdir="${build.tmp}/java.modules.cycle.1" fork="false" encoding="utf8" nowarn="true" includeantruntime="false">
       <withKotlin moduleName="java.modules.cycle.1"></withKotlin>
@@ -517,7 +491,6 @@
         <pathelement path="${build.tmp}/java/out/vfs" />
         <pathelement path="${build.tmp}/java/out/feedback-problem" />
         <pathelement path="${build.tmp}/java/out/messages-for-legacy-constraints" />
-        <pathelement path="${build.tmp}/java/out/mps-boot-util" />
       </classpath>
     </javac>
   </target>
@@ -689,7 +662,7 @@
     </javac2>
   </target>
   
-  <target name="java.compile.mps-kernel" depends="java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-logging, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-closures, java.compile.mps-collections, java.compile.mps-tuples, java.compile.mps-references, java.compile.mps-core-components, java.compile.mps-behavior-api, java.compile.mps-messaging, java.compile.mps-boot-util, java.compile.feeback-context, java.compile.feedback-problem, java.compile.messages-for-legacy-constraints, java.compile.vfs, java.compile.java.modules.cycle.1">
+  <target name="java.compile.mps-kernel" depends="java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-logging, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-closures, java.compile.mps-collections, java.compile.mps-tuples, java.compile.mps-references, java.compile.mps-core-components, java.compile.mps-behavior-api, java.compile.mps-messaging, java.compile.feeback-context, java.compile.feedback-problem, java.compile.messages-for-legacy-constraints, java.compile.vfs, java.compile.java.modules.cycle.1">
     <mkdir dir="${build.tmp}/java/out/mps-kernel" />
     <javac2 destdir="${build.tmp}/java/out/mps-kernel" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="mps-kernel">        
@@ -717,7 +690,6 @@
         <pathelement path="${build.tmp}/java/out/mps-core-components" />
         <pathelement path="${build.tmp}/java/out/mps-behavior-api" />
         <pathelement path="${build.tmp}/java/out/mps-messaging" />
-        <pathelement path="${build.tmp}/java/out/mps-boot-util" />
         <pathelement path="${build.tmp}/java/out/feeback-context" />
         <pathelement path="${build.tmp}/java/out/feedback-problem" />
         <pathelement path="${build.tmp}/java/out/messages-for-legacy-constraints" />
@@ -768,7 +740,7 @@
     </javac2>
   </target>
   
-  <target name="java.compile.mps-persistence" depends="java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-logging, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-closures, java.compile.mps-collections, java.compile.mps-tuples, java.compile.mps-references, java.compile.mps-project, java.compile.mps-core-components, java.compile.mps-behavior-api, java.compile.mps-behavior-runtime, java.compile.mps-messaging, java.compile.feeback-context, java.compile.constraints-runtime, java.compile.vfs, java.compile.mps-kernel, java.compile.mps-boot-util">
+  <target name="java.compile.mps-persistence" depends="java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-logging, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-closures, java.compile.mps-collections, java.compile.mps-tuples, java.compile.mps-references, java.compile.mps-project, java.compile.mps-core-components, java.compile.mps-behavior-api, java.compile.mps-behavior-runtime, java.compile.mps-messaging, java.compile.feeback-context, java.compile.constraints-runtime, java.compile.vfs, java.compile.mps-kernel">
     <mkdir dir="${mps_home}/core/persistence/source" />
     <mkdir dir="${mps_home}/core/persistence/source_gen" />
     <mkdir dir="${mps_home}/core/java-stub/source" />
@@ -809,7 +781,6 @@
         <pathelement path="${build.tmp}/java/out/constraints-runtime" />
         <pathelement path="${build.tmp}/java/out/vfs" />
         <pathelement path="${build.tmp}/java/out/mps-kernel" />
-        <pathelement path="${build.tmp}/java/out/mps-boot-util" />
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.org.apache.log4j" />
         <path refid="path.java.library.gnu.trove" />

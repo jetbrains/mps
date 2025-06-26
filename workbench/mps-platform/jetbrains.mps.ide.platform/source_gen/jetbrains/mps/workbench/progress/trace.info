@@ -199,8 +199,8 @@
       <node id="5860855079809362071" at="82,0,83,0" concept="5" trace="myLatch" />
       <node id="2183028874564905291" at="84,81,85,79" concept="11" />
       <node id="5860855079809375307" at="85,79,86,70" concept="9" />
-      <node id="5860855079809500690" at="86,70,87,93" concept="11" />
-      <node id="5860855079809375326" at="87,93,88,195" concept="4" />
+      <node id="5860855079809500690" at="86,70,87,92" concept="11" />
+      <node id="5860855079809375326" at="87,92,88,195" concept="4" />
       <node id="5860855079809375354" at="88,195,89,51" concept="4" />
       <node id="5860855079810078059" at="92,0,93,0" concept="8" trace="createItem#(nullLjava/lang/Runnable;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljetbrains/mps/workbench/progress/AbstractBackgroundTaskScheduler/JobQueueItem;" />
       <node id="1185176746685955817" at="94,0,95,0" concept="8" trace="runBlocking#(Ljetbrains/mps/workbench/progress/AbstractBackgroundTaskScheduler/AbstractJobQueue/Blocking;)V" />

@@ -84,7 +84,7 @@ public abstract class AbstractBackgroundTaskScheduler<JOB> extends DefaultTaskSc
     protected AbstractJobQueue(int queueSize, final BooleanSupplier shouldStop) {
       // Condition must be imported here explicitly to avoid generation failure
       Condition<Object> condition = (__) -> shouldStop.getAsBoolean();
-      // ThreadToUse.POOLED is preferrable here because IDEA application may not be available
+      // ThreadToUse.POOLED is preferable here because IDEA application may not be available
       this.myProcessor = new QueueProcessor<JobQueueItem>((JobQueueItem bgRunnable, Runnable continuation) -> bgRunnable.accept(continuation), true, QueueProcessor.ThreadToUse.POOLED, condition);
       this.myLatch = new CountDownLatch(queueSize);
     }
