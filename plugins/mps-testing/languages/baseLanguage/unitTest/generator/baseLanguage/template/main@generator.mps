@@ -61,6 +61,7 @@
       <concept id="1070533982221" name="jetbrains.mps.baseLanguage.structure.ShortType" flags="in" index="10N3zO" />
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
+      <concept id="1070534555686" name="jetbrains.mps.baseLanguage.structure.CharType" flags="in" index="10Pfzv" />
       <concept id="1070534604311" name="jetbrains.mps.baseLanguage.structure.ByteType" flags="in" index="10PrrI" />
       <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
         <child id="1070534934091" name="type" index="10QFUM" />
@@ -1813,6 +1814,25 @@
               </node>
             </node>
             <node concept="37f9Lt" id="3X3_cD8GA7W" role="lGtFl" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="5e716dzMMU6" role="3aUrZf">
+      <property role="36QftV" value="true" />
+      <ref role="30HIoZ" to="tpee:f_0PfwA" resolve="CharType" />
+      <node concept="gft3U" id="5e716dzMMU7" role="1lVwrX">
+        <node concept="2YIFZM" id="5e716dzMMU8" role="gfFT$">
+          <ref role="37wK5l" to="wyt6:~Character.valueOf(char)" resolve="valueOf" />
+          <ref role="1Pybhc" to="wyt6:~Character" resolve="Character" />
+          <node concept="1eOMI4" id="5e716dzMMU9" role="37wK5m">
+            <node concept="10QFUN" id="5e716dzMMUa" role="1eOMHV">
+              <node concept="10Pfzv" id="5e716dzMRjS" role="10QFUM" />
+              <node concept="3cmrfG" id="5e716dzMMUc" role="10QFUP">
+                <property role="3cmrfH" value="0" />
+              </node>
+            </node>
+            <node concept="37f9Lt" id="5e716dzMMUd" role="lGtFl" />
           </node>
         </node>
       </node>

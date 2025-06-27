@@ -93,7 +93,7 @@ public class Map_Test extends Util_Test {
     Assert.assertSame('1', MapSequence.fromMap(ascii).get(49));
     Iterable<Integer> keys = MapSequence.fromMap(ascii).keySet();
     for (int k : keys) {
-      Assert.assertEquals(Character.valueOf((char) (int) k), MapSequence.fromMap(ascii).get(k));
+      Assert.assertEquals(Character.valueOf((char) (int) k), Character.valueOf(MapSequence.fromMap(ascii).get(k)));
     }
   }
   @Test
