@@ -17845,7 +17845,18 @@
                 <ref role="37wK5l" to="yha4:~ChooseByNameData.&lt;init&gt;(jetbrains.mps.workbench.choose.ElementPresentation)" resolve="ChooseByNameData" />
                 <node concept="2ShNRf" id="5U5wfVL_lSL" role="37wK5m">
                   <node concept="1pGfFk" id="5U5wfVL_oa9" role="2ShVmc">
-                    <ref role="37wK5l" to="yha4:~NavigationTargetPresentation.&lt;init&gt;()" resolve="NavigationTargetPresentation" />
+                    <ref role="37wK5l" to="yha4:~NavigationTargetPresentationWithIconForNode.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository)" resolve="NavigationTargetPresentationWithIconForNode" />
+                    <node concept="2OqwBi" id="6$ukWcI9Pmp" role="37wK5m">
+                      <node concept="2OqwBi" id="6$ukWcI9NY3" role="2Oq$k0">
+                        <node concept="2WthIp" id="6$ukWcI9NY6" role="2Oq$k0" />
+                        <node concept="1DTwFV" id="6$ukWcI9NY8" role="2OqNvi">
+                          <ref role="2WH_rO" node="7h9VEk99LwV" resolve="mpsProject" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="6$ukWcI9QC6" role="2OqNvi">
+                        <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                      </node>
+                    </node>
                   </node>
                 </node>
                 <node concept="3uibUv" id="5U5wfVL_O3w" role="1pMfVU">

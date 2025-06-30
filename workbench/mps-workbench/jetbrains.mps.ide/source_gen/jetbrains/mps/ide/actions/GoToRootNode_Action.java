@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.workbench.choose.ChooseByNameData;
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant;
-import jetbrains.mps.workbench.choose.NavigationTargetPresentation;
+import jetbrains.mps.workbench.choose.NavigationTargetPresentationWithIconForNode;
 import jetbrains.mps.scope.ConditionalScope;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -58,7 +58,7 @@ public class GoToRootNode_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.rootNode");
 
-    final ChooseByNameData<NavigationParticipant.NavigationTarget> gotoData = new ChooseByNameData<NavigationParticipant.NavigationTarget>(new NavigationTargetPresentation());
+    final ChooseByNameData<NavigationParticipant.NavigationTarget> gotoData = new ChooseByNameData<NavigationParticipant.NavigationTarget>(new NavigationTargetPresentationWithIconForNode(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository()));
     gotoData.derivePrompts("node").setCheckBoxName("Include stub and non-project models");
 
     MPSProject project = event.getData(MPSCommonDataKeys.MPS_PROJECT);

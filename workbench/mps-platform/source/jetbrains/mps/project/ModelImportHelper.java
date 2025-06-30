@@ -32,8 +32,8 @@ import jetbrains.mps.util.NotCondition;
 import jetbrains.mps.workbench.choose.ChooseByNameData;
 import jetbrains.mps.workbench.choose.ModelScopeIterable;
 import jetbrains.mps.workbench.choose.ModelsPresentation;
-import jetbrains.mps.workbench.choose.NavigationTargetPresentation;
 import jetbrains.mps.workbench.choose.NavigationTargetScopeIterable;
+import jetbrains.mps.workbench.choose.NavigationTargetPresentationWithIconForNode;
 import jetbrains.mps.workbench.goTo.ui.MpsPopupFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -126,7 +126,7 @@ public class ModelImportHelper {
   }
 
   public void addImportByRoot(@NotNull SModel model, final Callback<String> importedRootCallback) {
-    ChooseByNameData<NavigationTarget> gotoData = new ChooseByNameData<>(new NavigationTargetPresentation());
+    ChooseByNameData<NavigationTarget> gotoData = new ChooseByNameData<>(new NavigationTargetPresentationWithIconForNode(myProject.getRepository()));
     gotoData.derivePrompts("node").setPrompts("Import model that contains root:", gotoData.getNotFoundMessage(), gotoData.getNotInMessage());
     gotoData.setCheckBoxName("Include stub and non-project models");
     ConditionalScope localScope = new ConditionalScope(myProject.getScope(), null, NotCondition.negate(SModelStereotype::isStubModel));

@@ -16,38 +16,44 @@
 package jetbrains.mps.workbench.choose;
 
 import jetbrains.mps.ide.icons.GlobalIconManager;
+import jetbrains.mps.ide.icons.IdeIcons;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant.NavigationTarget;
 
 import java.util.function.BiConsumer;
 
 /**
- * TODO may not be needed of NavigationTargetPresentationWithIconForNode prooves to be performant enough, otherwise use this class instead.
  * Tells {@link ChooseByNameData} how to render {@link NavigationTarget}
  * @author Artem Tikhomirov
  * @since 3.5
  */
-public class NavigationTargetPresentation implements ElementPresentation<NavigationTarget> {
-  @Override
-  public void names(@NotNull Iterable<NavigationTarget> elements, @NotNull BiConsumer<NavigationTarget, String> nameConsumer) {
-    elements.forEach(nt -> nameConsumer.accept(nt, nt.getPresentation()));
-  }
+public class NavigationTargetPresentationWithIconForNode extends NavigationTargetPresentation {
+  private final SRepository myRepo;
 
-  @Override
-  public boolean canRender(@Nullable Object element) {
-    return element instanceof NavigationTarget;
+  public NavigationTargetPresentationWithIconForNode(@NotNull SRepository repository) {
+    myRepo = repository;
   }
 
   @Override
   public void render(@NotNull NavigationTarget element, @NotNull ElementDescriptor presentation) {
     presentation.name = element.getPresentation();
-    //we don't use alternative icon here since it's very expensive and slows down Ctrl+N popup considerably
-    presentation.icon = GlobalIconManager.getInstance().getIconFor(element.getConcept());
     SModelReference modelRef = element.getNodeReference().getModelReference();
     SModuleReference moduleRef = modelRef.getModuleReference();
     presentation.location = moduleRef == null ? String.format("(%s)", modelRef.getModelName()) : String.format("(%s/%s)", moduleRef.getModuleName(), modelRef.getModelName());
+
+    myRepo.getModelAccess().runReadAction(() -> {
+      SNode node = element.getNodeReference().resolve(myRepo);
+      if (node == null) {
+        presentation.icon = GlobalIconManager.getInstance().getIconFor(element.getConcept());
+      } else {
+        presentation.icon = GlobalIconManager.getInstance().getIconFor(node);
+      }
+    });
   }
 }
