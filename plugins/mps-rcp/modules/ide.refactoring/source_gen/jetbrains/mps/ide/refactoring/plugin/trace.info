@@ -1529,56 +1529,70 @@
       <node id="8784230320738944314" at="38,39,39,39" concept="6" />
     </file>
     <file name="SafeDelete_Action.java">
-      <node id="8784230320738944314" at="16,0,17,0" concept="16" trace="ICON" />
-      <node id="8784230320738944314" at="18,30,19,35" concept="18" />
-      <node id="8784230320738944314" at="19,35,20,35" concept="6" />
-      <node id="8784230320738944314" at="20,35,21,40" concept="6" />
-      <node id="8784230320738944314" at="21,40,22,29" concept="6" />
-      <node id="8784230320738944314" at="25,32,26,16" concept="13" />
-      <node id="8784230320738944314" at="30,53,31,19" concept="13" />
-      <node id="944342063931265415" at="33,5,34,66" concept="12" />
-      <node id="944342063931265416" at="35,22,36,21" concept="13" />
-      <node id="5855630265036034928" at="39,5,40,65" concept="12" />
-      <node id="5855630265036034930" at="41,26,42,21" concept="13" />
-      <node id="5855630265036034930" at="44,28,45,21" concept="13" />
-      <node id="5855630265036034928" at="46,7,47,0" concept="15" />
-      <node id="8784230320738944314" at="48,5,49,16" concept="13" />
-      <node id="5037333854281658350" at="52,96,53,136" concept="6" />
-      <node id="8784230320738944314" at="29,95,32,5" concept="10" />
-      <node id="944342063931265416" at="34,66,37,7" concept="10" />
-      <node id="5855630265036034930" at="40,65,43,7" concept="10" />
-      <node id="5855630265036034930" at="43,7,46,7" concept="10" />
-      <node id="8784230320738944314" at="24,0,28,0" concept="11" trace="isDumbAware#()Z" />
-      <node id="8784230320738944314" at="51,0,55,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="8784230320738944314" at="18,0,24,0" concept="4" trace="SafeDelete_Action#()V" />
-      <node id="944342063931265415" at="32,5,38,5" concept="2" />
-      <node id="5855630265036034928" at="38,5,48,5" concept="2" />
-      <node id="8784230320738944314" at="28,0,51,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <scope id="8784230320738944314" at="25,32,26,16" />
-      <scope id="8784230320738944314" at="30,53,31,19" />
-      <scope id="944342063931265416" at="35,22,36,21" />
-      <scope id="5855630265036034930" at="41,26,42,21" />
-      <scope id="5855630265036034930" at="44,28,45,21" />
-      <scope id="8784230320738944314" at="52,96,53,136" />
-      <scope id="8784230320738944314" at="18,30,22,29" />
-      <scope id="8784230320738944314" at="24,0,28,0" />
-      <scope id="944342063931265415" at="33,5,37,7">
+      <node id="8784230320738944314" at="18,0,19,0" concept="16" trace="ICON" />
+      <node id="8784230320738944314" at="20,30,21,35" concept="18" />
+      <node id="8784230320738944314" at="21,35,22,35" concept="6" />
+      <node id="8784230320738944314" at="22,35,23,40" concept="6" />
+      <node id="8784230320738944314" at="23,40,24,29" concept="6" />
+      <node id="8784230320738944314" at="27,32,28,16" concept="13" />
+      <node id="1745907844939587464" at="31,87,32,131" concept="13" />
+      <node id="8784230320738944314" at="35,89,36,85" concept="6" />
+      <node id="8784230320738944314" at="40,53,41,19" concept="13" />
+      <node id="944342063931265415" at="43,5,44,66" concept="12" />
+      <node id="944342063931265416" at="45,22,46,21" concept="13" />
+      <node id="5855630265036034928" at="49,5,50,65" concept="12" />
+      <node id="5855630265036034930" at="51,26,52,21" concept="13" />
+      <node id="5855630265036034930" at="54,28,55,21" concept="13" />
+      <node id="5855630265036034928" at="56,7,57,0" concept="15" />
+      <node id="8784230320738944314" at="58,5,59,16" concept="13" />
+      <node id="5037333854281658350" at="62,96,63,136" concept="6" />
+      <node id="8784230320738944314" at="39,95,42,5" concept="10" />
+      <node id="944342063931265416" at="44,66,47,7" concept="10" />
+      <node id="5855630265036034930" at="50,65,53,7" concept="10" />
+      <node id="5855630265036034930" at="53,7,56,7" concept="10" />
+      <node id="8784230320738944314" at="26,0,30,0" concept="11" trace="isDumbAware#()Z" />
+      <node id="8784230320738944314" at="30,0,34,0" concept="11" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <node id="8784230320738944314" at="34,0,38,0" concept="11" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="8784230320738944314" at="61,0,65,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="8784230320738944314" at="20,0,26,0" concept="4" trace="SafeDelete_Action#()V" />
+      <node id="944342063931265415" at="42,5,48,5" concept="2" />
+      <node id="5855630265036034928" at="48,5,58,5" concept="2" />
+      <node id="8784230320738944314" at="38,0,61,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <scope id="8784230320738944314" at="27,32,28,16" />
+      <scope id="1745907844939582788" at="31,87,32,131" />
+      <scope id="8784230320738944314" at="35,89,36,85" />
+      <scope id="8784230320738944314" at="40,53,41,19" />
+      <scope id="944342063931265416" at="45,22,46,21" />
+      <scope id="5855630265036034930" at="51,26,52,21" />
+      <scope id="5855630265036034930" at="54,28,55,21" />
+      <scope id="8784230320738944314" at="62,96,63,136" />
+      <scope id="8784230320738944314" at="20,30,24,29" />
+      <scope id="8784230320738944314" at="26,0,30,0" />
+      <scope id="8784230320738944314" at="30,0,34,0">
+        <var name="_params" id="8784230320738944314" />
+        <var name="event" id="8784230320738944314" />
+      </scope>
+      <scope id="8784230320738944314" at="34,0,38,0">
+        <var name="_params" id="8784230320738944314" />
+        <var name="event" id="8784230320738944314" />
+      </scope>
+      <scope id="944342063931265415" at="43,5,47,7">
         <var name="p" id="944342063931265415" />
       </scope>
-      <scope id="8784230320738944314" at="51,0,55,0">
+      <scope id="8784230320738944314" at="61,0,65,0">
         <var name="_params" id="8784230320738944314" />
         <var name="event" id="8784230320738944314" />
       </scope>
-      <scope id="8784230320738944314" at="18,0,24,0" />
-      <scope id="5855630265036034928" at="39,5,47,0">
+      <scope id="8784230320738944314" at="20,0,26,0" />
+      <scope id="5855630265036034928" at="49,5,57,0">
         <var name="nodes" id="5855630265036034928" />
       </scope>
-      <scope id="8784230320738944314" at="29,95,49,16" />
-      <scope id="8784230320738944314" at="28,0,51,0">
+      <scope id="8784230320738944314" at="39,95,59,16" />
+      <scope id="8784230320738944314" at="38,0,61,0">
         <var name="_params" id="8784230320738944314" />
         <var name="event" id="8784230320738944314" />
       </scope>
-      <unit id="8784230320738944314" at="15,0,56,0" name="jetbrains.mps.ide.refactoring.plugin.SafeDelete_Action" />
+      <unit id="8784230320738944314" at="17,0,66,0" name="jetbrains.mps.ide.refactoring.plugin.SafeDelete_Action" />
     </file>
   </root>
   <root nodeRef="r:97d6b60a-b381-42e8-9ea4-402ec93eaf11(jetbrains.mps.ide.refactoring.plugin)/971821636814863479">

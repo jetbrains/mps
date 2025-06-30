@@ -3625,6 +3625,25 @@
         </node>
       </node>
     </node>
+    <node concept="2ScWuX" id="1wUHuXchb5X" role="tmbBb">
+      <node concept="3clFbS" id="1wUHuXchb5Y" role="2VODD2">
+        <node concept="3clFbF" id="1wUHuXchdn$" role="3cqZAp">
+          <node concept="3fqX7Q" id="1wUHuXcheWI" role="3clFbG">
+            <node concept="2OqwBi" id="1wUHuXcheWK" role="3fr31v">
+              <node concept="2OqwBi" id="1wUHuXcheWL" role="2Oq$k0">
+                <node concept="2WthIp" id="1wUHuXcheWM" role="2Oq$k0" />
+                <node concept="1DTwFV" id="1wUHuXcheWN" role="2OqNvi">
+                  <ref role="2WH_rO" node="30peylOO27f" resolve="module" />
+                </node>
+              </node>
+              <node concept="liA8E" id="1wUHuXcheWO" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~AbstractModule.isReadOnly()" resolve="isReadOnly" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="sE7Ow" id="30peylOO29v">
     <property role="TrG5h" value="NewAccessoryModel" />
@@ -3989,8 +4008,18 @@
             </node>
             <node concept="liA8E" id="3QWQ9jDUjQv" role="2OqNvi">
               <ref role="37wK5l" to="qkt:~Presentation.setEnabledAndVisible(boolean)" resolve="setEnabledAndVisible" />
-              <node concept="3clFbT" id="4Xmgths5DLG" role="37wK5m">
-                <property role="3clFbU" value="true" />
+              <node concept="3fqX7Q" id="1wUHuXcgnVq" role="37wK5m">
+                <node concept="2OqwBi" id="1wUHuXcgnVs" role="3fr31v">
+                  <node concept="2OqwBi" id="1wUHuXcgnVt" role="2Oq$k0">
+                    <node concept="2WthIp" id="1wUHuXcgnVu" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="1wUHuXcgnVv" role="2OqNvi">
+                      <ref role="2WH_rO" node="30peylOO29y" resolve="module" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="1wUHuXcgnVw" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c3:~AbstractModule.isReadOnly()" resolve="isReadOnly" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
@@ -4205,14 +4234,29 @@
     <node concept="2ScWuX" id="30peylOO7Bd" role="tmbBb">
       <node concept="3clFbS" id="30peylOO7Be" role="2VODD2">
         <node concept="3cpWs6" id="30peylOO7Bf" role="3cqZAp">
-          <node concept="2ZW3vV" id="30peylOO7Bh" role="3cqZAk">
-            <node concept="3uibUv" id="2FkpZfeFlqA" role="2ZW6by">
-              <ref role="3uigEE" to="w1kc:~Language" resolve="Language" />
+          <node concept="1Wc70l" id="1wUHuXcjhEU" role="3cqZAk">
+            <node concept="3fqX7Q" id="1wUHuXcjiSC" role="3uHU7w">
+              <node concept="2OqwBi" id="1wUHuXcjiSE" role="3fr31v">
+                <node concept="2OqwBi" id="1wUHuXcjiSF" role="2Oq$k0">
+                  <node concept="2WthIp" id="1wUHuXcjiSG" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="1wUHuXcjiSH" role="2OqNvi">
+                    <ref role="2WH_rO" node="30peylOO7Bs" resolve="module" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="1wUHuXcjiSI" role="2OqNvi">
+                  <ref role="37wK5l" to="lui2:~SModule.isReadOnly()" resolve="isReadOnly" />
+                </node>
+              </node>
             </node>
-            <node concept="2OqwBi" id="30peylOO7Bj" role="2ZW6bz">
-              <node concept="2WthIp" id="30peylOO7Bk" role="2Oq$k0" />
-              <node concept="1DTwFV" id="30peylOO7Bl" role="2OqNvi">
-                <ref role="2WH_rO" node="30peylOO7Bs" resolve="module" />
+            <node concept="2ZW3vV" id="30peylOO7Bh" role="3uHU7B">
+              <node concept="3uibUv" id="2FkpZfeFlqA" role="2ZW6by">
+                <ref role="3uigEE" to="w1kc:~Language" resolve="Language" />
+              </node>
+              <node concept="2OqwBi" id="30peylOO7Bj" role="2ZW6bz">
+                <node concept="2WthIp" id="30peylOO7Bk" role="2Oq$k0" />
+                <node concept="1DTwFV" id="30peylOO7Bl" role="2OqNvi">
+                  <ref role="2WH_rO" node="30peylOO7Bs" resolve="module" />
+                </node>
               </node>
             </node>
           </node>
@@ -11129,14 +11173,29 @@
     <node concept="2ScWuX" id="z$IXO4dyxc" role="tmbBb">
       <node concept="3clFbS" id="z$IXO4dyxd" role="2VODD2">
         <node concept="3clFbF" id="z$IXO4dyxi" role="3cqZAp">
-          <node concept="2ZW3vV" id="z$IXO4dyxq" role="3clFbG">
-            <node concept="3uibUv" id="z$IXO4dyxt" role="2ZW6by">
-              <ref role="3uigEE" to="w1kc:~Language" resolve="Language" />
+          <node concept="1Wc70l" id="1wUHuXci9bO" role="3clFbG">
+            <node concept="3fqX7Q" id="1wUHuXcicDE" role="3uHU7w">
+              <node concept="2OqwBi" id="1wUHuXcicDG" role="3fr31v">
+                <node concept="2OqwBi" id="1wUHuXcicDH" role="2Oq$k0">
+                  <node concept="2WthIp" id="1wUHuXcicDI" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="1wUHuXcicDJ" role="2OqNvi">
+                    <ref role="2WH_rO" node="z$IXO4dyxb" resolve="contextModule" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="1wUHuXcicDK" role="2OqNvi">
+                  <ref role="37wK5l" to="lui2:~SModule.isReadOnly()" resolve="isReadOnly" />
+                </node>
+              </node>
             </node>
-            <node concept="2OqwBi" id="z$IXO4dyxj" role="2ZW6bz">
-              <node concept="2WthIp" id="z$IXO4dyxk" role="2Oq$k0" />
-              <node concept="1DTwFV" id="z$IXO4dyxl" role="2OqNvi">
-                <ref role="2WH_rO" node="z$IXO4dyxb" resolve="contextModule" />
+            <node concept="2ZW3vV" id="z$IXO4dyxq" role="3uHU7B">
+              <node concept="3uibUv" id="z$IXO4dyxt" role="2ZW6by">
+                <ref role="3uigEE" to="w1kc:~Language" resolve="Language" />
+              </node>
+              <node concept="2OqwBi" id="z$IXO4dyxj" role="2ZW6bz">
+                <node concept="2WthIp" id="z$IXO4dyxk" role="2Oq$k0" />
+                <node concept="1DTwFV" id="z$IXO4dyxl" role="2OqNvi">
+                  <ref role="2WH_rO" node="z$IXO4dyxb" resolve="contextModule" />
+                </node>
               </node>
             </node>
           </node>

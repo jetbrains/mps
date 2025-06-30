@@ -4990,16 +4990,29 @@
     <node concept="2ScWuX" id="60HWYcsjXsH" role="tmbBb">
       <node concept="3clFbS" id="60HWYcsjXsI" role="2VODD2">
         <node concept="3clFbJ" id="5JozKOuhzLS" role="3cqZAp">
-          <node concept="3fqX7Q" id="5JozKOuhHin" role="3clFbw">
-            <node concept="2ZW3vV" id="5JozKOuhHip" role="3fr31v">
-              <node concept="3uibUv" id="5JozKOuhHiq" role="2ZW6by">
-                <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
-              </node>
-              <node concept="2OqwBi" id="5JozKOuhHir" role="2ZW6bz">
-                <node concept="1DTwFV" id="5JozKOuhHis" role="2OqNvi">
+          <node concept="22lmx$" id="1wUHuXcfR7S" role="3clFbw">
+            <node concept="2OqwBi" id="1wUHuXcfVsv" role="3uHU7w">
+              <node concept="2OqwBi" id="1wUHuXcfU7v" role="2Oq$k0">
+                <node concept="2WthIp" id="1wUHuXcfTzu" role="2Oq$k0" />
+                <node concept="1DTwFV" id="1wUHuXcfV1v" role="2OqNvi">
                   <ref role="2WH_rO" node="60HWYcsjXo9" resolve="module" />
                 </node>
-                <node concept="2WthIp" id="5JozKOuhHit" role="2Oq$k0" />
+              </node>
+              <node concept="liA8E" id="1wUHuXcfXAZ" role="2OqNvi">
+                <ref role="37wK5l" to="lui2:~SModule.isReadOnly()" resolve="isReadOnly" />
+              </node>
+            </node>
+            <node concept="3fqX7Q" id="5JozKOuhHin" role="3uHU7B">
+              <node concept="2ZW3vV" id="5JozKOuhHip" role="3fr31v">
+                <node concept="3uibUv" id="5JozKOuhHiq" role="2ZW6by">
+                  <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
+                </node>
+                <node concept="2OqwBi" id="5JozKOuhHir" role="2ZW6bz">
+                  <node concept="1DTwFV" id="5JozKOuhHis" role="2OqNvi">
+                    <ref role="2WH_rO" node="60HWYcsjXo9" resolve="module" />
+                  </node>
+                  <node concept="2WthIp" id="5JozKOuhHit" role="2Oq$k0" />
+                </node>
               </node>
             </node>
           </node>

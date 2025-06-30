@@ -31,7 +31,7 @@ public class NewSubModel_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     final SModel model = ((SModel) event.getData(MPSCommonDataKeys.VALUE));
-    if (!(model.getModule() instanceof AbstractModule)) {
+    if (!(model.getModule() instanceof AbstractModule) || model.isReadOnly()) {
       return false;
     }
 

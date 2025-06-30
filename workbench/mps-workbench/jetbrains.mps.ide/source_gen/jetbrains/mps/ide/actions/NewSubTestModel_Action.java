@@ -44,6 +44,9 @@ public class NewSubTestModel_Action extends BaseAction {
       return false;
     }
     SModel m = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
+    if (m.isReadOnly()) {
+      return false;
+    }
     if (m.getName().hasStereotype()) {
       // XXX NONE.equals(stereotype) was from inception, is there any reason why *any* stereotype, not 'tests'?
       return false;

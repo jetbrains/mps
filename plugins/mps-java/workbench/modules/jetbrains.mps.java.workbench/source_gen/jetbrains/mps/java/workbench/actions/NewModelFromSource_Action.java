@@ -57,7 +57,7 @@ public class NewModelFromSource_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    if (!(event.getData(MPSCommonDataKeys.CONTEXT_MODULE) instanceof AbstractModule)) {
+    if (!(event.getData(MPSCommonDataKeys.CONTEXT_MODULE) instanceof AbstractModule) || event.getData(MPSCommonDataKeys.CONTEXT_MODULE).isReadOnly()) {
       return false;
     }
 

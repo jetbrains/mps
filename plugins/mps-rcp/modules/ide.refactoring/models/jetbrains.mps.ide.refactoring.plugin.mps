@@ -573,6 +573,7 @@
         <reference id="1153944258490" name="variable" index="2Gs0qQ" />
       </concept>
       <concept id="1235566554328" name="jetbrains.mps.baseLanguage.collections.structure.AnyOperation" flags="nn" index="2HwmR7" />
+      <concept id="1235566831861" name="jetbrains.mps.baseLanguage.collections.structure.AllOperation" flags="nn" index="2HxqBE" />
       <concept id="1235573135402" name="jetbrains.mps.baseLanguage.collections.structure.SingletonSequenceCreator" flags="nn" index="2HTt$P">
         <child id="1235573175711" name="elementType" index="2HTBi0" />
         <child id="1235573187520" name="singletonValue" index="2HTEbv" />
@@ -6003,6 +6004,47 @@
               </node>
               <node concept="3clFbT" id="4nCd7enwv0x" role="37wK5m">
                 <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2ScWuX" id="1wUHuXccgP3" role="tmbBb">
+      <node concept="3clFbS" id="1wUHuXccgP4" role="2VODD2">
+        <node concept="3clFbF" id="1wUHuXcchY8" role="3cqZAp">
+          <node concept="2OqwBi" id="1wUHuXcck1l" role="3clFbG">
+            <node concept="2OqwBi" id="1wUHuXcchY2" role="2Oq$k0">
+              <node concept="2WthIp" id="1wUHuXcchY5" role="2Oq$k0" />
+              <node concept="3gHZIF" id="1wUHuXcchY7" role="2OqNvi">
+                <ref role="2WH_rO" node="553obervXdK" resolve="nodes" />
+              </node>
+            </node>
+            <node concept="2HxqBE" id="1wUHuXccrLv" role="2OqNvi">
+              <node concept="1bVj0M" id="1wUHuXccrLx" role="23t8la">
+                <node concept="3clFbS" id="1wUHuXccrLy" role="1bW5cS">
+                  <node concept="3clFbF" id="1wUHuXccrLz" role="3cqZAp">
+                    <node concept="3fqX7Q" id="1wUHuXccrPH" role="3clFbG">
+                      <node concept="2OqwBi" id="1wUHuXccrPJ" role="3fr31v">
+                        <node concept="2JrnkZ" id="1wUHuXccrPK" role="2Oq$k0">
+                          <node concept="2OqwBi" id="1wUHuXccrPL" role="2JrQYb">
+                            <node concept="37vLTw" id="1wUHuXccrPM" role="2Oq$k0">
+                              <ref role="3cqZAo" node="1wUHuXccrLE" resolve="it" />
+                            </node>
+                            <node concept="I4A8Y" id="1wUHuXccrPN" role="2OqNvi" />
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="1wUHuXccrPO" role="2OqNvi">
+                          <ref role="37wK5l" to="mhbf:~SModel.isReadOnly()" resolve="isReadOnly" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="gl6BB" id="1wUHuXccrLE" role="1bW2Oz">
+                  <property role="TrG5h" value="it" />
+                  <node concept="2jxLKc" id="1wUHuXccrLF" role="1tU5fm" />
+                </node>
               </node>
             </node>
           </node>

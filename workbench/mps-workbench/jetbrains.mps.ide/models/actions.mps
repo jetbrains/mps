@@ -19689,17 +19689,27 @@
           </node>
         </node>
         <node concept="3clFbJ" id="5JozKOuhZml" role="3cqZAp">
-          <node concept="3fqX7Q" id="5JozKOuhZmm" role="3clFbw">
-            <node concept="2ZW3vV" id="5JozKOuhZmn" role="3fr31v">
-              <node concept="3uibUv" id="5JozKOuhZmo" role="2ZW6by">
-                <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
+          <node concept="22lmx$" id="1wUHuXcdtNa" role="3clFbw">
+            <node concept="2OqwBi" id="1wUHuXcdu8Q" role="3uHU7w">
+              <node concept="37vLTw" id="1wUHuXcdtTJ" role="2Oq$k0">
+                <ref role="3cqZAo" node="4XmgthrKvJN" resolve="model" />
               </node>
-              <node concept="2OqwBi" id="1BQ1XchmuwO" role="2ZW6bz">
-                <node concept="liA8E" id="1BQ1XchmuV9" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
+              <node concept="liA8E" id="1wUHuXcdurA" role="2OqNvi">
+                <ref role="37wK5l" to="mhbf:~SModel.isReadOnly()" resolve="isReadOnly" />
+              </node>
+            </node>
+            <node concept="3fqX7Q" id="5JozKOuhZmm" role="3uHU7B">
+              <node concept="2ZW3vV" id="5JozKOuhZmn" role="3fr31v">
+                <node concept="3uibUv" id="5JozKOuhZmo" role="2ZW6by">
+                  <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
                 </node>
-                <node concept="37vLTw" id="4XmgthrKx8p" role="2Oq$k0">
-                  <ref role="3cqZAo" node="4XmgthrKvJN" resolve="model" />
+                <node concept="2OqwBi" id="1BQ1XchmuwO" role="2ZW6bz">
+                  <node concept="liA8E" id="1BQ1XchmuV9" role="2OqNvi">
+                    <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
+                  </node>
+                  <node concept="37vLTw" id="4XmgthrKx8p" role="2Oq$k0">
+                    <ref role="3cqZAo" node="4XmgthrKvJN" resolve="model" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -23221,6 +23231,21 @@
               <node concept="1DTwFV" id="4pvxnnWKfj7" role="2OqNvi">
                 <ref role="2WH_rO" node="2n64866kIId" resolve="model" />
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="1wUHuXcdyJa" role="3cqZAp">
+          <node concept="3clFbS" id="1wUHuXcdyJc" role="3clFbx">
+            <node concept="3cpWs6" id="1wUHuXcd$2T" role="3cqZAp">
+              <node concept="3clFbT" id="1wUHuXcd$iu" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="1wUHuXcdyYO" role="3clFbw">
+            <node concept="liA8E" id="1wUHuXcdyYQ" role="2OqNvi">
+              <ref role="37wK5l" to="mhbf:~SModel.isReadOnly()" resolve="isReadOnly" />
+            </node>
+            <node concept="37vLTw" id="1wUHuXcdzpU" role="2Oq$k0">
+              <ref role="3cqZAo" node="4pvxnnWKfj4" resolve="m" />
             </node>
           </node>
         </node>
