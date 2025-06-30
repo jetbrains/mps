@@ -145,6 +145,9 @@
         <property id="9184644532457106508" name="flags" index="1688n6" />
         <child id="9184644532457106506" name="value" index="1688n0" />
       </concept>
+      <concept id="9184644532456496017" name="jetbrains.mps.build.structure.BuildLayout_AbstractCopy" flags="ng" index="16eZ8r">
+        <child id="5248329904287857082" name="fileset" index="3LXIA7" />
+      </concept>
       <concept id="7389400916848050074" name="jetbrains.mps.build.structure.BuildLayout_Jar" flags="ng" index="3981dx" />
       <concept id="7389400916848050071" name="jetbrains.mps.build.structure.BuildLayout_Zip" flags="ng" index="3981dG" />
       <concept id="7389400916848050060" name="jetbrains.mps.build.structure.BuildLayout_NamedContainer" flags="ng" index="3981dR">
@@ -229,6 +232,7 @@
       <concept id="5248329904288051100" name="jetbrains.mps.build.structure.BuildFileIncludeSelector" flags="ng" index="3LWZYx">
         <property id="5248329904288051101" name="pattern" index="3LWZYw" />
       </concept>
+      <concept id="5248329904287857081" name="jetbrains.mps.build.structure.BuildLayout_Copy" flags="ng" index="3LXIA4" />
       <concept id="5248329904287794596" name="jetbrains.mps.build.structure.BuildInputFiles" flags="ng" index="3LXTmp">
         <child id="5248329904287794598" name="dir" index="3LXTmr" />
         <child id="5248329904287794679" name="selectors" index="3LXTna" />
@@ -367,6 +371,7 @@
         <reference id="7655580649838764661" name="module" index="1kK7hZ" />
         <child id="7477562766051177430" name="sourceDescriptorFile" index="2JVP1x" />
         <child id="6654070855063054711" name="libraryEntries" index="1622H7" />
+        <child id="8488591998064324395" name="classpathEntries" index="3E5mpp" />
         <child id="506537499308757750" name="sourcesJarLocation" index="3SGgvt" />
       </concept>
       <concept id="763829979718664966" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleResources" flags="ng" index="3rtmxn">
@@ -2101,9 +2106,6 @@
       <node concept="2sjeV3" id="1K1$g4lQbGZ" role="nCB5Z">
         <ref role="2sjeV2" node="16Vg0jOconl" resolve="junit-4.12" />
       </node>
-      <node concept="2sjeV3" id="uP1LNSktzC" role="nCB5Z">
-        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
-      </node>
       <node concept="398b2D" id="EYvN5kMYcZ" role="398b2p">
         <node concept="nFU4i" id="1tWbYFNh9AC" role="nFU4p">
           <property role="nFU4j" value="source_gen" />
@@ -2118,6 +2120,9 @@
             </node>
           </node>
         </node>
+      </node>
+      <node concept="2sjeV3" id="uP1LNSktzC" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
       </node>
     </node>
     <node concept="2kB4xC" id="3AMbuf1a7Ob" role="1l3spd">
@@ -26770,6 +26775,20 @@
           <node concept="3_J27D" id="3TA_YgKt6L4" role="13uQ07">
             <node concept="3Mxwew" id="3TA_YgKt6L5" role="3MwsjC">
               <property role="3MwjfP" value="intellij.platform.vcs.log.impl.jar" />
+            </node>
+          </node>
+        </node>
+        <node concept="13uQ2_" id="6k1uIry5Sr6" role="39821P">
+          <node concept="3_J27D" id="6k1uIry5Sr7" role="13uQ07">
+            <node concept="3Mxwew" id="6k1uIry5Swy" role="3MwsjC">
+              <property role="3MwjfP" value="intellij.spellchecker.jar" />
+            </node>
+          </node>
+        </node>
+        <node concept="13uQ2_" id="6k1uIry5Swz" role="39821P">
+          <node concept="3_J27D" id="6k1uIry5Sw$" role="13uQ07">
+            <node concept="3Mxwew" id="6k1uIry5Sw_" role="3MwsjC">
+              <property role="3MwjfP" value="intellij.spellchecker.xml.jar" />
             </node>
           </node>
         </node>
@@ -55345,9 +55364,6 @@
         <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="3vjn6$4rsZc" resolve="util-core" />
       </node>
-      <node concept="2sjeV3" id="1yuhnUO2DPm" role="nCB5Z">
-        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
-      </node>
       <node concept="398b2D" id="42Iv58WeTIy" role="398b2p">
         <node concept="398BVA" id="42Iv58WeV$i" role="398b2C">
           <ref role="398BVh" node="6IJvZDkyhr7" resolve="mps_home" />
@@ -55362,6 +55378,9 @@
           <property role="nFU4j" value="source" />
           <property role="3LZaj6" value="4zlO3QTanjS/source" />
         </node>
+      </node>
+      <node concept="2sjeV3" id="1yuhnUO2DPm" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
       </node>
     </node>
     <node concept="398b33" id="6e4RFSGTAMz" role="3989C9">
@@ -56566,6 +56585,67 @@
       <property role="2_Ic$$" value="true" />
       <property role="TZNOO" value="21" />
     </node>
+    <node concept="1E1JtA" id="6k1uIrxXxBO" role="3989C9">
+      <property role="BnDLt" value="true" />
+      <property role="TrG5h" value="jetbrains.mps.spellchecker.idea.stubs" />
+      <property role="3LESm3" value="9979803b-18d3-440b-8a74-99cec41fc78e" />
+      <property role="3vZFNd" value="3kCd1ud3JDD/compile_ext" />
+      <node concept="398BVA" id="6k1uIrxXxZv" role="3LF7KH">
+        <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+        <node concept="2Ry0Ak" id="6k1uIrxXy2M" role="iGT6I">
+          <property role="2Ry0Am" value="plugins" />
+          <node concept="2Ry0Ak" id="6k1uIrxXy64" role="2Ry0An">
+            <property role="2Ry0Am" value="mps-spellcheck" />
+            <node concept="2Ry0Ak" id="6k1uIrxXy8h" role="2Ry0An">
+              <property role="2Ry0Am" value="modules" />
+              <node concept="2Ry0Ak" id="6k1uIrxXyau" role="2Ry0An">
+                <property role="2Ry0Am" value="jetbrains.mps.spellchecker.idea.stubs" />
+                <node concept="2Ry0Ak" id="6k1uIrxXybA" role="2Ry0An">
+                  <property role="2Ry0Am" value="jetbrains.mps.spellchecker.idea.stubs.msd" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="6k1uIrxZbe6" role="3bR37C">
+        <node concept="3bR9La" id="6k1uIrxZbe7" role="1SiIV1">
+          <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="OhZyNITHPy" role="3bR37C">
+        <node concept="1BurEX" id="OhZyNITHPz" role="1SiIV1">
+          <node concept="3yrxFa" id="OhZyNITHS5" role="2gdwQb">
+            <ref role="3yrxFb" node="6k1uIry5Sr6" />
+          </node>
+          <node concept="398BVA" id="CElprv6F65" role="1BurEY">
+            <ref role="398BVh" node="7BpZj_O_nyA" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="CElprv6F8v" role="iGT6I">
+              <property role="2Ry0Am" value="modules" />
+              <node concept="2Ry0Ak" id="CElprv6Fc3" role="2Ry0An">
+                <property role="2Ry0Am" value="intellij.spellchecker.jar" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="OhZyNITHPB" role="3bR37C">
+        <node concept="1BurEX" id="OhZyNITHPC" role="1SiIV1">
+          <node concept="3yrxFa" id="OhZyNITHYK" role="2gdwQb">
+            <ref role="3yrxFb" node="6k1uIry5Swz" />
+          </node>
+          <node concept="398BVA" id="CElprv6FkT" role="1BurEY">
+            <ref role="398BVh" node="7BpZj_O_nyA" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="CElprv6Fnp" role="iGT6I">
+              <property role="2Ry0Am" value="modules" />
+              <node concept="2Ry0Ak" id="CElprv6Ft1" role="2Ry0An">
+                <property role="2Ry0Am" value="intellij.spellchecker.xml.jar" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="1E1JtA" id="3SKb_4JujfJ" role="3989C9">
       <property role="BnDLt" value="true" />
       <property role="TrG5h" value="jetbrains.mps.editor.spellcheck" />
@@ -56659,6 +56739,11 @@
           </node>
         </node>
       </node>
+      <node concept="1SiIV0" id="6k1uIry0O6W" role="3bR37C">
+        <node concept="3bR9La" id="6k1uIry0O6X" role="1SiIV1">
+          <ref role="3bR37D" node="6k1uIrxXxBO" resolve="jetbrains.mps.spellchecker.idea.stubs" />
+        </node>
+      </node>
     </node>
     <node concept="m$_wf" id="3SKb_4Jujh$" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.editor.spellcheck" />
@@ -56679,6 +56764,9 @@
       </node>
       <node concept="m$_yB" id="3SKb_4Jujxa" role="m$_yh">
         <ref role="m$_yA" node="3SKb_4JujfJ" resolve="jetbrains.mps.editor.spellcheck" />
+      </node>
+      <node concept="m$_yB" id="7BpZj_OYwor" role="m$_yh">
+        <ref role="m$_yA" node="6k1uIrxXxBO" resolve="jetbrains.mps.spellchecker.idea.stubs" />
       </node>
       <node concept="398BVA" id="3SKb_4Jujxe" role="I30fb">
         <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
@@ -56718,6 +56806,14 @@
       <property role="TrG5h" value="mps_home" />
       <node concept="55IIr" id="3SKb_4Jujfz" role="398pKh" />
     </node>
+    <node concept="398rNT" id="7BpZj_O_nyA" role="1l3spd">
+      <property role="TrG5h" value="platform_lib" />
+      <node concept="55IIr" id="7BpZj_O_nC7" role="398pKh">
+        <node concept="2Ry0Ak" id="7BpZj_O_nC9" role="iGT6I">
+          <property role="2Ry0Am" value="lib" />
+        </node>
+      </node>
+    </node>
     <node concept="3b7kt6" id="3SKb_4Jujfu" role="10PD9s" />
     <node concept="55IIr" id="3SKb_4JtHPi" role="auvoZ">
       <node concept="2Ry0Ak" id="3SKb_4Jujfq" role="iGT6I">
@@ -56727,7 +56823,168 @@
     <node concept="1l3spV" id="3SKb_4JtHPj" role="1l3spN">
       <node concept="m$_wl" id="3SKb_4JujwY" role="39821P">
         <ref role="m_rDy" node="3SKb_4Jujh$" resolve="jetbrains.mps.editor.spellcheck" />
-        <node concept="pUk6x" id="3SKb_4Jujx4" role="pUk7w" />
+        <node concept="pUk6w" id="73FqNLcAp2f" role="pUk7w" />
+        <node concept="398223" id="73FqNLcustK" role="39821P">
+          <node concept="3_J27D" id="73FqNLcustL" role="Nbhlr">
+            <node concept="3Mxwew" id="73FqNLcustM" role="3MwsjC">
+              <property role="3MwjfP" value="languages" />
+            </node>
+          </node>
+          <node concept="3981dx" id="73FqNLcuu0K" role="39821P">
+            <node concept="398223" id="73FqNLcuu0L" role="39821P">
+              <node concept="1kK7hY" id="73FqNLcuu0M" role="39821P">
+                <ref role="1kK7hZ" node="3SKb_4JujfJ" resolve="jetbrains.mps.editor.spellcheck" />
+                <node concept="1cIVw3" id="73FqNLcuu0O" role="3E5mpp">
+                  <property role="1cIVw0" value="." />
+                </node>
+                <node concept="1cIVw3" id="73FqNLcuu0P" role="2JVP1x">
+                  <property role="1cIVw0" value="jetbrains.mps.editor.spellcheck.msd" />
+                </node>
+                <node concept="1cIVw3" id="73FqNLcuu0Q" role="3SGgvt">
+                  <property role="1cIVw0" value="jetbrains.mps.editor.spellcheck-src.jar" />
+                </node>
+              </node>
+              <node concept="3_J27D" id="73FqNLcuu0R" role="Nbhlr">
+                <node concept="3Mxwew" id="73FqNLcuu0S" role="3MwsjC">
+                  <property role="3MwjfP" value="META-INF" />
+                </node>
+              </node>
+            </node>
+            <node concept="Saw0i" id="73FqNLcuu0T" role="39821P">
+              <ref role="Saw0g" node="3SKb_4JujfJ" resolve="jetbrains.mps.editor.spellcheck" />
+            </node>
+            <node concept="3LXIA4" id="73FqNLcuu0U" role="39821P">
+              <node concept="3LXTmp" id="73FqNLcuumT" role="3LXIA7">
+                <node concept="3LWZYx" id="73FqNLcuumU" role="3LXTna">
+                  <property role="3LWZYw" value="startup.properties" />
+                </node>
+                <node concept="398BVA" id="73FqNLcuumV" role="3LXTmr">
+                  <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                  <node concept="2Ry0Ak" id="73FqNLcuumW" role="iGT6I">
+                    <property role="2Ry0Am" value="plugins" />
+                    <node concept="2Ry0Ak" id="73FqNLcuumX" role="2Ry0An">
+                      <property role="2Ry0Am" value="mps-spellcheck" />
+                      <node concept="2Ry0Ak" id="73FqNLcuumY" role="2Ry0An">
+                        <property role="2Ry0Am" value="modules" />
+                        <node concept="2Ry0Ak" id="73FqNLcuumZ" role="2Ry0An">
+                          <property role="2Ry0Am" value="spellcheck" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3LXIA4" id="73FqNLcuu0V" role="39821P">
+              <node concept="3LXTmp" id="73FqNLcuu0W" role="3LXIA7">
+                <node concept="398BVA" id="73FqNLcuun0" role="3LXTmr">
+                  <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                  <node concept="2Ry0Ak" id="73FqNLcuun1" role="iGT6I">
+                    <property role="2Ry0Am" value="plugins" />
+                    <node concept="2Ry0Ak" id="73FqNLcuun2" role="2Ry0An">
+                      <property role="2Ry0Am" value="mps-spellcheck" />
+                      <node concept="2Ry0Ak" id="73FqNLcuun3" role="2Ry0An">
+                        <property role="2Ry0Am" value="modules" />
+                        <node concept="2Ry0Ak" id="73FqNLcuun4" role="2Ry0An">
+                          <property role="2Ry0Am" value="spellcheck" />
+                          <node concept="2Ry0Ak" id="73FqNLcuun5" role="2Ry0An">
+                            <property role="2Ry0Am" value="source_gen" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3qWCbU" id="73FqNLcuu0X" role="3LXTna">
+                  <property role="3qWCbO" value="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+                </node>
+              </node>
+            </node>
+            <node concept="3_J27D" id="73FqNLcuu0Y" role="Nbhlr">
+              <node concept="3Mxwew" id="73FqNLcuu0Z" role="3MwsjC">
+                <property role="3MwjfP" value="jetbrains.mps.editor.spellcheck.jar" />
+              </node>
+            </node>
+          </node>
+          <node concept="L2wRC" id="73FqNLcK3KW" role="39821P">
+            <ref role="L2wRA" node="6k1uIrxXxBO" resolve="jetbrains.mps.spellchecker.idea.stubs" />
+            <node concept="3yLZsm" id="73FqNLcK3W3" role="3yL2VB">
+              <property role="3yLZsk" value="/lib/modules/intellij.spellchecker.jar" />
+              <node concept="398BVA" id="73FqNLcK3Zq" role="3yLZsn">
+                <ref role="398BVh" node="7BpZj_O_nyA" resolve="platform_lib" />
+                <node concept="2Ry0Ak" id="73FqNLcK43U" role="iGT6I">
+                  <property role="2Ry0Am" value="modules" />
+                  <node concept="2Ry0Ak" id="73FqNLcK46d" role="2Ry0An">
+                    <property role="2Ry0Am" value="intellij.spellchecker.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="73FqNLcVkUh" role="3yL2VB">
+              <property role="3yLZsk" value="/lib/modules/intellij.spellchecker.xml.jar" />
+              <node concept="398BVA" id="73FqNLcVkWz" role="3yLZsn">
+                <ref role="398BVh" node="7BpZj_O_nyA" resolve="platform_lib" />
+                <node concept="2Ry0Ak" id="73FqNLcVkYR" role="iGT6I">
+                  <property role="2Ry0Am" value="modules" />
+                  <node concept="2Ry0Ak" id="73FqNLcVl14" role="2Ry0An">
+                    <property role="2Ry0Am" value="intellij.spellchecker.xml.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3981dx" id="73FqNLcuu10" role="39821P">
+            <node concept="398223" id="73FqNLcuu11" role="39821P">
+              <node concept="3$exzU" id="73FqNLcuu12" role="39821P">
+                <ref role="3$exzV" node="3SKb_4JujfJ" resolve="jetbrains.mps.editor.spellcheck" />
+              </node>
+              <node concept="3_J27D" id="73FqNLcuu13" role="Nbhlr">
+                <node concept="3Mxwew" id="73FqNLcuu14" role="3MwsjC">
+                  <property role="3MwjfP" value="module" />
+                </node>
+              </node>
+            </node>
+            <node concept="3LXIA4" id="73FqNLcuu15" role="39821P">
+              <node concept="3LXTmp" id="73FqNLcuu16" role="3LXIA7">
+                <node concept="3LWZYq" id="73FqNLcuu17" role="3LXTna">
+                  <property role="3LWZYl" value="**/trace.info" />
+                </node>
+                <node concept="3LWZYq" id="73FqNLcuu18" role="3LXTna">
+                  <property role="3LWZYl" value="**/exports" />
+                </node>
+                <node concept="3LWZYq" id="73FqNLcuu19" role="3LXTna">
+                  <property role="3LWZYl" value="**/checkpoints" />
+                </node>
+                <node concept="3LWZYq" id="73FqNLcuu1a" role="3LXTna">
+                  <property role="3LWZYl" value="**/*.mps" />
+                </node>
+                <node concept="398BVA" id="73FqNLcuun6" role="3LXTmr">
+                  <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                  <node concept="2Ry0Ak" id="73FqNLcuun7" role="iGT6I">
+                    <property role="2Ry0Am" value="plugins" />
+                    <node concept="2Ry0Ak" id="73FqNLcuun8" role="2Ry0An">
+                      <property role="2Ry0Am" value="mps-spellcheck" />
+                      <node concept="2Ry0Ak" id="73FqNLcuun9" role="2Ry0An">
+                        <property role="2Ry0Am" value="modules" />
+                        <node concept="2Ry0Ak" id="73FqNLcuuna" role="2Ry0An">
+                          <property role="2Ry0Am" value="spellcheck" />
+                          <node concept="2Ry0Ak" id="73FqNLcuunb" role="2Ry0An">
+                            <property role="2Ry0Am" value="source_gen" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3_J27D" id="73FqNLcuu1b" role="Nbhlr">
+              <node concept="3Mxwew" id="73FqNLcuu1c" role="3MwsjC">
+                <property role="3MwjfP" value="jetbrains.mps.editor.spellcheck-src.jar" />
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="398rNT" id="2KA2zfKHOZf" role="1l3spd">

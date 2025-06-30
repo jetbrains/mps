@@ -15,15 +15,14 @@
  */
 package jetbrains.mps.spellchecker;
 
-import com.intellij.spellchecker.BundledDictionaryProvider;
 
 /**
  * Provides MPS specific list of words (in a dictionary file) for IntelliJ platform spellchecker
  * <p>
  * This allows to avoid underlining of such worlds as typo in the editor
  */
-public class MPSBundledDictionariesProvider implements BundledDictionaryProvider {
-  @Override
+public class MPSBundledDictionariesProvider {
+
   public String[] getBundledDictionaries() {
     return new String[]{"mps.dic"};
   }

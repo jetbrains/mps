@@ -12,7 +12,7 @@
       <root url="jar://$PROJECT_DIR$/lib/util-8.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lib.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-loader.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.emojipicker.jar!/" />!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.emojipicker.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.grid.core.impl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.grid.csv.core.impl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.grid.impl.jar!/" />

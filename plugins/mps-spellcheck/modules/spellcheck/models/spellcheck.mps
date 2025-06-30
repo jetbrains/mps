@@ -21,7 +21,6 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="ni5j" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.regex(JDK/)" />
-    <import index="v6uv" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.spellchecker(MPS.IDEA/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="j9co" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.event(MPS.Core/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
@@ -36,6 +35,7 @@
     <import index="j9ng" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.util(MPS.Platform/)" />
     <import index="ahgl" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor.checkers(MPS.Editor/)" />
     <import index="qq03" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)" />
+    <import index="v6uv" ref="9979803b-18d3-440b-8a74-99cec41fc78e/java:com.intellij.spellchecker(jetbrains.mps.spellchecker.idea.stubs/)" />
   </imports>
   <registry>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -886,10 +886,10 @@
               <node concept="37vLTI" id="1OIlcCDa16t" role="3clFbG">
                 <node concept="3y3z36" id="1OIlcCDaMIv" role="37vLTx">
                   <node concept="10Nm6u" id="1OIlcCDaOAT" role="3uHU7w" />
-                  <node concept="2YIFZM" id="1OIlcCDal2x" role="3uHU7B">
+                  <node concept="2YIFZM" id="2JPK5VcaL_1" role="3uHU7B">
                     <ref role="37wK5l" to="v6uv:~SpellCheckerManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
                     <ref role="1Pybhc" to="v6uv:~SpellCheckerManager" resolve="SpellCheckerManager" />
-                    <node concept="37vLTw" id="1OIlcCDaIiw" role="37wK5m">
+                    <node concept="37vLTw" id="2JPK5VcaL_2" role="37wK5m">
                       <ref role="3cqZAo" node="1OIlcCDascG" resolve="myProject" />
                     </node>
                   </node>
@@ -1383,10 +1383,10 @@
             <node concept="3uibUv" id="1OIlcCDiXQg" role="1tU5fm">
               <ref role="3uigEE" to="v6uv:~SpellCheckerManager" resolve="SpellCheckerManager" />
             </node>
-            <node concept="2YIFZM" id="1OIlcCDiXQn" role="33vP2m">
+            <node concept="2YIFZM" id="2JPK5Vccn9t" role="33vP2m">
               <ref role="37wK5l" to="v6uv:~SpellCheckerManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
               <ref role="1Pybhc" to="v6uv:~SpellCheckerManager" resolve="SpellCheckerManager" />
-              <node concept="37vLTw" id="1OIlcCDiXQo" role="37wK5m">
+              <node concept="37vLTw" id="2JPK5Vccn9u" role="37wK5m">
                 <ref role="3cqZAo" node="1OIlcCDascG" resolve="myProject" />
               </node>
             </node>
@@ -2433,10 +2433,10 @@
             <node concept="3uibUv" id="33z3Yy7mMyV" role="1tU5fm">
               <ref role="3uigEE" to="v6uv:~SpellCheckerManager" resolve="SpellCheckerManager" />
             </node>
-            <node concept="2YIFZM" id="33z3Yy7mMDS" role="33vP2m">
+            <node concept="2YIFZM" id="2JPK5VccC$E" role="33vP2m">
               <ref role="37wK5l" to="v6uv:~SpellCheckerManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
               <ref role="1Pybhc" to="v6uv:~SpellCheckerManager" resolve="SpellCheckerManager" />
-              <node concept="37vLTw" id="mQZQCkd6$m" role="37wK5m">
+              <node concept="37vLTw" id="2JPK5VccC$F" role="37wK5m">
                 <ref role="3cqZAo" node="mQZQCkd6$i" resolve="ideaProject" />
               </node>
             </node>

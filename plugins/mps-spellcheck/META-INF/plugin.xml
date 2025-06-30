@@ -9,6 +9,7 @@
   <idea-version since-build="252.1" until-build="253.1"/>
   <dependencies>
     <plugin id="jetbrains.mps.core"/>
+    <module name="intellij.spellchecker"/>
   </dependencies>
 
   <extensions defaultExtensionNs="com.intellij">

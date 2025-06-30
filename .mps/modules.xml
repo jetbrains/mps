@@ -371,6 +371,7 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-modelchecker/solution/jetbrains.mps.ide.modelchecker.msd" folder="plugins.modelchecker" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-project-migrations/solution/jetbrains.mps.ide.mpsmigration.msd" folder="plugins.migration" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-rcp/modules/ide.refactoring/jetbrains.mps.ide.refactoring.msd" folder="plugins.mps-rcp" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-spellcheck/modules/jetbrains.mps.spellchecker.idea.stubs/jetbrains.mps.spellchecker.idea.stubs.msd" folder="plugins.spellcheck" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-spellcheck/modules/spellcheck/jetbrains.mps.editor.spellcheck.msd" folder="plugins.spellcheck" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-testing/languages/baseLanguage/unitTest/jetbrains.mps.baseLanguage.unitTest.mpl" folder="core.baseLanguage.unitTest" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-testing/languages/baseLanguage/unitTest/runtime/jetbrains.mps.baseLanguage.unitTest.runtime.msd" folder="core.baseLanguage.unitTest" />
