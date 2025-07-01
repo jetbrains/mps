@@ -84,6 +84,7 @@ public final class ConvertToBinaryWorker {
     private final File myFile;
 
     /*package*/ FileDataSource(File file) {
+      // don't bother with DisposableDataSource.delete() as it's beyond the scope of the task
       myFile = file;
     }
 
@@ -123,11 +124,6 @@ public final class ConvertToBinaryWorker {
     @Override
     public boolean exists() {
       return myFile.exists();
-    }
-
-    @Override
-    public boolean delete() {
-      return myFile.delete();
     }
   }
 }

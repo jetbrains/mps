@@ -48,15 +48,6 @@ public interface StreamDataSource extends DataSource {
   @NotNull OutputStream openOutputStream() throws IOException;
 
   /**
-   * FIXME shall use {@code DisposableDataSource} instead. It's odd to assume any StreamDataSource supports deletion (e.g. byte[]-backed)
-   * @return true if success
-   */
-  default boolean delete() {
-    // no-op
-    return false;
-  }
-
-  /**
    * if rv == false, then {@link #openInputStream()} will throw IOException
    * so check it before reading
    */

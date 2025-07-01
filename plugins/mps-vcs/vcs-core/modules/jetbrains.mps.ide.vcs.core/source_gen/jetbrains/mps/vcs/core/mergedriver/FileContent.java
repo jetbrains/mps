@@ -5,6 +5,7 @@ package jetbrains.mps.vcs.core.mergedriver;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.extapi.persistence.DataSourceBase;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
+import jetbrains.mps.extapi.persistence.DisposableDataSource;
 import java.io.File;
 import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
 import org.jetbrains.annotations.NotNull;
@@ -24,7 +25,7 @@ import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceT
 import jetbrains.mps.util.FileUtil;
 
 @GeneratedClass(nodeId = "1578360511938004001", model = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)")
-public class FileContent extends DataSourceBase implements StreamDataSource {
+public class FileContent extends DataSourceBase implements StreamDataSource, DisposableDataSource {
   private final File myFile;
   private final byte[] myData;
   private final FileType myKind;
@@ -115,6 +116,7 @@ public class FileContent extends DataSourceBase implements StreamDataSource {
 
   @Override
   public boolean delete() {
+    // XXX not sure there's any reason to support 'delete' for DS in merge
     return myFile.delete();
   }
 

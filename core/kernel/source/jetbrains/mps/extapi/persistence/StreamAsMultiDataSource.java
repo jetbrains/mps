@@ -44,9 +44,4 @@ public interface StreamAsMultiDataSource extends StreamDataSource, MultiStreamDa
     }
     throw new IllegalArgumentException("No matches for the name " + name + ", I am " + this);
   }
-
-  @Override
-  default boolean delete() {
-    throw new UnsupportedOperationException();
-  }
 }
