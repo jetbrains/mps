@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
  * @since 2024.3
  */
 @Hack
-@Internal
+@jetbrains.mps.util.annotation.Internal
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AccessAsPlatformService {
