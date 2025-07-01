@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,8 @@ import java.util.stream.Stream;
 
 /**
  * This is {@link StreamDataSource} viewed as {@link MultiStreamDataSource} with a single stream available -- itself.
+ * FIXME quite odd single use, FileDataSource. Perhaps, for scenarios, when a File shall be "multi-stream" source, could have explicit implementation.
+ * Otherwise, there's no distinction b/w StreamDataSource and MultiStreamDataSource, and no need to tell one from another in the code
  *
  * @author apyshkin
  * @since 24/07/2020

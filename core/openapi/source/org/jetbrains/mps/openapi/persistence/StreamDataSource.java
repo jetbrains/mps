@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,9 +48,13 @@ public interface StreamDataSource extends DataSource {
   @NotNull OutputStream openOutputStream() throws IOException;
 
   /**
+   * FIXME shall use {@code DisposableDataSource} instead. It's odd to assume any StreamDataSource supports deletion (e.g. byte[]-backed)
    * @return true if success
    */
-  boolean delete();
+  default boolean delete() {
+    // no-op
+    return false;
+  }
 
   /**
    * if rv == false, then {@link #openInputStream()} will throw IOException
