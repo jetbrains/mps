@@ -452,7 +452,178 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     updateModelsSet();
   }
 
+<<<<<<< HEAD
   private void updateModuleDescriptorValues() {
+=======
+  public void onModuleLoad() {
+    boolean needToSave = false;
+
+    if (updateSModelReferences()) {
+      needToSave = true;
+    }
+
+    if (updateModuleReferences()) {
+      needToSave = true;
+    }
+
+    if (isPackaged()) {
+      updatePackagedDescriptorClasspath();
+    } else {
+      Set<StubModelsEntry> visited = new HashSet<StubModelsEntry>();
+      List<StubModelsEntry> remove = new ArrayList<StubModelsEntry>();
+      for (StubModelsEntry e : getModuleDescriptor().getStubModelEntries()) {
+        if (visited.contains(e)) {
+          remove.add(e);
+          needToSave = true;
+        }
+
+        visited.add(e);
+      }
+
+      getModuleDescriptor().getStubModelEntries().removeAll(remove);
+    }
+
+    if (needToSave && !isPackaged()) {
+      save();
+    }
+  }
+
+  public boolean isPackaged() {
+    if (getDescriptorFile() == null) {
+      return false;
+    }
+    return getDescriptorFile().isReadOnly();
+  }
+
+  public List<String> validate() {
+    List<String> errors = new ArrayList<String>();
+    for (Dependency dep : getDependOn()) {
+      ModuleReference moduleRef = dep.getModuleRef();
+      if (MPSModuleRepository.getInstance().getModule(moduleRef) == null) {
+        errors.add("Can't find dependency: " + moduleRef.getModuleFqName());
+      }
+    }
+    for (ModuleReference reference : getUsedLanguagesReferences()) {
+      if (MPSModuleRepository.getInstance().getLanguage(reference) == null) {
+        errors.add("Can't find used language: " + reference.getModuleFqName());
+      }
+    }
+    for (ModuleReference reference : getUsedDevkitReferences()) {
+      if (MPSModuleRepository.getInstance().getModule(reference) == null) {
+        errors.add("Can't find used devkit: " + reference.getModuleFqName());
+      }
+    }
+    if (getModuleDescriptor() != null) {
+      if (getModuleDescriptor().getSourcePaths() != null && !isPackaged()) {
+        for (String sourcePath : getModuleDescriptor().getSourcePaths()) {
+          VirtualFile vfile = VFileSystem.getFile(sourcePath);
+          if (vfile == null || !vfile.exists()) {
+            errors.add("Can't find source path: " + sourcePath);
+          }
+        }
+      }
+      if (getModuleDescriptor().getStubModelEntries() != null) {
+        for (StubModelsEntry stubModelsEntry : getModuleDescriptor().getStubModelEntries()) {
+          VirtualFile vfile = VFileSystem.getFile(stubModelsEntry.getPath());
+          if (vfile == null || !vfile.exists()) {
+            errors.add("Can't find library: " + stubModelsEntry.getPath());
+          }
+        }
+      }
+    }
+    return errors;
+  }
+
+  public final boolean isValid() {
+    return validate().isEmpty();
+  }
+
+  public void addDependency(@NotNull ModuleReference moduleRef, boolean reexport) {
+    ModuleDescriptor descriptor = getModuleDescriptor();
+    Dependency dep = new Dependency();
+    dep.setModuleRef(moduleRef);
+    dep.setReexport(reexport);
+    descriptor.getDependencies().add(dep);
+    setModuleDescriptor(descriptor, true);
+    save();
+  }
+
+  public void addUsedLanguage(ModuleReference langRef) {
+    ModuleDescriptor descriptor = getModuleDescriptor();
+    descriptor.getUsedLanguages().add(langRef);
+    setModuleDescriptor(descriptor, true);
+    save();
+  }
+
+  public void addUsedDevkit(ModuleReference devkitRef) {
+    ModuleDescriptor descriptor = getModuleDescriptor();
+    descriptor.getUsedDevkits().add(devkitRef);
+    setModuleDescriptor(descriptor, true);
+    save();
+  }
+
+  public <T extends IModule> Set<T> getAllDependOnModules(Class<T> cls) {
+    Set<T> modules = new DependencyCollector(this, cls).collect();
+
+    // add bootstrap languages
+    if (Language.class.isAssignableFrom(cls)) {
+      Set<Language> languages = LibraryManager.getInstance().getBootstrapModules(Language.class);
+      for (Language language : languages) {
+        //noinspection SuspiciousMethodCalls
+        if (!modules.contains(language)) {
+          modules.add((T) language);
+          modules.addAll(new DependencyCollector(this, cls).collect());
+        }
+      }
+    }
+
+    return modules;
+  }
+
+  public List<SModelDescriptor> getOwnModelDescriptors() {
+    return SModelRepository.getInstance().getModelDescriptors(this);
+  }
+
+  public IFile getClassesGen() {
+    IFile classesDir = getClassesDirParent();
+    if (classesDir == null) return null;
+    if (isPackaged()) return classesDir;
+
+    return classesDir.child("classes_gen");
+  }
+
+  private IFile getClassesDirParent() {
+    if (isPackaged()) {
+      String filename = getBundleHome().getAbsolutePath() + "!";
+      VirtualFile file = VFileSystem.getFile(filename);
+      if (file == null) return null;
+      return VFileSystem.toIFile(file);
+    } else {
+      if (getDescriptorFile() == null) return null;
+      return getDescriptorFile().getParent();
+    }
+  }
+
+  private List<ModelRoot> getModelRoots() {
+    ModuleDescriptor descriptor = getModuleDescriptor();
+    if (descriptor != null) return descriptor.getModelRoots();
+    return new ArrayList<ModelRoot>();
+  }
+
+  public List<SModelRoot> getSModelRoots() {
+    return Collections.unmodifiableList(mySModelRoots);
+  }
+
+  public SModelRoot findModelRoot(String path) {
+    for (SModelRoot root : mySModelRoots) {
+      if (path.equals(root.getPath())) return root;
+    }
+    return null;
+  }
+
+  public List<Dependency> getDependOn() {
+    List<Dependency> result = new ArrayList<Dependency>();
+>>>>>>> origin/MPS1.5
     ModuleDescriptor descriptor = getModuleDescriptor();
     if (descriptor != null) {
       final String legacyValue = ProjectPathUtil._getGeneratorOutputPathPrim(descriptor);

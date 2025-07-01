@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DependencyValidationManager">
+    <option name="SKIP_IMPORT_STATEMENTS" value="false" />
+  </component>
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="FileProjectViewPane">
+    <subPane />
+  </component>
+  <component name="MPSMessagesViewTool">
+    <option name="dialogState">
+      <MyState>
+        <option name="anonymous" value="true" />
+        <option name="password" value="" />
+        <option name="username" value="" />
+      </MyState>
+    </option>
+    <option name="errors" value="true" />
+    <option name="info" value="true" />
+    <option name="warnings" value="true" />
+  </component>
+  <component name="MPSProject">
+    <projectSolutions>
+      <solutionPath path="${mps_home}/platform/bash/solutions/jetbrains.mps.bash.sandbox/jetbrains.mps.bash.sandbox.msd" />
+      <solutionPath path="${project}/solutions/jetbrains.mps.buildlangauge.mpsautobuild/jetbrains.mps.buildlangauge.mpsautobuild.msd" folder="customMPS" />
+    </projectSolutions>
+    <projectLanguages>
+      <languagePath path="${mps_home}/platform/bash/languages/bash/bash.mpl" />
+      <languagePath path="${project}/languages/buildlanguage/buildlanguage.mpl" />
+      <languagePath path="${project}/languages/custommps/custommps.mpl" folder="customMPS" />
+      <languagePath path="${project}/languages/custommpsInternal/custommpsInternal.mpl" folder="customMPS" />
+      <languagePath path="${project}/languages/dependency/dependency.mpl" folder="packaging" />
+      <languagePath path="${project}/languages/distrib/distrib.mpl" folder="packaging" />
+      <languagePath path="${project}/languages/generictasks/generictasks.mpl" />
+      <languagePath path="${project}/languages/packaging/packaging.mpl" folder="packaging" />
+      <languagePath path="${project}/languages/property/property.mpl" />
+    </projectLanguages>
+    <projectDevkits />
+    <genConfs>
+      <genConfModule name="generate buildLanguage" moduleRef="0b608d44-1308-418d-8715-22d040c3b3cc(jetbrains.mps.buildlanguage)" />
+      <genConfModule name="generate custommps" moduleRef="a79f53b6-9aaa-48eb-9fbb-aaec80a6da9a(jetbrains.mps.build.custommps)" />
+      <genConfModule name="generate dependency language" moduleRef="500e32a4-ab9e-46a4-ae29-127ae883d208(jetbrains.mps.build.dependency)" />
+      <genConfModule name="generate distrib" moduleRef="02824ec0-c6a4-4517-a484-12d85172bbaa(jetbrains.mps.build.distrib)" />
+      <genConfModule name="generate generictasks" moduleRef="jetbrains.mps.build.generictasks" />
+      <genConfModule name="generate packaging language" moduleRef="4e6c5313-7662-4c44-9bc7-b488cec17508(jetbrains.mps.build.packaging)" />
+      <genConfModule name="generate property language" moduleRef="dd61a7d7-8e1b-45a1-9aa3-8585ec2b60fc(jetbrains.mps.build.property)" />
+    </genConfs>
+  </component>
+  <component name="ProjectDetails">
+    <option name="projectName" value="BuildLanguage" />
+  </component>
+  <component name="ProjectModuleManager">
+    <modules />
+  </component>
+  <component name="ProjectRootManager" version="2" />
+  <component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="MPS.mpsbuild.external" type="CustomMPSConfigurationType" factoryName="Custom MPS Build Script">
+      <MyState>
+        <option name="myJavaRunParameters">
+          <ConfigRunParameters>
+            <option name="VMParameters" value="-Xmx256m" />
+            <option name="alternativeJRE" value="" />
+            <option name="make" value="false" />
+            <option name="programParameters" value="-Dbuild.number=1 -Dversion=EAP -Dbuild.vcs.number=1 -Dteamcity.buildConfName=Local" />
+            <option name="useAlternativeJRE" value="false" />
+            <option name="workingDirectory" value="" />
+          </ConfigRunParameters>
+        </option>
+        <option name="configurationId" value="1237299779834" />
+        <option name="nodeId" value="1237299779833" />
+        <option name="modelId" value="r:972ae1d5-2beb-44b3-a739-a548d8eb423d(jetbrains.mps.build.mpsautobuild)" />
+      </MyState>
+      <RunnerSettings RunnerId="Default Runner" />
+      <ConfigurationWrapper RunnerId="Default Runner" />
+      <method />
+    </configuration>
+  </component>
+  <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$APPLICATION_HOME_DIR$">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchMap">
+                <map>
+                  <entry key="https://svn.jetbrains.org/mps/branches">
+                    <value>
+                      <list />
+                    </value>
+                  </entry>
+                  <entry key="https://svn.jetbrains.org/mps/tags">
+                    <value>
+                      <list />
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://svn.jetbrains.org/mps/branches" />
+                  <option value="https://svn.jetbrains.org/mps/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://svn.jetbrains.org/mps/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchMap">
+                <map>
+                  <entry key="https://svn.jetbrains.org/mps/branches">
+                    <value>
+                      <list />
+                    </value>
+                  </entry>
+                  <entry key="https://svn.jetbrains.org/mps/tags">
+                    <value>
+                      <list />
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://svn.jetbrains.org/mps/branches" />
+                  <option value="https://svn.jetbrains.org/mps/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://svn.jetbrains.org/mps/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="mySupportsUserInfoFilter" value="true" />
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="" />
+    <mapping directory="$APPLICATION_HOME_DIR$" vcs="Git" />
+  </component>
+</project>
+
