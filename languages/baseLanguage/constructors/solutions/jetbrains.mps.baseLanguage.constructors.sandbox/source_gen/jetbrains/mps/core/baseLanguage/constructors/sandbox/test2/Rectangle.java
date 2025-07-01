@@ -8,9 +8,17 @@ import java.awt.geom.Rectangle2D;
 public class Rectangle {
   public Rectangle() {
   }
+<<<<<<< HEAD:languages/baseLanguage/constructors/solutions/jetbrains.mps.baseLanguage.constructors.sandbox/source_gen/jetbrains/mps/core/baseLanguage/constructors/sandbox/test2/Rectangle.java
   public static Point2D Point(double x, double y) {
     return new Point2D.Double(x, y);
   }
+=======
+
+  public static Point2D Point(double x, double y) {
+    return new Point2D.Double(x, y);
+  }
+
+>>>>>>> origin/MPS1.5:core/baseLanguage/constructors/solutions/jetbrains.mps.baseLanguage.constructors.sandbox/source_gen/jetbrains/mps/core/baseLanguage/constructors/sandbox/test2/Rectangle.java
   public static Rectangle2D Rectangle(Point2D topleft, Point2D bottomright) {
     double x = topleft.getX();
     double y = topleft.getY();

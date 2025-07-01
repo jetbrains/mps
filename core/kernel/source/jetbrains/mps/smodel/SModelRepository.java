@@ -90,6 +90,7 @@ public class SModelRepository {
     }
   }
 
+<<<<<<< HEAD
   private List<EditableSModel> getModelsToSave() {
     var modelsToSave = new ArrayList<EditableSModel>();
     for (SModel md : myAllModels) {
@@ -97,6 +98,105 @@ public class SModelRepository {
         EditableSModel emd = ((EditableSModel) md);
         if (emd.isChanged() && !emd.isReadOnly()) {
           modelsToSave.add(emd);
+=======
+  public void removeModelDescriptor(@NotNull SModelDescriptor modelDescriptor) {
+    ModelAccess.assertLegalWrite();
+
+    fireBeforeModelRemoved(modelDescriptor);
+
+    myModelsToOwners.clearFirst(modelDescriptor);
+
+    myModelDescriptors.remove(modelDescriptor);
+    boolean result = removeModelFromFileCache(modelDescriptor);
+    LOG.assertLog(result, "model " + modelDescriptor + " do not have a path in file cache");
+    if (modelDescriptor.getSModelReference().getSModelId() != null) {
+      myIdToModelDescriptorMap.remove(modelDescriptor.getSModelReference().getSModelId());
+    }
+    myFqNameToModelDescriptorMap.remove(modelDescriptor.getSModelReference().getSModelFqName());
+
+    myChangedModels.remove(modelDescriptor);
+    myModelsWithNoOwners.remove(modelDescriptor);
+
+    removeListeners(modelDescriptor);
+    fireModelRemoved(modelDescriptor);
+    modelDescriptor.dispose();
+  }
+
+  private void addListeners(SModelDescriptor modelDescriptor) {
+    modelDescriptor.addModelListener(myModelsListener);
+  }
+
+  private void removeListeners(SModelDescriptor modelDescriptor) {
+    modelDescriptor.removeModelListener(myModelsListener);
+  }
+
+  public void removeUnusedDescriptors() {
+    ModelAccess.assertLegalWrite();
+
+    List<SModelDescriptor> descriptorsToRemove = new ArrayList<SModelDescriptor>();
+    for (SModelDescriptor descriptor : myModelsWithNoOwners) {
+      Set<ModelOwner> modelOwners = myModelsToOwners.getByFirst(descriptor);
+      if (modelOwners == null || modelOwners.isEmpty()) {
+        descriptorsToRemove.add(descriptor);
+      } else {
+        myModelsWithNoOwners.remove(descriptor);
+      }
+    }
+
+    if (descriptorsToRemove.size() > 0) {
+      for (SModelDescriptor descriptor : descriptorsToRemove) {
+        removeModelDescriptor(descriptor);
+      }
+    }
+  }
+
+  public SModelDescriptor getModelDescriptor(SModel model) {
+    return getModelDescriptor(model.getSModelReference());
+  }
+
+  public SModelDescriptor getModelDescriptor(SModelReference modelReference) {
+    if (modelReference == null) return null;
+    synchronized (myModelsLock) {
+      if (modelReference.getSModelId() != null) {
+        return myIdToModelDescriptorMap.get(modelReference.getSModelId());
+      }
+      return myFqNameToModelDescriptorMap.get(modelReference.getSModelFqName());
+    }
+  }
+
+  public SModelDescriptor getModelDescriptor(SModelFqName modelFqName) {
+    synchronized (myModelsLock) {
+      return myFqNameToModelDescriptorMap.get(modelFqName);
+    }
+  }
+
+  public SModelDescriptor getModelDescriptor(SModelId modelId) {
+    synchronized (myModelsLock) {
+      return myIdToModelDescriptorMap.get(modelId);
+    }
+  }
+
+  public SModelDescriptor getModelDescriptor(SModelReference modelReference, ModelOwner owner) {
+    synchronized (myModelsLock) {
+      SModelDescriptor descriptor = getModelDescriptor(modelReference);
+      if (descriptor == null) {
+        return null;
+      }
+      Set<ModelOwner> modelOwners = myModelsToOwners.getByFirst(descriptor);
+      if (modelOwners.contains(owner)) {
+        return descriptor;
+      }
+      return null;
+    }
+  }
+
+  public List<SModelDescriptor> getModelDescriptors(String modelName, ModelOwner owner) {
+    synchronized (myModelsLock) {
+      List<SModelDescriptor> result = new ArrayList<SModelDescriptor>();
+      for (SModelDescriptor descriptor : myModelsToOwners.getBySecond(owner)) {
+        if (modelName.equals(descriptor.getLongName())) {
+          result.add(descriptor);
+>>>>>>> origin/MPS1.5
         }
       }
     }

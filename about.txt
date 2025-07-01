@@ -178,5 +178,9 @@ Joe Walnes
 http://xstream.codehaus.org/
 Copyright (c) 2003-2005. All rights reserved.
 
+XMLUnit
+http://xmlunit.sourceforge.net/
+Copyright (c) 2001-2009, Jeff Martin, Tim Bacon
+
 You can find licenses for these software
 in the %MPS_HOME%/license directory

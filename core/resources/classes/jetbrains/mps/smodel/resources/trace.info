@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
+  <root nodeRef="r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/1290126658903852188">
+    <file name="DResource.java">
+      <node id="1290126658903852188" at="11,22,12,12" concept="9" />
+      <node id="1290126658903852188" at="14,44,15,17" concept="9" />
+      <node id="1290126658903852193" at="17,57,18,27" concept="7" />
+      <node id="1290126658903852193" at="20,35,21,22" concept="7" />
+      <node id="2708838034905939901" at="23,28,24,16" concept="7" />
+      <node id="1290126658903852188" at="11,0,14,0" concept="0" trace="DResource#()V" />
+      <node id="1290126658903852188" at="14,0,17,0" concept="0" trace="DResource#(Ljava/lang/Iterable;)V" />
+      <node id="1290126658903852193" at="17,0,20,0" concept="5" trace="delta#(Ljava/lang/Iterable;)Ljava/lang/Iterable;" />
+      <node id="1290126658903852193" at="20,0,23,0" concept="5" trace="delta#()Ljava/lang/Iterable;" />
+      <node id="2708838034905939897" at="23,0,26,0" concept="5" trace="describe#()Ljava/lang/String;" />
+      <scope id="1290126658903852188" at="11,22,12,12" />
+      <scope id="1290126658903852188" at="14,44,15,17" />
+      <scope id="1290126658903852193" at="17,57,18,27" />
+      <scope id="1290126658903852193" at="20,35,21,22" />
+      <scope id="2708838034905939900" at="23,28,24,16" />
+      <scope id="1290126658903852188" at="11,0,14,0" />
+      <scope id="1290126658903852188" at="14,0,17,0">
+        <var name="delta" id="1290126658903852193" />
+      </scope>
+      <scope id="1290126658903852193" at="17,0,20,0">
+        <var name="value" id="1290126658903852193" />
+      </scope>
+      <scope id="1290126658903852193" at="20,0,23,0" />
+      <scope id="2708838034905939897" at="23,0,26,0" />
+      <unit id="1290126658903852188" at="9,0,27,0" name="jetbrains.mps.smodel.resources.DResource" />
+    </file>
+  </root>
+  <root nodeRef="r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/1390934629233975240">
+    <file name="IDeltaResource.java">
+      <node id="1390934629233975246" at="12,0,13,0" concept="5" trace="delta#()Ljava/lang/Iterable;" />
+      <scope id="1390934629233975246" at="12,0,13,0" />
+      <unit id="1390934629233975240" at="9,0,14,0" name="jetbrains.mps.smodel.resources.IDeltaResource" />
+    </file>
+  </root>
+  <root nodeRef="r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/2257725414731981663">
+    <file name="TResource.java">
+      <node id="2257725414731981663" at="17,0,18,0" concept="2" trace="tuple" />
+      <node id="2257725414731981663" at="19,22,20,12" concept="9" />
+      <node id="2257725414731981663" at="20,12,21,53" concept="1" />
+      <node id="2257725414731981663" at="23,84,24,17" concept="9" />
+      <node id="2257725414731981663" at="24,17,25,74" concept="1" />
+      <node id="2257725414731981664" at="27,40,28,26" concept="7" />
+      <node id="4693363489975029716" at="30,47,31,26" concept="7" />
+      <node id="2257725414731981664" at="33,27,34,21" concept="7" />
+      <node id="4693363489975029716" at="36,35,37,21" concept="7" />
+      <node id="2257725414731981664" at="39,37,40,28" concept="7" />
+      <node id="4693363489975029716" at="42,44,43,37" concept="7" />
+      <node id="2257725414731981664" at="45,23,46,22" concept="7" />
+      <node id="4693363489975029716" at="48,22,49,22" concept="7" />
+      <node id="2257725414731981664" at="51,117,52,23" concept="1" />
+      <node id="2257725414731981664" at="52,23,53,24" concept="1" />
+      <node id="2257725414731981664" at="53,24,54,16" concept="7" />
+      <node id="4693363489975029716" at="56,143,57,23" concept="1" />
+      <node id="2257725414731981664" at="57,23,58,24" concept="1" />
+      <node id="4693363489975029716" at="58,24,59,24" concept="1" />
+      <node id="4693363489975029716" at="59,24,60,16" concept="7" />
+      <node id="2708838034905939907" at="62,28,63,16" concept="7" />
+      <node id="834312300517864805" at="65,40,66,90" concept="7" />
+      <node id="2257725414731981664" at="27,0,30,0" concept="5" trace="module#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="4693363489975029716" at="30,0,33,0" concept="5" trace="modelDescriptor#(Lorg/jetbrains/mps/openapi/model/SModel;)Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="2257725414731981664" at="33,0,36,0" concept="5" trace="module#()Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="4693363489975029716" at="36,0,39,0" concept="5" trace="modelDescriptor#()Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="2257725414731981664" at="39,0,42,0" concept="5" trace="_1#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="4693363489975029716" at="42,0,45,0" concept="5" trace="_2#(Lorg/jetbrains/mps/openapi/model/SModel;)Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="2257725414731981664" at="45,0,48,0" concept="5" trace="_1#()Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="4693363489975029716" at="48,0,51,0" concept="5" trace="_2#()Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="2708838034905939903" at="62,0,65,0" concept="5" trace="describe#()Ljava/lang/String;" />
+      <node id="834312300517864801" at="65,0,68,0" concept="5" trace="getProperties#()Ljetbrains/mps/make/resources/IPropertiesIO;" />
+      <node id="2257725414731981663" at="19,0,23,0" concept="0" trace="TResource#()V" />
+      <node id="2257725414731981663" at="23,0,27,0" concept="0" trace="TResource#(Ljava/lang/Iterable;Lorg/jetbrains/mps/openapi/module/SModule;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="2257725414731981664" at="51,0,56,0" concept="5" trace="assign#(Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
+      <node id="4693363489975029716" at="56,0,62,0" concept="5" trace="assign#(Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_3;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_3;" />
+      <scope id="2257725414731981664" at="27,40,28,26" />
+      <scope id="4693363489975029716" at="30,47,31,26" />
+      <scope id="2257725414731981664" at="33,27,34,21" />
+      <scope id="4693363489975029716" at="36,35,37,21" />
+      <scope id="2257725414731981664" at="39,37,40,28" />
+      <scope id="4693363489975029716" at="42,44,43,37" />
+      <scope id="2257725414731981664" at="45,23,46,22" />
+      <scope id="4693363489975029716" at="48,22,49,22" />
+      <scope id="2708838034905939906" at="62,28,63,16" />
+      <scope id="834312300517864804" at="65,40,66,90" />
+      <scope id="2257725414731981663" at="19,22,21,53" />
+      <scope id="2257725414731981663" at="23,84,25,74" />
+      <scope id="2257725414731981664" at="27,0,30,0">
+        <var name="value" id="2257725414731981664" />
+      </scope>
+      <scope id="4693363489975029716" at="30,0,33,0">
+        <var name="value" id="4693363489975029716" />
+      </scope>
+      <scope id="2257725414731981664" at="33,0,36,0" />
+      <scope id="4693363489975029716" at="36,0,39,0" />
+      <scope id="2257725414731981664" at="39,0,42,0">
+        <var name="module" id="2257725414731981664" />
+      </scope>
+      <scope id="4693363489975029716" at="42,0,45,0">
+        <var name="modelDescriptor" id="4693363489975029716" />
+      </scope>
+      <scope id="2257725414731981664" at="45,0,48,0" />
+      <scope id="4693363489975029716" at="48,0,51,0" />
+      <scope id="2257725414731981664" at="51,117,54,16" />
+      <scope id="2708838034905939903" at="62,0,65,0" />
+      <scope id="834312300517864801" at="65,0,68,0" />
+      <scope id="2257725414731981663" at="19,0,23,0" />
+      <scope id="2257725414731981663" at="23,0,27,0">
+        <var name="delta" id="1290126658903852193" />
+        <var name="modelDescriptor" id="4693363489975029716" />
+        <var name="module" id="2257725414731981664" />
+      </scope>
+      <scope id="4693363489975029716" at="56,143,60,16" />
+      <scope id="2257725414731981664" at="51,0,56,0">
+        <var name="from" id="2257725414731981664" />
+      </scope>
+      <scope id="4693363489975029716" at="56,0,62,0">
+        <var name="from" id="4693363489975029716" />
+      </scope>
+      <unit id="2257725414731981663" at="15,0,69,0" name="jetbrains.mps.smodel.resources.TResource" />
+    </file>
+  </root>
+  <root nodeRef="r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/2257725414731981668">
+    <file name="GResource.java">
+      <node id="2257725414731981668" at="13,22,14,12" concept="9" />
+      <node id="2257725414731981668" at="16,108,17,49" concept="9" />
+      <node id="2257725414731981669" at="19,40,20,27" concept="7" />
+      <node id="2257725414731981671" at="22,37,23,27" concept="7" />
+      <node id="2257725414731981673" at="25,66,26,27" concept="7" />
+      <node id="2257725414731981676" at="28,58,29,27" concept="7" />
+      <node id="2257725414731981669" at="31,27,32,22" concept="7" />
+      <node id="2257725414731981671" at="34,25,35,22" concept="7" />
+      <node id="2257725414731981673" at="37,44,38,22" concept="7" />
+      <node id="2257725414731981676" at="40,36,41,22" concept="7" />
+      <node id="2708838034905939913" at="43,28,44,16" concept="7" />
+      <node id="2257725414731981668" at="13,0,16,0" concept="0" trace="GResource#()V" />
+      <node id="2257725414731981668" at="16,0,19,0" concept="0" trace="GResource#(Lorg/jetbrains/mps/openapi/module/SModule;Lorg/jetbrains/mps/openapi/model/SModel;Ljava/lang/Iterable;Ljetbrains/mps/generator/GenerationStatus;)V" />
+      <node id="2257725414731981669" at="19,0,22,0" concept="5" trace="module#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="2257725414731981671" at="22,0,25,0" concept="5" trace="model#(Lorg/jetbrains/mps/openapi/model/SModel;)Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="2257725414731981673" at="25,0,28,0" concept="5" trace="retainedModels#(Ljava/lang/Iterable;)Ljava/lang/Iterable;" />
+      <node id="2257725414731981676" at="28,0,31,0" concept="5" trace="status#(Ljetbrains/mps/generator/GenerationStatus;)Ljetbrains/mps/generator/GenerationStatus;" />
+      <node id="2257725414731981669" at="31,0,34,0" concept="5" trace="module#()Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="2257725414731981671" at="34,0,37,0" concept="5" trace="model#()Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="2257725414731981673" at="37,0,40,0" concept="5" trace="retainedModels#()Ljava/lang/Iterable;" />
+      <node id="2257725414731981676" at="40,0,43,0" concept="5" trace="status#()Ljetbrains/mps/generator/GenerationStatus;" />
+      <node id="2708838034905939909" at="43,0,46,0" concept="5" trace="describe#()Ljava/lang/String;" />
+      <scope id="2257725414731981668" at="13,22,14,12" />
+      <scope id="2257725414731981668" at="16,108,17,49" />
+      <scope id="2257725414731981669" at="19,40,20,27" />
+      <scope id="2257725414731981671" at="22,37,23,27" />
+      <scope id="2257725414731981673" at="25,66,26,27" />
+      <scope id="2257725414731981676" at="28,58,29,27" />
+      <scope id="2257725414731981669" at="31,27,32,22" />
+      <scope id="2257725414731981671" at="34,25,35,22" />
+      <scope id="2257725414731981673" at="37,44,38,22" />
+      <scope id="2257725414731981676" at="40,36,41,22" />
+      <scope id="2708838034905939912" at="43,28,44,16" />
+      <scope id="2257725414731981668" at="13,0,16,0" />
+      <scope id="2257725414731981668" at="16,0,19,0">
+        <var name="model" id="2257725414731981671" />
+        <var name="module" id="2257725414731981669" />
+        <var name="retainedModels" id="2257725414731981673" />
+        <var name="status" id="2257725414731981676" />
+      </scope>
+      <scope id="2257725414731981669" at="19,0,22,0">
+        <var name="value" id="2257725414731981669" />
+      </scope>
+      <scope id="2257725414731981671" at="22,0,25,0">
+        <var name="value" id="2257725414731981671" />
+      </scope>
+      <scope id="2257725414731981673" at="25,0,28,0">
+        <var name="value" id="2257725414731981673" />
+      </scope>
+      <scope id="2257725414731981676" at="28,0,31,0">
+        <var name="value" id="2257725414731981676" />
+      </scope>
+      <scope id="2257725414731981669" at="31,0,34,0" />
+      <scope id="2257725414731981671" at="34,0,37,0" />
+      <scope id="2257725414731981673" at="37,0,40,0" />
+      <scope id="2257725414731981676" at="40,0,43,0" />
+      <scope id="2708838034905939909" at="43,0,46,0" />
+      <unit id="2257725414731981668" at="11,0,47,0" name="jetbrains.mps.smodel.resources.GResource" />
+    </file>
+  </root>
+  <root nodeRef="r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/2257725414731981680">
+    <file name="MResource.java">
+      <node id="2257725414731981680" at="16,22,17,12" concept="9" />
+      <node id="2257725414731981680" at="19,61,20,26" concept="9" />
+      <node id="2257725414731981681" at="22,40,23,27" concept="7" />
+      <node id="2257725414731981683" at="25,58,26,27" concept="7" />
+      <node id="2257725414731981681" at="28,27,29,22" concept="7" />
+      <node id="2257725414731981683" at="31,36,32,22" concept="7" />
+      <node id="6461635923454395984" at="34,28,35,89" concept="7" />
+      <node id="2418544542776709223" at="37,40,38,90" concept="7" />
+      <node id="2257725414731981680" at="16,0,19,0" concept="0" trace="MResource#()V" />
+      <node id="2257725414731981680" at="19,0,22,0" concept="0" trace="MResource#(Lorg/jetbrains/mps/openapi/module/SModule;Ljava/lang/Iterable;)V" />
+      <node id="2257725414731981681" at="22,0,25,0" concept="5" trace="module#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="2257725414731981683" at="25,0,28,0" concept="5" trace="models#(Ljava/lang/Iterable;)Ljava/lang/Iterable;" />
+      <node id="2257725414731981681" at="28,0,31,0" concept="5" trace="module#()Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="2257725414731981683" at="31,0,34,0" concept="5" trace="models#()Ljava/lang/Iterable;" />
+      <node id="2708838034905920968" at="34,0,37,0" concept="5" trace="describe#()Ljava/lang/String;" />
+      <node id="5555789605584709644" at="37,0,40,0" concept="5" trace="getProperties#()Ljetbrains/mps/make/resources/IPropertiesIO;" />
+      <scope id="2257725414731981680" at="16,22,17,12" />
+      <scope id="2257725414731981680" at="19,61,20,26" />
+      <scope id="2257725414731981681" at="22,40,23,27" />
+      <scope id="2257725414731981683" at="25,58,26,27" />
+      <scope id="2257725414731981681" at="28,27,29,22" />
+      <scope id="2257725414731981683" at="31,36,32,22" />
+      <scope id="2708838034905920971" at="34,28,35,89" />
+      <scope id="5555789605584709647" at="37,40,38,90" />
+      <scope id="2257725414731981680" at="16,0,19,0" />
+      <scope id="2257725414731981680" at="19,0,22,0">
+        <var name="models" id="2257725414731981683" />
+        <var name="module" id="2257725414731981681" />
+      </scope>
+      <scope id="2257725414731981681" at="22,0,25,0">
+        <var name="value" id="2257725414731981681" />
+      </scope>
+      <scope id="2257725414731981683" at="25,0,28,0">
+        <var name="value" id="2257725414731981683" />
+      </scope>
+      <scope id="2257725414731981681" at="28,0,31,0" />
+      <scope id="2257725414731981683" at="31,0,34,0" />
+      <scope id="2708838034905920968" at="34,0,37,0" />
+      <scope id="5555789605584709644" at="37,0,40,0" />
+      <unit id="2257725414731981680" at="14,0,41,0" name="jetbrains.mps.smodel.resources.MResource" />
+    </file>
+  </root>
+  <root nodeRef="r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/302106367900636277">
+    <file name="MakeKeys.java">
+      <node id="302106367900662014" at="12,0,13,0" concept="8" trace="CLEAN_MAKE" />
+      <node id="302106367900657676" at="16,42,17,31" concept="7" />
+      <node id="302106367900673091" at="20,27,21,47" concept="7" />
+      <node id="302106367900680122" at="24,39,25,53" concept="7" />
+      <node id="302106367900641026" at="15,0,19,0" concept="5" trace="valueOf#(Ljava/lang/Object;)Ljava/lang/Boolean;" />
+      <node id="302106367900644314" at="19,0,23,0" concept="5" trace="hashCode#()I" />
+      <node id="302106367900644323" at="23,0,27,0" concept="5" trace="equals#(Ljava/lang/Object;)Z" />
+      <scope id="302106367900641033" at="16,42,17,31" />
+      <scope id="302106367900644319" at="20,27,21,47" />
+      <scope id="302106367900644329" at="24,39,25,53" />
+      <scope id="302106367900641026" at="15,0,19,0">
+        <var name="value" id="302106367900641027" />
+      </scope>
+      <scope id="302106367900644314" at="19,0,23,0" />
+      <scope id="302106367900644323" at="23,0,27,0">
+        <var name="obj" id="302106367900644327" />
+      </scope>
+      <unit id="302106367900639421" at="14,0,28,0" name="jetbrains.mps.smodel.resources.MakeKeys$CleanMake" />
+      <unit id="302106367900636277" at="9,0,30,0" name="jetbrains.mps.smodel.resources.MakeKeys" />
+    </file>
+  </root>
+  <root nodeRef="r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/5555789605584709649">
+    <file name="FlatFilePropertiesIO.java">
+      <node id="5555789605584709836" at="17,0,18,0" concept="2" trace="descFile" />
+      <node id="5555789605584709839" at="18,47,19,29" concept="1" />
+      <node id="5555789605584709845" at="22,77,23,46" concept="11" />
+      <node id="775938660271063178" at="27,27,28,18" concept="7" />
+      <node id="5555789605584709870" at="29,5,30,37" concept="6" />
+      <node id="5555789605584709885" at="30,37,31,48" concept="6" />
+      <node id="2418544542776708229" at="32,25,33,18" concept="7" />
+      <node id="2418544542776708202" at="34,5,35,28" concept="6" />
+      <node id="2034046503361593420" at="35,28,36,26" concept="6" />
+      <node id="2034046503361593426" at="37,9,38,32" concept="1" />
+      <node id="2034046503361593432" at="38,32,39,31" concept="1" />
+      <node id="2034046503361593437" at="39,31,40,21" concept="1" />
+      <node id="6923073241544471095" at="42,15,43,33" concept="1" />
+      <node id="2418544542776708222" at="44,5,45,79" concept="7" />
+      <node id="775938660271063182" at="48,26,49,58" concept="7" />
+      <node id="5555789605584709651" at="18,0,21,0" concept="0" trace="FlatFilePropertiesIO#(Ljetbrains/mps/vfs/IFile;)V" />
+      <node id="775938660270989703" at="26,66,29,5" concept="4" />
+      <node id="5555789605584709893" at="31,48,34,5" concept="4" />
+      <node id="5555789605584709656" at="21,0,25,0" concept="5" trace="writeProperties#(Ljava/util/Map;)V" />
+      <node id="5555789605584709672" at="47,0,51,0" concept="5" trace="getKey#()Ljava/lang/Object;" />
+      <node id="2034046503361593424" at="36,26,44,5" concept="12" />
+      <node id="5555789605584709665" at="25,0,47,0" concept="5" trace="readProperties#()Ljava/util/Map;" />
+      <scope id="2034046503361593445" at="41,29,41,29" />
+      <scope id="5555789605584709654" at="18,47,19,29" />
+      <scope id="5555789605584709664" at="22,77,23,46" />
+      <scope id="775938660270989704" at="27,27,28,18" />
+      <scope id="2418544542776708227" at="32,25,33,18" />
+      <scope id="2034046503361593442" at="41,5,42,5">
+        <var name="e" id="2034046503361593443" />
+      </scope>
+      <scope id="2034046503361593446" at="42,15,43,33" />
+      <scope id="5555789605584709675" at="48,26,49,58" />
+      <scope id="5555789605584709651" at="18,0,21,0">
+        <var name="descFile" id="5555789605584709678" />
+      </scope>
+      <scope id="2034046503361593425" at="37,9,40,21" />
+      <scope id="5555789605584709656" at="21,0,25,0">
+        <var name="store" id="5555789605584709657" />
+      </scope>
+      <scope id="5555789605584709672" at="47,0,51,0" />
+      <scope id="5555789605584709671" at="26,66,45,79">
+        <var name="dir" id="5555789605584709871" />
+        <var name="is" id="2034046503361593421" />
+        <var name="pf" id="5555789605584709886" />
+        <var name="props" id="2418544542776708203" />
+      </scope>
+      <scope id="5555789605584709665" at="25,0,47,0" />
+      <unit id="5555789605584709649" at="15,0,52,0" name="jetbrains.mps.smodel.resources.FlatFilePropertiesIO" />
+    </file>
+  </root>
+  <root nodeRef="r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/7219626660275504879">
+    <file name="ModelsToResources.java">
+      <node id="3608835296802635819" at="22,0,23,0" concept="2" trace="models" />
+      <node id="3559545331493902678" at="23,0,24,0" concept="2" trace="myCanGenerateCondition" />
+      <node id="5238501567229865600" at="24,0,25,0" concept="2" trace="myCleanMake" />
+      <node id="3244099164548299213" at="30,53,31,24" concept="10" />
+      <node id="3244099164548277221" at="37,72,38,25" concept="1" />
+      <node id="3244099164548277227" at="38,25,39,77" concept="1" />
+      <node id="3244099164548277237" at="39,77,40,28" concept="1" />
+      <node id="3559545331493995689" at="46,124,47,39" concept="1" />
+      <node id="3559545331493997871" at="47,39,48,16" concept="7" />
+      <node id="3608835296802635832" at="51,42,52,99" concept="6" />
+      <node id="3608835296802635773" at="52,99,53,94" concept="1" />
+      <node id="3608835296802635815" at="53,94,54,33" concept="7" />
+      <node id="8216356275318962040" at="57,70,58,105" concept="6" />
+      <node id="8216356275318991628" at="59,31,60,41" concept="6" />
+      <node id="8216356275319017836" at="61,70,62,103" concept="1" />
+      <node id="8216356275319068263" at="63,7,64,94" concept="1" />
+      <node id="3072222224934160190" at="66,98,67,61" concept="6" />
+      <node id="302106367900784274" at="67,61,68,54" concept="1" />
+      <node id="8216356275319211925" at="68,54,69,18" concept="7" />
+      <node id="7556192913642997424" at="30,0,33,0" concept="0" trace="ModelsToResources#(Ljava/lang/Iterable;)V" />
+      <node id="8216356275319015272" at="60,41,63,7" concept="4" />
+      <node id="3559545331493919956" at="46,0,50,0" concept="5" trace="canGenerateCondition#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)Ljetbrains/mps/smodel/resources/ModelsToResources;" />
+      <node id="3244099164548277214" at="37,0,42,0" concept="0" trace="ModelsToResources#(Ljava/lang/Iterable;Z)V" />
+      <node id="8089483972827126167" at="51,0,56,0" concept="5" trace="resources#()Ljava/lang/Iterable;" />
+      <node id="8216356275319088678" at="65,5,70,40" concept="7" />
+      <node id="8216356275318975354" at="58,105,65,5" concept="3" />
+      <node id="3608835296802538210" at="57,0,72,0" concept="5" trace="arrangeByModule#(Ljava/lang/Iterable;)Ljava/lang/Iterable;" />
+      <scope id="7556192913642997432" at="30,53,31,24" />
+      <scope id="8216356275319015294" at="61,70,62,103" />
+      <scope id="3559545331493919959" at="46,124,48,16" />
+      <scope id="7556192913642997424" at="30,0,33,0">
+        <var name="models" id="7556192913642997427" />
+      </scope>
+      <scope id="3244099164548277220" at="37,72,40,28" />
+      <scope id="8089483972827126170" at="51,42,54,33">
+        <var name="smds" id="3608835296802635833" />
+      </scope>
+      <scope id="8216356275319211924" at="66,98,69,18">
+        <var name="mres" id="3072222224934160191" />
+      </scope>
+      <scope id="3559545331493919956" at="46,0,50,0">
+        <var name="condition" id="3559545331493921783" />
+      </scope>
+      <scope id="3244099164548277214" at="37,0,42,0">
+        <var name="cleanMake" id="3244099164548300342" />
+        <var name="models" id="3244099164548277215" />
+      </scope>
+      <scope id="8089483972827126167" at="51,0,56,0" />
+      <scope id="8216356275318975357" at="59,31,64,94">
+        <var name="module" id="8216356275318991629" />
+      </scope>
+      <scope id="8216356275318975354" at="58,105,65,5">
+        <var name="model" id="8216356275318975358" />
+      </scope>
+      <scope id="3608835296802538215" at="57,70,70,40">
+        <var name="groupByModule" id="8216356275318962041" />
+      </scope>
+      <scope id="3608835296802538210" at="57,0,72,0">
+        <var name="smds" id="3608835296802538211" />
+      </scope>
+      <unit id="7219626660275504879" at="20,0,73,0" name="jetbrains.mps.smodel.resources.ModelsToResources" />
+    </file>
+  </root>
+  <root nodeRef="r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/7544464876070905006">
+    <file name="ITResource.java">
+      <node id="7544464876071181368" at="13,0,14,0" concept="5" trace="module#()Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="4693363489974976494" at="14,0,15,0" concept="5" trace="modelDescriptor#()Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <scope id="7544464876071181368" at="13,0,14,0" />
+      <scope id="4693363489974976494" at="14,0,15,0" />
+      <unit id="7544464876070905006" at="10,0,16,0" name="jetbrains.mps.smodel.resources.ITResource" />
+    </file>
+  </root>
+  <root nodeRef="r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/7544464876071189843">
+    <file name="IGResource.java">
+      <node id="7544464876071189846" at="14,0,15,0" concept="5" trace="module#()Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="7544464876071189854" at="15,0,16,0" concept="5" trace="model#()Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="7544464876071189859" at="16,0,17,0" concept="5" trace="retainedModels#()Ljava/lang/Iterable;" />
+      <node id="7544464876071189868" at="17,0,18,0" concept="5" trace="status#()Ljetbrains/mps/generator/GenerationStatus;" />
+      <scope id="7544464876071189846" at="14,0,15,0" />
+      <scope id="7544464876071189854" at="15,0,16,0" />
+      <scope id="7544464876071189859" at="16,0,17,0" />
+      <scope id="7544464876071189868" at="17,0,18,0" />
+      <unit id="7544464876071189843" at="11,0,19,0" name="jetbrains.mps.smodel.resources.IGResource" />
+    </file>
+  </root>
+  <root nodeRef="r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/7544464876071207476">
+    <file name="IMResource.java">
+      <node id="5822172888873692283" at="13,0,14,0" concept="5" trace="module#()Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="5822172888873692290" at="14,0,15,0" concept="5" trace="models#()Ljava/lang/Iterable;" />
+      <scope id="5822172888873692283" at="13,0,14,0" />
+      <scope id="5822172888873692290" at="14,0,15,0" />
+      <unit id="7544464876071207476" at="10,0,16,0" name="jetbrains.mps.smodel.resources.IMResource" />
+    </file>
+  </root>
+  <root nodeRef="r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/8118537977657118022">
+    <file name="CleanupActivityResource.java">
+      <unit id="8118537977657118022" at="13,0,16,0" name="jetbrains.mps.smodel.resources.CleanupActivityResource" />
+    </file>
+  </root>
+</debug-info>
+

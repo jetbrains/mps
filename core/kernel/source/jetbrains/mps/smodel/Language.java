@@ -15,7 +15,19 @@
  */
 package jetbrains.mps.smodel;
 
+<<<<<<< HEAD
 import jetbrains.mps.extapi.module.SRepositoryExt;
+=======
+import com.intellij.openapi.progress.EmptyProgressIndicator;
+import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.lang.core.structure.Core_Language;
+import jetbrains.mps.lang.plugin.generator.baseLanguage.template.util.PluginNameUtils;
+import jetbrains.mps.lang.refactoring.structure.OldRefactoring;
+import jetbrains.mps.lang.refactoring.structure.Refactoring;
+import jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration;
+import jetbrains.mps.lang.structure.structure.ConceptDeclaration;
+import jetbrains.mps.library.LibraryManager;
+>>>>>>> origin/MPS1.5
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.module.SDependencyImpl;
@@ -83,8 +95,127 @@ public class Language extends AbstractModule implements ReloadableModule {
     revalidateGenerators();
   }
 
+<<<<<<< HEAD
   public void addExtendedLanguage(@NotNull SModuleReference langRef) {
     if (this.getModuleReference().equals(langRef) || myLanguageDescriptor.getExtendedLanguages().contains(langRef)) {
+=======
+  public List<ModuleReference> getUsedLanguagesReferences() {
+    List<ModuleReference> result = super.getUsedLanguagesReferences();
+    for (Language l : LibraryManager.getInstance().getBootstrapModules(Language.class)) {
+      if (!result.contains(l.getModuleReference())) {
+        result.add(l.getModuleReference());
+      }
+    }
+    return result;
+  }
+
+  IFile newDescriptorFileByNewName(String newNamespace) {
+    IFile dir = myDescriptorFile.getParent();
+    String oldShortFileName = NameUtil.shortNameFromLongName(myDescriptorFile.getAbsolutePath());
+    String newPathSuffix = NameUtil.shortNameFromLongName(newNamespace);
+    if ((dir.getAbsolutePath() + MPSExtentions.DOT_LANGUAGE).endsWith(oldShortFileName)) {
+      dir = dir.getParent();
+      newPathSuffix = newPathSuffix + File.separatorChar + newPathSuffix;
+    }
+    return dir.child(newPathSuffix + MPSExtentions.DOT_LANGUAGE);
+  }
+
+  public List<ModuleReference> getExtendedLanguageNamespaces() {
+    List<ModuleReference> result = new ArrayList<ModuleReference>();
+    for (ModuleReference ref : myLanguageDescriptor.getExtendedLanguages()) {
+      result.add(ref);
+    }
+    return result;
+  }
+
+  public List<Language> getExtendedLanguages() {
+    List<Language> result = new ArrayList<Language>();
+    for (jetbrains.mps.project.structure.modules.ModuleReference ref : getExtendedLanguageNamespaces()) {
+      Language language = GlobalScope.getInstance().getLanguage(ref);
+      if (language != null) {
+        result.add(language);
+      } else {
+        LOG.error("Can't find language " + ref.getModuleFqName() + " which is referenced in " + this);
+      }
+    }
+
+    if (!result.contains(Core_Language.get())) {
+      result.add(Core_Language.get());
+    }
+
+    return result;
+  }
+
+  public List<Language> getAllExtendedLanguages() {
+    if (myAllExtendedLanguages == null) {
+      Set<Language> set = new LinkedHashSet<Language>();
+      collectExtendedLanguages(set);
+      myAllExtendedLanguages = new ArrayList<Language>(set);
+    }
+    return Collections.unmodifiableList(myAllExtendedLanguages);
+  }
+
+  public List<Dependency> getRuntimeDependOn() {
+    List<Dependency> result = new ArrayList<Dependency>();
+    LanguageDescriptor descriptor = getModuleDescriptor();
+    if (descriptor != null) {
+      for (Dependency dep : descriptor.getRuntimeModules()) {
+        result.add(dep);
+      }
+    }
+    return result;
+  }
+
+  public List<IModule> getDesignTimeDependOnModules() {
+    Set<IModule> result = new LinkedHashSet<IModule>(super.getDesignTimeDependOnModules());
+    result.addAll(getExtendedLanguages());
+    return new ArrayList<IModule>(result);
+  }
+
+  public List<IModule> getRuntimeDependOnModules() {
+    List<IModule> result = new ArrayList<IModule>();
+    for (Dependency d : getRuntimeDependOn()) {
+      IModule module = MPSModuleRepository.getInstance().getModule(d.getModuleRef());
+      if (module != null) {
+        result.add(module);
+      }
+    }
+    return result;
+  }
+
+  public List<String> validate() {
+    List<String> errors = new ArrayList<String>(super.validate());
+    for (ModuleReference lang : getExtendedLanguageNamespaces()) {
+      if (MPSModuleRepository.getInstance().getModule(lang) == null) {
+        errors.add("Can't find extended language: " + lang.getModuleFqName());
+      }
+    }
+    for (SModelReference accessory : getModuleDescriptor().getAccessoryModels()) {
+      if (getScope().getModelDescriptor(accessory) == null) {
+        errors.add("Can't find accessory model: " + accessory.getLongName());
+      }
+    }
+    for (Dependency runtimeModule : getModuleDescriptor().getRuntimeModules()) {
+      if (MPSModuleRepository.getInstance().getModule(runtimeModule.getModuleRef()) == null) {
+        errors.add("Can't find runtime module: " + runtimeModule.getModuleRef().getModuleFqName());
+      }
+    }
+    for (StubModelsEntry stubModelsEntry : getModuleDescriptor().getRuntimeStubModels()) {
+      VirtualFile vfile = VFileSystem.getFile(stubModelsEntry.getPath());
+      if (vfile == null || !vfile.exists()) {
+        errors.add("Can't find runtime library: " + stubModelsEntry.getPath());
+      }
+    }
+    return errors;
+  }
+
+  protected ModuleDescriptor loadDescriptor() {
+    return LanguageDescriptorPersistence.loadLanguageDescriptor(getDescriptorFile());
+  }
+
+  private void collectExtendedLanguages(Set<Language> result) {
+    if (result.contains(this)) {
+>>>>>>> origin/MPS1.5
       return;
     }
     LanguageDescriptor moduleDescriptor = getModuleDescriptor();
@@ -474,10 +605,103 @@ public class Language extends AbstractModule implements ReloadableModule {
     assertCanChange();
     myAttachedGenerators.add(generator);
   }
+<<<<<<< HEAD
   /*package*/ void unregister(@NotNull Generator generator) {
     assertCanChange();
     if (!myAttachedGenerators.remove(generator)) {
       throw new IllegalStateException(String.format("Generator %s has not been previously registered with the language %s", generator.getModuleName(), getModuleName()));
+=======
+
+  //-----------stubs--------------
+
+  public boolean areJavaStubsEnabled() {
+    return getModuleDescriptor().getEnableJavaStubs() || !getModuleDescriptor().getSourcePaths().isEmpty();
+  }
+
+  public List<StubPath> getRuntimeStubPaths() {
+    List<StubPath> result = new ArrayList<StubPath>();
+
+    for (StubModelsEntry me : getRuntimeModelsEntries()) {
+      result.add(new StubPath(me.getPath(), me.getManager()));
+    }
+
+    return result;
+  }
+
+  public void updateClassPath() {
+    super.updateClassPath();
+    myLanguageRuntimeClasspathCache = null;
+  }
+
+  public void invalidateClassPath() {
+    super.invalidateClassPath();
+
+    Set<String> invalidate = new HashSet<String>();
+    for (StubPath path : getRuntimeStubPaths()) {
+      if (!ObjectUtils.equals(path.getManager().getClassName(), LanguageID.JAVA_MANAGER.getClassName())) continue;
+      invalidate.add(path.getPath());
+    }
+
+    ClassPathFactory.getInstance().invalidate(invalidate);
+  }
+
+  public IClassPathItem getLanguageRuntimeClasspath() {
+    if (myLanguageRuntimeClasspathCache == null) {
+      CompositeClassPathItem result = new CompositeClassPathItem();
+      for (StubModelsEntry entry : getRuntimeModelsEntries()) {
+        String s = entry.getPath();
+        try {
+          IFile file = FileSystem.getFile(s);
+          if (!file.exists()) {
+            LOG.error("Can't find " + s);
+            continue;
+          }
+
+          result.add(ClassPathFactory.getInstance().createFromPath(s, this));
+        } catch (IOException e) {
+          LOG.error(e.getMessage());
+        }
+      }
+
+      myLanguageRuntimeClasspathCache = result;
+    }
+
+    return myLanguageRuntimeClasspathCache;
+  }
+
+  //todo check this code. Wy not to do it where we add jars?
+  protected void updatePackagedDescriptorClasspath() {
+    super.updatePackagedDescriptorClasspath();
+
+    if (!isPackaged()) return;
+
+    if (myLanguageDescriptor != null) {
+      Set<StubModelsEntry> visited = new HashSet<StubModelsEntry>();
+      List<StubModelsEntry> remove = new ArrayList<StubModelsEntry>();
+      for (StubModelsEntry entry : myLanguageDescriptor.getRuntimeStubModels()) {
+        IFile cp = FileSystem.getFile(entry.getPath());
+        if ((!cp.exists()) || cp.isDirectory() || visited.contains(entry)) {
+          remove.add(entry);
+        }
+        visited.add(entry);
+      }
+      myLanguageDescriptor.getRuntimeStubModels().removeAll(remove);
+
+      File bundleParent = getBundleHome().getParentFile();
+      String jarName = getModuleFqName() + "." + RUNTIME_JAR_SUFFIX;
+      File jarFile = new File(bundleParent, jarName);
+      String path = jarFile.getPath();
+
+      StubModelsEntry tmp = new StubModelsEntry();
+      tmp.setPath(path);
+      tmp.setManager(LanguageID.JAVA_MANAGER);
+
+      if (jarFile.exists() && !visited.contains(tmp)) {
+        ClassPathEntry runtimeJar = new ClassPathEntry();
+        runtimeJar.setPath(path);
+        myLanguageDescriptor.getRuntimeStubModels().add(StubModelsEntry.fromClassPathEntry(runtimeJar));
+      }
+>>>>>>> origin/MPS1.5
     }
   }
 

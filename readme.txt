@@ -3,6 +3,7 @@ JETBRAINS MPS $version$ README FILE
 Thank you for downloading JetBrains MPS!
 
 CONTENTS
+<<<<<<< HEAD
     _CodeSignature/     configuration directory for Mac OS X (in Mac Os X distributions only)
 	bin/                startup files
 	help/               help files
@@ -21,6 +22,23 @@ CONTENTS
 	mps.sh              sh-file for starting JetBrains MPS on Unix (may not be present for some distributions)
 	readme.txt          this file
 	releaseNotes.txt    JetBrains MPS $version$ release notes
+=======
+	bin/                startup files
+	Contents/           configuration directory for Mac OS X (in Mac Os X distributions only)
+	core/               core languages
+	lib/                libraries
+	license/            license files
+	platform/           platform languages
+	plugin/             MPS plugin for IntelliJ IDEA
+	plugins/            plugins for MPS
+	workbench/          workbench languages
+	about.txt           about software included in JetBrains MPS
+	build.number        file with information about current build
+	mps.bat             bat-file for starting JetBrains MPS on Windows (may not be present for some distributions)
+	mps.sh              sh-file for starting JetBrains MPS on Unix (may not be present for some distributions)
+	readme.txt          this file
+	releaseNotes.txt    MPS 1.5 release notes
+>>>>>>> origin/MPS1.5
 	samples.zip         sample projects
 
 SYSTEM REQUIREMENTS

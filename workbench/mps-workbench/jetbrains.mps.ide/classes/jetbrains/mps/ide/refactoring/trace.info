@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <root nodeRef="r:5a764b6f-e05f-4050-b22c-cbcad1577f1b(jetbrains.mps.ide.refactoring)/7250929142958060523">
+    <file name="ModelNameValidator.java">
+      <node id="7250929142958446652" at="23,0,24,0" concept="3" trace="myModelRoot" />
+      <node id="7250929142958450395" at="29,59,30,28" concept="2" />
+      <node id="731695139705179353" at="40,59,41,76" concept="6" />
+      <node id="731695139705179363" at="42,51,43,43" concept="7" />
+      <node id="731695139705179365" at="44,5,45,53" concept="7" />
+      <node id="6090228258858378127" at="60,116,61,76" concept="6" />
+      <node id="6090228258858378137" at="62,51,63,43" concept="7" />
+      <node id="6090228258858378141" at="64,5,65,71" concept="7" />
+      <node id="7250929142958739959" at="78,98,79,92" concept="6" />
+      <node id="7250929142958739966" at="80,51,81,43" concept="7" />
+      <node id="7250929142958739973" at="82,5,83,0" concept="8" />
+      <node id="7250929142958739974" at="83,0,84,69" concept="7" />
+      <node id="7250929142958307441" at="97,118,98,51" concept="6" />
+      <node id="7250929142958300985" at="98,51,99,0" concept="8" />
+      <node id="3191070993433461849" at="101,90,102,102" concept="7" />
+      <node id="7250929142958187489" at="104,5,105,0" concept="8" />
+      <node id="7250929142958242721" at="105,0,106,78" concept="6" />
+      <node id="5647046715699589959" at="106,78,107,180" concept="2" />
+      <node id="3191070993433568103" at="108,40,109,119" concept="7" />
+      <node id="2235227621744926804" at="110,5,111,0" concept="8" />
+      <node id="5467765556626312033" at="111,0,112,69" concept="6" />
+      <node id="5467765556626315794" at="114,43,115,69" concept="2" />
+      <node id="731695139705402963" at="116,14,117,93" concept="2" />
+      <node id="3191070993433676512" at="120,34,121,89" concept="7" />
+      <node id="7250929142958252658" at="122,5,123,0" concept="8" />
+      <node id="7250929142958183146" at="123,0,124,0" concept="8" />
+      <node id="7250929142958184751" at="124,0,125,16" concept="7" />
+      <node id="731695139705404529" at="116,12,118,7" concept="0" />
+      <node id="7250929142958441019" at="29,0,32,0" concept="1" trace="ModelNameValidator#(Lorg/jetbrains/mps/openapi/persistence/ModelRoot;)V" />
+      <node id="731695139705179357" at="41,76,44,5" concept="4" />
+      <node id="6090228258858378132" at="61,76,64,5" concept="4" />
+      <node id="7250929142958739964" at="79,92,82,5" concept="4" />
+      <node id="7250929142958181036" at="100,37,103,7" concept="4" />
+      <node id="7250929142958188519" at="107,180,110,5" concept="4" />
+      <node id="7250929142958294439" at="119,7,122,5" concept="4" />
+      <node id="7250929142958181032" at="99,0,104,5" concept="4" />
+      <node id="731695139705395717" at="113,65,118,7" concept="4" />
+      <node id="5467765556626317985" at="112,69,119,7" concept="2" />
+      <node id="7250929142958065455" at="39,0,47,0" concept="5" trace="validate#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="6090228258858378118" at="59,0,67,0" concept="5" trace="validateForRename#(Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/EditableSModel;)Ljava/lang/String;" />
+      <node id="7250929142958739954" at="77,0,86,0" concept="5" trace="validate#(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="7250929142958071017" at="96,0,127,0" concept="5" trace="validate#(Lorg/jetbrains/mps/openapi/model/SModelName;Lorg/jetbrains/mps/openapi/model/EditableSModel;)Ljava/lang/String;" />
+      <scope id="7250929142958441023" at="29,59,30,28" />
+      <scope id="731695139705179362" at="42,51,43,43" />
+      <scope id="6090228258858378136" at="62,51,63,43" />
+      <scope id="7250929142958739965" at="80,51,81,43" />
+      <scope id="7250929142958181037" at="101,90,102,102" />
+      <scope id="7250929142958188520" at="108,40,109,119" />
+      <scope id="731695139705395719" at="114,43,115,69" />
+      <scope id="731695139705404530" at="116,14,117,93" />
+      <scope id="7250929142958294440" at="120,34,121,89" />
+      <scope id="7250929142958441019" at="29,0,32,0">
+        <var name="modelRoot" id="7250929142958448465" />
+      </scope>
+      <scope id="7250929142958181035" at="100,37,103,7" />
+      <scope id="731695139705179351" at="40,59,45,53">
+        <var name="check" id="731695139705179352" />
+      </scope>
+      <scope id="6090228258858378126" at="60,116,65,71">
+        <var name="check" id="6090228258858378128" />
+      </scope>
+      <scope id="5467765556626317987" at="113,65,118,7" />
+      <scope id="7250929142958739958" at="78,98,84,69">
+        <var name="check" id="7250929142958739960" />
+      </scope>
+      <scope id="7250929142958065455" at="39,0,47,0">
+        <var name="modelName" id="731695139705179345" />
+      </scope>
+      <scope id="6090228258858378118" at="59,0,67,0">
+        <var name="currentModelDescriptor" id="6090228258858378123" />
+        <var name="modelName" id="6090228258858378120" />
+      </scope>
+      <scope id="7250929142958739954" at="77,0,86,0">
+        <var name="modelLongName" id="7250929142958739955" />
+        <var name="stereotype" id="7250929142958744806" />
+      </scope>
+      <scope id="7250929142958071024" at="97,118,125,16">
+        <var name="canCreateModel" id="5467765556626312034" />
+        <var name="duplicatesExistingModel" id="7250929142958242722" />
+        <var name="module" id="7250929142958307442" />
+      </scope>
+      <scope id="7250929142958071017" at="96,0,127,0">
+        <var name="currentModelDescriptor" id="731695139705203273" />
+        <var name="modelName" id="7250929142958071018" />
+      </scope>
+      <unit id="7250929142958060523" at="21,0,128,0" name="jetbrains.mps.ide.refactoring.ModelNameValidator" />
+    </file>
+  </root>
+</debug-info>
+
