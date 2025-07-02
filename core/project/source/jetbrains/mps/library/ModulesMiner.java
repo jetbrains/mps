@@ -511,11 +511,18 @@ public final class ModulesMiner {
   }
 
   /**
-   * We've got deployed module, found its source module, and need to fix java stub paths of the latter to get @java_stub models loaded properly.
+   * We've got deployed module, found its source module, and need to fix java and/or kotlin stub paths of the latter to get @java_stub (or @kotlin_common)
+   * models loaded properly.
    *
    * On one hand, there's desire to get rid of this code by moving relevant update into build language, as it's odd to 'fix' module descriptor during load.
    * OTOH, it's source module we get fixed here, and if we move towards no source modules at all, then, perhaps, we shall not care to update neither here nor
    * in build language. Still, there's a question whether @java_stub models are part of deployment story.
+   * <p>
+   *  Just an idea - if we consider removing 'source' modules but leaving stub models, then, perhaps, we can have another entry in module.xml,
+   *  listing 'stub' models, and then lang.build mapping for entries (done with ArtifactsRelativePathHelper) would be enough, and no rewriting magic here?
+   *  However, there's another tricky point - build language cares about classpath jars and doesn't look into model roots, here we imply model roots
+   *  reference the same jars JMF got as libraries (Dependencies of BM_AbstractModule list jars from JMF, not stub model root)
+   * </p>
    *
    * JFTR, next code used to live in AbstractModule#updatePackagedDescriptor. Unlike the method, we no longer expose dd.getLibraries() as @java_stubs,
    * instead, we do our best to update MRD here with a proper path (we consult deploymentJars, with actual deployed layout, for matches).
@@ -533,7 +540,8 @@ public final class ModulesMiner {
     MacroHelper macroHelper = MacrosFactory.forModuleFile(sourcesDescriptorFile);
     for (ModelRootDescriptor rootDescriptor : sourceModuleDescriptor.getModelRootDescriptors()) {
       String rootDescriptorType = rootDescriptor.getType();
-      if (rootDescriptorType.equals(PersistenceRegistry.JAVA_CLASSES_ROOT)) {
+      // KotlinStubModelRootFactory.rootName == "kotlin_common"
+      if (PersistenceRegistry.JAVA_CLASSES_ROOT.equals(rootDescriptorType) || "kotlin_common".equals(rootDescriptorType)) {
         // there are few possible deployment layouts:
         //    1. App/Contents/languages/my.lang.jar + -src.jar
         //    2. App/Contents/plugins/<name>/languages/my.lang.jar + -src.jar + libraries from additional cp
