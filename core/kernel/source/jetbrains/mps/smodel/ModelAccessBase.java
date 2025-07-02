@@ -143,7 +143,7 @@ public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.modul
     //       there'd be no need in the code, therefore I opted not to bother (except this note).
     //       Check MA.shareRead() implementation for further considerations. Shall move the call here and make a decision whether
     //       to give SRMA or throw an error.
-    return new SharedReadImpl(actualImpl);
+    return new SharedReadModelAccessImpl(actualImpl);
   }
 
   @Nullable
@@ -152,36 +152,4 @@ public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.modul
     return getDelegate() instanceof ModelCommandContext.Provider ? ((ModelCommandContext.Provider) getDelegate()).getCommandContext(model) : null;
   }
 
-  private static class SharedReadImpl implements SharedReadModelAccess {
-    private final ReadAccessToken myAccessControl;
-
-    public SharedReadImpl(ModelAccess delegate) {
-      myAccessControl = delegate.shareRead();
-    }
-
-    @Override
-    public boolean canRead() {
-      return myAccessControl.isAlive();
-    }
-
-    @Override
-    public void release() {
-
-    }
-
-    @Override
-    public void execute(@NotNull final Runnable command) {
-      if (command instanceof CancellableReadAction) {
-        myAccessControl.runRead((CancellableReadAction) command);
-      } else {
-        // this is not perfect, yet still gives some cancellation support (won't start if cancellation comes before 'execute')
-        myAccessControl.runRead(new CancellableReadAction() {
-          @Override
-          protected void execute() {
-            command.run();
-          }
-        });
-      }
-    }
-  }
 }
