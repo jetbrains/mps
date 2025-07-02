@@ -165,6 +165,24 @@ public abstract class ModelAccess extends AbstractModelAccess implements org.jet
     if (!canRead()) {
       throw new IllegalModelAccessException("Can share a read in progress only!");
     }
+    return acquireSharedReadTokenNoCheck();
+  }
+
+  /**
+   * Acquires a shared read token for the current thread, ensuring thread-bound read access.
+   * If no token is already associated with the current thread, a new token is created,
+   * registered, and returned. The shared read token allows multiple threads to have
+   * concurrent read access, adhering to specific usage and lifecycle constraints.
+   * <p>
+   * Note: this method does not check if the current thread has read access, to establish
+   * that fact, and to ensure that all the necessary constraints are satisfied, is on the conscience
+   * of the caller. 
+   *
+   * @return an instance of {@link ReadAccessToken} representing the shared read access
+   *         bound to the current thread. If a token already exists for the thread, the
+   *         existing token is returned.
+   */
+  protected ReadAccessToken acquireSharedReadTokenNoCheck() {
     ReadAccessToken token = myReadFlagTokens.get();
     // XXX not sure about sharing original read, need to give it more thought/investigation
     //     e.g. what happens if/when 'nested' read reports sharedReadIsOver(). If this is the case, perhaps, need "usage counter" for the token?
