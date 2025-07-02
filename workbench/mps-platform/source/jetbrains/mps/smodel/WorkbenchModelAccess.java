@@ -92,7 +92,18 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
       myCancellableReads.removeIfCanCancel(r);
       return;
     }
-    ApplicationManager.getApplication().runReadAction(new PlatformCancelBlock(new LockRunnable(getReadLock(), myReadActionDispatcher.wrap(r))));
+    ApplicationManager.getApplication().runReadAction(new PlatformCancelBlock(() -> {
+      if (ApplicationManager.getApplication().hasWriteAction(PlatformCancelBlock.class)) {
+        // the only way the application has THIS kind of write action is if the write action was suspended:
+        // com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.executeSuspendingWriteAction
+        // see jetbrains.mps.smodel.WorkbenchModelAccess.runWriteAction
+        // since we're in application read action and OUR write action is suspended, its safe
+        // to assume we have read access
+        new SharedReadModelAccessImpl(acquireSharedReadTokenNoCheck()).execute(myReadActionDispatcher.wrap(r));
+      } else {
+        new LockRunnable(getReadLock(), myReadActionDispatcher.wrap(r)).run();
+      }
+    }));
     myCancellableReads.removeIfCanCancel(r);
     sharedReadIsOver(); // FIXME not nice we do this outside of LockRunnable, but don't want to bother right now
   }
