@@ -43469,6 +43469,9 @@
       <node concept="nCB5N" id="5sovPIfS$mX" role="nCB5Z">
         <ref role="nCB5Y" node="2eDSGe9d1oD" resolve="mps-workbench" />
       </node>
+      <node concept="2sjeV3" id="3gNf3ja$htS" role="nCB5Z">
+        <ref role="2sjeV2" node="3gNf3ja$h1s" resolve="spellchecker" />
+      </node>
     </node>
     <node concept="2G$12M" id="4O0hKJplCNt" role="3989C9">
       <property role="TrG5h" value="languageDesign-plugins" />
@@ -54822,6 +54825,16 @@
         <node concept="3yqu4x" id="1t0Ry55x4qx" role="25yagT">
           <node concept="3yrxFa" id="1t0Ry55x4qy" role="3yqu4I">
             <ref role="3yrxFb" node="6eCuTcwOX26" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="PiPfp" id="3gNf3ja$h1s" role="3989C9">
+      <property role="TrG5h" value="spellchecker" />
+      <node concept="25yagZ" id="3gNf3ja$h1t" role="PiKyV">
+        <node concept="3yqu4x" id="3gNf3ja$h1u" role="25yagT">
+          <node concept="3yrxFa" id="3gNf3ja$h1v" role="3yqu4I">
+            <ref role="3yrxFb" node="6k1uIry5Sr6" />
           </node>
         </node>
       </node>

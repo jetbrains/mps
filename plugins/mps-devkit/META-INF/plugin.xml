@@ -24,6 +24,7 @@
   <idea-version since-build="252.1" until-build="253.1"/>
   <dependencies>
     <plugin id="jetbrains.mps.core"/>
+    <module name="intellij.spellchecker"/>
   </dependencies>
   <depends>jetbrains.mps.ide.make</depends>
   <depends>jetbrains.mps.testing</depends>
@@ -31,6 +32,7 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter" />
+    <spellchecker.bundledDictionaryProvider implementation="jetbrains.mps.spellchecker.MPSBundledDictionariesProvider"/>
   </extensions>
 
   <extensions defaultExtensionNs="com.intellij">
