@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,10 @@
 package jetbrains.mps.generator.impl.plan;
 
 import jetbrains.mps.generator.runtime.TemplateModule;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.language.GeneratorRuntime;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -45,11 +44,12 @@ import java.util.stream.Collectors;
  * @author Artem Tikhomirov
  */
 public final class EngagedGeneratorCollector {
-  private static final Logger LOG = LogManager.getLogger(GenerationPlan.class);
+  private static final Logger LOG = Logger.getLogger(GenerationPlan.class);
 
   @NotNull
   private final SModel myModel;
   private final List<SLanguage> myAdditionalLanguages;
+  private final LanguageRegistry myLanguageRegistry;
   private Collection<SLanguage> myDirectLangUse;
   private Collection<TemplateModule> myEngagedGenerators;
   private final Set<SLanguage> myBadLanguages = new HashSet<>();
@@ -57,9 +57,20 @@ public final class EngagedGeneratorCollector {
   // e.g. L1 with G1 and L2 with G2, both G1 and G2 extend G3, which would show up twice in this case
   private final List<EngagedGenerator> myEngagedTrace = new ArrayList<>();
 
+  /**
+   * @deprecated use the cons with {@code LanguageRegistry}. There's no use for additionalLanguages (generation parameters shall fade away; could get replaced with GP if necessary)
+   */
+  @Deprecated(since = "2020.3", forRemoval = true)
   public EngagedGeneratorCollector(@NotNull SModel model, @Nullable Collection<SLanguage> additionalLanguages) {
+    myLanguageRegistry = LanguageRegistry.getInstance();
     myModel = model;
     myAdditionalLanguages = additionalLanguages == null ? Collections.emptyList() : new ArrayList<>(additionalLanguages);
+  }
+
+  public EngagedGeneratorCollector(@NotNull LanguageRegistry languageRegistry, @NotNull SModel model) {
+    myLanguageRegistry = languageRegistry;
+    myModel = model;
+    myAdditionalLanguages = Collections.emptyList();
   }
 
   /**
@@ -185,7 +196,7 @@ public final class EngagedGeneratorCollector {
         // do not resolve more than once
         continue;
       }
-      LanguageRuntime language = LanguageRegistry.getInstance().getLanguage(next);
+      LanguageRuntime language = myLanguageRegistry.getLanguage(next);
       if (language == null) {
         if (origin == null) {
           final String msg = "Model %s uses language %s which is missing (likely is not yet generated or is a bootstrap dependency)";
@@ -207,7 +218,7 @@ public final class EngagedGeneratorCollector {
    * I know it's better to provide some sort of structured info, but now seems not worth the effort.
    */
   public void dump(Consumer<String> traceConsumer) {
-    myEngagedTrace.forEach(l -> traceConsumer.accept(new StringBuilder().append(' ').append(l).toString()));
+    myEngagedTrace.forEach(l -> traceConsumer.accept(" " + l));
   }
 
   // cease existence once we get rid of strings completely

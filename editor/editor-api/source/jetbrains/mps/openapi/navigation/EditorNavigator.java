@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,14 @@
  */
 package jetbrains.mps.openapi.navigation;
 
+import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.util.Condition;
+
+import java.util.function.BiConsumer;
 
 /**
  * Handy facility to replace code like:
@@ -51,6 +54,7 @@ public final class EditorNavigator {
   private boolean myFocus = false;
   private boolean mySelect = false;
   private Condition<SNode> mySelectCondition;
+  private BiConsumer<SNode, Editor> myHandler;
 
   public EditorNavigator(@NotNull Project mpsProject) {
     myProject = mpsProject;
@@ -73,23 +77,26 @@ public final class EditorNavigator {
   }
 
   public EditorNavigator selectIfChild() {
-    mySelectCondition = new Condition<SNode>() {
-      @Override
-      public boolean met(SNode node) {
-        return node.getParent() != null;
-      }
-    };
+    mySelectCondition = node -> node.getParent() != null;
     return this;
   }
 
+  /**
+   * @param handler notified if editor has been successfully opened and ready for further actions
+   * @since 2023.3
+   */
+  public EditorNavigator onceEditorReady(BiConsumer<SNode, Editor> handler) {
+    myHandler = handler;
+    return this;
+  }
 
   public void open(@NotNull final SNodeReference node) {
-    myProject.getModelAccess().runWriteInEDT(new Runnable() {
-      @Override
-      public void run() {
-        SNode target = node.resolve(myProject.getRepository());
-        if (target != null) {
-          NavigationSupport.getInstance().openNode(myProject, target, needFocus(target), needSelection(target));
+    myProject.getModelAccess().runReadInEDT(() -> {
+      SNode target = node.resolve(myProject.getRepository());
+      if (target != null) {
+        final Editor editor = NavigationSupport.getInstance(myProject).openNode(myProject, target, needFocus(target), needSelection(target));
+        if (myHandler != null && editor != null) {
+          myHandler.accept(target, editor);
         }
       }
     });

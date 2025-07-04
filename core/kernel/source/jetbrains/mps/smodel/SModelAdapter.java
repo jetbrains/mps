@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.smodel.event.SModelChildEvent;
 import jetbrains.mps.smodel.event.SModelDevKitEvent;
 import jetbrains.mps.smodel.event.SModelEvent;
-import jetbrains.mps.smodel.event.SModelFileChangedEvent;
 import jetbrains.mps.smodel.event.SModelImportEvent;
 import jetbrains.mps.smodel.event.SModelLanguageEvent;
 import jetbrains.mps.smodel.event.SModelListener;
@@ -29,12 +28,17 @@ import jetbrains.mps.smodel.event.SModelRootEvent;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelListener.DependencyChange;
 
 /**
+ * @deprecated With SModelInternal and its {@link SModelListener} fading into oblivion, no reason to use this class.
+ *             Prefer {@code openapi} {@link org.jetbrains.mps.openapi.model.SNodeChangeListener} and {@link org.jetbrains.mps.openapi.model.SModelListener} instead.
+ *             Besides, naming is awfully misguiding, the class is worth deletion just for that.
  * @author Kostik
  */
+@Deprecated(since = "2025.1", forRemoval = true)
 public class SModelAdapter implements SModelListener {
-  private SModelListenerPriority myPriority;
+  private final SModelListenerPriority myPriority;
 
   public SModelAdapter() {
     this(SModelListenerPriority.CLIENT);
@@ -141,15 +145,6 @@ public class SModelAdapter implements SModelListener {
   }
 
   @Override
-  public void beforeModelFileChanged(SModelFileChangedEvent event) {
-  }
-
-  @Override
-  public void modelFileChanged(SModelFileChangedEvent event) {
-    eventFired(event);
-  }
-
-  @Override
   public void modelLoadingStateChanged(SModel sm, ModelLoadingState newState) {
   }
 
@@ -164,9 +159,15 @@ public class SModelAdapter implements SModelListener {
   public void eventFired(SModelEvent event) {
   }
 
+  /**
+   * There's {@link org.jetbrains.mps.openapi.model.SModelListener#dependenciesChanged(SModel, DependencyChange)} that covers most of the same causes.
+   */
   public void modelChanged(SModel model) {
   }
 
+  /**
+   * There's {@link org.jetbrains.mps.openapi.model.SModelListener#nodesChanged(SModel)} to serve as a replacement
+   */
   public void modelChangedDramatically(SModel model) {
   }
 

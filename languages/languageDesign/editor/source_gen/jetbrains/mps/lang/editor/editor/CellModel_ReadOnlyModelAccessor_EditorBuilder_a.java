@@ -15,7 +15,6 @@ import jetbrains.mps.lang.editor.editor.Styles_StyleSheet.rootCellModelStyleStyl
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.lang.editor.editor.Styles_StyleSheet.borderedStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import java.awt.Color;
 import jetbrains.mps.lang.editor.behavior.EditorCellModel__BehaviorDescriptor;
 
@@ -35,34 +34,34 @@ import jetbrains.mps.lang.editor.behavior.EditorCellModel__BehaviorDescriptor;
   }
 
   /*package*/ EditorCell createCell() {
-    return createCollection_fs6ae3_a();
+    return createCollection_0();
   }
 
-  private EditorCell createCollection_fs6ae3_a() {
+  private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
     editorCell.setCellId("Collection_fs6ae3_a");
     editorCell.setBig(true);
-    editorCell.setCellContext(getCellFactory().getCellContext());
+    setCellContext(editorCell);
     Style style = new StyleImpl();
-    new rootCellModelStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new rootCellModelStyleStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(createComponent_fs6ae3_a0());
-    editorCell.addEditorCell(createConstant_fs6ae3_b0());
-    editorCell.addEditorCell(createComponent_fs6ae3_c0());
+    editorCell.addEditorCell(createComponent_0());
+    editorCell.addEditorCell(createConstant_0());
+    editorCell.addEditorCell(createComponent_1());
     return editorCell;
   }
-  private EditorCell createComponent_fs6ae3_a0() {
+  private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.editor._OpenTag");
     return editorCell;
   }
-  private EditorCell createConstant_fs6ae3_b0() {
+  private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "R/O model access");
     editorCell.setCellId("Constant_fs6ae3_b0");
     Style style = new StyleImpl();
-    new borderedStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_fs6ae3_a0b0()));
-    style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_fs6ae3_a1b0()));
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_fs6ae3_a2b0()));
+    new borderedStyleClass(this).apply(style, editorCell);
+    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_fs6ae3_a0b0()));
+    style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_fs6ae3_a1b0()));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_fs6ae3_a2b0()));
     style.set(StyleAttributes.FONT_STYLE, _StyleParameter_QueryFunction_fs6ae3_a3b0());
     style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_fs6ae3_a4b0());
     editorCell.getStyle().putAll(style);
@@ -84,7 +83,7 @@ import jetbrains.mps.lang.editor.behavior.EditorCellModel__BehaviorDescriptor;
   private boolean _StyleParameter_QueryFunction_fs6ae3_a4b0() {
     return (boolean) EditorCellModel__BehaviorDescriptor.isUnderlined_idhLmqR8u.invoke(getNode());
   }
-  private EditorCell createComponent_fs6ae3_c0() {
+  private EditorCell createComponent_1() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.editor._CloseTag");
     return editorCell;
   }

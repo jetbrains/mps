@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,11 @@
 package jetbrains.mps.text;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.nio.charset.Charset;
+import java.util.stream.Stream;
 
 /**
  * Unit of text generation, corresponds to output file.
@@ -32,7 +34,28 @@ public interface TextUnit {
   String getFileName();
   @NotNull
   SNode getStartNode();
+
+  // XXX likely, need some context or at least TextGenRegistry instance. Would be great to pass TextGenSettings or its isGenerateDebugInfo value
+  // to avoid collecting traces unless we're going to serialize them.
+  // Alternatively, may pass required context when constructing TU - from transition perspective, might be easier to regenerate breakdownToUnits()
+  // and use some factory (e.g. in TextGenModelOutline) to give access to TGR/Context (mOutline.newContext) or to build TU instance
+  // (e.g. outline.newTUBuilder().withStartNode().withContextObject().withBuffer().build()).
+  // OTOH, start node as a configuration parameter for TU may need a revision - if there's a context in generate(), can pass it there.
+  // Yet, having it at cons time is reasonable as we derive file name from it anyway, would be odd to use node to construct a name
+  //    and to assume the same node comes to generate()'s context
   void generate();
+
+  /**
+   * PROVISIONAL API
+   * Perhaps, shall stick to Path object rather than plain String
+   *
+   * Tell desired location of the text outcome
+   * @return {@code null} to use default value derived from qualified model name.
+   */
+  @Nullable
+  default String getFilePath() {
+    return null;
+  }
 
   /**
    * FIXME decide whether throws exception or return null/empty value if not yet generated.
@@ -46,6 +69,10 @@ public interface TextUnit {
   Charset getEncoding();
 
   Status getState();
+
+  default <T> Stream<T> findContextObject(Class<T> contextObjectKind) {
+    return Stream.empty();
+  }
 
   // State? Initial, Blank, Failure, Valid?
   enum Status {

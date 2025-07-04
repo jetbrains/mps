@@ -2,9 +2,7 @@
 <model ref="r:7a1c88cb-66d9-4726-9b4a-d5dc6c544de7(jetbrains.mps.samples.SwingBuilder.constraints)">
   <persistence version="9" />
   <languages>
-    <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="2" />
-    <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
-    <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
+    <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
@@ -28,7 +26,7 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -46,9 +44,12 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
+        <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
+      </concept>
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -81,7 +82,9 @@
                     <node concept="I4A8Y" id="5Vvmn_Ql3w3" role="2OqNvi" />
                   </node>
                   <node concept="2RRcyG" id="5Vvmn_Ql3vW" role="2OqNvi">
-                    <ref role="2RRcyH" to="yo60:OfqpBCexLx" resolve="Filter" />
+                    <node concept="chp4Y" id="5QK5AMJp7z2" role="3MHsoP">
+                      <ref role="cht4Q" to="yo60:OfqpBCexLx" resolve="Filter" />
+                    </node>
                   </node>
                 </node>
                 <node concept="4Tj9Z" id="5Vvmn_Ql3vX" role="2OqNvi">
@@ -91,7 +94,9 @@
                       <node concept="I4A8Y" id="5Vvmn_Ql3w6" role="2OqNvi" />
                     </node>
                     <node concept="2RRcyG" id="5Vvmn_Ql3w0" role="2OqNvi">
-                      <ref role="2RRcyH" to="yo60:OfqpBCexQl" resolve="Map" />
+                      <node concept="chp4Y" id="5QK5AMJp7z3" role="3MHsoP">
+                        <ref role="cht4Q" to="yo60:OfqpBCexQl" resolve="Map" />
+                      </node>
                     </node>
                   </node>
                 </node>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.smodel.BaseMPSModuleOwner;
 import jetbrains.mps.smodel.MPSModuleOwner;
+import jetbrains.mps.util.annotation.AccessAsPlatformService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -33,10 +34,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@AccessAsPlatformService
 public class TransientModelsProvider {
 
   private final ConcurrentMap<GeneratorTask, TransientModelsModule> myModuleMap = new ConcurrentHashMap<>();
@@ -47,6 +51,7 @@ public class TransientModelsProvider {
   private String mySessionId;
   private final MPSModuleOwner myOwner = new BaseMPSModuleOwner();
   private TransientModelsModule myCheckpointsModule;
+  private final Semaphore mySwapLock = new Semaphore(1);
 
   public TransientModelsProvider(@NotNull SRepository repository, @Nullable TransientSwapOwner swapOwner) {
     myRepository = (SRepositoryExt) repository;
@@ -61,18 +66,15 @@ public class TransientModelsProvider {
   }
 
   protected void clearAll(final boolean dropCheckpoint) {
-    myRepository.getModelAccess().runWriteAction(new Runnable() {
-      @Override
-      public void run() {
-        Collection<TransientModelsModule> toRemove = getModuleMapValues();
-        myModuleMap.clear();
-        for (TransientModelsModule m : toRemove) {
-          myRepository.unregisterModule(m, myOwner);
-        }
-        if (dropCheckpoint && myCheckpointsModule != null) {
-          myRepository.unregisterModule(myCheckpointsModule, myOwner);
-          myCheckpointsModule = null;
-        }
+    myRepository.getModelAccess().runWriteAction(() -> {
+      Collection<TransientModelsModule> toRemove = getModuleMapValues();
+      myModuleMap.clear();
+      for (TransientModelsModule m : toRemove) {
+        myRepository.unregisterModule(m, myOwner);
+      }
+      if (dropCheckpoint && myCheckpointsModule != null) {
+        myRepository.unregisterModule(myCheckpointsModule, myOwner);
+        myCheckpointsModule = null;
       }
     });
 
@@ -105,7 +107,7 @@ public class TransientModelsProvider {
    * get registered in the associated repository when {@link #publishAll()} is requested. Thus, only publish activity would require write lock,
    * while the transformation process is ok with a read on source model's repository. It's not final, though. If we manage to maintain distinct
    * repository for transients, we still may lock it for write during transformation process (transitively locking source model's one for read)
-   * and there'd be no reason to be minimalistic about write lock then.
+   * and there would be no reason to be minimalistic about write lock then.
    * @param moduleName name for a new transient module, without stereotype
    * @return new module instance
    */
@@ -145,6 +147,8 @@ public class TransientModelsProvider {
     return myCheckpointsModule;
   }
 
+  private final UUID myCheckpointModuleId = new UUID(0x0000000000004000L, ((long) "checkpoints".hashCode()) << 32 | "checkpoints".hashCode());
+
   /**
    * Requires model write to register checkpoint module with a {@linkplain #getRepository() repository}.
    */
@@ -159,7 +163,7 @@ public class TransientModelsProvider {
           return;
         }
       }
-      SModuleReference cpModuleRef = new ModuleReference(checkpointModuleName, ModuleId.regular());
+      SModuleReference cpModuleRef = new ModuleReference(checkpointModuleName, ModuleId.regular(myCheckpointModuleId));
       // I could have used custom subclass of AbstractModule and regular models (instanceof extapi.TransientSModel, not necessarily
       // the same as generator.TransientSModel TransientModelsModule class produces), there's no true need in TransientModelsModule, however,
       // (a) don't want to refactor right now; (b) perhaps, could use swap mechanism of TransientModelsModule in future to keep checkpoint models
@@ -190,19 +194,36 @@ public class TransientModelsProvider {
     if (mySessionId == null) {
       return null;
     }
+    return getOrCreateSwapSpace(mySessionId);
+  }
 
+  private TransientSwapSpace getOrCreateSwapSpace(String id) {
     TransientSwapOwner tso = getTransientSwapOwner();
     if (tso == null) {
       return null;
     }
 
-    TransientSwapSpace space = tso.accessSwapSpace(mySessionId);
-    if (space != null) {
-      return space;
-    }
+    mySwapLock.acquireUninterruptibly();
+    try {
+      TransientSwapSpace space = tso.accessSwapSpace(id);
+      if (space != null) {
+        return space;
+      }
 
-    return tso.initSwapSpace(mySessionId);
+      return tso.initSwapSpace(id);
+    } finally {
+      mySwapLock.release();
+    }
   }
+
+  /*package*/ TransientSwapSpace getTransientSwapSpace(TransientModelsModule transientModule) {
+    if (mySessionId == null) {
+      // just to ensure TMP is alive
+      return null;
+    }
+    return getOrCreateSwapSpace(mySessionId + '-' + transientModule.getModuleName());
+  }
+
 
   public void removeAllTransient() {
     clearAll(false);
@@ -253,7 +274,7 @@ public class TransientModelsProvider {
   }
 
   private String newSessionId() {
-    return String.valueOf(System.identityHashCode(myRepository)) + Long.toHexString(System.currentTimeMillis());
+    return Long.toHexString(System.identityHashCode(myRepository) + System.currentTimeMillis());
   }
 
   /**

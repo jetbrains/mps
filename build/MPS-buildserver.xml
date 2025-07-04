@@ -1,0 +1,33 @@
+<project name="MPS-buildserver.xml" default="build" basedir="..">
+  <!--This is a hack for MPS-8746
+  For my opinion, syncing files by idea is not that bad
+  so I should not be doing this-->
+  <property name="mps.home" value="${mps_home}"/>
+  <property name="real.deploy.dir" value="${mps_home}/artifacts"/>
+  <property file="${mps_home}/build/sign/ftppassword"/>
+  <import file="${ant.file}/../MPS-external-dist.xml"/>
+  <import file="${ant.file}/../../tests/jetbrains/mps/mps.tests.xml"/>
+  <target name="test.and.build" depends="test, build"/>
+  <target name="test" depends="mps.tests.all"/>
+  <target name="upload" depends="MPS-external-dist.default">
+    <java jar="${ant.home}/lib/ant-launcher.jar"
+            fork="true"
+            dir="${mps.home}/build"
+            clonevm="true">
+       <sysproperty key="ant.home" value="${ant.home}"/>
+       <sysproperty key="mps.home" value="${mps.home}"/>
+       <sysproperty key="deploy.dir" value="${deploy.dir}"/>
+       <sysproperty key="build.number" value="${build.number}"/>
+       <arg value="-lib"/>
+       <arg value="${mps.home}/build/tools/apache-commons"/>
+       <arg value="-buildfile"/>
+       <arg value="${mps.home}/build/upload.xml"/>
+    </java>
+  </target>
+  <target name="build" depends="MPS-external-dist.default">
+    <delete dir="${real.deploy.dir}"/>
+    <mkdir dir="${real.deploy.dir}"/>
+    <copydir src="${deploy.dir}" dest="${real.deploy.dir}"/>
+    <delete dir="${deploy.dir}"/>
+  </target>
+</project>

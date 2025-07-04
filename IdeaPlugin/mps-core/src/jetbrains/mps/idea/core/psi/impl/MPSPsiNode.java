@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,10 +107,12 @@ public class MPSPsiNode extends MPSPsiNodeBase implements MPSPsiRealNode {
   }
 
   protected <T extends PsiElement> T getReferenceTarget(String role, @NotNull Class<T> aClass) {
-    if (role == null) return null;
+    if (role == null) {
+      return null;
+    }
 
     for (PsiElement child = getFirstChild(); child != null; child = child.getNextSibling()) {
-      if (child instanceof MPSPsiRef && role.equals(((MPSPsiRef) child).getRole())) {
+      if (child instanceof MPSPsiRef && role.equals(((MPSPsiRef) child).getRole().getName())) {
         PsiElement refTarget = ((MPSPsiRef) child).resolve();
         if (aClass.isInstance(refTarget)) {
           return (T) refTarget;
@@ -121,11 +123,13 @@ public class MPSPsiNode extends MPSPsiNodeBase implements MPSPsiRealNode {
   }
 
   public MPSPsiRef[] getReferences(String role) {
-    if (role == null) return null;
+    if (role == null) {
+      return null;
+    }
 
     List<MPSPsiRef> result = new ArrayList<>();
     for (PsiElement child = getFirstChild(); child != null; child = child.getNextSibling()) {
-      if (child instanceof MPSPsiRef && role.equals(((MPSPsiRef) child).getRole())) {
+      if (child instanceof MPSPsiRef && role.equals(((MPSPsiRef) child).getRole().getName())) {
         result.add((MPSPsiRef) child);
       }
     }

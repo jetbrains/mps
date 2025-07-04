@@ -7,24 +7,24 @@ import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
-import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
-import jetbrains.mps.baseLanguage.javadoc.actions.ActionAspectDescriptorImpl;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.baseLanguage.javadoc.editor.EditorAspectDescriptorImpl;
-import jetbrains.mps.intentions.IntentionAspectDescriptor;
+import jetbrains.mps.openapi.intentions.IntentionAspectDescriptor;
 import jetbrains.mps.baseLanguage.javadoc.intentions.IntentionsDescriptor;
 import jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor;
 import jetbrains.mps.baseLanguage.javadoc.migration.MigrationDescriptor;
 import jetbrains.mps.lang.script.runtime.ScriptAspectDescriptor;
 import jetbrains.mps.baseLanguage.javadoc.scripts.ScriptsDescriptor;
-import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
-import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
-import jetbrains.mps.baseLanguage.javadoc.structure.ConceptPresentationAspectImpl;
 import jetbrains.mps.text.rt.TextGenAspectDescriptor;
 import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
 import jetbrains.mps.baseLanguage.javadoc.typesystem.TypesystemDescriptor;
+import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
+import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
+import jetbrains.mps.baseLanguage.javadoc.structure.ConceptPresentationAspectImpl;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.smodel.language.LanguageExtensions;
 
 public class Language extends LanguageRuntime {
   private final SLanguageId myId;
@@ -53,61 +53,40 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
-    if (aspectClass.getName().equals("jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor")) {
-      if (aspectClass == ActionAspectDescriptor.class) {
-        return (T) new ActionAspectDescriptorImpl();
-      }
+    if (aspectClass == BehaviorAspectDescriptor.class) {
+      return aspectClass.cast(new jetbrains.mps.baseLanguage.javadoc.behavior.BehaviorAspectDescriptor());
     }
-    if (aspectClass.getName().equals("jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor")) {
-      if (aspectClass == BehaviorAspectDescriptor.class) {
-        return (T) new jetbrains.mps.baseLanguage.javadoc.behavior.BehaviorAspectDescriptor();
-      }
+    if (aspectClass == ConstraintsAspectDescriptor.class) {
+      return aspectClass.cast(new jetbrains.mps.baseLanguage.javadoc.constraints.ConstraintsAspectDescriptor());
     }
-    if (aspectClass.getName().equals("jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor")) {
-      if (aspectClass == ConstraintsAspectDescriptor.class) {
-        return (T) new jetbrains.mps.baseLanguage.javadoc.constraints.ConstraintsAspectDescriptor();
-      }
+    if (aspectClass == EditorAspectDescriptor.class) {
+      return aspectClass.cast(new EditorAspectDescriptorImpl());
     }
-    if (aspectClass.getName().equals("jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor")) {
-      if (aspectClass == EditorAspectDescriptor.class) {
-        return (T) new EditorAspectDescriptorImpl();
-      }
+    if (aspectClass == IntentionAspectDescriptor.class) {
+      return aspectClass.cast(new IntentionsDescriptor());
     }
-    if (aspectClass.getName().equals("jetbrains.mps.intentions.IntentionAspectDescriptor")) {
-      if (aspectClass == IntentionAspectDescriptor.class) {
-        return (T) new IntentionsDescriptor();
-      }
+    if (aspectClass == MigrationAspectDescriptor.class) {
+      return aspectClass.cast(new MigrationDescriptor());
     }
-    if (aspectClass.getName().equals("jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor")) {
-      if (aspectClass == MigrationAspectDescriptor.class) {
-        return (T) new MigrationDescriptor();
-      }
+    if (aspectClass == ScriptAspectDescriptor.class) {
+      return aspectClass.cast(new ScriptsDescriptor());
     }
-    if (aspectClass.getName().equals("jetbrains.mps.lang.script.runtime.ScriptAspectDescriptor")) {
-      if (aspectClass == ScriptAspectDescriptor.class) {
-        return (T) new ScriptsDescriptor();
-      }
+    if (aspectClass == TextGenAspectDescriptor.class) {
+      return aspectClass.cast(new jetbrains.mps.baseLanguage.javadoc.textGen.TextGenAspectDescriptor());
     }
-    if (aspectClass.getName().equals("jetbrains.mps.smodel.runtime.StructureAspectDescriptor")) {
-      if (aspectClass == StructureAspectDescriptor.class) {
-        return (T) new jetbrains.mps.baseLanguage.javadoc.structure.StructureAspectDescriptor();
-      }
+    if (aspectClass == IHelginsDescriptor.class) {
+      return aspectClass.cast(new TypesystemDescriptor());
     }
-    if (aspectClass.getName().equals("jetbrains.mps.smodel.runtime.ConceptPresentationAspect")) {
-      if (aspectClass == ConceptPresentationAspect.class) {
-        return (T) new ConceptPresentationAspectImpl();
-      }
+    if (aspectClass == StructureAspectDescriptor.class) {
+      return aspectClass.cast(new jetbrains.mps.baseLanguage.javadoc.structure.StructureAspectDescriptor());
     }
-    if (aspectClass.getName().equals("jetbrains.mps.text.rt.TextGenAspectDescriptor")) {
-      if (aspectClass == TextGenAspectDescriptor.class) {
-        return (T) new jetbrains.mps.baseLanguage.javadoc.textGen.TextGenAspectDescriptor();
-      }
-    }
-    if (aspectClass.getName().equals("jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor")) {
-      if (aspectClass == IHelginsDescriptor.class) {
-        return (T) new TypesystemDescriptor();
-      }
+    if (aspectClass == ConceptPresentationAspect.class) {
+      return aspectClass.cast(new ConceptPresentationAspectImpl());
     }
     return null;
+  }
+
+  @Override
+  protected void contribute(@NotNull LanguageExtensions extensions) {
   }
 }

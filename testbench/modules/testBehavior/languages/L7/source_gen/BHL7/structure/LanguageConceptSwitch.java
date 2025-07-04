@@ -21,6 +21,8 @@ public final class LanguageConceptSwitch {
   public static final int I2 = 9;
   public static final int I3 = 10;
   public static final int K = 11;
+  public static final int L = 12;
+  public static final int M = 13;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x4239359f64574d2aL, 0xb1e014d3f948db39L);
@@ -36,6 +38,8 @@ public final class LanguageConceptSwitch {
     builder.put(0x549fa4aa12af528cL, I2);
     builder.put(0x10b2a2acd713731eL, I3);
     builder.put(0x66c9579bde227bd6L, K);
+    builder.put(0x65e1cc96389f813cL, L);
+    builder.put(0x65e1cc96389f81beL, M);
     myIndex = builder.seal();
   }
 

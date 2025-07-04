@@ -18,7 +18,7 @@ public class DataFlowAspectDescriptorImpl extends DataFlowAspectDescriptorBase {
   @Override
   public Collection<IDataFlowBuilder> getDataFlowBuilders(SAbstractConcept concept) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
-    switch (index_vhxjlb_a0b.index(cncpt)) {
+    switch (conceptIndex.index(cncpt)) {
       case 0:
         return Collections.<IDataFlowBuilder>singletonList(new ExecuteFinderExpression_DataFlow());
       case 1:
@@ -26,10 +26,14 @@ public class DataFlowAspectDescriptorImpl extends DataFlowAspectDescriptorBase {
       case 2:
         return Collections.<IDataFlowBuilder>singletonList(new NodeStatement_DataFlow());
       case 3:
+        return Collections.<IDataFlowBuilder>singletonList(new OnEachNodeFoundByExpression_DataFlow());
+      case 4:
         return Collections.<IDataFlowBuilder>singletonList(new ResultStatement_DataFlow());
+      case 5:
+        return Collections.<IDataFlowBuilder>singletonList(new ResultStatement2_DataFlow());
       default:
     }
     return Collections.<IDataFlowBuilder>emptyList();
   }
-  private static final ConceptSwitchIndex index_vhxjlb_a0b = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x118d6fce801L), MetaIdFactory.conceptId(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1bd5a514384e1959L), MetaIdFactory.conceptId(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1177408145aL), MetaIdFactory.conceptId(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1177404a3f4L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x118d6fce801L), MetaIdFactory.conceptId(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1bd5a514384e1959L), MetaIdFactory.conceptId(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1177408145aL), MetaIdFactory.conceptId(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x5f5488291166ada7L), MetaIdFactory.conceptId(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1177404a3f4L), MetaIdFactory.conceptId(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x7c5c2a0242864b93L)).seal();
 }

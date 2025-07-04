@@ -9,12 +9,12 @@ import com.intellij.openapi.options.ConfigurationException;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
-import com.intellij.openapi.util.Factory;
 
 public class NodeByConcept_Configuration_Editor extends SettingsEditorEx<NodeByConcept_Configuration> {
   private NodeByConceptChooser myChooser;
   public void disposeEditor() {
   }
+
   @NotNull
   public NodeByConceptChooser createEditor() {
     myChooser = new NodeByConceptChooser();
@@ -22,10 +22,12 @@ public class NodeByConcept_Configuration_Editor extends SettingsEditorEx<NodeByC
     myChooser.setAcceptor(myIsValid);
     return myChooser;
   }
+
   public void applyEditorTo(final NodeByConcept_Configuration configuration) throws ConfigurationException {
     configuration.setNode(myChooser.getNode());
     configuration.setNodeText(myChooser.getText());
   }
+
   public void resetEditorFrom(final NodeByConcept_Configuration configuration) {
     myChooser.setNode(configuration.getNodeRef());
     myChooser.setText(configuration.getNodeText());
@@ -33,11 +35,7 @@ public class NodeByConcept_Configuration_Editor extends SettingsEditorEx<NodeByC
   private SAbstractConcept myConcept;
   private _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> myIsValid;
   public NodeByConcept_Configuration_Editor(final SAbstractConcept concept, final _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> isValid) {
-    super(new Factory<NodeByConcept_Configuration>() {
-      public NodeByConcept_Configuration create() {
-        return new NodeByConcept_Configuration(concept, isValid);
-      }
-    });
+    super(() -> new NodeByConcept_Configuration(concept, isValid));
     myConcept = concept;
     myIsValid = isValid;
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,113 +15,46 @@
  */
 package jetbrains.mps.ide.vfs;
 
-import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileVisitor;
-import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
-import jetbrains.mps.util.Reference;
-import jetbrains.mps.util.annotation.Hack;
-import jetbrains.mps.util.annotation.ToRemove;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.FileSystemExtPoint;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.impl.IoFileSystem;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.vfs.QualifiedPath;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
-import java.io.File;
+import java.io.IOException;
+import java.net.JarURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 
 public final class VirtualFileUtils {
-  private static final Logger LOG = LogManager.getLogger(VirtualFileUtils.class);
+  private static final Logger LOG = Logger.getLogger(VirtualFileUtils.class);
 
   private VirtualFileUtils() {
   }
 
-  @Nullable
-  public static VirtualFile getVirtualFile(String path) {
-    return getVirtualFile(FileSystem.getInstance().getFile(path));
-  }
-
   /**
-   * @deprecated please use {@link #getProjectVirtualFile(IFile)} or [if absolutely needed] {@link #getOrCreateVirtualFile(IFile)}
+   * Translates IDEA's {@link VirtualFile} to {@link QualifiedPath} API suitable for
+   * {@link jetbrains.mps.vfs.VFSManager#getFile(QualifiedPath)}.
+   * Note, there's no guarantee that {@link jetbrains.mps.vfs.VFSManager#getFileSystem(String)} supports FS of
+   * the returned path
+   * <p>Prefer {@link IdeaFileSystem#fromVirtualFile(VirtualFile)} if you have access to {@code MPSProject}</p>
    */
-  @Deprecated
-  @Nullable
-  public static VirtualFile getVirtualFile(IFile file) {
-    if (file instanceof IdeaFile) {
-      return ((IdeaFile) file).getVirtualFile();
-    } else {
-      return null;
-    }
-  }
-
-  @Nullable
-  public static VirtualFile getProjectVirtualFile(@NotNull IFile file) {
-    if (file instanceof IdeaFile) {
-      return ((IdeaFile) file).getVirtualFile();
-    } else {
-      if (FileSystemExtPoint.getFS() instanceof IdeaFileSystem) {
-        LOG.warn("File " + file + " is supposed to be in project and tracked by Idea FS");
-      }
-      return null;
-    }
-  }
-
-  /**
-   * It is hack due to the 3.4 release coming soon. We have to use idea vfs to comply with
-   * IDEA subsystems which require VirtualFile (e.g. idea indexing/find usages)
-   *
-   * AP: I hope that it will go away in the nearest future since we do not need vfs tracking these files' physical changes
-   * (we would rather make them read-only)
-   */
-  @Hack
-  @Deprecated
-  @ToRemove(version = 3.4)
-  public static VirtualFile getOrCreateVirtualFile(@NotNull IFile file) {
-    if (file.getFileSystem() instanceof IoFileSystem) {
-      file = FileSystemExtPoint.getFS().getFile(file.getPath());
-      if (file instanceof IdeaFile) {
-        return ((IdeaFile) file).getVirtualFile();
-      }
-    } else if (file instanceof IdeaFile) {
-      return ((IdeaFile) file).getVirtualFile();
-    } else {
-      LOG.warn("Unknown file " + file);
-    }
-    return null;
-  }
-
-  /**
-   * @return null if current fs is not idea-based (it is very unlikely but still)
-   */
-  @Nullable
-  public static IFile toIFile(@NotNull VirtualFile f) {
-    FileSystem fs = FileSystemExtPoint.getFS();
-    if (!(fs instanceof IdeaFileSystem)) {
-      LOG.warn("Current file system is not base on the IDEA VFS " + fs + ". Requested file is " + f);
-      return null;
-    }
-    IdeaFileSystem ideaFS = (IdeaFileSystem) fs;
-    return new IdeaFile(ideaFS, f);
-  }
-
-  public static File toFile(VirtualFile f) {
-    if (f.getFileSystem() instanceof LocalFileSystem) {
-      return new File(f.getPath());
-    } else {
-      throw new RuntimeException("Attempt to get File for non local file." + f.getPath());
-    }
+  @NotNull
+  public static QualifiedPath asQualifiedPath(@NotNull VirtualFile vf) {
+    // based on StubSolutionIdea.file2QP() implementation by MM
+    String url = vf.getUrl();
+    String fsId = url.substring(0, url.indexOf(':'));
+    return new QualifiedPath(fsId, vf.getPath());
   }
 
   public static void refreshSynchronouslyRecursively(VirtualFile file, ProgressMonitor progressMonitor) {
-    final int totalWork = 3;
     try {
+      final int totalWork = 3;
       progressMonitor.start("Refreshing the virtual file system", totalWork);
       List<VirtualFile> dirtyFiles = VfsUtil.markDirty(true, true, file);
       progressMonitor.advance(1);
@@ -139,24 +72,19 @@ public final class VirtualFileUtils {
     file.refresh(false, true);
   }
 
-  @NotNull
-  private static Reference<Integer> estimateFilesNumber(VirtualFile file) {
-    Reference<Integer> count = new Reference<>(0);
-    VfsUtilCore.processFilesRecursively(file, virtualFile -> {
-      count.set(count.get() + 1);
-      return true;
-    });
-    return count;
-  }
-
-  /**
-   * Allows to distinguish file events from MPS code and from IDEA platform code
-   * We don't process events on file updates from MPS
-   *
-   * @return true - event is from IdeaFile processing, false - event from refresh or any other VirtualFile changes
-   */
-  @ToRemove(version = 3.4)
-  public static boolean isFileEventFromMPS(VFileEvent event) {
-    return event.getRequestor() instanceof IdeaFileSystem;
+  @Nullable
+  /*package*/ static URL extractURLFromVirtualFile(@NotNull VirtualFile virtualFile) {
+    try {
+      URL url = new URL(VfsUtilCore.fixIDEAUrl(virtualFile.getUrl()));
+      // making RFC compliant URL from what IJ gives us
+      if (url.openConnection() instanceof JarURLConnection) {
+        // this is jar, here we assume that only path in url is not null, and pass the path as scheme-specific part, it starts with 'file:///'
+        return new URI(url.getProtocol(), url.getPath(), null).toURL();
+      }
+      return new URI(url.getProtocol(), url.getUserInfo(), url.getHost(), url.getPort(), url.getPath(), url.getQuery(), null).toURL();
+    } catch (IOException | URISyntaxException e) {
+      LOG.error("Could not create URI from " + virtualFile, e);
+    }
+    return null;
   }
 }

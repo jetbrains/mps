@@ -4,14 +4,14 @@ package jetbrains.mps.lang.traceable.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_ScopeConcept = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_TraceableConcept = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_UnitConcept = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_ScopeConcept;
+  private ConceptPresentation props_TraceableConcept;
+  private ConceptPresentation props_UnitConcept;
 
   @Override
   @Nullable
@@ -19,10 +19,22 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.ScopeConcept:
+        if (props_ScopeConcept == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_ScopeConcept = cpb.create();
+        }
         return props_ScopeConcept;
       case LanguageConceptSwitch.TraceableConcept:
+        if (props_TraceableConcept == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_TraceableConcept = cpb.create();
+        }
         return props_TraceableConcept;
       case LanguageConceptSwitch.UnitConcept:
+        if (props_UnitConcept == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_UnitConcept = cpb.create();
+        }
         return props_UnitConcept;
     }
     return null;

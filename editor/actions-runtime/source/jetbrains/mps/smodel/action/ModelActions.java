@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,9 +20,7 @@ import jetbrains.mps.lang.editor.menus.transformation.DefaultSubstituteMenuItemA
 import jetbrains.mps.lang.editor.menus.transformation.DefaultTransformationMenuLookup;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteActionsCollector;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteItemsCollector;
-import jetbrains.mps.nodeEditor.CellSide;
 import jetbrains.mps.nodeEditor.cellActions.SideTransformSubstituteInfo;
-import jetbrains.mps.nodeEditor.cellActions.SideTransformSubstituteInfo.Side;
 import jetbrains.mps.nodeEditor.menus.MenuUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -32,12 +30,12 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuLookup;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collections;
@@ -47,17 +45,6 @@ public class ModelActions {
   //-------------------
   // child substitute
   //-------------------
-
-
-  /**
-   *
-   * @deprecated use {@link #createChildNodeSubstituteActions(SNode, SNode, SContainmentLink, SAbstractConcept, IChildNodeSetter, EditorContext)}
-   */
-  @Deprecated
-  public static List<SubstituteAction> createChildNodeSubstituteActions(SNode parentNode, SNode currentChild, SNode childConcept, IChildNodeSetter childSetter,
-                                                                        IOperationContext context) {
-    return ChildSubstituteActionsHelper.createActions(parentNode, currentChild, childConcept, childSetter, context);
-  }
 
   public static List<SubstituteAction> createChildNodeSubstituteActions(@NotNull SNode parentNode, @Nullable SNode currentChild,
                                                                         @Nullable SContainmentLink link, @Nullable SAbstractConcept targetConcept,
@@ -88,34 +75,11 @@ public class ModelActions {
   // referent substitute
   //-------------------
 
-  public static List<SubstituteAction> createReferentSubstituteActions(SNode referenceNode, SNode currentReferent, SNode linkDeclaration,
-                                                                       IOperationContext context) {
-    IReferentPresentationProvider matchingTextProvider = IReferentPresentationProvider.getDefaultMatchingText(linkDeclaration);
-    IReferentPresentationProvider visibleMatchingTextProvider = IReferentPresentationProvider.getDefaultVisibleMatchingText(linkDeclaration);
-    return ReferentSubstituteActionsHelper.createActions(referenceNode, currentReferent, linkDeclaration, matchingTextProvider, visibleMatchingTextProvider);
-  }
-
-  public static List<SubstituteAction> createReferentSubstituteActions(SNode referenceNode, SNode currentReferent, SNode linkDeclaration,
+  public static List<SubstituteAction> createReferentSubstituteActions(SNode referenceNode, SReferenceLink link,
                                                                        @NotNull IReferentPresentationProvider matchingTextProvider,
                                                                        @NotNull IReferentPresentationProvider visibleMatchingTextProvider,
-                                                                       IOperationContext context) {
-    return ReferentSubstituteActionsHelper.createActions(referenceNode, currentReferent, linkDeclaration, matchingTextProvider, visibleMatchingTextProvider);
-  }
-
-  //-------------------
-  // right-transform hint substitute
-  //-------------------
-
-  public static boolean canCreateSideTransformHintSubstituteActions(SNode sourceNode, CellSide side, String transformTag, IOperationContext context) {
-    return new SideTransformHintSubstituteActionsHelper(sourceNode, side, transformTag, context).canCreateActions();
-  }
-
-  /**
-   * @deprecated use {@link #createSideTransformSubstituteActions(EditorCell, Side)}
-   */
-  @Deprecated
-  public static List<SubstituteAction> createSideTransformHintSubstituteActions(SNode sourceNode, CellSide side, String transformTag, IOperationContext context) {
-    return new SideTransformHintSubstituteActionsHelper(sourceNode, side, transformTag, context).createActions();
+                                                                       EditorContext editorContext) {
+    return ReferentSubstituteActionsHelper.createActions(referenceNode, link, matchingTextProvider, visibleMatchingTextProvider, editorContext);
   }
 
   public static List<SubstituteAction> createSideTransformSubstituteActions(@NotNull EditorCell cell, @NotNull SideTransformSubstituteInfo.Side side) {

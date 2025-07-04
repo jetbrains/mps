@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,34 +15,32 @@
  */
 package jetbrains.mps.ide.editor.warningPanel;
 
-import com.intellij.openapi.components.ProjectComponent;
-import com.intellij.openapi.extensions.Extensions;
+import com.intellij.openapi.Disposable;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.project.DumbService;
-import com.intellij.openapi.vcs.FileStatusListener;
-import com.intellij.openapi.vcs.FileStatusManager;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.classloading.MPSClassesListener;
-import jetbrains.mps.classloading.MPSClassesListenerAdapter;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.editor.MPSFileNodeEditor;
-import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.editor.EditorComponent;
+import jetbrains.mps.openapi.editor.style.Style;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
 import jetbrains.mps.util.containers.MultiMap;
-import jetbrains.mps.nodefs.MPSNodeVirtualFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -51,22 +49,24 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class MPSEditorWarningsManager implements ProjectComponent {
-  public static final Logger LOG = LogManager.getLogger(MPSEditorWarningsManager.class);
+public class MPSEditorWarningsManager implements Disposable {
 
   private final MPSProject myProject;
-  private final FileEditorManager myFileEditorManager;
-  private final FileStatusManager myFileStatusManager;
-  private ClassLoaderManager myClassLoaderManager;
-  private final MPSClassesListener myClassesListener = new EditorWarningsListenerAdapter();
-  private final MyFileStatusListener myFileStatusListener = new MyFileStatusListener();
-  private MessageBusConnection myProjectBus;
+  private final ModuleDeploymentListener myClassesListener = change -> updateAllWarningsLater();
+  // I don't truly need atomic boolean here, regular boolean would suffice in most cases, as requests generally come
+  // from same thread sequentially (e.g. modelLoaded). Nevertheless, it doesn't hurt to account for more complicated scenario.
+  private final AtomicBoolean myScheduledUpdateAllWarnings = new AtomicBoolean(false);
+
+  public static MPSEditorWarningsManager getInstance(Project ideaProject) {
+    return ideaProject.getService(MPSEditorWarningsManager.class);
+  }
 
   private final SRepositoryContentAdapter myRepoListener = new SRepositoryContentAdapter() {
     @Override
@@ -101,64 +101,28 @@ public class MPSEditorWarningsManager implements ProjectComponent {
 
   };
 
-  private MultiMap<MPSFileNodeEditor, WarningPanel> myWarnings = new MultiMap<MPSFileNodeEditor, WarningPanel>();
+  private final MultiMap<MPSFileNodeEditor, WarningPanel> myWarnings = new MultiMap<>();
 
-  public MPSEditorWarningsManager(MPSProject project, FileEditorManager fileEditorManager, FileStatusManager fileStatusManager, MPSCoreComponents coreComponents) {
-    myProject = project;
-    myFileEditorManager = fileEditorManager;
-    myFileStatusManager = fileStatusManager;
-    myClassLoaderManager = coreComponents.getClassLoaderManager();
-  }
-
-  @Override
-  public void projectOpened() {
-    myProjectBus = myProject.getProject().getMessageBus().connect();
-    myProjectBus.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new MyFileEditorManagerListener());
-    myClassLoaderManager.addClassesHandler(myClassesListener);
-    myFileStatusManager.addFileStatusListener(myFileStatusListener);
+  public MPSEditorWarningsManager(Project ideaProject) {
+    myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
+    LanguageRegistry lr = MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class);
+    lr.addRegistryListener(myClassesListener);
     new RepoListenerRegistrar(myProject.getRepository(), myRepoListener).attach();
   }
 
   @Override
-  public void projectClosed() {
+  public void dispose() {
     new RepoListenerRegistrar(myProject.getRepository(), myRepoListener).detach();
-    myFileStatusManager.removeFileStatusListener(myFileStatusListener);
-    myClassLoaderManager.removeClassesHandler(myClassesListener);
-    myProjectBus.disconnect();
-  }
-
-  @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return "MPS Editor Warnings Manager";
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
+    LanguageRegistry lr = MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class);
+    lr.removeRegistryListener(myClassesListener);
   }
 
   private void updateWarnings(@NotNull final MPSFileNodeEditor editor) {
-    DumbService.getInstance(myProject.getProject()).smartInvokeLater(new Runnable() {
-      @Override
-      public void run() {
-        final Runnable task = new Runnable() {
-          @Override
-          public void run() {
-            doUpdateWarnings(editor);
-          }
-        };
-        myProject.getModelAccess().runReadAction(task);
-      }
-    });
+    DumbService.getInstance(myProject.getProject()).smartInvokeLater(new ModelReadRunnable(myProject.getModelAccess(), () -> doUpdateWarnings(editor)));
   }
 
   private void doUpdateWarnings(final MPSFileNodeEditor editor) {
-    List<WarningPanel> newWarnings = new ArrayList<WarningPanel>();
+    List<WarningPanel> newWarnings = new ArrayList<>();
 
     Editor nodeEditor = editor.getNodeEditor();
     if (nodeEditor == null) return;
@@ -166,20 +130,33 @@ public class MPSEditorWarningsManager implements ProjectComponent {
     EditorComponent editorComponent = nodeEditor.getCurrentEditorComponent();
     if (editorComponent != null && editorComponent.isDisposed()) return;
 
-    SNode node;
+    final SNode node;
+    final StyleRegistry styleRegistry;
     if (editorComponent != null) {
       node = editorComponent.getEditedNode();
+      styleRegistry = editorComponent.getStyleRegistry();
     } else {
+      // Why do we care about warnings in an editor that didn't get EC? What kind of editor is it?
       MPSNodeVirtualFile file = editor.getFile();
       node = file != null && file.isValid() ? file.getNode() : null;
+      styleRegistry = myProject.getComponent(StyleRegistry.class);
     }
-    if (node == null || !SNodeUtil.isAccessible(node, myProject.getRepository())) return;
+    if (node == null || !SNodeUtil.isAccessible(node, myProject.getRepository())) {
+      return;
+    }
 
-    EditorWarningsProvider[] providers = Extensions.getExtensions(EditorWarningsProvider.EP_NAME);
+    final Style wpStyle = styleRegistry.getStyle("WARNING_PANEL");
+    Color bg = wpStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR);
+    Color fg = wpStyle.get(StyleAttributes.TEXT_COLOR);
+
+    List<EditorWarningsProvider> providers = EditorWarningsProvider.EP_NAME.getExtensionList();
 
     for (EditorWarningsProvider provider : providers) {
       WarningPanel panel = provider.getWarningPanel(node, myProject.getProject());
       if (panel != null) {
+        // facilitate same style (bg/fg) for all warnings
+        panel.setBackground(bg);
+        panel.setForeground(fg);
         newWarnings.add(panel);
       }
     }
@@ -188,9 +165,11 @@ public class MPSEditorWarningsManager implements ProjectComponent {
   }
 
   private void updateAllWarnings(@Nullable VirtualFile vf) {
-    if (RuntimeFlags.isTestMode()) return;
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
+      return;
+    }
 
-    for (FileEditor editor : myFileEditorManager.getAllEditors()) {
+    for (FileEditor editor : FileEditorManager.getInstance(myProject.getProject()).getAllEditors()) {
       if (editor instanceof MPSFileNodeEditor) {
         MPSFileNodeEditor mpsEditor = (MPSFileNodeEditor) editor;
         if (!mpsEditor.isDisposed()) {
@@ -204,14 +183,17 @@ public class MPSEditorWarningsManager implements ProjectComponent {
 
   // re-dispatch updateAllWarnings from an EDT thread
   /*package*/ void updateAllWarningsLater() {
-    ThreadUtils.runInUIThreadNoWait(new Runnable() {
-      @Override
-      public void run() {
-        if (myProject.isDisposed()) {
-          return;
-        }
-        updateAllWarnings();
+    if (myScheduledUpdateAllWarnings.get()) {
+      // there's already scheduled update in the EDT queue
+      return;
+    }
+    myScheduledUpdateAllWarnings.set(true);
+    ThreadUtils.runInUIThreadNoWait(() -> {
+      myScheduledUpdateAllWarnings.set(false);
+      if (myProject.isDisposed()) {
+        return;
       }
+      updateAllWarnings();
     });
 
   }
@@ -222,61 +204,74 @@ public class MPSEditorWarningsManager implements ProjectComponent {
 
   private void replaceWarningPanels(MPSFileNodeEditor editor, List<WarningPanel> newPanels) {
     Collection<WarningPanel> oldPanels = myWarnings.get(editor);
-    List<WarningPanel> toRemove = new ArrayList<WarningPanel>(oldPanels);
+    List<WarningPanel> toRemove = new ArrayList<>(oldPanels);
     toRemove.removeAll(newPanels);
-    List<WarningPanel> toAdd = new ArrayList<WarningPanel>(newPanels);
+    List<WarningPanel> toAdd = new ArrayList<>(newPanels);
     toAdd.removeAll(oldPanels);
 
+    FileEditorManager fileEditorManager = FileEditorManager.getInstance(myProject.getProject());
     for (WarningPanel panel : toRemove) {
-      myFileEditorManager.removeTopComponent(editor, panel);
+      fileEditorManager.removeTopComponent(editor, panel);
       myWarnings.removeValue(editor, panel);
     }
 
     for (WarningPanel panel : toAdd) {
-      myFileEditorManager.addTopComponent(editor, panel);
+      fileEditorManager.addTopComponent(editor, panel);
       myWarnings.putValue(editor, panel);
     }
   }
 
-  private class MyFileEditorManagerListener implements FileEditorManagerListener {
+  /*package*/ void forgetAllExcept(List<FileEditor> list) {
+    // FIXME ugly API
+    myWarnings.keySet().retainAll(list);
+  }
+
+
+  public static class EditorManagerListener implements FileEditorManagerListener {
+    private final Project myProject;
+
+    public EditorManagerListener(Project ideaProject) {
+      myProject = ideaProject;
+    }
+
     @Override
-    public void fileOpened(FileEditorManager source, VirtualFile file) {
+    public void fileOpened(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
+      // XXX why not updateAllWarnings(file) ?
       if (file instanceof MPSNodeVirtualFile) {
-        for (FileEditor fe : myFileEditorManager.getEditors(file)) {
+        for (FileEditor fe : source.getEditors(file)) {
           if (fe instanceof MPSFileNodeEditor) {
-            updateWarnings((MPSFileNodeEditor) fe);
+            getInstance(myProject).updateWarnings((MPSFileNodeEditor) fe);
           }
         }
       }
     }
 
     @Override
-    public void fileClosed(FileEditorManager source, VirtualFile file) {
-      myWarnings.keySet().retainAll(Arrays.asList(source.getAllEditors()));
+    public void fileClosed(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
+      getInstance(myProject).forgetAllExcept(Arrays.asList(source.getAllEditors()));
     }
 
     @Override
-    public void selectionChanged(FileEditorManagerEvent event) {
-      updateAllWarnings();
+    public void selectionChanged(@NotNull FileEditorManagerEvent event) {
+      getInstance(myProject).updateAllWarnings();
     }
   }
 
-  private class EditorWarningsListenerAdapter extends MPSClassesListenerAdapter {
-    @Override
-    public void afterClassesLoaded(Set<? extends ReloadableModuleBase> modules) {
-      updateAllWarningsLater();
-    }
-  }
+  public static class FileStatusListener implements com.intellij.openapi.vcs.FileStatusListener {
+    private final Project myProject;
 
-  private class MyFileStatusListener implements FileStatusListener {
+    public FileStatusListener(Project ideaProject) {
+      myProject = ideaProject;
+    }
+
     @Override
     public void fileStatusChanged(@NotNull final VirtualFile virtualFile) {
-      updateAllWarnings(virtualFile);
+      getInstance(myProject).updateAllWarnings(virtualFile);
     }
 
     @Override
     public void fileStatusesChanged() {
-      updateAllWarnings();
+      getInstance(myProject).updateAllWarnings();
     }
   }
 }

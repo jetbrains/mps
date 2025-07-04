@@ -4,12 +4,12 @@ package testPackagedLanguage.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_TestConcept = new ConceptPresentationBuilder().icon(IconContainer.RESOURCE_a0a0a).create();
+  private ConceptPresentation props_TestConcept;
 
   @Override
   @Nullable
@@ -17,6 +17,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.TestConcept:
+        if (props_TestConcept == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("TestConcept");
+          cpb.icon(IconContainer.RESOURCE_0);
+          props_TestConcept = cpb.create();
+        }
         return props_TestConcept;
     }
     return null;

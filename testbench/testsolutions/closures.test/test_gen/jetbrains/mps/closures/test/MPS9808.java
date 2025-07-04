@@ -6,13 +6,27 @@ import java.util.List;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+<<<<<<< HEAD:testbench/testsolutions/closures.test/test_gen/jetbrains/mps/closures/test/MPS9808.java
+=======
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+>>>>>>> origin/MPS1.5:core/baseLanguage/closures/solutions/closures.test/source_gen/jetbrains/mps/closures/test/MPS9808.java
 
 public class MPS9808 {
   private List<_FunctionTypes._void_P2_E0<? super String, ? super Object[]>> beforeListeners = ListSequence.fromList(new ArrayList<_FunctionTypes._void_P2_E0<? super String, ? super Object[]>>());
   private List<_FunctionTypes._void_P2_E0<? super String, ? super Object[]>> afterListeners = ListSequence.fromList(new ArrayList<_FunctionTypes._void_P2_E0<? super String, ? super Object[]>>());
+<<<<<<< HEAD:testbench/testsolutions/closures.test/test_gen/jetbrains/mps/closures/test/MPS9808.java
   public MPS9808() {
   }
+  protected void fireBefore(final String command, final Object[] params) {
+    ListSequence.fromList(beforeListeners).visitAll((it) -> it.invoke(command, params));
+  }
+  protected void fireAfter(final String command, final Object[] params) {
+    ListSequence.fromList(afterListeners).visitAll((it) -> it.invoke(command, params));
+=======
+
+  public MPS9808() {
+  }
+
   protected void fireBefore(final String command, final Object[] params) {
     ListSequence.fromList(beforeListeners).visitAll(new IVisitor<_FunctionTypes._void_P2_E0<? super String, ? super Object[]>>() {
       public void visit(_FunctionTypes._void_P2_E0<? super String, ? super Object[]> it) {
@@ -20,11 +34,13 @@ public class MPS9808 {
       }
     });
   }
+
   protected void fireAfter(final String command, final Object[] params) {
     ListSequence.fromList(afterListeners).visitAll(new IVisitor<_FunctionTypes._void_P2_E0<? super String, ? super Object[]>>() {
       public void visit(_FunctionTypes._void_P2_E0<? super String, ? super Object[]> it) {
         it.invoke(command, params);
       }
     });
+>>>>>>> origin/MPS1.5:core/baseLanguage/closures/solutions/closures.test/source_gen/jetbrains/mps/closures/test/MPS9808.java
   }
 }

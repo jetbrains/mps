@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,6 @@
  */
 package jetbrains.mps.testsuites;
 
-import jetbrains.mps.generator.impl.plan.GenPlanTest;
-import jetbrains.mps.ide.ThreadUtilsTest;
-import jetbrains.mps.smodel.ModelPerformanceTest;
-import jetbrains.mps.workbench.goTo.matcher.MPSPackageItemProviderTests;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -34,8 +30,20 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @RunWith(Suite.class)
 @SuiteClasses({
-    GenPlanTest.class,
-    MPSPackageItemProviderTests.class,
-    ThreadUtilsTest.class})
+    jetbrains.mps.generator.impl.plan.GenPlanTest.class,
+    jetbrains.mps.workbench.goTo.matcher.MPSPackageItemProviderTests.class,
+    jetbrains.mps.ide.blame.command.YouTrackURLTest.class,
+    jetbrains.mps.ide.blame.command.YouTrackStatsTest.class,
+    jetbrains.mps.smodel.language.ExtensionRegistryTest.class,
+    jetbrains.mps.editor.runtime.style.StyleTests.class,
+    jetbrains.mps.text.TextAreaTest.class,
+    jetbrains.mps.text.TextBufferTest.class,
+    jetbrains.mps.util.performance.PerfTracerTest.class,
+    jetbrains.mps.reloading.JarClassPathItemTest.class,
+    jetbrains.mps.core.platform.DynamicComponentsTest.class,
+    jetbrains.mps.make.JavaCompilerTest.class,
+    jetbrains.mps.ide.ThreadUtilsTest.class,
+    jetbrains.mps.ide.projectPane.logicalview.VirtualFolderHelperTest.class
+})
 public class NoPlatformTestSuite {
 }

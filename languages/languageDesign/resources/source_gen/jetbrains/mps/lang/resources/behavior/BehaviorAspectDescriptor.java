@@ -21,9 +21,11 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
   private final BHDescriptor myRect__BehaviorDescriptor = new Rect__BehaviorDescriptor();
   private final BHDescriptor myIconLayerDescription__BehaviorDescriptor = new IconLayerDescription__BehaviorDescriptor();
   private final BHDescriptor myText__BehaviorDescriptor = new Text__BehaviorDescriptor();
+  private final BHDescriptor myBaseURLFunction__BehaviorDescriptor = new BaseURLFunction__BehaviorDescriptor();
+  private final BHDescriptor myBaseURL__BehaviorDescriptor = new BaseURL__BehaviorDescriptor();
+  private final BHDescriptor myBaseURLLiteral__BehaviorDescriptor = new BaseURLLiteral__BehaviorDescriptor();
+  private final BHDescriptor myConstantFieldIcon__BehaviorDescriptor = new ConstantFieldIcon__BehaviorDescriptor();
   private final BHDescriptor myFileIcon__BehaviorDescriptor = new FileIcon__BehaviorDescriptor();
-  private final BHDescriptor myOldIconBundle__BehaviorDescriptor = new OldIconBundle__BehaviorDescriptor();
-  private final BHDescriptor myOldIconReference__BehaviorDescriptor = new OldIconReference__BehaviorDescriptor();
   private final BHDescriptor myResource__BehaviorDescriptor = new Resource__BehaviorDescriptor();
 
   public BehaviorAspectDescriptor() {
@@ -32,36 +34,40 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
   @Nullable
   public BHDescriptor getDescriptor(@NotNull SAbstractConcept concept) {
     SAbstractConcept cncpt = concept;
-    switch (index_846f5o_a0q.index(cncpt)) {
+    switch (conceptIndex.index(cncpt)) {
       case 0:
-        return myCircle__BehaviorDescriptor;
+        return myBaseURL__BehaviorDescriptor;
       case 1:
-        return myColor__BehaviorDescriptor;
+        return myBaseURLFunction__BehaviorDescriptor;
       case 2:
-        return myColorLiteral__BehaviorDescriptor;
+        return myBaseURLLiteral__BehaviorDescriptor;
       case 3:
-        return myFileIcon__BehaviorDescriptor;
+        return myCircle__BehaviorDescriptor;
       case 4:
-        return myIcon__BehaviorDescriptor;
+        return myColor__BehaviorDescriptor;
       case 5:
-        return myIconLayerDescription__BehaviorDescriptor;
+        return myColorLiteral__BehaviorDescriptor;
       case 6:
-        return myImage__BehaviorDescriptor;
+        return myConstantFieldIcon__BehaviorDescriptor;
       case 7:
-        return myOldIconBundle__BehaviorDescriptor;
+        return myFileIcon__BehaviorDescriptor;
       case 8:
-        return myOldIconReference__BehaviorDescriptor;
+        return myIcon__BehaviorDescriptor;
       case 9:
-        return myRect__BehaviorDescriptor;
+        return myIconLayerDescription__BehaviorDescriptor;
       case 10:
-        return myResource__BehaviorDescriptor;
+        return myImage__BehaviorDescriptor;
       case 11:
-        return myText__BehaviorDescriptor;
+        return myRect__BehaviorDescriptor;
       case 12:
+        return myResource__BehaviorDescriptor;
+      case 13:
+        return myText__BehaviorDescriptor;
+      case 14:
         return myTextIcon__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex index_846f5o_a0q = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e60L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bdeL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c3774289eeeL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0xb8b96b5078f3367L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bdL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c7L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6caL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b7L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e696656L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b8L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e60L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bdeL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x6e053ee00272f4f8L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c3774289eeeL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0xb8b96b5078f3367L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6caL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L)).seal();
 }

@@ -16,7 +16,9 @@
 package jetbrains.mps.nodeEditor.commands;
 
 import jetbrains.mps.openapi.editor.commands.CommandContext;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 /**
  * User: shatalin
@@ -42,5 +44,11 @@ public class CommandContextWrapper implements CommandContext {
   @Override
   public SNode getContextNode() {
     return myContext.getContextNode();
+  }
+
+  @NotNull
+  @Override
+  public SRepository getRepository() {
+    return myContext.getRepository();
   }
 }

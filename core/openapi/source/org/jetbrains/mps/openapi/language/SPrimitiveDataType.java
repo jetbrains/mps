@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +17,10 @@ package org.jetbrains.mps.openapi.language;
 
 /**
  * It represents primitive data types, such as int, string or boolean.
+ * Now just a marker interface, of no use, and likely shall be removed - I don't see any possible use
+ *
+ * @deprecated Use one of SPrimitiveTypes
  */
+@Deprecated(since = "2018.3", forRemoval = true)
 public interface SPrimitiveDataType extends SDataType {
-  int STRING = 0;
-  int BOOL = 1;
-  int INT = 2;
-
-  int getType();
 }

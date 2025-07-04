@@ -4,10 +4,16 @@ package jetbrains.mps.internal.collections.runtime;
 
 import java.util.Deque;
 import java.util.Queue;
-import jetbrains.mps.baseLanguage.closures.runtime.AdapterClass;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 public interface ILinkedListSequence<T> extends IListSequence<T>, Deque<T> {
+  ILinkedListSequence<T> reversed();
+  T getLast();
+  void addLast(T t);
+  T getFirst();
+  T removeLast();
+  T removeFirst();
+  void addFirst(T t);
   T addLastElement(T t);
   T removeFirstElement();
   Queue<T> toQueue();
@@ -18,7 +24,7 @@ public interface ILinkedListSequence<T> extends IListSequence<T>, Deque<T> {
   T pushElement(T t);
   ILinkedListSequence<T> addSequence(ISequence<? extends T> seq);
   ILinkedListSequence<T> removeSequence(ISequence<? extends T> seq);
-  ILinkedListSequence<T> removeWhere(@AdapterClass(value = "IWhereFilter") _FunctionTypes._return_P1_E0<? extends Boolean, ? super T> filter);
+  ILinkedListSequence<T> removeWhere(_FunctionTypes._return_P1_E0<? extends Boolean, ? super T> filter);
   ILinkedListSequence<T> asUnmodifiable();
   ILinkedListSequence<T> asSynchronized();
 }

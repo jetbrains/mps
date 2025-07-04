@@ -3,10 +3,10 @@
   <persistence version="9" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="0" />
-    <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="0" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
+    <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension" version="2" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="5" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
     <import index="d0sk" ref="r:563c6cb5-48a3-4687-82d5-92941d8180e2(jetbrains.mps.lang.extension.tests.plugin)" />
@@ -28,11 +28,8 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
-      </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
       </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
@@ -68,9 +65,6 @@
         <child id="1070534934091" name="type" index="10QFUM" />
         <child id="1070534934092" name="expression" index="10QFUP" />
       </concept>
-      <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
-        <child id="1068390468201" name="constructor" index="312cEh" />
-      </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
@@ -103,7 +97,6 @@
       <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
         <property id="1068580123138" name="value" index="3clFbU" />
       </concept>
-      <concept id="1068580123140" name="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" flags="ig" index="3clFbW" />
       <concept id="1068581242864" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" flags="nn" index="3cpWs8">
         <child id="1068581242865" name="localVariableDeclaration" index="3cpWs9" />
       </concept>
@@ -115,7 +108,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -137,7 +130,7 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
@@ -153,6 +146,7 @@
       <concept id="3175313036448560967" name="jetbrains.mps.lang.extension.structure.GetExtensionObjectsOperation" flags="nn" index="SfwO_" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -195,13 +189,13 @@
       <concept id="1172073500303" name="jetbrains.mps.baseLanguage.unitTest.structure.Message" flags="ng" index="3_1$Yv">
         <child id="1172073511101" name="message" index="3_1BAH" />
       </concept>
-      <concept id="1172075514136" name="jetbrains.mps.baseLanguage.unitTest.structure.MessageHolder" flags="ng" index="3_9gw8">
+      <concept id="1172075514136" name="jetbrains.mps.baseLanguage.unitTest.structure.MessageHolder" flags="ngI" index="3_9gw8">
         <child id="1172075534298" name="message" index="3_9lra" />
       </concept>
       <concept id="8243879142738613213" name="jetbrains.mps.baseLanguage.unitTest.structure.AfterTest" flags="in" index="1KhZuU" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -209,7 +203,6 @@
       <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
         <child id="1204796294226" name="closure" index="23t8la" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1205679737078" name="jetbrains.mps.baseLanguage.collections.structure.SortOperation" flags="nn" index="2S7cBI">
         <child id="1205679832066" name="ascending" index="2S7zOq" />
       </concept>
@@ -229,11 +222,6 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="66AaOfxlr5f" role="1B3o_S" />
-    <node concept="3clFbW" id="66AaOfxlr5g" role="312cEh">
-      <node concept="3cqZAl" id="66AaOfxlr5h" role="3clF45" />
-      <node concept="3Tm1VV" id="66AaOfxlr5i" role="1B3o_S" />
-      <node concept="3clFbS" id="66AaOfxlr5j" role="3clF47" />
-    </node>
     <node concept="3s_gsd" id="66AaOfxlr5k" role="3s_ewO">
       <node concept="3s$Bmu" id="66AaOfxlr5l" role="3s_gse">
         <property role="3s$Bm0" value="testObject" />
@@ -269,7 +257,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="66AaOfxlrbg" role="2OqNvi">
-                  <ref role="37wK5l" to="bmr5:~ExtensionPoint.getExtensions():java.lang.Iterable" resolve="getExtensions" />
+                  <ref role="37wK5l" to="bmr5:~ExtensionPoint.getExtensions()" resolve="getExtensions" />
                 </node>
               </node>
             </node>
@@ -298,7 +286,7 @@
                   <ref role="3cqZAo" node="66AaOfxlrba" resolve="extensions" />
                 </node>
                 <node concept="liA8E" id="66AaOfxlrdL" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Iterable.iterator():java.util.Iterator" resolve="iterator" />
+                  <ref role="37wK5l" to="wyt6:~Iterable.iterator()" resolve="iterator" />
                 </node>
               </node>
             </node>
@@ -309,7 +297,7 @@
                 <ref role="3cqZAo" node="66AaOfxlrdF" resolve="it" />
               </node>
               <node concept="liA8E" id="66AaOfxlre8" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~Iterator.hasNext():boolean" resolve="hasNext" />
+                <ref role="37wK5l" to="33ny:~Iterator.hasNext()" resolve="hasNext" />
               </node>
             </node>
           </node>
@@ -327,7 +315,7 @@
                   <ref role="3cqZAo" node="66AaOfxlrdF" resolve="it" />
                 </node>
                 <node concept="liA8E" id="66AaOfxlrbV" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~Iterator.next():java.lang.Object" resolve="next" />
+                  <ref role="37wK5l" to="33ny:~Iterator.next()" resolve="next" />
                 </node>
               </node>
             </node>
@@ -342,7 +330,7 @@
                   <ref role="3cqZAo" node="66AaOfxlrdF" resolve="it" />
                 </node>
                 <node concept="liA8E" id="66AaOfxlrdW" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~Iterator.next():java.lang.Object" resolve="next" />
+                  <ref role="37wK5l" to="33ny:~Iterator.next()" resolve="next" />
                 </node>
               </node>
             </node>
@@ -363,7 +351,7 @@
                   <ref role="3cqZAo" node="66AaOfxlrbO" resolve="ext" />
                 </node>
                 <node concept="liA8E" id="66AaOfxlrce" role="2OqNvi">
-                  <ref role="37wK5l" to="bmr5:~Extension.get():java.lang.Object" resolve="get" />
+                  <ref role="37wK5l" to="bmr5:~Extension.get()" resolve="get" />
                 </node>
               </node>
             </node>
@@ -446,7 +434,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="2hA_2dv2TY9" role="2OqNvi">
-                  <ref role="37wK5l" to="bmr5:~ExtensionPoint.getExtensions():java.lang.Iterable" resolve="getExtensions" />
+                  <ref role="37wK5l" to="bmr5:~ExtensionPoint.getExtensions()" resolve="getExtensions" />
                 </node>
               </node>
             </node>
@@ -464,15 +452,15 @@
                       <ref role="3cqZAo" node="2hA_2dv2TY3" resolve="extensions" />
                     </node>
                     <node concept="liA8E" id="2hA_2dv2Upc" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Iterable.iterator():java.util.Iterator" resolve="iterator" />
+                      <ref role="37wK5l" to="wyt6:~Iterable.iterator()" resolve="iterator" />
                     </node>
                   </node>
                   <node concept="liA8E" id="2hA_2dv2Upd" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~Iterator.next():java.lang.Object" resolve="next" />
+                    <ref role="37wK5l" to="33ny:~Iterator.next()" resolve="next" />
                   </node>
                 </node>
                 <node concept="liA8E" id="2hA_2dv2Upe" role="2OqNvi">
-                  <ref role="37wK5l" to="bmr5:~Extension.get():java.lang.Object" resolve="get" />
+                  <ref role="37wK5l" to="bmr5:~Extension.get()" resolve="get" />
                 </node>
               </node>
             </node>
@@ -518,13 +506,13 @@
                       <node concept="3clFbS" id="3R7uD3D6C$R" role="1bW5cS">
                         <node concept="3clFbF" id="3R7uD3D6C$S" role="3cqZAp">
                           <node concept="37vLTw" id="2BHiRxgmaxK" role="3clFbG">
-                            <ref role="3cqZAo" node="3R7uD3D6C$U" resolve="it" />
+                            <ref role="3cqZAo" node="5W7E4fV0Y3u" resolve="it" />
                           </node>
                         </node>
                       </node>
-                      <node concept="Rh6nW" id="3R7uD3D6C$U" role="1bW2Oz">
+                      <node concept="gl6BB" id="5W7E4fV0Y3u" role="1bW2Oz">
                         <property role="TrG5h" value="it" />
-                        <node concept="2jxLKc" id="3R7uD3D6C$V" role="1tU5fm" />
+                        <node concept="2jxLKc" id="5W7E4fV0Y3v" role="1tU5fm" />
                       </node>
                     </node>
                     <node concept="1nlBCl" id="3R7uD3D6C_e" role="2S7zOq">
@@ -571,11 +559,11 @@
             <node concept="3clFbF" id="2hA_2dv2AwK" role="3cqZAp">
               <node concept="2OqwBi" id="2hA_2dv2G6T" role="3clFbG">
                 <node concept="2YIFZM" id="2hA_2dv2G6Q" role="2Oq$k0">
-                  <ref role="37wK5l" to="f061:~ApplicationManagerEx.getApplicationEx():com.intellij.openapi.application.ex.ApplicationEx" resolve="getApplicationEx" />
+                  <ref role="37wK5l" to="f061:~ApplicationManagerEx.getApplicationEx()" resolve="getApplicationEx" />
                   <ref role="1Pybhc" to="f061:~ApplicationManagerEx" resolve="ApplicationManagerEx" />
                 </node>
                 <node concept="liA8E" id="2hA_2dv2Ihi" role="2OqNvi">
-                  <ref role="37wK5l" to="bd8o:~Application.addApplicationListener(com.intellij.openapi.application.ApplicationListener):void" resolve="addApplicationListener" />
+                  <ref role="37wK5l" to="bd8o:~Application.addApplicationListener(com.intellij.openapi.application.ApplicationListener)" resolve="addApplicationListener" />
                   <node concept="2ShNRf" id="2hA_2dv2Ihj" role="37wK5m">
                     <node concept="YeOm9" id="2hA_2dv2L1P" role="2ShVmc">
                       <node concept="1Y3b0j" id="2hA_2dv2L1Q" role="YeSDq">
@@ -583,7 +571,6 @@
                         <ref role="1Y3XeK" to="bd8o:~ApplicationAdapter" resolve="ApplicationAdapter" />
                         <ref role="37wK5l" to="bd8o:~ApplicationAdapter.&lt;init&gt;()" resolve="ApplicationAdapter" />
                         <node concept="3clFb_" id="2hA_2dv2L2D" role="jymVt">
-                          <property role="IEkAT" value="false" />
                           <property role="1EzhhJ" value="false" />
                           <property role="TrG5h" value="applicationExiting" />
                           <property role="DiZV1" value="false" />

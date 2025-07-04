@@ -8,8 +8,6 @@
   <imports>
     <import index="3xdn" ref="r:935ba0ee-7291-4caa-a807-d76e8fc69391(jetbrains.mps.lang.smodel.query.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
-    <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" />
-    <import index="n8mm" ref="r:be520d7c-8791-490a-9d50-1adca7cd12c4(jetbrains.mps.lang.smodel.query.editor)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -80,7 +78,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -146,22 +144,22 @@
       </node>
     </node>
   </node>
-  <node concept="37WguZ" id="31Tct3Tmt18">
+  <node concept="37WguZ" id="238_VGTIKz_">
     <property role="3GE5qa" value="query.parameter" />
     <property role="TrG5h" value="ScopeParameterLiteral_factories" />
-    <node concept="37WvkG" id="31Tct3TnY01" role="37WGs$">
-      <ref role="37XkoT" to="3xdn:31Tct3Txnn9" resolve="CustomScope" />
-      <node concept="37Y9Zx" id="31Tct3TnY02" role="37ZfLb">
-        <node concept="3clFbS" id="31Tct3TnY03" role="2VODD2">
-          <node concept="3clFbF" id="31Tct3TnY04" role="3cqZAp">
-            <node concept="2OqwBi" id="31Tct3TnY05" role="3clFbG">
-              <node concept="2OqwBi" id="31Tct3TnY06" role="2Oq$k0">
-                <node concept="1r4Lsj" id="31Tct3TnY07" role="2Oq$k0" />
-                <node concept="3TrEf2" id="31Tct3TxOzG" role="2OqNvi">
-                  <ref role="3Tt5mk" to="3xdn:31Tct3Txpke" resolve="scope" />
+    <node concept="37WvkG" id="238_VGTIKzA" role="37WGs$">
+      <ref role="37XkoT" to="3xdn:238_VGTIKuD" resolve="CustomScope" />
+      <node concept="37Y9Zx" id="238_VGTIKzB" role="37ZfLb">
+        <node concept="3clFbS" id="238_VGTIKzC" role="2VODD2">
+          <node concept="3clFbF" id="238_VGTIKzD" role="3cqZAp">
+            <node concept="2OqwBi" id="238_VGTIKzE" role="3clFbG">
+              <node concept="2OqwBi" id="238_VGTIKzF" role="2Oq$k0">
+                <node concept="1r4Lsj" id="238_VGTIKzG" role="2Oq$k0" />
+                <node concept="3TrEf2" id="238_VGTIKzH" role="2OqNvi">
+                  <ref role="3Tt5mk" to="3xdn:238_VGTIKuE" resolve="scope" />
                 </node>
               </node>
-              <node concept="2DeJnY" id="31Tct3TxPN2" role="2OqNvi">
+              <node concept="2DeJnY" id="238_VGTIKzI" role="2OqNvi">
                 <ref role="1A9B2P" to="tpee:gEShNN5" resolve="GenericNewExpression" />
               </node>
             </node>

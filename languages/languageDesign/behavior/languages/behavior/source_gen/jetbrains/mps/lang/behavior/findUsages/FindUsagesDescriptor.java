@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder;
 import jetbrains.mps.smodel.runtime.FinderRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FindUsagesDescriptor extends BaseFindUsagesDescriptor {
@@ -19,6 +20,8 @@ public class FindUsagesDescriptor extends BaseFindUsagesDescriptor {
   public IInterfacedFinder instantiate(int token) throws IllegalArgumentException {
     switch (token) {
       case 0:
+        return new OverriddenMethods_Finder();
+      case 1:
         return new OverridingMethods_Finder();
       default:
         throw new IllegalArgumentException(String.format("Illegal identifier of a finder implementation: %d", token));
@@ -27,6 +30,11 @@ public class FindUsagesDescriptor extends BaseFindUsagesDescriptor {
 
   @Override
   public void init(FinderRegistry reg) {
-    reg.add(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"), 0, "OverridingMethods");
+    reg.add(CONCEPTS.ConceptMethodDeclaration$N0, 0, "OverriddenMethods");
+    reg.add(CONCEPTS.ConceptMethodDeclaration$N0, 1, "OverridingMethods");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 }

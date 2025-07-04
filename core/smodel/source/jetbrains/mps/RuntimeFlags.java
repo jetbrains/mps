@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,8 +24,14 @@ package jetbrains.mps;
  */
 public final class RuntimeFlags {
   private static TestMode ourTestMode = TestMode.NONE;
+  private static Boolean ourInternalMode = null;
   private static boolean ourMergeDriverMode = false;
   private static Boolean ourCastException = null;
+  private static Boolean ourEclipseJavaCompiler = null;
+  private static Boolean ourLegacyLoadModels = null;
+  private static Boolean ourCustomNodeIdentitySupport;
+
+  private static Boolean ourLegacyCLDeps = null;
 
   private RuntimeFlags() {
   }
@@ -36,11 +42,22 @@ public final class RuntimeFlags {
 
   // not lightweight test run ("in-process")
   public static boolean isTestMode() {
-    return ourTestMode.equals(TestMode.USUAL);
+    return ourTestMode == TestMode.USUAL;
   }
 
   public static void setTestMode(TestMode testMode) {
     ourTestMode = testMode;
+  }
+
+  public static boolean isInternalMode() {
+    if (ourInternalMode == null) {
+      ourInternalMode = Boolean.getBoolean("mps.internal");
+    }
+    return ourInternalMode;
+  }
+
+  public static void setInternalMode(boolean internalMode) {
+    ourInternalMode = internalMode;
   }
 
   /**
@@ -63,8 +80,53 @@ public final class RuntimeFlags {
    */
   public static boolean isExceptionOnBadCast() {
     if (ourCastException == null) {
-      ourCastException = !"true".equals(System.getProperty("mps.disableNodeCastExceptions"));
+      ourCastException = !Boolean.getBoolean("mps.disableNodeCastExceptions");
     }
     return ourCastException;
+  }
+
+  /**
+   * For a long time, MPS relied on ECJ to compile generated classes. In 2021.1, support
+   * for {@link javax.tools.JavaCompiler} API has been added, and it's default compilation option now.
+   * One can either use system-default java compiler (the one of `javac` command-line tool) or
+   * use ECJ through the same API. Note, if ECJ is not installed, MPS falls back to default compiler.
+   * Set {@code "mps.compiler.java=ecj"} system property to ask MPS to use Eclipse Java Compiler.
+   * @return true to use ECJ for compilation
+   */
+  public static boolean useEclipseJavaCompiler() {
+    if (ourEclipseJavaCompiler == null) {
+      ourEclipseJavaCompiler = "ecj".equalsIgnoreCase(System.getProperty("mps.compiler.java"));
+    }
+    return ourEclipseJavaCompiler;
+  }
+
+  /**
+   * experimental support not to load complete model set when module is attached to a repository
+   * (rather loaded on demand, when ModelReference.resolve() needs it)
+   */
+  public static boolean modelsLoadedOnModuleAttach() {
+    if (ourLegacyLoadModels == null) {
+      final String val = System.getProperty("mps.models.force");
+      // default false for testing purposes
+      ourLegacyLoadModels = Boolean.parseBoolean(val);
+      // if I don't want to enable it in release, uncomment the next line
+      // ourLegacyLoadModels = val == null || Boolean.parseBoolean(val);
+    }
+    return ourLegacyLoadModels;
+  }
+
+  public static boolean legacyCLDependencies() {
+    if (ourLegacyCLDeps == null) {
+      // we're good with new approach unless forced to use the old one
+      ourLegacyCLDeps = Boolean.getBoolean("mps.clm.deps.legacy");
+    }
+    return ourLegacyCLDeps;
+  }
+
+  public static boolean customNodeIdentitySupport() {
+    if (ourCustomNodeIdentitySupport == null) {
+      ourCustomNodeIdentitySupport = Boolean.getBoolean("mps.nodeuid");
+    }
+    return ourCustomNodeIdentitySupport;
   }
 }

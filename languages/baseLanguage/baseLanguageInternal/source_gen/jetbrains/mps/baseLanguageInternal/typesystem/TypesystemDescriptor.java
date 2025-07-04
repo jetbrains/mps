@@ -31,6 +31,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_ExtractToSingleConstantExpression_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_InternalAnonymousClass_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -44,6 +48,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_InternalClassExpression_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_InternalLambdaExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -76,10 +84,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_InternalVariableReference_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
-      InferenceRule_Runtime inferenceRule = new typeof_TypeHintExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {

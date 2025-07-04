@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="ConstraintsAspectDescriptor.java">
+      <unit at="15,0,36,0" name="jetbrains.mps.vcs.mergehints.constraints.ConstraintsAspectDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:db2ce397-cf4f-423c-9613-b88195c6529a(jetbrains.mps.vcs.mergehints.constraints)/1611756961204470243">
+    <file name="ConceptVCSDescriptor_Constraints.java">
+      <node id="1611756961204470243" at="28,94,29,57" concept="9" />
+      <node id="1611756961204470244" at="29,57,30,26" concept="1" />
+      <node id="1611756961204470244" at="34,54,35,54" concept="9" />
+      <node id="1611756961204470244" at="42,61,43,141" concept="5" />
+      <node id="6836281137582781554" at="47,106,48,36" concept="5" />
+      <node id="6836281137582781557" at="49,11,50,0" concept="6" />
+      <node id="6836281137582781558" at="50,0,51,147" concept="4" />
+      <node id="6836281137582781568" at="52,34,53,36" concept="5" />
+      <node id="6836281137582781574" at="54,11,55,0" concept="6" />
+      <node id="6836281137582781575" at="55,0,56,115" concept="5" />
+      <node id="6836281137582781560" at="61,38,62,63" concept="5" />
+      <node id="6836281137582781560" at="63,7,64,18" concept="5" />
+      <node id="1611756961204470243" at="69,0,70,0" concept="7" trace="ConceptVCSDescriptor$rz" />
+      <node id="1611756961204470243" at="70,0,71,0" concept="7" trace="AbstractConceptDeclaration$KA" />
+      <node id="1611756961204470243" at="74,0,75,0" concept="7" trace="cncpt$ubC$" />
+      <node id="1611756961204470244" at="34,0,37,0" concept="0" trace="RD1#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
+      <node id="6836281137582781548" at="46,78,49,11" concept="2" />
+      <node id="6836281137582781566" at="51,147,54,11" concept="2" />
+      <node id="6836281137582781560" at="60,81,63,7" concept="2" />
+      <node id="1611756961204470243" at="28,0,32,0" concept="0" trace="ConceptVCSDescriptor_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <node id="1611756961204470244" at="41,0,45,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="6836281137582781560" at="60,0,66,0" concept="8" trace="check_mx0wvm_a0c0b0a0a0b2#(Ljetbrains/mps/smodel/Language;)Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="1611756961204470244" at="45,0,58,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="1611756961204470244" at="39,54,58,8" concept="5" />
+      <node id="1611756961204470244" at="37,0,60,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <scope id="1611756961204470244" at="34,54,35,54" />
+      <scope id="1611756961204470244" at="42,61,43,141" />
+      <scope id="6836281137582781553" at="47,106,48,36" />
+      <scope id="6836281137582781567" at="52,34,53,36" />
+      <scope id="6836281137582781560" at="61,38,62,63" />
+      <scope id="1611756961204470243" at="28,94,30,26" />
+      <scope id="1611756961204470244" at="34,0,37,0">
+        <var name="container" id="1611756961204470244" />
+      </scope>
+      <scope id="1611756961204470243" at="28,0,32,0">
+        <var name="initContext" id="1611756961204470243" />
+      </scope>
+      <scope id="1611756961204470244" at="41,0,45,0" />
+      <scope id="6836281137582781560" at="60,81,64,18" />
+      <scope id="6836281137582781560" at="60,0,66,0">
+        <var name="checkedDotOperand" id="6836281137582781560" />
+      </scope>
+      <scope id="1611756961204470244" at="46,78,56,115">
+        <var name="structure" id="6836281137582781559" />
+      </scope>
+      <scope id="1611756961204470244" at="45,0,58,0">
+        <var name="_context" id="1611756961204470244" />
+      </scope>
+      <scope id="1611756961204470244" at="39,54,58,8" />
+      <scope id="1611756961204470244" at="37,0,60,0" />
+      <unit id="1611756961204470243" at="73,0,76,0" name="jetbrains.mps.vcs.mergehints.constraints.ConceptVCSDescriptor_Constraints$LINKS" />
+      <unit id="1611756961204470243" at="68,0,72,0" name="jetbrains.mps.vcs.mergehints.constraints.ConceptVCSDescriptor_Constraints$CONCEPTS" />
+      <unit id="1611756961204470244" at="40,17,58,7" name="jetbrains.mps.vcs.mergehints.constraints.ConceptVCSDescriptor_Constraints$RD1$1" />
+      <unit id="1611756961204470244" at="33,0,67,0" name="jetbrains.mps.vcs.mergehints.constraints.ConceptVCSDescriptor_Constraints$RD1" />
+      <unit id="1611756961204470243" at="27,0,77,0" name="jetbrains.mps.vcs.mergehints.constraints.ConceptVCSDescriptor_Constraints" />
+    </file>
+  </root>
+  <root nodeRef="r:db2ce397-cf4f-423c-9613-b88195c6529a(jetbrains.mps.vcs.mergehints.constraints)/4382682660187986727">
+    <file name="PropertyVCSDescriptor_Constraints.java">
+      <node id="4382682660187986727" at="28,95,29,58" concept="9" />
+      <node id="4382682660187986731" at="29,58,30,26" concept="1" />
+      <node id="4382682660187986731" at="34,54,35,53" concept="9" />
+      <node id="4382682660187986731" at="42,61,43,141" concept="5" />
+      <node id="4382682660187991295" at="46,78,47,175" concept="4" />
+      <node id="4382682660187999820" at="50,67,51,103" concept="5" />
+      <node id="4382682660187986727" at="60,0,61,0" concept="7" trace="PropertyVCSDescriptor$sJ" />
+      <node id="4382682660187986727" at="61,0,62,0" concept="7" trace="ConceptVCSDescriptor$rz" />
+      <node id="4382682660187986727" at="65,0,66,0" concept="7" trace="prop$j8WS" />
+      <node id="4382682660187986727" at="66,0,67,0" concept="7" trace="cncpt$ubC$" />
+      <node id="4382682660187986727" at="67,0,68,0" concept="7" trace="propertyDeclaration$YUgg" />
+      <node id="4382682660187986731" at="34,0,37,0" concept="0" trace="RD1#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
+      <node id="4382682660187986727" at="28,0,32,0" concept="0" trace="PropertyVCSDescriptor_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <node id="4382682660187986731" at="41,0,45,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="4382682660187999066" at="49,0,53,0" concept="3" trace="getReferenceText#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="4382682660187992926" at="47,175,53,12" concept="5" />
+      <node id="4382682660187986731" at="45,0,55,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="4382682660187986731" at="39,54,55,8" concept="5" />
+      <node id="4382682660187986731" at="37,0,57,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <scope id="4382682660187986731" at="34,54,35,53" />
+      <scope id="4382682660187986731" at="42,61,43,141" />
+      <scope id="4382682660187999074" at="50,67,51,103" />
+      <scope id="4382682660187986727" at="28,95,30,26" />
+      <scope id="4382682660187986731" at="34,0,37,0">
+        <var name="container" id="4382682660187986731" />
+      </scope>
+      <scope id="4382682660187986727" at="28,0,32,0">
+        <var name="initContext" id="4382682660187986727" />
+      </scope>
+      <scope id="4382682660187986731" at="41,0,45,0" />
+      <scope id="4382682660187999066" at="49,0,53,0">
+        <var name="target" id="4382682660187999069" />
+      </scope>
+      <scope id="4382682660187986731" at="46,78,53,12">
+        <var name="cNode" id="4382682660187991296" />
+      </scope>
+      <scope id="4382682660187986731" at="45,0,55,0">
+        <var name="_context" id="4382682660187986731" />
+      </scope>
+      <scope id="4382682660187986731" at="39,54,55,8" />
+      <scope id="4382682660187986731" at="37,0,57,0" />
+      <unit id="4382682660187986727" at="59,0,63,0" name="jetbrains.mps.vcs.mergehints.constraints.PropertyVCSDescriptor_Constraints$CONCEPTS" />
+      <unit id="4382682660187999050" at="48,21,53,11" name="jetbrains.mps.vcs.mergehints.constraints.PropertyVCSDescriptor_Constraints$RD1$1$1" />
+      <unit id="4382682660187986727" at="64,0,69,0" name="jetbrains.mps.vcs.mergehints.constraints.PropertyVCSDescriptor_Constraints$LINKS" />
+      <unit id="4382682660187986731" at="40,17,55,7" name="jetbrains.mps.vcs.mergehints.constraints.PropertyVCSDescriptor_Constraints$RD1$1" />
+      <unit id="4382682660187986731" at="33,0,58,0" name="jetbrains.mps.vcs.mergehints.constraints.PropertyVCSDescriptor_Constraints$RD1" />
+      <unit id="4382682660187986727" at="27,0,70,0" name="jetbrains.mps.vcs.mergehints.constraints.PropertyVCSDescriptor_Constraints" />
+    </file>
+  </root>
+  <root nodeRef="r:db2ce397-cf4f-423c-9613-b88195c6529a(jetbrains.mps.vcs.mergehints.constraints)/4382682660188133838">
+    <file name="LinkVCSDescriptor_Constraints.java">
+      <node id="4382682660188133838" at="28,91,29,54" concept="9" />
+      <node id="4382682660188133842" at="29,54,30,26" concept="1" />
+      <node id="4382682660188133842" at="34,54,35,52" concept="9" />
+      <node id="4382682660188133842" at="42,61,43,141" concept="5" />
+      <node id="4382682660188134037" at="46,78,47,175" concept="4" />
+      <node id="4382682660188134060" at="50,67,51,103" concept="5" />
+      <node id="4382682660188133838" at="60,0,61,0" concept="7" trace="LinkVCSDescriptor$hA" />
+      <node id="4382682660188133838" at="61,0,62,0" concept="7" trace="ConceptVCSDescriptor$rz" />
+      <node id="4382682660188133838" at="65,0,66,0" concept="7" trace="lnk$j8LJ" />
+      <node id="4382682660188133838" at="66,0,67,0" concept="7" trace="cncpt$ubC$" />
+      <node id="4382682660188133838" at="67,0,68,0" concept="7" trace="linkDeclaration$YU1f" />
+      <node id="4382682660188133842" at="34,0,37,0" concept="0" trace="RD1#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
+      <node id="4382682660188133838" at="28,0,32,0" concept="0" trace="LinkVCSDescriptor_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <node id="4382682660188133842" at="41,0,45,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="4382682660188134052" at="49,0,53,0" concept="3" trace="getReferenceText#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="4382682660188134047" at="47,175,53,12" concept="5" />
+      <node id="4382682660188133842" at="45,0,55,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="4382682660188133842" at="39,54,55,8" concept="5" />
+      <node id="4382682660188133842" at="37,0,57,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <scope id="4382682660188133842" at="34,54,35,52" />
+      <scope id="4382682660188133842" at="42,61,43,141" />
+      <scope id="4382682660188134059" at="50,67,51,103" />
+      <scope id="4382682660188133838" at="28,91,30,26" />
+      <scope id="4382682660188133842" at="34,0,37,0">
+        <var name="container" id="4382682660188133842" />
+      </scope>
+      <scope id="4382682660188133838" at="28,0,32,0">
+        <var name="initContext" id="4382682660188133838" />
+      </scope>
+      <scope id="4382682660188133842" at="41,0,45,0" />
+      <scope id="4382682660188134052" at="49,0,53,0">
+        <var name="target" id="4382682660188134054" />
+      </scope>
+      <scope id="4382682660188133842" at="46,78,53,12">
+        <var name="cNode" id="4382682660188134038" />
+      </scope>
+      <scope id="4382682660188133842" at="45,0,55,0">
+        <var name="_context" id="4382682660188133842" />
+      </scope>
+      <scope id="4382682660188133842" at="39,54,55,8" />
+      <scope id="4382682660188133842" at="37,0,57,0" />
+      <unit id="4382682660188133838" at="59,0,63,0" name="jetbrains.mps.vcs.mergehints.constraints.LinkVCSDescriptor_Constraints$CONCEPTS" />
+      <unit id="4382682660188134050" at="48,21,53,11" name="jetbrains.mps.vcs.mergehints.constraints.LinkVCSDescriptor_Constraints$RD1$1$1" />
+      <unit id="4382682660188133838" at="64,0,69,0" name="jetbrains.mps.vcs.mergehints.constraints.LinkVCSDescriptor_Constraints$LINKS" />
+      <unit id="4382682660188133842" at="40,17,55,7" name="jetbrains.mps.vcs.mergehints.constraints.LinkVCSDescriptor_Constraints$RD1$1" />
+      <unit id="4382682660188133842" at="33,0,58,0" name="jetbrains.mps.vcs.mergehints.constraints.LinkVCSDescriptor_Constraints$RD1" />
+      <unit id="4382682660188133838" at="27,0,70,0" name="jetbrains.mps.vcs.mergehints.constraints.LinkVCSDescriptor_Constraints" />
+    </file>
+  </root>
+</debug-info>
+

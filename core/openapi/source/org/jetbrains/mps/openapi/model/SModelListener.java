@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,9 @@
  */
 package org.jetbrains.mps.openapi.model;
 
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel.Problem;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 /**
@@ -32,13 +34,17 @@ import org.jetbrains.mps.openapi.module.SRepository;
  */
 public interface SModelListener {
 
-  void modelLoaded(SModel model, boolean partially);
+  default void modelLoaded(SModel model, boolean partially) {
+  }
 
-  void modelReplaced(SModel model);
+  default void modelReplaced(SModel model) {
+  }
 
-  void modelUnloaded(SModel model);
+  default void modelUnloaded(SModel model) {
+  }
 
-  void modelSaved(SModel model);
+  default void modelSaved(SModel model) {
+  }
 
   /**
    * Fired when a model becomes visible in a repository.
@@ -54,7 +60,8 @@ public interface SModelListener {
    * @param model affected model, never <code>null</code>
    * @param repository repository the model become available at, never <code>null</code>
    */
-  void modelAttached(SModel model, SRepository repository);
+  default void modelAttached(SModel model, SRepository repository) {
+  }
 
   /**
    * Fired when a model is no longer part of a repository, e.g. due to removal from module.
@@ -72,16 +79,53 @@ public interface SModelListener {
    * @param model affected model, never <code>null</code>
    * @param repository repository the model become available at, never <code>null</code>
    */
-  void modelDetached(SModel model, SRepository repository);
+  default void modelDetached(SModel model, SRepository repository) {
+  }
 
   /**
    * This event is fired when the storage-memory conflict is detected (== isChanged() && needsReloading()).
-   * An IDE can listen to it and give user a way to resolve the conflict by invoking either updateTimestamp(), or reloadFromSource().
    */
-  void conflictDetected(SModel model);
+  default void conflictDetected(SModel model) {
+  }
 
   /**
    * This method is called each time a new problem, or a set of problems is discovered.
    */
-  void problemsDetected(SModel model, Iterable<Problem> problems);
+  default void problemsDetected(SModel model, Iterable<Problem> problems) {
+  }
+
+  /**
+   * Notifies once model receives new or looses an existing dependency, like imported model or used language.
+   * @param model affected model, never null
+   * @param change describes actual changes, never null
+   * @since 2025.1
+   */
+  default void dependenciesChanged(SModel model, DependencyChange change) {
+  }
+
+  /**
+   * General notification when there a node changed in a model (changed property/reference, added/removed root/child).
+   * For use when specific change is of no importance, otherwise stick to {@link SNodeChangeListener}
+   * @param model affected model, never null
+   * @since 2025.1
+   */
+  default void nodesChanged(SModel model) {
+  }
+
+  /**
+   * @see #dependenciesChanged(SModel, DependencyChange)
+   * @since 2025.1
+   */
+  interface DependencyChange {
+    void accept(DependencyChangeVisitor visitor);
+  }
+
+  interface DependencyChangeVisitor {
+    default void importAdded(SModelReference mref) {}
+    default void importRemoved(SModelReference mref) {}
+    default void languageAdded(SLanguage language) {}
+    default void languageRemoved(SLanguage language) {}
+    default void devkitAdded(SModuleReference mref) {}
+    default void devkitRemoved(SModuleReference mref) {}
+  }
 }

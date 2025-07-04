@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.nodeEditor.hintsSettings;
 
 import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
@@ -28,32 +27,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Semen Alperovich
- * 05 15, 2013
+ * FTR, this class has to live in [mps-editor], but as long as EditorComponent/Updater access it directly, keep it here.
+ * Need to refactor UpdaterImpl first to get hints supplied from outside all the time.
  */
-
 @State(
     name = "ConceptEditorHintSettings",
     storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
-public class ConceptEditorHintSettingsComponent implements PersistentStateComponent<HintsState>, ProjectComponent {
+public class ConceptEditorHintSettingsComponent implements PersistentStateComponent<HintsState> {
   private HintsState myState = new HintsState();
 
   public ConceptEditorHintSettingsComponent(Project project) {
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "Editor Context Hints Configurable";
   }
 
   @NotNull
@@ -65,34 +49,24 @@ public class ConceptEditorHintSettingsComponent implements PersistentStateCompon
   }
 
   @Override
-  public void loadState(HintsState state) {
+  public void loadState(@NotNull HintsState state) {
     myState = new HintsState();
     myState.setEnabledHints(state.getEnabledHints());
   }
 
-  @Override
-  public void projectOpened() {
-
-  }
-
-  @Override
-  public void projectClosed() {
-
-  }
-
   public static ConceptEditorHintSettingsComponent getInstance(Project project) {
-    return project.getComponent(ConceptEditorHintSettingsComponent.class);
+    return project.getService(ConceptEditorHintSettingsComponent.class);
   }
 
   public static class HintsState {
-    private Set<String> myEnabledHints = new HashSet<String>();
+    private Set<String> myEnabledHints = new HashSet<>();
 
     public Set<String> getEnabledHints() {
       return myEnabledHints;
     }
 
     public void setEnabledHints(Set<String> enabledHints) {
-      myEnabledHints = new HashSet<String>(enabledHints);
+      myEnabledHints = new HashSet<>(enabledHints);
     }
   }
 }

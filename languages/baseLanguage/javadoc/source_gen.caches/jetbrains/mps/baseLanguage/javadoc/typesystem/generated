@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="16n98ukv7hl48rndx5lz8kn8wg5yhyc" />
+<product version="3" modelHash="bh2q2r79b56xicb70rjf3cw9ko32uo3">
+  <files names="TypesystemDescriptor.java:check_BaseDocCommentDuplication_NonTypesystemRule.java:check_ClassifierDocReference_NonTypesystemRule.java:check_FieldDocReference_NonTypesystemRule.java:check_MethodDocReference_NonTypesystemRule.java:check_StaticFieldDocReference_NonTypesystemRule.java" />
+</product>
 

@@ -10,16 +10,23 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
+import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptA = createDescriptorForA();
   /*package*/ final ConceptDescriptor myConceptA1 = createDescriptorForA1();
   /*package*/ final ConceptDescriptor myConceptI = createDescriptorForI();
   /*package*/ final ConceptDescriptor myConceptI1 = createDescriptorForI1();
-  private final LanguageConceptSwitch myConceptIndex;
+  private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
-    myConceptIndex = new LanguageConceptSwitch();
+    myIndexSwitch = new LanguageConceptSwitch();
+  }
+
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
   }
 
   @Override
@@ -30,7 +37,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
-    switch (myConceptIndex.index(id)) {
+    switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.A:
         return myConceptA;
       case LanguageConceptSwitch.A1:
@@ -44,8 +51,9 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     }
   }
 
+
   /*package*/ int internalIndex(SAbstractConcept c) {
-    return myConceptIndex.index(c);
+    return myIndexSwitch.index(c);
   }
 
   private static ConceptDescriptor createDescriptorForA() {
@@ -53,6 +61,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0x43359135f67c4a3dL, 0x9fdda3d7dba50995L, 0x54fc4b17de4f24ccL);
     b.origin("r:28855287-2116-4523-9c44-f18e3449e08d(BHL1.structure)/6123852159203091659");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForA1() {
@@ -60,19 +69,22 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0x43359135f67c4a3dL, 0x9fdda3d7dba50995L, 0x7e5c09dfa07d591fL);
     b.origin("r:28855287-2116-4523-9c44-f18e3449e08d(BHL1.structure)/9105163402711226654");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForI() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BHL1", "I", 0x43359135f67c4a3dL, 0x9fdda3d7dba50995L, 0x54fc4b17de4f24ccL);
     b.interface_();
     b.origin("r:28855287-2116-4523-9c44-f18e3449e08d(BHL1.structure)/6123852159203091660");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForI1() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BHL1", "I1", 0x43359135f67c4a3dL, 0x9fdda3d7dba50995L, 0x7e5c09dfa07d591fL);
     b.interface_();
     b.origin("r:28855287-2116-4523-9c44-f18e3449e08d(BHL1.structure)/9105163402711226655");
-    b.prop("a", 0x7e5c09dfa07d59cbL, "9105163402711226827");
+    b.version(3);
+    b.property("a", 0x7e5c09dfa07d59cbL).type(PrimitiveTypeId.INTEGER).origin("9105163402711226827").done();
     return b.create();
   }
 }

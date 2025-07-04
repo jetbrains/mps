@@ -14,9 +14,11 @@ import jetbrains.mps.nodeEditor.cells.ModelAccessor;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.build.behavior.BuildCompositePath__BehaviorDescriptor;
 import jetbrains.mps.build.util.Context;
-import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
+import jetbrains.mps.openapi.editor.style.Style;
+import jetbrains.mps.editor.runtime.style.StyleImpl;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 
 /*package*/ class BuildCompositePath_InspectorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -34,32 +36,30 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
   }
 
   /*package*/ EditorCell createCell() {
-    return createCollection_n78otj_a_0();
+    return createCollection_0();
   }
 
-  private EditorCell createCollection_n78otj_a_0() {
+  private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_n78otj_a_0");
+    editorCell.setCellId("Collection_n78otj_0");
     editorCell.setBig(true);
-    editorCell.setCellContext(getCellFactory().getCellContext());
-    editorCell.addEditorCell(createReadOnlyModelAccessor_n78otj_a0());
+    setCellContext(editorCell);
+    editorCell.addEditorCell(createReadOnlyModelAccessor_0());
     return editorCell;
   }
-  private EditorCell createReadOnlyModelAccessor_n78otj_a0() {
-    EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor() {
+  private EditorCell createReadOnlyModelAccessor_0() {
+    EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
         IFile f = BuildCompositePath__BehaviorDescriptor.getFile_idIG8oXsODon.invoke(myNode, Context.defaultContext());
         return (f != null ? f.getPath() : "unknown");
       }
-      public void setText(String s) {
-      }
-      public boolean isValidText(String s) {
-        return EqualUtil.equals(s, getText());
-      }
     }, myNode);
     editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
-    editorCell.setCellId("ReadOnlyModelAccessor_n78otj_a0");
+    editorCell.setCellId("ReadOnlyModelAccessor_n78otj_0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.EDITABLE, false);
+    editorCell.getStyle().putAll(style);
     return editorCell;
   }
 }

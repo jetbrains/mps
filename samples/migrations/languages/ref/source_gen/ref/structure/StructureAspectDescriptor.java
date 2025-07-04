@@ -14,10 +14,17 @@ import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptNewComponentRef = createDescriptorForNewComponentRef();
   /*package*/ final ConceptDescriptor myConceptOldComponentRef = createDescriptorForOldComponentRef();
-  private final LanguageConceptSwitch myConceptIndex;
+  private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
-    myConceptIndex = new LanguageConceptSwitch();
+    myIndexSwitch = new LanguageConceptSwitch();
+  }
+
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, "decl");
   }
 
   @Override
@@ -28,7 +35,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
-    switch (myConceptIndex.index(id)) {
+    switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.NewComponentRef:
         return myConceptNewComponentRef;
       case LanguageConceptSwitch.OldComponentRef:
@@ -38,8 +45,9 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     }
   }
 
+
   /*package*/ int internalIndex(SAbstractConcept c) {
-    return myConceptIndex.index(c);
+    return myIndexSwitch.index(c);
   }
 
   private static ConceptDescriptor createDescriptorForNewComponentRef() {
@@ -47,6 +55,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c104932a602L);
     b.origin("r:df5dd9b9-2235-4ecc-b54b-358db13f3f15(ref.structure)/7709929535540733641");
+    b.version(3);
     b.associate("target", 0x6aff2c104932a6caL).target(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c1049329d71L).optional(false).origin("7709929535540733642").done();
     return b.create();
   }
@@ -55,6 +64,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c104931bb26L);
     b.origin("r:df5dd9b9-2235-4ecc-b54b-358db13f3f15(ref.structure)/7709929535540647757");
+    b.version(3);
     b.associate("target", 0x6aff2c104932a69aL).target(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c1049316cdaL).optional(false).origin("7709929535540733594").done();
     return b.create();
   }

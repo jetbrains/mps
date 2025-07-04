@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,15 +24,16 @@ import jetbrains.mps.generator.generationTypes.StreamHandler;
 import jetbrains.mps.generator.impl.CloneUtil;
 import jetbrains.mps.generator.impl.MappingLabelExtractor;
 import jetbrains.mps.generator.impl.ModelStreamManager;
-import jetbrains.mps.generator.impl.cache.MappingsMemento;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
 import jetbrains.mps.generator.plan.PlanIdentity;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.SModelId.IntegerSModelId;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.util.ArrayDeque;
@@ -55,6 +56,8 @@ import java.util.HashSet;
 public class CrossModelEnvironment {
   private static final String GENERATION_PLAN = "generation-plan";
   private static final String CHECKPOINT = "checkpoint";
+  private static final String PREV_GENERATION_PLAN = "prev-generation-plan";
+  private static final String PREV_CHECKPOINT = "prev-checkpoint";
 
   // these are checkpoints for actual plan, for different models that are cross-referenced from the one being transformed
   private final HashMap<SModelReference, ModelCheckpoints> myTransientCheckpoints = new HashMap<>();
@@ -74,6 +77,10 @@ public class CrossModelEnvironment {
     myStreamProvider = streamProvider;
   }
 
+  public static boolean isCheckpointModel(@Nullable SModel m) {
+    return m instanceof ModelWithAttributes && ((ModelWithAttributes) m).getAttribute(CHECKPOINT) != null;
+  }
+
   /**
    * FIXME Given CP could be defined in a plan/CPSet other then the one being executed, is there any sense to
    * pass planIdentity, not CPIdentity here. Perhaps, could hide ModelCheckpoints concept altogether as
@@ -83,6 +90,27 @@ public class CrossModelEnvironment {
    */
   @Nullable
   public ModelCheckpoints getState(@NotNull SModel model) {
+    if (isCheckpointModel(model)) {
+      // FIXME provisional fix.
+      // Assume if input comes from a checkpoint, it's the one already loaded, look at
+      // transients first, then among persisted. Perhaps, shall extract CP identity from the model and use it to find proper MCp.
+      // Alternatively, shall keep model reference of the origin along with CP model, so that can navigate to an appropriate MCp/CpV
+      // using model reference as for the general scenario. However, don't want to persist origin model ref in a CP model, and didn't
+      // come up with a nice way to satisfy that (filtering model attributes are not to my liking).
+      for (ModelCheckpoints mcp : myTransientCheckpoints.values()) {
+        CheckpointState cps = mcp.findStateWith(model);
+        if (cps != null) {
+          return mcp;
+        }
+      }
+      for (CheckpointVault cpv : myPersistedCheckpoints.values()) {
+        ModelCheckpoints mcp = cpv.getCheckpointsIfOwns(model);
+        if (mcp != null) {
+          return mcp;
+        }
+      }
+      return null;
+    }
     ModelCheckpoints mcp = getTransientCheckpoints(model.getReference());
     if (mcp != null) {
       return mcp;
@@ -91,10 +119,20 @@ public class CrossModelEnvironment {
     return getPersistedCheckpoints(model).getCheckpointsFor((m, cp) -> {
       // XXX for now, expose whole ModelCheckpoints at once, although just specific CheckpointState
       //     (accessed later though MC.find) would suffice
-      SModel exposed = createBlankCheckpointModel(model.getReference(), cp);
+      SModel exposed = createBlankCheckpointModel(model.getReference(), null /*FIXME need distinct method to create CP model from existing*/, cp);
       new CloneUtil(m, exposed).cloneModelWithImports();
+      assert exposed instanceof ModelWithAttributes;
+      assert m instanceof ModelWithAttributes;
+      ((ModelWithAttributes) m).forEachAttribute(((ModelWithAttributes) exposed)::setAttribute);
+      SNode debugNode = MappingLabelExtractor.findDebugNode(exposed);
+      if (debugNode != null) {
+        OriginalModelTag.installTo(debugNode, model.getReference());
+      }
       myModule.addModelToKeep(exposed.getReference(), true);
-      return exposed;
+      CheckpointIdentity persistedCheckpoint = readIdentityAttributes((ModelWithAttributes) m, GENERATION_PLAN, CHECKPOINT);
+      CheckpointIdentity prevCheckpoint = readIdentityAttributes((ModelWithAttributes) m, PREV_GENERATION_PLAN, PREV_CHECKPOINT);
+      assert cp.equals(persistedCheckpoint) : String.format("CP consistency issue: expected to read CP %s, but model comes with CP value %s", cp, persistedCheckpoint);
+      return new CheckpointState(exposed, prevCheckpoint, cp);
     });
   }
 
@@ -102,7 +140,7 @@ public class CrossModelEnvironment {
   private ModelCheckpoints getTransientCheckpoints(SModelReference originModel) {
     ModelCheckpoints mcp = myTransientCheckpoints.get(originModel);
     if (mcp == null) {
-      mcp = loadFromTransientModule(originModel.getName());
+      mcp = loadFromTransientModule(originModel);
       if (mcp != null) {
         myTransientCheckpoints.put(originModel, mcp);
       }
@@ -117,7 +155,8 @@ public class CrossModelEnvironment {
    * <p>
    * both parameters are !null
    */
-  private ModelCheckpoints loadFromTransientModule(SModelName originalModelName) {
+  private ModelCheckpoints loadFromTransientModule(SModelReference originalModel) {
+    final SModelName originalModelName = originalModel.getName();
     // XXX getCheckpointModelsFor iterates models of the module, hence needs a model read
     //     OTOH, just a wrap with model read doesn't make sense here (models could get disposed right after the call),
     //     so likely we shall populate myCheckpoints in constructor/dedicated method. Still, what about checkpoint model disposed *after*
@@ -131,22 +170,36 @@ public class CrossModelEnvironment {
         if (!nameNoStereotype.equals(m.getName().getLongName()) || false == m instanceof ModelWithAttributes) {
           continue;
         }
-        String gpAttrValue = ((ModelWithAttributes) m).getAttribute(GENERATION_PLAN);
-        String cpAttrValue = ((ModelWithAttributes) m).getAttribute(CHECKPOINT);
-        if (gpAttrValue == null || cpAttrValue == null) {
+
+        OriginalModelTag omt;
+        if ((omt = OriginalModelTag.from(MappingLabelExtractor.findDebugNode(m))) == null || !omt.matches(originalModel)) {
+          // XXX not every CP model has debugNode (see CheckpointStateBuilder.addMappings()), perhaps, it's not wise to exclude model like that here?
           continue;
         }
-        PlanIdentity modelPlan = new PlanIdentity(gpAttrValue);
-        CheckpointIdentity modelCheckpoint = new CheckpointIdentity(modelPlan, cpAttrValue /* here, persistent identity*/);
-        // FIXME read and fill memento with MappingLabels
-        //       now, just restore it from debug root we've got there. Later (once true persistence is done), shall consider
-        //       option to keep mappings inside a model (not to bother with persistence) or to follow MappingsMemento approach with
-        //       custom serialization code (and to solve the issue of associated model streams serialized/managed (i.e. deleted) along with a cp model)
-        MappingsMemento memento = new MappingLabelExtractor().restore(MappingLabelExtractor.findDebugNode(m));
-        cpModels.add(new CheckpointState(memento, m, modelCheckpoint));
+        // we keep CP (both origin and actual) as model properties to facilitate scenario when CP models are not persisted.
+        // Otherwise, we could have use values written into CheckpointVault's registry file. As long as there's no registry for workspace models,
+        // we have to use this dubious mechanism (not necessarily bad, just a bit confusing as we duplicate actual CP value as model attribute and
+        // in the CheckpointVault's registry).
+        CheckpointIdentity modelCheckpoint = readIdentityAttributes((ModelWithAttributes) m, GENERATION_PLAN, CHECKPOINT);
+        if (modelCheckpoint == null) {
+          continue;
+        }
+        CheckpointIdentity prevCheckpoint = readIdentityAttributes((ModelWithAttributes) m, PREV_GENERATION_PLAN, PREV_CHECKPOINT);
+        cpModels.add(new CheckpointState(m, prevCheckpoint, modelCheckpoint));
       }
       return cpModels.isEmpty() ? null : new ModelCheckpoints(cpModels);
     });
+  }
+
+  @Nullable
+  private static CheckpointIdentity readIdentityAttributes(ModelWithAttributes m, String planKey, String pointKey) {
+    String gpAttrValue = m.getAttribute(planKey);
+    String cpAttrValue = m.getAttribute(pointKey);
+    if (gpAttrValue == null || cpAttrValue == null) {
+      return null;
+    }
+    PlanIdentity modelPlan = new PlanIdentity(gpAttrValue);
+    return new CheckpointIdentity(modelPlan, cpAttrValue /* here, persistent identity*/);
   }
 
   /**
@@ -176,15 +229,37 @@ public class CrossModelEnvironment {
   }
 
   // originalModel is just to construct name/reference of the checkpoint model
-  public SModel createBlankCheckpointModel(SModelReference originalModel, CheckpointIdentity step) {
+  // FIXME this method is used both to 'expose' existing CP and to create a new. For the former case, don't need checkpoint information as it's already
+  //       persisted inside a model, moreover, I can't get it in #getState() above anyway.
+  public SModel createBlankCheckpointModel(SModelReference originalModel, @Nullable CheckpointIdentity previousCheckpoint, CheckpointIdentity step) {
     final SModelName transientModelName = createCheckpointModelName(originalModel, step);
+    // I'd like to have stable model id to minimize number of changes in CP models
+    int mid = originalModel.getModelId().hashCode() ^ step.getName().hashCode();
+    // make sure value fits into MPS reserved range, see IntegerSModelId doc.
+    mid &= 0x0FFFFFFF;
+    mid |= 0x0F000000;
     final SModelReference mr = PersistenceFacade.getInstance()
-                                                .createModelReference(myModule.getModuleReference(), jetbrains.mps.smodel.SModelId.generate(),
-                                                                      transientModelName.getValue());
+                                                .createModelReference(myModule.getModuleReference(), new IntegerSModelId(mid), transientModelName);
+    SModel existing = myModule.getModel(mr.getModelId());
+    if (existing != null) {
+      // Why it's important to forget existing model? E.g. if a model being generated has been already generated and exposed as checkpoint, and
+      // was renamed since. Renamed here means change of model name, e.g. due to rename of a containing language module.
+      // Besides, it doesn't hurt to drop old checkpoint in any case.
+      // There were few possible ways to address MPS-26174 (rename of a module breaks x-model generation).
+      //  - listen to changes of original model/module and react (e.g. remove related CP models or clear all CPs altogether).
+      //  - drop all transients as part of rename module action (likely, most safe)
+      //  - respect model name when building module id value, above. Leaves duplicated, hard-to-distinguish models among checkpoints.
+      //  - detect there's already model with same id and forget it (least destructive, keeps other CP models in place).
+      myModule.forgetModel(existing, true);
+    }
     SModel checkpointModel = myModule.createTransientModel(mr);
     assert checkpointModel instanceof ModelWithAttributes;
     ((ModelWithAttributes) checkpointModel).setAttribute(GENERATION_PLAN, step.getPlan().getName());
     ((ModelWithAttributes) checkpointModel).setAttribute(CHECKPOINT, step.getName());
+    if (previousCheckpoint != null) {
+      ((ModelWithAttributes) checkpointModel).setAttribute(PREV_GENERATION_PLAN, previousCheckpoint.getPlan().getName());
+      ((ModelWithAttributes) checkpointModel).setAttribute(PREV_CHECKPOINT, previousCheckpoint.getName());
+    }
     return checkpointModel;
   }
 
@@ -235,24 +310,49 @@ public class CrossModelEnvironment {
     } while (!discarded.isEmpty());
   }
 
-  public static class CacheGen implements CacheGenerator {
+  public static class CacheGen implements CacheGenerator<GenerationStatus> {
     @Override
     public void generateCache(GenerationStatus status, StreamHandler handler) {
       CrossModelEnvironment cme = status.getCrossModelEnvironment();
       if (cme == null) {
         return;
       }
-      ModelCheckpoints mcp = cme.myTransientCheckpoints.get(status.getOriginalInputModel().getReference());
+      ModelCheckpoints mcp = cme.myTransientCheckpoints.get(status.getInputModel().getReference());
       if (mcp == null) {
         // may happen if the model has been generated without a custom plan
         // FIXME we shall look into generation tasks rather than original input model, and there could be tasks
         //       that do not produce ModelCheckpoints (i.e. are generated without a custom plan)
         return;
       }
-      CheckpointVault cpVault = cme.getPersistedCheckpoints(status.getOriginalInputModel());
+      CheckpointVault cpVault = cme.getPersistedCheckpoints(status.getInputModel());
       assert cpVault != null;
       cpVault.updateCheckpointsOf(mcp);
       cpVault.saveChanged(handler);
+    }
+  }
+
+  // user object we attach to debug node in a CP model to identify original model, to overcome limitations of name-based lookup
+  // can't use SModelReference UO directly as they get get serialized (see UserObjectEncoder), and I don't want to change existing CP models (to save
+  // some generation effort)
+  public static final class OriginalModelTag {
+    private final SModelReference myModelRef;
+
+    private OriginalModelTag(SModelReference originalModel) {
+      myModelRef = originalModel;
+    }
+
+    @Nullable
+    public static OriginalModelTag from(@Nullable SNode debugNode) {
+      Object mr = debugNode == null ? null : debugNode.getUserObject("original-model");
+      return mr instanceof OriginalModelTag ? (OriginalModelTag) mr : null;
+    }
+
+    public static void installTo(@NotNull SNode debugNode, @NotNull SModelReference originalModel) {
+      debugNode.putUserObject("original-model", new OriginalModelTag(originalModel));
+    }
+
+    public boolean matches(SModelReference mr) {
+      return myModelRef.equals(mr);
     }
   }
 }

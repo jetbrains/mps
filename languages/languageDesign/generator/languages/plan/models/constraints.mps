@@ -2,14 +2,13 @@
 <model ref="r:e831e054-7bbb-4c7b-aebf-31582c0dfa61(jetbrains.mps.lang.generator.plan.constraints)">
   <persistence version="9" />
   <languages>
-    <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="2" />
     <devkit ref="2677cb18-f558-4e33-bc38-a5139cee06dc(jetbrains.mps.devkit.language-design)" />
+    <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
     <import index="bjdw" ref="r:4a23ef0d-9c2f-48a6-8597-fbdd5b11f792(jetbrains.mps.lang.generator.plan.structure)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
-    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -18,7 +17,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
@@ -70,7 +69,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -83,14 +82,11 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
@@ -102,17 +98,10 @@
       <concept id="8966504967485224688" name="jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_contextNode" flags="nn" index="2rP1CM" />
       <concept id="4303308395523343364" name="jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_link" flags="ng" index="2DA6wF" />
       <concept id="4303308395523096213" name="jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_childConcept" flags="ng" index="2DD5aU" />
-      <concept id="1147467115080" name="jetbrains.mps.lang.constraints.structure.NodePropertyConstraint" flags="ng" index="EnEH3">
-        <reference id="1147467295099" name="applicableProperty" index="EomxK" />
-        <child id="1147468630220" name="propertyGetter" index="EtsB7" />
-      </concept>
-      <concept id="1147467790433" name="jetbrains.mps.lang.constraints.structure.ConstraintFunction_PropertyGetter" flags="in" index="Eqf_E" />
-      <concept id="1147468365020" name="jetbrains.mps.lang.constraints.structure.ConstraintsFunctionParameter_node" flags="nn" index="EsrRn" />
       <concept id="5564765827938091039" name="jetbrains.mps.lang.constraints.structure.ConstraintFunction_ReferentSearchScope_Scope" flags="ig" index="3dgokm" />
       <concept id="1213093968558" name="jetbrains.mps.lang.constraints.structure.ConceptConstraints" flags="ng" index="1M2fIO">
         <reference id="1213093996982" name="concept" index="1M2myG" />
         <child id="6702802731807532712" name="canBeParent" index="9SGkU" />
-        <child id="1213098023997" name="property" index="1MhHOB" />
         <child id="1213100494875" name="referent" index="1Mr941" />
       </concept>
       <concept id="1148687176410" name="jetbrains.mps.lang.constraints.structure.NodeReferentConstraint" flags="ng" index="1N5Pfh">
@@ -146,16 +135,21 @@
         <property id="1238684351431" name="asCast" index="1BlNFB" />
       </concept>
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2" />
-      <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
-        <reference id="1138056395725" name="property" index="3TsBF5" />
-      </concept>
       <concept id="1138056143562" name="jetbrains.mps.lang.smodel.structure.SLinkAccess" flags="nn" index="3TrEf2">
         <reference id="1138056516764" name="link" index="3Tt5mk" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -166,8 +160,31 @@
       <node concept="3dgokm" id="3gcO7FHvbtS" role="1N6uqs">
         <node concept="3clFbS" id="3gcO7FHvbtU" role="2VODD2">
           <node concept="3SKdUt" id="3gcO7FHvr7M" role="3cqZAp">
-            <node concept="3SKdUq" id="3gcO7FHvr7O" role="3SKWNk">
-              <property role="3SKdUp" value="reference checkpoint steps with in-place cp declaration only" />
+            <node concept="1PaTwC" id="ATZLwXnVr$" role="1aUNEU">
+              <node concept="3oM_SD" id="ATZLwXnVr_" role="1PaTwD">
+                <property role="3oM_SC" value="reference" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVrA" role="1PaTwD">
+                <property role="3oM_SC" value="checkpoint" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVrB" role="1PaTwD">
+                <property role="3oM_SC" value="steps" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVrC" role="1PaTwD">
+                <property role="3oM_SC" value="with" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVrD" role="1PaTwD">
+                <property role="3oM_SC" value="in-place" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVrE" role="1PaTwD">
+                <property role="3oM_SC" value="cp" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVrF" role="1PaTwD">
+                <property role="3oM_SC" value="declaration" />
+              </node>
+              <node concept="3oM_SD" id="ATZLwXnVrG" role="1PaTwD">
+                <property role="3oM_SC" value="only" />
+              </node>
             </node>
           </node>
           <node concept="3cpWs6" id="3gcO7FHvmwf" role="3cqZAp">
@@ -204,13 +221,110 @@
                     </node>
                     <node concept="3clFbS" id="3gcO7FHvnOs" role="3clF47">
                       <node concept="3SKdUt" id="1BDRb8Bu587" role="3cqZAp">
-                        <node concept="3SKdUq" id="1BDRb8Bu589" role="3SKWNk">
-                          <property role="3SKdUp" value="node == contextNode is neccessary to avoid cycle when there's already a cp step with in-place declaration," />
+                        <node concept="1PaTwC" id="ATZLwXnVrH" role="1aUNEU">
+                          <node concept="3oM_SD" id="ATZLwXnVrI" role="1PaTwD">
+                            <property role="3oM_SC" value="node" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrJ" role="1PaTwD">
+                            <property role="3oM_SC" value="==" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrK" role="1PaTwD">
+                            <property role="3oM_SC" value="contextNode" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrL" role="1PaTwD">
+                            <property role="3oM_SC" value="is" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrM" role="1PaTwD">
+                            <property role="3oM_SC" value="neccessary" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrN" role="1PaTwD">
+                            <property role="3oM_SC" value="to" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrO" role="1PaTwD">
+                            <property role="3oM_SC" value="avoid" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrP" role="1PaTwD">
+                            <property role="3oM_SC" value="cycle" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrQ" role="1PaTwD">
+                            <property role="3oM_SC" value="when" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrR" role="1PaTwD">
+                            <property role="3oM_SC" value="there's" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrS" role="1PaTwD">
+                            <property role="3oM_SC" value="already" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrT" role="1PaTwD">
+                            <property role="3oM_SC" value="a" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrU" role="1PaTwD">
+                            <property role="3oM_SC" value="cp" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrV" role="1PaTwD">
+                            <property role="3oM_SC" value="step" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrW" role="1PaTwD">
+                            <property role="3oM_SC" value="with" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrX" role="1PaTwD">
+                            <property role="3oM_SC" value="in-place" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVrY" role="1PaTwD">
+                            <property role="3oM_SC" value="declaration," />
+                          </node>
                         </node>
                       </node>
                       <node concept="3SKdUt" id="1BDRb8Bu5j1" role="3cqZAp">
-                        <node concept="3SKdUq" id="1BDRb8Bu5j3" role="3SKWNk">
-                          <property role="3SKdUp" value="and we ask for replacement - do not suggest itself as possible replacement, wrapped into InPlaceCheckpointRefSpec" />
+                        <node concept="1PaTwC" id="ATZLwXnVrZ" role="1aUNEU">
+                          <node concept="3oM_SD" id="ATZLwXnVs0" role="1PaTwD">
+                            <property role="3oM_SC" value="and" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVs1" role="1PaTwD">
+                            <property role="3oM_SC" value="we" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVs2" role="1PaTwD">
+                            <property role="3oM_SC" value="ask" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVs3" role="1PaTwD">
+                            <property role="3oM_SC" value="for" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVs4" role="1PaTwD">
+                            <property role="3oM_SC" value="replacement" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVs5" role="1PaTwD">
+                            <property role="3oM_SC" value="-" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVs6" role="1PaTwD">
+                            <property role="3oM_SC" value="do" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVs7" role="1PaTwD">
+                            <property role="3oM_SC" value="not" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVs8" role="1PaTwD">
+                            <property role="3oM_SC" value="suggest" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVs9" role="1PaTwD">
+                            <property role="3oM_SC" value="itself" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVsa" role="1PaTwD">
+                            <property role="3oM_SC" value="as" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVsb" role="1PaTwD">
+                            <property role="3oM_SC" value="possible" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVsc" role="1PaTwD">
+                            <property role="3oM_SC" value="replacement," />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVsd" role="1PaTwD">
+                            <property role="3oM_SC" value="wrapped" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVse" role="1PaTwD">
+                            <property role="3oM_SC" value="into" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXnVsf" role="1PaTwD">
+                            <property role="3oM_SC" value="InPlaceCheckpointRefSpec" />
+                          </node>
                         </node>
                       </node>
                       <node concept="3clFbF" id="1BDRb8Bu3qo" role="3cqZAp">
@@ -264,8 +378,55 @@
     <node concept="9SLcT" id="3gcO7FHOxsQ" role="9SGkU">
       <node concept="3clFbS" id="3gcO7FHOxsR" role="2VODD2">
         <node concept="3SKdUt" id="3gcO7FHOCV8" role="3cqZAp">
-          <node concept="3SKdUq" id="3gcO7FHOCVa" role="3SKWNk">
-            <property role="3SKdUp" value="do not allow synchronize with a checkpoint that references another one, always use original CP declaration" />
+          <node concept="1PaTwC" id="ATZLwXnVsg" role="1aUNEU">
+            <node concept="3oM_SD" id="ATZLwXnVsh" role="1PaTwD">
+              <property role="3oM_SC" value="do" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVsi" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVsj" role="1PaTwD">
+              <property role="3oM_SC" value="allow" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVsk" role="1PaTwD">
+              <property role="3oM_SC" value="synchronize" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVsl" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVsm" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVsn" role="1PaTwD">
+              <property role="3oM_SC" value="checkpoint" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVso" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVsp" role="1PaTwD">
+              <property role="3oM_SC" value="references" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVsq" role="1PaTwD">
+              <property role="3oM_SC" value="another" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVsr" role="1PaTwD">
+              <property role="3oM_SC" value="one," />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVss" role="1PaTwD">
+              <property role="3oM_SC" value="always" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVst" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVsu" role="1PaTwD">
+              <property role="3oM_SC" value="original" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVsv" role="1PaTwD">
+              <property role="3oM_SC" value="CP" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnVsw" role="1PaTwD">
+              <property role="3oM_SC" value="declaration" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="3gcO7FHOzeG" role="3cqZAp">
@@ -294,7 +455,7 @@
           <node concept="2OqwBi" id="3gcO7FHOxS3" role="3clFbw">
             <node concept="2DA6wF" id="3gcO7FHOxzZ" role="2Oq$k0" />
             <node concept="liA8E" id="3gcO7FHOyhI" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+              <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
               <node concept="359W_D" id="3gcO7FHOyzK" role="37wK5m">
                 <ref role="359W_E" to="bjdw:KhTgyaukO7" resolve="CheckpointSynchronization" />
                 <ref role="359W_F" to="bjdw:3gcO7FHOx8S" resolve="checkpoint" />
@@ -305,35 +466,6 @@
         <node concept="3cpWs6" id="3gcO7FHOCii" role="3cqZAp">
           <node concept="3clFbT" id="3gcO7FHOCAC" role="3cqZAk">
             <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
-  <node concept="1M2fIO" id="1BDRb8BtZdG">
-    <ref role="1M2myG" to="bjdw:1_4co2y1Lw1" resolve="Checkpoint" />
-    <node concept="EnEH3" id="1BDRb8BtZdH" role="1MhHOB">
-      <ref role="EomxK" to="tpck:h0TrG11" resolve="name" />
-      <node concept="Eqf_E" id="1BDRb8BtZdJ" role="EtsB7">
-        <node concept="3clFbS" id="1BDRb8BtZdK" role="2VODD2">
-          <node concept="3clFbF" id="1BDRb8BtZm9" role="3cqZAp">
-            <node concept="2OqwBi" id="1BDRb8Bu1GJ" role="3clFbG">
-              <node concept="1PxgMI" id="1BDRb8Bu1cp" role="2Oq$k0">
-                <property role="1BlNFB" value="true" />
-                <node concept="chp4Y" id="1BDRb8Bu1n_" role="3oSUPX">
-                  <ref role="cht4Q" to="bjdw:3gcO7FHva5x" resolve="InPlaceCheckpointSpec" />
-                </node>
-                <node concept="2OqwBi" id="1BDRb8BtZCL" role="1m5AlR">
-                  <node concept="EsrRn" id="1BDRb8BtZm8" role="2Oq$k0" />
-                  <node concept="3TrEf2" id="1BDRb8BtZXn" role="2OqNvi">
-                    <ref role="3Tt5mk" to="bjdw:3gcO7FHvbbi" resolve="cpSpec" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3TrcHB" id="1BDRb8Bu245" role="2OqNvi">
-                <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
-              </node>
-            </node>
           </node>
         </node>
       </node>

@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <debug-info version="2">
   <root>
-    <file name="ABC2_BehaviorDescriptor.java">
-      <unit at="11,0,17,0" name="NewLanguage2.behavior.ABC2_BehaviorDescriptor" />
-    </file>
     <file name="BehaviorAspectDescriptor.java">
-      <unit at="13,0,41,0" name="NewLanguage2.behavior.BehaviorAspectDescriptor" />
+      <unit at="11,0,22,0" name="NewLanguage2.behavior.BehaviorAspectDescriptor" />
     </file>
   </root>
 </debug-info>

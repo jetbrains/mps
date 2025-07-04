@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-2rm529ec6fpk7g854eakoke3xp7k7a4" />
+<product version="3" modelHash="-1a852hjacplfnaxft1pm3mlupjq9v7e">
+  <files names="CommandBuilderExpression_Constraints.java:CommandDebuggerOperation_Constraints.java:CommandParameterAssignment_Constraints.java:CommandParameterReference_Constraints.java:CommandPartLengthOperation_Constraints.java:CommandPartToListOperation_Constraints.java:ConstraintsAspectDescriptor.java:DebuggerSettingsCommandParameterDeclaration_Constraints.java:ExecuteCommandPart_Constraints.java:StartAndWaitOperation_Constraints.java" />
+</product>
 

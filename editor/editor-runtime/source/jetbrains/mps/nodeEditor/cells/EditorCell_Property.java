@@ -15,12 +15,12 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
+import jetbrains.mps.nodeEditor.cells.ModelAccessor.ReadOnly;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
 import jetbrains.mps.smodel.NodeReadAccessInEditorListener;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -33,23 +33,26 @@ import org.jetbrains.mps.openapi.module.ModelAccess;
  */
 public class EditorCell_Property extends EditorCell_Label implements SynchronizeableEditorCell {
   private final ModelAccessor myModelAccessor;
+  private final boolean myValueFromModelMayBeInvalid;
   private boolean myCommitInProgress;
   private boolean myCommitInCommand = true;
   private String myLastModelText;
 
   public EditorCell_Property(EditorContext editorContext, ModelAccessor accessor, SNode node) {
-    super(editorContext, node, accessor.getText());
+    super(editorContext, node, null);
     myModelAccessor = accessor;
+    myValueFromModelMayBeInvalid = !(myModelAccessor instanceof ReadOnly);
     if (myModelAccessor instanceof TransactionalPropertyAccessor) {
       TransactionalPropertyAccessor propertyAccessor = (TransactionalPropertyAccessor) myModelAccessor;
       propertyAccessor.setCell(this);
     }
-    synchronizeViewWithModel();
+    synchronizeViewWithModel_internal();
   }
 
   public static EditorCell_Property create(jetbrains.mps.openapi.editor.EditorContext editorContext, ModelAccessor modelAccessor, SNode node) {
     NodeReadAccessInEditorListener listener = NodeReadAccessCasterInEditor.getReadAccessListener();
-    if (modelAccessor instanceof PropertyAccessor) {
+    // todo are there situations when the listener's cleanlyReadAccessProperties are not empty? If yes, should not we always clean it
+    if (modelAccessor instanceof IPropertyAccessor) {
       if (listener != null) {
         listener.clearCleanlyReadAccessProperties();
       }
@@ -70,9 +73,13 @@ public class EditorCell_Property extends EditorCell_Label implements Synchronize
 
   @Override
   public void synchronizeViewWithModel() {
+    synchronizeViewWithModel_internal();
+  }
+
+  private void synchronizeViewWithModel_internal() {
     String text = myModelAccessor.getText();
     myLastModelText = text;
-    setErrorState(!isValidText(text));
+    setErrorState(myValueFromModelMayBeInvalid && !isValidText(text));
     setText(text);
   }
 
@@ -81,12 +88,7 @@ public class EditorCell_Property extends EditorCell_Label implements Synchronize
     boolean oldSelected = isSelected();
     super.setSelected(selected);
     if (oldSelected && !selected && isTransactional()) {
-      final Runnable commitCommand = new Runnable() {
-        @Override
-        public void run() {
-          commit();
-        }
-      };
+      final Runnable commitCommand = () -> commit();
       if (myCommitInCommand) {
         getModelAccess().executeCommandInEDT(commitCommand);
       } else {
@@ -122,9 +124,9 @@ public class EditorCell_Property extends EditorCell_Label implements Synchronize
     }
     myCommitInProgress = true;
     try {
-      boolean result = false;
       if (isTransactional()) {
         TransactionalModelAccessor transactionalModelAccessor = (TransactionalModelAccessor) myModelAccessor;
+        boolean result = false;
         if (transactionalModelAccessor.hasValueToCommit()) {
           transactionalModelAccessor.commit();
           result = true;
@@ -160,25 +162,17 @@ public class EditorCell_Property extends EditorCell_Label implements Synchronize
 
   @Override
   public boolean isValidText(final String text) {
-    return new ModelAccessHelper(getModelAccess()).runReadAction(new Computable<Boolean>() {
-      @Override
-      public Boolean compute() {
-        return myModelAccessor.isValidText(text);
-      }
-    });
+    return new ModelAccessHelper(getModelAccess()).runReadAction(() -> myModelAccessor.isValidText(text));
   }
 
   @Override
   public SubstituteInfo getSubstituteInfo() {
     final SubstituteInfo substituteInfo = super.getSubstituteInfo();
-    return new ModelAccessHelper(getModelAccess()).runReadAction(new Computable<SubstituteInfo>() {
-      @Override
-      public SubstituteInfo compute() {
-        if (substituteInfo != null) {
-          substituteInfo.setOriginalText(myModelAccessor.getText());
-        }
-        return substituteInfo;
+    return new ModelAccessHelper(getModelAccess()).runReadAction(() -> {
+      if (substituteInfo != null) {
+        substituteInfo.setOriginalText(myModelAccessor.getText());
       }
+      return substituteInfo;
     });
   }
 

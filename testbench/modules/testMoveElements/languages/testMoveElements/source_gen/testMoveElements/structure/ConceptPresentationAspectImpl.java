@@ -4,14 +4,14 @@ package testMoveElements.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_DummyBlock = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ManyStatements = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ManyStatementsContainer = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_DummyBlock;
+  private ConceptPresentation props_ManyStatements;
+  private ConceptPresentation props_ManyStatementsContainer;
 
   @Override
   @Nullable
@@ -19,10 +19,25 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.DummyBlock:
+        if (props_DummyBlock == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("dummy");
+          props_DummyBlock = cpb.create();
+        }
         return props_DummyBlock;
       case LanguageConceptSwitch.ManyStatements:
+        if (props_ManyStatements == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ManyStatements");
+          props_ManyStatements = cpb.create();
+        }
         return props_ManyStatements;
       case LanguageConceptSwitch.ManyStatementsContainer:
+        if (props_ManyStatementsContainer == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ManyStatementsContainer");
+          props_ManyStatementsContainer = cpb.create();
+        }
         return props_ManyStatementsContainer;
     }
     return null;

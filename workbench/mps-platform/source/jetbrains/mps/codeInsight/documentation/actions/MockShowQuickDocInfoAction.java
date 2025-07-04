@@ -18,6 +18,7 @@ package jetbrains.mps.codeInsight.documentation.actions;
 import com.intellij.codeInsight.CodeInsightActionHandler;
 import com.intellij.codeInsight.actions.BaseCodeInsightAction;
 import com.intellij.codeInsight.hint.HintManagerImpl;
+import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PopupAction;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.DumbAware;
@@ -31,6 +32,12 @@ import org.jetbrains.annotations.NotNull;
  * @see jetbrains.mps.codeInsight.hint.actions.MockShowImplementationsAction
  */
 public class MockShowQuickDocInfoAction extends BaseCodeInsightAction implements HintManagerImpl.ActionToIgnore, DumbAware, PopupAction {
+
+  @Override
+  public void update(AnActionEvent event) {
+    event.getPresentation().setEnabledAndVisible(false);
+  }
+
   @NotNull
   @Override
   protected CodeInsightActionHandler getHandler() {

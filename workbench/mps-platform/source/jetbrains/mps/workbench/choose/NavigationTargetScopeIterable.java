@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,19 @@
  */
 package jetbrains.mps.workbench.choose;
 
+import com.intellij.openapi.project.Project;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.workbench.goTo.navigation.GotoNavigationUtil;
+import jetbrains.mps.workbench.NavigationService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant.NavigationTarget;
-import org.jetbrains.mps.openapi.persistence.NavigationParticipant.TargetKind;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 
 /**
@@ -34,15 +38,25 @@ import java.util.Iterator;
  */
 public class NavigationTargetScopeIterable implements Iterable<NavigationTarget> {
   private final SearchScope myScope;
-  private SRepository myRepo;
+  private final SRepository myRepo;
+  private final Project myProject;
 
-  public NavigationTargetScopeIterable(@NotNull SearchScope scope, @NotNull SRepository repo) {
+  public NavigationTargetScopeIterable(@NotNull SearchScope scope, @NotNull MPSProject mpsProject) {
     myScope = scope;
-    myRepo = repo;
+    myProject = mpsProject.getProject();
+    myRepo = mpsProject.getRepository();
   }
 
+  @NotNull
   @Override
   public Iterator<NavigationTarget> iterator() {
-    return new ModelAccessHelper(myRepo).runReadAction(() -> GotoNavigationUtil.getNavigationTargets(TargetKind.ROOT, myScope, new EmptyProgressMonitor())).iterator();
+    final Collection<NavigationTarget> navigationTargets;
+    NavigationService navigationService;
+    if (myProject != null && (navigationService = myProject.getService(NavigationService.class)) != null) {
+      navigationTargets = new ModelAccessHelper(myRepo).runReadAction(() -> navigationService.getNavigationRoots(myScope, new EmptyProgressMonitor()));
+    } else {
+      navigationTargets = Collections.emptyList();
+    }
+    return navigationTargets.iterator();
   }
 }

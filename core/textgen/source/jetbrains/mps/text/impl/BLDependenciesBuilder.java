@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.text.impl;
 
 import jetbrains.mps.make.java.ModelDependencies;
 import jetbrains.mps.make.java.RootDependencies;
-import jetbrains.mps.text.CompatibilityTextUnit;
 import jetbrains.mps.text.TextGenResult;
 import jetbrains.mps.text.TextUnit;
 import org.jetbrains.annotations.NotNull;
@@ -28,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
  * there's no generic mechanism now in TextGen facet to pick all relevant data to serialize it along with
  * generated files, hence ModelDependencies in [kernel] and this builder in [textgen]
  *
- * See {@link CompatibilityTextUnit} for ideas how to get rid of explicit BL dependency.
+ * See {@code jetbrains.mps.text.CompatibilityTextUnit} for ideas how to get rid of explicit BL dependency.
  * Now, it seems better approach is to move this builder next to TextGen_Facet (which knows about [kernel] and [textgen]). It's still
  * not best solution (we need a mechanism to contribute these builders, along with cache generators, based on actual languages involved).
  * Shall get back to this question once RTU.findContextObject goes API/public (into TU) and I can use it without need to cast to RTU implementation
@@ -36,7 +35,12 @@ import org.jetbrains.annotations.NotNull;
  * @see jetbrains.mps.text.impl.DebugInfoBuilder
  * @author Artem Tikhomirov
  * @since 3.4
+ * @deprecated This class is no longer in use, as we abandon approach with per-root dependencies recorded.
+ *             Although I don't expect any uses of this class outside of MPS/TextGen Make facet, I'd like to keep it for a while just in case I'd like to
+ *             pay attention to the comments/considerations above.
+ *             FIXME before deleting this class, check if there are any java module dependencies that become obsolete and could be cleared as well.
  */
+@Deprecated(since = "2022.2", forRemoval = true)
 public class BLDependenciesBuilder {
 
   @NotNull
@@ -46,13 +50,12 @@ public class BLDependenciesBuilder {
       if (tu.getState() == TextUnit.Status.Empty) {
         continue;
       }
-      if (tu instanceof RegularTextUnit) {
-        RootDependencies.Source co = ((RegularTextUnit) tu).findContextObject(RootDependencies.Source.class);
-        if (co != null) {
-          RootDependencies deps = co.getDependencies();
-          if (deps != null) {
-            modelDependencies.addDependencies(deps);
-          }
+      RootDependencies.Source co = tu.findContextObject(RootDependencies.Source.class).findFirst().orElse(null);
+      if (co != null) {
+        RootDependencies deps = co.getDependencies();
+        if (deps != null) {
+          //noinspection removal
+          modelDependencies.addDependencies(deps);
         }
       }
     }

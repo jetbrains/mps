@@ -20,13 +20,10 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.nodeEditor.CellSide;
 import jetbrains.mps.nodeEditor.cellActions.SideTransformSubstituteInfo.Side;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
-import jetbrains.mps.nodeEditor.menus.MenuUtil;
 import jetbrains.mps.nodeEditor.sidetransform.EditorCell_STHint;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
-import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuLookup;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SNode;
 
 
@@ -36,8 +33,7 @@ public class CellAction_SideTransform extends AbstractCellAction {
   /**
    * use {@link #CellAction_SideTransform(Side)}
    */
-  @Deprecated
-  @ToRemove(version = 2017.2)
+@Deprecated(since = "2017.2", forRemoval = true)
   public CellAction_SideTransform(CellSide side) {
     mySide = side == CellSide.RIGHT ? Side.RIGHT : Side.LEFT;
   }

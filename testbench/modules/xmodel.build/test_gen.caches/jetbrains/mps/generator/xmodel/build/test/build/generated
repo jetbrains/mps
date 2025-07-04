@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-mlurey1gz60rk2m1xplvdx3v26w3kk" />
+<product version="3" modelHash="-u9k06i147m8ifal7e6eavzlyz7lwuk">
+  <files names="TwoModulesWithXRefsBuiltIndependently_Test.java" />
+</product>
 

@@ -14,31 +14,36 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class check_InstanceOfDeprecated_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_InstanceOfDeprecated_NonTypesystemRule() {
   }
-  public void applyRule(final SNode n, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ConceptPresentation conceptPres = ConceptAspectsHelper.getPresentationAspect(n);
+  public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+    ConceptPresentation conceptPres = ConceptAspectsHelper.getPresentationAspect(node);
     if (conceptPres == null) {
       return;
     }
 
     if (conceptPres.isDeprecated()) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(n, "'" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(n) + "' is instance of deprecated concept", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "8524227390952646895", null, errorTarget);
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(node, "The node '" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(node) + "' is an instance of deprecated concept", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "8524227390952646895", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    return CONCEPTS.BaseConcept$gP;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
     return false;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

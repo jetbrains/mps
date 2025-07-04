@@ -23,6 +23,7 @@ public class BuildScript_Configuration_Editor extends SettingsEditorEx<BuildScri
     Disposer.dispose(myNodePointer);
     Disposer.dispose(mySettings);
   }
+
   @NotNull
   public JPanel createEditor() {
     JPanel panel = new JPanel(new GridBagLayout());
@@ -36,10 +37,12 @@ public class BuildScript_Configuration_Editor extends SettingsEditorEx<BuildScri
 
     return panel;
   }
+
   public void applyEditorTo(final BuildScript_Configuration configuration) throws ConfigurationException {
     myNodePointer.applyEditorTo(configuration.getNodePointer());
     mySettings.applyEditorTo(configuration.getSettings());
   }
+
   public void resetEditorFrom(final BuildScript_Configuration configuration) {
     myNodePointer.resetEditorFrom(configuration.getNodePointer());
     mySettings.resetEditorFrom(configuration.getSettings());

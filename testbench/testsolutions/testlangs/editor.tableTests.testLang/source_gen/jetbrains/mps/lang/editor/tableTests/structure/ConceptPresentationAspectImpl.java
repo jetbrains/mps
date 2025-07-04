@@ -4,28 +4,28 @@ package jetbrains.mps.lang.editor.tableTests.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_AbstractStateMachineElement = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ContentElement = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_DataCell = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_Event = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_EventReference = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_HierarchycalTable = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_LightWeightDecisionTable = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_Matrix = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_Row = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_State = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_StateMachine = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_StateReference = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_Table = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_Transition = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_UltimateContainer = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_XElement = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_YElement = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_AbstractStateMachineElement;
+  private ConceptPresentation props_ContentElement;
+  private ConceptPresentation props_DataCell;
+  private ConceptPresentation props_Event;
+  private ConceptPresentation props_EventReference;
+  private ConceptPresentation props_HierarchycalTable;
+  private ConceptPresentation props_LightWeightDecisionTable;
+  private ConceptPresentation props_Matrix;
+  private ConceptPresentation props_Row;
+  private ConceptPresentation props_State;
+  private ConceptPresentation props_StateMachine;
+  private ConceptPresentation props_StateReference;
+  private ConceptPresentation props_Table;
+  private ConceptPresentation props_Transition;
+  private ConceptPresentation props_UltimateContainer;
+  private ConceptPresentation props_XElement;
+  private ConceptPresentation props_YElement;
 
   @Override
   @Nullable
@@ -33,38 +33,122 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.AbstractStateMachineElement:
+        if (props_AbstractStateMachineElement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_AbstractStateMachineElement = cpb.create();
+        }
         return props_AbstractStateMachineElement;
       case LanguageConceptSwitch.ContentElement:
+        if (props_ContentElement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_ContentElement = cpb.create();
+        }
         return props_ContentElement;
       case LanguageConceptSwitch.DataCell:
+        if (props_DataCell == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("DataCell");
+          props_DataCell = cpb.create();
+        }
         return props_DataCell;
       case LanguageConceptSwitch.Event:
+        if (props_Event == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_Event = cpb.create();
+        }
         return props_Event;
       case LanguageConceptSwitch.EventReference:
+        if (props_EventReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0xa99ffe1c8457446L, 0xa99ffe1c8457447L, "event", "", "");
+          props_EventReference = cpb.create();
+        }
         return props_EventReference;
       case LanguageConceptSwitch.HierarchycalTable:
+        if (props_HierarchycalTable == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_HierarchycalTable = cpb.create();
+        }
         return props_HierarchycalTable;
       case LanguageConceptSwitch.LightWeightDecisionTable:
+        if (props_LightWeightDecisionTable == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("decTable");
+          props_LightWeightDecisionTable = cpb.create();
+        }
         return props_LightWeightDecisionTable;
       case LanguageConceptSwitch.Matrix:
+        if (props_Matrix == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_Matrix = cpb.create();
+        }
         return props_Matrix;
       case LanguageConceptSwitch.Row:
+        if (props_Row == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Row");
+          props_Row = cpb.create();
+        }
         return props_Row;
       case LanguageConceptSwitch.State:
+        if (props_State == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_State = cpb.create();
+        }
         return props_State;
       case LanguageConceptSwitch.StateMachine:
+        if (props_StateMachine == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_StateMachine = cpb.create();
+        }
         return props_StateMachine;
       case LanguageConceptSwitch.StateReference:
+        if (props_StateReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0xa99ffe1c8457444L, 0xa99ffe1c8457445L, "state", "", "");
+          props_StateReference = cpb.create();
+        }
         return props_StateReference;
       case LanguageConceptSwitch.Table:
+        if (props_Table == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_Table = cpb.create();
+        }
         return props_Table;
       case LanguageConceptSwitch.Transition:
+        if (props_Transition == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Transition");
+          props_Transition = cpb.create();
+        }
         return props_Transition;
       case LanguageConceptSwitch.UltimateContainer:
+        if (props_UltimateContainer == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("UltimateContainer");
+          props_UltimateContainer = cpb.create();
+        }
         return props_UltimateContainer;
       case LanguageConceptSwitch.XElement:
+        if (props_XElement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_XElement = cpb.create();
+        }
         return props_XElement;
       case LanguageConceptSwitch.YElement:
+        if (props_YElement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_YElement = cpb.create();
+        }
         return props_YElement;
     }
     return null;

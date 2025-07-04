@@ -4,16 +4,16 @@ package jetbrains.mps.samples.componentDependencies.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_Component = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ComponentSet = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_Dependency = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_InPort = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_OutPort = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_Component;
+  private ConceptPresentation props_ComponentSet;
+  private ConceptPresentation props_Dependency;
+  private ConceptPresentation props_InPort;
+  private ConceptPresentation props_OutPort;
 
   @Override
   @Nullable
@@ -21,14 +21,39 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.Component:
+        if (props_Component == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_Component = cpb.create();
+        }
         return props_Component;
       case LanguageConceptSwitch.ComponentSet:
+        if (props_ComponentSet == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_ComponentSet = cpb.create();
+        }
         return props_ComponentSet;
       case LanguageConceptSwitch.Dependency:
+        if (props_Dependency == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("depends on");
+          props_Dependency = cpb.create();
+        }
         return props_Dependency;
       case LanguageConceptSwitch.InPort:
+        if (props_InPort == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_InPort = cpb.create();
+        }
         return props_InPort;
       case LanguageConceptSwitch.OutPort:
+        if (props_OutPort == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_OutPort = cpb.create();
+        }
         return props_OutPort;
     }
     return null;

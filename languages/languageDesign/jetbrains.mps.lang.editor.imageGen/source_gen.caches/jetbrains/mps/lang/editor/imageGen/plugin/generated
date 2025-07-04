@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="dj3hk8rnt6n8hdeu4514zrtuf88ts6t" />
+<product version="3" modelHash="-c2s4vpws7kid15ho100bcw3exb29wzr">
+  <files names="FacetAspectDescriptor.java:FacetManifest.java:GenerateImages_Facet.java:PrintNodeRunnable.java" />
+</product>
 

@@ -5,30 +5,28 @@ package jetbrains.mps.lang.plugin.behavior;
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
-import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class KeyMapKeystroke__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, "jetbrains.mps.lang.plugin.structure.KeyMapKeystroke");
-  private static final BehaviorRegistry REGISTRY = ConceptRegistry.getInstance().getBehaviorRegistry();
 
-  public static final SMethod<String> getKeyStroke_idhEwIlzu = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getKeyStroke").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIlzu").registry(REGISTRY).build();
-  public static final SMethod<Boolean> hasRemoveOrReplaceAllModifiers_id4qYinf8$bKU = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasRemoveOrReplaceAllModifiers").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4qYinf8$bKU").registry(REGISTRY).build();
-  public static final SMethod<Boolean> hasRemove_id4qYinf8$eal = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasRemove").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4qYinf8$eal").registry(REGISTRY).build();
-  public static final SMethod<Boolean> hasReplaceAll_id4qYinf8$enm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasReplaceAll").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4qYinf8$enm").registry(REGISTRY).build();
+  public static final SMethod<String> getKeyStroke_idhEwIlzu = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getKeyStroke").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877278942L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<Boolean> hasRemoveOrReplaceAllModifiers_id4qYinf8$bKU = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasRemoveOrReplaceAllModifiers").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5097592589864975418L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<Boolean> hasRemove_id4qYinf8$eal = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasRemove").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5097592589864985237L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<Boolean> hasReplaceAll_id4qYinf8$enm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasReplaceAll").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5097592589864986070L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getKeyStroke_idhEwIlzu, hasRemoveOrReplaceAllModifiers_id4qYinf8$bKU, hasRemove_id4qYinf8$eal, hasReplaceAll_id4qYinf8$enm);
 
@@ -36,30 +34,34 @@ public final class KeyMapKeystroke__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static String getKeyStroke_idhEwIlzu(@NotNull SNode __thisNode__) {
-    String modifiers = SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d5L, "modifiers"));
+    String modifiers = SPropertyOperations.getString(__thisNode__, PROPS.modifiers$4CNz);
     if (modifiers == null) {
       modifiers = "";
     }
-    String keyName;
-    if (SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d6L, "keycode")).startsWith("VK_")) {
-      keyName = SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d6L, "keycode")).substring(3);
-    } else {
-      keyName = SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d6L, "keycode"));
+    modifiers = modifiers.replaceAll("\\+", " ");
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.keycode$4D2$))) {
+      return modifiers;
     }
-    return modifiers.replaceAll("\\+", " ") + " " + keyName;
+
+    String keyName;
+    if (SPropertyOperations.getString(__thisNode__, PROPS.keycode$4D2$).startsWith("VK_")) {
+      keyName = SPropertyOperations.getString(__thisNode__, PROPS.keycode$4D2$).substring(3);
+    } else {
+      keyName = SPropertyOperations.getString(__thisNode__, PROPS.keycode$4D2$);
+    }
+    return modifiers + " " + keyName;
   }
   /*package*/ static boolean hasRemoveOrReplaceAllModifiers_id4qYinf8$bKU(@NotNull SNode __thisNode__) {
     return ((boolean) KeyMapKeystroke__BehaviorDescriptor.hasRemove_id4qYinf8$eal.invoke(__thisNode__)) || ((boolean) KeyMapKeystroke__BehaviorDescriptor.hasReplaceAll_id4qYinf8$enm.invoke(__thisNode__));
   }
   /*package*/ static boolean hasRemove_id4qYinf8$eal(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.hasValue(__thisNode__, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x5e2b603c8f03ab4dL, "change"), "remove", null);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.change$QdWn), 0x5e2b603c8f03666aL);
   }
   /*package*/ static boolean hasReplaceAll_id4qYinf8$enm(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.hasValue(__thisNode__, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x5e2b603c8f03ab4dL, "change"), "replace all", null);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.change$QdWn), 0x5e2b603c8f036669L);
   }
 
   /*package*/ KeyMapKeystroke__BehaviorDescriptor() {
-    super(REGISTRY);
   }
 
   @Override
@@ -109,5 +111,14 @@ public final class KeyMapKeystroke__BehaviorDescriptor extends BaseBHDescriptor 
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+  private static boolean isEmptyString(String str) {
+    return str == null || str.isEmpty();
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty modifiers$4CNz = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d5L, "modifiers");
+    /*package*/ static final SProperty keycode$4D2$ = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d6L, "keycode");
+    /*package*/ static final SProperty change$QdWn = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x5e2b603c8f03ab4dL, "change");
   }
 }

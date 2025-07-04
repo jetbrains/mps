@@ -10,6 +10,8 @@
     <orderEntry type="jdk" jdkName="IDEA IC" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="mps-common" />
-    <orderEntry type="module" module-name="mps-java-common" />
+    <orderEntry type="library" name="mps-java-platform" level="project" />
+    <orderEntry type="module" module-name="mps-jps-plugin" />
+    <orderEntry type="library" name="mps.MPS.IDEA_auto" level="project" />
   </component>
 </module>

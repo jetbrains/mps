@@ -1,8 +1,0 @@
-<project name="Get MPS dependencies" default="default">
-
-  <!-- TODO: Remove in 3.5 after change Template build step to use getDependencies.xml -->
-  <target name="default" description="Download all needed libraries">
-    <ant antfile="getDependencies.xml" target="install" inheritall="false"/>
-  </target>
-
-</project>

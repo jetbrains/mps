@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.generator.runtime.TemplateReductionRule;
 import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
 import jetbrains.mps.util.FlattenIterable;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class TemplateSwitchGraph {
 
-  private final Map<SNodeReference, Node> mySwitchToNode = new HashMap<SNodeReference, Node>();
+  private final Map<SNodeReference, Node> mySwitchToNode = new HashMap<>();
 
   public TemplateSwitchGraph(Collection<TemplateModel> templateModels) throws GenerationFailureException {
     for (TemplateModel templateModel : templateModels) {
@@ -48,7 +48,7 @@ public class TemplateSwitchGraph {
         }
       }
       if (node.myModified == null) {
-        node.myRules = new LinkedList<TemplateSwitchMapping>();
+        node.myExtensions = new LinkedList<>();
       }
     }
     for (Node node : mySwitchToNode.values()) {
@@ -62,13 +62,18 @@ public class TemplateSwitchGraph {
         if (i == 0) {
           throw new GenerationFailureException("Template switch loop in: " + node);
         }
+        bottom.myExtensions.add(node);
       }
-      bottom.myRules.add(node.mySwitch);
     }
   }
 
-  public FastRuleFinder getRuleFinder(SNodeReference baseSwitch) {
+  // returns null to indicate no switch found (if found, FastRuleFinder could still be empty)
+  @Nullable
+  public FastRuleFinder<TemplateReductionRule> getRuleFinder(SNodeReference baseSwitch) {
     Node bottom = mySwitchToNode.get(baseSwitch);
+    if (bottom == null) {
+      return null;
+    }
     while (bottom.myModified != null) {
       bottom = bottom.myModified;
     }
@@ -82,15 +87,15 @@ public class TemplateSwitchGraph {
 
   private static class Node {
     final TemplateSwitchMapping mySwitch;
-    Node myModified;
-    List<TemplateSwitchMapping> myRules;
-    private FastRuleFinder myFinder;
+    Node myModified; // switch modified by this one
+    List<Node> myExtensions; // Nodes that reference this one as myModified
+    private FastRuleFinder<TemplateReductionRule> myFinder;
 
     public Node(TemplateSwitchMapping switch_) {
       this.mySwitch = switch_;
     }
 
-    public FastRuleFinder getFinder() {
+    public FastRuleFinder<TemplateReductionRule> getFinder() {
       if (myFinder == null) {
         createFinder();
       }
@@ -101,12 +106,14 @@ public class TemplateSwitchGraph {
       if (myFinder != null) {
         return;
       }
-      FlattenIterable<TemplateReductionRule> rules = new FlattenIterable<TemplateReductionRule>(new ArrayList<Iterable<TemplateReductionRule>>());
-      for (TemplateSwitchMapping sw : myRules) {
-        rules.add(sw.getReductionRules());
+      FlattenIterable<TemplateReductionRule> rules = new FlattenIterable<>();
+      // first, consume rules from extensions
+      for (Node ext : myExtensions) {
+        rules.add(ext.mySwitch.getReductionRules());
       }
-      myRules = null;
-      myFinder = new FastRuleFinder<TemplateReductionRule>(rules);
+      // then, resort to rules in the base switch
+      rules.add(mySwitch.getReductionRules());
+      myFinder = new FastRuleFinder<>(rules);
     }
   }
 }

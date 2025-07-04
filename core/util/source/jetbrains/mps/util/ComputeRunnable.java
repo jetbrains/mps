@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,13 @@ package jetbrains.mps.util;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * @deprecated With method references and {@link java.util.function.Supplier}, no reason to keep this class.
+ *             You may also find {@link org.jetbrains.mps.util.RunWithOutcome} handy in some replacement scenarios
  * @author Artem Tikhomirov
  */
+@Deprecated(since = "2023.3", forRemoval = true)
 public class ComputeRunnable<T> extends AbstractComputeRunnable<T> {
+  // no uses in MPS as of 24.1; drop once 24.1 is out
   private final Computable<T> myComputable;
 
   public ComputeRunnable(@NotNull Computable<T> computable) {

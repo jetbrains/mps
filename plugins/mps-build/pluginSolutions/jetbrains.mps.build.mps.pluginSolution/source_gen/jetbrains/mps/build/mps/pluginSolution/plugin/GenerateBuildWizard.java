@@ -28,7 +28,8 @@ public class GenerateBuildWizard extends AbstractWizard {
 
   @Override
   public String getHelpID() {
-    return null;
+
+    return "BuildScriptWizard";
   }
 
   @Override

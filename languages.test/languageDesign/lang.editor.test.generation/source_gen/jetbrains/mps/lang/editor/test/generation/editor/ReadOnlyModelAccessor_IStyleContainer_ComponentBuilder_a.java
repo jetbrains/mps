@@ -11,7 +11,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.ModelAccessor;
-import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import jetbrains.mps.openapi.editor.style.Style;
@@ -19,7 +18,6 @@ import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.lang.editor.test.generation.editor.TestTargetStyleSheet_StyleSheet.testStyleStyleClass;
 import jetbrains.mps.lang.editor.test.generation.editor.TestTargetStyleKeyPack_KeyPack.testKey_StyleKey;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import java.awt.Color;
 import jetbrains.mps.editor.runtime.style.CaretPosition;
@@ -32,6 +30,8 @@ import jetbrains.mps.editor.runtime.style.TableComponent;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Superscript;
 import jetbrains.mps.editor.runtime.style.ScriptKind;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class ReadOnlyModelAccessor_IStyleContainer_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -49,38 +49,33 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
   }
 
   /*package*/ EditorCell createCell() {
-    return createCollection_bn78ok_a();
+    return createCollection_0();
   }
 
-  private EditorCell createCollection_bn78ok_a() {
+  private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
     editorCell.setCellId("Collection_bn78ok_a");
-    editorCell.addEditorCell(createReadOnlyModelAccessor_bn78ok_a0());
-    editorCell.addEditorCell(createCollection_bn78ok_b0());
+    editorCell.addEditorCell(createReadOnlyModelAccessor_0());
+    editorCell.addEditorCell(createCollection_1());
     return editorCell;
   }
-  private EditorCell createReadOnlyModelAccessor_bn78ok_a0() {
-    EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor() {
+  private EditorCell createReadOnlyModelAccessor_0() {
+    EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
         return null;
-      }
-      public void setText(String s) {
-      }
-      public boolean isValidText(String s) {
-        return EqualUtil.equals(s, getText());
       }
     }, myNode);
     editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
     editorCell.setCellId("ReadOnlyModelAccessor_bn78ok_a0");
     Style style = new StyleImpl();
-    new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-    new testKey_StyleKey().apply(style);
+    new testStyleStyleClass(this).apply(style, editorCell);
+    new testKey_StyleKey().apply(this, style);
     if (_StyleParameter_QueryFunction_bn78ok_a2a0()) {
-      new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new testStyleStyleClass(this).apply(style, editorCell);
     }
     if (_StyleParameter_QueryFunction_bn78ok_a3a0()) {
-      new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new testStyleStyleClass(this).apply(style, editorCell);
     }
     style.set(StyleAttributes.getInstance().<String>getAttribute("jetbrains.mps.lang.editor.test.generation", "testStringAttribute"), _StyleParameter_QueryFunction_bn78ok_a4a0());
     style.set(StyleAttributes.AUTO_DELETABLE, true);
@@ -115,30 +110,30 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
     style.set(StyleAttributes.SELECTABLE, _StyleParameter_QueryFunction_bn78ok_a43a0());
     style.set(StyleAttributes.STRIKE_OUT, true);
     style.set(StyleAttributes.STRIKE_OUT, _StyleParameter_QueryFunction_bn78ok_a63a0());
-    style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.blue));
-    style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_bn78ok_a83a0()));
-    style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-    style.set(StyleAttributes.BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_bn78ok_a04a0().o1 : _StyleParameter_QueryFunction_bn78ok_a04a0().o2));
-    style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
-    style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_bn78ok_a24a0()));
-    style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-    style.set(StyleAttributes.BRACKETS_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_bn78ok_a44a0().o1 : _StyleParameter_QueryFunction_bn78ok_a44a0().o2));
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan)));
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_bn78ok_a64a0()));
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-    style.set(StyleAttributes.TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_bn78ok_a84a0().o1 : _StyleParameter_QueryFunction_bn78ok_a84a0().o2));
-    style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-    style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_bn78ok_a05a0()));
-    style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-    style.set(StyleAttributes.NULL_TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_bn78ok_a25a0().o1 : _StyleParameter_QueryFunction_bn78ok_a25a0().o2));
-    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_bn78ok_a45a0()));
-    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_bn78ok_a65a0().o1 : _StyleParameter_QueryFunction_bn78ok_a65a0().o2));
-    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan));
-    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_bn78ok_a85a0()));
-    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_bn78ok_a06a0().o1 : _StyleParameter_QueryFunction_bn78ok_a06a0().o2));
+    style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.blue));
+    style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_bn78ok_a83a0()));
+    style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+    style.set(StyleAttributes.BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_bn78ok_a04a0().o1 : _StyleParameter_QueryFunction_bn78ok_a04a0().o2));
+    style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_BLUE));
+    style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_bn78ok_a24a0()));
+    style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+    style.set(StyleAttributes.BRACKETS_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_bn78ok_a44a0().o1 : _StyleParameter_QueryFunction_bn78ok_a44a0().o2));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN, getStyleRegistry().getSimpleColor(MPSColors.cyan)));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_bn78ok_a64a0()));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+    style.set(StyleAttributes.TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_bn78ok_a84a0().o1 : _StyleParameter_QueryFunction_bn78ok_a84a0().o2));
+    style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+    style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_bn78ok_a05a0()));
+    style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+    style.set(StyleAttributes.NULL_TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_bn78ok_a25a0().o1 : _StyleParameter_QueryFunction_bn78ok_a25a0().o2));
+    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_bn78ok_a45a0()));
+    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_bn78ok_a65a0().o1 : _StyleParameter_QueryFunction_bn78ok_a65a0().o2));
+    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.cyan));
+    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_bn78ok_a85a0()));
+    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_bn78ok_a06a0().o1 : _StyleParameter_QueryFunction_bn78ok_a06a0().o2));
     style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
     style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.FIRST);
     style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
@@ -159,18 +154,16 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
     style.set(StyleAttributes.MAX_WIDTH, 10);
     style.set(StyleAttributes.MAX_WIDTH, _StyleParameter_QueryFunction_bn78ok_a97a0());
     style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_bn78ok_a08a0());
-    style.set(StyleAttributes.NAVIGATABLE_REFERENCE, "navigable");
+    style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$$_JE);
     style.set(StyleAttributes.PARAMETERS_INFORMATION, new TestTargetParametersInformation());
     style.set(StyleAttributes.POSITION_CHILDREN, "next-line");
     style.set(StyleAttributes.POSITION, "indented");
     style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
-    style.set(StyleAttributes.RT_ANCHOR_TAG, "ext_1_RTransform");
-    style.set(StyleAttributes.RT_ANCHOR_TAG, "ext_1_RTransform|ext_2_RTransform");
     style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
-    new testStyleStyleClass(getEditorContext(), getNode()).unapply(style, editorCell);
-    new testKey_StyleKey().unapply(style);
+    new testStyleStyleClass(this).unapply(style, editorCell);
+    new testKey_StyleKey().unapply(this, style);
     style.set(StyleAttributes.UNDERLINED, false);
-    style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_bn78ok_a29a0());
+    style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_bn78ok_a09a0());
     editorCell.getStyle().putAll(style);
     return editorCell;
   }
@@ -318,28 +311,23 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
     boolean var = getEditorContext() != null || getNode() != null;
     return (var ? null : null);
   }
-  private boolean _StyleParameter_QueryFunction_bn78ok_a29a0() {
+  private boolean _StyleParameter_QueryFunction_bn78ok_a09a0() {
     boolean var = getEditorContext() != null || getNode() != null;
     return var;
   }
-  private EditorCell createCollection_bn78ok_b0() {
+  private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Superscript());
     editorCell.setCellId("Collection_bn78ok_b0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(createReadOnlyModelAccessor_bn78ok_a1a());
+    editorCell.addEditorCell(createReadOnlyModelAccessor_1());
     return editorCell;
   }
-  private EditorCell createReadOnlyModelAccessor_bn78ok_a1a() {
-    EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor() {
+  private EditorCell createReadOnlyModelAccessor_1() {
+    EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
         return "";
-      }
-      public void setText(String s) {
-      }
-      public boolean isValidText(String s) {
-        return EqualUtil.equals(s, getText());
       }
     }, myNode);
     editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
@@ -349,7 +337,12 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
     style.set(StyleAttributes.SCRIPT_KIND, ScriptKind.NORMAL);
     style.set(StyleAttributes.SCRIPT_KIND, ScriptKind.SUBSCRIPT);
     style.set(StyleAttributes.SCRIPT_KIND, ScriptKind.SUPERSCRIPT);
+    style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     return editorCell;
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink navigable$$_JE = MetaAdapterFactory.getReferenceLink(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, 0xbde895319b644cL, "navigable");
   }
 }

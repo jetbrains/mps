@@ -4,16 +4,16 @@ package org.jetbrains.mps.samples.IfAndUnless.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_FalseFlow = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_Flow = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_MyIfStatement = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_TrueFlow = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_UnlessStatement = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_FalseFlow;
+  private ConceptPresentation props_Flow;
+  private ConceptPresentation props_MyIfStatement;
+  private ConceptPresentation props_TrueFlow;
+  private ConceptPresentation props_UnlessStatement;
 
   @Override
   @Nullable
@@ -21,14 +21,38 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.FalseFlow:
+        if (props_FalseFlow == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("FalseFlow");
+          props_FalseFlow = cpb.create();
+        }
         return props_FalseFlow;
       case LanguageConceptSwitch.Flow:
+        if (props_Flow == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_Flow = cpb.create();
+        }
         return props_Flow;
       case LanguageConceptSwitch.MyIfStatement:
+        if (props_MyIfStatement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("my_if");
+          props_MyIfStatement = cpb.create();
+        }
         return props_MyIfStatement;
       case LanguageConceptSwitch.TrueFlow:
+        if (props_TrueFlow == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("TrueFlow");
+          props_TrueFlow = cpb.create();
+        }
         return props_TrueFlow;
       case LanguageConceptSwitch.UnlessStatement:
+        if (props_UnlessStatement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("unless");
+          props_UnlessStatement = cpb.create();
+        }
         return props_UnlessStatement;
     }
     return null;

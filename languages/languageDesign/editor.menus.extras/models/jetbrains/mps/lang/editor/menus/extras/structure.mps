@@ -2,9 +2,7 @@
 <model ref="r:8333260e-1c41-48f8-b34d-821761a2600f(jetbrains.mps.lang.editor.menus.extras.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="-1" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
-    <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
+    <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
     <import index="tp4k" ref="r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)" />
@@ -31,13 +29,12 @@
       <concept id="1071489288298" name="jetbrains.mps.lang.structure.structure.LinkDeclaration" flags="ig" index="1TJgyj">
         <property id="1071599776563" name="role" index="20kJfa" />
         <property id="1071599893252" name="sourceCardinality" index="20lbJX" />
-        <property id="1071599937831" name="metaClass" index="20lmBu" />
         <property id="241647608299431140" name="linkId" index="IQ2ns" />
         <reference id="1071599976176" name="target" index="20lvS9" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -52,9 +49,8 @@
       <ref role="PrY4T" to="tpc2:6kJcyCQj9CC" resolve="IExtensibleTransformationMenuPart" />
     </node>
     <node concept="1TJgyj" id="2ytFvC$HnDi" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="intention" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2926686622729992786" />
       <ref role="20lvS9" to="tp3j:2c3oNEsfcpP" resolve="BaseIntentionDeclaration" />
     </node>
@@ -77,9 +73,8 @@
     </node>
     <node concept="1TJgyj" id="46W80XA3sdU" role="1TKVEi">
       <property role="IQ2ns" value="4736696158595695482" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="refactoring" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <ref role="20lvS9" to="tp1h:5YKiRiBue95" resolve="Refactoring" />
     </node>
   </node>
@@ -94,9 +89,8 @@
     </node>
     <node concept="1TJgyj" id="20Jj4S2C96k" role="1TKVEi">
       <property role="IQ2ns" value="2319156231054332308" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="action" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <ref role="20lvS9" to="tp4k:hwsE7KS" resolve="ActionDeclaration" />
     </node>
   </node>

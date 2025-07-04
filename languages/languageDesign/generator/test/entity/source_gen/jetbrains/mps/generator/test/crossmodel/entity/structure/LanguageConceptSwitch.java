@@ -11,13 +11,11 @@ public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
   public static final int Entry = 0;
   public static final int NodeA = 1;
-  public static final int TrivialKeeper = 2;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x4d14758c3ecb486dL, 0xb8c8ea5beb8ae408L);
     builder.put(0x3c70a9e3bda965f6L, Entry);
     builder.put(0x3c70a9e3bda96463L, NodeA);
-    builder.put(0x7bb9ef7499a8e15dL, TrivialKeeper);
     myIndex = builder.seal();
   }
 

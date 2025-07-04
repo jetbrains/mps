@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,21 +17,29 @@ package jetbrains.mps.newTypesystem.state.blocks;
 
 import jetbrains.mps.newTypesystem.state.NodeMaps;
 import jetbrains.mps.newTypesystem.state.State;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.Pair;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.List;
 import java.util.Set;
 
 public abstract class Block {
   private State myState;
-  private String myNodeModel;
-  private String myNodeId;
+  private final String myNodeModel;
+  private final String myNodeId;
 
   public Block(State state, String nodeModel, String nodeId) {
     myState = state;
     myNodeModel = nodeModel;
     myNodeId = nodeId;
+  }
+
+  public Block(State state, SNodeReference node) {
+    myState = state;
+    // FIXME use SNodeReference instead of 2 strings!
+    myNodeModel = node == null ? null : node.getModelReference().toString();
+    myNodeId = node == null ? null : node.getNodeId().toString();
   }
 
   public SNode getResolvedInput(SNode input) {
@@ -57,7 +65,7 @@ public abstract class Block {
       sb.append(var);
       sb.append(" is a type of ");
       sb.append(nodeMaps.getNode(var));
-      sb.append("\n");
+      sb.append('\n');
     }
     return sb.toString();
   }

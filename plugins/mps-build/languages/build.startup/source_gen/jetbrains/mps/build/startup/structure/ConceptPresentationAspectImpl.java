@@ -4,18 +4,17 @@ package jetbrains.mps.build.startup.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_ClassPathItem = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_MpsStartupScript = new ConceptPresentationBuilder().deprecated(MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x35ebd6e5b343750bL, "startupFolder"), MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x35ebd6e5b3443492L, "startupClass"), MetaAdapterFactory.getReferenceLink(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x30a61e6d55f6abc9L, "branding")).create();
-  private final ConceptPresentation props_SimpleVmOptions = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_TextFile = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_TextLine = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_VmOptions = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_ClassPathItem;
+  private ConceptPresentation props_MpsStartupScript;
+  private ConceptPresentation props_SimpleVmOptions;
+  private ConceptPresentation props_TextFile;
+  private ConceptPresentation props_TextLine;
+  private ConceptPresentation props_VmOptions;
 
   @Override
   @Nullable
@@ -23,16 +22,46 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.ClassPathItem:
+        if (props_ClassPathItem == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ClassPathItem");
+          props_ClassPathItem = cpb.create();
+        }
         return props_ClassPathItem;
       case LanguageConceptSwitch.MpsStartupScript:
+        if (props_MpsStartupScript == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L);
+          cpb.deprecateProperty(0x35ebd6e5b343750bL, "startupFolder");
+          cpb.presentationByName();
+          props_MpsStartupScript = cpb.create();
+        }
         return props_MpsStartupScript;
       case LanguageConceptSwitch.SimpleVmOptions:
+        if (props_SimpleVmOptions == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("SimpleVmOptions");
+          props_SimpleVmOptions = cpb.create();
+        }
         return props_SimpleVmOptions;
       case LanguageConceptSwitch.TextFile:
+        if (props_TextFile == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_TextFile = cpb.create();
+        }
         return props_TextFile;
       case LanguageConceptSwitch.TextLine:
+        if (props_TextLine == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("TextLine");
+          props_TextLine = cpb.create();
+        }
         return props_TextLine;
       case LanguageConceptSwitch.VmOptions:
+        if (props_VmOptions == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_VmOptions = cpb.create();
+        }
         return props_VmOptions;
     }
     return null;

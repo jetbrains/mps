@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,8 +47,10 @@ public final class IdEncoder implements IdInfoRegistry.IndexEncoder {
   private static final char REF_TARGET_IMPORT_SEPARATOR = ':';
   private static final String DYNAMIC_REFERENCE_ID = "^";
   private final JavaFriendlyBase64 myBase64 = new JavaFriendlyBase64();
+  private final PersistenceFacade myPersistenceFacade;
 
   public IdEncoder() {
+    myPersistenceFacade = PersistenceFacade.getInstance();
   }
 
   public String toText(SLanguageId langId) {
@@ -97,37 +99,40 @@ public final class IdEncoder implements IdInfoRegistry.IndexEncoder {
       return myBase64.toString(v);
     }
     // fall-through
-    return nodeId.toString();
+    return myPersistenceFacade.asString(nodeId);
   }
 
   public SNodeId parseNodeId(String text) throws EncodingException {
-    try {
-      if (!text.startsWith(Foreign.ID_PREFIX)) {
+    if (!text.startsWith(Foreign.ID_PREFIX)) {
+      try {
         long v = myBase64.parseLong(text);
         return new Regular(v);
+      } catch (IllegalArgumentException ex) {
+        // ignore, try PF factory
       }
       // fall-through
-      return jetbrains.mps.smodel.SNodeId.fromString(text);
+    }
+    try {
+      return myPersistenceFacade.createNodeId(text);
     } catch (IllegalArgumentException ex) {
-      throw new EncodingException(ex.getMessage());
+      throw new EncodingException(ex);
     }
   }
 
   public String toText(SModelReference mr) {
-    return PersistenceFacade.getInstance().asString(mr);
+    return myPersistenceFacade.asString(mr);
   }
 
   public SModelReference parseModelReference(String text) {
-    return PersistenceFacade.getInstance().createModelReference(text);
+    return myPersistenceFacade.createModelReference(text);
   }
 
   public String toText(SModuleReference ref) {
-//    return PersistenceFacade.getInstance().asString(ref); FIXME add counterpart for createModuleReference
-    return ref.toString();
+    return myPersistenceFacade.asString(ref);
   }
 
   public SModuleReference parseModuleReference(String text) {
-    return PersistenceFacade.getInstance().createModuleReference(text);
+    return myPersistenceFacade.createModuleReference(text);
   }
 
   public String toTextLocal(SReference ref) {
@@ -180,19 +185,19 @@ public final class IdEncoder implements IdInfoRegistry.IndexEncoder {
     int separatorIndex = referenceTarget.indexOf(REF_TARGET_IMPORT_SEPARATOR);
     assert separatorIndex >= 0;
     final SModelReference modelRef = separatorIndex == 0 ? null : imports.getModelReference(referenceTarget.substring(0, separatorIndex));
-    SNodeId nodeId = parseLocalNodeReference(referenceTarget.substring(separatorIndex + 1, referenceTarget.length()));
-    return new Pair<SModelReference, SNodeId>(modelRef, nodeId);
+    SNodeId nodeId = parseLocalNodeReference(referenceTarget.substring(separatorIndex + 1));
+    return new Pair<>(modelRef, nodeId);
   }
 
   /**
-   * Dedicated alternative of the {@link #parseExternalNodeReference(String)} that cares about target node id only, for indexing purposes,
+   * Dedicated alternative of the {@link #parseExternalNodeReference(ImportsHelper, String)} that cares about target node id only, for indexing purposes,
    * see {@link jetbrains.mps.smodel.persistence.def.v9.Indexer9}
    */
   @Nullable
   SNodeId parseExternalNodeReference(String referenceTarget) {
     int separatorIndex = referenceTarget.indexOf(REF_TARGET_IMPORT_SEPARATOR);
     assert separatorIndex >= 0;
-    return parseLocalNodeReference(referenceTarget.substring(separatorIndex + 1, referenceTarget.length()));
+    return parseLocalNodeReference(referenceTarget.substring(separatorIndex + 1));
   }
 
 
@@ -204,6 +209,10 @@ public final class IdEncoder implements IdInfoRegistry.IndexEncoder {
   public static class EncodingException extends Exception {
     public EncodingException(String message) {
       super(message);
+    }
+
+    public EncodingException(Throwable cause) {
+      super(cause);
     }
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,8 +22,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 /**
  * PROVISIONAL API
@@ -50,22 +53,43 @@ import java.util.Collection;
  * @since 2017.1
  */
 public interface GenerationPlanBuilder {
+  /**
+   * Apply generators of languages specified to reduce their concepts.
+   * Only explicitly mentioned languages are consulted for generators.
+   * To include extended languages, or languages that generate into a specified one, use {@link #transform(boolean)}.
+   * @param languages languages to reduce
+   */
   void transformLanguage(@NotNull SLanguage ... languages);
 
   /**
-   * Specified generators (exact set, inlike {@link #applyGeneratorWithExtended(SModule...)} no extended relation between generators is taken into account)
-   * applied as a single transformation step.
-   * @param generators generator modules
+   * Get a builder to fill transformation step with languages and generators.
+   * Once over, complete the step with {@link TransformStepBuilder#complete()}
+   * @param individualStepsPerGenerator {@code true} to put each included generator into a distinct transformation step, {@code false} to keep all of them together
+   * @return builder to populate transformation step
+   * @since 2021.1
    */
-  void applyGenerator(@NotNull SModule ... generators);
+  TransformStepBuilder transform(boolean individualStepsPerGenerator);
 
   /**
    * Specified generators and those extending them AND visible from scope applied as a single transformation step.
-   * PENDING: we may want to respect generator priority rules of involved generators to address extensibility scenarios like that of lang.editor here.
-   *   * What constitutes this 'scope' is up to plan builder implementation.
+   * What constitutes this 'scope' is up to plan builder implementation.
+   *
+   * To respect generator priority rules of involved generators to address extensibility scenarios like that of lang.editor, consider
+   * {@link #applyGenerators(Collection, BuilderOption...)} with {@link BuilderOption#WithPriorityRules} and {@link BuilderOption#WithExtendedGenerators}.
    * @param generators generator modules
    */
-  void applyGeneratorWithExtended(@NotNull SModule ... generators);
+  default void applyGeneratorWithExtended(@NotNull SModule ... generators) {
+    applyGenerators(Arrays.stream(generators).map(SModule::getModuleReference).collect(Collectors.toList()), BuilderOption.WithExtendedGenerators);
+  }
+
+  /**
+   * New approach to plan builder. As there's SLanguage for deployed language, there's SModuleReference to identify deployed generator, why
+   * would I need to get a module then?
+   * @param generators deployed generator identities for the step
+   * @param options optional set of options to further specify processing of {@code generators} set
+   * @since 2017.2
+   */
+  void applyGenerators(@NotNull Collection<SModuleReference> generators, @NotNull BuilderOption ... options);
 
   /**
    * IMPORTANT: USE OF THIS METHOD IS DISCOURAGED AS IT AFFECTS CONSISTENCY OF PLAN SPECIFICATION (namely, if applyGeneratorWithExtended() shall consider
@@ -105,6 +129,20 @@ public interface GenerationPlanBuilder {
   void synchronizeWithCheckpoint(@NotNull CheckpointIdentity cp);
 
   /**
+   * Support for parallel branches of transformations
+   * @return builder instance to handle separate branch of transformations
+   */
+  GenerationPlanBuilder fork();
+
+  /**
+   * Sets the generation target of a {@link #fork()}. Has no effect otherwise.
+   * @param targetHint generation target
+   */
+  default void setGenerationTarget(String targetHint) {
+    // NOP by default
+  }
+
+  /**
    * Completes {@link ModelGenerationPlan} instance with any state information build is aware of (e.g. build extends relation between
    * generators for {@link #applyGeneratorWithExtended(SModule...) or respect priority rules of generators involved}
    *
@@ -113,4 +151,46 @@ public interface GenerationPlanBuilder {
    */
   @NotNull
   ModelGenerationPlan wrapUp(@NotNull PlanIdentity planIdentity);
+
+  /**
+   * options of {@link #applyGenerators(Collection, BuilderOption...)}
+   * <p/>
+   * {@link #WithExtendedGenerators} means not only explicitly specified generator shall take part in a transformation process, but other generators that
+   * extend it (transitively) shall take part as well
+   * <p/>
+   * {@link #WithPriorityRules} means priority rules of involved generators (those explicitly specified and extending) are respected.
+   */
+  enum BuilderOption {
+    None, WithExtendedGenerators, WithPriorityRules,
+    /**
+     * Reduce languages that produce specified one, i.e. it's their generation 'target'.
+     * Note, this excludes the specified language. I expect scenarios where target language have to
+     * get processed later, not together with those targeting it.
+     * Note, it a language's generator targets the same language (a de-sugaring generator for a language with a TextGen, e.g. BaseLanguage)
+     * then this generator is not considered to be part of the 'target to' set, despite its
+     * {@link jetbrains.mps.generator.runtime.TemplateModule#getTargetLanguages()} manifest.
+     */
+    TargetTo,
+    /**
+     * Reduce languages that extend the one specified. Unlike {@link #WithExtendedGenerators},
+     * this option is intended to capture 'extends' relation between languages, not generators.
+     */
+    Extend;
+
+    public boolean presentIn(BuilderOption... options) {
+      for (BuilderOption o : options) {
+        if (o == this) {
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+
+  interface TransformStepBuilder {
+    // TODO include(SModuleReference generator, BuilderOption)
+    // XXX perhaps, includeAllOtherwiseUnhandledLanguages() as well.
+    TransformStepBuilder include(@NotNull SLanguage  language, BuilderOption option);
+    void complete();
+  }
 }

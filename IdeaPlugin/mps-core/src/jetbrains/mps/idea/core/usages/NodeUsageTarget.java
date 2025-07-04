@@ -89,18 +89,7 @@ public class NodeUsageTarget extends NodeNavigatable implements UsageTarget, Psi
   @Override
   public void update() {
     final SRepository repository = ProjectHelper.getProjectRepository(myProject);
-    repository.getModelAccess().runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        SNode resolved = myNode.resolve(repository);
-        if (resolved == null) {
-          myItemPresentation = new NodePointerNavigationItem(myNode, "failed to resolve node", null);
-        } else {
-          myItemPresentation = new NodePointerNavigationItem(resolved);
-        }
-        myTextPresentation = myItemPresentation.getPresentableText();
-      }
-    });
+    updateFields(repository);
   }
 
   @Override

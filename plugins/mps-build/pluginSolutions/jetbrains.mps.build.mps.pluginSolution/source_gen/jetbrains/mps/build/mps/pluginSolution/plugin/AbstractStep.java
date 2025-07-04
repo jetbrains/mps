@@ -8,8 +8,6 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JComponent;
 import java.awt.Dimension;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.util.annotation.ToRemove;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
@@ -57,14 +55,6 @@ public abstract class AbstractStep extends StepAdapter {
       }
     }
     myMainPanel.doLayout();
-  }
-
-  @NotNull
-  @Deprecated
-  @ToRemove(version = 2017.1)
-  public String getImageText() {
-    // Not used any more 
-    return "";
   }
 
   protected boolean doLimitStepPanelHeight() {

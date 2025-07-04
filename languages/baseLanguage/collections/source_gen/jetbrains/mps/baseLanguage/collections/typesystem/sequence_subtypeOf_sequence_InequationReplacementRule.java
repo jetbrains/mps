@@ -4,32 +4,129 @@ package jetbrains.mps.baseLanguage.collections.typesystem;
 
 import jetbrains.mps.lang.typesystem.runtime.AbstractInequationReplacementRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.typesystem.inference.EquationInfo;
-import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicable2Status;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.typesystem.inference.EquationInfo;
+import jetbrains.mps.typesystem.inference.TypeCheckingContext;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class sequence_subtypeOf_sequence_InequationReplacementRule extends AbstractInequationReplacementRule_Runtime {
   public sequence_subtypeOf_sequence_InequationReplacementRule() {
   }
+  public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
+    if ((SLinkOperations.getTarget(supertype, LINKS.elementType$KpjL) == null)) {
+      return false;
+    }
+    SNode result = TypecheckingFacade.getFromContext().coerceType(subtype, CONCEPTS.SequenceType$_s);
+    return (result != null);
+  }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
-    if ((SLinkOperations.getTarget(supertype, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType")) != null)) {
-      {
-        SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
-        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5108199730660924415", 0, null);
-        _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-        typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(subtype, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType")), (SNode) SLinkOperations.getTarget(supertype, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType")), false, true, inequalityIsLessThan, _info_12389875345);
+    // Unlike collections and lists, sequence can be covariant at all time (nothing will be inserted in them after cast or reassign)
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(supertype, LINKS.elementType$KpjL), CONCEPTS.WildCardType$uV)) {
+      return;
+    }
+
+    SNode superTypeParameter = SLinkOperations.getTarget(supertype, LINKS.elementType$KpjL);
+    SNode subtypeParameter = SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(subtype, CONCEPTS.SequenceType$_s), LINKS.elementType$KpjL);
+
+    // Contravariance: could be useful for functions taking values (eg, contains)
+    {
+      final SNode lowerSuper = superTypeParameter;
+      if (SNodeOperations.isInstanceOf(lowerSuper, CONCEPTS.LowerBoundType$nl)) {
+        {
+          final SNode lowerSub = subtypeParameter;
+          if (SNodeOperations.isInstanceOf(lowerSub, CONCEPTS.LowerBoundType$nl)) {
+            {
+              SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "8531787244863294617", 0, null);
+              _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
+              typeCheckingContext.createEquation((SNode) subtypeParameter, (SNode) SLinkOperations.getTarget(lowerSub, LINKS.bound$$a6H), _info_12389875345);
+            }
+            return;
+          }
+        }
+        {
+          SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "8531787244863932310", 0, null);
+          _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
+          typeCheckingContext.createGreaterThanInequality((SNode) subtypeParameter, (SNode) SLinkOperations.getTarget(lowerSuper, LINKS.bound$$a6H), false, true, _info_12389875345);
+        }
+        return;
       }
+    }
+
+
+    // Covariance: no problem
+    {
+      final SNode upperSuper = superTypeParameter;
+      if (SNodeOperations.isInstanceOf(upperSuper, CONCEPTS.UpperBoundType$RS)) {
+        superTypeParameter = SLinkOperations.getTarget(upperSuper, LINKS.bound$ciZM);
+        {
+          final SNode upperSub = subtypeParameter;
+          if (SNodeOperations.isInstanceOf(upperSub, CONCEPTS.UpperBoundType$RS)) {
+            subtypeParameter = SLinkOperations.getTarget(upperSub, LINKS.bound$ciZM);
+          }
+        }
+      }
+    }
+
+    {
+      SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
+      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2321665441771320795", 0, null);
+      _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
+      typeCheckingContext.createLessThanInequality((SNode) subtypeParameter, (SNode) superTypeParameter, false, true, inequalityIsLessThan, _info_12389875345);
     }
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    if ((SLinkOperations.getTarget(supertype, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType")) != null)) {
-      result_14532009 = result_14532009 && TypeChecker.getInstance().getSubtypingManager().isSubtype((SNode) SLinkOperations.getTarget(subtype, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType")), (SNode) SLinkOperations.getTarget(supertype, MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType")), true);
+    {
+      // Unlike collections and lists, sequence can be covariant at all time (nothing will be inserted in them after cast or reassign)
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(supertype, LINKS.elementType$KpjL), CONCEPTS.WildCardType$uV)) {
+        return result_14532009;
+      }
+
+      SNode superTypeParameter = SLinkOperations.getTarget(supertype, LINKS.elementType$KpjL);
+      SNode subtypeParameter = SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(subtype, CONCEPTS.SequenceType$_s), LINKS.elementType$KpjL);
+
+      // Contravariance: could be useful for functions taking values (eg, contains)
+      {
+        final SNode lowerSuper = superTypeParameter;
+        if (SNodeOperations.isInstanceOf(lowerSuper, CONCEPTS.LowerBoundType$nl)) {
+          {
+            final SNode lowerSub = subtypeParameter;
+            if (SNodeOperations.isInstanceOf(lowerSub, CONCEPTS.LowerBoundType$nl)) {
+              result_14532009 = result_14532009 && new SNodeMatcher().match((SNode) subtypeParameter, (SNode) SLinkOperations.getTarget(lowerSub, LINKS.bound$$a6H));
+              return result_14532009;
+            }
+          }
+          result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isStrongSubtype((SNode) SLinkOperations.getTarget(lowerSuper, LINKS.bound$$a6H), (SNode) subtypeParameter);
+          return result_14532009;
+        }
+      }
+
+
+      // Covariance: no problem
+      {
+        final SNode upperSuper = superTypeParameter;
+        if (SNodeOperations.isInstanceOf(upperSuper, CONCEPTS.UpperBoundType$RS)) {
+          superTypeParameter = SLinkOperations.getTarget(upperSuper, LINKS.bound$ciZM);
+          {
+            final SNode upperSub = subtypeParameter;
+            if (SNodeOperations.isInstanceOf(upperSub, CONCEPTS.UpperBoundType$RS)) {
+              subtypeParameter = SLinkOperations.getTarget(upperSub, LINKS.bound$ciZM);
+            }
+          }
+        }
+      }
+
+      result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) subtypeParameter, (SNode) superTypeParameter);
     }
     return result_14532009;
   }
@@ -44,9 +141,23 @@ public class sequence_subtypeOf_sequence_InequationReplacementRule extends Abstr
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, "jetbrains.mps.baseLanguage.collections.structure.SequenceType");
+    return CONCEPTS.Type$bu;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, "jetbrains.mps.baseLanguage.collections.structure.SequenceType");
+    return CONCEPTS.SequenceType$_s;
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink elementType$KpjL = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
+    /*package*/ static final SContainmentLink bound$$a6H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound");
+    /*package*/ static final SContainmentLink bound$ciZM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept SequenceType$_s = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, "jetbrains.mps.baseLanguage.collections.structure.SequenceType");
+    /*package*/ static final SConcept WildCardType$uV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
+    /*package*/ static final SConcept LowerBoundType$nl = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, "jetbrains.mps.baseLanguage.structure.LowerBoundType");
+    /*package*/ static final SConcept UpperBoundType$RS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

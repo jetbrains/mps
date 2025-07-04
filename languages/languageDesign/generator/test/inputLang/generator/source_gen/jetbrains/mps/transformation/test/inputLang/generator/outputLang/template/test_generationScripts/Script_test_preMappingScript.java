@@ -5,8 +5,10 @@ package jetbrains.mps.transformation.test.inputLang.generator.outputLang.templat
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.runtime.TemplateMappingScript;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.generator.template.ITemplateGenerator;
+import jetbrains.mps.generator.runtime.TemplateContext;
+import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.smodel.SNodePointer;
 
@@ -26,8 +28,10 @@ public class Script_test_preMappingScript implements TemplateMappingScript {
   public int getKind() {
     return PREPROCESS;
   }
-  public void apply(SModel model, ITemplateGenerator generator) {
-    QueriesGenerated.mappingScript_CodeBlock_1195509228078(new MappingScriptContext(model, getScriptNode(), generator));
+
+  @Override
+  public void apply(@NotNull SModel model, @NotNull TemplateContext templateContext) throws GenerationFailureException {
+    QueriesGenerated.mappingScript_CodeBlock_3(new MappingScriptContext(model, getScriptNode(), templateContext));
   }
-  private static SNodePointer mappingScriptNode = new SNodePointer("r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)", "1195509228077");
+  private static final SNodePointer mappingScriptNode = new SNodePointer("r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)", "1195509228077");
 }

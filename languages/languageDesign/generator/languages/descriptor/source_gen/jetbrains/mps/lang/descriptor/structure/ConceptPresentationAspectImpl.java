@@ -4,26 +4,65 @@ package jetbrains.mps.lang.descriptor.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_GeneratorDescriptor = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_GeneratorInternal_Aspect = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_LanguageDescriptor = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_ActivatorUnit;
+  private ConceptPresentation props_AspectDescriptor;
+  private ConceptPresentation props_GeneratorDescriptor;
+  private ConceptPresentation props_GeneratorInternal_Aspect;
+  private ConceptPresentation props_LanguageDescriptor;
+  private ConceptPresentation props_ModuleActivator;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.ActivatorUnit:
+        if (props_ActivatorUnit == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.experimental(true);
+          props_ActivatorUnit = cpb.create();
+        }
+        return props_ActivatorUnit;
+      case LanguageConceptSwitch.AspectDescriptor:
+        if (props_AspectDescriptor == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_AspectDescriptor = cpb.create();
+        }
+        return props_AspectDescriptor;
       case LanguageConceptSwitch.GeneratorDescriptor:
+        if (props_GeneratorDescriptor == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_GeneratorDescriptor = cpb.create();
+        }
         return props_GeneratorDescriptor;
       case LanguageConceptSwitch.GeneratorInternal_Aspect:
+        if (props_GeneratorInternal_Aspect == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x46c8be857954ff41L, 0x46c8be857954ff66L, "interfaceClass", "", "");
+          props_GeneratorInternal_Aspect = cpb.create();
+        }
         return props_GeneratorInternal_Aspect;
       case LanguageConceptSwitch.LanguageDescriptor:
+        if (props_LanguageDescriptor == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_LanguageDescriptor = cpb.create();
+        }
         return props_LanguageDescriptor;
+      case LanguageConceptSwitch.ModuleActivator:
+        if (props_ModuleActivator == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.experimental(true);
+          cpb.rawPresentation("ModuleActivator");
+          props_ModuleActivator = cpb.create();
+        }
+        return props_ModuleActivator;
     }
     return null;
   }

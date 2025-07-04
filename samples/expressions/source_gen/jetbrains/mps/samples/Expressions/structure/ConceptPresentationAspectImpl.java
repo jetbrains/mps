@@ -4,35 +4,35 @@ package jetbrains.mps.samples.Expressions.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_AndSimpleMathExpression = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ArithmeticSimpleMathExpression = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_BinarySimpleMathExpression = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_LogicalSimpleMathExpression = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_NotSimpleMathExpression = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_OrSimpleMathExpression = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathAssignment = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathBooleanConstant = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathBooleanType = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathElementType = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathExpression = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathFloatConstant = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathFloatType = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathIntegerConstant = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathIntegerType = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathLongConstant = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathLongType = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathNumberType = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathType = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathTypedVarDeclaration = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathVarDeclaration = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathVarReference = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_SimpleMathWrapper = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_UnarySimpleMathExpression = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_AndSimpleMathExpression;
+  private ConceptPresentation props_ArithmeticSimpleMathExpression;
+  private ConceptPresentation props_BinarySimpleMathExpression;
+  private ConceptPresentation props_LogicalSimpleMathExpression;
+  private ConceptPresentation props_NotSimpleMathExpression;
+  private ConceptPresentation props_OrSimpleMathExpression;
+  private ConceptPresentation props_SimpleMathAssignment;
+  private ConceptPresentation props_SimpleMathBooleanConstant;
+  private ConceptPresentation props_SimpleMathBooleanType;
+  private ConceptPresentation props_SimpleMathElementType;
+  private ConceptPresentation props_SimpleMathExpression;
+  private ConceptPresentation props_SimpleMathFloatConstant;
+  private ConceptPresentation props_SimpleMathFloatType;
+  private ConceptPresentation props_SimpleMathIntegerConstant;
+  private ConceptPresentation props_SimpleMathIntegerType;
+  private ConceptPresentation props_SimpleMathLongConstant;
+  private ConceptPresentation props_SimpleMathLongType;
+  private ConceptPresentation props_SimpleMathNumberType;
+  private ConceptPresentation props_SimpleMathType;
+  private ConceptPresentation props_SimpleMathTypedVarDeclaration;
+  private ConceptPresentation props_SimpleMathVarDeclaration;
+  private ConceptPresentation props_SimpleMathVarReference;
+  private ConceptPresentation props_SimpleMathWrapper;
+  private ConceptPresentation props_UnarySimpleMathExpression;
 
   @Override
   @Nullable
@@ -40,52 +40,167 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.AndSimpleMathExpression:
+        if (props_AndSimpleMathExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("and");
+          props_AndSimpleMathExpression = cpb.create();
+        }
         return props_AndSimpleMathExpression;
       case LanguageConceptSwitch.ArithmeticSimpleMathExpression:
+        if (props_ArithmeticSimpleMathExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ArithmeticSimpleMathExpression");
+          props_ArithmeticSimpleMathExpression = cpb.create();
+        }
         return props_ArithmeticSimpleMathExpression;
       case LanguageConceptSwitch.BinarySimpleMathExpression:
+        if (props_BinarySimpleMathExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_BinarySimpleMathExpression = cpb.create();
+        }
         return props_BinarySimpleMathExpression;
       case LanguageConceptSwitch.LogicalSimpleMathExpression:
+        if (props_LogicalSimpleMathExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_LogicalSimpleMathExpression = cpb.create();
+        }
         return props_LogicalSimpleMathExpression;
       case LanguageConceptSwitch.NotSimpleMathExpression:
+        if (props_NotSimpleMathExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("not");
+          props_NotSimpleMathExpression = cpb.create();
+        }
         return props_NotSimpleMathExpression;
       case LanguageConceptSwitch.OrSimpleMathExpression:
+        if (props_OrSimpleMathExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("or");
+          props_OrSimpleMathExpression = cpb.create();
+        }
         return props_OrSimpleMathExpression;
       case LanguageConceptSwitch.SimpleMathAssignment:
+        if (props_SimpleMathAssignment == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation(":=");
+          props_SimpleMathAssignment = cpb.create();
+        }
         return props_SimpleMathAssignment;
       case LanguageConceptSwitch.SimpleMathBooleanConstant:
+        if (props_SimpleMathBooleanConstant == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("SimpleMathBooleanConstant");
+          props_SimpleMathBooleanConstant = cpb.create();
+        }
         return props_SimpleMathBooleanConstant;
       case LanguageConceptSwitch.SimpleMathBooleanType:
+        if (props_SimpleMathBooleanType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Bool");
+          props_SimpleMathBooleanType = cpb.create();
+        }
         return props_SimpleMathBooleanType;
       case LanguageConceptSwitch.SimpleMathElementType:
+        if (props_SimpleMathElementType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Element");
+          props_SimpleMathElementType = cpb.create();
+        }
         return props_SimpleMathElementType;
       case LanguageConceptSwitch.SimpleMathExpression:
+        if (props_SimpleMathExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_SimpleMathExpression = cpb.create();
+        }
         return props_SimpleMathExpression;
       case LanguageConceptSwitch.SimpleMathFloatConstant:
+        if (props_SimpleMathFloatConstant == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("SimpleMathFloatConstant");
+          props_SimpleMathFloatConstant = cpb.create();
+        }
         return props_SimpleMathFloatConstant;
       case LanguageConceptSwitch.SimpleMathFloatType:
+        if (props_SimpleMathFloatType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Float");
+          props_SimpleMathFloatType = cpb.create();
+        }
         return props_SimpleMathFloatType;
       case LanguageConceptSwitch.SimpleMathIntegerConstant:
+        if (props_SimpleMathIntegerConstant == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("SimpleMathIntegerConstant");
+          props_SimpleMathIntegerConstant = cpb.create();
+        }
         return props_SimpleMathIntegerConstant;
       case LanguageConceptSwitch.SimpleMathIntegerType:
+        if (props_SimpleMathIntegerType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Int");
+          props_SimpleMathIntegerType = cpb.create();
+        }
         return props_SimpleMathIntegerType;
       case LanguageConceptSwitch.SimpleMathLongConstant:
+        if (props_SimpleMathLongConstant == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("SimpleMathLongConstant");
+          props_SimpleMathLongConstant = cpb.create();
+        }
         return props_SimpleMathLongConstant;
       case LanguageConceptSwitch.SimpleMathLongType:
+        if (props_SimpleMathLongType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Long");
+          props_SimpleMathLongType = cpb.create();
+        }
         return props_SimpleMathLongType;
       case LanguageConceptSwitch.SimpleMathNumberType:
+        if (props_SimpleMathNumberType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Number");
+          props_SimpleMathNumberType = cpb.create();
+        }
         return props_SimpleMathNumberType;
       case LanguageConceptSwitch.SimpleMathType:
+        if (props_SimpleMathType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_SimpleMathType = cpb.create();
+        }
         return props_SimpleMathType;
       case LanguageConceptSwitch.SimpleMathTypedVarDeclaration:
+        if (props_SimpleMathTypedVarDeclaration == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_SimpleMathTypedVarDeclaration = cpb.create();
+        }
         return props_SimpleMathTypedVarDeclaration;
       case LanguageConceptSwitch.SimpleMathVarDeclaration:
+        if (props_SimpleMathVarDeclaration == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_SimpleMathVarDeclaration = cpb.create();
+        }
         return props_SimpleMathVarDeclaration;
       case LanguageConceptSwitch.SimpleMathVarReference:
+        if (props_SimpleMathVarReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b832e4e1L, 0x1cc69153b832e4e2L, "declaration", "", "");
+          props_SimpleMathVarReference = cpb.create();
+        }
         return props_SimpleMathVarReference;
       case LanguageConceptSwitch.SimpleMathWrapper:
+        if (props_SimpleMathWrapper == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("SimpleMathWrapper");
+          props_SimpleMathWrapper = cpb.create();
+        }
         return props_SimpleMathWrapper;
       case LanguageConceptSwitch.UnarySimpleMathExpression:
+        if (props_UnarySimpleMathExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_UnarySimpleMathExpression = cpb.create();
+        }
         return props_UnarySimpleMathExpression;
     }
     return null;

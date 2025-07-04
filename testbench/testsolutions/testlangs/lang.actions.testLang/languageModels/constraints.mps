@@ -2,8 +2,7 @@
 <model ref="r:51315b9d-b515-42e5-b0a0-21c0544c81b4(jetbrains.mps.lang.actions.testLanguage.constraints)">
   <persistence version="9" />
   <languages>
-    <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="2" />
-    <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
+    <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
     <import index="kxd5" ref="r:4d38763d-a252-449a-a228-c5edf22068a3(jetbrains.mps.lang.actions.testLanguage.structure)" />
@@ -139,12 +138,6 @@
       <node concept="3clFbS" id="147CB3Qt016" role="2VODD2">
         <node concept="3cpWs6" id="147CB3Qt017" role="3cqZAp">
           <node concept="1Wc70l" id="147CB3Qt018" role="3cqZAk">
-            <node concept="3y3z36" id="147CB3Qt019" role="3uHU7w">
-              <node concept="35c_gC" id="147CB3Qt01m" role="3uHU7w">
-                <ref role="35c_gD" to="kxd5:4fhGlP1qagA" resolve="ActionTestSidetransformAddConceptChild" />
-              </node>
-              <node concept="2DD5aU" id="147CB3Qt01l" role="3uHU7B" />
-            </node>
             <node concept="1Wc70l" id="147CB3Qt01c" role="3uHU7B">
               <node concept="3y3z36" id="147CB3Qt01d" role="3uHU7B">
                 <node concept="2DD5aU" id="147CB3Qt01n" role="3uHU7B" />
@@ -162,6 +155,12 @@
                   </node>
                 </node>
               </node>
+            </node>
+            <node concept="3y3z36" id="147CB3Qt019" role="3uHU7w">
+              <node concept="35c_gC" id="147CB3Qt01m" role="3uHU7w">
+                <ref role="35c_gD" to="kxd5:4fhGlP1qagA" resolve="ActionTestSidetransformAddConceptChild" />
+              </node>
+              <node concept="2DD5aU" id="147CB3Qt01l" role="3uHU7B" />
             </node>
           </node>
         </node>

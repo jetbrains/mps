@@ -4,20 +4,31 @@ package jetbrains.mps.samples.multipleProjections.requestTracking.structure;
 
 import jetbrains.mps.smodel.runtime.BaseStructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
+import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
 import java.util.Collection;
 import java.util.Arrays;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
+import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptWorkflow = createDescriptorForWorkflow();
   /*package*/ final ConceptDescriptor myConceptWorkflowContainer = createDescriptorForWorkflowContainer();
-  private final LanguageConceptSwitch myConceptIndex;
+  /*package*/ final EnumerationDescriptor myEnumerationWorkflowPresentation = new EnumerationDescriptor_WorkflowPresentation();
+  private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
-    myConceptIndex = new LanguageConceptSwitch();
+    myIndexSwitch = new LanguageConceptSwitch();
+  }
+
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.aggregatedLanguage(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, "jetbrains.mps.samples.multipleProjections.stateMachine");
   }
 
   @Override
@@ -28,7 +39,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
-    switch (myConceptIndex.index(id)) {
+    switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.Workflow:
         return myConceptWorkflow;
       case LanguageConceptSwitch.WorkflowContainer:
@@ -38,8 +49,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     }
   }
 
+  @Override
+  public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
+    return Arrays.asList(myEnumerationWorkflowPresentation);
+  }
+
   /*package*/ int internalIndex(SAbstractConcept c) {
-    return myConceptIndex.index(c);
+    return myIndexSwitch.index(c);
   }
 
   private static ConceptDescriptor createDescriptorForWorkflow() {
@@ -47,7 +63,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/3675491646420739318");
-    b.prop("presentation", 0x3301f82dc7d4ec4cL, "3675491646420872268");
+    b.version(3);
+    b.property("presentation", 0x3301f82dc7d4ec4cL).type(MetaIdFactory.dataTypeId(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d4d8f5L)).origin("4241665505353454353").done();
     b.aggregate("stateMachine", 0x3301f82dc7d2e50fL).target(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8456ba1L).optional(false).ordered(true).multiple(false).origin("3675491646420739343").done();
     return b.create();
   }
@@ -56,6 +73,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)/3675491646420733795");
+    b.version(3);
     b.aggregate("workflows", 0x3301f82dc7d2e2ceL).target(0x8d18a45bac7e4d84L, 0xa53975f1d720b09bL, 0x3301f82dc7d2e4f6L).optional(true).ordered(true).multiple(true).origin("3675491646420738766").done();
     return b.create();
   }

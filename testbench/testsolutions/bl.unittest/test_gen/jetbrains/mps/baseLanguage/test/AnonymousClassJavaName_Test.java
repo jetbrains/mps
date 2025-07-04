@@ -4,32 +4,56 @@ package jetbrains.mps.baseLanguage.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
+import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.behavior.AnonymousClass__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class AnonymousClassJavaName_Test extends BaseTransformationTest {
-  @Test
-  public void test_testJavaNames() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.AnonymousClassJavaName_Test$TestBody", "test_testJavaNames", true);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(AnonymousClassJavaName_Test.class).projectPath(null).modelRef("r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)").reopenProject(null).build());
+
+  public AnonymousClassJavaName_Test() {
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
-  @MPSLaunch
-  public static class TestBody extends BaseTestBody {
-    public void test_testJavaNames() throws Exception {
-      addNodeById("6649467621789725811");
-      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("6649467621789782586"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1133e3b449aL, "AnonymousClassCreator"))), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls"))).endsWith("Foo$Bar$1");
-      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("6649467621789787135"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1133e3b449aL, "AnonymousClassCreator"))), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls"))).endsWith("Foo$Bar$2");
-      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("6649467621789793415"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1133e3b449aL, "AnonymousClassCreator"))), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls"))).endsWith("Foo$Bar$2$1");
-      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("6649467621789799984"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1133e3b449aL, "AnonymousClassCreator"))), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls"))).endsWith("Foo$Bar$2$2");
-      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("7102466869931833255"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1133e3b449aL, "AnonymousClassCreator"))), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls"))).endsWith("Foo$Bar$3$Baz$1");
+  @Test
+  public void test_testJavaNames() throws Throwable {
+    new TestBody(this).test_testJavaNames();
+  }
+
+  /*package*/ static class TestBody extends BaseTestBody {
+
+    /*package*/ TestBody(TransformationTest owner) {
+      super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6649467621789725811");
+    }
 
+    public void test_testJavaNames() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getAnnotatedNode("r1"), LINKS.cls$Saf6)).endsWith("Foo$Bar$1");
+        assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getAnnotatedNode("r2"), LINKS.cls$Saf6)).endsWith("Foo$Bar$2");
+        assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getAnnotatedNode("r3"), LINKS.cls$Saf6)).endsWith("Foo$Bar$2$1");
+        assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getAnnotatedNode("r4"), LINKS.cls$Saf6)).endsWith("Foo$Bar$2$2");
+        assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getAnnotatedNode("r5"), LINKS.cls$Saf6)).endsWith("Foo$Bar$3$Baz$1");
+      });
+    }
+
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink cls$Saf6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
   }
 }

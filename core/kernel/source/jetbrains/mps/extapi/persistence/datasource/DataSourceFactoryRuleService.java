@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  */
 package jetbrains.mps.extapi.persistence.datasource;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
@@ -24,9 +24,6 @@ import org.jetbrains.mps.annotations.Mutable;
 import org.jetbrains.mps.annotations.Singleton;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,66 +36,59 @@ import java.util.List;
  * @since 12/22/16 [3.5]
  */
 @Singleton
-public final class DataSourceFactoryRuleService {
-  private static final Logger LOG = LogManager.getLogger(DataSourceFactoryRuleService.class);
+public final class DataSourceFactoryRuleService implements CoreComponent  {
+  private final Deque<DataSourceFactoryRule> myFactoryRules = new LinkedList<>(); // stack
 
-  private final DataSourceFactoryRuleCoreService myCoreService = DataSourceFactoryRuleCoreService.getInstance();
-  private final Deque<DataSourceFactoryRule> myCustomFactoryRules = new LinkedList<>(); // stack
-  private static DataSourceFactoryRuleService ourInstance;
-
-  private DataSourceFactoryRuleService() {
+  public DataSourceFactoryRuleService() {
   }
 
-  @NotNull
-  public static synchronized DataSourceFactoryRuleService getInstance() {
-    if (ourInstance == null) {
-      ourInstance = new DataSourceFactoryRuleService();
-    }
-    return ourInstance;
+  @Override
+  public void init() {
+  }
+
+  @Override
+  public void dispose() {
   }
 
   @Internal
   @Mutable
   public void register(@NotNull DataSourceFactoryRule rule) {
-    myCustomFactoryRules.addFirst(rule);
+    myFactoryRules.addFirst(rule);
   }
 
   @Internal
   @Mutable
   public void unregister(@NotNull DataSourceFactoryRule rule) {
-    myCustomFactoryRules.remove(rule);
+    myFactoryRules.remove(rule);
   }
 
   @Nullable
   public synchronized DataSourceFactoryFromName getFactory(@NotNull DataSourceType dataSourceType) {
-    for (DataSourceFactoryRule rule : myCustomFactoryRules) {
-      //noinspection unchecked
+    for (DataSourceFactoryRule rule : myFactoryRules) {
       DataSourceFactoryFromName result = rule.spawn(dataSourceType);
       if (result != null) {
         return result;
       }
     }
-    return myCoreService.getFactory(dataSourceType);
+    return null;
   }
 
-  public synchronized DataSourceFactoryFromURL getFactory(@NotNull URL url) {
-    for (DataSourceFactoryRule rule : myCustomFactoryRules) {
-      //noinspection unchecked
-      DataSourceFactoryFromURL result = rule.spawn(url);
+  @Nullable
+  public synchronized DataSourceFactoryFromPath getFactory(@NotNull Path path) {
+    for (DataSourceFactoryRule rule : myFactoryRules) {
+      var result = rule.spawn(path);
       if (result != null) {
         return result;
       }
     }
-    return myCoreService.getFactory(url);
+    return null;
   }
 
-  /**
+   /**
    * @return factories in the reverse order of registration -- from the newest to the oldest.
    */
   @NotNull
   public synchronized List<DataSourceFactoryRule> getFactoryRules() {
-    List<DataSourceFactoryRule> result = new ArrayList<>(myCustomFactoryRules);
-    result.addAll(myCoreService.getFactoryRules());
-    return Collections.unmodifiableList(result);
+    return List.copyOf(myFactoryRules);
   }
 }

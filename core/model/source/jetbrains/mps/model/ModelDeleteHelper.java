@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,10 +18,10 @@ package jetbrains.mps.model;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.persistence.DisposableDataSource;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -69,7 +69,7 @@ public class ModelDeleteHelper {
       IFile classesGenDir = javaFacet.getClassesLocation(myModel);
       if (classesGenDir != null) {
         possiblyEmptyDirsToPrune.add(classesGenDir.getParent()); // I don't expect model output dir to be top of the disk, don't care about parent == null
-        classesGenDir.delete();
+        classesGenDir.deleteIfExists();
       }
     }
 
@@ -85,11 +85,13 @@ public class ModelDeleteHelper {
       // e.g. IdeCommandUtil is more careful when executing #removeGenSources console command
       if (modelOutput != null) {
         possiblyEmptyDirsToPrune.add(modelOutput.getParent());
-        modelOutput.delete();
+        if (modelOutput.exists()) {
+          modelOutput.deleteIfExists();
+        }
       }
       if (modelCaches != null) {
         possiblyEmptyDirsToPrune.add(modelCaches.getParent());
-        modelCaches.delete();
+        modelCaches.deleteIfExists();
       }
     }
 
@@ -102,7 +104,7 @@ public class ModelDeleteHelper {
         if (parent != null) {
           possiblyEmptyDirsToPrune.addLast(parent);
         }
-        d.delete();
+        d.deleteIfExists();
       }
     }
   }

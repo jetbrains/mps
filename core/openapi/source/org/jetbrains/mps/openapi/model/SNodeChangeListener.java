@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,8 +33,8 @@ import org.jetbrains.mps.openapi.event.SReferenceChangeEvent;
  * @author Artem Tikhomirov
  */
 public interface SNodeChangeListener {
-  void propertyChanged(@NotNull SPropertyChangeEvent event);
-  void referenceChanged(@NotNull SReferenceChangeEvent event);
-  void nodeAdded(@NotNull SNodeAddEvent event);
-  void nodeRemoved(@NotNull SNodeRemoveEvent event);
+  default void propertyChanged(@NotNull SPropertyChangeEvent event) {}
+  default void referenceChanged(@NotNull SReferenceChangeEvent event) {}
+  default void nodeAdded(@NotNull SNodeAddEvent event) {}
+  default void nodeRemoved(@NotNull SNodeRemoveEvent event) {}
 }

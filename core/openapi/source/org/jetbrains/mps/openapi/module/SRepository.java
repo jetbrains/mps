@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package org.jetbrains.mps.openapi.module;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelId;
 
 /**
  * A storage for modules. One might think of it as an actual mapping between {@link SModuleId} module ids (which act as keys in the mapping) and {@link SModule}
@@ -60,18 +62,31 @@ public interface SRepository {
    * A repository is able to have only one module for a given module id.
    * <code>null</code> is returned iff there is no such module in the repository
    */
-  @Nullable SModule getModule(@NotNull SModuleId moduleId);
+  @Nullable
+  SModule getModule(@NotNull SModuleId moduleId);
 
+  /**
+   * Support {@link org.jetbrains.mps.openapi.model.SModelReference#resolve(SRepository)} mechanism for models that don't
+   * bear module identity as part of their reference (aka 'globally unique' model identity, {@link SModelId#isGloballyUnique()}).
+   * @param modelId global identity of a model {@link SModelId#isGloballyUnique()} shall be {@code true}
+   * @return model in this repository with the given global identity, or null of none found or supplied id is not unique one.
+   */
+  @Nullable
+  default SModel getModel(@NotNull SModelId modelId) {
+    return null;
+  }
   /**
    * Returns an unmodifiable collection of modules.
    */
-  @NotNull Iterable<SModule> getModules();
+  @NotNull
+  Iterable<SModule> getModules();
 
   /**
    * @return a special class which yields a control to the objects which comprise the repository.
    * These are namely modules, models, model roots, nodes.
    */
-  @NotNull ModelAccess getModelAccess();
+  @NotNull
+  ModelAccess getModelAccess();
 
   @Deprecated
   RepositoryAccess getRepositoryAccess();

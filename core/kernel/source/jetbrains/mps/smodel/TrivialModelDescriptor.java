@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,25 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.NullDataSource;
 
 /**
+ * <p>
  * Model openapi.SModel implementation to parasitize on (utilize) existing SModelBase and smodel.SModel classes.
  * It takes existing SModelData and provides it to outer world through openapi.SModel.
  * Perhaps, parts of SModelBase could move to SModelDescriptorStub, and this class could use SModelDescriptorStub then.
- *
- * FIXME move to [smodel] once SModelBase cease to depend on [kernel] stuff
- * FIXME why doesn't it support add/remove root operations? Was it intentional, or just overlook?
+ *</p>
+ * <br/>
+ * <em>FIXME move to [smodel] once SModelBase cease to depend on [kernel] stuff</em>
+ * <br/>
+ * <p>
+ * Note, this class doesn't it support add/remove root operations. Either override in your class or use another
+ * superclass, like {@link EditableModelDescriptor} or {@link RegularModelDescriptor} with {@link RegularModelDescriptor#replace(ModelLoadResult)}
+ * </p>
  * @author Artem Tikhomirov
  */
 public class TrivialModelDescriptor extends SModelBase {
@@ -39,12 +46,12 @@ public class TrivialModelDescriptor extends SModelBase {
   public TrivialModelDescriptor(@NotNull SModel modelData) {
     super(modelData.getReference(), new NullDataSource());
     myModelData = modelData;
-    modelData.setModelDescriptor(this);
+    replaceModelAndFireEvent(null, modelData);
     setLoadingState(ModelLoadingState.FULLY_LOADED);
   }
 
   @Override
-  public SModel getSModelInternal() {
+  public SModel getSModel() {
     return getCurrentModelInternal();
   }
 
@@ -55,8 +62,13 @@ public class TrivialModelDescriptor extends SModelBase {
   }
 
   @Override
-  protected void doUnload() {
-    super.doUnload();
-    myModelData = null;
+  public SModelData getModelData() {
+    return myModelData;
+  }
+
+  //no-op since currently we don't know how to load this type of model after unloading
+  @Override
+  public void unload() {
+
   }
 }

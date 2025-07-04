@@ -19,6 +19,10 @@ import jetbrains.mps.lang.editor.menus.transformation.CompletionActionItemUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.openapi.editor.menus.IconResourceProvider;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstitutionAcceptable;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
+import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.CommandPolicy;
 import jetbrains.mps.openapi.editor.menus.transformation.CompletionActionItem;
 import jetbrains.mps.smodel.runtime.IconResource;
@@ -28,7 +32,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
-public class CompletionActionItemAsSubstituteAction implements SubstituteAction {
+public class CompletionActionItemAsSubstituteAction implements SubstituteAction, IconResourceProvider {
   private final CompletionActionItem myActionItem;
   private final SNode mySourceNode;
   private final SRepository myRepository;
@@ -78,6 +82,11 @@ public class CompletionActionItemAsSubstituteAction implements SubstituteAction 
   }
 
   @Override
+  public boolean isAcceptable(String pattern, SubstitutionAcceptable acceptable) {
+    return myActionItem.isAcceptable(pattern, acceptable);
+  }
+
+  @Override
   public SNode getActionType(String pattern) {
     return myActionItem.getActionType(pattern);
   }
@@ -94,7 +103,7 @@ public class CompletionActionItemAsSubstituteAction implements SubstituteAction 
 
   @Override
   public String getVisibleMatchingText(String pattern) {
-    final String visibleMatchingText = CompletionActionItemUtil.getVisibleMatchingText(myActionItem);
+    final String visibleMatchingText = CompletionActionItemUtil.getVisibleMatchingText(myActionItem, pattern);
     return visibleMatchingText != null ? visibleMatchingText : getMatchingText(pattern);
   }
 
@@ -125,5 +134,19 @@ public class CompletionActionItemAsSubstituteAction implements SubstituteAction 
     myActionItem.execute(pattern);
     // myActionItem should change selection itself, so return null here
     return null;
+  }
+
+  public CompletionActionItem getItem(){
+    return myActionItem;
+  }
+
+  @Override
+  public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+    return myActionItem.getTraceInfo();
+  }
+
+  @Override
+  public void customize(String pattern, EditorMenuItemStyle style) {
+    myActionItem.customize(pattern, style);
   }
 }

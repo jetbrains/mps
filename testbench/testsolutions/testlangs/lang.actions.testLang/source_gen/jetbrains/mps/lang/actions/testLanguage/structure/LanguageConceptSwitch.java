@@ -25,13 +25,15 @@ public final class LanguageConceptSwitch {
   public static final int ActionTestSidetransformAbstractChild = 13;
   public static final int ActionTestSidetransformAddConceptAbstractChild = 14;
   public static final int ActionTestSidetransformAddConceptChild = 15;
-  public static final int ActionTestSidetransformAnotherAbstractChild = 16;
-  public static final int ActionTestSidetransformAnotherChild1 = 17;
-  public static final int ActionTestSidetransformAnotherChild2 = 18;
-  public static final int ActionTestSidetransformAnotherChildCommonSuperConcept = 19;
-  public static final int ActionTestSidetransformChild1 = 20;
-  public static final int ActionTestSidetransformTestAncestor = 21;
-  public static final int ActionTestSidetransformTestContainer = 22;
+  public static final int ActionTestSidetransformAddConceptChild2 = 16;
+  public static final int ActionTestSidetransformAnotherAbstractChild = 17;
+  public static final int ActionTestSidetransformAnotherChild1 = 18;
+  public static final int ActionTestSidetransformAnotherChild2 = 19;
+  public static final int ActionTestSidetransformAnotherChildCommonSuperConcept = 20;
+  public static final int ActionTestSidetransformChild1 = 21;
+  public static final int ActionTestSidetransformChild2 = 22;
+  public static final int ActionTestSidetransformTestAncestor = 23;
+  public static final int ActionTestSidetransformTestContainer = 24;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x737ed1fffa634ebcL, 0xa834435499b23c64L);
@@ -51,11 +53,13 @@ public final class LanguageConceptSwitch {
     builder.put(0x179f28a7ade471f3L, ActionTestSidetransformAbstractChild);
     builder.put(0x43d1b15d415e8d80L, ActionTestSidetransformAddConceptAbstractChild);
     builder.put(0x43d1b15d4168a426L, ActionTestSidetransformAddConceptChild);
+    builder.put(0x45320f640a5469b6L, ActionTestSidetransformAddConceptChild2);
     builder.put(0x2c35cefefca54d96L, ActionTestSidetransformAnotherAbstractChild);
     builder.put(0x2c35cefefca55189L, ActionTestSidetransformAnotherChild1);
     builder.put(0x2c35cefefca551bdL, ActionTestSidetransformAnotherChild2);
     builder.put(0x2c35cefefcaa0dd0L, ActionTestSidetransformAnotherChildCommonSuperConcept);
     builder.put(0x44969b12b8c94c1bL, ActionTestSidetransformChild1);
+    builder.put(0x56db513f13707c51L, ActionTestSidetransformChild2);
     builder.put(0x2c35cefefc9cfa78L, ActionTestSidetransformTestAncestor);
     builder.put(0x179f28a7ade381e5L, ActionTestSidetransformTestContainer);
     myIndex = builder.seal();

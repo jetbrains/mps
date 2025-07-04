@@ -27,10 +27,12 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 /*package*/ class Dependency_diagram_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -48,14 +50,14 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
   }
 
   /*package*/ EditorCell createCell() {
-    return createDiagramConnector_wb79wm_a();
+    return createDiagramConnector_0();
   }
 
-  private EditorCell createDiagramConnector_wb79wm_a() {
-    final ConnectorCell editorCell = new Dependency_diagram_EditorBuilder_a.ConnectorCellImpl_wb79wm_a(getEditorContext(), myNode);
+  private EditorCell createDiagramConnector_0() {
+    final ConnectorCell editorCell = new ConnectorCellImpl_wb79wm_a(getEditorContext(), myNode);
     editorCell.setCellId("DiagramConnector_wb79wm_a");
     editorCell.setBig(true);
-    editorCell.setCellContext(getCellFactory().getCellContext());
+    setCellContext(editorCell);
     delConnector.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;
   }
@@ -175,28 +177,30 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 
     public void synchronize() {
-      myInputPort.set(MultiTuple.<SNode>from(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(getSNode()), MetaAdapterFactory.getConcept(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, "jetbrains.mps.samples.componentDependencies.structure.Component")), MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381be146L, "out"))).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals(SPropertyOperations.getString(SLinkOperations.getTarget(getSNode(), MetaAdapterFactory.getReferenceLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L, 0x565e1976381b7654L, "to")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
-        }
-      })));
-      myOutputPort.set(MultiTuple.<SNode>from(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getSNode(), MetaAdapterFactory.getReferenceLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L, 0x565e1976381b7654L, "to")), MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381be142L, "in"))).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals(SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(getSNode()), MetaAdapterFactory.getConcept(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, "jetbrains.mps.samples.componentDependencies.structure.Component")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
-        }
-      })));
+      myInputPort.set(MultiTuple.<SNode>from(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(getSNode()), CONCEPTS.Component$8s), LINKS.out$ZC8_)).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(SPropertyOperations.getString(SLinkOperations.getTarget(getSNode(), LINKS.to$GB6T), PROPS.name$MnvL)))));
+      myOutputPort.set(MultiTuple.<SNode>from(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getSNode(), LINKS.to$GB6T), LINKS.in$ZBcx)).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(getSNode()), CONCEPTS.Component$8s), PROPS.name$MnvL)))));
     }
     private PolyLineConnection createConnection() {
       PolyLineConnection connection = new PolyLineConnection();
-      configureView(connection.view(), new _FunctionTypes._return_P0_E0<Boolean>() {
-        public Boolean invoke() {
-          return true;
-        }
-      });
+      configureView(connection.view(), () -> true);
 
       return connection;
     }
 
 
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Component$8s = MetaAdapterFactory.getConcept(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, "jetbrains.mps.samples.componentDependencies.structure.Component");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink out$ZC8_ = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381be146L, "out");
+    /*package*/ static final SReferenceLink to$GB6T = MetaAdapterFactory.getReferenceLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L, 0x565e1976381b7654L, "to");
+    /*package*/ static final SContainmentLink in$ZBcx = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381be142L, "in");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

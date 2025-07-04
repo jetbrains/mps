@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.smodel.ModelUndoTest.TestUndoHandler;
+import jetbrains.mps.smodel.SNodeId.Regular;
 import jetbrains.mps.smodel.TestModelFactory.TestModelAccess;
 import jetbrains.mps.smodel.TestModelFactory.TestRepository;
 import jetbrains.mps.util.IterableUtil;
@@ -23,7 +23,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import static jetbrains.mps.smodel.TestModelFactory.ourRole;
@@ -35,13 +34,6 @@ import static jetbrains.mps.smodel.TestModelFactory.ourRole;
 public class ModelImplementationTest {
   private final TestModelAccess myTestModelAccess = new TestModelAccess();
   private final SRepository myTestRepo = new TestRepository(myTestModelAccess);
-
-  @Before
-  public void setUp() {
-    TestUndoHandler uh = new TestUndoHandler();
-    uh.needsUndo(false); // undo is not our focus here, we merely need to avoid NPE from ModelAccess.instance().isInsideCommand()
-    UndoHelper.getInstance().setUndoHandler(uh);
-  }
 
   /**
    * There's a defect in insertChildBefore, node to insert has been checked for getParent() == null
@@ -76,7 +68,7 @@ public class ModelImplementationTest {
   }
 
   /**
-   * There's was a left-over from pre-3.0 to clear model of a node being added to free-floating node.
+   * There was a left-over from pre-3.0 to clear model of a node being added to free-floating node.
    * Only model was cleared, without un-registering node from its model.
    *
    * Move root from a registered model (m2) to a free-floating node
@@ -105,5 +97,44 @@ public class ModelImplementationTest {
     } catch (IllegalModelAccessException ignored) {
       // expected
     }
+  }
+
+  @Test
+  public void testInternalChangeNodeId() {
+    final TestModelFactory m1f = new TestModelFactory();
+    org.jetbrains.mps.openapi.model.SModel m1 = m1f.createModel(2, 2);
+    myTestModelAccess.enterCommand();
+    m1f.attachTo(myTestRepo);
+    final org.jetbrains.mps.openapi.model.SNode r1 = m1f.getRoot(1);
+    final org.jetbrains.mps.openapi.model.SNode ch1 = r1.getChildren().iterator().next();
+    final org.jetbrains.mps.openapi.model.SNode r2 = m1f.getRoot(2);
+    final org.jetbrains.mps.openapi.model.SNode ch2 = r2.getChildren().iterator().next();
+
+    final SNodeId nid1 = r1.getNodeId();
+    final SNodeId nid2 = r2.getNodeId();
+    final SNodeId nid3 = ch1.getNodeId();
+    final SNodeId nid4 = ch2.getNodeId();
+    Regular newValue1 = new Regular(0x0303030301L);
+    Regular newValue2 = new Regular(0x0707070702L);
+
+    ((SModelInternal) m1).changeNodeId(nid4, newValue1); // ch2
+    ((SModelInternal) m1).changeNodeId(nid1, newValue2); // r1
+
+    myTestModelAccess.leaveCommand();
+
+    myTestModelAccess.enableRead();
+    // nodes have id changed
+    Assert.assertSame(newValue1, ch2.getNodeId());
+    Assert.assertSame(newValue2, r1.getNodeId());
+
+    // nodes accessible from model
+    Assert.assertSame(r1, m1.getNode(newValue2));
+    Assert.assertSame(ch2, m1.getNode(newValue1));
+
+    // nodes not touched are indeed unchanged and present in the model by old id
+    Assert.assertSame(r2, m1.getNode(nid2));
+    Assert.assertSame(ch1, m1.getNode(nid3));
+
+    myTestModelAccess.disableRead();
   }
 }

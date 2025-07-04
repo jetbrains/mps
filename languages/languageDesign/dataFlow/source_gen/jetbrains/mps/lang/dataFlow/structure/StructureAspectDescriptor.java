@@ -21,6 +21,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptBeforePosition = createDescriptorForBeforePosition();
   /*package*/ final ConceptDescriptor myConceptBooleanInstructionOperation = createDescriptorForBooleanInstructionOperation();
   /*package*/ final ConceptDescriptor myConceptBuilderBlock = createDescriptorForBuilderBlock();
+  /*package*/ final ConceptDescriptor myConceptDataFlowAspectDeputy = createDescriptorForDataFlowAspectDeputy();
   /*package*/ final ConceptDescriptor myConceptDataFlowBuilderDeclaration = createDescriptorForDataFlowBuilderDeclaration();
   /*package*/ final ConceptDescriptor myConceptEmitCodeForStatement = createDescriptorForEmitCodeForStatement();
   /*package*/ final ConceptDescriptor myConceptEmitIfJumpStatement = createDescriptorForEmitIfJumpStatement();
@@ -48,21 +49,31 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptNodeParameter = createDescriptorForNodeParameter();
   /*package*/ final ConceptDescriptor myConceptPosition = createDescriptorForPosition();
   /*package*/ final ConceptDescriptor myConceptRelativePosition = createDescriptorForRelativePosition();
-  private final LanguageConceptSwitch myConceptIndex;
+  private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
-    myConceptIndex = new LanguageConceptSwitch();
+    myIndexSwitch = new LanguageConceptSwitch();
+  }
+
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.employedLanguage(0xf4ad079dbc714ffbL, 0x96009328705cf998L, "jetbrains.mps.lang.descriptor");
+    deps.employedLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure");
+    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAfterPosition, myConceptBaseEmitJumpStatement, myConceptBaseEmitVariableStatement, myConceptBaseInstructionOperation, myConceptBeforePosition, myConceptBooleanInstructionOperation, myConceptBuilderBlock, myConceptDataFlowBuilderDeclaration, myConceptEmitCodeForStatement, myConceptEmitIfJumpStatement, myConceptEmitJumpStatement, myConceptEmitLabelStatement, myConceptEmitMayBeUnreachable, myConceptEmitNopStatement, myConceptEmitReadStatement, myConceptEmitRetStatement, myConceptEmitStatement, myConceptEmitTryFinallyStatement, myConceptEmitWriteStatement, myConceptGetCodeForExpression, myConceptIBuilderMode, myConceptInsertAfter, myConceptInsertBefore, myConceptInsertPosition, myConceptInstructionGetSourceOperation, myConceptInstructionIsJump, myConceptInstructionIsNop, myConceptInstructionIsRet, myConceptInstructionType, myConceptIntraProcedural_BuilderMode, myConceptLabelPosition, myConceptNodeParameter, myConceptPosition, myConceptRelativePosition);
+    return Arrays.asList(myConceptAfterPosition, myConceptBaseEmitJumpStatement, myConceptBaseEmitVariableStatement, myConceptBaseInstructionOperation, myConceptBeforePosition, myConceptBooleanInstructionOperation, myConceptBuilderBlock, myConceptDataFlowAspectDeputy, myConceptDataFlowBuilderDeclaration, myConceptEmitCodeForStatement, myConceptEmitIfJumpStatement, myConceptEmitJumpStatement, myConceptEmitLabelStatement, myConceptEmitMayBeUnreachable, myConceptEmitNopStatement, myConceptEmitReadStatement, myConceptEmitRetStatement, myConceptEmitStatement, myConceptEmitTryFinallyStatement, myConceptEmitWriteStatement, myConceptGetCodeForExpression, myConceptIBuilderMode, myConceptInsertAfter, myConceptInsertBefore, myConceptInsertPosition, myConceptInstructionGetSourceOperation, myConceptInstructionIsJump, myConceptInstructionIsNop, myConceptInstructionIsRet, myConceptInstructionType, myConceptIntraProcedural_BuilderMode, myConceptLabelPosition, myConceptNodeParameter, myConceptPosition, myConceptRelativePosition);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
-    switch (myConceptIndex.index(id)) {
+    switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.AfterPosition:
         return myConceptAfterPosition;
       case LanguageConceptSwitch.BaseEmitJumpStatement:
@@ -77,6 +88,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptBooleanInstructionOperation;
       case LanguageConceptSwitch.BuilderBlock:
         return myConceptBuilderBlock;
+      case LanguageConceptSwitch.DataFlowAspectDeputy:
+        return myConceptDataFlowAspectDeputy;
       case LanguageConceptSwitch.DataFlowBuilderDeclaration:
         return myConceptDataFlowBuilderDeclaration;
       case LanguageConceptSwitch.EmitCodeForStatement:
@@ -136,23 +149,28 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     }
   }
 
+
   /*package*/ int internalIndex(SAbstractConcept c) {
-    return myConceptIndex.index(c);
+    return myIndexSwitch.index(c);
   }
 
   private static ConceptDescriptor createDescriptorForAfterPosition() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "AfterPosition", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bb091aL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.RelativePosition", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b86667L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.RelativePosition
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b86667L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206445082906");
+    b.version(3);
     b.alias("after");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForBaseEmitJumpStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "BaseEmitJumpStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L);
     b.class_(false, true, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.EmitStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.EmitStatement
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206445181593");
+    b.version(3);
     b.aggregate("jumpTo", 0x118e5bcba84L).target(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b7dfc0L).optional(false).ordered(true).multiple(false).origin("1206445193860").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
@@ -160,8 +178,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForBaseEmitVariableStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "BaseEmitVariableStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b40208L);
     b.class_(false, true, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.EmitStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.EmitStatement
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206444622344");
+    b.version(3);
     b.aggregate("variable", 0x118e5b41f27L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1206444629799").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
@@ -171,31 +191,46 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, true, false);
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46ac030L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1823319949748058981");
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForBeforePosition() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "BeforePosition", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bad3a1L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.RelativePosition", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b86667L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.RelativePosition
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b86667L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206445069217");
+    b.version(3);
     b.alias("before");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForBooleanInstructionOperation() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "BooleanInstructionOperation", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x63a490c22d094d63L);
     b.class_(false, true, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.BaseInstructionOperation", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x194dbbd57c9dbb65L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.BaseInstructionOperation
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x194dbbd57c9dbb65L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/7180022869589052771");
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForBuilderBlock() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "BuilderBlock", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5960f51L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.ConceptFunction", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L);
+    // extends: jetbrains.mps.baseLanguage.structure.ConceptFunction
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206442659665");
+    b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.NONE);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForDataFlowAspectDeputy() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "DataFlowAspectDeputy", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x7fbdaa9796878e0bL);
+    b.class_(false, false, true);
+    b.parent(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x5fc6cc5c84f4bddbL);
+    b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/9204700781457411595");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForDataFlowBuilderDeclaration() {
@@ -205,6 +240,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x12509ddfaa98f128L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206442055221");
+    b.version(3);
     b.associate("conceptDeclaration", 0x118e58d76a0L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL).optional(false).origin("1206442096288").done();
     b.aggregate("builderBlock", 0x118e59865a7L).target(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5960f51L).optional(false).ordered(true).multiple(false).origin("1206442812839").done();
     b.aggregate("modes", 0x6e8db6877fd04efbL).target(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x6e8db6877fc9fed4L).optional(true).ordered(true).multiple(true).origin("7966224008969473787").done();
@@ -215,8 +251,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForEmitCodeForStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "EmitCodeForStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e643e7efL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.EmitStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.EmitStatement
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206454052847");
+    b.version(3);
     b.aggregate("codeFor", 0x118e6444eb9L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1206454079161").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("code for");
@@ -225,8 +263,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForEmitIfJumpStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "EmitIfJumpStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be47c5L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.BaseEmitJumpStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.BaseEmitJumpStatement
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206445295557");
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("ifjump");
     return b.create();
@@ -234,8 +274,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForEmitJumpStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "EmitJumpStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be8165L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.BaseEmitJumpStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.BaseEmitJumpStatement
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206445310309");
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("jump");
     return b.create();
@@ -243,18 +285,22 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForEmitLabelStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "EmitLabelStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x1190a87adadL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.EmitStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.EmitStatement
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1207062474157");
+    b.version(3);
     b.alias("label");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForEmitMayBeUnreachable() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "EmitMayBeUnreachable", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118eb0b6674L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Statement", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
+    // extends: jetbrains.mps.baseLanguage.structure.Statement
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1192e7dfdd1L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206534235764");
+    b.version(3);
     b.aggregate("emitStatement", 0x118eb0b872cL).target(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L).optional(false).ordered(true).multiple(false).origin("1206534244140").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("{ <emit> }");
@@ -263,8 +309,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForEmitNopStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "EmitNopStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a554f4L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.EmitStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.EmitStatement
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206443660532");
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("nop");
     return b.create();
@@ -272,8 +320,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForEmitReadStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "EmitReadStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a7d02aL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.BaseEmitVariableStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b40208L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.BaseEmitVariableStatement
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b40208L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206443823146");
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("read");
     return b.create();
@@ -281,8 +331,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForEmitRetStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "EmitRetStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e6ca4377L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.EmitStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.EmitStatement
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206462858103");
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("ret");
     return b.create();
@@ -290,8 +342,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForEmitStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "EmitStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L);
     b.class_(false, true, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Statement", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
+    // extends: jetbrains.mps.baseLanguage.structure.Statement
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206443583064");
+    b.version(3);
     b.aggregate("position", 0x1160a375bea5106L).target(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L).optional(true).ordered(true).multiple(false).origin("78261276407124230").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
@@ -299,8 +353,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForEmitTryFinallyStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "EmitTryFinallyStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x119043714f5L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.EmitStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.EmitStatement
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206956528885");
+    b.version(3);
     b.aggregate("tryPart", 0x11904378e28L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L).optional(false).ordered(true).multiple(false).origin("1206956559912").done();
     b.aggregate("finallyPart", 0x1190437aab4L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L).optional(false).ordered(true).multiple(false).origin("1206956567220").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
@@ -310,8 +366,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForEmitWriteStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "EmitWriteStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5afd8deL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.BaseEmitVariableStatement", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b40208L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.BaseEmitVariableStatement
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b40208L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206444349662");
+    b.version(3);
     b.aggregate("value", 0x11e7d9f7c3bL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("1230468250683").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("write");
@@ -320,8 +378,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForGetCodeForExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "GetCodeForExpression", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x2912c3e08c4f3324L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Expression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    // extends: jetbrains.mps.baseLanguage.structure.Expression
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/2959643274329928484");
+    b.version(3);
     b.aggregate("expression", 0x2912c3e08c4f3325L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("2959643274329928485").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("get code for");
@@ -331,21 +391,26 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "IBuilderMode", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x6e8db6877fc9fed4L);
     b.interface_();
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/7966224008969060052");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForInsertAfter() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "InsertAfter", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e662L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.InsertPosition", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.InsertPosition
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/8486807419021026914");
+    b.version(3);
     b.alias("after");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForInsertBefore() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "InsertBefore", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e664L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.InsertPosition", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.InsertPosition
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/8486807419021026916");
+    b.version(3);
     b.alias("before");
     return b.create();
   }
@@ -353,14 +418,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "InsertPosition", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L);
     b.class_(false, true, false);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/8486807419021026918");
+    b.version(3);
     b.aggregate("instruction", 0x75c73261efe5e689L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("8486807419021026953").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForInstructionGetSourceOperation() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "InstructionGetSourceOperation", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x194dbbd57c9dbb64L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.BaseInstructionOperation", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x194dbbd57c9dbb65L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.BaseInstructionOperation
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x194dbbd57c9dbb65L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1823319949748058980");
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("getSource");
     return b.create();
@@ -368,8 +436,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForInstructionIsJump() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "InstructionIsJump", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x797fabdf814e7af5L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.BooleanInstructionOperation", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x63a490c22d094d63L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.BooleanInstructionOperation
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x63a490c22d094d63L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/8754905177066994421");
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("isJump");
     return b.create();
@@ -377,8 +447,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForInstructionIsNop() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "InstructionIsNop", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x63a490c22d094d5cL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.BooleanInstructionOperation", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x63a490c22d094d63L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.BooleanInstructionOperation
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x63a490c22d094d63L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/7180022869589052764");
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("isNop");
     return b.create();
@@ -386,8 +458,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForInstructionIsRet() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "InstructionIsRet", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x63a490c22d094d5dL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.BooleanInstructionOperation", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x63a490c22d094d63L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.BooleanInstructionOperation
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x63a490c22d094d63L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/7180022869589052765");
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("isRet");
     return b.create();
@@ -395,8 +469,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForInstructionType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "InstructionType", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x44f5e79f9e613080L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Type", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
+    // extends: jetbrains.mps.baseLanguage.structure.Type
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/4969132436616196224");
+    b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.NONE);
     b.alias("instruction");
     return b.create();
@@ -406,14 +482,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x6e8db6877fc9fed4L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/7966224008969060053");
+    b.version(3);
     b.alias("intra-procedural");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForLabelPosition() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "LabelPosition", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x1190a8b1526L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.Position", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b7dfc0L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.Position
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b7dfc0L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1207062697254");
+    b.version(3);
     b.associate("label", 0x1190a8b2ed8L).target(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x1190a87adadL).optional(false).origin("1207062703832").done();
     b.alias("after label");
     return b.create();
@@ -421,9 +500,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForNodeParameter() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "NodeParameter", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e597667fL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x19796fa16a19888bL);
+    // extends: jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206442747519");
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("node");
     return b.create();
@@ -432,13 +512,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "Position", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b7dfc0L);
     b.class_(false, true, false);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206444875712");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForRelativePosition() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "RelativePosition", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b86667L);
     b.class_(false, true, false);
-    b.super_("jetbrains.mps.lang.dataFlow.structure.Position", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b7dfc0L);
+    // extends: jetbrains.mps.lang.dataFlow.structure.Position
+    b.super_(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5b7dfc0L);
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206444910183");
+    b.version(3);
     b.aggregate("relativeTo", 0x118e5b89bc2L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1206444923842").done();
     return b.create();
   }

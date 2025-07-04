@@ -15,13 +15,11 @@ import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.lang.generator.editor.Styles_StyleSheet.macroStartStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.FocusPolicy;
-import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
-import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
-import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
-import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
-import java.util.List;
-import jetbrains.mps.openapi.editor.cells.SubstituteAction;
-import jetbrains.mps.nodeEditor.cellMenu.CellContext;
+import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class LabelMacro_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -39,23 +37,23 @@ import jetbrains.mps.nodeEditor.cellMenu.CellContext;
   }
 
   /*package*/ EditorCell createCell() {
-    return createCollection_x0em22_a();
+    return createCollection_0();
   }
 
-  private EditorCell createCollection_x0em22_a() {
+  private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
     editorCell.setCellId("Collection_x0em22_a");
     editorCell.setBig(true);
-    editorCell.setCellContext(getCellFactory().getCellContext());
-    editorCell.addEditorCell(createConstant_x0em22_a0());
-    editorCell.addEditorCell(createComponent_x0em22_b0());
+    setCellContext(editorCell);
+    editorCell.addEditorCell(createConstant_0());
+    editorCell.addEditorCell(createComponent_0());
     return editorCell;
   }
-  private EditorCell createConstant_x0em22_a0() {
+  private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "$LABEL$");
     editorCell.setCellId("Constant_x0em22_a0");
     Style style = new StyleImpl();
-    new macroStartStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new macroStartStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PUNCTUATION_RIGHT, false);
     style.set(StyleAttributes.LAST_POSITION_ALLOWED, false);
     editorCell.getStyle().putAll(style);
@@ -63,21 +61,17 @@ import jetbrains.mps.nodeEditor.cellMenu.CellContext;
       editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.ATTRACTS_FOCUS);
     }
     MacroSymbol_Actions.setCellActions(editorCell, myNode, getEditorContext());
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.NodeMacro$qU, "jetbrains.mps.lang.generator.editor.ReplaceNodeMacro"));
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new LabelMacro_EditorBuilder_a.LabelMacro_component_cellMenu_x0em22_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
   }
-  public static class LabelMacro_component_cellMenu_x0em22_a0a0 implements SubstituteInfoPartExt {
-    private replace_node_macro myComponent;
-    public LabelMacro_component_cellMenu_x0em22_a0a0() {
-      this.myComponent = new replace_node_macro();
-    }
-    public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      return this.myComponent.createSubstituteActions(cellContext, editorContext);
-    }
-  }
-  private EditorCell createComponent_x0em22_b0() {
+  private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.generator.editor.NodeMacro_postfix");
     return editorCell;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept NodeMacro$qU = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
   }
 }

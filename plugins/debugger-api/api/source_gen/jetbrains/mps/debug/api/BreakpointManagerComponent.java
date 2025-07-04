@@ -5,11 +5,11 @@ package jetbrains.mps.debug.api;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
-import com.intellij.openapi.components.ProjectComponent;
+import jetbrains.mps.annotations.GeneratedClass;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.components.PersistentStateComponent;
 import org.jdom.Element;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.Set;
@@ -19,21 +19,25 @@ import jetbrains.mps.debug.api.breakpoints.IBreakpoint;
 import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
+import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.ListIterator;
 import java.util.Collections;
-import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.debug.api.breakpoints.IBreakpointKind;
+import jetbrains.mps.debug.api.breakpoints.BreakpointProvidersManager;
+import jetbrains.mps.debug.api.breakpoints.IBreakpointsProvider;
+import org.jdom.Attribute;
 
 @State(name = "BreakpointManager", storages = @Storage(value = StoragePathMacros.WORKSPACE_FILE)
 )
-public class BreakpointManagerComponent implements ProjectComponent, PersistentStateComponent<Element> {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(BreakpointManagerComponent.class));
+@GeneratedClass(nodeId = "4474271214082915303", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
+public class BreakpointManagerComponent implements Disposable, PersistentStateComponent<Element> {
+  private static final Logger LOG = Logger.getLogger(BreakpointManagerComponent.class);
   private static final String BREAKPOINTS_LIST_ELEMENT = "breakpointsList";
-  private static final BreakpointManagerComponent.DummyIO DUMMY_IO = new BreakpointManagerComponent.DummyIO();
+
   /**
    * Map implementation shall tolerate null keys (HashMap does).
    */
@@ -41,30 +45,18 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
   private boolean myBreakpointsForRootInitialized = false;
   private final Set<IBreakpoint> myBreakpoints = new HashSet<IBreakpoint>();
   private final List<Element> myUnreadBreakpoints = new ArrayList<Element>();
-  private BreakpointManagerComponent.IBreakpointsIO myBreakpointsIO = DUMMY_IO;
-  private final List<BreakpointManagerComponent.IBreakpointManagerListener> myListeners = new ArrayList<BreakpointManagerComponent.IBreakpointManagerListener>();
-  public BreakpointManagerComponent() {
-  }
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "Breakpoint Manager";
+  private IBreakpointsIO myBreakpointsIO;
+  private final List<IBreakpointManagerListener> myListeners = new ArrayList<IBreakpointManagerListener>();
+
+  public BreakpointManagerComponent(Project ideaProject) {
+    myBreakpointsIO = new MyBreakpointsIO(ideaProject);
   }
   @Override
-  public void projectOpened() {
+  public void dispose() {
+    myBreakpointsIO = new DummyIO();
+    //  dispose
   }
-  @Override
-  public void projectClosed() {
-  }
-  @Override
-  public void initComponent() {
-  }
-  @Override
-  public void disposeComponent() {
-    myBreakpointsIO = null;
-    //  dispose 
-  }
-  public void setBreakpointsIO(BreakpointManagerComponent.IBreakpointsIO io) {
+  public void setBreakpointsIO(IBreakpointsIO io) {
     myBreakpointsIO = io;
     reReadState();
   }
@@ -85,7 +77,7 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
     if (breakpointsForModel == null) {
       myRootsToBreakpointsMap.put(node.getModelReference(), breakpointsForModel = new HashSet<ILocationBreakpoint>());
     }
-    //  check the following assumption: one breakpoint for one node 
+    //  check the following assumption: one breakpoint for one node
     for (ILocationBreakpoint bp : breakpointsForModel) {
       if (bp.getLocation().equals(breakpoint.getLocation())) {
         LOG.error("Trying to add a second breakpoint for node", bp.getLocation().getPresentation());
@@ -126,16 +118,8 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
 
     loadStateInternal(state, oldBreakpoints, newBreakpoints);
 
-    SetSequence.fromSet(oldBreakpoints).subtract(SetSequence.fromSet(newBreakpoints)).visitAll(new IVisitor<IBreakpoint>() {
-      public void visit(IBreakpoint it) {
-        fireBreakpointRemoved(it);
-      }
-    });
-    SetSequence.fromSet(newBreakpoints).subtract(SetSequence.fromSet(oldBreakpoints)).visitAll(new IVisitor<IBreakpoint>() {
-      public void visit(IBreakpoint it) {
-        fireBreakpointAdded(it);
-      }
-    });
+    SetSequence.fromSet(oldBreakpoints).subtract(SetSequence.fromSet(newBreakpoints)).visitAll((it) -> fireBreakpointRemoved(it));
+    SetSequence.fromSet(newBreakpoints).subtract(SetSequence.fromSet(oldBreakpoints)).visitAll((it) -> fireBreakpointAdded(it));
   }
   private void loadStateInternal(Element state, Set<IBreakpoint> oldBreakpoints, Set<IBreakpoint> newBreakpoints) {
     synchronized (myBreakpoints) {
@@ -186,51 +170,43 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
       loadStateInternal(getState(), oldBreakpoints, newBreakpoints);
     }
 
-    SetSequence.fromSet(oldBreakpoints).subtract(SetSequence.fromSet(newBreakpoints)).visitAll(new IVisitor<IBreakpoint>() {
-      public void visit(IBreakpoint it) {
-        fireBreakpointRemoved(it);
-      }
-    });
-    SetSequence.fromSet(newBreakpoints).subtract(SetSequence.fromSet(oldBreakpoints)).visitAll(new IVisitor<IBreakpoint>() {
-      public void visit(IBreakpoint it) {
-        fireBreakpointAdded(it);
-      }
-    });
+    SetSequence.fromSet(oldBreakpoints).subtract(SetSequence.fromSet(newBreakpoints)).visitAll((it) -> fireBreakpointRemoved(it));
+    SetSequence.fromSet(newBreakpoints).subtract(SetSequence.fromSet(oldBreakpoints)).visitAll((it) -> fireBreakpointAdded(it));
   }
   public Set<IBreakpoint> getAllIBreakpoints() {
     synchronized (myBreakpoints) {
       return new HashSet<IBreakpoint>(myBreakpoints);
     }
   }
-  public void addChangeListener(BreakpointManagerComponent.IBreakpointManagerListener listener) {
+  public void addChangeListener(IBreakpointManagerListener listener) {
     synchronized (myListeners) {
       myListeners.add(listener);
     }
   }
-  public void removeChangeListener(BreakpointManagerComponent.IBreakpointManagerListener listener) {
+  public void removeChangeListener(IBreakpointManagerListener listener) {
     synchronized (myListeners) {
       myListeners.remove(listener);
     }
   }
-  private List<BreakpointManagerComponent.IBreakpointManagerListener> getListeners() {
+  private List<IBreakpointManagerListener> getListeners() {
     synchronized (myListeners) {
-      return new ArrayList<BreakpointManagerComponent.IBreakpointManagerListener>(myListeners);
+      return new ArrayList<IBreakpointManagerListener>(myListeners);
     }
   }
   private void fireBreakpointRemoved(IBreakpoint breakpoint) {
-    List<BreakpointManagerComponent.IBreakpointManagerListener> listeners = getListeners();
-    for (BreakpointManagerComponent.IBreakpointManagerListener listener : listeners) {
+    List<IBreakpointManagerListener> listeners = getListeners();
+    for (IBreakpointManagerListener listener : listeners) {
       listener.breakpointRemoved(breakpoint);
     }
   }
   private void fireBreakpointAdded(IBreakpoint breakpoint) {
-    List<BreakpointManagerComponent.IBreakpointManagerListener> listeners = getListeners();
-    for (BreakpointManagerComponent.IBreakpointManagerListener listener : listeners) {
+    List<IBreakpointManagerListener> listeners = getListeners();
+    for (IBreakpointManagerListener listener : listeners) {
       listener.breakpointAdded(breakpoint);
     }
   }
   /**
-   * Tell subset of breakpoints 'close' to supplied ancor node.
+   * Tell subset of breakpoints 'close' to supplied anchor node.
    * Here, 'close' means they are at a node from the same model, and perhaps are from descendants.
    * 
    * IMPORTANT: contract of the method has been changed. It used to return breakpoints within given root, now the set is wider and
@@ -255,13 +231,13 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
     }
   }
   public static BreakpointManagerComponent getInstance(@NotNull Project project) {
-    return project.getComponent(BreakpointManagerComponent.class);
+    return project.getService(BreakpointManagerComponent.class);
   }
   public interface IBreakpointManagerListener {
     void breakpointAdded(@NotNull IBreakpoint breakpoint);
     void breakpointRemoved(@NotNull IBreakpoint breakpoint);
   }
-  public static abstract class BreakpointManagerListener implements BreakpointManagerComponent.IBreakpointManagerListener {
+  public static abstract class BreakpointManagerListener implements IBreakpointManagerListener {
     public BreakpointManagerListener() {
     }
     @Override
@@ -280,7 +256,7 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
     @Nullable
     Element writeBreakpoint(@NotNull IBreakpoint breakpoint);
   }
-  public static class DummyIO implements BreakpointManagerComponent.IBreakpointsIO {
+  public static class DummyIO implements IBreakpointsIO {
     public DummyIO() {
     }
     @Override
@@ -292,4 +268,51 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
       return null;
     }
   }
+  /**
+   * Generic implementation that relies on BP kind extensions through {@code BreakpointProvidersManager}
+   */
+  private static class MyBreakpointsIO implements IBreakpointsIO {
+    private static final String BREAKPOINT_ELEMENT = "breakpoint";
+    private static final String KIND_TAG = "kind";
+
+    private final Project myProject;
+
+    /*package*/ MyBreakpointsIO(Project ideaProject) {
+      myProject = ideaProject;
+    }
+
+    @Override
+    public IBreakpoint readBreakpoint(@NotNull Element element) {
+      if (!(BREAKPOINT_ELEMENT.equals(element.getName()))) {
+        return null;
+      }
+      String kindName = element.getAttributeValue(KIND_TAG);
+      IBreakpointKind kind = BreakpointProvidersManager.getInstance().getKind(kindName);
+      if (kind == null) {
+        return null;
+      }
+      IBreakpointsProvider provider = BreakpointProvidersManager.getInstance().getProvider(kind);
+      if (provider == null) {
+        return null;
+      }
+      return provider.loadFromState((Element) element.getChildren().get(0), kind, myProject);
+    }
+    @Override
+    public Element writeBreakpoint(@NotNull IBreakpoint breakpoint) {
+      IBreakpointKind kind = breakpoint.getKind();
+      IBreakpointsProvider provider = BreakpointProvidersManager.getInstance().getProvider(kind);
+      if (provider == null) {
+        return null;
+      }
+      Element element = provider.saveToState(breakpoint);
+      if (element != null) {
+        Element breakpointElement = new Element(BREAKPOINT_ELEMENT);
+        breakpointElement.setAttribute(new Attribute(KIND_TAG, kind.getName()));
+        breakpointElement.addContent(element);
+        return breakpointElement;
+      }
+      return null;
+    }
+  }
+
 }

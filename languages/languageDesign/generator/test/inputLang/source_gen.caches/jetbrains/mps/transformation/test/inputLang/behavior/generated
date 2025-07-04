@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="d48g6pn0io0m9v89mocmcfurp359sza" />
+<product version="3" modelHash="8i90fcf9hy7gksq9q03rmg1jc1zwu9k">
+  <files names="BehaviorAspectDescriptor.java:InputNode__BehaviorDescriptor.java:RefTestClass__BehaviorDescriptor.java:RefTestMethod__BehaviorDescriptor.java" />
+</product>
 

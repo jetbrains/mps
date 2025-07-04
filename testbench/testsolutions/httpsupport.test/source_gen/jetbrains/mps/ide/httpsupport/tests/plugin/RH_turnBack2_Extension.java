@@ -4,6 +4,9 @@ package jetbrains.mps.ide.httpsupport.tests.plugin;
 
 import jetbrains.mps.smodel.structure.Extension;
 import jetbrains.mps.ide.httpsupport.manager.plugin.IHttpRequestHandlerFactory;
+import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.httpsupport.manager.plugin.IHttpRequestHandler;
 import jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest;
@@ -12,6 +15,7 @@ public class RH_turnBack2_Extension extends Extension.Default<IHttpRequestHandle
   public RH_turnBack2_Extension() {
     super("jetbrains.mps.ide.httpsupport.HttpRequestHandlerEP");
   }
+  private static final List<String> QUERY_METHODS = ListSequence.fromListAndArray(new ArrayList<>(), "GET");
 
   public IHttpRequestHandlerFactory factory = new IHttpRequestHandlerFactory() {
     @NotNull
@@ -21,6 +25,14 @@ public class RH_turnBack2_Extension extends Extension.Default<IHttpRequestHandle
     @NotNull
     public IHttpRequestHandler create(@NotNull HttpRequest request) {
       return new RH_turnBack2_RequestHandler(request);
+    }
+
+    public String getServicePrefix() {
+      return "handlerTest/turnBack2";
+    }
+
+    public List<String> getSupportedMethods() {
+      return QUERY_METHODS;
     }
   };
 

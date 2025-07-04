@@ -88,7 +88,7 @@ public class MPSPackageItemProviderTests {
   @Test
   public void sortFullHumpMatchFirst() {
     checkEntriesFound(new String[]{"justOneMy_Entry3", "justOnMy_Entry2", "justOneMyEntry1"}, "OnMyEn",
-        new String[]{"justOnMy_Entry2", "justOneMyEntry1", "justOneMy_Entry3"});
+        new String[]{"justOneMyEntry1", "justOnMy_Entry2", "justOneMy_Entry3"});
   }
 
   @Test
@@ -183,8 +183,8 @@ public class MPSPackageItemProviderTests {
     boolean filterElements =
         provider.filterElements(model.getNames(everywhere), pattern, everywhere, model, new EmptyProgressIndicator(new ModalityState() {
           @Override
-          public boolean dominates(@NotNull ModalityState anotherState) {
-            return false;
+          public boolean accepts(@NotNull ModalityState requestedModality) {
+            return true;
           }
 
           @Override

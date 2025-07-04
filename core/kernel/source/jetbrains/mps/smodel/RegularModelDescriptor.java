@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.persistence.DataSource;
  * Lives in j.m.smodel, not j.m.extapi.model as it depends from smodel.SModel now, and I want API to use API classes only.
  */
 public abstract class RegularModelDescriptor extends SModelBase {
-  // FIXME SModelBase/SModelDefscriptorStub with gtSModelInternal demand we keep SModel, not SModelData
+  // FIXME SModelBase/SModelDefscriptorStub with getSModelInternal demand we keep SModel, not SModelData
   private volatile jetbrains.mps.smodel.SModel mySModel;
 
   /**
@@ -47,7 +47,7 @@ public abstract class RegularModelDescriptor extends SModelBase {
   }
 
   @Override
-  public final jetbrains.mps.smodel.SModel getSModelInternal() {
+  public final jetbrains.mps.smodel.SModel getSModel() {
     SModel copy = mySModel;
     if (copy != null) {
       return copy;
@@ -58,10 +58,10 @@ public abstract class RegularModelDescriptor extends SModelBase {
       if (mySModel == null) {
         ModelLoadResult<jetbrains.mps.smodel.SModel> loadResult = createModel();
         mySModel = loadResult.getModelData();
-        mySModel.setModelDescriptor(this);
         setLoadingState(loadResult.getState());
       }
     }
+    replaceModelAndFireEvent(null, mySModel);
     fireModelStateChanged(oldState, getLoadingState());
     return mySModel;
   }
@@ -91,20 +91,14 @@ public abstract class RegularModelDescriptor extends SModelBase {
    */
   protected void replace(@NotNull ModelLoadResult<jetbrains.mps.smodel.SModel> newModel) {
     final ModelLoadingState oldState;
+    final SModel oldModel;
     synchronized (myLoadLock) {
       oldState = getLoadingState();
-      if (mySModel != null) {
-        mySModel.setModelDescriptor(null);
-        mySModel.dispose();
-        mySModel = null;
-      }
+      oldModel = mySModel;
       mySModel = newModel.getModelData();
-      if (mySModel != null) {
-        mySModel.setModelDescriptor(this);
-      }
       setLoadingState(newModel.getState());
     }
+    replaceModelAndFireEvent(oldModel, mySModel);
     fireModelStateChanged(oldState, getLoadingState());
-    fireModelReplaced();
   }
 }

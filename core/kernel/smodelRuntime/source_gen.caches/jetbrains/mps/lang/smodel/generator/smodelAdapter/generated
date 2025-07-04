@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="cczxk6l6x8mf1zuencp969xn9q3vw31" />
+<<<<<<< HEAD
+<product version="3" modelHash="-cen4i2alb1izp7iq00ur0iobeys421z">
+=======
+<product version="3" modelHash="3z0brt4qrqtsoi4hvytqfsjvk3oujf6">
+>>>>>>> upstream/2024.1_projectPane
+  <files names="AbstractMutableChildrenList.java:AttributeOperations.java:EmptyList.java:IAttributeDescriptor.java:MutableChildrenList.java:NodeCastException.java:SConceptOperations.java:SEnumOperations.java:SLinkOperations.java:SModelOperations.java:SModuleOperations.java:SNodeOperations.java:SPointerOperations.java:SPropertyOperations.java" />
+</product>
 

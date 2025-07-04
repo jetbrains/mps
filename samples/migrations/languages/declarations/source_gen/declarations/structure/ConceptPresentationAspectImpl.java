@@ -4,15 +4,15 @@ package declarations.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_NewComponent = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_NewComponentMember = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_OldComponent = new ConceptPresentationBuilder().deprecated(true).create();
-  private final ConceptPresentation props_OldComponentMember = new ConceptPresentationBuilder().deprecated(true).create();
+  private ConceptPresentation props_NewComponent;
+  private ConceptPresentation props_NewComponentMember;
+  private ConceptPresentation props_OldComponent;
+  private ConceptPresentation props_OldComponentMember;
 
   @Override
   @Nullable
@@ -20,12 +20,32 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.NewComponent:
+        if (props_NewComponent == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_NewComponent = cpb.create();
+        }
         return props_NewComponent;
       case LanguageConceptSwitch.NewComponentMember:
+        if (props_NewComponentMember == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_NewComponentMember = cpb.create();
+        }
         return props_NewComponentMember;
       case LanguageConceptSwitch.OldComponent:
+        if (props_OldComponent == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
+          cpb.presentationByName();
+          props_OldComponent = cpb.create();
+        }
         return props_OldComponent;
       case LanguageConceptSwitch.OldComponentMember:
+        if (props_OldComponentMember == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
+          props_OldComponentMember = cpb.create();
+        }
         return props_OldComponentMember;
     }
     return null;

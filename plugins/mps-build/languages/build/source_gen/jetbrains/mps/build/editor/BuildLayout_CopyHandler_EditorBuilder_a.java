@@ -30,29 +30,27 @@ import jetbrains.mps.editor.runtime.cells.BigCellUtil;
   }
 
   /*package*/ EditorCell createCell() {
-    return createCustom_r67zyn_a();
+    return createCustom_0();
   }
 
-  private EditorCell createCustom_r67zyn_a() {
-    AbstractCellProvider provider = new _FunctionTypes._return_P0_E0<AbstractCellProvider>() {
-      public AbstractCellProvider invoke() {
-        return new AbstractCellProvider(myNode) {
-          @Override
-          public EditorCell createEditorCell(EditorContext context) {
-            EditorCell_Error result = new EditorCell_Error(context, myNode, "<no handler>");
-            result.getStyle().set(StyleAttributes.PADDING_LEFT, new Padding(0.0));
-            result.getStyle().set(StyleAttributes.PADDING_RIGHT, new Padding(0.0));
-            return result;
-          }
-        };
-      }
-    }.invoke();
+  private EditorCell createCustom_0() {
+    AbstractCellProvider provider = ((_FunctionTypes._return_P0_E0<AbstractCellProvider>) () -> {
+      return new AbstractCellProvider(myNode) {
+        @Override
+        public EditorCell createEditorCell(EditorContext context) {
+          EditorCell_Error result = new EditorCell_Error(context, myNode, "<no handler>");
+          result.getStyle().set(StyleAttributes.PADDING_LEFT, new Padding(0.0));
+          result.getStyle().set(StyleAttributes.PADDING_RIGHT, new Padding(0.0));
+          return result;
+        }
+      };
+    }).invoke();
     EditorCell editorCell = provider.createEditorCell(getEditorContext());
     editorCell.setCellId("Custom_r67zyn_a");
     EditorCell bigCell = BigCellUtil.findBigCell(editorCell, getNode());
     if (bigCell != null) {
       bigCell.setBig(true);
-      bigCell.setCellContext(getCellFactory().getCellContext());
+      setCellContext(bigCell);
     }
     return editorCell;
   }
