@@ -3,7 +3,6 @@
   <xi:include href="/idea/VcsActions.xml" xpointer="xpointer(/component/*)"/>
 
   <actions>
-    <group id="StructureViewPopupMenu"></group>
 
     <group id="RunnerLayoutActions">
       <group id="Runner.Layout" icon="/debugger/restoreLayout.png" popup="true">
@@ -34,9 +33,11 @@
         </group>
       </group>
 
+
       <group id="Runner.View.Toolbar">
         <reference ref="Runner.MoveViewToGrid"/>
         <reference ref="Runner.MoveViewToTab"/>
+        <reference ref="Runner.DetachCell"/>
         <reference ref="Runner.AttachCell"/>
         <reference ref="Runner.MinimizeView"/>
         <reference ref="Runner.CloseView"/>
@@ -54,6 +55,11 @@
 
     <group id="RunContextGroup" popup="false">
       <action id="CreateRunConfiguration" class="com.intellij.execution.actions.CreateAction"/>
+    </group>
+
+    <!--for being able to use StopAction in j.m.ide.actions-->
+    <group id="DebugStopAction" popup="false">
+      <reference ref="Stop"/>
     </group>
 
     <!--actions for alt+shift+F9/F10-->
@@ -75,6 +81,11 @@
       <add-to-group group-id="ToolbarRunGroup" relative-to-action="RunConfiguration" anchor="before"/>
     </group>
 
+    <!--add "select in" action to all the editors-->
+    <group id="CodeEditorViewGroup" class="com.intellij.ide.actions.CodeEditorActionGroup">
+      <action id="SelectIn" class="com.intellij.ide.actions.SelectInAction"/>
+    </group>
+
     <group id="MPSProjectActions" text="MPSProjectActions">
       <action id="NewProject" class="jetbrains.mps.workbench.actions.NewMPSProjectAction" text="New MPS Project"/>
       <action id="OpenProject" class="jetbrains.mps.workbench.actions.OpenMPSProjectAction"
@@ -82,24 +93,32 @@
       <add-to-group anchor="first" group-id="FileMenu"/>
     </group>
 
-    <group id="CodeMenu" popup="true" text="Co_de">
+    <group id="GenerateMenu" popup="true" text="Ge_nerate">
       <add-to-group group-id="MainMenu" anchor="after" relative-to-action="GoToMenu"/>
     </group>
 
     <group id="BuildMenu" popup="true" text="Build">
-      <add-to-group group-id="MainMenu" anchor="after" relative-to-action="CodeMenu"/>
+      <add-to-group group-id="MainMenu" anchor="after" relative-to-action="GenerateMenu"/>
     </group>
 
     <group id="MPSWelcomeDocumentationMenu">
       <action id="ReadMPSTutorial"
               class="jetbrains.mps.workbench.actions.help.ReadMPSTutorialAction"
-              text="Read The Tutorial"
+              text="Read The Tutorial" 
               description="You can read a tutorial on how to create a simple language with MPS"/>
       <action id="ShowMPSDocumentation"
               class="jetbrains.mps.workbench.actions.help.ShowDocumentationAction"
               text="Browse MPS Documentation"
               description="You can browse online documentation on MPS"/>
-
+       <action id="OpenTheComplexNumberLanguageProject"
+              class="jetbrains.mps.workbench.actions.welcomeScreen.OpenComplexLanguageProjectAction"
+              text="Open Complex Numbers Project"
+              description="You can take a look at how baseLanguage can be extended with support for complex numbers. Click the icon or link to open the sample project."/>
+      <action
+              id="OpenTheSimplestLanguageProject"
+              class="jetbrains.mps.workbench.actions.welcomeScreen.OpenTheSimplestLanguageProjectAction"
+              text="Open The Simplest Language Project"
+              description="You can take a look at the simplest possible language with typical aspects of most languages. Click the icon or link to open the sample project."/>
       <add-to-group group-id="WelcomeScreen.Documentation" anchor="first"/>
     </group>
 
@@ -126,35 +145,46 @@
     <group id="EditorFix">
       <!--We need this only cause platform requires this action, and NPE is thrown if
                 the action is not in its place (see MPS-2081 for further details) -->
-      <action id="EditorSelectWord" class="com.intellij.openapi.editor.actions.SelectWordAtCaretAction"/>
-      <add-to-group group-id="EditMenu" anchor="last"/>
-    </group>
+            <action id="EditorSelectWord" class="com.intellij.openapi.editor.actions.SelectWordAtCaretAction"/>
+            <add-to-group group-id="EditMenu" anchor="last"/>
+        </group>
 
-    <group id="VcsMappingsFix">
-      <!--fix MPS-2142-->
-      <action id="NewElement" class="com.intellij.ide.actions.NewElementAction"/>
-      <action id="IncrementalSearch" class="com.intellij.codeInsight.navigation.actions.IncrementalSearchAction"/>
-    </group>
+        <group id="VcsMappingsFix">
+            <!--fix MPS-2142-->
+            <action id="NewElement" class="com.intellij.ide.actions.NewElementAction"/>
+            <action id="IncrementalSearch" class="com.intellij.codeInsight.navigation.actions.IncrementalSearchAction"/>
+        </group>
 
-    <!--fix MPS-2156 after fixing MPS-2142-->
-    <group id="WeighingNewGroup" class="com.intellij.ide.actions.WeighingNewActionGroup"/>
-    <group id="NewGroup" popup="true">
-    </group>
+        <!--fix MPS-2156 after fixing MPS-2142-->
+        <group id="WeighingNewGroup" class="com.intellij.ide.actions.WeighingNewActionGroup"/>
+        <group id="NewGroup" popup="true">
+        </group>
 
-    <group id="SearchMenu" popup="true">
-      <add-to-group group-id="MainMenu" anchor="after" relative-to-action="EditMenu"/>
-    </group>
+        <group>
+            <separator/>
+            <action id="ShowInLogicalView" class="jetbrains.mps.vcs.actions.ShowInLogicalView"
+                    text="Show In Logical View"/>
+            <action id="ShowInFileView" class="jetbrains.mps.vcs.actions.ShowInFileView"
+                    text="Show In File System View"/>
+            <action id="ShowInVcsRootsView" class="jetbrains.mps.vcs.actions.ShowInVcsRootsView"
+                    text="Show In VCS Roots View"/>
+            <separator/>
+            <action id="GenerateFilesFromChangeListAction"
+                    class="jetbrains.mps.vcs.actions.GenerateFilesFromChangeListAction"
+                    text="Generate Files"/>
+            <action id="GenerateTextFromChangeListAction"
+                    class="jetbrains.mps.vcs.actions.GenerateTextFromChangeListAction"
+                    text="Generate Text"/>
+            <add-to-group group-id="ChangesViewPopupMenu" anchor="last"/>
+        </group>
 
-    <group id="ConsoleView.PopupMenu">
-      <action id="ConsoleView.ClearAll" class="com.intellij.execution.impl.ConsoleViewImpl$ClearAllAction"/>
-      <action id="ConsoleView.Copy" class="com.intellij.execution.impl.ConsoleViewImpl$CopyAction"/>
-    </group>
+        <group id="SearchMenu" popup="true">
+          <add-to-group group-id="MainMenu" anchor="after" relative-to-action="EditMenu"/>
+        </group>
 
-    <action id="Find" class="com.intellij.openapi.editor.actions.IncrementalFindAction" icon="/actions/menu-find.png"/>
-    <action id="Replace" class="com.intellij.openapi.editor.actions.ReplaceAction" icon="/actions/menu-replace.png"/>
-    <action id="FindNext" class="com.intellij.ide.actions.SearchAgainAction"/>
-    <action id="FindPrevious" class="com.intellij.ide.actions.SearchBackAction"/>
-    <action id="FindWordAtCaret" class="com.intellij.openapi.editor.actions.FindWordAtCaretAction"/>
-    <action id="FindUsages" class="com.intellij.find.actions.FindUsagesAction"/>
-  </actions>
+        <!--Fixing exeception in ToolWindowContentUi which uses this action-->
+        <action id="ShowContent" class="com.intellij.ide.actions.ShowContentAction"/>
+        <!--Fix another exception, in InternalDecorator this time-->
+        <action id="ToggleContentUiTypeMode" class="com.intellij.ide.actions.ToggleContentUiTypeAction"/>
+    </actions>
 </component>
