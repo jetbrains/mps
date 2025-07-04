@@ -47888,6 +47888,12 @@
       <node concept="m$_yC" id="ymnOULATq9" role="m$_yJ">
         <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
       </node>
+<<<<<<< HEAD
+=======
+      <node concept="m$_yC" id="6jDaT$jlW3o" role="m$_yJ">
+        <ref role="m$_y1" node="6jDaT$jlVJY" resolve="jetbrains.mps.junit5" />
+      </node>
+>>>>>>> upstream/2024.1_projectPane
       <node concept="m$f5U" id="ymnOULB62Z" role="m$_yh">
         <ref role="m$f5T" node="ymnOULAU0i" resolve="baseLanguage" />
       </node>

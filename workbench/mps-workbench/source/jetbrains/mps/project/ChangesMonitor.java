@@ -156,11 +156,14 @@ import java.util.function.Predicate;
       cache.remove(moduleReference);
       return cache.isEmpty() ? null : cache;
     });
+<<<<<<< HEAD
   }
 
   @NotNull
   private static List<SModuleReference> createCache() {
     return Collections.synchronizedList(new ArrayList<>(2));
+=======
+>>>>>>> upstream/2024.1_projectPane
   }
 
   protected MissionControlRefreshRequest pumpQueue(MessagesContainer messagesContainer, ProgressIndicator progressIndicator) {
@@ -300,6 +303,17 @@ import java.util.function.Predicate;
     }
   }
 
+<<<<<<< HEAD
+=======
+  private void registerListener(SModule module) {
+    module.addModuleListener(myModuleListener);
+  }
+
+  private void unregisterListener(SModule module) {
+    module.removeModuleListener(myModuleListener);
+  }
+
+>>>>>>> upstream/2024.1_projectPane
   private void forAllModulesInProject(Consumer<SModule> moduleConsumer) {
     if (myProject.isDisposed()) return;
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
@@ -317,14 +331,22 @@ import java.util.function.Predicate;
     myEnqueueAllModulesInProject.set(true);
   }
 
+<<<<<<< HEAD
   private void enqueueUpdate(SModel model) {
+=======
+  private void enqueueUpdate(SModel model, Function<? super Update, ? extends Update> updateFun) {
+>>>>>>> upstream/2024.1_projectPane
     SObject sObject = SObject.of(model);
     myUpdateCardinality.computeIfAbsent(sObject, __ -> new AtomicInteger(0)).incrementAndGet();
     myUpdatesQueue.add(sObject);
   }
 
+<<<<<<< HEAD
   private void enqueueUpdate(SModule module) {
     if (module instanceof TempModule) return;
+=======
+  private void enqueueUpdate(SModule module, Function<? super Update, ? extends Update> updateFun) {
+>>>>>>> upstream/2024.1_projectPane
     SObject sObject = SObject.of(module);
     if (module instanceof AbstractModule) {
       IFile descriptorFile = ((AbstractModule) module).getDescriptorFile();
@@ -338,6 +360,37 @@ import java.util.function.Predicate;
   protected static class ModelExceptionError extends ModelReportItemBase {
     protected ModelExceptionError(SModelReference model, Exception ex) {
       super(MessageStatus.ERROR, model, ex.toString());
+<<<<<<< HEAD
+=======
+    }
+
+    @Override
+    public IssueKindReportItem.ItemKind getIssueKind() {
+      return IssueKindReportItem.MODEL_PROPERTIES.deriveItemKind("exception");
+    }
+  }
+
+  protected static class ModuleExceptionError extends ModuleReportItemBase {
+    protected ModuleExceptionError(SModuleReference module, Exception ex) {
+      super(MessageStatus.ERROR, module, ex.toString());
+    }
+
+    @Override
+    public IssueKindReportItem.ItemKind getIssueKind() {
+      // see CancelForModel#getIssueKind for whine and frustration
+      return IssueKindReportItem.MODULE_PROPERTIES.deriveItemKind("exception");
+    }
+  }
+
+  protected static class Update {
+
+    private final SObject mySObject;
+    private volatile boolean myToRefresh = false;
+    private volatile boolean myToCheck = false;
+
+    public Update(SObject sObject) {
+      this.mySObject = sObject;
+>>>>>>> upstream/2024.1_projectPane
     }
 
     @Override

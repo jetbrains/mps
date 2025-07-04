@@ -8334,6 +8334,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5033107305426684804">
     <file name="CopyNode_Action.java">
+<<<<<<< HEAD
       <node id="5033107305426684804" at="24,0,25,0" concept="16" trace="ICON" />
       <node id="5033107305426684804" at="26,28,27,28" concept="18" />
       <node id="5033107305426684804" at="27,28,28,35" concept="6" />
@@ -8399,6 +8400,68 @@
       <scope id="5033107305426684804" at="26,0,32,0" />
       <scope id="5376254339813180142" at="37,87,43,16" />
       <scope id="5033107305426684804" at="36,0,45,0">
+=======
+      <node id="5033107305426684804" at="23,0,24,0" concept="16" trace="ICON" />
+      <node id="5033107305426684804" at="25,28,26,28" concept="18" />
+      <node id="5033107305426684804" at="26,28,27,35" concept="6" />
+      <node id="5033107305426684804" at="27,35,28,52" concept="6" />
+      <node id="5033107305426684804" at="28,52,29,29" concept="6" />
+      <node id="5033107305426684804" at="32,32,33,16" concept="13" />
+      <node id="5376254339813257709" at="38,163,39,21" concept="13" />
+      <node id="5376254339813257714" at="41,5,42,16" concept="13" />
+      <node id="5033107305426684804" at="45,89,46,85" concept="6" />
+      <node id="5033107305426684804" at="50,53,51,19" concept="13" />
+      <node id="5033107305426684816" at="53,5,54,65" concept="12" />
+      <node id="5033107305426684816" at="55,26,56,56" concept="6" />
+      <node id="5033107305426684816" at="57,14,58,114" concept="6" />
+      <node id="8898893144448210383" at="60,26,61,21" concept="13" />
+      <node id="8898893144448210383" at="63,28,64,21" concept="13" />
+      <node id="5033107305426684816" at="65,7,66,0" concept="15" />
+      <node id="5033107305426684804" at="67,5,68,16" concept="13" />
+      <node id="5033107305426685897" at="71,96,72,98" concept="6" />
+      <node id="5757286674688421796" at="72,98,73,113" concept="14" />
+      <node id="5757286674688411940" at="73,113,74,47" concept="6" />
+      <node id="5033107305426684816" at="57,12,59,7" concept="1" />
+      <node id="5376254339813257657" at="37,105,40,7" concept="10" />
+      <node id="5033107305426684804" at="49,95,52,5" concept="10" />
+      <node id="8898893144448210383" at="59,7,62,7" concept="10" />
+      <node id="8898893144448210383" at="62,7,65,7" concept="10" />
+      <node id="5033107305426684804" at="31,0,35,0" concept="11" trace="isDumbAware#()Z" />
+      <node id="5033107305426684804" at="44,0,48,0" concept="11" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="5376254339813257645" at="36,87,41,5" concept="9" />
+      <node id="5033107305426684816" at="54,65,59,7" concept="10" />
+      <node id="5033107305426684804" at="25,0,31,0" concept="3" trace="CopyNode_Action#()V" />
+      <node id="5033107305426684804" at="70,0,76,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="5033107305426684804" at="35,0,44,0" concept="11" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <node id="5033107305426684816" at="52,5,67,5" concept="1" />
+      <node id="5033107305426684804" at="48,0,70,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <scope id="5033107305426684804" at="32,32,33,16" />
+      <scope id="5376254339813257659" at="38,163,39,21" />
+      <scope id="5033107305426684804" at="45,89,46,85" />
+      <scope id="5033107305426684804" at="50,53,51,19" />
+      <scope id="5033107305426684816" at="55,26,56,56" />
+      <scope id="5033107305426684816" at="57,14,58,114" />
+      <scope id="8898893144448210383" at="60,26,61,21" />
+      <scope id="8898893144448210383" at="63,28,64,21" />
+      <scope id="5376254339813257648" at="37,105,40,7" />
+      <scope id="5033107305426684804" at="71,96,74,47" />
+      <scope id="5033107305426684804" at="25,28,29,29" />
+      <scope id="5033107305426684804" at="31,0,35,0" />
+      <scope id="5033107305426684804" at="44,0,48,0">
+        <var name="_params" id="5033107305426684804" />
+        <var name="event" id="5033107305426684804" />
+      </scope>
+      <scope id="5376254339813257645" at="36,87,41,5">
+        <var name="node" id="5376254339813257646" />
+      </scope>
+      <scope id="5033107305426684804" at="25,0,31,0" />
+      <scope id="5376254339813180142" at="36,87,42,16" />
+      <scope id="5033107305426684804" at="70,0,76,0">
+        <var name="_params" id="5033107305426684804" />
+        <var name="event" id="5033107305426684804" />
+      </scope>
+      <scope id="5033107305426684804" at="35,0,44,0">
+>>>>>>> upstream/2024.1_projectPane
         <var name="_params" id="5033107305426684804" />
         <var name="event" id="5033107305426684804" />
       </scope>
@@ -8410,7 +8473,11 @@
         <var name="_params" id="5033107305426684804" />
         <var name="event" id="5033107305426684804" />
       </scope>
+<<<<<<< HEAD
       <unit id="5033107305426684804" at="22,0,79,0" name="jetbrains.mps.ide.actions.CopyNode_Action" />
+=======
+      <unit id="5033107305426684804" at="21,0,77,0" name="jetbrains.mps.ide.actions.CopyNode_Action" />
+>>>>>>> upstream/2024.1_projectPane
     </file>
     <file name="Ide_ApplicationPlugin.java">
       <node id="5033107305426684804" at="38,46,39,37" concept="6" />
@@ -8850,12 +8917,20 @@
       <node id="7690266557996075334" at="139,30,140,103" concept="6" />
       <node id="7690266557996245255" at="140,103,141,75" concept="6" />
       <node id="5757286674687469709" at="142,9,143,32" concept="6" />
+<<<<<<< HEAD
       <node id="5858555132911341933" at="147,68,148,91" concept="14" />
       <node id="1955174072255961847" at="148,91,149,86" concept="13" />
       <node id="291828884040790884" at="152,69,153,132" concept="13" />
       <node id="291828884040887388" at="155,328,156,96" concept="13" />
       <node id="291828884041025147" at="157,5,158,16" concept="13" />
       <node id="5533671870987188872" at="162,0,163,0" concept="16" trace="virtualPackage$EkXl" />
+=======
+      <node id="1955174072255961847" at="147,68,148,94" concept="13" />
+      <node id="291828884040790884" at="151,69,152,132" concept="13" />
+      <node id="291828884040887388" at="154,328,155,96" concept="13" />
+      <node id="291828884041025147" at="156,5,157,16" concept="13" />
+      <node id="5533671870987188872" at="161,0,162,0" concept="16" trace="virtualPackage$EkXl" />
+>>>>>>> upstream/2024.1_projectPane
       <node id="5533671870987188872" at="64,95,67,5" concept="10" />
       <node id="5272353921214662194" at="70,53,73,7" concept="10" />
       <node id="7420158301550251562" at="76,90,79,7" concept="10" />
@@ -8866,20 +8941,33 @@
       <node id="2199634891381982165" at="118,9,121,9" concept="10" />
       <node id="5533671870987189697" at="123,73,126,11" concept="10" />
       <node id="5533671870987189843" at="128,16,131,11" concept="10" />
+<<<<<<< HEAD
       <node id="291828884040771033" at="151,71,154,5" concept="10" />
       <node id="291828884040823987" at="154,5,157,5" concept="10" />
+=======
+      <node id="6911308859684553024" at="147,0,150,0" concept="11" trace="canPasteNodes#(Ljava/util/Map;)Z" />
+      <node id="291828884040771033" at="150,71,153,5" concept="10" />
+      <node id="291828884040823987" at="153,5,156,5" concept="10" />
+>>>>>>> upstream/2024.1_projectPane
       <node id="5533671870987188872" at="50,0,54,0" concept="11" trace="isDumbAware#()Z" />
       <node id="5533671870987188872" at="59,0,63,0" concept="11" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="5533671870987188877" at="91,5,95,5" concept="1" />
       <node id="291828884040830226" at="95,5,99,5" concept="1" />
+<<<<<<< HEAD
       <node id="6911308859684553024" at="147,0,151,0" concept="11" trace="canPasteNodes#(Ljava/util/Map;)Z" />
+=======
+>>>>>>> upstream/2024.1_projectPane
       <node id="5533671870987188872" at="45,0,50,0" concept="3" trace="PasteNode_Action#()V" />
       <node id="5533671870987188872" at="54,0,59,0" concept="11" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <node id="5533671870987189808" at="128,14,133,9" concept="1" />
       <node id="7420158301550251893" at="136,40,142,9" concept="10" />
       <node id="8490755084402450024" at="67,5,74,5" concept="1" />
       <node id="7420158301550251562" at="74,5,81,5" concept="1" />
+<<<<<<< HEAD
       <node id="291828884040668015" at="151,0,160,0" concept="11" trace="getContextPackage#(Ljava/util/Map;)Ljava/lang/String;" />
+=======
+      <node id="291828884040668015" at="150,0,159,0" concept="11" trace="getContextPackage#(Ljava/util/Map;)Ljava/lang/String;" />
+>>>>>>> upstream/2024.1_projectPane
       <node id="5533671870987188885" at="81,5,91,5" concept="1" />
       <node id="5533671870987189690" at="122,61,133,9" concept="10" />
       <node id="5757286674687738905" at="114,0,145,0" concept="11" trace="run#()V" />
@@ -8898,8 +8986,14 @@
       <scope id="2199634891381982166" at="119,41,120,35" />
       <scope id="5533671870987189703" at="124,44,125,19" />
       <scope id="5533671870987189844" at="129,110,130,19" />
+<<<<<<< HEAD
       <scope id="291828884040771034" at="152,69,153,132" />
       <scope id="291828884040823990" at="155,328,156,96" />
+=======
+      <scope id="6911308859684553026" at="147,68,148,94" />
+      <scope id="291828884040771034" at="151,69,152,132" />
+      <scope id="291828884040823990" at="154,328,155,96" />
+>>>>>>> upstream/2024.1_projectPane
       <scope id="5533671870987189408" at="55,87,57,168">
         <var name="searchPanelInactive" id="1699784903221829463" />
       </scope>
@@ -8909,8 +9003,15 @@
       <scope id="291828884040830226" at="96,5,98,51">
         <var name="p" id="291828884040830226" />
       </scope>
+<<<<<<< HEAD
       <scope id="6911308859684553026" at="147,68,149,86" />
       <scope id="5533671870987188872" at="45,29,48,44" />
+=======
+      <scope id="5533671870987188872" at="45,29,48,44" />
+      <scope id="6911308859684553024" at="147,0,150,0">
+        <var name="_params" id="6911308859684553024" />
+      </scope>
+>>>>>>> upstream/2024.1_projectPane
       <scope id="5533671870987188872" at="50,0,54,0" />
       <scope id="5533671870987188872" at="59,0,63,0">
         <var name="_params" id="5533671870987188872" />
@@ -8921,9 +9022,12 @@
       <scope id="7420158301550251894" at="137,94,141,75">
         <var name="root" id="5533671870987190882" />
       </scope>
+<<<<<<< HEAD
       <scope id="6911308859684553024" at="147,0,151,0">
         <var name="_params" id="6911308859684553024" />
       </scope>
+=======
+>>>>>>> upstream/2024.1_projectPane
       <scope id="5533671870987188872" at="45,0,50,0" />
       <scope id="5533671870987188872" at="54,0,59,0">
         <var name="_params" id="5533671870987188872" />
@@ -8935,7 +9039,11 @@
       <scope id="7420158301550251562" at="75,5,80,75">
         <var name="editorComponent" id="7420158301550251562" />
       </scope>
+<<<<<<< HEAD
       <scope id="291828884040668017" at="151,71,158,16" />
+=======
+      <scope id="291828884040668017" at="150,71,157,16" />
+>>>>>>> upstream/2024.1_projectPane
       <scope id="5533671870987188885" at="82,5,90,7">
         <var name="p" id="5533671870987188885" />
       </scope>
@@ -8963,9 +9071,15 @@
         <var name="_params" id="5533671870987188872" />
         <var name="event" id="5533671870987188872" />
       </scope>
+<<<<<<< HEAD
       <unit id="5533671870987188872" at="161,0,164,0" name="jetbrains.mps.ide.actions.PasteNode_Action$PROPS" />
       <unit id="5757286674687735627" at="113,50,145,5" name="jetbrains.mps.ide.actions.PasteNode_Action$1" />
       <unit id="5533671870987188872" at="41,0,165,0" name="jetbrains.mps.ide.actions.PasteNode_Action" />
+=======
+      <unit id="5533671870987188872" at="160,0,163,0" name="jetbrains.mps.ide.actions.PasteNode_Action$PROPS" />
+      <unit id="5757286674687735627" at="113,50,145,5" name="jetbrains.mps.ide.actions.PasteNode_Action$1" />
+      <unit id="5533671870987188872" at="41,0,164,0" name="jetbrains.mps.ide.actions.PasteNode_Action" />
+>>>>>>> upstream/2024.1_projectPane
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5535460359399556383">

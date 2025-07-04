@@ -8045,8 +8045,19 @@
             <node concept="3uibUv" id="2bvzdxLOgEL" role="1tU5fm">
               <ref role="3uigEE" node="6maaEP0G01l" resolve="DefaultTestExecutionListener" />
             </node>
+<<<<<<< HEAD
             <node concept="1rXfSq" id="1W7Tdy_U0sF" role="33vP2m">
               <ref role="37wK5l" node="1W7Tdy_U0sC" resolve="createTestExecutionListener" />
+=======
+            <node concept="2ShNRf" id="2bvzdxLOgEM" role="33vP2m">
+              <node concept="1pGfFk" id="2bvzdxLOgEN" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" node="6maaEP0G6k$" resolve="DefaultTestExecutionListener" />
+                <node concept="37vLTw" id="2bvzdxLOgEO" role="37wK5m">
+                  <ref role="3cqZAo" node="6WFPrF9Qc1B" resolve="myOutStream" />
+                </node>
+              </node>
+>>>>>>> upstream/2024.1_projectPane
             </node>
           </node>
         </node>
