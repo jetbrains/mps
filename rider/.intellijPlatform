@@ -1,0 +1,10 @@
+
+rider/.intellijPlatform
+rider/build
+rider/protocol/build
+rider/classes
+
+*generated*
+*Generated*
+
+NuGet.Config
