@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="android.jar (1)" type="JarApplication" singleton="false">
+    <option name="JAR_PATH" value="$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-36/android.jar!/" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2" />
+  </configuration>
+</component>
