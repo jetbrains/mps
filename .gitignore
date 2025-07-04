@@ -99,8 +99,12 @@ teamcity-info.xml
 /bin/linux
 /bin/mac
 /bin/win
-/build/resources/mps-aarch64
-/build/resources/mps-x64
+/build/resources/mps-mac-64
+/build/resources/mps-mac-aarch64
+/build/resources/mps-linux-64
+/build/resources/mps-linux-aarch64
+/build/resources/mps-win-64.exe
+/build/resources/mps-win-aarch64.exe
 
 
 # Path to log files which is overriden in run configuration to allow developers to see log output in run/debug console
