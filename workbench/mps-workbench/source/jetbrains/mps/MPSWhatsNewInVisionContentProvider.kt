@@ -13,7 +13,7 @@ class MPSWhatsNewInVisionContentProvider : WhatsNewInVisionContentProvider() {
         val resourceName = if(appInfo != null
             && appInfo.getShortCompanyName() == "JetBrains"
             && appInfo.getFullApplicationName() != null
-            && appInfo.getFullApplicationName().startsWith("JetBrains MPS ")) "jetbrains/mps/whatsNew/vision-in-product-pages.json" else ""
+            && appInfo.getFullApplicationName().startsWith("JetBrains MPS")) "jetbrains/mps/whatsNew/vision-in-product-pages-" + appInfo.shortVersion + ".json" else ""
         val resourceContentSource = ResourceContentSource(jetbrains.mps.MPSWhatsNewInVisionContentProvider::class.java.classLoader, resourceName)
         return resourceContentSource
     }

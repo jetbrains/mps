@@ -123,7 +123,6 @@
         <fileset file="${artifacts.mpsVcsPlatform}/lib/vcs-core.jar" />
         <fileset file="${artifacts.mpsVcsPlatform}/lib/vcs-platform.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />

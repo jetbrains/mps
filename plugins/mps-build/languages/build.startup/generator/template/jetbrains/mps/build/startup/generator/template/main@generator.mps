@@ -208,9 +208,13 @@
       </concept>
       <concept id="1167756080639" name="jetbrains.mps.lang.generator.structure.PropertyMacro_GetPropertyValue" flags="in" index="3zFVjK" />
       <concept id="1167756221419" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_templatePropertyValue" flags="nn" index="3zGtF$" />
+      <concept id="1167945743726" name="jetbrains.mps.lang.generator.structure.IfMacro_Condition" flags="in" index="3IZrLx" />
       <concept id="1167951910403" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery" flags="in" index="3JmXsc" />
       <concept id="1805153994415891174" name="jetbrains.mps.lang.generator.structure.TemplateParameterDeclaration" flags="ng" index="1N15co">
         <child id="1805153994415893199" name="type" index="1N15GL" />
+      </concept>
+      <concept id="1118773211870" name="jetbrains.mps.lang.generator.structure.IfMacro" flags="ln" index="1W57fq">
+        <child id="1167945861827" name="conditionFunction" index="3IZSJc" />
       </concept>
       <concept id="1118786554307" name="jetbrains.mps.lang.generator.structure.LoopMacro" flags="ln" index="1WS0z7">
         <child id="1167952069335" name="sourceNodesQuery" index="3Jn$fo" />
@@ -5835,8 +5839,92 @@
         <node concept="raruj" id="6GoDrz8MKbv" role="lGtFl" />
       </node>
       <node concept="2DRAP_" id="6GoDrz8MA1d" role="2DRAPQ">
-        <property role="2DPR8u" value="        &quot;-Djna.boot.library.path=$APP_PACKAGE/Contents/lib/jna&quot;," />
+        <property role="2DPR8u" value="        &quot;-Djna.boot.library.path=%s&quot;," />
         <node concept="raruj" id="6GoDrz8MKbw" role="lGtFl" />
+        <node concept="17Uvod" id="49uyDlGrfyU" role="lGtFl">
+          <property role="2qtEX9" value="text" />
+          <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
+          <node concept="3zFVjK" id="49uyDlGrfyV" role="3zH0cK">
+            <node concept="3clFbS" id="49uyDlGrfyW" role="2VODD2">
+              <node concept="3cpWs8" id="49uyDlGrfMZ" role="3cqZAp">
+                <node concept="3cpWsn" id="49uyDlGrfN0" role="3cpWs9">
+                  <property role="TrG5h" value="jnaPath" />
+                  <node concept="17QB3L" id="49uyDlGrfN1" role="1tU5fm" />
+                  <node concept="Xl_RD" id="49uyDlGrlEX" role="33vP2m">
+                    <property role="Xl_RC" value="lib/jna" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="49uyDlGrfN_" role="3cqZAp">
+                <node concept="37vLTI" id="49uyDlGrfNA" role="3clFbG">
+                  <node concept="37vLTw" id="49uyDlGrfNB" role="37vLTJ">
+                    <ref role="3cqZAo" node="49uyDlGrfN0" resolve="jnaPath" />
+                  </node>
+                  <node concept="3cpWs3" id="49uyDlGrfNC" role="37vLTx">
+                    <node concept="37vLTw" id="49uyDlGrfND" role="3uHU7w">
+                      <ref role="3cqZAo" node="49uyDlGrfN0" resolve="jnaPath" />
+                    </node>
+                    <node concept="1eOMI4" id="49uyDlGrfNE" role="3uHU7B">
+                      <node concept="3K4zz7" id="49uyDlGrfNF" role="1eOMHV">
+                        <node concept="Xl_RD" id="49uyDlGrfNG" role="3K4E3e">
+                          <property role="Xl_RC" value="$APP_PACKAGE/Contents/" />
+                        </node>
+                        <node concept="3K4zz7" id="49uyDlGrzZn" role="3K4GZi">
+                          <node concept="2OqwBi" id="49uyDlGr$v$" role="3K4Cdx">
+                            <node concept="Xl_RD" id="49uyDlGr$v_" role="2Oq$k0">
+                              <property role="Xl_RC" value="Windows" />
+                            </node>
+                            <node concept="liA8E" id="49uyDlGr$vA" role="2OqNvi">
+                              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                              <node concept="v3LJS" id="49uyDlGr$vB" role="37wK5m">
+                                <ref role="v3LJV" node="6GoDrz8Lya0" resolve="os" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="Xl_RD" id="49uyDlGr_7C" role="3K4GZi">
+                            <property role="Xl_RC" value="$IDE_HOME/" />
+                          </node>
+                          <node concept="Xl_RD" id="49uyDlGr_B2" role="3K4E3e">
+                            <property role="Xl_RC" value="%IDE_HOME%/" />
+                          </node>
+                        </node>
+                        <node concept="2OqwBi" id="49uyDlGrfNI" role="3K4Cdx">
+                          <node concept="Xl_RD" id="49uyDlGrfNJ" role="2Oq$k0">
+                            <property role="Xl_RC" value="macOS" />
+                          </node>
+                          <node concept="liA8E" id="49uyDlGrfNK" role="2OqNvi">
+                            <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                            <node concept="v3LJS" id="49uyDlGrfNL" role="37wK5m">
+                              <ref role="v3LJV" node="6GoDrz8Lya0" resolve="os" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="49uyDlGrfO2" role="3cqZAp">
+                <node concept="2YIFZM" id="49uyDlGrfO3" role="3clFbG">
+                  <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                  <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                  <node concept="3zGtF$" id="49uyDlGrfO4" role="37wK5m" />
+                  <node concept="37vLTw" id="49uyDlGrfO5" role="37wK5m">
+                    <ref role="3cqZAo" node="49uyDlGrfN0" resolve="jnaPath" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2DRAP_" id="49uyDlGrFeo" role="2DRAPQ">
+        <property role="2DPR8u" value="        &quot;-Djna.nosys=true&quot;," />
+        <node concept="raruj" id="49uyDlGrJcF" role="lGtFl" />
+      </node>
+      <node concept="2DRAP_" id="49uyDlGrHcb" role="2DRAPQ">
+        <property role="2DPR8u" value="        &quot;-Djna.noclasspath=true&quot;," />
+        <node concept="raruj" id="49uyDlGrMdY" role="lGtFl" />
       </node>
       <node concept="2DRAP_" id="6GoDrz8MA1e" role="2DRAPQ">
         <property role="2DPR8u" value="        &quot;-Djava.system.class.loader=com.intellij.util.lang.PathClassLoader&quot;," />
@@ -5853,10 +5941,105 @@
       <node concept="2DRAP_" id="6GoDrz8MA1h" role="2DRAPQ">
         <property role="2DPR8u" value="        &quot;-Didea.home.path=$APP_PACKAGE/Contents&quot;," />
         <node concept="raruj" id="6GoDrz8MKb$" role="lGtFl" />
+        <node concept="1W57fq" id="49uyDlGrwvD" role="lGtFl">
+          <node concept="3IZrLx" id="49uyDlGrwvE" role="3IZSJc">
+            <node concept="3clFbS" id="49uyDlGrwvF" role="2VODD2">
+              <node concept="3clFbF" id="49uyDlGrwFh" role="3cqZAp">
+                <node concept="2OqwBi" id="49uyDlGrwFj" role="3clFbG">
+                  <node concept="Xl_RD" id="49uyDlGrwFk" role="2Oq$k0">
+                    <property role="Xl_RC" value="macOS" />
+                  </node>
+                  <node concept="liA8E" id="49uyDlGrwFl" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                    <node concept="v3LJS" id="49uyDlGrwFm" role="37wK5m">
+                      <ref role="v3LJV" node="6GoDrz8Lya0" resolve="os" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="2DRAP_" id="6GoDrz8MA1i" role="2DRAPQ">
-        <property role="2DPR8u" value="        &quot;-Dpty4j.preferred.native.folder=$APP_PACKAGE/Contents/lib/pty4j&quot;," />
+        <property role="2DPR8u" value="        &quot;-Dpty4j.preferred.native.folder=%s&quot;," />
         <node concept="raruj" id="6GoDrz8MKb_" role="lGtFl" />
+        <node concept="17Uvod" id="49uyDlGrsVv" role="lGtFl">
+          <property role="2qtEX9" value="text" />
+          <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
+          <node concept="3zFVjK" id="49uyDlGrsVw" role="3zH0cK">
+            <node concept="3clFbS" id="49uyDlGrsVx" role="2VODD2">
+              <node concept="3cpWs8" id="49uyDlGrt2Q" role="3cqZAp">
+                <node concept="3cpWsn" id="49uyDlGrt2R" role="3cpWs9">
+                  <property role="TrG5h" value="pty4jFolder" />
+                  <node concept="17QB3L" id="49uyDlGrt2S" role="1tU5fm" />
+                  <node concept="Xl_RD" id="49uyDlGrt2T" role="33vP2m">
+                    <property role="Xl_RC" value="lib/pty4j" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="49uyDlGrt2U" role="3cqZAp">
+                <node concept="37vLTI" id="49uyDlGrt2V" role="3clFbG">
+                  <node concept="37vLTw" id="49uyDlGrt2W" role="37vLTJ">
+                    <ref role="3cqZAo" node="49uyDlGrt2R" resolve="pty4jFolder" />
+                  </node>
+                  <node concept="3cpWs3" id="49uyDlGrt2X" role="37vLTx">
+                    <node concept="37vLTw" id="49uyDlGrt2Y" role="3uHU7w">
+                      <ref role="3cqZAo" node="49uyDlGrt2R" resolve="pty4jFolder" />
+                    </node>
+                    <node concept="1eOMI4" id="49uyDlGrt2Z" role="3uHU7B">
+                      <node concept="3K4zz7" id="49uyDlGrBTT" role="1eOMHV">
+                        <node concept="Xl_RD" id="49uyDlGrBTU" role="3K4E3e">
+                          <property role="Xl_RC" value="$APP_PACKAGE/Contents/" />
+                        </node>
+                        <node concept="3K4zz7" id="49uyDlGrBTV" role="3K4GZi">
+                          <node concept="2OqwBi" id="49uyDlGrBTW" role="3K4Cdx">
+                            <node concept="Xl_RD" id="49uyDlGrBTX" role="2Oq$k0">
+                              <property role="Xl_RC" value="Windows" />
+                            </node>
+                            <node concept="liA8E" id="49uyDlGrBTY" role="2OqNvi">
+                              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                              <node concept="v3LJS" id="49uyDlGrBTZ" role="37wK5m">
+                                <ref role="v3LJV" node="6GoDrz8Lya0" resolve="os" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="Xl_RD" id="49uyDlGrBU0" role="3K4GZi">
+                            <property role="Xl_RC" value="$IDE_HOME/" />
+                          </node>
+                          <node concept="Xl_RD" id="49uyDlGrBU1" role="3K4E3e">
+                            <property role="Xl_RC" value="%IDE_HOME%/" />
+                          </node>
+                        </node>
+                        <node concept="2OqwBi" id="49uyDlGrBU2" role="3K4Cdx">
+                          <node concept="Xl_RD" id="49uyDlGrBU3" role="2Oq$k0">
+                            <property role="Xl_RC" value="macOS" />
+                          </node>
+                          <node concept="liA8E" id="49uyDlGrBU4" role="2OqNvi">
+                            <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                            <node concept="v3LJS" id="49uyDlGrBU5" role="37wK5m">
+                              <ref role="v3LJV" node="6GoDrz8Lya0" resolve="os" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="49uyDlGrt37" role="3cqZAp">
+                <node concept="2YIFZM" id="49uyDlGrt38" role="3clFbG">
+                  <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                  <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                  <node concept="3zGtF$" id="49uyDlGrt39" role="37wK5m" />
+                  <node concept="37vLTw" id="49uyDlGrt3a" role="37wK5m">
+                    <ref role="3cqZAo" node="49uyDlGrt2R" resolve="pty4jFolder" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="2DRAP_" id="6GoDrz8MA1j" role="2DRAPQ">
         <property role="2DPR8u" value="        &quot;-DjbScreenMenuBar.enabled=true&quot;," />
@@ -5869,6 +6052,25 @@
       <node concept="2DRAP_" id="6GoDrz8MA1l" role="2DRAPQ">
         <property role="2DPR8u" value="        &quot;-Dide.home.macro.test=$APP_PACKAGE/Contents&quot;," />
         <node concept="raruj" id="6GoDrz8MKbC" role="lGtFl" />
+        <node concept="1W57fq" id="49uyDlGrwVr" role="lGtFl">
+          <node concept="3IZrLx" id="49uyDlGrwVs" role="3IZSJc">
+            <node concept="3clFbS" id="49uyDlGrwVt" role="2VODD2">
+              <node concept="3clFbF" id="49uyDlGrx1n" role="3cqZAp">
+                <node concept="2OqwBi" id="49uyDlGrx1p" role="3clFbG">
+                  <node concept="Xl_RD" id="49uyDlGrx1q" role="2Oq$k0">
+                    <property role="Xl_RC" value="macOS" />
+                  </node>
+                  <node concept="liA8E" id="49uyDlGrx1r" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                    <node concept="v3LJS" id="49uyDlGrx1s" role="37wK5m">
+                      <ref role="v3LJV" node="6GoDrz8Lya0" resolve="os" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="2DRAP_" id="6GoDrz8MA1m" role="2DRAPQ">
         <property role="2DPR8u" value="        &quot;-Dcache.dir.macro.test=$IDE_CACHE_DIR&quot;," />

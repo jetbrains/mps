@@ -742,6 +742,9 @@
       <node concept="nCB5N" id="4Wqyp$2_Whg" role="nCB5Z">
         <ref role="nCB5Y" node="47JXWa7IVSW" resolve="pattern-runtime" />
       </node>
+      <node concept="2sjeV3" id="iB$ruPalbi" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
+      </node>
     </node>
     <node concept="398b33" id="4_qKb05xiaz" role="3989C9">
       <property role="TrG5h" value="findUsages-runtime" />
@@ -1732,6 +1735,9 @@
       <node concept="nCB5N" id="1_LVjuzluyf" role="nCB5Z">
         <ref role="nCB5Y" node="4Iq3ixqvAFF" resolve="vfs-tracking" />
       </node>
+      <node concept="2sjeV3" id="6nzCdCVmoOX" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
+      </node>
     </node>
     <node concept="398b33" id="uKctmfwPD8" role="3989C9">
       <property role="TrG5h" value="refactoring" />
@@ -1886,6 +1892,9 @@
       </node>
       <node concept="nCB5N" id="4_qKb05Oowt" role="nCB5Z">
         <ref role="nCB5Y" node="4_qKb05xiaz" resolve="findUsages-runtime" />
+      </node>
+      <node concept="2sjeV3" id="4CqXq2YEfKz" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
       </node>
     </node>
     <node concept="398b33" id="5_uX04TlQXW" role="3989C9">
@@ -2051,6 +2060,9 @@
       <node concept="nCB5N" id="4lexA4iV4JS" role="nCB5Z">
         <ref role="nCB5Y" node="6UWbfHq6Ys7" resolve="mps-project-check" />
       </node>
+      <node concept="2sjeV3" id="uP1LNScpn7" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
+      </node>
     </node>
     <node concept="398b33" id="1tWbYFNh9Av" role="3989C9">
       <property role="TrG5h" value="mps-test" />
@@ -2088,6 +2100,9 @@
       </node>
       <node concept="2sjeV3" id="1K1$g4lQbGZ" role="nCB5Z">
         <ref role="2sjeV2" node="16Vg0jOconl" resolve="junit-4.12" />
+      </node>
+      <node concept="2sjeV3" id="uP1LNSktzC" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
       </node>
       <node concept="398b2D" id="EYvN5kMYcZ" role="398b2p">
         <node concept="nFU4i" id="1tWbYFNh9AC" role="nFU4p">
@@ -25502,6 +25517,9 @@
       </node>
       <node concept="nCB5N" id="3oXfwtWDHTf" role="nCB5Z">
         <ref role="nCB5Y" node="3dkXFAFkSFA" resolve="mps-persistence" />
+      </node>
+      <node concept="2sjeV3" id="6nzCdCVuokT" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
       </node>
     </node>
     <node concept="398b33" id="5xa9wY2vqaP" role="3989C9">
@@ -55252,11 +55270,9 @@
         <ref role="nCB5Y" node="5Lo0z0qFWkX" resolve="mps-openapi" />
       </node>
       <node concept="nCB5N" id="3vjn6$4rsZg" role="nCB5Z">
-        <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="1s0vtrwURQP" resolve="mps-annotations" />
       </node>
       <node concept="2sjeV3" id="4YmhUESdXIh" role="nCB5Z">
-        <property role="2a2d0E" value="true" />
         <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
       </node>
       <node concept="398b2D" id="3vjn6$4rsZi" role="398b2p">
@@ -55273,9 +55289,6 @@
           <property role="nFU4j" value="source" />
           <property role="3LZaj6" value="4zlO3QTanjS/source" />
         </node>
-      </node>
-      <node concept="2sjeV3" id="5EtRBM7RPm8" role="nCB5Z">
-        <ref role="2sjeV2" node="5EtRBM7ROPA" resolve="idea-runtime" />
       </node>
     </node>
     <node concept="398b33" id="7FonrDkmRHZ" role="3989C9">
@@ -55315,8 +55328,8 @@
       <node concept="nCB5N" id="3vjn6$4v68Q" role="nCB5Z">
         <ref role="nCB5Y" node="3vjn6$4rsZc" resolve="util-core" />
       </node>
-      <node concept="2sjeV3" id="29qIO8plFxO" role="nCB5Z">
-        <ref role="2sjeV2" node="4YmhUESdVsA" resolve="com.intellij.openapi" />
+      <node concept="2sjeV3" id="5IKlymFfMSU" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
       </node>
     </node>
     <node concept="398b33" id="42Iv58Wf3Ei" role="3989C9">
@@ -55337,6 +55350,9 @@
       <node concept="nCB5N" id="3vjn6$4z3_x" role="nCB5Z">
         <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="3vjn6$4rsZc" resolve="util-core" />
+      </node>
+      <node concept="2sjeV3" id="1yuhnUO2DPm" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
       </node>
       <node concept="398b2D" id="42Iv58WeTIy" role="398b2p">
         <node concept="398BVA" id="42Iv58WeV$i" role="398b2C">
@@ -55855,6 +55871,12 @@
       </node>
       <node concept="2sjeV3" id="2wylC1jULKa" role="nCB5Z">
         <ref role="2sjeV2" node="2wylC1jULgB" resolve="kotlinx-metadata" />
+      </node>
+      <node concept="2sjeV3" id="5z6WqA77ku3" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbeQd3" resolve="gnu.trove" />
+      </node>
+      <node concept="2sjeV3" id="5z6WqA77ku6" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbePt8" resolve="org.jdom" />
       </node>
     </node>
     <node concept="398b33" id="4Iy92RV1r6j" role="3989C9">

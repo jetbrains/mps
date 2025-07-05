@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,7 @@ public interface MultiStreamDataSource extends DataSource {
    * each stream we identify uniquely by {@link StreamDataSource#getStreamName()}
    */
   @NotNull Stream<StreamDataSource> getSubStreams();
+  // XXX how come this MultiStreamDataSource is limited to StreamDataSource only? Why can't I have nested MultiStreamDataSource?!
 
   @Nullable
   default StreamDataSource getStreamByName(@NotNull String name) {
@@ -69,18 +70,10 @@ public interface MultiStreamDataSource extends DataSource {
 
   /**
    * counterpart for {@link #getStreamByNameOrFail(String)}, which allows to add new streams
-   * btw it'd be great if {@link StreamDataSource#delete} invoked on substreams
-   * make them disappear from the return value of this method.
+   * btw it'd be great if {@code DisposableDataSource#delete} invoked on a sub-stream
+   * make it disappear from the return value of this method.
    * currently this is so
    */
   @NotNull
   StreamDataSource getStreamByNameOrCreate(@NotNull String name);
-
-  /**
-   * deletes all the containing stream ds and maybe something else
-   */
-  default boolean delete() {
-    return getSubStreams().map(StreamDataSource::delete)
-                          .reduce(true, (a, b) -> a && b);
-  }
 }
