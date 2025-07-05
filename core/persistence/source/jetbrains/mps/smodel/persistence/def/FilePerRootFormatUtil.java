@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.persistence.def;
 
+import jetbrains.mps.extapi.persistence.DisposableDataSource;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
@@ -32,10 +33,9 @@ import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import org.jdom.Document;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
- import org.jetbrains.mps.openapi.persistence.StreamDataSource;
+import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.xml.sax.InputSource;
 
 import java.io.IOException;
@@ -173,22 +173,12 @@ public class FilePerRootFormatUtil {
     // write to storage
     Set<StreamDataSource> toRemove = new HashSet<>();
     source.getSubStreams().filter(s -> !result.containsKey(s.getStreamName())).forEach(toRemove::add);
-    for (Entry<String, Document> entry : result.entrySet()) {
-      //if we have a file having a name, which differs in case only, we want to remove this file before writing to the new one
-      //to sync cases in root- and filenames
-      String fnameLower = entry.getKey().toLowerCase();
-      Set<StreamDataSource> removed = new HashSet<>();
-      for (StreamDataSource s : toRemove) {
-        if (fnameLower.equals(s.getStreamName())){
-          source.delete();
-          removed.add(s);
-        }
-      }
-      toRemove.removeAll(removed);
 
+    toRemove.stream().filter(DisposableDataSource.class::isInstance).map(DisposableDataSource.class::cast).forEach(DisposableDataSource::delete);
+
+    for (Entry<String, Document> entry : result.entrySet()) {
       JDOMUtil.writeDocument(entry.getValue(), source, entry.getKey());
     }
-    toRemove.forEach(StreamDataSource::delete);
 
     if (oldVersion != persistenceVersion) {
       Logger.getLogger(FilePerRootFormatUtil.class).info("persistence upgraded: " + oldVersion + "->" + persistenceVersion + " " + modelData.getReference());

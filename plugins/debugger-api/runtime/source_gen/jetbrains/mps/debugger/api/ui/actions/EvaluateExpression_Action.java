@@ -11,11 +11,13 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.debug.api.evaluation.IEvaluationProvider;
 import jetbrains.mps.debugger.api.ui.DebugActionsUtil;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.project.ProjectHelper;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
+import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -43,7 +45,7 @@ public class EvaluateExpression_Action extends BaseAction {
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     IEvaluationProvider evaluationProvider = DebugActionsUtil.getEvaluationProvider(event);
-    event.getPresentation().setEnabled(evaluationProvider != null && evaluationProvider.canEvaluate());
+    event.getPresentation().setEnabled(evaluationProvider != null && evaluationProvider.canEvaluate() && ProjectHelper.fromIdeaProject(((Project) MapSequence.fromMap(_params).get("project"))) != null);
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -51,8 +53,8 @@ public class EvaluateExpression_Action extends BaseAction {
       return false;
     }
     {
-      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("mpsProject", p);
+      Project p = event.getData(CommonDataKeys.PROJECT);
+      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
@@ -68,16 +70,19 @@ public class EvaluateExpression_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
+    MPSProject mpsProject = ProjectHelper.fromIdeaProject(((Project) MapSequence.fromMap(_params).get("project")));
+    // Tested in update()
+    assert mpsProject != null;
     IEvaluationProvider evaluationProvider = DebugActionsUtil.getEvaluationProvider(event);
     if (evaluationProvider != null) {
       final List<SNodeReference> nodePointers = ListSequence.fromList(new ArrayList<SNodeReference>());
       if (((EditorComponent) MapSequence.fromMap(_params).get("component")) != null) {
         final Selection selection = ((EditorComponent) MapSequence.fromMap(_params).get("component")).getSelectionManager().getSelection();
         if ((selection instanceof EditorCellLabelSelection && ((EditorCellLabelSelection) selection).hasNonTrivialSelection()) || (selection instanceof EditorCellSelection && !(selection instanceof EditorCellLabelSelection)) || (selection instanceof MultipleSelection)) {
-          ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(() -> ListSequence.fromList(nodePointers).addSequence(Sequence.fromIterable(Sequence.fromClosure(() -> selection.getSelectedNodes())).select((it) -> new SNodePointer(it))));
+          mpsProject.getModelAccess().runReadAction(() -> ListSequence.fromList(nodePointers).addSequence(Sequence.fromIterable(Sequence.fromClosure(() -> selection.getSelectedNodes())).select((it) -> new SNodePointer(it))));
         }
       }
-      evaluationProvider.showEvaluationDialog(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), nodePointers);
+      evaluationProvider.showEvaluationDialog(mpsProject, nodePointers);
     }
   }
 }

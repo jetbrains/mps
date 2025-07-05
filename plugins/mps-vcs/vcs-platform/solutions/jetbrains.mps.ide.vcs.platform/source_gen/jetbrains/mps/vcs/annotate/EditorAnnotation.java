@@ -19,6 +19,8 @@ import java.util.concurrent.atomic.AtomicReference;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import jetbrains.mps.vcs.history.CommitsGraphNode;
 import org.jetbrains.annotations.Nullable;
+import java.awt.Color;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -39,7 +41,6 @@ import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
-import java.awt.Color;
 import java.util.Iterator;
 import jetbrains.mps.vcs.diff.ui.common.EditorCellMessageUtil;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -47,7 +48,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import git4idea.GitVcs;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.vcs.actions.AnnotationsSettings;
 import java.util.Arrays;
@@ -91,6 +91,9 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   private CommitsGraphNode myCommitUnderMouse;
   @Nullable
   private final VcsFileRevision myRevision;
+  private List<Color> currentPalette = null;
+  private EditorColorsScheme currentColorsScheme;
+
 
 
   /*package*/ EditorAnnotation(EditorComponent editorComponent, VirtualFile file, AbstractVcs vcs, MPSProject mpsProject, RootAnnotation rootAnnotation, List<VcsFileRevision> revisions, @Nullable VcsFileRevision revision) {
@@ -388,7 +391,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       ListSequence.fromList(lineAnnotations).addElement(la);
     });
     myLineAnnotationsRef.set(lineAnnotations);
-    check_coav66_a3a27(myLineAnnotationsUpdateListener);
+    check_coav66_a3a57(myLineAnnotationsUpdateListener);
   }
 
   @NotNull
@@ -453,8 +456,8 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     if (revisionOrderNumber < 0) {
       return null;
     }
-    List<Color> colorPalette = getOrderedColorPalette();
-    return ListSequence.fromList(colorPalette).getElement(revisionOrderNumber % ListSequence.fromList(colorPalette).count());
+    updateCurrentPaletteIfNeeded();
+    return ListSequence.fromList(currentPalette).getElement(revisionOrderNumber % ListSequence.fromList(currentPalette).count());
   }
 
   private Color getColorByRevisionAuthor(CommitsGraphNode graphNode) {
@@ -463,8 +466,16 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     if (authorNumber < 0) {
       return null;
     }
-    List<Color> colorPalette = getOrderedColorPalette();
-    return ListSequence.fromList(colorPalette).getElement(authorNumber % ListSequence.fromList(colorPalette).count());
+    updateCurrentPaletteIfNeeded();
+    return ListSequence.fromList(currentPalette).getElement(authorNumber % ListSequence.fromList(currentPalette).count());
+  }
+
+  private void updateCurrentPaletteIfNeeded() {
+    if (currentPalette == null || currentColorsScheme != EditorColorsManager.getInstance().getGlobalScheme()) {
+      List<Color> colorPalette = getOrderedColorPalette();
+      currentPalette = colorPalette;
+      currentColorsScheme = EditorColorsManager.getInstance().getGlobalScheme();
+    }
   }
 
   private static List<Color> getOrderedColorPalette() {
@@ -474,13 +485,6 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     */
 
     EditorColorsScheme colorsScheme = EditorColorsManager.getInstance().getGlobalScheme();
-    // The VCS_ANNOTATIONS_COLOR_1-5 colors in the Light scheme are way too close to each other, revert to the IntelliJ Light colors, if available
-    if (colorsScheme.getName().contains("Light")) {
-      EditorColorsScheme intellijScheme = EditorColorsManager.getInstance().getScheme("Default");
-      if (intellijScheme != null) {
-        colorsScheme = intellijScheme;
-      }
-    }
     AnnotationsSettings settings = AnnotationsSettings.getInstance();
     List<Color> initialPalette = settings.getOrderedColors(colorsScheme);
     /*
@@ -660,7 +664,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       return null;
     }
   }
-  private static void check_coav66_a3a27(LineAnnotationsUpdateListener checkedDotOperand) {
+  private static void check_coav66_a3a57(LineAnnotationsUpdateListener checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.lineAnnotationsUpdated();
     }

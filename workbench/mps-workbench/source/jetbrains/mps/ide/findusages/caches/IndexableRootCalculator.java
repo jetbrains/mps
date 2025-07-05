@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,11 +18,13 @@ package jetbrains.mps.ide.findusages.caches;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.application.ReadAction;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.roots.ex.ProjectRootManagerEx;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.util.concurrency.AppExecutorUtil;
 import com.intellij.util.indexing.IndexableSetContributorModificationTracker;
 import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
@@ -33,9 +35,9 @@ import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.CancellableReadAction;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.smodel.tempmodel.TempModule2;
-import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
@@ -66,7 +68,7 @@ final class IndexableRootCalculator implements Disposable {
   private final MPSProject myProject;
 
   private final ChangeListener myModuleChangesListener = new ChangeListener(this::invalidateCache);
-  private final AtomicReference<Set<VirtualFile>> myRootsCache = new AtomicReference<>();
+  private final AtomicReference<Set<VirtualFile>> myRootsCache = new AtomicReference<>(Collections.emptySet());
   private final ProjectManagerListener myProjectListener = new ProjectManagerListener() {
     @Override
     public void projectClosing(@NotNull Project project) {
@@ -88,6 +90,7 @@ final class IndexableRootCalculator implements Disposable {
   /*package*/ void register() {
     SRepository repository = myProject.getRepository();
     repository.addRepositoryListener(myModuleChangesListener);
+    invalidateCache();
   }
 
   /*package*/ void unregister() {
@@ -101,48 +104,45 @@ final class IndexableRootCalculator implements Disposable {
     unregister();
   }
 
-  /**
-   * We are iterating over all modules, visible inside this project including libraries & core modules.
-   * Thus we provide indices for libs.
-   * Must be gone when some kind of BootRepository is introduced
-   *
-   * Internal: Recalculate cached collection of IndexableRoots if there is any invalid file it
-   * This allows to maintain contract of {@link com.intellij.util.indexing.IndexableSetContributor#getAdditionalProjectRootsToIndex(com.intellij.openapi.project.Project)}
-   * in our implementation {@link MPSIndexableSetContributor#getAdditionalProjectRootsToIndex(com.intellij.openapi.project.Project)}
-   *
-   */
-  @Hack
   @NotNull
   public Set<VirtualFile> getIndexableRoots() {
-    // XXX is there true need to cache roots? Guess, IDEA caches them, we shall not bother
-    Set<VirtualFile> indexableRoots = myRootsCache.get();
-    if (indexableRoots == null || indexableRoots.stream().anyMatch(file -> !file.isValid())) {
-      indexableRoots = calcRoots();
-      myRootsCache.compareAndSet(null, indexableRoots);
-    }
-    return indexableRoots;
+    // XXX there is no need to cache roots, likely, IDEA caches them, but we can't calculate them here
+    //     as this may lead to a deadlock, therefore we calculate them in background and access cached value here.
+    return myRootsCache.get();
   }
 
+  /**
+   * We iterate over all modules, visible inside this project including libraries & core modules.
+   * Thus we provide indices for libs.
+   * Must be gone when some kind of BootRepository is introduced
+   */
   @NotNull
   private Set<VirtualFile> calcRoots() {
     final Set<VirtualFile> files = new HashSet<>();
 
-    myProject.getModelAccess().runReadAction(() -> {
-      final IdeaFileSystem fs = myProject.getFileSystem();
-      for (final SModule m : myProject.getRepository().getModules()) {
-        for (IFile f : getIndexablePaths(m)) {
-          // XXX can't just use VirtualFileUtils.getVirtualFile(f) as for packaged modules
-          //     IFile coming won't be IdeaFile, and getVF() would give null, effectively excluding
-          //     module location from indexing. In fact, it might be the right way to go, as it's not
-          //     clear whether we have to index models from within distributed modules (or whether we
-          //     have to use IDEA's index mechanism for the task). However, as of this writing,
-          //     MPSModelsFastFindSupport assumes any model available through ProjectRepository is indexed
-          //     and without this code it may yield wrong results (i.e. consume a model that has not been
-          //     indexed, omitting some instances)
-          final IdeaFile ideaFile = fs.getFile(f.getPath());
-          VirtualFile vf = ideaFile == null ? null : ideaFile.getVirtualFile();
-          if (vf != null) {
-            files.add(vf);
+    myProject.getModelAccess().runReadAction(new CancellableReadAction() {
+      @Override
+      protected void execute() {
+        final IdeaFileSystem fs = myProject.getFileSystem();
+        for (final SModule m : myProject.getRepository().getModules()) {
+          if (isCancelRequested()) {
+            files.clear();
+            break;
+          }
+          for (IFile f : getIndexablePaths(m)) {
+            // XXX can't just use VirtualFileUtils.getVirtualFile(f) as for packaged modules
+            //     IFile coming won't be IdeaFile, and getVF() would give null, effectively excluding
+            //     module location from indexing. In fact, it might be the right way to go, as it's not
+            //     clear whether we have to index models from within distributed modules (or whether we
+            //     have to use IDEA's index mechanism for the task). However, as of this writing,
+            //     MPSModelsFastFindSupport assumes any model available through ProjectRepository is indexed
+            //     and without this code it may yield wrong results (i.e. consume a model that has not been
+            //     indexed, omitting some instances)
+            final IdeaFile ideaFile = fs.getFile(f.getPath());
+            VirtualFile vf = ideaFile == null ? null : ideaFile.getVirtualFile();
+            if (vf != null) {
+              files.add(vf);
+            }
           }
         }
       }
@@ -163,7 +163,6 @@ final class IndexableRootCalculator implements Disposable {
             result.add(expanded);
           } catch (IOException e) {
             String message = String.format("received io error when expanding archive; contentRoot=%s", contentRoot);
-            //noinspection UnstableApiUsage
             Logger.getLogger(IndexableRootCalculator.class).error(message, e);
           }
         }
@@ -188,23 +187,32 @@ final class IndexableRootCalculator implements Disposable {
   }
 
   /*package*/ void invalidateCache() {
-    final Set<VirtualFile> oldValue = myRootsCache.getAndSet(null);
-    if (oldValue != null) {
+    // here we hold model write, schedule async root re-calculation and then notify IDEA about the change
+    var pp = ReadAction.nonBlocking(this::calcRoots).coalesceBy(myModuleChangesListener).expireWith(this).submit(AppExecutorUtil.getAppExecutorService());
+    pp.onSuccess(myRootsCache::set).then(ff -> {
+      if (ff.isEmpty()) {
+        // likely, didn't succeed to complete cancellable read and have to run again
+        invalidateCache();
+        return null;
+      }
       // notify once per change, no need to incModificationCount for each module come and go
       //noinspection UnstableApiUsage
       IndexableSetContributorModificationTracker.getInstance().incModificationCount();
       // According to Dmitrii Batkovich, counter should suffice, but doesn't hurt to
       // notify through ProjectRootManagerEx.
-      //noinspection UnstableApiUsage
       ApplicationManager.getApplication().invokeLaterOnWriteThread(() -> {
         ApplicationManager.getApplication().runWriteAction(() -> {
           // makeRootsChange event dispatch requires write lock
+          //
+          // XXX as long as we use value from IndexableSetContributor.getAdditionalProjectRootsToIndex, seems that
+          //     we can replace deprecated method with RootsChangeRescanningInfo.RESCAN_DEPENDENCIES_IF_NEEDED
           ProjectRootManagerEx.getInstanceEx(myProject.getProject()).makeRootsChange(()->{}, false, true);
           // FTR, there's DirectoryIndexExcludeUpdater sending similar notifications. Perhaps, we can unify approach
           // to keep index up to date.
         });
       }, ModalityState.defaultModalityState(), myProject.getProject().getDisposed());
-    }
+      return null;
+    });
   }
 
   private static class ChangeListener implements SRepositoryListener, SModuleListener {

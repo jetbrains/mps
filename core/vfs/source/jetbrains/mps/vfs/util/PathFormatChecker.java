@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import jetbrains.mps.vfs.IFileSystem;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.util.Locale;
 
 //this is an internal class with assertions usable for checking formats of file paths in File/Jar/Jrt FSes
 public final class PathFormatChecker {
@@ -52,13 +53,50 @@ public final class PathFormatChecker {
   }
 
   public PathFormatChecker absolute() {
-    if (!com.intellij.openapi.util.io.OSAgnosticPathUtil.isAbsolute(myPath)) {
+    if (!isAbsolute(myPath)) {
       throw new PathFormatException(String.format("Path should be absolute: %s, os %s",
                                                   myPath,
                                                   System.getProperty("os.name")), myPath);
     }
     return this;
   }
+
+  // com.intellij.openapi.util.io.OSAgnosticPathUtil.isAbsolute
+  private static boolean isAbsolute(@NotNull String path) {
+    return path.startsWith("/") || isAbsoluteDosPath(path) || isUncRootPath(path);
+  }
+
+  private static boolean isAbsoluteDosPath(@NotNull String path) {
+    if (path.length() > 2 && path.charAt(1) == ':' && isSeparator(path.charAt(2))) {
+      char ch = path.charAt(0);
+      return 'A' <= ch && ch <= 'Z' || 'a' <= ch && ch <= 'z';
+    }
+    return false;
+  }
+
+  private static boolean isUncRootPath(@NotNull String path) {
+    if (path.length() > 1 && isSeparator(path.charAt(0)) && path.charAt(1) == path.charAt(0)) {
+      final boolean isWindows = System.getProperty("os.name").toLowerCase(Locale.ENGLISH).startsWith("windows");
+      // PathUtilRt.isWindowsUNCRoot
+      if (!isWindows) {
+        return false;
+      }
+      // !PathUtilRt.hasFileSeparatorsOrNavigatableDots
+      if (path.length() > 2 && path.charAt(2) == '.') {
+        // "//.", "//./", "//.." or "//../"
+        return path.length() == 3 || isSeparator(path.charAt(3)) || (path.charAt(3) == '.' && (path.length() == 4 || isSeparator(path.charAt(4))));
+      }
+      return true;
+    }
+    return false;
+  }
+
+  private static boolean isSeparator(char c) {
+    return c == '/' || c == '\\';
+  }
+
+
+
 
   public PathFormatChecker noDots() {
     for (String part : myPath.split(IFileSystem.SEPARATOR)) {
