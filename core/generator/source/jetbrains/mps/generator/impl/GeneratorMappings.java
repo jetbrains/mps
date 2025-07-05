@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,54 +21,58 @@ import jetbrains.mps.generator.impl.cache.BrokenCacheException;
 import jetbrains.mps.generator.impl.cache.MappingsMemento;
 import jetbrains.mps.generator.impl.cache.TransientModelWithMetainfo;
 import jetbrains.mps.generator.impl.dependencies.DependenciesBuilder;
+import jetbrains.mps.generator.runtime.TemplateContext;
+import jetbrains.mps.util.Pair;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.util.Pair;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeId;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 
 /**
+ * Runtime state of mapping labels at some transformation step.
+ * {@link MappingsMemento} is persistence-friendly companion.
+ *
  * Evgeny Gryaznov, Feb 16, 2010
  */
-public class GeneratorMappings {
+public final class GeneratorMappings {
+  private final IGeneratorLogger myLog;
 
   /* mapping,input -> output */
   private final ConcurrentMap<String, Map<SNode, Object>> myMappingNameAndInputNodeToOutputNodeMap = new ConcurrentHashMap<String, Map<SNode, Object>>();
 
   /* input -> output */
-  private final ConcurrentMap<SNode, Object> myCopiedOutputNodeForInputNode;
-
-  /* Object means multiple nodes for the template */
-  private final ConcurrentMap<SNode, Object> myTemplateNodeToOutputNodeMap = new ConcurrentHashMap<SNode, Object>();
+  private final ConcurrentMap<SNode, Object> myCopiedOutputNodeForInputNode = new ConcurrentHashMap<SNode, Object>();
 
   /* new style map: Object means multiple nodes for the template */
   private final ConcurrentMap<String, Object> myTemplateNodeIdToOutputNodeMap = new ConcurrentHashMap<String, Object>();
 
-  /* template,input -> output */
-  private final ConcurrentMap<Pair<SNode, SNode>, SNode> myTemplateNodeAndInputNodeToOutputNodeMap = new ConcurrentHashMap<Pair<SNode, SNode>, SNode>();
-
   /* new style map: template,input -> output */
   private final ConcurrentMap<Pair<String, SNode>, SNode> myTemplateNodeIdAndInputNodeToOutputNodeMap = new ConcurrentHashMap<Pair<String, SNode>, SNode>();
 
-  public GeneratorMappings(int numberOfNodesInModel) {
-    myCopiedOutputNodeForInputNode = new ConcurrentHashMap<SNode, Object>(numberOfNodesInModel / 4);
+  /*
+   * there might be few conditional roots, and we can't prevent them from using same ML (not too much sense, however)
+   */
+  private final CopyOnWriteArrayList<Pair<String, SNode>> myConditionalRoots = new CopyOnWriteArrayList<>();
+
+  public GeneratorMappings(IGeneratorLogger log) {
+    myLog = log;
   }
 
   // add methods
-
-  void addOutputNodeByTemplateNode(SNode templateNode, @NotNull SNode outputNode) {
-    if (myTemplateNodeToOutputNodeMap.putIfAbsent(templateNode, outputNode) != null) {
-      myTemplateNodeToOutputNodeMap.put(templateNode, this);
-    }
-  }
 
   void addOutputNodeByTemplateNode(String templateNodeId, @NotNull SNode outputNode) {
     if (myTemplateNodeIdToOutputNodeMap.putIfAbsent(templateNodeId, outputNode) != null) {
@@ -77,7 +81,9 @@ public class GeneratorMappings {
   }
 
   void addOutputNodeByInputNodeAndMappingName(SNode inputNode, String mappingName, SNode outputNode) {
-    if (mappingName == null) return;
+    if (mappingName == null) {
+      return;
+    }
     Map<SNode, Object> currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
     if (currentMapping == null) {
       myMappingNameAndInputNodeToOutputNodeMap.putIfAbsent(mappingName, new HashMap<SNode, Object>());
@@ -100,74 +106,82 @@ public class GeneratorMappings {
     }
   }
 
+  /**
+   * record a newly created node (generally, conditional root rule - no input node)
+   * @param mappingLabel label
+   * @param outputNode new node
+   */
+  void addNewOutputNode(String mappingLabel, SNode outputNode) {
+    if (mappingLabel == null || outputNode == null) {
+      return;
+    }
+    myConditionalRoots.add(new Pair<>(mappingLabel, outputNode));
+  }
+
   void addCopiedOutputNodeForInputNode(SNode inputNode, SNode outputNode) {
     if (outputNode == null) {
       return;
     }
 
     Object prev = myCopiedOutputNodeForInputNode.putIfAbsent(inputNode, outputNode);
-    if (prev != null && prev instanceof SNode) {
+    // It's possible for the same pair input->output to get registered more than once,
+    // e.g. when a rule does COPY-SRC for input. Both the copy macro and the rule would
+    // try to register same output, and we shall not treat this as ambiguity. Generally it's
+    // odd to use COPY-SRC for rule's primary transformation, we've had only 1 use like this
+    // (build language, mapBuildProject did $WEAVE$ $COPY-SRC$).
+    if (prev != null && prev instanceof SNode && prev != outputNode) {
       // ambiguity! store prev element (wrapped into Collection)
       myCopiedOutputNodeForInputNode.put(inputNode, Collections.singletonList(prev));
     }
-  }
-
-  void addOutputNodeByInputAndTemplateNode(SNode inputNode, SNode templateNode, SNode outputNode) {
-    // todo: combination of (templateN, inputN) -> outputN
-    // todo: is not unique
-    // todo: generator should report error on attempt to obtain not unique output-node
-    if (templateNode == null) return;
-    myTemplateNodeAndInputNodeToOutputNodeMap.put(new Pair(templateNode, inputNode), outputNode);
   }
 
   void addOutputNodeByInputAndTemplateNode(SNode inputNode, String templateNodeId, SNode outputNode) {
     // todo: combination of (templateN, inputN) -> outputN
     // todo: is not unique
     // todo: generator should report error on attempt to obtain not unique output-node
-    if (templateNodeId == null) return;
-    myTemplateNodeIdAndInputNodeToOutputNodeMap.put(new Pair(templateNodeId, inputNode), outputNode);
+    if (templateNodeId == null) {
+      return;
+    }
+    myTemplateNodeIdAndInputNodeToOutputNodeMap.put(new Pair<>(templateNodeId, inputNode), outputNode);
   }
 
-  void addOutputNodeByIndirectInputAndTemplateNode(SNode inditectInputNode, SNode templateNode, SNode outputNode) {
+  void addOutputNodeForContext(TemplateContext templateContext, String templateNodeId, SNode outputNode) {
     // todo: combination of (templateN, inputN) -> outputN
     // todo: is not unique
     // todo: generator should report error on attempt to obtain not unique output-node
-    Pair key = new Pair(templateNode, inditectInputNode);
-    myTemplateNodeAndInputNodeToOutputNodeMap.putIfAbsent(key, outputNode);
-  }
-
-  void addOutputNodeByIndirectInputAndTemplateNode(SNode inditectInputNode, String templateNodeId, SNode outputNode) {
-    // todo: combination of (templateN, inputN) -> outputN
-    // todo: is not unique
-    // todo: generator should report error on attempt to obtain not unique output-node
-    Pair key = new Pair(templateNodeId, inditectInputNode);
-    myTemplateNodeIdAndInputNodeToOutputNodeMap.putIfAbsent(key, outputNode);
+    addOutputNodeByInputAndTemplateNode(templateContext.getInput(), templateNodeId, outputNode);
+    for (SNode historyInputNode : templateContext.getInputHistory()) {
+      Pair<String,SNode> key = new Pair<>(templateNodeId, historyInputNode);
+      myTemplateNodeIdAndInputNodeToOutputNodeMap.putIfAbsent(key, outputNode);
+    }
+    addOutputNodeByTemplateNode(templateNodeId, outputNode);
   }
 
   // find methods
-
-  public SNode findOutputNodeByTemplateNodeUnique(SNode templateNode) {
-    Object o = myTemplateNodeToOutputNodeMap.get(templateNode);
-    return o instanceof SNode ? (SNode) o : null;
-  }
 
   public SNode findOutputNodeByTemplateNodeUnique(String templateNode) {
     Object o = myTemplateNodeIdToOutputNodeMap.get(templateNode);
     return o instanceof SNode ? (SNode) o : null;
   }
 
-  public SNode findOutputNodeByInputNodeAndMappingName(SNode inputNode, String mappingName, IGeneratorLogger logger) {
-    if (mappingName == null) return null;
+  public SNode findOutputNodeByInputNodeAndMappingName(@Nullable SNode inputNode, @Nullable String mappingName) {
+    if (mappingName == null) {
+      return null;
+    }
     Map<SNode, Object> currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
-    if (currentMapping == null) return null;
+    if (currentMapping == null) {
+      return null;
+    }
     Object o = currentMapping.get(inputNode);
     if (o instanceof List) {
       List<SNode> list = (List<SNode>) o;
-      ProblemDescription[] descr = new ProblemDescription[list.size()];
+      ProblemDescription[] descr = new ProblemDescription[list.size() + 1];
       for (int i = 0; i < list.size(); i++) {
-        descr[i] = new ProblemDescription(list.get(i), "output [" + i + "] : " + SNodeUtil.getDebugText(list.get(i)));
+        descr[i] = GeneratorUtil.describe(list.get(i), "output");
       }
-      logger.warning(inputNode, "" + list.size() + " output nodes found for mapping label '" + mappingName + "' and input " + SNodeUtil.getDebugText(inputNode), descr);
+      descr[list.size()] = GeneratorUtil.describe(inputNode, "input");
+      String msg = "%d  output nodes found for mapping label '%s'";
+      myLog.warning(inputNode == null ? null : inputNode.getReference(), String.format(msg, list.size(), mappingName), descr);
       return list.get(0);
     }
 
@@ -175,12 +189,20 @@ public class GeneratorMappings {
   }
 
   public List<SNode> findAllOutputNodesByInputNodeAndMappingName(SNode inputNode, String mappingName) {
-    if (mappingName == null) return null;
+    if (mappingName == null) {
+      return null;
+    }
     Map<SNode, Object> currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
-    if (currentMapping == null) return null;
+    if (currentMapping == null) {
+      return null;
+    }
     Object o = currentMapping.get(inputNode);
-    if (o == null) return Collections.emptyList();
-    if (o instanceof List) return ((List<SNode>) o);
+    if (o == null) {
+      return Collections.emptyList();
+    }
+    if (o instanceof List) {
+      return ((List<SNode>) o);
+    }
     return Collections.singletonList((SNode) o);
   }
 
@@ -195,17 +217,37 @@ public class GeneratorMappings {
     return null;
   }
 
-  public SNode findOutputNodeByInputAndTemplateNode(SNode inputNode, SNode templateNode) {
-    return myTemplateNodeAndInputNodeToOutputNodeMap.get(new Pair(templateNode, inputNode));
-  }
-
   public SNode findOutputNodeByInputAndTemplateNode(SNode inputNode, String templateNodeId) {
-    return myTemplateNodeIdAndInputNodeToOutputNodeMap.get(new Pair(templateNodeId, inputNode));
+    return myTemplateNodeIdAndInputNodeToOutputNodeMap.get(new Pair<>(templateNodeId, inputNode));
   }
 
   public boolean isInputNodeHasUniqueCopiedOutputNode(SNode inputNode) {
     Object o = myCopiedOutputNodeForInputNode.get(inputNode);
     return !(o instanceof List);
+  }
+
+  @Nullable
+  public SNode findNewOutputNode(@Nullable String mappingLabel) {
+    if (mappingLabel == null) {
+      // all other methods tolerate null parameters, why this one would not?
+      return null;
+    }
+    return myConditionalRoots.stream().filter(p -> mappingLabel.equals(p.o1)).findFirst().map(p -> p.o2).orElse(null);
+  }
+
+  // expose internal structure, to build GeneratorDebug_Mappings with MPS-coded DebugMappingsBuilder
+  /*package*/ Collection<String> getAvailableLabels() {
+    return myMappingNameAndInputNodeToOutputNodeMap.keySet();
+  }
+  /*package*/Map<SNode,Object> getMappings(String label) {
+    return myMappingNameAndInputNodeToOutputNodeMap.get(label);
+  }
+
+  /*package*/Set<String> getConditionalRootLabels() {
+    return myConditionalRoots.stream().map(p -> p.o1).collect(Collectors.toSet());
+  }
+  /*package*/List<SNode> getConditionalRoots(String label) {
+    return myConditionalRoots.stream().filter(p -> label.equals(p.o1)).map(p -> p.o2).collect(Collectors.toList());
   }
 
   // serialization
@@ -237,6 +279,36 @@ public class GeneratorMappings {
         mappingsMemento.addOutputNodeByInputNode(inputNode.getNodeId(), targetId, false);
       }
     }
+  }
+
+  /**
+   * Record MLs into checkpoint state, assuming output nodes of the mappings are from the model being marked as 'checkpoint',
+   * and input nodes being traced with transitionTrace
+   */
+  public void export(CheckpointStateBuilder cp) {
+    for (Entry<String, Map<SNode, Object>> o : myMappingNameAndInputNodeToOutputNodeMap.entrySet()) {
+      String label = o.getKey();
+      for (Entry<SNode, Object> i : o.getValue().entrySet()) {
+        SNode inputNode = i.getKey();
+        if (inputNode == null) {
+          // FIXME shall I track nodes newly introduced at the given checkpoint step? Yes.
+          //       However, for newly introduced nodes we keep separate collection, and there should be no
+          //       null input nodes in this map. The check left just in case there's one (no check for null input in addOutput.. yet).
+          continue;
+        }
+        // perhaps, would be useful to record mappings even without original node (marked as 'useless')
+        // to ease debug (once there's mechanism to show mapping labels as part of transient model/module)
+        Object value = i.getValue();
+        if (value instanceof SNode) {
+          cp.record(inputNode, label, (SNode) value);
+        } else if (value instanceof Collection) {
+          @SuppressWarnings("unchecked")
+          Collection<SNode> collection = (Collection<SNode>) value;
+          cp.record(inputNode, label, collection);
+        }
+      }
+    }
+    myConditionalRoots.forEach(p -> cp.record(p.o1, p.o2));
   }
 
   public void importPersisted(MappingsMemento val, SModel inputModel, SModel outputModel) throws BrokenCacheException {

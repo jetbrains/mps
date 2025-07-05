@@ -17,8 +17,7 @@ import com.intellij.util.Consumer;
 import java.awt.event.MouseEvent;
 import javax.swing.Icon;
 import jetbrains.mps.ide.ThreadUtils;
-import javax.swing.SwingUtilities;
-import jetbrains.mps.plugin.icons.Icons;
+import jetbrains.mps.icons.MPSIcons;
 import javax.swing.Timer;
 
 public class PluginStateWidget implements StatusBarWidget, StatusBarWidget.IconPresentation {
@@ -31,7 +30,6 @@ public class PluginStateWidget implements StatusBarWidget, StatusBarWidget.IconP
   private AtomicReference<PluginStateWidget.State> myState = new AtomicReference<PluginStateWidget.State>(PluginStateWidget.State.TRYING_TO_CONNECT);
   private volatile boolean myConnecting = false;
   private StatusBar myStatusBar;
-
   public PluginStateWidget(Project project) {
     myProject = project;
     myTimer = new PluginStateWidget.MyTimer(new ActionListener() {
@@ -65,13 +63,11 @@ public class PluginStateWidget implements StatusBarWidget, StatusBarWidget.IconP
       }
     });
   }
-
   @Override
   public void install(@NotNull StatusBar bar) {
     myStatusBar = bar;
     myTimer.start();
   }
-
   @Nullable
   @Override
   public Consumer<MouseEvent> getClickConsumer() {
@@ -86,43 +82,36 @@ public class PluginStateWidget implements StatusBarWidget, StatusBarWidget.IconP
       }
     };
   }
-
   @Nullable
   @Override
   public StatusBarWidget.WidgetPresentation getPresentation(@NotNull StatusBarWidget.PlatformType type) {
     return this;
   }
-
   @Override
   public void dispose() {
     if (myTimer.isRunning()) {
       myTimer.stop();
     }
   }
-
   @Nullable
   @Override
   public String getTooltipText() {
     return myState.get().getHelpText();
   }
-
   @NotNull
   @Override
   public Icon getIcon() {
     return myState.get().getIcon();
   }
-
   @NotNull
   @Override
   public String ID() {
     return "MpsPluginStateMonitor";
   }
-
   private void tick() {
-    LOG.assertLog(!(ThreadUtils.isEventDispatchThread()), "You should not do this in EDT");
+    LOG.assertLog(!(ThreadUtils.isInEDT()), "You should not do this in EDT");
     tickImpl();
   }
-
   private void tickImpl() {
     PluginStateWidget.State state = myState.get();
     if (state == PluginStateWidget.State.CONNECTED) {
@@ -140,7 +129,6 @@ public class PluginStateWidget implements StatusBarWidget, StatusBarWidget.IconP
       if (isConnected()) {
         if (canOperate()) {
           setNewState(state, PluginStateWidget.State.CONNECTED);
-        } else {
         }
       } else {
         setNewState(state, PluginStateWidget.State.TRYING_TO_CONNECT);
@@ -174,11 +162,10 @@ public class PluginStateWidget implements StatusBarWidget, StatusBarWidget.IconP
       }
     }
   }
-
   private boolean setNewState(PluginStateWidget.State oldState, PluginStateWidget.State newState) {
     if (myState.compareAndSet(oldState, newState)) {
       myTimer.setNewDelay(myState.get().getDefaultDelay());
-      SwingUtilities.invokeLater(new Runnable() {
+      ApplicationManager.getApplication().invokeLater(new Runnable() {
         @Override
         public void run() {
           myStatusBar.updateWidget(ID());
@@ -188,49 +175,40 @@ public class PluginStateWidget implements StatusBarWidget, StatusBarWidget.IconP
     }
     return false;
   }
-
   private boolean isConnected() {
     return MPSPlugin.getInstance().isIDEAPresent();
   }
-
   private boolean canOperate() {
-    return MPSPlugin.getInstance().getProjectHandler(myProject) != null;
+    return MPSPlugin.getInstance().getProjectHandler(myProject.getBasePath()) != null;
   }
-
-  private static   enum State {
-    DISCONNECTED(Icons.DISCONNECTED, "Not connected to IDEA. Click to reconnect.", PluginStateWidget.INITIAL_DELAY),
-    TRYING_TO_CONNECT(Icons.TRYING_TO_CONNECT, "Connecting to IDEA...", PluginStateWidget.INITIAL_DELAY),
-    CONNECTED_BAD_PROJECT(Icons.CONNECTED_ERRORS, "Connected to IDEA, Project does not match", PluginStateWidget.CRITICAL_DELAY),
-    CONNECTED(Icons.CONNECTED, "Connected to IDEA", PluginStateWidget.INITIAL_DELAY);
+  private enum State {
+    DISCONNECTED(MPSIcons.IdeaIntegration.Disconnected, "Not connected to IDEA. Click to reconnect.", PluginStateWidget.INITIAL_DELAY),
+    TRYING_TO_CONNECT(MPSIcons.IdeaIntegration.TryingToConnect, "Connecting to IDEA...", PluginStateWidget.INITIAL_DELAY),
+    CONNECTED_BAD_PROJECT(MPSIcons.IdeaIntegration.ConnectedWithErrors, "Connected to IDEA, Project does not match", PluginStateWidget.CRITICAL_DELAY),
+    CONNECTED(MPSIcons.IdeaIntegration.Connected, "Connected to IDEA", PluginStateWidget.INITIAL_DELAY);
 
     private final Icon myIcon;
     private final String myHelpText;
     private final int myDefaultDelay;
-
-    State(Icon icon, String helpText, int defaultDelay) {
+    private State(Icon icon, String helpText, int defaultDelay) {
       myIcon = icon;
       myHelpText = helpText;
       myDefaultDelay = defaultDelay;
     }
-
     public Icon getIcon() {
       return myIcon;
     }
-
     public String getHelpText() {
       return myHelpText;
     }
-
     public int getDefaultDelay() {
       return myDefaultDelay;
     }
   }
-
   private static class MyTimer extends Timer {
     public MyTimer(ActionListener listener) {
       super(PluginStateWidget.INITIAL_DELAY, listener);
     }
-
     public void setNewDelay(int delay) {
       setDelay(delay);
       setInitialDelay(delay);

@@ -8,6 +8,7 @@
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="jetbrains.mps.debug.api.AbstractDebugSession" />
     <classNode dependClassName="jetbrains.mps.debug.api.DebugSessionManagerComponent" />
+    <classNode dependClassName="jetbrains.mps.debug.api.SessionChangeAdapter" />
     <classNode dependClassName="jetbrains.mps.debug.api.SessionChangeListener" />
     <classNode dependClassName="jetbrains.mps.debug.api.programState.ILocation" />
     <classNode dependClassName="jetbrains.mps.debug.api.programState.IStackFrame" />
@@ -15,10 +16,8 @@
     <classNode dependClassName="jetbrains.mps.debug.api.source.PositionProvider" />
     <classNode dependClassName="jetbrains.mps.debug.api.source.SourcePosition" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode extendsClassName="com.intellij.openapi.components.ProjectComponent" />
-    <classNode extendsClassName="jetbrains.mps.debug.api.DebugSessionListener" />
-    <classNode extendsClassName="jetbrains.mps.debug.api.SessionChangeAdapter" />
     <classNode extendsClassName="jetbrains.mps.debugger.core.CurrentLinePositionComponentEx" />
   </dependency>
   <dependency className="jetbrains.mps.debugger.api.ui.executionPoint.InTextPositionComponent" file="InTextPositionComponent.java">
@@ -43,6 +42,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.debug.api.AbstractDebugSession" />
     <classNode dependClassName="jetbrains.mps.debug.api.DebugSessionManagerComponent" />
+    <classNode dependClassName="jetbrains.mps.debug.api.SessionChangeAdapter" />
     <classNode dependClassName="jetbrains.mps.debug.api.SessionChangeListener" />
     <classNode dependClassName="jetbrains.mps.debug.api.programState.IStackFrame" />
     <classNode dependClassName="jetbrains.mps.debug.api.source.PositionProvider" />
@@ -53,8 +53,6 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode extendsClassName="com.intellij.openapi.components.ProjectComponent" />
-    <classNode extendsClassName="jetbrains.mps.debug.api.DebugSessionListener" />
-    <classNode extendsClassName="jetbrains.mps.debug.api.SessionChangeAdapter" />
   </dependency>
 </dependenciesRoot>
 

@@ -23,43 +23,35 @@ import java.util.Arrays;
 import org.jdom.Document;
 import jetbrains.mps.util.JDOMUtil;
 
-/*package*/ class FileProcessor {
+public class FileProcessor {
   private static final Logger LOG = LogManager.getLogger(FileProcessor.class);
   private final List<SModel> myModels = new ArrayList<SModel>();
   private final List<FileProcessor.FileAndContent> myFilesAndContents = new ArrayList<FileProcessor.FileAndContent>();
   private final List<IFile> myFilesToDelete = new ArrayList<IFile>();
   private final Object LOCK = new Object();
-
   public FileProcessor() {
   }
-
   public void invalidateModel(SModel modelDescriptor) {
     synchronized (LOCK) {
       myModels.add(modelDescriptor);
     }
   }
-
   public boolean saveContent(IFile file, String content) {
     return saveContent(new FileProcessor.FileAndContent(file, new FileProcessor.StringFileContent(content)));
   }
-
   public boolean saveContent(IFile file, Element content) {
     return saveContent(new FileProcessor.FileAndContent(file, new FileProcessor.XMLFileContent(content)));
   }
-
   public boolean saveContent(IFile file, byte[] content) {
     return saveContent(new FileProcessor.FileAndContent(file, new FileProcessor.BinaryFileContent(content)));
   }
-
   private boolean saveContent(FileProcessor.FileAndContent fileAndContent) {
     myFilesAndContents.add(fileAndContent);
     return !(fileAndContent.myContent.isUnchanged(fileAndContent.myFile));
   }
-
   public void filesToDelete(Collection<IFile> files) {
     myFilesToDelete.addAll(files);
   }
-
   public void flushChanges() {
     for (FileProcessor.FileAndContent fileAndContent : myFilesAndContents) {
       fileAndContent.save();
@@ -69,7 +61,6 @@ import jetbrains.mps.util.JDOMUtil;
     }
     ModelGenerationStatusManager.getInstance().invalidateData(myModels);
   }
-
   /*package*/ int calcApproximateSize() {
     int size = 0;
     for (FileProcessor.FileAndContent fileAndContent : myFilesAndContents) {
@@ -77,39 +68,31 @@ import jetbrains.mps.util.JDOMUtil;
     }
     return size;
   }
-
   private static class FileAndContent {
     private IFile myFile;
     private FileProcessor.FileContent myContent;
-
     private FileAndContent(IFile file, FileProcessor.FileContent content) {
       myFile = file;
       myContent = content;
     }
-
     private void save() {
       myContent.saveToFile(myFile);
     }
-
     @Override
     public String toString() {
       return myFile.toString();
     }
   }
-
-  private static interface FileContent {
-    public boolean isUnchanged(IFile file);
-    public void saveToFile(IFile file);
-    public int calcApproximateSize();
+  private interface FileContent {
+    boolean isUnchanged(IFile file);
+    void saveToFile(IFile file);
+    int calcApproximateSize();
   }
-
   private static class StringFileContent implements FileProcessor.FileContent {
     private String myContent;
-
     private StringFileContent(String content) {
       myContent = content;
     }
-
     @Override
     public void saveToFile(IFile file) {
       OutputStreamWriter writer = null;
@@ -117,7 +100,7 @@ import jetbrains.mps.util.JDOMUtil;
         writer = new OutputStreamWriter(new BufferedOutputStream(file.openOutputStream()), FileUtil.DEFAULT_CHARSET);
         writer.write(myContent);
       } catch (IOException e) {
-        FileProcessor.LOG.error(null, e);
+        FileProcessor.LOG.error((e.getMessage() == null ? e.getClass().getName() : e.getMessage()), e);
       } finally {
         if (writer != null) {
           try {
@@ -127,7 +110,6 @@ import jetbrains.mps.util.JDOMUtil;
         }
       }
     }
-
     @Override
     public boolean isUnchanged(IFile file) {
       if (!(file.exists())) {
@@ -154,20 +136,16 @@ import jetbrains.mps.util.JDOMUtil;
         }
       }
     }
-
     @Override
     public int calcApproximateSize() {
       return myContent.getBytes().length;
     }
   }
-
   private static class BinaryFileContent implements FileProcessor.FileContent {
     private byte[] myContent;
-
     private BinaryFileContent(byte[] content) {
       myContent = content;
     }
-
     @Override
     public void saveToFile(IFile file) {
       OutputStream stream = null;
@@ -175,7 +153,7 @@ import jetbrains.mps.util.JDOMUtil;
         stream = file.openOutputStream();
         stream.write(myContent);
       } catch (IOException e) {
-        FileProcessor.LOG.error(null, e);
+        FileProcessor.LOG.error((e.getMessage() == null ? e.getClass().getName() : e.getMessage()), e);
       } finally {
         if (stream != null) {
           try {
@@ -185,7 +163,6 @@ import jetbrains.mps.util.JDOMUtil;
         }
       }
     }
-
     @Override
     public boolean isUnchanged(IFile file) {
       if (!(file.exists())) {
@@ -216,30 +193,30 @@ import jetbrains.mps.util.JDOMUtil;
         }
       }
     }
-
     @Override
     public int calcApproximateSize() {
       return myContent.length;
     }
   }
-
   private static class XMLFileContent implements FileProcessor.FileContent {
-    private Document myDocument;
-
+    private final Document myDocument;
     private XMLFileContent(Element element) {
-      myDocument = new Document(element);
+      // if element is right under a document, use this document, otherwise create a new one 
+      if (element.getDocument() != null) {
+        assert element.isRootElement() : "Need a document to serialize an xml element; could not save if element is already inside a document";
+        myDocument = element.getDocument();
+      } else {
+        myDocument = new Document(element);
+      }
     }
-
     @Override
     public void saveToFile(IFile file) {
       try {
         JDOMUtil.writeDocument(myDocument, file);
       } catch (IOException e) {
-        FileProcessor.LOG.error(null, e);
+        FileProcessor.LOG.error((e.getMessage() == null ? e.getClass().getName() : e.getMessage()), e);
       }
     }
-
-
 
     @Override
     public int calcApproximateSize() {
@@ -249,7 +226,6 @@ import jetbrains.mps.util.JDOMUtil;
         throw new RuntimeException(e);
       }
     }
-
     @Override
     public boolean isUnchanged(IFile file) {
       return false;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,164 +16,163 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.extapi.model.GeneratableSModel;
+import jetbrains.mps.extapi.model.ModelWithAttributes;
 import jetbrains.mps.extapi.model.SModelData;
-import jetbrains.mps.extapi.persistence.FileDataSource;
-import jetbrains.mps.generator.ModelDigestUtil;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.persistence.DefaultModelPersistence;
-import jetbrains.mps.persistence.ModelDigestHelper;
-import jetbrains.mps.refactoring.StructureModificationLog;
-import jetbrains.mps.smodel.descriptor.RefactorableSModelDescriptor;
+import jetbrains.mps.persistence.LazyLoadFacility;
+import jetbrains.mps.persistence.PersistenceVersionAware;
+import jetbrains.mps.smodel.DefaultSModel.InvalidDefaultSModel;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
-import jetbrains.mps.smodel.nodeidmap.RegularNodeIdMap;
-import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
-import jetbrains.mps.smodel.persistence.def.RefactoringsPersistence;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.persistence.StreamDataSource;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.persistence.DataSource;
+import org.jetbrains.mps.openapi.persistence.ModelFactory;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.function.BiConsumer;
 
-import static jetbrains.mps.smodel.DefaultSModel.InvalidDefaultSModel;
 
-public class DefaultSModelDescriptor extends LazyEditableSModelBase implements GeneratableSModel, RefactorableSModelDescriptor {
+public class DefaultSModelDescriptor extends LazyEditableSModelBase implements GeneratableSModel, PersistenceVersionAware, ModelWithAttributes {
+  private static final String MODEL_FOLDER_FOR_GENERATION = "useModelFolderForGeneration";
   private static final Logger LOG = Logger.wrap(LogManager.getLogger(DefaultSModelDescriptor.class));
-
+  private final LazyLoadFacility myPersistence;
 
   private SModelHeader myHeader;
 
-  private final Object myRefactoringHistoryLock = new Object();
-  private StructureModificationLog myStructureModificationLog;
-
-  public DefaultSModelDescriptor(StreamDataSource source, SModelReference modelReference, SModelHeader header) {
-    super(modelReference, source);
+  public DefaultSModelDescriptor(@NotNull LazyLoadFacility persistence, @NotNull SModelHeader header) {
+    super(header.getModelReference(), persistence.getSource());
+    myPersistence = persistence;
     myHeader = header;
   }
 
-  @NotNull
-  @Override
-  public StreamDataSource getSource() {
-    return (StreamDataSource) super.getSource();
-  }
-
-  @Override
   public void replace(SModelData modelData) {
-    ModelAccess.assertLegalWrite();
+    assertCanChange();
 
     if (!(modelData instanceof DefaultSModel)) {
       throw new IllegalArgumentException();
     }
     replaceModel((DefaultSModel) modelData, ModelLoadingState.FULLY_LOADED);
+    // DefaultSModel might come with own SModelHeader, ensure this descriptor references the right one
+    myHeader = ((DefaultSModel) modelData).getSModelHeader();
   }
 
   @Override
   protected ModelLoadResult loadSModel(ModelLoadingState state) {
-    SModelReference dsmRef = getReference();
-
-    StreamDataSource source = getSource();
+    DataSource source = getSource();
     if (!source.isReadOnly() && source.getTimestamp() == -1) {
       // no file on disk
-      DefaultSModel model = new DefaultSModel(dsmRef, new RegularNodeIdMap());
+      DefaultSModel model = new DefaultSModel(getReference(), myHeader);
       return new ModelLoadResult(model, ModelLoadingState.FULLY_LOADED);
     }
 
     ModelLoadResult result;
     try {
-      // TODO use DataSource
-      result = ModelPersistence.readModel(myHeader, source, state);
+      result = myPersistence.readModel(myHeader, state);
     } catch (ModelReadException e) {
+      LOG.warning(String.format("Failed to load model %s: %s", getSource().getLocation(), e.toString()));
       SuspiciousModelHandler.getHandler().handleSuspiciousModel(this, false);
-      DefaultSModel newModel = new InvalidDefaultSModel(getSModelReference(), e);
+      InvalidDefaultSModel newModel = new InvalidDefaultSModel(getReference(), e);
       return new ModelLoadResult(newModel, ModelLoadingState.NOT_LOADED);
     }
 
     jetbrains.mps.smodel.SModel model = result.getModel();
-    if (result.getState() == ModelLoadingState.FULLY_LOADED) {
-      boolean needToSave = model.updateSModelReferences() || model.updateModuleReferences();
+    if (result.getState() == ModelLoadingState.FULLY_LOADED && getRepository() != null) {
+      boolean needToSave = model.updateExternalReferences(getRepository());
 
       if (needToSave && !source.isReadOnly()) {
         setChanged(true);
       }
     }
 
-    LOG.assertLog(model.getReference().equals(dsmRef),
+    LOG.assertLog(model.getReference().equals(getReference()),
         "\nError loading model from: \"" + source.getLocation() + "\"\n" +
-            "expected model UID     : \"" + dsmRef + "\"\n" +
+            "expected model UID     : \"" + getReference() + "\"\n" +
             "but was UID            : \"" + model.getReference() + "\"\n" +
             "the model will not be available.\n" +
             "Make sure that all project's roots and/or the model namespace is correct");
     return result;
   }
 
+  protected boolean shouldCorrectModelRef(){
+    return false;
+  }
 
+  /**
+   * Since we expose persistence aspects of a model from (openapi)SModel, it's reasonable to keep
+   * persistence attributes we are not yet ready to expose here in the implementation. These attributes shall not be part of
+   * SModelData (smodel.SModel), which is purely about nodes and model structure.
+   * To me, persistence shall be completely independent aspect, not exposed from SModel, however, at this moment the best we could do is
+   * to keep persistence within SModel descriptor and hope for the future changes (deprecate and remove methods like getDataSource, getProblems)
+   * @return actual persistence version number of loaded/created model, or -1 if persistence versioning is not supported
+   */
+  @Override
   public int getPersistenceVersion() {
-    return getModelHeader().getPersistenceVersion();
+    return myHeader.getPersistenceVersion();
   }
 
   @Override
-  @NotNull
-  public StructureModificationLog getStructureModificationLog() {
-    synchronized (myRefactoringHistoryLock) {
-      if (myStructureModificationLog == null && getSource() instanceof FileDataSource) {
-        myStructureModificationLog = RefactoringsPersistence.load(((FileDataSource) getSource()).getFile());
-      }
-      if (myStructureModificationLog == null) {
-        myStructureModificationLog = new StructureModificationLog();
-      }
-    }
-    return myStructureModificationLog;
+  public void setPersistenceVersion(int persistenceVersion) {
+    myHeader.setPersistenceVersion(persistenceVersion);
   }
 
+  @Nullable
   @Override
-  public void saveStructureModificationLog(@NotNull StructureModificationLog log) {
-    myStructureModificationLog = log;
-    if (!(getSource() instanceof FileDataSource)) throw new UnsupportedOperationException("cannot save structure modification log");
-    RefactoringsPersistence.save(((FileDataSource) getSource()).getFile(), log);
+  public ModelFactory getModelFactory() {
+    return myPersistence.getModelFactory();
   }
 
   @Override
   protected boolean saveModel() throws IOException {
-    DefaultSModel smodel = (DefaultSModel) getSModelInternal();
+    SModel smodel = getSModel();
     if (smodel instanceof InvalidSModel) {
       // we do not save stub model to not overwrite the real model
       return false;
     }
-    return ModelPersistence.saveModel(smodel, getSource()) != null;
+    if (getRepository() != null) {
+      // if we do save model, ensure we write proper references. It's not the best possible solution, see MPS-22440 for details
+      smodel.updateExternalReferences(getRepository());
+    }
+    boolean upgraded = myPersistence.doesSaveUpgradePersistence(myHeader);
+    myPersistence.saveModel(myHeader, smodel);
+    return upgraded;
   }
 
   @Override
   public boolean isGeneratable() {
-    return !isDoNotGenerate() && !getSource().isReadOnly() && SModelStereotype.isUserModel(this);
+    return !isDoNotGenerate();
   }
 
   @Override
   public boolean isGenerateIntoModelFolder() {
-    return Boolean.parseBoolean(getModelHeader().getOptionalProperty("useModelFolderForGeneration"));
+    return Boolean.parseBoolean(getModelHeader().getOptionalProperty(MODEL_FOLDER_FOR_GENERATION));
+  }
+
+  @Override
+  public void setGenerateIntoModelFolder(boolean value) {
+    if (value) {
+      getModelHeader().setOptionalProperty(MODEL_FOLDER_FOR_GENERATION, Boolean.toString(true));
+    } else {
+      getModelHeader().removeOptionalProperty(MODEL_FOLDER_FOR_GENERATION);
+    }
   }
 
   @Override
   public String getModelHash() {
-    String modelHash = ModelDigestHelper.getInstance().getModelHash(getSource());
-    if (modelHash != null) return modelHash;
-
-    return ModelDigestUtil.hash(getSource(), true);
+    return myPersistence.getModelHash();
   }
 
   @Override
   public Map<String, String> getGenerationHashes() {
-    Map<String, String> generationHashes = ModelDigestHelper.getInstance().getGenerationHashes(getSource());
-    if (generationHashes != null) return generationHashes;
-
-    return DefaultModelPersistence.getDigestMap(getSource());
+    return myPersistence.getGenerationHashes();
   }
 
   @Override
   public void setDoNotGenerate(boolean value) {
-    ModelAccess.assertLegalWrite();
+    assertCanChange();
 
     getModelHeader().setDoNotGenerate(value);
     setChanged(true);
@@ -185,48 +184,31 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
   }
 
   @Override
-  public int getVersion() {
-    return getModelHeader().getVersion();
+  public void setAttribute(@NotNull String key, @Nullable String value) {
+    getModelHeader().setOptionalProperty(key, value);
+  }
+
+  @Nullable
+  @Override
+  public String getAttribute(@NotNull String key) {
+    return getModelHeader().getOptionalProperty(key);
   }
 
   @Override
-  public void setVersion(int newVersion) {
-    ModelAccess.assertLegalWrite();
-
-    getModelHeader().setVersion(newVersion);
-    setChanged(true);
+  public void forEach(@NotNull BiConsumer<String, String> action) {
+    getModelHeader().getOptionalProperties().forEach(action);
   }
 
   private SModelHeader getModelHeader() {
-    DefaultSModel model = (DefaultSModel) getCurrentModelInternal();
-    if (model == null) return myHeader;
-    return model.getSModelHeader();
-  }
-
-  @Override
-  protected void processLoadedModel(jetbrains.mps.smodel.SModel loadedSModel) {
-    if (getVersion() != -1) return;
-
-    int latestVersion = getStructureModificationLog().getLatestVersion(getReference());
-    myStructureModificationLog = null;  // we don't need to keep log in memory
-    if (latestVersion != -1) {
-      loadedSModel.setVersion(latestVersion);
-      LOG.error("Version for model " + getModelName() + " was not set.");
-    }
-  }
-
-  @Override
-  protected void replaceModel(LazySModel newModel, ModelLoadingState state) {
-    super.replaceModel(newModel, state);
-    myStructureModificationLog = null;
+    return myHeader;
   }
 
   @Override
   protected void reloadContents() {
     try {
-      myHeader = ModelPersistence.loadDescriptor(getSource());
+      myHeader = myPersistence.readHeader();
     } catch (ModelReadException e) {
-      updateTimestamp();
+      myTimestampTracker.updateTimestamp(getSource());
       SuspiciousModelHandler.getHandler().handleSuspiciousModel(this, false);
       return;
     }
@@ -237,5 +219,4 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
   public SModelHeader getHeaderCopy() {
     return myHeader.createCopy();
   }
-
 }

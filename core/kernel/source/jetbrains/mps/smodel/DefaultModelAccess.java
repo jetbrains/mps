@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,23 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.InternalFlag;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.repository.CommandListener;
+
+import javax.swing.SwingUtilities;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Evgeny Gryaznov, Sep 3, 2010
  */
 public class DefaultModelAccess extends ModelAccess {
+  /**
+   * write action is the same as command; storing a map from command listener clients to the actual write action listeners
+   */
+  private final Map<CommandListener, CommandWriteActionAdapter> myAdaptersMap = new HashMap<CommandListener, CommandWriteActionAdapter>();
 
   public DefaultModelAccess() {
   }
@@ -52,16 +60,14 @@ public class DefaultModelAccess extends ModelAccess {
     getWriteLock().lock();
     try {
       clearRepositoryStateCaches();
-      r.run();
+      myWriteActionDispatcher.run(r);
     } finally {
       getWriteLock().unlock();
     }
   }
 
   private void assertNotWriteFromRead() {
-    if (InternalFlag.isInternalMode()) {
-      assert !canRead() : "Deadlock: Write action should not be executed from within read.";
-    }
+    assert !canRead() : "Deadlock: Write action should not be executed from within read.";
   }
 
   @Override
@@ -85,7 +91,7 @@ public class DefaultModelAccess extends ModelAccess {
     getWriteLock().lock();
     try {
       clearRepositoryStateCaches();
-      return c.compute();
+      return myWriteActionDispatcher.compute(c);
     } finally {
       getWriteLock().unlock();
     }
@@ -96,18 +102,28 @@ public class DefaultModelAccess extends ModelAccess {
   }
 
   @Override
-  public void runReadInEDT(Runnable r) {
-    throw new UnsupportedOperationException();
+  public void runReadInEDT(final Runnable r) {
+    SwingUtilities.invokeLater(new Runnable() {
+      @Override
+      public void run() {
+        runReadAction(r);
+      }
+    });
   }
 
   @Override
-  public void runWriteInEDT(Runnable r) {
-    runWriteAction(r);
+  public void runWriteInEDT(final Runnable r) {
+    SwingUtilities.invokeLater(new Runnable() {
+      @Override
+      public void run() {
+        runWriteAction(r);
+      }
+    });
   }
 
   @Override
   public void runCommandInEDT(@NotNull Runnable r, @NotNull Project p) {
-    throw new UnsupportedOperationException();
+    runWriteInEDT(r);
   }
 
   @Override
@@ -179,7 +195,7 @@ public class DefaultModelAccess extends ModelAccess {
     if (getWriteLock().tryLock()) {
       try {
         clearRepositoryStateCaches();
-        r.run();
+        myWriteActionDispatcher.run(r);
       } finally {
         getWriteLock().unlock();
       }
@@ -194,7 +210,7 @@ public class DefaultModelAccess extends ModelAccess {
     if (getWriteLock().tryLock()) {
       try {
         clearRepositoryStateCaches();
-        return c.compute();
+        return myWriteActionDispatcher.compute(c);
       } finally {
         getWriteLock().unlock();
       }
@@ -235,14 +251,8 @@ public class DefaultModelAccess extends ModelAccess {
     return result;
   }
 
-
   @Override
   public boolean tryWriteInCommand(Runnable r, Project p) {
-    return tryWrite(r);
-  }
-
-  @Override
-  public <T> T tryWriteInCommand(Computable<T> r, Project p) {
     return tryWrite(r);
   }
 
@@ -284,11 +294,6 @@ public class DefaultModelAccess extends ModelAccess {
   }
 
   @Override
-  public void runWriteActionInCommandAsync(final Runnable r, final Project project) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
   public void runUndoTransparentCommand(Runnable r, Project project) {
     r.run();
   }
@@ -304,26 +309,21 @@ public class DefaultModelAccess extends ModelAccess {
   }
 
   @Override
-  public void runIndexing(Runnable r) {
-    throw new UnsupportedOperationException();
+  public void addCommandListener(@NotNull CommandListener listener) {
+    LOG.warn("Adding command listener to DefaultModelAccess: a command is the same as a write action");
+    CommandWriteActionAdapter adapter = new CommandWriteActionAdapter(listener);
+    myAdaptersMap.put(listener, adapter);
+    addWriteActionListener(adapter);
   }
 
   @Override
-  public void addCommandListener(ModelAccessListener l) {
-  }
-
-  @Override
-  public void removeCommandListener(ModelAccessListener l) {
+  public void removeCommandListener(@NotNull CommandListener listener) {
+    @NotNull CommandWriteActionAdapter adapter = myAdaptersMap.remove(listener);
+    removeWriteActionListener(adapter);
   }
 
   @Override
   public void writeFilesInEDT(@NotNull Runnable action) {
     throw new UnsupportedOperationException("cannot invoke write files in EDT");
-  }
-
-  @Override
-  public void runWriteActionWithProgressSynchronously(@NotNull RunnableWithProgress runnable, String progressTitle, boolean canBeCanceled,
-      jetbrains.mps.project.Project project) {
-    throw new UnsupportedOperationException("cannot run with progress");
   }
 }

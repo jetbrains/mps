@@ -8,6 +8,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 
 public class SelectionEndSelectorLabel_Actions {
@@ -15,37 +16,29 @@ public class SelectionEndSelectorLabel_Actions {
     editorCell.setAction(CellActionType.DELETE, new SelectionEndSelectorLabel_Actions.SelectionEndSelectorLabel_Actions_DELETE(node));
     editorCell.setAction(CellActionType.BACKSPACE, new SelectionEndSelectorLabel_Actions.SelectionEndSelectorLabel_Actions_BACKSPACE(node));
   }
-
   public static class SelectionEndSelectorLabel_Actions_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public SelectionEndSelectorLabel_Actions_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SLinkOperations.setTarget(node, "selectionEnd", null, true);
+      SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x257f272033b0db88L, "selectionEnd"), null);
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "closingBracket", 0);
     }
   }
-
   public static class SelectionEndSelectorLabel_Actions_BACKSPACE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public SelectionEndSelectorLabel_Actions_BACKSPACE(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SLinkOperations.setTarget(node, "selectionEnd", null, true);
+      SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x257f272033b0db88L, "selectionEnd"), null);
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "closingBracket", 0);
     }
   }

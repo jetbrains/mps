@@ -13,16 +13,19 @@
   <property name="buildCore.ver" value="${import.buildCore.buildCore.ver}" />
   <property name="buildCore.MPS" value="${import.buildCore.buildCore.MPS}" />
   <property name="buildA.aver" value="${import.buildA.buildA.aver}" />
+  <property name="environment" value="env" />
+  <property name="env.JAVA_HOME" value="${java.home}/.." />
+  <property name="jdk.home" value="${env.JAVA_HOME}" />
   
   <target name="assemble" depends="classes">
     <aaa />
     <mkdir dir="${build.layout}/xx" />
     <mkdir dir="${build.tmp}/default/xx" />
     <mkdir dir="${build.tmp}/default/xx/test" />
-    <jar destfile="${build.tmp}/default/xx/test/aaa${buildCore.ver}.war">
+    <jar destfile="${build.tmp}/default/xx/test/aaa${buildCore.ver}.war" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/test1" />
     </jar>
-    <jar destfile="${build.layout}/xx/xx">
+    <jar destfile="${build.layout}/xx/xx" duplicate="preserve">
       <fileset dir="${build.tmp}/default/xx" />
     </jar>
     <echo file="${build.layout}/build.properties">buildCore.build.number=${buildCore.build.number}${line.separator}buildCore.ver=${buildCore.ver}${line.separator}buildCore.MPS=${buildCore.MPS}${line.separator}buildA.aver=${buildA.aver}</echo>
@@ -60,7 +63,7 @@
   
   <target name="java.compile.test1" depends="fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/test1" />
-    <javac destdir="${build.tmp}/java/out/test1" fork="true" includeantruntime="false">
+    <javac destdir="${build.tmp}/java/out/test1" fork="true" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src />
       <classpath>
@@ -72,7 +75,7 @@
   <target name="layout.custom1">
     <mkdir dir="${build.tmp}/custom1/qas.zip" />
     <mkdir dir="${build.tmp}/custom1/qas.zip/a" />
-    <jar destfile="${build.tmp}/custom1/qas.zip/a/test1${buildCore.ver}.jar" />
+    <jar destfile="${build.tmp}/custom1/qas.zip/a/test1${buildCore.ver}.jar" duplicate="preserve" />
     <zip destfile="${build.layout.custom1}/qas.zip">
       <fileset dir="${build.tmp}/custom1/qas.zip" />
     </zip>

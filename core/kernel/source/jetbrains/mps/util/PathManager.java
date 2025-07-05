@@ -15,9 +15,13 @@
  */
 package jetbrains.mps.util;
 
+import jetbrains.mps.vfs.path.Path;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jdom.Document;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.annotations.Internal;
+import org.jetbrains.mps.annotations.Singleton;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -27,27 +31,29 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-
-public class PathManager {
+/**
+ * Responsible for different predefined paths in the distribution layout
+ */
+@Singleton
+public final class PathManager {
   private static final Logger LOG = LogManager.getLogger(PathManager.class);
 
   private static final String FILE = "file";
-  private static final String JAR = "jar";
+  public static final String JAR = "jar";
   private static final String JAR_DELIMITER = "!";
-  private static final String MPS_DASH = "mps-";
-  private static final String DOT_JAR = ".jar";
-  private static final String MODULES_PREFIX = "!/modules";
+  public static final String DOT_JAR = ".jar";
 
   private static final String PROTOCOL_DELIMITER = ":";
+  private static final String PLUGINS_PATH = "plugins";
+  private static final String PROPERTIES_FILE_NAME = "idea.properties";
+
   private static String ourHomePath;
   private static String ourIdeaPath;
 
-  private static final FilenameFilter MPS_JARS = new FilenameFilter() {
-    @Override
-    public boolean accept(File dir, String name) {
-      return name.startsWith(MPS_DASH) && name.endsWith(DOT_JAR);
-    }
-  };
+  public static final FilenameFilter JAR_FILE_FILTER = (dir, name) -> name.endsWith(DOT_JAR);
+
+  private PathManager() {
+  }
 
   public static String getHomePath() {
     if (ourHomePath != null) {
@@ -59,7 +65,7 @@ public class PathManager {
     File root = new File(rootPath);
     root = root.getAbsoluteFile();
 
-    if (rootPath.endsWith(".jar")) {
+    if (rootPath.endsWith(DOT_JAR)) {
       // {mps_home}/lib
       root = root.getParentFile();
       if (root != null) {
@@ -72,12 +78,19 @@ public class PathManager {
       }
     }
 
-
     ourHomePath = root.getAbsolutePath();
     if (ourHomePath.equals("/")) {
       throw new IllegalStateException("cannot detect MPS location");
     }
     return ourHomePath;
+  }
+
+  /**
+   * Defines whether we are starting from sources not from distribution
+   */
+  @Internal
+  public static boolean isFromSources() {
+    return !getContainingJar(PathManager.class).endsWith(Path.DOT_JAR);
   }
 
   private static String getContainingJar(Class aClass) {
@@ -122,29 +135,50 @@ public class PathManager {
   }
 
   public static Collection<String> getBootstrapPaths() {
-    List<String> paths;
-    File lib = new File(getHomePath() + File.separator + "lib");
-    if (lib.exists() && lib.isDirectory()) {
-      paths = new ArrayList<String>();
-      for (File jar : lib.listFiles(MPS_JARS)) {
-        paths.add(jar.getAbsolutePath() + MODULES_PREFIX);
-      }
-      if (paths.size() > 0) {
-        return Collections.unmodifiableCollection(paths);
+    Collection<String> paths = getBootstrapPathsFromLibFolder();
+    if (new File(getCorePath()).exists()) {
+      paths.add(getCorePath());
+    }
+    if (new File(getEditorPath()).exists()) {
+      paths.add(getEditorPath());
+    }
+    return Collections.unmodifiableCollection(paths);
+  }
+
+  @NotNull
+  private static Collection<String> getBootstrapPathsFromLibFolder() {
+    List<String> paths = new ArrayList<String>();
+    File libDir = new File(getLibPath());
+    if (libDir.exists() && libDir.isDirectory()) {
+      for (File jar : libDir.listFiles(JAR_FILE_FILTER)) {
+        paths.add(jar.getAbsolutePath());
       }
     }
-    paths = new ArrayList<String>(2);
-    paths.add(getHomePath() + File.separator + "core");
-    paths.add(getHomePath() + File.separator + "editor");
-    return Collections.unmodifiableCollection(paths);
+    return paths;
+  }
+
+  private static String getLibPath() {
+    return getHomePath() + File.separator + "lib";
   }
 
   public static String getLanguagesPath() {
     return getHomePath() + File.separator + "languages";
   }
 
+  public static String getWorkbenchPath() {
+    return getHomePath() + File.separator + "workbench";
+  }
+
+  public static String getCorePath() {
+    return getHomePath() + File.separator + "core";
+  }
+
+  public static String getEditorPath() {
+    return getHomePath() + File.separator + "editor";
+  }
+
   private static boolean isMpsDir(File file) {
-    return new File(file, "build.number").exists();
+    return new File(file, "bin" + File.separator + PROPERTIES_FILE_NAME).exists();
   }
 
   /**
@@ -196,5 +230,13 @@ public class PathManager {
 
     resultPath = resultPath != null ? StringUtil.replace(resultPath, "%20", " ") : null;
     return resultPath;
+  }
+
+  public static String getPreInstalledPluginsPath() {
+    return getHomePath() + File.separator + PLUGINS_PATH;
+  }
+
+  public static String getUserDir() {
+    return System.getProperty("user.dir");
   }
 }

@@ -4,23 +4,28 @@ package jetbrains.mps.lang.editor.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum AlignEnum {
   left("left", "LEFT"),
   right("right", "RIGHT"),
   center("center", "CENTER");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private AlignEnum(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<AlignEnum> getConstants() {
     List<AlignEnum> list = ListSequence.fromList(new LinkedList<AlignEnum>());
     ListSequence.fromList(list).addElement(AlignEnum.left);
@@ -28,11 +33,9 @@ public enum AlignEnum {
     ListSequence.fromList(list).addElement(AlignEnum.center);
     return list;
   }
-
   public static AlignEnum getDefault() {
     return AlignEnum.left;
   }
-
   public static AlignEnum parseValue(String value) {
     if (value == null) {
       return AlignEnum.getDefault();
@@ -47,16 +50,5 @@ public enum AlignEnum {
       return AlignEnum.center;
     }
     return AlignEnum.getDefault();
-  }
-
-  private String myValue;
-
-  AlignEnum(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

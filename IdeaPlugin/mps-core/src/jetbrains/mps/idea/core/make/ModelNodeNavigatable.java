@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,25 +24,21 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.facet.MPSFacet;
 import jetbrains.mps.idea.core.facet.MPSFacetType;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
-import jetbrains.mps.project.ProjectOperationContext;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.smodel.SNodeId;
+import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.SModelFqName;
-import jetbrains.mps.smodel.SModelRepository;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ModelNodeNavigatable implements Navigatable {
 
-  private String modelName;
-  private String nodeId;
-  private Project project;
-  private Module module;
+  private final String modelName;
+  private final String nodeId;
+  private final Project project;
+  private final Module module;
 
   public ModelNodeNavigatable(String modelName, String nodeId, Project project, Module module) {
     this.modelName = modelName;
@@ -53,42 +49,39 @@ public class ModelNodeNavigatable implements Navigatable {
 
   @Override
   public void navigate(final boolean requestFocus) {
-    ModelAccess.instance().runWriteInEDT(new Runnable() {
-      @Override
-      public void run() {
-        SModel model = lookupModel();
-        if (model == null) return;
-        SNode node = model.getNode(SNodeId.fromString(nodeId));
-        if (node != null) {
-          Project prj = project;
-          if (prj == null) {
-            prj = module.getProject();
-          }
-          ProjectOperationContext context = new ProjectOperationContext(ProjectHelper.toMPSProject(prj));
-          NavigationSupport.getInstance().openNode(context, node, requestFocus, true);
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(project);
+    mpsProject.getModelAccess().runWriteInEDT(() -> {
+      SModel model = lookupModel();
+      if (model == null) return;
+      SNode node = model.getNode(PersistenceFacade.getInstance().createNodeId(nodeId));
+      if (node != null) {
+        Project prj = project;
+        if (prj == null) {
+          prj = module.getProject();
         }
+        NavigationSupport.getInstance().openNode(mpsProject, node, requestFocus, true);
       }
     });
   }
 
   /**
    * Requires read action.
-   * @return
+   *
+   * @return model by name or {@code null}
    */
   public SModel lookupModel() {
-    ModelAccess.assertLegalRead();
+    SRepository repository = ProjectHelper.getProjectRepository(project);
+    assert repository.getModelAccess().canRead();
     SModel model = null;
     if (module != null) {
       MPSFacet facet = FacetManager.getInstance(module).getFacetByType(MPSFacetType.ID);
-      SModelRepository smrepo = SModelRepository.getInstance();
-      for (SModel smd: smrepo.getModelDescriptors(facet.getSolution())) {
-        if (SModelStereotype.withoutStereotype(smd.getReference().getModelName()).equals(modelName)) {
+      for (SModel smd : facet.getSolution().getModels()) {
+        if (smd.getName().getLongName().equals(modelName)) {
           model = smd;
         }
       }
-    }
-    else {
-      model = SModelRepository.getInstance().getModelDescriptor(modelName);
+    } else {
+      model = new ModuleRepositoryFacade(repository).getModelByName(modelName);
     }
     return model;
   }
@@ -103,11 +96,11 @@ public class ModelNodeNavigatable implements Navigatable {
     return true;
   }
 
-  public static final Pattern TRANS_MODEL = Pattern.compile("\\[(\\d+)\\].*\\s([a-zA-Z_][a-zA-Z_0-9.]*)@(\\d+_\\d+)");
-  public static final Pattern SOURCE_MODEL = Pattern.compile("\\[(\\d+)\\].*\\sin\\s+([a-zA-Z_][a-zA-Z_0-9.]*)");
+  private static final Pattern TRANS_MODEL = Pattern.compile("\\[(\\d+)\\].*\\s([a-zA-Z_][a-zA-Z_0-9.]*)@(\\d+_\\d+)");
+  private static final Pattern SOURCE_MODEL = Pattern.compile("\\[(\\d+)\\].*\\sin\\s+([a-zA-Z_][a-zA-Z_0-9.]*)");
 
 
-  public static ModelNodeNavigatable extractNavigatable (String errorMsg, Project project, Module module) {
+  public static ModelNodeNavigatable extractNavigatable(String errorMsg, Project project, Module module) {
     if (errorMsg == null) return null;
 
     Matcher matcher = TRANS_MODEL.matcher(errorMsg);

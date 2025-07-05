@@ -4,7 +4,7 @@ package jetbrains.mps.lang.plugin.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum Keymap {
   Mac_OS_X("Mac OS X", "Mac OS X"),
@@ -14,16 +14,21 @@ public enum Keymap {
   KDE("KDE", "Default for KDE"),
   Default("Default", "$default");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private Keymap(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<Keymap> getConstants() {
     List<Keymap> list = ListSequence.fromList(new LinkedList<Keymap>());
     ListSequence.fromList(list).addElement(Keymap.Mac_OS_X);
@@ -34,11 +39,9 @@ public enum Keymap {
     ListSequence.fromList(list).addElement(Keymap.Default);
     return list;
   }
-
   public static Keymap getDefault() {
     return Keymap.Default;
   }
-
   public static Keymap parseValue(String value) {
     if (value == null) {
       return Keymap.getDefault();
@@ -62,16 +65,5 @@ public enum Keymap {
       return Keymap.Default;
     }
     return Keymap.getDefault();
-  }
-
-  private String myValue;
-
-  Keymap(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

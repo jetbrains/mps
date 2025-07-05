@@ -5,31 +5,27 @@ package jetbrains.mps.vcs.changesmanager.tree.features;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 public class PropertyFeature extends AbstractNodeFeature {
   private String myPropertyName;
-
   public PropertyFeature(@NotNull SNodeReference nodePointer, @NotNull String propertyName) {
     super(nodePointer);
     myPropertyName = propertyName;
   }
-
   @NotNull
   public String getPropertyName() {
     return myPropertyName;
   }
-
   @Nullable
   @Override
-  public Feature getParent() {
+  protected Feature getParent(SRepository repo) {
     return new PropertiesFeature(getNodePointer());
   }
-
   @Override
   public boolean equals(Object object) {
     return super.equals(object) && this.myPropertyName.equals(((PropertyFeature) object).myPropertyName);
   }
-
   @Override
   @NotNull
   public String toString() {

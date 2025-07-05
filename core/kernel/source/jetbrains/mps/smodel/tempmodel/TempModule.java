@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,19 @@
  */
 package jetbrains.mps.smodel.tempmodel;
 
-import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.smodel.MPSModuleOwner;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.module.SModuleId;
@@ -36,13 +39,19 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.Set;
 
-public class TempModule extends AbstractModule implements SModule, MPSModuleOwner {
+/**
+ * TODO: rewrite class loading functional : it must not extend ReloadableModuleBase and be maintained by ClassLoaderManager.
+ * TODO: it does not belong to any repository
+ */
+public class TempModule extends ReloadableModuleBase implements SModule, MPSModuleOwner {
+  private final static Logger LOG = LogManager.getLogger(TempModule.class);
   private final ModuleDescriptor myDescriptor;
-
-  private final IFile mySourceGen;
   private final JavaModuleFacet myJavaModuleFacet;
 
   public TempModule(Set<ModelRootDescriptor> modelRoots, boolean withSourceGen, boolean withJavaFacet) {
+    if (withSourceGen && !withJavaFacet) {
+      throw new IllegalArgumentException("Don't have GenerationTargetFacet implementation other than JavaModuleFacet handy, either write one or re-consider arguments");
+    }
     SModuleId id = ModuleId.regular();
     SModuleReference reference = new ModuleReference("TempModule" + id, id);
     setModuleReference(reference);
@@ -50,22 +59,25 @@ public class TempModule extends AbstractModule implements SModule, MPSModuleOwne
     myDescriptor.getModelRootDescriptors().addAll(modelRoots);
     dependenciesChanged();
 
-    if (withSourceGen) {
-      mySourceGen = createTempDirectory("TempModule_source_gen");
-    } else {
-      mySourceGen = null;
-    }
-
     if (withJavaFacet) {
+      IFile sourcesGen = withSourceGen ? createTempDirectory("TempModule_source_gen") : null;
       IFile classesGen = createTempDirectory("TempModule_classes_gen");
-      if (classesGen != null) {
-        myJavaModuleFacet = new TempModuleJavaFacet(classesGen);
-      } else {
-        myJavaModuleFacet = null;
-      }
+      myJavaModuleFacet = new TempModuleJavaFacet(sourcesGen, classesGen);
     } else {
       myJavaModuleFacet = null;
     }
+  }
+
+  @Override
+  public void reload() {
+    if (!willLoad()) return;
+    LOG.debug("Reloading temporary module " + this);
+    ClassLoaderManager.getInstance().reloadModule(this);
+  }
+
+  @Override
+  public boolean willLoad() {
+    return myJavaModuleFacet != null;
   }
 
   public boolean isHidden() {
@@ -77,14 +89,14 @@ public class TempModule extends AbstractModule implements SModule, MPSModuleOwne
     return false;
   }
 
-  @Override
-  public IFile getOutputPath() {
-    return mySourceGen;
-  }
-
+  @NotNull
   @Override
   public Iterable<SModuleFacet> getFacets() {
-    return myJavaModuleFacet != null ? Collections.<SModuleFacet>singleton(myJavaModuleFacet) : Collections.<SModuleFacet>emptySet();
+    return myJavaModuleFacet != null ? Collections.singleton(myJavaModuleFacet) : Collections.emptySet();
+  }
+
+  public String toString() {
+    return getModuleName() + " [temp module]";
   }
 
   @Override
@@ -92,7 +104,7 @@ public class TempModule extends AbstractModule implements SModule, MPSModuleOwne
     return myDescriptor;
   }
 
-  private static IFile createTempDirectory(String prefix) {
+  private IFile createTempDirectory(String prefix) {
     try {
       final File temp;
 
@@ -106,23 +118,37 @@ public class TempModule extends AbstractModule implements SModule, MPSModuleOwne
         throw new IOException("Could not create temp directory: " + temp.getAbsolutePath());
       }
 
-      return FileSystem.getInstance().getFileByPath(temp.getAbsolutePath());
+      return getFileSystem().getFile(temp.getAbsolutePath());
     } catch (IOException e) {
-      // todo: log
+      LOG.error(e.toString(), e);
       return null;
     }
   }
 
   private class TempModuleJavaFacet implements JavaModuleFacet {
+    private final IFile mySourceGen;
     private final IFile myClassesGen;
 
-    public TempModuleJavaFacet(IFile classesGen) {
-      this.myClassesGen = classesGen;
+    @NotNull
+    @Override
+    public String getFacetType() {
+      return FACET_TYPE;
+    }
+
+    public TempModuleJavaFacet(IFile sourceGen, IFile classesGen) {
+      mySourceGen = sourceGen;
+      myClassesGen = classesGen;
     }
 
     @Override
     public boolean isCompileInMps() {
       return true;
+    }
+
+    @Nullable
+    @Override
+    public IFile getOutputRoot() {
+      return mySourceGen;
     }
 
     @NotNull
@@ -146,6 +172,7 @@ public class TempModule extends AbstractModule implements SModule, MPSModuleOwne
       return Collections.emptySet();
     }
 
+    @NotNull
     @Override
     public SModule getModule() {
       return TempModule.this;

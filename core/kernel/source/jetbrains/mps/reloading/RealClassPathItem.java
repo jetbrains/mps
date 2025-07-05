@@ -15,12 +15,58 @@
  */
 package jetbrains.mps.reloading;
 
-import org.apache.log4j.Logger;
+import jetbrains.mps.util.iterable.IterableEnumeration;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.impl.IoFileSystem;
+import jetbrains.mps.vfs.path.UniPath;
 import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 public abstract class RealClassPathItem extends AbstractClassPathItem {
+  private static Logger LOG = LogManager.getLogger(RealClassPathItem.class);
+
+  private static final jetbrains.mps.vfs.openapi.FileSystem FS = IoFileSystem.INSTANCE;
+
   public abstract String getPath();
+
+  // relies on the fact that {@link #getResource(String)} returns unique resource for each name
+  @Override
+  public Enumeration<URL> getResources(String name) {
+    List<URL> result = new ArrayList<URL>();
+    URL resource = getResource(name);
+    if (resource != null) {
+      result.add(resource);
+    }
+    return new IterableEnumeration<URL>(result);
+  }
+
+  @NotNull
+  public static RealClassPathItem create(@NotNull String path, @Nullable String caller) {
+    IFile file = FS.getFile(path);
+    UniPath uniPath = file.toPath().toNormal();
+    if (!file.exists()) {
+      notifyNonExistentCP(caller, file, uniPath);
+      return new NonExistingClassPathItem(uniPath.toString());
+    } else if (file.isArchive()) {
+      return new JarFileClassPathItem(FS, uniPath.toString());
+    } else if (file.isDirectory()) {
+      return new FileClassPathItem(uniPath.toString());
+    } else if (file.isInArchive()) {
+      throw new IllegalArgumentException("Path variable `" + uniPath + "' points to the location inside the jar which is not supported");
+    } else {
+      throw new IllegalArgumentException("Path variable `" + uniPath + "' does not point to a directory or to a jar/zip location");
+    }
+  }
+
+  private static void notifyNonExistentCP(@Nullable String caller, IFile file, UniPath uniPath) {
+    String moduleString = caller == null ? "" : " in " + caller;
+    LOG.debug(String.format("Can't load class path item %s%s.%s", uniPath, moduleString, file.isDirectory() ? " Execute make in IDEA." : ""));
+  }
 }

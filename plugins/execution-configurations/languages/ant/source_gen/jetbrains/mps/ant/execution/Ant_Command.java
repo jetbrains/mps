@@ -6,6 +6,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.ExecutionException;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.execution.api.Java_Command;
 import jetbrains.mps.execution.api.commands.ListCommandPart;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -16,19 +18,16 @@ import jetbrains.mps.execution.api.commands.KeyValueCommandPart;
 import java.io.File;
 import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.reloading.CommonPaths;
+import jetbrains.mps.util.ClassType;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.execution.api.commands.CommandPart;
 import com.intellij.openapi.application.PathMacros;
 import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.generator.fileGenerator.FileGenerationUtil;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.project.facets.JavaModuleFacet;
 
 public class Ant_Command {
   private SNode myTarget_NodeINamedConcept;
@@ -36,38 +35,32 @@ public class Ant_Command {
   private String myOptions_String;
   private String myTargetName_String;
   private List<String> myMacroToDefine_ListString = null;
-
   public Ant_Command() {
   }
-
   public Ant_Command setTarget_NodeINamedConcept(SNode target) {
     if (target != null) {
       myTarget_NodeINamedConcept = target;
     }
     return this;
   }
-
   public Ant_Command setAntLocation_String(String antLocation) {
     if (antLocation != null) {
       myAntLocation_String = antLocation;
     }
     return this;
   }
-
   public Ant_Command setOptions_String(String options) {
     if (options != null) {
       myOptions_String = options;
     }
     return this;
   }
-
   public Ant_Command setTargetName_String(String targetName) {
     if (targetName != null) {
       myTargetName_String = targetName;
     }
     return this;
   }
-
   public Ant_Command setMacroToDefine_ListString(List<String> macroToDefine) {
     if (macroToDefine != null) {
       myMacroToDefine_ListString = macroToDefine;
@@ -76,28 +69,22 @@ public class Ant_Command {
   }
 
   public ProcessHandler createProcess(SNode project) throws ExecutionException {
-    String targetName = Ant_Command.getTargetName(myTarget_NodeINamedConcept);
+    SNode target = myTarget_NodeINamedConcept;
+    String targetName = SPropertyOperations.getString(target, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
     return new Ant_Command().setAntLocation_String(myAntLocation_String).setOptions_String(myOptions_String).setTargetName_String(targetName).createProcess(Ant_Command.getGeneratedFileName(project));
   }
-
   public ProcessHandler createProcess(String antFilePath) throws ExecutionException {
     String jdkHome = Java_Command.getJdkHome();
     if ((jdkHome == null || jdkHome.length() == 0)) {
       throw new ExecutionException("Could not find valid java home.");
     }
-    return new Java_Command().createProcess(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), new PropertyCommandPart("java.home", jdkHome), new PropertyCommandPart("ant.home", myAntLocation_String), new ListCommandPart(Sequence.fromIterable(Ant_Command.getMacroValues(myMacroToDefine_ListString)).toListSequence()), (((myOptions_String != null && myOptions_String.length() > 0) ?
-      myOptions_String + " " :
-      ""
-    )), new KeyValueCommandPart("-" + "f", new File(antFilePath)), (((myTargetName_String == null || myTargetName_String.length() == 0) ?
-      "" :
-      " " + myTargetName_String
-    )))), "org.apache.tools.ant.launch.Launcher", Ant_Command.getAntClassPath(myAntLocation_String));
+    return new Java_Command().createProcess(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), new PropertyCommandPart("java.home", jdkHome), new PropertyCommandPart("ant.home", myAntLocation_String), new ListCommandPart(Sequence.fromIterable(Ant_Command.getMacroValues(myMacroToDefine_ListString)).toListSequence()), (((myOptions_String != null && myOptions_String.length() > 0) ? myOptions_String + " " : "")), new KeyValueCommandPart("-" + "f", new File(antFilePath)), (((myTargetName_String == null || myTargetName_String.length() == 0) ? "" : " " + myTargetName_String)))), "org.apache.tools.ant.launch.Launcher", Ant_Command.getAntClassPath(myAntLocation_String));
   }
+
 
   private static String getDefaultAntHome() {
     return PathManager.getHomePath() + File.separator + "lib" + File.separator + "ant";
   }
-
   private static List<File> getAntClassPath(String antHome) throws ExecutionException {
     String antlib = antHome + File.separator + "lib";
     File antLibFile = new File(antlib);
@@ -112,11 +99,15 @@ public class Ant_Command {
       }
     }
 
-    ListSequence.fromList(classPath).addElement(new File(CommonPaths.getToolsJar()));
+    List<String> mpsPaths = CommonPaths.getMPSPaths(ClassType.JDK_TOOLS);
+    ListSequence.fromList(classPath).addSequence(ListSequence.fromList(mpsPaths).select(new ISelector<String, File>() {
+      public File select(String it) {
+        return new File(it);
+      }
+    }));
 
     return classPath;
   }
-
   private static Iterable<CommandPart> getMacroValues(final List<String> toDefine) {
     final PathMacros pathMacros = PathMacros.getInstance();
     List<CommandPart> macroValues = ListSequence.fromList(new ArrayList<CommandPart>());
@@ -137,32 +128,13 @@ public class Ant_Command {
       }
     }));
   }
-
-  private static String getGeneratedFileName(final SNode project) {
-    final Wrappers._T<IFile> file = new Wrappers._T<IFile>();
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        file.value = FileGenerationUtil.getDefaultOutputDir(SNodeOperations.getModel(project), ((AbstractModule) SNodeOperations.getModel(project).getModule()).getOutputPath());
-        file.value = file.value.getDescendant(SPropertyOperations.getString(project, "name") + ".xml");
-      }
-    });
-    return file.value.getPath();
+  private static String getGeneratedFileName(SNode project) {
+    IFile file;
+    SModel model = SNodeOperations.getModel(project);
+    // XXX note, build scripts are copied/deployed to a different location with CopyGeneratedScripts, here we use origin, not the 'deployed' script location. 
+    file = model.getModule().getFacet(JavaModuleFacet.class).getOutputLocation(model);
+    file = file.getDescendant(SPropertyOperations.getString(project, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ".xml");
+    return file.getPath();
   }
 
-  private static String getTargetName(final SNode target) {
-    final Wrappers._T<String> name = new Wrappers._T<String>();
-    ModelAccess.instance().runReadAction(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<String>() {
-      public String invoke() {
-        return name.value = check_11bn_a0a0a0a1a4(target);
-      }
-    }));
-    return name.value;
-  }
-
-  private static String check_11bn_a0a0a0a1a4(SNode checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return SPropertyOperations.getString(checkedDotOperand, "name");
-    }
-    return null;
-  }
 }

@@ -15,39 +15,36 @@
  */
 package jetbrains.mps.plugins.applicationplugins;
 
-import com.intellij.ide.ui.customization.CustomActionsSchema;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.IdeActions;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.wm.ex.WindowManagerEx;
 import com.intellij.openapi.wm.impl.IdeFrameImpl;
-import jetbrains.mps.ide.IdeMain;
-import jetbrains.mps.ide.IdeMain.TestMode;
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.ide.actions.ModuleActions_ActionGroup;
 import jetbrains.mps.ide.projectPane.ProjectPaneActionGroups;
-import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.workbench.ActionPlace;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.workbench.action.BaseGroup;
 
-import javax.swing.SwingUtilities;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class GroupAdjuster {
-
   private static void addPlace(String groupId, ActionPlace place) {
     BaseGroup group = ActionUtils.getGroup(groupId);
-    if (group != null)
+    if (group != null) {
       group.addPlace(place, null);
+    }
   }
 
-  public static void adjustTopLevelGroups(BaseApplicationPlugin idePlugin) {
+  public static void adjustTopLevelGroups() {
     addPlace(ProjectPaneActionGroups.NODE_ACTIONS, ActionPlace.PROJECT_PANE_SNODE);
     addPlace(ProjectPaneActionGroups.MODEL_ACTIONS, ActionPlace.PROJECT_PANE_SMODEL);
     addPlace(ProjectPaneActionGroups.PROJECT_PANE_MODULE_ACTIONS, ActionPlace.PROJECT_PANE_MODULE);
@@ -71,7 +68,7 @@ public class GroupAdjuster {
 
     addPlace(ModuleActions_ActionGroup.ID, ActionPlace.MODULE_DEPENDENCIES);
 
-    DefaultActionGroup editorPopupGroup = ActionUtils.getDefaultGroup(EditorComponent.EDITOR_POPUP_MENU_ACTIONS);
+    DefaultActionGroup editorPopupGroup = ActionUtils.getDefaultGroup(MPSActions.EDITOR_POPUP_GROUP);
     List<AnAction> actionList = Arrays.asList(editorPopupGroup.getChildren(null));
     BaseGroup.addPlaceToActionList(actionList, ActionPlace.EDITOR, null);
 
@@ -79,15 +76,16 @@ public class GroupAdjuster {
     actionList = Arrays.asList(editorActionsGroup.getChildren(null));
     BaseGroup.addPlaceToActionList(actionList, ActionPlace.EDITOR, null);
 
-    List<BaseGroup> mainMenuGroups = new ArrayList<BaseGroup>();
+    List<BaseGroup> mainMenuGroups = new ArrayList<>();
     DefaultActionGroup mainMenuGroup = ActionUtils.getDefaultGroup(IdeActions.GROUP_MAIN_MENU);
     ActionManagerEx manager = ActionManagerEx.getInstanceEx();
     for (String id : manager.getActionIds("")) {
       AnAction action = manager.getAction(id);
-      if (!(action instanceof BaseGroup)) continue;
-      BaseGroup group = ((BaseGroup) action);
-      if (ActionUtils.contains(mainMenuGroup, group)) {
-        mainMenuGroups.add(group);
+      if ((action instanceof BaseGroup)) {
+        BaseGroup group = (BaseGroup) action;
+        if (ActionUtils.contains(mainMenuGroup, group)) {
+          mainMenuGroups.add(group);
+        }
       }
     }
 
@@ -98,15 +96,8 @@ public class GroupAdjuster {
 
 
   public static void refreshCustomizations() {
-    if (!IdeMain.getTestMode().equals(TestMode.NO_TEST)) return;
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        CustomActionsSchema schema = CustomActionsSchema.getInstance();
-        schema.resetMainActionGroups();
-        setCustomizationSchemaForCurrentProjects();
-      }
-    });
+    if (!RuntimeFlags.isTestMode()) return;
+    ApplicationManager.getApplication().invokeLater(GroupAdjuster::setCustomizationSchemaForCurrentProjects);
   }
 
   private static void setCustomizationSchemaForCurrentProjects() {

@@ -4,173 +4,92 @@ package jetbrains.mps.lang.smodel.generator.smodelAdapter;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.util.NameUtil;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import java.util.Set;
-import java.util.LinkedHashSet;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactoryByName;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public interface IAttributeDescriptor {
-  public boolean match(@NotNull SNode attribute);
-  public void update(@NotNull SNode attribute);
-
-  public static class AttributeDescriptor implements IAttributeDescriptor {
-    protected SNode myAttributeDeclaration;
-
-    public AttributeDescriptor(SNode attributeDeclaration) {
-      myAttributeDeclaration = attributeDeclaration;
+  boolean match(@NotNull SNode attribute);
+  void update(@NotNull SNode attribute);
+  class AttributeDescriptor implements IAttributeDescriptor {
+    protected SAbstractConcept myAttributeConcept;
+    public AttributeDescriptor(@Nullable SAbstractConcept attributeConceptName) {
+      myAttributeConcept = attributeConceptName;
     }
-
     @Override
     public boolean match(@NotNull SNode attribute) {
-      return myAttributeDeclaration == null || SNodeOperations.isInstanceOf(attribute, NameUtil.nodeFQName(myAttributeDeclaration));
+      return myAttributeConcept == null || SNodeOperations.isInstanceOf(attribute, myAttributeConcept);
     }
-
     @Override
     public void update(@NotNull SNode attribute) {
     }
   }
-
-  public static class AllAttributes extends IAttributeDescriptor.AttributeDescriptor {
+  class AllAttributes extends IAttributeDescriptor.AttributeDescriptor {
     public AllAttributes() {
-      super(null);
+      super((SAbstractConcept) null);
     }
   }
-
-  public static class NodeAttribute extends IAttributeDescriptor.AttributeDescriptor {
-    public NodeAttribute(@NotNull SNode attributeDeclaration) {
+  class NodeAttribute extends IAttributeDescriptor.AttributeDescriptor {
+    public NodeAttribute(@NotNull SConcept attributeDeclaration) {
       super(attributeDeclaration);
     }
   }
-
-  public static class LinkAttribute extends IAttributeDescriptor.AttributeDescriptor {
-    private String myLinkRole;
-
-    public LinkAttribute(@NotNull SNode attributeDeclaration, String linkRole) {
+  class LinkAttribute extends IAttributeDescriptor.AttributeDescriptor {
+    private SReferenceLink myLink;
+    public LinkAttribute(@NotNull SConcept attributeDeclaration, SReferenceLink link) {
       super(attributeDeclaration);
-      myLinkRole = linkRole;
+      myLink = link;
     }
-
     @Override
     public boolean match(@NotNull SNode attribute) {
-      return super.match(attribute) && (myLinkRole == null || myLinkRole.equals(SNodeAccessUtil.getProperty(attribute, "linkRole")));
+      return super.match(attribute) && (myLink == null || myLink.equals(AttributeOperations.getLink(attribute)));
     }
-
     @Override
     public void update(@NotNull SNode attribute) {
-      SNodeAccessUtil.setProperty(attribute, "linkRole", myLinkRole);
-    }
-  }
-
-  public static class PropertyAttribute extends IAttributeDescriptor.AttributeDescriptor {
-    private String myPropertyName;
-
-    public PropertyAttribute(@NotNull SNode attributeDeclaration, String propertyName) {
-      super(attributeDeclaration);
-      myPropertyName = propertyName;
-    }
-
-    @Override
-    public boolean match(@NotNull SNode attribute) {
-      return super.match(attribute) && (myPropertyName == null || myPropertyName.equals(SNodeAccessUtil.getProperty(attribute, "propertyName")));
-    }
-
-    @Override
-    public void update(@NotNull SNode attribute) {
-      SNodeAccessUtil.setProperty(attribute, "propertyName", myPropertyName);
-    }
-  }
-
-  public static class AttributeDescriptorString implements IAttributeDescriptor {
-    protected String myAttributeRole;
-
-    public AttributeDescriptorString(String attributeRole) {
-      // todo: remove all usages of *String descriptors - it's useless without sources for example 
-      myAttributeRole = attributeRole;
-    }
-
-    @Override
-    public boolean match(@NotNull SNode attribute) {
-      return myAttributeRole == null || myAttributeRole.equals(getAttributeRole(SNodeOperations.getConceptDeclaration(attribute)));
-    }
-
-    @Override
-    public void update(@NotNull SNode attribute) {
-    }
-
-    @Nullable
-    private static String getAttributeRole(SNode attributeDeclaration) {
-      return SPropertyOperations.getString(AttributeOperations.getAttribute(SetSequence.fromSet(getSuperConcepts(attributeDeclaration)).findFirst(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return isNotEmpty_6oitxt_a0a0a0a0a0a0a0e7(SPropertyOperations.getString(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.structure.structure.AttributeInfo"))), "role"));
-        }
-      }), new IAttributeDescriptor.NodeAttribute(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.structure.structure.AttributeInfo"))), "role");
-    }
-
-    private static Set<SNode> getSuperConcepts(SNode conceptDeclaration) {
-      Set<SNode> concepts = SetSequence.fromSet(new LinkedHashSet<SNode>());
-      while ((conceptDeclaration != null) && !(SetSequence.fromSet(concepts).contains(conceptDeclaration))) {
-        SetSequence.fromSet(concepts).addElement(conceptDeclaration);
-        conceptDeclaration = SLinkOperations.getTarget(conceptDeclaration, "extends", false);
+      // todo: remove this hack after removing string constructor 
+      if (myLink.getOwner().getQualifiedName().equals(MetaIdFactory.INVALID_CONCEPT_NAME) && attribute.getParent() != null) {
+        myLink = MetaAdapterFactoryByName.getReferenceLink(attribute.getParent().getConcept().getQualifiedName(), myLink.getName());
       }
-      return concepts;
-    }
-
-    public static boolean isNotEmpty_6oitxt_a0a0a0a0a0a0a0e7(String str) {
-      return str != null && str.length() > 0;
+      AttributeOperations.setLink(attribute, myLink);
     }
   }
-
-  public static class NodeAttributeString extends IAttributeDescriptor.AttributeDescriptorString {
-    public NodeAttributeString(String attributeRole) {
-      super(attributeRole);
+  class ChildAttribute extends IAttributeDescriptor.AttributeDescriptor {
+    private SContainmentLink myLink;
+    public ChildAttribute(@NotNull SConcept attributeDeclaration, SContainmentLink link) {
+      super(attributeDeclaration);
+      myLink = link;
     }
-
     @Override
     public boolean match(@NotNull SNode attribute) {
-      return SNodeOperations.isInstanceOf(attribute, "jetbrains.mps.lang.core.structure.NodeAttribute") && super.match(attribute);
+      return super.match(attribute) && (myLink == null || myLink.equals(AttributeOperations.getChildLink(attribute)));
     }
-  }
-
-  public static class LinkAttributeString extends IAttributeDescriptor.AttributeDescriptorString {
-    private String myLinkRole;
-
-    public LinkAttributeString(String attributeRole, String linkRole) {
-      super(attributeRole);
-      myLinkRole = linkRole;
-    }
-
-    @Override
-    public boolean match(@NotNull SNode attribute) {
-      SNode attr = SNodeOperations.as(attribute, "jetbrains.mps.lang.core.structure.LinkAttribute");
-      return (attr != null) && super.match(attr) && (myLinkRole == null || myLinkRole.equals(SPropertyOperations.getString(attr, "linkRole")));
-    }
-
     @Override
     public void update(@NotNull SNode attribute) {
-      SPropertyOperations.set(SNodeOperations.as(attribute, "jetbrains.mps.lang.core.structure.LinkAttribute"), "linkRole", myLinkRole);
+      AttributeOperations.setLink(attribute, myLink);
     }
   }
-
-  public static class PropertyAttributeString extends IAttributeDescriptor.AttributeDescriptorString {
-    private String myPropertyName;
-
-    public PropertyAttributeString(String attributeRole, String propertyName) {
-      super(attributeRole);
-      myPropertyName = propertyName;
+  class PropertyAttribute extends IAttributeDescriptor.AttributeDescriptor {
+    private SProperty myProperty;
+    public PropertyAttribute(@NotNull SConcept attributeDeclaration, @NotNull SProperty property) {
+      super(attributeDeclaration);
+      myProperty = property;
     }
-
     @Override
     public boolean match(@NotNull SNode attribute) {
-      SNode attr = SNodeOperations.as(attribute, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-      return (attr != null) && super.match(attr) && (myPropertyName == null || myPropertyName.equals(SPropertyOperations.getString(attr, "propertyName")));
+      return super.match(attribute) && (myProperty == null || myProperty.equals(AttributeOperations.getProperty(attribute)));
     }
-
     @Override
     public void update(@NotNull SNode attribute) {
-      SPropertyOperations.set(SNodeOperations.as(attribute, "jetbrains.mps.lang.core.structure.PropertyAttribute"), "propertyName", myPropertyName);
+      // todo: remove this hack after removing string constructor 
+      if (myProperty.getOwner().getQualifiedName().equals(MetaIdFactory.INVALID_CONCEPT_NAME) && attribute.getParent() != null) {
+        myProperty = MetaAdapterFactoryByName.getProperty(attribute.getParent().getConcept().getQualifiedName(), myProperty.getName());
+      }
+      AttributeOperations.setProperty(attribute, myProperty);
     }
   }
 }

@@ -19,7 +19,6 @@ package org.jetbrains.mps.openapi.language;
  * Represents an option in an enumeration
  */
 public interface SEnumerationLiteral {
-
   /**
    * The owning enumeration
    */

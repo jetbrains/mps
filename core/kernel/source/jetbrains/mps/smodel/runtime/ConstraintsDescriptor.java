@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,36 +16,82 @@
 package jetbrains.mps.smodel.runtime;
 
 import jetbrains.mps.smodel.IOperationContext;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public interface ConstraintsDescriptor {
-  String getConceptFqName();
 
-  boolean canBeChild(@Nullable SNode node, SNode parentNode, SNode link, @Deprecated SNode childConcept, IOperationContext operationContext, @Nullable CheckingNodeContext checkingNodeContext);
+  SAbstractConcept getConcept();
 
-  boolean canBeRoot(SModel model, IOperationContext operationContext, @Nullable CheckingNodeContext checkingNodeContext);
+  boolean canBeChild(@NotNull ConstraintContext_CanBeChild context, @Nullable CheckingNodeContext checkingNodeContext);
 
-  boolean canBeParent(SNode node, @Nullable SNode childNode, SNode childConcept, SNode link, IOperationContext operationContext, @Nullable CheckingNodeContext checkingNodeContext);
+  boolean canBeRoot(@NotNull ConstraintContext_CanBeRoot context, @Nullable CheckingNodeContext checkingNodeContext);
 
-  boolean canBeAncestor(SNode node, @Nullable SNode childNode, SNode childConcept, IOperationContext operationContext, @Nullable CheckingNodeContext checkingNodeContext);
+  boolean canBeParent(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext);
 
-  @NotNull
-  PropertyConstraintsDescriptor getProperty(String name);
+  boolean canBeAncestor(@NotNull ConstraintContext_CanBeAncestor context, @Nullable CheckingNodeContext checkingNodeContext);
 
-  @NotNull
-  ReferenceConstraintsDescriptor getReference(String refName);
+  /**
+   *
+   * @deprecated use {@link #canBeChild(ConstraintContext_CanBeChild, CheckingNodeContext)} instead
+   */
+  @Deprecated
+  @ToRemove(version = 3.5)
+  boolean canBeChild(@Nullable SNode node, SNode parentNode, @Deprecated SNode link, @Deprecated SNode childConcept, IOperationContext operationContext,
+      @Nullable CheckingNodeContext checkingNodeContext);
+
+  /**
+   *
+   * @deprecated use {@link #canBeRoot(ConstraintContext_CanBeRoot, CheckingNodeContext)} instead
+   */
+  @Deprecated
+  @ToRemove(version = 3.5)
+  boolean canBeRoot(@NotNull SModel model, IOperationContext operationContext, @Nullable CheckingNodeContext checkingNodeContext);
+
+  /**
+   *
+   * @deprecated use {@link #canBeParent(ConstraintContext_CanBeParent, CheckingNodeContext)} instead
+   */
+  @Deprecated
+  @ToRemove(version = 3.5)
+  boolean canBeParent(SNode node, @Nullable SNode childNode, @Deprecated SNode childConcept, @Deprecated SNode link, IOperationContext operationContext,
+      @Nullable CheckingNodeContext checkingNodeContext);
+
+  /**
+   *
+   * @deprecated use {@link #canBeAncestor(ConstraintContext_CanBeAncestor, CheckingNodeContext)} instead
+   */
+  @Deprecated
+  @ToRemove(version = 3.5)
+  boolean canBeAncestor(SNode node, @Nullable SNode childNode, @Deprecated SNode childConcept, SNode parentNode, @Deprecated SNode link,
+      IOperationContext operationContext, @Nullable CheckingNodeContext checkingNodeContext);
+
+  PropertyConstraintsDescriptor getProperty(SProperty property);
+
+  ReferenceConstraintsDescriptor getReference(SReferenceLink referenceLink);
 
   @Nullable
   ReferenceScopeProvider getDefaultScopeProvider();
 
+  @Nullable
+    // by convention inheritance for this methods not works
+  IconResource getInstanceIcon(SNode node);
+
+  // FIXME why default_CONCRETE_concept is SAbstractConcept? Need to check generated code and make sure it's SConcept at generation time
+  SAbstractConcept getDefaultConcreteConcept();
+
   // todo: remove/move this methods
   // by convention inheritance for this methods not works
   // null if icon not alternative
+  @Deprecated
+  @ToRemove(version = 3.4)
   @Nullable
   String getAlternativeIcon(SNode node);
-
-  String getDefaultConcreteConceptFqName();
 }

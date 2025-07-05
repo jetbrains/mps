@@ -26,7 +26,7 @@ import java.awt.Point;
 import com.intellij.util.ui.UIUtil;
 import java.awt.Dimension;
 import com.intellij.ui.awt.RelativePoint;
-import jetbrains.mps.ide.generator.GenerationSettings;
+import jetbrains.mps.generator.GenerationSettingsProvider;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.notification.impl.NotificationSettings;
 import jetbrains.mps.make.MakeNotification;
@@ -51,11 +51,13 @@ public class TransientModelBallonDisplayer implements Disposable {
 
   @Override
   public void dispose() {
-    IMakeService.INSTANCE.get().removeListener(myMakeNotificationListener);
+    if (IMakeService.INSTANCE.hasMakeService()) {
+      IMakeService.INSTANCE.get().removeListener(myMakeNotificationListener);
+    }
   }
 
   private void ensureRegistered() {
-    if (!(NotificationsConfigurationImpl.getNotificationsConfigurationImpl().isRegistered(ID))) {
+    if (!(NotificationsConfigurationImpl.getInstanceImpl().isRegistered(ID))) {
       NotificationsConfiguration.getNotificationsConfiguration().register(ID, NotificationDisplayType.BALLOON, false);
     }
   }
@@ -72,11 +74,11 @@ public class TransientModelBallonDisplayer implements Disposable {
 
     Disposer.register(this, balloon);
 
-    Component component = check_45eojt_a0j0i(myWidget);
+    Component component = check_45eojt_a0j0n(myWidget);
     if (component != null && component.isShowing()) {
       showForComponent(component, balloon);
     } else {
-      component = check_45eojt_a0a0a01a8(WindowManager.getInstance().getStatusBar(myProject));
+      component = check_45eojt_a0a0a01a31(WindowManager.getInstance().getStatusBar(myProject));
       if (component != null && component.isShowing()) {
         showForComponent(component, balloon);
       } else {
@@ -93,7 +95,7 @@ public class TransientModelBallonDisplayer implements Disposable {
   }
 
   private void showBallon() {
-    if (!(GenerationSettings.getInstance().isSaveTransientModels()) || !(isPopupShown())) {
+    if (!(GenerationSettingsProvider.getInstance().getGenerationSettings().isSaveTransientModels()) || !(isPopupShown())) {
       return;
     }
     ApplicationManager.getApplication().invokeLater(new Runnable() {
@@ -111,7 +113,7 @@ public class TransientModelBallonDisplayer implements Disposable {
   }
 
   public static boolean isPopupShown() {
-    if (!(NotificationsConfigurationImpl.getNotificationsConfigurationImpl().SHOW_BALLOONS)) {
+    if (!(NotificationsConfigurationImpl.getInstanceImpl().SHOW_BALLOONS)) {
       return false;
     }
     NotificationDisplayType displayType = NotificationsConfigurationImpl.getSettings(ID).getDisplayType();
@@ -120,18 +122,13 @@ public class TransientModelBallonDisplayer implements Disposable {
 
   public static void setShowPopup(boolean show) {
     NotificationSettings settings = NotificationsConfigurationImpl.getSettings(ID);
-    settings.setDisplayType((show ?
-      NotificationDisplayType.BALLOON :
-      NotificationDisplayType.NONE
-    ));
+    settings.withDisplayType((show ? NotificationDisplayType.BALLOON : NotificationDisplayType.NONE));
   }
 
   private class MyMakeNotificationListener implements IMakeNotificationListener {
     private volatile boolean mySessionJustOpened;
-
     public MyMakeNotificationListener() {
     }
-
     @Override
     public void handleNotification(MakeNotification notification) {
       if (notification.getKind() == MakeNotification.Kind.SESSION_OPENED) {
@@ -145,32 +142,26 @@ public class TransientModelBallonDisplayer implements Disposable {
         mySessionJustOpened = false;
       }
     }
-
     @Override
     public void scriptAboutToStart(MakeNotification notification) {
     }
-
     @Override
     public void scriptFinished(MakeNotification notification) {
     }
-
     @Override
     public void sessionOpened(MakeNotification notification) {
     }
-
     @Override
     public void sessionClosed(MakeNotification notification) {
     }
   }
-
-  private static JComponent check_45eojt_a0j0i(TransientModelsWidget checkedDotOperand) {
+  private static JComponent check_45eojt_a0j0n(TransientModelsWidget checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getComponent();
     }
     return null;
   }
-
-  private static JComponent check_45eojt_a0a0a01a8(StatusBar checkedDotOperand) {
+  private static JComponent check_45eojt_a0a0a01a31(StatusBar checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getComponent();
     }

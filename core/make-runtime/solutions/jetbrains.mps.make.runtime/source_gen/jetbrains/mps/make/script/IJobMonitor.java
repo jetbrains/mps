@@ -4,36 +4,30 @@ package jetbrains.mps.make.script;
 
 
 public interface IJobMonitor {
-  public boolean stopRequested();
+  boolean stopRequested();
   /**
    * Progress monitor is passed as a method parameter
    * 
    * @return dummy IProgress
    */
   @Deprecated
-  public IProgress currentProgress();
-  public void reportFeedback(IFeedback fdbk);
-
-  public static class Stub implements IJobMonitor {
+  IProgress currentProgress();
+  void reportFeedback(IFeedback fdbk);
+  class Stub implements IJobMonitor {
     private IProgress pstub;
-
     public Stub(IProgress pstub) {
       this.pstub = pstub;
     }
-
     public Stub() {
       this.pstub = new IProgress.Stub();
     }
-
     @Override
     public IProgress currentProgress() {
       return pstub;
     }
-
     @Override
     public void reportFeedback(IFeedback fdbk) {
     }
-
     @Override
     public boolean stopRequested() {
       return false;

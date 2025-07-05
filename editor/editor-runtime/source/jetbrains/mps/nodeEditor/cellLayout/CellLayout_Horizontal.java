@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
-import jetbrains.mps.nodeEditor.cells.APICellAdapter;
+import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
@@ -28,11 +28,6 @@ public class CellLayout_Horizontal extends AbstractCellLayout {
 
   @Override
   public void doLayout(EditorCell_Collection editorCells) {
-    if (CellLayout_Indent_Old.DO_INDENT_EVERYWHERE) {
-      CellLayout_Indent_Old._doLayout(editorCells);
-      return;
-    }
-
     int width = 0;
     final int x = editorCells.getX();
     final int y = editorCells.getY();
@@ -41,14 +36,22 @@ public class CellLayout_Horizontal extends AbstractCellLayout {
     int topInset = 0;
     int bottomInset = 0;
 
+    boolean isInsideGird = editorCells.getParent() != null && editorCells.getParent().getCellLayout() instanceof CellLayout_Vertical &&
+        ((CellLayout_Vertical) editorCells.getParent().getCellLayout()).isGridLayout();
 
     for (EditorCell editorCell : editorCells) {
       PunctuationUtil.addGaps(editorCell, false, false);
-
-      editorCell.moveTo(x + width, editorCell.getY());
+      if (isInsideGird) {
+        /**
+         * X coordinates & widths of child cells should be later calculated by
+         * containing CellLayout_Vertical layout if {@link isInsideGird}
+         */
+        editorCell.moveTo(x, editorCell.getY());
+      } else {
+        editorCell.moveTo(x + width, editorCell.getY());
+      }
       editorCell.relayout();
       width += editorCell.getWidth();
-
 
       ascent = Math.max(ascent, editorCell.getAscent());
       descent = Math.max(descent, editorCell.getDescent());
@@ -63,14 +66,15 @@ public class CellLayout_Horizontal extends AbstractCellLayout {
 
     for (EditorCell editorCell : editorCells) {
       editorCell.setBaseline(baseline);
+      editorCell.relayout();
     }
   }
 
   @Override
   public TextBuilder doLayoutText(Iterable<EditorCell> editorCells) {
-    TextBuilder result = jetbrains.mps.nodeEditor.text.TextBuilder.getEmptyTextBuilder();
+    TextBuilder result = new TextBuilderImpl();
     for (EditorCell editorCell : editorCells) {
-      result = result.appendToTheRight(editorCell.renderText(), PunctuationUtil.hasLeftGap(editorCell));
+      result.appendToTheRight(editorCell.renderText(), PunctuationUtil.hasLeftGap(editorCell));
     }
     return result;
   }

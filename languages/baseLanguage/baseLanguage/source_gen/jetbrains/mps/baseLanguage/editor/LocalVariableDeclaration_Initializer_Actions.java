@@ -7,41 +7,54 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.openapi.editor.EditorComponent;
-import jetbrains.mps.nodeEditor.cells.CellConditions;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 
 public class LocalVariableDeclaration_Initializer_Actions {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new LocalVariableDeclaration_Initializer_Actions.LocalVariableDeclaration_Initializer_Actions_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new LocalVariableDeclaration_Initializer_Actions.LocalVariableDeclaration_Initializer_Actions_BACKSPACE(node));
   }
-
   public static class LocalVariableDeclaration_Initializer_Actions_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public LocalVariableDeclaration_Initializer_Actions_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public String getDescriptionText() {
-      return "remove initializer";
+      return "delete";
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SNodeOperations.detachNode(SLinkOperations.getTarget(node, "initializer", true));
-      editorContext.flushEvents();
-      EditorComponent editor = editorContext.getEditorComponent();
-      EditorCell nodeCell = editor.findNodeCell(node);
-      EditorCell lastSelectable = ((jetbrains.mps.nodeEditor.cells.EditorCell) nodeCell).getLastLeaf(CellConditions.SELECTABLE);
-      editor.changeSelection(lastSelectable);
-      if (lastSelectable instanceof EditorCell_Label) {
-        ((EditorCell_Label) lastSelectable).end();
+      if (SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")) != null) {
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")));
+        SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.LAST_CELL, -1);
+      } else {
+        SNodeOperations.deleteNode(node);
+      }
+    }
+  }
+  public static class LocalVariableDeclaration_Initializer_Actions_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public LocalVariableDeclaration_Initializer_Actions_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public String getDescriptionText() {
+      return "delete";
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      if (SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")) != null) {
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")));
+        SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.LAST_CELL, -1);
+      } else {
+        SNodeOperations.deleteNode(node);
       }
     }
   }

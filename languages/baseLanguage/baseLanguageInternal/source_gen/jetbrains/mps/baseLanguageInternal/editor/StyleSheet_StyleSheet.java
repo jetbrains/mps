@@ -4,50 +4,81 @@ package jetbrains.mps.baseLanguageInternal.editor;
 
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.MPSFonts;
-import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.BracketStyleClass;
 
 public class StyleSheet_StyleSheet {
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getInternalKeyword(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-    return style;
+  public static void apply_InternalKeyword(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new StyleSheet_StyleSheet.InternalKeywordStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getInternalName(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-    return style;
+  public static void apply_InternalName(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new StyleSheet_StyleSheet.InternalNameStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getSquareBracket(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getBracket(editorCell));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-    style.set(StyleAttributes.SELECTABLE, false);
-    return style;
+  public static void apply_SquareBracket(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new StyleSheet_StyleSheet.SquareBracketStyleClass(editorContext, node).apply(style, editorCell);
   }
 
-  public static void applyInternalKeyword(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-  }
+  public static class InternalKeywordStyleClass extends AbstractStyleClass {
+    public InternalKeywordStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyInternalName(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-  }
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+    }
 
-  public static void applySquareBracket(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyBracket(style, editorCell);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-    style.set(StyleAttributes.SELECTABLE, false);
+  }
+  public static class InternalNameStyleClass extends AbstractStyleClass {
+    public InternalNameStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    }
+
+  }
+  public static class SquareBracketStyleClass extends AbstractStyleClass {
+    public SquareBracketStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new BracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
+      style.set(StyleAttributes.SELECTABLE, false);
+    }
+
   }
 }

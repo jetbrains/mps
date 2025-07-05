@@ -8,23 +8,24 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.util.Set;
-import jetbrains.mps.util.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
+import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.PropertySupport;
-import jetbrains.mps.MPSCore;
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
 import org.jetbrains.mps.openapi.model.SReference;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.DynamicReference;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
-import java.util.HashSet;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.LongestCommonSubsequenceFinder;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
@@ -33,15 +34,19 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.vcs.diff.changes.DependencyChange;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISequence;
+import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.vcs.diff.changes.ImportedModelChange;
 import jetbrains.mps.vcs.diff.changes.ModuleDependencyChange;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import java.util.Collection;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.vcs.diff.changes.UsedLanguageChange;
+import jetbrains.mps.vcs.diff.changes.EngagedLanguageChange;
 import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.vcs.diff.changes.DoNotGenerateOptionChange;
-import jetbrains.mps.vcs.diff.changes.ModelVersionChange;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
+import java.util.Set;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 
 public class ChangeSetBuilder {
@@ -61,65 +66,55 @@ public class ChangeSetBuilder {
   }
 
   private void buildForProperties(SNode oldNode, SNode newNode) {
-    Set<String> oldProperties = (Set<String>) SNodeOperations.getProperties(oldNode).keySet();
-    Set<String> newProperties = (Set<String>) SNodeOperations.getProperties(newNode).keySet();
-    for (String name : SetSequence.fromSet(oldProperties).union(SetSequence.fromSet(newProperties))) {
-      buildForProperty(oldNode, newNode, name);
+    Iterable<SProperty> oldProperties = oldNode.getProperties();
+    Iterable<SProperty> newProperties = newNode.getProperties();
+    for (SProperty p : Sequence.fromIterable(oldProperties).union(Sequence.fromIterable(newProperties))) {
+      buildForProperty(oldNode, newNode, p);
     }
   }
 
-  public void buildForProperty(SNode oldNode, SNode newNode, String name) {
+  public void buildForProperty(SNode oldNode, SNode newNode, SProperty property) {
     PropertySupport propertySupport = new ChangeSetBuilder.DefaultPropertySupport();
-    if (!(MPSCore.getInstance().isMergeDriverMode())) {
-      SNode propertyDeclaration = ((jetbrains.mps.smodel.SNode) oldNode).getPropertyDeclaration(name);
-      if (propertyDeclaration != null) {
-        propertySupport = PropertySupport.getPropertySupport(propertyDeclaration);
-      }
+    if (!(RuntimeFlags.isMergeDriverMode())) {
+      propertySupport = PropertySupport.getPropertySupport(property);
     }
-
-    String oldPresentableValue = propertySupport.fromInternalValue(oldNode.getProperty(name));
-    String newPresentableValue = propertySupport.fromInternalValue(newNode.getProperty(name));
+    String oldPresentableValue = propertySupport.fromInternalValue(oldNode.getProperty(property));
+    String newPresentableValue = propertySupport.fromInternalValue(newNode.getProperty(property));
     if (!(EqualUtil.equals(oldPresentableValue, newPresentableValue))) {
-      ListSequence.fromList(myNewChanges).addElement(new SetPropertyChange(myChangeSet, oldNode.getNodeId(), name, newNode.getProperty(name)));
+      ListSequence.fromList(myNewChanges).addElement(new SetPropertyChange(myChangeSet, oldNode.getNodeId(), property, newNode.getProperty(property)));
     }
   }
 
   private void buildForReferences(SNode oldNode, SNode newNode) {
     List<SReference> oldReferences = (List<SReference>) oldNode.getReferences();
     List<SReference> newReferences = (List<SReference>) newNode.getReferences();
-    for (String role : ListSequence.fromList(oldReferences).concat(ListSequence.fromList(newReferences)).select(new ISelector<SReference, String>() {
-      public String select(SReference r) {
-        return r.getRole();
+    for (SReferenceLink role : ListSequence.fromList(oldReferences).concat(ListSequence.fromList(newReferences)).select(new ISelector<SReference, SReferenceLink>() {
+      public SReferenceLink select(SReference r) {
+        return r.getLink();
       }
     }).distinct()) {
       buildForReference(oldNode, newNode, role);
     }
   }
 
-  public void buildForReference(SNode oldNode, SNode newNode, String role) {
+  public void buildForReference(SNode oldNode, SNode newNode, SReferenceLink role) {
     SReference oldReference = oldNode.getReference(role);
     SReference newReference = newNode.getReference(role);
-    SNodeId oldTargetId = (oldReference instanceof DynamicReference ?
-      null :
-      check_nbyrtw_a0a2a9(oldReference)
-    );
-    SNodeId newTargetId = (newReference instanceof DynamicReference ?
-      null :
-      check_nbyrtw_a0a3a9(newReference)
-    );
-    SModelReference oldTargetModel = check_nbyrtw_a0e0j(oldReference);
-    if (jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getModel(oldNode).getReference().equals(oldTargetModel)) {
+    SNodeId oldTargetId = (oldReference instanceof DynamicReference ? null : check_nbyrtw_a0a2a51(oldReference));
+    SNodeId newTargetId = (newReference instanceof DynamicReference ? null : check_nbyrtw_a0a3a51(newReference));
+    SModelReference oldTargetModel = check_nbyrtw_a0e0p(oldReference);
+    if (SNodeOperations.getModel(oldNode).getReference().equals(oldTargetModel)) {
       oldTargetModel = null;
     }
-    SModelReference newTargetModel = check_nbyrtw_a0g0j(newReference);
-    if (jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getModel(newNode).getReference().equals(newTargetModel)) {
+    SModelReference newTargetModel = check_nbyrtw_a0g0p(newReference);
+    if (SNodeOperations.getModel(newNode).getReference().equals(newTargetModel)) {
       newTargetModel = null;
     }
-    if (eq_nbyrtw_a0a0i0j(oldTargetId, newTargetId) && eq_nbyrtw_a0a0i0j_0(oldTargetModel, newTargetModel) && eq_nbyrtw_a0a8a9(check_nbyrtw_a0a8a9(((jetbrains.mps.smodel.SReference) oldReference)), check_nbyrtw_a0a8a9_0(((jetbrains.mps.smodel.SReference) newReference)))) {
+    if (eq_nbyrtw_a0a0i0p(oldTargetId, newTargetId) && eq_nbyrtw_a0a0i0p_0(oldTargetModel, newTargetModel) && eq_nbyrtw_a0a8a51(check_nbyrtw_a0a8a51(((jetbrains.mps.smodel.SReference) oldReference)), check_nbyrtw_a0a8a51_0(((jetbrains.mps.smodel.SReference) newReference)))) {
       // same references 
     } else {
-      SModelReference targetModel = check_nbyrtw_a0a0a8a9(newReference);
-      ListSequence.fromList(myNewChanges).addElement(new SetReferenceChange(myChangeSet, oldNode.getNodeId(), role, targetModel, newTargetId, check_nbyrtw_f0a0a1a0i0j(((jetbrains.mps.smodel.SReference) newReference))));
+      SModelReference targetModel = check_nbyrtw_a0a0a8a51(newReference);
+      ListSequence.fromList(myNewChanges).addElement(new SetReferenceChange(myChangeSet, oldNode.getNodeId(), role, targetModel, newTargetId, check_nbyrtw_f0a0a1a0i0p(((jetbrains.mps.smodel.SReference) newReference))));
     }
   }
 
@@ -134,21 +129,21 @@ public class ChangeSetBuilder {
       buildForProperties(oldNode, newNode);
       buildForReferences(oldNode, newNode);
 
-      for (String role : SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getChildren(oldNode)).concat(ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getChildren(newNode))).select(new ISelector<SNode, String>() {
-        public String select(SNode ch) {
-          return jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getContainingLinkRole(ch);
+      for (SContainmentLink role : ListSequence.fromList(SNodeOperations.getChildren(oldNode)).concat(ListSequence.fromList(SNodeOperations.getChildren(newNode))).select(new ISelector<SNode, SContainmentLink>() {
+        public SContainmentLink select(SNode ch) {
+          return ch.getContainmentLink();
         }
-      }))) {
+      }).distinct()) {
         buildForNodeRole(oldNode, newNode, role);
       }
     }
   }
 
-  private void buildForNodeRole(SNode oldNode, SNode newNode, String role) {
+  private void buildForNodeRole(SNode oldNode, SNode newNode, SContainmentLink role) {
     buildForNodeRole(IterableUtil.asList(oldNode.getChildren(role)), IterableUtil.asList(newNode.getChildren(role)), oldNode.getNodeId(), role);
   }
 
-  public void buildForNodeRole(final List<? extends SNode> oldChildren, List<? extends SNode> newChildren, SNodeId parentId, String role) {
+  public void buildForNodeRole(final List<? extends SNode> oldChildren, List<? extends SNode> newChildren, SNodeId parentId, SContainmentLink role) {
     List<SNodeId> oldIds = ListSequence.fromList(oldChildren).select(new ISelector<SNode, SNodeId>() {
       public SNodeId select(SNode n) {
         return n.getNodeId();
@@ -186,9 +181,9 @@ public class ChangeSetBuilder {
     Iterable<D> added;
     Iterable<D> deleted;
     {
-      Tuples._2<Iterable<D>, Iterable<D>> _tmp_nbyrtw_c0n = getAddedAndDeleted(referencesExtractor);
-      added = _tmp_nbyrtw_c0n._0();
-      deleted = _tmp_nbyrtw_c0n._1();
+      Tuples._2<Iterable<D>, Iterable<D>> _tmp_nbyrtw_c0x = getAddedAndDeleted(referencesExtractor);
+      added = _tmp_nbyrtw_c0x._0();
+      deleted = _tmp_nbyrtw_c0x._1();
     }
     ListSequence.fromList(myNewChanges).addSequence(Sequence.fromIterable(added).select(new ISelector<D, DependencyChange>() {
       public DependencyChange select(D r) {
@@ -203,13 +198,9 @@ public class ChangeSetBuilder {
   }
 
   private void buildForImports() {
-    _FunctionTypes._return_P1_E0<? extends Iterable<SModelReference>, ? super SModelBase> importedModelsExtractor = new _FunctionTypes._return_P1_E0<ISequence<SModelReference>, SModelBase>() {
-      public ISequence<SModelReference> invoke(SModelBase model) {
-        return ListSequence.fromList(((List<jetbrains.mps.smodel.SModel.ImportElement>) model.importedModels())).select(new ISelector<jetbrains.mps.smodel.SModel.ImportElement, SModelReference>() {
-          public SModelReference select(jetbrains.mps.smodel.SModel.ImportElement ie) {
-            return ie.getModelReference();
-          }
-        });
+    _FunctionTypes._return_P1_E0<? extends Iterable<SModelReference>, ? super SModelBase> importedModelsExtractor = new _FunctionTypes._return_P1_E0<List<SModelReference>, SModelBase>() {
+      public List<SModelReference> invoke(SModelBase model) {
+        return SModelOperations.getImportedModelUIDs(model);
       }
     };
     _FunctionTypes._return_P2_E0<? extends ImportedModelChange, ? super SModelReference, ? super Boolean> changeCreator = new _FunctionTypes._return_P2_E0<ImportedModelChange, SModelReference, Boolean>() {
@@ -229,37 +220,50 @@ public class ChangeSetBuilder {
     buildAddedAndDeletedDependencies(referencesExtractor, changeCreator);
   }
 
+  private void buildForUsedLanguages() {
+    buildAddedAndDeletedDependencies(new _FunctionTypes._return_P1_E0<Collection<SLanguage>, SModelBase>() {
+      public Collection<SLanguage> invoke(SModelBase m) {
+        return m.importedLanguageIds();
+      }
+    }, new _FunctionTypes._return_P2_E0<UsedLanguageChange, SLanguage, Boolean>() {
+      public UsedLanguageChange invoke(SLanguage l, Boolean deleted) {
+        return new UsedLanguageChange(myChangeSet, deleted, l);
+      }
+    });
+  }
+
+  private void buildForLanguagesEngagedOnGeneration() {
+    buildAddedAndDeletedDependencies(new _FunctionTypes._return_P1_E0<Collection<SLanguage>, SModelBase>() {
+      public Collection<SLanguage> invoke(SModelBase m) {
+        return m.getLanguagesEngagedOnGeneration();
+      }
+    }, new _FunctionTypes._return_P2_E0<EngagedLanguageChange, SLanguage, Boolean>() {
+      public EngagedLanguageChange invoke(SLanguage l, Boolean deleted) {
+        return new EngagedLanguageChange(myChangeSet, deleted, l);
+      }
+    });
+  }
+
   private void buildForMetadata() {
     buildForImports();
 
-    buildForDependencies(ModuleDependencyChange.DependencyType.USED_LANG, new _FunctionTypes._return_P1_E0<List<SModuleReference>, SModelBase>() {
-      public List<SModuleReference> invoke(SModelBase model) {
-        return model.importedLanguages();
-      }
-    });
+    buildForUsedLanguages();
     buildForDependencies(ModuleDependencyChange.DependencyType.USED_DEVKIT, new _FunctionTypes._return_P1_E0<List<SModuleReference>, SModelBase>() {
       public List<SModuleReference> invoke(SModelBase model) {
         return model.importedDevkits();
       }
     });
-    buildForDependencies(ModuleDependencyChange.DependencyType.LANG_ENGAGED_ON_GENERATION, new _FunctionTypes._return_P1_E0<List<SModuleReference>, SModelBase>() {
-      public List<SModuleReference> invoke(SModelBase model) {
-        return model.engagedOnGenerationLanguages();
-      }
-    });
+    buildForLanguagesEngagedOnGeneration();
 
     if (myNewModel instanceof GeneratableSModel && myOldModel instanceof GeneratableSModel) {
       if (((GeneratableSModel) myNewModel).isDoNotGenerate() != ((GeneratableSModel) myOldModel).isDoNotGenerate()) {
         ListSequence.fromList(myNewChanges).addElement(new DoNotGenerateOptionChange(myChangeSet));
       }
     }
-    if (as_nbyrtw_a0a0h0q(myNewModel, SModelBase.class).getVersion() != as_nbyrtw_a0a0h0q_0(myOldModel, SModelBase.class).getVersion()) {
-      ListSequence.fromList(myNewChanges).addElement(new ModelVersionChange(myChangeSet));
-    }
   }
 
   private void build(boolean withOpposite) {
-    Iterable<SNodeId> allRootIds = ListSequence.fromList(SModelOperations.getRoots(myOldModel, null)).concat(ListSequence.fromList(SModelOperations.getRoots(myNewModel, null))).select(new ISelector<SNode, SNodeId>() {
+    Iterable<SNodeId> allRootIds = ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(myOldModel, null)).concat(ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(myNewModel, null))).select(new ISelector<SNode, SNodeId>() {
       public SNodeId select(SNode n) {
         return n.getNodeId();
       }
@@ -296,7 +300,7 @@ public class ChangeSetBuilder {
   }
 
   private <D> Tuples._2<Iterable<D>, Iterable<D>> getAddedAndDeleted(_FunctionTypes._return_P1_E0<? extends Iterable<D>, ? super SModelBase> itemsExtractor) {
-    return getAddedAndDeleted(itemsExtractor.invoke(as_nbyrtw_a0a0a0v(myOldModel, SModelBase.class)), itemsExtractor.invoke(as_nbyrtw_a0b0a0v(myNewModel, SModelBase.class)));
+    return getAddedAndDeleted(itemsExtractor.invoke(as_nbyrtw_a0a0a0rb(myOldModel, SModelBase.class)), itemsExtractor.invoke(as_nbyrtw_a0b0a0rb(myNewModel, SModelBase.class)));
   }
 
   public static ModelChangeSet buildChangeSet(SModel oldModel, SModel newModel) {
@@ -323,8 +327,8 @@ public class ChangeSetBuilder {
     return new ChangeSetBuilder((ChangeSetImpl) changeSet);
   }
 
-  private static class DefaultPropertySupport extends PropertySupport {
-    private DefaultPropertySupport() {
+  /*package*/ static class DefaultPropertySupport extends PropertySupport {
+    /*package*/ DefaultPropertySupport() {
     }
 
     @Override
@@ -332,109 +336,67 @@ public class ChangeSetBuilder {
       return true;
     }
   }
-
-  private static SNodeId check_nbyrtw_a0a2a9(SReference checkedDotOperand) {
+  private static SNodeId check_nbyrtw_a0a2a51(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetNodeId();
     }
     return null;
   }
-
-  private static SNodeId check_nbyrtw_a0a3a9(SReference checkedDotOperand) {
+  private static SNodeId check_nbyrtw_a0a3a51(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetNodeId();
     }
     return null;
   }
-
-  private static SModelReference check_nbyrtw_a0e0j(SReference checkedDotOperand) {
+  private static SModelReference check_nbyrtw_a0e0p(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetSModelReference();
     }
     return null;
   }
-
-  private static SModelReference check_nbyrtw_a0g0j(SReference checkedDotOperand) {
+  private static SModelReference check_nbyrtw_a0g0p(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetSModelReference();
     }
     return null;
   }
-
-  private static String check_nbyrtw_a0a8a9(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static boolean eq_nbyrtw_a0a0i0p(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
+  }
+  private static boolean eq_nbyrtw_a0a0i0p_0(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
+  }
+  private static boolean eq_nbyrtw_a0a8a51(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
+  }
+  private static String check_nbyrtw_a0a8a51(jetbrains.mps.smodel.SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getResolveInfo();
     }
     return null;
   }
-
-  private static String check_nbyrtw_a0a8a9_0(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static String check_nbyrtw_a0a8a51_0(jetbrains.mps.smodel.SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getResolveInfo();
     }
     return null;
   }
-
-  private static SModelReference check_nbyrtw_a0a0a8a9(SReference checkedDotOperand) {
+  private static SModelReference check_nbyrtw_a0a0a8a51(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetSModelReference();
     }
     return null;
   }
-
-  private static String check_nbyrtw_f0a0a1a0i0j(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static String check_nbyrtw_f0a0a1a0i0p(jetbrains.mps.smodel.SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getResolveInfo();
     }
     return null;
   }
-
-  private static boolean eq_nbyrtw_a0a0i0j(Object a, Object b) {
-    return (a != null ?
-      a.equals(b) :
-      a == b
-    );
+  private static <T> T as_nbyrtw_a0a0a0rb(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
-
-  private static boolean eq_nbyrtw_a0a0i0j_0(Object a, Object b) {
-    return (a != null ?
-      a.equals(b) :
-      a == b
-    );
-  }
-
-  private static boolean eq_nbyrtw_a0a8a9(Object a, Object b) {
-    return (a != null ?
-      a.equals(b) :
-      a == b
-    );
-  }
-
-  private static <T> T as_nbyrtw_a0a0h0q(Object o, Class<T> type) {
-    return (type.isInstance(o) ?
-      (T) o :
-      null
-    );
-  }
-
-  private static <T> T as_nbyrtw_a0a0h0q_0(Object o, Class<T> type) {
-    return (type.isInstance(o) ?
-      (T) o :
-      null
-    );
-  }
-
-  private static <T> T as_nbyrtw_a0a0a0v(Object o, Class<T> type) {
-    return (type.isInstance(o) ?
-      (T) o :
-      null
-    );
-  }
-
-  private static <T> T as_nbyrtw_a0b0a0v(Object o, Class<T> type) {
-    return (type.isInstance(o) ?
-      (T) o :
-      null
-    );
+  private static <T> T as_nbyrtw_a0b0a0rb(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

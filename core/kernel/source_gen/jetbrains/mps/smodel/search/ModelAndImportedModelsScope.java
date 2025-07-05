@@ -5,42 +5,35 @@ package jetbrains.mps.smodel.search;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.IScope;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.SModelOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.util.Condition;
-import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 
 public class ModelAndImportedModelsScope extends AbstractSearchScope {
   private static final Logger LOG = LogManager.getLogger(ModelAndImportedModelsScope.class);
   private SModel myModel;
   private boolean myRootsOnly;
-  private IScope myScope;
   private List<SModel> myModels;
-
-  public ModelAndImportedModelsScope(SModel model, boolean rootsOnly, IScope scope) {
+  public ModelAndImportedModelsScope(SModel model, boolean rootsOnly) {
     myModel = model;
     myRootsOnly = rootsOnly;
-    myScope = scope;
   }
-
   @NotNull
   public List<SModel> getModels() {
     if (myModels == null) {
       if (myModel == null) {
         myModels = new ArrayList<SModel>(1);
       } else {
-        myModels = SModelOperations.allImportedModels(myModel, myScope);
+        myModels = SModelOperations.allImportedModels(myModel);
         myModels.add(0, myModel);
       }
     }
     return myModels;
   }
-
   @NotNull
   @Override
   public List<SNode> getNodes(Condition<SNode> condition) {
@@ -60,14 +53,9 @@ public class ModelAndImportedModelsScope extends AbstractSearchScope {
           if (model == null) {
             continue;
           }
-          if (condition instanceof IsInstanceCondition) {
-            IsInstanceCondition isInstance = (IsInstanceCondition) condition;
-            result.addAll(SNodeOperations.getModelFastFinder(model).getNodes(isInstance.getConceptFqName(), true));
-          } else {
-            for (SNode node : SNodeUtil.getDescendants(model)) {
-              if (condition.met(node)) {
-                result.add(node);
-              }
+          for (SNode node : SNodeUtil.getDescendants(model)) {
+            if (condition.met(node)) {
+              result.add(node);
             }
           }
         } catch (Throwable t) {

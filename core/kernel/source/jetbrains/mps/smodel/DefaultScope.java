@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,14 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.dependency.modules.LanguageDependenciesManager;
-import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.util.IterableUtil;
-import org.jetbrains.mps.openapi.model.SModel;
-
 import jetbrains.mps.project.DevKit;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.project.ModuleUtil;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.Deptype;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.util.CollectionUtil;
+import jetbrains.mps.util.IterableUtil;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
@@ -47,6 +44,7 @@ public abstract class DefaultScope extends BaseScope {
   private Set<Language> myUsedLanguages;
   private Set<DevKit> myUsedDevkits;
 
+  @NotNull
   @Override
   public Iterable<SModule> getModules() {
     Set<SModule> result = new HashSet<SModule>();
@@ -59,6 +57,7 @@ public abstract class DefaultScope extends BaseScope {
     return result;
   }
 
+  @NotNull
   @Override
   public Iterable<SModel> getModels() {
     List<SModel> result = new ArrayList<SModel>();
@@ -81,12 +80,7 @@ public abstract class DefaultScope extends BaseScope {
       return null;
     }
 
-    SModule module;
-    if (reference.getModuleId() != null) {
-      module = MPSModuleRepository.getInstance().getModule(reference.getModuleId());
-    } else {
-      module = MPSModuleRepository.getInstance().getModuleByFqName(reference.getModuleName());
-    }
+    SModule module = reference.resolve(MPSModuleRepository.getInstance());
 
     if (module == null) {
       return null;
@@ -108,7 +102,7 @@ public abstract class DefaultScope extends BaseScope {
       return null;
     }
 
-    SModel model = SModelRepository.getInstance().getModelDescriptor(reference.getModelId());
+    SModel model = reference.resolve(MPSModuleRepository.getInstance());
 
     if (model == null) {
       return null;
@@ -147,12 +141,15 @@ public abstract class DefaultScope extends BaseScope {
 
       myInitializationInProgress = true;
 
-      Set<SModule> initialModules = getInitialModules();
-      fillInDevkits(initialModules);
-      fillInLanguages();
-      fillInVisible(initialModules);
+      try {
+        Set<SModule> initialModules = getInitialModules();
+        fillInDevkits(initialModules);
+        fillInLanguages();
+        fillInVisible(initialModules);
+      } finally {
+        myInitializationInProgress = false;
+      }
 
-      myInitializationInProgress = false;
       myInitialized = true;
     }
   }
@@ -168,7 +165,7 @@ public abstract class DefaultScope extends BaseScope {
       myUsedLanguages.addAll(dk.getAllExportedLanguages());
     }
     for (Language l : new ArrayList<Language>(myUsedLanguages)) {
-      myUsedLanguages.addAll(LanguageDependenciesManager.getAllExtendedLanguages(l));
+      myUsedLanguages.addAll(l.getAllExtendedLanguages());
     }
   }
 
@@ -183,7 +180,9 @@ public abstract class DefaultScope extends BaseScope {
 
       ModuleDescriptor moduleDescriptor = ((AbstractModule) m).getModuleDescriptor();
       if (moduleDescriptor != null && moduleDescriptor.getUsedDevkits() != null) {
-        for (DevKit dk : ModuleUtil.refsToDevkits(moduleDescriptor.getUsedDevkits())) {
+        for (SModuleReference ref : moduleDescriptor.getUsedDevkits()) {
+          DevKit dk = ModuleRepositoryFacade.getInstance().getModule(ref, DevKit.class);
+          if (dk == null) continue;
           myUsedDevkits.add(dk);
           myUsedDevkits.addAll(dk.getAllExtendedDevkits());
         }

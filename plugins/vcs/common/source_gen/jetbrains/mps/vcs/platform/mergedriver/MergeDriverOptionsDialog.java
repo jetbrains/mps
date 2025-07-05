@@ -13,13 +13,13 @@ import java.awt.Dimension;
 import com.intellij.openapi.util.DimensionService;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
-import jetbrains.mps.smodel.ModelAccess;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.Action;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
+import jetbrains.mps.ide.ThreadUtils;
 
 public class MergeDriverOptionsDialog extends DialogWrapper {
   private JPanel myPanel = new JPanel(new GridLayout(0, 1));
@@ -30,7 +30,6 @@ public class MergeDriverOptionsDialog extends DialogWrapper {
   private MergeDriverOptionsDialog.InstallerCheckBox<GitRepositoriesInstaller> myGitRepos;
   private MergeDriverOptionsDialog.InstallerCheckBox<SvnInstaller> myCommonSvn;
   private MergeDriverOptionsDialog.InstallerCheckBox<SvnInstaller> myIdeSvn;
-
   public MergeDriverOptionsDialog(Project project) {
     super(project);
     setTitle("MPS VCS Add-ons");
@@ -65,36 +64,28 @@ public class MergeDriverOptionsDialog extends DialogWrapper {
 
     init();
   }
-
   @Nullable
   @Override
   protected JComponent createCenterPanel() {
     return myMainPanel;
   }
-
   @Override
   public String getDimensionServiceKey() {
     return "#jetbrains.mps.vcs.mergedriver.MergeDriverOptionDialog";
   }
-
   @Override
   protected void doOKAction() {
-    ModelAccess.instance().runWriteInEDT(new Runnable() {
-      public void run() {
-        myGitFixes.installIfNeeded();
-        myGitGlobal.installIfNeeded();
-        if (myGitGlobal.myInstaller.getCurrentState() == AbstractInstaller.State.INSTALLED) {
-          myGitRepos.installIfNeeded();
-        }
-        myCommonSvn.installIfNeeded();
-        if (myIdeSvn != null) {
-          myIdeSvn.installIfNeeded();
-        }
-        close(DialogWrapper.OK_EXIT_CODE);
-      }
-    });
+    myGitFixes.installIfNeeded();
+    myGitGlobal.installIfNeeded();
+    if (myGitGlobal.myInstaller.getCurrentState() == AbstractInstaller.State.INSTALLED) {
+      myGitRepos.installIfNeeded();
+    }
+    myCommonSvn.installIfNeeded();
+    if (myIdeSvn != null) {
+      myIdeSvn.installIfNeeded();
+    }
+    close(DialogWrapper.OK_EXIT_CODE);
   }
-
   @NotNull
   @Override
   protected Action[] createActions() {
@@ -103,32 +94,23 @@ public class MergeDriverOptionsDialog extends DialogWrapper {
     ListSequence.fromList(actions).addElement(getCancelAction());
     return ListSequence.fromList(actions).toGenericArray(Action.class);
   }
-
   private class InstallerCheckBox<I extends AbstractInstaller> extends JCheckBox {
     private I myInstaller;
-
     public InstallerCheckBox(I installer) {
-      super(installer.getActionTitle() + ((installer.getCurrentState() == AbstractInstaller.State.OUTDATED ?
-        " (update)" :
-        ""
-      )));
+      super(installer.getActionTitle() + ((installer.getCurrentState() == AbstractInstaller.State.OUTDATED ? " (update)" : "")));
       myInstaller = installer;
     }
-
     private void addIfNeeded() {
       AbstractInstaller.State currentState = myInstaller.getCurrentState();
       if (currentState != AbstractInstaller.State.NOT_ENABLED) {
         myPanel.add(this);
-        setText(myInstaller.getActionTitle() + ((currentState == AbstractInstaller.State.OUTDATED ?
-          " (update)" :
-          ""
-        )));
+        setText(myInstaller.getActionTitle() + ((currentState == AbstractInstaller.State.OUTDATED ? " (update)" : "")));
         setToolTipText(myInstaller.getActionTooltip());
         setSelected(currentState != AbstractInstaller.State.INSTALLED);
       }
     }
-
     private void installIfNeeded() {
+      assert ThreadUtils.isInEDT();
       if (isSelected() && isEnabled()) {
         myInstaller.install();
         MergeDriverNotification.getInstance(myProject).setNotificationsSuppressed(false);

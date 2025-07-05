@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,43 +16,27 @@
 package jetbrains.mps.smodel.runtime.base;
 
 import jetbrains.mps.smodel.SNodeUtil;
+import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
+import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptKind;
 
 import java.util.Set;
 
 public abstract class BaseConceptDescriptor implements ConceptDescriptor {
-  @Override
-  public boolean isAssignableTo(String toConceptFqName) {
-    return getAncestorsNames().contains(toConceptFqName);
-  }
 
   @Override
-  public boolean hasProperty(String name) {
-    return getPropertyNames().contains(name);
-  }
-
-  @Override
-  public boolean hasReference(String name) {
-    return getReferenceNames().contains(name);
-  }
-
-  @Override
-  public boolean hasChild(String name) {
-    return getChildrenNames().contains(name);
+  public boolean isAssignableTo(SConceptId conceptId) {
+    return getAncestorsIds().contains(conceptId);
   }
 
   @Override
   public ConceptKind getConceptKind() {
-    Set<String> ancestors = getAncestorsNames();
-    return ancestors.contains(SNodeUtil.concept_InterfacePart) ? ConceptKind.INTERFACE
-        : ancestors.contains(SNodeUtil.concept_ImplementationWithStubPart) ? ConceptKind.IMPLEMENTATION_WITH_STUB
-        : ancestors.contains(SNodeUtil.concept_ImplementationPart) ? ConceptKind.IMPLEMENTATION
+    // FIXME shall generate this information into ConceptDescriptorBuilder
+    Set<SConceptId> ancestors = getAncestorsIds();
+    return ancestors.contains(MetaIdHelper.getConcept(SNodeUtil.concept_InterfacePart)) ? ConceptKind.INTERFACE
+        : ancestors.contains(MetaIdHelper.getConcept(SNodeUtil.concept_ImplementationWithStubPart)) ? ConceptKind.IMPLEMENTATION_WITH_STUB
+        : ancestors.contains(MetaIdHelper.getConcept(SNodeUtil.concept_ImplementationPart)) ? ConceptKind.IMPLEMENTATION
         : ConceptKind.NORMAL;
-  }
-
-  @Override
-  public boolean isUnorderedChild(String name) {
-    return getUnorderedChildrenNames().contains(name);
   }
 }

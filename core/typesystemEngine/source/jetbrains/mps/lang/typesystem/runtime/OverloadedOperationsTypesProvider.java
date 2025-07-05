@@ -15,24 +15,35 @@
  */
 package jetbrains.mps.lang.typesystem.runtime;
 
+import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactoryByName;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.LogManager;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.SubtypingManager;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public abstract class OverloadedOperationsTypesProvider implements IOverloadedOpsTypesProvider {
   protected SNode myLeftOperandType;
   protected SNode myRightOperandType;
-  protected String myOperationConceptFQName;
+  @NotNull
+  protected SAbstractConcept myOperationConcept;
 
   protected boolean myLeftTypeIsExact = false;
   protected boolean myRightTypeIsExact = false;
   protected boolean myLeftIsStrong = false;
   protected boolean myRightIsStrong = false;
 
+  protected String myRuleModelId;
+  protected String myRuleNodeId;
 
   @Override
-  public String getApplicableConceptFQName() {
-    return myOperationConceptFQName;
+  public SAbstractConcept getApplicableConcept() {
+    return myOperationConcept;
   }
 
   @Override
@@ -75,5 +86,11 @@ public abstract class OverloadedOperationsTypesProvider implements IOverloadedOp
       return -1;
     }
     return 0;
+  }
+
+  @Override
+  public void reportConflict(IRuleConflictWarningProducer warningProducer) {
+    Logger.wrap(LogManager.getLogger(getApplicableConcept().getQualifiedName())).warning(
+        "conflicting rules for overloaded operation type detected " + String.valueOf(myLeftOperandType) + " and " + String.valueOf(myRightOperandType));
   }
 }

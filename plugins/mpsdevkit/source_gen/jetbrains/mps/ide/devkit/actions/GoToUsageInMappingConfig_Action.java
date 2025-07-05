@@ -6,23 +6,21 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.smodel.Generator;
-import org.jetbrains.annotations.NotNull;
-import org.apache.log4j.Priority;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.specific.MappingConfigFinder;
+import jetbrains.mps.smodel.Generator;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.SModelStereotype;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.ide.findusages.findalgorithm.finders.specific.MappingConfigFinder;
+import jetbrains.mps.ide.findusages.view.UsageToolOptions;
 import jetbrains.mps.ide.findusages.view.UsagesViewTool;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 
 public class GoToUsageInMappingConfig_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -32,76 +30,59 @@ public class GoToUsageInMappingConfig_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(false);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    if (!(SModelStereotype.isGeneratorModel(SNodeOperations.getModel(((SNode) MapSequence.fromMap(_params).get("node")))))) {
+    if (!(event.getData(MPSCommonDataKeys.CONTEXT_MODULE) instanceof Generator)) {
       return false;
     }
-    if ((SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))) == null)) {
+    if (SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)) == null || !(SModelStereotype.isGeneratorModel(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE))))) {
       return false;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))), "jetbrains.mps.lang.generator.structure.MappingConfiguration")) {
+    if ((SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)) == null)) {
       return false;
     }
-    if (!(((SModule) MapSequence.fromMap(_params).get("module")) instanceof Generator)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"))) {
       return false;
     }
     return true;
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        boolean enabled = this.isApplicable(event, _params);
-        this.setEnabledState(event.getPresentation(), enabled);
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "GoToUsageInMappingConfig", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("project", event.getData(PlatformDataKeys.PROJECT));
-    if (MapSequence.fromMap(_params).get("project") == null) {
-      return false;
+    {
+      Project p = event.getData(CommonDataKeys.PROJECT);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("module", event.getData(MPSCommonDataKeys.CONTEXT_MODULE));
-    if (MapSequence.fromMap(_params).get("module") == null) {
-      return false;
+    {
+      SModule p = event.getData(MPSCommonDataKeys.CONTEXT_MODULE);
+      if (p == null) {
+        return false;
+      }
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null) {
+      if (node == null) {
+        return false;
       }
-      MapSequence.fromMap(_params).put("node", node);
-    }
-    if (MapSequence.fromMap(_params).get("node") == null) {
-      return false;
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      MappingConfigFinder finder = new MappingConfigFinder(((Generator) ((SModule) MapSequence.fromMap(_params).get("module"))), SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))));
-      ((Project) MapSequence.fromMap(_params).get("project")).getComponent(UsagesViewTool.class).findUsages(FindUtils.makeProvider(finder), new SearchQuery(null), false, false, false, "No usages found");
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "GoToUsageInMappingConfig", t);
-      }
-    }
+    MappingConfigFinder finder = new MappingConfigFinder(((Generator) event.getData(MPSCommonDataKeys.CONTEXT_MODULE)), SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)));
+    UsageToolOptions opt = new UsageToolOptions().allowRunAgain(false).navigateIfSingle(true).forceNewTab(false);
+    UsagesViewTool.showUsages(event.getData(CommonDataKeys.PROJECT), FindUtils.makeProvider(finder), new SearchQuery(null), opt);
   }
-
-  protected static Logger LOG = LogManager.getLogger(GoToUsageInMappingConfig_Action.class);
 }

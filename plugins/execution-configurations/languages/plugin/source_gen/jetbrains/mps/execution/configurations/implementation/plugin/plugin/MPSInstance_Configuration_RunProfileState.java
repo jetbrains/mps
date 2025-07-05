@@ -24,7 +24,6 @@ import jetbrains.mps.util.FileUtil;
 import com.intellij.execution.ui.ConsoleView;
 import jetbrains.mps.execution.api.configurations.ConsoleCreator;
 import jetbrains.mps.ide.actions.StandaloneMPSStackTraceFilter;
-import jetbrains.mps.execution.api.configurations.ConsoleProcessListener;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionResult;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionConsole;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -37,20 +36,16 @@ public class MPSInstance_Configuration_RunProfileState extends DebuggerRunProfil
   private final MPSInstance_Configuration myRunConfiguration;
   @NotNull
   private final ExecutionEnvironment myEnvironment;
-
   public MPSInstance_Configuration_RunProfileState(@NotNull MPSInstance_Configuration configuration, @NotNull Executor executor, @NotNull ExecutionEnvironment environment) {
     myRunConfiguration = configuration;
     myEnvironment = environment;
   }
-
   public ConfigurationPerRunnerSettings getConfigurationSettings() {
     return null;
   }
-
   public RunnerSettings getRunnerSettings() {
     return null;
   }
-
   @Nullable
   public ExecutionResult execute(Executor executor, @NotNull ProgramRunner runner) throws ExecutionException {
     Project project = myEnvironment.getProject();
@@ -73,7 +68,7 @@ public class MPSInstance_Configuration_RunProfileState extends DebuggerRunProfil
     {
       ProcessHandler _processHandler = process;
       final ConsoleView _consoleView = console;
-      _processHandler.addProcessListener(new ConsoleProcessListener(_consoleView));
+      _consoleView.attachToProcess(_processHandler);
       return new DefaultExecutionResult(_processHandler, new DefaultExecutionConsole(_consoleView.getComponent(), new _FunctionTypes._void_P0_E0() {
         public void invoke() {
           _consoleView.dispose();
@@ -81,12 +76,10 @@ public class MPSInstance_Configuration_RunProfileState extends DebuggerRunProfil
       }));
     }
   }
-
   @NotNull
   public IDebuggerConfiguration getDebuggerConfiguration() {
     return Mps_Command.getDebuggerConfiguration();
   }
-
   public static boolean canExecute(String executorId) {
     if (DefaultRunExecutor.EXECUTOR_ID.equals(executorId)) {
       return true;

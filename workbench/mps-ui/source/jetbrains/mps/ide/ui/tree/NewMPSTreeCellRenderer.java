@@ -15,11 +15,21 @@
  */
 package jetbrains.mps.ide.ui.tree;
 
+import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.ide.util.ColorAndGraphicsUtil;
+import jetbrains.mps.openapi.editor.ColorConstants;
 
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTree;
+import javax.swing.UIManager;
 import javax.swing.tree.TreeCellRenderer;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.Graphics;
 
 
 public class NewMPSTreeCellRenderer extends JPanel implements TreeCellRenderer {
@@ -40,10 +50,10 @@ public class NewMPSTreeCellRenderer extends JPanel implements TreeCellRenderer {
     Color additionalForeground;
     setOpaque(false);
     if (selected) {
-      foreground = UIManager.getColor("Tree.selectionForeground");
+      foreground = hasFocus && !UIUtil.isUnderDarcula() ? UIUtil.getTreeSelectionForeground() : UIUtil.getTreeForeground();
       additionalForeground = foreground;
     } else {
-      foreground = UIManager.getColor("Tree.textForeground");
+      foreground = UIUtil.getTreeForeground();
       additionalForeground = Color.GRAY;
     }
     myMainTextLabel.setForeground(foreground);
@@ -108,9 +118,9 @@ public class NewMPSTreeCellRenderer extends JPanel implements TreeCellRenderer {
 
     if (myNode != null && myNode.getAggregatedErrorState() != ErrorState.NONE) {
       if (myNode.getAggregatedErrorState() == ErrorState.ERROR) {
-        g.setColor(Color.RED);
+        g.setColor(new Color(ColorConstants.ERROR));
       } else {
-        g.setColor(Color.YELLOW);
+        g.setColor(new Color(ColorConstants.WARNING));
       }
       ColorAndGraphicsUtil.drawWave(g, imageOffset, getWidth(), getHeight() - ColorAndGraphicsUtil.WAVE_HEIGHT - 1);
     }

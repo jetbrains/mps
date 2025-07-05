@@ -1,107 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <root nodeRef="r:d58d9938-2526-431c-a5fe-6bbbfeb64ac2(jetbrains.mps.vcs.util)/2874648801266796016" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:d58d9938-2526-431c-a5fe-6bbbfeb64ac2(jetbrains.mps.vcs.util)/3531370237489972135">
-    <nodeInfo nodeId="429607733396471353" fileName="MergeDriverBackupUtil.java" startLine="17" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="backupDirPath" />
-    <nodeInfo nodeId="3531370237489972167" fileName="MergeDriverBackupUtil.java" startLine="19" startPosition="34" endLine="20" endPosition="38" conceptFqName="jetbrains.mps.baseLanguage.structure.SingleLineComment" />
-    <nodeInfo nodeId="3531370237489972250" fileName="MergeDriverBackupUtil.java" startLine="23" startPosition="97" endLine="24" endPosition="41" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3531370237489972259" fileName="MergeDriverBackupUtil.java" startLine="25" startPosition="28" endLine="26" endPosition="126" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3531370237489972268" fileName="MergeDriverBackupUtil.java" startLine="27" startPosition="5" endLine="28" endPosition="39" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3531370237489972272" fileName="MergeDriverBackupUtil.java" startLine="28" startPosition="39" endLine="29" endPosition="110" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3531370237489972282" fileName="MergeDriverBackupUtil.java" startLine="29" startPosition="110" endLine="30" endPosition="109" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3531370237489972292" fileName="MergeDriverBackupUtil.java" startLine="30" startPosition="109" endLine="31" endPosition="121" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3531370237489972302" fileName="MergeDriverBackupUtil.java" startLine="31" startPosition="121" endLine="32" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3531370237489972310" fileName="MergeDriverBackupUtil.java" startLine="32" startPosition="75" endLine="33" endPosition="37" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3531370237489972316" fileName="MergeDriverBackupUtil.java" startLine="33" startPosition="37" endLine="34" endPosition="31" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3531370237489972320" fileName="MergeDriverBackupUtil.java" startLine="34" startPosition="31" endLine="35" endPosition="25" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3531370237489972323" fileName="MergeDriverBackupUtil.java" startLine="35" startPosition="25" endLine="36" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="3531370237489972338" fileName="MergeDriverBackupUtil.java" startLine="39" startPosition="119" endLine="40" endPosition="90" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3531370237489972354" fileName="MergeDriverBackupUtil.java" startLine="40" startPosition="90" endLine="41" endPosition="35" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3531370237489972369" fileName="MergeDriverBackupUtil.java" startLine="44" startPosition="117" endLine="45" endPosition="38" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3531370237489972375" fileName="MergeDriverBackupUtil.java" startLine="46" startPosition="32" endLine="47" endPosition="57" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3531370237489972384" fileName="MergeDriverBackupUtil.java" startLine="48" startPosition="5" endLine="49" endPosition="72" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3531370237489972392" fileName="MergeDriverBackupUtil.java" startLine="49" startPosition="72" endLine="50" endPosition="88" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3531370237489972406" fileName="MergeDriverBackupUtil.java" startLine="50" startPosition="88" endLine="51" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3531370237489972414" fileName="MergeDriverBackupUtil.java" startLine="51" startPosition="45" endLine="52" endPosition="14" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3531370237489972423" fileName="MergeDriverBackupUtil.java" startLine="53" startPosition="30" endLine="54" endPosition="52" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3531370237489972435" fileName="MergeDriverBackupUtil.java" startLine="54" startPosition="52" endLine="55" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3531370237489972438" fileName="MergeDriverBackupUtil.java" startLine="56" startPosition="5" endLine="57" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="429607733396471583" fileName="MergeDriverBackupUtil.java" startLine="60" startPosition="48" endLine="61" endPosition="25" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="429607733396471587" fileName="MergeDriverBackupUtil.java" startLine="64" startPosition="57" endLine="65" endPosition="25" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3531370237489972163" fileName="MergeDriverBackupUtil.java" startLine="19" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MergeDriverBackupUtil#()V" />
-    <nodeInfo nodeId="3531370237489972254" fileName="MergeDriverBackupUtil.java" startLine="24" startPosition="41" endLine="27" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="3531370237489972373" fileName="MergeDriverBackupUtil.java" startLine="45" startPosition="38" endLine="48" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="3531370237489972573" fileName="MergeDriverBackupUtil.java" startLine="60" startPosition="0" endLine="63" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getMergeBackupDirPath#()Ljava/lang/String;" />
-    <nodeInfo nodeId="429607733396471372" fileName="MergeDriverBackupUtil.java" startLine="64" startPosition="0" endLine="67" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="setMergeBackupDirPath#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="3531370237489972326" fileName="MergeDriverBackupUtil.java" startLine="39" startPosition="0" endLine="43" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="writeContentsToFile#([BLjava/lang/String;Ljava/io/File;Ljava/lang/String;)V" />
-    <nodeInfo nodeId="3531370237489972418" fileName="MergeDriverBackupUtil.java" startLine="52" startPosition="14" endLine="56" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.WhileStatement" />
-    <nodeInfo nodeId="3531370237489972240" fileName="MergeDriverBackupUtil.java" startLine="23" startPosition="0" endLine="38" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="zipModel#([[BLjava/lang/String;)Ljava/io/File;" />
-    <nodeInfo nodeId="3531370237489972359" fileName="MergeDriverBackupUtil.java" startLine="44" startPosition="0" endLine="59" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="chooseZipFileForModelLongName#(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;" />
-    <scopeInfo nodeId="3531370237489972166" fileName="MergeDriverBackupUtil.java" startLine="19" startPosition="34" endLine="20" endPosition="38" />
-    <scopeInfo nodeId="3531370237489972258" fileName="MergeDriverBackupUtil.java" startLine="25" startPosition="28" endLine="26" endPosition="126" />
-    <scopeInfo nodeId="3531370237489972374" fileName="MergeDriverBackupUtil.java" startLine="46" startPosition="32" endLine="47" endPosition="57" />
-    <scopeInfo nodeId="3531370237489972576" fileName="MergeDriverBackupUtil.java" startLine="60" startPosition="48" endLine="61" endPosition="25" />
-    <scopeInfo nodeId="429607733396471375" fileName="MergeDriverBackupUtil.java" startLine="64" startPosition="57" endLine="65" endPosition="25" />
-    <scopeInfo nodeId="3531370237489972337" fileName="MergeDriverBackupUtil.java" startLine="39" startPosition="119" endLine="41" endPosition="35">
-      <varInfo nodeId="3531370237489972339" varName="file" />
-    </scopeInfo>
-    <scopeInfo nodeId="3531370237489972422" fileName="MergeDriverBackupUtil.java" startLine="53" startPosition="30" endLine="55" endPosition="10" />
-    <scopeInfo nodeId="3531370237489972163" fileName="MergeDriverBackupUtil.java" startLine="19" startPosition="0" endLine="22" endPosition="0" />
-    <scopeInfo nodeId="3531370237489972573" fileName="MergeDriverBackupUtil.java" startLine="60" startPosition="0" endLine="63" endPosition="0" />
-    <scopeInfo nodeId="429607733396471372" fileName="MergeDriverBackupUtil.java" startLine="64" startPosition="0" endLine="67" endPosition="0">
-      <varInfo nodeId="429607733396471377" varName="path" />
-    </scopeInfo>
-    <scopeInfo nodeId="3531370237489972326" fileName="MergeDriverBackupUtil.java" startLine="39" startPosition="0" endLine="43" endPosition="0">
-      <varInfo nodeId="3531370237489972329" varName="contents" />
-      <varInfo nodeId="3531370237489972331" varName="name" />
-      <varInfo nodeId="3531370237489972335" varName="suffix" />
-      <varInfo nodeId="3531370237489972333" varName="tmpDir" />
-    </scopeInfo>
-    <scopeInfo nodeId="3531370237489972249" fileName="MergeDriverBackupUtil.java" startLine="23" startPosition="97" endLine="36" endPosition="19">
-      <varInfo nodeId="3531370237489972251" varName="shortFileName" />
-      <varInfo nodeId="3531370237489972269" varName="tmp" />
-      <varInfo nodeId="3531370237489972303" varName="zipfile" />
-    </scopeInfo>
-    <scopeInfo nodeId="3531370237489972368" fileName="MergeDriverBackupUtil.java" startLine="44" startPosition="117" endLine="57" endPosition="19">
-      <varInfo nodeId="3531370237489972370" varName="fileName" />
-      <varInfo nodeId="3531370237489972415" varName="i" />
-      <varInfo nodeId="3531370237489972385" varName="prefix" />
-      <varInfo nodeId="3531370237489972407" varName="zipfile" />
-    </scopeInfo>
-    <scopeInfo nodeId="3531370237489972240" fileName="MergeDriverBackupUtil.java" startLine="23" startPosition="0" endLine="38" endPosition="0">
-      <varInfo nodeId="3531370237489972243" varName="contents" />
-      <varInfo nodeId="3531370237489972246" varName="modelName" />
-    </scopeInfo>
-    <scopeInfo nodeId="3531370237489972359" fileName="MergeDriverBackupUtil.java" startLine="44" startPosition="0" endLine="59" endPosition="0">
-      <varInfo nodeId="3531370237489972360" varName="defaultFileName" />
-      <varInfo nodeId="3531370237489972363" varName="modelLongName" />
-    </scopeInfo>
-    <unitInfo nodeId="3531370237489972135" fileName="MergeDriverBackupUtil.java" startLine="16" startPosition="0" endLine="68" endPosition="0" unitName="jetbrains.mps.vcs.util.MergeDriverBackupUtil" />
+    <file name="MergeDriverBackupUtil.java">
+      <node id="429607733396471353" at="16,0,17,0" concept="8" trace="backupDirPath" />
+      <node id="3531370237489972167" at="17,34,18,38" concept="7" />
+      <node id="3531370237489972250" at="20,101,21,41" concept="5" />
+      <node id="3531370237489972259" at="22,28,23,74" concept="1" />
+      <node id="3531370237489972268" at="24,5,25,39" concept="5" />
+      <node id="3531370237489972272" at="25,39,26,110" concept="1" />
+      <node id="3531370237489972282" at="26,110,27,109" concept="1" />
+      <node id="3531370237489972292" at="27,109,28,121" concept="1" />
+      <node id="3531370237489972302" at="28,121,29,75" concept="5" />
+      <node id="3531370237489972310" at="29,75,30,37" concept="1" />
+      <node id="3531370237489972316" at="30,37,31,31" concept="1" />
+      <node id="3531370237489972320" at="31,31,32,25" concept="1" />
+      <node id="3531370237489972323" at="32,25,33,19" concept="6" />
+      <node id="3531370237489972338" at="35,119,36,90" concept="5" />
+      <node id="3531370237489972354" at="36,90,37,35" concept="1" />
+      <node id="3531370237489972369" at="39,117,40,38" concept="5" />
+      <node id="3531370237489972375" at="41,28,42,67" concept="1" />
+      <node id="3531370237489972384" at="43,5,44,72" concept="5" />
+      <node id="3531370237489972392" at="44,72,45,88" concept="1" />
+      <node id="3531370237489972406" at="45,88,46,45" concept="5" />
+      <node id="3531370237489972414" at="46,45,47,14" concept="5" />
+      <node id="3531370237489972423" at="48,30,49,52" concept="1" />
+      <node id="3531370237489972435" at="49,52,50,10" concept="1" />
+      <node id="3531370237489972438" at="51,5,52,19" concept="6" />
+      <node id="429607733396471583" at="54,48,55,25" concept="6" />
+      <node id="429607733396471587" at="57,57,58,25" concept="1" />
+      <node id="3531370237489972163" at="17,0,20,0" concept="0" trace="MergeDriverBackupUtil#()V" />
+      <node id="3531370237489972254" at="21,41,24,5" concept="3" />
+      <node id="3531370237489972373" at="40,38,43,5" concept="3" />
+      <node id="3531370237489972573" at="54,0,57,0" concept="9" trace="getMergeBackupDirPath#()Ljava/lang/String;" />
+      <node id="429607733396471372" at="57,0,60,0" concept="9" trace="setMergeBackupDirPath#(Ljava/lang/String;)V" />
+      <node id="3531370237489972326" at="35,0,39,0" concept="9" trace="writeContentsToFile#([BLjava/lang/String;Ljava/io/File;Ljava/lang/String;)V" />
+      <node id="3531370237489972418" at="47,14,51,5" concept="10" />
+      <node id="3531370237489972240" at="20,0,35,0" concept="9" trace="zipModel#([[BLorg/jetbrains/mps/openapi/model/SModelName;)Ljava/io/File;" />
+      <node id="3531370237489972359" at="39,0,54,0" concept="9" trace="chooseZipFileForModelLongName#(Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SModelName;)Ljava/io/File;" />
+      <scope id="3531370237489972166" at="17,34,18,38" />
+      <scope id="3531370237489972258" at="22,28,23,74" />
+      <scope id="3531370237489972374" at="41,28,42,67" />
+      <scope id="3531370237489972576" at="54,48,55,25" />
+      <scope id="429607733396471375" at="57,57,58,25" />
+      <scope id="3531370237489972337" at="35,119,37,35">
+        <var name="file" id="3531370237489972339" />
+      </scope>
+      <scope id="3531370237489972422" at="48,30,50,10" />
+      <scope id="3531370237489972163" at="17,0,20,0" />
+      <scope id="3531370237489972573" at="54,0,57,0" />
+      <scope id="429607733396471372" at="57,0,60,0">
+        <var name="path" id="429607733396471377" />
+      </scope>
+      <scope id="3531370237489972326" at="35,0,39,0">
+        <var name="contents" id="3531370237489972329" />
+        <var name="name" id="3531370237489972331" />
+        <var name="suffix" id="3531370237489972335" />
+        <var name="tmpDir" id="3531370237489972333" />
+      </scope>
+      <scope id="3531370237489972249" at="20,101,33,19">
+        <var name="shortFileName" id="3531370237489972251" />
+        <var name="tmp" id="3531370237489972269" />
+        <var name="zipfile" id="3531370237489972303" />
+      </scope>
+      <scope id="3531370237489972368" at="39,117,52,19">
+        <var name="fileName" id="3531370237489972370" />
+        <var name="i" id="3531370237489972415" />
+        <var name="prefix" id="3531370237489972385" />
+        <var name="zipfile" id="3531370237489972407" />
+      </scope>
+      <scope id="3531370237489972240" at="20,0,35,0">
+        <var name="contents" id="3531370237489972243" />
+        <var name="modelName" id="3531370237489972246" />
+      </scope>
+      <scope id="3531370237489972359" at="39,0,54,0">
+        <var name="defaultFileName" id="3531370237489972360" />
+        <var name="modelName" id="3531370237489972363" />
+      </scope>
+      <unit id="3531370237489972135" at="15,0,61,0" name="jetbrains.mps.vcs.util.MergeDriverBackupUtil" />
+    </file>
   </root>
   <root nodeRef="r:d58d9938-2526-431c-a5fe-6bbbfeb64ac2(jetbrains.mps.vcs.util)/3531370237490043789">
-    <nodeInfo nodeId="3531370237490043798" fileName="MergeVersion.java" startLine="11" startPosition="0" endLine="12" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.FieldDeclaration" propertyString="mySuffix" />
-    <nodeInfo nodeId="3531370237490043807" fileName="MergeVersion.java" startLine="13" startPosition="31" endLine="14" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3531370237490043815" fileName="MergeVersion.java" startLine="18" startPosition="29" endLine="19" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="3531370237490043801" fileName="MergeVersion.java" startLine="13" startPosition="0" endLine="16" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MergeVersion#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="3531370237490043811" fileName="MergeVersion.java" startLine="17" startPosition="0" endLine="21" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSuffix#()Ljava/lang/String;" />
-    <scopeInfo nodeId="3531370237490043806" fileName="MergeVersion.java" startLine="13" startPosition="31" endLine="14" endPosition="22" />
-    <scopeInfo nodeId="3531370237490043814" fileName="MergeVersion.java" startLine="18" startPosition="29" endLine="19" endPosition="20" />
-    <scopeInfo nodeId="3531370237490043801" fileName="MergeVersion.java" startLine="13" startPosition="0" endLine="16" endPosition="0">
-      <varInfo nodeId="3531370237490043804" varName="suffix" />
-    </scopeInfo>
-    <scopeInfo nodeId="3531370237490043811" fileName="MergeVersion.java" startLine="17" startPosition="0" endLine="21" endPosition="0" />
-    <unitInfo nodeId="3531370237490043789" fileName="MergeVersion.java" startLine="6" startPosition="0" endLine="22" endPosition="0" unitName="jetbrains.mps.vcs.util.MergeVersion" />
+    <file name="MergeVersion.java">
+      <node id="3531370237490043798" at="11,0,12,0" concept="2" trace="mySuffix" />
+      <node id="3531370237490043807" at="12,39,13,22" concept="1" />
+      <node id="3531370237490043815" at="16,29,17,20" concept="6" />
+      <node id="3531370237490043801" at="12,0,15,0" concept="0" trace="MergeVersion#(Ljava/lang/String;)V" />
+      <node id="3531370237490043811" at="15,0,19,0" concept="4" trace="getSuffix#()Ljava/lang/String;" />
+      <scope id="3531370237490043806" at="12,39,13,22" />
+      <scope id="3531370237490043814" at="16,29,17,20" />
+      <scope id="3531370237490043801" at="12,0,15,0">
+        <var name="suffix" id="3531370237490043804" />
+      </scope>
+      <scope id="3531370237490043811" at="15,0,19,0" />
+      <unit id="3531370237490043789" at="6,0,20,0" name="jetbrains.mps.vcs.util.MergeVersion" />
+    </file>
   </root>
   <root nodeRef="r:d58d9938-2526-431c-a5fe-6bbbfeb64ac2(jetbrains.mps.vcs.util)/3531370237490043817">
-    <nodeInfo nodeId="3531370237490043819" fileName="ModelVersion.java" startLine="7" startPosition="0" endLine="8" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSuffix#()Ljava/lang/String;" />
-    <scopeInfo nodeId="3531370237490043819" fileName="ModelVersion.java" startLine="7" startPosition="0" endLine="8" endPosition="0" />
-    <unitInfo nodeId="3531370237490043817" fileName="ModelVersion.java" startLine="6" startPosition="0" endLine="9" endPosition="0" unitName="jetbrains.mps.vcs.util.ModelVersion" />
+    <file name="ModelVersion.java">
+      <node id="3531370237490043819" at="7,0,8,0" concept="4" trace="getSuffix#()Ljava/lang/String;" />
+      <scope id="3531370237490043819" at="7,0,8,0" />
+      <unit id="3531370237490043817" at="6,0,9,0" name="jetbrains.mps.vcs.util.ModelVersion" />
+    </file>
   </root>
   <root nodeRef="r:d58d9938-2526-431c-a5fe-6bbbfeb64ac2(jetbrains.mps.vcs.util)/3531370237490043869">
-    <nodeInfo nodeId="3531370237490043882" fileName="MergeConstants.java" startLine="7" startPosition="0" endLine="8" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="CURRENT" />
-    <nodeInfo nodeId="3531370237490043956" fileName="MergeConstants.java" startLine="8" startPosition="0" endLine="9" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="ORIGINAL" />
-    <nodeInfo nodeId="3531370237490043977" fileName="MergeConstants.java" startLine="9" startPosition="0" endLine="10" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="LAST_REVISION" />
-    <unitInfo nodeId="3531370237490043869" fileName="MergeConstants.java" startLine="6" startPosition="0" endLine="11" endPosition="0" unitName="jetbrains.mps.vcs.util.MergeConstants" />
+    <file name="MergeConstants.java">
+      <node id="3531370237490043882" at="7,0,8,0" concept="8" trace="CURRENT" />
+      <node id="3531370237490043956" at="8,0,9,0" concept="8" trace="ORIGINAL" />
+      <node id="3531370237490043977" at="9,0,10,0" concept="8" trace="LAST_REVISION" />
+      <unit id="3531370237490043869" at="6,0,11,0" name="jetbrains.mps.vcs.util.MergeConstants" />
+    </file>
   </root>
-</debugInfo>
+</debug-info>
 

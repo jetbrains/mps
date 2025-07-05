@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,154 +15,62 @@
  */
 package jetbrains.mps.generator.impl.interpreted;
 
-import jetbrains.mps.generator.GenerationCanceledException;
-import jetbrains.mps.generator.impl.*;
-import jetbrains.mps.generator.impl.TemplateProcessor.TemplateProcessingFailureException;
+import jetbrains.mps.generator.impl.GeneratorUtil;
+import jetbrains.mps.generator.impl.RuleConsequenceProcessor;
+import jetbrains.mps.generator.impl.RuleUtil;
+import jetbrains.mps.generator.impl.TemplateProcessingFailureException;
+import jetbrains.mps.generator.impl.query.QueryKey;
+import jetbrains.mps.generator.impl.query.QueryKeyImpl;
+import jetbrains.mps.generator.impl.query.QueryProviderBase;
+import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import jetbrains.mps.generator.runtime.GenerationException;
+import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateReductionRule;
-import jetbrains.mps.generator.template.BaseMappingRuleContext;
-import jetbrains.mps.generator.template.TemplateFunctionMethodName;
-import jetbrains.mps.smodel.NodeReadEventsCaster;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.Pair;
-import jetbrains.mps.util.QueryMethodGenerated;
+import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
+import jetbrains.mps.generator.template.ReductionRuleQueryContext;
+import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
-/**
- * Evgeny Gryaznov, 11/23/10
- */
-public class TemplateReductionRuleInterpreted implements TemplateReductionRule {
+public class TemplateReductionRuleInterpreted extends ReductionRuleBase implements TemplateReductionRule, TemplateRuleWithCondition {
 
-  private final SNode ruleNode;
-  private final String applicableConcept;
-  private final SNode baseRuleCondition;
-  private final String ruleMappingName;
+  private final SNode myRuleNode;
+  private final String myMappingName;
+  private final RuleConsequenceProcessor myRuleConsequence;
+  private ReductionRuleCondition myCondition;
 
   public TemplateReductionRuleInterpreted(SNode ruleNode) {
-    this.ruleNode = ruleNode;
-    this.applicableConcept = NameUtil.nodeFQName(RuleUtil.getBaseRuleApplicableConcept(ruleNode));
-    this.baseRuleCondition = RuleUtil.getBaseRuleCondition(ruleNode);
-    this.ruleMappingName = RuleUtil.getBaseRuleLabel(ruleNode);
+    super(new SNodePointer(ruleNode), MetaAdapterByDeclaration.getConcept(RuleUtil.getBaseRuleApplicableConcept(ruleNode)), RuleUtil.getBaseRuleApplyToConceptInheritors(ruleNode));
+    myRuleNode = ruleNode;
+    myMappingName = RuleUtil.getBaseRuleLabel(ruleNode);
+    final SNode rc = RuleUtil.getReductionRuleConsequence(ruleNode);
+    myRuleConsequence = rc == null ? null : RuleConsequenceProcessor.prepare(rc);
   }
 
   @Override
-  public SNodeReference getRuleNode() {
-    return new jetbrains.mps.smodel.SNodePointer(ruleNode);
+  public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    if (myCondition == null) {
+      SNode condition = RuleUtil.getBaseRuleCondition(myRuleNode);
+      if (condition != null) {
+        QueryKey identity = new QueryKeyImpl(getRuleNode(), condition.getNodeId(), myRuleNode);
+        myCondition = context.getEnvironment().getQueryProvider(getRuleNode()).getReductionRuleCondition(identity);
+      } else {
+        myCondition = new QueryProviderBase.Defaults();
+      }
+    }
+    return myCondition.check(new ReductionRuleQueryContext(context, getRuleNode()));
   }
 
   @Override
-  public String getApplicableConcept() {
-    return this.applicableConcept;
+  @NotNull
+  public Collection<SNode> apply(@NotNull TemplateContext context) throws GenerationException {
+    if (myRuleConsequence == null) {
+      throw new TemplateProcessingFailureException(myRuleNode, "no rule consequence", GeneratorUtil.describeInput(context));
+    }
+    return myRuleConsequence.processRuleConsequence(context.subContext(myMappingName));
   }
-
-  @Override
-  public boolean applyToInheritors() {
-    return RuleUtil.getBaseRuleApplyToConceptInheritors(ruleNode);
-  }
-
-  @Override
-  public Collection<SNode> tryToApply(TemplateExecutionEnvironment environment, TemplateContext context) throws GenerationException {
-    if (!checkCondition(baseRuleCondition, false, context.getInput(), environment.getGenerator())) {
-      return null;
-    }
-
-    SNodeReference ruleNodeId = new jetbrains.mps.smodel.SNodePointer(ruleNode);
-    environment.getTracer().pushRule(ruleNodeId);
-    try {
-      if (environment.getGenerator().isIncremental()) {
-        // turn off tracing
-        NodeReadEventsCaster.setNodesReadListener(null);
-      }
-
-      return apply(context, environment.getEnvironment(context.getInput(), this));
-    } catch (AbandonRuleInputException e) {
-      return Collections.emptyList();
-    } finally {
-      if (environment.getGenerator().isIncremental()) {
-        // restore tracing
-        NodeReadEventsCaster.removeNodesReadListener();
-      }
-      environment.getTracer().closeRule(ruleNodeId);
-    }
-  }
-
-  public boolean checkCondition(SNode condition, boolean required, SNode inputNode, TemplateGenerator generator) throws GenerationFailureException {
-    if (condition == null) {
-      if (required) {
-        generator.showErrorMessage(inputNode, null, ruleNode, "rule condition required");
-        return false;
-      }
-      return true;
-    }
-
-    String methodName = TemplateFunctionMethodName.baseMappingRule_Condition(condition);
-    try {
-      return (Boolean) QueryMethodGenerated.invoke(
-        methodName,
-        generator.getGeneratorSessionContext(),
-        new BaseMappingRuleContext(inputNode, ruleNode, generator),
-        ruleNode.getModel(),
-        true);
-    } catch (ClassNotFoundException e) {
-      generator.getLogger().warning(condition, "cannot find condition method '" + methodName + "' : evaluate to FALSE");
-    } catch (NoSuchMethodException e) {
-      generator.getLogger().warning(condition, "cannot find condition method '" + methodName + "' : evaluate to FALSE");
-    } catch (Throwable t) {
-      generator.getLogger().handleException(t);
-      generator.getLogger().error(condition, "error executing condition " + methodName + " (see exception)");
-      throw new GenerationFailureException(t);
-    }
-    return false;
-  }
-
-  @Nullable
-  private Collection<SNode> apply(TemplateContext context, @NotNull TemplateExecutionEnvironment environment)
-    throws DismissTopMappingRuleException, AbandonRuleInputException, GenerationFailureException, GenerationCanceledException {
-
-    SNode ruleConsequence = RuleUtil.getReductionRuleConsequence(ruleNode);
-    if (ruleConsequence == null) {
-      environment.getGenerator().showErrorMessage(context.getInput(), null, ruleNode, "error processing reduction rule: no rule consequence");
-      return null;
-    }
-    TemplateContext conseqContext = GeneratorUtil.createConsequenceContext(context.getInput(), context, environment.getReductionContext(), ruleConsequence, context.getInput(), environment.getGenerator());
-
-    List<Pair<SNode, String>> nodeAndMappingNamePairs = GeneratorUtilEx.getTemplateNodesFromRuleConsequence(ruleConsequence, context.getInput(), ruleNode, environment.getReductionContext(), environment.getGenerator());
-    if (nodeAndMappingNamePairs == null) {
-      environment.getGenerator().showErrorMessage(context.getInput(), null, ruleConsequence, "error processing reduction rule consequence");
-      return null;
-    }
-
-    List<SNode> result = new ArrayList<SNode>(nodeAndMappingNamePairs.size());
-    TemplateProcessor templateProcessor = new TemplateProcessor(environment.getGenerator(), environment.getReductionContext());
-    for (Pair<SNode, String> nodeAndMappingNamePair : nodeAndMappingNamePairs) {
-      SNode templateNode = nodeAndMappingNamePair.o1;
-      String mappingName = nodeAndMappingNamePair.o2 != null ? nodeAndMappingNamePair.o2 : ruleMappingName;
-      try {
-        result.addAll(templateProcessor.apply(mappingName, templateNode, conseqContext));
-      } catch (DismissTopMappingRuleException e) {
-        throw e;
-      } catch (TemplateProcessingFailureException e) {
-        environment.getGenerator().showErrorMessage(context.getInput(), templateNode, ruleNode, "error processing reduction rule");
-      } catch (GenerationFailureException e) {
-        throw e;
-      } catch (GenerationCanceledException e) {
-        throw e;
-      } catch (Throwable t) {
-        environment.getGenerator().getLogger().handleException(t);
-        environment.getGenerator().showErrorMessage(context.getInput(), templateNode, ruleNode, "error processing reduction rule");
-      }
-    }
-    return result;
-  }
-
 }

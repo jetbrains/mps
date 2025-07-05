@@ -4,16 +4,13 @@ package jetbrains.mps.make;
 
 
 public interface IMakeNotificationListener {
-  public void handleNotification(MakeNotification notification);
-  public void scriptAboutToStart(MakeNotification notification);
-  public void scriptFinished(MakeNotification notification);
-  public void sessionOpened(MakeNotification notification);
-  public void sessionClosed(MakeNotification notification);
+  void handleNotification(MakeNotification notification);
+  void scriptAboutToStart(MakeNotification notification);
+  void scriptFinished(MakeNotification notification);
+  void sessionOpened(MakeNotification notification);
+  void sessionClosed(MakeNotification notification);
 
-  public static class Stub implements IMakeNotificationListener {
-    public Stub() {
-    }
-
+  class Stub implements IMakeNotificationListener {
     @Override
     public final void handleNotification(MakeNotification notification) {
       switch (notification.getKind()) {

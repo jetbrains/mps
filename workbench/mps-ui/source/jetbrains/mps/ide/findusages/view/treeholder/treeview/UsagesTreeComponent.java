@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import com.intellij.ide.TreeExpander;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.ToggleAction;
@@ -39,23 +40,21 @@ import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.view.icons.IconManager;
 import jetbrains.mps.ide.findusages.view.icons.Icons;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTree;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTreeChangesNotifier;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.IChangeListener;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.AbstractResultNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.BaseNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModelNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.ModuleNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.NodeNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.UsagesTree.UsagesTreeNode;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
-import jetbrains.mps.ide.navigation.ModelNavigatable;
-import jetbrains.mps.ide.navigation.ModuleNavigatable;
-import jetbrains.mps.ide.navigation.NodeNavigatable;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.tree.TreeHighlighterExtension;
 import jetbrains.mps.project.Project;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jdom.Element;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -67,12 +66,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public abstract class UsagesTreeComponent extends JPanel implements IChangeListener {
+public class UsagesTreeComponent extends JPanel implements IChangeListener {
   private static final Logger LOG = LogManager.getLogger(UsagesTreeComponent.class);
 
   private static final String CONTENTS = "contents";
@@ -80,12 +79,12 @@ public abstract class UsagesTreeComponent extends JPanel implements IChangeListe
   private static final String NODE_REPRESENTATOR = "node_representator";
   private static final String CLASS_NAME = "class_name";
 
-  @Nullable
+  private final Project myProject;
   private INodeRepresentator myNodeRepresentator = null;
 
   private UsagesTree myTree;
-  private final DataTree myContents = new DataTree();
-  private Set<PathItemRole> myPathProvider = new HashSet<PathItemRole>();
+  private final DataTree myContents;
+  private Set<PathItemRole> myPathProvider = new HashSet<>();
 
   private ViewToolbar myViewToolbar;
   private ActionsToolbar myActionsToolbar;
@@ -95,17 +94,23 @@ public abstract class UsagesTreeComponent extends JPanel implements IChangeListe
 
   private boolean mySearchedNodesButtonsVisible = true;
   private boolean myAdditionalInfoButtonVisible = true;
-  private OccurenceNavigatorSupport myOccurenceNavigator;
+  private OccurenceNavigatorSupport myOccurrenceNavigator;
 
-  public UsagesTreeComponent(ViewOptions defaultOptions) {
+  public UsagesTreeComponent(ViewOptions defaultOptions, Project mpsProject, DataTreeChangesNotifier changeDispatch) {
     super(new BorderLayout());
+    myProject = mpsProject;
+    myContents = new DataTree(changeDispatch);
 
-    myTree = new UsagesTree(UsagesTreeComponent.this.getProject());
-    myOccurenceNavigator = new OccurenceNavigatorSupport(myTree) {
+    myTree = new UsagesTree(mpsProject);
+    myOccurrenceNavigator = new OccurenceNavigatorSupport(myTree) {
       @Override
       protected Navigatable createDescriptorForNode(DefaultMutableTreeNode node) {
-        if (node.getChildCount() > 0) return null;
-        if (!(node instanceof UsagesTreeNode)) return null;
+        if (node.getChildCount() > 0) {
+          return null;
+        }
+        if (!(node instanceof UsagesTreeNode)) {
+          return null;
+        }
         UsagesTreeNode treeNode = (UsagesTreeNode) node;
 
         if (treeNode.getUserObject() == null) {
@@ -113,8 +118,7 @@ public abstract class UsagesTreeComponent extends JPanel implements IChangeListe
         }
 
         final BaseNodeData data = treeNode.getUserObject().getData();
-        Navigatable n = toNavigatable(data);
-        return n != null && n.canNavigate() ? n : null;
+        return toNavigatable(data);
       }
 
 
@@ -129,7 +133,7 @@ public abstract class UsagesTreeComponent extends JPanel implements IChangeListe
       }
     };
 
-    TreeHighlighterExtension.attachHighlighters(myTree, UsagesTreeComponent.this.getProject());
+    TreeHighlighterExtension.attachHighlighters(myTree, ProjectHelper.toIdeaProject(mpsProject));
     myTree.setBorder(new EmptyBorder(3, 5, 3, 5));
 
     JScrollPane treePane = ScrollPaneFactory.createScrollPane(myTree);
@@ -137,7 +141,7 @@ public abstract class UsagesTreeComponent extends JPanel implements IChangeListe
     myPathProvider.add(PathItemRole.ROLE_MAIN_RESULTS);
     myPathProvider.add(PathItemRole.ROLE_TARGET_NODE);
 
-    myViewToolbar = new ViewToolbar();
+    myViewToolbar = new ViewToolbar(myTree);
     myActionsToolbar = new ActionsToolbar();
 
     myDefaultOptions = defaultOptions;
@@ -148,20 +152,21 @@ public abstract class UsagesTreeComponent extends JPanel implements IChangeListe
     add(treePane, BorderLayout.CENTER);
 
     myContents.addChangeListener(this);
-    myContents.startListening();
   }
 
   public void dispose() {
+    myContents.removeChangeListeners(this);
+    myContents.dispose();
     myTree.dispose();
-    myContents.stopListening();
   }
 
-  public void setContents(SearchResults contents) {
-    myContents.setContents(contents, myNodeRepresentator);
+  public void setContents(final SearchResults contents) {
+    // XXX no idea if there's real need to have read action here, just refactored ModelAccess static out of DataTree here.
+    myProject.getModelAccess().runReadAction(() -> myContents.setContents(contents, myNodeRepresentator));
   }
 
   public OccurenceNavigator getOccurenceNavigator() {
-    return myOccurenceNavigator;
+    return myOccurrenceNavigator;
   }
 
   @Override
@@ -248,11 +253,11 @@ public abstract class UsagesTreeComponent extends JPanel implements IChangeListe
   }
 
   public Set<SModel> getIncludedModels() {
-    return myContents.getIncludedModels();
+    return myContents.getIncludedModels(myProject.getRepository());
   }
 
   public Set<SModel> getAllModels() {
-    return myContents.getAllModels();
+    return myContents.getAllModels(myProject.getRepository());
   }
 
   public List<SNodeReference> getIncludedResultNodes() {
@@ -275,25 +280,45 @@ public abstract class UsagesTreeComponent extends JPanel implements IChangeListe
     return myTree;
   }
 
-  public abstract com.intellij.openapi.project.Project getProject();
-
-  private Navigatable toNavigatable(BaseNodeData data) {
-    if (data instanceof NodeNodeData) {
-      return new NodeNavigatable(ProjectHelper.toMPSProject(getProject()), ((NodeNodeData) data).getNodePointer());
-    } else if (data instanceof ModelNodeData) {
-      return new ModelNavigatable(ProjectHelper.toMPSProject(getProject()), ((ModelNodeData) data).getModelReference());
-    } else if (data instanceof ModuleNodeData) {
-      return new ModuleNavigatable(ProjectHelper.toMPSProject(getProject()), ((ModuleNodeData) data).getModuleReference());
+  private Navigatable toNavigatable(final BaseNodeData data) {
+    if (!(data instanceof AbstractResultNodeData)) {
+      return null;
     }
-    return null;
+    return new Navigatable() {
+      @Override
+      public void navigate(boolean requestFocus) {
+        boolean useProjectTree = !(data instanceof NodeNodeData);
+        if(data instanceof NodeNodeData) {
+          // Show nodes directly in editor instead of project pane
+          useProjectTree = false;
+        }
+        if(data instanceof ModelNodeData || data instanceof ModuleNodeData) {
+          // Leave focus in UsagesView or it became unusable
+          requestFocus = false;
+        }
+        ((AbstractResultNodeData) data).navigate(myProject, useProjectTree, requestFocus);
+      }
+
+      @Override
+      public boolean canNavigate() {
+        return true;
+      }
+
+      @Override
+      public boolean canNavigateToSource() {
+        return true;
+      }
+    };
   }
 
   class ViewToolbar extends JPanel {
+    private final JComponent myTargetComponent;
     private PathOptionsToolbar myPathOptionsToolbar;
     private ViewOptionsToolbar myViewOptionsToolbar;
     private JComponent myToolbar = null;
 
-    public ViewToolbar() {
+    public ViewToolbar(JComponent targetComponent) {
+      myTargetComponent = targetComponent;
       myPathOptionsToolbar = new PathOptionsToolbar();
       myViewOptionsToolbar = new ViewOptionsToolbar();
 
@@ -310,7 +335,9 @@ public abstract class UsagesTreeComponent extends JPanel implements IChangeListe
       actionGroup.addAll(myPathOptionsToolbar.getActions());
       actionGroup.addSeparator();
       actionGroup.addAll(myViewOptionsToolbar.getActions());
-      myToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, actionGroup, false).getComponent();
+      ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, actionGroup, false);
+      actionToolbar.setTargetComponent(myTargetComponent);
+      myToolbar = actionToolbar.getComponent();
       add(myToolbar);
     }
 
@@ -418,7 +445,7 @@ public abstract class UsagesTreeComponent extends JPanel implements IChangeListe
     }
 
     class PathOptionsToolbar {
-      private List<MyBaseToggleAction> myCategoryPathButtons = new ArrayList<MyBaseToggleAction>();
+      private List<MyBaseToggleAction> myCategoryPathButtons = new ArrayList<>();
       private MyBaseToggleAction myModulePathButton;
       private MyBaseToggleAction myModelPathButton;
       private MyBaseToggleAction myRootPathButton;
@@ -430,7 +457,7 @@ public abstract class UsagesTreeComponent extends JPanel implements IChangeListe
       }
 
       private void recreateActions() {
-        List<CategoryKind> categoryKinds = Arrays.asList(
+        List<CategoryKind> categoryKinds = Collections.singletonList(
             new CategoryKind(CategoryKind.DEFAULT_CATEGORY_KIND.getName(), General.Filter, CategoryKind.DEFAULT_CATEGORY_KIND.getTooltip())
         );
         if (myNodeRepresentator != null) {
@@ -440,7 +467,7 @@ public abstract class UsagesTreeComponent extends JPanel implements IChangeListe
         myCategoryPathButtons.clear();
         for (CategoryKind kind : categoryKinds) {
           myCategoryPathButtons.add(new MyBasePathToggleAction(
-            PathItemRole.getCategoryRole(kind), kind.getTooltip(), IconManager.getIconForCategoryKind(kind)));
+              PathItemRole.getCategoryRole(kind), kind.getTooltip(), IconManager.getIconForCategoryKind(kind)));
         }
 
         myModulePathButton = new MyBasePathToggleAction(PathItemRole.ROLE_MODULE, "Group by module", Icons.MODULE_ICON);
@@ -546,7 +573,9 @@ public abstract class UsagesTreeComponent extends JPanel implements IChangeListe
 
       @Override
       public void doSetSelected(AnActionEvent e, boolean state) {
-        if (myPathItemRole == null) return;
+        if (myPathItemRole == null) {
+          return;
+        }
         if (state) {
           addPathComponent(myPathItemRole);
         } else {

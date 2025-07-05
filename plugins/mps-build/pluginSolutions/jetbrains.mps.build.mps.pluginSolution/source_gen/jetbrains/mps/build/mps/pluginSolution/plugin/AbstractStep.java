@@ -7,29 +7,15 @@ import javax.swing.JPanel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JComponent;
-import javax.swing.Icon;
-import java.awt.GridBagLayout;
 import java.awt.Dimension;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.util.annotation.ToRemove;
+import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
 import jetbrains.mps.ide.common.LayoutUtil;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EtchedBorder;
-import java.net.URL;
-import jetbrains.mps.workbench.MPSApplicationInfo;
-import javax.swing.ImageIcon;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import java.io.IOException;
-import org.apache.log4j.Priority;
-import java.awt.Graphics;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 
 public abstract class AbstractStep extends StepAdapter {
   protected JPanel myMainPanel;
@@ -63,46 +49,21 @@ public abstract class AbstractStep extends StepAdapter {
     return this.myMainPanel;
   }
 
-  @Override
-  public Icon getIcon() {
-    return null;
-  }
-
   protected void createComponent() {
     if (myMainPanel == null) {
-
-      GridBagLayout layout = new GridBagLayout();
-      myMainPanel = new JPanel(layout);
-
-      JComponent imagePanel = createImagePanel();
-      GridBagConstraints imageConstraints = new GridBagConstraints();
-      imageConstraints.gridx = 0;
-      imageConstraints.gridy = 0;
-      imageConstraints.gridheight = 1;
-      imageConstraints.gridwidth = 1;
-      imageConstraints.anchor = GridBagConstraints.NORTHWEST;
-      imageConstraints.fill = GridBagConstraints.NONE;
-      myMainPanel.add(imagePanel, imageConstraints);
-
-      JPanel stepPanel = createStepPanel();
-      GridBagConstraints stepConstraints = new GridBagConstraints();
-      stepConstraints.gridx = 1;
-      stepConstraints.gridy = 0;
-      stepConstraints.gridheight = 1;
-      stepConstraints.gridwidth = 1;
-      stepConstraints.weightx = 1;
-      stepConstraints.anchor = GridBagConstraints.NORTHWEST;
-      stepConstraints.fill = GridBagConstraints.BOTH;
+      myMainPanel = createStepPanel();
       if (doLimitStepPanelHeight()) {
-        stepPanel.setPreferredSize(new Dimension(stepPanel.getPreferredSize().width, imagePanel.getPreferredSize().height));
+        myMainPanel.setPreferredSize(new Dimension(myMainPanel.getPreferredSize().width, myMainPanel.getPreferredSize().height));
       }
-      myMainPanel.add(stepPanel, stepConstraints);
     }
     myMainPanel.doLayout();
   }
 
   @NotNull
+  @Deprecated
+  @ToRemove(version = 2017.1)
   public String getImageText() {
+    // Not used any more 
     return "";
   }
 
@@ -121,34 +82,4 @@ public abstract class AbstractStep extends StepAdapter {
     stepPanel.add(new JPanel(), LayoutUtil.createPanelConstraints(2));
     return stepPanel;
   }
-
-  private JComponent createImagePanel() {
-    URL imageUrl = MPSApplicationInfo.getInstance().getDialogImageURL();
-    String imageText = getImageText();
-
-    ImageIcon info = new ImageIcon(imageUrl);
-    BufferedImage bim = null;
-    try {
-      bim = ImageIO.read(imageUrl);
-    } catch (IOException e) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("Can't read image", e);
-      }
-    }
-    assert bim != null : "Icon was not read. The possible reason is that PNG format was not recognized";
-    Graphics graphics = bim.getGraphics();
-    graphics.setColor(new Color(126, 124, 124));
-    graphics.setFont(new Font("Helvetica", Font.BOLD, 15));
-    if (graphics instanceof Graphics2D) {
-      ((Graphics2D) graphics).setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-    }
-
-    int textWidth = graphics.getFontMetrics().charsWidth(imageText.toCharArray(), 0, imageText.length());
-    int x = (info.getIconWidth() - textWidth) / 2;
-    int y = 288;
-    graphics.drawChars(imageText.toCharArray(), 0, imageText.length(), x, y);
-    return new JLabel(new ImageIcon(bim));
-  }
-
-  protected static Logger LOG = LogManager.getLogger(AbstractStep.class);
 }

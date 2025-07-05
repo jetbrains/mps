@@ -12,26 +12,23 @@ public class Default_KeymapChanges extends BaseKeymapChanges {
     // simple 
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.DeleteGenerator_Action", getShortcut(" DELETE"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.FindLanguageConceptsUsages_Action", getShortcut("alt F8"));
-    addSimpleShortcut("jetbrains.mps.ide.devkit.actions.FindLanguageUsages_Action", getShortcut("alt F7"));
+    addSimpleShortcut("jetbrains.mps.ide.devkit.actions.FindModuleUsage_Action", getShortcut("alt F7"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.GoToConceptDeclaration_Action", getShortcut("ctrl shift S"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.GoToEditorDeclaration_Action", getShortcut("alt shift E"));
-    addSimpleShortcut("jetbrains.mps.ide.devkit.actions.GoToOverridingMethod_Action", getShortcut("ctrl alt B"));
+    addSimpleShortcut("jetbrains.mps.ide.devkit.actions.GoToOverridingBehaviorMethod_Action", getShortcut("ctrl alt B"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.GoToRules_Action", getShortcut("ctrl alt shift R"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.HighlightCellDependencies_Action", getShortcut("ctrl alt shift F7"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.ImplementBehaviorMethod_Action", getShortcut("ctrl I"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.NavigateToGeneratedQuery_Action", getShortcut("ctrl alt shift Q"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.OverrideBehaviorMethod_Action", getShortcut("ctrl O"));
-    addSimpleShortcut("jetbrains.mps.ide.devkit.actions.RenameLanguage_Action", getShortcut("shift F6"));
-    addSimpleShortcut("jetbrains.mps.ide.devkit.actions.ShowNodeInExplorer_Action", getShortcut("alt F12"));
+    addSimpleShortcut("jetbrains.mps.ide.devkit.actions.ShowNodeInExplorer_Action", getShortcut("alt X"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.ShowStructure_Action", getShortcut("ctrl F10"));
     // simple parameterized 
     // complex 
   }
-
   public String getScheme() {
     return "$default";
   }
-
   public static Shortcut getShortcut(String stroke) {
     return new KeyboardShortcut(KeyStroke.getKeyStroke(stroke), null);
   }

@@ -15,356 +15,123 @@
  */
 package jetbrains.mps.smodel.runtime.interpreted;
 
-import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.project.GlobalScope;
-import jetbrains.mps.smodel.GlobalSModelEventsManager;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.LanguageAspect;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
 import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.smodel.event.SModelCommandListener;
-import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
+import jetbrains.mps.smodel.adapter.ids.SConceptId;
+import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
+import jetbrains.mps.smodel.runtime.BaseStructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
-import jetbrains.mps.smodel.runtime.StaticScope;
-import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
-import jetbrains.mps.smodel.runtime.base.BaseConceptDescriptor;
-import jetbrains.mps.smodel.runtime.illegal.IllegalConceptDescriptor;
 import jetbrains.mps.util.NameUtil;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
+import java.util.Collection;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class StructureAspectInterpreted implements StructureAspectDescriptor, CoreComponent {
-  private Map<String, ConceptDescriptor> descriptors = new ConcurrentHashMap<String, ConceptDescriptor>();
+/**
+ * Migration and bootstrap structure utility. Initialized once, intentionally doesn't track
+ * model changed as its primary purpose is to facilitate initial model loading when MPS 3.1 projects with
+ * cleaned classes and sources get migrated to 3.2. Once migrated, languages are generated and
+ * compiled StructureAspectDescriptors are in use.
+ */
+public class StructureAspectInterpreted extends BaseStructureAspectDescriptor {
+  private static final Logger LOG = LogManager.getLogger(StructureAspectInterpreted.class);
+  private volatile Map<SConceptId, ConceptDescriptor> myDescriptors;
+  private volatile Map<String, ConceptDescriptor> myDescriptorByName;
 
-  //StructureAspectInterpreted is a singleton, so we can omit remove() here though the field is not static
-  private ThreadLocal<Set<String>> inLoad = new ThreadLocal<Set<String>>() {
-    @Override
-    protected Set<String> initialValue() {
-      return new HashSet<String>();
-    }
-  };
-  private SRepositoryContentAdapter myListener = new SRepositoryContentAdapter() {
-    @Override
-    public void repositoryChanged() {
-      invalidateDescriptors();
-    }
-  };
+  private final Language myLanguage;
 
-  public StructureAspectInterpreted() {
+  public StructureAspectInterpreted(Language language) {
+    myLanguage = language;
   }
 
-  private static StructureAspectInterpreted INSTANCE;
+  @Override
+  public Collection<ConceptDescriptor> getDescriptors() {
+    ensureInitialized();
+    return myDescriptors.values();
+  }
 
-  public static StructureAspectInterpreted getInstance() {
-    return INSTANCE;
+  @Override
+  public ConceptDescriptor getDescriptor(SConceptId id) {
+    ensureInitialized();
+    return myDescriptors.get(id);
   }
 
   @Override
   public ConceptDescriptor getDescriptor(String fqName) {
-    ConceptDescriptor descriptor = descriptors.get(fqName);
-
-    if (descriptor == null) {
-      if (inLoad.get().contains(fqName)) {
-        return null;
-      }
-      inLoad.get().add(fqName);
-      descriptor = new InterpretedConceptDescriptor(fqName);
-      if (!((InterpretedConceptDescriptor) descriptor).isLegal) {
-        descriptor = new IllegalConceptDescriptor(fqName);
-      }
-      inLoad.get().remove(fqName);
-      descriptors.put(fqName, descriptor);
-    }
-
-    return descriptor;
+    ensureInitialized();
+    return myDescriptorByName.get(fqName);
   }
 
-  @Override
-  public void init() {
-    if (INSTANCE != null) {
-      throw new IllegalStateException("double initialization");
+  protected void ensureInitialized() {
+    if (myDescriptors != null) {
+      return;
     }
-
-    INSTANCE = this;
-    myListener.subscribeTo(MPSModuleRepository.getInstance());
-
-    GlobalSModelEventsManager.getInstance().addGlobalCommandListener(new SModelCommandListener() {
+    jetbrains.mps.smodel.ModelAccess.instance().runReadAction(new Runnable() {
       @Override
-      public void eventsHappenedInCommand(List<SModelEvent> events) {
-        for (SModelEvent e : events) {
-          if (!LanguageAspect.STRUCTURE.is(e.getModelDescriptor())) continue;
-          invalidateDescriptors();
+      public void run() {
+        if (myDescriptors != null) {
+          return;
+        }
+        synchronized (StructureAspectInterpreted.this) {
+          if (myDescriptors != null) {
+            return;
+          }
+
+          final SModel structureModel = LanguageAspect.STRUCTURE.get(myLanguage);
+          if (structureModel == null) {
+            LOG.warn("Structure aspect is null in the language " + myLanguage);
+            myDescriptorByName = new ConcurrentHashMap<String, ConceptDescriptor>();
+            myDescriptors = new ConcurrentHashMap<SConceptId, ConceptDescriptor>();
+            return;
+          }
+          ConcurrentHashMap<SConceptId, ConceptDescriptor> descriptors = new ConcurrentHashMap<SConceptId, ConceptDescriptor>();
+          ConcurrentHashMap<String, ConceptDescriptor> descriptorsByName = new ConcurrentHashMap<String, ConceptDescriptor>();
+          for (SNode root : structureModel.getRootNodes()) {
+            SConcept concept = root.getConcept();
+            if (!isConceptDeclaration(concept)) {
+              continue;
+            }
+
+            SConceptId conceptId = MetaIdByDeclaration.getConceptId(root);
+            String conceptName = conceptFQName(root);
+            ConceptDescriptor cd = new InterpretedConceptDescriptor(root, conceptId, conceptName);
+
+            descriptors.put(conceptId, cd);
+            descriptorsByName.put(conceptName, cd);
+          }
+          myDescriptorByName = descriptorsByName;
+          myDescriptors = descriptors;
         }
       }
     });
   }
 
-  @Override
-  public void dispose() {
-    myListener.unsubscribeFrom(MPSModuleRepository.getInstance());
-    // TODO unregister listeners?
-    INSTANCE = null;
+  //this allows to get concept fq name w/o trying constraints
+  //uses the fact that concept's name can't be overridden in constraints
+  public static String conceptFQName(SNode node) {
+    if (node == null) {
+      return null;
+    }
+    String name = node.getProperty(SNodeUtil.property_INamedConcept_name);
+    SModel model = node.getModel();
+    if (model == null) return name;
+
+    return NameUtil.getModelLongName(model) + "." + name;
   }
 
-  private void invalidateDescriptors() {
-    descriptors.clear();
-  }
-
-  private class InterpretedConceptDescriptor extends BaseConceptDescriptor {
-    private final String fqName;
-
-    private boolean isLegal;
-
-    private boolean isInterface;
-    private String superConcept;
-    private List<String> parents;
-
-    private Set<String> ancestors;
-    private Set<String> propertyNames;
-    private Set<String> referenceNames;
-    private Set<String> childrenNames;
-    private HashMap<String, Boolean> childrenMap = new HashMap<String, Boolean>();
-    private Set<String> unorderedChildren;
-    private boolean isAbstract;
-    private boolean isFinal;
-    private String conceptAlias;
-    private String shortDescription;
-    private String helpURL;
-    private StaticScope staticScope;
-
-    InterpretedConceptDescriptor(final String fqName) {
-      this.fqName = fqName;
-
-      final List<String> directProperties = new ArrayList<String>();
-      final List<String> directReferences = new ArrayList<String>();
-
-      NodeReadAccessCasterInEditor.runReadTransparentAction(new Runnable() {
-        @Override
-        public void run() {
-          SNode declaration = SModelUtil.findConceptDeclaration(fqName, GlobalScope.getInstance());
-          if (declaration == null || !SNodeUtil.isInstanceOfAbstractConceptDeclaration(declaration)) {
-            // todo: ?
-            isLegal = false;
-            return;
-          } else {
-            isLegal = true;
-          }
-
-          // isInterface
-          isInterface = SNodeUtil.isInstanceOfInterfaceConceptDeclaration(declaration);
-
-          isFinal = SPropertyOperations.getBoolean(declaration, "isFinal");
-          isAbstract = SPropertyOperations.getBoolean(declaration, "isAbstract");
-          helpURL = SPropertyOperations.getString(declaration, "helpUrl");
-
-          conceptAlias = SNodeUtil.getConceptAlias(declaration);
-          shortDescription = SNodeUtil.getConceptShortDescription(declaration);
-
-          // scope
-          String scopeVal = SPropertyOperations.getString(declaration, "staticScope");
-          staticScope = "none".equals(scopeVal) ? StaticScope.NONE : ("root".equals(scopeVal) ? StaticScope.ROOT : StaticScope.GLOBAL);
-
-          // superconcept
-          if (SNodeUtil.isInstanceOfConceptDeclaration(declaration)) {
-            SNode superConceptNode = SNodeUtil.getConceptDeclaration_Extends(declaration);
-
-            if (superConceptNode == null && !SNodeUtil.concept_BaseConcept.equals(fqName)) {
-              superConcept = SNodeUtil.concept_BaseConcept;
-            } else {
-              superConcept = NameUtil.nodeFQName(superConceptNode);
-            }
-          }
-
-          // parents
-          Set<String> parentsSet = new LinkedHashSet<String>();
-
-          if (SNodeUtil.isInstanceOfConceptDeclaration(declaration)) {
-            parentsSet.add(superConcept);
-
-            for (SNode interfaceConcept : SNodeUtil.getConceptDeclaration_Implements(declaration)) {
-              parentsSet.add(NameUtil.nodeFQName(interfaceConcept));
-            }
-          } else if (SNodeUtil.isInstanceOfInterfaceConceptDeclaration(declaration)) {
-            for (SNode interfaceConcept : SNodeUtil.getInterfaceConceptDeclaration_Extends(declaration)) {
-              parentsSet.add(NameUtil.nodeFQName(interfaceConcept));
-            }
-          }
-
-          parentsSet.remove(null);
-          if (superConcept == null && !SNodeUtil.concept_BaseConcept.equals(fqName) && !isInterface) {
-            parentsSet.add(SNodeUtil.concept_BaseConcept);
-          }
-
-          parents = new ArrayList<String>(parentsSet);
-
-          // direct properties
-          for (SNode property : SNodeUtil.getConcept_PropertyDeclarations(declaration)) {
-            String name = property.getName();
-            if (name != null) {
-              directProperties.add(name);
-            }
-          }
-
-          // direct references and children
-          unorderedChildren = new HashSet<String>();
-          for (SNode link : SNodeUtil.getConcept_LinkDeclarations(declaration)) {
-            String role = SModelUtil.getLinkDeclarationRole(link);
-            if (role != null) {
-              if (SPropertyOperations.getBoolean(link, "unordered")) {
-                unorderedChildren.add(role);
-              }
-              if (SNodeUtil.getLinkDeclaration_IsReference(link)) {
-                directReferences.add(role);
-              } else {
-                childrenMap.put(role, !SNodeUtil.getLinkDeclaration_IsSingular(link));
-              }
-            }
-          }
-        }
-      });
-
-      if (isLegal) {
-        // get parent descriptors
-        List<ConceptDescriptor> parentDescriptors = new ArrayList<ConceptDescriptor>(parents.size());
-        for (String parent : parents) {
-          ConceptDescriptor descriptor = getDescriptor(parent);
-          if (descriptor != null) {
-            parentDescriptors.add(descriptor);
-          }
-        }
-
-        // ancestors
-        ancestors = new HashSet<String>(parents);
-        ancestors.add(fqName);
-        for (ConceptDescriptor parentDescriptor : parentDescriptors) {
-          ancestors.addAll(parentDescriptor.getAncestorsNames());
-        }
-
-        // properties
-        LinkedHashSet<String> properties = new LinkedHashSet<String>();
-        properties.addAll(directProperties);
-
-        for (ConceptDescriptor parentDescriptor : parentDescriptors) {
-          properties.addAll(parentDescriptor.getPropertyNames());
-        }
-
-        propertyNames = Collections.unmodifiableSet(properties);
-
-        // references
-        LinkedHashSet<String> references = new LinkedHashSet<String>();
-        references.addAll(directReferences);
-
-        for (ConceptDescriptor parentDescriptor : parentDescriptors) {
-          references.addAll(parentDescriptor.getReferenceNames());
-        }
-
-        referenceNames = Collections.unmodifiableSet(references);
-
-        // children
-
-
-        for (ConceptDescriptor parentDescriptor : parentDescriptors) {
-          for (String child : parentDescriptor.getChildrenNames()) {
-            childrenMap.put(child, parentDescriptor.isMultipleChild(child));
-          }
-          unorderedChildren.addAll(parentDescriptor.getUnorderedChildrenNames());
-        }
-        unorderedChildren = Collections.unmodifiableSet(unorderedChildren);
-
-        childrenNames = Collections.unmodifiableSet(childrenMap.keySet());
-      }
-    }
-
-    @Override
-    public String getConceptFqName() {
-      return fqName;
-    }
-
-    @Override
-    public String getSuperConcept() {
-      return superConcept;
-    }
-
-    @Override
-    public boolean isInterfaceConcept() {
-      return isInterface;
-    }
-
-    @Override
-    public Set<String> getPropertyNames() {
-      return propertyNames;
-    }
-
-    @Override
-    public Set<String> getReferenceNames() {
-      return referenceNames;
-    }
-
-    @Override
-    public Set<String> getChildrenNames() {
-      return childrenNames;
-    }
-
-    @Override
-    public Set<String> getUnorderedChildrenNames() {
-      return unorderedChildren;
-    }
-
-    @Override
-    public StaticScope getStaticScope() {
-      return staticScope;
-    }
-
-    @Override
-    public List<String> getParentsNames() {
-      return parents;
-    }
-
-    @Override
-    public Set<String> getAncestorsNames() {
-      return ancestors;
-    }
-
-    @Override
-    public boolean isMultipleChild(String name) {
-      return childrenMap.get(name);
-    }
-
-    @Override
-    public boolean isAbstract() {
-      return isAbstract;
-    }
-
-    @Override
-    public boolean isFinal() {
-      return isFinal;
-    }
-
-    @Override
-    public String getConceptAlias() {
-      return conceptAlias;
-    }
-
-    @Override
-    public String getConceptShortDescription() {
-      return shortDescription;
-    }
-
-    @Override
-    public String getHelpUrl() {
-      return helpURL;
+  //this method MUST NOT call any concept methods (not to get into infinite recursion)
+  private boolean isConceptDeclaration(SConcept concept) {
+    if (concept instanceof SConceptAdapterById) {
+      return concept.equals(SNodeUtil.concept_ConceptDeclaration) || concept.equals(SNodeUtil.concept_InterfaceConceptDeclaration);
+    } else {
+      throw new IllegalArgumentException(concept.getClass().getName());
     }
   }
 }

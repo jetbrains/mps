@@ -13,7 +13,6 @@ import java.util.Set;
 import java.util.Hashtable;
 import org.apache.tools.ant.util.JavaEnvUtils;
 import java.util.HashSet;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import org.apache.tools.ant.taskdefs.Execute;
 import java.net.URL;
@@ -39,7 +38,6 @@ public abstract class MpsLoadTask extends Task {
   private boolean myUsePropertiesAsMacro = false;
   private boolean myFork = true;
   private final List<String> myJvmArgs = new ArrayList<String>();
-
   public MpsLoadTask() {
   }
 
@@ -143,8 +141,6 @@ public abstract class MpsLoadTask extends Task {
       dumpPropertiesToWhatToDo();
       try {
         commandLine.add(myWhatToDo.dumpToTmpFile().getAbsolutePath());
-      } catch (FileNotFoundException e) {
-        throw new BuildException(e);
       } catch (IOException e) {
         throw new BuildException(e);
       }
@@ -164,15 +160,13 @@ public abstract class MpsLoadTask extends Task {
       List<URL> classPathUrls = new ArrayList<URL>();
       for (File path : classPaths) {
         try {
-          classPathUrls.add(new URL("file:///" + path + ((path.isDirectory() ?
-            "/" :
-            ""
-          ))));
+          classPathUrls.add(new URL("file:///" + path + ((path.isDirectory() ? "/" : ""))));
         } catch (MalformedURLException e) {
           throw new BuildException(e);
         }
       }
       URLClassLoader classLoader = new URLClassLoader(classPathUrls.toArray(new URL[classPathUrls.size()]), ProjectComponent.class.getClassLoader());
+      Thread.currentThread().setContextClassLoader(classLoader);
       try {
         Class<?> whatToGenerateClass = classLoader.loadClass(Script.class.getCanonicalName());
         Object whatToGenerate = whatToGenerateClass.newInstance();
@@ -277,7 +271,6 @@ public abstract class MpsLoadTask extends Task {
       if (buildNumber != null && configurationName != null) {
         return configurationName + "." + buildNumber;
       }
-    } catch (FileNotFoundException ignore) {
     } catch (IOException ignore) {
     } finally {
       if (bufferedReader != null) {
@@ -293,12 +286,10 @@ public abstract class MpsLoadTask extends Task {
   public static class LogLevelAttribute extends EnumeratedAttribute {
     public LogLevelAttribute() {
     }
-
     @Override
     public String[] getValues() {
       return new String[]{"error", "warn", "warning", "info", "debug"};
     }
-
     public Level getLevel() {
       String val = getValue();
       if ("warning".equalsIgnoreCase(val)) {
@@ -310,11 +301,9 @@ public abstract class MpsLoadTask extends Task {
 
   public static abstract class AbstractOutputReader extends Thread {
     private InputStream myInputStream;
-
     public AbstractOutputReader(InputStream inputStream) {
       this.myInputStream = inputStream;
     }
-
     @Override
     public void run() {
       Scanner s = new Scanner(this.myInputStream);
@@ -325,7 +314,6 @@ public abstract class MpsLoadTask extends Task {
       } catch (Exception e) {
       }
     }
-
     protected abstract void addMessage(String message);
   }
 }

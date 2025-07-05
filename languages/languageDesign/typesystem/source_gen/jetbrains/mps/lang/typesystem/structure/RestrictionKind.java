@@ -4,33 +4,36 @@ package jetbrains.mps.lang.typesystem.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum RestrictionKind {
   equals(":==:", "equals"),
   subtype(":<=:", "subtype");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private RestrictionKind(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<RestrictionKind> getConstants() {
     List<RestrictionKind> list = ListSequence.fromList(new LinkedList<RestrictionKind>());
     ListSequence.fromList(list).addElement(RestrictionKind.equals);
     ListSequence.fromList(list).addElement(RestrictionKind.subtype);
     return list;
   }
-
   public static RestrictionKind getDefault() {
     return RestrictionKind.equals;
   }
-
   public static RestrictionKind parseValue(String value) {
     if (value == null) {
       return RestrictionKind.getDefault();
@@ -42,16 +45,5 @@ public enum RestrictionKind {
       return RestrictionKind.subtype;
     }
     return RestrictionKind.getDefault();
-  }
-
-  private String myValue;
-
-  RestrictionKind(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

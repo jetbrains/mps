@@ -4,7 +4,7 @@ package jetbrains.mps.build.mps.pluginSolution.plugin;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 import java.util.ArrayList;
 import javax.swing.Icon;
 import jetbrains.mps.ide.icons.IdeIcons;
@@ -13,48 +13,36 @@ public class NamespaceData implements NodeData {
   private String myText;
   private final List<NodeData> myData = ListSequence.fromList(new LinkedList<NodeData>());
   private NodeData myParent;
-
   public NamespaceData(String text) {
     this.myText = text;
   }
-
   @Override
   public String getText() {
     return this.myText;
   }
-
   public void setText(String text) {
     this.myText = text;
   }
-
   @Override
   public List<NodeData> getChildren() {
     return ListSequence.fromListWithValues(new ArrayList<NodeData>(), this.myData);
   }
-
   @Override
   public Icon getIcon(boolean expanded) {
-    return (expanded ?
-      IdeIcons.OPENED_FOLDER :
-      IdeIcons.CLOSED_FOLDER
-    );
+    return (expanded ? IdeIcons.OPENED_FOLDER : IdeIcons.CLOSED_FOLDER);
   }
-
   @Override
   public boolean canHaveChildren() {
     return true;
   }
-
   @Override
   public void addChildren(NodeData nodeData) {
     ListSequence.fromList(this.myData).addElement(nodeData);
   }
-
   @Override
   public NodeData getParent() {
     return this.myParent;
   }
-
   @Override
   public void setParent(NodeData parent) {
     this.myParent = parent;

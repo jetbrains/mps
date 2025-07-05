@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,13 +23,12 @@ import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.workbench.dialogs.project.newproject.CreateProjectWizard;
-import jetbrains.mps.workbench.dialogs.project.newproject.NewProjectWizard;
 
 import javax.swing.Icon;
 import java.util.Map;
 
 public class NewMPSProjectAction extends BaseAction implements DumbAware {
-  private static final Icon NEW_ICON_WELCOME_SCREEN = AllIcons.General.CreateNewProject;
+  private static final Icon NEW_ICON_WELCOME_SCREEN = AllIcons.Welcome.CreateNewProject;
 
   public NewMPSProjectAction() {
     setExecuteOutsideCommand(true);

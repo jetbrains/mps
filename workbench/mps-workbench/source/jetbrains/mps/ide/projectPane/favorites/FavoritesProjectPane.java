@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,13 +22,13 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
+import com.intellij.openapi.components.StoragePathMacros;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.ActionCallback;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.ScrollPaneFactory;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.ui.EmptyIcon;
-import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.BaseLogicalViewProjectPane;
 import jetbrains.mps.ide.projectPane.ProjectPane;
@@ -38,57 +38,37 @@ import jetbrains.mps.ide.projectPane.favorites.root.FavoritesRoot;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
-import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode;
-import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode.NodeNavigationProvider;
-import jetbrains.mps.project.ProjectOperationContext;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.ide.ui.tree.smodel.NodeTargetProvider;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 @State(
     name = "Favorites",
-    storages = {
-        @Storage(
-            id = "other",
-            file = "$WORKSPACE_FILE$"
-        )
-    }
+    storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
 public class FavoritesProjectPane extends BaseLogicalViewProjectPane {
   public static final String ID = "Favorites";
   private MPSFavoritesManager myFavoritesManager;
   private MPSFavoritesListener myFavoritesListener;
-  private ProjectView myProjectView;
-  private IOperationContext myContext;
   private JScrollPane myScrollPane;
 
   protected FavoritesProjectPane(Project project, MPSFavoritesManager manager, ProjectView projectView) {
-    super(project);
+    super(project, projectView);
     myFavoritesManager = manager;
-    myProjectView = projectView;
-    myContext = new ProjectOperationContext(ProjectHelper.toMPSProject(getProject()));
   }
 
   @Override
   public void rebuild() {
-    ModelAccess.instance().runReadInEDT(new Runnable() {
-      @Override
-      public void run() {
-        if (isDisposed()) return;
-        getTree().rebuildNow();
-      }
-    });
+    getTree().rebuildLater();
   }
 
   @Override
@@ -115,10 +95,10 @@ public class FavoritesProjectPane extends BaseLogicalViewProjectPane {
   @Override
   public JComponent createComponent() {
     if (isComponentCreated()) {
-      rebuildTree();
+      rebuild();
       return myScrollPane;
     }
-    myTree = new MyLogicalViewTree();
+    myTree = new MyLogicalViewTree(ProjectHelper.toMPSProject(getProject()));
     myFavoritesListener = new MPSFavoritesListener() {
       @Override
       public void rootsChanged(String listName) {
@@ -139,31 +119,22 @@ public class FavoritesProjectPane extends BaseLogicalViewProjectPane {
 
       private void refreshMySubIdsAndSelect(String listName) {
         myFavoritesManager.removeListener(myFavoritesListener);
-        myProjectView.removeProjectPane(FavoritesProjectPane.this);
-        myProjectView.addProjectPane(FavoritesProjectPane.this);
+        getProjectView().removeProjectPane(FavoritesProjectPane.this);
+        getProjectView().addProjectPane(FavoritesProjectPane.this);
         myFavoritesManager.addListener(myFavoritesListener);
 
         if (ArrayUtil.find(myFavoritesManager.getFavoriteNames(), listName) == -1) {
-          myProjectView.changeView(ProjectPane.ID);
+          getProjectView().changeView(ProjectPane.ID);
           return;
         }
-        myProjectView.changeView(ID, listName);
+        getProjectView().changeView(ID, listName);
       }
     };
     myFavoritesManager.addListener(myFavoritesListener);
-    // Looks like thid method can be called from different threads
-    rebuildTree();
+    rebuild();
 
     myScrollPane = ScrollPaneFactory.createScrollPane(myTree);
     return myScrollPane;
-  }
-
-  private void rebuildTree() {
-    if (ThreadUtils.isEventDispatchThread()) {
-      getTree().rebuildNow();
-    } else {
-      getTree().rebuildLater();
-    }
   }
 
   @Override
@@ -213,31 +184,28 @@ public class FavoritesProjectPane extends BaseLogicalViewProjectPane {
     return "Favorites";
   }
 
-  @Override
-  public Project getProject() {
-    return myProject;
-  }
+  private class MyLogicalViewTree extends MPSTree {
 
-  @Override
-  public ProjectView getProjectView() {
-    return myProjectView;
-  }
+    private final jetbrains.mps.project.Project myProject;
 
-  private class MyLogicalViewTree extends MPSTree implements NodeNavigationProvider {
+    MyLogicalViewTree(jetbrains.mps.project.Project mpsProject) {
+      myProject = mpsProject;
+    }
+
     @Override
     protected MPSTreeNode rebuild() {
       String subId = getSubId();
       TextTreeNode invisibleRoot = new TextTreeNode(subId == null ? "Favorites" : subId);
-      invisibleRoot.setIcon(new EmptyIcon(10));
+      invisibleRoot.setIcon(EmptyIcon.create(10));
       List<Object> objectList = myFavoritesManager.getRoots(subId);
       if (objectList == null || objectList.size() == 0) {
         invisibleRoot.setText("There is nothing to display.");
         return invisibleRoot;
       }
-      for (Object o : new ArrayList(objectList)) {
-        FavoritesRoot favoritesRoot = FavoritesRoot.createForValue(o);
+      for (Object o : objectList.toArray()) {
+        FavoritesRoot favoritesRoot = FavoritesRoot.createForValue(myProject, o);
         if (favoritesRoot == null) continue;
-        MPSTreeNode newChild = favoritesRoot.getTreeNode(myContext);
+        MPSTreeNode newChild = favoritesRoot.createTreeNode();
         if (newChild == null) {
           myFavoritesManager.removeRoots(subId, Collections.singletonList(o));
           continue;
@@ -247,6 +215,32 @@ public class FavoritesProjectPane extends BaseLogicalViewProjectPane {
       return invisibleRoot;
     }
 
+    @Override
+    protected void doubleClick(@NotNull MPSTreeNode nodeToClick) {
+      if (nodeToClick instanceof NodeTargetProvider) {
+        final SNodeReference navigationTarget = ((NodeTargetProvider) nodeToClick).getNavigationTarget();
+        if (navigationTarget != null) {
+          new EditorNavigator(myProject).shallFocus(true).selectIfChild().open(navigationTarget);
+          return;
+        }
+        // fall-through
+      }
+      super.doubleClick(nodeToClick);
+    }
+
+    @Override
+    protected void autoscroll(@NotNull MPSTreeNode nodeToClick) {
+      // FIXME this is copy of ProjectPaneTree#autoscroll, refactor to minimize duplication of code
+      if (nodeToClick instanceof NodeTargetProvider) {
+        final SNodeReference navigationTarget = ((NodeTargetProvider) nodeToClick).getNavigationTarget();
+        if (navigationTarget != null) {
+          new EditorNavigator(myProject).shallFocus(false).selectIfChild().open(navigationTarget);
+          return;
+        }
+        // fall-through
+      }
+      super.autoscroll(nodeToClick);
+    }
 
     @Override
     public Comparator<Object> getChildrenComparator() {
@@ -265,26 +259,7 @@ public class FavoritesProjectPane extends BaseLogicalViewProjectPane {
 
     @Override
     protected ActionGroup createPopupActionGroup(final MPSTreeNode node) {
-      return ModelAccess.instance().runReadAction(new Computable<ActionGroup>() {
-        @Override
-        public ActionGroup compute() {
-          return ProjectPaneActionGroups.getActionGroup(node);
-        }
-      });
-    }
-
-    @Override
-    public void editNode(final SNodeTreeNode treeNode, final boolean wasClicked) {
-      ModelAccess.instance().runWriteInEDT(new Runnable() {
-        @Override
-        public void run() {
-          SNode node = treeNode.getSNode();
-          if (jetbrains.mps.util.SNodeOperations.isDisposed(node) || node.getModel() == null) {
-            return;
-          }
-          FavoritesProjectPane.this.editNode(node, treeNode.getOperationContext(), wasClicked);
-        }
-      });
+      return ProjectPaneActionGroups.getActionGroup(node);
     }
   }
 }

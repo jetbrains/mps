@@ -1,39 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:00000000-0000-4000-0000-011c8959040b(jetbrains.mps.samples.agreementLanguage.declarations)" doNotGenerate="true">
-  <persistence version="8" />
-  <language namespace="144f7012-c2d5-43be-be2b-4bfb7dff6503(jetbrains.mps.samples.agreementLanguage)" />
-  <import index="tpna" modelUID="r:00000000-0000-4000-0000-011c8959040a(jetbrains.mps.samples.agreementLanguage.structure)" version="0" implicit="yes" />
-  <import index="tpck" modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" implicit="yes" />
-  <root type="tpna.AgreementDeclarations" typeId="tpna.1112310944779" id="1112315976835" nodeInfo="ng">
-    <node role="eventType" roleId="tpna.1112311033671" type="tpna.EventType" typeId="tpna.1111793698243" id="1112316021402" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="SERVICE CALL" />
-      <node role="variable" roleId="tpna.1111793732478" type="tpna.EventVariable" typeId="tpna.1111793755198" id="1112316252581" nodeInfo="ng">
-        <property name="type" nameId="tpna.1111793807574" value="Money" />
-        <property name="name" nameId="tpck.1169194664001" value="fee" />
+<model ref="r:00000000-0000-4000-0000-011c8959040b(jetbrains.mps.samples.agreementLanguage.declarations)" doNotGenerate="true">
+  <persistence version="9" />
+  <languages>
+    <use id="144f7012-c2d5-43be-be2b-4bfb7dff6503" name="jetbrains.mps.samples.agreementLanguage" version="0" />
+  </languages>
+  <imports />
+  <registry>
+    <language id="144f7012-c2d5-43be-be2b-4bfb7dff6503" name="jetbrains.mps.samples.agreementLanguage">
+      <concept id="1111793698243" name="jetbrains.mps.samples.agreementLanguage.structure.EventType" flags="ng" index="3s4oj1">
+        <child id="1111793732478" name="variable" index="3s4wDW" />
+      </concept>
+      <concept id="1111793755198" name="jetbrains.mps.samples.agreementLanguage.structure.EventVariable" flags="ng" index="3s4AkW">
+        <property id="1111793807574" name="type" index="3s4N7k" />
+      </concept>
+      <concept id="1111795284642" name="jetbrains.mps.samples.agreementLanguage.structure.AccountType" flags="ng" index="3sarIw" />
+      <concept id="1112310944779" name="jetbrains.mps.samples.agreementLanguage.structure.AgreementDeclarations" flags="ng" index="3UTxk9">
+        <child id="1112311033671" name="eventType" index="3UTQT5" />
+        <child id="1112311143032" name="accountType" index="3UUhHU" />
+      </concept>
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="3UTxk9" id="gbVcHM3">
+    <node concept="3s4oj1" id="gbVcSEq" role="3UTQT5">
+      <property role="TrG5h" value="SERVICE CALL" />
+      <node concept="3s4AkW" id="gbVdL6_" role="3s4wDW">
+        <property role="3s4N7k" value="Money" />
+        <property role="TrG5h" value="fee" />
       </node>
     </node>
-    <node role="eventType" roleId="tpna.1112311033671" type="tpna.EventType" typeId="tpna.1111793698243" id="1112316644479" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="TAX" />
-      <node role="variable" roleId="tpna.1111793732478" type="tpna.EventVariable" typeId="tpna.1111793755198" id="1112316673589" nodeInfo="ng">
-        <property name="type" nameId="tpna.1111793807574" value="Money" />
-        <property name="name" nameId="tpck.1169194664001" value="fee" />
+    <node concept="3s4oj1" id="gbVfgLZ" role="3UTQT5">
+      <property role="TrG5h" value="TAX" />
+      <node concept="3s4AkW" id="gbVfnSP" role="3s4wDW">
+        <property role="3s4N7k" value="Money" />
+        <property role="TrG5h" value="fee" />
       </node>
     </node>
-    <node role="eventType" roleId="tpna.1112311033671" type="tpna.EventType" typeId="tpna.1111793698243" id="1112316681746" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="USAGE" />
-      <node role="variable" roleId="tpna.1111793732478" type="tpna.EventVariable" typeId="tpna.1111793755198" id="1112316685513" nodeInfo="ng">
-        <property name="name" nameId="tpck.1169194664001" value="usage" />
+    <node concept="3s4oj1" id="gbVfpSi" role="3UTQT5">
+      <property role="TrG5h" value="USAGE" />
+      <node concept="3s4AkW" id="gbVfqN9" role="3s4wDW">
+        <property role="TrG5h" value="usage" />
       </node>
     </node>
-    <node role="accountType" roleId="tpna.1112311143032" type="tpna.AccountType" typeId="tpna.1111795284642" id="1112315990977" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="base-usage" />
+    <node concept="3sarIw" id="gbVcLf1" role="3UUhHU">
+      <property role="TrG5h" value="base-usage" />
     </node>
-    <node role="accountType" roleId="tpna.1112311143032" type="tpna.AccountType" typeId="tpna.1111795284642" id="1112316007244" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="service" />
+    <node concept="3sarIw" id="gbVcPdc" role="3UUhHU">
+      <property role="TrG5h" value="service" />
     </node>
-    <node role="accountType" roleId="tpna.1112311143032" type="tpna.AccountType" typeId="tpna.1111795284642" id="1112316013167" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="tax" />
+    <node concept="3sarIw" id="gbVcQDJ" role="3UUhHU">
+      <property role="TrG5h" value="tax" />
     </node>
-  </root>
+  </node>
 </model>
 

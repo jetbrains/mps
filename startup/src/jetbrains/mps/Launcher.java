@@ -16,21 +16,22 @@
 package jetbrains.mps;
 
 import com.intellij.ide.Bootstrap;
-import com.intellij.ide.ClassloaderUtil;
 import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.util.SystemInfo;
+import jetbrains.mps.util.ClassPathReader;
+import jetbrains.mps.util.ClassType;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Launcher {
-  public static void main(String[] args) throws URISyntaxException {
+  public static void main(String[] args) throws Exception {
     String mpsInternal = System.getProperty("mps.internal");
     System.setProperty("idea.is.internal", mpsInternal != null ? mpsInternal : "false");
     System.setProperty("idea.no.jre.check", "true");
@@ -44,7 +45,8 @@ public class Launcher {
         System.setProperty(fsNotifierKey, PathManager.getBinPath() + File.separatorChar + getFsNotifierDir() + File.separatorChar + getFsNotifierName());
       }
     }
-    Bootstrap.main(args, "jetbrains.mps.MPSMainImpl", "start", getAdditionalMPSClasspath());
+    System.setProperty("idea.additional.classpath", getAdditionalMPSClasspathString());
+    Bootstrap.main(args, "jetbrains.mps.MPSMainImpl", "start");
   }
 
   private static String getFsNotifierDir() {
@@ -71,52 +73,40 @@ public class Launcher {
     return null;
   }
 
-  private static List<URL> getAdditionalMPSClasspath() {
-    List<URL> result = new ArrayList<URL>();
-    String homePath = PathManager.getHomePath();
-    try {
-      addMPSBootstrapJars(result, homePath);
+  private static String getAdditionalMPSClasspathString() {
+    StringBuilder builder = new StringBuilder();
+    for (String path : getAdditionalMPSClasspath()) {
+      builder.append(path);
+      builder.append(File.pathSeparator);
+    }
+    return builder.toString();
+  }
 
-      if (result.isEmpty()) {
-        // we're probably running from the sources, let's add the class dirs to the classpath
-        Class<Bootstrap> clazz = Bootstrap.class;
-        String selfRoot = PathManager.getResourceRoot(clazz, "/" + clazz.getName().replace('.', '/') + ".class");
-        URL selfRootUrl = new File(selfRoot).getAbsoluteFile().toURL();
-        addMPSBootstrapClassFolders(result, homePath, selfRootUrl);
-      }
-    } catch (MalformedURLException e) {
+  private static List<String> getAdditionalMPSClasspath() {
+    List<String> result = new ArrayList<>();
+    try {
+      // we're probably running from the sources, let's add the class dirs to the classpath
+      Class<Bootstrap> clazz = Bootstrap.class;
+      String self = PathManager.getResourceRoot(clazz, "/" + clazz.getName().replace('.', '/') + ".class");
+      assert self != null;
+      File selfRoot = new File(self).getAbsoluteFile();
+      addMPSBootstrapClassFolders(result, selfRoot);
+    } catch (MalformedURLException ignored) {
 
     }
     return result;
   }
 
-  private static void addMPSBootstrapJars(List<URL> classPath, String homePath) throws MalformedURLException {
-    File mpsJar = new File(homePath + File.separator + "lib" + File.separator + "mps.jar");
-    if (mpsJar.exists()) {
-      classPath.add(mpsJar.toURI().toURL());
-    }
-  }
-
-  private static void addMPSBootstrapClassFolders(List<URL> classPath, String homePath, URL selfRootUrl) throws MalformedURLException {
-    //todo replace with ClassPathReader call, but don't add new module deps
-    File acp = new File(homePath + File.separator + "build" + File.separator + "idea.additional.classpath.txt");
-    if (acp.exists()) {
-      try {
-        Scanner sc;
-        for (sc = new Scanner(acp, "UTF-8"); sc.hasNextLine(); ) {
-          String nl = sc.nextLine();
-          if (nl.startsWith(":")) continue;
-          File dir = new File(homePath, nl);
-          if (dir.isDirectory()) {
-            final URL url = dir.toURI().toURL();
-            if (!selfRootUrl.equals(url)) {
-              classPath.add(url);
-            }
-          }
+  private static void addMPSBootstrapClassFolders(List<String> classPath, File selfRoot) throws MalformedURLException {
+    String homePath = PathManager.getHomePath();
+    ClassPathReader classPathReader = new ClassPathReader(PathManager.getHomePath());
+    classPathReader.read().stream().forEach(path -> {
+      File dir = new File(homePath, path);
+      if (dir.isDirectory()) {
+        if (!selfRoot.equals(dir)) {
+          classPath.add(dir.getAbsolutePath());
         }
-        sc.close();
-      } catch (FileNotFoundException ignore) {
       }
-    }
+    });
   }
 }

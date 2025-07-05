@@ -11,19 +11,18 @@ import java.util.ArrayList;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.ModelAccess;
-import jetbrains.mps.project.Project;
 import java.io.IOException;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.SModelInternal;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.vfs.IFileUtils;
-import jetbrains.mps.smodel.SModelRepository;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.project.SModuleOperations;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.util.NameUtil;
 
 public class DirParser {
@@ -35,24 +34,19 @@ public class DirParser {
   private ModelAccess myModelAccess;
   private JavaParser myJavaParser = new JavaParser();
 
-
-  public DirParser(SModule module, Project project) {
+  public DirParser(SModule module, ModelAccess modelAccess) {
     myModule = module;
-    myModelAccess = project.getRepository().getModelAccess();
+    myModelAccess = modelAccess;
   }
-
-  public DirParser(SModule module, Project project, IFile sourceDir) {
-    this(module, project);
+  public DirParser(SModule module, ModelAccess modelAccess, IFile sourceDir) {
+    this(module, modelAccess);
     mySourceDirs = ListSequence.fromListAndArray(new ArrayList<IFile>(), sourceDir);
     mySuccessfulFiles = ListSequence.fromList(new ArrayList<IFile>());
   }
 
-
-
   public void addDirectory(IFile dir) {
     ListSequence.fromList(mySourceDirs).addElement(dir);
   }
-
   public void parseDirs() throws IOException, JavaParseException {
     for (IFile sourceDir : ListSequence.fromList(mySourceDirs)) {
       addSourceFromDirectory(sourceDir);
@@ -62,8 +56,8 @@ public class DirParser {
       @Override
       public void run() {
         for (SModel m : ListSequence.fromList(myAffectedModels)) {
-          Iterable<SNode> roots = SModelOperations.getRoots(m, null);
-          JavaParser.tryResolveUnknowns(roots);
+          Iterable<SNode> roots = SModelOperations.roots(m, null);
+          JavaParser.tryResolveUnknowns(roots, new EmptyProgressMonitor(), IncrementalModelAccess.INSIDE_COMMAND_OR_UPDATE_MODE);
           JavaParser.tryResolveDynamicRefs(roots);
         }
       }
@@ -77,19 +71,13 @@ public class DirParser {
 
   }
 
-
-
   public List<IFile> getSuccessfulFiles() {
     return mySuccessfulFiles;
   }
 
-
-
   public List<SModel> getAffectedModels() {
     return myAffectedModels;
   }
-
-
 
   public void addSourceFromDirectory(final IFile dir) throws IOException, JavaParseException {
     assert dir.isDirectory();
@@ -124,12 +112,12 @@ public class DirParser {
                 if (DirParser.checkPackageMatchesSourceDirectory(p, dir)) {
                   pkg.value = p;
                 } else {
-                  LOG.error("package " + p + " doesn't match directory " + dir.getAbsolutePath() + " (in file " + file.getName() + ")");
+                  LOG.error("package " + p + " doesn't match directory " + dir.getPath() + " (in file " + file.getName() + ")");
                   return;
                 }
 
               } else if (!(pkg.value.equals(p))) {
-                LOG.error("different packages in directory " + dir.getAbsolutePath() + ", namely " + pkg.value + " and " + p);
+                LOG.error("different packages in directory " + dir.getPath() + ", namely " + pkg.value + " and " + p);
                 return;
               }
 
@@ -160,7 +148,7 @@ public class DirParser {
           SModel mdl = registerModelForPackage(finalPkg);
 
           if (mdl != null) {
-            ((SModelInternal) mdl).addLanguage(PersistenceFacade.getInstance().createModuleReference("f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)"));
+            ((SModelInternal) mdl).addLanguage(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"));
             for (SNode r : ListSequence.fromList(roots)) {
               SModelOperations.addRootNode(mdl, r);
             }
@@ -169,30 +157,23 @@ public class DirParser {
         }
       });
     } else {
-      LOG.info("skipping directory " + dir.getAbsolutePath());
+      LOG.info("skipping directory " + dir.getPath());
     }
   }
-
   private JavaParser.JavaParseResult parseFile(IFile file) throws IOException, JavaParseException {
     String contents = IFileUtils.getTextContents(file);
     return myJavaParser.parseCompilationUnit(contents);
   }
-
   private SModel registerModelForPackage(String fqName) {
-    SModel modelDescriptor = SModelRepository.getInstance().getModelDescriptor(fqName);
-    if (modelDescriptor != null) {
-      if (!(Sequence.fromIterable(((Iterable<SModel>) myModule.getModels())).contains(modelDescriptor))) {
-        LOG.error("model with fq name " + fqName + " is not owned by module " + myModule.getModuleName());
-        return null;
+    for (SModel model : myModule.getModels()) {
+      if (fqName.equals(model.getName().getLongName())) {
+        // package is already present... 
+        // maybe we shouldn't touch it then, maybe it should be an option 
+        return model;
       }
-      // package is already present... 
-      // maybe we shouldn't touch it then, maybe it should be an option 
-      return modelDescriptor;
-    } else {
-      return createModel(fqName);
     }
+    return createModel(fqName);
   }
-
   private SModel createModel(String packageName) {
     // first check if it is possible 
     if (getRootToCreateModel(packageName) == null) {
@@ -205,7 +186,6 @@ public class DirParser {
 
     return modelDescr;
   }
-
   @Nullable
   private ModelRoot getRootToCreateModel(String packageName) {
     for (ModelRoot root : Sequence.fromIterable(myModule.getModelRoots())) {
@@ -215,7 +195,6 @@ public class DirParser {
     }
     return null;
   }
-
   public static boolean checkPackageMatchesSourceDirectory(String pkg, IFile sourceDir) {
     String pathPostfix = NameUtil.pathFromNamespace(pkg);
     // pathFromNamespace returns system-dependent path 

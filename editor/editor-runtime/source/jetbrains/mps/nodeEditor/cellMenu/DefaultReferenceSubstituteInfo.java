@@ -17,11 +17,12 @@ package jetbrains.mps.nodeEditor.cellMenu;
 
 import jetbrains.mps.editor.runtime.impl.cellMenu.DefaultReferenceSubstituteInfoActionsFactory;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
-import jetbrains.mps.project.GlobalScope;
-import org.jetbrains.mps.openapi.model.SNode;import org.jetbrains.mps.openapi.model.SNodeId;import org.jetbrains.mps.openapi.model.SNodeReference;import org.jetbrains.mps.openapi.model.SReference;import org.jetbrains.mps.openapi.model.SModelId;import org.jetbrains.mps.openapi.model.SModel;import org.jetbrains.mps.openapi.model.SModel;import org.jetbrains.mps.openapi.model.SModelReference;import jetbrains.mps.smodel.*;
-import jetbrains.mps.smodel.action.INodeSubstituteAction;
+import jetbrains.mps.smodel.CopyUtil;
+import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
+import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.typesystem.inference.InequalitySystem;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -31,7 +32,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class DefaultReferenceSubstituteInfo extends AbstractNodeSubstituteInfo {
+public class DefaultReferenceSubstituteInfo extends AbstractNodeSubstituteInfo implements DefaultSubstituteInfo {
   private SNode mySourceNode;
   private DefaultReferenceSubstituteInfoActionsFactory myActionFactory;
 
@@ -64,7 +65,7 @@ public class DefaultReferenceSubstituteInfo extends AbstractNodeSubstituteInfo {
     if (parent == null) {
       return null;
     }
-    SNode hole = SModelUtil_new.instantiateConceptDeclaration("jetbrains.mps.lang.core.structure.BaseConcept", null, GlobalScope.getInstance());
+    SNode hole = SModelUtil_new.instantiateConceptDeclaration(jetbrains.mps.smodel.SNodeUtil.concept_BaseConcept, null, null, true);
     SNodeUtil.replaceWithAnother(nodeToEquate, hole);
     InequalitySystem inequalitiesForHole = TypeChecker.getInstance().getInequalitiesForHole(hole, false);
     return inequalitiesForHole;

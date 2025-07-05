@@ -15,10 +15,10 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
+import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.style.DefaultBaseLine;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.EditorSettings;
-import jetbrains.mps.nodeEditor.cells.APICellAdapter;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Basic;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Indent;
 import jetbrains.mps.nodeEditor.cells.GeometryUtil;
@@ -107,13 +107,25 @@ public class CellLayout_Indent extends AbstractCellLayout {
       case CENTER:
         return Math.max(result, editorCells.getHeight() / 2);
       case LAST:
-        EditorCell lastCell = editorCells.getCellAt(editorCells.getCellsCount() - 1);
-        if (lastCell != null) {
+        if (!editorCells.isEmpty()) {
+          EditorCell lastCell = editorCells.lastCell();
           return lastCell.getY() - editorCells.getY() + lastCell.getAscent();
         }
     }
 
     return 0;
+  }
+
+  @Override
+  public void move(EditorCell_Collection editorCells, int deltaX, int deltaY) {
+    if (editorCells.getParent() != null && editorCells.getParent().getCellLayout() instanceof CellLayout_Indent || deltaX == 0) {
+      return;
+    }
+    // Triggering re-layout process for top-level EditorCell_Collection with indent layout on move.
+    // Necessary to recalculate cell wrapping on moving EditorCell_Collection with indent layout enclosed
+    // inside another (non-indent layout) cell. Such move can be performed as a part of layout process for
+    // top-level cell with indent layout.
+    editorCells.requestRelayout();
   }
 
   @Override
@@ -143,7 +155,7 @@ public class CellLayout_Indent extends AbstractCellLayout {
     for (EditorCell editorCell : editorCells) {
       editorCellsSet.add(editorCell);
     }
-    TextBuilder result = jetbrains.mps.nodeEditor.text.TextBuilder.getEmptyTextBuilder();
+    TextBuilder result = new TextBuilderImpl();
     Iterator<EditorCell> iterator = editorCells.iterator();
     if (iterator.hasNext()) {
       boolean newLineAfter = false;
@@ -158,13 +170,13 @@ public class CellLayout_Indent extends AbstractCellLayout {
         }
         if (isOnNewLine(rootCell, current) || newLineAfter) {
           newLineAfter = false;
-          result = result.appendToTheRight(jetbrains.mps.nodeEditor.text.TextBuilder.fromString("\n"), true);
+          result.appendToTheRight(new TextBuilderImpl("\n"), true);
           for (int i = 0; i < getIndent(rootCell, current, false); i++) {
-            result = result.appendToTheRight(jetbrains.mps.nodeEditor.text.TextBuilder.fromString(EditorCell_Indent.getIndentText()), false);
+            result.appendToTheRight(new TextBuilderImpl(EditorCell_Indent.getIndentText()), false);
           }
         }
 
-        result = result.appendToTheRight(current.renderText(), PunctuationUtil.hasLeftGap(current));
+        result.appendToTheRight(current.renderText(), PunctuationUtil.hasLeftGap(current));
 
         if (isNewLineAfter(rootCell, current)) {
           newLineAfter = true;
@@ -201,9 +213,9 @@ public class CellLayout_Indent extends AbstractCellLayout {
   }
 
   private static void collectCells(
-    EditorCell_Collection current,
-    List<EditorCell> frontier,
-    List<EditorCell_Collection> collections) {
+      EditorCell_Collection current,
+      List<EditorCell> frontier,
+      List<EditorCell_Collection> collections) {
 
     for (EditorCell child : current) {
       if (child instanceof EditorCell_Collection) {
@@ -224,7 +236,7 @@ public class CellLayout_Indent extends AbstractCellLayout {
   }
 
   private static boolean isIndentCollection(EditorCell_Collection collection) {
-    return collection.getCellLayout() instanceof CellLayout_Indent && collection.getCellsCount() > 0;
+    return collection.getCellLayout() instanceof CellLayout_Indent && !collection.isEmpty();
   }
 
   private class CellLayouter {
@@ -322,12 +334,12 @@ public class CellLayout_Indent extends AbstractCellLayout {
       boolean hasWrapAnchor = collection.getStyle().get(StyleAttributes.INDENT_LAYOUT_WRAP_ANCHOR);
 
       int indent = hasIndent && hasAnchor ? currentIndent() + myIndentSize :
-        hasIndent ? myCurrentIndent + myIndentSize :
-          hasAnchor ? currentIndent() + getFirstChildLeftGap(collection)
-            : myCurrentIndent;
+          hasIndent ? myCurrentIndent + myIndentSize :
+              hasAnchor ? currentIndent() + getFirstChildLeftGap(collection)
+                  : myCurrentIndent;
       int wrapIndent = hasWrapAnchor ? currentIndent() + getFirstChildLeftGap(collection) :
-        (hasAnchor || hasIndent) ? indent + 2 * myIndentSize
-          : myCurrentIndentAfterWrap;
+          (hasAnchor || hasIndent) ? indent + 2 * myIndentSize
+              : myCurrentIndentAfterWrap;
 
       withIndent(indent, wrapIndent, new Runnable() {
         @Override
@@ -426,6 +438,7 @@ public class CellLayout_Indent extends AbstractCellLayout {
 
       for (EditorCell cell : myLineContent) {
         cell.setBaseline(baseLine);
+        cell.relayout();
       }
 
       myWidth = Math.max(myWidth, myLineWidth);
@@ -456,13 +469,15 @@ public class CellLayout_Indent extends AbstractCellLayout {
       EditorCell current = result;
 
       while (true) {
-        if (!isIndentCollection(current.getParent())) break;
+        if (!isIndentCollection(current.getParent())) {
+          break;
+        }
 
         EditorCell indentLeaf = getFirstIndentLeaf(current.getParent());
         EditorCell unitStart = expandToUnitStart(indentLeaf);
 
         if (myLineContent.contains(unitStart) && isOnRightSide(unitStart) &&
-          cellRangeFitsOnOneLine(unitStart, lastCell)) {
+            cellRangeFitsOnOneLine(unitStart, lastCell)) {
 
           result = indentLeaf;
           current = current.getParent();
@@ -486,8 +501,12 @@ public class CellLayout_Indent extends AbstractCellLayout {
           prevLeaf = prevLeaf.getParent();
         }
 
-        if (!myCell.isAncestorOf(prevLeaf)) break;
-        if (!myLineContent.contains(prevLeaf)) break;
+        if (!myCell.isAncestorOf(prevLeaf)) {
+          break;
+        }
+        if (!myLineContent.contains(prevLeaf)) {
+          break;
+        }
 
         if (isNoWrap(result) || result.getStyle().get(StyleAttributes.PUNCTUATION_LEFT)) {
           result = prevLeaf;
@@ -515,7 +534,7 @@ public class CellLayout_Indent extends AbstractCellLayout {
 
     private boolean cellRangeFitsOnOneLine(EditorCell firstCell, EditorCell lastCell) {
       return lastCell.getX() + lastCell.getWidth() - firstCell.getX() <
-        myMaxWidth - myX - myCurrentIndentAfterWrap;
+          myMaxWidth - myX - myCurrentIndentAfterWrap;
     }
 
     private boolean isOnRightSide(EditorCell cell) {
@@ -523,7 +542,9 @@ public class CellLayout_Indent extends AbstractCellLayout {
     }
 
     private EditorCell getFirstIndentLeaf(EditorCell_Collection collection) {
-      if (!isIndentCollection(collection)) return collection;
+      if (!isIndentCollection(collection)) {
+        return collection;
+      }
 
       EditorCell firstChild = collection.firstCell();
       if (firstChild instanceof EditorCell_Collection) {
@@ -535,7 +556,9 @@ public class CellLayout_Indent extends AbstractCellLayout {
 
     private void splitLineAt(EditorCell splitAt) {
       int index = myLineContent.indexOf(splitAt);
-      if (index == -1) throw new IllegalStateException();
+      if (index == -1) {
+        throw new IllegalStateException();
+      }
 
       final List<EditorCell> oldLine = new ArrayList<EditorCell>(myLineContent.subList(0, index));
       final List<EditorCell> newLine = new ArrayList<EditorCell>(myLineContent.subList(index, myLineContent.size()));

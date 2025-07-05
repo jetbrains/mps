@@ -8,11 +8,11 @@ import javax.swing.JScrollPane;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroup;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
 import jetbrains.mps.smodel.CopyUtil;
-import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.vcs.diff.ui.common.Bounds;
@@ -30,30 +30,27 @@ import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import java.awt.Rectangle;
 import javax.swing.BorderFactory;
 import java.awt.Color;
-import java.util.List;
-import jetbrains.mps.smodel.event.SModelEvent;
-import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 
 public class BaseVersionEditorComponent extends EditorComponent implements EditorMessageOwner {
   private JScrollPane myScrollPane;
   private SModel myBaseModel;
-
   public BaseVersionEditorComponent(SRepository repository, final ChangeGroup changeGroup) {
     super(repository);
-    repository.getModelAccess().runReadAction(new Runnable() {
+    final ModelAccess modelAccess = repository.getModelAccess();
+    modelAccess.runReadAction(new Runnable() {
       public void run() {
-        final jetbrains.mps.smodel.SModel baseModel = as_i3w5ys_a0a0a0a0a0a0b0c(ListSequence.fromList(changeGroup.getChanges()).first().getChangeSet().getOldModel(), SModelBase.class).getSModelInternal();
+        final jetbrains.mps.smodel.SModel baseModel = as_i3w5ys_a0a0a0a0a0a0c0c(ListSequence.fromList(changeGroup.getChanges()).first().getChangeSet().getOldModel(), SModelBase.class).getSModelInternal();
         myBaseModel = new MergeTemporaryModel(CopyUtil.copyModel(baseModel), true);
       }
     });
-    ModelAccess.instance().runWriteAction(new Runnable() {
+    modelAccess.runWriteAction(new Runnable() {
       public void run() {
         DiffModelUtil.renameModelAndRegister(myBaseModel, null);
       }
     });
     final Wrappers._T<Bounds> verticalBounds = new Wrappers._T<Bounds>();
-    ModelAccess.instance().runReadAction(new Runnable() {
+    modelAccess.runReadAction(new Runnable() {
       public void run() {
         SNode baseRooot = myBaseModel.getNode(ListSequence.fromList(changeGroup.getChanges()).first().getRootId());
         editNode(baseRooot);
@@ -62,7 +59,7 @@ public class BaseVersionEditorComponent extends EditorComponent implements Edito
 
         Iterable<ChangeEditorMessage> messages = ListSequence.fromList(changeGroup.getChanges()).translate(new ITranslator2<ModelChange, ChangeEditorMessage>() {
           public Iterable<ChangeEditorMessage> translate(ModelChange ch) {
-            return ChangeEditorMessageFactory.createMessages(myBaseModel, ch, BaseVersionEditorComponent.this, null);
+            return ChangeEditorMessageFactory.createMessages(myBaseModel, true, ch, BaseVersionEditorComponent.this, null);
           }
         });
         verticalBounds.value = Sequence.fromIterable(messages).select(new ISelector<ChangeEditorMessage, Bounds>() {
@@ -96,32 +93,23 @@ public class BaseVersionEditorComponent extends EditorComponent implements Edito
   }
 
   @Override
-  protected jetbrains.mps.nodeEditor.cells.EditorCell createRootCell(List<SModelEvent> events) {
-    if (getEditedNode() == null || getEditedNode().getModel() == null) {
-      EditorContext editorContext = getEditorContext();
-      return new EditorCell_Constant(editorContext, getEditedNode(), "");
-    }
-    return getEditorContext().createRootCell(getEditedNode(), events);
+  public EditorCell createEmptyCell() {
+    return new EditorCell_Constant(getEditorContext(), getEditedNode(), "");
   }
 
   @Override
   public void dispose() {
-    ModelAccess.instance().requireWrite(new Runnable() {
+    getRepository().getModelAccess().runWriteAction(new Runnable() {
       public void run() {
         DiffModelUtil.unregisterModel(myBaseModel);
       }
     });
     super.dispose();
   }
-
   public JScrollPane getScrollPane() {
     return myScrollPane;
   }
-
-  private static <T> T as_i3w5ys_a0a0a0a0a0a0b0c(Object o, Class<T> type) {
-    return (type.isInstance(o) ?
-      (T) o :
-      null
-    );
+  private static <T> T as_i3w5ys_a0a0a0a0a0a0c0c(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

@@ -9,27 +9,26 @@ import com.intellij.openapi.project.Project;
 import com.intellij.ui.NonFocusableCheckBox;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import java.util.List;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Comparator;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.smodel.SNodePointer;
 
 public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
   private JCheckBox myRemoveAttributes;
   private JCheckBox myInsertOverride;
   private JCheckBox myAddReturn;
   private OverrideImplementMethodComponent.State myOptions;
-
   public OverrideImplementMethodsDialog(SNodeReference[] methods, Project project) {
     super(methods, false, true, project);
   }
-
   @Override
   protected void initOptions() {
     try {
@@ -42,80 +41,45 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
     myAddReturn.setMnemonic('r');
     myRemoveAttributes = new NonFocusableCheckBox("Remove Attributes");
     myRemoveAttributes.setMnemonic('t');
-    myInsertOverride = (showInsertOverride() ?
-      new NonFocusableCheckBox("Insert @Override") :
-      null
-    );
-    myOptionControls = (showInsertOverride() ?
-      new JCheckBox[]{myAddReturn, myRemoveAttributes, myInsertOverride} :
-      new JCheckBox[]{myAddReturn, myRemoveAttributes}
-    );
-    if (myInsertOverride != null) {
-      myInsertOverride.setMnemonic('O');
-    }
+    myInsertOverride = new NonFocusableCheckBox("Insert @Override");
+    myOptionControls = new JCheckBox[]{myAddReturn, myRemoveAttributes, myInsertOverride};
+    myInsertOverride.setMnemonic('O');
   }
-
-  protected boolean showInsertOverride() {
-    return true;
-  }
-
   @Override
   protected String getText(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.Classifier")) {
-      return BehaviorReflection.invokeVirtual(String.class, SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.Classifier"), "virtual_getFqName_1213877404258", new Object[]{});
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
+      return ((String) BHReflection.invoke(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
     }
     return super.getText(node);
   }
-
   @Override
   protected void customizeOptionsPanel() {
-    myAddReturn.setSelected((myOptions != null ?
-      myOptions.addReturnsOnImplement :
-      false
-    ));
-    myRemoveAttributes.setSelected((myOptions != null ?
-      myOptions.removeAttributes :
-      true
-    ));
-    if (myInsertOverride != null) {
-      myInsertOverride.setSelected((myOptions != null ?
-        myOptions.addOverrideAnnotation :
-        true
-      ));
-    }
+    myAddReturn.setSelected((myOptions != null ? myOptions.addReturnsOnImplement : false));
+    myRemoveAttributes.setSelected((myOptions != null ? myOptions.removeAttributes : true));
+    myInsertOverride.setSelected((myOptions != null ? myOptions.addOverrideAnnotation : true));
   }
-
   public boolean isInsertOverrideAnnotation() {
-    return (myInsertOverride != null ?
-      myInsertOverride.isSelected() :
-      false
-    );
+    return myInsertOverride.isSelected();
   }
-
   public boolean isAddReturn() {
     return myAddReturn.isSelected();
   }
-
   public boolean isRemoveAttributes() {
     return myRemoveAttributes.isSelected();
   }
-
   @Override
   public void dispose() {
     if (myOptions != null) {
-      if (myInsertOverride != null) {
-        myOptions.addOverrideAnnotation = myInsertOverride.isSelected();
-      }
+      myOptions.addOverrideAnnotation = myInsertOverride.isSelected();
       myOptions.addReturnsOnImplement = myAddReturn.isSelected();
       myOptions.removeAttributes = myRemoveAttributes.isSelected();
     }
     super.dispose();
   }
-
-  public static Iterable<SNode> sortMethods(SNode baseClass, Iterable<SNode> methods) {
+  public static Iterable<SNode> sortMethods(List<SNode> allSuperClassifiers, Iterable<SNode> methods) {
     final Map<SNode, Integer> containerIndex = MapSequence.fromMap(new HashMap<SNode, Integer>());
     int i = 1;
-    for (SNode c : BehaviorReflection.invokeNonVirtual((Class<List<SNode>>) ((Class) Object.class), baseClass, "jetbrains.mps.baseLanguage.structure.ClassConcept", "call_getAllSuperClassifiers_4892662966716545618", new Object[]{})) {
+    for (SNode c : allSuperClassifiers) {
       MapSequence.fromMap(containerIndex).put(c, i++);
     }
     return Sequence.fromIterable(methods).sort(new Comparator<SNode>() {
@@ -123,40 +87,34 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
         SNode parentA = SNodeOperations.getParent(a);
         SNode parentB = SNodeOperations.getParent(b);
         if (parentA == parentB) {
-          String aRole = SNodeOperations.getContainingLinkRole(a);
-          String bRole = SNodeOperations.getContainingLinkRole(b);
+          String aRole = SNodeOperations.getContainingLink(a).getName();
+          String bRole = SNodeOperations.getContainingLink(b).getName();
 
-          if (neq_sivw9t_a0d0c0a0a0a0d0n(aRole, bRole)) {
+          if (neq_sivw9t_a0d0c0a0a0a0d0m(aRole, bRole)) {
             return aRole.compareTo(bRole);
           }
 
           return new Integer(IterableUtil.asList(parentA.getChildren(aRole)).indexOf(a)).compareTo(IterableUtil.asList(parentB.getChildren(bRole)).indexOf(b));
         }
-        int iA = (parentA != null && MapSequence.fromMap(containerIndex).containsKey(parentA) ?
-          MapSequence.fromMap(containerIndex).get(parentA) :
-          0
-        );
-        int iB = (parentB != null && MapSequence.fromMap(containerIndex).containsKey(parentB) ?
-          MapSequence.fromMap(containerIndex).get(parentB) :
-          0
-        );
+        int iA = (parentA != null && MapSequence.fromMap(containerIndex).containsKey(parentA) ? MapSequence.fromMap(containerIndex).get(parentA) : 0);
+        int iB = (parentB != null && MapSequence.fromMap(containerIndex).containsKey(parentB) ? MapSequence.fromMap(containerIndex).get(parentB) : 0);
         return new Integer(iA).compareTo(iB);
       }
     }, true);
   }
 
-  public static SNodeReference[] toNodePointers(Iterable<SNode> methods) {
-    return Sequence.fromIterable(methods).select(new ISelector<SNode, SNodePointer>() {
-      public SNodePointer select(SNode it) {
-        return new SNodePointer(it);
-      }
-    }).toGenericArray(SNodePointer.class);
+  public static Iterable<SNode> sortMethods(SNode baseClass, Iterable<SNode> methods) {
+    return sortMethods(((List<SNode>) BHReflection.invoke(baseClass, SMethodTrimmedId.create("getAllSuperClassifiers", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), "4fAeKISQjDi"))), methods);
   }
 
-  private static boolean neq_sivw9t_a0d0c0a0a0a0d0n(Object a, Object b) {
-    return !((a != null ?
-      a.equals(b) :
-      a == b
-    ));
+  public static SNodeReference[] toNodePointers(Iterable<SNode> methods) {
+    return Sequence.fromIterable(methods).select(new ISelector<SNode, SNodeReference>() {
+      public SNodeReference select(SNode it) {
+        return SNodeOperations.getPointer(it);
+      }
+    }).toGenericArray(SNodeReference.class);
+  }
+  private static boolean neq_sivw9t_a0d0c0a0a0a0d0m(Object a, Object b) {
+    return !(((a != null ? a.equals(b) : a == b)));
   }
 }

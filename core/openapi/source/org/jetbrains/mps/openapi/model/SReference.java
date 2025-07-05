@@ -25,6 +25,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
  */
 @Immutable
 public interface SReference {
+  @Deprecated
   String getRole();
 
   /**

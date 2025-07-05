@@ -4,6 +4,9 @@
   <property name="build.tmp" location="${build.dir}/tmp/buildMpsC" />
   <property name="build.layout" location="${build.dir}/artifacts/buildMpsC" />
   <property name="artifacts.JarFromA" location="${basedir}/jetbrains.mps.build.sandbox/samples" />
+  <property name="environment" value="env" />
+  <property name="env.JAVA_HOME" value="${java.home}/.." />
+  <property name="jdk.home" value="${env.JAVA_HOME}" />
   
   <path id="path.java.library.aaa">
     <fileset file="${artifacts.JarFromA}/buildA/abcde.jar" />
@@ -37,7 +40,7 @@
   <target name="java.compile.testModuleWithAbcde">
     <mkdir dir="${basedir}/jetbrains.mps.build.sandbox/samples/buildA/src" />
     <mkdir dir="${build.tmp}/java/out/testModuleWithAbcde" />
-    <javac destdir="${build.tmp}/java/out/testModuleWithAbcde" fork="true" includeantruntime="false">
+    <javac destdir="${build.tmp}/java/out/testModuleWithAbcde" fork="true" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/jetbrains.mps.build.sandbox/samples/buildA/src" />

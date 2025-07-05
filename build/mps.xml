@@ -3,26 +3,32 @@
   <property name="build.dir" location="build" />
   <property name="build.tmp" location="${build.dir}/tmp/mps" />
   <property name="build.layout" location="${build.dir}/artifacts/mps" />
-  <property name="build.number" value="MPS-129.SNAPSHOT" />
+  <loadfile property="build.number" srcFile="${basedir}/build.txt" />
   <tstamp>
     <format property="date" pattern="yyyyMMdd" />
   </tstamp>
   <property name="build.vcs.number" value="HEAD" />
   <property name="teamcity.buildConfName" value="local" />
-  <property file="${basedir}/build.number" prefix="loaded.for.idea.platform.build.number" />
-  <property name="idea.platform.build.number" value="${loaded.for.idea.platform.build.number.idea.platform.build.number}" />
+  <loadfile property="idea.platform.build.number" srcFile="${basedir}/lib/build.txt" />
+  <property name="mps.build.counter" value="SNAPSHOT" />
   <property name="mps_home" location="${basedir}" />
   <property name="artifacts.mpsBuild" location="${build.dir}/artifacts/mpsBuild" />
   <property name="artifacts.mpsTroveCollections" location="${build.dir}/artifacts/mpsTroveCollections" />
   <property name="artifacts.mpsStandalone" location="${build.dir}/artifacts/mpsStandalone" />
   <property name="artifacts.mpsDevKit" location="${build.dir}/artifacts/mpsDevKit" />
   <property name="artifacts.mpsPlugins" location="${build.dir}/artifacts/mpsPlugins" />
+  <property name="artifacts.mpsJavaPlatform" location="${build.dir}/artifacts/mpsJavaPlatform" />
+  <property name="artifacts.mpsJavaWorkbench" location="${build.dir}/artifacts/mpsJavaWorkbench" />
+  <property name="artifacts.mpsHttpSupportPlugin" location="${build.dir}/artifacts/mpsHttpSupportPlugin" />
   <property name="artifacts.mpsMakePlugin" location="${build.dir}/artifacts/mpsMakePlugin" />
   <property name="artifacts.mpsBuildUI" location="${build.dir}/artifacts/mpsBuildUI" />
   <property name="artifacts.mpsVcs" location="${build.dir}/artifacts/mpsVcs" />
   <property name="artifacts.mpsDebuggerPlugin" location="${build.dir}/artifacts/mpsDebuggerPlugin" />
+  <property name="artifacts.mpsDiagramEditor" location="${build.dir}/artifacts/mpsDiagramEditor" />
+  <property name="artifacts.jetpad" location="${build.dir}/artifacts/jetpad" />
   <property name="artifacts.mpsExecutionPlugin" location="${build.dir}/artifacts/mpsExecutionPlugin" />
   <property name="artifacts.mpsTesting" location="${build.dir}/artifacts/mpsTesting" />
+  <property name="artifacts.mpsContextActionsTool" location="${build.dir}/artifacts/mpsContextActionsTool" />
   <property file="${artifacts.mpsBuild}/build.properties" prefix="import.mpsBuild" />
   <property name="mpsBootstrapCore.version" value="${import.mpsBuild.mpsBootstrapCore.version}" />
   
@@ -50,29 +56,40 @@
     <mkdir dir="${build.tmp}/default/branding.jar/idea" />
     <echoxml file="${build.tmp}/default/branding.jar/idea/IdeaApplicationInfo.xml">
       <component>
-        <version codename="MPS" major="3" minor="0" eap="false" update-channel="MPS30" />
-        <build date="${date}" number="${build.number}" />
-        <logo url="/splash.png" textcolor="002387" />
+        <version codename="MPS" major="2017" minor="1.4" eap="false" update-channel="MPS171" />
+        <company name="JetBrains s.r.o." url="https://www.jetbrains.com/?fromIDE" />
+        <build number="${build.number}" date="${date}" />
+        <logo url="/splash.png" textcolor="000000" progressColor="0E9EF0" progressX="117" progressY="280" progressHeight="3" />
         <about url="/mpsAbout.png" />
-        <icon size32="/MPS_32.png" size16="/MPS_16.png" size32opaque="/MPS_32.png" />
-        <dialogs-image url="/dialogImage.png" />
+        <icon size32="/MPS_32.png" size16="/MPS_16.png" size128="/MPS_128.png" ico="/MPS.ico" />
         <package code="code" />
         <names product="MPS" fullname="JetBrains MPS" />
-        <update-urls check="http://www.jetbrains.com/mps/update.xml" update="http://confluence.jetbrains.com/display/MPS/JetBrains+MPS+EAP+Download+Page" />
-        <welcome-screen caption-url="/mpsWelcomeCaption.png" slogan-url="/mpsSlogan.png" logo-url="/MPS_32.png" />
+        
+        <welcome-screen logo-url="/MPS_welcomeScreen.png" />
+        
+        
+        <plugins url="http://plugins.jetbrains.com/" />
+        <update-urls check="http://www.jetbrains.com/mps/update.xml" patches="http://www.jetbrains.com/mps/download/" />
+        
         <help file="mpshelp.jar" root="mps" webhelp-url="http://www.jetbrains.com/mps/webhelp/" />
-        <feedback release-url="http://forum.jetbrains.com/forum/Meta-Programming-System" />
+        <documentation url="https://www.jetbrains.com/mps/documentation" />
+        <support url="https://www.jetbrains.com/support/mps/index.html" />
+        <feedback release-url="https://www.jetbrains.com/feedback/feedback.jsp?product=mps" />
+        <whatsnew url="https://www.jetbrains.com/mps/whatsnew/index.html" />
+        <keymap win="https://confluence.jetbrains.com/display/MPSD20171/Default+Keymap+Reference" mac="https://confluence.jetbrains.com/display/MPSD20171/Default+Keymap+Reference" />
+        <third-party url="http://www.jetbrains.org/" />
+        <jetbrains-tv url="http://www.youtube.com/user/JetBrainsTV/search?query=MPS" />
+        
       </component>
     </echoxml>
-    <jar destfile="${build.layout}/lib/branding.jar">
-      <fileset file="${basedir}/workbench/mps-workbench/source/MPS_16.png" />
-      <fileset file="${basedir}/workbench/mps-workbench/source/MPS_32.png" />
-      <fileset file="${basedir}/workbench/mps-workbench/source/jetbrains/mps/workbench/icons/mpsWelcomeCaption.png" />
-      <fileset file="${basedir}/workbench/mps-workbench/source/jetbrains/mps/workbench/icons/mpsSlogan.png" />
-      <fileset file="${basedir}/workbench/mps-workbench/source/MPS_32.png" />
-      <fileset file="${basedir}/workbench/mps-workbench/source/jetbrains/mps/workbench/icons/splash.png" />
-      <fileset file="${basedir}/workbench/mps-workbench/source/jetbrains/mps/workbench/icons/mpsAbout.png" />
-      <fileset file="${basedir}/workbench/mps-workbench/source/jetbrains/mps/workbench/icons/dialogImage.png" />
+    <jar destfile="${build.layout}/lib/branding.jar" duplicate="preserve">
+      <fileset file="${basedir}/workbench/mps-icons/source/MPS_16.png" />
+      <fileset file="${basedir}/workbench/mps-icons/source/MPS_32.png" />
+      <fileset file="${basedir}/workbench/mps-icons/source/MPS_128.png" />
+      <fileset file="${basedir}/workbench/mps-icons/source/MPS.ico" />
+      <fileset file="${basedir}/workbench/mps-icons/source/MPS_welcomeScreen.png" />
+      <fileset file="${basedir}/workbench/mps-icons/source/splash.png" />
+      <fileset file="${basedir}/workbench/mps-icons/source/mpsAbout.png" />
       <fileset dir="${build.tmp}/default/branding.jar" />
     </jar>
     <mkdir dir="${build.tmp}/default/MPS-src.zip" />
@@ -95,10 +112,6 @@
     <copy todir="${build.layout}/license">
       <fileset dir="${artifacts.mpsStandalone}/license" />
     </copy>
-    <mkdir dir="${build.layout}/plugin" />
-    <copy todir="${build.layout}/plugin">
-      <fileset file="${basedir}/plugin/MPSPlugin.jar" />
-    </copy>
     <mkdir dir="${build.layout}/plugins" />
     <mkdir dir="${build.layout}/plugins/mps-build" />
     <copy todir="${build.layout}/plugins/mps-build">
@@ -107,6 +120,10 @@
     <mkdir dir="${build.layout}/plugins/mps-trove" />
     <copy todir="${build.layout}/plugins/mps-trove">
       <fileset dir="${artifacts.mpsTroveCollections}/mps-trove" />
+    </copy>
+    <mkdir dir="${build.layout}/plugins/mps-java-workbench" />
+    <copy todir="${build.layout}/plugins/mps-java-workbench">
+      <fileset dir="${artifacts.mpsJavaWorkbench}/mps-java-workbench" />
     </copy>
     <copy todir="${build.layout}/plugins">
       <fileset dir="${artifacts.mpsStandalone}/plugins" />
@@ -118,7 +135,9 @@
     <copy todir="${build.layout}/plugins">
       <fileset dir="${artifacts.mpsExecutionPlugin}" />
     </copy>
-    <copy file="${artifacts.mpsMakePlugin}/mps-make.jar" todir="${build.layout}/plugins" />
+    <copy todir="${build.layout}/plugins">
+      <fileset dir="${artifacts.mpsMakePlugin}" />
+    </copy>
     <copy todir="${build.layout}/plugins">
       <fileset dir="${artifacts.mpsPlugins}" />
     </copy>
@@ -126,9 +145,23 @@
     <copy todir="${build.layout}/plugins/mps-vcs">
       <fileset dir="${artifacts.mpsVcs}/mps-vcs" />
     </copy>
+    <mkdir dir="${build.layout}/plugins/git4idea" />
+    <copy todir="${build.layout}/plugins/git4idea">
+      <fileset dir="${artifacts.mpsVcs}/git4idea" />
+    </copy>
+    <mkdir dir="${build.layout}/plugins/svn4idea" />
+    <copy todir="${build.layout}/plugins/svn4idea">
+      <fileset dir="${artifacts.mpsVcs}/svn4idea" />
+    </copy>
     <mkdir dir="${build.layout}/plugins/mps-build" />
     <copy todir="${build.layout}/plugins/mps-build">
       <fileset dir="${artifacts.mpsBuildUI}/mps-build" />
+    </copy>
+    <copy todir="${build.layout}/plugins">
+      <fileset dir="${artifacts.jetpad}" />
+    </copy>
+    <copy todir="${build.layout}/plugins">
+      <fileset dir="${artifacts.mpsDiagramEditor}" />
     </copy>
     <copy todir="${build.layout}/plugins">
       <fileset dir="${artifacts.mpsDebuggerPlugin}" />
@@ -137,10 +170,27 @@
     <copy todir="${build.layout}/plugins/mps-testing">
       <fileset dir="${artifacts.mpsTesting}/mps-testing" />
     </copy>
+    <copy todir="${build.layout}/plugins">
+      <fileset dir="${artifacts.mpsHttpSupportPlugin}" />
+    </copy>
+    <copy todir="${build.layout}/plugins">
+      <fileset dir="${artifacts.mpsContextActionsTool}" />
+    </copy>
     <zip destfile="${build.layout}/samples.zip">
-      <zipfileset dir="${basedir}/samples" prefix="MPSSamples" />
+      <zipfileset dir="${basedir}/samples" prefix="MPSSamples">
+        <exclude name="**/vcs.xml" />
+        <exclude name="**/*.history" />
+      </zipfileset>
     </zip>
     <echo file="${build.layout}/build.number">build.number=${build.number}${line.separator}date=${date}${line.separator}revision.number=${build.vcs.number}${line.separator}configuration.name=${teamcity.buildConfName}${line.separator}version=${mpsBootstrapCore.version}${line.separator}idea.platform.build.number=${idea.platform.build.number}</echo>
+    <copy todir="${build.layout}">
+      <fileset file="${basedir}/build.txt" />
+      <filterchain>
+        <tokenfilter>
+          <replaceregex pattern="SNAPSHOT" replace="${mps.build.counter}" flags="gi" />
+        </tokenfilter>
+      </filterchain>
+    </copy>
     <copy todir="${build.layout}">
       <fileset file="${basedir}/about.txt" />
     </copy>
@@ -155,7 +205,7 @@
         </tokenfilter>
       </filterchain>
     </copy>
-    <echo file="${build.layout}/build.properties">mps.build.number=${build.number}${line.separator}mps.date=${date}${line.separator}mps.build.vcs.number=${build.vcs.number}${line.separator}mps.teamcity.buildConfName=${teamcity.buildConfName}${line.separator}mps.idea.platform.build.number=${idea.platform.build.number}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
+    <echo file="${build.layout}/build.properties">mps.build.number=${build.number}${line.separator}mps.date=${date}${line.separator}mps.build.vcs.number=${build.vcs.number}${line.separator}mps.teamcity.buildConfName=${teamcity.buildConfName}${line.separator}mps.idea.platform.build.number=${idea.platform.build.number}${line.separator}mps.mps.build.counter=${mps.build.counter}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>
   
   <target name="buildDependents">
@@ -167,13 +217,19 @@
     <ant antfile="build/mpsWorkbench.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsStandalone.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsDevKit.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJava.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsPlugins.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsJavaPlatform.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsJavaWorkbench.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsMakePlugin.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsPlugins.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsHttpSupportPlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsDebuggerPlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsExecutionPlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsBuildUI.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsVcsCore.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsVcs.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/jetpad.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsDiagramEditor.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsContextActionsTool.xml" inheritAll="false" useNativeBasedir="true" />
   </target>
   
   <target name="fetchDependencies" />

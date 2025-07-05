@@ -15,15 +15,31 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.nodeEditor.memory.MemoryAnalyzer;
 import jetbrains.mps.util.EqualUtil;
+import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
+// TODO: move to jetbrains.mps.nodeEditor.updater package, make package-local
 public class ReferencedNodeContext {
-  private Stack<SNode> myContextRefererNodes = null;
+  // Both collections are used to identify "path" to the specified node via number of references.
+  // To distinguish between editor cells created as a part of referenced node cell in-place
+  // editor and cells created as a part of target node "main" editor or another in-place
+  // referenced cell editor.
+  //
+  // Important information for update process here is:
+  // - myNode (current context node)
+  // - sourceNode (the node where chain of references was started)
+  // - unique identities of each reference in this chain (roles/cellIDs/..)
+  //
+  // TODO: Simplify information persisted in this context object
+  private List<String> myContextRoles = null;
+  private List<SNode> myContextRefererNodes = null;
+
   private SNode myNode = null;
-  private Stack<String> myContextRoles = null;
   private boolean myIsNodeAttribute = false;
 
   private ReferencedNodeContext(SNode node) {
@@ -34,12 +50,10 @@ public class ReferencedNodeContext {
   private ReferencedNodeContext(SNode node, ReferencedNodeContext prototype) {
     this(node);
     if (prototype.myContextRoles != null) {
-      myContextRoles = new Stack<String>();
-      myContextRoles.addAll(prototype.myContextRoles);
+      myContextRoles = new ArrayList<String>(prototype.myContextRoles);
     }
     if (prototype.myContextRefererNodes != null) {
-      myContextRefererNodes = new Stack<SNode>();
-      myContextRefererNodes.addAll(prototype.myContextRefererNodes);
+      myContextRefererNodes = new ArrayList<SNode>(prototype.myContextRefererNodes);
     }
   }
 
@@ -78,22 +92,22 @@ public class ReferencedNodeContext {
 
   private void addContextRole(String contextRole) {
     if (myContextRoles == null) {
-      myContextRoles = new Stack<String>();
+      myContextRoles = new LinkedList<String>();
     }
-    myContextRoles.push(contextRole);
+    myContextRoles.add(contextRole);
   }
 
   private void addContextRefererNode(SNode contextRefererNode) {
     if (myContextRefererNodes == null) {
-      myContextRefererNodes = new Stack<SNode>();
+      myContextRefererNodes = new LinkedList<SNode>();
     }
-    myContextRefererNodes.push(contextRefererNode);
+    myContextRefererNodes.add(contextRefererNode);
   }
 
   public int hashCode() {
     return EqualUtil.hashCode(myNode) +
-      31 * (EqualUtil.hashCode(myContextRefererNodes) +
-        31 * EqualUtil.hashCode(myContextRoles));
+        31 * (EqualUtil.hashCode(myContextRefererNodes) +
+            31 * EqualUtil.hashCode(myContextRoles));
   }
 
   public boolean equals(Object obj) {
@@ -101,9 +115,9 @@ public class ReferencedNodeContext {
     if (obj instanceof ReferencedNodeContext) {
       ReferencedNodeContext o = (ReferencedNodeContext) obj;
       return EqualUtil.equals(myNode, o.myNode)
-        && EqualUtil.equals(myContextRoles, o.myContextRoles)
-        && EqualUtil.equals(myContextRefererNodes, o.myContextRefererNodes)
-        && myIsNodeAttribute == o.myIsNodeAttribute;
+          && EqualUtil.equals(myContextRoles, o.myContextRoles)
+          && EqualUtil.equals(myContextRefererNodes, o.myContextRefererNodes)
+          && myIsNodeAttribute == o.myIsNodeAttribute;
     } else {
       return false;
     }
@@ -123,5 +137,18 @@ public class ReferencedNodeContext {
       }
     }
     return result;
+  }
+
+  public void calculateSize(MemoryAnalyzer analyzer) {
+    analyzer.appendObject(this);
+    if (myContextRoles != null) {
+      analyzer.appendCollection(myContextRoles);
+      for (String contextRole : myContextRoles) {
+        analyzer.appendObject(contextRole);
+      }
+    }
+    if (myContextRefererNodes != null) {
+      analyzer.appendCollection(myContextRefererNodes);
+    }
   }
 }

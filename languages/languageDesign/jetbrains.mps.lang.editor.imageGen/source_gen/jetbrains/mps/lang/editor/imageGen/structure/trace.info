@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <root>
+    <file name="ConceptPresentationAspectImpl.java">
+      <unit at="11,0,25,0" name="jetbrains.mps.lang.editor.imageGen.structure.ConceptPresentationAspectImpl" />
+    </file>
+    <file name="IconContainer.java">
+      <unit at="7,0,10,0" name="jetbrains.mps.lang.editor.imageGen.structure.IconContainer" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <unit at="10,0,28,0" name="jetbrains.mps.lang.editor.imageGen.structure.LanguageConceptSwitch" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <unit at="14,0,56,0" name="jetbrains.mps.lang.editor.imageGen.structure.StructureAspectDescriptor" />
+    </file>
+  </root>
+</debug-info>
+

@@ -15,7 +15,13 @@
  */
 package jetbrains.mps.openapi.editor.cells;
 
+import jetbrains.mps.openapi.editor.descriptor.ConceptEditor;
+import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+
+import java.util.Collection;
+import java.util.Set;
 
 /**
  * User: shatalin
@@ -24,7 +30,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 public interface EditorCellFactory {
   EditorCell createEditorCell(SNode node, boolean isInspector);
 
+  EditorCell createEditorCell(SNode node, boolean isInspector, @NotNull Class<? extends ConceptEditor> excludedEditor);
+
   EditorCell createEditorComponentCell(SNode node, String editorComponentId);
+
 
   /**
    * Retrieve current EditorCellContext
@@ -33,6 +42,11 @@ public interface EditorCellFactory {
    */
   EditorCellContext getCellContext();
 
+  /**
+   * If there is active EditorCellContext
+   *
+   * @return if there is active EditorCellContext in the stack
+   */
   boolean hasCellContext();
 
   /**
@@ -71,4 +85,14 @@ public interface EditorCellFactory {
    * @throws IllegalStateException if pushCellContext() was not called before.
    */
   void removeCellContextHints(String... hints);
+
+  /**
+   * Set node location to the current EditorCellContext
+   *
+   * @param location to set
+   * @throws IllegalStateException if pushCellContext() was not called before.
+   */
+  default void setNodeLocation(SNodeLocation location) {
+
+  }
 }

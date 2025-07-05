@@ -6,7 +6,7 @@ import com.intellij.openapi.components.ProjectComponent;
 import jetbrains.mps.internal.make.runtime.java.IdeaJavaCompiler;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.MPSCore;
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.make.MPSCompilationResult;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Set;
@@ -22,11 +22,9 @@ import java.rmi.RemoteException;
 public class IdeaJavaCompilerImpl implements ProjectComponent, IdeaJavaCompiler {
   private final Project myProject;
   private IProjectHandler myIdeaProjectHandler;
-
   public IdeaJavaCompilerImpl(Project project) {
     myProject = project;
   }
-
   @Override
   public void projectOpened() {
     new Thread(new Runnable() {
@@ -36,31 +34,25 @@ public class IdeaJavaCompilerImpl implements ProjectComponent, IdeaJavaCompiler 
       }
     }).start();
   }
-
   @Override
   public void projectClosed() {
     myIdeaProjectHandler = null;
   }
-
   @NotNull
   @Override
   public String getComponentName() {
     return "IDEA Java Compiler";
   }
-
   @Override
   public void initComponent() {
   }
-
   @Override
   public void disposeComponent() {
   }
-
   @Override
   public boolean isValid() {
-    return !(MPSCore.getInstance().isTestMode()) && myIdeaProjectHandler != null;
+    return !(RuntimeFlags.isTestMode()) && myIdeaProjectHandler != null;
   }
-
   @Override
   public MPSCompilationResult compileModules(SModule[] modules) {
     if (!(isValid())) {
@@ -73,23 +65,19 @@ public class IdeaJavaCompilerImpl implements ProjectComponent, IdeaJavaCompiler 
       }
     }
     try {
-      CompilationResult cr = myIdeaProjectHandler.buildModules(SetSequence.fromSet(modulePaths).toGenericArray(String.class));
-      if (cr != null) {
-        return new MPSCompilationResult(cr.getErrors(), cr.getWarnings(), cr.isAborted(), (cr.isCompiledAnything() ?
-          Arrays.asList(modules) :
-          Collections.<SModule>emptySet()
-        ));
+      IdeaCompilationResult ideaResult = myIdeaProjectHandler.buildModules(SetSequence.fromSet(modulePaths).toGenericArray(String.class));
+      if (ideaResult != null) {
+        return new MPSCompilationResult(ideaResult.getErrorCount(), ideaResult.getWarningCount(), ideaResult.isAborted(), (ideaResult.hasCompiledAnything() ? Arrays.asList(modules) : Collections.<SModule>emptySet()));
       }
     } catch (RemoteException e) {
       e.printStackTrace();
     }
     return null;
   }
-
   private IProjectHandler getIdeaProjectHandler() {
-    if (MPSCore.getInstance().isTestMode()) {
+    if (RuntimeFlags.isTestMode()) {
       return null;
     }
-    return MPSPlugin.getInstance().getProjectHandler(myProject);
+    return MPSPlugin.getInstance().getProjectHandler(myProject.getBasePath());
   }
 }

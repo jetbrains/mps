@@ -4,7 +4,7 @@ package jetbrains.mps.lang.project.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum RuleType {
   strictly_before("before (<)", "strictly_before"),
@@ -13,16 +13,21 @@ public enum RuleType {
   after_or_together("after or together (>=)", "after_or_together"),
   strictly_after("after (>)", "strictly_after");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private RuleType(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<RuleType> getConstants() {
     List<RuleType> list = ListSequence.fromList(new LinkedList<RuleType>());
     ListSequence.fromList(list).addElement(RuleType.strictly_before);
@@ -32,11 +37,9 @@ public enum RuleType {
     ListSequence.fromList(list).addElement(RuleType.strictly_after);
     return list;
   }
-
   public static RuleType getDefault() {
     return RuleType.strictly_before;
   }
-
   public static RuleType parseValue(String value) {
     if (value == null) {
       return RuleType.getDefault();
@@ -57,16 +60,5 @@ public enum RuleType {
       return RuleType.strictly_after;
     }
     return RuleType.getDefault();
-  }
-
-  private String myValue;
-
-  RuleType(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

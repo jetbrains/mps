@@ -4,17 +4,16 @@ package jetbrains.mps.debugger.api.ui.actions;
 
 import com.intellij.openapi.actionSystem.ToggleAction;
 import javax.swing.Icon;
+import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import jetbrains.mps.debug.api.AbstractDebugSession;
 import jetbrains.mps.debugger.api.ui.DebugActionsUtil;
 
 public class MuteBreakpoints extends ToggleAction {
-  private static final Icon ICON = IconContainer.ICON_a0;
-
+  private static final Icon ICON = AllIcons.Debugger.MuteBreakpoints;
   public MuteBreakpoints() {
     super("Mute Breakpoints", "Mute Breakpoints", ICON);
   }
-
   @Override
   public void setSelected(AnActionEvent event, boolean b) {
     AbstractDebugSession debugSession = DebugActionsUtil.getDebugSession(event);
@@ -23,13 +22,11 @@ public class MuteBreakpoints extends ToggleAction {
     }
     debugSession.muteBreakpoints(b);
   }
-
   @Override
   public boolean isSelected(AnActionEvent event) {
     AbstractDebugSession debugSession = DebugActionsUtil.getDebugSession(event);
     return (debugSession != null) && debugSession.isMute();
   }
-
   @Override
   public void update(AnActionEvent event) {
     super.update(event);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,16 @@
 package jetbrains.mps.nodeEditor.cells;
 
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.IScope;
-import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
 import jetbrains.mps.smodel.PropertySupport;
 import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.smodel.SNodeLegacy;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.annotation.Hack;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 public class PropertyAccessor implements ModelAccessor {
   private SNode myNode;
@@ -34,30 +33,29 @@ public class PropertyAccessor implements ModelAccessor {
   private boolean myReadOnly;
   private boolean myAllowEmptyText;
   private final SNodeReference myPropertyDeclaration;
-  private IScope myScope;
+  private final SRepository myRepository;
 
   public PropertyAccessor(SNode node, String propertyName, boolean readOnly, boolean allowEmptyText, EditorContext editorContext) {
     myNode = node;
     myPropertyName = propertyName;
     myReadOnly = readOnly || SModelOperations.isReadOnly(node.getModel()) || editorContext.getEditorComponent().isReadOnly();
     myAllowEmptyText = allowEmptyText;
-    SNode propertyDeclaration = ((jetbrains.mps.smodel.SNode) node).getPropertyDeclaration(propertyName);
-    myPropertyDeclaration = propertyDeclaration != null ? propertyDeclaration.getReference() : null;
-    myScope = editorContext.getScope();
-  }
-
-  public PropertyAccessor(SNode node, String propertyName, boolean readOnly, boolean allowEmptyText, IOperationContext context) {
-    myNode = node;
-    myPropertyName = propertyName;
-    myReadOnly = readOnly || SModelOperations.isReadOnly(node.getModel());
-    myAllowEmptyText = allowEmptyText;
-    SNode propertyDeclaration = ((jetbrains.mps.smodel.SNode) node).getPropertyDeclaration(propertyName);
-    myPropertyDeclaration = propertyDeclaration != null ? propertyDeclaration.getReference() : null;
-    myScope = context.getScope();
+    myPropertyDeclaration = NodeReadAccessCasterInEditor.runReadTransparentAction(new Computable<SNodeReference>() {
+      @Override
+      public SNodeReference compute() {
+        SNode propertyDeclaration = new SNodeLegacy(myNode).getPropertyDeclaration(myPropertyName);
+        return propertyDeclaration != null ? propertyDeclaration.getReference() : null;
+      }
+    });
+    myRepository = editorContext.getRepository();
   }
 
   public SNode getNode() {
     return myNode;
+  }
+
+  protected SRepository getRepository() {
+    return myRepository;
   }
 
   public String getPropertyName() {
@@ -117,7 +115,7 @@ public class PropertyAccessor implements ModelAccessor {
     SNode node = getPropertyDeclaration();
     if (node != null) {
       PropertySupport propertySupport = PropertySupport.getPropertySupport(node);
-      return propertySupport.canSetValue(myNode, myPropertyName, text, myScope);
+      return propertySupport.canSetValue(myNode, myPropertyName, text);
     }
     return true;
   }
@@ -146,6 +144,11 @@ public class PropertyAccessor implements ModelAccessor {
   }
 
   private SNode getPropertyDeclaration() {
-    return myPropertyDeclaration != null ? myPropertyDeclaration.resolve(MPSModuleRepository.getInstance()) : null;
+    return NodeReadAccessCasterInEditor.runReadTransparentAction(new Computable<SNode>() {
+      @Override
+      public SNode compute() {
+        return myPropertyDeclaration != null ? myPropertyDeclaration.resolve(myRepository) : null;
+      }
+    });
   }
 }

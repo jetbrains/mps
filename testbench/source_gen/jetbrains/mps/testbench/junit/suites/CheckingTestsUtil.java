@@ -6,118 +6,78 @@ import java.util.List;
 import jetbrains.mps.checkers.INodeChecker;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.ArrayList;
-import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.smodel.ModuleOperationContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.Set;
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.checkers.ErrorReportUtil;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.util.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.module.SModule;
-import java.util.Collection;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.extapi.model.GeneratableSModel;
-import jetbrains.mps.generator.ModelGenerationStatusManager;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
-import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.model.SReference;
-import org.jetbrains.mps.openapi.language.SAbstractLink;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.project.validation.ModelValidator;
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.project.GlobalScope;
-import jetbrains.mps.project.validation.ModuleValidatorFactory;
 
 public class CheckingTestsUtil {
-  public CheckingTestsUtil() {
+  private final CheckingTestStatistic myStats;
+
+  public CheckingTestsUtil(CheckingTestStatistic statistic) {
+    myStats = statistic;
   }
 
-  public static List<String> applyChecker(final INodeChecker checker, final Iterable<SModel> models, final CheckingTestStatistic statistic) {
+  public List<String> applyChecker(final INodeChecker checker, final Iterable<SModel> models) {
     final List<String> errors = new ArrayList<String>();
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        for (SModel sm : models) {
-          if (!(SModelStereotype.isUserModel(sm))) {
+    for (SModel sm : models) {
+      if (!(SModelStereotype.isUserModel(sm))) {
+        continue;
+      }
+      if (SModelStereotype.isGeneratorModel(sm)) {
+        continue;
+      }
+      for (SNode root : SModelOperations.roots(((SModel) sm), null)) {
+        Set<IErrorReporter> errorReporters = null;
+        try {
+          errorReporters = checker.getErrors(root, sm.getRepository());
+        } catch (IllegalStateException e) {
+          errors.add(e.getMessage());
+        }
+        for (IErrorReporter reporter : errorReporters) {
+          if (!(ErrorReportUtil.shouldReportError(reporter.getSNode()))) {
             continue;
           }
-          if (SModelStereotype.isGeneratorModel(sm)) {
-            continue;
+
+          if (reporter.getMessageStatus().equals(MessageStatus.ERROR)) {
+            if (reporter.reportError().startsWith("a class should have")) {
+              continue;
+            }
+            SNode node = reporter.getSNode();
+            if (!(CheckingTestsUtil.filterIssue(node))) {
+              continue;
+            }
+            myStats.reportError();
+            errors.add("Error message: " + reporter.reportError() + "   model: " + SNodeOperations.getModelLongName(node.getModel()) + " root: " + node.getContainingRoot() + " node: " + node);
           }
-          ModuleOperationContext operationContext = new ModuleOperationContext(sm.getModule());
-          for (SNode root : SModelOperations.getRoots(sm, null)) {
-            Set<IErrorReporter> errorReporters = null;
-            try {
-              errorReporters = checker.getErrors(root, operationContext);
-            } catch (IllegalStateException e) {
-              errors.add(e.getMessage());
-            }
-            for (IErrorReporter reporter : errorReporters) {
-              if (reporter.getMessageStatus().equals(MessageStatus.ERROR)) {
-                if (reporter.reportError().startsWith("a class should have")) {
-                  continue;
-                }
-                SNode node = reporter.getSNode();
-                if (!(CheckingTestsUtil.filterIssue(node))) {
-                  continue;
-                }
-                statistic.reportError();
-                errors.add("Error message: " + reporter.reportError() + "   model: " + SNodeOperations.getModelLongName(node.getModel()) + " root: " + node.getContainingRoot() + " node: " + node);
-              }
-              if (reporter.getMessageStatus().equals(MessageStatus.WARNING)) {
-                statistic.reportWarning();
-              }
-            }
+          if (reporter.getMessageStatus().equals(MessageStatus.WARNING)) {
+            myStats.reportWarning();
           }
         }
       }
-    });
+    }
     return errors;
   }
-
   public static boolean filterIssue(SNode node) {
-    SNode container = AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.test.structure.NodePropertiesContainer")));
+    SNode container = AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer")));
     if (container == null) {
       return true;
     }
-    for (SNode property : SLinkOperations.getTargets(container, "properties", true)) {
-      if (jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.isInstanceOf(property, "jetbrains.mps.lang.test.structure.NodeErrorPropety")) {
+    for (SNode property : SLinkOperations.getChildren(container, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, 0x11b07abae7cL, "nodeOperations"))) {
+      if (jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.isInstanceOf(property, MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b01e7283dL, "jetbrains.mps.lang.test.structure.NodeErrorCheckOperation"))) {
         return false;
       }
     }
     return true;
   }
-
-  public static List<String> checkReferences(SModule module) {
-    Collection<SModel> models = new ModelsExtractor(module, false).includingGenerators().getModels();
-    return checkModels(models);
-  }
-
-  public static List<String> checkStructure(SModule module) {
-    Collection<SModel> models = new ModelsExtractor(module, true).includingGenerators().getModels();
-    return checkStructure(models);
-  }
-
-  public static List<String> checkGenerationStatus(SModule module) {
-    Collection<SModel> models = new ModelsExtractor(module, false).includingGenerators().getModels();
-    return checkModelsGenerationStatus(models);
-  }
-
-  public static List<String> checkModule(SModule module) {
-    List<SModule> modules = new ArrayList<SModule>();
-    modules.add(module);
-    if (module instanceof Language) {
-      modules.addAll(((Language) module).getGenerators());
-    }
-    return checkModules(modules);
-  }
-
   public static String formatErrors(List<String> errors) {
     StringBuilder sb = new StringBuilder();
     String sep = "";
@@ -126,170 +86,5 @@ public class CheckingTestsUtil {
       sep = "\n";
     }
     return sb.toString();
-  }
-
-  private static List<String> checkModelsGenerationStatus(final Iterable<SModel> models) {
-    final List<String> errors = new ArrayList<String>();
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        for (SModel md : models) {
-          if (!((md instanceof GeneratableSModel))) {
-            continue;
-          }
-          GeneratableSModel sm = (GeneratableSModel) md;
-          if (!(sm.isGeneratable())) {
-            continue;
-          }
-          SModule module = sm.getModule();
-          if (module == null) {
-            errors.add("Model without a module: " + sm.getReference().toString());
-            continue;
-          }
-          String genHash = ModelGenerationStatusManager.getLastGenerationHash(sm);
-          if (genHash == null) {
-            errors.add("No generated hash for " + sm.getReference().toString());
-            continue;
-          }
-          String realHash = sm.getModelHash();
-          if (realHash == null) {
-            errors.add("cannot gen cache for " + sm.getReference().toString());
-            continue;
-          }
-          if (!(realHash.equals(genHash))) {
-            errors.add("model requires generation: " + sm.getReference().toString() + " last genHash:" + genHash + " modelHash:" + realHash);
-          }
-        }
-      }
-    });
-    return errors;
-  }
-
-  private static List<String> checkStructure(final Iterable<SModel> models) {
-    final List<String> errors = new ArrayList<String>();
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        for (SModel sm : models) {
-          if (!(SModelStereotype.isUserModel(sm))) {
-            continue;
-          }
-          CheckingTestsUtil.checkModelNodes(sm, errors);
-        }
-      }
-    });
-    return errors;
-  }
-
-  private static List<String> checkModels(final Iterable<SModel> models) {
-    final List<String> errors = new ArrayList<String>();
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        for (SModel sm : models) {
-          if (!(SModelStereotype.isUserModel(sm))) {
-            continue;
-          }
-          StringBuilder errorMessages = CheckingTestsUtil.checkModel(sm);
-          if (errorMessages.length() > 0) {
-            errors.add("Broken References: " + errorMessages.toString());
-          }
-        }
-      }
-    });
-    return errors;
-  }
-
-  private static List<String> checkModules(final Iterable<SModule> modules) {
-    final List<String> errors = new ArrayList<String>();
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        for (SModule sm : modules) {
-          StringBuilder errorMessages = CheckingTestsUtil.checkModuleInternal(sm);
-          if (errorMessages.length() > 0) {
-            errors.add("Error in module " + sm.getModuleName() + ": " + errorMessages.toString());
-          }
-        }
-      }
-    });
-    return errors;
-  }
-
-  private static void checkModelNodes(@NotNull SModel model, @NotNull final List<String> result) {
-    for (final SNode node : SNodeUtil.getDescendants(model)) {
-      final SConcept concept = node.getConcept();
-      if (concept == null) {
-        result.add("unknown concept of node: " + SNodeUtil.getDebugText(node));
-        continue;
-      }
-      for (String name : node.getPropertyNames()) {
-        if (concept.getProperty(name) == null) {
-          result.add("unknown property: `" + name + "' in node " + SNodeUtil.getDebugText(node));
-        }
-      }
-      for (SReference ref : node.getReferences()) {
-        SAbstractLink link = concept.getLink(ref.getRole());
-        if (link == null || !(link.isReference())) {
-          result.add("unknown link role: `" + ref.getRole() + "' in node " + SNodeUtil.getDebugText(node));
-        }
-      }
-      for (SNode child : node.getChildren()) {
-        String role = child.getRoleInParent();
-        SAbstractLink link = concept.getLink(role);
-        if (link == null || link.isReference()) {
-          result.add("unknown child role: `" + role + "' in node " + SNodeUtil.getDebugText(node));
-        }
-      }
-    }
-  }
-
-  private static StringBuilder checkModel(final SModel sm) {
-    StringBuilder errorMessages = new StringBuilder();
-    List<String> validationResult = ModelAccess.instance().runReadAction(new Computable<List<String>>() {
-      public List<String> compute() {
-        return new ModelValidator(sm).validate();
-      }
-    });
-    if (!(validationResult.isEmpty())) {
-      errorMessages.append("errors in model: ").append(sm.getReference().toString()).append("\n");
-      for (String item : validationResult) {
-        errorMessages.append("\t");
-        errorMessages.append(item);
-        errorMessages.append("\n");
-      }
-    }
-    for (SNode node : SNodeUtil.getDescendants(sm)) {
-      // Testbench.LOG.debug("Checking node " + node); 
-      if (SModelUtil.findConceptDeclaration(node.getConcept().getQualifiedName(), GlobalScope.getInstance()) == null) {
-        errorMessages.append("Unknown concept ");
-        errorMessages.append(node.getConcept().getQualifiedName());
-        errorMessages.append("\n");
-      }
-    }
-    for (SNode node : SNodeUtil.getDescendants(sm)) {
-      for (SReference ref : node.getReferences()) {
-        if (jetbrains.mps.smodel.SNodeUtil.hasReferenceMacro(node, ref.getRole())) {
-          continue;
-        }
-        if (SNodeOperations.getTargetNodeSilently(ref) == null) {
-          errorMessages.append("Broken reference in model {").append(SNodeOperations.getModelLongName(node.getModel())).append("}").append(" node ").append(node.getNodeId().toString()).append("(").append(node).append(")\n");
-        }
-      }
-    }
-    return errorMessages;
-  }
-
-  private static StringBuilder checkModuleInternal(final SModule module) {
-    StringBuilder errorMessages = new StringBuilder();
-    List<String> validationResult = ModelAccess.instance().runReadAction(new Computable<List<String>>() {
-      public List<String> compute() {
-        return ModuleValidatorFactory.createValidator(module).getErrors();
-      }
-    });
-    if (!(validationResult.isEmpty())) {
-      for (String item : validationResult) {
-        errorMessages.append("\t");
-        errorMessages.append(item);
-        errorMessages.append("\n");
-      }
-    }
-    return errorMessages;
   }
 }

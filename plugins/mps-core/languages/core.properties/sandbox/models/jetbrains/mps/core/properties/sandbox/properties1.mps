@@ -1,81 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:d9e408f7-ca77-4f9c-b8d9-b09240ec26bc(jetbrains.mps.core.properties.sandbox.properties1)">
-  <persistence version="8" />
-  <language namespace="58f98fef-90ad-4b72-a390-fad66ec7005a(jetbrains.mps.core.properties)" />
-  <import index="tpck" modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" implicit="yes" />
-  <import index="911s" modelUID="r:9da2e6e5-b7a9-4059-9bac-c3700f7d675c(jetbrains.mps.core.properties.structure)" version="-1" implicit="yes" />
-  <root type="911s.PropertiesFile" typeId="911s.3961775458390517588" id="6896005762093430084" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="build1" />
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesComment" typeId="911s.3961775458390522585" id="6896005762093550210" nodeInfo="nn">
-      <property name="text" nameId="911s.3961775458390522586" value="##########################" />
+<model ref="r:d9e408f7-ca77-4f9c-b8d9-b09240ec26bc(jetbrains.mps.core.properties.sandbox.properties1)">
+  <persistence version="9" />
+  <languages>
+    <use id="58f98fef-90ad-4b72-a390-fad66ec7005a" name="jetbrains.mps.core.properties" version="0" />
+  </languages>
+  <imports />
+  <registry>
+    <language id="58f98fef-90ad-4b72-a390-fad66ec7005a" name="jetbrains.mps.core.properties">
+      <concept id="3961775458390517588" name="jetbrains.mps.core.properties.structure.PropertiesFile" flags="ng" index="3bKiEt">
+        <child id="3961775458390522563" name="lines" index="3bKjsa" />
+      </concept>
+      <concept id="3961775458390522561" name="jetbrains.mps.core.properties.structure.PropertiesDeclaration" flags="ng" index="3bKjs8">
+        <property id="3961775458390522596" name="value" index="3bKjsH" />
+      </concept>
+      <concept id="3961775458390522562" name="jetbrains.mps.core.properties.structure.PropertiesLine" flags="ng" index="3bKjsb" />
+      <concept id="3961775458390522585" name="jetbrains.mps.core.properties.structure.PropertiesComment" flags="nn" index="3bKjsg">
+        <property id="3961775458390522586" name="text" index="3bKjsj" />
+      </concept>
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="3bKiEt" id="5YNybgUC3l4">
+    <property role="TrG5h" value="build1" />
+    <node concept="3bKjsg" id="5YNybgUCwE2" role="3bKjsa">
+      <property role="3bKjsj" value="##########################" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesComment" typeId="911s.3961775458390522585" id="6896005762093550193" nodeInfo="nn">
-      <property name="text" nameId="911s.3961775458390522586" value="Copyright JetBrains s.r.o." />
+    <node concept="3bKjsg" id="5YNybgUCwDL" role="3bKjsa">
+      <property role="3bKjsj" value="Copyright JetBrains s.r.o." />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesComment" typeId="911s.3961775458390522585" id="6896005762093550208" nodeInfo="nn">
-      <property name="text" nameId="911s.3961775458390522586" value="Apache 2.0" />
+    <node concept="3bKjsg" id="5YNybgUCwE0" role="3bKjsa">
+      <property role="3bKjsj" value="Apache 2.0" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesLine" typeId="911s.3961775458390522562" id="6896005762093550198" nodeInfo="ng" />
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesDeclaration" typeId="911s.3961775458390522561" id="6896005762093550200" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="mps_home" />
-      <property name="value" nameId="911s.3961775458390522596" value="/Applications/MPS.app" />
+    <node concept="3bKjsb" id="5YNybgUCwDQ" role="3bKjsa" />
+    <node concept="3bKjs8" id="5YNybgUCwDS" role="3bKjsa">
+      <property role="TrG5h" value="mps_home" />
+      <property role="3bKjsH" value="/Applications/MPS.app" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesDeclaration" typeId="911s.3961775458390522561" id="6896005762093550202" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="deploy.dir" />
-      <property name="value" nameId="911s.3961775458390522596" value="./artifacts" />
+    <node concept="3bKjs8" id="5YNybgUCwDU" role="3bKjsa">
+      <property role="TrG5h" value="deploy.dir" />
+      <property role="3bKjsH" value="./artifacts" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesLine" typeId="911s.3961775458390522562" id="6896005762093550204" nodeInfo="ng" />
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesComment" typeId="911s.3961775458390522585" id="6896005762093550206" nodeInfo="nn">
-      <property name="text" nameId="911s.3961775458390522586" value="locale" />
+    <node concept="3bKjsb" id="5YNybgUCwDW" role="3bKjsa" />
+    <node concept="3bKjsg" id="5YNybgUCwDY" role="3bKjsa">
+      <property role="3bKjsj" value="locale" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesDeclaration" typeId="911s.3961775458390522561" id="6896005762093550212" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="encoding" />
-      <property name="value" nameId="911s.3961775458390522596" value="utf-8" />
+    <node concept="3bKjs8" id="5YNybgUCwE4" role="3bKjsa">
+      <property role="TrG5h" value="encoding" />
+      <property role="3bKjsH" value="utf-8" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesDeclaration" typeId="911s.3961775458390522561" id="6896005762093550214" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="locale" />
-      <property name="value" nameId="911s.3961775458390522596" value="en_US" />
+    <node concept="3bKjs8" id="5YNybgUCwE6" role="3bKjsa">
+      <property role="TrG5h" value="locale" />
+      <property role="3bKjsH" value="en_US" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesLine" typeId="911s.3961775458390522562" id="6896005762093550203" nodeInfo="ng" />
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesComment" typeId="911s.3961775458390522585" id="6896005762093550216" nodeInfo="nn">
-      <property name="text" nameId="911s.3961775458390522586" value="escaping test" />
+    <node concept="3bKjsb" id="5YNybgUCwDV" role="3bKjsa" />
+    <node concept="3bKjsg" id="5YNybgUCwE8" role="3bKjsa">
+      <property role="3bKjsj" value="escaping test" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesDeclaration" typeId="911s.3961775458390522561" id="6896005762093550220" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="ns:abc" />
-      <property name="value" nameId="911s.3961775458390522596" value="Colon in key" />
+    <node concept="3bKjs8" id="5YNybgUCwEc" role="3bKjsa">
+      <property role="TrG5h" value="ns:abc" />
+      <property role="3bKjsH" value="Colon in key" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesDeclaration" typeId="911s.3961775458390522561" id="6896005762093550223" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="ns=abc" />
-      <property name="value" nameId="911s.3961775458390522596" value="Equal in key" />
+    <node concept="3bKjs8" id="5YNybgUCwEf" role="3bKjsa">
+      <property role="TrG5h" value="ns=abc" />
+      <property role="3bKjsH" value="Equal in key" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesDeclaration" typeId="911s.3961775458390522561" id="6896005762093550225" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="\tinkey" />
-      <property name="value" nameId="911s.3961775458390522596" value="Well" />
+    <node concept="3bKjs8" id="5YNybgUCwEh" role="3bKjsa">
+      <property role="TrG5h" value="\tinkey" />
+      <property role="3bKjsH" value="Well" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesLine" typeId="911s.3961775458390522562" id="6896005762093567711" nodeInfo="ng" />
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesComment" typeId="911s.3961775458390522585" id="6896005762093567713" nodeInfo="nn">
-      <property name="text" nameId="911s.3961775458390522586" value="greek: Έκτακτη" />
+    <node concept="3bKjsb" id="5YNybgUC$Vv" role="3bKjsa" />
+    <node concept="3bKjsg" id="5YNybgUC$Vx" role="3bKjsa">
+      <property role="3bKjsj" value="greek: Έκτακτη" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesDeclaration" typeId="911s.3961775458390522561" id="6896005762093567715" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="greekValue" />
-      <property name="value" nameId="911s.3961775458390522596" value="Έκτακτη" />
+    <node concept="3bKjs8" id="5YNybgUC$Vz" role="3bKjsa">
+      <property role="TrG5h" value="greekValue" />
+      <property role="3bKjsH" value="Έκτακτη" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesLine" typeId="911s.3961775458390522562" id="6896005762093550226" nodeInfo="ng" />
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesComment" typeId="911s.3961775458390522585" id="6896005762093567716" nodeInfo="nn">
-      <property name="text" nameId="911s.3961775458390522586" value="russian: Привет" />
+    <node concept="3bKjsb" id="5YNybgUCwEi" role="3bKjsa" />
+    <node concept="3bKjsg" id="5YNybgUC$V$" role="3bKjsa">
+      <property role="3bKjsj" value="russian: Привет" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesDeclaration" typeId="911s.3961775458390522561" id="6896005762093567718" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="ruValue" />
-      <property name="value" nameId="911s.3961775458390522596" value="Привет" />
+    <node concept="3bKjs8" id="5YNybgUC$VA" role="3bKjsa">
+      <property role="TrG5h" value="ruValue" />
+      <property role="3bKjsH" value="Привет" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesLine" typeId="911s.3961775458390522562" id="6896005762093567719" nodeInfo="ng" />
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesComment" typeId="911s.3961775458390522585" id="6896005762093567722" nodeInfo="nn">
-      <property name="text" nameId="911s.3961775458390522586" value="regexp [\w+=?]" />
+    <node concept="3bKjsb" id="5YNybgUC$VB" role="3bKjsa" />
+    <node concept="3bKjsg" id="5YNybgUC$VE" role="3bKjsa">
+      <property role="3bKjsj" value="regexp [\w+=?]" />
     </node>
-    <node role="lines" roleId="911s.3961775458390522563" type="911s.PropertiesDeclaration" typeId="911s.3961775458390522561" id="6896005762093567725" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="regexp" />
-      <property name="value" nameId="911s.3961775458390522596" value="[\w+=?]" />
+    <node concept="3bKjs8" id="5YNybgUC$VH" role="3bKjsa">
+      <property role="TrG5h" value="regexp" />
+      <property role="3bKjsH" value="[\w+=?]" />
     </node>
-  </root>
+  </node>
 </model>
 

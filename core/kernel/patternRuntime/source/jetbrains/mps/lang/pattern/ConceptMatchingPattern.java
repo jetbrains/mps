@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,30 @@
  */
 package jetbrains.mps.lang.pattern;
 
-import jetbrains.mps.util.SNodeOperations;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
 
 public class ConceptMatchingPattern implements IMatchingPattern {
-  private String myConceptFQName;
+  private SAbstractConcept myConcept;
 
-  public ConceptMatchingPattern(String conceptFQName) {
-    myConceptFQName = conceptFQName;
+  public ConceptMatchingPattern(SAbstractConcept concept) {
+    myConcept = concept;
   }
 
   @Override
   public boolean match(SNode nodeToMatch) {
-    if (nodeToMatch == null) return false;
-    return SNodeUtil.isInstanceOf(nodeToMatch, SNodeOperations.getConcept(myConceptFQName));
+    return nodeToMatch == null ? false : nodeToMatch.isInstanceOfConcept(myConcept);
   }
 
   @Override
   public String getConceptFQName() {
-    return myConceptFQName;
+    return myConcept.getQualifiedName();
   }
 
+  @NotNull
+  @Override
+  public SAbstractConcept getConcept() {
+    return myConcept;
+  }
 }

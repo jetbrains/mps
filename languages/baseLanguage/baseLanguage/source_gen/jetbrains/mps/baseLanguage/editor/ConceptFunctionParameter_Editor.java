@@ -6,37 +6,9 @@ import jetbrains.mps.nodeEditor.DefaultNodeEditor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.MPSFonts;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
 public class ConceptFunctionParameter_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createComponent_q0ga01_a(editorContext, node);
-  }
-
-  private EditorCell createComponent_q0ga01_a(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = editorContext.getCellFactory().createEditorComponentCell(node, "jetbrains.mps.lang.core.editor.alias");
-    editorCell.setBig(true);
-    Style style = new StyleImpl();
-    BaseLanguageStyle_StyleSheet.applyKeyWord(style, editorCell);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
-    style.set(StyleAttributes.STRIKE_OUT, ConceptFunctionParameter_Editor._StyleParameter_QueryFunction_q0ga01_a1a((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    )));
-    style.set(StyleAttributes.AUTO_DELETABLE, true);
-    editorCell.getStyle().putAll(style);
-    return editorCell;
-  }
-
-  private static boolean _StyleParameter_QueryFunction_q0ga01_a1a(EditorContext editorContext, SNode node) {
-    return BehaviorReflection.invokeVirtual(Boolean.TYPE, SNodeOperations.getConceptDeclaration(node), "virtual_isDeprecated_1224609060727", new Object[]{});
+    return new ConceptFunctionParameter_EditorBuilder_a(editorContext, node).createCell();
   }
 }

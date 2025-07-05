@@ -7,38 +7,37 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import java.util.List;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.baseLanguage.behavior.ClassConcept_Behavior;
+import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public class ClassUsages_Finder extends GeneratedFinder {
   private static Logger LOG = LogManager.getLogger("jetbrains.mps.baseLanguage.findUsages.ClassUsages_Finder");
-
   public ClassUsages_Finder() {
   }
-
   @Override
   public boolean isUsedByDefault(SNode node) {
-    return SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
   }
-
   @Override
   public String getDescription() {
     return "Class Usages";
   }
-
   @Override
   public String getLongDescription() {
     return "";
   }
-
   @Override
-  public String getConcept() {
-    return "jetbrains.mps.baseLanguage.structure.ClassConcept";
+  public SAbstractConcept getSConcept() {
+    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   @Override
@@ -48,7 +47,7 @@ public class ClassUsages_Finder extends GeneratedFinder {
       for (SNode result : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder", node, scope, monitor.subTask(1)))) {
         ListSequence.fromList(_results).addElement(result);
       }
-      for (SNode constructor : Sequence.fromIterable(ClassConcept_Behavior.call_constructors_5292274854859503373(node))) {
+      for (SNode constructor : Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(node))) {
         for (SNode result : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.ConstructorUsages_Finder", constructor, scope, monitor.subTask(1)))) {
           ListSequence.fromList(_results).addElement(result);
         }
@@ -57,17 +56,21 @@ public class ClassUsages_Finder extends GeneratedFinder {
       monitor.done();
     }
   }
-
   @Override
   public void getSearchedNodes(SNode node, SearchScope scope, List<SNode> _results) {
     ListSequence.fromList(_results).addElement(node);
-    for (SNode constructor : Sequence.fromIterable(ClassConcept_Behavior.call_constructors_5292274854859503373(node))) {
+    for (SNode constructor : Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(node))) {
       ListSequence.fromList(_results).addElement(constructor);
     }
   }
-
   @Override
   public String getNodeCategory(SNode node) {
     return "Class Usages";
+  }
+
+  @Nullable
+  @Override
+  public SNodeReference getDeclarationNode() {
+    return buildNodePointer(FindUsagesDescriptor.DECLARING_MODEL, "1237738696198");
   }
 }

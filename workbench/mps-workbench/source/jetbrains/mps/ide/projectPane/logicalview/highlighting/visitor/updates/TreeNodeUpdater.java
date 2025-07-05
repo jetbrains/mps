@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,58 +18,80 @@ package jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates;
 
 import com.intellij.util.ui.Timer;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.project.Project;
 import jetbrains.mps.util.Pair;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Semaphore;
 
-public class TreeNodeUpdater {
-  private static final Object LOCK = new Object();
-
+public final class TreeNodeUpdater {
   private final Timer myTimer;
-  private List<Pair<MPSTreeNode, NodeUpdate>> myUpdates = new LinkedList<Pair<MPSTreeNode, NodeUpdate>>();
+  private final Project myProject;
+  private final Semaphore myGuard = new Semaphore(1);
+  private Queue<Pair<MPSTreeNode, NodeUpdate>> myUpdates = new ConcurrentLinkedQueue<Pair<MPSTreeNode, NodeUpdate>>();
 
-  public TreeNodeUpdater() {
-    myTimer = new Timer("ProjectPane Tree Updater", 500) {
+  public TreeNodeUpdater(Project mpsProject) {
+    myProject = mpsProject;
+    myTimer = new Timer("ProjectPane Tree Update Thread", 500) {
       @Override
       protected void onTimer() throws InterruptedException {
-        ModelAccess.instance().runReadInEDT(new Runnable() {
-          @Override
-          public void run() {
-            process();
-          }
-        });
+        process();
       }
     };
+    myTimer.setTakeInitialDelay(true);
   }
 
-  private void process() {
-    List<Pair<MPSTreeNode, NodeUpdate>> updates;
-    synchronized (LOCK) {
-      updates = myUpdates;
-      myUpdates = new LinkedList<Pair<MPSTreeNode, NodeUpdate>>();
-      myTimer.suspend();
+  final void process() {
+    if (!myGuard.tryAcquire()) {
+      return;
     }
-    for (Pair<MPSTreeNode, NodeUpdate> update : updates) {
-      MPSTreeNode node = update.o1;
-      if (!checkDisposed(node)) return;
-      update.o2.update(node);
-      node.updateNodePresentationInTree();
+    try {
+      do {
+        int batchProcessMax = 20; // do not process more than X at once, not to block any write actions nor UI thread for too long
+        final ArrayList<Pair<MPSTreeNode, NodeUpdate>> updates = new ArrayList<Pair<MPSTreeNode, NodeUpdate>>(batchProcessMax);
+        Pair<MPSTreeNode, NodeUpdate> u;
+        while ((u = myUpdates.poll()) != null && batchProcessMax > 0) {
+          if (u.o1.getTree() == null) {
+            // no reason to update element which is not in the tree
+            continue;
+          }
+          updates.add(u);
+          batchProcessMax--;
+        }
+        if (updates.isEmpty()) {
+          break;
+        }
+        myProject.getModelAccess().runReadInEDT(new Runnable() {
+          @Override
+          public void run() {
+            final HashSet<MPSTreeNode> toRefresh = new HashSet<MPSTreeNode>();
+            for (Pair<MPSTreeNode, NodeUpdate> next : updates) {
+              MPSTreeNode node = next.o1;
+              if (node.getTree() == null) {
+                // once again, no reason to update element which is not in the tree
+                continue;
+              }
+              next.o2.update(node);
+              toRefresh.add(node);
+            }
+            for (MPSTreeNode node : toRefresh) {
+              node.updateNodePresentationInTree();
+            }
+          }
+        });
+      } while (!myUpdates.isEmpty());
+      myTimer.suspend();
+    } finally {
+      myGuard.release();
     }
   }
 
   public void addUpdate(MPSTreeNode node, NodeUpdate r) {
     if (!r.needed(node)) return;
-    synchronized (LOCK) {
-      myUpdates.add(new Pair<MPSTreeNode, NodeUpdate>(node, r));
-      myTimer.resume();
-    }
-  }
-
-  public static boolean checkDisposed(MPSTreeNode node) {
-    IOperationContext context = node.getOperationContext();
-    return !context.getProject().isDisposed() && context.isValid();
+    myUpdates.add(new Pair<MPSTreeNode, NodeUpdate>(node, r));
+    myTimer.start(); // sic(!), resume() or restart() force timer into 'running' state, effectively skipping initial delay
   }
 }

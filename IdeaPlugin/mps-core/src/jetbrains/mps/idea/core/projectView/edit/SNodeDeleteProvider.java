@@ -19,58 +19,53 @@ package jetbrains.mps.idea.core.projectView.edit;
 import com.intellij.ide.DeleteProvider;
 import com.intellij.openapi.actionSystem.DataContext;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SModelDescriptor;
-import jetbrains.mps.smodel.descriptor.EditableSModelDescriptor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
  * User: fyodor
  * Date: 2/27/13
  */
-public class SNodeDeleteProvider implements DeleteProvider {
+public class SNodeDeleteProvider implements DeleteProvider, Runnable {
 
   private Collection<SNodeReference> mySelectedNodes;
   private Project myProject;
-  private EditableSModelDescriptor myModelDescriptor;
 
-  public SNodeDeleteProvider(Collection<SNodeReference> selectedNodes, @NotNull EditableSModelDescriptor modelDescriptor, @NotNull Project project) {
+  public SNodeDeleteProvider(Collection<SNodeReference> selectedNodes, @NotNull Project project) {
     mySelectedNodes = selectedNodes;
     myProject = project;
-    myModelDescriptor = modelDescriptor;
   }
 
   @Override
   public void deleteElement(@NotNull DataContext dataContext) {
-    ModelAccess.instance().runCommandInEDT(new Runnable() {
-      @Override
-      public void run() {
-        Set<EditableSModel> modelsToSave = new HashSet<EditableSModel>();
-        for (SNodeReference selectedNode : mySelectedNodes) {
-          SNode nodeToDelete = selectedNode.resolve(MPSModuleRepository.getInstance());
-          if (nodeToDelete != null) {
-            SModel modelDescriptor = nodeToDelete.getModel();
-            if (modelDescriptor instanceof EditableSModel) {
-              nodeToDelete.delete();
-              modelsToSave.add((EditableSModel) modelDescriptor);
-            }
-          }
-        }
-        for (EditableSModel sModelDescriptor : modelsToSave) {
-          sModelDescriptor.save();
+    myProject.getModelAccess().executeCommandInEDT(this);
+  }
+
+  @Override
+  public void run() {
+    Set<EditableSModel> modelsToSave = new HashSet<EditableSModel>();
+    SRepository repository = myProject.getRepository();
+    for (SNodeReference selectedNode : mySelectedNodes) {
+      SNode nodeToDelete = selectedNode.resolve(repository);
+      if (nodeToDelete != null) {
+        SModel modelDescriptor = nodeToDelete.getModel();
+        if (modelDescriptor instanceof EditableSModel) {
+          nodeToDelete.delete();
+          modelsToSave.add((EditableSModel) modelDescriptor);
         }
       }
-    }, myProject);
+    }
+    for (EditableSModel sModelDescriptor : modelsToSave) {
+      sModelDescriptor.save();
+    }
   }
 
   @Override

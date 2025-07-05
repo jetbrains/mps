@@ -4,23 +4,28 @@ package jetbrains.mps.lang.actions.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum Side {
   right("right", null),
   left("left", "left"),
   both_sides("both sides", "both");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private Side(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<Side> getConstants() {
     List<Side> list = ListSequence.fromList(new LinkedList<Side>());
     ListSequence.fromList(list).addElement(Side.right);
@@ -28,11 +33,9 @@ public enum Side {
     ListSequence.fromList(list).addElement(Side.both_sides);
     return list;
   }
-
   public static Side getDefault() {
     return Side.right;
   }
-
   public static Side parseValue(String value) {
     if (value == null) {
       return Side.getDefault();
@@ -47,16 +50,5 @@ public enum Side {
       return Side.both_sides;
     }
     return Side.getDefault();
-  }
-
-  private String myValue;
-
-  Side(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

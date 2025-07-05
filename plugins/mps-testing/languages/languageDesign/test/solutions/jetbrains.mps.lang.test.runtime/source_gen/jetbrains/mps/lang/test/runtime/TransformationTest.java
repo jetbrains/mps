@@ -6,13 +6,14 @@ import jetbrains.mps.project.Project;
 import org.jetbrains.mps.openapi.model.SModel;
 
 public interface TransformationTest {
-  public void setProject(Project project);
-  public Project getProject();
-  public void setModelDescriptor(SModel descriptor);
-  public SModel getModelDescriptor();
-  public void setTestRunner(TransformationTestRunner runner);
-  public TransformationTestRunner getTestRunner();
-  public SModel getTransientModelDescriptor();
-  public void init();
-  public void dispose();
+  void setProject(Project project);
+  void setTestRunner(TestRunner runner);
+  TestRunner getTestRunner();
+  Project getProject();
+  void setModelDescriptor(SModel descriptor);
+  void setTransientModelDescriptor(SModel descriptor);
+  SModel getModelDescriptor();
+  SModel getTransientModelDescriptor();
+  void init();
+  void dispose();
 }

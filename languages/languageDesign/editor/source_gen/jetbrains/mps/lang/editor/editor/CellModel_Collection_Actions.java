@@ -8,6 +8,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -15,32 +16,54 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 public class CellModel_Collection_Actions {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new CellModel_Collection_Actions.CellModel_Collection_Actions_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new CellModel_Collection_Actions.CellModel_Collection_Actions_BACKSPACE(node));
   }
-
   public static class CellModel_Collection_Actions_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public CellModel_Collection_Actions_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public String getDescriptionText() {
       return "Delete collection and copy its content to the parent collection";
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), "jetbrains.mps.lang.editor.structure.CellModel_Collection")) {
-        SNode p = SNodeOperations.cast(SNodeOperations.getParent(node), "jetbrains.mps.lang.editor.structure.CellModel_Collection");
-        List<SNode> children = SLinkOperations.getTargets(node, "childCellModel", true);
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"))) {
+        SNode p = SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"));
+        List<SNode> children = SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel"));
         for (SNode child : ListSequence.fromList(children)) {
           SNodeOperations.insertPrevSiblingChild(node, child);
         }
-      } else if ((int) ListSequence.fromList(SLinkOperations.getTargets(node, "childCellModel", true)).count() == 1) {
-        SNode cell = ListSequence.fromList(SLinkOperations.getTargets(node, "childCellModel", true)).first();
+      } else if (ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel"))).count() == 1) {
+        SNode cell = ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel"))).first();
+        SNodeOperations.replaceWithAnother(node, cell);
+        return;
+      }
+      SNodeOperations.deleteNode(node);
+    }
+  }
+  public static class CellModel_Collection_Actions_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public CellModel_Collection_Actions_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public String getDescriptionText() {
+      return "Delete collection and copy its content to the parent collection";
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"))) {
+        SNode p = SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection"));
+        List<SNode> children = SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel"));
+        for (SNode child : ListSequence.fromList(children)) {
+          SNodeOperations.insertPrevSiblingChild(node, child);
+        }
+      } else if (ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel"))).count() == 1) {
+        SNode cell = ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel"))).first();
         SNodeOperations.replaceWithAnother(node, cell);
         return;
       }

@@ -4,6 +4,7 @@ package jetbrains.mps.ide.editor.actions;
 
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.selection.SingularSelection;
 import java.util.Iterator;
@@ -15,27 +16,26 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.nodeEditor.ChildrenCollectionFinder;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
-import jetbrains.mps.openapi.editor.cells.CellAction;
-import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.nodeEditor.cells.GeometryUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.util.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
 
 public class EditorActionUtils {
   public EditorActionUtils() {
   }
-
   /*package*/ static boolean isReadonlyActionEnabled(EditorComponent editorComponent) {
-    return editorComponent.isFocusOwner() && !(editorComponent.getNodeSubstituteChooser().isVisible()) && editorComponent.getSelectionManager().getSelection() != null;
+    return !(editorComponent.getNodeSubstituteChooser().isVisible()) && editorComponent.getSelectionManager().getSelection() != null;
   }
-
-  /*package*/ static boolean isWriteActionEnabled(EditorComponent editorComponent) {
-    return isReadonlyActionEnabled(editorComponent) && !(editorComponent.isReadOnly());
+  public static boolean isWriteActionEnabled(EditorComponent editorComponent, Iterable<EditorCell> changingCells) {
+    if (!(isReadonlyActionEnabled(editorComponent))) {
+      return false;
+    }
+    return !(ReadOnlyUtil.isCellsReadOnlyInEditor(editorComponent, changingCells));
   }
-
   /*package*/ static EditorCell getEditorCellToInsert(EditorComponent editorComponent) {
     Selection selection = editorComponent.getSelectionManager().getSelection();
     // TODO: remove this limitation 
@@ -47,12 +47,8 @@ public class EditorActionUtils {
       return null;
     }
     EditorCell editorCell = iterator.next();
-    return (editorCell instanceof EditorCell_Component ?
-      null :
-      editorCell
-    );
+    return (editorCell instanceof EditorCell_Component ? null : editorCell);
   }
-
   /**
    * Should be executed inside read action
    */
@@ -77,24 +73,16 @@ public class EditorActionUtils {
     }
     actionHandler.executeAction(cell, CellActionType.INSERT);
   }
-
   public static EditorCell getSiblingCollectionForInsert(@NotNull EditorCell cell, boolean forward) {
     // TODO FIXME rewrite without hasSingleRolesAtLeftBoundary, cleanup ChildrenCollectionFinder 
-    EditorCell nextLeaf = (forward ?
-      CellTraversalUtil.getNextLeaf(cell) :
-      CellTraversalUtil.getPrevLeaf(cell)
-    );
+    EditorCell nextLeaf = (forward ? CellTraversalUtil.getNextLeaf(cell) : CellTraversalUtil.getPrevLeaf(cell));
 
-    if ((cell.isBig() || APICellAdapter.isLastPositionInBigCell(cell)) && ((forward ?
-      hasSingleRolesAtRightBoundary(cell) :
-      hasSingleRolesAtLeftBoundary(cell)
-    )) && nextLeaf != null) {
+    if ((cell.isBig() || GeometryUtil.isLastPositionInBigCell(cell)) && ((forward ? hasSingleRolesAtRightBoundary(cell) : hasSingleRolesAtLeftBoundary(cell))) && nextLeaf != null) {
       // Looking for the next child collection in parents 
       return new ChildrenCollectionFinder(nextLeaf, cell, forward, true).find();
     }
     return null;
   }
-
   /**
    * Should be executed inside read action
    */
@@ -120,15 +108,6 @@ public class EditorActionUtils {
 
     actionHandler.executeAction(cell, CellActionType.INSERT_BEFORE);
   }
-
-  /*package*/ static void runEditorComponentAction(EditorComponent editorComponent, CellActionType actionType) {
-    CellAction action = editorComponent.getComponentAction(CellActionType.UP);
-    EditorContext editorContext = editorComponent.getEditorContext();
-    if (action != null && action.canExecute(editorContext)) {
-      action.execute(editorContext);
-    }
-  }
-
   /**
    * We can use this method to determine if we should redispatch insert event to the corresponding
    * child collection below the cell returned from cell.getNextLeaf() or we should go on and insert
@@ -161,7 +140,6 @@ public class EditorActionUtils {
     }
     return true;
   }
-
   /**
    * We can use this method to determine if we should redispatch insert event to the corresponding
    * child collection below the cell returned from cell.getPrevLeaf() or we should go on and insert
@@ -194,28 +172,24 @@ public class EditorActionUtils {
     }
     return true;
   }
-
   public static boolean isOnLeftBoundary(EditorCell cell) {
     EditorCell prevLeaf = CellTraversalUtil.getPrevLeaf(cell);
     return prevLeaf == null || prevLeaf.getSNode() != cell.getSNode();
   }
-
   public static boolean isOnRightBoundary(EditorCell cell) {
     EditorCell nextLeaf = CellTraversalUtil.getNextLeaf(cell);
     return nextLeaf == null || nextLeaf.getSNode() != cell.getSNode();
   }
-
   private static boolean hasSingleRole(final EditorCell cell) {
-    final boolean[] result = new boolean[1];
+    final Wrappers._boolean result = new Wrappers._boolean();
     ModelAccess.instance().runReadAction(new Runnable() {
       public void run() {
-        SNode linkDeclaration = jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getContainingLinkDeclaration(((SNode) cell.getSNode()));
-        result[0] = linkDeclaration != null && BehaviorReflection.invokeNonVirtual(Boolean.TYPE, linkDeclaration, "jetbrains.mps.lang.structure.structure.LinkDeclaration", "call_isSingular_1213877254557", new Object[]{});
+        SContainmentLink l = jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getContainingLink(((SNode) cell.getSNode()));
+        result.value = l != null && l.isValid() && !(l.isMultiple());
       }
     });
-    return result[0];
+    return result.value;
   }
-
   private static boolean isLinkCollection(EditorCell cell) {
     return cell.getRole() != null;
   }

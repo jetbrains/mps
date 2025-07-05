@@ -8,57 +8,54 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import com.intellij.openapi.project.Project;
 import java.rmi.RemoteException;
-import jetbrains.mps.MPSCore;
+import jetbrains.mps.RuntimeFlags;
 import java.rmi.NoSuchObjectException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import java.awt.Frame;
 import com.intellij.openapi.wm.WindowManager;
-import jetbrains.mps.smodel.ModelAccess;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.SModelRepository;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.SNodeId;
-import jetbrains.mps.project.ProjectOperationContext;
 import jetbrains.mps.ide.project.ProjectHelper;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
-import jetbrains.mps.util.SNodeOperations;
 import jetbrains.mps.util.FrameUtil;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.specific.AspectMethodsFinder;
 import jetbrains.mps.project.GlobalScope;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
+import jetbrains.mps.ide.findusages.view.UsageToolOptions;
 import jetbrains.mps.ide.findusages.view.UsagesViewTool;
 import jetbrains.mps.ide.findusages.view.FindUtils;
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
-import jetbrains.mps.smodel.IScope;
-import jetbrains.mps.util.Computable;
+import org.jetbrains.mps.openapi.module.SearchScope;
+import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 
 public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDEHandler, ProjectComponent {
   private static final Logger LOG = LogManager.getLogger(MPSProjectIDEHandler.class);
   private Project myProject;
-
   public MPSProjectIDEHandler(Project project) throws RemoteException {
     myProject = project;
   }
-
   @Override
   public void projectOpened() {
-    if (MPSCore.getInstance().isTestMode()) {
+    if (RuntimeFlags.isTestMode()) {
       return;
     }
     new Thread() {
       @Override
       public void run() {
         try {
-          IProjectHandler handler = MPSPlugin.getInstance().getProjectHandler(myProject);
+          IProjectHandler handler = MPSPlugin.getInstance().getProjectHandler(myProject.getBasePath());
           if (handler == null) {
             return;
           }
@@ -69,16 +66,15 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
       }
     }.start();
   }
-
   @Override
   public void projectClosed() {
-    if (MPSCore.getInstance().isTestMode()) {
+    if (RuntimeFlags.isTestMode()) {
       return;
     }
     new Thread() {
       @Override
       public void run() {
-        IProjectHandler handler = MPSPlugin.getInstance().getProjectHandler(myProject);
+        IProjectHandler handler = MPSPlugin.getInstance().getProjectHandler(myProject.getBasePath());
         if (handler != null) {
           try {
             handler.removeIdeHandler(MPSProjectIDEHandler.this);
@@ -94,83 +90,65 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
       }
     }.start();
   }
-
   @NonNls
   @NotNull
   @Override
   public String getComponentName() {
     return "MPS Project IDE Handler";
   }
-
   @Override
   public void initComponent() {
   }
-
   @Override
   public void disposeComponent() {
   }
-
   private Frame getMainFrame() {
     return WindowManager.getInstance().getFrame(myProject);
   }
-
   @Override
   public void showNode(final String namespace, final String id) throws RemoteException {
-    ModelAccess.instance().runWriteInEDT(new Runnable() {
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(myProject);
+    mpsProject.getModelAccess().runWriteInEDT(new Runnable() {
       public void run() {
-        for (SModel descriptor : SModelRepository.getInstance().getModelDescriptors()) {
+        for (SModel descriptor : new ModuleRepositoryFacade(mpsProject).getAllModels()) {
           if (!(namespace.equals(descriptor.getModelName()))) {
             continue;
           }
-          SNode node = descriptor.getNode(SNodeId.fromString(id));
+          SNode node = descriptor.getNode(PersistenceFacade.getInstance().createNodeId(id));
           if (node != null) {
-            ProjectOperationContext context = new ProjectOperationContext(ProjectHelper.toMPSProject(myProject));
-            NavigationSupport.getInstance().openNode(context, node, true, !(SNodeOperations.isRoot(node)));
+            NavigationSupport.getInstance().openNode(mpsProject, node, true, node.getParent() != null);
           }
         }
         FrameUtil.activateFrame(getMainFrame());
       }
     });
   }
-
   @Override
   public void showAspectMethodUsages(final String namespace, final String name) throws RemoteException {
     SearchQuery searchQuery = new SearchQuery(new AspectMethodsFinder.AspectMethodsHolder(namespace, name), GlobalScope.getInstance());
-    IFinder[] finders = new IFinder[]{new AspectMethodsFinder()};
-    myProject.getComponent(UsagesViewTool.class).findUsages(FindUtils.makeProvider(finders), searchQuery, false, true, false, "No usages for that method");
+    UsageToolOptions opt = new UsageToolOptions().allowRunAgain(false).navigateIfSingle(false).forceNewTab(false).notFoundMessage("No usages for that method");
+    UsagesViewTool.showUsages(myProject, FindUtils.makeProvider(new IFinder[]{new AspectMethodsFinder()}), searchQuery, opt);
   }
-
-  @Override
-  public void showConceptNode(final String fqName) throws RemoteException {
-    ModelAccess.instance().runWriteInEDT(new Runnable() {
-      @Override
-      public void run() {
-        SNode concept = SModelUtil.findConceptDeclaration(fqName, GlobalScope.getInstance());
-        NavigationSupport.getInstance().openNode(new ProjectOperationContext(ProjectHelper.toMPSProject(myProject)), concept, true, false);
-        FrameUtil.activateFrame(getMainFrame());
-      }
-    });
-  }
-
   @Override
   public void showClassUsages(final String fqName) throws RemoteException {
-    ModelAccess.instance().runReadAction(new Runnable() {
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(myProject);
+    mpsProject.getModelAccess().runReadAction(new Runnable() {
       @Override
       public void run() {
-        SNode cls = SModelUtil.findNodeByFQName(fqName, SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.structure.Classifier"), GlobalScope.getInstance());
+        SNode cls = findClassByName(fqName);
         if (cls == null) {
           MPSProjectIDEHandler.LOG.error("Can't find a class " + fqName);
           return;
         }
         FrameUtil.activateFrame(getMainFrame());
-        findUsages(cls, GlobalScope.getInstance(), FindUtils.makeProvider(FindUtils.getFinderByClassName("jetbrains.mps.baseLanguage.findUsages.ClassUsages_Finder")));
+        findUsages(cls, GlobalScope.getInstance(), FindUtils.makeProvider("jetbrains.mps.baseLanguage.findUsages.ClassUsages_Finder"));
       }
     });
   }
-
   @Override
   public void showMethodUsages(final String classFqName, final String methodName, final int parameterCount) throws RemoteException {
-    ModelAccess.instance().runReadAction(new Runnable() {
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(myProject);
+    mpsProject.getModelAccess().runReadAction(new Runnable() {
       @Override
       public void run() {
         if (classFqName == null || methodName == null) {
@@ -178,19 +156,15 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
           return;
 
         }
-        SNode cls = jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(SModelUtil.findNodeByFQName(classFqName, SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.structure.Classifier"), GlobalScope.getInstance()), "jetbrains.mps.baseLanguage.structure.Classifier");
+        SNode cls = findClassByName(classFqName);
         if (cls == null) {
           MPSProjectIDEHandler.LOG.error("Can't find a class " + classFqName);
           return;
         }
-        Iterable<SNode> allMethods = (Iterable<SNode>) ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getChildren(cls)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.isInstanceOf(it, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-          }
-        });
+        Iterable<SNode> allMethods = SNodeOperations.ofConcept(SNodeOperations.getChildren(cls), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"));
         SNode method = Sequence.fromIterable(allMethods).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return methodName.equals(SPropertyOperations.getString(it, "name")) && (int) ListSequence.fromList(SLinkOperations.getTargets(it, "parameter", true)).count() == parameterCount;
+            return methodName.equals(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))) && ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).count() == parameterCount;
           }
         });
         if (method == null) {
@@ -198,24 +172,31 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
           return;
         }
         FrameUtil.activateFrame(getMainFrame());
-        IResultProvider provider = FindUtils.makeProvider(FindUtils.getFinderByClassName("jetbrains.mps.baseLanguage.findUsages.ConstructorUsages_Finder"), FindUtils.getFinderByClassName("jetbrains.mps.baseLanguage.findUsages.BaseMethodUsages_Finder"));
+        IResultProvider provider = FindUtils.makeProvider("jetbrains.mps.baseLanguage.findUsages.ConstructorUsages_Finder", "jetbrains.mps.baseLanguage.findUsages.BaseMethodUsages_Finder");
         findUsages(method, GlobalScope.getInstance(), provider);
       }
     });
   }
-
-  private void findUsages(@NotNull final SNode node, final IScope scope, final IResultProvider provider) {
-    new Thread() {
-      @Override
-      public void run() {
-        SearchQuery query = ModelAccess.instance().runReadAction(new Computable<SearchQuery>() {
-          @Override
-          public SearchQuery compute() {
-            return new SearchQuery(node, scope);
-          }
-        });
-        myProject.getComponent(UsagesViewTool.class).findUsages(provider, query, true, true, false, "No usages for that node");
+  private void findUsages(@NotNull final SNode node, final SearchScope scope, final IResultProvider provider) {
+    UsageToolOptions opt = new UsageToolOptions().allowRunAgain(true).navigateIfSingle(false).forceNewTab(false).notFoundMessage("No usages for that node");
+    UsagesViewTool.showUsages(myProject, provider, new SearchQuery(node, scope), opt);
+  }
+  private SNode findClassByName(String classFqName) {
+    // This is slightly updated SModelUtil.findNodeByFQName, which moved here as it's the only place we use it 
+    // FIXME however, it's ugly and needs rework 
+    String modelName = NameUtil.namespaceFromLongName(classFqName);
+    String name = NameUtil.shortNameFromLongName(classFqName);
+    for (SModel m : Sequence.fromIterable(GlobalScope.getInstance().getModels())) {
+      if (!(modelName.equals(NameUtil.getModelLongName(m)))) {
+        continue;
       }
-    }.start();
+      SModel model = m;
+      for (SNode root : ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")))) {
+        if (name.equals(SPropertyOperations.getString(root, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")))) {
+          return root;
+        }
+      }
+    }
+    return null;
   }
 }

@@ -6,7 +6,6 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.make.resources.IResourceWithProperties;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.make.resources.IPropertiesIO;
 import jetbrains.mps.project.AbstractModule;
@@ -15,36 +14,24 @@ public class MResource extends MultiTuple._2<SModule, Iterable<SModel>> implemen
   public MResource() {
     super();
   }
-
   public MResource(SModule module, Iterable<SModel> models) {
     super(module, models);
   }
-
   public SModule module(SModule value) {
     return super._0(value);
   }
-
   public Iterable<SModel> models(Iterable<SModel> value) {
     return super._1(value);
   }
-
   public SModule module() {
     return super._0();
   }
-
   public Iterable<SModel> models() {
     return super._1();
   }
-
-  @SuppressWarnings(value = "unchecked")
-  public MResource assignFrom(Tuples._2<SModule, Iterable<SModel>> from) {
-    return (MResource) super.assign(from);
-  }
-
   public String describe() {
     return NameUtil.compactNamespace(this.module().getModuleReference().getModuleName());
   }
-
   public IPropertiesIO getProperties() {
     return new FlatFilePropertiesIO(((AbstractModule) this.module()).getDescriptorFile());
   }

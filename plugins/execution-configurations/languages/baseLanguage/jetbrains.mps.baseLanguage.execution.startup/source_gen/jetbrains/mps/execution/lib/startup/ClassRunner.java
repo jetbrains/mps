@@ -18,7 +18,6 @@ public class ClassRunner {
   public static final String CLASS_PREFIX = "c";
   public static final String FILE_PREFIX = "f";
   public static final String CLASSPATH_PREFIX = "p";
-
   public ClassRunner() {
   }
 
@@ -104,12 +103,10 @@ public class ClassRunner {
       System.err.println("Method main in class " + className + " is not public.");
       e.printStackTrace();
     }
-
   }
 
   public static List<String> readArguments(String fileName) throws IOException {
     List<String> result = new ArrayList<String>();
-    new File(fileName).deleteOnExit();
     LineNumberReader reader = new LineNumberReader(new FileReader(fileName));
     while (true) {
       String line = reader.readLine();

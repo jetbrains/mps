@@ -7,15 +7,9 @@ import org.jdom.Element;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.util.xml.XmlUtil;
-import jetbrains.mps.project.structure.model.ModelRoot;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import jetbrains.mps.persistence.MementoImpl;
-import jetbrains.mps.project.persistence.ModuleDescriptorPersistence;
 import jetbrains.mps.persistence.MementoUtil;
-import java.util.Set;
-import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 public class MPSFacetConfiguration {
@@ -26,10 +20,8 @@ public class MPSFacetConfiguration {
   public boolean useTransientOutputFolder = false;
   public String[] usedLanguages;
   public ModelRootDescriptor[] rootDescriptors;
-
   public MPSFacetConfiguration() {
   }
-
   public void readFromXml(Element config) throws FacetConfigurationFormatException {
     List<ModelRootDescriptor> descriptors = new ArrayList<ModelRootDescriptor>();
     for (Element ch : XmlUtil.children(config, "option")) {
@@ -38,16 +30,6 @@ public class MPSFacetConfiguration {
         this.UUID = ch.getAttributeValue(OPT_VALUE);
       } else if ("generatorOutputPath".equals(optionName)) {
         this.generatorOutputPath = ch.getAttributeValue(OPT_VALUE);
-      } else if ("modelRoots".equals(optionName)) {
-        ModelRootDescriptor[] cache = new ModelRootDescriptor[2];
-        for (ModelRoot root : SetSequence.fromSet(readModelRoots(XmlUtil.first(ch, "set")))) {
-          Memento m = new MementoImpl();
-          root.save(m);
-          ModelRootDescriptor descr = ModuleDescriptorPersistence.createDescriptor(null, m, null, cache);
-          if (descr != null) {
-            descriptors.add(descr);
-          }
-        }
       } else if ("usedLanguages".equals(optionName)) {
         this.usedLanguages = readArray(XmlUtil.first(ch, "array"));
       } else if ("useModuleSourceFolder".equals(optionName)) {
@@ -66,27 +48,6 @@ public class MPSFacetConfiguration {
     }
     rootDescriptors = descriptors.toArray(new ModelRootDescriptor[descriptors.size()]);
   }
-
-  private Set<ModelRoot> readModelRoots(Element array) {
-    Set<ModelRoot> res = SetSequence.fromSet(new HashSet<ModelRoot>());
-    for (Element o : XmlUtil.children(array, "ModelRoot")) {
-      String path = getPath(o);
-      if (path != null) {
-        SetSequence.fromSet(res).addElement(new ModelRoot(path, null));
-      }
-    }
-    return res;
-  }
-
-  private String getPath(Element modelRootElement) {
-    for (Element optionChild : Sequence.fromIterable(XmlUtil.children(modelRootElement, "option"))) {
-      if ("path".equals(optionChild.getAttributeValue("name")) && optionChild.getAttributeValue("value") != null) {
-        return optionChild.getAttributeValue("value");
-      }
-    }
-    return null;
-  }
-
   private String[] readArray(Element array) {
     List<String> res = ListSequence.fromList(new ArrayList<String>());
     for (Element o : XmlUtil.children(array, "option")) {

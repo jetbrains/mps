@@ -11,45 +11,42 @@ import jetbrains.mps.tool.builder.MpsWorker;
 import java.io.File;
 import java.io.IOException;
 import jetbrains.mps.tool.environment.EnvironmentConfig;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.tool.environment.Environment;
 import org.apache.log4j.Logger;
 import jetbrains.mps.project.Project;
-import java.util.LinkedHashSet;
+import java.util.Set;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.LinkedHashSet;
 import java.util.Collections;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.make.MakeSession;
+import jetbrains.mps.make.script.IScript;
+import jetbrains.mps.make.script.ScriptBuilder;
+import jetbrains.mps.make.facet.IFacet;
 import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.make.script.IConfigMonitor;
 import jetbrains.mps.make.script.IPropertiesPool;
 import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.make.resources.IResource;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.internal.make.cfg.MakeFacetInitializer;
 import jetbrains.mps.vfs.IFile;
-import java.util.Set;
+import jetbrains.mps.internal.make.cfg.TextGenFacetInitializer;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.tool.builder.unittest.UnitTestListener;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.project.ProjectOperationContext;
-import jetbrains.mps.make.MakeSession;
-import jetbrains.mps.make.script.IScript;
-import jetbrains.mps.make.script.ScriptBuilder;
-import jetbrains.mps.make.facet.IFacet;
+import jetbrains.mps.internal.make.cfg.JavaCompileFacetInitializer;
+import java.util.concurrent.Future;
+import jetbrains.mps.make.script.IResult;
 import java.util.concurrent.ExecutionException;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.library.LibraryInitializer;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.make.MPSCompilationResult;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.smodel.MPSModuleRepository;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.AbstractModule;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
@@ -101,16 +98,17 @@ public class GenTestWorker extends GeneratorWorker {
   public void work() {
     myReporter.init();
 
-    EnvironmentConfig config = EnvironmentConfig.emptyEnvironment();
+    EnvironmentConfig config = EnvironmentConfig.defaultConfig();
 
-    for (String jar : ListSequence.fromList(myWhatToDo.getLibraryJars())) {
-      config = config.addLib(jar, new File(jar));
+    for (String jar : myWhatToDo.getLibraryJars()) {
+      config = config.addLib(jar);
     }
     for (IMapping<String, String> macro : MapSequence.fromMap(myWhatToDo.getMacro())) {
       config = config.addMacro(macro.key(), new File(macro.value()));
     }
 
     Environment environment = new GeneratorWorker.MyEnvironment(config);
+    environment.init();
     Logger.getRootLogger().setLevel(myWhatToDo.getLogLevel());
 
     setupEnvironment();
@@ -118,28 +116,27 @@ public class GenTestWorker extends GeneratorWorker {
 
     Project project = createDummyProject();
 
-    LinkedHashSet<SModule> modules = new LinkedHashSet<SModule>();
-    for (File moduleFilePath : SetSequence.fromSet(myWhatToDo.getModules())) {
-      processModuleFile(moduleFilePath, modules);
-    }
+    final Set<SModule> modules = new LinkedHashSet<SModule>();
+    project.getModelAccess().runWriteAction(new Runnable() {
+      public void run() {
+        collectFromModuleFiles(modules);
+      }
+    });
 
     MpsWorker.ObjectsToProcess go = new MpsWorker.ObjectsToProcess(Collections.EMPTY_SET, modules, Collections.EMPTY_SET);
     if (go.hasAnythingToGenerate()) {
-      loadAndMake(go);
+      loadAndMake(project, go);
       generate(project, go);
     } else {
       error("Could not find anything to test.");
     }
 
-    environment.disposeEnvironment();
     dispose();
     showStatistic();
 
     myReporter.finishRun();
     cleanUp();
   }
-
-
 
   @Override
   protected void generate(Project project, MpsWorker.ObjectsToProcess go) {
@@ -160,36 +157,38 @@ public class GenTestWorker extends GeneratorWorker {
 
     final _FunctionTypes._void_P1_E0<? super String> startTestFormat = new _FunctionTypes._void_P1_E0<String>() {
       public void invoke(String msg) {
-        myReporter.testStarted(((msg == null ?
-          null :
-          msg.trim()
-        )));
+        myReporter.testStarted(((msg == null ? null : msg.trim())));
       }
     };
     final _FunctionTypes._void_P1_E0<? super String> finishTestFormat = new _FunctionTypes._void_P1_E0<String>() {
       public void invoke(String msg) {
-        myReporter.testFinished(((msg == null ?
-          null :
-          msg.trim()
-        )));
+        myReporter.testFinished(((msg == null ? null : msg.trim())));
       }
     };
 
+    final MakeSession ms = new MakeSession(project, myMessageHandler, true) {
+      @Override
+      public IScript toScript(ScriptBuilder scriptBuilder) {
+        if (isInvokeTestsSet()) {
+          scriptBuilder.withFacetName(new IFacet.Name("jetbrains.mps.tool.gentest.Test"));
+        }
+        if (isShowDiff()) {
+          scriptBuilder.withFacetName(new IFacet.Name("jetbrains.mps.tool.gentest.Diff"));
+        }
+        return scriptBuilder.toScript();
+      }
+    };
+    // FIXME feedback reported through IConfigMonitor.Stub goes to nowhere 
     IScriptController ctl = new IScriptController.Stub(new IConfigMonitor.Stub(), new GenTestWorker.MyJobMonitor(new GenTestWorker.MyProgress(startTestFormat, finishTestFormat))) {
       @Override
       public void setup(IPropertiesPool ppool, Iterable<ITarget> toExecute, Iterable<? extends IResource> input) {
         super.setup(ppool, toExecute, input);
-        Tuples._1<_FunctionTypes._return_P1_E0<? extends IFile, ? super String>> makeparams = (Tuples._1<_FunctionTypes._return_P1_E0<? extends IFile, ? super String>>) ppool.properties(new ITarget.Name("jetbrains.mps.make.facets.Make.make"), Object.class);
-        makeparams._0(new _FunctionTypes._return_P1_E0<IFile, String>() {
+        new MakeFacetInitializer().setPathToFile(new _FunctionTypes._return_P1_E0<IFile, String>() {
           public IFile invoke(String path) {
             return tmpFile(path);
           }
-        });
-
-        Tuples._1<Boolean> tparams = (Tuples._1<Boolean>) ppool.properties(new ITarget.Name("jetbrains.mps.lang.core.TextGen.textGen"), Object.class);
-        if (tparams != null) {
-          tparams._0(false);
-        }
+        }).populate(ppool);
+        new TextGenFacetInitializer(ms).failNoTextGen(false).populate(ppool);
 
         Tuples._2<_FunctionTypes._return_P1_E0<? extends String, ? super IFile>, Set<File>> dparams = (Tuples._2<_FunctionTypes._return_P1_E0<? extends String, ? super IFile>, Set<File>>) ppool.properties(new ITarget.Name("jetbrains.mps.tool.gentest.Diff.diff"), Object.class);
         if (dparams != null && isShowDiff()) {
@@ -207,58 +206,43 @@ public class GenTestWorker extends GeneratorWorker {
         }
         myReporter.finishRun();
         myReporter.startRun(GenTestWorker.this.myWhatToDo.getProperty("ant.project.name"));
+        new JavaCompileFacetInitializer().setJavaCompileOptions(myJavaCompilerOptions).populate(ppool);
+
       }
     };
-    IOperationContext context = new ProjectOperationContext(project);
     try {
       BuildMakeService bms = new BuildMakeService();
-      MakeSession ms = new MakeSession(context, myMessageHandler, true) {
-        @Override
-        public IScript toScript(ScriptBuilder scriptBuilder) {
-          if (isInvokeTestsSet()) {
-            scriptBuilder.withFacetName(new IFacet.Name("jetbrains.mps.tool.gentest.Test"));
-          }
-          if (isShowDiff()) {
-            scriptBuilder.withFacetName(new IFacet.Name("jetbrains.mps.tool.gentest.Diff"));
-          }
-          return scriptBuilder.toScript();
-        }
-      };
-      bms.make(ms, collectResources(context, go.getModules(), go.getModels()), null, ctl, new GenTestWorker.MyProgressMonitorBase(startTestFormat, finishTestFormat)).get();
-    } catch (InterruptedException ignore) {
-    } catch (ExecutionException ignore) {
+      Future<IResult> result = bms.make(ms, collectResources(project, go.getModules(), go.getModels()), null, ctl, new GenTestWorker.MyProgressMonitorBase(startTestFormat, finishTestFormat));
+      if (!(result.get().isSucessful())) {
+        myErrors.add("Make was not successful " + result.get().output());
+      }
+    } catch (InterruptedException e) {
+      myErrors.add(e.toString());
+    } catch (ExecutionException e) {
+      myErrors.add(e.toString());
     }
   }
 
-  private void loadAndMake(final MpsWorker.ObjectsToProcess go) {
-    ModelAccess.instance().runWriteAction(new Runnable() {
-      @Override
+  private void loadAndMake(final Project project, final MpsWorker.ObjectsToProcess go) {
+    ModelAccess access = project.getRepository().getModelAccess();
+    access.runReadAction(new Runnable() {
       public void run() {
-        LibraryInitializer.getInstance().update();
-      }
-    });
-    ModelAccess.instance().runReadAction(new Computable<MPSCompilationResult>() {
-      public MPSCompilationResult compute() {
-        return new ModuleMaker().make(go.getModules(), new EmptyProgressMonitor() {
+        new ModuleMaker().make(go.getModules(), new EmptyProgressMonitor() {
           @Override
           public void step(String text) {
             // silently 
           }
-
           @Override
-          public void start(String taskName, int work) {
+          public void start(@NotNull String taskName, int work) {
             // silently 
           }
-        });
+        }, myJavaCompilerOptions);
       }
     });
-    // load classes 
-    ModelAccess.instance().runWriteAction(new Runnable() {
+    access.runWriteAction(new Runnable() {
       public void run() {
-        ClassLoaderManager.getInstance().reloadAll(new EmptyProgressMonitor());
-
         // the following updates stub models that could change due to the compilation happened (webr, 3.0 migration case) 
-        for (SModule m : MPSModuleRepository.getInstance().getModules()) {
+        for (SModule m : project.getRepository().getModules()) {
           if (!((m instanceof AbstractModule))) {
             continue;
           }
@@ -270,10 +254,7 @@ public class GenTestWorker extends GeneratorWorker {
 
   private void reportIfStartsWith(String prefix, String work, _FunctionTypes._void_P1_E0<? super String> format) {
     if (work != null && work.startsWith(prefix)) {
-      format.invoke(work.substring(prefix.length()) + ".Test." + ((prefix == null ?
-        null :
-        prefix.trim()
-      )));
+      format.invoke(work.substring(prefix.length()) + ".Test." + ((prefix == null ? null : prefix.trim())));
     }
   }
 
@@ -293,9 +274,9 @@ public class GenTestWorker extends GeneratorWorker {
     MapSequence.fromMap(path2tmp).clear();
   }
 
-  private Iterable<IResource> collectResources(IOperationContext context, final Iterable<SModule> modules, final Iterable<SModel> models) {
+  private Iterable<IResource> collectResources(Project project, final Iterable<SModule> modules, final Iterable<SModel> models) {
     final Wrappers._T<Iterable<SModel>> result = new Wrappers._T<Iterable<SModel>>(null);
-    ModelAccess.instance().runReadAction(new Runnable() {
+    project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         result.value = Sequence.fromIterable(result.value).concat(Sequence.fromIterable(modules).translate(new ITranslator2<SModule, SModel>() {
           public Iterable<SModel> translate(SModule m) {
@@ -318,7 +299,7 @@ public class GenTestWorker extends GeneratorWorker {
         result.value = Sequence.fromIterable(result.value).concat(Sequence.fromIterable(models));
       }
     });
-    return new ModelsToResources(context, Sequence.fromIterable(result.value).where(new IWhereFilter<SModel>() {
+    return new ModelsToResources(Sequence.fromIterable(result.value).where(new IWhereFilter<SModel>() {
       public boolean accept(SModel smd) {
         return GenerationFacade.canGenerate(smd);
       }
@@ -333,17 +314,11 @@ public class GenTestWorker extends GeneratorWorker {
     if (idx > 0) {
       throw new IllegalArgumentException("not an absolute path '" + path + "'");
     }
-    idx = (idx < 0 ?
-      path.indexOf(File.separator) :
-      idx
-    );
+    idx = (idx < 0 ? path.indexOf(File.separator) : idx);
     if (idx > "C:\\".length() && path.indexOf(":") < 0) {
       throw new IllegalArgumentException("not an absolute path '" + path + "'");
     }
-    String tmp = tmpPath + "/" + ((idx != 0 ?
-      path.replace(":", "_w_") :
-      path.substring(1)
-    ));
+    String tmp = tmpPath + "/" + ((idx != 0 ? path.replace(":", "_w_") : path.substring(1)));
     MapSequence.fromMap(path2tmp).put(path, tmp);
     return FileSystem.getInstance().getFileByPath(tmp);
   }
@@ -357,10 +332,7 @@ public class GenTestWorker extends GeneratorWorker {
     if (p.contains("_w_")) {
       return FileSystem.getInstance().getFileByPath(p.replace("_w_", ":")).getPath();
     }
-    String prefix = (File.separatorChar == '/' ?
-      "/" :
-      "\\\\"
-    );
+    String prefix = (File.separatorChar == '/' ? "/" : "\\\\");
     return FileSystem.getInstance().getFileByPath(prefix + p).getPath();
   }
 
@@ -390,7 +362,8 @@ public class GenTestWorker extends GeneratorWorker {
 
   @Override
   protected void showStatistic() {
-    if (myTestFailed && myWhatToDo.getFailOnError()) {
+    super.showStatistic();
+    if (myTestFailed) {
       throw new RuntimeException("Tests Failed");
     }
   }
@@ -399,26 +372,21 @@ public class GenTestWorker extends GeneratorWorker {
     GenTestWorker generator = new GenTestWorker(Script.fromDumpInFile(new File(args[0])), new MpsWorker.SystemOutLogger());
     generator.workFromMain();
   }
-
   private class MyProgress extends IProgress.Stub {
     private final _FunctionTypes._void_P1_E0<? super String> myStartTestFormat;
     private final _FunctionTypes._void_P1_E0<? super String> myFinishTestFormat;
-
     public MyProgress(_FunctionTypes._void_P1_E0<? super String> startTestFormat, _FunctionTypes._void_P1_E0<? super String> finishTestFormat) {
       myStartTestFormat = startTestFormat;
       myFinishTestFormat = finishTestFormat;
     }
-
     @Override
     public void beginWork(String name, int estimate, int ofTotal) {
       reportIfStartsWith("Generating ", name, MyProgress.this.myStartTestFormat);
     }
-
     @Override
     public void finishWork(String name) {
       reportIfStartsWith("Generating ", name, MyProgress.this.myFinishTestFormat);
     }
-
     @Override
     public void advanceWork(String name, int done, String comment) {
       if (comment != null) {
@@ -430,13 +398,11 @@ public class GenTestWorker extends GeneratorWorker {
       }
     }
   }
-
   private class MyMessageHandler implements IMessageHandler {
     public MyMessageHandler() {
     }
-
     @Override
-    public void handle(IMessage msg) {
+    public void handle(@NotNull IMessage msg) {
       switch (msg.getKind()) {
         case ERROR:
           GenTestWorker.this.error(msg.getText());
@@ -453,32 +419,23 @@ public class GenTestWorker extends GeneratorWorker {
         default:
       }
     }
-
-    @Override
-    public void clear() {
-    }
   }
-
   private class MyUnitTestAdapter extends UnitTestAdapter {
     private MyUnitTestAdapter() {
     }
-
     @Override
     public void testStarted(String testName) {
       myReporter.testStarted(testName);
     }
-
     @Override
     public void testFailed(String test, String message, String details) {
       myReporter.testFailed(test, message, details);
       myTestFailed = true;
     }
-
     @Override
     public void testFinished(String testName) {
       myReporter.testFinished(testName);
     }
-
     @Override
     public void logMessage(String message) {
       if (message != null && !(message.isEmpty())) {
@@ -486,7 +443,6 @@ public class GenTestWorker extends GeneratorWorker {
         myReporter.outputLine(message);
       }
     }
-
     @Override
     public void logError(String errorMessage) {
       if (errorMessage != null && !(errorMessage.isEmpty())) {
@@ -495,25 +451,19 @@ public class GenTestWorker extends GeneratorWorker {
       }
     }
   }
-
   private class MyReporter {
     private ITestReporter testReporter;
     private String currentTestName;
     private File gentestdir;
-
     private MyReporter() {
     }
-
     private void init() {
       if (gentestdir != null) {
         return;
       }
       if (isRunningOnTeamCity()) {
         String wd = myWhatToDo.getProperty("mps.gentest.reportsDir");
-        wd = (wd == null ?
-          System.getProperty("user.dir") :
-          wd
-        );
+        wd = (wd == null ? System.getProperty("user.dir") : wd);
         gentestdir = new File(wd, ".gentest");
         if (!(gentestdir.exists())) {
           if (!(gentestdir.mkdirs())) {
@@ -534,18 +484,12 @@ public class GenTestWorker extends GeneratorWorker {
         }
       }
     }
-
     private String getCurrentTestName() {
       return currentTestName;
     }
-
     private void startRun(String name) {
-      this.testReporter = (isRunningOnTeamCity() ?
-        new XmlTestReporter(name) :
-        new ConsoleTestReporter()
-      );
+      this.testReporter = (isRunningOnTeamCity() ? new XmlTestReporter(name) : new ConsoleTestReporter());
     }
-
     private void finishRun() {
       if (testReporter == null) {
         return;
@@ -573,11 +517,9 @@ public class GenTestWorker extends GeneratorWorker {
       }
       this.testReporter = null;
     }
-
     private String normalizeTestName(String name) {
       return name.replace("@", "_");
     }
-
     private void testStarted(String testname) {
       testname = normalizeTestName(testname);
       if (currentTestName != null) {
@@ -586,18 +528,15 @@ public class GenTestWorker extends GeneratorWorker {
       this.currentTestName = testname;
       testReporter.testStarted(testname);
     }
-
     private void testFinished(String testname) {
       testname = normalizeTestName(testname);
       testReporter.testFinished(testname);
       this.currentTestName = null;
     }
-
     private void testFailed(String testname, String msg, String longmsg) {
       testname = normalizeTestName(testname);
       testReporter.testFailed(testname, msg, longmsg);
     }
-
     private void outputLine(String out) {
       if (currentTestName != null) {
         testReporter.testOutputLine(currentTestName, out);
@@ -607,7 +546,6 @@ public class GenTestWorker extends GeneratorWorker {
         System.out.println(out);
       }
     }
-
     private void errorLine(String err) {
       if (currentTestName != null) {
         testReporter.testErrorLine(currentTestName, err);
@@ -618,12 +556,10 @@ public class GenTestWorker extends GeneratorWorker {
       }
     }
   }
-
   private class MyJobMonitor extends IJobMonitor.Stub {
     public MyJobMonitor(IProgress pstub) {
       super(pstub);
     }
-
     @Override
     public void reportFeedback(IFeedback fdbk) {
       if (fdbk.getSeverity() == IFeedback.Severity.ERROR) {
@@ -633,10 +569,7 @@ public class GenTestWorker extends GeneratorWorker {
         }
         Throwable thr = fdbk.getException();
         String msg = fdbk.getMessage();
-        String details = (thr == null ?
-          "(no details)" :
-          String.valueOf(MpsWorker.extractStackTrace(thr))
-        );
+        String details = (thr == null ? "(no details)" : String.valueOf(MpsWorker.extractStackTrace(thr)));
         int eol = msg.indexOf("\n");
         if (eol >= 0) {
           details = msg.substring(eol + 1) + "\n" + details;
@@ -646,47 +579,37 @@ public class GenTestWorker extends GeneratorWorker {
       }
     }
   }
-
   private class MyProgressMonitorBase extends ProgressMonitorBase {
     private String prevTitle;
     private final _FunctionTypes._void_P1_E0<? super String> myStartTestFormat;
     private final _FunctionTypes._void_P1_E0<? super String> myFinishTestFormat;
-
     public MyProgressMonitorBase(_FunctionTypes._void_P1_E0<? super String> startTestFormat, _FunctionTypes._void_P1_E0<? super String> finishTestFormat) {
       myStartTestFormat = startTestFormat;
       myFinishTestFormat = finishTestFormat;
     }
-
     @Override
     protected void update(double p0) {
     }
-
     @Override
     protected void startInternal(String text) {
     }
-
     @Override
     protected void doneInternal(String text) {
     }
-
     @Override
     protected void setTitleInternal(String text) {
       prevTitle = text;
     }
-
     @Override
     protected void setStepInternal(String p0) {
     }
-
     @Override
     public boolean isCanceled() {
       return false;
     }
-
     @Override
     public void cancel() {
     }
-
     private ProgressMonitorBase.SubProgressMonitor customSubProgress(ProgressMonitorBase parent, int work, SubProgressKind kind) {
       if (prevTitle != null && prevTitle.startsWith("Generating :: ")) {
         return new ProgressMonitorBase.SubProgressMonitor(parent, work, kind) {
@@ -694,7 +617,6 @@ public class GenTestWorker extends GeneratorWorker {
           protected void startInternal(String text) {
             reportIfStartsWith("Generating ", "Generating " + text, MyProgressMonitorBase.this.myStartTestFormat);
           }
-
           @Override
           protected void doneInternal(String text) {
             reportIfStartsWith("Generating ", "Generating " + text, MyProgressMonitorBase.this.myFinishTestFormat);
@@ -708,7 +630,6 @@ public class GenTestWorker extends GeneratorWorker {
         }
       };
     }
-
     @Override
     protected ProgressMonitorBase.SubProgressMonitor subTaskInternal(int work, SubProgressKind kind) {
       return customSubProgress(this, work, kind);

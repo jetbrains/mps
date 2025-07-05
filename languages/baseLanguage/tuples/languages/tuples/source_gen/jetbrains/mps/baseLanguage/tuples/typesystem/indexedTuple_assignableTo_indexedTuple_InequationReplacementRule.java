@@ -9,6 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicable2Status;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -16,14 +17,13 @@ import jetbrains.mps.lang.typesystem.runtime.HUtil;
 import java.util.Iterator;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class indexedTuple_assignableTo_indexedTuple_InequationReplacementRule extends AbstractInequationReplacementRule_Runtime {
   public indexedTuple_assignableTo_indexedTuple_InequationReplacementRule() {
   }
-
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
-    if (!((int) ListSequence.fromList(SLinkOperations.getTargets(subtype, "componentType", true)).count() == (int) ListSequence.fromList(SLinkOperations.getTargets(supertype, "componentType", true)).count())) {
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(subtype, MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType"))).count() == ListSequence.fromList(SLinkOperations.getChildren(supertype, MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType"))).count())) {
       MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(equationInfo.getNodeWithError(), "Member types count don't match", "r:e119dbbd-3529-4067-8bad-6b9edd79d0b6(jetbrains.mps.baseLanguage.tuples.typesystem)", "1238854492399", null, errorTarget);
       HUtil.addAdditionalRuleIdsFromInfo(_reporter_2309309498, equationInfo);
@@ -31,8 +31,8 @@ public class indexedTuple_assignableTo_indexedTuple_InequationReplacementRule ex
     {
       SNode lmt;
       SNode rmt;
-      Iterator<SNode> lmt_iterator = ListSequence.fromList(SLinkOperations.getTargets(subtype, "componentType", true)).iterator();
-      Iterator<SNode> rmt_iterator = ListSequence.fromList(SLinkOperations.getTargets(supertype, "componentType", true)).iterator();
+      Iterator<SNode> lmt_iterator = ListSequence.fromList(SLinkOperations.getChildren(subtype, MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType"))).iterator();
+      Iterator<SNode> rmt_iterator = ListSequence.fromList(SLinkOperations.getChildren(supertype, MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType"))).iterator();
       while (true) {
         if (!(lmt_iterator.hasNext())) {
           break;
@@ -51,17 +51,16 @@ public class indexedTuple_assignableTo_indexedTuple_InequationReplacementRule ex
       }
     }
   }
-
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    if (!((int) ListSequence.fromList(SLinkOperations.getTargets(subtype, "componentType", true)).count() == (int) ListSequence.fromList(SLinkOperations.getTargets(supertype, "componentType", true)).count())) {
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(subtype, MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType"))).count() == ListSequence.fromList(SLinkOperations.getChildren(supertype, MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType"))).count())) {
       result_14532009 = false;
     }
     {
       SNode lmt;
       SNode rmt;
-      Iterator<SNode> lmt_iterator = ListSequence.fromList(SLinkOperations.getTargets(subtype, "componentType", true)).iterator();
-      Iterator<SNode> rmt_iterator = ListSequence.fromList(SLinkOperations.getTargets(supertype, "componentType", true)).iterator();
+      Iterator<SNode> lmt_iterator = ListSequence.fromList(SLinkOperations.getChildren(subtype, MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType"))).iterator();
+      Iterator<SNode> rmt_iterator = ListSequence.fromList(SLinkOperations.getChildren(supertype, MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType"))).iterator();
       while (true) {
         if (!(lmt_iterator.hasNext())) {
           break;
@@ -76,30 +75,20 @@ public class indexedTuple_assignableTo_indexedTuple_InequationReplacementRule ex
     }
     return result_14532009;
   }
-
   public boolean isWeak() {
     return true;
   }
-
   public IsApplicableStatus isApplicableSubtypeAndPattern(SNode node) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(node.getConcept().getQualifiedName(), this.getApplicableSubtypeConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(node.getConcept().isSubConceptOf(getApplicableSubtypeConcept()), null);
   }
-
   public IsApplicableStatus isApplicableSupertypeAndPattern(SNode node) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(node.getConcept().getQualifiedName(), this.getApplicableSupertypeConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(node.getConcept().isSubConceptOf(getApplicableSupertypeConcept()), null);
   }
 
-  public String getApplicableSubtypeConceptFQName() {
-    return "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType";
+  public SAbstractConcept getApplicableSubtypeConcept() {
+    return MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType");
   }
-
-  public String getApplicableSupertypeConceptFQName() {
-    return "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType";
+  public SAbstractConcept getApplicableSupertypeConcept() {
+    return MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType");
   }
 }

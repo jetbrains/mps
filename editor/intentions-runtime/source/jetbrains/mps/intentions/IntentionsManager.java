@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,65 +16,55 @@
 package jetbrains.mps.intentions;
 
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.RuntimeInterruptedException;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
-import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.errors.QuickFixProvider;
-import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.intentions.IntentionsVisitor.CollectAvailableIntentionsVisitor;
 import jetbrains.mps.intentions.IntentionsVisitor.GetHighestAvailableIntentionTypeVisitor;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
-import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
-import jetbrains.mps.lang.script.runtime.MigrationScriptUtil;
+import jetbrains.mps.lang.script.runtime.RefactoringScript;
+import jetbrains.mps.lang.script.runtime.ScriptAspectDescriptor;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorMessage;
+import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
-import jetbrains.mps.reloading.ReloadAdapter;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.smodel.language.ConceptRegistry;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.SLanguageHierarchy;
+import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.typesystem.inference.ITypeContextOwner;
 import jetbrains.mps.typesystem.inference.TypeContextManager;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.InternUtil;
 import jetbrains.mps.util.Pair;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.util.DepthFirstConceptIterator;
+import org.jetbrains.mps.util.UniqueIterator;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 
 @State(
     name = "MPSIntentionsManager",
-    storages = {
-        @Storage(
-            id = "other",
-            file = "$APP_CONFIG$/intentions.xml"
-        )}
+    storages = @Storage("intentions.xml")
 )
 public class IntentionsManager implements ApplicationComponent, PersistentStateComponent<IntentionsManager.MyState> {
   private static final Logger LOG = LogManager.getLogger(IntentionsManager.class);
@@ -83,49 +73,28 @@ public class IntentionsManager implements ApplicationComponent, PersistentStateC
     return "IntentionsDescriptor";
   }
 
-  private ReloadAdapter myReloadHandler = new ReloadAdapter() {
-    @Override
-    public void unload() {
-      clear();
-    }
-  };
-
   public static IntentionsManager getInstance() {
     return ApplicationManager.getApplication().getComponent(IntentionsManager.class);
   }
 
-  private Map<Intention, SNodeReference> myNodesByIntentions = new HashMap<Intention, SNodeReference>();
-  private Map<String, Set<Intention>> myIntentions = new HashMap<String, Set<Intention>>();
-  private Set<String> myDisabledIntentionsCache = new HashSet<String>();
-  private HashMap<Class, SModuleReference> myIntentionsLanguages = new HashMap<Class, SModuleReference>();
-
-  private Set<IntentionFactory> myIntentionFactories = new HashSet<IntentionFactory>();
-  private Map<String, Set<IntentionFactory>> myConcept2IntentionFactories = new HashMap<String, Set<IntentionFactory>>();
-  private Map<String, Set<IntentionFactory>> myConcept2IntentionFactoriesAvailableInChildNodes = new HashMap<String, Set<IntentionFactory>>();
-
-  private boolean myCachesAreValid = false;
-  private boolean myLoaded = false;
-
   private MyState myState = new MyState();
 
-  private ClassLoaderManager myClassLoaderManager;
+  /**
+   * FIXME this field is here just for the sake of ModelAccess, ApplicationComponent shall not depend on any project-related stuff,
+   * rather shall get it from context.
+   */
+  private final MPSModuleRepository myRepository;
 
   public IntentionsManager(MPSCoreComponents coreComponents) {
-    myClassLoaderManager = coreComponents.getClassLoaderManager();
+    myRepository = coreComponents.getModuleRepository();
   }
 
   public synchronized IntentionType getHighestAvailableBaseIntentionType(final SNode node, final EditorContext editorContext) {
-    ModelAccess.assertLegalRead();
     final GetHighestAvailableIntentionTypeVisitor visitor = new GetHighestAvailableIntentionTypeVisitor();
-    checkLoaded();
     TypeContextManager.getInstance().runTypecheckingAction((ITypeContextOwner) editorContext.getEditorComponent(), new Runnable() {
       @Override
       public void run() {
-        Filter filter = new Filter(BaseIntention.class, getDisabledIntentions()) {
-          @Override
-          boolean accept(Intention intention) {
-            return super.accept(intention) && visitor.hasHigherPriority(intention.getType());
-          }
+        Filter filter = new Filter(getDisabledIntentions()) {
 
           @Override
           boolean accept(IntentionFactory intentionFactory) {
@@ -142,23 +111,16 @@ public class IntentionsManager implements ApplicationComponent, PersistentStateC
     return visitor.getIntentionType();
   }
 
-  public synchronized Collection<Pair<IntentionExecutable, SNode>> getAvailableIntentions(final QueryDescriptor query, final SNode node,
+  public synchronized Collection<Pair<IntentionExecutable, SNode>> getAvailableIntentions(final QueryDescriptor query, @NotNull final SNode node,
       final EditorContext context) {
-    ModelAccess.assertLegalRead();
-    checkLoaded();
     return TypeContextManager.getInstance().runTypecheckingAction((ITypeContextOwner) context.getEditorComponent(),
         new Computable<Collection<Pair<IntentionExecutable, SNode>>>() {
           @Override
           public Set<Pair<IntentionExecutable, SNode>> compute() {
             // Hiding intentions with same IntentionDescriptor
-            // important then currently selected element and it's parent has same intention
+            // important when currently selected element and it's parent has same intention
             final Set<IntentionDescriptor> processedIntentionDescriptors = new HashSet<IntentionDescriptor>();
-            Filter filter = new Filter(query.myIntentionClass, query.myEnabledOnly ? getDisabledIntentions() : null, query.mySurroundWith) {
-              @Override
-              boolean accept(Intention intention) {
-                return super.accept(intention) && !processedIntentionDescriptors.contains(intention.getDescriptor());
-              }
-
+            Filter filter = new Filter(query.myEnabledOnly ? getDisabledIntentions() : null, query.mySurroundWith) {
               @Override
               boolean accept(IntentionFactory intentionFactory) {
                 return super.accept(intentionFactory) && !processedIntentionDescriptors.contains(intentionFactory);
@@ -186,41 +148,19 @@ public class IntentionsManager implements ApplicationComponent, PersistentStateC
         });
   }
 
-  private List<IntentionExecutable> getAvailableIntentionsForExactNode(final SNode node, @NotNull final EditorContext context, boolean isAncestor,
+  private List<IntentionExecutable> getAvailableIntentionsForExactNode(@NotNull final SNode node, @NotNull final EditorContext context, boolean isAncestor,
       Filter filter) {
-    assert node != null : "node == null - inconsistent editor state";
     CollectAvailableIntentionsVisitor visitor = new CollectAvailableIntentionsVisitor();
     visitIntentions(node, visitor, filter, isAncestor, context);
 
     List<IntentionExecutable> result = new ArrayList<IntentionExecutable>();
-    // Legacy code for compatibility with generated code.
-    // Should be removed after MPS 3.0
-    for (Intention intention : visitor.getAvailableIntentions()) {
-      if (intention.isParameterized()) {
-        try {
-          Method method = intention.getClass().getMethod("instances", SNode.class, jetbrains.mps.nodeEditor.EditorContext.class);
-          // This cast to jetbrains.mps.nodeEditor.EditorContext was introduced in MPS 3.0 for backward compatibility with generated code.
-          // Should be removed after MPS 3.0
-          Object[] arguments = new Object[]{node, (jetbrains.mps.nodeEditor.EditorContext) context};
-          List<Intention> parameterizedIntentions = (List<Intention>) method.invoke(null, arguments);
-          result.addAll(parameterizedIntentions);
-        } catch (NoSuchMethodException e) {
-          LOG.error(null, e);
-        } catch (IllegalAccessException e) {
-          LOG.error(null, e);
-        } catch (InvocationTargetException e) {
-          if (e.getTargetException() instanceof RuntimeInterruptedException) {
-            throw (RuntimeInterruptedException) e.getTargetException();
-          }
-          LOG.error(null, e);
-        }
-      } else {
-        result.add(intention);
-      }
-    }
 
     for (IntentionFactory factory : visitor.getAvailableIntentionFactories()) {
-      result.addAll(factory.instances(node, context));
+      try {
+        result.addAll(factory.instances(node, context));
+      } catch (Throwable t) {
+        LOG.error("Exception during parameterized intentions instantiation", t);
+      }
     }
 
     List<SimpleEditorMessage> messages = ((EditorComponent) context.getEditorComponent()).getHighlightManager().getMessagesFor(node);
@@ -228,40 +168,26 @@ public class IntentionsManager implements ApplicationComponent, PersistentStateC
       //TODO remove this cast
       List<QuickFixProvider> intentionProviders = ((EditorMessage) message).getIntentionProviders();
       for (QuickFixProvider intentionProvider : intentionProviders) {
-        Intention intention = new QuickFixAdapter(intentionProvider.getQuickFix(), intentionProvider.isError());
-        if (intention == null || (isAncestor && !intention.isAvailableInChildNodes()) || !intention.isApplicable(node, context)) {
+        QuickFixAdapter intention = new QuickFixAdapter(intentionProvider.getQuickFix(), intentionProvider.isError());
+        if ((isAncestor && !intention.isAvailableInChildNodes()) || !intention.isApplicable(node, context)) {
           continue;
         }
-        result.add(intention);
+        try {
+          result.addAll(intention.instances(node, context));
+        } catch (Throwable t) {
+          LOG.error("Exception during parameterized intentions instantiation", t);
+        }
       }
     }
     return result;
   }
 
   public synchronized boolean isIntentionDisabled(String persistentStateKey) {
-    checkLoaded();
     return getDisabledIntentions().contains(persistentStateKey);
   }
 
   private Set<String> getDisabledIntentions() {
-    if (!myCachesAreValid) {
-      myDisabledIntentionsCache.clear();
-      for (Set<Intention> conceptIntentions : myIntentions.values()) {
-        for (Intention intention : conceptIntentions) {
-          if (myState.myDisabledIntentions.contains(intention.getPersistentStateKey())) {
-            myDisabledIntentionsCache.add(intention.getPersistentStateKey());
-          }
-        }
-      }
-
-      myCachesAreValid = true;
-    }
-    return myDisabledIntentionsCache;
-  }
-
-  private void invalidateCaches() {
-    myCachesAreValid = false;
-    myDisabledIntentionsCache.clear();
+    return myState.getDisabledIntentions();
   }
 
   //-------------disabled state control-----------------
@@ -275,205 +201,85 @@ public class IntentionsManager implements ApplicationComponent, PersistentStateC
   }
 
   public synchronized void disableIntention(String persistentStateKey) {
-    checkLoaded();
-    myState.myDisabledIntentions.add(persistentStateKey);
-    myDisabledIntentionsCache.add(persistentStateKey);
+    getDisabledIntentions().add(persistentStateKey);
   }
 
   public synchronized void enableIntention(String persistentStateKey) {
-    checkLoaded();
-    myState.myDisabledIntentions.remove(persistentStateKey);
-    myDisabledIntentionsCache.remove(persistentStateKey);
+    getDisabledIntentions().remove(persistentStateKey);
   }
 
   //-------------node info by intention-----------------
 
-  /**
-   * Since MPS 3.0 Intention.getLanguageFqName() should be used.
-   * Remove this method after MPS 3.0
-   */
-  @Deprecated
-  @Nullable
-  public synchronized Language getIntentionLanguage(Intention intention) {
-    checkLoaded();
-    SModuleReference ref = myIntentionsLanguages.get(intention.getClass());
-    if (ref == null) return null;
-    return ModuleRepositoryFacade.getInstance().getModule(ref, Language.class);
-  }
-
-  /**
-   * Since MPS 3.0 Intention.getIntentionNodeReference() should be used.
-   * Remove this method after MPS 3.0
-   */
-  @Deprecated
-  @Nullable
-  public synchronized SNode getNodeByIntention(Intention intention) {
-    checkLoaded();
-    SNodeReference pointer = myNodesByIntentions.get(intention);
-    return pointer != null ? pointer.resolve(MPSModuleRepository.getInstance()) : null;
-  }
-
-  @NotNull
-  public synchronized Set<Intention> getAllIntentions() {
-    checkLoaded();
-    return Collections.unmodifiableSet(myNodesByIntentions.keySet());
-  }
-
   @NotNull
   public synchronized Set<IntentionFactory> getAllIntentionFactories() {
-    checkLoaded();
-    return Collections.unmodifiableSet(myIntentionFactories);
-  }
-
-  //-------------reloading-----------------
-
-  public synchronized void addIntention(Intention intention, @Nullable SModuleReference lang, @Nullable SNodeReference node) {
-    Set<Intention> intentions = myIntentions.get(intention.getConcept());
-    if (intentions == null) {
-      intentions = new HashSet<Intention>();
-      myIntentions.put(InternUtil.intern(intention.getConcept()), intentions);
-    }
-    intentions.add(intention);
-
-    myNodesByIntentions.put(intention, node);
-    myIntentionsLanguages.put(intention.getClass(), lang);
-  }
-
-  public synchronized void registerIntentionFactory(IntentionFactory intentionFactory) {
-    if (!myIntentionFactories.add(intentionFactory)) {
-      return;
-    }
-
-    Set<IntentionFactory> intentionFactories = myConcept2IntentionFactories.get(intentionFactory.getConcept());
-    if (intentionFactories == null) {
-      intentionFactories = new LinkedHashSet<IntentionFactory>();
-      myConcept2IntentionFactories.put(InternUtil.intern(intentionFactory.getConcept()), intentionFactories);
-    }
-    intentionFactories.add(intentionFactory);
-
-    if (intentionFactory.isAvailableInChildNodes()) {
-      intentionFactories = myConcept2IntentionFactoriesAvailableInChildNodes.get(intentionFactory.getConcept());
-      if (intentionFactories == null) {
-        intentionFactories = new LinkedHashSet<IntentionFactory>();
-        myConcept2IntentionFactoriesAvailableInChildNodes.put(InternUtil.intern(intentionFactory.getConcept()), intentionFactories);
-      }
-      intentionFactories.add(intentionFactory);
-    }
-  }
-
-  private void checkLoaded() {
-    if (myLoaded) return;
-    myLoaded = true;
-    load();
-  }
-
-  private void load() {
-    ModelAccess.instance().runReadAction(new Runnable() {
+    return new ModelAccessHelper(myRepository).runReadAction(new Computable<Set<IntentionFactory>>() {
       @Override
-      public void run() {
-        List<Language> allLanguages = (List<Language>) ModuleRepositoryFacade.getInstance().getAllModules(Language.class);
-        for (Language language : allLanguages) {
-          String className = getDescriptorClassName(language.getModuleReference());
-          initIntentionsDescriptor(language, LanguageAspect.INTENTIONS, className);
+      public Set<IntentionFactory> compute() {
+        final HashSet<IntentionFactory> rv = new HashSet<IntentionFactory>();
+        for (LanguageRuntime lr : LanguageRegistry.getInstance().getAvailableLanguages()) {
+          final IntentionAspectDescriptor intentionAspect = lr.getAspect(IntentionAspectDescriptor.class);
+          if (intentionAspect != null) {
+            rv.addAll(intentionAspect.getAllIntentions());
+          }
+          final ScriptAspectDescriptor scriptAspect = lr.getAspect(ScriptAspectDescriptor.class);
+          if (scriptAspect != null) {
+            rv.addAll(new MigrationRefactoringIntentions(lr, scriptAspect).getIntentions());
+          }
         }
-        for (Language language : allLanguages) {
-          addMigrationsFromLanguage(language);
-        }
+        return rv;
       }
     });
-  }
-
-  private void addMigrationsFromLanguage(Language language) {
-    List<SNode> migrationScripts = MigrationScriptUtil.getMigrationScripts(language);
-
-    Map<BaseMigrationScript, SNode> scripts = new HashMap<BaseMigrationScript, SNode>();
-    for (SNode migrationScript : migrationScripts) {
-      // IOperationContext operationContext = new ModuleContext(language, ...);
-      //it seems that IOperationContext is unnecessary in MigrationScriptUtil.getBaseScriptForNode
-      BaseMigrationScript script = MigrationScriptUtil.getBaseScriptForNode(null, migrationScript);
-      if (script == null) continue;
-      scripts.put(script, migrationScript);
-    }
-
-    for (BaseMigrationScript script : scripts.keySet()) {
-      SNode migrationScript = scripts.get(script);
-      for (AbstractMigrationRefactoring refactoring : script.getRefactorings()) {
-        if (refactoring.isShowAsIntention()) {
-          SModuleReference languageReference = language.getModuleReference();
-          SNodeReference migrationReference = migrationScript.getReference();
-          Intention intention = new MigrationRefactoringAdapter(languageReference, refactoring, migrationReference);
-          IntentionsManager.getInstance().addIntention(intention, languageReference, migrationReference);
-        }
-      }
-    }
-  }
-
-
-  private void clear() {
-    ModelAccess.instance().runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        myIntentionFactories.clear();
-        myConcept2IntentionFactories.clear();
-        myConcept2IntentionFactoriesAvailableInChildNodes.clear();
-
-        myIntentions.clear();
-        myNodesByIntentions.clear();
-        myIntentionsLanguages.clear();
-        invalidateCaches();
-        myLoaded = false;
-      }
-    });
-  }
-
-  private void initIntentionsDescriptor(Language language, LanguageAspect aspect, String classShortName) {
-    try {
-      Class<?> cls = ClassLoaderManager.getInstance().getClass(language, language.getModuleName() + "." + aspect.getName() + "." + classShortName);
-      if (cls != null) {
-        BaseIntentionsDescriptor desc = (BaseIntentionsDescriptor) cls.newInstance();
-        desc.init();
-      }
-    } catch (Throwable throwable) {
-      LOG.error("Error while initializing intentions descriptor for language " + language.getModuleName(), throwable);
-    }
   }
 
   //-------------visiting registered intentions---------------
 
   private boolean visitIntentions(SNode node, IntentionsVisitor visitor, Filter filter, boolean isAncestor, EditorContext editorContext) {
-    SModelBase model = (SModelBase) node.getModel();
-    if (model == null || model.isDisposed()) return true;
-    Collection<SModuleReference> languages = model.getModelDepsManager().getAllImportedLanguages();
-    Set<String> langNames = new HashSet<String>();
-    for (SModuleReference l : languages) {
-      langNames.add(l.getModuleName());
+    if (node.getModel() == null) {
+      return true;
+    }
+    LanguageRegistry languageRegistry = LanguageRegistry.getInstance(editorContext.getRepository());
+    // respect intentions from imported languages only
+    ArrayList<IntentionAspectDescriptor> activeIntentionAspects = new ArrayList<IntentionAspectDescriptor>();
+    // respect migration scripts from imported languages only
+    ArrayList<MigrationRefactoringIntentions> activeIntentionsFromMigrationScripts = new ArrayList<MigrationRefactoringIntentions>();
+    for (SLanguage l : new SLanguageHierarchy(languageRegistry, SModelOperations.getAllLanguageImports(node.getModel())).getExtended()) {
+      final LanguageRuntime lr = languageRegistry.getLanguage(l);
+      if (lr == null) {
+        continue;
+      }
+      final IntentionAspectDescriptor intentionAspect = lr.getAspect(IntentionAspectDescriptor.class);
+      if (intentionAspect != null) {
+        activeIntentionAspects.add(intentionAspect);
+      }
+      final ScriptAspectDescriptor scriptsAspect = lr.getAspect(ScriptAspectDescriptor.class);
+      if (scriptsAspect != null) {
+        activeIntentionsFromMigrationScripts.add(new MigrationRefactoringIntentions(lr, scriptsAspect));
+      }
     }
 
-    for (String conceptId : ConceptRegistry.getInstance().getConceptDescriptor(node.getConcept().getQualifiedName()).getAncestorsNames()) {
-      Map<String, Set<IntentionFactory>> concept2FactoriesMap = isAncestor ? myConcept2IntentionFactoriesAvailableInChildNodes : myConcept2IntentionFactories;
-      if (concept2FactoriesMap.containsKey(conceptId)) {
-        for (IntentionFactory intentionFactory : concept2FactoriesMap.get(conceptId)) {
-          if (!langNames.contains(intentionFactory.getLanguageFqName())) continue;
-          if (!filter.accept(intentionFactory) || !intentionFactory.isApplicable(node, editorContext)) {
-            continue;
-          }
-          if (!visitor.visit(intentionFactory)) {
-            return false;
-          }
+    // there's no special meaning in using depth-first iterator, it's just the only one available at the moment
+    // and looks pretty reasonable for the task (super-concepts first, then implemented interfaces)
+    for (SAbstractConcept concept : new UniqueIterator<SAbstractConcept>(new DepthFirstConceptIterator(node.getConcept()))) {
+      ArrayList<IntentionFactory> intentionsForConcept = new ArrayList<IntentionFactory>();
+      for (IntentionAspectDescriptor intentionAspect : activeIntentionAspects) {
+        final Collection<IntentionFactory> intentions = intentionAspect.getIntentions(concept);
+        if (intentions == null) {
+          continue;
         }
+        intentionsForConcept.addAll(intentions);
       }
-      if (myIntentions.containsKey(conceptId)) {
-        for (Intention intention : myIntentions.get(conceptId)) {
-          if (!langNames.contains(intention.getLanguageFqName())) continue;
-            if (isAncestor && !intention.isAvailableInChildNodes()) {
-              continue;
-            }
-          if (!filter.accept(intention) || !intention.isApplicable(node, editorContext)) {
-            continue;
-          }
-          if (!visitor.visit(intention)) {
-            return false;
-          }
+      for (MigrationRefactoringIntentions refactoringIntentions : activeIntentionsFromMigrationScripts) {
+        intentionsForConcept.addAll(refactoringIntentions.getIntentions(concept));
+      }
+      for (IntentionFactory intentionFactory : intentionsForConcept) {
+        if (isAncestor && !intentionFactory.isAvailableInChildNodes()) {
+          continue;
+        }
+        if (!filter.accept(intentionFactory) || !intentionFactory.isApplicable(node, editorContext)) {
+          continue;
+        }
+        if (!visitor.visit(intentionFactory)) {
+          return false;
         }
       }
     }
@@ -481,28 +287,16 @@ public class IntentionsManager implements ApplicationComponent, PersistentStateC
   }
 
   static class Filter {
-    private Class<? extends Intention> myIntentionClass = null;
     private Set<String> myDisabledIntentions = null;
     private boolean mySurroundWith = false;
 
-    public Filter(Class<? extends Intention> intentionClass, Set<String> disabledIntentions) {
-      myIntentionClass = intentionClass;
+    public Filter(Set<String> disabledIntentions) {
       myDisabledIntentions = disabledIntentions;
     }
 
-    public Filter(Class<? extends Intention> intentionClass, Set<String> disabledIntentions, boolean surroundWith) {
-      this(intentionClass, disabledIntentions);
+    public Filter(Set<String> disabledIntentions, boolean surroundWith) {
+      this(disabledIntentions);
       mySurroundWith = surroundWith;
-    }
-
-    boolean accept(Intention intention) {
-      if (myIntentionClass != null && !myIntentionClass.isAssignableFrom(intention.getClass())) {
-        return false;
-      }
-      if (myDisabledIntentions != null && myDisabledIntentions.contains(intention.getPersistentStateKey())) {
-        return false;
-      }
-      return true;
     }
 
     boolean accept(IntentionFactory intentionFactory) {
@@ -516,16 +310,11 @@ public class IntentionsManager implements ApplicationComponent, PersistentStateC
   //-------------queryDescriptor-----------------
 
   public static class QueryDescriptor {
-    private Class<? extends Intention> myIntentionClass = null;
     private boolean myEnabledOnly = false;
     private boolean myCurrentNodeOnly = false;
     private boolean mySurroundWith = false;
 
     public QueryDescriptor() {
-    }
-
-    public void setIntentionClass(Class<? extends Intention> intentionClass) {
-      myIntentionClass = intentionClass;
     }
 
     public void setSurroundWith(boolean surroundWith) {
@@ -549,7 +338,6 @@ public class IntentionsManager implements ApplicationComponent, PersistentStateC
 
   @Override
   public void initComponent() {
-    myClassLoaderManager.addReloadHandler(myReloadHandler);
   }
 
   @Override
@@ -561,7 +349,6 @@ public class IntentionsManager implements ApplicationComponent, PersistentStateC
 
   @Override
   public void disposeComponent() {
-    myClassLoaderManager.removeReloadHandler(myReloadHandler);
   }
 
   @Override
@@ -584,5 +371,74 @@ public class IntentionsManager implements ApplicationComponent, PersistentStateC
     public void setDisabledIntentions(Set<String> disabledIntentions) {
       myDisabledIntentions = disabledIntentions;
     }
+  }
+
+  /**
+   * Factory and filter by concept for intentions that originate from migration scripts
+   */
+  private static class MigrationRefactoringIntentions {
+    private final Collection<MigrationRefactoringAdapter> myIntentionAdapters;
+
+    public MigrationRefactoringIntentions(@NotNull LanguageRuntime lr, @NotNull ScriptAspectDescriptor scriptAspect) {
+      ArrayList<MigrationRefactoringAdapter> adapters = new ArrayList<MigrationRefactoringAdapter>();
+      for (RefactoringScript rs : scriptAspect.getRefactoringScripts()) {
+        for (AbstractMigrationRefactoring refactoring : rs.getRefactorings()) {
+          if (refactoring.isShowAsIntention()) {
+            adapters.add(new MigrationRefactoringAdapter(lr.getNamespace(), refactoring, rs.getScriptNode()));
+          }
+        }
+      }
+      myIntentionAdapters = adapters.isEmpty() ? Collections.<MigrationRefactoringAdapter>emptyList() : adapters;
+    }
+
+    @NotNull
+    public Collection<? extends IntentionFactory> getIntentions() {
+      return myIntentionAdapters;
+    }
+
+    @NotNull
+    public Collection<IntentionFactory> getIntentions(@NotNull SAbstractConcept concept) {
+      if (myIntentionAdapters.isEmpty()) {
+        return Collections.emptyList();
+      }
+      ArrayList<IntentionFactory> rv = new ArrayList<IntentionFactory>(myIntentionAdapters.size());
+      for (MigrationRefactoringAdapter a : myIntentionAdapters) {
+        // don't want to use IntentionDescriptor.getConcept():String, thus exposed AbstractMigrationRefactoring
+        if (a.getRefactoring().getApplicableConcept().equals(concept)) {
+          rv.add(a);
+        }
+      }
+      return rv;
+    }
+  }
+
+  @Nullable
+  public IntentionExecutable getIntentionById(SNode node, Editor editor, String id) {
+    return getIntentionById(node, editor.getEditorContext(), id);
+  }
+
+  /**
+   * @return the matching intention, if found <em>and applicable</em>, {@code null} otherwise
+   */
+  @Nullable
+  public IntentionExecutable getIntentionById(SNode node, EditorContext editorContext, String id) {
+    List<IntentionExecutable> result = getIntentionsById(node, editorContext, id);
+
+    assert result.size() <= 1;
+    return result.isEmpty() ? null : result.get(0);
+  }
+
+  @NotNull
+  public List<IntentionExecutable> getIntentionsById(SNode node, EditorContext editorContext, String id) {
+    QueryDescriptor query = new QueryDescriptor();
+    query.setCurrentNodeOnly(true);
+    Collection<Pair<IntentionExecutable, SNode>> intentions = getAvailableIntentions(query, node, editorContext);
+    List<IntentionExecutable> result = new ArrayList<>();
+    for (Pair<IntentionExecutable, SNode> intention : intentions) {
+      if (intention.o1.getDescriptor().getPersistentStateKey().equals(id)) {
+        result.add(intention.o1);
+      }
+    }
+    return result;
   }
 }

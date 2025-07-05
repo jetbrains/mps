@@ -11,6 +11,9 @@ import jetbrains.mps.debugger.api.ui.DebugActionsUtil;
 import com.intellij.ide.DataManager;
 import jetbrains.mps.util.StringUtil;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import javax.swing.JPopupMenu;
 import javax.swing.AbstractAction;
@@ -29,30 +32,28 @@ import jetbrains.mps.debug.api.breakpoints.BreakpointProvidersManager;
   public BreakpointIconRenderer(ILocationBreakpoint breakpoint, Component component) {
     super(breakpoint, component);
   }
-
   @Override
   public Icon getIcon() {
     return BreakpointIconRenderer.getIconFor(myBreakpoint, DebugActionsUtil.getDebugSession(DataManager.getInstance().getDataContext(myComponent)));
   }
-
   @Override
   public String getTooltipText() {
-    return "<html><body>" + StringUtil.escapeXml(myBreakpoint.getKind().getPresentation()) + "<br>" + StringUtil.escapeXml(myBreakpoint.getPresentation()) + ((myBreakpoint.isValid() ?
-      "" :
-      "<br><font color='red'>Invalid</br>"
-    )) + "</html></body>";
+    return "<html><body>" + StringUtil.escapeXml(myBreakpoint.getKind().getPresentation()) + "<br>" + StringUtil.escapeXml(myBreakpoint.getPresentation()) + ((myBreakpoint.isValid() ? "" : "<br><font color='red'>Invalid</br>")) + "</html></body>";
   }
-
   @Override
   public SNode getNode() {
-    return myBreakpoint.getLocation().getSNode();
+    SRepository repo = ProjectHelper.getProjectRepository(myBreakpoint.getProject());
+    if (repo == null) {
+      // XXX friendly reminder to refactor EditorMessageIconProvider not to require SNode but SNodeReference 
+      // Usually, we've got smth to resolve ptr against in LeftEditorHighligher (or just need to match a renderer, ptr would suffice). 
+      repo = MPSModuleRepository.getInstance();
+    }
+    return myBreakpoint.getLocation().getNodePointer().resolve(repo);
   }
-
   @Override
   public EditorCell getAnchorCell(EditorCell bigCell) {
     return BreakpointIconRenderer.getBreakpointIconAnchorCell(bigCell);
   }
-
   @Override
   public JPopupMenu getPopupMenu() {
     if (!(myBreakpoint.isValid())) {
@@ -62,10 +63,7 @@ import jetbrains.mps.debug.api.breakpoints.BreakpointProvidersManager;
       return null;
     }
     JPopupMenu menu = new JPopupMenu();
-    menu.add(new AbstractAction((myBreakpoint.isEnabled() ?
-      "Disable" :
-      "Enable"
-    )) {
+    menu.add(new AbstractAction((myBreakpoint.isEnabled() ? "Disable" : "Enable")) {
       @Override
       public void actionPerformed(ActionEvent e) {
         myBreakpoint.setEnabled(!(myBreakpoint.isEnabled()));
@@ -86,11 +84,9 @@ import jetbrains.mps.debug.api.breakpoints.BreakpointProvidersManager;
     });
     return menu;
   }
-
   public static Icon getIconFor(@NotNull IBreakpoint breakpoint) {
     return BreakpointIconRenderer.getIconFor(breakpoint, null);
   }
-
   private static Icon getIconFor(@NotNull IBreakpoint breakpoint, @Nullable AbstractDebugSession session) {
     if (session != null && session.isMute()) {
       return Icons.MUTED_BREAKPOINT;
@@ -102,12 +98,6 @@ import jetbrains.mps.debug.api.breakpoints.BreakpointProvidersManager;
         return icon;
       }
     }
-    return (breakpoint.isValid() ?
-      ((breakpoint.isEnabled() ?
-        Icons.BREAKPOINT :
-        Icons.DISABLED_BREAKPOINT
-      )) :
-      Icons.INV_BREAKPOINT
-    );
+    return (breakpoint.isValid() ? ((breakpoint.isEnabled() ? Icons.BREAKPOINT : Icons.DISABLED_BREAKPOINT)) : Icons.INV_BREAKPOINT);
   }
 }

@@ -15,12 +15,16 @@
  */
 package jetbrains.mps.plugins.relations;
 
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class RelationDescriptor implements Comparable<RelationDescriptor> {
@@ -59,15 +63,15 @@ public abstract class RelationDescriptor implements Comparable<RelationDescripto
     return result;
   }
 
-  public List<SNode> getConcepts(SNode baseNode) {
-    return new ArrayList<SNode>();
+  public Iterable<SConcept> getAspectConcepts(SNode baseNode){
+    return Collections.emptyList();
   }
 
   public boolean commandOnCreate() {
     return true;
   }
 
-  public SNode createNode(SNode baseNode, SNode concept) {
+  public SNode createAspect(SNode baseNode, SConcept concept){
     throw new UnsupportedOperationException();
   }
 

@@ -5,6 +5,8 @@ package jetbrains.mps.lang.structure.findUsages;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import java.util.List;
@@ -16,26 +18,24 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public class NodeAndDescendantsUsages_Finder extends GeneratedFinder {
   private static Logger LOG = LogManager.getLogger("jetbrains.mps.lang.structure.findUsages.NodeAndDescendantsUsages_Finder");
-
   public NodeAndDescendantsUsages_Finder() {
   }
-
   @Override
   public String getDescription() {
     return "Node & Descendants Usages";
   }
-
   @Override
   public String getLongDescription() {
     return "";
   }
-
   @Override
-  public String getConcept() {
-    return "jetbrains.mps.lang.core.structure.BaseConcept";
+  public SAbstractConcept getSConcept() {
+    return MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 
   @Override
@@ -43,7 +43,7 @@ public class NodeAndDescendantsUsages_Finder extends GeneratedFinder {
     try {
       Set<SNode> nodes = SetSequence.fromSet(new HashSet<SNode>());
       SetSequence.fromSet(nodes).addElement(node);
-      for (SNode child : ListSequence.fromList(SNodeOperations.getDescendants(node, null, false, new String[]{}))) {
+      for (SNode child : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, null, false, new SAbstractConcept[]{}))) {
         SetSequence.fromSet(nodes).addElement(child);
       }
       // 
@@ -58,14 +58,18 @@ public class NodeAndDescendantsUsages_Finder extends GeneratedFinder {
       monitor.done();
     }
   }
-
   @Override
   public void getSearchedNodes(SNode node, SearchScope scope, List<SNode> _results) {
     ListSequence.fromList(_results).addElement(node);
   }
-
   @Override
   public String getNodeCategory(SNode node) {
     return "Node Descendants Usages";
+  }
+
+  @Nullable
+  @Override
+  public SNodeReference getDeclarationNode() {
+    return buildNodePointer(FindUsagesDescriptor.DECLARING_MODEL, "1198430852441");
   }
 }

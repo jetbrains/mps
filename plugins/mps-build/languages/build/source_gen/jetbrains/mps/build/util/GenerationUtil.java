@@ -7,15 +7,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import java.util.concurrent.ConcurrentHashMap;
 import jetbrains.mps.util.containers.ConcurrentHashSet;
-import jetbrains.mps.util.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GenerationUtil {
-  public static String SCRIPTS_TARGET_PROPERTY = GenerationUtil.class.getPackage().getName() + ".scripts.dir";
-
   public GenerationUtil() {
   }
-
   public static <K, V> ConcurrentMap<K, V> getSessionMap(SNode project, TemplateQueryContext genContext, String prefix) {
     String key = getKey(prefix, genContext, project);
     ConcurrentMap<K, V> map = (ConcurrentMap<K, V>) genContext.getSessionObject(key);
@@ -25,7 +23,6 @@ public class GenerationUtil {
     }
     return map;
   }
-
   public static <K, V> ConcurrentMap<K, V> getTransientMap(SNode project, TemplateQueryContext genContext, String prefix) {
     String key = getKey(prefix, genContext, project);
     ConcurrentMap<K, V> map = (ConcurrentMap<K, V>) genContext.getTransientObject(key);
@@ -35,7 +32,6 @@ public class GenerationUtil {
     }
     return map;
   }
-
   public static <K> ConcurrentHashSet<K> getSessionSet(SNode project, TemplateQueryContext genContext, String prefix) {
     String key = getKey(prefix, genContext, project);
     ConcurrentHashSet<K> set = (ConcurrentHashSet<K>) genContext.getSessionObject(key);
@@ -45,8 +41,7 @@ public class GenerationUtil {
     }
     return set;
   }
-
   private static String getKey(String prefix, TemplateQueryContext genContext, SNode project) {
-    return prefix + "/" + SNodeOperations.getModelLongName(genContext.getOriginalInputModel()) + "/" + SPropertyOperations.getString(project, "name");
+    return prefix + '/' + SModelOperations.getModelName(genContext.getOriginalInputModel()) + '/' + SPropertyOperations.getString(project, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
 }

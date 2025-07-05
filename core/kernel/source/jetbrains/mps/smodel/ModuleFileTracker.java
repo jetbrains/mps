@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,17 +18,25 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileUtils;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.module.SRepositoryAdapter;
 import org.jetbrains.mps.openapi.module.SRepositoryListener;
+import org.jetbrains.mps.openapi.module.SRepositoryListenerBase;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * @deprecated It's possible to have more than one module for the same file (e.g. .mpl hosts both language and its generators).
+ *             Review uses of the class and decide whether its API needs an update or we don't need it altogether (there are few dubious uses, it's
+ *             not evident if there's any value in this map). For the time being, whatever module it gives, is fine.
+ */
+@Deprecated
 public class ModuleFileTracker implements CoreComponent {
   private static ModuleFileTracker INSTANCE;
   private SRepository myRepo;
@@ -38,8 +46,17 @@ public class ModuleFileTracker implements CoreComponent {
     myRepo = repo;
   }
 
+  /**
+   * @deprecated use {@link #getInstance(SRepository)} instead
+   */
+  @Deprecated
+  @ToRemove(version = 3.4)
   public static ModuleFileTracker getInstance() {
     return INSTANCE;
+  }
+
+  public static ModuleFileTracker getInstance(SRepository repository) {
+    return INSTANCE; // FIXME track all requested repositories, not only the global one
   }
 
   @Override
@@ -82,19 +99,24 @@ public class ModuleFileTracker implements CoreComponent {
     }
   }
 
-  private class MyModuleRepositoryListener extends SRepositoryAdapter {
+  private class MyModuleRepositoryListener extends SRepositoryListenerBase {
     @Override
-    public void beforeModuleRemoved(SModule module) {
+    public void beforeModuleRemoved(@NotNull SModule module) {
       IFile file = ((AbstractModule) module).getDescriptorFile();
-      if (file == null) return;
+      if (file == null) {
+        return;
+      }
       removeModuleFile(file);
       removeModuleFile(getSourceModuleDescriptor((AbstractModule) module));
     }
 
     @Override
-    public void moduleAdded(SModule module) {
+    public void moduleAdded(@NotNull SModule module) {
       IFile file = ((AbstractModule) module).getDescriptorFile();
-      if (file == null) return;
+      if (file == null) {
+        // XXX file used to be null for Generator module, now chances are generator overrides location of its language
+        return;
+      }
       addCanonicalFile(file, module);
       addCanonicalFile(getSourceModuleDescriptor((AbstractModule) module), module);
     }
@@ -104,7 +126,7 @@ public class ModuleFileTracker implements CoreComponent {
       if (module.getModuleDescriptor() == null || module.getModuleDescriptor().getDeploymentDescriptor() == null) {
         return null;
       }
-      return ModulesMiner.getRealDescriptorFile(module.getDescriptorFile().getPath(), module.getModuleDescriptor().getDeploymentDescriptor());
+      return ModulesMiner.getSourceDescriptorFile(module.getDescriptorFile(), module.getModuleDescriptor().getDeploymentDescriptor());
     }
   }
 }

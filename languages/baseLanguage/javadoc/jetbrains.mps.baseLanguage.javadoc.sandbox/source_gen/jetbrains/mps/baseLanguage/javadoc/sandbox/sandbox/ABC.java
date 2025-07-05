@@ -6,7 +6,7 @@ package jetbrains.mps.baseLanguage.javadoc.sandbox.sandbox;
 /**
  * Comment for class 
  * 
- * @param TT param
+ * @param <TT> param
  */
 public class ABC<TT> {
   /**
@@ -20,7 +20,6 @@ public class ABC<TT> {
    */
   private int x;
   private int y;
-
   /**
    * 
    * 
@@ -28,7 +27,6 @@ public class ABC<TT> {
    */
   public ABC() {
   }
-
   /**
    * The quick {@inheritDoc}brown fox {@code } over t{he lazy dog.
    * And then... {@link jetbrains.mps.baseLanguage.javadoc.sandbox.sandbox.ABC#SOME_CONSTANT } {@value}
@@ -49,13 +47,9 @@ public class ABC<TT> {
    * @return int :)
    */
   public int foo(int a) throws ArrayStoreException {
-    /*
-      a = 5;
-    */
     System.out.println(3);
     return 7;
   }
-
   /**
    * asd
    * teij jk
@@ -78,7 +72,6 @@ public class ABC<TT> {
    */
   public void foo(String... s) {
   }
-
   /**
    * fasdfasdfasdfasdfasdf
    * 

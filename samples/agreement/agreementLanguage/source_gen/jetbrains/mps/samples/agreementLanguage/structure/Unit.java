@@ -4,23 +4,28 @@ package jetbrains.mps.samples.agreementLanguage.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum Unit {
   USD_KWH("USD_KWH", "USD_KWH"),
   USD("USD", "USD"),
   KWH("KWH", "KWH");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private Unit(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<Unit> getConstants() {
     List<Unit> list = ListSequence.fromList(new LinkedList<Unit>());
     ListSequence.fromList(list).addElement(Unit.USD_KWH);
@@ -28,11 +33,9 @@ public enum Unit {
     ListSequence.fromList(list).addElement(Unit.KWH);
     return list;
   }
-
   public static Unit getDefault() {
     return Unit.USD_KWH;
   }
-
   public static Unit parseValue(String value) {
     if (value == null) {
       return Unit.getDefault();
@@ -47,16 +50,5 @@ public enum Unit {
       return Unit.KWH;
     }
     return Unit.getDefault();
-  }
-
-  private String myValue;
-
-  Unit(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

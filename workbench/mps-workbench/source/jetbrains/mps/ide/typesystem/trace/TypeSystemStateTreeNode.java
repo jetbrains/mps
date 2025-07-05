@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,6 @@ package jetbrains.mps.ide.typesystem.trace;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.nodeEditor.GoToTypeErrorRuleUtil;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.List;
@@ -31,21 +28,15 @@ public class TypeSystemStateTreeNode extends MPSTreeNode {
   protected String myRuleId;
   protected State myState;
 
-  public TypeSystemStateTreeNode(IOperationContext operationContext) {
-    super(operationContext);
+  public TypeSystemStateTreeNode() {
+    super();
   }
 
-  public TypeSystemStateTreeNode(String presentation, IOperationContext operationContext) {
-    super(presentation, operationContext);
-    setNodeIdentifier(userObject.toString());
+  public TypeSystemStateTreeNode(String presentation) {
+    super(presentation);
+    setNodeIdentifier(presentation);
     setIcon(IdeIcons.DEFAULT_ICON);
-    this.setAutoExpandable(true);
-  }
-
-  public void goToRule() {
-    if (myRuleId != null && myRuleModel != null) {
-      GoToTypeErrorRuleUtil.goToRuleById(getOperationContext().getProject(), new Pair<String, String>(myRuleModel, myRuleId));
-    }
+    setAutoExpandable(true);
   }
 
   public List<SNode> getVariables() {

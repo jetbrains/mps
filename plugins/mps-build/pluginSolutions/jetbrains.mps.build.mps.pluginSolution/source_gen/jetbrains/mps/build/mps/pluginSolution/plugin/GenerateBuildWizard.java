@@ -4,7 +4,7 @@ package jetbrains.mps.build.mps.pluginSolution.plugin;
 
 import com.intellij.ide.wizard.AbstractWizard;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.project.MPSProject;
 import javax.swing.JComponent;
 import com.intellij.ide.wizard.Step;
 
@@ -19,7 +19,7 @@ public class GenerateBuildWizard extends AbstractWizard {
   };
 
   public GenerateBuildWizard(String title, Project project, AbstractBuildGenerator generator) {
-    super(title, ProjectHelper.toIdeaProject(project));
+    super(title, ((MPSProject) project).getProject());
     myProject = project;
     myGenerator = generator;
 
@@ -40,9 +40,8 @@ public class GenerateBuildWizard extends AbstractWizard {
   }
 
   @Override
-  protected void updateStep() {
-    getFinishButton().setEnabled((getCurrentStep() == mySteps.size() - 1) && myGenerator.isValid());
-    super.updateStep();
+  protected boolean canFinish() {
+    return super.canFinish() && myGenerator.isValid();
   }
 
   @Override

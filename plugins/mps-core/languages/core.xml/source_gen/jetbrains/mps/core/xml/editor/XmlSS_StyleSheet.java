@@ -4,180 +4,316 @@ package jetbrains.mps.core.xml.editor;
 
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import java.awt.Color;
 import jetbrains.mps.nodeEditor.MPSFonts;
 
 public class XmlSS_StyleSheet {
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getXmlTagName(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(128)));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-    return style;
+  public static void apply_xmlTagName(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new XmlSS_StyleSheet.xmlTagNameStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getXmlExtensionName(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(16448)));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-    return style;
+  public static void apply_xmlExtensionName(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new XmlSS_StyleSheet.xmlExtensionNameStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getXmlTagPunctuation(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(3158064)));
-    return style;
+  public static void apply_xmlTagPunctuation(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new XmlSS_StyleSheet.xmlTagPunctuationStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getXmlAttributeName(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(255)));
-    return style;
+  public static void apply_xmlAttributeName(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new XmlSS_StyleSheet.xmlAttributeNameStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getXmlAttributeValue(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(32768)));
-    return style;
+  public static void apply_xmlAttributeValue(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new XmlSS_StyleSheet.xmlAttributeValueStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getXmlAttrEntityRefValue(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(32768)));
-    return style;
+  public static void apply_xmlAttrEntityRefValue(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new XmlSS_StyleSheet.xmlAttrEntityRefValueStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getXmlAttrCharRefValue(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(32768)));
-    return style;
+  public static void apply_xmlAttrCharRefValue(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new XmlSS_StyleSheet.xmlAttrCharRefValueStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getXmlNoNewLine(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(4210816)));
-    return style;
+  public static void apply_xmlNoNewLine(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new XmlSS_StyleSheet.xmlNoNewLineStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getXmlEntityRef(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(6684672)));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-    return style;
+  public static void apply_xmlEntityRef(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new XmlSS_StyleSheet.xmlEntityRefStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getXmlCharRef(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(6684672)));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-    return style;
+  public static void apply_xmlCharRef(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new XmlSS_StyleSheet.xmlCharRefStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getXmlComment(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(8421504)));
-    return style;
+  public static void apply_xmlComment(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new XmlSS_StyleSheet.xmlCommentStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getXmlPI(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
-    return style;
+  public static void apply_xmlPI(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new XmlSS_StyleSheet.xmlPIStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getXmlPITarget(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
-    return style;
+  public static void apply_xmlPITarget(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new XmlSS_StyleSheet.xmlPITargetStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getXmlPIData(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
-    return style;
+  public static void apply_xmlPIData(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new XmlSS_StyleSheet.xmlPIDataStyleClass(editorContext, node).apply(style, editorCell);
   }
 
-  public static void applyXmlTagName(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(128)));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-  }
+  public static class xmlTagNameStyleClass extends AbstractStyleClass {
+    public xmlTagNameStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyXmlExtensionName(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(16448)));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-  }
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(128)));
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+    }
 
-  public static void applyXmlTagPunctuation(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(3158064)));
   }
+  public static class xmlExtensionNameStyleClass extends AbstractStyleClass {
+    public xmlExtensionNameStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyXmlAttributeName(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(255)));
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(16448)));
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+    }
+
   }
+  public static class xmlTagPunctuationStyleClass extends AbstractStyleClass {
+    public xmlTagPunctuationStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyXmlAttributeValue(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(32768)));
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(3158064)));
+    }
+
   }
+  public static class xmlAttributeNameStyleClass extends AbstractStyleClass {
+    public xmlAttributeNameStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyXmlAttrEntityRefValue(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(32768)));
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(255)));
+    }
+
   }
+  public static class xmlAttributeValueStyleClass extends AbstractStyleClass {
+    public xmlAttributeValueStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyXmlAttrCharRefValue(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(32768)));
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(32768)));
+    }
+
   }
+  public static class xmlAttrEntityRefValueStyleClass extends AbstractStyleClass {
+    public xmlAttrEntityRefValueStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyXmlNoNewLine(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(4210816)));
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(32768)));
+    }
+
   }
+  public static class xmlAttrCharRefValueStyleClass extends AbstractStyleClass {
+    public xmlAttrCharRefValueStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyXmlEntityRef(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(6684672)));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(32768)));
+    }
+
   }
+  public static class xmlNoNewLineStyleClass extends AbstractStyleClass {
+    public xmlNoNewLineStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyXmlCharRef(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(6684672)));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(4210816)));
+    }
+
   }
+  public static class xmlEntityRefStyleClass extends AbstractStyleClass {
+    public xmlEntityRefStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyXmlComment(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(8421504)));
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(6684672)));
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+    }
+
   }
+  public static class xmlCharRefStyleClass extends AbstractStyleClass {
+    public xmlCharRefStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyXmlPI(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(6684672)));
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+    }
+
   }
+  public static class xmlCommentStyleClass extends AbstractStyleClass {
+    public xmlCommentStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyXmlPITarget(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(8421504)));
+    }
+
   }
+  public static class xmlPIStyleClass extends AbstractStyleClass {
+    public xmlPIStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyXmlPIData(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
+    }
+
+  }
+  public static class xmlPITargetStyleClass extends AbstractStyleClass {
+    public xmlPITargetStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
+    }
+
+  }
+  public static class xmlPIDataStyleClass extends AbstractStyleClass {
+    public xmlPIDataStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
+    }
+
   }
 }

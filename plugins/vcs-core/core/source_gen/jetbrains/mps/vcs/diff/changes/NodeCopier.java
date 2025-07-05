@@ -11,11 +11,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.references.UnregisteredNodes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.util.InternUtil;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.IMapping;
@@ -23,18 +24,15 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
 public class NodeCopier {
   private Map<SNodeId, SNodeId> myIdReplacementCache = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>());
   private SModel myModel;
-
   public NodeCopier(SModel model) {
     myModel = model;
   }
-
   public SNodeId getReplacementId(SNodeId originalId) {
     return MapSequence.fromMap(myIdReplacementCache).get(originalId);
   }
-
   public SNode copyNode(SNode sourceNode) {
     SNode copy = CopyUtil.copyAndPreserveId(sourceNode);
-    for (SNode node : ListSequence.fromList(SNodeOperations.getDescendants(copy, null, true, new String[]{}))) {
+    for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(copy, null, true, new SAbstractConcept[]{}))) {
       SNodeId nodeId = node.getNodeId();
       if (myModel.getNode(nodeId) == null) {
         continue;
@@ -50,7 +48,6 @@ public class NodeCopier {
     }
     return copy;
   }
-
   public void restoreIds(boolean affectOthers) {
     UnregisteredNodes.WarningLevel oldWarningLevel = UnregisteredNodes.instance().setWarningLevel(UnregisteredNodes.WarningLevel.WARNING);
     try {
@@ -68,22 +65,19 @@ public class NodeCopier {
       UnregisteredNodes.instance().setWarningLevel(oldWarningLevel);
     }
   }
-
   private void setId(SNode node, SNodeId id) {
     SModel model = SNodeOperations.getModel(node);
     if (SNodeOperations.getParent(node) == null) {
-      SNodeOperations.detachNode(node);
+      SNodeOperations.deleteNode(node);
       ((jetbrains.mps.smodel.SNode) node).setId(id);
       SModelOperations.addRootNode(model, node);
     } else {
-      // hardcoded to get rid of dependency on core language 
-      SNode stubNode = new jetbrains.mps.smodel.SNode(InternUtil.intern("jetbrains.mps.lang.core.structure.BaseConcept"));
+      SNode stubNode = new jetbrains.mps.smodel.SNode(SNodeUtil.concept_BaseConcept);
       SNodeOperations.replaceWithAnother(node, stubNode);
       ((jetbrains.mps.smodel.SNode) node).setId(id);
       SNodeOperations.replaceWithAnother(stubNode, node);
     }
   }
-
   private void softRestoreIds() {
     for (SNodeId id : SetSequence.fromSet(MapSequence.fromMap(myIdReplacementCache).keySet())) {
       if (MapSequence.fromMap(myIdReplacementCache).get(id) != null && myModel.getNode(id) == null) {
@@ -94,7 +88,6 @@ public class NodeCopier {
       }
     }
   }
-
   private void evictOtherDuplicates() {
     for (SNodeId id : SetSequence.fromSet(MapSequence.fromMap(myIdReplacementCache).keySet())) {
       SNode toBeEvicted = myModel.getNode(id);
@@ -102,7 +95,6 @@ public class NodeCopier {
       setId(toBeEvicted, jetbrains.mps.smodel.SModel.generateUniqueId());
     }
   }
-
   public Map<SNodeId, SNodeId> getState() {
     final Map<SNodeId, SNodeId> state = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>(MapSequence.fromMap(myIdReplacementCache).count()));
     MapSequence.fromMap(myIdReplacementCache).visitAll(new IVisitor<IMapping<SNodeId, SNodeId>>() {
@@ -112,12 +104,10 @@ public class NodeCopier {
     });
     return state;
   }
-
   public void setState(Map<SNodeId, SNodeId> state, SModel model) {
     myIdReplacementCache = state;
     myModel = model;
   }
-
   public boolean hasIdsToRestore() {
     return Sequence.fromIterable(MapSequence.fromMap(myIdReplacementCache).values()).any(new IWhereFilter<SNodeId>() {
       public boolean accept(SNodeId id) {

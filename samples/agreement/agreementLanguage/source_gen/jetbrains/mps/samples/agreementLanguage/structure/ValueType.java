@@ -4,33 +4,36 @@ package jetbrains.mps.samples.agreementLanguage.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum ValueType {
   Quantity("QUANTITY", "Quantity"),
   Money("MONEY", "Money");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private ValueType(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<ValueType> getConstants() {
     List<ValueType> list = ListSequence.fromList(new LinkedList<ValueType>());
     ListSequence.fromList(list).addElement(ValueType.Quantity);
     ListSequence.fromList(list).addElement(ValueType.Money);
     return list;
   }
-
   public static ValueType getDefault() {
     return ValueType.Quantity;
   }
-
   public static ValueType parseValue(String value) {
     if (value == null) {
       return ValueType.getDefault();
@@ -42,16 +45,5 @@ public enum ValueType {
       return ValueType.Money;
     }
     return ValueType.getDefault();
-  }
-
-  private String myValue;
-
-  ValueType(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

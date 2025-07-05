@@ -8,40 +8,34 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
-import jetbrains.mps.lang.structure.behavior.LinkDeclaration_Behavior;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class check_CellModel_RefNode_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public check_CellModel_RefNode_InferenceRule() {
   }
-
   public void applyRule(final SNode refNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode lnk = SLinkOperations.getTarget(refNode, "relationDeclaration", false);
-    if (!(SPropertyOperations.hasValue(lnk, "metaClass", "aggregation", "reference"))) {
+    SNode lnk = SLinkOperations.getTarget(refNode, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration"));
+    if (!(SPropertyOperations.hasValue(lnk, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), "aggregation", "reference"))) {
       MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(refNode, "aggregation link expected", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1180280667546", null, errorTarget);
     }
-    if (!(LinkDeclaration_Behavior.call_isSingular_1213877254557(lnk))) {
+    if (!((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(lnk))) {
       MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(refNode, "single cardinality expected", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1180280735244", null, errorTarget);
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.lang.editor.structure.CellModel_RefNode";
+  public SAbstractConcept getApplicableConcept() {
+    return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, "jetbrains.mps.lang.editor.structure.CellModel_RefNode");
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConcept().getQualifiedName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,10 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.usages;
 
-import com.intellij.find.FindManager;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileEditor;
@@ -26,16 +24,15 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.usages.PsiElementUsageTarget;
 import com.intellij.usages.UsageTarget;
-import jetbrains.mps.idea.core.psi.impl.MPSPsiNode;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiProvider;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
+import jetbrains.mps.workbench.choose.NodePointerNavigationItem;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.workbench.choose.nodes.NodePointerPresentation;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 public class NodeUsageTarget extends NodeNavigatable implements UsageTarget, PsiElementUsageTarget {
 
@@ -45,7 +42,7 @@ public class NodeUsageTarget extends NodeNavigatable implements UsageTarget, Psi
 
   @Override
   public PsiElement getElement() {
-    return ModelAccess.instance().runReadAction(new Computable<PsiElement>() {
+    return new ModelAccessHelper(ProjectHelper.getModelAccess(getProject())).runReadAction(new Computable<PsiElement>() {
       @Override
       public PsiElement compute() {
         return MPSPsiProvider.getInstance(myProject).getPsi(myNode);
@@ -74,10 +71,11 @@ public class NodeUsageTarget extends NodeNavigatable implements UsageTarget, Psi
 
   @Override
   public boolean isValid() {
-    return ModelAccess.instance().runReadAction(new Computable<Boolean>() {
+    SRepository repository = ProjectHelper.getProjectRepository(myProject);
+    return new ModelAccessHelper(repository.getModelAccess()).runReadAction(new Computable<Boolean>() {
       @Override
       public Boolean compute() {
-        SNode node = myNode.resolve(MPSModuleRepository.getInstance());
+        SNode node = myNode.resolve(repository);
         return node != null && !(node.getModel() == null);
       }
     });
@@ -90,10 +88,16 @@ public class NodeUsageTarget extends NodeNavigatable implements UsageTarget, Psi
 
   @Override
   public void update() {
-    ModelAccess.instance().runReadAction(new Runnable() {
+    final SRepository repository = ProjectHelper.getProjectRepository(myProject);
+    repository.getModelAccess().runReadAction(new Runnable() {
       @Override
       public void run() {
-        myItemPresentation = new NodePointerPresentation(((SNodePointer) myNode));
+        SNode resolved = myNode.resolve(repository);
+        if (resolved == null) {
+          myItemPresentation = new NodePointerNavigationItem(myNode, "failed to resolve node", null);
+        } else {
+          myItemPresentation = new NodePointerNavigationItem(resolved);
+        }
         myTextPresentation = myItemPresentation.getPresentableText();
       }
     });
@@ -108,4 +112,7 @@ public class NodeUsageTarget extends NodeNavigatable implements UsageTarget, Psi
     return myItemPresentation;
   }
 
+  public void showSettings() {
+
+  }
 }

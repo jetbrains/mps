@@ -7,33 +7,25 @@ import org.jetbrains.annotations.NotNull;
 
 /*package*/ abstract class AbstractInstaller {
   protected Project myProject;
-
   protected AbstractInstaller(@NotNull Project project) {
     myProject = project;
   }
-
   @NotNull
   public AbstractInstaller.State getCurrentState() {
     return install(true);
   }
-
   @NotNull
   public AbstractInstaller.State install() {
     return install(false);
   }
-
   @NotNull
   protected abstract AbstractInstaller.State install(boolean dryRun);
-
   public abstract String getActionTitle();
-
   public String getActionTooltip() {
     return null;
   }
-
   public abstract String getAffectedVcsName();
-
-  public static   enum State {
+  public enum State {
     NOT_INSTALLED(),
     OUTDATED(),
     INSTALLED(),

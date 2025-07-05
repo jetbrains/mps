@@ -4,6 +4,7 @@ package jetbrains.mps.typesystemEngine.util;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -16,19 +17,18 @@ import java.util.List;
 public class LatticeUtil {
   public LatticeUtil() {
   }
-
   private static void processMeetsAndJoins(SNode node) {
     {
-      SNode joinType = node;
-      if (SNodeOperations.isInstanceOf(joinType, "jetbrains.mps.lang.typesystem.structure.JoinType")) {
-        for (SNode child : SLinkOperations.getTargets(joinType, "argument", true)) {
+      final SNode joinType = node;
+      if (SNodeOperations.isInstanceOf(joinType, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType"))) {
+        for (SNode child : SLinkOperations.getChildren(joinType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"))) {
           processMeetsAndJoins(child);
           {
-            SNode childJoinType = child;
-            if (SNodeOperations.isInstanceOf(childJoinType, "jetbrains.mps.lang.typesystem.structure.JoinType")) {
-              for (SNode grandChild : SLinkOperations.getTargets(childJoinType, "argument", true)) {
-                SNodeOperations.detachNode(grandChild);
-                ListSequence.fromList(SLinkOperations.getTargets(joinType, "argument", true)).addElement(grandChild);
+            final SNode childJoinType = child;
+            if (SNodeOperations.isInstanceOf(childJoinType, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType"))) {
+              for (SNode grandChild : SLinkOperations.getChildren(childJoinType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"))) {
+                SNodeOperations.deleteNode(grandChild);
+                ListSequence.fromList(SLinkOperations.getChildren(joinType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"))).addElement(grandChild);
               }
               SNodeOperations.deleteNode(child);
             }
@@ -37,16 +37,16 @@ public class LatticeUtil {
       }
     }
     {
-      SNode meetType = node;
-      if (SNodeOperations.isInstanceOf(meetType, "jetbrains.mps.lang.typesystem.structure.MeetType")) {
-        for (SNode child : SLinkOperations.getTargets(meetType, "argument", true)) {
+      final SNode meetType = node;
+      if (SNodeOperations.isInstanceOf(meetType, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType"))) {
+        for (SNode child : SLinkOperations.getChildren(meetType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument"))) {
           processMeetsAndJoins(child);
           {
-            SNode childMeetType = child;
-            if (SNodeOperations.isInstanceOf(childMeetType, "jetbrains.mps.lang.typesystem.structure.MeetType")) {
-              for (SNode grandChild : SLinkOperations.getTargets(childMeetType, "argument", true)) {
-                SNodeOperations.detachNode(grandChild);
-                ListSequence.fromList(SLinkOperations.getTargets(meetType, "argument", true)).addElement(grandChild);
+            final SNode childMeetType = child;
+            if (SNodeOperations.isInstanceOf(childMeetType, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType"))) {
+              for (SNode grandChild : SLinkOperations.getChildren(childMeetType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument"))) {
+                SNodeOperations.deleteNode(grandChild);
+                ListSequence.fromList(SLinkOperations.getChildren(meetType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument"))).addElement(grandChild);
               }
               SNodeOperations.deleteNode(child);
             }
@@ -55,65 +55,62 @@ public class LatticeUtil {
       }
     }
   }
-
   private static SNode join(SNode node1, SNode node2) {
-    SNode joinType = SConceptOperations.createNewNode("jetbrains.mps.lang.typesystem.structure.JoinType", null);
-    if (SNodeOperations.isInstanceOf(node1, "jetbrains.mps.lang.typesystem.structure.JoinType")) {
-      SNode joinWrapper1 = SNodeOperations.cast(node1, "jetbrains.mps.lang.typesystem.structure.JoinType");
-      for (SNode bc : SLinkOperations.getTargets(joinWrapper1, "argument", true)) {
-        ListSequence.fromList(SLinkOperations.getTargets(joinType, "argument", true)).addElement(HUtil.copyIfNecessary(bc));
+    SNode joinType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType"));
+    if (SNodeOperations.isInstanceOf(node1, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType"))) {
+      SNode joinWrapper1 = SNodeOperations.cast(node1, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType"));
+      for (SNode bc : SLinkOperations.getChildren(joinWrapper1, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"))) {
+        ListSequence.fromList(SLinkOperations.getChildren(joinType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"))).addElement(HUtil.copyIfNecessary(bc));
       }
-      if (SNodeOperations.isInstanceOf(node2, "jetbrains.mps.lang.typesystem.structure.JoinType")) {
-        SNode joinWrapper2 = SNodeOperations.cast(node2, "jetbrains.mps.lang.typesystem.structure.JoinType");
-        for (SNode bc : SLinkOperations.getTargets(joinWrapper2, "argument", true)) {
-          ListSequence.fromList(SLinkOperations.getTargets(joinType, "argument", true)).addElement(HUtil.copyIfNecessary(bc));
+      if (SNodeOperations.isInstanceOf(node2, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType"))) {
+        SNode joinWrapper2 = SNodeOperations.cast(node2, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType"));
+        for (SNode bc : SLinkOperations.getChildren(joinWrapper2, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"))) {
+          ListSequence.fromList(SLinkOperations.getChildren(joinType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"))).addElement(HUtil.copyIfNecessary(bc));
         }
       } else {
-        ListSequence.fromList(SLinkOperations.getTargets(joinType, "argument", true)).addElement(HUtil.copyIfNecessary(node2));
+        ListSequence.fromList(SLinkOperations.getChildren(joinType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"))).addElement(HUtil.copyIfNecessary(node2));
       }
     } else
-    if (SNodeOperations.isInstanceOf(node2, "jetbrains.mps.lang.typesystem.structure.JoinType")) {
-      SNode joinWrapper2 = SNodeOperations.cast(node2, "jetbrains.mps.lang.typesystem.structure.JoinType");
-      ListSequence.fromList(SLinkOperations.getTargets(joinType, "argument", true)).addElement(HUtil.copyIfNecessary(node1));
-      for (SNode bc : SLinkOperations.getTargets(joinWrapper2, "argument", true)) {
-        ListSequence.fromList(SLinkOperations.getTargets(joinType, "argument", true)).addElement(HUtil.copyIfNecessary(bc));
+    if (SNodeOperations.isInstanceOf(node2, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType"))) {
+      SNode joinWrapper2 = SNodeOperations.cast(node2, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType"));
+      ListSequence.fromList(SLinkOperations.getChildren(joinType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"))).addElement(HUtil.copyIfNecessary(node1));
+      for (SNode bc : SLinkOperations.getChildren(joinWrapper2, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"))) {
+        ListSequence.fromList(SLinkOperations.getChildren(joinType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"))).addElement(HUtil.copyIfNecessary(bc));
       }
     } else {
-      ListSequence.fromList(SLinkOperations.getTargets(joinType, "argument", true)).addElement(HUtil.copyIfNecessary(node1));
-      ListSequence.fromList(SLinkOperations.getTargets(joinType, "argument", true)).addElement(HUtil.copyIfNecessary(node2));
+      ListSequence.fromList(SLinkOperations.getChildren(joinType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"))).addElement(HUtil.copyIfNecessary(node1));
+      ListSequence.fromList(SLinkOperations.getChildren(joinType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"))).addElement(HUtil.copyIfNecessary(node2));
     }
     return joinType;
   }
-
   private static SNode meet(SNode node1, SNode node2) {
-    SNode meetType = SConceptOperations.createNewNode("jetbrains.mps.lang.typesystem.structure.MeetType", null);
-    if (SNodeOperations.isInstanceOf(node1, "jetbrains.mps.lang.typesystem.structure.MeetType")) {
-      SNode meetWrapper1 = SNodeOperations.cast(node1, "jetbrains.mps.lang.typesystem.structure.MeetType");
-      for (SNode bc : SLinkOperations.getTargets(meetWrapper1, "argument", true)) {
-        ListSequence.fromList(SLinkOperations.getTargets(meetType, "argument", true)).addElement(HUtil.copyIfNecessary(bc));
+    SNode meetType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType"));
+    if (SNodeOperations.isInstanceOf(node1, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType"))) {
+      SNode meetWrapper1 = SNodeOperations.cast(node1, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType"));
+      for (SNode bc : SLinkOperations.getChildren(meetWrapper1, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument"))) {
+        ListSequence.fromList(SLinkOperations.getChildren(meetType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument"))).addElement(HUtil.copyIfNecessary(bc));
       }
-      if (SNodeOperations.isInstanceOf(node2, "jetbrains.mps.lang.typesystem.structure.MeetType")) {
-        SNode meetWrapper2 = SNodeOperations.cast(node2, "jetbrains.mps.lang.typesystem.structure.MeetType");
-        for (SNode bc : SLinkOperations.getTargets(meetWrapper2, "argument", true)) {
-          ListSequence.fromList(SLinkOperations.getTargets(meetType, "argument", true)).addElement(HUtil.copyIfNecessary(bc));
+      if (SNodeOperations.isInstanceOf(node2, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType"))) {
+        SNode meetWrapper2 = SNodeOperations.cast(node2, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType"));
+        for (SNode bc : SLinkOperations.getChildren(meetWrapper2, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument"))) {
+          ListSequence.fromList(SLinkOperations.getChildren(meetType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument"))).addElement(HUtil.copyIfNecessary(bc));
         }
       } else {
-        ListSequence.fromList(SLinkOperations.getTargets(meetType, "argument", true)).addElement(HUtil.copyIfNecessary(node2));
+        ListSequence.fromList(SLinkOperations.getChildren(meetType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument"))).addElement(HUtil.copyIfNecessary(node2));
       }
     } else
-    if (SNodeOperations.isInstanceOf(node2, "jetbrains.mps.lang.typesystem.structure.MeetType")) {
-      SNode meetWrapper2 = SNodeOperations.cast(node2, "jetbrains.mps.lang.typesystem.structure.MeetType");
-      ListSequence.fromList(SLinkOperations.getTargets(meetType, "argument", true)).addElement(HUtil.copyIfNecessary(node1));
-      for (SNode bc : SLinkOperations.getTargets(meetWrapper2, "argument", true)) {
-        ListSequence.fromList(SLinkOperations.getTargets(meetType, "argument", true)).addElement(HUtil.copyIfNecessary(bc));
+    if (SNodeOperations.isInstanceOf(node2, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType"))) {
+      SNode meetWrapper2 = SNodeOperations.cast(node2, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType"));
+      ListSequence.fromList(SLinkOperations.getChildren(meetType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument"))).addElement(HUtil.copyIfNecessary(node1));
+      for (SNode bc : SLinkOperations.getChildren(meetWrapper2, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument"))) {
+        ListSequence.fromList(SLinkOperations.getChildren(meetType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument"))).addElement(HUtil.copyIfNecessary(bc));
       }
     } else {
-      ListSequence.fromList(SLinkOperations.getTargets(meetType, "argument", true)).addElement(HUtil.copyIfNecessary(node1));
-      ListSequence.fromList(SLinkOperations.getTargets(meetType, "argument", true)).addElement(HUtil.copyIfNecessary(node2));
+      ListSequence.fromList(SLinkOperations.getChildren(meetType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument"))).addElement(HUtil.copyIfNecessary(node1));
+      ListSequence.fromList(SLinkOperations.getChildren(meetType, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument"))).addElement(HUtil.copyIfNecessary(node2));
     }
     return meetType;
   }
-
   public static SNode joinNodes(Set<SNode> nodes) {
     if (nodes.isEmpty()) {
       return null;
@@ -130,7 +127,6 @@ public class LatticeUtil {
     result.add(join(node1, node2));
     return joinNodes(result);
   }
-
   public static SNode meetNodes(Set<SNode> nodes) {
     if (nodes.isEmpty()) {
       return null;
@@ -147,24 +143,19 @@ public class LatticeUtil {
     result.add(meet(node1, node2));
     return meetNodes(result);
   }
-
   public static boolean isMeet(SNode node) {
-    return SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.typesystem.structure.MeetType");
+    return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType"));
   }
-
   public static boolean isJoin(SNode node) {
-    return SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.typesystem.structure.JoinType");
+    return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType"));
   }
-
   public static boolean isPolymorphic(SNode node) {
-    return SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.typesystem.structure.MeetType") || SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.typesystem.structure.JoinType") || SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.UpperBoundType") || SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.LowerBoundType");
+    return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType")) || SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType")) || SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType")) || SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, "jetbrains.mps.baseLanguage.structure.LowerBoundType"));
   }
-
   public static List<SNode> getMeetArguments(SNode meet) {
-    return SLinkOperations.getTargets(SNodeOperations.as(meet, "jetbrains.mps.lang.typesystem.structure.MeetType"), "argument", true);
+    return SLinkOperations.getChildren(SNodeOperations.as(meet, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType")), MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument"));
   }
-
   public static List<SNode> getJoinArguments(SNode join) {
-    return SLinkOperations.getTargets(SNodeOperations.as(join, "jetbrains.mps.lang.typesystem.structure.JoinType"), "argument", true);
+    return SLinkOperations.getChildren(SNodeOperations.as(join, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType")), MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"));
   }
 }

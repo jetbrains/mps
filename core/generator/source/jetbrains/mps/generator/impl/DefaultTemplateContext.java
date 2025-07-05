@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,66 +16,64 @@
 package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.runtime.TemplateContext;
+import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.util.annotation.ImmutableObject;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Immutable;
+import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
 
-/**
- * Evgeny Gryaznov, 10/22/10
- */
-@ImmutableObject
+@Immutable
 public class DefaultTemplateContext implements TemplateContext {
 
+  private final TemplateExecutionEnvironment myEnv;
   private final DefaultTemplateContext myParent;
   private final SNode myInputNode;
   private final String myInputName;
 
-  private final GeneratedMatchingPattern pattern;
-  private final Map<String, Object> variables;
+  private final GeneratedMatchingPattern myPattern;
+  private final Map<String, Object> myVars;
 
-  /**
-   * Only context node.
-   */
-  public DefaultTemplateContext(SNode inputNode) {
-    this((GeneratedMatchingPattern) null, null, inputNode);
+  public DefaultTemplateContext(@NotNull TemplateExecutionEnvironment env, @Nullable SNode inputNode, @Nullable String inputName) {
+    myEnv = env;
+    myParent = null;
+    myInputName = inputName;
+    myInputNode = inputNode;
+    myPattern = null;
+    myVars = null;
   }
 
   /**
-   * Creates a new context for template declaration.
-   */
-  public DefaultTemplateContext(GeneratedMatchingPattern pattern, Map<String, Object> variables, SNode inputNode) {
-    this.pattern = pattern;
-    this.variables = variables;
-    this.myParent = null;
-
-    this.myInputName = null;
-    this.myInputNode = inputNode;
-  }
-
-  /**
-   * Creates a new context for loop.
+   * Creates a new context with given named input node, while preserving reference to originating context.
    */
   private DefaultTemplateContext(@NotNull DefaultTemplateContext parent, String inputName, SNode inputNode) {
-    this.myParent = parent;
-    this.pattern = null;
-    this.variables = null;
-    this.myInputName = inputName;
-    this.myInputNode = inputNode;
+    this(parent, inputName, inputNode, null, null);
   }
 
   /**
    * Creates a new context for template declaration.
    */
-  private DefaultTemplateContext(DefaultTemplateContext parent, Map<String, Object> variables) {
-    this.myParent = parent;
-    this.variables = variables;
-    this.pattern = null;
-    this.myInputName = null;
-    this.myInputNode = parent.getInput();
+  private DefaultTemplateContext(@NotNull DefaultTemplateContext parent, Map<String, Object> variables) {
+    this(parent, null, parent.getInput(), null, variables);
+  }
+
+  private DefaultTemplateContext(DefaultTemplateContext parent, String inputName, SNode inputNode, GeneratedMatchingPattern pattern, Map<String,Object> vars) {
+    myParent = parent;
+    myEnv = parent == null ? null : parent.myEnv;
+    myInputName = inputName;
+    myInputNode = inputNode;
+    myPattern = pattern;
+    myVars = vars;
+  }
+
+  @NotNull
+  @Override
+  public TemplateExecutionEnvironment getEnvironment() {
+    return myEnv;
   }
 
   public DefaultTemplateContext getParent() {
@@ -95,8 +93,8 @@ public class DefaultTemplateContext implements TemplateContext {
   @Override
   public Object getPatternVariable(String id) {
     for (DefaultTemplateContext current = this; current != null; current = current.myParent) {
-      if (current.pattern != null) {
-        return current.pattern.getFieldValue(id);
+      if (current.myPattern != null) {
+        return current.myPattern.getFieldValue(id);
       }
     }
     return null;
@@ -105,8 +103,8 @@ public class DefaultTemplateContext implements TemplateContext {
   @Override
   public Object getVariable(String name) {
     for (DefaultTemplateContext current = this; current != null; current = current.myParent) {
-      if (current.variables != null && current.variables.containsKey(name)) {
-        return current.variables.get(name);
+      if (current.myVars != null && current.myVars.containsKey(name)) {
+        return current.myVars.get(name);
       }
     }
     return null;
@@ -115,7 +113,7 @@ public class DefaultTemplateContext implements TemplateContext {
   @Override
   public boolean hasVariable(String name) {
     for (DefaultTemplateContext current = this; current != null; current = current.myParent) {
-      if (current.variables != null && current.variables.containsKey(name)) {
+      if (current.myVars != null && current.myVars.containsKey(name)) {
         return true;
       }
     }
@@ -183,6 +181,9 @@ public class DefaultTemplateContext implements TemplateContext {
 
   @Override
   public TemplateContext subContext(String inputName, SNode inputNode) {
+    // this method seems to be flawed. inputNode different from present one gives new context with
+    // updated input name, while different inputName gives updated context only when it's != null, so that
+    // calling #subContext(null, probablyNewInputNode) gives no confidence whether we've *cleared* mappingLabel or not.
     if (inputNode == getInput() && (inputName == null || inputName.equals(getInputName()))) {
       return this;
     }
@@ -206,8 +207,29 @@ public class DefaultTemplateContext implements TemplateContext {
   }
 
   @Override
+  public TemplateContext withVariable(String name, Object value) {
+    assert name != null;
+    return new DefaultTemplateContext(this, getInputName(), getInput(), null, Collections.singletonMap(name, value));
+  }
+
+  @Override
   public TemplateContext subContext(GeneratedMatchingPattern pattern) {
-    // TODO parent = this
-    return new DefaultTemplateContext(pattern, null, getInput());
+    return new DefaultTemplateContext(this, null, getInput(), pattern, null);
+  }
+
+  @Override
+  public TemplateContext subContext() {
+    if (getInputName() == null) {
+      return this;
+    }
+    return new DefaultTemplateContext(this, null, getInput());
+  }
+
+  @Override
+  public TemplateContext subContext(SNode newInputNode) {
+    if (newInputNode == getInput()) {
+      return this;
+    }
+    return new DefaultTemplateContext(this, getInputName(), newInputNode);
   }
 }

@@ -29,7 +29,6 @@
   </dependency>
   <dependency className="jetbrains.mps.vcs.platform.util.MergeBackupUtil" file="MergeBackupUtil.java">
     <classNode dependClassName="com.intellij.openapi.application.PathManager" />
-    <classNode dependClassName="com.intellij.openapi.diff.DiffContent" />
     <classNode dependClassName="com.intellij.openapi.util.io.FileUtil" />
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
     <classNode dependClassName="com.intellij.util.io.ZipUtil" />
@@ -44,9 +43,6 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.project.MPSExtentions" />
     <classNode dependClassName="jetbrains.mps.smodel.SModel" />
-    <classNode dependClassName="jetbrains.mps.smodel.SModelFileTracker" />
-    <classNode dependClassName="jetbrains.mps.smodel.SModelStereotype" />
-    <classNode dependClassName="jetbrains.mps.smodel.persistence.def.ModelPersistence" />
     <classNode dependClassName="jetbrains.mps.smodel.persistence.def.ModelReadException" />
     <classNode dependClassName="jetbrains.mps.util.FileUtil" />
     <classNode dependClassName="jetbrains.mps.util.UnzipUtil" />
@@ -54,12 +50,12 @@
     <classNode dependClassName="jetbrains.mps.vcs.util.MergeDriverBackupUtil" />
     <classNode dependClassName="jetbrains.mps.vcs.util.MergeVersion" />
     <classNode dependClassName="jetbrains.mps.vcs.util.ModelVersion" />
+    <classNode dependClassName="jetbrains.mps.vcspersistence.VCSPersistenceSupport" />
     <classNode dependClassName="jetbrains.mps.vfs.IFile" />
+    <classNode dependClassName="org.apache.log4j.Level" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
-    <classNode dependClassName="org.apache.log4j.Priority" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.platform.util.PluginUtil" file="PluginUtil.java">
     <classNode dependClassName="com.intellij.ide.plugins.IdeaPluginDescriptor" />

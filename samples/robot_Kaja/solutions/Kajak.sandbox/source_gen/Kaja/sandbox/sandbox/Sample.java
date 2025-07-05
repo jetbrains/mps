@@ -8,7 +8,6 @@ import JavaKaja.runtime.Direction;
 public class Sample extends KajaFrame {
   public Sample() {
   }
-
   protected void perform() {
     if (canMove()) {
       moveKaja();
@@ -17,8 +16,11 @@ public class Sample extends KajaFrame {
       reportError("Oops, There's a wall in front of me. I can't make a step forward.");
     }
     while (!(heading(Direction.south))) {
-      turnLeft();
-      pause();
+      try {
+        turnLeft();
+        pause();
+      } finally {
+      }
     }
     while (!(isWall())) {
       if (canMove()) {
@@ -36,14 +38,15 @@ public class Sample extends KajaFrame {
     }
     turn_SPACE_right_routine();
   }
-
   public void turn_SPACE_right_routine() {
     for (int indexVariable_kf1bs5_a0a = 0; indexVariable_kf1bs5_a0a < 3; indexVariable_kf1bs5_a0a++) {
-      turnLeft();
-      pause();
+      try {
+        turnLeft();
+        pause();
+      } finally {
+      }
     }
   }
-
   public static void main(String[] args) {
     Sample script = new Sample();
     script.initializeComponents();

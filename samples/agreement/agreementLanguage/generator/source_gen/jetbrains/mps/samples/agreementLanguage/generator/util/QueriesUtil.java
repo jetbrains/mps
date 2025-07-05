@@ -4,35 +4,34 @@ package jetbrains.mps.samples.agreementLanguage.generator.util;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class QueriesUtil {
   public QueriesUtil() {
   }
-
   public static boolean isMoney(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.samples.formulaLanguage.structure.Operation")) {
-      return isMoney(SLinkOperations.getTarget(SNodeOperations.cast(node, "jetbrains.mps.samples.formulaLanguage.structure.Operation"), "leftOperand", true));
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, "jetbrains.mps.samples.formulaLanguage.structure.Operation"))) {
+      return isMoney(SLinkOperations.getTarget(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, "jetbrains.mps.samples.formulaLanguage.structure.Operation")), MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, 0x102db86e5b3L, "leftOperand")));
     }
-    if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.samples.agreementLanguage.structure.EventVariableReference")) {
-      SNode eventVariable = SLinkOperations.getTarget(SNodeOperations.cast(node, "jetbrains.mps.samples.agreementLanguage.structure.EventVariableReference"), "eventVariable", false);
-      return SPropertyOperations.hasValue(eventVariable, "type", "Money", "Quantity");
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, "jetbrains.mps.samples.agreementLanguage.structure.EventVariableReference"))) {
+      SNode eventVariable = SLinkOperations.getTarget(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, "jetbrains.mps.samples.agreementLanguage.structure.EventVariableReference")), MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, 0x102ea8aa283L, "eventVariable"));
+      return SPropertyOperations.hasValue(eventVariable, MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc12643eL, 0x102dc1330d6L, "type"), "Money", "Quantity");
     }
-    if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.samples.agreementLanguage.structure.Quantity")) {
-      return SPropertyOperations.hasValue(SNodeOperations.cast(node, "jetbrains.mps.samples.agreementLanguage.structure.Quantity"), "unit", "USD", "USD_KWH");
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity"))) {
+      return SPropertyOperations.hasValue(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity")), MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c5503L, "unit"), "USD", "USD_KWH");
     }
     return false;
   }
-
   public static boolean isQuantity(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.samples.formulaLanguage.structure.Operation")) {
-      return isQuantity(SLinkOperations.getTarget(SNodeOperations.cast(node, "jetbrains.mps.samples.formulaLanguage.structure.Operation"), "leftOperand", true));
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, "jetbrains.mps.samples.formulaLanguage.structure.Operation"))) {
+      return isQuantity(SLinkOperations.getTarget(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, "jetbrains.mps.samples.formulaLanguage.structure.Operation")), MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, 0x102db86e5b3L, "leftOperand")));
     }
-    if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.samples.agreementLanguage.structure.EventVariableReference")) {
-      SNode eventVariable = SLinkOperations.getTarget(SNodeOperations.cast(node, "jetbrains.mps.samples.agreementLanguage.structure.EventVariableReference"), "eventVariable", false);
-      return SPropertyOperations.hasValue(eventVariable, "type", "Quantity", "Quantity");
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, "jetbrains.mps.samples.agreementLanguage.structure.EventVariableReference"))) {
+      SNode eventVariable = SLinkOperations.getTarget(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, "jetbrains.mps.samples.agreementLanguage.structure.EventVariableReference")), MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, 0x102ea8aa283L, "eventVariable"));
+      return SPropertyOperations.hasValue(eventVariable, MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc12643eL, 0x102dc1330d6L, "type"), "Quantity", "Quantity");
     }
-    return SNodeOperations.isInstanceOf(node, "jetbrains.mps.samples.agreementLanguage.structure.Quantity");
+    return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity"));
   }
 }

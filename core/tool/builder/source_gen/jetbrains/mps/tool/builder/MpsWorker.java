@@ -7,22 +7,25 @@ import org.apache.log4j.LogManager;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.tool.common.Script;
+import jetbrains.mps.compiler.JavaCompilerOptions;
 import jetbrains.mps.tool.environment.Environment;
+import jetbrains.mps.tool.common.JavaCompilerProperties;
+import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import jetbrains.mps.tool.environment.MpsEnvironment;
 import jetbrains.mps.tool.environment.EnvironmentConfig;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.io.File;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.tool.environment.ActiveEnvironment;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.make.MPSCompilationResult;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import java.util.Set;
-import jetbrains.mps.project.MPSExtentions;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -30,7 +33,6 @@ import jetbrains.mps.generator.GenerationFacade;
 import java.util.Collection;
 import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.smodel.ModuleFileTracker;
 import java.util.Collections;
 import jetbrains.mps.vfs.IFile;
@@ -40,50 +42,52 @@ import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.Generator;
-import jetbrains.mps.smodel.SModelFileTracker;
-import jetbrains.mps.smodel.SModelHeader;
-import jetbrains.mps.smodel.persistence.def.ModelPersistence;
-import jetbrains.mps.extapi.persistence.FileDataSource;
-import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.smodel.SModelRepository;
-import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import org.apache.log4j.Level;
 import java.io.StringWriter;
 import java.io.PrintWriter;
 import java.util.LinkedHashSet;
 
 public abstract class MpsWorker {
-  private static Logger LOG = LogManager.getLogger(MpsWorker.class);
+  private static final Logger LOG = LogManager.getLogger(MpsWorker.class);
   protected final List<String> myErrors = new ArrayList<String>();
   protected final List<String> myWarnings = new ArrayList<String>();
   protected final Script myWhatToDo;
+  protected final JavaCompilerOptions myJavaCompilerOptions;
+  protected final boolean mySkipCompilation;
   private final MpsWorker.AntLogger myLogger;
   protected Environment myEnvironment;
-
-  public MpsWorker(Script whatToDo) {
-    this(whatToDo, new MpsWorker.LogLogger());
-  }
 
   public MpsWorker(Script whatToDo, MpsWorker.AntLogger logger) {
     myWhatToDo = whatToDo;
     myLogger = logger;
+
+    JavaCompilerProperties javaProperties = new JavaCompilerProperties(myWhatToDo);
+    myJavaCompilerOptions = getJavaCompilerOptions(javaProperties);
+    mySkipCompilation = javaProperties.isSkipCompilation();
   }
 
-  private Environment createDefaultEnvironment() {
-    Environment env = new MpsEnvironment(createEnvConfig(myWhatToDo));
+  private static JavaCompilerOptions getJavaCompilerOptions(JavaCompilerProperties javaProperties) {
+    JavaCompilerOptionsComponent.JavaVersion parsedJavaVersion = JavaCompilerOptionsComponent.JavaVersion.parse(javaProperties.getTargetJavaVersion());
+    if (parsedJavaVersion == null) {
+      return JavaCompilerOptionsComponent.DEFAULT_JAVA_COMPILER_OPTIONS;
+    }
+
+    return new JavaCompilerOptions(parsedJavaVersion);
+  }
+
+  protected Environment createEnvironment() {
+    Environment env = MpsEnvironment.getOrCreate(createEnvConfig(myWhatToDo));
     Logger.getRootLogger().setLevel(myWhatToDo.getLogLevel());
     return env;
   }
 
   public static EnvironmentConfig createEnvConfig(Script whatToDo) {
-    EnvironmentConfig config = EnvironmentConfig.emptyEnvironment();
+    EnvironmentConfig config = EnvironmentConfig.defaultConfig();
     for (IMapping<String, String> macro : MapSequence.fromMap(whatToDo.getMacro())) {
       config = config.addMacro(macro.key(), new File(macro.value()));
     }
     for (IMapping<String, File> lib : MapSequence.fromMap(whatToDo.getLibraries())) {
-      config = config.addLib(lib.key(), lib.value());
+      config = config.addLib(lib.value().getAbsolutePath());
     }
     if (whatToDo.isLoadBootstrapLibraries()) {
       config = config.withBootstrapLibraries();
@@ -104,46 +108,43 @@ public abstract class MpsWorker {
   public abstract void work();
 
   protected Project createDummyProject() {
-    return ActiveEnvironment.get().createDummyProject();
+    return myEnvironment.createEmptyProject();
   }
 
   protected void dispose() {
     if (myEnvironment != null) {
-      myEnvironment.disposeEnvironment();
+      myEnvironment.dispose();
+      myEnvironment = null;
     }
   }
 
   protected void setupEnvironment() {
-    if (ActiveEnvironment.get() == null) {
-      myEnvironment = createDefaultEnvironment();
-    }
+    myEnvironment = createEnvironment();
     make();
   }
 
   protected void make() {
-    ModelAccess.instance().runWriteAction(new Runnable() {
-      @Override
-      public void run() {
+    // FIXME why do I care to make these modules? 
+    final MPSModuleRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
+    MPSCompilationResult mpsCompilationResult = new ModelAccessHelper(repo).runReadAction(new Computable<MPSCompilationResult>() {
+      public MPSCompilationResult compute() {
         ModuleMaker maker = new ModuleMaker();
-        maker.make(IterableUtil.asCollection(MPSModuleRepository.getInstance().getModules()), new EmptyProgressMonitor());
+        return maker.make(IterableUtil.asCollection(repo.getModules()), new EmptyProgressMonitor(), myJavaCompilerOptions);
       }
     });
-    reload();
+    reload(mpsCompilationResult);
   }
-
-  protected void reload() {
-    ModelAccess.instance().runWriteAction(new Runnable() {
-      @Override
-      public void run() {
-        ClassLoaderManager.getInstance().reloadAll(new EmptyProgressMonitor());
-      }
-    });
+  protected void reload(final MPSCompilationResult mpsCompilationResult) {
+    if (mpsCompilationResult.isReloadingNeeded()) {
+      myEnvironment.getPlatform().findComponent(MPSModuleRepository.class).getModelAccess().runWriteAction(new Runnable() {
+        public void run() {
+          ClassLoaderManager.getInstance().reloadModules(mpsCompilationResult.getChangedModules());
+        }
+      });
+    }
   }
-
   protected abstract void executeTask(Project project, MpsWorker.ObjectsToProcess go);
-
   protected abstract void showStatistic();
-
   protected StringBuffer formatErrorsReport(String taskName) {
     StringBuffer sb = new StringBuffer();
     for (int i = 0; i < 100; i++) {
@@ -161,31 +162,14 @@ public abstract class MpsWorker {
     }
     return sb;
   }
-
   protected void failBuild(String name) {
     if (!(myErrors.isEmpty()) && myWhatToDo.getFailOnError()) {
       throw new RuntimeException(this.formatErrorsReport(name).toString());
     }
   }
 
-  public void collectModelsToGenerate(MpsWorker.ObjectsToProcess go) {
-    collectFromProjects(go.getProjects());
-    collectFromModuleFiles(go.getModules());
-    collectFromModelFiles(go.getModels());
-  }
-
-  private void collectFromProjects(Set<Project> projects) {
-    for (File projectFile : myWhatToDo.getMPSProjectFiles().keySet()) {
-      if (projectFile.getAbsolutePath().endsWith(MPSExtentions.DOT_MPS_PROJECT)) {
-        Project project = myEnvironment.openProject(projectFile);
-        info("Loaded project " + project);
-        projects.add(project);
-      }
-    }
-  }
-
   protected void extractModels(Set<SModel> result, Project project) {
-    for (SModule module : project.getModulesWithGenerators()) {
+    for (SModule module : project.getProjectModulesWithGenerators()) {
       for (SModel model : module.getModels()) {
         if (includeModel(model)) {
           result.add(model);
@@ -193,11 +177,9 @@ public abstract class MpsWorker {
       }
     }
   }
-
   private boolean includeModel(SModel model) {
     return SModelStereotype.isUserModel(model) && GenerationFacade.canGenerate(model);
   }
-
   protected void extractModels(Collection<SModel> modelsList, SModule m) {
     for (SModel d : m.getModels()) {
       if (includeModel(d)) {
@@ -205,43 +187,35 @@ public abstract class MpsWorker {
       }
     }
   }
-
   protected void collectFromModuleFiles(Set<SModule> modules) {
+    // FIXME GenTestWorker/GenTestTask still use module files as configuration argument (from Java code perspective, need to check actual tasks in scripts and generator thereof) 
     for (File moduleFile : myWhatToDo.getModules()) {
       processModuleFile(moduleFile, modules);
     }
   }
-
   protected void processModuleFile(final File moduleFile, final Set<SModule> modules) {
     if (DescriptorIOFacade.getInstance().fromFileType(FileSystem.getInstance().getFileByPath(moduleFile.getPath())) == null) {
       return;
     }
-    List<SModule> tmpmodules;
-    SModule moduleByFile = ModelAccess.instance().runReadAction(new Computable<SModule>() {
-      public SModule compute() {
-        return ModuleFileTracker.getInstance().getModuleByFile(FileSystem.getInstance().getFileByPath(moduleFile.getAbsolutePath()));
-      }
-    });
+    List<SModule> tmpmodules = new ArrayList<SModule>();
+    SModule moduleByFile = ModuleFileTracker.getInstance().getModuleByFile(FileSystem.getInstance().getFileByPath(moduleFile.getAbsolutePath()));
     if (moduleByFile != null) {
       tmpmodules = Collections.singletonList(moduleByFile);
     } else {
-      tmpmodules = ModelAccess.instance().runWriteAction(new Computable<List<SModule>>() {
-        public List<SModule> compute() {
-          IFile file = FileSystem.getInstance().getFileByPath(moduleFile.getPath());
-          BaseMPSModuleOwner owner = new BaseMPSModuleOwner() {};
-          List<SModule> modules = new ArrayList<SModule>();
-          for (ModulesMiner.ModuleHandle moduleHandle : ModulesMiner.getInstance().collectModules(file, false)) {
-            SModule module = ModuleRepositoryFacade.createModule(moduleHandle, owner);
-            if (module != null) {
-              modules.add(module);
-            }
-          }
-          return modules;
+      // XXX moduleFile.getPath vs moduleFile.getAbsolutePath above - why is it different? 
+      IFile file = FileSystem.getInstance().getFileByPath(moduleFile.getPath());
+      // XXX new owner for each module?! 
+      BaseMPSModuleOwner owner = new BaseMPSModuleOwner();
+      for (ModulesMiner.ModuleHandle moduleHandle : new ModulesMiner().collectModules(file).getCollectedModules()) {
+        SModule module = ModuleRepositoryFacade.createModule(moduleHandle, owner);
+        if (module != null) {
+          tmpmodules.add(module);
         }
-      });
+      }
     }
     for (SModule module : tmpmodules) {
       info("Loaded module " + module);
+      // XXX it's suspicious to ignore read-only module and DevKit when we have no idea what's the reason to load the module in the first place. 
       if (module.isReadOnly()) {
         continue;
       }
@@ -249,52 +223,14 @@ public abstract class MpsWorker {
         continue;
       }
       modules.add(module);
+      // FIXME Although MM.getCollectedModules gives us Generator modules directly, keep this code to handle ModuleFileTracker case, it's a Set anyway. 
+      //       Have to decide whether that branch makes sense at all. ModuleFileTracker likely to change anyway, if we allow more modules per 1 file. 
       if (module instanceof Language) {
         Language language = (Language) module;
         for (Generator gen : language.getGenerators()) {
           modules.add(gen);
         }
       }
-    }
-  }
-
-  protected void collectFromModelFiles(Set<SModel> model) {
-    for (File f : myWhatToDo.getModels()) {
-      if (f.getPath().endsWith(MPSExtentions.DOT_MODEL)) {
-        processModelFile(model, f);
-      }
-    }
-  }
-
-  private void processModelFile(Set<SModel> models, File f) {
-    final IFile ifile = FileSystem.getInstance().getFileByPath(f.getAbsolutePath());
-    //  try to find if model is loaded 
-    SModel model = SModelFileTracker.getInstance().findModel(ifile);
-    if (model != null) {
-      models.add(model);
-      info("Found model " + model);
-      return;
-    }
-    //  if model is not loaded, read it 
-    try {
-      SModelHeader dr = ModelPersistence.loadDescriptor(new FileDataSource(ifile));
-      SModelReference modelReference;
-      if (dr.getUID() != null) {
-        modelReference = PersistenceFacade.getInstance().createModelReference(dr.getUID());
-      } else {
-        String modelName = FileUtil.getNameWithoutExtension(ifile.getName());
-        modelReference = PersistenceFacade.getInstance().createModelReference(modelName);
-      }
-      info("Read model " + modelReference);
-      SModelHeader d = ModelPersistence.loadDescriptor(new FileDataSource(ifile));
-      SModel existingDescr = SModelRepository.getInstance().getModelDescriptor(d.getModelReference());
-      if (existingDescr == null) {
-        error("Module for " + ifile.getPath() + " was not found. Use \"library\" tag to load required modules.");
-      } else {
-        models.add(existingDescr);
-      }
-    } catch (ModelReadException e) {
-      log(e);
     }
   }
 
@@ -305,49 +241,39 @@ public abstract class MpsWorker {
 
     myLogger.log(text, level);
   }
-
   public void info(String text) {
     log(text, Level.INFO);
   }
-
   public void warning(String text) {
     log(text, Level.WARN);
     myWarnings.add(text);
   }
-
   public void debug(String text) {
     log(text, Level.DEBUG);
   }
-
   public void error(String text) {
     log(text, Level.ERROR);
     myErrors.add(text);
   }
-
   public void log(Throwable e) {
     StringBuffer sb = MpsWorker.extractStackTrace(e);
     error(sb.toString());
   }
-
   public void log(String text, Throwable e) {
     StringBuffer sb = MpsWorker.extractStackTrace(e);
     error(text + "\n" + sb.toString());
   }
-
   public static StringBuffer extractStackTrace(Throwable e) {
     StringWriter writer = new StringWriter();
     e.printStackTrace(new PrintWriter(writer));
     return writer.getBuffer();
   }
-
-  protected static interface AntLogger {
-    public void log(String text, Level level);
+  public interface AntLogger {
+    void log(String text, Level level);
   }
-
   public static class SystemOutLogger implements MpsWorker.AntLogger {
     public SystemOutLogger() {
     }
-
     @Override
     public void log(String text, Level level) {
       if (level == Level.ERROR) {
@@ -357,59 +283,60 @@ public abstract class MpsWorker {
       }
     }
   }
-
   public static class LogLogger implements MpsWorker.AntLogger {
     public LogLogger() {
     }
-
     @Override
     public void log(String text, Level level) {
       switch (level.toInt()) {
         case Level.ERROR_INT:
-          MpsWorker.LOG.error(text);
+          if (LOG.isEnabledFor(Level.ERROR)) {
+            LOG.error(text);
+          }
           break;
         case Level.WARN_INT:
-          MpsWorker.LOG.warn(text);
+          if (LOG.isEnabledFor(Level.WARN)) {
+            LOG.warn(text);
+          }
           break;
         case Level.INFO_INT:
-          MpsWorker.LOG.info(text);
+          if (LOG.isInfoEnabled()) {
+            LOG.info(text);
+          }
           break;
         case Level.DEBUG_INT:
-          MpsWorker.LOG.debug(text);
+          if (LOG.isDebugEnabled()) {
+            LOG.debug(text);
+          }
           break;
         default:
-          MpsWorker.LOG.fatal("[unknown level " + level + "] " + text);
+          if (LOG.isEnabledFor(Level.FATAL)) {
+            LOG.fatal("[unknown level " + level + "] " + text);
+          }
           break;
       }
     }
   }
-
   protected class ObjectsToProcess {
     private final Set<Project> myProjects = new LinkedHashSet<Project>();
     private final Set<SModule> myModules = new LinkedHashSet<SModule>();
     private final Set<SModel> myModels = new LinkedHashSet<SModel>();
-
     public ObjectsToProcess() {
     }
-
     public ObjectsToProcess(Set<? extends Project> mpsProjects, Set<SModule> modules, Set<SModel> models) {
       myProjects.addAll(mpsProjects);
       myModules.addAll(modules);
       myModels.addAll(models);
     }
-
     public Set<Project> getProjects() {
       return myProjects;
     }
-
     public Set<SModule> getModules() {
       return myModules;
     }
-
     public Set<SModel> getModels() {
       return myModels;
     }
-
     public boolean hasAnythingToGenerate() {
       return !(myModels.isEmpty()) || !(myProjects.isEmpty()) || !(myModules.isEmpty());
     }

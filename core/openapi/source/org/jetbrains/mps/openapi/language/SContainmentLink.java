@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,32 @@
  */
 package org.jetbrains.mps.openapi.language;
 
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
+
 /**
  * Containment links describe parent-child relationships.
  */
 public interface SContainmentLink extends SAbstractLink {
-
   /**
-   * Instance nodes can contain more than one target element.
+   * Returns a name of this property
+   * Though in 3.2 the name is still used as id in some cases, it should be treated only as a user-friendly text representation.
    */
-  boolean isMultiple();
+  @Deprecated //use SConceptFeature.getPresentableName
+  //ToRemove after 3.3
+  String getRoleName();
 
   /**
    * The order of elements contained by such links can be changed without affecting the language semantics.
    * The value is undefined for singular links.
    */
   boolean isUnordered();
+
+  //left for compatibility with "interpreting" code
+  //use SContainmentLink in code instead
+  @Nullable
+  @Deprecated
+  @ToRemove(version = 3.4)
+  SNode getDeclarationNode();
 }

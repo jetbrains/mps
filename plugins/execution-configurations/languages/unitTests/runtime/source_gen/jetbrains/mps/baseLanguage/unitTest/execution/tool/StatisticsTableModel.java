@@ -47,14 +47,12 @@ public class StatisticsTableModel implements TableModel {
           fireTableChanged();
         }
       }
-
       @Nullable
       private TestMethodRow findRowForEvent(TestEvent event) {
         return getRow(event.getTestCaseName(), event.getTestMethodName());
       }
-
       @Override
-      public void onTestEnd(TestEvent event) {
+      public void onTestFinish(TestEvent event) {
         TestMethodRow row = findRowForEvent(event);
         if (row != null) {
           row.setFinishTime(event.getTime());
@@ -65,25 +63,22 @@ public class StatisticsTableModel implements TableModel {
           fireTableChanged();
         }
       }
-
       @Override
-      public void onTestError(TestEvent event) {
+      public void onTestFailure(TestEvent event) {
         TestMethodRow row = findRowForEvent(event);
         if (row != null) {
           row.setErrored();
           fireTableChanged();
         }
       }
-
       @Override
-      public void onTestFailure(TestEvent event) {
+      public void onTestAssumptionFailure(TestEvent event) {
         TestMethodRow row = findRowForEvent(event);
         if (row != null) {
           row.setFailed();
           fireTableChanged();
         }
       }
-
       @Override
       public void onLooseTest(String className, String methodName) {
         TestMethodRow row = getRow(className, methodName);

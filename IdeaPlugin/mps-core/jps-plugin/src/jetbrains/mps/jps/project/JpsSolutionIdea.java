@@ -7,15 +7,13 @@ import jetbrains.mps.idea.core.make.MPSMakeConstants;
 import jetbrains.mps.idea.core.project.JpsModelRootContributor;
 import jetbrains.mps.jps.build.MPSCompilerUtil;
 import jetbrains.mps.jps.model.JpsMPSRepositoryFacade;
+import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.project.ModuleId;
-import jetbrains.mps.project.SDependencyAdapter;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
-import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
@@ -25,16 +23,26 @@ import org.jetbrains.jps.incremental.messages.CompilerMessage;
 import org.jetbrains.jps.model.java.JpsJavaExtensionService;
 import org.jetbrains.jps.model.java.JpsJavaSdkType;
 import org.jetbrains.jps.model.library.JpsLibrary;
-import org.jetbrains.jps.model.module.*;
+import org.jetbrains.jps.model.module.JpsDependencyElement;
+import org.jetbrains.jps.model.module.JpsLibraryDependency;
+import org.jetbrains.jps.model.module.JpsModule;
+import org.jetbrains.jps.model.module.JpsModuleDependency;
+import org.jetbrains.jps.model.module.JpsSdkDependency;
 import org.jetbrains.jps.service.JpsServiceManager;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SDependency;
+import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -84,6 +92,11 @@ public class JpsSolutionIdea extends Solution {
   }
 
   @Override
+  public boolean isPackaged() {
+    return false;
+  }
+
+  @Override
   public Iterable<SDependency> getDeclaredDependencies() {
     List<SDependency> dependencies = new ArrayList<SDependency>();
 
@@ -106,7 +119,7 @@ public class JpsSolutionIdea extends Solution {
           MPSCompilerUtil.debug(myCompileContext, "**** not found lib dep: " + ((JpsLibraryDependency) jpsDep).getLibraryReference().getLibraryName());
         } else {
           String name = lib.getName();
-          solution = (Solution) MPSModuleRepository.getInstance().getModuleById(ModuleId.foreign(name));
+          solution = (Solution) getRepository().getModule(ModuleId.foreign(name));
         }
 
       } else if (jpsDep instanceof JpsSdkDependency) {
@@ -120,14 +133,11 @@ public class JpsSolutionIdea extends Solution {
         }
 
         String sdkName = ((JpsSdkDependency) jpsDep).getSdkReference().getSdkName();
-        solution = (Solution) MPSModuleRepository.getInstance().getModuleById(ModuleId.foreign(sdkName));
+        solution = (Solution) getRepository().getModule(ModuleId.foreign(sdkName));
       }
 
       if (solution != null) {
-        Dependency dep = new Dependency();
-        dep.setModuleRef(solution.getModuleReference());
-        dep.setReexport(false);
-        dependencies.add(new SDependencyAdapter(dep));
+        dependencies.add(new SDependencyImpl(solution, SDependencyScope.DEFAULT, false));
       }
     }
 

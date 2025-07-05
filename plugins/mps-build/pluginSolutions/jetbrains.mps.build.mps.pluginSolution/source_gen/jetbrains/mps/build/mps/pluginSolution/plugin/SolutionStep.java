@@ -4,81 +4,61 @@ package jetbrains.mps.build.mps.pluginSolution.plugin;
 
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.annotations.NotNull;
 
 public class SolutionStep extends TwoOptionsStep<SModule> {
   private final Project myMpsProject;
-
   public SolutionStep(Project project, AbstractBuildGenerator generator, IErrorHandler handler) {
-    super(ProjectHelper.toIdeaProject(project), generator, handler);
+    super(((MPSProject) project).getProject(), generator, handler);
     this.myMpsProject = project;
   }
-
   @Override
   public String getDescription() {
     return "Select a solution to create a new build script.";
   }
-
   @Override
   protected void setChecked(boolean checked) {
     this.myGenerator.setCreateSolution(checked);
   }
-
   @Override
   protected boolean getChecked() {
     return this.myGenerator.getCreateSolution();
   }
-
   @Override
   protected String getComboBoxName() {
     return "Use existing solution:";
   }
-
   @Override
   protected String getVariantName(final SModule module) {
-    return ModelAccess.instance().runReadAction(new Computable<String>() {
-      @Override
-      public String compute() {
-        return module.toString();
-      }
-    });
+    return module.toString();
   }
-
   @Override
   protected String getTextFieldText() {
     return this.myGenerator.getNewSolutionName();
   }
-
   @Override
   protected void setTextFieldText(String text) {
     this.myGenerator.setNewSolutionName(text);
   }
-
   @Override
   protected String getCheckBoxName() {
     return "Create new solution";
   }
-
   @Override
   protected void setVariant(SModule m) {
     this.myGenerator.setSolution((Solution) m);
   }
-
   @Override
   protected String getTextFieldName() {
     return "New solution name:";
   }
-
   @Override
   protected SModule[] getVariants() {
-    return Sequence.fromIterable(((Iterable<SModule>) this.myMpsProject.getModules())).where(new IWhereFilter<SModule>() {
+    return Sequence.fromIterable(((Iterable<SModule>) this.myMpsProject.getProjectModules())).where(new IWhereFilter<SModule>() {
       public boolean accept(SModule it) {
         return it instanceof Solution;
       }
@@ -88,28 +68,19 @@ public class SolutionStep extends TwoOptionsStep<SModule> {
       }
     }).toGenericArray(SModule.class);
   }
-
   @Override
   protected boolean isCheckBoxEnabled() {
     return true;
   }
-
   @Override
   protected boolean isValid(String text) {
     return this.myGenerator.isValidSolutionName(text);
   }
-
   @Override
   protected String getWarningText(String text) {
     if (text.equals("")) {
       return "Empty solution name not allowed.";
     }
     return "Module " + text + " already exists, choose another name.";
-  }
-
-  @NotNull
-  @Override
-  public String getImageText() {
-    return "Script Solution";
   }
 }

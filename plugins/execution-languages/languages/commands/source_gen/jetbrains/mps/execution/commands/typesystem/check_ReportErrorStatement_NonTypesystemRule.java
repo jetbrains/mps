@@ -8,33 +8,27 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.typesystem.RulesFunctions_BaseLanguage;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.execution.commands.behavior.ReportErrorStatement__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class check_ReportErrorStatement_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ReportErrorStatement_NonTypesystemRule() {
   }
-
   public void applyRule(final SNode reportStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SNodeOperations.getAncestor(reportStatement, "jetbrains.mps.execution.commands.structure.CommandMethod", false, false) != null)) {
-      RulesFunctions_BaseLanguage.check(typeCheckingContext, SetSequence.fromSetAndArray(new HashSet<SNode>(), BehaviorReflection.invokeVirtual((Class<SNode>) ((Class) Object.class), reportStatement, "virtual_getException_856705193941282181", new Object[]{})), reportStatement);
+    if ((SNodeOperations.getNodeAncestor(reportStatement, MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be7L, "jetbrains.mps.execution.commands.structure.CommandMethod"), false, false) != null)) {
+      RulesFunctions_BaseLanguage.check(typeCheckingContext, SetSequence.fromSetAndArray(new HashSet<SNode>(), ReportErrorStatement__BehaviorDescriptor.getException_idJzCdmU6yQ5.invoke(reportStatement)), reportStatement);
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.execution.commands.structure.ReportErrorStatement";
+  public SAbstractConcept getApplicableConcept() {
+    return MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c00L, "jetbrains.mps.execution.commands.structure.ReportErrorStatement");
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConcept().getQualifiedName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
   }

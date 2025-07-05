@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,13 @@
 package jetbrains.mps.idea.java.psi.impl;
 
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiManager;
 import com.intellij.psi.PsiReference;
 import com.intellij.util.IncorrectOperationException;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiNode;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiRef;
 import jetbrains.mps.idea.java.refactoring.MoveRenameBatch;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.SModelInternal;
+import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.StaticReference;
 import org.jetbrains.annotations.NotNull;
@@ -41,12 +41,12 @@ import jetbrains.mps.idea.java.psiStubs.JavaForeignIdBuilder;
  */
 
 public abstract class MPSPsiJavaRef extends MPSPsiRef {
-  public MPSPsiJavaRef(String role, SModelReference model, SNodeId nodeId) {
-    super(role, model, nodeId);
+  public MPSPsiJavaRef(String role, SModelReference model, SNodeId nodeId, PsiManager manager) {
+    super(role, model, nodeId, manager);
   }
 
-  public MPSPsiJavaRef(String role, String referenceText) {
-    super(role, referenceText);
+  public MPSPsiJavaRef(String role, String referenceText, PsiManager manager) {
+    super(role, referenceText, manager);
   }
 
   @Override
@@ -62,7 +62,7 @@ public abstract class MPSPsiJavaRef extends MPSPsiRef {
 
   protected SReference getSReference() {
     SNodeReference source = getSource();
-    SNode sourceNode = source.resolve(MPSModuleRepository.getInstance());
+    SNode sourceNode = source.resolve(getProjectRepository());
     return sourceNode.getReference(getRole());
   }
 
@@ -83,7 +83,7 @@ public abstract class MPSPsiJavaRef extends MPSPsiRef {
         @Override
         public void run() {
           SNodeReference source = getSource();
-          SNode sourceNode = source.resolve(MPSModuleRepository.getInstance());
+          SNode sourceNode = source.resolve(getProjectRepository());
           SNodePointer oldNode = new SNodePointer(getModelReference(), getNodeId());
           SNodePointer newNode = JavaForeignIdBuilder.computeNodePtr(element).toSNodeReference();
           SReference newRef = StaticReference.create(getRole(), sourceNode, newNode.getModelReference(), newNode.getNodeId());
@@ -94,10 +94,12 @@ public abstract class MPSPsiJavaRef extends MPSPsiRef {
             SModel model = sourceNode.getModel();
             SModelReference newTargetModel = newNode.getModelReference();
 
-            assert model instanceof SModelInternal;
-            assert newTargetModel instanceof jetbrains.mps.smodel.SModelReference;
+            ModelImports modelImports = new ModelImports(model);
+            modelImports.addModelImport(newTargetModel);
 
-            ((SModelInternal) model).addModelImport(newTargetModel, true);
+            if (oldNode.getModelReference().resolve(getProjectRepository()) == null) {
+              modelImports.removeModelImport(oldNode.getModelReference());
+            }
           }
         }
       });

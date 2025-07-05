@@ -15,18 +15,15 @@ public class StatCountNodeReadAccessInEditorListener extends NodeReadAccessInEdi
   private SNode mySNode;
   private int myReadCounter = 0;
   private List<String> myCallerMethods = new ArrayList<String>();
-
   public StatCountNodeReadAccessInEditorListener(SNode sNode) {
     super();
     mySNode = sNode;
   }
-
   @Override
   public void nodeUnclassifiedReadAccess(SNode node) {
     super.nodeUnclassifiedReadAccess(node);
     updateStatistic(node);
   }
-
   private void updateStatistic(SNode node) {
     if (node == mySNode) {
       myReadCounter++;
@@ -39,31 +36,21 @@ public class StatCountNodeReadAccessInEditorListener extends NodeReadAccessInEdi
           break;
         }
       }
-      String methodName = traceElements[(i < traceElements.length ?
-        i :
-        0
-      )].getMethodName();
+      String methodName = traceElements[(i < traceElements.length ? i : 0)].getMethodName();
       myCallerMethods.add(methodName);
-      ourStatistics.put(methodName, (ourStatistics.containsKey(methodName) ?
-        ourStatistics.get(methodName) + 1 :
-        1
-      ));
+      ourStatistics.put(methodName, (ourStatistics.containsKey(methodName) ? ourStatistics.get(methodName) + 1 : 1));
     }
   }
-
   public Pair<Integer, List<String>> getResults() {
     return new Pair(myReadCounter, ((ArrayList) myCallerMethods).clone());
   }
-
   public void resetResults() {
     myReadCounter = 0;
     myCallerMethods.clear();
   }
-
   public static Map<String, Integer> getStatistics() {
     return ourStatistics;
   }
-
   public static void resetStatistics() {
     ourStatistics.clear();
   }

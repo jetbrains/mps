@@ -8,27 +8,38 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class IntervalSymbolClassPart_removeRight {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new IntervalSymbolClassPart_removeRight.IntervalSymbolClassPart_removeRight_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new IntervalSymbolClassPart_removeRight.IntervalSymbolClassPart_removeRight_BACKSPACE(node));
   }
-
   public static class IntervalSymbolClassPart_removeRight_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public IntervalSymbolClassPart_removeRight_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SNode cn = SNodeFactoryOperations.replaceWithNewChild(node, "jetbrains.mps.baseLanguage.regexp.structure.CharacterSymbolClassPart");
-      SPropertyOperations.set(cn, "character", SPropertyOperations.getString(node, "start"));
+      SNode cn = SNodeFactoryOperations.replaceWithNewChild(node, SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, "jetbrains.mps.baseLanguage.regexp.structure.CharacterSymbolClassPart")));
+      SPropertyOperations.set(cn, MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, 0x111791b0b58L, "character"), SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11179215e8bL, 0x1117921931aL, "start")));
+    }
+  }
+  public static class IntervalSymbolClassPart_removeRight_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public IntervalSymbolClassPart_removeRight_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      SNode cn = SNodeFactoryOperations.replaceWithNewChild(node, SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, "jetbrains.mps.baseLanguage.regexp.structure.CharacterSymbolClassPart")));
+      SPropertyOperations.set(cn, MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, 0x111791b0b58L, "character"), SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11179215e8bL, 0x1117921931aL, "start")));
     }
   }
 }

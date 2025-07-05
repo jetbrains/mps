@@ -17,10 +17,11 @@ package jetbrains.mps.newTypesystem.context;
 
 import gnu.trove.THashSet;
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.typesystem.inference.TypeSubstitution;
 import jetbrains.mps.newTypesystem.context.typechecking.BaseTypechecking;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.newTypesystem.context.component.SimpleTypecheckingComponent;
-import jetbrains.mps.newTypesystem.rules.LanguageScopeExecutor;
+import jetbrains.mps.languageScope.LanguageScopeExecutor;
 import jetbrains.mps.newTypesystem.state.State;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.TypeSystemReporter;
@@ -45,6 +46,7 @@ public abstract class SimpleTypecheckingContext<
 
   private TCHECK myTypechecking;
   private STATE myState;
+  private boolean myCurrentlyChecking;
 
   public SimpleTypecheckingContext(SNode rootNode, TypeChecker typeChecker) {
     super(rootNode, typeChecker);
@@ -53,9 +55,7 @@ public abstract class SimpleTypecheckingContext<
   }
 
   @SuppressWarnings("unchecked")
-  protected TCHECK createTypechecking() {
-    return (TCHECK) new BaseTypechecking<STATE, SimpleTypecheckingComponent<STATE>>(getNode(), getState());
-  }
+  protected abstract TCHECK createTypechecking();
 
   @SuppressWarnings("unchecked")
   protected STATE createState() {
@@ -202,13 +202,21 @@ public abstract class SimpleTypecheckingContext<
   @Override
   public boolean checkIfNotChecked(SNode node, boolean useNonTypesystemRules) {
     synchronized (TYPECHECKING_LOCK) {
-      if (!isCheckedRoot(useNonTypesystemRules)) {
-        checkRoot();
-        if (useNonTypesystemRules) {
-          applyNonTypesystemRules();
+      // recursion guard
+      if (myCurrentlyChecking) return true;
+      try {
+        this.myCurrentlyChecking = true;
+        if (!isCheckedRoot(useNonTypesystemRules)) {
+          checkRoot();
+          if (useNonTypesystemRules) {
+            applyNonTypesystemRules();
+          }
         }
+        return true;
       }
-      return true;
+      finally {
+        this.myCurrentlyChecking = false;
+      }
     }
   }
 
@@ -234,13 +242,24 @@ public abstract class SimpleTypecheckingContext<
   @Override
   public Set<Pair<SNode, List<IErrorReporter>>> checkRootAndGetErrors(boolean refreshTypes) {
     synchronized (TYPECHECKING_LOCK) {
-      checkRoot(refreshTypes);
-      //non-typesystem checks
-      applyNonTypesystemRules();
-      final Set<Pair<SNode, List<IErrorReporter>>> nodesWithErrors = getTypechecking().getNodesWithErrors(true);
-      final THashSet<Pair<SNode, List<IErrorReporter>>> result = new THashSet<Pair<SNode, List<IErrorReporter>>>(nodesWithErrors);
-      result.addAll(getTypechecking().getNodesWithErrors(false));
-      return result;
+      // recursion guard
+      if (myCurrentlyChecking) Collections.emptyList();
+
+      try {
+        this.myCurrentlyChecking = true;
+
+        checkRoot(refreshTypes);
+        //non-typesystem checks
+        applyNonTypesystemRules();
+        final Set<Pair<SNode, List<IErrorReporter>>> nodesWithErrors = getTypechecking().getNodesWithErrors(true);
+        final THashSet<Pair<SNode, List<IErrorReporter>>> result = new THashSet<Pair<SNode, List<IErrorReporter>>>(nodesWithErrors);
+        result.addAll(getTypechecking().getNodesWithErrors(false));
+        return result;
+
+      }
+      finally {
+        this.myCurrentlyChecking = false;
+      }
     }
   }
 
@@ -272,6 +291,17 @@ public abstract class SimpleTypecheckingContext<
       }
     });
     return messages.get(0);
+  }
+
+
+  @Override
+  public TypeSubstitution getSubstitution(final SNode origNode) {
+    return LanguageScopeExecutor.execWithLanguageScope(null, new Computable<TypeSubstitution>() {
+      @Override
+      public TypeSubstitution compute() {
+        return myTypechecking.getTypecheckingComponent().lookupSubstitution(origNode, SimpleTypecheckingContext.this);
+      }
+    });
   }
 
   protected void processDependency(SNode node, String ruleModel, String ruleId, boolean addDependency) {

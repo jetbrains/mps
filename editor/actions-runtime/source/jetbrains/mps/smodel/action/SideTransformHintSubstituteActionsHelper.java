@@ -18,12 +18,16 @@ package jetbrains.mps.smodel.action;
 import jetbrains.mps.actions.runtime.impl.SideTransformUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.nodeEditor.CellSide;
+import jetbrains.mps.nodeEditor.cellActions.SideTransformSubstituteInfo.Side;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.util.Computable;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collections;
@@ -32,6 +36,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringTokenizer;
 
+/**
+ * @deprecated this class purpose is to find and collect actions from actions aspect.
+ * From version 2017.1 actions are attached to the editor cell via transformation menu in editor aspect.
+ */
+@Deprecated
 public class SideTransformHintSubstituteActionsHelper {
   public static final String SIDE_TRANSFORM_TAG_SEPARATOR = "|";
   private static final Logger LOG = LogManager.getLogger(SideTransformHintSubstituteActionsHelper.class);
@@ -43,10 +52,7 @@ public class SideTransformHintSubstituteActionsHelper {
 
   public SideTransformHintSubstituteActionsHelper(SNode sourceNode, CellSide side, String transformTags, IOperationContext context) {
     myContext = context;
-    while (AttributeOperations.isAttribute(sourceNode)) {
-      sourceNode = sourceNode.getParent();
-    }
-    mySourceNode = sourceNode;
+    mySourceNode = getNodeForSideTransforms(sourceNode);
     if (mySourceNode != null) {
       if (transformTags != null) {
         for (StringTokenizer tokenizer = new StringTokenizer(transformTags, SIDE_TRANSFORM_TAG_SEPARATOR); tokenizer.hasMoreTokens(); ) {
@@ -55,6 +61,16 @@ public class SideTransformHintSubstituteActionsHelper {
       }
       mySide = side;
     }
+  }
+
+  /**
+   * "Unwraps" attributes and returns the attributed node. Side transforms work on the attributed node.
+   */
+  public static SNode getNodeForSideTransforms(SNode sourceNode) {
+    while (AttributeOperations.isAttribute(sourceNode)) {
+      sourceNode = sourceNode.getParent();
+    }
+    return sourceNode;
   }
 
   public boolean isValid() {
@@ -66,6 +82,10 @@ public class SideTransformHintSubstituteActionsHelper {
     return SideTransformUtil.getApplicableActionsBuilders(mySourceNode, myTransformTags, mySide, myContext).iterator().hasNext();
   }
 
+  /**
+   * @deprecated Use {@link ModelActions#createSideTransformSubstituteActions(EditorCell, Side)}
+   */
+  @Deprecated
   public List<SubstituteAction> createActions() {
     if (!isValid()) return Collections.emptyList();
     // enable R/O access

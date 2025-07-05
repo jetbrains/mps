@@ -19,6 +19,7 @@ import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
+import com.intellij.openapi.components.RoamingType;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.ui.Messages;
@@ -26,33 +27,28 @@ import com.intellij.openapi.util.BuildNumber;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.util.io.ZipUtil;
 import jetbrains.mps.InternalFlag;
-import jetbrains.mps.MPSCore;
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.build.SamplesExtractor.MyState;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 import jetbrains.mps.samples.SamplesInfo;
-import jetbrains.mps.samples.SamplesManager;
 import jetbrains.mps.util.PathManager;
-import jetbrains.mps.workbench.WorkbenchPathManager;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.SwingUtilities;
 import java.io.File;
 import java.io.IOException;
 
 @State(
-  name = "LastBuildNumber",
-  storages = {
-    @Storage(
-      id = "other",
-      file = "$APP_CONFIG$/other.xml"
-    )}
+    name = "LastBuildNumber",
+    storages = {
+        @Storage(value = "sampleProjects.xml", roamingType = RoamingType.DISABLED),
+        @Storage(value = "other.xml", deprecated = true)
+    }
 )
 public class SamplesExtractor implements ApplicationComponent, PersistentStateComponent<MyState>, SamplesInfo {
   private static final Logger LOG = LogManager.getLogger(SamplesExtractor.class);
 
   private static final String SAMPLES_IN_MPS_HOME_DIR = "samples";
-  private static final String MPS = "MPS";
 
   public static SamplesExtractor getInstance() {
     return ((SamplesExtractor) ApplicationManager.getApplication().getComponent(SamplesInfo.class));
@@ -72,14 +68,14 @@ public class SamplesExtractor implements ApplicationComponent, PersistentStateCo
   }
 
   public void initComponent() {
-    SamplesManager.getInstance().registerSamplesInfo(this);
-
     if (myState == null) {
       myState = new MyState();
     }
     updateSamplesLocation();
 
-    if (MPSCore.getInstance().isTestMode()) return;
+    if (RuntimeFlags.isTestMode()) {
+      return;
+    }
 
     checkSamplesAndUpdateIfNeeded();
   }
@@ -126,7 +122,7 @@ public class SamplesExtractor implements ApplicationComponent, PersistentStateCo
   }
 
   private String getSamplesPathInUserHome() {
-    return WorkbenchPathManager.getUserHome() + File.separator + SAMPLES_IN_USER_HOME_DIR + "." + getSuffix();
+    return System.getProperty("user.home") + File.separator + SAMPLES_IN_USER_HOME_DIR + "." + getSuffix();
   }
 
   private String getSuffix() {
@@ -147,14 +143,13 @@ public class SamplesExtractor implements ApplicationComponent, PersistentStateCo
       final File samplesDir = new File(getSamplesPathInUserHome());
 
       if (samplesDir.exists()) {
-        SwingUtilities.invokeLater(new Runnable() {
-          @Override
-          public void run() {
-            int answer = Messages.showYesNoDialog("Do you want to replace directory\n" + samplesDir + "\n with version " + myApplicationInfo.getBuild().asString() + " (old directory contents will be deleted)?", "Replace MPS Samples?", Messages.getQuestionIcon());
-            if (answer == 0) {
-              FileUtil.delete(samplesDir);
-              actuallyExtractSamples(samplesZipFile);
-            }
+        ApplicationManager.getApplication().invokeLater(() -> {
+          int answer = Messages.showYesNoDialog(
+              "Do you want to replace directory\n" + samplesDir + "\n with version " + myApplicationInfo.getBuild().asString() +
+                  " (old directory contents will be deleted)?", "Replace MPS Samples?", Messages.getQuestionIcon());
+          if (answer == Messages.YES) {
+            FileUtil.delete(samplesDir);
+            actuallyExtractSamples(samplesZipFile);
           }
         });
       } else {

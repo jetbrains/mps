@@ -8,7 +8,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vfs.IFileUtils;
 import jetbrains.mps.ide.java.newparser.JavaParser;
 import java.io.IOException;
@@ -16,41 +15,31 @@ import java.io.IOException;
 public class MPSJavaSrcDataSource extends FolderDataSource {
   private static final Logger LOG = Logger.getLogger(MPSJavaSrcDataSource.class);
 
-
   public MPSJavaSrcDataSource(@NotNull IFile dir, ModelRoot modelRoot) {
     super(dir, modelRoot);
   }
 
-
-
   @Override
-  protected boolean isIncluded(IFile file) {
+  public boolean isIncluded(IFile file) {
     return super.isIncluded(file) && file.getPath().endsWith(".java");
   }
-
-
 
   public boolean hasJavaFiles() {
     return getAvailableStreams().iterator().hasNext();
   }
 
-
-
   @Nullable
   public String guessPackage() {
     String pkg = null;
     try {
-      for (String stream : Sequence.fromIterable(getAvailableStreams())) {
+      for (String stream : getAvailableStreams()) {
         IFile file = getFile(stream);
         String code = IFileUtils.getTextContents(file);
         pkg = JavaParser.peekPackage(code);
       }
     } catch (IOException e) {
       LOG.warn("Failed to guess package name for java source stub model", e);
-    } finally {
-      return pkg;
     }
+    return pkg;
   }
-
-
 }

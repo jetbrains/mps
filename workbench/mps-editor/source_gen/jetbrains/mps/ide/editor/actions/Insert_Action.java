@@ -8,13 +8,14 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import org.jetbrains.annotations.NotNull;
-import org.apache.log4j.Priority;
-import jetbrains.mps.ide.editor.MPSEditorDataKeys;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.ide.editor.MPSEditorDataKeys;
+import jetbrains.mps.openapi.editor.cells.optional.WithCaret;
 import jetbrains.mps.editor.runtime.style.StyleAttributesUtil;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 
 public class Insert_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -24,57 +25,67 @@ public class Insert_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return EditorActionUtils.isWriteActionEnabled(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent"))) && EditorActionUtils.getEditorCellToInsert(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent"))) != null;
+    return ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).isFocusOwner() && EditorActionUtils.getEditorCellToInsert(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent"))) != null && EditorActionUtils.isWriteActionEnabled(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), Sequence.<EditorCell>singleton(EditorActionUtils.getEditorCellToInsert(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")))));
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        boolean enabled = this.isApplicable(event, _params);
-        this.setEnabledState(event.getPresentation(), enabled);
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "Insert", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("editorComponent", event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
-    if (MapSequence.fromMap(_params).get("editorComponent") == null) {
-      return false;
+    {
+      EditorComponent editorComponent = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT);
+      if (editorComponent != null && editorComponent.isInvalid()) {
+        editorComponent = null;
+      }
+      MapSequence.fromMap(_params).put("editorComponent", editorComponent);
+      if (editorComponent == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      EditorCell editorCell = EditorActionUtils.getEditorCellToInsert(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")));
-      if (((jetbrains.mps.nodeEditor.cells.EditorCell) editorCell).isFirstCaretPosition()) {
-        if (!(((jetbrains.mps.nodeEditor.cells.EditorCell) editorCell).isLastCaretPosition()) || !(StyleAttributesUtil.isLastPositionAllowed(editorCell.getStyle()))) {
+    final EditorCell editorCell = EditorActionUtils.getEditorCellToInsert(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")));
+    if (editorCell instanceof WithCaret) {
+      WithCaret withCaret = ((WithCaret) editorCell);
+      if (withCaret.isFirstCaretPosition()) {
+        if (!(withCaret.isLastCaretPosition()) || !(StyleAttributesUtil.isLastPositionAllowed(editorCell.getStyle()))) {
           EditorActionUtils.callInsertBeforeAction(editorCell);
           return;
         }
       }
-      EditorActionUtils.callInsertAction(editorCell);
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "Insert", t);
+    } else if (editorCell instanceof jetbrains.mps.nodeEditor.cells.EditorCell) {
+      // TODO: remove this branch after MPS 3.4 
+      jetbrains.mps.nodeEditor.cells.EditorCell internalCell = ((jetbrains.mps.nodeEditor.cells.EditorCell) editorCell);
+      if (internalCell.isFirstCaretPosition()) {
+        if (!(internalCell.isLastCaretPosition()) || !(StyleAttributesUtil.isLastPositionAllowed(editorCell.getStyle()))) {
+          EditorActionUtils.callInsertBeforeAction(editorCell);
+          return;
+        }
       }
     }
-  }
+    if (editorCell.getEditorComponent().isDisposed()) {
+      return;
+    }
 
-  protected static Logger LOG = LogManager.getLogger(Insert_Action.class);
+    ModelAccess.instance().runWriteAction(new Runnable() {
+      public void run() {
+        if (editorCell instanceof EditorCell_Property && ((EditorCell_Property) editorCell).commit()) {
+          return;
+        }
+        EditorActionUtils.callInsertAction(editorCell);
+      }
+    });
+  }
 }

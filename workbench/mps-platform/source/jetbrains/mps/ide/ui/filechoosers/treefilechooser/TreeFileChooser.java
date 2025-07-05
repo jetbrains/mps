@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import com.intellij.openapi.fileChooser.FileChooserDialog;
 import com.intellij.openapi.fileChooser.FileChooserFactory;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
@@ -49,11 +48,10 @@ public class TreeFileChooser {
   /////////////////////////////
 
   @NotNull
-  private static IFile ourInitialSelectedFile = FileSystem.getInstance().getFileByPath(PathManager.getHomePath());
+  private static IFile ourInitialSelectedFile = FileSystem.getInstance().getFile(PathManager.getHomePath());
 
   private int myMode = MODE_FILES;
   private IFileFilter myFileFilter = ALL_FILES_FILTER;
-  private IOperationContext myContext = null;
   private String myTitle = null;
   private boolean myDirectoriesAlwaysVisible = false;
 
@@ -78,10 +76,6 @@ public class TreeFileChooser {
 
   public void setFileFilter(IFileFilter fileFilter) {
     myFileFilter = fileFilter;
-  }
-
-  public void setContext(IOperationContext context) {
-    myContext = context;
   }
 
   public void setTitle(String title) {
@@ -136,9 +130,9 @@ public class TreeFileChooser {
     descriptor.setTitle(myTitle == null ? "Select File" : myTitle);
     descriptor.setShowFileSystemRoots(true);
 
-    FileChooserDialog dialog = FileChooserFactory.getInstance().createFileChooser(descriptor, owner);
+    FileChooserDialog dialog = FileChooserFactory.getInstance().createFileChooser(descriptor, null, owner);
 
-    VirtualFile selection = VirtualFileUtils.getVirtualFile(ourInitialSelectedFile);
+    VirtualFile selection = VirtualFileUtils.getOrCreateVirtualFile(ourInitialSelectedFile);
     for (VirtualFile file : dialog.choose(selection, null)) {
       res.add(FileSystem.getInstance().getFileByPath(file.getPath()));
     }

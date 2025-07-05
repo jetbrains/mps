@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,30 @@
  */
 package jetbrains.mps.workbench.structureview.nodes;
 
+import com.intellij.ide.structureView.StructureViewTreeElement;
 import com.intellij.ide.util.treeView.smartTree.TreeElement;
 import com.intellij.navigation.ItemPresentation;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.editor.markup.TextAttributes;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.workbench.choose.NodePointerNavigationItem;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.util.Computable;
 
-import java.awt.Color;
+public class AspectTreeElement implements StructureViewTreeElement, Comparable<AspectTreeElement> {
+  private final MainNodeTreeElement myParent;
+  private final boolean myIsBijectional;
+  private final RelationDescriptor myAspectDescriptor;
+  private final NodePointerNavigationItem myPresentation;
+  private final SConcept myNodeConcept;
 
-public class AspectTreeElement extends NodeTreeElement {
-  private static final String NON_BIJECTIONAL_NODE_ASPECT = "non-bijectional node aspect";
-  protected boolean myIsBijectional;
-  protected RelationDescriptor myAspectDescriptor;
-
-  public AspectTreeElement(SNodeReference node, RelationDescriptor aspectDescriptor, boolean bijectional) {
-    super(node);
+  // invoked with model read
+  /*package*/ AspectTreeElement(MainNodeTreeElement parent, SNode node, RelationDescriptor aspectDescriptor, boolean bijectional) {
+    myParent = parent;
     myAspectDescriptor = aspectDescriptor;
     myIsBijectional = bijectional;
+    myPresentation = new Presentation(node);
+    myNodeConcept = node.getConcept();
   }
 
   public RelationDescriptor getAspectDescriptor() {
@@ -47,26 +51,52 @@ public class AspectTreeElement extends NodeTreeElement {
 
   @Override
   public TreeElement[] getChildren() {
-    return new TreeElement[0];
+    return StructureViewTreeElement.EMPTY_ARRAY;
   }
 
   @Override
   public ItemPresentation getPresentation() {
-    //todo use SNodeReference here, get rid of read action
-    return ModelAccess.instance().runReadAction(new Computable<ItemPresentation>() {
-      @Override
-      public ItemPresentation compute() {
-        return new NodeTreeElementPresentation() {
-          @Override
-          public TextAttributesKey getTextAttributesKey() {
-            if (myIsBijectional) return null;
+    return myPresentation;
+  }
 
-            TextAttributes att = new TextAttributes();
-            att.setForegroundColor(Color.GRAY);
-            return TextAttributesKey.createTextAttributesKey(NON_BIJECTIONAL_NODE_ASPECT, att);
-          }
-        };
-      }
-    });
+  @Override
+  public SNodeReference getValue() {
+    return myPresentation.getNodePointer();
+  }
+
+  @Override
+  public boolean canNavigate() {
+    return true;
+  }
+
+  @Override
+  public boolean canNavigateToSource() {
+    return true;
+  }
+
+  @Override
+  public void navigate(boolean b) {
+    myParent.navigate(getValue());
+  }
+
+  @Override
+  public int compareTo(@NotNull AspectTreeElement o) {
+    RelationDescriptor d1 = myAspectDescriptor;
+    RelationDescriptor d2 = o.myAspectDescriptor;
+
+    int r1 = d1.compareTo(d2);
+    int r2 = d2.compareTo(d1);
+
+    if ((r1 == 0) ^ (r2 == 0)) {
+      return r1 - r2;
+    }
+
+    assert r1 * r2 <= 0 : "can't determine order";
+
+    if (r1 != 0) {
+      return r1;
+    }
+
+    return myNodeConcept.getName().compareTo(o.myNodeConcept.getName());
   }
 }

@@ -5,152 +5,107 @@ package jetbrains.mps.lang.smodel.generator.baseLanguage.util;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.smodel.IScope;
+import jetbrains.mps.lang.structure.behavior.PrimitiveDataTypeDeclaration__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.baseLanguage.behavior.ClassConcept_Behavior;
+import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.structure.behavior.PrimitiveDataTypeDeclaration_Behavior;
-import jetbrains.mps.generator.template.ITemplateGenerator;
-import jetbrains.mps.lang.structure.behavior.EnumerationDataTypeDeclaration_Behavior;
+import jetbrains.mps.lang.structure.behavior.EnumerationDataTypeDeclaration__BehaviorDescriptor;
 import jetbrains.mps.util.NameUtil;
 
 public class QueriesUtil {
   public static List<SNode> getNodeOperation_ConceptList_concepts(SNode operation) {
-    SNode parm_ConceptList = SNodeOperations.cast(SModelLanguageUtil.findNodeOperationParameter(operation, SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.smodel.structure.OperationParm_ConceptList")), "jetbrains.mps.lang.smodel.structure.OperationParm_ConceptList");
+    SNode parm_ConceptList = SNodeOperations.cast(SModelLanguageUtil.findNodeOperationParameter(operation, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, "jetbrains.mps.lang.smodel.structure.OperationParm_ConceptList")), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, "jetbrains.mps.lang.smodel.structure.OperationParm_ConceptList"));
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode cRef : ListSequence.fromList(SLinkOperations.getTargets(parm_ConceptList, "concept", true))) {
-      if (SLinkOperations.getTarget(cRef, "concept", false) != null) {
-        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(cRef, "concept", false));
+    for (SNode cRef : ListSequence.fromList(SLinkOperations.getChildren(parm_ConceptList, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, 0x10cd05bec73L, "concept")))) {
+      if (SLinkOperations.getTarget(cRef, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept")) != null) {
+        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(cRef, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept")));
       }
     }
     return result;
   }
-
   public static List<SNode> getNodeOperation_StopList_concepts(SNode operation) {
-    SNode parm_StopList = SNodeOperations.cast(SModelLanguageUtil.findNodeOperationParameter(operation, SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.smodel.structure.OperationParm_StopConceptList")), "jetbrains.mps.lang.smodel.structure.OperationParm_StopConceptList");
+    SNode parm_StopList = SNodeOperations.cast(SModelLanguageUtil.findNodeOperationParameter(operation, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x190735f308e2250bL, "jetbrains.mps.lang.smodel.structure.OperationParm_StopConceptList")), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x190735f308e2250bL, "jetbrains.mps.lang.smodel.structure.OperationParm_StopConceptList"));
     List<SNode> result = new ArrayList<SNode>();
     if ((parm_StopList == null)) {
       return result;
     }
-    for (SNode cRef : ListSequence.fromList(SLinkOperations.getTargets(parm_StopList, "concept", true))) {
-      if (SLinkOperations.getTarget(cRef, "concept", false) != null) {
-        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(cRef, "concept", false));
+    for (SNode cRef : ListSequence.fromList(SLinkOperations.getChildren(parm_StopList, MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x190735f308e2250bL, 0x190735f308e2250cL, "concept")))) {
+      if (SLinkOperations.getTarget(cRef, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept")) != null) {
+        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(cRef, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept")));
       }
     }
     return result;
   }
-
   public static boolean operationHasParm_Inclusion(SNode inputNode) {
-    return SModelLanguageUtil.findNodeOperationParameter(inputNode, SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion")) != null;
+    return SModelLanguageUtil.findNodeOperationParameter(inputNode, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61bacc13L, "jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion")) != null;
   }
-
   public static boolean operationHasParm_SameMetaLevel(SNode inputNode) {
-    return SModelLanguageUtil.findNodeOperationParameter(inputNode, SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.smodel.structure.OperationParm_SameMetaLevel")) != null;
+    return SModelLanguageUtil.findNodeOperationParameter(inputNode, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x155fb7143719d578L, "jetbrains.mps.lang.smodel.structure.OperationParm_SameMetaLevel")) != null;
   }
-
   public static boolean operationHasParm_Root(SNode inputNode) {
-    return SModelLanguageUtil.findNodeOperationParameter(inputNode, SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.smodel.structure.OperationParm_Root")) != null;
+    return SModelLanguageUtil.findNodeOperationParameter(inputNode, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61c4f312L, "jetbrains.mps.lang.smodel.structure.OperationParm_Root")) != null;
   }
-
-  public static SNode get_SConceptPropertyAccess_GetMethod(SNode operation, IScope scope) {
+  public static SNode get_SPropertyAccess_simple_getterMethod(SNode operation) {
+    SNode datatype = SLinkOperations.getTarget(SLinkOperations.getTarget(operation, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property")), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType"));
     String methodName = "getString";
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(operation, "conceptProperty", false), "jetbrains.mps.lang.structure.structure.IntegerConceptPropertyDeclaration")) {
-      methodName = "getInteger";
-    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(operation, "conceptProperty", false), "jetbrains.mps.lang.structure.structure.BooleanConceptPropertyDeclaration")) {
-      methodName = "getBoolean";
-    }
-    SNode operationClass = SNodeOperations.getNode("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527282020");
-    for (SNode method : Sequence.fromIterable(ClassConcept_Behavior.call_staticMethods_5292274854859435867(operationClass))) {
-      if (methodName.equals(SPropertyOperations.getString(method, "name"))) {
-        return method;
-      }
-    }
-    return null;
-  }
-
-  public static SNode get_SConceptPropertyAccess_SetMethod(SNode operation, IScope scope) {
-    String methodName = "setString";
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(operation, "conceptProperty", false), "jetbrains.mps.lang.structure.structure.IntegerConceptPropertyDeclaration")) {
-      methodName = "setInteger";
-    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(operation, "conceptProperty", false), "jetbrains.mps.lang.structure.structure.BooleanConceptPropertyDeclaration")) {
-      methodName = "setBoolean";
-    }
-    SNode operationClass = SNodeOperations.getNode("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527282020");
-    for (SNode method : Sequence.fromIterable(ClassConcept_Behavior.call_staticMethods_5292274854859435867(operationClass))) {
-      if (methodName.equals(SPropertyOperations.getString(method, "name"))) {
-        return method;
-      }
-    }
-    return null;
-  }
-
-  public static SNode get_SPropertyAccess_simple_getterMethod(SNode operation, IScope scope) {
-    SNode datatype = SLinkOperations.getTarget(SLinkOperations.getTarget(operation, "property", false), "dataType", false);
-    String methodName = "getString";
-    if (SNodeOperations.isInstanceOf(datatype, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration")) {
-      SNode primitiveDatatype = SNodeOperations.cast(datatype, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration");
-      if (PrimitiveDataTypeDeclaration_Behavior.call_isInteger_1220268780075(primitiveDatatype)) {
+    if (SNodeOperations.isInstanceOf(datatype, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration"))) {
+      SNode primitiveDatatype = SNodeOperations.cast(datatype, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration"));
+      if ((boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isInteger_idhKtFYCF.invoke(primitiveDatatype)) {
         methodName = "getInteger";
-      } else if (PrimitiveDataTypeDeclaration_Behavior.call_isBoolean_1220268791641(primitiveDatatype)) {
+      } else if ((boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isBoolean_idhKtG1tp.invoke(primitiveDatatype)) {
         methodName = "getBoolean";
       }
     }
     SNode operationClass = SNodeOperations.getNode("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527298519");
-    for (SNode method : Sequence.fromIterable(ClassConcept_Behavior.call_staticMethods_5292274854859435867(operationClass))) {
-      if (methodName.equals(SPropertyOperations.getString(method, "name"))) {
+    for (SNode method : Sequence.fromIterable(ClassConcept__BehaviorDescriptor.staticMethods_id4_LVZ3pCeXr.invoke(operationClass))) {
+      if (methodName.equals(SPropertyOperations.getString(method, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")))) {
         return method;
       }
     }
     return null;
   }
-
-  public static SNode get_SPropertyAccess_enum_getterMethod(SNode operation, IScope scope) {
-    SNode datatype = SLinkOperations.getTarget(SLinkOperations.getTarget(operation, "property", false), "dataType", false);
-    SNode primitiveDatatype = SLinkOperations.getTarget((SNodeOperations.cast(datatype, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration")), "memberDataType", false);
+  public static SNode get_SPropertyAccess_enum_getterMethod(SNode operation) {
+    SNode datatype = SLinkOperations.getTarget(SLinkOperations.getTarget(operation, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property")), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType"));
+    SNode primitiveDatatype = SLinkOperations.getTarget((SNodeOperations.cast(datatype, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration"))), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType"));
     String methodName = "getString_def";
-    if (PrimitiveDataTypeDeclaration_Behavior.call_isInteger_1220268780075(primitiveDatatype)) {
+    if ((boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isInteger_idhKtFYCF.invoke(primitiveDatatype)) {
       methodName = "getInteger_def";
-    } else if (PrimitiveDataTypeDeclaration_Behavior.call_isBoolean_1220268791641(primitiveDatatype)) {
+    } else if ((boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isBoolean_idhKtG1tp.invoke(primitiveDatatype)) {
       methodName = "getBoolean_def";
     }
     SNode operationClass = SNodeOperations.getNode("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527298519");
-    for (SNode method : Sequence.fromIterable(ClassConcept_Behavior.call_staticMethods_5292274854859435867(operationClass))) {
-      if (methodName.equals(SPropertyOperations.getString(method, "name"))) {
+    for (SNode method : Sequence.fromIterable(ClassConcept__BehaviorDescriptor.staticMethods_id4_LVZ3pCeXr.invoke(operationClass))) {
+      if (methodName.equals(SPropertyOperations.getString(method, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")))) {
         return method;
       }
     }
     return null;
   }
-
   public static String get_SPropertyAccess_enum_defaultValue(SNode operation) {
-    return SPropertyOperations.getString(DataTypeUtil.getDefaultMember(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(operation, "property", false), "dataType", false), "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration")), "internalValue");
+    return SPropertyOperations.getString(DataTypeUtil.getDefaultMember(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(operation, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property")), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType")), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration"))), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue"));
   }
-
   public static boolean nodeOp_noParm_conceptList(SNode op) {
-    SNode parm = SModelLanguageUtil.findNodeOperationParameter(op, SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.smodel.structure.OperationParm_Concept"));
+    SNode parm = SModelLanguageUtil.findNodeOperationParameter(op, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61caab68L, "jetbrains.mps.lang.smodel.structure.OperationParm_Concept"));
     if (parm != null) {
       return true;
     }
-    parm = SModelLanguageUtil.findNodeOperationParameter(op, SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.smodel.structure.OperationParm_ConceptList"));
+    parm = SModelLanguageUtil.findNodeOperationParameter(op, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, "jetbrains.mps.lang.smodel.structure.OperationParm_ConceptList"));
     return parm == null;
   }
-
-  public static boolean isProperty_hasValueEnum_notNullDefaultValue(SNode op, ITemplateGenerator generator) {
+  public static boolean isProperty_hasValueEnum_notNullDefaultValue(SNode op) {
     SNode dataTypeDeclaration = jetbrains.mps.lang.smodel.behavior.SModelLanguageUtil.getDatatypeFromLeft_SPropertyAccess(op);
-    SNode defMember = EnumerationDataTypeDeclaration_Behavior.call_getDefaultMember_1213877397785(SNodeOperations.cast(dataTypeDeclaration, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration"));
-    return SPropertyOperations.getString(defMember, "internalValue") != null;
+    SNode defMember = EnumerationDataTypeDeclaration__BehaviorDescriptor.getDefaultMember_idhEwIM$p.invoke(SNodeOperations.cast(dataTypeDeclaration, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration")));
+    return SPropertyOperations.getString(defMember, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue")) != null;
   }
-
-  public static boolean isProperty_hasValueEnum_nullDefaultValue(SNode op, ITemplateGenerator generator) {
+  public static boolean isProperty_hasValueEnum_nullDefaultValue(SNode op) {
     SNode datatype = jetbrains.mps.lang.smodel.behavior.SModelLanguageUtil.getDatatypeFromLeft_SPropertyAccess(op);
-    SNode defMemberNode = EnumerationDataTypeDeclaration_Behavior.call_getDefaultMember_1213877397785(SNodeOperations.cast(datatype, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration"));
-    return SPropertyOperations.getString(defMemberNode, "internalValue") == null;
+    SNode defMemberNode = EnumerationDataTypeDeclaration__BehaviorDescriptor.getDefaultMember_idhEwIM$p.invoke(SNodeOperations.cast(datatype, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration")));
+    return SPropertyOperations.getString(defMemberNode, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue")) == null;
   }
-
   public static String getConceptFqName(SNode concept) {
     return NameUtil.nodeFQName(concept);
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,29 @@
  */
 package jetbrains.mps.nodeEditor.cellMenu;
 
+import jetbrains.mps.nodeEditor.SubstituteActionUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SModelDescriptor;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.SModelInternal;
+import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.typesystem.inference.InequalitySystem;
-import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.util.Computable;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -43,6 +46,8 @@ import java.util.Map;
  * Time: Oct 29, 2003 2:17:38 PM
  */
 public abstract class AbstractNodeSubstituteInfo implements SubstituteInfo {
+  private static final Logger LOG = LogManager.getLogger(AbstractNodeSubstituteInfo.class);
+
   private static SModel ourModelForTypechecking = null;
 
   public static SModel getModelForTypechecking() {
@@ -88,7 +93,7 @@ public abstract class AbstractNodeSubstituteInfo implements SubstituteInfo {
 
   @Override
   public boolean hasExactlyNActions(final String pattern, final boolean strictMatching, final int n) {
-    return ModelAccess.instance().runReadAction(new Computable<Boolean>() {
+    return new ModelAccessHelper(myEditorContext.getRepository()).runReadAction(new Computable<Boolean>() {
       @Override
       public Boolean compute() {
         int count = 0;
@@ -110,44 +115,55 @@ public abstract class AbstractNodeSubstituteInfo implements SubstituteInfo {
   }
 
   @Override
-  public List<SubstituteAction> getSmartMatchingActions(String pattern, boolean strictMatching, EditorCell contextCell) {
-    InequalitySystem inequalitiesSystem = getInequalitiesSystem(contextCell);
-
-    List<SubstituteAction> substituteActionList = getMatchingActions(pattern, strictMatching);
-    if (inequalitiesSystem == null) return substituteActionList;
-
-    ourModelForTypechecking =  TemporaryModels.getInstance().create(false, false, TempModuleOptions.forDefaultModule());
-    for (SModuleReference l: ((SModelDescriptor) getEditorContext().getModel()).getSModel().getModelDepsManager().getAllImportedLanguages()){
-      ((SModelDescriptor) ourModelForTypechecking).getSModel().addLanguage(l);
+  public List<SubstituteAction> getSmartMatchingActions(final String pattern, final boolean strictMatching, EditorCell contextCell) {
+    // TODO make this thread local maybe?
+    ourModelForTypechecking = TemporaryModels.getInstance().create(false, false, TempModuleOptions.forDefaultModule());
+    for (SLanguage l : SModelOperations.getAllLanguageImports(getEditorContext().getModel())) {
+      ((SModelInternal) ourModelForTypechecking).addLanguage(l);
     }
 
-    List<SubstituteAction> result = new ArrayList<SubstituteAction>();
     try {
-      // In case this becomes a performance bottleneck, use the SubtypingCache
+      final InequalitySystem inequalitiesSystem = getInequalitiesSystem(contextCell);
+
+      List<SubstituteAction> substituteActionList = getMatchingActions(pattern, strictMatching);
+      if (inequalitiesSystem == null) return substituteActionList;
+
+      List<SubstituteAction> result = new ArrayList<SubstituteAction>();
       for (SubstituteAction nodeSubstituteAction : substituteActionList) {
-        SNode type = nodeSubstituteAction.getActionType(pattern, contextCell);
-        if (type != null && inequalitiesSystem.satisfies(type)) {
-          result.add(nodeSubstituteAction);
+        try {
+          SNode type = nodeSubstituteAction.getActionType(pattern);
+          if (type != null && inequalitiesSystem.satisfies(type)) {
+            result.add(nodeSubstituteAction);
+          }
+        } catch (Throwable th) {
+          LOG.error("Exception on checking smart matching conditions for action: " + (nodeSubstituteAction == null ? "null" : nodeSubstituteAction.getClass()),
+              th);
         }
       }
+      return result;
+    } catch (RuntimeException rte) {
+      LOG.error("Exception while building SmartMatchingActions list", rte);
+      return new ArrayList<>();
     } finally {
       TemporaryModels.getInstance().dispose(ourModelForTypechecking);
       ourModelForTypechecking = null;
     }
-
-    return result;
   }
 
   @Override
   public List<SubstituteAction> getMatchingActions(final String pattern, final boolean strictMatching) {
-    return ModelAccess.instance().runReadAction(new Computable<List<SubstituteAction>>() {
+    return new ModelAccessHelper(myEditorContext.getRepository()).runReadAction(new Computable<List<SubstituteAction>>() {
       @Override
       public List<SubstituteAction> compute() {
         List<SubstituteAction> actionsFromCache = getActionsFromCache(pattern, strictMatching);
         ArrayList<SubstituteAction> result = new ArrayList<SubstituteAction>(actionsFromCache.size());
         for (SubstituteAction item : actionsFromCache) {
-          if (strictMatching ? item.canSubstituteStrictly(pattern) : item.canSubstitute(pattern)) {
-            result.add(item);
+          try {
+            if (strictMatching ? item.canSubstituteStrictly(pattern) : SubstituteActionUtil.canSubstitute(item, pattern)) {
+              result.add(item);
+            }
+          } catch (Throwable th) {
+            LOG.error("Exception on calling canSubstitute on a substitute action " + (item == null ? "null" : item.getClass()), th);
           }
         }
         putActionsToCache(pattern, strictMatching, result);
@@ -159,12 +175,12 @@ public abstract class AbstractNodeSubstituteInfo implements SubstituteInfo {
 
   private List<SubstituteAction> getActions() {
     if (myCachedActionList == null) {
-      ModelAccess.instance().runReadAction(new Runnable() {
-        @Override
-        public void run() {
-          myCachedActionList = createActions();
-        }
-      });
+      try {
+        myCachedActionList = createActions();
+      } catch (Throwable th) {
+        LOG.error("Exception while creating substitute actions in " + this.getClass(), th);
+        return new LinkedList<SubstituteAction>();
+      }
     }
     return myCachedActionList;
   }
@@ -179,10 +195,19 @@ public abstract class AbstractNodeSubstituteInfo implements SubstituteInfo {
   }
 
   private List<SubstituteAction> getActionsFromCache(String pattern, boolean strictMatching) {
+    if (pattern == null) {
+      return Collections.unmodifiableList(getActions());
+    }
     if (!strictMatching) {
-      for (; pattern != null && pattern.length() > 0; pattern = pattern.substring(0, pattern.length() - 1)) {
+      if (pattern.isEmpty()) {
         if (myPatternsToActionListsCache.containsKey(pattern)) {
           return Collections.unmodifiableList(myPatternsToActionListsCache.get(pattern));
+        }
+      } else {
+        for (; pattern.length() > 0; pattern = pattern.substring(0, pattern.length() - 1)) {
+          if (myPatternsToActionListsCache.containsKey(pattern)) {
+            return Collections.unmodifiableList(myPatternsToActionListsCache.get(pattern));
+          }
         }
       }
     } else {

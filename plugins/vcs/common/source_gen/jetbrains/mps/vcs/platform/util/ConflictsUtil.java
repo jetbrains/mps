@@ -31,10 +31,7 @@ public class ConflictsUtil {
   }
 
   public static boolean isModelOrModuleConflicting(EditableSModel emd, Project project) {
-    return ListSequence.fromList(getConflictingModelFiles(emd, project)).isNotEmpty() || ListSequence.fromList(getConflictingModuleFiles((emd != null ?
-      emd.getModule() :
-      null
-    ), project)).isNotEmpty();
+    return ListSequence.fromList(getConflictingModelFiles(emd, project)).isNotEmpty() || ListSequence.fromList(getConflictingModuleFiles((emd != null ? emd.getModule() : null), project)).isNotEmpty();
   }
 
   @NotNull
@@ -59,18 +56,21 @@ public class ConflictsUtil {
 
   @NotNull
   public static List<VirtualFile> getConflictingModuleFiles(@Nullable SModule module, @NotNull Project project) {
-    Iterable<IFile> filesToCheck = Sequence.fromIterable(Collections.<IFile>emptyList());
+    List<IFile> filesToCheck = ListSequence.fromList(new ArrayList<IFile>());
     if (module instanceof Generator) {
       module = ((Generator) module).getSourceLanguage();
     }
     if (module instanceof AbstractModule) {
-      filesToCheck = Sequence.<IFile>singleton(((AbstractModule) module).getDescriptorFile());
+      AbstractModule amodule = (AbstractModule) module;
+      if (amodule.getDescriptorFile() != null) {
+        ListSequence.fromList(filesToCheck).addElement(amodule.getDescriptorFile());
+      }
     }
     return getConflictingFiles(filesToCheck, project);
   }
 
-  private static boolean isConflictedFile(IFile file, @NotNull Project project) {
-    VirtualFile vf = VirtualFileUtils.getVirtualFile(file);
+  private static boolean isConflictedFile(@NotNull IFile file, @NotNull Project project) {
+    VirtualFile vf = VirtualFileUtils.getProjectVirtualFile(file);
     if (vf == null) {
       return false;
     }
@@ -85,7 +85,7 @@ public class ConflictsUtil {
       }
     }).select(new ISelector<IFile, VirtualFile>() {
       public VirtualFile select(IFile f) {
-        return VirtualFileUtils.getVirtualFile(f);
+        return VirtualFileUtils.getProjectVirtualFile(f);
       }
     }).toListSequence();
   }

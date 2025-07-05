@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,44 +16,67 @@
 package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.GenerationCanceledException;
-import jetbrains.mps.generator.IGenerationTracer;
-import jetbrains.mps.generator.IGeneratorLogger.ProblemDescription;
-import jetbrains.mps.generator.impl.AbstractTemplateGenerator.RoleValidationStatus;
-import jetbrains.mps.generator.impl.reference.*;
-import jetbrains.mps.generator.runtime.*;
-import jetbrains.mps.generator.template.TracingUtil;
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.util.InternUtil;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;import org.jetbrains.mps.openapi.model.SReference;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.smodel.search.SModelSearchUtil;
+import jetbrains.mps.generator.GenerationTrace;
+import jetbrains.mps.generator.GenerationTracerUtil;
+import jetbrains.mps.generator.IGeneratorLogger;
+import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
+import jetbrains.mps.generator.impl.reference.PostponedReference;
+import jetbrains.mps.generator.impl.reference.ReferenceInfo_Macro;
+import jetbrains.mps.generator.impl.reference.ReferenceInfo_Template;
+import jetbrains.mps.generator.runtime.GenerationException;
+import jetbrains.mps.generator.runtime.NodePostProcessor;
+import jetbrains.mps.generator.runtime.NodeWeaveFacility;
+import jetbrains.mps.generator.runtime.NodeWeaveFacility.WeaveContext;
+import jetbrains.mps.generator.runtime.ReferenceResolver;
+import jetbrains.mps.generator.runtime.TemplateContext;
+import jetbrains.mps.generator.runtime.TemplateDeclaration;
+import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
+import jetbrains.mps.generator.runtime.TemplateModel;
+import jetbrains.mps.generator.runtime.TemplateReductionRule;
+import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
+import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
+import jetbrains.mps.generator.template.ITemplateProcessor;
+import jetbrains.mps.generator.template.QueryExecutionContext;
+import jetbrains.mps.smodel.CopyUtil;
+import jetbrains.mps.smodel.IOperationContext;
+import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
+import jetbrains.mps.textgen.trace.TracingUtil;
+import jetbrains.mps.util.containers.ConcurrentHashSet;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Evgeny Gryaznov, 11/10/10
  */
 public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnvironment {
   private final TemplateGenerator generator;
-  private final ReductionContext reductionContext;
-  private final IOperationContext operationContext;
-  private final IGenerationTracer tracer;
+  private final QueryExecutionContext myExecutionContext;
+  private final ITemplateProcessor myTemplateProcessor;
+  private final ReductionTrack myReductionTrack;
 
-  public TemplateExecutionEnvironmentImpl(@NotNull TemplateGenerator generator, @NotNull ReductionContext reductionContext, IOperationContext operationContext, @NotNull IGenerationTracer tracer) {
-    this.generator = generator;
-    this.reductionContext = reductionContext;
-    this.operationContext = operationContext;
-    this.tracer = tracer;
+  // although it's possible to instantiate ReductionTrack here (we've got generator in TP),
+  // I plan to separate TEE and RT so that they are independent
+  public TemplateExecutionEnvironmentImpl(@NotNull TemplateProcessor templateProcessor, @NotNull QueryExecutionContext executionContext, @NotNull ReductionTrack reductionTrack) {
+    this.generator = templateProcessor.getGenerator();
+    myExecutionContext = executionContext;
+    myTemplateProcessor = templateProcessor;
+    myReductionTrack = reductionTrack;
   }
 
   @Override
   public IOperationContext getOperationContext() {
-    return operationContext;
+    return generator.getGeneratorSessionContext();
   }
 
   @Override
@@ -61,299 +84,257 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     return generator.getOutputModel();
   }
 
+  @NotNull
   @Override
-  public SNode createOutputNode(String conceptName) {
-    return new jetbrains.mps.smodel.SNode(InternUtil.intern(conceptName));
+  public SNode createOutputNode(@NotNull SConcept concept) {
+    return generator.getOutputModel().createNode(concept);
   }
 
-  @Override
   @NotNull
+  @Override
   public TemplateGenerator getGenerator() {
     return generator;
   }
 
+
+  @NotNull
   @Override
-  public IGenerationTracer getTracer() {
-    return tracer;
+  public GenerationTrace getTrace() {
+    return generator.getTrace();
   }
+
+  @Override
+  public IGeneratorLogger getLogger() {
+    return generator.getLogger();
+  }
+
+  @NotNull
+  @Override
+  public GeneratorQueryProvider getQueryProvider(@NotNull SNodeReference ruleNode) {
+    return generator.getQueryProvider(ruleNode);
+  }
+
+  @NotNull
+  @Override
+  public QueryExecutionContext getQueryExecutor() {
+    return myExecutionContext;
+  }
+
+  @NotNull
+  @Override
+  public ITemplateProcessor getTemplateProcessor() {
+    return myTemplateProcessor;
+  }
+
 
   @Override
   @NotNull
-  public ReductionContext getReductionContext() {
-    return reductionContext;
-  }
-
-  @Override
-  public TemplateExecutionEnvironment getEnvironment(SNode inputNode, TemplateReductionRule rule) {
-    return new TemplateExecutionEnvironmentImpl(generator, new ReductionContext(reductionContext, inputNode, rule), operationContext, tracer);
-  }
-
-  @Override
-  public Collection<SNode> copyNodes(Iterable<SNode> inputNodes, SNodeReference templateNode, String templateId, String mappingName, TemplateContext templateContext) throws GenerationCanceledException, GenerationFailureException {
-    Collection<SNode> outputNodes = null;
-    for (SNode newInputNode : inputNodes) {
-      Collection<SNode> _outputNodes = generator.copySrc(mappingName, templateNode, templateId, newInputNode, reductionContext);
-      if (_outputNodes != null) {
-        // check node languages : prevent 'input node' query from returning node, which language was not counted when
-        // planning the generation steps.
-        for (SNode outputNode : _outputNodes) {
-          Language outputNodeLang = jetbrains.mps.util.SNodeOperations.getLanguage(outputNode);
-          if (!generator.getGeneratorSessionContext().getGenerationPlan().isCountedLanguage(outputNodeLang)) {
-            if (!outputNodeLang.getGenerators().isEmpty()) {
-              SNode tNode = templateNode.resolve(MPSModuleRepository.getInstance());
-              generator.getLogger().error(outputNode, "language of output node is '" + outputNodeLang.getModuleName() + "' - this language did not show up when computing generation steps!",
-                GeneratorUtil.describe(tNode, "template"),
-                GeneratorUtil.describe(templateContext.getInput(), "input"),
-                new ProblemDescription(null, "workaround: add the language '" + outputNodeLang.getModuleName() + "' to list of 'Languages Engaged On Generation' in model '" + generator.getGeneratorSessionContext().getOriginalInputModel().getReference().getModelName() + "'"));
-            }
-          }
-        }
-        if (outputNodes == null) {
-          outputNodes = Collections.unmodifiableCollection(_outputNodes);
-        } else if (!(outputNodes instanceof ArrayList)) {
-          Collection<SNode> old = outputNodes;
-          outputNodes = new ArrayList<SNode>(old.size() + _outputNodes.size() + 16);
-          outputNodes.addAll(old);
-          outputNodes.addAll(_outputNodes);
-        } else {
-          outputNodes.addAll(_outputNodes);
-        }
-      }
+  public List<SNode> copyNodes(@NotNull Iterable<SNode> inputNodes, @NotNull SNodeReference templateNode, @NotNull String templateId,
+      @NotNull TemplateContext ctx) throws GenerationCanceledException, GenerationFailureException {
+    List<SNode> outputNodes = generator.copyNodes(inputNodes, ctx, templateId, this);
+    if (!outputNodes.isEmpty()) {
+      new ChildAdopter(generator).checkIsExpectedLanguage(outputNodes, templateNode, ctx);
     }
-    return outputNodes == null ? Collections.<SNode>emptyList() : outputNodes;
+    return outputNodes;
   }
 
   @Override
   public SNode insertNode(SNode child, SNodeReference templateNode, TemplateContext templateContext) throws GenerationCanceledException, GenerationFailureException {
-    // check node languages : prevent 'mapping func' query from returnning node, which language was not counted when
-    // planning the generation steps.
-    Language childLang = jetbrains.mps.util.SNodeOperations.getLanguage(child);
-    if (!generator.getGeneratorSessionContext().getGenerationPlan().isCountedLanguage(childLang)) {
-      if (!childLang.getGenerators().isEmpty()) {
-        SNode tNode = templateNode.resolve(MPSModuleRepository.getInstance());
-        generator.getLogger().error(child, "language of output node is '" + childLang.getModuleName() + "' - this language did not show up when computing generation steps!",
-          GeneratorUtil.describe(tNode, "template"),
-          GeneratorUtil.describe(templateContext.getInput(), "input"),
-          new ProblemDescription(null, "workaround: add the language '" + childLang.getModuleName() + "' to list of 'Languages Engaged On Generation' in model '" + generator.getGeneratorSessionContext().getOriginalInputModel().getReference().getModelName() + "'"));
-      }
-    }
-
-    if (child.getModel() != null) {
-      // must be "in air"
-      child = CopyUtil.copy(child);
-    }
-    // replace references back to input model
-    validateReferences(child, templateContext.getInput());
-    return child;
+    ChildAdopter a = new ChildAdopter(generator);
+    a.checkIsExpectedLanguage(Collections.singletonList(child), templateNode, templateContext);
+    return a.adopt(child, templateContext);
   }
 
-  private void validateReferences(SNode node, final SNode inputNode) {
-    for (SReference ref : node.getReferences()) {
-      // reference to input model - illegal
-      if (generator.getInputModel().getReference().equals(ref.getTargetSModelReference())) {
-        // replace
-        ReferenceInfo_CopiedInputNode refInfo = new ReferenceInfo_CopiedInputNode(
-          ref.getRole(),
-          ref.getSourceNode(),
-          inputNode,
-          ref.getTargetNode());
-        PostponedReference postponedReference = new PostponedReference(
-          refInfo,
-          generator);
-        ref.getSourceNode().setReference(ref.getRole(), postponedReference);
-      }
-    }
-    for (SNode child : node.getChildren()) {
-      validateReferences(child, inputNode);
-    }
-  }
-
+  @Nullable
   @Override
-  public Collection<SNode> trySwitch(SNodeReference switch_, String mappingName, TemplateContext context) throws GenerationException {
-    Collection<SNode> collection = generator.tryToReduce(context, switch_, mappingName, reductionContext);
-    if (collection != null) {
-      return collection;
+  public Collection<SNode> trySwitch(SNodeReference _switch, TemplateContext context) throws GenerationException {
+    FastRuleFinder rf = generator.getRuleManager().getSwitchRules(_switch);
+    Collection<SNode> outputNodes = tryToReduce(rf, context);
+    if (outputNodes != null) {
+      // XXX it seems odd we do not do TracingUtil.fillOriginalNode(context.getInput(), outputNodes.get(0), false)
+      // to record actual origin for the switch outcome. This ruins scenario like
+      // Rule X -> $SWITCH$ for x.refY
+      // where X is recorded as origin for whatever outcome SWITCH reports.
+      // However, if we do fill proper original node here, this ruins existing scenario, where bl.collections got rules
+      // for AbstractCreator, which switch by type of the creator, so that generated new LingHashSet() points not to 'new linkhashset<>'
+      // creator node, but to value of ((TypeDerivable) parent).deriveType, which might be field declaration
+      if (outputNodes.size() == 1 && context.getInputName() != null) {
+        SNode reducedNode = outputNodes.iterator().next();
+        // register copied node
+        generator.registerMappingLabel(context.getInput(), context.getInputName(), reducedNode);
+      }
+      generator.recordTransformInputTrace(context.getInput(), outputNodes);
+      return outputNodes;
     }
 
     // try the default case
-    TemplateSwitchMapping current = generator.getSwitch(switch_);
+    TemplateSwitchMapping current = generator.getSwitch(_switch);
     if (current != null) {
-      collection = current.applyDefault(this, switch_, mappingName, context);
-      if (collection != null) {
-        return collection;
-      }
+      outputNodes = current.applyDefault(this, _switch, context.getInputName(), context); // FIXME TSM.applyDefault without explicit mappingLabel
+      generator.recordTransformInputTrace(context.getInput(), outputNodes);
+      return outputNodes;
     }
-
     // no switch-case found for the inputNode - continue with templateNode under the $switch$
     return null;
   }
 
   @Override
   public Collection<SNode> applyTemplate(@NotNull SNodeReference templateDeclaration, @NotNull SNodeReference templateNode, @NotNull TemplateContext context, Object... arguments) throws GenerationException {
-    TemplateModel templateModel = generator.getRuleManager().getTemplateModel(templateDeclaration.getModelReference());
-    if (templateModel == null) {
-      generator.getLogger().error(templateNode.resolve(MPSModuleRepository.getInstance()), "template model not found: cannot apply template declaration, try to check & regenerate affected generators",
-        GeneratorUtil.describeIfExists(context.getInput(), "input"),
-        GeneratorUtil.describeIfExists(templateNode.resolve(MPSModuleRepository.getInstance()), "template"),
-        GeneratorUtil.describeIfExists(templateDeclaration.resolve(MPSModuleRepository.getInstance()), "template declaration"));
-      return Collections.emptyList();
-    }
-
-    TemplateDeclaration templateDeclarationInstance = templateModel.loadTemplate(templateDeclaration, arguments);
+    TemplateDeclaration templateDeclarationInstance = loadTemplateDeclaration(templateDeclaration, templateNode, context, arguments);
     if (templateDeclarationInstance == null) {
-      generator.getLogger().error(templateNode.resolve(MPSModuleRepository.getInstance()), "declaration not found: cannot apply template declaration, try to check & regenerate affected generators",
-        GeneratorUtil.describeIfExists(context.getInput(), "input"),
-        GeneratorUtil.describeIfExists(templateNode.resolve(MPSModuleRepository.getInstance()), "template"),
-        GeneratorUtil.describeIfExists(templateDeclaration.resolve(MPSModuleRepository.getInstance()), "template declaration"));
       return Collections.emptyList();
     }
-
     return templateDeclarationInstance.apply(this, context);
   }
 
-  @Override
-  public Collection<SNode> weaveTemplate(@NotNull SNodeReference templateDeclaration, @NotNull SNodeReference templateNode, @NotNull TemplateContext context, @NotNull SNode outputContextNode, Object... arguments) throws GenerationException {
-    TemplateModel templateModel = generator.getRuleManager().getTemplateModel(templateDeclaration.getModelReference());
-    if (templateModel == null) {
-      generator.getLogger().error(templateNode.resolve(MPSModuleRepository.getInstance()), "template model not found: cannot apply template declaration, try to check & regenerate affected generators",
-        GeneratorUtil.describeIfExists(context.getInput(), "input"),
-        GeneratorUtil.describeIfExists(templateNode.resolve(MPSModuleRepository.getInstance()), "template"),
-        GeneratorUtil.describeIfExists(templateDeclaration.resolve(MPSModuleRepository.getInstance()), "template declaration"));
-      return Collections.emptyList();
+  /*package*/ TemplateDeclaration loadTemplateDeclaration(@NotNull SNodeReference templateDeclaration, @NotNull SNodeReference templateNode, @NotNull TemplateContext context, Object... arguments) {
+    TemplateModel templateModel = generator.getGenerationPlan().getTemplateModel(templateDeclaration.getModelReference());
+    TemplateDeclaration templateDeclarationInstance = templateModel == null ? null : templateModel.loadTemplate(templateDeclaration, arguments);
+    if (templateModel == null || templateDeclarationInstance == null) {
+      String msg = "%s not found: cannot apply template declaration, try to check & regenerate affected generators";
+      getLogger().error(templateNode, String.format(msg, templateModel == null ? "template model" : "declaration"),
+          GeneratorUtil.describeIfExists(context.getInput(), "input"),
+          GeneratorUtil.describe(templateNode, "template"),
+          GeneratorUtil.describe(templateDeclaration, "template declaration"));
+      return null;
     }
-
-    TemplateDeclaration templateDeclarationInstance = templateModel.loadTemplate(templateDeclaration, arguments);
-    if (templateDeclarationInstance == null || !(templateDeclarationInstance instanceof TemplateDeclarationWeavingAware)) {
-      generator.getLogger().error(templateNode.resolve(MPSModuleRepository.getInstance()), "declaration not found: cannot apply template declaration, try to check & regenerate affected generators",
-        GeneratorUtil.describeIfExists(context.getInput(), "input"),
-        GeneratorUtil.describeIfExists(templateNode.resolve(MPSModuleRepository.getInstance()), "template"),
-        GeneratorUtil.describeIfExists(templateDeclaration.resolve(MPSModuleRepository.getInstance()), "template declaration"));
-      return Collections.emptyList();
-    }
-
-    return ((TemplateDeclarationWeavingAware) templateDeclarationInstance).weave(this, context, outputContextNode);
+    return templateDeclarationInstance;
   }
 
 
   @Override
   public void nodeCopied(TemplateContext context, SNode outputNode, String templateNodeId) {
-    GeneratorMappings mappings = generator.getMappings();
-    mappings.addOutputNodeByInputAndTemplateNode(context.getInput(), templateNodeId, outputNode);
-    for (SNode historyInputNode : context.getInputHistory()) {
-      mappings.addOutputNodeByIndirectInputAndTemplateNode(historyInputNode, templateNodeId, outputNode);
-    }
-    mappings.addOutputNodeByTemplateNode(templateNodeId, outputNode);
+    generator.nodeCopied(context, outputNode, templateNodeId);
   }
 
   @Override
   public void registerLabel(SNode inputNode, SNode outputNode, String mappingLabel) {
-    generator.getMappings().addOutputNodeByInputNodeAndMappingName(inputNode, mappingLabel, outputNode);
+    generator.registerMappingLabel(inputNode, mappingLabel, outputNode);
   }
 
   @Override
   public void registerLabel(SNode inputNode, Iterable<SNode> outputNodes, String mappingLabel) {
     for (SNode outputNode : outputNodes) {
-      generator.getMappings().addOutputNodeByInputNodeAndMappingName(inputNode, mappingLabel, outputNode);
+      generator.registerMappingLabel(inputNode, mappingLabel, outputNode);
     }
   }
 
   @Override
-  public void resolveInTemplateLater(@NotNull SNode outputNode, String role, SNodeReference sourceNode, int parentIndex, String resolveInfo, TemplateContext context) {
-    ReferenceInfo_TemplateParent refInfo = new ReferenceInfo_TemplateParent(
-      outputNode,
-      role,
-      sourceNode,
-      parentIndex,
-      resolveInfo,
-      context);
-    PostponedReference postponedReference = new PostponedReference(
-      refInfo,
-      generator
-    );
-    outputNode.setReference(postponedReference.getRole(), postponedReference);
+  public void resolveInTemplateLater(@NotNull SNode outputNode, @NotNull SReferenceLink role, SNodeReference sourceNode, String templateNodeId, String resolveInfo, TemplateContext context) {
+    ReferenceInfo_Template refInfo = new ReferenceInfo_Template(sourceNode, templateNodeId, resolveInfo, context);
+    new PostponedReference(role, outputNode, refInfo).registerWith(generator);
+  }
+
+  @Deprecated
+  public void resolveInTemplateLater(@NotNull SNode outputNode, @NotNull String role, SNodeReference sourceNode, String templateNodeId, String resolveInfo, TemplateContext context) {
+    ReferenceInfo_Template refInfo = new ReferenceInfo_Template(sourceNode, templateNodeId, resolveInfo, context);
+    new PostponedReference(((ConceptMetaInfoConverter) outputNode.getConcept()).convertAssociation(role), outputNode, refInfo).registerWith(generator);
   }
 
   @Override
-  public void resolveInTemplateLater(@NotNull SNode outputNode, String role, SNodeReference sourceNode, String templateNodeId, String resolveInfo, TemplateContext context) {
-    ReferenceInfo_Template refInfo = new ReferenceInfo_Template(
-      outputNode,
-      role,
-      sourceNode,
-      templateNodeId,
-      resolveInfo,
-      context);
-    PostponedReference postponedReference = new PostponedReference(
-      refInfo,
-      generator
-    );
-    outputNode.setReference(postponedReference.getRole(), postponedReference);
+  public void resolve(@NotNull ReferenceResolver resolver) {
+    ReferenceInfo_Macro refInfo = new ReferenceInfo_Macro(resolver);
+    new PostponedReference(resolver.getReferenceRole(), resolver.getOutputNode(), refInfo).registerWith(generator);
   }
 
   @Override
-  public void resolve(ReferenceResolver resolver, SNode outputNode, String role, TemplateContext context) {
-    ReferenceInfo_Macro refInfo = new ReferenceInfo_MacroResolver(
-      resolver, outputNode,
-      role, context,
-      reductionContext);
-    PostponedReference postponedReference = new PostponedReference(
-      refInfo,
-      generator
-    );
-    outputNode.setReference(postponedReference.getRole(), postponedReference);
+  public void postProcess(@NotNull NodePostProcessor postProcessor) {
+    generator.getDelayedChanges().add(postProcessor);
   }
 
-  /*
-  *  returns temporary node
-  */
+  @NotNull
   @Override
-  public SNode insertLater(@NotNull NodeMapper mapper, PostProcessor postProcessor, TemplateContext context) {
-    SNode childToReplaceLater = SModelUtil_new.instantiateConceptDeclaration(mapper.getConceptFqName(), generator.getOutputModel(), generator.getScope(), false);
-    tracer.pushOutputNodeToReplaceLater(childToReplaceLater);
-    generator.getDelayedChanges().addExecuteNodeMapper(mapper, postProcessor, childToReplaceLater, context, reductionContext);
-    return childToReplaceLater;
+  public NodeWeaveFacility prepareWeave(@NotNull WeaveContext context, @NotNull SNodeReference templateNode) {
+    return new NodeWeaveSupport(context, templateNode, this);
   }
 
-  @Override
-  public void postProcess(@NotNull PostProcessor processor, SNode outputNode, TemplateContext context) {
-    generator.getDelayedChanges().addExecutePostProcessor(processor, outputNode, context, reductionContext);
+  // Internal API, perhaps, shall be part of ExecutionEnvironmentInternal iface
+
+  void blockReductionsForCopiedNode(SNode inputNode, SNode outputNode) {
+    myReductionTrack.blockReductionsForCopiedNode(inputNode, outputNode);
   }
 
-  @Override
-  public void weaveNode(SNode contextParentNode, String childRole, SNode outputNodeToWeave, SNodeReference templateNode, SNode inputNode) {
-    if (outputNodeToWeave == null) {
-      return;
-    }
-
-    fillOriginalNode(inputNode, outputNodeToWeave);
-
-    // check child
-    RoleValidationStatus status = generator.validateChild(contextParentNode, childRole, outputNodeToWeave);
-    if (status != null) {
-      status.reportProblem(false, "",
-        GeneratorUtil.describe(inputNode, "input"),
-        GeneratorUtil.describe(templateNode.resolve(MPSModuleRepository.getInstance()), "template"));
-    }
-
-    // add
-    SNode/*LinkDeclaration*/ childLinkDeclaration = SModelSearchUtil.findLinkDeclaration(((jetbrains.mps.smodel.SNode) contextParentNode).getConceptDeclarationNode(), childRole);
-    if (childLinkDeclaration == null) {
-      // there should have been warning about that
-      contextParentNode.addChild(childRole, outputNodeToWeave);
-    } else {
-      if (SModelUtil.isMultipleLinkDeclaration(childLinkDeclaration)) {
-        contextParentNode.addChild(childRole, outputNodeToWeave);
-      } else {
-        SNode oldChild = jetbrains.mps.util.SNodeOperations.getChild(contextParentNode, childRole);
-        if (oldChild != null) {
-          // if singular child then don't add more that 1 child
-          contextParentNode.removeChild(oldChild);
+  @Nullable
+  Collection<SNode> tryToReduce(@NotNull SNode inputNode) throws GenerationFailureException, GenerationCanceledException {
+    FastRuleFinder rf = generator.getRuleManager().getReductionRules();
+    Collection<SNode> outputNodes = tryToReduce(rf, new DefaultTemplateContext(this, inputNode, null));
+    if (outputNodes != null) {
+      if (outputNodes.size() == 1) {
+        // [artem] I have no idea why same mappings are not done for switch, but it's the way it goes from rev d552b27
+        SNode reducedNode = outputNodes.iterator().next();
+        // output node should be accessible via 'findCopiedNode'
+        generator.addCopiedOutputNodeForInputNode(inputNode, reducedNode);
+        // preserve user objects
+        if (TracingUtil.getInput(reducedNode) == null) {
+          CopyUtil.copyUserObjects(inputNode, reducedNode);
+          // keep track of 'original input node'
+          TracingUtil.fillOriginalNode(inputNode, reducedNode, false);
         }
-        contextParentNode.addChild(childRole, outputNodeToWeave);
       }
+      generator.recordTransformInputTrace(inputNode, outputNodes);
+      return outputNodes;
     }
+    return null;
   }
 
-  private void fillOriginalNode(SNode inputNode, SNode outputNode) {
-    TracingUtil.fillOriginalNode(inputNode, outputNode, inputNode.getModel() == getGenerator().getGeneratorSessionContext().getOriginalInputModel());
+
+  protected final Set<SNodeReference> myFailedRules = new ConcurrentHashSet<SNodeReference>();
+  /*
+   * returns null if no reductions found
+   */
+  @Nullable
+  Collection<SNode> tryToReduce(FastRuleFinder<TemplateReductionRule> ruleFinder, @NotNull TemplateContext context) throws GenerationFailureException, GenerationCanceledException {
+    final SNode inputNode = context.getInput();
+    TemplateReductionRule reductionRule = null;
+    // find rule
+    List<TemplateReductionRule> conceptRules = ruleFinder.findReductionRules(inputNode);
+    if (conceptRules == null) {
+      return null;
+    }
+    try {
+      for (TemplateReductionRule rule : conceptRules) {
+        reductionRule = rule;
+        if (!myReductionTrack.isReductionBlocked(inputNode, rule)) {
+          if (rule instanceof TemplateRuleWithCondition) {
+            if (!getQueryExecutor().isApplicable((TemplateRuleWithCondition) rule, context)) {
+              continue;
+            }
+            // fall-through
+          }
+          try {
+            myReductionTrack.enter(inputNode, rule);
+            Collection<SNode> outputNodes = getQueryExecutor().applyRule(rule, context);
+            if (outputNodes != null) {
+              SNodeId in = context.getInput() == null ? null : context.getInput().getNodeId();
+              getTrace().trace(in, GenerationTracerUtil.translateOutput(outputNodes), rule.getRuleNode());
+              generator.copyNodeAttributes(context, outputNodes, this);
+              return outputNodes;
+            }
+          } catch (DismissTopMappingRuleException ex) {
+            // it's ok, just continue with a next applicable rule, if any
+            generator.reportDismissRuleException(ex, reductionRule);
+          } finally {
+            myReductionTrack.leave();
+          }
+        }
+      }
+    } catch (AbandonRuleInputException ex) {
+      return Collections.emptyList();
+    } catch (TemplateProcessingFailureException ex) {
+      SNodeReference ruleNode = reductionRule.getRuleNode();
+      if (myFailedRules.add(ruleNode)) {
+        getLogger().error(ruleNode, String.format("Reduction rule failed: %s", ex.getMessage()), ex.asProblemDescription());
+      }
+    } catch (GenerationFailureException ex) {
+      throw ex;
+    } catch (GenerationCanceledException ex) {
+      throw ex;
+    } catch (GenerationException ex) {
+      // ignore
+      // shall not happen provided we know all subclasses of GenerationException.
+      // XXX why log? perhaps, could throw as GenerationFailureException? Meanwhile, did what TemplateGenerator#applyCreateRoot does
+      getLogger().error(reductionRule == null ? null : reductionRule.getRuleNode(), "internal error: " + ex.toString());
+    }
+    return null;
   }
 }

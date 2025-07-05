@@ -8,43 +8,55 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 
 public class DeleteStaticInMethodDeclaration {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new DeleteStaticInMethodDeclaration.DeleteStaticInMethodDeclaration_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new DeleteStaticInMethodDeclaration.DeleteStaticInMethodDeclaration_BACKSPACE(node));
   }
-
   public static class DeleteStaticInMethodDeclaration_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public DeleteStaticInMethodDeclaration_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      final SNode method = SNodeFactoryOperations.insertNewNextSiblingChild(node, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-      SLinkOperations.setTarget(method, "returnType", SLinkOperations.getTarget(node, "returnType", true), true);
-      ListSequence.fromList(SLinkOperations.getTargets(method, "parameter", true)).addSequence(ListSequence.fromList(SLinkOperations.getTargets(node, "parameter", true)));
-      SLinkOperations.setTarget(method, "body", SLinkOperations.getTarget(node, "body", true), true);
-      ListSequence.fromList(SLinkOperations.getTargets(method, "throwsItem", true)).addSequence(ListSequence.fromList(SLinkOperations.getTargets(node, "throwsItem", true)));
-      SLinkOperations.setTarget(SNodeOperations.cast(method, "jetbrains.mps.baseLanguage.structure.ClassifierMember"), "visibility", SLinkOperations.getTarget(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.ClassifierMember"), "visibility", true), true);
-      SPropertyOperations.set(method, "name", SPropertyOperations.getString(node, "name"));
-      SPropertyOperations.set(method, "isFinal", "" + (SPropertyOperations.getBoolean(node, "isFinal")));
-      ListSequence.fromList(SLinkOperations.getTargets(method, "annotation", true)).addSequence(ListSequence.fromList(SLinkOperations.getTargets(node, "annotation", true)));
-      ListSequence.fromList(SLinkOperations.getTargets(method, "typeVariableDeclaration", true)).addSequence(ListSequence.fromList(SLinkOperations.getTargets(node, "typeVariableDeclaration", true)));
-      AttributeOperations.setAttribute(method, new IAttributeDescriptor.NodeAttribute(SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment")), AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment"))));
-      SNodeOperations.deleteNode(node);
+      SNode replacing = SNodeFactoryOperations.replaceWithNewChild(node, SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")));
+      MemberDeclarationRefactoringUtil.rewireMethodReferences(node, replacing);
+
+      if (SPropertyOperations.getBoolean(replacing, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized"))) {
+        SelectionUtil.selectCell(editorContext, replacing, "synchronizedModifier");
+      } else if (SPropertyOperations.getBoolean(replacing, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative"))) {
+        SelectionUtil.selectCell(editorContext, replacing, "nativeModifier");
+      } else {
+        SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(replacing, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType")), SelectionManager.FIRST_EDITABLE_CELL, 0);
+      }
+    }
+  }
+  public static class DeleteStaticInMethodDeclaration_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public DeleteStaticInMethodDeclaration_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      SNode replacing = SNodeFactoryOperations.replaceWithNewChild(node, SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")));
+      MemberDeclarationRefactoringUtil.rewireMethodReferences(node, replacing);
+
+      if (SPropertyOperations.getBoolean(replacing, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal"))) {
+        SelectionUtil.selectLabelCellAnSetCaret(editorContext, replacing, "finalModifier", -1);
+      } else {
+        SelectionUtil.selectLabelCellAnSetCaret(editorContext, replacing, SelectionManager.FIRST_EDITABLE_CELL, -1);
+      }
     }
   }
 }

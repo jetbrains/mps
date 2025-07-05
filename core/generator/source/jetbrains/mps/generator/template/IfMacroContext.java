@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2013 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,25 +16,18 @@
 package jetbrains.mps.generator.template;
 
 import jetbrains.mps.generator.runtime.TemplateContext;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
+/**
+ * Perhaps, shall replace usages right with TemplateQueryContextWithMacro
+ */
 public class IfMacroContext extends TemplateQueryContextWithMacro {
 
-  public IfMacroContext(SNode node, SNode ifMacro, TemplateContext context, ITemplateGenerator generator) {
-    super(node, ifMacro, context, generator);
-  }
-
-  public IfMacroContext(SNode node, @NotNull SNodeReference ifMacro, TemplateContext context, @NotNull ITemplateGenerator generator) {
-    super(node, ifMacro, context, generator);
-  }
-
   /**
-   * 'node' mapping
+   * @since 3.1
    */
-  @Override
-  public SNode getNode() {
-    return getInputNode();
+  public IfMacroContext(@NotNull TemplateContext context, @NotNull SNodeReference ifMacro) {
+    super(context, ifMacro);
   }
 }

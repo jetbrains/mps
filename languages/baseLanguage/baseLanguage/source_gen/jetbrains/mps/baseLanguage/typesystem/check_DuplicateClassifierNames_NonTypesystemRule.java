@@ -8,50 +8,97 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
-import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.baseLanguage.behavior.IMemberContainer__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class check_DuplicateClassifierNames_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_DuplicateClassifierNames_NonTypesystemRule() {
   }
-
   public void applyRule(final SNode classifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final String name = SPropertyOperations.getString(classifier, "name");
-    if ((name == null || name.length() == 0)) {
+    final String name = SPropertyOperations.getString(classifier, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+    if ((name == null || name.length() == 0) || SNodeOperations.isInstanceOf(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass"))) {
       return;
     }
-    if (ListSequence.fromList(SModelOperations.getRoots(SNodeOperations.getModel(classifier), "jetbrains.mps.baseLanguage.structure.Classifier")).any(new IWhereFilter<SNode>() {
+    Iterable<SNode> siblingClassifiers;
+    SNode parentClassifier = SNodeOperations.getNodeAncestor(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false);
+    if ((parentClassifier == null)) {
+      siblingClassifiers = SModelOperations.roots(SNodeOperations.getModel(classifier), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+    } else {
+      if (eq_orvnxv_a0a0a4a1(SPropertyOperations.getString(parentClassifier, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), SPropertyOperations.getString(classifier, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")))) {
+        {
+          MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifier, "The nested type '" + SPropertyOperations.getString(classifier, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "' cannot hide an enclosing type", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125184154445", null, errorTarget);
+        }
+      }
+      siblingClassifiers = ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(parentClassifier)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+        }
+      }).select(new ISelector<SNode, SNode>() {
+        public SNode select(SNode it) {
+          return SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+        }
+      });
+    }
+    if (Sequence.fromIterable(siblingClassifiers).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != classifier && SPropertyOperations.hasValue(it, "name", name);
+        return it != classifier && SPropertyOperations.hasValue(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), name);
       }
     })) {
-      {
-        MessageTarget errorTarget = new NodeMessageTarget();
-        errorTarget = new PropertyMessageTarget("name");
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifier, "Duplicated name of classifier '" + name + "' in model", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7469468981580406086", null, errorTarget);
+      if ((parentClassifier == null)) {
+        {
+          MessageTarget errorTarget = new NodeMessageTarget();
+          errorTarget = new PropertyMessageTarget("name");
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifier, "Duplicated name of classifier '" + name + "' in model", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7469468981580406086", null, errorTarget);
+        }
+      } else {
+        {
+          MessageTarget errorTarget = new NodeMessageTarget();
+          errorTarget = new PropertyMessageTarget("name");
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifier, "Duplicated name of nested classifier '" + name, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125185755179", null, errorTarget);
+        }
+      }
+    } else if (Sequence.fromIterable(siblingClassifiers).any(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return it != classifier && name.equalsIgnoreCase(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+      }
+    })) {
+      if ((parentClassifier == null)) {
+        {
+          MessageTarget errorTarget = new NodeMessageTarget();
+          errorTarget = new PropertyMessageTarget("name");
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(classifier, "Duplicated case-insensitive name of classifier '" + name + "' in model", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1005490780644144570", null, errorTarget);
+        }
+      } else {
+        {
+          MessageTarget errorTarget = new NodeMessageTarget();
+          errorTarget = new PropertyMessageTarget("name");
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(classifier, "Duplicated case-insensitive name of nested classifier '" + name, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1005490780655218249", null, errorTarget);
+        }
       }
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.baseLanguage.structure.Classifier";
+  public SAbstractConcept getApplicableConcept() {
+    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConcept().getQualifiedName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
+  }
+  private static boolean eq_orvnxv_a0a0a4a1(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
   }
 }

@@ -15,18 +15,20 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.smodel.SModelRepositoryListener.SModelRepositoryListenerPriority;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SModel;
-
-import jetbrains.mps.MPSCore;
+import jetbrains.mps.classloading.ModuleClassLoader;
+import jetbrains.mps.classloading.ModuleClassLoader.ModuleClassLoaderIsDisposedException;
 import jetbrains.mps.components.CoreComponent;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.smodel.SModelRepositoryListener.SModelRepositoryListenerPriority;
 import jetbrains.mps.smodel.event.SModelCommandListener;
 import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.smodel.event.SModelListener;
 import jetbrains.mps.smodel.event.SModelListener.SModelListenerPriority;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -34,24 +36,44 @@ import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * @deprecated There ain't no such thing as global event dispatch. Attach your listeners to specific repository instead.
+ * See individual methods ({@link #addGlobalCommandListener(SModelCommandListener)} and {@link #addGlobalModelListener(SModelListener)} for replacement details.
+ *
+ */
+@Deprecated
+@ToRemove(version = 3.4)
 public class GlobalSModelEventsManager implements CoreComponent {
   private static final Logger LOG = LogManager.getLogger(GlobalSModelEventsManager.class);
+  private static GlobalSModelEventsManager ourInstance;
+  private SModelRepositoryListener myRepositoryListener = new SModelRepositoryAdapter(SModelRepositoryListenerPriority.PLATFORM) {
+    @Override
+    public void modelAdded(SModel modelDescriptor) {
+      addListeners(modelDescriptor);
+    }
+
+    @Override
+    public void modelRemoved(SModel modelDescriptor) {
+      removeListeners(modelDescriptor);
+    }
+  };
 
   public static GlobalSModelEventsManager getInstance() {
-    return MPSCore.getInstance().getGlobalSModelEventsManager();
+    return ourInstance;
   }
 
   private SModelRepository mySModelRepository;
 
   private List<List<SModelListener>> myGlobalListenersList;
-  private List<SModelCommandListener> myGlobalCommandListeners = new ArrayList<SModelCommandListener>();
+  private List<SModelCommandListener> myGlobalCommandListeners = new CopyOnWriteArrayList<SModelCommandListener>();
 
   private SModelListener[] myRelayListeners;
   private MyEventsCollector myEventsCollector = new MyEventsCollector();
 
-  public GlobalSModelEventsManager(SModelRepository SModelRepository) {
-    mySModelRepository = SModelRepository;
+  public GlobalSModelEventsManager(SModelRepository modelRepository) {
+    mySModelRepository = modelRepository;
     myRelayListeners = new SModelListener[SModelListenerPriority.values().length];
     myGlobalListenersList = new ArrayList<List<SModelListener>>(SModelListenerPriority.values().length);
     for (SModelListenerPriority priority : SModelListenerPriority.values()) {
@@ -62,46 +84,50 @@ public class GlobalSModelEventsManager implements CoreComponent {
 
   @Override
   public void init() {
-    ModelAccess.instance().runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        mySModelRepository.addModelRepositoryListener(new SModelRepositoryAdapter(SModelRepositoryListenerPriority.PLATFORM) {
-          @Override
-          public void modelAdded(SModel modelDescriptor) {
-            addListeners(modelDescriptor);
-          }
+    if (ourInstance != null) {
+      throw new IllegalStateException("already initialized");
+    }
+    ourInstance = this;
 
-          @Override
-          public void modelRemoved(SModel modelDescriptor) {
-            removeListeners(modelDescriptor);
-          }
-        });
+    mySModelRepository.addModelRepositoryListener(myRepositoryListener);
 
-        for (SModel sm : mySModelRepository.getModelDescriptors()) {
-          addListeners(sm);
-        }
-      }
-    });
+    for (SModel sm : mySModelRepository.getModelDescriptors()) {
+      addListeners(sm);
+    }
   }
 
   @Override
   public void dispose() {
+    for (SModel sm : mySModelRepository.getModelDescriptors()) {
+      removeListeners(sm);
+    }
+
+    mySModelRepository.removeModelRepositoryListener(myRepositoryListener);
+
+    myEventsCollector.dispose();
+    ourInstance = null;
   }
 
   private void addListeners(SModel sm) {
     for (SModelListener listener : myRelayListeners) {
       ((SModelInternal) sm).addModelListener(listener);
     }
-    myEventsCollector.add(sm);
+    myEventsCollector.startListeningToModel(sm);
   }
 
   private void removeListeners(SModel sm) {
     for (SModelListener listener : myRelayListeners) {
       ((SModelInternal) sm).removeModelListener(listener);
     }
-    myEventsCollector.remove(sm);
+    myEventsCollector.stopListeningToModel(sm);
   }
 
+  /**
+   * @deprecated Use {@link org.jetbrains.mps.openapi.model.SNodeChangeListener} or {@link org.jetbrains.mps.openapi.model.SNodeAccessListener} instead.
+   *             If these listeners are insufficient (e.g. to find out about changed model imports, please contact MPS team/Artem).
+   */
+  @Deprecated
+  @ToRemove(version = 3.4)
   public void addGlobalModelListener(SModelListener l) {
     myGlobalListenersList.get(l.getPriority().ordinal()).add(l);
   }
@@ -110,6 +136,16 @@ public class GlobalSModelEventsManager implements CoreComponent {
     myGlobalListenersList.get(l.getPriority().ordinal()).remove(l);
   }
 
+  /**
+   * @deprecated Use {@link org.jetbrains.mps.openapi.repository.CommandListener}
+   * or {@link org.jetbrains.mps.openapi.module.SRepositoryListener#commandFinished(SRepository)}
+   *
+   * You may also find {@link jetbrains.mps.smodel.event.RepositoryChangeTracker} convenient.
+   *
+   * Listener is notified within model write action
+   */
+  @Deprecated
+  @ToRemove(version = 3.4)
   public void addGlobalCommandListener(@NotNull SModelCommandListener l) {
     myGlobalCommandListeners.add(l);
   }
@@ -123,40 +159,49 @@ public class GlobalSModelEventsManager implements CoreComponent {
   }
 
   private SModelListener createRelayListener(final SModelListenerPriority priority) {
-    return (SModelListener) Proxy.newProxyInstance(
-      getClass().getClassLoader(),
-      new Class[]{SModelListener.class},
+    return (SModelListener) Proxy.newProxyInstance(getClass().getClassLoader(), new Class[]{SModelListener.class},
       new InvocationHandler() {
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-          if (method.getName().equals("equals") && args.length == 1) {
+          String methodName = method.getName();
+
+          if (methodName.equals("equals") && args.length == 1) {
             return proxy == args[0];
-          }
-
-          if (method.getName().equals("hashCode") && args == null) {
+          } else if (methodName.equals("hashCode") && args == null) {
             return this.hashCode();
-          }
-
-          if (method.getName().equals("getPriority") && args == null) {
+          } else if (methodName.equals("getPriority") && args == null) {
             return priority;
           }
-
           method.setAccessible(true);
-          for (SModelListener l : globalListeners(priority)) {
+
+          List<SModelListener> listeners = globalListeners(priority);
+          for (SModelListener listener : listeners) {
             try {
-              method.invoke(l, args);
+              checkListenerIsValid(listener);
+              method.invoke(listener, args);
             } catch (Throwable t) {
-              LOG.error(null, t);
+              LOG.error("Exception while invoking an SModelListener " + listener + " by reflection", t);
             }
           }
 
           return null;
         }
+
+        /**
+         * Checks that listener's class loader is not disposed (in the case when the listener belongs to some module)
+         */
+        private void checkListenerIsValid(SModelListener listener) {
+          ClassLoader classLoader = listener.getClass().getClassLoader();
+          if (classLoader instanceof ModuleClassLoader && ((ModuleClassLoader) classLoader).isDisposed()) {
+            LOG.error("SModelListener " + listener + " has a disposed ClassLoader. A possible reason: the listener was not properly unregistered. Removing the listener explicitly.", new IllegalStateException());
+            GlobalSModelEventsManager.this.removeGlobalModelListener(listener);
+          }
+        }
       }
     );
   }
 
-  private class MyEventsCollector extends EventsCollector {
+  private class MyEventsCollector extends ModelsEventsCollector {
     @Override
     protected void eventsHappened(List<SModelEvent> events) {
       if (events.isEmpty()) return;

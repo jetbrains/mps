@@ -5,22 +5,29 @@
       <configuration>
         <option name="UUID" value="82c058c0-76db-4a07-8330-9d805cd11426" />
         <option name="generatorOutputPath" value="$MODULE_DIR$/src_gen" />
-        <option name="modelRoots" />
+        <modelRoots>
+          <modelRoot type="default">
+            <settings contentPath="$MODULE_DIR$" type="default" />
+          </modelRoot>
+        </modelRoots>
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
+  <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/classes" />
     <output-test url="file://$MODULE_DIR$/testclasses" />
     <exclude-output />
     <content url="file://$MODULE_DIR$" />
-    <content url="file://$MODULE_DIR$/../../../plugins/mpsjava/basePlatform">
-      <sourceFolder url="file://$MODULE_DIR$/../../../plugins/mpsjava/basePlatform/source_gen" isTestSource="false" />
-    </content>
     <orderEntry type="jdk" jdkName="IDEA IC" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="mps.MPS.Core_auto" level="project" />
-    <orderEntry type="library" name="mps.MPS.OpenAPI_auto" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../lib/mps-java-platform.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
-

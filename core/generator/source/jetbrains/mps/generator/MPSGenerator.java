@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,43 +15,54 @@
  */
 package jetbrains.mps.generator;
 
-import jetbrains.mps.MPSCore;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.components.ComponentPlugin;
-import jetbrains.mps.generator.impl.RootTemplateAnnotator;
+import jetbrains.mps.cleanup.CleanupManager;
+import jetbrains.mps.components.ComponentPluginBase;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
 import jetbrains.mps.generator.info.GeneratorPathsComponent;
-import jetbrains.mps.generator.traceInfo.TraceInfoCache;
-import jetbrains.mps.smodel.GlobalSModelEventsManager;
-import jetbrains.mps.smodel.SModelRepository;
+import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.textgen.trace.TraceInfoCache;
+import org.jetbrains.mps.openapi.module.FacetsFacade;
+import org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
+import org.jetbrains.mps.openapi.module.SModuleFacet;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 /**
  * evgeny, 10/14/11
  */
-public class MPSGenerator extends ComponentPlugin {
+public final class MPSGenerator extends ComponentPluginBase {
+  private final FacetsFacade myFacetsFacade;
+  private FacetFactory myGeneratorFacetFactory = new FacetFactory() {
+    @Override
+    public SModuleFacet create() {
+      return new CustomGenerationModuleFacet();
+    }
+  };
 
-  private static MPSGenerator ourInstance = new MPSGenerator();
-
-  public static MPSGenerator getInstance() {
-    return ourInstance;
-  }
-
-  private MPSGenerator() {
+  public MPSGenerator() {
+    // XXX in fact, shall receive FF as an argument
+    myFacetsFacade = FacetsFacade.getInstance();
   }
 
   @Override
   public void init() {
     super.init();
-    final SModelRepository modelRepository = MPSCore.getInstance().getModelRepository();
-    final GlobalSModelEventsManager globalSModelEventsManager = MPSCore.getInstance().getGlobalSModelEventsManager();
-    final ClassLoaderManager classLoaderManager = ClassLoaderManager.getInstance();
-
-    init(new GeneratorsManager(classLoaderManager));
-    init(new TraceInfoCache(modelRepository));
-    init(new GenerationDependenciesCache(modelRepository));
+    // XXX revisit once we got honest per-project repositories. It's not clear which project to take here
+    SRepository repository = MPSModuleRepository.getInstance();
+    CleanupManager clManager = CleanupManager.getInstance();
+    init(new TraceInfoCache(repository, clManager));
+    final ModelGenerationStatusManager mgsm = init(new ModelGenerationStatusManager());
+    final GenerationDependenciesCache depsCache = init(new GenerationDependenciesCache(repository, clManager, mgsm));
+    mgsm.setModelHashSource(depsCache);
     init(new GeneratorPathsComponent());
-    init(new ModelGenerationStatusManager());
-    init(new RootTemplateAnnotator(globalSModelEventsManager));
     init(new GenerationSettingsProvider());
+    // FIXME odd registration/un-registration mechanism. Factory shall know its facet type
+    // and #create there shall take SModule
+    myFacetsFacade.addFactory(CustomGenerationModuleFacet.FACET_TYPE, myGeneratorFacetFactory);
+  }
+
+  @Override
+  public void dispose() {
+    myFacetsFacade.removeFactory(myGeneratorFacetFactory);
+    super.dispose();
   }
 }

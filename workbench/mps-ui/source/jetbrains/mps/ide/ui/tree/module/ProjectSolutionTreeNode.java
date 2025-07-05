@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,38 +16,35 @@
 package jetbrains.mps.ide.ui.tree.module;
 
 import jetbrains.mps.ide.icons.IdeIcons;
+import jetbrains.mps.ide.ui.tree.module.SModelsSubtree.StubsTreeNode;
+import jetbrains.mps.ide.ui.tree.module.SModelsSubtree.TestsTreeNode;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.ModuleContext;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.project.Solution;
+import jetbrains.mps.smodel.SModelStereotype;
+import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProjectSolutionTreeNode extends ProjectModuleTreeNode {
-  private AbstractModule mySolution;
   private boolean myShortNameOnly;
 
   private boolean myInitialized;
 
-  protected ProjectSolutionTreeNode(AbstractModule solution, Project project, boolean shortNameOnly) {
-    super(new ModuleContext(solution, project));
+  protected ProjectSolutionTreeNode(@NotNull AbstractModule solution, Project project, boolean shortNameOnly) {
+    super(solution);
     myShortNameOnly = shortNameOnly;
-    mySolution = solution;
-
-    IFile descriptorFile = mySolution.getDescriptorFile();
-    String id = descriptorFile == null ? mySolution.getModuleName() : descriptorFile.getPath();
-    setNodeIdentifier(id);
+    setNodeIdentifier(solution.getModuleId().toString());
     setIcon(IdeIcons.SOLUTION_ICON);
-    init();
-  }
-
-  @Override
-  public AbstractModule getModule() {
-    return mySolution;
   }
 
   @Override
   public String getModuleText() {
-    String name = mySolution.getModuleName();
+    String name = getModule().getModuleName();
 
     if (myShortNameOnly) {
       name = NameUtil.shortNameFromLongName(name);
@@ -65,12 +62,49 @@ public class ProjectSolutionTreeNode extends ProjectModuleTreeNode {
   }
 
   @Override
-  public void init() {
-    populate();
+  protected void doInit() {
+    if (getModule() instanceof Solution) {
+      ModuleNodeChildrenProvider childrenProvider = getAncestor(ModuleNodeChildrenProvider.class);
+      if (childrenProvider == null || !childrenProvider.populate(this, (Solution) getModule())) {
+        populate();
+      }
+    } else {
+      // there are other module implementations beside Solution (namely, ProjectStructureModule, TempModule, EvaluationModule)
+      // that we don't care to control, and default implementation with all models is sufficient
+      populate();
+    }
     myInitialized = true;
   }
 
   private void populate() {
-    SModelsSubtree.create(this, getOperationContext());
+    List<SModel> regularModels = new ArrayList<SModel>();
+    List<SModel> tests = new ArrayList<SModel>();
+    List<SModel> stubs = new ArrayList<SModel>();
+
+    for (SModel modelDescriptor : getModule().getModels()) {
+      if (TemporaryModels.isTemporary(modelDescriptor)) continue;
+
+      if (SModelStereotype.isStubModel(modelDescriptor)) {
+        stubs.add(modelDescriptor);
+      } else if (SModelStereotype.isTestModel(modelDescriptor)) {
+        tests.add(modelDescriptor);
+      } else {
+        regularModels.add(modelDescriptor);
+      }
+    }
+    if (!regularModels.isEmpty()) {
+      new SModelsSubtree(this).create(regularModels);
+    }
+    if (!tests.isEmpty()) {
+      TestsTreeNode testsNode = new TestsTreeNode();
+      new SModelsSubtree(testsNode).create(tests);
+      add(testsNode);
+    }
+    if (!stubs.isEmpty()) {
+      StubsTreeNode stubsNode = new StubsTreeNode();
+      new SModelsSubtree(stubsNode).create(stubs);
+      add(stubsNode);
+    }
   }
+
 }

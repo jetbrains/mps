@@ -5,22 +5,16 @@ package jetbrains.mps.vcs.annotate;
 
 /*package*/ class HighlightRevisionSubcolumn extends AnnotationAspectSubcolumn {
   private VcsRevisionRange myRevisionRange;
-
   public HighlightRevisionSubcolumn(AnnotationColumn annotationColumn, VcsRevisionRange revisionRange) {
     super(annotationColumn, null);
     myRevisionRange = revisionRange;
   }
-
   @Override
   public String getId() {
     return "higlight.revision";
   }
-
   @Override
   public String getTextForFileLine(int fileLine) {
-    return (myRevisionRange.isFileLineHighlighted(fileLine) ?
-      "*" :
-      ""
-    );
+    return (myRevisionRange.isFileLineHighlighted(fileLine) ? "*" : "");
   }
 }

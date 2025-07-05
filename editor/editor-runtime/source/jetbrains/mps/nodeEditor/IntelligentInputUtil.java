@@ -15,86 +15,95 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import jetbrains.mps.nodeEditor.EditorManager.EditorCell_STHint;
-import jetbrains.mps.nodeEditor.cellMenu.AbstractNodeSubstituteInfo;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.editor.runtime.SideTransformInfoUtil;
+import jetbrains.mps.editor.runtime.commands.EditorComputable;
+import jetbrains.mps.nodeEditor.cellActions.SideTransformSubstituteInfo;
+import jetbrains.mps.nodeEditor.cellActions.SideTransformSubstituteInfo.Side;
 import jetbrains.mps.nodeEditor.cellMenu.NullSubstituteInfo;
+import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil.Finder;
-import jetbrains.mps.nodeEditor.cells.CellInfo;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
+import jetbrains.mps.nodeEditor.sidetransform.EditorCell_STHint;
+import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellAction;
-import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
+import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.openapi.editor.cells.CellInfo;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
-import jetbrains.mps.smodel.action.SideTransformHintSubstituteActionsHelper;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
+import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.typesystem.inference.ITypechecking.Computation;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.TypeContextManager;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.NameUtil;
-import org.jetbrains.mps.openapi.language.SConceptRepository;
+import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.List;
 
 public class IntelligentInputUtil {
+  private static final Logger LOG = Logger.getLogger(IntelligentInputUtil.class);
 
-  public static boolean processCell(final EditorCell_Label cell, final jetbrains.mps.openapi.editor.EditorContext editorContext, final String pattern, final CellSide side) {
+  public static boolean processCell(final EditorCell_Label cell, final EditorContext editorContext, final String pattern,
+      final CellSide side) {
     if (pattern == null || pattern.equals("")) {
       return false;
     }
 
-    return editorContext.executeCommand(new Computable<Boolean>() {
+    EditorComputable<Boolean> sideTransformCommand = new EditorComputable<Boolean>(editorContext) {
       @Override
-      public Boolean compute() {
+      protected Boolean doCompute() {
         return TypeContextManager.getInstance().runTypeCheckingComputation(
-          ((EditorComponent)editorContext.getEditorComponent()).getTypecheckingContextOwner(),
-          editorContext.getEditorComponent().getEditedNode(),
-          new Computation<Boolean>() {
-          @Override
-          public Boolean compute(TypeCheckingContext context) {
-            if (cell instanceof EditorCell_STHint) {
-              EditorCell_STHint rtHintCell = (EditorCell_STHint) cell;
-              return processSTHintCell(rtHintCell, editorContext, pattern);
-            }
+            ((EditorComponent) editorContext.getEditorComponent()).getTypecheckingContextOwner(),
+            editorContext.getEditorComponent().getEditedNode(),
+            new Computation<Boolean>() {
+              @Override
+              public Boolean compute(TypeCheckingContext context) {
+                if (cell instanceof EditorCell_STHint) {
+                  EditorCell_STHint rtHintCell = (EditorCell_STHint) cell;
+                  return processSTHintCell(rtHintCell, editorContext, pattern);
+                }
 
-            if (side == CellSide.LEFT) {
-              String head = "" + pattern.charAt(0);
-              String smallPattern = pattern.substring(1);
-              return processCellAtStart(cell, editorContext, head, smallPattern);
-            } else {
-              String smallPattern = pattern.substring(0, pattern.length() - 1);
-              String tail = pattern.substring(pattern.length() - 1, pattern.length());
-              return processCellAtEnd(cell, editorContext, smallPattern, tail);
-            }
-          }
-        });
+                if (side == CellSide.LEFT) {
+                  String head = "" + pattern.charAt(0);
+                  String smallPattern = pattern.substring(1);
+                  return processCellAtStart(cell, editorContext, head, smallPattern);
+                } else {
+                  String smallPattern = pattern.substring(0, pattern.length() - 1);
+                  String tail = pattern.substring(pattern.length() - 1, pattern.length());
+                  return processCellAtEnd(cell, editorContext, smallPattern, tail);
+                }
+              }
+            });
       }
-    });
+    };
+    editorContext.getRepository().getModelAccess().executeCommand(sideTransformCommand);
+    return sideTransformCommand.getResult();
   }
 
-  private static boolean processSTHintCell(EditorCell_STHint cell, jetbrains.mps.openapi.editor.EditorContext editorContext, String pattern) {
+  private static boolean processSTHintCell(EditorCell_STHint cell, EditorContext editorContext, String pattern) {
     SubstituteInfo info = cell.getSubstituteInfo();
     String smallPattern = pattern.substring(0, pattern.length() - 1);
     String tail = "" + pattern.charAt(pattern.length() - 1);
-    jetbrains.mps.openapi.editor.cells.EditorCell nextCell = CellTraversalUtil.getNextLeaf(cell);
+    EditorCell nextCell = CellTraversalUtil.getNextLeaf(cell);
     while (nextCell != null && !nextCell.isSelectable()) {
       nextCell = CellTraversalUtil.getNextLeaf(nextCell);
     }
 
     if (canCompleteSmallPatternImmediately(info, pattern, "") ||
-      canCompleteSmallPatternImmediately(info, trimLeft(pattern), "")) {
+        canCompleteSmallPatternImmediately(info, trimLeft(pattern), "")) {
 
       if (!canCompleteSmallPatternImmediately(info, pattern, "")) {
         pattern = trimLeft(pattern);
       }
 
       info.getMatchingActions(pattern, true).get(0).substitute(editorContext, pattern);
+      return true;
     } else if (pattern.length() > 0 && (canCompleteSmallPatternImmediately(info, smallPattern, tail) ||
-      canCompleteSmallPatternImmediately(info, trimLeft(smallPattern), tail))) {
+        canCompleteSmallPatternImmediately(info, trimLeft(smallPattern), tail))) {
 
       if (!canCompleteSmallPatternImmediately(info, smallPattern, tail)) {
         smallPattern = trimLeft(smallPattern);
@@ -103,13 +112,18 @@ public class IntelligentInputUtil {
       List<SubstituteAction> matchingActions = info.getMatchingActions(smallPattern, true);
       SubstituteAction item = matchingActions.get(0);
       SNode newNode = item.substitute(editorContext, smallPattern);
+      if (newNode == null) {
+        newNode = editorContext.getSelectedNode();
+      }
       editorContext.flushEvents();
-      EditorCell cellForNewNode = (EditorCell) editorContext.getEditorComponent().findNodeCell(newNode);
+      EditorCell cellForNewNode;
+      cellForNewNode = editorContext.getEditorComponent().findNodeCell(newNode);
       if (cellForNewNode != null) {
         EditorCell_Label target = null;
-        jetbrains.mps.openapi.editor.cells.EditorCell errorOrEditable = CellFinderUtil.findChildByManyFinders(cellForNewNode, true, Finder.FIRST_ERROR, Finder.LAST_EDITABLE);
-        if (errorOrEditable instanceof EditorCell_Label) {
-          target = (EditorCell_Label) errorOrEditable;
+        EditorCell errorCell =
+            CellFinderUtil.findChildByManyFinders(cellForNewNode, true, Finder.FIRST_ERROR);
+        if (errorCell instanceof EditorCell_Label) {
+          target = (EditorCell_Label) errorCell;
         }
 
         if (target != null) {
@@ -128,25 +142,26 @@ public class IntelligentInputUtil {
           }
         }
       }
+      return true;
     } else if (info.getMatchingActions(pattern, false).isEmpty() &&
-      info.getMatchingActions(trimLeft(pattern), false).isEmpty() &&
-      nextCell != null && nextCell.isErrorState() && nextCell instanceof EditorCell_Label && ((EditorCell_Label) nextCell).isEditable()) {
+        info.getMatchingActions(trimLeft(pattern), false).isEmpty() &&
+        nextCell != null && nextCell.isErrorState() && nextCell instanceof EditorCell_Label && ((EditorCell_Label) nextCell).isEditable()) {
 
-      SNodeEditorUtil.removeRightTransformHint(cell.getSNode());
+      SideTransformInfoUtil.removeTransformInfo(cell.getSNode());
 
       EditorCell_Label label = (EditorCell_Label) nextCell;
       label.changeText(pattern);
       label.end();
       editorContext.getEditorComponent().changeSelection(label);
-    } else {
-      if (isInOneStepAmbigousPosition(info, smallPattern + tail)) {
-        activateNodeSubstituteChooser(editorContext, cell, info);
-      }
+      return true;
+    } else if (isInOneStepAmbigousPosition(info, smallPattern + tail)) {
+      activateNodeSubstituteChooser(editorContext, cell, info);
     }
-    return true;
+    return false;
   }
 
-  private static boolean processCellAtEnd(EditorCell_Label cell, final jetbrains.mps.openapi.editor.EditorContext editorContext, String smallPattern, final String tail) {
+  private static boolean processCellAtEnd(EditorCell_Label cell, final EditorContext editorContext, String smallPattern,
+      final String tail) {
     SubstituteInfo substituteInfo = cell.getSubstituteInfo();
     if (substituteInfo == null) {
       substituteInfo = new NullSubstituteInfo();
@@ -155,15 +170,15 @@ public class IntelligentInputUtil {
     EditorCell cellForNewNode;
     final SNode newNode;
     if (cell.isValidText(smallPattern) && !"".equals(smallPattern)
-      && substituteInfo.hasExactlyNActions(smallPattern + tail, false, 0)) {
+        && substituteInfo.hasExactlyNActions(smallPattern + tail, false, 0)) {
       newNode = cell.getSNode();
       cellForNewNode = cell;
       return applyRigthTransform(editorContext, smallPattern, tail, cellForNewNode, newNode);
     } else if (canCompleteSmallPatternImmediately(substituteInfo, smallPattern, tail) ||
-      canCompleteSmallPatternImmediately(substituteInfo, trimLeft(smallPattern), tail)) {
+        canCompleteSmallPatternImmediately(substituteInfo, trimLeft(smallPattern), tail)) {
 
       if (!canCompleteSmallPatternImmediately(substituteInfo, smallPattern, tail) &&
-        canCompleteSmallPatternImmediately(substituteInfo, trimLeft(smallPattern), tail)) {
+          canCompleteSmallPatternImmediately(substituteInfo, trimLeft(smallPattern), tail)) {
         smallPattern = trimLeft(smallPattern);
       }
 
@@ -173,14 +188,16 @@ public class IntelligentInputUtil {
 
       newNode = editorContext.getSelectedCell().getSNode();
 
-      if (newNode == null) return true;
+      if (newNode == null) {
+        return true;
+      }
 
-      cellForNewNode = (EditorCell) editorContext.getEditorComponent().findNodeCell(newNode);
-      EditorCell errorCell = CellFinderUtil.findFirstError(cellForNewNode, true);
+      cellForNewNode = editorContext.getEditorComponent().findNodeCell(newNode);
+      EditorCell_Label errorCell = CellFinderUtil.findFirstError(cellForNewNode, true);
 
-      if (errorCell != null && errorCell instanceof EditorCell_Label) {
+      if (errorCell != null) {
         editorContext.flushEvents();
-        EditorCell cellForNewNode1 = (EditorCell) editorContext.getEditorComponent().findNodeCell(newNode);
+        EditorCell cellForNewNode1 = editorContext.getEditorComponent().findNodeCell(newNode);
         EditorCell_Label errorCell1 = CellFinderUtil.findFirstError(cellForNewNode1, true);
         errorCell1.changeText(tail);
         errorCell1.setCaretPosition(tail.length());
@@ -189,10 +206,10 @@ public class IntelligentInputUtil {
 
       return applyRigthTransform(editorContext, smallPattern, tail, cellForNewNode, newNode);
     } else if (canCompleteTheWholeStringImmediately(substituteInfo, smallPattern + tail) ||
-      canCompleteTheWholeStringImmediately(substituteInfo, trimLeft(smallPattern) + tail)) {
+        canCompleteTheWholeStringImmediately(substituteInfo, trimLeft(smallPattern) + tail)) {
 
       if (!canCompleteTheWholeStringImmediately(substituteInfo, smallPattern + tail) &&
-        canCompleteTheWholeStringImmediately(substituteInfo, trimLeft(smallPattern) + tail)) {
+          canCompleteTheWholeStringImmediately(substituteInfo, trimLeft(smallPattern) + tail)) {
         smallPattern = trimLeft(smallPattern);
       }
 
@@ -213,20 +230,21 @@ public class IntelligentInputUtil {
         cell.setText(smallPattern);
         activateNodeSubstituteChooser(editorContext, cell, substituteInfo);
       }
-      return true;
     }
+    return false;
   }
 
-  private static boolean applyRigthTransform(jetbrains.mps.openapi.editor.EditorContext editorContext, String smallPattern, final String tail, final EditorCell cellForNewNode, SNode newNode) {
-    jetbrains.mps.openapi.editor.cells.EditorCell selectableChild = CellFinderUtil.findLastSelectableLeaf(cellForNewNode, true);
-    CellAction rtAction = selectableChild != null ? editorContext.getEditorComponent().getActionHandler().getApplicableCellAction(selectableChild, jetbrains.mps.openapi.editor.cells.CellActionType.RIGHT_TRANSFORM) : null;
+  private static boolean applyRigthTransform(EditorContext editorContext, String smallPattern, final String tail,
+      final EditorCell cellForNewNode, SNode newNode) {
+    EditorCell selectableChild = CellFinderUtil.findLastSelectableLeaf(cellForNewNode, true);
+    CellAction rtAction = selectableChild != null ?
+        editorContext.getEditorComponent().getActionHandler().getApplicableCellAction(selectableChild, CellActionType.RIGHT_TRANSFORM) : null;
 
-    boolean hasSideActions = hasSideActions(cellForNewNode, CellSide.RIGHT, tail);
+    boolean hasSideActions = hasSideActions(cellForNewNode, Side.RIGHT, tail);
 
     if (rtAction == null || !hasSideActions) {
       final CellInfo cellInfo = cellForNewNode.getCellInfo();
-      putTextInErrorChild(cellInfo, smallPattern + tail, editorContext);
-      return false;
+      return putTextInErrorChild(cellInfo, smallPattern + tail, editorContext);
     }
 
     if (cellForNewNode instanceof EditorCell_Label) {
@@ -235,9 +253,7 @@ public class IntelligentInputUtil {
 
     rtAction.execute(editorContext);
 
-    EditorCell newCellForNewNode = findNodeCell(editorContext, newNode);
-    EditorCell rtHintCell = prepareSTCell(editorContext, newCellForNewNode, tail);
-
+    EditorCell rtHintCell = prepareSTCell(editorContext, newNode, tail);
     if (rtHintCell != null) {
       final SubstituteInfo rtSubstituteInfo = rtHintCell.getSubstituteInfo();
       assert rtSubstituteInfo != null;
@@ -255,13 +271,17 @@ public class IntelligentInputUtil {
       }
 
       SubstituteAction rtItem = rtMatchingActions.get(0);
-      final SNode yetNewNode = rtItem.substitute(editorContext, tail);
+      SNode yetNewNode = rtItem.substitute(editorContext, tail);
 
       editorContext.flushEvents();
 
       if (yetNewNode != null) {
         EditorCell yetNewNodeCell = findNodeCell(editorContext, yetNewNode);
-        assert yetNewNodeCell != null : "Unable to find editor cell for the node " + yetNewNode.toString() + ", created by RT: " + rtItem.toString();
+        if (yetNewNodeCell == null) {
+          LOG.warn("Unable to find editor cell for the node returned as a result of right-transform: " + yetNewNode.toString() + "(" + yetNewNode.getConcept() +
+              "). Seems like the node is invisible in editor. Node was created by RT: " + rtItem.toString());
+          return true;
+        }
         EditorCell errorCell = CellFinderUtil.findFirstError(yetNewNodeCell, true);
         if (errorCell != null) {
           editorContext.selectWRTFocusPolicy(errorCell);
@@ -279,12 +299,14 @@ public class IntelligentInputUtil {
     return true;
   }
 
-  private static boolean tryToSubstituteFirstSutable(jetbrains.mps.openapi.editor.EditorContext editorContext, String text, SubstituteInfo substituteInfo) {
+  private static boolean tryToSubstituteFirstSutable(EditorContext editorContext, String text, SubstituteInfo substituteInfo) {
     SNode concept = substituteInfo.getMatchingActions(text, true).get(0).getOutputConcept();
     if (concept == null) {
       return false;
     }
-    boolean property = BehaviorReflection.invokeVirtualStatic(Boolean.TYPE, SConceptRepository.getInstance().getConcept(NameUtil.nodeFQName(concept)), "virtual_substituteInAmbigousPosition_1262430001741498020", new Object[]{});
+    boolean property = (Boolean) BHReflection.invoke(MetaAdapterByDeclaration.getConcept(concept),
+        SMethodTrimmedId.create("substituteInAmbigousPosition", null, "1653mnvAgq$"));
+
     if (property) {
       SNode outputConcept = substituteInfo.getMatchingActions(text, true).get(0).getOutputConcept();
       for (SubstituteAction action : substituteInfo.getMatchingActions(text, true)) {
@@ -299,7 +321,8 @@ public class IntelligentInputUtil {
     return false;
   }
 
-  private static boolean processCellAtStart(EditorCell_Label cell, final jetbrains.mps.openapi.editor.EditorContext editorContext, String head, String smallPattern) {
+  private static boolean processCellAtStart(EditorCell_Label cell, final EditorContext editorContext, String head,
+      String smallPattern) {
     SubstituteInfo info = cell.getSubstituteInfo();
     if (info == null) {
       info = new NullSubstituteInfo();
@@ -308,14 +331,20 @@ public class IntelligentInputUtil {
     SNode newNode;
 
     if (cell.isValidText(smallPattern) && (!"".equals(smallPattern) || cell instanceof EditorCell_Constant)
-      && info.hasExactlyNActions(head + smallPattern, false, 0)) {
+        && info.hasExactlyNActions(head + smallPattern, false, 0)) {
       newNode = cell.getSNode();
       cellForNewNode = cell;
       return applyLeftTransform(editorContext, head, smallPattern, cellForNewNode, newNode, true);
     } else if (canCompleteSmallPatternImmediatelyLeft(info, head, smallPattern) &&
-      !canCompleteTheWholeStringImmediately(info, head + smallPattern)) {
-      newNode = info.getMatchingActions(smallPattern, true).get(0).substitute(editorContext, smallPattern);
-      if (newNode == null) return true;
+        !canCompleteTheWholeStringImmediately(info, head + smallPattern)) {
+      final SubstituteAction substituteAction = info.getMatchingActions(smallPattern, true).get(0);
+      newNode = substituteAction.substitute(editorContext, smallPattern);
+      if (newNode == null) {
+        newNode = editorContext.getSelectedNode();
+      }
+      if (newNode == null) {
+        return true;
+      }
 
       cellForNewNode = findNodeCell(editorContext, newNode);
       return applyLeftTransform(editorContext, head, smallPattern, cellForNewNode, newNode, false);
@@ -325,22 +354,21 @@ public class IntelligentInputUtil {
       SubstituteAction item = matchingActions.get(0);
       item.substitute(editorContext, head + smallPattern);
       return true;
-    } else {
-      return true;
     }
-
+    return false;
   }
 
-  private static boolean applyLeftTransform(jetbrains.mps.openapi.editor.EditorContext editorContext, final String head, String smallPattern, final EditorCell cellForNewNode, SNode newNode, boolean sourceCellRemains) {
-    CellAction ltAction = editorContext.getEditorComponent().getActionHandler().getApplicableCellAction(CellFinderUtil.findFirstSelectableLeaf(cellForNewNode,
-        true), jetbrains.mps.openapi.editor.cells.CellActionType.LEFT_TRANSFORM);
-    boolean hasSideActions = hasSideActions(cellForNewNode, CellSide.LEFT, head);
+  private static boolean applyLeftTransform(EditorContext editorContext, final String head, String smallPattern, final EditorCell cellForNewNode, SNode newNode,
+      boolean sourceCellRemains) {
+    CellAction ltAction =
+        editorContext.getEditorComponent().getActionHandler().getApplicableCellAction(CellFinderUtil.findFirstSelectableLeaf(cellForNewNode, true),
+            CellActionType.LEFT_TRANSFORM);
+    boolean hasSideActions = hasSideActions(cellForNewNode, Side.LEFT, head);
 
     if (ltAction == null || !hasSideActions) {
       CellInfo cellInfo = cellForNewNode.getCellInfo();
       if (!sourceCellRemains) {
-        putTextInErrorChild(cellInfo, head + smallPattern, editorContext);
-        return true;
+        return putTextInErrorChild(cellInfo, head + smallPattern, editorContext);
       } else {
         return false;
       }
@@ -352,8 +380,10 @@ public class IntelligentInputUtil {
 
     ltAction.execute(editorContext);
 
-    EditorCell newCellForNewNode = findNodeCell(editorContext, newNode);
-    prepareSTCell(editorContext, newCellForNewNode, head);
+    final EditorCell_Label ltCell = prepareSTCell(editorContext, newNode, head);
+    if (ltCell instanceof EditorCell_STHint && canCompleteSmallPatternImmediately(ltCell.getSubstituteInfo(), head, "")) {
+      ltCell.getSubstituteInfo().getMatchingActions(head, true).get(0).substitute(editorContext, head);
+    }
     return true;
   }
 
@@ -389,14 +419,15 @@ public class IntelligentInputUtil {
   }
 
   private static boolean isInOneStepAmbigousPosition(SubstituteInfo info, String smallPattern) {
-    return info.getMatchingActions(smallPattern, true).size() > 1 && info.getMatchingActions(smallPattern, true).size() == info.getMatchingActions(smallPattern, false).size();
+    return info.getMatchingActions(smallPattern, true).size() > 1 &&
+        info.getMatchingActions(smallPattern, true).size() == info.getMatchingActions(smallPattern, false).size();
   }
 
-  private static EditorCell_Label prepareSTCell(jetbrains.mps.openapi.editor.EditorContext context, EditorCell root, String textToSet) {
-    EditorCell_Label rtCell = root.getSTHintCell();
+  private static EditorCell_Label prepareSTCell(EditorContext context, SNode transformingNode, String textToSet) {
+    EditorCell_Label rtCell = EditorCell_STHint.getSTHintCell(transformingNode, context.getEditorComponent());
     if (rtCell == null) {
-      EditorCell selectedCell = (EditorCell) context.getSelectedCell();
-      if (selectedCell != null && selectedCell instanceof EditorCell_Label && selectedCell.isErrorState()) {
+      EditorCell selectedCell = context.getSelectedCell();
+      if (selectedCell instanceof EditorCell_Label && selectedCell.isErrorState()) {
         rtCell = (EditorCell_Label) selectedCell;
       } else {
         return null;
@@ -408,46 +439,39 @@ public class IntelligentInputUtil {
     return rtCell;
   }
 
-  private static EditorCell_Label prepareRTCell(jetbrains.mps.openapi.editor.EditorContext context, SNode node, String textToSet) {
+  private static EditorCell_Label prepareRTCell(EditorContext context, SNode node, String textToSet) {
     EditorCell root = findNodeCell(context, node);
     if (root == null) {
       return null;
     }
-    return prepareSTCell(context, root, textToSet);
+    return prepareSTCell(context, node, textToSet);
   }
 
-  private static void putTextInErrorChild(CellInfo cellInfo, String textToSet, jetbrains.mps.openapi.editor.EditorContext editorContext) {
+  private static boolean putTextInErrorChild(CellInfo cellInfo, String textToSet, EditorContext editorContext) {
     editorContext.flushEvents();
     EditorComponent component = (EditorComponent) editorContext.getEditorComponent();
     EditorCell cellToSelect = cellInfo.findCell(component);
     if (cellToSelect != null) {
-      EditorCell errorCell = CellFinderUtil.findFirstError(cellToSelect, true);
-      if (errorCell instanceof EditorCell_Label) {
-        EditorCell_Label label = (EditorCell_Label) errorCell;
-        if (label.isEditable() && !(label instanceof EditorCell_Constant)) {
-          label.changeText(textToSet);
-        }
+      EditorCell_Label label = CellFinderUtil.findFirstError(cellToSelect, true);
+      if (label != null && label != cellToSelect && label.isEditable() && !(label instanceof EditorCell_Constant)) {
+        label.changeText(textToSet);
         label.end();
+        return true;
       }
     }
+    return false;
   }
 
-  private static boolean hasSideActions(EditorCell cell, CellSide side, String prefix) {
-    final SideTransformHintSubstituteActionsHelper helper = new SideTransformHintSubstituteActionsHelper(cell.getSNode(), side, cell.getRightTransformAnchorTag(), cell.getContext().getOperationContext());
-    SubstituteInfo info = new AbstractNodeSubstituteInfo(cell.getContext()) {
-      @Override
-      protected List<SubstituteAction> createActions() {
-        return helper.createActions();
-      }
-    };
+  private static boolean hasSideActions(EditorCell cell, Side side, String prefix) {
+    SubstituteInfo info = new SideTransformSubstituteInfo(cell, side);
     return !info.hasExactlyNActions(prefix, false, 0);
   }
 
-  private static void activateNodeSubstituteChooser(jetbrains.mps.openapi.editor.EditorContext editorContext, EditorCell cell, SubstituteInfo info) {
+  private static void activateNodeSubstituteChooser(EditorContext editorContext, EditorCell cell, SubstituteInfo info) {
     ((EditorComponent) editorContext.getEditorComponent()).activateNodeSubstituteChooser(cell, info, false);
   }
 
-  private static EditorCell findNodeCell(jetbrains.mps.openapi.editor.EditorContext editorContext, SNode newNode) {
-    return (EditorCell) editorContext.getEditorComponent().findNodeCell(newNode);
+  private static EditorCell findNodeCell(EditorContext editorContext, SNode newNode) {
+    return editorContext.getEditorComponent().findNodeCell(newNode);
   }
 }

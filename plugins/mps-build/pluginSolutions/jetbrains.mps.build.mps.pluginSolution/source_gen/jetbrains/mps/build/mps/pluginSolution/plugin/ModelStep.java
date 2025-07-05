@@ -4,23 +4,23 @@ package jetbrains.mps.build.mps.pluginSolution.plugin;
 
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Solution;
 import java.util.List;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.jetbrains.annotations.NotNull;
 
 public class ModelStep extends TwoOptionsStep<SModel> {
+  private Project myMPSProject;
+
   public ModelStep(Project project, AbstractBuildGenerator buildGenerator, IErrorHandler handler) {
-    super(ProjectHelper.toIdeaProject(project), buildGenerator, handler);
+    super(((MPSProject) project).getProject(), buildGenerator, handler);
+    myMPSProject = project;
   }
 
   @Override
@@ -40,7 +40,7 @@ public class ModelStep extends TwoOptionsStep<SModel> {
 
   @Override
   protected String getVariantName(final SModel model) {
-    return NameUtil.shortNameFromLongName(model.getModelName());
+    return model.getName().getSimpleName();
   }
 
   @Override
@@ -74,21 +74,22 @@ public class ModelStep extends TwoOptionsStep<SModel> {
     if (solution == null) {
       return new SModel[0];
     } else {
-      List<SModel> models = ModelAccess.instance().runReadAction(new Computable<List<SModel>>() {
+      final List<SModel> modelsVariants = ListSequence.fromList(new ArrayList<SModel>());
+      myMPSProject.getModelAccess().runReadAction(new Runnable() {
         @Override
-        public List<SModel> compute() {
+        public void run() {
           Iterable<SModel> models = Sequence.fromIterable(Collections.<SModel>emptyList());
           for (ModelRoot mr : solution.getModelRoots()) {
             models = Sequence.fromIterable(models).concat(Sequence.fromIterable(mr.getModels()));
           }
-          return Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
+          ListSequence.fromList(modelsVariants).addSequence(Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
             public boolean accept(SModel it) {
               return it instanceof EditableSModel && !(it.isReadOnly());
             }
-          }).toListSequence();
+          }));
         }
       });
-      return ListSequence.fromList(models).toGenericArray(SModel.class);
+      return ListSequence.fromList(modelsVariants).toGenericArray(SModel.class);
     }
   }
 
@@ -113,11 +114,5 @@ public class ModelStep extends TwoOptionsStep<SModel> {
       return "Empty model name is not allowed.";
     }
     return "Model " + text + " already exists, choose another name.";
-  }
-
-  @NotNull
-  @Override
-  public String getImageText() {
-    return "Script Model";
   }
 }

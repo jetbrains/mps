@@ -10,17 +10,17 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.smodel.Generator;
 import org.jetbrains.annotations.NotNull;
-import org.apache.log4j.Priority;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.workbench.dialogs.DeleteDialog;
-import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.ModelAccess;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.devkit.util.DeleteGeneratorHelper;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.util.IStatus;
+import jetbrains.mps.util.Status;
+import jetbrains.mps.module.ModuleDeleteHelper;
+import java.util.Collections;
+import com.intellij.openapi.ui.Messages;
 
 public class DeleteGenerator_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -30,79 +30,74 @@ public class DeleteGenerator_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     return ((SModule) MapSequence.fromMap(_params).get("module")) instanceof Generator;
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        boolean enabled = this.isApplicable(event, _params);
-        this.setEnabledState(event.getPresentation(), enabled);
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "DeleteGenerator", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("project", event.getData(MPSCommonDataKeys.MPS_PROJECT));
-    if (MapSequence.fromMap(_params).get("project") == null) {
-      return false;
+    {
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      MapSequence.fromMap(_params).put("project", p);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("contxet", event.getData(MPSCommonDataKeys.OPERATION_CONTEXT));
-    if (MapSequence.fromMap(_params).get("contxet") == null) {
-      return false;
-    }
-    MapSequence.fromMap(_params).put("module", event.getData(MPSCommonDataKeys.MODULE));
-    if (MapSequence.fromMap(_params).get("module") == null) {
-      return false;
+    {
+      SModule p = event.getData(MPSCommonDataKeys.MODULE);
+      MapSequence.fromMap(_params).put("module", p);
+      if (p == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      final DeleteDialog.DeleteOption safeOption = new DeleteDialog.DeleteOption("Safe Delete", true, false);
-      final DeleteDialog.DeleteOption filesOption = new DeleteDialog.DeleteOption("Delete Files", false, false);
+    DeleteDialog.DeleteOption safeOption = new DeleteDialog.DeleteOption("Safe Delete", true, true);
+    final DeleteDialog.DeleteOption filesOption = new DeleteDialog.DeleteOption("Delete Files", false, true);
 
-      DeleteDialog dialog = new DeleteDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), "Delete Generator", "Are you sure you want to delete generator?\n\nThis operation is not undoable.", safeOption, filesOption);
-      dialog.show();
-      if (!(dialog.isOK())) {
-        return;
+    DeleteDialog dialog = new DeleteDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), "Delete Generator", "<html>Are you sure you want to delete generator?<br>This operation is not undoable.</html>", safeOption, filesOption);
+    dialog.show();
+    if (!(dialog.isOK())) {
+      return;
+    }
+
+    ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess();
+    final Generator generator = ((Generator) ((SModule) MapSequence.fromMap(_params).get("module")));
+
+    final DeleteGeneratorHelper butcher = new DeleteGeneratorHelper(((MPSProject) MapSequence.fromMap(_params).get("project")));
+    butcher.safeDelete(safeOption.selected).deleteFiles(filesOption.selected);
+
+    final Wrappers._T<IStatus> s = new Wrappers._T<IStatus>(new Status.ERROR("Can't execute safety check"));
+    modelAccess.runReadAction(new Runnable() {
+      public void run() {
+        s.value = butcher.canDelete(generator);
       }
+    });
 
-      ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
-      modelAccess.executeCommandInEDT(new Runnable() {
+    if (s.value.isOk()) {
+      // While don't support undo no need for command here 
+      modelAccess.runWriteAction(new Runnable() {
         public void run() {
-          Generator generator = ((Generator) ((SModule) MapSequence.fromMap(_params).get("module")));
-          Language sourceLanguage = generator.getSourceLanguage();
-          for (GeneratorDescriptor gen : ListSequence.fromList(sourceLanguage.getModuleDescriptor().getGenerators())) {
-            if (generator.getModuleReference().getModuleId().equals(gen.getId())) {
-              DeleteGeneratorHelper.deleteGenerator(((MPSProject) MapSequence.fromMap(_params).get("project")), sourceLanguage, generator, gen, safeOption.selected, filesOption.selected);
-              break;
-            }
-          }
+          // Parameter safeDelete set to false, because safety has been already checked  
+          // and DeleteModuleHelper currently not allow to do it. 
+          new ModuleDeleteHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).deleteModules(Collections.singletonList(((SModule) MapSequence.fromMap(_params).get("module"))), false, filesOption.selected);
         }
       });
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "DeleteGenerator", t);
-      }
+    } else {
+      Messages.showErrorDialog(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), s.value.getMessage(), "Deleting Generator");
     }
   }
-
-  protected static Logger LOG = LogManager.getLogger(DeleteGenerator_Action.class);
 }

@@ -8,25 +8,35 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractLoopStatement_Label_Actions {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new AbstractLoopStatement_Label_Actions.AbstractLoopStatement_Label_Actions_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new AbstractLoopStatement_Label_Actions.AbstractLoopStatement_Label_Actions_BACKSPACE(node));
   }
-
   public static class AbstractLoopStatement_Label_Actions_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public AbstractLoopStatement_Label_Actions_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SPropertyOperations.set(node, "label", null);
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label"), null);
+    }
+  }
+  public static class AbstractLoopStatement_Label_Actions_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public AbstractLoopStatement_Label_Actions_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label"), null);
     }
   }
 }

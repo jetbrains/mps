@@ -8,108 +8,53 @@ import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.lang.pattern.IMatchingPattern;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.lang.pattern.runtime.PatternUtil;
-import jetbrains.mps.util.IterableUtil;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
-import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.lang.typesystem.runtime.HUtil;
-import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.smodel.SReference;
 
 public class SortedSet_comparableTo_sorted_set_SubtypingRule extends SubtypingRule_Runtime implements ISubtypingRule_Runtime {
   /*package*/ GeneratedMatchingPattern myMatchingPattern;
-
   public SortedSet_comparableTo_sorted_set_SubtypingRule() {
   }
-
   public SNode getSubOrSuperType(SNode sortedSet, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_9omwya_a0a2(((SNode) status.getPattern().getFieldValue("patternVar_ELEMENT")));
+    return _quotation_createNode_9omwya_a0a2(status.getPattern().getMatchedNode("ELEMENT"));
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.baseLanguage.structure.ClassifierType";
+  public SAbstractConcept getApplicableConcept() {
+    return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType");
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     {
-      GeneratedMatchingPattern pattern = new SortedSet_comparableTo_sorted_set_SubtypingRule.Pattern_9omwya_a0a0a0a4();
+      GeneratedMatchingPattern pattern = new Pattern_ftri9ndp(_quotation_createNode_9omwya_a0a0a0a0e());
       this.myMatchingPattern = pattern;
       boolean b = pattern.match(argument);
       return new IsApplicableStatus(b, pattern);
     }
   }
-
   public boolean isWeak() {
     return true;
   }
-
-  public static class Pattern_9omwya_a0a0a0a4 extends GeneratedMatchingPattern implements IMatchingPattern {
-    /*package*/ SNode patternVar_ELEMENT;
-
-    public Pattern_9omwya_a0a0a0a4() {
-    }
-
-    public boolean match(SNode nodeToMatch) {
-      {
-        SNode nodeToMatch_SortedSet_comparableTo_sorted_set_h9rz5k_a0a;
-        nodeToMatch_SortedSet_comparableTo_sorted_set_h9rz5k_a0a = nodeToMatch;
-        if (!("jetbrains.mps.baseLanguage.structure.ClassifierType".equals(nodeToMatch_SortedSet_comparableTo_sorted_set_h9rz5k_a0a.getConcept().getQualifiedName()))) {
-          return false;
-        }
-        {
-          SNodeReference pointer = SNODE_POINTER_9omwya_a0a0a0a0b0c0a0a0a0a0a0e;
-          if (!(PatternUtil.matchReferentWithNode(pointer, nodeToMatch_SortedSet_comparableTo_sorted_set_h9rz5k_a0a.getReferenceTarget("classifier")))) {
-            return false;
-          }
-        }
-        {
-          String childRole_SortedSet_comparableTo_sorted_set_h9rz5k_ = "parameter";
-          if (!(PatternUtil.hasNChildren(nodeToMatch_SortedSet_comparableTo_sorted_set_h9rz5k_a0a, childRole_SortedSet_comparableTo_sorted_set_h9rz5k_, 1))) {
-            return false;
-          }
-          {
-            SNode childVar_SortedSet_comparableTo_sorted_set_h9rz5k_a0a0 = IterableUtil.get(nodeToMatch_SortedSet_comparableTo_sorted_set_h9rz5k_a0a.getChildren(childRole_SortedSet_comparableTo_sorted_set_h9rz5k_), 0);
-            this.patternVar_ELEMENT = childVar_SortedSet_comparableTo_sorted_set_h9rz5k_a0a0;
-          }
-        }
-      }
-      return true;
-    }
-
-    public boolean hasAntiquotations() {
-      return false;
-    }
-
-    public void fillFieldValuesFrom(GeneratedMatchingPattern pattern) {
-      if (pattern != null && pattern.getClass() == this.getClass()) {
-        patternVar_ELEMENT = (SNode) pattern.getFieldValue("patternVar_ELEMENT");
-      }
-    }
-
-    public Object getFieldValue(String fieldName) {
-      if ("patternVar_ELEMENT".equals(fieldName)) {
-        return patternVar_ELEMENT;
-      }
-      return null;
-    }
-
-    public void performActions(Object o) {
-    }
-  }
-
   private static SNode _quotation_createNode_9omwya_a0a2(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration("jetbrains.mps.baseLanguage.collections.structure.SortedSetType", null, null, GlobalScope.getInstance(), false);
+    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x120c482dd1aL, "SortedSetType"), null, null, false);
     quotedNode_3 = (SNode) parameter_1;
     if (quotedNode_3 != null) {
-      quotedNode_2.addChild("elementType", HUtil.copyIfNecessary(quotedNode_3));
+      quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, 0x11d91cc51e3L, "elementType"), HUtil.copyIfNecessary(quotedNode_3));
     }
     return quotedNode_2;
   }
-
-  private static SNodePointer SNODE_POINTER_9omwya_a0a0a0a0b0c0a0a0a0a0a0e = new SNodePointer("f:java_stub#6354ebe7-c22a-4a0f-ac54-50b52ab9b065#java.util(JDK/java.util@java_stub)", "~SortedSet");
+  private static SNode _quotation_createNode_9omwya_a0a0a0a0e() {
+    PersistenceFacade facade = PersistenceFacade.getInstance();
+    SNode quotedNode_1 = null;
+    SNode quotedNode_2 = null;
+    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
+    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), facade.createNodeId("~SortedSet")));
+    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c37f506dL, "Type"), null, null, false);
+    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), quotedNode_2);
+    return quotedNode_1;
+  }
 }

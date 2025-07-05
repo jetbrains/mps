@@ -6,44 +6,33 @@ import jetbrains.mps.debugger.java.api.state.watchables.JavaWatchable;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaValue;
 import com.sun.jdi.ObjectReference;
 import com.sun.jdi.ThreadReference;
-import jetbrains.mps.debugger.java.api.state.proxy.ValueUtil;
+import jetbrains.mps.debugger.java.api.state.customViewers.CustomViewersManager;
 import jetbrains.mps.debug.api.programState.WatchablesCategory;
 import jetbrains.mps.debugger.java.api.state.watchables.JavaWatchablesCategory;
 import jetbrains.mps.debug.api.programState.IValue;
 import javax.swing.Icon;
 import jetbrains.mps.debugger.java.runtime.ui.Icons;
-import org.jetbrains.mps.openapi.model.SNode;
 
 /*package*/ class JavaExceptionWatchable extends JavaWatchable {
   private final JavaValue myValue;
-
-  public JavaExceptionWatchable(ObjectReference exception, String classFQName, ThreadReference threadReference) {
-    super(classFQName, threadReference);
-    myValue = ValueUtil.getInstance().fromJDI(exception, myClassFQName, myThreadReference);
+  public JavaExceptionWatchable(ObjectReference exception, ThreadReference threadReference) {
+    super(threadReference);
+    myValue = CustomViewersManager.getInstance().fromJdi(exception, myThreadReference);
   }
-
   @Override
   public String getName() {
     return "exception";
   }
-
   @Override
   public WatchablesCategory getCategory() {
     return JavaWatchablesCategory.THROWN_EXCEPTION;
   }
-
   @Override
   public IValue getValue() {
     return myValue;
   }
-
   @Override
   public Icon getPresentationIcon() {
     return Icons.EXCEPTION_BREAKPOINT;
-  }
-
-  @Override
-  public SNode getNode() {
-    return null;
   }
 }

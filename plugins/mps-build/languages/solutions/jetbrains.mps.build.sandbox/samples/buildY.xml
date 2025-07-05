@@ -3,10 +3,13 @@
   <property name="build.dir" location="build" />
   <property name="build.tmp" location="${build.dir}/tmp/buildY" />
   <property name="build.layout" location="${build.dir}/artifacts/buildY" />
+  <property name="environment" value="env" />
+  <property name="env.JAVA_HOME" value="${java.home}/.." />
+  <property name="jdk.home" value="${env.JAVA_HOME}" />
   
   <target name="assemble" depends="classes">
     <mkdir dir="${build.layout}" />
-    <jar destfile="${build.layout}/Aa.jar">
+    <jar destfile="${build.layout}/Aa.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/module-A-in-Y" />
     </jar>
     <zip destfile="${build.layout}/AaLibs.zip">
@@ -38,7 +41,7 @@
   <target name="java.compile.module-A-in-Y">
     <mkdir dir="${basedir}/buildA/src" />
     <mkdir dir="${build.tmp}/java/out/module-A-in-Y" />
-    <javac destdir="${build.tmp}/java/out/module-A-in-Y" fork="true" includeantruntime="false">
+    <javac destdir="${build.tmp}/java/out/module-A-in-Y" fork="true" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/buildA/src" />

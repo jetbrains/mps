@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2010 JetBrains s.r.o.
+  ~ Copyright 2003-2016 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@
   <id>jetbrains.mps.ide.devkit</id>
   <name>Languages DevKit</name>
   <description>Allows to develop new MPS languages</description>
-  <version>3.0.5</version>
-  <vendor url="http://www.jetbrains.com/mps/" logo="/MPS_16.png">JetBrains</vendor>
-  <idea-version since-build="129.1" until-build="134.1"/>
+  <version>2017.1.4</version>
+  <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
+  <idea-version since-build="171.1" until-build="172.1"/>
   <depends>jetbrains.mps.ide.make</depends>
   <depends>jetbrains.mps.testing</depends>
 
@@ -29,24 +29,15 @@
       <implementation-class>jetbrains.mps.ide.devkit.actions.Mpsdevkit_PluginInitializer</implementation-class>
     </component>
 
-    <component>
-      <implementation-class>jetbrains.mps.ide.devkit.components.MPSDevkitApplicationComponent</implementation-class>
-    </component>
-
   </application-components>
 
   <project-components>
-    <component>
-      <interface-class>jetbrains.mps.generator.IGenerationTracer</interface-class>
-      <implementation-class>jetbrains.mps.ide.devkit.generator.GenerationTracer</implementation-class>
-    </component>
-
     <component>
       <implementation-class>jetbrains.mps.ide.devkit.generator.GenerationTracerViewTool</implementation-class>
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.ide.devkit.cellExplorer.CellExplorerView</implementation-class>
+      <implementation-class>jetbrains.mps.ide.devkit.cellExplorer.CellExplorerTool</implementation-class>
     </component>
   </project-components>
 
@@ -58,6 +49,7 @@
     <mps.VisibleModuleMask mask="jetbrains\.mps\.dataFlow\.runtime"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.devkit\.bootstrap-languages"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.devkit\.language-design"/>
+    <mps.VisibleModuleMask mask="jetbrains\.mps\.devkit\.templates"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.editor\.runtime"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.execution\.api"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.findUsages.*"/>
@@ -76,37 +68,27 @@
     <mps.VisibleModuleMask mask="stubUtils"/>
     <mps.VisibleModuleMask mask="Testbench"/>
     <mps.VisibleModuleMask mask="typesystemIntegration"/>
+    <mps.IntentionActionsProvider implementation="jetbrains.mps.ide.devkit.actions.IntentionActionsProviderImpl" />
+    <mps.projectGroupTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.LanguageProjectsGroup"/>
+    <mps.languageProjectTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.DefaultLanguageProjectTemplate"/>
   </extensions>
   <actions>
     <group id="MPSWelcomeDocumentationMenu">
-      <action id="ReadMPSTutorial"
-              class="jetbrains.mps.ide.devkit.help.ReadMPSTutorialAction"
-              text="Read The Tutorial"
+      <action id="MPSTutorial"
+              class="jetbrains.mps.ide.devkit.help.ShowTutorialAction"
+              text="Tutorial"
               description="You can read a tutorial on how to create a simple language with MPS"/>
-      <action id="ShowMPSDocumentation"
-              class="jetbrains.mps.ide.devkit.help.ShowDocumentationAction"
-              text="Browse MPS Documentation"
-              description="You can browse online documentation on MPS"/>
-      <action id="JetBrainsTV.MPS"
-              class="jetbrains.mps.ide.devkit.help.MPSJetBrainsTvAction"
-              text="JetBrains TV"/>
+      <reference id="OnlineDocAction"/>
 
       <add-to-group group-id="WelcomeScreen.Documentation" anchor="first"/>
     </group>
     <group id="MPSHelpMenu">
-      <!-- MPS Patch Start-->
+      <separator/>
       <action id="ShowUserGuide"
               class="jetbrains.mps.ide.devkit.help.ShowUserGuideAction"
               text="User Guide"/>
-      <action id="ShowTutorial"
-              class="jetbrains.mps.ide.devkit.help.ShowTutorialAction"
-              text="Tutorial"/>
-      <action id="ShowDocumentation"
-              class="jetbrains.mps.ide.devkit.help.ShowDocumentationMenuAction"
-              text="Online Documentation"/>
-
+      <reference ref="MPSTutorial"/>
       <separator/>
-
       <action id="ShowHomepage"
               class="jetbrains.mps.ide.devkit.help.ShowHomepageAction"
               text="MPS Home"/>
@@ -116,22 +98,12 @@
       <action id="ShowCommunitySite"
               class="jetbrains.mps.ide.devkit.help.ShowCommunitySiteAction"
               text="Community"/>
-
       <separator/>
-
       <action id="ShowTrackerAction"
               class="jetbrains.mps.ide.devkit.help.ShowTrackerAction"
               text="Issue Tracker"/>
-      <!-- MPS Patch End-->
       <separator/>
-      <!-- MPS Patch Start-->
-      <action id="Help.KeymapReference"
-              class="jetbrains.mps.ide.devkit.help.ShowDefaultKeymap"
-              text="Default Keymap Reference"/>
-      <action id="Help.JetBrainsTV" class="jetbrains.mps.ide.devkit.help.MPSJetBrainsTvAction"/>
-      <!-- MPS Patch End-->
-      <separator/>
-      <add-to-group group-id="MPSHelp" anchor="last"/>
+      <add-to-group group-id="HelpMenu" relative-to-action="ProductivityGuide" anchor="after"/>
     </group>
   </actions>
 

@@ -18,6 +18,7 @@ package jetbrains.mps.ide.java;
 import com.intellij.lexer.HtmlHighlightingLexer;
 import com.intellij.lexer.LayeredLexer;
 import com.intellij.lexer.StringLiteralLexer;
+import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.psi.tree.IElementType;
 
 public class JavaHighlightingLexer extends LayeredLexer {
@@ -32,13 +33,13 @@ public class JavaHighlightingLexer extends LayeredLexer {
 
     LayeredLexer docLexer = new LayeredLexer(new JavaDocLexer());
 
-    HtmlHighlightingLexer lexer = new HtmlHighlightingLexer();
+    HtmlHighlightingLexer lexer = new HtmlHighlightingLexer(FileTypeManager.getInstance().getStdFileType("CSS"));
     lexer.setHasNoEmbeddments(true);
     docLexer.registerLayer(lexer,
       new IElementType[]{JavaDocTokenType.DOC_COMMENT_DATA});
 
     registerSelfStoppingLayer(docLexer,
       new IElementType[]{JavaTokenType.DOC_COMMENT},
-      new IElementType[]{JavaDocTokenType.DOC_COMMENT_END});
+      IElementType.EMPTY_ARRAY);
   }
 }

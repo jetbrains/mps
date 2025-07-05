@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,24 @@
  */
 package jetbrains.mps.generator.impl.cache;
 
+import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 /**
+ * Persistence-friendly snapshot of mapping labels.
  * Evgeny Gryaznov, Sep 30, 2010
  */
 public class MappingsMemento {
@@ -34,6 +42,8 @@ public class MappingsMemento {
 
   /* input -> output */
   private final Map<SNodeId, Object> myCopiedOutputNodeForInputNode = new HashMap<SNodeId, Object>();
+
+  private final List<Pair<String, SNodeId>> myConditionalRoots = new ArrayList<>();
 
 
   // add functions
@@ -45,19 +55,27 @@ public class MappingsMemento {
       myMappingNameAndInputNodeToOutputNodeMap.put(mappingName, new HashMap<SNodeId, Object>());
       currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
     }
-    if (value instanceof SNode) {
+    if (value instanceof SNodeId) {
+      currentMapping.put(inputNode, value);
+    } else if (value instanceof SNode) {
       currentMapping.put(inputNode, ((SNode) value).getNodeId());
-    } else if (value instanceof List) {
-      List<SNode> n0 = (List<SNode>) value;
+    } else if (value instanceof Collection) {
+      @SuppressWarnings("unchecked")
+      Collection<SNode> n0 = (Collection<SNode>) value;
       List<SNodeId> v = new ArrayList<SNodeId>(n0.size());
       for (SNode n : n0) {
         v.add(n.getNodeId());
       }
+      currentMapping.put(inputNode, v);
     }
   }
 
   public void addOutputNodeByInputNode(SNodeId inputNode, SNodeId outputNode, boolean isUnique) {
     myCopiedOutputNodeForInputNode.put(inputNode, isUnique ? outputNode : Collections.singletonList(outputNode));
+  }
+
+  public void addNewOutputNode(String mappingLabel, SNodeId outputNode) {
+    myConditionalRoots.add(new Pair<>(mappingLabel, outputNode));
   }
 
   // getters
@@ -68,6 +86,10 @@ public class MappingsMemento {
 
   public Map<SNodeId, Object> getCopiedOutputNodeForInputNode() {
     return myCopiedOutputNodeForInputNode;
+  }
+
+  public Collection<SNodeId> getNewOutputNodes(String mappingLabel) {
+    return myConditionalRoots.stream().filter(p -> p.o1.equals(mappingLabel)).map(p -> p.o2).collect(Collectors.toList());
   }
 
   // serialization

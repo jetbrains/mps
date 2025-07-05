@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,57 +15,120 @@
  */
 package org.jetbrains.mps.openapi.module;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.event.SNodeAddEvent;
+import org.jetbrains.mps.openapi.event.SNodeReadEvent;
+import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
+import org.jetbrains.mps.openapi.event.SPropertyChangeEvent;
+import org.jetbrains.mps.openapi.event.SPropertyReadEvent;
+import org.jetbrains.mps.openapi.event.SReferenceChangeEvent;
+import org.jetbrains.mps.openapi.event.SReferenceReadEvent;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModel.Problem;
 import org.jetbrains.mps.openapi.model.SModelAccessListener;
 import org.jetbrains.mps.openapi.model.SModelChangeListener;
 import org.jetbrains.mps.openapi.model.SModelListener;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeAccessListener;
+import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.mps.openapi.model.SReference;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * This class serves as a convenient implementation of all repository listeners at once.
  * In addition it tracks all objects (modules, models and nodes) as they come and leave the repository.
  */
-public class SRepositoryContentAdapter extends SModuleAdapter implements SModelChangeListener, SModelAccessListener,
-    SModelListener, SModuleListener, SRepositoryListener {
-
-  private final Set<SRepository> commandStack = new HashSet<SRepository>();
+public class SRepositoryContentAdapter extends SModuleListenerBase implements SModelChangeListener, SModelAccessListener,
+    SModelListener, SModuleListener, SRepositoryListener, SRepositoryAttachListener, SNodeChangeListener, SNodeAccessListener {
 
   protected SRepositoryContentAdapter() {
   }
 
+  // Own methods
+  public void subscribeTo(SRepository repository) {
+    repository.getModelAccess().checkReadAccess();
+    repository.addRepositoryListener(this);
+  }
+
+  public void unsubscribeFrom(SRepository repository) {
+    repository.getModelAccess().checkReadAccess();
+    repository.removeRepositoryListener(this);
+  }
+
+  @Override
+  public void startListening(@NotNull SRepository repository) {
+    for (SModule module : repository.getModules()) {
+      startListening(module);
+    }
+  }
+
+  @Override
+  public void stopListening(@NotNull SRepository repository) {
+    for (SModule module : repository.getModules()) {
+      stopListening(module);
+    }
+  }
+
+  protected void startListening(SModule module) {
+    if (!isIncluded(module)) return;
+    module.addModuleListener(this);
+    for (SModel model : module.getModels()) {
+      startListening(model);
+    }
+  }
+
+  protected void stopListening(SModule module) {
+    // it's not very nice to stop listening models of any module, even the one we didn't include this module in startListening(SModule), but who cares
+    for (SModel model : module.getModels()) {
+      stopListening(model);
+    }
+    module.removeModuleListener(this);
+  }
+
+  /**
+   * no-op by default.
+   * Subclasses that wish to get model/node change/access events, shall add appropriate listeners here. These listeners
+   * are implemented by this class only for convenience, events are not dispatched unless proper listener is explicitly attached.
+   */
+  protected void startListening(SModel model) {
+  }
+
+  /**
+   * no-op by default
+   */
+  protected void stopListening(SModel model) {
+  }
+
+  /**
+   * @return always <code>true</code>
+   */
   protected boolean isIncluded(SModule module) {
     return true;
   }
 
+  // SRepositoryListener methods
   @Override
-  public void moduleAdded(SModule module) {
+  public void moduleAdded(@NotNull SModule module) {
     startListening(module);
+    repositoryChanged();
   }
 
   @Override
-  public void beforeModuleRemoved(SModule module) {
+  public void beforeModuleRemoved(@NotNull SModule module) {
     stopListening(module);
   }
 
   @Override
-  public void moduleRemoved(SModuleReference module) {
+  public void moduleRemoved(@NotNull SModuleReference module) {
     repositoryChanged();
   }
 
   @Override
   public void commandStarted(SRepository repository) {
-    commandStack.add(repository);
   }
 
   @Override
   public void commandFinished(SRepository repository) {
-    assert commandStack.contains(repository);
-    commandStack.remove(repository);
   }
 
   @Override
@@ -84,70 +147,7 @@ public class SRepositoryContentAdapter extends SModuleAdapter implements SModelC
   public void repositoryCommandFinished(SRepository repository) {
   }
 
-  protected void startListening(SModule module) {
-    if (!isIncluded(module)) return;
-    module.addModuleListener(this);
-    for (SModel model : module.getModels()) {
-      startListening(model);
-    }
-  }
-
-  protected void stopListening(SModule module) {
-    for (SModel model : module.getModels()) {
-      stopListening(model);
-    }
-    module.removeModuleListener(this);
-  }
-
-  protected void startListening(SModel model) {
-  }
-
-  protected void stopListening(SModel model) {
-  }
-
-  public void subscribeTo(SRepository repository) {
-    repository.getModelAccess().checkReadAccess();
-
-    SRepository parent = repository.getParent();
-    if (parent != null) {
-      subscribeTo(parent);
-    }
-
-    repository.addRepositoryListener(this);
-  }
-
-  public void startListening(SRepository repository) {
-    for (SModule module : repository.getModules()) {
-      startListening(module);
-    }
-    if (repository.getModelAccess().isCommandAction()) {
-      // TODO forbid attaching listeners in commands
-      synchronized (commandStack) {
-        commandStack.add(repository);
-      }
-    }
-  }
-
-  public void unsubscribeFrom(SRepository repository) {
-    repository.getModelAccess().checkReadAccess();
-
-    repository.removeRepositoryListener(this);
-
-    SRepository parent = repository.getParent();
-    if (parent != null) {
-      unsubscribeFrom(parent);
-    }
-  }
-
-  public void stopListening(SRepository repository) {
-    for (SModule module : repository.getModules()) {
-      stopListening(module);
-    }
-    synchronized (commandStack) {
-      commandStack.remove(repository);
-    }
-  }
-
+  // SModuleListener methods
   @Override
   public void moduleChanged(SModule module) {
     repositoryChanged();
@@ -165,6 +165,12 @@ public class SRepositoryContentAdapter extends SModuleAdapter implements SModelC
   }
 
   @Override
+  public void modelRemoved(SModule module, SModelReference ref) {
+    repositoryChanged();
+  }
+
+  // SModelChangeListener listeners
+  @Override
   public void nodeAdded(SModel model, SNode node, String role, SNode child) {
   }
 
@@ -180,6 +186,7 @@ public class SRepositoryContentAdapter extends SModuleAdapter implements SModelC
   public void referenceChanged(SNode node, String role, SReference oldRef, SReference newRef) {
   }
 
+  // SModelListener methods
   @Override
   public void modelLoaded(SModel model, boolean partially) {
   }
@@ -205,6 +212,15 @@ public class SRepositoryContentAdapter extends SModuleAdapter implements SModelC
   }
 
   @Override
+  public void modelAttached(SModel model, SRepository repository) {
+  }
+
+  @Override
+  public void modelDetached(SModel model, SRepository repository) {
+  }
+
+  // SModelAccessListener methods
+  @Override
   public void nodeRead(SNode node) {
   }
 
@@ -216,6 +232,34 @@ public class SRepositoryContentAdapter extends SModuleAdapter implements SModelC
   public void referenceRead(SNode node, String role) {
   }
 
+  /**
+   * Handy notification about change in repository structure, namely added/removed modules and models.
+   * For unknown reason also notifies about {@link SModuleListener#moduleChanged(SModule) 'unspecified'} module changes
+   * no-op by default.
+   */
   public void repositoryChanged() {
   }
+
+  // SNodeAccessListener
+  @Override
+  public void nodeRead(@NotNull SNodeReadEvent event) {}
+
+  @Override
+  public void propertyRead(@NotNull SPropertyReadEvent event) {}
+
+  @Override
+  public void referenceRead(@NotNull SReferenceReadEvent event) {}
+
+  // SNodeChangeListener
+  @Override
+  public void propertyChanged(@NotNull SPropertyChangeEvent event) {}
+
+  @Override
+  public void referenceChanged(@NotNull SReferenceChangeEvent event) {}
+
+  @Override
+  public void nodeAdded(@NotNull SNodeAddEvent event) {}
+
+  @Override
+  public void nodeRemoved(@NotNull SNodeRemoveEvent event) {}
 }

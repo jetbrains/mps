@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
 /**
- * To implement this interface, consider extending {@link SModuleAdapter}.
+ * To implement this interface, consider extending {@link SModuleListenerBase}.
  */
 public interface SModuleListener {
 
@@ -28,6 +28,12 @@ public interface SModuleListener {
 
   void beforeModelRemoved(SModule module, SModel model);
 
+  /**
+   * Model is removed from a repository. Note, it doesn't necessarily mean model was deleted.
+   * Does NOT come for module's models when module is being un-registered from a repository
+   * @param module
+   * @param ref
+   */
   void modelRemoved(SModule module, SModelReference ref);
 
   /**
@@ -46,7 +52,7 @@ public interface SModuleListener {
   void languageRemoved(SModule module, SLanguage lang);
 
   /**
-   * Any change that doesn't affect the dependencies and used languages.
+   * Any change including module dependencies and descriptor reload from disk
    */
   void moduleChanged(SModule module);
 }

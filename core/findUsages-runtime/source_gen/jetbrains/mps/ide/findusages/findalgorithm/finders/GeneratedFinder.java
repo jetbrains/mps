@@ -5,83 +5,79 @@ package jetbrains.mps.ide.findusages.findalgorithm.finders;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.ModelAccess;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.ide.findusages.FindersManager;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import java.util.List;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
-import jetbrains.mps.ide.findusages.model.holders.IHolder;
-import jetbrains.mps.ide.findusages.model.holders.NodeHolder;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.project.GlobalScope;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 
 public abstract class GeneratedFinder implements IInterfacedFinder {
   private static final Logger LOG = LogManager.getLogger(GeneratedFinder.class);
-
   public GeneratedFinder() {
   }
-
   @Override
   public boolean isApplicable(SNode node) {
     return true;
   }
-
   @Override
   public boolean isVisible(SNode node) {
     return true;
   }
-
   @Override
   public boolean isUsedByDefault(SNode node) {
     return false;
   }
-
   @Override
   public String getLongDescription() {
     return "";
   }
 
-  @Override
-  public SNode getNodeToNavigate() {
-    final SNode[] finderNode = new SNode[]{null};
-    ModelAccess.instance().runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        finderNode[0] = FindersManager.getInstance().getNodeByFinder(GeneratedFinder.this);
-      }
-    });
-    return finderNode[0];
+  @Nullable
+  public SNodeReference getDeclarationNode() {
+    return FindersManager.getInstance().getDeclarationNode(this);
+  }
+
+  protected SNodeReference buildNodePointer(SModelReference modelRef, String nodeId) {
+    // auxiliary method to help generated code deal with string node id values 
+    return new SNodePointer(modelRef, PersistenceFacade.getInstance().createNodeId(nodeId));
   }
 
   @Override
   public boolean canNavigate() {
     return true;
   }
-
   protected abstract void doFind(SNode node, SearchScope scope, List<SNode> _results, ProgressMonitor monitor);
-
   public void getSearchedNodes(SNode node, SearchScope scope, List<SNode> _results) {
     _results.add(node);
   }
-
   public String getNodeCategory(SNode node) {
     return "Uncategorized";
   }
-
   @Override
   public SearchResults<SNode> find(SearchQuery query, ProgressMonitor monitor) {
     SearchResults<SNode> results = new SearchResults<SNode>();
-    IHolder holder = query.getObjectHolder();
-    assert holder instanceof NodeHolder;
-    SNode node = ((NodeHolder) holder).getObject();
-    if (SNodeOperations.isInstanceOf(node, NameUtil.nodeFQName((SNode) SModelUtil.findConceptDeclaration(getConcept(), GlobalScope.getInstance()))) && isApplicable(node)) {
+    Object value = query.getObjectHolder().getObject();
+    SNode node = null;
+    if (value instanceof SNodeReference) {
+      node = query.getSearchObjectResolver().resolve((SNodeReference) value);
+    } else if (value instanceof SNode) {
+      node = (SNode) value;
+    }
+    if (node == null) {
+      return results;
+    }
+    SAbstractConcept c = getSConcept();
+    if (node.getConcept().isSubConceptOf(c) && isApplicable(node)) {
       List<SNode> resSN = ListSequence.fromList(new ArrayList<SNode>());
       getSearchedNodes(node, query.getScope(), resSN);
       for (SNode resnode : resSN) {
@@ -97,4 +93,5 @@ public abstract class GeneratedFinder implements IInterfacedFinder {
     }
     return results;
   }
+
 }

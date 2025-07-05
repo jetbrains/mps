@@ -29,7 +29,6 @@ import java.io.IOException;
 import jetbrains.mps.util.FileUtil;
 import com.intellij.openapi.application.ex.ApplicationEx;
 import com.intellij.openapi.application.ApplicationManager;
-import jetbrains.mps.execution.api.configurations.ConsoleProcessListener;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionResult;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionConsole;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -40,20 +39,16 @@ public class DeployPlugins_Configuration_RunProfileState implements RunProfileSt
   private final DeployPlugins_Configuration myRunConfiguration;
   @NotNull
   private final ExecutionEnvironment myEnvironment;
-
   public DeployPlugins_Configuration_RunProfileState(@NotNull DeployPlugins_Configuration configuration, @NotNull Executor executor, @NotNull ExecutionEnvironment environment) {
     myRunConfiguration = configuration;
     myEnvironment = environment;
   }
-
   public ConfigurationPerRunnerSettings getConfigurationSettings() {
     return null;
   }
-
   public RunnerSettings getRunnerSettings() {
     return null;
   }
-
   @Nullable
   public ExecutionResult execute(Executor executor, @NotNull ProgramRunner runner) throws ExecutionException {
     Project project = myEnvironment.getProject();
@@ -124,7 +119,7 @@ public class DeployPlugins_Configuration_RunProfileState implements RunProfileSt
     {
       ProcessHandler _processHandler = process;
       final ConsoleView _consoleView = console;
-      _processHandler.addProcessListener(new ConsoleProcessListener(_consoleView));
+      _consoleView.attachToProcess(_processHandler);
       return new DefaultExecutionResult(_processHandler, new DefaultExecutionConsole(_consoleView.getComponent(), new _FunctionTypes._void_P0_E0() {
         public void invoke() {
           _consoleView.dispose();
@@ -132,7 +127,6 @@ public class DeployPlugins_Configuration_RunProfileState implements RunProfileSt
       }));
     }
   }
-
   public static boolean canExecute(String executorId) {
     if (DefaultRunExecutor.EXECUTOR_ID.equals(executorId)) {
       return true;

@@ -12,17 +12,14 @@ import jetbrains.mps.util.ConditionalIterable;
 
 public class ModelNodesSearchScope extends AbstractSearchScope {
   private SModel myModel;
-
   public ModelNodesSearchScope(SModel model) {
     myModel = model;
   }
-
   @NotNull
   @Override
   public List<SNode> getNodes(Condition<SNode> condition) {
     List<SNode> result = new ArrayList<SNode>();
-    Iterable<SNode> roots = new ConditionalIterable(myModel.getRootNodes(), condition);
-    for (SNode root : roots) {
+    for (SNode root : new ConditionalIterable<SNode>(myModel.getRootNodes(), condition)) {
       result.add(root);
     }
     return result;

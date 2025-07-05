@@ -6,50 +6,44 @@ import jetbrains.mps.scope.FilteringScope;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.scope.ModelsScope;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
 import java.util.Collection;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.LanguageAspect;
-import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import org.jetbrains.mps.openapi.module.SDependency;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 
 /*package*/ class EditorComponentDeclarationScope extends FilteringScope {
   private SNode myConceptDeclaration;
-
-  private EditorComponentDeclarationScope(final SModel model, SNode conceptDeclaration) {
-    super(new ModelsScope(getModels(model), false, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration"));
-    myConceptDeclaration = conceptDeclaration;
+  private EditorComponentDeclarationScope(final SModel model, SNode concept) {
+    super(new ModelsScope(getModels(model), false, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration")));
+    myConceptDeclaration = concept;
   }
-
   /*package*/ EditorComponentDeclarationScope(SNode editorComponent) {
-    this(SNodeOperations.getModel(editorComponent), BehaviorReflection.invokeVirtual((Class<SNode>) ((Class) Object.class), editorComponent, "virtual_getConceptDeclaration_7055725856388417603", new Object[]{}));
+    this(SNodeOperations.getModel(editorComponent), AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(editorComponent));
   }
-
   private static Collection<SModel> getModels(SModel model) {
     Set<SModel> editorModels = SetSequence.fromSet(new HashSet<SModel>());
     if (model.getModule() instanceof Language) {
       Language language = (Language) model.getModule();
-      SetSequence.fromSet(editorModels).addElement(LanguageAspect.EDITOR.get(language));
-      for (SModuleReference extendedLangRef : SetSequence.fromSet(language.getExtendedLanguageRefs())) {
-        SModule extendedLang = extendedLangRef.resolve(model.getRepository());
-        if (extendedLang instanceof Language) {
-          SetSequence.fromSet(editorModels).addElement(LanguageAspect.EDITOR.get((Language) extendedLang));
+      SetSequence.fromSet(editorModels).addElement(SModuleOperations.getAspect(language, "editor"));
+      for (SDependency dep : Sequence.fromIterable(language.getDeclaredDependencies())) {
+        if (dep.getTarget() instanceof Language) {
+          SetSequence.fromSet(editorModels).addElement(SModuleOperations.getAspect(dep.getTarget(), "editor"));
         }
       }
     }
     return editorModels;
   }
-
   @Override
   public boolean isExcluded(SNode node) {
-    SNode editorComponent = SNodeOperations.as(node, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration");
-    return editorComponent == null || SLinkOperations.getTarget(editorComponent, "overridenEditorComponent", true) != null || !(SConceptOperations.isSuperConceptOf(BehaviorReflection.invokeVirtual((Class<SNode>) ((Class) Object.class), editorComponent, "virtual_getConceptDeclaration_7055725856388417603", new Object[]{}), NameUtil.nodeFQName(myConceptDeclaration)));
+    SNode editorComponent = SNodeOperations.as(node, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration"));
+    return editorComponent == null || SLinkOperations.getTarget(editorComponent, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x619d955714550434L, "overridenEditorComponent")) != null || !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(myConceptDeclaration, AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(editorComponent)));
   }
 }

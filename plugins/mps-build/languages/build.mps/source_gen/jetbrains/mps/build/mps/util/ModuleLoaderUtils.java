@@ -6,6 +6,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.build.util.DependenciesHelper;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.util.MacroHelper;
@@ -16,25 +17,21 @@ import jetbrains.mps.project.persistence.DevkitDescriptorPersistence;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.IFileUtils;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.build.behavior.BuildFolderMacro__BehaviorDescriptor;
 import jetbrains.mps.build.util.Context;
 import jetbrains.mps.vfs.FileSystem;
 
 public class ModuleLoaderUtils {
-  public static SNode getOriginalModule(SNode module, TemplateQueryContext genContext) {
-    SNode originalModule = SNodeOperations.as(DependenciesHelper.getOriginalNode(module, genContext), "jetbrains.mps.build.mps.structure.BuildMps_Module");
-    return (originalModule != null ?
-      originalModule :
-      module
-    );
+  /*package*/ static SNode getOriginalModule(SNode module, TemplateQueryContext genContext) {
+    SNode originalModule = SNodeOperations.as(DependenciesHelper.getOriginalNode(module, genContext), MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module"));
+    return (originalModule != null ? originalModule : module);
   }
 
-
-
-  public static ModuleDescriptor loadModuleDescriptor(IFile moduleDescriptorFile, TemplateQueryContext genContext, SNode originalModule, ModuleChecker.Reporter reporter) {
-    MacroHelper helper = new ModuleLoaderUtils.ModuleMacroHelper(moduleDescriptorFile.getParent(), genContext, originalModule, reporter);
+  public static ModuleDescriptor loadModuleDescriptor(IFile moduleDescriptorFile, TemplateQueryContext genContext, SNode module, ModuleChecker.Reporter reporter) {
+    MacroHelper helper = new ModuleLoaderUtils.ModuleMacroHelper(moduleDescriptorFile.getParent(), genContext, module, reporter);
     String path = moduleDescriptorFile.getPath();
     if (path.endsWith(MPSExtentions.DOT_LANGUAGE)) {
       return LanguageDescriptorPersistence.loadLanguageDescriptor(moduleDescriptorFile, helper);
@@ -46,34 +43,26 @@ public class ModuleLoaderUtils {
     throw new RuntimeException("unknown file type: " + moduleDescriptorFile.getName());
   }
 
-
-
   private static class ModuleMacroHelper implements MacroHelper {
     private final IFile moduleSourceDir;
     private final TemplateQueryContext genContext;
     private final SNode originalModule;
     private final ModuleChecker.Reporter reporter;
-
-    public ModuleMacroHelper(IFile moduleSourceDir, TemplateQueryContext genContext, SNode originalModule, ModuleChecker.Reporter reporter) {
+    public ModuleMacroHelper(IFile moduleSourceDir, TemplateQueryContext genContext, SNode module, ModuleChecker.Reporter reporter) {
       this.moduleSourceDir = moduleSourceDir;
       this.genContext = genContext;
-      this.originalModule = originalModule;
+      this.originalModule = ModuleLoaderUtils.getOriginalModule(module, genContext);
       this.reporter = reporter;
     }
-
     @Override
     public String expandPath(@Nullable String path) {
       if (path == null) {
         return null;
       }
 
-      if (moduleSourceDir != null) {
-        for (String macro : MacrosFactory.descriptors) {
-          if (path.startsWith(macro)) {
-            String relPath = path.substring(path.indexOf('}') + 1);
-            return IFileUtils.getCanonicalPath(moduleSourceDir.getDescendant(relPath));
-          }
-        }
+      if (moduleSourceDir != null && path.startsWith(MacrosFactory.MODULE)) {
+        String relPath = path.substring(path.indexOf('}') + 1);
+        return IFileUtils.getCanonicalPath(moduleSourceDir.getDescendant(relPath));
       }
       if (path.startsWith("${")) {
         int index = path.indexOf("}");
@@ -84,13 +73,9 @@ public class ModuleLoaderUtils {
 
         String macroName = path.substring(2, index);
         SNode found = null;
-        for (SNode macro : SLinkOperations.getTargets(SNodeOperations.getAncestor(originalModule, "jetbrains.mps.build.structure.BuildProject", false, false), "macros", true)) {
-          if (!(SNodeOperations.isInstanceOf(macro, "jetbrains.mps.build.structure.BuildFolderMacro"))) {
-            continue;
-          }
-
-          if (eq_krgnbt_a0c0f0d0f4(SPropertyOperations.getString(macro, "name"), macroName)) {
-            found = SNodeOperations.cast(macro, "jetbrains.mps.build.structure.BuildFolderMacro");
+        for (SNode macro : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(originalModule, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), false, false), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros")), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, "jetbrains.mps.build.structure.BuildFolderMacro")))) {
+          if (eq_krgnbt_a0a0f0d0f4(SPropertyOperations.getString(macro, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), macroName)) {
+            found = macro;
             break;
           }
         }
@@ -99,14 +84,9 @@ public class ModuleLoaderUtils {
           return path;
         }
 
-        String localPath = BehaviorReflection.invokeVirtual(String.class, SLinkOperations.getTarget(found, "defaultPath", true), "virtual_getLocalPath_5481553824944787364", new Object[]{(genContext != null ?
-          Context.defaultContext(genContext) :
-          Context.defaultContext()
-        )});
+        String localPath = BuildFolderMacro__BehaviorDescriptor.evaluate_id4jjtc7WZOzA.invoke(found, Context.defaultContext(genContext));
         if (localPath == null) {
-          if (genContext != null) {
-            genContext.showWarningMessage(found, "cannot resolve local path: " + path + ", macro has no default value");
-          }
+          reporter.report("cannot resolve local path: " + path + ", macro has no default value", found, null);
           return path;
         }
 
@@ -115,17 +95,12 @@ public class ModuleLoaderUtils {
       }
       return path;
     }
-
     @Override
     public String shrinkPath(@Nullable String string) {
       throw new UnsupportedOperationException("cannot shrink");
     }
-
-    private static boolean eq_krgnbt_a0c0f0d0f4(Object a, Object b) {
-      return (a != null ?
-        a.equals(b) :
-        a == b
-      );
+    private static boolean eq_krgnbt_a0a0f0d0f4(Object a, Object b) {
+      return (a != null ? a.equals(b) : a == b);
     }
   }
 }

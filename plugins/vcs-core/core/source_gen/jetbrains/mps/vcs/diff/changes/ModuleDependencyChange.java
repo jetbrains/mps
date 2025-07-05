@@ -12,27 +12,20 @@ import jetbrains.mps.extapi.model.SModelBase;
 public class ModuleDependencyChange extends DependencyChange {
   private SModuleReference myModuleReference;
   private ModuleDependencyChange.DependencyType myType;
-
   public ModuleDependencyChange(@NotNull ChangeSet changeSet, @NotNull SModuleReference moduleReference, @NotNull ModuleDependencyChange.DependencyType type, boolean delete) {
     super(changeSet, delete);
     myModuleReference = moduleReference;
     myType = type;
   }
-
   @Override
   public String toString() {
-    return ((isDelete() ?
-      "Delete" :
-      "Add"
-    )) + " " + myType.myName + " " + myModuleReference;
+    return ((isDelete() ? "Delete" : "Add")) + " " + myType.myName + " " + myModuleReference;
   }
-
   @NotNull
   @Override
   protected ModelChange createOppositeChange() {
     return new ModuleDependencyChange(getChangeSet().getOppositeChangeSet(), myModuleReference, myType, !(isDelete()));
   }
-
   @Override
   public void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
     if (isDelete()) {
@@ -41,25 +34,13 @@ public class ModuleDependencyChange extends DependencyChange {
       myType.myAddTask.invoke(model, myModuleReference);
     }
   }
-
   public SModuleReference getModuleReference() {
     return myModuleReference;
   }
-
   public ModuleDependencyChange.DependencyType getDependencyType() {
     return myType;
   }
-
-  public static   enum DependencyType {
-    USED_LANG("Used Language", new _FunctionTypes._void_P2_E0<SModel, SModuleReference>() {
-      public void invoke(SModel model, SModuleReference module) {
-        ((SModelBase) model).addLanguage(module);
-      }
-    }, new _FunctionTypes._void_P2_E0<SModel, SModuleReference>() {
-      public void invoke(SModel model, SModuleReference module) {
-        ((SModelBase) model).deleteLanguage(module);
-      }
-    }),
+  public enum DependencyType {
     USED_DEVKIT("Used Devkit", new _FunctionTypes._void_P2_E0<SModel, SModuleReference>() {
       public void invoke(SModel model, SModuleReference module) {
         ((SModelBase) model).addDevKit(module);
@@ -68,22 +49,12 @@ public class ModuleDependencyChange extends DependencyChange {
       public void invoke(SModel model, SModuleReference module) {
         ((SModelBase) model).deleteDevKit(module);
       }
-    }),
-    LANG_ENGAGED_ON_GENERATION("Language Engaged on Generation", new _FunctionTypes._void_P2_E0<SModel, SModuleReference>() {
-      public void invoke(SModel model, SModuleReference module) {
-        ((SModelBase) model).addEngagedOnGenerationLanguage(module);
-      }
-    }, new _FunctionTypes._void_P2_E0<SModel, SModuleReference>() {
-      public void invoke(SModel model, SModuleReference module) {
-        ((SModelBase) model).removeEngagedOnGenerationLanguage(module);
-      }
     });
 
     private String myName;
     private _FunctionTypes._void_P2_E0<? super SModel, ? super SModuleReference> myAddTask;
     private _FunctionTypes._void_P2_E0<? super SModel, ? super SModuleReference> myDeleteTask;
-
-    DependencyType(String name, _FunctionTypes._void_P2_E0<? super SModel, ? super SModuleReference> addTask, _FunctionTypes._void_P2_E0<? super SModel, ? super SModuleReference> deleteTask) {
+    private DependencyType(String name, _FunctionTypes._void_P2_E0<? super SModel, ? super SModuleReference> addTask, _FunctionTypes._void_P2_E0<? super SModel, ? super SModuleReference> deleteTask) {
       myName = name;
       myAddTask = addTask;
       myDeleteTask = deleteTask;

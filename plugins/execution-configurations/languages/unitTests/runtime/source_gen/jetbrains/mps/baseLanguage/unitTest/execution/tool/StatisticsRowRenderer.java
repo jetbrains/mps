@@ -30,7 +30,6 @@ public class StatisticsRowRenderer implements TableCellRenderer {
   private final JLabel myAloneSuccess;
   private final JLabel myAloneError;
   private final JLabel myAloneFailure;
-
   public StatisticsRowRenderer() {
 
     myTextPanel = new JPanel(new BorderLayout());
@@ -76,7 +75,6 @@ public class StatisticsRowRenderer implements TableCellRenderer {
     myAloneError.setForeground(Color.RED);
     myAloneError.setFont(boldFont);
   }
-
   @Override
   public Component getTableCellRendererComponent(JTable table, @Nullable Object value, boolean isSelected, boolean hasFocus, int row, int column) {
     if (value == null) {
@@ -130,18 +128,9 @@ public class StatisticsRowRenderer implements TableCellRenderer {
         int f = rowValue.getFailed();
         int e = rowValue.getErrored();
         if (container) {
-          mySuccess.setText((s > 0 ?
-            ("P:" + s) :
-            ""
-          ));
-          myFailure.setText((f > 0 ?
-            ("F:" + f) :
-            ""
-          ));
-          myError.setText((e > 0 ?
-            ("E:" + e) :
-            ""
-          ));
+          mySuccess.setText((s > 0 ? ("P:" + s) : ""));
+          myFailure.setText((f > 0 ? ("F:" + f) : ""));
+          myError.setText((e > 0 ? ("E:" + e) : ""));
           result = myStatePanel;
         } else if ((s + f + e) >= 1) {
           if (s > 0) {
@@ -189,7 +178,6 @@ public class StatisticsRowRenderer implements TableCellRenderer {
     }
     return result;
   }
-
   private JLabel setTime(long time) {
     String text = "";
     if (time >= 0) {
@@ -198,7 +186,6 @@ public class StatisticsRowRenderer implements TableCellRenderer {
     mySimpleField.setText(text);
     return mySimpleField;
   }
-
   private JLabel setMemoryUsage(long usage) {
     String s = String.format("%d Kb", usage / 1024);
     mySimpleField.setText(s);

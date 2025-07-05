@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,34 @@
  */
 package jetbrains.mps.datatransfer;
 
+import jetbrains.mps.classloading.MPSClassesListener;
+import jetbrains.mps.classloading.MPSClassesListenerAdapter;
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.reloading.ReloadAdapter;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.*;
 import jetbrains.mps.util.NameUtil;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.util.BreadthConceptHierarchyIterator;
+import org.jetbrains.mps.util.UniqueIterator;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+/**
+ *
+ * @deprecated use <t>jetbrains.mps.datatransfer.DataTransferManager</t> instead
+ */
+@Deprecated
+@ToRemove(version = 3.5)
 public class PasteWrappersManager implements CoreComponent {
 
   public static final String PASTE_WRAPPER_CLASS_NAME = "PasteWrappers";
@@ -36,9 +51,9 @@ public class PasteWrappersManager implements CoreComponent {
   private static final Logger LOG = LogManager.getLogger(PasteWrappersManager.class);
 
   private ClassLoaderManager myClassLoaderManager;
-  private ReloadAdapter myReloadHandler = new ReloadAdapter() {
+  private MPSClassesListener myClassesListener = new MPSClassesListenerAdapter() {
     @Override
-    public void unload() {
+    public void beforeClassesUnloaded(Set<? extends ReloadableModuleBase> modules) {
       clear();
     }
   };
@@ -62,20 +77,30 @@ public class PasteWrappersManager implements CoreComponent {
     }
 
     INSTANCE = this;
-    myClassLoaderManager.addReloadHandler(myReloadHandler);
+    myClassLoaderManager.addClassesHandler(myClassesListener);
   }
 
   @Override
   public void dispose() {
-    myClassLoaderManager.removeReloadHandler(myReloadHandler);
+    myClassLoaderManager.removeClassesHandler(myClassesListener);
     INSTANCE = null;
   }
 
+  /**
+   *
+   * @deprecated use <t>jetbrains.mps.datatransfer.DataTransferManager#canWrapInto(SNode, SAbstractConcept)</t> instead
+   */
+  @Deprecated()
   public boolean canWrapInto(SNode node, SNode targetConcept) {
     checkLoaded();
     return getWrapperFor(node, targetConcept) != null;
   }
 
+  /**
+   *
+   * @deprecated use <t>jetbrains.mps.datatransfer.DataTransferManager#wrapInto(SNode, SAbstractConcept)</t> instead
+   */
+  @Deprecated()
   public SNode wrapInto(SNode node, SNode targetConcept) {
     checkLoaded();
     PasteWrapper wrapper = getWrapperFor(node, targetConcept);
@@ -91,11 +116,13 @@ public class PasteWrappersManager implements CoreComponent {
 
   private PasteWrapper getWrapperFor(SNode node, SNode targetConcept) {
     Map<String, PasteWrapper> wrappers = myWrappers.get(NameUtil.nodeFQName(targetConcept));
-    if (wrappers == null) return null;
-    List<SNode> superConcepts = SModelUtil_new.getConceptAndSuperConcepts(((jetbrains.mps.smodel.SNode) node).getConceptDeclarationNode());
-    for (SNode acd : superConcepts) {
-      if (wrappers.containsKey(NameUtil.nodeFQName(acd))) {
-        return wrappers.get(NameUtil.nodeFQName(acd));
+    if (wrappers == null) {
+      return null;
+    }
+    for (SAbstractConcept acd : new UniqueIterator<SAbstractConcept>(new BreadthConceptHierarchyIterator(node.getConcept()))) {
+      final PasteWrapper pasteWrapper = wrappers.get(acd.getQualifiedName());
+      if (pasteWrapper != null) {
+        return pasteWrapper;
       }
     }
     return null;
@@ -110,10 +137,10 @@ public class PasteWrappersManager implements CoreComponent {
   }
 
   private void load() {
-    for (Language language : (List<Language>) ModuleRepositoryFacade.getInstance().getAllModules(Language.class)) {
+    for (Language language : ModuleRepositoryFacade.getInstance().getAllModules(Language.class)) {
       try {
         String pasteWrappersClass = language.getModuleName() + "." + LanguageAspect.ACTIONS.getName() + "." + PASTE_WRAPPER_CLASS_NAME;
-        Class cls = ClassLoaderManager.getInstance().getClass(language, pasteWrappersClass);
+        Class cls = ClassLoaderManager.getInstance().getOwnClass(language, pasteWrappersClass);
         if (cls == null) continue;
 
         List<PasteWrapper> wrappers = (List<PasteWrapper>) cls.getMethod(PASTE_WRAPPERS_FACTORY_METHOD).invoke(null);

@@ -4,39 +4,41 @@ package smodelLanguage.samples;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 
 public class TypeCast {
   public void cast_node_to_SNode(SNode ifStatement) {
     SNode nodeObject1 = ifStatement;
-    SNode nodeObject2 = (SNode) SLinkOperations.getTarget(ifStatement, "condition", true);
-    SNode nodeObject3 = SLinkOperations.getTarget(ifStatement, "condition", true);
-    SNode expression = SNodeOperations.cast(nodeObject3, "jetbrains.mps.baseLanguage.structure.Expression");
+    SNode nodeObject2 = (SNode) SLinkOperations.getTarget(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition"));
+    SNode nodeObject3 = SLinkOperations.getTarget(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition"));
+    SNode expression = SNodeOperations.cast(nodeObject3, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"));
   }
-
   public void cast_SNode_to_node(SNode node) {
     SNode node1 = node;
-    SNode node2 = SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    SNode node2 = SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
   }
-
   public void upcast_snode(SNode snode) {
-    SNode ifStatement = SNodeOperations.cast(snode, "jetbrains.mps.baseLanguage.structure.IfStatement");
-    SNode ifStatement1 = SNodeOperations.cast(snode, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    SNode ifStatement = SNodeOperations.cast(snode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
+    SNode ifStatement1 = SNodeOperations.cast(snode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
   }
-
   public void cast_children_to_nlist(SNode statementList) {
-    List<SNode> statements = SLinkOperations.getTargets(statementList, "statement", true);
+    List<SNode> statements = SLinkOperations.getChildren(statementList, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"));
   }
-
   public void cast_nlist_to_List(List<SNode> statements) {
     List list1 = statements;
     List<SNode> list2 = statements;
   }
-
   public void cast_children_to_List(SNode statements) {
-    List list1 = SLinkOperations.getTargets(statements, "statement", true);
-    List<SNode> list2 = SLinkOperations.getTargets(statements, "statement", true);
-    List<SNode> list3 = (List<SNode>) SLinkOperations.getTargets(statements, "statement", true);
+    List list1 = SLinkOperations.getChildren(statements, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"));
+    List<SNode> list2 = ListSequence.fromList(SLinkOperations.getChildren(statements, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).select(new ISelector<SNode, SNode>() {
+      public SNode select(SNode it) {
+        return it;
+      }
+    }).toListSequence();
+    List<SNode> list3 = (List<SNode>) SLinkOperations.getChildren(statements, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"));
   }
 }

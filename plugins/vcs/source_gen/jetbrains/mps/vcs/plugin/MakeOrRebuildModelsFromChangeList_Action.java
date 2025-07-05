@@ -8,91 +8,97 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
-import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.make.IMakeService;
-import jetbrains.mps.ide.make.actions.MakeActionParameters;
-import jetbrains.mps.smodel.IOperationContext;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.annotations.NotNull;
-import org.apache.log4j.Priority;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import jetbrains.mps.ide.make.actions.MakeActionImpl;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.make.resources.IResource;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
+import jetbrains.mps.internal.collections.runtime.IListSequence;
+import jetbrains.mps.ide.generator.GenerationCheckHelper;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.smodel.resources.ModelsToResources;
+import java.util.ArrayList;
+import jetbrains.mps.make.MakeSession;
+import jetbrains.mps.ide.make.DefaultMakeMessageHandler;
+import jetbrains.mps.smodel.SModelFileTracker;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.generator.GenerationFacade;
 
 public class MakeOrRebuildModelsFromChangeList_Action extends BaseAction {
   private static final Icon ICON = null;
-  private boolean rebuild;
 
+  private boolean rebuild;
   public MakeOrRebuildModelsFromChangeList_Action(boolean rebuild_par) {
     super("Make Models", "", ICON);
     this.rebuild = rebuild_par;
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    List<SModel> models = ListSequence.fromListWithValues(new ArrayList<SModel>(), (Iterable<SModel>) VcsActionsUtil.getModels(((VirtualFile[]) MapSequence.fromMap(_params).get("virtualFiles"))));
-    if (!(VcsActionsUtil.isMakePluginInstalled()) || IMakeService.INSTANCE.get().isSessionActive() || ListSequence.fromList(models).isEmpty()) {
+    List<SModel> models = MakeOrRebuildModelsFromChangeList_Action.this.getModels2Build(event.getData(CommonDataKeys.VIRTUAL_FILE_ARRAY), event);
+    if (IMakeService.INSTANCE.get().isSessionActive() || ListSequence.fromList(models).isEmpty()) {
       return false;
     }
-    String text = new MakeActionParameters(((IOperationContext) MapSequence.fromMap(_params).get("context")), models, ListSequence.fromList(models).first(), null, null).actionText(MakeOrRebuildModelsFromChangeList_Action.this.rebuild);
-    if (text != null) {
-      event.getPresentation().setText(text);
-      return true;
-    }
-    return false;
+    String what = (ListSequence.fromList(models).count() == 1 ? "model " + ListSequence.fromList(models).first().getModelName() : "selected models");
+    String fmt = (MakeOrRebuildModelsFromChangeList_Action.this.rebuild ? "Rebuild %s" : "Make %s");
+    event.getPresentation().setText(String.format(fmt, what));
+    return true;
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        boolean enabled = this.isApplicable(event, _params);
-        this.setEnabledState(event.getPresentation(), enabled);
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "MakeOrRebuildModelsFromChangeList", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("context", event.getData(MPSCommonDataKeys.OPERATION_CONTEXT));
-    if (MapSequence.fromMap(_params).get("context") == null) {
-      return false;
+    {
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("virtualFiles", event.getData(PlatformDataKeys.VIRTUAL_FILE_ARRAY));
-    if (MapSequence.fromMap(_params).get("virtualFiles") == null) {
-      return false;
+    {
+      VirtualFile[] p = event.getData(CommonDataKeys.VIRTUAL_FILE_ARRAY);
+      if (p == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      List<SModel> models = ListSequence.fromListWithValues(new ArrayList<SModel>(), (Iterable<SModel>) VcsActionsUtil.getModels(((VirtualFile[]) MapSequence.fromMap(_params).get("virtualFiles"))));
-      new MakeActionImpl(((IOperationContext) MapSequence.fromMap(_params).get("context")), new MakeActionParameters(((IOperationContext) MapSequence.fromMap(_params).get("context")), models, ListSequence.fromList(models).first(), null, null), MakeOrRebuildModelsFromChangeList_Action.this.rebuild).executeAction();
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "MakeOrRebuildModelsFromChangeList", t);
+    final MPSProject project = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+    List<? extends IResource> resources = new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<IListSequence<IResource>>() {
+      public IListSequence<IResource> compute() {
+        List<SModel> models = MakeOrRebuildModelsFromChangeList_Action.this.getModels2Build(event.getData(CommonDataKeys.VIRTUAL_FILE_ARRAY), event);
+        if (new GenerationCheckHelper().checkModelsBeforeGenerationIfNeeded(project, models)) {
+          return Sequence.fromIterable(new ModelsToResources(models).resources(MakeOrRebuildModelsFromChangeList_Action.this.rebuild)).toListSequence();
+        }
+        return ListSequence.fromList(new ArrayList<IResource>());
       }
+    });
+    if (ListSequence.fromList(resources).isEmpty()) {
+      return;
+    }
+    MakeSession session = new MakeSession(project, new DefaultMakeMessageHandler(project), MakeOrRebuildModelsFromChangeList_Action.this.rebuild);
+    if (IMakeService.INSTANCE.get().openNewSession(session)) {
+      IMakeService.INSTANCE.get().make(session, resources);
     }
   }
-
   @NotNull
   public String getActionId() {
     StringBuilder res = new StringBuilder();
@@ -102,6 +108,24 @@ public class MakeOrRebuildModelsFromChangeList_Action extends BaseAction {
     res.append("!");
     return res.toString();
   }
-
-  protected static Logger LOG = LogManager.getLogger(MakeOrRebuildModelsFromChangeList_Action.class);
+  private List<SModel> getModels2Build(VirtualFile[] virtualFiles, final AnActionEvent event) {
+    if (virtualFiles != null) {
+      final SModelFileTracker modelFileTracker = SModelFileTracker.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository());
+      return Sequence.fromIterable(Sequence.fromArray(virtualFiles)).where(new IWhereFilter<VirtualFile>() {
+        public boolean accept(VirtualFile vf) {
+          return vf.isInLocalFileSystem() && vf.exists() && !(vf.isDirectory());
+        }
+      }).select(new ISelector<VirtualFile, SModel>() {
+        public SModel select(VirtualFile vf) {
+          return modelFileTracker.findModel(VirtualFileUtils.toIFile(vf));
+        }
+      }).where(new IWhereFilter<SModel>() {
+        public boolean accept(SModel m) {
+          return m != null && GenerationFacade.canGenerate(m);
+        }
+      }).toListSequence();
+    } else {
+      return ListSequence.fromList(new ArrayList<SModel>());
+    }
+  }
 }

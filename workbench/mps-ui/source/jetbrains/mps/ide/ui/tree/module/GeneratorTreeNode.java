@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,24 @@
 package jetbrains.mps.ide.ui.tree.module;
 
 import jetbrains.mps.ide.icons.IdeIcons;
-import jetbrains.mps.project.ModuleContext;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.SModelStereotype;
+import org.jetbrains.annotations.NotNull;
 
 public class GeneratorTreeNode extends ProjectModuleTreeNode implements StereotypeProvider {
   private boolean myInitialized;
 
-  public GeneratorTreeNode(Generator generator, Project project) {
-    super(new ModuleContext(generator, project));
-    setNodeIdentifier(calculateNodeIdenifier());
+  public GeneratorTreeNode(@NotNull Generator generator, Project project) {
+    super(generator);
+    setNodeIdentifier(generator.getModuleName());
     setIcon(IdeIcons.GENERATOR_ICON);
-    init();
+  }
+
+  @NotNull
+  @Override
+  public Generator getModule() {
+    return (Generator) super.getModule();
   }
 
   @Override
@@ -37,40 +42,21 @@ public class GeneratorTreeNode extends ProjectModuleTreeNode implements Stereoty
   }
 
   @Override
-  public Generator getModule() {
-    return getGenerator();
-  }
-
-  public Generator getGenerator() {
-    return (Generator) getOperationContext().getModule();
-  }
-
-  @Override
   public boolean isInitialized() {
     return myInitialized;
   }
 
   @Override
-  public void init() {
-    populate();
+  protected void doInit() {
+    ModuleNodeChildrenProvider childrenProvider = getAncestor(ModuleNodeChildrenProvider.class);
+    if (childrenProvider == null || !childrenProvider.populate(this, getModule())) {
+      new SModelsSubtree(this).create(getModule());
+    }
     myInitialized = true;
   }
 
-  private void populate() {
-    SModelsSubtree.create(this, getOperationContext());
-  }
-
   public String calculateText() {
-    Generator generator = getGenerator();
-    if (generator == null) return "null";
-    String name = generator.getName();
-    return "generator/" + (name == null ? "<no name>" : name);
-  }
-
-  public String calculateNodeIdenifier() {
-    Generator generator = getGenerator();
-    if (generator == null) return "null";
-    return generator.getModuleName();
+    return "generator/" + getModule().getAlias();
   }
 
   @Override

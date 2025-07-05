@@ -6,42 +6,36 @@ import jetbrains.mps.debug.api.programState.ILocation;
 import org.jetbrains.annotations.NotNull;
 import com.sun.jdi.Location;
 import com.sun.jdi.AbsentInformationException;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.ide.ThreadUtils;
 
 public class JavaLocation implements ILocation {
   private final String myFileName;
   private final String myUnitName;
   private final String myRoutineName;
   private final int myLineNumber;
-
   public JavaLocation(@NotNull Location location) throws AbsentInformationException {
-    assert !(ModelAccess.instance().isInEDT());
+    assert !(ThreadUtils.isInEDT());
     myFileName = location.sourceName();
     myUnitName = location.declaringType().name();
     myRoutineName = location.method().name();
     myLineNumber = location.lineNumber();
   }
-
   @Override
   public String getFileName() {
     return myFileName;
   }
-
   @Override
   public String getUnitName() {
     return myUnitName;
   }
-
   @Override
   public String getRoutineName() {
     return myRoutineName;
   }
-
   @Override
   public int getLineNumber() {
     return myLineNumber;
   }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -52,22 +46,13 @@ public class JavaLocation implements ILocation {
     }
 
     JavaLocation that = (JavaLocation) o;
-    if ((myFileName != null ?
-      !((myFileName).equals(that.myFileName)) :
-      that.myFileName != null
-    )) {
+    if ((myFileName != null ? !((myFileName).equals(that.myFileName)) : that.myFileName != null)) {
       return false;
     }
-    if ((myUnitName != null ?
-      !((myUnitName).equals(that.myUnitName)) :
-      that.myUnitName != null
-    )) {
+    if ((myUnitName != null ? !((myUnitName).equals(that.myUnitName)) : that.myUnitName != null)) {
       return false;
     }
-    if ((myRoutineName != null ?
-      !((myRoutineName).equals(that.myRoutineName)) :
-      that.myRoutineName != null
-    )) {
+    if ((myRoutineName != null ? !((myRoutineName).equals(that.myRoutineName)) : that.myRoutineName != null)) {
       return false;
     }
     if (myLineNumber != that.myLineNumber) {
@@ -76,22 +61,12 @@ public class JavaLocation implements ILocation {
 
     return true;
   }
-
   @Override
   public int hashCode() {
     int result = 0;
-    result = 31 * result + ((myFileName != null ?
-      String.valueOf(myFileName).hashCode() :
-      0
-    ));
-    result = 31 * result + ((myUnitName != null ?
-      String.valueOf(myUnitName).hashCode() :
-      0
-    ));
-    result = 31 * result + ((myRoutineName != null ?
-      String.valueOf(myRoutineName).hashCode() :
-      0
-    ));
+    result = 31 * result + ((myFileName != null ? String.valueOf(myFileName).hashCode() : 0));
+    result = 31 * result + ((myUnitName != null ? String.valueOf(myUnitName).hashCode() : 0));
+    result = 31 * result + ((myRoutineName != null ? String.valueOf(myRoutineName).hashCode() : 0));
     result = 31 * result + myLineNumber;
     return result;
   }

@@ -22,10 +22,8 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import java.awt.event.ItemEvent;
 import java.awt.Component;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
@@ -41,10 +39,7 @@ public class ConceptEditorHintPreferencesPage {
   private final ConceptEditorHintSettings registrySettings;
 
   public ConceptEditorHintPreferencesPage(ConceptEditorHintSettings state) {
-
     registrySettings = state != null ? state : new ConceptEditorHintSettings();
-
-
   }
 
   public JComponent getComponent() {
@@ -55,35 +50,7 @@ public class ConceptEditorHintPreferencesPage {
     return myPreferencesPanel;
   }
 
-  private boolean isRegistryChanged() {
-    if (registrySettings.size() != currentSettings.size()) {
-      return true;
-    }
-    for (String langName : currentSettings.getLanguagesNames()) {
-      if (!registrySettings.containsLang(langName)) {
-        return true;
-      }
-      if (registrySettings.sizeForLang(langName) != currentSettings.sizeForLang(langName)) {
-        return true;
-      }
-      for (ConceptEditorHint hint : registrySettings.getHints(langName)) {
-         if (!currentSettings.containsKey(langName, hint)) {
-           return true;
-         }
-      }
-      for (ConceptEditorHint hint : currentSettings.getHints(langName)) {
-        if (!registrySettings.containsKey(langName, hint)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
   public boolean isModified() {
-    if (isRegistryChanged()) {
-      return true;
-    }
     for (String langName : currentSettings.getLanguagesNames()) {
       for (ConceptEditorHint hint : currentSettings.getHints(langName)) {
         if (!registrySettings.containsKey(langName, hint)) {
@@ -98,9 +65,6 @@ public class ConceptEditorHintPreferencesPage {
   }
 
   public void reset() {
-    if (showReloadedLanguagesMessage()) {
-      return;
-    }
     update();
   }
 
@@ -130,34 +94,17 @@ public class ConceptEditorHintPreferencesPage {
     where.putAll(from);
   }
 
-
-
   private void addHintCheckbox(JPanel panel, final String lang, final ConceptEditorHint hint, boolean state) {
     JCheckBox item = new JCheckBox(hint.getId() + ": " + hint.getPresentation());
     item.setSelected(state);
     panel.add(item);
-    item.addChangeListener(new ChangeListener() {
-      @Override
-      public void stateChanged(ChangeEvent e) {
-        assert currentSettings.containsKey(lang, hint);
-        currentSettings.put(lang, hint, !currentSettings.get(lang, hint));
-      }
+    item.addItemListener(e -> {
+      assert currentSettings.containsKey(lang, hint);
+      currentSettings.put(lang, hint, e.getStateChange() == ItemEvent.SELECTED);
     });
   }
 
   public void commit() {
-    if (showReloadedLanguagesMessage()){
-      return;
-    }
     syncSettings(currentSettings, registrySettings);
   }
-
-  private boolean showReloadedLanguagesMessage() {
-    if (isRegistryChanged()) {
-      JOptionPane.showMessageDialog(myPreferencesPanel, "Some languages have been reloaded.\nPlease reopen settings page", "Error", JOptionPane.ERROR_MESSAGE);
-      return true;
-    }
-    return false;
-  }
-
 }

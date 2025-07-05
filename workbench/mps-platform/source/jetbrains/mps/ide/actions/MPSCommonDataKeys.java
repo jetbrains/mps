@@ -18,13 +18,12 @@ package jetbrains.mps.ide.actions;
 import com.intellij.openapi.actionSystem.DataKey;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import jetbrains.mps.messages.IMessage;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.IScope;
+import jetbrains.mps.workbench.ActionPlace;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.workbench.ActionPlace;
+import org.jetbrains.mps.openapi.module.SModule;
 
 import javax.swing.tree.TreeNode;
 import java.awt.Frame;
@@ -39,12 +38,16 @@ import java.util.List;
  */
 public class MPSCommonDataKeys extends PlatformDataKeys {
 
-  @Description(description = "operation context")
+  /**
+   *   @deprecated IOperationContext has been deprecated and will be removed in the next release
+   */
+  @Description(description = "operation context. IOperationContext has been deprecated and will be removed in the next release")
+  @Deprecated
   public static final DataKey<IOperationContext> OPERATION_CONTEXT = DataKey.create("MPS_IOperationContext");
   @Description(description = "current MPS project")
   public static final DataKey<MPSProject> MPS_PROJECT = DataKey.create("MPS_MPSProject");
 
-  @Description(description = "selected node (null if multiple or no selection")
+  @Description(description = "selected node (null if multiple or no selection)")
   public static final DataKey<SNode> NODE = DataKey.create("MPS_SNode");
   @Description(description = "selected nodes")
   public static final DataKey<List<SNode>> NODES = DataKey.create("MPS_SNode_List");
@@ -73,8 +76,6 @@ public class MPSCommonDataKeys extends PlatformDataKeys {
 
   @Description(description = "main window's Frame")
   public static final DataKey<Frame> FRAME = DataKey.create("MPS_Frame");
-  @Description(description = "scope")
-  public static final DataKey<IScope> SCOPE = DataKey.create("MPS_IScope");
 
   @Description(description = "node selected in the tree")
   public static final DataKey<TreeNode> TREE_NODE = DataKey.create("MPS_TreeNode");

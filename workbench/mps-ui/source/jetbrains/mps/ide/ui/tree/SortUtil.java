@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +15,26 @@
  */
 package jetbrains.mps.ide.ui.tree;
 
-import jetbrains.mps.generator.TransientModelsModule.TransientSModelDescriptor;
-import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.util.SNodeOperations;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.util.Comparing;
+import jetbrains.mps.extapi.model.TransientSModel;
+import jetbrains.mps.util.SModuleNameComparator;
+import jetbrains.mps.util.SNodePresentationComparator;
 import jetbrains.mps.util.ToStringComparator;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SModule;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
+/**
+ * @deprecated extract comparators, use them directly where needed and get rid of this class
+ */
+@Deprecated
+@ToRemove(version = 0)
 public class SortUtil {
   public static List<SModel> sortModels(List<SModel> modelDescriptors) {
     List<SModel> sortedModels = new ArrayList<SModel>(modelDescriptors);
@@ -37,37 +46,31 @@ public class SortUtil {
     @Override
     public int compare(SModel o, SModel o1) {
       if (o == o1) return 0;
-      int result = Comparing.compare(SNodeOperations.getModelLongName(o), SNodeOperations.getModelLongName(o1));
+      int result = SortUtil.compare(o.getName().getLongName(), o1.getName().getLongName());
       if (result != 0) return result;
-      String str = SModelStereotype.getStereotype(o);
-      String str1 = SModelStereotype.getStereotype(o1);
-      if ((o instanceof TransientSModelDescriptor) && (o1 instanceof TransientSModelDescriptor)) {
-        String[] part = str.split("_");
-        String[] part1 = str1.split("_");
-        for (int i = 0; i < part.length; i++) {
-          result = Comparing.compare(Integer.valueOf(part[i]), Integer.valueOf(part1[i]));
-          if (result != 0) return result;
+      String str = o.getName().getStereotype();
+      String str1 = o1.getName().getStereotype();
+      if ((o instanceof TransientSModel) && (o1 instanceof TransientSModel)) {
+        try {
+          String[] part = str.split("_");
+          String[] part1 = str1.split("_");
+          for (int i = 0; i < part.length; i++) {
+            result = SortUtil.compare(Integer.valueOf(part[i]), Integer.valueOf(part1[i]));
+            if (result != 0) return result;
+          }
+          return result;
+        } catch (NumberFormatException ex) {
+          return SortUtil.compare(str, str1);
         }
-        return result;
       } else {
-        return Comparing.compare(str, str1);
+        return SortUtil.compare(str, str1);
       }
     }
   }
 
   public static List<SModule> sortModules(Collection<SModule> modules) {
     List<SModule> sortedModules = new ArrayList<SModule>(modules);
-    Collections.sort(sortedModules, new Comparator() {
-      @Override
-      public int compare(Object o1, Object o2) {
-        if (o1 == o2) {
-          return 0;
-        }
-        String name1 = ((SModule) o1).getModuleName();
-        String name2 = ((SModule) o2).getModuleName();
-        return name1.compareTo(name2);
-      }
-    });
+    Collections.sort(sortedModules, new SModuleNameComparator());
 
     return sortedModules;
   }
@@ -78,15 +81,16 @@ public class SortUtil {
     return sortedNodes;
   }
 
+  // in use by mbeddr, TargetChooser_SModelTreeNode
   public static List<SNode> sortNodesByPresentation(List<SNode> nodes) {
-    List<SNode> sortedNodes = new ArrayList<SNode>(nodes);
-    Collections.sort(sortedNodes, new Comparator<SNode>() {
-      @Override
-      public int compare(SNode o1, SNode o2) {
-        if (o1 == null || o2 == null) return 0;
-        return o1.getPresentation().compareTo(o2.getPresentation());
-      }
-    });
-    return sortedNodes;
+    ArrayList<SNode> rv = new ArrayList<SNode>(nodes);
+    Collections.sort(rv, new SNodePresentationComparator());
+    return rv;
+  }
+
+  static <T extends Comparable<T>> int compare(final T name1, final T name2) {
+    if (name1 == null) return name2 == null ? 0 : -1;
+    if (name2 == null) return 1;
+    return name1.compareTo(name2);
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,228 +17,195 @@ package jetbrains.mps.ide.projectPane.logicalview.highlighting.listeners;
 
 import jetbrains.mps.generator.ModelGenerationStatusListener;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
-import jetbrains.mps.ide.projectPane.ProjectPane;
-import jetbrains.mps.ide.projectPane.logicalview.SNodeTreeUpdater;
-import jetbrains.mps.ide.projectPane.logicalview.SimpleModelListener;
-import jetbrains.mps.ide.projectPane.logicalview.highlighting.listeners.ListenersFactory.NodeListeners;
-import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.ProjectPaneModifiedMarker;
-import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.ProjectPaneTreeErrorChecker;
-import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.ProjectPaneTreeGenStatusUpdater;
-import jetbrains.mps.ide.ui.smodel.SModelEventsDispatcher;
-import jetbrains.mps.ide.ui.smodel.SModelEventsDispatcher.SModelEventsListener;
-import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.ide.projectPane.logicalview.PresentationUpdater;
+import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.TreeUpdateVisitor;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
-import jetbrains.mps.ide.ui.tree.smodel.SNodeGroupTreeNode;
-import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode;
-import jetbrains.mps.project.Project;
+import jetbrains.mps.smodel.RepoListenerRegistrar;
+import jetbrains.mps.smodel.SModelAdapter;
 import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.smodel.SModelRepository;
-import jetbrains.mps.smodel.SModelRepositoryAdapter;
-import jetbrains.mps.smodel.SModelRepositoryListener;
-import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.smodel.loading.ModelLoadingState;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
-import javax.swing.tree.DefaultTreeModel;
-import java.util.List;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
-public class SModelNodeListeners implements NodeListeners {
-  private SimpleModelListener mySimpleModelListener;
-  private SModelRepositoryListener myModelRepositoryListener;
-  private MyGenerationStatusListener myStatusListener;
-  private SModelEventsListener myEventsListener;
-  private MySNodeTreeUpdater myTreeUpdater;
+/**
+ * Control listeners that track changes to a model node.
+ * Invoke {@link #startListening(SRepository)}/{@link #stopListening(SRepository)} to enable/disable listening,
+ * and {@link #attach(jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode)}/{@link #detach(jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode)} to \
+ * include/exclude selected model tree node from update.
+ */
+public class SModelNodeListeners {
+  private final ModelChangeListener myModelChangeListener;
+  private final SRepositoryContentAdapter myRepositoryListener;
+  private final GenStatusTracker myGenStatusListener;
 
-  private SModelTreeNode myTreeNode;
-  private SModel myModel;
+  /**
+   * There might be more than one tree node for the same model (e.g. one under language, another under @descriptor),
+   * we need to track all tree nodes to update them on model change
+   */
+  private final Map<SModelReference, Collection<SModelTreeNode>> myTreeNodes = new HashMap<SModelReference, Collection<SModelTreeNode>>();
+  private final TreeUpdateVisitor[] myUpdates; // shall be CompositeVisitor, but I'm lazy for that
 
-  private ProjectPaneTreeGenStatusUpdater myGenStatusVisitor = new ProjectPaneTreeGenStatusUpdater();
-  private ProjectPaneTreeErrorChecker myErrorVisitor = new ProjectPaneTreeErrorChecker();
-  private ProjectPaneModifiedMarker myModifiedMarker = new ProjectPaneModifiedMarker();
 
-  public SModelNodeListeners(final SModelTreeNode modelNode) {
-    myTreeNode = modelNode;
-    myModel = modelNode.getSModelDescriptor();
+  public SModelNodeListeners(TreeUpdateVisitor genStatusUpdate, TreeUpdateVisitor errorVisitor, TreeUpdateVisitor modifiedMarker) {
+    myUpdates = new TreeUpdateVisitor[3];
+    myUpdates[0] = genStatusUpdate;
+    myUpdates[1] = errorVisitor;
+    myUpdates[2] = modifiedMarker;
 
-    mySimpleModelListener = new MySimpleModelListener(modelNode);
-    myModelRepositoryListener = new SModelRepositoryAdapter() {
+    myModelChangeListener = new ModelChangeListener();
+    myRepositoryListener = new SRepositoryContentAdapter() {
       @Override
-      public void modelsReplaced(Set<SModel> replacedModels) {
-        if (replacedModels.contains(myModel)) {
-          visitNode(modelNode);
-        }
+      protected void startListening(SModel model) {
+        model.addModelListener(this);
+      }
+
+      @Override
+      protected void stopListening(SModel model) {
+        model.removeModelListener(this);
+      }
+
+      @Override
+      public void modelReplaced(SModel model) {
+        refreshAffectedTreeNodes(model);
       }
     };
-    myStatusListener = new MyGenerationStatusListener();
-    if (myModel instanceof EditableSModel) {
-      myTreeUpdater = new MySNodeTreeUpdater(modelNode.getOperationContext().getProject(), modelNode);
-      myTreeUpdater.setDependencyRecorder(modelNode.getDependencyRecorder());
+    myGenStatusListener = new GenStatusTracker(genStatusUpdate);
+  }
+
+  public void startListening(SRepository projectRepository) {
+    new RepoListenerRegistrar(projectRepository, myRepositoryListener).attach();
+    ModelGenerationStatusManager.getInstance().addGenerationStatusListener(myGenStatusListener);
+  }
+
+  public void stopListening(SRepository projectRepository) {
+    ModelGenerationStatusManager.getInstance().removeGenerationStatusListener(myGenStatusListener);
+    new RepoListenerRegistrar(projectRepository, myRepositoryListener).detach();
+  }
+
+  public void attach(@NotNull SModelTreeNode node) {
+    final SModel model = node.getModel();
+    if (model != null) {
+      boolean modelSeenFirstTime = true;
+      synchronized (myTreeNodes) {
+        Collection<SModelTreeNode> knownNodes = myTreeNodes.get(model.getReference());
+        if (knownNodes == null) {
+          myTreeNodes.put(model.getReference(), knownNodes = new ArrayList<SModelTreeNode>(3));
+        } else {
+          modelSeenFirstTime = false;
+        }
+        knownNodes.add(node);
+      }
+      if (modelSeenFirstTime) {
+        ((SModelInternal) model).addModelListener(myModelChangeListener);
+      }
     }
-    myEventsListener = new MySModelEventsListener();
+    refreshTreeNodes(node);
   }
 
-  @Override
-  public void startListening() {
-    visitNode(myTreeNode);
-
-    SModelRepository.getInstance().addModelRepositoryListener(myModelRepositoryListener);
-
-    SModelEventsDispatcher.getInstance().registerListener(myEventsListener);
-    ((SModelInternal) myModel).addModelListener(mySimpleModelListener);
-
-    if (!SModelStereotype.isStubModelStereotype(SModelStereotype.getStereotype(myModel))) {
-      ModelGenerationStatusManager.getInstance().addGenerationStatusListener(myStatusListener);
+  public void detach(@NotNull SModelTreeNode node) {
+    final SModel model = node.getModel();
+    if (model != null) {
+      boolean modelSeenLastTime = false;
+      synchronized (myTreeNodes) {
+        Collection<SModelTreeNode> knownNodes = myTreeNodes.get(model.getReference());
+        if (knownNodes != null) {
+          knownNodes.remove(node);
+          if (knownNodes.isEmpty()) {
+            myTreeNodes.remove(model.getReference());
+            modelSeenLastTime = true;
+          }
+        }
+      }
+      if (modelSeenLastTime) {
+        ((SModelInternal) model).removeModelListener(myModelChangeListener);
+      }
     }
   }
 
-  @Override
-  public void stopListening() {
-    if (!SModelStereotype.isStubModelStereotype(SModelStereotype.getStereotype(myModel))) {
-      ModelGenerationStatusManager.getInstance().removeGenerationStatusListener(myStatusListener);
+  void refreshAffectedTreeNodes(SModel changed) {
+    for (SModelTreeNode treeNode : findTreeNode(changed)) {
+      refreshTreeNodes(treeNode);
+    }
+  }
+
+  Iterable<SModelTreeNode> findTreeNode(SModel sm) {
+    synchronized (myTreeNodes) {
+      final Collection<SModelTreeNode> nodes = myTreeNodes.get(sm.getReference());
+      return nodes == null ? Collections.<SModelTreeNode>emptyList() : new ArrayList<SModelTreeNode>(nodes);
+    }
+  }
+
+  void refreshTreeNodes(SModelTreeNode toRefresh) {
+    for (TreeUpdateVisitor v : myUpdates) {
+      toRefresh.accept(v);
+    }
+  }
+
+  void updateNodePresentation(SModelTreeNode treeNode, boolean reloadSubTree, boolean updateAncestors) {
+    new PresentationUpdater<SModelTreeNode>(treeNode) {
+      @Override
+      protected boolean isValid(SModelTreeNode treeNode) {
+        if (!super.isValid(treeNode)) return false;
+        final SModel model = treeNode.getModel();
+        if (model.isLoaded()) {
+          return !jetbrains.mps.util.SNodeOperations.isModelDisposed(model);
+        }
+        return true;
+      }
+    }.update(reloadSubTree, updateAncestors);
+  }
+
+  private class GenStatusTracker implements ModelGenerationStatusListener {
+    private final TreeUpdateVisitor myGenStatusVisitor;
+
+    public GenStatusTracker(TreeUpdateVisitor genStatusUpdate) {
+      myGenStatusVisitor = genStatusUpdate;
     }
 
-    ((SModelInternal) myModel).removeModelListener(mySimpleModelListener);
-    SModelEventsDispatcher.getInstance().unregisterListener(myEventsListener);
-
-    SModelRepository.getInstance().removeModelRepositoryListener(myModelRepositoryListener);
-  }
-
-  private void visitNode(SModelTreeNode modelNode) {
-    myGenStatusVisitor.visitNode(modelNode);
-    myErrorVisitor.visitNode(modelNode);
-    myModifiedMarker.visitNode(modelNode);
-  }
-
-  private class MyGenerationStatusListener implements ModelGenerationStatusListener {
     @Override
-    public void generatedFilesChanged(org.jetbrains.mps.openapi.model.SModel sm) {
-      if (sm != myModel) return;
-      myGenStatusVisitor.visitNode(myTreeNode);
+    public void generatedFilesChanged(SModel sm) {
+      for (SModelTreeNode treeNode : findTreeNode(sm)) {
+        treeNode.accept(myGenStatusVisitor);
+      }
     }
   }
 
-  private class MySimpleModelListener extends SimpleModelListener {
-    private final SModelTreeNode myModelNode;
-
-    public MySimpleModelListener(SModelTreeNode modelNode) {
-      super(modelNode);
-      myModelNode = modelNode;
-    }
-
+  private class ModelChangeListener extends SModelAdapter {
     @Override
     public void modelChangedDramatically(SModel model) {
-      updateNodePresentation(false, true);
-      visitNode(myModelNode);
+      for (SModelTreeNode treeNode : findTreeNode(model)) {
+        updateNodePresentation(treeNode, false, true);
+        refreshTreeNodes(treeNode);
+      }
     }
 
     @Override
     public void modelChanged(SModel model) {
-      updateNodePresentation(false, true);
-      visitNode(myModelNode);
+      for (SModelTreeNode treeNode : findTreeNode(model)) {
+        updateNodePresentation(treeNode, false, true);
+        refreshTreeNodes(treeNode);
+      }
     }
 
     @Override
     public void modelSaved(SModel sm) {
-      visitNode(myModelNode);
+      refreshAffectedTreeNodes(sm);
     }
 
     @Override
-    public boolean isValid() {
-      if (!super.isValid()) return false;
-      if (!(myModel.isLoaded())) return true;
-      return !jetbrains.mps.util.SNodeOperations.isModelDisposed(myModel);
-    }
-  }
-
-  private class MySModelEventsListener implements SModelEventsListener {
-    @Override
-    @NotNull
-    public SModel getModelDescriptor() {
-      return myModel;
-    }
-
-    @Override
-    public void eventsHappened(List<SModelEvent> events) {
-      if (myTreeUpdater == null) return;
-      myTreeUpdater.eventsHappenedInCommand(events);
-    }
-  }
-
-  private class MySNodeTreeUpdater extends SNodeTreeUpdater<SModelTreeNode> {
-    public MySNodeTreeUpdater(Project project, SModelTreeNode treeNode) {
-      super(project, treeNode);
-    }
-
-    @Override
-    public boolean showPropertiesAndReferences() {
-      return ProjectPane.getInstance(myProject).isShowPropertiesAndReferences();
-    }
-
-    private SNodeTreeNode findRootSNodeTreeNode(SNode node) {
-      return findRootSNodeTreeNode(myTreeNode, node);
-    }
-
-    private SNodeTreeNode findRootSNodeTreeNode(MPSTreeNode current, SNode node) {
-      for (int i = 0; i < current.getChildCount(); i++) {
-        MPSTreeNode child = (MPSTreeNode) current.getChildAt(i);
-
-        if (child instanceof SNodeTreeNode && ((SNodeTreeNode) child).getSNode() == node) {
-          return (SNodeTreeNode) child;
-        }
-
-        if (child instanceof SNodeGroupTreeNode || child instanceof SModelTreeNode) {
-          SNodeTreeNode result = findRootSNodeTreeNode(child, node);
-          if (result != null) {
-            return result;
-          }
-        }
+    public void modelLoadingStateChanged(SModel sm, ModelLoadingState newState) {
+      for (SModelTreeNode treeNode : findTreeNode(sm)) {
+        updateNodePresentation(treeNode, false, false);
       }
-
-      return null;
-    }
-
-    @Override
-    public SModel getSModelDescriptor() {
-      return myTreeNode.getSModelDescriptor();
-    }
-
-    @Override
-    public void addAndRemoveRoots(Set<SNode> removedRoots, Set<SNode> addedRoots) {
-      DefaultTreeModel treeModel = (DefaultTreeModel) getTree().getModel();
-      for (SNode root : removedRoots) {
-        SNodeTreeNode node = findRootSNodeTreeNode(root);
-        if (node == null) continue;
-
-        MPSTreeNode parent = (MPSTreeNode) node.getParent();
-        treeModel.removeNodeFromParent(node);
-
-        if (parent instanceof SNodeGroupTreeNode && parent.getChildCount() == 0) {
-          myTreeNode.groupBecameEmpty((SNodeGroupTreeNode) parent);
-        }
-      }
-      myTreeNode.insertRoots(addedRoots);
-    }
-
-    @Override
-    public void updateNodesWithChangedPackages(Set<SNode> nodesWithChangedPackages) {
-      DefaultTreeModel treeModel = (DefaultTreeModel) getTree().getModel();
-
-      for (SNode node : nodesWithChangedPackages) {
-        SNodeTreeNode treeNode = findRootSNodeTreeNode(node);
-        if (treeNode == null) continue;
-
-        MPSTreeNode parent = (MPSTreeNode) treeNode.getParent();
-
-        treeModel.removeNodeFromParent(treeNode);
-        if (parent.getChildCount() == 0 && parent instanceof SNodeGroupTreeNode) {
-          myTreeNode.groupBecameEmpty((SNodeGroupTreeNode) parent);
-        }
-      }
-      myTreeNode.insertRoots(nodesWithChangedPackages);
     }
   }
 }

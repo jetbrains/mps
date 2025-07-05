@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,197 +15,36 @@
  */
 package jetbrains.mps.smodel;
 
-import gnu.trove.THashMap;
-import gnu.trove.THashSet;
-import jetbrains.mps.smodel.event.SModelChildEvent;
-import jetbrains.mps.smodel.event.SModelRootEvent;
+import jetbrains.mps.util.Computable;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-
-public class DefaultFastNodeFinder implements FastNodeFinder {
-  private final Object myLock = new Object();
-
-  private SModel myModel;
-  private SModel myModelDescriptor;
-  private boolean myInitialized;
-  private SModelAdapter myListener = new MySModelAdapter();
-  private SModelRepositoryAdapter myRepositoryAdapter = new MySModelRepositoryAdapter();
-
-  private final Map<String, Set<SNode>> myNodes = new THashMap<String, Set<SNode>>();
+// XXX almost identical to TransientModelNodeFinder, once
+// NodeReadAccessCasterInEditor#runReadTransparentAction has better alternative, merge.
+public class DefaultFastNodeFinder extends BaseFastNodeFinder {
+  private final SNodeChangeListener myListener;
 
   public DefaultFastNodeFinder(SModel model) {
-    myModel = model;
-    myModelDescriptor = model;
-    SModelRepository.getInstance().addModelRepositoryListener(myRepositoryAdapter);
-    ((SModelInternal) myModelDescriptor).addModelListener(myListener);
+    super(model);
+    if (!model.isReadOnly() && model instanceof EditableSModel) {
+      myListener = new ChangeTracker();
+      model.addChangeListener(myListener);
+    } else {
+      myListener = null;
+    }
   }
 
   @Override
   public void dispose() {
-    synchronized (myLock) {
-      myInitialized = false;
-      myNodes.clear();
+    if (myListener != null) {
+      myModel.removeChangeListener(myListener);
     }
-    ((SModelInternal) myModelDescriptor).removeModelListener(myListener);
-    SModelRepository.getInstance().removeModelRepositoryListener(myRepositoryAdapter);
-  }
-
-  private void initCache() {
-    for (SNode root : myModel.getRootNodes()) {
-      addToCache(root);
-    }
-    myInitialized = true;
+    super.dispose();
   }
 
   @Override
-  public List<SNode> getNodes(String conceptFqName, boolean includeInherited) {
-    // notify 'model nodes read access'
-    myModel.getRootNodes().iterator();
-
-    // pre-loading model to avoid deadlock (model loading process requires a lock)
-    // model cannot be unloaded afterwards, because we have model read access
-    myModel.load();
-
-    synchronized (myLock) {
-      if (!myInitialized) {
-        initCache();
-      }
-
-      final List<SNode> result = new ArrayList<SNode>();
-
-      if (includeInherited) {
-        for (String d : ConceptDescendantsCache.getInstance().getDescendants(conceptFqName)) {
-          if (myNodes.containsKey(d)) {
-            result.addAll(myNodes.get(d));
-          }
-        }
-      } else {
-        if (myNodes.containsKey(conceptFqName)) {
-          result.addAll(myNodes.get(conceptFqName));
-        }
-      }
-
-      Collections.sort(result, new Comparator<SNode>() {
-        @Override
-        public int compare(SNode o1, SNode o2) {
-          return ((jetbrains.mps.smodel.SNodeId) o1.getNodeId()).compareTo(((jetbrains.mps.smodel.SNodeId) o2.getNodeId()));
-        }
-      });
-
-      return result;
-    }
-  }
-
-  private void addToCache(final SNode root) {
-    NodeReadAccessCasterInEditor.runReadTransparentAction(new Runnable() {
-      @Override
-      public void run() {
-        for (SNode child : root.getChildren()) {
-          addToCache(child);
-        }
-
-        String conceptFqName = root.getConcept().getQualifiedName();
-        add(conceptFqName, root);
-      }
-    });
-  }
-
-  private void removeFromCache(final SNode root) {
-    boolean wereBlocked = NodeReadAccessCasterInEditor.areEventsBlocked();
-    try {
-      NodeReadAccessCasterInEditor.setEventsBlocked(true);
-
-      for (SNode child : root.getChildren()) {
-        removeFromCache(child);
-      }
-
-      remove(root.getConcept().getQualifiedName(), root);
-    } finally {
-      NodeReadAccessCasterInEditor.setEventsBlocked(wereBlocked);
-    }
-  }
-
-  private void add(String conceptFqName, SNode node) {
-
-    Set<SNode> set = myNodes.get(conceptFqName);
-    if (set == null) {
-      set = new THashSet<SNode>(1);
-      myNodes.put(conceptFqName, set);
-    }
-    set.add(node);
-  }
-
-  private void remove(String conceptFqName, SNode node) {
-    Set<SNode> set = myNodes.get(conceptFqName);
-    if (set == null) return;
-
-    set.remove(node);
-    if (set.isEmpty()) {
-      myNodes.remove(conceptFqName);
-    }
-  }
-
-  private class MySModelAdapter extends SModelAdapter {
-    public MySModelAdapter() {
-      super(SModelListenerPriority.PLATFORM);
-    }
-
-    @Override
-    public void childAdded(SModelChildEvent event) {
-      synchronized (myLock) {
-        if (!myInitialized) return;
-
-        addToCache(event.getChild());
-      }
-    }
-
-    @Override
-    public void childRemoved(SModelChildEvent event) {
-      synchronized (myLock) {
-        if (!myInitialized) return;
-
-        removeFromCache(event.getChild());
-      }
-    }
-
-    @Override
-    public void rootAdded(SModelRootEvent event) {
-      synchronized (myLock) {
-        if (!myInitialized) return;
-
-        addToCache(event.getRoot());
-      }
-    }
-
-    @Override
-    public void rootRemoved(SModelRootEvent event) {
-      synchronized (myLock) {
-        if (!myInitialized) return;
-
-        removeFromCache(event.getRoot());
-      }
-    }
-  }
-
-
-  private class MySModelRepositoryAdapter extends SModelRepositoryAdapter {
-
-    @Override
-    public void modelsReplaced(Set<SModel> replacedModels) {
-      if (replacedModels.contains(myModelDescriptor)) {
-        synchronized (myLock) {
-          myInitialized = false;
-          myNodes.clear();
-        }
-      }
-    }
+  protected ConceptInstanceMap build(Computable<ConceptInstanceMap> b) {
+    return NodeReadAccessCasterInEditor.runReadTransparentAction(b);
   }
 }

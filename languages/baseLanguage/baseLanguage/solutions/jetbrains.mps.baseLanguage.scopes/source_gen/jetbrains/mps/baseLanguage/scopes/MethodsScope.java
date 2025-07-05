@@ -10,6 +10,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.annotations.Nullable;
@@ -17,16 +18,15 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.util.Pair;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 
 public class MethodsScope extends Scope {
   private final Map<SNode, SNode> typeBindings;
   private final Map<String, List<SNode>> nameToMethods;
-
   public MethodsScope(Iterable<SNode> methods, Map<SNode, SNode> typeByTypeVariable) {
     nameToMethods = MapSequence.fromMap(new HashMap<String, List<SNode>>());
     for (SNode method : Sequence.fromIterable(methods)) {
-      String name = SPropertyOperations.getString(method, "name");
+      String name = SPropertyOperations.getString(method, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
       if (name != null) {
         if (MapSequence.fromMap(nameToMethods).containsKey(name)) {
           ListSequence.fromList(MapSequence.fromMap(nameToMethods).get(name)).addElement(method);
@@ -38,15 +38,12 @@ public class MethodsScope extends Scope {
 
     this.typeBindings = typeByTypeVariable;
   }
-
   public MethodsScope(SNode classifierType, Iterable<SNode> methods) {
     this(methods, calcTypeBindings(classifierType));
   }
-
   public MethodsScope(Iterable<SNode> methods) {
     this(methods, new HashMap<SNode, SNode>());
   }
-
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
@@ -57,39 +54,33 @@ public class MethodsScope extends Scope {
     }
     return result;
   }
-
   @Nullable
   @Override
   public String getReferenceText(SNode contextNode, @NotNull SNode node) {
-    return SPropertyOperations.getString(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"), "name");
+    return SPropertyOperations.getString(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
-
   @Override
   public boolean contains(SNode node) {
-    if (!(SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"))) {
+    if (!(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration")))) {
       return false;
     }
-    String name = SPropertyOperations.getString(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"), "name");
-    return MapSequence.fromMap(nameToMethods).containsKey(name) && ListSequence.fromList(MapSequence.fromMap(nameToMethods).get(name)).contains(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"));
+    String name = SPropertyOperations.getString(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+    return MapSequence.fromMap(nameToMethods).containsKey(name) && ListSequence.fromList(MapSequence.fromMap(nameToMethods).get(name)).contains(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration")));
   }
-
   @Nullable
   @Override
   public SNode resolve(SNode contextNode, @NotNull String refText) {
-    List<SNode> methods = (MapSequence.fromMap(nameToMethods).containsKey(refText) ?
-      MapSequence.fromMap(nameToMethods).get(refText) :
-      new ArrayList<SNode>()
-    );
+    List<SNode> methods = (MapSequence.fromMap(nameToMethods).containsKey(refText) ? MapSequence.fromMap(nameToMethods).get(refText) : new ArrayList<SNode>());
     if (methods.isEmpty()) {
       return null;
     }
     if (methods.size() == 1) {
       return ListSequence.fromList(methods).first();
     }
-    if (!(SNodeOperations.isInstanceOf(contextNode, "jetbrains.mps.baseLanguage.structure.IMethodCall"))) {
+    if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall")))) {
       return null;
     }
-    List<SNode> actualArguments = SLinkOperations.getTargets((SNodeOperations.cast(contextNode, "jetbrains.mps.baseLanguage.structure.IMethodCall")), "actualArgument", true);
+    List<SNode> actualArguments = SLinkOperations.getChildren((SNodeOperations.cast(contextNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall"))), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"));
 
     methods = MethodResolveUtil.selectByParmCount(methods, actualArguments);
     if (methods.size() == 1) {
@@ -104,12 +95,8 @@ public class MethodsScope extends Scope {
       return null;
     }
   }
-
   private static Map<SNode, SNode> calcTypeBindings(SNode classifierType) {
-    SNode classifier = BehaviorReflection.invokeVirtual((Class<SNode>) ((Class) Object.class), classifierType, "virtual_getClassifier_7405920559687237513", new Object[]{});
-    return ((classifier != null) ?
-      MethodResolveUtil.getTypesByTypeVars(SNodeOperations.cast(classifier, "jetbrains.mps.baseLanguage.structure.Classifier"), BehaviorReflection.invokeVirtual((Class<Iterable<SNode>>) ((Class) Object.class), classifierType, "virtual_getTypeParameters_7405920559687237518", new Object[]{})) :
-      new HashMap<SNode, SNode>()
-    );
+    SNode classifier = IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(classifierType);
+    return ((classifier != null) ? MethodResolveUtil.getTypesByTypeVars(SNodeOperations.cast(classifier, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), IClassifierType__BehaviorDescriptor.getTypeParameters_id6r77ob2URYe.invoke(classifierType)) : new HashMap<SNode, SNode>());
   }
 }

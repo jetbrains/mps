@@ -7,17 +7,12 @@ import jetbrains.mps.messages.MessageKind;
 
 public class ValidationError extends Message {
   private Object object;
-
   public ValidationError(Object context, String message) {
     super(MessageKind.ERROR, message);
     this.object = context;
   }
-
   @Override
   public String getText() {
-    return "Validation failed: " + super.getText() + ((object != null ?
-      " in " + object.toString() :
-      ""
-    ));
+    return "Make script validation failed: " + super.getText() + ((object != null ? " in " + object.toString() : ""));
   }
 }

@@ -5,8 +5,10 @@ package jetbrains.mps.baseLanguage.unitTest.execution.client;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
@@ -23,7 +25,7 @@ public class JUnit3MethodWrapper extends AbstractTestWrapper<SNode> {
   @Nullable
   @Override
   public ITestNodeWrapper getTestCase() {
-    SNode clazz = check_pj3jcm_a0a0c(getNode(), this);
+    SNode clazz = check_pj3jcm_a0a0e(getNode(), this);
     if ((clazz != null)) {
       return new JUnit3TestWrapper(clazz);
     }
@@ -31,12 +33,11 @@ public class JUnit3MethodWrapper extends AbstractTestWrapper<SNode> {
   }
 
   public static boolean isTestMethod(@NotNull SNode method) {
-    return !(BehaviorReflection.invokeVirtual(Boolean.TYPE, method, "virtual_isAbstract_1232982539764", new Object[]{})) && (SLinkOperations.getTarget(method, "visibility", true) != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, "visibility", true), "jetbrains.mps.baseLanguage.structure.PublicVisibility") && (SPropertyOperations.getString(method, "name") != null) && SPropertyOperations.getString(method, "name").startsWith("test");
+    return !(((boolean) (Boolean) BHReflection.invoke(method, SMethodTrimmedId.create("isAbstract", null, "hWjv7RO")))) && (SLinkOperations.getTarget(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")) != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility")) && (SPropertyOperations.getString(method, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) != null) && SPropertyOperations.getString(method, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).startsWith("test");
   }
-
-  private static SNode check_pj3jcm_a0a0c(SNode checkedDotOperand, JUnit3MethodWrapper checkedDotThisExpression) {
+  private static SNode check_pj3jcm_a0a0e(SNode checkedDotOperand, JUnit3MethodWrapper checkedDotThisExpression) {
     if (null != checkedDotOperand) {
-      return SNodeOperations.getAncestor(checkedDotOperand, "jetbrains.mps.baseLanguage.structure.ClassConcept", false, false);
+      return SNodeOperations.getNodeAncestor(checkedDotOperand, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false);
     }
     return null;
   }

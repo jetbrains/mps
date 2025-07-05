@@ -1,57 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="ConstraintsAspectDescriptor.java" startLine="9" startPosition="0" endLine="25" endPosition="0" unitName="jetbrains.mps.samples.KajaSceneConstruction.constraints.ConstraintsAspectDescriptor" />
-  <root nodeRef="r:84a4ed3f-fed0-4bb5-977e-0cf55665a49a(jetbrains.mps.samples.KajaSceneConstruction.constraints)/3210697320273648134">
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="16" startPosition="47" endLine="17" endPosition="90" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="21" startPosition="82" endLine="22" endPosition="74" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="25" startPosition="40" endLine="26" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="30" startPosition="84" endLine="31" endPosition="36" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="31" startPosition="36" endLine="32" endPosition="140" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="3210697320273648138" fileName="AbstractBuilderCommand_Constraints.java" startLine="31" startPosition="36" endLine="32" endPosition="140" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="37" startPosition="40" endLine="38" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="42" startPosition="84" endLine="43" endPosition="36" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="43" startPosition="36" endLine="44" endPosition="141" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="3210697320273648167" fileName="AbstractBuilderCommand_Constraints.java" startLine="43" startPosition="36" endLine="44" endPosition="141" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="46" startPosition="7" endLine="47" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="16" startPosition="0" endLine="19" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="AbstractBuilderCommand_Constraints#()V" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="24" startPosition="0" endLine="28" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnValidator#()Z" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="36" startPosition="0" endLine="40" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnValidator#()Z" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="29" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;Ljetbrains/mps/smodel/IScope;)Z" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="41" startPosition="0" endLine="46" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;Ljetbrains/mps/smodel/IScope;)Z" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="22" startPosition="74" endLine="34" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="34" startPosition="7" endLine="46" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="20" startPosition="0" endLine="49" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultProperties#()Ljava/util/Map;" />
-    <scopeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="16" startPosition="47" endLine="17" endPosition="90" />
-    <scopeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="25" startPosition="40" endLine="26" endPosition="20" />
-    <scopeInfo nodeId="3210697320273648137" fileName="AbstractBuilderCommand_Constraints.java" startLine="31" startPosition="36" endLine="32" endPosition="140" />
-    <scopeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="37" startPosition="40" endLine="38" endPosition="20" />
-    <scopeInfo nodeId="3210697320273648166" fileName="AbstractBuilderCommand_Constraints.java" startLine="43" startPosition="36" endLine="44" endPosition="141" />
-    <scopeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="30" startPosition="84" endLine="32" endPosition="140">
-      <varInfo nodeId="3210697320273648134" varName="propertyName" />
-    </scopeInfo>
-    <scopeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="42" startPosition="84" endLine="44" endPosition="141">
-      <varInfo nodeId="3210697320273648134" varName="propertyName" />
-    </scopeInfo>
-    <scopeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="16" startPosition="0" endLine="19" endPosition="0" />
-    <scopeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="24" startPosition="0" endLine="28" endPosition="0" />
-    <scopeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="36" startPosition="0" endLine="40" endPosition="0" />
-    <scopeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="29" startPosition="0" endLine="34" endPosition="0">
-      <varInfo nodeId="3210697320273648134" varName="node" />
-      <varInfo nodeId="3210697320273648134" varName="propertyValue" />
-      <varInfo nodeId="3210697320273648134" varName="scope" />
-    </scopeInfo>
-    <scopeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="41" startPosition="0" endLine="46" endPosition="0">
-      <varInfo nodeId="3210697320273648134" varName="node" />
-      <varInfo nodeId="3210697320273648134" varName="propertyValue" />
-      <varInfo nodeId="3210697320273648134" varName="scope" />
-    </scopeInfo>
-    <scopeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="21" startPosition="82" endLine="47" endPosition="22">
-      <varInfo nodeId="3210697320273648134" varName="properties" />
-    </scopeInfo>
-    <scopeInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="20" startPosition="0" endLine="49" endPosition="0" />
-    <unitInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="23" startPosition="30" endLine="34" endPosition="5" unitName="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints$1" />
-    <unitInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="35" startPosition="30" endLine="46" endPosition="5" unitName="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints$2" />
-    <unitInfo nodeId="3210697320273648134" fileName="AbstractBuilderCommand_Constraints.java" startLine="15" startPosition="0" endLine="50" endPosition="0" unitName="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="ConstraintsAspectDescriptor.java">
+      <unit at="13,0,29,0" name="jetbrains.mps.samples.KajaSceneConstruction.constraints.ConstraintsAspectDescriptor" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:84a4ed3f-fed0-4bb5-977e-0cf55665a49a(jetbrains.mps.samples.KajaSceneConstruction.constraints)/3210697320273648134">
+    <file name="AbstractBuilderCommand_Constraints.java">
+      <node id="3210697320273648134" at="18,47,19,184" concept="5" />
+      <node id="3210697320273648134" at="23,84,24,119" concept="3" />
+      <node id="3210697320273648134" at="27,40,28,20" concept="4" />
+      <node id="3210697320273648134" at="31,70,32,36" concept="3" />
+      <node id="3210697320273648138" at="32,36,33,140" concept="4" />
+      <node id="3210697320273648134" at="38,40,39,20" concept="4" />
+      <node id="3210697320273648134" at="42,70,43,36" concept="3" />
+      <node id="3210697320273648167" at="43,36,44,141" concept="4" />
+      <node id="3210697320273648134" at="46,7,47,22" concept="4" />
+      <node id="3210697320273648134" at="18,0,21,0" concept="0" trace="AbstractBuilderCommand_Constraints#()V" />
+      <node id="3210697320273648134" at="26,0,30,0" concept="2" trace="hasOwnValidator#()Z" />
+      <node id="3210697320273648134" at="37,0,41,0" concept="2" trace="hasOwnValidator#()Z" />
+      <node id="3210697320273648134" at="30,0,35,0" concept="2" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
+      <node id="3210697320273648134" at="41,0,46,0" concept="2" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
+      <node id="3210697320273648134" at="24,119,35,7" concept="1" />
+      <node id="3210697320273648134" at="35,7,46,7" concept="1" />
+      <node id="3210697320273648134" at="22,0,49,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <scope id="3210697320273648134" at="18,47,19,184" />
+      <scope id="3210697320273648134" at="27,40,28,20" />
+      <scope id="3210697320273648134" at="38,40,39,20" />
+      <scope id="3210697320273648134" at="31,70,33,140">
+        <var name="propertyName" id="3210697320273648134" />
+      </scope>
+      <scope id="3210697320273648134" at="42,70,44,141">
+        <var name="propertyName" id="3210697320273648134" />
+      </scope>
+      <scope id="3210697320273648134" at="18,0,21,0" />
+      <scope id="3210697320273648134" at="26,0,30,0" />
+      <scope id="3210697320273648134" at="37,0,41,0" />
+      <scope id="3210697320273648134" at="30,0,35,0">
+        <var name="node" id="3210697320273648134" />
+        <var name="propertyValue" id="3210697320273648134" />
+      </scope>
+      <scope id="3210697320273648134" at="41,0,46,0">
+        <var name="node" id="3210697320273648134" />
+        <var name="propertyValue" id="3210697320273648134" />
+      </scope>
+      <scope id="3210697320273648134" at="23,84,47,22">
+        <var name="properties" id="3210697320273648134" />
+      </scope>
+      <scope id="3210697320273648134" at="22,0,49,0" />
+      <unit id="3210697320273648134" at="25,146,35,5" name="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints$1" />
+      <unit id="3210697320273648134" at="36,146,46,5" name="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints$2" />
+      <unit id="3210697320273648134" at="17,0,50,0" name="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints" />
+    </file>
+  </root>
+</debug-info>
 

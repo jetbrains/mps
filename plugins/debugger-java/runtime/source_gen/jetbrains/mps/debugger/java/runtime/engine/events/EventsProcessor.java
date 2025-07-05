@@ -11,6 +11,10 @@ import jetbrains.mps.debugger.java.runtime.engine.SystemMessagesReporter;
 import jetbrains.mps.debug.api.BreakpointManagerComponent;
 import jetbrains.mps.debug.api.IDebuggableFramesSelector;
 import com.intellij.openapi.project.Project;
+import java.util.Map;
+import com.sun.jdi.ThreadReference;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debugger.java.runtime.engine.concurrent.Commands;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -19,7 +23,6 @@ import com.sun.jdi.event.ClassPrepareEvent;
 import com.sun.jdi.event.StepEvent;
 import com.sun.jdi.request.EventRequest;
 import com.sun.jdi.request.StepRequest;
-import com.sun.jdi.ThreadReference;
 import com.sun.jdi.event.LocatableEvent;
 import jetbrains.mps.debugger.java.runtime.engine.requests.LocatableEventRequestor;
 import jetbrains.mps.debugger.java.runtime.breakpoints.JavaBreakpoint;
@@ -55,14 +58,13 @@ public class EventsProcessor {
   private final BreakpointManagerComponent myBreakpointManager;
   private IDebuggableFramesSelector myFramesSelector;
   private final Project myProject;
-
+  private final Map<ThreadReference, Integer> myEvaluatedThreads = MapSequence.fromMap(new HashMap<ThreadReference, Integer>());
   public EventsProcessor(Project project, BreakpointManagerComponent breakpointsManagerComponent) {
     myProject = project;
     myBreakpointManager = breakpointsManagerComponent;
     myRequestManager = new RequestManager(this);
     // todo? 
   }
-
   public void commitVm(@NotNull VirtualMachine vm) {
     myVirtualMachine = vm;
     if (myState.compareAndSet(STATE_INITIAL, STATE_ATTACHED)) {
@@ -70,11 +72,9 @@ public class EventsProcessor {
     }
     new Thread(myRunnable, "Debug Events Processor Thread").start();
   }
-
   public boolean isAttached() {
     return myState.get() == STATE_ATTACHED;
   }
-
   private void closeProcess(boolean byUser) {
     ManagerThread.assertIsMangerThread();
 
@@ -88,7 +88,6 @@ public class EventsProcessor {
       }
     }
   }
-
   public void pause() {
     myManagerThread.invoke(Commands.fromClosure(new _FunctionTypes._void_P0_E0() {
       public void invoke() {
@@ -99,7 +98,6 @@ public class EventsProcessor {
       }
     }));
   }
-
   public void resume(@NotNull final Context context) {
     myManagerThread.invoke(Commands.fromClosure(new _FunctionTypes._void_P0_E0() {
       public void invoke() {
@@ -108,7 +106,6 @@ public class EventsProcessor {
       }
     }));
   }
-
   public void step(@NotNull final EventsProcessor.StepKind kind, @NotNull final Context context) {
     myManagerThread.invoke(Commands.fromClosure(new _FunctionTypes._void_P0_E0() {
       public void invoke() {
@@ -118,7 +115,6 @@ public class EventsProcessor {
       }
     }));
   }
-
   public void stop(final boolean terminate) {
     myManagerThread.invoke(Commands.fromClosure(new _FunctionTypes._void_P0_E0() {
       public void invoke() {
@@ -138,7 +134,6 @@ public class EventsProcessor {
       }
     }));
   }
-
   private void processVmDeathEvent() {
     ManagerThread.assertIsMangerThread();
     if (myRunnable != null) {
@@ -147,13 +142,11 @@ public class EventsProcessor {
     }
     closeProcess(false);
   }
-
   private void processClassPrepareEvent(EventContext context, ClassPrepareEvent event) {
     ManagerThread.assertIsMangerThread();
     myRequestManager.processClassPrepared(event);
     myContextManager.voteResume(context);
   }
-
   private void processStepEvent(EventContext context, StepEvent event) {
     myRequestManager.deleteStepRequests();
     EventRequest request = event.request();
@@ -173,7 +166,6 @@ public class EventsProcessor {
     }
     myContextManager.voteResume(context);
   }
-
   private void addNewStepRequest(StepRequestor stepRequestor, int stepType, ThreadReference threadReference, int suspendPolicy) {
     ManagerThread.assertIsMangerThread();
     StepRequest stepRequest = myRequestManager.createStepRequest(stepRequestor, stepType, threadReference, suspendPolicy);
@@ -190,13 +182,12 @@ public class EventsProcessor {
     // see idea debugger settings for the full list 
     myRequestManager.enableRequest(stepRequest);
   }
-
   private void processLocatableEvent(final EventContext context, final LocatableEvent event) {
     ManagerThread.assertIsMangerThread();
 
     // if inside evaluation, resume 
     final ThreadReference thread = event.thread();
-    if (myContextManager.isEvaluated(thread)) {
+    if (isEvaluated(thread)) {
       myContextManager.voteResume(context);
       return;
     }
@@ -235,22 +226,22 @@ public class EventsProcessor {
       }
     }, thread);
   }
-
   public void scheduleEvaluation(final _FunctionTypes._void_P0_E0 evaluationCommand, final ThreadReference threadToEvaluateIn) {
     ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
       public void run() {
-        myContextManager.startEvaluation(threadToEvaluateIn);
+        startEvaluation(threadToEvaluateIn);
         try {
           evaluationCommand.invoke();
         } finally {
-          myContextManager.finishEvaluation(threadToEvaluateIn);
+          finishEvaluation(threadToEvaluateIn);
         }
       }
     });
   }
-
   @Nullable
   public <R> R invokeEvaluationUnderProgress(final _FunctionTypes._return_P0_E0<? extends R> evaluationCommand, final ThreadReference threadToEvaluateIn) {
+    ApplicationManager.getApplication().assertIsDispatchThread();
+
     final AtomicReference<R> resultReference = new AtomicReference();
 
     final ProgressWindowWithNotification progress = new ProgressWindowWithNotification(true, false, myProject, null, null);
@@ -267,11 +258,11 @@ public class EventsProcessor {
         try {
           ProgressManager.getInstance().runProcess(new Runnable() {
             public void run() {
-              myContextManager.startEvaluation(threadToEvaluateIn);
+              startEvaluation(threadToEvaluateIn);
               try {
                 resultReference.set(evaluationCommand.invoke());
               } finally {
-                myContextManager.finishEvaluation(threadToEvaluateIn);
+                finishEvaluation(threadToEvaluateIn);
               }
             }
           }, progress);
@@ -288,67 +279,70 @@ public class EventsProcessor {
 
     return resultReference.get();
   }
-
   public void schedule(_FunctionTypes._void_P0_E0 command, _FunctionTypes._void_P0_E0 cancel) {
     myManagerThread.schedule(Commands.fromClosure(command, cancel));
   }
-
   public void schedule(_FunctionTypes._void_P0_E0 command) {
     myManagerThread.schedule(Commands.fromClosure(command));
   }
-
   public void invoke(_FunctionTypes._void_P0_E0 command) {
     myManagerThread.invoke(Commands.fromClosure(command));
   }
-
   public RequestManager getRequestManager() {
     return myRequestManager;
   }
-
   public ContextManager getContextManager() {
     return myContextManager;
   }
-
   public BreakpointManagerComponent getBreakpointManager() {
     return myBreakpointManager;
   }
-
   public VirtualMachine getVirtualMachine() {
     return myVirtualMachine;
   }
-
   public void addDebugProcessListener(DebugProcessListener listener) {
     myMulticaster.addListener(listener);
   }
-
   public void removeDebugProcessListener(DebugProcessListener listener) {
     myMulticaster.removeListener(listener);
   }
-
   public void setDebuggableFramesSelector(IDebuggableFramesSelector framesSelector) {
     myFramesSelector = framesSelector;
   }
-
   public SystemMessagesReporter getSystemMessagesReporter() {
     return myReporter;
   }
-
   public DebugProcessMulticaster getMulticaster() {
     // todo review all this getters, really 
     return myMulticaster;
   }
-
+  private synchronized void startEvaluation(@NotNull ThreadReference threadReference) {
+    Integer evaluated = MapSequence.fromMap(myEvaluatedThreads).get(threadReference);
+    if (evaluated == null) {
+      evaluated = 0;
+    }
+    MapSequence.fromMap(myEvaluatedThreads).put(threadReference, evaluated + 1);
+  }
+  private synchronized void finishEvaluation(@NotNull ThreadReference threadReference) {
+    Integer evaluated = MapSequence.fromMap(myEvaluatedThreads).get(threadReference);
+    assert evaluated != null && evaluated > 0;
+    if (evaluated == 1) {
+      MapSequence.fromMap(myEvaluatedThreads).removeKey(threadReference);
+    } else {
+      MapSequence.fromMap(myEvaluatedThreads).put(threadReference, evaluated - 1);
+    }
+  }
+  private synchronized boolean isEvaluated(@NotNull ThreadReference threadReference) {
+    return MapSequence.fromMap(myEvaluatedThreads).containsKey(threadReference) && MapSequence.fromMap(myEvaluatedThreads).get(threadReference) > 0;
+  }
   public static boolean isOnPooledThread() {
     // it is sufficient to check for this two 
     return !(ManagerThread.isManagerThread()) && !(ApplicationManager.getApplication().isDispatchThread());
   }
-
   public class EventProcessorRunnable implements Runnable {
     private volatile boolean myIsStopped = false;
-
     public EventProcessorRunnable() {
     }
-
     @Override
     public void run() {
       try {
@@ -388,27 +382,22 @@ public class EventsProcessor {
         }));
       }
     }
-
     public void stop() {
       myIsStopped = true;
     }
-
     public boolean isStopped() {
       return myIsStopped;
     }
   }
-
-  public static   enum StepKind {
+  public enum StepKind {
     Over(StepRequest.STEP_OVER),
     Into(StepRequest.STEP_INTO),
     Out(StepRequest.STEP_OUT);
 
     private final int myJdiType;
-
-    StepKind(int jdiType) {
+    private StepKind(int jdiType) {
       myJdiType = jdiType;
     }
-
     public int getJdiType() {
       return myJdiType;
     }

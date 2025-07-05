@@ -15,11 +15,10 @@
  */
 package jetbrains.mps.nodeEditor.selection;
 
-import jetbrains.mps.nodeEditor.cells.APICellAdapter;
-import jetbrains.mps.nodeEditor.cells.CellInfo;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.openapi.editor.cells.CellInfo;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.selection.SelectionStoreException;
@@ -44,22 +43,23 @@ public class EditorCellSelection extends AbstractSelection implements SingularSe
   private SideSelectDirection mySideSelectDirection = SideSelectDirection.NONE;
 
   public EditorCellSelection(EditorComponent editorComponent, Map<String, String> properties, CellInfo cellInfo) throws SelectionStoreException,
-      SelectionRestoreException {
+                                                                                                                        SelectionRestoreException {
     super(editorComponent);
     if (cellInfo == null) {
       throw new SelectionStoreException("Required CellInfo parameter is null");
     }
     // TODO: think about better way to restore relevant selection in case of deleted cell (EditorManager.EditorCell_STHint)
-    myEditorCell = cellInfo.findClosestCell((jetbrains.mps.nodeEditor.EditorComponent) editorComponent);
+    myEditorCell = cellInfo.findClosestCell(editorComponent);
     if (myEditorCell == null) {
       throw new SelectionRestoreException();
     }
     // Using absolute coordinates to restore caret X in case different cell was found.
-    myActivateUsingRelativeCaretX = cellInfo.equals(APICellAdapter.getCellInfo(myEditorCell));
+    myActivateUsingRelativeCaretX = cellInfo.equals(myEditorCell.getCellInfo());
     myCaretX = SelectionInfoImpl.Util.getIntProperty(properties, CARET_X_PROPERTY_NAME);
     myCaretXRelative = SelectionInfoImpl.Util.getIntProperty(properties, CARET_X_RELATIVE_PROPERTY_NAME);
-    mySideSelectDirection = (SideSelectDirection) SelectionInfoImpl.Util.getEnumProperty(properties, SIDE_SELECT_DIRECTION_PROPERTY_NAME, SideSelectDirection.class,
-        mySideSelectDirection);
+    mySideSelectDirection =
+        (SideSelectDirection) SelectionInfoImpl.Util.getEnumProperty(properties, SIDE_SELECT_DIRECTION_PROPERTY_NAME, SideSelectDirection.class,
+                                                                     mySideSelectDirection);
   }
 
   public EditorCellSelection(@NotNull EditorCell editorCell) {
@@ -120,7 +120,7 @@ public class EditorCellSelection extends AbstractSelection implements SingularSe
   @Override
   public SelectionInfoImpl getSelectionInfo() throws SelectionStoreException {
     SelectionInfoImpl selectionInfo = new SelectionInfoImpl(this.getClass().getName());
-    selectionInfo.setCellInfo(APICellAdapter.getCellInfo(myEditorCell));
+    selectionInfo.setCellInfo(myEditorCell.getCellInfo());
     selectionInfo.getPropertiesMap().put(CARET_X_PROPERTY_NAME, Integer.toString(getCaretX()));
     selectionInfo.getPropertiesMap().put(CARET_X_RELATIVE_PROPERTY_NAME, Integer.toString(getCaretXRelative()));
     selectionInfo.getPropertiesMap().put(SIDE_SELECT_DIRECTION_PROPERTY_NAME, mySideSelectDirection.name());
@@ -150,32 +150,25 @@ public class EditorCellSelection extends AbstractSelection implements SingularSe
 
   @Override
   public boolean canExecuteAction(CellActionType type) {
-    if (type == CellActionType.BACKSPACE) {
-      type = CellActionType.DELETE;
-    }
-
-    if (type == CellActionType.DELETE && suppressDelete()) {
+    if ((type == CellActionType.DELETE || type == CellActionType.BACKSPACE) && suppressDelete(type)) {
       return false;
     }
 
     CellAction applicableCellAction = getEditorComponent().getActionHandler().getApplicableCellAction(myEditorCell, type);
-    return applicableCellAction != null && applicableCellAction.canExecute(getEditorComponent().getEditorContext());
+    return applicableCellAction != null;
   }
 
 
   @Override
   public void executeAction(CellActionType type) {
     ((jetbrains.mps.nodeEditor.EditorComponent) getEditorComponent()).assertModelNotDisposed();
-    if (type == CellActionType.BACKSPACE) {
-      type = CellActionType.DELETE;
-    }
     if (canExecuteAction(type)) {
       getEditorComponent().getActionHandler().executeAction(myEditorCell, type);
     }
   }
 
-  protected boolean suppressDelete() {
-    return !myEditorCell.isBig() && myEditorCell.getAction(CellActionType.DELETE) == null;
+  protected boolean suppressDelete(CellActionType type) {
+    return !myEditorCell.isBig() && myEditorCell.getAction(type) == null;
   }
 
   @NotNull
@@ -188,7 +181,7 @@ public class EditorCellSelection extends AbstractSelection implements SingularSe
   @Override
   public List<SNode> getSelectedNodes() {
     SNode sNode = getEditorCell().getSNode();
-    return Collections.singletonList(sNode);
+    return sNode == null ? Collections.EMPTY_LIST : Collections.singletonList(sNode);
   }
 
   @Override
@@ -197,10 +190,10 @@ public class EditorCellSelection extends AbstractSelection implements SingularSe
   }
 
   private static int getRelativeCaretX(EditorCell editorCell) {
-    return editorCell.getCaretX() - editorCell.getX();
+    return editorCell.getCaretX() - editorCell.getLeftGap() - editorCell.getX();
   }
 
   private static void setRelativeCaretX(EditorCell editorCell, int relativeCaretX) {
-    editorCell.setCaretX(editorCell.getX() + relativeCaretX);
+    editorCell.setCaretX(editorCell.getX() + editorCell.getLeftGap() + relativeCaretX);
   }
 }

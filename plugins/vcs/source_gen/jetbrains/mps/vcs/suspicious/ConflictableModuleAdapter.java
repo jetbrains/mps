@@ -6,42 +6,39 @@ import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.project.SModuleOperations;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.util.Computable;
 
 public class ConflictableModuleAdapter extends Conflictable {
   private final AbstractModule myModule;
   private final boolean myIsConflictDetected;
-
   public ConflictableModuleAdapter(SModule module, boolean isConflictDetected) {
     myModule = (AbstractModule) module;
     myIsConflictDetected = isConflictDetected;
   }
-
   @Override
   public boolean isConflictDetected() {
     return myIsConflictDetected;
   }
-
   @Override
   public IFile getFile() {
     return myModule.getDescriptorFile();
   }
-
+  public SModule getModule() {
+    return myModule;
+  }
   @Override
   public void reloadFromDisk() {
     SModuleOperations.reloadFromDisk(myModule);
-    ClassLoaderManager.getInstance().loadAllPossibleClasses(new EmptyProgressMonitor());
   }
-
   @Override
   public boolean needReloading() {
-    return ModelAccess.instance().runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        return SModuleOperations.needReloading(myModule);
+    final Wrappers._boolean result = new Wrappers._boolean(false);
+    ModelAccess.instance().runReadAction(new Runnable() {
+      public void run() {
+        result.value = SModuleOperations.needReloading(myModule);
       }
     });
+    return result.value;
   }
 }

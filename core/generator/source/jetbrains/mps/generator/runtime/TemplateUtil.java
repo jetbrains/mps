@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,17 +27,17 @@ import jetbrains.mps.project.structure.modules.mappingpriorities.RuleType;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.language.LanguageRuntime;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
-import java.lang.reflect.Array;
-import java.util.AbstractCollection;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -107,17 +107,17 @@ public class TemplateUtil {
   }
 
   public static <T> Collection<T> asCollection(final T... objects) {
-    return new AbstractCollection<T>() {
-      @Override
-      public Iterator<T> iterator() {
-        return new ArrayIterator<T>(objects);
-      }
+    return Arrays.asList(objects);
+  }
 
-      @Override
-      public int size() {
-        return objects.length;
-      }
-    };
+  /**
+   * @throws IllegalArgumentException if actual number of arguments doesn't match expected
+   */
+  public static void assertTemplateParametersCount(SNodeReference template, int expected, int actual) throws IllegalArgumentException {
+    if (expected != actual) {
+      final String msg = String.format("Wrong number of arguments for template %s. Expected %d, actual count is %d", template, 0, actual);
+      throw new IllegalArgumentException(msg);
+    }
   }
 
   public static TemplateModule createInterpretedGenerator(LanguageRuntime sourceLanguage, String moduleReference) {
@@ -185,10 +185,21 @@ public class TemplateUtil {
     return result;
   }
 
+  /**
+   * @deprecated Use {@link #createRefNormal(String, String, String)} instead. Deployment-time ref shall record
+   *             name of MC not to expect presence of template source model to find it out.
+   */
+  @Deprecated
+  @ToRemove(version = 3.5)
   public static TemplateMappingConfigRef createRefNormal(String modelUID, String nodeUID) {
+    return createRefNormal(modelUID, nodeUID, nodeUID);
+  }
+
+  public static TemplateMappingConfigRef createRefNormal(String modelUID, String nodeUID, String mapConfigName) {
     MappingConfig_SimpleRef result = new MappingConfig_SimpleRef();
     result.setModelUID(modelUID);
     result.setNodeID(nodeUID);
+    result.setMapConfigName(mapConfigName);
     return result;
   }
 
@@ -197,32 +208,5 @@ public class TemplateUtil {
     result.setGenerator(PersistenceFacade.getInstance().createModuleReference(moduleReference));
     result.setMappingConfig((MappingConfig_AbstractRef) inner);
     return result;
-  }
-
-  private static class ArrayIterator<T> implements Iterator<T> {
-    private int idx = 0;
-    private Object array;
-    private int length;
-
-    private ArrayIterator(Object array) {
-      this.array = array;
-      this.length = Array.getLength(array);
-    }
-
-    @Override
-    public boolean hasNext() {
-      return idx < length;
-    }
-
-    @Override
-    @SuppressWarnings(value = "unchecked")
-    public T next() {
-      return (T) Array.get(array, idx++);
-    }
-
-    @Override
-    public void remove() {
-      throw new UnsupportedOperationException();
-    }
   }
 }

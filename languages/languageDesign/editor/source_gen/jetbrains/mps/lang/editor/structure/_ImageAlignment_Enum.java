@@ -4,23 +4,28 @@ package jetbrains.mps.lang.editor.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum _ImageAlignment_Enum {
   alignmentJustify("alignmentJustify", "justify"),
   alignmentCenter("alignmentCenter", "center"),
   alignmentTile("alignmentTile", "tile");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private _ImageAlignment_Enum(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<_ImageAlignment_Enum> getConstants() {
     List<_ImageAlignment_Enum> list = ListSequence.fromList(new LinkedList<_ImageAlignment_Enum>());
     ListSequence.fromList(list).addElement(_ImageAlignment_Enum.alignmentJustify);
@@ -28,11 +33,9 @@ public enum _ImageAlignment_Enum {
     ListSequence.fromList(list).addElement(_ImageAlignment_Enum.alignmentTile);
     return list;
   }
-
   public static _ImageAlignment_Enum getDefault() {
     return _ImageAlignment_Enum.alignmentJustify;
   }
-
   public static _ImageAlignment_Enum parseValue(String value) {
     if (value == null) {
       return _ImageAlignment_Enum.getDefault();
@@ -47,16 +50,5 @@ public enum _ImageAlignment_Enum {
       return _ImageAlignment_Enum.alignmentTile;
     }
     return _ImageAlignment_Enum.getDefault();
-  }
-
-  private String myValue;
-
-  _ImageAlignment_Enum(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

@@ -4,60 +4,101 @@ package jetbrains.mps.core.properties.editor;
 
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import java.awt.Color;
 import jetbrains.mps.nodeEditor.MPSFonts;
 
 public class properiesSS_StyleSheet {
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getKey(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(128)));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-    return style;
+  public static void apply_Key(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new properiesSS_StyleSheet.KeyStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getComment(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(8421504)));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
-    return style;
+  public static void apply_Comment(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new properiesSS_StyleSheet.CommentStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getSeparator(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-    return style;
+  public static void apply_Separator(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new properiesSS_StyleSheet.SeparatorStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getValue(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(32768)));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-    return style;
+  public static void apply_Value(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new properiesSS_StyleSheet.ValueStyleClass(editorContext, node).apply(style, editorCell);
   }
 
-  public static void applyKey(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(128)));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-  }
+  public static class KeyStyleClass extends AbstractStyleClass {
+    public KeyStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyComment(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(8421504)));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
-  }
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(128)));
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+    }
 
-  public static void applySeparator(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
   }
+  public static class CommentStyleClass extends AbstractStyleClass {
+    public CommentStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyValue(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(32768)));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(8421504)));
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
+    }
+
+  }
+  public static class SeparatorStyleClass extends AbstractStyleClass {
+    public SeparatorStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
+    }
+
+  }
+  public static class ValueStyleClass extends AbstractStyleClass {
+    public ValueStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(32768)));
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+    }
+
   }
 }

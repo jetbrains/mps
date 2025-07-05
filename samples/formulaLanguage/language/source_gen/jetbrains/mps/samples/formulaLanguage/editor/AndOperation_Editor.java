@@ -6,95 +6,9 @@ import jetbrains.mps.nodeEditor.DefaultNodeEditor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
-import jetbrains.mps.nodeEditor.cellProviders.CellProviderWithRole;
-import jetbrains.mps.lang.editor.cellProviders.RefNodeCellProvider;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.nodeEditor.EditorManager;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
-import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
-import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
-import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 
 public class AndOperation_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createCollection_1vjwda_a(editorContext, node);
-  }
-
-  private EditorCell createCollection_1vjwda_a(EditorContext editorContext, SNode node) {
-    EditorCell_Collection editorCell = EditorCell_Collection.createHorizontal(editorContext, node);
-    editorCell.setCellId("Collection_1vjwda_a");
-    editorCell.setBig(true);
-    editorCell.addEditorCell(this.createRefNode_1vjwda_a0(editorContext, node));
-    editorCell.addEditorCell(this.createConstant_1vjwda_b0(editorContext, node));
-    editorCell.addEditorCell(this.createRefNode_1vjwda_c0(editorContext, node));
-    return editorCell;
-  }
-
-  private EditorCell createRefNode_1vjwda_a0(EditorContext editorContext, SNode node) {
-    CellProviderWithRole provider = new RefNodeCellProvider(node, editorContext);
-    provider.setRole("leftOperand");
-    provider.setNoTargetText("<no leftOperand>");
-    EditorCell editorCell;
-    editorCell = provider.createEditorCell(editorContext);
-    if (editorCell.getRole() == null) {
-      editorCell.setRole("leftOperand");
-    }
-    Operation_leftOperand_Actions.setCellActions(editorCell, node, editorContext);
-    editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
-    SNode attributeConcept = provider.getRoleAttribute();
-    Class attributeKind = provider.getRoleAttributeClass();
-    if (attributeConcept != null) {
-      IOperationContext opContext = editorContext.getOperationContext();
-      EditorManager manager = EditorManager.getInstanceFromContext(opContext);
-      return manager.createRoleAttributeCell(editorContext, attributeConcept, attributeKind, editorCell);
-    } else
-    return editorCell;
-  }
-
-  private EditorCell createConstant_1vjwda_b0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "&&");
-    editorCell.setCellId("Constant_1vjwda_b0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.EDITABLE, true);
-    editorCell.getStyle().putAll(style);
-    Operation_symbol_Actions.setCellActions(editorCell, node, editorContext);
-    editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(editorContext, new BasicCellContext(node), new SubstituteInfoPartExt[]{new AndOperation_Editor.ReplaceWith_Operation_cellMenu_1vjwda_a0b0()}));
-    return editorCell;
-  }
-
-  public static class ReplaceWith_Operation_cellMenu_1vjwda_a0b0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
-    public ReplaceWith_Operation_cellMenu_1vjwda_a0b0() {
-    }
-
-    public String getReplacementConceptName() {
-      return "jetbrains.mps.samples.formulaLanguage.structure.Operation";
-    }
-  }
-
-  private EditorCell createRefNode_1vjwda_c0(EditorContext editorContext, SNode node) {
-    CellProviderWithRole provider = new RefNodeCellProvider(node, editorContext);
-    provider.setRole("rightOperand");
-    provider.setNoTargetText("<no rightOperand>");
-    EditorCell editorCell;
-    editorCell = provider.createEditorCell(editorContext);
-    if (editorCell.getRole() == null) {
-      editorCell.setRole("rightOperand");
-    }
-    Operation_rightOperand_Actions.setCellActions(editorCell, node, editorContext);
-    editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
-    SNode attributeConcept = provider.getRoleAttribute();
-    Class attributeKind = provider.getRoleAttributeClass();
-    if (attributeConcept != null) {
-      IOperationContext opContext = editorContext.getOperationContext();
-      EditorManager manager = EditorManager.getInstanceFromContext(opContext);
-      return manager.createRoleAttributeCell(editorContext, attributeConcept, attributeKind, editorCell);
-    } else
-    return editorCell;
+    return new AndOperation_EditorBuilder_a(editorContext, node).createCell();
   }
 }

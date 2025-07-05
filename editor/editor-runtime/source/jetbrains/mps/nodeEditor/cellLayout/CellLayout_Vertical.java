@@ -15,13 +15,17 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
+import gnu.trove.TIntArrayList;
+import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.style.CellAlign;
 import jetbrains.mps.editor.runtime.style.DefaultBaseLine;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.cells.APICellAdapter;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
+
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * User: Sergey Dmitriev
@@ -34,6 +38,10 @@ public class CellLayout_Vertical extends AbstractCellLayout {
     myGridLayout = gridLayout;
   }
 
+  boolean isGridLayout() {
+    return myGridLayout;
+  }
+
   @Override
   public boolean canBeFolded() {
     return true;
@@ -41,19 +49,14 @@ public class CellLayout_Vertical extends AbstractCellLayout {
 
   @Override
   public void doLayout(EditorCell_Collection editorCells) {
-    if(CellLayout_Indent_Old.DO_INDENT_EVERYWHERE) {
-      CellLayout_Indent_Old._doLayout(editorCells);
-      return;
-    }
-
     Iterable<EditorCell> cells = editorCells.getContentCells();
     EditorCell closingBrace = editorCells.getClosingBrace();
     EditorCell openingBrace = editorCells.getOpeningBrace();
     boolean usesBraces = editorCells.usesBraces();
     if (usesBraces) {
       closingBrace.relayout();
+      openingBrace.moveTo(editorCells.getX(), editorCells.getY());
       openingBrace.relayout();
-      openingBrace.moveTo(editorCells.getX(), editorCells.getY());      
     }
 
     final int x = usesBraces ? editorCells.getX() + openingBrace.getWidth() : editorCells.getX();
@@ -76,7 +79,7 @@ public class CellLayout_Vertical extends AbstractCellLayout {
       int delta = braceIndent - indent;
       width = Math.max(width, lastCellWidth + delta);
     }
-    
+
     for (EditorCell editorCell : cells) {
       int cellX = editorCell.getX();
       int cellY = editorCell.getY();
@@ -87,7 +90,10 @@ public class CellLayout_Vertical extends AbstractCellLayout {
       } else if (cellAlign == CellAlign.RIGHT && !myGridLayout) {
         newCellX = cellX + width - editorCell.getWidth();
       }
-      if (newCellX != cellX) editorCell.moveTo(newCellX, cellY);
+      if (newCellX != cellX) {
+        editorCell.moveTo(newCellX, cellY);
+        editorCell.relayout();
+      }
     }
 
     editorCells.setArtificialBracesIndent(braceIndent);
@@ -96,78 +102,47 @@ public class CellLayout_Vertical extends AbstractCellLayout {
       int cellY = editorCell.getY();
       int indent = getBracesIndent(editorCell);
       int newCellX = cellX - indent + braceIndent;
-      if (newCellX != cellX) editorCell.moveTo(newCellX, cellY);
+      if (newCellX != cellX) {
+        editorCell.moveTo(newCellX, cellY);
+        editorCell.relayout();
+      }
     }
 
     if (myGridLayout) {
-      int x0 = x;
-      int size = editorCells.getContentCellsCount();
-      int[] maxHeights = new int[size];
-      for (int j = 0; j < maxHeights.length; j++) {
-        maxHeights[j] = 0;
-      }
-      for (int i = 0; ; i++) {
-        int maxWidth = -1;
-        int j = 0;
-        for (EditorCell editorCell : cells) {
-          if (editorCell instanceof EditorCell_Collection) {
-            EditorCell_Collection editorCellCollection = (EditorCell_Collection) editorCell;
-            jetbrains.mps.openapi.editor.cells.CellLayout cellLayout = editorCellCollection.getCellLayout();
-            if (cellLayout instanceof CellLayout_Horizontal) {
-              if (i < editorCellCollection.getCellsCount()) {
-                EditorCell cell = editorCellCollection.getCellAt(i);
-                cell.setX(x0);
-                cell.relayout();
-                maxWidth = Math.max(maxWidth, cell.getWidth());
-                maxHeights[j] = Math.max(maxHeights[j], cell.getHeight());
-              }
-            } else {              
-              maxHeights[j] = Math.max(maxHeights[j], editorCell.getHeight());
-            }
-          } else {
-            maxHeights[j] = Math.max(maxHeights[j], editorCell.getHeight());
-          }
-          j++;
-        }
-        for (EditorCell editorCell : cells) {
-          if (editorCell instanceof EditorCell_Collection) {
-            EditorCell_Collection editorCellCollection = (EditorCell_Collection) editorCell;
-            jetbrains.mps.openapi.editor.cells.CellLayout cellLayout = editorCellCollection.getCellLayout();
-            if (cellLayout instanceof CellLayout_Horizontal && i < editorCellCollection.getCellsCount()) {
-              EditorCell cell = editorCellCollection.getCellAt(i);
-              cell.setWidth(maxWidth);
-            }
-          }
-        }
-        if (maxWidth == -1) {
-          break;
-        }
-        x0 += maxWidth;
-      }
-      int j = 0;
-      height = 0;
+      TIntArrayList columnWidths = new TIntArrayList();
       for (EditorCell editorCell : cells) {
-        editorCell.moveTo(editorCell.getX(), y + height);
-        int deltaHeight = maxHeights[j];
-        editorCell.setHeight(deltaHeight);
-        height += deltaHeight;
-        j++;
-      }
-      for (EditorCell editorCell : cells) {
-        if (editorCell instanceof EditorCell_Collection) {
-          EditorCell_Collection editorCellCollection = (EditorCell_Collection) editorCell;
-          jetbrains.mps.openapi.editor.cells.CellLayout cellLayout = editorCellCollection.getCellLayout();
-          if (cellLayout instanceof CellLayout_Horizontal) {
-            int width0 = 0;
-            for (EditorCell cell : editorCellCollection) {
-              width0 += cell.getWidth();
+        if (editorCell instanceof EditorCell_Collection && ((EditorCell_Collection) editorCell).getCellLayout() instanceof CellLayout_Horizontal) {
+          EditorCell_Collection collectionCell = (EditorCell_Collection) editorCell;
+          int columnNumber = 0;
+          for (EditorCell columnCell : collectionCell) {
+            if (columnNumber < columnWidths.size()) {
+              columnWidths.set(columnNumber, Math.max(columnWidths.get(columnNumber), columnCell.getWidth()));
+            } else {
+              columnWidths.add(columnCell.getWidth());
             }
-            editorCellCollection.setWidth(width0);
-            width = Math.max(width, width0);
+            columnNumber++;
           }
+        }
+      }
+
+      for (EditorCell editorCell : cells) {
+        if (editorCell instanceof EditorCell_Collection && ((EditorCell_Collection) editorCell).getCellLayout() instanceof CellLayout_Horizontal) {
+          EditorCell_Collection collectionCell = (EditorCell_Collection) editorCell;
+          int lineWidth = 0;
+          int columnNumber = 0;
+          for (EditorCell columnCell : collectionCell) {
+            setX(columnCell, x + lineWidth);
+            int columnWidth = columnWidths.get(columnNumber);
+            columnCell.setWidth(columnWidth);
+            lineWidth += columnWidth;
+            columnNumber++;
+          }
+          editorCell.setWidth(lineWidth);
+          width = Math.max(width, lineWidth);
         }
       }
     }
+
     if (usesBraces) {
       closingBrace.setY(y + height - closingBrace.getHeight());
       if (myGridLayout) {
@@ -175,8 +150,11 @@ public class CellLayout_Vertical extends AbstractCellLayout {
         width += closingBrace.getWidth();
       } else {
         EditorCell lastCell = editorCells.lastContentCell();
-        while ((lastCell instanceof EditorCell_Collection) && !((EditorCell_Collection) lastCell).isFolded()) {
-          lastCell = ((EditorCell_Collection)lastCell).lastCell();
+        while ((lastCell instanceof EditorCell_Collection) && !((EditorCell_Collection) lastCell).isCollapsed()) {
+          lastCell = ((EditorCell_Collection) lastCell).lastCell();
+        }
+        if (lastCell == null) {
+          lastCell = editorCells.lastContentCell() != null ? editorCells.lastContentCell() : openingBrace;
         }
         closingBrace.setX(lastCell.getX() + lastCell.getWidth()/*x + lastCellWidth*/);
         width = Math.max(width, (closingBrace.getX() - x) + closingBrace.getWidth());
@@ -187,22 +165,35 @@ public class CellLayout_Vertical extends AbstractCellLayout {
     editorCells.setHeight(height);
   }
 
+  private void setX(EditorCell cell, int newX) {
+    int deltaX = newX - cell.getX();
+    Deque<EditorCell> cellsToMove = new LinkedList<EditorCell>();
+    cellsToMove.add(cell);
+    while (!cellsToMove.isEmpty()) {
+      EditorCell nextCell = cellsToMove.removeFirst();
+      nextCell.setX(nextCell.getX() + deltaX);
+      if (nextCell instanceof EditorCell_Collection) {
+        for (EditorCell childCell : ((EditorCell_Collection) nextCell)) {
+          cellsToMove.addLast(childCell);
+        }
+      }
+    }
+  }
+
   private int getBracesIndent(EditorCell cell) {
-    return cell instanceof  EditorCell_Collection ? ((EditorCell_Collection) cell).getBracesIndent() : 0;
+    return cell instanceof EditorCell_Collection ? ((EditorCell_Collection) cell).getBracesIndent() : 0;
   }
 
   @Override
   public int getRightInternalInset(EditorCell_Collection editorCell_collection) {
-    EditorCell editorCell = editorCell_collection.firstCell();
-    if (editorCell == null) return 0;
-    return editorCell.getRightInset();
+    return editorCell_collection.isEmpty() ? 0 : editorCell_collection.firstCell().getRightInset();
   }
 
   @Override
   public TextBuilder doLayoutText(Iterable<EditorCell> editorCells) {
-    TextBuilder result = jetbrains.mps.nodeEditor.text.TextBuilder.getEmptyTextBuilder();
+    TextBuilder result = new TextBuilderImpl();
     for (EditorCell editorCell : editorCells) {
-      result = result.appendToTheBottom(editorCell.renderText());
+      result.appendToTheBottom(editorCell.renderText());
     }
     return result;
   }
@@ -223,16 +214,16 @@ public class CellLayout_Vertical extends AbstractCellLayout {
       if (result > 0) {
         break;
       }
-    }    
+    }
 
     switch (bL) {
       case FIRST: // default behavior
         return result;
       case CENTER:
-        return Math.max(result,editorCells.getHeight() / 2);
+        return Math.max(result, editorCells.getHeight() / 2);
       case LAST:
-        EditorCell lastCell = editorCells.getCellAt(editorCells.getCellsCount()-1);
-        if (lastCell != null) {
+        if (!editorCells.isEmpty()) {
+          EditorCell lastCell = editorCells.lastCell();
           return lastCell.getY() - editorCells.getY() + lastCell.getAscent();
         }
     }
@@ -242,5 +233,21 @@ public class CellLayout_Vertical extends AbstractCellLayout {
 
   public String toString() {
     return "Vertical";
+  }
+
+  @Override
+  public void requestRelayout(EditorCell_Collection editorCells) {
+    super.requestRelayout(editorCells);
+    if (myGridLayout) {
+      for (EditorCell childCell : editorCells) {
+        if (childCell instanceof EditorCell_Collection) {
+          for (EditorCell innerCell : (EditorCell_Collection) childCell) {
+            innerCell.requestRelayout();
+          }
+        } else {
+          childCell.requestRelayout();
+        }
+      }
+    }
   }
 }

@@ -18,10 +18,10 @@ package jetbrains.mps.plugins;
 import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
 import jetbrains.mps.plugins.projectplugins.BaseProjectPlugin;
 
+/**
+ * hashCode() and equals() must be overridden for PluginContributor!
+ */
 public class PluginContributor extends AbstractPluginFactory {
-  public PluginContributor() {
-  }
-
   public BaseProjectPlugin createProjectPlugin() {
     return null;
   }
@@ -32,13 +32,13 @@ public class PluginContributor extends AbstractPluginFactory {
 
   @Override
   @SuppressWarnings("unchecked")
-  public <T> T create(Class<T> klass) {
-    if (BaseProjectPlugin.class == klass) {
+  public <T> T create(Class<T> aClass) {
+    if (BaseProjectPlugin.class == aClass) {
       return (T) createProjectPlugin();
-    } else if (BaseApplicationPlugin.class == klass) {
+    } else if (BaseApplicationPlugin.class == aClass) {
       return (T) createApplicationPlugin();
     }
-    throw new IllegalArgumentException("Can't create instance: " + klass);
+    throw new IllegalArgumentException("Can't create instance: " + aClass);
   }
 
   public static PluginContributor adapt(AbstractPluginFactory factory) {
@@ -49,7 +49,6 @@ public class PluginContributor extends AbstractPluginFactory {
   }
 
   private static class AbstractPluginFactoryAdapter extends PluginContributor {
-
     private final AbstractPluginFactory myFactory;
 
     public AbstractPluginFactoryAdapter(AbstractPluginFactory factory) {
@@ -67,8 +66,23 @@ public class PluginContributor extends AbstractPluginFactory {
     }
 
     @Override
-    public <T> T create(Class<T> klass) {
-      return myFactory.create(klass);
+    public <T> T create(Class<T> aClass) {
+      return myFactory.create(aClass);
+    }
+
+    @Override
+    public int hashCode() {
+      return myFactory.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      return o instanceof AbstractPluginFactoryAdapter && (((AbstractPluginFactoryAdapter) o).myFactory == myFactory);
+    }
+
+    @Override
+    public String toString() {
+      return myFactory + " adapter";
     }
   }
 }

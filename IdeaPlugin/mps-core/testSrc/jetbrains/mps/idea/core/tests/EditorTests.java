@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,21 +16,18 @@
 
 package jetbrains.mps.idea.core.tests;
 
-import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
-import com.intellij.openapi.components.impl.ComponentManagerImpl;
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
-import com.intellij.testFramework.TestLoggerFactory;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.ide.editor.MPSEditorOpener;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.facet.MPSFacetConfiguration;
+import jetbrains.mps.lang.test.runtime.LightEnvironment;
+import jetbrains.mps.lang.test.runtime.TestRunner;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.TransformationTestRunner;
 import jetbrains.mps.persistence.DefaultModelRoot;
-import jetbrains.mps.project.ProjectOperationContext;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
@@ -63,52 +60,54 @@ public class EditorTests extends DataMPSFixtureTestCase {
     // this is to prevent exceptions in the project components that get "projectClosed" notifications
     ApplicationManagerEx.getApplicationEx().doNotSave();
 
-    DefaultModelRoot sModelRoot = (DefaultModelRoot) myFacet.getSolution().getModelRoots().iterator().next();
-    String path = sModelRoot.getFiles(DefaultModelRoot.SOURCE_ROOTS).iterator().next();
-    final IFile modelFile = FileSystem.getInstance().getFileByPath(path + "/test.mps");
-    final List<SNode> roots = new ArrayList<SNode>();
-
     final Exception[] thrown = new Exception[1];
-    ModelAccess.instance().runReadAction(new Runnable() {
+    runModelRead(new Runnable() {
       @Override
       public void run() {
-        SModel descr = SModelFileTracker.getInstance().findModel(modelFile);
+        DefaultModelRoot sModelRoot = (DefaultModelRoot) myFacet.getSolution().getModelRoots().iterator().next();
+        String path = sModelRoot.getFiles(DefaultModelRoot.SOURCE_ROOTS).iterator().next();
+        final IFile modelFile = FileSystem.getInstance().getFile(path + "/test.mps");
+        final List<SNode> roots = new ArrayList<SNode>();
+
+        SModel descr = SModelFileTracker.getInstance(ProjectHelper.getProjectRepository(myProjectBuilder.getFixture().getProject())).findModel(modelFile);
         if (descr == null) {
           thrown[0] = new IllegalStateException("model not found");
           return;
         }
 
-        SModel model = descr;
-        if (model != null) {
-          for (SNode root : model.getRootNodes()) {
-            roots.add(root);
-          }
+        for (SNode root : descr.getRootNodes()) {
+          roots.add(root);
         }
 
         for (SNode r : roots) {
           if ("EditorTestCase".equals(r.getConcept().getName())) {
             try {
-              Class<?> cls = Class.forName(jetbrains.mps.util.SNodeOperations.getModelLongName(model) + "." + r.getName() + "_Test");
+              Class<?> cls = Class.forName(jetbrains.mps.util.SNodeOperations.getModelLongName(descr) + "." + r.getName() + "_Test");
               Method mth = cls.getMethod("test_" + r.getName());
               TransformationTest btt = (TransformationTest) cls.newInstance();
-              btt.setTestRunner(new SimpleTransformationTestRunner(r, mth));
+              final TestRunner testRunner = new SimpleTransformationTestRunner(r, mth);
+              btt.setTestRunner(testRunner);
               tests.add(btt);
             } catch (Exception e) {
               thrown[0] = e;
             }
           }
         }
-
-
       }
     });
-    // restore test logger factory
-    final Method method = ApplicationInfo.getInstance().getMajorVersion().equals("12")
-        ? Logger.class.getDeclaredMethod("setFactory", Logger.Factory.class) : Logger.class.getDeclaredMethod("setFactory", Class.class);
-    method.invoke(null,
-      ApplicationInfo.getInstance().getMajorVersion().equals("12")
-        ? TestLoggerFactory.class.getDeclaredMethod("getInstance").invoke(null) : TestLoggerFactory.class);
     if (thrown[0] != null) throw thrown[0];
+
+    //Flush all EDT events to be made before run tests
+    UIUtil.invokeAndWaitIfNeeded(new Runnable() {
+      @Override
+      public void run() {
+        try {
+          flushEDT();
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+      }
+    });
   }
 
   @Override
@@ -126,10 +125,11 @@ public class EditorTests extends DataMPSFixtureTestCase {
     });
     if (thrown[0] != null) throw thrown[0];
 
-    Project prj = myModule.getProject();
-    if (prj instanceof ComponentManagerImpl) {
-      ((ComponentManagerImpl) prj).setTemporarilyDisposed(true);
-    }
+    //TODO: see commit 543037363dfc71abd442f8963c60bfcbb066fcfb and 6f76d0b27dad6b10b908eebb158d8a8e81f7fbe4 in IDEA to decide how to handle this
+    /*Project prj = myModule.getProject();
+    if (prj instanceof ProjectImpl) {
+      ((ProjectImpl)prj).setTemporarilyDisposed(true);
+    }*/
   }
 
 
@@ -145,6 +145,7 @@ public class EditorTests extends DataMPSFixtureTestCase {
     private Method myTestMethod;
 
     public SimpleTransformationTestRunner(SNode root, Method testMethod) {
+      super(new LightEnvironment());
       myRoot = root;
       myTestMethod = testMethod;
     }
@@ -162,16 +163,14 @@ public class EditorTests extends DataMPSFixtureTestCase {
       UIUtil.invokeAndWaitIfNeeded(new Runnable() {
         @Override
         public void run() {
-          ModelAccess.instance().runWriteAction(new Runnable() {
+          final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myModule.getProject());
+          mpsProject.getModelAccess().runWriteAction(new Runnable() {
             @Override
             public void run() {
-              final ProjectOperationContext context = new ProjectOperationContext(
-                ProjectHelper.toMPSProject(myModule.getProject()));
-
-              new MPSEditorOpener(myModule.getProject()).openNode(myRoot, context, true, true);
+              new MPSEditorOpener(mpsProject).openNode(myRoot, true, true);
 
               btt.setModelDescriptor(myRoot.getModel());
-              btt.setProject(ProjectHelper.toMPSProject(myModule.getProject()));
+              btt.setProject(mpsProject);
             }
           });
         }
@@ -179,7 +178,7 @@ public class EditorTests extends DataMPSFixtureTestCase {
     }
 
     @Override
-    public void initTest(final TransformationTest btt, @NotNull String projectName, String model, boolean uiTest, boolean reOpenProject) throws Exception {
+    public void initTest(final TransformationTest btt, @NotNull String projectName, String model, boolean reOpenProject) throws Exception {
       // TODO use flags
       initTest(btt, projectName, model);
     }

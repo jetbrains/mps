@@ -13,21 +13,18 @@ import java.util.HashMap;
 import java.io.File;
 import java.io.IOException;
 import jetbrains.mps.generator.GenerationOptions;
+import jetbrains.mps.make.script.IResult;
+import jetbrains.mps.make.script.IScript;
+import jetbrains.mps.make.MakeSession;
+import jetbrains.mps.make.service.AbstractMakeService;
 import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.make.script.IPropertiesPool;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.make.facet.ITarget;
+import jetbrains.mps.internal.make.cfg.TextGenFacetInitializer;
+import jetbrains.mps.internal.make.cfg.MakeFacetInitializer;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.make.script.IResult;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.ide.ThreadUtils;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.project.ProjectOperationContext;
-import jetbrains.mps.make.script.IScript;
+import jetbrains.mps.internal.make.cfg.GenerateFacetInitializer;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import java.util.concurrent.ExecutionException;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -43,33 +40,36 @@ import java.io.FileInputStream;
 import jetbrains.mps.util.FileUtil;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
+import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.util.SNodeOperations;
 import jetbrains.mps.make.script.ScriptBuilder;
 import jetbrains.mps.make.facet.IFacet;
+import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.make.resources.IResource;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import java.util.Collections;
-import jetbrains.mps.smodel.resources.ModelsToResources;
 import jetbrains.mps.generator.GenerationFacade;
+import jetbrains.mps.smodel.resources.ModelsToResources;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.IMessage;
 import java.io.StringWriter;
 import java.io.PrintWriter;
 
 public class ModuleGenerationHolder {
-  private Set<String> ignoredFiles = SetSequence.fromSetAndArray(new HashSet<String>(), "generated", "dependencies");
+  private static String[] BINARY_FILE_EXTENSIONS = new String[]{".png", ".gif"};
+  private Set<String> ignoredFiles = SetSequence.fromSetAndArray(new HashSet<String>(), "generated", "dependencies", "exports");
   private final Project project;
   private final SModule module;
   private String tmpPath;
   private Map<String, String> path2tmp = MapSequence.fromMap(new HashMap<String, String>());
   private final ModuleGenerationHolder.MyMessageHandler myMessageHandler = new ModuleGenerationHolder.MyMessageHandler();
   private boolean isSucessful;
-
 
   public ModuleGenerationHolder(SModule module, Project project) {
     this.module = module;
@@ -85,69 +85,53 @@ public class ModuleGenerationHolder {
     this.tmpPath = tmpDir.getAbsolutePath();
   }
 
-
-
-  public void build() {
-    if (!(needsGeneration(module))) {
+  public void build() throws Exception {
+    if (!(needsGeneration())) {
       isSucessful = true;
       return;
     }
-
-    // <node> 
+    // sanity check build() doesn't come after diff() (due to broken test method ordering) 
+    assert tmpPath != null;
     final GenerationOptions.OptionsBuilder optBuilder = GenerationOptions.getDefaults();
     boolean isParallel = "true".equalsIgnoreCase(System.getProperty("parallel.generation"));
     if (isParallel) {
       optBuilder.strictMode(true).generateInParallel(isParallel, 8);
-      // <node> 
     }
 
-    final IScriptController ctl = new IScriptController.Stub() {
+    IResult result;
+    IScript scr = ModuleGenerationHolder.defaultScriptBuilder().toScript();
+    final MakeSession session = new MakeSession(project, myMessageHandler, true);
+    final AbstractMakeService.DefaultMonitor monitor = new AbstractMakeService.DefaultMonitor(session);
+    IScriptController ctl = new IScriptController.Stub(monitor, monitor) {
       @Override
       public void setup(IPropertiesPool ppool) {
-        Tuples._1<Boolean> tparams = (Tuples._1<Boolean>) ppool.properties(new ITarget.Name("jetbrains.mps.lang.core.TextGen.textGen"), Object.class);
-        tparams._0(false);
-
-        Tuples._1<_FunctionTypes._return_P1_E0<? extends IFile, ? super String>> makeparams = (Tuples._1<_FunctionTypes._return_P1_E0<? extends IFile, ? super String>>) ppool.properties(new ITarget.Name("jetbrains.mps.make.facets.Make.make"), Object.class);
-        makeparams._0(new _FunctionTypes._return_P1_E0<IFile, String>() {
+        // trace.info is useless for tests, however we do keep these files in repo, and diffModule test 
+        // fails if we don't generate one here 
+        new TextGenFacetInitializer(session).failNoTextGen(false).generateDebugInfo(true).populate(ppool);
+        new MakeFacetInitializer().setPathToFile(new _FunctionTypes._return_P1_E0<IFile, String>() {
           public IFile invoke(String path) {
             return tmpFile(path);
           }
-        });
-
-        Tuples._2<Boolean, GenerationOptions.OptionsBuilder> params = (Tuples._2<Boolean, GenerationOptions.OptionsBuilder>) ppool.properties(new ITarget.Name("jetbrains.mps.lang.core.Generate.configure"), Object.class);
-        params._1(optBuilder);
+        }).populate(ppool);
+        new GenerateFacetInitializer(session).setGenerationOptions(optBuilder).populate(ppool);
       }
     };
 
-    final Wrappers._T<IResult> result = new Wrappers._T<IResult>();
-    ModelAccess.instance().flushEventQueue();
-    ThreadUtils.runInUIThreadAndWait(new Runnable() {
-      public void run() {
-        IOperationContext context = new ProjectOperationContext(project);
-        IScript scr = ModuleGenerationHolder.defaultScriptBuilder().toScript();
-        try {
-          result.value = new TestMakeService(context, myMessageHandler).make(null, ModuleGenerationHolder.collectResources(context, module), scr, ctl, new EmptyProgressMonitor()).get();
-        } catch (InterruptedException ignore) {
-        } catch (ExecutionException ignore) {
-        }
-      }
-    });
-    ModelAccess.instance().flushEventQueue();
-    isSucessful = result.value.isSucessful();
+    result = new TestMakeService().make(session, ModuleGenerationHolder.collectResources(project, module), scr, ctl, new EmptyProgressMonitor()).get();
+    isSucessful = result != null && result.isSucessful();
   }
-
   public boolean isBuildSucessful() {
     return isSucessful;
   }
-
   public List<String> buildErrors() {
     return myMessageHandler.getGenerationErrors();
   }
-
   public List<String> buildWarns() {
     return myMessageHandler.getGenerationWarnings();
   }
-
+  /*package*/ boolean hasFilesGenerated() {
+    return !(MapSequence.fromMap(path2tmp).isEmpty());
+  }
   public List<String> diff() {
     List<String> diffs = ListSequence.fromList(new ArrayList<String>());
     for (IMapping<String, String> p2t : MapSequence.fromMap(path2tmp).mappingsSet()) {
@@ -167,24 +151,16 @@ public class ModuleGenerationHolder {
     }
     return diffs;
   }
-
   private IFile tmpFile(String path) {
     if (MapSequence.fromMap(path2tmp).containsKey(path)) {
       return FileSystem.getInstance().getFileByPath(MapSequence.fromMap(path2tmp).get(path));
     }
     int idx = path.indexOf("/");
-    idx = (idx < 0 ?
-      path.indexOf(File.separator) :
-      idx
-    );
-    String tmp = tmpPath + "/" + ((idx < 0 ?
-      path.replace(':', '_') :
-      path.substring(idx + 1)
-    ));
+    idx = (idx < 0 ? path.indexOf(File.separator) : idx);
+    String tmp = tmpPath + "/" + ((idx < 0 ? path.replace(':', '_') : path.substring(idx + 1)));
     MapSequence.fromMap(path2tmp).put(path, tmp);
     return FileSystem.getInstance().getFileByPath(tmp);
   }
-
   private void diffDirs(final File orig, File revd, final List<String> diffs) {
     Iterable<String> onames = Sequence.fromArray(orig.list());
     Iterable<String> rnames = Sequence.fromArray(revd.list());
@@ -215,6 +191,9 @@ public class ModuleGenerationHolder {
       File rnext = new File(revd, name);
       if (onext.isDirectory() == rnext.isDirectory()) {
         if (!(onext.isDirectory())) {
+          if (isBinary(name)) {
+            continue;
+          }
           List<String> olines = fileToStrings(onext);
           Patch patch = DiffUtils.diff(olines, fileToStrings(rnext));
           if (!(patch.getDeltas().isEmpty())) {
@@ -228,11 +207,17 @@ public class ModuleGenerationHolder {
       }
     }
   }
-
   private boolean ignoredFile(String fileName) {
     return SetSequence.fromSet(ignoredFiles).contains(fileName) || (fileName != null && fileName.startsWith(".hash"));
   }
-
+  private boolean isBinary(String filename) {
+    for (String nextExt : BINARY_FILE_EXTENSIONS) {
+      if (filename.endsWith(nextExt)) {
+        return true;
+      }
+    }
+    return false;
+  }
   private List<String> fileToStrings(File f) {
     List<String> result = ListSequence.fromList(new ArrayList<String>());
     BufferedReader in = null;
@@ -254,7 +239,6 @@ public class ModuleGenerationHolder {
     }
     return result;
   }
-
   public void cleanUp() {
     for (Queue<File> dirs = QueueSequence.fromQueueAndArray(new LinkedList<File>(), new File(tmpPath)); QueueSequence.fromQueue(dirs).isNotEmpty();) {
       File dir = QueueSequence.fromQueue(dirs).removeFirstElement();
@@ -271,8 +255,7 @@ public class ModuleGenerationHolder {
     MapSequence.fromMap(path2tmp).clear();
     myMessageHandler.cleanUp();
   }
-
-  private static boolean needsGeneration(final SModule module) {
+  /*package*/ boolean needsGeneration() {
     return ModelAccess.instance().runReadAction(new Computable<Boolean>() {
       public Boolean compute() {
         for (SModel descriptor : module.getModels()) {
@@ -284,11 +267,9 @@ public class ModuleGenerationHolder {
       }
     });
   }
-
   private static ScriptBuilder defaultScriptBuilder() {
-    return new ScriptBuilder().withFacetNames(new IFacet.Name("jetbrains.mps.lang.resources.Binaries"), new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.Make.make"));
+    return new ScriptBuilder().withFacetNames(new IFacet.Name("jetbrains.mps.lang.resources.Binaries"), new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make"), new IFacet.Name("jetbrains.mps.lang.editor.imageGen.GenerateImages")).withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.Make.make"));
   }
-
   private static Iterable<SModule> withGenerators(Iterable<SModule> modules) {
     return Sequence.fromIterable(modules).concat(Sequence.fromIterable(modules).where(new IWhereFilter<SModule>() {
       public boolean accept(SModule it) {
@@ -300,34 +281,28 @@ public class ModuleGenerationHolder {
       }
     }));
   }
+  private static Iterable<IResource> collectResources(Project project, final SModule module) {
+    return new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<Iterable<IResource>>() {
+      public Iterable<IResource> compute() {
 
-  private static Iterable<IResource> collectResources(IOperationContext context, final SModule module) {
-    final Wrappers._T<Iterable<SModel>> models = new Wrappers._T<Iterable<SModel>>(null);
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        for (SModule mod : withGenerators(Collections.singletonList(module))) {
-          models.value = Sequence.fromIterable(models.value).concat(Sequence.fromIterable(((Iterable<SModel>) mod.getModels())).where(new IWhereFilter<SModel>() {
-            public boolean accept(SModel it) {
-              return SNodeOperations.isGeneratable(it);
-            }
-          }));
-        }
+        Iterable<SModel> models = Sequence.fromIterable(withGenerators(Collections.singletonList(module))).translate(new ITranslator2<SModule, SModel>() {
+          public Iterable<SModel> translate(SModule mod) {
+            return mod.getModels();
+          }
+        }).where(new IWhereFilter<SModel>() {
+          public boolean accept(SModel it) {
+            return GenerationFacade.canGenerate(it);
+          }
+        });
+        return new ModelsToResources(models).resources(false);
       }
     });
-    return new ModelsToResources(context, Sequence.fromIterable(models.value).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel smd) {
-        return GenerationFacade.canGenerate(smd);
-      }
-    })).resources(false);
   }
-
   private static class MyMessageHandler implements IMessageHandler {
     private final List<String> myGenerationErrors = new ArrayList<String>();
     private final List<String> myGenerationWarnings = new ArrayList<String>();
-
     private MyMessageHandler() {
     }
-
     @Override
     public void handle(IMessage msg) {
       switch (msg.getKind()) {
@@ -348,22 +323,15 @@ public class ModuleGenerationHolder {
         default:
       }
     }
-
     public List<String> getGenerationErrors() {
       return myGenerationErrors;
     }
-
     public List<String> getGenerationWarnings() {
       return myGenerationWarnings;
     }
-
     public void cleanUp() {
       myGenerationErrors.clear();
       myGenerationWarnings.clear();
-    }
-
-    @Override
-    public void clear() {
     }
   }
 }

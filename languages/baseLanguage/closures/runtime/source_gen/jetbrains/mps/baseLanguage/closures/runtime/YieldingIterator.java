@@ -12,18 +12,13 @@ public abstract class YieldingIterator<T> implements Iterator<T> {
   private T yielded;
   private YieldingIterator.State state = YieldingIterator.State.UNKNOWN;
   private DelayedException delayedEx;
-
   public YieldingIterator() {
   }
-
   @Override
   public boolean hasNext() {
     if (state == YieldingIterator.State.UNKNOWN) {
       try {
-        this.state = ((this.moveToNext() ?
-          YieldingIterator.State.HAS_NEXT :
-          YieldingIterator.State.AT_END
-        ));
+        this.state = ((this.moveToNext() ? YieldingIterator.State.HAS_NEXT : YieldingIterator.State.AT_END));
       } catch (DelayedException ex) {
         this.state = YieldingIterator.State.AT_END;
         throw ex;
@@ -36,7 +31,6 @@ public abstract class YieldingIterator<T> implements Iterator<T> {
     }
     return state == YieldingIterator.State.HAS_NEXT;
   }
-
   @Override
   public T next() {
     switch (state) {
@@ -62,24 +56,20 @@ public abstract class YieldingIterator<T> implements Iterator<T> {
         throw new IllegalStateException();
     }
   }
-
   @Override
   public void remove() {
     throw new UnsupportedOperationException();
   }
-
   protected abstract boolean moveToNext();
-
   protected void yield(T t) {
     this.yielded = t;
   }
-
-  private static   enum State {
+  private enum State {
     HAS_NEXT(),
     AT_END(),
     UNKNOWN();
 
-    State() {
+    private State() {
     }
   }
 }

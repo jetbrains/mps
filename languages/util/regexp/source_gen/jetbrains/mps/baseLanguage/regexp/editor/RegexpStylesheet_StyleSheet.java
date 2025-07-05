@@ -4,48 +4,79 @@ package jetbrains.mps.baseLanguage.regexp.editor;
 
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 
 public class RegexpStylesheet_StyleSheet {
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getRegexpBrace(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_MAGENTA));
-    style.set(StyleAttributes.MATCHING_LABEL, "regexpBrace");
-    return style;
+  public static void apply_RegexpBrace(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new RegexpStylesheet_StyleSheet.RegexpBraceStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getLeftRegexpBrace(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(RegexpStylesheet_StyleSheet.getRegexpBrace(editorCell));
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-    return style;
+  public static void apply_LeftRegexpBrace(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new RegexpStylesheet_StyleSheet.LeftRegexpBraceStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getRightRegexpBrace(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(RegexpStylesheet_StyleSheet.getRegexpBrace(editorCell));
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    return style;
+  public static void apply_RightRegexpBrace(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new RegexpStylesheet_StyleSheet.RightRegexpBraceStyleClass(editorContext, node).apply(style, editorCell);
   }
 
-  public static void applyRegexpBrace(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_MAGENTA));
-    style.set(StyleAttributes.MATCHING_LABEL, "regexpBrace");
-  }
+  public static class RegexpBraceStyleClass extends AbstractStyleClass {
+    public RegexpBraceStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyLeftRegexpBrace(Style style, EditorCell editorCell) {
-    RegexpStylesheet_StyleSheet.applyRegexpBrace(style, editorCell);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-  }
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_MAGENTA));
+      style.set(StyleAttributes.MATCHING_LABEL, "regexpBrace");
+    }
 
-  public static void applyRightRegexpBrace(Style style, EditorCell editorCell) {
-    RegexpStylesheet_StyleSheet.applyRegexpBrace(style, editorCell);
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+  }
+  public static class LeftRegexpBraceStyleClass extends AbstractStyleClass {
+    public LeftRegexpBraceStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new RegexpBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
+    }
+
+  }
+  public static class RightRegexpBraceStyleClass extends AbstractStyleClass {
+    public RightRegexpBraceStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new RegexpBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+    }
+
   }
 }

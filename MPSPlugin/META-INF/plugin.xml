@@ -2,9 +2,9 @@
 <idea-plugin>
   <name>JetBrains MPS Integration</name>
   <description>JetBrains MPS Integration</description>
-  <version>3.0.5</version>
+  <version>2017.1.4</version>
   <vendor url="http://www.jetbrains.com/mps/" logo="/MPS_16.png">JetBrains</vendor>
-  <idea-version since-build="129.1" until-build="134.1"/>
+  <idea-version since-build="139.1" until-build="172.1"/>
 
   <application-components>
     <component>
@@ -21,7 +21,6 @@
 
   <actions>
     <action class="jetbrains.mps.plugin.FindAspectMethodUsages" text="Find Query Method Usages" id="MPSPlugin.findAspectMethodUsages" />
-    <action class="jetbrains.mps.plugin.GoToConceptDeclaration" text="Go To Concept Declaration" id="MPSPlugin.goToConceptDeclaration" />
     <action class="jetbrains.mps.plugin.FindClassUsagesInMPS" text="Find Class Usages In MPS" id="MPSPlugin.findClassUsages" />
     <action class="jetbrains.mps.plugin.FindMethodUsagesInMPS" text="Find Method Usages In MPS" id="MPSPlugin.findMethodUsages" />
     <action class="jetbrains.mps.plugin.OpenGeneratedQueriesSourceInMPS" text="Open Generated Query Method Source In MPS" id="MPSPlugin.openGeneratedQuerySource" />
@@ -30,7 +29,6 @@
       <separator />
       <reference ref="MPSPlugin.findClassUsages" />
       <reference ref="MPSPlugin.findAspectMethodUsages" />
-      <reference ref="MPSPlugin.goToConceptDeclaration" />
       <reference ref="MPSPlugin.findMethodUsages" />
       <reference ref="MPSPlugin.openGeneratedQuerySource" />
       <add-to-group anchor="last" group-id="EditorPopupMenu" />

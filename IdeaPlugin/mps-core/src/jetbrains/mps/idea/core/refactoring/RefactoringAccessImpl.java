@@ -20,8 +20,9 @@ import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.findusages.model.SearchResults;
+import jetbrains.mps.ide.findusages.model.SearchTask;
 import jetbrains.mps.ide.platform.refactoring.ModelElementTargetChooser;
-import jetbrains.mps.ide.platform.refactoring.RefactoringAccess;
+import jetbrains.mps.ide.platform.refactoring.RefactoringAccessEx;
 import jetbrains.mps.ide.platform.refactoring.RefactoringViewAction;
 import jetbrains.mps.idea.core.ui.ModelOrNodeChooser;
 import jetbrains.mps.idea.core.ui.RefactoringViewItemImpl;
@@ -35,19 +36,19 @@ import org.jetbrains.annotations.NotNull;
  * User: shatalin
  * Date: 2/20/12
  */
-public class RefactoringAccessImpl extends RefactoringAccess implements ApplicationComponent {
+public class RefactoringAccessImpl extends RefactoringAccessEx implements ApplicationComponent {
 
   public RefactoringAccessImpl(MPSCoreComponents coreComponents) {
   }
 
   @Override
   public void initComponent() {
-    RefactoringAccess.setInstance(this);
+    RefactoringAccessEx.setInstance(this);
   }
 
   @Override
   public void disposeComponent() {
-    RefactoringAccess.setInstance(null);
+    RefactoringAccessEx.setInstance(null);
   }
 
   @NotNull
@@ -59,30 +60,32 @@ public class RefactoringAccessImpl extends RefactoringAccess implements Applicat
 
   @Override
   public ModelElementTargetChooser createTargetChooser(Project project, SNode node) {
-    return new ModelOrNodeChooser(project, node);
+    return new ModelOrNodeChooser(project);
   }
 
   @Override
   public ModelElementTargetChooser createTargetChooser(Project project, SModel model) {
-    return new ModelOrNodeChooser(project, model);
+    return new ModelOrNodeChooser(project);
   }
 
   @Override
-  public boolean showRefactoringDialog(Project project, RefactoringContext refactoringContext, IRefactoring refactoring, boolean hasModelsToGenerate) {
-    return showRefactoringDialogBase(project, refactoringContext, refactoring, false);
-  }
-
-  @Override
-  public void showRefactoringView(Project project, final RefactoringViewAction callback, SearchResults searchResults, boolean hasModelsToGenerate, String name) {
+  public void showRefactoringView(Project project, final RefactoringViewAction callback, Runnable disposeAction, SearchResults searchResults, SearchTask searchTask, String name) {
     RefactoringViewItemImpl refactoringViewItem = new RefactoringViewItemImpl();
-    refactoringViewItem.showRefactoringView(project, callback, searchResults, hasModelsToGenerate, name);
+    refactoringViewItem.showRefactoringView(project, callback, disposeAction, searchResults, name);
   }
 
-
   @Override
+  public void showRefactoringView(RefactoringContext refactoringContext, RefactoringViewAction callback, Runnable disposeAction, SearchResults searchResults, SearchTask searchTask, String name) {
+    RefactoringViewItemImpl refactoringViewItem = new RefactoringViewItemImpl();
+    refactoringViewItem.showRefactoringView(refactoringContext, callback, disposeAction, searchResults);
+  }
+
+  @Deprecated
+  public void showRefactoringView(Project project, RefactoringViewAction callback, SearchResults searchResults, boolean hasModelsToGenerate, String name) {
+    showRefactoringView(project, callback, null, searchResults, null, name);
+  }
+  @Deprecated
   public void showRefactoringView(RefactoringContext refactoringContext, RefactoringViewAction callback, SearchResults searchResults, boolean hasModelsToGenerate, String name) {
-    RefactoringViewItemImpl refactoringViewItem = new RefactoringViewItemImpl();
-    refactoringViewItem.showRefactoringView(refactoringContext, callback, searchResults, hasModelsToGenerate);
+    showRefactoringView(refactoringContext, callback, null, searchResults, null, name);
   }
-
 }

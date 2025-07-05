@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,30 +15,36 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
-import jetbrains.mps.nodeEditor.IntelligentInputUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
 import jetbrains.mps.smodel.NodeReadAccessInEditorListener;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 
 /**
  * Author: Sergey Dmitriev
  * Created Sep 14, 2003
  */
-public class EditorCell_Property extends EditorCell_Label {
-  private ModelAccessor myModelAccessor;
+public class EditorCell_Property extends EditorCell_Label implements SynchronizeableEditorCell {
+  private final ModelAccessor myModelAccessor;
   private boolean myCommitInProgress;
   private boolean myCommitInCommand = true;
+  private String myLastModelText;
 
-  protected EditorCell_Property(EditorContext editorContext, ModelAccessor accessor, SNode node) {
+  public EditorCell_Property(EditorContext editorContext, ModelAccessor accessor, SNode node) {
     super(editorContext, node, accessor.getText());
-    setErrorState(!accessor.isValidText(getText()));
     myModelAccessor = accessor;
+    if (myModelAccessor instanceof TransactionalPropertyAccessor) {
+      TransactionalPropertyAccessor propertyAccessor = (TransactionalPropertyAccessor) myModelAccessor;
+      propertyAccessor.setCell(this);
+    }
+    synchronizeViewWithModel();
   }
 
   public static EditorCell_Property create(jetbrains.mps.openapi.editor.EditorContext editorContext, ModelAccessor modelAccessor, SNode node) {
@@ -50,6 +56,7 @@ public class EditorCell_Property extends EditorCell_Label {
     }
     EditorCell_Property result = new EditorCell_Property(editorContext, modelAccessor, node);
     if (listener != null) {
+      // TODO: specify property name directly - we know it from PropertyAccessor
       addPropertyDependenciesToEditor(listener, result);
     }
     return result;
@@ -57,13 +64,14 @@ public class EditorCell_Property extends EditorCell_Label {
 
   private static void addPropertyDependenciesToEditor(NodeReadAccessInEditorListener listener, EditorCell_Property result) {
     for (Pair<SNodeReference, String> pair : listener.popCleanlyReadAccessedProperties()) {
-      result.getEditor().addCellDependentOnNodeProperty(result, pair);
+      result.getEditorComponent().getUpdater().getCurrentUpdateSession().registerCleanDependency(result, pair);
     }
   }
 
   @Override
   public void synchronizeViewWithModel() {
     String text = myModelAccessor.getText();
+    myLastModelText = text;
     setErrorState(!isValidText(text));
     setText(text);
   }
@@ -72,66 +80,87 @@ public class EditorCell_Property extends EditorCell_Label {
   public void setSelected(boolean selected) {
     boolean oldSelected = isSelected();
     super.setSelected(selected);
-    if (oldSelected && !selected && myModelAccessor instanceof TransactionalModelAccessor) {
+    if (oldSelected && !selected && isTransactional()) {
+      final Runnable commitCommand = new Runnable() {
+        @Override
+        public void run() {
+          commit();
+        }
+      };
       if (myCommitInCommand) {
-        ModelAccess.instance().runCommandInEDT(new Runnable() {
-          @Override
-          public void run() {
-            commit();
-          }
-        }, getOperationContext().getProject());
+        getModelAccess().executeCommandInEDT(commitCommand);
       } else {
-        ModelAccess.instance().runWriteInEDT(new Runnable() {
-          @Override
-          public void run() {
-            commit();
-          }
-        });
+        getModelAccess().runWriteInEDT(commitCommand);
       }
     }
   }
 
+  public boolean hasUncommittedValue() {
+    if (!isTransactional()) {
+      return false;
+    }
+
+    TransactionalModelAccessor transactionalModelAccessor = (TransactionalModelAccessor) myModelAccessor;
+    return transactionalModelAccessor.hasValueToCommit();
+  }
+
   /**
    * should be executed inside write action
+   *
+   * @return true if new value was committed to model / false if nothing was changed
    */
-  public void commit() {
-    assert ModelAccess.instance().canWrite();
+  public boolean commit() {
+    getModelAccess().checkWriteAccess();
     // a solution for MPS-13531
     // better solution is to redispatch all currently waiting EDT commands inside MPSProject.dispose() method
     // currently not available - not possible to redispatch all waiting commands from AWT Thread.
-    if (jetbrains.mps.util.SNodeOperations.isDisposed(getSNode())) {
-      return;
+    if (!SNodeUtil.isAccessible(getSNode(), getContext().getRepository())) {
+      return false;
     }
-    if (myCommitInProgress) return;
+    if (myCommitInProgress) {
+      return false;
+    }
     myCommitInProgress = true;
     try {
-      if (myModelAccessor instanceof TransactionalModelAccessor) {
-        ((TransactionalModelAccessor) myModelAccessor).commit();
-        synchronizeViewWithModel();
+      boolean result = false;
+      if (isTransactional()) {
+        TransactionalModelAccessor transactionalModelAccessor = (TransactionalModelAccessor) myModelAccessor;
+        if (transactionalModelAccessor.hasValueToCommit()) {
+          transactionalModelAccessor.commit();
+          result = true;
+        }
         getEditor().relayout();
+        return result;
       }
     } finally {
       myCommitInProgress = false;
     }
+    return false;
   }
 
   @Override
   public void changeText(String text) {
     super.changeText(text);
 
-    if (!isValidText(text) && isValidText(IntelligentInputUtil.trimLeft(text))) {
-      text = IntelligentInputUtil.trimLeft(text);
-    }
-
     if (isValidText(text) && isEditable()) {
       myModelAccessor.setText(text);
+      synchronizeViewWithModel();
+      return;
+    }
+
+    if (isTransactional()) {
+      ((TransactionalModelAccessor) myModelAccessor).resetUncommittedValue();
     }
     setErrorState(!isValidText(text));
   }
 
+  public String getLastModelText() {
+    return myLastModelText;
+  }
+
   @Override
   public boolean isValidText(final String text) {
-    return ModelAccess.instance().runReadAction(new Computable<Boolean>() {
+    return new ModelAccessHelper(getModelAccess()).runReadAction(new Computable<Boolean>() {
       @Override
       public Boolean compute() {
         return myModelAccessor.isValidText(text);
@@ -142,7 +171,7 @@ public class EditorCell_Property extends EditorCell_Label {
   @Override
   public SubstituteInfo getSubstituteInfo() {
     final SubstituteInfo substituteInfo = super.getSubstituteInfo();
-    return ModelAccess.instance().runReadAction(new Computable<SubstituteInfo>() {
+    return new ModelAccessHelper(getModelAccess()).runReadAction(new Computable<SubstituteInfo>() {
       @Override
       public SubstituteInfo compute() {
         if (substituteInfo != null) {
@@ -161,9 +190,37 @@ public class EditorCell_Property extends EditorCell_Label {
     myCommitInCommand = commit;
   }
 
-
-  public static interface SynchronizationListener {
-    public void cellSynchronizedViewWithModel(EditorCell_Property editorCell_property);
+  @Override
+  public void synchronize() {
+    synchronizeViewWithModel();
   }
 
+  @Override
+  public boolean canBeSynchronized() {
+    return false;
+  }
+
+  private ModelAccess getModelAccess() {
+    return getContext().getRepository().getModelAccess();
+  }
+
+  private boolean isTransactional() {
+    return myModelAccessor instanceof TransactionalModelAccessor;
+  }
+
+  @Override
+  public void onAdd() {
+    super.onAdd();
+    if (isTransactional()) {
+      getEditor().getCellTracker().addTransactionalCell(this);
+    }
+  }
+
+  @Override
+  public void onRemove() {
+    if (isTransactional()) {
+      getEditor().getCellTracker().removeTransactionalCell(this);
+    }
+    super.onRemove();
+  }
 }

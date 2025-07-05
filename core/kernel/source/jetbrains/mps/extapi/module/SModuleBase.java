@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,36 +16,38 @@
 package jetbrains.mps.extapi.module;
 
 import jetbrains.mps.extapi.model.SModelBase;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.smodel.DisposedRepository;
 import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleListener;
+import org.jetbrains.mps.openapi.module.SModuleListenerBase;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public abstract class SModuleBase implements SModule {
-
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(SModuleBase.class));
+  private static final Logger LOG = LogManager.getLogger(SModuleBase.class);
+  public static final Comparator<SModel> MODEL_BY_NAME_COMPARATOR = (m1, m2) -> m1.getName().getValue().compareTo(m2.getName().getValue());
 
   private volatile SRepository myRepository = null;
 
-  private List<SModuleListener> myListeners = new CopyOnWriteArrayList<SModuleListener>();
+  private List<SModuleListener> myListeners = new CopyOnWriteArrayList<>();
 
   private final Object LOCK = new Object();
-  private final Set<SModelBase> myModels = new LinkedHashSet<SModelBase>();
-  private final ConcurrentMap<SModelId, SModel> myIdToModelMap = new ConcurrentHashMap<SModelId, SModel>();
+  private final Set<SModelBase> myModels = new TreeSet<>(MODEL_BY_NAME_COMPARATOR);
+  private final ConcurrentMap<SModelId, SModel> myIdToModelMap = new ConcurrentHashMap<>();
 
   protected SModuleBase() {
   }
@@ -60,11 +62,12 @@ public abstract class SModuleBase implements SModule {
   }
 
   @Override
+  @NotNull
   public final List<SModel> getModels() {
 //    TODO assertCanRead();
 
     synchronized (LOCK) {
-      return new ArrayList<SModel>(myModels);
+      return new ArrayList<>(myModels);
     }
   }
 
@@ -89,10 +92,11 @@ public abstract class SModuleBase implements SModule {
       assertCanChange();
 
       for (SModelBase m : myModels) {
-        m.dispose();
+        m.detach();
       }
       myModels.clear();
-      myRepository = DisposedRepository.INSTANCE;
+      myIdToModelMap.clear();
+      myRepository = null;
     }
   }
 
@@ -112,8 +116,26 @@ public abstract class SModuleBase implements SModule {
     for (SModuleListener listener : myListeners) {
       try {
         listener.moduleChanged(this);
+      } catch (VirtualMachineError e) {
+        throw e;
       } catch (Throwable t) {
-        LOG.error(t);
+        LOG.error("", t);
+      }
+    }
+  }
+
+  protected final void fireModuleRenamed(SModuleReference oldRef) {
+    assertCanChange();
+
+    for (SModuleListener listener : myListeners) {
+      try {
+        if (listener instanceof SModuleListenerBase) {
+          ((SModuleListenerBase) listener).moduleRenamed(this, oldRef);
+        }
+      } catch (VirtualMachineError e) {
+        throw e;
+      } catch (Throwable t) {
+        LOG.error("", t);
       }
     }
   }
@@ -124,8 +146,10 @@ public abstract class SModuleBase implements SModule {
     for (SModuleListener listener : myListeners) {
       try {
         listener.modelAdded(this, model);
+      } catch (VirtualMachineError e) {
+        throw e;
       } catch (Throwable t) {
-        LOG.error(t);
+        LOG.error("", t);
       }
     }
   }
@@ -136,8 +160,10 @@ public abstract class SModuleBase implements SModule {
     for (SModuleListener listener : myListeners) {
       try {
         listener.beforeModelRemoved(this, model);
+      } catch (VirtualMachineError e) {
+        throw e;
       } catch (Throwable t) {
-        LOG.error(t);
+        LOG.error("", t);
       }
     }
   }
@@ -148,8 +174,10 @@ public abstract class SModuleBase implements SModule {
     for (SModuleListener listener : myListeners) {
       try {
         listener.modelRemoved(this, model);
+      } catch (VirtualMachineError e) {
+        throw e;
       } catch (Throwable t) {
-        LOG.error(t);
+        LOG.error("", t);
       }
     }
   }
@@ -167,8 +195,10 @@ public abstract class SModuleBase implements SModule {
     for (SModuleListener listener : myListeners) {
       try {
         listener.beforeModelRenamed(this, model, newName);
+      } catch (VirtualMachineError e) {
+        throw e;
       } catch (Throwable t) {
-        LOG.error(t);
+        LOG.error("", t);
       }
     }
   }
@@ -186,23 +216,31 @@ public abstract class SModuleBase implements SModule {
     for (SModuleListener listener : myListeners) {
       try {
         listener.modelRenamed(this, model, oldName);
+      } catch (VirtualMachineError e) {
+        throw e;
       } catch (Throwable t) {
-        LOG.error(t);
+        LOG.error("", t);
       }
     }
   }
 
   @Override
-  public final SModel getModel(SModelId id) {
+  public SModel getModel(SModelId id) {
+    // XXX used to be final, which looks right, but there's scenario with TransientModule which needs to answer
+    // models not yet published (i.e. resolve references to proxy models, see StaticReference#getTargetSModel())
+    // Re-consider once understand better if TransientModelsModule should indeed be that special, and whether we need
+    // new resolveInDependencies(SModelReference)
     assertCanRead();
 
     return myIdToModelMap.get(id);
   }
 
   public void registerModel(SModelBase model) {
-    assertCanRead();
+    assertCanChange();
     if (model.getModule() != null && model.getModule() != this) {
-      throw new IllegalArgumentException("Model `" + model.getModelName() + "' is already registered elsewhere");
+      throw new IllegalArgumentException(String.format("Model '%s' is already registered in the module: '%s', " +
+                                                       "when trying to register it in '%s'.",
+                                                       model.getModelName(), model.getModule(), this));
     }
 
     synchronized (LOCK) {
@@ -228,18 +266,16 @@ public abstract class SModuleBase implements SModule {
     synchronized (LOCK) {
       myIdToModelMap.remove(reference.getModelId());
       myModels.remove(model);
-      model.dispose();
-
+      model.detach();
     }
     fireModelRemoved(reference);
   }
 
   protected void assertCanRead() {
-// TODO enable
-//    SRepository repository = myRepository;
-//    if (repository != null) {
-//      repository.getModelAccess().checkReadAccess();
-//    }
+    final SRepository repository = myRepository;
+    if (repository != null) {
+      repository.getModelAccess().checkReadAccess();
+    }
   }
 
   protected void assertCanChange() {

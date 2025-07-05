@@ -10,18 +10,20 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.EditorComponent;
-import jetbrains.mps.nodeEditor.cells.CellInfo;
+import jetbrains.mps.openapi.editor.cells.CellInfo;
 import jetbrains.mps.openapi.editor.selection.SelectionStoreException;
 import jetbrains.mps.nodeEditor.selection.SelectionRestoreException;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.selection.SelectionInfoImpl;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.selection.SelectionInfo;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import com.intellij.ide.CopyPasteManagerEx;
 import jetbrains.mps.ide.datatransfer.SNodeTransferable;
 import java.util.Collections;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.TextBuilder;
+import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 
@@ -30,7 +32,6 @@ public class TableColumnSelection extends AbstractMultipleSelection {
   private int myColumnNumber;
   private EditorCell_Table myTableCell;
   private static Map<CellActionType, _FunctionTypes._void_P0_E0> actionMap = MapSequence.fromMap(new HashMap<CellActionType, _FunctionTypes._void_P0_E0>());
-
   public TableColumnSelection(@NotNull EditorComponent editorComponent, Map<String, String> properties, CellInfo cellInfo) throws SelectionStoreException, SelectionRestoreException {
     super(editorComponent);
     if (cellInfo == null) {
@@ -49,24 +50,29 @@ public class TableColumnSelection extends AbstractMultipleSelection {
     if (myColumnNumber >= myTableCell.getColumnCount()) {
       throw new SelectionRestoreException();
     }
-    initSelectedCells();
+    try {
+      initSelectedCells();
+    } catch (ColumnNotFoundException e) {
+      throw new SelectionRestoreException();
+    }
     initActionMap();
   }
-
   public TableColumnSelection(@NotNull EditorComponent editorComponent, @NotNull EditorCell_Table tableCell, int columnNumber) {
     super(editorComponent);
     myTableCell = tableCell;
     myColumnNumber = columnNumber;
     assert myColumnNumber >= 0;
     assert myColumnNumber < myTableCell.getColumnCount();
-    initSelectedCells();
+    try {
+      initSelectedCells();
+    } catch (ColumnNotFoundException e) {
+      assert false : "Column " + e.getIndex() + " was not found in one of table rows";
+    }
     initActionMap();
   }
-
-  private void initSelectedCells() {
+  private void initSelectedCells() throws ColumnNotFoundException {
     setSelectedCells(myTableCell.getColumnCells(myColumnNumber));
   }
-
   private void initActionMap() {
     MapSequence.fromMap(actionMap).put(CellActionType.SELECT_UP, new _FunctionTypes._void_P0_E0() {
       public void invoke() {
@@ -81,7 +87,6 @@ public class TableColumnSelection extends AbstractMultipleSelection {
     });
     MapSequence.fromMap(actionMap).put(CellActionType.PASTE, null);
   }
-
   @Override
   public boolean isSame(Selection another) {
     if (this == another) {
@@ -96,20 +101,17 @@ public class TableColumnSelection extends AbstractMultipleSelection {
     }
     return myColumnNumber == that.myColumnNumber;
   }
-
   @Override
   public SelectionInfo getSelectionInfo() throws SelectionStoreException {
-    SelectionInfoImpl selectionInto = new SelectionInfoImpl(this.getClass().getName(), "jetbrains.mps.lang.editor.table.runtime");
+    SelectionInfoImpl selectionInto = new SelectionInfoImpl(this.getClass().getName(), PersistenceFacade.getInstance().createModuleReference("258bd2f6-0d02-411d-86b2-5a5ea083e6d2(jetbrains.mps.lang.editor.table.runtime)"));
     selectionInto.setCellInfo(myTableCell.getCellInfo());
     selectionInto.getPropertiesMap().put(COLUMN_NUMBER_PROPERTY, Integer.toString(myColumnNumber));
     return selectionInto;
   }
-
   @Override
   public boolean canExecuteAction(CellActionType type) {
     return MapSequence.fromMap(actionMap).containsKey(type) || super.canExecuteAction(type);
   }
-
   @Override
   public void executeAction(CellActionType type) {
     if (MapSequence.fromMap(actionMap).containsKey(type)) {
@@ -120,19 +122,16 @@ public class TableColumnSelection extends AbstractMultipleSelection {
       super.executeAction(type);
     }
   }
-
   private void copyNodes() {
     CopyPasteManagerEx.getInstanceEx().setContents(new SNodeTransferable(Collections.<SNode>emptyList(), renderText().getText()));
   }
-
   private TextBuilder renderText() {
-    TextBuilder result = jetbrains.mps.nodeEditor.text.TextBuilder.getEmptyTextBuilder();
+    TextBuilder result = new TextBuilderImpl();
     for (EditorCell cell : getSelectedCells()) {
       result = result.appendToTheBottom(cell.renderText());
     }
     return result;
   }
-
   private void selectUp() {
     EditorCell cell = getCellToSelectUp();
     if (cell == null) {
@@ -141,7 +140,6 @@ public class TableColumnSelection extends AbstractMultipleSelection {
     SelectionManager selectionManager = getEditorComponent().getSelectionManager();
     selectionManager.pushSelection(selectionManager.createSelection(cell));
   }
-
   private EditorCell getCellToSelectUp() {
     for (EditorCell_Collection cell = myTableCell; cell != null; cell = cell.getParent()) {
       if (cell.isSelectable()) {

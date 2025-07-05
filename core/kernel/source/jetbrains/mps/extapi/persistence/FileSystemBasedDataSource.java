@@ -15,15 +15,30 @@
  */
 package jetbrains.mps.extapi.persistence;
 
+import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 
 import java.util.Collection;
 
 /**
- * evgeny, 11/4/12
+ * This kind of data source describes a location within physical file system.
+ * For example it can be a folder or a single file or a set of folders.
+ *
+ * TODO I would rather have a single implementor of this
+ *
+ * @author evgeny, apyshkin
+ * @since 11/4/12
  */
-public interface FileSystemBasedDataSource extends DataSource {
+public interface FileSystemBasedDataSource extends DataSource, DisposableDataSource {
 
-  Collection<IFile> getAffectedFiles();
+  /**
+   * @return collection of files (or folders) which comprise a set of source paths (!) for this DataSource
+   * CONTRACT:
+   * Minimality:
+   * 1. If a 'file' is in the result then 'file.getParent()' could not be among resulting files
+   * 2. All the files in the directory could not be there (the parent directory as a whole would be returned instead)
+   */
+  @NotNull Collection<IFile> getAffectedFiles();
 }

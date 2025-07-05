@@ -1,70 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="DFABuilders.java" startLine="8" startPosition="0" endLine="17" endPosition="0" unitName="jetbrains.mps.lang.dataFlow.dataFlow.DFABuilders" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <root>
+    <file name="DataFlowAspectDescriptorImpl.java">
+      <unit at="15,0,38,0" name="jetbrains.mps.lang.dataFlow.dataFlow.DataFlowAspectDescriptorImpl" />
+    </file>
+  </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590378(jetbrains.mps.lang.dataFlow.dataFlow)/1207048012942">
-    <nodeInfo nodeId="1207048017274" fileName="EmitCodeForStatement_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="104" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1207048012942" fileName="EmitCodeForStatement_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="EmitCodeForStatement_DataFlow#()V" />
-    <nodeInfo nodeId="1207048012942" fileName="EmitCodeForStatement_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="1207048012942" fileName="EmitCodeForStatement_DataFlow.java" startLine="12" startPosition="42" endLine="12" endPosition="42" />
-    <scopeInfo nodeId="1207048012944" fileName="EmitCodeForStatement_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="104" />
-    <scopeInfo nodeId="1207048012942" fileName="EmitCodeForStatement_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="1207048012942" fileName="EmitCodeForStatement_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0">
-      <varInfo nodeId="1207048012942" varName="_context" />
-      <varInfo nodeId="1207048012942" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1207048012942" fileName="EmitCodeForStatement_DataFlow.java" startLine="11" startPosition="0" endLine="19" endPosition="0" unitName="jetbrains.mps.lang.dataFlow.dataFlow.EmitCodeForStatement_DataFlow" />
+    <file name="EmitCodeForStatement_DataFlow.java">
+      <node id="1207048017274" at="12,60,13,211" concept="0" />
+      <node id="1207048012942" at="12,0,15,0" concept="1" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1207048012944" at="12,60,13,211" />
+      <scope id="1207048012942" at="12,0,15,0">
+        <var name="_context" id="1207048012942" />
+      </scope>
+      <unit id="1207048012942" at="11,0,16,0" name="jetbrains.mps.lang.dataFlow.dataFlow.EmitCodeForStatement_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590378(jetbrains.mps.lang.dataFlow.dataFlow)/1207048173150">
-    <nodeInfo nodeId="1207048174919" fileName="EmitMayBeUnreachable_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="110" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1207048173150" fileName="EmitMayBeUnreachable_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="EmitMayBeUnreachable_DataFlow#()V" />
-    <nodeInfo nodeId="1207048173150" fileName="EmitMayBeUnreachable_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="1207048173150" fileName="EmitMayBeUnreachable_DataFlow.java" startLine="12" startPosition="42" endLine="12" endPosition="42" />
-    <scopeInfo nodeId="1207048173152" fileName="EmitMayBeUnreachable_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="110" />
-    <scopeInfo nodeId="1207048173150" fileName="EmitMayBeUnreachable_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="1207048173150" fileName="EmitMayBeUnreachable_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0">
-      <varInfo nodeId="1207048173150" varName="_context" />
-      <varInfo nodeId="1207048173150" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1207048173150" fileName="EmitMayBeUnreachable_DataFlow.java" startLine="11" startPosition="0" endLine="19" endPosition="0" unitName="jetbrains.mps.lang.dataFlow.dataFlow.EmitMayBeUnreachable_DataFlow" />
+    <file name="EmitMayBeUnreachable_DataFlow.java">
+      <node id="1207048174919" at="12,60,13,217" concept="0" />
+      <node id="1207048173150" at="12,0,15,0" concept="1" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1207048173152" at="12,60,13,217" />
+      <scope id="1207048173150" at="12,0,15,0">
+        <var name="_context" id="1207048173150" />
+      </scope>
+      <unit id="1207048173150" at="11,0,16,0" name="jetbrains.mps.lang.dataFlow.dataFlow.EmitMayBeUnreachable_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590378(jetbrains.mps.lang.dataFlow.dataFlow)/1207048192521">
-    <nodeInfo nodeId="1207048194931" fileName="BaseEmitVariableStatement_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="105" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1207048192521" fileName="BaseEmitVariableStatement_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="BaseEmitVariableStatement_DataFlow#()V" />
-    <nodeInfo nodeId="1207048192521" fileName="BaseEmitVariableStatement_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="1207048192521" fileName="BaseEmitVariableStatement_DataFlow.java" startLine="12" startPosition="47" endLine="12" endPosition="47" />
-    <scopeInfo nodeId="1207048192523" fileName="BaseEmitVariableStatement_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="105" />
-    <scopeInfo nodeId="1207048192521" fileName="BaseEmitVariableStatement_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="1207048192521" fileName="BaseEmitVariableStatement_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0">
-      <varInfo nodeId="1207048192521" varName="_context" />
-      <varInfo nodeId="1207048192521" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1207048192521" fileName="BaseEmitVariableStatement_DataFlow.java" startLine="11" startPosition="0" endLine="19" endPosition="0" unitName="jetbrains.mps.lang.dataFlow.dataFlow.BaseEmitVariableStatement_DataFlow" />
+    <file name="BaseEmitVariableStatement_DataFlow.java">
+      <node id="1207048194931" at="12,60,13,212" concept="0" />
+      <node id="1207048192521" at="12,0,15,0" concept="1" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1207048192523" at="12,60,13,212" />
+      <scope id="1207048192521" at="12,0,15,0">
+        <var name="_context" id="1207048192521" />
+      </scope>
+      <unit id="1207048192521" at="11,0,16,0" name="jetbrains.mps.lang.dataFlow.dataFlow.BaseEmitVariableStatement_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590378(jetbrains.mps.lang.dataFlow.dataFlow)/1207048243596">
-    <nodeInfo nodeId="1207048246552" fileName="BaseEmitJumpStatement_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="103" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1207048243596" fileName="BaseEmitJumpStatement_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="BaseEmitJumpStatement_DataFlow#()V" />
-    <nodeInfo nodeId="1207048243596" fileName="BaseEmitJumpStatement_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="1207048243596" fileName="BaseEmitJumpStatement_DataFlow.java" startLine="12" startPosition="43" endLine="12" endPosition="43" />
-    <scopeInfo nodeId="1207048243598" fileName="BaseEmitJumpStatement_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="103" />
-    <scopeInfo nodeId="1207048243596" fileName="BaseEmitJumpStatement_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="1207048243596" fileName="BaseEmitJumpStatement_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0">
-      <varInfo nodeId="1207048243596" varName="_context" />
-      <varInfo nodeId="1207048243596" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1207048243596" fileName="BaseEmitJumpStatement_DataFlow.java" startLine="11" startPosition="0" endLine="19" endPosition="0" unitName="jetbrains.mps.lang.dataFlow.dataFlow.BaseEmitJumpStatement_DataFlow" />
+    <file name="BaseEmitJumpStatement_DataFlow.java">
+      <node id="1207048246552" at="12,60,13,210" concept="0" />
+      <node id="1207048243596" at="12,0,15,0" concept="1" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1207048243598" at="12,60,13,210" />
+      <scope id="1207048243596" at="12,0,15,0">
+        <var name="_context" id="1207048243596" />
+      </scope>
+      <unit id="1207048243596" at="11,0,16,0" name="jetbrains.mps.lang.dataFlow.dataFlow.BaseEmitJumpStatement_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590378(jetbrains.mps.lang.dataFlow.dataFlow)/1207048273258">
-    <nodeInfo nodeId="1207048275699" fileName="RelativePosition_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="107" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1207048273258" fileName="RelativePosition_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="RelativePosition_DataFlow#()V" />
-    <nodeInfo nodeId="1207048273258" fileName="RelativePosition_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="1207048273258" fileName="RelativePosition_DataFlow.java" startLine="12" startPosition="38" endLine="12" endPosition="38" />
-    <scopeInfo nodeId="1207048273260" fileName="RelativePosition_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="107" />
-    <scopeInfo nodeId="1207048273258" fileName="RelativePosition_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="1207048273258" fileName="RelativePosition_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0">
-      <varInfo nodeId="1207048273258" varName="_context" />
-      <varInfo nodeId="1207048273258" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1207048273258" fileName="RelativePosition_DataFlow.java" startLine="11" startPosition="0" endLine="19" endPosition="0" unitName="jetbrains.mps.lang.dataFlow.dataFlow.RelativePosition_DataFlow" />
+    <file name="RelativePosition_DataFlow.java">
+      <node id="1207048275699" at="12,60,13,214" concept="0" />
+      <node id="1207048273258" at="12,0,15,0" concept="1" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1207048273260" at="12,60,13,214" />
+      <scope id="1207048273258" at="12,0,15,0">
+        <var name="_context" id="1207048273258" />
+      </scope>
+      <unit id="1207048273258" at="11,0,16,0" name="jetbrains.mps.lang.dataFlow.dataFlow.RelativePosition_DataFlow" />
+    </file>
   </root>
-</debugInfo>
+</debug-info>
 

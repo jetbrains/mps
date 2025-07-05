@@ -8,37 +8,58 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 
 public class ElseifClause_DeletePrevious {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new ElseifClause_DeletePrevious.ElseifClause_DeletePrevious_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new ElseifClause_DeletePrevious.ElseifClause_DeletePrevious_BACKSPACE(node));
   }
-
   public static class ElseifClause_DeletePrevious_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public ElseifClause_DeletePrevious_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public String getDescriptionText() {
       return "delete previous if there is one or current ";
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
       if ((SNodeOperations.getPrevSibling(node) != null)) {
         SNodeOperations.deleteNode(SNodeOperations.getPrevSibling(node));
       } else {
-        SNode ifStatement = SNodeOperations.cast(SNodeOperations.getParent(node), "jetbrains.mps.baseLanguage.structure.IfStatement");
-        SNode condition = SLinkOperations.getTarget(ifStatement, "condition", true);
-        SNodeOperations.replaceWithAnother(condition, SNodeOperations.copyNode(SLinkOperations.getTarget(node, "condition", true)));
-        SNode body = SLinkOperations.getTarget(ifStatement, "ifTrue", true);
-        SNodeOperations.replaceWithAnother(body, SNodeOperations.copyNode(SLinkOperations.getTarget(node, "statementList", true)));
+        SNode ifStatement = SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
+        SNode condition = SLinkOperations.getTarget(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition"));
+        SNodeOperations.replaceWithAnother(condition, SNodeOperations.copyNode(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition"))));
+        SNode body = SLinkOperations.getTarget(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue"));
+        SNodeOperations.replaceWithAnother(body, SNodeOperations.copyNode(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0f8fdL, "statementList"))));
+        SNodeOperations.deleteNode(node);
+      }
+    }
+  }
+  public static class ElseifClause_DeletePrevious_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public ElseifClause_DeletePrevious_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public String getDescriptionText() {
+      return "delete previous if there is one or current ";
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      if ((SNodeOperations.getPrevSibling(node) != null)) {
+        SNodeOperations.deleteNode(SNodeOperations.getPrevSibling(node));
+      } else {
+        SNode ifStatement = SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
+        SNode condition = SLinkOperations.getTarget(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition"));
+        SNodeOperations.replaceWithAnother(condition, SNodeOperations.copyNode(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition"))));
+        SNode body = SLinkOperations.getTarget(ifStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue"));
+        SNodeOperations.replaceWithAnother(body, SNodeOperations.copyNode(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0f8fdL, "statementList"))));
         SNodeOperations.deleteNode(node);
       }
     }

@@ -7,28 +7,22 @@ import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
-import org.apache.log4j.Priority;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import java.awt.Frame;
+import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import com.intellij.featureStatistics.FeatureUsageTracker;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.kernel.model.SModelUtil;
-import javax.swing.JOptionPane;
-import java.awt.Frame;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
-import jetbrains.mps.project.MPSProject;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.IScope;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
-import jetbrains.mps.smodel.IOperationContext;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.LanguageAspect;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.Language;
 
 public class GoToEditorDeclaration_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.Nodes.Editor;
@@ -36,110 +30,78 @@ public class GoToEditorDeclaration_Action extends BaseAction {
   public GoToEditorDeclaration_Action() {
     super("Editor Declaration", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(true);
+    this.setExecuteOutsideCommand(false);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getConceptDeclaration(((SNode) MapSequence.fromMap(_params).get("node"))), "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    return GoToEditorDeclaration_Action.this.findNodeEditorDeclaration(((SNode) MapSequence.fromMap(_params).get("node")), _params) != null;
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        boolean enabled = this.isApplicable(event, _params);
-        this.setEnabledState(event.getPresentation(), enabled);
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "GoToEditorDeclaration", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("project", event.getData(MPSCommonDataKeys.MPS_PROJECT));
-    if (MapSequence.fromMap(_params).get("project") == null) {
-      return false;
+    {
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      MapSequence.fromMap(_params).put("project", p);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("frame", event.getData(MPSCommonDataKeys.FRAME));
-    if (MapSequence.fromMap(_params).get("frame") == null) {
-      return false;
+    {
+      Frame p = event.getData(MPSCommonDataKeys.FRAME);
+      MapSequence.fromMap(_params).put("frame", p);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("editor", event.getData(MPSEditorDataKeys.MPS_EDITOR));
-    if (MapSequence.fromMap(_params).get("editor") == null) {
-      return false;
-    }
-    MapSequence.fromMap(_params).put("context", event.getData(MPSCommonDataKeys.OPERATION_CONTEXT));
-    if (MapSequence.fromMap(_params).get("context") == null) {
-      return false;
-    }
-    MapSequence.fromMap(_params).put("scope", event.getData(MPSCommonDataKeys.SCOPE));
-    if (MapSequence.fromMap(_params).get("scope") == null) {
-      return false;
+    {
+      Editor p = event.getData(MPSEditorDataKeys.MPS_EDITOR);
+      MapSequence.fromMap(_params).put("editor", p);
+      if (p == null) {
+        return false;
+      }
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null) {
-      }
       MapSequence.fromMap(_params).put("node", node);
-    }
-    if (MapSequence.fromMap(_params).get("node") == null) {
-      return false;
+      if (node == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.editorDeclaration");
-      final Language l = ModelAccess.instance().runReadAction(new Computable<Language>() {
-        public Language compute() {
-          return SModelUtil.getDeclaringLanguage(SNodeOperations.getConceptDeclaration(((SNode) MapSequence.fromMap(_params).get("node"))));
-        }
-      });
-      if (l == null) {
-        JOptionPane.showMessageDialog(((Frame) MapSequence.fromMap(_params).get("frame")), "Couldn't find declaring language for concept " + BehaviorReflection.invokeVirtual(String.class, SNodeOperations.getConceptDeclaration(((SNode) MapSequence.fromMap(_params).get("node"))), "virtual_getFqName_1213877404258", new Object[]{}), "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-      }
-      org.jetbrains.mps.openapi.module.ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
-      final SNode[] cd = new SNode[]{null};
-      modelAccess.runReadAction(new Runnable() {
-        public void run() {
-          cd[0] = SNodeOperations.getConceptDeclaration(((SNode) MapSequence.fromMap(_params).get("node")));
-        }
-      });
-      SNode conceptDeclaration = cd[0];
-      SModel editorModel = GoToEditorDeclarationHelper.getOrCreateEditorAspect(l, conceptDeclaration, ((IScope) MapSequence.fromMap(_params).get("scope")));
-      if (editorModel == null) {
-        return;
-      }
-
-      final SNode editorNode = GoToEditorDeclarationHelper.getOrCreateEditorForConcept(editorModel, conceptDeclaration, ((SNode) MapSequence.fromMap(_params).get("node")), ((IScope) MapSequence.fromMap(_params).get("scope")));
-      if (editorNode == null) {
-        return;
-      }
-
-      modelAccess.runWriteInEDT(new Runnable() {
-        public void run() {
-          NavigationSupport.getInstance().openNode(((IOperationContext) MapSequence.fromMap(_params).get("context")), editorNode, true, true);
-          NavigationSupport.getInstance().selectInTree(((IOperationContext) MapSequence.fromMap(_params).get("context")), editorNode, false);
-        }
-      });
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "GoToEditorDeclaration", t);
-      }
-    }
+    FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.editorDeclaration");
+    final SNode editorNode = GoToEditorDeclaration_Action.this.findNodeEditorDeclaration(((SNode) MapSequence.fromMap(_params).get("node")), _params);
+    NavigationSupport.getInstance().openNode(((MPSProject) MapSequence.fromMap(_params).get("project")), editorNode, true, true);
+    NavigationSupport.getInstance().selectInTree(((MPSProject) MapSequence.fromMap(_params).get("project")), editorNode, false);
   }
-
-  protected static Logger LOG = LogManager.getLogger(GoToEditorDeclaration_Action.class);
+  /*package*/ SNode findNodeEditorDeclaration(SNode forNode, final Map<String, Object> _params) {
+    SNodeReference sn = SNodeOperations.getConcept(((SNode) MapSequence.fromMap(_params).get("node"))).getSourceNode();
+    if (sn == null) {
+      return null;
+    }
+    SNode conceptNode = sn.resolve(((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository());
+    if (!(SNodeOperations.isInstanceOf(conceptNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration")))) {
+      return null;
+    }
+    if (!(LanguageAspect.STRUCTURE.is(SNodeOperations.getModel(conceptNode)))) {
+      return null;
+    }
+    SModel editorModel = LanguageAspect.EDITOR.get(((Language) SNodeOperations.getModel(conceptNode).getModule()));
+    if (editorModel == null) {
+      return null;
+    }
+    return GoToEditorDeclarationHelper.findEditorDeclaration(editorModel, conceptNode);
+  }
 }

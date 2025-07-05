@@ -15,7 +15,9 @@
  */
 package jetbrains.mps.openapi.editor.cells;
 
+import jetbrains.mps.openapi.editor.cells.traversal.CellTreeIterable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.util.Condition;
 
 import java.util.ArrayList;
@@ -46,12 +48,9 @@ public class CellTraversalUtil {
       return null;
     }
 
-    Iterator<EditorCell> cellIterator = forward ? parent.iterator() : parent.reverseIterator();
-
-    while (cellIterator.hasNext()) {
-      if (cellIterator.next().equals(cell) && cellIterator.hasNext()) {
-        return cellIterator.next();
-      }
+    Iterator<EditorCell> iterator = parent.iterator(cell, forward);
+    if (iterator.hasNext()) {
+      return iterator.next();
     }
 
     return null;
@@ -69,6 +68,85 @@ public class CellTraversalUtil {
     }
 
     return null;
+  }
+
+  /**
+   * Compares two cells.
+   * Cell which is first is the editor is lesser.
+   * <p/>
+   * Comparing cells must have common parent.
+   * Check getCommonParent(firstCell, secondCell) != null
+   *
+   * @param firstCell  a first cell to be compared.
+   * @param secondCell a second cell to be compared.
+   * @return -1, zero, or 1 as the first cell
+   * is less than, equal to, or greater than the second cell.
+   * @throws java.lang.IllegalArgumentException if the first cell and
+   *                                            the second cell don't have common parent.
+   */
+  public static int compare(@NotNull EditorCell firstCell, @NotNull EditorCell secondCell) {
+    if (firstCell.equals(secondCell)) {
+      return 0;
+    }
+
+    List<EditorCell> firstCellAndParents = new ArrayList<>();
+    EditorCell parent = firstCell;
+
+    while (parent != null) {
+      if (parent.equals(secondCell)) {
+        return 1;
+      }
+      firstCellAndParents.add(parent);
+      parent = parent.getParent();
+    }
+
+    EditorCell_Collection commonParent = secondCell.getParent();
+    EditorCell secondChild = secondCell;
+    while (commonParent != null && !firstCellAndParents.contains(commonParent)) {
+      secondChild = commonParent;
+      commonParent = commonParent.getParent();
+    }
+
+    if (commonParent == null) {
+      throw new IllegalArgumentException(firstCell.toString() + " and " + secondCell.toString() + " don't have common parent");
+    }
+
+    if (commonParent.equals(firstCell)) {
+      return -1;
+    }
+
+    EditorCell firstChild = firstCellAndParents.get(firstCellAndParents.indexOf(commonParent) - 1);
+
+    if (findInNextSiblings(firstChild, secondChild)) {
+      return -1;
+    }
+
+    if (findInNextSiblings(secondChild, firstChild)){
+      return 1;
+    }
+
+
+    for (EditorCell cell : commonParent) {
+      if (cell == firstChild) {
+        return -1;
+      }
+      if (cell == secondChild) {
+        return 1;
+      }
+    }
+
+    return 0;
+  }
+
+  private static boolean findInNextSiblings(EditorCell firstChild, EditorCell secondChild) {
+    EditorCell sibling = firstChild.getNextSibling();
+    while (sibling != null) {
+      if (sibling.equals(secondChild)) {
+        return true;
+      }
+      sibling = sibling.getNextSibling();
+    }
+    return false;
   }
 
   public static EditorCell getNextLeaf(@NotNull EditorCell cell, @NotNull Condition<EditorCell> condition) {
@@ -107,52 +185,22 @@ public class CellTraversalUtil {
     return null;
   }
 
+  @NotNull
   public static EditorCell getFirstLeaf(@NotNull EditorCell cell) {
     if (cell instanceof EditorCell_Collection) {
-      return ((EditorCell_Collection) cell).getCellsCount() > 0 ? getFirstLeaf(((EditorCell_Collection) cell).firstCell()) : cell;
+      return ((EditorCell_Collection) cell).isEmpty() ? cell : getFirstLeaf(((EditorCell_Collection) cell).firstCell());
     } else {
       return cell;
     }
   }
 
+  @NotNull
   public static EditorCell getLastLeaf(@NotNull EditorCell cell) {
     if (cell instanceof EditorCell_Collection) {
-      return ((EditorCell_Collection) cell).getCellsCount() > 0 ? getLastLeaf(((EditorCell_Collection) cell).lastCell()) : cell;
+      return ((EditorCell_Collection) cell).isEmpty() ? cell : getLastLeaf(((EditorCell_Collection) cell).lastCell());
     } else {
       return cell;
     }
-  }
-
-  //first cell and second cell MUST have common parent
-  //check getCommonParent (firstCell, secondCell) != null
-  public static int compare(@NotNull EditorCell firstCell, @NotNull EditorCell secondCell) {
-    if (firstCell.equals(secondCell)) {
-      return 0;
-    }
-    EditorCell parent = getCommonParent(firstCell, secondCell);
-
-    assert parent != null;
-    assert parent instanceof EditorCell_Collection;
-
-    if (parent.equals(firstCell)) {
-      return -1;
-    }
-    if (parent.equals(secondCell)) {
-      return 1;
-    }
-
-
-    for (EditorCell cell : ((EditorCell_Collection) parent)) {
-      if (isAncestor(cell, firstCell) || firstCell.equals(cell)) {
-        return -1;
-      }
-
-      if (isAncestor(cell, secondCell) || secondCell.equals(cell)) {
-        return 1;
-      }
-    }
-    assert false; //this line should not be reached
-    return 0;
   }
 
   public static EditorCell getCommonParent(@NotNull EditorCell firstCell, @NotNull EditorCell secondCell) {
@@ -167,7 +215,7 @@ public class CellTraversalUtil {
   }
 
   public static List<EditorCell> getParents(@NotNull EditorCell cell, boolean includeThis) {
-    List<EditorCell> parents = new ArrayList<EditorCell>();
+    List<EditorCell> parents = new ArrayList<>();
     EditorCell tempCell = includeThis ? cell : cell.getParent();
     while (tempCell != null) {
       parents.add(tempCell);
@@ -179,18 +227,44 @@ public class CellTraversalUtil {
   public static boolean isAncestor(@NotNull EditorCell ancestor, @NotNull EditorCell child) {
     EditorCell_Collection parent = child.getParent();
     while (parent != null) {
-      if (parent.equals(ancestor)) return true;
+      if (parent.equals(ancestor)) {
+        return true;
+      }
       parent = parent.getParent();
     }
     return false;
   }
 
+  public static boolean isAncestorOrEquals(@NotNull EditorCell ancestor, @NotNull EditorCell child) {
+    return ancestor.equals(child) || isAncestor(ancestor, child);
+  }
+
   public static EditorCell_Collection getFoldedParent(@NotNull EditorCell cell) {
     for (EditorCell_Collection parent = cell.getParent(); parent != null; parent = parent.getParent()) {
-      if (parent.isFolded()) {
+      if (parent.isCollapsed()) {
         return parent;
       }
     }
     return null;
+  }
+
+  /**
+   * Returns a {@link CellTreeIterable} that iterates over the subtree of {@code root}, in preorder, starting with {@code start}.
+   *
+   * @param root    the root of the subtree to iterate, {@code null} to iterate the whole tree that {@code start} is part of.
+   * @param start   the first node to visit
+   * @param forward {@code true} to visit children of a cell from first to last, {@code false} for the reverse order.
+   * @return a new instance of {@link CellTreeIterable}
+   */
+  public static CellTreeIterable iterateTree(@Nullable EditorCell root, @NotNull EditorCell start, boolean forward) {
+    return new CellTreeIterable(root, start, forward);
+  }
+
+  @NotNull
+  public static EditorCell getContainingBigCell(@NotNull EditorCell cell) {
+    while (!cell.isBig() && cell.getParent() != null) {
+      cell = cell.getParent();
+    }
+    return cell;
   }
 }

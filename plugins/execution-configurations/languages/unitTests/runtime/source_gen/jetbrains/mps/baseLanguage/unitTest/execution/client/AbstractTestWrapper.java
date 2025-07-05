@@ -5,38 +5,48 @@ package jetbrains.mps.baseLanguage.unitTest.execution.client;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import java.util.List;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.baseLanguage.execution.api.Java_Command;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 
 public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeWrapper<N> {
   @NotNull
   protected final SNodeReference myNodePointer;
   private String myFqName;
+  private final SRepository myRepo;
 
   public AbstractTestWrapper(@NotNull N node) {
     myNodePointer = new SNodePointer(node);
+    myRepo = SNodeOperations.getModel(node).getRepository();
   }
 
+  @Deprecated
+  @ToRemove(version = 3.4)
   public AbstractTestWrapper(@NotNull SNodeReference nodePointer) {
     myNodePointer = nodePointer;
+    myRepo = null;
+  }
+
+  /*package*/ SRepository getRepo() {
+    return myRepo;
   }
 
   @Nullable
   @Override
   public N getNode() {
-    return (N) ((SNodePointer) myNodePointer).resolve(MPSModuleRepository.getInstance());
+    return new ModelAccessHelper(myRepo).runReadAction(new Computable<N>() {
+      public N compute() {
+        return (N) ((SNodePointer) myNodePointer).resolve(myRepo);
+      }
+    });
   }
 
   @NotNull
@@ -55,23 +65,13 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
     }
 
     AbstractTestWrapper that = (AbstractTestWrapper) o;
-    if ((this.myNodePointer != null ?
-      !(((Object) this.myNodePointer).equals(that.myNodePointer)) :
-      that.myNodePointer != null
-    )) {
-      return false;
-    }
-
-    return true;
+    return myNodePointer.equals(that.myNodePointer);
   }
 
   @Override
   public int hashCode() {
     int result = 0;
-    result = 31 * result + ((this.myNodePointer != null ?
-      ((Object) this.myNodePointer).hashCode() :
-      0
-    ));
+    result = 31 * result + ((this.myNodePointer != null ? this.myNodePointer.hashCode() : 0));
     return result;
   }
 
@@ -89,8 +89,8 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
 
   @NotNull
   @Override
-  public Tuples._3<String, List<String>, List<String>> getTestRunParameters() {
-    return getDefaultRunParameters();
+  public TestParameters getTestRunParameters() {
+    return TestParameters.calcDefault(myRepo);
   }
 
   @Override
@@ -99,10 +99,10 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
     if (node == null) {
       return null;
     }
-    if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.core.structure.INamedConcept")) {
-      return SPropertyOperations.getString(SNodeOperations.cast(node, "jetbrains.mps.lang.core.structure.INamedConcept"), "name");
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"))) {
+      return SPropertyOperations.getString(SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
     } else {
-      throw new UnsupportedOperationException("Should override getName for not INamedConcept: " + SNodeOperations.getConceptDeclaration(node));
+      throw new UnsupportedOperationException("Should override getName for not INamedConcept: " + SNodeOperations.getConcept(node));
     }
   }
 
@@ -114,10 +114,10 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
       if (node == null) {
         return null;
       }
-      if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.core.structure.INamedConcept")) {
-        return SPropertyOperations.getString(SNodeOperations.cast(node, "jetbrains.mps.lang.core.structure.INamedConcept"), "name");
+      if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"))) {
+        return SPropertyOperations.getString(SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
       } else {
-        throw new UnsupportedOperationException("Should override getFqName for not INamedConcept: " + SNodeOperations.getConceptDeclaration(node));
+        throw new UnsupportedOperationException("Should override getFqName for not INamedConcept: " + SNodeOperations.getConcept(node));
       }
     }
     return testCase.getFqName() + "." + getName();
@@ -126,17 +126,12 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
   @Override
   public String getCachedFqName() {
     if (myFqName == null) {
-      ModelAccess.instance().runReadAction(new Runnable() {
+      myRepo.getModelAccess().runReadAction(new Runnable() {
         public void run() {
           myFqName = getFqName();
         }
       });
     }
     return myFqName;
-  }
-
-  public static Tuples._3<String, List<String>, List<String>> getDefaultRunParameters() {
-    List<String> startupPath = Java_Command.getClasspath(ModuleRepositoryFacade.getInstance().getModule(PersistenceFacade.getInstance().createModuleReference("8b958198-128f-4136-80e5-ca9777caa869(jetbrains.mps.baseLanguage.unitTest.execution.startup)")));
-    return MultiTuple.<String,List<String>,List<String>>from("jetbrains.mps.baseLanguage.unitTest.execution.server.TestRunner", ListSequence.fromList(new ArrayList<String>()), startupPath);
   }
 }

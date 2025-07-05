@@ -4,7 +4,7 @@ package jetbrains.mps.lang.editor.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum CellKeyMapCaretPolicy {
   ANY_POSITION("ANY_POSITION", null),
@@ -12,16 +12,21 @@ public enum CellKeyMapCaretPolicy {
   LAST_POSITION("LAST_POSITION", "caret_at_last_position"),
   INTERMEDIATE_POSITION("INTERMEDIATE_POSITION", "caret_at_intermediate_position");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private CellKeyMapCaretPolicy(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<CellKeyMapCaretPolicy> getConstants() {
     List<CellKeyMapCaretPolicy> list = ListSequence.fromList(new LinkedList<CellKeyMapCaretPolicy>());
     ListSequence.fromList(list).addElement(CellKeyMapCaretPolicy.ANY_POSITION);
@@ -30,11 +35,9 @@ public enum CellKeyMapCaretPolicy {
     ListSequence.fromList(list).addElement(CellKeyMapCaretPolicy.INTERMEDIATE_POSITION);
     return list;
   }
-
   public static CellKeyMapCaretPolicy getDefault() {
     return CellKeyMapCaretPolicy.ANY_POSITION;
   }
-
   public static CellKeyMapCaretPolicy parseValue(String value) {
     if (value == null) {
       return CellKeyMapCaretPolicy.getDefault();
@@ -52,16 +55,5 @@ public enum CellKeyMapCaretPolicy {
       return CellKeyMapCaretPolicy.INTERMEDIATE_POSITION;
     }
     return CellKeyMapCaretPolicy.getDefault();
-  }
-
-  private String myValue;
-
-  CellKeyMapCaretPolicy(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

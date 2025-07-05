@@ -7,20 +7,20 @@ import jetbrains.mps.generator.template.TemplateQueryContext;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PatternGeneratorUtil {
   public PatternGeneratorUtil() {
   }
-
   public static SNode get(TemplateQueryContext genContext, SNode var) {
     List<SNode> nodes = genContext.getAllOutputNodesByInputNodeAndMappingLabel(var, "patternVarField");
-    if ((int) ListSequence.fromList(nodes).count() == 1) {
+    if (ListSequence.fromList(nodes).count() == 1) {
       return ListSequence.fromList(nodes).first();
     }
-    SNode varPattern = SNodeOperations.getAncestor(var, "jetbrains.mps.lang.pattern.structure.PatternExpression", false, false);
+    SNode varPattern = SNodeOperations.getNodeAncestor(var, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression"), false, false);
     SNode patternClass = genContext.getOutputNodeByInputNodeAndMappingLabel(varPattern, "patternClass");
     for (SNode field : nodes) {
-      if (SNodeOperations.getAncestor(field, "jetbrains.mps.baseLanguage.structure.ClassConcept", false, false) == patternClass) {
+      if (SNodeOperations.getNodeAncestor(field, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false) == patternClass) {
         return field;
       }
     }

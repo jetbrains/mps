@@ -24,12 +24,10 @@
           <value />
         </option>
         <option name="RIGHT_MARGIN" value="160" />
+        <option name="FORMATTER_TAGS_ENABLED" value="true" />
         <XML>
           <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
         </XML>
-        <ADDITIONAL_INDENT_OPTIONS fileType="haml">
-          <option name="INDENT_SIZE" value="2" />
-        </ADDITIONAL_INDENT_OPTIONS>
         <ADDITIONAL_INDENT_OPTIONS fileType="py">
           <option name="USE_TAB_CHARACTER" value="true" />
         </ADDITIONAL_INDENT_OPTIONS>
@@ -44,219 +42,32 @@
           </indentOptions>
         </codeStyleSettings>
         <codeStyleSettings language="JAVA">
-          <option name="ALIGN_MULTILINE_PARAMETERS" value="false" />
+          <option name="ALIGN_MULTILINE_CHAINED_METHODS" value="true" />
+          <option name="ALIGN_MULTILINE_PARAMETERS_IN_CALLS" value="true" />
+          <option name="ALIGN_MULTILINE_BINARY_OPERATION" value="true" />
+          <option name="ALIGN_MULTILINE_ASSIGNMENT" value="true" />
+          <option name="ALIGN_MULTILINE_TERNARY_OPERATION" value="true" />
+          <option name="ALIGN_MULTILINE_THROWS_LIST" value="true" />
+          <option name="ALIGN_MULTILINE_EXTENDS_LIST" value="true" />
+          <option name="ALIGN_MULTILINE_ARRAY_INITIALIZER_EXPRESSION" value="true" />
           <option name="CALL_PARAMETERS_WRAP" value="1" />
           <option name="METHOD_PARAMETERS_WRAP" value="1" />
           <option name="EXTENDS_LIST_WRAP" value="1" />
           <option name="THROWS_LIST_WRAP" value="1" />
+          <option name="METHOD_CALL_CHAIN_WRAP" value="5" />
           <option name="BINARY_OPERATION_WRAP" value="1" />
           <option name="TERNARY_OPERATION_WRAP" value="1" />
           <option name="FOR_STATEMENT_WRAP" value="1" />
           <option name="ASSIGNMENT_WRAP" value="1" />
+          <option name="IF_BRACE_FORCE" value="3" />
+          <option name="DOWHILE_BRACE_FORCE" value="3" />
+          <option name="WHILE_BRACE_FORCE" value="3" />
+          <option name="FOR_BRACE_FORCE" value="3" />
           <indentOptions>
             <option name="INDENT_SIZE" value="2" />
             <option name="CONTINUATION_INDENT_SIZE" value="4" />
+            <option name="USE_RELATIVE_INDENTS" value="true" />
           </indentOptions>
-          <arrangement>
-            <groups>
-              <group>
-                <type>GETTERS_AND_SETTERS</type>
-                <order>KEEP</order>
-              </group>
-            </groups>
-            <rules>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PUBLIC</MODIFIER>
-                    <MODIFIER>STATIC</MODIFIER>
-                    <MODIFIER>FINAL</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PROTECTED</MODIFIER>
-                    <MODIFIER>STATIC</MODIFIER>
-                    <MODIFIER>FINAL</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PACKAGE_PRIVATE</MODIFIER>
-                    <MODIFIER>STATIC</MODIFIER>
-                    <MODIFIER>FINAL</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PRIVATE</MODIFIER>
-                    <MODIFIER>STATIC</MODIFIER>
-                    <MODIFIER>FINAL</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PUBLIC</MODIFIER>
-                    <MODIFIER>STATIC</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PROTECTED</MODIFIER>
-                    <MODIFIER>STATIC</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PACKAGE_PRIVATE</MODIFIER>
-                    <MODIFIER>STATIC</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PRIVATE</MODIFIER>
-                    <MODIFIER>STATIC</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PUBLIC</MODIFIER>
-                    <MODIFIER>FINAL</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PROTECTED</MODIFIER>
-                    <MODIFIER>FINAL</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PACKAGE_PRIVATE</MODIFIER>
-                    <MODIFIER>FINAL</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PRIVATE</MODIFIER>
-                    <MODIFIER>FINAL</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PUBLIC</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PROTECTED</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PACKAGE_PRIVATE</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>FIELD</TYPE>
-                    <MODIFIER>PRIVATE</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <TYPE>FIELD</TYPE>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <TYPE>CONSTRUCTOR</TYPE>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>METHOD</TYPE>
-                    <MODIFIER>STATIC</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <TYPE>METHOD</TYPE>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <TYPE>ENUM</TYPE>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <TYPE>INTERFACE</TYPE>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <AND>
-                    <TYPE>CLASS</TYPE>
-                    <MODIFIER>STATIC</MODIFIER>
-                  </AND>
-                </match>
-              </rule>
-              <rule>
-                <match>
-                  <TYPE>CLASS</TYPE>
-                </match>
-              </rule>
-            </rules>
-          </arrangement>
         </codeStyleSettings>
         <codeStyleSettings language="XML">
           <indentOptions>
@@ -268,4 +79,3 @@
     <option name="USE_PER_PROJECT_SETTINGS" value="true" />
   </component>
 </project>
-

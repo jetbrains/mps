@@ -4,18 +4,22 @@ package jetbrains.mps.execution.demo.pluginSolution.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.execution.lib.NodeByConcept_Configuration;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
 import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.xmlb.XmlSerializer;
 import com.intellij.openapi.util.InvalidDataException;
-import org.apache.log4j.Priority;
+import org.apache.log4j.Level;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.configurations.RunProfileState;
@@ -23,29 +27,27 @@ import com.intellij.execution.Executor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ExecutionException;
 import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.openapi.util.JDOMExternalizable;
+import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
 import com.intellij.execution.runners.ProgramRunner;
 import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 
 public class DemoApplication_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
+  private static final Logger LOG = LogManager.getLogger(DemoApplication_Configuration.class);
   @NotNull
   private DemoApplication_Configuration.MyState myState = new DemoApplication_Configuration.MyState();
-  private NodeByConcept_Configuration myNode = new NodeByConcept_Configuration("jetbrains.mps.execution.demo.structure.SomeConcept", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+  private NodeByConcept_Configuration myNode = new NodeByConcept_Configuration(MetaAdapterFactory.getConcept(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, "jetbrains.mps.execution.demo.structure.SomeConcept"), new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
     public Boolean invoke(SNode node) {
-      return SPropertyOperations.getBoolean(SNodeOperations.cast(node, "jetbrains.mps.execution.demo.structure.SomeConcept"), "valid");
+      return SPropertyOperations.getBoolean(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, "jetbrains.mps.execution.demo.structure.SomeConcept")), MetaAdapterFactory.getProperty(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, 0x446739e63be7cbc4L, "valid"));
     }
   });
-
-  public void checkConfiguration() throws RuntimeConfigurationException {
-    this.getNode().checkConfiguration();
+  public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
+    this.getNode().checkConfiguration(context);
   }
-
   @Override
   public void writeExternal(Element element) throws WriteExternalException {
     element.addContent(XmlSerializer.serialize(myState));
@@ -55,7 +57,6 @@ public class DemoApplication_Configuration extends BaseMpsRunConfiguration imple
       element.addContent(fieldElement);
     }
   }
-
   @Override
   public void readExternal(Element element) throws InvalidDataException {
     if (element == null) {
@@ -73,11 +74,9 @@ public class DemoApplication_Configuration extends BaseMpsRunConfiguration imple
       }
     }
   }
-
   public NodeByConcept_Configuration getNode() {
     return myNode;
   }
-
   @Override
   public DemoApplication_Configuration clone() {
     DemoApplication_Configuration clone = null;
@@ -87,62 +86,58 @@ public class DemoApplication_Configuration extends BaseMpsRunConfiguration imple
       clone.myNode = (NodeByConcept_Configuration) myNode.clone();
       return clone;
     } catch (CloneNotSupportedException ex) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
+      if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("", ex);
       }
     }
     return clone;
   }
-
   public class MyState {
     public MyState() {
     }
-
     @Override
     public Object clone() throws CloneNotSupportedException {
       DemoApplication_Configuration.MyState state = new DemoApplication_Configuration.MyState();
       return state;
     }
   }
-
   public DemoApplication_Configuration(Project project, DemoApplication_Configuration_Factory factory, String name) {
     super(project, factory, name);
   }
-
   @Nullable
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment environment) throws ExecutionException {
     return new DemoApplication_Configuration_RunProfileState(this, executor, environment);
   }
-
   @Nullable
-  public SettingsEditor<JDOMExternalizable> getRunnerSettingsEditor(ProgramRunner runner) {
+  public SettingsEditor<ConfigurationPerRunnerSettings> getRunnerSettingsEditor(ProgramRunner runner) {
     return null;
   }
-
-  public JDOMExternalizable createRunnerSettings(ConfigurationInfoProvider provider) {
+  public ConfigurationPerRunnerSettings createRunnerSettings(ConfigurationInfoProvider provider) {
     return null;
   }
-
   public SettingsEditorEx<DemoApplication_Configuration> getConfigurationEditor() {
     return (SettingsEditorEx<DemoApplication_Configuration>) getEditor();
   }
-
   public DemoApplication_Configuration createCloneTemplate() {
     return (DemoApplication_Configuration) super.clone();
   }
-
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
     return new DemoApplication_Configuration_Editor(myNode.getEditor());
   }
-
+  @Override
+  public void checkConfiguration() throws RuntimeConfigurationException {
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    checkConfiguration(new PersistentConfigurationContext() {
+      public jetbrains.mps.project.Project getProject() {
+        return mpsProject;
+      }
+    });
+  }
   @Override
   public boolean canExecute(String executorId) {
     return DemoApplication_Configuration_RunProfileState.canExecute(executorId);
   }
-
   public Object[] createMakeNodePointersTask() {
-    return new Object[]{ListSequence.fromListAndArray(new ArrayList<SNodeReference>(), this.getNode().getNodePointer())};
+    return new Object[]{ListSequence.fromListAndArray(new ArrayList<SNodeReference>(), this.getNode().getNodeRef())};
   }
-
-  protected static Logger LOG = LogManager.getLogger(DemoApplication_Configuration.class);
 }

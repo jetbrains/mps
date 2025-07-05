@@ -8,12 +8,9 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import org.apache.log4j.Priority;
 import java.io.StringWriter;
 import java.io.PrintWriter;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 
 public class CopyStackTraceToClipboard_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -23,47 +20,24 @@ public class CopyStackTraceToClipboard_Action extends BaseAction {
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(false);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      event.getPresentation().setVisible(MPSCommonDataKeys.EXCEPTION.getData(event.getDataContext()) != null);
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "CopyStackTraceToClipboard", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    event.getPresentation().setVisible(MPSCommonDataKeys.EXCEPTION.getData(event.getDataContext()) != null);
   }
-
-  protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
-    if (!(super.collectActionData(event, _params))) {
-      return false;
-    }
-    return true;
-  }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      Throwable trowable = MPSCommonDataKeys.EXCEPTION.getData(event.getDataContext());
-      if (trowable == null) {
-        return;
-      }
-      trowable.getStackTrace();
-
-      StringWriter writer = new StringWriter();
-      trowable.printStackTrace(new PrintWriter(writer));
-      CopyPasteUtil.copyTextToClipboard(writer.toString());
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "CopyStackTraceToClipboard", t);
-      }
+    Throwable trowable = MPSCommonDataKeys.EXCEPTION.getData(event.getDataContext());
+    if (trowable == null) {
+      return;
     }
-  }
+    trowable.getStackTrace();
 
-  protected static Logger LOG = LogManager.getLogger(CopyStackTraceToClipboard_Action.class);
+    StringWriter writer = new StringWriter();
+    trowable.printStackTrace(new PrintWriter(writer));
+    CopyPasteUtil.copyTextToClipboard(writer.toString());
+  }
 }

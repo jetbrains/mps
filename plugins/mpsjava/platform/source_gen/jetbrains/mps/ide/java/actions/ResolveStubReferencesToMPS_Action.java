@@ -4,20 +4,14 @@ package jetbrains.mps.ide.java.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import org.apache.log4j.Priority;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.ide.java.util.StubResolver;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.progress.EmptyProgressMonitor;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.ide.java.util.StubResolver;
 
 public class ResolveStubReferencesToMPS_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -27,48 +21,31 @@ public class ResolveStubReferencesToMPS_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(false);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
-  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      this.enable(event.getPresentation());
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "ResolveStubReferencesToMPS", t);
-      }
-      this.disable(event.getPresentation());
-    }
-  }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("models", event.getData(MPSCommonDataKeys.MODELS));
-    if (MapSequence.fromMap(_params).get("models") == null) {
-      return false;
+    {
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("context", event.getData(MPSCommonDataKeys.OPERATION_CONTEXT));
-    if (MapSequence.fromMap(_params).get("context") == null) {
-      return false;
+    {
+      List<SModel> p = event.getData(MPSCommonDataKeys.MODELS);
+      if (p == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      new StubResolver().resolveInModels(((List<SModel>) MapSequence.fromMap(_params).get("models")), ((IOperationContext) MapSequence.fromMap(_params).get("context")));
-      ClassLoaderManager.getInstance().reloadAll(new EmptyProgressMonitor());
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "ResolveStubReferencesToMPS", t);
-      }
-    }
+    new StubResolver(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository()).resolveInModels(event.getData(MPSCommonDataKeys.MODELS));
   }
-
-  protected static Logger LOG = LogManager.getLogger(ResolveStubReferencesToMPS_Action.class);
 }

@@ -4,142 +4,659 @@ package jetbrains.mps.baseLanguage.behavior;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
-import org.jetbrains.mps.openapi.language.SConceptRepository;
-import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.editor.EditorParenthesisUtil;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import java.util.ArrayList;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class ParenthesisUtil {
   public ParenthesisUtil() {
   }
 
-  public static SNode createParenthesis(@NotNull SNode expression, boolean opening) {
-    SNode current = expression;
-    SNode prev = expression;
-    while (current != null && !(SNodeOperations.isInstanceOf(current, "jetbrains.mps.baseLanguage.structure.BinaryOperation"))) {
-      prev = current;
-      if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), "jetbrains.mps.baseLanguage.structure.Expression"))) {
-        break;
+  public static SNode createUnmatchedLeftParenthesis(@NotNull SNode leftExpression) {
+    return createUnmatchedParenthesisAndCheckParentParens(leftExpression, false);
+  }
+
+  public static SNode createUnmatchedRightParenthesis(@NotNull SNode rightExpression) {
+    return createUnmatchedParenthesisAndCheckParentParens(rightExpression, true);
+  }
+
+
+  /**
+   * First search up the ancestors for ParenthesisedExpressions.
+   * If found one, break it into two incomplete parentheses and match with one of them.
+   * The continue trying to match the other incomplete parenthesis.
+   * If no more ancestor ParenthesisedExpression is found, continue with the standard matching
+   */
+  private static SNode createUnmatchedParenthesisAndCheckParentParens(@NotNull final SNode myExpression, final boolean completingByRightParen) {
+
+    SNode expressionToProcess = myExpression;
+    SNode expressionToSetFocusOn = null;
+
+    SNode current = findWrappingParens(expressionToProcess);
+    while (current != null) {
+      SNode leftParenOnParens = AttributeOperations.getAttribute(current, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen")));
+      SNode rightParenOnParens = AttributeOperations.getAttribute(current, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen")));
+      boolean propagateNewParensInsteadOfExpr = false;
+
+      SNode replacing = SLinkOperations.getTarget(SNodeOperations.cast(current, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"));
+      SNode rightMostNode = EditorParenthesisUtil.findRightmostOrLeftmostLeafExpression(replacing, true);
+      SNode leftMostNode = EditorParenthesisUtil.findRightmostOrLeftmostLeafExpression(replacing, false);
+
+      if ((completingByRightParen && eq_a65dpo_a0a0a8a5a7_0(expressionToProcess, rightMostNode)) || (!(completingByRightParen) && eq_a65dpo_a0a0a8a5a7(expressionToProcess, leftMostNode))) {
+        propagateNewParensInsteadOfExpr = true;
       }
-      current = SNodeOperations.cast(SNodeOperations.getParent(current), "jetbrains.mps.baseLanguage.structure.Expression");
-    }
-    current = prev;
-    // searching for binary operation 
-    SNode binOp = getBinOp(current, opening);
-    // special cases 
-    if (binOp == null) {
-      SNode parExpr = SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.ParenthesizedExpression", null);
-      SNodeOperations.replaceWithAnother(current, parExpr);
-      SLinkOperations.setTarget(parExpr, "expression", current, true);
-      return parExpr;
-    }
-    boolean left = opening && SLinkOperations.getTarget(binOp, "leftExpression", true) == current;
-    boolean right = !(opening) && SLinkOperations.getTarget(binOp, "rightExpression", true) == current;
-    if (left || right) {
-      SNode parExpr = SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.ParenthesizedExpression", null);
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(binOp), "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression")) {
-        SNodeOperations.replaceWithAnother(current, parExpr);
-        SLinkOperations.setTarget(parExpr, "expression", current, true);
+
+      SNodeOperations.replaceWithAnother(current, replacing);
+      SNode localExpToSetFocusOn;
+      if (completingByRightParen) {
+        setOrIncreaseParen(leftMostNode, false);
+        localExpToSetFocusOn = ParenthesisUtil.createUnmatchedParenthesis(expressionToProcess, true);
+        expressionToProcess = (propagateNewParensInsteadOfExpr ? localExpToSetFocusOn : rightMostNode);
       } else {
-        SNodeOperations.replaceWithAnother(binOp, parExpr);
-        SLinkOperations.setTarget(parExpr, "expression", binOp, true);
+        setOrIncreaseParen(rightMostNode, true);
+        localExpToSetFocusOn = ParenthesisUtil.createUnmatchedParenthesis(expressionToProcess, false);
+        expressionToProcess = (propagateNewParensInsteadOfExpr ? localExpToSetFocusOn : leftMostNode);
       }
-      return parExpr;
+
+      // Remember the first parenthing result for the editor to set focus to 
+      if (expressionToSetFocusOn == null) {
+        expressionToSetFocusOn = localExpToSetFocusOn;
+      }
+
+      // Put back the parens that were on the wrapping parentheses and belong to the mating expr 
+      if (completingByRightParen && leftParenOnParens != null) {
+        setOrMergeParen(localExpToSetFocusOn, false, leftParenOnParens);
+      }
+      if (!(completingByRightParen) && rightParenOnParens != null) {
+        setOrMergeParen(localExpToSetFocusOn, true, rightParenOnParens);
+      }
+
+      // Put back the parens that were on the wrapping parentheses and belong to the new expressionToProcess 
+      if (completingByRightParen && rightParenOnParens != null) {
+        setOrMergeParen(expressionToProcess, true, rightParenOnParens);
+      }
+      if (!(completingByRightParen) && leftParenOnParens != null) {
+        setOrMergeParen(expressionToProcess, false, leftParenOnParens);
+      }
+
+      current = findWrappingParens(expressionToProcess);
     }
-    // rotate 
-    SNode subtree = (opening ?
-      SLinkOperations.getTarget(binOp, "leftExpression", true) :
-      SLinkOperations.getTarget(binOp, "rightExpression", true)
-    );
-    SNode parExpr = SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.ParenthesizedExpression", null);
-    SNodeOperations.replaceWithAnother(current, parExpr);
-    SNodeOperations.replaceWithAnother(subtree, current);
-    SNodeOperations.replaceWithAnother(binOp, subtree);
-    SLinkOperations.setTarget(parExpr, "expression", binOp, true);
-    return parExpr;
+
+    SNode created = createUnmatchedParenthesis(expressionToProcess, completingByRightParen);
+    checkWholeExpressionPriorities(myExpression);
+    return (expressionToSetFocusOn != null ? expressionToSetFocusOn : created);
+  }
+
+  private static SNode findWrappingParens(SNode original) {
+    SNode current = original;
+    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"))) {
+      current = SNodeOperations.cast(SNodeOperations.getParent(current), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"));
+      if (SNodeOperations.isInstanceOf(current, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"))) {
+        return current;
+      }
+    }
+    return null;
+  }
+
+  private static void setOrIncreaseParen(SNode node, boolean right) {
+    SNode paren = (right ? AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen"))) : AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen"))));
+    if (paren != null) {
+      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(paren);
+    } else {
+      if (right) {
+        SNodeFactoryOperations.setNewAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen")), SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen")));
+      } else {
+        SNodeFactoryOperations.setNewAttribute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen")), SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen")));
+      }
+    }
+  }
+
+  private static void setOrMergeParen(SNode myNode, boolean right, SNode parens) {
+    SNode nodesParens = (right ? AttributeOperations.getAttribute(myNode, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen"))) : AttributeOperations.getAttribute(myNode, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen"))));
+    if (nodesParens == null) {
+      if (right) {
+        nodesParens = SNodeFactoryOperations.setNewAttribute(myNode, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen")), SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen")));
+      } else {
+        nodesParens = SNodeFactoryOperations.setNewAttribute(myNode, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen")), SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen")));
+      }
+    }
+    while (!((boolean) IIncompleteParen__BehaviorDescriptor.isSingleParen_idVufYxgmHsD.invoke(parens))) {
+      IIncompleteParen__BehaviorDescriptor.decreaseCount_idVufYxgmFtR.invoke(parens);
+      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(nodesParens);
+    }
+  }
+
+  /**
+   * First search existing unmatched parens, whether they can be paired with the new one.
+   * If found, pair them, if not, create an unmatched paren annotation.
+   */
+  private static SNode createUnmatchedParenthesis(@NotNull SNode myExpression, boolean completingByRightParen) {
+
+    if (!(completingByRightParen) && AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen"))) != null) {
+      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen"))));
+      return myExpression;
+    }
+    if (completingByRightParen && AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen"))) != null) {
+      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen"))));
+      return myExpression;
+    }
+
+    List<SNode> myParentPath = parentPath(myExpression, completingByRightParen);
+    SNode topExp = ListSequence.fromList(myParentPath).findLast(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike"));
+      }
+    });
+    if (topExp == null) {
+      // No IBinaryLike ancestor of myExpression exists 
+      topExp = myExpression;
+    }
+
+    List<SNode> candidateParenthedNodes = descendInto(topExp, completingByRightParen);
+
+    int index = ListSequence.fromList(candidateParenthedNodes).count() - 1;
+    SNode candidateExpression = null;
+    final Wrappers._T<List<SNode>> candidateParentPath = new Wrappers._T<List<SNode>>(null);
+    // The bottom-most common ancestor 
+    SNode firstCommonAncestor = null;
+    // Find a matching parenthesis among candidates, going from the back of the list 
+    while (index >= 0) {
+      candidateExpression = ListSequence.fromList(candidateParenthedNodes).getElement(index);
+      if (eq_a65dpo_a0b0q0p(candidateExpression, myExpression)) {
+        // they are both the same node 
+        SNode parens = SNodeFactoryOperations.replaceWithNewChild(candidateExpression, SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression")));
+        SLinkOperations.setTarget(parens, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), candidateExpression);
+        ParenthesisUtil.clearIncompleteParens(candidateExpression, completingByRightParen, parens);
+        return parens;
+      }
+
+      // Find the bottom-most common ancestor 
+      candidateParentPath.value = parentPath(candidateExpression, !(completingByRightParen));
+      if (ListSequence.fromList(myParentPath).contains(ListSequence.fromList(candidateParentPath.value).last()) || ListSequence.fromList(candidateParentPath.value).contains(ListSequence.fromList(myParentPath).last())) {
+        firstCommonAncestor = ListSequence.fromList(myParentPath).findFirst(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return ListSequence.fromList(candidateParentPath.value).contains(it);
+          }
+        });
+        assert firstCommonAncestor != null;
+        if (!(SNodeOperations.isInstanceOf(firstCommonAncestor, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike")))) {
+          continue;
+        }
+
+        SNode leftSideExpression = IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(SNodeOperations.cast(firstCommonAncestor, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike")));
+        SNode rightSideExpression = IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(SNodeOperations.cast(firstCommonAncestor, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike")));
+        List<SNode> candidateAncestors = SNodeOperations.getNodeAncestors(candidateExpression, null, true);
+        List<SNode> myAncestors = SNodeOperations.getNodeAncestors(myExpression, null, true);
+
+        // Validate the bottom-most ancestor, whether the two parentheses can be paired legally 
+        if (completingByRightParen && (ListSequence.fromList(candidateAncestors).contains(leftSideExpression) || leftSideExpression == null) && (ListSequence.fromList(myAncestors).contains(rightSideExpression) || rightSideExpression == null)) {
+          break;
+        }
+        if (!(completingByRightParen) && (ListSequence.fromList(myAncestors).contains(leftSideExpression) || leftSideExpression == null) && (ListSequence.fromList(candidateAncestors).contains(rightSideExpression) || rightSideExpression == null)) {
+          break;
+        }
+        // Break out if found a valid match 
+      }
+      // Continue to try another candidate parenthesis 
+      index--;
+    }
+    if (index == -1) {
+      // no common ancestor with any of the candidate parens or swapped left-right -> can't parenthesise 
+      if (completingByRightParen) {
+        setOrIncreaseParen(myExpression, true);
+      } else {
+        setOrIncreaseParen(myExpression, false);
+      }
+      return myExpression;
+    }
+
+
+    // Let's call them left and right parens from now, instead of 'my' and 'candidate' 
+    SNode leftExpression = (completingByRightParen ? candidateExpression : myExpression);
+    SNode rightExpression = (completingByRightParen ? myExpression : candidateExpression);
+    // Find the turning points, if exist, otherwise just wrap in parens 
+    SNode leftTurn = ParenthesisUtil.findLeftTurn(leftExpression, firstCommonAncestor);
+    SNode rightTurn = ParenthesisUtil.findRightTurn(rightExpression, firstCommonAncestor);
+
+    if (leftTurn != null || rightTurn != null) {
+      SNode parens = ParenthesisUtil.rebalance(leftTurn, SNodeOperations.cast(firstCommonAncestor, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike")), rightTurn);
+      clearIncompleteParens(candidateExpression, completingByRightParen, parens);
+      return parens;
+    } else {
+      SNode p = SNodeFactoryOperations.createNewNode(SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression")), null);
+      SNode parens = SNodeOperations.replaceWithAnother(firstCommonAncestor, p);
+      SLinkOperations.setTarget(p, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), firstCommonAncestor);
+      clearIncompleteParens(candidateExpression, completingByRightParen, p);
+      return parens;
+    }
+  }
+
+  /**
+   * Returns an orderred list of nodes with incomplete left/right paren
+   * The nodes are orderred by their occurence on the expression in left-to-right order
+   * The current node is added at the front of the list,
+   * so that it is always the most distant node among the returned candidates
+   */
+  private static List<SNode> descendInto(SNode expr, final boolean completingByRightParen) {
+    List<SNode> path = ListSequence.fromListAndArray(new ArrayList<SNode>(), null, expr);
+    List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
+
+    SNode current = expr;
+    while (ListSequence.fromList(path).isNotEmpty()) {
+      if (SNodeOperations.isInstanceOf(current, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike"))) {
+        if (eq_a65dpo_a0a0a0e0r(ListSequence.fromList(path).last(), current)) {
+          SNode left = IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(SNodeOperations.cast(current, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike")));
+          if (left != null) {
+            ListSequence.fromList(path).addElement(left);
+            current = left;
+          } else {
+            current = ListSequence.fromList(path).removeLastElement();
+          }
+        } else {
+          ListSequence.fromList(result).addElement(current);
+          SNode right = IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(SNodeOperations.cast(current, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike")));
+          if (right != null) {
+            ListSequence.fromList(path).addElement(right);
+            current = right;
+          } else {
+            current = ListSequence.fromList(path).removeLastElement();
+          }
+        }
+      } else {
+        ListSequence.fromList(result).addElement(current);
+        if (eq_a65dpo_a0b0a0a4a71(ListSequence.fromList(path).last(), current)) {
+          ListSequence.fromList(path).removeLastElement();
+        }
+        current = ListSequence.fromList(path).removeLastElement();
+      }
+    }
+    if (!(completingByRightParen)) {
+      result = ListSequence.fromList(result).reversedList();
+    }
+
+    result = ListSequence.fromList(result).where(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return completingByRightParen && (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen"))) != null) || !(completingByRightParen) && (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen"))) != null);
+      }
+    }).toListSequence();
+
+    return result;
+  }
+
+  /**
+   * Create a ParenthesisedExpression and hook it properly into the model
+   * 
+   * @param leftTurn The expression that should be put outside and to the left from the new parens
+   * @param rightTurn The expression that should be put outside and to the right from the new parens
+   * @param firstCommonAncestor The common ancestor expression of both parentheses
+   */
+  private static SNode rebalance(SNode leftTurn, SNode firstCommonAncestor, SNode rightTurn) {
+
+    // Accumulate expressions between the leftTurn and firstCommon to include inside the parens. 
+    // These would be the nodes into which we come from the left child. 
+    SNode leftAccumulator = buildAccumulator(firstCommonAncestor, leftTurn, true);
+    // Accumulate expressions between the rightTurn and firstCommon to include inside the parens. 
+    // These would be the nodes into which we come from the right child. 
+    SNode rightAccumulator = buildAccumulator(firstCommonAncestor, rightTurn, false);
+
+    SNode parens = SNodeFactoryOperations.createNewNode(SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression")), null);
+    if (SNodeOperations.isInstanceOf(firstCommonAncestor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"))) {
+      rebalanceIBinaryLikeAfterParenthing(SNodeOperations.cast(firstCommonAncestor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")), rightTurn, leftTurn, parens, rightAccumulator, leftAccumulator);
+    } else if (SNodeOperations.isInstanceOf(firstCommonAncestor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression"))) {
+      rebalanceTernaryOpAfterParenthing(SNodeOperations.cast(firstCommonAncestor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression")), rightTurn, leftTurn, parens, rightAccumulator, leftAccumulator);
+    } else if (SNodeOperations.isInstanceOf(firstCommonAncestor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression")) || SNodeOperations.isInstanceOf(firstCommonAncestor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression"))) {
+      rebalanceIBinaryLikeAfterParenthing(SNodeOperations.cast(firstCommonAncestor, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike")), rightTurn, leftTurn, parens, rightAccumulator, leftAccumulator);
+    }
+
+    SLinkOperations.setTarget(parens, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), firstCommonAncestor);
+    return parens;
+  }
+
+  private static void rebalanceIBinaryLikeAfterParenthing(SNode node, SNode rightTurn, SNode leftTurn, SNode parens, SNode rightAccumulator, SNode leftAccumulator) {
+    SNode leftSide = IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(node);
+    SNode rightSide = IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(node);
+    assert leftSide != null || rightSide != null;
+    SNode head = (rightSide != null ? rightSide : leftSide);
+    SNodeOperations.replaceWithAnother(node, head);
+    SLinkOperations.setTarget(parens, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), node);
+
+    if (leftAccumulator != null) {
+      IBinaryLike__BehaviorDescriptor.setSyntacticallyLeftSideExpression_id1wHCnsn58ZK.invoke(node, leftAccumulator);
+    }
+    if (rightAccumulator != null) {
+      IBinaryLike__BehaviorDescriptor.setSyntacticallyRightSideExpression_id1wHCnsn58ZY.invoke(node, rightAccumulator);
+    }
+    SNode subtree;
+    if (leftSide != null) {
+      subtree = leftSide;
+      IBinaryLike__BehaviorDescriptor.setSyntacticallyRightSideExpression_id1wHCnsn58ZY.invoke(leftTurn, parens);
+    } else {
+      subtree = parens;
+    }
+    if (rightSide != null) {
+      IBinaryLike__BehaviorDescriptor.setSyntacticallyLeftSideExpression_id1wHCnsn58ZK.invoke(rightTurn, subtree);
+    }
+  }
+
+  private static void rebalanceTernaryOpAfterParenthing(SNode node, SNode rightTurn, SNode leftTurn, SNode parens, SNode rightAccumulator, SNode leftAccumulator) {
+    SNode bottomMostTernary = findBottomMostTernary(node);
+    if (rightTurn != null) {
+      SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(bottomMostTernary, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse")));
+      if (leftTurn != null) {
+        IBinaryLike__BehaviorDescriptor.setSyntacticallyLeftSideExpression_id1wHCnsn58ZK.invoke(rightTurn, SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition")));
+        IBinaryLike__BehaviorDescriptor.setSyntacticallyRightSideExpression_id1wHCnsn58ZY.invoke(leftTurn, parens);
+      } else {
+        IBinaryLike__BehaviorDescriptor.setSyntacticallyLeftSideExpression_id1wHCnsn58ZK.invoke(rightTurn, parens);
+      }
+    } else {
+      if (leftTurn != null) {
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition")));
+        IBinaryLike__BehaviorDescriptor.setSyntacticallyRightSideExpression_id1wHCnsn58ZY.invoke(leftTurn, parens);
+      } else {
+        SNodeOperations.replaceWithAnother(node, parens);
+      }
+    }
+    SLinkOperations.setTarget(bottomMostTernary, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse"), rightAccumulator);
+    SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition"), leftAccumulator);
+  }
+
+  /**
+   * Ternary expressions can be nested in one anothers ifFalse child. Find the right-most one.
+   * 
+   * @param bottomMostTernary The so-far most-bottom ternary operator expression
+   * @return The found right-most ternary operator expression.
+   */
+  private static SNode findBottomMostTernary(SNode bottomMostTernary) {
+    while (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(bottomMostTernary, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression"))) {
+      bottomMostTernary = SNodeOperations.cast(SLinkOperations.getTarget(bottomMostTernary, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression"));
+    }
+    return bottomMostTernary;
+  }
+
+  /**
+   * Accumulate the nodes that need to be added into the parentheses
+   */
+  private static SNode buildAccumulator(SNode firstCommonAncestor, SNode turn, boolean left) {
+    SNode accumulator;
+    if (turn != null && neq_a65dpo_a0a1a72(turn, firstCommonAncestor)) {
+      // Accumulate nodes on the path up from the left/right paren 
+      accumulator = (left ? IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(turn) : IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(turn));
+      SNodeOperations.deleteNode(accumulator);
+      SNode current = SNodeOperations.cast(SNodeOperations.getParent(turn), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike"));
+      SNode previous = turn;
+      while (neq_a65dpo_a0f0b0bb(current, firstCommonAncestor)) {
+        SNode sideExpression = (left ? IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(current) : IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(current));
+        if (sideExpression != null && eq_a65dpo_a0a1a5a1a72(sideExpression, previous)) {
+          SNodeOperations.replaceWithAnother(current, previous);
+          if (left) {
+            IBinaryLike__BehaviorDescriptor.setSyntacticallyLeftSideExpression_id1wHCnsn58ZK.invoke(current, accumulator);
+          } else {
+            IBinaryLike__BehaviorDescriptor.setSyntacticallyRightSideExpression_id1wHCnsn58ZY.invoke(current, accumulator);
+          }
+          accumulator = SNodeOperations.cast(current, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"));
+        } else {
+          previous = current;
+        }
+        current = SNodeOperations.cast(SNodeOperations.getParent(previous), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike"));
+      }
+    } else {
+      // Nothing to accumulate 
+      SNode firstCommonAncestorChild = (left ? IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(firstCommonAncestor) : IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(firstCommonAncestor));
+      if (firstCommonAncestorChild != null) {
+        accumulator = firstCommonAncestorChild;
+        SNodeOperations.deleteNode(accumulator);
+      } else {
+        accumulator = null;
+      }
+    }
+    return accumulator;
+  }
+
+  /**
+   * Remove the found matching paren annotation from its node
+   */
+  private static void clearIncompleteParens(SNode otherExpression, boolean completingByRightParen, SNode parens) {
+    int count = 0;
+    if (completingByRightParen) {
+      count = SPropertyOperations.getInteger(AttributeOperations.getAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen"))), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xede3fe8510255edL, 0xede3fe8510255eeL, "count"));
+      AttributeOperations.setAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen")), null);
+      AttributeOperations.setAttribute(parens, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen")), null);
+    } else {
+      count = SPropertyOperations.getInteger(AttributeOperations.getAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen"))), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xede3fe8510255edL, 0xede3fe8510255eeL, "count"));
+      AttributeOperations.setAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen")), null);
+      AttributeOperations.setAttribute(parens, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen")), null);
+    }
+
+    // One paren has been matched, so we should decrease the count 
+    count -= 1;
+    if (count < 1) {
+      return;
+    }
+    for (int i = 0; i < count; i++) {
+      setOrIncreaseParen(parens, !(completingByRightParen));
+    }
+  }
+
+  /**
+   * Climb up the ancestor expressions and return the first binary operation, in which we come from the right sub-tree.
+   * 
+   * @param stopNode Never climb beyond this node
+   */
+  private static SNode findLeftTurn(SNode leaf, SNode stopNode) {
+    return findTurn(leaf, stopNode, true);
+  }
+
+  /**
+   * Climb up the ancestor expressions and return the first binary operation, in which we come from the left sub-tree.
+   * 
+   * @param stopNode Never climb beyond this node
+   */
+  private static SNode findRightTurn(SNode leaf, SNode stopNode) {
+    return findTurn(leaf, stopNode, false);
+  }
+
+  private static SNode findTurn(SNode leaf, SNode stopNode, boolean leftTurn) {
+    SNode currentNode = SNodeOperations.getParent(leaf);
+    SNode previous = leaf;
+    while (neq_a65dpo_a0a2a53(previous, stopNode) && SNodeOperations.isInstanceOf(currentNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike"))) {
+      SNode leftSideExpression = IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(SNodeOperations.cast(currentNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike")));
+      SNode rightSideExpression = IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(SNodeOperations.cast(currentNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike")));
+      if (leftTurn && eq_a65dpo_a0a2a2a53(rightSideExpression, previous)) {
+        return SNodeOperations.cast(currentNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike"));
+      }
+      if (!(leftTurn) && eq_a65dpo_a0a3a2a53(leftSideExpression, previous)) {
+        return SNodeOperations.cast(currentNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike"));
+      }
+
+      previous = currentNode;
+      currentNode = SNodeOperations.getParent(currentNode);
+    }
+    return null;
+  }
+
+
+  /**
+   * Find all the ancestor expressions of leaf that could be wrapped in parens.
+   * Stops when the parent current expression could no longer be parenthesised.
+   */
+  private static List<SNode> parentPath(SNode leaf, boolean rightParen) {
+    List<SNode> path = new ArrayList<SNode>();
+    ListSequence.fromList(path).addElement(leaf);
+    List<SNode> leafAncestors = SNodeOperations.getNodeAncestors(leaf, null, true);
+
+    for (SNode currentNode = SNodeOperations.getParent(leaf); SNodeOperations.isInstanceOf(currentNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike")) && (boolean) IBinaryLike__BehaviorDescriptor.canPropagateUnmatchedParenUp_id1wHCnsn58ZA.invoke(SNodeOperations.cast(currentNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike")), leaf, ((boolean) rightParen)); currentNode = SNodeOperations.getParent(currentNode)) {
+      ListSequence.fromList(path).addElement(SNodeOperations.cast(currentNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
+    }
+    return path;
+  }
+
+  public static void checkWholeExpressionPriorities(SNode expr) {
+    SNode current = expr;
+    // find the top-most expression 
+    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"))) {
+      current = SNodeOperations.cast(SNodeOperations.getParent(current), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"));
+    }
+
+    List<SNode> candidates = ListSequence.fromList(new ArrayList<SNode>());
+    ListSequence.fromList(candidates).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(current, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"), true, new SAbstractConcept[]{})));
+    checkCandidateExpressionsPriorities(candidates);
   }
 
   public static void checkOperationWRTPriority(SNode binOp) {
-    checkOperationChildWRTPriority(binOp, false);
-    checkOperationChildWRTPriority(binOp, true);
-    checkOpeartionParentWRTPriority(binOp);
+    List<SNode> candidates = ListSequence.fromListAndArray(new ArrayList<SNode>(), binOp);
+    checkCandidateExpressionsPriorities(candidates);
   }
 
-  private static void checkOperationChildWRTPriority(SNode node, boolean isRight) {
-    if (!(SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.BinaryOperation"))) {
-      return;
-    }
-    SNode binOp = SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
-    SNode sideExpr = (isRight ?
-      SLinkOperations.getTarget(binOp, "rightExpression", true) :
-      SLinkOperations.getTarget(binOp, "leftExpression", true)
-    );
-    if (SNodeOperations.isInstanceOf(sideExpr, "jetbrains.mps.baseLanguage.structure.BinaryOperation")) {
-      SNode sideChild = SNodeOperations.cast(sideExpr, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
-      if (isBadPriority(sideChild, binOp, isRight)) {
-        ParenthesisUtil.rotateTree(sideChild, binOp, isRight);
-        checkOperationWRTPriority(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.BinaryOperation"));
+  private static void checkCandidateExpressionsPriorities(List<SNode> candidates) {
+    while (ListSequence.fromList(candidates).isNotEmpty()) {
+      SNode candidate = ListSequence.fromList(candidates).first();
+      if (checkOperationChildWRTPriority(candidate, false, candidates) && checkOperationChildWRTPriority(candidate, true, candidates) && checkOperationParentWRTPriority(candidate, candidates)) {
+        ListSequence.fromList(candidates).removeElementAt(0);
       }
     }
   }
 
-  private static void checkOpeartionParentWRTPriority(SNode node) {
-    if (SNodeOperations.getParent(node) == null) {
-      return;
+  private static boolean checkOperationChildWRTPriority(SNode node, boolean isRight, List<SNode> candidates) {
+    SNode sideExpr = (isRight ? SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")) : SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression")));
+    if (SNodeOperations.isInstanceOf(sideExpr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"))) {
+      SNode sideChild = SNodeOperations.cast(sideExpr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"));
+      if (isBadPriority(sideChild, node, isRight)) {
+        ParenthesisUtil.rotateTree(sideChild, node, isRight);
+        ListSequence.fromList(candidates).addElement(SNodeOperations.cast(sideExpr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")));
+        return false;
+      }
+    } else if (SNodeOperations.isInstanceOf(sideExpr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression"))) {
+      SNodeOperations.replaceWithAnother(node, sideExpr);
+      if (isRight) {
+        SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"), SLinkOperations.getTarget(SNodeOperations.cast(sideExpr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition")));
+        SLinkOperations.setTarget(SNodeOperations.cast(sideExpr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition"), node);
+      } else {
+        SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), SLinkOperations.getTarget(SNodeOperations.cast(sideExpr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse")));
+        SLinkOperations.setTarget(SNodeOperations.cast(sideExpr, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse"), node);
+      }
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(sideExpr), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"))) {
+        ListSequence.fromList(candidates).addElement(SNodeOperations.cast(SNodeOperations.getParent(sideExpr), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")));
+      }
+      return false;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), "jetbrains.mps.baseLanguage.structure.BinaryOperation")) {
-      SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+    return true;
+  }
+
+  private static boolean checkOperationParentWRTPriority(SNode node, List<SNode> candidates) {
+    if (SNodeOperations.getParent(node) == null) {
+      return true;
+    }
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"))) {
+      SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"));
       boolean isRight = false;
-      if (SLinkOperations.getTarget(parent, "rightExpression", true) == node) {
+      if (SLinkOperations.getTarget(parent, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")) == node) {
         isRight = true;
-      } else if (SLinkOperations.getTarget(parent, "leftExpression", true) == node) {
+      } else if (SLinkOperations.getTarget(parent, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression")) == node) {
         isRight = false;
       }
       if (ParenthesisUtil.isBadPriority(node, parent, isRight)) {
         ParenthesisUtil.rotateTree(node, parent, isRight);
-        checkOpeartionParentWRTPriority(node);
+        ListSequence.fromList(candidates).addElement(parent);
+        return false;
       }
-    }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), "jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation")) {
-      SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), "jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation");
-      SLinkOperations.setTarget(parent, "expression", SLinkOperations.getTarget(node, "leftExpression", true), true);
-      SNodeOperations.replaceWithAnother(parent, node);
-      SLinkOperations.setTarget(node, "leftExpression", parent, true);
+      return true;
+    } else {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, "jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation"))) {
+        SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, "jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation"));
+        SLinkOperations.setTarget(parent, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression"), SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression")));
+        SNodeOperations.replaceWithAnother(parent, node);
+        SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), parent);
+      } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression"))) {
+        SNode castExpr = SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression"));
+        SNodeOperations.replaceWithAnother(castExpr, node);
+        SLinkOperations.setTarget(castExpr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression"), SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression")));
+        SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), castExpr);
+      } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression"))) {
+        SNode notExpr = SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression"));
+        SNodeOperations.replaceWithAnother(notExpr, node);
+        SLinkOperations.setTarget(notExpr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression"), SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression")));
+        SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), notExpr);
+      } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")) && SNodeOperations.hasRole(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"))) {
+        SNode dotExpr = SNodeOperations.cast(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
+        SNodeOperations.replaceWithAnother(dotExpr, node);
+        SLinkOperations.setTarget(dotExpr, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")));
+        SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"), dotExpr);
+      } else {
+        return true;
+      }
+      return false;
     }
   }
 
   public static SNode getBinOp(SNode expr, boolean toRight) {
     SNode parent = SNodeOperations.getParent(expr);
-    if (!(SNodeOperations.isInstanceOf(parent, "jetbrains.mps.baseLanguage.structure.BinaryOperation"))) {
+    if (!(SNodeOperations.isInstanceOf(parent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")))) {
       return null;
     }
-    SNode parentOp = SNodeOperations.cast(parent, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
-    boolean right = toRight && SLinkOperations.getTarget(parentOp, "leftExpression", true) == expr;
-    boolean left = !(toRight) && SLinkOperations.getTarget(parentOp, "rightExpression", true) == expr;
+    SNode parentOp = SNodeOperations.cast(parent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"));
+    boolean right = toRight && SLinkOperations.getTarget(parentOp, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression")) == expr;
+    boolean left = !(toRight) && SLinkOperations.getTarget(parentOp, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")) == expr;
     if (right || left) {
       return parentOp;
     }
     return getBinOp(parentOp, toRight);
   }
-
   public static void rotateTree(SNode child, SNode op, boolean isRight) {
-    SNode backsideExpr = (isRight ?
-      SLinkOperations.getTarget(child, "leftExpression", true) :
-      SLinkOperations.getTarget(child, "rightExpression", true)
-    );
-    SNodeOperations.detachNode(child);
+    SNode backsideExpr = (isRight ? SLinkOperations.getTarget(child, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression")) : SLinkOperations.getTarget(child, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")));
+    SNodeOperations.deleteNode(child);
     SNodeOperations.replaceWithAnother(op, child);
     SNodeOperations.replaceWithAnother(backsideExpr, op);
     if (isRight) {
-      SLinkOperations.setTarget(op, "rightExpression", backsideExpr, true);
+      SLinkOperations.setTarget(op, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"), backsideExpr);
     } else {
-      SLinkOperations.setTarget(op, "leftExpression", backsideExpr, true);
+      SLinkOperations.setTarget(op, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), backsideExpr);
     }
   }
-
   public static boolean isBadPriority(SNode child, SNode parent, boolean isRight) {
-    return BehaviorReflection.invokeVirtualStatic(Integer.TYPE, SConceptRepository.getInstance().getConcept(NameUtil.nodeFQName(SNodeOperations.getConceptDeclaration(child))), "virtual_getPriority_1262430001741497858", new Object[]{}) < BehaviorReflection.invokeVirtualStatic(Integer.TYPE, SConceptRepository.getInstance().getConcept(NameUtil.nodeFQName(SNodeOperations.getConceptDeclaration(parent))), "virtual_getPriority_1262430001741497858", new Object[]{}) || (isRight && ((int) BehaviorReflection.invokeVirtualStatic(Integer.TYPE, SConceptRepository.getInstance().getConcept(NameUtil.nodeFQName(SNodeOperations.getConceptDeclaration(child))), "virtual_getPriority_1262430001741497858", new Object[]{})) == ((int) BehaviorReflection.invokeVirtualStatic(Integer.TYPE, SConceptRepository.getInstance().getConcept(NameUtil.nodeFQName(SNodeOperations.getConceptDeclaration(parent))), "virtual_getPriority_1262430001741497858", new Object[]{})));
+    return (int) BinaryOperation__BehaviorDescriptor.getPriority_id1653mnvAgo2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(child))) < (int) BinaryOperation__BehaviorDescriptor.getPriority_id1653mnvAgo2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(parent))) || (isRight && ((int) (int) BinaryOperation__BehaviorDescriptor.getPriority_id1653mnvAgo2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(child)))) == ((int) (int) BinaryOperation__BehaviorDescriptor.getPriority_id1653mnvAgo2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(parent)))));
+  }
+  private static boolean eq_a65dpo_a0a0a8a5a7(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
+  }
+  private static boolean eq_a65dpo_a0a0a8a5a7_0(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
+  }
+  private static boolean eq_a65dpo_a0b0q0p(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
+  }
+  private static boolean eq_a65dpo_a0a0a0e0r(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
+  }
+  private static boolean eq_a65dpo_a0b0a0a4a71(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
+  }
+  private static boolean neq_a65dpo_a0a1a72(Object a, Object b) {
+    return !(((a != null ? a.equals(b) : a == b)));
+  }
+  private static boolean eq_a65dpo_a0a1a5a1a72(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
+  }
+  private static boolean neq_a65dpo_a0f0b0bb(Object a, Object b) {
+    return !(((a != null ? a.equals(b) : a == b)));
+  }
+  private static boolean neq_a65dpo_a0a2a53(Object a, Object b) {
+    return !(((a != null ? a.equals(b) : a == b)));
+  }
+  private static boolean eq_a65dpo_a0a2a2a53(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
+  }
+  private static boolean eq_a65dpo_a0a3a2a53(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
   }
 }

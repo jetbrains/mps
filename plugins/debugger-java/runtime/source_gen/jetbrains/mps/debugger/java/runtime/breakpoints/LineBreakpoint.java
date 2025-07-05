@@ -5,12 +5,11 @@ package jetbrains.mps.debugger.java.runtime.breakpoints;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.debug.api.breakpoints.BreakpointLocation;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventsProcessor;
 import com.sun.jdi.ReferenceType;
 import jetbrains.mps.debugger.java.runtime.engine.RequestManager;
@@ -22,26 +21,34 @@ import com.sun.jdi.ObjectCollectedException;
 import com.sun.jdi.InvalidLineNumberException;
 import com.sun.jdi.InternalException;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.smodel.SModelStereotype;
 
 public class LineBreakpoint extends JavaBreakpoint implements ILocationBreakpoint {
   private static final Logger LOG = LogManager.getLogger(LineBreakpoint.class);
-  protected final BreakpointLocation myLocation;
+  private final SNodeReference myNode;
+  private BreakpointLocation myLocation;
 
   public LineBreakpoint(@NotNull SNodeReference nodePointer, Project project) {
     super(project);
-    myLocation = new BreakpointLocation(nodePointer);
+    myNode = nodePointer;
+  }
+  public LineBreakpoint(@NotNull SNode node, Project project) {
+    this(node.getReference(), project);
   }
 
-  public LineBreakpoint(@NotNull SNode node, Project project) {
-    this(new SNodePointer(node), project);
+  @NotNull
+  @Override
+  public BreakpointLocation getLocation() {
+    if (myLocation == null) {
+      myLocation = new BreakpointLocationUpdate(myNode, getRepository()).get();
+    }
+    return myLocation;
   }
 
   @Override
   protected void createRequestForPreparedClass(EventsProcessor debugProcess, final ReferenceType classType) {
     RequestManager requestManager = debugProcess.getRequestManager();
     try {
-      int lineIndex = myLocation.getLineIndexInFile();
+      int lineIndex = getLocation().getLineIndexInFile();
       List<Location> locs = classType.locationsOfLine(lineIndex);
       if (locs.size() > 0) {
         for (final Location location : locs) {
@@ -51,7 +58,7 @@ public class LineBreakpoint extends JavaBreakpoint implements ILocationBreakpoin
       } else {
         //  there's no executable code in this class 
         requestManager.setInvalid(this, "no executable code found");
-        String message = "No locations of type " + classType.name() + " found at line " + myLocation.getLineIndexInFile();
+        String message = "No locations of type " + classType.name() + " found at line " + lineIndex;
         LOG.warn(message);
       }
     } catch (ClassNotPreparedException ex) {
@@ -69,46 +76,35 @@ public class LineBreakpoint extends JavaBreakpoint implements ILocationBreakpoin
       LOG.error(null, ex);
     }
   }
-
   @Nullable
   @Override
   protected String getClassNameToPrepare() {
-    String className = myLocation.getTargetUnitName();
+    String className = getLocation().getTargetUnitName();
     if (className == null) {
       //  todo when this case does actually happen? 
-      String fileName = myLocation.getFileName();
+      String fileName = getLocation().getFileName();
       if (fileName != null && fileName.endsWith(".java")) {
         fileName = fileName.substring(0, fileName.length() - ".java".length());
-        className = SModelStereotype.withoutStereotype(myLocation.getNodePointer().getModelReference().getModelName()) + "." + fileName;
+        className = myNode.getModelReference().getName().getLongName() + "." + fileName;
       } else {
         return null;
       }
     }
     return className;
   }
-
   @NotNull
   @Override
   public JavaBreakpointKind getKind() {
     return JavaBreakpointKind.LINE_BREAKPOINT;
   }
-
   @Override
   public boolean isValid() {
-    return myLocation.getTargetCodePosition() != null && (isNotEmpty_owwtjm_a0a0a0a7_0(myLocation.getTargetUnitName()) || isNotEmpty_owwtjm_a0a0a0a7(myLocation.getFileName()));
+    return isNotEmptyString(getLocation().getTargetUnitName()) || isNotEmptyString(getLocation().getFileName());
   }
-
   @Override
   public String getPresentation() {
-    return myLocation.getPresentation();
+    return new BreakpointPresentation(getLocation(), getRepository()).getText();
   }
-
-  @NotNull
-  @Override
-  public BreakpointLocation getLocation() {
-    return myLocation;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -118,31 +114,16 @@ public class LineBreakpoint extends JavaBreakpoint implements ILocationBreakpoin
       return false;
     }
 
-    return eq_owwtjm_a0d0k(myLocation, ((LineBreakpoint) o).myLocation);
+    return eq_owwtjm_a0d0o(getLocation(), ((LineBreakpoint) o).getLocation());
   }
-
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + ((myLocation != null ?
-      ((Object) myLocation).hashCode() :
-      0
-    ));
-    return result;
+    return myNode.hashCode() + getKind().hashCode() * 31;
   }
-
-  public static boolean isNotEmpty_owwtjm_a0a0a0a7(String str) {
+  private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
-
-  public static boolean isNotEmpty_owwtjm_a0a0a0a7_0(String str) {
-    return str != null && str.length() > 0;
-  }
-
-  private static boolean eq_owwtjm_a0d0k(Object a, Object b) {
-    return (a != null ?
-      a.equals(b) :
-      a == b
-    );
+  private static boolean eq_owwtjm_a0d0o(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
   }
 }

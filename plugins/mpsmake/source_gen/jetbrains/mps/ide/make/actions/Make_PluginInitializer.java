@@ -6,6 +6,7 @@ import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.plugins.PluginFactoriesRegistry;
 import jetbrains.mps.plugins.AbstractPluginFactory;
 import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
+import jetbrains.mps.plugins.projectplugins.BaseProjectPlugin;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,21 +18,21 @@ public class Make_PluginInitializer implements ApplicationComponent {
         if (BaseApplicationPlugin.class == klass) {
           return (T) new Make_ApplicationPlugin();
         }
+        if (BaseProjectPlugin.class == klass) {
+          return (T) new Make_ProjectPlugin();
+        }
         return null;
       }
     });
   }
-
   @NonNls
   @NotNull
   public String getComponentName() {
     // module short names could be the same for different modules => use full name 
     return this.getClass().getName();
   }
-
   public void initComponent() {
   }
-
   public void disposeComponent() {
   }
 }

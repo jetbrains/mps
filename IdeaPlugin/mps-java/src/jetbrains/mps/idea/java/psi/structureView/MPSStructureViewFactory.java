@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,8 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.workbench.nodesFs.MPSNodeVirtualFile;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactoryByName;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -44,10 +45,13 @@ public class MPSStructureViewFactory implements NodeStructureViewProvider {
   @Nullable
   @Override
   public StructureViewBuilder getStructureViewBuilder(@NotNull MPSNodeVirtualFile file, @NotNull Project project) {
-    jetbrains.mps.project.Project mpsproject = ProjectHelper.toMPSProject(project);
     SNode node = file.getNode();
-    SNode container = SNodeOperations.getAncestor(node, "jetbrains.mps.baseLanguage.structure.IMemberContainer", true, false);
-    final MemberContainerStructureModel model = new MemberContainerStructureModel(container);
+    SNode container = SNodeOperations.getNodeAncestor(node, MetaAdapterFactoryByName.getInterfaceConcept("jetbrains.mps.baseLanguage.structure.IMemberContainer"), true, false);
+    if (container == null) {
+      // not java-like, another language. not our business
+      return null;
+    }
+    final MemberContainerStructureModel model = new MemberContainerStructureModel(ProjectHelper.fromIdeaProject(project), container);
     return new StructureViewBuilder() {
       @NotNull
       @Override

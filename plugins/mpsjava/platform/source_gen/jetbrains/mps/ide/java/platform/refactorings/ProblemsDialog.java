@@ -14,13 +14,13 @@ import javax.swing.border.EmptyBorder;
 import com.intellij.ui.ScrollPaneFactory;
 import javax.swing.ScrollPaneConstants;
 import java.awt.Dimension;
+import org.jetbrains.annotations.NotNull;
 import javax.swing.Action;
 import java.awt.event.ActionEvent;
 
 public class ProblemsDialog extends DialogWrapper {
   private String myErrors;
   private DialogWrapper.DialogWrapperAction myIgnoreAction;
-
   public ProblemsDialog(Project project, String errors) {
     super(project, true);
     setTitle("Problems detected");
@@ -28,7 +28,6 @@ public class ProblemsDialog extends DialogWrapper {
     myErrors = errors;
     init();
   }
-
   @Nullable
   @Override
   protected JComponent createCenterPanel() {
@@ -42,12 +41,11 @@ public class ProblemsDialog extends DialogWrapper {
     panel.setMinimumSize(new Dimension(400, 250));
     return panel;
   }
-
   @Override
+  @NotNull
   protected Action[] createActions() {
     return new Action[]{myIgnoreAction, getCancelAction()};
   }
-
   @Override
   protected void createDefaultActions() {
     super.createDefaultActions();

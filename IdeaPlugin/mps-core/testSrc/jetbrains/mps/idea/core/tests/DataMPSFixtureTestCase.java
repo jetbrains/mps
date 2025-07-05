@@ -17,11 +17,13 @@
 package jetbrains.mps.idea.core.tests;
 
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.PathManager;
 import com.intellij.testFramework.PlatformTestUtil;
-import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.idea.core.facet.MPSFacetConfiguration;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -59,32 +61,15 @@ public abstract class DataMPSFixtureTestCase extends AbstractMPSFixtureTestCase 
   }
 
   @Override
-  protected void invokeTestRunnable(Runnable runnable) throws Exception {
+  protected void invokeTestRunnable(@NotNull Runnable runnable) throws Exception {
     // superclass's method always starts this in the EDT
     runnable.run();
-  }
-
-  @Override
-  protected void setUp() throws Exception {
-    final Exception[] thrown = new Exception[1];
-    // Calling super.setup() in EDT
-    UIUtil.invokeAndWaitIfNeeded(new Runnable() {
-      @Override
-      public void run() {
-        try {
-          DataMPSFixtureTestCase.super.setUp();
-        } catch (Exception e) {
-          thrown[0] = e;
-        }
-      }
-    });
-    if (thrown[0] != null) throw thrown[0];
   }
 
   protected abstract void prepareTestData(MPSFacetConfiguration configuration) throws Exception;
 
   protected IFile copyResource(String toPath, String resName, String fromPath) throws IOException {
-    IFile targetFile = FileSystem.getInstance().getFileByPath(toPath);
+    IFile targetFile = FileSystem.getInstance().getFile(toPath);
 
     return copyResource(resName, fromPath, targetFile);
   }
@@ -103,7 +88,7 @@ public abstract class DataMPSFixtureTestCase extends AbstractMPSFixtureTestCase 
   }
 
   private IFile copyResource(String resName, String fromPath, IFile targetFile) throws IOException {
-    IFile sourceFile = FileSystem.getInstance().getFileByPath(System.getProperty("idea.plugins.path") + fromPath);
+    IFile sourceFile = FileSystem.getInstance().getFileByPath(PathManager.getPluginsPath() + fromPath);
     if (sourceFile.exists()) {
       copyContent(sourceFile.openInputStream(), targetFile.openOutputStream());
     } else {

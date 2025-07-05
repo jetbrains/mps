@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,43 +20,32 @@ import com.intellij.ui.components.JBLabel;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.util.ui.JBInsets;
-import jetbrains.mps.extapi.module.ModuleFacetBase;
-import jetbrains.mps.ide.project.facets.IdeaPluginModuleFacet;
+import com.intellij.util.ui.JBUI;
 import jetbrains.mps.ide.project.facets.IdeaPluginModuleFacetImpl;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
-import jetbrains.mps.persistence.MementoImpl;
-import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
-import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.ui.persistence.FacetTab;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.Dimension;
-import java.util.Iterator;
 
 public class IdeaPluginModuleFacetTab extends BaseTab implements FacetTab {
 
-  private final IdeaPluginModuleFacet myIdeaPluginModuleFacet;
-  private IdeaPluginModuleFacet myNewIdeaPluginModuleFacet;
+  private final IdeaPluginModuleFacetImpl myIdeaPluginModuleFacet;
 
   private JTextField myTextField;
 
-  public IdeaPluginModuleFacetTab(IdeaPluginModuleFacet moduleFacet) {
-    super(((ModuleFacetBase)moduleFacet).getFacetPresentation(), Nodes.Plugin, "Idea Plugin Properties");
+  public IdeaPluginModuleFacetTab(IdeaPluginModuleFacetImpl moduleFacet) {
+    super(moduleFacet.getFacetPresentation(), Nodes.Plugin, "Idea Plugin Properties");
 
     myIdeaPluginModuleFacet = moduleFacet;
-    myNewIdeaPluginModuleFacet = cloneFacet(moduleFacet);
-
-    init();
   }
 
   @Override
   public void init() {
     JPanel content = new JPanel();
-    content.setLayout(new GridLayoutManager(1, 2, JBInsets.NONE, -1, -1));
+    content.setLayout(new GridLayoutManager(1, 2, JBUI.emptyInsets(), -1, -1));
 
     JBLabel label = new JBLabel("Plugin ID:");
     content.add(label, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED,
@@ -64,7 +53,6 @@ public class IdeaPluginModuleFacetTab extends BaseTab implements FacetTab {
 
     myTextField = new JTextField(myIdeaPluginModuleFacet.getPluginId());
 
-    myTextField.setPreferredSize(new Dimension(300, 20));
     content.add(myTextField, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW,
         GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
 
@@ -84,40 +72,7 @@ public class IdeaPluginModuleFacetTab extends BaseTab implements FacetTab {
 
   @Override
   public void apply() {
-    ((IdeaPluginModuleFacetImpl) myNewIdeaPluginModuleFacet).setPluginId(myTextField.getText());
-
-    // todo: move to separate common part
-    Memento memento = new MementoImpl();
-    myNewIdeaPluginModuleFacet.save(memento);
-
-    ModuleFacetDescriptor facetDescriptor = new ModuleFacetDescriptor(
-        ((ModuleFacetBase) myNewIdeaPluginModuleFacet).getFacetType(), memento);
-
-    ModuleDescriptor descriptor = ((AbstractModule) myIdeaPluginModuleFacet.getModule()).getModuleDescriptor();
-    Iterator<ModuleFacetDescriptor> iterator = descriptor.getModuleFacetDescriptors().iterator();
-    while (iterator.hasNext()) {
-      ModuleFacetDescriptor mfd = iterator.next();
-      if (mfd.getType().equals(facetDescriptor.getType())) {
-        iterator.remove();
-        break;
-      }
-    }
-
-    if (!myNewIdeaPluginModuleFacet.getPluginId().isEmpty())
-      descriptor.getModuleFacetDescriptors().add(facetDescriptor);
-  }
-
-  private static <T extends SModuleFacet> T cloneFacet(T original) {
-    Memento memento = new MementoImpl();
-    original.save(memento);
-
-    try {
-      T clone = (T) original.getClass().newInstance();
-      clone.load(memento);
-      return clone;
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+    myIdeaPluginModuleFacet.setPluginId(myTextField.getText());
   }
 
   @Override

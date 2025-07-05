@@ -16,7 +16,6 @@ import java.io.IOException;
 /*package*/ class TextMerger extends AbstractContentMerger {
   public TextMerger() {
   }
-
   @Nullable
   @Override
   public Tuples._2<Integer, byte[]> mergeContents(FileContent baseContent, FileContent localContent, FileContent latestContent) {
@@ -28,10 +27,7 @@ import java.io.IOException;
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     try {
       int mergeResult = merger.merge(baseData, localData, latestData, diffOptions, out, SVNDiffConflictChoiceStyle.CHOOSE_MODIFIED_LATEST);
-      return MultiTuple.<Integer,byte[]>from((mergeResult == FSMergerBySequence.CONFLICTED ?
-        CONFLICTS :
-        MERGED
-      ), out.toByteArray());
+      return MultiTuple.<Integer,byte[]>from((mergeResult == FSMergerBySequence.CONFLICTED ? CONFLICTS : MERGED), out.toByteArray());
     } catch (IOException e) {
       return null;
     }

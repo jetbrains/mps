@@ -4,724 +4,1110 @@ package jetbrains.mps.baseLanguage.editor;
 
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.KEYWORD_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.LINE_COMMENT_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.TODO_StyleKey;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.baseLanguage.behavior.CommentPart__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.BLOCK_COMMENT_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.DOC_COMMENT_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.DOC_TAG_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.DEFAULT_INSTANCE_FIELD_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.DEFAULT_IDENTIFIER_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.PARAMETER_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.STRING_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.NUMBER_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.NOT_USED_ELEMENT_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.STATIC_METHOD_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.ANNOTATION_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.OPERATION_SIGN_StyleKey;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.MPSFonts;
-import jetbrains.mps.nodeEditor.MPSColors;
-import jetbrains.mps.openapi.editor.EditorContext;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.PARENTH_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.BRACES_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.BRACKETS_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.METHOD_DECLARATION_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.METHOD_CALL_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.DEFAULT_CONSTANT_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.DEFAULT_STATIC_FIELD_StyleKey;
+import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.CLASS_NAME_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.SEMICOLON_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.DOT_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.FOLDED_TEXT_StyleKey;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.URL_StyleKey;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import jetbrains.mps.nodeEditor.MPSColors;
 
 public class BaseLanguageStyle_StyleSheet {
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getKeyWord(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("KEYWORD"));
-    return style;
+  public static void apply_KeyWord(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.KeyWordStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_CompactKeyWord(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.CompactKeyWordStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Comment(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.CommentStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_TODO(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.TODOStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_BlockComment(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.BlockCommentStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_JavaDoc(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.JavaDocStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_JavaDocTag(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.JavaDocTagStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Field(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.FieldStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_LocalVariable(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.LocalVariableStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Parameter(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.ParameterStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_StaticField(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.StaticFieldStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_StringLiteral(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.StringLiteralStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_NumericLiteral(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.NumericLiteralStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_EmptyCell(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.EmptyCellStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_InstanceMethod(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.InstanceMethodStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_StaticMethod(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.StaticMethodStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Annotation(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.AnnotationStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Operator(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.OperatorStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_AnyBracket(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.AnyBracketStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Parenthesis(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.ParenthesisStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_LeftParen(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.LeftParenStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_LeftParenAfterName(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.LeftParenAfterNameStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_RightParen(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.RightParenStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Brace(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.BraceStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_LeftBrace(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.LeftBraceStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_RightBrace(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.RightBraceStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Bracket(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.BracketStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_LeftBracket(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.LeftBracketStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_RightBracket(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.RightBracketStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_AngleBracket(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.AngleBracketStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_LeftAngleBracket(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.LeftAngleBracketStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_RightAngleBracket(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.RightAngleBracketStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_MethodName(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.MethodNameStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_MPSMethodCall(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.MPSMethodCallStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_VariableName(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.VariableNameStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_ClassName(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.ClassNameStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_ConceptName(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.ConceptNameStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Semicolon(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.SemicolonStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Dot(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.DotStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_BaseAngleBracket(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.BaseAngleBracketStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Matching(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.MatchingStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_FoldedCell(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.FoldedCellStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Url(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.UrlStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Label(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.LabelStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_FirstLevel(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.FirstLevelStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_SecondLevel(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.SecondLevelStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_ThirdLevel(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new BaseLanguageStyle_StyleSheet.ThirdLevelStyleClass(editorContext, node).apply(style, editorCell);
   }
 
-  @Deprecated
-  public static Style getCompactKeyWord(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getKeyWord(editorCell));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getComment(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("LINE_COMMENT"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getTODO(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getComment(editorCell));
-    if (BaseLanguageStyle_StyleSheet._StyleParameter_QueryFunction_the604_a0d((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    ))) {
-      style.putAll(StyleRegistry.getInstance().getStyle("TODO"));
+  public static class KeyWordStyleClass extends AbstractStyleClass {
+    public KeyWordStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
     }
-    return style;
-  }
 
-  @Deprecated
-  public static Style getBlockComment(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("BLOCK_COMMENT"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getJavaDoc(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("DOC_COMMENT"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getJavaDocTag(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("DOC_TAG"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getField(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("INSTANCE_FIELD"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getLocalVariable(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("LOCAL_VARIABLE"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getParameter(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("PARAMETER"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getStaticField(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getVariableName(editorCell));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getStringLiteral(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("STRING"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getNumericLiteral(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("NUMBER"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getEmptyCell(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("NOT_USED_ELEMENT"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getInstanceMethod(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    return style;
-  }
-
-  @Deprecated
-  public static Style getStaticMethod(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("STATIC_METHOD"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getAnnotation(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("ANNOTATION"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getOperator(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("OPERATION_SIGN"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getAnyBracket(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.INDENT_LAYOUT_NO_WRAP, true);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-    return style;
-  }
-
-  @Deprecated
-  public static Style getParenthesis(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getAnyBracket(editorCell));
-    style.putAll(StyleRegistry.getInstance().getStyle("PARENTH"));
-    style.set(StyleAttributes.MATCHING_LABEL, "parenthesis");
-    return style;
-  }
-
-  @Deprecated
-  public static Style getLeftParen(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getParenthesis(editorCell));
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-    return style;
-  }
-
-  @Deprecated
-  public static Style getLeftParenAfterName(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getLeftParen(editorCell));
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    return style;
-  }
-
-  @Deprecated
-  public static Style getRightParen(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getParenthesis(editorCell));
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    return style;
-  }
-
-  @Deprecated
-  public static Style getBrace(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getAnyBracket(editorCell));
-    style.putAll(StyleRegistry.getInstance().getStyle("BRACES"));
-    style.set(StyleAttributes.MATCHING_LABEL, "brace");
-    return style;
-  }
-
-  @Deprecated
-  public static Style getLeftBrace(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getBrace(editorCell));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getRightBrace(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getBrace(editorCell));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getBracket(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getAnyBracket(editorCell));
-    style.putAll(StyleRegistry.getInstance().getStyle("BRACKETS"));
-    style.set(StyleAttributes.MATCHING_LABEL, "bracket");
-    return style;
-  }
-
-  @Deprecated
-  public static Style getLeftBracket(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getBracket(editorCell));
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-    return style;
-  }
-
-  @Deprecated
-  public static Style getRightBracket(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getBracket(editorCell));
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    return style;
-  }
-
-  @Deprecated
-  public static Style getAngleBracket(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getAnyBracket(editorCell));
-    style.set(StyleAttributes.MATCHING_LABEL, "angleBracket");
-    return style;
-  }
-
-  @Deprecated
-  public static Style getLeftAngleBracket(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getAngleBracket(editorCell));
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-    return style;
-  }
-
-  @Deprecated
-  public static Style getRightAngleBracket(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getAngleBracket(editorCell));
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-    return style;
-  }
-
-  @Deprecated
-  public static Style getMethodName(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("METHOD_DECLARATION"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getMPSMethodCall(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("METHOD_CALL"));
-    if (BaseLanguageStyle_StyleSheet._StyleParameter_QueryFunction_the604_a1hb((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    ))) {
-      style.putAll(StyleRegistry.getInstance().getStyle("STATIC_METHOD"));
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new KEYWORD_StyleKey().apply(style);
     }
-    return style;
-  }
 
-  @Deprecated
-  public static Style getVariableName(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    if (BaseLanguageStyle_StyleSheet._StyleParameter_QueryFunction_the604_a0ib((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    ))) {
-      style.putAll(StyleRegistry.getInstance().getStyle("STATIC_FINAL_FIELD"));
+  }
+  public static class CompactKeyWordStyleClass extends AbstractStyleClass {
+    public CompactKeyWordStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
     }
-    if (BaseLanguageStyle_StyleSheet._StyleParameter_QueryFunction_the604_a1ib((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    ))) {
-      style.putAll(StyleRegistry.getInstance().getStyle("STATIC_FIELD"));
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     }
-    if (BaseLanguageStyle_StyleSheet._StyleParameter_QueryFunction_the604_a2ib((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    ))) {
-      style.putAll(StyleRegistry.getInstance().getStyle("INSTANCE_FIELD"));
+
+  }
+  public static class CommentStyleClass extends AbstractStyleClass {
+    public CommentStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
     }
-    if (BaseLanguageStyle_StyleSheet._StyleParameter_QueryFunction_the604_a3ib((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    ))) {
-      style.putAll(StyleRegistry.getInstance().getStyle("LOCAL_VARIABLE"));
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new LINE_COMMENT_StyleKey(1).apply(style);
     }
-    return style;
-  }
 
-  @Deprecated
-  public static Style getClassName(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(BaseLanguageStyle_StyleSheet.getConceptName(editorCell));
-    return style;
   }
-
-  @Deprecated
-  public static Style getConceptName(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("CLASS_NAME"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getSemicolon(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("SEMICOLON"));
-    style.set(StyleAttributes.EDITABLE, false);
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    return style;
-  }
-
-  @Deprecated
-  public static Style getDot(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("DOT"));
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-    style.set(StyleAttributes.SELECTABLE, false);
-    return style;
-  }
-
-  @Deprecated
-  public static Style getBaseAngleBracket(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.MATCHING_LABEL, "AngleBracket");
-    return style;
-  }
-
-  @Deprecated
-  public static Style getMatching(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.MATCHING_LABEL, "matching");
-    return style;
-  }
-
-  @Deprecated
-  public static Style getFoldedCell(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("FOLDED_TEXT"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getUrl(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("URL"));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getLabel(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getFirstLevel(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.darkGray));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getSecondLevel(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.gray));
-    return style;
-  }
-
-  @Deprecated
-  public static Style getThirdLevel(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.lightGray));
-    return style;
-  }
-
-  public static void applyKeyWord(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("KEYWORD"));
-  }
-
-  public static void applyCompactKeyWord(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyKeyWord(style, editorCell);
-  }
-
-  public static void applyComment(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("LINE_COMMENT"));
-  }
-
-  public static void applyTODO(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyComment(style, editorCell);
-    if (BaseLanguageStyle_StyleSheet._StyleParameter_QueryFunction_the604_a0d((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    ))) {
-      style.putAll(StyleRegistry.getInstance().getStyle("TODO"));
+  public static class TODOStyleClass extends AbstractStyleClass {
+    public TODOStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
     }
-  }
 
-  public static void applyBlockComment(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("BLOCK_COMMENT"));
-  }
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      if (_StyleParameter_QueryFunction_the604_a0d()) {
+        new TODO_StyleKey(2).apply(style);
+      }
+    }
 
-  public static void applyJavaDoc(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("DOC_COMMENT"));
-  }
-
-  public static void applyJavaDocTag(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("DOC_TAG"));
-  }
-
-  public static void applyField(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("INSTANCE_FIELD"));
-  }
-
-  public static void applyLocalVariable(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("LOCAL_VARIABLE"));
-  }
-
-  public static void applyParameter(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("PARAMETER"));
-  }
-
-  public static void applyStaticField(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyVariableName(style, editorCell);
-  }
-
-  public static void applyStringLiteral(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("STRING"));
-  }
-
-  public static void applyNumericLiteral(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("NUMBER"));
-  }
-
-  public static void applyEmptyCell(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("NOT_USED_ELEMENT"));
-  }
-
-  public static void applyInstanceMethod(Style style, EditorCell editorCell) {
-  }
-
-  public static void applyStaticMethod(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("STATIC_METHOD"));
-  }
-
-  public static void applyAnnotation(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("ANNOTATION"));
-  }
-
-  public static void applyOperator(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("OPERATION_SIGN"));
-  }
-
-  public static void applyAnyBracket(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.INDENT_LAYOUT_NO_WRAP, true);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-  }
-
-  public static void applyParenthesis(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyAnyBracket(style, editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("PARENTH"));
-    style.set(StyleAttributes.MATCHING_LABEL, "parenthesis");
-  }
-
-  public static void applyLeftParen(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyParenthesis(style, editorCell);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-  }
-
-  public static void applyLeftParenAfterName(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyLeftParen(style, editorCell);
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-  }
-
-  public static void applyRightParen(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyParenthesis(style, editorCell);
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-  }
-
-  public static void applyBrace(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyAnyBracket(style, editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("BRACES"));
-    style.set(StyleAttributes.MATCHING_LABEL, "brace");
-  }
-
-  public static void applyLeftBrace(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyBrace(style, editorCell);
-  }
-
-  public static void applyRightBrace(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyBrace(style, editorCell);
-  }
-
-  public static void applyBracket(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyAnyBracket(style, editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("BRACKETS"));
-    style.set(StyleAttributes.MATCHING_LABEL, "bracket");
-  }
-
-  public static void applyLeftBracket(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyBracket(style, editorCell);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-  }
-
-  public static void applyRightBracket(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyBracket(style, editorCell);
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-  }
-
-  public static void applyAngleBracket(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyAnyBracket(style, editorCell);
-    style.set(StyleAttributes.MATCHING_LABEL, "angleBracket");
-  }
-
-  public static void applyLeftAngleBracket(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyAngleBracket(style, editorCell);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-  }
-
-  public static void applyRightAngleBracket(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyAngleBracket(style, editorCell);
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-  }
-
-  public static void applyMethodName(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("METHOD_DECLARATION"));
-  }
-
-  public static void applyMPSMethodCall(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("METHOD_CALL"));
-    if (BaseLanguageStyle_StyleSheet._StyleParameter_QueryFunction_the604_a1hb((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    ))) {
-      style.putAll(StyleRegistry.getInstance().getStyle("STATIC_METHOD"));
+    private boolean _StyleParameter_QueryFunction_the604_a0d() {
+      return SNodeOperations.isInstanceOf(getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart")) && (boolean) CommentPart__BehaviorDescriptor.isToDo_id6hHyb3YSGHZ.invoke(SNodeOperations.as(getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart")));
     }
   }
-
-  public static void applyVariableName(Style style, EditorCell editorCell) {
-    if (BaseLanguageStyle_StyleSheet._StyleParameter_QueryFunction_the604_a0ib((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    ))) {
-      style.putAll(StyleRegistry.getInstance().getStyle("STATIC_FINAL_FIELD"));
+  public static class BlockCommentStyleClass extends AbstractStyleClass {
+    public BlockCommentStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
     }
-    if (BaseLanguageStyle_StyleSheet._StyleParameter_QueryFunction_the604_a1ib((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    ))) {
-      style.putAll(StyleRegistry.getInstance().getStyle("STATIC_FIELD"));
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new BLOCK_COMMENT_StyleKey(1).apply(style);
     }
-    if (BaseLanguageStyle_StyleSheet._StyleParameter_QueryFunction_the604_a2ib((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    ))) {
-      style.putAll(StyleRegistry.getInstance().getStyle("INSTANCE_FIELD"));
+
+  }
+  public static class JavaDocStyleClass extends AbstractStyleClass {
+    public JavaDocStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
     }
-    if (BaseLanguageStyle_StyleSheet._StyleParameter_QueryFunction_the604_a3ib((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    ))) {
-      style.putAll(StyleRegistry.getInstance().getStyle("LOCAL_VARIABLE"));
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new DOC_COMMENT_StyleKey().apply(style);
+    }
+
+  }
+  public static class JavaDocTagStyleClass extends AbstractStyleClass {
+    public JavaDocTagStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new DOC_TAG_StyleKey().apply(style);
+    }
+
+  }
+  public static class FieldStyleClass extends AbstractStyleClass {
+    public FieldStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new DEFAULT_INSTANCE_FIELD_StyleKey().apply(style);
+    }
+
+  }
+  public static class LocalVariableStyleClass extends AbstractStyleClass {
+    public LocalVariableStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new DEFAULT_IDENTIFIER_StyleKey().apply(style);
+    }
+
+  }
+  public static class ParameterStyleClass extends AbstractStyleClass {
+    public ParameterStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new PARAMETER_StyleKey().apply(style);
+    }
+
+  }
+  public static class StaticFieldStyleClass extends AbstractStyleClass {
+    public StaticFieldStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new VariableNameStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    }
+
+  }
+  public static class StringLiteralStyleClass extends AbstractStyleClass {
+    public StringLiteralStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new STRING_StyleKey().apply(style);
+    }
+
+  }
+  public static class NumericLiteralStyleClass extends AbstractStyleClass {
+    public NumericLiteralStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new NUMBER_StyleKey().apply(style);
+    }
+
+  }
+  public static class EmptyCellStyleClass extends AbstractStyleClass {
+    public EmptyCellStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new NOT_USED_ELEMENT_StyleKey().apply(style);
+    }
+
+  }
+  public static class InstanceMethodStyleClass extends AbstractStyleClass {
+    public InstanceMethodStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+    }
+
+  }
+  public static class StaticMethodStyleClass extends AbstractStyleClass {
+    public StaticMethodStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new STATIC_METHOD_StyleKey().apply(style);
+    }
+
+  }
+  public static class AnnotationStyleClass extends AbstractStyleClass {
+    public AnnotationStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new ANNOTATION_StyleKey().apply(style);
+    }
+
+  }
+  public static class OperatorStyleClass extends AbstractStyleClass {
+    public OperatorStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new OPERATION_SIGN_StyleKey().apply(style);
+    }
+
+  }
+  public static class AnyBracketStyleClass extends AbstractStyleClass {
+    public AnyBracketStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.INDENT_LAYOUT_NO_WRAP, true);
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
+    }
+
+  }
+  public static class ParenthesisStyleClass extends AbstractStyleClass {
+    public ParenthesisStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new AnyBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new PARENTH_StyleKey().apply(style);
+      style.set(StyleAttributes.MATCHING_LABEL, "parenthesis");
+    }
+
+  }
+  public static class LeftParenStyleClass extends AbstractStyleClass {
+    public LeftParenStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new ParenthesisStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
+    }
+
+  }
+  public static class LeftParenAfterNameStyleClass extends AbstractStyleClass {
+    public LeftParenAfterNameStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new LeftParenStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+    }
+
+  }
+  public static class RightParenStyleClass extends AbstractStyleClass {
+    public RightParenStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new ParenthesisStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+    }
+
+  }
+  public static class BraceStyleClass extends AbstractStyleClass {
+    public BraceStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new AnyBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new BRACES_StyleKey().apply(style);
+      style.set(StyleAttributes.MATCHING_LABEL, "brace");
+    }
+
+  }
+  public static class LeftBraceStyleClass extends AbstractStyleClass {
+    public LeftBraceStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new BraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    }
+
+  }
+  public static class RightBraceStyleClass extends AbstractStyleClass {
+    public RightBraceStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new BraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    }
+
+  }
+  public static class BracketStyleClass extends AbstractStyleClass {
+    public BracketStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new AnyBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new BRACKETS_StyleKey().apply(style);
+      style.set(StyleAttributes.MATCHING_LABEL, "bracket");
+    }
+
+  }
+  public static class LeftBracketStyleClass extends AbstractStyleClass {
+    public LeftBracketStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new BracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
+    }
+
+  }
+  public static class RightBracketStyleClass extends AbstractStyleClass {
+    public RightBracketStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new BracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+    }
+
+  }
+  public static class AngleBracketStyleClass extends AbstractStyleClass {
+    public AngleBracketStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new AnyBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      style.set(StyleAttributes.MATCHING_LABEL, "angleBracket");
+    }
+
+  }
+  public static class LeftAngleBracketStyleClass extends AbstractStyleClass {
+    public LeftAngleBracketStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new AngleBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
+    }
+
+  }
+  public static class RightAngleBracketStyleClass extends AbstractStyleClass {
+    public RightAngleBracketStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new AngleBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+      style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
+    }
+
+  }
+  public static class MethodNameStyleClass extends AbstractStyleClass {
+    public MethodNameStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new METHOD_DECLARATION_StyleKey().apply(style);
+    }
+
+  }
+  public static class MPSMethodCallStyleClass extends AbstractStyleClass {
+    public MPSMethodCallStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new METHOD_CALL_StyleKey().apply(style);
+      if (_StyleParameter_QueryFunction_the604_a1hb()) {
+        new STATIC_METHOD_StyleKey().apply(style);
+      }
+    }
+
+    private boolean _StyleParameter_QueryFunction_the604_a1hb() {
+      return SNodeOperations.isInstanceOf(getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"));
     }
   }
+  public static class VariableNameStyleClass extends AbstractStyleClass {
+    public VariableNameStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyClassName(Style style, EditorCell editorCell) {
-    BaseLanguageStyle_StyleSheet.applyConceptName(style, editorCell);
-  }
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      if (_StyleParameter_QueryFunction_the604_a0ib()) {
+        new DEFAULT_CONSTANT_StyleKey().apply(style);
+      }
+      if (_StyleParameter_QueryFunction_the604_a1ib()) {
+        new DEFAULT_STATIC_FIELD_StyleKey().apply(style);
+      }
+      if (_StyleParameter_QueryFunction_the604_a2ib()) {
+        new DEFAULT_INSTANCE_FIELD_StyleKey().apply(style);
+      }
+      if (_StyleParameter_QueryFunction_the604_a3ib()) {
+        new DEFAULT_IDENTIFIER_StyleKey().apply(style);
+      }
+    }
 
-  public static void applyConceptName(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("CLASS_NAME"));
-  }
-
-  public static void applySemicolon(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("SEMICOLON"));
-    style.set(StyleAttributes.EDITABLE, false);
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-  }
-
-  public static void applyDot(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("DOT"));
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-    style.set(StyleAttributes.SELECTABLE, false);
-  }
-
-  public static void applyBaseAngleBracket(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.MATCHING_LABEL, "AngleBracket");
-  }
-
-  public static void applyMatching(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.MATCHING_LABEL, "matching");
-  }
-
-  public static void applyFoldedCell(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("FOLDED_TEXT"));
-  }
-
-  public static void applyUrl(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("URL"));
-  }
-
-  public static void applyLabel(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-  }
-
-  public static void applyFirstLevel(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.darkGray));
-  }
-
-  public static void applySecondLevel(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.gray));
-  }
-
-  public static void applyThirdLevel(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.lightGray));
-  }
-
-  private static boolean _StyleParameter_QueryFunction_the604_a0d(EditorContext editorContext, SNode node) {
-    return SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.TextCommentPart") && BehaviorReflection.invokeVirtual(Boolean.TYPE, SNodeOperations.as(node, "jetbrains.mps.baseLanguage.structure.TextCommentPart"), "virtual_isToDo_7236590470026152831", new Object[]{});
-  }
-
-  private static boolean _StyleParameter_QueryFunction_the604_a1hb(EditorContext editorContext, SNode node) {
-    return SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
-  }
-
-  private static boolean _StyleParameter_QueryFunction_the604_a0ib(EditorContext editorContext, SNode node) {
-    if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.ClassifierMember")) {
-      if (BehaviorReflection.invokeVirtual(Boolean.TYPE, SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.ClassifierMember"), "virtual_isStatic_7405920559687241224", new Object[]{})) {
-        if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.VariableDeclaration") && SPropertyOperations.getBoolean(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"), "isFinal")) {
+    private boolean _StyleParameter_QueryFunction_the604_a0ib() {
+      if (SNodeOperations.isInstanceOf(getNode(), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember"))) {
+        if ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(getNode(), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember")))) {
+          if (SNodeOperations.isInstanceOf(getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration")) && SPropertyOperations.getBoolean(SNodeOperations.cast(getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal"))) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+    private boolean _StyleParameter_QueryFunction_the604_a1ib() {
+      if (SNodeOperations.isInstanceOf(getNode(), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember"))) {
+        if ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(getNode(), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember")))) {
+          if (!((SNodeOperations.isInstanceOf(getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration")) && SPropertyOperations.getBoolean(SNodeOperations.cast(getNode(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal"))))) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+    private boolean _StyleParameter_QueryFunction_the604_a2ib() {
+      if (SNodeOperations.isInstanceOf(getNode(), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember"))) {
+        if (!((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(getNode(), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember"))))) {
           return true;
         }
       }
+      return false;
     }
-    return false;
-  }
-
-  private static boolean _StyleParameter_QueryFunction_the604_a1ib(EditorContext editorContext, SNode node) {
-    if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.ClassifierMember")) {
-      if (BehaviorReflection.invokeVirtual(Boolean.TYPE, SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.ClassifierMember"), "virtual_isStatic_7405920559687241224", new Object[]{})) {
-        if (!(SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.VariableDeclaration") && SPropertyOperations.getBoolean(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"), "isFinal"))) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  private static boolean _StyleParameter_QueryFunction_the604_a2ib(EditorContext editorContext, SNode node) {
-    if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.ClassifierMember")) {
-      if (!(BehaviorReflection.invokeVirtual(Boolean.TYPE, SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.ClassifierMember"), "virtual_isStatic_7405920559687241224", new Object[]{}))) {
+    private boolean _StyleParameter_QueryFunction_the604_a3ib() {
+      if (!(SNodeOperations.isInstanceOf(getNode(), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember")))) {
         return true;
       }
+      return false;
     }
-    return false;
   }
-
-  private static boolean _StyleParameter_QueryFunction_the604_a3ib(EditorContext editorContext, SNode node) {
-    if (!(SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.ClassifierMember"))) {
-      return true;
+  public static class ClassNameStyleClass extends AbstractStyleClass {
+    public ClassNameStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
     }
-    return false;
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new ConceptNameStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    }
+
+  }
+  public static class ConceptNameStyleClass extends AbstractStyleClass {
+    public ConceptNameStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new CLASS_NAME_StyleKey().apply(style);
+    }
+
+  }
+  public static class SemicolonStyleClass extends AbstractStyleClass {
+    public SemicolonStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new SEMICOLON_StyleKey().apply(style);
+      style.set(StyleAttributes.EDITABLE, false);
+      style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+      style.set(StyleAttributes.INDENT_LAYOUT_NO_WRAP, true);
+    }
+
+  }
+  public static class DotStyleClass extends AbstractStyleClass {
+    public DotStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new DOT_StyleKey().apply(style);
+      style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+      style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
+      style.set(StyleAttributes.SELECTABLE, false);
+    }
+
+  }
+  public static class BaseAngleBracketStyleClass extends AbstractStyleClass {
+    public BaseAngleBracketStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.MATCHING_LABEL, "AngleBracket");
+    }
+
+  }
+  public static class MatchingStyleClass extends AbstractStyleClass {
+    public MatchingStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.MATCHING_LABEL, "matching");
+    }
+
+  }
+  public static class FoldedCellStyleClass extends AbstractStyleClass {
+    public FoldedCellStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new FOLDED_TEXT_StyleKey().apply(style);
+    }
+
+  }
+  public static class UrlStyleClass extends AbstractStyleClass {
+    public UrlStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new URL_StyleKey().apply(style);
+    }
+
+  }
+  public static class LabelStyleClass extends AbstractStyleClass {
+    public LabelStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    }
+
+  }
+  public static class FirstLevelStyleClass extends AbstractStyleClass {
+    public FirstLevelStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.darkGray));
+    }
+
+  }
+  public static class SecondLevelStyleClass extends AbstractStyleClass {
+    public SecondLevelStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.gray));
+    }
+
+  }
+  public static class ThirdLevelStyleClass extends AbstractStyleClass {
+    public ThirdLevelStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.lightGray));
+    }
+
   }
 }

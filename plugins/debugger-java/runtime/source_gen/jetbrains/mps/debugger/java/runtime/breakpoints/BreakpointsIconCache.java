@@ -40,7 +40,6 @@ public class BreakpointsIconCache implements ProjectComponent {
       breakpoint.addBreakpointListener(myBreakpointListener);
       myUpdateFromCurrent.invoke();
     }
-
     @Override
     public void breakpointRemoved(@NotNull IBreakpoint breakpoint) {
       myUpdateFromCurrent.invoke();
@@ -61,14 +60,12 @@ public class BreakpointsIconCache implements ProjectComponent {
         updateIcons(null);
       }
     }
-
     @Override
     public void registered(AbstractDebugSession session) {
       if (session instanceof DebugSession) {
         ((DebugSession) session).getEventsProcessor().getRequestManager().addWarningsListener(myUpdateFromCurrent);
       }
     }
-
     @Override
     public void detached(AbstractDebugSession session) {
       if (session instanceof DebugSession) {
@@ -95,24 +92,24 @@ public class BreakpointsIconCache implements ProjectComponent {
 
   @Override
   public void projectOpened() {
-  }
-
-  @Override
-  public void projectClosed() {
-  }
-
-  @Override
-  public void initComponent() {
     myBreakpointManager.addChangeListener(myBreakpointsManagerListener);
     myDebugSessionManager.addDebugSessionListener(myDebugSessionAdapter);
     CleanupManager.getInstance().addCleanupListener(myCleanupListener);
   }
 
   @Override
-  public void disposeComponent() {
+  public void projectClosed() {
     CleanupManager.getInstance().removeCleanupListener(myCleanupListener);
     myDebugSessionManager.removeDebugSessionListener(myDebugSessionAdapter);
     myBreakpointManager.removeChangeListener(myBreakpointsManagerListener);
+  }
+
+  @Override
+  public void initComponent() {
+  }
+
+  @Override
+  public void disposeComponent() {
   }
 
   @Nullable
@@ -123,7 +120,6 @@ public class BreakpointsIconCache implements ProjectComponent {
     }
     return null;
   }
-
   public void updateIcons(@Nullable final DebugSession session) {
     final _FunctionTypes._void_P0_E0 update = new _FunctionTypes._void_P0_E0() {
       public void invoke() {
@@ -152,7 +148,6 @@ public class BreakpointsIconCache implements ProjectComponent {
       update.invoke();
     }
   }
-
   public Icon getIcon(@NotNull JavaBreakpoint breakpoint, @Nullable AbstractDebugSession session) {
     if (session != null && session.isMute()) {
       return Icons.MUTED_BREAKPOINT;
@@ -161,58 +156,30 @@ public class BreakpointsIconCache implements ProjectComponent {
       return MapSequence.fromMap(myCache).get(breakpoint);
     }
   }
-
   private Icon getIconInternal(JavaBreakpoint breakpoint, @Nullable DebugSession session) {
-    String warning = (session == null ?
-      null :
-      session.getEventsProcessor().getRequestManager().getWarning(breakpoint)
-    );
+    String warning = (session == null ? null : session.getEventsProcessor().getRequestManager().getWarning(breakpoint));
     switch (breakpoint.getKind()) {
       case EXCEPTION_BREAKPOINT:
-        return (breakpoint.isEnabled() ?
-          jetbrains.mps.debugger.java.runtime.ui.Icons.EXCEPTION_BREAKPOINT :
-          jetbrains.mps.debugger.java.runtime.ui.Icons.DISABLED_EXCEPTION_BREAKPOINT
-        );
+        return (breakpoint.isEnabled() ? jetbrains.mps.debugger.java.runtime.ui.Icons.EXCEPTION_BREAKPOINT : jetbrains.mps.debugger.java.runtime.ui.Icons.DISABLED_EXCEPTION_BREAKPOINT);
       case LINE_BREAKPOINT:
-        return (breakpoint.isValid() && (warning == null || warning.length() == 0) ?
-          ((breakpoint.isEnabled() ?
-            Icons.BREAKPOINT :
-            Icons.DISABLED_BREAKPOINT
-          )) :
-          Icons.INV_BREAKPOINT
-        );
+        return (breakpoint.isValid() && (warning == null || warning.length() == 0) ? ((breakpoint.isEnabled() ? Icons.BREAKPOINT : Icons.DISABLED_BREAKPOINT)) : Icons.INV_BREAKPOINT);
       case METHOD_BREAKPOINT:
-        return (breakpoint.isValid() && (warning == null || warning.length() == 0) ?
-          ((breakpoint.isEnabled() ?
-            jetbrains.mps.debugger.java.runtime.ui.Icons.METHOD_BREAKPOINT :
-            jetbrains.mps.debugger.java.runtime.ui.Icons.DISABLED_METHOD_BREAKPOINT
-          )) :
-          jetbrains.mps.debugger.java.runtime.ui.Icons.INVALID_METHOD_BREAKPOINT
-        );
+        return (breakpoint.isValid() && (warning == null || warning.length() == 0) ? ((breakpoint.isEnabled() ? jetbrains.mps.debugger.java.runtime.ui.Icons.METHOD_BREAKPOINT : jetbrains.mps.debugger.java.runtime.ui.Icons.DISABLED_METHOD_BREAKPOINT)) : jetbrains.mps.debugger.java.runtime.ui.Icons.INVALID_METHOD_BREAKPOINT);
       case FIELD_BREAKPOINT:
-        return (breakpoint.isValid() && (warning == null || warning.length() == 0) ?
-          ((breakpoint.isEnabled() ?
-            jetbrains.mps.debugger.java.runtime.ui.Icons.FIELD_BREAKPOINT :
-            jetbrains.mps.debugger.java.runtime.ui.Icons.DISABLED_FIELD_BREAKPOINT
-          )) :
-          jetbrains.mps.debugger.java.runtime.ui.Icons.INVALID_FIELD_BREAKPOINT
-        );
+        return (breakpoint.isValid() && (warning == null || warning.length() == 0) ? ((breakpoint.isEnabled() ? jetbrains.mps.debugger.java.runtime.ui.Icons.FIELD_BREAKPOINT : jetbrains.mps.debugger.java.runtime.ui.Icons.DISABLED_FIELD_BREAKPOINT)) : jetbrains.mps.debugger.java.runtime.ui.Icons.INVALID_FIELD_BREAKPOINT);
       default:
     }
     return null;
   }
-
   public IBreakpointListener getBreakpointListener() {
     return myBreakpointListener;
   }
-
   @NonNls
   @NotNull
   @Override
   public String getComponentName() {
     return "Breakpoints Icon Cache";
   }
-
   public static BreakpointsIconCache getInstance(Project project) {
     return project.getComponent(BreakpointsIconCache.class);
   }

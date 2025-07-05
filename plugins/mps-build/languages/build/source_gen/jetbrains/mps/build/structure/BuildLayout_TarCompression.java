@@ -4,23 +4,28 @@ package jetbrains.mps.build.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum BuildLayout_TarCompression {
   none("none", "none"),
   gzip("gzip", "gzip"),
   bzip2("bzip2", "bzip2");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private BuildLayout_TarCompression(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<BuildLayout_TarCompression> getConstants() {
     List<BuildLayout_TarCompression> list = ListSequence.fromList(new LinkedList<BuildLayout_TarCompression>());
     ListSequence.fromList(list).addElement(BuildLayout_TarCompression.none);
@@ -28,11 +33,9 @@ public enum BuildLayout_TarCompression {
     ListSequence.fromList(list).addElement(BuildLayout_TarCompression.bzip2);
     return list;
   }
-
   public static BuildLayout_TarCompression getDefault() {
     return BuildLayout_TarCompression.none;
   }
-
   public static BuildLayout_TarCompression parseValue(String value) {
     if (value == null) {
       return BuildLayout_TarCompression.getDefault();
@@ -47,16 +50,5 @@ public enum BuildLayout_TarCompression {
       return BuildLayout_TarCompression.bzip2;
     }
     return BuildLayout_TarCompression.getDefault();
-  }
-
-  private String myValue;
-
-  BuildLayout_TarCompression(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

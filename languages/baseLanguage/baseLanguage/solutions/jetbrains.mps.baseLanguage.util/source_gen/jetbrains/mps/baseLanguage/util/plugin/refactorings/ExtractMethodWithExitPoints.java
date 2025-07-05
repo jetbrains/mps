@@ -4,7 +4,7 @@ package jetbrains.mps.baseLanguage.util.plugin.refactorings;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -14,37 +14,30 @@ public class ExtractMethodWithExitPoints extends ExtractMethodFromStatementsRefa
   public ExtractMethodWithExitPoints(ExtractMethodRefactoringParameters parameters) {
     super(parameters);
   }
-
   @Override
   public SNode getMethodType() {
-    return SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.BooleanType", null);
+    return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType"));
   }
-
   @Override
-  public void replaceMatch(final MethodMatch match, final SNode methodDeclaration) {
-    ModelAccess.instance().runWriteActionInCommand(new Runnable() {
-      public void run() {
-        SNode methodCall = ExtractMethodWithExitPoints.this.createMethodCall(match, methodDeclaration);
-        SNode ifNode = SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.IfStatement", null);
-        SLinkOperations.setTarget(ifNode, "condition", methodCall, true);
-        SLinkOperations.setTarget(ifNode, "ifTrue", SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.StatementList", null), true);
-        ListSequence.fromList(SLinkOperations.getTargets(SLinkOperations.getTarget(ifNode, "ifTrue", true), "statement", true)).addElement(ListSequence.fromList(ExtractMethodWithExitPoints.this.myAnalyzer.getIntenalExitPoints()).first());
-        SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(ExtractMethodWithExitPoints.this.myStatements).first(), ifNode);
-        for (SNode statement : ListSequence.fromList(ExtractMethodWithExitPoints.this.myStatements)) {
-          SNodeOperations.deleteNode(statement);
-        }
-      }
-    });
+  public void replaceMatch(MethodMatch match, SNode methodDeclaration) {
+    SNode methodCall = this.createMethodCall(match, methodDeclaration);
+    SNode ifNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
+    SLinkOperations.setTarget(ifNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition"), methodCall);
+    SLinkOperations.setTarget(ifNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).addElement(ListSequence.fromList(this.myAnalyzer.getIntenalExitPoints()).first());
+    SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(this.myStatements).first(), ifNode);
+    for (SNode statement : ListSequence.fromList(this.myStatements)) {
+      SNodeOperations.deleteNode(statement);
+    }
   }
-
   @Override
   protected void modifyPartToExtract() {
-    SNode ret = SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.ReturnStatement", null);
-    SNode constant = SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.BooleanConstant", null);
-    SPropertyOperations.set(constant, "value", "" + (false));
-    SLinkOperations.setTarget(ret, "expression", constant, true);
+    SNode ret = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement"));
+    SNode constant = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant"));
+    SPropertyOperations.set(constant, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), "" + (false));
+    SLinkOperations.setTarget(ret, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression"), constant);
     ListSequence.fromList(this.myStatements).addElement(SNodeOperations.copyNode(ret));
-    SPropertyOperations.set(constant, "value", "" + (true));
+    SPropertyOperations.set(constant, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), "" + (true));
     for (SNode exitPoint : ListSequence.fromList(this.myAnalyzer.getIntenalExitPoints())) {
       SNodeOperations.replaceWithAnother(exitPoint, SNodeOperations.copyNode(ret));
     }

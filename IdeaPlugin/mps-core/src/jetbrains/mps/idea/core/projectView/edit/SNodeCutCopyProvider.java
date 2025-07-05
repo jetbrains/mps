@@ -22,12 +22,11 @@ import com.intellij.openapi.actionSystem.DataContext;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.smodel.descriptor.EditableSModelDescriptor;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -41,9 +40,9 @@ public class SNodeCutCopyProvider implements CopyProvider, CutProvider {
 
   private Collection<SNodeReference> mySelectedNodes;
   private Project myProject;
-  private EditableSModelDescriptor myModelDescriptor;
+  private EditableSModel myModelDescriptor;
 
-  public SNodeCutCopyProvider(Collection<SNodeReference> selectedNodes, @NotNull EditableSModelDescriptor modelDescriptor, @NotNull Project project) {
+  public SNodeCutCopyProvider(Collection<SNodeReference> selectedNodes, @NotNull EditableSModel modelDescriptor, @NotNull Project project) {
     mySelectedNodes = selectedNodes;
     myProject = project;
     myModelDescriptor = modelDescriptor;
@@ -79,12 +78,13 @@ public class SNodeCutCopyProvider implements CopyProvider, CutProvider {
   }
 
   private void performCopy(final boolean cut) {
-    ModelAccess.instance().runCommandInEDT(new Runnable() {
+    SRepository repository = myProject.getRepository();
+    repository.getModelAccess().executeCommandInEDT(new Runnable() {
       @Override
       public void run() {
         List<SNode> nodes = new ArrayList<SNode>();
         for (SNodeReference selectedNode : mySelectedNodes) {
-          SNode node = selectedNode.resolve(MPSModuleRepository.getInstance());
+          SNode node = selectedNode.resolve(repository);
           SNode theParent = null;
           if (node != null) {
             nodes.add(node);
@@ -108,6 +108,6 @@ public class SNodeCutCopyProvider implements CopyProvider, CutProvider {
           myModelDescriptor.save();
         }
       }
-    }, myProject);
+    });
   }
 }

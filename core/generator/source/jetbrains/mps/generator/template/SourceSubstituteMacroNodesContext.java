@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,33 +16,38 @@
 package jetbrains.mps.generator.template;
 
 import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
+/**
+ * Despite the name, the context serves not only to 'sourceNodesQuery' in macros but also to similar queries in
+ * rules (any sourceNodesQuery) in fact.
+ * For transition period (I don't like the idea of templates instantiating these context classes directly) I leave this
+ * class and its usages as is (i.e. both from rules and macros), although have changed superclass to fulfil genContext.templateNode
+ * contract.
+ */
 public class SourceSubstituteMacroNodesContext extends TemplateQueryContextWithMacro {
-  private final SNode myRule;
   private final SNodeReference myRulePointer;
 
   /**
-   * actually this parameter is passed not only to 'sourceNodesQuery' in macros but also to similar queries in rules
+   * @since 3.1
    */
-  public SourceSubstituteMacroNodesContext(SNode node, SNode ruleNode, SNode macroNode, @NotNull TemplateContext context, ITemplateGenerator generator) {
-    super(node, macroNode, context, generator);
-    myRule = ruleNode;
+  public SourceSubstituteMacroNodesContext(@NotNull TemplateContext context, @NotNull SNodeReference templateNode) {
+    super(context, templateNode);
     myRulePointer = null;
   }
 
-  public SourceSubstituteMacroNodesContext(SNode node, SNodeReference ruleNode, SNodeReference macroNode, @NotNull TemplateContext context, @NotNull ITemplateGenerator generator) {
-    super(node, macroNode, context, generator);
-    myRule = null;
-    myRulePointer = ruleNode;
+  @Override
+  protected SNodeReference getTemplateNodeRef() {
+    SNodeReference tn = super.getTemplateNodeRef();
+    if (tn != null) {
+      return tn;
+    }
+    return getRuleNode();
   }
 
   @Override
-  public SNode getRuleNodeForLogging() {
-    return myRule != null ? myRule :
-      myRulePointer != null ? myRulePointer.resolve(MPSModuleRepository.getInstance()) : null;
+  protected SNodeReference getRuleNode() {
+    return myRulePointer;
   }
 }

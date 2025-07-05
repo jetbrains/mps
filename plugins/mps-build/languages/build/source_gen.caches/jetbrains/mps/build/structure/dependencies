@@ -6,9 +6,9 @@
   </dependency>
   <dependency className="jetbrains.mps.build.structure.BuildLayout_CopyFilterEolStyle" file="BuildLayout_CopyFilterEolStyle.java">
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.LinkedList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.backports.LinkedList" />
   </dependency>
   <dependency className="jetbrains.mps.build.structure.BuildLayout_CopyFilterEolStyle_PropertySupport" file="BuildLayout_CopyFilterEolStyle_PropertySupport.java">
     <classNode dependClassName="java.lang.String" />
@@ -19,9 +19,9 @@
   </dependency>
   <dependency className="jetbrains.mps.build.structure.BuildLayout_TarCompression" file="BuildLayout_TarCompression.java">
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.LinkedList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.backports.LinkedList" />
   </dependency>
   <dependency className="jetbrains.mps.build.structure.BuildLayout_TarCompression_PropertySupport" file="BuildLayout_TarCompression_PropertySupport.java">
     <classNode dependClassName="java.lang.String" />
@@ -36,9 +36,9 @@
   </dependency>
   <dependency className="jetbrains.mps.build.structure.BuildSource_JavaContentFolderKind" file="BuildSource_JavaContentFolderKind.java">
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.LinkedList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.backports.LinkedList" />
   </dependency>
   <dependency className="jetbrains.mps.build.structure.BuildSource_JavaContentFolderKind_PropertySupport" file="BuildSource_JavaContentFolderKind_PropertySupport.java">
     <classNode dependClassName="java.lang.String" />
@@ -47,18 +47,44 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode extendsClassName="jetbrains.mps.smodel.PropertySupport" />
   </dependency>
+  <dependency className="jetbrains.mps.build.structure.ConceptPresentationAspectImpl" file="ConceptPresentationAspectImpl.java">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.build.structure.IconContainer" />
+    <classNode dependClassName="jetbrains.mps.build.structure.LanguageConceptSwitch" />
+    <classNode dependClassName="jetbrains.mps.build.structure.StructureAspectDescriptor" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConceptPresentation" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConceptPresentationBuilder" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.StructureAspectDescriptor" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode extendsClassName="jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase" />
+  </dependency>
   <dependency className="jetbrains.mps.build.structure.FileName_PropertySupport" file="FileName_PropertySupport.java">
     <classNode dependClassName="java.lang.String" />
     <classNode extendsClassName="jetbrains.mps.smodel.PropertySupport" />
   </dependency>
+  <dependency className="jetbrains.mps.build.structure.IconContainer" file="IconContainer.java">
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.IconResource" />
+  </dependency>
+  <dependency className="jetbrains.mps.build.structure.LanguageConceptSwitch" file="LanguageConceptSwitch.java">
+    <classNode dependClassName="jetbrains.mps.lang.smodel.LanguageConceptIndex" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.LanguageConceptIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SConceptId" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+  </dependency>
   <dependency className="jetbrains.mps.build.structure.StructureAspectDescriptor" file="StructureAspectDescriptor.java">
-    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Arrays" />
+    <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="jetbrains.mps.build.structure.LanguageConceptSwitch" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SConceptId" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.ConceptDescriptor" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConceptKind" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.StaticScope" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.interpreted.StructureAspectInterpreted" />
-    <classNode extendsClassName="jetbrains.mps.smodel.runtime.StructureAspectDescriptor" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode extendsClassName="jetbrains.mps.smodel.runtime.BaseStructureAspectDescriptor" />
   </dependency>
 </dependenciesRoot>
 

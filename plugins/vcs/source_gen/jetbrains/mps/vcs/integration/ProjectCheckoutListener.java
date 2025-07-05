@@ -9,12 +9,10 @@ import java.io.FilenameFilter;
 import jetbrains.mps.project.MPSExtentions;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ide.impl.ProjectUtil;
-import com.intellij.platform.ProjectBaseDirectory;
 
 public class ProjectCheckoutListener implements CheckoutListener {
   public ProjectCheckoutListener() {
   }
-
   @Override
   public boolean processCheckedOutDirectory(Project project, File directory) {
     File[] files = directory.listFiles(new FilenameFilter() {
@@ -25,17 +23,13 @@ public class ProjectCheckoutListener implements CheckoutListener {
     });
     if (files != null && files.length > 0) {
       int rc = Messages.showYesNoDialog(project, "You have checked out an MPS project file:\n" + files[0].getAbsolutePath() + "\nWould you like to open it?", "Checkout from Version Control", Messages.getQuestionIcon());
-      if (rc == 0) {
-        Project openedProject = ProjectUtil.openProject(files[0].getAbsolutePath(), project, false);
-        if (openedProject != null) {
-          ProjectBaseDirectory.getInstance(openedProject).setBaseDir(openedProject.getBaseDir());
-        }
+      if (rc == Messages.YES) {
+        ProjectUtil.openProject(files[0].getAbsolutePath(), project, false);
       }
       return true;
     }
     return false;
   }
-
   @Override
   public void processOpenedProject(Project lastOpenedProject) {
   }

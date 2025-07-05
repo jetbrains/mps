@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,33 +15,24 @@
  */
 package jetbrains.mps.generator.template;
 
-import jetbrains.mps.smodel.MPSModuleRepository;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.generator.runtime.TemplateContext;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 /**
  * Evgeny Gryaznov, 11/15/10
  */
 public class TemplateQueryContextWithRule extends TemplateQueryContext {
-  private final SNode myRule;
-  private final SNodeReference myRulePointer;
-
-  public TemplateQueryContextWithRule(SNode inputNode, SNode ruleNode, ITemplateGenerator generator) {
-    super(inputNode, null, null, generator);
-    myRule = ruleNode;
-    myRulePointer = null;
-  }
-
-  public TemplateQueryContextWithRule(SNode inputNode, SNodeReference ruleNode, ITemplateGenerator generator) {
-    super(inputNode, null, null, generator);
-    myRule = null;
-    myRulePointer = ruleNode;
+  /**
+   * @since 3.1
+   */
+  protected TemplateQueryContextWithRule(@NotNull TemplateContext templateContext, @NotNull SNodeReference ruleNode) {
+    super(ruleNode, templateContext);
   }
 
   @Override
-  public SNode getRuleNodeForLogging() {
-    return myRule != null ? myRule :
-      myRulePointer != null ? myRulePointer.resolve(MPSModuleRepository.getInstance()) : null;
+  protected SNodeReference getRuleNode() {
+    return getTemplateNodeRef();
   }
 
 }

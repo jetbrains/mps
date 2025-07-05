@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,8 @@
  */
 package jetbrains.mps.generator.impl.cache;
 
-import jetbrains.mps.generator.TransientSModel;
-import jetbrains.mps.persistence.binary.NodesReader;
-import jetbrains.mps.persistence.binary.NodesWriter;
-import jetbrains.mps.util.Pair;
+import jetbrains.mps.persistence.binary.BareNodeReader;
+import jetbrains.mps.persistence.binary.BareNodeWriter;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
@@ -26,7 +24,6 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,7 +31,7 @@ import java.util.List;
  */
 public class TransientModelPersistence {
 
-  private static final int VERSION = 5;
+  private static final int VERSION = 6;
   private final SModelReference myModelReference;
 
   public TransientModelPersistence(@NotNull SModelReference modelReference) {
@@ -43,7 +40,7 @@ public class TransientModelPersistence {
 
   public void saveModel(List<SNode> roots, ModelOutputStream os) throws IOException {
     os.writeInt(VERSION);
-    new NodesWriter(myModelReference, null).writeNodes(roots, os);
+    new BareNodeWriter(myModelReference, os).writeNodes(roots);
   }
 
   public List<SNode> loadModel(ModelInputStream is) throws IOException {
@@ -51,14 +48,7 @@ public class TransientModelPersistence {
     if (version != VERSION) {
       return null;
     }
-
-    TransientSModel m = new TransientSModel(myModelReference);
-    List<Pair<String, SNode>> roots = new NodesReader(myModelReference, null, false).readNodes(m, is);
-    List<SNode> res = new ArrayList<SNode>(roots.size());
-    for (Pair<String, SNode> r : roots) {
-      res.add(r.o2);
-    }
-    return res;
+    return new BareNodeReader(myModelReference, is).readChildren(null);
   }
 
 }

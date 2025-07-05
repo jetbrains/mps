@@ -6,6 +6,7 @@ import jetbrains.mps.editor.runtime.style.ParametersInformation;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -20,22 +21,15 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 public class DefaultClassifierMethodParameterInformationQuery implements ParametersInformation<SNode> {
   public DefaultClassifierMethodParameterInformationQuery() {
   }
-
   public Iterable<SNode> getMethods(SNode node, EditorContext editorContext) {
     SNode selectedActualArgument = this.getSelectedActualArgument(editorContext);
-    SNode methodCall = (selectedActualArgument != null ?
-      SNodeOperations.cast(SNodeOperations.getParent(selectedActualArgument), "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodCallOperation") :
-      node
-    );
-    Scope scope = ModelConstraints.getReferenceDescriptor(methodCall, "method").getScope();
-    String name = SPropertyOperations.getString(SLinkOperations.getTarget(methodCall, "member", false), "name");
-    Iterable<SNode> availableElements = scope.getAvailableElements((name != null ?
-      name :
-      ""
-    ));
+    SNode methodCall = (selectedActualArgument != null ? SNodeOperations.cast(SNodeOperations.getParent(selectedActualArgument), MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd711e29L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodCallOperation")) : node);
+    Scope scope = ModelConstraints.getReferenceDescriptor(methodCall, MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member")).getScope();
+    String name = SPropertyOperations.getString(SLinkOperations.getTarget(methodCall, MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+    Iterable<SNode> availableElements = scope.getAvailableElements((name != null ? name : ""));
     return Sequence.fromIterable(availableElements).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SNodeOperations.as(it, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodDeclaration");
+        return SNodeOperations.as(it, MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodDeclaration"));
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -43,24 +37,24 @@ public class DefaultClassifierMethodParameterInformationQuery implements Paramet
       }
     });
   }
-
   public void getStyledMethodPresentation(SNode node, EditorContext editorContext, SNode parameterObject, StyledTextPrinter styledText) {
     BaseMethodParameterInformationQueryUtil.fillPresentation(parameterObject, this.getSelectedActualArgument(editorContext), styledText);
   }
-
   public boolean isMethodCurrent(SNode node, EditorContext editorContext, SNode parameterObject) {
-    return SLinkOperations.getTarget(node, "member", false) == parameterObject;
+    return SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member")) == parameterObject;
   }
-
   private SNode getSelectedActualArgument(EditorContext editorContext) {
     SNode selectedNode = editorContext.getSelectedNode();
     if (selectedNode == null) {
       return null;
     }
-    return ListSequence.fromList(SNodeOperations.getAncestors(selectedNode, "jetbrains.mps.baseLanguage.structure.Expression", true)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), true)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodCallOperation") && SNodeOperations.getContainingLinkDeclaration(it) == SLinkOperations.findLinkDeclaration("jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodCallOperation", "actualArgument");
+        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd711e29L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodCallOperation")) && eq_qab7ap_a0a0a0a0a0a2a4(SNodeOperations.getContainingLink(it), MetaAdapterFactory.getContainmentLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd711e29L, 0x118bd877799L, "actualArgument"));
       }
     });
+  }
+  private static boolean eq_qab7ap_a0a0a0a0a0a2a4(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
   }
 }

@@ -42,8 +42,8 @@
              url="http://confluence.jetbrains.net/display/MPS/JetBrains+MPS+3.0+Download+Page"
              feedback="http://youtrack.jetbrains.net"
              majorVersion="3" minorVersoin="0">
-      <build number="129.488" version="3.0.4">
-        <message>JetBrains MPS 3.0.4 is available.</message>
+      <build number="129.516" version="3.0.5">
+        <message>JetBrains MPS 3.0.5 is available.</message>
       </build>
     </channel>
 
@@ -51,8 +51,90 @@
              url="http://confluence.jetbrains.net/display/MPS/JetBrains+MPS+3.0+Download+Page"
              feedback="http://youtrack.jetbrains.net"
              majorVersion="3" minorVersoin="0">
-      <build number="129.488" version="3.0.4">
-        <message>JetBrains MPS 3.0.4 is available.</message>
+      <build number="129.516" version="3.0.5">
+        <message>JetBrains MPS 3.0.5 is available.</message>
+      </build>
+    </channel>
+
+    <channel id="MPS31EAP" name="MPS 3.1" status="eap"
+             url="http://confluence.jetbrains.com/display/MPS/JetBrains+MPS+3.1+Download+Page"
+             feedback="http://youtrack.jetbrains.net"
+             majorVersion="3" minorVersoin="1">
+      <build number="135.1483" version="3.1.6">
+        <message>JetBrains MPS 3.1.6 is available.</message>
+      </build>
+    </channel>
+
+    <channel id="MPS31" name="MPS 3.1" status="release"
+             url="http://confluence.jetbrains.com/display/MPS/JetBrains+MPS+3.1+Download+Page"
+             feedback="http://youtrack.jetbrains.net"
+             majorVersion="3" minorVersoin="1">
+      <build number="135.1483" version="3.1.6">
+        <message>JetBrains MPS 3.1.6 is available.</message>
+      </build>
+    </channel>
+
+    <channel id="MPS32EAP" name="MPS 3.2" status="eap"
+             url="http://confluence.jetbrains.com/display/MPS/JetBrains+MPS+3.2+Download+Page"
+             feedback="http://youtrack.jetbrains.net"
+             majorVersion="3" minorVersoin="2">
+      <build number="139.2747" version="3.2.4">
+        <message>JetBrains MPS 3.2.4 is available.</message>
+      </build>
+    </channel>
+
+    <channel id="MPS32" name="MPS 3.2" status="release"
+             url="http://confluence.jetbrains.com/display/MPS/JetBrains+MPS+3.2+Download+Page"
+             feedback="http://youtrack.jetbrains.net"
+             majorVersion="3" minorVersoin="2">
+      <build number="139.2747" version="3.2.4">
+        <message>JetBrains MPS 3.2.4 is available.</message>
+      </build>
+    </channel>
+
+    <channel id="MPS33EAP" name="MPS 3.3" status="eap"
+             url="http://confluence.jetbrains.com/display/MPS/JetBrains+MPS+3.3+Download+Page"
+             feedback="http://youtrack.jetbrains.net"
+             majorVersion="3" minorVersoin="3">
+      <build number="143.1301" version="3.3.5">
+        <message>JetBrains MPS 3.3.5 is available.</message>
+      </build>
+    </channel>
+
+    <channel id="MPS33" name="MPS 3.3" status="release"
+             url="http://confluence.jetbrains.com/display/MPS/JetBrains+MPS+3.3+Download+Page"
+             feedback="http://youtrack.jetbrains.net"
+             majorVersion="3" minorVersoin="3">
+      <build number="143.1301" version="3.3.5">
+        <message>JetBrains MPS 3.3.5 is available.</message>
+      </build>
+    </channel>
+
+    <channel id="MPS34EAP" name="MPS 3.4" status="eap"
+             url="http://jetbrains.com/mps/download"
+             feedback="http://youtrack.jetbrains.net"
+             majorVersion="3" minorVersoin="4">
+      <build number="162.2317" version="3.4.4">
+        <message>JetBrains MPS 3.4.4 is available.</message>
+      </build>
+    </channel>
+
+    <channel id="MPS34" name="MPS 3.4" status="release"
+             url="http://jetbrains.com/mps/download"
+             feedback="http://youtrack.jetbrains.net"
+             majorVersion="3" minorVersoin="4">
+      <build number="162.2317" version="3.4.4">
+        <message>JetBrains MPS 3.4.4 is available.</message>
+      </build>
+    </channel>
+
+    <channel id="MPS171EAP" name="MPS 2017.1" status="eap"
+             url="http://confluence.jetbrains.com/display/MPS/JetBrains+MPS+2017.1+EAP+Download+Page"
+             feedback="http://youtrack.jetbrains.net"
+             majorVersion="2017" minorVersoin="1">
+      <build number="171.709" version="2017.1 RC1">
+        <message>JetBrains MPS 2017.1 RC1 is available.</message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/MPS/JetBrains+MPS+2017.1+EAP+Download+Page/" download="true"/>
       </build>
     </channel>
 

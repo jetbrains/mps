@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,17 +24,17 @@ import com.intellij.ui.IconDeferrer;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.editor.MPSEditorUtil;
 import jetbrains.mps.ide.icons.IconManager;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
-import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.smodel.SModelFileTracker;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.workbench.nodesFs.MPSNodeVirtualFile;
+import jetbrains.mps.util.ModelComputeRunnable;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import javax.swing.Icon;
 
@@ -61,38 +61,47 @@ public class NodeFileIconProvider implements FileIconProvider, ApplicationCompon
   @Nullable
   public Icon getIcon(final VirtualFile file, int flags, final Project project) {
     if (file instanceof MPSNodeVirtualFile) {
+      final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(project);
+      if (mpsProject == null) {
+        return null;
+      }
       final MPSNodeVirtualFile nodeFile = (MPSNodeVirtualFile) file;
-      return ModelAccess.instance().runReadAction(new Computable<Icon>() {
+      return new ModelComputeRunnable<Icon>(new Computable<Icon>() {
         @Override
         public Icon compute() {
           if (IconDeferrer.getInstance() instanceof DefaultIconDeferrer) {
             SNode node = MPSEditorUtil.getCurrentEditedNode(project, nodeFile);
             if (node != null) {
-              return IconManager.getIconWithoutAdditionalPart(node);
+              return IconManager.getIconFor(node);
             }
+            // TODO: get current empty tab component in MPSEditorUtil by using ((TabbedEditor) nodeEditor).myTabsComponent.getCurrentTabAspect()[.getIcon]
           }
           SNode node = nodeFile.getNode();
           if (node != null) {
-            return IconManager.getIconWithoutAdditionalPart(node);
+            return IconManager.getIconFor(node);
           }
           return null;
         }
-      });
+      }).runRead(mpsProject.getModelAccess());
     } else if(file.getFileType().equals(MPSFileTypeFactory.MPS_ROOT_FILE_TYPE)) {
-      return ModelAccess.instance().runReadAction(new Computable<Icon>(){
+      final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(project);
+      if (mpsProject == null) {
+        return null;
+      }
+      return new ModelComputeRunnable<Icon>(new Computable<Icon>(){
         @Override
         public Icon compute() {
-          SModel descr = SModelFileTracker.getInstance().findModel(VirtualFileUtils.toIFile(file.getParent()));
+          SModel descr = SModelFileTracker.getInstance(mpsProject.getRepository()).findModel(VirtualFileUtils.toIFile(file.getParent()));
           if(descr == null) return null;
 
           for (SNode node : descr.getRootNodes()) {
             if(node.getName().equals(file.getNameWithoutExtension())) {
-              return IconManager.getIconFor(node, true);
+              return IconManager.getIconFor(node);
             }
           }
           return null;
         }
-      });
+      }).runRead(mpsProject.getModelAccess());
     }
     return null;
   }

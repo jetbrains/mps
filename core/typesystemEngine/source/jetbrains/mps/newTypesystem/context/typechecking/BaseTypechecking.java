@@ -17,9 +17,14 @@ package jetbrains.mps.newTypesystem.context.typechecking;
 
 import gnu.trove.THashSet;
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
+import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
+import jetbrains.mps.lang.typesystem.runtime.SubstituteType_Runtime;
 import jetbrains.mps.newTypesystem.context.component.SimpleTypecheckingComponent;
 import jetbrains.mps.newTypesystem.state.State;
 import jetbrains.mps.smodel.IOperationContext;
+import jetbrains.mps.typesystem.inference.TypeSubstitution;
+import jetbrains.mps.util.Cancellable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.util.Pair;
@@ -36,7 +41,7 @@ import java.util.Set;
  * User: fyodor
  * Date: 11/12/12
  */
-public class BaseTypechecking<STATE extends State, COMP extends SimpleTypecheckingComponent> {
+public abstract class BaseTypechecking<STATE extends State, COMP extends SimpleTypecheckingComponent> {
 
   protected final SNode myRootNode;
   private final STATE myState;
@@ -61,7 +66,7 @@ public class BaseTypechecking<STATE extends State, COMP extends SimpleTypechecki
     return myRootNode;
   }
 
-  protected COMP getTypecheckingComponent() {
+  public COMP getTypecheckingComponent() {
     return myTypecheckingComponent;
   }
 
@@ -99,7 +104,6 @@ public class BaseTypechecking<STATE extends State, COMP extends SimpleTypechecki
   }
 
   public void dispose() {
-    getTypecheckingComponent().dispose();
   }
 
   public void computeTypes(boolean refreshTypes) {
@@ -117,7 +121,7 @@ public class BaseTypechecking<STATE extends State, COMP extends SimpleTypechecki
 
     Set<Pair<SNode, List<IErrorReporter>>> result = new THashSet<Pair<SNode, List<IErrorReporter>>>(1);
     for (SNode key : keySet) {
-      List<IErrorReporter> reporters = getErrors(key);
+      List<IErrorReporter> reporters = nodesToErrorsMap.get(key);
       if (!reporters.isEmpty()) {
         if (key.getContainingRoot() == null) {
           /*  LOG.warn("Type system reports error for node without containing root. Node: " + key);
@@ -136,8 +140,30 @@ public class BaseTypechecking<STATE extends State, COMP extends SimpleTypechecki
     return getTypecheckingComponent().isChecked();
   }
 
-  public void applyNonTypesystemRulesToRoot(IOperationContext context, TypeCheckingContext typeCheckingContext) {
-    // do nothing
+  public void applyNonTypesystemRulesToRoot(TypeCheckingContext typeCheckingContext) {
+    applyNonTypesystemRulesToRoot(typeCheckingContext, Cancellable.NEVER);
   }
+
+  /**
+   * Should return true iff the operation has succeeded and was not cancelled.
+   */
+  public abstract boolean applyNonTypesystemRulesToRoot(TypeCheckingContext typeCheckingContext, Cancellable c);
+
+  /**
+   * Returns the list of all node attributes with the attributedNode added as the last.
+   * The rules applicable to earlier attributes can be amended by the rules applicable to attributes added later.
+   * At some point a rule may declare to "supercede" the rules that follow, which then become obsolete.
+   * This logic is in sync with the editor's policy for overriding editor cells using attributes.
+   * @param attributedNode
+   */
+  public List<SNode> nodesToApplyRulesTo(SNode attributedNode) {
+    if (attributedNode == null) return Collections.emptyList();
+
+    ArrayList<SNode> nodesToTest = new ArrayList<SNode>(AttributeOperations.getAllAttributes(attributedNode));
+    nodesToTest.add(attributedNode);
+
+    return nodesToTest;
+  }
+
 
 }

@@ -7,10 +7,10 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.IScope;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -19,27 +19,22 @@ public class ExternalIdMenu extends AbstractCellMenuComponent {
   public ExternalIdMenu() {
     super(new SubstituteInfoPartExt[]{new ExternalIdMenu.XmlExternalId_generic_cellMenu_kwmulu_a0()});
   }
-
   public static class XmlExternalId_generic_cellMenu_kwmulu_a0 extends AbstractCellMenuPart_Generic_Group {
     public XmlExternalId_generic_cellMenu_kwmulu_a0() {
     }
-
-    public List<?> createParameterObjects(SNode node, IScope scope, IOperationContext operationContext, EditorContext editorContext) {
-      if (SPropertyOperations.getBoolean(node, "isPublic")) {
+    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      if (SPropertyOperations.getBoolean(node, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60345L, "isPublic"))) {
         return ListSequence.fromListAndArray(new ArrayList<String>(), "SYSTEM");
       }
       return ListSequence.fromListAndArray(new ArrayList<String>(), "PUBLIC");
     }
-
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IScope scope, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((String) parameterObject, node, model, scope, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
     }
-
-    public void handleAction_impl(String parameterObject, SNode node, SModel model, IScope scope, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.set(node, "isPublic", "" + (!(SPropertyOperations.getBoolean(node, "isPublic"))));
+    public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60345L, "isPublic"), "" + (!(SPropertyOperations.getBoolean(node, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60345L, "isPublic")))));
       editorContext.selectWRTFocusPolicy(node);
     }
-
     public boolean isReferentPresentation() {
       return false;
     }

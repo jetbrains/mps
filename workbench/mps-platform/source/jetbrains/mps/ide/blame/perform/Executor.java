@@ -39,7 +39,7 @@ public class Executor {
         try {
           response[0] = procedure.perform();
         } catch (Throwable e) {
-          response[0] = new Response(e.getMessage(), "", false, e);
+          response[0] = new Response(e.toString(), "", false, e);
         }
       }
     });

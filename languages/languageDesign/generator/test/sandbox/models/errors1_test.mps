@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:65fc685c-7150-448a-852d-28be5daa3af8(errors1_test)" doNotGenerate="true">
-  <persistence version="8" />
-  <language namespace="99a58581-8518-40c8-81f1-e364306f5ffc(jetbrains.mps.transformation.test.errorReporting)" />
-  <import index="tpck" modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" implicit="yes" />
-  <import index="qq7j" modelUID="r:13099be6-e9be-4c1b-a5cd-d0d83a6c9f0a(jetbrains.mps.transformation.test.errorReporting.structure)" version="-1" implicit="yes" />
-  <root type="qq7j.ErrorReportingRoot" typeId="qq7j.7287346816896104019" id="6145560071556214130" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="myRoot" />
-    <property name="intval" nameId="qq7j.7287346816896111112" value="42" />
-  </root>
+<model ref="r:65fc685c-7150-448a-852d-28be5daa3af8(errors1_test)" doNotGenerate="true">
+  <persistence version="9" />
+  <languages>
+    <use id="99a58581-8518-40c8-81f1-e364306f5ffc" name="jetbrains.mps.transformation.test.errorReporting" version="0" />
+  </languages>
+  <imports />
+  <registry>
+    <language id="99a58581-8518-40c8-81f1-e364306f5ffc" name="jetbrains.mps.transformation.test.errorReporting">
+      <concept id="7287346816896104019" name="jetbrains.mps.transformation.test.errorReporting.structure.ErrorReportingRoot" flags="ng" index="2d2UO2">
+        <property id="7287346816896111112" name="intval" index="2d2O_p" />
+      </concept>
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="2d2UO2" id="5l9q_ciVEPM">
+    <property role="TrG5h" value="myRoot" />
+    <property role="2d2O_p" value="42" />
+  </node>
 </model>
 

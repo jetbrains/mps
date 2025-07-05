@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,77 +15,69 @@
  */
 package jetbrains.mps.reloading;
 
-import jetbrains.mps.ClasspathReader;
-import jetbrains.mps.ClasspathReader.ClassType;
-import jetbrains.mps.util.Callback;
+import jetbrains.mps.util.ClassPathReader;
+import jetbrains.mps.util.ClassType;
+import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.PathManager;
+import jetbrains.mps.util.SystemInfo;
+import jetbrains.mps.util.URLUtil;
+import jetbrains.mps.vfs.impl.IoFile;
+import jetbrains.mps.vfs.path.UniPath;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import sun.misc.Launcher;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-public class CommonPaths {
-  private static final String OS_NAME = System.getProperty("os.name").toLowerCase();
-  private static final String JAVA_VERSION = System.getProperty("java.version").toLowerCase();
-
-  public static final boolean isMac = OS_NAME.startsWith("mac");
-  public static final int jdkVersion;
-  public static final boolean isToolsJarNeeded;
-
+public final class CommonPaths {
   private static final Logger LOG = LogManager.getLogger(CommonPaths.class);
 
-  static {
-    if (JAVA_VERSION.matches("\\d\\.\\d+\\..*")) {
-      String version = JAVA_VERSION.substring(JAVA_VERSION.indexOf(".") + 1);
-      jdkVersion = Integer.parseInt(version.substring(0, version.indexOf(".")));
-    } else if (JAVA_VERSION.matches("\\d\\.\\d+")) {
-      jdkVersion = Integer.parseInt(JAVA_VERSION.substring(JAVA_VERSION.indexOf(".") + 1));
-    } else {
-      LOG.error("Unexpected java version format " + JAVA_VERSION + ".");
-      jdkVersion = 0;
-    }
+  private static final String REQUESTER_STRING = "Common paths";
+  private static final ClassPathCachingFacility ourClassPathCachingFacility = ClassPathCachingFacility.getInstance();
 
-    isToolsJarNeeded = !(isMac && jdkVersion < 7);
-  }
 
   //--------paths-----------
 
-  public static List<String> getMPSPaths(ClassType... types) {
+  public static List<String> getMPSPaths(ClassType type) {
+    if (type == ClassType.JDK) {
+      return getJDKPath();
+    } else if (type == ClassType.JDK_TOOLS) {
+      return getJDK_ToolsPath();
+    }
+
     final CompositeClassPathItem result = new CompositeClassPathItem();
-    ClasspathReader.addClasses(PathManager.getHomePath(), new Callback<String>() {
-      @Override
-      public void call(String param) {
-        addIfExists(result, File.separator + param);
-      }
-    }, types);
-    for (ClassType type : types) {
-      if (type == ClassType.ANNOTATIONS) {
-        addAnnotations(result);
-      } else if (type == ClassType.OPENAPI) {
-        addOpenAPIJars(result);
-      } else if (type == ClassType.CORE) {
-        addCoreJars(result);
-      } else if (type == ClassType.EDITOR) {
-        addEditorJars(result);
-      } else if (type == ClassType.IDEA_PLATFORM) {
-        addRepackedIdeaJars(result);
-      } else if (type == ClassType.IDEA) {
-        addIdeaJars(result);
-      } else if (type == ClassType.PLATFORM) {
-        addPlatformJars(result);
-      } else if (type == ClassType.WORKBENCH) {
-        addWorkbenchJars(result);
-      } else if (type == ClassType.TEST) {
-        addTestJars(result);
-      } else if (type == ClassType.JDK) {
-        return getJDKPath();
-      }
+    for (String path : new ClassPathReader(PathManager.getHomePath(), Collections.singletonList(type)).read()) {
+      addIfExists(result, path);
+    }
+    if (type == ClassType.ANNOTATIONS) {
+      addAnnotations(result);
+    } else if (type == ClassType.OPENAPI) {
+      addOpenAPIJars(result);
+    } else if (type == ClassType.CORE) {
+      addCoreJars(result);
+    } else if (type == ClassType.EDITOR) {
+      addEditorJars(result);
+    } else if (type == ClassType.IDEA_PLATFORM) {
+      addRepackedIdeaJars(result);
+    } else if (type == ClassType.IDEA) {
+      addIdeaJars(result);
+    } else if (type == ClassType.PLATFORM) {
+      addPlatformJars(result);
+    } else if (type == ClassType.WORKBENCH) {
+      addWorkbenchJars(result);
+    } else if (type == ClassType.TEST) {
+      addTestJars(result);
     }
     return itemToPath(result);
   }
@@ -94,8 +86,31 @@ public class CommonPaths {
     return itemToPath(getJDKClassPath());
   }
 
-  public static String getToolsJar() {
-    return PathManager.getHomePath() + File.separator + "lib" + File.separator + "tools.jar";
+  private static List<String> getJDK_ToolsPath() {
+    String jarLocation = getJarFileLocation("com.sun.jdi.Field");
+    if (jarLocation != null) {
+      File file = new File(jarLocation);
+      if (file.exists()) {
+        return Collections.singletonList(file.getAbsolutePath());
+      }
+    }
+    return Collections.emptyList();
+  }
+
+  private static String getJarFileLocation(@NotNull String classFQName) {
+    try {
+      Class cls = Class.forName(classFQName);
+      String classFileResourceLocation = "/" + classFQName.replaceAll("\\.", "/") + ".class";
+      String classFileResourceURL = cls.getResource(classFileResourceLocation).toString();
+      Pair<String, String> urls = URLUtil.splitJarUrl(classFileResourceURL);
+      if (urls == null) {
+        return null;
+      }
+      return URLDecoder.decode(urls.o1, Charset.defaultCharset().name()).replace('/', File.separatorChar);
+    } catch (ClassNotFoundException | UnsupportedEncodingException e) {
+      LOG.warn("", e);
+      return null;
+    }
   }
 
   public static String getBaseMPSPath() {
@@ -103,7 +118,7 @@ public class CommonPaths {
     if (new File(classesPath).exists()) {
       return classesPath;
     }
-    String mpsJarPath = PathManager.getHomePath() + File.separator + "lib" + File.separatorChar + "mps.jar";
+    String mpsJarPath = PathManager.getHomePath() + File.separator + "lib" + File.separatorChar + "mps-boot.jar";
     if (new File(mpsJarPath).exists()) {
       return mpsJarPath;
     }
@@ -115,7 +130,7 @@ public class CommonPaths {
   private static List<String> getJDKJars() {
     List<String> result = new ArrayList<String>();
 
-    if (isMac && jdkVersion < 7) {
+    if (SystemInfo.isMac && !SystemInfo.isJavaVersionAtLeast("1.7")) {
       // in apple jdk's (< jdk7) rt.jar classes contains in classes.jar
       result.add("classes.jar");
     } else {
@@ -128,12 +143,15 @@ public class CommonPaths {
     return result;
   }
 
+  /**
+   * @deprecated Since MPS 3.3 used only inside this class, so should become private.
+   */
+  @Deprecated
   public static IClassPathItem getJDKClassPath() {
     CompositeClassPathItem composite = new CompositeClassPathItem();
     for (String s : getJDKJars()) {
       addJarForName(composite, s);
     }
-    addToolsJar(composite);
     return composite;
   }
 
@@ -153,11 +171,10 @@ public class CommonPaths {
         if (!file.exists()) continue;
 
         if (file.getName().equals(name)) {
-          return ClassPathFactory.getInstance().createFromPath(file.getCanonicalPath(), "Common paths");
+          String canonicalPath = file.getCanonicalPath();
+          return ourClassPathCachingFacility.createFromPath(canonicalPath, REQUESTER_STRING);
         }
-      } catch (URISyntaxException e) {
-        LOG.error(null, e);
-      } catch (Throwable e) {
+      } catch (URISyntaxException | IOException e) {
         LOG.error(null, e);
       }
     }
@@ -173,99 +190,91 @@ public class CommonPaths {
     addPlatformJars(result);
     addIdeaJars(result);
     addWorkbenchJars(result);
-    addClasses(result, PathManager.getHomePath());
+    addClasses(result);
     return result;
   }
 
   private static void addAnnotations(CompositeClassPathItem result) {
-    addIfExists(result, "/lib/annotations.jar");
+    addIfExists(result, "lib/annotations.jar");
   }
 
   private static void addOpenAPIJars(CompositeClassPathItem result) {
-    addIfExists(result, "/lib/mps-openapi.jar");
+    addIfExists(result, "lib/mps-openapi.jar");
   }
 
   private static void addCoreJars(CompositeClassPathItem result) {
-    addIfExists(result, "/lib/mps-core.jar");
-    addIfExists(result, "/lib/mps-closures.jar");
-    addIfExists(result, "/lib/mps-collections.jar");
-    addIfExists(result, "/lib/mps-tuples.jar");
-    addIfExists(result, "/lib/log4j.jar");
-    addIfExists(result, "/lib/trove4j.jar");
-    addIfExists(result, "/lib/jdom.jar");
-    addIfExists(result, "/lib/ecj-4.2.1.jar");
-    addIfExists(result, "/lib/guava-12.0.jar");
-    addIfExists(result, "/lib/xstream-1.4.3.jar");
-    addIfExists(result, "/lib/diffutils-1.2.1.jar");
-    addIfExists(result, "/lib/commons-logging-1.1.1.jar");
-    addIfExists(result, "/lib/asm4-all.jar");
+    addIfExists(result, "lib/mps-annotations.jar");
+    addIfExists(result, "lib/mps-logging.jar");
+    addIfExists(result, "lib/mps-messaging.jar");
+    addIfExists(result, "lib/mps-core.jar");
+    addIfExists(result, "lib/mps-boot-util.jar");
+    addIfExists(result, "lib/mps-closures.jar");
+    addIfExists(result, "lib/mps-collections.jar");
+    addIfExists(result, "lib/mps-tuples.jar");
+    addIfExists(result, "lib/log4j.jar");
+    addIfExists(result, "lib/trove4j.jar");
+    addIfExists(result, "lib/jdom.jar");
+    addIfExists(result, "lib/ecj-4.6.2.jar");
+    addIfExists(result, "lib/guava-19.0.jar");
+    addIfExists(result, "lib/xstream-1.4.8.jar");
+    addIfExists(result, "lib/diffutils-1.2.1.jar");
+    addIfExists(result, "lib/asm-all.jar");
   }
 
   private static void addEditorJars(CompositeClassPathItem result) {
-    addIfExists(result, "/lib/mps-editor.jar");
-    addIfExists(result, "/lib/mps-editor-api.jar");
-    addIfExists(result, "/lib/mps-editor-runtime.jar");
+    addIfExists(result, "lib/mps-editor.jar");
+    addIfExists(result, "lib/mps-editor-api.jar");
+    addIfExists(result, "lib/mps-editor-runtime.jar");
   }
 
   private static void addRepackedIdeaJars(CompositeClassPathItem result) {
-    addIfExists(result, "/lib/platform-api.jar");
-    addIfExists(result, "/lib/platform.jar");
+    addIfExists(result, "lib/openapi.jar");
+    addIfExists(result, "lib/platform.jar");
   }
 
   private static void addIdeaJars(CompositeClassPathItem result) {
     addRepackedIdeaJars(result);
-    addIfExists(result, "/lib/sanselan-0.98-snapshot.jar");
-    addIfExists(result, "/lib/util.jar");
-    addIfExists(result, "/lib/extensions.jar");
-    addIfExists(result, "/lib/picocontainer.jar");
-    addIfExists(result, "/lib/forms_rt.jar");
+    addIfExists(result, "lib/netty-all-4.1.9.Final.jar");
+    addIfExists(result, "lib/sanselan-0.98-snapshot.jar");
+    addIfExists(result, "lib/util.jar");
+    addIfExists(result, "lib/extensions.jar");
+    addIfExists(result, "lib/picocontainer.jar");
+    addIfExists(result, "lib/forms_rt.jar");
   }
 
   private static void addPlatformJars(CompositeClassPathItem result) {
-    addIfExists(result, "/lib/mps-platform.jar");
-    addIfExists(result, "/lib/mps-icons.jar");
+    addIfExists(result, "lib/mps-platform.jar");
+    addIfExists(result, "lib/mps-icons.jar");
   }
 
   private static void addWorkbenchJars(CompositeClassPathItem result) {
-    addIfExists(result, "/lib/mps-workbench.jar");
-    addIfExists(result, "/lib/junit-4.10.jar");
-    addIfExists(result, "/lib/beansbinding-1.2.1.jar");
+    addIfExists(result, "lib/mps-workbench.jar");
+    addIfExists(result, "lib/junit-4.12.jar");
   }
 
   private static void addTestJars(CompositeClassPathItem result) {
-    addIfExists(result, "/lib/mps-test.jar");
+    addIfExists(result, "lib/mps-test.jar");
+    addIfExists(result, "lib/mps-environment.jar");
+    addIfExists(result, "lib/junit-4.12.jar");
   }
 
-  private static void addToolsJar(CompositeClassPathItem result) {
-    if (isToolsJarNeeded) {
-      addIfExists(result, "/lib/tools.jar");
-    }
-  }
-
-  public static void addClasses(final CompositeClassPathItem result, final String homePath) {
-    ClasspathReader.addClasses(homePath, new Callback<String>() {
-      @Override
-      public void call(String param) {
-        File dir = new File(homePath, param);
-        if (!dir.exists()) return;
-        try {
-          result.add(ClassPathFactory.getInstance().createFromPath(dir.getAbsolutePath(), "Common paths"));
-        } catch (IOException e) {
-          LOG.error(null, e);
-        }
+  private static void addClasses(final CompositeClassPathItem result) {
+    String homePath = PathManager.getHomePath();
+    ClassPathReader classPathReader = new ClassPathReader(PathManager.getHomePath(), Arrays.asList(ClassType.values()));
+    classPathReader.read().stream().forEach(param -> {
+      File dir = new File(homePath, param);
+      if (dir.exists()) {
+        result.add(ourClassPathCachingFacility.createFromPath(dir.getAbsolutePath(), REQUESTER_STRING));
       }
-    }, ClassType.values());
+    });
   }
 
   private static void addIfExists(CompositeClassPathItem item, String path) {
+    String dependentPath = UniPath.fromString(path).toSystemPath().toString(); // fixme waiting for Path#resolve method to resolve children in fs
     for (String basePath : PathManager.getHomePaths()) {
-      String fullPath = basePath + path.replace('/', File.separatorChar);
-      if (!new File(fullPath).exists()) continue;
-      try {
-        item.add(ClassPathFactory.getInstance().createFromPath(fullPath, "Common paths"));
-        return;
-      } catch (Throwable e) {
-        LOG.error(null, e);
+      UniPath fullPath = UniPath.fromString(basePath + File.separator + dependentPath).toSystemPath();
+      if (new IoFile(fullPath).exists()) {
+        item.add(ourClassPathCachingFacility.createFromPath(fullPath.toString(), REQUESTER_STRING));
       }
     }
   }

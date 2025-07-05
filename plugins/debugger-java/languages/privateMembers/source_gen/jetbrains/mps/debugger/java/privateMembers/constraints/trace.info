@@ -1,195 +1,280 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="ConstraintsAspectDescriptor.java" startLine="9" startPosition="0" endLine="31" endPosition="0" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.ConstraintsAspectDescriptor" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="ConstraintsAspectDescriptor.java">
+      <unit at="13,0,35,0" name="jetbrains.mps.debugger.java.privateMembers.constraints.ConstraintsAspectDescriptor" />
+    </file>
+  </root>
   <root nodeRef="r:c8ec5cc5-f63f-40c3-ab3e-3fbb9a638ceb(jetbrains.mps.debugger.java.privateMembers.constraints)/3374946611454212812">
-    <nodeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="23" startPosition="48" endLine="24" endPosition="90" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="28" startPosition="83" endLine="29" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="32" startPosition="44" endLine="33" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5619723216767544458" fileName="PrivateStaticMethodCall_Constraints.java" startLine="47" startPosition="55" endLine="48" endPosition="28" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="54" startPosition="63" endLine="55" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="59" startPosition="7" endLine="60" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="63" startPosition="0" endLine="64" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="breakingNode_ij549v_a0a1a0a0a1a0b0a1a1" />
-    <nodeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="23" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="PrivateStaticMethodCall_Constraints#()V" />
-    <nodeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="31" startPosition="0" endLine="35" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnScopeProvider#()Z" />
-    <nodeInfo nodeId="3374946611454212832" fileName="PrivateStaticMethodCall_Constraints.java" startLine="46" startPosition="0" endLine="50" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isVisible#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="53" startPosition="0" endLine="57" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="3374946611454212816" fileName="PrivateStaticMethodCall_Constraints.java" startLine="41" startPosition="142" endLine="50" endPosition="14" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="40" startPosition="0" endLine="52" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createSearchScopeOrListOfNodes#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljava/lang/Object;" />
-    <nodeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="38" startPosition="56" endLine="57" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="36" startPosition="0" endLine="59" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-    <nodeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="29" startPosition="75" endLine="59" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="27" startPosition="0" endLine="62" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultReferences#()Ljava/util/Map;" />
-    <scopeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="23" startPosition="48" endLine="24" endPosition="90" />
-    <scopeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="32" startPosition="44" endLine="33" endPosition="20" />
-    <scopeInfo nodeId="3374946611454212837" fileName="PrivateStaticMethodCall_Constraints.java" startLine="47" startPosition="55" endLine="48" endPosition="28" />
-    <scopeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="54" startPosition="63" endLine="55" endPosition="58" />
-    <scopeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="23" startPosition="0" endLine="26" endPosition="0" />
-    <scopeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="31" startPosition="0" endLine="35" endPosition="0" />
-    <scopeInfo nodeId="3374946611454212832" fileName="PrivateStaticMethodCall_Constraints.java" startLine="46" startPosition="0" endLine="50" endPosition="0">
-      <varInfo nodeId="3374946611454212835" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="53" startPosition="0" endLine="57" endPosition="0" />
-    <scopeInfo nodeId="3374946611454212815" fileName="PrivateStaticMethodCall_Constraints.java" startLine="41" startPosition="142" endLine="50" endPosition="14" />
-    <scopeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="40" startPosition="0" endLine="52" endPosition="0">
-      <varInfo nodeId="3374946611454212812" varName="_context" />
-      <varInfo nodeId="3374946611454212812" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="38" startPosition="56" endLine="57" endPosition="10" />
-    <scopeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="36" startPosition="0" endLine="59" endPosition="0" />
-    <scopeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="28" startPosition="83" endLine="60" endPosition="22">
-      <varInfo nodeId="3374946611454212812" varName="references" />
-    </scopeInfo>
-    <scopeInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="27" startPosition="0" endLine="62" endPosition="0" />
-    <unitInfo nodeId="3374946611454212830" fileName="PrivateStaticMethodCall_Constraints.java" startLine="42" startPosition="23" endLine="50" endPosition="13" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticMethodCall_Constraints$3" />
-    <unitInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="39" startPosition="19" endLine="57" endPosition="9" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticMethodCall_Constraints$2" />
-    <unitInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="30" startPosition="48" endLine="59" endPosition="5" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticMethodCall_Constraints$1" />
-    <unitInfo nodeId="3374946611454212812" fileName="PrivateStaticMethodCall_Constraints.java" startLine="22" startPosition="0" endLine="65" endPosition="0" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticMethodCall_Constraints" />
+    <file name="PrivateStaticMethodCall_Constraints.java">
+      <node id="3374946611454212812" at="32,48,33,184" concept="10" />
+      <node id="3374946611454212812" at="37,90,38,131" concept="5" />
+      <node id="3374946611454212812" at="41,44,42,20" concept="6" />
+      <node id="3374946611454212812" at="49,63,50,58" concept="6" />
+      <node id="6836281137582821881" at="55,253,56,40" concept="6" />
+      <node id="6836281137582821889" at="57,15,58,247" concept="5" />
+      <node id="6836281137582821895" at="58,247,59,0" concept="8" />
+      <node id="6836281137582821910" at="61,49,62,210" concept="6" />
+      <node id="6836281137582821921" at="64,17,65,59" concept="6" />
+      <node id="3374946611454212812" at="70,7,71,22" concept="6" />
+      <node id="3374946611454212812" at="73,0,74,0" concept="9" trace="breakingNode_ij549v_a0a0a0a0a1a0b0a1a2" />
+      <node id="3374946611454212812" at="32,0,35,0" concept="1" trace="PrivateStaticMethodCall_Constraints#()V" />
+      <node id="6836281137582821879" at="54,13,57,15" concept="3" />
+      <node id="6836281137582821908" at="61,0,64,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="3374946611454212812" at="40,0,44,0" concept="4" trace="hasOwnScopeProvider#()Z" />
+      <node id="3374946611454212812" at="48,0,52,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="6836281137582821896" at="59,0,64,17" concept="5" />
+      <node id="3374946611454212812" at="53,122,66,13" concept="0" />
+      <node id="3374946611454212812" at="52,0,68,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="3374946611454212812" at="46,56,68,10" concept="6" />
+      <node id="3374946611454212812" at="44,0,70,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="3374946611454212812" at="38,131,70,7" concept="2" />
+      <node id="3374946611454212812" at="36,0,73,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="3374946611454212812" at="32,48,33,184" />
+      <scope id="3374946611454212812" at="41,44,42,20" />
+      <scope id="3374946611454212812" at="49,63,50,58" />
+      <scope id="6836281137582821880" at="55,253,56,40" />
+      <scope id="6836281137582821909" at="61,49,62,210" />
+      <scope id="3374946611454212812" at="32,0,35,0" />
+      <scope id="6836281137582821908" at="61,0,64,0">
+        <var name="it" id="6836281137582821908" />
+      </scope>
+      <scope id="3374946611454212812" at="40,0,44,0" />
+      <scope id="3374946611454212812" at="48,0,52,0" />
+      <scope id="6836281137582821878" at="54,13,65,59">
+        <var name="call" id="6836281137582821890" />
+        <var name="staticMembers" id="6836281137582821897" />
+      </scope>
+      <scope id="3374946611454212812" at="53,122,66,13" />
+      <scope id="3374946611454212812" at="52,0,68,0">
+        <var name="_context" id="3374946611454212812" />
+        <var name="operationContext" id="3374946611454212812" />
+      </scope>
+      <scope id="3374946611454212812" at="46,56,68,10" />
+      <scope id="3374946611454212812" at="44,0,70,0" />
+      <scope id="3374946611454212812" at="37,90,71,22">
+        <var name="references" id="3374946611454212812" />
+      </scope>
+      <scope id="3374946611454212812" at="36,0,73,0" />
+      <unit id="6836281137582821908" at="60,390,64,15" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticMethodCall_Constraints$1$1$1" />
+      <unit id="3374946611454212812" at="47,19,68,9" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticMethodCall_Constraints$1$1" />
+      <unit id="3374946611454212812" at="39,158,70,5" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticMethodCall_Constraints$1" />
+      <unit id="3374946611454212812" at="31,0,75,0" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticMethodCall_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:c8ec5cc5-f63f-40c3-ab3e-3fbb9a638ceb(jetbrains.mps.debugger.java.privateMembers.constraints)/4107550939057700059">
-    <nodeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="23" startPosition="52" endLine="24" endPosition="94" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="28" startPosition="83" endLine="29" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="32" startPosition="44" endLine="33" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5619723216767544460" fileName="PrivateStaticFieldReference_Constraints.java" startLine="47" startPosition="57" endLine="48" endPosition="28" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="54" startPosition="63" endLine="55" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="59" startPosition="7" endLine="60" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="63" startPosition="0" endLine="64" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="breakingNode_em3o18_a0a1a0a0a1a0b0a1a1" />
-    <nodeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="23" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="PrivateStaticFieldReference_Constraints#()V" />
-    <nodeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="31" startPosition="0" endLine="35" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnScopeProvider#()Z" />
-    <nodeInfo nodeId="4107550939057741384" fileName="PrivateStaticFieldReference_Constraints.java" startLine="46" startPosition="0" endLine="50" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isVisible#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="53" startPosition="0" endLine="57" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="4107550939057703015" fileName="PrivateStaticFieldReference_Constraints.java" startLine="41" startPosition="142" endLine="50" endPosition="14" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="40" startPosition="0" endLine="52" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createSearchScopeOrListOfNodes#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljava/lang/Object;" />
-    <nodeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="38" startPosition="56" endLine="57" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="36" startPosition="0" endLine="59" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-    <nodeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="29" startPosition="75" endLine="59" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="27" startPosition="0" endLine="62" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultReferences#()Ljava/util/Map;" />
-    <scopeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="23" startPosition="52" endLine="24" endPosition="94" />
-    <scopeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="32" startPosition="44" endLine="33" endPosition="20" />
-    <scopeInfo nodeId="4107550939057741389" fileName="PrivateStaticFieldReference_Constraints.java" startLine="47" startPosition="57" endLine="48" endPosition="28" />
-    <scopeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="54" startPosition="63" endLine="55" endPosition="58" />
-    <scopeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="23" startPosition="0" endLine="26" endPosition="0" />
-    <scopeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="31" startPosition="0" endLine="35" endPosition="0" />
-    <scopeInfo nodeId="4107550939057741384" fileName="PrivateStaticFieldReference_Constraints.java" startLine="46" startPosition="0" endLine="50" endPosition="0">
-      <varInfo nodeId="4107550939057741387" varName="member" />
-    </scopeInfo>
-    <scopeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="53" startPosition="0" endLine="57" endPosition="0" />
-    <scopeInfo nodeId="4107550939057703014" fileName="PrivateStaticFieldReference_Constraints.java" startLine="41" startPosition="142" endLine="50" endPosition="14" />
-    <scopeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="40" startPosition="0" endLine="52" endPosition="0">
-      <varInfo nodeId="4107550939057700059" varName="_context" />
-      <varInfo nodeId="4107550939057700059" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="38" startPosition="56" endLine="57" endPosition="10" />
-    <scopeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="36" startPosition="0" endLine="59" endPosition="0" />
-    <scopeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="28" startPosition="83" endLine="60" endPosition="22">
-      <varInfo nodeId="4107550939057700059" varName="references" />
-    </scopeInfo>
-    <scopeInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="27" startPosition="0" endLine="62" endPosition="0" />
-    <unitInfo nodeId="4107550939057741382" fileName="PrivateStaticFieldReference_Constraints.java" startLine="42" startPosition="23" endLine="50" endPosition="13" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticFieldReference_Constraints$3" />
-    <unitInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="39" startPosition="19" endLine="57" endPosition="9" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticFieldReference_Constraints$2" />
-    <unitInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="30" startPosition="46" endLine="59" endPosition="5" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticFieldReference_Constraints$1" />
-    <unitInfo nodeId="4107550939057700059" fileName="PrivateStaticFieldReference_Constraints.java" startLine="22" startPosition="0" endLine="65" endPosition="0" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticFieldReference_Constraints" />
+    <file name="PrivateStaticFieldReference_Constraints.java">
+      <node id="4107550939057700059" at="32,52,33,188" concept="10" />
+      <node id="4107550939057700059" at="37,90,38,131" concept="5" />
+      <node id="4107550939057700059" at="41,44,42,20" concept="6" />
+      <node id="4107550939057700059" at="49,63,50,58" concept="6" />
+      <node id="6836281137582821832" at="55,257,56,40" concept="6" />
+      <node id="6836281137582821840" at="57,15,58,255" concept="5" />
+      <node id="6836281137582821846" at="58,255,59,0" concept="8" />
+      <node id="6836281137582821861" at="61,49,62,209" concept="6" />
+      <node id="6836281137582821872" at="64,17,65,59" concept="6" />
+      <node id="6836281137582821876" at="65,59,66,0" concept="8" />
+      <node id="4107550939057700059" at="71,7,72,22" concept="6" />
+      <node id="4107550939057700059" at="74,0,75,0" concept="9" trace="breakingNode_em3o18_a0a0a0a0a1a0b0a1a2" />
+      <node id="4107550939057700059" at="32,0,35,0" concept="1" trace="PrivateStaticFieldReference_Constraints#()V" />
+      <node id="6836281137582821830" at="54,13,57,15" concept="3" />
+      <node id="6836281137582821859" at="61,0,64,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="4107550939057700059" at="40,0,44,0" concept="4" trace="hasOwnScopeProvider#()Z" />
+      <node id="4107550939057700059" at="48,0,52,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="6836281137582821847" at="59,0,64,17" concept="5" />
+      <node id="4107550939057700059" at="53,122,67,13" concept="0" />
+      <node id="4107550939057700059" at="52,0,69,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="4107550939057700059" at="46,56,69,10" concept="6" />
+      <node id="4107550939057700059" at="44,0,71,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="4107550939057700059" at="38,131,71,7" concept="2" />
+      <node id="4107550939057700059" at="36,0,74,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="4107550939057700059" at="32,52,33,188" />
+      <scope id="4107550939057700059" at="41,44,42,20" />
+      <scope id="4107550939057700059" at="49,63,50,58" />
+      <scope id="6836281137582821831" at="55,257,56,40" />
+      <scope id="6836281137582821860" at="61,49,62,209" />
+      <scope id="4107550939057700059" at="32,0,35,0" />
+      <scope id="6836281137582821859" at="61,0,64,0">
+        <var name="it" id="6836281137582821859" />
+      </scope>
+      <scope id="4107550939057700059" at="40,0,44,0" />
+      <scope id="4107550939057700059" at="48,0,52,0" />
+      <scope id="6836281137582821829" at="54,13,66,0">
+        <var name="instance" id="6836281137582821841" />
+        <var name="staticMembers" id="6836281137582821848" />
+      </scope>
+      <scope id="4107550939057700059" at="53,122,67,13" />
+      <scope id="4107550939057700059" at="52,0,69,0">
+        <var name="_context" id="4107550939057700059" />
+        <var name="operationContext" id="4107550939057700059" />
+      </scope>
+      <scope id="4107550939057700059" at="46,56,69,10" />
+      <scope id="4107550939057700059" at="44,0,71,0" />
+      <scope id="4107550939057700059" at="37,90,72,22">
+        <var name="references" id="4107550939057700059" />
+      </scope>
+      <scope id="4107550939057700059" at="36,0,74,0" />
+      <unit id="6836281137582821859" at="60,392,64,15" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticFieldReference_Constraints$1$1$1" />
+      <unit id="4107550939057700059" at="47,19,69,9" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticFieldReference_Constraints$1$1" />
+      <unit id="4107550939057700059" at="39,155,71,5" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticFieldReference_Constraints$1" />
+      <unit id="4107550939057700059" at="31,0,76,0" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateStaticFieldReference_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:c8ec5cc5-f63f-40c3-ab3e-3fbb9a638ceb(jetbrains.mps.debugger.java.privateMembers.constraints)/6825241477451043706">
-    <nodeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="26" startPosition="55" endLine="27" endPosition="97" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="31" startPosition="83" endLine="32" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="35" startPosition="44" endLine="36" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6825241477451043710" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="44" startPosition="142" endLine="45" endPosition="132" conceptFqName="jetbrains.mps.baseLanguage.structure.SingleLineComment" />
-    <nodeInfo nodeId="6825241477451043712" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="45" startPosition="132" endLine="46" endPosition="177" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="6825241477451043719" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="46" startPosition="177" endLine="47" endPosition="242" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4107550939057741409" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="53" startPosition="57" endLine="54" endPosition="50" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="60" startPosition="63" endLine="61" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="65" startPosition="7" endLine="66" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="69" startPosition="0" endLine="70" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="breakingNode_cgwyr9_a0a1a0a0a1a0b0a1a1" />
-    <nodeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="26" startPosition="0" endLine="29" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="PrivateFieldReferenceOperation_Constraints#()V" />
-    <nodeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="34" startPosition="0" endLine="38" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnScopeProvider#()Z" />
-    <nodeInfo nodeId="4107550939057741402" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="52" startPosition="0" endLine="56" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isVisible#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="59" startPosition="0" endLine="63" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="6825241477451043727" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="47" startPosition="242" endLine="56" endPosition="14" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="43" startPosition="0" endLine="58" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createSearchScopeOrListOfNodes#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljava/lang/Object;" />
-    <nodeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="41" startPosition="56" endLine="63" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="39" startPosition="0" endLine="65" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-    <nodeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="32" startPosition="75" endLine="65" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="30" startPosition="0" endLine="68" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultReferences#()Ljava/util/Map;" />
-    <scopeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="26" startPosition="55" endLine="27" endPosition="97" />
-    <scopeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="35" startPosition="44" endLine="36" endPosition="20" />
-    <scopeInfo nodeId="4107550939057741407" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="53" startPosition="57" endLine="54" endPosition="50" />
-    <scopeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="60" startPosition="63" endLine="61" endPosition="58" />
-    <scopeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="26" startPosition="0" endLine="29" endPosition="0" />
-    <scopeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="34" startPosition="0" endLine="38" endPosition="0" />
-    <scopeInfo nodeId="4107550939057741402" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="52" startPosition="0" endLine="56" endPosition="0">
-      <varInfo nodeId="4107550939057741405" varName="member" />
-    </scopeInfo>
-    <scopeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="59" startPosition="0" endLine="63" endPosition="0" />
-    <scopeInfo nodeId="6825241477451043709" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="44" startPosition="142" endLine="56" endPosition="14">
-      <varInfo nodeId="6825241477451043720" varName="classifierType" />
-      <varInfo nodeId="6825241477451043713" varName="instance" />
-    </scopeInfo>
-    <scopeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="43" startPosition="0" endLine="58" endPosition="0">
-      <varInfo nodeId="6825241477451043706" varName="_context" />
-      <varInfo nodeId="6825241477451043706" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="41" startPosition="56" endLine="63" endPosition="10" />
-    <scopeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="39" startPosition="0" endLine="65" endPosition="0" />
-    <scopeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="31" startPosition="83" endLine="66" endPosition="22">
-      <varInfo nodeId="6825241477451043706" varName="references" />
-    </scopeInfo>
-    <scopeInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="30" startPosition="0" endLine="68" endPosition="0" />
-    <unitInfo nodeId="4107550939057741400" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="48" startPosition="23" endLine="56" endPosition="13" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateFieldReferenceOperation_Constraints$3" />
-    <unitInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="42" startPosition="19" endLine="63" endPosition="9" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateFieldReferenceOperation_Constraints$2" />
-    <unitInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="33" startPosition="43" endLine="65" endPosition="5" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateFieldReferenceOperation_Constraints$1" />
-    <unitInfo nodeId="6825241477451043706" fileName="PrivateFieldReferenceOperation_Constraints.java" startLine="25" startPosition="0" endLine="71" endPosition="0" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateFieldReferenceOperation_Constraints" />
+    <file name="PrivateFieldReferenceOperation_Constraints.java">
+      <node id="6825241477451043706" at="34,55,35,191" concept="10" />
+      <node id="6825241477451043706" at="39,90,40,131" concept="5" />
+      <node id="6825241477451043706" at="43,44,44,20" concept="6" />
+      <node id="6825241477451043706" at="51,63,52,58" concept="6" />
+      <node id="6836281137582822063" at="56,13,57,169" concept="5" />
+      <node id="6836281137582821927" at="57,169,58,134" concept="7" />
+      <node id="6836281137582821931" at="59,210,60,40" concept="6" />
+      <node id="6836281137582821939" at="61,15,62,359" concept="5" />
+      <node id="6836281137582821947" at="62,359,63,0" concept="8" />
+      <node id="6836281137582821948" at="63,0,64,333" concept="5" />
+      <node id="6836281137582821958" at="65,197,66,40" concept="6" />
+      <node id="6836281137582821966" at="67,15,68,0" concept="8" />
+      <node id="6836281137582821978" at="70,49,71,203" concept="6" />
+      <node id="6836281137582821988" at="74,49,75,154" concept="6" />
+      <node id="6836281137582822001" at="77,17,78,59" concept="6" />
+      <node id="6825241477451043706" at="83,7,84,22" concept="6" />
+      <node id="6825241477451043706" at="86,0,87,0" concept="9" trace="breakingNode_cgwyr9_a0a0a0a0a1a0b0a1a2" />
+      <node id="6825241477451043706" at="34,0,37,0" concept="1" trace="PrivateFieldReferenceOperation_Constraints#()V" />
+      <node id="6836281137582821929" at="58,134,61,15" concept="3" />
+      <node id="6836281137582821956" at="64,333,67,15" concept="3" />
+      <node id="6836281137582821976" at="70,0,73,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="6836281137582821986" at="74,0,77,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="6825241477451043706" at="42,0,46,0" concept="4" trace="hasOwnScopeProvider#()Z" />
+      <node id="6825241477451043706" at="50,0,54,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="6836281137582821967" at="68,0,77,17" concept="5" />
+      <node id="6825241477451043706" at="55,122,79,13" concept="0" />
+      <node id="6825241477451043706" at="54,0,81,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="6825241477451043706" at="48,56,81,10" concept="6" />
+      <node id="6825241477451043706" at="46,0,83,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="6825241477451043706" at="40,131,83,7" concept="2" />
+      <node id="6825241477451043706" at="38,0,86,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="6825241477451043706" at="34,55,35,191" />
+      <scope id="6825241477451043706" at="43,44,44,20" />
+      <scope id="6825241477451043706" at="51,63,52,58" />
+      <scope id="6836281137582821930" at="59,210,60,40" />
+      <scope id="6836281137582821957" at="65,197,66,40" />
+      <scope id="6836281137582821977" at="70,49,71,203" />
+      <scope id="6836281137582821987" at="74,49,75,154" />
+      <scope id="6825241477451043706" at="34,0,37,0" />
+      <scope id="6836281137582821976" at="70,0,73,0">
+        <var name="it" id="6836281137582821976" />
+      </scope>
+      <scope id="6836281137582821986" at="74,0,77,0">
+        <var name="it" id="6836281137582821986" />
+      </scope>
+      <scope id="6825241477451043706" at="42,0,46,0" />
+      <scope id="6825241477451043706" at="50,0,54,0" />
+      <scope id="6836281137582821926" at="56,13,78,59">
+        <var name="classifierType" id="6836281137582821949" />
+        <var name="enclosingNode" id="6836281137582822064" />
+        <var name="instance" id="6836281137582821940" />
+        <var name="privateFields" id="6836281137582821968" />
+      </scope>
+      <scope id="6825241477451043706" at="55,122,79,13" />
+      <scope id="6825241477451043706" at="54,0,81,0">
+        <var name="_context" id="6825241477451043706" />
+        <var name="operationContext" id="6825241477451043706" />
+      </scope>
+      <scope id="6825241477451043706" at="48,56,81,10" />
+      <scope id="6825241477451043706" at="46,0,83,0" />
+      <scope id="6825241477451043706" at="39,90,84,22">
+        <var name="references" id="6825241477451043706" />
+      </scope>
+      <scope id="6825241477451043706" at="38,0,86,0" />
+      <unit id="6836281137582821976" at="69,181,73,15" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateFieldReferenceOperation_Constraints$1$1$1" />
+      <unit id="6836281137582821986" at="73,27,77,15" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateFieldReferenceOperation_Constraints$1$1$2" />
+      <unit id="6825241477451043706" at="49,19,81,9" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateFieldReferenceOperation_Constraints$1$1" />
+      <unit id="6825241477451043706" at="41,154,83,5" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateFieldReferenceOperation_Constraints$1" />
+      <unit id="6825241477451043706" at="33,0,88,0" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateFieldReferenceOperation_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:c8ec5cc5-f63f-40c3-ab3e-3fbb9a638ceb(jetbrains.mps.debugger.java.privateMembers.constraints)/6825241477451051015">
-    <nodeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="27" startPosition="59" endLine="28" endPosition="101" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="32" startPosition="83" endLine="33" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="36" startPosition="44" endLine="37" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6825241477451051030" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="46" startPosition="133" endLine="47" endPosition="44" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6825241477451051040" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="48" startPosition="13" endLine="49" endPosition="177" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="6825241477451051047" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="49" startPosition="177" endLine="50" endPosition="242" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="8636141232655275383" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="56" startPosition="57" endLine="57" endPosition="50" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="63" startPosition="63" endLine="64" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="68" startPosition="7" endLine="69" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="72" startPosition="0" endLine="73" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="breakingNode_8iqmcz_a0a1a0a0a1a0b0a1a1" />
-    <nodeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="27" startPosition="0" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="PrivateInstanceMethodCallOperation_Constraints#()V" />
-    <nodeInfo nodeId="6825241477451051028" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="45" startPosition="142" endLine="48" endPosition="13" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="35" startPosition="0" endLine="39" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnScopeProvider#()Z" />
-    <nodeInfo nodeId="8636141232655275376" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="55" startPosition="0" endLine="59" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isVisible#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="62" startPosition="0" endLine="66" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="6825241477451051055" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="50" startPosition="242" endLine="59" endPosition="14" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="44" startPosition="0" endLine="61" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createSearchScopeOrListOfNodes#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljava/lang/Object;" />
-    <nodeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="42" startPosition="56" endLine="66" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="40" startPosition="0" endLine="68" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-    <nodeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="33" startPosition="75" endLine="68" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="31" startPosition="0" endLine="71" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultReferences#()Ljava/util/Map;" />
-    <scopeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="27" startPosition="59" endLine="28" endPosition="101" />
-    <scopeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="36" startPosition="44" endLine="37" endPosition="20" />
-    <scopeInfo nodeId="6825241477451051029" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="46" startPosition="133" endLine="47" endPosition="44" />
-    <scopeInfo nodeId="8636141232655275381" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="56" startPosition="57" endLine="57" endPosition="50" />
-    <scopeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="63" startPosition="63" endLine="64" endPosition="58" />
-    <scopeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="27" startPosition="0" endLine="30" endPosition="0" />
-    <scopeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="35" startPosition="0" endLine="39" endPosition="0" />
-    <scopeInfo nodeId="8636141232655275376" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="55" startPosition="0" endLine="59" endPosition="0">
-      <varInfo nodeId="8636141232655275379" varName="member" />
-    </scopeInfo>
-    <scopeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="62" startPosition="0" endLine="66" endPosition="0" />
-    <scopeInfo nodeId="6825241477451051018" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="45" startPosition="142" endLine="59" endPosition="14">
-      <varInfo nodeId="6825241477451051048" varName="classifierType" />
-      <varInfo nodeId="6825241477451051041" varName="instance" />
-    </scopeInfo>
-    <scopeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="44" startPosition="0" endLine="61" endPosition="0">
-      <varInfo nodeId="6825241477451051015" varName="_context" />
-      <varInfo nodeId="6825241477451051015" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="42" startPosition="56" endLine="66" endPosition="10" />
-    <scopeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="40" startPosition="0" endLine="68" endPosition="0" />
-    <scopeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="32" startPosition="83" endLine="69" endPosition="22">
-      <varInfo nodeId="6825241477451051015" varName="references" />
-    </scopeInfo>
-    <scopeInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="31" startPosition="0" endLine="71" endPosition="0" />
-    <unitInfo nodeId="8636141232655275374" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="51" startPosition="23" endLine="59" endPosition="13" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateInstanceMethodCallOperation_Constraints$3" />
-    <unitInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="43" startPosition="19" endLine="66" endPosition="9" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateInstanceMethodCallOperation_Constraints$2" />
-    <unitInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="34" startPosition="48" endLine="68" endPosition="5" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateInstanceMethodCallOperation_Constraints$1" />
-    <unitInfo nodeId="6825241477451051015" fileName="PrivateInstanceMethodCallOperation_Constraints.java" startLine="26" startPosition="0" endLine="74" endPosition="0" unitName="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateInstanceMethodCallOperation_Constraints" />
+    <file name="PrivateInstanceMethodCallOperation_Constraints.java">
+      <node id="6825241477451051015" at="34,59,35,195" concept="10" />
+      <node id="6825241477451051015" at="39,90,40,131" concept="5" />
+      <node id="6825241477451051015" at="43,44,44,20" concept="6" />
+      <node id="6825241477451051015" at="51,63,52,58" concept="6" />
+      <node id="6836281137582821823" at="56,13,57,169" concept="5" />
+      <node id="6836281137582821691" at="58,210,59,40" concept="6" />
+      <node id="6836281137582821699" at="60,15,61,359" concept="5" />
+      <node id="6836281137582821707" at="61,359,62,0" concept="8" />
+      <node id="6836281137582821708" at="62,0,63,333" concept="5" />
+      <node id="6836281137582821718" at="64,197,65,40" concept="6" />
+      <node id="6836281137582821726" at="66,15,67,0" concept="8" />
+      <node id="6836281137582821738" at="69,49,70,212" concept="6" />
+      <node id="6836281137582821748" at="73,49,74,154" concept="6" />
+      <node id="6836281137582821761" at="76,17,77,60" concept="6" />
+      <node id="6825241477451051015" at="82,7,83,22" concept="6" />
+      <node id="6825241477451051015" at="85,0,86,0" concept="9" trace="breakingNode_8iqmcz_a0a0a0a0a1a0b0a1a2" />
+      <node id="6825241477451051015" at="34,0,37,0" concept="1" trace="PrivateInstanceMethodCallOperation_Constraints#()V" />
+      <node id="6836281137582821689" at="57,169,60,15" concept="3" />
+      <node id="6836281137582821716" at="63,333,66,15" concept="3" />
+      <node id="6836281137582821736" at="69,0,72,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="6836281137582821746" at="73,0,76,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="6825241477451051015" at="42,0,46,0" concept="4" trace="hasOwnScopeProvider#()Z" />
+      <node id="6825241477451051015" at="50,0,54,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="6836281137582821727" at="67,0,76,17" concept="5" />
+      <node id="6825241477451051015" at="55,122,78,13" concept="0" />
+      <node id="6825241477451051015" at="54,0,80,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="6825241477451051015" at="48,56,80,10" concept="6" />
+      <node id="6825241477451051015" at="46,0,82,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="6825241477451051015" at="40,131,82,7" concept="2" />
+      <node id="6825241477451051015" at="38,0,85,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="6825241477451051015" at="34,59,35,195" />
+      <scope id="6825241477451051015" at="43,44,44,20" />
+      <scope id="6825241477451051015" at="51,63,52,58" />
+      <scope id="6836281137582821690" at="58,210,59,40" />
+      <scope id="6836281137582821717" at="64,197,65,40" />
+      <scope id="6836281137582821737" at="69,49,70,212" />
+      <scope id="6836281137582821747" at="73,49,74,154" />
+      <scope id="6825241477451051015" at="34,0,37,0" />
+      <scope id="6836281137582821736" at="69,0,72,0">
+        <var name="it" id="6836281137582821736" />
+      </scope>
+      <scope id="6836281137582821746" at="73,0,76,0">
+        <var name="it" id="6836281137582821746" />
+      </scope>
+      <scope id="6825241477451051015" at="42,0,46,0" />
+      <scope id="6825241477451051015" at="50,0,54,0" />
+      <scope id="6836281137582821688" at="56,13,77,60">
+        <var name="classifierType" id="6836281137582821709" />
+        <var name="enclosingNode" id="6836281137582821824" />
+        <var name="instance" id="6836281137582821700" />
+        <var name="privateMethods" id="6836281137582821728" />
+      </scope>
+      <scope id="6825241477451051015" at="55,122,78,13" />
+      <scope id="6825241477451051015" at="54,0,80,0">
+        <var name="_context" id="6825241477451051015" />
+        <var name="operationContext" id="6825241477451051015" />
+      </scope>
+      <scope id="6825241477451051015" at="48,56,80,10" />
+      <scope id="6825241477451051015" at="46,0,82,0" />
+      <scope id="6825241477451051015" at="39,90,83,22">
+        <var name="references" id="6825241477451051015" />
+      </scope>
+      <scope id="6825241477451051015" at="38,0,85,0" />
+      <unit id="6836281137582821736" at="68,182,72,15" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateInstanceMethodCallOperation_Constraints$1$1$1" />
+      <unit id="6836281137582821746" at="72,27,76,15" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateInstanceMethodCallOperation_Constraints$1$1$2" />
+      <unit id="6825241477451051015" at="49,19,80,9" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateInstanceMethodCallOperation_Constraints$1$1" />
+      <unit id="6825241477451051015" at="41,158,82,5" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateInstanceMethodCallOperation_Constraints$1" />
+      <unit id="6825241477451051015" at="33,0,87,0" name="jetbrains.mps.debugger.java.privateMembers.constraints.PrivateInstanceMethodCallOperation_Constraints" />
+    </file>
   </root>
-</debugInfo>
+</debug-info>
 

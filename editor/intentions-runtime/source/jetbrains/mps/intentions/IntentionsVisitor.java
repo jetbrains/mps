@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,28 +23,15 @@ import java.util.Set;
  * Date: 11/1/12
  */
 interface IntentionsVisitor {
-  boolean visit(Intention intention);
-
   boolean visit(IntentionFactory intentionFactory);
 
   class CollectAvailableIntentionsVisitor implements IntentionsVisitor {
-    private Set<Intention> myAvailableIntentions = new HashSet<Intention>();
     private Set<IntentionFactory> myAvailableIntentionFactories = new HashSet<IntentionFactory>();
-
-    @Override
-    public boolean visit(Intention intention) {
-      myAvailableIntentions.add(intention);
-      return true;
-    }
 
     @Override
     public boolean visit(IntentionFactory intentionFactory) {
       myAvailableIntentionFactories.add(intentionFactory);
       return true;
-    }
-
-    public Set<Intention> getAvailableIntentions() {
-      return myAvailableIntentions;
     }
 
     public Set<IntentionFactory> getAvailableIntentionFactories() {
@@ -54,11 +41,6 @@ interface IntentionsVisitor {
 
   class GetHighestAvailableIntentionTypeVisitor implements IntentionsVisitor {
     private IntentionType myIntentionType = null;
-
-    @Override
-    public boolean visit(Intention intention) {
-      return visit(intention.getType());
-    }
 
     @Override
     public boolean visit(IntentionFactory intentionFactory) {

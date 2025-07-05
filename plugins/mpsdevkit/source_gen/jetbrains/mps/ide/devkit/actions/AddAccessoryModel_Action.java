@@ -4,33 +4,30 @@ package jetbrains.mps.ide.devkit.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import org.apache.log4j.Priority;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.awt.Frame;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import jetbrains.mps.smodel.Language;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.MPSProject;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.smodel.Language;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.ModelAccess;
-import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.SModelRepository;
+import jetbrains.mps.FilteredGlobalScope;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.ide.ui.dialogs.properties.choosers.CommonChoosers;
-import com.intellij.openapi.project.Project;
-import jetbrains.mps.project.structure.modules.LanguageDescriptor;
-import jetbrains.mps.smodel.IScope;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.project.dependency.VisibilityUtil;
 import javax.swing.JOptionPane;
-import java.awt.Frame;
-import jetbrains.mps.smodel.SModelStereotype;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 
 public class AddAccessoryModel_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -40,94 +37,89 @@ public class AddAccessoryModel_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
-  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      this.enable(event.getPresentation());
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "AddAccessoryModel", t);
-      }
-      this.disable(event.getPresentation());
-    }
-  }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("frame", event.getData(MPSCommonDataKeys.FRAME));
-    if (MapSequence.fromMap(_params).get("frame") == null) {
-      return false;
+    {
+      Frame p = event.getData(MPSCommonDataKeys.FRAME);
+      MapSequence.fromMap(_params).put("frame", p);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("module", event.getData(MPSCommonDataKeys.CONTEXT_MODULE));
-    if (MapSequence.fromMap(_params).get("module") == null) {
-      return false;
+    {
+      SModule p = event.getData(MPSCommonDataKeys.CONTEXT_MODULE);
+      MapSequence.fromMap(_params).put("module", p);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("ideaProject", event.getData(PlatformDataKeys.PROJECT));
-    if (MapSequence.fromMap(_params).get("ideaProject") == null) {
-      return false;
-    }
-    MapSequence.fromMap(_params).put("treeNode", event.getData(MPSCommonDataKeys.TREE_NODE));
-    if (MapSequence.fromMap(_params).get("treeNode") == null) {
-      return false;
-    }
-    MapSequence.fromMap(_params).put("project", event.getData(MPSCommonDataKeys.MPS_PROJECT));
-    if (MapSequence.fromMap(_params).get("project") == null) {
-      return false;
+    {
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      MapSequence.fromMap(_params).put("project", p);
+      if (p == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      final Language language = ((Language) ((SModule) MapSequence.fromMap(_params).get("module")));
-      final List<SModelReference> models = ListSequence.fromList(new ArrayList<SModelReference>());
-      ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
+    final Language language = ((Language) ((SModule) MapSequence.fromMap(_params).get("module")));
+    final List<SModelReference> models = ListSequence.fromList(new ArrayList<SModelReference>());
+    final SRepository repository = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
+    ModelAccess modelAccess = repository.getModelAccess();
 
-      modelAccess.runReadAction(new Runnable() {
-        public void run() {
-          List<SModel> descriptors = SModelRepository.getInstance().getModelDescriptors();
-          ListSequence.fromList(models).addSequence(ListSequence.fromList(descriptors).select(new ISelector<SModel, SModelReference>() {
-            public SModelReference select(SModel it) {
-              return it.getReference();
-            }
-          }));
-        }
-      });
-      final SModelReference result = CommonChoosers.showDialogModelChooser(((Project) MapSequence.fromMap(_params).get("ideaProject")), models, null);
-      if (result == null) {
-        return;
-      }
-
-      modelAccess.executeCommand(new Runnable() {
-        public void run() {
-          LanguageDescriptor descriptor;
-          descriptor = language.getModuleDescriptor();
-          descriptor.getAccessoryModels().add(result);
-          language.setLanguageDescriptor(descriptor, false);
-          IScope scope = language.getScope();
-          if (scope.getModelDescriptor(result) == null) {
-            int res = JOptionPane.showConfirmDialog(((Frame) MapSequence.fromMap(_params).get("frame")), "<html>Model <b>" + SModelStereotype.withoutStereotype(result.getModelName()) + "</b> is added to accessories</html>\n\n" + "Do you want to automatically the module add to dependency?", "Add Dependency", JOptionPane.YES_NO_OPTION);
-            if (res == JOptionPane.YES_OPTION) {
-              SModel md = SModelRepository.getInstance().getModelDescriptor(result);
-              language.addDependency(md.getModule().getModuleReference(), false);
-            }
+    modelAccess.runReadAction(new Runnable() {
+      public void run() {
+        // XXX perhaps, shall use scope based on project's repository 
+        Iterable<SModel> descriptors = new FilteredGlobalScope().getModels();
+        ListSequence.fromList(models).addSequence(Sequence.fromIterable(descriptors).select(new ISelector<SModel, SModelReference>() {
+          public SModelReference select(SModel it) {
+            return it.getReference();
           }
-          language.save();
-        }
-      });
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "AddAccessoryModel", t);
+        }));
       }
+    });
+    final SModelReference result = CommonChoosers.showModelChooser(((MPSProject) MapSequence.fromMap(_params).get("project")), null, models);
+    if (result == null) {
+      return;
     }
-  }
+    final Wrappers._boolean visibleFromModule = new Wrappers._boolean(true);
+    modelAccess.runReadAction(new Runnable() {
+      public void run() {
+        SModel md = result.resolve(repository);
+        visibleFromModule.value = VisibilityUtil.isVisible(language, md);
+      }
+    });
+    final boolean importModuleDependency;
+    if (!(visibleFromModule.value)) {
+      int res = JOptionPane.showConfirmDialog(((Frame) MapSequence.fromMap(_params).get("frame")), "<html>Model <b>" + result.getName() + "</b> is added to accessories</html>\n\n" + "Do you want to automatically the module add to dependency?", "Add Dependency", JOptionPane.YES_NO_OPTION);
+      importModuleDependency = res == JOptionPane.YES_OPTION;
+    } else {
+      importModuleDependency = false;
+    }
 
-  protected static Logger LOG = LogManager.getLogger(AddAccessoryModel_Action.class);
+    modelAccess.executeCommand(new Runnable() {
+      public void run() {
+        // see MPS-18743 
+        repository.saveAll();
+        LanguageDescriptor descriptor;
+        descriptor = language.getModuleDescriptor();
+        descriptor.getAccessoryModels().add(result);
+        language.setModuleDescriptor(descriptor);
+        if (importModuleDependency) {
+          SModel md = result.resolve(repository);
+          language.addDependency(md.getModule().getModuleReference(), false);
+        }
+        language.save();
+      }
+    });
+  }
 }

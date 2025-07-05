@@ -12,7 +12,6 @@ import java.lang.reflect.Method;
 public class OrderComparator implements Comparator<Description> {
   public OrderComparator() {
   }
-
   @Override
   public int compare(Description a, Description b) {
     if (a.getTestClass() != b.getTestClass()) {
@@ -22,15 +21,9 @@ public class OrderComparator implements Comparator<Description> {
       return 0;
     }
     Order oaa = a.getAnnotation(Order.class);
-    int orderA = (oaa != null ?
-      oaa.value() :
-      -1
-    );
+    int orderA = (oaa != null ? oaa.value() : -1);
     Order oab = b.getAnnotation(Order.class);
-    int orderB = (oab != null ?
-      oab.value() :
-      -1
-    );
+    int orderB = (oab != null ? oab.value() : -1);
     if (orderA >= 0 || orderB >= 0) {
       return orderA - orderB;
     }

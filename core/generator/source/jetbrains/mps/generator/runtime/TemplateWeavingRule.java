@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,22 @@
  */
 package jetbrains.mps.generator.runtime;
 
+import jetbrains.mps.generator.impl.GenerationFailureException;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
 /**
  * Evgeny Gryaznov, Nov 29, 2010
  */
-public interface TemplateWeavingRule extends TemplateRuleWithCondition {
+public interface TemplateWeavingRule extends TemplateRuleWithCondition, TemplateRuleForConcept, WeavingWithAnchor {
 
-  String getApplicableConcept();
-
-  boolean applyToInheritors();
-
-  SNode getContextNode(TemplateExecutionEnvironment environment, TemplateContext context);
+  /**
+   * FIXME what's the point to have getContextNode here if all we do is check it's from output model (WeavingProcessor#checkContext)
+   * and pass to apply() then.
+   * @return node in output model to host weaved nodes
+   */
+  @NotNull
+  SNode getContextNode(TemplateExecutionEnvironment environment, TemplateContext context) throws GenerationFailureException;
 
   boolean apply(TemplateExecutionEnvironment environment, TemplateContext context, SNode outputContextNode) throws GenerationException;
 }

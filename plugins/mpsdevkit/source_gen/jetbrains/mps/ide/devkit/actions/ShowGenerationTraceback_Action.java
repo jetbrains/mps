@@ -7,21 +7,15 @@ import javax.swing.Icon;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.List;
+import jetbrains.mps.ide.devkit.generator.GenerationTracerViewTool;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.ide.devkit.generator.GenerationTracer;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.generator.IGenerationTracer;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.apache.log4j.Priority;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.extapi.model.TransientSModel;
+import com.intellij.openapi.project.Project;
 import java.awt.Frame;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import javax.swing.JOptionPane;
 
 public class ShowGenerationTraceback_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -31,80 +25,50 @@ public class ShowGenerationTraceback_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(false);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        if (ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).count() != 1) {
-          disable(event.getPresentation());
-        }
-        GenerationTracer tracer = (GenerationTracer) ((IOperationContext) MapSequence.fromMap(_params).get("context")).getComponent(IGenerationTracer.class);
-        event.getPresentation().setVisible(tracer.hasTracingData());
-        event.getPresentation().setEnabled(tracer.hasTracebackData(SNodeOperations.getModel(((SNode) MapSequence.fromMap(_params).get("node"))).getReference()));
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "ShowGenerationTraceback", t);
-      }
-      this.disable(event.getPresentation());
+    GenerationTracerViewTool tool = event.getData(CommonDataKeys.PROJECT).getComponent(GenerationTracerViewTool.class);
+    SNode n = event.getData(MPSCommonDataKeys.NODE);
+    if ((n == null) || !(SNodeOperations.getModel(n) instanceof TransientSModel) || tool == null) {
+      disable(event.getPresentation());
+    } else {
+      setEnabledState(event.getPresentation(), tool.hasTracebackData(SNodeOperations.getModel(n).getReference()));
     }
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
     {
-      SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null) {
+      Project p = event.getData(CommonDataKeys.PROJECT);
+      if (p == null) {
+        return false;
       }
-      MapSequence.fromMap(_params).put("node", node);
-    }
-    if (MapSequence.fromMap(_params).get("node") == null) {
-      return false;
-    }
-    MapSequence.fromMap(_params).put("context", event.getData(MPSCommonDataKeys.OPERATION_CONTEXT));
-    if (MapSequence.fromMap(_params).get("context") == null) {
-      return false;
     }
     {
-      List<SNode> nodes = event.getData(MPSCommonDataKeys.NODES);
-      boolean error = false;
-      if (nodes != null) {
-      }
-      if (error || nodes == null) {
-        MapSequence.fromMap(_params).put("nodes", null);
-      } else {
-        MapSequence.fromMap(_params).put("nodes", ListSequence.fromListWithValues(new ArrayList<SNode>(), nodes));
+      SNode node = event.getData(MPSCommonDataKeys.NODE);
+      if (node == null) {
+        return false;
       }
     }
-    if (MapSequence.fromMap(_params).get("nodes") == null) {
-      return false;
-    }
-    MapSequence.fromMap(_params).put("frame", event.getData(MPSCommonDataKeys.FRAME));
-    if (MapSequence.fromMap(_params).get("frame") == null) {
-      return false;
+    {
+      Frame p = event.getData(MPSCommonDataKeys.FRAME);
+      if (p == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      GenerationTracer tracer = (GenerationTracer) ((IOperationContext) MapSequence.fromMap(_params).get("context")).getComponent(IGenerationTracer.class);
-      if (!(tracer.showTracebackData(((SNode) MapSequence.fromMap(_params).get("node"))))) {
-        JOptionPane.showMessageDialog(((Frame) MapSequence.fromMap(_params).get("frame")), "No tracing data available");
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "ShowGenerationTraceback", t);
-      }
+    GenerationTracerViewTool tool = event.getData(CommonDataKeys.PROJECT).getComponent(GenerationTracerViewTool.class);
+    if (!(tool.showTracebackData(event.getData(MPSCommonDataKeys.NODE)))) {
+      JOptionPane.showMessageDialog(event.getData(MPSCommonDataKeys.FRAME), "No tracing data available");
     }
   }
-
-  protected static Logger LOG = LogManager.getLogger(ShowGenerationTraceback_Action.class);
 }

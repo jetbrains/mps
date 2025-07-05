@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,13 @@
  */
 package jetbrains.mps.smodel.constraints;
 
-import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.GlobalOperationContext;
-import jetbrains.mps.project.GlobalScope;
-import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SReference;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelReference;import jetbrains.mps.smodel.*;
+import jetbrains.mps.smodel.IOperationContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SModule;
 
 /* package */ class ModelConstraintsUtils {
   // helper class
@@ -33,16 +30,6 @@ import org.jetbrains.annotations.Nullable;
   public static IOperationContext getOperationContext(@Nullable SModule module) {
     // TODO: remove usages of this method as much as can!
     return module != null ? new ConstraintsOperationContext(module) : new GlobalOperationContext();
-  }
-
-  @NotNull
-  public static IScope getModuleScope(@Nullable SModule module) {
-    return module != null ? ((AbstractModule)module).getScope() : GlobalScope.getInstance();
-  }
-
-  @Nullable
-  public static SModule getModule(@Nullable SReference reference) {
-    return reference != null ? getModule(reference.getSourceNode()) : null;
   }
 
   @Nullable
@@ -55,10 +42,6 @@ import org.jetbrains.annotations.Nullable;
     if (model == null) {
       return null;
     }
-    SModel modelDescriptor = model;
-    if (modelDescriptor == null) {
-      return null;
-    }
-    return modelDescriptor.getModule();
+    return model.getModule();
   }
 }

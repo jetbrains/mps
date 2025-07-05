@@ -5,43 +5,68 @@ package jetbrains.mps.lang.structure.findUsages;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import java.util.List;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SConceptRepository;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.NameUtil;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.language.LanguageRuntime;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.Language;
+import org.apache.log4j.Level;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 import java.util.Collections;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.model.SModel;
 
 public class ConceptInstances_Finder extends GeneratedFinder {
+  private static final Logger LOG_1127887887 = LogManager.getLogger(ConceptInstances_Finder.class);
   private static Logger LOG = LogManager.getLogger("jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder");
-
   public ConceptInstances_Finder() {
   }
-
   @Override
   public String getDescription() {
     return "Concept Instances";
   }
-
   @Override
   public String getLongDescription() {
     return "";
   }
-
   @Override
-  public String getConcept() {
-    return "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration";
+  public SAbstractConcept getSConcept() {
+    return MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 
   @Override
   protected void doFind(SNode node, SearchScope scope, List<SNode> _results, ProgressMonitor monitor) {
     try {
-      SAbstractConcept concept = SConceptRepository.getInstance().getConcept(NameUtil.nodeFQName(node));
+      SAbstractConcept concept = SNodeOperations.asSConcept(node);
+      if (concept == null) {
+        // doesn't hurt to protect finder implementation from unexpected input 
+        StringBuilder sb = new StringBuilder();
+        sb.append("Concept is not found for concept declaration ");
+        sb.append(NameUtil.nodeFQName(node));
+        sb.append(" finder will return empty results. ");
+
+        SModule module = check_mbibnv_a0g0b0a(check_mbibnv_a0a6a1a0(node));
+        if (module != null) {
+          LanguageRuntime runtime = LanguageRegistry.getInstance().getLanguage(((Language) module));
+          if (runtime != null) {
+            sb.append("Language runtime class is " + runtime.getClass().getName());
+          }
+        }
+        if (LOG_1127887887.isEnabledFor(Level.ERROR)) {
+          LOG_1127887887.error(sb.toString());
+        }
+        return;
+      }
       List<SNode> resNodes = ListSequence.fromListWithValues(new ArrayList<SNode>(), FindUsagesFacade.getInstance().findInstances(scope, Collections.singleton(concept), false, monitor));
       for (SNode resNode : resNodes) {
         ListSequence.fromList(_results).addElement(((SNode) resNode));
@@ -50,9 +75,26 @@ public class ConceptInstances_Finder extends GeneratedFinder {
       monitor.done();
     }
   }
-
   @Override
   public String getNodeCategory(SNode node) {
     return "Concept Instances";
+  }
+
+  @Nullable
+  @Override
+  public SNodeReference getDeclarationNode() {
+    return buildNodePointer(FindUsagesDescriptor.DECLARING_MODEL, "1197632773078");
+  }
+  private static SModule check_mbibnv_a0g0b0a(SModel checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getModule();
+    }
+    return null;
+  }
+  private static SModel check_mbibnv_a0a6a1a0(SNode checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getModel();
+    }
+    return null;
   }
 }

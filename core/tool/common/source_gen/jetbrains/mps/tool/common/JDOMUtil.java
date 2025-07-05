@@ -29,10 +29,8 @@ import org.jetbrains.annotations.Nullable;
 public class JDOMUtil {
   public static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
   private static final Logger LOG = LogManager.getLogger(JDOMUtil.class);
-
   public JDOMUtil() {
   }
-
   public static Document loadDocument(File file) throws JDOMException, IOException {
     SAXBuilder saxBuilder = createBuilder();
     FileInputStream in = new FileInputStream(file);
@@ -48,7 +46,6 @@ public class JDOMUtil {
       in.close();
     }
   }
-
   public static SAXBuilder createBuilder() {
     final SAXBuilder saxBuilder = new SAXBuilder();
     saxBuilder.setEntityResolver(new EntityResolver() {
@@ -59,7 +56,6 @@ public class JDOMUtil {
     });
     return saxBuilder;
   }
-
   public static void writeDocument(Document document, File file) throws IOException {
     if (!(file.getParentFile().exists())) {
       file.getParentFile().mkdirs();
@@ -74,11 +70,9 @@ public class JDOMUtil {
       stream.close();
     }
   }
-
   public static void writeDocument(Document document, OutputStream stream) throws IOException {
     writeDocument(document, new OutputStreamWriter(stream, DEFAULT_CHARSET));
   }
-
   public static void writeDocument(Document document, Writer writer) throws IOException {
     XMLOutputter xmlOutputter = createOutputter();
     if (xmlOutputter == null) {
@@ -95,33 +89,27 @@ public class JDOMUtil {
     }
     writer.close();
   }
-
   public static XMLOutputter createOutputter() {
     XMLOutputter xmlOutputter = new JDOMUtil.MyXMLOutputter();
     xmlOutputter.setFormat(Format.getPrettyFormat().setLineSeparator(System.getProperty("line.separator")));
     return xmlOutputter;
   }
-
   public static class MyXMLOutputter extends XMLOutputter {
     public MyXMLOutputter() {
     }
-
     @Override
     public String escapeAttributeEntities(String str) {
       return escapeText(str, false, true);
     }
-
     @Override
     public String escapeElementEntities(String str) {
       return escapeText(str, false, false);
     }
   }
-
   @NotNull
   public static String escapeText(String text, boolean escapeSpaces, boolean escapeLineEnds) {
     return escapeText(text, false, escapeSpaces, escapeLineEnds);
   }
-
   @NotNull
   public static String escapeText(String text, boolean escapeApostrophes, boolean escapeSpaces, boolean escapeLineEnds) {
     StringBuilder buffer = null;
@@ -149,12 +137,8 @@ public class JDOMUtil {
     //  If there were any entities, return the escaped characters 
     //  that we put in the StringBuilder. Otherwise, just return 
     //  the unmodified input string. 
-    return (buffer == null ?
-      text :
-      buffer.toString()
-    );
+    return (buffer == null ? text : buffer.toString());
   }
-
   /**
    * * Returns null if no escapement necessary.
    */
@@ -162,25 +146,13 @@ public class JDOMUtil {
   private static String escapeChar(char c, boolean escapeApostrophes, boolean escapeSpaces, boolean escapeLineEnds) {
     switch (c) {
       case '\n':
-        return (escapeLineEnds ?
-          "&#10;" :
-          null
-        );
+        return (escapeLineEnds ? "&#10;" : null);
       case '\r':
-        return (escapeLineEnds ?
-          "&#13;" :
-          null
-        );
+        return (escapeLineEnds ? "&#13;" : null);
       case '\t':
-        return (escapeLineEnds ?
-          "&#9;" :
-          null
-        );
+        return (escapeLineEnds ? "&#9;" : null);
       case ' ':
-        return (escapeSpaces ?
-          "&#20" :
-          null
-        );
+        return (escapeSpaces ? "&#20" : null);
       case '<':
         return "&lt;";
       case '>':
@@ -188,17 +160,13 @@ public class JDOMUtil {
       case '\"':
         return "&quot;";
       case '\'':
-        return (escapeApostrophes ?
-          "&apos;" :
-          null
-        );
+        return (escapeApostrophes ? "&apos;" : null);
       case '&':
         return "&amp;";
       default:
     }
     return null;
   }
-
   public static String unescapeText(@NotNull String text) {
     StringBuilder buffer = null;
     for (int i = 0; i < text.length(); i++) {
@@ -266,9 +234,6 @@ public class JDOMUtil {
     //  If there were any entities, return the escaped characters 
     //  that we put in the StringBuilder. Otherwise, just return 
     //  the unmodified input string. 
-    return (buffer == null ?
-      text :
-      buffer.toString()
-    );
+    return (buffer == null ? text : buffer.toString());
   }
 }

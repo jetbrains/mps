@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,29 +22,41 @@ import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
-import jetbrains.mps.generator.fileGenerator.FileGenerationUtil;
-import jetbrains.mps.generator.traceInfo.TraceInfoCache;
-import jetbrains.mps.generator.traceInfo.TraceInfoUtil;
-import jetbrains.mps.project.AbstractModule;
-import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.model.SNode;import org.jetbrains.mps.openapi.model.SNodeId;import org.jetbrains.mps.openapi.model.SNodeReference;import org.jetbrains.mps.openapi.model.SReference;import org.jetbrains.mps.openapi.model.SModelId;import org.jetbrains.mps.openapi.model.SModel;import org.jetbrains.mps.openapi.model.SModel;import org.jetbrains.mps.openapi.model.SModelReference;import jetbrains.mps.smodel.*;
-import jetbrains.mps.traceInfo.DebugInfo;
-import jetbrains.mps.traceInfo.TraceablePositionInfo;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.textgen.trace.BaseLanguageNodeLookup;
+import jetbrains.mps.textgen.trace.DefaultTraceInfoProvider;
+import jetbrains.mps.textgen.trace.DebugInfo;
+import jetbrains.mps.textgen.trace.NodeTraceInfo;
+import jetbrains.mps.textgen.trace.TraceInfoCache;
+import jetbrains.mps.textgen.trace.TraceablePositionInfo;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
+
+import java.util.Optional;
+import java.util.stream.Stream;
 
 /**
  * Use this class for mapping debugger position (type, file, line number) to
  * some stuff as: node, psi file.
  */
 public class GeneratedSourcePosition {
+  private final SNodeReference myNode;
   private final String myTypeName;
   private final String myFileName;
   private final int myLineNumber;
 
-  public GeneratedSourcePosition(String typeName, String fileName, int lineNumber) {
+  /*package*/ GeneratedSourcePosition(@Nullable SNodeReference nodeRef, String typeName, String fileName, int lineNumber) {
+    myNode = nodeRef;
     myLineNumber = lineNumber;
     myFileName = fileName;
     myTypeName = typeName;
@@ -63,63 +75,41 @@ public class GeneratedSourcePosition {
   }
 
   @Nullable
-  public SNode getNode() {
-    return TraceInfoUtil.getJavaNode(myTypeName, myFileName, myLineNumber);
+  public SNodeReference getNode() {
+    return myNode;
   }
 
   @Nullable
-  public SNodeReference getNodePointer() {
-    return ModelAccess.instance().runReadAction(new Computable<SNodeReference>() {
-      @Override
-      public SNodeReference compute() {
-        SNode node = getNode();
-        if (node == null) {
-          return null;
-        }
-        return new jetbrains.mps.smodel.SNodePointer(node);
-      }
-    });
-  }
-
-  @Nullable
-  public PsiFile getPsiFile(final Project project) {
-    SModelReference reference = ModelAccess.instance().runReadAction(new Computable<SModelReference>() {
-      @Override
-      public SModelReference compute() {
-        SNode node = getNode();
-        if (node == null) return null;
-        SModel modelDescriptor = node.getModel();
-        return modelDescriptor.getReference();
-      }
-    });
-    if (reference == null) {
-      return null;
-    }
-    return getPsiFile(project, reference, myFileName);
+  public PsiFile getPsiFile(Project project) {
+    return myNode == null ? null : getPsiFile(project, myNode.getModelReference(), myFileName);
   }
 
   @Nullable
   public static GeneratedSourcePosition fromNode(final SNode node) {
-    SModel model = node.getModel();
-    DebugInfo debugInfo = TraceInfoCache.getInstance().get(model);
-    if (debugInfo == null) {
+    NodeTraceInfo nti = new NodeTraceInfo(node, TraceInfoCache.getInstance().get(node.getModel()));
+    TraceablePositionInfo position = nti.getPosition();
+    if (position == null) {
       return null;
     }
-    TraceablePositionInfo position = debugInfo.getPositionForNode(node);
-    if (position == null) return null;
 
-    return new GeneratedSourcePosition(TraceInfoUtil.getUnitName(position.getFileName(), position.getStartLine(), model), position.getFileName(), position.getStartLine());
+    return new GeneratedSourcePosition(node.getReference(), nti.getUnitName(), nti.getFileName(), position.getStartLine());
+  }
+
+  public static GeneratedSourcePosition fromLocation(Project project, String unitName, String fileName, int line) {
+    Optional<DebugInfo> di = new DefaultTraceInfoProvider(ProjectHelper.getProjectRepository(project)).debugInfo(NameUtil.namespaceFromLongName(unitName)).findFirst();
+    return new GeneratedSourcePosition(!di.isPresent() ? null : new BaseLanguageNodeLookup(di.get()).getNodeAt(fileName, line), unitName, fileName, line);
   }
 
 
   @Nullable
   public static PsiFile getPsiFile(final Project project, final SModelReference modelReference, final String generatedFileName) {
-    final String fullPath = ModelAccess.instance().runReadAction(new Computable<String>() {
+    SRepository repository = ProjectHelper.getProjectRepository(project);
+    final String fullPath = new ModelAccessHelper(repository.getModelAccess()).runReadAction(new Computable<String>() {
       @Override
       public String compute() {
-        SModel modelDescriptor = SModelRepository.getInstance().getModelDescriptor(modelReference);
+        SModel modelDescriptor = modelReference.resolve(repository);
         SModule module = modelDescriptor.getModule();
-        IFile defaultOutputDir = FileGenerationUtil.getDefaultOutputDir(modelDescriptor, ((AbstractModule) module).getOutputPath());
+        IFile defaultOutputDir = module.getFacet(JavaModuleFacet.class).getOutputLocation(modelDescriptor);
         IFile file = defaultOutputDir.getDescendant(generatedFileName);
         if (!file.exists()) {
           return null;

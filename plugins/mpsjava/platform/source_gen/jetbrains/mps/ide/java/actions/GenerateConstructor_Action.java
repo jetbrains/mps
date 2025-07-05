@@ -7,30 +7,27 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
-import org.apache.log4j.Priority;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.ide.editor.MPSEditorDataKeys;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.List;
-import jetbrains.mps.project.Project;
-import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
-import jetbrains.mps.project.GlobalScope;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.lang.typesystem.runtime.HUtil;
 
@@ -42,175 +39,166 @@ public class GenerateConstructor_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(false);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     return GenerateConstructor_Action.this.getClassConcept(_params) != null;
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        boolean enabled = this.isApplicable(event, _params);
-        this.setEnabledState(event.getPresentation(), enabled);
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "GenerateConstructor", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("node", event.getData(MPSCommonDataKeys.NODE));
-    if (MapSequence.fromMap(_params).get("node") == null) {
-      return false;
+    {
+      SNode p = event.getData(MPSCommonDataKeys.NODE);
+      MapSequence.fromMap(_params).put("node", p);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("editorContext", event.getData(MPSEditorDataKeys.EDITOR_CONTEXT));
-    if (MapSequence.fromMap(_params).get("editorContext") == null) {
-      return false;
+    {
+      EditorContext p = event.getData(MPSEditorDataKeys.EDITOR_CONTEXT);
+      MapSequence.fromMap(_params).put("editorContext", p);
+      if (p == null) {
+        return false;
+      }
+    }
+    {
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      MapSequence.fromMap(_params).put("mpsProject", p);
+      if (p == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      SNode classConcept = GenerateConstructor_Action.this.getClassConcept(_params);
-      SNode superclass;
-      SNodeReference[] ctors = null;
-      boolean needsShowConstructorsDialog = false;
-      SNodeReference[] selectedConstructors = null;
-      SNodeReference[] selectedFields = null;
-      superclass = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(classConcept, "superclass", true), "classifier", false), "jetbrains.mps.baseLanguage.structure.ClassConcept");
-      if (superclass == null) {
-        superclass = SNodeOperations.getNode("f:java_stub#6354ebe7-c22a-4a0f-ac54-50b52ab9b065#java.lang(JDK/java.lang@java_stub)", "~Object");
-      }
-      if (Sequence.fromIterable(BehaviorReflection.invokeNonVirtual((Class<Iterable<SNode>>) ((Class) Object.class), superclass, "jetbrains.mps.baseLanguage.structure.ClassConcept", "call_constructors_5292274854859503373", new Object[]{})).count() > 1) {
-        needsShowConstructorsDialog = true;
-        ctors = Sequence.fromIterable(BehaviorReflection.invokeNonVirtual((Class<Iterable<SNode>>) ((Class) Object.class), superclass, "jetbrains.mps.baseLanguage.structure.ClassConcept", "call_constructors_5292274854859503373", new Object[]{})).select(new ISelector<SNode, SNodePointer>() {
-          public SNodePointer select(SNode it) {
-            return new SNodePointer(it);
-          }
-        }).toGenericArray(SNodePointer.class);
-      } else {
-        selectedConstructors = new SNodeReference[]{new SNodePointer(Sequence.fromIterable(BehaviorReflection.invokeNonVirtual((Class<Iterable<SNode>>) ((Class) Object.class), superclass, "jetbrains.mps.baseLanguage.structure.ClassConcept", "call_constructors_5292274854859503373", new Object[]{})).first())};
-      }
-      if (needsShowConstructorsDialog) {
-        SelectConstructorsDialog selectConstructorsDialog = new SelectConstructorsDialog(ctors, ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getOperationContext().getProject());
-        selectConstructorsDialog.setTitle("Choose Super Class Constructor");
-        selectConstructorsDialog.show();
-
-        if (!(selectConstructorsDialog.isOK())) {
-          return;
+    SNode classConcept = GenerateConstructor_Action.this.getClassConcept(_params);
+    SNode superclass;
+    SNodeReference[] ctors = null;
+    boolean needsShowConstructorsDialog = false;
+    SNodeReference[] selectedConstructors = null;
+    SNodeReference[] selectedFields = null;
+    superclass = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(classConcept, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+    if (superclass == null) {
+      superclass = SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object");
+    }
+    if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke(superclass, SMethodTrimmedId.create("constructors", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), "4_LVZ3pCvsd")))).count() > 1) {
+      needsShowConstructorsDialog = true;
+      ctors = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke(superclass, SMethodTrimmedId.create("constructors", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), "4_LVZ3pCvsd")))).select(new ISelector<SNode, SNodeReference>() {
+        public SNodeReference select(SNode it) {
+          return SNodeOperations.getPointer(it);
         }
-        List<SNodeReference> selectedElements = selectConstructorsDialog.getSelectedElements();
-        selectedConstructors = (selectedElements != null ?
-          selectedElements.toArray(new SNodeReference[selectedElements.size()]) :
-          new SNodeReference[0]
-        );
-      }
+      }).toGenericArray(SNodeReference.class);
+    } else {
+      selectedConstructors = new SNodeReference[]{SNodeOperations.getPointer(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke(superclass, SMethodTrimmedId.create("constructors", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), "4_LVZ3pCvsd")))).first())};
+    }
+    if (needsShowConstructorsDialog) {
+      SelectConstructorsDialog selectConstructorsDialog = new SelectConstructorsDialog(ctors, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
+      selectConstructorsDialog.setTitle("Choose Super Class Constructor");
+      selectConstructorsDialog.show();
 
-      boolean needsShowFieldsDialog = false;
-      SNodeReference[] fields = null;
-      if (Sequence.fromIterable(BehaviorReflection.invokeNonVirtual((Class<Iterable<SNode>>) ((Class) Object.class), classConcept, "jetbrains.mps.baseLanguage.structure.ClassConcept", "call_fields_5292274854859383272", new Object[]{})).isNotEmpty()) {
-        needsShowFieldsDialog = true;
-        fields = Sequence.fromIterable(BehaviorReflection.invokeNonVirtual((Class<Iterable<SNode>>) ((Class) Object.class), classConcept, "jetbrains.mps.baseLanguage.structure.ClassConcept", "call_fields_5292274854859383272", new Object[]{})).select(new ISelector<SNode, SNodePointer>() {
-          public SNodePointer select(SNode it) {
-            return new SNodePointer(it);
-          }
-        }).toGenericArray(SNodePointer.class);
-      } else {
-        selectedFields = new SNodeReference[0];
+      if (!(selectConstructorsDialog.isOK())) {
+        return;
       }
-      if (needsShowFieldsDialog) {
-        SelectFieldsDialog selectFieldsDialog = new SelectFieldsDialog(fields, true, ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getOperationContext().getProject());
-        selectFieldsDialog.setTitle("Choose Fields to Initialize by Constructor");
-        selectFieldsDialog.show();
+      List<SNodeReference> selectedElements = selectConstructorsDialog.getSelectedElements();
+      selectedConstructors = (selectedElements != null ? selectedElements.toArray(new SNodeReference[selectedElements.size()]) : new SNodeReference[0]);
+    }
 
-        if (!(selectFieldsDialog.isOK())) {
-          return;
+    boolean needsShowFieldsDialog = false;
+    SNodeReference[] fields = null;
+    if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke(classConcept, SMethodTrimmedId.create("fields", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), "4_LVZ3pC27C")))).isNotEmpty()) {
+      needsShowFieldsDialog = true;
+      fields = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke(classConcept, SMethodTrimmedId.create("fields", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), "4_LVZ3pC27C")))).select(new ISelector<SNode, SNodeReference>() {
+        public SNodeReference select(SNode it) {
+          return SNodeOperations.getPointer(it);
         }
-        selectedFields = Sequence.fromIterable(((Iterable<SNodeReference>) selectFieldsDialog.getSelectedElements())).toGenericArray(SNodeReference.class);
+      }).toGenericArray(SNodeReference.class);
+    } else {
+      selectedFields = new SNodeReference[0];
+    }
+    if (needsShowFieldsDialog) {
+      SelectFieldsDialog selectFieldsDialog = new SelectFieldsDialog(fields, true, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
+      selectFieldsDialog.setTitle("Choose Fields to Initialize by Constructor");
+      selectFieldsDialog.show();
 
+      if (!(selectFieldsDialog.isOK())) {
+        return;
       }
-      SNode constructorDeclaration = null;
-      Project project = ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getOperationContext().getProject();
-      for (SNodeReference ptr : selectedConstructors) {
-        SNode selectedSuperConstructor = SNodeOperations.cast(((SNodePointer) ptr).resolve(MPSModuleRepository.getInstance()), "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
-        SNode constructor = SNodeFactoryOperations.addNewChild(classConcept, "member", "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
-        constructorDeclaration = constructor;
-        SNodeFactoryOperations.setNewChild(constructor, "body", "jetbrains.mps.baseLanguage.structure.StatementList");
-        if (ListSequence.fromList(SLinkOperations.getTargets(selectedSuperConstructor, "parameter", true)).isNotEmpty()) {
-          SNode invocation = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(constructor, "body", true), "statement", "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation");
-          SLinkOperations.setTarget(invocation, "baseMethodDeclaration", selectedSuperConstructor, false);
-          for (SNode superParam : SLinkOperations.getTargets(selectedSuperConstructor, "parameter", true)) {
-            SNode parameter = SNodeFactoryOperations.addNewChild(constructor, "parameter", "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
-            SPropertyOperations.set(parameter, "name", SPropertyOperations.getString(superParam, "name"));
-            SLinkOperations.setTarget(parameter, "type", SNodeOperations.copyNode(SLinkOperations.getTarget(superParam, "type", true)), true);
-            SNode paramReference = SNodeFactoryOperations.addNewChild(invocation, "actualArgument", "jetbrains.mps.baseLanguage.structure.VariableReference");
-            SLinkOperations.setTarget(paramReference, "variableDeclaration", parameter, false);
-          }
-        }
-        for (SNodeReference fieldPtr : selectedFields) {
-          SNode field = SNodeOperations.cast(((SNodePointer) fieldPtr).resolve(MPSModuleRepository.getInstance()), "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
-          SNode parameterDeclaration = _quotation_createNode_yl16du_a0b0f0r0a(SNodeOperations.copyNode(SLinkOperations.getTarget(field, "type", true)), GenerateGettersAndSettersUtil.getParameterNameForField(field, project));
-          ListSequence.fromList(SLinkOperations.getTargets(constructor, "parameter", true)).addElement(parameterDeclaration);
-          SNode expressionStatement = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(constructor, "body", true), "statement", "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
-          SNode assignmentExpression = SNodeFactoryOperations.setNewChild(expressionStatement, "expression", "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
-          SLinkOperations.setTarget(assignmentExpression, "lValue", _quotation_createNode_yl16du_a0a5a5a71a0(field), true);
-          SLinkOperations.setTarget(assignmentExpression, "rValue", _quotation_createNode_yl16du_a0a6a5a71a0(parameterDeclaration), true);
+      selectedFields = Sequence.fromIterable(((Iterable<SNodeReference>) selectFieldsDialog.getSelectedElements())).toGenericArray(SNodeReference.class);
+
+    }
+    SNode constructorDeclaration = null;
+    for (SNodeReference ptr : selectedConstructors) {
+      SNode selectedSuperConstructor = SNodeOperations.cast(ptr.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration"));
+      SNode constructor = SNodeFactoryOperations.addNewChild(classConcept, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"), SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration")));
+      constructorDeclaration = constructor;
+      SNodeFactoryOperations.setNewChild(constructor, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body"), SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
+      if (ListSequence.fromList(SLinkOperations.getChildren(selectedSuperConstructor, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).isNotEmpty()) {
+        SNode invocation = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(constructor, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation")));
+        SLinkOperations.setTarget(invocation, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), selectedSuperConstructor);
+        for (SNode superParam : SLinkOperations.getChildren(selectedSuperConstructor, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))) {
+          final SNode parameter = SNodeFactoryOperations.addNewChild(constructor, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"), SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration")));
+          SPropertyOperations.set(parameter, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), SPropertyOperations.getString(superParam, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+          SLinkOperations.setTarget(parameter, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), SNodeOperations.copyNode(SLinkOperations.getTarget(superParam, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"))));
+          ListSequence.fromList(SLinkOperations.getChildren(superParam, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation"))).visitAll(new IVisitor<SNode>() {
+            public void visit(SNode it) {
+              ListSequence.fromList(SLinkOperations.getChildren(parameter, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation"))).addElement(SNodeOperations.copyNode(it));
+            }
+          });
+          SNode paramReference = SNodeFactoryOperations.addNewChild(invocation, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")));
+          SLinkOperations.setTarget(paramReference, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), parameter);
         }
       }
-      if (constructorDeclaration != null) {
-        ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).select(constructorDeclaration);
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "GenerateConstructor", t);
+      for (SNodeReference fieldPtr : selectedFields) {
+        SNode field = SNodeOperations.cast(fieldPtr.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"));
+        SNode parameterDeclaration = _quotation_createNode_yl16du_a0b0f0q0a(SNodeOperations.copyNode(SLinkOperations.getTarget(field, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"))), GenerateGettersAndSettersUtil.getParameterNameForField(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))));
+        ListSequence.fromList(SLinkOperations.getChildren(constructor, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"))).addElement(parameterDeclaration);
+        SNode expressionStatement = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(constructor, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement")));
+        SNode assignmentExpression = SNodeFactoryOperations.setNewChild(expressionStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"), SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression")));
+        SLinkOperations.setTarget(assignmentExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue"), _quotation_createNode_yl16du_a0a5a5a61a0(field));
+        SLinkOperations.setTarget(assignmentExpression, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue"), _quotation_createNode_yl16du_a0a6a5a61a0(parameterDeclaration));
       }
     }
+    if (constructorDeclaration != null) {
+      ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).select(constructorDeclaration);
+    }
   }
-
   private SNode getClassConcept(final Map<String, Object> _params) {
-    return SNodeOperations.getAncestor(((SNode) ((SNode) MapSequence.fromMap(_params).get("node"))), "jetbrains.mps.baseLanguage.structure.ClassConcept", true, false);
+    return SNodeOperations.getNodeAncestor(((SNode) ((SNode) MapSequence.fromMap(_params).get("node"))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), true, false);
   }
-
-  protected static Logger LOG = LogManager.getLogger(GenerateConstructor_Action.class);
-
-  private static SNode _quotation_createNode_yl16du_a0b0f0r0a(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_yl16du_a0b0f0q0a(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
-    quotedNode_3 = SModelUtil_new.instantiateConceptDeclaration("jetbrains.mps.baseLanguage.structure.ParameterDeclaration", null, null, GlobalScope.getInstance(), false);
-    SNodeAccessUtil.setProperty(quotedNode_3, "name", (String) parameter_2);
+    quotedNode_3 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration"), null, null, false);
+    SNodeAccessUtil.setProperty(quotedNode_3, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_2);
     quotedNode_4 = (SNode) parameter_1;
     if (quotedNode_4 != null) {
-      quotedNode_3.addChild("type", HUtil.copyIfNecessary(quotedNode_4));
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), HUtil.copyIfNecessary(quotedNode_4));
     }
     return quotedNode_3;
   }
-
-  private static SNode _quotation_createNode_yl16du_a0a5a5a71a0(Object parameter_1) {
+  private static SNode _quotation_createNode_yl16du_a0a5a5a61a0(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration("jetbrains.mps.baseLanguage.structure.VariableReference", null, null, GlobalScope.getInstance(), false);
-    SNodeAccessUtil.setReferenceTarget(quotedNode_2, "variableDeclaration", (SNode) parameter_1);
+    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e98L, "VariableReference"), null, null, false);
+    SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), (SNode) parameter_1);
     return quotedNode_2;
   }
-
-  private static SNode _quotation_createNode_yl16du_a0a6a5a71a0(Object parameter_1) {
+  private static SNode _quotation_createNode_yl16du_a0a6a5a61a0(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration("jetbrains.mps.baseLanguage.structure.VariableReference", null, null, GlobalScope.getInstance(), false);
-    SNodeAccessUtil.setReferenceTarget(quotedNode_2, "variableDeclaration", (SNode) parameter_1);
+    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e98L, "VariableReference"), null, null, false);
+    SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), (SNode) parameter_1);
     return quotedNode_2;
   }
 }

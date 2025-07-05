@@ -18,24 +18,47 @@
   <id>jetbrains.mps.ide.migration.assistant</id>
   <name>Migration Assistant</name>
   <description>Provides assistance migrating projects developed with earlier versions of MPS</description>
-  <version>3.0.5</version>
+  <version>2017.1.4</version>
   <vendor url="http://www.jetbrains.com/mps/" logo="/MPS_16.png">JetBrains</vendor>
-  <idea-version since-build="129.1" until-build="134.1"/>
+  <idea-version since-build="171.1" until-build="172.1"/>
 
-  <depends>jetbrains.mps.ide.migration_30</depends>
+  <depends>jetbrains.mps.ide.modelchecker</depends>
+
+  <actions>
+    <group id="Migration" text="Migration" configurable="true" popup="true" compact="true">
+      <add-to-group group-id="MainMenu" relative-to-action="ToolsMenu" anchor="after" />
+    </group>
+  </actions>
+
+  <application-components>
+    <component>
+      <implementation-class>jetbrains.mps.migration.component.plugin.Component_PluginInitializer</implementation-class>
+    </component>
+  </application-components>
+
   <project-components>
     <component>
-      <implementation-class>jetbrains.mps.ide.migration.assistant.MigrationAssistant</implementation-class>
+      <interface-class>jetbrains.mps.ide.migration.IStartupMigrationExecutor</interface-class>
+      <implementation-class>jetbrains.mps.ide.migration.MigrationTrigger</implementation-class>
+      <headless-implementation-class>jetbrains.mps.ide.migration.HeadlessMigrationExecutor</headless-implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.migration.assistant.MigrationProcessor</implementation-class>
+      <implementation-class>jetbrains.mps.ide.migration.MigrationMakeBlocker</implementation-class>
     </component>
     <component>
       <implementation-class>jetbrains.mps.ide.migration.storage.StorageAssistant</implementation-class>
     </component>
+    <component>
+      <interface-class>jetbrains.mps.ide.migration.MigrationManager</interface-class>
+      <implementation-class>jetbrains.mps.ide.migration.MigrationManagerImpl</implementation-class>
+    </component>
+    <component>
+      <implementation-class>jetbrains.mps.ide.migration.MigrationComponent</implementation-class>
+    </component>
   </project-components>
 
   <extensions defaultExtensionNs="com.intellij">
+    <mps.LanguageLibrary dir="/solutions"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
   </extensions>
 </idea-plugin>

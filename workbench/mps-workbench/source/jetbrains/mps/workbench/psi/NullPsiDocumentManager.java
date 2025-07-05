@@ -15,14 +15,22 @@
  */
 package jetbrains.mps.workbench.psi;
 
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.impl.DocumentImpl;
 import com.intellij.openapi.util.Computable;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDocumentManager;
 import com.intellij.psi.PsiFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collection;
+
+/**
+ * @deprecated since MPS 3.4, use {@link com.intellij.core.CorePsiDocumentManager}
+ */
+@Deprecated
 public class NullPsiDocumentManager extends PsiDocumentManager {
   @Override
   public boolean isCommitted(@NotNull Document document) {
@@ -32,6 +40,14 @@ public class NullPsiDocumentManager extends PsiDocumentManager {
   @Override
   public boolean performWhenAllCommitted(@NotNull Runnable action) {
     return false;
+  }
+
+  @Override
+  public void performLaterWhenAllCommitted(@NotNull Runnable runnable) {
+  }
+
+  @Override
+  public void performLaterWhenAllCommitted(@NotNull Runnable runnable, ModalityState modalityState) {
   }
 
   @Override
@@ -73,6 +89,23 @@ public class NullPsiDocumentManager extends PsiDocumentManager {
 
   }
 
+  @NotNull
+  @Override
+  public CharSequence getLastCommittedText(@NotNull Document document) {
+    return null;
+  }
+
+  @Override
+  public long getLastCommittedStamp(@NotNull Document document) {
+    return 0;
+  }
+
+  @Nullable
+  @Override
+  public Document getLastCommittedDocument(@NotNull PsiFile file) {
+    return null;
+  }
+
   @Override
   public Document[] getUncommittedDocuments() {
     return new Document[0];
@@ -96,6 +129,11 @@ public class NullPsiDocumentManager extends PsiDocumentManager {
   @Override
   public <T> T commitAndRunReadAction(@NotNull Computable<T> computation) {
     return null;
+  }
+
+  @Override
+  public void reparseFiles(@NotNull Collection<VirtualFile> files, boolean includeOpenFiles) {
+    //To change body of implemented methods use File | Settings | File Templates.
   }
 
   @Override

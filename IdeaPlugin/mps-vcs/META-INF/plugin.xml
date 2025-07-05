@@ -15,20 +15,36 @@
   -->
 
 <idea-plugin version="2" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <id>jetbrains.mps.vcs</id>
-  <name>MPS Version Control support</name>
+  <id>jetbrains.mps.idea.vcs</id>
+  <name>MPS Version Control Support</name>
   <category>Custom Languages</category>
   <description>MPS Version Control support</description>
-  <version>3.0.5</version>
-  <vendor url="http://www.jetbrains.com/mps/" logo="/MPS_16.png">JetBrains</vendor>
-  <idea-version since-build="129.1" until-build="134.1"/>
+  <version>2017.1.4</version>
+  <vendor url="http://www.jetbrains.com/mps/">JetBrains MPS</vendor>
+  <idea-version since-build="171.1" until-build="172.1"/>
   <depends>jetbrains.mps.core</depends>
 
   <depends optional="true">Subversion</depends>
   <depends optional="true">Git4Idea</depends>
 
-  <xi:include href="../classes/jetbrains/mps/vcs/platform/actions/MPSVcs.xml" xpointer="xpointer(/components/*)"/>
-  <xi:include href="../classes/META-INF/VcsCommon.xml" xpointer="xpointer(/components/*)"/>
+  <xi:include href="MPSVcs.xml" xpointer="xpointer(/components/*)"/>
+
+  <project-components>
+    <component>
+      <implementation-class>jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry</implementation-class>
+      <skipForDefaultProject/>
+    </component>
+    <component>
+      <implementation-class>jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory</implementation-class>
+      <skipForDefaultProject/>
+    </component>
+  </project-components>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <diff.DiffTool implementation="jetbrains.mps.vcs.platform.integration.ModelDiffTool"/>
+    <diff.merge.MergeTool implementation="jetbrains.mps.vcs.platform.integration.ModelMergeTool"/>
+  </extensions>
+
   <application-components>
     <component>
       <implementation-class>jetbrains.mps.ide.platform.watching.FSChangesWatcher</implementation-class>
@@ -44,7 +60,7 @@
     </component>
   </application-components>
   <extensions defaultExtensionNs="com.intellij">
-    <mps.LanguageLibrary dir="/languages"/>
+    <mps.LanguageLibrary dir="/"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
     <vcs.fileStatusProvider implementation="jetbrains.mps.vcs.changesmanager.NodeFileStatusProvider"/>
     <checkinHandlerFactory implementation="jetbrains.mps.vcs.platform.integration.OptimizeImportsCheckinHandler$OptimizeImportsCheckinHandlerFactory"/>

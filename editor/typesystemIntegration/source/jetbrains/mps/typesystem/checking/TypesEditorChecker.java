@@ -15,43 +15,55 @@
  */
 package jetbrains.mps.typesystem.checking;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 import jetbrains.mps.newTypesystem.context.IncrementalTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.nodeEditor.EditorMessage;
+import jetbrains.mps.nodeEditor.checking.UpdateResult;
+import jetbrains.mps.nodeEditor.checking.UpdateResult.Completed;
 import jetbrains.mps.openapi.editor.EditorContext;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
+import jetbrains.mps.util.Cancellable;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.*;
+import java.util.Collection;
 
 public class TypesEditorChecker extends AbstractTypesystemEditorChecker {
   private static final Logger LOG = LogManager.getLogger(TypesEditorChecker.class);
 
   @Override
-  protected void doCreateMessages(final TypeCheckingContext context, final boolean wasCheckedOnce, final EditorContext editorContext, final SNode rootNode, final Set<EditorMessage> messages) {
-    if (context == null || !(context instanceof IncrementalTypecheckingContext)) return;
-
-    ((IncrementalTypecheckingContext)context).runTypeCheckingAction(new Runnable() {
-      @Override
-      public void run() {
-        IncrementalTypechecking typesComponent = context.getBaseNodeTypesComponent();
-        if (!wasCheckedOnce || !context.isCheckedRoot(true) || context.messagesChanged(editorContext.getEditorComponent().getClass())) {
-          try {
-            myMessagesChanged = true;
-            context.checkIfNotChecked(rootNode, false);
-          } catch (Throwable t) {
-            LOG.error(null, t);
-            typesComponent.setCheckedTypesystem();
-            return;
-          }
-        }
-
-        // highlight nodes with errors
-        collectMessagesForNodesWithErrors(context, editorContext, messages, true);
-      }
-    });
+  public boolean isEssential() {
+    return true;
   }
 
+  @NotNull
+  @Override
+  protected UpdateResult doCreateMessages(final TypeCheckingContext context, final boolean wasCheckedOnce,
+      final EditorContext editorContext, final SNode rootNode, Cancellable cancellable, final boolean applyQuickFixes) {
+    if (context == null || !(context instanceof IncrementalTypecheckingContext)) {
+      return UpdateResult.CANCELLED;
+    }
+
+    return ((IncrementalTypecheckingContext) context).runTypeCheckingAction(() -> {
+      boolean messagesChanged = false;
+
+      if (!wasCheckedOnce || !context.isCheckedRoot(true) || context.messagesChanged(editorContext.getEditorComponent().getClass())) {
+        IncrementalTypechecking typesComponent = context.getBaseNodeTypesComponent();
+        try {
+          messagesChanged = true;
+          context.checkIfNotChecked(rootNode, false);
+        } catch (Throwable t) {
+          LOG.error(null, t);
+          typesComponent.setCheckedTypesystem();
+          return UpdateResult.CANCELLED;
+        }
+      }
+
+      // highlight nodes with errors
+      Collection<EditorMessage> messages = collectMessagesForNodesWithErrors(context, editorContext, true, applyQuickFixes);
+      return new Completed(messagesChanged, messages);
+    });
+  }
 }

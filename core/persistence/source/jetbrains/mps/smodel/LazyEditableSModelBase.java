@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,69 +17,42 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
-import jetbrains.mps.smodel.loading.ModelLoader;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
-import jetbrains.mps.smodel.loading.UpdateableModel;
+import jetbrains.mps.smodel.loading.PartialModelDataSupport;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.DataSource;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 /**
+ * Model with data that could get gradually loaded in subsequent steps.
  * evgeny, 6/6/13
  */
 public abstract class LazyEditableSModelBase extends EditableSModelBase {
-  private final UpdateableModel myModel = new UpdateableModel(this) {
-    @Override
-    protected ModelLoadResult doLoad(ModelLoadingState state, @Nullable LazySModel current) {
-      if (state == ModelLoadingState.NOT_LOADED) return new ModelLoadResult(null, ModelLoadingState.NOT_LOADED);
-      if (state == ModelLoadingState.INTERFACE_LOADED) {
-        ModelLoadResult result = loadSModel(ModelLoadingState.INTERFACE_LOADED);
-        processLoadedModel(result.getModel());
-        return result;
-      }
-      if (state == ModelLoadingState.FULLY_LOADED) {
-        LazySModel fullModel = loadSModel(ModelLoadingState.FULLY_LOADED).getModel();
-        if (current == null) return new ModelLoadResult(fullModel, ModelLoadingState.FULLY_LOADED);
-        current.setUpdateMode(true);   //not to send events on changes
-        fullModel.setUpdateMode(true);
-        new ModelLoader(current, fullModel).update();
-        current.setUpdateMode(false);  //enable events
-        return new ModelLoadResult(current, ModelLoadingState.FULLY_LOADED);
-      }
-      throw new UnsupportedOperationException();
-    }
-  };
+  private final PartialModelDataSupport<SModel> myModel;
 
-  public LazyEditableSModelBase(@NotNull SModelReference modelReference,
-      @NotNull DataSource source) {
+  public LazyEditableSModelBase(@NotNull SModelReference modelReference, @NotNull DataSource source) {
     super(modelReference, source);
-  }
-
-
-  public final ModelLoadingState getLoadingState() {
-    return myModel.getState();
+    myModel = new PartialModelDataSupport<>(this, state -> {
+      // FIXME need a new loadSModel(state) that return proper ModelLoadResult, and deprecate the old one.
+      ModelLoadResult result = loadSModel(state);
+      if (result.getModel() != null) {
+        result.getModel().setModelDescriptor(LazyEditableSModelBase.this);
+      }
+      return new jetbrains.mps.smodel.ModelLoadResult<>(result.getModel(), result.getState());
+    });
   }
 
   @Override
-  public final LazySModel getSModelInternal() {
-    ModelLoadingState oldState = myModel.getState();
-    if (oldState.ordinal() >= ModelLoadingState.INTERFACE_LOADED.ordinal()) {
-      return myModel.getModel(ModelLoadingState.INTERFACE_LOADED);
+  public final SModel getSModelInternal() {
+    ModelLoadingState oldState = getLoadingState();
+    SModel res = myModel.getModel(ModelLoadingState.INTERFACE_LOADED);
+    if (res == null) {
+      return null; // this is when we are in recursion
     }
-    synchronized (myModel) {
-      if (myModel instanceof InvalidSModel) return myModel.getModel(null);
-
-      oldState = myModel.getState();
-      LazySModel res = myModel.getModel(ModelLoadingState.INTERFACE_LOADED);
-      if (res == null) return null; // this is when we are in recursion
-      if (oldState != myModel.getState()) {
-        res.setModelDescriptor(this);
-        // TODO FIXME listeners are invoked while holding the lock
-        fireModelStateChanged(myModel.getState());
-      }
-      return res;
-    }
+    fireModelStateChanged(oldState, getLoadingState()); // doesn't dispatch if state is the same
+    return res;
   }
 
   @Override
@@ -88,24 +61,15 @@ public abstract class LazyEditableSModelBase extends EditableSModelBase {
   }
 
   @Override
-  public final boolean isLoaded() {
-    return getLoadingState() == ModelLoadingState.FULLY_LOADED;
-  }
-
-  @Override
-  protected final LazySModel getCurrentModelInternal() {
+  protected final SModel getCurrentModelInternal() {
     return myModel.getModel(null);
   }
 
 
   @Override
   protected void doUnload() {
-    final jetbrains.mps.smodel.SModel oldSModel = getCurrentModelInternal();
-
-    if (oldSModel != null) {
-      oldSModel.setModelDescriptor(null);
-      myModel.replaceWith(null, ModelLoadingState.NOT_LOADED);
-    }
+    super.doUnload();
+    myModel.replaceWith(null, ModelLoadingState.NOT_LOADED);
   }
 
   /**
@@ -113,26 +77,35 @@ public abstract class LazyEditableSModelBase extends EditableSModelBase {
    */
   protected abstract ModelLoadResult loadSModel(ModelLoadingState state);
 
-  protected abstract void processLoadedModel(jetbrains.mps.smodel.SModel loadedSModel);
-
-  protected void replaceModel(final LazySModel newModel, final ModelLoadingState state) {
-    ModelAccess.assertLegalWrite();
-
-    if (newModel == getCurrentModelInternal()) return;
+  void replaceModel(final SModel newModel, final ModelLoadingState state) {
+    final boolean needToChangeReference = needToChangeReference(getReference(), newModel.getReference());
+    if (newModel == getCurrentModelInternal() && !needToChangeReference) {
+      return;
+    }
     setChanged(false);
-    super.replaceModel(new Runnable() {
-      @Override
-      public void run() {
-        myModel.replaceWith(newModel, state);
-      }
-    });
+    final SModel oldModel = getCurrentModelInternal();
+    myModel.replaceWith(newModel, state);
+    // newModel to get modelDescriptor along with event firing
+    replaceModelAndFireEvent(oldModel, newModel);
+
+    // fixme AP since we have reference separately from the model data; will go away once the name as well as id is stored inside model data
+    if (needToChangeReference) {
+      changeModelReference(newModel.getReference());
+    }
+  }
+
+  @ToRemove(version = 0)
+  private boolean needToChangeReference(SModelReference oldRef, SModelReference newRef) {
+    return !(oldRef.getModelId().equals(newRef.getModelId()) && oldRef.getName().equals(newRef.getName()));
   }
 
   @Override
   protected void reloadContents() {
-    if (myModel.getState() == ModelLoadingState.NOT_LOADED) return;
+    if (getLoadingState() == ModelLoadingState.NOT_LOADED) {
+      return;
+    }
 
-    ModelLoadResult result = loadSModel(myModel.getState());
+    ModelLoadResult result = loadSModel(getLoadingState());
     replaceModel(result.getModel(), result.getState());
   }
 }

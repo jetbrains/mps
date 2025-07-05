@@ -4,15 +4,15 @@ package jetbrains.mps.vcs.changesmanager.tree.features;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 public abstract class NodeAggregationFeature extends AbstractNodeFeature {
   protected NodeAggregationFeature(@NotNull SNodeReference nodePointer) {
     super(nodePointer);
   }
-
   @NotNull
   @Override
-  public Feature getParent() {
+  protected Feature getParent(SRepository repo) {
     return new NodeFeature(getNodePointer());
   }
 }

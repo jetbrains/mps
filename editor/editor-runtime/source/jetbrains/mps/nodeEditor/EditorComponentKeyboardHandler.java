@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,14 @@
 package jetbrains.mps.nodeEditor;
 
 
+import jetbrains.mps.editor.runtime.commands.EditorComputable;
 import jetbrains.mps.nodeEditor.cells.APICellAdapter;
 import jetbrains.mps.nodeEditor.keymaps.KeymapHandler;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.KeyMapAction;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
 
+import java.awt.event.InputMethodEvent;
 import java.awt.event.KeyEvent;
 import java.util.Collection;
 
@@ -78,20 +78,24 @@ public class EditorComponentKeyboardHandler implements KeyboardHandler {
 
     if (selectedCell != null) {
       final boolean strictMatching = jetbrains.mps.openapi.editor.cells.CellActionType.RIGHT_TRANSFORM.equals(actionType) ||
-          jetbrains.mps.openapi.editor.cells.CellActionType.LEFT_TRANSFORM.equals(actionType);
+                                     jetbrains.mps.openapi.editor.cells.CellActionType.LEFT_TRANSFORM.equals(actionType);
 
       if (selectedCell.isErrorState() && strictMatching) {
-        boolean res = ModelAccess.instance().runWriteActionInCommand(new Computable<Boolean>() {
+        EditorComputable<Boolean> validateCommand = new EditorComputable<Boolean>(editorContext) {
           @Override
-          public Boolean compute() {
-            return APICellAdapter.validate(selectedCell, strictMatching, false);
+          protected Boolean doCompute() {
+            return APICellAdapter.validate(selectedCell, true, false);
           }
-        });
+        };
+        editorContext.getRepository().getModelAccess().executeCommand(validateCommand);
 
-        if (res) return true;
+        if (validateCommand.getResult()) {
+          return true;
+        }
       }
 
-      if (actionType != null) {
+      if (actionType != null
+          && !(selectedCell.isErrorState() && jetbrains.mps.openapi.editor.cells.CellActionType.RIGHT_TRANSFORM.equals(actionType))) {
         if (editorContext.getEditorComponent().getActionHandler().executeAction(selectedCell, actionType)) {
           return true;
         }
@@ -140,5 +144,11 @@ public class EditorComponentKeyboardHandler implements KeyboardHandler {
       myKeymapHandler.showActionsMenu(actionCellPairs, editorContext, selectedCell);
     }
     return true;
+  }
+
+  @Override
+  public boolean processTextChanged(EditorContext editorContext, InputMethodEvent inputEvent) {
+    EditorCell selectedCell = editorContext.getSelectedCell();
+    return selectedCell != null && ((jetbrains.mps.nodeEditor.cells.EditorCell) selectedCell).processTextChanged(inputEvent);
   }
 }

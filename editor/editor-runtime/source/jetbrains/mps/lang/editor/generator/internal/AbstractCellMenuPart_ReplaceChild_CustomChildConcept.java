@@ -17,20 +17,28 @@ package jetbrains.mps.lang.editor.generator.internal;
 
 import jetbrains.mps.editor.runtime.impl.CellUtil;
 import jetbrains.mps.lang.editor.cellProviders.AggregationCellContext;
+import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
+import jetbrains.mps.lang.editor.menus.transformation.SubstituteActionsCollector;
+import jetbrains.mps.lang.editor.menus.transformation.SubstituteItemsCollector;
 import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
-import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPart;
+import jetbrains.mps.nodeEditor.cellMenu.OldNewSubstituteUtil;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
+import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
 import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.IScope;
 import jetbrains.mps.smodel.action.DefaultChildNodeSetter;
 import jetbrains.mps.smodel.action.IChildNodeSetter;
-import jetbrains.mps.smodel.action.INodeSubstituteAction;
 import jetbrains.mps.smodel.action.ModelActions;
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -38,44 +46,33 @@ import java.util.List;
  * Igor Alshannikov
  * Date: Nov 29, 2006
  */
-public abstract class AbstractCellMenuPart_ReplaceChild_CustomChildConcept implements SubstituteInfoPart, SubstituteInfoPartExt {
+public abstract class AbstractCellMenuPart_ReplaceChild_CustomChildConcept implements SubstituteInfoPartExt {
   @Override
   public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
     SNode parentNode = (SNode) cellContext.get(BasicCellContext.EDITED_NODE);
     SNode linkDeclaration = (SNode) cellContext.get(AggregationCellContext.LINK_DECLARATION);
-    IChildNodeSetter setter = new DefaultChildNodeSetter(linkDeclaration);
     SNode defaultConceptOfChild = CellUtil.getLinkDeclarationTarget(linkDeclaration);
     SNode currentChild = (SNode) cellContext.getOpt(AggregationCellContext.CURRENT_CHILD_NODE);
 
 
     IOperationContext context = editorContext.getOperationContext();
-    SNode childNodeConcept = getConceptOfChild(parentNode, currentChild, defaultConceptOfChild, context.getScope(), context, editorContext);
+    SNode childNodeConcept = getConceptOfChild(parentNode, currentChild, defaultConceptOfChild, context, editorContext);
     if (childNodeConcept == null) {
       return Collections.emptyList();
     }
 
-    return ModelActions.createChildNodeSubstituteActions(parentNode, currentChild, childNodeConcept, setter, context);
+    SAbstractConcept concept = MetaAdapterByDeclaration.getConcept(childNodeConcept);
+    if (concept == null) {
+      return new ArrayList<>();
+    }
+
+    SContainmentLink containmentLink = MetaAdapterByDeclaration.getContainmentLink(linkDeclaration);
+    SubstituteMenuLookup lookup = new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()),
+                                                                  concept);
+    List<TransformationMenuItem> transformationItems = new SubstituteItemsCollector(parentNode, currentChild, containmentLink, editorContext, lookup).collect();
+    return new SubstituteActionsCollector(parentNode, transformationItems, editorContext.getRepository()).collect();
   }
 
-  @Override
-  public List<INodeSubstituteAction> createActions(CellContext cellContext, jetbrains.mps.nodeEditor.EditorContext editorContext) {
-    return (List) createActions(cellContext, (EditorContext) editorContext);
-  }
-
-  /**
-   * @deprecated starting from MPS 3.0 another method should be used:
-   *             <code>getConceptOfChild(... jetbrains.mps.openapi.editor.EditorContext editorContext)</code>
-   */
-  @Deprecated
-  protected SNode getConceptOfChild(SNode node, SNode currentChild, SNode defaultConceptOfChild, IScope scope, IOperationContext context) {
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * should become abstract after MPS 3.0
-   */
-  protected SNode getConceptOfChild(SNode node, SNode currentChild, SNode defaultConceptOfChild, IScope scope, IOperationContext context,
-      EditorContext editorContext) {
-    return getConceptOfChild(node, currentChild, defaultConceptOfChild, scope, context);
-  }
+  protected abstract SNode getConceptOfChild(SNode node, SNode currentChild, SNode defaultConceptOfChild, IOperationContext context,
+      EditorContext editorContext);
 }

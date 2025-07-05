@@ -8,15 +8,15 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import javax.swing.JPopupMenu;
 
 public abstract class AbstractOverrideEditorMessage extends AbstractLeftEditorHighlighterMessage {
   private Condition<EditorCell> myReturnTypeCellCondition;
-
   public AbstractOverrideEditorMessage(SNode node, EditorMessageOwner owner, String tooltip) {
     super(node, owner, tooltip);
-    final SNode returnTypeNode = SLinkOperations.getTarget(node, "returnType", true);
+    final SNode returnTypeNode = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"));
     this.myReturnTypeCellCondition = new Condition<EditorCell>() {
       @Override
       public boolean met(EditorCell cell) {
@@ -24,16 +24,11 @@ public abstract class AbstractOverrideEditorMessage extends AbstractLeftEditorHi
       }
     };
   }
-
   @Override
   public EditorCell getAnchorCell(EditorCell bigCell) {
     EditorCell returnTypeCell = CellFinderUtil.findChildByCondition(bigCell, myReturnTypeCellCondition, true);
-    return (returnTypeCell != null ?
-      returnTypeCell :
-      bigCell
-    );
+    return (returnTypeCell != null ? returnTypeCell : bigCell);
   }
-
   @Override
   public JPopupMenu getPopupMenu() {
     return null;

@@ -8,12 +8,14 @@ import JavaKaja.runtime.Direction;
 public class Maze extends KajaFrame {
   public Maze() {
   }
-
   protected void perform() {
     buildMaze_from_library_PlaygroundDefinition_routine();
     while (!(heading(Direction.south))) {
-      turnLeft();
-      pause();
+      try {
+        turnLeft();
+        pause();
+      } finally {
+      }
     }
     while (!(isWall())) {
       if (canMove()) {
@@ -33,11 +35,13 @@ public class Maze extends KajaFrame {
     sniffAround_routine();
     // Definitions 
   }
-
   public void findDoor_routine() {
     while (isWall()) {
-      turnLeft();
-      pause();
+      try {
+        turnLeft();
+        pause();
+      } finally {
+      }
       if (canMove()) {
         moveKaja();
         pause();
@@ -47,7 +51,6 @@ public class Maze extends KajaFrame {
       turnRight_from_library_Common_routine();
     }
   }
-
   public void sniffAround_routine() {
     while ((!(isMark()) && !(isWall()))) {
       if (canMove()) {
@@ -70,7 +73,6 @@ public class Maze extends KajaFrame {
       trace("Found a mark");
     }
   }
-
   public void buildSimplePlayground_from_library_PlaygroundDefinition_routine() {
     if (isAllowedRow(1) && isAllowedCol(4)) {
       addWall(1, 4);
@@ -98,7 +100,6 @@ public class Maze extends KajaFrame {
       reportError("Attempted to drop marks outside of the playground!");
     }
   }
-
   public void buildMaze_from_library_PlaygroundDefinition_routine() {
     if (isAllowedRow(4) && isAllowedCol(1)) {
       addWall(4, 1);
@@ -196,21 +197,27 @@ public class Maze extends KajaFrame {
       reportError("Attempted to drop marks outside of the playground!");
     }
   }
-
   public void turnRight_from_library_Common_routine() {
     for (int indexVariable_pmgf_a0e = 0; indexVariable_pmgf_a0e < 3; indexVariable_pmgf_a0e++) {
-      turnLeft();
-      pause();
+      try {
+        turnLeft();
+        pause();
+      } finally {
+      }
     }
   }
-
   public void turnAround_from_library_Common_routine() {
-    turnLeft();
-    pause();
-    turnLeft();
-    pause();
+    try {
+      turnLeft();
+      pause();
+    } finally {
+    }
+    try {
+      turnLeft();
+      pause();
+    } finally {
+    }
   }
-
   public void fetch_from_library_Common_routine() {
     if (isMark()) {
       if (isMark()) {
@@ -236,7 +243,6 @@ public class Maze extends KajaFrame {
       }
     }
   }
-
   public static void main(String[] args) {
     Maze script = new Maze();
     script.initializeComponents();

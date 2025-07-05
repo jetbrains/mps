@@ -11,9 +11,6 @@ public class TestNameMap<C, M> {
   private final Map<String, C> myClassToTestCase = MapSequence.fromMap(new HashMap<String, C>());
   private final Map<String, Map<String, M>> myClassToMethodToMethodTest = MapSequence.fromMap(new HashMap<String, Map<String, M>>());
 
-  public TestNameMap() {
-  }
-
   public void put(ITestNodeWrapper testCaseNode, C testCase) {
     MapSequence.fromMap(myClassToTestCase).put(testCaseNode.getFqName(), testCase);
   }

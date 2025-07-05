@@ -10,21 +10,24 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.link.SContainmentLinkAdapter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.model.SReference;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.smodel.adapter.structure.ref.SReferenceLinkAdapter;
+import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.property.SPropertyAdapter;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class check_UnknownLinks_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_UnknownLinks_NonTypesystemRule() {
   }
-
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
 
     for (SNode child : ListSequence.fromList(SNodeOperations.getChildren(node)).where(new IWhereFilter<SNode>() {
@@ -32,61 +35,55 @@ public class check_UnknownLinks_NonTypesystemRule extends AbstractNonTypesystemR
         return !(SNodeOperations.isAttribute(it));
       }
     })) {
-      SNode link = SNodeOperations.getContainingLinkDeclaration(child);
-      if (link == null || !(SPropertyOperations.hasValue(link, "metaClass", "aggregation", "reference"))) {
+      SContainmentLink link = child.getContainmentLink();
+      if (((SContainmentLinkAdapter) link).getLinkDescriptor() == null) {
         {
           MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "Child in undeclared role \"" + SNodeOperations.getContainingLinkRole(child) + "\"", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "1556973682253868925", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "Child in undeclared role \"" + link.getRoleName() + "\"", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "1556973682253868925", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUnknownChildren_QuickFix", false);
-            intentionProvider.putArgument("role", SNodeOperations.getContainingLinkRole(child));
+            intentionProvider.putArgument("role", link);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
       }
     }
 
-    for (SReference reference : Sequence.fromIterable(SNodeOperations.getReferences(node))) {
-      SNode link = SLinkOperations.findLinkDeclaration(reference);
-      if (link == null || !(SPropertyOperations.hasValue(link, "metaClass", "reference", "reference"))) {
+    for (SReference reference : ListSequence.fromList(SNodeOperations.getReferences(node))) {
+      SReferenceLink link = reference.getLink();
+      if (((SReferenceLinkAdapter) link).getReferenceDescriptor() == null) {
         {
           MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "Reference in undeclared role \"" + SLinkOperations.getRole(reference) + "\"", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "1556973682253870183", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "Reference in undeclared role \"" + link.getRoleName() + "\"", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "1556973682253870183", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUnknownReference_QuickFix", false);
-            intentionProvider.putArgument("role", SLinkOperations.getRole(reference));
+            intentionProvider.putArgument("role", link);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
       }
     }
 
-    for (String propname : SetSequence.fromSet(jetbrains.mps.util.SNodeOperations.getProperties(node).keySet())) {
-      if (((jetbrains.mps.smodel.SNode) node).getPropertyDeclaration(propname) == null) {
+    for (SProperty prop : Sequence.fromIterable(node.getProperties())) {
+      if (((SPropertyAdapter) prop).getPropertyDescriptor() == null) {
         {
           MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "Undeclared property \"" + propname + "\"", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "2889243336884177777", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "Undeclared property \"" + prop.getName() + "\"", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "2889243336884177777", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUndeclaredProperty_QuickFix", false);
-            intentionProvider.putArgument("propertyName", propname);
+            intentionProvider.putArgument("property", prop);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
       }
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.lang.core.structure.BaseConcept";
+  public SAbstractConcept getApplicableConcept() {
+    return MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConcept().getQualifiedName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
   }

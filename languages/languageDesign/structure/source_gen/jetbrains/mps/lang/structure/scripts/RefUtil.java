@@ -4,25 +4,23 @@ package jetbrains.mps.lang.structure.scripts;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration_Behavior;
+import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.util.NameUtil;
 
 public class RefUtil {
   public static SNode findLinkToMerge(SNode concept, SNode linkNode) {
-    for (SNode linkDecl : ListSequence.fromList(AbstractConceptDeclaration_Behavior.call_getLinkDeclarations_1213877394480(concept))) {
-      if (SPropertyOperations.getString_def(linkDecl, "metaClass", "reference") == SPropertyOperations.getString_def(linkNode, "metaClass", "reference") && SPropertyOperations.getString(linkDecl, "role").equals(SPropertyOperations.getString(linkNode, "role")) && SConceptOperations.isSuperConceptOf(SLinkOperations.getTarget(linkDecl, "target", false), NameUtil.nodeFQName(SLinkOperations.getTarget(linkNode, "target", false)))) {
+    for (SNode linkDecl : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(concept))) {
+      if (SPropertyOperations.getString_def(linkDecl, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), "reference") == SPropertyOperations.getString_def(linkNode, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), "reference") && SPropertyOperations.getString(linkDecl, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role")).equals(SPropertyOperations.getString(linkNode, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role"))) && (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(linkNode, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target")), SLinkOperations.getTarget(linkDecl, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target")))) {
         return linkDecl;
       }
     }
     return null;
   }
-
   public static SNode findPropertyToMerge(SNode concept, SNode propNode) {
-    for (SNode propDecl : ListSequence.fromList(AbstractConceptDeclaration_Behavior.call_getPropertyDeclarations_1213877394546(concept))) {
-      if (SPropertyOperations.getString(propDecl, "name").equals(SPropertyOperations.getString(propNode, "name"))) {
+    for (SNode propDecl : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(concept))) {
+      if (SPropertyOperations.getString(propDecl, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")).equals(SPropertyOperations.getString(propNode, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")))) {
         return propDecl;
       }
     }

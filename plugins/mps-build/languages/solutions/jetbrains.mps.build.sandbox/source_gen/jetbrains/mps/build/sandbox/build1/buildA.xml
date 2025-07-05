@@ -4,6 +4,9 @@
   <property name="build.tmp" location="${build.dir}/tmp/buildA" />
   <property name="build.layout" location="${build.dir}/artifacts/buildA" />
   <property name="aver" value="12.10" />
+  <property name="environment" value="env" />
+  <property name="env.JAVA_HOME" value="${java.home}/.." />
+  <property name="jdk.home" value="${env.JAVA_HOME}" />
   
   <path id="path.java.library.abcde-lib">
     <fileset file="${basedir}/buildA/abcde.jar" />
@@ -12,11 +15,11 @@
   <target name="assemble" depends="classes">
     <mkdir dir="${build.layout}/result" />
     <mkdir dir="${build.tmp}/default/A-_dl__lbrace_aver_rbrace_.zip" />
-    <jar destfile="${build.tmp}/default/A-_dl__lbrace_aver_rbrace_.zip/module-A.jar">
+    <jar destfile="${build.tmp}/default/A-_dl__lbrace_aver_rbrace_.zip/module-A.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/module-A" />
     </jar>
     <mkdir dir="${build.tmp}/default/withX.zip" />
-    <jar destfile="${build.tmp}/default/withX.zip/X.jar">
+    <jar destfile="${build.tmp}/default/withX.zip/X.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/modX" />
     </jar>
     <zip destfile="${build.tmp}/default/A-_dl__lbrace_aver_rbrace_.zip/withX.zip">
@@ -59,7 +62,7 @@
   
   <target name="java.compile.module-A">
     <mkdir dir="${build.tmp}/java/out/module-A" />
-    <javac destdir="${build.tmp}/java/out/module-A" fork="true" memorymaximumsize="512m" nowarn="true" includeantruntime="false" debug="true">
+    <javac destdir="${build.tmp}/java/out/module-A" fork="false" encoding="utf8" nowarn="true" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src path="${basedir}/buildA/src" />
       <classpath refid="path.java.library.abcde-lib" />
@@ -72,7 +75,7 @@
   <target name="java.compile.modX">
     <mkdir dir="${basedir}/buildA/src" />
     <mkdir dir="${build.tmp}/java/out/modX" />
-    <javac destdir="${build.tmp}/java/out/modX" fork="true" memorymaximumsize="512m" nowarn="true" includeantruntime="false" debug="true">
+    <javac destdir="${build.tmp}/java/out/modX" fork="false" encoding="utf8" nowarn="true" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/buildA/src" />

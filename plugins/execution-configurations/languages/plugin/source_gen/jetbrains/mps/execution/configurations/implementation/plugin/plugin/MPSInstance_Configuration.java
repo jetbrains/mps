@@ -4,14 +4,17 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
 import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.xmlb.XmlSerializer;
 import com.intellij.openapi.util.InvalidDataException;
 import java.io.File;
-import org.apache.log4j.Priority;
+import org.apache.log4j.Level;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.configurations.RunProfileState;
@@ -19,24 +22,22 @@ import com.intellij.execution.Executor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ExecutionException;
 import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.openapi.util.JDOMExternalizable;
+import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
 import com.intellij.execution.runners.ProgramRunner;
 import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.ide.project.ProjectHelper;
 
 public class MPSInstance_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
+  private static final Logger LOG = LogManager.getLogger(MPSInstance_Configuration.class);
   @NotNull
   private MPSInstance_Configuration.MyState myState = new MPSInstance_Configuration.MyState();
   private MpsStartupSettings_Configuration myMpsSettings = new MpsStartupSettings_Configuration();
-  private DeployPluginsSettings_Configuration myPluginsSettings = new DeployPluginsSettings_Configuration();
-
-  public void checkConfiguration() throws RuntimeConfigurationException {
-    this.getMpsSettings().checkConfiguration();
-    this.getPluginsSettings().checkConfiguration();
+  private DeployPluginsSettings_Configuration myPluginsSettings = new DeployPluginsSettings_Configuration(this.getProject());
+  public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
+    this.getMpsSettings().checkConfiguration(context);
+    this.getPluginsSettings().checkConfiguration(context);
   }
-
   @Override
   public void writeExternal(Element element) throws WriteExternalException {
     element.addContent(XmlSerializer.serialize(myState));
@@ -51,7 +52,6 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
       element.addContent(fieldElement);
     }
   }
-
   @Override
   public void readExternal(Element element) throws InvalidDataException {
     if (element == null) {
@@ -79,19 +79,15 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
       }
     }
   }
-
   public MpsStartupSettings_Configuration getMpsSettings() {
     return myMpsSettings;
   }
-
   public DeployPluginsSettings_Configuration getPluginsSettings() {
     return myPluginsSettings;
   }
-
   public File getPluginsPath() {
     return new File(this.getMpsSettings().expandPath(this.getMpsSettings().getConfigurationPath()), "plugins");
   }
-
   @Override
   public MPSInstance_Configuration clone() {
     MPSInstance_Configuration clone = null;
@@ -102,62 +98,58 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
       clone.myPluginsSettings = (DeployPluginsSettings_Configuration) myPluginsSettings.clone();
       return clone;
     } catch (CloneNotSupportedException ex) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
+      if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("", ex);
       }
     }
     return clone;
   }
-
   public class MyState {
     public MyState() {
     }
-
     @Override
     public Object clone() throws CloneNotSupportedException {
       MPSInstance_Configuration.MyState state = new MPSInstance_Configuration.MyState();
       return state;
     }
   }
-
   public MPSInstance_Configuration(Project project, MPSInstance_Configuration_Factory factory, String name) {
     super(project, factory, name);
   }
-
   @Nullable
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment environment) throws ExecutionException {
     return new MPSInstance_Configuration_RunProfileState(this, executor, environment);
   }
-
   @Nullable
-  public SettingsEditor<JDOMExternalizable> getRunnerSettingsEditor(ProgramRunner runner) {
+  public SettingsEditor<ConfigurationPerRunnerSettings> getRunnerSettingsEditor(ProgramRunner runner) {
     return null;
   }
-
-  public JDOMExternalizable createRunnerSettings(ConfigurationInfoProvider provider) {
+  public ConfigurationPerRunnerSettings createRunnerSettings(ConfigurationInfoProvider provider) {
     return null;
   }
-
   public SettingsEditorEx<MPSInstance_Configuration> getConfigurationEditor() {
     return (SettingsEditorEx<MPSInstance_Configuration>) getEditor();
   }
-
   public MPSInstance_Configuration createCloneTemplate() {
     return (MPSInstance_Configuration) super.clone();
   }
-
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
     return new MPSInstance_Configuration_Editor(myMpsSettings.getEditor(), myPluginsSettings.getEditor());
   }
-
+  @Override
+  public void checkConfiguration() throws RuntimeConfigurationException {
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    checkConfiguration(new PersistentConfigurationContext() {
+      public jetbrains.mps.project.Project getProject() {
+        return mpsProject;
+      }
+    });
+  }
   @Override
   public boolean canExecute(String executorId) {
     return MPSInstance_Configuration_RunProfileState.canExecute(executorId);
   }
-
   public Object[] createDeployPluginsTask() {
     return new Object[]{this.getPluginsSettings().getPluginsListToDeploy(), this.getPluginsPath()};
   }
-
-  protected static Logger LOG = LogManager.getLogger(MPSInstance_Configuration.class);
 }

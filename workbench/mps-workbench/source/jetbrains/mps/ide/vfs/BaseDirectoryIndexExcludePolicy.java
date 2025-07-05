@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.ide.vfs;
 
-import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ModuleRootModel;
 import com.intellij.openapi.roots.impl.DirectoryIndexExcludePolicy;
@@ -42,16 +41,7 @@ public abstract class BaseDirectoryIndexExcludePolicy implements DirectoryIndexE
   @NotNull
   protected abstract Set<VirtualFile> getAllExcludeRoots();
 
-  @Override
-  public boolean isExcludeRoot(VirtualFile file) {
-    return getAllExcludeRoots().contains(file);
-  }
-
-  @Override
-  public boolean isExcludeRootForModule(Module module, VirtualFile file) {
-    return getAllExcludeRoots().contains(file);
-  }
-
+  @NotNull
   @Override
   public VirtualFile[] getExcludeRootsForProject() {
     if (myProject.isDisposed()) {
@@ -61,8 +51,9 @@ public abstract class BaseDirectoryIndexExcludePolicy implements DirectoryIndexE
     return roots.toArray(new VirtualFile[roots.size()]);
   }
 
+  @NotNull
   @Override
-  public VirtualFilePointer[] getExcludeRootsForModule(ModuleRootModel rootModel) {
+  public VirtualFilePointer[] getExcludeRootsForModule(@NotNull ModuleRootModel rootModel) {
     Set<VirtualFile> roots = getAllExcludeRoots();
     ArrayList<VirtualFilePointer> filePointers = new ArrayList<VirtualFilePointer>();
     for (VirtualFile root : roots) {

@@ -4,23 +4,28 @@ package jetbrains.mps.lang.typesystem.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum InequalityProperty {
   as_is("as is", 0),
   same_as_inequality("same as inequality", 1),
   opposite_to_inequality("opposite to inequality", 2);
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final int myValue;
+  InequalityProperty(String name, int value) {
+    myName = name;
+    myValue = value;
+  }
+  public int getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return "" + this.myValue;
+    return Integer.toString(myValue);
   }
-
   public static List<InequalityProperty> getConstants() {
     List<InequalityProperty> list = ListSequence.fromList(new LinkedList<InequalityProperty>());
     ListSequence.fromList(list).addElement(InequalityProperty.as_is);
@@ -28,11 +33,9 @@ public enum InequalityProperty {
     ListSequence.fromList(list).addElement(InequalityProperty.opposite_to_inequality);
     return list;
   }
-
   public static InequalityProperty getDefault() {
     return InequalityProperty.as_is;
   }
-
   public static InequalityProperty parseValue(String value) {
     if (value == null) {
       return InequalityProperty.getDefault();
@@ -47,16 +50,5 @@ public enum InequalityProperty {
       return InequalityProperty.opposite_to_inequality;
     }
     return InequalityProperty.getDefault();
-  }
-
-  private int myValue;
-
-  InequalityProperty(String name, int value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public int getValue() {
-    return this.myValue;
   }
 }

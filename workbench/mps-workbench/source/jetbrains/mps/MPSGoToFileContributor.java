@@ -21,31 +21,53 @@ import com.intellij.navigation.NavigationItem;
 import com.intellij.openapi.fileEditor.OpenFileDescriptor;
 import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.module.Module;
+import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.psi.impl.cache.impl.id.IdIndex;
+import com.intellij.psi.impl.cache.impl.id.IdIndexEntry;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.indexing.FileBasedIndex;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.Icon;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class MPSGoToFileContributor implements ChooseByNameContributor, DumbAware {
-
+  @NotNull
   @Override
   public String[] getNames(Project project, boolean includeNonProjectItems) {
     return FilenameIndex.getAllFilenames(project);
   }
 
+  @NotNull
   @Override
-  public NavigationItem[] getItemsByName(String name, final String pattern, final Project project, boolean includeNonProjectItems) {
-    GlobalSearchScope scope = new AllScope();
+  public NavigationItem[] getItemsByName(final String name, final String pattern, final Project project, boolean includeNonProjectItems) {
+    final GlobalSearchScope scope = new AllScope();
 
-    Collection<VirtualFile> files = FileBasedIndex.getInstance().getContainingFiles(FilenameIndex.NAME, name, scope);
+    Collection<VirtualFile> files;
+    try {
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
+      assert mpsProject != null;
+      files = new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(new Computable<Collection<VirtualFile>>() {
+        @Override
+        public Collection<VirtualFile> compute() {
+           return FileBasedIndex.getInstance().getContainingFiles(FilenameIndex.NAME, name, scope);
+        }
+      });
+    } catch (ProcessCanceledException ce){
+      files = Collections.emptyList();
+    }
+
     List<NavigationItem> result = new ArrayList<NavigationItem>();
     for (final VirtualFile file : files) {
       result.add(new FileNavigationItem(file, project));

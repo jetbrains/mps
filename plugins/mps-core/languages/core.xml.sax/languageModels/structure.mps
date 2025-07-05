@@ -1,388 +1,487 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:7fae86c9-9d2f-4341-8a38-92d558a78a9a(jetbrains.mps.core.xml.sax.structure)" version="0">
-  <persistence version="8" />
-  <language namespace="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" />
-  <devkit namespace="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
-  <import index="nv7r" modelUID="r:7fae86c9-9d2f-4341-8a38-92d558a78a9a(jetbrains.mps.core.xml.sax.structure)" version="0" />
-  <import index="tpee" modelUID="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" version="-1" />
-  <import index="fmpa" modelUID="f:java_stub#6354ebe7-c22a-4a0f-ac54-50b52ab9b065#org.xml.sax(JDK/org.xml.sax@java_stub)" version="-1" />
-  <import index="tpck" modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" implicit="yes" />
-  <import index="tpce" modelUID="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" version="0" implicit="yes" />
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140353" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="false" />
-    <property name="final" nameId="tpce.4628067390765956807" value="false" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXAttributeHandler" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="attribute handler" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="2264311582634140387" resolveInfo="XMLSAXHandlerFunction" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140361" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXAttributeReference" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140362" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="attribute" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140363" resolveInfo="XMLSAXAttributeRule" />
+<model ref="r:7fae86c9-9d2f-4341-8a38-92d558a78a9a(jetbrains.mps.core.xml.sax.structure)">
+  <persistence version="9" />
+  <languages>
+    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="3" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
+  </languages>
+  <imports>
+    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
+    <import index="kart" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:org.xml.sax(JDK/)" />
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
+  </imports>
+  <registry>
+    <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
+        <property id="6714410169261853888" name="conceptId" index="EcuMT" />
+        <property id="4628067390765907488" name="conceptShortDescription" index="R4oN_" />
+        <property id="4628067390765956807" name="final" index="R5$K2" />
+        <property id="4628067390765956802" name="abstract" index="R5$K7" />
+        <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
+        <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
+        <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
+      </concept>
+      <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
+        <reference id="1169127628841" name="intfc" index="PrY4T" />
+      </concept>
+      <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
+        <property id="5404671619616246344" name="staticScope" index="2_RsDV" />
+        <property id="1096454100552" name="rootable" index="19KtqR" />
+        <reference id="1071489389519" name="extends" index="1TJDcQ" />
+        <child id="1169129564478" name="implements" index="PzmwI" />
+      </concept>
+      <concept id="1071489288299" name="jetbrains.mps.lang.structure.structure.PropertyDeclaration" flags="ig" index="1TJgyi">
+        <property id="241647608299431129" name="propertyId" index="IQ2nx" />
+        <reference id="1082985295845" name="dataType" index="AX2Wp" />
+      </concept>
+      <concept id="1071489288298" name="jetbrains.mps.lang.structure.structure.LinkDeclaration" flags="ig" index="1TJgyj">
+        <property id="1071599776563" name="role" index="20kJfa" />
+        <property id="1071599893252" name="sourceCardinality" index="20lbJX" />
+        <property id="1071599937831" name="metaClass" index="20lmBu" />
+        <property id="241647608299431140" name="linkId" index="IQ2ns" />
+        <reference id="1071599976176" name="target" index="20lvS9" />
+      </concept>
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+      </concept>
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="1TIwiD" id="1XGsQcRHub1">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="XMLSAXAttributeHandler" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="34LRSv" value="attribute handler" />
+    <property role="EcuMT" value="2264311582634140353" />
+    <ref role="1TJDcQ" node="1XGsQcRHubz" resolve="XMLSAXHandlerFunction" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHub9">
+    <property role="TrG5h" value="XMLSAXAttributeReference" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="EcuMT" value="2264311582634140361" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="1XGsQcRHuba" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="attribute" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="2264311582634140362" />
+      <ref role="20lvS9" node="1XGsQcRHubb" resolve="XMLSAXAttributeRule" />
     </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140363" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXAttributeRule" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="2264311582634140364" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="isRequired" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983657063" resolveInfo="boolean" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHubb">
+    <property role="TrG5h" value="XMLSAXAttributeRule" />
+    <property role="3GE5qa" value="sax" />
+    <property role="EcuMT" value="2264311582634140363" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="1XGsQcRHubc" role="1TKVEl">
+      <property role="TrG5h" value="isRequired" />
+      <property role="IQ2nx" value="2264311582634140364" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140365" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="handler" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140353" resolveInfo="XMLSAXAttributeHandler" />
+    <node concept="1TJgyj" id="1XGsQcRHubd" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="handler" />
+      <property role="IQ2ns" value="2264311582634140365" />
+      <ref role="20lvS9" node="1XGsQcRHub1" resolve="XMLSAXAttributeHandler" />
     </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="2264311582634140366" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1169194658468" resolveInfo="INamedConcept" />
+    <node concept="PrWs8" id="1XGsQcRHube" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140367" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="false" />
-    <property name="final" nameId="tpce.4628067390765956807" value="false" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXBreakStatement" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="break parser" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpee.1068580123157" resolveInfo="Statement" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140369" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="result" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHubf">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="XMLSAXBreakStatement" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="34LRSv" value="break parser" />
+    <property role="EcuMT" value="2264311582634140367" />
+    <ref role="1TJDcQ" to="tpee:fzclF8l" resolve="Statement" />
+    <node concept="1TJgyj" id="1XGsQcRHubh" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="result" />
+      <property role="IQ2ns" value="2264311582634140369" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140370" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="false" />
-    <property name="final" nameId="tpce.4628067390765956807" value="false" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXChildHandler" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="child handler" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="2264311582634140387" resolveInfo="XMLSAXHandlerFunction" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140373" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="false" />
-    <property name="final" nameId="tpce.4628067390765956807" value="false" />
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="parsed child object" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXChildHandler_childObject" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="child" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpee.1107135704075" resolveInfo="ConceptFunctionParameter" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140376" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXChildRule" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="4720003541470390117" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="condition" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="4720003541470384741" resolveInfo="XMLSAXChildRuleCondition" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHubi">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="XMLSAXChildHandler" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="34LRSv" value="child handler" />
+    <property role="EcuMT" value="2264311582634140370" />
+    <ref role="1TJDcQ" node="1XGsQcRHubz" resolve="XMLSAXHandlerFunction" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHubl">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="parsed child object" />
+    <property role="TrG5h" value="XMLSAXChildHandler_childObject" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="34LRSv" value="child" />
+    <property role="EcuMT" value="2264311582634140373" />
+    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHubo">
+    <property role="TrG5h" value="XMLSAXChildRule" />
+    <property role="3GE5qa" value="sax" />
+    <property role="EcuMT" value="2264311582634140376" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="460OzqrVqt_" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="condition" />
+      <property role="IQ2ns" value="4720003541470390117" />
+      <ref role="20lvS9" node="460OzqrVp9_" resolve="XMLSAXChildRuleCondition" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140377" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="handler" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140370" resolveInfo="XMLSAXChildHandler" />
+    <node concept="1TJgyj" id="1XGsQcRHubp" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="handler" />
+      <property role="IQ2ns" value="2264311582634140377" />
+      <ref role="20lvS9" node="1XGsQcRHubi" resolve="XMLSAXChildHandler" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1068499141038" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="actualArgument" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
+    <node concept="1TJgyj" id="fz7wK6I" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="actualArgument" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="1068499141038" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="2264311582634140378" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="tagName" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
+    <node concept="1TJgyi" id="1XGsQcRHubq" role="1TKVEl">
+      <property role="TrG5h" value="tagName" />
+      <property role="IQ2nx" value="2264311582634140378" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="2264311582634140379" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="overrideTag" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983657063" resolveInfo="boolean" />
+    <node concept="1TJgyi" id="1XGsQcRHubr" role="1TKVEl">
+      <property role="TrG5h" value="overrideTag" />
+      <property role="IQ2nx" value="2264311582634140379" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140380" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="rule" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140402" resolveInfo="XMLSAXNodeRule" />
+    <node concept="1TJgyj" id="1XGsQcRHubs" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="rule" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="2264311582634140380" />
+      <ref role="20lvS9" node="1XGsQcRHubM" resolve="XMLSAXNodeRule" />
     </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="4720003541459618683" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.3734116213129792499" resolveInfo="ScopeProvider" />
+    <node concept="PrWs8" id="460OzqrikHV" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140381" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXFieldDeclaration" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140382" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="type" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpee.1068431790189" resolveInfo="Type" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHubt">
+    <property role="TrG5h" value="XMLSAXFieldDeclaration" />
+    <property role="3GE5qa" value="sax" />
+    <property role="EcuMT" value="2264311582634140381" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="1XGsQcRHubu" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="type" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="2264311582634140382" />
+      <ref role="20lvS9" to="tpee:fz3vP1H" resolve="Type" />
     </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="2264311582634140383" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1169194658468" resolveInfo="INamedConcept" />
+    <node concept="PrWs8" id="1XGsQcRHubv" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140384" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXFieldReference" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140385" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="declaration" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140381" resolveInfo="XMLSAXFieldDeclaration" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHubw">
+    <property role="TrG5h" value="XMLSAXFieldReference" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="EcuMT" value="2264311582634140384" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="1XGsQcRHubx" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="declaration" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="2264311582634140385" />
+      <ref role="20lvS9" node="1XGsQcRHubt" resolve="XMLSAXFieldDeclaration" />
     </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140387" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="final" nameId="tpce.4628067390765956807" value="false" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXHandlerFunction" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpee.1137021947720" resolveInfo="ConceptFunction" />
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="2264311582634140388" nodeInfo="ig">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.1137545148427" resolveInfo="conceptFunctionReturnType" />
-      <node role="target" roleId="tpce.1105736901241" type="tpee.VoidType" typeId="tpee.1068581517677" id="2264311582634140389" nodeInfo="in" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHubz">
+    <property role="R5$K7" value="true" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="XMLSAXHandlerFunction" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="EcuMT" value="2264311582634140387" />
+    <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHubE">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="an object" />
+    <property role="TrG5h" value="XMLSAXHandler_resultObject" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="34LRSv" value="result" />
+    <property role="EcuMT" value="2264311582634140394" />
+    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHubH">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="XMLSAXLocatorExpression" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="34LRSv" value="locator" />
+    <property role="EcuMT" value="2264311582634140397" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHubJ">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="XMLSAXNodeCreator" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="34LRSv" value="create" />
+    <property role="EcuMT" value="2264311582634140399" />
+    <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHubM">
+    <property role="TrG5h" value="XMLSAXNodeRule" />
+    <property role="3GE5qa" value="sax" />
+    <property role="EcuMT" value="2264311582634140402" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="QrUm5O8231" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="2264311582634140391" nodeInfo="ig">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.6204026822016975620" resolveInfo="conceptFunctionThrowsType" />
-      <node role="target" roleId="tpce.1105736901241" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="2264311582634140392" nodeInfo="in">
-        <link role="classifier" roleId="tpee.1107535924139" targetNodeId="fmpa.~SAXException" resolveInfo="SAXException" />
-      </node>
+    <node concept="1TJgyj" id="1XGsQcRHubN" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="type" />
+      <property role="20lbJX" value="0..1" />
+      <property role="IQ2ns" value="2264311582634140403" />
+      <ref role="20lvS9" to="tpee:fz3vP1H" resolve="Type" />
     </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140394" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="false" />
-    <property name="final" nameId="tpce.4628067390765956807" value="false" />
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="an object" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXHandler_resultObject" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="result" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpee.1107135704075" resolveInfo="ConceptFunctionParameter" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140397" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="false" />
-    <property name="final" nameId="tpce.4628067390765956807" value="false" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXLocatorExpression" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="locator" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140399" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="false" />
-    <property name="final" nameId="tpce.4628067390765956807" value="false" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXNodeCreator" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="create" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpee.1137021947720" resolveInfo="ConceptFunction" />
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="2137646145131809686" nodeInfo="ig">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.6204026822016975620" resolveInfo="conceptFunctionThrowsType" />
-      <node role="target" roleId="tpce.1105736901241" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="2137646145131809687" nodeInfo="in">
-        <link role="classifier" roleId="tpee.1107535924139" targetNodeId="fmpa.~SAXException" resolveInfo="SAXException" />
-      </node>
+    <node concept="1TJgyj" id="QrUm5N2Yby" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="params" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="980633948634473186" />
+      <ref role="20lvS9" node="QrUm5N2YfH" resolve="XMLSAXNodeRuleParam" />
     </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140402" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXNodeRule" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="980633948652576961" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.3734116213129792499" resolveInfo="ScopeProvider" />
+    <node concept="1TJgyj" id="1XGsQcRHubO" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="attrs" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="2264311582634140404" />
+      <ref role="20lvS9" node="1XGsQcRHubb" resolve="XMLSAXAttributeRule" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140403" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="type" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="tpee.1068431790189" resolveInfo="Type" />
+    <node concept="1TJgyj" id="1XGsQcRHubP" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="children" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="2264311582634140405" />
+      <ref role="20lvS9" node="1XGsQcRHubo" resolve="XMLSAXChildRule" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="980633948634473186" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="params" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="980633948634473453" resolveInfo="XMLSAXNodeRuleParam" />
+    <node concept="1TJgyj" id="3FXqjtq0ws5" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="defaultChild" />
+      <property role="IQ2ns" value="4250669309761816325" />
+      <ref role="20lvS9" node="3FXqjtpZU_Z" resolve="XMLSAXDefaultChildRule" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140404" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="attrs" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140363" resolveInfo="XMLSAXAttributeRule" />
+    <node concept="1TJgyj" id="1XGsQcRHubQ" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="text" />
+      <property role="IQ2ns" value="2264311582634140406" />
+      <ref role="20lvS9" node="1XGsQcRHucg" resolve="XMLSAXTextRule" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140405" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="children" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140376" resolveInfo="XMLSAXChildRule" />
+    <node concept="1TJgyj" id="1XGsQcRHubR" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="creator" />
+      <property role="IQ2ns" value="2264311582634140407" />
+      <ref role="20lvS9" node="1XGsQcRHubJ" resolve="XMLSAXNodeCreator" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140406" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="text" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140432" resolveInfo="XMLSAXTextRule" />
+    <node concept="1TJgyj" id="1XGsQcRHubS" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="validator" />
+      <property role="IQ2ns" value="2264311582634140408" />
+      <ref role="20lvS9" node="1XGsQcRHubW" resolve="XMLSAXNodeValidator" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140407" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="creator" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140399" resolveInfo="XMLSAXNodeCreator" />
+    <node concept="1TJgyi" id="1XGsQcRHubT" role="1TKVEl">
+      <property role="TrG5h" value="tagName" />
+      <property role="IQ2nx" value="2264311582634140409" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140408" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="validator" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140412" resolveInfo="XMLSAXNodeValidator" />
+    <node concept="1TJgyi" id="1XGsQcRHubU" role="1TKVEl">
+      <property role="TrG5h" value="isCompact" />
+      <property role="IQ2nx" value="2264311582634140410" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="2264311582634140409" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="tagName" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
+    <node concept="PrWs8" id="1XGsQcRHubV" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="2264311582634140410" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="isCompact" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983657063" resolveInfo="boolean" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHubW">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="XMLSAXNodeValidator" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="34LRSv" value="validate" />
+    <property role="EcuMT" value="2264311582634140412" />
+    <ref role="1TJDcQ" node="1XGsQcRHubz" resolve="XMLSAXHandlerFunction" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHuc1">
+    <property role="19KtqR" value="true" />
+    <property role="TrG5h" value="XMLSAXParser" />
+    <property role="3GE5qa" value="sax" />
+    <property role="EcuMT" value="2264311582634140417" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="QrUm5O7ZRq" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="2264311582634140411" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1169194658468" resolveInfo="INamedConcept" />
+    <node concept="1TJgyj" id="1XGsQcRHuc2" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="parameters" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="2264311582634140418" />
+      <ref role="20lvS9" node="1XGsQcRHubt" resolve="XMLSAXFieldDeclaration" />
     </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140412" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="false" />
-    <property name="final" nameId="tpce.4628067390765956807" value="false" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXNodeValidator" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="validate" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="2264311582634140387" resolveInfo="XMLSAXHandlerFunction" />
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="2264311582634140415" nodeInfo="ig">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.1137545148427" resolveInfo="conceptFunctionReturnType" />
-      <node role="target" roleId="tpce.1105736901241" type="tpee.BooleanType" typeId="tpee.1070534644030" id="2264311582634140416" nodeInfo="in" />
+    <node concept="1TJgyj" id="1XGsQcRHuc3" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="root" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="2264311582634140419" />
+      <ref role="20lvS9" node="1XGsQcRHubM" resolve="XMLSAXNodeRule" />
     </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140417" nodeInfo="ig">
-    <property name="rootable" nameId="tpce.1096454100552" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXParser" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="980633948652568026" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.3734116213129792499" resolveInfo="ScopeProvider" />
+    <node concept="1TJgyj" id="1XGsQcRHuc4" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="nodes" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="2264311582634140420" />
+      <ref role="20lvS9" node="1XGsQcRHubM" resolve="XMLSAXNodeRule" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140418" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="parameters" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140381" resolveInfo="XMLSAXFieldDeclaration" />
+    <node concept="1TJgyj" id="1XGsQcRHuc5" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="fields" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="2264311582634140421" />
+      <ref role="20lvS9" node="1XGsQcRHubt" resolve="XMLSAXFieldDeclaration" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140419" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="root" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140402" resolveInfo="XMLSAXNodeRule" />
+    <node concept="1TJgyj" id="1XGsQcRHuc6" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="globalText" />
+      <property role="IQ2ns" value="2264311582634140422" />
+      <ref role="20lvS9" node="1XGsQcRHucg" resolve="XMLSAXTextRule" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140420" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="nodes" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140402" resolveInfo="XMLSAXNodeRule" />
+    <node concept="PrWs8" id="1XGsQcRHuc7" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140421" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="fields" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140381" resolveInfo="XMLSAXFieldDeclaration" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHuc8">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="XMLSAXTextHandler" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="34LRSv" value="text handler" />
+    <property role="EcuMT" value="2264311582634140424" />
+    <ref role="1TJDcQ" node="1XGsQcRHubz" resolve="XMLSAXHandlerFunction" />
+  </node>
+  <node concept="1TIwiD" id="1XGsQcRHucg">
+    <property role="TrG5h" value="XMLSAXTextRule" />
+    <property role="3GE5qa" value="sax" />
+    <property role="EcuMT" value="2264311582634140432" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="1XGsQcRHuch" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="handler" />
+      <property role="IQ2ns" value="2264311582634140433" />
+      <ref role="20lvS9" node="1XGsQcRHuc8" resolve="XMLSAXTextHandler" />
     </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140422" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="globalText" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140432" resolveInfo="XMLSAXTextRule" />
+  </node>
+  <node concept="1TIwiD" id="30o7lV$DQWI">
+    <property role="R4oN_" value="attribute value" />
+    <property role="TrG5h" value="XMLSAXAttributeHandler_value" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="34LRSv" value="value" />
+    <property role="EcuMT" value="3465552206661906222" />
+    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
+  </node>
+  <node concept="1TIwiD" id="30o7lV$DSa4">
+    <property role="R4oN_" value="text value" />
+    <property role="TrG5h" value="XMLSAXTextHandler_value" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="34LRSv" value="value" />
+    <property role="EcuMT" value="3465552206661911172" />
+    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
+  </node>
+  <node concept="1TIwiD" id="QrUm5N2YfH">
+    <property role="3GE5qa" value="sax" />
+    <property role="TrG5h" value="XMLSAXNodeRuleParam" />
+    <property role="R4oN_" value="parameter" />
+    <property role="EcuMT" value="980633948634473453" />
+    <ref role="1TJDcQ" to="tpee:4k3qd$cSlJ3" resolve="BaseVariableDeclaration" />
+  </node>
+  <node concept="1TIwiD" id="460Ozqr7Lr6">
+    <property role="3GE5qa" value="sax" />
+    <property role="TrG5h" value="XMLSAXNodeRuleParamRef" />
+    <property role="2_RsDV" value="none" />
+    <property role="EcuMT" value="4720003541456852678" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="460Ozqr7Lvw" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="param" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="4720003541456852960" />
+      <ref role="20lvS9" node="QrUm5N2YfH" resolve="XMLSAXNodeRuleParam" />
     </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="2264311582634140423" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1169194658468" resolveInfo="INamedConcept" />
+  </node>
+  <node concept="1TIwiD" id="460OzqrVp9_">
+    <property role="3GE5qa" value="sax" />
+    <property role="TrG5h" value="XMLSAXChildRuleCondition" />
+    <property role="2_RsDV" value="none" />
+    <property role="EcuMT" value="4720003541470384741" />
+    <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
+  </node>
+  <node concept="1TIwiD" id="3FXqjtpZU_Z">
+    <property role="TrG5h" value="XMLSAXDefaultChildRule" />
+    <property role="3GE5qa" value="sax" />
+    <property role="EcuMT" value="4250669309761661311" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="3FXqjtpZUA1" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="handler" />
+      <property role="IQ2ns" value="4250669309761661313" />
+      <ref role="20lvS9" node="3FXqjtpZYS7" resolve="XMLSAXDefaultChildHandler" />
     </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140424" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="false" />
-    <property name="final" nameId="tpce.4628067390765956807" value="false" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXTextHandler" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="text handler" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="2264311582634140387" resolveInfo="XMLSAXHandlerFunction" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2264311582634140432" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXTextRule" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2264311582634140433" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="handler" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2264311582634140424" resolveInfo="XMLSAXTextHandler" />
+    <node concept="PrWs8" id="3FXqjtpZUA6" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="3465552206661906222" nodeInfo="ig">
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="attribute value" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXAttributeHandler_value" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="value" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpee.1107135704075" resolveInfo="ConceptFunctionParameter" />
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="3465552206661911465" nodeInfo="ig">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.1137545963098" resolveInfo="conceptFunctionParameterType" />
-      <node role="target" roleId="tpce.1105736901241" type="tpee.StringType" typeId="tpee.1225271177708" id="3465552206661911466" nodeInfo="in" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="3465552206661911172" nodeInfo="ig">
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="text value" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXTextHandler_value" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="value" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpee.1107135704075" resolveInfo="ConceptFunctionParameter" />
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="3465552206661911449" nodeInfo="ig">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.1137545963098" resolveInfo="conceptFunctionParameterType" />
-      <node role="target" roleId="tpce.1105736901241" type="tpee.StringType" typeId="tpee.1225271177708" id="3465552206661911450" nodeInfo="in" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="980633948634473453" nodeInfo="ig">
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXNodeRuleParam" />
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="parameter" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpee.4972933694980447171" resolveInfo="BaseVariableDeclaration" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="4720003541456852678" nodeInfo="ig">
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXNodeRuleParamRef" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpee.1068431790191" resolveInfo="Expression" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="4720003541456852960" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="param" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="980633948634473453" resolveInfo="XMLSAXNodeRuleParam" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="4720003541470384741" nodeInfo="ig">
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="sax" />
-    <property name="name" nameId="tpck.1169194664001" value="XMLSAXChildRuleCondition" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpee.1137021947720" resolveInfo="ConceptFunction" />
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="4720003541470384841" nodeInfo="ig">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.1137545148427" resolveInfo="conceptFunctionReturnType" />
-      <node role="target" roleId="tpce.1105736901241" type="tpee.BooleanType" typeId="tpee.1070534644030" id="4720003541470384856" nodeInfo="in" />
-    </node>
-    <node role="conceptLink" roleId="tpce.1105736949336" type="tpce.AggregationConceptLink" typeId="tpce.1105736889287" id="4720003541470384843" nodeInfo="ig">
-      <link role="conceptLinkDeclaration" roleId="tpce.1105736734721" targetNodeId="tpee.6204026822016975620" resolveInfo="conceptFunctionThrowsType" />
-      <node role="target" roleId="tpce.1105736901241" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="4720003541470384844" nodeInfo="in">
-        <link role="classifier" roleId="tpee.1107535924139" targetNodeId="fmpa.~SAXException" resolveInfo="SAXException" />
-      </node>
-    </node>
-  </root>
+  </node>
+  <node concept="1TIwiD" id="3FXqjtpZYS7">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="XMLSAXDefaultChildHandler" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="34LRSv" value="child handler" />
+    <property role="EcuMT" value="4250669309761678855" />
+    <ref role="1TJDcQ" node="1XGsQcRHubz" resolve="XMLSAXHandlerFunction" />
+  </node>
+  <node concept="1TIwiD" id="3FXqjtq29lk">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="tag name" />
+    <property role="TrG5h" value="XMLSAXDefaultChildHandler_tagName" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="sax" />
+    <property role="34LRSv" value="name" />
+    <property role="EcuMT" value="4250669309762245972" />
+    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
+  </node>
 </model>
 

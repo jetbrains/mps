@@ -18,7 +18,6 @@ package jetbrains.mps.ide.project;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.platform.ProjectBaseDirectory;
 import com.intellij.projectImport.ProjectOpenProcessor;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.icons.MPSIcons;
@@ -45,11 +44,6 @@ public class MpsProjectOpenProcessor extends ProjectOpenProcessor {
   @Override
   public Project doOpenProject(@NotNull VirtualFile virtualFile, Project projectToClose, boolean forceOpenInNewFrame) {
     String filePath = virtualFile.getPath();
-    Project project = ProjectUtil.openProject(filePath, projectToClose, forceOpenInNewFrame);
-    if (project == null) {
-      return null;
-    }
-    ProjectBaseDirectory.getInstance(project).setBaseDir(virtualFile);
-    return project;
+    return ProjectUtil.openProject(filePath, projectToClose, forceOpenInNewFrame);
   }
 }

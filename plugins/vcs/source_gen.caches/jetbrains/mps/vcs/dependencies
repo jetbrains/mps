@@ -7,7 +7,9 @@
     <classNode dependClassName="com.intellij.openapi.ui.Messages" />
     <classNode dependClassName="com.intellij.openapi.vcs.AbstractVcs" />
     <classNode dependClassName="com.intellij.openapi.vcs.AbstractVcsHelper" />
+    <classNode dependClassName="com.intellij.openapi.vcs.FilePath" />
     <classNode dependClassName="com.intellij.openapi.vcs.FileStatus" />
+    <classNode dependClassName="com.intellij.openapi.vcs.FileStatusListener" />
     <classNode dependClassName="com.intellij.openapi.vcs.FileStatusManager" />
     <classNode dependClassName="com.intellij.openapi.vcs.ProjectLevelVcsManager" />
     <classNode dependClassName="com.intellij.openapi.vcs.VcsException" />
@@ -18,9 +20,11 @@
     <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeList" />
     <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeListAdapter" />
     <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeListManager" />
+    <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeListManagerGate" />
     <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeListManagerImpl" />
     <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeProvider" />
     <classNode dependClassName="com.intellij.openapi.vcs.changes.ContentRevision" />
+    <classNode dependClassName="com.intellij.openapi.vcs.changes.EmptyChangelistBuilder" />
     <classNode dependClassName="com.intellij.openapi.vcs.changes.LocalChangeList" />
     <classNode dependClassName="com.intellij.openapi.vcs.changes.VcsDirtyScopeImpl" />
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
@@ -41,14 +45,12 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode extendsClassName="com.intellij.openapi.components.ProjectComponent" />
-    <classNode extendsClassName="com.intellij.openapi.vcs.FileStatusListener" />
-    <classNode extendsClassName="com.intellij.openapi.vcs.changes.ChangeListManagerGate" />
-    <classNode extendsClassName="com.intellij.openapi.vcs.changes.EmptyChangelistBuilder" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.MPSVcsProjectConfiguration" file="MPSVcsProjectConfiguration.java">
     <classNode dependClassName="com.intellij.ProjectTopics" />
     <classNode dependClassName="com.intellij.openapi.components.State" />
     <classNode dependClassName="com.intellij.openapi.components.Storage" />
+    <classNode dependClassName="com.intellij.openapi.components.StoragePathMacros" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.roots.ModuleRootListener" />
     <classNode dependClassName="com.intellij.openapi.roots.impl.ModuleRootEventImpl" />
@@ -75,6 +77,48 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="com.intellij.openapi.components.ApplicationComponent" />
     <classNode extendsClassName="jetbrains.mps.vcs.platform.mergedriver.MergeDriverPacker" />
+  </dependency>
+  <dependency className="jetbrains.mps.vcs.TestMergeDialog" file="TestMergeDialog.java">
+    <classNode dependClassName="com.intellij.diff.DiffManager" />
+    <classNode dependClassName="com.intellij.diff.DiffRequestFactory" />
+    <classNode dependClassName="com.intellij.diff.InvalidDiffRequestException" />
+    <classNode dependClassName="com.intellij.diff.merge.MergeRequest" />
+    <classNode dependClassName="com.intellij.mock.MockProjectEx" />
+    <classNode dependClassName="com.intellij.openapi.Disposable" />
+    <classNode dependClassName="com.intellij.openapi.extensions.Extensions" />
+    <classNode dependClassName="com.intellij.openapi.fileEditor.FileDocumentManager" />
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="com.intellij.openapi.util.Disposer" />
+    <classNode dependClassName="com.intellij.openapi.util.IconLoader" />
+    <classNode dependClassName="com.intellij.openapi.util.io.FileUtil" />
+    <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
+    <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="java.io.IOException" />
+    <classNode dependClassName="java.lang.Class" />
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.Scanner" />
+    <classNode dependClassName="jetbrains.mps.fileTypes.MPSFileTypeFactory" />
+    <classNode dependClassName="jetbrains.mps.ide.bookmark.BookmarkManager" />
+    <classNode dependClassName="jetbrains.mps.ide.vfs.VirtualFileUtils" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.project.MPSExtentions" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="jetbrains.mps.project.StandaloneMPSProject" />
+    <classNode dependClassName="jetbrains.mps.smodel.persistence.def.ModelReadException" />
+    <classNode dependClassName="jetbrains.mps.tool.environment.Environment" />
+    <classNode dependClassName="jetbrains.mps.tool.environment.EnvironmentConfig" />
+    <classNode dependClassName="jetbrains.mps.tool.environment.IdeaEnvironment" />
+    <classNode dependClassName="jetbrains.mps.vcs.platform.util.MergeBackupUtil" />
+    <classNode dependClassName="jetbrains.mps.vcs.util.MergeVersion" />
+    <classNode dependClassName="org.apache.log4j.Level" />
+    <classNode dependClassName="org.apache.log4j.LogManager" />
+    <classNode dependClassName="org.apache.log4j.Logger" />
+    <classNode dependClassName="org.jdom.JDOMException" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.VcsGeneratedFilesPanel" file="VcsGeneratedFilesPanel.java">
     <classNode dependClassName="com.intellij.openapi.project.Project" />

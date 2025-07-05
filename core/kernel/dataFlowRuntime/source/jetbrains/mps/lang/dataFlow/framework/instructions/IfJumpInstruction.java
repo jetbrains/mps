@@ -17,13 +17,11 @@ package jetbrains.mps.lang.dataFlow.framework.instructions;
 
 import jetbrains.mps.lang.dataFlow.framework.ProgramState;
 import jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder.Position;
-import org.jetbrains.mps.openapi.model.SModelId;
-import org.jetbrains.mps.openapi.model.SNodeId;
 
 import java.util.List;
 
 public class IfJumpInstruction extends Instruction {
-  private int myJumpTo;
+  protected int myJumpTo;
 
   public IfJumpInstruction() {
   }

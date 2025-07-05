@@ -8,6 +8,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -18,50 +19,40 @@ public class RegexpSequenceByEnter {
     editorCell.setAction(CellActionType.INSERT_BEFORE, new RegexpSequenceByEnter.RegexpSequenceByEnter_INSERT_BEFORE(node));
     editorCell.setAction(CellActionType.INSERT, new RegexpSequenceByEnter.RegexpSequenceByEnter_INSERT(node));
   }
-
   public static class RegexpSequenceByEnter_INSERT_BEFORE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public RegexpSequenceByEnter_INSERT_BEFORE(SNode node) {
       this.myNode = node;
     }
-
     public String getDescriptionText() {
       return "insert an item before";
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SNode nt = SNodeFactoryOperations.createNewNode("jetbrains.mps.baseLanguage.regexp.structure.SeqRegexp", null);
+      SNode nt = SNodeFactoryOperations.createNewNode(SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174bc30e7L, "jetbrains.mps.baseLanguage.regexp.structure.SeqRegexp")), null);
       SNodeOperations.replaceWithAnother(node, nt);
-      SLinkOperations.setTarget(nt, "right", node, true);
-      SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(nt, "left", true), SelectionManager.FIRST_CELL);
+      SLinkOperations.setTarget(nt, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c5a26fL, "right"), node);
+      SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(nt, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c59241L, "left")), SelectionManager.FIRST_CELL);
     }
   }
-
   public static class RegexpSequenceByEnter_INSERT extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public RegexpSequenceByEnter_INSERT(SNode node) {
       this.myNode = node;
     }
-
     public String getDescriptionText() {
       return "insert an item after";
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SNode nt = SNodeFactoryOperations.createNewNode("jetbrains.mps.baseLanguage.regexp.structure.SeqRegexp", null);
+      SNode nt = SNodeFactoryOperations.createNewNode(SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174bc30e7L, "jetbrains.mps.baseLanguage.regexp.structure.SeqRegexp")), null);
       SNodeOperations.replaceWithAnother(node, nt);
-      SLinkOperations.setTarget(nt, "left", node, true);
-      SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(nt, "right", true), SelectionManager.FIRST_CELL);
+      SLinkOperations.setTarget(nt, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c59241L, "left"), node);
+      SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(nt, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c5a26fL, "right")), SelectionManager.FIRST_CELL);
     }
   }
 }

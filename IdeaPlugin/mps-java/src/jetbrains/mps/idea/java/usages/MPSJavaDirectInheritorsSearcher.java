@@ -28,16 +28,16 @@ import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.SearchScope;
 import com.intellij.psi.search.searches.DirectClassInheritorsSearch.SearchParameters;
 import com.intellij.util.Processor;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.facet.MPSFacet;
 import jetbrains.mps.idea.core.facet.MPSFacetType;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiNode;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiProvider;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.smodel.ModelAccess;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.SModelRepository;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactoryByName;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 
 /**
@@ -60,8 +60,10 @@ public class MPSJavaDirectInheritorsSearcher extends QueryExecutorBase<PsiClass,
     }
 
     GlobalSearchScope scope = (GlobalSearchScope) someScope;
-    final Project project = scope.getProject();
     final PsiClass base = queryParameters.getClassToProcess();
+    // regarding scope.getPropject() == null see
+    // above todo: use ref index, otherwise it's hard to search against models having just SearchScope and no project
+    final Project project = scope.getProject() != null ? scope.getProject() : base.getProject();
 
     for (Module module : ModuleManager.getInstance(project).getModules()) {
       if (!scope.isSearchInModuleContent(module)) continue;
@@ -69,13 +71,12 @@ public class MPSJavaDirectInheritorsSearcher extends QueryExecutorBase<PsiClass,
       if (facet == null) continue;
 
       final Solution facetSolution = facet.getSolution();
-      ModelAccess.instance().runReadAction(new Runnable() {
+      ProjectHelper.getModelAccess(project).runReadAction(new Runnable() {
         @Override
         public void run() {
-
-          for (SModel model : SModelRepository.getInstance().getModelDescriptors(facetSolution)) {
+          for (SModel model : facetSolution.getModels()) {
             for (SNode root : model.getRootNodes()) {
-              for (SNode claz : SNodeOperations.getAncestors(root, "jetbrains.mps.baseLanguage.structure.Classifier", true)) {
+              for (SNode claz : SNodeOperations.getNodeAncestors(root, MetaAdapterFactoryByName.getConcept("jetbrains.mps.baseLanguage.structure.Classifier"), true)) {
                 PsiElement psiElem = MPSPsiProvider.getInstance(project).getPsi(claz);
                 // not our real project MPS node, probably stub
                 if (!(psiElem instanceof MPSPsiNode)) continue; // should skip all model

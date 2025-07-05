@@ -4,35 +4,39 @@ package jetbrains.mps.build.util;
 
 import jetbrains.mps.scope.Scope;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.smodel.search.IsInstanceCondition;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
+import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public abstract class DescendantsScope extends Scope {
   private SNode node;
-  private SNode link;
-  private SNode concept;
-
-  public DescendantsScope(SNode node, SNode link, SNode concept) {
+  private SContainmentLink link;
+  private SAbstractConcept concept;
+  public DescendantsScope(SNode node, SContainmentLink link, SAbstractConcept concept) {
     this.node = node;
     this.link = link;
     this.concept = concept;
   }
-
   public abstract String getName(SNode child);
-
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable final String prefix) {
     Iterable<SNode> seq = ListSequence.fromList(SNodeOperations.getChildren(node, link)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return jetbrains.mps.util.SNodeOperations.getDescendants(it, new IsInstanceCondition(concept), true);
+        return SNodeUtil.getDescendants(it, new Condition<SNode>() {
+          public boolean met(SNode n) {
+            return SNodeOperations.isInstanceOf(n, SNodeOperations.asSConcept(concept));
+          }
+        }, true);
       }
     });
     if (prefix == null || prefix.isEmpty()) {
@@ -45,14 +49,13 @@ public abstract class DescendantsScope extends Scope {
       }
     });
   }
-
   @Nullable
   @Override
   public SNode resolve(SNode contextNode, @NotNull String refText) {
     SNode result = null;
     for (SNode n : Sequence.fromIterable(getAvailableElements(null))) {
       String name = getName(n);
-      if (name.equals(refText)) {
+      if (refText.equals(name)) {
         if (result == null) {
           result = n;
         } else {
@@ -62,11 +65,10 @@ public abstract class DescendantsScope extends Scope {
     }
     return result;
   }
-
   @Nullable
   @Override
   public String getReferenceText(SNode contextNode, @NotNull SNode node) {
-    if (!(SNodeOperations.isInstanceOf(node, NameUtil.nodeFQName(concept)))) {
+    if (!(SNodeOperations.isInstanceOf(node, SNodeOperations.asSConcept(concept)))) {
       return null;
     }
 
@@ -83,15 +85,14 @@ public abstract class DescendantsScope extends Scope {
     }
     return result;
   }
-
-  public static DescendantsScope forNamedElements(SNode node, SNode link, SNode concept) {
+  public static DescendantsScope forNamedElements(SNode node, SContainmentLink link, SAbstractConcept concept) {
     return new DescendantsScope(node, link, concept) {
       @Override
       public String getName(SNode child) {
-        if (!(SNodeOperations.isInstanceOf(child, "jetbrains.mps.lang.core.structure.INamedConcept"))) {
+        if (!(SNodeOperations.isInstanceOf(child, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")))) {
           return child.getPresentation();
         }
-        return SPropertyOperations.getString(SNodeOperations.cast(child, "jetbrains.mps.lang.core.structure.INamedConcept"), "name");
+        return SPropertyOperations.getString(SNodeOperations.cast(child, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
       }
     };
   }

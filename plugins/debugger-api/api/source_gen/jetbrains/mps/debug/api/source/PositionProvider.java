@@ -4,6 +4,7 @@ package jetbrains.mps.debug.api.source;
 
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.project.MPSProject;
 import java.util.Map;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -12,31 +13,32 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.debug.api.programState.ILocation;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debug.api.AbstractDebugSession;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.debug.api.programState.GenericSourceCodeLocation;
 import org.jetbrains.annotations.NonNls;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
 public class PositionProvider implements ProjectComponent {
-  private final Project myProject;
+  private final Project myIdeaProject;
+  private final MPSProject myProject;
   private final Map<String, List<IPositionProvider>> myKeysToProviders = MapSequence.fromMap(new LinkedHashMap<String, List<IPositionProvider>>(16, (float) 0.75, false));
-
-  public PositionProvider(Project project) {
-    myProject = project;
+  public PositionProvider(Project project, MPSProject mpsProject) {
+    myIdeaProject = project;
+    myProject = mpsProject;
   }
-
   @Nullable
   public SourcePosition getPosition(@Nullable ILocation location, @NotNull final AbstractDebugSession session) {
-    for (String key : SetSequence.fromSet(MapSequence.fromMap(myKeysToProviders).keySet())) {
+    for (String key : MapSequence.fromMap(myKeysToProviders).keySet()) {
       IPositionProvider provider = ListSequence.fromList(MapSequence.fromMap(myKeysToProviders).get(key)).findFirst(new IWhereFilter<IPositionProvider>() {
         public boolean accept(IPositionProvider it) {
           return it.accepts(session);
         }
       });
       if (provider != null) {
-        SourcePosition position = provider.getPosition(location);
+        SourcePosition position = provider.getPosition(location, session);
         if (position != null) {
           return position;
         }
@@ -44,23 +46,15 @@ public class PositionProvider implements ProjectComponent {
     }
     return null;
   }
-
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.debug.api.source.PositionProvider#getPosition(ILocation, AbstractDebugSession) } instead
+   */
   @Nullable
-  public SourcePosition getPosition(@NotNull String unitName, @NotNull String fileName, int lineNumber, @NotNull final AbstractDebugSession session) {
-    for (String key : SetSequence.fromSet(MapSequence.fromMap(myKeysToProviders).keySet())) {
-      IPositionProvider provider = ListSequence.fromList(MapSequence.fromMap(myKeysToProviders).get(key)).findFirst(new IWhereFilter<IPositionProvider>() {
-        public boolean accept(IPositionProvider it) {
-          return it.accepts(session);
-        }
-      });
-      if (provider != null) {
-        SourcePosition position = provider.getPosition(unitName, fileName, lineNumber);
-        if (position != null) {
-          return position;
-        }
-      }
-    }
-    return null;
+  @Deprecated
+  @ToRemove(version = 3.4)
+  public SourcePosition getPosition(@NotNull String unitName, @NotNull String fileName, int lineNumber, @NotNull AbstractDebugSession session) {
+    return getPosition(new GenericSourceCodeLocation(unitName, fileName, lineNumber), session);
   }
 
   public void addProvider(@NotNull IPositionProvider provider, @NonNls String key) {
@@ -71,7 +65,6 @@ public class PositionProvider implements ProjectComponent {
     }
     ListSequence.fromList(providersForKey).insertElement(0, provider);
   }
-
   public boolean removeProvider(@NotNull IPositionProvider provider) {
     for (List<IPositionProvider> providerList : Sequence.fromIterable(MapSequence.fromMap(myKeysToProviders).values())) {
       if (ListSequence.fromList(providerList).removeElement(provider) != null) {
@@ -80,33 +73,27 @@ public class PositionProvider implements ProjectComponent {
     }
     return false;
   }
-
   @Override
   public void projectOpened() {
   }
-
   @Override
   public void projectClosed() {
   }
-
   @Override
   public void initComponent() {
-    addProvider(new NodePositionProvider(), NodeSourcePosition.class.getName());
-    addProvider(new TextPositionProvider(myProject), TextSourcePosition.class.getName());
+    addProvider(new NodePositionProvider(myProject), NodeSourcePosition.class.getName());
+    addProvider(new TextPositionProvider(myIdeaProject), TextSourcePosition.class.getName());
   }
-
   @Override
   public void disposeComponent() {
     MapSequence.fromMap(myKeysToProviders).clear();
   }
-
   @NonNls
   @NotNull
   @Override
   public String getComponentName() {
     return "Position Provider";
   }
-
   public static PositionProvider getInstance(Project project) {
     return project.getComponent(PositionProvider.class);
   }

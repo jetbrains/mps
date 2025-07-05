@@ -6,55 +6,12 @@ import jetbrains.mps.nodeEditor.DefaultNodeEditor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
-import jetbrains.mps.nodeEditor.cellProviders.CellProviderWithRole;
-import jetbrains.mps.lang.editor.cellProviders.RefNodeCellProvider;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.nodeEditor.EditorManager;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 
 public class NormalTypeClause_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createCollection_yb6oam_a(editorContext, node);
+    return new NormalTypeClause_EditorBuilder_a(editorContext, node).createCell();
   }
-
   public EditorCell createInspectedCell(EditorContext editorContext, SNode node) {
-    return this.createConstant_yb6oam_a(editorContext, node);
-  }
-
-  private EditorCell createCollection_yb6oam_a(EditorContext editorContext, SNode node) {
-    EditorCell_Collection editorCell = EditorCell_Collection.createIndent2(editorContext, node);
-    editorCell.setCellId("Collection_yb6oam_a");
-    editorCell.setBig(true);
-    editorCell.addEditorCell(this.createRefNode_yb6oam_a0(editorContext, node));
-    return editorCell;
-  }
-
-  private EditorCell createRefNode_yb6oam_a0(EditorContext editorContext, SNode node) {
-    CellProviderWithRole provider = new RefNodeCellProvider(node, editorContext);
-    provider.setRole("normalType");
-    provider.setNoTargetText("<no normalType>");
-    EditorCell editorCell;
-    editorCell = provider.createEditorCell(editorContext);
-    if (editorCell.getRole() == null) {
-      editorCell.setRole("normalType");
-    }
-    editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
-    SNode attributeConcept = provider.getRoleAttribute();
-    Class attributeKind = provider.getRoleAttributeClass();
-    if (attributeConcept != null) {
-      IOperationContext opContext = editorContext.getOperationContext();
-      EditorManager manager = EditorManager.getInstanceFromContext(opContext);
-      return manager.createRoleAttributeCell(editorContext, attributeConcept, attributeKind, editorCell);
-    } else
-    return editorCell;
-  }
-
-  private EditorCell createConstant_yb6oam_a(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "NORMAL TYPE CLAUSE");
-    editorCell.setCellId("Constant_yb6oam_a");
-    editorCell.setBig(true);
-    editorCell.setDefaultText("");
-    return editorCell;
+    return new NormalTypeClause_InspectorBuilder_a(editorContext, node).createCell();
   }
 }

@@ -5,55 +5,61 @@ package jetbrains.mps.debugger.java.runtime;
 import jetbrains.mps.debug.api.source.NodePositionProvider;
 import com.intellij.openapi.components.ProjectComponent;
 import jetbrains.mps.debug.api.source.PositionProvider;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.NonNls;
-import jetbrains.mps.generator.traceInfo.TraceInfoUtil;
-import jetbrains.mps.debug.api.source.NodeSourcePosition;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.debug.api.programState.ILocation;
 import jetbrains.mps.debug.api.AbstractDebugSession;
+import java.util.Iterator;
+import jetbrains.mps.textgen.trace.DebugInfo;
+import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.textgen.trace.BaseLanguageNodeLookup;
+import jetbrains.mps.debug.api.source.NodeSourcePosition;
+import org.jetbrains.annotations.NonNls;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
 
 public class JavaNodePositionProvider extends NodePositionProvider implements ProjectComponent {
   private final PositionProvider myProvider;
-
-  public JavaNodePositionProvider(PositionProvider provider) {
+  public JavaNodePositionProvider(PositionProvider provider, MPSProject mpsProject) {
+    super(mpsProject);
     myProvider = provider;
   }
 
   @Nullable
   @Override
-  public SNode getNode(@NonNls String unitName, @NonNls String fileName, int position) {
-    return TraceInfoUtil.getJavaNode(unitName, fileName, position);
+  protected SNodeReference getSNodePointer(@NotNull ILocation location, @NotNull AbstractDebugSession session) {
+    for (Iterator<DebugInfo> it = session.getTraceProvider().debugInfo(NameUtil.namespaceFromLongName(location.getUnitName())).iterator(); it.hasNext();) {
+      SNodeReference n = new BaseLanguageNodeLookup(it.next()).getNodeAt(location.getFileName(), location.getLineNumber());
+      if (n != null) {
+        return n;
+      }
+    }
+    return null;
   }
 
   @Override
   public void projectOpened() {
   }
-
   @Override
   public void projectClosed() {
   }
-
   @Override
   public void initComponent() {
     myProvider.addProvider(this, NodeSourcePosition.class.getName());
   }
-
   @Override
   public void disposeComponent() {
     myProvider.removeProvider(this);
   }
-
   @NonNls
   @NotNull
   @Override
   public String getComponentName() {
     return "Java Node Position Provider";
   }
-
   @Override
   public boolean accepts(AbstractDebugSession session) {
-    return session instanceof DebugSession;
+    return super.accepts(session) && session instanceof DebugSession;
   }
 }

@@ -4,7 +4,7 @@ package jetbrains.mps.lang.editor.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum CellActionId {
   RIGHT_TRANSFORM("RIGHT_TRANSFORM", "right_transform_action_id"),
@@ -50,18 +50,25 @@ public enum CellActionId {
   FOLD_ALL("FOLD_ALL", "fold_all_action_id"),
   UNFOLD_ALL("UNFOLD_ALL", "unfold_all_action_id"),
   TOGGLE_FOLDING("TOGGLE_FOLDING", "toggle_folding_action_id"),
-  SHOW_MESSAGE("SHOW_MESSAGE", "show_message_action_id");
+  SHOW_MESSAGE("SHOW_MESSAGE", "show_message_action_id"),
+  COMMENT("COMMENT", "comment_out_action_id"),
+  CLICK("CLICK", "click_action_id");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private CellActionId(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<CellActionId> getConstants() {
     List<CellActionId> list = ListSequence.fromList(new LinkedList<CellActionId>());
     ListSequence.fromList(list).addElement(CellActionId.RIGHT_TRANSFORM);
@@ -108,13 +115,13 @@ public enum CellActionId {
     ListSequence.fromList(list).addElement(CellActionId.UNFOLD_ALL);
     ListSequence.fromList(list).addElement(CellActionId.TOGGLE_FOLDING);
     ListSequence.fromList(list).addElement(CellActionId.SHOW_MESSAGE);
+    ListSequence.fromList(list).addElement(CellActionId.COMMENT);
+    ListSequence.fromList(list).addElement(CellActionId.CLICK);
     return list;
   }
-
   public static CellActionId getDefault() {
-    return CellActionId.RIGHT_TRANSFORM;
+    return null;
   }
-
   public static CellActionId parseValue(String value) {
     if (value == null) {
       return CellActionId.getDefault();
@@ -251,17 +258,12 @@ public enum CellActionId {
     if (value.equals(CellActionId.SHOW_MESSAGE.getValueAsString())) {
       return CellActionId.SHOW_MESSAGE;
     }
+    if (value.equals(CellActionId.COMMENT.getValueAsString())) {
+      return CellActionId.COMMENT;
+    }
+    if (value.equals(CellActionId.CLICK.getValueAsString())) {
+      return CellActionId.CLICK;
+    }
     return CellActionId.getDefault();
-  }
-
-  private String myValue;
-
-  CellActionId(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

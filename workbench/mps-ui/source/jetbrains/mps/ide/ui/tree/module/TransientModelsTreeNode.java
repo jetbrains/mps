@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,33 +15,28 @@
  */
 package jetbrains.mps.ide.ui.tree.module;
 
-import com.intellij.openapi.project.Project;
 import jetbrains.mps.generator.TransientModelsModule;
-import jetbrains.mps.ide.icons.IdeIcons;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.project.ModuleContext;
+import jetbrains.mps.icons.MPSIcons.Nodes;
+import jetbrains.mps.project.Project;
+import org.jetbrains.annotations.NotNull;
 
 public class TransientModelsTreeNode extends ProjectModuleTreeNode {
-  private TransientModelsModule myTransientModule;
 
-  public TransientModelsTreeNode(final Project project, final TransientModelsModule module) {
-    //sometimes (when opening another project after first project) module repository does not contain transient module
-    //temp fix
-    super(new ModuleContext(module, ProjectHelper.toMPSProject(project)));
-    myTransientModule = module;
+  public TransientModelsTreeNode(@NotNull Project project, @NotNull TransientModelsModule module) {
+    super(module);
     populate();
-    setNodeIdentifier(myTransientModule.getModuleReference().toString());
+    setNodeIdentifier(module.getModuleReference().toString());
   }
 
   @Override
   protected void doUpdatePresentation() {
     super.doUpdatePresentation();
-    setIcon(IdeIcons.TRANSIENT_MODELS_ICON);
+    setIcon(Nodes.TransientModule);
   }
 
   @Override
   public String getModuleText() {
-    String name = myTransientModule.getModuleName();
+    String name = getModule().getModuleName();
 
     if (name != null) {
       return name;
@@ -49,14 +44,13 @@ public class TransientModelsTreeNode extends ProjectModuleTreeNode {
     return "transient";
   }
 
+  @NotNull
   @Override
   public TransientModelsModule getModule() {
-    return myTransientModule;
+    return (TransientModelsModule) super.getModule();
   }
 
   private void populate() {
-    if (getOperationContext().getModule() != null) {
-      SModelsSubtree.create(this, getOperationContext());
-    }
+    new SModelsSubtree(this, true, false).create(getModule());
   }
 }

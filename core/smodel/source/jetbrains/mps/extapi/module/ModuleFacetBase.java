@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.extapi.module;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.persistence.Memento;
@@ -23,22 +24,32 @@ import org.jetbrains.mps.openapi.persistence.Memento;
  * Base class for all module facets.
  */
 public abstract class ModuleFacetBase implements SModuleFacet {
-
+  private final String myFacetType;
   private SModule myModule;
   private boolean isRegistered;
 
-  public abstract String getFacetType();
+  protected ModuleFacetBase(@NotNull String facetType) {
+    myFacetType = facetType;
+  }
+
+  @NotNull
+  @Override
+  public final String getFacetType() {
+    return myFacetType;
+  }
 
   public String getFacetPresentation() {
     return getFacetType();
   }
 
+  @NotNull
   @Override
   public SModule getModule() {
     return myModule;
   }
 
   /**
+   * FIXME javadoc @return and do we need both setModule + attach?
    * Returns null if the facet cannot work within the passed module.
    */
   public boolean setModule(SModule module) {

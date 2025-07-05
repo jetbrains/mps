@@ -8,7 +8,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 
-public class ClonableList<T> extends AbstractList<T> implements Cloneable {
+public final class ClonableList<T> extends AbstractList<T> implements Cloneable {
   private List<T> myData;
 
   public ClonableList() {
@@ -58,5 +58,19 @@ public class ClonableList<T> extends AbstractList<T> implements Cloneable {
 
   public List<T> getData() {
     return myData;
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof ClonableList) {
+      ClonableList another = (ClonableList) object;
+      return (((List<T>) myData)).equals(another.myData);
+    }
+    return false;
+  }
+
+  @Override
+  public int hashCode() {
+    return ((List<T>) myData).hashCode();
   }
 }

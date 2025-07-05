@@ -4,42 +4,47 @@ package jetbrains.mps.make.dependencies;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import jetbrains.mps.make.MakeSession;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.internal.collections.runtime.ISequence;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.IListSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import java.util.Set;
+import jetbrains.mps.smodel.language.GeneratorRuntime;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.generator.runtime.TemplateModule;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 import jetbrains.mps.smodel.Generator;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.generator.impl.plan.ModelContentUtil;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
-import jetbrains.mps.project.dependency.modules.LanguageDependenciesManager;
+import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.smodel.language.LanguageRegistry;
 import java.util.Collection;
+import jetbrains.mps.generator.runtime.TemplateModule;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
 public class ModulesClusterizer {
   private static Logger LOG = LogManager.getLogger(ModulesCluster.class);
+  private final MakeSession mySession;
+  private final LanguageRegistry myLanguageRegistry;
 
-  public ModulesClusterizer() {
+  /*package*/ ModulesClusterizer(MakeSession makeSession) {
+    mySession = makeSession;
+    myLanguageRegistry = LanguageRegistry.getInstance(mySession.getProject().getRepository());
   }
 
-  public Iterable<? extends Iterable<? extends IResource>> clusterize(Iterable<IResource> res) {
+  public Iterable<Cluster> clusterize(Iterable<? extends IResource> res) {
     final Iterable<MResource> mres = Sequence.fromIterable(res).where(new IWhereFilter<IResource>() {
       public boolean accept(IResource r) {
         return r instanceof MResource;
@@ -54,104 +59,86 @@ public class ModulesClusterizer {
         return r.module();
       }
     });
-    List<IResource> rest = Sequence.fromIterable(res).subtract(Sequence.fromIterable(mres)).toListSequence();
-    ModulesCluster clst = new ModulesCluster(mods);
+    Iterable<IResource> rest = Sequence.fromIterable(((Iterable<IResource>) res)).subtract(Sequence.fromIterable(mres));
+    ModulesCluster clst = new ModulesCluster(mods, myLanguageRegistry);
     clst.collectRequired(mods);
-    Iterable<? extends Iterable<? extends IResource>> toBuild = Sequence.fromIterable(clst.buildOrder()).select(new ISelector<Iterable<SModule>, IListSequence<MResource>>() {
-      public IListSequence<MResource> select(final Iterable<SModule> cl) {
+    Iterable<? extends Iterable<SModule>> moduleBuildOrder = clst.buildOrder();
+    Iterable<? extends Iterable<MResource>> mresBuildOrder = Sequence.fromIterable(moduleBuildOrder).select(new ISelector<Iterable<SModule>, ISequence<MResource>>() {
+      public ISequence<MResource> select(final Iterable<SModule> cl) {
         return Sequence.fromIterable(mres).where(new IWhereFilter<MResource>() {
           public boolean accept(MResource r) {
             return Sequence.fromIterable(cl).contains(r.module());
           }
-        }).toListSequence();
+        });
       }
     });
-    Iterable<? extends Iterable<IResource>> seq = (ListSequence.fromList(rest).isNotEmpty() ?
-      Sequence.<List<IResource>>singleton(rest) :
-      null
-    );
 
-    List<Iterable<? extends IResource>> result = ListSequence.fromList(new ArrayList<Iterable<? extends IResource>>());
-    ListSequence.fromList(result).addSequence(Sequence.fromIterable(toBuild));
-    ListSequence.fromList(result).addSequence(Sequence.fromIterable(seq));
+    List<Cluster> result = ListSequence.fromList(new ArrayList<Cluster>());
+    for (Iterable<MResource> s : mresBuildOrder) {
+      ListSequence.fromList(result).addElement(new Cluster(s, allUsedLangNamespaces(s), myLanguageRegistry));
+    }
+    if (Sequence.fromIterable(rest).isNotEmpty()) {
+      ListSequence.fromList(result).addElement(new Cluster(rest, ListSequence.fromList(new ArrayList<SLanguage>()), myLanguageRegistry));
+    }
     return result;
   }
 
-
-
-  public Iterable<String> allUsedLangNamespaces(Iterable<? extends IResource> cluster) {
-    Iterable<MResource> mres = Sequence.fromIterable(cluster).where(new IWhereFilter<IResource>() {
-      public boolean accept(IResource r) {
-        return r instanceof MResource;
-      }
-    }).select(new ISelector<IResource, MResource>() {
-      public MResource select(IResource r) {
-        return ((MResource) r);
-      }
-    }).toListSequence();
-    Iterable<SModule> mods = Sequence.fromIterable(mres).select(new ISelector<MResource, SModule>() {
+  private Iterable<SLanguage> allUsedLangNamespaces(Iterable<MResource> cluster) {
+    return allNamespaces(Sequence.fromIterable(cluster).select(new ISelector<MResource, SModule>() {
       public SModule select(MResource r) {
         return r.module();
       }
-    });
-    return allNamespaces(mods);
+    }));
   }
 
-  private Iterable<String> allNamespaces(Iterable<SModule> modules) {
-    final Set<String> namespaces = SetSequence.fromSet(new HashSet<String>());
-    Set<TemplateModule> seen = SetSequence.fromSet(new HashSet<TemplateModule>());
-    Queue<String> nsq = QueueSequence.fromQueue(new LinkedList<String>());
+  private Iterable<SLanguage> allNamespaces(Iterable<SModule> modules) {
+    // FIXME list, not set<SLanguage> here because SLanguage.hashCode == 0 and this affects performance. 
+    // shall switch to set<SLanguage> once hashCode is fixed 
+    final List<SLanguage> namespaces = ListSequence.fromList(new ArrayList<SLanguage>());
+    Set<GeneratorRuntime> seen = SetSequence.fromSet(new HashSet<GeneratorRuntime>());
+    Queue<SLanguage> nsq = QueueSequence.fromQueue(new LinkedList<SLanguage>());
     for (SModule mod : modules) {
+      Iterable<SLanguage> usedLanguages;
       if (mod instanceof Generator) {
         Iterable<SModel> genModels = mod.getModels();
-        QueueSequence.fromQueue(nsq).addSequence(Sequence.fromIterable(genModels).translate(new ITranslator2<SModel, String>() {
-          public Iterable<String> translate(SModel smd) {
-            return ModelContentUtil.getUsedLanguageNamespaces(smd, false);
+        usedLanguages = Sequence.fromIterable(genModels).translate(new ITranslator2<SModel, SLanguage>() {
+          public Iterable<SLanguage> translate(SModel smd) {
+            return ModelContentUtil.getUsedLanguages(smd);
           }
-        }).where(new IWhereFilter<String>() {
-          public boolean accept(String ns) {
-            return !(SetSequence.fromSet(namespaces).contains(ns));
-          }
-        }));
+        });
       } else {
-        Set<Language> langs = SetSequence.fromSet(new HashSet<Language>());
-        for (Language l : CollectionSequence.fromCollection(new GlobalModuleDependenciesManager(mod).getUsedLanguages())) {
-          SetSequence.fromSet(langs).addSequence(SetSequence.fromSet(LanguageDependenciesManager.getAllExtendedLanguages(l)));
-        }
-        QueueSequence.fromQueue(nsq).addSequence(SetSequence.fromSet(langs).select(new ISelector<Language, String>() {
-          public String select(Language lang) {
-            return lang.getModuleDescriptor().getNamespace();
-          }
-        }).where(new IWhereFilter<String>() {
-          public boolean accept(String ns) {
-            return !(SetSequence.fromSet(namespaces).contains(ns));
-          }
-        }));
+        usedLanguages = new SLanguageHierarchy(myLanguageRegistry, mod.getUsedLanguages()).getExtended();
       }
+      QueueSequence.fromQueue(nsq).addSequence(Sequence.fromIterable(usedLanguages).where(new IWhereFilter<SLanguage>() {
+        public boolean accept(SLanguage ns) {
+          return !(ListSequence.fromList(namespaces).contains(ns));
+        }
+      }));
+
       while (QueueSequence.fromQueue(nsq).isNotEmpty()) {
-        String ns = QueueSequence.fromQueue(nsq).removeFirstElement();
-        LanguageRuntime lr = LanguageRegistry.getInstance().getLanguage(ns);
+        SLanguage ns = QueueSequence.fromQueue(nsq).removeFirstElement();
+        LanguageRuntime lr = myLanguageRegistry.getLanguage(ns);
         if (lr == null) {
           LOG.debug("language not found for namespace " + ns);
           continue;
         }
-        if (!(SetSequence.fromSet(namespaces).contains(ns))) {
-          SetSequence.fromSet(namespaces).addElement(ns);
-          Collection<TemplateModule> gens = lr.getGenerators();
+        if (!(ListSequence.fromList(namespaces).contains(ns))) {
+          ListSequence.fromList(namespaces).addElement(ns);
+          Collection<? extends GeneratorRuntime> gens = lr.getGenerators();
           if (gens != null) {
-            for (TemplateModule tm : gens) {
-              if (tm == null) {
+            for (GeneratorRuntime gr : gens) {
+              if (gr instanceof TemplateModule == false) {
                 continue;
               }
-              if (!(SetSequence.fromSet(seen).contains(tm))) {
-                QueueSequence.fromQueue(nsq).addSequence(CollectionSequence.fromCollection(tm.getUsedLanguages()));
-                SetSequence.fromSet(seen).addElement(tm);
+              if (!(SetSequence.fromSet(seen).contains(gr))) {
+                QueueSequence.fromQueue(nsq).addSequence(CollectionSequence.fromCollection(((TemplateModule) gr).getTargetLanguages()));
+                SetSequence.fromSet(seen).addElement(gr);
               }
             }
           }
         }
       }
     }
-    return SetSequence.fromSet(namespaces).toListSequence();
+    return namespaces;
   }
 }

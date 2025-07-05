@@ -4,12 +4,12 @@ package jetbrains.mps.actions.runtime.impl;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class ActionsUtil {
-  public ActionsUtil() {
+public final class ActionsUtil {
+  private ActionsUtil() {
   }
-
   public static boolean isInstanceOfIType(SNode node) {
-    return SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.core.structure.IType");
+    return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11f8a0774f2L, "jetbrains.mps.lang.core.structure.IType"));
   }
 }

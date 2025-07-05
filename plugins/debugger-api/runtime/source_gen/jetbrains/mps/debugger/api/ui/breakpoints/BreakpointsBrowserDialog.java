@@ -6,7 +6,7 @@ import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.actionSystem.DataProvider;
 import javax.swing.JPanel;
 import javax.swing.JComponent;
-import jetbrains.mps.smodel.IOperationContext;
+import jetbrains.mps.project.Project;
 import jetbrains.mps.debug.api.BreakpointManagerComponent;
 import jetbrains.mps.debug.api.breakpoints.BreakpointProvidersManager;
 import javax.swing.JScrollPane;
@@ -40,11 +40,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import com.intellij.ide.DataManager;
-import jetbrains.mps.project.Project;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
-import jetbrains.mps.smodel.ModelAccess;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import org.jetbrains.annotations.NonNls;
@@ -55,7 +52,7 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
   private static final String COMMAND_SHOW_NODE = "COMMAND_SHOW_NODE";
   private final JPanel myMainPanel;
   private JComponent myPropertiesEditorPanel;
-  private final IOperationContext myContext;
+  private final Project myProject;
   private final BreakpointManagerComponent myBreakpointsManager;
   private final BreakpointProvidersManager myProvidersManager;
   private final BreakpointsUiComponent myBreakpointsUi;
@@ -70,19 +67,17 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
       breakpointSelected(bp);
     }
   };
-
-  public BreakpointsBrowserDialog(IOperationContext context) {
-    super(ProjectHelper.toIdeaProject(context.getProject()));
+  public BreakpointsBrowserDialog(Project mpsProject) {
+    super(ProjectHelper.toIdeaProject(mpsProject));
     setTitle("Breakpoints");
     setModal(false);
     this.setOKButtonText("Close");
-
-    myContext = context;
-    myBreakpointsManager = BreakpointManagerComponent.getInstance(ProjectHelper.toIdeaProject(myContext.getProject()));
-    myBreakpointsUi = BreakpointsUiComponent.getInstance(ProjectHelper.toIdeaProject(myContext.getProject()));
+    myProject = mpsProject;
+    myBreakpointsManager = BreakpointManagerComponent.getInstance(ProjectHelper.toIdeaProject(mpsProject));
+    myBreakpointsUi = BreakpointsUiComponent.getInstance(ProjectHelper.toIdeaProject(mpsProject));
     myProvidersManager = BreakpointProvidersManager.getInstance();
-    myCurrentViewIndex = BreakpointViewSettingsComponent.getInstance(myContext.getProject()).getViewIndex();
-    myViews = new BreakpointsView[]{new BreakpointsTable(myContext, myBreakpointsManager), new BreakpointsTree(myContext, myBreakpointsManager)};
+    myCurrentViewIndex = BreakpointViewSettingsComponent.getInstance(mpsProject).getViewIndex();
+    myViews = new BreakpointsView[]{new BreakpointsTable(mpsProject, myBreakpointsManager), new BreakpointsTree(mpsProject, myBreakpointsManager)};
     myMainPanel = new JPanel(new BorderLayout());
     myBreakpointsScrollPane = ScrollPaneFactory.createScrollPane(myViews[myCurrentViewIndex].getMainComponent());
     myBreakpointsScrollPane.getViewport().setBackground(UIManager.getColor("Table.background"));
@@ -97,16 +92,14 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
 
     init();
   }
-
   private void saveState() {
-    if (myContext.getProject().isDisposed()) {
+    if (myProject.isDisposed()) {
       return;
     }
     for (BreakpointsView view : myViews) {
       view.saveState();
     }
   }
-
   private void initPropertiesUi() {
     for (IBreakpointKind kind : myProvidersManager.getAllKinds()) {
       IBreakpointsProvider provider = myProvidersManager.getProvider(kind);
@@ -133,11 +126,9 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
       breakpointSelected(selectedBreakpoint);
     }
   }
-
   public void selectBreakpoint(@Nullable IBreakpoint breakpoint) {
     myViews[myCurrentViewIndex].selectBreakpoint(breakpoint);
   }
-
   private void breakpointSelected(IBreakpoint breakpoint) {
     if (myPropertiesEditorPanel != null) {
       myMainPanel.remove(myPropertiesEditorPanel);
@@ -152,7 +143,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
     }
     myMainPanel.updateUI();
   }
-
   private ActionGroup createActionGroup() {
     //  create actions 
     DefaultActionGroup group = new DefaultActionGroup();
@@ -166,7 +156,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
       public boolean isSelected(AnActionEvent e) {
         return isTreeView();
       }
-
       @Override
       public void setSelected(AnActionEvent e, boolean state) {
         switchView();
@@ -179,7 +168,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
         super.update(e);
         e.getPresentation().setEnabled(isTreeView());
       }
-
       @Override
       public boolean isSelected(AnActionEvent e) {
         if (!(isTreeView())) {
@@ -188,7 +176,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
         BreakpointsTree tree = (BreakpointsTree) myViews[myCurrentViewIndex];
         return tree.isModuleGroupVisible();
       }
-
       @Override
       public void setSelected(AnActionEvent e, boolean state) {
         BreakpointsTree tree = (BreakpointsTree) myViews[myCurrentViewIndex];
@@ -202,7 +189,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
         super.update(e);
         e.getPresentation().setEnabled(isTreeView());
       }
-
       @Override
       public boolean isSelected(AnActionEvent e) {
         if (!(isTreeView())) {
@@ -211,7 +197,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
         BreakpointsTree tree = (BreakpointsTree) myViews[myCurrentViewIndex];
         return tree.isModelGroupVisible();
       }
-
       @Override
       public void setSelected(AnActionEvent e, boolean state) {
         BreakpointsTree tree = (BreakpointsTree) myViews[myCurrentViewIndex];
@@ -225,7 +210,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
         super.update(e);
         e.getPresentation().setEnabled(isTreeView());
       }
-
       @Override
       public boolean isSelected(AnActionEvent e) {
         if (!(isTreeView())) {
@@ -234,7 +218,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
         BreakpointsTree tree = (BreakpointsTree) myViews[myCurrentViewIndex];
         return tree.isRootGroupVisible();
       }
-
       @Override
       public void setSelected(AnActionEvent e, boolean state) {
         BreakpointsTree tree = (BreakpointsTree) myViews[myCurrentViewIndex];
@@ -248,7 +231,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
         //  todo refactor actions: each view should provide their own actions  
         e.getPresentation().setEnabled(isTreeView());
       }
-
       @Override
       public void actionPerformed(AnActionEvent e) {
         if (!(isTreeView())) {
@@ -263,7 +245,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
       public void update(AnActionEvent e) {
         e.getPresentation().setEnabled(isTreeView());
       }
-
       @Override
       public void actionPerformed(AnActionEvent e) {
         if (!(isTreeView())) {
@@ -275,7 +256,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
     });
     return group;
   }
-
   private DefaultActionGroup createAddActionGroup() {
     DefaultActionGroup addActionGroup = new DefaultActionGroup("Add Breakpoint", true) {
       @Override
@@ -299,21 +279,17 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
     }
     return addActionGroup;
   }
-
   private IBreakpoint getBreakpoint(AnActionEvent e) {
     return BreakpointsUtil.MPS_BREAKPOINT.getData(e.getDataContext());
   }
-
   private boolean isTreeView() {
     return myViews[myCurrentViewIndex] instanceof BreakpointsTree;
   }
-
   private void switchView() {
     myCurrentViewIndex = 1 - myCurrentViewIndex;
-    BreakpointViewSettingsComponent.getInstance(myContext.getProject()).setViewIndex(myCurrentViewIndex);
+    BreakpointViewSettingsComponent.getInstance(myProject).setViewIndex(myCurrentViewIndex);
     myBreakpointsScrollPane.setViewportView(myViews[myCurrentViewIndex].getMainComponent());
   }
-
   protected AbstractAction createWrapper(final AnAction action) {
     return new AbstractAction() {
       @Override
@@ -322,7 +298,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
       }
     };
   }
-
   private void registerActionsOnViews() {
     for (BreakpointsView myView : myViews) {
       //  show on enter 
@@ -348,28 +323,15 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
       });
     }
   }
-
   private AnActionEvent createEvent(AnAction action) {
     return new AnActionEvent(null, DataManager.getInstance().getDataContext(this.getContentPane()), ActionPlaces.UNKNOWN, action.getTemplatePresentation(), ActionManager.getInstance(), 0);
   }
-
-  private void openNode(final IBreakpoint breakpoint, final boolean focus, final boolean select) {
-    final Project project = myContext.getProject();
+  private void openNode(IBreakpoint breakpoint, boolean focus, boolean select) {
     if (!((breakpoint instanceof ILocationBreakpoint))) {
       return;
     }
-    ModelAccess.instance().executeCommand(new Runnable() {
-      @Override
-      public void run() {
-        SNode node = ((ILocationBreakpoint) breakpoint).getLocation().getSNode();
-        if (node == null) {
-          return;
-        }
-        NavigationSupport.getInstance().openNode(myContext, node, focus, select);
-      }
-    }, project);
+    new EditorNavigator(myProject).shallFocus(focus).shallSelect(select).open(((ILocationBreakpoint) breakpoint).getLocation().getNodePointer());
   }
-
   @Nullable
   @Override
   protected JComponent createCenterPanel() {
@@ -383,20 +345,17 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
 
     return myMainPanel;
   }
-
   @Nullable
   @NonNls
   @Override
   protected String getDimensionServiceKey() {
     return BreakpointsBrowserDialog.class.getName();
   }
-
   @Override
   @NotNull
   protected Action[] createActions() {
     return new Action[]{getOKAction()};
   }
-
   @Override
   @Nullable
   public Object getData(@NonNls String dataId) {
@@ -405,7 +364,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
     }
     return myViews[myCurrentViewIndex].getData(dataId);
   }
-
   @Override
   public void dispose() {
     for (BreakpointsView view : myViews) {

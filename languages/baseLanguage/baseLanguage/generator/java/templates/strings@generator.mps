@@ -1,923 +1,574 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:b4d7d620-6723-4aa2-856b-118497e84e9e(jetbrains.mps.baseLanguage.generator.java.strings@generator)">
-  <persistence version="8" />
-  <language namespace="b401a680-8325-4110-8fd3-84331ff25bef(jetbrains.mps.lang.generator)" />
-  <language namespace="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)" />
-  <language namespace="7866978e-a0f0-4cc7-81bc-4d213d9375e1(jetbrains.mps.lang.smodel)" />
-  <language namespace="df345b11-b8c7-4213-ac66-48d2a9b75d88(jetbrains.mps.baseLanguageInternal)" />
-  <language namespace="d7706f63-9be2-479c-a3da-ae92af1e64d5(jetbrains.mps.lang.generator.generationContext)" />
-  <devkit namespace="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
-  <import index="tpek" modelUID="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" version="-1" />
-  <import index="tpee" modelUID="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" version="3" />
-  <import index="e2lb" modelUID="f:java_stub#6354ebe7-c22a-4a0f-ac54-50b52ab9b065#java.lang(JDK/java.lang@java_stub)" version="-1" />
-  <import index="msyo" modelUID="f:java_stub#6ed54515-acc8-4d1e-a16c-9fd6cfe951ea#jetbrains.mps.util(MPS.Core/jetbrains.mps.util@java_stub)" version="-1" />
-  <import index="k7g3" modelUID="f:java_stub#6354ebe7-c22a-4a0f-ac54-50b52ab9b065#java.util(JDK/java.util@java_stub)" version="-1" />
-  <import index="cu2c" modelUID="f:java_stub#6ed54515-acc8-4d1e-a16c-9fd6cfe951ea#jetbrains.mps.smodel(MPS.Core/jetbrains.mps.smodel@java_stub)" version="-1" />
-  <import index="unno" modelUID="r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)" version="-1" />
-  <import index="tp25" modelUID="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" version="16" implicit="yes" />
-  <import index="tpck" modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" implicit="yes" />
-  <import index="tpf8" modelUID="r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)" version="2" implicit="yes" />
-  <import index="tp68" modelUID="r:00000000-0000-4000-0000-011c895903ac(jetbrains.mps.baseLanguageInternal.structure)" version="1" implicit="yes" />
-  <import index="tpf3" modelUID="r:00000000-0000-4000-0000-011c895902f3(jetbrains.mps.lang.generator.generationContext.structure)" version="0" implicit="yes" />
-  <import index="tp2c" modelUID="r:00000000-0000-4000-0000-011c89590338(jetbrains.mps.baseLanguage.closures.structure)" version="3" implicit="yes" />
-  <import index="tp2q" modelUID="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)" version="7" implicit="yes" />
-  <root type="tpf8.TemplateDeclaration" typeId="tpf8.1092059087312" id="1225277059676" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="reduce_IsNotEmptyExpression" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="ext.string.expression" />
-    <link role="applicableConcept" roleId="tpf8.1168285871518" targetNodeId="tpee.1225271408483" resolveInfo="IsNotEmptyOperation" />
-    <node role="contentNode" roleId="tpf8.1092060348987" type="tp68.ExtractStaticMethodExpression" typeId="tp68.3585982959253588676" id="4592826945244850107" nodeInfo="nn">
-      <node role="method" roleId="tp68.3585982959253588678" type="tpee.StaticMethodDeclaration" typeId="tpee.1081236700938" id="4592826945244850108" nodeInfo="ig">
-        <property name="name" nameId="tpck.1169194664001" value="isNotEmpty" />
-        <node role="returnType" roleId="tpee.1068580123133" type="tpee.BooleanType" typeId="tpee.1070534644030" id="4592826945244850109" nodeInfo="in" />
-        <node role="visibility" roleId="tpee.1178549979242" type="tpee.PublicVisibility" typeId="tpee.1146644602865" id="4592826945244850110" nodeInfo="nn" />
-        <node role="body" roleId="tpee.1068580123135" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945244850111" nodeInfo="sn">
-          <node role="statement" roleId="tpee.1068581517665" type="tpee.ReturnStatement" typeId="tpee.1068581242878" id="4592826945244850112" nodeInfo="nn">
-            <node role="expression" roleId="tpee.1068581517676" type="tpee.AndExpression" typeId="tpee.1080120340718" id="3332857789545361892" nodeInfo="nn">
-              <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.NotEqualsExpression" typeId="tpee.1073239437375" id="3332857789545361893" nodeInfo="nn">
-                <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151601170" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="4592826945244850122" resolveInfo="str" />
-                </node>
-                <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="3332857789545361895" nodeInfo="nn" />
-              </node>
-              <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.GreaterThanExpression" typeId="tpee.1081506762703" id="3332857789545361896" nodeInfo="nn">
-                <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.DotExpression" typeId="tpee.1197027756228" id="3332857789545361897" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151603634" nodeInfo="nn">
-                    <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="4592826945244850122" resolveInfo="str" />
-                  </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="3332857789545361899" nodeInfo="nn">
-                    <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dlength()%cint" resolveInfo="length" />
-                  </node>
-                </node>
-                <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="3332857789545361900" nodeInfo="nn">
-                  <property name="value" nameId="tpee.1068580320021" value="0" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="4592826945244850122" nodeInfo="ir">
-          <property name="name" nameId="tpck.1169194664001" value="str" />
-          <node role="type" roleId="tpee.5680397130376446158" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="4592826945244850123" nodeInfo="in">
-            <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-          </node>
-        </node>
-        <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.PropertyMacro" typeId="tpf8.1087833241328" id="4592826945245316720" nodeInfo="nn">
-          <property name="propertyName" nameId="tpck.1757699476691236117" value="name" />
-          <node role="propertyValueFunction" roleId="tpf8.1167756362303" type="tpf8.PropertyMacro_GetPropertyValue" typeId="tpf8.1167756080639" id="4592826945245316721" nodeInfo="nn">
-            <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945245316722" nodeInfo="sn">
-              <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945245316723" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945245316724" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpf3.TemplateFunctionParameter_generationContext" typeId="tpf3.1216860049635" id="4592826945245316725" nodeInfo="nn" />
-                  <node role="operation" roleId="tpee.1197027833540" type="tpf3.GenerationContextOp_CreateUniqueName" typeId="tpf3.1218047638031" id="4592826945245316726" nodeInfo="nn">
-                    <node role="baseName" roleId="tpf3.1218047638032" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="4592826945245316727" nodeInfo="nn">
-                      <property name="value" nameId="tpee.1070475926801" value="isNotEmpty" />
-                    </node>
-                    <node role="contextNode" roleId="tpf3.1218049772449" type="tpee.DotExpression" typeId="tpee.1197027756228" id="796541834558860279" nodeInfo="nn">
-                      <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="796541834558860258" nodeInfo="nn" />
-                      <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_GetContainingRootOperation" typeId="tp25.1171310072040" id="796541834558860285" nodeInfo="nn" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node role="inner" roleId="tp68.3585982959253588677" type="tp68.ExtractStaticMethod_CallExpression" typeId="tp68.3585982959253821850" id="4592826945244850124" nodeInfo="nn">
-        <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="4592826945244850108" resolveInfo="isNotEmpty" />
-        <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="4592826945244850125" nodeInfo="nn">
-          <property name="value" nameId="tpee.1070475926801" value="" />
-          <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="4592826945244850126" nodeInfo="nn">
-            <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="4592826945244850127" nodeInfo="nn">
-              <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945244850128" nodeInfo="sn">
-                <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945244850129" nodeInfo="nn">
-                  <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945244850130" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4592826945244850131" nodeInfo="nn" />
-                    <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="4592826945244850132" nodeInfo="nn">
-                      <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.TemplateFragment" typeId="tpf8.1095672379244" id="4592826945244850133" nodeInfo="ng" />
-    </node>
-  </root>
-  <root type="tpf8.TemplateDeclaration" typeId="tpf8.1092059087312" id="1225277059687" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="reduce_NPEEqualsExpression" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="expressions" />
-    <link role="applicableConcept" roleId="tpf8.1168285871518" targetNodeId="tpee.1225271283259" resolveInfo="NPEEqualsExpression" />
-    <node role="contentNode" roleId="tpf8.1092060348987" type="tp68.ExtractStaticMethodExpression" typeId="tp68.3585982959253588676" id="1326302914272776608" nodeInfo="nn">
-      <property name="makeUnique" nameId="tp68.8733626498296603539" value="true" />
-      <node role="method" roleId="tp68.3585982959253588678" type="tpee.StaticMethodDeclaration" typeId="tpee.1081236700938" id="1326302914272776609" nodeInfo="ig">
-        <property name="name" nameId="tpck.1169194664001" value="eq" />
-        <node role="visibility" roleId="tpee.1178549979242" type="tpee.PrivateVisibility" typeId="tpee.1146644623116" id="1326302914272776610" nodeInfo="nn" />
-        <node role="body" roleId="tpee.1068580123135" type="tpee.StatementList" typeId="tpee.1068580123136" id="1326302914272776611" nodeInfo="sn">
-          <node role="statement" roleId="tpee.1068581517665" type="tpee.ReturnStatement" typeId="tpee.1068581242878" id="1326302914272776612" nodeInfo="nn">
-            <node role="expression" roleId="tpee.1068581517676" type="tpee.TernaryOperatorExpression" typeId="tpee.1163668896201" id="1326302914272778820" nodeInfo="nn">
-              <node role="ifTrue" roleId="tpee.1163668922816" type="tpee.DotExpression" typeId="tpee.1197027756228" id="1326302914272778825" nodeInfo="nn">
-                <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151611803" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="1326302914272776624" resolveInfo="a" />
-                </node>
-                <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="1326302914272778829" nodeInfo="nn">
-                  <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~Object%dequals(java%dlang%dObject)%cboolean" resolveInfo="equals" />
-                  <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151338252" nodeInfo="nn">
-                    <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="1326302914272776626" resolveInfo="b" />
-                  </node>
-                </node>
-              </node>
-              <node role="ifFalse" roleId="tpee.1163668934364" type="tpee.EqualsExpression" typeId="tpee.1068580123152" id="1326302914272778832" nodeInfo="nn">
-                <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151296870" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="1326302914272776626" resolveInfo="b" />
-                </node>
-                <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151609765" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="1326302914272776624" resolveInfo="a" />
-                </node>
-              </node>
-              <node role="condition" roleId="tpee.1163668914799" type="tpee.NotEqualsExpression" typeId="tpee.1073239437375" id="1326302914272778816" nodeInfo="nn">
-                <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="1326302914272778819" nodeInfo="nn" />
-                <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151760175" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="1326302914272776624" resolveInfo="a" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="1326302914272776624" nodeInfo="ir">
-          <property name="name" nameId="tpck.1169194664001" value="a" />
-          <node role="type" roleId="tpee.5680397130376446158" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="1326302914272776625" nodeInfo="in">
-            <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~Object" resolveInfo="Object" />
-          </node>
-        </node>
-        <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="1326302914272776626" nodeInfo="ir">
-          <property name="name" nameId="tpck.1169194664001" value="b" />
-          <node role="type" roleId="tpee.5680397130376446158" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="1326302914272778809" nodeInfo="in">
-            <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~Object" resolveInfo="Object" />
-          </node>
-        </node>
-        <node role="returnType" roleId="tpee.1068580123133" type="tpee.BooleanType" typeId="tpee.1070534644030" id="1326302914272778799" nodeInfo="in" />
-      </node>
-      <node role="inner" roleId="tp68.3585982959253588677" type="tp68.ExtractStaticMethod_CallExpression" typeId="tp68.3585982959253821850" id="1326302914272776629" nodeInfo="nn">
-        <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="1326302914272776609" resolveInfo="eq" />
-        <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="4723230619342922341" nodeInfo="nn">
-          <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="4723230619342922344" nodeInfo="nn">
-            <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="4723230619342922347" nodeInfo="nn">
-              <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4723230619342922348" nodeInfo="sn">
-                <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4723230619342922349" nodeInfo="nn">
-                  <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4723230619342922350" nodeInfo="nn">
-                    <node role="operation" roleId="tpee.1197027833540" type="tp25.SLinkAccess" typeId="tp25.1138056143562" id="4723230619342922351" nodeInfo="nn">
-                      <link role="link" roleId="tp25.1138056516764" targetNodeId="tpee.1081773367580" />
-                    </node>
-                    <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4723230619342922352" nodeInfo="nn" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="4723230619342922342" nodeInfo="nn">
-          <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="4723230619342922354" nodeInfo="nn">
-            <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="4723230619342922357" nodeInfo="nn">
-              <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4723230619342922358" nodeInfo="sn">
-                <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4723230619342922359" nodeInfo="nn">
-                  <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4723230619342922360" nodeInfo="nn">
-                    <node role="operation" roleId="tpee.1197027833540" type="tp25.SLinkAccess" typeId="tp25.1138056143562" id="4723230619342922361" nodeInfo="nn">
-                      <link role="link" roleId="tp25.1138056516764" targetNodeId="tpee.1081773367579" />
-                    </node>
-                    <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4723230619342922362" nodeInfo="nn" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.TemplateFragment" typeId="tpf8.1095672379244" id="1326302914272776648" nodeInfo="ng" />
-    </node>
-  </root>
-  <root type="tpf8.TemplateDeclaration" typeId="tpf8.1092059087312" id="1225277059706" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="reduce_NPENotEqualsExpression" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="expressions" />
-    <link role="applicableConcept" roleId="tpf8.1168285871518" targetNodeId="tpee.1225271221393" resolveInfo="NPENotEqualsExpression" />
-    <node role="contentNode" roleId="tpf8.1092060348987" type="tp68.ExtractStaticMethodExpression" typeId="tp68.3585982959253588676" id="1326302914272778850" nodeInfo="nn">
-      <property name="makeUnique" nameId="tp68.8733626498296603539" value="true" />
-      <node role="method" roleId="tp68.3585982959253588678" type="tpee.StaticMethodDeclaration" typeId="tpee.1081236700938" id="1326302914272778851" nodeInfo="ig">
-        <property name="name" nameId="tpck.1169194664001" value="neq" />
-        <node role="visibility" roleId="tpee.1178549979242" type="tpee.PrivateVisibility" typeId="tpee.1146644623116" id="1326302914272778852" nodeInfo="nn" />
-        <node role="body" roleId="tpee.1068580123135" type="tpee.StatementList" typeId="tpee.1068580123136" id="1326302914272778853" nodeInfo="sn">
-          <node role="statement" roleId="tpee.1068581517665" type="tpee.ReturnStatement" typeId="tpee.1068581242878" id="1326302914272778854" nodeInfo="nn">
-            <node role="expression" roleId="tpee.1068581517676" type="tpee.NotExpression" typeId="tpee.1081516740877" id="1326302914272782873" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1081516765348" type="tpee.TernaryOperatorExpression" typeId="tpee.1163668896201" id="1326302914272782874" nodeInfo="nn">
-                <node role="ifTrue" roleId="tpee.1163668922816" type="tpee.DotExpression" typeId="tpee.1197027756228" id="1326302914272782875" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151540457" nodeInfo="nn">
-                    <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="1326302914272778866" resolveInfo="a" />
-                  </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="1326302914272782877" nodeInfo="nn">
-                    <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~Object%dequals(java%dlang%dObject)%cboolean" resolveInfo="equals" />
-                    <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151603824" nodeInfo="nn">
-                      <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="1326302914272778868" resolveInfo="b" />
-                    </node>
-                  </node>
-                </node>
-                <node role="ifFalse" roleId="tpee.1163668934364" type="tpee.EqualsExpression" typeId="tpee.1068580123152" id="1326302914272782879" nodeInfo="nn">
-                  <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151306199" nodeInfo="nn">
-                    <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="1326302914272778868" resolveInfo="b" />
-                  </node>
-                  <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151299708" nodeInfo="nn">
-                    <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="1326302914272778866" resolveInfo="a" />
-                  </node>
-                </node>
-                <node role="condition" roleId="tpee.1163668914799" type="tpee.NotEqualsExpression" typeId="tpee.1073239437375" id="1326302914272782882" nodeInfo="nn">
-                  <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="1326302914272782883" nodeInfo="nn" />
-                  <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905150329320" nodeInfo="nn">
-                    <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="1326302914272778866" resolveInfo="a" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="1326302914272778866" nodeInfo="ir">
-          <property name="name" nameId="tpck.1169194664001" value="a" />
-          <node role="type" roleId="tpee.5680397130376446158" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="1326302914272778867" nodeInfo="in">
-            <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~Object" resolveInfo="Object" />
-          </node>
-        </node>
-        <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="1326302914272778868" nodeInfo="ir">
-          <property name="name" nameId="tpck.1169194664001" value="b" />
-          <node role="type" roleId="tpee.5680397130376446158" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="1326302914272778869" nodeInfo="in">
-            <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~Object" resolveInfo="Object" />
-          </node>
-        </node>
-        <node role="returnType" roleId="tpee.1068580123133" type="tpee.BooleanType" typeId="tpee.1070534644030" id="1326302914272778870" nodeInfo="in" />
-      </node>
-      <node role="inner" roleId="tp68.3585982959253588677" type="tp68.ExtractStaticMethod_CallExpression" typeId="tp68.3585982959253821850" id="1326302914272778871" nodeInfo="nn">
-        <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="1326302914272778851" resolveInfo="neq" />
-        <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="5351366134229435257" nodeInfo="nn">
-          <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="5351366134229435259" nodeInfo="nn">
-            <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="5351366134229435262" nodeInfo="nn">
-              <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="5351366134229435263" nodeInfo="sn">
-                <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="5351366134229435264" nodeInfo="nn">
-                  <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="5351366134229435265" nodeInfo="nn">
-                    <node role="operation" roleId="tpee.1197027833540" type="tp25.SLinkAccess" typeId="tp25.1138056143562" id="5351366134229435266" nodeInfo="nn">
-                      <link role="link" roleId="tp25.1138056516764" targetNodeId="tpee.1081773367580" />
-                    </node>
-                    <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="5351366134229435267" nodeInfo="nn" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="5351366134229435256" nodeInfo="nn">
-          <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="5351366134229435269" nodeInfo="nn">
-            <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="5351366134229435272" nodeInfo="nn">
-              <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="5351366134229435273" nodeInfo="sn">
-                <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="5351366134229435274" nodeInfo="nn">
-                  <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="5351366134229435275" nodeInfo="nn">
-                    <node role="operation" roleId="tpee.1197027833540" type="tp25.SLinkAccess" typeId="tp25.1138056143562" id="5351366134229435276" nodeInfo="nn">
-                      <link role="link" roleId="tp25.1138056516764" targetNodeId="tpee.1081773367579" />
-                    </node>
-                    <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="5351366134229435277" nodeInfo="nn" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.TemplateFragment" typeId="tpf8.1095672379244" id="1326302914272778888" nodeInfo="ng" />
-    </node>
-  </root>
-  <root type="tpf8.TemplateDeclaration" typeId="tpf8.1092059087312" id="1225277059742" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="reduce_StringType" />
-    <node role="contentNode" roleId="tpf8.1092060348987" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="1225277059743" nodeInfo="in">
-      <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.TemplateFragment" typeId="tpf8.1095672379244" id="1225277059744" nodeInfo="ng" />
-    </node>
-  </root>
-  <root type="tpf8.TemplateDeclaration" typeId="tpf8.1092059087312" id="1225277059745" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="reduce_SubstringExpression" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="ext.string.expression" />
-    <link role="applicableConcept" roleId="tpf8.1168285871518" targetNodeId="tpee.1225271484915" resolveInfo="SubstringExpression" />
-    <node role="contentNode" roleId="tpf8.1092060348987" type="tp68.InternalStaticMethodCall" typeId="tp68.1173990517731" id="3987319776542716741" nodeInfo="nn">
-      <property name="fqClassName" nameId="tp68.1173992483054" value="StringUtils" />
-      <property name="methodName" nameId="tp68.1173992444083" value="substring" />
-      <node role="actualArgument" roleId="tp68.319021450862604085" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="3987319776542716742" nodeInfo="nn">
-        <property name="value" nameId="tpee.1070475926801" value="expression" />
-        <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="3987319776542716743" nodeInfo="nn">
-          <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="3987319776542716744" nodeInfo="nn">
-            <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="3987319776542716745" nodeInfo="sn">
-              <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="3987319776542716746" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="3987319776542716747" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="3987319776542716748" nodeInfo="nn" />
-                  <node role="operation" roleId="tpee.1197027833540" type="tp25.SLinkAccess" typeId="tp25.1138056143562" id="257314948453715981" nodeInfo="nn">
-                    <link role="link" roleId="tp25.1138056516764" targetNodeId="tpee.1225271484916" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node role="actualArgument" roleId="tp68.319021450862604085" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="3987319776542716766" nodeInfo="nn">
-        <property name="value" nameId="tpee.1068580320021" value="0" />
-        <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.IfMacro" typeId="tpf8.1118773211870" id="3987319776542716767" nodeInfo="nn">
-          <node role="conditionFunction" roleId="tpf8.1167945861827" type="tpf8.IfMacro_Condition" typeId="tpf8.1167945743726" id="3987319776542716768" nodeInfo="nn">
-            <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="3987319776542716769" nodeInfo="sn">
-              <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="3987319776542716770" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1068580123156" type="tpee.NotEqualsExpression" typeId="tpee.1073239437375" id="3987319776542716771" nodeInfo="nn">
-                  <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="3987319776542716772" nodeInfo="nn" />
-                  <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.DotExpression" typeId="tpee.1197027756228" id="3987319776542716773" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="3987319776542716774" nodeInfo="nn" />
-                    <node role="operation" roleId="tpee.1197027833540" type="tp25.SLinkAccess" typeId="tp25.1138056143562" id="3987319776542716775" nodeInfo="nn">
-                      <link role="link" roleId="tp25.1138056516764" targetNodeId="tpee.1225271484917" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node role="alternativeConsequence" roleId="tpf8.1194989344771" type="tpf8.InlineTemplate_RuleConsequence" typeId="tpf8.1177093525992" id="3987319776542716776" nodeInfo="ng">
-            <node role="templateNode" roleId="tpf8.1177093586806" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="3987319776542716777" nodeInfo="nn">
-              <property name="value" nameId="tpee.1068580320021" value="0" />
-            </node>
-          </node>
-        </node>
-        <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="3987319776542716778" nodeInfo="nn">
-          <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="3987319776542716779" nodeInfo="nn">
-            <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="3987319776542716780" nodeInfo="sn">
-              <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="3987319776542716781" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="3987319776542716782" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="3987319776542716783" nodeInfo="nn" />
-                  <node role="operation" roleId="tpee.1197027833540" type="tp25.SLinkAccess" typeId="tp25.1138056143562" id="3987319776542716784" nodeInfo="nn">
-                    <link role="link" roleId="tp25.1138056516764" targetNodeId="tpee.1225271484917" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node role="actualArgument" roleId="tp68.319021450862604085" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="3987319776542716785" nodeInfo="nn">
-        <property name="value" nameId="tpee.1068580320021" value="12" />
-        <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="3987319776542716786" nodeInfo="nn">
-          <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="3987319776542716787" nodeInfo="nn">
-            <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="3987319776542716788" nodeInfo="sn">
-              <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="3987319776542716789" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="3987319776542716790" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="3987319776542716791" nodeInfo="nn" />
-                  <node role="operation" roleId="tpee.1197027833540" type="tp25.SLinkAccess" typeId="tp25.1138056143562" id="3987319776542716792" nodeInfo="nn">
-                    <link role="link" roleId="tp25.1138056516764" targetNodeId="tpee.1225271484918" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node role="returnType" roleId="tp68.1175794062018" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="3987319776542716750" nodeInfo="in">
-        <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-      </node>
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.TemplateFragment" typeId="tpf8.1095672379244" id="3987319776542716751" nodeInfo="ng" />
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.PropertyMacro" typeId="tpf8.1087833241328" id="3987319776542716752" nodeInfo="nn">
-        <property name="propertyName" nameId="tpck.1757699476691236117" value="fqClassName" />
-        <node role="propertyValueFunction" roleId="tpf8.1167756362303" type="tpf8.PropertyMacro_GetPropertyValue" typeId="tpf8.1167756080639" id="3987319776542716753" nodeInfo="nn">
-          <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="3987319776542716754" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="3987319776542716755" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068580123156" type="tpee.PlusExpression" typeId="tpee.1068581242875" id="3987319776542716756" nodeInfo="nn">
-                <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.StaticMethodCall" typeId="tpee.1081236700937" id="2722862962576141664" nodeInfo="nn">
-                  <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="unno.9160302885342508446" resolveInfo="getModelLongName" />
-                  <link role="classConcept" roleId="tpee.1144433194310" targetNodeId="unno.2089287822043606602" resolveInfo="SNodeOperations" />
-                  <node role="actualArgument" roleId="tpee.1068499141038" type="tp25.SemanticDowncastExpression" typeId="tp25.1145404486709" id="2722862962576141665" nodeInfo="nn">
-                    <node role="leftExpression" roleId="tp25.1145404616321" type="tpee.DotExpression" typeId="tpee.1197027756228" id="2722862962576141666" nodeInfo="nn">
-                      <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="2722862962576141667" nodeInfo="nn" />
-                      <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_GetModelOperation" typeId="tp25.1143234257716" id="2722862962576141668" nodeInfo="nn" />
+<model ref="r:b4d7d620-6723-4aa2-856b-118497e84e9e(jetbrains.mps.baseLanguage.generator.java.strings@generator)">
+  <persistence version="9" />
+  <languages>
+    <use id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal" version="0" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="0" />
+    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="0" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="8" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="5" />
+    <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
+  </languages>
+  <imports>
+    <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
+    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
+    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
+    <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
+    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
+    <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
+    <import index="unno" ref="r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)" />
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
+    <import index="tp68" ref="r:00000000-0000-4000-0000-011c895903ac(jetbrains.mps.baseLanguageInternal.structure)" implicit="true" />
+  </imports>
+  <registry>
+    <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
+      <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
+        <child id="1068498886297" name="rValue" index="37vLTx" />
+        <child id="1068498886295" name="lValue" index="37vLTJ" />
+      </concept>
+      <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
+      <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
+        <child id="1076505808688" name="condition" index="2$JKZa" />
+      </concept>
+      <concept id="1239714755177" name="jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation" flags="nn" index="2$Kvd9">
+        <child id="1239714902950" name="expression" index="2$L3a6" />
+      </concept>
+      <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
+        <child id="1154032183016" name="body" index="2LFqv$" />
+      </concept>
+      <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
+        <child id="1197027771414" name="operand" index="2Oq$k0" />
+        <child id="1197027833540" name="operation" index="2OqNvi" />
+      </concept>
+      <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
+        <child id="1137022507850" name="body" index="2VODD2" />
+      </concept>
+      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
+        <property id="1070475926801" name="value" index="Xl_RC" />
+      </concept>
+      <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
+      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
+        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
+      </concept>
+      <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
+      <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
+      <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
+      <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
+        <child id="1070534934091" name="type" index="10QFUM" />
+        <child id="1070534934092" name="expression" index="10QFUP" />
+      </concept>
+      <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu" />
+      <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
+        <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
+        <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
+      </concept>
+      <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
+      <concept id="1068498886294" name="jetbrains.mps.baseLanguage.structure.AssignmentExpression" flags="nn" index="37vLTI" />
+      <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
+      <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
+        <child id="5680397130376446158" name="type" index="1tU5fm" />
+      </concept>
+      <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
+        <child id="1068580123133" name="returnType" index="3clF45" />
+        <child id="1068580123134" name="parameter" index="3clF46" />
+        <child id="1068580123135" name="body" index="3clF47" />
+      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
+      <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
+      <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
+        <child id="1068580123156" name="expression" index="3clFbG" />
+      </concept>
+      <concept id="1068580123159" name="jetbrains.mps.baseLanguage.structure.IfStatement" flags="nn" index="3clFbJ">
+        <child id="1068580123160" name="condition" index="3clFbw" />
+        <child id="1068580123161" name="ifTrue" index="3clFbx" />
+      </concept>
+      <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
+        <child id="1068581517665" name="statement" index="3cqZAp" />
+      </concept>
+      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
+        <property id="1068580123138" name="value" index="3clFbU" />
+      </concept>
+      <concept id="1068580320020" name="jetbrains.mps.baseLanguage.structure.IntegerConstant" flags="nn" index="3cmrfG">
+        <property id="1068580320021" name="value" index="3cmrfH" />
+      </concept>
+      <concept id="1068581242875" name="jetbrains.mps.baseLanguage.structure.PlusExpression" flags="nn" index="3cpWs3" />
+      <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
+        <child id="1068581517676" name="expression" index="3cqZAk" />
+      </concept>
+      <concept id="1068581242864" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" flags="nn" index="3cpWs8">
+        <child id="1068581242865" name="localVariableDeclaration" index="3cpWs9" />
+      </concept>
+      <concept id="1068581242869" name="jetbrains.mps.baseLanguage.structure.MinusExpression" flags="nn" index="3cpWsd" />
+      <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
+      <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
+      <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
+        <child id="1079359253376" name="expression" index="1eOMHV" />
+      </concept>
+      <concept id="1081506762703" name="jetbrains.mps.baseLanguage.structure.GreaterThanExpression" flags="nn" index="3eOSWO" />
+      <concept id="1081506773034" name="jetbrains.mps.baseLanguage.structure.LessThanExpression" flags="nn" index="3eOVzh" />
+      <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
+        <child id="1081516765348" name="expression" index="3fr31v" />
+      </concept>
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+        <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
+        <child id="1068499141038" name="actualArgument" index="37wK5m" />
+      </concept>
+      <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
+        <property id="521412098689998745" name="nonStatic" index="2bfB8j" />
+        <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
+      </concept>
+      <concept id="7812454656619025412" name="jetbrains.mps.baseLanguage.structure.LocalMethodCall" flags="nn" index="1rXfSq" />
+      <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
+        <reference id="1107535924139" name="classifier" index="3uigEE" />
+      </concept>
+      <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
+        <child id="1081773367579" name="rightExpression" index="3uHU7w" />
+        <child id="1081773367580" name="leftExpression" index="3uHU7B" />
+      </concept>
+      <concept id="1214918800624" name="jetbrains.mps.baseLanguage.structure.PostfixIncrementExpression" flags="nn" index="3uNrnE" />
+      <concept id="1214918975462" name="jetbrains.mps.baseLanguage.structure.PostfixDecrementExpression" flags="nn" index="3uO5VW" />
+      <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+        <child id="1178549979242" name="visibility" index="1B3o_S" />
+      </concept>
+      <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
+        <child id="1163668914799" name="condition" index="3K4Cdx" />
+        <child id="1163668922816" name="ifTrue" index="3K4E3e" />
+        <child id="1163668934364" name="ifFalse" index="3K4GZi" />
+      </concept>
+      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
+        <property id="6329021646629104958" name="text" index="3SKdUp" />
+      </concept>
+      <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
+        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
+      </concept>
+      <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
+      <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
+      <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
+      <concept id="8064396509828172209" name="jetbrains.mps.baseLanguage.structure.UnaryMinus" flags="nn" index="1ZRNhn" />
+    </language>
+    <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
+      <concept id="1114706874351" name="jetbrains.mps.lang.generator.structure.CopySrcNodeMacro" flags="ln" index="29HgVG">
+        <child id="1168024447342" name="sourceNodeQuery" index="3NFExx" />
+      </concept>
+      <concept id="1095416546421" name="jetbrains.mps.lang.generator.structure.MappingConfiguration" flags="ig" index="bUwia">
+        <child id="1200911492601" name="mappingLabel" index="2rTMjI" />
+        <child id="1167088157977" name="createRootRule" index="2VS0gm" />
+        <child id="1167328349397" name="reductionMappingRule" index="3acgRq" />
+      </concept>
+      <concept id="1177093525992" name="jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence" flags="lg" index="gft3U">
+        <child id="1177093586806" name="templateNode" index="gfFT$" />
+      </concept>
+      <concept id="5015072279636464462" name="jetbrains.mps.lang.generator.structure.VarMacro" flags="lg" index="2jeGV$">
+        <child id="5015072279636624635" name="type" index="2jfP_h" />
+        <child id="5015072279636624596" name="value" index="2jfP_Y" />
+      </concept>
+      <concept id="5015072279636592410" name="jetbrains.mps.lang.generator.structure.VarMacro_ValueQuery" flags="in" index="2jfdEK" />
+      <concept id="1168559333462" name="jetbrains.mps.lang.generator.structure.TemplateDeclarationReference" flags="ln" index="j$656" />
+      <concept id="1168619357332" name="jetbrains.mps.lang.generator.structure.RootTemplateAnnotation" flags="lg" index="n94m4" />
+      <concept id="1095672379244" name="jetbrains.mps.lang.generator.structure.TemplateFragment" flags="ng" index="raruj" />
+      <concept id="1200911316486" name="jetbrains.mps.lang.generator.structure.MappingLabelDeclaration" flags="lg" index="2rT7sh">
+        <reference id="1200911342686" name="sourceConcept" index="2rTdP9" />
+        <reference id="1200913004646" name="targetConcept" index="2rZz_L" />
+      </concept>
+      <concept id="1722980698497626400" name="jetbrains.mps.lang.generator.structure.ITemplateCall" flags="ng" index="v9R3L">
+        <reference id="1722980698497626483" name="template" index="v9R2y" />
+      </concept>
+      <concept id="1167087469898" name="jetbrains.mps.lang.generator.structure.CreateRootRule" flags="lg" index="2VPoh5">
+        <reference id="1167087469901" name="templateNode" index="2VPoh2" />
+        <child id="1167087469900" name="conditionFunction" index="2VPoh3" />
+      </concept>
+      <concept id="1167087518662" name="jetbrains.mps.lang.generator.structure.CreateRootRule_Condition" flags="in" index="2VP$b9" />
+      <concept id="5133195082121471908" name="jetbrains.mps.lang.generator.structure.LabelMacro" flags="ln" index="2ZBi8u" />
+      <concept id="1167168920554" name="jetbrains.mps.lang.generator.structure.BaseMappingRule_Condition" flags="in" index="30G5F_" />
+      <concept id="1167169188348" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode" flags="nn" index="30H73N" />
+      <concept id="1167169308231" name="jetbrains.mps.lang.generator.structure.BaseMappingRule" flags="ng" index="30H$t8">
+        <reference id="1167169349424" name="applicableConcept" index="30HIoZ" />
+        <child id="1167169362365" name="conditionFunction" index="30HLyM" />
+      </concept>
+      <concept id="1227303129915" name="jetbrains.mps.lang.generator.structure.AbstractMacro" flags="lg" index="30XT8A">
+        <property id="3265704088513289864" name="comment" index="34cw8o" />
+      </concept>
+      <concept id="1092059087312" name="jetbrains.mps.lang.generator.structure.TemplateDeclaration" flags="ig" index="13MO4I">
+        <reference id="1168285871518" name="applicableConcept" index="3gUMe" />
+        <child id="1092060348987" name="contentNode" index="13RCb5" />
+      </concept>
+      <concept id="1195158154974" name="jetbrains.mps.lang.generator.structure.InlineSwitch_RuleConsequence" flags="lg" index="14YyZ8">
+        <child id="1195158241124" name="defaultConsequence" index="14YRTM" />
+        <child id="1195158408710" name="case" index="14ZwWg" />
+      </concept>
+      <concept id="1195158388553" name="jetbrains.mps.lang.generator.structure.InlineSwitch_Case" flags="ng" index="14ZrTv">
+        <child id="1195158608805" name="conditionFunction" index="150hEN" />
+        <child id="1195158637244" name="caseConsequence" index="150oIE" />
+      </concept>
+      <concept id="1087833241328" name="jetbrains.mps.lang.generator.structure.PropertyMacro" flags="ln" index="17Uvod">
+        <child id="1167756362303" name="propertyValueFunction" index="3zH0cK" />
+      </concept>
+      <concept id="1087833466690" name="jetbrains.mps.lang.generator.structure.NodeMacro" flags="lg" index="17VmuZ">
+        <reference id="1200912223215" name="mappingLabel" index="2rW$FS" />
+      </concept>
+      <concept id="1167327847730" name="jetbrains.mps.lang.generator.structure.Reduction_MappingRule" flags="lg" index="3aamgX">
+        <child id="1169672767469" name="ruleConsequence" index="1lVwrX" />
+      </concept>
+      <concept id="1167756080639" name="jetbrains.mps.lang.generator.structure.PropertyMacro_GetPropertyValue" flags="in" index="3zFVjK" />
+      <concept id="1167770111131" name="jetbrains.mps.lang.generator.structure.ReferenceMacro_GetReferent" flags="in" index="3$xsQk" />
+      <concept id="1167945743726" name="jetbrains.mps.lang.generator.structure.IfMacro_Condition" flags="in" index="3IZrLx" />
+      <concept id="1168024337012" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery" flags="in" index="3NFfHV" />
+      <concept id="1118773211870" name="jetbrains.mps.lang.generator.structure.IfMacro" flags="ln" index="1W57fq">
+        <child id="1194989344771" name="alternativeConsequence" index="UU_$l" />
+        <child id="1167945861827" name="conditionFunction" index="3IZSJc" />
+      </concept>
+      <concept id="1088761943574" name="jetbrains.mps.lang.generator.structure.ReferenceMacro" flags="ln" index="1ZhdrF">
+        <child id="1167770376702" name="referentFunction" index="3$ytzL" />
+      </concept>
+    </language>
+    <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
+        <child id="1199569906740" name="parameter" index="1bW2Oz" />
+        <child id="1199569916463" name="body" index="1bW5cS" />
+      </concept>
+    </language>
+    <language id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext">
+      <concept id="1217889725928" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_SessionObjectAccess" flags="nn" index="2fSANN" />
+      <concept id="1217889960776" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_UserObjectAccessBase" flags="nn" index="2fTw9j">
+        <child id="1217890689512" name="userKey" index="2fWi3N" />
+      </concept>
+      <concept id="1218047638031" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_CreateUniqueName" flags="nn" index="2piZGk">
+        <child id="1218047638032" name="baseName" index="2piZGb" />
+        <child id="1218049772449" name="contextNode" index="2pr8EU" />
+      </concept>
+      <concept id="2721957369897614808" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef" flags="nn" index="1bhEwm">
+        <reference id="2721957369897614810" name="varmacro" index="1bhEwk" />
+      </concept>
+      <concept id="1216860049627" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputByLabelAndInput" flags="nn" index="1iwH70">
+        <reference id="1216860049628" name="label" index="1iwH77" />
+        <child id="1216860049632" name="inputNode" index="1iwH7V" />
+      </concept>
+      <concept id="1216860049635" name="jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext" flags="nn" index="1iwH7S" />
+      <concept id="1217004708011" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetInputModel" flags="nn" index="1r8y6K" />
+    </language>
+    <language id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal">
+      <concept id="3585982959253588676" name="jetbrains.mps.baseLanguageInternal.structure.ExtractStaticMethodExpression" flags="nn" index="2Tav94">
+        <property id="8733626498296603539" name="makeUnique" index="1YR72k" />
+        <child id="3585982959253588677" name="inner" index="2Tav95" />
+        <child id="3585982959253588678" name="method" index="2Tav96" />
+      </concept>
+      <concept id="3585982959253821850" name="jetbrains.mps.baseLanguageInternal.structure.ExtractStaticMethod_CallExpression" flags="nn" index="2TbA4q" />
+      <concept id="1173990517731" name="jetbrains.mps.baseLanguageInternal.structure.InternalStaticMethodCall" flags="nn" index="1niqFM">
+        <property id="1173992444083" name="methodName" index="1npL6y" />
+        <property id="1173992483054" name="fqClassName" index="1npUBZ" />
+        <child id="319021450862604085" name="actualArgument" index="2U24H$" />
+        <child id="1175794062018" name="returnType" index="32Mpfj" />
+      </concept>
+    </language>
+    <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
+        <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
+      </concept>
+      <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
+        <child id="1144104376918" name="parameter" index="1xVPHs" />
+      </concept>
+      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
+      <concept id="1138676077309" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="nn" index="uoxfO">
+        <reference id="1138676095763" name="enumMember" index="uo_Cq" />
+      </concept>
+      <concept id="1173122760281" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorsOperation" flags="nn" index="z$bX8" />
+      <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
+      <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
+        <child id="1145404616321" name="leftExpression" index="2JrQYb" />
+      </concept>
+      <concept id="1171310072040" name="jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" flags="nn" index="2Rxl7S" />
+      <concept id="1171323947159" name="jetbrains.mps.lang.smodel.structure.Model_NodesOperation" flags="nn" index="2SmgA7">
+        <child id="1758937410080001570" name="conceptArgument" index="1dBWTz" />
+      </concept>
+      <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
+        <child id="1177027386292" name="conceptArgument" index="cj9EA" />
+      </concept>
+      <concept id="1146171026731" name="jetbrains.mps.lang.smodel.structure.Property_HasValue_Enum" flags="nn" index="3t7uKx">
+        <child id="1146171026732" name="value" index="3t7uKA" />
+      </concept>
+      <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
+        <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
+      </concept>
+      <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
+        <reference id="1138405853777" name="concept" index="ehGHo" />
+      </concept>
+      <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
+        <reference id="1138056395725" name="property" index="3TsBF5" />
+      </concept>
+      <concept id="1138056143562" name="jetbrains.mps.lang.smodel.structure.SLinkAccess" flags="nn" index="3TrEf2">
+        <reference id="1138056516764" name="link" index="3Tt5mk" />
+      </concept>
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
+      </concept>
+      <concept id="3364660638048049750" name="jetbrains.mps.lang.core.structure.PropertyAttribute" flags="ng" index="A9Btg">
+        <property id="1757699476691236117" name="propertyName" index="2qtEX9" />
+        <property id="1341860900487648621" name="propertyId" index="P4ACc" />
+      </concept>
+      <concept id="3364660638048049745" name="jetbrains.mps.lang.core.structure.LinkAttribute" flags="ng" index="A9Btn">
+        <property id="1757699476691236116" name="linkRole" index="2qtEX8" />
+        <property id="1341860900488019036" name="linkId" index="P3scX" />
+      </concept>
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
+      <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
+        <child id="1204796294226" name="closure" index="23t8la" />
+      </concept>
+      <concept id="1235566554328" name="jetbrains.mps.baseLanguage.collections.structure.AnyOperation" flags="nn" index="2HwmR7" />
+      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
+      <concept id="1165525191778" name="jetbrains.mps.baseLanguage.collections.structure.GetFirstOperation" flags="nn" index="1uHKPH" />
+      <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
+    </language>
+  </registry>
+  <node concept="13MO4I" id="hP8d39s">
+    <property role="TrG5h" value="reduce_IsNotEmptyExpression" />
+    <property role="3GE5qa" value="ext.string.expression" />
+    <ref role="3gUMe" to="tpee:hP7Rvtz" resolve="IsNotEmptyOperation" />
+    <node concept="312cEu" id="1WpD563pg9b" role="13RCb5">
+      <property role="2bfB8j" value="true" />
+      <property role="TrG5h" value="ctx" />
+      <node concept="3clFb_" id="1WpD563pg9q" role="jymVt">
+        <property role="TrG5h" value="aaa" />
+        <node concept="3cqZAl" id="1WpD563pg9s" role="3clF45" />
+        <node concept="3Tm1VV" id="1WpD563pg9t" role="1B3o_S" />
+        <node concept="3clFbS" id="1WpD563pg9u" role="3clF47">
+          <node concept="3clFbF" id="1WpD563pguJ" role="3cqZAp">
+            <node concept="2Tav94" id="3YWZWnqamuV" role="3clFbG">
+              <node concept="2YIFZL" id="3YWZWnqamuW" role="2Tav96">
+                <property role="TrG5h" value="isNotEmptyString" />
+                <node concept="10P_77" id="3YWZWnqamuX" role="3clF45" />
+                <node concept="3clFbS" id="3YWZWnqamuZ" role="3clF47">
+                  <node concept="3cpWs6" id="3YWZWnqamv0" role="3cqZAp">
+                    <node concept="1Wc70l" id="2T0G81oJF7$" role="3cqZAk">
+                      <node concept="3y3z36" id="2T0G81oJF7_" role="3uHU7B">
+                        <node concept="37vLTw" id="2BHiRxgm6Ci" role="3uHU7B">
+                          <ref role="3cqZAo" node="3YWZWnqamva" resolve="str" />
+                        </node>
+                        <node concept="10Nm6u" id="2T0G81oJF7B" role="3uHU7w" />
+                      </node>
+                      <node concept="3eOSWO" id="2T0G81oJF7C" role="3uHU7w">
+                        <node concept="2OqwBi" id="2T0G81oJF7D" role="3uHU7B">
+                          <node concept="37vLTw" id="2BHiRxgm7eM" role="2Oq$k0">
+                            <ref role="3cqZAo" node="3YWZWnqamva" resolve="str" />
+                          </node>
+                          <node concept="liA8E" id="2T0G81oJF7F" role="2OqNvi">
+                            <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                          </node>
+                        </node>
+                        <node concept="3cmrfG" id="2T0G81oJF7G" role="3uHU7w">
+                          <property role="3cmrfH" value="0" />
+                        </node>
+                      </node>
                     </node>
                   </node>
                 </node>
-                <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="3987319776542716757" nodeInfo="nn">
-                  <property name="value" nameId="tpee.1070475926801" value=".StringUtils" />
+                <node concept="37vLTG" id="3YWZWnqamva" role="3clF46">
+                  <property role="TrG5h" value="str" />
+                  <node concept="3uibUv" id="3YWZWnqamvb" role="1tU5fm">
+                    <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+                  </node>
                 </node>
+                <node concept="3Tm6S6" id="410mQFUcfV7" role="1B3o_S" />
               </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-  </root>
-  <root type="tpf8.TemplateDeclaration" typeId="tpf8.1092059087312" id="1225277059783" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="reduce_TrimOperation_Both" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="ext.string.expression" />
-    <link role="applicableConcept" roleId="tpf8.1168285871518" targetNodeId="tpee.1225271546410" resolveInfo="TrimOperation" />
-    <node role="contentNode" roleId="tpf8.1092060348987" type="tp68.ExtractStaticMethodExpression" typeId="tp68.3585982959253588676" id="4592826945244850142" nodeInfo="nn">
-      <node role="method" roleId="tp68.3585982959253588678" type="tpee.StaticMethodDeclaration" typeId="tpee.1081236700938" id="4592826945244850143" nodeInfo="ig">
-        <property name="name" nameId="tpck.1169194664001" value="trim" />
-        <node role="returnType" roleId="tpee.1068580123133" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="4592826945244850180" nodeInfo="in">
-          <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-        </node>
-        <node role="visibility" roleId="tpee.1178549979242" type="tpee.PublicVisibility" typeId="tpee.1146644602865" id="4592826945244850145" nodeInfo="nn" />
-        <node role="body" roleId="tpee.1068580123135" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945244850146" nodeInfo="sn">
-          <node role="statement" roleId="tpee.1068581517665" type="tpee.ReturnStatement" typeId="tpee.1068581242878" id="4592826945244850171" nodeInfo="nn">
-            <node role="expression" roleId="tpee.1068581517676" type="tpee.TernaryOperatorExpression" typeId="tpee.1163668896201" id="4592826945244850172" nodeInfo="nn">
-              <node role="condition" roleId="tpee.1163668914799" type="tpee.EqualsExpression" typeId="tpee.1068580123152" id="4592826945244850173" nodeInfo="nn">
-                <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151641195" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="4592826945244850157" resolveInfo="str" />
-                </node>
-                <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="4592826945244850175" nodeInfo="nn" />
-              </node>
-              <node role="ifTrue" roleId="tpee.1163668922816" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="4592826945244850176" nodeInfo="nn" />
-              <node role="ifFalse" roleId="tpee.1163668934364" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945244850177" nodeInfo="nn">
-                <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151604367" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="4592826945244850157" resolveInfo="str" />
-                </node>
-                <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="4592826945244850179" nodeInfo="nn">
-                  <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dtrim()%cjava%dlang%dString" resolveInfo="trim" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="4592826945244850157" nodeInfo="ir">
-          <property name="name" nameId="tpck.1169194664001" value="str" />
-          <node role="type" roleId="tpee.5680397130376446158" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="4592826945244850158" nodeInfo="in">
-            <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-          </node>
-        </node>
-        <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.PropertyMacro" typeId="tpf8.1087833241328" id="4592826945245316728" nodeInfo="nn">
-          <property name="propertyName" nameId="tpck.1757699476691236117" value="name" />
-          <node role="propertyValueFunction" roleId="tpf8.1167756362303" type="tpf8.PropertyMacro_GetPropertyValue" typeId="tpf8.1167756080639" id="4592826945245316729" nodeInfo="nn">
-            <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945245316730" nodeInfo="sn">
-              <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945245316731" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945245316732" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpf3.TemplateFunctionParameter_generationContext" typeId="tpf3.1216860049635" id="4592826945245316733" nodeInfo="nn" />
-                  <node role="operation" roleId="tpee.1197027833540" type="tpf3.GenerationContextOp_CreateUniqueName" typeId="tpf3.1218047638031" id="4592826945245316734" nodeInfo="nn">
-                    <node role="baseName" roleId="tpf3.1218047638032" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="4592826945245316735" nodeInfo="nn">
-                      <property name="value" nameId="tpee.1070475926801" value="trim" />
-                    </node>
-                    <node role="contextNode" roleId="tpf3.1218049772449" type="tpee.DotExpression" typeId="tpee.1197027756228" id="796541834558860289" nodeInfo="nn">
-                      <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="796541834558860290" nodeInfo="nn" />
-                      <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_GetContainingRootOperation" typeId="tp25.1171310072040" id="796541834558860291" nodeInfo="nn" />
+              <node concept="2TbA4q" id="3YWZWnqamvc" role="2Tav95">
+                <ref role="37wK5l" node="3YWZWnqamuW" resolve="isNotEmptyString" />
+                <node concept="Xl_RD" id="3YWZWnqamvd" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                  <node concept="29HgVG" id="3YWZWnqamve" role="lGtFl">
+                    <node concept="3NFfHV" id="3YWZWnqamvf" role="3NFExx">
+                      <node concept="3clFbS" id="3YWZWnqamvg" role="2VODD2">
+                        <node concept="3clFbF" id="3YWZWnqamvh" role="3cqZAp">
+                          <node concept="2OqwBi" id="3YWZWnqamvi" role="3clFbG">
+                            <node concept="30H73N" id="3YWZWnqamvj" role="2Oq$k0" />
+                            <node concept="2qgKlT" id="3YWZWnqamvk" role="2OqNvi">
+                              <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                     </node>
                   </node>
                 </node>
               </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node role="inner" roleId="tp68.3585982959253588677" type="tp68.ExtractStaticMethod_CallExpression" typeId="tp68.3585982959253821850" id="4592826945244850159" nodeInfo="nn">
-        <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="4592826945244850143" resolveInfo="trim" />
-        <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="4592826945244850160" nodeInfo="nn">
-          <property name="value" nameId="tpee.1070475926801" value="" />
-          <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="4592826945244850161" nodeInfo="nn">
-            <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="4592826945244850162" nodeInfo="nn">
-              <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945244850163" nodeInfo="sn">
-                <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945244850164" nodeInfo="nn">
-                  <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945244850165" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4592826945244850166" nodeInfo="nn" />
-                    <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="4592826945244850167" nodeInfo="nn">
-                      <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.TemplateFragment" typeId="tpf8.1095672379244" id="4592826945244850168" nodeInfo="ng" />
-    </node>
-  </root>
-  <root type="tpf8.MappingConfiguration" typeId="tpf8.1095416546421" id="1225277059818" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="string" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="ext.string.expression" />
-    <node role="createRootRule" roleId="tpf8.1167088157977" type="tpf8.CreateRootRule" typeId="tpf8.1167087469898" id="2696770507970454879" nodeInfo="ng">
-      <link role="templateNode" roleId="tpf8.1167087469901" targetNodeId="2696770507970455214" resolveInfo="StringUtils" />
-      <node role="conditionFunction" roleId="tpf8.1167087469900" type="tpf8.CreateRootRule_Condition" typeId="tpf8.1167087518662" id="2696770507970455345" nodeInfo="nn">
-        <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="2696770507970455346" nodeInfo="sn">
-          <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="2696770507970455347" nodeInfo="nn">
-            <node role="expression" roleId="tpee.1068580123156" type="tpee.OrExpression" typeId="tpee.1080223426719" id="4592826945243770130" nodeInfo="nn">
-              <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.NotExpression" typeId="tpee.1081516740877" id="4592826945243769965" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1081516765348" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769966" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769967" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769968" nodeInfo="nn">
-                      <node role="operand" roleId="tpee.1197027771414" type="tpf3.TemplateFunctionParameter_generationContext" typeId="tpf3.1216860049635" id="4592826945243769969" nodeInfo="nn" />
-                      <node role="operation" roleId="tpee.1197027833540" type="tpf3.GenerationContextOp_GetInputModel" typeId="tpf3.1217004708011" id="4592826945243769970" nodeInfo="nn" />
-                    </node>
-                    <node role="operation" roleId="tpee.1197027833540" type="tp25.Model_NodesOperation" typeId="tp25.1171323947159" id="4592826945243769971" nodeInfo="nn">
-                      <link role="concept" roleId="tp25.1171323947160" targetNodeId="tpee.1225271484915" resolveInfo="SubstringExpression" />
-                    </node>
-                  </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="4592826945243769972" nodeInfo="nn">
-                    <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="k7g3.~List%disEmpty()%cboolean" resolveInfo="isEmpty" />
-                  </node>
-                </node>
-              </node>
-              <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243770133" nodeInfo="nn">
-                <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243770134" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243770135" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpf3.TemplateFunctionParameter_generationContext" typeId="tpf3.1216860049635" id="4592826945243770136" nodeInfo="nn" />
-                    <node role="operation" roleId="tpee.1197027833540" type="tpf3.GenerationContextOp_GetInputModel" typeId="tpf3.1217004708011" id="4592826945243770137" nodeInfo="nn" />
-                  </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tp25.Model_NodesOperation" typeId="tp25.1171323947159" id="4592826945243770138" nodeInfo="nn">
-                    <link role="concept" roleId="tp25.1171323947160" targetNodeId="tpee.1225271546410" resolveInfo="TrimOperation" />
-                  </node>
-                </node>
-                <node role="operation" roleId="tpee.1197027833540" type="tp2q.AnyOperation" typeId="tp2q.1235566554328" id="4592826945243770139" nodeInfo="nn">
-                  <node role="closure" roleId="tp2q.1204796294226" type="tp2c.ClosureLiteral" typeId="tp2c.1199569711397" id="4592826945243770140" nodeInfo="nn">
-                    <node role="body" roleId="tp2c.1199569916463" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243770141" nodeInfo="sn">
-                      <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243770142" nodeInfo="nn">
-                        <node role="expression" roleId="tpee.1068580123156" type="tpee.NotExpression" typeId="tpee.1081516740877" id="4592826945243770261" nodeInfo="nn">
-                          <node role="expression" roleId="tpee.1081516765348" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243770262" nodeInfo="nn">
-                            <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243770263" nodeInfo="nn">
-                              <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151635174" nodeInfo="nn">
-                                <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="4592826945243770149" resolveInfo="it" />
+              <node concept="raruj" id="3YWZWnqamvl" role="lGtFl" />
+              <node concept="2jeGV$" id="5s11XheXqnB" role="lGtFl">
+                <property role="TrG5h" value="methodNameKey" />
+                <property role="34cw8o" value="Extract once and remember extracted method name" />
+                <node concept="2jfdEK" id="5s11XheXqnI" role="2jfP_Y">
+                  <node concept="3clFbS" id="5s11XheXqnP" role="2VODD2">
+                    <node concept="3clFbF" id="5s11XheXrp6" role="3cqZAp">
+                      <node concept="3cpWs3" id="5W1hTiYyhAo" role="3clFbG">
+                        <node concept="Xl_RD" id="5W1hTiYyhAp" role="3uHU7w">
+                          <property role="Xl_RC" value=".IsNotEmptyStringMethod" />
+                        </node>
+                        <node concept="2OqwBi" id="mw0JvjRKJw" role="3uHU7B">
+                          <node concept="2OqwBi" id="5W1hTiYyhAq" role="2Oq$k0">
+                            <node concept="1uHKPH" id="mw0JvjRHK8" role="2OqNvi" />
+                            <node concept="2OqwBi" id="5s11XheXFBZ" role="2Oq$k0">
+                              <node concept="2OqwBi" id="5s11XheXtgt" role="2Oq$k0">
+                                <node concept="30H73N" id="5s11XheXt6z" role="2Oq$k0" />
+                                <node concept="z$bX8" id="5s11XheXuSm" role="2OqNvi">
+                                  <node concept="1xMEDy" id="5s11XheX_ja" role="1xVPHs">
+                                    <node concept="chp4Y" id="5s11XheX_Sh" role="ri$Ld">
+                                      <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+                                    </node>
+                                  </node>
+                                </node>
                               </node>
-                              <node role="operation" roleId="tpee.1197027833540" type="tp25.SPropertyAccess" typeId="tp25.1138056022639" id="4592826945243770265" nodeInfo="nn">
-                                <link role="property" roleId="tp25.1138056395725" targetNodeId="tpee.1225271546413" resolveInfo="trimKind" />
+                              <node concept="3zZkjj" id="mw0JvjOC_S" role="2OqNvi">
+                                <node concept="1bVj0M" id="mw0JvjOC_U" role="23t8la">
+                                  <node concept="3clFbS" id="mw0JvjOC_V" role="1bW5cS">
+                                    <node concept="3clFbF" id="mw0JvjODxR" role="3cqZAp">
+                                      <node concept="2OqwBi" id="mw0JvjOE8j" role="3clFbG">
+                                        <node concept="37vLTw" id="mw0JvjODxQ" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="mw0JvjOC_W" resolve="it" />
+                                        </node>
+                                        <node concept="2qgKlT" id="mw0JvjRFiK" role="2OqNvi">
+                                          <ref role="37wK5l" to="tpek:6r77ob2USS8" resolve="isStatic" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="Rh6nW" id="mw0JvjOC_W" role="1bW2Oz">
+                                    <property role="TrG5h" value="it" />
+                                    <node concept="2jxLKc" id="mw0JvjOC_X" role="1tU5fm" />
+                                  </node>
+                                </node>
                               </node>
                             </node>
-                            <node role="operation" roleId="tpee.1197027833540" type="tp25.Property_HasValue_Enum" typeId="tp25.1146171026731" id="4592826945243770266" nodeInfo="nn">
-                              <node role="value" roleId="tp25.1146171026732" type="tp25.EnumMemberReference" typeId="tp25.1138676077309" id="4592826945243770267" nodeInfo="nn">
-                                <link role="enumMember" roleId="tp25.1138676095763" targetNodeId="tpee.1225271514375" />
+                          </node>
+                          <node concept="3TrcHB" id="mw0JvjRP3L" role="2OqNvi">
+                            <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="17QB3L" id="5s11XheXrJz" role="2jfP_h" />
+              </node>
+              <node concept="1W57fq" id="5s11XheXml6" role="lGtFl">
+                <node concept="3IZrLx" id="5s11XheXml8" role="3IZSJc">
+                  <node concept="3clFbS" id="5s11XheXmla" role="2VODD2">
+                    <node concept="3clFbJ" id="1WpD563piLn" role="3cqZAp">
+                      <node concept="3clFbS" id="1WpD563piLo" role="3clFbx">
+                        <node concept="3clFbF" id="1WpD563piLp" role="3cqZAp">
+                          <node concept="37vLTI" id="1WpD563piLq" role="3clFbG">
+                            <node concept="2OqwBi" id="1WpD563piLr" role="37vLTJ">
+                              <node concept="1iwH7S" id="1WpD563piLs" role="2Oq$k0" />
+                              <node concept="2fSANN" id="1WpD563piLt" role="2OqNvi">
+                                <node concept="2OqwBi" id="5s11XheYvCY" role="2fWi3N">
+                                  <node concept="1iwH7S" id="5s11XheYvrb" role="2Oq$k0" />
+                                  <node concept="1bhEwm" id="5s11XheYvUT" role="2OqNvi">
+                                    <ref role="1bhEwk" node="5s11XheXqnB" resolve="methodNameKey" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="30H73N" id="1iiSysipwth" role="37vLTx" />
+                          </node>
+                        </node>
+                        <node concept="3cpWs6" id="1WpD563piLw" role="3cqZAp">
+                          <node concept="3clFbT" id="1WpD563piLx" role="3cqZAk">
+                            <property role="3clFbU" value="true" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3clFbC" id="1WpD563piLy" role="3clFbw">
+                        <node concept="10Nm6u" id="1WpD563piLz" role="3uHU7w" />
+                        <node concept="2OqwBi" id="1WpD563piL$" role="3uHU7B">
+                          <node concept="1iwH7S" id="1WpD563piL_" role="2Oq$k0" />
+                          <node concept="2fSANN" id="1WpD563piLA" role="2OqNvi">
+                            <node concept="2OqwBi" id="5s11XheYuTb" role="2fWi3N">
+                              <node concept="1iwH7S" id="5s11XheYuFz" role="2Oq$k0" />
+                              <node concept="1bhEwm" id="5s11XheYva8" role="2OqNvi">
+                                <ref role="1bhEwk" node="5s11XheXqnB" resolve="methodNameKey" />
                               </node>
                             </node>
                           </node>
                         </node>
                       </node>
                     </node>
-                    <node role="parameter" roleId="tp2c.1199569906740" type="tp2q.SmartClosureParameterDeclaration" typeId="tp2q.1203518072036" id="4592826945243770149" nodeInfo="ig">
-                      <property name="name" nameId="tpck.1169194664001" value="it" />
-                      <node role="type" roleId="tpee.5680397130376446158" type="tpee.UndefinedType" typeId="tpee.4836112446988635817" id="4592826945243770150" nodeInfo="in" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node role="reductionMappingRule" roleId="tpf8.1167328349397" type="tpf8.Reduction_MappingRule" typeId="tpf8.1167327847730" id="1225277059819" nodeInfo="ng">
-      <link role="applicableConcept" roleId="tpf8.1167169349424" targetNodeId="tpee.1197027756228" resolveInfo="DotExpression" />
-      <node role="ruleConsequence" roleId="tpf8.1169672767469" type="tpf8.InlineTemplate_RuleConsequence" typeId="tpf8.1177093525992" id="1225277059820" nodeInfo="ng">
-        <node role="templateNode" roleId="tpf8.1177093586806" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="1225277059821" nodeInfo="nn">
-          <property name="value" nameId="tpee.1070475926801" value="operation" />
-          <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="1225277059822" nodeInfo="nn">
-            <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="1225277059823" nodeInfo="nn">
-              <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="1225277059824" nodeInfo="sn">
-                <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="1225277059825" nodeInfo="nn">
-                  <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="1225277059826" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="1225277059827" nodeInfo="nn" />
-                    <node role="operation" roleId="tpee.1197027833540" type="tp25.SLinkAccess" typeId="tp25.1138056143562" id="1225277059828" nodeInfo="nn">
-                      <link role="link" roleId="tp25.1138056516764" targetNodeId="tpee.1197027833540" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node role="conditionFunction" roleId="tpf8.1167169362365" type="tpf8.BaseMappingRule_Condition" typeId="tpf8.1167168920554" id="1225277059829" nodeInfo="nn">
-        <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="1225277059830" nodeInfo="sn">
-          <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="1225277059831" nodeInfo="nn">
-            <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="1225277059832" nodeInfo="nn">
-              <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="1225277059833" nodeInfo="nn">
-                <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="1225277059834" nodeInfo="nn" />
-                <node role="operation" roleId="tpee.1197027833540" type="tp25.SLinkAccess" typeId="tp25.1138056143562" id="1225277059835" nodeInfo="nn">
-                  <link role="link" roleId="tp25.1138056516764" targetNodeId="tpee.1197027833540" />
-                </node>
-              </node>
-              <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_IsInstanceOfOperation" typeId="tp25.1139621453865" id="1225277059836" nodeInfo="nn">
-                <node role="conceptArgument" roleId="tp25.1177027386292" type="tp25.RefConcept_Reference" typeId="tp25.1177026924588" id="1225277059837" nodeInfo="nn">
-                  <link role="conceptDeclaration" roleId="tp25.1177026940964" targetNodeId="tpee.1225271315873" resolveInfo="BaseStringOperation" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node role="reductionMappingRule" roleId="tpf8.1167328349397" type="tpf8.Reduction_MappingRule" typeId="tpf8.1167327847730" id="1225277059838" nodeInfo="ng">
-      <link role="applicableConcept" roleId="tpf8.1167169349424" targetNodeId="tpee.1225271369338" resolveInfo="IsEmptyOperation" />
-      <node role="ruleConsequence" roleId="tpf8.1169672767469" type="tpf8.TemplateDeclarationReference" typeId="tpf8.1168559333462" id="1225277059839" nodeInfo="nn">
-        <link role="template" roleId="tpf8.1722980698497626483" targetNodeId="4592826945244850025" resolveInfo="reduce_IsEmptyExpression" />
-      </node>
-      <node role="conditionFunction" roleId="tpf8.1167169362365" type="tpf8.BaseMappingRule_Condition" typeId="tpf8.1167168920554" id="4592826945243769884" nodeInfo="nn">
-        <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243769885" nodeInfo="sn">
-          <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243769886" nodeInfo="nn">
-            <node role="expression" roleId="tpee.1068580123156" type="tpee.NotExpression" typeId="tpee.1081516740877" id="4592826945243769887" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1081516765348" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769889" nodeInfo="nn">
-                <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769890" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4592826945243769891" nodeInfo="nn" />
-                  <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="4592826945243769892" nodeInfo="nn">
-                    <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
-                  </node>
-                </node>
-                <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_IsInstanceOfOperation" typeId="tp25.1139621453865" id="4592826945243769893" nodeInfo="nn">
-                  <node role="conceptArgument" roleId="tp25.1177027386292" type="tp25.RefConcept_Reference" typeId="tp25.1177026924588" id="4592826945243769894" nodeInfo="nn">
-                    <link role="conceptDeclaration" roleId="tp25.1177026940964" targetNodeId="tpee.1023687332192347378" resolveInfo="IVariableReference" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node role="reductionMappingRule" roleId="tpf8.1167328349397" type="tpf8.Reduction_MappingRule" typeId="tpf8.1167327847730" id="4592826945243768925" nodeInfo="ng">
-      <link role="applicableConcept" roleId="tpf8.1167169349424" targetNodeId="tpee.1225271369338" resolveInfo="IsEmptyOperation" />
-      <node role="ruleConsequence" roleId="tpf8.1169672767469" type="tpf8.InlineTemplate_RuleConsequence" typeId="tpf8.1177093525992" id="4592826945243768927" nodeInfo="ng">
-        <node role="templateNode" roleId="tpf8.1177093586806" type="tpee.ParenthesizedExpression" typeId="tpee.1079359253375" id="4592826945243768929" nodeInfo="nn">
-          <node role="expression" roleId="tpee.1079359253376" type="tpee.OrExpression" typeId="tpee.1080223426719" id="4592826945243769026" nodeInfo="nn">
-            <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.EqualsExpression" typeId="tpee.1068580123152" id="4592826945243769756" nodeInfo="nn">
-              <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="4592826945243769759" nodeInfo="nn">
-                <property name="value" nameId="tpee.1068580320021" value="0" />
-              </node>
-              <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769050" nodeInfo="nn">
-                <node role="operand" roleId="tpee.1197027771414" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="4592826945243769029" nodeInfo="nn">
-                  <property name="value" nameId="tpee.1070475926801" value="" />
-                  <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="4592826945243769793" nodeInfo="nn">
-                    <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="4592826945243769794" nodeInfo="nn">
-                      <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243769795" nodeInfo="sn">
-                        <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243769796" nodeInfo="nn">
-                          <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769818" nodeInfo="nn">
-                            <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4592826945243769797" nodeInfo="nn" />
-                            <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="4592826945243769824" nodeInfo="nn">
-                              <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
-                            </node>
-                          </node>
-                        </node>
+                    <node concept="3cpWs6" id="1WpD563piLC" role="3cqZAp">
+                      <node concept="3clFbT" id="1WpD563piLD" role="3cqZAk">
+                        <property role="3clFbU" value="false" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="4592826945243769735" nodeInfo="nn">
-                  <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dlength()%cint" resolveInfo="length" />
-                </node>
-              </node>
-            </node>
-            <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.EqualsExpression" typeId="tpee.1068580123152" id="4592826945243769002" nodeInfo="nn">
-              <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="4592826945243768981" nodeInfo="nn">
-                <property name="value" nameId="tpee.1070475926801" value="" />
-                <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="4592826945243769761" nodeInfo="nn">
-                  <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="4592826945243769762" nodeInfo="nn">
-                    <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243769763" nodeInfo="sn">
-                      <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243769764" nodeInfo="nn">
-                        <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769786" nodeInfo="nn">
-                          <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4592826945243769765" nodeInfo="nn" />
-                          <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="4592826945243769791" nodeInfo="nn">
-                            <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="4592826945243769005" nodeInfo="nn" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node role="conditionFunction" roleId="tpf8.1167169362365" type="tpf8.BaseMappingRule_Condition" typeId="tpf8.1167168920554" id="4592826945243769825" nodeInfo="nn">
-        <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243769826" nodeInfo="sn">
-          <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243769827" nodeInfo="nn">
-            <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769875" nodeInfo="nn">
-              <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769849" nodeInfo="nn">
-                <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4592826945243769828" nodeInfo="nn" />
-                <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="4592826945243769854" nodeInfo="nn">
-                  <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
-                </node>
-              </node>
-              <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_IsInstanceOfOperation" typeId="tp25.1139621453865" id="4592826945243769881" nodeInfo="nn">
-                <node role="conceptArgument" roleId="tp25.1177027386292" type="tp25.RefConcept_Reference" typeId="tp25.1177026924588" id="4592826945243769883" nodeInfo="nn">
-                  <link role="conceptDeclaration" roleId="tp25.1177026940964" targetNodeId="tpee.1023687332192347378" resolveInfo="IVariableReference" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node role="reductionMappingRule" roleId="tpf8.1167328349397" type="tpf8.Reduction_MappingRule" typeId="tpf8.1167327847730" id="1225277059840" nodeInfo="ng">
-      <link role="applicableConcept" roleId="tpf8.1167169349424" targetNodeId="tpee.1225271408483" resolveInfo="IsNotEmptyOperation" />
-      <node role="ruleConsequence" roleId="tpf8.1169672767469" type="tpf8.TemplateDeclarationReference" typeId="tpf8.1168559333462" id="1225277059841" nodeInfo="nn">
-        <link role="template" roleId="tpf8.1722980698497626483" targetNodeId="1225277059676" resolveInfo="reduce_IsNotEmptyExpression" />
-      </node>
-      <node role="conditionFunction" roleId="tpf8.1167169362365" type="tpf8.BaseMappingRule_Condition" typeId="tpf8.1167168920554" id="4592826945243771501" nodeInfo="nn">
-        <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243771502" nodeInfo="sn">
-          <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243771503" nodeInfo="nn">
-            <node role="expression" roleId="tpee.1068580123156" type="tpee.NotExpression" typeId="tpee.1081516740877" id="4592826945243771504" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1081516765348" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771505" nodeInfo="nn">
-                <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771506" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4592826945243771507" nodeInfo="nn" />
-                  <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="4592826945243771508" nodeInfo="nn">
-                    <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
-                  </node>
-                </node>
-                <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_IsInstanceOfOperation" typeId="tp25.1139621453865" id="4592826945243771509" nodeInfo="nn">
-                  <node role="conceptArgument" roleId="tp25.1177027386292" type="tp25.RefConcept_Reference" typeId="tp25.1177026924588" id="4592826945243771510" nodeInfo="nn">
-                    <link role="conceptDeclaration" roleId="tp25.1177026940964" targetNodeId="tpee.1023687332192347378" resolveInfo="IVariableReference" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node role="reductionMappingRule" roleId="tpf8.1167328349397" type="tpf8.Reduction_MappingRule" typeId="tpf8.1167327847730" id="4592826945243771511" nodeInfo="ng">
-      <link role="applicableConcept" roleId="tpf8.1167169349424" targetNodeId="tpee.1225271408483" resolveInfo="IsNotEmptyOperation" />
-      <node role="conditionFunction" roleId="tpf8.1167169362365" type="tpf8.BaseMappingRule_Condition" typeId="tpf8.1167168920554" id="4592826945243771513" nodeInfo="nn">
-        <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243771514" nodeInfo="sn">
-          <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243771515" nodeInfo="nn">
-            <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771516" nodeInfo="nn">
-              <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771517" nodeInfo="nn">
-                <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4592826945243771518" nodeInfo="nn" />
-                <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="4592826945243771519" nodeInfo="nn">
-                  <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
-                </node>
-              </node>
-              <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_IsInstanceOfOperation" typeId="tp25.1139621453865" id="4592826945243771520" nodeInfo="nn">
-                <node role="conceptArgument" roleId="tp25.1177027386292" type="tp25.RefConcept_Reference" typeId="tp25.1177026924588" id="4592826945243771521" nodeInfo="nn">
-                  <link role="conceptDeclaration" roleId="tp25.1177026940964" targetNodeId="tpee.1023687332192347378" resolveInfo="IVariableReference" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node role="ruleConsequence" roleId="tpf8.1169672767469" type="tpf8.InlineTemplate_RuleConsequence" typeId="tpf8.1177093525992" id="4592826945243771522" nodeInfo="ng">
-        <node role="templateNode" roleId="tpf8.1177093586806" type="tpee.ParenthesizedExpression" typeId="tpee.1079359253375" id="4592826945243771523" nodeInfo="nn">
-          <node role="expression" roleId="tpee.1079359253376" type="tpee.AndExpression" typeId="tpee.1080120340718" id="4592826945243771557" nodeInfo="nn">
-            <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.NotEqualsExpression" typeId="tpee.1073239437375" id="4592826945243771558" nodeInfo="nn">
-              <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="4592826945243771559" nodeInfo="nn">
-                <property name="value" nameId="tpee.1070475926801" value="" />
-                <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="4592826945243771560" nodeInfo="nn">
-                  <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="4592826945243771561" nodeInfo="nn">
-                    <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243771562" nodeInfo="sn">
-                      <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243771563" nodeInfo="nn">
-                        <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771564" nodeInfo="nn">
-                          <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4592826945243771565" nodeInfo="nn" />
-                          <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="4592826945243771566" nodeInfo="nn">
-                            <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="4592826945243771567" nodeInfo="nn" />
-            </node>
-            <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.GreaterThanExpression" typeId="tpee.1081506762703" id="4592826945243771592" nodeInfo="nn">
-              <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771593" nodeInfo="nn">
-                <node role="operand" roleId="tpee.1197027771414" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="4592826945243771594" nodeInfo="nn">
-                  <property name="value" nameId="tpee.1070475926801" value="" />
-                  <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="4592826945243771595" nodeInfo="nn">
-                    <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="4592826945243771596" nodeInfo="nn">
-                      <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243771597" nodeInfo="sn">
-                        <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243771598" nodeInfo="nn">
-                          <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771599" nodeInfo="nn">
-                            <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4592826945243771600" nodeInfo="nn" />
-                            <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="4592826945243771601" nodeInfo="nn">
-                              <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="4592826945243771602" nodeInfo="nn">
-                  <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dlength()%cint" resolveInfo="length" />
-                </node>
-              </node>
-              <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="4592826945243771603" nodeInfo="nn">
-                <property name="value" nameId="tpee.1068580320021" value="0" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node role="reductionMappingRule" roleId="tpf8.1167328349397" type="tpf8.Reduction_MappingRule" typeId="tpf8.1167327847730" id="1225277059842" nodeInfo="ng">
-      <link role="applicableConcept" roleId="tpf8.1167169349424" targetNodeId="tpee.1225271546410" resolveInfo="TrimOperation" />
-      <node role="ruleConsequence" roleId="tpf8.1169672767469" type="tpf8.InlineSwitch_RuleConsequence" typeId="tpf8.1195158154974" id="1225277059843" nodeInfo="ng">
-        <node role="defaultConsequence" roleId="tpf8.1195158241124" type="tpf8.TemplateDeclarationReference" typeId="tpf8.1168559333462" id="1225277059844" nodeInfo="nn">
-          <link role="template" roleId="tpf8.1722980698497626483" targetNodeId="1225277059783" resolveInfo="reduce_TrimOperation_Both" />
-        </node>
-        <node role="case" roleId="tpf8.1195158408710" type="tpf8.InlineSwitch_Case" typeId="tpf8.1195158388553" id="1225277059845" nodeInfo="ng">
-          <node role="conditionFunction" roleId="tpf8.1195158608805" type="tpf8.BaseMappingRule_Condition" typeId="tpf8.1167168920554" id="1225277059846" nodeInfo="nn">
-            <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="1225277059847" nodeInfo="sn">
-              <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="1225277059848" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="1225277059849" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="1225277059850" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="1225277059851" nodeInfo="nn" />
-                    <node role="operation" roleId="tpee.1197027833540" type="tp25.SPropertyAccess" typeId="tp25.1138056022639" id="1225277059852" nodeInfo="nn">
-                      <link role="property" roleId="tp25.1138056395725" targetNodeId="tpee.1225271546413" resolveInfo="trimKind" />
-                    </node>
-                  </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tp25.Property_HasValue_Enum" typeId="tp25.1146171026731" id="1225277059853" nodeInfo="nn">
-                    <node role="value" roleId="tp25.1146171026732" type="tp25.EnumMemberReference" typeId="tp25.1138676077309" id="1225277059854" nodeInfo="nn">
-                      <link role="enumMember" roleId="tp25.1138676095763" targetNodeId="tpee.1225271514376" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node role="caseConsequence" roleId="tpf8.1195158637244" type="tpf8.TemplateDeclarationReference" typeId="tpf8.1168559333462" id="2696770507970033567" nodeInfo="nn">
-            <link role="template" roleId="tpf8.1722980698497626483" targetNodeId="2696770507970455982" resolveInfo="reduce_TrimOperation_Leading" />
-          </node>
-        </node>
-        <node role="case" roleId="tpf8.1195158408710" type="tpf8.InlineSwitch_Case" typeId="tpf8.1195158388553" id="1225277059856" nodeInfo="ng">
-          <node role="conditionFunction" roleId="tpf8.1195158608805" type="tpf8.BaseMappingRule_Condition" typeId="tpf8.1167168920554" id="1225277059857" nodeInfo="nn">
-            <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="1225277059858" nodeInfo="sn">
-              <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="1225277059859" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="1225277059860" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="1225277059861" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="1225277059862" nodeInfo="nn" />
-                    <node role="operation" roleId="tpee.1197027833540" type="tp25.SPropertyAccess" typeId="tp25.1138056022639" id="1225277059863" nodeInfo="nn">
-                      <link role="property" roleId="tp25.1138056395725" targetNodeId="tpee.1225271546413" resolveInfo="trimKind" />
-                    </node>
-                  </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tp25.Property_HasValue_Enum" typeId="tp25.1146171026731" id="1225277059864" nodeInfo="nn">
-                    <node role="value" roleId="tp25.1146171026732" type="tp25.EnumMemberReference" typeId="tp25.1138676077309" id="1225277059865" nodeInfo="nn">
-                      <link role="enumMember" roleId="tp25.1138676095763" targetNodeId="tpee.1225271514377" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node role="caseConsequence" roleId="tpf8.1195158637244" type="tpf8.TemplateDeclarationReference" typeId="tpf8.1168559333462" id="1225277059866" nodeInfo="nn">
-            <link role="template" roleId="tpf8.1722980698497626483" targetNodeId="2696770507970033436" resolveInfo="reduce_TrimOperation_Trainling" />
-          </node>
-        </node>
-        <node role="case" roleId="tpf8.1195158408710" type="tpf8.InlineSwitch_Case" typeId="tpf8.1195158388553" id="4592826945243770284" nodeInfo="ng">
-          <node role="conditionFunction" roleId="tpf8.1195158608805" type="tpf8.BaseMappingRule_Condition" typeId="tpf8.1167168920554" id="4592826945243770285" nodeInfo="nn">
-            <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243770286" nodeInfo="sn">
-              <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243770288" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243770337" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243770310" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4592826945243770289" nodeInfo="nn" />
-                    <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="4592826945243770316" nodeInfo="nn">
-                      <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
-                    </node>
-                  </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_IsInstanceOfOperation" typeId="tp25.1139621453865" id="4592826945243770343" nodeInfo="nn">
-                    <node role="conceptArgument" roleId="tp25.1177027386292" type="tp25.RefConcept_Reference" typeId="tp25.1177026924588" id="4592826945243770345" nodeInfo="nn">
-                      <link role="conceptDeclaration" roleId="tp25.1177026940964" targetNodeId="tpee.1023687332192347378" resolveInfo="IVariableReference" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node role="caseConsequence" roleId="tpf8.1195158637244" type="tpf8.InlineTemplate_RuleConsequence" typeId="tpf8.1177093525992" id="4592826945243770346" nodeInfo="ng">
-            <node role="templateNode" roleId="tpf8.1177093586806" type="tpee.ParenthesizedExpression" typeId="tpee.1079359253375" id="4592826945243770348" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1079359253376" type="tpee.TernaryOperatorExpression" typeId="tpee.1163668896201" id="4592826945243770395" nodeInfo="nn">
-                <node role="ifTrue" roleId="tpee.1163668922816" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="4592826945243770399" nodeInfo="nn" />
-                <node role="ifFalse" roleId="tpee.1163668934364" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243770421" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="4592826945243770400" nodeInfo="nn">
-                    <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="4592826945243770429" nodeInfo="nn">
-                      <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="4592826945243770430" nodeInfo="nn">
-                        <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243770431" nodeInfo="sn">
-                          <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243770464" nodeInfo="nn">
-                            <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243770486" nodeInfo="nn">
-                              <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4592826945243770465" nodeInfo="nn" />
-                              <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="4592826945243770491" nodeInfo="nn">
-                                <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
+                <node concept="gft3U" id="1WpD563pmwS" role="UU_$l">
+                  <node concept="2TbA4q" id="1iiSysihM3U" role="gfFT$">
+                    <ref role="37wK5l" node="3YWZWnqamuW" resolve="isNotEmptyString" />
+                    <node concept="Xl_RD" id="1iiSysihM3V" role="37wK5m">
+                      <property role="Xl_RC" value="" />
+                      <node concept="29HgVG" id="1iiSysihM3W" role="lGtFl">
+                        <node concept="3NFfHV" id="1iiSysihM3X" role="3NFExx">
+                          <node concept="3clFbS" id="1iiSysihM3Y" role="2VODD2">
+                            <node concept="3clFbF" id="1iiSysihM3Z" role="3cqZAp">
+                              <node concept="2OqwBi" id="1iiSysihM40" role="3clFbG">
+                                <node concept="30H73N" id="1iiSysihM41" role="2Oq$k0" />
+                                <node concept="2qgKlT" id="1iiSysihM42" role="2OqNvi">
+                                  <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                                </node>
                               </node>
                             </node>
                           </node>
                         </node>
                       </node>
                     </node>
-                  </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="4592826945243770427" nodeInfo="nn">
-                    <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dtrim()%cjava%dlang%dString" resolveInfo="trim" />
-                  </node>
-                </node>
-                <node role="condition" roleId="tpee.1163668914799" type="tpee.EqualsExpression" typeId="tpee.1068580123152" id="4592826945243770371" nodeInfo="nn">
-                  <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="4592826945243770374" nodeInfo="nn" />
-                  <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="4592826945243770350" nodeInfo="nn">
-                    <property name="value" nameId="tpee.1070475926801" value="" />
-                    <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="4592826945243770433" nodeInfo="nn">
-                      <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="4592826945243770434" nodeInfo="nn">
-                        <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243770435" nodeInfo="sn">
-                          <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243770436" nodeInfo="nn">
-                            <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243770458" nodeInfo="nn">
-                              <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4592826945243770437" nodeInfo="nn" />
-                              <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="4592826945243770463" nodeInfo="nn">
-                                <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
+                    <node concept="1ZhdrF" id="1iiSysihMfQ" role="lGtFl">
+                      <property role="2qtEX8" value="baseMethodDeclaration" />
+                      <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1204053956946/1068499141037" />
+                      <node concept="3$xsQk" id="1iiSysihMfR" role="3$ytzL">
+                        <node concept="3clFbS" id="1iiSysihMfS" role="2VODD2">
+                          <node concept="3cpWs8" id="1iiSysipwKj" role="3cqZAp">
+                            <node concept="3cpWsn" id="1iiSysipwKk" role="3cpWs9">
+                              <property role="TrG5h" value="firstOp" />
+                              <node concept="3Tqbb2" id="1iiSysipxnZ" role="1tU5fm">
+                                <ref role="ehGHo" to="tpee:hP7Rvtz" resolve="IsNotEmptyOperation" />
+                              </node>
+                              <node concept="10QFUN" id="1iiSysipwZp" role="33vP2m">
+                                <node concept="3Tqbb2" id="1iiSysipxdQ" role="10QFUM">
+                                  <ref role="ehGHo" to="tpee:hP7Rvtz" resolve="IsNotEmptyOperation" />
+                                </node>
+                                <node concept="2OqwBi" id="1iiSysipwKl" role="10QFUP">
+                                  <node concept="1iwH7S" id="1iiSysipwKm" role="2Oq$k0" />
+                                  <node concept="2fSANN" id="1iiSysipwKn" role="2OqNvi">
+                                    <node concept="2OqwBi" id="1iiSysipwKo" role="2fWi3N">
+                                      <node concept="1iwH7S" id="1iiSysipwKp" role="2Oq$k0" />
+                                      <node concept="1bhEwm" id="1iiSysipwKq" role="2OqNvi">
+                                        <ref role="1bhEwk" node="5s11XheXqnB" resolve="methodNameKey" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3cpWs6" id="1iiSysihMpC" role="3cqZAp">
+                            <node concept="2OqwBi" id="1iiSysipyIo" role="3cqZAk">
+                              <node concept="2OqwBi" id="1iiSysipylk" role="2Oq$k0">
+                                <node concept="1iwH7S" id="1iiSysipygU" role="2Oq$k0" />
+                                <node concept="1iwH70" id="1iiSysipyvq" role="2OqNvi">
+                                  <ref role="1iwH77" node="1iiSysipr29" resolve="IsNotEmptyExtractExpr" />
+                                  <node concept="37vLTw" id="1iiSysipyBW" role="1iwH7V">
+                                    <ref role="3cqZAo" node="1iiSysipwKk" resolve="firstOp" />
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="3TrEf2" id="1iiSysipz3w" role="2OqNvi">
+                                <ref role="3Tt5mk" to="tp68:373Y828UwF6" resolve="method" />
                               </node>
                             </node>
                           </node>
@@ -927,304 +578,314 @@
                   </node>
                 </node>
               </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node role="reductionMappingRule" roleId="tpf8.1167328349397" type="tpf8.Reduction_MappingRule" typeId="tpf8.1167327847730" id="1461424660015436723" nodeInfo="ng">
-      <link role="applicableConcept" roleId="tpf8.1167169349424" targetNodeId="tpee.1461424660015405635" resolveInfo="EscapeOperation" />
-      <node role="ruleConsequence" roleId="tpf8.1169672767469" type="tpf8.TemplateDeclarationReference" typeId="tpf8.1168559333462" id="1461424660015436725" nodeInfo="nn">
-        <link role="template" roleId="tpf8.1722980698497626483" targetNodeId="1461424660015429883" resolveInfo="reduce_EscapeOperation" />
-      </node>
-    </node>
-    <node role="reductionMappingRule" roleId="tpf8.1167328349397" type="tpf8.Reduction_MappingRule" typeId="tpf8.1167327847730" id="1225277059867" nodeInfo="ng">
-      <link role="applicableConcept" roleId="tpf8.1167169349424" targetNodeId="tpee.1225271283259" resolveInfo="NPEEqualsExpression" />
-      <node role="ruleConsequence" roleId="tpf8.1169672767469" type="tpf8.TemplateDeclarationReference" typeId="tpf8.1168559333462" id="1225277059868" nodeInfo="nn">
-        <link role="template" roleId="tpf8.1722980698497626483" targetNodeId="1225277059687" resolveInfo="reduce_NPEEqualsExpression" />
-      </node>
-    </node>
-    <node role="reductionMappingRule" roleId="tpf8.1167328349397" type="tpf8.Reduction_MappingRule" typeId="tpf8.1167327847730" id="1225277059869" nodeInfo="ng">
-      <link role="applicableConcept" roleId="tpf8.1167169349424" targetNodeId="tpee.1225271221393" resolveInfo="NPENotEqualsExpression" />
-      <node role="ruleConsequence" roleId="tpf8.1169672767469" type="tpf8.TemplateDeclarationReference" typeId="tpf8.1168559333462" id="1225277059870" nodeInfo="nn">
-        <link role="template" roleId="tpf8.1722980698497626483" targetNodeId="1225277059706" resolveInfo="reduce_NPENotEqualsExpression" />
-      </node>
-    </node>
-    <node role="reductionMappingRule" roleId="tpf8.1167328349397" type="tpf8.Reduction_MappingRule" typeId="tpf8.1167327847730" id="1225277059871" nodeInfo="ng">
-      <link role="applicableConcept" roleId="tpf8.1167169349424" targetNodeId="tpee.1225271177708" resolveInfo="StringType" />
-      <node role="ruleConsequence" roleId="tpf8.1169672767469" type="tpf8.TemplateDeclarationReference" typeId="tpf8.1168559333462" id="1225277059872" nodeInfo="nn">
-        <link role="template" roleId="tpf8.1722980698497626483" targetNodeId="1225277059742" resolveInfo="reduce_StringType" />
-      </node>
-    </node>
-    <node role="reductionMappingRule" roleId="tpf8.1167328349397" type="tpf8.Reduction_MappingRule" typeId="tpf8.1167327847730" id="1225277059873" nodeInfo="ng">
-      <link role="applicableConcept" roleId="tpf8.1167169349424" targetNodeId="tpee.1225271484915" resolveInfo="SubstringExpression" />
-      <node role="ruleConsequence" roleId="tpf8.1169672767469" type="tpf8.TemplateDeclarationReference" typeId="tpf8.1168559333462" id="1225277059874" nodeInfo="nn">
-        <link role="template" roleId="tpf8.1722980698497626483" targetNodeId="1225277059745" resolveInfo="reduce_SubstringExpression" />
-      </node>
-    </node>
-  </root>
-  <root type="tpf8.TemplateDeclaration" typeId="tpf8.1092059087312" id="1461424660015429883" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="reduce_EscapeOperation" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="ext.string.expression" />
-    <link role="applicableConcept" roleId="tpf8.1168285871518" targetNodeId="tpee.1461424660015405635" resolveInfo="EscapeOperation" />
-    <node role="contentNode" roleId="tpf8.1092060348987" type="tpee.StaticMethodCall" typeId="tpee.1081236700937" id="1461424660015435936" nodeInfo="nn">
-      <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="msyo.~NameUtil%descapeString(java%dlang%dString)%cjava%dlang%dString" resolveInfo="escapeString" />
-      <link role="classConcept" roleId="tpee.1144433194310" targetNodeId="msyo.~NameUtil" resolveInfo="NameUtil" />
-      <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="1461424660015435937" nodeInfo="nn">
-        <property name="value" nameId="tpee.1070475926801" value="expression" />
-        <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="1461424660015435938" nodeInfo="nn">
-          <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="1461424660015435939" nodeInfo="nn">
-            <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="1461424660015435940" nodeInfo="sn">
-              <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="1461424660015435941" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="1461424660015435942" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="1461424660015435943" nodeInfo="nn" />
-                  <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="1461424660015435944" nodeInfo="nn">
-                    <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
-                  </node>
-                </node>
+              <node concept="2ZBi8u" id="1iiSysipv3c" role="lGtFl">
+                <ref role="2rW$FS" node="1iiSysipr29" resolve="IsNotEmptyExtractExpr" />
               </node>
             </node>
           </node>
         </node>
       </node>
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.TemplateFragment" typeId="tpf8.1095672379244" id="1461424660015435945" nodeInfo="ng" />
+      <node concept="3Tm1VV" id="1WpD563pg9c" role="1B3o_S" />
     </node>
-  </root>
-  <root type="tpf8.TemplateDeclaration" typeId="tpf8.1092059087312" id="2696770507970033436" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="reduce_TrimOperation_Trainling" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="ext.string.expression" />
-    <link role="applicableConcept" roleId="tpf8.1168285871518" targetNodeId="tpee.1225271546410" resolveInfo="TrimOperation" />
-    <node role="contentNode" roleId="tpf8.1092060348987" type="tp68.InternalStaticMethodCall" typeId="tp68.1173990517731" id="2696770507970538118" nodeInfo="nn">
-      <property name="fqClassName" nameId="tp68.1173992483054" value="StringUtils" />
-      <property name="methodName" nameId="tp68.1173992444083" value="stripEnd" />
-      <node role="actualArgument" roleId="tp68.319021450862604085" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="2696770507970538119" nodeInfo="nn">
-        <property name="value" nameId="tpee.1070475926801" value="expression" />
-        <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="2696770507970538120" nodeInfo="nn">
-          <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="2696770507970538121" nodeInfo="nn">
-            <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="2696770507970538122" nodeInfo="sn">
-              <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="2696770507970538123" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="2696770507970538124" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="2696770507970538125" nodeInfo="nn" />
-                  <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="2696770507970538126" nodeInfo="nn">
-                    <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
+  </node>
+  <node concept="13MO4I" id="hP8d39B">
+    <property role="TrG5h" value="reduce_NPEEqualsExpression" />
+    <property role="3GE5qa" value="expressions" />
+    <ref role="3gUMe" to="tpee:hP7R0SV" resolve="NPEEqualsExpression" />
+    <node concept="2Tav94" id="19BYn$PMP6w" role="13RCb5">
+      <property role="1YR72k" value="true" />
+      <node concept="2YIFZL" id="19BYn$PMP6x" role="2Tav96">
+        <property role="TrG5h" value="eq" />
+        <node concept="3Tm6S6" id="19BYn$PMP6y" role="1B3o_S" />
+        <node concept="3clFbS" id="19BYn$PMP6z" role="3clF47">
+          <node concept="3cpWs6" id="19BYn$PMP6$" role="3cqZAp">
+            <node concept="3K4zz7" id="19BYn$PMPD4" role="3cqZAk">
+              <node concept="2OqwBi" id="19BYn$PMPD9" role="3K4E3e">
+                <node concept="37vLTw" id="2BHiRxgm9er" role="2Oq$k0">
+                  <ref role="3cqZAo" node="19BYn$PMP6K" resolve="a" />
+                </node>
+                <node concept="liA8E" id="19BYn$PMPDd" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+                  <node concept="37vLTw" id="2BHiRxgl6sc" role="37wK5m">
+                    <ref role="3cqZAo" node="19BYn$PMP6M" resolve="b" />
                   </node>
+                </node>
+              </node>
+              <node concept="3clFbC" id="19BYn$PMPDg" role="3K4GZi">
+                <node concept="37vLTw" id="2BHiRxgkWlA" role="3uHU7w">
+                  <ref role="3cqZAo" node="19BYn$PMP6M" resolve="b" />
+                </node>
+                <node concept="37vLTw" id="2BHiRxgm8I_" role="3uHU7B">
+                  <ref role="3cqZAo" node="19BYn$PMP6K" resolve="a" />
+                </node>
+              </node>
+              <node concept="3y3z36" id="19BYn$PMPD0" role="3K4Cdx">
+                <node concept="10Nm6u" id="19BYn$PMPD3" role="3uHU7w" />
+                <node concept="37vLTw" id="2BHiRxgmHsJ" role="3uHU7B">
+                  <ref role="3cqZAo" node="19BYn$PMP6K" resolve="a" />
                 </node>
               </node>
             </node>
           </node>
         </node>
+        <node concept="37vLTG" id="19BYn$PMP6K" role="3clF46">
+          <property role="TrG5h" value="a" />
+          <node concept="3uibUv" id="19BYn$PMP6L" role="1tU5fm">
+            <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+          </node>
+        </node>
+        <node concept="37vLTG" id="19BYn$PMP6M" role="3clF46">
+          <property role="TrG5h" value="b" />
+          <node concept="3uibUv" id="19BYn$PMPCT" role="1tU5fm">
+            <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+          </node>
+        </node>
+        <node concept="10P_77" id="19BYn$PMPCJ" role="3clF45" />
       </node>
-      <node role="actualArgument" roleId="tp68.319021450862604085" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="2696770507970538127" nodeInfo="nn">
-        <property name="value" nameId="tpee.1070475926801" value=" \n\r\t" />
-      </node>
-      <node role="returnType" roleId="tp68.1175794062018" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="2696770507970538128" nodeInfo="in">
-        <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-      </node>
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.TemplateFragment" typeId="tpf8.1095672379244" id="2696770507970538129" nodeInfo="ng" />
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.PropertyMacro" typeId="tpf8.1087833241328" id="2696770507970538130" nodeInfo="nn">
-        <property name="propertyName" nameId="tpck.1757699476691236117" value="fqClassName" />
-        <node role="propertyValueFunction" roleId="tpf8.1167756362303" type="tpf8.PropertyMacro_GetPropertyValue" typeId="tpf8.1167756080639" id="2696770507970538131" nodeInfo="nn">
-          <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="2696770507970538132" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="2696770507970538133" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068580123156" type="tpee.PlusExpression" typeId="tpee.1068581242875" id="2696770507970538134" nodeInfo="nn">
-                <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.StaticMethodCall" typeId="tpee.1081236700937" id="2722862962576141789" nodeInfo="nn">
-                  <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="unno.9160302885342508446" resolveInfo="getModelLongName" />
-                  <link role="classConcept" roleId="tpee.1144433194310" targetNodeId="unno.2089287822043606602" resolveInfo="SNodeOperations" />
-                  <node role="actualArgument" roleId="tpee.1068499141038" type="tp25.SemanticDowncastExpression" typeId="tp25.1145404486709" id="2722862962576141790" nodeInfo="nn">
-                    <node role="leftExpression" roleId="tp25.1145404616321" type="tpee.DotExpression" typeId="tpee.1197027756228" id="2722862962576141791" nodeInfo="nn">
-                      <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="2722862962576141792" nodeInfo="nn" />
-                      <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_GetModelOperation" typeId="tp25.1143234257716" id="2722862962576141793" nodeInfo="nn" />
+      <node concept="2TbA4q" id="19BYn$PMP6P" role="2Tav95">
+        <ref role="37wK5l" node="19BYn$PMP6x" resolve="eq" />
+        <node concept="10Nm6u" id="46cij$UbI9_" role="37wK5m">
+          <node concept="29HgVG" id="46cij$UbI9C" role="lGtFl">
+            <node concept="3NFfHV" id="46cij$UbI9F" role="3NFExx">
+              <node concept="3clFbS" id="46cij$UbI9G" role="2VODD2">
+                <node concept="3clFbF" id="46cij$UbI9H" role="3cqZAp">
+                  <node concept="2OqwBi" id="46cij$UbI9I" role="3clFbG">
+                    <node concept="3TrEf2" id="46cij$UbI9J" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpee:fJuHU4s" resolve="leftExpression" />
                     </node>
+                    <node concept="30H73N" id="46cij$UbI9K" role="2Oq$k0" />
                   </node>
                 </node>
-                <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="2696770507970538135" nodeInfo="nn">
-                  <property name="value" nameId="tpee.1070475926801" value=".StringUtils" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="10Nm6u" id="46cij$UbI9A" role="37wK5m">
+          <node concept="29HgVG" id="46cij$UbI9M" role="lGtFl">
+            <node concept="3NFfHV" id="46cij$UbI9P" role="3NFExx">
+              <node concept="3clFbS" id="46cij$UbI9Q" role="2VODD2">
+                <node concept="3clFbF" id="46cij$UbI9R" role="3cqZAp">
+                  <node concept="2OqwBi" id="46cij$UbI9S" role="3clFbG">
+                    <node concept="3TrEf2" id="46cij$UbI9T" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpee:fJuHU4r" resolve="rightExpression" />
+                    </node>
+                    <node concept="30H73N" id="46cij$UbI9U" role="2Oq$k0" />
+                  </node>
                 </node>
               </node>
             </node>
           </node>
         </node>
       </node>
+      <node concept="raruj" id="19BYn$PMP78" role="lGtFl" />
     </node>
-  </root>
-  <root type="tpee.ClassConcept" typeId="tpee.1068390468198" id="2696770507970455214" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="StringUtils" />
-    <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.RootTemplateAnnotation" typeId="tpf8.1168619357332" id="2696770507970455220" nodeInfo="ng" />
-    <node role="member" roleId="tpee.5375687026011219971" type="tpee.StaticMethodDeclaration" typeId="tpee.1081236700938" id="2696770507970455286" nodeInfo="igu">
-      <property name="name" nameId="tpck.1169194664001" value="stripStart" />
-      <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="2696770507970455287" nodeInfo="ir">
-        <property name="name" nameId="tpck.1169194664001" value="str" />
-        <node role="type" roleId="tpee.5680397130376446158" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="2696770507970455288" nodeInfo="in">
-          <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-        </node>
-      </node>
-      <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="2696770507970455289" nodeInfo="ir">
-        <property name="name" nameId="tpck.1169194664001" value="chars" />
-        <node role="type" roleId="tpee.5680397130376446158" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="2696770507970455290" nodeInfo="in">
-          <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-        </node>
-      </node>
-      <node role="returnType" roleId="tpee.1068580123133" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="2696770507970455291" nodeInfo="in">
-        <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-      </node>
-      <node role="body" roleId="tpee.1068580123135" type="tpee.StatementList" typeId="tpee.1068580123136" id="2696770507970455293" nodeInfo="sn">
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.LocalVariableDeclarationStatement" typeId="tpee.1068581242864" id="2696770507970455294" nodeInfo="nn">
-          <node role="localVariableDeclaration" roleId="tpee.1068581242865" type="tpee.LocalVariableDeclaration" typeId="tpee.1068581242863" id="2696770507970455295" nodeInfo="nr">
-            <property name="name" nameId="tpck.1169194664001" value="strLen" />
-            <node role="type" roleId="tpee.5680397130376446158" type="tpee.IntegerType" typeId="tpee.1070534370425" id="2696770507970455296" nodeInfo="in" />
-          </node>
-        </node>
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.IfStatement" typeId="tpee.1068580123159" id="2696770507970455297" nodeInfo="nn">
-          <node role="ifTrue" roleId="tpee.1068580123161" type="tpee.StatementList" typeId="tpee.1068580123136" id="2696770507970455298" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ReturnStatement" typeId="tpee.1068581242878" id="2696770507970455299" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068581517676" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151607678" nodeInfo="nn">
-                <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455287" resolveInfo="str" />
-              </node>
-            </node>
-          </node>
-          <node role="condition" roleId="tpee.1068580123160" type="tpee.OrExpression" typeId="tpee.1080223426719" id="2696770507970455301" nodeInfo="nn">
-            <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.EqualsExpression" typeId="tpee.1068580123152" id="2696770507970455302" nodeInfo="nn">
-              <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="2696770507970455303" nodeInfo="nn">
-                <property name="value" nameId="tpee.1068580320021" value="0" />
-              </node>
-              <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.ParenthesizedExpression" typeId="tpee.1079359253375" id="2696770507970455304" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1079359253376" type="tpee.AssignmentExpression" typeId="tpee.1068498886294" id="2696770507970455305" nodeInfo="nn">
-                  <node role="rValue" roleId="tpee.1068498886297" type="tpee.DotExpression" typeId="tpee.1197027756228" id="2696770507970455306" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151519668" nodeInfo="nn">
-                      <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455287" resolveInfo="str" />
+  </node>
+  <node concept="13MO4I" id="hP8d39U">
+    <property role="TrG5h" value="reduce_NPENotEqualsExpression" />
+    <property role="3GE5qa" value="expressions" />
+    <ref role="3gUMe" to="tpee:hP7QLMh" resolve="NPENotEqualsExpression" />
+    <node concept="2Tav94" id="19BYn$PMPDy" role="13RCb5">
+      <property role="1YR72k" value="true" />
+      <node concept="2YIFZL" id="19BYn$PMPDz" role="2Tav96">
+        <property role="TrG5h" value="neq" />
+        <node concept="3Tm6S6" id="19BYn$PMPD$" role="1B3o_S" />
+        <node concept="3clFbS" id="19BYn$PMPD_" role="3clF47">
+          <node concept="3cpWs6" id="19BYn$PMPDA" role="3cqZAp">
+            <node concept="3fqX7Q" id="19BYn$PMQCp" role="3cqZAk">
+              <node concept="1eOMI4" id="3$myXoLqkLN" role="3fr31v">
+                <node concept="3K4zz7" id="19BYn$PMQCq" role="1eOMHV">
+                  <node concept="2OqwBi" id="19BYn$PMQCr" role="3K4E3e">
+                    <node concept="37vLTw" id="2BHiRxglRND" role="2Oq$k0">
+                      <ref role="3cqZAo" node="19BYn$PMPDM" resolve="a" />
                     </node>
-                    <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="2696770507970455308" nodeInfo="nn">
-                      <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dlength()%cint" resolveInfo="length" />
-                    </node>
-                  </node>
-                  <node role="lValue" roleId="tpee.1068498886295" type="tpee.VariableReference" typeId="tpee.1068498886296" id="4265636116363087843" nodeInfo="nn">
-                    <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455295" resolveInfo="strLen" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.EqualsExpression" typeId="tpee.1068580123152" id="2696770507970455310" nodeInfo="nn">
-              <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151715688" nodeInfo="nn">
-                <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455287" resolveInfo="str" />
-              </node>
-              <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="2696770507970455312" nodeInfo="nn" />
-            </node>
-          </node>
-        </node>
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.LocalVariableDeclarationStatement" typeId="tpee.1068581242864" id="2696770507970455313" nodeInfo="nn">
-          <node role="localVariableDeclaration" roleId="tpee.1068581242865" type="tpee.LocalVariableDeclaration" typeId="tpee.1068581242863" id="2696770507970455314" nodeInfo="nr">
-            <property name="name" nameId="tpck.1169194664001" value="start" />
-            <node role="type" roleId="tpee.5680397130376446158" type="tpee.IntegerType" typeId="tpee.1070534370425" id="2696770507970455315" nodeInfo="in" />
-            <node role="initializer" roleId="tpee.1068431790190" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="2696770507970455316" nodeInfo="nn">
-              <property name="value" nameId="tpee.1068580320021" value="0" />
-            </node>
-          </node>
-        </node>
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.WhileStatement" typeId="tpee.1076505808687" id="2696770507970455317" nodeInfo="nn">
-          <node role="condition" roleId="tpee.1076505808688" type="tpee.AndExpression" typeId="tpee.1080120340718" id="2696770507970455318" nodeInfo="nn">
-            <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.ParenthesizedExpression" typeId="tpee.1079359253375" id="2696770507970455319" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1079359253376" type="tpee.NotEqualsExpression" typeId="tpee.1073239437375" id="2696770507970455320" nodeInfo="nn">
-                <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="4265636116363095802" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455314" resolveInfo="start" />
-                </node>
-                <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.VariableReference" typeId="tpee.1068498886296" id="4265636116363101065" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455295" resolveInfo="strLen" />
-                </node>
-              </node>
-            </node>
-            <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.ParenthesizedExpression" typeId="tpee.1079359253375" id="2696770507970455323" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1079359253376" type="tpee.NotEqualsExpression" typeId="tpee.1073239437375" id="2696770507970455324" nodeInfo="nn">
-                <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.DotExpression" typeId="tpee.1197027756228" id="2696770507970455325" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905150326716" nodeInfo="nn">
-                    <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455289" resolveInfo="chars" />
-                  </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="2696770507970455327" nodeInfo="nn">
-                    <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dindexOf(int)%cint" resolveInfo="indexOf" />
-                    <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.DotExpression" typeId="tpee.1197027756228" id="2696770507970455328" nodeInfo="nn">
-                      <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151609078" nodeInfo="nn">
-                        <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455287" resolveInfo="str" />
-                      </node>
-                      <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="2696770507970455330" nodeInfo="nn">
-                        <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dcharAt(int)%cchar" resolveInfo="charAt" />
-                        <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.VariableReference" typeId="tpee.1068498886296" id="4265636116363086485" nodeInfo="nn">
-                          <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455314" resolveInfo="start" />
-                        </node>
+                    <node concept="liA8E" id="19BYn$PMQCt" role="2OqNvi">
+                      <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object):boolean" resolve="equals" />
+                      <node concept="37vLTw" id="2BHiRxgm7hK" role="37wK5m">
+                        <ref role="3cqZAo" node="19BYn$PMPDO" resolve="b" />
                       </node>
                     </node>
                   </node>
-                </node>
-                <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.UnaryMinus" typeId="tpee.8064396509828172209" id="2696770507970455332" nodeInfo="nn">
-                  <node role="expression" roleId="tpee.1239714902950" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="2696770507970455333" nodeInfo="nn">
-                    <property name="value" nameId="tpee.1068580320021" value="1" />
+                  <node concept="3clFbC" id="19BYn$PMQCv" role="3K4GZi">
+                    <node concept="37vLTw" id="2BHiRxgkYBn" role="3uHU7w">
+                      <ref role="3cqZAo" node="19BYn$PMPDO" resolve="b" />
+                    </node>
+                    <node concept="37vLTw" id="2BHiRxgkX1W" role="3uHU7B">
+                      <ref role="3cqZAo" node="19BYn$PMPDM" resolve="a" />
+                    </node>
+                  </node>
+                  <node concept="3y3z36" id="19BYn$PMQCy" role="3K4Cdx">
+                    <node concept="10Nm6u" id="19BYn$PMQCz" role="3uHU7w" />
+                    <node concept="37vLTw" id="2BHiRxghg7C" role="3uHU7B">
+                      <ref role="3cqZAo" node="19BYn$PMPDM" resolve="a" />
+                    </node>
                   </node>
                 </node>
               </node>
             </node>
           </node>
-          <node role="body" roleId="tpee.1154032183016" type="tpee.StatementList" typeId="tpee.1068580123136" id="2696770507970455334" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="2696770507970455335" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068580123156" type="tpee.PostfixIncrementExpression" typeId="tpee.1214918800624" id="2696770507970455336" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1239714902950" type="tpee.VariableReference" typeId="tpee.1068498886296" id="4265636116363082628" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455314" resolveInfo="start" />
+        </node>
+        <node concept="37vLTG" id="19BYn$PMPDM" role="3clF46">
+          <property role="TrG5h" value="a" />
+          <node concept="3uibUv" id="19BYn$PMPDN" role="1tU5fm">
+            <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+          </node>
+        </node>
+        <node concept="37vLTG" id="19BYn$PMPDO" role="3clF46">
+          <property role="TrG5h" value="b" />
+          <node concept="3uibUv" id="19BYn$PMPDP" role="1tU5fm">
+            <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+          </node>
+        </node>
+        <node concept="10P_77" id="19BYn$PMPDQ" role="3clF45" />
+      </node>
+      <node concept="2TbA4q" id="19BYn$PMPDR" role="2Tav95">
+        <ref role="37wK5l" node="19BYn$PMPDz" resolve="neq" />
+        <node concept="10Nm6u" id="4D3RMlPNgdT" role="37wK5m">
+          <node concept="29HgVG" id="4D3RMlPNgdV" role="lGtFl">
+            <node concept="3NFfHV" id="4D3RMlPNgdY" role="3NFExx">
+              <node concept="3clFbS" id="4D3RMlPNgdZ" role="2VODD2">
+                <node concept="3clFbF" id="4D3RMlPNge0" role="3cqZAp">
+                  <node concept="2OqwBi" id="4D3RMlPNge1" role="3clFbG">
+                    <node concept="3TrEf2" id="4D3RMlPNge2" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpee:fJuHU4s" resolve="leftExpression" />
+                    </node>
+                    <node concept="30H73N" id="4D3RMlPNge3" role="2Oq$k0" />
+                  </node>
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.ReturnStatement" typeId="tpee.1068581242878" id="2696770507970455338" nodeInfo="nn">
-          <node role="expression" roleId="tpee.1068581517676" type="tpee.DotExpression" typeId="tpee.1197027756228" id="2696770507970455339" nodeInfo="nn">
-            <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151597232" nodeInfo="nn">
-              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455287" resolveInfo="str" />
-            </node>
-            <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="2696770507970455341" nodeInfo="nn">
-              <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dsubstring(int)%cjava%dlang%dString" resolveInfo="substring" />
-              <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.VariableReference" typeId="tpee.1068498886296" id="4265636116363080632" nodeInfo="nn">
-                <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455314" resolveInfo="start" />
+        <node concept="10Nm6u" id="4D3RMlPNgdS" role="37wK5m">
+          <node concept="29HgVG" id="4D3RMlPNge5" role="lGtFl">
+            <node concept="3NFfHV" id="4D3RMlPNge8" role="3NFExx">
+              <node concept="3clFbS" id="4D3RMlPNge9" role="2VODD2">
+                <node concept="3clFbF" id="4D3RMlPNgea" role="3cqZAp">
+                  <node concept="2OqwBi" id="4D3RMlPNgeb" role="3clFbG">
+                    <node concept="3TrEf2" id="4D3RMlPNgec" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpee:fJuHU4r" resolve="rightExpression" />
+                    </node>
+                    <node concept="30H73N" id="4D3RMlPNged" role="2Oq$k0" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
         </node>
       </node>
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.IfMacro" typeId="tpf8.1118773211870" id="4592826945243771478" nodeInfo="nn">
-        <node role="conditionFunction" roleId="tpf8.1167945861827" type="tpf8.IfMacro_Condition" typeId="tpf8.1167945743726" id="4592826945243771479" nodeInfo="nn">
-          <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243771480" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243771481" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771482" nodeInfo="nn">
-                <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771483" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771484" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpf3.TemplateFunctionParameter_generationContext" typeId="tpf3.1216860049635" id="4592826945243771485" nodeInfo="nn" />
-                    <node role="operation" roleId="tpee.1197027833540" type="tpf3.GenerationContextOp_GetInputModel" typeId="tpf3.1217004708011" id="4592826945243771486" nodeInfo="nn" />
-                  </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tp25.Model_NodesOperation" typeId="tp25.1171323947159" id="4592826945243771487" nodeInfo="nn">
-                    <link role="concept" roleId="tp25.1171323947160" targetNodeId="tpee.1225271546410" resolveInfo="TrimOperation" />
+      <node concept="raruj" id="19BYn$PMPE8" role="lGtFl" />
+    </node>
+  </node>
+  <node concept="13MO4I" id="hP8d3au">
+    <property role="TrG5h" value="reduce_StringType" />
+    <node concept="3uibUv" id="hP8d3av" role="13RCb5">
+      <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      <node concept="raruj" id="hP8d3aw" role="lGtFl" />
+    </node>
+  </node>
+  <node concept="13MO4I" id="hP8d3ax">
+    <property role="TrG5h" value="reduce_SubstringExpression" />
+    <property role="3GE5qa" value="ext.string.expression" />
+    <ref role="3gUMe" to="tpee:hP7RM7N" resolve="SubstringExpression" />
+    <node concept="1niqFM" id="3tlNzo6HZd5" role="13RCb5">
+      <property role="1npUBZ" value="StringUtils" />
+      <property role="1npL6y" value="substring" />
+      <node concept="Xl_RD" id="3tlNzo6HZd6" role="2U24H$">
+        <property role="Xl_RC" value="expression" />
+        <node concept="29HgVG" id="3tlNzo6HZd7" role="lGtFl">
+          <node concept="3NFfHV" id="3tlNzo6HZd8" role="3NFExx">
+            <node concept="3clFbS" id="3tlNzo6HZd9" role="2VODD2">
+              <node concept="3clFbF" id="3tlNzo6HZda" role="3cqZAp">
+                <node concept="2OqwBi" id="3tlNzo6HZdb" role="3clFbG">
+                  <node concept="30H73N" id="3tlNzo6HZdc" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="eiaDkhYP0d" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tpee:hP7RM7O" resolve="operand" />
                   </node>
                 </node>
-                <node role="operation" roleId="tpee.1197027833540" type="tp2q.AnyOperation" typeId="tp2q.1235566554328" id="4592826945243771488" nodeInfo="nn">
-                  <node role="closure" roleId="tp2q.1204796294226" type="tp2c.ClosureLiteral" typeId="tp2c.1199569711397" id="4592826945243771489" nodeInfo="nn">
-                    <node role="body" roleId="tp2c.1199569916463" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243771490" nodeInfo="sn">
-                      <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243771491" nodeInfo="nn">
-                        <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771492" nodeInfo="nn">
-                          <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771493" nodeInfo="nn">
-                            <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151398510" nodeInfo="nn">
-                              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="4592826945243771498" resolveInfo="it" />
-                            </node>
-                            <node role="operation" roleId="tpee.1197027833540" type="tp25.SPropertyAccess" typeId="tp25.1138056022639" id="4592826945243771495" nodeInfo="nn">
-                              <link role="property" roleId="tp25.1138056395725" targetNodeId="tpee.1225271546413" resolveInfo="trimKind" />
-                            </node>
-                          </node>
-                          <node role="operation" roleId="tpee.1197027833540" type="tp25.Property_HasValue_Enum" typeId="tp25.1146171026731" id="4592826945243771496" nodeInfo="nn">
-                            <node role="value" roleId="tp25.1146171026732" type="tp25.EnumMemberReference" typeId="tp25.1138676077309" id="4592826945243771497" nodeInfo="nn">
-                              <link role="enumMember" roleId="tp25.1138676095763" targetNodeId="tpee.1225271514376" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                    <node role="parameter" roleId="tp2c.1199569906740" type="tp2q.SmartClosureParameterDeclaration" typeId="tp2q.1203518072036" id="4592826945243771498" nodeInfo="ig">
-                      <property name="name" nameId="tpck.1169194664001" value="it" />
-                      <node role="type" roleId="tpee.5680397130376446158" type="tpee.UndefinedType" typeId="tpee.4836112446988635817" id="4592826945243771499" nodeInfo="in" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3cmrfG" id="3tlNzo6HZdu" role="2U24H$">
+        <property role="3cmrfH" value="0" />
+        <node concept="1W57fq" id="3tlNzo6HZdv" role="lGtFl">
+          <node concept="3IZrLx" id="3tlNzo6HZdw" role="3IZSJc">
+            <node concept="3clFbS" id="3tlNzo6HZdx" role="2VODD2">
+              <node concept="3clFbF" id="3tlNzo6HZdy" role="3cqZAp">
+                <node concept="3y3z36" id="3tlNzo6HZdz" role="3clFbG">
+                  <node concept="10Nm6u" id="3tlNzo6HZd$" role="3uHU7w" />
+                  <node concept="2OqwBi" id="3tlNzo6HZd_" role="3uHU7B">
+                    <node concept="30H73N" id="3tlNzo6HZdA" role="2Oq$k0" />
+                    <node concept="3TrEf2" id="3tlNzo6HZdB" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpee:hP7RM7P" resolve="startIndex" />
                     </node>
                   </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="gft3U" id="3tlNzo6HZdC" role="UU_$l">
+            <node concept="3cmrfG" id="3tlNzo6HZdD" role="gfFT$">
+              <property role="3cmrfH" value="0" />
+            </node>
+          </node>
+        </node>
+        <node concept="29HgVG" id="3tlNzo6HZdE" role="lGtFl">
+          <node concept="3NFfHV" id="3tlNzo6HZdF" role="3NFExx">
+            <node concept="3clFbS" id="3tlNzo6HZdG" role="2VODD2">
+              <node concept="3clFbF" id="3tlNzo6HZdH" role="3cqZAp">
+                <node concept="2OqwBi" id="3tlNzo6HZdI" role="3clFbG">
+                  <node concept="30H73N" id="3tlNzo6HZdJ" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="3tlNzo6HZdK" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tpee:hP7RM7P" resolve="startIndex" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3cmrfG" id="3tlNzo6HZdL" role="2U24H$">
+        <property role="3cmrfH" value="12" />
+        <node concept="29HgVG" id="3tlNzo6HZdM" role="lGtFl">
+          <node concept="3NFfHV" id="3tlNzo6HZdN" role="3NFExx">
+            <node concept="3clFbS" id="3tlNzo6HZdO" role="2VODD2">
+              <node concept="3clFbF" id="3tlNzo6HZdP" role="3cqZAp">
+                <node concept="2OqwBi" id="3tlNzo6HZdQ" role="3clFbG">
+                  <node concept="30H73N" id="3tlNzo6HZdR" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="3tlNzo6HZdS" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tpee:hP7RM7Q" resolve="endIndex" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="3tlNzo6HZde" role="32Mpfj">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="raruj" id="3tlNzo6HZdf" role="lGtFl" />
+      <node concept="17Uvod" id="3tlNzo6HZdg" role="lGtFl">
+        <property role="2qtEX9" value="fqClassName" />
+        <property role="P4ACc" value="df345b11-b8c7-4213-ac66-48d2a9b75d88/1173990517731/1173992483054" />
+        <node concept="3zFVjK" id="3tlNzo6HZdh" role="3zH0cK">
+          <node concept="3clFbS" id="3tlNzo6HZdi" role="2VODD2">
+            <node concept="3clFbF" id="3tlNzo6HZdj" role="3cqZAp">
+              <node concept="3cpWs3" id="3tlNzo6HZdk" role="3clFbG">
+                <node concept="2YIFZM" id="2n9zn0CqMPw" role="3uHU7B">
+                  <ref role="37wK5l" to="unno:7WvVJ3rORmu" resolve="getModelLongName" />
+                  <ref role="1Pybhc" to="unno:1NYD3hytmTa" resolve="SNodeOperations" />
+                  <node concept="2JrnkZ" id="2n9zn0CqMPx" role="37wK5m">
+                    <node concept="2OqwBi" id="2n9zn0CqMPy" role="2JrQYb">
+                      <node concept="30H73N" id="2n9zn0CqMPz" role="2Oq$k0" />
+                      <node concept="I4A8Y" id="2n9zn0CqMP$" role="2OqNvi" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="3tlNzo6HZdl" role="3uHU7w">
+                  <property role="Xl_RC" value=".StringUtils" />
                 </node>
               </node>
             </node>
@@ -1232,178 +893,166 @@
         </node>
       </node>
     </node>
-    <node role="member" roleId="tpee.5375687026011219971" type="tpee.StaticMethodDeclaration" typeId="tpee.1081236700938" id="2696770507970455227" nodeInfo="igu">
-      <property name="name" nameId="tpck.1169194664001" value="stripEnd" />
-      <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="2696770507970455228" nodeInfo="ir">
-        <property name="name" nameId="tpck.1169194664001" value="str" />
-        <node role="type" roleId="tpee.5680397130376446158" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="2696770507970455229" nodeInfo="in">
-          <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
+  </node>
+  <node concept="13MO4I" id="hP8d3b7">
+    <property role="TrG5h" value="reduce_TrimOperation_Both" />
+    <property role="3GE5qa" value="ext.string.expression" />
+    <ref role="3gUMe" to="tpee:hP7S18E" resolve="TrimOperation" />
+    <node concept="2Tav94" id="3YWZWnqamvu" role="13RCb5">
+      <node concept="2YIFZL" id="3YWZWnqamvv" role="2Tav96">
+        <property role="TrG5h" value="trim" />
+        <node concept="3uibUv" id="3YWZWnqamw4" role="3clF45">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
         </node>
-      </node>
-      <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="2696770507970455230" nodeInfo="ir">
-        <property name="name" nameId="tpck.1169194664001" value="chars" />
-        <node role="type" roleId="tpee.5680397130376446158" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="2696770507970455231" nodeInfo="in">
-          <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-        </node>
-      </node>
-      <node role="returnType" roleId="tpee.1068580123133" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="2696770507970455232" nodeInfo="in">
-        <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-      </node>
-      <node role="body" roleId="tpee.1068580123135" type="tpee.StatementList" typeId="tpee.1068580123136" id="2696770507970455234" nodeInfo="sn">
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.LocalVariableDeclarationStatement" typeId="tpee.1068581242864" id="2696770507970455235" nodeInfo="nn">
-          <node role="localVariableDeclaration" roleId="tpee.1068581242865" type="tpee.LocalVariableDeclaration" typeId="tpee.1068581242863" id="2696770507970455236" nodeInfo="nr">
-            <property name="name" nameId="tpck.1169194664001" value="end" />
-            <node role="type" roleId="tpee.5680397130376446158" type="tpee.IntegerType" typeId="tpee.1070534370425" id="2696770507970455237" nodeInfo="in" />
-          </node>
-        </node>
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.IfStatement" typeId="tpee.1068580123159" id="2696770507970455238" nodeInfo="nn">
-          <node role="ifTrue" roleId="tpee.1068580123161" type="tpee.StatementList" typeId="tpee.1068580123136" id="2696770507970455239" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ReturnStatement" typeId="tpee.1068581242878" id="2696770507970455240" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068581517676" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151301929" nodeInfo="nn">
-                <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455228" resolveInfo="str" />
+        <node concept="3Tm1VV" id="3YWZWnqamvx" role="1B3o_S" />
+        <node concept="3clFbS" id="3YWZWnqamvy" role="3clF47">
+          <node concept="3cpWs6" id="3YWZWnqamvV" role="3cqZAp">
+            <node concept="3K4zz7" id="3YWZWnqamvW" role="3cqZAk">
+              <node concept="3clFbC" id="3YWZWnqamvX" role="3K4Cdx">
+                <node concept="37vLTw" id="2BHiRxgmgpF" role="3uHU7B">
+                  <ref role="3cqZAo" node="3YWZWnqamvH" resolve="str" />
+                </node>
+                <node concept="10Nm6u" id="3YWZWnqamvZ" role="3uHU7w" />
+              </node>
+              <node concept="10Nm6u" id="3YWZWnqamw0" role="3K4E3e" />
+              <node concept="2OqwBi" id="3YWZWnqamw1" role="3K4GZi">
+                <node concept="37vLTw" id="2BHiRxgm7qf" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3YWZWnqamvH" resolve="str" />
+                </node>
+                <node concept="liA8E" id="3YWZWnqamw3" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~String.trim():java.lang.String" resolve="trim" />
+                </node>
               </node>
             </node>
           </node>
-          <node role="condition" roleId="tpee.1068580123160" type="tpee.OrExpression" typeId="tpee.1080223426719" id="2696770507970455242" nodeInfo="nn">
-            <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.EqualsExpression" typeId="tpee.1068580123152" id="2696770507970455243" nodeInfo="nn">
-              <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="2696770507970455244" nodeInfo="nn">
-                <property name="value" nameId="tpee.1068580320021" value="0" />
-              </node>
-              <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.ParenthesizedExpression" typeId="tpee.1079359253375" id="2696770507970455245" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1079359253376" type="tpee.AssignmentExpression" typeId="tpee.1068498886294" id="2696770507970455246" nodeInfo="nn">
-                  <node role="rValue" roleId="tpee.1068498886297" type="tpee.DotExpression" typeId="tpee.1197027756228" id="2696770507970455247" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905150304629" nodeInfo="nn">
-                      <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455228" resolveInfo="str" />
+        </node>
+        <node concept="37vLTG" id="3YWZWnqamvH" role="3clF46">
+          <property role="TrG5h" value="str" />
+          <node concept="3uibUv" id="3YWZWnqamvI" role="1tU5fm">
+            <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+          </node>
+        </node>
+        <node concept="17Uvod" id="3YWZWnqc8pS" role="lGtFl">
+          <property role="2qtEX9" value="name" />
+          <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
+          <node concept="3zFVjK" id="3YWZWnqc8pT" role="3zH0cK">
+            <node concept="3clFbS" id="3YWZWnqc8pU" role="2VODD2">
+              <node concept="3clFbF" id="3YWZWnqc8pV" role="3cqZAp">
+                <node concept="2OqwBi" id="3YWZWnqc8pW" role="3clFbG">
+                  <node concept="1iwH7S" id="3YWZWnqc8pX" role="2Oq$k0" />
+                  <node concept="2piZGk" id="3YWZWnqc8pY" role="2OqNvi">
+                    <node concept="Xl_RD" id="3YWZWnqc8pZ" role="2piZGb">
+                      <property role="Xl_RC" value="trim" />
                     </node>
-                    <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="2696770507970455249" nodeInfo="nn">
-                      <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dlength()%cint" resolveInfo="length" />
+                    <node concept="2OqwBi" id="GdSDg9BAK1" role="2pr8EU">
+                      <node concept="30H73N" id="GdSDg9BAK2" role="2Oq$k0" />
+                      <node concept="2Rxl7S" id="GdSDg9BAK3" role="2OqNvi" />
                     </node>
-                  </node>
-                  <node role="lValue" roleId="tpee.1068498886295" type="tpee.VariableReference" typeId="tpee.1068498886296" id="4265636116363079040" nodeInfo="nn">
-                    <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455236" resolveInfo="end" />
                   </node>
                 </node>
               </node>
-            </node>
-            <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.EqualsExpression" typeId="tpee.1068580123152" id="2696770507970455251" nodeInfo="nn">
-              <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151307850" nodeInfo="nn">
-                <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455228" resolveInfo="str" />
-              </node>
-              <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="2696770507970455253" nodeInfo="nn" />
             </node>
           </node>
         </node>
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.WhileStatement" typeId="tpee.1076505808687" id="2696770507970455254" nodeInfo="nn">
-          <node role="condition" roleId="tpee.1076505808688" type="tpee.AndExpression" typeId="tpee.1080120340718" id="2696770507970455255" nodeInfo="nn">
-            <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.ParenthesizedExpression" typeId="tpee.1079359253375" id="2696770507970455256" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1079359253376" type="tpee.NotEqualsExpression" typeId="tpee.1073239437375" id="2696770507970455257" nodeInfo="nn">
-                <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="2696770507970455258" nodeInfo="nn">
-                  <property name="value" nameId="tpee.1068580320021" value="0" />
-                </node>
-                <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.VariableReference" typeId="tpee.1068498886296" id="4265636116363076745" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455236" resolveInfo="end" />
+      </node>
+      <node concept="2TbA4q" id="3YWZWnqamvJ" role="2Tav95">
+        <ref role="37wK5l" node="3YWZWnqamvv" resolve="trim" />
+        <node concept="Xl_RD" id="3YWZWnqamvK" role="37wK5m">
+          <property role="Xl_RC" value="" />
+          <node concept="29HgVG" id="3YWZWnqamvL" role="lGtFl">
+            <node concept="3NFfHV" id="3YWZWnqamvM" role="3NFExx">
+              <node concept="3clFbS" id="3YWZWnqamvN" role="2VODD2">
+                <node concept="3clFbF" id="3YWZWnqamvO" role="3cqZAp">
+                  <node concept="2OqwBi" id="3YWZWnqamvP" role="3clFbG">
+                    <node concept="30H73N" id="3YWZWnqamvQ" role="2Oq$k0" />
+                    <node concept="2qgKlT" id="3YWZWnqamvR" role="2OqNvi">
+                      <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
-            <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.ParenthesizedExpression" typeId="tpee.1079359253375" id="2696770507970455260" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1079359253376" type="tpee.NotEqualsExpression" typeId="tpee.1073239437375" id="2696770507970455261" nodeInfo="nn">
-                <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.DotExpression" typeId="tpee.1197027756228" id="2696770507970455262" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151604282" nodeInfo="nn">
-                    <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455230" resolveInfo="chars" />
-                  </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="2696770507970455264" nodeInfo="nn">
-                    <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dindexOf(int)%cint" resolveInfo="indexOf" />
-                    <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.DotExpression" typeId="tpee.1197027756228" id="2696770507970455265" nodeInfo="nn">
-                      <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151664878" nodeInfo="nn">
-                        <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455228" resolveInfo="str" />
+          </node>
+        </node>
+      </node>
+      <node concept="raruj" id="3YWZWnqamvS" role="lGtFl" />
+    </node>
+  </node>
+  <node concept="bUwia" id="hP8d3bE">
+    <property role="TrG5h" value="string" />
+    <property role="3GE5qa" value="ext.string.expression" />
+    <node concept="2rT7sh" id="1iiSysipqrD" role="2rTMjI">
+      <property role="TrG5h" value="IsEmptyExtractExpr" />
+      <ref role="2rTdP9" to="tpee:hP7RlTU" resolve="IsEmptyOperation" />
+      <ref role="2rZz_L" to="tp68:373Y828UwF4" resolve="ExtractStaticMethodExpression" />
+    </node>
+    <node concept="2rT7sh" id="1iiSysipr29" role="2rTMjI">
+      <property role="TrG5h" value="IsNotEmptyExtractExpr" />
+      <ref role="2rZz_L" to="tp68:373Y828UwF4" resolve="ExtractStaticMethodExpression" />
+      <ref role="2rTdP9" to="tpee:hP7Rvtz" resolve="IsNotEmptyOperation" />
+    </node>
+    <node concept="2VPoh5" id="2lGQBOCl2lv" role="2VS0gm">
+      <ref role="2VPoh2" node="2lGQBOCl2qI" resolve="StringUtils" />
+      <node concept="2VP$b9" id="2lGQBOCl2sL" role="2VPoh3">
+        <node concept="3clFbS" id="2lGQBOCl2sM" role="2VODD2">
+          <node concept="3clFbF" id="2lGQBOCl2sN" role="3cqZAp">
+            <node concept="22lmx$" id="3YWZWnq6eOi" role="3clFbG">
+              <node concept="3fqX7Q" id="3YWZWnq6eLH" role="3uHU7B">
+                <node concept="2OqwBi" id="3YWZWnq6eLI" role="3fr31v">
+                  <node concept="2OqwBi" id="3YWZWnq6eLJ" role="2Oq$k0">
+                    <node concept="2OqwBi" id="3YWZWnq6eLK" role="2Oq$k0">
+                      <node concept="1iwH7S" id="3YWZWnq6eLL" role="2Oq$k0" />
+                      <node concept="1r8y6K" id="3YWZWnq6eLM" role="2OqNvi" />
+                    </node>
+                    <node concept="2SmgA7" id="3YWZWnq6eLN" role="2OqNvi">
+                      <node concept="chp4Y" id="1jixkkC_WId" role="1dBWTz">
+                        <ref role="cht4Q" to="tpee:hP7RM7N" resolve="SubstringExpression" />
                       </node>
-                      <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="2696770507970455267" nodeInfo="nn">
-                        <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dcharAt(int)%cchar" resolveInfo="charAt" />
-                        <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.MinusExpression" typeId="tpee.1068581242869" id="2696770507970455268" nodeInfo="nn">
-                          <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="2696770507970455269" nodeInfo="nn">
-                            <property name="value" nameId="tpee.1068580320021" value="1" />
-                          </node>
-                          <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="4265636116363096191" nodeInfo="nn">
-                            <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455236" resolveInfo="end" />
-                          </node>
-                        </node>
-                      </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="3YWZWnq6eLO" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~List.isEmpty():boolean" resolve="isEmpty" />
+                  </node>
+                </node>
+              </node>
+              <node concept="2OqwBi" id="3YWZWnq6eOl" role="3uHU7w">
+                <node concept="2OqwBi" id="3YWZWnq6eOm" role="2Oq$k0">
+                  <node concept="2OqwBi" id="3YWZWnq6eOn" role="2Oq$k0">
+                    <node concept="1iwH7S" id="3YWZWnq6eOo" role="2Oq$k0" />
+                    <node concept="1r8y6K" id="3YWZWnq6eOp" role="2OqNvi" />
+                  </node>
+                  <node concept="2SmgA7" id="3YWZWnq6eOq" role="2OqNvi">
+                    <node concept="chp4Y" id="1jixkkC_WIj" role="1dBWTz">
+                      <ref role="cht4Q" to="tpee:hP7S18E" resolve="TrimOperation" />
                     </node>
                   </node>
                 </node>
-                <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.UnaryMinus" typeId="tpee.8064396509828172209" id="2696770507970455271" nodeInfo="nn">
-                  <node role="expression" roleId="tpee.1239714902950" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="2696770507970455272" nodeInfo="nn">
-                    <property name="value" nameId="tpee.1068580320021" value="1" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node role="body" roleId="tpee.1154032183016" type="tpee.StatementList" typeId="tpee.1068580123136" id="2696770507970455273" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="2696770507970455274" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068580123156" type="tpee.PostfixDecrementExpression" typeId="tpee.1214918975462" id="2696770507970455275" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1239714902950" type="tpee.VariableReference" typeId="tpee.1068498886296" id="4265636116363109896" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455236" resolveInfo="end" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.ReturnStatement" typeId="tpee.1068581242878" id="2696770507970455277" nodeInfo="nn">
-          <node role="expression" roleId="tpee.1068581517676" type="tpee.DotExpression" typeId="tpee.1197027756228" id="2696770507970455278" nodeInfo="nn">
-            <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151599651" nodeInfo="nn">
-              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455228" resolveInfo="str" />
-            </node>
-            <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="2696770507970455280" nodeInfo="nn">
-              <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dsubstring(int,int)%cjava%dlang%dString" resolveInfo="substring" />
-              <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="2696770507970455281" nodeInfo="nn">
-                <property name="value" nameId="tpee.1068580320021" value="0" />
-              </node>
-              <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.VariableReference" typeId="tpee.1068498886296" id="4265636116363094438" nodeInfo="nn">
-                <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="2696770507970455236" resolveInfo="end" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.IfMacro" typeId="tpf8.1118773211870" id="4592826945243771380" nodeInfo="nn">
-        <node role="conditionFunction" roleId="tpf8.1167945861827" type="tpf8.IfMacro_Condition" typeId="tpf8.1167945743726" id="4592826945243771381" nodeInfo="nn">
-          <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243771382" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243771383" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771409" nodeInfo="nn">
-                <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771384" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771385" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpf3.TemplateFunctionParameter_generationContext" typeId="tpf3.1216860049635" id="4592826945243771386" nodeInfo="nn" />
-                    <node role="operation" roleId="tpee.1197027833540" type="tpf3.GenerationContextOp_GetInputModel" typeId="tpf3.1217004708011" id="4592826945243771387" nodeInfo="nn" />
-                  </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tp25.Model_NodesOperation" typeId="tp25.1171323947159" id="4592826945243771388" nodeInfo="nn">
-                    <link role="concept" roleId="tp25.1171323947160" targetNodeId="tpee.1225271546410" resolveInfo="TrimOperation" />
-                  </node>
-                </node>
-                <node role="operation" roleId="tpee.1197027833540" type="tp2q.AnyOperation" typeId="tp2q.1235566554328" id="4592826945243771414" nodeInfo="nn">
-                  <node role="closure" roleId="tp2q.1204796294226" type="tp2c.ClosureLiteral" typeId="tp2c.1199569711397" id="4592826945243771415" nodeInfo="nn">
-                    <node role="body" roleId="tp2c.1199569916463" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243771416" nodeInfo="sn">
-                      <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243771419" nodeInfo="nn">
-                        <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771469" nodeInfo="nn">
-                          <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243771441" nodeInfo="nn">
-                            <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151296606" nodeInfo="nn">
-                              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="4592826945243771417" resolveInfo="it" />
+                <node concept="2HwmR7" id="3YWZWnq6eOr" role="2OqNvi">
+                  <node concept="1bVj0M" id="3YWZWnq6eOs" role="23t8la">
+                    <node concept="3clFbS" id="3YWZWnq6eOt" role="1bW5cS">
+                      <node concept="3clFbF" id="3YWZWnq6eOu" role="3cqZAp">
+                        <node concept="3fqX7Q" id="3YWZWnq6eQl" role="3clFbG">
+                          <node concept="2OqwBi" id="3YWZWnq6eQm" role="3fr31v">
+                            <node concept="2OqwBi" id="3YWZWnq6eQn" role="2Oq$k0">
+                              <node concept="37vLTw" id="2BHiRxgmeVA" role="2Oq$k0">
+                                <ref role="3cqZAo" node="3YWZWnq6eO_" resolve="it" />
+                              </node>
+                              <node concept="3TrcHB" id="3YWZWnq6eQp" role="2OqNvi">
+                                <ref role="3TsBF5" to="tpee:hP7S18H" resolve="trimKind" />
+                              </node>
                             </node>
-                            <node role="operation" roleId="tpee.1197027833540" type="tp25.SPropertyAccess" typeId="tp25.1138056022639" id="4592826945243771447" nodeInfo="nn">
-                              <link role="property" roleId="tp25.1138056395725" targetNodeId="tpee.1225271546413" resolveInfo="trimKind" />
-                            </node>
-                          </node>
-                          <node role="operation" roleId="tpee.1197027833540" type="tp25.Property_HasValue_Enum" typeId="tp25.1146171026731" id="4592826945243771475" nodeInfo="nn">
-                            <node role="value" roleId="tp25.1146171026732" type="tp25.EnumMemberReference" typeId="tp25.1138676077309" id="4592826945243771476" nodeInfo="nn">
-                              <link role="enumMember" roleId="tp25.1138676095763" targetNodeId="tpee.1225271514377" />
+                            <node concept="3t7uKx" id="3YWZWnq6eQq" role="2OqNvi">
+                              <node concept="uoxfO" id="3YWZWnq6eQr" role="3t7uKA">
+                                <ref role="uo_Cq" to="tpee:hP7RTk7" />
+                              </node>
                             </node>
                           </node>
                         </node>
                       </node>
                     </node>
-                    <node role="parameter" roleId="tp2c.1199569906740" type="tp2q.SmartClosureParameterDeclaration" typeId="tp2q.1203518072036" id="4592826945243771417" nodeInfo="ig">
-                      <property name="name" nameId="tpck.1169194664001" value="it" />
-                      <node role="type" roleId="tpee.5680397130376446158" type="tpee.UndefinedType" typeId="tpee.4836112446988635817" id="4592826945243771418" nodeInfo="in" />
+                    <node concept="Rh6nW" id="3YWZWnq6eO_" role="1bW2Oz">
+                      <property role="TrG5h" value="it" />
+                      <node concept="2jxLKc" id="3YWZWnq6eOA" role="1tU5fm" />
                     </node>
                   </node>
                 </node>
@@ -1413,230 +1062,66 @@
         </node>
       </node>
     </node>
-    <node role="member" roleId="tpee.5375687026011219971" type="tpee.StaticMethodDeclaration" typeId="tpee.1081236700938" id="3987319776542715870" nodeInfo="igu">
-      <property name="name" nameId="tpck.1169194664001" value="substring" />
-      <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="3987319776542715874" nodeInfo="ir">
-        <property name="name" nameId="tpck.1169194664001" value="str" />
-        <node role="type" roleId="tpee.5680397130376446158" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="3987319776542716828" nodeInfo="in">
-          <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-        </node>
-      </node>
-      <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="3987319776542715876" nodeInfo="ir">
-        <property name="name" nameId="tpck.1169194664001" value="start" />
-        <node role="type" roleId="tpee.5680397130376446158" type="tpee.IntegerType" typeId="tpee.1070534370425" id="3987319776542716829" nodeInfo="in" />
-      </node>
-      <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="3987319776542716830" nodeInfo="ir">
-        <property name="name" nameId="tpck.1169194664001" value="end" />
-        <node role="type" roleId="tpee.5680397130376446158" type="tpee.IntegerType" typeId="tpee.1070534370425" id="3987319776542716832" nodeInfo="in" />
-      </node>
-      <node role="returnType" roleId="tpee.1068580123133" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="3987319776542716827" nodeInfo="in">
-        <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-      </node>
-      <node role="body" roleId="tpee.1068580123135" type="tpee.StatementList" typeId="tpee.1068580123136" id="3987319776542715873" nodeInfo="sn">
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.IfStatement" typeId="tpee.1068580123159" id="3987319776542716833" nodeInfo="nn">
-          <node role="condition" roleId="tpee.1068580123160" type="tpee.EqualsExpression" typeId="tpee.1068580123152" id="3987319776542716834" nodeInfo="nn">
-            <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151614842" nodeInfo="nn">
-              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542715874" resolveInfo="str" />
-            </node>
-            <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="3987319776542716836" nodeInfo="nn" />
-          </node>
-          <node role="ifTrue" roleId="tpee.1068580123161" type="tpee.StatementList" typeId="tpee.1068580123136" id="3987319776542716837" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ReturnStatement" typeId="tpee.1068581242878" id="3987319776542716838" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068581517676" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="3987319776542716839" nodeInfo="nn" />
-            </node>
-          </node>
-        </node>
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.IfStatement" typeId="tpee.1068580123159" id="3987319776542716840" nodeInfo="nn">
-          <node role="condition" roleId="tpee.1068580123160" type="tpee.LessThanExpression" typeId="tpee.1081506773034" id="3987319776542716841" nodeInfo="nn">
-            <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151304271" nodeInfo="nn">
-              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542716830" resolveInfo="end" />
-            </node>
-            <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="3987319776542716843" nodeInfo="nn">
-              <property name="value" nameId="tpee.1068580320021" value="0" />
-            </node>
-          </node>
-          <node role="ifTrue" roleId="tpee.1068580123161" type="tpee.StatementList" typeId="tpee.1068580123136" id="3987319776542716844" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="3987319776542716845" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068580123156" type="tpee.AssignmentExpression" typeId="tpee.1068498886294" id="3987319776542716846" nodeInfo="nn">
-                <node role="lValue" roleId="tpee.1068498886295" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905150304932" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542716830" resolveInfo="end" />
-                </node>
-                <node role="rValue" roleId="tpee.1068498886297" type="tpee.PlusExpression" typeId="tpee.1068581242875" id="3987319776542716848" nodeInfo="nn">
-                  <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.DotExpression" typeId="tpee.1197027756228" id="3987319776542716849" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151617587" nodeInfo="nn">
-                      <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542715874" resolveInfo="str" />
-                    </node>
-                    <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="3987319776542716851" nodeInfo="nn">
-                      <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dlength()%cint" resolveInfo="length" />
+    <node concept="3aamgX" id="hP8d3bF" role="3acgRq">
+      <ref role="30HIoZ" to="tpee:hqOqwz4" resolve="DotExpression" />
+      <node concept="gft3U" id="hP8d3bG" role="1lVwrX">
+        <node concept="Xl_RD" id="hP8d3bH" role="gfFT$">
+          <property role="Xl_RC" value="operation" />
+          <node concept="29HgVG" id="hP8d3bI" role="lGtFl">
+            <node concept="3NFfHV" id="hP8d3bJ" role="3NFExx">
+              <node concept="3clFbS" id="hP8d3bK" role="2VODD2">
+                <node concept="3clFbF" id="hP8d3bL" role="3cqZAp">
+                  <node concept="2OqwBi" id="hP8d3bM" role="3clFbG">
+                    <node concept="30H73N" id="hP8d3bN" role="2Oq$k0" />
+                    <node concept="3TrEf2" id="hP8d3bO" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpee:hqOqNr4" resolve="operation" />
                     </node>
                   </node>
-                  <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151602709" nodeInfo="nn">
-                    <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542716830" resolveInfo="end" />
-                  </node>
                 </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.IfStatement" typeId="tpee.1068580123159" id="3987319776542716855" nodeInfo="nn">
-          <node role="condition" roleId="tpee.1068580123160" type="tpee.LessThanExpression" typeId="tpee.1081506773034" id="3987319776542716856" nodeInfo="nn">
-            <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905150322197" nodeInfo="nn">
-              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542715876" resolveInfo="start" />
-            </node>
-            <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="3987319776542716858" nodeInfo="nn">
-              <property name="value" nameId="tpee.1068580320021" value="0" />
-            </node>
-          </node>
-          <node role="ifTrue" roleId="tpee.1068580123161" type="tpee.StatementList" typeId="tpee.1068580123136" id="3987319776542716859" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="3987319776542716860" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068580123156" type="tpee.AssignmentExpression" typeId="tpee.1068498886294" id="3987319776542716861" nodeInfo="nn">
-                <node role="lValue" roleId="tpee.1068498886295" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151721539" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542715876" resolveInfo="start" />
-                </node>
-                <node role="rValue" roleId="tpee.1068498886297" type="tpee.PlusExpression" typeId="tpee.1068581242875" id="3987319776542716863" nodeInfo="nn">
-                  <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.DotExpression" typeId="tpee.1197027756228" id="3987319776542716864" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151719103" nodeInfo="nn">
-                      <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542715874" resolveInfo="str" />
-                    </node>
-                    <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="3987319776542716866" nodeInfo="nn">
-                      <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dlength()%cint" resolveInfo="length" />
-                    </node>
-                  </node>
-                  <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151653121" nodeInfo="nn">
-                    <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542715876" resolveInfo="start" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.IfStatement" typeId="tpee.1068580123159" id="3987319776542716870" nodeInfo="nn">
-          <node role="condition" roleId="tpee.1068580123160" type="tpee.GreaterThanExpression" typeId="tpee.1081506762703" id="3987319776542716871" nodeInfo="nn">
-            <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151738157" nodeInfo="nn">
-              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542716830" resolveInfo="end" />
-            </node>
-            <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.DotExpression" typeId="tpee.1197027756228" id="3987319776542716873" nodeInfo="nn">
-              <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151653969" nodeInfo="nn">
-                <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542715874" resolveInfo="str" />
-              </node>
-              <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="3987319776542716875" nodeInfo="nn">
-                <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dlength()%cint" resolveInfo="length" />
-              </node>
-            </node>
-          </node>
-          <node role="ifTrue" roleId="tpee.1068580123161" type="tpee.StatementList" typeId="tpee.1068580123136" id="3987319776542716876" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="3987319776542716877" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068580123156" type="tpee.AssignmentExpression" typeId="tpee.1068498886294" id="3987319776542716878" nodeInfo="nn">
-                <node role="lValue" roleId="tpee.1068498886295" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151383039" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542716830" resolveInfo="end" />
-                </node>
-                <node role="rValue" roleId="tpee.1068498886297" type="tpee.DotExpression" typeId="tpee.1197027756228" id="3987319776542716880" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151744124" nodeInfo="nn">
-                    <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542715874" resolveInfo="str" />
-                  </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="3987319776542716882" nodeInfo="nn">
-                    <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dlength()%cint" resolveInfo="length" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.IfStatement" typeId="tpee.1068580123159" id="3987319776542716883" nodeInfo="nn">
-          <node role="condition" roleId="tpee.1068580123160" type="tpee.GreaterThanExpression" typeId="tpee.1081506762703" id="3987319776542716884" nodeInfo="nn">
-            <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151709240" nodeInfo="nn">
-              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542715876" resolveInfo="start" />
-            </node>
-            <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151379208" nodeInfo="nn">
-              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542716830" resolveInfo="end" />
-            </node>
-          </node>
-          <node role="ifTrue" roleId="tpee.1068580123161" type="tpee.StatementList" typeId="tpee.1068580123136" id="3987319776542716887" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ReturnStatement" typeId="tpee.1068581242878" id="3987319776542716888" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068581517676" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="3987319776542716946" nodeInfo="nn">
-                <property name="value" nameId="tpee.1070475926801" value="" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.IfStatement" typeId="tpee.1068580123159" id="3987319776542716890" nodeInfo="nn">
-          <node role="condition" roleId="tpee.1068580123160" type="tpee.LessThanExpression" typeId="tpee.1081506773034" id="3987319776542716891" nodeInfo="nn">
-            <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151414521" nodeInfo="nn">
-              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542715876" resolveInfo="start" />
-            </node>
-            <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="3987319776542716893" nodeInfo="nn">
-              <property name="value" nameId="tpee.1068580320021" value="0" />
-            </node>
-          </node>
-          <node role="ifTrue" roleId="tpee.1068580123161" type="tpee.StatementList" typeId="tpee.1068580123136" id="3987319776542716894" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="3987319776542716895" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068580123156" type="tpee.AssignmentExpression" typeId="tpee.1068498886294" id="3987319776542716896" nodeInfo="nn">
-                <node role="lValue" roleId="tpee.1068498886295" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905150325514" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542715876" resolveInfo="start" />
-                </node>
-                <node role="rValue" roleId="tpee.1068498886297" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="3987319776542716898" nodeInfo="nn">
-                  <property name="value" nameId="tpee.1068580320021" value="0" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.IfStatement" typeId="tpee.1068580123159" id="3987319776542716899" nodeInfo="nn">
-          <node role="condition" roleId="tpee.1068580123160" type="tpee.LessThanExpression" typeId="tpee.1081506773034" id="3987319776542716900" nodeInfo="nn">
-            <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151492568" nodeInfo="nn">
-              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542716830" resolveInfo="end" />
-            </node>
-            <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="3987319776542716902" nodeInfo="nn">
-              <property name="value" nameId="tpee.1068580320021" value="0" />
-            </node>
-          </node>
-          <node role="ifTrue" roleId="tpee.1068580123161" type="tpee.StatementList" typeId="tpee.1068580123136" id="3987319776542716903" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="3987319776542716904" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068580123156" type="tpee.AssignmentExpression" typeId="tpee.1068498886294" id="3987319776542716905" nodeInfo="nn">
-                <node role="lValue" roleId="tpee.1068498886295" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151326912" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542716830" resolveInfo="end" />
-                </node>
-                <node role="rValue" roleId="tpee.1068498886297" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="3987319776542716907" nodeInfo="nn">
-                  <property name="value" nameId="tpee.1068580320021" value="0" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.ReturnStatement" typeId="tpee.1068581242878" id="3987319776542716908" nodeInfo="nn">
-          <node role="expression" roleId="tpee.1068581517676" type="tpee.DotExpression" typeId="tpee.1197027756228" id="3987319776542716909" nodeInfo="nn">
-            <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151724014" nodeInfo="nn">
-              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542715874" resolveInfo="str" />
-            </node>
-            <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="3987319776542716911" nodeInfo="nn">
-              <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dsubstring(int,int)%cjava%dlang%dString" resolveInfo="substring" />
-              <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151727027" nodeInfo="nn">
-                <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542715876" resolveInfo="start" />
-              </node>
-              <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905150326097" nodeInfo="nn">
-                <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="3987319776542716830" resolveInfo="end" />
               </node>
             </node>
           </node>
         </node>
       </node>
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.IfMacro" typeId="tpf8.1118773211870" id="4592826945243769898" nodeInfo="nn">
-        <node role="conditionFunction" roleId="tpf8.1167945861827" type="tpf8.IfMacro_Condition" typeId="tpf8.1167945743726" id="4592826945243769899" nodeInfo="nn">
-          <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243769900" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243769901" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068580123156" type="tpee.NotExpression" typeId="tpee.1081516740877" id="4592826945243769913" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1081516765348" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769914" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769915" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769916" nodeInfo="nn">
-                      <node role="operand" roleId="tpee.1197027771414" type="tpf3.TemplateFunctionParameter_generationContext" typeId="tpf3.1216860049635" id="4592826945243769917" nodeInfo="nn" />
-                      <node role="operation" roleId="tpee.1197027833540" type="tpf3.GenerationContextOp_GetInputModel" typeId="tpf3.1217004708011" id="4592826945243769918" nodeInfo="nn" />
-                    </node>
-                    <node role="operation" roleId="tpee.1197027833540" type="tp25.Model_NodesOperation" typeId="tp25.1171323947159" id="4592826945243769919" nodeInfo="nn">
-                      <link role="concept" roleId="tp25.1171323947160" targetNodeId="tpee.1225271484915" resolveInfo="SubstringExpression" />
-                    </node>
+      <node concept="30G5F_" id="hP8d3bP" role="30HLyM">
+        <node concept="3clFbS" id="hP8d3bQ" role="2VODD2">
+          <node concept="3clFbF" id="hP8d3bR" role="3cqZAp">
+            <node concept="2OqwBi" id="hP8d3bS" role="3clFbG">
+              <node concept="2OqwBi" id="hP8d3bT" role="2Oq$k0">
+                <node concept="30H73N" id="hP8d3bU" role="2Oq$k0" />
+                <node concept="3TrEf2" id="hP8d3bV" role="2OqNvi">
+                  <ref role="3Tt5mk" to="tpee:hqOqNr4" resolve="operation" />
+                </node>
+              </node>
+              <node concept="1mIQ4w" id="hP8d3bW" role="2OqNvi">
+                <node concept="chp4Y" id="hP8d3bX" role="cj9EA">
+                  <ref role="cht4Q" to="tpee:hP7R8Qx" resolve="BaseStringOperation" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="hP8d3bY" role="3acgRq">
+      <ref role="30HIoZ" to="tpee:hP7RlTU" resolve="IsEmptyOperation" />
+      <node concept="j$656" id="hP8d3bZ" role="1lVwrX">
+        <ref role="v9R2y" node="3YWZWnqamtD" resolve="reduce_IsEmptyExpression" />
+      </node>
+      <node concept="30G5F_" id="3YWZWnq6eKs" role="30HLyM">
+        <node concept="3clFbS" id="3YWZWnq6eKt" role="2VODD2">
+          <node concept="3clFbF" id="3YWZWnq6eKu" role="3cqZAp">
+            <node concept="3fqX7Q" id="3YWZWnq6eKv" role="3clFbG">
+              <node concept="2OqwBi" id="3YWZWnq6eKx" role="3fr31v">
+                <node concept="2OqwBi" id="3YWZWnq6eKy" role="2Oq$k0">
+                  <node concept="30H73N" id="3YWZWnq6eKz" role="2Oq$k0" />
+                  <node concept="2qgKlT" id="3YWZWnq6eK$" role="2OqNvi">
+                    <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
                   </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="4592826945243769920" nodeInfo="nn">
-                    <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="k7g3.~List%disEmpty()%cboolean" resolveInfo="isEmpty" />
+                </node>
+                <node concept="1mIQ4w" id="3YWZWnq6eK_" role="2OqNvi">
+                  <node concept="chp4Y" id="3YWZWnq6eKA" role="cj9EA">
+                    <ref role="cht4Q" to="tpee:SORzhOp6jM" resolve="IVariableReference" />
                   </node>
                 </node>
               </node>
@@ -1645,72 +1130,100 @@
         </node>
       </node>
     </node>
-    <node role="member" roleId="tpee.5375687026011219971" type="tpee.StaticMethodDeclaration" typeId="tpee.1081236700938" id="257314948453711384" nodeInfo="igu">
-      <property name="name" nameId="tpck.1169194664001" value="substring" />
-      <node role="returnType" roleId="tpee.1068580123133" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="257314948453711387" nodeInfo="in">
-        <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-      </node>
-      <node role="body" roleId="tpee.1068580123135" type="tpee.StatementList" typeId="tpee.1068580123136" id="257314948453711386" nodeInfo="sn">
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.IfStatement" typeId="tpee.1068580123159" id="257314948453711394" nodeInfo="nn">
-          <node role="condition" roleId="tpee.1068580123160" type="tpee.EqualsExpression" typeId="tpee.1068580123152" id="257314948453711395" nodeInfo="nn">
-            <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151597378" nodeInfo="nn">
-              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="257314948453711388" resolveInfo="str" />
-            </node>
-            <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="257314948453711397" nodeInfo="nn" />
-          </node>
-          <node role="ifTrue" roleId="tpee.1068580123161" type="tpee.StatementList" typeId="tpee.1068580123136" id="257314948453711398" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ReturnStatement" typeId="tpee.1068581242878" id="257314948453711399" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068581517676" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="257314948453711400" nodeInfo="nn" />
-            </node>
-          </node>
-        </node>
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.ReturnStatement" typeId="tpee.1068581242878" id="257314948453711402" nodeInfo="nn">
-          <node role="expression" roleId="tpee.1068581517676" type="tpee.LocalMethodCall" typeId="tpee.7812454656619025412" id="4923130412071496742" nodeInfo="nn">
-            <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="3987319776542715870" resolveInfo="substring" />
-            <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151605463" nodeInfo="nn">
-              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="257314948453711388" resolveInfo="str" />
-            </node>
-            <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151609730" nodeInfo="nn">
-              <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="257314948453711390" resolveInfo="start" />
-            </node>
-            <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.DotExpression" typeId="tpee.1197027756228" id="257314948453711430" nodeInfo="nn">
-              <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151704174" nodeInfo="nn">
-                <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="257314948453711388" resolveInfo="str" />
+    <node concept="3aamgX" id="3YWZWnq6ext" role="3acgRq">
+      <ref role="30HIoZ" to="tpee:hP7RlTU" resolve="IsEmptyOperation" />
+      <node concept="gft3U" id="3YWZWnq6exv" role="1lVwrX">
+        <node concept="1eOMI4" id="3YWZWnq6exx" role="gfFT$">
+          <node concept="22lmx$" id="3YWZWnq6ez2" role="1eOMHV">
+            <node concept="3clFbC" id="3YWZWnq6eIs" role="3uHU7w">
+              <node concept="3cmrfG" id="3YWZWnq6eIv" role="3uHU7w">
+                <property role="3cmrfH" value="0" />
               </node>
-              <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="257314948453711437" nodeInfo="nn">
-                <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dlength()%cint" resolveInfo="length" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="257314948453711388" nodeInfo="ir">
-        <property name="name" nameId="tpck.1169194664001" value="str" />
-        <node role="type" roleId="tpee.5680397130376446158" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="257314948453711389" nodeInfo="in">
-          <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-        </node>
-      </node>
-      <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="257314948453711390" nodeInfo="ir">
-        <property name="name" nameId="tpck.1169194664001" value="start" />
-        <node role="type" roleId="tpee.5680397130376446158" type="tpee.IntegerType" typeId="tpee.1070534370425" id="257314948453711392" nodeInfo="in" />
-      </node>
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.IfMacro" typeId="tpf8.1118773211870" id="4592826945243769922" nodeInfo="nn">
-        <node role="conditionFunction" roleId="tpf8.1167945861827" type="tpf8.IfMacro_Condition" typeId="tpf8.1167945743726" id="4592826945243769923" nodeInfo="nn">
-          <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945243769924" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945243769925" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068580123156" type="tpee.NotExpression" typeId="tpee.1081516740877" id="4592826945243769926" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1081516765348" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769927" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769928" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945243769929" nodeInfo="nn">
-                      <node role="operand" roleId="tpee.1197027771414" type="tpf3.TemplateFunctionParameter_generationContext" typeId="tpf3.1216860049635" id="4592826945243769930" nodeInfo="nn" />
-                      <node role="operation" roleId="tpee.1197027833540" type="tpf3.GenerationContextOp_GetInputModel" typeId="tpf3.1217004708011" id="4592826945243769931" nodeInfo="nn" />
-                    </node>
-                    <node role="operation" roleId="tpee.1197027833540" type="tp25.Model_NodesOperation" typeId="tp25.1171323947159" id="4592826945243769932" nodeInfo="nn">
-                      <link role="concept" roleId="tp25.1171323947160" targetNodeId="tpee.1225271484915" resolveInfo="SubstringExpression" />
+              <node concept="2OqwBi" id="3YWZWnq6ezq" role="3uHU7B">
+                <node concept="Xl_RD" id="3YWZWnq6ez5" role="2Oq$k0">
+                  <property role="Xl_RC" value="" />
+                  <node concept="29HgVG" id="3YWZWnq6eJ1" role="lGtFl">
+                    <node concept="3NFfHV" id="3YWZWnq6eJ2" role="3NFExx">
+                      <node concept="3clFbS" id="3YWZWnq6eJ3" role="2VODD2">
+                        <node concept="3clFbF" id="3YWZWnq6eJ4" role="3cqZAp">
+                          <node concept="2OqwBi" id="3YWZWnq6eJq" role="3clFbG">
+                            <node concept="30H73N" id="3YWZWnq6eJ5" role="2Oq$k0" />
+                            <node concept="2qgKlT" id="3YWZWnq6eJw" role="2OqNvi">
+                              <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                     </node>
                   </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="4592826945243769933" nodeInfo="nn">
-                    <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="k7g3.~List%disEmpty()%cboolean" resolveInfo="isEmpty" />
+                </node>
+                <node concept="liA8E" id="3YWZWnq6eI7" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbC" id="3YWZWnq6eyE" role="3uHU7B">
+              <node concept="Xl_RD" id="3YWZWnq6eyl" role="3uHU7B">
+                <property role="Xl_RC" value="" />
+                <node concept="29HgVG" id="3YWZWnq6eIx" role="lGtFl">
+                  <node concept="3NFfHV" id="3YWZWnq6eIy" role="3NFExx">
+                    <node concept="3clFbS" id="3YWZWnq6eIz" role="2VODD2">
+                      <node concept="3clFbF" id="3YWZWnq6eI$" role="3cqZAp">
+                        <node concept="2OqwBi" id="3YWZWnq6eIU" role="3clFbG">
+                          <node concept="30H73N" id="3YWZWnq6eI_" role="2Oq$k0" />
+                          <node concept="2qgKlT" id="3YWZWnq6eIZ" role="2OqNvi">
+                            <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="10Nm6u" id="3YWZWnq6eyH" role="3uHU7w" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="30G5F_" id="3YWZWnq6eJx" role="30HLyM">
+        <node concept="3clFbS" id="3YWZWnq6eJy" role="2VODD2">
+          <node concept="3clFbF" id="3YWZWnq6eJz" role="3cqZAp">
+            <node concept="2OqwBi" id="3YWZWnq6eKj" role="3clFbG">
+              <node concept="2OqwBi" id="3YWZWnq6eJT" role="2Oq$k0">
+                <node concept="30H73N" id="3YWZWnq6eJ$" role="2Oq$k0" />
+                <node concept="2qgKlT" id="3YWZWnq6eJY" role="2OqNvi">
+                  <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                </node>
+              </node>
+              <node concept="1mIQ4w" id="3YWZWnq6eKp" role="2OqNvi">
+                <node concept="chp4Y" id="3YWZWnq6eKr" role="cj9EA">
+                  <ref role="cht4Q" to="tpee:SORzhOp6jM" resolve="IVariableReference" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="hP8d3c0" role="3acgRq">
+      <ref role="30HIoZ" to="tpee:hP7Rvtz" resolve="IsNotEmptyOperation" />
+      <node concept="j$656" id="hP8d3c1" role="1lVwrX">
+        <ref role="v9R2y" node="hP8d39s" resolve="reduce_IsNotEmptyExpression" />
+      </node>
+      <node concept="30G5F_" id="3YWZWnq6f9H" role="30HLyM">
+        <node concept="3clFbS" id="3YWZWnq6f9I" role="2VODD2">
+          <node concept="3clFbF" id="3YWZWnq6f9J" role="3cqZAp">
+            <node concept="3fqX7Q" id="3YWZWnq6f9K" role="3clFbG">
+              <node concept="2OqwBi" id="3YWZWnq6f9L" role="3fr31v">
+                <node concept="2OqwBi" id="3YWZWnq6f9M" role="2Oq$k0">
+                  <node concept="30H73N" id="3YWZWnq6f9N" role="2Oq$k0" />
+                  <node concept="2qgKlT" id="3YWZWnq6f9O" role="2OqNvi">
+                    <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                  </node>
+                </node>
+                <node concept="1mIQ4w" id="3YWZWnq6f9P" role="2OqNvi">
+                  <node concept="chp4Y" id="3YWZWnq6f9Q" role="cj9EA">
+                    <ref role="cht4Q" to="tpee:SORzhOp6jM" resolve="IVariableReference" />
                   </node>
                 </node>
               </node>
@@ -1719,56 +1232,199 @@
         </node>
       </node>
     </node>
-  </root>
-  <root type="tpf8.TemplateDeclaration" typeId="tpf8.1092059087312" id="2696770507970455982" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="reduce_TrimOperation_Leading" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="ext.string.expression" />
-    <link role="applicableConcept" roleId="tpf8.1168285871518" targetNodeId="tpee.1225271546410" resolveInfo="TrimOperation" />
-    <node role="contentNode" roleId="tpf8.1092060348987" type="tp68.InternalStaticMethodCall" typeId="tp68.1173990517731" id="2696770507970463564" nodeInfo="nn">
-      <property name="fqClassName" nameId="tp68.1173992483054" value="StringUtils" />
-      <property name="methodName" nameId="tp68.1173992444083" value="stripStart" />
-      <node role="actualArgument" roleId="tp68.319021450862604085" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="2696770507970463571" nodeInfo="nn">
-        <property name="value" nameId="tpee.1070475926801" value="expression" />
-        <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="2696770507970463572" nodeInfo="nn">
-          <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="2696770507970463573" nodeInfo="nn">
-            <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="2696770507970463574" nodeInfo="sn">
-              <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="2696770507970463575" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="2696770507970463576" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="2696770507970463577" nodeInfo="nn" />
-                  <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="2696770507970463578" nodeInfo="nn">
-                    <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
-                  </node>
+    <node concept="3aamgX" id="3YWZWnq6f9R" role="3acgRq">
+      <ref role="30HIoZ" to="tpee:hP7Rvtz" resolve="IsNotEmptyOperation" />
+      <node concept="30G5F_" id="3YWZWnq6f9T" role="30HLyM">
+        <node concept="3clFbS" id="3YWZWnq6f9U" role="2VODD2">
+          <node concept="3clFbF" id="3YWZWnq6f9V" role="3cqZAp">
+            <node concept="2OqwBi" id="3YWZWnq6f9W" role="3clFbG">
+              <node concept="2OqwBi" id="3YWZWnq6f9X" role="2Oq$k0">
+                <node concept="30H73N" id="3YWZWnq6f9Y" role="2Oq$k0" />
+                <node concept="2qgKlT" id="3YWZWnq6f9Z" role="2OqNvi">
+                  <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                </node>
+              </node>
+              <node concept="1mIQ4w" id="3YWZWnq6fa0" role="2OqNvi">
+                <node concept="chp4Y" id="3YWZWnq6fa1" role="cj9EA">
+                  <ref role="cht4Q" to="tpee:SORzhOp6jM" resolve="IVariableReference" />
                 </node>
               </node>
             </node>
           </node>
         </node>
       </node>
-      <node role="actualArgument" roleId="tp68.319021450862604085" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="2696770507970463579" nodeInfo="nn">
-        <property name="value" nameId="tpee.1070475926801" value=" \n\r\t" />
-      </node>
-      <node role="returnType" roleId="tp68.1175794062018" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="2696770507970463580" nodeInfo="in">
-        <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-      </node>
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.TemplateFragment" typeId="tpf8.1095672379244" id="2696770507970463566" nodeInfo="ng" />
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.PropertyMacro" typeId="tpf8.1087833241328" id="2696770507970471605" nodeInfo="nn">
-        <property name="propertyName" nameId="tpck.1757699476691236117" value="fqClassName" />
-        <node role="propertyValueFunction" roleId="tpf8.1167756362303" type="tpf8.PropertyMacro_GetPropertyValue" typeId="tpf8.1167756080639" id="2696770507970471606" nodeInfo="nn">
-          <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="2696770507970471607" nodeInfo="sn">
-            <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="2696770507970471614" nodeInfo="nn">
-              <node role="expression" roleId="tpee.1068580123156" type="tpee.PlusExpression" typeId="tpee.1068581242875" id="2696770507970471678" nodeInfo="nn">
-                <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.StaticMethodCall" typeId="tpee.1081236700937" id="2722862962576141709" nodeInfo="nn">
-                  <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="unno.9160302885342508446" resolveInfo="getModelLongName" />
-                  <link role="classConcept" roleId="tpee.1144433194310" targetNodeId="unno.2089287822043606602" resolveInfo="SNodeOperations" />
-                  <node role="actualArgument" roleId="tpee.1068499141038" type="tp25.SemanticDowncastExpression" typeId="tp25.1145404486709" id="2722862962576141710" nodeInfo="nn">
-                    <node role="leftExpression" roleId="tp25.1145404616321" type="tpee.DotExpression" typeId="tpee.1197027756228" id="2722862962576141711" nodeInfo="nn">
-                      <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="2722862962576141712" nodeInfo="nn" />
-                      <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_GetModelOperation" typeId="tp25.1143234257716" id="2722862962576141713" nodeInfo="nn" />
+      <node concept="gft3U" id="3YWZWnq6fa2" role="1lVwrX">
+        <node concept="1eOMI4" id="3YWZWnq6fa3" role="gfFT$">
+          <node concept="1Wc70l" id="3YWZWnq6fa_" role="1eOMHV">
+            <node concept="3y3z36" id="3YWZWnq6faA" role="3uHU7B">
+              <node concept="Xl_RD" id="3YWZWnq6faB" role="3uHU7B">
+                <property role="Xl_RC" value="" />
+                <node concept="29HgVG" id="3YWZWnq6faC" role="lGtFl">
+                  <node concept="3NFfHV" id="3YWZWnq6faD" role="3NFExx">
+                    <node concept="3clFbS" id="3YWZWnq6faE" role="2VODD2">
+                      <node concept="3clFbF" id="3YWZWnq6faF" role="3cqZAp">
+                        <node concept="2OqwBi" id="3YWZWnq6faG" role="3clFbG">
+                          <node concept="30H73N" id="3YWZWnq6faH" role="2Oq$k0" />
+                          <node concept="2qgKlT" id="3YWZWnq6faI" role="2OqNvi">
+                            <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                          </node>
+                        </node>
+                      </node>
                     </node>
                   </node>
                 </node>
-                <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="2696770507970471681" nodeInfo="nn">
-                  <property name="value" nameId="tpee.1070475926801" value=".StringUtils" />
+              </node>
+              <node concept="10Nm6u" id="3YWZWnq6faJ" role="3uHU7w" />
+            </node>
+            <node concept="3eOSWO" id="3YWZWnq6fb8" role="3uHU7w">
+              <node concept="2OqwBi" id="3YWZWnq6fb9" role="3uHU7B">
+                <node concept="Xl_RD" id="3YWZWnq6fba" role="2Oq$k0">
+                  <property role="Xl_RC" value="" />
+                  <node concept="29HgVG" id="3YWZWnq6fbb" role="lGtFl">
+                    <node concept="3NFfHV" id="3YWZWnq6fbc" role="3NFExx">
+                      <node concept="3clFbS" id="3YWZWnq6fbd" role="2VODD2">
+                        <node concept="3clFbF" id="3YWZWnq6fbe" role="3cqZAp">
+                          <node concept="2OqwBi" id="3YWZWnq6fbf" role="3clFbG">
+                            <node concept="30H73N" id="3YWZWnq6fbg" role="2Oq$k0" />
+                            <node concept="2qgKlT" id="3YWZWnq6fbh" role="2OqNvi">
+                              <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="3YWZWnq6fbi" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                </node>
+              </node>
+              <node concept="3cmrfG" id="3YWZWnq6fbj" role="3uHU7w">
+                <property role="3cmrfH" value="0" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="hP8d3c2" role="3acgRq">
+      <ref role="30HIoZ" to="tpee:hP7S18E" resolve="TrimOperation" />
+      <node concept="14YyZ8" id="hP8d3c3" role="1lVwrX">
+        <node concept="j$656" id="hP8d3c4" role="14YRTM">
+          <ref role="v9R2y" node="hP8d3b7" resolve="reduce_TrimOperation_Both" />
+        </node>
+        <node concept="14ZrTv" id="hP8d3c5" role="14ZwWg">
+          <node concept="30G5F_" id="hP8d3c6" role="150hEN">
+            <node concept="3clFbS" id="hP8d3c7" role="2VODD2">
+              <node concept="3clFbF" id="hP8d3c8" role="3cqZAp">
+                <node concept="2OqwBi" id="hP8d3c9" role="3clFbG">
+                  <node concept="2OqwBi" id="hP8d3ca" role="2Oq$k0">
+                    <node concept="30H73N" id="hP8d3cb" role="2Oq$k0" />
+                    <node concept="3TrcHB" id="hP8d3cc" role="2OqNvi">
+                      <ref role="3TsBF5" to="tpee:hP7S18H" resolve="trimKind" />
+                    </node>
+                  </node>
+                  <node concept="3t7uKx" id="hP8d3cd" role="2OqNvi">
+                    <node concept="uoxfO" id="hP8d3ce" role="3t7uKA">
+                      <ref role="uo_Cq" to="tpee:hP7RTk8" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="j$656" id="2lGQBOCjruv" role="150oIE">
+            <ref role="v9R2y" node="2lGQBOCl2AI" resolve="reduce_TrimOperation_Leading" />
+          </node>
+        </node>
+        <node concept="14ZrTv" id="hP8d3cg" role="14ZwWg">
+          <node concept="30G5F_" id="hP8d3ch" role="150hEN">
+            <node concept="3clFbS" id="hP8d3ci" role="2VODD2">
+              <node concept="3clFbF" id="hP8d3cj" role="3cqZAp">
+                <node concept="2OqwBi" id="hP8d3ck" role="3clFbG">
+                  <node concept="2OqwBi" id="hP8d3cl" role="2Oq$k0">
+                    <node concept="30H73N" id="hP8d3cm" role="2Oq$k0" />
+                    <node concept="3TrcHB" id="hP8d3cn" role="2OqNvi">
+                      <ref role="3TsBF5" to="tpee:hP7S18H" resolve="trimKind" />
+                    </node>
+                  </node>
+                  <node concept="3t7uKx" id="hP8d3co" role="2OqNvi">
+                    <node concept="uoxfO" id="hP8d3cp" role="3t7uKA">
+                      <ref role="uo_Cq" to="tpee:hP7RTk9" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="j$656" id="hP8d3cq" role="150oIE">
+            <ref role="v9R2y" node="2lGQBOCjrss" resolve="reduce_TrimOperation_Trainling" />
+          </node>
+        </node>
+        <node concept="14ZrTv" id="3YWZWnq6eQG" role="14ZwWg">
+          <node concept="30G5F_" id="3YWZWnq6eQH" role="150hEN">
+            <node concept="3clFbS" id="3YWZWnq6eQI" role="2VODD2">
+              <node concept="3clFbF" id="3YWZWnq6eQK" role="3cqZAp">
+                <node concept="2OqwBi" id="3YWZWnq6eRx" role="3clFbG">
+                  <node concept="2OqwBi" id="3YWZWnq6eR6" role="2Oq$k0">
+                    <node concept="30H73N" id="3YWZWnq6eQL" role="2Oq$k0" />
+                    <node concept="2qgKlT" id="3YWZWnq6eRc" role="2OqNvi">
+                      <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                    </node>
+                  </node>
+                  <node concept="1mIQ4w" id="3YWZWnq6eRB" role="2OqNvi">
+                    <node concept="chp4Y" id="3YWZWnq6eRD" role="cj9EA">
+                      <ref role="cht4Q" to="tpee:SORzhOp6jM" resolve="IVariableReference" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="gft3U" id="3YWZWnq6eRE" role="150oIE">
+            <node concept="1eOMI4" id="3YWZWnq6eRG" role="gfFT$">
+              <node concept="3K4zz7" id="3YWZWnq6eSr" role="1eOMHV">
+                <node concept="10Nm6u" id="3YWZWnq6eSv" role="3K4E3e" />
+                <node concept="2OqwBi" id="3YWZWnq6eSP" role="3K4GZi">
+                  <node concept="Xl_RD" id="3YWZWnq6eSw" role="2Oq$k0">
+                    <node concept="29HgVG" id="3YWZWnq6eSX" role="lGtFl">
+                      <node concept="3NFfHV" id="3YWZWnq6eSY" role="3NFExx">
+                        <node concept="3clFbS" id="3YWZWnq6eSZ" role="2VODD2">
+                          <node concept="3clFbF" id="3YWZWnq6eTw" role="3cqZAp">
+                            <node concept="2OqwBi" id="3YWZWnq6eTQ" role="3clFbG">
+                              <node concept="30H73N" id="3YWZWnq6eTx" role="2Oq$k0" />
+                              <node concept="2qgKlT" id="3YWZWnq6eTV" role="2OqNvi">
+                                <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="3YWZWnq6eSV" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~String.trim():java.lang.String" resolve="trim" />
+                  </node>
+                </node>
+                <node concept="3clFbC" id="3YWZWnq6eS3" role="3K4Cdx">
+                  <node concept="10Nm6u" id="3YWZWnq6eS6" role="3uHU7w" />
+                  <node concept="Xl_RD" id="3YWZWnq6eRI" role="3uHU7B">
+                    <property role="Xl_RC" value="" />
+                    <node concept="29HgVG" id="3YWZWnq6eT1" role="lGtFl">
+                      <node concept="3NFfHV" id="3YWZWnq6eT2" role="3NFExx">
+                        <node concept="3clFbS" id="3YWZWnq6eT3" role="2VODD2">
+                          <node concept="3clFbF" id="3YWZWnq6eT4" role="3cqZAp">
+                            <node concept="2OqwBi" id="3YWZWnq6eTq" role="3clFbG">
+                              <node concept="30H73N" id="3YWZWnq6eT5" role="2Oq$k0" />
+                              <node concept="2qgKlT" id="3YWZWnq6eTv" role="2OqNvi">
+                                <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -1776,91 +1432,1142 @@
         </node>
       </node>
     </node>
-  </root>
-  <root type="tpf8.TemplateDeclaration" typeId="tpf8.1092059087312" id="4592826945244850025" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="reduce_IsEmptyExpression" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="ext.string.expression" />
-    <link role="applicableConcept" roleId="tpf8.1168285871518" targetNodeId="tpee.1225271369338" resolveInfo="IsEmptyOperation" />
-    <node role="contentNode" roleId="tpf8.1092060348987" type="tp68.ExtractStaticMethodExpression" typeId="tp68.3585982959253588676" id="4592826945244850049" nodeInfo="nn">
-      <node role="method" roleId="tp68.3585982959253588678" type="tpee.StaticMethodDeclaration" typeId="tpee.1081236700938" id="4592826945244850050" nodeInfo="ig">
-        <property name="name" nameId="tpck.1169194664001" value="isEmpty" />
-        <node role="returnType" roleId="tpee.1068580123133" type="tpee.BooleanType" typeId="tpee.1070534644030" id="4592826945244850069" nodeInfo="in" />
-        <node role="visibility" roleId="tpee.1178549979242" type="tpee.PublicVisibility" typeId="tpee.1146644602865" id="4592826945244850052" nodeInfo="nn" />
-        <node role="body" roleId="tpee.1068580123135" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945244850053" nodeInfo="sn">
-          <node role="statement" roleId="tpee.1068581517665" type="tpee.ReturnStatement" typeId="tpee.1068581242878" id="4592826945244850059" nodeInfo="nn">
-            <node role="expression" roleId="tpee.1068581517676" type="tpee.OrExpression" typeId="tpee.1080223426719" id="4592826945244850060" nodeInfo="nn">
-              <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.EqualsExpression" typeId="tpee.1068580123152" id="4592826945244850061" nodeInfo="nn">
-                <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151524293" nodeInfo="nn">
-                  <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="4592826945244850057" resolveInfo="str" />
-                </node>
-                <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.NullLiteral" typeId="tpee.1070534058343" id="4592826945244850063" nodeInfo="nn" />
-              </node>
-              <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.EqualsExpression" typeId="tpee.1068580123152" id="4592826945244850064" nodeInfo="nn">
-                <node role="leftExpression" roleId="tpee.1081773367580" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945244850065" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpee.VariableReference" typeId="tpee.1068498886296" id="3021153905151598880" nodeInfo="nn">
-                    <link role="variableDeclaration" roleId="tpee.1068581517664" targetNodeId="4592826945244850057" resolveInfo="str" />
-                  </node>
-                  <node role="operation" roleId="tpee.1197027833540" type="tpee.InstanceMethodCallOperation" typeId="tpee.1202948039474" id="4592826945244850067" nodeInfo="nn">
-                    <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="e2lb.~String%dlength()%cint" resolveInfo="length" />
-                  </node>
-                </node>
-                <node role="rightExpression" roleId="tpee.1081773367579" type="tpee.IntegerConstant" typeId="tpee.1068580320020" id="4592826945244850068" nodeInfo="nn">
-                  <property name="value" nameId="tpee.1068580320021" value="0" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node role="parameter" roleId="tpee.1068580123134" type="tpee.ParameterDeclaration" typeId="tpee.1068498886292" id="4592826945244850057" nodeInfo="ir">
-          <property name="name" nameId="tpck.1169194664001" value="str" />
-          <node role="type" roleId="tpee.5680397130376446158" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="4592826945244850058" nodeInfo="in">
-            <link role="classifier" roleId="tpee.1107535924139" targetNodeId="e2lb.~String" resolveInfo="String" />
-          </node>
-        </node>
-        <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.PropertyMacro" typeId="tpf8.1087833241328" id="4592826945245316687" nodeInfo="nn">
-          <property name="propertyName" nameId="tpck.1757699476691236117" value="name" />
-          <node role="propertyValueFunction" roleId="tpf8.1167756362303" type="tpf8.PropertyMacro_GetPropertyValue" typeId="tpf8.1167756080639" id="4592826945245316688" nodeInfo="nn">
-            <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945245316689" nodeInfo="sn">
-              <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945245316690" nodeInfo="nn">
-                <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945245316712" nodeInfo="nn">
-                  <node role="operand" roleId="tpee.1197027771414" type="tpf3.TemplateFunctionParameter_generationContext" typeId="tpf3.1216860049635" id="4592826945245316691" nodeInfo="nn" />
-                  <node role="operation" roleId="tpee.1197027833540" type="tpf3.GenerationContextOp_CreateUniqueName" typeId="tpf3.1218047638031" id="4592826945245316717" nodeInfo="nn">
-                    <node role="baseName" roleId="tpf3.1218047638032" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="4592826945245316719" nodeInfo="nn">
-                      <property name="value" nameId="tpee.1070475926801" value="isEmpty" />
-                    </node>
-                    <node role="contextNode" roleId="tpf3.1218049772449" type="tpee.DotExpression" typeId="tpee.1197027756228" id="796541834558860286" nodeInfo="nn">
-                      <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="796541834558860287" nodeInfo="nn" />
-                      <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_GetContainingRootOperation" typeId="tp25.1171310072040" id="796541834558860288" nodeInfo="nn" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
+    <node concept="3aamgX" id="1h81vKYdPeN" role="3acgRq">
+      <ref role="30HIoZ" to="tpee:1h81vKYdHD3" resolve="EscapeOperation" />
+      <node concept="j$656" id="1h81vKYdPeP" role="1lVwrX">
+        <ref role="v9R2y" node="1h81vKYdNzV" resolve="reduce_EscapeOperation" />
       </node>
-      <node role="inner" roleId="tp68.3585982959253588677" type="tp68.ExtractStaticMethod_CallExpression" typeId="tp68.3585982959253821850" id="4592826945244850070" nodeInfo="nn">
-        <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="4592826945244850050" resolveInfo="isEmpty" />
-        <node role="actualArgument" roleId="tpee.1068499141038" type="tpee.StringLiteral" typeId="tpee.1070475926800" id="4592826945244850071" nodeInfo="nn">
-          <property name="value" nameId="tpee.1070475926801" value="" />
-          <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.CopySrcNodeMacro" typeId="tpf8.1114706874351" id="4592826945244850076" nodeInfo="nn">
-            <node role="sourceNodeQuery" roleId="tpf8.1168024447342" type="tpf8.SourceSubstituteMacro_SourceNodeQuery" typeId="tpf8.1168024337012" id="4592826945244850077" nodeInfo="nn">
-              <node role="body" roleId="tpee.1137022507850" type="tpee.StatementList" typeId="tpee.1068580123136" id="4592826945244850078" nodeInfo="sn">
-                <node role="statement" roleId="tpee.1068581517665" type="tpee.ExpressionStatement" typeId="tpee.1068580123155" id="4592826945244850079" nodeInfo="nn">
-                  <node role="expression" roleId="tpee.1068580123156" type="tpee.DotExpression" typeId="tpee.1197027756228" id="4592826945244850101" nodeInfo="nn">
-                    <node role="operand" roleId="tpee.1197027771414" type="tpf8.TemplateFunctionParameter_sourceNode" typeId="tpf8.1167169188348" id="4592826945244850080" nodeInfo="nn" />
-                    <node role="operation" roleId="tpee.1197027833540" type="tp25.Node_ConceptMethodCall" typeId="tp25.1179409122411" id="4592826945244850106" nodeInfo="nn">
-                      <link role="baseMethodDeclaration" roleId="tpee.1068499141037" targetNodeId="tpek.1213877410070" resolveInfo="getOperand" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpf8.TemplateFragment" typeId="tpf8.1095672379244" id="4592826945244850074" nodeInfo="ng" />
     </node>
-  </root>
+    <node concept="3aamgX" id="hP8d3cr" role="3acgRq">
+      <ref role="30HIoZ" to="tpee:hP7R0SV" resolve="NPEEqualsExpression" />
+      <node concept="j$656" id="hP8d3cs" role="1lVwrX">
+        <ref role="v9R2y" node="hP8d39B" resolve="reduce_NPEEqualsExpression" />
+      </node>
+    </node>
+    <node concept="3aamgX" id="hP8d3ct" role="3acgRq">
+      <ref role="30HIoZ" to="tpee:hP7QLMh" resolve="NPENotEqualsExpression" />
+      <node concept="j$656" id="hP8d3cu" role="1lVwrX">
+        <ref role="v9R2y" node="hP8d39U" resolve="reduce_NPENotEqualsExpression" />
+      </node>
+    </node>
+    <node concept="3aamgX" id="hP8d3cv" role="3acgRq">
+      <ref role="30HIoZ" to="tpee:hP7QB7G" resolve="StringType" />
+      <node concept="j$656" id="hP8d3cw" role="1lVwrX">
+        <ref role="v9R2y" node="hP8d3au" resolve="reduce_StringType" />
+      </node>
+    </node>
+    <node concept="3aamgX" id="hP8d3cx" role="3acgRq">
+      <ref role="30HIoZ" to="tpee:hP7RM7N" resolve="SubstringExpression" />
+      <node concept="j$656" id="hP8d3cy" role="1lVwrX">
+        <ref role="v9R2y" node="hP8d3ax" resolve="reduce_SubstringExpression" />
+      </node>
+    </node>
+  </node>
+  <node concept="13MO4I" id="1h81vKYdNzV">
+    <property role="TrG5h" value="reduce_EscapeOperation" />
+    <property role="3GE5qa" value="ext.string.expression" />
+    <ref role="3gUMe" to="tpee:1h81vKYdHD3" resolve="EscapeOperation" />
+    <node concept="2YIFZM" id="1h81vKYdP2w" role="13RCb5">
+      <ref role="37wK5l" to="18ew:~NameUtil.escapeString(java.lang.String):java.lang.String" resolve="escapeString" />
+      <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
+      <node concept="Xl_RD" id="1h81vKYdP2x" role="37wK5m">
+        <property role="Xl_RC" value="expression" />
+        <node concept="29HgVG" id="1h81vKYdP2y" role="lGtFl">
+          <node concept="3NFfHV" id="1h81vKYdP2z" role="3NFExx">
+            <node concept="3clFbS" id="1h81vKYdP2$" role="2VODD2">
+              <node concept="3clFbF" id="1h81vKYdP2_" role="3cqZAp">
+                <node concept="2OqwBi" id="1h81vKYdP2A" role="3clFbG">
+                  <node concept="30H73N" id="1h81vKYdP2B" role="2Oq$k0" />
+                  <node concept="2qgKlT" id="1h81vKYdP2C" role="2OqNvi">
+                    <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="raruj" id="1h81vKYdP2D" role="lGtFl" />
+    </node>
+  </node>
+  <node concept="13MO4I" id="2lGQBOCjrss">
+    <property role="TrG5h" value="reduce_TrimOperation_Trainling" />
+    <property role="3GE5qa" value="ext.string.expression" />
+    <ref role="3gUMe" to="tpee:hP7S18E" resolve="TrimOperation" />
+    <node concept="1niqFM" id="2lGQBOClmE6" role="13RCb5">
+      <property role="1npUBZ" value="StringUtils" />
+      <property role="1npL6y" value="stripEnd" />
+      <node concept="Xl_RD" id="2lGQBOClmE7" role="2U24H$">
+        <property role="Xl_RC" value="expression" />
+        <node concept="29HgVG" id="2lGQBOClmE8" role="lGtFl">
+          <node concept="3NFfHV" id="2lGQBOClmE9" role="3NFExx">
+            <node concept="3clFbS" id="2lGQBOClmEa" role="2VODD2">
+              <node concept="3clFbF" id="2lGQBOClmEb" role="3cqZAp">
+                <node concept="2OqwBi" id="2lGQBOClmEc" role="3clFbG">
+                  <node concept="30H73N" id="2lGQBOClmEd" role="2Oq$k0" />
+                  <node concept="2qgKlT" id="2lGQBOClmEe" role="2OqNvi">
+                    <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="Xl_RD" id="2lGQBOClmEf" role="2U24H$">
+        <property role="Xl_RC" value=" \n\r\t" />
+      </node>
+      <node concept="3uibUv" id="2lGQBOClmEg" role="32Mpfj">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="raruj" id="2lGQBOClmEh" role="lGtFl" />
+      <node concept="17Uvod" id="2lGQBOClmEi" role="lGtFl">
+        <property role="2qtEX9" value="fqClassName" />
+        <property role="P4ACc" value="df345b11-b8c7-4213-ac66-48d2a9b75d88/1173990517731/1173992483054" />
+        <node concept="3zFVjK" id="2lGQBOClmEj" role="3zH0cK">
+          <node concept="3clFbS" id="2lGQBOClmEk" role="2VODD2">
+            <node concept="3clFbF" id="2lGQBOClmEl" role="3cqZAp">
+              <node concept="3cpWs3" id="2lGQBOClmEm" role="3clFbG">
+                <node concept="2YIFZM" id="2n9zn0CqMRt" role="3uHU7B">
+                  <ref role="37wK5l" to="unno:7WvVJ3rORmu" resolve="getModelLongName" />
+                  <ref role="1Pybhc" to="unno:1NYD3hytmTa" resolve="SNodeOperations" />
+                  <node concept="2JrnkZ" id="2n9zn0CqMRu" role="37wK5m">
+                    <node concept="2OqwBi" id="2n9zn0CqMRv" role="2JrQYb">
+                      <node concept="30H73N" id="2n9zn0CqMRw" role="2Oq$k0" />
+                      <node concept="I4A8Y" id="2n9zn0CqMRx" role="2OqNvi" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="2lGQBOClmEn" role="3uHU7w">
+                  <property role="Xl_RC" value=".StringUtils" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="312cEu" id="2lGQBOCl2qI">
+    <property role="TrG5h" value="StringUtils" />
+    <node concept="n94m4" id="2lGQBOCl2qO" role="lGtFl" />
+    <node concept="2YIFZL" id="2lGQBOCl2rQ" role="jymVt">
+      <property role="TrG5h" value="stripStart" />
+      <node concept="37vLTG" id="2lGQBOCl2rR" role="3clF46">
+        <property role="TrG5h" value="str" />
+        <node concept="3uibUv" id="2lGQBOCl2rS" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="2lGQBOCl2rT" role="3clF46">
+        <property role="TrG5h" value="chars" />
+        <node concept="3uibUv" id="2lGQBOCl2rU" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+      </node>
+      <node concept="3uibUv" id="2lGQBOCl2rV" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="3clFbS" id="2lGQBOCl2rX" role="3clF47">
+        <node concept="3cpWs8" id="2lGQBOCl2rY" role="3cqZAp">
+          <node concept="3cpWsn" id="2lGQBOCl2rZ" role="3cpWs9">
+            <property role="TrG5h" value="strLen" />
+            <node concept="10Oyi0" id="2lGQBOCl2s0" role="1tU5fm" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="2lGQBOCl2s1" role="3cqZAp">
+          <node concept="3clFbS" id="2lGQBOCl2s2" role="3clFbx">
+            <node concept="3cpWs6" id="2lGQBOCl2s3" role="3cqZAp">
+              <node concept="37vLTw" id="2BHiRxgm8dY" role="3cqZAk">
+                <ref role="3cqZAo" node="2lGQBOCl2rR" resolve="str" />
+              </node>
+            </node>
+          </node>
+          <node concept="22lmx$" id="2lGQBOCl2s5" role="3clFbw">
+            <node concept="3clFbC" id="2lGQBOCl2s6" role="3uHU7w">
+              <node concept="3cmrfG" id="2lGQBOCl2s7" role="3uHU7w">
+                <property role="3cmrfH" value="0" />
+              </node>
+              <node concept="1eOMI4" id="2lGQBOCl2s8" role="3uHU7B">
+                <node concept="37vLTI" id="2lGQBOCl2s9" role="1eOMHV">
+                  <node concept="2OqwBi" id="2lGQBOCl2sa" role="37vLTx">
+                    <node concept="37vLTw" id="2BHiRxglMIO" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2lGQBOCl2rR" resolve="str" />
+                    </node>
+                    <node concept="liA8E" id="2lGQBOCl2sc" role="2OqNvi">
+                      <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="3GM_nagTwZz" role="37vLTJ">
+                    <ref role="3cqZAo" node="2lGQBOCl2rZ" resolve="strLen" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbC" id="2lGQBOCl2se" role="3uHU7B">
+              <node concept="37vLTw" id="2BHiRxgmy_C" role="3uHU7B">
+                <ref role="3cqZAo" node="2lGQBOCl2rR" resolve="str" />
+              </node>
+              <node concept="10Nm6u" id="2lGQBOCl2sg" role="3uHU7w" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="2lGQBOCl2sh" role="3cqZAp">
+          <node concept="3cpWsn" id="2lGQBOCl2si" role="3cpWs9">
+            <property role="TrG5h" value="start" />
+            <node concept="10Oyi0" id="2lGQBOCl2sj" role="1tU5fm" />
+            <node concept="3cmrfG" id="2lGQBOCl2sk" role="33vP2m">
+              <property role="3cmrfH" value="0" />
+            </node>
+          </node>
+        </node>
+        <node concept="2$JKZl" id="2lGQBOCl2sl" role="3cqZAp">
+          <node concept="1Wc70l" id="2lGQBOCl2sm" role="2$JKZa">
+            <node concept="1eOMI4" id="2lGQBOCl2sn" role="3uHU7B">
+              <node concept="3y3z36" id="2lGQBOCl2so" role="1eOMHV">
+                <node concept="37vLTw" id="3GM_nagTyVU" role="3uHU7B">
+                  <ref role="3cqZAo" node="2lGQBOCl2si" resolve="start" />
+                </node>
+                <node concept="37vLTw" id="3GM_nagT$e9" role="3uHU7w">
+                  <ref role="3cqZAo" node="2lGQBOCl2rZ" resolve="strLen" />
+                </node>
+              </node>
+            </node>
+            <node concept="1eOMI4" id="2lGQBOCl2sr" role="3uHU7w">
+              <node concept="3y3z36" id="2lGQBOCl2ss" role="1eOMHV">
+                <node concept="2OqwBi" id="2lGQBOCl2st" role="3uHU7B">
+                  <node concept="37vLTw" id="2BHiRxghfuW" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2lGQBOCl2rT" resolve="chars" />
+                  </node>
+                  <node concept="liA8E" id="2lGQBOCl2sv" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~String.indexOf(int):int" resolve="indexOf" />
+                    <node concept="2OqwBi" id="2lGQBOCl2sw" role="37wK5m">
+                      <node concept="37vLTw" id="2BHiRxgm8zQ" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2lGQBOCl2rR" resolve="str" />
+                      </node>
+                      <node concept="liA8E" id="2lGQBOCl2sy" role="2OqNvi">
+                        <ref role="37wK5l" to="wyt6:~String.charAt(int):char" resolve="charAt" />
+                        <node concept="37vLTw" id="3GM_nagTwEl" role="37wK5m">
+                          <ref role="3cqZAo" node="2lGQBOCl2si" resolve="start" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="1ZRNhn" id="2lGQBOCl2s$" role="3uHU7w">
+                  <node concept="3cmrfG" id="2lGQBOCl2s_" role="2$L3a6">
+                    <property role="3cmrfH" value="1" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="2lGQBOCl2sA" role="2LFqv$">
+            <node concept="3clFbF" id="2lGQBOCl2sB" role="3cqZAp">
+              <node concept="3uNrnE" id="2lGQBOCl2sC" role="3clFbG">
+                <node concept="37vLTw" id="3GM_nagTvI4" role="2$L3a6">
+                  <ref role="3cqZAo" node="2lGQBOCl2si" resolve="start" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="2lGQBOCl2sE" role="3cqZAp">
+          <node concept="2OqwBi" id="2lGQBOCl2sF" role="3cqZAk">
+            <node concept="37vLTw" id="2BHiRxgm5EK" role="2Oq$k0">
+              <ref role="3cqZAo" node="2lGQBOCl2rR" resolve="str" />
+            </node>
+            <node concept="liA8E" id="2lGQBOCl2sH" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~String.substring(int):java.lang.String" resolve="substring" />
+              <node concept="37vLTw" id="3GM_nagTveS" role="37wK5m">
+                <ref role="3cqZAo" node="2lGQBOCl2si" resolve="start" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1W57fq" id="3YWZWnq6f9m" role="lGtFl">
+        <node concept="3IZrLx" id="3YWZWnq6f9n" role="3IZSJc">
+          <node concept="3clFbS" id="3YWZWnq6f9o" role="2VODD2">
+            <node concept="3clFbF" id="3YWZWnq6f9p" role="3cqZAp">
+              <node concept="2OqwBi" id="3YWZWnq6f9q" role="3clFbG">
+                <node concept="2OqwBi" id="3YWZWnq6f9r" role="2Oq$k0">
+                  <node concept="2OqwBi" id="3YWZWnq6f9s" role="2Oq$k0">
+                    <node concept="1iwH7S" id="3YWZWnq6f9t" role="2Oq$k0" />
+                    <node concept="1r8y6K" id="3YWZWnq6f9u" role="2OqNvi" />
+                  </node>
+                  <node concept="2SmgA7" id="3YWZWnq6f9v" role="2OqNvi">
+                    <node concept="chp4Y" id="1jixkkC_WIl" role="1dBWTz">
+                      <ref role="cht4Q" to="tpee:hP7S18E" resolve="TrimOperation" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2HwmR7" id="3YWZWnq6f9w" role="2OqNvi">
+                  <node concept="1bVj0M" id="3YWZWnq6f9x" role="23t8la">
+                    <node concept="3clFbS" id="3YWZWnq6f9y" role="1bW5cS">
+                      <node concept="3clFbF" id="3YWZWnq6f9z" role="3cqZAp">
+                        <node concept="2OqwBi" id="3YWZWnq6f9$" role="3clFbG">
+                          <node concept="2OqwBi" id="3YWZWnq6f9_" role="2Oq$k0">
+                            <node concept="37vLTw" id="2BHiRxgll9I" role="2Oq$k0">
+                              <ref role="3cqZAo" node="3YWZWnq6f9E" resolve="it" />
+                            </node>
+                            <node concept="3TrcHB" id="3YWZWnq6f9B" role="2OqNvi">
+                              <ref role="3TsBF5" to="tpee:hP7S18H" resolve="trimKind" />
+                            </node>
+                          </node>
+                          <node concept="3t7uKx" id="3YWZWnq6f9C" role="2OqNvi">
+                            <node concept="uoxfO" id="3YWZWnq6f9D" role="3t7uKA">
+                              <ref role="uo_Cq" to="tpee:hP7RTk8" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="Rh6nW" id="3YWZWnq6f9E" role="1bW2Oz">
+                      <property role="TrG5h" value="it" />
+                      <node concept="2jxLKc" id="3YWZWnq6f9F" role="1tU5fm" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2YIFZL" id="2lGQBOCl2qV" role="jymVt">
+      <property role="TrG5h" value="stripEnd" />
+      <node concept="37vLTG" id="2lGQBOCl2qW" role="3clF46">
+        <property role="TrG5h" value="str" />
+        <node concept="3uibUv" id="2lGQBOCl2qX" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="2lGQBOCl2qY" role="3clF46">
+        <property role="TrG5h" value="chars" />
+        <node concept="3uibUv" id="2lGQBOCl2qZ" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+      </node>
+      <node concept="3uibUv" id="2lGQBOCl2r0" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="3clFbS" id="2lGQBOCl2r2" role="3clF47">
+        <node concept="3cpWs8" id="2lGQBOCl2r3" role="3cqZAp">
+          <node concept="3cpWsn" id="2lGQBOCl2r4" role="3cpWs9">
+            <property role="TrG5h" value="end" />
+            <node concept="10Oyi0" id="2lGQBOCl2r5" role="1tU5fm" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="2lGQBOCl2r6" role="3cqZAp">
+          <node concept="3clFbS" id="2lGQBOCl2r7" role="3clFbx">
+            <node concept="3cpWs6" id="2lGQBOCl2r8" role="3cqZAp">
+              <node concept="37vLTw" id="2BHiRxgkX$D" role="3cqZAk">
+                <ref role="3cqZAo" node="2lGQBOCl2qW" resolve="str" />
+              </node>
+            </node>
+          </node>
+          <node concept="22lmx$" id="2lGQBOCl2ra" role="3clFbw">
+            <node concept="3clFbC" id="2lGQBOCl2rb" role="3uHU7w">
+              <node concept="3cmrfG" id="2lGQBOCl2rc" role="3uHU7w">
+                <property role="3cmrfH" value="0" />
+              </node>
+              <node concept="1eOMI4" id="2lGQBOCl2rd" role="3uHU7B">
+                <node concept="37vLTI" id="2lGQBOCl2re" role="1eOMHV">
+                  <node concept="2OqwBi" id="2lGQBOCl2rf" role="37vLTx">
+                    <node concept="37vLTw" id="2BHiRxgha5P" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2lGQBOCl2qW" resolve="str" />
+                    </node>
+                    <node concept="liA8E" id="2lGQBOCl2rh" role="2OqNvi">
+                      <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="3GM_nagTuQ0" role="37vLTJ">
+                    <ref role="3cqZAo" node="2lGQBOCl2r4" resolve="end" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbC" id="2lGQBOCl2rj" role="3uHU7B">
+              <node concept="37vLTw" id="2BHiRxgkZ1a" role="3uHU7B">
+                <ref role="3cqZAo" node="2lGQBOCl2qW" resolve="str" />
+              </node>
+              <node concept="10Nm6u" id="2lGQBOCl2rl" role="3uHU7w" />
+            </node>
+          </node>
+        </node>
+        <node concept="2$JKZl" id="2lGQBOCl2rm" role="3cqZAp">
+          <node concept="1Wc70l" id="2lGQBOCl2rn" role="2$JKZa">
+            <node concept="1eOMI4" id="2lGQBOCl2ro" role="3uHU7B">
+              <node concept="3y3z36" id="2lGQBOCl2rp" role="1eOMHV">
+                <node concept="3cmrfG" id="2lGQBOCl2rq" role="3uHU7B">
+                  <property role="3cmrfH" value="0" />
+                </node>
+                <node concept="37vLTw" id="3GM_nagTui9" role="3uHU7w">
+                  <ref role="3cqZAo" node="2lGQBOCl2r4" resolve="end" />
+                </node>
+              </node>
+            </node>
+            <node concept="1eOMI4" id="2lGQBOCl2rs" role="3uHU7w">
+              <node concept="3y3z36" id="2lGQBOCl2rt" role="1eOMHV">
+                <node concept="2OqwBi" id="2lGQBOCl2ru" role="3uHU7B">
+                  <node concept="37vLTw" id="2BHiRxgm7oU" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2lGQBOCl2qY" resolve="chars" />
+                  </node>
+                  <node concept="liA8E" id="2lGQBOCl2rw" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~String.indexOf(int):int" resolve="indexOf" />
+                    <node concept="2OqwBi" id="2lGQBOCl2rx" role="37wK5m">
+                      <node concept="37vLTw" id="2BHiRxgmmbI" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2lGQBOCl2qW" resolve="str" />
+                      </node>
+                      <node concept="liA8E" id="2lGQBOCl2rz" role="2OqNvi">
+                        <ref role="37wK5l" to="wyt6:~String.charAt(int):char" resolve="charAt" />
+                        <node concept="3cpWsd" id="2lGQBOCl2r$" role="37wK5m">
+                          <node concept="3cmrfG" id="2lGQBOCl2r_" role="3uHU7w">
+                            <property role="3cmrfH" value="1" />
+                          </node>
+                          <node concept="37vLTw" id="3GM_nagTz1Z" role="3uHU7B">
+                            <ref role="3cqZAo" node="2lGQBOCl2r4" resolve="end" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="1ZRNhn" id="2lGQBOCl2rB" role="3uHU7w">
+                  <node concept="3cmrfG" id="2lGQBOCl2rC" role="2$L3a6">
+                    <property role="3cmrfH" value="1" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="2lGQBOCl2rD" role="2LFqv$">
+            <node concept="3clFbF" id="2lGQBOCl2rE" role="3cqZAp">
+              <node concept="3uO5VW" id="2lGQBOCl2rF" role="3clFbG">
+                <node concept="37vLTw" id="3GM_nagTAo8" role="2$L3a6">
+                  <ref role="3cqZAo" node="2lGQBOCl2r4" resolve="end" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="2lGQBOCl2rH" role="3cqZAp">
+          <node concept="2OqwBi" id="2lGQBOCl2rI" role="3cqZAk">
+            <node concept="37vLTw" id="2BHiRxgm6gz" role="2Oq$k0">
+              <ref role="3cqZAo" node="2lGQBOCl2qW" resolve="str" />
+            </node>
+            <node concept="liA8E" id="2lGQBOCl2rK" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~String.substring(int,int):java.lang.String" resolve="substring" />
+              <node concept="3cmrfG" id="2lGQBOCl2rL" role="37wK5m">
+                <property role="3cmrfH" value="0" />
+              </node>
+              <node concept="37vLTw" id="3GM_nagTyAA" role="37wK5m">
+                <ref role="3cqZAo" node="2lGQBOCl2r4" resolve="end" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1W57fq" id="3YWZWnq6f7O" role="lGtFl">
+        <node concept="3IZrLx" id="3YWZWnq6f7P" role="3IZSJc">
+          <node concept="3clFbS" id="3YWZWnq6f7Q" role="2VODD2">
+            <node concept="3clFbF" id="3YWZWnq6f7R" role="3cqZAp">
+              <node concept="2OqwBi" id="3YWZWnq6f8h" role="3clFbG">
+                <node concept="2OqwBi" id="3YWZWnq6f7S" role="2Oq$k0">
+                  <node concept="2OqwBi" id="3YWZWnq6f7T" role="2Oq$k0">
+                    <node concept="1iwH7S" id="3YWZWnq6f7U" role="2Oq$k0" />
+                    <node concept="1r8y6K" id="3YWZWnq6f7V" role="2OqNvi" />
+                  </node>
+                  <node concept="2SmgA7" id="3YWZWnq6f7W" role="2OqNvi">
+                    <node concept="chp4Y" id="1jixkkC_WIn" role="1dBWTz">
+                      <ref role="cht4Q" to="tpee:hP7S18E" resolve="TrimOperation" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2HwmR7" id="3YWZWnq6f8m" role="2OqNvi">
+                  <node concept="1bVj0M" id="3YWZWnq6f8n" role="23t8la">
+                    <node concept="3clFbS" id="3YWZWnq6f8o" role="1bW5cS">
+                      <node concept="3clFbF" id="3YWZWnq6f8r" role="3cqZAp">
+                        <node concept="2OqwBi" id="3YWZWnq6f9d" role="3clFbG">
+                          <node concept="2OqwBi" id="3YWZWnq6f8L" role="2Oq$k0">
+                            <node concept="37vLTw" id="2BHiRxgkWhu" role="2Oq$k0">
+                              <ref role="3cqZAo" node="3YWZWnq6f8p" resolve="it" />
+                            </node>
+                            <node concept="3TrcHB" id="3YWZWnq6f8R" role="2OqNvi">
+                              <ref role="3TsBF5" to="tpee:hP7S18H" resolve="trimKind" />
+                            </node>
+                          </node>
+                          <node concept="3t7uKx" id="3YWZWnq6f9j" role="2OqNvi">
+                            <node concept="uoxfO" id="3YWZWnq6f9k" role="3t7uKA">
+                              <ref role="uo_Cq" to="tpee:hP7RTk9" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="Rh6nW" id="3YWZWnq6f8p" role="1bW2Oz">
+                      <property role="TrG5h" value="it" />
+                      <node concept="2jxLKc" id="3YWZWnq6f8q" role="1tU5fm" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2YIFZL" id="3tlNzo6HYZu" role="jymVt">
+      <property role="TrG5h" value="substring" />
+      <node concept="37vLTG" id="3tlNzo6HYZy" role="3clF46">
+        <property role="TrG5h" value="str" />
+        <node concept="3uibUv" id="3tlNzo6HZes" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3tlNzo6HYZ$" role="3clF46">
+        <property role="TrG5h" value="start" />
+        <node concept="10Oyi0" id="3tlNzo6HZet" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="3tlNzo6HZeu" role="3clF46">
+        <property role="TrG5h" value="end" />
+        <node concept="10Oyi0" id="3tlNzo6HZew" role="1tU5fm" />
+      </node>
+      <node concept="3uibUv" id="3tlNzo6HZer" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="3clFbS" id="3tlNzo6HYZx" role="3clF47">
+        <node concept="3clFbJ" id="3tlNzo6HZex" role="3cqZAp">
+          <node concept="3clFbC" id="3tlNzo6HZey" role="3clFbw">
+            <node concept="37vLTw" id="2BHiRxgm9XU" role="3uHU7B">
+              <ref role="3cqZAo" node="3tlNzo6HYZy" resolve="str" />
+            </node>
+            <node concept="10Nm6u" id="3tlNzo6HZe$" role="3uHU7w" />
+          </node>
+          <node concept="3clFbS" id="3tlNzo6HZe_" role="3clFbx">
+            <node concept="3cpWs6" id="3tlNzo6HZeA" role="3cqZAp">
+              <node concept="10Nm6u" id="3tlNzo6HZeB" role="3cqZAk" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3tlNzo6HZeC" role="3cqZAp">
+          <node concept="3eOVzh" id="3tlNzo6HZeD" role="3clFbw">
+            <node concept="37vLTw" id="2BHiRxgkY9f" role="3uHU7B">
+              <ref role="3cqZAo" node="3tlNzo6HZeu" resolve="end" />
+            </node>
+            <node concept="3cmrfG" id="3tlNzo6HZeF" role="3uHU7w">
+              <property role="3cmrfH" value="0" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="3tlNzo6HZeG" role="3clFbx">
+            <node concept="3clFbF" id="3tlNzo6HZeH" role="3cqZAp">
+              <node concept="37vLTI" id="3tlNzo6HZeI" role="3clFbG">
+                <node concept="37vLTw" id="2BHiRxghaa$" role="37vLTJ">
+                  <ref role="3cqZAo" node="3tlNzo6HZeu" resolve="end" />
+                </node>
+                <node concept="3cpWs3" id="3tlNzo6HZeK" role="37vLTx">
+                  <node concept="2OqwBi" id="3tlNzo6HZeL" role="3uHU7B">
+                    <node concept="37vLTw" id="2BHiRxgmaCN" role="2Oq$k0">
+                      <ref role="3cqZAo" node="3tlNzo6HYZy" resolve="str" />
+                    </node>
+                    <node concept="liA8E" id="3tlNzo6HZeN" role="2OqNvi">
+                      <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="2BHiRxgm70l" role="3uHU7w">
+                    <ref role="3cqZAo" node="3tlNzo6HZeu" resolve="end" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3tlNzo6HZeR" role="3cqZAp">
+          <node concept="3eOVzh" id="3tlNzo6HZeS" role="3clFbw">
+            <node concept="37vLTw" id="2BHiRxgheol" role="3uHU7B">
+              <ref role="3cqZAo" node="3tlNzo6HYZ$" resolve="start" />
+            </node>
+            <node concept="3cmrfG" id="3tlNzo6HZeU" role="3uHU7w">
+              <property role="3cmrfH" value="0" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="3tlNzo6HZeV" role="3clFbx">
+            <node concept="3clFbF" id="3tlNzo6HZeW" role="3cqZAp">
+              <node concept="37vLTI" id="3tlNzo6HZeX" role="3clFbG">
+                <node concept="37vLTw" id="2BHiRxgm$13" role="37vLTJ">
+                  <ref role="3cqZAo" node="3tlNzo6HYZ$" resolve="start" />
+                </node>
+                <node concept="3cpWs3" id="3tlNzo6HZeZ" role="37vLTx">
+                  <node concept="2OqwBi" id="3tlNzo6HZf0" role="3uHU7B">
+                    <node concept="37vLTw" id="2BHiRxgmzqZ" role="2Oq$k0">
+                      <ref role="3cqZAo" node="3tlNzo6HYZy" resolve="str" />
+                    </node>
+                    <node concept="liA8E" id="3tlNzo6HZf2" role="2OqNvi">
+                      <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="2BHiRxgmjk1" role="3uHU7w">
+                    <ref role="3cqZAo" node="3tlNzo6HYZ$" resolve="start" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3tlNzo6HZf6" role="3cqZAp">
+          <node concept="3eOSWO" id="3tlNzo6HZf7" role="3clFbw">
+            <node concept="37vLTw" id="2BHiRxgmC4H" role="3uHU7B">
+              <ref role="3cqZAo" node="3tlNzo6HZeu" resolve="end" />
+            </node>
+            <node concept="2OqwBi" id="3tlNzo6HZf9" role="3uHU7w">
+              <node concept="37vLTw" id="2BHiRxgmjxh" role="2Oq$k0">
+                <ref role="3cqZAo" node="3tlNzo6HYZy" resolve="str" />
+              </node>
+              <node concept="liA8E" id="3tlNzo6HZfb" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="3tlNzo6HZfc" role="3clFbx">
+            <node concept="3clFbF" id="3tlNzo6HZfd" role="3cqZAp">
+              <node concept="37vLTI" id="3tlNzo6HZfe" role="3clFbG">
+                <node concept="37vLTw" id="2BHiRxglhnZ" role="37vLTJ">
+                  <ref role="3cqZAo" node="3tlNzo6HZeu" resolve="end" />
+                </node>
+                <node concept="2OqwBi" id="3tlNzo6HZfg" role="37vLTx">
+                  <node concept="37vLTw" id="2BHiRxgmDxW" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3tlNzo6HYZy" resolve="str" />
+                  </node>
+                  <node concept="liA8E" id="3tlNzo6HZfi" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3tlNzo6HZfj" role="3cqZAp">
+          <node concept="3eOSWO" id="3tlNzo6HZfk" role="3clFbw">
+            <node concept="37vLTw" id="2BHiRxgmx0S" role="3uHU7B">
+              <ref role="3cqZAo" node="3tlNzo6HYZ$" resolve="start" />
+            </node>
+            <node concept="37vLTw" id="2BHiRxglgs8" role="3uHU7w">
+              <ref role="3cqZAo" node="3tlNzo6HZeu" resolve="end" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="3tlNzo6HZfn" role="3clFbx">
+            <node concept="3cpWs6" id="3tlNzo6HZfo" role="3cqZAp">
+              <node concept="Xl_RD" id="3tlNzo6HZgi" role="3cqZAk">
+                <property role="Xl_RC" value="" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3tlNzo6HZfq" role="3cqZAp">
+          <node concept="3eOVzh" id="3tlNzo6HZfr" role="3clFbw">
+            <node concept="37vLTw" id="2BHiRxglp3T" role="3uHU7B">
+              <ref role="3cqZAo" node="3tlNzo6HYZ$" resolve="start" />
+            </node>
+            <node concept="3cmrfG" id="3tlNzo6HZft" role="3uHU7w">
+              <property role="3cmrfH" value="0" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="3tlNzo6HZfu" role="3clFbx">
+            <node concept="3clFbF" id="3tlNzo6HZfv" role="3cqZAp">
+              <node concept="37vLTI" id="3tlNzo6HZfw" role="3clFbG">
+                <node concept="37vLTw" id="2BHiRxghfca" role="37vLTJ">
+                  <ref role="3cqZAo" node="3tlNzo6HYZ$" resolve="start" />
+                </node>
+                <node concept="3cmrfG" id="3tlNzo6HZfy" role="37vLTx">
+                  <property role="3cmrfH" value="0" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3tlNzo6HZfz" role="3cqZAp">
+          <node concept="3eOVzh" id="3tlNzo6HZf$" role="3clFbw">
+            <node concept="37vLTw" id="2BHiRxglG7o" role="3uHU7B">
+              <ref role="3cqZAo" node="3tlNzo6HZeu" resolve="end" />
+            </node>
+            <node concept="3cmrfG" id="3tlNzo6HZfA" role="3uHU7w">
+              <property role="3cmrfH" value="0" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="3tlNzo6HZfB" role="3clFbx">
+            <node concept="3clFbF" id="3tlNzo6HZfC" role="3cqZAp">
+              <node concept="37vLTI" id="3tlNzo6HZfD" role="3clFbG">
+                <node concept="37vLTw" id="2BHiRxgl3F0" role="37vLTJ">
+                  <ref role="3cqZAo" node="3tlNzo6HZeu" resolve="end" />
+                </node>
+                <node concept="3cmrfG" id="3tlNzo6HZfF" role="37vLTx">
+                  <property role="3cmrfH" value="0" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="3tlNzo6HZfG" role="3cqZAp">
+          <node concept="2OqwBi" id="3tlNzo6HZfH" role="3cqZAk">
+            <node concept="37vLTw" id="2BHiRxgm$BI" role="2Oq$k0">
+              <ref role="3cqZAo" node="3tlNzo6HYZy" resolve="str" />
+            </node>
+            <node concept="liA8E" id="3tlNzo6HZfJ" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~String.substring(int,int):java.lang.String" resolve="substring" />
+              <node concept="37vLTw" id="2BHiRxgm_mN" role="37wK5m">
+                <ref role="3cqZAo" node="3tlNzo6HYZ$" resolve="start" />
+              </node>
+              <node concept="37vLTw" id="2BHiRxghflh" role="37wK5m">
+                <ref role="3cqZAo" node="3tlNzo6HZeu" resolve="end" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1W57fq" id="3YWZWnq6eKE" role="lGtFl">
+        <node concept="3IZrLx" id="3YWZWnq6eKF" role="3IZSJc">
+          <node concept="3clFbS" id="3YWZWnq6eKG" role="2VODD2">
+            <node concept="3clFbF" id="3YWZWnq6eKH" role="3cqZAp">
+              <node concept="3fqX7Q" id="3YWZWnq6eKT" role="3clFbG">
+                <node concept="2OqwBi" id="3YWZWnq6eKU" role="3fr31v">
+                  <node concept="2OqwBi" id="3YWZWnq6eKV" role="2Oq$k0">
+                    <node concept="2OqwBi" id="3YWZWnq6eKW" role="2Oq$k0">
+                      <node concept="1iwH7S" id="3YWZWnq6eKX" role="2Oq$k0" />
+                      <node concept="1r8y6K" id="3YWZWnq6eKY" role="2OqNvi" />
+                    </node>
+                    <node concept="2SmgA7" id="3YWZWnq6eKZ" role="2OqNvi">
+                      <node concept="chp4Y" id="1jixkkC_WIf" role="1dBWTz">
+                        <ref role="cht4Q" to="tpee:hP7RM7N" resolve="SubstringExpression" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="3YWZWnq6eL0" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~List.isEmpty():boolean" resolve="isEmpty" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2YIFZL" id="eiaDkhYNSo" role="jymVt">
+      <property role="TrG5h" value="substring" />
+      <node concept="3uibUv" id="eiaDkhYNSr" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="3clFbS" id="eiaDkhYNSq" role="3clF47">
+        <node concept="3clFbJ" id="eiaDkhYNSy" role="3cqZAp">
+          <node concept="3clFbC" id="eiaDkhYNSz" role="3clFbw">
+            <node concept="37vLTw" id="2BHiRxgm5H2" role="3uHU7B">
+              <ref role="3cqZAo" node="eiaDkhYNSs" resolve="str" />
+            </node>
+            <node concept="10Nm6u" id="eiaDkhYNS_" role="3uHU7w" />
+          </node>
+          <node concept="3clFbS" id="eiaDkhYNSA" role="3clFbx">
+            <node concept="3cpWs6" id="eiaDkhYNSB" role="3cqZAp">
+              <node concept="10Nm6u" id="eiaDkhYNSC" role="3cqZAk" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="eiaDkhYNSE" role="3cqZAp">
+          <node concept="1rXfSq" id="4hiugqysqKA" role="3cqZAk">
+            <ref role="37wK5l" node="3tlNzo6HYZu" resolve="substring" />
+            <node concept="37vLTw" id="2BHiRxgm7Fn" role="37wK5m">
+              <ref role="3cqZAo" node="eiaDkhYNSs" resolve="str" />
+            </node>
+            <node concept="37vLTw" id="2BHiRxgm8I2" role="37wK5m">
+              <ref role="3cqZAo" node="eiaDkhYNSu" resolve="start" />
+            </node>
+            <node concept="2OqwBi" id="eiaDkhYNT6" role="37wK5m">
+              <node concept="37vLTw" id="2BHiRxgmvLI" role="2Oq$k0">
+                <ref role="3cqZAo" node="eiaDkhYNSs" resolve="str" />
+              </node>
+              <node concept="liA8E" id="eiaDkhYNTd" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="eiaDkhYNSs" role="3clF46">
+        <property role="TrG5h" value="str" />
+        <node concept="3uibUv" id="eiaDkhYNSt" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="eiaDkhYNSu" role="3clF46">
+        <property role="TrG5h" value="start" />
+        <node concept="10Oyi0" id="eiaDkhYNSw" role="1tU5fm" />
+      </node>
+      <node concept="1W57fq" id="3YWZWnq6eL2" role="lGtFl">
+        <node concept="3IZrLx" id="3YWZWnq6eL3" role="3IZSJc">
+          <node concept="3clFbS" id="3YWZWnq6eL4" role="2VODD2">
+            <node concept="3clFbF" id="3YWZWnq6eL5" role="3cqZAp">
+              <node concept="3fqX7Q" id="3YWZWnq6eL6" role="3clFbG">
+                <node concept="2OqwBi" id="3YWZWnq6eL7" role="3fr31v">
+                  <node concept="2OqwBi" id="3YWZWnq6eL8" role="2Oq$k0">
+                    <node concept="2OqwBi" id="3YWZWnq6eL9" role="2Oq$k0">
+                      <node concept="1iwH7S" id="3YWZWnq6eLa" role="2Oq$k0" />
+                      <node concept="1r8y6K" id="3YWZWnq6eLb" role="2OqNvi" />
+                    </node>
+                    <node concept="2SmgA7" id="3YWZWnq6eLc" role="2OqNvi">
+                      <node concept="chp4Y" id="1jixkkC_WIh" role="1dBWTz">
+                        <ref role="cht4Q" to="tpee:hP7RM7N" resolve="SubstringExpression" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="3YWZWnq6eLd" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~List.isEmpty():boolean" resolve="isEmpty" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="13MO4I" id="2lGQBOCl2AI">
+    <property role="TrG5h" value="reduce_TrimOperation_Leading" />
+    <property role="3GE5qa" value="ext.string.expression" />
+    <ref role="3gUMe" to="tpee:hP7S18E" resolve="TrimOperation" />
+    <node concept="1niqFM" id="2lGQBOCl4tc" role="13RCb5">
+      <property role="1npUBZ" value="StringUtils" />
+      <property role="1npL6y" value="stripStart" />
+      <node concept="Xl_RD" id="2lGQBOCl4tj" role="2U24H$">
+        <property role="Xl_RC" value="expression" />
+        <node concept="29HgVG" id="2lGQBOCl4tk" role="lGtFl">
+          <node concept="3NFfHV" id="2lGQBOCl4tl" role="3NFExx">
+            <node concept="3clFbS" id="2lGQBOCl4tm" role="2VODD2">
+              <node concept="3clFbF" id="2lGQBOCl4tn" role="3cqZAp">
+                <node concept="2OqwBi" id="2lGQBOCl4to" role="3clFbG">
+                  <node concept="30H73N" id="2lGQBOCl4tp" role="2Oq$k0" />
+                  <node concept="2qgKlT" id="2lGQBOCl4tq" role="2OqNvi">
+                    <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="Xl_RD" id="2lGQBOCl4tr" role="2U24H$">
+        <property role="Xl_RC" value=" \n\r\t" />
+      </node>
+      <node concept="3uibUv" id="2lGQBOCl4ts" role="32Mpfj">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="raruj" id="2lGQBOCl4te" role="lGtFl" />
+      <node concept="17Uvod" id="2lGQBOCl6qP" role="lGtFl">
+        <property role="2qtEX9" value="fqClassName" />
+        <property role="P4ACc" value="df345b11-b8c7-4213-ac66-48d2a9b75d88/1173990517731/1173992483054" />
+        <node concept="3zFVjK" id="2lGQBOCl6qQ" role="3zH0cK">
+          <node concept="3clFbS" id="2lGQBOCl6qR" role="2VODD2">
+            <node concept="3clFbF" id="2lGQBOCl6qY" role="3cqZAp">
+              <node concept="3cpWs3" id="2lGQBOCl6rY" role="3clFbG">
+                <node concept="2YIFZM" id="2n9zn0CqMQd" role="3uHU7B">
+                  <ref role="37wK5l" to="unno:7WvVJ3rORmu" resolve="getModelLongName" />
+                  <ref role="1Pybhc" to="unno:1NYD3hytmTa" resolve="SNodeOperations" />
+                  <node concept="2JrnkZ" id="2n9zn0CqMQe" role="37wK5m">
+                    <node concept="2OqwBi" id="2n9zn0CqMQf" role="2JrQYb">
+                      <node concept="30H73N" id="2n9zn0CqMQg" role="2Oq$k0" />
+                      <node concept="I4A8Y" id="2n9zn0CqMQh" role="2OqNvi" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="2lGQBOCl6s1" role="3uHU7w">
+                  <property role="Xl_RC" value=".StringUtils" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="13MO4I" id="3YWZWnqamtD">
+    <property role="TrG5h" value="reduce_IsEmptyExpression" />
+    <property role="3GE5qa" value="ext.string.expression" />
+    <ref role="3gUMe" to="tpee:hP7RlTU" resolve="IsEmptyOperation" />
+    <node concept="312cEu" id="1WpD563p0dl" role="13RCb5">
+      <property role="2bfB8j" value="true" />
+      <property role="TrG5h" value="ctx" />
+      <node concept="3clFb_" id="1WpD563p0iK" role="jymVt">
+        <property role="TrG5h" value="aaa" />
+        <node concept="3cqZAl" id="1WpD563p0iM" role="3clF45" />
+        <node concept="3Tm1VV" id="1WpD563p0iN" role="1B3o_S" />
+        <node concept="3clFbS" id="1WpD563p0iO" role="3clF47">
+          <node concept="3clFbF" id="1WpD563p0mC" role="3cqZAp">
+            <node concept="2Tav94" id="3YWZWnqamu1" role="3clFbG">
+              <node concept="2YIFZL" id="3YWZWnqamu2" role="2Tav96">
+                <property role="TrG5h" value="isEmptyString" />
+                <node concept="10P_77" id="3YWZWnqamul" role="3clF45" />
+                <node concept="3clFbS" id="3YWZWnqamu5" role="3clF47">
+                  <node concept="3cpWs6" id="3YWZWnqamub" role="3cqZAp">
+                    <node concept="22lmx$" id="3YWZWnqamuc" role="3cqZAk">
+                      <node concept="3clFbC" id="3YWZWnqamud" role="3uHU7B">
+                        <node concept="37vLTw" id="2BHiRxglNR5" role="3uHU7B">
+                          <ref role="3cqZAo" node="3YWZWnqamu9" resolve="str" />
+                        </node>
+                        <node concept="10Nm6u" id="3YWZWnqamuf" role="3uHU7w" />
+                      </node>
+                      <node concept="3clFbC" id="3YWZWnqamug" role="3uHU7w">
+                        <node concept="2OqwBi" id="3YWZWnqamuh" role="3uHU7B">
+                          <node concept="37vLTw" id="2BHiRxgm64w" role="2Oq$k0">
+                            <ref role="3cqZAo" node="3YWZWnqamu9" resolve="str" />
+                          </node>
+                          <node concept="liA8E" id="3YWZWnqamuj" role="2OqNvi">
+                            <ref role="37wK5l" to="wyt6:~String.length():int" resolve="length" />
+                          </node>
+                        </node>
+                        <node concept="3cmrfG" id="3YWZWnqamuk" role="3uHU7w">
+                          <property role="3cmrfH" value="0" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="37vLTG" id="3YWZWnqamu9" role="3clF46">
+                  <property role="TrG5h" value="str" />
+                  <node concept="3uibUv" id="3YWZWnqamua" role="1tU5fm">
+                    <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+                  </node>
+                </node>
+                <node concept="3Tm6S6" id="410mQFUc6Xt" role="1B3o_S" />
+              </node>
+              <node concept="2TbA4q" id="3YWZWnqamum" role="2Tav95">
+                <ref role="37wK5l" node="3YWZWnqamu2" resolve="isEmptyString" />
+                <node concept="Xl_RD" id="3YWZWnqamun" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                  <node concept="29HgVG" id="3YWZWnqamus" role="lGtFl">
+                    <node concept="3NFfHV" id="3YWZWnqamut" role="3NFExx">
+                      <node concept="3clFbS" id="3YWZWnqamuu" role="2VODD2">
+                        <node concept="3clFbF" id="3YWZWnqamuv" role="3cqZAp">
+                          <node concept="2OqwBi" id="3YWZWnqamuP" role="3clFbG">
+                            <node concept="30H73N" id="3YWZWnqamuw" role="2Oq$k0" />
+                            <node concept="2qgKlT" id="3YWZWnqamuU" role="2OqNvi">
+                              <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="raruj" id="1WpD563ng$q" role="lGtFl" />
+              <node concept="2jeGV$" id="5s11XheThDr" role="lGtFl">
+                <property role="TrG5h" value="methodNameKey" />
+                <property role="34cw8o" value="Extract once and remember extracted method name" />
+                <node concept="2jfdEK" id="5s11XheThDY" role="2jfP_Y">
+                  <node concept="3clFbS" id="5s11XheThEx" role="2VODD2">
+                    <node concept="3SKdUt" id="mw0JvjRXcY" role="3cqZAp">
+                      <node concept="3SKdUq" id="mw0JvjRXI_" role="3SKWNk">
+                        <property role="3SKdUp" value="ExtractStaticMethodExpression looks for first non static class" />
+                      </node>
+                    </node>
+                    <node concept="3SKdUt" id="mw0JvjRY$L" role="3cqZAp">
+                      <node concept="3SKdUq" id="mw0JvjRYKI" role="3SKWNk">
+                        <property role="3SKdUp" value="and as long as there's no alternative to ESME, this code shall" />
+                      </node>
+                    </node>
+                    <node concept="3SKdUt" id="mw0JvjRZqd" role="3cqZAp">
+                      <node concept="3SKdUq" id="mw0JvjRZMV" role="3SKWNk">
+                        <property role="3SKdUp" value="respect the way ContextUtil.getContextForMethod works" />
+                      </node>
+                    </node>
+                    <node concept="3clFbF" id="5s11XheULux" role="3cqZAp">
+                      <node concept="3cpWs3" id="5s11XheWRex" role="3clFbG">
+                        <node concept="Xl_RD" id="5s11XheTh4_" role="3uHU7w">
+                          <property role="Xl_RC" value=".IsEmptyStringMethod" />
+                        </node>
+                        <node concept="2OqwBi" id="mw0JvjRVHw" role="3uHU7B">
+                          <node concept="2OqwBi" id="mw0JvjRVHx" role="2Oq$k0">
+                            <node concept="1uHKPH" id="mw0JvjRVHy" role="2OqNvi" />
+                            <node concept="2OqwBi" id="mw0JvjRVHz" role="2Oq$k0">
+                              <node concept="2OqwBi" id="mw0JvjRVH$" role="2Oq$k0">
+                                <node concept="30H73N" id="mw0JvjRVH_" role="2Oq$k0" />
+                                <node concept="z$bX8" id="mw0JvjRVHA" role="2OqNvi">
+                                  <node concept="1xMEDy" id="mw0JvjRVHB" role="1xVPHs">
+                                    <node concept="chp4Y" id="mw0JvjRVHC" role="ri$Ld">
+                                      <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="3zZkjj" id="mw0JvjRVHD" role="2OqNvi">
+                                <node concept="1bVj0M" id="mw0JvjRVHE" role="23t8la">
+                                  <node concept="3clFbS" id="mw0JvjRVHF" role="1bW5cS">
+                                    <node concept="3clFbF" id="mw0JvjRVHG" role="3cqZAp">
+                                      <node concept="2OqwBi" id="mw0JvjRVHH" role="3clFbG">
+                                        <node concept="37vLTw" id="mw0JvjRVHI" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="mw0JvjRVHK" resolve="it" />
+                                        </node>
+                                        <node concept="2qgKlT" id="mw0JvjRVHJ" role="2OqNvi">
+                                          <ref role="37wK5l" to="tpek:6r77ob2USS8" resolve="isStatic" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="Rh6nW" id="mw0JvjRVHK" role="1bW2Oz">
+                                    <property role="TrG5h" value="it" />
+                                    <node concept="2jxLKc" id="mw0JvjRVHL" role="1tU5fm" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3TrcHB" id="mw0JvjRVHM" role="2OqNvi">
+                            <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="17QB3L" id="5s11XheTiJ2" role="2jfP_h" />
+              </node>
+              <node concept="1W57fq" id="5s11XheTbZm" role="lGtFl">
+                <node concept="3IZrLx" id="5s11XheTbZo" role="3IZSJc">
+                  <node concept="3clFbS" id="5s11XheTbZq" role="2VODD2">
+                    <node concept="3clFbJ" id="5s11XheTh4H" role="3cqZAp">
+                      <node concept="3clFbS" id="5s11XheTh4I" role="3clFbx">
+                        <node concept="3clFbF" id="5s11XheTh4J" role="3cqZAp">
+                          <node concept="37vLTI" id="5s11XheTh4K" role="3clFbG">
+                            <node concept="2OqwBi" id="5s11XheTh4L" role="37vLTJ">
+                              <node concept="1iwH7S" id="5s11XheTh4M" role="2Oq$k0" />
+                              <node concept="2fSANN" id="5s11XheTh4N" role="2OqNvi">
+                                <node concept="2OqwBi" id="5s11XheTQeD" role="2fWi3N">
+                                  <node concept="1iwH7S" id="5s11XheTQ0Q" role="2Oq$k0" />
+                                  <node concept="1bhEwm" id="5s11XheTQw$" role="2OqNvi">
+                                    <ref role="1bhEwk" node="5s11XheThDr" resolve="methodNameKey" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="30H73N" id="1iiSysipE_Z" role="37vLTx" />
+                          </node>
+                        </node>
+                        <node concept="3cpWs6" id="5s11XheTh4Q" role="3cqZAp">
+                          <node concept="3clFbT" id="5s11XheTh4R" role="3cqZAk">
+                            <property role="3clFbU" value="true" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3clFbC" id="5s11XheTh4S" role="3clFbw">
+                        <node concept="10Nm6u" id="5s11XheTh4T" role="3uHU7w" />
+                        <node concept="2OqwBi" id="5s11XheTh4U" role="3uHU7B">
+                          <node concept="1iwH7S" id="5s11XheTh4V" role="2Oq$k0" />
+                          <node concept="2fSANN" id="5s11XheTh4W" role="2OqNvi">
+                            <node concept="2OqwBi" id="5s11XheTPv0" role="2fWi3N">
+                              <node concept="1iwH7S" id="5s11XheTPib" role="2Oq$k0" />
+                              <node concept="1bhEwm" id="5s11XheTPJX" role="2OqNvi">
+                                <ref role="1bhEwk" node="5s11XheThDr" resolve="methodNameKey" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3cpWs6" id="5s11XheTh4Y" role="3cqZAp">
+                      <node concept="3clFbT" id="5s11XheTh4Z" role="3cqZAk">
+                        <property role="3clFbU" value="false" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="gft3U" id="32AgDtJ5Nyw" role="UU_$l">
+                  <node concept="2TbA4q" id="32AgDtJ5NAB" role="gfFT$">
+                    <ref role="37wK5l" node="3YWZWnqamu2" resolve="isEmptyString" />
+                    <node concept="Xl_RD" id="32AgDtJ5NAC" role="37wK5m">
+                      <property role="Xl_RC" value="" />
+                      <node concept="29HgVG" id="32AgDtJ5NAD" role="lGtFl">
+                        <node concept="3NFfHV" id="32AgDtJ5NAE" role="3NFExx">
+                          <node concept="3clFbS" id="32AgDtJ5NAF" role="2VODD2">
+                            <node concept="3clFbF" id="32AgDtJ5NAG" role="3cqZAp">
+                              <node concept="2OqwBi" id="32AgDtJ5NAH" role="3clFbG">
+                                <node concept="30H73N" id="32AgDtJ5NAI" role="2Oq$k0" />
+                                <node concept="2qgKlT" id="32AgDtJ5NAJ" role="2OqNvi">
+                                  <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="1ZhdrF" id="1iiSysihAYT" role="lGtFl">
+                      <property role="2qtEX8" value="baseMethodDeclaration" />
+                      <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1204053956946/1068499141037" />
+                      <node concept="3$xsQk" id="1iiSysihAYU" role="3$ytzL">
+                        <node concept="3clFbS" id="1iiSysihAYV" role="2VODD2">
+                          <node concept="3SKdUt" id="1iiSysihGju" role="3cqZAp">
+                            <node concept="3SKdUq" id="1iiSysihGmo" role="3SKWNk">
+                              <property role="3SKdUp" value="To destinguish generated isEmpty of the same session in different classes, need an object we've replaced" />
+                            </node>
+                          </node>
+                          <node concept="3SKdUt" id="1iiSysipFQP" role="3cqZAp">
+                            <node concept="3SKdUq" id="1iiSysipFYS" role="3SKWNk">
+                              <property role="3SKdUp" value="with extract statement. With it, can get output by label and input" />
+                            </node>
+                          </node>
+                          <node concept="3cpWs8" id="1iiSysipHtj" role="3cqZAp">
+                            <node concept="3cpWsn" id="1iiSysipHtm" role="3cpWs9">
+                              <property role="TrG5h" value="firstOp" />
+                              <node concept="3Tqbb2" id="1iiSysipHth" role="1tU5fm">
+                                <ref role="ehGHo" to="tpee:hP7RlTU" resolve="IsEmptyOperation" />
+                              </node>
+                              <node concept="10QFUN" id="1iiSysipI$t" role="33vP2m">
+                                <node concept="3Tqbb2" id="1iiSysipIMU" role="10QFUM">
+                                  <ref role="ehGHo" to="tpee:hP7RlTU" resolve="IsEmptyOperation" />
+                                </node>
+                                <node concept="2OqwBi" id="1iiSysipIm9" role="10QFUP">
+                                  <node concept="1iwH7S" id="1iiSysipIma" role="2Oq$k0" />
+                                  <node concept="2fSANN" id="1iiSysipImb" role="2OqNvi">
+                                    <node concept="2OqwBi" id="1iiSysipImc" role="2fWi3N">
+                                      <node concept="1iwH7S" id="1iiSysipImd" role="2Oq$k0" />
+                                      <node concept="1bhEwm" id="1iiSysipIme" role="2OqNvi">
+                                        <ref role="1bhEwk" node="5s11XheThDr" resolve="methodNameKey" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3cpWs6" id="1iiSysihBI6" role="3cqZAp">
+                            <node concept="2OqwBi" id="1iiSysipJPT" role="3cqZAk">
+                              <node concept="2OqwBi" id="1iiSysipJjB" role="2Oq$k0">
+                                <node concept="1iwH7S" id="1iiSysipJez" role="2Oq$k0" />
+                                <node concept="1iwH70" id="1iiSysipJzZ" role="2OqNvi">
+                                  <ref role="1iwH77" node="1iiSysipqrD" resolve="IsEmptyExtractExpr" />
+                                  <node concept="37vLTw" id="1iiSysipJIL" role="1iwH7V">
+                                    <ref role="3cqZAo" node="1iiSysipHtm" resolve="firstOp" />
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="3TrEf2" id="1iiSysipKbH" role="2OqNvi">
+                                <ref role="3Tt5mk" to="tp68:373Y828UwF6" resolve="method" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2ZBi8u" id="1iiSysipsHI" role="lGtFl">
+                <ref role="2rW$FS" node="1iiSysipqrD" resolve="IsEmptyExtractExpr" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="1WpD563p0dm" role="1B3o_S" />
+    </node>
+  </node>
 </model>
 

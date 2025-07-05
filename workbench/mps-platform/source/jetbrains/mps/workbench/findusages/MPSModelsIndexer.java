@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,79 +15,166 @@
  */
 package jetbrains.mps.workbench.findusages;
 
-import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.psi.impl.cache.impl.id.FileTypeIdIndexer;
-import com.intellij.psi.impl.cache.impl.id.IdIndexEntry;
-import com.intellij.psi.impl.cache.impl.id.IdTableBuilding;
+import com.intellij.openapi.fileTypes.FileType;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.psi.search.GlobalSearchScope;
+import com.intellij.util.Consumer;
+import com.intellij.util.indexing.DataIndexer;
+import com.intellij.util.indexing.FileBasedIndex;
+import com.intellij.util.indexing.FileBasedIndex.FileTypeSpecificInputFilter;
+import com.intellij.util.indexing.FileBasedIndex.InputFilter;
 import com.intellij.util.indexing.FileContent;
-import com.intellij.util.text.CharArrayUtil;
+import com.intellij.util.indexing.ID;
+import com.intellij.util.indexing.ScalarIndexExtension;
+import com.intellij.util.io.KeyDescriptor;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
-import jetbrains.mps.persistence.binary.BinaryPersistence;
-import jetbrains.mps.smodel.persistence.def.ModelPersistence;
-import jetbrains.mps.smodel.persistence.def.ModelReadException;
+import jetbrains.mps.persistence.IndexAwareModelFactory;
+import jetbrains.mps.persistence.IndexAwareModelFactory.Callback;
+import jetbrains.mps.smodel.adapter.ids.SConceptId;
+import jetbrains.mps.workbench.findusages.UsageEntry.ConceptInstance;
+import jetbrains.mps.workbench.findusages.UsageEntry.ModelUse;
+import jetbrains.mps.workbench.findusages.UsageEntry.NodeUse;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.util.Consumer;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.persistence.ModelFactory;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MPSModelsIndexer implements ApplicationComponent {
-  @Override
-  public void initComponent() {
-    IdTableBuilding.registerIdIndexer(MPSFileTypeFactory.MPS_FILE_TYPE, new DefaultModelIdIndexer());
-    IdTableBuilding.registerIdIndexer(MPSFileTypeFactory.MPS_BINARY_FILE_TYPE, new BinaryModelIdIndexer());
+/**
+ * Bridge {@link IndexAwareModelFactory} to IDEA file-backed indexing mechanism
+ */
+public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
+  private static final ID<UsageEntry, Void> NAME = ID.create("mps.NodeUsage");
+
+  private final Map<FileType, IndexAwareModelFactory> myIndexAwareFileTypes = new HashMap<FileType, IndexAwareModelFactory>();
+
+  public static Collection<VirtualFile> getContainingFiles(UsageEntry entry, GlobalSearchScope allFiles) {
+    return FileBasedIndex.getInstance().getContainingFiles(NAME, entry, allFiles);
   }
 
-  @Override
-  public void disposeComponent() {
-
-  }
-
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return MPSModelsIndexer.class.getSimpleName();
-  }
-
-  private static class DefaultModelIdIndexer extends FileTypeIdIndexer {
-    @Override
-    @NotNull
-    public Map<IdIndexEntry, Integer> map(FileContent inputData) {
-      CharSequence data = inputData.getContentAsText();
-      char[] charsArray = CharArrayUtil.fromSequenceWithoutCopying(data);
-      if (charsArray == null) {
-        charsArray = CharArrayUtil.fromSequence(data);
+  public MPSModelsIndexer() {
+    PersistenceFacade persistenceRegistry = PersistenceFacade.getInstance();
+    for (String ext : persistenceRegistry.getModelFactoryExtensions()) {
+      final ModelFactory mf = persistenceRegistry.getModelFactory(ext);
+      if (mf instanceof IndexAwareModelFactory) {
+        final FileType ft = MPSFileTypeFactory.findByExtension(ext);
+        if (ft != null) {
+          myIndexAwareFileTypes.put(ft, (IndexAwareModelFactory) mf);
+        }
       }
-
-      final Map<IdIndexEntry, Integer> result = new HashMap<IdIndexEntry, Integer>();
-      try {
-        ModelPersistence.index(charsArray, new Consumer<String>() {
-          @Override
-          public void consume(String s) {
-            result.put(new IdIndexEntry(s, true), 0);
-          }
-        });
-      } catch (ModelReadException ignored) {
-      }
-      return result;
+    }
+    IndexAwareModelFactory mf = myIndexAwareFileTypes.get(MPSFileTypeFactory.MPS_FILE_TYPE);
+    if (mf != null) {
+      // ModelFactory is registered for the 'primary' extension name only, duplicate for 'auxiliary' extensions as well
+      myIndexAwareFileTypes.put(MPSFileTypeFactory.MPS_HEADER_FILE_TYPE, mf);
+      myIndexAwareFileTypes.put(MPSFileTypeFactory.MPS_ROOT_FILE_TYPE, mf);
     }
   }
 
-  private static class BinaryModelIdIndexer extends FileTypeIdIndexer {
+  @NotNull
+  @Override
+  public ID<UsageEntry, Void> getName() {
+    return NAME;
+  }
+
+  @NotNull
+  @Override
+  public DataIndexer<UsageEntry, Void, FileContent> getIndexer() {
+    return new ModelIndexer();
+  }
+
+  @NotNull
+  @Override
+  public KeyDescriptor<UsageEntry> getKeyDescriptor() {
+    return new UsageEntryKeyDescriptor();
+  }
+
+  @NotNull
+  @Override
+  public InputFilter getInputFilter() {
+    return new MyFilter();
+  }
+
+  @Override
+  public boolean dependsOnFileContent() {
+    return true;
+  }
+
+  @Override
+  public int getVersion() {
+    return 1;
+  }
+
+  private static class IndexCallback implements Callback {
+    private final Map<UsageEntry, Void> myResult = new HashMap<UsageEntry, Void>(128);
+
+    public Map<UsageEntry, Void> getResult() {
+      return myResult;
+    }
+
     @Override
-    @NotNull
-    public Map<IdIndexEntry, Integer> map(FileContent inputData) {
-      final Map<IdIndexEntry, Integer> result = new HashMap<IdIndexEntry, Integer>();
-      try {
-        BinaryPersistence.index(inputData.getContent(), new Consumer<String>() {
-          @Override
-          public void consume(String s) {
-            result.put(new IdIndexEntry(s, true), 0);
-          }
-        });
-      } catch (ModelReadException ignored) {
+    public void instances(@NotNull SConceptId concept) {
+      myResult.put(new ConceptInstance(concept), null);
+    }
+
+    @Override
+    public void imports(@NotNull SModelReference modelRef) {
+      myResult.put(new ModelUse(modelRef), null);
+    }
+
+    @Override
+    public void externalNodeRef(@NotNull SNodeId node) {
+      myResult.put(new NodeUse(node), null);
+    }
+
+    @Override
+    public void localNodeRef(@NotNull SNodeId node) {
+      myResult.put(new NodeUse(node), null);
+    }
+  }
+
+  private class MyFilter implements FileTypeSpecificInputFilter {
+
+    @Override
+    public void registerFileTypesUsedForIndexing(@NotNull Consumer<FileType> fileTypeSink) {
+      for (FileType ft : myIndexAwareFileTypes.keySet()) {
+        fileTypeSink.consume(ft);
       }
-      return result;
+    }
+
+    @Override
+    public boolean acceptInput(@NotNull VirtualFile file) {
+      // AFAIU, FileBasedIndex does filtering according to file types supplied in #registerFileTypesUsedForIndexing
+      // unfortunately, it doesn't state it clearly in the javadoc.
+      return true;
+    }
+  }
+
+  private class ModelIndexer implements DataIndexer<UsageEntry, Void, FileContent> {
+
+    @NotNull
+    @Override
+    public Map<UsageEntry, Void> map(@NotNull FileContent inputData) {
+      IndexAwareModelFactory mf = myIndexAwareFileTypes.get(inputData.getFileType());
+      if (mf == null) {
+        return Collections.emptyMap();
+      }
+      final byte[] content = inputData.getContent();
+      final IndexCallback cb = new IndexCallback();
+      try {
+        mf.index(new ByteArrayInputStream(content), cb);
+      } catch (IOException ex) {
+        Logger.getLogger(MPSModelsIndexer.class).warn(String.format("Indexing failed: %s", ex), ex);
+      }
+      return cb.getResult();
     }
   }
 }

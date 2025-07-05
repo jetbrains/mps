@@ -15,28 +15,25 @@
  */
 package jetbrains.mps.ide.findusages;
 
-import jetbrains.mps.components.ComponentPlugin;
+import jetbrains.mps.components.ComponentPluginBase;
+import jetbrains.mps.findUsages.FindUsagesManager;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * evgeny, 10/14/11
  */
-public class MPSFindUsages extends ComponentPlugin {
+public final class MPSFindUsages extends ComponentPluginBase {
+  private final LanguageRegistry myLanguageRegistry;
 
-  private static MPSFindUsages ourInstance = new MPSFindUsages();
-
-  public static MPSFindUsages getInstance() {
-    return ourInstance;
-  }
-
-  private MPSFindUsages() {
+  public MPSFindUsages(@NotNull LanguageRegistry languageRegistry) {
+    myLanguageRegistry = languageRegistry;
   }
 
   @Override
   public void init() {
     super.init();
-    final LanguageRegistry languageRegistry = LanguageRegistry.getInstance();
-
-    init(new FindersManager(languageRegistry));
+    init(new FindUsagesManager());
+    init(new FindersManager(myLanguageRegistry));
   }
 }

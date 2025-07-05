@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,46 @@
  */
 package org.jetbrains.mps.openapi.module;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Receives notifications whenever a repository gets updated.
+ * All method calls are made within write action.
+ * @see ModelAccess#checkWriteAccess()
  */
 public interface SRepositoryListener {
+  void moduleAdded(@NotNull SModule module);
 
-  void moduleAdded(SModule module);
+  void beforeModuleRemoved(@NotNull SModule module);
 
-  void beforeModuleRemoved(SModule module);
+  void moduleRemoved(@NotNull SModuleReference module);
 
-  void moduleRemoved(SModuleReference module);
-
+  /**
+   * Notifications about commands in a {@link ModelAccess} associated with the repository.
+   * It's convenient to have command notifications right in SRepositoryListener implementation, like RepositoryChangeTracker
+   * (the one where all changes within a command are collected), rather than have distinct {@link org.jetbrains.mps.openapi.repository.CommandListener}.
+   *
+   * Unlike {@link org.jetbrains.mps.openapi.repository.CommandListener}, gives context repository to facilitate use of the same listener instance
+   * among different repositories.
+   *
+   * @see org.jetbrains.mps.openapi.repository.CommandListener#commandStarted()
+   */
   void commandStarted(SRepository repository);
 
+  /**
+   * @see org.jetbrains.mps.openapi.repository.CommandListener#commandFinished()
+   */
   void commandFinished(SRepository repository);
 
+  @Deprecated
   void updateStarted(SRepository repository);
 
+  @Deprecated
   void updateFinished(SRepository repository);
 
+  @Deprecated
   void repositoryCommandStarted(SRepository repository);
 
+  @Deprecated
   void repositoryCommandFinished(SRepository repository);
 }

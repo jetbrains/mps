@@ -15,24 +15,42 @@
  */
 package jetbrains.mps.extapi.persistence;
 
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
+import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
+import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.vfs.FileSystemEvent;
 import jetbrains.mps.vfs.FileSystemListener;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.DataSourceListener;
+import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSourceListener;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
+ * Must be replaced with the FileDataSource everywhere.
+ * Additional functionality (like #isIncluded) must be extracted or removed.
+ * Remember: it is supposed to be just a simple notion of location with file system for {@link ModelFactory}
+ * to load/save/create models there.
+ *
+ * @author apyshkin
  * evgeny, 11/4/12
  */
+@ToRemove(version = 4.0)
 public class FolderDataSource extends DataSourceBase implements MultiStreamDataSource, FileSystemListener, FileSystemBasedDataSource {
   private final Object LOCK = new Object();
   private List<DataSourceListener> myListeners = new ArrayList<DataSourceListener>();
@@ -41,15 +59,31 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
   private final IFile myFolder;
   private final ModelRoot myModelRoot;
 
+  private long myLastAddRemove = -1;
+
+  public FolderDataSource(@NotNull IFile folder) {
+    this(folder, null);
+  }
+
   /**
    * @param modelRoot (optional) containing model root, which should be notified before the source during the update
    */
-  public FolderDataSource(@NotNull IFile folder, ModelRoot modelRoot) {
+  @ToRemove(version = 3.5)
+  @Deprecated
+  protected FolderDataSource(@NotNull IFile folder, @Nullable ModelRoot modelRoot) {
+    if (folder.exists() && !folder.isDirectory()) {
+      throw new IllegalArgumentException("Could not create FolderDataSource with regular file: " + folder);
+    }
     this.myFolder = folder;
     this.myModelRoot = modelRoot;
   }
 
-  protected boolean isIncluded(IFile file) {
+  /**
+   * Returns true iff the file potentially contains some model data
+   *
+   * @return whether file is an actual source file
+   */
+  public boolean isIncluded(@NotNull IFile file) {
     return myFolder.equals(file.getParent());
   }
 
@@ -71,13 +105,8 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
   }
 
   @Override
-  public String toString() {
-    return "FolderDataSource(" + myFolder.toString() + ")";
-  }
-
-  @Override
   public boolean isReadOnly() {
-    return FileSystem.getInstance().isPackaged(myFolder);
+    return myFolder.isPackaged(); // !!! legacy
   }
 
   @NotNull
@@ -86,6 +115,7 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
     return myFolder.toString();
   }
 
+  @NotNull
   @Override
   public Iterable<String> getAvailableStreams() {
     Set<String> names = new HashSet<String>();
@@ -97,6 +127,7 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
     return names;
   }
 
+  @NotNull
   @Override
   public InputStream openInputStream(String name) throws IOException {
     IFile file = getFile(name);
@@ -106,6 +137,7 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
     return file.openInputStream();
   }
 
+  @NotNull
   @Override
   public OutputStream openOutputStream(String name) throws IOException {
     IFile file = getFile(name);
@@ -118,17 +150,16 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
   @Override
   public boolean delete(String name) {
     IFile file = getFile(name);
-    if (file == null) {
-      return false;
-    }
-    return file.delete();
+    return file != null && file.delete();
   }
 
   @Override
   public long getTimestamp() {
-    long max = -1;
+    long max = myLastAddRemove;
     for (IFile file : getStreams()) {
-      if (!isIncluded(file)) continue;
+      if (!isIncluded(file)) {
+        continue;
+      }
 
       long timestamp = file.lastModified();
       if (timestamp > max) {
@@ -139,28 +170,46 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
   }
 
   @Override
-  public void addListener(DataSourceListener listener) {
+  public void addListener(@NotNull DataSourceListener listener) {
     synchronized (LOCK) {
       if (myListeners.isEmpty()) {
-        FileSystem.getInstance().addListener(this);
+        myFolder.getFileSystem().addListener(this);
       }
       myListeners.add(listener);
     }
   }
 
   @Override
-  public void removeListener(DataSourceListener listener) {
+  public void removeListener(@NotNull DataSourceListener listener) {
     synchronized (LOCK) {
       myListeners.remove(listener);
       if (myListeners.isEmpty()) {
-        FileSystem.getInstance().removeListener(this);
+        myFolder.getFileSystem().removeListener(this);
       }
     }
   }
 
+  @NotNull
   @Override
   public IFile getFileToListen() {
     return myFolder;
+  }
+
+  @Override
+  public void delete() {
+    if (isReadOnly()) {
+      return;
+    }
+    ArrayList<IFile> toDelete = new ArrayList<IFile>();
+    for (IFile file : getStreams()) {
+      if (isIncluded(file)) {
+        toDelete.add(file);
+      }
+    }
+    for (IFile file : toDelete) {
+      file.delete();
+    }
+    myLastAddRemove = -1;
   }
 
   @Override
@@ -175,7 +224,7 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
   }
 
   @Override
-  public void update(ProgressMonitor monitor, FileSystemListener.FileSystemEvent event) {
+  public void update(ProgressMonitor monitor, @NotNull FileSystemEvent event) {
     Set<String> affectedStreams = new HashSet<String>();
     for (IFile file : event.getChanged()) {
       if (isIncluded(file)) {
@@ -186,12 +235,14 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
     for (IFile file : event.getCreated()) {
       if (isIncluded(file)) {
         affectedStreams.add(getStreamName(file));
+        myLastAddRemove = new Date().getTime();
         break;
       }
     }
     for (IFile file : event.getRemoved()) {
       if (isIncluded(file)) {
         affectedStreams.add(getStreamName(file));
+        myLastAddRemove = new Date().getTime();
         break;
       }
     }
@@ -218,8 +269,15 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
     }
   }
 
+  @NotNull
   @Override
   public Collection<IFile> getAffectedFiles() {
     return Collections.singleton(myFolder);
+  }
+
+  @NotNull
+  @Override
+  public DataSourceType getType() {
+    return PreinstalledDataSourceTypes.FOLDER;
   }
 }

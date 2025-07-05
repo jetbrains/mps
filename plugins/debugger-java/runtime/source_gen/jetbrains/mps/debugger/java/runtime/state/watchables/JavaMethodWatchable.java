@@ -10,7 +10,8 @@ import jetbrains.mps.debugger.java.api.state.watchables.JavaWatchablesCategory;
 import jetbrains.mps.debug.api.programState.IValue;
 import javax.swing.Icon;
 import jetbrains.mps.debugger.java.runtime.ui.Icons;
-import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
 import jetbrains.mps.debug.api.programState.IWatchable;
 import java.util.Collections;
@@ -19,69 +20,56 @@ import java.util.Collections;
   private final Method myMethod;
   private final boolean myIsEnter;
   private final JavaMethodWatchable.JavaMethodValue myValue;
-
-  public JavaMethodWatchable(Method method, boolean enter, String classFQName, ThreadReference threadReference) {
-    super(classFQName, threadReference);
+  public JavaMethodWatchable(Method method, boolean enter, ThreadReference threadReference) {
+    super(threadReference);
     myMethod = method;
     myIsEnter = enter;
     myValue = new JavaMethodWatchable.JavaMethodValue();
   }
-
   @Override
   public String getName() {
-    return ((myIsEnter ?
-      "entered method" :
-      "exited method"
-    ));
+    return ((myIsEnter ? "entered method" : "exited method"));
   }
-
   @Override
   public WatchablesCategory getCategory() {
     return JavaWatchablesCategory.METHOD;
   }
-
   @Override
   public IValue getValue() {
     return myValue;
   }
-
   @Override
   public Icon getPresentationIcon() {
     return Icons.METHOD_BREAKPOINT;
   }
 
+  @Nullable
   @Override
-  public SNode getNode() {
+  public SNodeReference getSourceNode() {
     //  todo from location??? 
     return null;
   }
 
   private class JavaMethodValue implements IValue {
     private final String myPresentation;
-
     private JavaMethodValue() {
       myPresentation = myMethod.declaringType().name() + "." + myMethod.name();
     }
-
     @Override
     public String getValuePresentation() {
       return myPresentation;
     }
-
     @Override
     public Icon getPresentationIcon() {
       return Icons.METHOD_BREAKPOINT;
     }
-
     @Override
     public boolean isStructure() {
       return false;
     }
-
     @Override
     public void initSubvalues() {
     }
-
     @Override
     public List<IWatchable> getSubvalues() {
       return Collections.emptyList();

@@ -4,7 +4,7 @@ package jetbrains.mps.build.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum BuildLayout_CopyFilterEolStyle {
   local("use local system line separator", "local"),
@@ -13,16 +13,21 @@ public enum BuildLayout_CopyFilterEolStyle {
   lf("convert to a single LF", "lf"),
   crlf("convert to the pair CRLF", "crlf");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private BuildLayout_CopyFilterEolStyle(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<BuildLayout_CopyFilterEolStyle> getConstants() {
     List<BuildLayout_CopyFilterEolStyle> list = ListSequence.fromList(new LinkedList<BuildLayout_CopyFilterEolStyle>());
     ListSequence.fromList(list).addElement(BuildLayout_CopyFilterEolStyle.local);
@@ -32,11 +37,9 @@ public enum BuildLayout_CopyFilterEolStyle {
     ListSequence.fromList(list).addElement(BuildLayout_CopyFilterEolStyle.crlf);
     return list;
   }
-
   public static BuildLayout_CopyFilterEolStyle getDefault() {
     return BuildLayout_CopyFilterEolStyle.local;
   }
-
   public static BuildLayout_CopyFilterEolStyle parseValue(String value) {
     if (value == null) {
       return BuildLayout_CopyFilterEolStyle.getDefault();
@@ -57,16 +60,5 @@ public enum BuildLayout_CopyFilterEolStyle {
       return BuildLayout_CopyFilterEolStyle.crlf;
     }
     return BuildLayout_CopyFilterEolStyle.getDefault();
-  }
-
-  private String myValue;
-
-  BuildLayout_CopyFilterEolStyle(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

@@ -1,551 +1,667 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="ConstraintsAspectDescriptor.java" startLine="9" startPosition="0" endLine="43" endPosition="0" unitName="jetbrains.mps.lang.generator.constraints.ConstraintsAspectDescriptor" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="ConstraintsAspectDescriptor.java">
+      <unit at="13,0,53,0" name="jetbrains.mps.lang.generator.constraints.ConstraintsAspectDescriptor" />
+    </file>
+  </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/1213104837507">
-    <nodeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="19" startPosition="41" endLine="20" endPosition="69" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="24" startPosition="83" endLine="25" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="28" startPosition="44" endLine="29" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1213104837922" fileName="Root_MappingRule_Constraints.java" startLine="37" startPosition="142" endLine="38" endPosition="108" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="42" startPosition="63" endLine="43" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="47" startPosition="7" endLine="48" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="51" startPosition="0" endLine="52" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="breakingNode_6wzx82_a0a1a0a0a1a0b0a1a1" />
-    <nodeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="19" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="Root_MappingRule_Constraints#()V" />
-    <nodeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="27" startPosition="0" endLine="31" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnScopeProvider#()Z" />
-    <nodeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="36" startPosition="0" endLine="40" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createSearchScopeOrListOfNodes#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljava/lang/Object;" />
-    <nodeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="41" startPosition="0" endLine="45" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="34" startPosition="56" endLine="45" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="32" startPosition="0" endLine="47" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-    <nodeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="25" startPosition="75" endLine="47" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="23" startPosition="0" endLine="50" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultReferences#()Ljava/util/Map;" />
-    <scopeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="19" startPosition="41" endLine="20" endPosition="69" />
-    <scopeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="28" startPosition="44" endLine="29" endPosition="20" />
-    <scopeInfo nodeId="1213104837921" fileName="Root_MappingRule_Constraints.java" startLine="37" startPosition="142" endLine="38" endPosition="108" />
-    <scopeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="42" startPosition="63" endLine="43" endPosition="58" />
-    <scopeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="19" startPosition="0" endLine="22" endPosition="0" />
-    <scopeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="27" startPosition="0" endLine="31" endPosition="0" />
-    <scopeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="36" startPosition="0" endLine="40" endPosition="0">
-      <varInfo nodeId="1213104837507" varName="_context" />
-      <varInfo nodeId="1213104837507" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="41" startPosition="0" endLine="45" endPosition="0" />
-    <scopeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="34" startPosition="56" endLine="45" endPosition="10" />
-    <scopeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="32" startPosition="0" endLine="47" endPosition="0" />
-    <scopeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="24" startPosition="83" endLine="48" endPosition="22">
-      <varInfo nodeId="1213104837507" varName="references" />
-    </scopeInfo>
-    <scopeInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="23" startPosition="0" endLine="50" endPosition="0" />
-    <unitInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="35" startPosition="19" endLine="45" endPosition="9" unitName="jetbrains.mps.lang.generator.constraints.Root_MappingRule_Constraints$2" />
-    <unitInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="26" startPosition="35" endLine="47" endPosition="5" unitName="jetbrains.mps.lang.generator.constraints.Root_MappingRule_Constraints$1" />
-    <unitInfo nodeId="1213104837507" fileName="Root_MappingRule_Constraints.java" startLine="18" startPosition="0" endLine="53" endPosition="0" unitName="jetbrains.mps.lang.generator.constraints.Root_MappingRule_Constraints" />
+    <file name="Root_MappingRule_Constraints.java">
+      <node id="1213104837507" at="25,41,26,158" concept="13" />
+      <node id="1213104837507" at="30,90,31,131" concept="7" />
+      <node id="1213104837507" at="34,44,35,20" concept="8" />
+      <node id="1213104837507" at="42,63,43,58" concept="8" />
+      <node id="6836281137582788756" at="46,122,47,137" concept="8" />
+      <node id="1213104837507" at="51,7,52,22" concept="8" />
+      <node id="1213104837507" at="54,0,55,0" concept="11" trace="breakingNode_6wzx82_a0a0a0a0a1a0b0a1a2" />
+      <node id="1213104837507" at="25,0,28,0" concept="1" trace="Root_MappingRule_Constraints#()V" />
+      <node id="1213104837507" at="33,0,37,0" concept="6" trace="hasOwnScopeProvider#()Z" />
+      <node id="1213104837507" at="41,0,45,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="1213104837507" at="45,0,49,0" concept="6" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="1213104837507" at="39,56,49,10" concept="8" />
+      <node id="1213104837507" at="37,0,51,0" concept="6" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="1213104837507" at="31,131,51,7" concept="2" />
+      <node id="1213104837507" at="29,0,54,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="1213104837507" at="25,41,26,158" />
+      <scope id="1213104837507" at="34,44,35,20" />
+      <scope id="1213104837507" at="42,63,43,58" />
+      <scope id="1213104837507" at="46,122,47,137" />
+      <scope id="1213104837507" at="25,0,28,0" />
+      <scope id="1213104837507" at="33,0,37,0" />
+      <scope id="1213104837507" at="41,0,45,0" />
+      <scope id="1213104837507" at="45,0,49,0">
+        <var name="_context" id="1213104837507" />
+        <var name="operationContext" id="1213104837507" />
+      </scope>
+      <scope id="1213104837507" at="39,56,49,10" />
+      <scope id="1213104837507" at="37,0,51,0" />
+      <scope id="1213104837507" at="30,90,52,22">
+        <var name="references" id="1213104837507" />
+      </scope>
+      <scope id="1213104837507" at="29,0,54,0" />
+      <unit id="1213104837507" at="40,19,49,9" name="jetbrains.mps.lang.generator.constraints.Root_MappingRule_Constraints$1$1" />
+      <unit id="1213104837507" at="32,146,51,5" name="jetbrains.mps.lang.generator.constraints.Root_MappingRule_Constraints$1" />
+      <unit id="1213104837507" at="24,0,56,0" name="jetbrains.mps.lang.generator.constraints.Root_MappingRule_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/1213104840277">
-    <nodeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="19" startPosition="39" endLine="20" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="24" startPosition="83" endLine="25" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="28" startPosition="44" endLine="29" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1213104840281" fileName="CreateRootRule_Constraints.java" startLine="37" startPosition="142" endLine="38" endPosition="108" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="42" startPosition="63" endLine="43" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="47" startPosition="7" endLine="48" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="51" startPosition="0" endLine="52" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="breakingNode_j7rnig_a0a1a0a0a1a0b0a1a1" />
-    <nodeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="19" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="CreateRootRule_Constraints#()V" />
-    <nodeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="27" startPosition="0" endLine="31" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnScopeProvider#()Z" />
-    <nodeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="36" startPosition="0" endLine="40" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createSearchScopeOrListOfNodes#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljava/lang/Object;" />
-    <nodeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="41" startPosition="0" endLine="45" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="34" startPosition="56" endLine="45" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="32" startPosition="0" endLine="47" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-    <nodeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="25" startPosition="75" endLine="47" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="23" startPosition="0" endLine="50" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultReferences#()Ljava/util/Map;" />
-    <scopeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="19" startPosition="39" endLine="20" endPosition="67" />
-    <scopeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="28" startPosition="44" endLine="29" endPosition="20" />
-    <scopeInfo nodeId="1213104840280" fileName="CreateRootRule_Constraints.java" startLine="37" startPosition="142" endLine="38" endPosition="108" />
-    <scopeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="42" startPosition="63" endLine="43" endPosition="58" />
-    <scopeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="19" startPosition="0" endLine="22" endPosition="0" />
-    <scopeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="27" startPosition="0" endLine="31" endPosition="0" />
-    <scopeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="36" startPosition="0" endLine="40" endPosition="0">
-      <varInfo nodeId="1213104840277" varName="_context" />
-      <varInfo nodeId="1213104840277" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="41" startPosition="0" endLine="45" endPosition="0" />
-    <scopeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="34" startPosition="56" endLine="45" endPosition="10" />
-    <scopeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="32" startPosition="0" endLine="47" endPosition="0" />
-    <scopeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="24" startPosition="83" endLine="48" endPosition="22">
-      <varInfo nodeId="1213104840277" varName="references" />
-    </scopeInfo>
-    <scopeInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="23" startPosition="0" endLine="50" endPosition="0" />
-    <unitInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="35" startPosition="19" endLine="45" endPosition="9" unitName="jetbrains.mps.lang.generator.constraints.CreateRootRule_Constraints$2" />
-    <unitInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="26" startPosition="39" endLine="47" endPosition="5" unitName="jetbrains.mps.lang.generator.constraints.CreateRootRule_Constraints$1" />
-    <unitInfo nodeId="1213104840277" fileName="CreateRootRule_Constraints.java" startLine="18" startPosition="0" endLine="53" endPosition="0" unitName="jetbrains.mps.lang.generator.constraints.CreateRootRule_Constraints" />
-  </root>
-  <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/4035562641222622456">
-    <nodeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="15" startPosition="38" endLine="16" endPosition="66" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="20" startPosition="44" endLine="21" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="25" startPosition="188" endLine="26" endPosition="96" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="26" startPosition="96" endLine="27" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="28" startPosition="51" endLine="29" endPosition="68" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="30" startPosition="5" endLine="31" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="31" startPosition="0" endLine="32" endPosition="18" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4035562641222637893" fileName="ITemplateCall_Constraints.java" startLine="36" startPosition="128" endLine="37" endPosition="856" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4035562641222637881" fileName="ITemplateCall_Constraints.java" startLine="38" startPosition="5" endLine="39" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="42" startPosition="0" endLine="43" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="canBeParentBreakingPoint" />
-    <nodeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="15" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="ITemplateCall_Constraints#()V" />
-    <nodeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="27" startPosition="0" endLine="30" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="4035562641222637872" fileName="ITemplateCall_Constraints.java" startLine="35" startPosition="148" endLine="38" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="19" startPosition="0" endLine="23" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnCanBeParentMethod#()Z" />
-    <nodeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="35" startPosition="0" endLine="41" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="static_canBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;)Z" />
-    <nodeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="24" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="canBeParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-    <scopeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="15" startPosition="38" endLine="16" endPosition="66" />
-    <scopeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="20" startPosition="44" endLine="21" endPosition="16" />
-    <scopeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="28" startPosition="51" endLine="29" endPosition="68" />
-    <scopeInfo nodeId="4035562641222637874" fileName="ITemplateCall_Constraints.java" startLine="36" startPosition="128" endLine="37" endPosition="856" />
-    <scopeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="15" startPosition="0" endLine="18" endPosition="0" />
-    <scopeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="19" startPosition="0" endLine="23" endPosition="0" />
-    <scopeInfo nodeId="4035562641222637871" fileName="ITemplateCall_Constraints.java" startLine="35" startPosition="148" endLine="39" endPosition="16" />
-    <scopeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="35" startPosition="0" endLine="41" endPosition="0">
-      <varInfo nodeId="4035562641222622456" varName="childConcept" />
-      <varInfo nodeId="4035562641222622456" varName="childNode" />
-      <varInfo nodeId="4035562641222622456" varName="link" />
-      <varInfo nodeId="4035562641222622456" varName="node" />
-      <varInfo nodeId="4035562641222622456" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="25" startPosition="188" endLine="32" endPosition="18">
-      <varInfo nodeId="4035562641222622456" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="24" startPosition="0" endLine="34" endPosition="0">
-      <varInfo nodeId="4035562641222622456" varName="checkingNodeContext" />
-      <varInfo nodeId="4035562641222622456" varName="childConcept" />
-      <varInfo nodeId="4035562641222622456" varName="childNode" />
-      <varInfo nodeId="4035562641222622456" varName="link" />
-      <varInfo nodeId="4035562641222622456" varName="node" />
-      <varInfo nodeId="4035562641222622456" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="4035562641222622456" fileName="ITemplateCall_Constraints.java" startLine="14" startPosition="0" endLine="44" endPosition="0" unitName="jetbrains.mps.lang.generator.constraints.ITemplateCall_Constraints" />
+    <file name="CreateRootRule_Constraints.java">
+      <node id="1213104840277" at="25,39,26,156" concept="13" />
+      <node id="1213104840277" at="30,90,31,131" concept="7" />
+      <node id="1213104840277" at="34,44,35,20" concept="8" />
+      <node id="1213104840277" at="42,63,43,58" concept="8" />
+      <node id="6836281137582788344" at="46,122,47,137" concept="8" />
+      <node id="1213104840277" at="51,7,52,22" concept="8" />
+      <node id="1213104840277" at="54,0,55,0" concept="11" trace="breakingNode_j7rnig_a0a0a0a0a1a0b0a1a2" />
+      <node id="1213104840277" at="25,0,28,0" concept="1" trace="CreateRootRule_Constraints#()V" />
+      <node id="1213104840277" at="33,0,37,0" concept="6" trace="hasOwnScopeProvider#()Z" />
+      <node id="1213104840277" at="41,0,45,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="1213104840277" at="45,0,49,0" concept="6" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="1213104840277" at="39,56,49,10" concept="8" />
+      <node id="1213104840277" at="37,0,51,0" concept="6" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="1213104840277" at="31,131,51,7" concept="2" />
+      <node id="1213104840277" at="29,0,54,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="1213104840277" at="25,39,26,156" />
+      <scope id="1213104840277" at="34,44,35,20" />
+      <scope id="1213104840277" at="42,63,43,58" />
+      <scope id="1213104840277" at="46,122,47,137" />
+      <scope id="1213104840277" at="25,0,28,0" />
+      <scope id="1213104840277" at="33,0,37,0" />
+      <scope id="1213104840277" at="41,0,45,0" />
+      <scope id="1213104840277" at="45,0,49,0">
+        <var name="_context" id="1213104840277" />
+        <var name="operationContext" id="1213104840277" />
+      </scope>
+      <scope id="1213104840277" at="39,56,49,10" />
+      <scope id="1213104840277" at="37,0,51,0" />
+      <scope id="1213104840277" at="30,90,52,22">
+        <var name="references" id="1213104840277" />
+      </scope>
+      <scope id="1213104840277" at="29,0,54,0" />
+      <unit id="1213104840277" at="40,19,49,9" name="jetbrains.mps.lang.generator.constraints.CreateRootRule_Constraints$1$1" />
+      <unit id="1213104840277" at="32,150,51,5" name="jetbrains.mps.lang.generator.constraints.CreateRootRule_Constraints$1" />
+      <unit id="1213104840277" at="24,0,56,0" name="jetbrains.mps.lang.generator.constraints.CreateRootRule_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/4035562641222625939">
-    <nodeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="14" startPosition="56" endLine="15" endPosition="84" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="19" startPosition="43" endLine="20" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="24" startPosition="200" endLine="25" endPosition="96" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="25" startPosition="96" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="27" startPosition="51" endLine="28" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="29" startPosition="5" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="30" startPosition="0" endLine="31" endPosition="18" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4035562641222635155" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="34" startPosition="148" endLine="35" endPosition="108" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="38" startPosition="0" endLine="39" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="canBeChildBreakingPoint" />
-    <nodeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="14" startPosition="0" endLine="17" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="TemplateArgumentQueryExpression_Constraints#()V" />
-    <nodeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="26" startPosition="0" endLine="29" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="34" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="static_canBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;)Z" />
-    <nodeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="18" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnCanBeChildMethod#()Z" />
-    <nodeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="23" startPosition="0" endLine="33" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="canBeChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-    <scopeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="14" startPosition="56" endLine="15" endPosition="84" />
-    <scopeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="19" startPosition="43" endLine="20" endPosition="16" />
-    <scopeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="27" startPosition="51" endLine="28" endPosition="67" />
-    <scopeInfo nodeId="4035562641222635154" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="34" startPosition="148" endLine="35" endPosition="108" />
-    <scopeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="14" startPosition="0" endLine="17" endPosition="0" />
-    <scopeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="34" startPosition="0" endLine="37" endPosition="0">
-      <varInfo nodeId="4035562641222625939" varName="childConcept" />
-      <varInfo nodeId="4035562641222625939" varName="link" />
-      <varInfo nodeId="4035562641222625939" varName="node" />
-      <varInfo nodeId="4035562641222625939" varName="operationContext" />
-      <varInfo nodeId="4035562641222625939" varName="parentNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="18" startPosition="0" endLine="22" endPosition="0" />
-    <scopeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="24" startPosition="200" endLine="31" endPosition="18">
-      <varInfo nodeId="4035562641222625939" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="23" startPosition="0" endLine="33" endPosition="0">
-      <varInfo nodeId="4035562641222625939" varName="checkingNodeContext" />
-      <varInfo nodeId="4035562641222625939" varName="childConcept" />
-      <varInfo nodeId="4035562641222625939" varName="link" />
-      <varInfo nodeId="4035562641222625939" varName="node" />
-      <varInfo nodeId="4035562641222625939" varName="operationContext" />
-      <varInfo nodeId="4035562641222625939" varName="parentNode" />
-    </scopeInfo>
-    <unitInfo nodeId="4035562641222625939" fileName="TemplateArgumentQueryExpression_Constraints.java" startLine="13" startPosition="0" endLine="40" endPosition="0" unitName="jetbrains.mps.lang.generator.constraints.TemplateArgumentQueryExpression_Constraints" />
+    <file name="TemplateArgumentQueryExpression_Constraints.java">
+      <node id="4035562641222625939" at="19,56,20,178" concept="13" />
+      <node id="4035562641222625939" at="27,127,28,128" concept="7" />
+      <node id="4035562641222625939" at="28,128,29,0" concept="10" />
+      <node id="4035562641222625939" at="30,55,31,71" concept="2" />
+      <node id="4035562641222625939" at="32,9,33,0" concept="10" />
+      <node id="4035562641222625939" at="33,0,34,22" concept="8" />
+      <node id="1227128029536561857" at="38,128,39,211" concept="8" />
+      <node id="4035562641222625939" at="41,0,42,0" concept="11" trace="canBeChildBreakingPoint" />
+      <node id="4035562641222625939" at="19,0,22,0" concept="1" trace="TemplateArgumentQueryExpression_Constraints#()V" />
+      <node id="4035562641222625939" at="29,0,32,9" concept="5" />
+      <node id="4035562641222625939" at="38,0,41,0" concept="12" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="4035562641222625939" at="26,0,36,0" concept="6" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="4035562641222625939" at="24,103,36,6" concept="8" />
+      <node id="4035562641222625939" at="23,0,38,0" concept="6" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <scope id="4035562641222625939" at="19,56,20,178" />
+      <scope id="4035562641222625939" at="30,55,31,71" />
+      <scope id="1227128029536561856" at="38,128,39,211" />
+      <scope id="4035562641222625939" at="19,0,22,0" />
+      <scope id="4035562641222625939" at="38,0,41,0">
+        <var name="childConcept" id="4035562641222625939" />
+        <var name="link" id="4035562641222625939" />
+        <var name="node" id="4035562641222625939" />
+        <var name="parentNode" id="4035562641222625939" />
+      </scope>
+      <scope id="4035562641222625939" at="27,127,34,22">
+        <var name="result" id="4035562641222625939" />
+      </scope>
+      <scope id="4035562641222625939" at="26,0,36,0">
+        <var name="checkingNodeContext" id="4035562641222625939" />
+        <var name="context" id="4035562641222625939" />
+      </scope>
+      <scope id="4035562641222625939" at="24,103,36,6" />
+      <scope id="4035562641222625939" at="23,0,38,0" />
+      <unit id="4035562641222625939" at="25,15,36,5" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentQueryExpression_Constraints$1" />
+      <unit id="4035562641222625939" at="18,0,43,0" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentQueryExpression_Constraints" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/4426797670061486210">
+    <file name="TemplateArgumentVariableRefExpression_Constraints.java">
+      <node id="4426797670061486210" at="26,62,27,184" concept="13" />
+      <node id="4426797670061486210" at="31,90,32,131" concept="7" />
+      <node id="4426797670061486210" at="35,44,36,20" concept="8" />
+      <node id="4426797670061486210" at="43,44,44,24" concept="8" />
+      <node id="8247364127001950661" at="47,128,48,192" concept="8" />
+      <node id="4426797670061486210" at="51,63,52,58" concept="8" />
+      <node id="4426797670061486210" at="56,13,57,270" concept="7" />
+      <node id="4426797670061486210" at="57,270,58,64" concept="8" />
+      <node id="4426797670061486210" at="63,7,64,22" concept="8" />
+      <node id="4426797670061486210" at="66,0,67,0" concept="11" trace="breakingNode_k799s7_a0a2a0a0a1a0b0a1a2" />
+      <node id="4426797670061486210" at="26,0,29,0" concept="1" trace="TemplateArgumentVariableRefExpression_Constraints#()V" />
+      <node id="4426797670061486210" at="34,0,38,0" concept="6" trace="hasOwnScopeProvider#()Z" />
+      <node id="4426797670061486210" at="42,0,46,0" concept="6" trace="hasPresentation#()Z" />
+      <node id="4426797670061486210" at="46,0,50,0" concept="6" trace="getPresentation#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferencePresentationContext;)Ljava/lang/String;" />
+      <node id="4426797670061486210" at="50,0,54,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="4426797670061486210" at="55,122,59,13" concept="0" />
+      <node id="4426797670061486210" at="54,0,61,0" concept="6" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="4426797670061486210" at="40,56,61,10" concept="8" />
+      <node id="4426797670061486210" at="38,0,63,0" concept="6" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="4426797670061486210" at="32,131,63,7" concept="2" />
+      <node id="4426797670061486210" at="30,0,66,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="4426797670061486210" at="26,62,27,184" />
+      <scope id="4426797670061486210" at="35,44,36,20" />
+      <scope id="4426797670061486210" at="43,44,44,24" />
+      <scope id="8247364127001950003" at="47,128,48,192" />
+      <scope id="4426797670061486210" at="51,63,52,58" />
+      <scope id="4426797670061486210" at="56,13,58,64">
+        <var name="scope" id="4426797670061486210" />
+      </scope>
+      <scope id="4426797670061486210" at="26,0,29,0" />
+      <scope id="4426797670061486210" at="34,0,38,0" />
+      <scope id="4426797670061486210" at="42,0,46,0" />
+      <scope id="4426797670061486210" at="46,0,50,0">
+        <var name="_context" id="4426797670061486210" />
+        <var name="operationContext" id="4426797670061486210" />
+      </scope>
+      <scope id="4426797670061486210" at="50,0,54,0" />
+      <scope id="4426797670061486210" at="55,122,59,13" />
+      <scope id="4426797670061486210" at="54,0,61,0">
+        <var name="_context" id="4426797670061486210" />
+        <var name="operationContext" id="4426797670061486210" />
+      </scope>
+      <scope id="4426797670061486210" at="40,56,61,10" />
+      <scope id="4426797670061486210" at="38,0,63,0" />
+      <scope id="4426797670061486210" at="31,90,64,22">
+        <var name="references" id="4426797670061486210" />
+      </scope>
+      <scope id="4426797670061486210" at="30,0,66,0" />
+      <unit id="4426797670061486210" at="41,19,61,9" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentVariableRefExpression_Constraints$1$1" />
+      <unit id="4426797670061486210" at="33,156,63,5" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentVariableRefExpression_Constraints$1" />
+      <unit id="4426797670061486210" at="25,0,68,0" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentVariableRefExpression_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/4665309944889434722">
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="26" startPosition="64" endLine="27" endPosition="92" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="31" startPosition="43" endLine="32" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="36" startPosition="200" endLine="37" endPosition="96" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="37" startPosition="96" endLine="38" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="39" startPosition="51" endLine="40" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="41" startPosition="5" endLine="42" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="42" startPosition="0" endLine="43" endPosition="18" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="47" startPosition="83" endLine="48" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="51" startPosition="44" endLine="52" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4665309944889434727" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="60" startPosition="142" endLine="61" endPosition="56" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4665309944889434733" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="61" startPosition="56" endLine="62" endPosition="167" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4665309944889434752" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="63" startPosition="95" endLine="64" endPosition="251" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="4665309944889434763" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="65" startPosition="13" endLine="66" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="70" startPosition="63" endLine="71" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="75" startPosition="7" endLine="76" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4665309944889460331" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="79" startPosition="148" endLine="80" endPosition="108" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="83" startPosition="0" endLine="84" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="canBeChildBreakingPoint" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="84" startPosition="0" endLine="85" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="breakingNode_u4q1ju_a0a1a0a0a1a0b0a1a3" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="26" startPosition="0" endLine="29" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="TemplateArgumentPatternVarRefExpression_Constraints#()V" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="38" startPosition="0" endLine="41" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="4665309944889434741" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="62" startPosition="167" endLine="65" endPosition="13" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="79" startPosition="0" endLine="82" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="static_canBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;)Z" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="30" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnCanBeChildMethod#()Z" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="50" startPosition="0" endLine="54" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnScopeProvider#()Z" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="69" startPosition="0" endLine="73" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="59" startPosition="0" endLine="68" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createSearchScopeOrListOfNodes#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljava/lang/Object;" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="35" startPosition="0" endLine="45" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="canBeChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="57" startPosition="56" endLine="73" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="55" startPosition="0" endLine="75" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="48" startPosition="75" endLine="75" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="46" startPosition="0" endLine="78" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultReferences#()Ljava/util/Map;" />
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="26" startPosition="64" endLine="27" endPosition="92" />
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="31" startPosition="43" endLine="32" endPosition="16" />
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="39" startPosition="51" endLine="40" endPosition="67" />
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="51" startPosition="44" endLine="52" endPosition="20" />
-    <scopeInfo nodeId="4665309944889434751" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="63" startPosition="95" endLine="64" endPosition="251" />
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="70" startPosition="63" endLine="71" endPosition="58" />
-    <scopeInfo nodeId="4665309944889460330" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="79" startPosition="148" endLine="80" endPosition="108" />
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="26" startPosition="0" endLine="29" endPosition="0" />
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="79" startPosition="0" endLine="82" endPosition="0">
-      <varInfo nodeId="4665309944889434722" varName="childConcept" />
-      <varInfo nodeId="4665309944889434722" varName="link" />
-      <varInfo nodeId="4665309944889434722" varName="node" />
-      <varInfo nodeId="4665309944889434722" varName="operationContext" />
-      <varInfo nodeId="4665309944889434722" varName="parentNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="30" startPosition="0" endLine="34" endPosition="0" />
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="50" startPosition="0" endLine="54" endPosition="0" />
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="69" startPosition="0" endLine="73" endPosition="0" />
-    <scopeInfo nodeId="4665309944889434726" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="60" startPosition="142" endLine="66" endPosition="26">
-      <varInfo nodeId="4665309944889434728" varName="result" />
-      <varInfo nodeId="4665309944889434734" varName="rule" />
-    </scopeInfo>
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="36" startPosition="200" endLine="43" endPosition="18">
-      <varInfo nodeId="4665309944889434722" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="59" startPosition="0" endLine="68" endPosition="0">
-      <varInfo nodeId="4665309944889434722" varName="_context" />
-      <varInfo nodeId="4665309944889434722" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="35" startPosition="0" endLine="45" endPosition="0">
-      <varInfo nodeId="4665309944889434722" varName="checkingNodeContext" />
-      <varInfo nodeId="4665309944889434722" varName="childConcept" />
-      <varInfo nodeId="4665309944889434722" varName="link" />
-      <varInfo nodeId="4665309944889434722" varName="node" />
-      <varInfo nodeId="4665309944889434722" varName="operationContext" />
-      <varInfo nodeId="4665309944889434722" varName="parentNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="57" startPosition="56" endLine="73" endPosition="10" />
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="55" startPosition="0" endLine="75" endPosition="0" />
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="47" startPosition="83" endLine="76" endPosition="22">
-      <varInfo nodeId="4665309944889434722" varName="references" />
-    </scopeInfo>
-    <scopeInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="46" startPosition="0" endLine="78" endPosition="0" />
-    <unitInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="58" startPosition="19" endLine="73" endPosition="9" unitName="jetbrains.mps.lang.generator.constraints.TemplateArgumentPatternVarRefExpression_Constraints$2" />
-    <unitInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="49" startPosition="41" endLine="75" endPosition="5" unitName="jetbrains.mps.lang.generator.constraints.TemplateArgumentPatternVarRefExpression_Constraints$1" />
-    <unitInfo nodeId="4665309944889434722" fileName="TemplateArgumentPatternVarRefExpression_Constraints.java" startLine="25" startPosition="0" endLine="86" endPosition="0" unitName="jetbrains.mps.lang.generator.constraints.TemplateArgumentPatternVarRefExpression_Constraints" />
+    <file name="TemplateArgumentPatternVarRefExpression_Constraints.java">
+      <node id="4665309944889434722" at="36,64,37,186" concept="13" />
+      <node id="4665309944889434722" at="44,127,45,128" concept="7" />
+      <node id="4665309944889434722" at="45,128,46,0" concept="10" />
+      <node id="4665309944889434722" at="47,55,48,71" concept="2" />
+      <node id="4665309944889434722" at="49,9,50,0" concept="10" />
+      <node id="4665309944889434722" at="50,0,51,22" concept="8" />
+      <node id="4665309944889434722" at="56,90,57,131" concept="7" />
+      <node id="4665309944889434722" at="60,44,61,20" concept="8" />
+      <node id="4665309944889434722" at="68,63,69,58" concept="8" />
+      <node id="6836281137582788209" at="73,13,74,58" concept="7" />
+      <node id="6836281137582788215" at="74,58,75,265" concept="7" />
+      <node id="6836281137582788234" at="76,214,77,473" concept="2" />
+      <node id="6836281137582788245" at="78,15,79,61" concept="8" />
+      <node id="4665309944889434722" at="84,7,85,22" concept="8" />
+      <node id="1227128029536561864" at="87,128,88,211" concept="8" />
+      <node id="4665309944889434722" at="90,0,91,0" concept="11" trace="canBeChildBreakingPoint" />
+      <node id="4665309944889434722" at="91,0,92,0" concept="11" trace="breakingNode_u4q1ju_a0a0a0a0a1a0b0a1a3" />
+      <node id="4665309944889434722" at="36,0,39,0" concept="1" trace="TemplateArgumentPatternVarRefExpression_Constraints#()V" />
+      <node id="4665309944889434722" at="46,0,49,9" concept="5" />
+      <node id="6836281137582788223" at="75,265,78,15" concept="5" />
+      <node id="4665309944889434722" at="87,0,90,0" concept="12" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="4665309944889434722" at="59,0,63,0" concept="6" trace="hasOwnScopeProvider#()Z" />
+      <node id="4665309944889434722" at="67,0,71,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="4665309944889434722" at="72,122,80,13" concept="0" />
+      <node id="4665309944889434722" at="43,0,53,0" concept="6" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="4665309944889434722" at="71,0,82,0" concept="6" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="4665309944889434722" at="41,103,53,6" concept="8" />
+      <node id="4665309944889434722" at="40,0,55,0" concept="6" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <node id="4665309944889434722" at="65,56,82,10" concept="8" />
+      <node id="4665309944889434722" at="63,0,84,0" concept="6" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="4665309944889434722" at="57,131,84,7" concept="2" />
+      <node id="4665309944889434722" at="55,0,87,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="4665309944889434722" at="36,64,37,186" />
+      <scope id="4665309944889434722" at="47,55,48,71" />
+      <scope id="4665309944889434722" at="60,44,61,20" />
+      <scope id="4665309944889434722" at="68,63,69,58" />
+      <scope id="6836281137582788233" at="76,214,77,473" />
+      <scope id="1227128029536561863" at="87,128,88,211" />
+      <scope id="4665309944889434722" at="36,0,39,0" />
+      <scope id="4665309944889434722" at="87,0,90,0">
+        <var name="childConcept" id="4665309944889434722" />
+        <var name="link" id="4665309944889434722" />
+        <var name="node" id="4665309944889434722" />
+        <var name="parentNode" id="4665309944889434722" />
+      </scope>
+      <scope id="4665309944889434722" at="59,0,63,0" />
+      <scope id="4665309944889434722" at="67,0,71,0" />
+      <scope id="6836281137582788208" at="73,13,79,61">
+        <var name="result" id="6836281137582788210" />
+        <var name="rule" id="6836281137582788216" />
+      </scope>
+      <scope id="4665309944889434722" at="44,127,51,22">
+        <var name="result" id="4665309944889434722" />
+      </scope>
+      <scope id="4665309944889434722" at="72,122,80,13" />
+      <scope id="4665309944889434722" at="43,0,53,0">
+        <var name="checkingNodeContext" id="4665309944889434722" />
+        <var name="context" id="4665309944889434722" />
+      </scope>
+      <scope id="4665309944889434722" at="71,0,82,0">
+        <var name="_context" id="4665309944889434722" />
+        <var name="operationContext" id="4665309944889434722" />
+      </scope>
+      <scope id="4665309944889434722" at="41,103,53,6" />
+      <scope id="4665309944889434722" at="40,0,55,0" />
+      <scope id="4665309944889434722" at="65,56,82,10" />
+      <scope id="4665309944889434722" at="63,0,84,0" />
+      <scope id="4665309944889434722" at="56,90,85,22">
+        <var name="references" id="4665309944889434722" />
+      </scope>
+      <scope id="4665309944889434722" at="55,0,87,0" />
+      <unit id="4665309944889434722" at="42,15,53,5" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentPatternVarRefExpression_Constraints$1" />
+      <unit id="4665309944889434722" at="66,19,82,9" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentPatternVarRefExpression_Constraints$2$1" />
+      <unit id="4665309944889434722" at="58,162,84,5" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentPatternVarRefExpression_Constraints$2" />
+      <unit id="4665309944889434722" at="35,0,93,0" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentPatternVarRefExpression_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/4816349095291149808">
-    <nodeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="25" startPosition="69" endLine="26" endPosition="97" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="30" startPosition="83" endLine="31" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="34" startPosition="44" endLine="35" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4816349095291149816" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="43" startPosition="142" endLine="44" endPosition="56" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4816349095291149822" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="44" startPosition="56" endLine="45" endPosition="167" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4816349095291149841" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="46" startPosition="95" endLine="47" endPosition="259" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="4816349095291149852" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="48" startPosition="13" endLine="49" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="53" startPosition="63" endLine="54" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="58" startPosition="7" endLine="59" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="62" startPosition="0" endLine="63" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="breakingNode_d101zz_a0a1a0a0a1a0b0a1a1" />
-    <nodeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="25" startPosition="0" endLine="28" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="TemplateArgumentPropertyPatternRefExpression_Constraints#()V" />
-    <nodeInfo nodeId="4816349095291149830" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="45" startPosition="167" endLine="48" endPosition="13" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="33" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnScopeProvider#()Z" />
-    <nodeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="52" startPosition="0" endLine="56" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="42" startPosition="0" endLine="51" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createSearchScopeOrListOfNodes#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljava/lang/Object;" />
-    <nodeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="40" startPosition="56" endLine="56" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="38" startPosition="0" endLine="58" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-    <nodeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="31" startPosition="75" endLine="58" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="29" startPosition="0" endLine="61" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultReferences#()Ljava/util/Map;" />
-    <scopeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="25" startPosition="69" endLine="26" endPosition="97" />
-    <scopeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="34" startPosition="44" endLine="35" endPosition="20" />
-    <scopeInfo nodeId="4816349095291149840" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="46" startPosition="95" endLine="47" endPosition="259" />
-    <scopeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="53" startPosition="63" endLine="54" endPosition="58" />
-    <scopeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="25" startPosition="0" endLine="28" endPosition="0" />
-    <scopeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="33" startPosition="0" endLine="37" endPosition="0" />
-    <scopeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="52" startPosition="0" endLine="56" endPosition="0" />
-    <scopeInfo nodeId="4816349095291149815" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="43" startPosition="142" endLine="49" endPosition="26">
-      <varInfo nodeId="4816349095291149817" varName="result" />
-      <varInfo nodeId="4816349095291149823" varName="rule" />
-    </scopeInfo>
-    <scopeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="42" startPosition="0" endLine="51" endPosition="0">
-      <varInfo nodeId="4816349095291149808" varName="_context" />
-      <varInfo nodeId="4816349095291149808" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="40" startPosition="56" endLine="56" endPosition="10" />
-    <scopeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="38" startPosition="0" endLine="58" endPosition="0" />
-    <scopeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="30" startPosition="83" endLine="59" endPosition="22">
-      <varInfo nodeId="4816349095291149808" varName="references" />
-    </scopeInfo>
-    <scopeInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="29" startPosition="0" endLine="61" endPosition="0" />
-    <unitInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="41" startPosition="19" endLine="56" endPosition="9" unitName="jetbrains.mps.lang.generator.constraints.TemplateArgumentPropertyPatternRefExpression_Constraints$2" />
-    <unitInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="32" startPosition="42" endLine="58" endPosition="5" unitName="jetbrains.mps.lang.generator.constraints.TemplateArgumentPropertyPatternRefExpression_Constraints$1" />
-    <unitInfo nodeId="4816349095291149808" fileName="TemplateArgumentPropertyPatternRefExpression_Constraints.java" startLine="24" startPosition="0" endLine="64" endPosition="0" unitName="jetbrains.mps.lang.generator.constraints.TemplateArgumentPropertyPatternRefExpression_Constraints" />
+    <file name="TemplateArgumentPropertyPatternRefExpression_Constraints.java">
+      <node id="4816349095291149808" at="31,69,32,191" concept="13" />
+      <node id="4816349095291149808" at="36,90,37,131" concept="7" />
+      <node id="4816349095291149808" at="40,44,41,20" concept="8" />
+      <node id="4816349095291149808" at="48,63,49,58" concept="8" />
+      <node id="6836281137582788085" at="53,13,54,58" concept="7" />
+      <node id="6836281137582788091" at="54,58,55,265" concept="7" />
+      <node id="6836281137582788110" at="56,214,57,481" concept="2" />
+      <node id="6836281137582788121" at="58,15,59,61" concept="8" />
+      <node id="4816349095291149808" at="64,7,65,22" concept="8" />
+      <node id="4816349095291149808" at="67,0,68,0" concept="11" trace="breakingNode_d101zz_a0a0a0a0a1a0b0a1a2" />
+      <node id="4816349095291149808" at="31,0,34,0" concept="1" trace="TemplateArgumentPropertyPatternRefExpression_Constraints#()V" />
+      <node id="6836281137582788099" at="55,265,58,15" concept="5" />
+      <node id="4816349095291149808" at="39,0,43,0" concept="6" trace="hasOwnScopeProvider#()Z" />
+      <node id="4816349095291149808" at="47,0,51,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="4816349095291149808" at="52,122,60,13" concept="0" />
+      <node id="4816349095291149808" at="51,0,62,0" concept="6" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="4816349095291149808" at="45,56,62,10" concept="8" />
+      <node id="4816349095291149808" at="43,0,64,0" concept="6" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="4816349095291149808" at="37,131,64,7" concept="2" />
+      <node id="4816349095291149808" at="35,0,67,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="4816349095291149808" at="31,69,32,191" />
+      <scope id="4816349095291149808" at="40,44,41,20" />
+      <scope id="4816349095291149808" at="48,63,49,58" />
+      <scope id="6836281137582788109" at="56,214,57,481" />
+      <scope id="4816349095291149808" at="31,0,34,0" />
+      <scope id="4816349095291149808" at="39,0,43,0" />
+      <scope id="4816349095291149808" at="47,0,51,0" />
+      <scope id="6836281137582788084" at="53,13,59,61">
+        <var name="result" id="6836281137582788086" />
+        <var name="rule" id="6836281137582788092" />
+      </scope>
+      <scope id="4816349095291149808" at="52,122,60,13" />
+      <scope id="4816349095291149808" at="51,0,62,0">
+        <var name="_context" id="4816349095291149808" />
+        <var name="operationContext" id="4816349095291149808" />
+      </scope>
+      <scope id="4816349095291149808" at="45,56,62,10" />
+      <scope id="4816349095291149808" at="43,0,64,0" />
+      <scope id="4816349095291149808" at="36,90,65,22">
+        <var name="references" id="4816349095291149808" />
+      </scope>
+      <scope id="4816349095291149808" at="35,0,67,0" />
+      <unit id="4816349095291149808" at="46,19,62,9" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentPropertyPatternRefExpression_Constraints$1$1" />
+      <unit id="4816349095291149808" at="38,163,64,5" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentPropertyPatternRefExpression_Constraints$1" />
+      <unit id="4816349095291149808" at="30,0,69,0" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentPropertyPatternRefExpression_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/4816349095291149869">
-    <nodeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="25" startPosition="65" endLine="26" endPosition="93" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="30" startPosition="83" endLine="31" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="34" startPosition="44" endLine="35" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4816349095291149873" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="43" startPosition="142" endLine="44" endPosition="56" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4816349095291149879" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="44" startPosition="56" endLine="45" endPosition="167" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4816349095291149898" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="46" startPosition="95" endLine="47" endPosition="255" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="4816349095291149909" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="48" startPosition="13" endLine="49" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="53" startPosition="63" endLine="54" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="58" startPosition="7" endLine="59" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="62" startPosition="0" endLine="63" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="breakingNode_c4c9o1_a0a1a0a0a1a0b0a1a1" />
-    <nodeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="25" startPosition="0" endLine="28" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="TemplateArgumentLinkPatternRefExpression_Constraints#()V" />
-    <nodeInfo nodeId="4816349095291149887" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="45" startPosition="167" endLine="48" endPosition="13" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="33" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnScopeProvider#()Z" />
-    <nodeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="52" startPosition="0" endLine="56" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="42" startPosition="0" endLine="51" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createSearchScopeOrListOfNodes#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljava/lang/Object;" />
-    <nodeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="40" startPosition="56" endLine="56" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="38" startPosition="0" endLine="58" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-    <nodeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="31" startPosition="75" endLine="58" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="29" startPosition="0" endLine="61" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultReferences#()Ljava/util/Map;" />
-    <scopeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="25" startPosition="65" endLine="26" endPosition="93" />
-    <scopeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="34" startPosition="44" endLine="35" endPosition="20" />
-    <scopeInfo nodeId="4816349095291149897" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="46" startPosition="95" endLine="47" endPosition="255" />
-    <scopeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="53" startPosition="63" endLine="54" endPosition="58" />
-    <scopeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="25" startPosition="0" endLine="28" endPosition="0" />
-    <scopeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="33" startPosition="0" endLine="37" endPosition="0" />
-    <scopeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="52" startPosition="0" endLine="56" endPosition="0" />
-    <scopeInfo nodeId="4816349095291149872" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="43" startPosition="142" endLine="49" endPosition="26">
-      <varInfo nodeId="4816349095291149874" varName="result" />
-      <varInfo nodeId="4816349095291149880" varName="rule" />
-    </scopeInfo>
-    <scopeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="42" startPosition="0" endLine="51" endPosition="0">
-      <varInfo nodeId="4816349095291149869" varName="_context" />
-      <varInfo nodeId="4816349095291149869" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="40" startPosition="56" endLine="56" endPosition="10" />
-    <scopeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="38" startPosition="0" endLine="58" endPosition="0" />
-    <scopeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="30" startPosition="83" endLine="59" endPosition="22">
-      <varInfo nodeId="4816349095291149869" varName="references" />
-    </scopeInfo>
-    <scopeInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="29" startPosition="0" endLine="61" endPosition="0" />
-    <unitInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="41" startPosition="19" endLine="56" endPosition="9" unitName="jetbrains.mps.lang.generator.constraints.TemplateArgumentLinkPatternRefExpression_Constraints$2" />
-    <unitInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="32" startPosition="37" endLine="58" endPosition="5" unitName="jetbrains.mps.lang.generator.constraints.TemplateArgumentLinkPatternRefExpression_Constraints$1" />
-    <unitInfo nodeId="4816349095291149869" fileName="TemplateArgumentLinkPatternRefExpression_Constraints.java" startLine="24" startPosition="0" endLine="64" endPosition="0" unitName="jetbrains.mps.lang.generator.constraints.TemplateArgumentLinkPatternRefExpression_Constraints" />
+    <file name="TemplateArgumentLinkPatternRefExpression_Constraints.java">
+      <node id="4816349095291149869" at="31,65,32,187" concept="13" />
+      <node id="4816349095291149869" at="36,90,37,131" concept="7" />
+      <node id="4816349095291149869" at="40,44,41,20" concept="8" />
+      <node id="4816349095291149869" at="48,63,49,58" concept="8" />
+      <node id="6836281137582788621" at="53,13,54,58" concept="7" />
+      <node id="6836281137582788627" at="54,58,55,265" concept="7" />
+      <node id="6836281137582788646" at="56,214,57,477" concept="2" />
+      <node id="6836281137582788657" at="58,15,59,61" concept="8" />
+      <node id="4816349095291149869" at="64,7,65,22" concept="8" />
+      <node id="4816349095291149869" at="67,0,68,0" concept="11" trace="breakingNode_c4c9o1_a0a0a0a0a1a0b0a1a2" />
+      <node id="4816349095291149869" at="31,0,34,0" concept="1" trace="TemplateArgumentLinkPatternRefExpression_Constraints#()V" />
+      <node id="6836281137582788635" at="55,265,58,15" concept="5" />
+      <node id="4816349095291149869" at="39,0,43,0" concept="6" trace="hasOwnScopeProvider#()Z" />
+      <node id="4816349095291149869" at="47,0,51,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="4816349095291149869" at="52,122,60,13" concept="0" />
+      <node id="4816349095291149869" at="51,0,62,0" concept="6" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="4816349095291149869" at="45,56,62,10" concept="8" />
+      <node id="4816349095291149869" at="43,0,64,0" concept="6" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="4816349095291149869" at="37,131,64,7" concept="2" />
+      <node id="4816349095291149869" at="35,0,67,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="4816349095291149869" at="31,65,32,187" />
+      <scope id="4816349095291149869" at="40,44,41,20" />
+      <scope id="4816349095291149869" at="48,63,49,58" />
+      <scope id="6836281137582788645" at="56,214,57,477" />
+      <scope id="4816349095291149869" at="31,0,34,0" />
+      <scope id="4816349095291149869" at="39,0,43,0" />
+      <scope id="4816349095291149869" at="47,0,51,0" />
+      <scope id="6836281137582788620" at="53,13,59,61">
+        <var name="result" id="6836281137582788622" />
+        <var name="rule" id="6836281137582788628" />
+      </scope>
+      <scope id="4816349095291149869" at="52,122,60,13" />
+      <scope id="4816349095291149869" at="51,0,62,0">
+        <var name="_context" id="4816349095291149869" />
+        <var name="operationContext" id="4816349095291149869" />
+      </scope>
+      <scope id="4816349095291149869" at="45,56,62,10" />
+      <scope id="4816349095291149869" at="43,0,64,0" />
+      <scope id="4816349095291149869" at="36,90,65,22">
+        <var name="references" id="4816349095291149869" />
+      </scope>
+      <scope id="4816349095291149869" at="35,0,67,0" />
+      <unit id="4816349095291149869" at="46,19,62,9" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentLinkPatternRefExpression_Constraints$1$1" />
+      <unit id="4816349095291149869" at="38,158,64,5" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentLinkPatternRefExpression_Constraints$1" />
+      <unit id="4816349095291149869" at="30,0,69,0" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentLinkPatternRefExpression_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/5005282049925940094">
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="24" startPosition="60" endLine="25" endPosition="88" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="29" startPosition="43" endLine="30" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="34" startPosition="200" endLine="35" endPosition="96" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="35" startPosition="96" endLine="36" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="37" startPosition="51" endLine="38" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="39" startPosition="5" endLine="40" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="40" startPosition="0" endLine="41" endPosition="18" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="45" startPosition="83" endLine="46" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="49" startPosition="44" endLine="50" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5005282049925943790" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="59" startPosition="173" endLine="60" endPosition="215" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5005282049925943781" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="61" startPosition="13" endLine="62" endPosition="42" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="66" startPosition="63" endLine="67" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="71" startPosition="7" endLine="72" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5005282049925943772" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="75" startPosition="148" endLine="76" endPosition="108" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="79" startPosition="0" endLine="80" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="canBeChildBreakingPoint" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="80" startPosition="0" endLine="81" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="breakingNode_teh60w_a0a1a0a0a1a0b0a1a3" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="24" startPosition="0" endLine="27" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="TemplateArgumentParameterExpression_Constraints#()V" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="36" startPosition="0" endLine="39" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="5005282049925943757" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="58" startPosition="142" endLine="61" endPosition="13" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="75" startPosition="0" endLine="78" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="static_canBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;)Z" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="28" startPosition="0" endLine="32" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnCanBeChildMethod#()Z" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="48" startPosition="0" endLine="52" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnScopeProvider#()Z" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="65" startPosition="0" endLine="69" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="57" startPosition="0" endLine="64" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createSearchScopeOrListOfNodes#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljava/lang/Object;" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="33" startPosition="0" endLine="43" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="canBeChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="55" startPosition="56" endLine="69" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="53" startPosition="0" endLine="71" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="46" startPosition="75" endLine="71" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="44" startPosition="0" endLine="74" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultReferences#()Ljava/util/Map;" />
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="24" startPosition="60" endLine="25" endPosition="88" />
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="29" startPosition="43" endLine="30" endPosition="16" />
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="37" startPosition="51" endLine="38" endPosition="67" />
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="49" startPosition="44" endLine="50" endPosition="20" />
-    <scopeInfo nodeId="5005282049925943759" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="59" startPosition="173" endLine="60" endPosition="215" />
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="66" startPosition="63" endLine="67" endPosition="58" />
-    <scopeInfo nodeId="5005282049925943771" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="75" startPosition="148" endLine="76" endPosition="108" />
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="24" startPosition="0" endLine="27" endPosition="0" />
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="75" startPosition="0" endLine="78" endPosition="0">
-      <varInfo nodeId="5005282049925940094" varName="childConcept" />
-      <varInfo nodeId="5005282049925940094" varName="link" />
-      <varInfo nodeId="5005282049925940094" varName="node" />
-      <varInfo nodeId="5005282049925940094" varName="operationContext" />
-      <varInfo nodeId="5005282049925940094" varName="parentNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="28" startPosition="0" endLine="32" endPosition="0" />
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="48" startPosition="0" endLine="52" endPosition="0" />
-    <scopeInfo nodeId="5005282049925940097" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="58" startPosition="142" endLine="62" endPosition="42" />
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="65" startPosition="0" endLine="69" endPosition="0" />
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="34" startPosition="200" endLine="41" endPosition="18">
-      <varInfo nodeId="5005282049925940094" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="57" startPosition="0" endLine="64" endPosition="0">
-      <varInfo nodeId="5005282049925940094" varName="_context" />
-      <varInfo nodeId="5005282049925940094" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="33" startPosition="0" endLine="43" endPosition="0">
-      <varInfo nodeId="5005282049925940094" varName="checkingNodeContext" />
-      <varInfo nodeId="5005282049925940094" varName="childConcept" />
-      <varInfo nodeId="5005282049925940094" varName="link" />
-      <varInfo nodeId="5005282049925940094" varName="node" />
-      <varInfo nodeId="5005282049925940094" varName="operationContext" />
-      <varInfo nodeId="5005282049925940094" varName="parentNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="55" startPosition="56" endLine="69" endPosition="10" />
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="53" startPosition="0" endLine="71" endPosition="0" />
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="45" startPosition="83" endLine="72" endPosition="22">
-      <varInfo nodeId="5005282049925940094" varName="references" />
-    </scopeInfo>
-    <scopeInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="44" startPosition="0" endLine="74" endPosition="0" />
-    <unitInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="56" startPosition="19" endLine="69" endPosition="9" unitName="jetbrains.mps.lang.generator.constraints.TemplateArgumentParameterExpression_Constraints$2" />
-    <unitInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="47" startPosition="36" endLine="71" endPosition="5" unitName="jetbrains.mps.lang.generator.constraints.TemplateArgumentParameterExpression_Constraints$1" />
-    <unitInfo nodeId="5005282049925940094" fileName="TemplateArgumentParameterExpression_Constraints.java" startLine="23" startPosition="0" endLine="82" endPosition="0" unitName="jetbrains.mps.lang.generator.constraints.TemplateArgumentParameterExpression_Constraints" />
-  </root>
-  <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/5023471013036170874">
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="40" startPosition="37" endLine="40" endPosition="37" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="14" startPosition="44" endLine="15" endPosition="72" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="19" startPosition="82" endLine="20" endPosition="74" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="23" startPosition="37" endLine="24" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="28" startPosition="56" endLine="29" endPosition="37" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="29" startPosition="37" endLine="30" endPosition="28" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="5023471013036171784" fileName="GeneratorDescriptor_Constraints.java" startLine="29" startPosition="37" endLine="30" endPosition="28" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="34" startPosition="37" endLine="35" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="39" startPosition="76" endLine="40" endPosition="37" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="42" startPosition="7" endLine="43" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="14" startPosition="0" endLine="17" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="GeneratorDescriptor_Constraints#()V" />
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="22" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnGetter#()Z" />
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="33" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnSetter#()Z" />
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="38" startPosition="0" endLine="42" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="setValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;Ljetbrains/mps/smodel/IScope;)V" />
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="27" startPosition="0" endLine="32" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IScope;)Ljava/lang/Object;" />
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="20" startPosition="74" endLine="42" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="18" startPosition="0" endLine="45" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultProperties#()Ljava/util/Map;" />
-    <scopeInfo nodeId="5023471013036170879" fileName="GeneratorDescriptor_Constraints.java" startLine="40" startPosition="37" endLine="40" endPosition="37" />
-    <scopeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="14" startPosition="44" endLine="15" endPosition="72" />
-    <scopeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="23" startPosition="37" endLine="24" endPosition="20" />
-    <scopeInfo nodeId="5023471013036170877" fileName="GeneratorDescriptor_Constraints.java" startLine="29" startPosition="37" endLine="30" endPosition="28" />
-    <scopeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="34" startPosition="37" endLine="35" endPosition="20" />
-    <scopeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="39" startPosition="76" endLine="40" endPosition="37">
-      <varInfo nodeId="5023471013036170874" varName="propertyName" />
-    </scopeInfo>
-    <scopeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="28" startPosition="56" endLine="30" endPosition="28">
-      <varInfo nodeId="5023471013036170874" varName="propertyName" />
-    </scopeInfo>
-    <scopeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="14" startPosition="0" endLine="17" endPosition="0" />
-    <scopeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="22" startPosition="0" endLine="26" endPosition="0" />
-    <scopeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="33" startPosition="0" endLine="37" endPosition="0" />
-    <scopeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="38" startPosition="0" endLine="42" endPosition="0">
-      <varInfo nodeId="5023471013036170874" varName="node" />
-      <varInfo nodeId="5023471013036170874" varName="propertyValue" />
-      <varInfo nodeId="5023471013036170874" varName="scope" />
-    </scopeInfo>
-    <scopeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="27" startPosition="0" endLine="32" endPosition="0">
-      <varInfo nodeId="5023471013036170874" varName="node" />
-      <varInfo nodeId="5023471013036170874" varName="scope" />
-    </scopeInfo>
-    <scopeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="19" startPosition="82" endLine="43" endPosition="22">
-      <varInfo nodeId="5023471013036170874" varName="properties" />
-    </scopeInfo>
-    <scopeInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="18" startPosition="0" endLine="45" endPosition="0" />
-    <unitInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="21" startPosition="31" endLine="42" endPosition="5" unitName="jetbrains.mps.lang.generator.constraints.GeneratorDescriptor_Constraints$1" />
-    <unitInfo nodeId="5023471013036170874" fileName="GeneratorDescriptor_Constraints.java" startLine="13" startPosition="0" endLine="46" endPosition="0" unitName="jetbrains.mps.lang.generator.constraints.GeneratorDescriptor_Constraints" />
+    <file name="TemplateArgumentParameterExpression_Constraints.java">
+      <node id="5005282049925940094" at="28,60,29,182" concept="13" />
+      <node id="5005282049925940094" at="33,90,34,131" concept="7" />
+      <node id="5005282049925940094" at="37,44,38,20" concept="8" />
+      <node id="5005282049925940094" at="45,63,46,58" concept="8" />
+      <node id="6836281137582788795" at="50,276,51,467" concept="8" />
+      <node id="6836281137582788809" at="52,13,53,75" concept="8" />
+      <node id="5005282049925940094" at="57,7,58,22" concept="8" />
+      <node id="5005282049925940094" at="60,0,61,0" concept="11" trace="breakingNode_teh60w_a0a0a0a0a1a0b0a1a2" />
+      <node id="5005282049925940094" at="28,0,31,0" concept="1" trace="TemplateArgumentParameterExpression_Constraints#()V" />
+      <node id="6836281137582788793" at="49,122,52,13" concept="5" />
+      <node id="5005282049925940094" at="36,0,40,0" concept="6" trace="hasOwnScopeProvider#()Z" />
+      <node id="5005282049925940094" at="44,0,48,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="5005282049925940094" at="48,0,55,0" concept="6" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="5005282049925940094" at="42,56,55,10" concept="8" />
+      <node id="5005282049925940094" at="40,0,57,0" concept="6" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="5005282049925940094" at="34,131,57,7" concept="2" />
+      <node id="5005282049925940094" at="32,0,60,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="5005282049925940094" at="28,60,29,182" />
+      <scope id="5005282049925940094" at="37,44,38,20" />
+      <scope id="5005282049925940094" at="45,63,46,58" />
+      <scope id="6836281137582788794" at="50,276,51,467" />
+      <scope id="5005282049925940094" at="28,0,31,0" />
+      <scope id="5005282049925940094" at="36,0,40,0" />
+      <scope id="5005282049925940094" at="44,0,48,0" />
+      <scope id="5005282049925940094" at="49,122,53,75" />
+      <scope id="5005282049925940094" at="48,0,55,0">
+        <var name="_context" id="5005282049925940094" />
+        <var name="operationContext" id="5005282049925940094" />
+      </scope>
+      <scope id="5005282049925940094" at="42,56,55,10" />
+      <scope id="5005282049925940094" at="40,0,57,0" />
+      <scope id="5005282049925940094" at="33,90,58,22">
+        <var name="references" id="5005282049925940094" />
+      </scope>
+      <scope id="5005282049925940094" at="32,0,60,0" />
+      <unit id="5005282049925940094" at="43,19,55,9" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentParameterExpression_Constraints$1$1" />
+      <unit id="5005282049925940094" at="35,157,57,5" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentParameterExpression_Constraints$1" />
+      <unit id="5005282049925940094" at="27,0,62,0" name="jetbrains.mps.lang.generator.constraints.TemplateArgumentParameterExpression_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/5740396897827770061">
-    <nodeInfo nodeId="5740396897827770064" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="20" startPosition="0" endLine="21" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.FieldDeclaration" propertyString="myModel" />
-    <nodeInfo nodeId="5740396897827770067" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="21" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.FieldDeclaration" propertyString="myScope" />
-    <nodeInfo nodeId="5740396897827770070" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="22" startPosition="0" endLine="23" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.FieldDeclaration" propertyString="myOwnNodes" />
-    <nodeInfo nodeId="5740396897827770082" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="24" startPosition="73" endLine="25" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5740396897827770086" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="25" startPosition="20" endLine="26" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5740396897827770103" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="32" startPosition="49" endLine="33" endPosition="36" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5740396897827770107" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="34" startPosition="5" endLine="35" endPosition="24" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5740396897827770114" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="36" startPosition="48" endLine="37" endPosition="24" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5740396897827770116" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="38" startPosition="5" endLine="39" endPosition="47" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="5740396897827770134" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="41" startPosition="32" endLine="42" endPosition="24" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5740396897827770139" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="44" startPosition="5" endLine="45" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5740396897827770151" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="49" startPosition="29" endLine="50" endPosition="108" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="5740396897827770179" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="54" startPosition="72" endLine="55" endPosition="25" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5740396897827783381" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="56" startPosition="11" endLine="57" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="5740396897827783384" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="57" startPosition="0" endLine="58" endPosition="113" conceptFqName="jetbrains.mps.baseLanguage.structure.SingleLineComment" />
-    <nodeInfo nodeId="5740396897827770181" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="58" startPosition="113" endLine="59" endPosition="95" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="5740396897827770188" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="59" startPosition="95" endLine="60" endPosition="68" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5740396897827770192" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="62" startPosition="8" endLine="63" endPosition="51" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5740396897827770098" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="31" startPosition="59" endLine="34" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="5740396897827770109" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="35" startPosition="24" endLine="38" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="5740396897827770128" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="40" startPosition="35" endLine="43" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="5740396897827770172" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="53" startPosition="42" endLine="56" endPosition="11" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="5740396897827770074" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="24" startPosition="0" endLine="28" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MappingRuleTemplateNodeSearchScope#(Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/smodel/IScope;)V" />
-    <nodeInfo nodeId="5740396897827770123" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="39" startPosition="47" endLine="44" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.ForeachStatement" />
-    <nodeInfo nodeId="5740396897827770166" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="52" startPosition="0" endLine="62" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="met#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="5740396897827770158" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="50" startPosition="108" endLine="62" endPosition="8" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="5740396897827770146" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="48" startPosition="36" endLine="64" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="5740396897827770090" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="29" startPosition="0" endLine="47" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNodes#(Lorg/jetbrains/mps/util/Condition;)Ljava/util/List;" />
-    <nodeInfo nodeId="5740396897827770142" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="48" startPosition="0" endLine="66" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="ensureInitialized#()V" />
-    <scopeInfo nodeId="5740396897827770102" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="32" startPosition="49" endLine="33" endPosition="36" />
-    <scopeInfo nodeId="5740396897827770113" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="36" startPosition="48" endLine="37" endPosition="24" />
-    <scopeInfo nodeId="5740396897827770133" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="41" startPosition="32" endLine="42" endPosition="24" />
-    <scopeInfo nodeId="5740396897827770178" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="54" startPosition="72" endLine="55" endPosition="25" />
-    <scopeInfo nodeId="5740396897827770081" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="24" startPosition="73" endLine="26" endPosition="20" />
-    <scopeInfo nodeId="5740396897827770127" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="40" startPosition="35" endLine="43" endPosition="7" />
-    <scopeInfo nodeId="5740396897827770074" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="24" startPosition="0" endLine="28" endPosition="0">
-      <varInfo nodeId="5740396897827770077" varName="model" />
-      <varInfo nodeId="5740396897827770079" varName="scope" />
-    </scopeInfo>
-    <scopeInfo nodeId="5740396897827770123" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="39" startPosition="47" endLine="44" endPosition="5">
-      <varInfo nodeId="5740396897827770125" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="5740396897827770171" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="53" startPosition="42" endLine="60" endPosition="68">
-      <varInfo nodeId="5740396897827770182" varName="language" />
-    </scopeInfo>
-    <scopeInfo nodeId="5740396897827770166" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="52" startPosition="0" endLine="62" endPosition="0">
-      <varInfo nodeId="5740396897827770169" varName="object" />
-    </scopeInfo>
-    <scopeInfo nodeId="5740396897827770097" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="31" startPosition="59" endLine="45" endPosition="17">
-      <varInfo nodeId="5740396897827770117" varName="resut" />
-    </scopeInfo>
-    <scopeInfo nodeId="5740396897827770150" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="49" startPosition="29" endLine="63" endPosition="51">
-      <varInfo nodeId="5740396897827770159" varName="condition" />
-      <varInfo nodeId="5740396897827770152" varName="searchScope" />
-    </scopeInfo>
-    <scopeInfo nodeId="5740396897827770145" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="48" startPosition="36" endLine="64" endPosition="5" />
-    <scopeInfo nodeId="5740396897827770090" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="29" startPosition="0" endLine="47" endPosition="0">
-      <varInfo nodeId="5740396897827770094" varName="condition" />
-    </scopeInfo>
-    <scopeInfo nodeId="5740396897827770142" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="48" startPosition="0" endLine="66" endPosition="0" />
-    <unitInfo nodeId="5740396897827770164" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="51" startPosition="39" endLine="62" endPosition="7" unitName="jetbrains.mps.lang.generator.constraints.MappingRuleTemplateNodeSearchScope$1" />
-    <unitInfo nodeId="5740396897827770061" fileName="MappingRuleTemplateNodeSearchScope.java" startLine="19" startPosition="0" endLine="67" endPosition="0" unitName="jetbrains.mps.lang.generator.constraints.MappingRuleTemplateNodeSearchScope" />
+    <file name="MappingRuleTemplateNodeSearchScope.java">
+      <node id="5740396897827770064" at="19,0,20,0" concept="3" trace="myModel" />
+      <node id="5740396897827770070" at="20,0,21,0" concept="3" trace="myOwnNodes" />
+      <node id="5740396897827770082" at="21,59,22,20" concept="2" />
+      <node id="5740396897827770103" at="27,49,28,36" concept="8" />
+      <node id="5740396897827770107" at="29,5,30,24" concept="2" />
+      <node id="5740396897827770114" at="31,48,32,24" concept="8" />
+      <node id="5740396897827770116" at="33,5,34,47" concept="7" />
+      <node id="5740396897827770134" at="36,32,37,24" concept="2" />
+      <node id="5740396897827770139" at="39,5,40,17" concept="8" />
+      <node id="5740396897827770151" at="43,29,44,99" concept="7" />
+      <node id="5740396897827770179" at="48,72,49,25" concept="8" />
+      <node id="5740396897827783381" at="50,11,51,0" concept="10" />
+      <node id="5740396897827783384" at="51,0,52,113" concept="9" />
+      <node id="5290480597749228696" at="52,113,53,65" concept="7" />
+      <node id="5740396897827770188" at="53,65,54,142" concept="8" />
+      <node id="5740396897827770192" at="56,8,57,51" concept="2" />
+      <node id="5740396897827770074" at="21,0,24,0" concept="1" trace="MappingRuleTemplateNodeSearchScope#(Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="5740396897827770098" at="26,59,29,5" concept="5" />
+      <node id="5740396897827770109" at="30,24,33,5" concept="5" />
+      <node id="5740396897827770128" at="35,35,38,7" concept="5" />
+      <node id="5740396897827770172" at="47,42,50,11" concept="5" />
+      <node id="5740396897827770123" at="34,47,39,5" concept="4" />
+      <node id="5740396897827770166" at="46,0,56,0" concept="6" trace="met#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="5740396897827770158" at="44,99,56,8" concept="7" />
+      <node id="5740396897827770146" at="42,36,58,5" concept="5" />
+      <node id="5740396897827770090" at="24,0,42,0" concept="6" trace="getNodes#(Lorg/jetbrains/mps/util/Condition;)Ljava/util/List;" />
+      <node id="5740396897827770142" at="42,0,60,0" concept="6" trace="ensureInitialized#()V" />
+      <scope id="5740396897827770081" at="21,59,22,20" />
+      <scope id="5740396897827770102" at="27,49,28,36" />
+      <scope id="5740396897827770113" at="31,48,32,24" />
+      <scope id="5740396897827770133" at="36,32,37,24" />
+      <scope id="5740396897827770178" at="48,72,49,25" />
+      <scope id="5740396897827770074" at="21,0,24,0">
+        <var name="model" id="5740396897827770077" />
+      </scope>
+      <scope id="5740396897827770127" at="35,35,38,7" />
+      <scope id="5740396897827770123" at="34,47,39,5">
+        <var name="node" id="5740396897827770125" />
+      </scope>
+      <scope id="5740396897827770171" at="47,42,54,142">
+        <var name="language" id="5290480597749228697" />
+      </scope>
+      <scope id="5740396897827770166" at="46,0,56,0">
+        <var name="object" id="5740396897827770169" />
+      </scope>
+      <scope id="5740396897827770097" at="26,59,40,17">
+        <var name="resut" id="5740396897827770117" />
+      </scope>
+      <scope id="5740396897827770150" at="43,29,57,51">
+        <var name="condition" id="5740396897827770159" />
+        <var name="searchScope" id="5740396897827770152" />
+      </scope>
+      <scope id="5740396897827770145" at="42,36,58,5" />
+      <scope id="5740396897827770090" at="24,0,42,0">
+        <var name="condition" id="5740396897827770094" />
+      </scope>
+      <scope id="5740396897827770142" at="42,0,60,0" />
+      <unit id="5740396897827770164" at="45,39,56,7" name="jetbrains.mps.lang.generator.constraints.MappingRuleTemplateNodeSearchScope$1" />
+      <unit id="5740396897827770061" at="18,0,61,0" name="jetbrains.mps.lang.generator.constraints.MappingRuleTemplateNodeSearchScope" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/5858775738865267759">
+    <file name="TemplateSwitch_Constraints.java">
+      <node id="5858775738865267759" at="25,39,26,156" concept="13" />
+      <node id="5858775738865267759" at="30,90,31,131" concept="7" />
+      <node id="5858775738865267759" at="34,44,35,20" concept="8" />
+      <node id="5858775738865267759" at="42,63,43,58" concept="8" />
+      <node id="6836281137582788745" at="46,122,47,251" concept="8" />
+      <node id="5858775738865267759" at="51,7,52,22" concept="8" />
+      <node id="5858775738865267759" at="54,0,55,0" concept="11" trace="breakingNode_phmuaq_a0a0a0a0a1a0b0a1a2" />
+      <node id="5858775738865267759" at="25,0,28,0" concept="1" trace="TemplateSwitch_Constraints#()V" />
+      <node id="5858775738865267759" at="33,0,37,0" concept="6" trace="hasOwnScopeProvider#()Z" />
+      <node id="5858775738865267759" at="41,0,45,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="5858775738865267759" at="45,0,49,0" concept="6" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="5858775738865267759" at="39,56,49,10" concept="8" />
+      <node id="5858775738865267759" at="37,0,51,0" concept="6" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="5858775738865267759" at="31,131,51,7" concept="2" />
+      <node id="5858775738865267759" at="29,0,54,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="5858775738865267759" at="25,39,26,156" />
+      <scope id="5858775738865267759" at="34,44,35,20" />
+      <scope id="5858775738865267759" at="42,63,43,58" />
+      <scope id="5858775738865267759" at="46,122,47,251" />
+      <scope id="5858775738865267759" at="25,0,28,0" />
+      <scope id="5858775738865267759" at="33,0,37,0" />
+      <scope id="5858775738865267759" at="41,0,45,0" />
+      <scope id="5858775738865267759" at="45,0,49,0">
+        <var name="_context" id="5858775738865267759" />
+        <var name="operationContext" id="5858775738865267759" />
+      </scope>
+      <scope id="5858775738865267759" at="39,56,49,10" />
+      <scope id="5858775738865267759" at="37,0,51,0" />
+      <scope id="5858775738865267759" at="30,90,52,22">
+        <var name="references" id="5858775738865267759" />
+      </scope>
+      <scope id="5858775738865267759" at="29,0,54,0" />
+      <unit id="5858775738865267759" at="40,19,49,9" name="jetbrains.mps.lang.generator.constraints.TemplateSwitch_Constraints$1$1" />
+      <unit id="5858775738865267759" at="32,152,51,5" name="jetbrains.mps.lang.generator.constraints.TemplateSwitch_Constraints$1" />
+      <unit id="5858775738865267759" at="24,0,56,0" name="jetbrains.mps.lang.generator.constraints.TemplateSwitch_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/7941504602772991213">
-    <nodeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="19" startPosition="52" endLine="20" endPosition="80" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="24" startPosition="83" endLine="25" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="32" startPosition="44" endLine="33" endPosition="24" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7941504602773108992" fileName="GeneratorParameterReference_Constraints.java" startLine="37" startPosition="128" endLine="38" endPosition="165" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="42" startPosition="7" endLine="43" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="19" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="GeneratorParameterReference_Constraints#()V" />
-    <nodeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="31" startPosition="0" endLine="35" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasPresentation#()Z" />
-    <nodeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="36" startPosition="0" endLine="40" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getPresentation#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferencePresentationContext;)Ljava/lang/String;" />
-    <nodeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="29" startPosition="56" endLine="40" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="27" startPosition="0" endLine="42" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-    <nodeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="25" startPosition="75" endLine="42" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="23" startPosition="0" endLine="45" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultReferences#()Ljava/util/Map;" />
-    <scopeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="19" startPosition="52" endLine="20" endPosition="80" />
-    <scopeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="32" startPosition="44" endLine="33" endPosition="24" />
-    <scopeInfo nodeId="7941504602773013622" fileName="GeneratorParameterReference_Constraints.java" startLine="37" startPosition="128" endLine="38" endPosition="165" />
-    <scopeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="19" startPosition="0" endLine="22" endPosition="0" />
-    <scopeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="31" startPosition="0" endLine="35" endPosition="0" />
-    <scopeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="36" startPosition="0" endLine="40" endPosition="0">
-      <varInfo nodeId="7941504602772991213" varName="_context" />
-      <varInfo nodeId="7941504602772991213" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="29" startPosition="56" endLine="40" endPosition="10" />
-    <scopeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="27" startPosition="0" endLine="42" endPosition="0" />
-    <scopeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="24" startPosition="83" endLine="43" endPosition="22">
-      <varInfo nodeId="7941504602772991213" varName="references" />
-    </scopeInfo>
-    <scopeInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="23" startPosition="0" endLine="45" endPosition="0" />
-    <unitInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="30" startPosition="19" endLine="40" endPosition="9" unitName="jetbrains.mps.lang.generator.constraints.GeneratorParameterReference_Constraints$2" />
-    <unitInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="26" startPosition="38" endLine="42" endPosition="5" unitName="jetbrains.mps.lang.generator.constraints.GeneratorParameterReference_Constraints$1" />
-    <unitInfo nodeId="7941504602772991213" fileName="GeneratorParameterReference_Constraints.java" startLine="18" startPosition="0" endLine="46" endPosition="0" unitName="jetbrains.mps.lang.generator.constraints.GeneratorParameterReference_Constraints" />
+    <file name="GeneratorParameterReference_Constraints.java">
+      <node id="7941504602772991213" at="22,52,23,173" concept="13" />
+      <node id="7941504602772991213" at="27,90,28,131" concept="7" />
+      <node id="7941504602772991213" at="35,44,36,24" concept="8" />
+      <node id="7941504602773108992" at="39,128,40,386" concept="8" />
+      <node id="7941504602772991213" at="44,7,45,22" concept="8" />
+      <node id="7941504602772991213" at="22,0,25,0" concept="1" trace="GeneratorParameterReference_Constraints#()V" />
+      <node id="7941504602772991213" at="34,0,38,0" concept="6" trace="hasPresentation#()Z" />
+      <node id="7941504602772991213" at="38,0,42,0" concept="6" trace="getPresentation#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferencePresentationContext;)Ljava/lang/String;" />
+      <node id="7941504602772991213" at="32,56,42,10" concept="8" />
+      <node id="7941504602772991213" at="30,0,44,0" concept="6" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="7941504602772991213" at="28,131,44,7" concept="2" />
+      <node id="7941504602772991213" at="26,0,47,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="7941504602772991213" at="22,52,23,173" />
+      <scope id="7941504602772991213" at="35,44,36,24" />
+      <scope id="7941504602773013622" at="39,128,40,386" />
+      <scope id="7941504602772991213" at="22,0,25,0" />
+      <scope id="7941504602772991213" at="34,0,38,0" />
+      <scope id="7941504602772991213" at="38,0,42,0">
+        <var name="_context" id="7941504602772991213" />
+        <var name="operationContext" id="7941504602772991213" />
+      </scope>
+      <scope id="7941504602772991213" at="32,56,42,10" />
+      <scope id="7941504602772991213" at="30,0,44,0" />
+      <scope id="7941504602772991213" at="27,90,45,22">
+        <var name="references" id="7941504602772991213" />
+      </scope>
+      <scope id="7941504602772991213" at="26,0,47,0" />
+      <unit id="7941504602772991213" at="33,19,42,9" name="jetbrains.mps.lang.generator.constraints.GeneratorParameterReference_Constraints$1$1" />
+      <unit id="7941504602772991213" at="29,157,44,5" name="jetbrains.mps.lang.generator.constraints.GeneratorParameterReference_Constraints$1" />
+      <unit id="7941504602772991213" at="21,0,48,0" name="jetbrains.mps.lang.generator.constraints.GeneratorParameterReference_Constraints" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/982871510068000160">
+    <file name="TemplateSwitchMacro_Constraints.java">
+      <node id="982871510068000160" at="25,44,26,165" concept="13" />
+      <node id="982871510068000160" at="30,90,31,131" concept="7" />
+      <node id="982871510068000160" at="34,44,35,20" concept="8" />
+      <node id="982871510068000160" at="42,63,43,58" concept="8" />
+      <node id="6836281137582788949" at="46,122,47,251" concept="8" />
+      <node id="982871510068000160" at="51,7,52,22" concept="8" />
+      <node id="982871510068000160" at="54,0,55,0" concept="11" trace="breakingNode_px6kru_a0a0a0a0a1a0b0a1a2" />
+      <node id="982871510068000160" at="25,0,28,0" concept="1" trace="TemplateSwitchMacro_Constraints#()V" />
+      <node id="982871510068000160" at="33,0,37,0" concept="6" trace="hasOwnScopeProvider#()Z" />
+      <node id="982871510068000160" at="41,0,45,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="982871510068000160" at="45,0,49,0" concept="6" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="982871510068000160" at="39,56,49,10" concept="8" />
+      <node id="982871510068000160" at="37,0,51,0" concept="6" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="982871510068000160" at="31,131,51,7" concept="2" />
+      <node id="982871510068000160" at="29,0,54,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="982871510068000160" at="25,44,26,165" />
+      <scope id="982871510068000160" at="34,44,35,20" />
+      <scope id="982871510068000160" at="42,63,43,58" />
+      <scope id="982871510068000160" at="46,122,47,251" />
+      <scope id="982871510068000160" at="25,0,28,0" />
+      <scope id="982871510068000160" at="33,0,37,0" />
+      <scope id="982871510068000160" at="41,0,45,0" />
+      <scope id="982871510068000160" at="45,0,49,0">
+        <var name="_context" id="982871510068000160" />
+        <var name="operationContext" id="982871510068000160" />
+      </scope>
+      <scope id="982871510068000160" at="39,56,49,10" />
+      <scope id="982871510068000160" at="37,0,51,0" />
+      <scope id="982871510068000160" at="30,90,52,22">
+        <var name="references" id="982871510068000160" />
+      </scope>
+      <scope id="982871510068000160" at="29,0,54,0" />
+      <unit id="982871510068000160" at="40,19,49,9" name="jetbrains.mps.lang.generator.constraints.TemplateSwitchMacro_Constraints$1$1" />
+      <unit id="982871510068000160" at="32,156,51,5" name="jetbrains.mps.lang.generator.constraints.TemplateSwitchMacro_Constraints$1" />
+      <unit id="982871510068000160" at="24,0,56,0" name="jetbrains.mps.lang.generator.constraints.TemplateSwitchMacro_Constraints" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/982871510068191901">
+    <file name="TemplateCallMacro_Constraints.java">
+      <node id="982871510068191901" at="25,42,26,164" concept="13" />
+      <node id="982871510068191901" at="30,90,31,131" concept="7" />
+      <node id="982871510068191901" at="34,44,35,20" concept="8" />
+      <node id="982871510068191901" at="42,63,43,58" concept="8" />
+      <node id="6836281137582788333" at="46,122,47,255" concept="8" />
+      <node id="982871510068191901" at="51,7,52,22" concept="8" />
+      <node id="982871510068191901" at="54,0,55,0" concept="11" trace="breakingNode_thw7lh_a0a0a0a0a1a0b0a1a2" />
+      <node id="982871510068191901" at="25,0,28,0" concept="1" trace="TemplateCallMacro_Constraints#()V" />
+      <node id="982871510068191901" at="33,0,37,0" concept="6" trace="hasOwnScopeProvider#()Z" />
+      <node id="982871510068191901" at="41,0,45,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="982871510068191901" at="45,0,49,0" concept="6" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="982871510068191901" at="39,56,49,10" concept="8" />
+      <node id="982871510068191901" at="37,0,51,0" concept="6" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="982871510068191901" at="31,131,51,7" concept="2" />
+      <node id="982871510068191901" at="29,0,54,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="982871510068191901" at="25,42,26,164" />
+      <scope id="982871510068191901" at="34,44,35,20" />
+      <scope id="982871510068191901" at="42,63,43,58" />
+      <scope id="982871510068191901" at="46,122,47,255" />
+      <scope id="982871510068191901" at="25,0,28,0" />
+      <scope id="982871510068191901" at="33,0,37,0" />
+      <scope id="982871510068191901" at="41,0,45,0" />
+      <scope id="982871510068191901" at="45,0,49,0">
+        <var name="_context" id="982871510068191901" />
+        <var name="operationContext" id="982871510068191901" />
+      </scope>
+      <scope id="982871510068191901" at="39,56,49,10" />
+      <scope id="982871510068191901" at="37,0,51,0" />
+      <scope id="982871510068191901" at="30,90,52,22">
+        <var name="references" id="982871510068191901" />
+      </scope>
+      <scope id="982871510068191901" at="29,0,54,0" />
+      <unit id="982871510068191901" at="40,19,49,9" name="jetbrains.mps.lang.generator.constraints.TemplateCallMacro_Constraints$1$1" />
+      <unit id="982871510068191901" at="32,156,51,5" name="jetbrains.mps.lang.generator.constraints.TemplateCallMacro_Constraints$1" />
+      <unit id="982871510068191901" at="24,0,56,0" name="jetbrains.mps.lang.generator.constraints.TemplateCallMacro_Constraints" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)/982871510068195081">
+    <file name="TemplateDeclarationReference_Constraints.java">
+      <node id="982871510068195081" at="25,53,26,170" concept="13" />
+      <node id="982871510068195081" at="30,90,31,131" concept="7" />
+      <node id="982871510068195081" at="34,44,35,20" concept="8" />
+      <node id="982871510068195081" at="42,63,43,58" concept="8" />
+      <node id="6836281137582788938" at="46,122,47,255" concept="8" />
+      <node id="982871510068195081" at="51,7,52,22" concept="8" />
+      <node id="982871510068195081" at="54,0,55,0" concept="11" trace="breakingNode_ujnbk1_a0a0a0a0a1a0b0a1a2" />
+      <node id="982871510068195081" at="25,0,28,0" concept="1" trace="TemplateDeclarationReference_Constraints#()V" />
+      <node id="982871510068195081" at="33,0,37,0" concept="6" trace="hasOwnScopeProvider#()Z" />
+      <node id="982871510068195081" at="41,0,45,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="982871510068195081" at="45,0,49,0" concept="6" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="982871510068195081" at="39,56,49,10" concept="8" />
+      <node id="982871510068195081" at="37,0,51,0" concept="6" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="982871510068195081" at="31,131,51,7" concept="2" />
+      <node id="982871510068195081" at="29,0,54,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="982871510068195081" at="25,53,26,170" />
+      <scope id="982871510068195081" at="34,44,35,20" />
+      <scope id="982871510068195081" at="42,63,43,58" />
+      <scope id="982871510068195081" at="46,122,47,255" />
+      <scope id="982871510068195081" at="25,0,28,0" />
+      <scope id="982871510068195081" at="33,0,37,0" />
+      <scope id="982871510068195081" at="41,0,45,0" />
+      <scope id="982871510068195081" at="45,0,49,0">
+        <var name="_context" id="982871510068195081" />
+        <var name="operationContext" id="982871510068195081" />
+      </scope>
+      <scope id="982871510068195081" at="39,56,49,10" />
+      <scope id="982871510068195081" at="37,0,51,0" />
+      <scope id="982871510068195081" at="30,90,52,22">
+        <var name="references" id="982871510068195081" />
+      </scope>
+      <scope id="982871510068195081" at="29,0,54,0" />
+      <unit id="982871510068195081" at="40,19,49,9" name="jetbrains.mps.lang.generator.constraints.TemplateDeclarationReference_Constraints$1$1" />
+      <unit id="982871510068195081" at="32,156,51,5" name="jetbrains.mps.lang.generator.constraints.TemplateDeclarationReference_Constraints$1" />
+      <unit id="982871510068195081" at="24,0,56,0" name="jetbrains.mps.lang.generator.constraints.TemplateDeclarationReference_Constraints" />
+    </file>
+  </root>
+</debug-info>
 

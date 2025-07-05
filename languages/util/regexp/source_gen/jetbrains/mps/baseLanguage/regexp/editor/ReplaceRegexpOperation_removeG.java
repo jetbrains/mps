@@ -10,27 +10,40 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.openapi.editor.cells.CellConditions;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ReplaceRegexpOperation_removeG {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new ReplaceRegexpOperation_removeG.ReplaceRegexpOperation_removeG_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new ReplaceRegexpOperation_removeG.ReplaceRegexpOperation_removeG_BACKSPACE(node));
   }
-
   public static class ReplaceRegexpOperation_removeG_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public ReplaceRegexpOperation_removeG_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
       EditorCell current = editorContext.getSelectedCell();
       EditorCell toSelect = CellTraversalUtil.getPrevLeaf(current, CellConditions.SELECTABLE);
-      SPropertyOperations.set(node, "globalReplace", "" + (false));
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee69L, "globalReplace"), "" + (false));
+      editorContext.getEditorComponent().changeSelection(toSelect);
+    }
+  }
+  public static class ReplaceRegexpOperation_removeG_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public ReplaceRegexpOperation_removeG_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      EditorCell current = editorContext.getSelectedCell();
+      EditorCell toSelect = CellTraversalUtil.getPrevLeaf(current, CellConditions.SELECTABLE);
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee69L, "globalReplace"), "" + (false));
       editorContext.getEditorComponent().changeSelection(toSelect);
     }
   }

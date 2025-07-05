@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,11 @@
 
 package jetbrains.mps.idea.core.tests;
 
-import com.intellij.compiler.CompilerWorkspaceConfiguration;
 import com.intellij.facet.FacetManager;
 import com.intellij.facet.FacetType;
 import com.intellij.facet.FacetTypeRegistry;
 import com.intellij.facet.ModifiableFacetModel;
 import com.intellij.ide.highlighter.ModuleFileType;
-import com.intellij.idea.LoggerFactory;
-import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.diagnostic.Logger;
@@ -41,29 +38,29 @@ import com.intellij.testFramework.fixtures.JavaTestFixtureFactory;
 import com.intellij.testFramework.fixtures.TestFixtureBuilder;
 import com.intellij.testFramework.fixtures.impl.JavaTestFixtureFactoryImpl;
 import com.intellij.util.PathUtil;
+import com.intellij.util.ThrowableRunnable;
+import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.facet.MPSFacet;
 import jetbrains.mps.idea.core.facet.MPSFacetConfiguration;
 import jetbrains.mps.idea.core.facet.MPSFacetType;
 import jetbrains.mps.smodel.ModelAccess;
-import junit.framework.Assert;
-import org.apache.log4j.BasicConfigurator;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.SwingUtilities;
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 public abstract class AbstractMPSFixtureTestCase extends UsefulTestCase {
   private static int ourIndex = 0;
-  private static boolean TRACE_ON_HACK = false;
 
   protected MPSFacet myFacet;
-  private JavaCodeInsightTestFixture myFixture;
+  protected JavaCodeInsightTestFixture myFixture;
   protected Module myModule;
   protected TestFixtureBuilder<IdeaProjectTestFixture> myProjectBuilder;
 
   static {
-    if (TRACE_ON_HACK) BasicConfigurator.configure();
     IdeaTestFixtureFactory.getFixtureFactory().registerFixtureBuilder(CustomJavaModuleFixtureBuilder.class, CustomJavaModuleFixtureBuilder.class);
   }
 
@@ -74,12 +71,8 @@ public abstract class AbstractMPSFixtureTestCase extends UsefulTestCase {
   public static void flushEDT() throws InterruptedException {
     assert SwingUtilities.isEventDispatchThread();
     final boolean[] flag = new boolean[]{false};
-    ModelAccess.instance().runReadInEDT(new Runnable() {
-      @Override
-      public void run() {
-        flag[0] = true;
-      }
-    });
+    // fixme use ApplicationManager.getApplication().invokeLater() ?
+    ModelAccess.instance().runReadInEDT(() -> flag[0] = true);
     while (!flag[0]) {
       PlatformTestUtil.dispatchAllInvocationEventsInIdeEventQueue();
     }
@@ -101,25 +94,37 @@ public abstract class AbstractMPSFixtureTestCase extends UsefulTestCase {
     myFixture.setTestDataPath(getTestDataPath());
     myModule = moduleFixtureBuilder.getFixture().getModule();
 
-    CompilerWorkspaceConfiguration.class.getDeclaredField(
-      ApplicationInfo.getInstance().getMajorVersion().equals("12") ? "USE_COMPILE_SERVER" : "USE_OUT_OF_PROCESS_BUILD"
-    ).setBoolean(CompilerWorkspaceConfiguration.getInstance(myModule.getProject()), false);
     myFacet = addMPSFacet(myModule);
 
-    if (TRACE_ON_HACK){
-      final Method method = ApplicationInfo.getInstance().getMajorVersion().equals("12")
-          ? Logger.class.getDeclaredMethod("setFactory", Logger.Factory.class) : Logger.class.getDeclaredMethod("setFactory", Class.class);
-      method.invoke(null,
-          ApplicationInfo.getInstance().getMajorVersion().equals("12")
-              ? LoggerFactory.class.getDeclaredMethod("getInstance").invoke(null) : LoggerFactory.class);
+    //Flush all EDT events to be made before run tests
+    try {
+      UIUtil.invokeAndWaitIfNeeded(new ThrowableRunnable() {
+        @Override
+        public void run() throws Throwable {
+          flushEDT();
+        }
+      });
+    } catch (Throwable throwable) {
+      Logger.getInstance(this.getClass()).error("Error while flushing EDT events", throwable);
     }
   }
 
   @Override
   protected void tearDown() throws Exception {
-    if (!ModelAccess.instance().isInEDT()) ModelAccess.instance().flushEventQueue();
-    myFixture.tearDown();
-    super.tearDown();
+    if (!ApplicationManager.getApplication().isDispatchThread()) {
+      // fixme needed at all? another way? maybe flushEDT()
+      ModelAccess.instance().flushEventQueue();
+    }
+
+    myModule = null;
+
+    try {
+      myFixture.tearDown();
+    } finally {
+      myFixture = null;
+
+      super.tearDown();
+    }
   }
 
   protected Module addModuleAndSetupFixture(TestFixtureBuilder<IdeaProjectTestFixture> projectBuilder) throws Exception {
@@ -149,25 +154,40 @@ public abstract class AbstractMPSFixtureTestCase extends UsefulTestCase {
   }
 
   protected MPSFacet addMPSFacet(Module module) {
-    FacetManager facetManager = FacetManager.getInstance(module);
+    final FacetManager facetManager = FacetManager.getInstance(module);
     FacetType<MPSFacet, MPSFacetConfiguration> facetType = FacetTypeRegistry.getInstance().findFacetType(MPSFacetType.ID);
-    Assert.assertNotNull("MPS facet type is not found", facetType);
-    MPSFacet facet = facetManager.createFacet(facetType, "MPS", null);
+    assertNotNull("MPS facet type is not found", facetType);
+    final MPSFacet facet = facetManager.createFacet(facetType, "MPS", null);
     final MPSFacetConfiguration configuration = facet.getConfiguration();
-    preConfigureFacet(configuration);
 
     final ModifiableFacetModel facetModel = facetManager.createModifiableModel();
     facetModel.addFacet(facet);
-    ApplicationManager.getApplication().runWriteAction(new Runnable() {
+    UIUtil.invokeAndWaitIfNeeded(new Runnable() {
       @Override
       public void run() {
-        facetModel.commit();
+        preConfigureFacet(configuration);
+        final ModifiableFacetModel facetModel = facetManager.createModifiableModel();
+        facetModel.addFacet(facet);
+        ApplicationManager.getApplication().runWriteAction(facetModel::commit);
       }
     });
+
     return facet;
   }
 
   protected void preConfigureFacet(MPSFacetConfiguration configuration) {
+  }
+
+  /**
+   * Execute Runnable with MPS read lock
+   */
+  protected final void runModelRead(@NotNull Runnable r) {
+    jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject((myModule.getProject()));
+    mpsProject.getModelAccess().runReadAction(r);
+  }
+
+  protected final <T> T runModelRead(@NotNull Computable<T> c) {
+    return new ModelAccessHelper(ProjectHelper.getModelAccess(myModule.getProject())).runReadAction(c);
   }
 
   public static class CustomJavaModuleFixtureBuilder extends JavaTestFixtureFactoryImpl.MyJavaModuleFixtureBuilderImpl {
@@ -176,24 +196,6 @@ public abstract class AbstractMPSFixtureTestCase extends UsefulTestCase {
 
     public CustomJavaModuleFixtureBuilder(TestFixtureBuilder<? extends IdeaProjectTestFixture> testFixtureBuilder) {
       super(testFixtureBuilder);
-    }
-
-    @Override
-    protected void initModule(Module module) {
-      // turn on trace
-      if (TRACE_ON_HACK) {
-        try {
-          final Method method = ApplicationInfo.getInstance().getMajorVersion().equals("12")
-              ? Logger.class.getDeclaredMethod("setFactory", Logger.Factory.class) : Logger.class.getDeclaredMethod("setFactory", Class.class);
-          method.invoke(null,
-              ApplicationInfo.getInstance().getMajorVersion().equals("12")
-                  ? LoggerFactory.class.getDeclaredMethod("getInstance").invoke(null) : LoggerFactory.class);
-        } catch (IllegalAccessException e) {
-        } catch (InvocationTargetException e) {
-        } catch (NoSuchMethodException e) {
-        }
-      }
-      super.initModule(module);
     }
 
     protected Module createModule() {

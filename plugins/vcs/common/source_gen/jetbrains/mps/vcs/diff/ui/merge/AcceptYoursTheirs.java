@@ -9,39 +9,30 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 
 public class AcceptYoursTheirs extends BaseAction implements DumbAware {
-  private MergeModelsDialog myMergeModelsDialog;
+  private MergeModelsPanel myMergeModelsDialog;
   private boolean myAcceptMine;
-
-  private AcceptYoursTheirs(MergeModelsDialog mergeModelsDialog, boolean acceptMine) {
-    super("Accept " + ((acceptMine ?
-      "Yours" :
-      "Theirs"
-    )), null, EmptyIcon.create(1));
+  private AcceptYoursTheirs(MergeModelsPanel mergeModelsDialog, boolean acceptMine) {
+    super("Accept " + ((acceptMine ? "Yours" : "Theirs")), null, EmptyIcon.create(1));
     myMergeModelsDialog = mergeModelsDialog;
     myAcceptMine = acceptMine;
     setDisableOnNoProject(false);
   }
-
   @Override
   protected void doExecute(AnActionEvent event, Map<String, Object> map) {
     myMergeModelsDialog.acceptVersionForSelectedRoots(myAcceptMine);
   }
-
   @Override
   protected void doUpdate(AnActionEvent event, Map<String, Object> map) {
     setEnabledState(event.getPresentation(), myMergeModelsDialog.isAcceptYoursTheirsEnabled());
   }
-
   @Override
   public boolean displayTextInToolbar() {
     return true;
   }
-
-  public static AcceptYoursTheirs yoursInstance(MergeModelsDialog mergeModelsDialog) {
+  public static AcceptYoursTheirs yoursInstance(MergeModelsPanel mergeModelsDialog) {
     return new AcceptYoursTheirs(mergeModelsDialog, true);
   }
-
-  public static AcceptYoursTheirs theirsInstance(MergeModelsDialog mergeModelsDialog) {
+  public static AcceptYoursTheirs theirsInstance(MergeModelsPanel mergeModelsDialog) {
     return new AcceptYoursTheirs(mergeModelsDialog, false);
   }
 }

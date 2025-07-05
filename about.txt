@@ -1,101 +1,154 @@
-Copyright 2003-2012. JetBrains s.r.o. All rights reserved.
+Copyright 2003-2017. JetBrains s.r.o. All rights reserved.
 
 This product includes software developed by
 
 The Apache Software Foundation
 http://www.apache.org/
- 
-The W3C consortium 
-http://www.w3c.org
- 
-The jMock project
-http://jmock.org/
- 
+
 INRIA, France Telecom
 http://asm.objectweb.org/
 Copyright (c) 2000-2005 All rights reserved.
- 
+
+Anders Moeller
+http://www.brics.dk/automaton/index.html
+Copyright (c) 2001-2011
+
+Legion of the Bouncy Castle Inc.
+http://www.bouncycastle.org/about.html
+Copyright (c) 2000-2015
+
+CGLIB project
+https://github.com/cglib/cglib
+
+CLI Parser
+https://github.com/spullara/cli-parser
+Copyright (c) 2012 Sam Pullara
+
+Java Diff Utils
+http://code.google.com/p/java-diff-utils/
+
+Eclipse Software Foundation
+http://www.eclipse.org/
+
+Google
+http://www.google.com/
+
+Hamcrest project
+https://code.google.com/p/hamcrest/
+
+Java Image-Scaling Library
+https://github.com/rkalla/imgscalr
+
+SourceForge ISO-RELAX Project
+https://sourceforge.net/projects/iso-relax/
+
+Jaxen project
+http://jaxen.codehaus.org
+
+java-swing-ayatana project
+https://code.google.com/p/java-swing-ayatana/
+
 JDOM Project
 http://www.jdom.org/
 Copyright (C) 2000-2002 Brett McLaughlin & Jason Hunter.
-All rights reserved.
- 
-NanoContainer Organization
-http://www.picocontainer.org/
-Copyright (c) 2003
 
-Joe Walnes
-http://xstream.codehaus.org/
-Copyright (c) 2003-2005. All rights reserved.
- 
-Eclipse Software Foundation
-http://www.eclipse.org/
- 
-Kent Beck, Erich Gamma, and David Saff
-http://www.junit.org/
- 
-Sun Microsystems, Inc., 4150 Network Circle,
-Santa Clara, California 95054, U.S.A. 
-http://beansbinding.dev.java.net/
-Copyright (c) 2005-2007 All rights reserved.
+Pure Java Terminal Emulator.
+https://github.com/JetBrains/jediterm
 
-Sun Microsystems
-http://java.sun.com/javase/technologies/desktop/javahelp/
- 
 JGoodies, Karsten Lentzsch
 http://www.jgoodies.com/freeware/
 Copyright (c) 2002-2006. All rights reserved.
+
+Sun Microsystems
+http://java.sun.com/javase/technologies/desktop/javahelp/
+
+Jing / RELAX NG validator in Java
+http://www.thaiopensource.com/relaxng/jing.html
+Copyright (c) 2001, 2002, 2003, 2008 Thai Open Source Software Center Ltd
+
+The jMock project
+http://jmock.org/
+
+JNA Project
+https://jna.dev.java.net/
+
+JCraft/JSch project
+http://www.jcraft.com/jsch/
+
+JSR 173: Streaming API for XML
+https://www.jcp.org/en/jsr/detail?id=173
+
+Kent Beck, Erich Gamma, and David Saff
+http://www.junit.org/
 
 Michael Baranov
 http://microba.sourceforge.net/
 Copyright (c) 2005-2006. All rights reserved.
 
+MigLayout project
+http://www.miglayout.com
+
 Marc De Scheemaecker
 http://devkix.com/nanoxml.php/
 Copyright (C) 2000-2008. All Rights Reserved.
 
-Eric D. Friedman
-http://trove4j.sourceforge.net/
-Copyright (c) 2001, All Rights Reserved
- 
-CERN - European Organization for Nuclear Research
-http://trove4j.sourceforge.net/
-Copyright (c) 1999
+Netty project
+http://netty.io/index.html
 
-JNA Project
-https://jna.dev.java.net/
+NanoContainer Organization
+http://www.picocontainer.org/
+Copyright (c) 2003
 
-Google Web Toolkit
-http://code.google.com/webtoolkit/download.html
-Copyright (C) 2006 Google Inc
+Proxy Vole project
+https://code.google.com/p/proxy-vole/
 
-Google gson
-http://code.google.com/p/google-gson/
-Copyright (c) 2008-2011 Google Inc.
+Pseudo terminal(PTY) implementation in Java
+https://github.com/traff/pty4j
 
-XMLUnit
-http://xmlunit.sourceforge.net/
-Copyright (c) 2001-2009, Jeff Martin, Tim Bacon
+PureJavaComm
+http://www.sparetimelabs.com/purejavacomm/purejavacomm.php
 
-Java Diff Utils
-http://code.google.com/p/java-diff-utils/
+RELAX NG Object Model / Parser
+https://java.net/projects/rngom/
 
-The Growl Project
-http://growl.info/
+Simple Logging Facade for Java
+https://www.slf4j.org
 
-Kryo project
-http://code.google.com/p/kryo/
+Taro L. Saito
+https://github.com/xerial/snappy-java
+
+SQLite Project
+https://www.sqlite.org
 
 TMate Software Ltd
 http://svnkit.com/
 http://sqljet.com/
 
-Winp project
-http://winp.kohsuke.org/
-https://github.com/kohsuke/winp
+StreamEx Project
+https://github.com/amaembo/streamex
 
 SwingLabs SwingX
 https://swingx.java.net
+
+Trang Project
+http://www.thaiopensource.com/relaxng/trang.html
+Copyright (c) 2002, 2003, 2008 Thai Open Source Software Center Ltd
+
+Trove High Performance Collections for Java
+http://trove.starlight-systems.com
+
+Winp project
+https://java.net/projects/winp
+
+XML Pull Parser (XPP3) project
+http://www.extreme.indiana.edu/xgws/xsoap/xpp/
+
+Joe Walnes
+http://xstream.codehaus.org/
+Copyright (c) 2003-2005. All rights reserved.
+
+The W3C consortium
+http://www.w3c.org
 
 You can find licenses for these software
 in the %MPS_HOME%/license directory

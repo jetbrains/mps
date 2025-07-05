@@ -10,9 +10,10 @@ import jetbrains.mps.execution.api.commands.ListCommandPart;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.execution.api.commands.PropertyCommandPart;
+import com.intellij.execution.process.ProcessAdapter;
+import com.intellij.execution.process.ProcessEvent;
 import jetbrains.mps.debug.api.IDebugger;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.InternalFlag;
 import com.intellij.util.SystemProperties;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -31,38 +32,32 @@ public class Mps_Command {
   private String myConfigurationPath_String = Mps_Command.getDefaultConfigurationPath();
   private String mySystemPath_String = Mps_Command.getDefaultSystemPath();
   private String myDebuggerSettings_String;
-
   public Mps_Command() {
   }
-
   public Mps_Command setVirtualMachineParameters_String(String virtualMachineParameters) {
     if (virtualMachineParameters != null) {
       myVirtualMachineParameters_String = virtualMachineParameters;
     }
     return this;
   }
-
   public Mps_Command setJrePath_String(String jrePath) {
     if (jrePath != null) {
       myJrePath_String = jrePath;
     }
     return this;
   }
-
   public Mps_Command setConfigurationPath_String(String configurationPath) {
     if (configurationPath != null) {
       myConfigurationPath_String = configurationPath;
     }
     return this;
   }
-
   public Mps_Command setSystemPath_String(String systemPath) {
     if (systemPath != null) {
       mySystemPath_String = systemPath;
     }
     return this;
   }
-
   public Mps_Command setDebuggerSettings_String(String debuggerSettings) {
     if (debuggerSettings != null) {
       myDebuggerSettings_String = debuggerSettings;
@@ -73,9 +68,20 @@ public class Mps_Command {
   public ProcessHandler createProcess() throws ExecutionException {
     return new Mps_Command().setVirtualMachineParameters_String(myVirtualMachineParameters_String).setJrePath_String(myJrePath_String).setConfigurationPath_String(myConfigurationPath_String).setSystemPath_String(mySystemPath_String).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(null);
   }
-
   public ProcessHandler createProcess(File projectToOpen) throws ExecutionException {
-    return new Java_Command().setVirtualMachineParameter_ProcessBuilderCommandPart(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), myVirtualMachineParameters_String, new PropertyCommandPart("idea.system.path", mySystemPath_String), new PropertyCommandPart("idea.config.path", myConfigurationPath_String)))).setDebuggerSettings_String(myDebuggerSettings_String).setWorkingDirectory_File(new File(System.getProperty("user.dir"))).setJrePath_String(myJrePath_String).createProcess(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), projectToOpen)), "jetbrains.mps.Launcher", Mps_Command.getClassPath());
+    final boolean runNotLocked = MpsInstanceLock.acquireLock();
+    if (runNotLocked) {
+      ProcessHandler process = new Java_Command().setVirtualMachineParameter_ProcessBuilderCommandPart(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), myVirtualMachineParameters_String, new PropertyCommandPart("idea.system.path", mySystemPath_String), new PropertyCommandPart("idea.config.path", myConfigurationPath_String)))).setDebuggerSettings_String(myDebuggerSettings_String).setWorkingDirectory_File(new File(System.getProperty("user.dir"))).setJrePath_String(myJrePath_String).createProcess(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), projectToOpen)), "jetbrains.mps.Launcher", Mps_Command.getClassPath());
+      process.addProcessListener(new ProcessAdapter() {
+        @Override
+        public void processTerminated(ProcessEvent p0) {
+          MpsInstanceLock.releaseLock();
+        }
+      });
+      return process;
+    } else {
+      throw new ExecutionException("Only one instance of MPS is allowed to be executed at once.");
+    }
   }
 
   public static IDebugger getDebugger() {
@@ -83,20 +89,14 @@ public class Mps_Command {
   }
 
   public static String getDefaultVirtualMachineParameters() {
-    return IterableUtils.join(ListSequence.fromList(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), "-client", "-Xss1024k", "-ea", "-Xmx1200m", "-XX:MaxPermSize=150m", "-XX:+HeapDumpOnOutOfMemoryError", "-Dfile.encoding=UTF-8", ((InternalFlag.isInternalMode() ?
-      " -Dmps.internal=true" :
-      ""
-    )))).getCommandList()), " ");
+    return IterableUtils.join(ListSequence.fromList(JvmArgs.getDefaultJvmArgs()), " ");
   }
-
   public static String getDefaultConfigurationPath() {
-    return SystemProperties.getUserHome().replace(File.separator, "/") + "/" + ".MPSDebug30/config";
+    return SystemProperties.getUserHome().replace(File.separator, "/") + "/" + ".MPSDebug33/config";
   }
-
   public static String getDefaultSystemPath() {
-    return SystemProperties.getUserHome().replace(File.separator, "/") + "/" + ".MPSDebug30/system";
+    return SystemProperties.getUserHome().replace(File.separator, "/") + "/" + ".MPSDebug33/system";
   }
-
   private static List<File> getClassPath() {
     Iterable<String> currentClassPath = ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<String>(), System.getProperty("java.class.path").split(File.pathSeparator))).select(new ISelector<String, String>() {
       public String select(String it) {
@@ -124,7 +124,6 @@ public class Mps_Command {
       public IDebuggerSettings createDebuggerSettings() {
         return new LocalConnectionSettings(true);
       }
-
       public IDebugger getDebugger() {
         return Debuggers.getInstance().getDebuggerByName("Java");
       }

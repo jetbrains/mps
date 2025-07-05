@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +15,17 @@
  */
 package jetbrains.mps.ide.ui.tree;
 
-import jetbrains.mps.smodel.IOperationContext;
+import javax.swing.Icon;
 
 public class TextTreeNode extends MPSTreeNode {
   public TextTreeNode(String text) {
-    this(text, null);
-  }
-
-  public TextTreeNode(String text, IOperationContext context) {
-    super(context);
+    super(text);
     setText(text);
     setNodeIdentifier(text.replaceAll(MPSTree.TREE_PATH_SEPARATOR, " "));
-    setUserObject(text);
+  }
+
+  public TextTreeNode(Icon icon, String text) {
+    this(text);
+    setIcon(icon);
   }
 }

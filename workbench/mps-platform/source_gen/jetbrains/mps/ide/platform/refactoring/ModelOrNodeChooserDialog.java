@@ -12,24 +12,22 @@ public abstract class ModelOrNodeChooserDialog extends RefactoringDialog {
   protected static String REFACTORING_NAME = RefactoringBundle.message("move.title");
   protected Project myProject;
   protected ModelElementTargetChooser myChooser;
-
   public ModelOrNodeChooserDialog(@NotNull Project project) {
     super(project, true);
     this.myProject = project;
   }
-
   protected static class Filter {
     private String errorMessage;
-
     protected Filter(String errorMessage) {
       this.errorMessage = errorMessage;
     }
-
     protected Filter() {
     }
-
     protected void showError(String title, JComponent component) {
       JOptionPane.showMessageDialog(component, errorMessage, title, JOptionPane.INFORMATION_MESSAGE);
+    }
+    protected void showError(String title, String message, JComponent component) {
+      JOptionPane.showMessageDialog(component, message, title, JOptionPane.INFORMATION_MESSAGE);
     }
   }
 }

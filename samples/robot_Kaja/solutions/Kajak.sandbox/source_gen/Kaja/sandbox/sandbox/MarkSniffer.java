@@ -8,7 +8,6 @@ import JavaKaja.runtime.Direction;
 public class MarkSniffer extends KajaFrame {
   public MarkSniffer() {
   }
-
   protected void perform() {
     // Searches for a mark on a custom playground, using a very primitive strategy 
     buildSimplePlayground_from_library_PlaygroundDefinition_routine();
@@ -16,7 +15,6 @@ public class MarkSniffer extends KajaFrame {
     searchForMark_routine();
     trace("Found a mark!");
   }
-
   public void safeStep_routine() {
     if (!(isWall())) {
       if (canMove()) {
@@ -29,20 +27,21 @@ public class MarkSniffer extends KajaFrame {
       turnRight_from_library_Common_routine();
     }
   }
-
   public void searchForMark_routine() {
     if (isMark()) {
       pickAll_from_library_Filling_routine();
       while (!(heading(Direction.west))) {
-        turnLeft();
-        pause();
+        try {
+          turnLeft();
+          pause();
+        } finally {
+        }
       }
     } else {
       safeStep_routine();
       searchForMark_routine();
     }
   }
-
   public void buildSimplePlayground_from_library_PlaygroundDefinition_routine() {
     if (isAllowedRow(1) && isAllowedCol(4)) {
       addWall(1, 4);
@@ -70,7 +69,6 @@ public class MarkSniffer extends KajaFrame {
       reportError("Attempted to drop marks outside of the playground!");
     }
   }
-
   public void buildMaze_from_library_PlaygroundDefinition_routine() {
     if (isAllowedRow(4) && isAllowedCol(1)) {
       addWall(4, 1);
@@ -168,21 +166,27 @@ public class MarkSniffer extends KajaFrame {
       reportError("Attempted to drop marks outside of the playground!");
     }
   }
-
   public void turnRight_from_library_Common_routine() {
     for (int indexVariable_ormfpz_a0e = 0; indexVariable_ormfpz_a0e < 3; indexVariable_ormfpz_a0e++) {
-      turnLeft();
-      pause();
+      try {
+        turnLeft();
+        pause();
+      } finally {
+      }
     }
   }
-
   public void turnAround_from_library_Common_routine() {
-    turnLeft();
-    pause();
-    turnLeft();
-    pause();
+    try {
+      turnLeft();
+      pause();
+    } finally {
+    }
+    try {
+      turnLeft();
+      pause();
+    } finally {
+    }
   }
-
   public void fetch_from_library_Common_routine() {
     if (isMark()) {
       if (isMark()) {
@@ -208,7 +212,6 @@ public class MarkSniffer extends KajaFrame {
       }
     }
   }
-
   public void fillup_from_library_Filling_routine() {
     while (!(isFull())) {
       if (!(isFull())) {
@@ -219,7 +222,6 @@ public class MarkSniffer extends KajaFrame {
       }
     }
   }
-
   public void pickAll_from_library_Filling_routine() {
     while (isMark()) {
       if (isMark()) {
@@ -230,7 +232,6 @@ public class MarkSniffer extends KajaFrame {
       }
     }
   }
-
   public static void main(String[] args) {
     MarkSniffer script = new MarkSniffer();
     script.initializeComponents();

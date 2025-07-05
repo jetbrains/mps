@@ -8,12 +8,11 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationUi;
-import org.apache.log4j.Priority;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.IEvaluationContainer;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 
 public class EditWatchAction_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -23,44 +22,35 @@ public class EditWatchAction_Action extends BaseAction {
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      event.getPresentation().setVisible(EvaluationUi.EVALUATION_CONTAINER.getData(event.getDataContext()) != null && EvaluationUi.DEBUG_SESSION.getData(event.getDataContext()) != null);
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "EditWatchAction", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    event.getPresentation().setVisible(EvaluationUi.EVALUATION_CONTAINER.getData(event.getDataContext()) != null && EvaluationUi.DEBUG_SESSION.getData(event.getDataContext()) != null);
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    return true;
-  }
-
-  public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      IEvaluationContainer container = EvaluationUi.EVALUATION_CONTAINER.getData(event.getDataContext());
-      DebugSession session = EvaluationUi.DEBUG_SESSION.getData(event.getDataContext());
-      if (container == null || session == null) {
-        return;
-      }
-      session.getEvaluationProvider().showEditWatchDialog(MPSCommonDataKeys.OPERATION_CONTEXT.getData(event.getDataContext()), container);
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "EditWatchAction", t);
+    {
+      Project p = event.getData(CommonDataKeys.PROJECT);
+      MapSequence.fromMap(_params).put("ideaProject", p);
+      if (p == null) {
+        return false;
       }
     }
+    return true;
   }
-
-  protected static Logger LOG = LogManager.getLogger(EditWatchAction_Action.class);
+  @Override
+  public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
+    IEvaluationContainer container = EvaluationUi.EVALUATION_CONTAINER.getData(event.getDataContext());
+    DebugSession session = EvaluationUi.DEBUG_SESSION.getData(event.getDataContext());
+    if (container == null || session == null) {
+      return;
+    }
+    session.getEvaluationProvider().showEditWatchDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), container);
+  }
 }

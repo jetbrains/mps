@@ -5,6 +5,8 @@ package jetbrains.mps.lang.structure.findUsages;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import java.util.List;
@@ -19,26 +21,24 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SReference;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public class LinkInstances_Finder extends GeneratedFinder {
   private static Logger LOG = LogManager.getLogger("jetbrains.mps.lang.structure.findUsages.LinkInstances_Finder");
-
   public LinkInstances_Finder() {
   }
-
   @Override
   public String getDescription() {
     return "Link Instances";
   }
-
   @Override
   public String getLongDescription() {
     return "";
   }
-
   @Override
-  public String getConcept() {
-    return "jetbrains.mps.lang.structure.structure.LinkDeclaration";
+  public SAbstractConcept getSConcept() {
+    return MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
   }
 
   @Override
@@ -48,18 +48,18 @@ public class LinkInstances_Finder extends GeneratedFinder {
       Set<String> roles = SetSequence.fromSet(new HashSet<String>());
       SNode curNode = node;
       do {
-        SetSequence.fromSet(roles).addElement(SPropertyOperations.getString(curNode, "role"));
-        curNode = SLinkOperations.getTarget(curNode, "specializedLink", false);
+        SetSequence.fromSet(roles).addElement(SPropertyOperations.getString(curNode, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role")));
+        curNode = SLinkOperations.getTarget(curNode, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink"));
       } while (curNode != null);
       // find concept 
-      SNode conceptDeclaration = SNodeOperations.getAncestor(node, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration", false, false);
+      SNode conceptDeclaration = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), false, false);
       if ((conceptDeclaration == null)) {
         return;
       }
-      boolean isChild = SPropertyOperations.hasValue(node, "metaClass", "aggregation", "reference");
+      boolean isChild = SPropertyOperations.hasValue(node, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), "aggregation", "reference");
       // find instances and link examples 
       for (SNode instance : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder", conceptDeclaration, scope, monitor))) {
-        for (String role : SetSequence.fromSet(roles)) {
+        for (String role : roles) {
           if (isChild) {
             for (SNode child : Sequence.fromIterable(instance.getChildren(role))) {
               ListSequence.fromList(_results).addElement(child);
@@ -76,9 +76,14 @@ public class LinkInstances_Finder extends GeneratedFinder {
       monitor.done();
     }
   }
-
   @Override
   public String getNodeCategory(SNode node) {
     return "Link Instances";
+  }
+
+  @Nullable
+  @Override
+  public SNodeReference getDeclarationNode() {
+    return buildNodePointer(FindUsagesDescriptor.DECLARING_MODEL, "1201275992898");
   }
 }

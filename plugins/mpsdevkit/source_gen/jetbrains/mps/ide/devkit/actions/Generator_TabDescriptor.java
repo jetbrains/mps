@@ -7,40 +7,39 @@ import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import com.intellij.openapi.project.Project;
-import jetbrains.mps.workbench.MPSDataKeys;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.smodel.SModelOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import com.intellij.ide.DataManager;
-import javax.swing.JFrame;
-import com.intellij.openapi.wm.WindowManager;
-import jetbrains.mps.ide.project.ProjectHelper;
-import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.kernel.model.SModelUtil;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.Generator;
+import jetbrains.mps.kernel.model.SModelUtil;
 import java.util.ArrayList;
 import jetbrains.mps.ide.dialogs.project.creation.NewGeneratorDialog;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.generator.GenerationFacade;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.ide.actions.MappingDialog;
+import jetbrains.mps.kernel.language.ConceptAspectsHelper;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 
 public class Generator_TabDescriptor extends RelationDescriptor {
@@ -48,70 +47,60 @@ public class Generator_TabDescriptor extends RelationDescriptor {
 
   public Generator_TabDescriptor() {
   }
-
   public String getTitle() {
     return "Generator";
   }
-
   public Character getShortcutChar() {
     return 'G';
   }
-
   public int compareTo(RelationDescriptor descriptor) {
     return new Generator_Order().compare(this, descriptor);
   }
-
   public void startListening() {
   }
-
   public SNode getBaseNode(SNode node) {
     return ConceptEditorOpenHelper.getBaseNode(node);
   }
-
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
   }
-
   @Nullable
   public Icon getIcon() {
     return ICON;
   }
-
   public List<SNode> getNodes(SNode node) {
     Set<SNode> nodes = SetSequence.fromSet(new HashSet<SNode>());
-    SetSequence.fromSet(nodes).addSequence(ListSequence.fromList(BehaviorReflection.invokeNonVirtual((Class<List<SNode>>) ((Class) Object.class), node, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration", "call_findGeneratorFragments_6409339300305625383", new Object[]{})));
+    SetSequence.fromSet(nodes).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke(node, SMethodTrimmedId.create("findGeneratorFragments", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), "5zMz2aJEI4B")))));
     return SetSequence.fromSet(nodes).toListSequence();
   }
-
   public boolean isSingle() {
     return false;
   }
-
-  public List<SNode> getConcepts(final SNode node) {
-    List<SNode> result = ConceptEditorHelper.getAvailableConceptAspects(SNodeOperations.getModel(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.generator.structure.TemplateSwitch")), node);
-    ListSequence.fromList(result).addElement(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence"));
-    ListSequence.fromList(result).addElement(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence"));
-    boolean rootable = SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.structure.structure.ConceptDeclaration") && SPropertyOperations.getBoolean((SNodeOperations.cast(node, "jetbrains.mps.lang.structure.structure.ConceptDeclaration")), "rootable");
-    boolean isInterface = SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+  public Iterable<SConcept> getAspectConcepts(final SNode node) {
+    List<SConcept> result = ConceptEditorHelper.getAvailableConceptAspects(MetaAdapterFactory.getLanguage(0xb401a68083254110L, 0x8fd384331ff25befL, "jetbrains.mps.lang.generator"), node);
+    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence"));
+    ListSequence.fromList(result).addElement(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence"));
+    boolean rootable = SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration")) && SPropertyOperations.getBoolean((SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"))), MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable"));
+    boolean isInterface = SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration"));
     if (rootable || isInterface) {
       boolean isNeedRootTemplate = true;
-      for (SNode genFragment : BehaviorReflection.invokeNonVirtual((Class<List<SNode>>) ((Class) Object.class), node, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration", "call_findGeneratorFragments_6409339300305625383", new Object[]{})) {
-        if ((AttributeOperations.getAttribute(genFragment, new IAttributeDescriptor.NodeAttribute(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.generator.structure.RootTemplateAnnotation"))) != null)) {
+      for (SNode genFragment : ((List<SNode>) BHReflection.invoke(node, SMethodTrimmedId.create("findGeneratorFragments", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), "5zMz2aJEI4B")))) {
+        if ((AttributeOperations.getAttribute(genFragment, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation"))) != null)) {
           isNeedRootTemplate = false;
           break;
         }
       }
       if (isNeedRootTemplate) {
-        for (SModuleReference moduleRef : ((SModelInternal) SNodeOperations.getModel(node)).importedLanguages()) {
-          Language language = ModuleRepositoryFacade.getInstance().getModule(moduleRef, Language.class);
-          if (language == null) {
-            continue;
-          }
-          SModel structureModel = language.getStructureModelDescriptor();
-          for (SNode nodeToAdd : SModelOperations.getRoots(structureModel, "jetbrains.mps.lang.structure.structure.ConceptDeclaration")) {
-            SNode conceptToAdd = (SNode) nodeToAdd;
-            if (SPropertyOperations.getBoolean(nodeToAdd, "rootable")) {
-              ListSequence.fromList(result).addElement(conceptToAdd);
+        for (SLanguage lang : SModelOperations.getAllLanguageImports(SNodeOperations.getModel(node))) {
+          for (SAbstractConcept importedConcept : lang.getConcepts()) {
+            if (importedConcept.isAbstract()) {
+              continue;
+            }
+            if (!((importedConcept instanceof SConcept))) {
+              continue;
+            }
+            if (((SConcept) importedConcept).isRootable()) {
+              ListSequence.fromList(result).addElement(((SConcept) importedConcept));
             }
           }
         }
@@ -119,45 +108,41 @@ public class Generator_TabDescriptor extends RelationDescriptor {
     }
     return result;
   }
-
   public boolean commandOnCreate() {
     return false;
   }
-
-  public SNode createNode(final SNode node, final SNode concept) {
-    Project ideaProject = MPSDataKeys.PROJECT.getData(DataManager.getInstance().getDataContext());
-    JFrame frame = WindowManager.getInstance().getFrame(ideaProject);
-    jetbrains.mps.project.Project project = ProjectHelper.toMPSProject(ideaProject);
-    ModelAccess modelAccess = project.getRepository().getModelAccess();
+  public SNode createAspect(final SNode node, final SConcept concept) {
+    MPSProject mpsProject = MPSCommonDataKeys.MPS_PROJECT.getData(DataManager.getInstance().getDataContext());
 
     final Wrappers._T<Language> language = new Wrappers._T<Language>();
-    modelAccess.runReadAction(new Runnable() {
+    final Wrappers._T<List<Generator>> genList = new Wrappers._T<List<Generator>>();
+    mpsProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         language.value = SModelUtil.getDeclaringLanguage(node);
         assert language.value != null : "Language shouldn't be null for " + node;
+        genList.value = ListSequence.fromListWithValues(new ArrayList<Generator>(), language.value.getGenerators());
       }
     });
 
-    final List<Generator> genList = ListSequence.fromListWithValues(new ArrayList<Generator>(), language.value.getGenerators());
-    if (ListSequence.fromList(genList).isEmpty()) {
-      NewGeneratorDialog dialog = new NewGeneratorDialog(ideaProject, language.value);
+    if (ListSequence.fromList(genList.value).isEmpty()) {
+      NewGeneratorDialog dialog = new NewGeneratorDialog(mpsProject, language.value);
       dialog.show();
       Generator createdGenerator = dialog.getResult();
       if (createdGenerator == null) {
         return null;
       }
-      ListSequence.fromList(genList).addElement(createdGenerator);
+      ListSequence.fromList(genList.value).addElement(createdGenerator);
     } else {
-      modelAccess.executeCommand(new Runnable() {
+      mpsProject.getModelAccess().executeCommand(new Runnable() {
         public void run() {
-          for (Generator generator : genList) {
+          for (Generator generator : genList.value) {
             if (generator.getOwnTemplateModels().isEmpty()) {
               continue;
             }
             return;
           }
           // this means there are generators, but no template models 
-          Generator firstGen = ListSequence.fromList(genList).first();
+          Generator firstGen = ListSequence.fromList(genList.value).first();
           EditableSModel templateModelDescriptor = SModuleOperations.createModelWithAdjustments(language.value.getModuleName() + ".generator.template.main@" + SModelStereotype.GENERATOR, firstGen.getModelRoots().iterator().next());
           templateModelDescriptor.save();
           language.value.save();
@@ -166,11 +151,11 @@ public class Generator_TabDescriptor extends RelationDescriptor {
     }
 
     final List<SNode> mappings = new ArrayList<SNode>();
-    modelAccess.runReadAction(new Runnable() {
+    mpsProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        for (Generator generator : genList) {
-          for (SNode confAdapter : GenerationFacade.getOwnMappings(generator)) {
-            ListSequence.fromList(mappings).addElement((SNode) confAdapter);
+        for (Generator generator : genList.value) {
+          for (SModel gm : generator.getOwnTemplateModels()) {
+            ListSequence.fromList(mappings).addSequence(ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(gm, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"))));
           }
         }
       }
@@ -178,10 +163,10 @@ public class Generator_TabDescriptor extends RelationDescriptor {
 
     if (ListSequence.fromList(mappings).isEmpty()) {
       // generator is present - this means we don't have template models or mappings 
-      modelAccess.executeCommand(new Runnable() {
+      mpsProject.getModelAccess().executeCommand(new Runnable() {
         public void run() {
           SModel model = null;
-          for (Generator generator : genList) {
+          for (Generator generator : genList.value) {
             if (generator.getOwnTemplateModels().isEmpty()) {
               continue;
             }
@@ -189,9 +174,9 @@ public class Generator_TabDescriptor extends RelationDescriptor {
           }
           assert model != null : "model should have been already created";
 
-          SNode node = SConceptOperations.createNewNode("jetbrains.mps.lang.generator.structure.MappingConfiguration", null);
-          SPropertyOperations.set(node, "name", "main");
-          SModelOperations.addRootNode(model, node);
+          SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"));
+          SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "main");
+          jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(model, node);
           ListSequence.fromList(mappings).addElement(node);
         }
       });
@@ -199,30 +184,31 @@ public class Generator_TabDescriptor extends RelationDescriptor {
 
     final Wrappers._T<SNode> mapping = new Wrappers._T<SNode>();
     if (ListSequence.fromList(mappings).count() > 1) {
-      MappingDialog configurationDialog = new MappingDialog(ideaProject, language.value);
+      MappingDialog configurationDialog = new MappingDialog(mpsProject, language.value);
       configurationDialog.show();
       mapping.value = configurationDialog.getResult();
     } else {
       mapping.value = ListSequence.fromList(mappings).first();
     }
     final Wrappers._T<SNode> result = new Wrappers._T<SNode>();
-    modelAccess.executeCommand(new Runnable() {
+    mpsProject.getModelAccess().executeCommand(new Runnable() {
       public void run() {
         SModel model = SNodeOperations.getModel(mapping.value);
-        if (SConceptOperations.isSubConceptOf(concept, "jetbrains.mps.lang.structure.structure.IConceptAspect")) {
-          result.value = ConceptEditorHelper.createNewConceptAspectInstance(node, concept, model);
-          BehaviorReflection.invokeNonVirtual(Void.class, mapping.value, "jetbrains.mps.lang.generator.structure.MappingConfiguration", "call_addMember_3166264919334415805", new Object[]{result.value});
-        } else if (SConceptOperations.isSubConceptOf(concept, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence") || SNodeOperations.isInstanceOf(result.value, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence")) {
-          SNode mappingRule = SLinkOperations.addNewChild(mapping.value, "reductionMappingRule", "jetbrains.mps.lang.generator.structure.Reduction_MappingRule");
-          SLinkOperations.setTarget(mappingRule, "applicableConcept", node, false);
-          SLinkOperations.setTarget(mappingRule, "ruleConsequence", SNodeOperations.cast(result.value, "jetbrains.mps.lang.generator.structure.RuleConsequence"), true);
+        if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect"))) {
+          result.value = ConceptAspectsHelper.attachNewConceptAspect(node, SNodeFactoryOperations.createNewNode(SNodeFactoryOperations.asInstanceConcept(((SAbstractConcept) concept)), null), model);
+          BHReflection.invoke(mapping.value, SMethodTrimmedId.create("addMember", MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"), "2JKPiG_HmQX"), result.value);
+        } else if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence")) || SNodeOperations.isInstanceOf(result.value, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence"))) {
+          SNode mappingRule = SLinkOperations.addNewChild(mapping.value, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fca310cd5L, "reductionMappingRule"), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, "jetbrains.mps.lang.generator.structure.Reduction_MappingRule"));
+          SLinkOperations.setTarget(mappingRule, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept"), node);
+          SLinkOperations.setTarget(mappingRule, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, 0x11055ee07edL, "ruleConsequence"), SNodeOperations.cast(result.value, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x110138ccc4bL, "jetbrains.mps.lang.generator.structure.RuleConsequence")));
         } else {
-          SNode rootTemplateNode = SModelOperations.createNewNode(model, null, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
-          SLinkOperations.setTarget(rootTemplateNode, "applicableConcept", node, false);
-          AttributeOperations.setAttribute(result.value, new IAttributeDescriptor.NodeAttribute(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.generator.structure.RootTemplateAnnotation")), rootTemplateNode);
-          SPropertyOperations.set(SNodeOperations.cast(result.value, "jetbrains.mps.lang.core.structure.INamedConcept"), "name", SPropertyOperations.getString(node, "name"));
-          SModelOperations.addRootNode(model, result.value);
-          BehaviorReflection.invokeNonVirtual(Void.class, mapping.value, "jetbrains.mps.lang.generator.structure.MappingConfiguration", "call_addMember_3166264919334415805", new Object[]{result.value});
+          result.value = SNodeFactoryOperations.createNewNode(SNodeFactoryOperations.asInstanceConcept(concept), null);
+          SNode rootTemplateNode = jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.createNewNode(model, null, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation"));
+          SLinkOperations.setTarget(rootTemplateNode, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept"), node);
+          AttributeOperations.setAttribute(result.value, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation")), rootTemplateNode);
+          SPropertyOperations.set(SNodeOperations.cast(result.value, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+          jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(model, result.value);
+          BHReflection.invoke(mapping.value, SMethodTrimmedId.create("addMember", MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"), "2JKPiG_HmQX"), result.value);
         }
       }
     });

@@ -15,29 +15,25 @@
  */
 package jetbrains.mps.persistence;
 
-import jetbrains.mps.components.ComponentPlugin;
+import jetbrains.mps.components.ComponentPluginBase;
 import jetbrains.mps.persistence.java.library.JavaClassesPersistence;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.extapi.persistence.ModelFactoryRegistry;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 /**
  * evgeny, 11/9/12
  */
-public class MPSPersistence extends ComponentPlugin {
+public final class MPSPersistence extends ComponentPluginBase {
+  @NotNull private final PersistenceFacade myPersistenceFacade;
 
-  private static MPSPersistence ourInstance = new MPSPersistence();
-
-  public static MPSPersistence getInstance() {
-    return ourInstance;
-  }
-
-  private MPSPersistence() {
+  public MPSPersistence(@NotNull PersistenceFacade persistenceFacade) {
+    myPersistenceFacade = persistenceFacade;
   }
 
   @Override
   public void init() {
     super.init();
-    init(new DefaultModelPersistence());
-    init(new FilePerRootModelPersistence());
-    init(new BinaryModelPersistence());
-    init(new JavaClassesPersistence());
+    init(new JavaClassesPersistence(myPersistenceFacade));
   }
 }

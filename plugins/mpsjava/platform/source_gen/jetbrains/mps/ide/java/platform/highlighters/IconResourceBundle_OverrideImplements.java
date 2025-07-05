@@ -6,29 +6,26 @@ import jetbrains.mps.resourceBundles.IconResourceBundle;
 import java.util.Map;
 import javax.swing.Icon;
 import java.util.HashMap;
+import com.intellij.icons.AllIcons;
 
 public class IconResourceBundle_OverrideImplements implements IconResourceBundle {
   private static IconResourceBundle_OverrideImplements INSTANCE = new IconResourceBundle_OverrideImplements();
   private Map<String, Icon> icons = new HashMap<String, Icon>() {
     {
-      put("IMPLEMENTED", IconContainer.ICON_a0);
-      put("IMPLEMENTING", IconContainer.ICON_a1);
-      put("OVERRIDEN", IconContainer.ICON_a2);
-      put("OVERRIDING", IconContainer.ICON_a3);
+      put("IMPLEMENTED", AllIcons.Gutter.ImplementedMethod);
+      put("IMPLEMENTING", AllIcons.Gutter.ImplementingMethod);
+      put("OVERRIDEN", AllIcons.Gutter.OverridenMethod);
+      put("OVERRIDING", AllIcons.Gutter.OverridingMethod);
     }
   };
-
   public IconResourceBundle_OverrideImplements() {
   }
-
   public Iterable<String> getKeys() {
     return icons.keySet();
   }
-
   public Icon getResource(String key) {
     return icons.get(key);
   }
-
   public static IconResourceBundle_OverrideImplements getInstance() {
     return IconResourceBundle_OverrideImplements.INSTANCE;
   }

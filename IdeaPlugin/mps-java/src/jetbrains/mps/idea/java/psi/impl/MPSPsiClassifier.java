@@ -1,9 +1,7 @@
 package jetbrains.mps.idea.java.psi.impl;
 
 import com.intellij.navigation.ItemPresentation;
-import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.util.Pair;
-import com.intellij.pom.java.LanguageLevel;
 import com.intellij.psi.HierarchicalMethodSignature;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiClassInitializer;
@@ -12,6 +10,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiIdentifier;
+import com.intellij.psi.PsiManager;
 import com.intellij.psi.PsiMethod;
 import com.intellij.psi.PsiModifier.ModifierConstant;
 import com.intellij.psi.PsiModifierList;
@@ -42,23 +41,20 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.Icon;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 /**
  * evgeny, 1/28/13
  */
 public abstract class MPSPsiClassifier extends MPSPsiNode implements PsiClass {
-  private static Object LOG = new Object();
+  private static final Object LOG = new Object();
   private String myFQName;
 
-  public MPSPsiClassifier(SNodeId id, String concept, String containingRole) {
-    super(id, concept, containingRole);
-    addChildLast(new MPSPsiMethodModifierList());
+  public MPSPsiClassifier(SNodeId id, String concept, String containingRole, PsiManager manager) {
+    super(id, concept, containingRole, manager);
+    addChildLast(new MPSPsiMethodModifierList(manager));
   }
 
   @Nullable
@@ -67,13 +63,10 @@ public abstract class MPSPsiClassifier extends MPSPsiNode implements PsiClass {
     synchronized (LOG) {
 
       if (myFQName == null) {
-        final SRepository repository = ProjectHelper.toMPSProject(getProject()).getRepository();
-        repository.getModelAccess().runReadAction(new Runnable() {
-          @Override
-          public void run() {
-            SNode node = getSNodeReference().resolve(repository);
-            myFQName = ClassUtil.getClassFQName(node);
-          }
+        final SRepository repository = ProjectHelper.fromIdeaProject(getProject()).getRepository();
+        repository.getModelAccess().runReadAction(() -> {
+          SNode node = getSNodeReference().resolve(repository);
+          myFQName = ClassUtil.getClassFQName(node);
         });
 
       }
@@ -249,7 +242,7 @@ public abstract class MPSPsiClassifier extends MPSPsiNode implements PsiClass {
   @Override
   public PsiClass findInnerClassByName(@NonNls String name, boolean checkBases) {
     PsiClass[] innerClasses = getInnerClasses();
-    if (innerClasses == null || innerClasses.length == 0) {
+    if (innerClasses.length == 0) {
       return null;
     }
     for (PsiClass claz : innerClasses) {
@@ -335,25 +328,7 @@ public abstract class MPSPsiClassifier extends MPSPsiNode implements PsiClass {
                                      @NotNull ResolveState state,
                                      PsiElement lastParent,
                                      @NotNull PsiElement place) {
-    try {
-      Class<?> psiClassImplUtil = Class.forName("com.intellij.psi.impl.PsiClassImplUtil");
-      Method method;
-      if(ApplicationInfo.getInstance().getMajorVersion().equals("12")) {
-        method = psiClassImplUtil.getDeclaredMethod("processDeclarationsInClass", PsiClass.class, PsiScopeProcessor.class, ResolveState.class, Set.class, PsiElement.class, PsiElement.class, boolean.class);
-      } else {
-        method = psiClassImplUtil.getDeclaredMethod("processDeclarationsInClass", PsiClass.class, PsiScopeProcessor.class, ResolveState.class, Set.class, PsiElement.class, PsiElement.class, LanguageLevel.class, boolean.class);
-      }
-      if(ApplicationInfo.getInstance().getMajorVersion().equals("12")) {
-        return (Boolean) method.invoke(null, this, processor, state, null, lastParent, place, false);
-      } else {
-        return (Boolean) method.invoke(null, this, processor, state, null, lastParent, place, PsiUtil.getLanguageLevel(place), false);
-      }
-    } catch (ClassNotFoundException e) {
-    } catch (NoSuchMethodException e) {
-    } catch (InvocationTargetException e) {
-    } catch (IllegalAccessException e) {
-    }
-    return false;
+    return PsiClassImplUtil.processDeclarationsInClass(this, processor, state, null, lastParent, place, PsiUtil.getLanguageLevel(place), false);
   }
 
   @Nullable
@@ -364,7 +339,8 @@ public abstract class MPSPsiClassifier extends MPSPsiNode implements PsiClass {
 
   @Override
   public boolean hasModifierProperty(@ModifierConstant @NonNls @NotNull String name) {
-    return getModifierList().hasModifierProperty(name);
+    final PsiModifierList modlist = getModifierList();
+    return modlist != null && modlist.hasModifierProperty(name);
   }
 
   @Override
@@ -376,7 +352,7 @@ public abstract class MPSPsiClassifier extends MPSPsiNode implements PsiClass {
     final MPSPsiClassifierType[] classes = getChildrenOfType(role, MPSPsiClassifierType.class);
     if (classes == null || classes.length == 0) return PsiClassType.EMPTY_ARRAY;
 
-    List<PsiClassType> result = new ArrayList<PsiClassType>(classes.length);
+    List<PsiClassType> result = new ArrayList<>(classes.length);
     for (MPSPsiClassifierType ct : classes) {
       final PsiClassType classType = ct.getPsiType();
       if (classType != null) {
@@ -412,6 +388,10 @@ public abstract class MPSPsiClassifier extends MPSPsiNode implements PsiClass {
   }
 
   class ClassTypeParameterList extends MPSPsiNodeBase implements PsiTypeParameterList {
+
+    public ClassTypeParameterList(PsiManager manager) {
+      super(manager);
+    }
 
     @Override
     public String toString() {

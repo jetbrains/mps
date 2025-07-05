@@ -6,8 +6,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -15,7 +20,6 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 public abstract class Scope {
   public Scope() {
   }
-
   /**
    * Returns all available elements in the scope.
    * 
@@ -23,7 +27,6 @@ public abstract class Scope {
    * @return list of nodes in the scope
    */
   public abstract Iterable<SNode> getAvailableElements(@Nullable String prefix);
-
   /**
    * Returns <tt>true</tt> if this scope contains the specified element.
    * 
@@ -35,7 +38,6 @@ public abstract class Scope {
   public boolean contains(SNode node) {
     return Sequence.fromIterable(getAvailableElements(null)).contains(node);
   }
-
   /**
    * Resolves element by reference text.
    * 
@@ -47,7 +49,6 @@ public abstract class Scope {
    */
   @Nullable
   public abstract SNode resolve(SNode contextNode, @NotNull String refText);
-
   /**
    * Creates textual reference for scope element. If element has no textual representation
    * for the reference, returns null.
@@ -60,16 +61,41 @@ public abstract class Scope {
    */
   @Nullable
   public abstract String getReferenceText(SNode contextNode, @NotNull SNode node);
-
+  /**
+   * Get scope for existing node.
+   * 
+   * @deprecated use {@link jetbrains.mps.scope.Scope#getScope(SNode, SNode, SAbstractConcept) } instead
+   */
+  @Deprecated
+  @ToRemove(version = 3.5)
+  public static Scope getScope(SNode node, SNode fromChild, SNode kind) {
+    return getScope(node, fromChild, SNodeOperations.asSConcept(kind));
+  }
+  /**
+   * Get scope for smart reference, when node doesn't exist yet
+   * 
+   * @deprecated use {@link jetbrains.mps.scope.Scope#getScope(SNode, SContainmentLink, int, SAbstractConcept) } instead
+   */
+  @Deprecated
+  @ToRemove(version = 3.5)
+  public static Scope getScope(SNode node, String role, int index, SNode kind) {
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider"))) {
+      Scope scope = ((Scope) BHReflection.invoke(SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider")), SMethodTrimmedId.create("getScope", null, "6GEzh_Hz_wK"), kind, role, ((int) index)));
+      if (scope != null) {
+        return scope;
+      }
+    }
+    return getScope(parent(node), node, kind);
+  }
   /**
    * Get scope for existing node.
    */
-  public static Scope getScope(SNode node, SNode fromChild, SNode kind) {
+  public static Scope getScope(SNode node, SNode fromChild, SAbstractConcept kind) {
     SNode curr = node;
     SNode prev = fromChild;
     while (curr != null) {
-      if (SNodeOperations.isInstanceOf(curr, "jetbrains.mps.lang.core.structure.ScopeProvider")) {
-        Scope scope = BehaviorReflection.invokeVirtual(Scope.class, SNodeOperations.cast(curr, "jetbrains.mps.lang.core.structure.ScopeProvider"), "virtual_getScope_3734116213129936182", new Object[]{kind, prev});
+      if (SNodeOperations.isInstanceOf(curr, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider"))) {
+        Scope scope = ((Scope) BHReflection.invoke(SNodeOperations.cast(curr, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider")), SMethodTrimmedId.create("getScope", null, "52_Geb4QDV$"), kind, prev));
         if (scope != null) {
           return scope;
         }
@@ -79,13 +105,12 @@ public abstract class Scope {
     }
     return null;
   }
-
   /**
    * Get scope for smart reference, when node doesn't exist yet
    */
-  public static Scope getScope(SNode node, String role, int index, SNode kind) {
-    if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.core.structure.ScopeProvider")) {
-      Scope scope = BehaviorReflection.invokeVirtual(Scope.class, SNodeOperations.cast(node, "jetbrains.mps.lang.core.structure.ScopeProvider"), "virtual_getScope_7722139651431880752", new Object[]{kind, role, index});
+  public static Scope getScope(SNode node, SContainmentLink link, int index, SAbstractConcept kind) {
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider"))) {
+      Scope scope = ((Scope) BHReflection.invoke(SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider")), SMethodTrimmedId.create("getScope", null, "52_Geb4QFgX"), kind, link, ((int) index)));
       if (scope != null) {
         return scope;
       }
@@ -95,25 +120,22 @@ public abstract class Scope {
 
   public static SNode parent(SNode n) {
     if (SNodeOperations.isAttribute(n)) {
-      if (SNodeOperations.isInstanceOf(n, "jetbrains.mps.lang.core.structure.NodeAttribute")) {
+      if (SNodeOperations.isInstanceOf(n, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L, "jetbrains.mps.lang.core.structure.NodeAttribute"))) {
         SNode next = SNodeOperations.getPrevSibling(n);
         while (next != null) {
-          if (SNodeOperations.isInstanceOf(next, "jetbrains.mps.lang.core.structure.NodeAttribute")) {
+          if (SNodeOperations.isInstanceOf(next, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L, "jetbrains.mps.lang.core.structure.NodeAttribute"))) {
             return next;
           }
           next = SNodeOperations.getPrevSibling(next);
         }
         n = SNodeOperations.getParent(n);
-        return (n == null ?
-          null :
-          SNodeOperations.getParent(n)
-        );
+        return (n == null ? null : SNodeOperations.getParent(n));
       }
       return SNodeOperations.getParent(n);
     }
-    SNode lastAttr = ListSequence.fromList(SLinkOperations.getTargets(SNodeOperations.cast(n, "jetbrains.mps.lang.core.structure.BaseConcept"), "smodelAttribute", true)).where(new IWhereFilter<SNode>() {
+    SNode lastAttr = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept")), MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, "jetbrains.mps.lang.core.structure.NodeAttribute");
+        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L, "jetbrains.mps.lang.core.structure.NodeAttribute"));
       }
     }).last();
     if ((lastAttr != null)) {

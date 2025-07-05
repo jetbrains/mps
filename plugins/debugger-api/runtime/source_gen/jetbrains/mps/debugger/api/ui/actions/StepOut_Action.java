@@ -10,11 +10,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.debug.api.AbstractDebugSession;
 import jetbrains.mps.debugger.api.ui.DebugActionsUtil;
-import org.apache.log4j.Priority;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 
 public class StepOut_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.StepOut;
@@ -24,46 +19,17 @@ public class StepOut_Action extends BaseAction {
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(false);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        AbstractDebugSession debugSession = DebugActionsUtil.getDebugSession(event);
-        event.getPresentation().setEnabled(debugSession != null && debugSession.isStepEnabled());
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "StepOut", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    AbstractDebugSession debugSession = DebugActionsUtil.getDebugSession(event);
+    event.getPresentation().setEnabled(debugSession != null && debugSession.isStepEnabled());
   }
-
-  protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
-    if (!(super.collectActionData(event, _params))) {
-      return false;
-    }
-    MapSequence.fromMap(_params).put("project", event.getData(PlatformDataKeys.PROJECT));
-    if (MapSequence.fromMap(_params).get("project") == null) {
-      return false;
-    }
-    return true;
-  }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      DebugActionsUtil.getDebugSession(event).stepOut();
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "StepOut", t);
-      }
-    }
+    DebugActionsUtil.getDebugSession(event).stepOut();
   }
-
-  protected static Logger LOG = LogManager.getLogger(StepOut_Action.class);
 }

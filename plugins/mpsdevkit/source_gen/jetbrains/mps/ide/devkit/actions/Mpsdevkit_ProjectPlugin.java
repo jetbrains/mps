@@ -7,13 +7,12 @@ import java.util.List;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
 import com.intellij.openapi.project.Project;
 import java.util.ArrayList;
-import jetbrains.mps.plugins.tool.BaseGeneratedTool;
+import jetbrains.mps.ide.tools.BaseTool;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 public class Mpsdevkit_ProjectPlugin extends BaseProjectPlugin {
   public Mpsdevkit_ProjectPlugin() {
   }
-
   public List<RelationDescriptor> initTabbedEditors(Project project) {
     List<RelationDescriptor> result = new ArrayList();
     result.add(new Actions_TabDescriptor());
@@ -30,9 +29,8 @@ public class Mpsdevkit_ProjectPlugin extends BaseProjectPlugin {
     result.add(new Typesystem_TabDescriptor());
     return result;
   }
-
-  public List<BaseGeneratedTool> initAllTools(Project project) {
-    List<BaseGeneratedTool> tools = ListSequence.fromList(new ArrayList<BaseGeneratedTool>());
+  public List<BaseTool> initAllTools1(Project project) {
+    List<BaseTool> tools = ListSequence.fromList(new ArrayList<BaseTool>());
     ListSequence.fromList(tools).addElement(new NodeExplorer_Tool(project));
     ListSequence.fromList(tools).addElement(new TraceTool_Tool(project));
     return tools;

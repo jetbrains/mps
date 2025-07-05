@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.textgen.trace.TraceInfoProvider;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.util.annotation.UseCarefully;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.debug.api.evaluation.IEvaluationProvider;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.textgen.trace.DefaultTraceInfoProvider;
 
 public abstract class AbstractDebugSession<State extends AbstractUiState> {
   protected ProcessHandler myProcessHandler;
@@ -20,30 +22,22 @@ public abstract class AbstractDebugSession<State extends AbstractUiState> {
   protected final AtomicReference<State> myUiState = new AtomicReference<State>(createUiState());
   protected final IDebuggableFramesSelector myDebuggableFramesSelector;
   protected final Project myProject;
+  private TraceInfoProvider myTraceProvider;
 
   public AbstractDebugSession(Project p) {
     myProject = p;
     myDebuggableFramesSelector = new DebuggableFramesSelector(p, this);
   }
-
   protected abstract State createUiState();
-
   public abstract void resume();
-
   public abstract void pause();
-
   public abstract void stop(boolean terminateTargetProcess);
-
   public abstract void stepOver();
-
   public abstract void stepInto();
-
   public abstract void stepOut();
-
   protected void setState(State oldState, @NotNull State newState) {
     setState(oldState, newState, true);
   }
-
   protected void setState(State oldState, @NotNull State newState, boolean fireEvents) {
     while (!(myUiState.compareAndSet(oldState, newState))) {
       //  TODO we do not care here if user selected something, we just replace old state. But we might do something more clever, like remember what user selected. 
@@ -53,73 +47,58 @@ public abstract class AbstractDebugSession<State extends AbstractUiState> {
       fireStateChanged();
     }
   }
-
   public boolean isPaused() {
     return myExecutionState.equals(AbstractDebugSession.ExecutionState.Paused);
   }
-
   public boolean isRunning() {
     return myExecutionState.equals(AbstractDebugSession.ExecutionState.Running);
   }
-
   public boolean isStopped() {
     return myExecutionState.equals(AbstractDebugSession.ExecutionState.Stopped);
   }
-
   public boolean isStepEnabled() {
     return isPaused() && getUiState().isPausedOnBreakpoint();
   }
-
   public void setProcessHandler(ProcessHandler processHandler) {
     myProcessHandler = processHandler;
   }
-
   public ProcessHandler getProcessHandler() {
     return myProcessHandler;
   }
-
   public IDebuggableFramesSelector getDebuggableFramesSelector() {
     return myDebuggableFramesSelector;
   }
-
   private List<SessionChangeListener> getListeners() {
     List<SessionChangeListener> listeners = new ArrayList<SessionChangeListener>();
     listeners.addAll(myListeners);
     return listeners;
   }
-
   protected void fireStateChanged() {
     for (SessionChangeListener listener : getListeners()) {
       listener.stateChanged(this);
     }
   }
-
   protected void fireSessionPaused(AbstractDebugSession debugSession) {
     for (SessionChangeListener listener : getListeners()) {
       listener.paused(debugSession);
     }
   }
-
   protected void fireSessionResumed(AbstractDebugSession debugSession) {
     for (SessionChangeListener listener : getListeners()) {
       listener.resumed(debugSession);
     }
   }
-
   protected void fireSessionMuted(AbstractDebugSession debugSession) {
     for (SessionChangeListener listener : getListeners()) {
       listener.muted(debugSession);
     }
   }
-
   public void addChangeListener(@NotNull SessionChangeListener listener) {
     myListeners.add(listener);
   }
-
   public void removeChangeListener(@NotNull SessionChangeListener listener) {
     myListeners.remove(listener);
   }
-
   @UseCarefully
   public void trySetState(State oldState, State newState) {
     // use from AbstractUiState only 
@@ -127,52 +106,51 @@ public abstract class AbstractDebugSession<State extends AbstractUiState> {
       fireStateChanged();
     }
   }
-
   public State getUiState() {
     return myUiState.get();
   }
-
   public boolean canShowEvaluationDialog() {
     return false;
   }
-
   public AbstractDebugSession.ExecutionState getExecutionState() {
     return myExecutionState;
   }
-
   @Nullable
   public IEvaluationProvider getEvaluationProvider() {
     return null;
   }
-
   public void sessionRegistered(DebugSessionManagerComponent manager) {
   }
-
   public void sessionUnregistered(DebugSessionManagerComponent manager) {
   }
-
   public void muteBreakpoints(boolean mute) {
   }
-
   public boolean isMute() {
     return false;
   }
-
   public Project getIdeaProject() {
     return myProject;
   }
 
   public jetbrains.mps.project.Project getProject() {
-    return ProjectHelper.toMPSProject(myProject);
+    return ProjectHelper.fromIdeaProject(myProject);
   }
 
-  public static   enum ExecutionState {
+  @NotNull
+  public TraceInfoProvider getTraceProvider() {
+    if (myTraceProvider == null) {
+      myTraceProvider = new DefaultTraceInfoProvider(getProject().getRepository());
+    }
+    return myTraceProvider;
+  }
+
+  public enum ExecutionState {
     Stopped(),
     Running(),
     Paused(),
     WaitingAttach();
 
-    ExecutionState() {
+    private ExecutionState() {
     }
   }
 }

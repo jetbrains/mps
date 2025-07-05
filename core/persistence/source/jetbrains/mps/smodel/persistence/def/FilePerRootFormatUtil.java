@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.smodel.persistence.def;
 
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.smodel.DefaultSModel;
-import jetbrains.mps.smodel.LazySModel;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.SNodeId.Regular;
@@ -43,6 +42,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -54,26 +54,27 @@ public class FilePerRootFormatUtil {
   private static final Logger LOG = LogManager.getLogger(FilePerRootFormatUtil.class);
 
   public static SModelHeader loadDescriptor(MultiStreamDataSource dataSource) throws ModelReadException {
-    final SModelHeader result = new SModelHeader();
     InputStream in = null;
     try {
       in = dataSource.openInputStream(FilePerRootDataSource.HEADER_FILE);
       InputSource source = new InputSource(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
 
-      ModelPersistence.loadDescriptor(result, source);
+      return ModelPersistence.loadDescriptor(source);
     } catch (IOException e) {
       throw new ModelReadException("Couldn't read descriptor from " + dataSource.getLocation() + ": " + e.getMessage(), e);
     } finally {
       FileUtil.closeFileSafe(in);
     }
-    return result;
   }
 
   public static ModelLoadResult readModel(SModelHeader header, MultiStreamDataSource dataSource, ModelLoadingState targetState) throws ModelReadException {
-    IModelPersistence mp = ModelPersistence.getModelPersistence(header.getPersistenceVersion());
-    if (mp == null) {
-      throw new ModelReadException("Couldn't read model because of unknown persistence version", null);
+    IModelPersistence mp;
+    int persistenceVersion = header.getPersistenceVersion();
+    if (!ModelPersistence.isSupported(persistenceVersion) || (mp = ModelPersistence.getPersistence(persistenceVersion)) == null) {
+      String m = "Can not find appropriate persistence version for model %s (requested:%d)\n Use newer version of JetBrains MPS to load this model.";
+      throw new PersistenceVersionNotFoundException(String.format(m, persistenceVersion, header.getModelReference()), header.getModelReference());
     }
+
     // load .model file
     DefaultSModel result;
     XMLSAXHandler<ModelLoadResult> headerHandler = mp.getModelReaderHandler(targetState, header);
@@ -81,12 +82,13 @@ public class FilePerRootFormatUtil {
     try {
       in = dataSource.openInputStream(FilePerRootDataSource.HEADER_FILE);
       InputSource source = new InputSource(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
-      ModelPersistence.parseAndHandleExceptions(source, headerHandler, ".model");
+      ModelPersistence.parseAndHandleExceptions(source, headerHandler);
       if (headerHandler.getResult().getContentKind() != ContentKind.MODEL_HEADER) {
         throw new ModelReadException("Couldn't read model: .model file is broken", null);
       }
-    } catch (IOException e) {
-      throw new ModelReadException("Couldn't read model: " + e.getMessage(), e, header);
+    } catch (Exception e) {
+      Throwable th = e.getCause() == null ? e : e.getCause();
+      throw new ModelReadException(String.format("Couldn't read .model file: %s", th.getMessage()), e, header);
     } finally {
       FileUtil.closeFileSafe(in);
     }
@@ -95,7 +97,7 @@ public class FilePerRootFormatUtil {
 
     // load roots
     List<String> streams = new ArrayList<String>();
-    for (String s : dataSource.getAvailableStreams())  streams.add(s);
+    for (String s : dataSource.getAvailableStreams()) streams.add(s);
     Collections.sort(streams);
     for (String stream : streams) {
       if (!(stream.endsWith(FilePerRootDataSource.ROOT_EXTENSION))) continue;
@@ -105,7 +107,7 @@ public class FilePerRootFormatUtil {
       try {
         in = dataSource.openInputStream(stream);
         InputSource source = new InputSource(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
-        ModelPersistence.parseAndHandleExceptions(source, rootHandler, stream);
+        ModelPersistence.parseAndHandleExceptions(source, rootHandler);
         if (rootHandler.getResult().getContentKind() != ContentKind.MODEL_ROOT) {
           throw new ModelReadException("Couldn't read model: " + stream + " root file is broken", null);
         }
@@ -113,17 +115,22 @@ public class FilePerRootFormatUtil {
           headerHandler.getResult().setState(ModelLoadingState.INTERFACE_LOADED);
         }
         int count = 0;
-        LazySModel model = rootHandler.getResult().getModel();
-        model.setUpdateMode(true);
+        SModel model = rootHandler.getResult().getModel();
+        model.enterUpdateMode();
         for (SNode rootNode : model.getRootNodes()) {
           if (count != 0) {
-            throw new ModelReadException("Couldn't read model: " + stream + " root file is broken - contains more than one roots", null);
+            throw new ModelReadException(String.format("Couldn't read model from stream %s: root file is broken - contains more than one roots", stream), null);
           }
           count++;
+          // detach it from its spurious model, which is just a container for this single root
+          model.removeRootNode(rootNode);
+          // now that it's detached we can safely add it to our model
           result.addRootNode(rootNode);
         }
-      } catch (IOException e) {
-        throw new ModelReadException("Couldn't read model: " + e.getMessage(), e, header);
+        model.leaveUpdateMode();
+      } catch (Exception e) {
+        Throwable th = e.getCause() == null ? e : e.getCause();
+        throw new ModelReadException(String.format("Couldn't read model from stream %s: %s", stream, th.getMessage()), th, header);
       } finally {
         FileUtil.closeFileSafe(in);
       }
@@ -132,29 +139,37 @@ public class FilePerRootFormatUtil {
     return headerHandler.getResult();
   }
 
+  public static int actualPersistenceVersion(int desiredPersistenceVersion) {
+    IModelPersistence modelPersistence = ModelPersistence.getPersistence(Math.max(desiredPersistenceVersion, ModelPersistence.FIRST_SUPPORTED_VERSION));
+    if (modelPersistence == null) {
+      modelPersistence = ModelPersistence.getPersistence(ModelPersistence.LAST_VERSION);
+    }
+    return modelPersistence.getVersion();
+  }
+
   /**
    * returns true if the content should be reloaded from storage after save
    */
   public static boolean saveModel(SModel modelData, MultiStreamDataSource source, int persistenceVersion) throws IOException {
-    IModelPersistence modelPersistence = ModelPersistence.getModelPersistence(Math.max(persistenceVersion, 8));
-    if (modelPersistence == null) {
-      modelPersistence = ModelPersistence.getCurrentModelPersistence();
-    }
-    persistenceVersion = modelPersistence.getVersion();
+    persistenceVersion = actualPersistenceVersion(persistenceVersion);
 
     // upgrade?
+    SModelHeader modelHeader = null;
     int oldVersion = persistenceVersion;
     if (modelData instanceof DefaultSModel) {
-      DefaultSModel defaultSModel = (DefaultSModel) modelData;
-      oldVersion = defaultSModel.getPersistenceVersion();
+      DefaultSModel dsm = (DefaultSModel) modelData;
+      modelHeader = dsm.getSModelHeader();
+      oldVersion = modelHeader.getPersistenceVersion();
       if (oldVersion != persistenceVersion) {
-        defaultSModel.setPersistenceVersion(persistenceVersion);
+        modelHeader.setPersistenceVersion(persistenceVersion);
       }
     }
 
     // save into JDOM
-    modelData.calculateImplicitImports();
-    Map<String, Document> result = modelPersistence.getModelWriter().saveModelAsMultiStream(modelData);
+    if (persistenceVersion < 9) {
+      modelData.getImplicitImportsSupport().calculateImplicitImports();
+    }
+    Map<String, Document> result = ModelPersistence.getPersistence(persistenceVersion).getModelWriter(modelHeader).saveModelAsMultiStream(modelData);
 
     // write to storage
     Set<String> toRemove = new HashSet<String>();
@@ -162,6 +177,18 @@ public class FilePerRootFormatUtil {
       if (!result.containsKey(s)) toRemove.add(s);
     }
     for (Entry<String, Document> entry : result.entrySet()) {
+      //if we have a file having a name, which differs in case only, we want to remove this file before writing to the new one
+      //to sync cases in root- and filenames
+      String fnameLower = entry.getKey().toLowerCase();
+      Set<String> removed = new HashSet<String>();
+      for (String s : toRemove) {
+        if (s.toLowerCase().equals(fnameLower)){
+          source.delete(s);
+          removed.add(s);
+        }
+      }
+      toRemove.removeAll(removed);
+
       JDOMUtil.writeDocument(entry.getValue(), source, entry.getKey());
     }
     for (String r : toRemove) {
@@ -184,11 +211,11 @@ public class FilePerRootFormatUtil {
       if (value.length() == 0) {
         value = key instanceof Regular ? key.toString() : "Root";
       }
-      if (!usedNames.add(value)) {
+      if (!usedNames.add(value.toLowerCase())) {
         String baseString = value;
         int index = 2;
         value = baseString + index;
-        while (!usedNames.add(value)) {
+        while (!usedNames.add(value.toLowerCase())) {
           index++;
           value = baseString + index;
         }
@@ -198,7 +225,8 @@ public class FilePerRootFormatUtil {
     return result;
   }
 
-  public static String asFileName(String s) {
+  private static String asFileName(String s) {
+    if (s == null) return "";
     StringBuilder sb = new StringBuilder(s.length());
     for (int i = 0; i < s.length(); i++) {
       int c = (int) s.charAt(i);

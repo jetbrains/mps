@@ -4,35 +4,47 @@ package jetbrains.mps.ide.make.actions;
 
 import com.intellij.openapi.wm.StatusBarWidget;
 import com.intellij.openapi.wm.CustomStatusBarWidget;
+import com.intellij.ide.ui.UISettingsListener;
+import java.beans.PropertyChangeListener;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.wm.StatusBar;
 import javax.swing.Icon;
+import jetbrains.mps.icons.MPSIcons;
+import jetbrains.mps.generator.IModifiableGenerationSettings;
+import java.awt.KeyboardFocusManager;
+import jetbrains.mps.generator.GenerationSettingsProvider;
+import com.intellij.ide.ui.UISettings;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.util.Consumer;
 import java.awt.event.MouseEvent;
-import jetbrains.mps.ide.generator.GenerationSettings;
 import java.awt.Dimension;
 import java.awt.Point;
 import com.intellij.ui.awt.RelativePoint;
 import javax.swing.JComponent;
+import java.beans.PropertyChangeEvent;
 
-/*package*/ class TransientModelsWidget implements StatusBarWidget, CustomStatusBarWidget, StatusBarWidget.TextPresentation, StatusBarWidget.WidgetPresentation {
+/*package*/ class TransientModelsWidget implements StatusBarWidget, CustomStatusBarWidget, StatusBarWidget.TextPresentation, StatusBarWidget.WidgetPresentation, UISettingsListener, PropertyChangeListener {
   public static final String WIDGET_ID = "TransientModelsWidget";
   @NotNull
   private final StatusBar myStatusBar;
-  private final Icon myIcon = IconContainer.ICON_a2;
-  private final Icon myIconDisable = IconContainer.ICON_a3;
+  private final Icon myIcon = MPSIcons.Nodes.TransientModule;
+  private final Icon myIconDisable = MPSIcons.Nodes.TransientModuleDisabled;
+  private final IModifiableGenerationSettings myGenerationSettins;
   private TransientModelsPanel myComponent;
+  private KeyboardFocusManager myFocusManager;
 
   public TransientModelsWidget(StatusBar bar) {
     myStatusBar = bar;
-    myComponent = new TransientModelsPanel(this);
-  }
+    myGenerationSettins = GenerationSettingsProvider.getInstance().getGenerationSettings();
 
+  }
   @Override
   public void install(@NotNull StatusBar bar) {
+    // Use approach from com.intellij.openapi.wm.impl.status.ToolWindowsWidget 
+    UISettings.getInstance().addUISettingsListener(this, this);
+    myFocusManager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+    myFocusManager.addPropertyChangeListener("focusOwner", this);
   }
-
   @Nullable
   @Override
   public String getTooltipText() {
@@ -41,7 +53,6 @@ import javax.swing.JComponent;
     }
     return "Save transient models";
   }
-
   @Nullable
   @Override
   public Consumer<MouseEvent> getClickConsumer() {
@@ -49,8 +60,8 @@ import javax.swing.JComponent;
       @Override
       public void consume(MouseEvent e) {
         if (!(e.isPopupTrigger()) && MouseEvent.BUTTON1 == e.getButton()) {
-          boolean saveTransientModels = GenerationSettings.getInstance().isSaveTransientModels();
-          GenerationSettings.getInstance().setSaveTransientModels(!(saveTransientModels));
+          boolean saveTransientModels = myGenerationSettins.isSaveTransientModels();
+          myGenerationSettins.setSaveTransientModels(!(saveTransientModels));
           TransientModelsNotification.updateWidgets();
         } else if (e.isPopupTrigger() || MouseEvent.BUTTON2 == e.getButton()) {
           WidgetSettingsPanel panel = new WidgetSettingsPanel();
@@ -64,10 +75,11 @@ import javax.swing.JComponent;
   }
 
   public void update() {
-    myComponent.update();
+    if (myComponent != null) {
+      myComponent.update();
+    }
     myStatusBar.updateWidget(ID());
   }
-
   @Nullable
   @Override
   public StatusBarWidget.WidgetPresentation getPresentation(@NotNull StatusBarWidget.PlatformType type) {
@@ -76,6 +88,11 @@ import javax.swing.JComponent;
 
   @Override
   public void dispose() {
+    // no need to removeUISettingsListener as it is registered with Disposable and UISettings removes the listener on dispose 
+    if (myFocusManager != null) {
+      myFocusManager.removePropertyChangeListener("focusOwner", this);
+      myFocusManager = null;
+    }
   }
 
   @NotNull
@@ -84,25 +101,25 @@ import javax.swing.JComponent;
       return myIcon;
     }
     // TODO: Use only one Icon. This hack helps to avoid tests fails 
-    // <node> 
     return myIconDisable;
   }
-
   @NotNull
   @Override
   public String ID() {
     return WIDGET_ID;
   }
-
   public boolean isSaveTransientModels() {
-    return GenerationSettings.getInstance().isSaveTransientModels();
+    return myGenerationSettins.isSaveTransientModels();
   }
-
   @Override
   public JComponent getComponent() {
-    return this.myComponent;
+    if (myComponent == null) {
+      // getComponent() is invoked EARLIER than install(), so this is the only place to instantiate panel 
+      // except cons of this class (which is bad, because this goes to TMP, which uses it e.g. to getText() on un-initialized instance) 
+      myComponent = new TransientModelsPanel(this);
+    }
+    return myComponent;
   }
-
   @NotNull
   public String getText() {
     if (isSaveTransientModels()) {
@@ -110,13 +127,17 @@ import javax.swing.JComponent;
     }
     return ":OFF";
   }
-
   @NotNull
   public String getMaxPossibleText() {
     return ":OFF";
   }
-
   public float getAlignment() {
     return JComponent.RIGHT_ALIGNMENT;
+  }
+  public void uiSettingsChanged(UISettings settings) {
+    update();
+  }
+  public void propertyChange(PropertyChangeEvent event) {
+    update();
   }
 }

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2010 JetBrains s.r.o.
+  ~ Copyright 2003-2014 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -18,16 +18,31 @@
   <id>jetbrains.mps.vcs</id>
   <name>VCS Integration for MPS</name>
   <description>VCS features in MPS</description>
-  <version>3.0.5</version>
+  <version>2017.1.4</version>
   <vendor url="http://www.jetbrains.com/mps/" logo="/MPS_16.png">JetBrains</vendor>
-  <idea-version since-build="129.1" until-build="134.1"/>
+  <idea-version since-build="171.1" until-build="172.1"/>
 
   <depends optional="true">Subversion</depends>
   <depends optional="true">Git4Idea</depends>
   <depends optional="true">jetbrains.mps.ide.make</depends>
 
-  <xi:include href="../classes/jetbrains/mps/vcs/platform/actions/MPSVcs.xml" xpointer="xpointer(/components/*)"/>
-  <xi:include href="../classes/META-INF/VcsCommon.xml" xpointer="xpointer(/components/*)"/>
+  <xi:include href="MPSVcs.xml" xpointer="xpointer(/components/*)"/>
+
+  <project-components>
+    <component>
+      <implementation-class>jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry</implementation-class>
+      <skipForDefaultProject/>
+    </component>
+    <component>
+      <implementation-class>jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory</implementation-class>
+      <skipForDefaultProject/>
+    </component>
+  </project-components>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <diff.DiffTool implementation="jetbrains.mps.vcs.platform.integration.ModelDiffTool"/>
+    <diff.merge.MergeTool implementation="jetbrains.mps.vcs.platform.integration.ModelMergeTool"/>
+  </extensions>
 
   <application-components>
     <component>
@@ -50,10 +65,6 @@
       <skipForDefaultProject/>
     </component>
     <component>
-      <interface-class>com.intellij.openapi.vcs.impl.VcsPathPresenter</interface-class>
-      <implementation-class>jetbrains.mps.vcs.integration.ModuleVcsPathPresenter</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.vcs.MPSVcsManager</implementation-class>
     </component>
     <component>
@@ -73,7 +84,7 @@
     <component>
       <implementation-class>jetbrains.mps.vcs.integration.GeneratedFileConflictResolving</implementation-class>
     </component>
-</project-components>
+  </project-components>
 
   <actions>
     <group id="EditorFixAddition">
@@ -83,20 +94,31 @@
       <action id="ShowInFileView" class="jetbrains.mps.vcs.actions.ShowInFileView"
               text="Show In File System View"/>
       <add-to-group group-id="ChangesViewPopupMenu" anchor="last"/>
-      <add-to-group anchor="before" relative-to-action="SearchMenu" group-id="EditorFix"/>
+      <add-to-group anchor="before" relative-to-action="SearchMenu" group-id="EditMenu"/>
     </group>
+    <action id="LocalHistory.ShowHistory" class="jetbrains.mps.history.integration.ui.actions.ShowMpsHistoryAction">
+      <add-to-group group-id="LocalHistory" anchor="before" relative-to-action="LocalHistory.PutLabel"/>
+    </action>
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
-    <mps.LanguageLibrary dir="/languages"/>
+    <mps.LanguageLibrary dir="/"/>
+
     <vcs.fileStatusProvider implementation="jetbrains.mps.vcs.changesmanager.NodeFileStatusProvider"/>
     <mps.TabColorProvider implementation="jetbrains.mps.vcs.changesmanager.roots.NodeTabColorProvider"/>
     <mps.treeCreationHandler implementation="jetbrains.mps.vcs.changesmanager.tree.ChangesTreeCreationHandler"/>
     <checkoutListener implementation="jetbrains.mps.vcs.integration.ProjectCheckoutListener"/>
+    <checkoutListener implementation="jetbrains.mps.vcs.integration.ProjectDirCheckoutListener"/>
     <checkinHandlerFactory implementation="jetbrains.mps.vcs.platform.integration.OptimizeImportsCheckinHandler$OptimizeImportsCheckinHandlerFactory"/>
     <directoryIndexExcludePolicy implementation="jetbrains.mps.vcs.integration.GeneratedFilesExcludePolicy"/>
     <mps.projectPrefsPanel implementation="jetbrains.mps.vcs.VcsGeneratedFilesPanel"/>
-    <mps.editorWarningsProvider implementation="jetbrains.mps.vcs.platform.integration.ConflictingModelsWarnings" />
+    <mps.editorWarningsProvider implementation="jetbrains.mps.vcs.platform.integration.ConflictingModelsWarnings"/>
+
+    <projectService serviceInterface="com.intellij.openapi.vcs.AbstractVcsHelper"
+                    serviceImplementation="jetbrains.mps.vcs.platform.integration.MPSVcsHelper" overrides="true"/>
+
+    <projectService serviceInterface="com.intellij.openapi.vcs.impl.VcsPathPresenter"
+                    serviceImplementation="jetbrains.mps.vcs.integration.ModuleVcsPathPresenter"/>
 
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
   </extensions>

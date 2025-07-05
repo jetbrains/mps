@@ -15,19 +15,20 @@
  */
 package jetbrains.mps.smodel.runtime;
 
-import jetbrains.mps.smodel.IScope;
+import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public interface PropertyConstraintsDescriptor {
-  String getName();
+
+  SProperty getSProperty();
 
   ConstraintsDescriptor getContainer();
 
-  Object getValue(SNode node, IScope scope);
+  Object getValue(SNode node);
 
-  void setValue(SNode node, String value, IScope scope);
+  void setValue(SNode node, String value);
 
-  boolean validateValue(SNode node, String value, IScope scope);
+  boolean validateValue(SNode node, String value);
 
   boolean isReadOnly();
 }

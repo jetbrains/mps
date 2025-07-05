@@ -10,27 +10,40 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.openapi.editor.cells.CellConditions;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InlineRegexpExpression_removeM {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new InlineRegexpExpression_removeM.InlineRegexpExpression_removeM_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new InlineRegexpExpression_removeM.InlineRegexpExpression_removeM_BACKSPACE(node));
   }
-
   public static class InlineRegexpExpression_removeM_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public InlineRegexpExpression_removeM_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
       EditorCell current = editorContext.getSelectedCell();
       EditorCell toSelect = CellTraversalUtil.getPrevLeaf(current, CellConditions.SELECTABLE);
-      SPropertyOperations.set(node, "multiLine", "" + (false));
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, 0x1119ceddfe3L, "multiLine"), "" + (false));
+      editorContext.getEditorComponent().changeSelection(toSelect);
+    }
+  }
+  public static class InlineRegexpExpression_removeM_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public InlineRegexpExpression_removeM_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      EditorCell current = editorContext.getSelectedCell();
+      EditorCell toSelect = CellTraversalUtil.getPrevLeaf(current, CellConditions.SELECTABLE);
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, 0x1119ceddfe3L, "multiLine"), "" + (false));
       editorContext.getEditorComponent().changeSelection(toSelect);
     }
   }

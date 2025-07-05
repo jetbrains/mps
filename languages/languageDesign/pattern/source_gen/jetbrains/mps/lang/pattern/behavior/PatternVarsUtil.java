@@ -4,42 +4,43 @@ package jetbrains.mps.lang.pattern.behavior;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class PatternVarsUtil {
   public PatternVarsUtil() {
   }
-
   public static String getFieldName(SNode patternVar) {
     String prefix = "patternVar_";
-    if (SNodeOperations.isInstanceOf(patternVar, "jetbrains.mps.lang.pattern.structure.PatternVariableDeclaration")) {
-      return prefix + SPropertyOperations.getString(SNodeOperations.cast(patternVar, "jetbrains.mps.lang.pattern.structure.PatternVariableDeclaration"), "varName");
+    if (SNodeOperations.isInstanceOf(patternVar, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, "jetbrains.mps.lang.pattern.structure.PatternVariableDeclaration"))) {
+      return prefix + SPropertyOperations.getString(SNodeOperations.cast(patternVar, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, "jetbrains.mps.lang.pattern.structure.PatternVariableDeclaration")), MetaAdapterFactory.getProperty(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, 0x108a9cb4794L, "varName"));
     }
-    if (SNodeOperations.isInstanceOf(patternVar, "jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration")) {
-      return prefix + SPropertyOperations.getString(SNodeOperations.cast(patternVar, "jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration"), "varName");
+    if (SNodeOperations.isInstanceOf(patternVar, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108d36d955aL, "jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration"))) {
+      return prefix + SPropertyOperations.getString(SNodeOperations.cast(patternVar, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108d36d955aL, "jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration")), MetaAdapterFactory.getProperty(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108d36d955aL, 0x108d36e0ea4L, "varName"));
     }
-    if (SNodeOperations.isInstanceOf(patternVar, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration")) {
-      return prefix + SPropertyOperations.getString(SNodeOperations.cast(patternVar, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration"), "varName");
+    if (SNodeOperations.isInstanceOf(patternVar, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration"))) {
+      return prefix + SPropertyOperations.getString(SNodeOperations.cast(patternVar, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration")), MetaAdapterFactory.getProperty(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, 0x108a9cb4796L, "varName"));
+    }
+    if (SNodeOperations.isInstanceOf(patternVar, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108aa36731aL, "jetbrains.mps.lang.pattern.structure.ListPattern"))) {
+      return prefix + SPropertyOperations.getString(SNodeOperations.cast(patternVar, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108aa36731aL, "jetbrains.mps.lang.pattern.structure.ListPattern")), MetaAdapterFactory.getProperty(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, 0x108a9cb4794L, "varName"));
     }
     return null;
   }
-
   public static boolean fieldTypeHasParameter(SNode patternVar) {
-    return SNodeOperations.isInstanceOf(patternVar, "jetbrains.mps.lang.pattern.structure.ListPattern");
+    return SNodeOperations.isInstanceOf(patternVar, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108aa36731aL, "jetbrains.mps.lang.pattern.structure.ListPattern"));
   }
-
   public static SNode getFieldTypeReference(SNode patternVar) {
-    if (SNodeOperations.isInstanceOf(patternVar, "jetbrains.mps.lang.pattern.structure.ListPattern")) {
-      return SNodeOperations.getNode("f:java_stub#6354ebe7-c22a-4a0f-ac54-50b52ab9b065#java.util(JDK/java.util@java_stub)", "~List");
+    if (SNodeOperations.isInstanceOf(patternVar, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108aa36731aL, "jetbrains.mps.lang.pattern.structure.ListPattern"))) {
+      return SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)", "~List");
     }
-    if (SNodeOperations.isInstanceOf(patternVar, "jetbrains.mps.lang.pattern.structure.PatternVariableDeclaration")) {
-      return SNodeOperations.getNode("f:java_stub#8865b7a8-5271-43d3-884c-6fd1d9cfdd34#org.jetbrains.mps.openapi.model(MPS.OpenAPI/org.jetbrains.mps.openapi.model@java_stub)", "~SNode");
+    if (SNodeOperations.isInstanceOf(patternVar, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, "jetbrains.mps.lang.pattern.structure.PatternVariableDeclaration"))) {
+      return SNodeOperations.getNode("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SNode");
     }
-    if (SNodeOperations.isInstanceOf(patternVar, "jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration")) {
-      return SNodeOperations.getNode("f:java_stub#8865b7a8-5271-43d3-884c-6fd1d9cfdd34#org.jetbrains.mps.openapi.model(MPS.OpenAPI/org.jetbrains.mps.openapi.model@java_stub)", "~SNode");
+    if (SNodeOperations.isInstanceOf(patternVar, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108d36d955aL, "jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration"))) {
+      return SNodeOperations.getNode("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SNode");
     }
-    if (SNodeOperations.isInstanceOf(patternVar, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration")) {
-      return SNodeOperations.getNode("f:java_stub#6354ebe7-c22a-4a0f-ac54-50b52ab9b065#java.lang(JDK/java.lang@java_stub)", "~String");
+    if (SNodeOperations.isInstanceOf(patternVar, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration"))) {
+      return SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String");
     }
     return null;
   }

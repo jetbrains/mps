@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,20 +15,14 @@
  */
 package jetbrains.mps.reloading;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 import jetbrains.mps.util.ConditionalIterable;
-import org.jetbrains.mps.util.Condition;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.regex.Pattern;
 
 public abstract class AbstractClassPathItem implements IClassPathItem {
   private static final Pattern DIGITS = Pattern.compile("\\d+");
-
-  @Override
-  public long getTimestamp() {
-    return getTimestamp("");
-  }
 
   @Override
   public IClassPathItem optimize() {
@@ -38,12 +32,7 @@ public abstract class AbstractClassPathItem implements IClassPathItem {
   //todo can make it faster
   @Override
   public Iterable<String> getRootClasses(String namespace) {
-    return new ConditionalIterable<String>(getAvailableClasses(namespace), new Condition<String>() {
-      @Override
-      public boolean met(String className) {
-        return !(className.contains("$"));
-      }
-    });
+    return new ConditionalIterable<String>(getAvailableClasses(namespace), className -> !(className.contains("$")));
   }
 
   public static boolean isAnonymous(String className) {
@@ -55,28 +44,15 @@ public abstract class AbstractClassPathItem implements IClassPathItem {
     return false;
   }
 
-  private long getTimestamp(String namespace) {
-    long result = getClassesTimestamp(namespace);
-    for (String subpackage : getSubpackages(namespace)) {
-      result = Math.max(result, getTimestamp(subpackage));
-    }
-    return result;
+  @Override
+  public boolean hasPackage(@NotNull String name) {
+    return getAvailableClasses(name).iterator().hasNext() || getSubpackages(name).iterator().hasNext();
   }
 
-  //-----------------------
-
-  private static final Logger LOG = LogManager.getLogger(RealClassPathItem.class);
-  private boolean myValid = true;
-  private boolean myErrorShown = false;
-
-  public void invalidate() {
-    myValid = false;
-  }
-
-  protected void checkValidity() {
-//    if (myValid) return;
-//    if (myErrorShown) return;
-//    myErrorShown = true;
-//    LOG.error("Using outdated classpath: " + this, new Throwable());
+  @Nullable
+  @Override
+  public byte[] getClass(String name) {
+    ClassBytes classBytes = getClassBytes(name);
+    return classBytes == null ? null : classBytes.getBytes();
   }
 }

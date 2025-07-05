@@ -7,85 +7,45 @@ import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicable2Status;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
-import jetbrains.mps.lang.pattern.IMatchingPattern;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.lang.pattern.runtime.PatternUtil;
-import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.smodel.SReference;
 
 public class comparable_SEnumMemberType__node_EnumerationMemberDeclaration_ComparisonRule extends ComparisonRule_Runtime {
   /*package*/ GeneratedMatchingPattern myMatchingPattern2;
-
   public comparable_SEnumMemberType__node_EnumerationMemberDeclaration_ComparisonRule() {
   }
-
   public boolean areComparable(SNode node1, SNode node2, IsApplicable2Status status) {
     return true;
   }
-
   public boolean isWeak() {
     return true;
   }
-
   public IsApplicableStatus isApplicableFirst(SNode node) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(node.getConcept().getQualifiedName(), this.getApplicableConceptFQName1());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(node.getConcept().isSubConceptOf(getApplicableConcept1()), null);
   }
-
   public IsApplicableStatus isApplicableSecond(SNode node) {
     {
-      GeneratedMatchingPattern pattern = new comparable_SEnumMemberType__node_EnumerationMemberDeclaration_ComparisonRule.Pattern_vbthi0_a0a0a0a5();
+      GeneratedMatchingPattern pattern = new Pattern_ftszhvjm(_quotation_createNode_vbthi0_a0a0a0a0f());
       this.myMatchingPattern2 = pattern;
       boolean b = pattern.match(node);
       return new IsApplicableStatus(b, pattern);
     }
   }
 
-  public String getApplicableConceptFQName1() {
-    return "jetbrains.mps.lang.smodel.structure.SEnumMemberType";
+  public SAbstractConcept getApplicableConcept1() {
+    return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bfe51421L, "jetbrains.mps.lang.smodel.structure.SEnumMemberType");
   }
-
-  public String getApplicableConceptFQName2() {
-    return "jetbrains.mps.lang.smodel.structure.SNodeType";
+  public SAbstractConcept getApplicableConcept2() {
+    return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType");
   }
-
-  public static class Pattern_vbthi0_a0a0a0a5 extends GeneratedMatchingPattern implements IMatchingPattern {
-    public Pattern_vbthi0_a0a0a0a5() {
-    }
-
-    public boolean match(SNode nodeToMatch) {
-      {
-        SNode nodeToMatch_comparable_SEnumMemberType__node_EnumerationMemberDeclaration_ityt7t_a0a;
-        nodeToMatch_comparable_SEnumMemberType__node_EnumerationMemberDeclaration_ityt7t_a0a = nodeToMatch;
-        if (!("jetbrains.mps.lang.smodel.structure.SNodeType".equals(nodeToMatch_comparable_SEnumMemberType__node_EnumerationMemberDeclaration_ityt7t_a0a.getConcept().getQualifiedName()))) {
-          return false;
-        }
-        {
-          SNodeReference pointer = SNODE_POINTER_vbthi0_a0a0a0a0b0c0a0a0a0a0a0f;
-          if (!(PatternUtil.matchReferentWithNode(pointer, nodeToMatch_comparable_SEnumMemberType__node_EnumerationMemberDeclaration_ityt7t_a0a.getReferenceTarget("concept")))) {
-            return false;
-          }
-        }
-      }
-      return true;
-    }
-
-    public boolean hasAntiquotations() {
-      return false;
-    }
-
-    public void fillFieldValuesFrom(GeneratedMatchingPattern pattern) {
-    }
-
-    public Object getFieldValue(String fieldName) {
-      return null;
-    }
-
-    public void performActions(Object o) {
-    }
+  private static SNode _quotation_createNode_vbthi0_a0a0a0a0f() {
+    PersistenceFacade facade = PersistenceFacade.getInstance();
+    SNode quotedNode_1 = null;
+    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"), null, null, false);
+    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), SReference.create(MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), quotedNode_1, facade.createModelReference("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)"), facade.createNodeId("1083171877298")));
+    return quotedNode_1;
   }
-
-  private static SNodePointer SNODE_POINTER_vbthi0_a0a0a0a0b0c0a0a0a0a0a0f = new SNodePointer("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "1083171877298");
 }

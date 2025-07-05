@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,21 @@
  */
 package jetbrains.mps.ide.ui.tree.module;
 
-import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.icons.IdeIcons;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.project.ProjectOperationContext;
+import jetbrains.mps.ide.ui.tree.TreeElement;
+import jetbrains.mps.ide.ui.tree.TreeNodeVisitor;
+import jetbrains.mps.project.Project;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.Font;
 
-public class ProjectTreeNode extends TextTreeNode {
-  private MPSProject myProject;
+public class ProjectTreeNode extends TextTreeNode implements TreeElement {
+  private Project myProject;
 
-  public ProjectTreeNode(MPSProject project) {
-    super("Project", new ProjectOperationContext(project));
+  public ProjectTreeNode(Project project) {
+    super("Project");
 
     myProject = project;
 
@@ -37,21 +39,21 @@ public class ProjectTreeNode extends TextTreeNode {
   @Override
   protected void doUpdatePresentation() {
     super.doUpdatePresentation();
-    Project ideaProject = myProject.getProject();
-    setText(ideaProject.getName());
+    setText(myProject.getName());
     setFontStyle(Font.BOLD);
-    if (ideaProject.getBaseDir() != null) {
+    com.intellij.openapi.project.Project ideaProject = ProjectHelper.toIdeaProject(myProject);
+    if (ideaProject != null && ideaProject.getBaseDir() != null) {
       //noinspection ConstantConditions
       setAdditionalText(ideaProject.getBaseDir().getPresentableUrl());
     }
   }
 
-  public MPSProject getProject() {
+  public Project getProject() {
     return myProject;
   }
 
   @Override
-  public int getToggleClickCount() {
-    return 2;
+  public void accept(@NotNull TreeNodeVisitor visitor) {
+    visitor.visitProjectNode(this);
   }
 }

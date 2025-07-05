@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,15 +24,16 @@ import com.intellij.util.indexing.ID;
 import com.intellij.util.io.DataExternalizer;
 import com.intellij.util.io.EnumeratorStringDescriptor;
 import com.intellij.util.io.KeyDescriptor;
+import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.smodel.SNodeId.Foreign;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.workbench.goTo.index.SNodeDescriptor;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.util.Consumer;
 
@@ -75,13 +76,17 @@ public class ForeignIdReferenceIndex extends FileBasedIndexExtension<String, Col
       protected void updateCollection(SModelReference modelRef, SReference sref, Collection<Pair<SNodeDescriptor, String>> collection) {
         SNode src = sref.getSourceNode();
         String role = sref.getRole();
-        SNodeDescriptor descriptor = SNodeDescriptor.fromModelReference(getSNodeName(src), src.getConcept().getQualifiedName(), modelRef, src.getNodeId());
+        // XXX despite the fact indexer reads model and it's not attached to any repository, we can't use
+        // node.getName() here (nor any other code that access properties through SNodeAccessUtil, as it uses
+        // constraints code, which may navigate references and access nodes from external models. Due to the
+        // magic in StaticReference yet to be deleted, targets get resolved and subsequently fail with model access error.
+        SNodeDescriptor descriptor = new SNodeDescriptor(getSNodeName(src), src.getConcept(), new SNodePointer(modelRef, src.getNodeId()));
         collection.add(new Pair<SNodeDescriptor, String>(descriptor, role));
       }
 
       @Override
-      protected void getObjectsToIndex(SModel sModel, Consumer<SReference> consumer) {
-        for (SNode sNode : SNodeUtil.getDescendants(sModel)) {
+      protected void getObjectsToIndex(SModelData modelData, Consumer<SReference> consumer) {
+        for (SNode sNode : SNodeUtil.getDescendants(modelData.getRootNodes())) {
           for (SReference sref : sNode.getReferences()) {
             consumer.consume(sref);
           }
@@ -89,7 +94,7 @@ public class ForeignIdReferenceIndex extends FileBasedIndexExtension<String, Col
       }
 
       @Override
-      protected String[] getKeys(SModel model, SReference sref) {
+      protected String[] getKeys(SModelData model, SReference sref) {
         SNodeId targetNodeId = sref.getTargetNodeId();
         if (targetNodeId instanceof Foreign) {
 
@@ -144,7 +149,8 @@ public class ForeignIdReferenceIndex extends FileBasedIndexExtension<String, Col
       public void save(DataOutput out, Collection<Pair<SNodeDescriptor, String>> value) throws IOException {
         out.writeInt(value.size());
         for (Pair<SNodeDescriptor, String> pair : value) {
-          pair.o1.save(out);
+
+          SNodeDescriptorsDataExternalizer.saveDescriptor(pair.o1, out);
           out.writeUTF(pair.o2);
         }
       }
@@ -154,8 +160,7 @@ public class ForeignIdReferenceIndex extends FileBasedIndexExtension<String, Col
         int size = in.readInt();
         List<Pair<SNodeDescriptor, String>> result = new ArrayList<Pair<SNodeDescriptor, String> >();
         for (int i = 0; i < size; i++) {
-          SNodeDescriptor d = new SNodeDescriptor();
-          d.read(in);
+          SNodeDescriptor d = SNodeDescriptorsDataExternalizer.readDescriptor(in);
           String r = in.readUTF();
           result.add(new Pair<SNodeDescriptor, String>(d, r));
         }
@@ -170,12 +175,7 @@ public class ForeignIdReferenceIndex extends FileBasedIndexExtension<String, Col
   }
 
   @Override
-  public boolean isKeyHighlySelective() {
-    return true;
-  }
-
-  @Override
   public int getVersion() {
-    return 1;
+    return 3;
   }
 }

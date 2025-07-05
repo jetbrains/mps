@@ -4,7 +4,7 @@ package jetbrains.mps.lang.editor.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum RightTransformAnchorTag {
   none("none", null),
@@ -15,16 +15,21 @@ public enum RightTransformAnchorTag {
   ext_4("ext_4", "ext_4_RTransform"),
   ext_5("ext_5", "ext_5_RTransform");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private RightTransformAnchorTag(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<RightTransformAnchorTag> getConstants() {
     List<RightTransformAnchorTag> list = ListSequence.fromList(new LinkedList<RightTransformAnchorTag>());
     ListSequence.fromList(list).addElement(RightTransformAnchorTag.none);
@@ -36,11 +41,9 @@ public enum RightTransformAnchorTag {
     ListSequence.fromList(list).addElement(RightTransformAnchorTag.ext_5);
     return list;
   }
-
   public static RightTransformAnchorTag getDefault() {
     return RightTransformAnchorTag.none;
   }
-
   public static RightTransformAnchorTag parseValue(String value) {
     if (value == null) {
       return RightTransformAnchorTag.getDefault();
@@ -67,16 +70,5 @@ public enum RightTransformAnchorTag {
       return RightTransformAnchorTag.ext_5;
     }
     return RightTransformAnchorTag.getDefault();
-  }
-
-  private String myValue;
-
-  RightTransformAnchorTag(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

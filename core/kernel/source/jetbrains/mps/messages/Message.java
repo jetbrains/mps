@@ -15,27 +15,27 @@
  */
 package jetbrains.mps.messages;
 
-import org.jetbrains.mps.openapi.module.SModule;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
-
-import java.util.Date;
+import org.jetbrains.mps.openapi.module.SModule;
 
 /**
  * @author Kostik
  */
 public class Message implements IMessage {
+  private static final Logger LOG = LogManager.getLogger(Message.class);
+
   private String mySender;
   private MessageKind myKind;
   private String myText;
   private Throwable myException;
   private String myHelpUrl;
   private long myCreationTime = System.currentTimeMillis();
-  private Object myHintObject;
-
-  public Message(MessageKind kind, @Nullable String sender, String text) {
+  private Object myHintObject; public Message(MessageKind kind, @Nullable String sender, String text) {
     myKind = kind;
     mySender = sender;
     myText = text;
@@ -58,8 +58,12 @@ public class Message implements IMessage {
     myHelpUrl = helpUrl;
   }
 
-  public void setException(Throwable exception) {
+  /**
+   * @return <code>this</code> for convenience
+   */
+  public Message setException(Throwable exception) {
     myException = exception;
+    return this;
   }
 
   @Override
@@ -92,20 +96,10 @@ public class Message implements IMessage {
     return myCreationTime;
   }
 
-  public String getCreationTimeString() {
-    Date date = new Date(myCreationTime);
-    return expand("" + date.getHours(), 2) + ":" +
-      expand("" + date.getMinutes(), 2) + ":" + expand("" + date.getSeconds(), 2);
-  }
-
-  private String expand(String s, int n) {
-    for (int i = 0; i < n - s.length(); i++) {
-      s = "0" + s;
-    }
-    return s;
-  }
-
-  public void setHintObject(Object obj) {
+  /**
+   * @return <code>this</code> for convenience
+   */
+  public Message setHintObject(@Nullable Object obj) {
     boolean error = true;
     if (obj instanceof SNode) {
       myHintObject = ((SNode) obj).getReference();
@@ -119,13 +113,31 @@ public class Message implements IMessage {
     }
 
     if (error) {
-      //todo enable after 2.5
-      //  LOG.error("Adding a message with " + obj.getClass().getSimpleName() + " hint object. This can lead to memleaks. Changing hint object to a reference.", new Throwable());
+      LOG.error("Adding a message with " + obj.getClass().getSimpleName() + " hint object. This can lead to memleaks. Changing hint object to a reference.", new Throwable());
     }
+    return this;
   }
 
   @Override
   public Object getHintObject() {
     return myHintObject;
+  }
+
+  public static IMessage createMessage(@NotNull MessageKind kind, @NotNull String sender, @NotNull String text) {
+    return createMessage(kind, sender, text, null);
+  }
+
+  public static IMessage createMessage(@NotNull MessageKind kind, @NotNull String sender, @NotNull String text, @Nullable Object hint) {
+    Message m = new Message(kind, sender, text);
+    m.setHintObject(hint);
+    return m;
+  }
+
+  public static IMessage createMessage(@NotNull MessageKind kind, @NotNull String sender, @NotNull String text, @Nullable Throwable ex) {
+    Message m = new Message(kind, sender, text);
+    if (ex != null) {
+      m.setException(ex);
+    }
+    return m;
   }
 }

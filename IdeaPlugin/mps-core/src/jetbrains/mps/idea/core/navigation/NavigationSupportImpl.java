@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,12 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.navigation;
 
 import com.intellij.ide.util.PsiNavigationSupport;
 import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.project.Project;
 import com.intellij.pom.Navigatable;
 import com.intellij.psi.PsiElement;
 import jetbrains.mps.ide.editor.MPSEditorOpener;
@@ -27,12 +25,12 @@ import jetbrains.mps.idea.core.psi.impl.MPSPsiNodeBase;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiProvider;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
-import jetbrains.mps.smodel.IOperationContext;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
-
 
 /**
  * evgeny, 11/21/11
@@ -53,29 +51,29 @@ public class NavigationSupportImpl extends NavigationSupport implements Applicat
   }
 
   @Override
-  public Editor openNode(@NotNull IOperationContext context, @NotNull SNode node, boolean focus, boolean select) {
-    if (navigatedToIdea(context, node)) return null;
-    return new MPSEditorOpener(ProjectHelper.toIdeaProject(context.getProject())).openNode(node, context, focus, select);
+  public Editor openNode(@NotNull Project project, @NotNull SNode node, boolean focus, boolean select) {
+    if (navigatedToIdea(project, node)) return null;
+    return new MPSEditorOpener((MPSProject) project).openNode(node, focus, select);
   }
 
   @Override
-  public void selectInTree(@NotNull IOperationContext context, @NotNull SNode node, boolean focus) {
+  public void selectInTree(@NotNull Project project, @NotNull SNode node, boolean focus) {
     // TODO
   }
 
   @Override
-  public void selectInTree(@NotNull IOperationContext context, @NotNull SModel model, boolean focus) {
+  public void selectInTree(@NotNull Project project, @NotNull SModel model, boolean focus) {
     // TODO
   }
 
   @Override
-  public void selectInTree(@NotNull IOperationContext context, @NotNull SModule module, boolean focus) {
+  public void selectInTree(@NotNull Project project, @NotNull SModule module, boolean focus) {
     // TODO
   }
 
-  private boolean navigatedToIdea(@NotNull IOperationContext context, @NotNull SNode node) {
+  private boolean navigatedToIdea(@NotNull Project mpsProject, @NotNull SNode node) {
 
-    Project project = ProjectHelper.toIdeaProject(context.getProject());
+    com.intellij.openapi.project.Project project = ProjectHelper.toIdeaProject(mpsProject);
     PsiElement psiElement = MPSPsiProvider.getInstance(project).getPsi(node);
     if (psiElement instanceof MPSPsiNodeBase) return false;
 

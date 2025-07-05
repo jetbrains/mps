@@ -9,69 +9,54 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.StaticReference;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.scope.Scope;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
-import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class check_UnqualifiedStaticCall_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_UnqualifiedStaticCall_NonTypesystemRule() {
   }
-
   public void applyRule(final SNode localCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SReference ref = SNodeOperations.getReference(localCall, SLinkOperations.findLinkDeclaration("jetbrains.mps.baseLanguage.structure.LocalMethodCall", "method"));
+    SReference ref = SNodeOperations.getReference(localCall, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"));
     if (!(ref instanceof StaticReference)) {
       return;
     }
     SNode target = ref.getTargetNode();
-    if (!(SNodeOperations.isInstanceOf(target, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"))) {
+    if (!(SNodeOperations.isInstanceOf(target, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration")))) {
       return;
     }
 
-    // now check whether it's in another class 
-    SNode thisClass = SNodeOperations.getAncestor(localCall, "jetbrains.mps.baseLanguage.structure.Classifier", false, false);
-    SNode thatClass = SNodeOperations.getAncestor(target, "jetbrains.mps.baseLanguage.structure.ClassConcept", false, false);
-    // it should be ok to use ==, I think 
-    if (thisClass == thatClass) {
-      // same class, such local method call is ok in baseLanguage 
+    Scope staticMethodScope = Scope.getScope(SNodeOperations.getParent(localCall), localCall, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"));
+    if (staticMethodScope == null) {
+      return;
+    }
+    if (staticMethodScope.contains(target)) {
       return;
     }
 
-    // different class, let's make this call non-local, but qualified 
-    SNode smc = SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.StaticMethodCall", null);
-    SLinkOperations.setTarget(smc, "classConcept", thatClass, false);
-    SLinkOperations.setTarget(smc, "baseMethodDeclaration", SNodeOperations.cast(target, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"), false);
-    for (SNode arg : ListSequence.fromList(SLinkOperations.getTargets(localCall, "actualArgument", true))) {
-      ListSequence.fromList(SLinkOperations.getTargets(smc, "actualArgument", true)).addElement(SNodeOperations.copyNode(arg));
-    }
-
+    // it's out of scope, let's make it StaticMethodCall 
     {
       MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(localCall, "unqualified non-local static call", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3151797052703996720", null, errorTarget);
       {
-        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.replaceNode_QuickFix", true);
-        intentionProvider.putArgument("newNode", smc);
+        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeStaticCall_QuickFix", true);
+        intentionProvider.putArgument("replacee", localCall);
+        intentionProvider.putArgument("staticMethod", SNodeOperations.cast(target, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration")));
         _reporter_2309309498.addIntentionProvider(intentionProvider);
       }
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.baseLanguage.structure.LocalMethodCall";
+  public SAbstractConcept getApplicableConcept() {
+    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConcept().getQualifiedName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
   }

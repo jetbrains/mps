@@ -8,25 +8,37 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DeleteSynchronizedInBaseMethod {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new DeleteSynchronizedInBaseMethod.DeleteSynchronizedInBaseMethod_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new DeleteSynchronizedInBaseMethod.DeleteSynchronizedInBaseMethod_BACKSPACE(node));
   }
-
   public static class DeleteSynchronizedInBaseMethod_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public DeleteSynchronizedInBaseMethod_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SPropertyOperations.set(node, "isSynchronized", "" + (false));
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized"), "" + (false));
+      CursorFocusUtils.setCursorAfterModifierDeleted(editorContext, node, false);
+    }
+  }
+  public static class DeleteSynchronizedInBaseMethod_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public DeleteSynchronizedInBaseMethod_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized"), "" + (false));
+      CursorFocusUtils.setCursorAfterModifierDeleted(editorContext, node, true);
     }
   }
 }

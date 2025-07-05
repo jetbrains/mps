@@ -16,7 +16,6 @@
 package jetbrains.mps.nodeEditor.selection;
 
 import jetbrains.mps.nodeEditor.cells.GeometryUtil;
-import jetbrains.mps.nodeEditor.cells.ParentSettings;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -28,6 +27,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 public abstract class AbstractMultipleSelection extends AbstractSelection implements MultipleSelection {
@@ -47,7 +47,6 @@ public abstract class AbstractMultipleSelection extends AbstractSelection implem
   @Override
   public void activate() {
     ((jetbrains.mps.nodeEditor.EditorComponent) getEditorComponent()).scrollRectToVisible(GeometryUtil.getBounds(getFirstCell(), getLastCell()));
-    ((jetbrains.mps.nodeEditor.EditorComponent) getEditorComponent()).repaint();
   }
 
   @Override
@@ -57,20 +56,16 @@ public abstract class AbstractMultipleSelection extends AbstractSelection implem
 
   @Override
   public boolean canExecuteAction(CellActionType type) {
-    return canExecuteAction(getAction(type));
+    return getAction(type) != null;
   }
 
   @Override
   public void executeAction(CellActionType type) {
     ((jetbrains.mps.nodeEditor.EditorComponent) getEditorComponent()).assertModelNotDisposed();
     CellAction action = getAction(type);
-    if (canExecuteAction(action)) {
-      getAction(type).execute(getEditorComponent().getEditorContext());
+    if (action != null) {
+      action.execute(getEditorComponent().getEditorContext());
     }
-  }
-
-  private boolean canExecuteAction(CellAction action) {
-    return action != null && action.canExecute(getEditorComponent().getEditorContext());
   }
 
   private CellAction getAction(CellActionType type) {
@@ -86,11 +81,13 @@ public abstract class AbstractMultipleSelection extends AbstractSelection implem
   @NotNull
   @Override
   public List<SNode> getSelectedNodes() {
-    List<SNode> resultList = new ArrayList<SNode>();
+    LinkedHashSet<SNode> result = new LinkedHashSet<>();
     for (EditorCell nextCell : getSelectedCells()) {
-      resultList.add(nextCell.getSNode());
+      SNode snode = nextCell.getSNode();
+      if (snode == null) continue;
+      result.add(snode);
     }
-    return resultList;
+    return new ArrayList<>(result);
   }
 
   @NotNull
@@ -117,7 +114,8 @@ public abstract class AbstractMultipleSelection extends AbstractSelection implem
   public void paintSelection(Graphics2D g) {
     jetbrains.mps.nodeEditor.EditorComponent.turnOnAliasingIfPossible(g);
     for (EditorCell cell : getSelectedCells()) {
-      if (!g.hitClip(cell.getX(), cell.getY(), cell.getWidth(), cell.getHeight())) {
+      jetbrains.mps.nodeEditor.cells.EditorCell internalCell = (jetbrains.mps.nodeEditor.cells.EditorCell) cell;
+      if (!internalCell.isInClipRegion(g)) {
         continue;
       }
       boolean wasSelected = cell.isSelected();
@@ -130,7 +128,7 @@ public abstract class AbstractMultipleSelection extends AbstractSelection implem
         label.setCaretEnabled(false);
       }
 
-      ((jetbrains.mps.nodeEditor.cells.EditorCell) cell).paint(g, ParentSettings.createDefaultSetting());
+      internalCell.paint(g);
       if (cell instanceof EditorCell_Label && !wasSelected) {
         EditorCell_Label label = (EditorCell_Label) cell;
         label.setCaretEnabled(wasCaretEnabled);

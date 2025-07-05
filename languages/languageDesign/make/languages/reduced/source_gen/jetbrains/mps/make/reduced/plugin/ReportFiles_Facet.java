@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.make.resources.IPropertiesPersistence;
 import jetbrains.mps.make.facet.ITargetEx2;
-import jetbrains.mps.make.resources.IResource;
-import jetbrains.mps.smodel.resources.TResource;
 import jetbrains.mps.make.script.IJob;
 import jetbrains.mps.make.script.IResult;
+import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.make.script.IJobMonitor;
 import jetbrains.mps.make.resources.IPropertiesAccessor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import jetbrains.mps.smodel.resources.TResource;
 import jetbrains.mps.smodel.ModelAccess;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.make.runtime.util.DeltaReconciler;
@@ -26,50 +26,38 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.make.script.IConfig;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.make.script.IPropertiesPool;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import java.util.Map;
-import jetbrains.mps.make.script.IPropertiesPool;
 
 public class ReportFiles_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
   private IFacet.Name name = new IFacet.Name("jetbrains.mps.make.reduced.ReportFiles");
-
   public ReportFiles_Facet() {
     ListSequence.fromList(targets).addElement(new ReportFiles_Facet.Target_report());
   }
-
   public Iterable<ITarget> targets() {
     return targets;
   }
-
   public Iterable<IFacet.Name> optional() {
     return null;
   }
-
   public Iterable<IFacet.Name> required() {
     return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")});
   }
-
   public Iterable<IFacet.Name> extended() {
     return Sequence.fromArray(new IFacet.Name[]{new IFacet.Name("jetbrains.mps.make.facets.Make")});
   }
-
   public IFacet.Name getName() {
     return this.name;
   }
-
   public IPropertiesPersistence propertiesPersistence() {
     return new ReportFiles_Facet.TargetProperties();
   }
-
   public static class Target_report implements ITargetEx2 {
-    private static Class<? extends IResource>[] EXPECTED_INPUT = (Class<? extends IResource>[]) new Class[]{TResource.class};
-    private static Class<? extends IResource>[] EXPECTED_OUTPUT = (Class<? extends IResource>[]) new Class[]{};
-    private ITarget.Name name = new ITarget.Name("jetbrains.mps.make.reduced.ReportFiles.report");
-
+    private static final ITarget.Name name = new ITarget.Name("jetbrains.mps.make.reduced.ReportFiles.report");
     public Target_report() {
     }
-
     public IJob createJob() {
       return new IJob.Stub() {
         @Override
@@ -85,22 +73,20 @@ public class ReportFiles_Facet extends IFacet.Stub {
                     new DeltaReconciler(itr.delta()).visitAll(new FilesDelta.Visitor() {
                       @Override
                       public boolean acceptWritten(IFile file) {
-                        ListSequence.fromList(pa.global().properties(Target_report.this.getName(), ReportFiles_Facet.Target_report.Parameters.class).writtenFiles()).addElement(file.getPath());
-                        MapSequence.fromMap(pa.global().properties(Target_report.this.getName(), ReportFiles_Facet.Target_report.Parameters.class).sourceModels()).put(file.getPath(), md);
+                        ListSequence.fromList(vars(pa.global()).writtenFiles()).addElement(file.getPath());
+                        MapSequence.fromMap(vars(pa.global()).sourceModels()).put(file.getPath(), md);
                         return true;
                       }
-
                       @Override
                       public boolean acceptKept(IFile file) {
-                        ListSequence.fromList(pa.global().properties(Target_report.this.getName(), ReportFiles_Facet.Target_report.Parameters.class).keptFiles()).addElement(file.getPath());
-                        MapSequence.fromMap(pa.global().properties(Target_report.this.getName(), ReportFiles_Facet.Target_report.Parameters.class).sourceModels()).put(file.getPath(), md);
+                        ListSequence.fromList(vars(pa.global()).keptFiles()).addElement(file.getPath());
+                        MapSequence.fromMap(vars(pa.global()).sourceModels()).put(file.getPath(), md);
                         return true;
                       }
-
                       @Override
                       public boolean acceptDeleted(IFile file) {
-                        ListSequence.fromList(pa.global().properties(Target_report.this.getName(), ReportFiles_Facet.Target_report.Parameters.class).deletedFiles()).addElement(file.getPath());
-                        MapSequence.fromMap(pa.global().properties(Target_report.this.getName(), ReportFiles_Facet.Target_report.Parameters.class).sourceModels()).put(file.getPath(), md);
+                        ListSequence.fromList(vars(pa.global()).deletedFiles()).addElement(file.getPath());
+                        MapSequence.fromMap(vars(pa.global()).sourceModels()).put(file.getPath(), md);
                         return true;
                       }
                     });
@@ -114,55 +100,44 @@ public class ReportFiles_Facet extends IFacet.Stub {
         }
       };
     }
-
     public IConfig createConfig() {
       return null;
     }
-
     public Iterable<ITarget.Name> notAfter() {
       return null;
     }
-
     public Iterable<ITarget.Name> after() {
       return Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("jetbrains.mps.lang.core.TextGen.textGen")});
     }
-
     public Iterable<ITarget.Name> notBefore() {
       return null;
     }
-
     public Iterable<ITarget.Name> before() {
       return Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("jetbrains.mps.make.facets.Make.reconcile")});
     }
-
     public ITarget.Name getName() {
       return name;
     }
-
     public boolean isOptional() {
       return false;
     }
-
     public boolean requiresInput() {
       return true;
     }
-
     public boolean producesOutput() {
       return true;
     }
-
     public Iterable<Class<? extends IResource>> expectedInput() {
-      return Sequence.fromArray(EXPECTED_INPUT);
+      List<Class<? extends IResource>> rv = ListSequence.fromList(new ArrayList<Class<? extends IResource>>());
+      ListSequence.fromList(rv).addElement(TResource.class);
+      return rv;
     }
-
     public Iterable<Class<? extends IResource>> expectedOutput() {
       return null;
     }
-
     public <T> T createParameters(Class<T> cls) {
       return cls.cast(new Parameters());
     }
-
     public <T> T createParameters(Class<T> cls, T copyFrom) {
       T t = createParameters(cls);
       if (t != null) {
@@ -170,63 +145,48 @@ public class ReportFiles_Facet extends IFacet.Stub {
       }
       return t;
     }
-
     public int workEstimate() {
       return 100;
     }
-
+    public static ReportFiles_Facet.Target_report.Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, ReportFiles_Facet.Target_report.Parameters.class);
+    }
     public static class Parameters extends MultiTuple._4<List<String>, List<String>, List<String>, Map<String, SModel>> {
       public Parameters() {
         super();
       }
-
       public Parameters(List<String> writtenFiles, List<String> deletedFiles, List<String> keptFiles, Map<String, SModel> sourceModels) {
         super(writtenFiles, deletedFiles, keptFiles, sourceModels);
       }
-
       public List<String> writtenFiles(List<String> value) {
         return super._0(value);
       }
-
       public List<String> deletedFiles(List<String> value) {
         return super._1(value);
       }
-
       public List<String> keptFiles(List<String> value) {
         return super._2(value);
       }
-
       public Map<String, SModel> sourceModels(Map<String, SModel> value) {
         return super._3(value);
       }
-
       public List<String> writtenFiles() {
         return super._0();
       }
-
       public List<String> deletedFiles() {
         return super._1();
       }
-
       public List<String> keptFiles() {
         return super._2();
       }
-
       public Map<String, SModel> sourceModels() {
         return super._3();
       }
-
-      @SuppressWarnings(value = "unchecked")
-      public ReportFiles_Facet.Target_report.Parameters assignFrom(Tuples._4<List<String>, List<String>, List<String>, Map<String, SModel>> from) {
-        return (ReportFiles_Facet.Target_report.Parameters) super.assign(from);
-      }
     }
   }
-
   public static class TargetProperties implements IPropertiesPersistence {
     public TargetProperties() {
     }
-
     public void storeValues(Map<String, String> store, IPropertiesPool properties) {
       {
         ITarget.Name name = new ITarget.Name("jetbrains.mps.make.reduced.ReportFiles.report");
@@ -239,7 +199,6 @@ public class ReportFiles_Facet extends IFacet.Stub {
         }
       }
     }
-
     public void loadValues(Map<String, String> store, IPropertiesPool properties) {
       try {
         {

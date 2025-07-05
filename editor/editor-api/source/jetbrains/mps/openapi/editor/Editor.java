@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,9 @@
  */
 package jetbrains.mps.openapi.editor;
 
-import jetbrains.mps.smodel.IOperationContext;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.annotations.NotNull;
 
 public interface Editor {
 
@@ -28,8 +27,6 @@ public interface Editor {
 
   EditorContext getEditorContext();
 
-  IOperationContext getOperationContext();
-
   boolean isTabbed();
 
   void showNode(SNode node, boolean select);
@@ -37,8 +34,23 @@ public interface Editor {
   void dispose();
 
   //---state
-
-  EditorState saveState(boolean full);
+  EditorState saveState();
 
   void loadState(@NotNull EditorState state);
+
+  /**
+   * <p>
+   * This method is invoked each time when the editor is selected.
+   * This can happen in two cases: editor is selected because the selected file
+   * has been changed or editor for the selected file has been changed.
+   * </p>
+   * <p>(Copied from com.intellij.openapi.fileEditor.FileEditor#selectNotify)</p>
+   */
+  void selectNotify();
+
+  /**
+   * <p>This method is invoked each time when the editor is deselected.</p>
+   * <p>(Copied from com.intellij.openapi.fileEditor.FileEditor#deselectNotify)</p>
+   */
+  void deselectNotify();
 }

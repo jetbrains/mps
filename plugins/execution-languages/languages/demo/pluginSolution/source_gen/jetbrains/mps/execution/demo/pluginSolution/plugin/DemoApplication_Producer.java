@@ -10,12 +10,13 @@ import java.util.ArrayList;
 import jetbrains.mps.execution.api.configurations.BaseMpsProducer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.plugins.runconfigs.MPSPsiElement;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import com.intellij.execution.impl.RunManagerImpl;
 
 public class DemoApplication_Producer {
-  private static String CONFIGURATION_FACTORY_CLASS_NAME = "jetbrains.mps.execution.demo.pluginSolution.plugin.DemoApplication_Configuration_Factory";
+  private static final String CONFIGURATION_FACTORY_CLASS_NAME = "jetbrains.mps.execution.demo.pluginSolution.plugin.DemoApplication_Configuration_Factory";
 
   public DemoApplication_Producer() {
   }
@@ -26,24 +27,27 @@ public class DemoApplication_Producer {
     return creators;
   }
 
-  public static class ProducerPart_NodeSomeConcept_rh22bz_a extends BaseMpsProducer<SNode> {
+  public static final class ProducerPart_NodeSomeConcept_rh22bz_a extends BaseMpsProducer<SNode> {
     public ProducerPart_NodeSomeConcept_rh22bz_a(ConfigurationType configurationType, String factoryName) {
       super(configurationType, factoryName);
     }
 
+    @Override
     protected boolean isApplicable(Object source) {
-      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), "jetbrains.mps.execution.demo.structure.SomeConcept");
+      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), MetaAdapterFactory.getConcept(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, "jetbrains.mps.execution.demo.structure.SomeConcept"));
     }
 
+    @Override
     protected DemoApplication_Configuration doCreateConfiguration(final SNode source) {
-      setSourceElement(new MPSPsiElement(source));
-      if (!(SPropertyOperations.getBoolean(source, "valid"))) {
+      setSourceElement(MPSPsiElement.createFor(source, getMpsProject()));
+      if (!(SPropertyOperations.getBoolean(source, MetaAdapterFactory.getProperty(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, 0x446739e63be7cbc4L, "valid")))) {
         return null;
       }
-      DemoApplication_Configuration configuration = ((DemoApplication_Configuration) getConfigurationFactory().createConfiguration("" + "SomeNode " + SPropertyOperations.getString(source, "name"), (DemoApplication_Configuration) RunManagerImpl.getInstanceImpl(getContext().getProject()).getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
+      DemoApplication_Configuration configuration = ((DemoApplication_Configuration) getConfigurationFactory().createConfiguration("" + "SomeNode " + SPropertyOperations.getString(source, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), (DemoApplication_Configuration) RunManagerImpl.getInstanceImpl(getContext().getProject()).getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getNode().setNode(source);
       return configuration;
     }
+
 
     @Override
     public DemoApplication_Producer.ProducerPart_NodeSomeConcept_rh22bz_a clone() {

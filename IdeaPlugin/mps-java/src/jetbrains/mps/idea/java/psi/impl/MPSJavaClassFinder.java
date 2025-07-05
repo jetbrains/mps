@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,20 +30,17 @@ import com.intellij.util.CollectConsumer;
 import com.intellij.util.Consumer;
 import com.intellij.util.indexing.FileBasedIndex;
 import jetbrains.mps.extapi.persistence.FileDataSource;
-import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.extapi.persistence.FolderDataSource;
 import jetbrains.mps.extapi.persistence.FolderSetDataSource;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiProvider;
 import jetbrains.mps.idea.core.usages.IdeaSearchScope;
-import jetbrains.mps.idea.java.Constants.ConceptNames;
 import jetbrains.mps.idea.java.index.MPSFQNameJavaClassIndex;
 import jetbrains.mps.idea.java.index.MPSJavaPackageIndex;
 import jetbrains.mps.idea.java.util.ClassUtil;
-import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.FastNodeFinder;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.SModelInternal;
+import jetbrains.mps.smodel.FastNodeFinderManager;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.workbench.goTo.index.SNodeDescriptor;
@@ -63,13 +60,10 @@ import java.util.List;
  * evgeny, 1/25/13
  */
 public class MPSJavaClassFinder extends PsiElementFinder {
-
   private final Project myProject;
-  private final MPSProject mpsProject;
 
-  public MPSJavaClassFinder(Project project, MPSProject mpsProject) {
+  public MPSJavaClassFinder(Project project) {
     myProject = project;
-    this.mpsProject = mpsProject;
   }
 
   @Nullable
@@ -85,8 +79,12 @@ public class MPSJavaClassFinder extends PsiElementFinder {
   @Override
   public PsiClass[] findClasses(@NotNull final String qualifiedName, @NotNull final GlobalSearchScope scope) {
     ApplicationManager.getApplication().assertReadAccessAllowed();
+    Project project = scope.getProject();
+    if (project == null) {
+      return PsiClass.EMPTY_ARRAY;
+    }
 
-    return ModelAccess.instance().runReadAction(new Computable<PsiClass[]>() {
+    return new ModelAccessHelper(ProjectHelper.getModelAccess(project)).runReadAction(new Computable<PsiClass[]>() {
       @Override
       public PsiClass[] compute() {
         CollectConsumer<SNode> consumer = new CollectConsumer<SNode>(new ArrayList<SNode>());
@@ -99,9 +97,12 @@ public class MPSJavaClassFinder extends PsiElementFinder {
   @NotNull
   @Override
   public PsiClass[] getClasses(@NotNull final PsiPackage psiPackage, @NotNull final GlobalSearchScope scope) {
-    final String packageName = psiPackage.getQualifiedName();
+    Project project = scope.getProject();
+    if (project == null) {
+      return PsiClass.EMPTY_ARRAY;
+    }
 
-    return ModelAccess.instance().runReadAction(new Computable<PsiClass[]>() {
+    return new ModelAccessHelper(ProjectHelper.getModelAccess(project)).runReadAction(new Computable<PsiClass[]>() {
       @Override
       public PsiClass[] compute() {
         CollectConsumer<SNode> consumer = new CollectConsumer<SNode>(new ArrayList<SNode>());
@@ -186,8 +187,8 @@ public class MPSJavaClassFinder extends PsiElementFinder {
       }
     }
 
-    FastNodeFinder fastFinder = ((SModelInternal) model).getFastNodeFinder();
-    List<SNode> classes = fastFinder.getNodes(ConceptNames.Classifier, true);
+    FastNodeFinder fastFinder = FastNodeFinderManager.get(model);
+    List<SNode> classes = fastFinder.getNodes(jetbrains.mps.smodel.SNodeUtil.concept_Classifier, true);
     if (classes.isEmpty()) return;
 
     for (SNode claz : classes) {
@@ -200,7 +201,7 @@ public class MPSJavaClassFinder extends PsiElementFinder {
   private void collectNodes(Consumer<SNode> consumer, List<Collection<SNodeDescriptor>> values) {
     for (Collection<SNodeDescriptor> value : values) {
       for (SNodeDescriptor descriptor : value) {
-        SNode node = descriptor.getNodeReference().resolve(MPSModuleRepository.getInstance());
+        SNode node = descriptor.getNodeReference().resolve(ProjectHelper.getProjectRepository(myProject));
         if (node == null) continue;
         consumer.consume(node);
       }

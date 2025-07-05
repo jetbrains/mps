@@ -6,7 +6,9 @@ import jetbrains.mps.logging.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.nodeEditor.cellMenu.DefaultReferenceSubstituteInfo;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -15,11 +17,12 @@ import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import java.util.Collections;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.smodel.presentation.ReferenceConceptUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.smodel.search.SModelSearchUtil;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.action.ModelActions;
-import jetbrains.mps.smodel.action.DefaultChildNodeSetter;
+import jetbrains.mps.smodel.action.DefaultSChildSetter;
 
 /**
  * TODO: merge with DefaultReferenceSubstituteInfo
@@ -30,36 +33,33 @@ public class DefaultReferenceSubstituteInfoActionsFactory {
   private SNode myLinkDeclaration;
   private SNode myCurrentReferent;
   private DefaultReferenceSubstituteInfo mySubstituteInfo;
-
   public DefaultReferenceSubstituteInfoActionsFactory(SNode sourceNode, SNode linkDeclaration, DefaultReferenceSubstituteInfo substituteInfo) {
     mySourceNode = sourceNode;
     myLinkDeclaration = linkDeclaration;
-    SNode genuineLinkDeclaration = BehaviorReflection.invokeNonVirtual((Class<SNode>) ((Class) Object.class), myLinkDeclaration, "jetbrains.mps.lang.structure.structure.LinkDeclaration", "call_getGenuineLink_1213877254523", new Object[]{});
+    SNode genuineLinkDeclaration = ((SNode) BHReflection.invoke(myLinkDeclaration, SMethodTrimmedId.create("getGenuineLink", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration"), "hEwIf_V")));
     if (genuineLinkDeclaration == null) {
       return;
     }
-    if (SPropertyOperations.hasValue(genuineLinkDeclaration, "metaClass", "aggregation", "reference")) {
+    if (SPropertyOperations.hasValue(genuineLinkDeclaration, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass"), "aggregation", "reference")) {
       DefaultReferenceSubstituteInfoActionsFactory.LOG.error("only reference links are allowed here", myLinkDeclaration);
     }
-    if (!(BehaviorReflection.invokeNonVirtual(Boolean.TYPE, genuineLinkDeclaration, "jetbrains.mps.lang.structure.structure.LinkDeclaration", "call_isSingular_1213877254557", new Object[]{}))) {
+    if (!(((boolean) (Boolean) BHReflection.invoke(genuineLinkDeclaration, SMethodTrimmedId.create("isSingular", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration"), "hEwIfAt"))))) {
       DefaultReferenceSubstituteInfoActionsFactory.LOG.error("cardinalities 1 or 0..1 are allowed here", myLinkDeclaration);
     }
     myCurrentReferent = SLinkOperations.getTargetNode(SNodeOperations.getReference(sourceNode, myLinkDeclaration));
     mySubstituteInfo = substituteInfo;
   }
-
   public List<SubstituteAction> createActions() {
     if (myLinkDeclaration == null) {
       return Collections.emptyList();
     }
     EditorComponent editor = (EditorComponent) mySubstituteInfo.getEditorContext().getEditorComponent();
-    EditorCell referenceCell = editor.findNodeCellWithRole(mySourceNode, BehaviorReflection.invokeNonVirtual(String.class, myLinkDeclaration, "jetbrains.mps.lang.structure.structure.LinkDeclaration", "call_getGenuineRole_1213877254542", new Object[]{}));
+    EditorCell referenceCell = editor.findNodeCellWithRole(mySourceNode, ((String) BHReflection.invoke(myLinkDeclaration, SMethodTrimmedId.create("getGenuineRole", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration"), "hEwIfAe"))));
 
-    if (referenceCell != null && ((jetbrains.mps.nodeEditor.cells.EditorCell) referenceCell).getContainingBigCell().getFirstLeaf() == referenceCell && ReferenceConceptUtil.getCharacteristicReference(SNodeOperations.getConceptDeclaration(mySourceNode)) == myLinkDeclaration && SNodeOperations.getParent(mySourceNode) != null && ListSequence.fromList(SNodeOperations.getChildren(mySourceNode)).isEmpty()) {
+    if (referenceCell != null && CellTraversalUtil.getFirstLeaf(CellTraversalUtil.getContainingBigCell(referenceCell)) == referenceCell && ReferenceConceptUtil.getCharacteristicReference(SNodeOperations.getConceptDeclaration(mySourceNode)) == myLinkDeclaration && SNodeOperations.getParent(mySourceNode) != null && ListSequence.fromList(SNodeOperations.getChildren(mySourceNode)).isEmpty()) {
       SNode parent = SNodeOperations.getParent(mySourceNode);
-      String role = SNodeOperations.getContainingLinkRole(mySourceNode);
-      SNode roleLink = ((SNode) SModelSearchUtil.findLinkDeclaration(SNodeOperations.getConceptDeclaration(parent), role));
-      return ModelActions.createChildNodeSubstituteActions(parent, mySourceNode, SLinkOperations.getTarget(roleLink, "target", false), new DefaultChildNodeSetter(roleLink), mySubstituteInfo.getOperationContext());
+      SContainmentLink link = mySourceNode.getContainmentLink();
+      return ModelActions.createChildNodeSubstituteActions(parent, mySourceNode, link, null, new DefaultSChildSetter(link), mySubstituteInfo.getEditorContext());
     }
     return ModelActions.createReferentSubstituteActions(mySourceNode, myCurrentReferent, myLinkDeclaration, mySubstituteInfo.getOperationContext());
   }

@@ -6,20 +6,9 @@ import jetbrains.mps.nodeEditor.DefaultNodeEditor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
 
 public class AbstractMappingOperation_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createComponent_1tduxk_a(editorContext, node);
-  }
-
-  private EditorCell createComponent_1tduxk_a(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = editorContext.getCellFactory().createEditorComponentCell(node, "jetbrains.mps.lang.core.editor.alias");
-    editorCell.setBig(true);
-    Style style = new StyleImpl();
-    Collections_Style_StyleSheet.applyOperation(style, editorCell);
-    editorCell.getStyle().putAll(style);
-    return editorCell;
+    return new AbstractMappingOperation_EditorBuilder_a(editorContext, node).createCell();
   }
 }

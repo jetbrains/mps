@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,20 +21,30 @@ import jetbrains.mps.generator.IncrementalGenerationStrategy;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.GeneratorMappings;
 import jetbrains.mps.generator.impl.cache.BrokenCacheException;
-import jetbrains.mps.generator.impl.cache.IntermediateModelsCache;
+import jetbrains.mps.generator.impl.cache.IntermediateCacheHelper;
 import jetbrains.mps.generator.impl.cache.MappingsMemento;
 import jetbrains.mps.generator.impl.cache.TransientModelWithMetainfo;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 import jetbrains.mps.util.IterableUtil;
-import org.jetbrains.mps.openapi.model.SNode;import org.jetbrains.mps.openapi.model.SNodeId;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.*;
+import jetbrains.mps.util.SNodeOperations;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Dependencies collector. Created once per model generation.
@@ -50,7 +60,7 @@ public class IncrementalDependenciesBuilder implements DependenciesBuilder {
   private final Map<SNode, RootDependenciesBuilder> myRootBuilders = new HashMap<SNode, RootDependenciesBuilder>();
   private final String myModelHash;
   private final String myParametersHash;
-  private final IntermediateModelsCache myCache;
+  private final IntermediateCacheHelper myCache;
   private RootDependenciesBuilder myConditionalsBuilder;
   private RootDependenciesBuilder[] myAllBuilders;
 
@@ -71,7 +81,7 @@ public class IncrementalDependenciesBuilder implements DependenciesBuilder {
   private Map<String, SNode> myRequiredSet;
 
   public IncrementalDependenciesBuilder(SModel originalInputModel, @Nullable Map<String, String> generationHashes,
-                      String parametersHash, IntermediateModelsCache cache) {
+                      String parametersHash, IntermediateCacheHelper cache) {
     this.originalInputModel = currentInputModel = originalInputModel;
     myParametersHash = parametersHash;
     myCache = cache;
@@ -99,14 +109,24 @@ public class IncrementalDependenciesBuilder implements DependenciesBuilder {
     myDependenciesTraces = new HashMap<String, String>();
   }
 
+  // there's nobody using dependency traces, and as long as incremental story needs complete refactoring, no reason to keep them
+  @ToRemove(version = 3.2)
   void reportModelAccess(SModel model, SNode root) {
     if (myDependenciesTraces == null) return;
     String key = model.getReference().toString() + " in " + (root == null ? "common" : root.getNodeId().toString());
     if (myDependenciesTraces.containsKey(key)) return;
 
     StringWriter stringWriter = new StringWriter();
-    new Throwable().printStackTrace(new PrintWriter(stringWriter));
-    myDependenciesTraces.put(key, stringWriter.toString());
+    final Throwable stackTrace = new Throwable();
+    stackTrace.printStackTrace(new PrintWriter(stringWriter));
+    final String v = stringWriter.toString();
+    myDependenciesTraces.put(key, v);
+    if (myDependenciesTraces.containsKey(null)) {
+      throw new IllegalStateException("Got null key in dep traces after adding key " + key, stackTrace);
+    }
+    if (!v.equals(myDependenciesTraces.get(key))) {
+      throw new IllegalStateException("Mismatch in recorded value for key " + key, stackTrace);
+    }
   }
 
   public void propagateDependencies(Set<SNode> unchangedRoots, Set<SNode> requiredRoots, boolean conditionalsUnchanged, boolean conditionalsRequired, GenerationDependencies saved) {
@@ -157,6 +177,7 @@ public class IncrementalDependenciesBuilder implements DependenciesBuilder {
 
   @Override
   public void registerRoot(SNode outputRoot, SNode inputNode) {
+    // XXX in fact, not sure there's need to keep this map if I can use TracingUtil and userobjects with original input?
     if (nextStepToOriginalMap == null) {
       nextStepToOriginalMap = new HashMap<SNode, SNode>();
     }
@@ -165,9 +186,6 @@ public class IncrementalDependenciesBuilder implements DependenciesBuilder {
       return;
     }
     SNode originalRoot = currentToOriginalMap.get(inputNode.getContainingRoot());
-//    if(originalRoot == null && !currentToOriginalMap.containsKey(inputNode.getTopmostAncestor())) {
-//      LOG.warn("consistency problem in dependencies map");
-//    }
     nextStepToOriginalMap.put(outputRoot, originalRoot);
   }
 
@@ -183,13 +201,6 @@ public class IncrementalDependenciesBuilder implements DependenciesBuilder {
   public void updateModel(SModel newInputModel) {
     if (nextStepToOriginalMap != null) {
       currentToOriginalMap = nextStepToOriginalMap;
-
-//      for(SNode newroot : newInputModel.roots()) {
-//        if(!currentToOriginalMap.containsKey(newroot)) {
-//          LOG.warn("unknown root in model " + newInputModel);
-//        }
-//      }
-
       nextStepToOriginalMap = null;
     } else {
       currentToOriginalMap = new HashMap<SNode, SNode>();
@@ -230,9 +241,10 @@ public class IncrementalDependenciesBuilder implements DependenciesBuilder {
 
   @Override
   public RootDependenciesBuilder getRootBuilder(SNode inputNode) {
-    if (inputNode == null || !(inputNode.getModel() != null)) {
+    if (inputNode == null || inputNode.getModel() == null) {
       return myConditionalsBuilder;
     }
+    final SNode initial = inputNode;
     inputNode = inputNode.getContainingRoot();
     SNode originalRoot = currentToOriginalMap.get(inputNode);
     if (originalRoot != null) {
@@ -242,20 +254,63 @@ public class IncrementalDependenciesBuilder implements DependenciesBuilder {
     }
     // shouldn't happen
     LOG.error("consistency problem in dependencies map", new IllegalStateException());
+    LOG.error("INPUT: " + SNodeOperations.getDebugText(inputNode));
+    if (initial != inputNode) {
+      LOG.error("getRootBuilder invoked for: " + SNodeOperations.getDebugText(initial));
+    }
+    LOG.error("current to original map:");
+    for (SNode n : currentToOriginalMap.keySet()) {
+      final SNode o = currentToOriginalMap.get(n);
+      LOG.error(String.format("%s --> %s", SNodeOperations.getDebugText(n), o == null ? String.valueOf(o) : SNodeOperations.getDebugText(o)));
+    }
     return null;
   }
 
   @Override
-  public GenerationDependencies getResult(IOperationContext operationContext, IncrementalGenerationStrategy incrementalStrategy) {
-    return GenerationDependencies.fromIncremental(currentToOriginalMap, myAllBuilders, myModelHash, myParametersHash, operationContext, incrementalStrategy, myUnchangedSet.size(), myRequiredSet.size(), myDependenciesTraces);
+  public GenerationDependencies getResult(IncrementalGenerationStrategy incrementalStrategy) {
+    List<GenerationRootDependencies> unchanged = new ArrayList<GenerationRootDependencies>();
+    List<GenerationRootDependencies> rootDependencies = new ArrayList<GenerationRootDependencies>(myAllBuilders.length);
+    fillRootDependencies(rootDependencies, unchanged);
+    final Map<String, String> externalHashes = getGenerationHashes(rootDependencies, incrementalStrategy);
+    return new GenerationDependencies(rootDependencies, myModelHash, myParametersHash, externalHashes,
+        unchanged.isEmpty() ? Collections.<GenerationRootDependencies>emptyList() : unchanged, myUnchangedSet.size(), myRequiredSet.size(), myDependenciesTraces);
   }
+
+  private void fillRootDependencies(List<GenerationRootDependencies> rootDependencies, List<GenerationRootDependencies> unchanged) {
+    for (RootDependenciesBuilder l : myAllBuilders) {
+      GenerationRootDependencies dep;
+      if (l.isUnchanged()) {
+        dep = l.getSavedDependencies();
+        unchanged.add(dep);
+      } else {
+        dep = GenerationRootDependencies.fromData(l);
+      }
+      rootDependencies.add(dep);
+    }
+  }
+
+  private Map<String,String> getGenerationHashes(List<GenerationRootDependencies> rootDependencies, IncrementalGenerationStrategy incrementalStrategy) {
+    Map<String, String> externalHashes = new HashMap<String, String>();
+    final SRepository repo = originalInputModel.getRepository();
+    for (GenerationRootDependencies dep : rootDependencies) {
+      for (String modelReference : dep.getExternal()) {
+        if (!externalHashes.containsKey(modelReference)) {
+          SModel sm = PersistenceFacade.getInstance().createModelReference(modelReference).resolve(repo);
+          Map<String, String> hashes = incrementalStrategy.getModelHashes(sm, null);
+          String value = hashes != null ? hashes.get(GeneratableSModel.FILE) : null;
+          externalHashes.put(modelReference, value);
+        }
+      }
+    }
+    return externalHashes;
+  }
+
+
 
   /* working with cache */
 
   private void loadCachedModel() throws BrokenCacheException {
-    // TODO if(myMinorStep >= stepCount) copy from current input model
-    int stepsCount = myCache.getMinorCount(myMajorStep);
-    TransientModelWithMetainfo model = myCache.load(myMajorStep, myMinorStep >= stepsCount ? stepsCount - 1 : myMinorStep, currentOutputModel.getReference());
+    TransientModelWithMetainfo model = myCache.retrieve(myMajorStep, myMinorStep, currentOutputModel.getReference());
     if (model == null) {
       throw new BrokenCacheException(currentOutputModel);
     }
@@ -264,7 +319,7 @@ public class IncrementalDependenciesBuilder implements DependenciesBuilder {
 
   @Override
   public boolean isStepRequired() {
-    return myCache != null && myMinorStep < myCache.getMinorCount(myMajorStep);
+    return myCache.isStepCovered(myMajorStep, myMinorStep);
   }
 
   @Override
@@ -304,7 +359,7 @@ public class IncrementalDependenciesBuilder implements DependenciesBuilder {
 
   @Override
   public void updateUnchanged(TransientModelWithMetainfo model) throws GenerationFailureException {
-    if (myCache == null || myUnchangedSet.isEmpty() || currentOutputModel == null /* do not update after script */) {
+    if (!myCache.hasCache() || myUnchangedSet.isEmpty() || currentOutputModel == null /* do not update after script */) {
       return;
     }
 
@@ -323,5 +378,12 @@ public class IncrementalDependenciesBuilder implements DependenciesBuilder {
         }
       }
     }
+  }
+
+  @Override
+  public TransientModelWithMetainfo create(SModel model, GeneratorMappings mappings) throws GenerationFailureException {
+    TransientModelWithMetainfo rv = TransientModelWithMetainfo.create(model, this);
+    mappings.export(rv, this);
+    return rv;
   }
 }

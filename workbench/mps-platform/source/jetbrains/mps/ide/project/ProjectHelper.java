@@ -19,6 +19,8 @@ import com.intellij.openapi.wm.WindowManager;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.ProjectRepository;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -30,16 +32,35 @@ import java.awt.Frame;
  */
 public class ProjectHelper {
 
+  /**
+   * @deprecated use {@link MPSProject#getProject()} instead
+   */
+  @Deprecated
+  @ToRemove(version = 3.4)
   @Nullable
   public static com.intellij.openapi.project.Project toIdeaProject(Project p) {
     if (p instanceof MPSProject) {
       return ((MPSProject) p).getProject();
     }
+    LogManager.getLogger(ProjectHelper.class).debug("The project " + p + " is not an instance of MPSProject");
+    return null;
+  }
+
+  /**
+   * TODO: replace all usages & remove
+   * @deprecated use {@link #fromIdeaProject(com.intellij.openapi.project.Project)}
+   */
+  @Deprecated
+  @Nullable
+  public static Project toMPSProject(com.intellij.openapi.project.Project p) {
+    if (p != null) {
+      return p.getComponent(MPSProject.class);
+    }
     return null;
   }
 
   @Nullable
-  public static Project toMPSProject(com.intellij.openapi.project.Project p) {
+  public static MPSProject fromIdeaProject(com.intellij.openapi.project.Project p) {
     if (p != null) {
       return p.getComponent(MPSProject.class);
     }

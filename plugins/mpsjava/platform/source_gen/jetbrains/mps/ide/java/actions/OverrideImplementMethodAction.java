@@ -5,77 +5,70 @@ package jetbrains.mps.ide.java.actions;
 import jetbrains.mps.project.Project;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 
 public class OverrideImplementMethodAction {
-  private Project myProject;
-  private SNode mySelectedNode;
-  private EditorContext myEditorContext;
-  private boolean myIsOverride;
+  private final Project myProject;
+  private final SNode mySelectedNode;
+  private final EditorContext myEditorContext;
+  private final boolean myIsOverride;
 
   public OverrideImplementMethodAction(Project project, SNode selectedNode, EditorContext editorContext, boolean isOverride) {
     myProject = project;
     mySelectedNode = selectedNode;
     myEditorContext = editorContext;
-    this.myIsOverride = isOverride;
+    myIsOverride = isOverride;
   }
 
   public void run() {
-    final SNode contextClass = ModelAccess.instance().runReadAction(new Computable<SNode>() {
+    ModelAccessHelper mah = new ModelAccessHelper(myProject.getModelAccess());
+    final SNode contextClass = mah.runReadAction(new Computable<SNode>() {
       public SNode compute() {
-        return SNodeOperations.getAncestor(mySelectedNode, "jetbrains.mps.baseLanguage.structure.ClassConcept", true, false);
+        return SNodeOperations.getNodeAncestor(mySelectedNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), true, false);
       }
     });
-    final SNode contextMember = ModelAccess.instance().runReadAction(new Computable<SNode>() {
+    final SNode contextMember = mah.runReadAction(new Computable<SNode>() {
       public SNode compute() {
-        return SNodeOperations.getAncestor(mySelectedNode, "jetbrains.mps.baseLanguage.structure.ClassifierMember", true, false);
+        return SNodeOperations.getNodeAncestor(mySelectedNode, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember"), true, false);
       }
     });
-    final SNodeReference[] methods = ModelAccess.instance().runReadAction(new Computable<SNodeReference[]>() {
+    final SNodeReference[] methods = mah.runReadAction(new Computable<SNodeReference[]>() {
       @Override
       public SNodeReference[] compute() {
-        List<SNode> methodsToOverride = (myIsOverride ?
-          BehaviorReflection.invokeVirtual((Class<List<SNode>>) ((Class) Object.class), contextClass, "virtual_getMethodsToOverride_5418393554803767537", new Object[]{}) :
-          BehaviorReflection.invokeVirtual((Class<List<SNode>>) ((Class) Object.class), contextClass, "virtual_getMethodsToImplement_5418393554803775106", new Object[]{})
-        );
-        return OverrideImplementMethodsDialog.toNodePointers(OverrideImplementMethodsDialog.sortMethods(contextClass, methodsToOverride));
+        List<SNode> methodsToImplementAndOverride = ((List<SNode>) BHReflection.invoke(contextClass, SMethodTrimmedId.create("getMethodsToImplement", null, "4GM03FJm5q2")));
+        if (myIsOverride) {
+          ListSequence.fromList(methodsToImplementAndOverride).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke(contextClass, SMethodTrimmedId.create("getMethodsToOverride", null, "4GM03FJm3zL")))));
+        }
+        return OverrideImplementMethodsDialog.toNodePointers(OverrideImplementMethodsDialog.sortMethods(contextClass, methodsToImplementAndOverride));
       }
     });
 
-    final OverrideImplementMethodsDialog dialog = new OverrideImplementMethodsDialog(methods, ProjectHelper.toIdeaProject(myProject)) {
-      @Override
-      protected boolean showInsertOverride() {
-        return myIsOverride;
-      }
-    };
+    final OverrideImplementMethodsDialog dialog = new OverrideImplementMethodsDialog(methods, ProjectHelper.toIdeaProject(myProject));
 
-    dialog.setTitle((myIsOverride ?
-      "Select Methods to Override" :
-      "Select Methods to Implement"
-    ));
+    dialog.setTitle((myIsOverride ? "Select Methods to Override/Implement" : "Select Methods to Implement"));
     dialog.show();
 
     if (dialog.isOK()) {
       final Iterable<SNodeReference> selectedElements = (Iterable<SNodeReference>) dialog.getSelectedElements();
 
-      ModelAccess.instance().runCommandInEDT(new Runnable() {
+      myProject.getModelAccess().executeCommandInEDT(new Runnable() {
         @Override
         public void run() {
           List<SNode> selection = Sequence.fromIterable(selectedElements).select(new ISelector<SNodeReference, SNode>() {
             public SNode select(SNodeReference it) {
-              return SNodeOperations.cast(((SNodePointer) it).resolve(MPSModuleRepository.getInstance()), "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+              return SNodeOperations.cast(it.resolve(myProject.getRepository()), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"));
             }
           }).toListSequence();
 
@@ -86,15 +79,15 @@ public class OverrideImplementMethodAction {
           }
           SNode firstMethod = ListSequence.fromList(insertedMethods).first();
           SNode nodeToSelect;
-          if (ListSequence.fromList(SLinkOperations.getTargets(SLinkOperations.getTarget(firstMethod, "body", true), "statement", true)).isNotEmpty()) {
-            nodeToSelect = ListSequence.fromList(SLinkOperations.getTargets(SLinkOperations.getTarget(firstMethod, "body", true), "statement", true)).first();
+          if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).isNotEmpty()) {
+            nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).first();
           } else {
             nodeToSelect = firstMethod;
           }
           myEditorContext.flushEvents();
           myEditorContext.getSelectionManager().setSelection(nodeToSelect);
         }
-      }, myProject);
+      });
     }
   }
 }

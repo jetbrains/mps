@@ -22,7 +22,6 @@ public class VcsRevisionRange extends BaseGroup {
   private VcsRevisionRange.HiglightAction myBeforeAction;
   private VcsRevisionRange.HiglightAction myAfterAction;
   private Map<VcsRevisionNumber, VcsFileRevision> myRevisionNumberToRevision = MapSequence.fromMap(new HashMap<VcsRevisionNumber, VcsFileRevision>());
-
   public VcsRevisionRange(AnnotationColumn column, FileAnnotation fileAnnotation) {
     super("Revision Range");
     myColumn = column;
@@ -45,7 +44,6 @@ public class VcsRevisionRange extends BaseGroup {
       }
     });
   }
-
   public boolean isFileLineHighlighted(int fileLine) {
     VcsFileRevision revision = MapSequence.fromMap(myRevisionNumberToRevision).get(myFileAnnotation.getLineRevisionNumber(fileLine));
     if (myBeforeAction.myRevision != null || myAfterAction.myRevision != null) {
@@ -54,7 +52,6 @@ public class VcsRevisionRange extends BaseGroup {
       return false;
     }
   }
-
   private static String revisionToString(VcsFileRevision revision) {
     VcsRevisionNumber number = revision.getRevisionNumber();
     if (number instanceof ShortVcsRevisionNumber) {
@@ -63,36 +60,23 @@ public class VcsRevisionRange extends BaseGroup {
       return number.asString();
     }
   }
-
   private class HiglightAction extends BaseAction {
     private VcsFileRevision myRevision = null;
     private boolean myBefore;
-
     public HiglightAction(boolean before) {
       myBefore = before;
       if (!(before)) {
         myRevision = ListSequence.fromList(myColumn.getRevisions()).first();
       }
     }
-
     @Override
     protected void doUpdate(AnActionEvent event, Map<String, Object> map) {
-      String text = (myBefore ?
-        "Show Before..." :
-        "Show After..."
-      );
-      String description = (myBefore ?
-        "Highlights revisions before or equal to selected" :
-        "Highlights revisions after or equal to selected"
-      );
-      event.getPresentation().setText((myRevision == null ?
-        text :
-        String.format("%s (%s)", text, revisionToString(myRevision))
-      ));
+      String text = (myBefore ? "Show Before..." : "Show After...");
+      String description = (myBefore ? "Highlights revisions before or equal to selected" : "Highlights revisions after or equal to selected");
+      event.getPresentation().setText((myRevision == null ? text : String.format("%s (%s)", text, revisionToString(myRevision))));
       event.getPresentation().setDescription(description);
       event.getPresentation().setEnabled(ListSequence.fromList(myColumn.getRevisions()).isNotEmpty());
     }
-
     @Override
     protected void doExecute(AnActionEvent event, Map<String, Object> _params) {
       CompareWithSelectedRevisionAction.showListPopup(myColumn.getRevisions(), myColumn.getProject(), new Consumer<VcsFileRevision>() {
@@ -103,7 +87,6 @@ public class VcsRevisionRange extends BaseGroup {
         }
       }, true);
     }
-
     public boolean isHiglighted(VcsFileRevision revision) {
       if (myRevision == null) {
         return true;
@@ -111,10 +94,7 @@ public class VcsRevisionRange extends BaseGroup {
         return false;
       } else {
         int compareResult = revision.getRevisionDate().compareTo(myRevision.getRevisionDate());
-        return (myBefore ?
-          compareResult <= 0 :
-          compareResult >= 0
-        );
+        return (myBefore ? compareResult <= 0 : compareResult >= 0);
       }
     }
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,69 +15,146 @@
  */
 package jetbrains.mps.smodel.runtime;
 
-import org.jetbrains.annotations.Nullable;
 
+import jetbrains.mps.smodel.adapter.ids.SConceptId;
+import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
+import jetbrains.mps.smodel.adapter.ids.SPropertyId;
+import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * IMPLEMENTATION NOTE: this is our internal interface and it's not part of generated language/structure aspect code. There's
+ * ConceptDescriptorBuilder which creates appropriate instance, thus giving us freedom to modify this interface as we see fit.
+ */
 public interface ConceptDescriptor {
-  String getConceptFqName();
+
+  //------------ concept props
+
+  @NotNull
+  SConceptId getId(); // since 3.2
+
+  String getConceptFqName(); // since 3.0
+
+  boolean isAbstract(); // since 3.0
+
+  boolean isFinal(); // since 3.0
+
+  boolean isRootable();
+
+  @NotNull
+  String getConceptAlias(); // since 3.0
+
+  ConceptKind getConceptKind(); // since 3.0
+
+  boolean isInterfaceConcept(); // since 3.0
+
+  /**
+   * @deprecated Use {@link ConceptPresentation#getShortDescription()} instead
+   */
+  @Deprecated
+  @ToRemove(version = 3.5)
+  String getConceptShortDescription(); // since 3.0
+
+  /**
+   * @deprecated Use {@link ConceptPresentation#getHelpUrl()} instead
+   */
+  @Deprecated
+  @ToRemove(version = 3.5)
+  String getHelpUrl(); // since 3.0
 
   @Nullable
-  String getSuperConcept();
+  SNodeReference getSourceNode();
 
-  boolean isInterfaceConcept();
+  //------------ hierarchy
 
-  Set<String> getPropertyNames();
+  @Nullable
+  SConceptId getSuperConceptId(); // since 3.2
 
-  boolean hasProperty(String name);
+  boolean isAssignableTo(SConceptId conceptId); // since 3.2
 
-  Set<String> getReferenceNames();
+  /**
+   * Includes immediate extended/implemented interfaces and superconcept, for non-interface ConceptDescriptor.
+   * For BaseConcept, doesn't list itself as parent
+   */
+  List<SConceptId> getParentsIds(); // since 3.2
 
-  boolean hasReference(String name);
+  Set<SConceptId> getAncestorsIds(); // since 3.2
 
-  Set<String> getChildrenNames();
+  /**
+   * @deprecated not in use
+   */
+  @Deprecated
+  @Nullable
+  @ToRemove(version = 3.5)
+  String getSuperConcept(); // since 3.0
 
-  Set<String> getUnorderedChildrenNames();
+  //------------ props
 
-  boolean hasChild(String name);
+  /**
+   * @deprecated there's no need to have accessor to collection of SPropertyId, uses indicate next we would access #getPropertyDescriptor(id)
+   *             hence collection of PropertyDescriptors is much more handy, use {@link #getPropertyDescriptors()}.
+   *             Since it's our own internal API, can remove as soon as necessary.
+   */
+  @Deprecated
+  @ToRemove(version = 3.5)
+  Set<SPropertyId> getPropertyIds(); // since 3.2
 
-  StaticScope getStaticScope();
+  /**
+   * @return all properties (including those of parent concepts) in unspecified order, never {@code null}
+   */
+  Collection<PropertyDescriptor> getPropertyDescriptors(); // since 3.5
 
-  //true if true, false if false or !hasChild(name);
-  boolean isMultipleChild(String name);
+  PropertyDescriptor getPropertyDescriptor(SPropertyId id); // since 3.2
 
-  boolean isUnorderedChild(String name);
+  @Deprecated
+  PropertyDescriptor getPropertyDescriptor(String name); // since 3.2
 
-  boolean isAbstract();
+  //------------ refs
 
-  boolean isFinal();
+  /**
+   * @deprecated see {@link #getPropertyIds()}
+   */
+  @Deprecated
+  @ToRemove(version = 3.5)
+  Set<SReferenceLinkId> getReferenceIds(); // since 3.2
 
-  String getConceptAlias();
+  /**
+   * @return all references aka association links (including those of parent concepts) in unspecified order, never {@code null}
+   */
+  Collection<ReferenceDescriptor> getReferenceDescriptors(); // since 3.5
 
-  String getConceptShortDescription();
+  ReferenceDescriptor getRefDescriptor(SReferenceLinkId id); // since 3.2
 
-  String getHelpUrl();
+  @Deprecated
+  ReferenceDescriptor getRefDescriptor(String name); // since 3.2
 
-  // LanguageHierarchyCache replace
-  List<String> getParentsNames();
+  //------------ children
 
-  boolean isAssignableTo(String toConceptFqName);
+  /**
+   * @deprecated see {@link #getPropertyIds()}
+   */
+  @Deprecated
+  @ToRemove(version = 3.5)
+  Set<SContainmentLinkId> getLinkIds(); // since 3.2
 
-  Set<String> getAncestorsNames();
+  /**
+   * @return all containment aka aggregation links (including those of parent concepts) in unspecified order, never {@code null}
+   */
+  Collection<LinkDescriptor> getLinkDescriptors(); // since 3.5
 
-  ConceptKind getConceptKind();
+  LinkDescriptor getLinkDescriptor(SContainmentLinkId id); // since 3.2
 
-//  Set<String> getDescendantsOfConcept(String conceptFQName);
-//  Set<String> getAllDescendantsOfConcept(String conceptFqName);
-//  Set<String> getDefaultSubstitutableDescendantsOf(String concept, Language language);
+  @Deprecated
+  LinkDescriptor getLinkDescriptor(String name); // since 3.2
 
-  // ConceptAndSuperConceptCache replace
-//  SNode[] getConcepts();
-//  SNode getPropertyDeclarationByName(String name);
-//  List<SNode> getPropertyDeclarations();
-//  SNode getLinkDeclarationByRole(String role);
-//  SNode getMostSpecificLinkDeclarationByRole(final String role);
-//  List<SNode> getLinkDeclarationsExcludingOverridden();
-//  SNode getConceptPropertyByName(final String name);
+  //------------
+
+  StaticScope getStaticScope(); // since 3.0
 }

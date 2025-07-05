@@ -105,9 +105,9 @@ public class ProjectHandler extends UnicastRemoteObject implements ProjectCompon
     }
   }
 
-  public CompilationResult buildModules(final String[] paths) {
+  public IdeaCompilationResult buildModules(final String[] paths) {
     final CountDownLatch latch = new CountDownLatch(1);
-    final CompilationResult[] result = new CompilationResult[1];
+    final IdeaCompilationResult[] result = new IdeaCompilationResult[1];
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       public void run() {
         ApplicationManager.getApplication().runWriteAction(new Runnable() {
@@ -134,7 +134,7 @@ public class ProjectHandler extends UnicastRemoteObject implements ProjectCompon
               }
 
               private void compilationFinished(boolean aborted, int errorsNumber, int warningsNumber) {
-                result[0] = new CompilationResult(errorsNumber, warningsNumber, aborted);
+                result[0] = new IdeaCompilationResult(errorsNumber, warningsNumber, aborted);
                 latch.countDown();
               }
             });
@@ -318,16 +318,6 @@ public class ProjectHandler extends UnicastRemoteObject implements ProjectCompon
     }
   }
 
-  void showConceptDeclaration(String fqName) {
-    for (IMPSIDEHandler h : myIDEHandlers) {
-      try {
-        h.showConceptNode(fqName);
-      } catch (RemoteException e) {
-        e.printStackTrace();
-      }
-    }
-  }
-
   void showClassUsages(String fqName) {
     for (IMPSIDEHandler h : myIDEHandlers) {
       try {
@@ -360,7 +350,7 @@ public class ProjectHandler extends UnicastRemoteObject implements ProjectCompon
   }
 
   public static int getDistance(VirtualFile ancestor, VirtualFile descendant) {
-    if (ancestor == descendant) return 0;
+    if (ancestor.equals(descendant)) return 0;
     if (descendant.getParent() == null) return -1;
 
     int distance = getDistance(ancestor, descendant.getParent());

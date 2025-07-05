@@ -4,23 +4,28 @@ package jetbrains.mps.build.mps.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum BuildMps_ModuleSourcesKind {
   sources("sources", "sources"),
   sources_and_tests("sources and tests", "sources and tests"),
   tests("tests", "tests");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private BuildMps_ModuleSourcesKind(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<BuildMps_ModuleSourcesKind> getConstants() {
     List<BuildMps_ModuleSourcesKind> list = ListSequence.fromList(new LinkedList<BuildMps_ModuleSourcesKind>());
     ListSequence.fromList(list).addElement(BuildMps_ModuleSourcesKind.sources);
@@ -28,11 +33,9 @@ public enum BuildMps_ModuleSourcesKind {
     ListSequence.fromList(list).addElement(BuildMps_ModuleSourcesKind.tests);
     return list;
   }
-
   public static BuildMps_ModuleSourcesKind getDefault() {
     return null;
   }
-
   public static BuildMps_ModuleSourcesKind parseValue(String value) {
     if (value == null) {
       return BuildMps_ModuleSourcesKind.getDefault();
@@ -47,16 +50,5 @@ public enum BuildMps_ModuleSourcesKind {
       return BuildMps_ModuleSourcesKind.tests;
     }
     return BuildMps_ModuleSourcesKind.getDefault();
-  }
-
-  private String myValue;
-
-  BuildMps_ModuleSourcesKind(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

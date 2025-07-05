@@ -1,268 +1,246 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="TypesystemDescriptor.java" startLine="9" startPosition="0" endLine="33" endPosition="0" unitName="jetbrains.mps.debugger.java.customViewers.typesystem.TypesystemDescriptor" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root>
+    <file name="TypesystemDescriptor.java">
+      <unit at="9,0,33,0" name="jetbrains.mps.debugger.java.customViewers.typesystem.TypesystemDescriptor" />
+    </file>
+  </root>
   <root nodeRef="r:3883084c-f018-4330-aab0-6829350c4b17(jetbrains.mps.debugger.java.customViewers.typesystem)/1842653058274902924">
-    <nodeInfo nodeId="1842653058274918903" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="19" startPosition="127" endLine="20" endPosition="47" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="23" startPosition="46" endLine="24" endPosition="83" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="28" startPosition="5" endLine="29" endPosition="130" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="29" startPosition="130" endLine="30" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="34" startPosition="27" endLine="35" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="38" startPosition="60" endLine="39" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="39" startPosition="63" endLine="40" endPosition="30" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="40" startPosition="30" endLine="41" endPosition="30" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="41" startPosition="30" endLine="42" endPosition="165" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="42" startPosition="165" endLine="43" endPosition="237" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="43" startPosition="237" endLine="44" endPosition="179" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="44" startPosition="179" endLine="45" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="45" startPosition="53" endLine="46" endPosition="24" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="16" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="WatchableListIsAListOrWatchables_SubtypingRule#()V" />
-    <nodeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="43" startPosition="237" endLine="45" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="43" startPosition="237" endLine="45" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="19" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="23" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="34" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isWeak#()Z" />
-    <nodeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="27" startPosition="68" endLine="31" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="41" startPosition="30" endLine="45" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="41" startPosition="30" endLine="45" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="27" startPosition="0" endLine="33" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="38" startPosition="0" endLine="48" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="_quotation_createNode_izre6f_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <scopeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="16" startPosition="59" endLine="16" endPosition="59" />
-    <scopeInfo nodeId="1842653058274902925" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="19" startPosition="127" endLine="20" endPosition="47" />
-    <scopeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="23" startPosition="46" endLine="24" endPosition="83" />
-    <scopeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="34" startPosition="27" endLine="35" endPosition="17" />
-    <scopeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="16" startPosition="0" endLine="18" endPosition="0" />
-    <scopeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="28" startPosition="5" endLine="30" endPosition="45">
-      <varInfo nodeId="1842653058274902924" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="43" startPosition="237" endLine="45" endPosition="53" />
-    <scopeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="19" startPosition="0" endLine="22" endPosition="0">
-      <varInfo nodeId="1842653058274902924" varName="status" />
-      <varInfo nodeId="1842653058274902924" varName="typeCheckingContext" />
-      <varInfo nodeId="1842653058274902924" varName="watchableListType" />
-    </scopeInfo>
-    <scopeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="23" startPosition="0" endLine="26" endPosition="0" />
-    <scopeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="34" startPosition="0" endLine="37" endPosition="0" />
-    <scopeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="27" startPosition="68" endLine="31" endPosition="5" />
-    <scopeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="41" startPosition="30" endLine="45" endPosition="53" />
-    <scopeInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="27" startPosition="0" endLine="33" endPosition="0">
-      <varInfo nodeId="1842653058274902924" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="38" startPosition="60" endLine="46" endPosition="24">
-      <varInfo nodeId="6113252630645067449" varName="facade" />
-      <varInfo nodeId="6113252630645067449" varName="quotedNode_1" />
-      <varInfo nodeId="6113252630645067449" varName="quotedNode_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="6113252630645067449" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="38" startPosition="0" endLine="48" endPosition="0" />
-    <unitInfo nodeId="1842653058274902924" fileName="WatchableListIsAListOrWatchables_SubtypingRule.java" startLine="15" startPosition="0" endLine="49" endPosition="0" unitName="jetbrains.mps.debugger.java.customViewers.typesystem.WatchableListIsAListOrWatchables_SubtypingRule" />
+    <file name="WatchableListIsAListOrWatchables_SubtypingRule.java">
+      <node id="1842653058274918903" at="19,127,20,46" concept="6" />
+      <node id="1842653058274902924" at="22,50,23,177" concept="6" />
+      <node id="1842653058274902924" at="25,68,26,102" concept="6" />
+      <node id="1842653058274902924" at="28,27,29,17" concept="6" />
+      <node id="9116681015574412896" at="31,59,32,63" concept="5" />
+      <node id="9116681015574412896" at="32,63,33,223" concept="5" />
+      <node id="9116681015574412896" at="34,5,35,415" concept="2" />
+      <node id="9116681015574412896" at="35,415,36,244" concept="5" />
+      <node id="9116681015574412896" at="36,244,37,148" concept="2" />
+      <node id="9116681015574412896" at="38,5,39,14" concept="6" />
+      <node id="1842653058274902924" at="17,0,19,0" concept="1" trace="WatchableListIsAListOrWatchables_SubtypingRule#()V" />
+      <node id="1842653058274902924" at="19,0,22,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1842653058274902924" at="22,0,25,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1842653058274902924" at="25,0,28,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1842653058274902924" at="28,0,31,0" concept="4" trace="isWeak#()Z" />
+      <node id="9116681015574412896" at="33,223,38,5" concept="0" />
+      <node id="9116681015574412896" at="31,0,41,0" concept="7" trace="createClassifierType_izre6f_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="1842653058274902924" at="17,59,17,59" />
+      <scope id="1842653058274902925" at="19,127,20,46" />
+      <scope id="1842653058274902924" at="22,50,23,177" />
+      <scope id="1842653058274902924" at="25,68,26,102" />
+      <scope id="1842653058274902924" at="28,27,29,17" />
+      <scope id="1842653058274902924" at="17,0,19,0" />
+      <scope id="1842653058274902924" at="19,0,22,0">
+        <var name="status" id="1842653058274902924" />
+        <var name="typeCheckingContext" id="1842653058274902924" />
+        <var name="watchableListType" id="1842653058274902924" />
+      </scope>
+      <scope id="1842653058274902924" at="22,0,25,0" />
+      <scope id="1842653058274902924" at="25,0,28,0">
+        <var name="argument" id="1842653058274902924" />
+      </scope>
+      <scope id="1842653058274902924" at="28,0,31,0" />
+      <scope id="9116681015574412896" at="34,5,37,148">
+        <var name="n2" id="9116681015574412896" />
+      </scope>
+      <scope id="9116681015574412896" at="31,59,39,14">
+        <var name="facade" id="9116681015574412896" />
+        <var name="n1" id="9116681015574412896" />
+      </scope>
+      <scope id="9116681015574412896" at="31,0,41,0" />
+      <unit id="1842653058274902924" at="16,0,42,0" name="jetbrains.mps.debugger.java.customViewers.typesystem.WatchableListIsAListOrWatchables_SubtypingRule" />
+    </file>
   </root>
   <root nodeRef="r:3883084c-f018-4330-aab0-6829350c4b17(jetbrains.mps.debugger.java.customViewers.typesystem)/1842653058275008950">
-    <nodeInfo nodeId="1842653058275008953" fileName="WatchableListIsAList_SubtypingRule.java" startLine="19" startPosition="127" endLine="20" endPosition="47" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="23" startPosition="46" endLine="24" endPosition="83" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="28" startPosition="5" endLine="29" endPosition="130" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="29" startPosition="130" endLine="30" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="34" startPosition="27" endLine="35" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="38" startPosition="60" endLine="39" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="39" startPosition="63" endLine="40" endPosition="30" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="40" startPosition="30" endLine="41" endPosition="30" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="41" startPosition="30" endLine="42" endPosition="165" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="42" startPosition="165" endLine="43" endPosition="237" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="43" startPosition="237" endLine="44" endPosition="163" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="44" startPosition="163" endLine="45" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="45" startPosition="53" endLine="46" endPosition="24" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="16" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="WatchableListIsAList_SubtypingRule#()V" />
-    <nodeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="43" startPosition="237" endLine="45" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="43" startPosition="237" endLine="45" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="19" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="23" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="34" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isWeak#()Z" />
-    <nodeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="27" startPosition="68" endLine="31" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="41" startPosition="30" endLine="45" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="41" startPosition="30" endLine="45" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="27" startPosition="0" endLine="33" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="38" startPosition="0" endLine="48" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="_quotation_createNode_ucp7lt_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <scopeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="16" startPosition="47" endLine="16" endPosition="47" />
-    <scopeInfo nodeId="1842653058275008951" fileName="WatchableListIsAList_SubtypingRule.java" startLine="19" startPosition="127" endLine="20" endPosition="47" />
-    <scopeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="23" startPosition="46" endLine="24" endPosition="83" />
-    <scopeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="34" startPosition="27" endLine="35" endPosition="17" />
-    <scopeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="16" startPosition="0" endLine="18" endPosition="0" />
-    <scopeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="28" startPosition="5" endLine="30" endPosition="45">
-      <varInfo nodeId="1842653058275008950" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="43" startPosition="237" endLine="45" endPosition="53" />
-    <scopeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="19" startPosition="0" endLine="22" endPosition="0">
-      <varInfo nodeId="1842653058275008950" varName="status" />
-      <varInfo nodeId="1842653058275008950" varName="typeCheckingContext" />
-      <varInfo nodeId="1842653058275008950" varName="watchableListType" />
-    </scopeInfo>
-    <scopeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="23" startPosition="0" endLine="26" endPosition="0" />
-    <scopeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="34" startPosition="0" endLine="37" endPosition="0" />
-    <scopeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="27" startPosition="68" endLine="31" endPosition="5" />
-    <scopeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="41" startPosition="30" endLine="45" endPosition="53" />
-    <scopeInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="27" startPosition="0" endLine="33" endPosition="0">
-      <varInfo nodeId="1842653058275008950" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="38" startPosition="60" endLine="46" endPosition="24">
-      <varInfo nodeId="1842653058275008955" varName="facade" />
-      <varInfo nodeId="1842653058275008955" varName="quotedNode_1" />
-      <varInfo nodeId="1842653058275008955" varName="quotedNode_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="1842653058275008955" fileName="WatchableListIsAList_SubtypingRule.java" startLine="38" startPosition="0" endLine="48" endPosition="0" />
-    <unitInfo nodeId="1842653058275008950" fileName="WatchableListIsAList_SubtypingRule.java" startLine="15" startPosition="0" endLine="49" endPosition="0" unitName="jetbrains.mps.debugger.java.customViewers.typesystem.WatchableListIsAList_SubtypingRule" />
+    <file name="WatchableListIsAList_SubtypingRule.java">
+      <node id="1842653058275008953" at="19,127,20,47" concept="6" />
+      <node id="1842653058275008950" at="22,50,23,177" concept="6" />
+      <node id="1842653058275008950" at="25,68,26,102" concept="6" />
+      <node id="1842653058275008950" at="28,27,29,17" concept="6" />
+      <node id="1842653058275008955" at="31,60,32,63" concept="5" />
+      <node id="1842653058275008955" at="32,63,33,30" concept="5" />
+      <node id="1842653058275008955" at="33,30,34,30" concept="5" />
+      <node id="1842653058275008955" at="34,30,35,252" concept="2" />
+      <node id="1842653058275008955" at="35,252,36,433" concept="2" />
+      <node id="1842653058275008955" at="36,433,37,250" concept="2" />
+      <node id="1842653058275008955" at="37,250,38,166" concept="2" />
+      <node id="1842653058275008955" at="38,166,39,24" concept="6" />
+      <node id="1842653058275008950" at="17,0,19,0" concept="1" trace="WatchableListIsAList_SubtypingRule#()V" />
+      <node id="1842653058275008950" at="19,0,22,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1842653058275008950" at="22,0,25,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1842653058275008950" at="25,0,28,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1842653058275008950" at="28,0,31,0" concept="4" trace="isWeak#()Z" />
+      <node id="1842653058275008955" at="31,0,41,0" concept="7" trace="_quotation_createNode_ucp7lt_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="1842653058275008950" at="17,47,17,47" />
+      <scope id="1842653058275008951" at="19,127,20,47" />
+      <scope id="1842653058275008950" at="22,50,23,177" />
+      <scope id="1842653058275008950" at="25,68,26,102" />
+      <scope id="1842653058275008950" at="28,27,29,17" />
+      <scope id="1842653058275008950" at="17,0,19,0" />
+      <scope id="1842653058275008950" at="19,0,22,0">
+        <var name="status" id="1842653058275008950" />
+        <var name="typeCheckingContext" id="1842653058275008950" />
+        <var name="watchableListType" id="1842653058275008950" />
+      </scope>
+      <scope id="1842653058275008950" at="22,0,25,0" />
+      <scope id="1842653058275008950" at="25,0,28,0">
+        <var name="argument" id="1842653058275008950" />
+      </scope>
+      <scope id="1842653058275008950" at="28,0,31,0" />
+      <scope id="1842653058275008955" at="31,60,39,24">
+        <var name="facade" id="1842653058275008955" />
+        <var name="quotedNode_1" id="1842653058275008955" />
+        <var name="quotedNode_2" id="1842653058275008955" />
+      </scope>
+      <scope id="1842653058275008955" at="31,0,41,0" />
+      <unit id="1842653058275008950" at="16,0,42,0" name="jetbrains.mps.debugger.java.customViewers.typesystem.WatchableListIsAList_SubtypingRule" />
+    </file>
   </root>
   <root nodeRef="r:3883084c-f018-4330-aab0-6829350c4b17(jetbrains.mps.debugger.java.customViewers.typesystem)/1842653058275013459">
-    <nodeInfo nodeId="1842653058275013466" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="20" startPosition="5" endLine="21" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1842653058275013466" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="21" startPosition="63" endLine="22" endPosition="218" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1842653058275013466" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="22" startPosition="218" endLine="23" endPosition="295" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="27" startPosition="46" endLine="28" endPosition="87" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="32" startPosition="5" endLine="33" endPosition="130" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="33" startPosition="130" endLine="34" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="38" startPosition="30" endLine="39" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1842653058275013471" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="42" startPosition="61" endLine="43" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1842653058275013471" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="43" startPosition="63" endLine="44" endPosition="30" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1842653058275013471" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="44" startPosition="30" endLine="45" endPosition="183" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1842653058275013471" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="44" startPosition="30" endLine="45" endPosition="183" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1842653058275013471" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="44" startPosition="30" endLine="45" endPosition="183" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1842653058275013471" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="45" startPosition="183" endLine="46" endPosition="24" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="16" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="typeof_WatchablesListCreator_InferenceRule#()V" />
-    <nodeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="27" startPosition="0" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="38" startPosition="0" endLine="41" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="overrides#()Z" />
-    <nodeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="31" startPosition="68" endLine="35" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1842653058275013466" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="19" startPosition="134" endLine="24" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="31" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="1842653058275013471" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="42" startPosition="0" endLine="48" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="_quotation_createNode_e5m9au_a0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="19" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-    <scopeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="16" startPosition="55" endLine="16" endPosition="55" />
-    <scopeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="27" startPosition="46" endLine="28" endPosition="87" />
-    <scopeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="38" startPosition="30" endLine="39" endPosition="17" />
-    <scopeInfo nodeId="1842653058275013471" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="44" startPosition="30" endLine="45" endPosition="183" />
-    <scopeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="16" startPosition="0" endLine="18" endPosition="0" />
-    <scopeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="32" startPosition="5" endLine="34" endPosition="45">
-      <varInfo nodeId="1842653058275013459" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="1842653058275013466" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="20" startPosition="5" endLine="23" endPosition="295">
-      <varInfo nodeId="1842653058275013466" varName="_info_12389875345" />
-      <varInfo nodeId="1842653058275013466" varName="_nodeToCheck_1029348928467" />
-    </scopeInfo>
-    <scopeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="27" startPosition="0" endLine="30" endPosition="0" />
-    <scopeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="38" startPosition="0" endLine="41" endPosition="0" />
-    <scopeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="31" startPosition="68" endLine="35" endPosition="5" />
-    <scopeInfo nodeId="1842653058275013471" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="42" startPosition="61" endLine="46" endPosition="24">
-      <varInfo nodeId="1842653058275013471" varName="facade" />
-      <varInfo nodeId="1842653058275013471" varName="quotedNode_1" />
-    </scopeInfo>
-    <scopeInfo nodeId="1842653058275013460" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="19" startPosition="134" endLine="24" endPosition="5" />
-    <scopeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="31" startPosition="0" endLine="37" endPosition="0">
-      <varInfo nodeId="1842653058275013459" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="1842653058275013471" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="42" startPosition="0" endLine="48" endPosition="0" />
-    <scopeInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="19" startPosition="0" endLine="26" endPosition="0">
-      <varInfo nodeId="1842653058275013459" varName="status" />
-      <varInfo nodeId="1842653058275013459" varName="typeCheckingContext" />
-      <varInfo nodeId="1842653058275013459" varName="watchablesListCreator" />
-    </scopeInfo>
-    <unitInfo nodeId="1842653058275013459" fileName="typeof_WatchablesListCreator_InferenceRule.java" startLine="15" startPosition="0" endLine="49" endPosition="0" unitName="jetbrains.mps.debugger.java.customViewers.typesystem.typeof_WatchablesListCreator_InferenceRule" />
+    <file name="typeof_WatchablesListCreator_InferenceRule.java">
+      <node id="1842653058275013466" at="20,5,21,63" concept="5" />
+      <node id="1842653058275013466" at="21,63,22,218" concept="5" />
+      <node id="1842653058275013466" at="22,218,23,297" concept="2" />
+      <node id="1842653058275013459" at="26,50,27,181" concept="6" />
+      <node id="1842653058275013459" at="29,68,30,102" concept="6" />
+      <node id="1842653058275013459" at="32,30,33,17" concept="6" />
+      <node id="9116681015574437833" at="35,63,36,63" concept="5" />
+      <node id="9116681015574437833" at="36,63,37,246" concept="5" />
+      <node id="9116681015574437833" at="37,246,38,14" concept="6" />
+      <node id="1842653058275013459" at="17,0,19,0" concept="1" trace="typeof_WatchablesListCreator_InferenceRule#()V" />
+      <node id="1842653058275013459" at="26,0,29,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1842653058275013459" at="29,0,32,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1842653058275013459" at="32,0,35,0" concept="4" trace="overrides#()Z" />
+      <node id="1842653058275013466" at="19,134,24,5" concept="0" />
+      <node id="9116681015574437833" at="35,0,40,0" concept="7" trace="createWatchableListType_e5m9au_a0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1842653058275013459" at="19,0,26,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="1842653058275013459" at="17,55,17,55" />
+      <scope id="1842653058275013459" at="26,50,27,181" />
+      <scope id="1842653058275013459" at="29,68,30,102" />
+      <scope id="1842653058275013459" at="32,30,33,17" />
+      <scope id="1842653058275013459" at="17,0,19,0" />
+      <scope id="1842653058275013466" at="20,5,23,297">
+        <var name="_info_12389875345" id="1842653058275013466" />
+        <var name="_nodeToCheck_1029348928467" id="1842653058275013466" />
+      </scope>
+      <scope id="1842653058275013459" at="26,0,29,0" />
+      <scope id="1842653058275013459" at="29,0,32,0">
+        <var name="argument" id="1842653058275013459" />
+      </scope>
+      <scope id="1842653058275013459" at="32,0,35,0" />
+      <scope id="9116681015574437833" at="35,63,38,14">
+        <var name="facade" id="9116681015574437833" />
+        <var name="n1" id="9116681015574437833" />
+      </scope>
+      <scope id="1842653058275013460" at="19,134,24,5" />
+      <scope id="9116681015574437833" at="35,0,40,0" />
+      <scope id="1842653058275013459" at="19,0,26,0">
+        <var name="status" id="1842653058275013459" />
+        <var name="typeCheckingContext" id="1842653058275013459" />
+        <var name="watchablesListCreator" id="1842653058275013459" />
+      </scope>
+      <unit id="1842653058275013459" at="16,0,41,0" name="jetbrains.mps.debugger.java.customViewers.typesystem.typeof_WatchablesListCreator_InferenceRule" />
+    </file>
   </root>
   <root nodeRef="r:3883084c-f018-4330-aab0-6829350c4b17(jetbrains.mps.debugger.java.customViewers.typesystem)/43370322128290635">
-    <nodeInfo nodeId="43370322128303929" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="20" startPosition="5" endLine="21" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="43370322128303929" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="21" startPosition="67" endLine="22" endPosition="216" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="43370322128303929" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="22" startPosition="216" endLine="23" endPosition="293" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="27" startPosition="46" endLine="28" endPosition="91" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="32" startPosition="5" endLine="33" endPosition="130" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="33" startPosition="130" endLine="34" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="38" startPosition="30" endLine="39" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="43370322128303934" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="42" startPosition="61" endLine="43" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="43370322128303934" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="43" startPosition="63" endLine="44" endPosition="30" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="43370322128303934" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="44" startPosition="30" endLine="45" endPosition="179" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="43370322128303934" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="44" startPosition="30" endLine="45" endPosition="179" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="43370322128303934" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="44" startPosition="30" endLine="45" endPosition="179" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="43370322128303934" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="45" startPosition="179" endLine="46" endPosition="24" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="16" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="typeof_HighLevelWatchableCreator_InferenceRule#()V" />
-    <nodeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="27" startPosition="0" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="38" startPosition="0" endLine="41" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="overrides#()Z" />
-    <nodeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="31" startPosition="68" endLine="35" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="43370322128303929" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="19" startPosition="138" endLine="24" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="31" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="43370322128303934" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="42" startPosition="0" endLine="48" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="_quotation_createNode_qzkqie_a0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="19" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-    <scopeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="16" startPosition="59" endLine="16" endPosition="59" />
-    <scopeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="27" startPosition="46" endLine="28" endPosition="91" />
-    <scopeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="38" startPosition="30" endLine="39" endPosition="17" />
-    <scopeInfo nodeId="43370322128303934" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="44" startPosition="30" endLine="45" endPosition="179" />
-    <scopeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="16" startPosition="0" endLine="18" endPosition="0" />
-    <scopeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="32" startPosition="5" endLine="34" endPosition="45">
-      <varInfo nodeId="43370322128290635" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="43370322128303929" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="20" startPosition="5" endLine="23" endPosition="293">
-      <varInfo nodeId="43370322128303929" varName="_info_12389875345" />
-      <varInfo nodeId="43370322128303929" varName="_nodeToCheck_1029348928467" />
-    </scopeInfo>
-    <scopeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="27" startPosition="0" endLine="30" endPosition="0" />
-    <scopeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="38" startPosition="0" endLine="41" endPosition="0" />
-    <scopeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="31" startPosition="68" endLine="35" endPosition="5" />
-    <scopeInfo nodeId="43370322128303934" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="42" startPosition="61" endLine="46" endPosition="24">
-      <varInfo nodeId="43370322128303934" varName="facade" />
-      <varInfo nodeId="43370322128303934" varName="quotedNode_1" />
-    </scopeInfo>
-    <scopeInfo nodeId="43370322128290636" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="19" startPosition="138" endLine="24" endPosition="5" />
-    <scopeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="31" startPosition="0" endLine="37" endPosition="0">
-      <varInfo nodeId="43370322128290635" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="43370322128303934" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="42" startPosition="0" endLine="48" endPosition="0" />
-    <scopeInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="19" startPosition="0" endLine="26" endPosition="0">
-      <varInfo nodeId="43370322128290635" varName="highLevelWatchableCreator" />
-      <varInfo nodeId="43370322128290635" varName="status" />
-      <varInfo nodeId="43370322128290635" varName="typeCheckingContext" />
-    </scopeInfo>
-    <unitInfo nodeId="43370322128290635" fileName="typeof_HighLevelWatchableCreator_InferenceRule.java" startLine="15" startPosition="0" endLine="49" endPosition="0" unitName="jetbrains.mps.debugger.java.customViewers.typesystem.typeof_HighLevelWatchableCreator_InferenceRule" />
+    <file name="typeof_HighLevelWatchableCreator_InferenceRule.java">
+      <node id="43370322128303929" at="20,5,21,67" concept="5" />
+      <node id="43370322128303929" at="21,67,22,216" concept="5" />
+      <node id="43370322128303929" at="22,216,23,291" concept="2" />
+      <node id="43370322128290635" at="26,50,27,183" concept="6" />
+      <node id="43370322128290635" at="29,68,30,102" concept="6" />
+      <node id="43370322128290635" at="32,30,33,17" concept="6" />
+      <node id="9116681015574451954" at="35,59,36,63" concept="5" />
+      <node id="9116681015574451954" at="36,63,37,242" concept="5" />
+      <node id="9116681015574451954" at="37,242,38,14" concept="6" />
+      <node id="43370322128290635" at="17,0,19,0" concept="1" trace="typeof_HighLevelWatchableCreator_InferenceRule#()V" />
+      <node id="43370322128290635" at="26,0,29,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="43370322128290635" at="29,0,32,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="43370322128290635" at="32,0,35,0" concept="4" trace="overrides#()Z" />
+      <node id="43370322128303929" at="19,138,24,5" concept="0" />
+      <node id="9116681015574451954" at="35,0,40,0" concept="7" trace="createWatchableType_qzkqie_a0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="43370322128290635" at="19,0,26,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="43370322128290635" at="17,59,17,59" />
+      <scope id="43370322128290635" at="26,50,27,183" />
+      <scope id="43370322128290635" at="29,68,30,102" />
+      <scope id="43370322128290635" at="32,30,33,17" />
+      <scope id="43370322128290635" at="17,0,19,0" />
+      <scope id="43370322128303929" at="20,5,23,291">
+        <var name="_info_12389875345" id="43370322128303929" />
+        <var name="_nodeToCheck_1029348928467" id="43370322128303929" />
+      </scope>
+      <scope id="43370322128290635" at="26,0,29,0" />
+      <scope id="43370322128290635" at="29,0,32,0">
+        <var name="argument" id="43370322128290635" />
+      </scope>
+      <scope id="43370322128290635" at="32,0,35,0" />
+      <scope id="9116681015574451954" at="35,59,38,14">
+        <var name="facade" id="9116681015574451954" />
+        <var name="n1" id="9116681015574451954" />
+      </scope>
+      <scope id="43370322128290636" at="19,138,24,5" />
+      <scope id="9116681015574451954" at="35,0,40,0" />
+      <scope id="43370322128290635" at="19,0,26,0">
+        <var name="highLevelWatchableCreator" id="43370322128290635" />
+        <var name="status" id="43370322128290635" />
+        <var name="typeCheckingContext" id="43370322128290635" />
+      </scope>
+      <unit id="43370322128290635" at="16,0,41,0" name="jetbrains.mps.debugger.java.customViewers.typesystem.typeof_HighLevelWatchableCreator_InferenceRule" />
+    </file>
   </root>
   <root nodeRef="r:3883084c-f018-4330-aab0-6829350c4b17(jetbrains.mps.debugger.java.customViewers.typesystem)/43370322128303938">
-    <nodeInfo nodeId="43370322128303945" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="20" startPosition="5" endLine="21" endPosition="81" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="43370322128303945" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="21" startPosition="81" endLine="22" endPosition="216" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="43370322128303945" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="22" startPosition="216" endLine="23" endPosition="436" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="27" startPosition="46" endLine="28" endPosition="105" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="32" startPosition="5" endLine="33" endPosition="130" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="33" startPosition="130" endLine="34" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="38" startPosition="30" endLine="39" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="43370322128304578" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="43" startPosition="36" endLine="44" endPosition="77" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="43370322128304578" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="45" startPosition="5" endLine="46" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="16" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule#()V" />
-    <nodeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="27" startPosition="0" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="38" startPosition="0" endLine="41" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="overrides#()Z" />
-    <nodeInfo nodeId="43370322128304578" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="42" startPosition="68" endLine="45" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="31" startPosition="68" endLine="35" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="43370322128303945" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="19" startPosition="152" endLine="24" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="31" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="43370322128304578" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="42" startPosition="0" endLine="48" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="check_vmwfy8_a0a0b#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="19" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-    <scopeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="16" startPosition="73" endLine="16" endPosition="73" />
-    <scopeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="27" startPosition="46" endLine="28" endPosition="105" />
-    <scopeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="38" startPosition="30" endLine="39" endPosition="17" />
-    <scopeInfo nodeId="43370322128304578" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="43" startPosition="36" endLine="44" endPosition="77" />
-    <scopeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="16" startPosition="0" endLine="18" endPosition="0" />
-    <scopeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="32" startPosition="5" endLine="34" endPosition="45">
-      <varInfo nodeId="43370322128303938" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="43370322128303945" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="20" startPosition="5" endLine="23" endPosition="436">
-      <varInfo nodeId="43370322128303945" varName="_info_12389875345" />
-      <varInfo nodeId="43370322128303945" varName="_nodeToCheck_1029348928467" />
-    </scopeInfo>
-    <scopeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="27" startPosition="0" endLine="30" endPosition="0" />
-    <scopeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="38" startPosition="0" endLine="41" endPosition="0" />
-    <scopeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="31" startPosition="68" endLine="35" endPosition="5" />
-    <scopeInfo nodeId="43370322128304578" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="42" startPosition="68" endLine="46" endPosition="16" />
-    <scopeInfo nodeId="43370322128303939" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="19" startPosition="152" endLine="24" endPosition="5" />
-    <scopeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="31" startPosition="0" endLine="37" endPosition="0">
-      <varInfo nodeId="43370322128303938" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="43370322128304578" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="42" startPosition="0" endLine="48" endPosition="0">
-      <varInfo nodeId="43370322128304578" varName="checkedDotOperand" />
-    </scopeInfo>
-    <scopeInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="19" startPosition="0" endLine="26" endPosition="0">
-      <varInfo nodeId="43370322128303938" varName="highLevelValue_ConceptFunctionParameter" />
-      <varInfo nodeId="43370322128303938" varName="status" />
-      <varInfo nodeId="43370322128303938" varName="typeCheckingContext" />
-    </scopeInfo>
-    <unitInfo nodeId="43370322128303938" fileName="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java" startLine="15" startPosition="0" endLine="49" endPosition="0" unitName="jetbrains.mps.debugger.java.customViewers.typesystem.typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule" />
+    <file name="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule.java">
+      <node id="43370322128303945" at="20,5,21,81" concept="5" />
+      <node id="43370322128303945" at="21,81,22,216" concept="5" />
+      <node id="43370322128303945" at="22,216,23,533" concept="2" />
+      <node id="43370322128303938" at="26,50,27,197" concept="6" />
+      <node id="43370322128303938" at="29,68,30,102" concept="6" />
+      <node id="43370322128303938" at="32,30,33,17" concept="6" />
+      <node id="43370322128304578" at="36,36,37,191" concept="6" />
+      <node id="43370322128304578" at="38,5,39,16" concept="6" />
+      <node id="43370322128303938" at="17,0,19,0" concept="1" trace="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule#()V" />
+      <node id="43370322128303938" at="26,0,29,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="43370322128303938" at="29,0,32,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="43370322128303938" at="32,0,35,0" concept="4" trace="overrides#()Z" />
+      <node id="43370322128304578" at="35,68,38,5" concept="3" />
+      <node id="43370322128303945" at="19,152,24,5" concept="0" />
+      <node id="43370322128304578" at="35,0,41,0" concept="7" trace="check_vmwfy8_a0a0b#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="43370322128303938" at="19,0,26,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="43370322128303938" at="17,73,17,73" />
+      <scope id="43370322128303938" at="26,50,27,197" />
+      <scope id="43370322128303938" at="29,68,30,102" />
+      <scope id="43370322128303938" at="32,30,33,17" />
+      <scope id="43370322128304578" at="36,36,37,191" />
+      <scope id="43370322128303938" at="17,0,19,0" />
+      <scope id="43370322128303945" at="20,5,23,533">
+        <var name="_info_12389875345" id="43370322128303945" />
+        <var name="_nodeToCheck_1029348928467" id="43370322128303945" />
+      </scope>
+      <scope id="43370322128303938" at="26,0,29,0" />
+      <scope id="43370322128303938" at="29,0,32,0">
+        <var name="argument" id="43370322128303938" />
+      </scope>
+      <scope id="43370322128303938" at="32,0,35,0" />
+      <scope id="43370322128304578" at="35,68,39,16" />
+      <scope id="43370322128303939" at="19,152,24,5" />
+      <scope id="43370322128304578" at="35,0,41,0">
+        <var name="checkedDotOperand" id="43370322128304578" />
+      </scope>
+      <scope id="43370322128303938" at="19,0,26,0">
+        <var name="highLevelValue_ConceptFunctionParameter" id="43370322128303938" />
+        <var name="status" id="43370322128303938" />
+        <var name="typeCheckingContext" id="43370322128303938" />
+      </scope>
+      <unit id="43370322128303938" at="16,0,42,0" name="jetbrains.mps.debugger.java.customViewers.typesystem.typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule" />
+    </file>
   </root>
-</debugInfo>
+</debug-info>
 

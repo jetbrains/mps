@@ -5,117 +5,133 @@ package jetbrains.mps.console.tool;
 import com.intellij.openapi.fileEditor.DocumentsEditor;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import com.intellij.openapi.fileEditor.FileEditorState;
+import jetbrains.mps.openapi.editor.EditorComponentState;
 import com.intellij.openapi.fileEditor.FileEditorStateLevel;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.JComponent;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NonNls;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.beans.PropertyChangeListener;
 import com.intellij.codeHighlighting.BackgroundEditorHighlighter;
 import com.intellij.openapi.fileEditor.FileEditorLocation;
 import com.intellij.ide.structureView.StructureViewBuilder;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.editor.Document;
-import jetbrains.mps.workbench.nodesFs.MPSNodeVirtualFile;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.workbench.nodesFs.MPSNodesVirtualFileSystem;
 import jetbrains.mps.ide.undo.MPSUndoUtil;
 
 public class ConsoleFileEditor implements DocumentsEditor {
   private EditorComponent myEditor;
-  private FileEditorState myState = new FileEditorState() {
-    public boolean canBeMergedWith(FileEditorState p0, FileEditorStateLevel p1) {
+  private boolean myDisposed = false;
+
+  private static class MyFileEditorState implements FileEditorState {
+    private EditorComponentState memento;
+    public MyFileEditorState(EditorComponentState memento) {
+      this.memento = memento;
+    }
+    @Override
+    public boolean canBeMergedWith(FileEditorState otherState, FileEditorStateLevel level) {
       return false;
     }
-  };
-
+    public EditorComponentState getMemento() {
+      return memento;
+    }
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) {
+        return true;
+      }
+      if (o == null || getClass() != o.getClass()) {
+        return false;
+      }
+      ConsoleFileEditor.MyFileEditorState that = (ConsoleFileEditor.MyFileEditorState) o;
+      if (!(memento.equals(that.memento))) {
+        return false;
+      }
+      return true;
+    }
+    @Override
+    public int hashCode() {
+      return memento.hashCode();
+    }
+  }
 
   public ConsoleFileEditor(EditorComponent editor) {
     myEditor = editor;
   }
-
   @NotNull
   public JComponent getComponent() {
-    return null;
+    return myEditor;
   }
-
   @Nullable
   public JComponent getPreferredFocusedComponent() {
     return null;
   }
-
   @NonNls
   @NotNull
   public String getName() {
-    return null;
+    return myEditor.getName();
   }
-
   @NotNull
   public FileEditorState getState(@NotNull FileEditorStateLevel level) {
-    return myState;
+    final Wrappers._T<EditorComponentState> memento = new Wrappers._T<EditorComponentState>(null);
+    myEditor.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        memento.value = myEditor.getEditorContext().getEditorComponentState();
+      }
+    });
+    return new ConsoleFileEditor.MyFileEditorState(memento.value);
   }
-
-  public void setState(@NotNull FileEditorState state) {
-    myState = state;
+  public void setState(@NotNull final FileEditorState state) {
+    if (state instanceof ConsoleFileEditor.MyFileEditorState) {
+      myEditor.getEditorContext().getRepository().getModelAccess().runWriteAction(new Runnable() {
+        public void run() {
+          myEditor.getEditorContext().restoreEditorComponentState(((ConsoleFileEditor.MyFileEditorState) state).getMemento());
+          myEditor.rebuildEditorContent();
+        }
+      });
+    }
   }
-
   public boolean isModified() {
     return false;
   }
-
   public boolean isValid() {
-    return false;
+    return !(myDisposed);
   }
-
   public void selectNotify() {
   }
-
   public void deselectNotify() {
   }
-
   public void addPropertyChangeListener(@NotNull PropertyChangeListener listener) {
   }
-
   public void removePropertyChangeListener(@NotNull PropertyChangeListener listener) {
   }
-
   @Nullable
   public BackgroundEditorHighlighter getBackgroundHighlighter() {
     return null;
   }
-
   @Nullable
   public FileEditorLocation getCurrentLocation() {
     return null;
   }
-
   @Nullable
   public StructureViewBuilder getStructureViewBuilder() {
     return null;
   }
-
   @Nullable
   public <T> T getUserData(@NotNull Key<T> key) {
     return null;
   }
-
   public <T> void putUserData(@NotNull Key<T> key, @Nullable T t) {
   }
-
   public void dispose() {
+    myDisposed = true;
   }
-
   public Document[] getDocuments() {
-    final MPSNodeVirtualFile[] virtualFile = new MPSNodeVirtualFile[1];
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        virtualFile[0] = MPSNodesVirtualFileSystem.getInstance().getFileFor(myEditor.getEditedNode());
-      }
-    });
-
-    return (virtualFile[0] == null ?
-      new Document[0] :
-      new Document[]{MPSUndoUtil.getDoc(virtualFile[0])}
-    );
+    if (myDisposed) {
+      return new Document[0];
+    }
+    Document doc = MPSUndoUtil.getDoc(myEditor.getEditorContext().getRepository(), myEditor.getEditedNodePointer());
+    return (doc == null ? new Document[0] : new Document[]{doc});
   }
 }

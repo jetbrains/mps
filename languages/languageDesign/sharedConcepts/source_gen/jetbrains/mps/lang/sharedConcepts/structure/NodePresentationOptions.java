@@ -4,23 +4,28 @@ package jetbrains.mps.lang.sharedConcepts.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum NodePresentationOptions {
   default_("default", null),
   referent_("referent", "default_referent"),
   custom_("custom", "custom");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private NodePresentationOptions(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<NodePresentationOptions> getConstants() {
     List<NodePresentationOptions> list = ListSequence.fromList(new LinkedList<NodePresentationOptions>());
     ListSequence.fromList(list).addElement(NodePresentationOptions.default_);
@@ -28,11 +33,9 @@ public enum NodePresentationOptions {
     ListSequence.fromList(list).addElement(NodePresentationOptions.custom_);
     return list;
   }
-
   public static NodePresentationOptions getDefault() {
     return NodePresentationOptions.default_;
   }
-
   public static NodePresentationOptions parseValue(String value) {
     if (value == null) {
       return NodePresentationOptions.getDefault();
@@ -47,16 +50,5 @@ public enum NodePresentationOptions {
       return NodePresentationOptions.custom_;
     }
     return NodePresentationOptions.getDefault();
-  }
-
-  private String myValue;
-
-  NodePresentationOptions(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

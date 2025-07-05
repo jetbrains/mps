@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,20 @@
  */
 package jetbrains.mps.typesystem.uiActions;
 
+import com.intellij.openapi.ui.LabeledComponent;
 import com.intellij.openapi.ui.Splitter;
 import jetbrains.mps.errors.IErrorReporter;
-import jetbrains.mps.nodeEditor.GoToTypeErrorRuleUtil;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
+import jetbrains.mps.project.Project;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.util.Computable;
 
-import javax.swing.*;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JComponent;
 import java.awt.event.ActionEvent;
 
 public class MyBaseNodeDialog extends BaseNodeDialog {
@@ -35,25 +39,21 @@ public class MyBaseNodeDialog extends BaseNodeDialog {
   private Splitter myMainComponent;
   private JComponent mySupertypesViewComponent;
 
-  public MyBaseNodeDialog(IOperationContext operationContext, SNode node, SNode type, IErrorReporter error) {
-    super(getTitle(node), operationContext);
+  public MyBaseNodeDialog(Project mpsProject, String title, SNode type, IErrorReporter error) {
+    super(mpsProject, title);
 
-    SupertypesViewTool supertypesView = operationContext.getProject().getComponent(SupertypesViewTool.class);
+    SupertypesViewTool supertypesView = mpsProject.getComponent(SupertypesViewTool.class);
 
     mySupertypesViewComponent = supertypesView.getComponent();
     myMainComponent = new Splitter(false);
     myMainComponent.setFirstComponent(super.getMainComponent());
-    myMainComponent.setSecondComponent(mySupertypesViewComponent);
+    myMainComponent.setSecondComponent(LabeledComponent.create(mySupertypesViewComponent, "Supertypes"));
 
     myType = type;
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        myModel = myType.getModel();
-      }
-    });
+    myModel = myType.getModel();
 
     myError = error;
-    supertypesView.showItemInHierarchy(myType, operationContext);
+    supertypesView.showItemInHierarchy(myType);
 
     //setHorizontalStretch(1f);
     //setHorizontalStretch(1f);
@@ -61,31 +61,28 @@ public class MyBaseNodeDialog extends BaseNodeDialog {
     init();
   }
 
-
   @Override
   protected JComponent createCenterPanel() {
     return myMainComponent;
   }
 
+  @NotNull
   @Override
   protected Action[] createActions() {
     if(myError != null) {
-      String s = ModelAccess.instance().runReadAction(new Computable<String>() {
+      String s = new ModelAccessHelper(getProject().getModelAccess()).runReadAction(new Computable<String>() {
         public String compute() {
           return myError.reportError();
         }
       });
-      setErrorText("Type error! Message: " + s);
-      return new Action[]{getOKAction(), new AbstractAction("Go To Rule Which Caused Error") {
-        public void actionPerformed(ActionEvent e) {
-          ModelAccess.instance().runWriteInEDT(new Runnable() {
-            @Override
-            public void run() {
-              GoToTypeErrorRuleUtil.goToTypeErrorRule(getOperationContext().getProject(), myError);
-            }
-          });
-        }
-      }};
+      setErrorText(s);
+      if (myError.getRuleNode() != null) {
+        return new Action[]{getOKAction(), new AbstractAction("Go To Rule") {
+          public void actionPerformed(ActionEvent e) {
+            new EditorNavigator(getProject()).shallSelect(true).open(myError.getRuleNode());
+          }
+        }};
+      }
     }
     return new Action[]{getOKAction()};
   }
@@ -100,21 +97,13 @@ public class MyBaseNodeDialog extends BaseNodeDialog {
     if (mySupertypesViewComponent != null && mySupertypesViewComponent.getParent() != null) {
       mySupertypesViewComponent.getParent().remove(mySupertypesViewComponent);
     }
-    ModelAccess.instance().runWriteAction(new Runnable() {
+    getProject().getModelAccess().runWriteAction(new Runnable() {
       public void run() {
         if (!myWasRegistered) {
           myModel.removeRootNode(myType.getContainingRoot());
           myWasRegistered = true;
         }
         MyBaseNodeDialog.super.dispose();
-      }
-    });
-  }
-
-  private static String getTitle(final SNode node) {
-    return ModelAccess.instance().runReadAction(new Computable<String>() {
-      public String compute() {
-        return "Type For Node " + node;
       }
     });
   }

@@ -9,12 +9,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 public class INodeWithReference_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createComponent_fx5jqx_a(editorContext, node);
-  }
-
-  private EditorCell createComponent_fx5jqx_a(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = editorContext.getCellFactory().createEditorComponentCell(node, "jetbrains.mps.console.base.editor.INodeWithReference_EditorComponent");
-    editorCell.setBig(true);
-    return editorCell;
+    return new INodeWithReference_EditorBuilder_a(editorContext, node).createCell();
   }
 }

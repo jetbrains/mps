@@ -8,19 +8,43 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.make.IMakeService;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.generator.GenerationFacade;
 import org.jetbrains.annotations.NotNull;
-import org.apache.log4j.Priority;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.make.MakeSession;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.ide.make.TextPreviewUtil;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
-import jetbrains.mps.smodel.SModelStereotype;
-import org.jetbrains.mps.openapi.model.EditableSModel;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.ide.make.DefaultMakeMessageHandler;
+import jetbrains.mps.make.MakeSession;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.make.script.IScript;
+import jetbrains.mps.make.script.ScriptBuilder;
+import jetbrains.mps.make.facet.IFacet;
+import jetbrains.mps.make.facet.ITarget;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import java.util.concurrent.Future;
+import jetbrains.mps.make.script.IResult;
+import jetbrains.mps.smodel.resources.ModelsToResources;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import com.intellij.openapi.application.ApplicationManager;
+import jetbrains.mps.ide.make.TextPreviewFile;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
+import java.util.ArrayList;
+import jetbrains.mps.lang.core.plugin.TextGenOutcomeResource;
+import jetbrains.mps.util.NameUtil;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.text.TextUnit;
+import jetbrains.mps.textgen.trace.TracingUtil;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import com.intellij.openapi.fileEditor.FileEditorManager;
+import com.intellij.openapi.fileEditor.OpenFileDescriptor;
+import jetbrains.mps.ide.projectPane.ProjectPane;
+import jetbrains.mps.messages.Message;
+import jetbrains.mps.messages.MessageKind;
 
 public class TextPreviewModel_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -30,81 +54,138 @@ public class TextPreviewModel_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     if (IMakeService.INSTANCE.get().isSessionActive()) {
       return false;
     }
-    SModel md = TextPreviewModel_Action.this.modelToGenerate(_params);
-    return md != null && TextPreviewModel_Action.this.isUserEditableModel(md, _params);
+    SModel md = TextPreviewModel_Action.this.modelToGenerate(event);
+    return md != null && GenerationFacade.canGenerate(md);
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        boolean enabled = this.isApplicable(event, _params);
-        this.setEnabledState(event.getPresentation(), enabled);
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "TextPreviewModel", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("context", event.getData(MPSCommonDataKeys.OPERATION_CONTEXT));
-    if (MapSequence.fromMap(_params).get("context") == null) {
-      return false;
+    {
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("cnode", event.getData(MPSCommonDataKeys.NODE));
-    MapSequence.fromMap(_params).put("cmodel", event.getData(MPSCommonDataKeys.CONTEXT_MODEL));
-    if (MapSequence.fromMap(_params).get("cmodel") == null) {
-      return false;
+    {
+      Project p = event.getData(CommonDataKeys.PROJECT);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("models", event.getData(MPSCommonDataKeys.MODELS));
+    {
+      SNode p = event.getData(MPSCommonDataKeys.NODE);
+    }
+    {
+      SModel p = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
+      if (p == null) {
+        return false;
+      }
+    }
+    {
+      List<SModel> p = event.getData(MPSCommonDataKeys.MODELS);
+    }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      MakeSession session = new MakeSession(((IOperationContext) MapSequence.fromMap(_params).get("context")), null, true);
-      if (IMakeService.INSTANCE.get().openNewSession(session)) {
-        TextPreviewUtil.previewModelText(session, ((IOperationContext) MapSequence.fromMap(_params).get("context")), TextPreviewModel_Action.this.modelToGenerate(_params), ((SNode) MapSequence.fromMap(_params).get("cnode")));
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "TextPreviewModel", t);
-      }
+    final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+    final Project ideaProject = event.getData(CommonDataKeys.PROJECT);
+    final DefaultMakeMessageHandler msgHandler = new DefaultMakeMessageHandler(mpsProject);
+    MakeSession session = new MakeSession(mpsProject, msgHandler, true);
+    final SNodeReference contextNode = (event.getData(MPSCommonDataKeys.NODE) == null ? null : event.getData(MPSCommonDataKeys.NODE).getReference());
+    if (IMakeService.INSTANCE.get().openNewSession(session)) {
+      IScript scr = new ScriptBuilder().withFacetNames(new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.lang.core.TextGen.textGenToMemory")).toScript();
+      SModel model = TextPreviewModel_Action.this.modelToGenerate(event);
+      final SModelReference model2generateRef = model.getReference();
+      final Future<IResult> future = IMakeService.INSTANCE.get().make(session, new ModelsToResources(Sequence.<SModel>singleton(model)).resources(false), scr);
+      ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
+        public void run() {
+          try {
+            final IResult result = future.get();
+            final List<TextPreviewFile> previewFiles = new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(new Computable<List<TextPreviewFile>>() {
+              public List<TextPreviewFile> compute() {
+                ArrayList<TextPreviewFile> rv = new ArrayList<TextPreviewFile>();
+                for (TextGenOutcomeResource tgr : Sequence.fromIterable(result.output()).ofType(TextGenOutcomeResource.class)) {
+                  // XXX don't see too much value in modelName, shall drop? 
+                  String modelName = NameUtil.compactNamespace(tgr.getModel().getModelName());
+                  final SRepository repo = mpsProject.getRepository();
+                  SNode cn = (contextNode == null ? null : contextNode.resolve(repo));
+                  List<SNode> ancestors = (cn == null ? new ArrayList<SNode>() : SNodeOperations.getNodeAncestors(cn, null, true));
+                  for (TextUnit tu : tgr.getTextGenResult().getUnits()) {
+                    if (cn != null) {
+                      SNode originalStart = TracingUtil.getInputNode(tu.getStartNode(), repo);
+                      if (originalStart != null && !(ListSequence.fromList(ancestors).contains(originalStart))) {
+                        continue;
+                      }
+                    }
+                    rv.add(new TextPreviewFile(tu, modelName));
+                  }
+                }
+                return rv;
+              }
+            });
+
+            ApplicationManager.getApplication().invokeLater(new Runnable() {
+              public void run() {
+                if (previewFiles.isEmpty()) {
+                  StringBuilder message = new StringBuilder();
+                  message.append("Model processed:");
+                  message.append(model2generateRef);
+                  message.append("\n");
+                  if (contextNode != null) {
+                    message.append("Context node:");
+                    message.append(contextNode);
+                    message.append("\n");
+                  }
+                  if (result.isSucessful()) {
+                    message.append("Text generation completed successfully\n");
+                  } else {
+                    message.append("Text generation completed with errors\n");
+                  }
+                  if (contextNode != null) {
+                    message.append("None of generated text units reference context node");
+                  } else {
+                    message.append("There were no text units generated.");
+                  }
+                  previewFiles.add(new TextPreviewFile("TextGen", message.toString(), model2generateRef.getModelName()));
+                }
+                FileEditorManager fem = FileEditorManager.getInstance(ideaProject);
+                for (TextPreviewFile f : ListSequence.fromList(previewFiles)) {
+                  fem.openTextEditor(new OpenFileDescriptor(ideaProject, f), true);
+                }
+              }
+            });
+            // to update tree to reveal transient models. is it still necessary? 
+            ProjectPane.getInstance(mpsProject).rebuild();
+          } catch (Exception e) {
+            msgHandler.handle(new Message(MessageKind.ERROR, "TextPreviewModel", e.toString()).setException(e));
+          }
+        }
+      });
     }
   }
-
-  private SModel modelToGenerate(final Map<String, Object> _params) {
+  private SModel modelToGenerate(final AnActionEvent event) {
     SModel md = null;
-    if (((SModel) MapSequence.fromMap(_params).get("cmodel")) != null) {
-      md = ((SModel) MapSequence.fromMap(_params).get("cmodel"));
-    } else if (((List<SModel>) MapSequence.fromMap(_params).get("models")) != null && ((List<SModel>) MapSequence.fromMap(_params).get("models")).size() > 0) {
-      md = ((List<SModel>) MapSequence.fromMap(_params).get("models")).get(0);
+    if (event.getData(MPSCommonDataKeys.CONTEXT_MODEL) != null) {
+      md = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
+    } else if (event.getData(MPSCommonDataKeys.MODELS) != null && event.getData(MPSCommonDataKeys.MODELS).size() > 0) {
+      md = event.getData(MPSCommonDataKeys.MODELS).get(0);
     }
     return md;
   }
-
-  private boolean isUserEditableModel(SModel md, final Map<String, Object> _params) {
-    // TODO SModelDescriptor cast 
-    if (!(SModelStereotype.isUserModel(md))) {
-      return false;
-    }
-    return md instanceof EditableSModel && !(md.isReadOnly());
-  }
-
-  protected static Logger LOG = LogManager.getLogger(TextPreviewModel_Action.class);
 }

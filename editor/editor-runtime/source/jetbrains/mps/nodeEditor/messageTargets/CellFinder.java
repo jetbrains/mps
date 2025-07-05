@@ -22,6 +22,7 @@ import jetbrains.mps.nodeEditor.cells.ModelAccessor;
 import jetbrains.mps.nodeEditor.cells.PropertyAccessor;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.util.Condition;
@@ -41,8 +42,13 @@ public class CellFinder {
 
   @Nullable
   public static EditorCell getCellForReference(@Nullable EditorComponent editorComponent, @Nullable final SNode node, final String role) {
+    if (role == null) {
+      return null;
+    }
     EditorCell rawCell = getRawCell(editorComponent, node);
-    if (rawCell == null) { return null; }
+    if (rawCell == null) {
+      return null;
+    }
     EditorCell child = CellFinderUtil.findChildByCondition(rawCell, new Condition<EditorCell>() {
       @Override
       public boolean met(EditorCell cell) {
@@ -58,23 +64,36 @@ public class CellFinder {
 
   @Nullable
   public static EditorCell getCellForProperty(@Nullable EditorComponent editorComponent, @Nullable final SNode node, final String name) {
+    if (name == null) {
+      return null;
+    }
     EditorCell rawCell = getRawCell(editorComponent, node);
-    if (rawCell == null) { return null; }
-    EditorCell child = CellFinderUtil.findChildByCondition(rawCell, new Condition<EditorCell>() {
-      @Override
-      public boolean met(EditorCell cell) {
-        if (!(cell instanceof EditorCell_Property)) return false;
-        EditorCell_Property propertyCell = (EditorCell_Property) cell;
-        ModelAccessor modelAccessor = propertyCell.getModelAccessor();
-        return modelAccessor instanceof PropertyAccessor && node == propertyCell.getSNode()
-            && name.equals(((PropertyAccessor) modelAccessor).getPropertyName());
-      }
-    }, true, true);
-    if (child != null) {
-      return child;
-    } else {
+    if (rawCell == null) {
+      return null;
+    }
+
+    EditorCell child = CellFinderUtil.findChildByCondition(rawCell, cell -> isCellForProperty(cell, node, name), true, true);
+    if (child == null) {
       return rawCell;
     }
+
+    return child;
+  }
+
+  static boolean isCellForProperty(@NotNull EditorCell cell, @Nullable SNode node, @NotNull String name) {
+    if (!(cell instanceof EditorCell_Property)) {
+      return false;
+    }
+
+    EditorCell_Property propertyCell = (EditorCell_Property) cell;
+    if (propertyCell.getRole() != null) {
+      // Ignore property cells with a role since they do not display the property of their node but rather the property of the target node.
+      return false;
+    }
+
+    ModelAccessor modelAccessor = propertyCell.getModelAccessor();
+    return modelAccessor instanceof PropertyAccessor && node == propertyCell.getSNode()
+           && name.equals(((PropertyAccessor) modelAccessor).getPropertyName());
   }
 
   @Nullable
@@ -87,7 +106,7 @@ public class CellFinder {
       @Override
       public boolean met(EditorCell cell) {
         return role.equals(cell.getRole()) &&
-            (node == cell.getSNode() || node == cell.getSNode().getParent() && cell.isBig());
+               (node == cell.getSNode() || node == cell.getSNode().getParent() && cell.isBig());
       }
     }, true, true);
     if (child != null) {

@@ -9,14 +9,13 @@ import jetbrains.mps.debug.api.programState.IValue;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debug.api.AbstractUiState;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.smodel.IOperationContext;
 import com.intellij.openapi.application.ApplicationManager;
-import jetbrains.mps.project.ProjectOperationContext;
-import jetbrains.mps.ide.project.ProjectHelper;
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.workbench.action.BaseGroup;
@@ -28,7 +27,8 @@ import java.util.Map;
 import jetbrains.mps.debug.api.programState.WatchablesCategory;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.debug.api.programState.Watchable2;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -44,6 +44,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.tree.TreePath;
 import org.jetbrains.annotations.NonNls;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 public class VariablesTree extends MPSTree implements DataProvider {
   private static final String COMMAND_OPEN_NODE_IN_PROJECT = "COMMAND_OPEN_NODE_IN_PROJECT";
@@ -51,27 +52,24 @@ public class VariablesTree extends MPSTree implements DataProvider {
   @NotNull
   private AbstractUiState myUiState;
   private final Project myProject;
-  private final IOperationContext myContext;
-
   public VariablesTree(Project project, AbstractUiState state) {
     ApplicationManager.getApplication().assertIsDispatchThread();
     myUiState = state;
     myProject = project;
-    myContext = new ProjectOperationContext(ProjectHelper.toMPSProject(project));
     getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), COMMAND_OPEN_NODE_IN_PROJECT);
     getActionMap().put(COMMAND_OPEN_NODE_IN_PROJECT, new AbstractAction() {
       @Override
       public void actionPerformed(ActionEvent e) {
         AbstractWatchableNode selectedNode = findSelectedNode();
-        if (selectedNode != null) {
-          selectedNode.openNode(false, true);
+        if (selectedNode != null && selectedNode.getNode() != null) {
+          final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
+          new EditorNavigator(mpsProject).shallFocus(false).shallSelect(true).open(selectedNode.getNode());
         }
       }
     });
     setRootVisible(false);
     setShowsRootHandles(true);
   }
-
   @Override
   protected ActionGroup createPopupActionGroup(MPSTreeNode node) {
     if (node instanceof AbstractWatchableNode) {
@@ -79,12 +77,10 @@ public class VariablesTree extends MPSTree implements DataProvider {
     }
     return null;
   }
-
   public void setUiState(@NotNull AbstractUiState uiState) {
     ApplicationManager.getApplication().assertIsDispatchThread();
     myUiState = uiState;
   }
-
   @Override
   protected MPSTreeNode rebuild() {
     List<IWatchable> watchables = myUiState.getWatchables();
@@ -98,10 +94,10 @@ public class VariablesTree extends MPSTree implements DataProvider {
 
     //  collecting nodes 
     Map<WatchablesCategory, List<IWatchable>> orphanesByCategory = MapSequence.fromMap(new HashMap<WatchablesCategory, List<IWatchable>>());
-    Map<WatchablesCategory, Map<SNode, List<IWatchable>>> nodeToVarsMapByCategory = MapSequence.fromMap(new HashMap<WatchablesCategory, Map<SNode, List<IWatchable>>>());
+    Map<WatchablesCategory, Map<SNodeReference, List<IWatchable>>> nodeToVarsMapByCategory = MapSequence.fromMap(new HashMap<WatchablesCategory, Map<SNodeReference, List<IWatchable>>>());
     for (IWatchable watchable : watchables) {
       WatchablesCategory category = watchable.getCategory();
-      SNode node = watchable.getNode();
+      SNodeReference node = (watchable instanceof Watchable2 ? ((Watchable2) watchable).getSourceNode() : ((watchable.getNode() == null ? null : watchable.getNode().getReference())));
       if (node == null) {
         List<IWatchable> orphanes = MapSequence.fromMap(orphanesByCategory).get(category);
         if (orphanes == null) {
@@ -110,9 +106,9 @@ public class VariablesTree extends MPSTree implements DataProvider {
         }
         orphanes.add(watchable);
       } else {
-        Map<SNode, List<IWatchable>> nodeToVarsMap = MapSequence.fromMap(nodeToVarsMapByCategory).get(category);
+        Map<SNodeReference, List<IWatchable>> nodeToVarsMap = MapSequence.fromMap(nodeToVarsMapByCategory).get(category);
         if (nodeToVarsMap == null) {
-          nodeToVarsMap = MapSequence.fromMap(new LinkedHashMap<SNode, List<IWatchable>>(16, (float) 0.75, false));
+          nodeToVarsMap = MapSequence.fromMap(new LinkedHashMap<SNodeReference, List<IWatchable>>(16, (float) 0.75, false));
           MapSequence.fromMap(nodeToVarsMapByCategory).put(category, nodeToVarsMap);
         }
         List<IWatchable> watchableList = MapSequence.fromMap(nodeToVarsMap).get(node);
@@ -127,16 +123,16 @@ public class VariablesTree extends MPSTree implements DataProvider {
 
     for (WatchablesCategory category : keys) {
       List<IWatchable> orphanes = MapSequence.fromMap(orphanesByCategory).get(category);
-      Map<SNode, List<IWatchable>> nodeToVarsMap = MapSequence.fromMap(nodeToVarsMapByCategory).get(category);
+      Map<SNodeReference, List<IWatchable>> nodeToVarsMap = MapSequence.fromMap(nodeToVarsMapByCategory).get(category);
       if (orphanes == null) {
         orphanes = ListSequence.fromList(new ArrayList<IWatchable>());
       }
       if (nodeToVarsMap == null) {
-        nodeToVarsMap = MapSequence.fromMap(new HashMap<SNode, List<IWatchable>>());
+        nodeToVarsMap = MapSequence.fromMap(new HashMap<SNodeReference, List<IWatchable>>());
       }
       //  sorting 
-      List<SNode> nodes = ListSequence.fromList(new ArrayList<SNode>());
-      nodes.addAll(MapSequence.fromMap(nodeToVarsMap).keySet());
+      List<SNodeReference> nodes = ListSequence.fromList(new ArrayList<SNodeReference>());
+      ListSequence.fromList(nodes).addSequence(SetSequence.fromSet(MapSequence.fromMap(nodeToVarsMap).keySet()));
       Collections.sort(nodes, new ToStringComparator());
       Collections.sort(orphanes, new Comparator<IWatchable>() {
         @Override
@@ -146,25 +142,24 @@ public class VariablesTree extends MPSTree implements DataProvider {
       });
 
       //  adding nodes 
-      for (SNode snode : MapSequence.fromMap(nodeToVarsMap).keySet()) {
+      for (SNodeReference snode : MapSequence.fromMap(nodeToVarsMap).keySet()) {
         List<IWatchable> watchablesWithNodes = MapSequence.fromMap(nodeToVarsMap).get(snode);
-        if ((int) ListSequence.fromList(watchablesWithNodes).count() == 1) {
-          rootTreeNode.add(new WatchableNode(myContext, ListSequence.fromList(watchablesWithNodes).first(), myUiState));
+        if (ListSequence.fromList(watchablesWithNodes).count() == 1) {
+          rootTreeNode.add(new WatchableNode(ListSequence.fromList(watchablesWithNodes).first(), myUiState));
         } else {
-          NodeTreeNode nodeTreeNode = new NodeTreeNode(myContext, snode);
+          NodeTreeNode nodeTreeNode = new NodeTreeNode(snode);
           for (IWatchable watchable : watchablesWithNodes) {
-            nodeTreeNode.add(new WatchableNode(myContext, watchable, myUiState));
+            nodeTreeNode.add(new WatchableNode(watchable, myUiState));
           }
           rootTreeNode.add(nodeTreeNode);
         }
       }
       for (IWatchable watchable : orphanes) {
-        rootTreeNode.add(new WatchableNode(myContext, watchable, myUiState));
+        rootTreeNode.add(new WatchableNode(watchable, myUiState));
       }
     }
     return rootTreeNode;
   }
-
   private MPSTreeNode createEmptyTree() {
     TextTreeNode rootNode = new TextTreeNode("");
     TextTreeNode messageNode = new TextTreeNode("No local variables available") {
@@ -177,7 +172,6 @@ public class VariablesTree extends MPSTree implements DataProvider {
     rootNode.add(messageNode);
     return rootNode;
   }
-
   @Nullable
   private AbstractWatchableNode findSelectedNode() {
     TreePath selectionPath = getSelectionPath();
@@ -190,27 +184,105 @@ public class VariablesTree extends MPSTree implements DataProvider {
     }
     return null;
   }
-
   @Override
   @Nullable
   public Object getData(@NonNls String dataId) {
-    if (dataId.equals(MPSCommonDataKeys.NODE.getName())) {
+    if (MPSCommonDataKeys.NODE.is(dataId)) {
       AbstractWatchableNode selectedNode = findSelectedNode();
-      if (selectedNode != null) {
-        return selectedNode.getNode();
+      if (selectedNode != null && selectedNode.getNode() != null) {
+        return selectedNode.getNode().resolve(ProjectHelper.getProjectRepository(getProject()));
       }
-    } else if (dataId.equals(MPS_DEBUGGER_VALUE.getName())) {
+    } else if (MPS_DEBUGGER_VALUE.is(dataId)) {
       AbstractWatchableNode selectedNode = findSelectedNode();
       if (selectedNode != null) {
         if (selectedNode instanceof WatchableNode) {
           return ((WatchableNode) selectedNode).getValue();
         }
       }
+    } else if (MPSCommonDataKeys.TREE_NODE.is(dataId)) {
+      return findSelectedNode();
     }
     return null;
   }
-
   public Project getProject() {
     return myProject;
+  }
+  private void stringToPath(String pathString, final _FunctionTypes._void_P1_E0<? super TreePath> callback) {
+    String[] components = pathString.split(MPSTree.TREE_PATH_SEPARATOR);
+    final List<Object> path = new ArrayList<Object>();
+    MPSTreeNode current = getRootNode();
+    if (!(current.isInitialized())) {
+      current.init();
+    }
+    path.add(current);
+    if (components.length == 0) {
+      callback.invoke(new TreePath(path.toArray()));
+    } else {
+      stringToPath(current, components, 0, path, new _FunctionTypes._void_P0_E0() {
+        public void invoke() {
+          callback.invoke(new TreePath(path.toArray()));
+        }
+      });
+    }
+  }
+  private void stringToPath(MPSTreeNode current, final String[] path, final int index, final List<Object> result, final _FunctionTypes._void_P0_E0 callback) {
+    if (index >= path.length) {
+      callback.invoke();
+      return;
+    }
+    String component = path[index];
+    if ((component == null || component.length() == 0)) {
+      stringToPath(current, path, index + 1, result, callback);
+    } else {
+      boolean found = false;
+      for (int i = 0; i < current.getChildCount(); i++) {
+        final MPSTreeNode node = (MPSTreeNode) current.getChildAt(i);
+        if (node.getNodeIdentifier().replaceAll(TREE_PATH_SEPARATOR, "-").equals(component)) {
+          found = true;
+          ListSequence.fromList(result).addElement(node);
+          if (!(node.isInitialized())) {
+            if (node instanceof WatchableNode) {
+              ((WatchableNode) node).init(new _FunctionTypes._void_P0_E0() {
+                public void invoke() {
+                  stringToPath(node, path, index + 1, result, callback);
+                }
+              });
+            } else {
+              node.init();
+            }
+          }
+          break;
+        }
+      }
+      if (!(found)) {
+        callback.invoke();
+      }
+    }
+  }
+  protected void expandPaths(List<String> paths) {
+    for (String path : paths) {
+      stringToPath(path, new _FunctionTypes._void_P1_E0<TreePath>() {
+        public void invoke(TreePath treePath) {
+          if (treePath != null) {
+            expandPath(treePath);
+          }
+        }
+      });
+    }
+  }
+  protected void selectPaths(final List<String> paths) {
+    final List<TreePath> treePaths = new ArrayList<TreePath>();
+    for (int i = 0; i < paths.size(); i++) {
+      // yep, this line is required for the code to work %| 
+      final int j = i;
+      stringToPath(paths.get(i), new _FunctionTypes._void_P1_E0<TreePath>() {
+        public void invoke(TreePath treePath) {
+          treePaths.add(treePath);
+          if (j == paths.size() - 1) {
+            setSelectionPaths(treePaths.toArray(new TreePath[treePaths.size()]));
+          }
+        }
+      });
+    }
   }
 }

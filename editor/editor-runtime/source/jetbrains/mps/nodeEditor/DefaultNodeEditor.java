@@ -17,52 +17,41 @@ package jetbrains.mps.nodeEditor;
 
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
+import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.descriptor.ConceptEditor;
+import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
 
 import java.util.Collection;
 import java.util.Collections;
 
 public class DefaultNodeEditor implements ConceptEditor {
+  @NotNull
   @Override
   public Collection<String> getContextHints() {
     return Collections.emptyList();
   }
 
   @Override
-  public EditorCell createEditorCell(jetbrains.mps.openapi.editor.EditorContext editorContext, SNode node) {
-    return createEditorCell((EditorContext) editorContext, node);
-  }
-
-  /**
-   * @deprecated starting from MPS 3.0 another method should be used:
-   *             <code>createEditorCell(jetbrains.mps.openapi.editor.EditorContext editorContext)</code>
-   */
-  @Deprecated
-  public jetbrains.mps.nodeEditor.cells.EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return new EditorCell_Error(editorContext, node, "no editor found");
+  public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
+    EditorCell_Error editorCell_error = new EditorCell_Error(editorContext, node, "no editor found");
+    editorCell_error.setBig(true);
+    editorCell_error.setCellContext(editorContext.getEditorComponent().getUpdater().getCurrentUpdateSession().getCellFactory().getCellContext());
+    return editorCell_error;
   }
 
   @Override
-  public EditorCell createInspectedCell(jetbrains.mps.openapi.editor.EditorContext editorContext, SNode node) {
-    return createInspectedCell((EditorContext) editorContext, node);
-  }
-
-  /**
-   * @deprecated starting from MPS 3.0 another method should be used:
-   *             <code>createInspectedCell(jetbrains.mps.openapi.editor.EditorContext editorContext)</code>
-   */
-  @Deprecated
-  public jetbrains.mps.nodeEditor.cells.EditorCell createInspectedCell(EditorContext editorContext, SNode node) {
-    return new DefaultInspectorCell(editorContext, node, SNodeUtil.getDebugText(node), true);
+  public EditorCell createInspectedCell(EditorContext editorContext, SNode node) {
+    return new DefaultInspectorCell(editorContext, node, SNodeOperations.getDebugText(node), false);
   }
 
   public static class DefaultInspectorCell extends EditorCell_Constant {
-    public DefaultInspectorCell(@NotNull jetbrains.mps.openapi.editor.EditorContext editorContext, SNode node, String text, boolean editable) {
+    public DefaultInspectorCell(@NotNull EditorContext editorContext, SNode node, String text, boolean editable) {
       super(editorContext, node, text, editable);
+      setBig(true);
+      setCellContext(editorContext.getEditorComponent().getUpdater().getCurrentUpdateSession().getCellFactory().getCellContext());
     }
   }
 }

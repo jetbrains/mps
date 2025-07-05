@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,7 @@ package jetbrains.mps.ide.ui.dialogs.properties.tables.models;
 import jetbrains.mps.ide.ui.dialogs.properties.ModelProperties;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.stream.Stream;
 
 public class ModelImportedModelsTableModel extends SimpleTableModel<SModelReference> {
 
@@ -27,16 +26,11 @@ public class ModelImportedModelsTableModel extends SimpleTableModel<SModelRefere
 
   public ModelImportedModelsTableModel(ModelProperties modelProperties) {
     myModelProperties = modelProperties;
-    init();
   }
 
   @Override
   public void init() {
-    List<SModelReference> list = new LinkedList<SModelReference>();
-    for(SModelReference reference : myModelProperties.getImportedModels()) {
-      list.add(((jetbrains.mps.smodel.SModelReference)reference).update());
-    }
-    myTableItems.addAll(list);
+    myTableItems.addAll(myModelProperties.getImportedModels());
   }
 
   @Override
@@ -62,5 +56,10 @@ public class ModelImportedModelsTableModel extends SimpleTableModel<SModelRefere
   @Override
   public String getColumnName(int column) {
     return "Imported models";
+  }
+
+  public Stream<SModelReference> getItemsStream() {
+    // just an attempt to find better API than 'for (rowCount) getValue(row)', expose if proved useful
+    return myTableItems.stream();
   }
 }

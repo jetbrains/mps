@@ -15,59 +15,57 @@
  */
 package jetbrains.mps.plugins;
 
+import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.module.ReloadableModuleBase;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.Deptype;
 
 import java.util.*;
 
+// TODO: remove another implementation graph from here!
+// FIXME: notice that we do tolerate cycles here
+//todo check for hotspot new GlobalDepMan().getModules();
 public class PluginSorter {
-  //todo for now, the cycle will be broken in unknown place
-  public static List<SModule> sortByDependencies(Collection<SModule> modules) {
-    List<Item> items = new ArrayList<Item>();
-    Map<SModule, Item> module2Item = new HashMap<SModule, Item>();
-    for (SModule module : modules) {
-      Item item = new Item(module, -1);
-      items.add(item);
-      module2Item.put(module, item);
+  private final Collection<ReloadableModule> myModules;
+
+  public PluginSorter(Collection<ReloadableModule> modules) {
+    myModules = modules;
+  }
+
+  public List<ReloadableModule> sortByDependencies() {
+    return new TopologySorter().sort();
+  }
+
+  private class TopologySorter {
+    private Set<ReloadableModule> myVisited;
+    private List<ReloadableModule> result;
+
+    public List<ReloadableModule> sort() {
+      myVisited = new HashSet<ReloadableModule>(myModules.size());
+      result = new ArrayList<ReloadableModule>(myModules.size());
+      dfs();
+      return result;
     }
-    int initIndex = 0;
-    for (Item item : items) {
-      if (item.myInitIndex == -1) {
-        initIndex = init(item, module2Item, initIndex);
+
+    private void dfs() {
+      for (ReloadableModule module : myModules) {
+        if (myVisited.contains(module)) continue;
+        dfs0(module);
       }
     }
 
-    SModule[] result = new SModule[initIndex];
-
-    for (Item item : items) {
-      result[item.myInitIndex] = item.myModule;
-    }
-    return Arrays.asList(result);
-  }
-
-  private static int init(Item item, Map<SModule, Item> module2Item, int initIndex) {
-    item.myInitIndex = -2;
-    for (SModule dependency : new GlobalModuleDependenciesManager(item.myModule).getModules(Deptype.VISIBLE)) {
-      Item depItem = module2Item.get(dependency);
-      if (depItem != null) {
-        if (depItem.myInitIndex == -1) {
-          initIndex = init(depItem, module2Item, initIndex);
+    private void dfs0(ReloadableModule module) {
+      myVisited.add(module);
+      Collection<SModule> deps = new GlobalModuleDependenciesManager(module).getModules(Deptype.VISIBLE);
+      for (SModule dependency : deps) {
+        if (dependency instanceof ReloadableModule) {
+          if (myModules.contains(dependency) && !myVisited.contains(dependency)) {
+            dfs0((ReloadableModuleBase) dependency);
+          }
         }
       }
+      result.add(module);
     }
-    item.myInitIndex = initIndex;
-    initIndex++;
-    return initIndex;
-  }
-
-  private static class Item {
-    private Item(SModule module, int initIndex) {
-      this.myModule = module;
-      this.myInitIndex = initIndex;
-    }
-
-    public SModule myModule;
-    public int myInitIndex;
   }
 }

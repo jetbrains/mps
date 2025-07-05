@@ -7,117 +7,45 @@ import java.util.concurrent.Future;
 import jetbrains.mps.make.script.IResult;
 import jetbrains.mps.make.MakeSession;
 import jetbrains.mps.make.resources.IResource;
+import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.script.IScriptController;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.make.dependencies.ModulesClusterizer;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.make.script.ScriptBuilder;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.make.facet.IFacet;
-import jetbrains.mps.make.facet.FacetRegistry;
-import jetbrains.mps.make.facet.ITarget;
+import jetbrains.mps.make.script.IConfigMonitor;
+import jetbrains.mps.internal.make.runtime.script.MessageFeedbackStrategy;
+import jetbrains.mps.make.script.IFeedback;
+import jetbrains.mps.make.script.IOption;
+import jetbrains.mps.make.script.IQuery;
 
 public abstract class AbstractMakeService implements IMakeService {
   public AbstractMakeService() {
   }
-
   @Override
-  public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources, IScript script, IScriptController controller, @NotNull ProgressMonitor monitor) {
-    // compatibility: calls method without monitor 
-    return make(session, resources, script, controller);
+  public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources) {
+    return make(session, resources, null, null, new EmptyProgressMonitor());
   }
-
-  protected abstract class AbstractInputProcessor {
-    protected AbstractInputProcessor() {
+  @Override
+  public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources, IScript script) {
+    return make(session, resources, script, null, new EmptyProgressMonitor());
+  }
+  @Override
+  public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources, IScript script, IScriptController controller) {
+    return make(session, resources, script, controller, new EmptyProgressMonitor());
+  }
+  /**
+   * Reasonable defaults when no IScriptController is supplied by client
+   */
+  public static class DefaultMonitor extends IConfigMonitor.Stub {
+    private MessageFeedbackStrategy myFeedback;
+    public DefaultMonitor(MakeSession makeSession) {
+      myFeedback = new MessageFeedbackStrategy(makeSession.getMessageHandler());
     }
-
-    @Deprecated
-    protected final Future<IResult> processRawInput(Iterable<? extends IResource> inputRes, IScript defaultScript, IScriptController controller) {
-      // use the one with progress monitor 
-      // TODO remove (deprecated in 3.0) 
-      return processRawInput(inputRes, defaultScript, controller, new EmptyProgressMonitor());
+    @Override
+    public void reportFeedback(IFeedback fdbk) {
+      myFeedback.reportFeedback(fdbk);
     }
-
-    protected final Future<IResult> processRawInput(final Iterable<? extends IResource> inputRes, final IScript defaultScript, IScriptController controller, @NotNull ProgressMonitor monitor) {
-      final Wrappers._T<Iterable<? extends Iterable<? extends IResource>>> clInput = new Wrappers._T<Iterable<? extends Iterable<? extends IResource>>>();
-      final Wrappers._T<Iterable<? extends Iterable<String>>> usedLangs = new Wrappers._T<Iterable<? extends Iterable<String>>>();
-      ModelAccess.instance().runReadAction(new Runnable() {
-        public void run() {
-          final ModulesClusterizer mcr = new ModulesClusterizer();
-          clInput.value = mcr.clusterize(Sequence.fromIterable(inputRes).select(new ISelector<IResource, IResource>() {
-            public IResource select(IResource r) {
-              return r;
-            }
-          }));
-          usedLangs.value = Sequence.fromIterable(clInput.value).select(new ISelector<Iterable<? extends IResource>, Iterable<String>>() {
-            public Iterable<String> select(Iterable<? extends IResource> it) {
-              return mcr.allUsedLangNamespaces(it);
-            }
-          }).toListSequence();
-        }
-      });
-
-      Iterable<ScriptBuilder> scriptBuilders = Sequence.fromIterable(usedLangs.value).select(new ISelector<Iterable<String>, ScriptBuilder>() {
-        public ScriptBuilder select(Iterable<String> langs) {
-          final ScriptBuilder scb = new ScriptBuilder();
-          Sequence.fromIterable(langs).visitAll(new IVisitor<String>() {
-            public void visit(String ns) {
-              LanguageRuntime lr = LanguageRegistry.getInstance().getLanguage(ns);
-              Iterable<IFacet> fcts = lr.getFacetProvider().getDescriptor(null).getManifest().facets();
-              scb.withFacetNames(Sequence.fromIterable(fcts).select(new ISelector<IFacet, IFacet.Name>() {
-                public IFacet.Name select(IFacet fct) {
-                  return fct.getName();
-                }
-              }));
-              scb.withFacetNames(Sequence.fromIterable(FacetRegistry.getInstance().getFacetsForLanguage(ns)).select(new ISelector<IFacet, IFacet.Name>() {
-                public IFacet.Name select(IFacet fct) {
-                  return fct.getName();
-                }
-              }));
-            }
-          });
-          return scb.withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.Make.make"));
-        }
-      }).toListSequence();
-
-      Iterable<IScript> scripts = ((defaultScript != null ?
-        Sequence.fromIterable(scriptBuilders).select(new ISelector<ScriptBuilder, IScript>() {
-          public IScript select(ScriptBuilder it) {
-            return defaultScript;
-          }
-        }) :
-        Sequence.fromIterable(scriptBuilders).select(new ISelector<ScriptBuilder, IScript>() {
-          public IScript select(ScriptBuilder scb) {
-            return toScript(scb);
-          }
-        })
-      ));
-
-      return processClusteredInput((Iterable<? extends Iterable<IResource>>) clInput.value, scripts, controller, monitor);
-    }
-
-    protected IScript toScript(ScriptBuilder scriptBuilder) {
-      return scriptBuilder.toScript();
-    }
-
-    @Deprecated
-    protected Future<IResult> processClusteredInput(Iterable<? extends Iterable<IResource>> clustRes, Iterable<IScript> scripts, IScriptController controller) {
-      // TODO remove (deprecated in 3.0) 
-      // override the one with progress monitor 
-      return null;
-    }
-
-    protected Future<IResult> processClusteredInput(Iterable<? extends Iterable<IResource>> clustRes, Iterable<IScript> scripts, IScriptController controller, @NotNull ProgressMonitor monitor) {
-      // compatibility 
-      return this.processClusteredInput(clustRes, scripts, controller);
+    @Override
+    public <T extends IOption> T relayQuery(IQuery<T> query) {
+      return query.defaultOption();
     }
   }
 }

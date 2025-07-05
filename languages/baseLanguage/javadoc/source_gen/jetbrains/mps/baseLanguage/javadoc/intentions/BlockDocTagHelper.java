@@ -22,13 +22,8 @@ public class BlockDocTagHelper {
         }
       }
     }
-    editorContext.getEditorComponent().changeSelection((cellToSelect != null ?
-      cellToSelect :
-      tagEditorCell
-    ));
+    editorContext.getEditorComponent().changeSelection((cellToSelect != null ? cellToSelect : tagEditorCell));
   }
-
-
 
   public static void setFocus(EditorContext editorContext, SNode node) {
     setFocus(editorContext, node, "text");

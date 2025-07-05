@@ -1,127 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:c392e01b-c969-4146-91b4-5620944c9519(org.jetbrains.mps.stateMachine.sadbox.model)">
-  <persistence version="8" />
-  <language namespace="530533ee-f789-4c1e-ba56-de1bbf3afda7(jetbrains.mps.samples.multipleProjections.stateMachine)" />
-  <language namespace="8d18a45b-ac7e-4d84-a539-75f1d720b09b(jetbrains.mps.samples.multipleProjections.requestTracking)" />
-  <import index="f4vt" modelUID="r:fa417a98-a00c-4f7c-9ba5-6ec71a5b205a(jetbrains.mps.samples.multipleProjections.requestTracking.structure)" version="0" implicit="yes" />
-  <import index="tpck" modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" implicit="yes" />
-  <import index="owg1" modelUID="r:b986234b-0ae5-423e-aca0-76655e94d151(jetbrains.mps.samples.multipleProjections.stateMachine.structure)" version="0" implicit="yes" />
-  <root type="f4vt.WorkflowContainer" typeId="f4vt.3675491646420733795" id="3675491646420810827" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="org.jetbrains.workflow" />
-    <node role="workflows" roleId="f4vt.3675491646420738766" type="f4vt.Workflow" typeId="f4vt.3675491646420739318" id="3675491646420826293" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="simpleIssueTracking" />
-      <property name="presentation" nameId="f4vt.3675491646420872268" value="tabular" />
-      <node role="stateMachine" roleId="f4vt.3675491646420739343" type="owg1.StateMachine" typeId="owg1.763922957008726945" id="3675491646420826294" nodeInfo="ng">
-        <node role="transitions" roleId="owg1.763922957008726948" type="owg1.Transition" typeId="owg1.763922957008729149" id="3675491646420854483" nodeInfo="ng">
-          <property name="condition" nameId="owg1.763922957008729153" value="in Open state" />
-          <node role="toState" roleId="owg1.763922957008729152" type="owg1.StateReference" typeId="owg1.763922957008729156" id="3675491646420854495" nodeInfo="ng">
-            <link role="state" roleId="owg1.763922957008729157" targetNodeId="3675491646420854475" resolveInfo="Closed" />
+<model ref="r:c392e01b-c969-4146-91b4-5620944c9519(org.jetbrains.mps.stateMachine.sadbox.model)">
+  <persistence version="9" />
+  <languages>
+    <use id="8d18a45b-ac7e-4d84-a539-75f1d720b09b" name="jetbrains.mps.samples.multipleProjections.requestTracking" version="0" />
+    <use id="530533ee-f789-4c1e-ba56-de1bbf3afda7" name="jetbrains.mps.samples.multipleProjections.stateMachine" version="0" />
+  </languages>
+  <imports />
+  <registry>
+    <language id="530533ee-f789-4c1e-ba56-de1bbf3afda7" name="jetbrains.mps.samples.multipleProjections.stateMachine">
+      <concept id="763922957008729154" name="jetbrains.mps.samples.multipleProjections.stateMachine.structure.State" flags="ng" index="32R8Iz" />
+      <concept id="763922957008729156" name="jetbrains.mps.samples.multipleProjections.stateMachine.structure.StateReference" flags="ng" index="32R8I_">
+        <reference id="763922957008729157" name="state" index="32R8I$" />
+      </concept>
+      <concept id="763922957008729158" name="jetbrains.mps.samples.multipleProjections.stateMachine.structure.EventReference" flags="ng" index="32R8IB">
+        <reference id="763922957008729159" name="event" index="32R8IA" />
+      </concept>
+      <concept id="763922957008729147" name="jetbrains.mps.samples.multipleProjections.stateMachine.structure.Event" flags="ng" index="32R8Jq" />
+      <concept id="763922957008729149" name="jetbrains.mps.samples.multipleProjections.stateMachine.structure.Transition" flags="ng" index="32R8Js">
+        <property id="763922957008729153" name="condition" index="32R8Iw" />
+        <child id="763922957008729152" name="toState" index="32R8Ix" />
+        <child id="763922957008729151" name="trigger" index="32R8Ju" />
+        <child id="763922957008729150" name="fromState" index="32R8Jv" />
+      </concept>
+      <concept id="763922957008726945" name="jetbrains.mps.samples.multipleProjections.stateMachine.structure.StateMachine" flags="ng" index="32R9h0">
+        <child id="763922957008726947" name="events" index="32R9h2" />
+        <child id="763922957008726949" name="states" index="32R9h4" />
+        <child id="763922957008726948" name="transitions" index="32R9h5" />
+      </concept>
+    </language>
+    <language id="8d18a45b-ac7e-4d84-a539-75f1d720b09b" name="jetbrains.mps.samples.multipleProjections.requestTracking">
+      <concept id="3675491646420739318" name="jetbrains.mps.samples.multipleProjections.requestTracking.structure.Workflow" flags="ng" index="3OOLNr">
+        <property id="3675491646420872268" name="presentation" index="3OPhhx" />
+        <child id="3675491646420739343" name="stateMachine" index="3OOLOy" />
+      </concept>
+      <concept id="3675491646420733795" name="jetbrains.mps.samples.multipleProjections.requestTracking.structure.WorkflowContainer" flags="ng" index="3OONte">
+        <child id="3675491646420738766" name="workflows" index="3OOLFz" />
+      </concept>
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="3OONte" id="3c1Y2R7OZLb">
+    <property role="TrG5h" value="org.jetbrains.workflow" />
+    <node concept="3OOLNr" id="3c1Y2R7P3yP" role="3OOLFz">
+      <property role="TrG5h" value="simpleIssueTracking" />
+      <property role="3OPhhx" value="tabular" />
+      <node concept="32R9h0" id="3c1Y2R7P3yQ" role="3OOLOy">
+        <node concept="32R8Js" id="3c1Y2R7Parj" role="32R9h5">
+          <property role="32R8Iw" value="in Open state" />
+          <node concept="32R8I_" id="3c1Y2R7Parv" role="32R8Ix">
+            <ref role="32R8I$" node="3c1Y2R7Parb" resolve="Closed" />
           </node>
-          <node role="fromState" roleId="owg1.763922957008729150" type="owg1.StateReference" typeId="owg1.763922957008729156" id="3675491646420854493" nodeInfo="ng">
-            <link role="state" roleId="owg1.763922957008729157" targetNodeId="3675491646420854469" resolveInfo="Open" />
+          <node concept="32R8I_" id="3c1Y2R7Part" role="32R8Jv">
+            <ref role="32R8I$" node="3c1Y2R7Par5" resolve="Open" />
           </node>
-          <node role="trigger" roleId="owg1.763922957008729151" type="owg1.EventReference" typeId="owg1.763922957008729158" id="3675491646420854491" nodeInfo="ng">
-            <link role="event" roleId="owg1.763922957008729159" targetNodeId="3675491646420854478" resolveInfo="Close" />
-          </node>
-        </node>
-        <node role="transitions" roleId="owg1.763922957008726948" type="owg1.Transition" typeId="owg1.763922957008729149" id="3675491646420854497" nodeInfo="ng">
-          <property name="condition" nameId="owg1.763922957008729153" value="in Closed state" />
-          <node role="toState" roleId="owg1.763922957008729152" type="owg1.StateReference" typeId="owg1.763922957008729156" id="3675491646420854513" nodeInfo="ng">
-            <link role="state" roleId="owg1.763922957008729157" targetNodeId="3675491646420854469" resolveInfo="Open" />
-          </node>
-          <node role="fromState" roleId="owg1.763922957008729150" type="owg1.StateReference" typeId="owg1.763922957008729156" id="3675491646420854511" nodeInfo="ng">
-            <link role="state" roleId="owg1.763922957008729157" targetNodeId="3675491646420854475" resolveInfo="Closed" />
-          </node>
-          <node role="trigger" roleId="owg1.763922957008729151" type="owg1.EventReference" typeId="owg1.763922957008729158" id="3675491646420854509" nodeInfo="ng">
-            <link role="event" roleId="owg1.763922957008729159" targetNodeId="3675491646420854480" resolveInfo="Reopen" />
-          </node>
-        </node>
-        <node role="events" roleId="owg1.763922957008726947" type="owg1.Event" typeId="owg1.763922957008729147" id="3675491646420854478" nodeInfo="ng">
-          <property name="name" nameId="tpck.1169194664001" value="Close" />
-        </node>
-        <node role="events" roleId="owg1.763922957008726947" type="owg1.Event" typeId="owg1.763922957008729147" id="3675491646420854480" nodeInfo="ng">
-          <property name="name" nameId="tpck.1169194664001" value="Reopen" />
-        </node>
-        <node role="states" roleId="owg1.763922957008726949" type="owg1.State" typeId="owg1.763922957008729154" id="3675491646420854469" nodeInfo="ng">
-          <property name="name" nameId="tpck.1169194664001" value="Open" />
-        </node>
-        <node role="states" roleId="owg1.763922957008726949" type="owg1.State" typeId="owg1.763922957008729154" id="3675491646420854475" nodeInfo="ng">
-          <property name="name" nameId="tpck.1169194664001" value="Closed" />
-        </node>
-      </node>
-    </node>
-    <node role="workflows" roleId="f4vt.3675491646420738766" type="f4vt.Workflow" typeId="f4vt.3675491646420739318" id="3675491646420854554" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="advancedIssueTracking" />
-      <property name="presentation" nameId="f4vt.3675491646420872268" value="structural" />
-      <node role="stateMachine" roleId="f4vt.3675491646420739343" type="owg1.StateMachine" typeId="owg1.763922957008726945" id="3675491646420854555" nodeInfo="ng">
-        <node role="transitions" roleId="owg1.763922957008726948" type="owg1.Transition" typeId="owg1.763922957008729149" id="3675491646420854607" nodeInfo="ng">
-          <property name="condition" nameId="owg1.763922957008729153" value="in Open state" />
-          <node role="toState" roleId="owg1.763922957008729152" type="owg1.StateReference" typeId="owg1.763922957008729156" id="3675491646420854646" nodeInfo="ng">
-            <link role="state" roleId="owg1.763922957008729157" targetNodeId="3675491646420854591" resolveInfo="WaitingVerification" />
-          </node>
-          <node role="fromState" roleId="owg1.763922957008729150" type="owg1.StateReference" typeId="owg1.763922957008729156" id="3675491646420854644" nodeInfo="ng">
-            <link role="state" roleId="owg1.763922957008729157" targetNodeId="3675491646420854589" resolveInfo="Open" />
-          </node>
-          <node role="trigger" roleId="owg1.763922957008729151" type="owg1.EventReference" typeId="owg1.763922957008729158" id="3675491646420854615" nodeInfo="ng">
-            <link role="event" roleId="owg1.763922957008729159" targetNodeId="3675491646420854598" resolveInfo="Close" />
+          <node concept="32R8IB" id="3c1Y2R7Parr" role="32R8Ju">
+            <ref role="32R8IA" node="3c1Y2R7Pare" resolve="Close" />
           </node>
         </node>
-        <node role="transitions" roleId="owg1.763922957008726948" type="owg1.Transition" typeId="owg1.763922957008729149" id="3675491646420854697" nodeInfo="ng">
-          <property name="condition" nameId="owg1.763922957008729153" value="in WaitingVerification state" />
-          <node role="toState" roleId="owg1.763922957008729152" type="owg1.StateReference" typeId="owg1.763922957008729156" id="3675491646420854822" nodeInfo="ng">
-            <link role="state" roleId="owg1.763922957008729157" targetNodeId="3675491646420854594" resolveInfo="Closed" />
+        <node concept="32R8Js" id="3c1Y2R7Parx" role="32R9h5">
+          <property role="32R8Iw" value="in Closed state" />
+          <node concept="32R8I_" id="3c1Y2R7ParL" role="32R8Ix">
+            <ref role="32R8I$" node="3c1Y2R7Par5" resolve="Open" />
           </node>
-          <node role="fromState" roleId="owg1.763922957008729150" type="owg1.StateReference" typeId="owg1.763922957008729156" id="3675491646420854820" nodeInfo="ng">
-            <link role="state" roleId="owg1.763922957008729157" targetNodeId="3675491646420854591" resolveInfo="WaitingVerification" />
+          <node concept="32R8I_" id="3c1Y2R7ParJ" role="32R8Jv">
+            <ref role="32R8I$" node="3c1Y2R7Parb" resolve="Closed" />
           </node>
-          <node role="trigger" roleId="owg1.763922957008729151" type="owg1.EventReference" typeId="owg1.763922957008729158" id="3675491646420854713" nodeInfo="ng">
-            <link role="event" roleId="owg1.763922957008729159" targetNodeId="3675491646420854600" resolveInfo="Verify" />
-          </node>
-        </node>
-        <node role="transitions" roleId="owg1.763922957008726948" type="owg1.Transition" typeId="owg1.763922957008729149" id="3675491646420854648" nodeInfo="ng">
-          <property name="condition" nameId="owg1.763922957008729153" value="in WaitingVerification state" />
-          <node role="toState" roleId="owg1.763922957008729152" type="owg1.StateReference" typeId="owg1.763922957008729156" id="3675491646420854664" nodeInfo="ng">
-            <link role="state" roleId="owg1.763922957008729157" targetNodeId="3675491646420854589" resolveInfo="Open" />
-          </node>
-          <node role="fromState" roleId="owg1.763922957008729150" type="owg1.StateReference" typeId="owg1.763922957008729156" id="3675491646420854662" nodeInfo="ng">
-            <link role="state" roleId="owg1.763922957008729157" targetNodeId="3675491646420854591" resolveInfo="WaitingVerification" />
-          </node>
-          <node role="trigger" roleId="owg1.763922957008729151" type="owg1.EventReference" typeId="owg1.763922957008729158" id="3675491646420854660" nodeInfo="ng">
-            <link role="event" roleId="owg1.763922957008729159" targetNodeId="3675491646420854603" resolveInfo="Reopen" />
+          <node concept="32R8IB" id="3c1Y2R7ParH" role="32R8Ju">
+            <ref role="32R8IA" node="3c1Y2R7Parg" resolve="Reopen" />
           </node>
         </node>
-        <node role="transitions" roleId="owg1.763922957008726948" type="owg1.Transition" typeId="owg1.763922957008729149" id="3675491646420854859" nodeInfo="ng">
-          <property name="condition" nameId="owg1.763922957008729153" value="in Closed state" />
-          <node role="toState" roleId="owg1.763922957008729152" type="owg1.StateReference" typeId="owg1.763922957008729156" id="3675491646420854922" nodeInfo="ng">
-            <link role="state" roleId="owg1.763922957008729157" targetNodeId="3675491646420854589" resolveInfo="Open" />
-          </node>
-          <node role="fromState" roleId="owg1.763922957008729150" type="owg1.StateReference" typeId="owg1.763922957008729156" id="3675491646420854920" nodeInfo="ng">
-            <link role="state" roleId="owg1.763922957008729157" targetNodeId="3675491646420854594" resolveInfo="Closed" />
-          </node>
-          <node role="trigger" roleId="owg1.763922957008729151" type="owg1.EventReference" typeId="owg1.763922957008729158" id="3675491646420854879" nodeInfo="ng">
-            <link role="event" roleId="owg1.763922957008729159" targetNodeId="3675491646420854603" resolveInfo="Reopen" />
-          </node>
+        <node concept="32R8Jq" id="3c1Y2R7Pare" role="32R9h2">
+          <property role="TrG5h" value="Close" />
         </node>
-        <node role="events" roleId="owg1.763922957008726947" type="owg1.Event" typeId="owg1.763922957008729147" id="3675491646420854598" nodeInfo="ng">
-          <property name="name" nameId="tpck.1169194664001" value="Close" />
+        <node concept="32R8Jq" id="3c1Y2R7Parg" role="32R9h2">
+          <property role="TrG5h" value="Reopen" />
         </node>
-        <node role="events" roleId="owg1.763922957008726947" type="owg1.Event" typeId="owg1.763922957008729147" id="3675491646420854600" nodeInfo="ng">
-          <property name="name" nameId="tpck.1169194664001" value="Verify" />
+        <node concept="32R8Iz" id="3c1Y2R7Par5" role="32R9h4">
+          <property role="TrG5h" value="Open" />
         </node>
-        <node role="events" roleId="owg1.763922957008726947" type="owg1.Event" typeId="owg1.763922957008729147" id="3675491646420854603" nodeInfo="ng">
-          <property name="name" nameId="tpck.1169194664001" value="Reopen" />
-        </node>
-        <node role="states" roleId="owg1.763922957008726949" type="owg1.State" typeId="owg1.763922957008729154" id="3675491646420854589" nodeInfo="ng">
-          <property name="name" nameId="tpck.1169194664001" value="Open" />
-        </node>
-        <node role="states" roleId="owg1.763922957008726949" type="owg1.State" typeId="owg1.763922957008729154" id="3675491646420854591" nodeInfo="ng">
-          <property name="name" nameId="tpck.1169194664001" value="WaitingVerification" />
-        </node>
-        <node role="states" roleId="owg1.763922957008726949" type="owg1.State" typeId="owg1.763922957008729154" id="3675491646420854594" nodeInfo="ng">
-          <property name="name" nameId="tpck.1169194664001" value="Closed" />
+        <node concept="32R8Iz" id="3c1Y2R7Parb" role="32R9h4">
+          <property role="TrG5h" value="Closed" />
         </node>
       </node>
     </node>
-  </root>
+    <node concept="3OOLNr" id="3c1Y2R7Pasq" role="3OOLFz">
+      <property role="TrG5h" value="advancedIssueTracking" />
+      <property role="3OPhhx" value="structural" />
+      <node concept="32R9h0" id="3c1Y2R7Pasr" role="3OOLOy">
+        <node concept="32R8Js" id="3c1Y2R7Patf" role="32R9h5">
+          <property role="32R8Iw" value="in Open state" />
+          <node concept="32R8I_" id="3c1Y2R7PatQ" role="32R8Ix">
+            <ref role="32R8I$" node="3c1Y2R7PasZ" resolve="WaitingVerification" />
+          </node>
+          <node concept="32R8I_" id="3c1Y2R7PatO" role="32R8Jv">
+            <ref role="32R8I$" node="3c1Y2R7PasX" resolve="Open" />
+          </node>
+          <node concept="32R8IB" id="3c1Y2R7Patn" role="32R8Ju">
+            <ref role="32R8IA" node="3c1Y2R7Pat6" resolve="Close" />
+          </node>
+        </node>
+        <node concept="32R8Js" id="3c1Y2R7PauD" role="32R9h5">
+          <property role="32R8Iw" value="in WaitingVerification state" />
+          <node concept="32R8I_" id="3c1Y2R7PawA" role="32R8Ix">
+            <ref role="32R8I$" node="3c1Y2R7Pat2" resolve="Closed" />
+          </node>
+          <node concept="32R8I_" id="3c1Y2R7Paw$" role="32R8Jv">
+            <ref role="32R8I$" node="3c1Y2R7PasZ" resolve="WaitingVerification" />
+          </node>
+          <node concept="32R8IB" id="3c1Y2R7PauT" role="32R8Ju">
+            <ref role="32R8IA" node="3c1Y2R7Pat8" resolve="Verify" />
+          </node>
+        </node>
+        <node concept="32R8Js" id="3c1Y2R7PatS" role="32R9h5">
+          <property role="32R8Iw" value="in WaitingVerification state" />
+          <node concept="32R8I_" id="3c1Y2R7Pau8" role="32R8Ix">
+            <ref role="32R8I$" node="3c1Y2R7PasX" resolve="Open" />
+          </node>
+          <node concept="32R8I_" id="3c1Y2R7Pau6" role="32R8Jv">
+            <ref role="32R8I$" node="3c1Y2R7PasZ" resolve="WaitingVerification" />
+          </node>
+          <node concept="32R8IB" id="3c1Y2R7Pau4" role="32R8Ju">
+            <ref role="32R8IA" node="3c1Y2R7Patb" resolve="Reopen" />
+          </node>
+        </node>
+        <node concept="32R8Js" id="3c1Y2R7Paxb" role="32R9h5">
+          <property role="32R8Iw" value="in Closed state" />
+          <node concept="32R8I_" id="3c1Y2R7Paya" role="32R8Ix">
+            <ref role="32R8I$" node="3c1Y2R7PasX" resolve="Open" />
+          </node>
+          <node concept="32R8I_" id="3c1Y2R7Pay8" role="32R8Jv">
+            <ref role="32R8I$" node="3c1Y2R7Pat2" resolve="Closed" />
+          </node>
+          <node concept="32R8IB" id="3c1Y2R7Paxv" role="32R8Ju">
+            <ref role="32R8IA" node="3c1Y2R7Patb" resolve="Reopen" />
+          </node>
+        </node>
+        <node concept="32R8Jq" id="3c1Y2R7Pat6" role="32R9h2">
+          <property role="TrG5h" value="Close" />
+        </node>
+        <node concept="32R8Jq" id="3c1Y2R7Pat8" role="32R9h2">
+          <property role="TrG5h" value="Verify" />
+        </node>
+        <node concept="32R8Jq" id="3c1Y2R7Patb" role="32R9h2">
+          <property role="TrG5h" value="Reopen" />
+        </node>
+        <node concept="32R8Iz" id="3c1Y2R7PasX" role="32R9h4">
+          <property role="TrG5h" value="Open" />
+        </node>
+        <node concept="32R8Iz" id="3c1Y2R7PasZ" role="32R9h4">
+          <property role="TrG5h" value="WaitingVerification" />
+        </node>
+        <node concept="32R8Iz" id="3c1Y2R7Pat2" role="32R9h4">
+          <property role="TrG5h" value="Closed" />
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2010 JetBrains s.r.o.
+  ~ Copyright 2003-2015 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -17,29 +17,15 @@
 <idea-plugin>
   <id>jetbrains.mps.ide.make</id>
   <name>Make</name>
-  <description>Allows to transform models</description>
-  <version>3.0.5</version>
+  <description>Make IDE Integration</description>
+  <version>2017.1.4</version>
   <vendor url="http://www.jetbrains.com/mps/" logo="/MPS_16.png">JetBrains</vendor>
-  <idea-version since-build="129.1" until-build="134.1"/>
+  <idea-version since-build="171.1" until-build="172.1"/>
 
-
-  <application-components>
-    <component>
-      <implementation-class>jetbrains.mps.ide.make.actions.Make_PluginInitializer</implementation-class>
-    </component>
-
-    <component>
-      <interface-class>jetbrains.mps.make.IMakeService</interface-class>
-      <implementation-class>jetbrains.mps.ide.make.WorkbenchMakeService</implementation-class>
-    </component>
-
-  </application-components>
-
-  <project-components>
-    <component><implementation-class>jetbrains.mps.ide.make.actions.TransientModelsNotification</implementation-class></component>
-  </project-components>
+  <depends>com.intellij.modules.mps</depends>
 
   <extensions defaultExtensionNs="com.intellij">
+    <mps.LanguageLibrary dir="/"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
   </extensions>
 </idea-plugin>

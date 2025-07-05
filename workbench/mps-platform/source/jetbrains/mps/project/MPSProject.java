@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,63 +13,60 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.project;import org.jetbrains.mps.openapi.module.SModule;
+package jetbrains.mps.project;
 
+import com.intellij.ide.impl.ProjectUtil;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.components.ProjectComponent;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import com.intellij.openapi.project.ex.ProjectManagerEx;
+import com.intellij.openapi.util.InvalidDataException;
+import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.ide.vfs.ProjectRootListenerComponent;
+import jetbrains.mps.project.structure.project.ProjectDescriptor;
+import org.jdom.JDOMException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class MPSProject extends Project implements ProjectComponent {
-  protected com.intellij.openapi.project.Project myProject;
+/**
+ * Represents a project based on the idea platform project
+ * Used in the idea plugin
+ */
+public class MPSProject extends ProjectBase implements FileBasedProject, ProjectComponent {
+  private com.intellij.openapi.project.Project myProject;
+  private final List<ProjectModuleLoadingListener> myListeners = new ArrayList<>();
 
-  public MPSProject(com.intellij.openapi.project.Project project) {
+  public MPSProject(@NotNull com.intellij.openapi.project.Project project, ProjectRootListenerComponent unused) {
+    super(new ProjectDescriptor(project.getName()));
     myProject = project;
   }
 
   @Override
+  public void initComponent() {
+    ModuleFileChangeListener listener = new ModuleFileChangeListener(this);
+    myListeners.add(listener);
+    addListener(listener);
+    ClassLoaderManager.getInstance().runNonReloadableTransaction(this::update);
+  }
+
+  public void disposeComponent() {
+    myListeners.forEach(this::removeListener);
+  }
+
   @NotNull
-  public List<SModule> getModules() {
-    // TODO remove after 3.0, this method is a copy of Project.getModules() returning List<SModule>
-    List<SModule> result = new ArrayList<SModule>();
-    for (SModuleReference ref : myModules) {
-      SModule module = ModuleRepositoryFacade.getInstance().getModule(ref);
-      if (module != null) {
-        result.add(module);
-      }
+  @Override
+  public File getProjectFile() {
+    String presentableUrl = myProject.getPresentableUrl();
+    if (presentableUrl == null) {
+      assert myProject.isDefault() : "Broken contract : url is null whenever the project is default!";
+      throw new IllegalArgumentException("The project url is null (default project?)");
     }
-    return result;
-  }
-
-  @Override
-  public List<SModule> getModulesWithGenerators() {
-    // TODO remove after 3.0, this method is a copy of Project.getModulesWithGenerators() returning List<SModule>
-    List<SModule> modules = getModules();
-    List<SModule> generators = new ArrayList<SModule>();
-    for (SModule m : modules) {
-      if (m instanceof Language) {
-        generators.addAll(((Language) m).getGenerators());
-      }
-    }
-    modules.addAll(generators);
-    return modules;
-  }
-
-  @Override
-  public void projectOpened() {
-    super.projectOpened();
-  }
-
-  @Override
-  public void projectClosed() {
-    super.projectClosed();
+    return new File(presentableUrl);
   }
 
   @Override
@@ -80,31 +77,19 @@ public class MPSProject extends Project implements ProjectComponent {
   }
 
   @Override
-  public void initComponent() {
-    String url = myProject.getPresentableUrl();
-    myProjectFile = url == null ? null : new File(url);
-  }
-
-  @Override
-  public void disposeComponent() {
-    dispose();
-    myProjectFile = null;
-  }
-
-  //-----------project holder end
-
-  public static final String COMPONENT = "component";
-  public static final String CLASS = "class";
-
-  @Override
   public boolean isDisposed() {
     return super.isDisposed() || myProject.isDisposed();
   }
 
+  /**
+   * @return the backing idea project
+   */
+  @NotNull
   public com.intellij.openapi.project.Project getProject() {
     return myProject;
   }
 
+  @NotNull
   @Override
   public String getName() {
     return getProject().getName();
@@ -115,25 +100,28 @@ public class MPSProject extends Project implements ProjectComponent {
     getProject().save();
   }
 
+  public static MPSProject open(@NotNull String projectPath) throws InvalidDataException, IOException, JDOMException {
+    com.intellij.openapi.project.Project project = ProjectManagerEx.getInstanceEx().loadAndOpenProject(projectPath);
+    if (project == null) {
+      return null;
+    }
+    return project.getComponent(MPSProject.class);
+  }
+
+  /**
+   * closing the project if it has not already been closed
+   */
   @Override
-  public List<String> getWatchedModulesPaths() {
-    return Collections.emptyList();
+  public void dispose() {
+    if (isOpened()) {
+      ApplicationManager.getApplication().invokeAndWait(() -> ProjectUtil.closeAndDispose(myProject), ModalityState.NON_MODAL);
+    }
+
+    super.dispose();
   }
 
   @Override
-  @Deprecated
-  // should be left for compatibility with generated plugins (editor openers)
   public <T> T getComponent(Class<T> clazz) {
     return getProject().getComponent(clazz);
-  }
-
-  @Deprecated //now this is done in ProjectCloseClassReloader
-  public void dispose(boolean reloadAll) {
-    dispose();
-  }
-
-  @Override
-  public boolean isHidden() {
-    return false;
   }
 }

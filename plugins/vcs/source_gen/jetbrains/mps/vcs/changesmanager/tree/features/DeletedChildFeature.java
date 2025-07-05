@@ -5,26 +5,24 @@ package jetbrains.mps.vcs.changesmanager.tree.features;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 public class DeletedChildFeature extends AbstractNodeFeature {
   private String myRole;
   private int myIndex;
-
   public DeletedChildFeature(@NotNull SNodeReference nodePointer, String role, int index) {
     super(nodePointer);
     myRole = role;
     myIndex = index;
   }
-
   @NotNull
   @Override
   public String toString() {
     return "Node reference {" + getNodePointerString() + "|" + myRole + "|" + myIndex + "}";
   }
-
   @Nullable
   @Override
-  public Feature getParent() {
+  protected Feature getParent(SRepository repo) {
     return new NodeFeature(getNodePointer());
   }
 }

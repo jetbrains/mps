@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 /*package*/ abstract class AbstractShowInFileView extends AbstractVcsAction {
   /*package*/ AbstractShowInFileView() {
   }
-
   @Override
   protected void actionPerformed(VcsContext e) {
     final Project project = e.getProject();
@@ -27,7 +26,6 @@ import org.jetbrains.annotations.NotNull;
       view.selectNode(selectedFile, true);
     }
   }
-
   @Nullable
   private VirtualFile calculateSelectedFile(VcsContext e) {
     VirtualFile[] selectedFiles = e.getSelectedFiles();
@@ -39,11 +37,13 @@ import org.jetbrains.annotations.NotNull;
     }
     return VfsUtil.getCommonAncestors(selectedFiles)[0];
   }
-
   protected abstract FileViewProjectPane getView(Project project);
-
   @Override
   protected void update(VcsContext vcsContext, Presentation presentation) {
+    if (vcsContext.getProject() == null) {
+      presentation.setEnabled(false);
+      return;
+    }
     List<VirtualFile> baseDirs = getRoots(vcsContext);
     VirtualFile selectedFile = calculateSelectedFile(vcsContext);
     if (selectedFile != null) {
@@ -56,9 +56,7 @@ import org.jetbrains.annotations.NotNull;
     }
     presentation.setEnabled(false);
   }
-
   protected abstract List<VirtualFile> getRoots(VcsContext vcsContext);
-
   private boolean canScroll(VirtualFile baseDir, @NotNull VirtualFile selectedFile) {
     if (baseDir != null) {
       return VfsUtil.isAncestor(baseDir, selectedFile, false);

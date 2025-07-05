@@ -6,55 +6,9 @@ import jetbrains.mps.nodeEditor.DefaultNodeEditor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.cells.ModelAccessor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
-import jetbrains.mps.openapi.editor.cells.CellActionType;
-import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 
 public class TextCommentLinePart_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createCollection_x1gmbt_a(editorContext, node);
-  }
-
-  private EditorCell createCollection_x1gmbt_a(EditorContext editorContext, SNode node) {
-    EditorCell_Collection editorCell = EditorCell_Collection.createIndent2(editorContext, node);
-    editorCell.setCellId("Collection_x1gmbt_a");
-    editorCell.setBig(true);
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-    style.set(StyleAttributes.SELECTABLE, false);
-    editorCell.getStyle().putAll(style);
-    HandleEnterInTheEnd_Actions.setCellActions(editorCell, node, editorContext);
-    editorCell.addEditorCell(this.createModelAccess_x1gmbt_a0(editorContext, node));
-    return editorCell;
-  }
-
-  private EditorCell createModelAccess_x1gmbt_a0(final EditorContext editorContext, final SNode node) {
-    ModelAccessor modelAccessor = new ModelAccessor() {
-      public String getText() {
-        return SPropertyOperations.getString(node, "text");
-      }
-
-      public void setText(String text) {
-        SPropertyOperations.set(node, "text", text);
-        TextCommentPartUtil.processCellText(editorContext, node, text);
-      }
-
-      public boolean isValidText(String text) {
-        return true;
-      }
-    };
-    EditorCell_Property editorCell = EditorCell_Property.create(editorContext, modelAccessor, node);
-    editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
-    editorCell.setCellId("ModelAccess_x1gmbt_a0");
-    TextCommentLinePart_ActionMap.setCellActions(editorCell, node, editorContext);
-    editorCell.setDefaultText("");
-    return editorCell;
+    return new TextCommentLinePart_EditorBuilder_a(editorContext, node).createCell();
   }
 }

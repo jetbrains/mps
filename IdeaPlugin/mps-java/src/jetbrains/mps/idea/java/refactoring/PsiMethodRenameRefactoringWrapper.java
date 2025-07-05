@@ -35,11 +35,9 @@ import java.util.List;
  */
 
 public class PsiMethodRenameRefactoringWrapper extends PsiRenameRefactoringWrapper {
-  private boolean myOverriding;
 
-  public PsiMethodRenameRefactoringWrapper(boolean overriding) {
+  public PsiMethodRenameRefactoringWrapper() {
     super(RefactoringUtil.getRefactoringByClassName("jetbrains.mps.baseLanguage.refactorings.RenameMethod"));
-    myOverriding = overriding;
   }
 
   @Override
@@ -49,7 +47,7 @@ public class PsiMethodRenameRefactoringWrapper extends PsiRenameRefactoringWrapp
 
     // now do the PSI part of refactoring
 
-    Project project = ProjectHelper.toIdeaProject(refactoringContext.getCurrentOperationContext().getProject());
+    Project project = ProjectHelper.toIdeaProject(refactoringContext.getSelectedProject());
     PsiMethod method = (PsiMethod) MPSPsiProvider.getInstance(project).getPsi(refactoringContext.getSelectedNode());
 
     String newName = (String) refactoringContext.getParameter("newName");
@@ -63,21 +61,18 @@ public class PsiMethodRenameRefactoringWrapper extends PsiRenameRefactoringWrapp
       psiRef.handleElementRename(newName);
     }
 
-    if (myOverriding) {
-      // rename overriding methods
-      for (PsiMethod m : OverridingMethodsSearch.search(method).findAll()) {
-        if (m instanceof MPSPsiNode) continue;
-        m.setName(newName);
-      }
+    // rename overriding methods
+    for (PsiMethod m : OverridingMethodsSearch.search(method).findAll()) {
+      if (m instanceof MPSPsiNode) continue;
+      m.setName(newName);
     }
-
   }
 
   @Override
   public SearchResults getAffectedNodes(RefactoringContext refactoringContext) {
     SearchResults<SNode> mpsResults = baseRefactoring.getAffectedNodes(refactoringContext);
 
-    Project project = ProjectHelper.toIdeaProject(refactoringContext.getCurrentOperationContext().getProject());
+    Project project = ProjectHelper.toIdeaProject(refactoringContext.getSelectedProject());
     PsiElement psiTarget = MPSPsiProvider.getInstance(project).getPsi(refactoringContext.getSelectedNode());
     assert psiTarget instanceof PsiMethod;
 
@@ -102,27 +97,23 @@ public class PsiMethodRenameRefactoringWrapper extends PsiRenameRefactoringWrapp
   private Query<PsiReference> query(PsiMethod method) {
     Query<PsiReference> exactUsages = MethodReferencesSearch.search(method);
     // todo search scope?
-    if (!myOverriding) {
-      return exactUsages;
-    } else {
-      // include overriding methods' usages
-      // todo fix this ugliness
-      final Query<PsiReference>[] query = new Query[]{exactUsages};
+    // include overriding methods' usages
+    // todo fix this ugliness
+    final Query<PsiReference>[] query = new Query[]{exactUsages};
 
-      OverridingMethodsSearch.search(method).forEach(new Processor<PsiMethod>() {
-        @Override
-        public boolean process(PsiMethod psiMethod) {
-          Query<PsiReference> q = MethodReferencesSearch.search(psiMethod);
-          if (query[0] == null) {
-            query[0] = q;
-          } else {
-            query[0] = new MergeQuery<PsiReference>(query[0], q);
-          }
-          return false;
+    OverridingMethodsSearch.search(method).forEach(new Processor<PsiMethod>() {
+      @Override
+      public boolean process(PsiMethod psiMethod) {
+        Query<PsiReference> q = MethodReferencesSearch.search(psiMethod);
+        if (query[0] == null) {
+          query[0] = q;
+        } else {
+          query[0] = new MergeQuery<PsiReference>(query[0], q);
         }
-      });
+        return false;
+      }
+    });
 
-      return query[0];
-    }
+    return query[0];
   }
 }

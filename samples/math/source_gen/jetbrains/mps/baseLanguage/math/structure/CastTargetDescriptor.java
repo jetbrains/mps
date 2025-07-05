@@ -4,7 +4,7 @@ package jetbrains.mps.baseLanguage.math.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum CastTargetDescriptor {
   unknown("unknown", 0),
@@ -25,16 +25,21 @@ public enum CastTargetDescriptor {
   _____matrix_complex_("...->matrix<complex>", 15),
   _____matrix_bigcomplex_("...->matrix<bigcomplex>", 16);
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final int myValue;
+  CastTargetDescriptor(String name, int value) {
+    myName = name;
+    myValue = value;
+  }
+  public int getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return "" + this.myValue;
+    return Integer.toString(myValue);
   }
-
   public static List<CastTargetDescriptor> getConstants() {
     List<CastTargetDescriptor> list = ListSequence.fromList(new LinkedList<CastTargetDescriptor>());
     ListSequence.fromList(list).addElement(CastTargetDescriptor.unknown);
@@ -56,11 +61,9 @@ public enum CastTargetDescriptor {
     ListSequence.fromList(list).addElement(CastTargetDescriptor._____matrix_bigcomplex_);
     return list;
   }
-
   public static CastTargetDescriptor getDefault() {
     return CastTargetDescriptor.primitive__biginteger;
   }
-
   public static CastTargetDescriptor parseValue(String value) {
     if (value == null) {
       return CastTargetDescriptor.getDefault();
@@ -117,16 +120,5 @@ public enum CastTargetDescriptor {
       return CastTargetDescriptor._____matrix_bigcomplex_;
     }
     return CastTargetDescriptor.getDefault();
-  }
-
-  private int myValue;
-
-  CastTargetDescriptor(String name, int value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public int getValue() {
-    return this.myValue;
   }
 }

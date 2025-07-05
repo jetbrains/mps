@@ -4,23 +4,28 @@ package jetbrains.mps.lang.editor.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum ScriptSwitchEnum {
   plain_text("plain text", "NORMAL"),
   superscript("superscript", "SUPERSCRIPT"),
   subscript("subscript", "SUBSCRIPT");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private ScriptSwitchEnum(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<ScriptSwitchEnum> getConstants() {
     List<ScriptSwitchEnum> list = ListSequence.fromList(new LinkedList<ScriptSwitchEnum>());
     ListSequence.fromList(list).addElement(ScriptSwitchEnum.plain_text);
@@ -28,11 +33,9 @@ public enum ScriptSwitchEnum {
     ListSequence.fromList(list).addElement(ScriptSwitchEnum.subscript);
     return list;
   }
-
   public static ScriptSwitchEnum getDefault() {
     return ScriptSwitchEnum.plain_text;
   }
-
   public static ScriptSwitchEnum parseValue(String value) {
     if (value == null) {
       return ScriptSwitchEnum.getDefault();
@@ -47,16 +50,5 @@ public enum ScriptSwitchEnum {
       return ScriptSwitchEnum.subscript;
     }
     return ScriptSwitchEnum.getDefault();
-  }
-
-  private String myValue;
-
-  ScriptSwitchEnum(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

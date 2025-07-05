@@ -15,18 +15,30 @@
  */
 package jetbrains.mps.plugins;
 
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 
+/**
+ * Dangerous code; must not be used.
+ * Use {@link PluginLoaderRegistry#loadContributors} and {@link PluginLoaderRegistry#unloadContributors} instead
+ */
+@ToRemove(version = 3.3)
+@Deprecated
 public class PluginFactoriesRegistry {
-  private static Collection<AbstractPluginFactory> myPluginFactories = Collections.synchronizedCollection(new ArrayList<AbstractPluginFactory>());
+  private static Collection<AbstractPluginFactory> ourPluginFactories = new ArrayList<AbstractPluginFactory>();
 
-  public static void registerPluginFactory(AbstractPluginFactory contributor) {
-    myPluginFactories.add(contributor);
+  // must NOT be called from reloadable code. Notice that these contributors are never unregistered. Potential memory leak!
+  public synchronized static void registerPluginFactory(@NotNull AbstractPluginFactory contributor) {
+    ourPluginFactories.add(contributor);
   }
 
-  public static Collection<AbstractPluginFactory> getPluginFactories() {
-    return myPluginFactories;
+  public synchronized static Collection<AbstractPluginFactory> flush() {
+    List<AbstractPluginFactory> factories = new ArrayList<AbstractPluginFactory>(ourPluginFactories);
+    ourPluginFactories.clear();
+    return factories;
   }
 }

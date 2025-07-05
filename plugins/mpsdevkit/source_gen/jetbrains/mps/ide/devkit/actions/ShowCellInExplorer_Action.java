@@ -5,68 +5,107 @@ package jetbrains.mps.ide.devkit.actions;
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import org.apache.log4j.Priority;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.ide.devkit.cellExplorer.CellExplorerView;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.ide.editor.MPSEditorDataKeys;
+import com.intellij.openapi.wm.ToolWindow;
+import com.intellij.openapi.fileEditor.FileEditor;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.devkit.cellExplorer.CellExplorerTool;
+import jetbrains.mps.project.Project;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 
 public class ShowCellInExplorer_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.Actions.ShowCellInExplorer;
 
   public ShowCellInExplorer_Action() {
-    super("Show Cell In Explorer", "", ICON);
+    super("Show Cell in Explorer", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(false);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
-  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      this.enable(event.getPresentation());
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "ShowCellInExplorer", t);
-      }
-      this.disable(event.getPresentation());
-    }
+  @Override
+  public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
+    return event.getData(PlatformDataKeys.TOOL_WINDOW) != null || (event.getData(PlatformDataKeys.FILE_EDITOR) != null && event.getData(MPSCommonDataKeys.NODE) != null);
   }
-
+  @Override
+  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
+  }
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("context", event.getData(MPSCommonDataKeys.OPERATION_CONTEXT));
-    if (MapSequence.fromMap(_params).get("context") == null) {
-      return false;
+    {
+      EditorCell p = event.getData(MPSEditorDataKeys.EDITOR_CELL);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("cell", event.getData(MPSEditorDataKeys.EDITOR_CELL));
-    if (MapSequence.fromMap(_params).get("cell") == null) {
-      return false;
+    {
+      ToolWindow p = event.getData(PlatformDataKeys.TOOL_WINDOW);
+    }
+    {
+      FileEditor p = event.getData(PlatformDataKeys.FILE_EDITOR);
+    }
+    {
+      SNode p = event.getData(MPSCommonDataKeys.NODE);
+      if (p == null) {
+        return false;
+      }
+    }
+    {
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      if (p == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      ((IOperationContext) MapSequence.fromMap(_params).get("context")).getComponent(CellExplorerView.class).showCell(((EditorCell) MapSequence.fromMap(_params).get("cell")));
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "ShowCellInExplorer", t);
-      }
+    Runnable runnable = ShowCellInExplorer_Action.this.getEditorActivator(event);
+    if (runnable == null) {
+      return;
     }
-  }
+    CellExplorerTool tool = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(CellExplorerTool.class);
 
-  protected static Logger LOG = LogManager.getLogger(ShowCellInExplorer_Action.class);
+    tool.showCell(event.getData(MPSEditorDataKeys.EDITOR_CELL), runnable);
+  }
+  private Runnable getEditorActivator(final AnActionEvent event) {
+    final FileEditor fileEditor = event.getData(PlatformDataKeys.FILE_EDITOR);
+    final ToolWindow toolWindow = event.getData(PlatformDataKeys.TOOL_WINDOW);
+
+    if (toolWindow != null) {
+      return new Runnable() {
+        public void run() {
+          ShowCellInExplorer_Action.this.activateInToolWindow(toolWindow, event);
+        }
+      };
+    }
+
+    if (fileEditor != null) {
+      return new Runnable() {
+        public void run() {
+          ShowCellInExplorer_Action.this.activateByOpeningNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.NODE), event);
+        }
+      };
+    }
+    return null;
+  }
+  private void activateByOpeningNode(Project project, SNode node, final AnActionEvent event) {
+    new EditorNavigator(project).shallFocus(true).open(node.getReference());
+  }
+  private void activateInToolWindow(ToolWindow toolWindow, final AnActionEvent event) {
+    toolWindow.activate(null, true, true);
+  }
 }

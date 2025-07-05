@@ -4,23 +4,28 @@ package jetbrains.mps.lang.editor.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum _CaretPosition_Enum {
   none("none", "NONE"),
   first("first", "FIRST"),
   last("last", "LAST");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private _CaretPosition_Enum(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<_CaretPosition_Enum> getConstants() {
     List<_CaretPosition_Enum> list = ListSequence.fromList(new LinkedList<_CaretPosition_Enum>());
     ListSequence.fromList(list).addElement(_CaretPosition_Enum.none);
@@ -28,11 +33,9 @@ public enum _CaretPosition_Enum {
     ListSequence.fromList(list).addElement(_CaretPosition_Enum.last);
     return list;
   }
-
   public static _CaretPosition_Enum getDefault() {
     return _CaretPosition_Enum.none;
   }
-
   public static _CaretPosition_Enum parseValue(String value) {
     if (value == null) {
       return _CaretPosition_Enum.getDefault();
@@ -47,16 +50,5 @@ public enum _CaretPosition_Enum {
       return _CaretPosition_Enum.last;
     }
     return _CaretPosition_Enum.getDefault();
-  }
-
-  private String myValue;
-
-  _CaretPosition_Enum(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

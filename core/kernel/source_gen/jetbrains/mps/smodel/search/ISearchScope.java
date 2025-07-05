@@ -11,31 +11,28 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@Deprecated
-public /**
+/**
  * @Deprecated
  */
-interface ISearchScope {
+@Deprecated
+public interface ISearchScope {
   @NotNull
-  public List<SNode> getNodes(Condition<SNode> condition);
-  public boolean isInScope(SNode node);
+  List<SNode> getNodes(Condition<SNode> condition);
+  boolean isInScope(SNode node);
   @NotNull
-  public List<SNode> getNodes();
-  public IReferenceInfoResolver getReferenceInfoResolver(SNode referenceNode, SNode targetConcept);
-
-  public static class Adapter extends Scope {
+  List<SNode> getNodes();
+  IReferenceInfoResolver getReferenceInfoResolver(SNode referenceNode, SNode targetConcept);
+  class Adapter extends Scope {
     protected final ISearchScope searchScope;
-
     public Adapter(ISearchScope searchScope) {
       this.searchScope = searchScope;
     }
-
     @Override
     public SNode resolve(SNode anchor, String refText) {
       return null;
     }
-
     @Override
     public Iterable<SNode> getAvailableElements(@Nullable final String prefix) {
       if ((prefix == null || prefix.length() == 0)) {
@@ -52,7 +49,6 @@ interface ISearchScope {
         }
       });
     }
-
     @Override
     public String getReferenceText(SNode anchor, SNode target) {
       String resolveInfo = SNodeOperations.getResolveInfo(target);
@@ -61,26 +57,21 @@ interface ISearchScope {
       }
       return target.getPresentation();
     }
-
     public ISearchScope getSearchScope() {
       return searchScope;
     }
-
     @Override
     public boolean contains(SNode node) {
       return this.searchScope.isInScope(node);
     }
   }
-
-  public static class RefAdapter extends ISearchScope.Adapter {
+  class RefAdapter extends ISearchScope.Adapter {
     @Nullable
     private final SReference reference;
-
     public RefAdapter(ISearchScope searchScope, @NotNull SReference reference) {
       super(searchScope);
       this.reference = reference;
     }
-
     @Override
     public SNode resolve(SNode anchor, String refText) {
       SNode sourceNode = reference.getSourceNode();
@@ -91,7 +82,7 @@ interface ISearchScope {
         return null;
       }
 
-      IReferenceInfoResolver infoResolver = searchScope.getReferenceInfoResolver(sourceNode, SLinkOperations.getTarget(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.cast(mostSpecificLink, "jetbrains.mps.lang.structure.structure.LinkDeclaration"), "target", false));
+      IReferenceInfoResolver infoResolver = searchScope.getReferenceInfoResolver(sourceNode, SLinkOperations.getTarget(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.cast(mostSpecificLink, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration")), MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target")));
       if (infoResolver == null) {
         return null;
       }

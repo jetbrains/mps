@@ -4,54 +4,23 @@ package jetbrains.mps.make.sandbox.icons;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
-import jetbrains.mps.util.IconUtil;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import org.apache.log4j.Priority;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 
 public class DummyAction_Action extends BaseAction {
-  private static final Icon ICON = IconUtil.getIcon("mpsHome.png");
+  private static final Icon ICON = null;
 
   public DummyAction_Action() {
     super("Dummy", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(false);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
-  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      this.enable(event.getPresentation());
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "DummyAction", t);
-      }
-      this.disable(event.getPresentation());
-    }
-  }
-
-  protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
-    if (!(super.collectActionData(event, _params))) {
-      return false;
-    }
-    return true;
-  }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "DummyAction", t);
-      }
-    }
   }
-
-  protected static Logger LOG = LogManager.getLogger(DummyAction_Action.class);
 }

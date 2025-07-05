@@ -5,88 +5,80 @@ package jetbrains.mps.debugger.java.runtime.evaluation.container;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.mps.openapi.language.SConceptRepository;
-import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 
 public class PresentationUtil {
   public static String getPresentation(SNode statementList) {
-    List<SNode> statements = SLinkOperations.getTargets(statementList, "statement", true);
+    List<SNode> statements = SLinkOperations.getChildren(statementList, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"));
     if (ListSequence.fromList(statements).isEmpty()) {
       return "empty statement";
     }
 
     SNode lastStatement = ListSequence.fromList(statements).last();
-    String suffix = ((ListSequence.fromList(statements).count() > 1 ?
-      "..." :
-      ""
-    ));
+    String suffix = ((ListSequence.fromList(statements).count() > 1 ? "..." : ""));
 
-    if (SNodeOperations.isInstanceOf(lastStatement, "jetbrains.mps.baseLanguage.structure.ExpressionStatement")) {
-      return getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"), "expression", true)) + suffix;
+    if (SNodeOperations.isInstanceOf(lastStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"))) {
+      return getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"))) + suffix;
     }
 
-    return BehaviorReflection.invokeVirtual(String.class, lastStatement, "virtual_getPresentation_1213877396640", new Object[]{}) + suffix;
+    return ((String) BHReflection.invoke(lastStatement, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + suffix;
   }
-
   public static String getExpressionPresentation(@Nullable SNode expression) {
     if (expression == null) {
       return "????";
     }
 
-    if (SNodeOperations.isInstanceOf(expression, "jetbrains.mps.lang.core.structure.INamedConcept")) {
-      return SPropertyOperations.getString(SNodeOperations.cast(expression, "jetbrains.mps.lang.core.structure.INamedConcept"), "name");
+    if (SNodeOperations.isInstanceOf(expression, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"))) {
+      return SPropertyOperations.getString(SNodeOperations.cast(expression, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
     }
 
-    if (SNodeOperations.isInstanceOf(expression, "jetbrains.mps.baseLanguage.structure.DotExpression")) {
-      return getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, "jetbrains.mps.baseLanguage.structure.DotExpression"), "operand", true)) + "." + getOperationPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, "jetbrains.mps.baseLanguage.structure.DotExpression"), "operation", true));
+    if (SNodeOperations.isInstanceOf(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"))) {
+      return getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"))) + "." + getOperationPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation")));
     }
 
-    if (SNodeOperations.isInstanceOf(expression, "jetbrains.mps.baseLanguage.structure.BinaryOperation")) {
-      return getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, "jetbrains.mps.baseLanguage.structure.BinaryOperation"), "leftExpression", true)) + SPropertyOperations.getString(SNodeOperations.getConceptDeclaration(SNodeOperations.cast(expression, "jetbrains.mps.baseLanguage.structure.BinaryOperation")), "conceptAlias") + getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, "jetbrains.mps.baseLanguage.structure.BinaryOperation"), "rightExpression", true));
+    if (SNodeOperations.isInstanceOf(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation"))) {
+      return getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"))) + SConceptOperations.conceptAlias(SNodeOperations.getConcept(SNodeOperations.cast(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")))) + getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression")));
     }
 
-    if (SNodeOperations.isInstanceOf(expression, "jetbrains.mps.baseLanguage.structure.StringLiteral")) {
-      return "\"" + SPropertyOperations.getString(SNodeOperations.cast(expression, "jetbrains.mps.baseLanguage.structure.StringLiteral"), "value") + "\"";
+    if (SNodeOperations.isInstanceOf(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"))) {
+      return "\"" + SPropertyOperations.getString(SNodeOperations.cast(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral")), MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value")) + "\"";
     }
 
-    if (SNodeOperations.isInstanceOf(expression, "jetbrains.mps.baseLanguage.structure.GenericNewExpression")) {
-      return "new " + BehaviorReflection.invokeVirtual(String.class, SLinkOperations.getTarget(SNodeOperations.cast(expression, "jetbrains.mps.baseLanguage.structure.GenericNewExpression"), "creator", true), "virtual_getPresentation_1213877396640", new Object[]{});
+    if (SNodeOperations.isInstanceOf(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression"))) {
+      return "new " + ((String) BHReflection.invoke(SLinkOperations.getTarget(SNodeOperations.cast(expression, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator")), SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
     }
 
-    if (BehaviorReflection.invokeVirtualStatic(Boolean.TYPE, SConceptRepository.getInstance().getConcept(NameUtil.nodeFQName(SNodeOperations.getConceptDeclaration(expression))), "virtual_constant_1262430001741498050", new Object[]{})) {
-      return BehaviorReflection.invokeVirtual(Object.class, expression, "virtual_getCompileTimeConstantValue_1238860310638", new Object[]{SNodeOperations.getModel(expression).getModule()}) + "";
+    if (((boolean) (Boolean) BHReflection.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(expression)), SMethodTrimmedId.create("constant", null, "1653mnvAgr2")))) {
+      return ((Object) BHReflection.invoke(expression, SMethodTrimmedId.create("getCompileTimeConstantValue", null, "i1LP2xI"), SNodeOperations.getModel(expression).getModule())) + "";
     }
 
-    return BehaviorReflection.invokeVirtual(String.class, expression, "virtual_getPresentation_1213877396640", new Object[]{});
+    return ((String) BHReflection.invoke(expression, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
   }
-
   public static String getOperationPresentation(@Nullable SNode operation) {
     if (operation == null) {
       return "????";
     }
-    if (isNotEmpty_6aa0xa_a0b0c(SPropertyOperations.getString(SNodeOperations.getConceptDeclaration(operation), "conceptAlias"))) {
-      return SPropertyOperations.getString(SNodeOperations.getConceptDeclaration(operation), "conceptAlias");
+    if (isNotEmptyString(SConceptOperations.conceptAlias(SNodeOperations.getConcept(operation)))) {
+      return SConceptOperations.conceptAlias(SNodeOperations.getConcept(operation));
     }
-    if (SNodeOperations.isInstanceOf(operation, "jetbrains.mps.baseLanguage.structure.IMethodCall")) {
-      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(operation, "jetbrains.mps.baseLanguage.structure.IMethodCall"), "baseMethodDeclaration", false), "name") + "(" + ListSequence.fromList(SLinkOperations.getTargets(SNodeOperations.cast(operation, "jetbrains.mps.baseLanguage.structure.IMethodCall"), "actualArgument", true)).foldLeft("", new ILeftCombinator<SNode, String>() {
+    if (SNodeOperations.isInstanceOf(operation, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall"))) {
+      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(operation, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "(" + ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(operation, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"))).foldLeft("", new ILeftCombinator<SNode, String>() {
         public String combine(String s, SNode it) {
-          return (((s == null || s.length() == 0) ?
-            "" :
-            s + ","
-          )) + getExpressionPresentation(it);
+          return (((s == null || s.length() == 0) ? "" : s + ",")) + getExpressionPresentation(it);
         }
       }) + ")";
     }
-    return BehaviorReflection.invokeVirtual(String.class, operation, "virtual_getPresentation_1213877396640", new Object[]{});
+    return ((String) BHReflection.invoke(operation, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
   }
-
-  public static boolean isNotEmpty_6aa0xa_a0b0c(String str) {
+  private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,63 +15,52 @@
  */
 package jetbrains.mps.reloading;
 
-import jetbrains.mps.stubs.javastub.classpath.ClassifierKind;
 import jetbrains.mps.util.FlattenIterable;
+import jetbrains.mps.util.iterable.IterableEnumeration;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-/**
- * @author Kostik
- */
 public class CompositeClassPathItem extends AbstractClassPathItem {
   private List<IClassPathItem> myChildren = new ArrayList<IClassPathItem>();
 
-  public CompositeClassPathItem() {
-    this(true);
-  }
-
-  public CompositeClassPathItem(boolean registerForInvalidate) {
-    if (registerForInvalidate) {
-      ClassPathFactory.getInstance().addCompositeClassPathItem(this);
-    }
-  }
-
   public void add(IClassPathItem item) {
     assert item != null;
-    checkValidity();
     myChildren.add(item);
   }
 
   @Override
   public boolean hasClass(String name) {
-    checkValidity();
     for (IClassPathItem item : myChildren) {
-      boolean result = item.hasClass(name);
-      if (result) return true;
+      if (item.hasClass(name)) {
+        return true;
+      }
     }
     return false;
   }
 
   @Override
-  public byte[] getClass(String name) {
-    checkValidity();
+  public boolean hasPackage(@NotNull String name) {
     for (IClassPathItem item : myChildren) {
-      byte[] result = item.getClass(name);
-      if (result != null) return result;
+      if (item.hasPackage(name)) {
+        return true;
+      }
     }
-    return null;
+    return false;
   }
 
+  @Nullable
   @Override
-  public ClassifierKind getClassifierKind(String name) {
-    checkValidity();
+  public ClassBytes getClassBytes(String name) {
     for (IClassPathItem item : myChildren) {
-      ClassifierKind result = item.getClassifierKind(name);
+      ClassBytes result = item.getClassBytes(name);
       if (result != null) return result;
     }
     return null;
@@ -79,16 +68,29 @@ public class CompositeClassPathItem extends AbstractClassPathItem {
 
   @Override
   public URL getResource(String name) {
-    checkValidity();
     for (IClassPathItem item : myChildren) {
-      if (item.getResource(name) != null) return item.getResource(name);
+      URL resource = item.getResource(name);
+      if (resource != null) {
+        return resource;
+      }
     }
     return null;
   }
 
   @Override
+  public Enumeration<URL> getResources(String name) {
+    List<URL> result = new ArrayList<URL>();
+    for (IClassPathItem item : myChildren) {
+      Enumeration<URL> resources = item.getResources(name);
+      while (resources.hasMoreElements()) {
+        result.add(resources.nextElement());
+      }
+    }
+    return new IterableEnumeration<URL>(result);
+  }
+
+  @Override
   public Iterable<String> getAvailableClasses(String namespace) {
-    checkValidity();
     FlattenIterable<String> result = new FlattenIterable<String>();
     for (IClassPathItem item : myChildren) {
       //todo rewrite using mapping iterable
@@ -99,7 +101,6 @@ public class CompositeClassPathItem extends AbstractClassPathItem {
 
   @Override
   public Iterable<String> getSubpackages(String namespace) {
-    checkValidity();
     FlattenIterable<String> result = new FlattenIterable<String>();
     for (IClassPathItem item : myChildren) {
       //todo rewrite using mapping iterable
@@ -108,34 +109,12 @@ public class CompositeClassPathItem extends AbstractClassPathItem {
     return result;
   }
 
-  @Override
-  public long getClassesTimestamp(String namespace) {
-    checkValidity();
-    long result = 0;
-    for (IClassPathItem item : myChildren) {
-      result = Math.max(result, item.getClassesTimestamp(namespace));
-    }
-    return result;
-  }
-
-  @Override
-  public long getTimestamp() {
-    checkValidity();
-    long result = 0;
-    for (IClassPathItem item : myChildren) {
-      result = Math.max(result, item.getTimestamp());
-    }
-    return result;
-  }
-
   public List<IClassPathItem> getChildren() {
-    checkValidity();
     return new ArrayList<IClassPathItem>(myChildren);
   }
 
   @Override
   public List<RealClassPathItem> flatten() {
-    checkValidity();
     List<RealClassPathItem> result = new ArrayList<RealClassPathItem>();
 
     for (IClassPathItem child : myChildren) {
@@ -147,7 +126,6 @@ public class CompositeClassPathItem extends AbstractClassPathItem {
 
   @Override
   public CompositeClassPathItem optimize() {
-    checkValidity();
     List<RealClassPathItem> flattenedItems = flatten();
     Iterator<RealClassPathItem> it = flattenedItems.iterator();
 
@@ -185,12 +163,10 @@ public class CompositeClassPathItem extends AbstractClassPathItem {
 
   @Override
   public void accept(IClassPathItemVisitor visitor) {
-    checkValidity();
     visitor.visit(this);
   }
 
   public String toString() {
-    checkValidity();
     StringBuilder result = new StringBuilder("classpath {\n");
 
     for (IClassPathItem child : myChildren) {

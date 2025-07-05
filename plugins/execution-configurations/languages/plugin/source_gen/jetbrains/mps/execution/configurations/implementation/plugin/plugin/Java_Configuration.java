@@ -4,25 +4,39 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.execution.lib.NodeBySeveralConcepts_Configuration;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ArrayUtils;
-import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import jetbrains.mps.execution.lib.NodesDescriptor;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.baseLanguage.execution.api.Java_Command;
-import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters_Configuration;
+import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters1_Configuration;
+import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.project.ProjectHelper;
+import com.intellij.execution.configurations.RuntimeConfigurationError;
 import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.xmlb.XmlSerializer;
 import com.intellij.openapi.util.InvalidDataException;
-import org.apache.log4j.Priority;
+import com.intellij.execution.actions.ConfigurationContext;
+import jetbrains.mps.plugins.runconfigs.MPSPsiElement;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
+import java.util.Objects;
+import org.apache.log4j.Level;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.configurations.RunProfileState;
@@ -30,49 +44,42 @@ import com.intellij.execution.Executor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ExecutionException;
 import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.openapi.util.JDOMExternalizable;
+import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
 import com.intellij.execution.runners.ProgramRunner;
 import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 
 public class Java_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
+  private static final Logger LOG = LogManager.getLogger(Java_Configuration.class);
   @NotNull
   private Java_Configuration.MyState myState = new Java_Configuration.MyState();
-  private NodeBySeveralConcepts_Configuration myNode = new NodeBySeveralConcepts_Configuration(Sequence.fromIterable(Sequence.fromArray(ArrayUtils.asArray(MultiTuple.<String,_FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode>>from("jetbrains.mps.baseLanguage.structure.ClassConcept", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+  private NodeBySeveralConcepts_Configuration myNode = new NodeBySeveralConcepts_Configuration(ListSequence.fromListAndArray(new ArrayList<NodesDescriptor>(), new NodesDescriptor(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
     public Boolean invoke(SNode node) {
-      return (BehaviorReflection.invokeNonVirtual((Class<SNode>) ((Class) Object.class), SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.ClassConcept"), "jetbrains.mps.baseLanguage.structure.ClassConcept", "call_getMainMethod_1213877355884", new Object[]{}) != null);
+      return (((SNode) BHReflection.invoke(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), SMethodTrimmedId.create("getMainMethod", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), "hEwIClG"))) != null);
     }
-  }), MultiTuple.<String,_FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode>>from("jetbrains.mps.execution.util.structure.IMainClass", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+  }), new NodesDescriptor(MetaAdapterFactory.getInterfaceConcept(0x4caf0310491e41f5L, 0x8a9b2006b3a94898L, 0x40c1a7cb987d20d5L, "jetbrains.mps.execution.util.structure.IMainClass"), new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
     public Boolean invoke(SNode node) {
-      return BehaviorReflection.invokeVirtual(Boolean.TYPE, SNodeOperations.cast(node, "jetbrains.mps.execution.util.structure.IMainClass"), "virtual_isNodeRunnable_4666195181811081448", new Object[]{}) && Java_Command.isUnitNode(node);
+      return ((boolean) (Boolean) BHReflection.invoke(SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0x4caf0310491e41f5L, 0x8a9b2006b3a94898L, 0x40c1a7cb987d20d5L, "jetbrains.mps.execution.util.structure.IMainClass")), SMethodTrimmedId.create("isNodeRunnable", null, "431DWIovi3C"))) && Java_Command.isUnitNode(node);
     }
-  })))).toListSequence());
-  private JavaRunParameters_Configuration myRunParameters = new JavaRunParameters_Configuration();
-
-  public void checkConfiguration() throws RuntimeConfigurationException {
-    {
-      this.getNode().checkConfiguration();
-      final Wrappers._boolean hasMainMethod = new Wrappers._boolean(false);
-
-      ModelAccess.instance().runReadAction(new Runnable() {
-        public void run() {
-          if (SNodeOperations.isInstanceOf(Java_Configuration.this.getNode().getNode(), "jetbrains.mps.baseLanguage.structure.ClassConcept")) {
-            hasMainMethod.value = (BehaviorReflection.invokeNonVirtual((Class<SNode>) ((Class) Object.class), SNodeOperations.cast(Java_Configuration.this.getNode().getNode(), "jetbrains.mps.baseLanguage.structure.ClassConcept"), "jetbrains.mps.baseLanguage.structure.ClassConcept", "call_getMainMethod_1213877355884", new Object[]{}) == null);
-          }
+  })));
+  private JavaRunParameters1_Configuration myRunParameters = new JavaRunParameters1_Configuration(this.getProject());
+  public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
+    this.getNode().checkConfiguration(context);
+    final Wrappers._boolean hasMainMethod = new Wrappers._boolean(false);
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(this.getProject());
+    mpsProject.getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        SNode node = Java_Configuration.this.getNode().getNode().resolve(mpsProject.getRepository());
+        if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))) {
+          hasMainMethod.value = (((SNode) BHReflection.invoke(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), SMethodTrimmedId.create("getMainMethod", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), "hEwIClG"))) == null);
         }
-      });
-
-      if (hasMainMethod.value) {
-        throw new RuntimeConfigurationException("Selected class does not have main method.");
       }
+    });
+
+    if (hasMainMethod.value) {
+      throw new RuntimeConfigurationError("Selected class does not have main method.");
     }
   }
-
   @Override
   public void writeExternal(Element element) throws WriteExternalException {
     element.addContent(XmlSerializer.serialize(myState));
@@ -87,7 +94,6 @@ public class Java_Configuration extends BaseMpsRunConfiguration implements IPers
       element.addContent(fieldElement);
     }
   }
-
   @Override
   public void readExternal(Element element) throws InvalidDataException {
     if (element == null) {
@@ -115,15 +121,37 @@ public class Java_Configuration extends BaseMpsRunConfiguration implements IPers
       }
     }
   }
-
   public NodeBySeveralConcepts_Configuration getNode() {
     return myNode;
   }
-
-  public JavaRunParameters_Configuration getRunParameters() {
+  public JavaRunParameters1_Configuration getRunParameters() {
     return myRunParameters;
   }
-
+  public boolean isFromContext(@NotNull ConfigurationContext context) {
+    if (context.getPsiLocation() instanceof MPSPsiElement) {
+      MPSPsiElement mpsElement = (MPSPsiElement) context.getPsiLocation();
+      if (mpsElement != null) {
+        final SNodeReference nodePointer = mpsElement.getUnresolvedItem(SNodeReference.class);
+        final SRepository repository = mpsElement.getMPSProject().getRepository();
+        return new ModelAccessHelper(repository).runReadAction(new Computable<Boolean>() {
+          public Boolean compute() {
+            SNode source = nodePointer.resolve(repository);
+            if (!(SNodeOperations.isInstanceOf(source, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")))) {
+              SNode mainMethodCandidate = SNodeOperations.getNodeAncestor(source, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"), true, false);
+              if (mainMethodCandidate != null && ((boolean) (Boolean) BHReflection.invoke(mainMethodCandidate, SMethodTrimmedId.create("isMainMethod", MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"), "hEwJkuu")))) {
+                SNode classifier = SNodeOperations.getNodeAncestor(mainMethodCandidate, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false);
+                source = classifier;
+              } else {
+                return false;
+              }
+            }
+            return Objects.equals(source.getReference(), Java_Configuration.this.getNode().getNode());
+          }
+        });
+      }
+    }
+    return false;
+  }
   @Override
   public Java_Configuration clone() {
     Java_Configuration clone = null;
@@ -131,65 +159,61 @@ public class Java_Configuration extends BaseMpsRunConfiguration implements IPers
       clone = createCloneTemplate();
       clone.myState = (Java_Configuration.MyState) myState.clone();
       clone.myNode = (NodeBySeveralConcepts_Configuration) myNode.clone();
-      clone.myRunParameters = (JavaRunParameters_Configuration) myRunParameters.clone();
+      clone.myRunParameters = (JavaRunParameters1_Configuration) myRunParameters.clone();
       return clone;
     } catch (CloneNotSupportedException ex) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
+      if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("", ex);
       }
     }
     return clone;
   }
-
   public class MyState {
     public MyState() {
     }
-
     @Override
     public Object clone() throws CloneNotSupportedException {
       Java_Configuration.MyState state = new Java_Configuration.MyState();
       return state;
     }
   }
-
   public Java_Configuration(Project project, Java_Configuration_Factory factory, String name) {
     super(project, factory, name);
   }
-
   @Nullable
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment environment) throws ExecutionException {
     return new Java_Configuration_RunProfileState(this, executor, environment);
   }
-
   @Nullable
-  public SettingsEditor<JDOMExternalizable> getRunnerSettingsEditor(ProgramRunner runner) {
+  public SettingsEditor<ConfigurationPerRunnerSettings> getRunnerSettingsEditor(ProgramRunner runner) {
     return null;
   }
-
-  public JDOMExternalizable createRunnerSettings(ConfigurationInfoProvider provider) {
+  public ConfigurationPerRunnerSettings createRunnerSettings(ConfigurationInfoProvider provider) {
     return null;
   }
-
   public SettingsEditorEx<Java_Configuration> getConfigurationEditor() {
     return (SettingsEditorEx<Java_Configuration>) getEditor();
   }
-
   public Java_Configuration createCloneTemplate() {
     return (Java_Configuration) super.clone();
   }
-
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
     return new Java_Configuration_Editor(myNode.getEditor(), myRunParameters.getEditor());
   }
-
+  @Override
+  public void checkConfiguration() throws RuntimeConfigurationException {
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    checkConfiguration(new PersistentConfigurationContext() {
+      public jetbrains.mps.project.Project getProject() {
+        return mpsProject;
+      }
+    });
+  }
   @Override
   public boolean canExecute(String executorId) {
     return Java_Configuration_RunProfileState.canExecute(executorId);
   }
-
   public Object[] createMakeNodePointersTask() {
-    return new Object[]{ListSequence.fromListAndArray(new ArrayList<SNodeReference>(), this.getNode().getNodePointer())};
+    return new Object[]{ListSequence.fromListAndArray(new ArrayList<SNodeReference>(), this.getNode().getNode())};
   }
-
-  protected static Logger LOG = LogManager.getLogger(Java_Configuration.class);
 }

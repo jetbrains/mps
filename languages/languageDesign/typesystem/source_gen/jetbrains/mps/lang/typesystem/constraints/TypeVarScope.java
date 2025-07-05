@@ -9,22 +9,19 @@ import java.util.List;
 import org.jetbrains.mps.util.Condition;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.search.IsInstanceCondition;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.search.AbstractSearchScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 
 public class TypeVarScope extends SearchScopeWithNode {
   private SNode myCurrentNode = null;
-
   public TypeVarScope(SNode enclosingNode) {
     super(enclosingNode);
   }
-
   public TypeVarScope(SNode enclosingNode, SNode currentNode) {
     super(enclosingNode);
     myCurrentNode = currentNode;
   }
-
   @NotNull
   @Override
   public List<SNode> getNodes(Condition<SNode> condition) {
@@ -32,19 +29,19 @@ public class TypeVarScope extends SearchScopeWithNode {
 
     SNode enclosingNode = getEnclosingNode();
     SNode statementList;
-    if (SNodeOperations.isInstanceOf(enclosingNode, "jetbrains.mps.baseLanguage.structure.StatementList")) {
-      statementList = SNodeOperations.cast(enclosingNode, "jetbrains.mps.baseLanguage.structure.StatementList");
+    if (SNodeOperations.isInstanceOf(enclosingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"))) {
+      statementList = SNodeOperations.cast(enclosingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"));
     } else {
-      statementList = (SNode) jetbrains.mps.util.SNodeOperations.findParent(enclosingNode, new IsInstanceCondition("jetbrains.mps.baseLanguage.structure.StatementList"));
+      statementList = SNodeOperations.getNodeAncestor(enclosingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), false, false);
     }
     if ((statementList != null)) {
       SNode currentStatement;
-      if (SNodeOperations.isInstanceOf(myCurrentNode, "jetbrains.mps.baseLanguage.structure.Statement")) {
-        currentStatement = SNodeOperations.cast(myCurrentNode, "jetbrains.mps.baseLanguage.structure.Statement");
-      } else if (SNodeOperations.isInstanceOf(enclosingNode, "jetbrains.mps.baseLanguage.structure.Statement")) {
-        currentStatement = SNodeOperations.cast(enclosingNode, "jetbrains.mps.baseLanguage.structure.Statement");
+      if (SNodeOperations.isInstanceOf(myCurrentNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"))) {
+        currentStatement = SNodeOperations.cast(myCurrentNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"));
+      } else if (SNodeOperations.isInstanceOf(enclosingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"))) {
+        currentStatement = SNodeOperations.cast(enclosingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"));
       } else {
-        currentStatement = (SNode) jetbrains.mps.util.SNodeOperations.findParent(enclosingNode, new IsInstanceCondition("jetbrains.mps.baseLanguage.structure.Statement"));
+        currentStatement = SNodeOperations.getNodeAncestor(enclosingNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"), false, false);
       }
       populateLocalVariables(statementList, currentStatement, vars);
     }
@@ -59,19 +56,18 @@ public class TypeVarScope extends SearchScopeWithNode {
     }
     return result;
   }
-
   private void populateLocalVariables(@NotNull SNode statementList, SNode beforeStatement, List<SNode> result) {
-    for (SNode statement : SLinkOperations.getTargets(statementList, "statement", true)) {
+    for (SNode statement : SLinkOperations.getChildren(statementList, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))) {
       if (statement == beforeStatement) {
         break;
       }
-      if (SNodeOperations.isInstanceOf(statement, "jetbrains.mps.lang.typesystem.structure.TypeVarDeclaration")) {
+      if (SNodeOperations.isInstanceOf(statement, MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f85df7bL, "jetbrains.mps.lang.typesystem.structure.TypeVarDeclaration"))) {
         result.add(statement);
       }
     }
-    SNode containingStatement = (SNode) jetbrains.mps.util.SNodeOperations.findParent(statementList, new IsInstanceCondition("jetbrains.mps.baseLanguage.structure.Statement"));
+    SNode containingStatement = SNodeOperations.getNodeAncestor(statementList, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"), false, false);
     if ((containingStatement != null)) {
-      statementList = (SNode) jetbrains.mps.util.SNodeOperations.findParent(containingStatement, new IsInstanceCondition("jetbrains.mps.baseLanguage.structure.StatementList"));
+      statementList = SNodeOperations.getNodeAncestor(containingStatement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), false, false);
       if (statementList != null) {
         populateLocalVariables(statementList, containingStatement, result);
       }

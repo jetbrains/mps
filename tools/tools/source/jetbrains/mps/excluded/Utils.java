@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,12 +24,13 @@ import jetbrains.mps.project.persistence.SolutionDescriptorPersistence;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
+import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.containers.MultiMap;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileUtils;
-import jetbrains.mps.vfs.impl.IoFileSystemProvider;
+import jetbrains.mps.vfs.impl.IoFileSystem;
 import org.jdom.Document;
 import org.jdom.Element;
 
@@ -68,11 +69,10 @@ public class Utils {
 
   public static Element getChildByAttribute(Element element, String tagName, String attributeName, String attributeValue) {
     Element result = null;
-    for (Object component : element.getChildren(tagName)) {
-      Element componentXml = (Element) component;
-      if (componentXml.getAttributeValue(attributeName).equals(attributeValue)) {
+    for (Element component : element.getChildren(tagName)) {
+      if (component.getAttributeValue(attributeName).equals(attributeValue)) {
         if (result == null) {
-          result = componentXml;
+          result = component;
         } else {
           return null;
         }
@@ -108,22 +108,23 @@ public class Utils {
       boolean language = child.getName().endsWith(MPSExtentions.DOT_LANGUAGE);
       if (!(solution || language)) continue;
 
-      final IFile moduleIFile = new IoFileSystemProvider().getFile(child.getAbsolutePath());
+      final IFile moduleIFile = IoFileSystem.INSTANCE.getFile(child.getAbsolutePath());
       IFile moduleDir = moduleIFile.getParent();
+      // XXX what's the reason for custom MyMacroHelper, why not MacrosFactory.forModuleFile()
       MacroHelper expander = new MyMacroHelper(moduleIFile);
 
       if (solution) {
         SolutionDescriptor sd = SolutionDescriptorPersistence.loadSolutionDescriptor(moduleIFile, expander);
         if (!sd.getCompileInMPS()) continue;
 
-        String srcPath = ProjectPathUtil.getGeneratorOutputPath(moduleDir, sd).getPath();
-        result.putValue(moduleDir.getPath(), srcPath);
+        String srcPath = ProjectPathUtil.getGeneratorOutputPath(sd);
+        result.putValue(getCanonicalPath(moduleDir.getPath()), getCanonicalPath(srcPath));
         String testPath = ProjectPathUtil.getGeneratorTestsOutputPath(moduleIFile, sd).getPath();
-        result.putValue(moduleDir.getPath(), testPath);
+        result.putValue(getCanonicalPath(moduleDir.getPath()), getCanonicalPath(testPath));
       } else {
         LanguageDescriptor ld = LanguageDescriptorPersistence.loadLanguageDescriptor(moduleIFile, expander);
-        String srcPath = ProjectPathUtil.getGeneratorOutputPath(moduleDir, ld).getPath();
-        result.putValue(moduleDir.getPath(), srcPath);
+        String srcPath = ProjectPathUtil.getGeneratorOutputPath(ld);
+        result.putValue(getCanonicalPath(moduleDir.getPath()), getCanonicalPath(srcPath));
         // currently same getGeneratorOutputPath used for all generators, so generatorSrcPath will be the same for
         // all generators in the language. Using only first one for now.
         boolean generatorAdded = false;
@@ -131,12 +132,16 @@ public class Utils {
           if (generatorAdded) {
             break;
           }
-          String generatorSrcPath = ProjectPathUtil.getGeneratorOutputPath(moduleDir, generator).getPath();
-          result.putValue(moduleDir.getPath() + "/generator", generatorSrcPath);
+          String generatorSrcPath = ProjectPathUtil.getGeneratorOutputPath(generator);
+          result.putValue(getCanonicalPath(moduleDir.getPath() + "/generator"), getCanonicalPath(generatorSrcPath));
           generatorAdded = true;
         }
       }
     }
+  }
+
+  private static String getCanonicalPath(String path) {
+    return FileUtil.getCanonicalPath(path);
   }
 
   public static File root() {

@@ -4,7 +4,7 @@ package jetbrains.mps.baseLanguage.math.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum RoundingMode {
   CEILING("CEILING", 0),
@@ -16,16 +16,21 @@ public enum RoundingMode {
   UNNECCESARY("UNNECCESARY", 6),
   UP("UP", 7);
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final int myValue;
+  RoundingMode(String name, int value) {
+    myName = name;
+    myValue = value;
+  }
+  public int getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return "" + this.myValue;
+    return Integer.toString(myValue);
   }
-
   public static List<RoundingMode> getConstants() {
     List<RoundingMode> list = ListSequence.fromList(new LinkedList<RoundingMode>());
     ListSequence.fromList(list).addElement(RoundingMode.CEILING);
@@ -38,11 +43,9 @@ public enum RoundingMode {
     ListSequence.fromList(list).addElement(RoundingMode.UP);
     return list;
   }
-
   public static RoundingMode getDefault() {
     return RoundingMode.HALF_EVEN;
   }
-
   public static RoundingMode parseValue(String value) {
     if (value == null) {
       return RoundingMode.getDefault();
@@ -72,16 +75,5 @@ public enum RoundingMode {
       return RoundingMode.UP;
     }
     return RoundingMode.getDefault();
-  }
-
-  private int myValue;
-
-  RoundingMode(String name, int value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public int getValue() {
-    return this.myValue;
   }
 }

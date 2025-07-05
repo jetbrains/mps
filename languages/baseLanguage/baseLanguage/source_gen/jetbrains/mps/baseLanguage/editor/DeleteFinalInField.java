@@ -8,26 +8,37 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DeleteFinalInField {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new DeleteFinalInField.DeleteFinalInField_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new DeleteFinalInField.DeleteFinalInField_BACKSPACE(node));
   }
-
   public static class DeleteFinalInField_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public DeleteFinalInField_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SPropertyOperations.set(node, "isFinal", "" + (false));
-      editorContext.selectWRTFocusPolicy(node);
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal"), "" + (false));
+      CursorFocusUtils.setCursorAfterModifierDeleted(editorContext, node, false);
+    }
+  }
+  public static class DeleteFinalInField_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public DeleteFinalInField_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal"), "" + (false));
+      CursorFocusUtils.setCursorAfterModifierDeleted(editorContext, node, true);
     }
   }
 }

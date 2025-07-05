@@ -8,6 +8,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 
 public class CellModel_RefNode_AddHint_Actions {
@@ -15,36 +16,28 @@ public class CellModel_RefNode_AddHint_Actions {
     editorCell.setAction(CellActionType.INSERT, new CellModel_RefNode_AddHint_Actions.CellModel_RefNode_AddHint_Actions_INSERT(node));
     editorCell.setAction(CellActionType.INSERT_BEFORE, new CellModel_RefNode_AddHint_Actions.CellModel_RefNode_AddHint_Actions_INSERT_BEFORE(node));
   }
-
   public static class CellModel_RefNode_AddHint_Actions_INSERT extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public CellModel_RefNode_AddHint_Actions_INSERT(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SLinkOperations.setTarget(node, "addHints", SConceptOperations.createNewNode("jetbrains.mps.lang.editor.structure.ExplicitHintsSpecification", null), true);
+      SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, 0x51568a5db0d45e0fL, "addHints"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ae0865e9a712712L, "jetbrains.mps.lang.editor.structure.ExplicitHintsSpecification")));
     }
   }
-
   public static class CellModel_RefNode_AddHint_Actions_INSERT_BEFORE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public CellModel_RefNode_AddHint_Actions_INSERT_BEFORE(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SLinkOperations.setTarget(node, "addHints", SConceptOperations.createNewNode("jetbrains.mps.lang.editor.structure.ExplicitHintsSpecification", null), true);
+      SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, 0x51568a5db0d45e0fL, "addHints"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ae0865e9a712712L, "jetbrains.mps.lang.editor.structure.ExplicitHintsSpecification")));
     }
   }
 }

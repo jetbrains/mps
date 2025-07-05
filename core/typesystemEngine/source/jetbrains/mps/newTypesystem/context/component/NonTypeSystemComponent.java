@@ -21,8 +21,12 @@ import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
+import jetbrains.mps.languageScope.LanguageScopeExecutor;
 import jetbrains.mps.newTypesystem.state.State;
 import jetbrains.mps.smodel.NodeReadEventsCaster;
+import jetbrains.mps.typesystemEngine.util.TypeSystemUtil;
+import jetbrains.mps.util.Cancellable;
+import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeChecker;
@@ -31,11 +35,12 @@ import jetbrains.mps.typesystem.inference.TypesReadListener;
 import jetbrains.mps.util.Pair;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<State> implements ITypeErrorComponent {
 
-  private Set<Pair<SNode, String>> myCurrentPropertiesToInvalidate = new HashSet<Pair<SNode, String>>();
-  private Set<SNode> myCurrentTypedTermsToInvalidate = new HashSet<SNode>();
+  private ConcurrentLinkedQueue<Pair<SNode, String>> myCurrentPropertiesToInvalidate = new ConcurrentLinkedQueue<>();
+  private ConcurrentLinkedQueue<SNode> myCurrentTypedTermsToInvalidate = new ConcurrentLinkedQueue<>();
   private Set<Pair<SNode, NonTypesystemRule_Runtime>> myCheckedNodes
     = new HashSet<Pair<SNode, NonTypesystemRule_Runtime>>(); // nodes which are checked themselves but not children
   private Map<SNode, List<IErrorReporter>> myNodesToErrorsMap = new HashMap<SNode, List<IErrorReporter>>();
@@ -129,14 +134,17 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
       doInvalidate(myNodesToDependentNodesWithNTRules.get(node), invalidatedNodesAndRules);
     }
     //properties
-    for (Pair<SNode, String> pair : myCurrentPropertiesToInvalidate) {
-      doInvalidate(myPropertiesToDependentNodesWithNTRules.get(pair), invalidatedNodesAndRules);
+
+    Pair<SNode, String> nextPair;
+    while ((nextPair = myCurrentPropertiesToInvalidate.poll()) != null) {
+      doInvalidate(myPropertiesToDependentNodesWithNTRules.get(nextPair), invalidatedNodesAndRules);
     }
 
     //typed terms
-    for (SNode node : myCurrentTypedTermsToInvalidate) {
-      doInvalidate(myTypedTermsToDependentNodesWithNTRules.get(node), invalidatedNodesAndRules);
-      doInvalidate(myNodesToDependentNodesWithNTRules.get(node), invalidatedNodesAndRules);
+    SNode nextNode;
+    while((nextNode = myCurrentTypedTermsToInvalidate.poll()) != null) {
+      doInvalidate(myTypedTermsToDependentNodesWithNTRules.get(nextNode), invalidatedNodesAndRules);
+      doInvalidate(myNodesToDependentNodesWithNTRules.get(nextNode), invalidatedNodesAndRules);
     }
 
     //cache-dependent
@@ -182,7 +190,6 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
     myCurrentTypedTermsToInvalidate.add(term);
     setInvalidationWasPerformed(false);
   }
-
 
   @Override
   public void addError(SNode node, IErrorReporter errorReporter) {
@@ -278,14 +285,29 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
     addDependentNodes(sNode, rule, nodesToDependOn, false);
   }
 
-  public void applyNonTypeSystemRulesToRoot(TypeCheckingContext typeCheckingContext, SNode rootNode) {
-    if (rootNode == null) return;
+  // true iff was fully executed (not cancelled)
+  public boolean applyNonTypeSystemRulesToRoot(final TypeCheckingContext typeCheckingContext, final SNode rootNode, final Cancellable c) {
+    if (rootNode == null) return false;
+    return LanguageScopeExecutor.execWithModelScope(rootNode.getModel(), new Computable<Boolean>() {
+      @Override
+      public Boolean compute() {
+        return applyRulesToRoot(typeCheckingContext, rootNode, c);
+      }
+    });
+  }
+
+  // true iff fully executed
+  private boolean applyRulesToRoot(TypeCheckingContext typeCheckingContext, SNode rootNode, Cancellable c) {
     doInvalidate();
     try {
       Queue<SNode> frontier = new LinkedList<SNode>();
       frontier.add(rootNode);
       while (!(frontier.isEmpty())) {
+        if (c.isCancelled()) return false;
         SNode sNode = frontier.remove();
+        if (!TypeSystemUtil.shouldApplyTypeSystemRules(sNode)) {
+          continue;
+        }
         applyNonTypesystemRulesToNode(sNode, typeCheckingContext);
         frontier.addAll(IterableUtil.asCollection(sNode.getChildren()));
       }
@@ -293,12 +315,14 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
     } finally {
       setInvalidationWasPerformed(false);
     }
+    return true;
   }
 
   private void applyNonTypesystemRulesToNode(final SNode node, final TypeCheckingContext typeCheckingContext) {
     getTypechecking().runApplyRulesTo(node, new Runnable() {
       @Override
       public void run() {
+
         List<Pair<NonTypesystemRule_Runtime, IsApplicableStatus>> nonTypesystemRules = TypeChecker.getInstance().getRulesManager().getNonTypesystemRules(node);
         MyEventsReadListener nodesReadListener = new MyEventsReadListener();
         if (nonTypesystemRules == null) return;
@@ -326,6 +350,7 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
           if (incrementalMode) {
             nodesReadListener.setAccessReport(true);
             addDependentNodes(node, rule.o1, new THashSet<SNode>(nodesReadListener.getAccessedNodes()));
+            addDependentNodes(node, rule.o1, Collections.singleton(node));
             addDependentProperties(node, rule.o1, new THashSet<Pair<SNode, String>>(nodesReadListener.getAccessedProperties()));
             nodesReadListener.setAccessReport(false);
 

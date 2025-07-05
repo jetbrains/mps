@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="StructureAspectDescriptor.java" startLine="10" startPosition="0" endLine="37" endPosition="0" unitName="jetbrains.mps.testbench.suite.structure.StructureAspectDescriptor" />
-</debugInfo>
+<debug-info version="2">
+  <root>
+    <file name="ConceptPresentationAspectImpl.java">
+      <unit at="11,0,43,0" name="jetbrains.mps.testbench.suite.structure.ConceptPresentationAspectImpl" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <unit at="10,0,40,0" name="jetbrains.mps.testbench.suite.structure.LanguageConceptSwitch" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <unit at="16,0,120,0" name="jetbrains.mps.testbench.suite.structure.StructureAspectDescriptor" />
+    </file>
+  </root>
+</debug-info>
 

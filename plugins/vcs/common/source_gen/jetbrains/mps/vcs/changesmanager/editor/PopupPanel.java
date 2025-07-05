@@ -28,7 +28,6 @@ import java.awt.event.FocusEvent;
   private EditorComponent myEditor;
   private BaseVersionEditorComponent myBaseEditor;
   private ActionToolbar myToolbar;
-
   public PopupPanel(ChangeStripsPainter painter, ChangeGroup group) {
     myChangeGroup = group;
     myPainter = painter;
@@ -42,21 +41,18 @@ import java.awt.event.FocusEvent;
     myToolbar.setTargetComponent(myPainter.getEditorComponent());
     toolbarPanel.add(myToolbar.getComponent(), BorderLayout.WEST);
     add(toolbarPanel, BorderLayout.NORTH);
-    myToolbar.getComponent().setBorder(new ColoredSideBorder(Color.BLACK, Color.BLACK, (myChangeGroup.getChangeType() != ChangeType.ADD ?
-      null :
-      Color.BLACK
-    ), Color.BLACK, 1));
+    myToolbar.getComponent().setBorder(new ColoredSideBorder(Color.BLACK, Color.BLACK, (myChangeGroup.getChangeType() != ChangeType.ADD ? null : Color.BLACK), Color.BLACK, 1));
 
     if (myChangeGroup.getChangeType() != ChangeType.ADD) {
       myBaseEditor = new BaseVersionEditorComponent(myEditor.getEditorContext().getRepository(), myChangeGroup);
+      // Do not extend this editor with extensions: the project is tricky to get from this point, 
+      // and this editor doesn't seem to be that important to extend. 
       add(myBaseEditor.getScrollPane(), BorderLayout.CENTER);
     }
   }
-
   /*package*/ ChangeGroup getChangeGroup() {
     return myChangeGroup;
   }
-
   public void show(int x, int y) {
     JLayeredPane layeredPane = myEditor.getRootPane().getLayeredPane();
     setLocation(SwingUtilities.convertPoint(myEditor, x, y, layeredPane));
@@ -76,17 +72,14 @@ import java.awt.event.FocusEvent;
 
     addListeners();
   }
-
   private void addListeners() {
     myEditor.addMouseListener(myMouseListener);
     myEditor.addFocusListener(myFocusListener);
   }
-
   private void removeListeners() {
     myEditor.removeFocusListener(myFocusListener);
     myEditor.removeMouseListener(myMouseListener);
   }
-
   /*package*/ void dispose() {
     removeListeners();
     JLayeredPane layeredPane = myEditor.getRootPane().getLayeredPane();
@@ -102,21 +95,17 @@ import java.awt.event.FocusEvent;
       myBaseEditor = null;
     }
   }
-
   private class MyMouseListener extends MouseAdapter {
     public MyMouseListener() {
     }
-
     @Override
     public void mousePressed(MouseEvent event) {
       dispose();
     }
   }
-
   private class MyFocusListener extends FocusAdapter {
     public MyFocusListener() {
     }
-
     @Override
     public void focusLost(FocusEvent event) {
       dispose();

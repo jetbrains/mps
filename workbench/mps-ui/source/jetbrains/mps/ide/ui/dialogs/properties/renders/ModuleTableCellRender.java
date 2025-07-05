@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,33 +15,36 @@
  */
 package jetbrains.mps.ide.ui.dialogs.properties.renders;
 
-import com.intellij.ui.ColoredTableCellRenderer;
 import jetbrains.mps.ide.icons.IconManager;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.smodel.MPSModuleRepository;
+import org.jetbrains.mps.openapi.module.SRepository;
 
-import javax.swing.BorderFactory;
-import javax.swing.JTable;
+import javax.swing.Icon;
 
-public class ModuleTableCellRender extends ColoredTableCellRenderer {
-  @Override
-  protected void customizeCellRenderer(JTable table, Object value, boolean selected, boolean hasFocus, int row, int column) {
-    setPaintFocusBorder(false);
-    setFocusBorderAroundIcon(true);
-    setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
-    if (value != null) {
-      SModuleReference moduleReference = (SModuleReference) value;
-      setIcon(
-        IconManager.getIconFor(
-          MPSModuleRepository.getInstance().getModuleById(moduleReference.getModuleId())
-        )
-      );
+/**
+ * TableCellRenderer for SModuleReference, which may alter presentation of of a module
+ * according to conditions supplied via {@link #addCellState(org.jetbrains.mps.util.Condition, DependencyCellState)}
+ */
+public class ModuleTableCellRender extends StateTableCellRenderer<SModuleReference, SModule> {
 
-      append(moduleReference.getModuleName(), getDependencyCellState(moduleReference).getTextAttributes());
-    }
+  public ModuleTableCellRender(@NotNull SRepository repository) {
+    super(repository);
   }
 
-  protected DependencyCellState getDependencyCellState(SModuleReference moduleReference) {
-    return DependencyCellState.NORMAL;
+  @Override
+  protected SModule getCellElement(SModuleReference moduleReference) {
+    return moduleReference.resolve(myRepository);
+  }
+
+  @Override
+  protected Icon getIcon(SModuleReference moduleReference, SModule cellElement) {
+    return IconManager.getIconFor(cellElement);
+  }
+
+  @Override
+  protected String getText(SModuleReference moduleReference, SModule cellElement) {
+    return moduleReference.getModuleName();
   }
 }

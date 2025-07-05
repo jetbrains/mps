@@ -8,45 +8,41 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.dataFlow.framework.instructions.ReadInstruction;
 import jetbrains.mps.lang.dataFlow.framework.instructions.WriteInstruction;
 
 public class DataFlow {
   /*package*/ static final String MAY_BE_UNREACHABLE = "mayBeUnreachable";
-
   public DataFlow() {
   }
-
   private static boolean mayBeUnreachable(Instruction instruction) {
     return Boolean.TRUE.equals(instruction.getUserObject(MAY_BE_UNREACHABLE));
   }
-
   public static Program buildProgram(SNode node) {
-    return DataFlowManager.getInstance().buildProgramFor(node);
+    return new MPSProgramBuilder().buildProgram(node);
   }
-
   public static Set<SNode> getUnreachableNodes(Program program) {
     Set<Instruction> unreachable = program.getUnreachableInstructions();
     Set<SNode> unreachableNodes = new HashSet<SNode>();
     for (Instruction i : unreachable) {
       if (!(DataFlow.mayBeUnreachable(i)) && i.getSource() != null) {
         SNode unreachableNode = (SNode) i.getSource();
-        if (SNodeOperations.isInstanceOf(unreachableNode, "jetbrains.mps.baseLanguage.structure.Statement")) {
+        if (SNodeOperations.isInstanceOf(unreachableNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"))) {
           unreachableNodes.add((SNode) i.getSource());
         } else {
-          if (SNodeOperations.isInstanceOf(unreachableNode, "jetbrains.mps.baseLanguage.structure.StatementList")) {
-            if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(unreachableNode), "jetbrains.mps.baseLanguage.structure.Statement"))) {
+          if (SNodeOperations.isInstanceOf(unreachableNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"))) {
+            if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(unreachableNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement")))) {
               unreachableNodes.add((SNode) i.getSource());
             }
           } else {
-            unreachableNodes.add(SNodeOperations.getAncestor(unreachableNode, "jetbrains.mps.baseLanguage.structure.Statement", true, false));
+            unreachableNodes.add(SNodeOperations.getNodeAncestor(unreachableNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"), true, false));
           }
         }
       }
     }
     return unreachableNodes;
   }
-
   public static Set<SNode> getExpectedReturns(Program program) {
     Set<Instruction> expectedReturns = program.getExpectedReturns();
     Set<SNode> result = new HashSet<SNode>();
@@ -55,7 +51,6 @@ public class DataFlow {
     }
     return result;
   }
-
   public static Set<SNode> getUninitializedReads(Program program) {
     Set<SNode> reads = new HashSet<SNode>();
     for (ReadInstruction read : program.getUninitializedReads()) {
@@ -63,7 +58,6 @@ public class DataFlow {
     }
     return reads;
   }
-
   public static boolean isInitializedRewritten(Program program, SNode write) {
     WriteInstruction writeInstruction = null;
     for (Instruction instruction : program.getInstructionsFor(write)) {
@@ -77,7 +71,6 @@ public class DataFlow {
     }
     return false;
   }
-
   public static Set<SNode> getUsedVariables(Program program, SNode node) {
     Set<SNode> readVars = new HashSet<SNode>();
     for (Instruction i : program.getInstructions()) {
@@ -87,11 +80,9 @@ public class DataFlow {
     }
     return readVars;
   }
-
   public static Set<SNode> getUnusedAssignments(SNode node) {
     return DataFlow.getUnusedAssignments(DataFlow.buildProgram(node));
   }
-
   public static Set<SNode> getUnusedAssignments(Program program) {
     Set<SNode> unusedAssignments = new HashSet<SNode>();
     for (WriteInstruction write : program.getUnusedAssignments()) {

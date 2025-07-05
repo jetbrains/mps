@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,30 +16,38 @@
 package jetbrains.mps.nodeEditor;
 
 import com.intellij.util.containers.SortedList;
-import jetbrains.mps.nodeEditor.EditorComponent.RebuildListener;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
+import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.reloading.ReloadAdapter;
-import jetbrains.mps.smodel.ModelAccess;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.update.UpdaterListener;
+import jetbrains.mps.openapi.editor.update.UpdaterListenerAdapter;
 import jetbrains.mps.util.containers.ManyToManyMap;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 
-import javax.swing.SwingUtilities;
 import java.awt.Color;
-import java.util.*;
-import java.util.Map.Entry;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 
 public class NodeHighlightManager implements EditorMessageOwner {
   private static final Comparator<SimpleEditorMessage> EDITOR_MESSAGES_COMPARATOR = new Comparator<SimpleEditorMessage>() {
     @Override
     public int compare(SimpleEditorMessage m1, SimpleEditorMessage m2) {
-      return m1.getPriority() - m2.getPriority();
+      if (m1.getPriority() != m2.getPriority()) {
+        return m1.getPriority() - m2.getPriority();
+      }
+      return m1.getStatus().ordinal() - m2.getStatus().ordinal();
     }
   };
 
@@ -47,49 +55,24 @@ public class NodeHighlightManager implements EditorMessageOwner {
   private final Object myMessagesLock = new Object();
 
   @NotNull
-  private EditorComponent myEditor;
-  private Set<SimpleEditorMessage> myMessages = new HashSet<SimpleEditorMessage>();
-  private Map<EditorMessageOwner, Set<SimpleEditorMessage>> myOwnerToMessages = new HashMap<EditorMessageOwner, Set<SimpleEditorMessage>>();
-  private ManyToManyMap<SimpleEditorMessage, SNode> myMessagesToNodes = new ManyToManyMap<SimpleEditorMessage, SNode>();
+  private final EditorComponent myEditor;
+  private final Set<SimpleEditorMessage> myMessages = new HashSet<SimpleEditorMessage>();
+  private final Map<EditorMessageOwner, Set<SimpleEditorMessage>> myOwnerToMessages = new HashMap<EditorMessageOwner, Set<SimpleEditorMessage>>();
+  private final ManyToManyMap<SimpleEditorMessage, SNode> myMessagesToNodes = new ManyToManyMap<SimpleEditorMessage, SNode>();
 
   /**
-   * all Caches are synchronized using myMessagesLock
+   * All caches are synchronized using myMessagesLock
    */
   private Map<EditorCell, List<SimpleEditorMessage>> myMessagesCache = Collections.emptyMap();
   private volatile boolean myRebuildMessagesCache = false;
-  public ReloadAdapter myHandler = new ReloadAdapter() {
-    @Override
-    public void unload() {
-      clear();
-    }
-  };
-  private RebuildListener myRebuildListener;
+  private final UpdaterListener myRebuildListener = new RebuildMessagesOnEditorUpdate();
   private Set<EditorMessageIconRenderer> myIconRenderersCache = new HashSet<EditorMessageIconRenderer>();
   private volatile boolean myRebuildIconRenderersCacheFlag = false;
+  private boolean myDisposed = false;
 
   public NodeHighlightManager(@NotNull EditorComponent editor) {
     myEditor = editor;
-
-    editor.addRebuildListener(myRebuildListener = new RebuildListener() {
-      @Override
-      public void editorRebuilt(EditorComponent editor) {
-        boolean needRebuild = getMessagesCache().isEmpty();
-        if (!needRebuild) {
-          for (EditorCell cell : getMessagesCache().keySet()) {
-            if (!myEditor.isValid(cell)) {
-              needRebuild = true;
-              break;
-            }
-          }
-        }
-        if (needRebuild) {
-          invalidateMessagesCaches();
-          repaintAndRebuildEditorMessages();
-        }
-      }
-    });
-
-    ClassLoaderManager.getInstance().addReloadHandler(myHandler);
+    myEditor.getUpdater().addListener(myRebuildListener);
   }
 
   /**
@@ -109,21 +92,25 @@ public class NodeHighlightManager implements EditorMessageOwner {
   }
 
   private void refreshMessagesCache() {
-    assert ModelAccess.instance().isInEDT() : "refreshMessagesCache() should be called from EDT only";
-    assert ModelAccess.instance().canRead() : "refreshMessagesCache() should be called inside model read action only";
+    assert ThreadUtils.isInEDT() : "refreshMessagesCache() should be called from EDT only";
+    assert getModelAccess().canRead() : "refreshMessagesCache() should be called inside model read action only";
     synchronized (myMessagesLock) {
-      if (myRebuildMessagesCache) {
-        myRebuildMessagesCache = false;
-        if (myMessages.isEmpty()) {
-          myMessagesCache = Collections.emptyMap();
-        } else {
-          myMessagesCache = new HashMap<EditorCell, List<SimpleEditorMessage>>();
-          if (myEditor.getRootCell() != null && !myMessages.isEmpty()) {
-            rebuildMessages(myEditor.getRootCell());
-          }
-        }
+      if (!myRebuildMessagesCache) {
+        return;
+      }
+
+      myRebuildMessagesCache = false;
+      if (myMessages.isEmpty() || myEditor.getRootCell() == null) {
+        myMessagesCache = Collections.emptyMap();
+      } else {
+        myMessagesCache = new HashMap<EditorCell, List<SimpleEditorMessage>>();
+        rebuildMessages(myEditor.getRootCell());
       }
     }
+  }
+
+  private ModelAccess getModelAccess() {
+    return myEditor.getRepository().getModelAccess();
   }
 
   /**
@@ -137,19 +124,19 @@ public class NodeHighlightManager implements EditorMessageOwner {
     }
 
     if (root instanceof EditorCell_Collection) {
-      EditorCell_Collection collection = (EditorCell_Collection) root;
-      for (EditorCell cell : collection.getCells()) {
+      for (EditorCell cell : (EditorCell_Collection) root) {
         rebuildMessages(cell);
       }
     }
   }
 
   public List<SimpleEditorMessage> getMessages(EditorCell cell) {
+    assert !myDisposed;
     List<SimpleEditorMessage> result = getMessagesCache().get(cell);
     if (result != null) {
       return new ArrayList<SimpleEditorMessage>(result);
     }
-    return Collections.<SimpleEditorMessage>emptyList();
+    return Collections.emptyList();
   }
 
   /**
@@ -158,13 +145,14 @@ public class NodeHighlightManager implements EditorMessageOwner {
    */
   private List<SimpleEditorMessage> calculateMessages(EditorCell cell) {
     final SNode node = cell.getSNode();
+    if (node == null) {
+      return Collections.emptyList();
+    }
+
     final List<SimpleEditorMessage> result = new SortedList<SimpleEditorMessage>(EDITOR_MESSAGES_COMPARATOR);
-    if (node == null) return result;
     Set<SimpleEditorMessage> messageSet = myMessagesToNodes.getBySecond(node);
     for (SimpleEditorMessage message : messageSet) {
-
-      //TODO remove this cast
-      if (((EditorMessage) message).acceptCell(cell, myEditor)) {
+      if (!(message instanceof EditorMessage) || ((EditorMessage) message).acceptCell(cell, myEditor)) {
         result.add(message);
       }
     }
@@ -189,8 +177,8 @@ public class NodeHighlightManager implements EditorMessageOwner {
     for (SNode child : nodeWithoutCell.getChildren()) {
       EditorCell cellForChild = myEditor.findNodeCell(child);
       if (cellForChild == null) {
-        getMessagesFromDescendants(child, messages);        
-      }      
+        getMessagesFromDescendants(child, messages);
+      }
     }
   }
 
@@ -222,7 +210,9 @@ public class NodeHighlightManager implements EditorMessageOwner {
       }
     }
     myMessages.remove(m);
-    myEditor.getMessagesGutter().remove(m);
+    if (myEditor.hasUI()) {
+      myEditor.getMessagesGutter().remove(m);
+    }
 
     myMessagesToNodes.clearFirst(m);
     return true;
@@ -237,7 +227,7 @@ public class NodeHighlightManager implements EditorMessageOwner {
       addMessage(message);
       invalidateMessagesCaches();
     }
-    if (message.showInGutter()) {
+    if (message.showInGutter() && myEditor.hasUI()) {
       myEditor.getMessagesGutter().add(message);
     }
   }
@@ -250,17 +240,6 @@ public class NodeHighlightManager implements EditorMessageOwner {
     }
   }
 
-  private void clear() {
-    synchronized (myMessagesLock) {
-      if (myMessages.isEmpty()) return;
-      for (SimpleEditorMessage m : new ArrayList<SimpleEditorMessage>(myMessages)) {
-        removeMessage(m);
-      }
-      invalidateMessagesCaches();
-    }
-    repaintAndRebuildEditorMessages();
-  }
-
   public boolean clearForOwner(EditorMessageOwner owner) {
     return clearForOwner(owner, true);
   }
@@ -271,7 +250,7 @@ public class NodeHighlightManager implements EditorMessageOwner {
     }
   }
 
-  public boolean  clearForOwner(EditorMessageOwner owner, boolean repaintAndRebuild) {
+  public boolean clearForOwner(EditorMessageOwner owner, boolean repaintAndRebuild) {
     boolean result = myEditor.getMessagesGutter().removeMessages(owner);
     synchronized (myMessagesLock) {
       if (myOwnerToMessages.containsKey(owner)) {
@@ -293,18 +272,23 @@ public class NodeHighlightManager implements EditorMessageOwner {
    * and repaint associated EditorComponent
    */
   public void repaintAndRebuildEditorMessages() {
-    ModelAccess.instance().runReadInEDT(new Runnable() {
+    getModelAccess().runReadInEDT(new Runnable() {
       @Override
       public void run() {
+        if (myDisposed) {
+          return;
+        }
         refreshMessagesCache();
-        myEditor.getExternalComponent().repaint();
-        refreshLeftHighlighterMessages();
+        if (myEditor.hasUI()) {
+          refreshLeftHighlighterMessages();
+          myEditor.repaintExternalComponent();
+        }
       }
     });
   }
 
   private void refreshLeftHighlighterMessages() {
-    assert ModelAccess.instance().isInEDT() : "refreshLeftHighlighterMessages() should be called from EDT only";
+    assert ThreadUtils.isInEDT() : "refreshLeftHighlighterMessages() should be called from EDT only";
     Set<EditorMessageIconRenderer> oldIconRenderers;
     Set<EditorMessageIconRenderer> newIconRenderers;
     synchronized (myMessagesLock) {
@@ -336,26 +320,15 @@ public class NodeHighlightManager implements EditorMessageOwner {
     repaintAndRebuildEditorMessages();
   }
 
-  public void markSingleMessage(SimpleEditorMessage message) {
-    mark(message);
-    repaintAndRebuildEditorMessages();
-  }
-
+  /**
+   * Should work even if NodeHighlightManager is disposed because it can be called by the Highlighter thread
+   */
   public Set<SimpleEditorMessage> getMessages() {
     Set<SimpleEditorMessage> result = new HashSet<SimpleEditorMessage>();
     synchronized (myMessagesLock) {
       result.addAll(myMessages);
     }
     return result;
-  }
-
-  public SimpleEditorMessage getMessageFor(SNode node) {
-    synchronized (myMessagesLock) {
-      for (SimpleEditorMessage msg : myMessages) {
-        if (msg.getNode() == node) return msg;
-      }
-    }
-    return null;
   }
 
   public List<SimpleEditorMessage> getMessagesFor(SNode node) {
@@ -379,20 +352,33 @@ public class NodeHighlightManager implements EditorMessageOwner {
   }
 
   public void dispose() {
-    assert ModelAccess.instance().isInEDT() || SwingUtilities.isEventDispatchThread() : "dispose() should be called from EDT only";
-    ClassLoaderManager.getInstance().removeReloadHandler(myHandler);
-    myEditor.removeRebuildListener(myRebuildListener);
+    assert ThreadUtils.isInEDT() : "dispose() should be called from EDT only";
+    myDisposed = true;
+    myEditor.getUpdater().removeListener(myRebuildListener);
   }
 
-  public EditorCell getCell(SimpleEditorMessage change) {
-    if (ModelAccess.instance().canWrite() && ModelAccess.instance().isInEDT()) {
-      refreshMessagesCache();
-    }
-    for (Entry<EditorCell, List<SimpleEditorMessage>> e: getMessagesCache().entrySet()) {
-      if (e.getValue().contains(change)) {
-        return e.getKey();
+  private class RebuildMessagesOnEditorUpdate extends UpdaterListenerAdapter {
+    @Override
+    public void editorUpdated(jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
+      assert !myDisposed;
+      if (needRebuild()) {
+        invalidateMessagesCaches();
+        repaintAndRebuildEditorMessages();
       }
     }
-    return null;
+
+    private boolean needRebuild() {
+      if (getMessagesCache().isEmpty()) {
+        return true;
+      }
+
+      for (EditorCell cell : getMessagesCache().keySet()) {
+        if (!myEditor.isValid(cell)) {
+          return true;
+        }
+      }
+
+      return false;
+    }
   }
 }

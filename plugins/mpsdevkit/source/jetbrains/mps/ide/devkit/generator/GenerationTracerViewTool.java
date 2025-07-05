@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.ActionToolbar;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.wm.ToolWindowAnchor;
@@ -26,19 +27,23 @@ import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentManager;
 import com.intellij.ui.content.ContentManagerAdapter;
 import com.intellij.ui.content.ContentManagerEvent;
-import jetbrains.mps.ide.ThreadUtils;
-import jetbrains.mps.ide.devkit.generator.TracerNode.Kind;
-import jetbrains.mps.ide.projectPane.Icons;
+import jetbrains.mps.generator.GenerationTrace;
+import jetbrains.mps.ide.generator.TransientModelsComponent;
+import jetbrains.mps.ide.icons.IdeIcons;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.tools.BaseProjectTool;
 import jetbrains.mps.ide.tools.CloseAction;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.workbench.action.ActionUtils;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
@@ -49,47 +54,72 @@ import java.util.List;
 public class GenerationTracerViewTool extends BaseProjectTool {
   private NoTabsComponent myNoTabsComponent;
 
-  private List<GenerationTracerView> myTracerViews = new ArrayList<GenerationTracerView>();
+  private List<GenerationTracerView> myTracerViews = new ArrayList<>();
   private ContentManagerAdapter myContentListener;
-  private final GenerationTracer myTracer;
+  private final TransientModelsComponent myTransientModelsOwner;
+  private boolean myAutoscroll;
 
-  public GenerationTracerViewTool(Project project, GenerationTracer tracer) {
-    super(project, "Generation Tracer", -1, Icons.DEFAULT_ICON, ToolWindowAnchor.BOTTOM, true);
-    myTracer = tracer;
+
+  public GenerationTracerViewTool(Project project, TransientModelsComponent transientModels) {
+    super(project, "Generation Tracer", null, IdeIcons.DEFAULT_ICON, ToolWindowAnchor.BOTTOM, false, true);
+    myTransientModelsOwner = transientModels;
     myNoTabsComponent = new NoTabsComponent(this);
   }
 
-  @Override
-  protected void createTool(boolean early) {
-    if (early) {
-      StartupManager.getInstance(getProject()).registerPostStartupActivity(new Runnable() {
-        public void run() {
-          postStartup();
-        }
-      });
-    } else {
-      postStartup();
+  //////
+  public boolean hasTracingData() {
+    ComputeRunnable<Boolean> r = new ComputeRunnable<>(() -> {
+      // FIXME not quite nice code
+      return myTransientModelsOwner.getModules().iterator().hasNext();
+    });
+    ProjectHelper.getModelAccess(getProject()).runReadAction(r);
+    return r.getResult();
+  }
+  public boolean hasTraceInputData(SModelReference modelReference) {
+    return myTransientModelsOwner.getTrace(modelReference) != null;
+  }
+  public boolean hasTracebackData(SModelReference modelReference) {
+    return myTransientModelsOwner.getTrace(modelReference) != null;
+  }
+  public boolean showTraceInputData(@NotNull SNode node) {
+    int index = getTabIndex(GenerationTracerView.Kind.TraceForward, node.getReference());
+    if (index > -1) {
+      selectIndex(index);
+      openToolLater(true);
+      return true;
     }
+
+    TraceNodeUI tracerNode = buildForwardTrace(node);
+    if (tracerNode == null) {
+      return false;
+    }
+    showTraceView(GenerationTracerView.Kind.TraceForward, tracerNode, node);
+    return true;
   }
 
-  private void postStartup() {
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        setTracingDataIsAvailable(myTracer.hasTracingData());
-        showNoTabsComponent();
-        setAvailable(false);
-        getContentManager().addContentManagerListener(new ContentManagerAdapter() {
-          public void contentRemoved(ContentManagerEvent event) {
-            boolean closeAfter = event.getContent().getComponent() == myNoTabsComponent;
-            if (getContentManager().getContentCount() == 0) {
-              showNoTabsComponent();
-              if (closeAfter) {
-                makeUnavailableLater();
-              }
-            }
-          }
-        });
-      }
+  public boolean showTracebackData(SNode node) {
+    int index = getTabIndex(GenerationTracerView.Kind.TraceBackward, node.getReference());
+    if (index > -1) {
+      selectIndex(index);
+      openToolLater(true);
+      return true;
+    }
+    TraceNodeUI tracerNode = buildBackwardTrace(node);
+    if (tracerNode == null) {
+      return false;
+    }
+    showTraceView(GenerationTracerView.Kind.TraceBackward, tracerNode, node);
+    return true;
+  }
+
+  //////////////////
+
+  @Override
+  protected void createTool(boolean early) {
+    StartupManager.getInstance(getProject()).runWhenProjectIsInitialized(() -> {
+      showNoTabsComponent();
+      setTracingDataIsAvailable(hasTracingData());
+      setAvailable(false);
     });
   }
 
@@ -97,14 +127,31 @@ public class GenerationTracerViewTool extends BaseProjectTool {
     super.doRegister();
     myContentListener = new ContentManagerAdapter() {
       public void contentRemoved(ContentManagerEvent event) {
+        final boolean removedNoTabsTab = event.getContent().getComponent() == myNoTabsComponent;
         //noTabs component could be removed
-        if (event.getContent().getComponent() != myNoTabsComponent) {
+        if (!removedNoTabsTab) {
           myTracerViews.remove(event.getIndex());
+        }
+        if (getContentManager().getContentCount() == 0) {
+          showNoTabsComponent();
+          if (removedNoTabsTab) {
+            makeUnavailableLater();
+          }
         }
       }
     };
 
     getContentManager().addContentManagerListener(myContentListener);
+  }
+
+  @Override
+  protected void doUnregister() {
+    final ContentManager contentManager = getContentManager();
+    if (myContentListener != null && contentManager != null && !contentManager.isDisposed()) {
+      contentManager.removeContentManagerListener(myContentListener);
+    }
+    myContentListener = null;
+    super.doUnregister();
   }
 
   private void showNoTabsComponent() {
@@ -122,41 +169,42 @@ public class GenerationTracerViewTool extends BaseProjectTool {
     getContentManager().removeAllContents(true);
   }
 
-  public void selectIndex(int index) {
+  void selectIndex(int index) {
     ContentManager manager = getContentManager();
     //noinspection ConstantConditions
     manager.setSelectedContent(manager.getContent(index));
   }
 
-  public int getTabIndex(Kind kind, SNode node) {
+  int getTabIndex(GenerationTracerView.Kind kind, SNodeReference node) {
     int index = 0;
     for (GenerationTracerView tracerView : myTracerViews) {
-      TracerNode tracerNode = tracerView.getRootTracerNode();
-      if (tracerNode.getKind() == kind &&
-        tracerNode.getNodePointer().resolve(MPSModuleRepository.getInstance()) == node) {
+      if (tracerView.isViewFor(kind, node)) {
         return index;
       }
       index++;
     }
     return -1;
   }
-
-  public void showTraceView(TracerNode tracerNode) {
-    GenerationTracerView tracerView = new GenerationTracerView(tracerNode, getProject()) {
-      public void close() {
-        GenerationTracerViewTool.this.closeTab(myTracerViews.indexOf(this));
+  boolean isAutoscroll() {
+    return myAutoscroll;
+  }
+  void autoscrollsChanged(boolean b) {
+    if (myAutoscroll != b) {
+      myAutoscroll = b;
+      for (GenerationTracerView tracerView : myTracerViews) {
+        tracerView.setAutoscrollToSource(b);
       }
+    }
+  }
+  void close(GenerationTracerView view) {
+    closeTab(myTracerViews.indexOf(view));
+  }
 
-      public void autoscrollsChanged(boolean b) {
-        for (GenerationTracerView tracerView : myTracerViews) {
-          tracerView.setAutoscrollToSource(b);
-        }
-      }
-    };
-
+  void showTraceView(GenerationTracerView.Kind viewToken, TraceNodeUI tracerNode, SNode node) {
+    GenerationTracerView tracerView = new GenerationTracerView(this, node.getReference(), viewToken, tracerNode);
     myTracerViews.add(tracerView);
-
-    Content content = addContent(tracerView.getComponent(), tracerView.getCaption(), tracerView.getIcon(), true);
+    Icon i = Icons.getIcon(tracerView.isForwardTraceView() ? TraceNodeUI.Kind.INPUT : TraceNodeUI.Kind.OUTPUT, node);
+    Content content = addContent(tracerView.getComponent(), node.getPresentation(), i, true);
     getContentManager().setSelectedContent(content);
 
     Content noTabsContent = getContentManager().getContent(myNoTabsComponent);
@@ -167,9 +215,38 @@ public class GenerationTracerViewTool extends BaseProjectTool {
     openToolLater(true);
   }
 
-  public void setTracingDataIsAvailable(boolean b) {
-    assert ThreadUtils.isEventDispatchThread();
-    myNoTabsComponent.setDataIsAvailable(b);
+  public void setTracingDataIsAvailable(final boolean dataPresent) {
+    ApplicationManager.getApplication().invokeLater(() -> myNoTabsComponent.setDataIsAvailable(dataPresent));
+  }
+
+  @Override
+  public Project getProject() {
+    return super.getProject(); // public for GenerationTracerView
+  }
+
+  TraceNodeUI buildForwardTrace(SNode node) {
+    final GenerationTrace ngt = myTransientModelsOwner.getTrace(node.getModel().getReference());
+    if (ngt == null) {
+      return null;
+    }
+    TraceNodeUI newTrace = new TraceNodeUI("New gen tracer", Icons.COLLECTION, node.getReference());
+    // XXX for now, we assume template source models reside in the same repository as the transient/origin node, this in
+    // not generally true. Likely shall be project repository (if different than that of transient modules) or the one with deployed languages
+    for (TraceNodeUI n : TraceBuilderUI.buildTrace(ngt, node, node.getModel().getRepository())) {
+      newTrace.addChild(n);
+    }
+    return newTrace;
+  }
+  TraceNodeUI buildBackwardTrace(SNode node) {
+    final GenerationTrace ngt = myTransientModelsOwner.getTrace(node.getModel().getReference());
+    if (ngt == null) {
+      return null;
+    }
+    TraceNodeUI newTrace = new TraceNodeUI("New gen tracer", Icons.COLLECTION, node.getReference());
+    for (TraceNodeUI n : TraceBuilderUI.buildBackTrace(ngt, node, node.getModel().getRepository())) {
+      newTrace.addChild(n);
+    }
+    return newTrace;
   }
 
   public static class NoTabsComponent extends JPanel {
@@ -185,13 +262,11 @@ public class GenerationTracerViewTool extends BaseProjectTool {
       mainPanel.add(myLabelsPanel, c);
       add(mainPanel, BorderLayout.CENTER);
 
-      SwingUtilities.invokeLater(new Runnable() {
-        public void run() {
-          ActionGroup group = ActionUtils.groupFromActions(new CloseAction(tool));
+      ApplicationManager.getApplication().invokeLater(() -> {
+        ActionGroup group = ActionUtils.groupFromActions(new CloseAction(tool));
 
-          ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, false);
-          add(toolbar.getComponent(), BorderLayout.WEST);
-        }
+        ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, false);
+        add(toolbar.getComponent(), BorderLayout.WEST);
       });
     }
 

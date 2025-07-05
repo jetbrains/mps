@@ -27,19 +27,29 @@ import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.Pair;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.project.SolutionIdea;
-import jetbrains.mps.project.GlobalScope;
-import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.model.SNode;import org.jetbrains.mps.openapi.model.SNodeId;import org.jetbrains.mps.openapi.model.SNodeReference;import org.jetbrains.mps.openapi.model.SReference;import org.jetbrains.mps.openapi.model.SModelId;import org.jetbrains.mps.openapi.model.SModel;import org.jetbrains.mps.openapi.model.SModel;import org.jetbrains.mps.openapi.model.SModelReference;import jetbrains.mps.smodel.*;
+import jetbrains.mps.project.dependency.VisibilityUtil;
+import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.workbench.action.BaseAction;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SReference;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class AddMissingDependencyAction extends BaseAction {
 
-  protected static Log log = LogFactory.getLog(AddMissingDependencyAction.class);
+  protected static Logger log = LogManager.getLogger(AddMissingDependencyAction.class);
 
   public AddMissingDependencyAction() {
     super("Add Missing Dependency", "", null);
@@ -51,40 +61,32 @@ public class AddMissingDependencyAction extends BaseAction {
   @Override
   protected void doExecute(AnActionEvent e, Map<String, Object> params) {
     try {
-      IScope scope = e.getData(MPSCommonDataKeys.SCOPE);
-      if (scope == null) {
+      Project project = e.getProject();
+      if (project == null) {
         return;
       }
-
-
       SNode curNode = e.getData(MPSCommonDataKeys.NODE);
-      if (curNode == null) {
-        return;
-      }
-
+      if (curNode == null) return;
       IOperationContext context = e.getData(MPSCommonDataKeys.OPERATION_CONTEXT);
-      if (context == null) {
-        return;
-      }
+      if (context == null) return;
 
       SModule dependentModule = context.getModule();
-      if (!(dependentModule instanceof SolutionIdea)) {
-        return;
-      }
+      if (!(dependentModule instanceof SolutionIdea)) return;
       final Module ideaDependentModule = ((SolutionIdea) dependentModule).getIdeaModule();
 
       final List<Module> ideaModulesToDependOn = new ArrayList<Module>();
       Set<Module> circularDependentModulesSet = new LinkedHashSet<Module>();
+      SRepository repository = ProjectHelper.getProjectRepository(project);
 
       for (SReference ref : curNode.getReferences()) {
-        SModelReference uid = ref.getTargetSModelReference();
-        if (scope.getModelDescriptor(uid) == null && SModelRepository.getInstance().getModelDescriptor(uid) != null) {
-          SModel sm = SModelRepository.getInstance().getModelDescriptor(uid);
+        SModelReference mref = ref.getTargetSModelReference();
+        if (mref == null) continue;
+        SModel model = mref.resolve(repository);
+        if (model == null) continue;
+        SModule moduleToDependOn = model.getModule();
+        if (!(moduleToDependOn instanceof SolutionIdea)) continue;
 
-          SModule moduleToDependOn = sm.getModule();
-          if (!(moduleToDependOn instanceof SolutionIdea)) {
-            continue;
-          }
+        if (!VisibilityUtil.isVisible(dependentModule, moduleToDependOn)) {
 
           Module ideaModuleToDependOn = ((SolutionIdea) moduleToDependOn).getIdeaModule();
 
@@ -98,9 +100,7 @@ public class AddMissingDependencyAction extends BaseAction {
         }
       }
 
-      if (ideaModulesToDependOn.isEmpty()) {
-        return;
-      }
+      if (ideaModulesToDependOn.isEmpty()) return;
 
       if (!circularDependentModulesSet.isEmpty()) {
         StringBuilder message = new StringBuilder();
@@ -150,9 +150,7 @@ public class AddMissingDependencyAction extends BaseAction {
       }
 
     } catch (Throwable t) {
-      if (log.isErrorEnabled()) {
-        log.error("User's action execute method failed. Action:" + "AddMissingDependency", t);
-      }
+      log.error("User's action execute method failed. Action:" + "AddMissingDependency", t);
     }
 
   }
@@ -176,33 +174,38 @@ public class AddMissingDependencyAction extends BaseAction {
       boolean enabled = isApplicable(e);
       this.setEnabledState(e.getPresentation(), enabled);
     } catch (Throwable t) {
-      if (log.isErrorEnabled()) {
-        log.error("User's action doUpdate method failed. Action:" + "RenameMethod", t);
-      }
+      log.error("User's action doUpdate method failed. Action:" + "RenameMethod", t);
       this.disable(e.getPresentation());
     }
   }
 
 
   public boolean isApplicable(AnActionEvent e) {
-    IScope scope = e.getData(MPSCommonDataKeys.SCOPE);
-
-    if (scope == null) {
+    Project project = e.getProject();
+    if (project == null) {
       return false;
     }
-
     SNode curNode = e.getData(MPSCommonDataKeys.NODE);
     if (curNode == null) {
       return false;
     }
+
+    IOperationContext context = e.getData(MPSCommonDataKeys.OPERATION_CONTEXT);
+    if (context == null) return false;
+
+    SModule dependentModule = context.getModule();
+    if (!(dependentModule instanceof SolutionIdea)) return false;
+
+    SRepository repository = ProjectHelper.getProjectRepository(project);
     for (SReference ref : curNode.getReferences()) {
-      SModelReference uid = ref.getTargetSModelReference();
-      if (uid == null) {
-        continue;
-      }
-      if (scope.getModelDescriptor(uid) == null && SModelRepository.getInstance().getModelDescriptor(uid) != null) {
-        return true;
-      }
+      SModelReference mref = ref.getTargetSModelReference();
+      if (mref == null) continue;
+      SModel model = mref.resolve(repository);
+      if (model == null) continue;
+      SModule moduleToDependOn = model.getModule();
+      if (!(moduleToDependOn instanceof SolutionIdea)) continue;
+
+      return !VisibilityUtil.isVisible(dependentModule, moduleToDependOn);
     }
     return false;
   }

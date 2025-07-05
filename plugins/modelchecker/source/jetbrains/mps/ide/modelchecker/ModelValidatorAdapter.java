@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,11 @@
 package jetbrains.mps.ide.modelchecker;
 
 import com.intellij.openapi.ui.DialogWrapper;
+import jetbrains.mps.generator.GenerationSettingsProvider;
+import jetbrains.mps.generator.IModifiableGenerationSettings;
 import jetbrains.mps.ide.findusages.model.SearchResults;
-import jetbrains.mps.ide.generator.GenerationSettings;
 import jetbrains.mps.ide.generator.ModelValidator;
+import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelChecker;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerIssue;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool;
@@ -26,7 +28,6 @@ import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerUtils;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerViewer;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.smodel.IOperationContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -47,31 +48,32 @@ import java.util.List;
 public class ModelValidatorAdapter implements ModelValidator {
 
   @Override
-  public boolean check(@NotNull Project p, @NotNull IOperationContext operationContext, List<SModel> modelDescriptors) {
+  public boolean check(@NotNull Project p, List<SModel> modelDescriptors) {
     com.intellij.openapi.project.Project ideaProject = ProjectHelper.toIdeaProject(p);
     ModelCheckerTool tool = ModelCheckerTool.getInstance(ideaProject);
     if (tool == null) {
       return true;
     }
+    final IModifiableGenerationSettings generationSettings = GenerationSettingsProvider.getInstance().getGenerationSettings();
 
-    boolean checkModels = GenerationSettings.getInstance().isCheckModelsBeforeGeneration();
-    if (!(checkModels)) {
-      return true;
-    }
-
-    ModelCheckerViewer viewer = tool.checkModels(modelDescriptors, operationContext, false);
+    ModelCheckerViewer viewer = tool.checkModels(modelDescriptors);
     SearchResults<ModelCheckerIssue> issues = viewer.getSearchResults();
+    if (issues == null) {
+      // Cancelled
+      return false;
+    }
 
     int warnings = ModelCheckerUtils.getIssueCountForSeverity(issues, ModelChecker.SEVERITY_WARNING);
     int errors = ModelCheckerUtils.getIssueCountForSeverity(issues, ModelChecker.SEVERITY_ERROR);
 
     if (errors != 0) {
-      CheckBeforeGenerationDialog dialog = new CheckBeforeGenerationDialog(ideaProject, errors, warnings);
+      String msg = String.format("Model checker found %d errors and %d warnings. " + "Review them and don't generate models or ignore them?", errors, warnings);
+      CheckBeforeGenerationDialog dialog = new CheckBeforeGenerationDialog(ideaProject, msg, generationSettings);
       dialog.show();
 
       if (dialog.isOK()) {
         // review errors and warnings, don't generate
-        tool.showTabWithResults(viewer);
+        tool.showTabWithResults(viewer, "Pre-generate validation", IdeIcons.MODEL_ICON);
         return false;
       } else {
         // ignore errors and warnings
@@ -81,13 +83,14 @@ public class ModelValidatorAdapter implements ModelValidator {
     return true;
   }
 
-  private class CheckBeforeGenerationDialog extends DialogWrapper {
+  private static class CheckBeforeGenerationDialog extends DialogWrapper {
+    private final IModifiableGenerationSettings mySettings;
     private String myDialogMessage;
 
-    public CheckBeforeGenerationDialog(com.intellij.openapi.project.Project project, int errors, int warnings) {
+    public CheckBeforeGenerationDialog(com.intellij.openapi.project.Project project, String message, IModifiableGenerationSettings settings) {
       super(project, true);
-      myDialogMessage = String.format("Model checker found %d errors and %d warnings. " + "Review them and don't generate models or ignore them?", errors,
-          warnings);
+      mySettings = settings;
+      myDialogMessage = message;
       setTitle("Check Before Generation");
       setOKButtonText("Review Errors");
       setCancelButtonText("Ignore Errors");
@@ -106,7 +109,7 @@ public class ModelValidatorAdapter implements ModelValidator {
         @Override
         public void itemStateChanged(ItemEvent ev) {
           boolean selected = ev.getStateChange() == ItemEvent.SELECTED;
-          GenerationSettings.getInstance().setCheckModelsBeforeGeneration(!(selected));
+          mySettings.setCheckModelsBeforeGeneration(!selected);
         }
       });
 

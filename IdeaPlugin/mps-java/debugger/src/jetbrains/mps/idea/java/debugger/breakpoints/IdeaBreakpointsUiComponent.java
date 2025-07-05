@@ -17,37 +17,46 @@
 package jetbrains.mps.idea.java.debugger.breakpoints;
 
 import com.intellij.debugger.DebuggerManagerEx;
-import com.intellij.debugger.engine.requests.RequestManagerImpl;
 import com.intellij.debugger.ui.breakpoints.Breakpoint;
-import com.intellij.debugger.ui.breakpoints.BreakpointManagerListener;
 import com.intellij.debugger.ui.breakpoints.BreakpointWithHighlighter;
-import com.intellij.debugger.ui.breakpoints.FieldBreakpoint;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiDocumentManager;
+import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiMethod;
 import com.intellij.psi.util.PsiTreeUtil;
+import com.intellij.xdebugger.XDebuggerManager;
+import com.intellij.xdebugger.XDebuggerUtil;
+import com.intellij.xdebugger.breakpoints.XBreakpoint;
+import com.intellij.xdebugger.breakpoints.XBreakpointListener;
 import jetbrains.mps.debugger.core.breakpoints.BreakpointsUiComponentEx;
 import jetbrains.mps.ide.editor.util.EditorComponentUtil;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.java.trace.GeneratedSourcePosition;
 import jetbrains.mps.nodeEditor.AdditionalPainter;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<Breakpoint, BreakpointWithHighlighter> implements ProjectComponent {
+  private static final Logger LOG = LogManager.getLogger(IdeaBreakpointsUiComponent.class);
   private DebuggerManagerEx myDebuggerManager;
-  private final BreakpointManagerListener myBreakpointListener = new MyBreakpointManagerListener();
+  private final XBreakpointListener myBreakpointListener = new MyBreakpointListener();
 
   public IdeaBreakpointsUiComponent(Project project, FileEditorManager manager) {
     super(project, manager);
@@ -65,13 +74,13 @@ public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<Breakpo
   public void initComponent() {
     super.init();
     myDebuggerManager = DebuggerManagerEx.getInstanceEx(myProject);
-    myDebuggerManager.getBreakpointManager().addBreakpointManagerListener(myBreakpointListener);
+    XDebuggerManager.getInstance(myProject).getBreakpointManager().addBreakpointListener(myBreakpointListener);
   }
 
   @Override
   public void disposeComponent() {
     super.dispose();
-    myDebuggerManager.getBreakpointManager().removeBreakpointManagerListener(myBreakpointListener);
+    XDebuggerManager.getInstance(myProject).getBreakpointManager().removeBreakpointListener(myBreakpointListener);
     myDebuggerManager = null;
   }
 
@@ -84,8 +93,8 @@ public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<Breakpo
   @Override
   protected Set<BreakpointWithHighlighter> getBreakpointsForComponent(@NotNull final EditorComponent component) {
     final Set<BreakpointWithHighlighter> result = new HashSet<BreakpointWithHighlighter>();
-    final List<Breakpoint> breakpoints = myDebuggerManager.getBreakpointManager().getBreakpoints();
-    ModelAccess.instance().runReadAction(new Runnable() {
+    final List<Breakpoint> breakpoints = myDebuggerManager.getBreakpointManager().getBreakpoints(); //XDebuggerManager.getInstance(myProject).getBreakpointManager()
+    ProjectHelper.getModelAccess(myProject).runReadAction(new Runnable() {
       @Override
       public void run() {
         for (Breakpoint breakpoint : breakpoints) {
@@ -103,6 +112,21 @@ public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<Breakpo
   }
 
   @Override
+  @NotNull
+  protected List<EditorComponent> getComponentsForBreakpoint(@NotNull final BreakpointWithHighlighter breakpoint) {
+    return new ModelAccessHelper(ProjectHelper.getModelAccess(myProject)).runReadAction(new Computable<List<EditorComponent>>() {
+      public List<EditorComponent> compute() {
+        SNode node = BreakpointPainter.getNodeForBreakpoint(breakpoint);
+        if (node != null) {
+          return EditorComponentUtil.findComponentForNode(node, myFileEditorManager);
+        }
+        return Collections.emptyList();
+      }
+    });
+  }
+
+
+  @Override
   protected BreakpointPainter createPainter(BreakpointWithHighlighter breakpoint) {
     return new BreakpointPainter(breakpoint);
   }
@@ -114,66 +138,47 @@ public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<Breakpo
 
   @Override
   protected void toggleBreakpoint(final SNode node) {
-    BreakpointWithHighlighter locationBreakpoint = findBreakpoint(node);
-    if (locationBreakpoint != null) {
-      myDebuggerManager.getBreakpointManager().removeBreakpoint(locationBreakpoint);
-      return;
-    }
-
-    addBreakpoint(node);
-  }
-
-  private BreakpointWithHighlighter findBreakpoint(SNode node) {
-    List<Breakpoint> breakpoints = myDebuggerManager.getBreakpointManager().getBreakpoints();
-    for (Breakpoint breakpoint : breakpoints) {
-      if (breakpoint instanceof BreakpointWithHighlighter) {
-        final BreakpointWithHighlighter locationBreakpoint = (BreakpointWithHighlighter) breakpoint;
-        if (new jetbrains.mps.smodel.SNodePointer(BreakpointPainter.getNodeForBreakpoint(locationBreakpoint)).equals(new jetbrains.mps.smodel.SNodePointer(node))) {
-          return locationBreakpoint;
+    boolean breakpointWasSet = false;
+    GeneratedSourcePosition sourcePosition = GeneratedSourcePosition.fromNode(node);
+    if (sourcePosition != null) {
+      PsiFile psiFile = sourcePosition.getPsiFile(myProject);
+      if (psiFile != null) {
+        Document document = PsiDocumentManager.getInstance(myProject).getDocument(psiFile);
+        if (document != null) {
+          if (!hasMethodOrFieldsAtLine(document, psiFile, sourcePosition.getLineNumber())) {
+            breakpointWasSet = toggleAtLine(psiFile, sourcePosition.getLineNumber());
+          }
         }
       }
     }
-    return null;
-  }
-
-  private void addBreakpoint(SNode node) {
-    GeneratedSourcePosition sourcePosition = GeneratedSourcePosition.fromNode(node);
-    if (sourcePosition == null) return;
-    PsiFile psiFile = sourcePosition.getPsiFile(myProject);
-    if (psiFile == null) return;
-    Document document = PsiDocumentManager.getInstance(myProject).getDocument(psiFile);
-
-    BreakpointWithHighlighter breakpoint = addFieldBreakpoint(document, psiFile, sourcePosition);
-    if (breakpoint == null) {
-      breakpoint = myDebuggerManager.getBreakpointManager().addMethodBreakpoint(document, sourcePosition.getLineNumber());
-    }
-    if (breakpoint == null) {
-      breakpoint = myDebuggerManager.getBreakpointManager().addLineBreakpoint(document, sourcePosition.getLineNumber());
-    }
-
-    if (breakpoint != null) {
-      RequestManagerImpl.createRequests(breakpoint);
+    if (!breakpointWasSet) {
+      LOG.debug("Failed to create a breakpoint at this location");
     }
   }
 
-  private FieldBreakpoint addFieldBreakpoint(Document document, PsiFile psiFile, GeneratedSourcePosition sourcePosition) {
-    int lineStartOffset = document.getLineStartOffset(sourcePosition.getLineNumber());
-    int nextLineStartOffset = document.getLineStartOffset(sourcePosition.getLineNumber() + 1);
+  private boolean toggleAtLine(PsiFile psiFile, int lineNumber) {
+    XDebuggerUtil debuggerUtil = XDebuggerUtil.getInstance();
+    if (debuggerUtil.canPutBreakpointAt(myProject, psiFile.getVirtualFile(), lineNumber)) {
+      debuggerUtil.toggleLineBreakpoint(myProject, psiFile.getVirtualFile(), lineNumber);
+      return true;
+    }
+    return false;
+  }
 
-    PsiField psiField = null;
+  private boolean hasMethodOrFieldsAtLine(@NotNull Document document, @NotNull PsiFile file, int lineNumber) {
+    int lineStartOffset = document.getLineStartOffset(lineNumber);
+    int lineEndOffset = document.getLineEndOffset(lineNumber);
+    Class<? extends PsiElement>[] elementsLookingFor = new Class[]{PsiMethod.class, PsiField.class};
 
-    for (int i = lineStartOffset; i < nextLineStartOffset; i++) {
-      // really? I cant just find a field by a line?
-      psiField = PsiTreeUtil.findElementOfClassAtRange(psiFile, i, nextLineStartOffset, PsiField.class);
-      if (psiField != null) {
-        break;
+    for (int i = lineStartOffset; i < lineEndOffset; ++i) {
+      for (Class<? extends PsiElement> elementClass : elementsLookingFor) {
+        PsiElement psiElement = PsiTreeUtil.findElementOfClassAtOffset(file, i, elementClass, true);
+        if (psiElement != null && document.getLineNumber(psiElement.getTextOffset()) == lineNumber) {
+          return true;
+        }
       }
     }
-    if (psiField == null) {
-      return null;
-    }
-
-    return myDebuggerManager.getBreakpointManager().addFieldBreakpoint(document, psiField.getTextOffset());
+    return false;
   }
 
   @Override
@@ -194,27 +199,32 @@ public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<Breakpo
     }
   }
 
-  private class MyBreakpointManagerListener implements BreakpointManagerListener {
+  private class MyBreakpointListener implements XBreakpointListener {
+
     @Override
-    public void breakpointsChanged() {
+    public void breakpointAdded(@NotNull XBreakpoint breakpoint) {
+      breakpointChanged(breakpoint);
+    }
+
+    @Override
+    public void breakpointRemoved(@NotNull XBreakpoint breakpoint) {
+      breakpointChanged(breakpoint);
+    }
+
+    @Override
+    public void breakpointChanged(@NotNull XBreakpoint breakpointNoUse) {
       clearAllEditors();
 
+      // XXX why do we remove/re-add all BPs here instead of managing them individually like BreakpointsUiComponent does?
       final List<Breakpoint> breakpoints = myDebuggerManager.getBreakpointManager().getBreakpoints();
-      ModelAccess.instance().runReadAction(new Runnable() {
-        @Override
-        public void run() {
-          for (Breakpoint breakpoint : breakpoints) {
-            if (breakpoint instanceof BreakpointWithHighlighter) {
-              BreakpointWithHighlighter breakpointWithHighlighter = (BreakpointWithHighlighter) breakpoint;
-              SNode node = BreakpointPainter.getNodeForBreakpoint(breakpointWithHighlighter);
-              if (node != null) {
-                addLocationBreakpoint(breakpointWithHighlighter, BreakpointPainter.getNodeForBreakpoint(breakpointWithHighlighter));
-              }
-            }
-          }
+      for (Breakpoint breakpoint : breakpoints) {
+        if (breakpoint instanceof BreakpointWithHighlighter) {
+          BreakpointWithHighlighter breakpointWithHighlighter = (BreakpointWithHighlighter) breakpoint;
+          addLocationBreakpoint(breakpointWithHighlighter);
         }
-      });
+      }
 
+      repaintBreakpoints();
       ApplicationManager.getApplication().invokeLater(new Runnable() {
         @Override
         public void run() {
@@ -226,5 +236,4 @@ public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<Breakpo
       });
     }
   }
-
 }

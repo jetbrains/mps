@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,14 @@
  */
 package jetbrains.mps.extapi.model;
 
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.dependency.ModelDependenciesManager;
 import jetbrains.mps.smodel.FastNodeFinder;
-import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.SModel.ImportElement;
-import jetbrains.mps.smodel.SModelDescriptor;
 import jetbrains.mps.smodel.SModelInternal;
+import jetbrains.mps.smodel.SModelLegacy;
 import jetbrains.mps.smodel.SModelRepository;
-import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.event.SModelFileChangedEvent;
 import jetbrains.mps.smodel.event.SModelListener;
 import jetbrains.mps.smodel.event.SModelListener.SModelListenerPriority;
@@ -31,50 +31,47 @@ import jetbrains.mps.smodel.loading.ModelLoadingState;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.model.SModelScope;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
+ * IMPORTANT - DO NOT SUBCLASS THIS ONE DIRECTLY, USE {@link SModelBase} INSTEAD.
+ *
+ * Stub for model implementations with data kept separately in a SModel/SModelData (as of now/planned).
+ * Unlike {@link SModelBase}, which is true root of model descriptor hierarchy, this class keeps
+ * transition stuff like legacy SModelListeners and SModelInternal methods, our explicit though untold dependencies from smodel.SModel.
+ * Perhaps, one day we can get rid of if altogether.
+ *
  * TODO move listeners to openapi
  */
-public abstract class SModelDescriptorStub implements SModelDescriptor {
+public abstract class SModelDescriptorStub implements SModelInternal, SModel, FastNodeFinder.Factory {
 
   private static final Logger LOG = LogManager.getLogger(SModelDescriptorStub.class);
 
-  private List<SModelListener> myModelListeners = new CopyOnWriteArrayList<SModelListener>();
+  private final List<SModelListener> myModelListeners = new CopyOnWriteArrayList<SModelListener>();
 
   /**
    * Migration to 3.0. Loads and returns model data.
+   *
+   * FIXME Replace uses of this method with getSModel(), make it abstract and implement in SModelBase subclasses.
+   *       The name getSModelInternal is misleading as it clashes with SModelInternal interface this class implements.
+   *       Though getSModel is not much better, at least in the context of SModelDescriptor it makes more sense.
+   *
+   * @deprecated use {@link SModelBase#getModelData()} or {@link #getSModel()}
+   * FIXME  there's implicit convention that smodel.SModel has this openapi.SModel (aka descriptor) assigned once
+   * this method returns
    */
   @Deprecated
   public abstract jetbrains.mps.smodel.SModel getSModelInternal();
-
-  /**
-   * Dangerous, allows to replace model data.
-   */
-  public void replace(SModelData modelData) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public SModel resolveModel(SModelReference reference) {
-    throw new UnsupportedOperationException("not supported since 3.0");
-  }
-
-  @Override
-  public boolean isTransient() {
-    return false;
-  }
-
-  @Override
-  public jetbrains.mps.smodel.SModel getSModel() {
-    return getSModelInternal();
-  }
 
   @Override
   public void addModelListener(@NotNull SModelListener listener) {
@@ -97,11 +94,6 @@ public abstract class SModelDescriptorStub implements SModelDescriptor {
 
   protected void clearListeners() {
     myModelListeners.clear();
-  }
-
-  @Override
-  public boolean isGeneratable() {
-    return false;
   }
 
   protected void notifyModelReplaced(jetbrains.mps.smodel.SModel oldSModel) {
@@ -152,6 +144,11 @@ public abstract class SModelDescriptorStub implements SModelDescriptor {
     }
   }
 
+  /**
+   * @deprecated (a) we are in process to get rid of SModelListener; (b) this method used to change loading state in addition
+   * to event dispatch, and if you used to invoke it, please re-consider that code.
+   */
+  @Deprecated
   protected void fireModelStateChanged(ModelLoadingState newState) {
     for (SModelListener sModelListener : getModelListeners()) {
       try {
@@ -183,178 +180,189 @@ public abstract class SModelDescriptorStub implements SModelDescriptor {
   }
 
   /**
-   * use getReference()
+   * Use {@link SModelBase#getModelData()} wherever possible.
+   * Use this method when accessing implementation aspects of smodel.SModel that are not exposed
+   * through SModelInternal interface (for latter, use {@link #getSModelInternal()} until ceased).
    */
-  @Override
-  @Deprecated
-  public jetbrains.mps.smodel.SModelReference getSModelReference() {
-    return ((jetbrains.mps.smodel.SModelReference) getReference());
+  public jetbrains.mps.smodel.SModel getSModel() {
+    return getSModelInternal();
   }
 
-  @Override
-  public String getLongName() {
-    return SModelStereotype.withoutStereotype(getReference().getModelName());
-  }
 
-  @Override
-  public String getStereotype() {
-    return SModelStereotype.getStereotype(getReference().getModelName());
-  }
-
-  //
-
-  @Override
   public final ModelDependenciesManager getModelDepsManager() {
-    return getSModelInternal().getModelDepsManager();
+    return getSModel().getModelDepsManager();
   }
 
   @Override
-  public final List<SModuleReference> importedLanguages() {
-    return getSModelInternal().importedLanguages();
+  public java.util.Collection<SLanguage> importedLanguageIds() {
+    assertCanRead();
+    return getSModel().usedLanguages();
   }
 
   @Override
-  public final void deleteLanguage(@NotNull SModuleReference ref) {
-    getSModelInternal().deleteLanguage(ref);
+  public void deleteLanguageId(@NotNull SLanguage ref) {
+    assertCanChange();
+    getSModel().deleteLanguage(ref);
   }
 
   @Override
-  public final void addLanguage(SModuleReference ref) {
-    getSModelInternal().addLanguage(ref);
+  public void addLanguage(Language language) {
+    assertCanChange();
+    new SModelLegacy(getSModel()).addLanguage(language);
   }
 
   @Override
-  public final List<SModuleReference> importedDevkits() {
-    return getSModelInternal().importedDevkits();
+  public void addLanguage(@NotNull SLanguage language) {
+    assertCanChange();
+    getSModel().addLanguage(language);
+  }
+
+  @Override
+  public void setLanguageImportVersion(@NotNull SLanguage language, int version) {
+    assertCanChange();
+    getSModel().setLanguageImportVersion(language, version);
+  }
+
+  @Override
+  public int getLanguageImportVersion(SLanguage lang) {
+    assertCanRead();
+    return getSModel().getLanguageImportVersion(lang);
+  }
+
+  @Override
+  public List<SModuleReference> importedDevkits() {
+    assertCanRead();
+    return getSModel().importedDevkits();
   }
 
   @Override
   public final void addDevKit(SModuleReference ref) {
-    getSModelInternal().addDevKit(ref);
+    assertCanChange();
+    getSModel().addDevKit(ref);
   }
 
   @Override
   public final void deleteDevKit(@NotNull SModuleReference ref) {
-    getSModelInternal().deleteDevKit(ref);
+    assertCanChange();
+    getSModel().deleteDevKit(ref);
+  }
+
+  @NotNull
+  @Override
+  public Collection<SModelReference> getModelImports() {
+    assertCanRead();
+    ArrayList<SModelReference> rv = new ArrayList<SModelReference>();
+    for (ImportElement ie : getSModel().importedModels()) {
+      rv.add(ie.getModelReference());
+    }
+    return rv;
   }
 
   @Override
-  public final List<ImportElement> importedModels() {
-    return getSModelInternal().importedModels();
-  }
-
-  @Override
+  @Deprecated
   public final void addModelImport(SModelReference modelReference, boolean firstVersion) {
-    getSModelInternal().addModelImport(modelReference, firstVersion);
+    assertCanChange();
+    new SModelLegacy(getSModel()).addModelImport(modelReference, firstVersion);
   }
 
   @Override
-  public final void addModelImport(ImportElement importElement) {
-    getSModelInternal().addModelImport(importElement);
+  public final void addModelImport(@NotNull SModelReference ref) {
+    assertCanChange();
+    getSModel().addModelImport(new ImportElement(ref));
   }
 
   @Override
   public final void deleteModelImport(SModelReference modelReference) {
-    getSModelInternal().deleteModelImport(modelReference);
+    assertCanChange();
+    final jetbrains.mps.smodel.SModel modelData = getSModel();
+    for (ImportElement importElement : new ArrayList<>(modelData.importedModels())) {
+      if (importElement.getModelReference().equals(modelReference)) {
+        modelData.deleteModelImport(importElement);
+      }
+    }
   }
 
   @Override
-  public final void calculateImplicitImports() {
-    getSModelInternal().calculateImplicitImports();
-  }
-
-  @Override
+  @Deprecated
   public final List<SModuleReference> engagedOnGenerationLanguages() {
-    return getSModelInternal().engagedOnGenerationLanguages();
+    assertCanRead();
+    return new SModelLegacy(getSModel()).engagedOnGenerationLanguages();
+  }
+
+  @NotNull
+  @Override
+  public Collection<SLanguage> getLanguagesEngagedOnGeneration() {
+    assertCanRead();
+    return getSModel().getLanguagesEngagedOnGeneration();
   }
 
   @Override
+  @Deprecated
   public final void addEngagedOnGenerationLanguage(SModuleReference ref) {
-    getSModelInternal().addEngagedOnGenerationLanguage(ref);
+    assertCanChange();
+    new SModelLegacy(getSModel()).addEngagedOnGenerationLanguage(ref);
   }
 
   @Override
+  public final void addEngagedOnGenerationLanguage(SLanguage lang) {
+    assertCanChange();
+    getSModel().addEngagedOnGenerationLanguage(lang);
+  }
+
+  @Override
+  @Deprecated
   public final void removeEngagedOnGenerationLanguage(SModuleReference ref) {
-    getSModelInternal().removeEngagedOnGenerationLanguage(ref);
+    assertCanChange();
+    new SModelLegacy(getSModel()).removeEngagedOnGenerationLanguage(ref);
   }
 
   @Override
-  public final List<ImportElement> getAdditionalModelVersions() {
-    return getSModelInternal().getAdditionalModelVersions();
+  public final void removeEngagedOnGenerationLanguage(SLanguage lang) {
+    assertCanChange();
+    getSModel().removeEngagedOnGenerationLanguage(lang);
   }
 
-  @Override
-  public final void addAdditionalModelVersion(@NotNull SModelReference modelReference, int usedVersion) {
-    getSModelInternal().addAdditionalModelVersion(modelReference, usedVersion);
+  /**
+   * Invoked to check if it's legal to read from the model.
+   * By default, is no-op, subclasses shall override to enforce proper policy
+   */
+  protected void assertCanRead() {
+    // intentionally no-op
   }
 
-  @Override
-  public final void addAdditionalModelVersion(@NotNull ImportElement element) {
-    getSModelInternal().addAdditionalModelVersion(element);
+  /**
+   * Invoked to check if it's legal to modify the model.
+   * By default, is no-op, subclasses shall override to enforce proper policy
+   */
+  protected void assertCanChange() {
+    // intentionally no-op
   }
 
-  @Override
-  public int getVersion() {
-    return getSModelInternal().getVersion();
-  }
-
-  @Override
-  public void setVersion(int version) {
-    getSModelInternal().setVersion(version);
+    @Override
+  public boolean isDisposed() {
+    return getDisposedStacktrace() != null;
   }
 
   @Override
   public final StackTraceElement[] getDisposedStacktrace() {
-    return getSModelInternal().getDisposedStacktrace();
+    return getSModel().getDisposedStacktrace();
   }
 
   @Override
-  public final void setModelDescriptor(org.jetbrains.mps.openapi.model.SModel modelDescriptor) {
-    getSModelInternal().setModelDescriptor(modelDescriptor);
+  public FastNodeFinder createNodeFinder(@NotNull SModel model) {
+    assert model == this;
+    return getSModel().createFastNodeFinder();
   }
 
   @Override
-  public final boolean canFireEvent() {
-    return getSModelInternal().canFireEvent();
-  }
-
-  @Override
-  public final FastNodeFinder getFastNodeFinder() {
-    return getSModelInternal().getFastNodeFinder();
-  }
-
-  @Override
-  public final void disposeFastNodeFinder() {
-    getSModelInternal().disposeFastNodeFinder();
-  }
-
-  @Override
-  public final void updateImportedModelUsedVersion(org.jetbrains.mps.openapi.model.SModelReference sModelReference, int currentVersion) {
-    getSModelInternal().updateImportedModelUsedVersion(sModelReference, currentVersion);
-  }
-
-  @Override
-  public final boolean updateSModelReferences() {
-    return getSModelInternal().updateSModelReferences();
-  }
-
-  @Override
-  public final boolean updateModuleReferences() {
-    return getSModelInternal().updateModuleReferences();
-  }
-
-  @Override
-  public final boolean canFireReadEvent() {
-    return getSModelInternal().canFireReadEvent();
+  public final boolean updateExternalReferences(@NotNull SRepository repo) {
+    assertCanChange();
+    return getSModel().updateExternalReferences(getRepository());
   }
 
   @Override
   public void changeModelReference(SModelReference newModelReference) {
-    getSModelInternal().changeModelReference(newModelReference);
-  }
-
-  @Override
-  public final void copyPropertiesTo(SModelInternal to) {
-    getSModelInternal().copyPropertiesTo(to);
+    assertCanChange();
+    getSModel().changeModelReference(newModelReference);
   }
 }

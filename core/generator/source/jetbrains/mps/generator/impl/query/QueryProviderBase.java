@@ -1,0 +1,558 @@
+/*
+ * Copyright 2003-2017 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package jetbrains.mps.generator.impl.query;
+
+import jetbrains.mps.generator.impl.GenerationFailureException;
+import jetbrains.mps.generator.impl.interpreted.ReflectiveQueryProvider;
+import jetbrains.mps.generator.template.CreateRootRuleContext;
+import jetbrains.mps.generator.template.DropAttributeRuleContext;
+import jetbrains.mps.generator.template.DropRootRuleContext;
+import jetbrains.mps.generator.template.IfMacroContext;
+import jetbrains.mps.generator.template.InlineSwitchCaseContext;
+import jetbrains.mps.generator.template.InsertMacroContext;
+import jetbrains.mps.generator.template.MapRootRuleContext;
+import jetbrains.mps.generator.template.MapSrcMacroContext;
+import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
+import jetbrains.mps.generator.template.MappingScriptContext;
+import jetbrains.mps.generator.template.PatternRuleContext;
+import jetbrains.mps.generator.template.PropertyMacroContext;
+import jetbrains.mps.generator.template.ReductionRuleQueryContext;
+import jetbrains.mps.generator.template.ReferenceMacroContext;
+import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
+import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
+import jetbrains.mps.generator.template.TemplateArgumentContext;
+import jetbrains.mps.generator.template.TemplateQueryContext;
+import jetbrains.mps.generator.template.TemplateVarContext;
+import jetbrains.mps.generator.template.WeavingAnchorContext;
+import jetbrains.mps.generator.template.WeavingMappingRuleContext;
+import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+
+import java.util.Collection;
+import java.util.Collections;
+
+/**
+ * This is a base implementation of {@link jetbrains.mps.generator.impl.query.GeneratorQueryProvider} which generated
+ * class with queries shall extend to protect itself from future modifications of the interface.
+ *
+ * @author Artem Tikhomirov
+ */
+public abstract class QueryProviderBase implements GeneratorQueryProvider {
+  private final int myVersion;
+  private ReflectiveQueryProvider myReflectiveFallback;
+
+  protected QueryProviderBase() {
+    // this cons is invoked from previous version of QueriesGenerated that implements GeneratorQueryProvider
+    myVersion = 0;
+  }
+
+  protected QueryProviderBase(int version) {
+    // this one is invoked from newly generated implementations to indicate new methods were generated
+    myVersion = version;
+  }
+
+  // INTERNAL API for QueryProviderCache, to support non-reflective providers generated with MPS 3.3
+  @ToRemove(version = 3.4)
+  public boolean needsReflectiveFallback() {
+    return myVersion == 0;
+  }
+
+  // INTERNAL API for QueryProviderCache, to support non-reflective providers generated with MPS 3.3
+  @ToRemove(version = 3.4)
+  public void useReflectiveFallback(ReflectiveQueryProvider rqp) {
+    myReflectiveFallback = rqp;
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public CreateRootCondition getCreateRootRuleCondition(@NotNull SNode rule) {
+    return new Defaults();
+  }
+
+  @NotNull
+  @Override
+  public CreateRootCondition getCreateRootRuleCondition(@NotNull QueryKey identity) {
+    return getCreateRootRuleCondition(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public MapRootRuleCondition getMapRootRuleCondition(@NotNull SNode rule) {
+    return new Defaults();
+  }
+
+  @NotNull
+  @Override
+  public MapRootRuleCondition getMapRootRuleCondition(@NotNull QueryKey identity) {
+    return getMapRootRuleCondition(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public ReductionRuleCondition getReductionRuleCondition(@NotNull SNode rule) {
+    return new Defaults();
+  }
+
+  @NotNull
+  @Override
+  public ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity) {
+    return getReductionRuleCondition(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public PatternRuleQuery getPatternRuleCondition(@NotNull SNode rule) {
+    return new Defaults();
+  }
+
+  @NotNull
+  @Override
+  public PatternRuleQuery getPatternRuleCondition(@NotNull QueryKey identity) {
+    return getPatternRuleCondition(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public DropRuleCondition getDropRuleCondition(@NotNull SNode rule) {
+    return new Defaults();
+  }
+
+  @NotNull
+  @Override
+  public DropRuleCondition getDropRuleCondition(@NotNull QueryKey identity) {
+    return getDropRuleCondition(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public DropAttributeRuleCondition getDropAttributeRuleCondition(@NotNull SNode rule) {
+    return new Defaults();
+  }
+
+  @NotNull
+  @Override
+  public DropAttributeRuleCondition getDropAttributeRuleCondition(@NotNull QueryKey identity) {
+    return getDropAttributeRuleCondition(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public WeaveRuleCondition getWeaveRuleCondition(@NotNull SNode rule) {
+    return new Defaults();
+  }
+
+  @NotNull
+  @Override
+  public WeaveRuleCondition getWeaveRuleCondition(@NotNull QueryKey identity) {
+    return getWeaveRuleCondition(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public WeaveRuleQuery getWeaveRuleQuery(@NotNull SNode rule) {
+    return new Defaults();
+  }
+
+  @NotNull
+  @Override
+  public WeaveRuleQuery getWeaveRuleQuery(@NotNull QueryKey identity) {
+    return getWeaveRuleQuery(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public WeaveAnchorQuery getWeaveAnchorQuery(@NotNull SNode rule) {
+    return new Defaults();
+  }
+
+  @NotNull
+  @Override
+  public WeaveAnchorQuery getWeaveAnchorQuery(@NotNull QueryKey identity) {
+    return getWeaveAnchorQuery(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public ScriptCodeBlock getScriptCodeBlock(@NotNull SNode script) {
+    return new Defaults();
+  }
+
+  @NotNull
+  @Override
+  public ScriptCodeBlock getScriptCodeBlock(@NotNull QueryKey identity) {
+    return getScriptCodeBlock(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public MapConfigurationCondition getMapConfigurationCondition(@NotNull SNode mapCfg) {
+    return new Defaults();
+  }
+
+  @NotNull
+  @Override
+  public MapConfigurationCondition getMapConfigurationCondition(@NotNull QueryKey identity) {
+    return getMapConfigurationCondition(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public SourceNodeQuery getSourceNodeQuery(@NotNull SNode query) {
+    return new Defaults();
+  }
+
+  @NotNull
+  @Override
+  public SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity) {
+    return getSourceNodeQuery(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public SourceNodesQuery getSourceNodesQuery(@NotNull SNode query) {
+    return new Defaults();
+  }
+
+  @NotNull
+  @Override
+  public SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity) {
+    return getSourceNodesQuery(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public PropertyValueQuery getPropertyValueQuery(@NotNull SNode propertyMacro) {
+    // XXX propertyMacro.getNodeId() is wrong identity for PM's query function, we shall rather use
+    // RuleUtil.getPropertyMacro_ValueFunction(propertyMacro).getNodeId(), but as long as it's 'fail-only' implementation, who cares?
+    return new PropertyQuery(new QueryKeyImpl(propertyMacro.getReference(), propertyMacro.getNodeId()));
+  }
+
+  @NotNull
+  @Override
+  public PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity) {
+    return getPropertyValueQuery(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public IfMacroCondition getIfMacroCondition(@NotNull SNode ifMacro) {
+    return new Missing(ifMacro);
+  }
+
+  @NotNull
+  @Override
+  public IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity) {
+    return getIfMacroCondition(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @ToRemove(version = 2017.1)
+  @Override
+  public InlineSwitchCaseCondition getInlineSwitchCaseCondition(@NotNull SNode caseNode) {
+    return new Missing(caseNode);
+  }
+
+  @NotNull
+  @Override
+  public InlineSwitchCaseCondition getInlineSwitchCaseCondition(@NotNull QueryKey identity) {
+    return getInlineSwitchCaseCondition(((QueryKeyImpl) identity).getAPITransitionNode());
+  }
+
+  @NotNull
+  @Override
+  public ReferenceTargetQuery getReferenceTargetQuery(@NotNull QueryKey identity) {
+    if (myVersion == 0) {
+      // XXX provisional code to support generated providers prior to addition of the method
+      return myReflectiveFallback.getReferenceTargetQuery(identity);
+    }
+    return new RefQuery(identity);
+  }
+
+  @NotNull
+  @Override
+  public CallArgumentQuery getTemplateCallArgumentQuery(@NotNull QueryKey identity) {
+    if (myVersion == 0) {
+      // XXX provisional code to support generated providers prior to addition of the method
+      return myReflectiveFallback.getTemplateCallArgumentQuery(identity);
+    }
+    // DefaultQueryExecutionContext used to evaluate to null if no method was found.
+    // It is reasonable for scenarios like bootstrap of the generator itself (e.g. to generate a new CALL inside QueriesGenerate)
+    // but for any other generator there's no reason to continue generation if QG is broken that's why we fail here with Missing.
+    // For lang.generator generator, we handle missing methods in ReflectiveQueryProvider, and unless we decide to switch to non-reflective
+    // QG in lang.generator itself, we shall not bother. QPB subclass delegates to super (i.e. this method) when it has been asked for non-existent query.
+    return new Missing(identity);
+  }
+
+  @NotNull
+  @Override
+  public VariableValueQuery getVariableValueQuery(@NotNull QueryKey identity) {
+    if (myVersion == 0) {
+      // XXX provisional code to support generated providers prior to addition of the method
+      return myReflectiveFallback.getVariableValueQuery(identity);
+    }
+    // Same as above, no reason to default to null.
+    return new Missing(identity);
+  }
+
+  @NotNull
+  @Override
+  public InsertMacroQuery getInsertMacroQuery(@NotNull QueryKey identity) {
+    if (myVersion == 0) {
+      // XXX provisional code to support generated providers prior to addition of the method
+      return myReflectiveFallback.getInsertMacroQuery(identity);
+    }
+    // used to evaluate to null if missing in DQEC. Why not do the same here?
+    return new Missing(identity);
+  }
+
+  @NotNull
+  @Override
+  public MapNodeQuery getMapNodeQuery(@NotNull QueryKey identity) {
+    if (myVersion == 0) {
+      return myReflectiveFallback.getMapNodeQuery(identity);
+    }
+    return new Missing(identity);
+  }
+
+  @NotNull
+  @Override
+  public MapPostProcessor getMapPostProcessor(@NotNull QueryKey identity) {
+    if (myVersion == 0) {
+      return myReflectiveFallback.getMapPostProcessor(identity);
+    }
+    return new Missing(identity);
+  }
+
+  /**
+   * Reasonable default values for all conditions and queries.
+   * Note, these default values represent the case when no condition/query was specified. There's
+   * another set of defaults for cases when condition failed to evaluate ({@link jetbrains.mps.generator.impl.interpreted.ReflectiveQueryProvider.Impl}.
+   */
+  public static class Defaults implements CreateRootCondition, MapRootRuleCondition, ReductionRuleCondition, PatternRuleQuery,
+      DropRuleCondition, WeaveRuleCondition, WeaveRuleQuery, ScriptCodeBlock, MapConfigurationCondition, SourceNodeQuery, SourceNodesQuery,
+      WeaveAnchorQuery, DropAttributeRuleCondition {
+
+    @Override
+    public boolean check(@NotNull CreateRootRuleContext ctx) {
+      return true;
+    }
+
+    @Override
+    public boolean check(@NotNull MapRootRuleContext ctx) {
+      return true;
+    }
+
+    @Override
+    public boolean check(@NotNull DropRootRuleContext ctx) {
+      return true;
+    }
+
+    @Override
+    public boolean check(@NotNull DropAttributeRuleContext ctx) {
+      return true;
+    }
+
+    @Override
+    public boolean check(@NotNull ReductionRuleQueryContext ctx) {
+      return true;
+    }
+
+    @Override
+    public boolean check(@NotNull WeavingMappingRuleContext ctx) {
+      return true;
+    }
+
+    @Override
+    public SNode contextNode(WeavingMappingRuleContext ctx) {
+      return null;
+    }
+
+    @Override
+    public GeneratedMatchingPattern pattern(@NotNull PatternRuleContext ctx) {
+      return null;
+    }
+
+    @Override
+    public boolean check(@NotNull TemplateQueryContext ctx) {
+      return true;
+    }
+
+    @Override
+    public void invoke(MappingScriptContext ctx) {
+    }
+
+    @Nullable
+    @Override
+    public SNode evaluate(@NotNull SourceSubstituteMacroNodeContext context) throws GenerationFailureException {
+      return context.getInputNode(); // use input node if no query is specified
+    }
+
+    @NotNull
+    @Override
+    public Collection<SNode> evaluate(@NotNull SourceSubstituteMacroNodesContext context) throws GenerationFailureException {
+      return Collections.emptyList();
+    }
+
+    @Override
+    @Nullable
+    public SNode anchorNode(WeavingAnchorContext ctx) throws GenerationFailureException {
+      // null is legitimate value, indicates 'just append'
+      return null;
+    }
+  }
+
+  private static class PropertyQuery implements PropertyValueQuery {
+    private final QueryKey myQueryKey;
+
+    PropertyQuery(QueryKey identity) {
+      myQueryKey = identity;
+    }
+
+    @NotNull
+    @Override
+    public SProperty getProperty() {
+      throw new IllegalStateException("evaluate() shall had failed with exception");
+    }
+
+    @Override
+    public Object getTemplateValue() {
+      return null;
+    }
+
+    @NotNull
+    @Override
+    public SNodeReference getMacro() {
+      // FIXME getTemplateNode is not necessarily macro node, but we don't need this method anyway, and will remove it soon.
+      //       OTOH, may utilize myQueryKey.getTemplateNode() in evaluate() to log location
+      return myQueryKey.getTemplateNode();
+    }
+
+    @Nullable
+    @Override
+    public Object evaluate(@NotNull PropertyMacroContext context) throws GenerationFailureException {
+      // XXX why not
+      // ctx.getGenerator().getLogger().error(myMacro,...); and some reasonable message?
+      context.showErrorMessage(null, "cannot evaluate property macro");
+      throw new GenerationFailureException("cannot evaluate property macro");
+    }
+  }
+
+  private static class RefQuery implements ReferenceTargetQuery {
+    private final QueryKey myIdentity;
+
+    RefQuery(QueryKey identity) {
+      myIdentity = identity;
+    }
+
+    @Nullable
+    @Override
+    public Object evaluate(@NotNull ReferenceMacroContext ctx) throws GenerationFailureException {
+      ctx.getGenerator().getLogger().error(myIdentity.getTemplateNode(), "missing reference macro");
+      throw new GenerationFailureException("missing reference macro");
+    }
+  }
+
+  // unlike Defaults, complains about missing query
+  public static class Missing implements IfMacroCondition, InlineSwitchCaseCondition, CallArgumentQuery, VariableValueQuery, InsertMacroQuery, MapNodeQuery, MapPostProcessor {
+    private final SNodeReference myTemplate;
+
+    public Missing(QueryKey identity) {
+      myTemplate = identity.getTemplateNode();
+    }
+
+    public Missing(SNode identity) {
+      myTemplate = identity.getReference();
+    }
+
+    @Override
+    public boolean check(@NotNull IfMacroContext context) throws GenerationFailureException {
+      String msg = "no required condition for IF macro";
+      reportError(context, msg);
+      throw new GenerationFailureException(msg);
+    }
+
+    @Override
+    public boolean check(@NotNull InlineSwitchCaseContext context) throws GenerationFailureException {
+      // here comes the logic that used to live in DefaultQueryExecutionContext
+      String msg = "condition required for case in inline switch";
+      reportError(context, msg);
+      throw new GenerationFailureException(msg);
+    }
+
+    @Nullable
+    @Override
+    public Object evaluate(@NotNull TemplateArgumentContext context) throws GenerationFailureException {
+      String msg = "call argument query is missing";
+      reportError(context, msg);
+      throw new GenerationFailureException(msg);
+    }
+
+    @Nullable
+    @Override
+    public Object evaluate(@NotNull TemplateVarContext context) throws GenerationFailureException {
+      String msg = "variable value query is missing";
+      reportError(context, msg);
+      throw new GenerationFailureException(msg);
+    }
+
+    @Nullable
+    @Override
+    public SNode evaluate(@NotNull InsertMacroContext context) throws GenerationFailureException {
+      String msg = "insert node query is missing";
+      reportError(context, msg);
+      throw new GenerationFailureException(msg);
+    }
+
+    @Nullable
+    @Override
+    public SNode evaluate(@NotNull MapSrcMacroContext context) throws GenerationFailureException {
+      String msg = "mapping function is missing";
+      reportError(context, msg);
+      throw new GenerationFailureException(msg);
+    }
+
+    @Override
+    public void invoke(@NotNull MapSrcMacroPostProcContext context) throws GenerationFailureException {
+      String msg = "post-processing function is missing";
+      reportError(context, msg);
+      throw new GenerationFailureException(msg);
+    }
+
+    private void reportError(TemplateQueryContext context, String message) throws GenerationFailureException {
+      context.getGenerator().getLogger().error(myTemplate, message);
+    }
+  }
+}

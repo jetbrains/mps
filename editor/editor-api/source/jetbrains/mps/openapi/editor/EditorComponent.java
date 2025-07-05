@@ -18,8 +18,9 @@ package jetbrains.mps.openapi.editor;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.commands.CommandContext;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import jetbrains.mps.smodel.IOperationContext;
+import jetbrains.mps.openapi.editor.update.Updater;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -44,6 +45,9 @@ public interface EditorComponent {
 
   List<SNode> getSelectedNodes();
 
+  /**
+   * @return Non-null root cell if this {@link EditorComponent} was not disposed yet
+   */
   EditorCell getRootCell();
 
   EditorCell findNodeCell(SNode node);
@@ -52,18 +56,25 @@ public interface EditorComponent {
 
   EditorCell findCellWithId(SNode node, @NotNull String id);
 
+  EditorCell findNodeCellWithRole(SNode node, String role);
+
   void scrollToNode(SNode node);
 
   void scrollToCell(@NotNull EditorCell cell);
 
+  /**
+   * Can be called update editor in accordance with actual state of the currently
+   * edited node.
+   * <p/>
+   * This method should be executed within MPS read action
+   */
   void rebuildEditorContent();
 
   boolean isDisposed();
 
   void dispose();
 
-  IOperationContext getOperationContext();
-
+  @NotNull
   EditorContext getEditorContext();
 
   boolean isReadOnly();
@@ -75,4 +86,14 @@ public interface EditorComponent {
   CellAction getComponentAction(CellActionType type);
 
   SelectionManager getSelectionManager();
+
+  @NotNull
+  Updater getUpdater();
+
+  CommandContext getCommandContext();
+
+  /**
+   * Update internal timestamp of the editor to indicate that some changes were applied to it.
+   */
+  void touch();
 }

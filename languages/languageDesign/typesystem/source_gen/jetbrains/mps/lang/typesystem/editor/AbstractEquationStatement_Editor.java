@@ -6,125 +6,12 @@ import jetbrains.mps.nodeEditor.DefaultNodeEditor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
-import jetbrains.mps.nodeEditor.cellProviders.CellProviderWithRole;
-import jetbrains.mps.lang.editor.cellProviders.RefNodeCellProvider;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.nodeEditor.EditorManager;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
-import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
-import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
-import java.awt.Color;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 
 public class AbstractEquationStatement_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createCollection_ie6eqd_a(editorContext, node);
+    return new AbstractEquationStatement_EditorBuilder_a(editorContext, node).createCell();
   }
-
   public EditorCell createInspectedCell(EditorContext editorContext, SNode node) {
-    return this.createComponent_ie6eqd_a(editorContext, node);
-  }
-
-  private EditorCell createCollection_ie6eqd_a(EditorContext editorContext, SNode node) {
-    EditorCell_Collection editorCell = EditorCell_Collection.createIndent2(editorContext, node);
-    editorCell.setCellId("Collection_ie6eqd_a");
-    editorCell.setBig(true);
-    editorCell.addEditorCell(this.createRefNode_ie6eqd_a0(editorContext, node));
-    editorCell.addEditorCell(this.createComponent_ie6eqd_b0(editorContext, node));
-    editorCell.addEditorCell(this.createRefNode_ie6eqd_c0(editorContext, node));
-    editorCell.addEditorCell(this.createConstant_ie6eqd_d0(editorContext, node));
-    return editorCell;
-  }
-
-  private EditorCell createRefNode_ie6eqd_a0(EditorContext editorContext, SNode node) {
-    CellProviderWithRole provider = new RefNodeCellProvider(node, editorContext);
-    provider.setRole("leftExpression");
-    provider.setNoTargetText("<no leftExpression>");
-    EditorCell editorCell;
-    editorCell = provider.createEditorCell(editorContext);
-    if (editorCell.getRole() == null) {
-      editorCell.setRole("leftExpression");
-    }
-    editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
-    SNode attributeConcept = provider.getRoleAttribute();
-    Class attributeKind = provider.getRoleAttributeClass();
-    if (attributeConcept != null) {
-      IOperationContext opContext = editorContext.getOperationContext();
-      EditorManager manager = EditorManager.getInstanceFromContext(opContext);
-      return manager.createRoleAttributeCell(editorContext, attributeConcept, attributeKind, editorCell);
-    } else
-    return editorCell;
-  }
-
-  private EditorCell createComponent_ie6eqd_b0(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = editorContext.getCellFactory().createEditorComponentCell(node, "jetbrains.mps.lang.core.editor.alias");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(AbstractEquationStatement_Editor._StyleParameter_QueryFunction_ie6eqd_a0b0((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    ))));
-    editorCell.getStyle().putAll(style);
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(editorContext, new BasicCellContext(node), new SubstituteInfoPartExt[]{new AbstractEquationStatement_Editor.ReplaceWith_AbstractEquationStatement_cellMenu_ie6eqd_a0b0()}));
-    return editorCell;
-  }
-
-  private static Color _StyleParameter_QueryFunction_ie6eqd_a0b0(EditorContext editorContext, SNode node) {
-    if (SPropertyOperations.getBoolean(node, "checkOnly")) {
-      return Color.GRAY;
-    } else {
-      return Color.BLACK;
-    }
-  }
-
-  public static class ReplaceWith_AbstractEquationStatement_cellMenu_ie6eqd_a0b0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
-    public ReplaceWith_AbstractEquationStatement_cellMenu_ie6eqd_a0b0() {
-    }
-
-    public String getReplacementConceptName() {
-      return "jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement";
-    }
-  }
-
-  private EditorCell createRefNode_ie6eqd_c0(EditorContext editorContext, SNode node) {
-    CellProviderWithRole provider = new RefNodeCellProvider(node, editorContext);
-    provider.setRole("rightExpression");
-    provider.setNoTargetText("<no rightExpression>");
-    EditorCell editorCell;
-    editorCell = provider.createEditorCell(editorContext);
-    if (editorCell.getRole() == null) {
-      editorCell.setRole("rightExpression");
-    }
-    editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
-    SNode attributeConcept = provider.getRoleAttribute();
-    Class attributeKind = provider.getRoleAttributeClass();
-    if (attributeConcept != null) {
-      IOperationContext opContext = editorContext.getOperationContext();
-      EditorManager manager = EditorManager.getInstanceFromContext(opContext);
-      return manager.createRoleAttributeCell(editorContext, attributeConcept, attributeKind, editorCell);
-    } else
-    return editorCell;
-  }
-
-  private EditorCell createConstant_ie6eqd_d0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, ";");
-    editorCell.setCellId("Constant_ie6eqd_d0");
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
-
-  private EditorCell createComponent_ie6eqd_a(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = editorContext.getCellFactory().createEditorComponentCell(node, "jetbrains.mps.lang.typesystem.editor.AbstractEquationInspector");
-    editorCell.setBig(true);
-    return editorCell;
+    return new AbstractEquationStatement_InspectorBuilder_a(editorContext, node).createCell();
   }
 }

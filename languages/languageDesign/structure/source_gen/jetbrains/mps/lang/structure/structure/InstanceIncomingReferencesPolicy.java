@@ -4,23 +4,28 @@ package jetbrains.mps.lang.structure.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum InstanceIncomingReferencesPolicy {
   allowed("allowed", null),
   local("same root only", "local"),
   forbidden("forbidden", "forbidden");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private InstanceIncomingReferencesPolicy(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<InstanceIncomingReferencesPolicy> getConstants() {
     List<InstanceIncomingReferencesPolicy> list = ListSequence.fromList(new LinkedList<InstanceIncomingReferencesPolicy>());
     ListSequence.fromList(list).addElement(InstanceIncomingReferencesPolicy.allowed);
@@ -28,11 +33,9 @@ public enum InstanceIncomingReferencesPolicy {
     ListSequence.fromList(list).addElement(InstanceIncomingReferencesPolicy.forbidden);
     return list;
   }
-
   public static InstanceIncomingReferencesPolicy getDefault() {
     return InstanceIncomingReferencesPolicy.allowed;
   }
-
   public static InstanceIncomingReferencesPolicy parseValue(String value) {
     if (value == null) {
       return InstanceIncomingReferencesPolicy.getDefault();
@@ -47,16 +50,5 @@ public enum InstanceIncomingReferencesPolicy {
       return InstanceIncomingReferencesPolicy.forbidden;
     }
     return InstanceIncomingReferencesPolicy.getDefault();
-  }
-
-  private String myValue;
-
-  InstanceIncomingReferencesPolicy(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

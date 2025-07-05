@@ -6,54 +6,38 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.GenerationStatus;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 
 public class GResource extends MultiTuple._4<SModule, SModel, Iterable<SModel>, GenerationStatus> implements IGResource {
   public GResource() {
     super();
   }
-
   public GResource(SModule module, SModel model, Iterable<SModel> retainedModels, GenerationStatus status) {
     super(module, model, retainedModels, status);
   }
-
   public SModule module(SModule value) {
     return super._0(value);
   }
-
   public SModel model(SModel value) {
     return super._1(value);
   }
-
   public Iterable<SModel> retainedModels(Iterable<SModel> value) {
     return super._2(value);
   }
-
   public GenerationStatus status(GenerationStatus value) {
     return super._3(value);
   }
-
   public SModule module() {
     return super._0();
   }
-
   public SModel model() {
     return super._1();
   }
-
   public Iterable<SModel> retainedModels() {
     return super._2();
   }
-
   public GenerationStatus status() {
     return super._3();
   }
-
-  @SuppressWarnings(value = "unchecked")
-  public GResource assignFrom(Tuples._4<SModule, SModel, Iterable<SModel>, GenerationStatus> from) {
-    return (GResource) super.assign(from);
-  }
-
   public String describe() {
     return null;
   }

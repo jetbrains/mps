@@ -6,6 +6,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -14,19 +15,18 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 public class TextUtil {
   public TextUtil() {
   }
-
   public static void fixText(SModel model) {
     // get all strings from the model 
-    List<SNode> strings = SModelOperations.getNodes(model, "jetbrains.mps.baseLanguage.structure.StringLiteral");
+    List<SNode> strings = SModelOperations.nodes(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"));
     // get all MPS strings 
     Iterable<SNode> mpses = ListSequence.fromList(strings).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, "value").startsWith("MPS");
+        return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value")).startsWith("MPS");
       }
     });
     for (SNode mps : Sequence.fromIterable(mpses)) {
       // convert "MPS" --> "JetBrains MPS" 
-      SPropertyOperations.set(mps, "value", "JetBrains " + SPropertyOperations.getString(mps, "value"));
+      SPropertyOperations.set(mps, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "JetBrains " + SPropertyOperations.getString(mps, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value")));
     }
   }
 }

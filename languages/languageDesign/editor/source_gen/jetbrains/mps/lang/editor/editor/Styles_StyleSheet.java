@@ -4,245 +4,454 @@ package jetbrains.mps.lang.editor.editor;
 
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.editor.behavior.EditorCellModel__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.MPSFonts;
-import jetbrains.mps.openapi.editor.EditorContext;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.editor.behavior.EditorCellModel_Behavior;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.STRING_StyleKey;
+import jetbrains.mps.lang.editor.editor.EditorLanguageKeyPack_KeyPack.PARENTH_StyleKey;
+import jetbrains.mps.util.Pair;
+import java.awt.Color;
+import jetbrains.mps.lang.editor.editor.EditorLanguageKeyPack_KeyPack.KEYWORD_StyleKey;
 
 public class Styles_StyleSheet {
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getRootCellModelStyle(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.INDENT_LAYOUT_INDENT, Styles_StyleSheet._StyleParameter_QueryFunction_kkd5s1_a0a((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    )));
-    style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, Styles_StyleSheet._StyleParameter_QueryFunction_kkd5s1_a1a((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    )));
-    style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, Styles_StyleSheet._StyleParameter_QueryFunction_kkd5s1_a2a((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    )));
-    style.set(StyleAttributes.DRAW_BORDER, true);
-    return style;
+  public static void apply_rootCellModelStyle(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.rootCellModelStyleStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getStyle(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-    return style;
+  public static void apply_style(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.styleStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getReference(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
-    return style;
+  public static void apply_reference(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.referenceStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getItem(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-    return style;
+  public static void apply_item(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.itemStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getHeader(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-    style.set(StyleAttributes.SELECTABLE, false);
-    style.set(StyleAttributes.UNDERLINED, true);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-    return style;
+  public static void apply_header(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.headerStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getProperty(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.SELECTABLE, false);
-    style.set(StyleAttributes.DRAW_BORDER, true);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_MAGENTA));
-    return style;
+  public static void apply_property(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.propertyStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getBordered(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.DRAW_BORDER, true);
-    return style;
+  public static void apply_bordered(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.borderedStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getBorderedCollection(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.DRAW_BORDER, true);
-    return style;
+  public static void apply_borderedCollection(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.borderedCollectionStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getTag(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.MATCHING_LABEL, "tag");
-    return style;
+  public static void apply_tag(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.tagStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getAttributedCellLabel(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.set(StyleAttributes.DRAW_BORDER, true);
-    style.set(StyleAttributes.EDITABLE, false);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-    style.set(StyleAttributes.UNDERLINED, Styles_StyleSheet._StyleParameter_QueryFunction_kkd5s1_a3j((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    )));
-    return style;
+  public static void apply_attributedCellLabel(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.attributedCellLabelStyleClass(editorContext, node).apply(style, editorCell);
   }
-
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
   @Deprecated
-  public static Style getString(final EditorCell editorCell) {
-    Style style = new StyleImpl(editorCell);
-    style.putAll(StyleRegistry.getInstance().getStyle("STRING"));
-    return style;
+  public static void apply_string(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.stringStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_AnyBracket(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.AnyBracketStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Parenthesis(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.ParenthesisStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_LeftParen(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.LeftParenStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_RightParen(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.RightParenStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_LeftParenAfterName(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.LeftParenAfterNameStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_EditorKeyWordForeground(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.EditorKeyWordForegroundStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_EditorKeyWord(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new Styles_StyleSheet.EditorKeyWordStyleClass(editorContext, node).apply(style, editorCell);
   }
 
-  public static void applyRootCellModelStyle(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.INDENT_LAYOUT_INDENT, Styles_StyleSheet._StyleParameter_QueryFunction_kkd5s1_a0a((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    )));
-    style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, Styles_StyleSheet._StyleParameter_QueryFunction_kkd5s1_a1a((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    )));
-    style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, Styles_StyleSheet._StyleParameter_QueryFunction_kkd5s1_a2a((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    )));
-    style.set(StyleAttributes.DRAW_BORDER, true);
-  }
+  public static class rootCellModelStyleStyleClass extends AbstractStyleClass {
+    public rootCellModelStyleStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
 
-  public static void applyStyle(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-  }
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.INDENT_LAYOUT_INDENT, _StyleParameter_QueryFunction_kkd5s1_a0a());
+      style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, _StyleParameter_QueryFunction_kkd5s1_a1a());
+      style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, _StyleParameter_QueryFunction_kkd5s1_a2a());
+      style.set(StyleAttributes.DRAW_BORDER, true);
+    }
 
-  public static void applyReference(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
-  }
-
-  public static void applyItem(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-  }
-
-  public static void applyHeader(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-    style.set(StyleAttributes.SELECTABLE, false);
-    style.set(StyleAttributes.UNDERLINED, true);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-  }
-
-  public static void applyProperty(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.SELECTABLE, false);
-    style.set(StyleAttributes.DRAW_BORDER, true);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_MAGENTA));
-  }
-
-  public static void applyBordered(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.DRAW_BORDER, true);
-  }
-
-  public static void applyBorderedCollection(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.DRAW_BORDER, true);
-  }
-
-  public static void applyTag(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.MATCHING_LABEL, "tag");
-  }
-
-  public static void applyAttributedCellLabel(Style style, EditorCell editorCell) {
-    style.set(StyleAttributes.DRAW_BORDER, true);
-    style.set(StyleAttributes.EDITABLE, false);
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-    style.set(StyleAttributes.UNDERLINED, Styles_StyleSheet._StyleParameter_QueryFunction_kkd5s1_a3j((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    )));
-  }
-
-  public static void applyString(Style style, EditorCell editorCell) {
-    style.putAll(StyleRegistry.getInstance().getStyle("STRING"));
-  }
-
-  private static boolean _StyleParameter_QueryFunction_kkd5s1_a0a(EditorContext editorContext, SNode node) {
-    if (!(SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.editor.structure.EditorCellModel"))) {
+    private boolean _StyleParameter_QueryFunction_kkd5s1_a0a() {
+      if (!(SNodeOperations.isInstanceOf(getNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")))) {
+        return false;
+      }
+      return (boolean) EditorCellModel__BehaviorDescriptor.isIndented_idi0pN94$.invoke(SNodeOperations.cast(getNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
+    }
+    private boolean _StyleParameter_QueryFunction_kkd5s1_a1a() {
+      if (!(SNodeOperations.isInstanceOf(getNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")))) {
+        return false;
+      }
+      if ((boolean) EditorCellModel__BehaviorDescriptor.isNewLine_idi0pLPAc.invoke(SNodeOperations.cast(getNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")))) {
+        return true;
+      }
+      if ((boolean) EditorCellModel__BehaviorDescriptor.isNewLineChildren_idi0pNGlC.invoke(SNodeOperations.cast(getNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")))) {
+        return true;
+      }
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(getNode()), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel"))) {
+        return (boolean) EditorCellModel__BehaviorDescriptor.isNewLineChildren_idi0pNGlC.invoke(SNodeOperations.cast(SNodeOperations.getParent(getNode()), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
+      }
       return false;
     }
-    return EditorCellModel_Behavior.call_isIndented_1237383418148(SNodeOperations.cast(node, "jetbrains.mps.lang.editor.structure.EditorCellModel"));
-  }
-
-  private static boolean _StyleParameter_QueryFunction_kkd5s1_a1a(EditorContext editorContext, SNode node) {
-    if (!(SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.editor.structure.EditorCellModel"))) {
-      return false;
+    private boolean _StyleParameter_QueryFunction_kkd5s1_a2a() {
+      if (!(SNodeOperations.isInstanceOf(getNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")))) {
+        return false;
+      }
+      return (boolean) EditorCellModel__BehaviorDescriptor.isOnNewLine_idi0pUMOG.invoke(SNodeOperations.cast(getNode(), MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel")));
     }
-    if (EditorCellModel_Behavior.call_isNewLine_1237383076236(SNodeOperations.cast(node, "jetbrains.mps.lang.editor.structure.EditorCellModel"))) {
+  }
+  public static class styleStyleClass extends AbstractStyleClass {
+    public styleStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    }
+
+  }
+  public static class referenceStyleClass extends AbstractStyleClass {
+    public referenceStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
+    }
+
+  }
+  public static class itemStyleClass extends AbstractStyleClass {
+    public itemStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    }
+
+  }
+  public static class headerStyleClass extends AbstractStyleClass {
+    public headerStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
+      style.set(StyleAttributes.SELECTABLE, false);
+      style.set(StyleAttributes.UNDERLINED, true);
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
+    }
+
+  }
+  public static class propertyStyleClass extends AbstractStyleClass {
+    public propertyStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.SELECTABLE, false);
+      style.set(StyleAttributes.DRAW_BORDER, true);
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_MAGENTA));
+    }
+
+  }
+  public static class borderedStyleClass extends AbstractStyleClass {
+    public borderedStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.DRAW_BORDER, true);
+    }
+
+  }
+  public static class borderedCollectionStyleClass extends AbstractStyleClass {
+    public borderedCollectionStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.DRAW_BORDER, true);
+    }
+
+  }
+  public static class tagStyleClass extends AbstractStyleClass {
+    public tagStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.MATCHING_LABEL, "tag");
+    }
+
+  }
+  public static class attributedCellLabelStyleClass extends AbstractStyleClass {
+    public attributedCellLabelStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.DRAW_BORDER, true);
+      style.set(StyleAttributes.EDITABLE, false);
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
+      style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_kkd5s1_a3j());
+    }
+
+    private boolean _StyleParameter_QueryFunction_kkd5s1_a3j() {
       return true;
     }
-    if (EditorCellModel_Behavior.call_isNewLineChildren_1237383562600(SNodeOperations.cast(node, "jetbrains.mps.lang.editor.structure.EditorCellModel"))) {
-      return true;
-    }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), "jetbrains.mps.lang.editor.structure.EditorCellModel")) {
-      return EditorCellModel_Behavior.call_isNewLineChildren_1237383562600(SNodeOperations.cast(SNodeOperations.getParent(node), "jetbrains.mps.lang.editor.structure.EditorCellModel"));
-    }
-    return false;
   }
-
-  private static boolean _StyleParameter_QueryFunction_kkd5s1_a2a(EditorContext editorContext, SNode node) {
-    if (!(SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.editor.structure.EditorCellModel"))) {
-      return false;
+  public static class stringStyleClass extends AbstractStyleClass {
+    public stringStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
     }
-    return EditorCellModel_Behavior.call_isOnNewLine_1237385424172(SNodeOperations.cast(node, "jetbrains.mps.lang.editor.structure.EditorCellModel"));
-  }
 
-  private static boolean _StyleParameter_QueryFunction_kkd5s1_a3j(EditorContext editorContext, SNode node) {
-    return true;
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new STRING_StyleKey().apply(style);
+    }
+
+  }
+  public static class AnyBracketStyleClass extends AbstractStyleClass {
+    public AnyBracketStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.INDENT_LAYOUT_NO_WRAP, true);
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
+    }
+
+  }
+  public static class ParenthesisStyleClass extends AbstractStyleClass {
+    public ParenthesisStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new AnyBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new PARENTH_StyleKey().apply(style);
+      style.set(StyleAttributes.MATCHING_LABEL, "parenthesis");
+    }
+
+  }
+  public static class LeftParenStyleClass extends AbstractStyleClass {
+    public LeftParenStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new ParenthesisStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
+    }
+
+  }
+  public static class RightParenStyleClass extends AbstractStyleClass {
+    public RightParenStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new ParenthesisStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+    }
+
+  }
+  public static class LeftParenAfterNameStyleClass extends AbstractStyleClass {
+    public LeftParenAfterNameStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new LeftParenStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+    }
+
+  }
+  public static class EditorKeyWordForegroundStyleClass extends AbstractStyleClass {
+    public EditorKeyWordForegroundStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_kkd5s1_a0q().o1 : _StyleParameter_QueryFunction_kkd5s1_a0q().o2));
+    }
+
+    private Pair<Color, Color> _StyleParameter_QueryFunction_kkd5s1_a0q() {
+      return new Pair<Color, Color>(new Color(0x90, 0x60, 0), new Color(0xff, 0xc6, 0x6d));
+    }
+  }
+  public static class EditorKeyWordStyleClass extends AbstractStyleClass {
+    public EditorKeyWordStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new KEYWORD_StyleKey().apply(style);
+      new EditorKeyWordForegroundStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    }
+
   }
 }

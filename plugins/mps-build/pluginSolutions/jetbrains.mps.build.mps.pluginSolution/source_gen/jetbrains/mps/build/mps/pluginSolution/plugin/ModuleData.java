@@ -16,7 +16,6 @@ import jetbrains.mps.ide.icons.IdeIcons;
 public class ModuleData implements NodeData {
   private final SModule myModule;
   private NodeData myParent;
-
   public ModuleData(SModule module) {
     this.myModule = module;
   }
@@ -36,7 +35,7 @@ public class ModuleData implements NodeData {
     if (this.myModule instanceof AbstractModule) {
       IFile file = ((AbstractModule) this.myModule).getDescriptorFile();
       if (file != null) {
-        VirtualFile virtualFile = VirtualFileUtils.getVirtualFile(file);
+        VirtualFile virtualFile = VirtualFileUtils.getProjectVirtualFile(file);
         if (virtualFile != null) {
           return virtualFile.getFileType().getIcon();
         }

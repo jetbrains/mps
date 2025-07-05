@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
  */
 package jetbrains.mps.reloading;
 
-import jetbrains.mps.classloading.ClassLoaderManager;
-import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.util.JavaNameUtil;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -25,12 +25,18 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+// TODO Remove from core, used in bl only. AP
+/**
+ * @deprecated Deprecated along with bl.Expression.eval() which seems to be only client of this code. Drop it once eval() is gone.
+ */
+@Deprecated
+@ToRemove(version = 2017.1)
 public final class ReflectionUtil {
   private ReflectionUtil() {
   }
 
   public static Class forName(SModule module, SNode classNode) {
-    if (!ClassLoaderManager.getInstance().canLoad(module)) {
+    if (!(module instanceof ReloadableModule && ((ReloadableModule) module).willLoad())) {
       throw new IllegalStateException("Module: " + module + "; class node: " + classNode);
     }
     String dottedName = classNode.getName();
@@ -40,16 +46,15 @@ public final class ReflectionUtil {
     }
     String className = JavaNameUtil.fqClassName(classNode, dollarName);
 
-    Class result = ClassLoaderManager.getInstance().getClass(module, className);
-    if (result != null) {
-      return result;
-    } else {
-      throw new RuntimeException(className);
+    try {
+      return ((ReloadableModule) module).getClass(className);
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException(e);
     }
   }
 
   public static Method getMethod(SModule module, SNode classNode, String methodName, Class[] parameterTypes) {
-    Class aClass = forName(module, classNode);
+    Class<?> aClass = forName(module, classNode);
     try {
       return aClass.getMethod(methodName, parameterTypes);
     } catch (NoSuchMethodException e) {

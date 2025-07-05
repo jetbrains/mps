@@ -8,25 +8,35 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NTCD_delete_final {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new NTCD_delete_final.NTCD_delete_final_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new NTCD_delete_final.NTCD_delete_final_BACKSPACE(node));
   }
-
   public static class NTCD_delete_final_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public NTCD_delete_final_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SPropertyOperations.set(node, "final", "" + (false));
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x120cda6c3beL, "final"), "" + (false));
+    }
+  }
+  public static class NTCD_delete_final_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public NTCD_delete_final_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x120cda6c3beL, "final"), "" + (false));
     }
   }
 }

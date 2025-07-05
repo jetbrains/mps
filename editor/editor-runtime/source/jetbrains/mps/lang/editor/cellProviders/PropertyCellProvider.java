@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,7 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteEasily;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeletePropertyOrNode;
 import jetbrains.mps.editor.runtime.impl.cellMenu.EnumPropertySubstituteInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
-import jetbrains.mps.nodeEditor.attribute.AttributeKind;
+import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode.DeleteDirection;
 import jetbrains.mps.nodeEditor.cellMenu.BooleanPropertySubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.nodeEditor.cellProviders.CellProviderWithRole;
@@ -31,12 +29,16 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
+import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
 import jetbrains.mps.smodel.Primitives;
-import jetbrains.mps.smodel.SNodeOperations;
+import jetbrains.mps.smodel.SNodeLegacy;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.InternUtil;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public class PropertyCellProvider extends CellProviderWithRole {
@@ -48,16 +50,20 @@ public class PropertyCellProvider extends CellProviderWithRole {
   @Override
   public void setRole(Object role) {
     myPropertyName = InternUtil.intern(role.toString());
-    myPropertyDeclaration = ((jetbrains.mps.smodel.SNode) getSNode()).getPropertyDeclaration(myPropertyName);
+    myPropertyDeclaration = NodeReadAccessCasterInEditor.runReadTransparentAction(new Computable<SNode>() {
+      @Override
+      public SNode compute() {
+        return new SNodeLegacy(getSNode()).getPropertyDeclaration(myPropertyName);
+      }
+    });
     if (myPropertyDeclaration == null) {
-      if (!SNodeOperations.isUnknown(getSNode())) {
+      if (getSNode().getConcept().isValid()) {
         LOG.error("no property declaration could be found in NODE " + getSNode() + " for PROPERTY name " + myPropertyName);
       }
-      myPropertyDeclaration = ((jetbrains.mps.smodel.SNode) getSNode()).getPropertyDeclaration(myPropertyName);
     }
   }
 
-  public PropertyCellProvider(SNode node, EditorContext context) {
+  public PropertyCellProvider(@NotNull SNode node, EditorContext context) {
     super(node, context);
   }
 
@@ -67,23 +73,23 @@ public class PropertyCellProvider extends CellProviderWithRole {
     EditorCell_Property editorCell = EditorCell_Property.create(context, propertyAccessor, getSNode());
     editorCell.setDefaultText(myNoTargetText);
     if (!myReadOnly) {
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeletePropertyOrNode(getSNode(), myPropertyName));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeletePropertyOrNode(getSNode(), myPropertyName, DeleteDirection.FORWARD));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeletePropertyOrNode(getSNode(), myPropertyName, DeleteDirection.BACKWARD));
     } else {
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteEasily(getSNode()));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteEasily(getSNode(), DeleteDirection.FORWARD));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteEasily(getSNode(), DeleteDirection.BACKWARD));
     }
     return editorCell;
   }
 
   @Override
-  public SNode getRoleAttribute() {
-    SNode node = getSNode();
-    return AttributeOperations.getPropertyAttribute(node, null, myPropertyName);
+  public Iterable<SNode> getRoleAttributes() {
+    return AttributeOperations.getPropertyAttributes(getSNode(), myPropertyName);
   }
 
-  // gets a kind of attributes possibly hanging on this provider's role
   @Override
-  public Class getRoleAttributeClass() {
-    return AttributeKind.Property.class;
+  public AttributeKind getRoleAttributeKind() {
+    return AttributeKind.PROPERTY;
   }
 
   @Override

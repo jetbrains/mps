@@ -4,7 +4,7 @@ package jetbrains.mps.build.mps.pluginSolution.plugin;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Comparator;
 import javax.swing.Icon;
@@ -12,8 +12,7 @@ import javax.swing.Icon;
 public class ModulesListData implements NodeData {
   private final List<NodeData> myData = ListSequence.fromList(new LinkedList<NodeData>());
   private final List<ModuleData> myModules = ListSequence.fromList(new LinkedList<ModuleData>());
-
-  public ModulesListData(Iterable<? extends SModule> modules) {
+  public ModulesListData(List<SModule> modules) {
     for (SModule m : modules) {
       ModuleData moduleData = new ModuleData(m);
       ListSequence.fromList(this.myModules).addElement(moduleData);

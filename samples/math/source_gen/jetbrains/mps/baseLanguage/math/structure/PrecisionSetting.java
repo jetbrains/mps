@@ -4,7 +4,7 @@ package jetbrains.mps.baseLanguage.math.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum PrecisionSetting {
   CUSTOM("CUSTOM", 0),
@@ -13,16 +13,21 @@ public enum PrecisionSetting {
   DECIMAL128("DECIMAL128", 3),
   UNLIMITED("UNLIMITED", 4);
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final int myValue;
+  PrecisionSetting(String name, int value) {
+    myName = name;
+    myValue = value;
+  }
+  public int getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return "" + this.myValue;
+    return Integer.toString(myValue);
   }
-
   public static List<PrecisionSetting> getConstants() {
     List<PrecisionSetting> list = ListSequence.fromList(new LinkedList<PrecisionSetting>());
     ListSequence.fromList(list).addElement(PrecisionSetting.CUSTOM);
@@ -32,11 +37,9 @@ public enum PrecisionSetting {
     ListSequence.fromList(list).addElement(PrecisionSetting.UNLIMITED);
     return list;
   }
-
   public static PrecisionSetting getDefault() {
     return PrecisionSetting.CUSTOM;
   }
-
   public static PrecisionSetting parseValue(String value) {
     if (value == null) {
       return PrecisionSetting.getDefault();
@@ -57,16 +60,5 @@ public enum PrecisionSetting {
       return PrecisionSetting.UNLIMITED;
     }
     return PrecisionSetting.getDefault();
-  }
-
-  private int myValue;
-
-  PrecisionSetting(String name, int value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public int getValue() {
-    return this.myValue;
   }
 }

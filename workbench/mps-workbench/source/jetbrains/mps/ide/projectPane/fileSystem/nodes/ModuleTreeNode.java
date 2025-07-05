@@ -20,6 +20,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.ui.tree.module.MPSModuleTreeNode;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.project.AbstractModule;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 
 public class ModuleTreeNode extends AbstractFileTreeNode implements MPSModuleTreeNode {
@@ -30,19 +31,20 @@ public class ModuleTreeNode extends AbstractFileTreeNode implements MPSModuleTre
     myModule = m;
 
     setNodeIdentifier(getFile().getPath());
-    add(new FolderTreeNode(project, VirtualFileUtils.getVirtualFile(m.getModuleSourceDir()), true));
+    add(new FolderTreeNode(project, VirtualFileUtils.getProjectVirtualFile(m.getModuleSourceDir()), true));
   }
 
   @Override
   protected void doUpdatePresentation() {
     super.doUpdatePresentation();
     setText(myModule.getModuleName());
-    VirtualFile file = VirtualFileUtils.getVirtualFile(myModule.getDescriptorFile());
+    VirtualFile file = VirtualFileUtils.getProjectVirtualFile(myModule.getDescriptorFile());
     if (file != null) {
       setIcon(file.getFileType().getIcon());
     }
   }
 
+  @NotNull
   @Override
   public SModule getModule() {
     return myModule;

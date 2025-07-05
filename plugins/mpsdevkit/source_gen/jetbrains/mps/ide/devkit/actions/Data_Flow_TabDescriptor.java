@@ -7,75 +7,70 @@ import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.Language;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 import jetbrains.mps.smodel.LanguageAspect;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 
 public class Data_Flow_TabDescriptor extends RelationDescriptor {
   private static final Icon ICON = MPSIcons.Nodes.DataFlow;
 
   public Data_Flow_TabDescriptor() {
   }
-
   public String getTitle() {
     return "Data Flow";
   }
-
   public Character getShortcutChar() {
     return 'D';
   }
-
   public int compareTo(RelationDescriptor descriptor) {
     return new DataFlow_Order().compare(this, descriptor);
   }
-
   public void startListening() {
   }
-
   public SNode getBaseNode(SNode node) {
     return ConceptEditorOpenHelper.getBaseNode(node);
   }
-
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
   }
-
   @Nullable
   public Icon getIcon() {
     return ICON;
   }
-
   public List<SNode> getNodes(SNode node) {
-    List<SNode> list = ListSequence.fromList(new ArrayList<SNode>());
-    SNode n = getNode(node);
-    if (n == null) {
-      return list;
+    List<SNode> nodes = new ArrayList<SNode>();
+    SModule module = SNodeOperations.getModel(node).getModule();
+    if (!((module instanceof Language))) {
+      return nodes;
     }
-    ListSequence.fromList(list).addElement(n);
-    return list;
-  }
 
+    SModel aspectModel = SModuleOperations.getAspect(module, "dataFlow");
+    if (aspectModel == null) {
+      return nodes;
+    }
+    ListSequence.fromList(nodes).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke(node, SMethodTrimmedId.create("findConceptAspects", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), "4G9PD8$NvPM"), aspectModel))));
+    return nodes;
+  }
   public boolean isSingle() {
-    return true;
+    return false;
   }
-
-  public SNode getNode(SNode node) {
-    List<SNode> nodes = BehaviorReflection.invokeNonVirtual((Class<List<SNode>>) ((Class) Object.class), node, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration", "call_findConceptAspectCollection_1567570417158062208", new Object[]{LanguageAspect.DATA_FLOW});
-    return (ListSequence.fromList(nodes).isEmpty() ?
-      null :
-      ListSequence.fromList(nodes).first()
-    );
+  public Iterable<SConcept> getAspectConcepts(final SNode node) {
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, "jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration"));
   }
-
-  public List<SNode> getConcepts(final SNode node) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration"));
-  }
-
-  public SNode createNode(final SNode node, final SNode concept) {
-    return ConceptEditorHelper.createNewConceptAspectInstance(LanguageAspect.DATA_FLOW, node, SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration"));
+  public SNode createAspect(final SNode node, final SConcept concept) {
+    return ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.DATA_FLOW, node, SNodeFactoryOperations.createNewNode(SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, "jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration")), null));
   }
 }

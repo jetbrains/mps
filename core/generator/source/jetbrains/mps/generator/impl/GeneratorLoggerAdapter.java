@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,31 +16,41 @@
 package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.IGeneratorLogger;
-import jetbrains.mps.generator.TransientModelsModule;
-import jetbrains.mps.generator.TransientSModel;
+import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.util.containers.ConcurrentHashSet;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
+ * Translates IGeneratorLogger calls into IMessageHandler's
  * Evgeny Gryaznov, Feb 23, 2010
  */
 public class GeneratorLoggerAdapter implements IGeneratorLogger {
 
+  private static final int MAX_EXCEPTION_DEPTH = 10;
   protected final IMessageHandler myMessageHandler;
+  protected final MessageFactory myFactory;
   protected final boolean myHandleInfo;
   protected final boolean myHandleWarnings;
-  protected final boolean myKeepModelsWithWarnings;
 
-  public GeneratorLoggerAdapter(IMessageHandler messageHandler, boolean handleInfo, boolean handleWarnings, boolean keepModelsWithWarnings) {
+  public GeneratorLoggerAdapter(IMessageHandler messageHandler, boolean handleInfo, boolean handleWarnings) {
+    this(messageHandler, new BasicFactory(), handleInfo, handleWarnings);
+  }
+
+  public GeneratorLoggerAdapter(IMessageHandler messageHandler, MessageFactory msgFactory, boolean handleInfo, boolean handleWarnings) {
     myMessageHandler = messageHandler;
+    myFactory = msgFactory;
     myHandleInfo = handleInfo;
     myHandleWarnings = handleWarnings;
-    myKeepModelsWithWarnings = keepModelsWithWarnings && handleWarnings;
   }
 
   @Override
@@ -54,7 +64,7 @@ public class GeneratorLoggerAdapter implements IGeneratorLogger {
   }
 
   @Override
-  public void info(SNode node, String message) {
+  public void info(@Nullable SNodeReference node, @NotNull String message) {
     if (!myHandleInfo) {
       return;
     }
@@ -80,84 +90,136 @@ public class GeneratorLoggerAdapter implements IGeneratorLogger {
     if (!myHandleWarnings) {
       return;
     }
+    warningReported();
     report(MessageKind.WARNING, message, null);
   }
 
   @Override
-  public void warning(SNode node, String message, ProblemDescription... descriptions) {
+  public void warning(@Nullable SNodeReference node, @NotNull String message, @Nullable ProblemDescription... descriptions) {
     if (!myHandleWarnings) {
       return;
     }
+    warningReported();
     report(MessageKind.WARNING, message, node, descriptions);
   }
 
   @Override
-  public void error(SNode node, String message, ProblemDescription... descriptions) {
+  public void error(@Nullable SNodeReference node, @NotNull String message, @Nullable ProblemDescription... descriptions) {
+    errorReported();
     report(MessageKind.ERROR, message, node, descriptions);
   }
 
   @Override
   public void error(String message) {
+    errorReported();
     report(MessageKind.ERROR, message, null);
   }
 
   @Override
   public void handleException(Throwable t) {
     String text = t.getMessage();
-    if(text == null) {
-      Throwable cause = t.getCause();
-      int tries = 0;
-      while(text == null && cause != null && tries < 10) {
-        text = cause.getMessage();
-        cause = cause.getCause();
-        tries++;
+    Throwable cause = t;
+    for (int i = 0; i < MAX_EXCEPTION_DEPTH; ++i) {
+      if (text != null || cause == null) {
+        break;
       }
+      text = cause.getMessage();
+      cause = cause.getCause();
     }
-    if(text == null) {
-      text = "An exception was encountered: " + t.getClass().getName() + " (no message) (right-click to see)";
+    if (text == null) {
+      text = String.format("An exception was encountered: %s (no message)", t.getClass().getName());
     } else {
-      text = "(" + t.getClass().getName() + "): " + text + " (right-click to see)";
+      text = String.format("(%s): %s", t.getClass().getName(), text);
     }
-    Message message = new Message(MessageKind.ERROR, text);
-    message.setException(t);
-    synchronized (myMessageHandler) {
-      myMessageHandler.handle(message);
-    }
+    errorReported();
+    addMessage(new Message(MessageKind.ERROR, text).setException(t));
   }
 
-  private void report(MessageKind kind, String text, SNode node) {
-    Message message = prepare(kind, text, node);
-    synchronized (myMessageHandler) {
-      myMessageHandler.handle(message);
-    }
+  protected void errorReported() {
+    // no-op
   }
 
-  private void report(MessageKind kind, String text, SNode node, ProblemDescription... descriptions) {
-    List<Message> messages = new ArrayList<Message>(descriptions == null ? 1 : descriptions.length + 1);
-    messages.add(prepare(kind, text, node));
-    if (descriptions != null) {
-      for (ProblemDescription d : descriptions) {
-        if (d != null) {
-          messages.add(prepare(kind, "-- " + d.getMessage(), d.getNode()));
-        }
+  protected void warningReported() {
+    // no-op
+  }
+
+  protected final void report(MessageKind kind, String text, SNodeReference node) {
+    addMessage(myFactory.prepare(kind, text == null ? "" : text, node));
+  }
+
+  protected final void addMessage(@NotNull IMessage msg) {
+    myMessageHandler.handle(msg);
+  }
+
+  protected final void report(MessageKind kind, String text, SNodeReference node, ProblemDescription... descriptions) {
+    if (descriptions == null) {
+      report(kind, text, node);
+      return;
+    }
+    List<Message> messages = new ArrayList<Message>(descriptions.length + 1);
+    messages.add(myFactory.prepare(kind, text, node));
+    for (ProblemDescription d : descriptions) {
+      if (d != null) {
+        messages.add(myFactory.prepare(kind, "-- " + d.getMessage(), d.getNode()));
       }
     }
-    synchronized (myMessageHandler) {
-      for (Message m : messages) {
-        myMessageHandler.handle(m);
+    for (Message m : messages) {
+      addMessage(m);
+    }
+  }
+
+  interface MessageFactory {
+    Message prepare(@NotNull MessageKind kind, @NotNull String text, @Nullable SNodeReference node);
+  }
+
+  static class BasicFactory implements MessageFactory {
+    @NotNull
+    public Message prepare(@NotNull MessageKind kind, @NotNull String text, @Nullable SNodeReference node) {
+      Message message = new Message(kind, text);
+      message.setHintObject(node);
+      return message;
+    }
+  }
+
+  /**
+   * Concurrent record of models reported through messages
+   */
+  static class RecordingFactory implements MessageFactory {
+    @SuppressWarnings("unchecked")
+    private final Collection<SModelReference>[] a = new Collection[MessageKind.values().length];
+    private final MessageFactory myDelegate;
+
+    public RecordingFactory(@NotNull MessageFactory delegate) {
+      myDelegate = delegate;
+      for (MessageKind k : MessageKind.values()) {
+        a[k.ordinal()] = new ConcurrentHashSet<SModelReference>();
       }
     }
-  }
-
-  private Message prepare(MessageKind kind, String text, SNode node) {
-    Message message = new Message(kind, text);
-    if (node != null && node.getModel() != null && node.getModel() != null && !(node.getModel() .getModule() instanceof TransientModelsModule)) {
-      message.setHintObject(new jetbrains.mps.smodel.SNodePointer(node));
+    public Collection<SModelReference> ofKind(MessageKind kind) {
+      return a[kind.ordinal()];
     }
-    return message;
-  }
+    public void reset() {
+      for (MessageKind k : MessageKind.values()) {
+        a[k.ordinal()].clear();
+      }
+    }
 
-  void clear() {
-    myMessageHandler.clear();
+    /**
+     * Record additional access to model, for use from log4j listeners
+     */
+    public void record(@NotNull MessageKind kind, @Nullable SModelReference modelRef) {
+      if (modelRef != null) {
+        a[kind.ordinal()].add(modelRef);
+      }
+    }
+
+    @NotNull
+    @Override
+    public Message prepare(@NotNull MessageKind kind, @NotNull String text, @Nullable SNodeReference node) {
+      if (node != null) {
+        record(kind, node.getModelReference());
+      }
+      return myDelegate.prepare(kind, text, node);
+    }
   }
 }

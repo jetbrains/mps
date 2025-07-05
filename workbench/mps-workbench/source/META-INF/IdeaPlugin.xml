@@ -5,17 +5,29 @@
   <module value="com.intellij.modules.mps"/>
   <module value="com.intellij.modules.all"/>
 
+  <xi:include href="/META-INF/IdeTipsAndTricks.xml" xpointer="xpointer(/idea-plugin/*)"/>
   <xi:include href="/idea/MPSRichPlatformPlugin.xml" xpointer="xpointer(/idea-plugin/*)"/>
   <xi:include href="/META-INF/MPSComponents.xml" xpointer="xpointer(/components/*)"/>
   <xi:include href="/idea/MPSActionManager.xml" xpointer="xpointer(/component/*)"/>
   <xi:include href="/jetbrains/mps/ide/platform/actions/PlatformActions.xml" xpointer="xpointer(/components/*)"/>
   <xi:include href="/jetbrains/mps/ide/editor/actions/MPSEditorActions.xml" xpointer="xpointer(/components/*)"/>
 
+  <application-components>
+    <component>
+      <implementation-class>jetbrains.mps.ide.actions.Ide_PluginInitializer</implementation-class>
+    </component>
+  </application-components>
+
   <extensionPoints>
     <extensionPoint name="mps.NavigationProvider" interface="jetbrains.mps.ide.navigation.NavigationProvider"/>
     <extensionPoint name="mps.ModelValidator" interface="jetbrains.mps.ide.generator.ModelValidator"/>
     <extensionPoint name="mps.TabColorProvider" area="IDEA_PROJECT" interface="jetbrains.mps.ide.editorTabs.TabColorProvider"/>
-    <extensionPoint name="mps.projectPrefsPanel" interface="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPrefsExtraPanel" area="IDEA_PROJECT"/>
+    <extensionPoint name="mps.projectPrefsPanel" interface="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPrefsExtraPanel"
+                    area="IDEA_PROJECT"/>
+    <extensionPoint name="mps.projectGroupTemplateEP" interface="jetbrains.mps.workbench.dialogs.project.newproject.ProjectTemplatesGroup"/>
+    <extensionPoint name="mps.languageProjectTemplateEP" interface="jetbrains.mps.workbench.dialogs.project.newproject.LanguageProjectTemplate"/>
+    <extensionPoint name="mps.solutionProjectTemplateEP" interface="jetbrains.mps.workbench.dialogs.project.newproject.SolutionProjectTemplate"/>
+    <extensionPoint name="mps.otherProjectTemplateEP" interface="jetbrains.mps.workbench.dialogs.project.newproject.OtherProjectTemplate"/>
   </extensionPoints>
 
   <extensions defaultExtensionNs="com.intellij">
@@ -23,12 +35,14 @@
 
     <directoryIndexExcludePolicy implementation="jetbrains.mps.ide.vfs.ClassesGenPolicy"/>
 
-    <bundledColorSchemesProvider implementation="com.intellij.codeStyle.IdeaColorSchemesProvider"/>
+    <!--<bundledColorScheme path="/colorSchemes/Darcula"/>-->
+    <projectService serviceInterface="com.intellij.psi.impl.file.PsiDirectoryFactory"
+                    serviceImplementation="com.intellij.psi.impl.file.PsiDirectoryFactoryImpl"/>
 
     <projectService serviceInterface="com.intellij.ide.projectView.impl.nodes.ProjectViewDirectoryHelper"
                     serviceImplementation="com.intellij.ide.projectView.impl.nodes.ProjectViewDirectoryHelper"/>
-    <projectService serviceInterface="com.intellij.openapi.vcs.changes.patch.PatchBaseDirectoryDetector"
-                    serviceImplementation="jetbrains.mps.MPSPatchBaseDirectoryDetector"/>
+    <!--<projectService serviceInterface="com.intellij.openapi.vcs.changes.patch.PatchBaseDirectoryDetec  tor"
+                    serviceImplementation="jetbrains.mps.MPSPatchBaseDirectoryDetector"/>-->
 
     <projectService serviceInterface="com.intellij.openapi.vcs.impl.ExcludedFileIndex"
                     serviceImplementation="com.intellij.openapi.vcs.impl.ProjectExcludedFileIndex"/>
@@ -39,20 +53,20 @@
 
     <applicationService serviceInterface="com.intellij.openapi.wm.impl.FrameTitleBuilder"
                         serviceImplementation="com.intellij.openapi.wm.impl.PlatformFrameTitleBuilder"/>
-    <applicationService serviceInterface="com.intellij.platform.ProjectBaseDirectory"
+    <projectService serviceInterface="com.intellij.platform.ProjectBaseDirectory"
                         serviceImplementation="com.intellij.platform.ProjectBaseDirectory"/>
 
     <!-- allow mps to open mpr projects from command line -->
     <projectOpenProcessor implementation="jetbrains.mps.ide.project.MpsProjectOpenProcessor"/>
-
-    <applicationConfigurable implementation="com.intellij.application.options.pathMacros.PathMacroConfigurable"/>
 
     <!--For run config creation with action-->
     <getDataRule key="Location"
                  implementationClass="jetbrains.mps.workbench.dataExtraction.runConfig.LocationRule"/>
 
     <editorTabTitleProvider implementation="jetbrains.mps.ide.editor.tabs.EditorTabTitleProviderImpl"/>
-    <mps.modelRootEntry rootType="obsolete" className="jetbrains.mps.ide.ui.dialogs.properties.roots.editors.SModelRootEntryFactory"/>
+
+    <applicationService serviceInterface="com.intellij.profile.codeInspection.InspectionProfileManager"
+                        serviceImplementation="com.intellij.codeInspection.ex.ApplicationInspectionProfileManager"/>
   </extensions>
 
 </idea-plugin>

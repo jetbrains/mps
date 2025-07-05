@@ -1,6 +1,6 @@
 <components>
   <actions>
-    <group id="MPS.MessagesView" popup="false"></group>
+    <group id="MPS.MessagesView" popup="false"/>
   </actions>
 
   <application-components>
@@ -9,19 +9,11 @@
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.workbench.nodesFs.MPSNodesVirtualFileSystem</implementation-class>
+      <implementation-class>jetbrains.mps.nodefs.NodeVirtualFileSystem</implementation-class>
     </component>
 
     <component>
       <implementation-class>jetbrains.mps.ide.undo.OnReloadingUndoCleaner</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.fileTypes.MPSFileTypesManager</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.workbench.findusages.MPSModelsIndexer</implementation-class>
     </component>
 
     <component>
@@ -37,10 +29,6 @@
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.ide.messages.navigation.NavigationManager</implementation-class>
-    </component>
-
-    <component>
       <implementation-class>jetbrains.mps.ide.save.MPSFilesSaver</implementation-class>
     </component>
 
@@ -50,6 +38,10 @@
 
     <component>
       <implementation-class>jetbrains.mps.ide.blame.dialog.BlameDialogComponent</implementation-class>
+    </component>
+
+    <component>
+      <implementation-class>jetbrains.mps.ide.diagnostic.MPSErrorReporterConfigurable</implementation-class>
     </component>
 
     <component>
@@ -63,33 +55,42 @@
     <component>
       <implementation-class>jetbrains.mps.persistence.ModelFactoryRegister</implementation-class>
     </component>
+
+    <component>
+      <implementation-class>jetbrains.mps.persistence.DataSourceFactoryRuleRegistrar</implementation-class>
+    </component>
+
+    <component>
+      <implementation-class>jetbrains.mps.ide.platform.actions.core.RefactoringActionsExtensionComponent</implementation-class>
+    </component>
   </application-components>
 
   <project-components>
     <component>
-      <implementation-class>jetbrains.mps.ide.findusages.view.UsagesViewTool</implementation-class>
-      <skipForDummyProject/>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.messages.MessagesViewTool</implementation-class>
-      <skipForDummyProject/>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.platform.actions.AnalyzeDependenciesViewTool</implementation-class>
-      <skipForDummyProject/>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.ide.codeStyle.CodeStyleSettingsComponent</implementation-class>
+      <loadForDefaultProject/>
+    </component>
+    <component>
+      <implementation-class>jetbrains.mps.ide.compiler.CompilerSettingsComponent</implementation-class>
+    </component>
+    <component>
+      <implementation-class>jetbrains.mps.nodefs.FileSystemProjectBridge</implementation-class>
     </component>
   </project-components>
 
   <extensionPoints>
-    <extensionPoint qualifiedName="com.intellij.mps.LanguageLibrary" beanClass="jetbrains.mps.LanguageLibrary"/>
-    <extensionPoint qualifiedName="com.intellij.mps.VisibleModuleMask" beanClass="jetbrains.mps.VisibleModuleMask"/>
-    <extensionPoint qualifiedName="com.intellij.mps.modelRootFactory" beanClass="jetbrains.mps.ide.persistence.ModelRootFactoryEP"/>
-    <extensionPoint qualifiedName="com.intellij.mps.modelRootSettings" beanClass="jetbrains.mps.ide.persistence.ModelRootSettingsEP"/>
-    <extensionPoint qualifiedName="com.intellij.mps.treeCreationHandler" area="IDEA_PROJECT" interface="jetbrains.mps.ide.ui.tree.TreeHighlighterExtension"/>
-    <extensionPoint qualifiedName="com.intellij.mps.ModelFactoryProvider" beanClass="jetbrains.mps.persistence.ModelFactoryRegister$ModelFactoryProvider"/>
+    <extensionPoint qualifiedName="com.intellij.mps.LanguageLibrary"
+                    beanClass="jetbrains.mps.LanguageLibrary"/>
+    <extensionPoint qualifiedName="com.intellij.mps.VisibleModuleMask"
+                    beanClass="jetbrains.mps.VisibleModuleMask"/>
+    <extensionPoint qualifiedName="com.intellij.mps.modelRootFactory"
+                    beanClass="jetbrains.mps.ide.persistence.ModelRootFactoryEP"/>
+    <extensionPoint qualifiedName="com.intellij.mps.modelRootSettings"
+                    beanClass="jetbrains.mps.ide.persistence.ModelRootSettingsEP"/>
+    <extensionPoint qualifiedName="com.intellij.mps.ModelFactoryProvider"
+                    beanClass="jetbrains.mps.persistence.ModelFactoryRegister$ModelFactoryProvider"/>
+    <extensionPoint qualifiedName="com.intellij.mps.DataSourceFactoryRuleProvider"
+                    beanClass="jetbrains.mps.persistence.DataSourceFactoryRuleProvider"/>
   </extensionPoints>
 
   <extensions defaultExtensionNs="com.intellij">
@@ -103,10 +104,9 @@
     <getDataRule key="MPS_Frame" implementationClass="jetbrains.mps.ide.dataExtraction.FrameRule"/>
     <getDataRule key="MPS_IOperationContext"
                  implementationClass="jetbrains.mps.ide.dataExtraction.ContextRule"/>
-    <getDataRule key="MPS_IScope" implementationClass="jetbrains.mps.ide.dataExtraction.ScopeRule"/>
 
-    <fileBasedIndex implementation="jetbrains.mps.workbench.goTo.index.RootNodeNameIndex"/>
-    <gotoClassContributor implementation="jetbrains.mps.workbench.goTo.GoToClassMPSContributor"/>
+    <fileBasedIndex implementation="jetbrains.mps.workbench.findusages.MPSModelsIndexer"/>
+    <fileBasedIndex implementation="jetbrains.mps.workbench.index.RootNodeNameIndex"/>
     <editorTabTitleProvider implementation="jetbrains.mps.fileTypes.MPSEditorTabTitleProvider"/>
   </extensions>
 </components>

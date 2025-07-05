@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="QueriesGenerated.java" startLine="16" startPosition="0" endLine="30" endPosition="0" unitName="jetbrains.mps.baseLanguage.unitTest.actions.QueriesGenerated" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <root>
+    <file name="ActionAspectDescriptorImpl.java">
+      <unit at="13,0,34,0" name="jetbrains.mps.baseLanguage.unitTest.actions.ActionAspectDescriptorImpl" />
+    </file>
+    <file name="QueriesGenerated.java">
+      <unit at="6,0,8,0" name="jetbrains.mps.baseLanguage.unitTest.actions.QueriesGenerated" />
+    </file>
+  </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902d0(jetbrains.mps.baseLanguage.unitTest.actions)/1198167751204">
-    <nodeInfo nodeId="1198167785565" fileName="QueriesGenerated.java" startLine="17" startPosition="144" endLine="18" endPosition="125" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1198167764447" fileName="QueriesGenerated.java" startLine="17" startPosition="0" endLine="20" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="nodeFactory_NodeSetup_TestMethod_1198167764447#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/action/NodeSetupContext;)V" />
-    <scopeInfo nodeId="1198167764448" fileName="QueriesGenerated.java" startLine="17" startPosition="144" endLine="18" endPosition="125" />
-    <scopeInfo nodeId="1198167764447" fileName="QueriesGenerated.java" startLine="17" startPosition="0" endLine="20" endPosition="0">
-      <varInfo nodeId="1198167764447" varName="_context" />
-      <varInfo nodeId="1198167764447" varName="operationContext" />
-    </scopeInfo>
+    <file name="unitTest_Factory.java">
+      <node id="1198167785565" at="13,91,14,354" concept="0" />
+      <node id="1198167764446" at="13,0,16,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <scope id="1198167764446" at="13,91,14,354" />
+      <scope id="1198167764446" at="13,0,16,0">
+        <var name="enclosingNode" id="1198167764446" />
+        <var name="model" id="1198167764446" />
+        <var name="newNode" id="1198167764446" />
+        <var name="sampleNode" id="1198167764446" />
+      </scope>
+      <unit id="1198167764446" at="12,0,17,0" name="jetbrains.mps.baseLanguage.unitTest.actions.unitTest_Factory$NodeFactory_1198167764446" />
+      <unit id="1198167751204" at="11,0,18,0" name="jetbrains.mps.baseLanguage.unitTest.actions.unitTest_Factory" />
+    </file>
   </root>
-  <root nodeRef="r:00000000-0000-4000-0000-011c895902d0(jetbrains.mps.baseLanguage.unitTest.actions)/589054057631277539">
-    <nodeInfo nodeId="589054057631277619" fileName="QueriesGenerated.java" startLine="26" startPosition="194" endLine="27" endPosition="149" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="589054057631277541" fileName="QueriesGenerated.java" startLine="26" startPosition="0" endLine="29" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="nodeSubstituteActionsBuilder_Precondition_AssertStatement_589054057631277541#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/action/NodeSubstitutePreconditionContext;)Z" />
-    <scopeInfo nodeId="589054057631277542" fileName="QueriesGenerated.java" startLine="26" startPosition="194" endLine="27" endPosition="149" />
-    <scopeInfo nodeId="589054057631277541" fileName="QueriesGenerated.java" startLine="26" startPosition="0" endLine="29" endPosition="0">
-      <varInfo nodeId="589054057631277541" varName="_context" />
-      <varInfo nodeId="589054057631277541" varName="operationContext" />
-    </scopeInfo>
-  </root>
-</debugInfo>
+</debug-info>
 

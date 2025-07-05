@@ -7,20 +7,19 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.baseLanguage.behavior.Classifier_Behavior;
+import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.behavior.ClassConcept_Behavior;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 
 public class DispatchMethodCollector {
   private Map<DispatchGroupDescriptor, DispatchGroup> groups = MapSequence.fromMap(new HashMap<DispatchGroupDescriptor, DispatchGroup>());
-
   public DispatchMethodCollector(SNode classToCheck) {
     fill(classToCheck);
   }
-
   private void fill(SNode classToCheck) {
 
     // Instance methods 
@@ -29,14 +28,14 @@ public class DispatchMethodCollector {
 
     while ((clas != null)) {
       startNewClass(clas);
-      for (SNode m : Sequence.fromIterable(Classifier_Behavior.call_methods_5292274854859311639(clas)).where(new IWhereFilter<SNode>() {
+      for (SNode m : Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(clas)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return DispatchUtil.isReadyMethod(it);
         }
       })) {
         addMethod(m);
       }
-      clas = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(clas, "jetbrains.mps.baseLanguage.structure.ClassConcept"), "superclass", true), "classifier", false);
+      clas = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(clas, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"));
     }
 
     for (DispatchGroup g : Sequence.fromIterable(MapSequence.fromMap(groups).values())) {
@@ -44,7 +43,7 @@ public class DispatchMethodCollector {
     }
 
     // Now static methods. They're simpler. No need to take superclasses into account 
-    for (SNode m : Sequence.fromIterable(ClassConcept_Behavior.call_staticMethods_5292274854859435867(classToCheck)).where(new IWhereFilter<SNode>() {
+    for (SNode m : Sequence.fromIterable(ClassConcept__BehaviorDescriptor.staticMethods_id4_LVZ3pCeXr.invoke(classToCheck)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return DispatchUtil.isReadyMethod(it);
       }
@@ -52,25 +51,22 @@ public class DispatchMethodCollector {
       addMethod(m);
     }
   }
-
   private void startNewClass(SNode cls) {
     for (IMapping<DispatchGroupDescriptor, DispatchGroup> g : MapSequence.fromMap(groups)) {
       g.value().startNewClass(cls);
     }
   }
-
   private void addMethod(SNode method) {
 
     DispatchGroupDescriptor desc = new DispatchGroupDescriptor(method);
     DispatchGroup group = MapSequence.fromMap(groups).get(desc);
     if (group == null) {
-      group = new DispatchGroup(desc, SNodeOperations.getAncestor(method, "jetbrains.mps.baseLanguage.structure.ClassConcept", false, false));
+      group = new DispatchGroup(desc, SNodeOperations.getNodeAncestor(method, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false));
       MapSequence.fromMap(groups).put(desc, group);
     }
 
     group.addMethod(method);
   }
-
   public Iterable<DispatchGroup> getGroups() {
     return MapSequence.fromMap(groups).values();
   }

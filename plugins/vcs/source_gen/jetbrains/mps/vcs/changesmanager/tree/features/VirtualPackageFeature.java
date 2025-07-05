@@ -5,24 +5,22 @@ package jetbrains.mps.vcs.changesmanager.tree.features;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 public class VirtualPackageFeature extends Feature {
   private String myVirtualPackage;
-
   public VirtualPackageFeature(@NotNull SModelReference modelReference, @NotNull String virtualPackage) {
     super(modelReference);
     myVirtualPackage = virtualPackage;
   }
-
   @NotNull
   @Override
   public String toString() {
     return "Virtual Package {" + getModelReference().toString() + "|" + myVirtualPackage + "}";
   }
-
   @Nullable
   @Override
-  public Feature getParent() {
+  protected Feature getParent(SRepository repo) {
     int lastIndexOf = myVirtualPackage.lastIndexOf('.');
     if (lastIndexOf == -1) {
       return null;

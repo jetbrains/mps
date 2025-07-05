@@ -7,8 +7,6 @@ import javax.swing.JTree;
 import javax.swing.event.TreeExpansionEvent;
 import javax.swing.tree.DefaultTreeModel;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelReference;
-import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.ide.icons.IconManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SNodePointer;
@@ -16,66 +14,54 @@ import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import java.util.Enumeration;
 
 public abstract class ModelTreeBuilder implements TreeExpansionListener {
   private JTree myTree;
-
   public ModelTreeBuilder(JTree tree) {
     myTree = tree;
     myTree.addTreeExpansionListener(this);
   }
-
   @Override
   public void treeExpanded(TreeExpansionEvent event) {
     Object lastNode = event.getPath().getLastPathComponent();
     if (lastNode instanceof ModelTreeNode) {
       ModelTreeNode expandedNode = ((ModelTreeNode) lastNode);
-      if (!(expandedNode.getInitialized())) {
+      if (!(expandedNode.isInitialized())) {
         initTreeNode(expandedNode);
         expandedNode.setInitialized(true);
       }
     }
   }
-
   @Override
   public void treeCollapsed(TreeExpansionEvent event) {
   }
-
   protected abstract void initTreeNode(ModelTreeNode node);
-
   protected void notifyNodeStructureChanged(ModelTreeNode modelTreeNode) {
     ((DefaultTreeModel) myTree.getModel()).nodeStructureChanged(modelTreeNode);
   }
-
   public static ModelTreeNode createSModelTreeNode(SModel descriptor) {
-    SModelReference sModelReference = descriptor.getReference();
-    String label = SModelStereotype.withoutStereotype(sModelReference.getModelName());
-    if (SModelStereotype.getStereotype(sModelReference.getModelName()).length() > 0) {
-      label += "@" + SModelStereotype.getStereotype(sModelReference.getModelName());
-    }
+    String label = descriptor.getName().getValue();
     ModelTreeNode node = new ModelTreeNode(label, IconManager.getIconFor(descriptor), descriptor);
     node.setInitialized(false);
     return node;
   }
-
   public static ModelTreeNode createSNodeTreeNode(SNode node) {
     return new ModelTreeNode(node.getPresentation(), IconManager.getIconFor(node), new SNodePointer(node));
   }
-
   public static ModelTreeNode createFolderTreeNode(String folderName) {
     return new ModelTreeNode(folderName, IdeIcons.CLOSED_FOLDER, IdeIcons.OPENED_FOLDER);
   }
-
   public static Iterable<SNode> sortChildNodes(Iterable<SNode> nodes) {
     return Sequence.fromIterable(nodes).sort(new ISelector<SNode, String>() {
       public String select(SNode node) {
-        return SPropertyOperations.getString(node, "virtualPackage") + "|" + BehaviorReflection.invokeVirtual(String.class, node, "virtual_getPresentation_1213877396640", new Object[]{});
+        return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage")) + "|" + ((String) BHReflection.invoke(node, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
       }
     }, true);
   }
-
   public static void insertChildSNodeTreeNode(ModelTreeNode sModelTreeNode, ModelTreeNode sNodeTreeNode, String virtualPackage) {
     ModelTreeNode parentTreeNode = sModelTreeNode;
     if ((virtualPackage != null && virtualPackage.length() > 0)) {
@@ -90,7 +76,6 @@ public abstract class ModelTreeBuilder implements TreeExpansionListener {
     }
     parentTreeNode.add(sNodeTreeNode);
   }
-
   public static ModelTreeNode findChildNodeByText(ModelTreeNode parentTreeNode, String childName) {
     for (Enumeration children = parentTreeNode.children(); children.hasMoreElements();) {
       Object nextChild = children.nextElement();

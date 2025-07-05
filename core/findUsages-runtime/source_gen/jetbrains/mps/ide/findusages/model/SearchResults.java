@@ -12,27 +12,25 @@ import java.util.LinkedHashSet;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public class SearchResults<T> implements UsagesList {
-  private final Set<T> mySearchedNodes;
+  private final Set<Object> mySearchedNodes;
   private List<SearchResult<T>> mySearchResults;
-
   public SearchResults() {
-    mySearchedNodes = new HashSet<T>();
+    mySearchedNodes = new HashSet<Object>();
     mySearchResults = new ArrayList<SearchResult<T>>();
   }
-
-  public SearchResults(Set<T> searchedNodes, List<SearchResult<T>> searchResults) {
-    mySearchedNodes = searchedNodes;
+  public SearchResults(Set<?> searchedNodes, List<SearchResult<T>> searchResults) {
+    mySearchedNodes = new HashSet<Object>(searchedNodes);
     mySearchResults = searchResults;
   }
-
-  public Set<T> getSearchedNodes() {
+  public Set<Object> getSearchedNodes() {
+    // mySearchNodes lists elements we looked for; elements our results 'derived' from. They are not necessarily of the same 
+    // kind as our results, hence we use <?>, not <T> (I don't feel there's reason introduce <E> as it 
+    // (a) limits where we can look; (b) complicates the code 
     return mySearchedNodes;
   }
-
   public List<SearchResult<T>> getSearchResults() {
     return mySearchResults;
   }
-
   public Set<T> getResultObjects() {
     Set<T> resultObjects = new HashSet<T>();
     for (SearchResult<T> searchResult : mySearchResults) {
@@ -40,12 +38,13 @@ public class SearchResults<T> implements UsagesList {
     }
     return resultObjects;
   }
-
+  public void add(SearchResult<T> r) {
+    mySearchResults.add(r);
+  }
   public void addAll(SearchResults<T> sr) {
     mySearchedNodes.addAll(sr.mySearchedNodes);
     mySearchResults.addAll(sr.mySearchResults);
   }
-
   @Override
   public Set<SModel> getAffectedModels() {
     LinkedHashSet<SModel> result = new LinkedHashSet<SModel>();
@@ -63,7 +62,6 @@ public class SearchResults<T> implements UsagesList {
     }
     return result;
   }
-
   public void remove(T node) {
     for (SearchResult result : new ArrayList<SearchResult>(mySearchResults)) {
       if (result.getObject() == node) {
@@ -71,11 +69,9 @@ public class SearchResults<T> implements UsagesList {
       }
     }
   }
-
   public void remove(SearchResult<T> searchResult) {
     mySearchResults.remove(searchResult);
   }
-
   public List<SearchResult<T>> getAliveResults() {
     List<SearchResult<T>> alive = new ArrayList<SearchResult<T>>();
     for (SearchResult result : mySearchResults) {
@@ -85,18 +81,16 @@ public class SearchResults<T> implements UsagesList {
     }
     return alive;
   }
-
-  public Set<T> getAliveNodes() {
-    Set<T> alive = new HashSet<T>();
-    for (T node : mySearchedNodes) {
+  public Set<?> getAliveNodes() {
+    Set<Object> alive = new HashSet<Object>();
+    for (Object node : mySearchedNodes) {
       if (node != null) {
         alive.add(node);
       }
     }
     return alive;
   }
-
   public void removeDuplicates() {
-    mySearchResults = new ArrayList(new LinkedHashSet(mySearchResults));
+    mySearchResults = new ArrayList<SearchResult<T>>(new LinkedHashSet<SearchResult<T>>(mySearchResults));
   }
 }

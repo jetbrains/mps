@@ -9,26 +9,26 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import java.util.List;
 import java.util.ArrayList;
-import jetbrains.mps.baseLanguage.behavior.ClassConcept_Behavior;
+import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.behavior.StatementList_Behavior;
+import jetbrains.mps.baseLanguage.behavior.StatementList__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.baseLanguage.behavior.ConstructorDeclaration_Behavior;
+import jetbrains.mps.baseLanguage.behavior.ConstructorDeclaration__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
-import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class check_ConstructorRecursiveInvocation_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ConstructorRecursiveInvocation_NonTypesystemRule() {
   }
-
   public void applyRule(final SNode classConcept, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> constructors = new ArrayList<SNode>();
-    for (SNode constructor : ClassConcept_Behavior.call_constructors_5292274854859503373(classConcept)) {
-      if (SNodeOperations.isInstanceOf(StatementList_Behavior.call_getFirstStatement_5420652334935371934(SLinkOperations.getTarget(constructor, "body", true)), "jetbrains.mps.baseLanguage.structure.ConstructorInvocationStatement")) {
+    for (SNode constructor : ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(classConcept)) {
+      if (SNodeOperations.isInstanceOf(StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(SLinkOperations.getTarget(constructor, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body"))), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x121119ae5ffL, "jetbrains.mps.baseLanguage.structure.ConstructorInvocationStatement"))) {
         constructors.add(constructor);
       }
     }
@@ -40,12 +40,12 @@ public class check_ConstructorRecursiveInvocation_NonTypesystemRule extends Abst
       ListSequence.fromList(passed).addElement(current);
       boolean end = false;
       while (!(end)) {
-        SNode calledConstructor = ConstructorDeclaration_Behavior.call_getThisConstructorInvocation_6018737561676809124(current);
+        SNode calledConstructor = ConstructorDeclaration__BehaviorDescriptor.getThisConstructorInvocation_id5e6QuLS30e$.invoke(current);
         if (calledConstructor != null) {
           if (ListSequence.fromList(passed).contains(calledConstructor)) {
             ListSequence.fromList(nodesWithErrors).addElement(current);
             do {
-              current = ConstructorDeclaration_Behavior.call_getThisConstructorInvocation_6018737561676809124(current);
+              current = ConstructorDeclaration__BehaviorDescriptor.getThisConstructorInvocation_id5e6QuLS30e$.invoke(current);
               ListSequence.fromList(nodesWithErrors).addElement(current);
             } while (current != calledConstructor);
             end = true;
@@ -67,18 +67,12 @@ public class check_ConstructorRecursiveInvocation_NonTypesystemRule extends Abst
       }
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.baseLanguage.structure.ClassConcept";
+  public SAbstractConcept getApplicableConcept() {
+    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConcept().getQualifiedName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
   }

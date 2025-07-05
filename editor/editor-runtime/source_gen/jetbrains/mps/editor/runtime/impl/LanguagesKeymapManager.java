@@ -5,61 +5,69 @@ package jetbrains.mps.editor.runtime.impl;
 import com.intellij.openapi.components.ApplicationComponent;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
-import jetbrains.mps.reloading.ReloadAdapter;
 import java.util.Map;
-import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.KeyMap;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.ide.MPSCoreComponents;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
+import org.jetbrains.mps.openapi.module.SModule;
+import java.util.Collections;
+import jetbrains.mps.smodel.language.LanguageRuntime;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.LanguageAspect;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import java.util.Collections;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import org.apache.log4j.Level;
 import com.intellij.openapi.application.ApplicationManager;
-import org.jetbrains.mps.openapi.module.SRepositoryAdapter;
-import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.language.LanguageRegistryListener;
 
 public class LanguagesKeymapManager implements ApplicationComponent {
   private static final Logger LOG = LogManager.getLogger(LanguagesKeymapManager.class);
-  private ReloadAdapter myReloadHandler = new ReloadAdapter() {
-    @Override
-    public void unload() {
-      clearCaches();
-    }
-  };
-  private Map<Language, List<KeyMap>> myLanguagesToKeyMaps = MapSequence.fromMap(new HashMap<Language, List<KeyMap>>());
-  private LanguagesKeymapManager.MyModuleRepositoryListener myListener = new LanguagesKeymapManager.MyModuleRepositoryListener();
-  private SRepository myRepository;
-  private ClassLoaderManager myClassLoaderManager;
+  private final Map<SLanguageId, List<KeyMap>> myLanguagesToKeyMaps = MapSequence.fromMap(new HashMap<SLanguageId, List<KeyMap>>());
+  private final LanguagesKeymapManager.LanguageLoadListener myListener = new LanguagesKeymapManager.LanguageLoadListener();
+  private final LanguageRegistry myLanguageRegistry;
 
   public LanguagesKeymapManager(MPSCoreComponents coreComponents) {
-    myRepository = coreComponents.getModuleRepository();
-    myClassLoaderManager = coreComponents.getClassLoaderManager();
+    myLanguageRegistry = coreComponents.getPlatform().findComponent(LanguageRegistry.class);
   }
 
-  public List<KeyMap> getKeyMapsForLanguage(@NotNull Language l) {
-    if (!(MapSequence.fromMap(myLanguagesToKeyMaps).containsKey(l))) {
-      registerLanguageKeyMaps(l);
+  public List<KeyMap> getKeyMapsForLanguage(@NotNull SLanguage l) {
+    SLanguageId languageId = MetaIdHelper.getLanguage(l);
+    if (!(MapSequence.fromMap(myLanguagesToKeyMaps).containsKey(languageId))) {
+      // FIXME this is a hack, until we expose KeyMaps as part of editor aspect (or standalone aspect), we need name from CellKeyMapDeclaration node 
+      SModule sourceModule = l.getSourceModule();
+      if (sourceModule == null) {
+        return Collections.<KeyMap>emptyList();
+      }
+      LanguageRuntime languageRuntime = myLanguageRegistry.getLanguage(languageId);
+      if (languageRuntime == null) {
+        return Collections.<KeyMap>emptyList();
+      }
+      MapSequence.fromMap(myLanguagesToKeyMaps).put(languageId, loadLanguageKeyMaps(languageRuntime, sourceModule));
     }
-    return MapSequence.fromMap(myLanguagesToKeyMaps).get(l);
+    return MapSequence.fromMap(myLanguagesToKeyMaps).get(languageId);
   }
 
   @Override
   public void initComponent() {
-    myClassLoaderManager.addReloadHandler(myReloadHandler);
-    myRepository.addRepositoryListener(myListener);
+    myLanguageRegistry.addRegistryListener(myListener);
+  }
+
+  @Override
+  public void disposeComponent() {
+    myLanguageRegistry.removeRegistryListener(myListener);
   }
 
   @NonNls
@@ -69,72 +77,63 @@ public class LanguagesKeymapManager implements ApplicationComponent {
     return "Language KeyMap Manager";
   }
 
-  @Override
-  public void disposeComponent() {
-    myRepository.removeRepositoryListener(myListener);
-    myClassLoaderManager.removeReloadHandler(myReloadHandler);
-  }
-
   private void clearCaches() {
     MapSequence.fromMap(myLanguagesToKeyMaps).clear();
   }
 
-  private void registerLanguageKeyMaps(Language language) {
-    SModel editorModelDescriptor = LanguageAspect.EDITOR.get(language);
-    SModel editorModel = (editorModelDescriptor != null ?
-      editorModelDescriptor :
-      null
-    );
-    List<KeyMap> keyMaps;
-    if (editorModel != null) {
-      keyMaps = ListSequence.fromList(new ArrayList<KeyMap>());
-      for (SNode keyMapDeclaration : ListSequence.fromList(SModelOperations.getRoots(editorModel, "jetbrains.mps.lang.editor.structure.CellKeyMapDeclaration"))) {
-        try {
-          Class<KeyMap> keyMapClass = findKeyMapClassByDeclaration(keyMapDeclaration);
-          if (keyMapClass != null) {
-            KeyMap keyMap = keyMapClass.newInstance();
-            if (keyMap.isApplicableToEveryModel()) {
-              ListSequence.fromList(keyMaps).addElement(keyMap);
-            }
-          }
-        } catch (Throwable t) {
-          LOG.error(null, t);
+  private List<KeyMap> loadLanguageKeyMaps(LanguageRuntime languageRuntime, SModule languageSource) {
+    SModel editorModelDescriptor = SModuleOperations.getAspect(languageSource, "editor");
+    SModel editorModel = (editorModelDescriptor != null ? editorModelDescriptor : null);
+    if (editorModel == null) {
+      return Collections.<KeyMap>emptyList();
+    }
+    List<SNode> declarations = SModelOperations.roots(editorModel, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, "jetbrains.mps.lang.editor.structure.CellKeyMapDeclaration"));
+    if (ListSequence.fromList(declarations).isEmpty()) {
+      return Collections.<KeyMap>emptyList();
+    }
+    List<KeyMap> keyMaps = ListSequence.fromList(new ArrayList<KeyMap>());
+    for (SNode keyMapDeclaration : ListSequence.fromList(declarations)) {
+      try {
+        Class<KeyMap> keyMapClass = (Class<KeyMap>) languageRuntime.getClass().getClassLoader().loadClass(((String) BHReflection.invoke(keyMapDeclaration, SMethodTrimmedId.create("getFqName", null, "hEwIO9y"))));
+        KeyMap keyMap = keyMapClass.newInstance();
+        if (keyMap.isApplicableToEveryModel()) {
+          ListSequence.fromList(keyMaps).addElement(keyMap);
+        }
+      } catch (ClassNotFoundException ex) {
+        if (LOG.isEnabledFor(Level.WARN)) {
+          LOG.warn("Failed to instantiate keymap", ex);
+        }
+      } catch (InstantiationException e) {
+        if (LOG.isEnabledFor(Level.ERROR)) {
+          LOG.error("Failed to instantiate keymap", e);
+        }
+      } catch (IllegalAccessException e) {
+        if (LOG.isEnabledFor(Level.ERROR)) {
+          LOG.error("Failed to instantiate keymap", e);
         }
       }
-    } else {
-      keyMaps = Collections.emptyList();
     }
-    MapSequence.fromMap(myLanguagesToKeyMaps).put(language, keyMaps);
+    return (ListSequence.fromList(keyMaps).isEmpty() ? Collections.<KeyMap>emptyList() : keyMaps);
   }
 
-  private Class<KeyMap> findKeyMapClassByDeclaration(SNode declaration) {
-    String fqName = BehaviorReflection.invokeVirtual(String.class, declaration, "virtual_getFqName_1213877404258", new Object[]{});
-    String namespace = NameUtil.namespaceFromLongName(fqName);
-    assert namespace.endsWith(".editor");
-    String languageNamespace = namespace.substring(0, namespace.length() - ".editor".length());
-    Language language = (Language) MPSModuleRepository.getInstance().getModuleByFqName(languageNamespace);
-    if (language == null) {
-      return null;
-    }
-    return myClassLoaderManager.getClass(language, fqName);
-  }
-
-  private void unregisterLanguageKeyMaps(Language language) {
-    MapSequence.fromMap(myLanguagesToKeyMaps).removeKey(language);
+  /*package*/ void unregisterLanguageKeyMaps(LanguageRuntime lr) {
+    MapSequence.fromMap(myLanguagesToKeyMaps).removeKey(lr.getId());
   }
 
   public static LanguagesKeymapManager getInstance() {
     return ApplicationManager.getApplication().getComponent(LanguagesKeymapManager.class);
   }
 
-  private class MyModuleRepositoryListener extends SRepositoryAdapter {
-    private MyModuleRepositoryListener() {
+  private class LanguageLoadListener implements LanguageRegistryListener {
+    /*package*/ LanguageLoadListener() {
     }
-
     @Override
-    public void beforeModuleRemoved(SModule module) {
-      if (module instanceof Language) {
-        unregisterLanguageKeyMaps((Language) module);
+    public void afterLanguagesLoaded(Iterable<LanguageRuntime> iterable) {
+    }
+    @Override
+    public void beforeLanguagesUnloaded(Iterable<LanguageRuntime> iterable) {
+      for (LanguageRuntime lr : iterable) {
+        unregisterLanguageKeyMaps(lr);
       }
     }
   }

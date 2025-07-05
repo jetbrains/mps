@@ -21,9 +21,9 @@ import com.intellij.ide.util.treeView.AbstractTreeBuilder;
 import com.intellij.ide.util.treeView.AbstractTreeStructure;
 import com.intellij.ide.util.treeView.NodeDescriptor;
 import com.intellij.idea.ActionsBundle;
-import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.Presentation;
@@ -47,7 +47,12 @@ import com.intellij.ui.roots.ToolbarPanel;
 import com.intellij.ui.treeStructure.Tree;
 import com.intellij.util.ui.tree.TreeUtil;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
+import jetbrains.mps.extapi.persistence.SourceRootKind;
+import jetbrains.mps.extapi.persistence.SourceRootKinds;
+import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntryEditor;
 
@@ -92,17 +97,31 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
     myDescriptor.setShowFileSystemRoots(false);
   }
 
+  @NotNull
+  static String getKindText(@NotNull SourceRootKind kind) {
+    if (kind == SourceRootKinds.EXCLUDED) {
+      return "Excluded";
+    } else if (kind == SourceRootKinds.SOURCES) {
+      return "Sources";
+    }
+    return "Unknown";
+  }
+
   protected void createEditingActions() {
     myEditingActionsGroup.removeAll();
 
-    FileBasedModelRoot fileBasedModelRoot = (FileBasedModelRoot) myFileBasedModelRootEntry.getModelRoot();
-    Collection<String> kinds = fileBasedModelRoot.getSupportedFileKinds();
+    FileBasedModelRoot fileBasedModelRoot = myFileBasedModelRootEntry.getModelRoot();
+    Collection<SourceRootKind> kinds = fileBasedModelRoot.getSupportedFileKinds1();
 
-    for(final String kind : kinds) {
-      AnAction modelRootAnAction = new ToggleFBModelRootKindAction(myTree, this, fileBasedModelRoot.getKindText(kind), null, myFileBasedModelRootEntry.getKindIcon(kind)) {
-        @Override
-        protected String getKind() { return kind; }
-      };
+    for (final SourceRootKind kind : kinds) {
+      AnAction modelRootAnAction =
+          new ToggleFBModelRootKindAction(myTree, this, getKindText(kind), null, myFileBasedModelRootEntry.getKindIcon(kind)) {
+            @NotNull
+            @Override
+            protected SourceRootKind getKind() {
+              return kind;
+            }
+          };
 //      modelRootAnAction.registerCustomShortcutSet(new CustomShortcutSet(KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.ALT_MASK)), myTree);
       myEditingActionsGroup.add(modelRootAnAction);
     }
@@ -124,7 +143,7 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
       myFileBasedModelRootEntry = null;
     }
     if (fileBasedModelRootEntry == null) {
-      ((DefaultTreeModel)myTree.getModel()).setRoot(EMPTY_TREE_ROOT);
+      ((DefaultTreeModel) myTree.getModel()).setRoot(EMPTY_TREE_ROOT);
       myTreePanel.setVisible(false);
       if (myFileSystemTree != null) {
         Disposer.dispose(myFileSystemTree);
@@ -134,28 +153,22 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
     myTreePanel.setVisible(true);
     myFileBasedModelRootEntry = fileBasedModelRootEntry;
 
-    String path = ((FileBasedModelRoot)myFileBasedModelRootEntry.getModelRoot()).getContentRoot();
+    IFile path = myFileBasedModelRootEntry.getModelRoot().getContentDirectory();
 
-    VirtualFile file = VirtualFileManager.getInstance().findFileByUrl(
-      VirtualFileManager.constructUrl("file", path)
-    );
+    VirtualFile file = path == null ? null : VirtualFileUtils.getProjectVirtualFile(path);
     setRoot(file);
 
-    final VirtualFile file2Runnable = file;
-    final Runnable init = new Runnable() {
-      @Override
-      public void run() {
-        //noinspection ConstantConditions
-        myFileSystemTree.updateTree();
-        myFileSystemTree.select(file2Runnable, null);
+    final Runnable init = () -> {
+      myFileSystemTree.updateTree();
+      if (file != null) {
+        myFileSystemTree.select(file, null);
       }
     };
 
     myFileSystemTree = new FileSystemTreeImpl(null, myDescriptor, myTree, getModelRootEntryCellRenderer(), init, null) {
       @Override
       protected AbstractTreeBuilder createTreeBuilder(JTree tree, DefaultTreeModel treeModel, AbstractTreeStructure treeStructure,
-                                                      Comparator<NodeDescriptor> comparator, FileChooserDescriptor descriptor,
-                                                      final Runnable onInitialized) {
+          Comparator<NodeDescriptor> comparator, FileChooserDescriptor descriptor, final Runnable onInitialized) {
         return new MyFileTreeBuilder(tree, treeModel, treeStructure, comparator, descriptor, onInitialized);
       }
     };
@@ -176,15 +189,15 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
   private void setRoot(VirtualFile file) {
     myDescriptor.setRoots(file);
     if (file != null) {
-      myDescriptor.setTitle( FileUtil.toSystemDependentName(file.getPath()) );
+      myDescriptor.setTitle(FileUtil.toSystemDependentName(file.getPath()));
     }
   }
 
-  public void selectFile(String file) {
-    VirtualFile file2Select = VirtualFileManager.getInstance().findFileByUrl(
-      VirtualFileManager.constructUrl("file", file)
-    );
-    if(file2Select == null) return;
+  public void selectFile(@NotNull IFile file) {
+    VirtualFile file2Select = VirtualFileUtils.getProjectVirtualFile(file);
+    if (file2Select == null) {
+      return;
+    }
 
     myTree.requestFocus();
     if (myFileSystemTree != null) {
@@ -222,6 +235,10 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
     @Override
     @Nullable
     public Object getData(@NonNls final String dataId) {
+      if (CommonDataKeys.VIRTUAL_FILE_ARRAY.is(dataId)) {
+        return myFileSystemTree.getSelectedFiles();
+      }
+
       if (FileSystemTree.DATA_KEY.is(dataId)) {
         return myFileSystemTree;
       }
@@ -231,11 +248,11 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
 
   private static class MyFileTreeBuilder extends FileTreeBuilder {
     public MyFileTreeBuilder(JTree tree,
-                             DefaultTreeModel treeModel,
-                             AbstractTreeStructure treeStructure,
-                             Comparator<NodeDescriptor> comparator,
-                             FileChooserDescriptor descriptor,
-                             @Nullable Runnable onInitialized) {
+        DefaultTreeModel treeModel,
+        AbstractTreeStructure treeStructure,
+        Comparator<NodeDescriptor> comparator,
+        FileChooserDescriptor descriptor,
+        @Nullable Runnable onInitialized) {
       super(tree, treeModel, treeStructure, comparator, descriptor, onInitialized);
     }
 
@@ -248,8 +265,8 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
   private static class MyNewFolderAction extends NewFolderAction implements CustomComponentAction {
     private MyNewFolderAction() {
       super(ActionsBundle.message("action.FileChooser.NewFolder.text"),
-        ActionsBundle.message("action.FileChooser.NewFolder.description"),
-        Actions.NewFolder);
+          ActionsBundle.message("action.FileChooser.NewFolder.description"),
+          Actions.NewFolder);
     }
 
     @Override
@@ -262,7 +279,7 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
     private final FileChooserDescriptor myDescriptor;
 
     public ChooseModelRootContentFolder() {
-      super("Change Root Folder","", Nodes.HomeFolder);
+      super("Change Root Folder", "", Nodes.HomeFolder);
       myDescriptor = new FileChooserDescriptor(false, true, true, false, true, false);
       myDescriptor.setTitle("Select new content entry for model root");
     }
@@ -270,16 +287,17 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
     @Override
     public void actionPerformed(AnActionEvent e) {
       VirtualFile[] files = FileChooser.chooseFiles(myDescriptor, null, null,
-        VirtualFileManager.getInstance().findFileByUrl(
-          VirtualFileManager.constructUrl("file", ((FileBasedModelRoot)myFileBasedModelRootEntry.getModelRoot()).getContentRoot())
-        )
+          VirtualFileManager.getInstance().findFileByUrl(
+              VirtualFileManager.constructUrl("file", myFileBasedModelRootEntry.getModelRoot().getContentRoot())
+          )
       );
 
-      if(files.length != 1)
+      if (files.length != 1) {
         return;
+      }
 
       FileBasedModelRootEntry fileBasedModelRootEntry = FileBasedModelRootEditor.this.myFileBasedModelRootEntry;
-      ((FileBasedModelRoot)fileBasedModelRootEntry.getModelRoot()).setContentRoot(files[0].getPath());
+      fileBasedModelRootEntry.getModelRoot().setContentRoot(files[0].getPath());
       FileBasedModelRootEditor.this.myFileBasedModelRootEntry = null;
       FileBasedModelRootEditor.this.setFileBasedModelRootEntry(fileBasedModelRootEntry);
       FileBasedModelRootEditor.this.myFileBasedModelRootEntry.updateUI();

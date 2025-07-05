@@ -4,14 +4,17 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
 import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.xmlb.XmlSerializer;
 import com.intellij.openapi.util.InvalidDataException;
 import jetbrains.mps.debugger.java.api.settings.RemoteConnectionSettings;
-import org.apache.log4j.Priority;
+import org.apache.log4j.Level;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.configurations.RunProfileState;
@@ -19,25 +22,22 @@ import com.intellij.execution.Executor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ExecutionException;
 import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.openapi.util.JDOMExternalizable;
+import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
 import com.intellij.execution.runners.ProgramRunner;
 import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.ide.project.ProjectHelper;
 
 public class Remote_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
+  private static final Logger LOG = LogManager.getLogger(Remote_Configuration.class);
   @NotNull
   private Remote_Configuration.MyState myState = new Remote_Configuration.MyState();
-
-  public void checkConfiguration() throws RuntimeConfigurationException {
+  public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
   }
-
   @Override
   public void writeExternal(Element element) throws WriteExternalException {
     element.addContent(XmlSerializer.serialize(myState));
   }
-
   @Override
   public void readExternal(Element element) throws InvalidDataException {
     if (element == null) {
@@ -45,15 +45,12 @@ public class Remote_Configuration extends BaseMpsRunConfiguration implements IPe
     }
     XmlSerializer.deserializeInto(myState, (Element) element.getChildren().get(0));
   }
-
   public RemoteConnectionSettings getSettings() {
     return myState.mySettings;
   }
-
   public void setSettings(RemoteConnectionSettings value) {
     myState.mySettings = value;
   }
-
   @Override
   public Remote_Configuration clone() {
     Remote_Configuration clone = null;
@@ -62,19 +59,16 @@ public class Remote_Configuration extends BaseMpsRunConfiguration implements IPe
       clone.myState = (Remote_Configuration.MyState) myState.clone();
       return clone;
     } catch (CloneNotSupportedException ex) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
+      if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("", ex);
       }
     }
     return clone;
   }
-
   public class MyState {
     public RemoteConnectionSettings mySettings = new RemoteConnectionSettings("localhost", 5005);
-
     public MyState() {
     }
-
     @Override
     public Object clone() throws CloneNotSupportedException {
       Remote_Configuration.MyState state = new Remote_Configuration.MyState();
@@ -84,41 +78,40 @@ public class Remote_Configuration extends BaseMpsRunConfiguration implements IPe
       return state;
     }
   }
-
   public Remote_Configuration(Project project, Remote_Configuration_Factory factory, String name) {
     super(project, factory, name);
   }
-
   @Nullable
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment environment) throws ExecutionException {
     return new Remote_Configuration_RunProfileState(this, executor, environment);
   }
-
   @Nullable
-  public SettingsEditor<JDOMExternalizable> getRunnerSettingsEditor(ProgramRunner runner) {
+  public SettingsEditor<ConfigurationPerRunnerSettings> getRunnerSettingsEditor(ProgramRunner runner) {
     return null;
   }
-
-  public JDOMExternalizable createRunnerSettings(ConfigurationInfoProvider provider) {
+  public ConfigurationPerRunnerSettings createRunnerSettings(ConfigurationInfoProvider provider) {
     return null;
   }
-
   public SettingsEditorEx<Remote_Configuration> getConfigurationEditor() {
     return (SettingsEditorEx<Remote_Configuration>) getEditor();
   }
-
   public Remote_Configuration createCloneTemplate() {
     return (Remote_Configuration) super.clone();
   }
-
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
     return new Remote_Configuration_Editor();
   }
-
+  @Override
+  public void checkConfiguration() throws RuntimeConfigurationException {
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    checkConfiguration(new PersistentConfigurationContext() {
+      public jetbrains.mps.project.Project getProject() {
+        return mpsProject;
+      }
+    });
+  }
   @Override
   public boolean canExecute(String executorId) {
     return Remote_Configuration_RunProfileState.canExecute(executorId);
   }
-
-  protected static Logger LOG = LogManager.getLogger(Remote_Configuration.class);
 }

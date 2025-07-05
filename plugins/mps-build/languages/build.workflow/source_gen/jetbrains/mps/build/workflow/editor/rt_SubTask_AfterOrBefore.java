@@ -9,28 +9,25 @@ import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class rt_SubTask_AfterOrBefore {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.RIGHT_TRANSFORM, new rt_SubTask_AfterOrBefore.rt_SubTask_AfterOrBefore_RIGHT_TRANSFORM(node));
   }
-
   public static class rt_SubTask_AfterOrBefore_RIGHT_TRANSFORM extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public rt_SubTask_AfterOrBefore_RIGHT_TRANSFORM(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      if (ListSequence.fromList(SLinkOperations.getTargets(node, "before", true)).isEmpty()) {
-        SLinkOperations.addNewChild(node, "before", "jetbrains.mps.build.workflow.structure.BwfSubTaskDependency");
-      } else if (ListSequence.fromList(SLinkOperations.getTargets(node, "after", true)).isEmpty()) {
-        SLinkOperations.addNewChild(node, "after", "jetbrains.mps.build.workflow.structure.BwfSubTaskDependency");
+      if (ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x36fb0dc9fd36bb1bL, "before"))).isEmpty()) {
+        SLinkOperations.addNewChild(node, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x36fb0dc9fd36bb1bL, "before"), MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L, "jetbrains.mps.build.workflow.structure.BwfSubTaskDependency"));
+      } else if (ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x2670d5989d5b4a01L, "after"))).isEmpty()) {
+        SLinkOperations.addNewChild(node, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x2670d5989d5b4a01L, "after"), MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L, "jetbrains.mps.build.workflow.structure.BwfSubTaskDependency"));
       }
     }
   }

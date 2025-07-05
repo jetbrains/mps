@@ -10,27 +10,28 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import java.util.Set;
 import java.util.LinkedHashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.build.workflow.constraints.TaskLibrariesHelper;
-import jetbrains.mps.util.SNodeOperations;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SReference;
+import jetbrains.mps.util.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
-import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class check_BwfTaskLibrary_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_BwfTaskLibrary_NonTypesystemRule() {
   }
-
   public void applyRule(final SNode lib, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Set<SNode> libsSet = new LinkedHashSet<SNode>();
     libsSet.add(lib);
-    for (SNode tldep : SLinkOperations.getTargets(lib, "imports", true)) {
-      libsSet.add(SLinkOperations.getTarget(tldep, "target", false));
+    for (SNode tldep : SLinkOperations.getChildren(lib, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da114724ce92L, 0x6565da114725c6b6L, "imports"))) {
+      libsSet.add(SLinkOperations.getTarget(tldep, MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da1147260537L, 0x6565da1147260538L, "target")));
     }
 
     TaskLibrariesHelper.closure(libsSet);
-    for (SNode n : SNodeOperations.getDescendants(lib, null, true)) {
+    for (SNode n : SNodeUtil.getDescendants(lib)) {
       for (SReference ref : SNodeOperations.getReferences(n)) {
         SNode targetNode = SNodeOperations.getTargetNodeSilently(ref);
         if (targetNode != null && !(libsSet.contains(targetNode.getContainingRoot()))) {
@@ -42,18 +43,12 @@ public class check_BwfTaskLibrary_NonTypesystemRule extends AbstractNonTypesyste
       }
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.build.workflow.structure.BwfTaskLibrary";
+  public SAbstractConcept getApplicableConcept() {
+    return MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da114724ce92L, "jetbrains.mps.build.workflow.structure.BwfTaskLibrary");
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConcept().getQualifiedName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
   }

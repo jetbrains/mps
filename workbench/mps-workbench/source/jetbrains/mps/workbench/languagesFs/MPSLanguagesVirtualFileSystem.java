@@ -19,7 +19,6 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.vfs.DeprecatedVirtualFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.project.GlobalScope;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleRepository;
@@ -111,17 +110,17 @@ public class MPSLanguagesVirtualFileSystem extends DeprecatedVirtualFileSystem i
   }
 
   @Override
-  protected VirtualFile createChildFile(Object requestor, VirtualFile vDir, String fileName) throws IOException {
+  public VirtualFile createChildFile(Object requestor, VirtualFile vDir, String fileName) throws IOException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected VirtualFile createChildDirectory(Object requestor, VirtualFile vDir, String dirName) throws IOException {
+  public VirtualFile createChildDirectory(Object requestor, VirtualFile vDir, String dirName) throws IOException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected VirtualFile copyFile(Object requestor, VirtualFile virtualFile, VirtualFile newParent, String copyName) throws IOException {
+  public VirtualFile copyFile(Object requestor, VirtualFile virtualFile, VirtualFile newParent, String copyName) throws IOException {
     throw new UnsupportedOperationException();
   }
 }

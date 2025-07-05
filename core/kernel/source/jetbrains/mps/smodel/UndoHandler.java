@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,20 +13,49 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.smodel;import org.jetbrains.mps.openapi.model.SModelReference;import org.jetbrains.mps.openapi.model.SModel;import org.jetbrains.mps.openapi.model.SModel;import org.jetbrains.mps.openapi.model.SModelId;import org.jetbrains.mps.openapi.model.SReference;import org.jetbrains.mps.openapi.model.SNodeReference;import org.jetbrains.mps.openapi.model.SNodeId;import org.jetbrains.mps.openapi.model.SNode;
+package jetbrains.mps.smodel;
 
 import jetbrains.mps.project.Project;
+import jetbrains.mps.smodel.undo.UndoContext;
 import jetbrains.mps.util.Computable;
-import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.util.annotation.ToRemove;
 
 public interface UndoHandler {
+  /**
+   * Receives information about a model change in a form suitable for undo.
+   * It's up to implementation to react, i.e. to use some platform mechanism to record the action, filter based on internal state or
+   * even to ignore it altogether.
+   * @param action never {@code null}
+   */
   public void addUndoableAction(SNodeUndoableAction action);
 
   public <T> T runNonUndoableAction(Computable<T> t);
 
-  boolean needRegisterUndo();
+  /**
+   * @deprecated it's implementation-specific logic (whether {@link #addUndoableAction(SNodeUndoableAction)} shall actually register undoable action
+   *             no reason to keep this in the API.
+   */
+  @Deprecated
+  @ToRemove(version = 2017.1)
+  default boolean needRegisterUndo() {
+    return false;
+  }
 
-  boolean isInsideUndoableCommand();
+  /**
+   * @deprecated is of no use for MPS, no reason to expose in the API.
+   */
+  @Deprecated
+  @ToRemove(version = 2017.1)
+  default boolean isInsideUndoableCommand() {
+    return false;
+  }
 
+  // tells the command is over and UndoHandler shall use whatever platform mechanism available to
+  // register undoable action
+  // FIXME why it's not a command listener, so that gets notifications about command start and command end? Won't need
+  // neither isInsideUndoableCommand and ModelAccess.isInsideCommand, not this flushCommand.
+  // TODO: remove Project parameter, add project into UndoContext passed to startCommand() method
   void flushCommand(Project p);
+
+  void startCommand(UndoContext context);
 }

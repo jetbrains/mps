@@ -4,23 +4,28 @@ package jetbrains.mps.lang.editor.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum _Layout_Constraints_Enum {
   punctuation("punctuation", "punctuation"),
   noflow("noflow", "noflow"),
   none("none", null);
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private _Layout_Constraints_Enum(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<_Layout_Constraints_Enum> getConstants() {
     List<_Layout_Constraints_Enum> list = ListSequence.fromList(new LinkedList<_Layout_Constraints_Enum>());
     ListSequence.fromList(list).addElement(_Layout_Constraints_Enum.punctuation);
@@ -28,11 +33,9 @@ public enum _Layout_Constraints_Enum {
     ListSequence.fromList(list).addElement(_Layout_Constraints_Enum.none);
     return list;
   }
-
   public static _Layout_Constraints_Enum getDefault() {
     return _Layout_Constraints_Enum.none;
   }
-
   public static _Layout_Constraints_Enum parseValue(String value) {
     if (value == null) {
       return _Layout_Constraints_Enum.getDefault();
@@ -47,16 +50,5 @@ public enum _Layout_Constraints_Enum {
       return _Layout_Constraints_Enum.none;
     }
     return _Layout_Constraints_Enum.getDefault();
-  }
-
-  private String myValue;
-
-  _Layout_Constraints_Enum(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

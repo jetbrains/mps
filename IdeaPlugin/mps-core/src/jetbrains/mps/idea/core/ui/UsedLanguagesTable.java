@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,11 @@ package jetbrains.mps.idea.core.ui;
 import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.facet.MPSConfigurationBean;
 import jetbrains.mps.idea.core.icons.MPSIcons;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -29,6 +31,11 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Changing this settings does not affect anything
+ * */
+@Deprecated
+@ToRemove(version = 3.4)
 public class UsedLanguagesTable extends MpsElementsTable<SModuleReference> implements SModuleConfigurationTab {
   public static Comparator<SModuleReference> MODULE_REFERENCE_COMPARATOR = new SModuleReferenceComparator();
 
@@ -36,9 +43,14 @@ public class UsedLanguagesTable extends MpsElementsTable<SModuleReference> imple
   private static List<SModuleReference> getUsedLanguages(MPSConfigurationBean data) {
     List<SModuleReference> usedLanguages = new ArrayList<SModuleReference>();
     for (String moduleReference : data.getUsedLanguages()) {
-      usedLanguages.add(jetbrains.mps.project.structure.modules.ModuleReference.fromString(moduleReference));
+      usedLanguages.add(PersistenceFacade.getInstance().createModuleReference(moduleReference));
     }
     return usedLanguages;
+  }
+
+  public UsedLanguagesTable() {
+    // languages cannot be added/removed to/from module, they're derived from models
+    super(false);
   }
 
   public void reset(MPSConfigurationBean data) {

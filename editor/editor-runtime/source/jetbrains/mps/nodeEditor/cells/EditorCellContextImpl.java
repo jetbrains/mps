@@ -16,10 +16,12 @@
 package jetbrains.mps.nodeEditor.cells;
 
 import jetbrains.mps.openapi.editor.cells.EditorCellContext;
+import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -27,10 +29,12 @@ import java.util.Set;
  * Date: 4/24/13
  */
 public class EditorCellContextImpl implements EditorCellContext {
-  private Set<String> myHints = new HashSet<String>();
+  private SNodeLocation myNodeLocation;
+  private final Set<String> myHints = new HashSet<>();
 
   public EditorCellContextImpl(EditorCellContext parentContext) {
     myHints.addAll(parentContext.getHints());
+    myNodeLocation = parentContext.getNodeLocation();
   }
 
   @Override
@@ -43,6 +47,11 @@ public class EditorCellContextImpl implements EditorCellContext {
     return myHints.contains(hint);
   }
 
+  @Override
+  public SNodeLocation getNodeLocation() {
+    return myNodeLocation;
+  }
+
   public void addHints(String... hints) {
     for (String hint : hints) {
       myHints.add(hint);
@@ -53,5 +62,26 @@ public class EditorCellContextImpl implements EditorCellContext {
     for (String hint : hints) {
       myHints.remove(hint);
     }
+  }
+
+  public void setNodeLocation(SNodeLocation location) {
+    myNodeLocation = location;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    EditorCellContextImpl that = (EditorCellContextImpl) o;
+    return Objects.equals(myHints, that.myHints) && Objects.equals(myNodeLocation, that.myNodeLocation);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(myHints, myNodeLocation);
   }
 }

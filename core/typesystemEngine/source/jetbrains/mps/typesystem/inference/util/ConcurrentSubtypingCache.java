@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,12 @@ package jetbrains.mps.typesystem.inference.util;
 import jetbrains.mps.lang.pattern.ConceptMatchingPattern;
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import jetbrains.mps.lang.pattern.IMatchingPattern;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -39,7 +42,7 @@ public class ConcurrentSubtypingCache implements SubtypingCache {
   private ConcurrentHashMap<CacheNodeHandler, ConcurrentMap<Class, Pair<SNode, GeneratedMatchingPattern>>> myCoerceToPatternsCacheWeak
     = new ConcurrentHashMap<CacheNodeHandler, ConcurrentMap<Class, Pair<SNode, GeneratedMatchingPattern>>>();
 
-  private static final jetbrains.mps.smodel.SNode NULL = new jetbrains.mps.smodel.SNode("null");
+  private static final jetbrains.mps.smodel.SNode NULL = new jetbrains.mps.smodel.SNode(SNodeUtil.concept_BaseConcept);
 
   private SNode preprocessPutNode(SNode node) {
     return node == null ? NULL : node;
@@ -109,7 +112,8 @@ public class ConcurrentSubtypingCache implements SubtypingCache {
     return null;
   }
 
-  private Pair<Boolean, SNode> getCoerced(SNode subtype, String conceptFQName, boolean isWeak) {
+  private Pair<Boolean, SNode> getCoerced(SNode subtype, SAbstractConcept concept, boolean isWeak) {
+    String conceptFQName = concept.getQualifiedName();
     final CacheNodeHandler subtypeHandler = new CacheNodeHandler(subtype);
 
     // lookup in the corresponding cache
@@ -118,7 +122,7 @@ public class ConcurrentSubtypingCache implements SubtypingCache {
       SNode value = map.get(conceptFQName);
       if (value != null) {
         SNode result = postprocessGetNode(value);
-        if (result != null && jetbrains.mps.util.SNodeOperations.isDisposed(result)) {
+        if (result != null && !org.jetbrains.mps.openapi.model.SNodeUtil.isAccessible(result, MPSModuleRepository.getInstance())) {
           map.remove(conceptFQName);
         } else {
           return new Pair<Boolean, SNode>(true, result);
@@ -149,7 +153,7 @@ public class ConcurrentSubtypingCache implements SubtypingCache {
     if (map != null && map.containsKey(c)) {
       Pair<SNode, GeneratedMatchingPattern> patternPair = map.get(c);
       SNode resultNode = patternPair.o1;
-      if (resultNode != null && jetbrains.mps.util.SNodeOperations.isDisposed(resultNode)) {
+      if (resultNode != null && !org.jetbrains.mps.openapi.model.SNodeUtil.isAccessible(resultNode, MPSModuleRepository.getInstance())) {
         map.remove(c);
         return null;
       } else {
@@ -160,7 +164,7 @@ public class ConcurrentSubtypingCache implements SubtypingCache {
     return null;
   }
 
-  private void addCacheEntry(SNode subtype, String conceptFQName, SNode result, boolean isWeak) {
+  private void addCacheEntry(SNode subtype, SAbstractConcept concept, SNode result, boolean isWeak) {
     ConcurrentHashMap<CacheNodeHandler, ConcurrentMap<String, SNode>> cache = isWeak ? myCoerceToConceptsCacheWeak : myCoerceToConceptsCache;
 
     CacheNodeHandler subtypeHandler = new CacheNodeHandler(subtype);
@@ -174,7 +178,7 @@ public class ConcurrentSubtypingCache implements SubtypingCache {
     }
 
     if (map != null) {
-      map.put(conceptFQName, preprocessPutNode(result));
+      map.put(concept.getQualifiedName(), preprocessPutNode(result));
     }
   }
 
@@ -199,7 +203,7 @@ public class ConcurrentSubtypingCache implements SubtypingCache {
   @Override
   public void cacheCoerce(SNode subtype, IMatchingPattern pattern, SNode result, boolean isWeak) {
     if (pattern instanceof ConceptMatchingPattern) {
-      addCacheEntry(subtype, pattern.getConceptFQName(), result, isWeak);
+      addCacheEntry(subtype, pattern.getConcept(), result, isWeak);
       return;
     }
     if (pattern instanceof GeneratedMatchingPattern) {
@@ -213,7 +217,7 @@ public class ConcurrentSubtypingCache implements SubtypingCache {
   @Nullable
   public Pair<Boolean, SNode> getCoerced(SNode subtype, IMatchingPattern pattern, boolean isWeak) {
     if (pattern instanceof ConceptMatchingPattern) {
-      return getCoerced(subtype, pattern.getConceptFQName(), isWeak);
+      return getCoerced(subtype, pattern.getConcept(), isWeak);
     }
     if (pattern instanceof GeneratedMatchingPattern) {
       if (!((GeneratedMatchingPattern) pattern).hasAntiquotations()) {

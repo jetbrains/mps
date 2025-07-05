@@ -15,17 +15,16 @@
  */
 package jetbrains.mps.lang.typesystem.runtime;
 
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactoryByName;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public abstract class AbstractSubtypingRule_Runtime implements ISubtypingRule_Runtime {
-
   @Override
   public List<SNode> getSubOrSuperTypes(SNode type, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode subOrSuperType = getSubOrSuperType(type, typeCheckingContext, status);

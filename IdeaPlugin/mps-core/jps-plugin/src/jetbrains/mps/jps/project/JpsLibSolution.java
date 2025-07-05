@@ -1,7 +1,6 @@
 package jetbrains.mps.jps.project;
 
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
-import jetbrains.mps.idea.core.make.MPSMakeConstants;
 import jetbrains.mps.jps.build.MPSCompilerUtil;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
@@ -61,7 +60,6 @@ public class JpsLibSolution extends Solution {
     }
 
     for (JpsLibraryRoot libRoot: myLibrary.getRoots(JpsOrderRootType.COMPILED)) {
-
       ModelRoot modelRoot = factory.create();
       if (!(modelRoot instanceof JavaClassStubsModelRoot)) {
         // log error
@@ -96,4 +94,7 @@ public class JpsLibSolution extends Solution {
     return path;
   }
 
+  public String toString() {
+    return getModuleName() + " [ jps_lib_solution]";
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +17,10 @@ package jetbrains.mps.ide.findusages.view.treeholder.treeview.path;
 
 import jetbrains.mps.ide.findusages.model.CategoryKind;
 import jetbrains.mps.ide.findusages.model.SearchResult;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.SModelRepository;
 import jetbrains.mps.util.Pair;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -35,6 +34,9 @@ import java.util.List;
 public class PathProvider {
   private static final Logger LOG = LogManager.getLogger(PathProvider.class);
 
+  // FIXME bloody sh!t. Ever try to put anything into SearchResult this code does not expect, and no chance to see it. Besides, there's
+  // FIXME              symmetric code in DataTree.createPath() which needs to be fixed to get the stuff working. Great, yo!
+  // FIXME This code cries for refactoring. Why on earth does it resolve model references?
   public static List<PathItem> getPathForSearchResult(SearchResult<?> result) {
     List<PathItem> res = new ArrayList<PathItem>();
     Object o = result.getPathObject();
@@ -63,15 +65,20 @@ public class PathProvider {
     if (o instanceof SModelReference) {
       SModelReference model = (SModelReference) o;
       res.add(new PathItem(PathItemRole.ROLE_MODEL, model));
-      SModuleReference moduleReference = model.getModuleReference();
-      if (moduleReference != null) {
-        o = MPSModuleRepository.getInstance().getModule(moduleReference.getModuleId());
-      }
+      o = model.getModuleReference();
     }
 
     if (o instanceof SModule) {
       SModule module = (SModule) o;
       res.add(new PathItem(PathItemRole.ROLE_MODULE, module));
+    }
+
+    if (o instanceof SModuleReference) {
+      res.add(new PathItem(PathItemRole.ROLE_MODULE, o));
+    }
+
+    if (o instanceof SLanguage) {
+      res.add(new PathItem(PathItemRole.ROLE_LANGUAGE, o));
     }
 
     List<Pair<CategoryKind, String>> reversedCategories = new ArrayList<Pair<CategoryKind, String>>(result.getCategories());

@@ -32,19 +32,24 @@ import java.util.List;
 
 /**
  * evgeny, 2/6/13
+ * @deprecated Runtime class for deprecated cell menu part. Transformation Menu should be used instead of that part.
  */
+
+@Deprecated
 public class AbstractCellMenuPart_ApplySideTransforms implements SubstituteInfoPartExt {
 
-  private final CellSide cellSide;
+  private final CellSide myCellSide;
+  private final String myTag;
 
-  public AbstractCellMenuPart_ApplySideTransforms(CellSide cellSide) {
-    this.cellSide = cellSide;
+  public AbstractCellMenuPart_ApplySideTransforms(CellSide cellSide, String tag) {
+    myCellSide = cellSide;
+    myTag = tag;
   }
 
   @Override
   public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
     SNode node = (SNode) cellContext.get(CellContext.EDITED_NODE);
-    List<SubstituteAction> list = ModelActions.createSideTransformHintSubstituteActions(node, cellSide, null, editorContext.getOperationContext());
+    List<SubstituteAction> list = ModelActions.createSideTransformHintSubstituteActions(node, myCellSide, myTag, editorContext.getOperationContext());
 
     List<SubstituteAction> wrapperList = new ArrayList<SubstituteAction>(list.size());
     for (final SubstituteAction action : list) {

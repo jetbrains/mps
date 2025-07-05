@@ -5,122 +5,88 @@ package jetbrains.mps.lang.smodel.generator.smodelAdapter;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import java.util.Collections;
 import java.util.ArrayList;
 import org.jetbrains.mps.util.Condition;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
-import jetbrains.mps.util.SNodeOperations;
+import org.jetbrains.mps.util.InstanceOfCondition;
 import jetbrains.mps.util.ConditionalIterable;
-import jetbrains.mps.smodel.IScope;
-import java.util.Collections;
-import jetbrains.mps.kernel.model.SModelUtil;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.smodel.SModelInternal;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.project.GlobalScope;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactoryByName;
 import jetbrains.mps.smodel.SModelUtil_new;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.project.structure.ProjectStructureModule;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.project.structure.ProjectStructureModule;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
-public class SModelOperations {
+public final class SModelOperations {
   public SModelOperations() {
   }
-
-  public static List<SNode> getRoots(SModel model, final String conceptFqName) {
+  public static List<SNode> roots(SModel model, final SAbstractConcept concept) {
     if (model == null) {
-      return new ArrayList<SNode>();
-    }
-    if (conceptFqName == null) {
-      ArrayList<SNode> result = new ArrayList<SNode>();
-      for (SNode root : model.getRootNodes()) {
-        result.add(root);
-      }
-      return result;
+      return Collections.emptyList();
     }
     List<SNode> list = new ArrayList<SNode>();
-    Condition<SNode> cond = new Condition<SNode>() {
-      @Override
-      public boolean met(SNode node) {
-        return SNodeUtil.isInstanceOf(node, SNodeOperations.getConcept(conceptFqName));
-      }
-    };
-    Iterable<SNode> iterable = new ConditionalIterable<SNode>(model.getRootNodes(), cond);
+    Iterable<SNode> iterable = model.getRootNodes();
+    if (concept != null) {
+      Condition<SNode> cond = new InstanceOfCondition(concept).tolerateNulls();
+      iterable = new ConditionalIterable<SNode>(iterable, cond);
+    }
     for (SNode node : iterable) {
       list.add(node);
     }
     return list;
   }
-
-  public static List<SNode> getRootsIncludingImported(SModel model, IScope scope, String conceptFqName) {
+  @NotNull
+  public static List<SNode> rootsIncludingImported(@Nullable SModel model, @Nullable SAbstractConcept concept) {
     if (model == null) {
       return Collections.emptyList();
     }
-    if (conceptFqName == null) {
-      return allNodesIncludingImported(model, scope, true, null);
-    }
-    SNode concept = SModelUtil.findConceptDeclaration(conceptFqName, scope);
-    if (concept == null) {
-      return Collections.emptyList();
-    }
-
-    return allNodesIncludingImported(model, scope, true, concept);
+    return allNodesIncludingImported(model, true, concept);
   }
-
-  public static List<SNode> getNodesIncludingImported(SModel model, IScope scope, String conceptFqName) {
+  @NotNull
+  public static List<SNode> nodesIncludingImported(@Nullable SModel model, @Nullable SAbstractConcept concept) {
     if (model == null) {
       return Collections.emptyList();
     }
-    if (conceptFqName == null) {
-      return allNodesIncludingImported(model, scope, false, null);
-    }
-    final SNode concept = SModelUtil.findConceptDeclaration(conceptFqName, scope);
-    if (concept == null) {
-      return Collections.emptyList();
-    }
-    return allNodesIncludingImported(model, scope, false, concept);
+    return allNodesIncludingImported(model, false, concept);
   }
-
-  private static List<SNode> allNodesIncludingImported(SModel sModel, IScope scope, boolean roots, @Nullable final SNode concept) {
+  private static List<SNode> allNodesIncludingImported(SModel sModel, boolean roots, @Nullable SAbstractConcept concept) {
     List<SModel> modelsList = new ArrayList<SModel>();
     modelsList.add(sModel);
-    List<SModel> modelDescriptors = jetbrains.mps.smodel.SModelOperations.allImportedModels(sModel, scope);
+    List<SModel> modelDescriptors = jetbrains.mps.smodel.SModelOperations.allImportedModels(sModel);
     for (SModel descriptor : modelDescriptors) {
       modelsList.add(descriptor);
     }
     List<SNode> resultNodes = new ArrayList<SNode>();
+    final Condition<SNode> instanceCondition = (concept == null ? null : new InstanceOfCondition(concept));
     for (SModel aModel : modelsList) {
-      Iterable<SNode> nodes = (roots ?
-        aModel.getRootNodes() :
-        SNodeUtil.getDescendants(aModel)
-      );
-      if (concept == null) {
+      if (concept == null || roots) {
+        ConditionalIterable<SNode> nodes = new ConditionalIterable<SNode>((roots ? aModel.getRootNodes() : SNodeUtil.getDescendants(aModel)), instanceCondition);
         resultNodes.addAll(IterableUtil.asList(nodes));
-      } else if (roots) {
-        ListSequence.fromList(resultNodes).addSequence(Sequence.fromIterable(nodes).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.isInstanceOf(((SNode) it), NameUtil.nodeFQName(concept));
-          }
-        }));
       } else {
-        resultNodes.addAll(IterableUtil.asList(((SModelInternal) aModel).getFastNodeFinder().getNodes(NameUtil.nodeFQName(concept), true)));
+        resultNodes.addAll(jetbrains.mps.smodel.SModelOperations.getNodes(aModel, concept));
       }
     }
     return resultNodes;
   }
-
-  public static List<SNode> getNodes(SModel model, final String conceptFqName) {
+  public static List<SNode> nodes(SModel model, final SAbstractConcept concept) {
     if (model == null) {
       return new ArrayList<SNode>();
     }
-    if (conceptFqName != null) {
-      return ((SModelInternal) model).getFastNodeFinder().getNodes(conceptFqName, true);
+    if (concept != null) {
+      return jetbrains.mps.smodel.SModelOperations.getNodes(model, concept);
     }
     List<SNode> result = new ArrayList<SNode>();
     for (SNode node : SNodeUtil.getDescendants(model)) {
@@ -128,88 +94,65 @@ public class SModelOperations {
     }
     return result;
   }
-
-  public static jetbrains.mps.smodel.SNode createNewNode(SModel model, String conceptFqName) {
-    return createNewNode(model, null, conceptFqName);
+  @Deprecated
+  @ToRemove(version = 3.4)
+  public static SNode createNewNode(SModel model, SNodeId id, String conceptFqName) {
+    return createNewNode(model, id, MetaAdapterFactoryByName.getConcept(conceptFqName));
   }
-
-  public static jetbrains.mps.smodel.SNode createNewNode(SModel model, SNodeId id, String conceptFqName) {
-    if (conceptFqName == null) {
+  public static SNode createNewNode(SModel model, SNodeId id, SAbstractConcept concept) {
+    if (concept == null) {
       return null;
     }
 
-    SNode nodeConcept = SModelUtil.findConceptDeclaration(conceptFqName, GlobalScope.getInstance());
-    if (jetbrains.mps.smodel.SNodeUtil.isInstanceOfInterfaceConceptDeclaration(nodeConcept)) {
-      jetbrains.mps.smodel.SNode node = new jetbrains.mps.smodel.SNode(conceptFqName);
-      if (id != null) {
-        ((jetbrains.mps.smodel.SNode) node).setId(id);
-      }
-      return node;
-    }
-    SNode result = SModelUtil_new.instantiateConceptDeclaration(conceptFqName, model, id, GlobalScope.getInstance(), false);
+    SNode result = SModelUtil_new.instantiateConceptDeclaration(concept, model, id, false);
     if (result == null) {
       return null;
     }
-    BehaviorReflection.initNode(result);
-    return ((jetbrains.mps.smodel.SNode) result);
-  }
 
-  @Deprecated
-  public static jetbrains.mps.smodel.SNode createNewNode(SModel model, String conceptFqName, SNode prototypeNode) {
-    return createNewNode(model, conceptFqName);
+    BHReflection.initNode(result);
+    return result;
   }
-
-  public static jetbrains.mps.smodel.SNode createNewRootNode(SModel model, String conceptFqName, SNode prototypeNode) {
-    jetbrains.mps.smodel.SNode newNode = createNewNode(model, conceptFqName);
+  public static SNode createNewRootNode(SModel model, SConcept concept) {
+    SNode newNode = createNewNode(model, null, concept);
     model.addRootNode(newNode);
     return newNode;
-
   }
-
   public static SNode addRootNode(SModel model, SNode node) {
     if (model != null && node != null) {
       model.addRootNode(node);
     }
     return node;
   }
-
   public static String getModelName(SModel model) {
     if (model == null) {
       return null;
     }
-    return SNodeOperations.getModelLongName(model);
+    return model.getName().getLongName();
   }
-
   public static SNode getModuleStub(SModel model) {
     final SModule module = model.getModule();
+    SRepository repo = model.getRepository();
+    if (repo == null || ProjectStructureModule.getInstance(repo) == null) {
+      return null;
+    }
     if (module instanceof Generator) {
       Language lang = ((Generator) module).getSourceLanguage();
-      SModel m = ProjectStructureModule.getInstance().getModelByModule(lang);
+      SModel m = ProjectStructureModule.getInstance(repo).getModelByModule(lang);
       if (m == null) {
         return null;
       }
-      SNode l = ListSequence.fromList(SModelOperations.getRoots(m, "jetbrains.mps.lang.project.structure.Language")).first();
-      return (l == null ?
-        null :
-        ListSequence.fromList(SLinkOperations.getTargets(l, "generator", true)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return eq_kkj9n5_a0a0a0a0a0a4a1a21(SPropertyOperations.getString(it, "uuid"), module.getModuleReference().getModuleId().toString());
-          }
-        })
-      );
+      SNode l = ListSequence.fromList(SModelOperations.roots(m, MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language"))).first();
+      return (l == null ? null : ListSequence.fromList(SLinkOperations.getChildren(l, MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, 0x5869770da61dfe37L, "generator"))).findFirst(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return eq_kkj9n5_a0a0a0a0a0a4a3a11(SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe22L, "uuid")), module.getModuleReference().getModuleId().toString());
+        }
+      }));
     } else {
-      SModel m = ProjectStructureModule.getInstance().getModelByModule(module);
-      return (m == null ?
-        null :
-        ListSequence.fromList(SModelOperations.getRoots(m, "jetbrains.mps.lang.project.structure.Module")).first()
-      );
+      SModel m = ProjectStructureModule.getInstance(repo).getModelByModule(module);
+      return (m == null ? null : ListSequence.fromList(SModelOperations.roots(m, MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, "jetbrains.mps.lang.project.structure.Module"))).first());
     }
   }
-
-  private static boolean eq_kkj9n5_a0a0a0a0a0a4a1a21(Object a, Object b) {
-    return (a != null ?
-      a.equals(b) :
-      a == b
-    );
+  private static boolean eq_kkj9n5_a0a0a0a0a0a4a3a11(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,10 @@
  */
 package jetbrains.mps.util;
 
-import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -45,12 +46,15 @@ public final class JavaNameUtil {
   private JavaNameUtil() {
   }
 
+  /**
+   * Beware, for nested classes this method yields incorrect result (consider Classifier.getFqName() instead).
+   */
   public static String fqClassName(@NotNull SModel model, @NotNull String shortClassName) {
     String packageName = packageName(model);
-    if (packageName == null || packageName.length() == 0) {
+    if (packageName.isEmpty()) {
       return shortClassName;
     }
-    return packageName + "." + shortClassName;
+    return packageName + '.' + shortClassName;
   }
 
   public static String fqClassName(@NotNull SNode node, @NotNull String shortClassName) {
@@ -58,18 +62,17 @@ public final class JavaNameUtil {
   }
 
   public static String packageNameForModelUID(@NotNull SModelReference modelReference) {
-    String packageName = modelReference.getModelName();
-    int atIndex = packageName.indexOf('@');
-    return atIndex == -1 ? packageName : packageName.substring(0, atIndex);
+    return modelReference.getName().getLongName();
   }
 
   public static String packageName(@NotNull SModel model) {
-    return packageNameForModelUID(model.getReference());
+    return model.getName().getLongName();
   }
 
+  @Contract(value = "null -> null; !null -> !null")
   public static String packageName(@Nullable String fqName) {
     if (fqName == null) {
-      return fqName;
+      return null;
     }
     int offset = fqName.lastIndexOf('.');
     if (offset < 0) {
@@ -78,9 +81,10 @@ public final class JavaNameUtil {
     return fqName.substring(0, offset);
   }
 
+  @Contract(value = "null -> null; !null -> !null")
   public static String shortName(@Nullable String fqName) {
     if (fqName == null) {
-      return fqName;
+      return null;
     }
     int offset = fqName.lastIndexOf('.');
     if (offset < 0) {
@@ -89,32 +93,25 @@ public final class JavaNameUtil {
     return fqName.substring(offset + 1);
   }
 
-  public static String className(@Nullable SNode conceptDeclaration) {
-    return NameUtil.nodeFQName(conceptDeclaration);
-  }
-
   public static String nestedClassName(String packageName, String fqClassName) {
-    return fqClassName.substring(packageName.length() + 1);
+    return packageName.isEmpty() ? fqClassName : fqClassName.substring(packageName.length() + 1);
   }
 
   public static boolean isJavaIdentifier(@NotNull String text) {
-    int len = text.length();
-    if (len == 0) return false;
-
-    if (!isJavaIdentifierStart(text.charAt(0))) return false;
-
-    for (int i = 1; i < len; i++) {
-      if (!isJavaIdentifierPart(text.charAt(i))) return false;
+    if (text.isEmpty()) {
+      return false;
     }
 
-    return !(JAVA_KEYWORDS.contains(text));
-  }
+    if (!Character.isJavaIdentifierStart(text.charAt(0))) {
+      return false;
+    }
 
-  public static boolean isJavaIdentifierStart(char c) {
-    return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || Character.isJavaIdentifierStart(c);
-  }
+    for (int i = 1; i < text.length(); i++) {
+      if (!Character.isJavaIdentifierPart(text.charAt(i))) {
+        return false;
+      }
+    }
 
-  public static boolean isJavaIdentifierPart(char c) {
-    return c >= '0' && c <= '9' || isJavaIdentifierStart(c);
+    return !JAVA_KEYWORDS.contains(text);
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,39 +15,65 @@
  */
 package jetbrains.mps.smodel.runtime.base;
 
-import jetbrains.mps.smodel.IScope;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SNodeUtil;
+import jetbrains.mps.smodel.adapter.ids.SPropertyId;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.adapter.structure.concept.SAbstractConceptAdapter;
 import jetbrains.mps.smodel.language.ConceptRegistry;
+import jetbrains.mps.smodel.runtime.ConceptDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import jetbrains.mps.smodel.runtime.InheritanceIterable;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDispatchable;
-import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.smodel.runtime.PropertyDescriptor;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDispatchable {
-  private final String name;
+  private final SProperty myProperty;
   private final ConstraintsDescriptor container;
 
   private final PropertyConstraintsDescriptor getterDescriptor;
   private final PropertyConstraintsDescriptor setterDescriptor;
   private final PropertyConstraintsDescriptor validatorDescriptor;
 
-  public BasePropertyConstraintsDescriptor(String propertyName, ConstraintsDescriptor container) {
-    this.name = propertyName;
+  @Deprecated
+  @ToRemove(version = 3.4)
+  public BasePropertyConstraintsDescriptor(SPropertyId property, ConstraintsDescriptor container) {
+    this(MetaAdapterFactory.getProperty(property, getNameDeprecated(property, container)), container);
+  }
+
+  private static String getNameDeprecated(SPropertyId property, ConstraintsDescriptor container) {
+    String name = "<UnknownPropName_BasePropertyConstraintsDescriptor>";
+    ConceptDescriptor cd = ((SAbstractConceptAdapter) container.getConcept()).getConceptDescriptor();
+    if (cd == null) {
+      return name;
+    }
+    PropertyDescriptor prop = cd.getPropertyDescriptor(property);
+    if (prop == null) {
+      return name;
+    }
+    return prop.getName();
+  }
+
+  public BasePropertyConstraintsDescriptor(SProperty property, ConstraintsDescriptor container) {
+    this.myProperty = property;
     this.container = container;
 
-    if (!isBootstrapProperty(container.getConceptFqName(), propertyName)) {
+    if (!isBootstrapProperty(container.getConcept(), property)) {
       if (hasOwnGetter()) {
         getterDescriptor = this;
       } else {
-        getterDescriptor = getSomethingUsingInheritance(getContainer().getConceptFqName(), getName(), GETTER_INHERITANCE_PARAMETERS);
+        getterDescriptor = getSomethingUsingInheritance(getContainer().getConcept(), property, GETTER_INHERITANCE_PARAMETERS);
       }
 
       if (hasOwnSetter()) {
         setterDescriptor = this;
       } else {
-        setterDescriptor = getSomethingUsingInheritance(getContainer().getConceptFqName(), getName(), SETTER_INHERITANCE_PARAMETERS);
+        setterDescriptor = getSomethingUsingInheritance(getContainer().getConcept(), property, SETTER_INHERITANCE_PARAMETERS);
       }
 
     } else {
@@ -58,36 +84,32 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDis
     if (hasOwnValidator()) {
       validatorDescriptor = this;
     } else {
-      validatorDescriptor = getSomethingUsingInheritance(getContainer().getConceptFqName(), getName(), VALIDATOR_INHERITANCE_PARAMETERS);
+      validatorDescriptor = getSomethingUsingInheritance(getContainer().getConcept(), property, VALIDATOR_INHERITANCE_PARAMETERS);
     }
   }
 
-  private static boolean isBootstrapProperty(String fqName, String propertyName) {
-    String namespace = NameUtil.namespaceFromConceptFQName(fqName);
-
-    // 'bootstrap' properties
-    if (namespace.equals("jetbrains.mps.lang.structure") && propertyName.equals(SNodeUtil.property_INamedConcept_name)
-      && !fqName.equals("jetbrains.mps.lang.structure.structure.AnnotationLinkDeclaration")) {
+  @ToRemove(version = 3.5)
+  private static boolean isBootstrapProperty(SAbstractConcept concept, SProperty property) {
+    if (property.equals(SNodeUtil.property_INamedConcept_name) && concept.equals(SNodeUtil.concept_INamedConcept)) {
       return true;
     }
-
-    if (fqName.equals("jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable")) {
+    if (property.getOwner().equals(SNodeUtil.concept_RuntimeTypeVariable)) {
       // helgins ku-ku!
       return true;
     }
-
     return false;
   }
 
   @Nullable
-  private static PropertyConstraintsDescriptor getSomethingUsingInheritance(String conceptFqName, String propertyName, InheritanceCalculateParameters parameters) {
-    for (String parent : ConceptRegistry.getInstance().getConceptDescriptor(conceptFqName).getParentsNames()) {
-      if (!ConceptRegistry.getInstance().getConceptDescriptor(parent).hasProperty(propertyName)) {
+  private static PropertyConstraintsDescriptor getSomethingUsingInheritance(SAbstractConcept concept, SProperty property,
+      InheritanceCalculateParameters parameters) {
+    for (SAbstractConcept parent : new InheritanceIterable(concept)) {
+      if (!((SAbstractConceptAdapter) parent).hasProperty(property)) {
         continue;
       }
 
       ConstraintsDescriptor parentDescriptor = ConceptRegistry.getInstance().getConstraintsDescriptor(parent);
-      PropertyConstraintsDescriptor parentPropertyDescriptor = parentDescriptor.getProperty(propertyName);
+      PropertyConstraintsDescriptor parentPropertyDescriptor = parentDescriptor.getProperty(property);
 
       PropertyConstraintsDescriptor parentCalculated;
 
@@ -97,7 +119,7 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDis
         if (parameters.hasOwn((PropertyConstraintsDispatchable) parentPropertyDescriptor)) {
           parentCalculated = parentPropertyDescriptor;
         } else {
-          parentCalculated = getSomethingUsingInheritance(parent, propertyName, parameters);
+          parentCalculated = getSomethingUsingInheritance(parent, property, parameters);
         }
       } else {
         parentCalculated = parentPropertyDescriptor;
@@ -139,8 +161,8 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDis
   }
 
   @Override
-  public String getName() {
-    return name;
+  public SProperty getSProperty() {
+    return myProperty;
   }
 
   @Override
@@ -148,31 +170,40 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDis
     return container;
   }
 
-  @Override
-  public Object getValue(SNode node, IScope scope) {
-    return getterDescriptor != null ? getterDescriptor.getValue(node, scope) : node.getProperty(getName());
-  }
 
   @Override
-  public void setValue(SNode node, String value, IScope scope) {
-    if (setterDescriptor != null) {
-      setterDescriptor.setValue(node, value, scope);
+  public Object getValue(SNode node) {
+    if (!isGetterDefault()) {
+      return getterDescriptor.getValue(node);
     } else {
-      node.setProperty(getName(), value);
+      return node.getProperty(myProperty);
     }
   }
 
   @Override
-  public boolean validateValue(SNode node, String value, IScope scope) {
-    return validatorDescriptor == null || validatorDescriptor.validateValue(node, value, scope);
+  public void setValue(SNode node, String value) {
+    if (!isSetterDefault()) {
+      setterDescriptor.setValue(node, value);
+    } else {
+      node.setProperty(myProperty, value);
+    }
+  }
+
+  @Override
+  public boolean validateValue(SNode node, String value) {
+    if (!isValidatorDefault()) {
+      return validatorDescriptor.validateValue(node, value);
+    } else {
+      return true;
+    }
   }
 
   @Override
   public boolean isReadOnly() {
-    return !(isSetterDefault() && isGetterDefault());
+    return isSetterDefault() && !isGetterDefault();
   }
 
-  private static interface InheritanceCalculateParameters {
+  private interface InheritanceCalculateParameters {
     PropertyConstraintsDescriptor getParentCalculatedDescriptor(BasePropertyConstraintsDescriptor parentDescriptor);
 
     boolean hasOwn(PropertyConstraintsDispatchable parentDescriptor);

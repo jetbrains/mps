@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,25 +15,26 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.MPSCore;
+import jetbrains.mps.extapi.model.SModelDescriptorStub;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.DevKit;
-import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.Deptype;
-import jetbrains.mps.project.dependency.modules.LanguageDependenciesManager;
-import jetbrains.mps.smodel.SModel.ImportElement;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.project.dependency.ModelDependenciesManager;
+import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.TestsFacet;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
-import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -44,7 +45,52 @@ import java.util.List;
 import java.util.Set;
 
 public class SModelOperations {
-  private static final Logger LOG = LogManager.getLogger(SModelOperations.class);
+
+  /**
+   * Tell output folder of a model based on its kind and {@linkplain jetbrains.mps.project.facets.GenerationTargetFacet code generation facets}
+   * active for model's module.
+   *
+   * PROVISIONAL CODE. Needed for transition from cumbersome {@link jetbrains.mps.generator.fileGenerator.FileGenerationUtil} to facet-backed output
+   * locations. Doesn't support facets other than {@link JavaModuleFacet} and {@link TestsFacet}
+   *
+   * @return {@code null} if model is not capable to produce output for a model (e.g. deployed/packaged module)
+   * @see jetbrains.mps.project.facets.JavaModuleFacet
+   * @see jetbrains.mps.project.facets.TestsFacet
+   */
+  @Nullable
+  public static IFile getOutputLocation(@NotNull SModel model) {
+    assert model.getModule() != null;
+    if (SModelStereotype.isTestModel(model)) {
+      TestsFacet facet = model.getModule().getFacet(TestsFacet.class);
+      if (facet != null) {
+        return facet.getOutputLocation(model);
+      }
+      // fall-through
+    }
+    JavaModuleFacet jmf = model.getModule().getFacet(JavaModuleFacet.class);
+    return jmf == null ? null : jmf.getOutputLocation(model);
+  }
+
+  /**
+   * Pair method to {@link #getOutputLocation(SModel)}, responsible for
+   * {@linkplain jetbrains.mps.project.facets.GenerationTargetFacet#getOutputCacheLocation(SModel) model cache file location}.
+   *
+   * PROVISIONAL CODE. Same considerations as for {@link #getOutputLocation(SModel)} apply.
+   */
+  @Nullable
+  public static IFile getOutputCacheLocation(@NotNull SModel model) {
+    assert model.getModule() != null;
+    if (SModelStereotype.isTestModel(model)) {
+      TestsFacet facet = model.getModule().getFacet(TestsFacet.class);
+      if (facet != null) {
+        return facet.getOutputCacheLocation(model);
+      }
+      // fall-through
+    }
+    JavaModuleFacet jmf = model.getModule().getFacet(JavaModuleFacet.class);
+    return jmf == null ? null : jmf.getOutputCacheLocation(model);
+
+  }
 
   @Nullable
   public static SNode getRootByName(SModel model, @NotNull String name) {
@@ -54,413 +100,143 @@ public class SModelOperations {
     return null;
   }
 
+  /**
+   * Plain code (i.e. BaseLanguage and SModel) counterpart for model.nodes(Concept) (i.e. from smodel language) which is translated into
+   * {@link jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations#nodes(SModel, SAbstractConcept)}
+   * <p/>
+   * Primary purpose of this method is to prevent using of FastNodeFinderManager from BL code.
+   * @param model where to look for concept instances, tolerate <code>null</code>
+   * @param concept concept (with sub-concepts) to look up
+   * @return empty collection if model is <code>null</code> or no concept instances found.
+   */
+  public static List<SNode> getNodes(SModel model, @NotNull SAbstractConcept concept) {
+    if (model == null) {
+      return Collections.emptyList();
+    }
+    return FastNodeFinderManager.get(model).getNodes(concept, true);
+  }
+
   public static boolean isReadOnly(SModel model) {
     return model.isReadOnly();
   }
 
-  public static void validateLanguagesAndImports(SModel model, boolean respectModulesScopes, boolean firstVersion) {
-    ModelChange.assertLegalChange(model);
-
-    GlobalScope scope = GlobalScope.getInstance();
-    final SModule module = model == null ? null : model.getModule();
-    final Collection<SModule> declaredDependencies = module != null ? new GlobalModuleDependenciesManager(module).getModules(Deptype.VISIBLE) : null;
-    final Collection<Language> declaredUsedLanguages = module != null ? new GlobalModuleDependenciesManager(module).getUsedLanguages() : null;
-    Set<SModuleReference> usedLanguages = getAllImportedLanguages(model);
+  /**
+   * Populate given model with proper imports/languages according to actual model content (i.e. nodes)
+   * @param model model to populate with language/import dependencies
+   * @param updateModuleImports <code>true</code> to update imports of model's module (if any)
+   * @param firstVersion whether to use unspecified or actual model version, doesn't make sense for present MPS state (we don't keep these versions in v9), value is ignored
+   */
+  public static void validateLanguagesAndImports(@NotNull SModel model, boolean updateModuleImports, boolean firstVersion) {
+    final SModule module = model.getModule();
+    final Collection<SModule> moduleDeclaredDependencies = module != null && updateModuleImports ? new GlobalModuleDependenciesManager(module).getModules(Deptype.VISIBLE) : null;
+    Set<SLanguage> modelDeclaredUsedLanguages = getAllLanguageImports(model);
 
     Set<SModelReference> importedModels = new HashSet<SModelReference>();
-    for (SModel sm : allImportedModels(model, scope)) {
+    // XXX why allImportedModels? it gives models from used language accessories, is it what we really need here?
+    for (SModel sm : allImportedModels(model)) {
       importedModels.add(sm.getReference());
     }
 
-    for (SNode node : SNodeUtil.getDescendants(model)) {
-      Language lang = jetbrains.mps.util.SNodeOperations.getLanguage(node);
-      if (lang == null) {
-        LOG.error("Can't find language " + node.getConcept().getLanguage().getQualifiedName());
+    final ModelDependencyScanner modelScanner = new ModelDependencyScanner();
+    modelScanner.crossModelReferences(true).usedLanguages(true).walk(model);
+    for (SLanguage language : modelScanner.getUsedLanguages()) {
+      if (!modelDeclaredUsedLanguages.contains(language)) {
+        modelDeclaredUsedLanguages.add(language);
+        ((jetbrains.mps.smodel.SModelInternal) model).addLanguage(language);
+      }
+    }
+    ModelImports modelImports = new ModelImports(model);
+    for (SModelReference targetModelReference : modelScanner.getCrossModelReferences()) {
+      if (importedModels.add(targetModelReference)) {
+        if (updateModuleImports && module != null) {
+          SModel targetModelDescriptor = SModelRepository.getInstance().getModelDescriptor(targetModelReference);
+          SModule targetModule = targetModelDescriptor == null ? null : targetModelDescriptor.getModule();
+          if (targetModule != null && !moduleDeclaredDependencies.contains(targetModule)) {
+            ((AbstractModule) module).addDependency(targetModule.getModuleReference(), false); // cannot decide re-export or not here!
+          }
+        }
+        modelImports.addModelImport(targetModelReference);
+      }
+    }
+    importedModels.clear();
+  }
+
+  /**
+   * All languages visible for the model, including imported and languages they extend
+   * @deprecated 'visible' is vague, whether it's module dependencies or used languages; use SLanguage instead of Language; replace with <code>new SLanguageHierarchy(SModelOperations.getAllLanguageImports()).getExtended()</code>
+   * MPS 3.4 note: despite being deprecated for 1.5 years to date, there are uses of the method. Those in actions are likely to fade away with
+   * new generated code (RT aspects), others deserve attention of the change architect (i.e. accessory models vs language runtime).
+   */
+  @NotNull
+  @Deprecated
+  @ToRemove(version = 3.2)
+  public static List<Language> getLanguages(SModel model) {
+    ArrayList<Language> languages = new ArrayList<>();
+    SRepository repository = model.getRepository();
+    if (repository == null) {
+      // FIXME generator does #validateLanguagesAndImports for detached models, that's why I have to resort to global instance for now.
+      repository = MPSModuleRepository.getInstance();
+//      throw new IllegalArgumentException("Can't figure out modules for languages of a detached model. Context repository missing");
+    }
+    LanguageRegistry languageRegistry = LanguageRegistry.getInstance(repository);
+
+    for (SLanguage lang : new SLanguageHierarchy(languageRegistry, SModelOperations.getAllLanguageImports(model)).getExtended()) {
+      final SModuleReference sourceModuleRef = lang.getSourceModuleReference();
+      if (sourceModuleRef == null) {
         continue;
       }
-      SModuleReference ref = lang.getModuleReference();
-      if (!usedLanguages.contains(ref)) {
-        if (module != null) {
-          if (respectModulesScopes && !declaredUsedLanguages.contains(lang)) {
-            ((AbstractModule) module).addUsedLanguage(ref);
-          }
-        }
-
-        usedLanguages.add(ref);
-        ((jetbrains.mps.smodel.SModelInternal) model).addLanguage(ref);
-      }
-
-      for (SReference reference : node.getReferences()) {
-        boolean internal = model.getReference().equals(reference.getTargetSModelReference());
-        if (internal) continue;
-
-        SModelReference targetModelReference = reference.getTargetSModelReference();
-        if (targetModelReference != null && !importedModels.contains(targetModelReference)) {
-          if (respectModulesScopes && module != null) {
-            SModel targetModelDescriptor = SModelRepository.getInstance().getModelDescriptor(targetModelReference);
-            SModule targetModule = targetModelDescriptor == null ? null : targetModelDescriptor.getModule();
-            if (targetModule != null && !declaredDependencies.contains(targetModule)) {
-              ((AbstractModule) module).addDependency(targetModule.getModuleReference(), false); // cannot decide re-export or not here!
-            }
-          }
-          ((jetbrains.mps.smodel.SModelInternal) model).addModelImport(targetModelReference, firstVersion);
-          importedModels.add(targetModelReference);
-        }
+      final SModule sourceModule = sourceModuleRef.resolve(repository);
+      if (sourceModule instanceof Language) {
+        languages.add((Language) sourceModule);
       }
     }
-    importedModels.clear();
+    return languages;
   }
 
-  public static void validateLanguagesAndImports(jetbrains.mps.smodel.SModel model, boolean respectModulesScopes, boolean firstVersion) {
-    @Nullable SModelDescriptor realDescriptor = model.getModelDescriptorPure();
-    if (realDescriptor != null) {
-      ModelChange.assertLegalChange(realDescriptor);
-    }
-
-    GlobalScope scope = GlobalScope.getInstance();
-    final SModule module = realDescriptor == null ? null : realDescriptor.getModule();
-    final Collection<SModule> declaredDependencies = module != null ? new GlobalModuleDependenciesManager(module).getModules(Deptype.VISIBLE) : null;
-    final Collection<Language> declaredUsedLanguages = module != null ? new GlobalModuleDependenciesManager(module).getUsedLanguages() : null;
-    Set<SModuleReference> usedLanguages = getAllImportedLanguages(model);
-
-    Set<SModelReference> importedModels = new HashSet<SModelReference>();
-    for (SModel sm : allImportedModels(model, scope)) {
-      importedModels.add(sm.getReference());
-    }
-
-    for (SNode root : model.getRootNodes()) {
-      for (SNode node : SNodeUtil.getDescendants(root)) {
-        Language lang = jetbrains.mps.util.SNodeOperations.getLanguage(node);
-        if (lang == null) {
-          LOG.error("Can't find language " + node.getConcept().getLanguage().getQualifiedName());
-          continue;
-        }
-        SModuleReference ref = lang.getModuleReference();
-        if (!usedLanguages.contains(ref)) {
-          if (module != null) {
-            if (respectModulesScopes && !declaredUsedLanguages.contains(lang)) {
-              ((AbstractModule) module).addUsedLanguage(ref);
-            }
-          }
-
-          usedLanguages.add(ref);
-          model.addLanguage(ref);
-        }
-
-        for (SReference reference : node.getReferences()) {
-          boolean internal = model.getReference().equals(reference.getTargetSModelReference());
-          if (internal) continue;
-
-          SModelReference targetModelReference = reference.getTargetSModelReference();
-          if (targetModelReference != null && !importedModels.contains(targetModelReference)) {
-            if (respectModulesScopes && module != null) {
-              SModel targetModelDescriptor = SModelRepository.getInstance().getModelDescriptor(targetModelReference);
-              SModule targetModule = targetModelDescriptor == null ? null : targetModelDescriptor.getModule();
-              if (targetModule != null && !declaredDependencies.contains(targetModule)) {
-                ((AbstractModule) module).addDependency(targetModule.getModuleReference(), false); // cannot decide re-export or not here!
-              }
-            }
-            (model).addModelImport(targetModelReference, firstVersion);
-            importedModels.add(targetModelReference);
-          }
-        }
-      }
-    }
-    importedModels.clear();
-  }
-
-  //todo rewrite using iterators
-  public static boolean hasLanguage(SModel model, @NotNull SModuleReference ref) {
-    return getAllImportedLanguages(model).contains(ref);
-  }
-
-  //todo rewrite using iterators
+  /**
+   * Tell used languages of a model the way user specified them in model dependencies.
+   * Doesn't look at actual model content (i.e. what concept instances are there).
+   * <p>
+   * To obtain closure including extended/extending languages, use {@link jetbrains.mps.smodel.SLanguageHierarchy}
+   * @return set of languages imported by the model, either directly or through devkit
+   * @since 3.3
+   */
   @NotNull
-  public static List<Language> getLanguages(SModel model, @NotNull IScope scope) {
-    Set<Language> languages = new LinkedHashSet<Language>();
-
-    for (SModuleReference lang : ((jetbrains.mps.smodel.SModelInternal) model).importedLanguages()) {
-      Language language = scope.getLanguage(lang);
-
-      if (language != null) {
-        languages.add(language);
-        languages.addAll(LanguageDependenciesManager.getAllExtendedLanguages(language));
-      }
+  public static Set<SLanguage> getAllLanguageImports(@NotNull SModel model) {
+    if (model instanceof SModelDescriptorStub) {
+      // if it's our implementation, use cached value
+      return new HashSet<>(((SModelDescriptorStub) model).getModelDepsManager().getAllImportedLanguagesIds());
     }
-
-    for (SModuleReference dk : ((jetbrains.mps.smodel.SModelInternal) model).importedDevkits()) {
-      DevKit devKit = scope.getDevKit(dk);
-      if (devKit != null) {
-        for (Language l : devKit.getAllExportedLanguages()) {
-          if (languages.add(l)) {
-            languages.addAll(LanguageDependenciesManager.getAllExtendedLanguages(l));
-          }
-        }
-      }
-    }
-
-    return new ArrayList<Language>(languages);
+    // otherwise, just calculate it
+    return new HashSet<>(new ModelDependenciesManager(model).getAllImportedLanguagesIds());
   }
 
   //todo rewrite using iterators
-  @NotNull
-  public static List<Language> getLanguages(jetbrains.mps.smodel.SModel model, @NotNull IScope scope) {
-    Set<Language> languages = new LinkedHashSet<Language>();
-
-    for (SModuleReference lang : model.importedLanguages()) {
-      Language language = scope.getLanguage(lang);
-
-      if (language != null) {
-        languages.add(language);
-        languages.addAll(LanguageDependenciesManager.getAllExtendedLanguages(language));
-      }
-    }
-
-    for (SModuleReference dk : model.importedDevkits()) {
-      DevKit devKit = scope.getDevKit(dk);
-      if (devKit != null) {
-        for (Language l : devKit.getAllExportedLanguages()) {
-          if (languages.add(l)) {
-            languages.addAll(LanguageDependenciesManager.getAllExtendedLanguages(l));
-          }
-        }
-      }
-    }
-
-    return new ArrayList<Language>(languages);
-  }
-
-  //todo rewrite using iterators
-  @NotNull
-  public static Set<SModuleReference> getAllImportedLanguages(SModel model) {
-    List<SModuleReference> langs = ((jetbrains.mps.smodel.SModelInternal) model).importedLanguages();
-    List<SModuleReference> devkits = ((jetbrains.mps.smodel.SModelInternal) model).importedDevkits();
-    Set<SModuleReference> result = new HashSet<SModuleReference>(langs.size() + devkits.size() * 8);
-    result.addAll(langs);
-    if (!MPSCore.getInstance().isMergeDriverMode()) {
-      for (SModuleReference dk : devkits) {
-        DevKit devKit = GlobalScope.getInstance().getDevKit(dk);
-        if (devKit == null) continue;
-        for (Language l : devKit.getExportedLanguages()) {
-          result.add(l.getModuleReference());
-        }
-      }
-    }
-    return result;
-  }
-
-  //todo rewrite using iterators
-  @NotNull
-  public static Set<SModuleReference> getAllImportedLanguages(jetbrains.mps.smodel.SModel model) {
-    List<SModuleReference> langs = (model).importedLanguages();
-    List<SModuleReference> devkits = (model).importedDevkits();
-    Set<SModuleReference> result = new HashSet<SModuleReference>(langs.size() + devkits.size() * 8);
-    result.addAll(langs);
-    if (!MPSCore.getInstance().isMergeDriverMode()) {
-      for (SModuleReference dk : devkits) {
-        DevKit devKit = GlobalScope.getInstance().getDevKit(dk);
-        if (devKit == null) continue;
-        for (Language l : devKit.getExportedLanguages()) {
-          result.add(l.getModuleReference());
-        }
-      }
-    }
-    return result;
-  }
-
-  public static Set<SModuleReference> getUsedLanguages(@NotNull SModel model) {
-    Set<SModuleReference> result = new HashSet<SModuleReference>();
-    for (SNode node : SNodeUtil.getDescendants(model)) {
-      Language lang = jetbrains.mps.util.SNodeOperations.getLanguage(node);
-      if (lang == null) continue;
-      result.add(lang.getModuleReference());
-    }
-    return result;
-  }
-
-  //todo rewrite using iterators
-  public static List<SModel> allImportedModels(SModel model, IScope scope) {
-    SModel sourceModel = model;
+  public static List<SModel> allImportedModels(SModel model) {
     Set<SModel> result = new LinkedHashSet<SModel>();
-    for (Language language : getLanguages(model, scope)) {
-      for (SModel am : language.getAccessoryModels()) {
-        if (am != sourceModel) {
-          SModel scopeModelDescriptor = scope.getModelDescriptor(am.getReference());
-          if (scopeModelDescriptor != null) {
-            result.add(scopeModelDescriptor);
-          }
-        }
-      }
+    result.addAll(importedModels(model));
+
+    for (Language language : getLanguages(model)) {
+      List<SModel> accessoryModels = language.getAccessoryModels();
+      result.addAll(accessoryModels);
     }
 
-    for (SModel importedModel : importedModels(model, scope)) {
-      if (importedModel != sourceModel) {
-        result.add(importedModel);
-      }
-    }
+    result.remove(model);
 
     return new ArrayList<SModel>(result);
-  }
-
-  //todo rewrite using iterators
-  public static List<SModel> allImportedModels(jetbrains.mps.smodel.SModel model, IScope scope) {
-    Set<SModel> result = new LinkedHashSet<SModel>();
-    for (Language language : getLanguages(model, scope)) {
-      for (SModel am : language.getAccessoryModels()) {
-        if (am != model) {
-          SModel scopeModelDescriptor = scope.getModelDescriptor(am.getReference());
-          if (scopeModelDescriptor != null) {
-            result.add(scopeModelDescriptor);
-          }
-        }
-      }
-    }
-
-    for (SModel importedModel : importedModels(model, scope)) {
-      if (!importedModel.getReference().equals(model.getReference())) {
-        result.add(importedModel);
-      }
-    }
-
-    return new ArrayList<SModel>(result);
-  }
-
-  @Nullable
-  public static ImportElement getImportElement(jetbrains.mps.smodel.SModel model, @NotNull org.jetbrains.mps.openapi.model.SModelReference modelReference) {
-    for (ImportElement importElement : model.importedModels()) {
-      if (importElement.getModelReference().equals(modelReference)) {
-        return importElement;
-      }
-    }
-    return null;
-  }
-
-  @Nullable
-  public static ImportElement getImportElement(SModel model, @NotNull org.jetbrains.mps.openapi.model.SModelReference modelReference) {
-    for (ImportElement importElement : ((jetbrains.mps.smodel.SModelInternal) model).importedModels()) {
-      if (importElement.getModelReference().equals(modelReference)) {
-        return importElement;
-      }
-    }
-    return null;
-  }
-
-  @NotNull
-  public static List<ImportElement> getAllImportElements(jetbrains.mps.smodel.SModel model) {
-    List<ImportElement> result = new ArrayList<ImportElement>();
-    result.addAll(model.importedModels());
-    result.addAll(model.getAdditionalModelVersions());
-    return result;
   }
 
   //todo rewrite using iterators
   @NotNull
   public static List<SModelReference> getImportedModelUIDs(SModel sModel) {
-    List<SModelReference> references = new ArrayList<SModelReference>();
-    for (ImportElement importElement : ((jetbrains.mps.smodel.SModelInternal) sModel).importedModels()) {
-      references.add(importElement.getModelReference());
-    }
-    return Collections.unmodifiableList(references);
+    return new ArrayList<>(new ModelImports(sModel).getImportedModels());
   }
 
-  //todo rewrite using iterators
   @NotNull
-  public static Set<SModel> getDependenciesModels(SModel sModel) {
-    Set<SModel> modelDescriptors = new HashSet<SModel>(allImportedModels(sModel, GlobalScope.getInstance()));
-    for (Language language : getLanguages(sModel, GlobalScope.getInstance())) {
-      modelDescriptors.addAll(LanguageAspect.getAspectModels(language));
-    }
-    return modelDescriptors;
-  }
-
-  //todo rewrite using iterators
-  @NotNull
-  public static Set<SModelReference> getDependenciesModelRefs(SModel sModel) {
-    Set<SModelReference> result = new HashSet<SModelReference>();
-    for (SModel sm : getDependenciesModels(sModel)) {
-      result.add(sm.getReference());
-    }
-    return result;
-  }
-
-  //todo rewrite using iterators
-  public static Set<SModelReference> getUsedImportedModels(SModel sModel) {
-    Set<SModelReference> result = new HashSet<SModelReference>();
-    for (SNode node : SNodeUtil.getDescendants(sModel)) {
-      for (SReference reference : node.getReferences()) {
-        SModelReference targetModel = reference.getTargetSModelReference();
-        if (sModel.getReference().equals(targetModel)) continue;
-        if (targetModel == null || result.contains(targetModel)) continue;
-
-        result.add(targetModel);
-      }
-    }
-    return result;
-  }
-
-  @Nullable
-  public static SModelReference getImportedModelUID(SModel sModel, int referenceID) {
-    for (ImportElement importElement : ((jetbrains.mps.smodel.SModelInternal) sModel).importedModels()) {
-      if (importElement.getReferenceID() == referenceID) {
-        return importElement.getModelReference();
-      }
-    }
-    return null;
-  }
-
-  public static int getUsedVersion(SModel sModel, SModelReference sModelReference) {
-    ImportElement importElement = getImportElement(sModel, sModelReference);
-    if (importElement == null) return getLanguageAspectModelVersion(sModel, sModelReference);
-    return importElement.getUsedVersion();
-  }
-
-  public static int getLanguageAspectModelVersion(SModel sModel, SModelReference sModelReference) {
-    ImportElement importElement = getAdditionalModelElement(sModel, sModelReference);
-    if (importElement == null) return -1;
-    return importElement.getUsedVersion();
-  }
-
-  @Nullable
-  public static ImportElement getAdditionalModelElement(jetbrains.mps.smodel.SModel sModel,
-      @NotNull org.jetbrains.mps.openapi.model.SModelReference modelReference) {
-    for (ImportElement importElement : sModel.getAdditionalModelVersions()) {
-      if (importElement.getModelReference().equals(modelReference)) {
-        return importElement;
-      }
-    }
-    return null;
-  }
-
-  @Deprecated
-  @Nullable
-  public static ImportElement getAdditionalModelElement(SModel sModel, @NotNull org.jetbrains.mps.openapi.model.SModelReference modelReference) {
-    for (ImportElement importElement : ((jetbrains.mps.smodel.SModelInternal) sModel).getAdditionalModelVersions()) {
-      if (importElement.getModelReference().equals(modelReference)) {
-        return importElement;
-      }
-    }
-    return null;
-  }
-
-  @Deprecated
-  //todo rewrite using iterators
-  @NotNull
-  private static List<SModel> importedModels(SModel model, @NotNull IScope scope) {
+  private static List<SModel> importedModels(final SModel model) {
     List<SModel> modelsList = new ArrayList<SModel>();
-    for (ImportElement importElement : ((jetbrains.mps.smodel.SModelInternal) model).importedModels()) {
-      SModelReference modelReference = importElement.getModelReference();
-      SModel modelDescriptor = scope.getModelDescriptor(modelReference);
-
-      if (modelDescriptor == null) {
-        for (Language l : getLanguages(model, scope)) {
-          for (SModel accessory : l.getAccessoryModels()) {
-            if (modelReference.equals(accessory.getReference())) {
-              modelDescriptor = accessory;
-              break;
-            }
-          }
-        }
-      }
+    for (SModelReference modelReference : new ModelImports(model).getImportedModels()) {
+      SModel modelDescriptor = modelReference.resolve(MPSModuleRepository.getInstance());
 
       if (modelDescriptor != null) {
         modelsList.add(modelDescriptor);
@@ -469,29 +245,5 @@ public class SModelOperations {
     return modelsList;
   }
 
-  //todo rewrite using iterators
-  @NotNull
-  private static List<SModel> importedModels(jetbrains.mps.smodel.SModel model, @NotNull IScope scope) {
-    List<SModel> modelsList = new ArrayList<SModel>();
-    for (ImportElement importElement : (model).importedModels()) {
-      SModelReference modelReference = importElement.getModelReference();
-      SModel modelDescriptor = scope.getModelDescriptor(modelReference);
-
-      if (modelDescriptor == null) {
-        for (Language l : getLanguages(model, scope)) {
-          for (SModel accessory : l.getAccessoryModels()) {
-            if (modelReference.equals(accessory.getReference())) {
-              modelDescriptor = accessory;
-              break;
-            }
-          }
-        }
-      }
-
-      if (modelDescriptor != null) {
-        modelsList.add(modelDescriptor);
-      }
-    }
-    return modelsList;
-  }
+  //-----------------------------------------------------
 }

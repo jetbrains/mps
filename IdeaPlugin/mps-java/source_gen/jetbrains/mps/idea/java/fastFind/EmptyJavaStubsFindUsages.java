@@ -14,7 +14,7 @@ import jetbrains.mps.idea.java.psiStubs.PsiJavaStubModelDescriptor;
 import jetbrains.mps.persistence.java.library.JavaClassStubModelDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.persistence.PersistenceRegistry;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -32,23 +32,18 @@ public class EmptyJavaStubsFindUsages implements FindUsagesParticipant, Applicat
       }
     }
   }
-
   public void findInstances(Collection<SModel> collection, Set<SAbstractConcept> set, Consumer<SNode> consumer, Consumer<SModel> consumer1) {
     // let's not skip this, it's not going to slow down anything 
   }
-
   public void findModelUsages(Collection<SModel> collection, Set<SModelReference> set, Consumer<SModel> consumer, Consumer<SModel> consumer1) {
     // let's not skip this, it's not going to slow down anything 
   }
-
   public void initComponent() {
-    PersistenceFacade.getInstance().addFindUsagesParticipant(this);
+    PersistenceRegistry.getInstance().addFindUsagesParticipant(this);
   }
-
   public void disposeComponent() {
-    PersistenceFacade.getInstance().removeFindUsagesParticipant(this);
+    PersistenceRegistry.getInstance().removeFindUsagesParticipant(this);
   }
-
   @NonNls
   @NotNull
   public String getComponentName() {

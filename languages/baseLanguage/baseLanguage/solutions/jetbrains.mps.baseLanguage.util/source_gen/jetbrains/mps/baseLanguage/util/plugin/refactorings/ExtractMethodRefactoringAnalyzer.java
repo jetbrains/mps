@@ -9,13 +9,15 @@ import jetbrains.mps.lang.dataFlow.framework.AnalysisResult;
 import jetbrains.mps.lang.dataFlow.framework.VarSet;
 import java.util.Set;
 import jetbrains.mps.lang.dataFlow.framework.instructions.WriteInstruction;
-import jetbrains.mps.lang.dataFlow.DataFlowManager;
+import jetbrains.mps.lang.dataFlow.MPSProgramBuilder;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.ReachabilityAnalyzer;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.LivenessAnalyzer;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.ReachingDefinitionsAnalyzer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.ArrayList;
@@ -31,7 +33,8 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.LinkedHashMap;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.lang.typesystem.runtime.HUtil;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.lang.dataFlow.framework.instructions.ReadInstruction;
 
 public class ExtractMethodRefactoringAnalyzer {
@@ -45,11 +48,10 @@ public class ExtractMethodRefactoringAnalyzer {
   private boolean shouldBeStatic;
   private boolean canBeStatic;
   private boolean shouldChooseOuterContainer;
-
   public ExtractMethodRefactoringAnalyzer(List<SNode> nodes) {
     this.myPartToExtract = nodes;
     this.findExtractMethodRefactoringProcessor();
-    this.myProgram = DataFlowManager.getInstance().buildProgramFor(this.myProcessor.getContainerMethod());
+    this.myProgram = new MPSProgramBuilder().buildProgram(this.myProcessor.getContainerMethod());
     this.myReachability = this.myProgram.analyze(new ReachabilityAnalyzer());
     this.myInternalExitPoints = this.calculateInternalExitPoints();
     this.myLiveVariables = this.myProgram.analyze(new LivenessAnalyzer());
@@ -57,11 +59,9 @@ public class ExtractMethodRefactoringAnalyzer {
     this.shouldBeStatic = this.findIfShouldBeStatic();
     this.canBeStatic = this.findIfCanBeStatic();
   }
-
   /*package*/ boolean hasExitPoints() {
     return ListSequence.fromList(this.myInternalExitPoints).isNotEmpty();
   }
-
   private boolean isInside(SNode node) {
     SNode current = node;
     while (current != null) {
@@ -72,67 +72,61 @@ public class ExtractMethodRefactoringAnalyzer {
     }
     return false;
   }
-
   public boolean shouldBeStatic() {
     return shouldBeStatic;
   }
-
   public boolean canBeStatic() {
     return canBeStatic;
   }
-
   public boolean shouldChooseOuterContainer() {
     return shouldChooseOuterContainer;
   }
-
   private boolean findIfShouldBeStatic() {
     if (shouldChooseOuterContainer) {
       return true;
     }
     SNode containerMethod = this.myProcessor.getContainerMethod();
-    if (SNodeOperations.isInstanceOf(containerMethod, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration")) {
+    if (SNodeOperations.isInstanceOf(containerMethod, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"))) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(containerMethod, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration") && (SPropertyOperations.getBoolean(SNodeOperations.cast(containerMethod, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"), "isStatic")) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(containerMethod, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"), "isVirtual"))) {
+    if (SNodeOperations.isInstanceOf(containerMethod, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration")) && (SPropertyOperations.getBoolean(SNodeOperations.cast(containerMethod, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration")), MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic"))) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(containerMethod, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration")), MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480580L, "isVirtual")))) {
       return true;
     }
     return false;
   }
-
   private boolean findIfCanBeStatic() {
     for (SNode node : ListSequence.fromList(this.myPartToExtract)) {
-      if (ListSequence.fromList(SNodeOperations.getDescendants(node, "jetbrains.mps.baseLanguage.structure.VariableReference", false, new String[]{})).where(new IWhereFilter<SNode>() {
+      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, "jetbrains.mps.baseLanguage.structure.VariableReference"), "variableDeclaration", false), "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")), MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"));
         }
-      }).toListSequence().isNotEmpty() || ListSequence.fromList(SNodeOperations.getDescendants(node, "jetbrains.mps.baseLanguage.structure.IThisExpression", false, new String[]{})).isNotEmpty() || ListSequence.fromList(SNodeOperations.getDescendants(node, "jetbrains.mps.baseLanguage.structure.LocalMethodCall", false, new String[]{})).where(new IWhereFilter<SNode>() {
+      }).toListSequence().isNotEmpty() || ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d206f8d91L, "jetbrains.mps.baseLanguage.structure.IThisExpression"), false, new SAbstractConcept[]{})).isNotEmpty() || ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, "baseMethodDeclaration", false), "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"));
         }
-      }).toListSequence().isNotEmpty() || ListSequence.fromList(SNodeOperations.getDescendants(node, "jetbrains.mps.baseLanguage.structure.SuperMethodCall", false, new String[]{})).isNotEmpty()) {
+      }).toListSequence().isNotEmpty() || ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9d78b55aaL, "jetbrains.mps.baseLanguage.structure.SuperMethodCall"), false, new SAbstractConcept[]{})).isNotEmpty()) {
         return false;
       }
     }
     return true;
   }
-
   private List<SNode> calculateInternalExitPoints() {
     List<SNode> result = new ArrayList<SNode>();
     for (SNode node : ListSequence.fromList(this.myPartToExtract)) {
-      List<SNode> returns = SNodeOperations.getDescendants(node, "jetbrains.mps.baseLanguage.structure.ReturnStatement", true, new String[]{});
+      List<SNode> returns = SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement"), true, new SAbstractConcept[]{});
       for (SNode ret : ListSequence.fromList(returns)) {
-        SNode a1 = SNodeOperations.getAncestor(ret, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration", false, false);
-        SNode a2 = SNodeOperations.getAncestor(node, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration", false, false);
+        SNode a1 = SNodeOperations.getNodeAncestor(ret, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"), false, false);
+        SNode a2 = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"), false, false);
         if (a1 == a2) {
           ListSequence.fromList(result).addElement(ret);
         }
       }
       List<SNode> statements = new ArrayList<SNode>();
-      ListSequence.fromList(statements).addSequence(ListSequence.fromList(SNodeOperations.getDescendants(node, "jetbrains.mps.baseLanguage.structure.BreakStatement", false, new String[]{})));
-      ListSequence.fromList(statements).addSequence(ListSequence.fromList(SNodeOperations.getDescendants(node, "jetbrains.mps.baseLanguage.structure.ContinueStatement", false, new String[]{})));
+      ListSequence.fromList(statements).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, "jetbrains.mps.baseLanguage.structure.BreakStatement"), false, new SAbstractConcept[]{})));
+      ListSequence.fromList(statements).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, "jetbrains.mps.baseLanguage.structure.ContinueStatement"), false, new SAbstractConcept[]{})));
       for (SNode st : ListSequence.fromList(statements)) {
-        SNode a1 = SNodeOperations.getAncestor(st, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement", false, false);
-        SNode a2 = SNodeOperations.getAncestor(node, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement", false, false);
+        SNode a1 = SNodeOperations.getNodeAncestor(st, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement"), false, false);
+        SNode a2 = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement"), false, false);
         if (a1 == a2) {
           ListSequence.fromList(result).addElement(st);
         }
@@ -140,18 +134,15 @@ public class ExtractMethodRefactoringAnalyzer {
     }
     return result;
   }
-
   /*package*/ List<SNode> getIntenalExitPoints() {
     return this.myInternalExitPoints;
   }
-
   /*package*/ List<SNode> getOutputVariables() {
     Set<SNode> result = SetSequence.fromSet(new HashSet<SNode>());
     SetSequence.fromSet(result).addSequence(SetSequence.fromSet(this.getVarableLiveAtExitPoints()));
     Iterable<SNode> t = SetSequence.fromSet(result).intersect(SetSequence.fromSet(this.getModificationsReachingExitPoints(true)));
     return ListSequence.fromListWithValues(new ArrayList<SNode>(), Sequence.fromIterable(t).toListSequence());
   }
-
   private Set<SNode> getModificationsReachingExitPoints(boolean internal) {
     Set<SNode> result = SetSequence.fromSet(new LinkedHashSet<SNode>());
     for (Instruction preExit : SetSequence.fromSet(this.getPreExitPoints())) {
@@ -163,17 +154,15 @@ public class ExtractMethodRefactoringAnalyzer {
     }
     return result;
   }
-
   private Set<SNode> getVarableLiveAtExitPoints() {
     Set<SNode> result = SetSequence.fromSet(new LinkedHashSet<SNode>());
     for (Instruction exitPoint : SetSequence.fromSet(this.getExitPoints())) {
-      for (Object variable : SetSequence.fromSet(this.myLiveVariables.get(exitPoint))) {
+      for (Object variable : this.myLiveVariables.get(exitPoint)) {
         SetSequence.fromSet(result).addElement(((SNode) variable));
       }
     }
     return result;
   }
-
   private Set<Instruction> getExitPoints() {
     Set<Instruction> result = SetSequence.fromSet(new LinkedHashSet<Instruction>());
     Set<Instruction> instructions = this.getInstructions();
@@ -183,7 +172,6 @@ public class ExtractMethodRefactoringAnalyzer {
     SetSequence.fromSet(result).removeSequence(SetSequence.fromSet(instructions));
     return result;
   }
-
   private Set<Instruction> getPreExitPoints() {
     Set<Instruction> result = SetSequence.fromSet(new LinkedHashSet<Instruction>());
     Set<Instruction> exitPoints = this.getExitPoints();
@@ -194,7 +182,6 @@ public class ExtractMethodRefactoringAnalyzer {
     SetSequence.fromSet(tmp).addSequence(SetSequence.fromSet(result).intersect(SetSequence.fromSet(this.getInstructions())));
     return tmp;
   }
-
   /*package*/ boolean isExitPointsDifferent() {
     List<SNode> exits = this.myInternalExitPoints;
     for (int i = 1; i < ListSequence.fromList(exits).count(); i++) {
@@ -204,7 +191,6 @@ public class ExtractMethodRefactoringAnalyzer {
     }
     return false;
   }
-
   /*package*/ boolean isAlwaysReturns() {
     for (Instruction instruction : SetSequence.fromSet(this.getInstructions())) {
       if (this.myReachability.get(instruction)) {
@@ -212,7 +198,7 @@ public class ExtractMethodRefactoringAnalyzer {
           SNode nextNode = (SNode) next.getSource();
           if (!(next instanceof EndInstruction)) {
             if (next.getSource() == null || !(this.isInside(nextNode))) {
-              if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(nextNode), "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration") || SNodeOperations.isInstanceOf(SNodeOperations.getParent(nextNode), "jetbrains.mps.baseLanguage.structure.ConceptFunction"))) {
+              if (!((SNodeOperations.isInstanceOf(SNodeOperations.getParent(nextNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration")) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(nextNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction"))))) {
                 return false;
               }
             }
@@ -222,7 +208,6 @@ public class ExtractMethodRefactoringAnalyzer {
     }
     return true;
   }
-
   /*package*/ Set<Instruction> getInstructions() {
     Set<Instruction> result = SetSequence.fromSet(new LinkedHashSet<Instruction>());
     for (SNode node : ListSequence.fromList(this.myPartToExtract)) {
@@ -230,7 +215,6 @@ public class ExtractMethodRefactoringAnalyzer {
     }
     return result;
   }
-
   /*package*/ boolean isReturnExpressionsNotChangedInStatements() {
     List<SNode> returns = this.calculateInternalExitPoints();
     for (SNode ret : ListSequence.fromList(returns)) {
@@ -244,50 +228,45 @@ public class ExtractMethodRefactoringAnalyzer {
     }
     return true;
   }
-
   public List<MethodParameter> getInputVariables() {
     Map<SNode, MethodParameter> result = MapSequence.fromMap(new LinkedHashMap<SNode, MethodParameter>(16, (float) 0.75, false));
     this.addDataflowParameters(result);
     // added to fix problems with closures 
     addExternalParameters(result);
     for (SNode node : ListSequence.fromList(this.myPartToExtract)) {
-      for (SNode parameter : ListSequence.fromList(SNodeOperations.getDescendants(node, "jetbrains.mps.baseLanguage.structure.IParameter", true, new String[]{}))) {
-        SNode expressionType = TypeChecker.getInstance().getRuntimeSupport().coerce_(TypeChecker.getInstance().getTypeOf(parameter), HUtil.createMatchingPatternByConceptFQName("jetbrains.mps.baseLanguage.structure.Type"), true);
-        MapSequence.fromMap(result).put(BehaviorReflection.invokeVirtual((Class<SNode>) ((Class) Object.class), parameter, "virtual_getDeclaration_1225282371351", new Object[]{}), new MethodParameter(BehaviorReflection.invokeVirtual((Class<SNode>) ((Class) Object.class), parameter, "virtual_getDeclaration_1225282371351", new Object[]{}), expressionType, BehaviorReflection.invokeVirtual(String.class, parameter, "virtual_getParameterName_1225280611056", new Object[]{}), parameter));
+      for (SNode parameter : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d486a1d9eL, "jetbrains.mps.baseLanguage.structure.IParameter"), true, new SAbstractConcept[]{}))) {
+        SNode expressionType = TypeChecker.getInstance().getRuntimeSupport().coerce_(TypeChecker.getInstance().getTypeOf(parameter), HUtil.createMatchingPatternByConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type")), true);
+        MapSequence.fromMap(result).put(((SNode) BHReflection.invoke(parameter, SMethodTrimmedId.create("getDeclaration", null, "hP8xjWn"))), new MethodParameter(((SNode) BHReflection.invoke(parameter, SMethodTrimmedId.create("getDeclaration", null, "hP8xjWn"))), expressionType, ((String) BHReflection.invoke(parameter, SMethodTrimmedId.create("getParameterName", null, "hP8qAbK"))), parameter));
       }
     }
     return ListSequence.fromListWithValues(new ArrayList<MethodParameter>(), MapSequence.fromMap(result).values());
   }
-
   /*package*/ SNode getClassifier() {
-    return SNodeOperations.getAncestor(ListSequence.fromList(this.myPartToExtract).first(), "jetbrains.mps.baseLanguage.structure.Classifier", false, false);
+    return SNodeOperations.getNodeAncestor(ListSequence.fromList(this.myPartToExtract).first(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false);
   }
-
   public IExtractMethodRefactoringProcessor getExtractMethodReafactoringProcessor() {
     return this.myProcessor;
   }
-
   private void findExtractMethodRefactoringProcessor() {
     shouldChooseOuterContainer = false;
     SNode first = ListSequence.fromList(this.myPartToExtract).first();
-    SNode classConcept = SNodeOperations.getAncestor(first, "jetbrains.mps.baseLanguage.structure.ClassConcept", false, false);
+    SNode classConcept = SNodeOperations.getNodeAncestor(first, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"), false, false);
     if (classConcept != null) {
       this.myProcessor = new ClassExtractMethodRefactoringProcessor(classConcept, this.myPartToExtract);
-    } else if (SNodeOperations.getAncestor(first, "jetbrains.mps.baseLanguage.structure.IExtractMethodAvailable", false, false) != null) {
-      SNode extractable = SNodeOperations.getAncestor(first, "jetbrains.mps.baseLanguage.structure.IExtractMethodAvailable", false, false);
-      this.myProcessor = BehaviorReflection.invokeVirtual(IExtractMethodRefactoringProcessor.class, extractable, "virtual_getExtractMethodRefactoringProcessor_1221393367929", new Object[]{this.myPartToExtract});
+    } else if (SNodeOperations.getNodeAncestor(first, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c60bb0a14L, "jetbrains.mps.baseLanguage.structure.IExtractMethodAvailable"), false, false) != null) {
+      SNode extractable = SNodeOperations.getNodeAncestor(first, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c60bb0a14L, "jetbrains.mps.baseLanguage.structure.IExtractMethodAvailable"), false, false);
+      this.myProcessor = ((IExtractMethodRefactoringProcessor) BHReflection.invoke(extractable, SMethodTrimmedId.create("getExtractMethodRefactoringProcessor", null, "hLwHWdT"), this.myPartToExtract));
     } else {
       this.myProcessor = new AbstractExtractMethodRefactoringProcessor(null, this.myPartToExtract);
       shouldChooseOuterContainer = true;
     }
   }
-
   private void addExternalParameters(Map<SNode, MethodParameter> result) {
-    SNode list = SNodeOperations.getAncestor(ListSequence.fromList(myPartToExtract).getElement(0), "jetbrains.mps.baseLanguage.structure.StatementList", false, false);
-    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(list), "jetbrains.mps.baseLanguage.structure.Statement")) {
-      list = SNodeOperations.getAncestor(list, "jetbrains.mps.baseLanguage.structure.StatementList", false, false);
+    SNode list = SNodeOperations.getNodeAncestor(ListSequence.fromList(myPartToExtract).getElement(0), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), false, false);
+    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(list), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"))) {
+      list = SNodeOperations.getNodeAncestor(list, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), false, false);
     }
-    Program program = DataFlowManager.getInstance().buildProgramFor(list);
+    Program program = new MPSProgramBuilder().buildProgram(list);
     Set<Instruction> nodeInstructions = SetSequence.fromSet(new HashSet<Instruction>());
     for (SNode node : ListSequence.fromList(myPartToExtract)) {
       SetSequence.fromSet(nodeInstructions).addSequence(ListSequence.fromList(program.getInstructionsFor(node)));
@@ -309,23 +288,22 @@ public class ExtractMethodRefactoringAnalyzer {
         if (MapSequence.fromMap(result).containsKey(declaration)) {
           continue;
         }
-        if (SNodeOperations.isInstanceOf(declaration, "jetbrains.mps.baseLanguage.structure.FieldDeclaration") || SNodeOperations.isInstanceOf(declaration, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration")) {
+        if (SNodeOperations.isInstanceOf(declaration, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")) || SNodeOperations.isInstanceOf(declaration, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration"))) {
           continue;
         }
-        SNode type = TypeChecker.getInstance().getRuntimeSupport().coerce_(TypeChecker.getInstance().getTypeOf(declaration), HUtil.createMatchingPatternByConceptFQName("jetbrains.mps.baseLanguage.structure.Type"), true);
+        SNode type = TypeChecker.getInstance().getRuntimeSupport().coerce_(TypeChecker.getInstance().getTypeOf(declaration), HUtil.createMatchingPatternByConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type")), true);
         SNode reference;
-        if (SNodeOperations.isInstanceOf(declaration, "jetbrains.mps.baseLanguage.structure.VariableDeclaration")) {
-          reference = BehaviorReflection.invokeVirtual((Class<SNode>) ((Class) Object.class), SNodeOperations.cast(declaration, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"), "virtual_createReference_1213877517482", new Object[]{});
+        if (SNodeOperations.isInstanceOf(declaration, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"))) {
+          reference = ((SNode) BHReflection.invoke(SNodeOperations.cast(declaration, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration")), SMethodTrimmedId.create("createReference", null, "hEwJfME")));
         } else {
           reference = ((SNode) read.getSource());
         }
-        if (SNodeOperations.isInstanceOf(reference, "jetbrains.mps.baseLanguage.structure.Expression")) {
-          MapSequence.fromMap(result).put(declaration, new MethodParameter(declaration, type, SPropertyOperations.getString(declaration, "name"), reference));
+        if (SNodeOperations.isInstanceOf(reference, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"))) {
+          MapSequence.fromMap(result).put(declaration, new MethodParameter(declaration, type, SPropertyOperations.getString(declaration, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), reference));
         }
       }
     }
   }
-
   private void addDataflowParameters(Map<SNode, MethodParameter> result) {
     for (Instruction instruction : SetSequence.fromSet(this.getInstructions())) {
       if ((instruction instanceof ReadInstruction)) {
@@ -336,15 +314,15 @@ public class ExtractMethodRefactoringAnalyzer {
             if (!(this.isInside(((SNode) write.getSource())))) {
               SNode declaration = ((SNode) read.getVariable());
               if (!(MapSequence.fromMap(result).containsKey(declaration))) {
-                SNode type = TypeChecker.getInstance().getRuntimeSupport().coerce_(TypeChecker.getInstance().getTypeOf(declaration), HUtil.createMatchingPatternByConceptFQName("jetbrains.mps.baseLanguage.structure.Type"), true);
+                SNode type = TypeChecker.getInstance().getRuntimeSupport().coerce_(TypeChecker.getInstance().getTypeOf(declaration), HUtil.createMatchingPatternByConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type")), true);
                 SNode reference;
-                if (SNodeOperations.isInstanceOf(declaration, "jetbrains.mps.baseLanguage.structure.VariableDeclaration")) {
-                  reference = BehaviorReflection.invokeVirtual((Class<SNode>) ((Class) Object.class), SNodeOperations.cast(declaration, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"), "virtual_createReference_1213877517482", new Object[]{});
+                if (SNodeOperations.isInstanceOf(declaration, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"))) {
+                  reference = ((SNode) BHReflection.invoke(SNodeOperations.cast(declaration, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration")), SMethodTrimmedId.create("createReference", null, "hEwJfME")));
                 } else {
                   reference = ((SNode) read.getSource());
                 }
-                if (SNodeOperations.isInstanceOf(reference, "jetbrains.mps.baseLanguage.structure.Expression")) {
-                  MapSequence.fromMap(result).put(declaration, new MethodParameter(declaration, type, SPropertyOperations.getString(declaration, "name"), reference));
+                if (SNodeOperations.isInstanceOf(reference, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"))) {
+                  MapSequence.fromMap(result).put(declaration, new MethodParameter(declaration, type, SPropertyOperations.getString(declaration, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), reference));
                 }
               }
             }
@@ -353,8 +331,7 @@ public class ExtractMethodRefactoringAnalyzer {
       }
     }
   }
-
   public static boolean isStatements(List<SNode> nodes) {
-    return SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), "jetbrains.mps.baseLanguage.structure.Statement");
+    return SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"));
   }
 }

@@ -1,0 +1,288 @@
+/*
+ * Copyright 2003-2015 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package jetbrains.mps.make;
+
+import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.compiler.EclipseJavaCompiler;
+import jetbrains.mps.compiler.JavaCompilerOptions;
+import jetbrains.mps.make.dependencies.StronglyConnectedModules;
+import jetbrains.mps.messages.IMessageHandler;
+import jetbrains.mps.messages.MessageKind;
+import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
+import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.Deptype;
+import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.util.performance.IPerformanceTracer;
+import jetbrains.mps.util.performance.IPerformanceTracer.NullPerformanceTracer;
+import jetbrains.mps.util.performance.PerformanceTracer;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Priority;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import org.jetbrains.mps.openapi.util.SubProgressKind;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
+
+/**
+ * ModuleMaker is able to make sources of the given modules.
+ * Main API is two #make methods, one of them accepts also the compiler options argument (e.g. to choose the java language level
+ * for the compiler)
+ *
+ * Underneath this class analyzes module dependencies,
+ * chooses which of the modules are dirty, collects all the java sources and handles
+ * them to the eclipse java compiler (the mps wrapper {@link EclipseJavaCompiler})
+ *
+ * fixme use bundle for this package
+ * fixme check multiple computations of the same modules' dependencies (time wasting)
+ */
+public final class ModuleMaker {
+  private final static MessageKind DEFAULT_MSG_LEVEL = MessageKind.INFORMATION;
+  public final static Comparator<SModule> MODULE_BY_NAME_COMPARATOR = (module1, module2) -> module1.getModuleName().compareTo(module2.getModuleName());
+
+  private final static String BUILDING_MODULES_MSG = "Building %d Modules";
+  private final static String CYCLE_FORMAT_MSG = "Cycle #%d: [%s]";
+  private final static String COLLECTING_DEPENDENCIES_MSG = "Collecting Dependent Candidates";
+  private final static String LOADING_DEPENDENCIES_MSG = "Loading Dependencies";
+  private final static String CALCULATING_DEPENDENCIES_TO_COMPILE_MSG = "Calculating Modules To Compile";
+  private final static String BUILDING_MODULE_CYCLES_MSG = "Building Module Cycles";
+  private final static String BUILDING_MODULES = "Building";
+  private final static String BUILDING_BACK_DEPS_MSG = "Building Closure";
+  private final static String BUILDING_DIRTY_CLOSURE = "Dirty Modules";
+  private final static String CHECKING_DIRTY_MODULES_MSG = "Checking";
+
+  @NotNull private final CompositeTracer myTracer;
+
+  /**
+   * The empty constructor delegates only error messages to the apache's logger and traces nothing
+   */
+  public ModuleMaker() {
+    ErrorsLoggingHandler defaultHandler = new ErrorsLoggingHandler(LogManager.getLogger(ModuleMaker.class));
+    MessageSender sender = new MessageSender(defaultHandler, this, DEFAULT_MSG_LEVEL);
+    myTracer = new CompositeTracer(new NullPerformanceTracer(), sender);
+  }
+
+  /**
+   * Accepts the logging strategy (via {@link IMessageHandler})
+   * and the logging level {@link MessageKind}.
+   */
+  public ModuleMaker(@NotNull IMessageHandler handler, @NotNull MessageKind level) {
+    MessageSender sender = new MessageSender(handler, this, level);
+    myTracer = new CompositeTracer(new PerformanceTracer(this.toString()), sender);
+  }
+
+  /**
+   * Accepts the logging strategy (via {@link IMessageHandler})
+   * and the logging level {@link MessageKind}.
+   * and the performance tracer
+   *
+   * @deprecated IPerformanceTracer is an internal feature I believe.
+   */
+  @Deprecated
+  @ToRemove(version = 3.4)
+  public ModuleMaker(@NotNull IMessageHandler handler, @NotNull MessageKind level, @NotNull IPerformanceTracer tracer) {
+    myTracer = new CompositeTracer(tracer, new MessageSender(handler, this, level));
+  }
+
+  /**
+   * TODO move or rename the ModuleMaker (the naming is quite disturbing)
+   */
+  public void clean(final Set<? extends SModule> modules, @NotNull final ProgressMonitor monitor) {
+    monitor.start("Cleaning...", modules.size());
+    try {
+      for (SModule module : modules) {
+        if (monitor.isCanceled()) {
+          break;
+        }
+        if (!ModulesContainer.isExcluded(module)) {
+          monitor.step(module.getModuleName());
+          JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
+          assert facet != null && facet.getClassesGen() != null;
+          File classesGenFile = new File(facet.getClassesGen().toPath().toString());
+          FileUtil.delete(classesGenFile);
+        }
+        monitor.advance(1);
+      }
+    } finally {
+      monitor.done();
+    }
+  }
+
+  @NotNull
+  public MPSCompilationResult makeAndDeploy(final Collection<? extends SModule> modules, @NotNull final ProgressMonitor monitor,
+      @Nullable JavaCompilerOptions compilerOptions) {
+    monitor.start(BUILDING_MODULES, 4);
+    try {
+      MPSCompilationResult result = make(modules, monitor.subTask(3, SubProgressKind.REPLACING), compilerOptions);
+      ClassLoaderManager.getInstance().reloadModules(modules, monitor.subTask(1));
+      return result;
+    } finally {
+      monitor.done();
+    }
+  }
+
+  @NotNull
+  public MPSCompilationResult make(final Collection<? extends SModule> modules, @NotNull final ProgressMonitor monitor) {
+    return make(modules, monitor, null);
+  }
+
+  @NotNull
+  public MPSCompilationResult make(final Collection<? extends SModule> modules, @NotNull final ProgressMonitor monitor, @Nullable final JavaCompilerOptions compilerOptions) {
+    CompositeTracer tracer = new CompositeTracer(myTracer, monitor);
+    tracer.start(String.format(BUILDING_MODULES_MSG, modules.size()), 10);
+    try {
+      tracer.push(COLLECTING_DEPENDENCIES_MSG);
+      Set<SModule> candidates = new LinkedHashSet<>(new GlobalModuleDependenciesManager(modules).getModules(Deptype.COMPILE));
+      tracer.pop(1);
+
+      tracer.push(LOADING_DEPENDENCIES_MSG);
+      Dependencies dependencies = new Dependencies(candidates); // fixme AP why do we need to look for some other deps??
+      tracer.pop(1);
+
+      tracer.push(CALCULATING_DEPENDENCIES_TO_COMPILE_MSG);
+      Set<SModule> toCompile = buildDirtyModulesClosure(new ModulesContainer(candidates, dependencies), tracer.subTracer(1));
+      tracer.pop();
+
+      tracer.push(BUILDING_MODULE_CYCLES_MSG);
+      List<Set<SModule>> schedule = new StronglyConnectedModules<>(toCompile).getStronglyConnectedComponents();
+      tracer.pop(1);
+
+      return compileCycles(compilerOptions, schedule, tracer.subTracer(6, SubProgressKind.REPLACING), dependencies);
+    } finally {
+      tracer.done();
+      tracer.printReport();
+    }
+  }
+
+  @NotNull
+  private MPSCompilationResult compileCycles(@Nullable JavaCompilerOptions compilerOptions, List<Set<SModule>> cyclesToCompile, @NotNull CompositeTracer tracer, @NotNull Dependencies dependencies) {
+    List<MPSCompilationResult> cycleCompilationResults = new ArrayList<>();
+    tracer.start("", cyclesToCompile.size());
+    try {
+      int cycleNumber = 0;
+      for (Set<SModule> modulesInCycle : cyclesToCompile) {
+        if (tracer.isMonitorCanceled()) {
+          break;
+        }
+        ++cycleNumber;
+        CompositeTracer cycleTracer = tracer.subTracer(1);
+        tracer.info(String.format(CYCLE_FORMAT_MSG, cycleNumber, modulesInCycle));
+        cycleTracer.start(getCycleString(cycleNumber, modulesInCycle), 1, Priority.DEBUG);
+        ModulesContainer modulesContainer = new ModulesContainer(modulesInCycle, dependencies);
+        InternalJavaCompiler internalJavaCompiler = new InternalJavaCompiler(modulesContainer, compilerOptions);
+        MPSCompilationResult cycleCompilationResult = internalJavaCompiler.compile(cycleTracer.subTracer(1, SubProgressKind.AS_COMMENT));
+        cycleCompilationResults.add(cycleCompilationResult);
+        cycleTracer.done(0);
+      }
+    } finally {
+      tracer.done();
+    }
+
+    return combineCycleCompilationResults(cycleCompilationResults);
+  }
+
+  private String getCycleString(int cycleNumber, Set<SModule> modulesInCycle) {
+    Optional<SModule> first = modulesInCycle.stream().findFirst();
+    String firstModule = "";
+    if (first.isPresent()) {
+      firstModule = first.get().getModuleName();
+      if (modulesInCycle.size() > 1) {
+        firstModule += " and " + (modulesInCycle.size() - 1) + " others";
+      }
+    }
+    return String.format(CYCLE_FORMAT_MSG, cycleNumber, firstModule);
+  }
+
+  @NotNull
+  private MPSCompilationResult combineCycleCompilationResults(List<MPSCompilationResult> results) {
+    int errorCount = 0;
+    int warnCount = 0;
+    Set<SModule> changedModules = new HashSet<>();
+    for (MPSCompilationResult result : results) {
+      errorCount += result.getErrorsCount();
+      warnCount += result.getWarningsCount();
+      changedModules.addAll(result.getChangedModules());
+    }
+    return new MPSCompilationResult(errorCount, warnCount, false, changedModules);
+  }
+
+  /**
+   * The answer is always sorted by name
+   */
+  private Set<SModule> buildDirtyModulesClosure(ModulesContainer modulesContainer, CompositeTracer tracer) {
+    tracer.start(BUILDING_DIRTY_CLOSURE, 3);
+    Set<SModule> candidates = modulesContainer.getModules();
+    tracer.push(CHECKING_DIRTY_MODULES_MSG, Priority.DEBUG, false);
+    List<SModule> dirtyModules = new ArrayList<SModule>(candidates.size());
+    for (SModule m : candidates) {
+      if (modulesContainer.isDirty(m)) {
+        dirtyModules.add(m);
+      }
+    }
+    tracer.pop(1);
+
+    // select from modules those that are affected by the "dirty" modules
+    // M={m}, D={m*}, D<=M, R:M->2^M (required), R* transitive closure of R
+    // C={m|m from M, exists m* from D: m* in R*(m)}
+    // to compile T=D union C
+
+    Map<SModule, Set<SModule>> backDependencies = new HashMap<>();
+
+    tracer.push(BUILDING_BACK_DEPS_MSG, Priority.DEBUG, true);
+    for (SModule m : candidates) {
+      for (SModule dep : new GlobalModuleDependenciesManager(m).getModules(Deptype.COMPILE)) {
+        Set<SModule> incoming = backDependencies.get(dep);
+        if (incoming == null) {
+          incoming = new HashSet<>();
+          backDependencies.put(dep, incoming);
+        }
+        incoming.add(m);
+      }
+    }
+    Set<SModule> toCompile = new LinkedHashSet<>();
+    // BFS from dirtyModules along backDependencies
+    LinkedList<SModule> queue = new LinkedList<SModule>(dirtyModules);
+    while (!queue.isEmpty()) {
+      SModule m = queue.removeFirst();
+      if (candidates.contains(m)) {
+        toCompile.add(m);
+      }
+      Set<SModule> backDeps = backDependencies.remove(m);
+      if (backDeps != null) {
+        queue.addAll(backDeps);
+      }
+    }
+    tracer.pop(1);
+
+    Set<SModule> result = new TreeSet<>(MODULE_BY_NAME_COMPARATOR);
+    result.addAll(toCompile);
+    return result;
+  }
+}

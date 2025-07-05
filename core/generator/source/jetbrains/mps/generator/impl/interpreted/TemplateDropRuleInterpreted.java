@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,65 +17,39 @@ package jetbrains.mps.generator.impl.interpreted;
 
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.RuleUtil;
+import jetbrains.mps.generator.impl.query.DropRuleCondition;
+import jetbrains.mps.generator.impl.query.QueryKey;
+import jetbrains.mps.generator.impl.query.QueryKeyImpl;
+import jetbrains.mps.generator.impl.query.QueryProviderBase;
+import jetbrains.mps.generator.runtime.DropRootRuleBase;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateDropRootRule;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.template.DropRootRuleContext;
-import jetbrains.mps.generator.template.TemplateFunctionMethodName;
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.QueryMethodGenerated;
 
-/**
- * Evgeny Gryaznov, Nov 30, 2010
- */
-public class TemplateDropRuleInterpreted implements TemplateDropRootRule {
+public class TemplateDropRuleInterpreted extends DropRootRuleBase implements TemplateDropRootRule {
+  private final SNode myRuleNode;
+  private DropRuleCondition myCondition;
 
-  private final SNode ruleNode;
-  private final SNode applicableConcept;
-
-  public TemplateDropRuleInterpreted(SNode child) {
-    this.ruleNode = child;
-    this.applicableConcept = RuleUtil.getDropRuleApplicableConcept(ruleNode);
+  public TemplateDropRuleInterpreted(@NotNull SNode child) {
+    super(child.getReference(), MetaAdapterByDeclaration.getConcept(RuleUtil.getDropRuleApplicableConcept(child)));
+    myRuleNode = child;
   }
 
   @Override
-  public SNodeReference getRuleNode() {
-    return new jetbrains.mps.smodel.SNodePointer(ruleNode);
-  }
-
-  @Override
-  public String getApplicableConcept() {
-    return NameUtil.nodeFQName(this.applicableConcept);
-  }
-
-  @Override
-  public boolean isApplicable(TemplateExecutionEnvironment environment, TemplateContext context) throws GenerationFailureException {
-    SNode condition = RuleUtil.getDropRuleCondition(ruleNode);
-    if (condition == null) {
-      // condition is not required
-      return true;
+  public boolean isApplicable(@NotNull TemplateContext context) throws GenerationFailureException {
+    if (myCondition == null) {
+      SNode condition = RuleUtil.getDropRuleCondition(myRuleNode);
+      if (condition != null) {
+        QueryKey identity = new QueryKeyImpl(getRuleNode(), condition.getNodeId(), myRuleNode);
+        myCondition = context.getEnvironment().getQueryProvider(getRuleNode()).getDropRuleCondition(identity);
+      } else {
+        myCondition = new QueryProviderBase.Defaults();
+      }
     }
-
-    String methodName = TemplateFunctionMethodName.dropRootRule_Condition(condition);
-    try {
-      return (Boolean) QueryMethodGenerated.invoke(
-        methodName,
-        environment.getGenerator().getGeneratorSessionContext(),
-        new DropRootRuleContext(context.getInput(), ruleNode, environment.getGenerator()),
-        ruleNode.getModel(),
-        true);
-    } catch (ClassNotFoundException e) {
-      environment.getGenerator().getLogger().warning(condition, "cannot find condition method '" + methodName + "' : evaluate to TRUE");
-    } catch (NoSuchMethodException e) {
-      environment.getGenerator().getLogger().warning(condition, "cannot find condition method '" + methodName + "' : evaluate to TRUE");
-    } catch (Throwable t) {
-      environment.getGenerator().getLogger().handleException(t);
-      environment.getGenerator().getLogger().error(condition, "error executing condition " + methodName + " (see exception)");
-      throw new GenerationFailureException(t);
-    }
-    // in this case 'true' is better default
-    return true;
+    return myCondition.check(new DropRootRuleContext(context, getRuleNode()));
   }
 }

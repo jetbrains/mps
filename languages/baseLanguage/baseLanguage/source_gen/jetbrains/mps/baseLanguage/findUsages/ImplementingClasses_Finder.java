@@ -5,6 +5,8 @@ package jetbrains.mps.baseLanguage.findUsages;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import java.util.List;
@@ -14,26 +16,24 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.progress.EmptyProgressMonitor;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public class ImplementingClasses_Finder extends GeneratedFinder {
   private static Logger LOG = LogManager.getLogger("jetbrains.mps.baseLanguage.findUsages.ImplementingClasses_Finder");
-
   public ImplementingClasses_Finder() {
   }
-
   @Override
   public String getDescription() {
     return "Implementing Classes";
   }
-
   @Override
   public String getLongDescription() {
     return "";
   }
-
   @Override
-  public String getConcept() {
-    return "jetbrains.mps.baseLanguage.structure.Interface";
+  public SAbstractConcept getSConcept() {
+    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 
   @Override
@@ -49,15 +49,15 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
       }
       // 
       for (SNode interfaceNode : derivedInterfacesUsages) {
-        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(interfaceNode), "jetbrains.mps.baseLanguage.structure.ClassConcept")) {
+        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(interfaceNode), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))) {
           // class implements interface case 
-          if (SNodeOperations.hasRole(interfaceNode, "jetbrains.mps.baseLanguage.structure.ClassConcept", "implementedInterface")) {
+          if (SNodeOperations.hasRole(interfaceNode, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface"))) {
             ListSequence.fromList(_results).addElement(SNodeOperations.getParent(interfaceNode));
             for (SNode classNode : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.DerivedClasses_Finder", SNodeOperations.getParent(interfaceNode), scope, monitor.subTask(1)))) {
               ListSequence.fromList(_results).addElement(classNode);
             }
           }
-        } else if (SNodeOperations.isInstanceOf(interfaceNode, "jetbrains.mps.baseLanguage.structure.AnonymousClass")) {
+        } else if (SNodeOperations.isInstanceOf(interfaceNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass"))) {
           // anonymous class case 
           ListSequence.fromList(_results).addElement(interfaceNode);
         }
@@ -66,7 +66,6 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
       monitor.done();
     }
   }
-
   @Override
   public void getSearchedNodes(SNode node, SearchScope scope, List<SNode> _results) {
     ListSequence.fromList(_results).addElement(node);
@@ -74,9 +73,14 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
       ListSequence.fromList(_results).addElement(derivedInterface);
     }
   }
-
   @Override
   public String getNodeCategory(SNode node) {
     return "Implementing Classes";
+  }
+
+  @Nullable
+  @Override
+  public SNodeReference getDeclarationNode() {
+    return buildNodePointer(FindUsagesDescriptor.DECLARING_MODEL, "1200310248824");
   }
 }

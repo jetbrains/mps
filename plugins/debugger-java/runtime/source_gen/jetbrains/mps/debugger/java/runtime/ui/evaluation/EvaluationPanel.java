@@ -6,21 +6,18 @@ import javax.swing.JTabbedPane;
 import jetbrains.mps.ide.embeddableEditor.EmbeddableEditor;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.IEvaluationContainer;
 import jetbrains.mps.nodeEditor.Highlighter;
-import com.intellij.openapi.project.Project;
+import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
-import jetbrains.mps.debugger.java.runtime.evaluation.container.Properties;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.ModelAccess;
 import javax.swing.JSplitPane;
 import com.intellij.ui.components.JBScrollPane;
+import jetbrains.mps.debugger.java.runtime.evaluation.container.Properties;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.KeyStroke;
 import javax.swing.JComponent;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ModalityState;
 
 public class EvaluationPanel extends EvaluationUi {
   private final JTabbedPane myTabbedPane = new JTabbedPane();
@@ -29,31 +26,23 @@ public class EvaluationPanel extends EvaluationUi {
   private final IEvaluationContainer myEvaluationModel;
   private final Highlighter myHighlighter;
   private volatile boolean myIsDisposed = false;
-
-  public EvaluationPanel(Project project, @NotNull DebugSession session, IEvaluationContainer evaluationModel, boolean autoUpdate) {
+  public EvaluationPanel(final Project mpsProject, @NotNull DebugSession session, IEvaluationContainer evaluationModel, boolean autoUpdate) {
     super(session, autoUpdate);
-    myHighlighter = project.getComponent(Highlighter.class);
+    myHighlighter = mpsProject.getComponent(Highlighter.class);
 
     myEvaluationModel = evaluationModel;
-    if (Properties.IS_DEVELOPER_MODE) {
-      myEvaluationModel.addGenerationListener(new _FunctionTypes._void_P1_E0<SNode>() {
-        public void invoke(SNode result) {
-          EvaluationPanel.this.updateGenerationResultTab(result);
-        }
-      });
-    }
 
-    ModelAccess.instance().runWriteActionInCommand(new Runnable() {
+    mpsProject.getModelAccess().executeCommand(new Runnable() {
       public void run() {
         SNode node = myEvaluationModel.getNode();
-        myEditor = new EmbeddableEditor(myEvaluationModel.getContext().getProject(), true);
+        myEditor = new EmbeddableEditor(mpsProject, true);
         myEditor.editNode(node);
       }
     });
 
     myTree.addModel(myEvaluationModel);
     if (myDebugSession.isPaused()) {
-      myTree.updateLocation(myDebugSession.getUiState().getStackFrame().getLocation().getUnitName(), myDebugSession.getUiState().getThread().getThread());
+      myTree.updateLocation(myDebugSession.getUiState().getThread().getThread());
     }
 
     JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
@@ -77,11 +66,9 @@ public class EvaluationPanel extends EvaluationUi {
 
     myHighlighter.addAdditionalEditor(myEditor.getEditor());
   }
-
   public IEvaluationContainer getEvaluationContainer() {
     return myEvaluationModel;
   }
-
   @Override
   public void dispose() {
     ApplicationManager.getApplication().assertIsDispatchThread();
@@ -93,35 +80,15 @@ public class EvaluationPanel extends EvaluationUi {
     myHighlighter.removeAdditionalEditor(myEditor.getEditor());
     myEditor.disposeEditor();
   }
-
   @Override
   public void evaluate() {
     evaluate(myEvaluationModel);
   }
-
-  private void updateGenerationResultTab(final SNode generatedResult) {
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        if (myResultEditor == null) {
-          ModelAccess.instance().runWriteActionInCommand(new Runnable() {
-            public void run() {
-              myResultEditor = new EmbeddableEditor(myEvaluationModel.getContext().getProject(), true);
-            }
-          });
-          myTabbedPane.add("Generated Result", myResultEditor);
-          myTabbedPane.validate();
-        }
-        ModelAccess.instance().runWriteActionInCommand(new Runnable() {
-          public void run() {
-            myResultEditor.editNode(generatedResult);
-          }
-        });
-      }
-    }, ModalityState.NON_MODAL);
-  }
-
   @Override
   protected void update() {
     myEvaluationModel.updateState();
+  }
+  public JComponent getPreferredFocusedComponent() {
+    return myEditor.getPreferredFocusedComponent();
   }
 }

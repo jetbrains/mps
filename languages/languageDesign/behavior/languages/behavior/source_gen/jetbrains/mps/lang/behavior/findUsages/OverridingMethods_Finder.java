@@ -5,6 +5,8 @@ package jetbrains.mps.lang.behavior.findUsages;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -14,31 +16,28 @@ import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public class OverridingMethods_Finder extends GeneratedFinder {
   private static Logger LOG = LogManager.getLogger("jetbrains.mps.lang.behavior.findUsages.OverridingMethods_Finder");
-
   public OverridingMethods_Finder() {
   }
-
   @Override
   public String getDescription() {
     return "Overriding Methods";
   }
-
   @Override
   public String getLongDescription() {
     return "";
   }
-
   @Override
-  public String getConcept() {
-    return "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration";
+  public SAbstractConcept getSConcept() {
+    return MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
-
   @Override
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior"));
   }
 
   @Override
@@ -51,11 +50,11 @@ public class OverridingMethods_Finder extends GeneratedFinder {
       final SNode n = node;
       sm.start("", ListSequence.fromList(nodes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration") && SLinkOperations.getTarget(SNodeOperations.cast(it, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"), "overriddenMethod", false) == n;
+          return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration")) && SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration")), MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod")) == n;
         }
       }).count());
       for (SNode nodeUsage : ListSequence.fromList(nodes)) {
-        if (SNodeOperations.isInstanceOf(nodeUsage, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration") && SLinkOperations.getTarget(SNodeOperations.cast(nodeUsage, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration"), "overriddenMethod", false) == node) {
+        if (SNodeOperations.isInstanceOf(nodeUsage, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration")) && SLinkOperations.getTarget(SNodeOperations.cast(nodeUsage, MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration")), MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod")) == node) {
           ListSequence.fromList(_results).addElement(nodeUsage);
           for (SNode overriding : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.lang.behavior.findUsages.OverridingMethods_Finder", nodeUsage, scope, sm.subTask(1)))) {
             ListSequence.fromList(_results).addElement(overriding);
@@ -66,5 +65,11 @@ public class OverridingMethods_Finder extends GeneratedFinder {
     } finally {
       monitor.done();
     }
+  }
+
+  @Nullable
+  @Override
+  public SNodeReference getDeclarationNode() {
+    return buildNodePointer(FindUsagesDescriptor.DECLARING_MODEL, "1227530810320");
   }
 }

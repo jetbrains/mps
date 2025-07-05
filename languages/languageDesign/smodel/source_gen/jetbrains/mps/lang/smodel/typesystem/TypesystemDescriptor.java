@@ -11,16 +11,13 @@ import jetbrains.mps.lang.typesystem.runtime.InequationReplacementRule_Runtime;
 import jetbrains.mps.typesystem.inference.IVariableConverter_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 
 public class TypesystemDescriptor extends BaseHelginsDescriptor {
   public TypesystemDescriptor() {
     {
       InferenceRule_Runtime inferenceRule = new typeOf_ConceptRefExpression_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
-      InferenceRule_Runtime inferenceRule = new typeOf_Concept_FindInstances_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -36,19 +33,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeOf_LinkList_AddChildOperation_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
       InferenceRule_Runtime inferenceRule = new typeOf_LinkList_AddNewChildOperation_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
-      InferenceRule_Runtime inferenceRule = new typeOf_LinkList_InsertChildFirstOperation_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
-      InferenceRule_Runtime inferenceRule = new typeOf_Link_DeleteChildOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -96,15 +81,15 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_AsSConcept_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_AttributeAccess_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_CheckedModuleQualifiedName_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
-      InferenceRule_Runtime inferenceRule = new typeof_CheckedModuleReference_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_ConceptAliasOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -112,11 +97,11 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_ConceptPropertyNameRefExpression_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_ConceptIdRefExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_ConceptProperty_SetOperation_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_ConceptShortDescriptionOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -125,10 +110,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_Concept_GetDirectSuperConcepts_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
-      InferenceRule_Runtime inferenceRule = new typeof_Concept_GetHierarchy_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -168,11 +149,19 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_LanguageRefExpression_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_LanguageReferenceExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_LinkList_RemoveAllChildrenOperation_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_LinkAttributeQualifier_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_LinkIdRefExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -200,11 +189,19 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_ModuleRefExpression_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_ModuleReferenceExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_NodePointerExpression_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_Node_ContainingLinkOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -221,6 +218,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_Node_GetAncestorsOperation_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_Node_GetChildrenAndChildAttributesOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -288,6 +289,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_Node_GetSConceptOperation_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_Node_InsertNewNextSiblingOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -324,6 +329,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_Node_PointerOperation_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_Node_ReplaceWithAnotherOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -352,6 +361,14 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_PropertyAttributeQualifier_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_PropertyIdRefExpression_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_PropertyNameRefExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -368,11 +385,11 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_ReadConceptReferenceExpression_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_RefConcept_Reference_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_RefConcept_Reference_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_Reference_ContainingLinkOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -392,11 +409,11 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_SConceptLinkAccess_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_SConceptOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeof_SConceptPropertyAccess_InferenceRule();
+      InferenceRule_Runtime inferenceRule = new typeof_SConceptTypeCastExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {
@@ -464,6 +481,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_ConceptEqualsExpression_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_ConceptSwitch_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
@@ -472,11 +493,15 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
-      NonTypesystemRule_Runtime nonTypesystemRule = new check_Link_DeleteChildOperation_NonTypesystemRule();
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_Link_SetNewChildOperation_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
-      NonTypesystemRule_Runtime nonTypesystemRule = new check_Link_SetNewChildOperation_NonTypesystemRule();
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_ModelReferenceExpression_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_ModuleReferenceExpression_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
@@ -484,19 +509,11 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_Node_GetChildrenAndChildAttributesOperation_HasParameter_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_Node_GetReferentSearchScopeOperation_NonTypesystemRule();
-      this.myNonTypesystemRules.add(nonTypesystemRule);
-    }
-    {
-      NonTypesystemRule_Runtime nonTypesystemRule = new check_SConceptLinkAccess_NonTypesystemRule();
-      this.myNonTypesystemRules.add(nonTypesystemRule);
-    }
-    {
-      NonTypesystemRule_Runtime nonTypesystemRule = new check_SConceptPropertyAccess_NonTypesystemRule();
-      this.myNonTypesystemRules.add(nonTypesystemRule);
-    }
-    {
-      NonTypesystemRule_Runtime nonTypesystemRule = new check_SLinkAccess_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
@@ -508,8 +525,8 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
-      NonTypesystemRule_Runtime nonTypesystemRule = new check_SPropertyAccess_NonTypesystemRule();
-      this.myNonTypesystemRules.add(nonTypesystemRule);
+      SubtypingRule_Runtime subtypingRule = new supertypesOf_ClassifierTypeSConceptNode_SConceptType_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
     }
     {
       SubtypingRule_Runtime subtypingRule = new supertypesOf_ClassifierTypeSModel_SModelType_SubtypingRule();
@@ -517,6 +534,14 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       SubtypingRule_Runtime subtypingRule = new supertypesOf_ClassifierTypeSNode_SNodeType_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
+      SubtypingRule_Runtime subtypingRule = new supertypesOf_ConceptNodeType_ConceptNodeType_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
+      SubtypingRule_Runtime subtypingRule = new supertypesOf_ConceptNodeType_SNodeType_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
     {
@@ -528,11 +553,15 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.mySubtypingRules.add(subtypingRule);
     }
     {
-      SubtypingRule_Runtime subtypingRule = new supertypesOf_SConceptTypeType_SConceptTypeType_SubtypingRule();
+      SubtypingRule_Runtime subtypingRule = new supertypesOf_SConceptType_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
     {
-      SubtypingRule_Runtime subtypingRule = new supertypesOf_SConceptType_SNodeType_SubtypingRule();
+      SubtypingRule_Runtime subtypingRule = new supertypesOf_SConceptTypeLiteral_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
+      SubtypingRule_Runtime subtypingRule = new supertypesOf_SConceptType_SConceptType_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
     {
@@ -580,6 +609,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.mySubtypingRules.add(subtypingRule);
     }
     {
+      ComparisonRule_Runtime comparisonRule = new SConceptType_comparable_SConcept_ComparisonRule();
+      this.myComparisonRules.add(comparisonRule);
+    }
+    {
       ComparisonRule_Runtime comparisonRule = new comparable_SEnumMemberType__node_EnumerationMemberDeclaration_ComparisonRule();
       this.myComparisonRules.add(comparisonRule);
     }
@@ -592,18 +625,21 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInequationReplacementRules.add(eliminationRule);
     }
     {
+      InequationReplacementRule_Runtime eliminationRule = new nlist_subtypeOf_sequence_of_nodes_InequationReplacementRule();
+      this.myInequationReplacementRules.add(eliminationRule);
+    }
+    {
       IVariableConverter_Runtime converter = new IVariableConverter_Runtime() {
         public boolean isApplicable(SNode contextNode, String role, SNode variable, boolean isAggregation) {
           if (isAggregation) {
             return false;
           }
-          if (!(SNodeOperations.isInstanceOf(contextNode, "jetbrains.mps.lang.smodel.structure.SNodeType"))) {
+          if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType")))) {
             return false;
           }
-          SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(contextNode, "jetbrains.mps.lang.smodel.structure.SNodeType"), "concept", false);
+          SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(contextNode, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType")), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"));
           return concept == variable;
         }
-
         public SNode convert(SNode contextNode, String role, SNode variable, boolean isAggregation) {
           return SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626");
         }
@@ -616,13 +652,12 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
           if (isAggregation) {
             return false;
           }
-          if (!(SNodeOperations.isInstanceOf(contextNode, "jetbrains.mps.lang.smodel.structure.SConceptType"))) {
+          if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, "jetbrains.mps.lang.smodel.structure.ConceptNodeType")))) {
             return false;
           }
-          SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(contextNode, "jetbrains.mps.lang.smodel.structure.SConceptType"), "conceptDeclaraton", false);
+          SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(contextNode, MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, "jetbrains.mps.lang.smodel.structure.ConceptNodeType")), MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, 0x112da284156L, "conceptDeclaraton"));
           return concept == variable;
         }
-
         public SNode convert(SNode contextNode, String role, SNode variable, boolean isAggregation) {
           return SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626");
         }

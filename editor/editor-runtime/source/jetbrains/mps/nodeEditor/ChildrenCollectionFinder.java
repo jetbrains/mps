@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,14 @@
 package jetbrains.mps.nodeEditor;
 
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.openapi.editor.cells.DfsTraverser;
-import jetbrains.mps.openapi.editor.cells.DfsTraverserIterable;
+import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.smodel.ModelAccess;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.SNodeLegacy;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -74,7 +74,7 @@ public class ChildrenCollectionFinder {
           }
         }
 
-        for (EditorCell current : new DfsTraverserIterable(myCurrent, myForward, false)) {
+        for (EditorCell current : CellTraversalUtil.iterateTree(null, myCurrent, myForward).skipStart()) {
           SNode currentNode = current.getSNode();
 
           if (!jetbrains.mps.util.SNodeOperations.isAncestor(anchorNode, currentNode)) {
@@ -94,7 +94,7 @@ public class ChildrenCollectionFinder {
     if (current.getRole() != null) {
       String role = current.getRole();
       SNode currentNode = current.getSNode();
-      SNode linkDeclaration = ((jetbrains.mps.smodel.SNode) currentNode).getLinkDeclaration(role);
+      SNode linkDeclaration = new SNodeLegacy(currentNode).getLinkDeclaration(role);
       if (linkDeclaration != null &&
         !SNodeUtil.getLinkDeclaration_IsReference(linkDeclaration) &&
         SModelUtil.isMultipleLinkDeclaration(linkDeclaration)) {

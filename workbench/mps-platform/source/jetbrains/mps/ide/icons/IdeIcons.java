@@ -24,6 +24,7 @@ import jetbrains.mps.fileTypes.FileIcons;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.icons.MPSIcons.Nodes;
 import jetbrains.mps.icons.MPSIcons.ToolWindows;
+import jetbrains.mps.util.annotation.ToRemove;
 
 import javax.swing.Icon;
 
@@ -35,25 +36,13 @@ public class IdeIcons {
   public static final Icon UNKNOWN_ICON = Nodes.Unknown;
 
   public static final Icon DEFAULT_ICON = ToolWindows.Default;
+  public static final Icon DEFAULT_CONCEPT_ICON = Nodes.Node;
   public static final Icon DEFAULT_ROOT_ICON = Nodes.RootNode;
   public static final Icon DEFAULT_NODE_ICON = Nodes.Node;
 
   public static final Icon MODEL_ICON = FileIcons.MODEL_ICON;
-  public static final Icon STRUCTURE_MODEL_ICON = Nodes.Models.StructureModel;
-  public static final Icon EDITOR_MODEL_ICON = Nodes.Models.EditorModel;
-  public static final Icon ACTIONS_MODEL_ICON = Nodes.Models.ActionsModel;
   public static final Icon TEMPLATES_MODEL_ICON = Nodes.Models.TemplatesModel;
-  public static final Icon TYPESYSTEM_MODEL_ICON = Nodes.Models.TypesystemModel;
-  public static final Icon INTENTIONS_MODEL_ICON = Nodes.Models.IntentionsModel;
-  public static final Icon FIND_USAGES_MODEL_ICON = Nodes.Models.FindUsagesModel;
-  public static final Icon PLUGIN_MODEL_ICON = Nodes.Models.PluginModel;
-  public static final Icon BEHAVIOR_MODEL_ICON = Nodes.Models.BehaviourModel;
-  public static final Icon CONSTRAINTS_MODEL_ICON = Nodes.Models.ConstraintsModel;
-  public static final Icon DATA_FLOW_MODEL_ICON = Nodes.Models.DataFlowModel;
   public static final Icon TEST_MODEL_ICON = Nodes.TestModel;
-  public static final Icon REFACTORINGS_MODEL_ICON = Nodes.Models.RefactoringsModel;
-  public static final Icon STUBS_MODEL_ICON = Nodes.Models.StubsModel;
-  public static final Icon TEXT_GEN_MODEL_ICON = Nodes.Models.TextGenModel;
   public static final Icon ACCESSORY_MODEL_ICON = Nodes.Models.AccessoryModel;
 
   public static final Icon PROJECT_ICON = AllIcons.Nodes.Project;
@@ -61,11 +50,27 @@ public class IdeIcons {
   public static final Icon LANGUAGE_ICON = Nodes.Language;
   public static final Icon DEVKIT_ICON = FileIcons.DEVKIT_ICON;
   public static final Icon GENERATOR_ICON = Nodes.Generator;
-  public static final Icon PROJECT_LANGUAGE_ICON = FileIcons.PROJECT_LANGUAGE_ICON;
 
-  public static final Icon PROJECT_MODELS_ICON = MPSIcons.Nodes.ProjectModels;
-  public static final Icon PROJECT_MODELS_EXPANDED_ICON = MPSIcons.Nodes.ProjectModels;
-  public static final Icon TRANSIENT_MODELS_ICON = MPSIcons.Nodes.TransientModels;
+  /**
+   * Use more specific icon.
+   * {@link AllIcons.Nodes#ModuleGroup} can be used as general replacement.
+   */
+  @Deprecated
+  @ToRemove(version = 2017.1)
+  public static final Icon PROJECT_MODELS_ICON = AllIcons.Nodes.ModuleGroup;
+  /**
+   * Use more specific icon.
+   * {@link AllIcons.Nodes#ModuleGroup} can be used as general replacement.
+   */
+  @Deprecated
+  @ToRemove(version = 2017.1)
+  public static final Icon PROJECT_MODELS_EXPANDED_ICON = AllIcons.Nodes.ModuleGroup;
+  /**
+   * @deprecated use {@link Nodes#TransientModule} instead
+  * */
+  @Deprecated
+  @ToRemove(version = 2017.1)
+  public static final Icon TRANSIENT_MODELS_ICON = MPSIcons.Nodes.TransientModule;
 
   public static final Icon PROPERTIES_ICON = General.Settings;
   public static final Icon INSPECTOR_ICON = Toolwindows.ToolWindowInspection;
@@ -77,6 +82,16 @@ public class IdeIcons {
 
   public static final Icon REFERENCE_ICON = Actions.Forward;
 
+  /**
+   * @deprecated use {@link AllIcons.Nodes#ModuleGroup} directly
+   */
+  @Deprecated
+  @ToRemove(version = 2017.1)
   public static final Icon MODULE_GROUP_CLOSED = AllIcons.Nodes.ModuleGroup;
+  /**
+   * @deprecated use {@link AllIcons.Nodes#ModuleGroup} directly
+   */
+  @Deprecated
+  @ToRemove(version = 2017.1)
   public static final Icon MODULE_GROUP_OPENED = AllIcons.Nodes.ModuleGroup;
 }

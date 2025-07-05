@@ -9,13 +9,10 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.vcs.changesmanager.editor.ChangesStripActionsHelper;
-import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import org.apache.log4j.Priority;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.openapi.editor.EditorContext;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 
 public class GoToNextChange_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.NextOccurence;
@@ -25,47 +22,35 @@ public class GoToNextChange_Action extends BaseAction {
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      event.getPresentation().setEnabled(ChangesStripActionsHelper.isNeighbourGroupAvailable(((EditorContext) MapSequence.fromMap(_params).get("editorContext")), true));
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "GoToNextChange", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    event.getPresentation().setEnabled(ChangesStripActionsHelper.isNeighbourGroupAvailable(event.getData(MPSEditorDataKeys.EDITOR_CONTEXT), true));
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("editorContext", event.getData(MPSEditorDataKeys.EDITOR_CONTEXT));
-    if (MapSequence.fromMap(_params).get("editorContext") == null) {
-      return false;
+    {
+      EditorContext p = event.getData(MPSEditorDataKeys.EDITOR_CONTEXT);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("project", event.getData(PlatformDataKeys.PROJECT));
-    if (MapSequence.fromMap(_params).get("project") == null) {
-      return false;
+    {
+      Project p = event.getData(CommonDataKeys.PROJECT);
+      if (p == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      ChangesStripActionsHelper.goToNeighbourGroup(((EditorContext) MapSequence.fromMap(_params).get("editorContext")), true);
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "GoToNextChange", t);
-      }
-    }
+    ChangesStripActionsHelper.goToNeighbourGroup(event.getData(MPSEditorDataKeys.EDITOR_CONTEXT), true);
   }
-
-  protected static Logger LOG = LogManager.getLogger(GoToNextChange_Action.class);
 }

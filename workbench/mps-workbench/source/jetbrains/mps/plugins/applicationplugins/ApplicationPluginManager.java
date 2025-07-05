@@ -16,82 +16,146 @@
 package jetbrains.mps.plugins.applicationplugins;
 
 import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.extensions.PluginId;
+import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.plugins.BasePluginManager;
+import jetbrains.mps.plugins.PluginContributor;
+import jetbrains.mps.plugins.PluginLoaderRegistry;
+import jetbrains.mps.workbench.action.IActionsRegistry;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
-import jetbrains.mps.plugins.PluginUtil;
-import jetbrains.mps.plugins.PluginUtil.ApplicationPluginCreator;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.workbench.action.IRegistryManager;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class ApplicationPluginManager extends BaseApplicationPluginManager implements ApplicationComponent, IRegistryManager {
+/**
+ * Is a {@link BasePluginManager} which is responsible for loading application plugins {@link BaseApplicationPlugin};
+ * Triggered from the superclass (#afterPluginsCreated)
+ */
+public class ApplicationPluginManager extends BasePluginManager<BaseApplicationPlugin> implements ApplicationComponent, IRegistryManager {
   private static final Logger LOG = LogManager.getLogger(ApplicationPluginManager.class);
 
-  @Override
-  public void loadPlugins() {
-    mySortedPlugins = createPlugins();
+  private volatile boolean myInitialized = false;
+  /**
+   * FIXME
+   * WARNING: the dependency on Ide_PluginInitializer is a hack. We need either to init ide plugin explicitly or remove the plugin factories at all,
+   * replace them with usual application_components and project_components.
+   */
+  public ApplicationPluginManager(MPSCoreComponents coreComponents, PluginLoaderRegistry pluginLoaderRegistry) {
+    super(coreComponents.getModuleRepository(), pluginLoaderRegistry);
+  }
 
-    BaseApplicationPlugin idePlugin = null;
-    for (BaseApplicationPlugin p : mySortedPlugins) {
-      if (p.getClass().getName().equals(PluginUtil.IDE_MODULE_APPPLUGIN)) {
-        idePlugin = p;
-        break;
+  public BaseApplicationPlugin getPlugin(PluginId id) {
+    for (BaseApplicationPlugin p : getPlugins()) {
+      if (p.getId() == id) {
+        return p;
       }
     }
+    return null;
+  }
 
-    super.loadPlugins();
+  @Override
+  public IActionsRegistry getActionsRegistry(PluginId id) {
+    return getPlugin(id);
+  }
 
-    if (idePlugin != null) {
-      GroupAdjuster.adjustTopLevelGroups(idePlugin);
-    }
+  @Override
+  protected BaseApplicationPlugin createPlugin(PluginContributor contributor) {
+    return contributor.createApplicationPlugin();
+  }
+
+  @Override
+  protected void afterPluginsCreated(List<BaseApplicationPlugin> plugins) {
+    createKeyMaps(plugins);
+    createGroups(plugins);
+    adjustGroups(plugins);
+    createCustomParts(plugins);
+    GroupAdjuster.adjustTopLevelGroups();
     GroupAdjuster.refreshCustomizations();
   }
 
-  @Override
-  protected List<BaseApplicationPlugin> createPlugins() {
-    List<BaseApplicationPlugin> result = new ArrayList<BaseApplicationPlugin>();
-
-    Set<SModule> modules = new HashSet<SModule>();
-    modules.addAll(PluginUtil.collectPluginModules());
-    result.addAll(PluginUtil.createPlugins(modules, new ApplicationPluginCreator()));
-
-    result.addAll(super.createPlugins());
-
-    return result;
-  }
-
-  @Override
-  public void disposePlugins() {
-    Collections.reverse(mySortedPlugins);
-    for (BaseApplicationPlugin plugin : mySortedPlugins) {
+  private void createKeyMaps(List<BaseApplicationPlugin> plugins) {
+    for (BaseApplicationPlugin plugin : plugins) {
       try {
-        plugin.dispose();
-      } catch (Throwable t) {
-        LOG.error("Plugin " + plugin + " threw an exception during disposing ", t);
+        plugin.createKeymaps();
+      } catch (Throwable t1) {
+        LOG.error("Plugin " + plugin + " threw an exception during key maps creating ", t1);
       }
     }
-    mySortedPlugins.clear();
   }
 
-  //----------------COMPONENT STUFF---------------------
+  private void createGroups(List<BaseApplicationPlugin> plugins) {
+    for (BaseApplicationPlugin plugin : plugins) {
+      try {
+        plugin.createGroups();
+      } catch (Throwable t1) {
+        LOG.error("Plugin " + plugin + " threw an exception during groups creating ", t1);
+      }
+    }
+  }
+
+  private void adjustGroups(List<BaseApplicationPlugin> plugins) {
+    for (BaseApplicationPlugin plugin : plugins) {
+      try {
+        plugin.adjustGroups();
+      } catch (Throwable t1) {
+        LOG.error("Plugin " + plugin + " threw an exception during groups adjusting ", t1);
+      }
+    }
+  }
+
+  private void createCustomParts(List<BaseApplicationPlugin> plugins) {
+    for (BaseApplicationPlugin plugin : plugins) {
+      try {
+        plugin.createCustomParts();
+      } catch (Throwable t1) {
+        LOG.error("Plugin " + plugin + " threw an exception during creating custom parts ", t1);
+      }
+    }
+  }
+
+  @Override
+  protected void beforePluginsDisposed(List<BaseApplicationPlugin> plugins) {
+  }
+
+  @Override
+  protected void disposePlugin(BaseApplicationPlugin plugin) {
+    plugin.dispose();
+  }
 
   @Override
   @NonNls
   @NotNull
   public String getComponentName() {
-    return "ApplicationPluginManager";
+    return ApplicationPluginManager.class.getName();
   }
 
+  /**
+   * Cannot load existing plugins here since:
+   * 1. we need to initialize ide plugin at the first place here (other plugins' actions depend on it)
+   * 2. it has some action which recursively addresses this component via Application#getComponent which leads to infinite recursive initialization
+   *    fixme we can get rid of that but probably some generated code needs to be rewritten (the only place is {@link jetbrains.mps.plugins.actions.GeneratedActionGroup}
+   *
+   * Thus we state that currently there must be no loaded modules in the repository when #initComponent() is called
+   */
   @Override
   public void initComponent() {
-
+    LOG.debug("Running startup activity");
+    register();
+    LOG.debug("Finished running startup activity");
   }
 
   @Override
   public void disposeComponent() {
+    LOG.debug("Running shutdown app activity");
+    unregister();
+    LOG.debug("Finished running shutdown app activity");
+  }
 
+  @Override
+  public String toString() {
+    return "ApplicationPluginManager";
   }
 }

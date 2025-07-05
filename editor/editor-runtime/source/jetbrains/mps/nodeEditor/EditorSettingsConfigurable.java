@@ -19,6 +19,8 @@ package jetbrains.mps.nodeEditor;
 import com.intellij.application.options.editor.EditorOptionsProvider;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.options.SearchableConfigurable;
+import com.intellij.openapi.util.Disposer;
+import jetbrains.mps.nodeEditor.resources.EditorSettingsBundle;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -27,6 +29,8 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 
 public class EditorSettingsConfigurable implements SearchableConfigurable {
+  private EditorSettingsPreferencesPage mySettingsPreferencesPage;
+
   @NotNull
   @Override
   public String getId() {
@@ -41,7 +45,7 @@ public class EditorSettingsConfigurable implements SearchableConfigurable {
   @Nls
   @Override
   public String getDisplayName() {
-    return "Editor";
+    return EditorSettingsBundle.message("title.editor.settings");
   }
 
   @Nullable
@@ -53,27 +57,29 @@ public class EditorSettingsConfigurable implements SearchableConfigurable {
 
   @Override
   public JComponent createComponent() {
-    return EditorSettings.getInstance().getPreferencesPage().getComponent();
+    mySettingsPreferencesPage = new EditorSettingsPreferencesPage(EditorSettings.getInstance());
+    return mySettingsPreferencesPage.getComponent();
   }
 
   @Override
   public boolean isModified() {
-    return EditorSettings.getInstance().getPreferencesPage().isModified();
+    return mySettingsPreferencesPage.isModified();
   }
 
   @Override
   public void apply() throws ConfigurationException {
-    EditorSettings.getInstance().getPreferencesPage().commit();
+    mySettingsPreferencesPage.commit();
   }
 
   @Override
   public void reset() {
-    EditorSettings.getInstance().getPreferencesPage().reset();
+    mySettingsPreferencesPage.reset();
   }
 
   @Override
   public void disposeUIResources() {
-    EditorSettings.getInstance().disposeUi();
+    Disposer.dispose(mySettingsPreferencesPage);
+    mySettingsPreferencesPage = null;
   }
 
   /**
@@ -84,7 +90,7 @@ public class EditorSettingsConfigurable implements SearchableConfigurable {
     @Nls
     @Override
     public String getDisplayName() {
-      return "MPS";
+      return EditorSettingsBundle.message("title.editor.settings.in.plugin");
     }
   }
 }

@@ -4,37 +4,59 @@ package jetbrains.mps.debugger.java.runtime.evaluation.container;
 
 import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
-import org.jetbrains.mps.openapi.module.SModuleReference;
+import java.util.concurrent.atomic.AtomicInteger;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.project.ModuleId;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.smodel.IScope;
-import jetbrains.mps.project.GlobalScope;
+import org.jetbrains.mps.openapi.module.SDependency;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.extapi.module.TransientSModule;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.module.SDependencyImpl;
+import org.jetbrains.mps.openapi.module.SDependencyScope;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import java.util.Collection;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 
-public class EvaluationModule extends AbstractModule implements SModule {
-  private final ModuleDescriptor myDescriptor;
-  private final Set<String> myClassPaths = SetSequence.fromSet(new HashSet<String>());
+/**
+ * This module contains a necessary information for the 'evaluate expression'
+ * action during a debug session.
+ * Currently extends AbstractModule though it is obviously not one.
+ */
+public final class EvaluationModule extends AbstractModule implements SModule {
   private static final Logger LOG = LogManager.getLogger(EvaluationModule.class);
 
+  private final ModuleDescriptor myDescriptor;
+  private final Set<String> myClassPaths = SetSequence.fromSet(new HashSet<String>());
+  private static final AtomicInteger ourCounter = new AtomicInteger();
+
+  private static int incCounter() {
+    return ourCounter.incrementAndGet();
+  }
+
   public EvaluationModule() {
-    SModuleReference reference = new ModuleReference("Evaluation Container Module", ModuleId.regular());
-    setModuleReference(reference);
+    super((IFile) null);
+    setModuleReference(new ModuleReference("Evaluation Container Module " + incCounter(), ModuleId.regular()));
     myDescriptor = new ModuleDescriptor();
   }
 
   @Override
   public String toString() {
-    return "Evaluation Module";
+    return getModuleName() + " [evaluation module]";
   }
 
   @Override
@@ -45,7 +67,7 @@ public class EvaluationModule extends AbstractModule implements SModule {
   @Override
   protected Iterable<ModelRoot> loadRoots() {
     Set<ModelRoot> result = new HashSet<ModelRoot>();
-    for (String stub : SetSequence.fromSet(myClassPaths)) {
+    for (String stub : myClassPaths) {
       ModelRoot modelRoot = PersistenceFacade.getInstance().getModelRootFactory(PersistenceRegistry.JAVA_CLASSES_ROOT).create();
       if (modelRoot instanceof FileBasedModelRoot) {
         ((FileBasedModelRoot) modelRoot).setContentRoot(stub);
@@ -69,9 +91,32 @@ public class EvaluationModule extends AbstractModule implements SModule {
     return path;
   }
 
-  @NotNull
   @Override
-  public IScope getScope() {
-    return GlobalScope.getInstance();
+  public Iterable<SDependency> getDeclaredDependencies() {
+    Iterable<SModule> modules = getRepository().getModules();
+    return Sequence.fromIterable(modules).where(new IWhereFilter<SModule>() {
+      public boolean accept(SModule it) {
+        return it != EvaluationModule.this && !(it instanceof TransientSModule);
+      }
+    }).select(new ISelector<SModule, SDependencyImpl>() {
+      public SDependencyImpl select(SModule it) {
+        return (new SDependencyImpl(it, SDependencyScope.DEFAULT, false));
+      }
+    }).ofType(SDependency.class);
+  }
+
+  @Override
+  public Set<SLanguage> getUsedLanguages() {
+    Collection<Language> languages = new ModuleRepositoryFacade(getRepository()).getAllModules(Language.class);
+    return SetSequence.fromSetWithValues(new HashSet<SLanguage>(), CollectionSequence.fromCollection(languages).select(new ISelector<Language, SLanguage>() {
+      public SLanguage select(Language it) {
+        return MetaAdapterByDeclaration.getLanguage(it);
+      }
+    }));
+  }
+
+  @Override
+  public boolean isReadOnly() {
+    return false;
   }
 }

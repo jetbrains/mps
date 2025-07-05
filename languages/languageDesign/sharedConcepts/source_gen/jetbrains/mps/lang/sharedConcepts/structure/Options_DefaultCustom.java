@@ -4,33 +4,36 @@ package jetbrains.mps.lang.sharedConcepts.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum Options_DefaultCustom {
   default_("default_", null),
   custom_("custom_", "custom");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private Options_DefaultCustom(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<Options_DefaultCustom> getConstants() {
     List<Options_DefaultCustom> list = ListSequence.fromList(new LinkedList<Options_DefaultCustom>());
     ListSequence.fromList(list).addElement(Options_DefaultCustom.default_);
     ListSequence.fromList(list).addElement(Options_DefaultCustom.custom_);
     return list;
   }
-
   public static Options_DefaultCustom getDefault() {
     return Options_DefaultCustom.default_;
   }
-
   public static Options_DefaultCustom parseValue(String value) {
     if (value == null) {
       return Options_DefaultCustom.getDefault();
@@ -42,16 +45,5 @@ public enum Options_DefaultCustom {
       return Options_DefaultCustom.custom_;
     }
     return Options_DefaultCustom.getDefault();
-  }
-
-  private String myValue;
-
-  Options_DefaultCustom(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

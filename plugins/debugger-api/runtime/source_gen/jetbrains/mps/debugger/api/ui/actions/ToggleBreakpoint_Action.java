@@ -11,11 +11,9 @@ import jetbrains.mps.debugger.api.ui.breakpoints.BreakpointsUiComponent;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import org.apache.log4j.Priority;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.nodeEditor.EditorComponent;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 
 public class ToggleBreakpoint_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -25,54 +23,48 @@ public class ToggleBreakpoint_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(false);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        BreakpointsUiComponent breakpointManager = BreakpointsUiComponent.getInstance(((Project) MapSequence.fromMap(_params).get("project")));
-        event.getPresentation().setEnabled(breakpointManager != null && breakpointManager.isDebuggable(((EditorCell) MapSequence.fromMap(_params).get("selectedCell"))));
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "ToggleBreakpoint", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    BreakpointsUiComponent breakpointManager = BreakpointsUiComponent.getInstance(((Project) MapSequence.fromMap(_params).get("project")));
+    event.getPresentation().setEnabled(breakpointManager != null && breakpointManager.isDebuggable(((EditorCell) MapSequence.fromMap(_params).get("selectedCell"))));
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("selectedCell", event.getData(MPSEditorDataKeys.EDITOR_CELL));
-    if (MapSequence.fromMap(_params).get("selectedCell") == null) {
-      return false;
+    {
+      EditorCell p = event.getData(MPSEditorDataKeys.EDITOR_CELL);
+      MapSequence.fromMap(_params).put("selectedCell", p);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("editorComponent", event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
-    if (MapSequence.fromMap(_params).get("editorComponent") == null) {
-      return false;
+    {
+      EditorComponent editorComponent = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT);
+      if (editorComponent != null && editorComponent.isInvalid()) {
+        editorComponent = null;
+      }
+      MapSequence.fromMap(_params).put("editorComponent", editorComponent);
+      if (editorComponent == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("project", event.getData(PlatformDataKeys.PROJECT));
-    if (MapSequence.fromMap(_params).get("project") == null) {
-      return false;
+    {
+      Project p = event.getData(CommonDataKeys.PROJECT);
+      MapSequence.fromMap(_params).put("project", p);
+      if (p == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      BreakpointsUiComponent.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).toggleBreakpoint(((EditorCell) MapSequence.fromMap(_params).get("selectedCell")));
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "ToggleBreakpoint", t);
-      }
-    }
+    BreakpointsUiComponent.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).toggleBreakpoint(((EditorCell) MapSequence.fromMap(_params).get("selectedCell")));
   }
-
-  protected static Logger LOG = LogManager.getLogger(ToggleBreakpoint_Action.class);
 }

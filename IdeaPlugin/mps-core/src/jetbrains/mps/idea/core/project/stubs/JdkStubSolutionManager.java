@@ -16,35 +16,39 @@
 
 package jetbrains.mps.idea.core.project.stubs;
 
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationType;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.projectRoots.JavaSdk;
 import com.intellij.openapi.projectRoots.ProjectJdkTable;
 import com.intellij.openapi.projectRoots.ProjectJdkTable.Listener;
 import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.SdkAdditionalData;
 import com.intellij.openapi.projectRoots.SdkModificator;
 import com.intellij.openapi.projectRoots.SdkTypeId;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.roots.OrderRootType;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.messages.MessageBusConnection;
-import jetbrains.mps.ClasspathReader.ClassType;
+import jetbrains.mps.idea.core.MPSBundle;
+import jetbrains.mps.util.ClassType;
+import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.project.StubSolutionIdea;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.reloading.CommonPaths;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -87,29 +91,32 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
   public Solution getModuleSdkSolution(Module module) {
     Sdk sdk = ModuleRootManager.getInstance(module).getSdk();
     if (sdk == null) return null;
-    return getSdkSolution(sdk);
+    return getSdkSolution(sdk, ProjectHelper.getProjectRepository(module.getProject()));
   }
 
-  public Solution getSdkSolution(final Sdk sdk) {
-    ModelAccess.assertLegalRead();
+  public Solution getSdkSolution(final Sdk sdk, SRepository repository) {
+    assert repository.getModelAccess().canRead();
 
     synchronized (LOCK) {
       if (sdk.equals(myJavaSdk)) return myJavaSdkSolution;
       if (sdk.equals(myIdeaSdk)) return myIdeaSdkSolution;
     }
     // otherwise normal logic: by foreign id
-    return ModelAccess.instance().runReadAction(new Computable<Solution>() {
+    return new ModelAccessHelper(repository.getModelAccess()).runReadAction(new Computable<Solution>() {
       @Override
       public Solution compute() {
-        return (Solution) MPSModuleRepository.getInstance().getModule(ModuleId.foreign(sdk.getName()));
+        return (Solution) repository.getModule(ModuleId.foreign(sdk.getName()));
       }
     });
+  }
 
-
+  public Collection<Module> getModules() {
+    return Collections.unmodifiableCollection(myModules);
   }
 
   public void claimSdk(Module module) throws DifferentSdkException {
-    ModelAccess.assertLegalWrite();
+    SRepository repository = ProjectHelper.getProjectRepository(module.getProject());
+    assert repository.getModelAccess().canWrite();
 
     Sdk sdk = ModuleRootManager.getInstance(module).getSdk();
     // ?
@@ -120,12 +127,12 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
 
     synchronized (LOCK) {
       if (JAVA_SDK_TYPE.equals(sdkType)) {
-
+        // it's JDK
         if (sdk.equals(myJavaSdk)) return; // nothing to do
-        dropSdksIfUnused();
-        // no sdks: we're free to set it up
-        if (myJavaSdk == null && myIdeaSdk == null) {
-          setUpJdk(sdk);
+        dropSdksIfUnused((SRepositoryExt) repository);
+        if (myJavaSdk == null) {
+          // either no sdks at all, or only idea sdk without underlying jdk: we're free to set it up
+          setUpJdk(sdk, repository);
           myModules.add(module);
           return;
         }
@@ -133,11 +140,11 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
         throw new DifferentSdkException(myJavaSdk, sdk);
 
       } else if (IDEA_SDK_TYPE.equals(sdkType)) {
-
+        // it's an IDEA SDK, we treat it specially cause we know it has jdk as its base
         if (sdk.equals(myIdeaSdk)) return; // do nothing
-        dropSdksIfUnused();
+        dropSdksIfUnused((SRepositoryExt) repository);
         if (myIdeaSdk == null) {
-          setUpIdeaSdk(sdk);
+          setUpIdeaSdk(sdk, repository);
           myModules.add(module);
           return;
         }
@@ -146,14 +153,15 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
 
       } else {
         // TODO pull out jdk that can be (or must be?) beneath this sdk
-        addSolution(sdk);
+        addSolution(sdk, (SRepositoryExt) repository);
       }
     }
 
   }
 
   public void releaseSdk(Module module) {
-    ModelAccess.assertLegalWrite();
+    SRepository repository = ProjectHelper.getProjectRepository(module.getProject());
+    assert repository.getModelAccess().canWrite();
     Sdk sdk = ModuleRootManager.getInstance(module).getSdk();
     if (sdk == null) return;
 
@@ -164,29 +172,46 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
     }
   }
 
-  private void dropSdksIfUnused() {
+  @Override
+  protected void handleModuleNameTaken(StubModuleNameTakenException exception) {
+    String message = String.format(
+        MPSBundle.message("mps.stub.warning.duplicate.sdk.message"),
+        exception.getLibraryName(),
+        exception.getNamespace());
+    new Notification(
+      MPSBundle.message("mps.stub.warning.group.display.id"),
+      MPSBundle.message("mps.stub.warning.duplicate.sdk.title"),
+      message,
+      NotificationType.WARNING).notify();
+  }
+
+  /**
+   *
+   * @param repository A repository. It's implied to be simply an accessor to global repository, a means
+   *                   to take a lock. Because our SDKs are currently tracked per application, not per project;
+   */
+  private void dropSdksIfUnused(SRepositoryExt repository) {
     // if no modules are left, we can throw our sdk solutions away and set up another one
     if (myModules.isEmpty()) {
       if (myJavaSdkSolution != null) {
-        MPSModuleRepository.getInstance().unregisterModule(myJavaSdkSolution, JdkStubSolutionManager.this);
+        repository.unregisterModule(myJavaSdkSolution, JdkStubSolutionManager.this);
         myJavaSdk = null;
         myJavaSdkSolution = null;
       }
       if (myIdeaSdkSolution != null) {
-        MPSModuleRepository.getInstance().unregisterModule(myIdeaSdkSolution, JdkStubSolutionManager.this);
+        repository.unregisterModule(myIdeaSdkSolution, JdkStubSolutionManager.this);
         myIdeaSdk = null;
         myIdeaSdkSolution = null;
       }
     }
   }
 
-  private void setUpJdk(Sdk sdk) {
-    myJavaSdkSolution = replaceJdkSolution(sdk);
+  private void setUpJdk(Sdk sdk, SRepository repository) {
+    myJavaSdkSolution = replaceJdkSolution(sdk, (SRepositoryExt) repository);
     myJavaSdk = sdk;
   }
 
-  private void setUpIdeaSdk(Sdk sdk) throws DifferentSdkException {
-
+  private void setUpIdeaSdk(Sdk sdk, SRepository repository) throws DifferentSdkException {
     // first we check that this idea sdk uses the right jdk
     Sdk jdk = guessJdk(sdk);
 
@@ -197,7 +222,7 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
         throw new DifferentSdkException(myJavaSdk, jdk);
       }
 
-      if (myJavaSdk == null) setUpJdk(jdk);
+      if (myJavaSdk == null) setUpJdk(jdk, repository);
     }
 
     // we exclude jdk roots (if jdk used)
@@ -234,7 +259,7 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
     // remove from MPS.Platform 2 jars that contain idea classes but have different names,
     // not like in idea sdk
 
-    SModule mpsPlatform = MPSModuleRepository.getInstance().getModule(ModuleId.regular(UUID.fromString("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61")));
+    SModule mpsPlatform = repository.getModule(ModuleId.regular(UUID.fromString("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61")));
     assert mpsPlatform instanceof Solution;
 
     Set<String> ideaStuffPaths = new HashSet<String>(CommonPaths.getMPSPaths(ClassType.IDEA_PLATFORM));
@@ -252,10 +277,10 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
 
     if (changed) {
       ((Solution) mpsPlatform).setUpdateBootstrapSolutions(false);
-      ((Solution) mpsPlatform).setModuleDescriptor(mpsPlatfromDesc, false); // reload classes == false?
+      ((Solution) mpsPlatform).setModuleDescriptor(mpsPlatfromDesc);
     }
 
-    myIdeaSdkSolution = StubSolutionIdea.newInstanceForRoots(sdk, jdk, roots, this);
+    myIdeaSdkSolution = StubSolutionIdea.newInstanceForRoots(sdk, jdk, roots, this, (SRepositoryExt) repository);
     myIdeaSdk = sdk;
   }
 
@@ -279,8 +304,9 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
 
   @Override
   protected void dispose() {
-    ModuleRepositoryFacade.getInstance().unregisterModules(JdkStubSolutionManager.this);
-  }
+    super.dispose();
+    // todo remove listener
+  };
 
   @Override
   public void jdkAdded(final Sdk jdk) {

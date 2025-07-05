@@ -6,14 +6,13 @@ package jetbrains.mps.baseLanguage.util.plugin.refactorings;
 public enum FieldInitializationPlace {
   FIELD("Field declaration"),
   CONSTRUCTOR("Class constructor(s)"),
-  METHOD("Current method");
+  METHOD("Current method"),
+  STATICINIT("Static initializer");
 
   private String myName;
-
   FieldInitializationPlace(String name) {
     this.myName = name;
   }
-
   public String getName() {
     return this.myName;
   }

@@ -6,6 +6,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.TypeContextManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import junit.framework.Assert;
 import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.newTypesystem.state.State;
@@ -17,11 +19,10 @@ import jetbrains.mps.newTypesystem.test.StateMatcher;
 public class TypeSystemCheckUtil {
   public TypeSystemCheckUtil() {
   }
-
   public static void checkGenerationMode(SNode node) {
     TypeCheckingContext typeCheckingContext = TypeContextManager.getInstance().createTypeCheckingContext(node.getContainingRoot());
     typeCheckingContext.checkRoot(true);
-    for (SNode child : SNodeOperations.getDescendants(node, "jetbrains.mps.lang.core.structure.BaseConcept", false, new String[]{})) {
+    for (SNode child : SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), false, new SAbstractConcept[]{})) {
       TypeCheckingContext typeCheckingContext2 = TypeContextManager.getInstance().createTracingTypeCheckingContext(node.getContainingRoot());
       SNode type1 = typeCheckingContext.getTypeDontCheck(child);
       if (type1 == null) {
@@ -31,7 +32,6 @@ public class TypeSystemCheckUtil {
       Assert.assertTrue(TypesUtil.match(type1, type2));
     }
   }
-
   public static void checkRollBacks(SNode node) {
     TypeCheckingContext typeCheckingContext = TypeContextManager.getInstance().createTracingTypeCheckingContext(node.getContainingRoot());
     State state = typeCheckingContext.getState();

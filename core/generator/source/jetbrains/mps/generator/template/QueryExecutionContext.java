@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,59 +16,50 @@
 package jetbrains.mps.generator.template;
 
 import jetbrains.mps.generator.impl.GenerationFailureException;
-import jetbrains.mps.generator.runtime.*;
+import jetbrains.mps.generator.impl.template.QueryExecutor;
+import jetbrains.mps.generator.runtime.GenerationException;
+import jetbrains.mps.generator.runtime.TemplateContext;
+import jetbrains.mps.generator.runtime.TemplateCreateRootRule;
+import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
+import jetbrains.mps.generator.runtime.TemplateMappingScript;
+import jetbrains.mps.generator.runtime.TemplateReductionRule;
+import jetbrains.mps.generator.runtime.TemplateRootMappingRule;
+import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
+import jetbrains.mps.generator.runtime.TemplateWeavingRule;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
+ * XXX this is not a context, rather QueryExecutionFacility/QueryExecutor, utility to provide extra indirection
+ * when invoking conditions/rules. It doesn't keep any 'context' information.
+ * Note, this facility is relevant to interpreted templates only, generated templates invoke corresponding generated query methods directly.
+ * This interface is in API (TemplateExecutionEnvironment gives access to it), although it's not expected clients will use it (there's no need to), and
+ * with this in mind, the API is deemed internal and subject to change without any notice and deprecation phase.
+ * FIXME get rid of inputNode and TEE where templateContext is available
  * Evgeny Gryaznov, Feb 24, 2010
  */
-public interface QueryExecutionContext {
+public interface QueryExecutionContext extends QueryExecutor {
 
+  /**
+   * @return true if nodes using this context can be generated in parallel. When false, all nodes that use this context
+   * will be generated from the same thread.
+   */
   boolean isMultithreaded();
 
-  boolean checkCondition(SNode condition, boolean required, SNode inputNode, SNode ruleNode) throws GenerationFailureException;
+  Collection<SNode> applyRule(TemplateReductionRule rule, TemplateContext context) throws GenerationException;
 
-  boolean checkConditionForIfMacro(SNode inputNode, SNode ifMacro, @NotNull TemplateContext context) throws GenerationFailureException;
+  boolean isApplicable(@NotNull TemplateRuleWithCondition rule, @NotNull TemplateContext context) throws GenerationFailureException;
 
-  SNode executeMapSrcNodeMacro(SNode inputNode, SNode mapSrcNodeOrListMacro, SNode parentOutputNode, @NotNull TemplateContext context) throws GenerationFailureException;
-
-  void executeMapSrcNodeMacro_PostProc(SNode inputNode, SNode mapSrcNodeOrListMacro, SNode outputNode, @NotNull TemplateContext context) throws GenerationFailureException;
-
-  void expandPropertyMacro(SNode propertyMacro, SNode inputNode, SNode templateNode, SNode outputNode, @NotNull TemplateContext context) throws GenerationFailureException;
-
-  SNode evaluateSourceNodeQuery(SNode inputNode, SNode macroNode, SNode query, @NotNull TemplateContext context);
-
-  Object evaluateArgumentQuery(SNode inputNode, SNode query, @Nullable TemplateContext context);
-
-  Object evaluateVariableQuery(SNode inputNode, SNode query, @Nullable TemplateContext context);
-
-  List<SNode> evaluateSourceNodesQuery(SNode inputNode, SNode ruleNode, SNode macroNode, SNode query, @NotNull TemplateContext context);
-
-  SNode evaluateInsertQuery(SNode inputNode, SNode macroNode, SNode query, @NotNull TemplateContext context);
-
-  SNode getContextNodeForTemplateFragment(SNode templateFragmentNode, SNode mainContextNode, @NotNull TemplateContext context);
-
-  Object getReferentTarget(SNode node, SNode outputNode, SNode refMacro, TemplateContext context);
-
-  void executeInContext(SNode outputNode, TemplateContext context, PostProcessor processor);
-
-  SNode executeInContext(SNode outputNode, TemplateContext context, NodeMapper mapper);
-
-  Collection<SNode> tryToApply(TemplateReductionRule rule, TemplateExecutionEnvironment environment, TemplateContext context) throws GenerationException;
-
-  boolean isApplicable(TemplateRuleWithCondition rule, TemplateExecutionEnvironment environment, TemplateContext context) throws GenerationException;
-
-  Collection<SNode> applyRule(TemplateRootMappingRule rule, TemplateExecutionEnvironment environment, TemplateContext context) throws GenerationException;
+  Collection<SNode> applyRule(TemplateRootMappingRule rule, TemplateContext context) throws GenerationException;
 
   Collection<SNode> applyRule(TemplateCreateRootRule rule, TemplateExecutionEnvironment environment) throws GenerationException;
 
-  SNode getContextNode(TemplateWeavingRule rule, TemplateExecutionEnvironment environment, TemplateContext context);
+  boolean applyRule(TemplateWeavingRule rule, TemplateContext context, SNode outputContextNode) throws GenerationException;
 
-  void executeScript(TemplateMappingScript mappingScript, SModel model);
+  SNode getContextNode(TemplateWeavingRule rule, TemplateContext context) throws GenerationFailureException;
+
+  void executeScript(TemplateMappingScript mappingScript, SModel model) throws GenerationFailureException;
 }

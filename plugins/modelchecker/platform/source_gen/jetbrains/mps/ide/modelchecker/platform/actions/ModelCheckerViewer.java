@@ -4,48 +4,51 @@ package jetbrains.mps.ide.modelchecker.platform.actions;
 
 import javax.swing.JPanel;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.ide.findusages.view.UsagesView;
-import javax.swing.Icon;
 import javax.swing.JButton;
+import jetbrains.mps.ide.project.ProjectHelper;
 import java.awt.BorderLayout;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.ViewOptions;
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.icons.AllIcons;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.IdeActions;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.smodel.ModelAccess;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.ui.Messages;
-import jetbrains.mps.ide.project.ProjectHelper;
 import java.util.ArrayList;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.smodel.SNodePointer;
-import com.intellij.openapi.progress.ProgressManager;
-import com.intellij.openapi.progress.Task;
-import org.jetbrains.annotations.NotNull;
-import com.intellij.openapi.progress.ProgressIndicator;
-import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.ide.findusages.model.IResultProvider;
-import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
-import jetbrains.mps.ide.findusages.model.holders.ModulesHolder;
-import jetbrains.mps.project.MPSProject;
-import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.ide.findusages.model.holders.GenericHolder;
+import java.util.Collection;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import jetbrains.mps.project.GlobalScope;
+import jetbrains.mps.ide.findusages.view.FindUtils;
+import jetbrains.mps.findUsages.CompositeFinder;
 import jetbrains.mps.ide.findusages.model.holders.ModelsHolder;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import jetbrains.mps.ide.findusages.model.IResultProvider;
+import com.intellij.openapi.actionSystem.ActionPlaces;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 import jetbrains.mps.util.NameUtil;
+import javax.swing.Icon;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.messages.Icons;
 import jetbrains.mps.util.StringUtil;
@@ -55,64 +58,57 @@ import org.jdom.Element;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 
-public abstract class ModelCheckerViewer extends JPanel {
-  private Project myProject;
-  private IOperationContext myOperationContext;
+public class ModelCheckerViewer extends JPanel {
+  private final Project myIdeaProject;
+  private final jetbrains.mps.project.Project myProject;
   private UsagesView myUsagesView;
-  private String myTabTitle;
-  private Icon myTabIcon;
   private JButton myFixButton;
-  private String myCheckProgressTitle = "Checking...";
+  private UsagesView.RerunAction myCheckAction;
+  public ModelCheckerViewer(Project project) {
+    this(project, true);
+  }
 
-  public ModelCheckerViewer(Project project, IOperationContext operationContext) {
-    myProject = project;
-    myOperationContext = operationContext;
+  public ModelCheckerViewer(Project project, boolean canFix) {
+    myIdeaProject = project;
+    myProject = ProjectHelper.toMPSProject(project);
 
     setLayout(new BorderLayout());
     ViewOptions viewOptions = new ViewOptions(true, false, false, false, false);
     viewOptions.myCategories = new boolean[]{true, false};
 
-    myUsagesView = new UsagesView(project, viewOptions) {
-      @Override
-      public void close() {
+    myUsagesView = new UsagesView(project, viewOptions);
+    myCheckAction = new UsagesView.RerunAction(myUsagesView, "Check again");
+    myUsagesView.setActions(myCheckAction, new UsagesView.RebuildAction(myUsagesView), new AnAction("Close", "", AllIcons.Actions.Cancel) {
+      public void actionPerformed(@NotNull AnActionEvent p0) {
         ModelCheckerViewer.this.close();
       }
-
-      @Override
-      protected String getRerunSearchTooltip() {
-        return "Recheck";
-      }
-
-      @Override
-      protected String getSearchProgressTitle() {
-        return myCheckProgressTitle;
-      }
-    };
+    }, ActionManager.getInstance().getAction(IdeActions.ACTION_PIN_ACTIVE_TAB));
     myUsagesView.setCustomNodeRepresentator(new ModelCheckerViewer.MyNodeRepresentator());
     add(myUsagesView.getComponent(), BorderLayout.CENTER);
 
     JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-
-    myFixButton = new JButton("Perform Quick Fixes");
-    myFixButton.setToolTipText("Remove undeclared children and undeclared references, resolve links in included nodes");
-    myFixButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent event) {
-        performQuickFixes();
-      }
-    });
-    buttonPanel.add(myFixButton);
+    // XXX fix button might be an action along with others above (i.e. button in the left pane) 
+    if (canFix) {
+      myFixButton = new JButton("Perform Quick Fixes");
+      myFixButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent event) {
+          performQuickFixes();
+        }
+      });
+      buttonPanel.add(myFixButton);
+    }
     add(buttonPanel, BorderLayout.SOUTH);
   }
-
-  protected abstract void close();
-
+  protected void close() {
+    // no-op, override to react on view close action 
+  }
   public void performQuickFixes() {
     // Ask if need to fix 
 
     // Perform quick fixes 
     final Wrappers._int fixedTotal = new Wrappers._int(0);
-    ModelAccess.instance().runWriteActionInCommand(new Runnable() {
+    myProject.getModelAccess().executeCommandInEDT(new Runnable() {
       public void run() {
         // Select all fixable issues 
         List<ModelCheckerIssue> issuesToFix = ModelCheckerViewer.this.getIssuesToFix();
@@ -120,7 +116,7 @@ public abstract class ModelCheckerViewer extends JPanel {
           Messages.showInfoMessage("There are no quick fixes for current problems", "No Quick Fixes");
           return;
         }
-        int dialogAnswer = Messages.showYesNoDialog(ProjectHelper.toIdeaProject(myOperationContext.getProject()), "You are going to remove undeclared properties, children from nodes and resolve references. " + "You may not be able to undo it. Are you sure?", "Warning", null);
+        int dialogAnswer = Messages.showYesNoDialog(myIdeaProject, "You are going to remove undeclared properties, children from nodes and resolve references. " + "You may not be able to undo it. Are you sure?", "Warning", null);
         if (dialogAnswer != 0) {
           return;
         }
@@ -141,108 +137,78 @@ public abstract class ModelCheckerViewer extends JPanel {
 
     // Perform recheck if needed 
     if (fixedTotal.value != 0) {
-      int dialogAnswer1 = Messages.showYesNoDialog(ProjectHelper.toIdeaProject(myOperationContext.getProject()), "Model checker fixed " + fixedTotal.value + " issues. Do you wish to recheck?", "Recheck", null);
+      int dialogAnswer1 = Messages.showYesNoDialog(myIdeaProject, "Model checker fixed " + fixedTotal.value + " issues. Do you wish to recheck?", "Recheck", null);
       if (dialogAnswer1 != 0) {
         return;
       }
 
-      runCheck();
+      doReCheck();
     }
   }
-
   private List<ModelCheckerIssue> getIssuesToFix() {
     final Set<SNodeReference> includedResultNodes = SetSequence.fromSetWithValues(new HashSet<SNodeReference>(), myUsagesView.getIncludedResultNodes());
+    final Set<SModel> includedResultModels = SetSequence.fromSetWithValues(new HashSet<SModel>(), myUsagesView.getIncludedModels());
     return ListSequence.fromList(((List<SearchResult<ModelCheckerIssue>>) getSearchResults().getSearchResults())).select(new ISelector<SearchResult<ModelCheckerIssue>, ModelCheckerIssue>() {
       public ModelCheckerIssue select(SearchResult<ModelCheckerIssue> sr) {
         return sr.getObject();
       }
     }).where(new IWhereFilter<ModelCheckerIssue>() {
       public boolean accept(ModelCheckerIssue sr) {
-        return sr instanceof ModelCheckerIssue.NodeIssue && SetSequence.fromSet(includedResultNodes).contains(new SNodePointer(((ModelCheckerIssue.NodeIssue) sr).getNode())) && sr.isFixable();
+        boolean isNodeIssueAndFixable = sr instanceof ModelCheckerIssue.NodeIssue && SetSequence.fromSet(includedResultNodes).contains(((ModelCheckerIssue.NodeIssue) sr).getNode().getReference()) && sr.isFixable();
+        boolean isModelIssueAndFixable = sr instanceof ModelCheckerIssue.ModelIssue && SetSequence.fromSet(includedResultModels).contains(((ModelCheckerIssue.ModelIssue) sr).getModel()) && sr.isFixable();
+        return isNodeIssueAndFixable || isModelIssueAndFixable;
       }
     }).toListSequence();
-  }
-
-  private void runCheck() {
-    try {
-      ProgressManager.getInstance().run(new Task.Modal(myProject, myCheckProgressTitle, true) {
-        @Override
-        public void run(@NotNull ProgressIndicator indicator) {
-          myUsagesView.run(indicator);
-        }
-      });
-    } catch (Throwable t) {
-      LogManager.getLogger(ModelCheckerViewer.class).error("An error occured while model checking:\n" + t);
-    }
 
   }
-
-  public void prepareAndCheckModules(List<SModule> modules, String taskTargetTitle, Icon taskIcon) {
-    IResultProvider resultProvider = FindUtils.makeProvider(new ModelCheckerIssueFinder());
-    SearchQuery searchQuery = new SearchQuery(new ModulesHolder(ListSequence.fromList(modules).toListSequence(), myOperationContext), myProject.getComponent(MPSProject.class).getScope());
-    myUsagesView.setRunOptions(resultProvider, searchQuery, new UsagesView.ButtonConfiguration(true, true, true));
-
-    myCheckProgressTitle = "Checking " + taskTargetTitle;
-    setTabProperties(taskTargetTitle, taskIcon);
-
-    runCheck();
+  /*package*/ void checkModules(List<SModule> modules, String taskTargetTitle) {
+    SearchQuery query = new SearchQuery(new GenericHolder<Collection<SModuleReference>>(ListSequence.fromList(modules).select(new ISelector<SModule, SModuleReference>() {
+      public SModuleReference select(SModule it) {
+        return it.getModuleReference();
+      }
+    }).toListSequence()), GlobalScope.getInstance());
+    runCheck(FindUtils.makeProvider(new CompositeFinder(newModelChecker())), query, taskTargetTitle);
   }
-
-  public void prepareAndCheckModels(List<SModel> modelDescriptors, String taskTargetTitle, Icon taskIcon, ModelCheckerIssueFinder issueFinder) {
-    IResultProvider resultProvider = FindUtils.makeProvider(issueFinder);
-    SearchQuery searchQuery = new SearchQuery(new ModelsHolder(ListSequence.fromList(modelDescriptors).select(new ISelector<SModel, SModelReference>() {
+  /*package*/ void checkModels(List<SModel> models, String taskTargetTitle) {
+    runCheck(FindUtils.makeProvider(newModelChecker()), new SearchQuery(new ModelsHolder(ListSequence.fromList(models).select(new ISelector<SModel, SModelReference>() {
       public SModelReference select(SModel it) {
         return it.getReference();
       }
-    }).toListSequence(), myOperationContext), myProject.getComponent(MPSProject.class).getScope());
-    myUsagesView.setRunOptions(resultProvider, searchQuery, new UsagesView.ButtonConfiguration(true, true, true));
-
-    myCheckProgressTitle = "Checking " + taskTargetTitle;
-    setTabProperties(taskTargetTitle, taskIcon);
-
-    runCheck();
+    }).toListSequence()), GlobalScope.getInstance()), taskTargetTitle);
   }
-
-  public void prepareAndCheckModels(List<SModel> modelDescriptors, String taskTargetTitle, Icon taskIcon) {
-    prepareAndCheckModels(modelDescriptors, taskTargetTitle, taskIcon, new ModelCheckerIssueFinder());
+  /*package*/ void runCheck(IResultProvider resultProvider, SearchQuery searchQuery, String taskTargetTitle) {
+    myCheckAction.setProgressText(String.format("Checking %s", taskTargetTitle));
+    myCheckAction.setRunOptions(resultProvider, searchQuery);
+    doReCheck();
   }
-
-  public void setTabProperties(String title, Icon icon) {
-    myTabTitle = title;
-    myTabIcon = icon;
+  private void doReCheck() {
+    myCheckAction.actionPerformed(AnActionEvent.createFromInputEvent(myCheckAction, null, ActionPlaces.UNKNOWN));
   }
-
   public void dispose() {
     myUsagesView.dispose();
   }
-
-  public String getTabTitle() {
-    return myTabTitle;
-  }
-
-  public Icon getTabIcon() {
-    return myTabIcon;
-  }
-
+  @Nullable
   public SearchResults<ModelCheckerIssue> getSearchResults() {
     return myUsagesView.getSearchResults();
   }
-
+  public void setSearchResults(SearchResults<ModelCheckerIssue> issues) {
+    myUsagesView.setContents(issues);
+  }
+  private ModelCheckerIssueFinder newModelChecker() {
+    return new ModelCheckerIssueFinder(ModelCheckerSettings.getInstance().getSpecificCheckers(myProject));
+  }
   public static class MyNodeRepresentator implements INodeRepresentator<ModelCheckerIssue> {
     public MyNodeRepresentator() {
     }
-
     @Override
     public String getResultsText(TextOptions options) {
       int size = options.mySubresultsCount;
       return "<strong>" + NameUtil.formatNumericalString(size, "issue") + " found</strong>";
     }
-
     @Override
     public Icon getResultsIcon() {
       return IdeIcons.CLOSED_FOLDER;
     }
-
     @Override
     public String getCategoryText(TextOptions options, String category, boolean isResultsSection) {
       String counter = "";
@@ -251,7 +217,6 @@ public abstract class ModelCheckerViewer extends JPanel {
       }
       return "<strong>" + category + counter + "</strong>";
     }
-
     @Override
     public Icon getCategoryIcon(String category) {
       if ((category != null && category.length() > 0)) {
@@ -265,22 +230,18 @@ public abstract class ModelCheckerViewer extends JPanel {
       }
       return IdeIcons.CLOSED_FOLDER;
     }
-
     @NotNull
     @Override
     public String getPresentation(ModelCheckerIssue issue) {
       return StringUtil.escapeXml(issue.getMessage());
     }
-
     @Override
     public List<CategoryKind> getCategoryKinds() {
       return Arrays.asList(ModelCheckerIssue.CATEGORY_KIND_SEVERITY, ModelCheckerIssue.CATEGORY_KIND_ISSUE_TYPE);
     }
-
     @Override
     public void write(Element element, jetbrains.mps.project.Project project) throws CantSaveSomethingException {
     }
-
     @Override
     public void read(Element element, jetbrains.mps.project.Project project) throws CantLoadSomethingException {
     }

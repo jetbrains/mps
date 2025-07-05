@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,38 +16,55 @@
 package jetbrains.mps.nodeEditor;
 
 import com.intellij.ide.DataManager;
+import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.fileEditor.FileEditor;
-import jetbrains.mps.ide.IdeMain;
-import jetbrains.mps.ide.IdeMain.TestMode;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.util.LocalTimeCounter;
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.nodeEditor.commands.CommandContextImpl;
+import jetbrains.mps.nodeEditor.commands.CommandContextWithVF;
+import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
+import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 import jetbrains.mps.nodeEditor.selection.SingularSelectionListenerAdapter;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.openapi.editor.selection.SingularSelection;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.smodel.event.SModelEvent;
-import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.project.Project;
+import org.apache.log4j.LogManager;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
-import java.util.List;
 
 public class NodeEditorComponent extends EditorComponent {
+  private static Logger LOG = Logger.wrap(LogManager.getLogger(NodeEditorComponent.class));
+
   private SNode myLastInspectedNode = null;
+  private CommandContextWithVF myCommandContext;
 
   public NodeEditorComponent(SRepository repository) {
-    super(repository, true, false);
+    this(repository, new EditorConfigurationBuilder().showErrorsGutter(true).build());
+  }
 
+  public NodeEditorComponent(SRepository repository, EditorConfigurationBuilder confBuilder) {
+    this(repository, confBuilder.showErrorsGutter(true).build());
+  }
+
+  private NodeEditorComponent(SRepository repository, EditorConfiguration configuration) {
+    super(repository, configuration);
     getSelectionManager().addSelectionListener(new SingularSelectionListenerAdapter() {
       @Override
       protected void selectionChangedTo(jetbrains.mps.openapi.editor.EditorComponent editorComponent, SingularSelection newSelection) {
         final SNode[] toSelect = new SNode[]{newSelection.getEditorCell().getSNode()};
-        ModelAccess.instance().runReadAction(new Runnable() {
+        getRepository().getModelAccess().runReadAction(new Runnable() {
           @Override
           public void run() {
-            if (isShowing() || IdeMain.getTestMode() != TestMode.NO_TEST) {
+            if (isShowing() || RuntimeFlags.getTestMode().isInsideTestEnvironment()) {
               inspect(toSelect[0]);
             }
           }
@@ -61,7 +78,9 @@ public class NodeEditorComponent extends EditorComponent {
         if (HierarchyEvent.SHOWING_CHANGED != (hierarchyEvent.getChangeFlags() & HierarchyEvent.SHOWING_CHANGED)) {
           return;
         }
-        if (!isShowing()) return;
+        if (!isShowing()) {
+          return;
+        }
         adjustInspector();
       }
     });
@@ -73,7 +92,7 @@ public class NodeEditorComponent extends EditorComponent {
   }
 
   private void adjustInspector() {
-    ModelAccess.instance().runReadAction(new Runnable() {
+    getRepository().getModelAccess().runReadAction(new Runnable() {
       @Override
       public void run() {
         SNode selectedNode = getSelectedNode();
@@ -83,8 +102,9 @@ public class NodeEditorComponent extends EditorComponent {
           return;
         }
 
-        if (jetbrains.mps.util.SNodeOperations.isDisposed(selectedNode) || jetbrains.mps.util.SNodeOperations.isModelDisposed(selectedNode.getModel()))
+        if (selectedNode.getModel() == null) {
           return;
+        }
 
         inspect(selectedNode);
       }
@@ -98,56 +118,79 @@ public class NodeEditorComponent extends EditorComponent {
 
   private void inspect(final SNode toSelect) {
     myLastInspectedNode = toSelect;
-    if (getInspector() == null) return;
+    if (getInspector() == null) {
+      return;
+    }
 
-    FileEditor fileEditor = (FileEditor) DataManager.getInstance().getDataContext(this).getData(MPSCommonDataKeys.FILE_EDITOR.getName());
-    getInspectorTool().inspect(toSelect, getOperationContext(), fileEditor);
-  }
-
-  protected boolean isValidEditor() {
-    SNode node = getEditedNode();
-    if (node == null) return false;
-    SModel model = node.getModel();
-    if (model != null && jetbrains.mps.util.SNodeOperations.isModelDisposed(model)) return false;
-    return true;
+    DataContext dataContext = DataManager.getInstance().getDataContext(this);
+    FileEditor fileEditor = MPSCommonDataKeys.FILE_EDITOR.getData(dataContext);
+    String[] inspectorInitialEditorHints = getEditorHintsForNode(toSelect);
+    if (getInspectorTool() != null) {
+      getInspectorTool().inspect(toSelect, fileEditor, inspectorInitialEditorHints);
+    }
   }
 
   @Override
   public void rebuildEditorContent() {
-    if (isValidEditor()) {
-      super.rebuildEditorContent();
+    SNode editedNode = getEditedNode();
+    if (editedNode == null || !org.jetbrains.mps.openapi.model.SNodeUtil.isAccessible(editedNode, getEditorContext().getRepository())) {
+      return;
     }
-  }
-
-  @Override
-  public EditorCell createRootCell(List<SModelEvent> events) {
-    if (getEditedNode() == null || getEditedNode().getModel() == null) {
-      jetbrains.mps.openapi.editor.EditorContext editorContext = getEditorContext();
-      return new EditorCell_Constant(editorContext, getEditedNode(), getEditedNode() == null ? "<no edited node>" : "<edited node is not inside a model>");
-    }
-    return getEditorContext().createRootCell(getEditedNode(), events);
+    super.rebuildEditorContent();
   }
 
   public EditorComponent getInspector() {
-    if (getInspectorTool() == null) return null;
+    if (getInspectorTool() == null) {
+      return null;
+    }
     return getInspectorTool().getInspector();
   }
 
+  @Nullable
   public InspectorTool getInspectorTool() {
-    if (getOperationContext().getProject().isDisposed()) return null;
-    return getOperationContext().getComponent(InspectorTool.class);
+    final Project p = getCurrentProject();
+    if (p == null || p.isDisposed()) {
+      return null;
+    }
+    return p.getComponent(InspectorTool.class);
   }
 
   @Override
   public void dispose() {
     notifyDisposal();
     InspectorTool inspectorTool = getInspectorTool();
-    if (inspectorTool != null) {
+    if (inspectorTool != null && inspectorTool.getInspector() != null) {
       if (inspectorTool.getInspector().getEditedNode() == this.getLastInspectedNode()) {
         inspectorTool.inspect(null, null, null);
       }
     }
     myLastInspectedNode = null;
     super.dispose();
+  }
+
+  @Override
+  protected CommandContextImpl createCommandContext() {
+    return myCommandContext = new CommandContextWithVF(this, getRepository());
+  }
+
+  @Nullable
+  public MPSNodeVirtualFile getVirtualFile() {
+    return myCommandContext.getContextVirtualFile();
+  }
+
+  @Override
+  public void touch() {
+    if (getVirtualFile() != null) {
+      getVirtualFile().setModificationStamp(LocalTimeCounter.currentTime());
+    }
+  }
+
+  @Nullable
+  @Override
+  public Object getData(@NonNls String dataId) {
+    if (dataId.equals(PlatformDataKeys.VIRTUAL_FILE_ARRAY.getName())) {
+      return getVirtualFile() != null ? new VirtualFile[]{getVirtualFile()} : new VirtualFile[0];
+    }
+    return super.getData(dataId);
   }
 }

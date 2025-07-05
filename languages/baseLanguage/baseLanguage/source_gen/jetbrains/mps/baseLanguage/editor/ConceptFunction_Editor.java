@@ -6,60 +6,12 @@ import jetbrains.mps.nodeEditor.DefaultNodeEditor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.nodeEditor.AbstractCellProvider;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
-import java.util.List;
 
 public class ConceptFunction_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createComponent_qilpva_a(editorContext, node);
+    return new ConceptFunction_EditorBuilder_a(editorContext, node).createCell();
   }
-
   public EditorCell createInspectedCell(EditorContext editorContext, SNode node) {
-    return this.createCustom_qilpva_a(editorContext, node);
-  }
-
-  private EditorCell createComponent_qilpva_a(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = editorContext.getCellFactory().createEditorComponentCell(node, "jetbrains.mps.baseLanguage.editor.ConceptFunction_Component");
-    editorCell.setBig(true);
-    return editorCell;
-  }
-
-  private EditorCell createCustom_qilpva_a(final EditorContext editorContext, final SNode node) {
-    AbstractCellProvider provider = new _FunctionTypes._return_P0_E0<AbstractCellProvider>() {
-      public AbstractCellProvider invoke() {
-        return new AbstractCellProvider() {
-          @Override
-          public EditorCell createEditorCell(EditorContext context) {
-            EditorCell_Collection collection = jetbrains.mps.nodeEditor.cells.EditorCell_Collection.createVertical(context, node);
-            collection.addEditorCell(new EditorCell_Constant(context, node, "Concept function help:"));
-            if (SPropertyOperations.getString(SNodeOperations.getConceptDeclaration(node), "conceptShortDescription") != null) {
-              collection.addEditorCell(new EditorCell_Constant(context, node, SPropertyOperations.getString(SNodeOperations.getConceptDeclaration(node), "conceptShortDescription")));
-            }
-            collection.addEditorCell(new EditorCell_Constant(context, node, ""));
-            collection.addEditorCell(new EditorCell_Constant(context, node, "Parameter help:"));
-            for (SNode cfp : BehaviorReflection.invokeVirtual((Class<List<SNode>>) ((Class) Object.class), node, "virtual_getParameters_1213877374450", new Object[]{})) {
-              String alias = SPropertyOperations.getString(cfp, "conceptAlias");
-              String description = SPropertyOperations.getString(cfp, "conceptShortDescription");
-              if (description == null) {
-                description = "<no help. use conceptShortDescription concept function property to create one>";
-              }
-              EditorCell_Constant message = new EditorCell_Constant(context, node, alias + " : " + description);
-              collection.addEditorCell(message);
-            }
-            return collection;
-          }
-        };
-      }
-    }.invoke();
-    EditorCell editorCell = provider.createEditorCell(editorContext);
-    editorCell.setCellId("Custom_qilpva_a");
-    editorCell.setBig(true);
-    return editorCell;
+    return new ConceptFunction_InspectorBuilder_a(editorContext, node).createCell();
   }
 }

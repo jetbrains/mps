@@ -20,6 +20,7 @@ import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.QuickFixProvider;
 import jetbrains.mps.errors.SimpleErrorReporter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
+import jetbrains.mps.util.Computable;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
@@ -140,6 +141,12 @@ public class IncrementalTypecheckingContext extends SimpleTypecheckingContext<St
     }
   }
 
+  public <T> T runTypeCheckingAction(Computable<T> c) {
+    synchronized (TYPECHECKING_LOCK) {
+      return c.compute();
+    }
+  }
+
   @Override
   public void setIsNonTypesystemComputation() {
     myIsNonTypesystemComputation = true;
@@ -159,8 +166,12 @@ public class IncrementalTypecheckingContext extends SimpleTypecheckingContext<St
   public IErrorReporter reportTypeError(SNode nodeWithError, String errorString, String ruleModel, String ruleId, QuickFixProvider intentionProvider, MessageTarget errorTarget) {
     SimpleErrorReporter reporter = new SimpleErrorReporter(nodeWithError, errorString, ruleModel, ruleId, MessageStatus.ERROR, errorTarget);
     reporter.setIntentionProvider(intentionProvider);
-    if (nodeWithError.getModel() == null) {
-      LOG.error("Node to report error for must be in a model. Node=" + SNodeOperations.getDebugText(nodeWithError), new Throwable());
+    if (nodeWithError == null) {
+      LOG.warn("Node used to report an error is null. Reported from model "+ruleModel+" by rule "+ruleId + ".", new Throwable());
+      return reporter;
+    }
+    else if (nodeWithError.getModel() == null) {
+      LOG.warn("Node used to report an error is not in a model. Node=" + SNodeOperations.getDebugText(nodeWithError) + ". Reported from model "+ruleModel+" by rule "+ruleId + ".", new Throwable());
       return reporter;
     }
     reportMessage(nodeWithError, reporter);
@@ -198,7 +209,10 @@ public class IncrementalTypecheckingContext extends SimpleTypecheckingContext<St
       return;//todo
     }
     getTypechecking().reportTypeError(nodeWithError, errorReporter);
-    getTypechecking().addDependencyOnCurrent(nodeWithError, false);
+    // the following line messes up the typechecking even if the error is caused by a non-typechecking rule
+    // this further complicates incremental types calculation and produces unwanted results MPS-21481
+    // TODO: rethink the way errors affect the typechecking
+//    getTypechecking().addDependencyOnCurrent(nodeWithError, false);
   }
 
 
@@ -217,6 +231,6 @@ public class IncrementalTypecheckingContext extends SimpleTypecheckingContext<St
 
   @Override
   protected void applyNonTypesystemRules() {
-    getTypechecking().applyNonTypesystemRulesToRoot(null, this);
+    getTypechecking().applyNonTypesystemRulesToRoot(this);
   }
 }

@@ -5,74 +5,91 @@ package jetbrains.mps.baseLanguage.util.plugin.refactorings;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.dataFlow.framework.Program;
-import jetbrains.mps.lang.dataFlow.DataFlowManager;
+import jetbrains.mps.lang.dataFlow.MPSProgramBuilder;
 import jetbrains.mps.lang.dataFlow.framework.AnalysisResult;
 import java.util.Set;
 import jetbrains.mps.lang.dataFlow.framework.instructions.WriteInstruction;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.ReachingDefinitionsAnalyzer;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 
 public class InlineVariableReferenceRefactoring extends InlineVariableRefactoring {
   private SNode myReference;
   private SNode myAssignment;
-
   public InlineVariableReferenceRefactoring(SNode node) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, "variableDeclaration", false), "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration")))) {
       throw new IllegalArgumentException();
     }
 
     this.myReference = node;
     this.findAssignment(node);
   }
-
   @Override
   public SNode doRefactoring() {
-    SNode variable = SLinkOperations.getTarget(this.myReference, "variableDeclaration", false);
+    final SNode variable = SLinkOperations.getTarget(this.myReference, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"));
     SNode nodeToSelect;
     if (myAssignment == null) {
-      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(this.myReference, "variableDeclaration", false), "initializer", true));
+      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(this.myReference, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")));
       SNodeOperations.replaceWithAnother(this.myReference, nodeToSelect);
     } else
-    if (SNodeOperations.isInstanceOf(myAssignment, "jetbrains.mps.baseLanguage.structure.VariableDeclaration")) {
-      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"), "initializer", true));
+    if (SNodeOperations.isInstanceOf(myAssignment, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"))) {
+      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer")));
       SNodeOperations.replaceWithAnother(this.myReference, nodeToSelect);
+    } else if (SNodeOperations.isInstanceOf(myAssignment, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression"))) {
+      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return eq_uj3i4l_a0a0a0a0a0a0a0a2a3(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")), variable);
+        }
+      }).isNotEmpty()) {
+        // Assigments referring to the variable from their right side should not be inlined, since the resulting code will have different semantics than the original 
+        return myAssignment;
+      }
+      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue")));
+      SNodeOperations.replaceWithAnother(this.myReference, nodeToSelect);
+      this.optimizeAssignment(SNodeOperations.cast(myAssignment, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression")), variable);
     } else {
-      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, "jetbrains.mps.baseLanguage.structure.AssignmentExpression"), "rValue", true));
-      SNodeOperations.replaceWithAnother(this.myReference, nodeToSelect);
-      this.optimizeAssignment(SNodeOperations.cast(myAssignment, "jetbrains.mps.baseLanguage.structure.AssignmentExpression"), variable);
+      // ATM we do not inline if the last update was through a++ nor a+=1 type-of expressions 
+      return myAssignment;
     }
     this.optimizeDeclaration(variable);
     return nodeToSelect;
   }
-
   private void findAssignment(SNode node) {
-    SNode variable = SLinkOperations.getTarget(node, "variableDeclaration", false);
+    SNode variable = SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"));
     myAssignment = null;
-    SNode currentList = SNodeOperations.getAncestor(node, "jetbrains.mps.baseLanguage.structure.StatementList", false, false);
+    SNode currentList = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), false, false);
     SNode currentStatement;
     while ((myAssignment == null) && (currentList != null)) {
       currentStatement = getParentStatement(node, currentList);
-      Program program = DataFlowManager.getInstance().buildProgramFor(currentList);
+      Program program = new MPSProgramBuilder().buildProgram(currentList);
       AnalysisResult<Set<WriteInstruction>> definitions = program.analyze(new ReachingDefinitionsAnalyzer());
       for (Instruction nodeInstruction : ListSequence.fromList(program.getInstructionsFor(currentStatement))) {
         for (WriteInstruction instruction : SetSequence.fromSet(definitions.get(nodeInstruction))) {
           if (instruction.getVariable() == variable) {
-            myAssignment = ((SNode) instruction.getSource());
+            SNode assignmentNode = (SNode) instruction.getSource();
+            // We need to avoid inlining a self-assignment 
+            if (!(ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, false)).contains(assignmentNode))) {
+              myAssignment = (assignmentNode);
+            }
           }
         }
       }
-      currentList = SNodeOperations.getAncestor(currentList, "jetbrains.mps.baseLanguage.structure.StatementList", false, false);
+      currentList = SNodeOperations.getNodeAncestor(currentList, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), false, false);
     }
   }
-
   private SNode getParentStatement(SNode node, SNode list) {
     SNode curParent = node;
     while ((curParent != null) && SNodeOperations.getParent(curParent) != list) {
       curParent = SNodeOperations.getParent(curParent);
     }
-    return SNodeOperations.cast(curParent, "jetbrains.mps.baseLanguage.structure.Statement");
+    return SNodeOperations.cast(curParent, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"));
+  }
+  private static boolean eq_uj3i4l_a0a0a0a0a0a0a0a2a3(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
   }
 }

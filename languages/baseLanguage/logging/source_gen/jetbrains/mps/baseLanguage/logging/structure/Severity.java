@@ -4,7 +4,7 @@ package jetbrains.mps.baseLanguage.logging.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum Severity {
   fatal("fatal", "fatal"),
@@ -14,16 +14,21 @@ public enum Severity {
   info("info", "info"),
   trace("trace", "trace");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private Severity(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<Severity> getConstants() {
     List<Severity> list = ListSequence.fromList(new LinkedList<Severity>());
     ListSequence.fromList(list).addElement(Severity.fatal);
@@ -34,11 +39,9 @@ public enum Severity {
     ListSequence.fromList(list).addElement(Severity.trace);
     return list;
   }
-
   public static Severity getDefault() {
     return Severity.debug;
   }
-
   public static Severity parseValue(String value) {
     if (value == null) {
       return Severity.getDefault();
@@ -62,16 +65,5 @@ public enum Severity {
       return Severity.trace;
     }
     return Severity.getDefault();
-  }
-
-  private String myValue;
-
-  Severity(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

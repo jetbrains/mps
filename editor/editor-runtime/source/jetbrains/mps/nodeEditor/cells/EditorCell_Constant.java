@@ -18,17 +18,17 @@ package jetbrains.mps.nodeEditor.cells;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.MPSFonts;
 import jetbrains.mps.openapi.editor.EditorContext;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 
 /**
  * Author: Sergey Dmitriev
  * Created Sep 14, 2003
  */
-public class EditorCell_Constant extends EditorCell_Label {
+public class EditorCell_Constant extends EditorCell_Label implements SynchronizeableEditorCell {
   public static final int DEFAULT_FONT_STYLE = MPSFonts.BOLD;
 
-  protected String myOriginalText;
+  private String myOriginalText;
 
   public EditorCell_Constant(@NotNull EditorContext editorContext, SNode node, String text) {
     this(editorContext, node, text, false);
@@ -61,10 +61,22 @@ public class EditorCell_Constant extends EditorCell_Label {
     return myOriginalText;
   }
 
+  public void setOriginalText(String originalText) {
+    myOriginalText = originalText;
+  }
 
   @Override
   public void synchronizeViewWithModel() {
     setText(myOriginalText);
     setErrorState(false);
+  }
+
+  @Override
+  public void synchronize() {
+  }
+
+  @Override
+  public boolean canBeSynchronized() {
+    return false;
   }
 }

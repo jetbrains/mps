@@ -16,10 +16,8 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debugger.java.api.evaluation.Evaluator;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.IValueProxy;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaValue;
-import jetbrains.mps.debugger.java.api.state.proxy.ValueUtil;
+import jetbrains.mps.debugger.java.api.state.customViewers.CustomViewersManager;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationException;
-import jetbrains.mps.debugger.java.api.evaluation.InvalidEvaluatedExpressionException;
-import jetbrains.mps.debugger.java.api.evaluation.InvocationTargetEvaluationException;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
@@ -39,7 +37,6 @@ public abstract class EvaluationUi extends JPanel {
   private EvaluationUi.IErrorTextListener myErrorListener;
   private final boolean myAutoUpdate;
   private final SessionChangeAdapter mySessionChangeAdapter = new EvaluationUi.MySessionChangeAdapter();
-
   public EvaluationUi(@NotNull DebugSession session, boolean autoUpdate) {
     super(new BorderLayout());
     myDebugSession = session;
@@ -47,58 +44,53 @@ public abstract class EvaluationUi extends JPanel {
     myDebugSession.addChangeListener(mySessionChangeAdapter);
     myTree = new EvaluationTree(myDebugSession);
   }
-
   protected abstract void update();
-
   public abstract void evaluate();
-
   public void dispose() {
     myDebugSession.removeChangeListener(mySessionChangeAdapter);
     myTree.dispose();
   }
-
   protected void evaluate(final IEvaluationContainer model) {
     if (!(myDebugSession.getEvaluationProvider().canEvaluate())) {
       setErrorText("Program should be paused on breakpoint to evaluate");
       return;
     }
-    try {
-      final Class clazz = model.generateClass();
-      setEvaluating(model);
-      final ThreadReference thread = check_4q63yg_a0c0b0m(myDebugSession.getUiState().getThread());
-      myDebugSession.getEventsProcessor().scheduleEvaluation(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          try {
-            Evaluator evaluator = model.createEvaluatorInstance(clazz);
-            IValueProxy evaluatedValue = evaluator.evaluate();
-            if (evaluatedValue != null) {
-              JavaValue value = ValueUtil.getInstance().fromJDI(evaluatedValue.getJDIValue(), thread);
-              value.initSubvalues();
-              setSuccess(value, model);
-            } else {
-              setFailure(null, "Evaluation returned null.", model);
+    new Thread("Debugger Evaluation thread") {
+      @Override
+      public void run() {
+        try {
+          final Class clazz = model.generateClass();
+          setEvaluating(model);
+          final ThreadReference thread = check_4q63yg_a0c0a0a0a0a1a21(myDebugSession.getUiState().getThread());
+          myDebugSession.getEventsProcessor().scheduleEvaluation(new _FunctionTypes._void_P0_E0() {
+            public void invoke() {
+              try {
+                Evaluator evaluator = model.createEvaluatorInstance(clazz);
+                IValueProxy evaluatedValue = evaluator.evaluate();
+                if (evaluatedValue != null) {
+                  JavaValue value = CustomViewersManager.getInstance().fromJdi(evaluatedValue.getJDIValue(), thread);
+                  value.initSubvalues();
+                  setSuccess(value, model);
+                } else {
+                  setFailure(null, "Evaluation returned null.", model);
+                }
+              } catch (EvaluationException e) {
+                setFailure(e, null, model);
+              } catch (Throwable t) {
+                setFailure(t, null, model);
+                LOG.error(null, t);
+              }
             }
-          } catch (EvaluationException e) {
-            setFailure(e, null, model);
-          } catch (Throwable t) {
-            setFailure(t, null, model);
-            LOG.error(null, t);
-          }
+          }, thread);
+        } catch (EvaluationException e) {
+          setFailure(e, null, model);
+        } catch (Throwable t) {
+          setFailure(t, null, model);
+          LOG.error(null, t);
         }
-      }, thread);
-    } catch (InvalidEvaluatedExpressionException e) {
-      setFailure(e.getCause(), null, model);
-    } catch (InvocationTargetEvaluationException e) {
-      setFailure(e.getCause(), null, model);
-      LOG.error(null, e.getCause());
-    } catch (EvaluationException e) {
-      setFailure(e, null, model);
-    } catch (Throwable t) {
-      setFailure(t, null, model);
-      LOG.error(null, t);
-    }
+      }
+    }.start();
   }
-
   private void setSuccess(@NotNull final JavaValue evaluatedValue, final IEvaluationContainer model) {
     invokeLaterIfNeeded(new Runnable() {
       @Override
@@ -108,7 +100,6 @@ public abstract class EvaluationUi extends JPanel {
       }
     });
   }
-
   private void setEvaluating(final IEvaluationContainer model) {
     invokeLaterIfNeeded(new Runnable() {
       @Override
@@ -118,7 +109,6 @@ public abstract class EvaluationUi extends JPanel {
       }
     });
   }
-
   private void setFailure(@Nullable final Throwable error, @Nullable final String message, final IEvaluationContainer model) {
     invokeLaterIfNeeded(new Runnable() {
       @Override
@@ -132,13 +122,11 @@ public abstract class EvaluationUi extends JPanel {
       }
     });
   }
-
   protected void setErrorText(String text) {
     if (myErrorListener != null) {
       myErrorListener.updateErrorText(text);
     }
   }
-
   private void invokeLaterIfNeeded(Runnable runnable) {
     if (ApplicationManager.getApplication().isDispatchThread()) {
       runnable.run();
@@ -146,26 +134,22 @@ public abstract class EvaluationUi extends JPanel {
       ApplicationManager.getApplication().invokeLater(runnable, ModalityState.NON_MODAL);
     }
   }
-
   public void setErrorTextListener(EvaluationUi.IErrorTextListener listener) {
     myErrorListener = listener;
   }
-
-  public static interface IErrorTextListener {
-    public void updateErrorText(String text);
+  public interface IErrorTextListener {
+    void updateErrorText(String text);
   }
-
   private class MySessionChangeAdapter extends SessionChangeAdapter {
     public MySessionChangeAdapter() {
     }
-
     @Override
     public void paused(AbstractDebugSession session) {
       if (myDebugSession == session) {
         JavaUiStateImpl uiState = myDebugSession.getUiState();
         String unitName = check_4q63yg_a0b0a0b02(check_4q63yg_a0a1a0a1u(uiState.getStackFrame()));
         if ((unitName != null && unitName.length() > 0)) {
-          myTree.updateLocation(unitName, uiState.getThread().getThread());
+          myTree.updateLocation(uiState.getThread().getThread());
         }
         ApplicationManager.getApplication().invokeLater(new Runnable() {
           @Override
@@ -179,7 +163,6 @@ public abstract class EvaluationUi extends JPanel {
         });
       }
     }
-
     @Override
     public void stateChanged(AbstractDebugSession session) {
       if (myDebugSession == session) {
@@ -191,7 +174,6 @@ public abstract class EvaluationUi extends JPanel {
         });
       }
     }
-
     @Override
     public void resumed(AbstractDebugSession session) {
       if (myDebugSession == session) {
@@ -204,21 +186,18 @@ public abstract class EvaluationUi extends JPanel {
       }
     }
   }
-
-  private static ThreadReference check_4q63yg_a0c0b0m(JavaThread checkedDotOperand) {
+  private static ThreadReference check_4q63yg_a0c0a0a0a0a1a21(JavaThread checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getThread();
     }
     return null;
   }
-
   private static String check_4q63yg_a0b0a0b02(JavaLocation checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getUnitName();
     }
     return null;
   }
-
   private static JavaLocation check_4q63yg_a0a1a0a1u(JavaStackFrame checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getLocation();

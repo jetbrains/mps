@@ -6,7 +6,7 @@ import jetbrains.mps.lang.dataFlow.framework.Program;
 import java.util.Set;
 import jetbrains.mps.lang.dataFlow.framework.instructions.ReadInstruction;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.dataFlow.DataFlowManager;
+import jetbrains.mps.lang.dataFlow.MPSProgramBuilder;
 import jetbrains.mps.lang.dataFlow.framework.AnalysisResult;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.ReachingReadsAnalyzer;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -14,20 +14,22 @@ import java.util.HashSet;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
 import java.util.ArrayList;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 
 public class InlineVariableAssignmentRefactoring extends InlineVariableRefactoring {
   private Program myProgram;
   private Set<ReadInstruction> myReadInstructions;
   private SNode myVariable;
-
   public InlineVariableAssignmentRefactoring(SNode node) {
     this.myVariable = node;
     SNode body = findStatementList(node);
-    this.myProgram = DataFlowManager.getInstance().buildProgramFor(body);
+    this.myProgram = new MPSProgramBuilder().buildProgram(body);
     AnalysisResult<Set<ReadInstruction>> reachingReads = this.myProgram.analyze(new ReachingReadsAnalyzer());
     this.myReadInstructions = SetSequence.fromSet(new HashSet<ReadInstruction>());
     for (Instruction instruction : ListSequence.fromList(this.myProgram.getInstructionsFor(node))) {
@@ -40,36 +42,35 @@ public class InlineVariableAssignmentRefactoring extends InlineVariableRefactori
       }
     }
   }
-
   @Override
   public SNode doRefactoring() {
     SNode newSelection = null;
     for (SNode sourceNode : this.getNodesToRefactor()) {
-      // <node> 
-      for (SNode reference : ListSequence.fromList(SNodeOperations.getDescendants(sourceNode, "jetbrains.mps.baseLanguage.structure.VariableReference", true, new String[]{}))) {
-        if (SLinkOperations.getTarget(reference, "variableDeclaration", false) == myVariable) {
-          SNodeOperations.replaceWithAnother(reference, SNodeOperations.copyNode(SLinkOperations.getTarget(myVariable, "initializer", true)));
+      for (SNode reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(sourceNode, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"), true, new SAbstractConcept[]{}))) {
+        if (SLinkOperations.getTarget(reference, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")) == myVariable) {
+          SNodeOperations.replaceWithAnother(reference, SNodeOperations.copyNode(SLinkOperations.getTarget(myVariable, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer"))));
         }
       }
     }
     this.optimizeDeclaration(this.myVariable);
     return newSelection;
   }
-
   public List<SNode> getNodesToRefactor() {
     List<SNode> result = new ArrayList<SNode>();
     for (ReadInstruction read : SetSequence.fromSet(this.myReadInstructions)) {
-      ListSequence.fromList(result).addElement(((SNode) read.getSource()));
+      SNode node = (SNode) read.getSource();
+      if (!((SNodeOperations.hasRole(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression")) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6fea7de6103549b1L, "jetbrains.mps.baseLanguage.structure.UnaryMinus"))))) && !(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x44cc327d2ca5cb08L, "jetbrains.mps.baseLanguage.structure.OperationAssignmentExpression")))) {
+        ListSequence.fromList(result).addElement((node));
+      }
     }
     return result;
   }
-
   public static SNode findStatementList(SNode node) {
-    SNode body = SNodeOperations.getAncestor(node, "jetbrains.mps.baseLanguage.structure.StatementList", false, false);
-    if (SNodeOperations.getAncestor(body, "jetbrains.mps.baseLanguage.structure.StatementList", false, false) == null) {
+    SNode body = SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), false, false);
+    if (SNodeOperations.getNodeAncestor(body, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), false, false) == null) {
       return body;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(body), "jetbrains.mps.baseLanguage.structure.IStatementListContainer") && !(BehaviorReflection.invokeVirtual(Boolean.TYPE, SNodeOperations.cast(SNodeOperations.getParent(body), "jetbrains.mps.baseLanguage.structure.IStatementListContainer"), "virtual_isExecuteSynchronous_1230212745736", new Object[]{}))) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(body), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer")) && !(((boolean) (Boolean) BHReflection.invoke(SNodeOperations.cast(SNodeOperations.getParent(body), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer")), SMethodTrimmedId.create("isExecuteSynchronous", null, "hTIpcC8"))))) {
       return body;
     }
     return findStatementList(body);

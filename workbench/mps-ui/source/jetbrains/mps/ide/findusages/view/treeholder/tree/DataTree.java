@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,14 @@
  */
 package jetbrains.mps.ide.findusages.view.treeholder.tree;
 
+import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 import jetbrains.mps.ide.findusages.IExternalizeable;
 import jetbrains.mps.ide.findusages.model.CategoryKind;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.ide.findusages.model.SearchResults;
+import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.AbstractResultNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.BaseNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.CategoryNodeData;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.MainNodeData;
@@ -33,32 +35,43 @@ import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItem;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathProvider;
+import jetbrains.mps.ide.icons.IdeIcons;
+import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.util.Pair;
 import org.jdom.Element;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
+import javax.swing.Icon;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class DataTree implements IExternalizeable, IChangeListener {
-  private DataNode myTreeRoot = build(new SearchResults(), null);
-  private List<IChangeListener> myListeners = new ArrayList<IChangeListener>();
-  private DataTreeChangesNotifier myChangesNotifier = new DataTreeChangesNotifier(this);
+  private DataNode myTreeRoot = createTreeRoot();
+  private final List<IChangeListener> myListeners = new ArrayList<IChangeListener>(2);
+  private final DataTreeChangesNotifier myChangesNotifier;
 
-  public DataTree() {
-  }
+  //this is only used in 3.2 to make rebuild faster in case of many nodes.
+  //in 3.3 it will be fixed by introducing path providers
+  //this cache is only alive during read action in build() method
+  private Map<Pair<DataNode, Object>, DataNode> myRebuildCache;
 
-  public DataTree(Element element, Project project) throws CantLoadSomethingException {
-    read(element, project);
+  public DataTree(@NotNull DataTreeChangesNotifier changeDispatch) {
+    myChangesNotifier = changeDispatch;
   }
 
   public DataNode getTreeRoot() {
@@ -67,18 +80,20 @@ public class DataTree implements IExternalizeable, IChangeListener {
 
   //----EXCLUSION/EXPANSION----
 
-  public void setExcluded(List<DataNode> nodes, boolean value) {
+  public void setExcluded(Set<DataNode> nodes, boolean value) {
     for (DataNode node : nodes) {
-      setExcludedRecursively(node, value);
+      setExcludedRecursively(nodes, node, value);
     }
     checkExcluded();
     notifyChangeListeners();
   }
 
-  private void setExcludedRecursively(DataNode node, boolean value) {
+  //doNotProcess is needed as there might be many pairs of nodes in the list, one of which is a child of another
+  private void setExcludedRecursively(Set<DataNode> doNotProcess, DataNode node, boolean value) {
     node.getData().setExcluded(value);
     for (DataNode child : node.getChildren()) {
-      setExcludedRecursively(child, value);
+      if (doNotProcess.contains(child)) continue;
+      setExcludedRecursively(doNotProcess, child, value);
     }
   }
 
@@ -103,12 +118,12 @@ public class DataTree implements IExternalizeable, IChangeListener {
 
   //----DATA QUERY----
 
-  public Set<SModel> getIncludedModels() {
-    return getResultsNode().getIncludedModels();
+  public Set<SModel> getIncludedModels(SRepository repository) {
+    return getResultsNode().getIncludedModels(repository);
   }
 
-  public Set<SModel> getAllModels() {
-    return getResultsNode().getAllModels();
+  public Set<SModel> getAllModels(SRepository repository) {
+    return getResultsNode().getAllModels(repository);
   }
 
   public List<SNodeReference> getIncludedResultNodes() {
@@ -131,129 +146,143 @@ public class DataTree implements IExternalizeable, IChangeListener {
 
   protected void setContents(DataNode root) {
     myTreeRoot = root;
-    updateNotifier();
+    stopListening();
+    startListening();
     notifyChangeListeners();
   }
 
-  public void startListening() {
-    myChangesNotifier.startListening(myTreeRoot);
+  private void startListening() {
+    HashSet<SNodeReference> nodes = new HashSet<SNodeReference>();
+    HashSet<SModelReference> models = new HashSet<SModelReference>();
+    HashSet<SModuleReference> modules = new HashSet<SModuleReference>();
+
+    nodes.addAll(Arrays.asList(myTreeRoot.getNodeDataStream().filter(nd -> nd instanceof NodeNodeData).map(
+        nd -> ((NodeNodeData) nd).getNodePointer()).toArray(SNodeReference[]::new)));
+    models.addAll(Arrays.asList(myTreeRoot.getNodeDataStream().filter(nd -> nd instanceof ModelNodeData).map(
+        nd -> ((ModelNodeData) nd).getModelReference()).toArray(SModelReference[]::new)));
+
+    modules.addAll(Arrays.asList(myTreeRoot.getNodeDataStream().filter(nd -> nd instanceof ModuleNodeData).map(
+        nd -> ((ModuleNodeData) nd).getModuleReference()).toArray(SModuleReference[]::new)));
+
+    myChangesNotifier.trackNodes(this, nodes);
+    myChangesNotifier.trackModels(this, models);
+    myChangesNotifier.trackModules(this, modules);
   }
 
-  public void stopListening() {
-    myChangesNotifier.stopListening();
+  private void stopListening() {
+    myChangesNotifier.unregister(this);
   }
 
-  private void updateNotifier() {
-    myChangesNotifier.stopListening();
-    myChangesNotifier.startListening(myTreeRoot);
+  public void dispose() {
+    stopListening();
   }
+
 
   //----TREE BUILD STUFF----
 
-  public DataNode build(final SearchResults results, final INodeRepresentator nodeRepresentator) {
-    return ModelAccess.instance().runReadAction(new Computable<DataNode>() {
-      @Override
-      public DataNode compute() {
-        DataNode root = new DataNode(new MainNodeData(PathItemRole.ROLE_MAIN_ROOT));
+  private static DataNode createTreeRoot() {
+    return new DataNode(new MainNodeData(PathItemRole.ROLE_MAIN_ROOT));
+  }
 
-        DataNode nodesRoot = new DataNode(new SearchedNodesNodeData(PathItemRole.ROLE_MAIN_SEARCHED_NODES));
-        for (Object node : results.getAliveNodes()) {
-          addSearchedNode(nodesRoot, node);
-        }
-        root.add(nodesRoot);
+  private DataNode build(final SearchResults<?> results, final INodeRepresentator nodeRepresentator) {
+      myRebuildCache = new HashMap<Pair<DataNode, Object>, DataNode>();
 
-        DataNode resultsRoot = new DataNode(new ResultsNodeData(PathItemRole.ROLE_MAIN_RESULTS, nodeRepresentator));
-        for (SearchResult result : (List<SearchResult>) results.getAliveResults()) {
-          addResultWithPresentation(resultsRoot, result, nodeRepresentator);
-        }
-        root.add(resultsRoot);
+      DataNode root = createTreeRoot();
 
-        return root;
+      DataNode nodesRoot = new DataNode(new SearchedNodesNodeData(PathItemRole.ROLE_MAIN_SEARCHED_NODES));
+      for (Object node : results.getAliveNodes()) {
+        addSearchedNode(nodesRoot, node);
       }
-    });
+      root.add(nodesRoot);
+
+      DataNode resultsRoot = new DataNode(new ResultsNodeData(PathItemRole.ROLE_MAIN_RESULTS, nodeRepresentator));
+      for (SearchResult<?> result : results.getAliveResults()) {
+        addResultWithPresentation(resultsRoot, result, nodeRepresentator);
+      }
+      root.add(resultsRoot);
+
+      myRebuildCache = null;
+      return root;
   }
 
   private void addSearchedNode(DataNode root, Object node) {
-    List<PathItem> path = PathProvider.getPathForSearchResult(new SearchResult(node, SearchedNodesNodeData.CATEGORY_NAME));
-    ArrayList<PathItem> pathCopy = new ArrayList<PathItem>(path);
-    createPath(pathCopy, 0, root, null, false, null);
+    List<PathItem> path = PathProvider.getPathForSearchResult(new SearchResult<Object>(node, SearchedNodesNodeData.CATEGORY_NAME));
+    createPath(path, root, null, false, null);
   }
 
   private void addResultWithPresentation(DataNode root, SearchResult result, INodeRepresentator nodeRepresentator) {
     List<PathItem> path = PathProvider.getPathForSearchResult(result);
-    ArrayList<PathItem> pathCopy = new ArrayList<PathItem>(path);
-    createPath(pathCopy, 0, root, nodeRepresentator, true, result);
+    createPath(path, root, nodeRepresentator, true, result);
   }
 
-  //the first argument's type is exact for performance reasons
-  private DataNode createPath(ArrayList<PathItem> path, int index, DataNode root, INodeRepresentator nodeRepresentator,
-                              boolean results, SearchResult result) {
-    DataNode next = null;
-    PathItem currentPathItem = path.get(index);
-    Object currentIdObject = currentPathItem.getIdObject();
+  private void createPath(List<PathItem> path, DataNode parent, @Nullable INodeRepresentator<Object> nodeRepresentator,
+      boolean results, @Nullable SearchResult result) {
 
-    for (DataNode child : root.getChildren()) {
-      if (currentIdObject instanceof String) {
-        if (EqualUtil.equals(currentIdObject, child.getData().getIdObject())) {
-          next = child;
+    assert !path.isEmpty();
+    final PathItem pathTail = path.get(path.size() - 1);
+
+    final String tailCustomCaption;
+    if (result != null && nodeRepresentator != null) {
+      tailCustomCaption = nodeRepresentator.getPresentation(result.getObject());
+    } else {
+      tailCustomCaption = null;
+    }
+
+
+    for (PathItem currentPathItem : path) {
+      Object currentIdObject = currentPathItem.getIdObject();
+      final boolean isPathTail = currentPathItem == pathTail;
+
+      DataNode next = myRebuildCache.get(new Pair<DataNode, Object>(parent, currentIdObject));
+
+      if (next == null) {
+        PathItemRole creator = currentPathItem.getRole();
+        BaseNodeData data = null;
+
+        final String caption = isPathTail ? tailCustomCaption : null;
+
+        if (currentIdObject instanceof SModule) {
+          data = new ModuleNodeData(creator, caption, ((SModule) currentIdObject).getModuleReference(), isPathTail, results);
+        } else if (currentIdObject instanceof SModuleReference) {
+          data = new ModuleNodeData(creator, caption, (SModuleReference) currentIdObject, isPathTail, results);
+        } else if (currentIdObject instanceof SModelReference) {
+          data = new ModelNodeData(creator, caption, (SModelReference) currentIdObject, isPathTail, results);
+        } else if (currentIdObject instanceof SNode) {
+          data = new NodeNodeData(creator, caption, (SNode) currentIdObject, isPathTail, results);
+        } else if (currentIdObject instanceof SLanguage) {
+          final SLanguage l = (SLanguage) currentIdObject;
+          data = new AbstractResultNodeData(creator, caption == null ? l.getQualifiedName() : caption, "", false, isPathTail, results) {
+            @Override
+            protected String createIdObject() {
+              return l.toString();
+            }
+
+            @Override
+            public Icon getIcon() {
+              return MPSIcons.LanguageRuntime;
+            }
+
+            @Override
+            public void navigate(Project mpsProject, boolean useProjectTree, boolean focus) {
+              new ProjectPaneNavigator(mpsProject).shallFocus(focus).select(l);
+            }
+          };
+        } else if (currentIdObject instanceof Pair) {
+          Pair<CategoryKind, String> category = (Pair<CategoryKind, String>) currentIdObject;
+          data = new CategoryNodeData(creator, category.o1.getName(), category.o2, results, nodeRepresentator);
         }
-      } else if (currentIdObject instanceof Pair && child.getData() instanceof CategoryNodeData) {
-        Pair<CategoryKind, String> category = (Pair<CategoryKind, String>) currentIdObject;
-        CategoryNodeData data = (CategoryNodeData) child.getData();
-        if (data.getCategoryKindName().equals(category.o1.getName())
-          && EqualUtil.equals(data.getIdObject(), category.o2)) {
-          next = child;
-        }
+
+        assert data != null : currentIdObject;
+
+        next = new DataNode(data);
+        parent.add(next);
+        myRebuildCache.put(new Pair<DataNode, Object>(parent, data.getIdObject()), next);
       } else {
-        if (EqualUtil.equals(child.getData().getIdObject(), currentIdObject)) {
-          next = child;
+        if (isPathTail) {
+          next.getData().setIsPathTail_internal(true);
         }
       }
-    }
-    if (next == null) {
-      Object o = currentIdObject;
-      PathItemRole creator = path.get(index).getRole();
-      BaseNodeData data = null;
-
-      boolean isResult = index == path.size() - 1;
-      if (o instanceof SModule) {
-        if (result != null && isResult) {
-          data = new ModuleNodeData(creator, result, true, nodeRepresentator, results);
-        } else {
-          data = new ModuleNodeData(creator, (SModule) o, isResult, results);
-        }
-      } else if (o instanceof SModelReference) {
-        if (result != null && isResult) {
-          data = new ModelNodeData(creator, result, true, nodeRepresentator, results);
-        } else {
-          data = new ModelNodeData(creator, (SModelReference) o, isResult, results);
-        }
-      } else if (o instanceof SNode) {
-        if (result != null && isResult) {
-          data = new NodeNodeData(creator, result, isResult, nodeRepresentator, results);
-        } else {
-          data = new NodeNodeData(creator, (SNode) o, isResult, nodeRepresentator, results);
-        }
-      } else if (o instanceof Pair) {
-        Pair<CategoryKind, String> category = (Pair<CategoryKind, String>) currentIdObject;
-        data = new CategoryNodeData(creator, category.o1.getName(), category.o2, results, nodeRepresentator);
-      }
-
-      next = new DataNode(data);
-      root.add(next);
-    } else {
-      adjustNode(next, path, index);
-    }
-    if (index == path.size() - 1) {
-      return next;
-    } else {
-      return createPath(path, index + 1, next, nodeRepresentator, results, result);
-    }
-  }
-
-  private void adjustNode(DataNode next, ArrayList<PathItem> path, int index) {
-    if (index == path.size() - 1) {
-      next.getData().setIsResultNode_internal(true);
+      parent = next;
     }
   }
 
@@ -262,8 +291,6 @@ public class DataTree implements IExternalizeable, IChangeListener {
   @Override
   public void read(Element element, Project project) throws CantLoadSomethingException {
     myTreeRoot.read(element, project);
-    notifyChangeListeners();
-    updateNotifier();
   }
 
   @Override

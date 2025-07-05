@@ -20,9 +20,11 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiManager;
 import com.intellij.psi.PsiReference;
 import com.intellij.util.IncorrectOperationException;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
@@ -40,13 +42,15 @@ public class MPSPsiRef extends MPSPsiNodeBase {
   private SNodeId nodeId;
   private String referenceText;
 
-  public MPSPsiRef(String role, SModelReference model, SNodeId nodeId) {
+  public MPSPsiRef(String role, SModelReference model, SNodeId nodeId, PsiManager manager) {
+    super(manager);
     this.role = role;
     this.model = model;
     this.nodeId = nodeId;
   }
 
-  public MPSPsiRef(String role, String referenceText) {
+  public MPSPsiRef(String role, String referenceText, PsiManager manager) {
+    super(manager);
     this.role = role;
     this.referenceText = referenceText;
   }
@@ -59,7 +63,7 @@ public class MPSPsiRef extends MPSPsiNodeBase {
     // Note: we expect that PSI clients do take read lock to resolve references
     ApplicationManager.getApplication().assertReadAccessAllowed();
 
-    return ModelAccess.instance().runReadAction(new Computable<PsiElement>() {
+    return new ModelAccessHelper(ProjectHelper.getModelAccess(getProject())).runReadAction(new Computable<PsiElement>() {
       @Override
       public PsiElement compute() {
         if (model != null && nodeId != null) {

@@ -7,52 +7,42 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.IScope;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SModel;
 
 public class complete_Path extends AbstractCellMenuComponent {
   public complete_Path() {
     super(new SubstituteInfoPartExt[]{new complete_Path.BuildSourcePath_generic_cellMenu_1iqwn9_a0()});
   }
-
   public static class BuildSourcePath_generic_cellMenu_1iqwn9_a0 extends AbstractCellMenuPart_Generic_Group {
     public BuildSourcePath_generic_cellMenu_1iqwn9_a0() {
     }
-
-    public List<?> createParameterObjects(SNode node, IScope scope, IOperationContext operationContext, EditorContext editorContext) {
+    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
       List<String> allP = ListSequence.fromList(new ArrayList<String>());
-      BehaviorReflection.invokeVirtual(String.class, node, "virtual_getRelativePath_5481553824944787371", new Object[]{});
+      BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(node);
       return allP;
     }
-
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IScope scope, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((String) parameterObject, node, model, scope, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
     }
-
-    public void handleAction_impl(String parameterObject, SNode node, SModel model, IScope scope, IOperationContext operationContext, EditorContext editorContext) {
+    public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
     }
-
     public boolean isReferentPresentation() {
       return false;
     }
-
     public String getMatchingText(Object parameterObject) {
       return this.getMatchingText_internal((String) parameterObject);
     }
-
     public String getMatchingText_internal(String parameterObject) {
       return parameterObject;
     }
-
     public String getDescriptionText(Object parameterObject) {
       return this.getDescriptionText_internal((String) parameterObject);
     }
-
     public String getDescriptionText_internal(String parameterObject) {
       return parameterObject;
     }

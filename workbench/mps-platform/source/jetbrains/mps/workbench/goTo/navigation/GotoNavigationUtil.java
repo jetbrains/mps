@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,9 @@
  */
 package jetbrains.mps.workbench.goTo.navigation;
 
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import org.jetbrains.mps.openapi.util.SubProgressKind;
 import jetbrains.mps.util.CollectConsumer;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.workbench.goTo.index.RootNodeNameIndex;
+import jetbrains.mps.workbench.index.RootNodeNameIndex;
 import jetbrains.mps.workbench.goTo.index.SNodeDescriptor;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -28,7 +26,8 @@ import org.jetbrains.mps.openapi.persistence.NavigationParticipant;
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant.NavigationTarget;
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant.TargetKind;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import org.jetbrains.mps.openapi.util.Consumer;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import org.jetbrains.mps.openapi.util.SubProgressKind;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -37,7 +36,7 @@ import java.util.Set;
 public class GotoNavigationUtil {
 
   public static Collection<NavigationTarget> getNavigationTargets(TargetKind kind, SearchScope scope, ProgressMonitor monitor) {
-    CollectConsumer<NavigationTarget> consumer = new CollectConsumer(new HashSet<NavigationTarget>());
+    CollectConsumer<NavigationTarget> consumer = new CollectConsumer<NavigationTarget>(new HashSet<NavigationTarget>());
     Collection<NavigationParticipant> participants = PersistenceFacade.getInstance().getNavigationParticipants();
 
     monitor.start("Finding targets...", participants.size() + 5);
@@ -45,12 +44,9 @@ public class GotoNavigationUtil {
       Collection<SModel> current = IterableUtil.asCollection(scope.getModels());
       for (NavigationParticipant participant : participants) {
         final Set<SModel> next = new HashSet<SModel>(current);
-        participant.findTargets(kind, current, consumer, new Consumer<SModel>() {
-          @Override
-          public void consume(SModel sModel) {
-            next.remove(sModel);
-          }
-        });
+        CollectConsumer<SModel> processedModels = new CollectConsumer<SModel>(new HashSet<SModel>());
+        participant.findTargets(kind, current, consumer, processedModels);
+        next.removeAll(processedModels.getResult());
         current = next;
         monitor.advance(1);
       }
@@ -58,12 +54,9 @@ public class GotoNavigationUtil {
       ProgressMonitor subMonitor = monitor.subTask(4, SubProgressKind.DEFAULT);
       subMonitor.start("", current.size());
       for (SModel m : current) {
-        subMonitor.step(m.getModelName());
+        subMonitor.step(m.getName().getValue());
         for (SNode root : RootNodeNameIndex.getRootsToIterate(m)) {
-          String nodeName = (root.getName() == null) ? "null" : root.getName();
-          consumer.consume(
-            SNodeDescriptor.fromModelReference(
-              nodeName, root.getConcept().getQualifiedName(), root.getModel().getReference(), root.getNodeId()));
+          consumer.consume(new SNodeDescriptor(root));
         }
         if (monitor.isCanceled()) break;
         subMonitor.advance(1);

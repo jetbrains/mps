@@ -15,16 +15,13 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import jetbrains.mps.nodeEditor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.nodeEditor.selection.SingularSelectionListenerAdapter;
 import jetbrains.mps.openapi.editor.selection.SingularSelection;
-import jetbrains.mps.smodel.event.SModelEvent;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.KeyStroke;
-import java.util.List;
 
 public class UIEditorComponent extends EditorComponent {
   private InspectorEditorComponent myInspector;
@@ -32,7 +29,6 @@ public class UIEditorComponent extends EditorComponent {
   public UIEditorComponent(SRepository repository, InspectorEditorComponent inspector) {
     super(repository);
     unregisterKeyboardAction(KeyStroke.getKeyStroke("ESCAPE"));
-    setNoVirtualFile(true);
     myInspector = inspector;
 
     if (myInspector == null) return;
@@ -40,21 +36,14 @@ public class UIEditorComponent extends EditorComponent {
     getSelectionManager().addSelectionListener(new SingularSelectionListenerAdapter() {
       @Override
       protected void selectionChangedTo(jetbrains.mps.openapi.editor.EditorComponent editorComponent, SingularSelection newSelection) {
-        myInspector.editNode(newSelection.getEditorCell().getSNode());
+        SNode node = newSelection.getEditorCell().getSNode();
+        final String[] enabledHints = getEditorHintsForNode(node);
+        boolean needToEdit = myInspector.getUpdater().setInitialEditorHints(enabledHints);
+        if (needToEdit || myInspector.getEditedNode() != node) {
+          myInspector.editNode(node);
+        }
       }
     });
-  }
-
-  @Override
-  public EditorCell createRootCell(List<SModelEvent> events) {
-    if (getEditedNode() == null || getEditorContext() == null) {
-      EditorContext editorContext = getEditorContext();
-      if (editorContext == null) {
-        editorContext = new EditorContext(this, null, getRepository());
-      }
-      return new EditorCell_Constant(editorContext, null, "<NO NODE>");
-    }
-    return getEditorContext().createRootCell(getEditedNode(), events);
   }
 
   @Override

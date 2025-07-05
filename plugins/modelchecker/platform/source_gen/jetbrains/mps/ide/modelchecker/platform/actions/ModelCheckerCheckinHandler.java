@@ -11,12 +11,11 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
-import jetbrains.mps.project.ProjectOperationContext;
-import jetbrains.mps.ide.project.ProjectHelper;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.io.File;
 import jetbrains.mps.smodel.SModelFileTracker;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -30,12 +29,10 @@ import com.intellij.openapi.vcs.changes.CommitContext;
 public class ModelCheckerCheckinHandler extends CheckinHandler {
   private Project myProject;
   private CheckinProjectPanel myPanel;
-
   public ModelCheckerCheckinHandler(Project project, CheckinProjectPanel panel) {
     myProject = project;
     myPanel = panel;
   }
-
   @Nullable
   @Override
   public RefreshableOnComponent getBeforeCheckinConfigurationPanel() {
@@ -47,34 +44,29 @@ public class ModelCheckerCheckinHandler extends CheckinHandler {
         panel.add(checkModelCheckBox);
         return panel;
       }
-
       @Override
       public void restoreState() {
         checkModelCheckBox.setSelected(ModelCheckerSettings.getInstance().isCheckBeforeCommit());
       }
-
       @Override
       public void saveState() {
         ModelCheckerSettings.getInstance().setCheckBeforeCommit(checkModelCheckBox.isSelected());
       }
-
       @Override
       public void refresh() {
       }
     };
   }
-
   @Override
   public CheckinHandler.ReturnResult beforeCheckin() {
     if (!(ModelCheckerSettings.getInstance().isCheckBeforeCommit())) {
       return CheckinHandler.ReturnResult.COMMIT;
     }
 
-    return ModelCheckerTool.getInstance(myProject).checkModelsBeforeCommit(new ProjectOperationContext(ProjectHelper.toMPSProject(myProject)), getModelsByFiles(myPanel.getFiles()));
+    return ModelCheckerTool.getInstance(myProject).checkModelsBeforeCommit(getModelsByFiles(myPanel.getFiles()));
   }
-
-  private static List<SModel> getModelsByFiles(Iterable<File> files) {
-    final SModelFileTracker ft = SModelFileTracker.getInstance();
+  private List<SModel> getModelsByFiles(Iterable<File> files) {
+    final SModelFileTracker ft = SModelFileTracker.getInstance(ProjectHelper.getProjectRepository(myProject));
     return ListSequence.fromListWithValues(new ArrayList<SModel>(), Sequence.fromIterable(files).select(new ISelector<File, SModel>() {
       public SModel select(File file) {
         return ft.findModel(FileSystem.getInstance().getFileByPath(file.getAbsolutePath()));
@@ -85,11 +77,9 @@ public class ModelCheckerCheckinHandler extends CheckinHandler {
       }
     }));
   }
-
   public static class ModelCheckerCheckinHandlerFactory extends CheckinHandlerFactory {
     public ModelCheckerCheckinHandlerFactory() {
     }
-
     @NotNull
     @Override
     public CheckinHandler createHandler(CheckinProjectPanel panel, CommitContext commitContext) {

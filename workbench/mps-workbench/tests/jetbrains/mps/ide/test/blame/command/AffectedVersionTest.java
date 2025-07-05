@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,49 +15,49 @@
  */
 package jetbrains.mps.ide.test.blame.command;
 
-import jetbrains.mps.WorkbenchMpsTest;
+import com.intellij.openapi.application.ApplicationInfo;
+import jetbrains.mps.PlatformMpsTest;
 import jetbrains.mps.ide.blame.command.Command;
-import jetbrains.mps.ide.blame.command.Poster;
 import jetbrains.mps.ide.blame.perform.Query;
 import jetbrains.mps.ide.blame.perform.Response;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.methods.GetMethod;
-import org.jdom.Element;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Set;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-public class AffectedVersionTest extends WorkbenchMpsTest {
-  private static final String URL = Command.YOUTRACK_BASE_URL + "/rest/admin/customfield/versionBundle/MPS%20Versions";
-
+public class AffectedVersionTest extends PlatformMpsTest {
   @Test
   public void testVersion() throws IOException {
-    String version = Command.getVersion();
-    if (version == null) return;
-
-    HttpClient client = new HttpClient();
-    Poster.setTimeouts(client);
-
-    Response r = Command.login(client, Query.ANONYMOUS);
-    if (!r.isSuccess()) fail("Was not able to login anonymously");
-
-    GetMethod p = new GetMethod(URL);
-    client.executeMethod(p);
-
-    int statusCode = p.getStatusCode();
-    if (statusCode != 200) fail("Status code: " + statusCode);
-
-    //check that version is in versions
-    Element e = Response.responseAsElement(p.getResponseBodyAsString());
-
-    List<Element> versions = e.getChildren("version");
-    for (Element v : versions) {
-      if (v.getText().equals(version)) return;
+    String version = ApplicationInfo.getInstance().getFullVersion();
+    if (version == null) {
+      fail("Can't get current application version");
     }
 
-    fail("version " + version + " does not exist in tracker");
+    String login = System.getProperty("mps.youtrack.login");
+    String password = System.getProperty("mps.youtrack.password");
+
+    if (login == null || password == null) {
+      fail("No YouTrack credentials were given for the test");
+    }
+
+    Command c = new Command();
+
+    Response r = c.login(new Query(login, password));
+    assertTrue("Was not able to login", r.isSuccess());
+
+    //check that version is in versions
+    r = c.listVersions();
+    if (!r.isSuccess()) {
+      fail("Failed to retrieve list of versions from server");
+    }
+
+    Set<String> availableVersions = c.extractVersions(r);
+
+    assertTrue("Failed to retrieve list of versions from server", availableVersions != null);
+
+    assertTrue("version " + version + " does not exist in tracker", availableVersions.contains(version));
   }
 }

@@ -4,23 +4,28 @@ package jetbrains.mps.lang.typesystem.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum EquationDirection_Enum {
   none("none", "none"),
   left(":=", "left"),
   right("=:", "right");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private EquationDirection_Enum(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<EquationDirection_Enum> getConstants() {
     List<EquationDirection_Enum> list = ListSequence.fromList(new LinkedList<EquationDirection_Enum>());
     ListSequence.fromList(list).addElement(EquationDirection_Enum.none);
@@ -28,11 +33,9 @@ public enum EquationDirection_Enum {
     ListSequence.fromList(list).addElement(EquationDirection_Enum.right);
     return list;
   }
-
   public static EquationDirection_Enum getDefault() {
     return EquationDirection_Enum.none;
   }
-
   public static EquationDirection_Enum parseValue(String value) {
     if (value == null) {
       return EquationDirection_Enum.getDefault();
@@ -47,16 +50,5 @@ public enum EquationDirection_Enum {
       return EquationDirection_Enum.right;
     }
     return EquationDirection_Enum.getDefault();
-  }
-
-  private String myValue;
-
-  EquationDirection_Enum(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

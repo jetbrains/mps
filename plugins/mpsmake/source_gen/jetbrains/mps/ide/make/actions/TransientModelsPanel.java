@@ -4,6 +4,7 @@ package jetbrains.mps.ide.make.actions;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import jetbrains.mps.icons.MPSIcons;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import com.intellij.util.ui.UIUtil;
@@ -16,17 +17,13 @@ import java.awt.event.MouseEvent;
   private final TransientModelsWidget myWidget;
   private JLabel label;
 
-
   public TransientModelsPanel(TransientModelsWidget widget) {
     myWidget = widget;
-    this.label = new JLabel(widget.getMaxPossibleText(), IconContainer.ICON_b0a0b0d, SwingConstants.RIGHT);
+    this.label = new JLabel(widget.getMaxPossibleText(), MPSIcons.Nodes.TransientModule, SwingConstants.LEFT);
     this.label.setIconTextGap(0);
     Font labelFont = UIUtil.getLabelFont();
     boolean framedStyle = SystemInfo.isMac || !(SystemProperties.getBooleanProperty("idea.ui.mem.use", false));
-    this.label.setFont((framedStyle ?
-      labelFont.deriveFont(11.0f) :
-      labelFont
-    ));
+    this.label.setFont((framedStyle ? labelFont.deriveFont(11.0f) : labelFont));
     this.label.setPreferredSize(this.label.getPreferredSize());
     this.label.setText(myWidget.getText());
     this.add(this.label);
@@ -41,12 +38,10 @@ import java.awt.event.MouseEvent;
     });
     setOpaque(false);
   }
-
   public void update() {
     this.label.setText(myWidget.getText());
     this.label.setIcon(myWidget.getIcon());
   }
-
   @Override
   public String getToolTipText() {
     return myWidget.getTooltipText();

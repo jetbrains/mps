@@ -10,19 +10,18 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Basic;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.cells.ParentSettings;
 import java.awt.Color;
+import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 
 public class HLineCellProvider extends AbstractCellProvider {
-  private SNode myNode;
-
   public HLineCellProvider(SNode node) {
-    this.myNode = node;
+    super(node);
   }
 
   @Override
-  public EditorCell createEditorCell(EditorContext p0) {
-    EditorCell_Basic result = new EditorCell_Basic(p0, this.myNode) {
+  public EditorCell createEditorCell(EditorContext context) {
+    EditorCell_Basic result = new EditorCell_Basic(context, getSNode()) {
       @Override
-      public void paintContent(Graphics g, ParentSettings parentSettings) {
+      protected void paintContent(Graphics g, ParentSettings parentSettings) {
         if (this.isSelectionPaintedOnAncestor(parentSettings).isSelectionPainted()) {
           g.setColor(Color.WHITE);
         } else {
@@ -34,12 +33,10 @@ public class HLineCellProvider extends AbstractCellProvider {
         this.setX(x);
         g.fillRect(x, this.getY() + 1, width, 1);
       }
-
       @Override
       public int getAscent() {
-        return this.getPrevLeaf().getHeight() / 4;
+        return CellTraversalUtil.getPrevLeaf(this).getHeight() / 4;
       }
-
       @Override
       public void relayoutImpl() {
         this.myWidth = 20;

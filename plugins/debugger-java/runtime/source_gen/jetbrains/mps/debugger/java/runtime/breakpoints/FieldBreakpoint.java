@@ -5,16 +5,16 @@ package jetbrains.mps.debugger.java.runtime.breakpoints;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.debug.api.breakpoints.BreakpointLocation;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventsProcessor;
 import com.sun.jdi.ReferenceType;
 import jetbrains.mps.debugger.java.runtime.engine.RequestManager;
+import jetbrains.mps.textgen.trace.TraceablePositionInfo;
 import com.sun.jdi.Field;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationUtils;
 import com.sun.jdi.ClassType;
@@ -26,57 +26,50 @@ import com.sun.jdi.InternalException;
 
 public class FieldBreakpoint extends JavaBreakpoint implements ILocationBreakpoint {
   private static final Logger LOG = LogManager.getLogger(FieldBreakpoint.class);
-  private final BreakpointLocation myLocation;
-  private String myFieldName;
+  private final SNodeReference myNode;
+  private BreakpointLocation myLocation;
 
   public FieldBreakpoint(@NotNull SNodeReference nodePointer, Project project) {
     super(project);
-    myLocation = new BreakpointLocation(nodePointer);
+    myNode = nodePointer;
   }
-
   public FieldBreakpoint(@NotNull SNode node, Project project) {
-    this(new SNodePointer(node), project);
-  }
-
-  private boolean updateFieldName() {
-    if (myFieldName != null) {
-      return true;
-    }
-    myFieldName = myLocation.getTargetCodePosition().getPropertyString();
-    return myFieldName != null;
+    this(node.getReference(), project);
   }
 
   @NotNull
   @Override
   public BreakpointLocation getLocation() {
+    if (myLocation == null) {
+      myLocation = new BreakpointLocationUpdate(myNode, getRepository()).get();
+    }
     return myLocation;
   }
 
   @Override
   @Nullable
   protected String getClassNameToPrepare() {
-    return myLocation.getTargetUnitName();
+    return getLocation().getTargetUnitName();
   }
-
   @NotNull
   @Override
   public JavaBreakpointKind getKind() {
     return JavaBreakpointKind.FIELD_BREAKPOINT;
   }
-
   @Override
   public String getPresentation() {
-    return myLocation.getPresentation();
+    return new BreakpointPresentation(getLocation(), getRepository()).getText();
   }
-
   @Override
   protected void createRequestForPreparedClass(EventsProcessor debugProcess, ReferenceType classType) {
     RequestManager requestManager = debugProcess.getRequestManager();
-    if (!(updateFieldName())) {
+    TraceablePositionInfo targetCodePosition = getLocation().getTargetCodePosition();
+    String fieldName = (targetCodePosition == null ? null : targetCodePosition.getPropertyString());
+    if ((fieldName == null || fieldName.length() == 0)) {
       return;
     }
     try {
-      Field field = EvaluationUtils.getInstance().findField((ClassType) classType, myFieldName);
+      Field field = EvaluationUtils.getInstance().findField((ClassType) classType, fieldName);
       AccessWatchpointRequest fieldAccessRequest = requestManager.createFieldAccessRequest(this, field);
       ModificationWatchpointRequest fieldModificationRequest = requestManager.createFieldModificationRequest(this, field);
       requestManager.enableRequest(fieldAccessRequest);
@@ -92,7 +85,6 @@ public class FieldBreakpoint extends JavaBreakpoint implements ILocationBreakpoi
       LOG.error(null, ex);
     }
   }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -102,23 +94,13 @@ public class FieldBreakpoint extends JavaBreakpoint implements ILocationBreakpoi
       return false;
     }
 
-    return eq_he6f5h_a0d0l(myLocation, ((FieldBreakpoint) o).myLocation);
+    return eq_he6f5h_a0d0n(getLocation(), ((FieldBreakpoint) o).getLocation());
   }
-
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + ((myLocation != null ?
-      ((Object) myLocation).hashCode() :
-      0
-    ));
-    return result;
+    return myNode.hashCode() + getKind().hashCode() * 31;
   }
-
-  private static boolean eq_he6f5h_a0d0l(Object a, Object b) {
-    return (a != null ?
-      a.equals(b) :
-      a == b
-    );
+  private static boolean eq_he6f5h_a0d0n(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
   }
 }

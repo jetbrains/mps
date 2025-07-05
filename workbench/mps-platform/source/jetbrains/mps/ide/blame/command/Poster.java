@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,20 +15,21 @@
  */
 package jetbrains.mps.ide.blame.command;
 
+import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.blame.perform.Executor;
 import jetbrains.mps.ide.blame.perform.Performable;
 import jetbrains.mps.ide.blame.perform.Query;
 import jetbrains.mps.ide.blame.perform.Response;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.params.HttpClientParams;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class Poster {
-  private static final int TIMEOUT = 5000;
+  private static final Logger LOG = LogManager.getLogger(Poster.class);
 
-  private Executor myExecutor;
+  private final Executor myExecutor;
 
   public Poster(@Nullable Project project) {
     myExecutor = new Executor(project);
@@ -40,15 +41,26 @@ public class Poster {
       @Override
       @NotNull
       public Response perform() throws Exception {
-        HttpClient client = new HttpClient();
-        setTimeouts(client);
-        Response r = Command.login(client, query);
+        Command c = new Command();
+        Response r = c.login(query);
         if (r.isSuccess()) {
-          r = Command.postIssue(client, query.getIssueTitle(), query.getDescription(), query.isHidden(), query.getFiles());
+          r = c.postIssue(query.getIssueTitle(), query.getDescription(), query.isHidden(), query.getFiles());
           String subsystem = query.getSubsystem();
           String id = r.getIssueId();
-          if (r.isSuccess() && subsystem != null && id != null) {
-            Command.setIssueSubsystem(client, id, subsystem);
+          if (r.isSuccess() && id != null) {
+            if (subsystem != null) {
+              final Response subsystemResponse = c.setIssueSubsystem(id, subsystem);
+              if (!subsystemResponse.isSuccess()) {
+                final String subSystemMessage = String.format("Can't set %s subsystem to issue %s", subsystem, id);
+                LOG.info(subSystemMessage, subsystemResponse.getThrowable());
+              }
+            }
+            final String fullVersion = ApplicationInfo.getInstance().getFullVersion();
+            final Response affectedVersionResponse = c.setIssueAffectedVersion(id, fullVersion);
+            if (!affectedVersionResponse.isSuccess()) {
+              final String affectedVersionMessage = String.format("Can't set %s affected version to issue %s", fullVersion, id);
+              LOG.info(affectedVersionMessage, affectedVersionResponse.getThrowable());
+            }
           }
         }
         return r;
@@ -58,22 +70,10 @@ public class Poster {
   }
 
   public Response test(final Query query) {
-    Performable test = new Performable() {
-      @Override
-      @NotNull
-      public Response perform() throws Exception {
-        HttpClient client = new HttpClient();
-        setTimeouts(client);
-        return Command.login(client, query);
-      }
+    Performable test = () -> {
+      Command c = new Command();
+      return c.login(query);
     };
     return myExecutor.execute(test);
-  }
-
-  public static void setTimeouts(HttpClient c) {
-    HttpClientParams params = c.getParams();
-    params.setConnectionManagerTimeout(TIMEOUT);
-    params.setSoTimeout(TIMEOUT);
-    c.setParams(params);
   }
 }

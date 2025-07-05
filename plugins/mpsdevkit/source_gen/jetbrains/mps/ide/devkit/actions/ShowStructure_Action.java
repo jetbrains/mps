@@ -4,20 +4,17 @@ package jetbrains.mps.ide.devkit.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import org.apache.log4j.Priority;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.ide.structureView.StructureViewBuilder;
-import com.intellij.openapi.fileEditor.FileEditor;
-import com.intellij.ide.structureView.StructureView;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.ide.platform.dialogs.choosers.FileStructurePopup;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.fileEditor.FileEditor;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.ide.structureView.StructureViewBuilder;
+import com.intellij.ide.structureView.StructureView;
+import com.intellij.ide.util.FileStructurePopup;
 
 public class ShowStructure_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -27,62 +24,48 @@ public class ShowStructure_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
-  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      this.enable(event.getPresentation());
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "ShowStructure", t);
-      }
-      this.disable(event.getPresentation());
-    }
-  }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("project", event.getData(PlatformDataKeys.PROJECT));
-    if (MapSequence.fromMap(_params).get("project") == null) {
-      return false;
+    {
+      Project p = event.getData(CommonDataKeys.PROJECT);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("fileEditor", event.getData(PlatformDataKeys.FILE_EDITOR));
-    if (MapSequence.fromMap(_params).get("fileEditor") == null) {
-      return false;
+    {
+      FileEditor p = event.getData(PlatformDataKeys.FILE_EDITOR);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("file", event.getData(PlatformDataKeys.VIRTUAL_FILE));
-    if (MapSequence.fromMap(_params).get("file") == null) {
-      return false;
+    {
+      VirtualFile p = event.getData(CommonDataKeys.VIRTUAL_FILE);
+      if (p == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      final StructureViewBuilder structureViewBuilder = ((FileEditor) MapSequence.fromMap(_params).get("fileEditor")).getStructureViewBuilder();
-      if (structureViewBuilder == null) {
-        return;
-      }
-
-      StructureView structureView = structureViewBuilder.createStructureView(((FileEditor) MapSequence.fromMap(_params).get("fileEditor")), ((Project) MapSequence.fromMap(_params).get("project")));
-      FileStructurePopup popup = new FileStructurePopup(structureView.getTreeModel(), ((Project) MapSequence.fromMap(_params).get("project")), structureView, true);
-      if (((VirtualFile) MapSequence.fromMap(_params).get("file")) != null) {
-        // todo: look like this action is unnecessary (it's just ctrl+f12 idea action by logic and implementation) 
-        popup.setTitle(((VirtualFile) MapSequence.fromMap(_params).get("file")).getName());
-      }
-      popup.show();
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "ShowStructure", t);
-      }
+    final StructureViewBuilder structureViewBuilder = event.getData(PlatformDataKeys.FILE_EDITOR).getStructureViewBuilder();
+    if (structureViewBuilder == null) {
+      return;
     }
-  }
 
-  protected static Logger LOG = LogManager.getLogger(ShowStructure_Action.class);
+    StructureView structureView = structureViewBuilder.createStructureView(event.getData(PlatformDataKeys.FILE_EDITOR), event.getData(CommonDataKeys.PROJECT));
+    FileStructurePopup popup = new FileStructurePopup(event.getData(CommonDataKeys.PROJECT), event.getData(PlatformDataKeys.FILE_EDITOR), structureView, true);
+    if (event.getData(CommonDataKeys.VIRTUAL_FILE) != null) {
+      // todo: look like this action is unnecessary (it's just ctrl+f12 idea action by logic and implementation) 
+      popup.setTitle(event.getData(CommonDataKeys.VIRTUAL_FILE).getName());
+    }
+    popup.show();
+  }
 }

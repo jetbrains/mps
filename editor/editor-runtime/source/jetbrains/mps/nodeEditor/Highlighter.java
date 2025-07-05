@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,134 +15,113 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import com.intellij.openapi.application.ApplicationAdapter;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.command.CommandEvent;
 import com.intellij.openapi.command.CommandProcessor;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.IndexNotReadyException;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManager;
+import com.intellij.util.concurrency.EdtExecutorService;
 import com.intellij.util.messages.MessageBusConnection;
-import jetbrains.mps.MPSCore;
-import jetbrains.mps.openapi.editor.Editor;
-import jetbrains.mps.ide.IdeMain;
-import jetbrains.mps.ide.IdeMain.TestMode;
+import jetbrains.mps.RuntimeFlags;
+import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.classloading.MPSClassesListener;
+import jetbrains.mps.classloading.MPSClassesListenerAdapter;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.smodel.event.SModelReplacedEvent;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.make.IMakeService;
-import jetbrains.mps.nodeEditor.checking.BaseEditorChecker;
+import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.nodeEditor.checking.EditorChecker;
+import jetbrains.mps.nodeEditor.highlighter.EditorCheckerWrapper;
 import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
-import jetbrains.mps.nodeEditor.highlighter.EditorsHelper;
-import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
+import jetbrains.mps.nodeEditor.highlighter.HighlighterEditorList;
+import jetbrains.mps.nodeEditor.highlighter.HighlighterEditorTracker;
+import jetbrains.mps.nodeEditor.highlighter.HighlighterEventCollector;
+import jetbrains.mps.nodeEditor.highlighter.HighlighterUpdateSession;
+import jetbrains.mps.nodeEditor.highlighter.IHighlighter;
+import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.reloading.ReloadAdapter;
-import jetbrains.mps.reloading.ReloadListener;
-import org.jetbrains.mps.openapi.model.*;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.util.*;
-import jetbrains.mps.smodel.event.SModelCommandListener;
+import jetbrains.mps.smodel.GlobalSModelEventsManager;
 import jetbrains.mps.smodel.event.SModelEvent;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
+import jetbrains.mps.smodel.event.SModelReplacedEvent;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.repository.CommandListener;
 
-import javax.swing.SwingUtilities;
-import java.lang.reflect.InvocationTargetException;
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class Highlighter implements EditorMessageOwner, ProjectComponent {
+public class Highlighter implements IHighlighter, ProjectComponent {
   private static final Logger LOG = LogManager.getLogger(Highlighter.class);
-  private static final Object EVENTS_LOCK = new Object();
-  private static final Object CHECKERS_LOCK = new Object();
 
-  private static final Object UPDATE_EDITOR_LOCK = new Object();
-  private static final Object ADD_EDITORS_LOCK = new Object();
+  private static final int DEFAULT_GRACE_PERIOD = 150;
+  public static final int DEFAULT_DELAY_MULTIPLIER = 1;
 
-  private static final Object PENDING_LOCK = new Object();
-  private static final int DEFAULT_GRACE_PERIOD = 50;
+  private volatile boolean myPaused;
+  private final ApplicationAdapter myApplicationListener = new PauseDuringWriteAction();
+  private final com.intellij.openapi.command.CommandAdapter myCommandListener = new PauseDuringCommandOrUndoTransparentAction();
 
-  private volatile boolean myStopThread = false;
-  private FileEditorManager myFileEditorManager;
   private GlobalSModelEventsManager myGlobalSModelEventsManager;
   private ClassLoaderManager myClassLoaderManager;
-  protected Thread myThread;
-  private Set<BaseEditorChecker> myCheckers = new LinkedHashSet<BaseEditorChecker>(3);
-  private Set<BaseEditorChecker> myCheckersToRemove = new LinkedHashSet<BaseEditorChecker>();
-  private volatile boolean myForceUpdateInPowerSaveModeFlag = false;
-  private List<SModelEvent> myLastEvents = new ArrayList<SModelEvent>();
-  private Set<EditorComponent> myCheckedOnceEditors = new WeakSet<EditorComponent>();
-  private boolean myInspectorMessagesCreated = false;
+  private ScheduledExecutorService myBackgroundExecutor;
+  private ScheduleHighlighterUpdate myScheduleHighlighterUpdate;
+
+  private final List<EditorCheckerWrapper> myCheckers = new CopyOnWriteArrayList<>();
+
+  /**
+   * Whether to force running all checkers in power-save mode. Accessed from the highlighter thread only, therefore non-volatile.
+   */
+  private boolean myForceUpdateInPowerSaveModeFlag = false;
   private InspectorTool myInspectorTool;
-  private List<Runnable> myPendingActions = new ArrayList<Runnable>();
 
   private MessageBusConnection myMessageBusConnection;
-  private List<Editor> myAdditionalEditors = new ArrayList<Editor>();
 
-  private List<EditorComponent> myAdditionalEditorComponents = new ArrayList<EditorComponent>();
-
-  private ReloadListener myReloadListener = new ReloadAdapter() {
+  private MPSClassesListener myClassesListener = new MPSClassesListenerAdapter() {
     @Override
-    public void unload() {
+    public void beforeClassesUnloaded(Set<? extends ReloadableModuleBase> modules) {
       addPendingAction(new Runnable() {
         @Override
         public void run() {
-          myCheckedOnceEditors.clear();
-          myInspectorMessagesCreated = false;
-          clearAdditionalEditors();
+          myEditorTracker.markEverythingUnchecked();
+          myEditorList.clearAdditionalEditors();
         }
       });
     }
   };
-  private SModelCommandListener myModelCommandListener = new SModelCommandListener() {
-    @Override
-    public void eventsHappenedInCommand(List<SModelEvent> events) {
-      if (IdeMain.getTestMode() != TestMode.NO_TEST) return;
-      synchronized (EVENTS_LOCK) {
-        myLastEvents.addAll(events);
-      }
-    }
-  };
-  private SModelRepositoryListener myModelReloadListener = new SModelRepositoryAdapter() {
-    @Override
-    public void modelsReplaced(Set<SModel> replacedModels) {
-      synchronized (EVENTS_LOCK) {
-        for (SModel sModel : replacedModels) {
-          myLastEvents.add(new SModelReplacedEvent(sModel));
-          if (!jetbrains.mps.util.SNodeOperations.isRegistered(sModel)) {
-            continue;
-          }
-          for (EditorComponent editorComponent : new ArrayList<EditorComponent>(myCheckedOnceEditors)) {
-            if (editorComponent.getEditorContext() != null && editorComponent.getEditorContext().getModel() != null &&
-                editorComponent.getEditorContext().getModel().getReference().equals(sModel.getReference())) {
-              myCheckedOnceEditors.remove(editorComponent);
-            }
-          }
-        }
-      }
-    }
-  };
 
-  private Project myProject;
+  private final Project myProject;
+  private final MPSProject myMPSProject;
   private CommandWatcher myCommandWatcher = new CommandWatcher();
+  private final HighlighterEditorList myEditorList;
+  private final HighlighterEventCollector myEventCollector = new HighlighterEventCollector();
+  // Keeps track of which editors may be checked incrementally. Must only be accessed from the highlighter background thread.
+  private final HighlighterEditorTracker myEditorTracker = new HighlighterEditorTracker();
 
   /*
    * MPSProject was used as a parameter of this constructor because corresponding component should be initialised after
    * MPSProject and un-initialized before it.
    */
-  public Highlighter(MPSProject mpsProject, Project project, ProjectManager projectManager, FileEditorManager fileEditorManager, InspectorTool inspector,
-      MPSCoreComponents coreComponents) {
+  public Highlighter(MPSProject mpsProject, Project project, FileEditorManager fileEditorManager, InspectorTool inspector, MPSCoreComponents coreComponents) {
+    myMPSProject = mpsProject;
     myProject = project;
-    myFileEditorManager = fileEditorManager;
+    myEditorList = new HighlighterEditorList(fileEditorManager);
     myGlobalSModelEventsManager = coreComponents.getGlobalSModelEventsManager();
     myClassLoaderManager = coreComponents.getClassLoaderManager();
     myInspectorTool = inspector;
@@ -150,13 +129,8 @@ public class Highlighter implements EditorMessageOwner, ProjectComponent {
 
   @Override
   public void projectOpened() {
-    if (myThread != null && myThread.isAlive()) {
-      LOG.error("trying to initialize a Highlighter being already initialized", new Throwable());
-      return;
-    }
-    myClassLoaderManager.addReloadHandler(myReloadListener);
-    myGlobalSModelEventsManager.addGlobalCommandListener(myModelCommandListener);
-    SModelRepository.getInstance().addModelRepositoryListener(myModelReloadListener);
+    myClassLoaderManager.addClassesHandler(myClassesListener);
+    myEventCollector.startListening(myGlobalSModelEventsManager, myMPSProject.getRepository());
 
     myInspectorTool = myProject.getComponent(InspectorTool.class);
     myMessageBusConnection = myProject.getMessageBus().connect();
@@ -167,28 +141,29 @@ public class Highlighter implements EditorMessageOwner, ProjectComponent {
 
       @Override
       public void editorComponentDisposed(@NotNull final EditorComponent editorComponent) {
-        if (editorComponent == myInspectorTool.getInspector()) {
+        if (myEditorTracker.isInspector(editorComponent)) {
           addPendingAction(new Runnable() {
             @Override
             public void run() {
-              myInspectorMessagesCreated = false;
+              myEditorTracker.markInspectorUnchecked();
             }
           });
         }
       }
     });
-    ModelAccess.instance().addCommandListener(myCommandWatcher);
-    myThread = new HighlighterThread();
-    myThread.start();
+
+    ApplicationManager.getApplication().addApplicationListener(myApplicationListener);
+    CommandProcessor.getInstance().addCommandListener(myCommandListener);
+    myMPSProject.getModelAccess().addCommandListener(myCommandWatcher);
   }
 
   @Override
   public void projectClosed() {
-    stopUpdater();
-    ModelAccess.instance().removeCommandListener(myCommandWatcher);
-    SModelRepository.getInstance().removeModelRepositoryListener(myModelReloadListener);
-    myGlobalSModelEventsManager.removeGlobalCommandListener(myModelCommandListener);
-    myClassLoaderManager.removeReloadHandler(myReloadListener);
+    myMPSProject.getModelAccess().removeCommandListener(myCommandWatcher);
+    CommandProcessor.getInstance().removeCommandListener(myCommandListener);
+    ApplicationManager.getApplication().removeApplicationListener(myApplicationListener);
+    myEventCollector.stopListening(myGlobalSModelEventsManager, myMPSProject.getRepository());
+    myClassLoaderManager.removeClassesHandler(myClassesListener);
     myMessageBusConnection.disconnect();
     myInspectorTool = null;
   }
@@ -197,489 +172,343 @@ public class Highlighter implements EditorMessageOwner, ProjectComponent {
   @NonNls
   @NotNull
   public String getComponentName() {
-    return "MPS Higlighter";
+    return "MPS Highlighter";
   }
 
   @Override
   public void initComponent() {
-
+    startUpdater();
   }
 
   @Override
   public void disposeComponent() {
-
+    stopUpdater();
   }
 
-  private void addPendingAction(Runnable r) {
-    synchronized (PENDING_LOCK) {
-      myPendingActions.add(r);
+  private Future<?> addPendingAction(Runnable action) {
+    return myBackgroundExecutor.submit(action);
+  }
+
+  private <T> Future<T> addPendingAction(Callable<T> action) {
+    return myBackgroundExecutor.submit(action);
+  }
+
+  public void addChecker(@NotNull final EditorChecker checker) {
+    if (RuntimeFlags.isTestMode()) {
+      return;
     }
+    addPendingAction(new Runnable() {
+      @Override
+      public void run() {
+        myCheckers.add(new EditorCheckerWrapper(checker));
+        myEditorTracker.markEverythingUnchecked();
+      }
+    });
   }
 
-  private void processPendingActions() {
-    synchronized (PENDING_LOCK) {
-      for (Runnable r : myPendingActions) {
-        r.run();
-      }
-      myPendingActions.clear();
+  /**
+   * Removes a checker from the set of active checkers. Also removes its messages from any known open editors. Must be called from EDT.
+   *
+   * @param checker the checker to remove
+   */
+  public void removeChecker(@NotNull final EditorChecker checker) {
+    if (RuntimeFlags.isTestMode()) {
+      return;
     }
-  }
+    ThreadUtils.assertEDT();
 
-  public void addChecker(BaseEditorChecker checker) {
-    if (MPSCore.getInstance().isTestMode()) return;
+    // Checker removal is done in three steps:
+    //
+    // 1. Remove the checker's wrapper from the internal list of checkers and stop it.
+    EditorCheckerWrapper wrapper = findWrapperFor(checker);
 
-    if (checker != null) {
-      synchronized (CHECKERS_LOCK) {
-        myCheckers.add(checker);
-      }
-      addPendingAction(new Runnable() {
-        @Override
-        public void run() {
-          myCheckedOnceEditors.clear();
-          myInspectorMessagesCreated = false;
+    if (wrapper == null) {
+      return;
+    }
+
+    myCheckers.remove(wrapper);
+    EditorMessageOwner messageOwner = wrapper.getEditorMessageOwner();
+
+    // After dispose() completes it is guaranteed that the highlighter will not run the checker in the background anymore.
+    wrapper.stop();
+
+    // 2. In EDT (since UI access is required) get a list of all editors that are currently open.
+    final List<EditorComponent> editors = myEditorList.getAllEditors();
+    if (editors.isEmpty()) {
+      return;
+    }
+
+    // 3. In the highlighter thread again (actually, any background thread would do), go through the list retrieved in the previous step and remove
+    //    the checker's messages from each editor.
+    addPendingAction(new Runnable() {
+      @Override
+      public void run() {
+        long time = System.currentTimeMillis();
+        for (EditorComponent component : editors) {
+          component.getHighlightManager().clearForOwner(messageOwner, true);
         }
-      });
-    }
+        if (LOG.isDebugEnabled()) {
+          long elapsed = System.currentTimeMillis() - time;
+          LOG.debug(String.format("Removing %s messages from %d editors took %d ms", messageOwner, editors.size(), elapsed));
+        }
+      }
+    });
   }
 
-  public void removeChecker(BaseEditorChecker checker) {
-    if (MPSCore.getInstance().isTestMode()) return;
-
-    if (checker != null) {
-      synchronized (CHECKERS_LOCK) {
-        myCheckers.remove(checker);
-        myCheckersToRemove.add(checker);
+  @Nullable
+  private EditorCheckerWrapper findWrapperFor(@NotNull EditorChecker checker) {
+    EditorCheckerWrapper wrapper = null;
+    for (EditorCheckerWrapper candidate : myCheckers) {
+      if (candidate.isWrapping(checker)) {
+        wrapper = candidate;
+        break;
       }
     }
+    return wrapper;
   }
 
   public void addAdditionalEditorComponent(EditorComponent additionalEditorComponent) {
-    synchronized (ADD_EDITORS_LOCK) {
-      myAdditionalEditorComponents.add(additionalEditorComponent);
-    }
+    myEditorList.addAdditionalEditorComponent(additionalEditorComponent);
   }
 
   public void removeAdditionalEditorComponent(EditorComponent additionalEditorComponent) {
-    synchronized (ADD_EDITORS_LOCK) {
-      myAdditionalEditorComponents.remove(additionalEditorComponent);
-    }
+    myEditorList.removeAdditionalEditorComponent(additionalEditorComponent);
   }
 
   public void addAdditionalEditor(Editor additionalEditor) {
-    synchronized (ADD_EDITORS_LOCK) {
-      myAdditionalEditors.add(additionalEditor);
-    }
+    myEditorList.addAdditionalEditor(additionalEditor);
   }
 
   public void removeAdditionalEditor(Editor additionalEditor) {
-    synchronized (ADD_EDITORS_LOCK) {
-      myAdditionalEditors.remove(additionalEditor);
-    }
+    myEditorList.removeAdditionalEditor(additionalEditor);
   }
 
-  public void clearAdditionalEditors() {
-    synchronized (ADD_EDITORS_LOCK) {
-      myAdditionalEditors.clear();
+  private void startUpdater() {
+    if (myBackgroundExecutor != null && !myBackgroundExecutor.isShutdown()) {
+      LOG.error("trying to initialize a Highlighter being already initialized", new Throwable());
+      return;
+    }
+    myBackgroundExecutor = Executors.newSingleThreadScheduledExecutor(runnable -> new Thread(runnable, "Highlighter"));
+    myScheduleHighlighterUpdate = new ScheduleHighlighterUpdate(EdtExecutorService.getScheduledExecutorInstance(), DumbService.getInstance(myProject));
+    if (!RuntimeFlags.isTestMode()) {
+      myScheduleHighlighterUpdate.scheduleNext();
     }
   }
 
   public void stopUpdater() {
-    myStopThread = true;
+    myScheduleHighlighterUpdate = null;
+    myBackgroundExecutor.shutdown();
     try {
-      /**
-       * This method will be called inside write action, so by a chance there can be a deadlock
-       * (Highligher is trying to call read actions from time to time), so we are limiting waiting time
-       * to some reasonable value here and adding "if (myStopThread)" checks as a first statement into
-       * all read actions executed by Highligher.
-       */
-      int attemptCounter = 10;
-      while (myThread.isAlive() && attemptCounter > 0) {
-        Thread.sleep(10);
-        attemptCounter--;
-      }
+      myBackgroundExecutor.awaitTermination(100, TimeUnit.MILLISECONDS);
     } catch (InterruptedException e) {
       LOG.error(null, e);
     }
   }
 
-  protected void doUpdate(final boolean essentialOnly) {
-    if (ApplicationManager.getApplication() == null || ApplicationManager.getApplication().isDisposed()) {
-      return;
-    }
-    if (IMakeService.INSTANCE.isSessionActive()) {
-      return;
-    }
-    // SwingUtilities.invokeLater(new Runnable() {
-    //   public void run() {
+  @NotNull
+  private HighlighterUpdateSession createUpdateSession(List<EditorComponent> activeEditors, boolean essentialOnly) {
+    processAccumulatedEvents();
 
-    final List<SModelEvent> events = new ArrayList<SModelEvent>();
-    synchronized (EVENTS_LOCK) {
-      events.addAll(myLastEvents);
-      myLastEvents.clear();
-    }
-
-    final Set<BaseEditorChecker> checkers = new LinkedHashSet<BaseEditorChecker>();
-    final Set<BaseEditorChecker> checkersToRemove = new LinkedHashSet<BaseEditorChecker>();
-    // to avoid inconsistency between checkers, we collect them from fields here
-    // in the synchronized block and then do not read the fields in this iteration anymore
-    synchronized (CHECKERS_LOCK) {
-      if (!EditorSettings.getInstance().isPowerSaveMode() || myForceUpdateInPowerSaveModeFlag) {
-        // calling checkers only if we are not in powerSafeMode or updateEditorFlag was set by
-        // explicit update action (available in powerSafeMode only)
-        checkers.addAll(myCheckers);
-        myForceUpdateInPowerSaveModeFlag = false;
-      }
-      checkersToRemove.addAll(myCheckersToRemove);
-      myCheckersToRemove.clear();
-    }
-
-    final List<EditorComponent> allEditorComponents = getAllEditorComponents();
-    runUpdateMessagesAction(new Runnable() {
-      @Override
-      public void run() {
-        if (EditorSettings.getInstance().isPowerSaveMode()) {
-          // if we are in powerSaveMode then next editor checkers execution should
-          // recheck all editors completely
-          myCheckedOnceEditors.clear();
-          myInspectorMessagesCreated = false;
-        } else {
-          cleanupCheckedOnce(allEditorComponents);
+    final Set<EditorCheckerWrapper> checkers = new LinkedHashSet<>();
+    if (!EditorSettings.getInstance().isPowerSaveMode() || myForceUpdateInPowerSaveModeFlag) {
+      // calling checkers only if we are not in powerSafeMode or updateEditorFlag was set by
+      // explicit update action (available in powerSafeMode only)
+      for (EditorCheckerWrapper checker : myCheckers) {
+        if (checker.isEssential() || !essentialOnly) {
+          checkers.add(checker);
         }
       }
-    });
-    if (checkers.isEmpty() && checkersToRemove.isEmpty()) {
-      return;
+      checkers.addAll(myCheckers);
+      myForceUpdateInPowerSaveModeFlag = false;
     }
 
-    final boolean[] isUpdated = {false};
-    final boolean[] inspectorIsUpdated = {false};
-    EditorComponent inspector = null;
 
-    for (final EditorComponent editorComponent : allEditorComponents) {
-      if (myStopThread) {
-        return;
-      }
-      TypeContextManager.getInstance().runTypecheckingAction(editorComponent, new Runnable() {
-        @Override
-        public void run() {
-          if (updateEditorComponent(editorComponent, events, checkers, checkersToRemove, false, essentialOnly)) {
-            isUpdated[0] = true;
-          }
-        }
-      });
+    if (EditorSettings.getInstance().isPowerSaveMode()) {
+      // if we are in powerSaveMode then next editor checkers execution should
+      // recheck all editors completely
+      myEditorTracker.markEverythingUnchecked();
+    } else {
+      myEditorTracker.markOnlyEditorsChecked(activeEditors);
     }
-
-    if (myStopThread) {
-      return;
-    }
-
-    if (myInspectorTool != null && myInspectorTool.getInspector() != null) {
-      inspector = myInspectorTool.getInspector();
-      final EditorComponent finalInspector = inspector;
-      TypeContextManager.getInstance().runTypecheckingAction(inspector, new Runnable() {
-        @Override
-        public void run() {
-          if (updateEditorComponent(finalInspector, events, checkers, checkersToRemove, isUpdated[0], essentialOnly)) {
-            inspectorIsUpdated[0] = true;
-          }
-        }
-      });
-    }
-
-    if (myStopThread) {
-      return;
-    }
-
-    if (isUpdated[0]) {
-      for (EditorComponent editorComponent : allEditorComponents) {
-        editorComponent.repaint();
-        editorComponent.getVerticalScrollBar().repaint();
-      }
-    }
-    if (inspectorIsUpdated[0]) {
-      inspector.repaint();
-      inspector.getVerticalScrollBar().repaint();
-    }
+    return new HighlighterUpdateSession(Highlighter.this, checkers, activeEditors, getInspector());
   }
 
-  private List<EditorComponent> getAllEditorComponents() {
-    final List<Editor> list;
-    synchronized (ADD_EDITORS_LOCK) {
-      list = EditorsHelper.getSelectedEditors(myFileEditorManager);
-      if (!myAdditionalEditors.isEmpty()) {
-        list.addAll(myAdditionalEditors);
-      }
-    }
-    final List<EditorComponent> editorComponents = new ArrayList();
-    try {
-      SwingUtilities.invokeAndWait(new Runnable() {
-        @Override
-        public void run() {
-          for (Editor editor : list) {
-            EditorComponent editorComponent = (EditorComponent) editor.getCurrentEditorComponent();
-            if (editorComponent != null) {
-              editorComponents.add(editorComponent);
-            }
-          }
-          editorComponents.addAll(myAdditionalEditorComponents);
-        }
-      });
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    } catch (InvocationTargetException e) {
-      e.printStackTrace();
-    }
-    return editorComponents;
-  }
-
-  public static void runUpdateMessagesAction(Runnable updateAction) {
-    synchronized (UPDATE_EDITOR_LOCK) {
-      updateAction.run();
-    }
-  }
-
-  public static <C> C runUpdateMessagesAction(Computable<C> updateAction) {
-    synchronized (UPDATE_EDITOR_LOCK) {
-      return updateAction.compute();
-    }
-  }
-
-  private boolean updateEditorComponent(final EditorComponent component, final List<SModelEvent> events, final Set<BaseEditorChecker> checkers,
-      final Set<BaseEditorChecker> checkersToRemove, final boolean mainEditorMessagesChanged, final boolean essentialOnly) {
-    return runUpdateMessagesAction(new Computable<Boolean>() {
-      @Override
-      public Boolean compute() {
-        boolean needsUpdate = ModelAccess.instance().runReadAction(new Computable<Boolean>() {
-          @Override
-          public Boolean compute() {
-            final SNode editedNode = component.getEditedNode();
-            return editedNode != null && SNodeUtil.isAccessible(editedNode, MPSModuleRepository.getInstance());
-          }
-        });
-        if (!needsUpdate) return false;
-
-        final Set<BaseEditorChecker> checkersToRecheck = new LinkedHashSet<BaseEditorChecker>();
-        boolean rootWasCheckedOnce = wasCheckedOnce(component);
-        if (!rootWasCheckedOnce) {
-          checkersToRecheck.addAll(checkers);
-        } else {
-          ModelAccess.instance().runReadAction(new Runnable() {
-            @Override
-            public void run() {
-              if (myStopThread) return;
-              for (BaseEditorChecker checker : checkers) {
-                if (checker.hasDramaticalEventProtected(events) && (!essentialOnly || checker.isEssentialProtected())) {
-                  checkersToRecheck.add(checker);
-                }
-              }
-            }
-          });
-        }
-
-        if ((checkersToRecheck.isEmpty() && checkersToRemove.isEmpty()) || myStopThread) return false;
-
-        List<BaseEditorChecker> checkersToRecheckList = new ArrayList<BaseEditorChecker>(checkersToRecheck);
-        Collections.sort(checkersToRecheckList, new PriorityComparator());
-
-        boolean recreateInspectorMessages = mainEditorMessagesChanged || !myInspectorMessagesCreated;
-        if (component instanceof InspectorEditorComponent) {
-          myInspectorMessagesCreated = true;
-        } else {
-          myCheckedOnceEditors.add(component);
-        }
-
-        return updateEditor(component, events, rootWasCheckedOnce, checkersToRecheckList, checkersToRemove, recreateInspectorMessages);
-      }
-    });
-  }
-
-  /*
-   * Only currently visible (active) editor remains in myCheckedOnceEditors forcing all Checkers
-   * to createMessages() on next visible (active) editor change
-   */
-  private void cleanupCheckedOnce(List<EditorComponent> allEditorComponents) {
-    myCheckedOnceEditors.retainAll(allEditorComponents);
-  }
-
-  private boolean wasCheckedOnce(EditorComponent editorComponent) {
-    if (editorComponent instanceof InspectorEditorComponent) return true;
-    return myCheckedOnceEditors.contains(editorComponent);
-  }
-
-  public void resetCheckedState(final EditorComponent editorComponent) {
-    runUpdateMessagesAction(new Runnable() {
+  public void resetCheckedStateInBackground(final EditorComponent editorComponent) {
+    addPendingAction(new Runnable() {
       @Override
       public void run() {
         myForceUpdateInPowerSaveModeFlag = true;
-        if (editorComponent instanceof InspectorEditorComponent) {
-          myInspectorMessagesCreated = false;
+        myEditorTracker.markUnchecked(editorComponent);
+        if (myEditorTracker.isInspector(editorComponent)) {
           return;
         }
-        myCheckedOnceEditors.remove(editorComponent);
+        for (EditorCheckerWrapper checker : myCheckers) {
+          checker.forceAutofix(editorComponent);
+        }
       }
     });
   }
 
-  private boolean updateEditor(final EditorComponent editor, final List<SModelEvent> events, final boolean wasCheckedOnce,
-      List<BaseEditorChecker> checkersToRecheck, Set<BaseEditorChecker> checkersToRemove, boolean recreateInspectorMessages) {
-    if (editor == null || editor.getRootCell() == null) return false;
-
-    final NodeHighlightManager highlightManager = editor.getHighlightManager();
-    boolean anyMessageChanged = false;
-    for (final BaseEditorChecker checker : checkersToRecheck) {
-      final LinkedHashSet<EditorMessage> messages = new LinkedHashSet<EditorMessage>();
-      boolean changed = runLoPrioRead(new Computable<Boolean>() {
-        @Override
-        public Boolean compute() {
-          if (myStopThread) return false;
-
-          SNode node = editor.getEditedNode();
-          if (node == null || node.getModel() == null || jetbrains.mps.util.SNodeOperations.isDisposed(node))
-            return false;
-          if (!SNodeUtil.isAccessible(node, MPSModuleRepository.getInstance())) {
-            // asking runLoPrioRead() implementation to re-execute this task later:
-            // editor was not updated in accordance with last modelReload event yet.
-            return null;
-          }
-
-          EditorContext editorContext = editor.getEditorContext();
-          if (editorContext != null) {
-            IOperationContext operationContext = editor.getOperationContext();
-            if (operationContext.isValid()) {
-              try {
-                messages.addAll(checker.createMessagesProtected(node, events, wasCheckedOnce, editorContext));
-                return checker.areMessagesChangedProtected();
-              } catch (IndexNotReadyException ex) {
-                highlightManager.clearForOwner(checker, true);
-                checker.clearProtected(node, editor);
-                throw ex;
-              }
-            }
-          }
-
-          return false;
-        }
-      });
-      if (myStopThread) return false;
-
-      if (editor instanceof InspectorEditorComponent && recreateInspectorMessages) {
-        changed = true;
-      }
-
-      if (changed) {
-        anyMessageChanged = true;
-        highlightManager.clearForOwner(checker, false);
-        for (EditorMessage message : messages) {
-          highlightManager.mark(message);
-        }
-      }
-    }
-    for (final BaseEditorChecker checker : checkersToRemove) {
-      EditorMessageOwner owner = ModelAccess.instance().runReadAction(new Computable<EditorMessageOwner>() {
-        @Override
-        public EditorMessageOwner compute() {
-          if (myStopThread) return null;
-          SNode node = editor.getEditedNode();
-          if (node == null) return null;
-          return checker;
-        }
-      });
-      if (myStopThread) return false;
-
-      highlightManager.clearForOwner(owner, false);
-      anyMessageChanged = true;
-    }
-    if (myStopThread) return false;
-
-    if (anyMessageChanged) {
-      highlightManager.repaintAndRebuildEditorMessages();
-      editor.updateStatusBarMessage();
-    }
-
-    return anyMessageChanged;
+  @Override
+  public boolean isStopping() {
+    return myBackgroundExecutor.isShutdown();
   }
 
-  private static <T> T runLoPrioRead(final Computable<T> computable) {
-    assert !ModelAccess.instance().canRead():"Lo-prio read with acquired read can be a reason of a deadlock";
-    T result;
-    do {
-      while (IMakeService.INSTANCE.isSessionActive()) {
-        try {
-          Thread.sleep(600);
-        } catch (InterruptedException e) {
-        }
-      }
-      result = ModelAccess.instance().runReadAction(new Computable<T>() {
-        @Override
-        public T compute() {
-          if (IMakeService.INSTANCE.isSessionActive() || ModelAccess.instance().hasScheduledWrites()) return null;
-          return computable.compute();
-        }
-      });
-    } while (result == null);
-
-    return result;
+  @NotNull
+  @Override
+  public HighlighterEditorTracker getEditorTracker() {
+    return myEditorTracker;
   }
 
-  private class HighlighterThread extends Thread {
-    public HighlighterThread() {
-      super("Highlighter");
-      setDaemon(true);
+  private EditorComponent getInspector() {
+    if (myInspectorTool == null) {
+      return null;
+    }
+    return myInspectorTool.getInspector();
+  }
+
+  /**
+   * Feeds events collected at this point to all registered checkers for processing. Must be called on the highlighter thread because the collection of all
+   * checkers is accessed.
+   */
+  private void processAccumulatedEvents() {
+    List<SModelEvent> events = myEventCollector.drainEvents();
+
+    for (SModelEvent event : events) {
+      if (event instanceof SModelReplacedEvent) {
+        final SModelReference mref = event.getModel().getReference();
+        myEditorTracker.markEditorsOfModelUnchecked(mref);
+      }
+    }
+
+    for (EditorCheckerWrapper checker : myCheckers) {
+      checker.processEvents(events);
+    }
+  }
+
+  private void pauseUpdater() {
+    myPaused = true;
+  }
+
+  private void resumeUpdater() {
+    myPaused = false;
+  }
+
+  @Override
+  public boolean isPausedOrStopping() {
+    return myPaused || isStopping();
+  }
+
+  private class PauseDuringWriteAction extends ApplicationAdapter {
+    @Override
+    public void beforeWriteActionStart(@NotNull Object action) {
+      pauseUpdater();
+    }
+
+    @Override
+    public void writeActionFinished(@NotNull Object action) {
+      resumeUpdater();
+    }
+  }
+
+  private class PauseDuringCommandOrUndoTransparentAction extends com.intellij.openapi.command.CommandAdapter {
+    private int myLevel = 0;
+
+    @Override
+    public void commandStarted(CommandEvent event) {
+      increaseLevel();
+    }
+
+    @Override
+    public void commandFinished(CommandEvent event) {
+      decreaseLevel();
+    }
+
+    @Override
+    public void undoTransparentActionStarted() {
+      increaseLevel();
+    }
+
+    @Override
+    public void undoTransparentActionFinished() {
+      decreaseLevel();
+    }
+
+    private void increaseLevel() {
+      if (myLevel == 0) {
+        pauseUpdater();
+      }
+      myLevel++;
+    }
+
+    private void decreaseLevel() {
+      myLevel--;
+      if (myLevel == 0) {
+        resumeUpdater();
+      }
+    }
+  }
+
+  /**
+   * Runs in EDT
+   */
+  private class ScheduleHighlighterUpdate implements Runnable {
+    private final ScheduledExecutorService myEdtExecutor;
+    private final DumbService myDumbService;
+
+    public ScheduleHighlighterUpdate(ScheduledExecutorService edtExecutor, DumbService dumbService) {
+      myEdtExecutor = edtExecutor;
+      myDumbService = dumbService;
     }
 
     @Override
     public void run() {
-      if (IdeMain.getTestMode() != TestMode.NO_TEST) return;
-      DumbService dumbService = DumbService.getInstance(myProject);
-      CommandProcessor commandProcessor = CommandProcessor.getInstance();
-      while (true) {
-        try {
-          while (true) {
-            while (commandProcessor.getCurrentCommand() != null) {
-              if (myStopThread) {
-                return;
-              }
-              Thread.sleep(DEFAULT_GRACE_PERIOD);
-            }
-            while (dumbService.isDumb()) {
-              if (myStopThread) return;
-              Thread.sleep(DEFAULT_GRACE_PERIOD * 3);
-            }
-            if (!myCommandWatcher.isGracePeriodExpired()) {
-              Thread.sleep(myCommandWatcher.timeToExpiration());
-              continue;
-            }
-            break;
-          }
-
-          if (myStopThread) return;
-
-          try {
-            doUpdate(!myCommandWatcher.isLargerGracePeriodExpired());
-          } catch (IndexNotReadyException ex) {
-            myCheckedOnceEditors.clear();
-            myInspectorMessagesCreated = false;
-          }
-          processPendingActions();
-          if (myStopThread) {
-            return;
-          }
-          Thread.sleep(DEFAULT_GRACE_PERIOD);
-
-          if (myCommandWatcher.isLargerGracePeriodExpired()) {
-            myCommandWatcher.resetGracePeriod();
-          }
-        } catch (Throwable t) {
-          LOG.error(null, t);
+      if (!isGoodTimeToUpdate()) {
+        if (!isStopping()) {
+          scheduleNext();
         }
+        return;
       }
+
+      List<EditorComponent> activeEditors = myEditorList.getActiveEditors(); // Must be called in EDT
+
+      myBackgroundExecutor.submit(() -> update(activeEditors));
+    }
+
+    private boolean isGoodTimeToUpdate() {
+      return !isPausedOrStopping() && !myDumbService.isDumb() && !IMakeService.INSTANCE.isSessionActive() && myCommandWatcher.isGracePeriodExpired();
+    }
+
+    private void update(List<EditorComponent> activeEditors) {
+      try {
+        createUpdateSession(activeEditors, shouldOnlyUpdateEssentialCheckers()).update();
+      } catch (IndexNotReadyException ex) {
+        myEditorTracker.markEverythingUnchecked();
+      } finally {
+        scheduleNext();
+      }
+    }
+
+    private void scheduleNext() {
+      myEdtExecutor.schedule(this, Math.max(myCommandWatcher.timeToExpiration(), DEFAULT_GRACE_PERIOD), TimeUnit.MILLISECONDS);
+    }
+
+    private boolean shouldOnlyUpdateEssentialCheckers() {
+      boolean essentialOnly;
+      if (myCommandWatcher.isLargerGracePeriodExpired()) {
+        myCommandWatcher.resetGracePeriod();
+        essentialOnly = false;
+      } else {
+        essentialOnly = true;
+      }
+      return essentialOnly;
     }
   }
 
   /**
    * Thread safe.
    */
-  private static class CommandWatcher extends ModelAccessAdapter {
+  private static class CommandWatcher implements CommandListener {
     private AtomicLong myLastCommandStarted = new AtomicLong(System.currentTimeMillis());
     private AtomicLong myLastCommandFinished = new AtomicLong(System.currentTimeMillis());
     private AtomicLong myGracePeriod = new AtomicLong(DEFAULT_GRACE_PERIOD);
@@ -687,30 +516,26 @@ public class Highlighter implements EditorMessageOwner, ProjectComponent {
 
     boolean isGracePeriodExpired() {
       final long time = System.currentTimeMillis();
-      if (time - myLastCommandFinished.get() >= myGracePeriod.get()) {
-        return true;
-      }
-      return false;
+      long delta = time - myLastCommandFinished.get();
+      return delta >= myGracePeriod.get();
     }
 
     boolean isLargerGracePeriodExpired() {
       final long time = System.currentTimeMillis();
-      if (time - myLastCommandFinished.get() - 2 * DEFAULT_GRACE_PERIOD >= myGracePeriod.get()) {
-        return true;
-      }
-      return false;
+      long delta = time - myLastCommandFinished.get();
+      return delta - 2 * DEFAULT_GRACE_PERIOD >= myGracePeriod.get();
     }
 
     void resetGracePeriod() {
       myGracePeriod.set(DEFAULT_GRACE_PERIOD);
-      myCurrentMultiplier.set(4);
+      myCurrentMultiplier.set(DEFAULT_DELAY_MULTIPLIER);
     }
 
     long timeToExpiration() {
       final long time = System.currentTimeMillis();
       final long delta = time - myLastCommandFinished.get();
       final long left = myGracePeriod.get() - delta;
-      return left > 0 ? left : 0L;
+      return Math.max(left, 0L);
     }
 
     @Override
@@ -721,7 +546,7 @@ public class Highlighter implements EditorMessageOwner, ProjectComponent {
       if (delta < myGracePeriod.get()) {
         final int mult = myCurrentMultiplier.get();
         myGracePeriod.getAndAdd(delta * mult);
-        myCurrentMultiplier.set(mult / 2);
+        myCurrentMultiplier.set(Math.max(mult - 1, 0));
       }
     }
 

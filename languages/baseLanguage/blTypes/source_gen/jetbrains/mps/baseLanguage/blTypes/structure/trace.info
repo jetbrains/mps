@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="StructureAspectDescriptor.java" startLine="10" startPosition="0" endLine="27" endPosition="0" unitName="jetbrains.mps.baseLanguage.blTypes.structure.StructureAspectDescriptor" />
-</debugInfo>
+<debug-info version="2">
+  <root>
+    <file name="ConceptPresentationAspectImpl.java">
+      <unit at="11,0,28,0" name="jetbrains.mps.baseLanguage.blTypes.structure.ConceptPresentationAspectImpl" />
+    </file>
+    <file name="IconContainer.java">
+      <unit at="7,0,10,0" name="jetbrains.mps.baseLanguage.blTypes.structure.IconContainer" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <unit at="10,0,30,0" name="jetbrains.mps.baseLanguage.blTypes.structure.LanguageConceptSwitch" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <unit at="16,0,65,0" name="jetbrains.mps.baseLanguage.blTypes.structure.StructureAspectDescriptor" />
+    </file>
+  </root>
+</debug-info>
 

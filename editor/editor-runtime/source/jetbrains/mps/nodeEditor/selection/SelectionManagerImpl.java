@@ -17,7 +17,9 @@ package jetbrains.mps.nodeEditor.selection;
 
 import jetbrains.mps.editor.runtime.style.StyleAttributesUtil;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.openapi.editor.cells.DfsTraverserIterable;
+import jetbrains.mps.nodeEditor.FocusPolicyUtil;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
+import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
@@ -32,6 +34,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -156,12 +159,10 @@ public class SelectionManagerImpl implements SelectionManager {
     List<Selection> newSelectionStack = new ArrayList<Selection>();
     for (SelectionInfo nextSelectionInfo : selectionStack) {
       Selection selection = nextSelectionInfo.createSelection(myEditorComponent);
-      if (selection == null) {
-        // unable to instantiate selection - cleaning selection stack
-        newSelectionStack.clear();
-        break;
+      if (selection != null) {
+        // restoring only those selection stack elements available in the current editor, skipping those are not available now
+        newSelectionStack.add(selection);
       }
-      newSelectionStack.add(selection);
     }
     if (isSameSelectionStack(newSelectionStack)) {
       return;
@@ -285,7 +286,7 @@ public class SelectionManagerImpl implements SelectionManager {
   }
 
   private EditorCell_Label getNextApplicableCell(EditorCell_Label startCell, boolean forwardDirection, boolean findEditableCell) {
-    for (EditorCell nextCell : new DfsTraverserIterable(startCell, forwardDirection, false)) {
+    for (EditorCell nextCell : CellTraversalUtil.iterateTree(null, startCell, forwardDirection).skipStart()) {
       if (nextCell instanceof EditorCell_Label) {
         EditorCell_Label labelCell = (EditorCell_Label) nextCell;
         if (findEditableCell ? labelCell.isSelectable() && labelCell.isEditable() : labelCell.isSelectable()) {
@@ -323,6 +324,9 @@ public class SelectionManagerImpl implements SelectionManager {
     if (nodeCell == null) {
       return null;
     }
+    if (FOCUS_POLICY_CELL.equals(cellId)) {
+      return FocusPolicyUtil.findFocusedCell(nodeCell);
+    }
     if (isSpecifiedById(nodeCell, cellId)) {
       return nodeCell;
     }
@@ -330,8 +334,12 @@ public class SelectionManagerImpl implements SelectionManager {
   }
 
   private EditorCell findChildCell(EditorCell nodeCell, String cellId) {
-    boolean useForwardIterator = !SelectionManager.LAST_CELL.equals(cellId) && !SelectionManager.LAST_EDITABLE_CELL.equals(cellId);
-    for (EditorCell cell : new DfsTraverserIterable(nodeCell, useForwardIterator, true)) {
+    boolean useForwardIterator = shouldUseForwardIterator(cellId);
+    boolean ignoreChildNodes = shouldIgnoreChildNodes(cellId);
+    for (EditorCell cell : CellTraversalUtil.iterateTree(nodeCell, nodeCell, useForwardIterator).skipStart()) {
+      if (ignoreChildNodes && cell.getSNode() != nodeCell.getSNode()) {
+        continue;
+      }
       if (isSpecifiedById(cell, cellId)) {
         return cell;
       }
@@ -339,17 +347,45 @@ public class SelectionManagerImpl implements SelectionManager {
     return null;
   }
 
-  private boolean isSpecifiedById(EditorCell cell, String cellId) {
-    if (cellId.equals(cell.getCellId())) {
+  private boolean shouldUseForwardIterator(String cellId) {
+    String[] selectorsShouldUseBackwardIterator = new String[]{LAST_CELL, LAST_EDITABLE_CELL,LAST_ERROR_CELL};
+    return !Arrays.stream(selectorsShouldUseBackwardIterator).anyMatch(s -> s.equals(cellId));
+  }
+
+  private boolean shouldIgnoreChildNodes(String cellId) {
+    String[] selectorsShouldNotIgnoreChildNodes = new String[]{FIRST_CELL, LAST_CELL, FIRST_EDITABLE_CELL, LAST_EDITABLE_CELL, FIRST_ERROR_CELL, LAST_ERROR_CELL};
+    return !Arrays.stream(selectorsShouldNotIgnoreChildNodes).anyMatch(s -> s.equals(cellId));
+  }
+
+  private boolean isSpecifiedById(EditorCell cell, String requestedCellId) {
+    String thisCellId = cell.getCellId();
+    // supporting this hidden notation for selecting property cells.
+    // Now property cellIDs are prefixed with editor component name.
+    if (requestedCellId.startsWith("*")) {
+      if (thisCellId != null && thisCellId.contains(requestedCellId.substring(1))) {
+        return true;
+      }
+    }
+
+    if (requestedCellId.equals(thisCellId)) {
       return true;
     }
 
     // processing cell selector constants
-    boolean selectable = SelectionManager.FIRST_CELL.equals(cellId) || SelectionManager.LAST_CELL.equals(cellId);
-    boolean editable = SelectionManager.FIRST_EDITABLE_CELL.equals(cellId) || SelectionManager.LAST_EDITABLE_CELL.equals(cellId);
-    boolean isCellSelector = selectable || editable;
+    boolean selectable = SelectionManager.FIRST_CELL.equals(requestedCellId) || SelectionManager.LAST_CELL.equals(requestedCellId);
+    boolean editable = SelectionManager.FIRST_EDITABLE_CELL.equals(requestedCellId) || SelectionManager.LAST_EDITABLE_CELL.equals(requestedCellId);
+    boolean error = SelectionManager.FIRST_ERROR_CELL.equals(requestedCellId) || SelectionManager.LAST_ERROR_CELL.equals(requestedCellId);
 
-    return isCellSelector && !(cell instanceof EditorCell_Collection) && cell.isSelectable() &&
-        (selectable || (cell instanceof EditorCell_Label && ((EditorCell_Label) cell).isEditable()));
+    if (cell instanceof EditorCell_Collection) {
+      return false;
+    }
+    if (selectable) {
+      return cell.isSelectable();
+    } else if (editable) {
+      return cell.isSelectable() && cell instanceof EditorCell_Label && ((EditorCell_Label) cell).isEditable();
+    } else if (error) {
+      return cell instanceof EditorCell_Error || cell.isErrorState();
+    }
+    return false;
   }
 }

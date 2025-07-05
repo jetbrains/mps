@@ -15,148 +15,124 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
-import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
+import jetbrains.mps.editor.runtime.style.ShowBoundariesArea;
+import jetbrains.mps.nodeEditor.braces.BracePair;
+import jetbrains.mps.nodeEditor.braces.BracesFinder;
+import jetbrains.mps.nodeEditor.selection.SingularSelectionUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.openapi.editor.selection.Selection;
-import jetbrains.mps.openapi.editor.selection.SelectionListener;
-import jetbrains.mps.openapi.editor.selection.SingularSelection;
 import jetbrains.mps.openapi.editor.style.Style;
+import jetbrains.mps.openapi.editor.style.StyleAttribute;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import org.jetbrains.mps.util.Condition;
-import jetbrains.mps.util.Pair;
-import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.annotations.Nullable;
 
 import java.awt.Color;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 public class BracesHighlighter {
   // COLORS: Remove hardcoded colors
-  private static final Color BRACES_LEFT_HIGHTLIGHT_COLOR = new Color(107, 142, 178);
+  private static final Color BRACES_LEFT_HIGHLIGHT_COLOR = new Color(107, 142, 178);
   private static Style ourMatchedBraceAttributes;
 
-  private Map<EditorCell, Style> myHighlightedCellStyles = new HashMap<EditorCell, Style>();
-  private EditorComponent myEditorComponent;
-  private SelectionListener mySelectionListener = new SelectionListener() {
-    @Override
-    public void selectionChanged(jetbrains.mps.openapi.editor.EditorComponent editorComponent, Selection oldSelection, Selection newSelection) {
+  private final Set<EditorCell> myHighlightedCells = new HashSet<>();
+  private final Set<EditorCell> myLeftHighlightedCells = new HashSet<>();
+  private final EditorComponent myEditorComponent;
+
+  BracesHighlighter(EditorComponent editorComponent) {
+    myEditorComponent = editorComponent;
+    myEditorComponent.getSelectionManager().addSelectionListener((ec, oldSelection, newSelection) -> {
       if (oldSelection == newSelection) {
         return;
       }
-      updateBracesSelection(newSelection instanceof SingularSelection ? ((SingularSelection) newSelection).getEditorCell() : null);
-    }
-  };
-
-  public BracesHighlighter(EditorComponent editorComponent) {
-    this.myEditorComponent = editorComponent;
-    myEditorComponent.getSelectionManager().addSelectionListener(mySelectionListener);
+      updateBracesSelection(SingularSelectionUtil.getSingleSelectedCell(newSelection));
+    });
   }
 
-
-  public void updateBracesSelection(EditorCell newSelection) {
-    clearBracesSelection();
-
-    if (newSelection == null) {
+  public void updateBracesSelection(@Nullable EditorCell newSelection) {
+    BracePair cellsToHighlight = newSelection == null ? null : BracesFinder.findBracesToHighlight(newSelection);
+    if (cellsToHighlight == null) {
+      clearBracesSelection();
       return;
     }
-    EditorCell cellToSelect = null;
 
-    if (getMatchingLabelAndCell(newSelection) != null) {
-      cellToSelect = newSelection;
-    } else if (newSelection instanceof EditorCell_Label) {
-      EditorCell_Label editorCell = (EditorCell_Label) newSelection;
-      if (editorCell.getCaretPosition() == 0) {
-        jetbrains.mps.openapi.editor.cells.EditorCell cell = CellTraversalUtil.getPrevLeaf(editorCell);
-        if (cell instanceof EditorCell_Label) {
-          EditorCell_Label label = (EditorCell_Label) cell;
-          if (label.getWidth() == 0 && editorCell.getLeftInset() == 0) {
-            cellToSelect = label;
-          }
-        }
-      } else if (editorCell.getCaretPosition() == editorCell.getText().length()) {
-        jetbrains.mps.openapi.editor.cells.EditorCell cell = CellTraversalUtil.getNextLeaf(editorCell);
-        if (cell instanceof EditorCell_Label) {
-          EditorCell_Label label = (EditorCell_Label) cell;
-          if (label.getWidth() == 0 && editorCell.getRightInset() == 0) {
-            cellToSelect = label;
-          }
-        }
-      }
-    }
-    if (cellToSelect != null) {
-      selectBraces(cellToSelect);
-    }
-  }
-
-  private Pair<EditorCell, String> getMatchingLabelAndCell(EditorCell editorCell) {
-    SNode node = editorCell.getSNode();
-    while (editorCell != null && editorCell.getSNode() == node) {
-      if (editorCell.getStyle().get(StyleAttributes.MATCHING_LABEL) != null) {
-        return new Pair(editorCell, editorCell.getStyle().get(StyleAttributes.MATCHING_LABEL));
-      }
-      editorCell = editorCell.getParent();
-    }
-    return null;
+    selectBraces(cellsToHighlight);
   }
 
   private void clearBracesSelection() {
-    for (EditorCell editorCell : myHighlightedCellStyles.keySet()) {
-      Style originalStyle = myHighlightedCellStyles.get(editorCell);
-      copyStyleAttributes(originalStyle, editorCell.getStyle());
-      myEditorComponent.leftUnhighlightCell((jetbrains.mps.nodeEditor.cells.EditorCell) editorCell);
-    }
-    myHighlightedCellStyles.clear();
-  }
+    for (EditorCell editorCell : myHighlightedCells) {
 
-  private void selectBraces(final EditorCell selectedCell) {
-    final Pair<EditorCell, String> pair = getMatchingLabelAndCell(selectedCell);
-    if (pair != null) {
-      final EditorCell matchigCell = pair.o1;
-      EditorCell validCellForNode = ((EditorComponent) matchigCell.getEditorComponent()).getBigValidCellForNode(matchigCell.getSNode());
-      if (validCellForNode != null) {
-        EditorCell editorCell = CellFinderUtil.findChildByCondition(validCellForNode, new Condition<EditorCell>() {
-          @Override
-          public boolean met(EditorCell cell) {
-            return cell != matchigCell && cell.getSNode() == matchigCell.getSNode() && pair.o2.equals(cell.getStyle().get(StyleAttributes.MATCHING_LABEL));
-          }
-        }, true);
-        if (editorCell != null) {
-          if (editorCell.getY() != matchigCell.getY()) {
-            ((EditorComponent) matchigCell.getEditorComponent()).leftHighlightCells((jetbrains.mps.nodeEditor.cells.EditorCell) matchigCell,
-                (jetbrains.mps.nodeEditor.cells.EditorCell) editorCell, BRACES_LEFT_HIGHTLIGHT_COLOR);
-          }
-          hightlightCell(editorCell);
-          hightlightCell(matchigCell);
-        }
+      Style cellStyle = editorCell.getStyle();
+      int highestPriority = 0;
+      for (StyleAttribute attribute : getMatchedBraceAttributes().getSpecifiedAttributes()) {
+        highestPriority = Math.max(editorCell.getStyle().getHighestPriority(attribute), highestPriority);
       }
+      for (StyleAttribute attribute : getMatchedBraceAttributes().getSpecifiedAttributes()) {
+        cellStyle.set(attribute, highestPriority, null);
+      }
+
+      myEditorComponent.repaint(editorCell);
+    }
+    myHighlightedCells.clear();
+
+    for (EditorCell cell : myLeftHighlightedCells) {
+      myEditorComponent.leftUnhighlightCell((jetbrains.mps.nodeEditor.cells.EditorCell) cell);
+    }
+    myLeftHighlightedCells.clear();
+  }
+
+  private void selectBraces(BracePair bracePair) {
+    if (myHighlightedCells.size() == 2
+        && myHighlightedCells.contains(bracePair.myFirstCell)
+        && myHighlightedCells.contains(bracePair.mySecondCell)) {
+      // highlightedCells should not be changed
+      // selectBraces() method can be called as a result of EditorCell_Label.makePositionValid()
+      // makePositionValid() in turn can be called even if actual caret position was not changed,
+      // so nothing to change in highlightedCells..
+      return;
+    }
+
+    clearBracesSelection();
+
+    highlightInGutter(bracePair);
+
+    if (bracePair.myArea == ShowBoundariesArea.GUTTER_AND_EDITOR) {
+      highlightInEditor(bracePair);
     }
   }
 
-  private void hightlightCell(EditorCell editorCell) {
-    Style cellStyle = editorCell.getStyle();
-    Style cellStyleCopy = new StyleImpl();
-    copyStyleAttributes(cellStyle, cellStyleCopy);
-    myHighlightedCellStyles.put(editorCell, cellStyleCopy);
-
-    //TODO: editorCell.getStyle().putAll(getMatchedBraceAttributes());
-    cellStyle.set(StyleAttributes.TEXT_COLOR, getMatchedBraceAttributes().get(StyleAttributes.TEXT_COLOR));
-    cellStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getMatchedBraceAttributes().get(StyleAttributes.TEXT_BACKGROUND_COLOR));
-    cellStyle.set(StyleAttributes.FONT_STYLE, getMatchedBraceAttributes().get(StyleAttributes.FONT_STYLE));
+  private void highlightInEditor(BracePair bracePair) {
+    highlightCell(bracePair.myFirstCell);
+    highlightCell(bracePair.mySecondCell);
   }
 
-  private void copyStyleAttributes(Style fromStyle, Style toStyle) {
-    toStyle.set(StyleAttributes.TEXT_COLOR, (Color) fromStyle.rawGet(StyleAttributes.TEXT_COLOR));
-    toStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (Color) fromStyle.rawGet(StyleAttributes.TEXT_BACKGROUND_COLOR));
-    toStyle.set(StyleAttributes.FONT_STYLE, (Integer) fromStyle.rawGet(StyleAttributes.FONT_STYLE));
+  private void highlightInGutter(BracePair bracePair) {
+    if (bracePair.myFirstCell.getY() != bracePair.mySecondCell.getY()) {
+      ((EditorComponent) bracePair.mySecondCell.getEditorComponent()).leftHighlightCells(
+          (jetbrains.mps.nodeEditor.cells.EditorCell) bracePair.mySecondCell,
+          (jetbrains.mps.nodeEditor.cells.EditorCell) bracePair.myFirstCell,
+          BRACES_LEFT_HIGHLIGHT_COLOR);
+      myLeftHighlightedCells.add(bracePair.myFirstCell);
+      myLeftHighlightedCells.add(bracePair.mySecondCell);
+    }
+  }
+
+  private void highlightCell(EditorCell editorCell) {
+    Style cellStyle = editorCell.getStyle();
+    int highestPriority = 0;
+    for (StyleAttribute attribute : getMatchedBraceAttributes().getSpecifiedAttributes()) {
+      highestPriority = Math.max(cellStyle.getHighestPriority(attribute), highestPriority);
+    }
+    for (StyleAttribute attribute : getMatchedBraceAttributes().getSpecifiedAttributes()) {
+      cellStyle.set(attribute, highestPriority + 1, getMatchedBraceAttributes().get(attribute));
+    }
+    myHighlightedCells.add(editorCell);
+    myEditorComponent.repaint(editorCell);
   }
 
   private static Style getMatchedBraceAttributes() {
-    if (ourMatchedBraceAttributes == null)
+    if (ourMatchedBraceAttributes == null) {
       ourMatchedBraceAttributes = StyleRegistry.getInstance().getStyle("MATCHED_BRACE_ATTRIBUTES");
+    }
     return ourMatchedBraceAttributes;
   }
 }

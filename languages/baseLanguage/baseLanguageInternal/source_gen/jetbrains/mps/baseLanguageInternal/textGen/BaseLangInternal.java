@@ -4,17 +4,19 @@ package jetbrains.mps.baseLanguageInternal.textGen;
 
 import jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.textGen.SNodeTextGen;
+import jetbrains.mps.text.rt.TextGenContext;
+import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.util.JavaNameUtil;
 
 public abstract class BaseLangInternal extends BaseLanguageTextGen {
-  public static void className(String fqClassName, SNode contextNode, final SNodeTextGen textGen) {
+  public static void className(String fqClassName, SNode contextNode, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
     if (fqClassName == null) {
-      textGen.foundError();
-      textGen.append("???");
+      tgs.reportError("Class name is undefined");
+      tgs.append("???");
     } else {
       if (fqClassName.contains("@")) {
-        textGen.foundError("fq name can not contain '@'");
+        tgs.reportError("fq name can not contain '@'");
       }
       String packageName;
       String className;
@@ -26,7 +28,7 @@ public abstract class BaseLangInternal extends BaseLanguageTextGen {
         packageName = JavaNameUtil.packageName(fqClassName);
         className = JavaNameUtil.shortName(fqClassName);
       }
-      BaseLanguageTextGen.internalClassName(packageName, className, contextNode, textGen);
+      BaseLanguageTextGen.internalClassName(packageName, className, contextNode, ctx);
     }
   }
 }

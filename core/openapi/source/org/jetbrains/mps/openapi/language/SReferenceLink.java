@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package org.jetbrains.mps.openapi.language;
 
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -23,6 +24,27 @@ import org.jetbrains.mps.openapi.model.SNode;
  * physically lie anywhere in the AST (even in a different model).
  */
 public interface SReferenceLink extends SAbstractLink {
+  /**
+   * Returns a name of this reference
+   * Though in 3.2 the name is still used as id in some cases, it should be treated only as a user-friendly text representation.
+   */
+  @Deprecated //use SConceptFeature.getPresentableName
+  //ToRemove after 3.3
+  String getRoleName();
+
+  /**
+   * Instance nodes can contain more than one target element.
+   */
+  @Deprecated
+  //always false
+  boolean isMultiple();
+
+  //left for compatibility with "interpreting" code
+  //use SReferenceLink in code instead
+  @Nullable
+  @Deprecated
+  @ToRemove(version = 3.4)
+  SNode getDeclarationNode();
 
   /**
    * Builds and returns a scope for this reference in the given context.
@@ -31,13 +53,12 @@ public interface SReferenceLink extends SAbstractLink {
    */
   SScope getScope(SNode referenceNode);
 
-
   /**
    * This method allows to build a scope for the reference before its node has been registered in the repository.
    * <p/>
    * In this case you must provide the nearest available ancestor node as a context node and the location within
    * it where the reference will be placed.
-   *
+   * <p/>
    * Example: while typing a new statement in the middle of a statement list, the context menu builds a scope before
    * the statement has been created, in order to offer, among other things, all local variables defined up to this point in code.
    * This is achieved by passing the statement list as a context node, "statement" link as the second parameter and the index of

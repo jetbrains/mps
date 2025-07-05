@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,44 +16,38 @@
 package jetbrains.mps.smodel.persistence.def;
 
 import jetbrains.mps.extapi.model.GeneratableSModel;
-import jetbrains.mps.extapi.persistence.FileDataSource;
+import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.generator.ModelDigestUtil;
-import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.persistence.IndexAwareModelFactory.Callback;
+import jetbrains.mps.persistence.xml.XMLPersistence;
+import jetbrains.mps.persistence.xml.XMLPersistence.Indexer;
 import jetbrains.mps.smodel.DefaultSModel;
-import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
-import jetbrains.mps.smodel.persistence.def.v4.ModelPersistence4;
-import jetbrains.mps.smodel.persistence.def.v5.ModelPersistence5;
-import jetbrains.mps.smodel.persistence.def.v6.ModelPersistence6;
-import jetbrains.mps.smodel.persistence.def.v7.ModelPersistence7;
-import jetbrains.mps.smodel.persistence.def.v8.ModelPersistence8;
+import jetbrains.mps.smodel.persistence.def.v9.ModelPersistence9;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.util.StringUtil;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.xml.BreakParseSAXException;
 import jetbrains.mps.util.xml.XMLSAXHandler;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jdom.Document;
-import org.jdom.JDOMException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
-import org.jetbrains.mps.openapi.util.Consumer;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.CharArrayReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -62,149 +56,114 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * ModelPersistence handles all XML persistence versions supported by current MPS installation.
+ * The range of supported versions is [FIRST_SUPPORTED_VERSION, LAST_VERSION].
+ * MPS must be able to read any of these persistence versions and write the last one.
+ * <p/>
+ * The "previous" persistence version being writable is not a must, but it is better
+ * to support it to have less moments when we accidentally need to convert
+ * between persistence versions. E.g. to be able to fix model before migration from previous
+ * version and save it in old persistence, or to merge two non-migrated branches
+ * without converting persistence.
+ * <p/>
+ * It is supposed that only one or two persistence versions are supported:
+ * the last persistence used by previous MPS version (to read and
+ * migrate project created in the previous version, and, sometimes,
+ * a new persistence introduced in current version.
+ * NOTE this is not mandatory, we can support more than two versions.
+ * <p/>
+ * We can't support full functionality on all created persistences as the change
+ * in persistence is actually made because of change in SModel. So, we can't
+ * actual SModel to a very old persistence or even read all the information
+ * from old persistence into a new SModel. The good thing about that is that we
+ * can "partially" support very old persistence versions where we might need such a support.
+ * See VCSPersistenceSupport for an example.
+ */
 public class ModelPersistence {
   private static final Logger LOG = LogManager.getLogger(ModelPersistence.class);
 
-  public static final String TARGET_NODE_ID = "targetNodeId";
-  public static final String LINK = "link";
-  public static final String ROLE = "role";
-  public static final String ROLE_ID = "roleId";
-  public static final String NAME = "name";
-  public static final String NAME_ID = "nameId";
-  public static final String NAMESPACE = "namespace";  // v0
-  public static final String EXT_RESOLVE_INFO = "extResolveInfo"; //v0
-  public static final String NODE = "node";
-  public static final String TYPE = "type";
-  public static final String TYPE_ID = "typeId";
-  public static final String NODE_INFO = "nodeInfo";
-  public static final String ID = "id";
-  public static final String RESOLVE_INFO = "resolveInfo";
   public static final String MODEL = "model";
-  public static final String PROPERTY = "property";
-  public static final String VALUE = "value";
-  public static final String IMPORT_ELEMENT = "import";
-  public static final String VISIBLE_ELEMENT = "visible";
-  public static final String MODEL_IMPORT_INDEX = "index";
-  public static final String MAX_IMPORT_INDEX = "maxImportIndex";
-  public static final String LANGUAGE = "language";
-  public static final String LANGUAGE_ASPECT = "languageAspect";
-  public static final String LANGUAGE_ENGAGED_ON_GENERATION = "language-engaged-on-generation";
-  public static final String DEVKIT = "devkit";
-  public static final String STEREOTYPE = "stereotype";
-  public static final String MODEL_UID = "modelUID";
-  public static final String FILE_CONTENT = "content";
-  public static final String VERSION = "version";
-  public static final String IMPLICIT = "implicit";
-  public static final String ROOT_NODE = "root";
-  public static final String ROOTS = "roots";
-  public static final String ROOT_CONTENT = "root";
-
-  @Deprecated
-  public static final String ROOT_STUBS = "root_stubs";
+  public static final String REF = "ref";
 
   public static final String PERSISTENCE = "persistence";
   public static final String PERSISTENCE_VERSION = "version";
 
-  public static final int LAST_VERSION = 8;
+  public static final int FIRST_SUPPORTED_VERSION = 9;
+  public static final int LAST_VERSION = 9;
 
-  private static final IModelPersistence[] myModelPersistenceFactory = {
-      null,
-      null,
-      null,
-      null,
-      new ModelPersistence4(),
-      new ModelPersistence5(),
-      new ModelPersistence6(),
-      new ModelPersistence7(),
-      new ModelPersistence8()
-  };
+  private static final int HEADER_READ_LIMIT = 1 << 16; // allow for huge headers
 
-  @NotNull
-  static IModelPersistence getCurrentModelPersistence() {
-    IModelPersistence modelPersistence = getModelPersistence(ModelPersistence.LAST_VERSION);
-    if (modelPersistence == null) {
-      modelPersistence = myModelPersistenceFactory[myModelPersistenceFactory.length - 1];
-    }
-    return modelPersistence;
+  public static boolean isSupported(int version) {
+    return version >= FIRST_SUPPORTED_VERSION && version <= LAST_VERSION;
   }
 
   @Nullable
-  static IModelPersistence getModelPersistence(int persistenceID) {
-    if (persistenceID < 0 || persistenceID >= myModelPersistenceFactory.length) {
-      return null;
+  public static IModelPersistence getPersistence(int version) {
+    if (version == 9) {
+      return new ModelPersistence9();
     }
-    return myModelPersistenceFactory[persistenceID];
-  }
-  //--------read--------
 
-  private static void loadDescriptor(SModelHeader result, StreamDataSource dataSource) throws ModelReadException {
+    assert !isSupported(version) : "inconsistent ModelPersistence.isSupported and .getPersistence. Version=" + version;
+    // callers generally handle null return value, no reason to frighten user away with a throwable in the log. Is there need for the message at all?
+    LOG.debug("Unknown persistence version requested: " + version, new Throwable());
+    return null;
+  }
+
+  @NotNull
+  public static SModelHeader loadDescriptor(InputSource source) throws ModelReadException {
+    try {
+      SModelHeader result = new SModelHeader();
+      parseAndHandleExceptions(source, new HeaderOnlyHandler(result));
+      return result;
+    } catch (Exception ex) {
+      Throwable th = ex.getCause() == null ? ex : ex.getCause();
+      throw new ModelReadException(String.format("Failed to read model header: %s", th.getMessage()), th);
+    }
+  }
+
+  @NotNull
+  public static SModelHeader loadDescriptor(StreamDataSource source) throws ModelReadException {
     InputStream in = null;
     try {
-      in = dataSource.openInputStream();
-      InputSource source = new InputSource(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
-
-      loadDescriptor(result, source);
-    } catch (IOException e) {
-      throw new ModelReadException("Couldn't read descriptor from " + dataSource.getLocation() + ": " + e.getMessage(), e);
+      in = source.openInputStream();
+      final SModelHeader result = new SModelHeader();
+      parseAndHandleExceptions(new InputSource(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET)), new HeaderOnlyHandler(result));
+      return result;
+    } catch (Exception e) {
+      Throwable th = e.getCause() == null ? e : e.getCause();
+      throw new ModelReadException(String.format("Couldn't read descriptor from %s: %s", source.getLocation(), th.getMessage()), th);
     } finally {
       FileUtil.closeFileSafe(in);
     }
   }
 
-  static void loadDescriptor(SModelHeader result, InputSource source) throws ModelReadException {
-    parseAndHandleExceptions(source, new MyDescriptorHandler(result), "model descriptor");
-  }
-
-  @NotNull
-  public static SModelHeader loadDescriptor(InputSource source) throws ModelReadException {
-    SModelHeader result = new SModelHeader();
-    loadDescriptor(result, source);
-    return result;
-  }
-
-  public static SModelHeader loadDescriptor(StreamDataSource source) throws ModelReadException {
-    final SModelHeader result = new SModelHeader();
-    loadDescriptor(result, source);
-
-    // for old persistences try to load header from metadata
-    if (result.getPersistenceVersion() < 7 && source instanceof FileDataSource) {
-      Map<String, String> metadata = loadMetadata(((FileDataSource) source).getFile());
-      if (metadata != null) {
-        if (metadata.containsKey(SModelHeader.VERSION)) {
-          try {
-            result.setVersion(Integer.parseInt(metadata.remove(SModelHeader.VERSION)));
-          } catch (NumberFormatException ignored) {
-          }
-        }
-        if (metadata.containsKey(SModelHeader.DO_NOT_GENERATE)) {
-          result.setDoNotGenerate(Boolean.parseBoolean(metadata.remove(SModelHeader.DO_NOT_GENERATE)));
-        }
-      }
-    }
-    return result;
-  }
-
   private static ModelLoadResult readModel(@NotNull SModelHeader header, @NotNull InputSource source, ModelLoadingState state) throws ModelReadException {
-    IModelPersistence mp = getModelPersistence(header.getPersistenceVersion());
-    if (header.getPersistenceVersion() < 0) {
+    int ver = header.getPersistenceVersion();
+    if (ver < 0) {
       throw new ModelReadException("Couldn't read model because of unknown persistence version", null);
     }
-    if (mp != null) {
-      // first try to use SAX parser
-      XMLSAXHandler<ModelLoadResult> handler = mp.getModelReaderHandler(state, header);
-      if (handler != null) {
-        parseAndHandleExceptions(source, handler, "model");
-        return handler.getResult();
-      }
-      // then try to use DOM reader
-      IModelReader reader = mp.getModelReader();
-      if (reader != null) {
-        Document document = loadModelDocument(source);
-        return new ModelLoadResult(reader.readModel(document, header), ModelLoadingState.FULLY_LOADED);
-      }
+
+    IModelPersistence mp;
+    if (!isSupported(ver) || (mp = getPersistence(ver)) == null) {
+      String m = "Can not find appropriate persistence version for model %s (requested:%d)\n Use newer version of JetBrains MPS to load this model.";
+      throw new PersistenceVersionNotFoundException(String.format(m, header.getModelReference(), ver), header.getModelReference());
     }
-    throw new PersistenceVersionNotFoundException("Can not find appropriate persistence version for model " + header.getUID() + "\n" +
-        " Use newer version of JetBrains MPS to load this model.");
+
+    XMLSAXHandler<ModelLoadResult> handler = mp.getModelReaderHandler(state, header);
+    if (handler == null) {
+      throw new ModelReadException("Can not read model header", null, header.getModelReference());
+    }
+    try {
+      parseAndHandleExceptions(source, handler);
+      // in case persistence version could change during IModelPersistence activities, might need to update header:
+      // header.setPersistenceVersion(mp.getVersion());
+      return handler.getResult();
+    } catch (Exception ex) {
+      Throwable th = ex.getCause() == null ? ex : ex.getCause();
+      final String causeText = th.getMessage() == null ? th.getClass().getSimpleName() : th.getMessage();
+      throw new ModelReadException(String.format("Failed to load model: %s", causeText), th, header);
+    }
   }
 
   @NotNull
@@ -224,39 +183,35 @@ public class ModelPersistence {
 
   @Nullable
   public static List<LineContent> getLineToContentMap(String content) throws ModelReadException {
-    SModelHeader header;
-    header = loadDescriptor(new InputSource(new StringReader(content)));
-    IModelPersistence mp = getModelPersistence(header.getPersistenceVersion());
+    try {
+      SModelHeader header = new SModelHeader();
+      parseAndHandleExceptions(new InputSource(new StringReader(content)), new HeaderOnlyHandler(header));
+      IModelPersistence mp = getPersistence(header.getPersistenceVersion());
 
-    if (mp != null) {
-      XMLSAXHandler<List<LineContent>> handler = mp.getLineToContentMapReaderHandler();
-      if (handler != null) {
-        parseAndHandleExceptions(new InputSource(new StringReader(content)), handler, "line to content map");
-        return handler.getResult();
+      if (mp == null) {
+        return null;
       }
+
+      XMLSAXHandler<List<LineContent>> handler = mp.getLineToContentMapReaderHandler();
+      if (handler == null) {
+        return null;
+      }
+
+      parseAndHandleExceptions(new InputSource(new StringReader(content)), handler);
+      return handler.getResult();
+    } catch (Exception ex) {
+      Throwable th = ex.getCause() == null ? ex : ex.getCause();
+      throw new ModelReadException(String.format("Failed to load line to content map: %s", th.getMessage()), th);
     }
-    return null;
-  }
-
-  //--------write--------
-
-  /*
-   *  Saves model and metadata.
-   */
-  public static DefaultSModel saveModel(@NotNull SModel model, @NotNull StreamDataSource source) throws IOException {
-    int persistenceVersion =
-        model instanceof DefaultSModel ? ((DefaultSModel) model).getPersistenceVersion() : LAST_VERSION;
-    return saveModel(model, source, persistenceVersion);
   }
 
   /*
+   * FIXME why on earth we pass SModelData here, not openapi.SModel?
+   * FIXME why does this method do silent update? Would be better to update explicitly, and fail from the method if can't save with specified version
    *  returns upgraded model, or null if the model doesn't require update
    */
   public static DefaultSModel saveModel(@NotNull SModel model, @NotNull StreamDataSource source, int persistenceVersion) throws IOException {
     LOG.debug("Saving model " + model.getReference() + " to " + source.getLocation());
-
-    // (since 3.0) we do not support saving in old persistences (before 7)
-    persistenceVersion = persistenceVersion < 4 ? LAST_VERSION : Math.max(7, persistenceVersion);
 
     if (source.isReadOnly()) {
       throw new IOException("`" + source.getLocation() + "' is read-only");
@@ -265,15 +220,16 @@ public class ModelPersistence {
     // upgrade?
     int oldVersion = persistenceVersion;
     if (model instanceof DefaultSModel) {
-      DefaultSModel defaultSModel = (DefaultSModel) model;
-      oldVersion = defaultSModel.getPersistenceVersion();
+      DefaultSModel dsm = (DefaultSModel) model;
+      SModelHeader modelHeader = dsm.getSModelHeader();
+      oldVersion = modelHeader.getPersistenceVersion();
       if (oldVersion != persistenceVersion) {
-        defaultSModel.setPersistenceVersion(persistenceVersion);
+        modelHeader.setPersistenceVersion(persistenceVersion);
       }
     }
 
     // save model
-    Document document = saveModel(model);
+    Document document = modelToXml(model, persistenceVersion);
     JDOMUtil.writeDocument(document, source);
 
     if (oldVersion != persistenceVersion) {
@@ -283,51 +239,42 @@ public class ModelPersistence {
     return null;
   }
 
+  /**
+   * Serialize model into xml, conformant to actual model's persistence version, if any, or current persistence version otherwise.
+   * The method doesn't update persistence version of the model (as it used to do)
+   */
   @NotNull
   public static Document saveModel(@NotNull SModel sourceModel) {
-    //model persistence level update is performed on startup;
-    // here model's persistence level is used, if a model has persistence level bigger than user-selected
-    // (consider BL or third-party models which have a level 4 while user uses level 3 in his application)
-    IModelPersistence modelPersistence = null;
+    int persistenceVersion = -1;
     if (sourceModel instanceof DefaultSModel) {
-      DefaultSModel defaultSModel = (DefaultSModel) sourceModel;
-      int persistenceVersion = defaultSModel.getPersistenceVersion();
-      if (persistenceVersion == -1) {
-        persistenceVersion = getCurrentPersistenceVersion();
-        defaultSModel.setPersistenceVersion(persistenceVersion);
-      }
-
-      modelPersistence = getModelPersistence(defaultSModel.getSModelHeader().getPersistenceVersion());
+      persistenceVersion = ((DefaultSModel) sourceModel).getSModelHeader().getPersistenceVersion();
     }
+    if (persistenceVersion == -1 || !isSupported(persistenceVersion) || getPersistence(persistenceVersion) == null) {
+      persistenceVersion = ModelPersistence.LAST_VERSION;
+    }
+    return modelToXml(sourceModel, persistenceVersion);
+  }
 
+  /**
+   * Serialize model to xml in conformance with given persistence version.
+   *
+   * @throws java.lang.IllegalArgumentException if persistenceVersion is invalid (use {@link #LAST_VERSION} if uncertain
+   */
+  private static Document modelToXml(@NotNull SModel model, int persistenceVersion) {
+    IModelPersistence modelPersistence = getPersistence(persistenceVersion);
     if (modelPersistence == null) {
-      modelPersistence = getCurrentModelPersistence();
+      throw new IllegalArgumentException(String.format("Unknown persistence version %d", persistenceVersion));
     }
-
-    sourceModel.calculateImplicitImports();
-    return modelPersistence.getModelWriter().saveModel(sourceModel);
-  }
-
-  //----------------
-
-  @NotNull
-  private static Document loadModelDocument(@NotNull InputSource source) throws ModelReadException {
-    try {
-      return JDOMUtil.loadDocument(source);
-    } catch (JDOMException e) {
-      throw new ModelReadException("Exception on loading model from " + source, e);
-    } catch (IOException e) {
-      throw new ModelReadException("Exception on loading model from " + source, e);
+    IModelWriter writer = modelPersistence.getModelWriter(model instanceof DefaultSModel ? ((DefaultSModel) model).getSModelHeader() : null);
+    if (writer == null) {
+      throw new IllegalArgumentException(String.format("Persistence has no writer. Version %d", persistenceVersion));
     }
-  }
-
-  public static int getCurrentPersistenceVersion() {
-    return ModelPersistence.LAST_VERSION;
+    return writer.saveModel(model);
   }
 
   public static Map<String, String> calculateHashes(String content) throws ModelReadException {
     SModelHeader header = loadDescriptor(new InputSource(new StringReader(content)));
-    IModelPersistence mp = getModelPersistence(header.getPersistenceVersion());
+    IModelPersistence mp = getPersistence(header.getPersistenceVersion());
     Map<String, String> result;
     if (mp != null) {
       IHashProvider hashProvider = mp.getHashProvider();
@@ -338,12 +285,6 @@ public class ModelPersistence {
       result.put(GeneratableSModel.FILE, ModelDigestUtil.hashText(content));
     }
     return result;
-  }
-
-  @NotNull
-  public static DefaultSModel readModelWithoutImplementation(@NotNull final StreamDataSource source) throws ModelReadException {
-    SModelHeader header = loadDescriptor(source);
-    return (DefaultSModel) readModel(header, source, ModelLoadingState.NO_IMPLEMENTATION).getModel();
   }
 
   @NotNull
@@ -362,71 +303,94 @@ public class ModelPersistence {
 
   @NotNull
   public static String modelToString(@NotNull final SModel model) {
-    return JDOMUtil.asString(ModelAccess.instance().runReadAction(new Computable<Document>() {
-      @Override
-      public Document compute() {
-        return saveModel(model);
-      }
-    }));
+    return JDOMUtil.asString(saveModel(model));
   }
 
-  @Nullable
-  private static Map<String, String> loadMetadata(IFile modelFile) {
-    IFile metadataFile = getMetadataFile(modelFile);
-    if (!metadataFile.exists()) {
-      return null;
-    }
-    return DefaultMetadataPersistence.load(metadataFile);
-  }
-
-  private static IFile getMetadataFile(IFile modelFile) {
-    String modelPath = modelFile.getPath();
-    String versionPath = modelPath.substring(0, modelPath.length() - MPSExtentions.DOT_MODEL.length()) + ".metadata";
-    return FileSystem.getInstance().getFileByPath(versionPath);
-  }
-
-  static void parseAndHandleExceptions(InputSource source, DefaultHandler handler, String what) throws ModelReadException {
+  // propagates exceptions that had happened during read, except for special case when we deliberately stop parsing process
+  // wrap certain errors as exceptions to facilitate broken model instead of broken MPS
+  static void parseAndHandleExceptions(InputSource source, DefaultHandler handler) throws Exception {
     try {
       JDOMUtil.createSAXParser().parse(source, handler);
     } catch (BreakParseSAXException e) {
       /* used to break SAX parsing flow */
-    } catch (ParserConfigurationException e) {
-      LOG.error(null, e);
-      throw new ModelReadException("Couldn't read " + what + ": " + e.getMessage(), e);
-    } catch (SAXException e) {
-      throw new ModelReadException("Couldn't read " + what + ": " + e.getMessage(), e);
-    } catch (IOException e) {
-      throw new ModelReadException("Couldn't read " + what + ": " + e.getMessage(), e);
+    } catch (AssertionError er) {
+      // just in case something goes wrong deep inside our persistence implementation, let MPS go on with broken model
+      throw new Exception(er);
     }
   }
 
-  public static void index(char[] data, Consumer<String> consumer) throws ModelReadException {
-    SModelHeader header = loadDescriptor(new InputSource(new CharArrayReader(data)));
-    IModelPersistence mp = getModelPersistence(header.getPersistenceVersion());
-    assert mp != null : "Using unsupported persistence version: " + header.getPersistenceVersion();
-    mp.index(data, consumer);
+
+
+  /**
+   * @deprecated use {@link #index(InputStream, Callback)} instead
+   */
+  @Deprecated
+  @ToRemove(version = 0)
+  public static void index(byte[] data, Callback newConsumer) throws IOException {
+    index(new ByteArrayInputStream(data), newConsumer);
   }
 
-  private static class MyDescriptorHandler extends DefaultHandler {
+  private static void assertMarkSupported(InputStream stream) {
+    // Both BufferedInputStream and ByteArrayInputStream do support marks, latter without limit.
+    assert stream.markSupported() : "XML model persistence reads the stream twice (to parse header and to figure out persistence version)";
+  }
+
+  public static void index(InputStream data, Callback newConsumer) throws IOException {
+    assertMarkSupported(data);
+    try {
+      SModelHeader header = new SModelHeader();
+      data.mark(HEADER_READ_LIMIT);
+      InputSource source = new InputSource(new InputStreamReader(data, FileUtil.DEFAULT_CHARSET));
+      parseAndHandleExceptions(source, new HeaderOnlyHandler(header));
+      IModelPersistence mp = getPersistence(header.getPersistenceVersion());
+      if (!(mp instanceof XMLPersistence)) {
+        LOG.error("Can't index old persistence. Please update persistence of old models.\n" +
+            "Persistence version: " + header.getPersistenceVersion() + "\n" +
+            "Model: " + header.getModelReference().getModelName());
+        return;
+      }
+
+      data.reset();
+      Indexer indexSupport = ((XMLPersistence) mp).getIndexSupport(newConsumer);
+      indexSupport.index(new InputStreamReader(data, FileUtil.DEFAULT_CHARSET));
+    } catch (IOException ex) {
+      throw ex;
+    } catch (Exception ex) {
+      Throwable th = ex.getCause() == null ? ex : ex.getCause();
+      throw new IOException(th);
+    }
+  }
+
+  public static SModelData getModelData(@NotNull InputStream input) throws IOException {
+    assertMarkSupported(input);
+    try {
+      input.mark(HEADER_READ_LIMIT);
+      SModelHeader header = loadDescriptor(new InputSource(new InputStreamReader(input, FileUtil.DEFAULT_CHARSET)));
+      input.reset();
+      ModelLoadResult result = readModel(header, new InputSource(new InputStreamReader(input, FileUtil.DEFAULT_CHARSET)), ModelLoadingState.FULLY_LOADED);
+      return result.getModel();
+    } catch (ModelReadException e) {
+      throw new IOException(e);
+    }
+  }
+
+  private static class HeaderOnlyHandler extends DefaultHandler {
     private final SModelHeader myResult;
 
-    public MyDescriptorHandler(SModelHeader result) {
+    public HeaderOnlyHandler(SModelHeader result) {
       myResult = result;
     }
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+      //todo this must be simplified as soon as all models are re-saved in last v9 persistence or later
       if (MODEL.equals(qName)) {
         for (int idx = 0; idx < attributes.getLength(); idx++) {
           String name = attributes.getQName(idx);
           String value = attributes.getValue(idx);
-          if (MODEL_UID.equals(name)) {
-            myResult.setUID(value);
-          } else if (SModelHeader.VERSION.equals(name)) {
-            try {
-              myResult.setVersion(Integer.parseInt(value));
-            } catch (NumberFormatException ignored) {
-            }
+          if ("modelUID".equals(name) || ModelPersistence9.REF.equals(name)) {
+            final SModelReference mr = value == null ? null : PersistenceFacade.getInstance().createModelReference(value);
+            myResult.setModelReference(mr);
           } else if (SModelHeader.DO_NOT_GENERATE.equals(name)) {
             myResult.setDoNotGenerate(Boolean.parseBoolean(value));
           } else {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,16 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.typesystem.uiActions;
 
-import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
+import jetbrains.mps.ide.findusages.findalgorithm.finders.BaseFinder;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.smodel.SModelRepository;
 import jetbrains.mps.smodel.SNodeId;
 import jetbrains.mps.typesystem.inference.DefaultTypecheckingContextOwner;
 import jetbrains.mps.typesystem.inference.ITypeContextOwner;
@@ -32,48 +29,71 @@ import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class AffectingRulesFinder implements IFinder {
+public class AffectingRulesFinder extends BaseFinder {
+  @Override
+  public String getDescription() {
+    return "Affecting Rules";
+  }
+
   public SearchResults find(SearchQuery query, ProgressMonitor monitor) {
-    SNode term = (SNode) query.getObjectHolder().getObject();
+    Object target = query.getObjectHolder().getObject();
+    if (!(target instanceof SNodeReference)) {
+      return new SearchResults();
+    }
+    SNode term = query.getSearchObjectResolver().resolve((SNodeReference) target);
+    if (term == null) {
+      return new SearchResults();
+    }
     SNode root = term.getContainingRoot();
 
     ITypeContextOwner owner = new MyTypeContextOwner();
     TypeContextManager manager = TypeContextManager.getInstance();
 
     TypeCheckingContext context = manager.acquireTypecheckingContext(root, owner);
+    context.checkRoot(true);
     try {
       IncrementalTypechecking component = context.getBaseNodeTypesComponent();
       List<SearchResult<SNode>> rules = new ArrayList<SearchResult<SNode>>();
-      if (component == null) return createResult(term, rules);
+      if (component == null) {
+        return createResult(term, rules);
+      }
 
       Set<Pair<String, String>> rulesIds = component.getRulesWhichAffectNodeType(term);
-      if (rulesIds == null) return createResult(term, rules);
+      if (rulesIds == null) {
+        return createResult(term, rules);
+      }
 
       for (Pair<String, String> ruleId : rulesIds) {
-        SModel modelDescriptor = SModelRepository.getInstance().getModelDescriptor(PersistenceFacade.getInstance().createModelReference(ruleId.o1));
-        if (modelDescriptor == null) continue;
+        SModel modelDescriptor = query.getScope().resolve(PersistenceFacade.getInstance().createModelReference(ruleId.o1));
+        if (modelDescriptor == null) {
+          continue;
+        }
 
         SNodeId nodeId = SNodeId.fromString(ruleId.o2);
         assert nodeId != null : "wrong node id string";
         SNode rule = modelDescriptor.getNode(nodeId);
-        if (rule == null) continue;
+        if (rule == null) {
+          continue;
+        }
 
         rules.add(new SearchResult<SNode>(rule, "rules which affect node's type"));
       }
       return createResult(term, rules);
     } finally {
-      manager.releaseTypecheckingContext(root, owner);
+      manager.releaseTypecheckingContext(owner);
     }
   }
 
   private SearchResults<SNode> createResult(SNode node, List<SearchResult<SNode>> results) {
-    return new SearchResults<SNode>(CollectionUtil.set(node), results);
+    return new SearchResults<>(CollectionUtil.set(node), results);
   }
 
 

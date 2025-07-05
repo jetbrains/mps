@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.extapi.persistence;
 
+import jetbrains.mps.vfs.FileSystemEvent;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.FileSystemListener;
@@ -32,7 +33,6 @@ import java.util.Collections;
  * storage when content doesn't fit into the original file because of the format restrictions.
  */
 public class FileWithBackupDataSource extends FileDataSource {
-
   private BackupFileListener myBackupFileListener;
 
   public FileWithBackupDataSource(@NotNull IFile file, ModelRoot modelRoot) {
@@ -41,7 +41,8 @@ public class FileWithBackupDataSource extends FileDataSource {
 
   @NotNull
   public IFile getBackupFile() {
-    return FileSystem.getInstance().getFileByPath(getFile().getPath() + "~");
+    IFile file = getFile();
+    return file.getFileSystem().getFile(file.getPath() + "~");
   }
 
   @Override
@@ -54,11 +55,11 @@ public class FileWithBackupDataSource extends FileDataSource {
   @Override
   public void refresh() {
     super.refresh();
-    FileSystem.getInstance().refresh(getBackupFile());
+    getBackupFile().refresh();
   }
 
   @Override
-  public void update(ProgressMonitor monitor, FileSystemEvent event) {
+  public void update(ProgressMonitor monitor, @NotNull FileSystemEvent event) {
     IFile mainFile = getFile();
     IFile backupFile = getBackupFile();
     boolean isChanged = false;
@@ -84,13 +85,14 @@ public class FileWithBackupDataSource extends FileDataSource {
   @Override
   protected void startListening() {
     super.startListening();
-    myBackupFileListener = new BackupFileListener(getBackupFile());
-    FileSystem.getInstance().addListener(myBackupFileListener);
+    IFile backupFile = getBackupFile();
+    myBackupFileListener = new BackupFileListener(backupFile);
+    backupFile.getFileSystem().addListener(myBackupFileListener);
   }
 
   @Override
   protected void stopListening() {
-    FileSystem.getInstance().removeListener(myBackupFileListener);
+    getBackupFile().getFileSystem().removeListener(myBackupFileListener);
     myBackupFileListener = null;
     super.stopListening();
   }
@@ -111,10 +113,11 @@ public class FileWithBackupDataSource extends FileDataSource {
   private class BackupFileListener implements FileSystemListener {
     private IFile path;
 
-    private BackupFileListener(IFile path) {
+    private BackupFileListener(@NotNull IFile path) {
       this.path = path;
     }
 
+    @NotNull
     @Override
     public IFile getFileToListen() {
       return path;
@@ -126,7 +129,7 @@ public class FileWithBackupDataSource extends FileDataSource {
     }
 
     @Override
-    public void update(ProgressMonitor monitor, FileSystemEvent event) {
+    public void update(ProgressMonitor monitor, @NotNull FileSystemEvent event) {
       event.notify(FileWithBackupDataSource.this);
     }
   }

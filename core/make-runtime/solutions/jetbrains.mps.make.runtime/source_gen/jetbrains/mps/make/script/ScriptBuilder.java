@@ -33,32 +33,19 @@ public class ScriptBuilder {
   private ITarget.Name finalTarget;
   private ITarget.Name startingTarget;
   private List<ValidationError> errors = ListSequence.fromList(new ArrayList<ValidationError>());
-
   public ScriptBuilder() {
   }
-
   public ScriptBuilder withFacetName(IFacet.Name facetName) {
     SetSequence.fromSet(facets).addElement(facetName);
     return this;
   }
-
   public ScriptBuilder withFacetNames(IFacet.Name... facetNames) {
     return withFacetNames(Sequence.fromArray(facetNames));
   }
-
   public ScriptBuilder withFacetNames(Iterable<IFacet.Name> facetNames) {
     SetSequence.fromSet(facets).addSequence(Sequence.fromIterable(facetNames));
     return this;
   }
-
-  @Deprecated
-  public ScriptBuilder withFacets(Iterable<IFacet> facets) {
-    for (IFacet fct : Sequence.fromIterable(facets)) {
-      withFacetName(fct.getName());
-    }
-    return this;
-  }
-
   public ScriptBuilder withAuxTarget(ITarget.Name targetName) {
     if (targetName == null) {
       throw new NullPointerException();
@@ -66,7 +53,6 @@ public class ScriptBuilder {
     SetSequence.fromSet(requestedTargets).addElement(targetName);
     return this;
   }
-
   public ScriptBuilder withStartingTarget(ITarget.Name targetName) {
     if (targetName == null) {
       throw new NullPointerException();
@@ -75,7 +61,6 @@ public class ScriptBuilder {
     this.startingTarget = targetName;
     return this;
   }
-
   public ScriptBuilder withFinalTarget(ITarget.Name targetName) {
     if (targetName == null) {
       throw new NullPointerException();
@@ -84,7 +69,6 @@ public class ScriptBuilder {
     this.finalTarget = targetName;
     return this;
   }
-
   public IScript toScript() {
     Map<IFacet.Name, IFacet> facetsView = collectFacets();
     if (ListSequence.fromList(errors).isNotEmpty()) {
@@ -104,11 +88,10 @@ public class ScriptBuilder {
     if (ListSequence.fromList(errors).isNotEmpty()) {
       return new InvalidScript(errors);
     }
-    Script sc = new Script(tr, finalTarget);
+    Script sc = new Script(tr, finalTarget, startingTarget);
     sc.validate();
     return sc;
   }
-
   private Map<IFacet.Name, IFacet> collectFacets() {
     Map<IFacet.Name, IFacet> facetsView = MapSequence.fromMap(new HashMap<IFacet.Name, IFacet>());
     for (IFacet.Name fn : SetSequence.fromSet(facets)) {
@@ -120,9 +103,11 @@ public class ScriptBuilder {
         error(fn, msg);
       }
     }
+    if (SetSequence.fromSet(facets).isEmpty()) {
+      error(null, "No make facets found, nothing to make. This may have been caused by a language module failed to load.");
+    }
     return facetsView;
   }
-
   private void collectTargets(Iterable<IFacet.Name> sortedFacets, TargetRange tr, final Map<IFacet.Name, IFacet> facetsView) {
     List<ITarget> allTargets = ListSequence.fromList(Sequence.fromIterable(sortedFacets).translate(new ITranslator2<IFacet.Name, ITarget>() {
       public Iterable<ITarget> translate(IFacet.Name fname) {
@@ -148,17 +133,13 @@ public class ScriptBuilder {
       }
     }));
   }
-
   private void collectRefs(final Map<IFacet.Name, ScriptBuilder.FacetRefs> refs, Map<IFacet.Name, IFacet> facetsView) {
     for (IFacet fct : Sequence.fromIterable(MapSequence.fromMap(facetsView).values())) {
-      ScriptBuilder.FacetRefs facetRefs = new ScriptBuilder.FacetRefs();
-      this.collectRequired(fct, fct.extended(), facetRefs.extended, facetsView);
-      this.collectRequired(fct, fct.required(), facetRefs.required, facetsView);
-      this.collectOptional(fct, fct.optional(), facetRefs.optional, facetsView);
+      ScriptBuilder.FacetRefs facetRefs = new ScriptBuilder.FacetRefs(facetsView);
+      facetRefs.collect(fct);
       MapSequence.fromMap(refs).put(fct.getName(), facetRefs);
     }
   }
-
   private Iterable<IFacet.Name> toposortByExtended(final Map<IFacet.Name, ScriptBuilder.FacetRefs> refs, Map<IFacet.Name, IFacet> facetsView) {
     for (IMapping<IFacet.Name, ScriptBuilder.FacetRefs> m : SetSequence.fromSet(MapSequence.fromMap(refs).mappingsSet())) {
       IFacet fct = MapSequence.fromMap(facetsView).get(m.key());
@@ -175,7 +156,6 @@ public class ScriptBuilder {
           }
         });
       }
-
       @Override
       public Iterable<IFacet.Name> backwardEdges(IFacet.Name v) {
         return ListSequence.fromList(MapSequence.fromMap(refs).get(v).extended).select(new ISelector<IFacet, IFacet.Name>() {
@@ -184,7 +164,6 @@ public class ScriptBuilder {
           }
         });
       }
-
       @Override
       public Iterable<IFacet.Name> vertices() {
         return MapSequence.fromMap(refs).keySet();
@@ -195,47 +174,42 @@ public class ScriptBuilder {
     }
     return ga.topologicalSort();
   }
-
-  private void collectRequired(IFacet fct, Iterable<IFacet.Name> facets, List<IFacet> required, Map<IFacet.Name, IFacet> facetsView) {
-    for (IFacet.Name req : Sequence.fromIterable(facets)) {
-      IFacet f = MapSequence.fromMap(facetsView).get(req);
-      if (f == null) {
-        String msg = "not found required facet: " + req;
-        error(fct.getName(), msg);
-      } else {
-        ListSequence.fromList(required).addElement(f);
-      }
-    }
-  }
-
-  private void collectOptional(IFacet fct, Iterable<IFacet.Name> facets, List<IFacet> optional, Map<IFacet.Name, IFacet> facetsView) {
-    for (IFacet.Name opt : Sequence.fromIterable(facets)) {
-      IFacet f = MapSequence.fromMap(facetsView).get(opt);
-      if (f == null) {
-        String msg = "not found optional facet: " + opt;
-        LOG.debug(msg);
-      } else {
-        ListSequence.fromList(optional).addElement(f);
-      }
-    }
-  }
-
   private void error(Object o, String message) {
     LOG.debug(message);
     ListSequence.fromList(this.errors).addElement(new ValidationError(o, message));
   }
-
-  private void clearErrors() {
-    ListSequence.fromList(this.errors).clear();
-  }
-
-  private static class FacetRefs {
-    private List<IFacet> extended = ListSequence.fromList(new ArrayList<IFacet>());
-    private List<IFacet> extendedBy = ListSequence.fromList(new ArrayList<IFacet>());
-    private List<IFacet> required = ListSequence.fromList(new ArrayList<IFacet>());
-    private List<IFacet> optional = ListSequence.fromList(new ArrayList<IFacet>());
-
-    public FacetRefs() {
+  private class FacetRefs {
+    /*package*/ List<IFacet> extended = ListSequence.fromList(new ArrayList<IFacet>());
+    /*package*/ List<IFacet> extendedBy = ListSequence.fromList(new ArrayList<IFacet>());
+    /*package*/ List<IFacet> required = ListSequence.fromList(new ArrayList<IFacet>());
+    /*package*/ List<IFacet> optional = ListSequence.fromList(new ArrayList<IFacet>());
+    private Map<IFacet.Name, IFacet> facetsView;
+    public FacetRefs(Map<IFacet.Name, IFacet> facetsView) {
+      this.facetsView = facetsView;
+    }
+    public void collect(IFacet fct) {
+      for (IFacet.Name req : Sequence.fromIterable(fct.extended())) {
+        addIfExists(fct, req, extended, true);
+      }
+      for (IFacet.Name req : Sequence.fromIterable(fct.required())) {
+        addIfExists(fct, req, required, true);
+      }
+      for (IFacet.Name opt : Sequence.fromIterable(fct.optional())) {
+        addIfExists(fct, opt, optional, false);
+      }
+    }
+    private void addIfExists(IFacet requestor, IFacet.Name requestee, List<IFacet> destination, boolean required) {
+      IFacet f = MapSequence.fromMap(facetsView).get(requestee);
+      if (f != null) {
+        ListSequence.fromList(destination).addElement(f);
+      } else {
+        if (required) {
+          String msg = "not found required facet: " + requestee;
+          error(requestor.getName(), msg);
+        } else {
+          LOG.debug("not found optional facet: " + requestee + " for facet " + requestor.getName());
+        }
+      }
     }
   }
 }

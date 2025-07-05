@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,23 @@
 package jetbrains.mps.generator.impl.interpreted;
 
 import jetbrains.mps.generator.impl.AbandonRuleInputException;
+import jetbrains.mps.generator.impl.DismissTopMappingRuleException;
+import jetbrains.mps.generator.impl.GeneratorUtil;
 import jetbrains.mps.generator.impl.GeneratorUtilEx;
+import jetbrains.mps.generator.impl.RuleConsequenceProcessor;
 import jetbrains.mps.generator.impl.RuleUtil;
-import jetbrains.mps.generator.impl.TemplateProcessor;
-import jetbrains.mps.generator.impl.TemplateProcessor.TemplateProcessingFailureException;
-import jetbrains.mps.generator.runtime.*;
-import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.generator.runtime.GenerationException;
+import jetbrains.mps.generator.runtime.TemplateContext;
+import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
+import jetbrains.mps.generator.runtime.TemplateReductionRule;
+import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
 
 /**
  * Evgeny Gryaznov, Nov 29, 2010
@@ -43,8 +46,7 @@ public class TemplateSwitchMappingInterpreted implements TemplateSwitchMapping {
     mySwitch = aSwitch;
     rules = new ArrayList<TemplateReductionRule>();
     for (SNode child : mySwitch.getChildren()) {
-      String conceptName = child.getConcept().getQualifiedName();
-      if (conceptName.equals(RuleUtil.concept_Reduction_MappingRule)) {
+      if (RuleUtil.concept_Reduction_MappingRule.equals(child.getConcept())) {
         rules.add(new TemplateReductionRuleInterpreted(child));
       }
     }
@@ -86,36 +88,22 @@ public class TemplateSwitchMappingInterpreted implements TemplateSwitchMapping {
       return switchMapping.applyDefault(environment, templateSwitch, mappingName, context);
     }
 
-    List<SNode> collection = new ArrayList<SNode>();
     try {
-      List<Pair<SNode, String>> nodeAndMappingNamePairs = GeneratorUtilEx.getTemplateNodesFromRuleConsequence(defaultConsequence, context.getInput(), templateSwitch.resolve(MPSModuleRepository.getInstance()), environment.getReductionContext(), environment.getGenerator());
-      if (nodeAndMappingNamePairs == null) {
-        environment.getGenerator().showErrorMessage(context.getInput(), templateSwitch.resolve(MPSModuleRepository.getInstance()), defaultConsequence, "error processing $SWITCH$/default");
-        return null;
-      }
-
-      for (Pair<SNode, String> nodeAndMappingNamePair : nodeAndMappingNamePairs) {
-        SNode altTemplateNode = nodeAndMappingNamePair.o1;
-        String innerMappingName = nodeAndMappingNamePair.o2 != null ? nodeAndMappingNamePair.o2 : mappingName;
-        try {
-          TemplateProcessor templateProcessor = new TemplateProcessor(environment.getGenerator(), environment.getReductionContext());
-          collection.addAll(templateProcessor.apply(innerMappingName, altTemplateNode, context));
-        } catch (TemplateProcessingFailureException e) {
-          environment.getGenerator().showErrorMessage(context.getInput(), templateSwitch.resolve(MPSModuleRepository.getInstance()), "error processing template fragment");
-        }
-      }
-    } catch (AbandonRuleInputException e) {
+      RuleConsequenceProcessor rcp = RuleConsequenceProcessor.prepare(defaultConsequence);
+      return rcp.processRuleConsequence(context.subContext(mappingName));
+    } catch (AbandonRuleInputException ex) {
       // it's ok. just ignore
+      return Collections.emptyList();
     }
-    return collection;
   }
 
   @Override
   public void processNull(TemplateExecutionEnvironment environment, SNodeReference templateSwitch, TemplateContext context) {
-
-    SNode generatorMessage = RuleUtil.getSwitch_NullInputMessage(mySwitch);
-    if (generatorMessage != null) {
-      GeneratorUtilEx.processGeneratorMessage(generatorMessage, context.getInput(), templateSwitch.resolve(MPSModuleRepository.getInstance()), null, environment.getGenerator());
+    SNode message = RuleUtil.getSwitch_NullInputMessage(mySwitch);
+    if (message != null) {
+      DismissTopMappingRuleException.MessageType messageType = GeneratorUtilEx.getGeneratorMessage_kind(message);
+      String text = GeneratorUtilEx.getGeneratorMessage_text(message);
+      GeneratorUtil.log(environment.getLogger(), templateSwitch, messageType, text, GeneratorUtil.describeIfExists(context.getInput(), "input node"));
     }
   }
 }

@@ -4,23 +4,28 @@ package jetbrains.mps.lang.editor.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum _NextLine_Enum {
   right("right", null),
   next_line("next-line", "next-line"),
   indented("indented", "indented");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private _NextLine_Enum(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<_NextLine_Enum> getConstants() {
     List<_NextLine_Enum> list = ListSequence.fromList(new LinkedList<_NextLine_Enum>());
     ListSequence.fromList(list).addElement(_NextLine_Enum.right);
@@ -28,11 +33,9 @@ public enum _NextLine_Enum {
     ListSequence.fromList(list).addElement(_NextLine_Enum.indented);
     return list;
   }
-
   public static _NextLine_Enum getDefault() {
     return _NextLine_Enum.right;
   }
-
   public static _NextLine_Enum parseValue(String value) {
     if (value == null) {
       return _NextLine_Enum.getDefault();
@@ -47,16 +50,5 @@ public enum _NextLine_Enum {
       return _NextLine_Enum.indented;
     }
     return _NextLine_Enum.getDefault();
-  }
-
-  private String myValue;
-
-  _NextLine_Enum(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

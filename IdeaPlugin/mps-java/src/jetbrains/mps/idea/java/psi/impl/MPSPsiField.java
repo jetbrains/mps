@@ -28,6 +28,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiExpression;
 import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiIdentifier;
+import com.intellij.psi.PsiManager;
 import com.intellij.psi.PsiModifier.ModifierConstant;
 import com.intellij.psi.PsiModifierList;
 import com.intellij.psi.PsiType;
@@ -52,9 +53,9 @@ import javax.swing.Icon;
 
 public class MPSPsiField extends MPSPsiNode implements PsiField {
 
-  public MPSPsiField(SNodeId id, String concept, String containingRole) {
-    super(id, concept, containingRole);
-    addChild(null, new MPSPsiMethodModifierList());
+  public MPSPsiField(SNodeId id, String concept, String containingRole, PsiManager manager) {
+    super(id, concept, containingRole, manager);
+    addChild(null, new MPSPsiMethodModifierList(manager));
   }
 
   @Override
@@ -110,10 +111,6 @@ public class MPSPsiField extends MPSPsiNode implements PsiField {
   @Override
   public PsiElement setName(@NonNls @NotNull String name) throws IncorrectOperationException {
     throw new IncorrectOperationException();
-  }
-
-  public PsiType getTypeNoResolve() {
-    return getType();
   }
 
   @Nullable

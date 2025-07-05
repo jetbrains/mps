@@ -6,24 +6,29 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.baseLanguage.util.plugin.refactorings.IntroduceFieldRefactoring;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.util.ModelComputeRunnable;
+import jetbrains.mps.util.Computable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
 import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.baseLanguage.util.plugin.refactorings.IntroduceFieldRefactoring;
 import org.jetbrains.annotations.NotNull;
-import org.apache.log4j.Priority;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.util.plugin.refactorings.AbstractIntroduceFieldRefactoring;
+import jetbrains.mps.baseLanguage.util.plugin.refactorings.IntroduceStaticFieldRefactoring;
 import jetbrains.mps.ide.java.platform.refactorings.IntroduceFieldDialog;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.project.MPSProject;
 import javax.swing.JOptionPane;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 
 public class IntroduceField_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -33,87 +38,104 @@ public class IntroduceField_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return IntroduceFieldRefactoring.isApplicable(((SNode) MapSequence.fromMap(_params).get("node"))) && !(((EditorComponent) MapSequence.fromMap(_params).get("component")).isReadOnly());
-  }
-
-  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        boolean enabled = this.isApplicable(event, _params);
-        this.setEnabledState(event.getPresentation(), enabled);
+    SNode nodeToRefactor = new ModelComputeRunnable<SNode>(new Computable<SNode>() {
+      public SNode compute() {
+        return SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), true, false);
       }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "IntroduceField", t);
-      }
-      this.disable(event.getPresentation());
+    }).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
+    if (ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("component")), Sequence.<EditorCell>singleton(((EditorComponent) MapSequence.fromMap(_params).get("component")).findNodeCell(nodeToRefactor)))) {
+      return false;
     }
+    return IntroduceFieldRefactoring.isApplicable(nodeToRefactor);
   }
-
+  @Override
+  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
+  }
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null) {
-      }
       MapSequence.fromMap(_params).put("node", node);
+      if (node == null) {
+        return false;
+      }
     }
-    if (MapSequence.fromMap(_params).get("node") == null) {
-      return false;
+    {
+      EditorComponent editorComponent = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT);
+      if (editorComponent != null && editorComponent.isInvalid()) {
+        editorComponent = null;
+      }
+      MapSequence.fromMap(_params).put("component", editorComponent);
+      if (editorComponent == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("component", event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
-    if (MapSequence.fromMap(_params).get("component") == null) {
-      return false;
+    {
+      EditorContext p = event.getData(MPSEditorDataKeys.EDITOR_CONTEXT);
+      MapSequence.fromMap(_params).put("editorContext", p);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("editorContext", event.getData(MPSEditorDataKeys.EDITOR_CONTEXT));
-    if (MapSequence.fromMap(_params).get("editorContext") == null) {
-      return false;
-    }
-    MapSequence.fromMap(_params).put("mpsProject", event.getData(MPSCommonDataKeys.MPS_PROJECT));
-    if (MapSequence.fromMap(_params).get("mpsProject") == null) {
-      return false;
+    {
+      Project p = event.getData(CommonDataKeys.PROJECT);
+      MapSequence.fromMap(_params).put("project", p);
+      if (p == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      FeatureUsageTracker.getInstance().triggerFeatureUsed("refactoring.introduceField");
-      final Wrappers._boolean mustBeStatic = new Wrappers._boolean();
-      ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          mustBeStatic.value = (SNodeOperations.getAncestor(((SNode) MapSequence.fromMap(_params).get("node")), "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration", false, false) != null) || (SNodeOperations.getAncestor(((SNode) MapSequence.fromMap(_params).get("node")), "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration", false, false) != null) || (SNodeOperations.getAncestor(((SNode) MapSequence.fromMap(_params).get("node")), "jetbrains.mps.baseLanguage.structure.StaticInitializer", false, false) != null);
-        }
-      });
+    FeatureUsageTracker.getInstance().triggerFeatureUsed("refactoring.introduceField");
+    final Wrappers._boolean mustBeStatic = new Wrappers._boolean();
 
-      final IntroduceFieldRefactoring introducer = new IntroduceFieldRefactoring();
-      final Wrappers._T<String> error = new Wrappers._T<String>();
-      ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runWriteAction(new Runnable() {
-        public void run() {
-          error.value = introducer.init(((SNode) MapSequence.fromMap(_params).get("node")), ((EditorComponent) MapSequence.fromMap(_params).get("component")));
+    final SNode nodeToRefactor = new ModelComputeRunnable<SNode>(new Computable<SNode>() {
+      public SNode compute() {
+        return SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"), true, false);
+      }
+    }).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
+    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        SNode current = SNodeOperations.getParent(nodeToRefactor);
+        while (current != null) {
+          if (SNodeOperations.isInstanceOf(current, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration")) || SNodeOperations.isInstanceOf(current, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration")) || SNodeOperations.isInstanceOf(current, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer"))) {
+            mustBeStatic.value = true;
+            break;
+          }
+          if (SNodeOperations.isInstanceOf(current, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")) || SNodeOperations.isInstanceOf(current, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")) || SNodeOperations.isInstanceOf(current, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118f0b909f7L, "jetbrains.mps.baseLanguage.structure.InstanceInitializer"))) {
+            mustBeStatic.value = false;
+            break;
+          }
+          current = SNodeOperations.getParent(current);
         }
-      });
-      if (error.value == null) {
-        IntroduceFieldDialog dialog = new IntroduceFieldDialog(ProjectHelper.toIdeaProject(((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))), introducer, ((EditorContext) MapSequence.fromMap(_params).get("editorContext")), mustBeStatic.value);
-        dialog.show();
-      } else {
-        JOptionPane.showMessageDialog(((EditorComponent) MapSequence.fromMap(_params).get("component")), error.value, "Error", JOptionPane.ERROR_MESSAGE);
+        mustBeStatic.value = false;
       }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "IntroduceField", t);
+    });
+
+    final AbstractIntroduceFieldRefactoring introducer = (mustBeStatic.value ? new IntroduceStaticFieldRefactoring() : new IntroduceFieldRefactoring());
+    final Wrappers._T<String> error = new Wrappers._T<String>();
+    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runWriteAction(new Runnable() {
+      public void run() {
+        error.value = introducer.init(nodeToRefactor, ((EditorComponent) MapSequence.fromMap(_params).get("component")));
       }
+    });
+    if (error.value == null) {
+      IntroduceFieldDialog dialog = new IntroduceFieldDialog(((Project) MapSequence.fromMap(_params).get("project")), introducer, ((EditorContext) MapSequence.fromMap(_params).get("editorContext")), mustBeStatic.value);
+      dialog.show();
+    } else {
+      JOptionPane.showMessageDialog(((EditorComponent) MapSequence.fromMap(_params).get("component")), error.value, "Error", JOptionPane.ERROR_MESSAGE);
     }
   }
-
-  protected static Logger LOG = LogManager.getLogger(IntroduceField_Action.class);
 }

@@ -7,6 +7,9 @@
   <property name="mps_home" location="${basedir}/../../../.." />
   <property name="build_langs" location="${mps_home}/languages/build" />
   <property name="MPS" value="MPS-${build.number}" />
+  <property name="environment" value="env" />
+  <property name="env.JAVA_HOME" value="${java.home}/.." />
+  <property name="jdk.home" value="${env.JAVA_HOME}" />
   
   <path id="path.java.library.apache-collections">
     <fileset file="${build_langs}/build.jar" />
@@ -23,7 +26,7 @@
     <mkdir dir="${build.tmp}/default/mps-core_dl__lbrace_ver_rbrace_.jar/abc" />
     <mkdir dir="${build.tmp}/default/mps-core_dl__lbrace_ver_rbrace_.jar/abc/edf" />
     <zip destfile="${build.tmp}/default/mps-core_dl__lbrace_ver_rbrace_.jar/abc/edf/aaa" />
-    <jar destfile="${build.tmp}/default/inrelease.zip/mps-core${ver}.jar">
+    <jar destfile="${build.tmp}/default/inrelease.zip/mps-core${ver}.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-core" />
       <fileset dir="${build.tmp}/default/mps-core_dl__lbrace_ver_rbrace_.jar" />
     </jar>
@@ -64,7 +67,7 @@
   
   <target name="java.compile.mps-core">
     <mkdir dir="${build.tmp}/java/out/mps-core" />
-    <javac destdir="${build.tmp}/java/out/mps-core" fork="true" includeantruntime="false">
+    <javac destdir="${build.tmp}/java/out/mps-core" fork="true" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
         <pathelement path="${mps_home}/core/source" />

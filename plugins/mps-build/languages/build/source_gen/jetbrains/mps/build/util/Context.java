@@ -9,64 +9,44 @@ import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.concurrent.ConcurrentMap;
-import jetbrains.mps.build.behavior.BuildProject_Behavior;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.TransientModelsModule;
-import jetbrains.mps.project.AbstractModule;
+import org.jetbrains.mps.openapi.module.SModule;
 
 public class Context {
   private Map<String, Object> myProperties = MapSequence.fromMap(new HashMap<String, Object>());
   private TemplateQueryContext myGenerationContext;
-
   public Context() {
   }
-
   public Context(TemplateQueryContext generationContext) {
     myGenerationContext = generationContext;
   }
-
   @Nullable
   public Object put(String key, Object value) {
     Object previousValue = MapSequence.fromMap(myProperties).get(key);
     MapSequence.fromMap(myProperties).put(key, value);
     return previousValue;
   }
-
   @Nullable
   public <T> T get(String key) {
     return ((T) MapSequence.fromMap(myProperties).get(key));
   }
-
   protected SNode getBuildProject(SNode node) {
-    return SNodeOperations.getAncestor(node, "jetbrains.mps.build.structure.BuildProject", true, false);
+    return SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), true, false);
   }
-
   public MacroHelper getMacros(SNode context) {
     SNode buildProject = getBuildProject(context);
     if (buildProject == null) {
       return null;
     }
-    buildProject = SNodeOperations.as(DependenciesHelper.getOriginalNode(buildProject, myGenerationContext), "jetbrains.mps.build.structure.BuildProject");
+    buildProject = SNodeOperations.as(DependenciesHelper.getOriginalNode(buildProject, myGenerationContext), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
     if (buildProject == null) {
       return null;
     }
     return new MacroHelper.MacroContext(buildProject, myGenerationContext).getMacros(buildProject);
-  }
-
-  public String getBuildProjectName(SNode node) {
-    return SPropertyOperations.getString(getBuildProject(node), "name");
-  }
-
-  @NotNull
-  public SModule getModule(SModel model) {
-    if (myGenerationContext != null) {
-      return myGenerationContext.getOriginalInputModel().getModule();
-    }
-    return model.getModule();
   }
 
   public String getTempPath(SNode node, String name, String... categories) {
@@ -86,39 +66,23 @@ public class Context {
     return result;
   }
 
-  public String getBasePath_Local(SNode node) {
-    SNode buildProject = this.getBuildProject(node);
-    if ((buildProject == null)) {
-      return null;
-    }
-    return BuildProject_Behavior.call_getBasePath_4959435991187146924(buildProject, this);
-  }
-
   public RelativePathHelper getRelativePathHelper(@NotNull SModel model) {
     if (model.getModule() instanceof TransientModelsModule && myGenerationContext != null) {
       model = myGenerationContext.getOriginalInputModel();
     }
-    SModel modelDescriptor = model;
-    if (model.getModule() instanceof TransientModelsModule || modelDescriptor == null) {
+    SModule module = model.getModule();
+    if (module instanceof TransientModelsModule) {
       return null;
     }
-    SModule module = modelDescriptor.getModule();
-    if (module == null || ((AbstractModule) module).getDescriptorFile() == null || module.isPackaged()) {
-      return null;
-    }
-    String basePath = ((AbstractModule) module).getDescriptorFile().getParent().getPath();
-    return new RelativePathHelper(basePath);
+    return RelativePathHelper.forModule(module);
   }
-
   public TemplateQueryContext getGenerationContext() {
     return myGenerationContext;
   }
-
   @NotNull
   public static Context defaultContext() {
     return new Context();
   }
-
   @NotNull
   public static Context defaultContext(final TemplateQueryContext gencontext) {
     if (gencontext == null) {

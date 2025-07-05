@@ -1,7 +1,21 @@
+/*
+ * Copyright 2003-2016 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package jetbrains.mps.idea.java.usages;
 
 import com.intellij.openapi.application.QueryExecutorBase;
-import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.IndexNotReadyException;
 import com.intellij.psi.PsiElement;
@@ -11,24 +25,22 @@ import com.intellij.psi.impl.light.LightMethod;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.searches.MethodReferencesSearch.SearchParameters;
 import com.intellij.util.Processor;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.ModuleClassReference;
-import jetbrains.mps.ide.findusages.model.SearchQuery;
-import jetbrains.mps.ide.findusages.model.SearchResult;
-import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.view.FindUtils;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiNode;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiNodeBase;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiProvider;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiRef;
 import jetbrains.mps.idea.core.usages.IdeaSearchScope;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactoryByName;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.language.SConceptRepository;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -55,16 +67,11 @@ public class MPSMethodReferencesSearch extends QueryExecutorBase<PsiReference, S
 
     if (method instanceof MPSPsiNodeBase) return;
 
-    final GeneratedFinder finder = method.isConstructor() ?
-      FindUtils.getFinderByClass(new ModuleClassReference<GeneratedFinder>(new ModuleReference("jetbrains.mps.baseLanguage"), "jetbrains.mps.baseLanguage.findUsages.ConstructorUsages_Finder")) :
-      FindUtils.getFinderByClass(new ModuleClassReference<GeneratedFinder>(new ModuleReference("jetbrains.mps.baseLanguage"), "jetbrains.mps.baseLanguage.findUsages.BaseMethodUsages_Finder"));
+    final String finder = method.isConstructor() ?
+      "jetbrains.mps.baseLanguage.findUsages.ConstructorUsages_Finder" :
+      "jetbrains.mps.baseLanguage.findUsages.BaseMethodUsages_Finder";
 
-    if (finder == null) {
-      LOG.warning("MPS finder not found; MethodReferenceSearch will not work");
-      return;
-    }
-
-    ModelAccess.instance().runReadAction(new Runnable() {
+    ProjectHelper.getModelAccess(method.getProject()).runReadAction(new Runnable() {
       @Override
       public void run() {
 
@@ -86,24 +93,21 @@ public class MPSMethodReferencesSearch extends QueryExecutorBase<PsiReference, S
           return;
         }
 
-        SearchQuery query = new SearchQuery(methodNode, new IdeaSearchScope(scope));
-
-        SearchResults<SNode> results;
+        List<SNode> results;
         try {
-          results = FindUtils.makeProvider(finder).getResults(query, null);
+          results = FindUtils.executeFinder(finder, methodNode, new IdeaSearchScope(scope), new EmptyProgressMonitor());
         } catch (IndexNotReadyException e) {
           // DumbService doesn't seem to work
           return;
         }
 
-        for (SearchResult<SNode> result : results.getSearchResults()) {
-          SNode usageNode = result.getObject();
+        for (SNode usageNode : results) {
           // it's a shame we get nodes and not SReferences
           // doing a hack
           for (SReference sref : usageNode.getReferences()) {
             SNode refTarget = sref.getTargetNode();
             if (refTarget == null) continue;
-            if (refTarget.getConcept().isSubConceptOf(SConceptRepository.getInstance().getConcept("jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"))) {
+            if (refTarget.getConcept().isSubConceptOf(MetaAdapterFactoryByName.getConcept("jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"))) {
               // supposedly our reference
               String role = sref.getRole();
 

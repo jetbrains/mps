@@ -16,13 +16,22 @@
 package jetbrains.mps.nodeEditor.cellMenu;
 
 import com.intellij.util.ui.UIUtil;
-import jetbrains.mps.MPSCore;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.cells.TextLine;
+import jetbrains.mps.nodeEditor.ui.InputMethodListenerImpl;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import org.jetbrains.annotations.NotNull;
 
+import javax.swing.JPanel;
 import javax.swing.JWindow;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Window;
+import java.awt.event.InputMethodEvent;
 import java.awt.event.KeyEvent;
 
 /**
@@ -45,6 +54,10 @@ public class NodeSubstitutePatternEditor {
     } else {
       myCachedText = text;
     }
+  }
+
+  public boolean isActivated() {
+    return myEditorActivated;
   }
 
   public String getText() {
@@ -108,6 +121,15 @@ public class NodeSubstitutePatternEditor {
     return false;
   }
 
+  public boolean processTextChanged(InputMethodEvent inputEvent) {
+    if (myEditorActivated && myEditorWindow.processTextChanged(inputEvent)) {
+      mySavedCaretPosition = 0;
+      return true;
+    }
+    return false;
+  }
+
+  @NotNull
   public String getPattern() {
     if (myEditorActivated) {
       TextLine textLine = myEditorWindow.myTextLine;
@@ -117,7 +139,7 @@ public class NodeSubstitutePatternEditor {
     }
 
     if (myCachedText == null) {
-      return null;
+      return "";
     }
     int caretPos = Math.min(myCachedText.length(), Math.max(myCachedCaretPosition, 0));
     return myCachedText.substring(0, caretPos);
@@ -125,7 +147,7 @@ public class NodeSubstitutePatternEditor {
 
   // ------------------
 
-  public void activate(Window owner, Point location, Dimension size) {
+  public void activate(Window owner, Point location, Dimension size, boolean show) {
     if (!myEditorActivated) {
       myEditorActivated = true;
       myEditorWindow = new EditorWindow(owner);
@@ -133,7 +155,7 @@ public class NodeSubstitutePatternEditor {
       myEditorWindow.setMinimalSize(size);
       myEditorWindow.myTextLine.setText(myCachedText);
       myEditorWindow.myTextLine.setCaretPosition(myCachedCaretPosition);
-      if (!(MPSCore.getInstance().isTestMode())) {
+      if (show) {
         myEditorWindow.relayout();
         myEditorWindow.setVisible(true);
       }
@@ -144,6 +166,16 @@ public class NodeSubstitutePatternEditor {
     myEditorWindow.setLocation(point);
   }
 
+  public Point getLeftBottomPosition() {
+    Point location = myEditorWindow.getLocation();
+    location.translate(0, myEditorWindow.getSize().height);
+    return location;
+  }
+
+  public int getHeight() {
+    return myEditorWindow.getSize().height;
+  }
+
   public void done() {
     if (myEditorActivated) {
       myEditorWindow.dispose();
@@ -152,13 +184,15 @@ public class NodeSubstitutePatternEditor {
     }
   }
 
-  private class EditorWindow extends JWindow {
+  private static class EditorWindow extends JWindow {
     private TextLine myTextLine;
     private Dimension myMinimalSize;
+    private JPanel myPanel = new EditorPanel();
 
     public EditorWindow(Window owner) {
       super(owner);
       myTextLine = new TextLine("");
+      add(myPanel);
     }
 
     public void setMinimalSize(Dimension size) {
@@ -173,23 +207,6 @@ public class NodeSubstitutePatternEditor {
       setSize(w, h);
     }
 
-    @Override
-    public void paint(Graphics g) {
-      // COLORS: move colors to properties
-      Rectangle bounds = g.getClipBounds();
-      g.setColor(StyleRegistry.getInstance().getSimpleColor(Color.YELLOW));
-      g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
-      g.setColor(StyleRegistry.getInstance().getSimpleColor(Color.GRAY));
-      g.drawRect(bounds.x, bounds.y, bounds.width - 1, bounds.height - 1);
-
-      EditorComponent.turnOnAliasingIfPossible((Graphics2D) g);
-
-      TextLine textLine = myTextLine;
-      textLine.setSelected(false);
-      textLine.setShowCaret(true);
-      textLine.paint(g, 0, 0);
-    }
-
     public boolean processKeyTyped(KeyEvent keyEvent) {
       if (processKeyTypedInternal(keyEvent)) {
         relayout();
@@ -197,6 +214,22 @@ public class NodeSubstitutePatternEditor {
         return true;
       }
       return false;
+    }
+
+    public boolean processTextChanged(InputMethodEvent inputEvent) {
+      String oldText = myTextLine.getText();
+      int caretPosition = myTextLine.getCaretPosition();
+      if (caretPosition > 0) {
+        // replacing last symbol before the caret with the text from input method
+        caretPosition--;
+      }
+
+      String text = InputMethodListenerImpl.getText(inputEvent);
+      changeText(oldText.substring(0, caretPosition) + text);
+      myTextLine.setCaretPosition(caretPosition + text.length());
+      relayout();
+      repaint();
+      return true;
     }
 
     private boolean processKeyTypedInternal(KeyEvent keyEvent) {
@@ -271,6 +304,24 @@ public class NodeSubstitutePatternEditor {
 
     protected void changeText(String text) {
       myTextLine.setText(text);
+    }
+
+    private class EditorPanel extends JPanel {
+      @Override
+      protected void paintComponent(Graphics g) {
+        // COLORS: move colors to properties
+        Rectangle bounds = g.getClipBounds();
+        g.setColor(StyleRegistry.getInstance().getSimpleColor(Color.YELLOW));
+        g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+        g.setColor(StyleRegistry.getInstance().getSimpleColor(Color.GRAY));
+        g.drawRect(bounds.x, bounds.y, bounds.width - 1, bounds.height - 1);
+        EditorComponent.turnOnAliasingIfPossible((Graphics2D) g);
+
+        TextLine textLine = myTextLine;
+        textLine.setSelected(false);
+        textLine.setShowCaret(true);
+        textLine.paint(g, 0, 0);
+      }
     }
   } // private class EditorWindow
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,15 @@
  */
 package jetbrains.mps.generator.template;
 
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.generator.runtime.TemplateContext;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
-public class WeavingMappingRuleContext extends TemplateQueryContextWithRule {
-  public WeavingMappingRuleContext(SNode node, SNode ruleNode, ITemplateGenerator generator) {
-    super(node, ruleNode, generator);
-  }
-
-  public WeavingMappingRuleContext(SNode node, @NotNull SNodeReference ruleNode, @NotNull ITemplateGenerator generator) {
-    super(node, ruleNode, generator);
+public class WeavingMappingRuleContext extends BaseMappingRuleContext {
+  /**
+   * @since 3.1
+   */
+  public WeavingMappingRuleContext(@NotNull TemplateContext ctx, @NotNull SNodeReference ruleNode) {
+    super(ctx, ruleNode);
   }
 }

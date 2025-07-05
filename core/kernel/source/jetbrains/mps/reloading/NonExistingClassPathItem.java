@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,6 @@
  */
 package jetbrains.mps.reloading;
 
-import jetbrains.mps.stubs.javastub.classpath.ClassifierKind;
-import jetbrains.mps.util.NameUtil;
-
-import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,16 +23,15 @@ import java.util.List;
 /**
  * @author Kostik
  */
-public class NonExistingClassPathItem extends RealClassPathItem {
+class NonExistingClassPathItem extends RealClassPathItem {
   private String myClassPath;
 
-  protected NonExistingClassPathItem(String classPath) {
+  NonExistingClassPathItem(String classPath) {
     myClassPath = classPath;
   }
 
   @Override
   public String getPath() {
-    checkValidity();
     return myClassPath;
   }
 
@@ -46,43 +41,27 @@ public class NonExistingClassPathItem extends RealClassPathItem {
   }
 
   @Override
-  public synchronized byte[] getClass(String name) {
-    checkValidity();
-    return null;
-  }
-
-  @Override
-  public ClassifierKind getClassifierKind(String name) {
+  public ClassBytes getClassBytes(String name) {
     return null;
   }
 
   @Override
   public URL getResource(String name) {
-    checkValidity();
     return null;
   }
 
   @Override
-  public synchronized Iterable<String> getAvailableClasses(String namespace) {
-    checkValidity();
+  public Iterable<String> getAvailableClasses(String namespace) {
     return Collections.emptyList();
   }
 
   @Override
-  public synchronized Iterable<String> getSubpackages(String namespace) {
-    checkValidity();
+  public Iterable<String> getSubpackages(String namespace) {
     return Collections.emptyList();
-  }
-
-  @Override
-  public long getClassesTimestamp(String namespace) {
-    checkValidity();
-    return -1;
   }
 
   @Override
   public List<RealClassPathItem> flatten() {
-    checkValidity();
     List<RealClassPathItem> result = new ArrayList<RealClassPathItem>();
     result.add(this);
     return result;
@@ -90,7 +69,6 @@ public class NonExistingClassPathItem extends RealClassPathItem {
 
   @Override
   public void accept(IClassPathItemVisitor visitor) {
-    checkValidity();
     //visitor.visit(this);
   }
 

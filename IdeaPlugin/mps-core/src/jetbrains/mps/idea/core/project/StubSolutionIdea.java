@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 package jetbrains.mps.idea.core.project;
 
-import com.intellij.openapi.application.Application;
+import com.intellij.notification.Notification;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.projectRoots.SdkModificator;
@@ -25,27 +25,30 @@ import com.intellij.openapi.roots.RootProvider;
 import com.intellij.openapi.roots.RootProvider.RootSetChangedListener;
 import com.intellij.openapi.roots.libraries.Library;
 import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.classloading.IdeaPluginModuleFacet;
+import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.idea.core.project.stubs.JdkStubSolutionManager;
+import jetbrains.mps.idea.core.project.stubs.StubModuleNameTakenException;
+import jetbrains.mps.module.SDependencyImpl;
+import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
-import jetbrains.mps.project.AbstractModule;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.ModuleId;
-import jetbrains.mps.project.SDependencyAdapter;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.StubSolution;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
-import jetbrains.mps.project.structure.modules.Dependency;
+import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.smodel.MPSModuleOwner;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.vfs.FileSystem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SDependency;
+import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
@@ -58,58 +61,67 @@ import java.util.Set;
 import java.util.UUID;
 
 public abstract class StubSolutionIdea extends StubSolution {
+  private ModelAccess myModelAccess;
+
   private final RootSetChangedListener myRootSetChangedListener = new RootSetChangedListener() {
     @Override
     public void rootSetChanged(RootProvider wrapper) {
-      ModelAccess.instance().runWriteAction(new Runnable() {
+      myModelAccess.runWriteAction(new Runnable() {
         @Override
         public void run() {
           SolutionDescriptor moduleDescriptor = getModuleDescriptor();
           moduleDescriptor.getModelRootDescriptors().clear();
           addModelRoots(moduleDescriptor, getRootProvider().getFiles(OrderRootType.CLASSES));
-          setModuleDescriptor(moduleDescriptor, false);
+          setModuleDescriptor(moduleDescriptor);
         }
       });
     }
   };
 
-  protected StubSolutionIdea(SolutionDescriptor descriptor) {
+  protected StubSolutionIdea(SolutionDescriptor descriptor, ModelAccess modelAccess) {
     super(descriptor, null);
+    myModelAccess = modelAccess;
   }
 
-  public static Solution newInstance(Library library, MPSModuleOwner moduleOwner) {
-    SolutionDescriptor descriptor = createDescriptor(library.getName(), library.getFiles(OrderRootType.CLASSES));
-    return register(descriptor, moduleOwner, new LibraryStubSolution(descriptor, library));
+  @Nullable
+  public static Solution newInstance(Library library, MPSModuleOwner moduleOwner, SRepositoryExt repository) throws StubModuleNameTakenException {
+    String namespace = library.getName();
+    if (namespace != null && new ModuleRepositoryFacade(repository).getModuleByName(namespace) != null) {
+      throw new StubModuleNameTakenException(library.getName(), namespace);
+    }
+    SolutionDescriptor descriptor = createDescriptor(namespace, library.getFiles(OrderRootType.CLASSES));
+    return register(repository, moduleOwner, new LibraryStubSolution(descriptor, library, repository.getModelAccess()));
   }
 
-  public static Solution newInstance(Sdk sdk, Sdk baseJdk, MPSModuleOwner moduleOwner) {
+  public static Solution newInstance(Sdk sdk, Sdk baseJdk, MPSModuleOwner moduleOwner, SRepositoryExt repository) {
     SolutionDescriptor descriptor = createDescriptor(sdk.getName(), ((SdkModificator) sdk).getRoots(OrderRootType.CLASSES));
-    return register(descriptor, moduleOwner, new SdkStubSolution(descriptor, sdk, baseJdk));
+    return register(repository, moduleOwner, new SdkStubSolution(descriptor, sdk, baseJdk, repository.getModelAccess()));
   }
 
-  public static Solution newInstanceForJdk(Sdk sdk, MPSModuleOwner moduleOwner) {
+  public static Solution newInstanceForJdk(Sdk sdk, MPSModuleOwner moduleOwner, SRepositoryExt repository) {
     SolutionDescriptor descriptor = createDescriptor("JDK", ((SdkModificator) sdk).getRoots(OrderRootType.CLASSES));
 
     // giving the SDK the hard-coded module id
     ModuleId jdkId = ModuleId.regular(UUID.fromString("6354ebe7-c22a-4a0f-ac54-50b52ab9b065"));
-    MPSModuleRepository repo = MPSModuleRepository.getInstance();
-    SModule jdkMod = repo.getModule(jdkId);
-    if (jdkMod != null && jdkMod instanceof SModule) {
-      SModule imod = (SModule) jdkMod;
-      Set<MPSModuleOwner> owners = new HashSet<MPSModuleOwner>(repo.getOwners(imod));
+    SModule jdkModule = repository.getModule(jdkId);
+    if (jdkModule != null) {
+      Set<MPSModuleOwner> owners = new HashSet<MPSModuleOwner>(new ModuleRepositoryFacade(repository).getModuleOwners(jdkModule));
       for (MPSModuleOwner owner : owners) {
-        repo.unregisterModule(imod, owner);
+        // FIXME unregister leads to warnings in ModuleUpdater.updateAllEdges()
+        // we register it back in the same write action but listener has the time to see the bad state:
+        // JDK module is missing and a lot depends on it
+        repository.unregisterModule(jdkModule, owner);
       }
     }
 
     descriptor.setId(jdkId);
 
-    return register(descriptor, moduleOwner, new SdkStubSolution(descriptor, sdk, null));
+    return register(repository, moduleOwner, new SdkStubSolution(descriptor, sdk, null, repository.getModelAccess()));
   }
 
-  public static Solution newInstanceForRoots(Sdk sdk, Sdk baseJdk, VirtualFile[] roots, MPSModuleOwner moduleOwner) {
+  public static Solution newInstanceForRoots(Sdk sdk, Sdk baseJdk, VirtualFile[] roots, MPSModuleOwner moduleOwner, SRepositoryExt repository) {
     SolutionDescriptor descriptor = createDescriptor(sdk.getName(), roots);
-    return register(descriptor, moduleOwner, new SdkStubSolution(descriptor, sdk, baseJdk));
+    return register(repository, moduleOwner, new SdkStubSolution(descriptor, sdk, baseJdk, repository.getModelAccess()));
   }
 
 
@@ -126,6 +138,8 @@ public abstract class StubSolutionIdea extends StubSolution {
     SolutionDescriptor sd = new SolutionDescriptor();
     sd.setNamespace(name);
     sd.setId(ModuleId.foreign(name));
+    sd.setCompileInMPS(false);
+    sd.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(IdeaPluginModuleFacet.FACET_TYPE, new MementoImpl()));
     addModelRoots(sd, roots);
     return sd;
   }
@@ -160,7 +174,7 @@ public abstract class StubSolutionIdea extends StubSolution {
     for (VirtualFile f : roots) {
       String localPath = getLocalPath(f);
       if (!seenPaths.add(localPath)) continue;
-      solutionDescriptor.getModelRootDescriptors().add(ModelRootDescriptor.getJavaStubsModelRoot(localPath));
+      solutionDescriptor.getModelRootDescriptors().add(ModelRootDescriptor.getJavaStubsModelRoot(FileSystem.getInstance().getFile(localPath)));
     }
   }
 
@@ -178,8 +192,20 @@ public abstract class StubSolutionIdea extends StubSolution {
   }
 
   @Override
-  protected ModuleScope createScope() {
-    return new StubSolutionScope();
+  public Iterable<SDependency> getDeclaredDependencies() {
+    Set<SDependency> deps = new HashSet<SDependency>();
+
+    // explicitly add jdk
+    // todo: remove when sdk are loaded correctly
+//      Solution jdkSolutionReference = getJdkSolution();
+//      if (jdkSolutionReference != null) {
+//        modules.add(jdkSolutionReference);
+//      }
+
+    for (SModule module : ModuleRepositoryFacade.getInstance().getAllModules(StubSolutionIdea.class)) {
+      deps.add(new SDependencyImpl(module, SDependencyScope.DEFAULT, false));
+    }
+    return deps;
   }
 
   @Nullable
@@ -187,29 +213,12 @@ public abstract class StubSolutionIdea extends StubSolution {
     return ModuleRepositoryFacade.getInstance().getModule(BootstrapLanguages.jdkRef(), Solution.class);
   }
 
-  private class StubSolutionScope extends ModuleScope {
-    @Override
-    protected Set<SModule> getInitialModules() {
-      Set<SModule> modules = new HashSet<SModule>();
-
-      // explicitly add jdk
-      // todo: remove when sdk are loaded correctly
-//      Solution jdkSolutionReference = getJdkSolution();
-//      if (jdkSolutionReference != null) {
-//        modules.add(jdkSolutionReference);
-//      }
-
-      modules.addAll(ModuleRepositoryFacade.getInstance().getAllModules(StubSolutionIdea.class));
-      return modules;
-    }
-  }
-
   private static class LibraryStubSolution extends StubSolutionIdea {
     @NotNull
     private final Library myLibrary;
 
-    protected LibraryStubSolution(SolutionDescriptor descriptor, @NotNull Library library) {
-      super(descriptor);
+    protected LibraryStubSolution(SolutionDescriptor descriptor, @NotNull Library library, ModelAccess modelAccess) {
+      super(descriptor, modelAccess);
       myLibrary = library;
       attachRootsListener();
       // todo handle rename; no idea how
@@ -231,8 +240,8 @@ public abstract class StubSolutionIdea extends StubSolution {
     private final Sdk mySdk;
     private final Sdk myBaseJdk;
 
-    protected SdkStubSolution(SolutionDescriptor descriptor, @NotNull Sdk sdk, Sdk baseJdk) {
-      super(descriptor);
+    protected SdkStubSolution(SolutionDescriptor descriptor, @NotNull Sdk sdk, Sdk baseJdk, ModelAccess modelAccess) {
+      super(descriptor, modelAccess);
       mySdk = sdk;
       myBaseJdk = baseJdk;
       setUpdateBootstrapSolutions(false);
@@ -248,12 +257,13 @@ public abstract class StubSolutionIdea extends StubSolution {
     public Iterable<SDependency> getDeclaredDependencies() {
       if (myBaseJdk == null) return Collections.emptySet();
 
-      Solution baseJdkSolution = ApplicationManager.getApplication().getComponent(JdkStubSolutionManager.class).getSdkSolution(myBaseJdk);
-      Dependency dep = new Dependency();
-      dep.setModuleRef(baseJdkSolution.getModuleReference());
-      dep.setReexport(true);
-
-      return Collections.<SDependency>singleton(new SDependencyAdapter(dep));
+      Solution baseJdkSolution = ApplicationManager.getApplication().getComponent(JdkStubSolutionManager.class).getSdkSolution(myBaseJdk, getRepository());
+      return Collections.<SDependency>singleton(new SDependencyImpl(baseJdkSolution, SDependencyScope.DEFAULT, true));
     }
+  }
+
+  @Override
+  public String toString() {
+    return getModuleName() + " [idea stub solution]";
   }
 }

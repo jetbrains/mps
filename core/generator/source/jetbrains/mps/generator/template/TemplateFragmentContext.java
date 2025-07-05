@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2013 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,18 @@
 package jetbrains.mps.generator.template;
 
 import jetbrains.mps.generator.runtime.TemplateContext;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.annotations.NotNull;
 
 public class TemplateFragmentContext extends TemplateQueryContextWithMacro {
   private SNode myMainContextNode;
 
-  public TemplateFragmentContext(SNode mainContextNode, SNode tfMacro, @NotNull TemplateContext context, ITemplateGenerator generator) {
-    super(context.getInput(), tfMacro, context, generator);
-    myMainContextNode = mainContextNode;
-  }
-
-  public TemplateFragmentContext(SNode mainContextNode, @NotNull SNodeReference tfMacro, @NotNull TemplateContext context, @NotNull ITemplateGenerator generator) {
-    super(context.getInput(), tfMacro, context, generator);
+  /**
+   * @since 3.1
+   */
+  public TemplateFragmentContext(@NotNull TemplateContext context, @NotNull SNode mainContextNode, @NotNull SNodeReference tfMacro) {
+    super(context, tfMacro);
     myMainContextNode = mainContextNode;
   }
 

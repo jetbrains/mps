@@ -4,35 +4,38 @@ package jetbrains.mps.baseLanguage.util.plugin.refactorings;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
-import java.util.List;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.SModelInternal;
-import org.jetbrains.mps.openapi.model.SReference;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.module.ReloadableModuleBase;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SDependency;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.model.SReference;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 
 public class MoveRefactoringUtils {
   public MoveRefactoringUtils() {
   }
-
   public static void addNodeAtLink(SNode container, SNode node) {
-    if (SNodeOperations.isInstanceOf(container, "jetbrains.mps.baseLanguage.structure.Classifier") && SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.ClassifierMember")) {
-      MemberInsertingUtils.insertClassifierMemberInBestPlace(SNodeOperations.cast(container, "jetbrains.mps.baseLanguage.structure.Classifier"), SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.ClassifierMember"));
+    if (SNodeOperations.isInstanceOf(container, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")) && SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember"))) {
+      MemberInsertingUtils.insertClassifierMemberInBestPlace(SNodeOperations.cast(container, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember")));
     } else {
-      SNode concept = SNodeOperations.getConceptDeclaration(node);
-      for (SNode link : ListSequence.fromList(BehaviorReflection.invokeNonVirtual((Class<List<SNode>>) ((Class) Object.class), SNodeOperations.getConceptDeclaration(container), "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration", "call_getLinkDeclarations_1213877394480", new Object[]{}))) {
-        if (SLinkOperations.getTarget(link, "target", false) == concept) {
-          container.addChild(SPropertyOperations.getString(link, "role"), node);
+      SAbstractConcept concept = SNodeOperations.getConcept(node);
+      for (SContainmentLink link : CollectionSequence.fromCollection(SNodeOperations.getConcept(container).getContainmentLinks())) {
+        if (link.getTargetConcept() == concept) {
+          container.addChild(link, node);
         }
       }
     }
   }
-
   private static void addImportIfNeed(SModel model, SModel toImport) {
     if (model == null || toImport == null) {
       return;
@@ -42,21 +45,30 @@ public class MoveRefactoringUtils {
       return;
     }
     ((SModelInternal) model).addModelImport(ref, false);
-  }
 
+    SModule module = model.getModule();
+    if (module instanceof ReloadableModuleBase) {
+      SModuleReference module2import = toImport.getModule().getModuleReference();
+      Iterable<SDependency> declaredDependencies = module.getDeclaredDependencies();
+      for (SDependency dependency : Sequence.fromIterable(declaredDependencies)) {
+        if (dependency.getTargetModule().equals(module2import)) {
+          return;
+        }
+      }
+      ((ReloadableModuleBase) module).addDependency(module2import, false);
+    }
+  }
   public static void addNodeModelImportIfNeed(SNode node, SNode toImport) {
     addImportIfNeed(SNodeOperations.getModel(node), SNodeOperations.getModel(toImport));
   }
-
   public static void fixImportsFromNode(SNode node) {
-    for (SNode descendant : ListSequence.fromList(SNodeOperations.getDescendants(node, "jetbrains.mps.lang.core.structure.BaseConcept", false, new String[]{}))) {
-      for (SReference reference : Sequence.fromIterable(SNodeOperations.getReferences(descendant))) {
+    for (SNode descendant : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), false, new SAbstractConcept[]{}))) {
+      for (SReference reference : ListSequence.fromList(SNodeOperations.getReferences(descendant))) {
         addNodeModelImportIfNeed(node, SLinkOperations.getTargetNode(reference));
       }
     }
   }
-
   public static boolean isReference(SNode node) {
-    return ListSequence.fromList(SNodeOperations.getChildren(node)).isEmpty() && (int) Sequence.fromIterable(SNodeOperations.getReferences(node)).count() == 1;
+    return ListSequence.fromList(SNodeOperations.getChildren(node)).isEmpty() && ListSequence.fromList(SNodeOperations.getReferences(node)).count() == 1;
   }
 }

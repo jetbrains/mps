@@ -7,7 +7,7 @@ import java.awt.Component;
 import javax.swing.JTable;
 import jetbrains.mps.project.structure.modules.mappingpriorities.RuleType;
 import javax.swing.JComponent;
-import javax.swing.SwingUtilities;
+import com.intellij.openapi.application.ApplicationManager;
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -17,16 +17,12 @@ import javax.swing.border.EmptyBorder;
 public class RuleTypeRenderer extends DefaultTableCellRenderer {
   public RuleTypeRenderer() {
   }
-
   @Override
   public Component getTableCellRendererComponent(final JTable table, Object value, boolean isSelected, boolean hasFocus, final int row, final int column) {
-    String caption = (value instanceof RuleType ?
-      ((RuleType) value).getPresentation() :
-      "null"
-    );
+    String caption = (value instanceof RuleType ? ((RuleType) value).getPresentation() : "null");
     JComponent comp = (JComponent) super.getTableCellRendererComponent(table, caption, isSelected, hasFocus, row, column);
     if (hasFocus && table.isRowSelected(row)) {
-      SwingUtilities.invokeLater(new Runnable() {
+      ApplicationManager.getApplication().invokeLater(new Runnable() {
         @Override
         public void run() {
           table.editCellAt(row, column);
@@ -35,7 +31,6 @@ public class RuleTypeRenderer extends DefaultTableCellRenderer {
     }
     return RuleTypeRenderer.createCenterAlignmentInCell(comp);
   }
-
   public static JComponent createCenterAlignmentInCell(JComponent comp) {
     JPanel compPanel = new JPanel(new GridBagLayout());
     GridBagConstraints constraints = new GridBagConstraints(1, 1, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0);

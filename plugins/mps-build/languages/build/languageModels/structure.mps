@@ -1,1745 +1,2186 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)" version="2">
-  <persistence version="8" />
-  <language namespace="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" />
-  <import index="tpck" modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" implicit="yes" />
-  <import index="tpce" modelUID="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" version="0" implicit="yes" />
-  <import index="8xvf" modelUID="r:ed179f4d-7cf2-479d-8348-50c1fc63b96a(jetbrains.mps.build.workflow.structure)" version="0" implicit="yes" />
-  <import index="iuxj" modelUID="r:64db3a92-5968-4a73-b456-34504a2d97a6(jetbrains.mps.core.xml.structure)" version="2" implicit="yes" />
-  <import index="vbkb" modelUID="r:08f2b659-8469-4592-93bf-a6edb46ec86d(jetbrains.mps.build.behavior)" version="-1" implicit="yes" />
-  <import index="3ior" modelUID="r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)" version="2" implicit="yes" />
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5617550519002745363" nodeInfo="ig">
-    <property name="rootable" nameId="tpce.1096454100552" value="true" />
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/buildProject.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildProject" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="build project" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="5204048710541015587" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="internalBaseDirectory" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="4915877860348071612" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="fileName" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="6647099934206700656" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="plugins" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="6647099934206689694" resolveInfo="BuildPlugin" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5617550519002745381" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="dependencies" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5617550519002745379" resolveInfo="BuildDependency" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5617550519002745378" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="macros" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5617550519002745375" resolveInfo="BuildMacro" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7389400916848080626" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="parts" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073736" resolveInfo="BuildProjectPart" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="3542413272732620719" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="aspects" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="3542413272732750877" resolveInfo="BuildAspect" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5617550519002745372" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="layout" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5617550519002745364" resolveInfo="BuildLayout" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="4796668409958418110" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="scriptsDir" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7321017245476976379" resolveInfo="BuildRelativePath" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="7389400916848182204" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.3734116213129792499" resolveInfo="ScopeProvider" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5617550519002745371" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1169194658468" resolveInfo="INamedConcept" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5617550519002745364" nodeInfo="ig">
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/layout.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848004876" resolveInfo="BuildLayout_AbstractContainer" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5617550519002745375" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildMacro" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Macro" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5617550519002745376" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1169194658468" resolveInfo="INamedConcept" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5617550519002745379" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildDependency" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Dependencies" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7389400916848004876" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_AbstractContainer" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848036997" resolveInfo="BuildLayout_Node" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="4701820937132344007" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="4701820937132344003" resolveInfo="BuildLayout_Container" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7389400916848036984" nodeInfo="ig">
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="create a folder" />
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/layout.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_Folder" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="folder" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848050060" resolveInfo="BuildLayout_NamedContainer" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="7181125477683291586" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="7181125477683218683" resolveInfo="BuildLayout_PureNode" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7389400916848036997" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_Node" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="7128123785277710727" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="7128123785277710723" resolveInfo="BuildLayout_PathElement" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7389400916848050060" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_NamedContainer" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848004876" resolveInfo="BuildLayout_AbstractContainer" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="4380385936562148502" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="containerName" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="841011766566059607" resolveInfo="BuildStringNotEmpty" />
-    </node>
-    <node role="conceptPropertyDeclaration" roleId="tpce.1137467167200" type="tpce.BooleanConceptPropertyDeclaration" typeId="tpce.1105725240314" id="280273048052514250" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="hasInputDir" />
-      <property name="inheritable" nameId="tpce.1218571350029" value="true" />
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpce.DeprecatedNodeAnnotation" typeId="tpce.1224240836180" id="4694041203278836337" nodeInfo="ig" />
-      <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="tpce.MigratedToMethodAnnotation" typeId="tpce.8080932314785812236" id="4694041203278836336" nodeInfo="ig">
-        <link role="method" roleId="tpce.8080932314785812847" targetNodeId="vbkb.1262430001741498038" resolveInfo="hasInputDir" />
-      </node>
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="7389400916848050061" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1169194658468" resolveInfo="INamedConcept" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5610619299014531581" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="5610619299014531543" resolveInfo="BuildSource_SingleFolder" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="9184644532456897749" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="9184644532456897460" resolveInfo="BuildStringContainer" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7389400916848050071" nodeInfo="ig">
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/archive.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_Zip" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="zip" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848050060" resolveInfo="BuildLayout_NamedContainer" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5248329904288166442" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="5248329904288166441" resolveInfo="BuildLayout_ContainerAcceptingFileSet" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="7181125477683291588" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="7181125477683218683" resolveInfo="BuildLayout_PureNode" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7389400916848050074" nodeInfo="ig">
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/archive.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_Jar" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.Java" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="jar" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848050060" resolveInfo="BuildLayout_NamedContainer" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5248329904288166445" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="5248329904288166441" resolveInfo="BuildLayout_ContainerAcceptingFileSet" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="7181125477683291590" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="7181125477683218683" resolveInfo="BuildLayout_PureNode" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5610619299013926696" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="5610619299013425874" resolveInfo="BuildSource_SingleFile" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7389400916848073736" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildProjectPart" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7389400916848073784" nodeInfo="ig">
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/javaModule.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaModule" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="java module" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848073736" resolveInfo="BuildProjectPart" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7389400916848073826" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="sources" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5248329904288265468" resolveInfo="BuildSource_JavaSources" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2754769020641646251" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="dependencies" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2754769020641646199" resolveInfo="BuildSource_JavaDependency" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1659807394254323962" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="options" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="1659807394254261074" resolveInfo="BuildSource_JavaModuleOptions" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="7389400916848073827" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1169194658468" resolveInfo="INamedConcept" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="2591537044435952581" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="2591537044435828007" resolveInfo="BuildSource_CompilablePart" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7389400916848073790" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildSourcePath" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourcePath" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7389400916848073810" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaContentRoot" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Sources" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="content root" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5248329904288265468" resolveInfo="BuildSource_JavaSources" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7389400916848073811" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="basePath" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073790" resolveInfo="BuildSourcePath" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2754769020641429197" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="folders" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2754769020641429190" resolveInfo="BuildSource_JavaContentFolder" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7389400916848136194" nodeInfo="ig">
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="defines folder macro with default value (for local build)" />
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/macro.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildFolderMacro" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Macro" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="folder" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5617550519002745375" resolveInfo="BuildMacro" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7389400916848144618" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="defaultPath" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073790" resolveInfo="BuildSourcePath" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7389400916848153117" nodeInfo="ig">
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/path.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildSourceMacroRelativePath" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourcePath" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7321017245476976379" resolveInfo="BuildRelativePath" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7389400916848153130" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="macro" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848136194" resolveInfo="BuildFolderMacro" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2754769020641429190" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaContentFolder" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Sources" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="source" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="5248329904288265467" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="kind" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="5248329904288265463" resolveInfo="BuildSource_JavaContentFolderKind" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="2754769020641429191" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="relativePath" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2754769020641646199" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaDependency" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Dependencies" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2754769020641646247" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaDependencyModule" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Dependencies" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="module" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="2754769020641646199" resolveInfo="BuildSource_JavaDependency" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="7259033139236507306" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="reexport" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983657063" resolveInfo="boolean" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="6547494638219588848" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="841011766566205091" resolveInfo="BuildExternalDependency" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2754769020641646250" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="module" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073784" resolveInfo="BuildSource_JavaModule" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="6057319140845467763" nodeInfo="ig">
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/library.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaLibrary" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Library" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="java library" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848073736" resolveInfo="BuildProjectPart" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="6057319140845478673" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="elements" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="6057319140845478688" resolveInfo="BuildSource_JavaLibraryElement" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="6057319140845467764" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1169194658468" resolveInfo="INamedConcept" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="6057319140845478688" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaLibraryElement" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Library" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="4993211115183250894" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaDependencyLibrary" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Dependencies" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="library" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="2754769020641646199" resolveInfo="BuildSource_JavaDependency" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="5979287180587196968" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="reexport" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983657063" resolveInfo="boolean" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="4993211115183250895" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="library" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="6057319140845467763" resolveInfo="BuildSource_JavaLibrary" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="2913098736709466035" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="841011766566205091" resolveInfo="BuildExternalDependency" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="4993211115183325728" nodeInfo="ig">
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/dependency.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildProjectDependency" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Dependencies" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5617550519002745379" resolveInfo="BuildDependency" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="4129895186893471026" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="artifacts" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073790" resolveInfo="BuildSourcePath" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5617550519002745380" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="script" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5617550519002745363" resolveInfo="BuildProject" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="7128123785277710731" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="7128123785277710723" resolveInfo="BuildLayout_PathElement" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="3542413272732529456" nodeInfo="ig">
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="custom named layout" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildNamedLayout" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="layout" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="3542413272732750877" resolveInfo="BuildAspect" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="3542413272732757045" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1169194658468" resolveInfo="INamedConcept" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="4701820937132344005" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="4701820937132344003" resolveInfo="BuildLayout_Container" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="1368030936106736986" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="7128123785277710723" resolveInfo="BuildLayout_PathElement" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="3542413272732750877" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildAspect" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5481553824944787378" nodeInfo="ig">
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/path.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildSourceProjectRelativePath" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourcePath" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="." />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7321017245476976379" resolveInfo="BuildRelativePath" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="8618885170173601777" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildCompositePath" />
-    <property name="staticScope" nameId="tpce.5404671619616246344" value="none" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourcePath" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="8618885170173601778" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="tail" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="8618885170173601777" resolveInfo="BuildCompositePath" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="8618885170173601779" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="head" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="8618885170173708134" resolveInfo="FileName" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7321017245476976379" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildRelativePath" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourcePath" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848073790" resolveInfo="BuildSourcePath" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7321017245477039051" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="compositePart" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="8618885170173601777" resolveInfo="BuildCompositePath" />
-    </node>
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="1117643560963351145" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_FileSet" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="6647099934206689694" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildPlugin" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Plugins" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="6647099934206700647" nodeInfo="ig">
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="adds Java capabilities (compile, test &amp; bundling) to the project" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildJavaPlugin" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Plugins" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="java" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="6647099934206689694" resolveInfo="BuildPlugin" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="3767587139141066978" nodeInfo="ig">
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="defines variable macro" />
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/macro.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildVariableMacro" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Macro" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="var" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5617550519002745375" resolveInfo="BuildMacro" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2755237150521975432" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="initialValue" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2755237150521942442" resolveInfo="BuildVariableMacroInitValue" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5248329904288051100" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildFileIncludeSelector" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourceSet.Selectors" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="include" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5248329904287794599" resolveInfo="BuildFileSelector" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="5248329904288051101" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="pattern" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5248329904287794599" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildFileSelector" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourceSet.Selectors" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="2750015747481358878" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="9126048691955220772" resolveInfo="BuildLayout_CopyParameter" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5248329904287794596" nodeInfo="ig">
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="folder on local filesystem" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildInputFiles" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourceSet.Files" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="files from" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5248329904287739115" resolveInfo="BuildInputFileSet" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5248329904287794598" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="dir" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073790" resolveInfo="BuildSourcePath" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5248329904287794679" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="selectors" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5248329904287794599" resolveInfo="BuildFileSelector" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5248329904288133821" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="1117643560963351145" resolveInfo="BuildLayout_FileSet" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="4903714810883702017" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildVarRefStringPart" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Names" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="4903714810883702015" resolveInfo="BuildStringPart" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="1262430001741642725" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1835621062190663819" resolveInfo="IDontSubstituteByDefault" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="4903714810883702018" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="macro" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="3767587139141066978" resolveInfo="BuildVariableMacro" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="4903714810883702019" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildTextStringPart" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Names" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="4903714810883702015" resolveInfo="BuildStringPart" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="1262430001741704876" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1835621062190663819" resolveInfo="IDontSubstituteByDefault" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="4903714810883755350" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="text" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="4903714810883702015" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildStringPart" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Names" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="4903714810883755349" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1169194658468" resolveInfo="INamedConcept" />
-    </node>
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="5248329904288166441" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_ContainerAcceptingFileSet" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5248329904287739114" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildInputResourceSet" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourceSet" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="resource set" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5248329904287739115" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildInputFileSet" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourceSet.Files" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="file set" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5248329904287739114" resolveInfo="BuildInputResourceSet" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5248329904287739116" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildInputFolderSet" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourceSet.Folders" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5248329904287739114" resolveInfo="BuildInputResourceSet" />
-  </root>
-  <root type="tpce.EnumerationDataTypeDeclaration" typeId="tpce.1082978164219" id="5248329904288265463" nodeInfo="ng">
-    <property name="noValueText" nameId="tpce.1212087449254" value="&lt;no kind&gt;" />
-    <property name="memberIdentifierPolicy" nameId="tpce.1197591154882" value="derive_from_internal_value" />
-    <property name="hasNoDefaultMember" nameId="tpce.1212080844762" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaContentFolderKind" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Sources" />
-    <link role="memberDataType" roleId="tpce.1083171729157" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    <node role="member" roleId="tpce.1083172003582" type="tpce.EnumerationMemberDeclaration" typeId="tpce.1083171877298" id="5248329904288265464" nodeInfo="ig">
-      <property name="internalValue" nameId="tpce.1083923523171" value="source" />
-      <property name="externalValue" nameId="tpce.1083923523172" value="source" />
-    </node>
-    <node role="member" roleId="tpce.1083172003582" type="tpce.EnumerationMemberDeclaration" typeId="tpce.1083171877298" id="5248329904288265465" nodeInfo="ig">
-      <property name="internalValue" nameId="tpce.1083923523171" value="test" />
-      <property name="externalValue" nameId="tpce.1083923523172" value="test" />
-    </node>
-    <node role="member" roleId="tpce.1083172003582" type="tpce.EnumerationMemberDeclaration" typeId="tpce.1083171877298" id="5248329904288265466" nodeInfo="ig">
-      <property name="internalValue" nameId="tpce.1083923523171" value="excluded" />
-      <property name="externalValue" nameId="tpce.1083923523172" value="excluded" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5248329904287857081" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_Copy" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="9184644532456496017" resolveInfo="BuildLayout_AbstractCopy" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5248329904288140518" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="1117643560963351145" resolveInfo="BuildLayout_FileSet" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="1262430001741647285" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1835621062190663819" resolveInfo="IDontSubstituteByDefault" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5248329904287794582" nodeInfo="ig">
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="single file on local filesystem" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildInputSingleFile" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourceSet.Files" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="file" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5248329904287739115" resolveInfo="BuildInputFileSet" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5248329904287794586" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="path" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073790" resolveInfo="BuildSourcePath" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5248329904288133822" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="1117643560963351145" resolveInfo="BuildLayout_FileSet" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5610619299013425883" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="5610619299013425874" resolveInfo="BuildSource_SingleFile" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5248329904288265468" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaSources" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Sources" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5248329904288051111" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildFileExcludeSelector" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourceSet.Selectors" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="exclude" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5248329904287794599" resolveInfo="BuildFileSelector" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="5248329904288051112" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="pattern" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="4380385936562003279" nodeInfo="ig">
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/string.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildString" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Names" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="1262430001741718450" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1835621062190663819" resolveInfo="IDontSubstituteByDefault" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="4903714810883783243" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="parts" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="4903714810883702015" resolveInfo="BuildStringPart" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1258644073388922138" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaJar" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Classpath" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="jar" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="3717132724152837124" resolveInfo="BuildSource_JavaCP" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="3717132724152837090" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="path" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073790" resolveInfo="BuildSourcePath" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="8706695667516275782" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="customLocation" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5610619299014309452" resolveInfo="BuildSource_JavaExternalJarRef" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1258644073389103449" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaClassFolder" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Classpath" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="classes" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="3717132724152837124" resolveInfo="BuildSource_JavaCP" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="3717132724152837184" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="dir" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073790" resolveInfo="BuildSourcePath" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="841011766565753074" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_Import" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="import" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848036997" resolveInfo="BuildLayout_Node" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="841011766565753076" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="target" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848036997" resolveInfo="BuildLayout_Node" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="841011766566205110" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="841011766566205091" resolveInfo="BuildExternalDependency" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5610619299013336039" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="1117643560963351145" resolveInfo="BuildLayout_FileSet" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="841011766566059607" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildStringNotEmpty" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Names" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="4380385936562003279" resolveInfo="BuildString" />
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="841011766566205091" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildExternalDependency" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Dependencies" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="4701820937132281259" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildCustomWorkflow" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Workflow" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="workflow" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="3542413272732750877" resolveInfo="BuildAspect" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="4701820937132281260" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="parts" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="8xvf.2769948622284546695" resolveInfo="BwfProjectPart" />
-    </node>
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="4701820937132344003" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_Container" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7389400916848037006" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="children" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848036997" resolveInfo="BuildLayout_Node" />
-    </node>
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="7128123785277710723" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_PathElement" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2913098736709313156" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_TransparentContainer" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848004876" resolveInfo="BuildLayout_AbstractContainer" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2913098736709465755" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_ExportAsJavaLibrary" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.Java" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="export as java library" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="2913098736709313156" resolveInfo="BuildLayout_TransparentContainer" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2913098736709465758" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="library" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="6057319140845467763" resolveInfo="BuildSource_JavaLibrary" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1500819558096177282" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaFiles" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Sources" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="java files" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5248329904288265468" resolveInfo="BuildSource_JavaSources" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="1262430001741647483" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1835621062190663819" resolveInfo="IDontSubstituteByDefault" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1500819558096177283" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="resset" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2303926226081001727" resolveInfo="BuildInputSingleFolder" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="3717132724152589376" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaDependencyJar" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Dependencies" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="2754769020641646199" resolveInfo="BuildSource_JavaDependency" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="1262430001741704552" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1835621062190663819" resolveInfo="IDontSubstituteByDefault" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="8169228734285428589" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="reexport" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983657063" resolveInfo="boolean" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="3717132724152589377" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="jar" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="1258644073388922138" resolveInfo="BuildSource_JavaJar" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="3717132724152837124" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaCP" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Classpath" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="3717132724152913083" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaLibraryCP" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Library" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="6057319140845478688" resolveInfo="BuildSource_JavaLibraryElement" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="1262430001741704527" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1835621062190663819" resolveInfo="IDontSubstituteByDefault" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="3717132724152913085" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="classpath" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="3717132724152837124" resolveInfo="BuildSource_JavaCP" />
-    </node>
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="3717132724153083947" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSourceSetContainer" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourceSet" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="3717132724153084007" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaJars" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Classpath" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="jars" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="3717132724152837124" resolveInfo="BuildSource_JavaCP" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="3717132724153084009" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="jars" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5248329904287794596" resolveInfo="BuildInputFiles" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="3717132724153084013" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="3717132724153083947" resolveInfo="BuildSourceSetContainer" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7866279537988666687" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildInputFolders" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourceSet.Folders" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="folders" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5248329904287739116" resolveInfo="BuildInputFolderSet" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7866279537988666690" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="dir" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073790" resolveInfo="BuildSourcePath" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7866279537988666691" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="selectors" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5248329904287794599" resolveInfo="BuildFileSelector" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2303926226081001727" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildInputSingleFolder" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourceSet.Folders" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="folder" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5248329904287739116" resolveInfo="BuildInputFolderSet" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2303926226081001728" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="path" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073790" resolveInfo="BuildSourcePath" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5610619299014531587" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="5610619299014531543" resolveInfo="BuildSource_SingleFolder" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="8654221991637384182" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildFileIncludesSelector" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourceSet.Selectors" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="includes" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5248329904287794599" resolveInfo="BuildFileSelector" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="8654221991637384184" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="pattern" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="8654221991637384268" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="8654221991637384267" resolveInfo="BuildFileSelectorInAttribute" />
-    </node>
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="8654221991637384267" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildFileSelectorInAttribute" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourceSet.Selectors" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2591537044435828004" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_CompileOutputOf" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.Java" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="compile output of" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848036997" resolveInfo="BuildLayout_Node" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2591537044435828006" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="module" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="2591537044435828007" resolveInfo="BuildSource_CompilablePart" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="2591537044435952579" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="1117643560963351145" resolveInfo="BuildLayout_FileSet" />
-    </node>
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="2591537044435828007" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_CompilablePart" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java" />
-    <node role="extends" roleId="tpce.1169127546356" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="2591537044435984166" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1169194658468" resolveInfo="INamedConcept" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="6859736767834557908" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaDependencyExternalJar" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Dependencies" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="external jar" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="2754769020641646199" resolveInfo="BuildSource_JavaDependency" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5610619299014309674" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="extJar" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5610619299014309452" resolveInfo="BuildSource_JavaExternalJarRef" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="6859736767834590422" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="reexport" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983657063" resolveInfo="boolean" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="6859736767834557909" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="841011766566205091" resolveInfo="BuildExternalDependency" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7181125477683216329" nodeInfo="ig">
-    <property name="rootable" nameId="tpce.1096454100552" value="true" />
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/externalLayout.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildExternalLayout" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.External" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="external layout" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848004876" resolveInfo="BuildLayout_AbstractContainer" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="7181125477683216330" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1169194658468" resolveInfo="INamedConcept" />
-    </node>
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="7181125477683218683" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_PureNode" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.External" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7181125477683370806" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_FileStub" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.External" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="file" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848036997" resolveInfo="BuildLayout_Node" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7181125477683370900" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="fileName" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="841011766566059607" resolveInfo="BuildStringNotEmpty" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="7181125477683370807" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="7181125477683218683" resolveInfo="BuildLayout_PureNode" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5610619299013425952" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="5610619299013425874" resolveInfo="BuildSource_SingleFile" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7181125477683417252" nodeInfo="ig">
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/dependency.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildExternalLayoutDependency" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.External" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5617550519002745379" resolveInfo="BuildDependency" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7181125477683417255" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="layout" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7181125477683216329" resolveInfo="BuildExternalLayout" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7181125477683417254" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="artifacts" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073790" resolveInfo="BuildSourcePath" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="7181125477683417253" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="7128123785277710723" resolveInfo="BuildLayout_PathElement" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5610619299013057363" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_ImportContent" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="import files from" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848036997" resolveInfo="BuildLayout_Node" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5610619299013057365" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="target" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="4701820937132344003" resolveInfo="BuildLayout_Container" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="6789562173791401562" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="selectors" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5248329904287794599" resolveInfo="BuildFileSelector" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5610619299013057364" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="841011766566205091" resolveInfo="BuildExternalDependency" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5610619299013336037" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="1117643560963351145" resolveInfo="BuildLayout_FileSet" />
-    </node>
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="5610619299013425874" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_SingleFile" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourceSet" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5610619299014309452" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaExternalJarRef" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Classpath" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5610619299014309453" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="jar" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5610619299013425874" resolveInfo="BuildSource_SingleFile" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5610619299014446503" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaLibraryExternalJar" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Library" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="external jar" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="3717132724152837124" resolveInfo="BuildSource_JavaCP" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5610619299014446504" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="extJar" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5610619299014309452" resolveInfo="BuildSource_JavaExternalJarRef" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5610619299014446521" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="841011766566205091" resolveInfo="BuildExternalDependency" />
-    </node>
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="5610619299014531543" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_SingleFolder" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourceSet" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5610619299014531647" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaExternalJarFolderRef" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Classpath" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5610619299014531648" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="folder" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5610619299014531543" resolveInfo="BuildSource_SingleFolder" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="5610619299014531832" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaLibraryExternalJarFolder" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Library" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="external jars" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="3717132724152837124" resolveInfo="BuildSource_JavaCP" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5610619299014531834" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="extFolder" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5610619299014531647" resolveInfo="BuildSource_JavaExternalJarFolderRef" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="5610619299014531833" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="841011766566205091" resolveInfo="BuildExternalDependency" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="927724900262033858" nodeInfo="ig">
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/javaOptions.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaOptions" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="java options" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848073736" resolveInfo="BuildProjectPart" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="927724900262033863" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="resourceSelectors" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5248329904287794599" resolveInfo="BuildFileSelector" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="927724900262033859" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="optionsName" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="927724900262033861" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="generateDebugInfo" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983657063" resolveInfo="boolean" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="927724900262033862" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="copyResources" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983657063" resolveInfo="boolean" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="927724900262398947" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="heapSize" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983657062" resolveInfo="integer" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="927724900262398958" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="noWarnings" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983657063" resolveInfo="boolean" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="2059109515400425365" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="compiler" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1659807394254261074" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaModuleOptions" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="apply compiler options" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1659807394254038315" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="compileOptions" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="927724900262033858" resolveInfo="BuildSource_JavaOptions" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1659807394254684269" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaResources" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Sources" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="resources" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="5248329904288265468" resolveInfo="BuildSource_JavaSources" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1659807394254684272" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="fileset" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5248329904287794596" resolveInfo="BuildInputFiles" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="1659807394254684402" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="3717132724153083947" resolveInfo="BuildSourceSetContainer" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="9184644532456495794" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_CustomCopy" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="9184644532456496017" resolveInfo="BuildLayout_AbstractCopy" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="1262430001741703922" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1835621062190663819" resolveInfo="IDontSubstituteByDefault" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="1330375798085213920" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="1117643560963351145" resolveInfo="BuildLayout_FileSet" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="9184644532456533278" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="handlers" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="9184644532456508467" resolveInfo="BuildLayout_CopyHandler" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="9184644532456496017" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_AbstractCopy" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848036997" resolveInfo="BuildLayout_Node" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="5248329904287857082" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="fileset" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5248329904287739115" resolveInfo="BuildInputFileSet" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="9184644532456508467" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_CopyHandler" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="9126048691955220773" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="9126048691955220772" resolveInfo="BuildLayout_CopyParameter" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="9184644532456814147" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_CopyFilter" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="9184644532456508467" resolveInfo="BuildLayout_CopyHandler" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="9184644532456814149" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_CopyFilterReplaceTokens" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File.Handlers" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="replace" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="9184644532456814147" resolveInfo="BuildLayout_CopyFilter" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="9184644532456814151" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="key" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="9184644532456814152" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="value" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="4380385936562003279" resolveInfo="BuildString" />
-    </node>
-  </root>
-  <root type="tpce.ConstrainedDataTypeDeclaration" typeId="tpce.1082978499127" id="8618885170173708134" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="FileName" />
-    <property name="constraint" nameId="tpce.1083066089218" value="[^\\/$!]*" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourcePath" />
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="9184644532456897460" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildStringContainer" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Names" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="9184644532457106504" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_CopyFilterReplaceRegex" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File.Handlers" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="replace regex" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="9184644532456814147" resolveInfo="BuildLayout_CopyFilter" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="9184644532457106506" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="value" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="4380385936562003279" resolveInfo="BuildString" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="9184644532457106505" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="pattern" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="9184644532457106508" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="flags" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="9184644532457106613" resolveInfo="AntRegexFlags" />
-    </node>
-  </root>
-  <root type="tpce.ConstrainedDataTypeDeclaration" typeId="tpce.1082978499127" id="9184644532457106613" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="AntRegexFlags" />
-    <property name="constraint" nameId="tpce.1083066089218" value="[gims]+" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File.Handlers" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7655580649838832276" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_EchoXml" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="xml file" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848036997" resolveInfo="BuildLayout_Node" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7655580649838832278" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="fileName" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="841011766566059607" resolveInfo="BuildStringNotEmpty" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7655580649838832311" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="element" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="iuxj.6666499814681299053" resolveInfo="XmlBaseElement" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="7655580649838832286" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="9184644532456897460" resolveInfo="BuildStringContainer" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="202934866059043946" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_EchoProperties" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File.Properties" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="properties file" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848036997" resolveInfo="BuildLayout_Node" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="202934866059043948" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="fileName" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="841011766566059607" resolveInfo="BuildStringNotEmpty" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="202934866059043962" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="entries" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="202934866059043959" resolveInfo="BuildLayout_EchoPropertyEntry" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="202934866059043947" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="9184644532456897460" resolveInfo="BuildStringContainer" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="202934866059043959" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_EchoPropertyEntry" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File.Properties" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="entry" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="202934866059043961" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="value" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="4380385936562003279" resolveInfo="BuildString" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="202934866059043960" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="key" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="8577651205286814211" nodeInfo="ig">
-    <property name="iconPath" nameId="tpce.1160488491229" value="${language_descriptor}/icons/archive.png" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_Tar" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="tar" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848050060" resolveInfo="BuildLayout_NamedContainer" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="1979010778009209128" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="compression" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="1979010778009209124" resolveInfo="BuildLayout_TarCompression" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="8577651205286814212" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="5248329904288166441" resolveInfo="BuildLayout_ContainerAcceptingFileSet" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="8577651205286814214" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="7181125477683218683" resolveInfo="BuildLayout_PureNode" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="4198392933254416812" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_CopyFilterFixCRLF" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File.Handlers" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="fix eol" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="9184644532456814147" resolveInfo="BuildLayout_CopyFilter" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="4198392933254416822" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="eol" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="4198392933254416814" resolveInfo="BuildLayout_CopyFilterEolStyle" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="4198392933254551900" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="removeEOF" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983657063" resolveInfo="boolean" />
-    </node>
-  </root>
-  <root type="tpce.EnumerationDataTypeDeclaration" typeId="tpce.1082978164219" id="4198392933254416814" nodeInfo="ng">
-    <property name="memberIdentifierPolicy" nameId="tpce.1197591154882" value="derive_from_internal_value" />
-    <property name="hasNoDefaultMember" nameId="tpce.1212080844762" value="false" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_CopyFilterEolStyle" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File.Handlers" />
-    <link role="memberDataType" roleId="tpce.1083171729157" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    <node role="member" roleId="tpce.1083172003582" type="tpce.EnumerationMemberDeclaration" typeId="tpce.1083171877298" id="4198392933254427813" nodeInfo="ig">
-      <property name="internalValue" nameId="tpce.1083923523171" value="local" />
-      <property name="externalValue" nameId="tpce.1083923523172" value="use local system line separator" />
-    </node>
-    <node role="member" roleId="tpce.1083172003582" type="tpce.EnumerationMemberDeclaration" typeId="tpce.1083171877298" id="4198392933254416815" nodeInfo="ig">
-      <property name="internalValue" nameId="tpce.1083923523171" value="asis" />
-      <property name="externalValue" nameId="tpce.1083923523172" value="leave as is" />
-    </node>
-    <node role="member" roleId="tpce.1083172003582" type="tpce.EnumerationMemberDeclaration" typeId="tpce.1083171877298" id="4198392933254416816" nodeInfo="ig">
-      <property name="internalValue" nameId="tpce.1083923523171" value="cr" />
-      <property name="externalValue" nameId="tpce.1083923523172" value="convert to a single CR" />
-    </node>
-    <node role="member" roleId="tpce.1083172003582" type="tpce.EnumerationMemberDeclaration" typeId="tpce.1083171877298" id="4198392933254416817" nodeInfo="ig">
-      <property name="internalValue" nameId="tpce.1083923523171" value="lf" />
-      <property name="externalValue" nameId="tpce.1083923523172" value="convert to a single LF" />
-    </node>
-    <node role="member" roleId="tpce.1083172003582" type="tpce.EnumerationMemberDeclaration" typeId="tpce.1083171877298" id="4198392933254416818" nodeInfo="ig">
-      <property name="internalValue" nameId="tpce.1083923523171" value="crlf" />
-      <property name="externalValue" nameId="tpce.1083923523172" value="convert to the pair CRLF" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7801138212747054656" nodeInfo="ig">
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="customize file modes in archive" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_Filemode" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="filemode" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="2913098736709313156" resolveInfo="BuildLayout_TransparentContainer" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="7801138212747054660" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="filemode" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="7801138212747054659" resolveInfo="BuildLayout_UnixFilemode" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="7801138212747054661" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="dirmode" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="7801138212747054659" resolveInfo="BuildLayout_UnixFilemode" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="6977615362525721939" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_CopyFlattenMapper" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File.Mappers" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="flatten" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="6977615362525721938" resolveInfo="BuildLayout_CopyMapper" />
-  </root>
-  <root type="tpce.ConstrainedDataTypeDeclaration" typeId="tpce.1082978499127" id="7801138212747054659" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_UnixFilemode" />
-    <property name="constraint" nameId="tpce.1083066089218" value="[0-7]{3}" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="6977615362525721938" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_CopyMapper" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File.Mappers" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="9184644532456508467" resolveInfo="BuildLayout_CopyHandler" />
-  </root>
-  <root type="tpce.EnumerationDataTypeDeclaration" typeId="tpce.1082978164219" id="1979010778009209124" nodeInfo="ng">
-    <property name="memberIdentifierPolicy" nameId="tpce.1197591154882" value="derive_from_internal_value" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_TarCompression" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-    <link role="memberDataType" roleId="tpce.1083171729157" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    <node role="member" roleId="tpce.1083172003582" type="tpce.EnumerationMemberDeclaration" typeId="tpce.1083171877298" id="1979010778009209125" nodeInfo="ig">
-      <property name="internalValue" nameId="tpce.1083923523171" value="none" />
-      <property name="externalValue" nameId="tpce.1083923523172" value="none" />
-    </node>
-    <node role="member" roleId="tpce.1083172003582" type="tpce.EnumerationMemberDeclaration" typeId="tpce.1083171877298" id="1979010778009209126" nodeInfo="ig">
-      <property name="internalValue" nameId="tpce.1083923523171" value="gzip" />
-      <property name="externalValue" nameId="tpce.1083923523172" value="gzip" />
-    </node>
-    <node role="member" roleId="tpce.1083172003582" type="tpce.EnumerationMemberDeclaration" typeId="tpce.1083171877298" id="1979010778009209127" nodeInfo="ig">
-      <property name="internalValue" nameId="tpce.1083923523171" value="bzip2" />
-      <property name="externalValue" nameId="tpce.1083923523172" value="bzip2" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="8056730377013322101" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaDependencyFileset" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Dependencies" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="classpath" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="2754769020641646199" resolveInfo="BuildSource_JavaDependency" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7926701909975791137" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="classpath" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="iuxj.6666499814681299053" resolveInfo="XmlBaseElement" />
-    </node>
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="7753544965996647426" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_FilesetProjectPart" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project" />
-    <node role="extends" roleId="tpce.1169127546356" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="7753544965996647427" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1169194658468" resolveInfo="INamedConcept" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="7753544965996647428" nodeInfo="ig">
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="copy files of project element" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_FilesOf" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="files of" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848036997" resolveInfo="BuildLayout_Node" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7753544965996647430" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="element" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7753544965996647426" resolveInfo="BuildSource_FilesetProjectPart" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="3970102152660702410" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_CopyGlobMapper" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File.Mappers" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="filename glob mapper" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="6977615362525721938" resolveInfo="BuildLayout_CopyMapper" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="3970102152660874509" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="to" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="4380385936562003279" resolveInfo="BuildString" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="3970102152660874508" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="from" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="3970102152660876447" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_CopyRegexMapper" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File.Mappers" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="filename regex mapper" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="6977615362525721938" resolveInfo="BuildLayout_CopyMapper" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="3970102152660876448" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="pattern" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="3970102152660876449" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="replace" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2755237150521942442" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildVariableMacroInitValue" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Macro" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2755237150521975431" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildVariableMacroInitWithString" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Macro" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="string" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="2755237150521942442" resolveInfo="BuildVariableMacroInitValue" />
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="1262430001741647244" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1835621062190663819" resolveInfo="IDontSubstituteByDefault" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2755237150521975437" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="value" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="4380385936562003279" resolveInfo="BuildString" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="244868996532454372" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildVariableMacroInitWithDate" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Macro" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="date" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="2755237150521942442" resolveInfo="BuildVariableMacroInitValue" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="244868996532454384" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="pattern" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="244868996532550359" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildVariableMacroInitWithValueFromFile" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Macro" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="load from file" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="2755237150521942442" resolveInfo="BuildVariableMacroInitValue" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="244868996532550362" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="propertyName" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="244868996532550360" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="fileName" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073790" resolveInfo="BuildSourcePath" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="9126048691954557131" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_Comment" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="#" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848036997" resolveInfo="BuildLayout_Node" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="9126048691954700811" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="text" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="9126048691955220717" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_File" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="file" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848036997" resolveInfo="BuildLayout_Node" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="9126048691955220762" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="path" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073790" resolveInfo="BuildSourcePath" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="9126048691955220774" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="parameters" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="9126048691955220772" resolveInfo="BuildLayout_CopyParameter" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="9126048691955220763" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="5610619299013425874" resolveInfo="BuildSource_SingleFile" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="9126048691955221291" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="filemode" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="7801138212747054659" resolveInfo="BuildLayout_UnixFilemode" />
-    </node>
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="9126048691955220772" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_CopyParameter" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2750015747481074431" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_Files" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="files from" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848036997" resolveInfo="BuildLayout_Node" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2750015747481074432" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="path" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073790" resolveInfo="BuildSourcePath" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2750015747481074433" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="parameters" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="9126048691955220772" resolveInfo="BuildLayout_CopyParameter" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="6967233722066057020" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_War" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.Java" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="war" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848050074" resolveInfo="BuildLayout_Jar" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="342830306171203038" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSource_JavaDependencyExternalJarInFolder" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Project.Java.Dependencies" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="external jar in folder" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="2754769020641646199" resolveInfo="BuildSource_JavaDependency" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="342830306171234561" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="extFolder" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5610619299014531647" resolveInfo="BuildSource_JavaExternalJarFolderRef" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="342830306171234560" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="reexport" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983657063" resolveInfo="boolean" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="342830306171239596" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="suffix" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="342830306171203039" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="841011766566205091" resolveInfo="BuildExternalDependency" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1251221292903960366" nodeInfo="ig">
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="jar manifest file" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_JarManifest" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.Java.Manifest" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="manifest" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7389400916848036997" resolveInfo="BuildLayout_Node" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="8563603456895840659" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="parts" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="8563603456895840654" resolveInfo="BuildLayout_JarManifest_Part" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="7471276865245798337" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="name" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="841011766566059607" resolveInfo="BuildStringNotEmpty" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1251221292903960368" nodeInfo="ig">
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="jar manifest attribute" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_JarManifest_Attribute" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.Java.Manifest" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="&lt;name&gt;: &lt;value&gt;" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="8563603456895840654" resolveInfo="BuildLayout_JarManifest_Part" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1251221292903960369" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="name" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="841011766566059607" resolveInfo="BuildStringNotEmpty" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1251221292903960370" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="value" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="841011766566059607" resolveInfo="BuildStringNotEmpty" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="7471276865246016971" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="9184644532456897460" resolveInfo="BuildStringContainer" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1251221292904119675" nodeInfo="ig">
-    <property name="conceptShortDescription" nameId="tpce.4628067390765907488" value="jar manifest section" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_JarManifest_Section" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.Java.Manifest" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="section" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="8563603456895840654" resolveInfo="BuildLayout_JarManifest_Part" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="1251221292904119676" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="attribute" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="1251221292903960368" resolveInfo="BuildLayout_JarManifest_Attribute" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="6837653846148302680" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="name" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="841011766566059607" resolveInfo="BuildStringNotEmpty" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="2539347366864541544" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildSourceArchiveRelativePath" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="SourcePath" />
-    <property name="conceptAlias" nameId="tpce.5092175715804935370" value="*.zip!/" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="7321017245476976379" resolveInfo="BuildRelativePath" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="2539347366864648268" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="archivePath" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073790" resolveInfo="BuildSourcePath" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="867429721720197515" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="841011766566205091" resolveInfo="BuildExternalDependency" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="6083230236994856241" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="6083230236994833215" resolveInfo="IWorkflowParticipant" />
-    </node>
-    <node role="implements" roleId="tpce.1169129564478" type="tpce.InterfaceConceptReference" typeId="tpce.1169127622168" id="1262430001741647594" nodeInfo="ig">
-      <link role="intfc" roleId="tpce.1169127628841" targetNodeId="tpck.1835621062190663819" resolveInfo="IDontSubstituteByDefault" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="8563603456895840654" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_JarManifest_Part" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.Java.Manifest" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="6083230236994833215" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="IWorkflowParticipant" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Workflow" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="6854204111265764357" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="GeneratorInternal_IWorkfowParticipants" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="GeneratorInternal" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="6854204111265764358" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="for" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="8xvf.2769948622284546675" resolveInfo="BwfTask" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="6854204111265764359" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="aggregation" />
-      <property name="role" nameId="tpce.1071599776563" value="participant" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="0..n" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="6667029362524340680" resolveInfo="GeneratorInternal_IWorkflowParticipantReference" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="6667029362524340680" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="GeneratorInternal_IWorkflowParticipantReference" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="GeneratorInternal" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="6667029362524340681" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="participant" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="6083230236994833215" resolveInfo="IWorkflowParticipant" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="4964617264469642264" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="GeneratorInternal_BuildSource_JavaModule" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="GeneratorInternal" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="4964617264469642265" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="targetModule" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="7389400916848073784" resolveInfo="BuildSource_JavaModule" />
-    </node>
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="4964617264469642266" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="targetReexport" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983657063" resolveInfo="boolean" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="4964617264469642570" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="GeneratorInternal_BuildSource_SingleFile" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="GeneratorInternal" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="4964617264469642571" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="targetFile" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5610619299013425874" resolveInfo="BuildSource_SingleFile" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="4964617264469642863" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="GeneratorInternal_BuildSource_JavaLibrary" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="GeneratorInternal" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="4964617264469642864" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="targetLibrary" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="6057319140845467763" resolveInfo="BuildSource_JavaLibrary" />
-    </node>
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="4964617264469642724" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="GeneratorInternal_BuildSource_JavaJar" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="GeneratorInternal" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="4964617264469642725" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="targetJar" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="1258644073388922138" resolveInfo="BuildSource_JavaJar" />
-    </node>
-  </root>
-  <root type="tpce.InterfaceConceptDeclaration" typeId="tpce.1169125989551" id="5970181360961342215" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_InJarNode" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.Java" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="1330375798058820290" nodeInfo="ig">
-    <property name="abstract" nameId="tpce.4628067390765956802" value="true" />
-    <property name="name" nameId="tpck.1169194664001" value="BuildLayout_CopyProcessor" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="Layout.File.Processor" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="9184644532456508467" resolveInfo="BuildLayout_CopyHandler" />
-  </root>
-  <root type="tpce.ConceptDeclaration" typeId="tpce.1071489090640" id="6354776497066088012" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="GeneratorInternal_ProjectDependency" />
-    <property name="virtualPackage" nameId="tpck.1193676396447" value="GeneratorInternal" />
-    <link role="extends" roleId="tpce.1071489389519" targetNodeId="tpck.1133920641626" resolveInfo="BaseConcept" />
-    <node role="propertyDeclaration" roleId="tpce.1071489727084" type="tpce.PropertyDeclaration" typeId="tpce.1071489288299" id="6354776497066088381" nodeInfo="ig">
-      <property name="name" nameId="tpck.1169194664001" value="path" />
-      <link role="dataType" roleId="tpce.1082985295845" targetNodeId="tpck.1082983041843" resolveInfo="string" />
-    </node>
-    <node role="linkDeclaration" roleId="tpce.1071489727083" type="tpce.LinkDeclaration" typeId="tpce.1071489288298" id="6354776497069761491" nodeInfo="ig">
-      <property name="metaClass" nameId="tpce.1071599937831" value="reference" />
-      <property name="role" nameId="tpce.1071599776563" value="project" />
-      <property name="sourceCardinality" nameId="tpce.1071599893252" value="1" />
-      <link role="target" roleId="tpce.1071599976176" targetNodeId="5617550519002745363" resolveInfo="BuildProject" />
-    </node>
-  </root>
+<model ref="r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)">
+  <persistence version="9" />
+  <languages>
+    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="-1" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+  </languages>
+  <imports>
+    <import index="8xvf" ref="r:ed179f4d-7cf2-479d-8348-50c1fc63b96a(jetbrains.mps.build.workflow.structure)" />
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
+    <import index="iuxj" ref="r:64db3a92-5968-4a73-b456-34504a2d97a6(jetbrains.mps.core.xml.structure)" />
+  </imports>
+  <registry>
+    <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
+      <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
+        <property id="2756621024541341363" name="file" index="1iqoE4" />
+      </concept>
+    </language>
+    <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration" flags="ng" index="AxPO7">
+        <property id="1212080844762" name="hasNoDefaultMember" index="PDuV0" />
+        <property id="1212087449254" name="noValueText" index="Q2FuW" />
+        <property id="1197591154882" name="memberIdentifierPolicy" index="3lZH7k" />
+        <reference id="1083171729157" name="memberDataType" index="M4eZT" />
+        <child id="1083172003582" name="member" index="M5hS2" />
+      </concept>
+      <concept id="1082978499127" name="jetbrains.mps.lang.structure.structure.ConstrainedDataTypeDeclaration" flags="ng" index="Az7Fb">
+        <property id="1083066089218" name="constraint" index="FLfZY" />
+      </concept>
+      <concept id="1083171877298" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ig" index="M4N5e">
+        <property id="1083923523172" name="externalValue" index="1uS6qo" />
+        <property id="1083923523171" name="internalValue" index="1uS6qv" />
+      </concept>
+      <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
+        <property id="6714410169261853888" name="conceptId" index="EcuMT" />
+        <property id="4628067390765907488" name="conceptShortDescription" index="R4oN_" />
+        <property id="4628067390765956802" name="abstract" index="R5$K7" />
+        <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
+        <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
+        <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
+      </concept>
+      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ">
+        <child id="1169127546356" name="extends" index="PrDN$" />
+      </concept>
+      <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
+        <reference id="1169127628841" name="intfc" index="PrY4T" />
+      </concept>
+      <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
+        <property id="5404671619616246344" name="staticScope" index="2_RsDV" />
+        <property id="1096454100552" name="rootable" index="19KtqR" />
+        <reference id="1071489389519" name="extends" index="1TJDcQ" />
+        <child id="6327362524875300597" name="icon" index="rwd14" />
+        <child id="1169129564478" name="implements" index="PzmwI" />
+      </concept>
+      <concept id="1071489288299" name="jetbrains.mps.lang.structure.structure.PropertyDeclaration" flags="ig" index="1TJgyi">
+        <property id="241647608299431129" name="propertyId" index="IQ2nx" />
+        <reference id="1082985295845" name="dataType" index="AX2Wp" />
+      </concept>
+      <concept id="1071489288298" name="jetbrains.mps.lang.structure.structure.LinkDeclaration" flags="ig" index="1TJgyj">
+        <property id="1071599776563" name="role" index="20kJfa" />
+        <property id="1071599893252" name="sourceCardinality" index="20lbJX" />
+        <property id="1071599937831" name="metaClass" index="20lmBu" />
+        <property id="241647608299431140" name="linkId" index="IQ2ns" />
+        <reference id="1071599976176" name="target" index="20lvS9" />
+      </concept>
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+      </concept>
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="1TIwiD" id="4RPz6WoY4Cj">
+    <property role="19KtqR" value="true" />
+    <property role="TrG5h" value="BuildProject" />
+    <property role="34LRSv" value="build project" />
+    <property role="EcuMT" value="5617550519002745363" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="4wSvFFxC7Cz" role="1TKVEl">
+      <property role="TrG5h" value="internalBaseDirectory" />
+      <property role="IQ2nx" value="5204048710541015587" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="4gSHdTpggUW" role="1TKVEl">
+      <property role="TrG5h" value="fileName" />
+      <property role="IQ2nx" value="4915877860348071612" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyj" id="5KZfyKsUqLK" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="plugins" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="6647099934206700656" />
+      <ref role="20lvS9" node="5KZfyKsUo6u" resolve="BuildPlugin" />
+    </node>
+    <node concept="1TJgyj" id="4RPz6WoY4C_" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="dependencies" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="5617550519002745381" />
+      <ref role="20lvS9" node="4RPz6WoY4Cz" resolve="BuildDependency" />
+    </node>
+    <node concept="1TJgyj" id="4RPz6WoY4Cy" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="macros" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="5617550519002745378" />
+      <ref role="20lvS9" node="4RPz6WoY4Cv" resolve="BuildMacro" />
+    </node>
+    <node concept="1TJgyj" id="6qcrfIJFfrM" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="parts" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="7389400916848080626" />
+      <ref role="20lvS9" node="6qcrfIJFdK8" resolve="BuildProjectPart" />
+    </node>
+    <node concept="1TJgyj" id="34DbxDwQPuJ" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="aspects" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="3542413272732620719" />
+      <ref role="20lvS9" node="34DbxDwRlgt" resolve="BuildAspect" />
+    </node>
+    <node concept="1TJgyj" id="4RPz6WoY4Cs" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="layout" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="5617550519002745372" />
+      <ref role="20lvS9" node="4RPz6WoY4Ck" resolve="BuildLayout" />
+    </node>
+    <node concept="1TJgyj" id="4ahc858UcqY" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="scriptsDir" />
+      <property role="20lbJX" value="0..1" />
+      <property role="IQ2ns" value="4796668409958418110" />
+      <ref role="20lvS9" node="6mpuAlRavrV" resolve="BuildRelativePath" />
+    </node>
+    <node concept="PrWs8" id="6qcrfIJFCeW" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+    </node>
+    <node concept="PrWs8" id="4RPz6WoY4Cr" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="1QGGSu" id="4Q8sAA5iJQW" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/buildProject.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4RPz6WoY4Ck">
+    <property role="TrG5h" value="BuildLayout" />
+    <property role="3GE5qa" value="Layout" />
+    <property role="EcuMT" value="5617550519002745364" />
+    <ref role="1TJDcQ" node="6qcrfIJEWWc" resolve="BuildLayout_AbstractContainer" />
+    <node concept="1QGGSu" id="4Q8sAA5iJQN" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/layout.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4RPz6WoY4Cv">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildMacro" />
+    <property role="3GE5qa" value="Macro" />
+    <property role="EcuMT" value="5617550519002745375" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="4RPz6WoY4Cw" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4RPz6WoY4Cz">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildDependency" />
+    <property role="3GE5qa" value="Dependencies" />
+    <property role="EcuMT" value="5617550519002745379" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="6qcrfIJEWWc">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildLayout_AbstractContainer" />
+    <property role="3GE5qa" value="Layout" />
+    <property role="EcuMT" value="7389400916848004876" />
+    <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
+    <node concept="PrWs8" id="450ejGzh8b7" role="PzmwI">
+      <ref role="PrY4T" node="450ejGzh8b3" resolve="BuildLayout_Container" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6qcrfIJF4LS">
+    <property role="R4oN_" value="create a folder" />
+    <property role="TrG5h" value="BuildLayout_Folder" />
+    <property role="3GE5qa" value="Layout.File" />
+    <property role="34LRSv" value="folder" />
+    <property role="EcuMT" value="7389400916848036984" />
+    <ref role="1TJDcQ" node="6qcrfIJF7Yc" resolve="BuildLayout_NamedContainer" />
+    <node concept="PrWs8" id="6eCuTcwOun2" role="PzmwI">
+      <ref role="PrY4T" node="6eCuTcwOczV" resolve="BuildLayout_PureNode" />
+    </node>
+    <node concept="1QGGSu" id="4Q8sAA5iJQP" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/layout.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6qcrfIJF4M5">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildLayout_Node" />
+    <property role="3GE5qa" value="Layout" />
+    <property role="EcuMT" value="7389400916848036997" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="6bGbH3Svq67" role="PzmwI">
+      <ref role="PrY4T" node="6bGbH3Svq63" resolve="BuildLayout_PathElement" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6qcrfIJF7Yc">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildLayout_NamedContainer" />
+    <property role="3GE5qa" value="Layout" />
+    <property role="EcuMT" value="7389400916848050060" />
+    <ref role="1TJDcQ" node="6qcrfIJEWWc" resolve="BuildLayout_AbstractContainer" />
+    <node concept="1TJgyj" id="3NagsOfTPim" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="containerName" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="4380385936562148502" />
+      <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
+    </node>
+    <node concept="PrWs8" id="6qcrfIJF7Yd" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="PrWs8" id="4RsV8qJH_BX" role="PzmwI">
+      <ref role="PrY4T" node="4RsV8qJH_Bn" resolve="BuildSource_SingleFolder" />
+    </node>
+    <node concept="PrWs8" id="7XQqoCTkVNl" role="PzmwI">
+      <ref role="PrY4T" node="7XQqoCTkVIO" resolve="BuildStringContainer" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6qcrfIJF7Yn">
+    <property role="TrG5h" value="BuildLayout_Zip" />
+    <property role="3GE5qa" value="Layout.File" />
+    <property role="34LRSv" value="zip" />
+    <property role="EcuMT" value="7389400916848050071" />
+    <ref role="1TJDcQ" node="6qcrfIJF7Yc" resolve="BuildLayout_NamedContainer" />
+    <node concept="PrWs8" id="4zlO3QT9Z8E" role="PzmwI">
+      <ref role="PrY4T" node="4zlO3QT9Z8D" resolve="BuildLayout_ContainerAcceptingFileSet" />
+    </node>
+    <node concept="PrWs8" id="6eCuTcwOun4" role="PzmwI">
+      <ref role="PrY4T" node="6eCuTcwOczV" resolve="BuildLayout_PureNode" />
+    </node>
+    <node concept="1QGGSu" id="4Q8sAA5iJQZ" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/archive.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6qcrfIJF7Yq">
+    <property role="TrG5h" value="BuildLayout_Jar" />
+    <property role="3GE5qa" value="Layout.Java" />
+    <property role="34LRSv" value="jar" />
+    <property role="EcuMT" value="7389400916848050074" />
+    <ref role="1TJDcQ" node="6qcrfIJF7Yc" resolve="BuildLayout_NamedContainer" />
+    <node concept="PrWs8" id="4zlO3QT9Z8H" role="PzmwI">
+      <ref role="PrY4T" node="4zlO3QT9Z8D" resolve="BuildLayout_ContainerAcceptingFileSet" />
+    </node>
+    <node concept="PrWs8" id="6eCuTcwOun6" role="PzmwI">
+      <ref role="PrY4T" node="6eCuTcwOczV" resolve="BuildLayout_PureNode" />
+    </node>
+    <node concept="PrWs8" id="4RsV8qJFhWC" role="PzmwI">
+      <ref role="PrY4T" node="4RsV8qJDnFi" resolve="BuildSource_SingleFile" />
+    </node>
+    <node concept="1QGGSu" id="4Q8sAA5iJQS" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/archive.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6qcrfIJFdK8">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildProjectPart" />
+    <property role="3GE5qa" value="Project" />
+    <property role="EcuMT" value="7389400916848073736" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="6qcrfIJFdKS">
+    <property role="TrG5h" value="BuildSource_JavaModule" />
+    <property role="3GE5qa" value="Project.Java" />
+    <property role="34LRSv" value="java module" />
+    <property role="EcuMT" value="7389400916848073784" />
+    <ref role="1TJDcQ" node="6qcrfIJFdK8" resolve="BuildProjectPart" />
+    <node concept="1TJgyj" id="6qcrfIJFdLy" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="sources" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="7389400916848073826" />
+      <ref role="20lvS9" node="4zlO3QTanjW" resolve="BuildSource_JavaSources" />
+    </node>
+    <node concept="1TJgyj" id="2oUTXgLA9qF" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="dependencies" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="2754769020641646251" />
+      <ref role="20lvS9" node="2oUTXgLA9pR" resolve="BuildSource_JavaDependency" />
+    </node>
+    <node concept="1TJgyj" id="1s8OwvM683U" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="options" />
+      <property role="IQ2ns" value="1659807394254323962" />
+      <ref role="20lvS9" node="1s8OwvM5SHi" resolve="BuildSource_JavaModuleOptions" />
+    </node>
+    <node concept="PrWs8" id="6qcrfIJFdLz" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="PrWs8" id="2fQZjorRIf5" role="PzmwI">
+      <ref role="PrY4T" node="2fQZjorRfOB" resolve="BuildSource_CompilablePart" />
+    </node>
+    <node concept="1QGGSu" id="4Q8sAA5iJQJ" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/javaModule.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6qcrfIJFdKY">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildSourcePath" />
+    <property role="3GE5qa" value="SourcePath" />
+    <property role="EcuMT" value="7389400916848073790" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="6qcrfIJFdLi">
+    <property role="TrG5h" value="BuildSource_JavaContentRoot" />
+    <property role="3GE5qa" value="Project.Java.Sources" />
+    <property role="34LRSv" value="content root" />
+    <property role="EcuMT" value="7389400916848073810" />
+    <ref role="1TJDcQ" node="4zlO3QTanjW" resolve="BuildSource_JavaSources" />
+    <node concept="1TJgyj" id="6qcrfIJFdLj" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="basePath" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="7389400916848073811" />
+      <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+    <node concept="1TJgyj" id="2oUTXgL_krd" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="folders" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="2754769020641429197" />
+      <ref role="20lvS9" node="2oUTXgL_kr6" resolve="BuildSource_JavaContentFolder" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6qcrfIJFt02">
+    <property role="R4oN_" value="defines folder macro with default value (for local build)" />
+    <property role="TrG5h" value="BuildFolderMacro" />
+    <property role="3GE5qa" value="Macro" />
+    <property role="34LRSv" value="folder" />
+    <property role="EcuMT" value="7389400916848136194" />
+    <ref role="1TJDcQ" node="4RPz6WoY4Cv" resolve="BuildMacro" />
+    <node concept="1TJgyj" id="6qcrfIJFv3E" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="defaultPath" />
+      <property role="IQ2ns" value="7389400916848144618" />
+      <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+    <node concept="1QGGSu" id="4Q8sAA5iJQR" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/macro.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6qcrfIJFx8t">
+    <property role="TrG5h" value="BuildSourceMacroRelativePath" />
+    <property role="3GE5qa" value="SourcePath" />
+    <property role="EcuMT" value="7389400916848153117" />
+    <ref role="1TJDcQ" node="6mpuAlRavrV" resolve="BuildRelativePath" />
+    <node concept="1TJgyj" id="6qcrfIJFx8E" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="macro" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="7389400916848153130" />
+      <ref role="20lvS9" node="6qcrfIJFt02" resolve="BuildFolderMacro" />
+    </node>
+    <node concept="1QGGSu" id="4Q8sAA5iJQQ" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/path.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="2oUTXgL_kr6">
+    <property role="TrG5h" value="BuildSource_JavaContentFolder" />
+    <property role="3GE5qa" value="Project.Java.Sources" />
+    <property role="34LRSv" value="source" />
+    <property role="EcuMT" value="2754769020641429190" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="4zlO3QTanjV" role="1TKVEl">
+      <property role="TrG5h" value="kind" />
+      <property role="IQ2nx" value="5248329904288265467" />
+      <ref role="AX2Wp" node="4zlO3QTanjR" resolve="BuildSource_JavaContentFolderKind" />
+    </node>
+    <node concept="1TJgyi" id="2oUTXgL_kr7" role="1TKVEl">
+      <property role="TrG5h" value="relativePath" />
+      <property role="IQ2nx" value="2754769020641429191" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="2oUTXgLA9pR">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildSource_JavaDependency" />
+    <property role="3GE5qa" value="Project.Java.Dependencies" />
+    <property role="EcuMT" value="2754769020641646199" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="2oUTXgLA9qB">
+    <property role="TrG5h" value="BuildSource_JavaDependencyModule" />
+    <property role="3GE5qa" value="Project.Java.Dependencies" />
+    <property role="34LRSv" value="module" />
+    <property role="EcuMT" value="2754769020641646247" />
+    <ref role="1TJDcQ" node="2oUTXgLA9pR" resolve="BuildSource_JavaDependency" />
+    <node concept="1TJgyi" id="6iXh2SsYKUE" role="1TKVEl">
+      <property role="TrG5h" value="reexport" />
+      <property role="IQ2nx" value="7259033139236507306" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="PrWs8" id="5FtnUVJQBjK" role="PzmwI">
+      <ref role="PrY4T" node="IFRVVI6zqz" resolve="BuildExternalDependency" />
+    </node>
+    <node concept="1TJgyj" id="2oUTXgLA9qE" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="module" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="2754769020641646250" />
+      <ref role="20lvS9" node="6qcrfIJFdKS" resolve="BuildSource_JavaModule" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5gfUUDxhbxN">
+    <property role="TrG5h" value="BuildSource_JavaLibrary" />
+    <property role="3GE5qa" value="Project.Java.Library" />
+    <property role="34LRSv" value="java library" />
+    <property role="EcuMT" value="6057319140845467763" />
+    <ref role="1TJDcQ" node="6qcrfIJFdK8" resolve="BuildProjectPart" />
+    <node concept="1TJgyj" id="5gfUUDxhech" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="elements" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="6057319140845478673" />
+      <ref role="20lvS9" node="5gfUUDxhecw" resolve="BuildSource_JavaLibraryElement" />
+    </node>
+    <node concept="PrWs8" id="5gfUUDxhbxO" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="1QGGSu" id="4Q8sAA5iJQX" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/library.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5gfUUDxhecw">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildSource_JavaLibraryElement" />
+    <property role="3GE5qa" value="Project.Java.Library" />
+    <property role="EcuMT" value="6057319140845478688" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="4lbsKRp1TRe">
+    <property role="TrG5h" value="BuildSource_JavaDependencyLibrary" />
+    <property role="3GE5qa" value="Project.Java.Dependencies" />
+    <property role="34LRSv" value="library" />
+    <property role="EcuMT" value="4993211115183250894" />
+    <ref role="1TJDcQ" node="2oUTXgLA9pR" resolve="BuildSource_JavaDependency" />
+    <node concept="1TJgyi" id="5bUGwboWA8C" role="1TKVEl">
+      <property role="TrG5h" value="reexport" />
+      <property role="IQ2nx" value="5979287180587196968" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="1TJgyj" id="4lbsKRp1TRf" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="library" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="4993211115183250895" />
+      <ref role="20lvS9" node="5gfUUDxhbxN" resolve="BuildSource_JavaLibrary" />
+    </node>
+    <node concept="PrWs8" id="2xHpXR_dfuN" role="PzmwI">
+      <ref role="PrY4T" node="IFRVVI6zqz" resolve="BuildExternalDependency" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4lbsKRp2c8w">
+    <property role="TrG5h" value="BuildProjectDependency" />
+    <property role="3GE5qa" value="Dependencies" />
+    <property role="EcuMT" value="4993211115183325728" />
+    <ref role="1TJDcQ" node="4RPz6WoY4Cz" resolve="BuildDependency" />
+    <node concept="1TJgyj" id="3_glsEmonOM" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="artifacts" />
+      <property role="IQ2ns" value="4129895186893471026" />
+      <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+    <node concept="1TJgyj" id="4RPz6WoY4C$" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="script" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="5617550519002745380" />
+      <ref role="20lvS9" node="4RPz6WoY4Cj" resolve="BuildProject" />
+    </node>
+    <node concept="PrWs8" id="6bGbH3Svq6b" role="PzmwI">
+      <ref role="PrY4T" node="6bGbH3Svq63" resolve="BuildLayout_PathElement" />
+    </node>
+    <node concept="1QGGSu" id="4Q8sAA5iJQK" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/dependency.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="34DbxDwQvcK">
+    <property role="R4oN_" value="custom named layout" />
+    <property role="TrG5h" value="BuildNamedLayout" />
+    <property role="3GE5qa" value="Layout" />
+    <property role="34LRSv" value="layout" />
+    <property role="EcuMT" value="3542413272732529456" />
+    <ref role="1TJDcQ" node="34DbxDwRlgt" resolve="BuildAspect" />
+    <node concept="PrWs8" id="34DbxDwRmKP" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="PrWs8" id="450ejGzh8b5" role="PzmwI">
+      <ref role="PrY4T" node="450ejGzh8b3" resolve="BuildLayout_Container" />
+    </node>
+    <node concept="PrWs8" id="1bWeed$oLPq" role="PzmwI">
+      <ref role="PrY4T" node="6bGbH3Svq63" resolve="BuildLayout_PathElement" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="34DbxDwRlgt">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildAspect" />
+    <property role="EcuMT" value="3542413272732750877" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="4Kip2_918YM">
+    <property role="TrG5h" value="BuildSourceProjectRelativePath" />
+    <property role="3GE5qa" value="SourcePath" />
+    <property role="34LRSv" value="." />
+    <property role="EcuMT" value="5481553824944787378" />
+    <ref role="1TJDcQ" node="6mpuAlRavrV" resolve="BuildRelativePath" />
+    <node concept="1QGGSu" id="4Q8sAA5iJQM" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/path.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7usrAn056vL">
+    <property role="TrG5h" value="BuildCompositePath" />
+    <property role="2_RsDV" value="none" />
+    <property role="3GE5qa" value="SourcePath" />
+    <property role="EcuMT" value="8618885170173601777" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="7usrAn056vM" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="tail" />
+      <property role="20lbJX" value="0..1" />
+      <property role="IQ2ns" value="8618885170173601778" />
+      <ref role="20lvS9" node="7usrAn056vL" resolve="BuildCompositePath" />
+    </node>
+    <node concept="1TJgyi" id="7usrAn056vN" role="1TKVEl">
+      <property role="TrG5h" value="head" />
+      <property role="IQ2nx" value="8618885170173601779" />
+      <ref role="AX2Wp" node="7usrAn05wtA" resolve="FileName" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6mpuAlRavrV">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildRelativePath" />
+    <property role="3GE5qa" value="SourcePath" />
+    <property role="EcuMT" value="7321017245476976379" />
+    <ref role="1TJDcQ" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    <node concept="1TJgyj" id="6mpuAlRaIJb" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="compositePart" />
+      <property role="20lbJX" value="0..1" />
+      <property role="IQ2ns" value="7321017245477039051" />
+      <ref role="20lvS9" node="7usrAn056vL" resolve="BuildCompositePath" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="Y2EImGIi9D">
+    <property role="TrG5h" value="BuildLayout_FileSet" />
+    <property role="3GE5qa" value="Layout" />
+    <property role="EcuMT" value="1117643560963351145" />
+  </node>
+  <node concept="1TIwiD" id="5KZfyKsUo6u">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildPlugin" />
+    <property role="3GE5qa" value="Plugins" />
+    <property role="EcuMT" value="6647099934206689694" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="5KZfyKsUqLB">
+    <property role="R4oN_" value="adds Java capabilities (compile, test &amp; bundling) to the project" />
+    <property role="TrG5h" value="BuildJavaPlugin" />
+    <property role="3GE5qa" value="Plugins" />
+    <property role="34LRSv" value="java" />
+    <property role="EcuMT" value="6647099934206700647" />
+    <ref role="1TJDcQ" node="5KZfyKsUo6u" resolve="BuildPlugin" />
+  </node>
+  <node concept="1TIwiD" id="3h9a8EwPm3y">
+    <property role="R4oN_" value="defines variable macro" />
+    <property role="TrG5h" value="BuildVariableMacro" />
+    <property role="3GE5qa" value="Macro" />
+    <property role="34LRSv" value="var" />
+    <property role="EcuMT" value="3767587139141066978" />
+    <ref role="1TJDcQ" node="4RPz6WoY4Cv" resolve="BuildMacro" />
+    <node concept="1TJgyj" id="2oW$psGOAa8" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="initialValue" />
+      <property role="IQ2ns" value="2755237150521975432" />
+      <ref role="20lvS9" node="2oW$psGOu6E" resolve="BuildVariableMacroInitValue" />
+    </node>
+    <node concept="1QGGSu" id="4Q8sAA5iJQL" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/macro.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4zlO3QT9yYs">
+    <property role="TrG5h" value="BuildFileIncludeSelector" />
+    <property role="3GE5qa" value="SourceSet.Selectors" />
+    <property role="34LRSv" value="include" />
+    <property role="EcuMT" value="5248329904288051100" />
+    <ref role="1TJDcQ" node="4zlO3QT8$mB" resolve="BuildFileSelector" />
+    <node concept="1TJgyi" id="4zlO3QT9yYt" role="1TKVEl">
+      <property role="TrG5h" value="pattern" />
+      <property role="IQ2nx" value="5248329904288051101" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4zlO3QT8$mB">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildFileSelector" />
+    <property role="3GE5qa" value="SourceSet.Selectors" />
+    <property role="EcuMT" value="5248329904287794599" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="2oE1c2bmP8u" role="PzmwI">
+      <ref role="PrY4T" node="7UAfeVQUc4$" resolve="BuildLayout_CopyParameter" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4zlO3QT8$m$">
+    <property role="R4oN_" value="folder on local filesystem" />
+    <property role="TrG5h" value="BuildInputFiles" />
+    <property role="3GE5qa" value="SourceSet.Files" />
+    <property role="34LRSv" value="files from" />
+    <property role="EcuMT" value="5248329904287794596" />
+    <ref role="1TJDcQ" node="4zlO3QT8mNF" resolve="BuildInputFileSet" />
+    <node concept="1TJgyj" id="4zlO3QT8$mA" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="dir" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="5248329904287794598" />
+      <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+    <node concept="1TJgyj" id="4zlO3QT8$nR" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="selectors" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="5248329904287794679" />
+      <ref role="20lvS9" node="4zlO3QT8$mB" resolve="BuildFileSelector" />
+    </node>
+    <node concept="PrWs8" id="4zlO3QT9RaX" role="PzmwI">
+      <ref role="PrY4T" node="Y2EImGIi9D" resolve="BuildLayout_FileSet" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4gdvEeQyRO1">
+    <property role="TrG5h" value="BuildVarRefStringPart" />
+    <property role="3GE5qa" value="Names" />
+    <property role="EcuMT" value="4903714810883702017" />
+    <ref role="1TJDcQ" node="4gdvEeQyRNZ" resolve="BuildStringPart" />
+    <node concept="PrWs8" id="1653mnvANJ_" role="PzmwI">
+      <ref role="PrY4T" to="tpck:1_TrU5E6oyb" resolve="IDontSubstituteByDefault" />
+    </node>
+    <node concept="1TJgyj" id="4gdvEeQyRO2" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="macro" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="4903714810883702018" />
+      <ref role="20lvS9" node="3h9a8EwPm3y" resolve="BuildVariableMacro" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4gdvEeQyRO3">
+    <property role="TrG5h" value="BuildTextStringPart" />
+    <property role="3GE5qa" value="Names" />
+    <property role="EcuMT" value="4903714810883702019" />
+    <ref role="1TJDcQ" node="4gdvEeQyRNZ" resolve="BuildStringPart" />
+    <node concept="PrWs8" id="1653mnvB2UG" role="PzmwI">
+      <ref role="PrY4T" to="tpck:1_TrU5E6oyb" resolve="IDontSubstituteByDefault" />
+    </node>
+    <node concept="1TJgyi" id="4gdvEeQz4Pm" role="1TKVEl">
+      <property role="TrG5h" value="text" />
+      <property role="IQ2nx" value="4903714810883755350" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4gdvEeQyRNZ">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildStringPart" />
+    <property role="3GE5qa" value="Names" />
+    <property role="EcuMT" value="4903714810883702015" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="4gdvEeQz4Pl" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="4zlO3QT9Z8D">
+    <property role="TrG5h" value="BuildLayout_ContainerAcceptingFileSet" />
+    <property role="3GE5qa" value="Layout" />
+    <property role="EcuMT" value="5248329904288166441" />
+  </node>
+  <node concept="1TIwiD" id="4zlO3QT8mNE">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildInputResourceSet" />
+    <property role="3GE5qa" value="SourceSet" />
+    <property role="34LRSv" value="resource set" />
+    <property role="EcuMT" value="5248329904287739114" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="4zlO3QT8mNF">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildInputFileSet" />
+    <property role="3GE5qa" value="SourceSet.Files" />
+    <property role="34LRSv" value="file set" />
+    <property role="EcuMT" value="5248329904287739115" />
+    <ref role="1TJDcQ" node="4zlO3QT8mNE" resolve="BuildInputResourceSet" />
+  </node>
+  <node concept="1TIwiD" id="4zlO3QT8mNG">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildInputFolderSet" />
+    <property role="3GE5qa" value="SourceSet.Folders" />
+    <property role="EcuMT" value="5248329904287739116" />
+    <ref role="1TJDcQ" node="4zlO3QT8mNE" resolve="BuildInputResourceSet" />
+  </node>
+  <node concept="AxPO7" id="4zlO3QTanjR">
+    <property role="Q2FuW" value="&lt;no kind&gt;" />
+    <property role="3lZH7k" value="derive_from_internal_value" />
+    <property role="PDuV0" value="true" />
+    <property role="TrG5h" value="BuildSource_JavaContentFolderKind" />
+    <property role="3GE5qa" value="Project.Java.Sources" />
+    <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
+    <node concept="M4N5e" id="4zlO3QTanjS" role="M5hS2">
+      <property role="1uS6qv" value="source" />
+      <property role="1uS6qo" value="source" />
+    </node>
+    <node concept="M4N5e" id="4zlO3QTanjT" role="M5hS2">
+      <property role="1uS6qv" value="test" />
+      <property role="1uS6qo" value="test" />
+    </node>
+    <node concept="M4N5e" id="4zlO3QTanjU" role="M5hS2">
+      <property role="1uS6qv" value="excluded" />
+      <property role="1uS6qo" value="excluded" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4zlO3QT8NAT">
+    <property role="TrG5h" value="BuildLayout_Copy" />
+    <property role="3GE5qa" value="Layout.File" />
+    <property role="EcuMT" value="5248329904287857081" />
+    <ref role="1TJDcQ" node="7XQqoCTjpIh" resolve="BuildLayout_AbstractCopy" />
+    <node concept="PrWs8" id="4zlO3QT9SNA" role="PzmwI">
+      <ref role="PrY4T" node="Y2EImGIi9D" resolve="BuildLayout_FileSet" />
+    </node>
+    <node concept="PrWs8" id="1653mnvAOQP" role="PzmwI">
+      <ref role="PrY4T" to="tpck:1_TrU5E6oyb" resolve="IDontSubstituteByDefault" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4zlO3QT8$mm">
+    <property role="R4oN_" value="single file on local filesystem" />
+    <property role="TrG5h" value="BuildInputSingleFile" />
+    <property role="3GE5qa" value="SourceSet.Files" />
+    <property role="34LRSv" value="file" />
+    <property role="EcuMT" value="5248329904287794582" />
+    <ref role="1TJDcQ" node="4zlO3QT8mNF" resolve="BuildInputFileSet" />
+    <node concept="1TJgyj" id="4zlO3QT8$mq" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="path" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="5248329904287794586" />
+      <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+    <node concept="PrWs8" id="4zlO3QT9RaY" role="PzmwI">
+      <ref role="PrY4T" node="Y2EImGIi9D" resolve="BuildLayout_FileSet" />
+    </node>
+    <node concept="PrWs8" id="4RsV8qJDnFr" role="PzmwI">
+      <ref role="PrY4T" node="4RsV8qJDnFi" resolve="BuildSource_SingleFile" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4zlO3QTanjW">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildSource_JavaSources" />
+    <property role="3GE5qa" value="Project.Java.Sources" />
+    <property role="EcuMT" value="5248329904288265468" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="4zlO3QT9yYB">
+    <property role="TrG5h" value="BuildFileExcludeSelector" />
+    <property role="3GE5qa" value="SourceSet.Selectors" />
+    <property role="34LRSv" value="exclude" />
+    <property role="EcuMT" value="5248329904288051111" />
+    <ref role="1TJDcQ" node="4zlO3QT8$mB" resolve="BuildFileSelector" />
+    <node concept="1TJgyi" id="4zlO3QT9yYC" role="1TKVEl">
+      <property role="TrG5h" value="pattern" />
+      <property role="IQ2nx" value="5248329904288051112" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="3NagsOfThPf">
+    <property role="TrG5h" value="BuildString" />
+    <property role="3GE5qa" value="Names" />
+    <property role="EcuMT" value="4380385936562003279" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="1653mnvB6eM" role="PzmwI">
+      <ref role="PrY4T" to="tpck:1_TrU5E6oyb" resolve="IDontSubstituteByDefault" />
+    </node>
+    <node concept="1TJgyj" id="4gdvEeQzbDb" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="parts" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="4903714810883783243" />
+      <ref role="20lvS9" node="4gdvEeQyRNZ" resolve="BuildStringPart" />
+    </node>
+    <node concept="1QGGSu" id="4Q8sAA5iJQY" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/string.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="15RAxQWZPkq">
+    <property role="TrG5h" value="BuildSource_JavaJar" />
+    <property role="3GE5qa" value="Project.Java.Classpath" />
+    <property role="34LRSv" value="jar" />
+    <property role="EcuMT" value="1258644073388922138" />
+    <ref role="1TJDcQ" node="3elU8iQ72g4" resolve="BuildSource_JavaCP" />
+    <node concept="1TJgyj" id="3elU8iQ72fy" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="path" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="3717132724152837090" />
+      <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+    <node concept="1TJgyj" id="7zkpphtJnL6" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="customLocation" />
+      <property role="IQ2ns" value="8706695667516275782" />
+      <ref role="20lvS9" node="4RsV8qJGJpc" resolve="BuildSource_JavaExternalJarRef" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="15RAxQX0x_p">
+    <property role="TrG5h" value="BuildSource_JavaClassFolder" />
+    <property role="3GE5qa" value="Project.Java.Classpath" />
+    <property role="34LRSv" value="classes" />
+    <property role="EcuMT" value="1258644073389103449" />
+    <ref role="1TJDcQ" node="3elU8iQ72g4" resolve="BuildSource_JavaCP" />
+    <node concept="1TJgyj" id="3elU8iQ72h0" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="dir" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="3717132724152837184" />
+      <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="IFRVVI4P3M">
+    <property role="TrG5h" value="BuildLayout_Import" />
+    <property role="3GE5qa" value="Layout" />
+    <property role="34LRSv" value="import" />
+    <property role="EcuMT" value="841011766565753074" />
+    <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
+    <node concept="1TJgyj" id="IFRVVI4P3O" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="target" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="841011766565753076" />
+      <ref role="20lvS9" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
+    </node>
+    <node concept="PrWs8" id="IFRVVI6zqQ" role="PzmwI">
+      <ref role="PrY4T" node="IFRVVI6zqz" resolve="BuildExternalDependency" />
+    </node>
+    <node concept="PrWs8" id="4RsV8qJD1JB" role="PzmwI">
+      <ref role="PrY4T" node="Y2EImGIi9D" resolve="BuildLayout_FileSet" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="IFRVVI5ZTn">
+    <property role="TrG5h" value="BuildStringNotEmpty" />
+    <property role="3GE5qa" value="Names" />
+    <property role="EcuMT" value="841011766566059607" />
+    <ref role="1TJDcQ" node="3NagsOfThPf" resolve="BuildString" />
+  </node>
+  <node concept="PlHQZ" id="IFRVVI6zqz">
+    <property role="TrG5h" value="BuildExternalDependency" />
+    <property role="3GE5qa" value="Dependencies" />
+    <property role="EcuMT" value="841011766566205091" />
+  </node>
+  <node concept="1TIwiD" id="450ejGzgSQF">
+    <property role="TrG5h" value="BuildCustomWorkflow" />
+    <property role="3GE5qa" value="Workflow" />
+    <property role="34LRSv" value="workflow" />
+    <property role="EcuMT" value="4701820937132281259" />
+    <ref role="1TJDcQ" node="34DbxDwRlgt" resolve="BuildAspect" />
+    <node concept="1TJgyj" id="450ejGzgSQG" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="parts" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="4701820937132281260" />
+      <ref role="20lvS9" to="8xvf:2pKPpytmAa7" resolve="BwfProjectPart" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="450ejGzh8b3">
+    <property role="TrG5h" value="BuildLayout_Container" />
+    <property role="3GE5qa" value="Layout" />
+    <property role="EcuMT" value="4701820937132344003" />
+    <node concept="1TJgyj" id="6qcrfIJF4Me" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="children" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="7389400916848037006" />
+      <ref role="20lvS9" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="6bGbH3Svq63">
+    <property role="TrG5h" value="BuildLayout_PathElement" />
+    <property role="3GE5qa" value="Layout" />
+    <property role="EcuMT" value="7128123785277710723" />
+  </node>
+  <node concept="1TIwiD" id="2xHpXR_cEa4">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildLayout_TransparentContainer" />
+    <property role="3GE5qa" value="Layout" />
+    <property role="EcuMT" value="2913098736709313156" />
+    <ref role="1TJDcQ" node="6qcrfIJEWWc" resolve="BuildLayout_AbstractContainer" />
+  </node>
+  <node concept="1TIwiD" id="2xHpXR_dfqr">
+    <property role="TrG5h" value="BuildLayout_ExportAsJavaLibrary" />
+    <property role="3GE5qa" value="Layout.Java" />
+    <property role="34LRSv" value="export as java library" />
+    <property role="EcuMT" value="2913098736709465755" />
+    <ref role="1TJDcQ" node="2xHpXR_cEa4" resolve="BuildLayout_TransparentContainer" />
+    <node concept="1TJgyj" id="2xHpXR_dfqu" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="library" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="2913098736709465758" />
+      <ref role="20lvS9" node="5gfUUDxhbxN" resolve="BuildSource_JavaLibrary" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1jjYQYSi0y2">
+    <property role="TrG5h" value="BuildSource_JavaFiles" />
+    <property role="3GE5qa" value="Project.Java.Sources" />
+    <property role="34LRSv" value="java files" />
+    <property role="EcuMT" value="1500819558096177282" />
+    <ref role="1TJDcQ" node="4zlO3QTanjW" resolve="BuildSource_JavaSources" />
+    <node concept="PrWs8" id="1653mnvAOTV" role="PzmwI">
+      <ref role="PrY4T" to="tpck:1_TrU5E6oyb" resolve="IDontSubstituteByDefault" />
+    </node>
+    <node concept="1TJgyj" id="1jjYQYSi0y3" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="resset" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="1500819558096177283" />
+      <ref role="20lvS9" node="1ZTcb8AgV3Z" resolve="BuildInputSingleFolder" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="3elU8iQ65L0">
+    <property role="TrG5h" value="BuildSource_JavaDependencyJar" />
+    <property role="3GE5qa" value="Project.Java.Dependencies" />
+    <property role="EcuMT" value="3717132724152589376" />
+    <ref role="1TJDcQ" node="2oUTXgLA9pR" resolve="BuildSource_JavaDependency" />
+    <node concept="PrWs8" id="1653mnvB2PC" role="PzmwI">
+      <ref role="PrY4T" to="tpck:1_TrU5E6oyb" resolve="IDontSubstituteByDefault" />
+    </node>
+    <node concept="1TJgyi" id="75uV$1rZNtH" role="1TKVEl">
+      <property role="TrG5h" value="reexport" />
+      <property role="IQ2nx" value="8169228734285428589" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="1TJgyj" id="3elU8iQ65L1" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="jar" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="3717132724152589377" />
+      <ref role="20lvS9" node="15RAxQWZPkq" resolve="BuildSource_JavaJar" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="3elU8iQ72g4">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildSource_JavaCP" />
+    <property role="3GE5qa" value="Project.Java.Classpath" />
+    <property role="EcuMT" value="3717132724152837124" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="3elU8iQ7kMV">
+    <property role="TrG5h" value="BuildSource_JavaLibraryCP" />
+    <property role="3GE5qa" value="Project.Java.Library" />
+    <property role="EcuMT" value="3717132724152913083" />
+    <ref role="1TJDcQ" node="5gfUUDxhecw" resolve="BuildSource_JavaLibraryElement" />
+    <node concept="PrWs8" id="1653mnvB2Pf" role="PzmwI">
+      <ref role="PrY4T" to="tpck:1_TrU5E6oyb" resolve="IDontSubstituteByDefault" />
+    </node>
+    <node concept="1TJgyj" id="3elU8iQ7kMX" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="classpath" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="3717132724152913085" />
+      <ref role="20lvS9" node="3elU8iQ72g4" resolve="BuildSource_JavaCP" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="3elU8iQ7YwF">
+    <property role="TrG5h" value="BuildSourceSetContainer" />
+    <property role="3GE5qa" value="SourceSet" />
+    <property role="EcuMT" value="3717132724153083947" />
+  </node>
+  <node concept="1TIwiD" id="3elU8iQ7YxB">
+    <property role="TrG5h" value="BuildSource_JavaJars" />
+    <property role="3GE5qa" value="Project.Java.Classpath" />
+    <property role="34LRSv" value="jars" />
+    <property role="EcuMT" value="3717132724153084007" />
+    <ref role="1TJDcQ" node="3elU8iQ72g4" resolve="BuildSource_JavaCP" />
+    <node concept="1TJgyj" id="3elU8iQ7YxD" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="jars" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="3717132724153084009" />
+      <ref role="20lvS9" node="4zlO3QT8$m$" resolve="BuildInputFiles" />
+    </node>
+    <node concept="PrWs8" id="3elU8iQ7YxH" role="PzmwI">
+      <ref role="PrY4T" node="3elU8iQ7YwF" resolve="BuildSourceSetContainer" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6OECSZXJgkZ">
+    <property role="TrG5h" value="BuildInputFolders" />
+    <property role="3GE5qa" value="SourceSet.Folders" />
+    <property role="34LRSv" value="folders" />
+    <property role="EcuMT" value="7866279537988666687" />
+    <ref role="1TJDcQ" node="4zlO3QT8mNG" resolve="BuildInputFolderSet" />
+    <node concept="1TJgyj" id="6OECSZXJgl2" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="dir" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="7866279537988666690" />
+      <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+    <node concept="1TJgyj" id="6OECSZXJgl3" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="selectors" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="7866279537988666691" />
+      <ref role="20lvS9" node="4zlO3QT8$mB" resolve="BuildFileSelector" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1ZTcb8AgV3Z">
+    <property role="TrG5h" value="BuildInputSingleFolder" />
+    <property role="3GE5qa" value="SourceSet.Folders" />
+    <property role="34LRSv" value="folder" />
+    <property role="EcuMT" value="2303926226081001727" />
+    <ref role="1TJDcQ" node="4zlO3QT8mNG" resolve="BuildInputFolderSet" />
+    <node concept="1TJgyj" id="1ZTcb8AgV40" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="path" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="2303926226081001728" />
+      <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+    <node concept="PrWs8" id="4RsV8qJH_C3" role="PzmwI">
+      <ref role="PrY4T" node="4RsV8qJH_Bn" resolve="BuildSource_SingleFolder" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7wpYgMyURJQ">
+    <property role="TrG5h" value="BuildFileIncludesSelector" />
+    <property role="3GE5qa" value="SourceSet.Selectors" />
+    <property role="34LRSv" value="includes" />
+    <property role="EcuMT" value="8654221991637384182" />
+    <ref role="1TJDcQ" node="4zlO3QT8$mB" resolve="BuildFileSelector" />
+    <node concept="1TJgyi" id="7wpYgMyURJS" role="1TKVEl">
+      <property role="TrG5h" value="pattern" />
+      <property role="IQ2nx" value="8654221991637384184" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="PrWs8" id="7wpYgMyURLc" role="PzmwI">
+      <ref role="PrY4T" node="7wpYgMyURLb" resolve="BuildFileSelectorInAttribute" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="7wpYgMyURLb">
+    <property role="TrG5h" value="BuildFileSelectorInAttribute" />
+    <property role="3GE5qa" value="SourceSet.Selectors" />
+    <property role="EcuMT" value="8654221991637384267" />
+  </node>
+  <node concept="1TIwiD" id="2fQZjorRfO$">
+    <property role="TrG5h" value="BuildLayout_CompileOutputOf" />
+    <property role="3GE5qa" value="Layout.Java" />
+    <property role="34LRSv" value="compile output of" />
+    <property role="EcuMT" value="2591537044435828004" />
+    <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
+    <node concept="1TJgyj" id="2fQZjorRfOA" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="module" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="2591537044435828006" />
+      <ref role="20lvS9" node="2fQZjorRfOB" resolve="BuildSource_CompilablePart" />
+    </node>
+    <node concept="PrWs8" id="2fQZjorRIf3" role="PzmwI">
+      <ref role="PrY4T" node="Y2EImGIi9D" resolve="BuildLayout_FileSet" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="2fQZjorRfOB">
+    <property role="TrG5h" value="BuildSource_CompilablePart" />
+    <property role="3GE5qa" value="Project.Java" />
+    <property role="EcuMT" value="2591537044435828007" />
+    <node concept="PrWs8" id="2fQZjorRPWA" role="PrDN$">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5WMFzVNtKRk">
+    <property role="TrG5h" value="BuildSource_JavaDependencyExternalJar" />
+    <property role="3GE5qa" value="Project.Java.Dependencies" />
+    <property role="34LRSv" value="external jar" />
+    <property role="EcuMT" value="6859736767834557908" />
+    <ref role="1TJDcQ" node="2oUTXgLA9pR" resolve="BuildSource_JavaDependency" />
+    <node concept="1TJgyj" id="4RsV8qJGJsE" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="extJar" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="5610619299014309674" />
+      <ref role="20lvS9" node="4RsV8qJGJpc" resolve="BuildSource_JavaExternalJarRef" />
+    </node>
+    <node concept="1TJgyi" id="5WMFzVNtSNm" role="1TKVEl">
+      <property role="TrG5h" value="reexport" />
+      <property role="IQ2nx" value="6859736767834590422" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="PrWs8" id="5WMFzVNtKRl" role="PzmwI">
+      <ref role="PrY4T" node="IFRVVI6zqz" resolve="BuildExternalDependency" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6eCuTcwObZ9">
+    <property role="19KtqR" value="true" />
+    <property role="TrG5h" value="BuildExternalLayout" />
+    <property role="3GE5qa" value="Layout.External" />
+    <property role="34LRSv" value="external layout" />
+    <property role="EcuMT" value="7181125477683216329" />
+    <ref role="1TJDcQ" node="6qcrfIJEWWc" resolve="BuildLayout_AbstractContainer" />
+    <node concept="PrWs8" id="6eCuTcwObZa" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="1QGGSu" id="4Q8sAA5iJQV" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/externalLayout.png" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="6eCuTcwOczV">
+    <property role="TrG5h" value="BuildLayout_PureNode" />
+    <property role="3GE5qa" value="Layout.External" />
+    <property role="EcuMT" value="7181125477683218683" />
+  </node>
+  <node concept="1TIwiD" id="6eCuTcwOLGQ">
+    <property role="TrG5h" value="BuildLayout_FileStub" />
+    <property role="3GE5qa" value="Layout.External" />
+    <property role="34LRSv" value="file" />
+    <property role="EcuMT" value="7181125477683370806" />
+    <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
+    <node concept="1TJgyj" id="6eCuTcwOLIk" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="fileName" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="7181125477683370900" />
+      <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
+    </node>
+    <node concept="PrWs8" id="6eCuTcwOLGR" role="PzmwI">
+      <ref role="PrY4T" node="6eCuTcwOczV" resolve="BuildLayout_PureNode" />
+    </node>
+    <node concept="PrWs8" id="4RsV8qJDnGw" role="PzmwI">
+      <ref role="PrY4T" node="4RsV8qJDnFi" resolve="BuildSource_SingleFile" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6eCuTcwOX2$">
+    <property role="TrG5h" value="BuildExternalLayoutDependency" />
+    <property role="3GE5qa" value="Layout.External" />
+    <property role="EcuMT" value="7181125477683417252" />
+    <ref role="1TJDcQ" node="4RPz6WoY4Cz" resolve="BuildDependency" />
+    <node concept="1TJgyj" id="6eCuTcwOX2B" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="layout" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="7181125477683417255" />
+      <ref role="20lvS9" node="6eCuTcwObZ9" resolve="BuildExternalLayout" />
+    </node>
+    <node concept="1TJgyj" id="6eCuTcwOX2A" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="artifacts" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="7181125477683417254" />
+      <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+    <node concept="PrWs8" id="6eCuTcwOX2_" role="PzmwI">
+      <ref role="PrY4T" node="6bGbH3Svq63" resolve="BuildLayout_PathElement" />
+    </node>
+    <node concept="1QGGSu" id="4Q8sAA5iJQU" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/dependency.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4RsV8qJBXHj">
+    <property role="TrG5h" value="BuildLayout_ImportContent" />
+    <property role="3GE5qa" value="Layout" />
+    <property role="34LRSv" value="import files from" />
+    <property role="EcuMT" value="5610619299013057363" />
+    <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
+    <node concept="1TJgyj" id="4RsV8qJBXHl" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="target" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="5610619299013057365" />
+      <ref role="20lvS9" node="450ejGzh8b3" resolve="BuildLayout_Container" />
+    </node>
+    <node concept="1TJgyj" id="5STnHcdgZpq" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="selectors" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="6789562173791401562" />
+      <ref role="20lvS9" node="4zlO3QT8$mB" resolve="BuildFileSelector" />
+    </node>
+    <node concept="PrWs8" id="4RsV8qJBXHk" role="PzmwI">
+      <ref role="PrY4T" node="IFRVVI6zqz" resolve="BuildExternalDependency" />
+    </node>
+    <node concept="PrWs8" id="4RsV8qJD1J_" role="PzmwI">
+      <ref role="PrY4T" node="Y2EImGIi9D" resolve="BuildLayout_FileSet" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="4RsV8qJDnFi">
+    <property role="TrG5h" value="BuildSource_SingleFile" />
+    <property role="3GE5qa" value="SourceSet" />
+    <property role="EcuMT" value="5610619299013425874" />
+  </node>
+  <node concept="1TIwiD" id="4RsV8qJGJpc">
+    <property role="TrG5h" value="BuildSource_JavaExternalJarRef" />
+    <property role="3GE5qa" value="Project.Java.Classpath" />
+    <property role="EcuMT" value="5610619299014309452" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="4RsV8qJGJpd" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="jar" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="5610619299014309453" />
+      <ref role="20lvS9" node="4RsV8qJDnFi" resolve="BuildSource_SingleFile" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4RsV8qJHgQB">
+    <property role="TrG5h" value="BuildSource_JavaLibraryExternalJar" />
+    <property role="3GE5qa" value="Project.Java.Library" />
+    <property role="34LRSv" value="external jar" />
+    <property role="EcuMT" value="5610619299014446503" />
+    <ref role="1TJDcQ" node="3elU8iQ72g4" resolve="BuildSource_JavaCP" />
+    <node concept="1TJgyj" id="4RsV8qJHgQC" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="extJar" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="5610619299014446504" />
+      <ref role="20lvS9" node="4RsV8qJGJpc" resolve="BuildSource_JavaExternalJarRef" />
+    </node>
+    <node concept="PrWs8" id="4RsV8qJHgQT" role="PzmwI">
+      <ref role="PrY4T" node="IFRVVI6zqz" resolve="BuildExternalDependency" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="4RsV8qJH_Bn">
+    <property role="TrG5h" value="BuildSource_SingleFolder" />
+    <property role="3GE5qa" value="SourceSet" />
+    <property role="EcuMT" value="5610619299014531543" />
+  </node>
+  <node concept="1TIwiD" id="4RsV8qJH_CZ">
+    <property role="TrG5h" value="BuildSource_JavaExternalJarFolderRef" />
+    <property role="3GE5qa" value="Project.Java.Classpath" />
+    <property role="EcuMT" value="5610619299014531647" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="4RsV8qJH_D0" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="folder" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="5610619299014531648" />
+      <ref role="20lvS9" node="4RsV8qJH_Bn" resolve="BuildSource_SingleFolder" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4RsV8qJH_FS">
+    <property role="TrG5h" value="BuildSource_JavaLibraryExternalJarFolder" />
+    <property role="3GE5qa" value="Project.Java.Library" />
+    <property role="34LRSv" value="external jars" />
+    <property role="EcuMT" value="5610619299014531832" />
+    <ref role="1TJDcQ" node="3elU8iQ72g4" resolve="BuildSource_JavaCP" />
+    <node concept="1TJgyi" id="1MkTaILUgwk" role="1TKVEl">
+      <property role="IQ2nx" value="2059522355690539028" />
+      <property role="TrG5h" value="includeRecursively" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="1TJgyj" id="4RsV8qJH_FU" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="extFolder" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="5610619299014531834" />
+      <ref role="20lvS9" node="4RsV8qJH_CZ" resolve="BuildSource_JavaExternalJarFolderRef" />
+    </node>
+    <node concept="PrWs8" id="4RsV8qJH_FT" role="PzmwI">
+      <ref role="PrY4T" node="IFRVVI6zqz" resolve="BuildExternalDependency" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="NvWe6DpNB2">
+    <property role="TrG5h" value="BuildSource_JavaOptions" />
+    <property role="3GE5qa" value="Project.Java" />
+    <property role="34LRSv" value="java options" />
+    <property role="EcuMT" value="927724900262033858" />
+    <ref role="1TJDcQ" node="6qcrfIJFdK8" resolve="BuildProjectPart" />
+    <node concept="1TJgyj" id="NvWe6DpNB7" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="resourceSelectors" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="927724900262033863" />
+      <ref role="20lvS9" node="4zlO3QT8$mB" resolve="BuildFileSelector" />
+    </node>
+    <node concept="1TJgyi" id="NvWe6DpNB3" role="1TKVEl">
+      <property role="TrG5h" value="optionsName" />
+      <property role="IQ2nx" value="927724900262033859" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="NvWe6DpNB5" role="1TKVEl">
+      <property role="TrG5h" value="generateDebugInfo" />
+      <property role="IQ2nx" value="927724900262033861" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="1TJgyi" id="NvWe6DpNB6" role="1TKVEl">
+      <property role="TrG5h" value="copyResources" />
+      <property role="IQ2nx" value="927724900262033862" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="1TJgyi" id="NvWe6DrcJz" role="1TKVEl">
+      <property role="TrG5h" value="heapSize" />
+      <property role="IQ2nx" value="927724900262398947" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    </node>
+    <node concept="1TJgyi" id="NvWe6DrcJI" role="1TKVEl">
+      <property role="TrG5h" value="noWarnings" />
+      <property role="IQ2nx" value="927724900262398958" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="1TJgyi" id="1Mjrj7j4qYl" role="1TKVEl">
+      <property role="TrG5h" value="compiler" />
+      <property role="IQ2nx" value="2059109515400425365" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="3Par5_L6wc4" role="1TKVEl">
+      <property role="TrG5h" value="fork" />
+      <property role="IQ2nx" value="4416461515995611908" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="1TJgyi" id="64wWIxoRWZs" role="1TKVEl">
+      <property role="TrG5h" value="javaLevel" />
+      <property role="IQ2nx" value="6998860900671147996" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="1hYW$Pu99cn" role="1TKVEl">
+      <property role="TrG5h" value="compilerOptions" />
+      <property role="IQ2nx" value="1476884141929960215" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1QGGSu" id="4Q8sAA5iJQO" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/javaOptions.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1s8OwvM5SHi">
+    <property role="TrG5h" value="BuildSource_JavaModuleOptions" />
+    <property role="3GE5qa" value="Project.Java" />
+    <property role="34LRSv" value="apply compiler options" />
+    <property role="EcuMT" value="1659807394254261074" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="1s8OwvM52kF" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="compileOptions" />
+      <property role="IQ2ns" value="1659807394254038315" />
+      <ref role="20lvS9" node="NvWe6DpNB2" resolve="BuildSource_JavaOptions" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1s8OwvM7w1H">
+    <property role="TrG5h" value="BuildSource_JavaResources" />
+    <property role="3GE5qa" value="Project.Java.Sources" />
+    <property role="34LRSv" value="resources" />
+    <property role="EcuMT" value="1659807394254684269" />
+    <ref role="1TJDcQ" node="4zlO3QTanjW" resolve="BuildSource_JavaSources" />
+    <node concept="1TJgyj" id="1s8OwvM7w1K" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="fileset" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="1659807394254684272" />
+      <ref role="20lvS9" node="4zlO3QT8$m$" resolve="BuildInputFiles" />
+    </node>
+    <node concept="PrWs8" id="1s8OwvM7w3M" role="PzmwI">
+      <ref role="PrY4T" node="3elU8iQ7YwF" resolve="BuildSourceSetContainer" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7XQqoCTjpEM">
+    <property role="TrG5h" value="BuildLayout_CustomCopy" />
+    <property role="3GE5qa" value="Layout.File" />
+    <property role="EcuMT" value="9184644532456495794" />
+    <ref role="1TJDcQ" node="7XQqoCTjpIh" resolve="BuildLayout_AbstractCopy" />
+    <node concept="PrWs8" id="1653mnvB2FM" role="PzmwI">
+      <ref role="PrY4T" to="tpck:1_TrU5E6oyb" resolve="IDontSubstituteByDefault" />
+    </node>
+    <node concept="PrWs8" id="19QsrPuDlVw" role="PzmwI">
+      <ref role="PrY4T" node="Y2EImGIi9D" resolve="BuildLayout_FileSet" />
+    </node>
+    <node concept="1TJgyj" id="7XQqoCTjyOu" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="handlers" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="9184644532456533278" />
+      <ref role="20lvS9" node="7XQqoCTjsKN" resolve="BuildLayout_CopyHandler" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7XQqoCTjpIh">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildLayout_AbstractCopy" />
+    <property role="3GE5qa" value="Layout.File" />
+    <property role="EcuMT" value="9184644532456496017" />
+    <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
+    <node concept="1TJgyj" id="4zlO3QT8NAU" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="fileset" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="5248329904287857082" />
+      <ref role="20lvS9" node="4zlO3QT8mNF" resolve="BuildInputFileSet" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7XQqoCTjsKN">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildLayout_CopyHandler" />
+    <property role="3GE5qa" value="Layout.File" />
+    <property role="EcuMT" value="9184644532456508467" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="7UAfeVQUc4_" role="PzmwI">
+      <ref role="PrY4T" node="7UAfeVQUc4$" resolve="BuildLayout_CopyParameter" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7XQqoCTkBp3">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildLayout_CopyFilter" />
+    <property role="3GE5qa" value="Layout.File" />
+    <property role="EcuMT" value="9184644532456814147" />
+    <ref role="1TJDcQ" node="7XQqoCTjsKN" resolve="BuildLayout_CopyHandler" />
+  </node>
+  <node concept="1TIwiD" id="7XQqoCTkBp5">
+    <property role="TrG5h" value="BuildLayout_CopyFilterReplaceTokens" />
+    <property role="3GE5qa" value="Layout.File.Handlers" />
+    <property role="34LRSv" value="replace" />
+    <property role="EcuMT" value="9184644532456814149" />
+    <ref role="1TJDcQ" node="7XQqoCTkBp3" resolve="BuildLayout_CopyFilter" />
+    <node concept="1TJgyi" id="7XQqoCTkBp7" role="1TKVEl">
+      <property role="TrG5h" value="key" />
+      <property role="IQ2nx" value="9184644532456814151" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyj" id="7XQqoCTkBp8" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="value" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="9184644532456814152" />
+      <ref role="20lvS9" node="3NagsOfThPf" resolve="BuildString" />
+    </node>
+  </node>
+  <node concept="Az7Fb" id="7usrAn05wtA">
+    <property role="TrG5h" value="FileName" />
+    <property role="FLfZY" value="[^\\/$!]*" />
+    <property role="3GE5qa" value="SourcePath" />
+  </node>
+  <node concept="PlHQZ" id="7XQqoCTkVIO">
+    <property role="TrG5h" value="BuildStringContainer" />
+    <property role="3GE5qa" value="Names" />
+    <property role="EcuMT" value="9184644532456897460" />
+  </node>
+  <node concept="1TIwiD" id="7XQqoCTlIL8">
+    <property role="TrG5h" value="BuildLayout_CopyFilterReplaceRegex" />
+    <property role="3GE5qa" value="Layout.File.Handlers" />
+    <property role="34LRSv" value="replace regex" />
+    <property role="EcuMT" value="9184644532457106504" />
+    <ref role="1TJDcQ" node="7XQqoCTkBp3" resolve="BuildLayout_CopyFilter" />
+    <node concept="1TJgyj" id="7XQqoCTlILa" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="value" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="9184644532457106506" />
+      <ref role="20lvS9" node="3NagsOfThPf" resolve="BuildString" />
+    </node>
+    <node concept="1TJgyi" id="7XQqoCTlIL9" role="1TKVEl">
+      <property role="TrG5h" value="pattern" />
+      <property role="IQ2nx" value="9184644532457106505" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="7XQqoCTlILc" role="1TKVEl">
+      <property role="TrG5h" value="flags" />
+      <property role="IQ2nx" value="9184644532457106508" />
+      <ref role="AX2Wp" node="7XQqoCTlIMP" resolve="AntRegexFlags" />
+    </node>
+  </node>
+  <node concept="Az7Fb" id="7XQqoCTlIMP">
+    <property role="TrG5h" value="AntRegexFlags" />
+    <property role="FLfZY" value="[gims]+" />
+    <property role="3GE5qa" value="Layout.File.Handlers" />
+  </node>
+  <node concept="1TIwiD" id="6CY5wCYZQEk">
+    <property role="TrG5h" value="BuildLayout_EchoXml" />
+    <property role="3GE5qa" value="Layout.File" />
+    <property role="34LRSv" value="xml file" />
+    <property role="EcuMT" value="7655580649838832276" />
+    <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
+    <node concept="1TJgyj" id="6CY5wCYZQEm" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="fileName" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="7655580649838832278" />
+      <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
+    </node>
+    <node concept="1TJgyj" id="6CY5wCYZQER" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="element" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="7655580649838832311" />
+      <ref role="20lvS9" to="iuxj:5M4a$b5ikxH" resolve="XmlBaseElement" />
+    </node>
+    <node concept="PrWs8" id="6CY5wCYZQEu" role="PzmwI">
+      <ref role="PrY4T" node="7XQqoCTkVIO" resolve="BuildStringContainer" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="bgY2XVZqhE">
+    <property role="TrG5h" value="BuildLayout_EchoProperties" />
+    <property role="3GE5qa" value="Layout.File.Properties" />
+    <property role="34LRSv" value="properties file" />
+    <property role="EcuMT" value="202934866059043946" />
+    <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
+    <node concept="1TJgyj" id="bgY2XVZqhG" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="fileName" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="202934866059043948" />
+      <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
+    </node>
+    <node concept="1TJgyj" id="bgY2XVZqhU" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="entries" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="202934866059043962" />
+      <ref role="20lvS9" node="bgY2XVZqhR" resolve="BuildLayout_EchoPropertyEntry" />
+    </node>
+    <node concept="PrWs8" id="bgY2XVZqhF" role="PzmwI">
+      <ref role="PrY4T" node="7XQqoCTkVIO" resolve="BuildStringContainer" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="bgY2XVZqhR">
+    <property role="TrG5h" value="BuildLayout_EchoPropertyEntry" />
+    <property role="3GE5qa" value="Layout.File.Properties" />
+    <property role="34LRSv" value="entry" />
+    <property role="EcuMT" value="202934866059043959" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="bgY2XVZqhT" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="value" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="202934866059043961" />
+      <ref role="20lvS9" node="3NagsOfThPf" resolve="BuildString" />
+    </node>
+    <node concept="1TJgyi" id="bgY2XVZqhS" role="1TKVEl">
+      <property role="TrG5h" value="key" />
+      <property role="IQ2nx" value="202934866059043960" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7s9W5cEkA83">
+    <property role="TrG5h" value="BuildLayout_Tar" />
+    <property role="3GE5qa" value="Layout.File" />
+    <property role="34LRSv" value="tar" />
+    <property role="EcuMT" value="8577651205286814211" />
+    <ref role="1TJDcQ" node="6qcrfIJF7Yc" resolve="BuildLayout_NamedContainer" />
+    <node concept="1TJgyi" id="1HQQX4XU8$C" role="1TKVEl">
+      <property role="TrG5h" value="compression" />
+      <property role="IQ2nx" value="1979010778009209128" />
+      <ref role="AX2Wp" node="1HQQX4XU8$$" resolve="BuildLayout_TarCompression" />
+    </node>
+    <node concept="PrWs8" id="7s9W5cEkA84" role="PzmwI">
+      <ref role="PrY4T" node="4zlO3QT9Z8D" resolve="BuildLayout_ContainerAcceptingFileSet" />
+    </node>
+    <node concept="PrWs8" id="7s9W5cEkA86" role="PzmwI">
+      <ref role="PrY4T" node="6eCuTcwOczV" resolve="BuildLayout_PureNode" />
+    </node>
+    <node concept="1QGGSu" id="4Q8sAA5iJQT" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/archive.png" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="3D3G23Q8WAG">
+    <property role="TrG5h" value="BuildLayout_CopyFilterFixCRLF" />
+    <property role="3GE5qa" value="Layout.File.Handlers" />
+    <property role="34LRSv" value="fix eol" />
+    <property role="EcuMT" value="4198392933254416812" />
+    <ref role="1TJDcQ" node="7XQqoCTkBp3" resolve="BuildLayout_CopyFilter" />
+    <node concept="1TJgyi" id="3D3G23Q8WAQ" role="1TKVEl">
+      <property role="TrG5h" value="eol" />
+      <property role="IQ2nx" value="4198392933254416822" />
+      <ref role="AX2Wp" node="3D3G23Q8WAI" resolve="BuildLayout_CopyFilterEolStyle" />
+    </node>
+    <node concept="1TJgyi" id="3D3G23Q9t_s" role="1TKVEl">
+      <property role="TrG5h" value="removeEOF" />
+      <property role="IQ2nx" value="4198392933254551900" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+  </node>
+  <node concept="AxPO7" id="3D3G23Q8WAI">
+    <property role="3lZH7k" value="derive_from_internal_value" />
+    <property role="PDuV0" value="false" />
+    <property role="TrG5h" value="BuildLayout_CopyFilterEolStyle" />
+    <property role="3GE5qa" value="Layout.File.Handlers" />
+    <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
+    <node concept="M4N5e" id="3D3G23Q8Zi_" role="M5hS2">
+      <property role="1uS6qv" value="local" />
+      <property role="1uS6qo" value="use local system line separator" />
+    </node>
+    <node concept="M4N5e" id="3D3G23Q8WAJ" role="M5hS2">
+      <property role="1uS6qv" value="asis" />
+      <property role="1uS6qo" value="leave as is" />
+    </node>
+    <node concept="M4N5e" id="3D3G23Q8WAK" role="M5hS2">
+      <property role="1uS6qv" value="cr" />
+      <property role="1uS6qo" value="convert to a single CR" />
+    </node>
+    <node concept="M4N5e" id="3D3G23Q8WAL" role="M5hS2">
+      <property role="1uS6qv" value="lf" />
+      <property role="1uS6qo" value="convert to a single LF" />
+    </node>
+    <node concept="M4N5e" id="3D3G23Q8WAM" role="M5hS2">
+      <property role="1uS6qv" value="crlf" />
+      <property role="1uS6qo" value="convert to the pair CRLF" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6L3dtXewST0">
+    <property role="R4oN_" value="customize file modes in archive" />
+    <property role="TrG5h" value="BuildLayout_Filemode" />
+    <property role="3GE5qa" value="Layout.File" />
+    <property role="34LRSv" value="filemode" />
+    <property role="EcuMT" value="7801138212747054656" />
+    <ref role="1TJDcQ" node="2xHpXR_cEa4" resolve="BuildLayout_TransparentContainer" />
+    <node concept="1TJgyi" id="6L3dtXewST4" role="1TKVEl">
+      <property role="TrG5h" value="filemode" />
+      <property role="IQ2nx" value="7801138212747054660" />
+      <ref role="AX2Wp" node="6L3dtXewST3" resolve="BuildLayout_UnixFilemode" />
+    </node>
+    <node concept="1TJgyi" id="6L3dtXewST5" role="1TKVEl">
+      <property role="TrG5h" value="dirmode" />
+      <property role="IQ2nx" value="7801138212747054661" />
+      <ref role="AX2Wp" node="6L3dtXewST3" resolve="BuildLayout_UnixFilemode" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="63lu3g6DRlj">
+    <property role="TrG5h" value="BuildLayout_CopyFlattenMapper" />
+    <property role="3GE5qa" value="Layout.File.Mappers" />
+    <property role="34LRSv" value="flatten" />
+    <property role="EcuMT" value="6977615362525721939" />
+    <ref role="1TJDcQ" node="63lu3g6DRli" resolve="BuildLayout_CopyMapper" />
+  </node>
+  <node concept="Az7Fb" id="6L3dtXewST3">
+    <property role="TrG5h" value="BuildLayout_UnixFilemode" />
+    <property role="FLfZY" value="[0-7]{3}" />
+    <property role="3GE5qa" value="Layout.File" />
+  </node>
+  <node concept="1TIwiD" id="63lu3g6DRli">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildLayout_CopyMapper" />
+    <property role="3GE5qa" value="Layout.File.Mappers" />
+    <property role="EcuMT" value="6977615362525721938" />
+    <ref role="1TJDcQ" node="7XQqoCTjsKN" resolve="BuildLayout_CopyHandler" />
+  </node>
+  <node concept="AxPO7" id="1HQQX4XU8$$">
+    <property role="3lZH7k" value="derive_from_internal_value" />
+    <property role="TrG5h" value="BuildLayout_TarCompression" />
+    <property role="3GE5qa" value="Layout.File" />
+    <ref role="M4eZT" to="tpck:fKAOsGN" resolve="string" />
+    <node concept="M4N5e" id="1HQQX4XU8$_" role="M5hS2">
+      <property role="1uS6qv" value="none" />
+      <property role="1uS6qo" value="none" />
+    </node>
+    <node concept="M4N5e" id="1HQQX4XU8$A" role="M5hS2">
+      <property role="1uS6qv" value="gzip" />
+      <property role="1uS6qo" value="gzip" />
+    </node>
+    <node concept="M4N5e" id="1HQQX4XU8$B" role="M5hS2">
+      <property role="1uS6qv" value="bzip2" />
+      <property role="1uS6qo" value="bzip2" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6ZfgptGYA5P">
+    <property role="TrG5h" value="BuildSource_JavaDependencyFileset" />
+    <property role="3GE5qa" value="Project.Java.Dependencies" />
+    <property role="34LRSv" value="classpath" />
+    <property role="EcuMT" value="8056730377013322101" />
+    <ref role="1TJDcQ" node="2oUTXgLA9pR" resolve="BuildSource_JavaDependency" />
+    <node concept="1TJgyj" id="6S1jmf0x7ox" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="classpath" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="7926701909975791137" />
+      <ref role="20lvS9" to="iuxj:5M4a$b5ikxH" resolve="XmlBaseElement" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="6Iq8148fTg2">
+    <property role="TrG5h" value="BuildSource_FilesetProjectPart" />
+    <property role="3GE5qa" value="Project" />
+    <property role="EcuMT" value="7753544965996647426" />
+    <node concept="PrWs8" id="6Iq8148fTg3" role="PrDN$">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6Iq8148fTg4">
+    <property role="R4oN_" value="copy files of project element" />
+    <property role="TrG5h" value="BuildLayout_FilesOf" />
+    <property role="3GE5qa" value="Layout.File" />
+    <property role="34LRSv" value="files of" />
+    <property role="EcuMT" value="7753544965996647428" />
+    <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
+    <node concept="1TJgyj" id="6Iq8148fTg6" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="element" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="7753544965996647430" />
+      <ref role="20lvS9" node="6Iq8148fTg2" resolve="BuildSource_FilesetProjectPart" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="3soCHYjmHja">
+    <property role="TrG5h" value="BuildLayout_CopyGlobMapper" />
+    <property role="3GE5qa" value="Layout.File.Mappers" />
+    <property role="34LRSv" value="filename glob mapper" />
+    <property role="EcuMT" value="3970102152660702410" />
+    <ref role="1TJDcQ" node="63lu3g6DRli" resolve="BuildLayout_CopyMapper" />
+    <node concept="1TJgyj" id="3soCHYjnnkd" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="to" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="3970102152660874509" />
+      <ref role="20lvS9" node="3NagsOfThPf" resolve="BuildString" />
+    </node>
+    <node concept="1TJgyi" id="3soCHYjnnkc" role="1TKVEl">
+      <property role="TrG5h" value="from" />
+      <property role="IQ2nx" value="3970102152660874508" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="3soCHYjnnMv">
+    <property role="TrG5h" value="BuildLayout_CopyRegexMapper" />
+    <property role="3GE5qa" value="Layout.File.Mappers" />
+    <property role="34LRSv" value="filename regex mapper" />
+    <property role="EcuMT" value="3970102152660876447" />
+    <ref role="1TJDcQ" node="63lu3g6DRli" resolve="BuildLayout_CopyMapper" />
+    <node concept="1TJgyi" id="3soCHYjnnMw" role="1TKVEl">
+      <property role="TrG5h" value="pattern" />
+      <property role="IQ2nx" value="3970102152660876448" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="3soCHYjnnMx" role="1TKVEl">
+      <property role="TrG5h" value="replace" />
+      <property role="IQ2nx" value="3970102152660876449" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="2oW$psGOu6E">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildVariableMacroInitValue" />
+    <property role="3GE5qa" value="Macro" />
+    <property role="EcuMT" value="2755237150521942442" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="2oW$psGOAa7">
+    <property role="TrG5h" value="BuildVariableMacroInitWithString" />
+    <property role="3GE5qa" value="Macro" />
+    <property role="34LRSv" value="string" />
+    <property role="EcuMT" value="2755237150521975431" />
+    <ref role="1TJDcQ" node="2oW$psGOu6E" resolve="BuildVariableMacroInitValue" />
+    <node concept="PrWs8" id="1653mnvAOQc" role="PzmwI">
+      <ref role="PrY4T" to="tpck:1_TrU5E6oyb" resolve="IDontSubstituteByDefault" />
+    </node>
+    <node concept="1TJgyj" id="2oW$psGOAad" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="value" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="2755237150521975437" />
+      <ref role="20lvS9" node="3NagsOfThPf" resolve="BuildString" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="d_WKSiOGf$">
+    <property role="TrG5h" value="BuildVariableMacroInitWithDate" />
+    <property role="3GE5qa" value="Macro" />
+    <property role="34LRSv" value="date" />
+    <property role="EcuMT" value="244868996532454372" />
+    <ref role="1TJDcQ" node="2oW$psGOu6E" resolve="BuildVariableMacroInitValue" />
+    <node concept="1TJgyi" id="d_WKSiOGfK" role="1TKVEl">
+      <property role="TrG5h" value="pattern" />
+      <property role="IQ2nx" value="244868996532454384" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="d_WKSiP3Fn">
+    <property role="TrG5h" value="BuildVariableMacroInitWithValueFromFile" />
+    <property role="3GE5qa" value="Macro" />
+    <property role="34LRSv" value="load from file" />
+    <property role="EcuMT" value="244868996532550359" />
+    <ref role="1TJDcQ" node="2oW$psGOu6E" resolve="BuildVariableMacroInitValue" />
+    <node concept="1TJgyi" id="d_WKSiP3Fq" role="1TKVEl">
+      <property role="TrG5h" value="propertyName" />
+      <property role="IQ2nx" value="244868996532550362" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyj" id="d_WKSiP3Fo" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="fileName" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="244868996532550360" />
+      <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7UAfeVQRE3b">
+    <property role="TrG5h" value="BuildLayout_Comment" />
+    <property role="3GE5qa" value="Layout" />
+    <property role="34LRSv" value="#" />
+    <property role="EcuMT" value="9126048691954557131" />
+    <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
+    <node concept="1TJgyi" id="7UAfeVQSd8b" role="1TKVEl">
+      <property role="TrG5h" value="text" />
+      <property role="IQ2nx" value="9126048691954700811" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7UAfeVQUc3H">
+    <property role="TrG5h" value="BuildLayout_File" />
+    <property role="3GE5qa" value="Layout.File" />
+    <property role="34LRSv" value="file" />
+    <property role="EcuMT" value="9126048691955220717" />
+    <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
+    <node concept="1TJgyj" id="7UAfeVQUc4q" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="path" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="9126048691955220762" />
+      <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+    <node concept="1TJgyj" id="7UAfeVQUc4A" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="parameters" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="9126048691955220774" />
+      <ref role="20lvS9" node="7UAfeVQUc4$" resolve="BuildLayout_CopyParameter" />
+    </node>
+    <node concept="PrWs8" id="7UAfeVQUc4r" role="PzmwI">
+      <ref role="PrY4T" node="4RsV8qJDnFi" resolve="BuildSource_SingleFile" />
+    </node>
+    <node concept="1TJgyi" id="7UAfeVQUccF" role="1TKVEl">
+      <property role="TrG5h" value="filemode" />
+      <property role="IQ2nx" value="9126048691955221291" />
+      <ref role="AX2Wp" node="6L3dtXewST3" resolve="BuildLayout_UnixFilemode" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="7UAfeVQUc4$">
+    <property role="TrG5h" value="BuildLayout_CopyParameter" />
+    <property role="3GE5qa" value="Layout.File" />
+    <property role="EcuMT" value="9126048691955220772" />
+  </node>
+  <node concept="1TIwiD" id="2oE1c2blJFZ">
+    <property role="TrG5h" value="BuildLayout_Files" />
+    <property role="3GE5qa" value="Layout.File" />
+    <property role="34LRSv" value="files from" />
+    <property role="EcuMT" value="2750015747481074431" />
+    <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
+    <node concept="1TJgyj" id="2oE1c2blJG0" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="path" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="2750015747481074432" />
+      <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+    <node concept="1TJgyj" id="2oE1c2blJG1" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="parameters" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="2750015747481074433" />
+      <ref role="20lvS9" node="7UAfeVQUc4$" resolve="BuildLayout_CopyParameter" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="62K_yvYRFsW">
+    <property role="TrG5h" value="BuildLayout_War" />
+    <property role="3GE5qa" value="Layout.Java" />
+    <property role="34LRSv" value="war" />
+    <property role="EcuMT" value="6967233722066057020" />
+    <ref role="1TJDcQ" node="6qcrfIJF7Yq" resolve="BuildLayout_Jar" />
+  </node>
+  <node concept="1TIwiD" id="j1Y_zp$ERu">
+    <property role="TrG5h" value="BuildSource_JavaDependencyExternalJarInFolder" />
+    <property role="3GE5qa" value="Project.Java.Dependencies" />
+    <property role="34LRSv" value="external jar in folder" />
+    <property role="EcuMT" value="342830306171203038" />
+    <ref role="1TJDcQ" node="2oUTXgLA9pR" resolve="BuildSource_JavaDependency" />
+    <node concept="1TJgyj" id="j1Y_zp$M$1" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="extFolder" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="342830306171234561" />
+      <ref role="20lvS9" node="4RsV8qJH_CZ" resolve="BuildSource_JavaExternalJarFolderRef" />
+    </node>
+    <node concept="1TJgyi" id="j1Y_zp$M$0" role="1TKVEl">
+      <property role="TrG5h" value="reexport" />
+      <property role="IQ2nx" value="342830306171234560" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="1TJgyi" id="j1Y_zp$NMG" role="1TKVEl">
+      <property role="TrG5h" value="suffix" />
+      <property role="IQ2nx" value="342830306171239596" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="PrWs8" id="j1Y_zp$ERv" role="PzmwI">
+      <ref role="PrY4T" node="IFRVVI6zqz" resolve="BuildExternalDependency" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="15teMbUWwWI">
+    <property role="R4oN_" value="jar manifest file" />
+    <property role="TrG5h" value="BuildLayout_JarManifest" />
+    <property role="3GE5qa" value="Layout.Java.Manifest" />
+    <property role="34LRSv" value="manifest" />
+    <property role="EcuMT" value="1251221292903960366" />
+    <ref role="1TJDcQ" node="6qcrfIJF4M5" resolve="BuildLayout_Node" />
+    <node concept="1TJgyj" id="7ro1Zzt_n6j" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="parts" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="8563603456895840659" />
+      <ref role="20lvS9" node="7ro1Zzt_n6e" resolve="BuildLayout_JarManifest_Part" />
+    </node>
+    <node concept="1TJgyj" id="6uJjF_N$tZ1" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="name" />
+      <property role="IQ2ns" value="7471276865245798337" />
+      <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="15teMbUWwWK">
+    <property role="R4oN_" value="jar manifest attribute" />
+    <property role="TrG5h" value="BuildLayout_JarManifest_Attribute" />
+    <property role="3GE5qa" value="Layout.Java.Manifest" />
+    <property role="34LRSv" value="&lt;name&gt;: &lt;value&gt;" />
+    <property role="EcuMT" value="1251221292903960368" />
+    <ref role="1TJDcQ" node="7ro1Zzt_n6e" resolve="BuildLayout_JarManifest_Part" />
+    <node concept="1TJgyj" id="15teMbUWwWL" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="name" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="1251221292903960369" />
+      <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
+    </node>
+    <node concept="1TJgyj" id="15teMbUWwWM" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="value" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="1251221292903960370" />
+      <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
+    </node>
+    <node concept="PrWs8" id="6uJjF_N_jnb" role="PzmwI">
+      <ref role="PrY4T" node="7XQqoCTkVIO" resolve="BuildStringContainer" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="15teMbUX7PV">
+    <property role="R4oN_" value="jar manifest section" />
+    <property role="TrG5h" value="BuildLayout_JarManifest_Section" />
+    <property role="3GE5qa" value="Layout.Java.Manifest" />
+    <property role="34LRSv" value="section" />
+    <property role="EcuMT" value="1251221292904119675" />
+    <ref role="1TJDcQ" node="7ro1Zzt_n6e" resolve="BuildLayout_JarManifest_Part" />
+    <node concept="1TJgyj" id="15teMbUX7PW" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="attribute" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="1251221292904119676" />
+      <ref role="20lvS9" node="15teMbUWwWK" resolve="BuildLayout_JarManifest_Attribute" />
+    </node>
+    <node concept="1TJgyj" id="5V$ev8kKcto" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="name" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="6837653846148302680" />
+      <ref role="20lvS9" node="IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="2cX$JBzidtC">
+    <property role="TrG5h" value="BuildSourceArchiveRelativePath" />
+    <property role="3GE5qa" value="SourcePath" />
+    <property role="34LRSv" value="*.zip!/" />
+    <property role="EcuMT" value="2539347366864541544" />
+    <ref role="1TJDcQ" node="6mpuAlRavrV" resolve="BuildRelativePath" />
+    <node concept="1TJgyj" id="2cX$JBziBxc" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="archivePath" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="2539347366864648268" />
+      <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+    <node concept="PrWs8" id="K9IFLIJT6b" role="PzmwI">
+      <ref role="PrY4T" node="IFRVVI6zqz" resolve="BuildExternalDependency" />
+    </node>
+    <node concept="PrWs8" id="5hFYqIiZAkL" role="PzmwI">
+      <ref role="PrY4T" node="5hFYqIiZwGZ" resolve="IWorkflowParticipant" />
+    </node>
+    <node concept="PrWs8" id="1653mnvAOVE" role="PzmwI">
+      <ref role="PrY4T" to="tpck:1_TrU5E6oyb" resolve="IDontSubstituteByDefault" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7ro1Zzt_n6e">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildLayout_JarManifest_Part" />
+    <property role="3GE5qa" value="Layout.Java.Manifest" />
+    <property role="EcuMT" value="8563603456895840654" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="PlHQZ" id="5hFYqIiZwGZ">
+    <property role="TrG5h" value="IWorkflowParticipant" />
+    <property role="3GE5qa" value="Workflow" />
+    <property role="EcuMT" value="6083230236994833215" />
+  </node>
+  <node concept="1TIwiD" id="5Wv1_bQ19g5">
+    <property role="TrG5h" value="GeneratorInternal_IWorkfowParticipants" />
+    <property role="3GE5qa" value="GeneratorInternal" />
+    <property role="EcuMT" value="6854204111265764357" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="5Wv1_bQ19g6" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="for" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="6854204111265764358" />
+      <ref role="20lvS9" to="8xvf:2pKPpytmA9N" resolve="BwfTask" />
+    </node>
+    <node concept="1TJgyj" id="5Wv1_bQ19g7" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="participant" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="6854204111265764359" />
+      <ref role="20lvS9" node="5M62Y6Wnc78" resolve="GeneratorInternal_IWorkflowParticipantReference" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5M62Y6Wnc78">
+    <property role="TrG5h" value="GeneratorInternal_IWorkflowParticipantReference" />
+    <property role="3GE5qa" value="GeneratorInternal" />
+    <property role="EcuMT" value="6667029362524340680" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="5M62Y6Wnc79" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="participant" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="6667029362524340681" />
+      <ref role="20lvS9" node="5hFYqIiZwGZ" resolve="IWorkflowParticipant" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4j_Rh$Iv0Ko">
+    <property role="TrG5h" value="GeneratorInternal_BuildSource_JavaModule" />
+    <property role="3GE5qa" value="GeneratorInternal" />
+    <property role="EcuMT" value="4964617264469642264" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="4j_Rh$Iv0Kp" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="targetModule" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="4964617264469642265" />
+      <ref role="20lvS9" node="6qcrfIJFdKS" resolve="BuildSource_JavaModule" />
+    </node>
+    <node concept="1TJgyi" id="4j_Rh$Iv0Kq" role="1TKVEl">
+      <property role="TrG5h" value="targetReexport" />
+      <property role="IQ2nx" value="4964617264469642266" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4j_Rh$Iv0Pa">
+    <property role="TrG5h" value="GeneratorInternal_BuildSource_SingleFile" />
+    <property role="3GE5qa" value="GeneratorInternal" />
+    <property role="EcuMT" value="4964617264469642570" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="4j_Rh$Iv0Pb" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="targetFile" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="4964617264469642571" />
+      <ref role="20lvS9" node="4RsV8qJDnFi" resolve="BuildSource_SingleFile" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4j_Rh$Iv0TJ">
+    <property role="TrG5h" value="GeneratorInternal_BuildSource_JavaLibrary" />
+    <property role="3GE5qa" value="GeneratorInternal" />
+    <property role="EcuMT" value="4964617264469642863" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="4j_Rh$Iv0TK" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="targetLibrary" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="4964617264469642864" />
+      <ref role="20lvS9" node="5gfUUDxhbxN" resolve="BuildSource_JavaLibrary" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4j_Rh$Iv0R$">
+    <property role="TrG5h" value="GeneratorInternal_BuildSource_JavaJar" />
+    <property role="3GE5qa" value="GeneratorInternal" />
+    <property role="EcuMT" value="4964617264469642724" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="4j_Rh$Iv0R_" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="targetJar" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="4964617264469642725" />
+      <ref role="20lvS9" node="15RAxQWZPkq" resolve="BuildSource_JavaJar" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="5bqm540K$G7">
+    <property role="TrG5h" value="BuildLayout_InJarNode" />
+    <property role="3GE5qa" value="Layout.Java" />
+    <property role="EcuMT" value="5970181360961342215" />
+  </node>
+  <node concept="1TIwiD" id="19QsrPt4Eb2">
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="BuildLayout_CopyProcessor" />
+    <property role="3GE5qa" value="Layout.File.Processor" />
+    <property role="EcuMT" value="1330375798058820290" />
+    <ref role="1TJDcQ" node="7XQqoCTjsKN" resolve="BuildLayout_CopyHandler" />
+  </node>
+  <node concept="1TIwiD" id="5wKGSSmC1pc">
+    <property role="TrG5h" value="GeneratorInternal_ProjectDependency" />
+    <property role="3GE5qa" value="GeneratorInternal" />
+    <property role="EcuMT" value="6354776497066088012" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="5wKGSSmC1uX" role="1TKVEl">
+      <property role="TrG5h" value="path" />
+      <property role="IQ2nx" value="6354776497066088381" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyj" id="5wKGSSmQ2fj" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="project" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="6354776497069761491" />
+      <ref role="20lvS9" node="4RPz6WoY4Cj" resolve="BuildProject" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="520hcA990bQ">
+    <property role="TrG5h" value="GeneratorInternal_BuildSource_JarFolder" />
+    <property role="3GE5qa" value="GeneratorInternal" />
+    <property role="EcuMT" value="5800711952433152758" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="520hcA99ovC" role="1TKVEl">
+      <property role="TrG5h" value="suffix" />
+      <property role="IQ2nx" value="5800711952433252328" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyj" id="520hcA990bR" role="1TKVEi">
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="targetFolder" />
+      <property role="20lbJX" value="1" />
+      <property role="IQ2ns" value="5800711952433152759" />
+      <ref role="20lvS9" node="4RsV8qJH_Bn" resolve="BuildSource_SingleFolder" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="520hcA9a7n0">
+    <property role="TrG5h" value="GeneratorInternal_BuildSource_Folder" />
+    <property role="3GE5qa" value="GeneratorInternal" />
+    <property role="EcuMT" value="5800711952433444288" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="520hcA9a7_6" role="1TKVEl">
+      <property role="TrG5h" value="folderName" />
+      <property role="IQ2nx" value="5800711952433445190" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="520hcA9bjHr">
+    <property role="TrG5h" value="GeneratorInternal_Mapping" />
+    <property role="3GE5qa" value="GeneratorInternal" />
+    <property role="EcuMT" value="5800711952433757019" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="520hcA9bv2S" role="1TKVEl">
+      <property role="TrG5h" value="key" />
+      <property role="IQ2nx" value="5800711952433803448" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="520hcA9bv2U" role="1TKVEl">
+      <property role="TrG5h" value="value" />
+      <property role="IQ2nx" value="5800711952433803450" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="3ml7vNTSbC2">
+    <property role="3GE5qa" value="GeneratorInternal" />
+    <property role="TrG5h" value="GeneratorInternal_LibraryArtifacts" />
+    <property role="EcuMT" value="3861025227901286914" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="3ml7vNTSbOv" role="1TKVEi">
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="attrs" />
+      <property role="20lbJX" value="0..n" />
+      <property role="IQ2ns" value="3861025227901287711" />
+      <ref role="20lvS9" to="iuxj:5M4a$b5iL2N" resolve="XmlBaseAttribute" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7i$e6qc6TPq">
+    <property role="EcuMT" value="8404904817668627802" />
+    <property role="3GE5qa" value="Macro" />
+    <property role="TrG5h" value="BuildVariableMacroInitWithFileContent" />
+    <property role="34LRSv" value="load file" />
+    <ref role="1TJDcQ" node="2oW$psGOu6E" resolve="BuildVariableMacroInitValue" />
+    <node concept="1TJgyj" id="7i$e6qc7mrg" role="1TKVEi">
+      <property role="IQ2ns" value="8404904817668744912" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="fileName" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+  </node>
 </model>
 

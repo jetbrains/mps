@@ -9,12 +9,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 public class CommandPartToListOperation_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createComponent_mm5w0e_a(editorContext, node);
-  }
-
-  private EditorCell createComponent_mm5w0e_a(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = editorContext.getCellFactory().createEditorComponentCell(node, "jetbrains.mps.lang.core.editor.alias");
-    editorCell.setBig(true);
-    return editorCell;
+    return new CommandPartToListOperation_EditorBuilder_a(editorContext, node).createCell();
   }
 }

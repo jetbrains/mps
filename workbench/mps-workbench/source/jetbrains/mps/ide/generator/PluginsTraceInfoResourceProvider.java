@@ -19,8 +19,8 @@ import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.InternalFlag;
-import jetbrains.mps.generator.traceInfo.TraceInfoCache;
-import jetbrains.mps.generator.traceInfo.TraceInfoCache.TraceInfoResourceProvider;
+import jetbrains.mps.textgen.trace.TraceInfoCache;
+import jetbrains.mps.textgen.trace.TraceInfoCache.TraceInfoResourceProvider;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.project.SModuleOperations;
 import org.jetbrains.annotations.NotNull;
@@ -30,6 +30,13 @@ import java.net.URL;
 
 /**
  * evgeny, 10/19/11
+ *
+ * Presumably this class serves to provide an access to the trace.info files in the solutions which
+ * are packed into idea plugins (~ the solution has non-empty plugin id facet).
+ * This provider works only when we are running from sources (internal mode is true).
+ *
+ * e.g. jetbrains.mps.vcs.core solution which is bundled into jetbrains.mps.vcs plugin.
+ *
  */
 public class PluginsTraceInfoResourceProvider implements TraceInfoResourceProvider, ApplicationComponent {
 
@@ -37,7 +44,7 @@ public class PluginsTraceInfoResourceProvider implements TraceInfoResourceProvid
   }
 
   @Override
-  public URL getResource(SModule module, String resourceName) {
+  public URL getResource(@NotNull SModule module, String resourceName) {
     if (InternalFlag.isInternalMode() && (SModuleOperations.isCompileInIdea(module))) {
       for (IdeaPluginDescriptor plugin : PluginManager.getPlugins()) {
         URL url = plugin.getPluginClassLoader().getResource(resourceName);

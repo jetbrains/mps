@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,22 +15,27 @@
  */
 package jetbrains.mps.ide.project.facets;
 
+import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.openapi.extensions.PluginId;
+import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.project.Solution;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
 /**
+ * IMPLEMENTATION NOTE: due to the need to keep actual facet intact (idea plugin facet shall answer
+ * old id for classloading purposes), facet keeps both value, the one for classloading, and another for serialization.
  * evgeny, 2/28/13
  */
 public class IdeaPluginModuleFacetImpl extends ModuleFacetBase implements IdeaPluginModuleFacet {
-  private String pluginId;
+  private String myClassloadPluginId;
+  private String myPersistencePluginId;
 
-  @Override
-  public String getFacetType() {
-    return FACET_TYPE;
+  public IdeaPluginModuleFacetImpl() {
+    super(FACET_TYPE);
   }
 
   @Override
@@ -40,41 +45,46 @@ public class IdeaPluginModuleFacetImpl extends ModuleFacetBase implements IdeaPl
 
   @Override
   public boolean setModule(SModule module) {
-    if (!(module instanceof Solution)) {
-      return false;
-    }
-    return super.setModule(module);
+    return module instanceof Solution && super.setModule(module);
   }
 
   @Override
   public String getPluginId() {
-    return pluginId;
+    return myClassloadPluginId;
   }
 
   public void setPluginId(String pluginId) {
-    checkNotRegistered();
-    this.pluginId = pluginId;
+    if (pluginId != null) {
+      pluginId = pluginId.trim();
+    }
+    myPersistencePluginId = pluginId == null || pluginId.isEmpty() ? null : pluginId;
   }
 
   @Override
   public void save(Memento memento) {
-    if(pluginId != null && !pluginId.isEmpty())
-      memento.put("pluginId", pluginId);
+    memento.put("pluginId", myPersistencePluginId);
   }
 
   @Override
   public void load(Memento memento) {
     checkNotRegistered();
-    pluginId = memento.get("pluginId");
+    myClassloadPluginId = myPersistencePluginId = memento.get("pluginId");
   }
 
   @Override
   public boolean isValid() {
-    return PluginManager.getPlugin(PluginId.getId(getPluginId())) != null;
+    return getPluginId() != null && PluginManager.getPlugin(PluginId.getId(getPluginId())) != null;
   }
 
+  @NotNull
   @Override
   public ClassLoader getClassLoader() {
-    return PluginManager.getPlugin(PluginId.getId(getPluginId())).getPluginClassLoader();
+    if (getPluginId() == null) {
+      throw new IllegalStateException("No plugin id specified in the idea module facet");
+    }
+    IdeaPluginDescriptor plugin = PluginManager.getPlugin(PluginId.getId(getPluginId()));
+    assert plugin != null;
+    return plugin.getPluginClassLoader();
   }
+
 }

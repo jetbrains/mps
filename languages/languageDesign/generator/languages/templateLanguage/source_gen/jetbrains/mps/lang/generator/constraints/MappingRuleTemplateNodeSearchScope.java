@@ -4,7 +4,6 @@ package jetbrains.mps.lang.generator.constraints;
 
 import jetbrains.mps.smodel.search.AbstractSearchScope;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.IScope;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
@@ -13,19 +12,15 @@ import java.util.ArrayList;
 import jetbrains.mps.smodel.search.ISearchScope;
 import jetbrains.mps.smodel.search.SModelSearchUtil;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.BootstrapLanguages;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MappingRuleTemplateNodeSearchScope extends AbstractSearchScope {
   private SModel myModel;
-  private IScope myScope;
   private List<SNode> myOwnNodes;
-
-  public MappingRuleTemplateNodeSearchScope(SModel model, IScope scope) {
+  public MappingRuleTemplateNodeSearchScope(SModel model) {
     myModel = model;
-    myScope = scope;
   }
-
   @NotNull
   @Override
   public List<SNode> getNodes(Condition<SNode> condition) {
@@ -44,10 +39,9 @@ public class MappingRuleTemplateNodeSearchScope extends AbstractSearchScope {
     }
     return resut;
   }
-
   private void ensureInitialized() {
     if (myOwnNodes == null) {
-      ISearchScope searchScope = SModelSearchUtil.createModelAndImportedModelsScope(myModel, true, myScope);
+      ISearchScope searchScope = SModelSearchUtil.createModelAndImportedModelsScope(myModel, true);
       Condition<SNode> condition = new Condition<SNode>() {
         @Override
         public boolean met(SNode object) {
@@ -56,8 +50,8 @@ public class MappingRuleTemplateNodeSearchScope extends AbstractSearchScope {
           }
 
           // not instance of concepts from TLBase language (like TemplateDeclaration, MappingConfiguration etc.) 
-          Language language = ((Language) object.getConcept().getLanguage().getSourceModule());
-          return language != BootstrapLanguages.generatorLanguage();
+          SLanguage language = object.getConcept().getLanguage();
+          return !(language.equals(MetaAdapterFactory.getLanguage(0xb401a68083254110L, 0x8fd384331ff25befL, "jetbrains.mps.lang.generator")));
         }
       };
       myOwnNodes = searchScope.getNodes(condition);

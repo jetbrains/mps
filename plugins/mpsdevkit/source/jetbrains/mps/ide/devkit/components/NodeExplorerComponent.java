@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,163 +15,170 @@
  */
 package jetbrains.mps.ide.devkit.components;
 
+import com.intellij.ide.actions.CloseTabToolbarAction;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.ActionGroup;
-import com.intellij.openapi.project.Project;
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.ActionToolbar;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.actionSystem.IdeActions;
 import com.intellij.ui.ScrollPaneFactory;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.projectPane.Icons;
+import jetbrains.mps.icons.MPSIcons.Nodes;
+import jetbrains.mps.ide.ui.smodel.ConceptTreeNode;
+import jetbrains.mps.ide.ui.smodel.PropertiesTreeNode;
+import jetbrains.mps.ide.ui.smodel.ReferencesTreeNode;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
+import jetbrains.mps.ide.ui.tree.smodel.NodeTargetProvider;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode;
-import jetbrains.mps.project.ProjectOperationContext;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode.NodeChildrenProvider;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.ModelReadRunnable;
+import jetbrains.mps.typesystem.PresentationManager;
+import jetbrains.mps.typesystem.inference.TypeChecker;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.typesystem.PresentationManager;
-import jetbrains.mps.typesystem.inference.TypeChecker;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
-import javax.swing.JComponent;
-import javax.swing.JScrollPane;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
 
-public class NodeExplorerComponent {
-  private MyTree myTree = new MyTree();
-  private SNodeReference myNode;
-  private JScrollPane myScrollPane;
+public class NodeExplorerComponent extends JPanel implements Disposable {
+  private MPSProject myProject;
+  private SNode myNode;
 
-  public NodeExplorerComponent() {
-    myScrollPane = ScrollPaneFactory.createScrollPane(myTree);
-    myTree.setRootVisible(true);
-  }
+  private final MyTree myTree = new MyTree();
 
-  public JComponent getComponent() {
-    return myScrollPane;
-  }
+  private Runnable myCloseAction = null;
 
-  public void showNode(SNode node, Project project) {
-    myNode = node == null ? null : new jetbrains.mps.smodel.SNodePointer(node);
-    myTree.setOperationContext(new ProjectOperationContext(ProjectHelper.toMPSProject(project)));
+  public NodeExplorerComponent(MPSProject mpsProject, SNode node) {
+    super(new BorderLayout());
+    myProject = mpsProject;
+
+    this.add(ScrollPaneFactory.createScrollPane(myTree), BorderLayout.CENTER);
+
+    DefaultActionGroup group = new DefaultActionGroup();
+    group.addAll(new CloseTabToolbarAction() {
+      @Override
+      public void actionPerformed(AnActionEvent e) {
+        if(myCloseAction != null) {
+          myCloseAction.run();
+        }
+      }
+    }, ActionManager.getInstance().getAction(IdeActions.ACTION_PIN_ACTIVE_TAB));
+    final ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, false);
+    actionToolbar.setTargetComponent(myTree);
+    this.add(actionToolbar.getComponent(), BorderLayout.WEST);
+
+    myNode = node;
     myTree.rebuildNow();
   }
 
-  public void clear() {
-    myNode = null;
-    myTree.rebuildLater();
+  public void setCloseAction(Runnable closeAction) {
+    myCloseAction = closeAction;
   }
 
-  private class MyTree extends MPSTree {
-    private IOperationContext myOperationContext;
+  @Override
+  public void dispose() {
+    myProject = null;
+    myNode = null;
 
+    myTree.dispose();
+  }
+
+  private class MyTree extends MPSTree implements NodeChildrenProvider {
     @Override
     protected ActionGroup createPopupActionGroup(MPSTreeNode node) {
       return null;
     }
 
     @Override
+    protected void doInit(MPSTreeNode node, Runnable nodeInitRunnable) {
+      super.doInit(node, new ModelReadRunnable(myProject.getModelAccess(), nodeInitRunnable));
+    }
+
+    @Override
     protected MPSTreeNode rebuild() {
-      if (myNode == null || myNode.resolve(MPSModuleRepository.getInstance()) == null) {
-        return new TextTreeNode("no node");
+      myTree.setRootVisible(myNode == null);
+      if (myNode == null) {
+        return new TextTreeNode("No node");
       } else {
-        TextTreeNode textTreeNode = new TextTreeNode("node");
-        SNodeTreeNode sNodeTreeNode = new MySNodeTreeNode(myNode.resolve(MPSModuleRepository.getInstance()), myOperationContext);
+        TextTreeNode textTreeNode = new TextTreeNode("Node");
+        SNodeTreeNode sNodeTreeNode = new SNodeTreeNodeWithType(myNode);
         textTreeNode.add(sNodeTreeNode);
         return textTreeNode;
       }
     }
 
-    public void setOperationContext(IOperationContext operationContext) {
-      myOperationContext = operationContext;
+    @Override
+    public void populate(SNodeTreeNode treeNode) {
+      SNode n = treeNode.getSNode();
+      if (n == null || n.getModel() == null) {
+        return;
+      }
+
+      treeNode.add(new ConceptTreeNode(n));
+      treeNode.add(new PropertiesTreeNode(n));
+      treeNode.add(new ReferencesTreeNode(n) {
+        @Override
+        protected void doInit() {
+          // TODO: move to base ReferencesTreeNode class as option?
+          for (final SReference ref : getSNode().getReferences()) {
+            final SNode targetNode = ref.getTargetNode();
+            if (targetNode != null) {
+              add(new SNodeTreeNodeWithType(targetNode, ref.getLink().getName()));
+            } else {
+              // Try to show user as much info as possible
+              add(new TextTreeNode(Nodes.Unknown, String.valueOf(ref.getTargetNodeReference())));
+            }
+          }
+          myInitialized = true;
+        }
+      });
     }
 
-
+    @Override
+    protected void doubleClick(@NotNull MPSTreeNode nodeToClick) {
+      // TODO: update navigation logic to avoid this copy/paste
+      // Copied from jetbrains.mps.ide.projectPane.logicalview.ProjectPaneTree.doubleClick()
+      if (nodeToClick instanceof NodeTargetProvider) {
+        final SNodeReference navigationTarget = ((NodeTargetProvider) nodeToClick).getNavigationTarget();
+        if (navigationTarget != null) {
+          new EditorNavigator(myProject).shallFocus(true).selectIfChild().open(navigationTarget);
+          return;
+        }
+        // fall-through
+      }
+      super.doubleClick(nodeToClick);
+    }
   }
 
-  private class MySNodeTreeNode extends SNodeTreeNode {
+  private class SNodeTreeNodeWithType extends SNodeTreeNode {
 
-    public MySNodeTreeNode(SNode node, IOperationContext operationContext) {
-      super(node, operationContext);
+    public SNodeTreeNodeWithType(SNode node) {
+      super(node);
     }
 
-    public MySNodeTreeNode(SNode node, String role, IOperationContext operationContext) {
-      super(node, role, operationContext);
+    public SNodeTreeNodeWithType(SNode node, String role) {
+      super(node, role);
     }
 
     @Override
     protected void doUpdatePresentation_internal() {
       super.doUpdatePresentation_internal();
+
+      // TODO: add to base SNodeTreeNode class and get rid of this inner class?
       String string = getText();
-      String typeInfo = " {" + PresentationManager.toString(TypeChecker.getInstance().getTypeOf(getSNode())) + "}";
-      setText(string + typeInfo);
-    }
-
-    @Override
-    protected void doInit() {
-      this.removeAllChildren();
-
-      add(new TextTreeNode("Concept = " + getSNode().getConcept().getQualifiedName()));
-
-      if (getSNode() == null) return;
-      for (SNode childNode : getSNode().getChildren()) {
-        add(new MySNodeTreeNode(childNode, childNode.getRoleInParent(), getOperationContext()));
+      final SNode typeOf = TypeChecker.getInstance().getTypeOf(getSNode());
+      if (typeOf != null) {
+        String typeInfo = " {" + PresentationManager.toString(typeOf) + "}";
+        setText(string + typeInfo);
       }
-      add(new MyPropertiesNode(getSNode(), getOperationContext()));
-      add(new MyReferentsNode(getSNode(), getOperationContext()));
-      myInitialized = true;
-    }
-  }
-
-  private class MyReferentsNode extends TextTreeNode {
-    private SNodeReference myNode;
-    private boolean myIsInitialized = false;
-
-    public MyReferentsNode(SNode node, IOperationContext operationContext) {
-      super("referents", operationContext);
-      myNode = new jetbrains.mps.smodel.SNodePointer(node);
-    }
-
-    @Override
-    protected void doInit() {
-      for (SReference reference : jetbrains.mps.util.SNodeOperations.getReferences(myNode.resolve(MPSModuleRepository.getInstance()))) {
-        SNode referent = reference.getTargetNode();
-        if (referent != null) {
-          add(new MySNodeTreeNode(referent, reference.getRole(), getOperationContext()));
-        }
-      }
-      myIsInitialized = true;
-    }
-
-    @Override
-    public boolean isInitialized() {
-      return myIsInitialized;
-    }
-  }
-
-  private class MyPropertiesNode extends TextTreeNode {
-    private SNodeReference myNode;
-    private boolean myIsInitialized = false;
-
-    public MyPropertiesNode(SNode node, IOperationContext operationContext) {
-      super("properties", operationContext);
-      myNode = new jetbrains.mps.smodel.SNodePointer(node);
-    }
-
-    @Override
-    protected void doInit() {
-      SNode node = myNode.resolve(MPSModuleRepository.getInstance());
-      for (String name : node.getPropertyNames()) {
-        TextTreeNode tn = new TextTreeNode(name + " : " + SNodeAccessUtil.getProperty(node, name));
-        tn.setIcon(Icons.DEFAULT_ICON);
-        add(tn);
-      }
-      myIsInitialized = true;
-    }
-
-    @Override
-    public boolean isInitialized() {
-      return myIsInitialized;
     }
   }
 }

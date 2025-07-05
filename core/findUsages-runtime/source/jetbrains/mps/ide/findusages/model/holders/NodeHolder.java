@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,20 +15,22 @@
  */
 package jetbrains.mps.ide.findusages.model.holders;
 
-import jetbrains.mps.ide.components.ComponentsUtil;
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
-public class NodeHolder implements IHolder<SNode> {
+public class NodeHolder implements IHolder<SNodeReference> {
   private static final String NODE = "node";
+  private static final String REF = "ref";
+  private static final String CAPTION = "title";
 
   private SNodeReference myNodePointer;
+  private String myTitle; // can be null
 
   public NodeHolder(Element element, Project project) throws CantLoadSomethingException {
     read(element, project);
@@ -36,42 +38,38 @@ public class NodeHolder implements IHolder<SNode> {
 
   public NodeHolder(@NotNull SNode node) {
     myNodePointer = node.getReference();
+    myTitle = node.getPresentation();
   }
 
   @Override
-  public SNode getObject() {
-    return myNodePointer.resolve(MPSModuleRepository.getInstance());
+  public SNodeReference getObject() {
+    return myNodePointer;
   }
 
   @Override
   @NotNull
   public String getCaption() {
-    SNode node = getObject();
-    if (node == null) return "<null>";
-    return node.toString();
+    return myTitle == null ? myNodePointer.toString() : myTitle;
   }
 
   @Override
   public void read(Element element, Project project) throws CantLoadSomethingException {
     Element nodeXML = element.getChild(NODE);
-    if (nodeXML == null) {
+    if (nodeXML == null || nodeXML.getAttribute(REF) == null) {
       throw new CantLoadSomethingException("node is null");
     }
-    SNode node = ComponentsUtil.nodeFromElement((Element) nodeXML.getChildren().get(0));
-    if (node == null) {
-      throw new CantLoadSomethingException("node is null");
-    }
-    myNodePointer = node.getReference();
+
+    myNodePointer = PersistenceFacade.getInstance().createNodeReference(nodeXML.getAttributeValue(REF));
+    myTitle = nodeXML.getAttributeValue(CAPTION);
   }
 
   @Override
   public void write(Element element, Project project) throws CantSaveSomethingException {
-    if (myNodePointer.resolve(MPSModuleRepository.getInstance()) == null) {
-      throw new CantSaveSomethingException("node is null");
-    }
-
     Element nodeXML = new Element(NODE);
-    nodeXML.addContent(ComponentsUtil.nodeToElement(myNodePointer.resolve(MPSModuleRepository.getInstance())));
+    nodeXML.setAttribute(REF, PersistenceFacade.getInstance().asString(myNodePointer));
+    if (myTitle != null) {
+      nodeXML.setAttribute(CAPTION, myTitle);
+    }
     element.addContent(nodeXML);
   }
 }

@@ -6,6 +6,7 @@ import jetbrains.mps.idea.core.psi.impl.MPSPsiNode;
 import jetbrains.mps.idea.java.psi.impl.ComputesPsiType;
 import com.intellij.psi.PsiClassType;
 import org.jetbrains.mps.openapi.model.SNodeId;
+import com.intellij.psi.PsiManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.JavaPsiFacade;
@@ -20,10 +21,9 @@ import com.intellij.psi.impl.source.PsiImmediateClassType;
  * User: danilla
  */
 public abstract class MPSPsiCollectionType extends MPSPsiNode implements ComputesPsiType<PsiClassType> {
-  public MPSPsiCollectionType(SNodeId id, String concept, String containingRole) {
-    super(id, concept, containingRole);
+  public MPSPsiCollectionType(SNodeId id, String concept, String containingRole, PsiManager manager) {
+    super(id, concept, containingRole, manager);
   }
-
   @Override
   public PsiClassType getPsiType() {
     Project project = getProject();
@@ -43,8 +43,6 @@ public abstract class MPSPsiCollectionType extends MPSPsiNode implements Compute
     PsiSubstitutor subst = PsiSubstitutor.EMPTY.putAll(claz, psiChildTypes);
     return new PsiImmediateClassType(claz, subst);
   }
-
   protected abstract String getClassName();
-
   protected abstract MPSPsiNode[] getChildTypeNodes();
 }

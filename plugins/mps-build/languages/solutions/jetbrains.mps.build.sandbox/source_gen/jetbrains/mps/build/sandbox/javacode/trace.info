@@ -1,43 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <root nodeRef="r:e048c524-1f34-4982-8ec8-bba3c4aba827(jetbrains.mps.build.sandbox.javacode)/7778259556894381376">
-    <nodeInfo nodeId="7778259556894544428" fileName="TestScope.java" startLine="26" startPosition="72" endLine="27" endPosition="133" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7778259556894515686" fileName="TestScope.java" startLine="29" startPosition="39" endLine="30" endPosition="102" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7778259556894515732" fileName="TestScope.java" startLine="37" startPosition="68" endLine="38" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7778259556894515740" fileName="TestScope.java" startLine="45" startPosition="30" endLine="46" endPosition="21" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7778259556894381378" fileName="TestScope.java" startLine="22" startPosition="0" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="TestScope#()V" />
-    <nodeInfo nodeId="7778259556894515682" fileName="TestScope.java" startLine="29" startPosition="0" endLine="32" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="7778259556894515738" fileName="TestScope.java" startLine="45" startPosition="0" endLine="48" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="invoke#()Ljava/lang/String;" />
-    <nodeInfo nodeId="7778259556894515637" fileName="TestScope.java" startLine="27" startPosition="133" endLine="32" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7778259556894515591" fileName="TestScope.java" startLine="35" startPosition="0" endLine="40" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="resolve#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="7778259556894515737" fileName="TestScope.java" startLine="43" startPosition="74" endLine="48" endPosition="15" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7778259556894515577" fileName="TestScope.java" startLine="25" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getAvailableElements#(Ljava/lang/String;)Ljava/lang/Iterable;" />
-    <nodeInfo nodeId="7778259556894515613" fileName="TestScope.java" startLine="41" startPosition="0" endLine="50" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getReferenceText#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-    <scopeInfo nodeId="7778259556894381381" fileName="TestScope.java" startLine="22" startPosition="22" endLine="22" endPosition="22" />
-    <scopeInfo nodeId="7778259556894515683" fileName="TestScope.java" startLine="29" startPosition="39" endLine="30" endPosition="102" />
-    <scopeInfo nodeId="7778259556894515612" fileName="TestScope.java" startLine="37" startPosition="68" endLine="38" endPosition="16" />
-    <scopeInfo nodeId="7778259556894515739" fileName="TestScope.java" startLine="45" startPosition="30" endLine="46" endPosition="21" />
-    <scopeInfo nodeId="7778259556894381378" fileName="TestScope.java" startLine="22" startPosition="0" endLine="24" endPosition="0" />
-    <scopeInfo nodeId="7778259556894515682" fileName="TestScope.java" startLine="29" startPosition="0" endLine="32" endPosition="0">
-      <varInfo nodeId="7778259556894515682" varName="it" />
-    </scopeInfo>
-    <scopeInfo nodeId="7778259556894515738" fileName="TestScope.java" startLine="45" startPosition="0" endLine="48" endPosition="0" />
-    <scopeInfo nodeId="7778259556894515591" fileName="TestScope.java" startLine="35" startPosition="0" endLine="40" endPosition="0">
-      <varInfo nodeId="7778259556894515594" varName="contextNode" />
-      <varInfo nodeId="7778259556894515596" varName="refText" />
-    </scopeInfo>
-    <scopeInfo nodeId="7778259556894515636" fileName="TestScope.java" startLine="43" startPosition="74" endLine="48" endPosition="15" />
-    <scopeInfo nodeId="7778259556894515590" fileName="TestScope.java" startLine="26" startPosition="72" endLine="32" endPosition="7" />
-    <scopeInfo nodeId="7778259556894515577" fileName="TestScope.java" startLine="25" startPosition="0" endLine="34" endPosition="0">
-      <varInfo nodeId="7778259556894515581" varName="prefix" />
-    </scopeInfo>
-    <scopeInfo nodeId="7778259556894515613" fileName="TestScope.java" startLine="41" startPosition="0" endLine="50" endPosition="0">
-      <varInfo nodeId="7778259556894515616" varName="contextNode" />
-      <varInfo nodeId="7778259556894515618" varName="node" />
-    </scopeInfo>
-    <unitInfo nodeId="7778259556894515682" fileName="TestScope.java" startLine="28" startPosition="110" endLine="32" endPosition="5" unitName="jetbrains.mps.build.sandbox.javacode.TestScope$1" />
-    <unitInfo nodeId="7778259556894515738" fileName="TestScope.java" startLine="44" startPosition="15" endLine="48" endPosition="5" unitName="jetbrains.mps.build.sandbox.javacode.TestScope$2" />
-    <unitInfo nodeId="7778259556894381376" fileName="TestScope.java" startLine="18" startPosition="0" endLine="51" endPosition="0" unitName="jetbrains.mps.build.sandbox.javacode.TestScope" />
+    <file name="TestScope.java">
+      <node id="7778259556894544428" at="25,72,26,179" concept="1" />
+      <node id="7778259556894515686" at="28,39,29,191" concept="3" />
+      <node id="7778259556894515732" at="35,68,36,16" concept="3" />
+      <node id="7778259556894515740" at="42,30,43,21" concept="3" />
+      <node id="7778259556894381378" at="22,0,24,0" concept="0" trace="TestScope#()V" />
+      <node id="7778259556894515682" at="28,0,31,0" concept="2" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7778259556894515738" at="42,0,45,0" concept="2" trace="invoke#()Ljava/lang/String;" />
+      <node id="7778259556894515637" at="26,179,31,7" concept="3" />
+      <node id="7778259556894515591" at="33,0,38,0" concept="2" trace="resolve#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7778259556894515737" at="40,74,45,15" concept="3" />
+      <node id="7778259556894515577" at="24,0,33,0" concept="2" trace="getAvailableElements#(Ljava/lang/String;)Ljava/lang/Iterable;" />
+      <node id="7778259556894515613" at="38,0,47,0" concept="2" trace="getReferenceText#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <scope id="7778259556894381381" at="22,22,22,22" />
+      <scope id="7778259556894515683" at="28,39,29,191" />
+      <scope id="7778259556894515612" at="35,68,36,16" />
+      <scope id="7778259556894515739" at="42,30,43,21" />
+      <scope id="7778259556894381378" at="22,0,24,0" />
+      <scope id="7778259556894515682" at="28,0,31,0">
+        <var name="it" id="7778259556894515682" />
+      </scope>
+      <scope id="7778259556894515738" at="42,0,45,0" />
+      <scope id="7778259556894515591" at="33,0,38,0">
+        <var name="contextNode" id="7778259556894515594" />
+        <var name="refText" id="7778259556894515596" />
+      </scope>
+      <scope id="7778259556894515636" at="40,74,45,15" />
+      <scope id="7778259556894515590" at="25,72,31,7" />
+      <scope id="7778259556894515577" at="24,0,33,0">
+        <var name="prefix" id="7778259556894515581" />
+      </scope>
+      <scope id="7778259556894515613" at="38,0,47,0">
+        <var name="contextNode" id="7778259556894515616" />
+        <var name="node" id="7778259556894515618" />
+      </scope>
+      <unit id="7778259556894515682" at="27,110,31,5" name="jetbrains.mps.build.sandbox.javacode.TestScope$1" />
+      <unit id="7778259556894515738" at="41,15,45,5" name="jetbrains.mps.build.sandbox.javacode.TestScope$2" />
+      <unit id="7778259556894381376" at="21,0,48,0" name="jetbrains.mps.build.sandbox.javacode.TestScope" />
+    </file>
   </root>
-</debugInfo>
+</debug-info>
 

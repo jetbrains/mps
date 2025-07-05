@@ -25,6 +25,12 @@ import java.util.Map;
  * Evgeny Gryaznov, Oct 7, 2010
  */
 public interface IncrementalGenerationStrategy {
+  /**
+   * Actual model digest
+   * @param sm model to digest
+   * @param operationContext unused, can be null
+   * @return hash that reflects actual state of the model, or null if generation hashes are not tracked
+   */
   Map<String, String> getModelHashes(SModel sm, IOperationContext operationContext);
 
   GenerationCacheContainer getContainer();

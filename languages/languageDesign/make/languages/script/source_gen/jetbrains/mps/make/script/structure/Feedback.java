@@ -4,7 +4,7 @@ package jetbrains.mps.make.script.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum Feedback {
   info("info", "INFO"),
@@ -12,16 +12,21 @@ public enum Feedback {
   error("error", "ERROR"),
   message("message", "MESSAGE");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private Feedback(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<Feedback> getConstants() {
     List<Feedback> list = ListSequence.fromList(new LinkedList<Feedback>());
     ListSequence.fromList(list).addElement(Feedback.info);
@@ -30,11 +35,9 @@ public enum Feedback {
     ListSequence.fromList(list).addElement(Feedback.message);
     return list;
   }
-
   public static Feedback getDefault() {
     return Feedback.info;
   }
-
   public static Feedback parseValue(String value) {
     if (value == null) {
       return Feedback.getDefault();
@@ -52,16 +55,5 @@ public enum Feedback {
       return Feedback.message;
     }
     return Feedback.getDefault();
-  }
-
-  private String myValue;
-
-  Feedback(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

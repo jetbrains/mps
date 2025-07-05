@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,28 +16,32 @@
 package jetbrains.mps.ide.editor.checkers;
 
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorMessage;
-import jetbrains.mps.nodeEditor.checking.EditorCheckerAdapter;
-import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.nodeEditor.checking.BaseEditorChecker;
+import jetbrains.mps.nodeEditor.checking.DisposableEditorChecker;
+import jetbrains.mps.nodeEditor.checking.UpdateResult;
+import jetbrains.mps.nodeEditor.checking.UpdateResult.Completed;
+import jetbrains.mps.openapi.editor.ColorConstants;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.smodel.RepoListenerRegistrar;
+import jetbrains.mps.util.Cancellable;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModel.Problem;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
 import java.awt.Color;
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-public class ModelProblemsChecker extends EditorCheckerAdapter {
+public class ModelProblemsChecker extends BaseEditorChecker implements DisposableEditorChecker {
 
   private boolean myChanged = true;
-  private SRepositoryContentAdapter myListener = new SRepositoryContentAdapter() {
+  private final SRepository myProjectRepo;
+  private final SRepositoryContentAdapter myListener = new SRepositoryContentAdapter() {
     @Override
     protected void startListening(SModel model) {
       model.addModelListener(this);
@@ -69,45 +73,46 @@ public class ModelProblemsChecker extends EditorCheckerAdapter {
     }
   };
 
-  public ModelProblemsChecker() {
-    SRepositoryRegistry.getInstance().addGlobalListener(myListener);
+  public ModelProblemsChecker(@NotNull SRepository projectRepo) {
+    myProjectRepo = projectRepo;
+    new RepoListenerRegistrar(projectRepo, myListener).attach();
   }
 
   @Override
-  protected void doDispose() {
-    SRepositoryRegistry.getInstance().removeGlobalListener(myListener);
-    super.doDispose();
+  public void dispose() {
+    new RepoListenerRegistrar(myProjectRepo, myListener).detach();
   }
 
   @Override
-  protected Set<EditorMessage> createMessages(SNode root, List<SModelEvent> list, boolean b, EditorContext context) {
-    // TODO rewrite, EditorCheckerAdapter api is broken
-    myChanged = false;
-    SModel model = root.getModel();
-    if (model == null) {
-      return Collections.emptySet();
-    }
-
-    Set<EditorMessage> result = new HashSet<EditorMessage>();
-    for (Problem p : model.getProblems()) {
-      SNode node = p.getNode();
-      if (node == null) continue;
-
-      Color color = p.isError() ? Color.RED : (StyleRegistry.getInstance().isDarkTheme() ? new Color(140, 140, 0) : Color.YELLOW);
-      result.add(new ModelProblemMessage(node, p.isError() ? MessageStatus.ERROR : MessageStatus.WARNING,
-          color, p.getText(), this));
-    }
-    return result;
-  }
-
-  @Override
-  public boolean hasDramaticalEvent(List<SModelEvent> events) {
+  public boolean needsUpdate(EditorComponent editorComponent) {
     return myChanged;
   }
 
+  @NotNull
   @Override
-  public void clear(SNode node, EditorComponent editor) {
-    myChanged = true;
-  }
+  public UpdateResult update(EditorComponent editorComponent, boolean incremental, boolean applyQuickFixes, Cancellable cancellable) {
+    try {
+      myChanged = false;
+      SModel model = editorComponent.getEditedNode().getModel();
+      if (model == null) {
+        return UpdateResult.CANCELLED;
+      }
 
+      Set<EditorMessage> result = new HashSet<>();
+      for (Problem p : model.getProblems()) {
+        SNode node = p.getNode();
+        if (node == null) continue;
+
+        Color color =
+            p.isError() ? new Color(ColorConstants.ERROR) :
+                (StyleRegistry.getInstance().isDarkTheme() ? new Color(ColorConstants.WARNING_DARK) : new Color(ColorConstants.WARNING));
+        result.add(new ModelProblemMessage(node, p.isError() ? MessageStatus.ERROR : MessageStatus.WARNING,
+            color, p.getText(), this));
+      }
+      return new Completed(true, result);
+    } catch (RuntimeException e) {
+      myChanged = true;
+      throw e;
+    }
+  }
 }

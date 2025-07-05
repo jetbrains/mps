@@ -4,23 +4,28 @@ package jetbrains.mps.lang.structure.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum StaticScope {
   global("global", null),
   root("containing root", "root"),
   none("none", "none");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private StaticScope(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<StaticScope> getConstants() {
     List<StaticScope> list = ListSequence.fromList(new LinkedList<StaticScope>());
     ListSequence.fromList(list).addElement(StaticScope.global);
@@ -28,11 +33,9 @@ public enum StaticScope {
     ListSequence.fromList(list).addElement(StaticScope.none);
     return list;
   }
-
   public static StaticScope getDefault() {
     return StaticScope.global;
   }
-
   public static StaticScope parseValue(String value) {
     if (value == null) {
       return StaticScope.getDefault();
@@ -47,16 +50,5 @@ public enum StaticScope {
       return StaticScope.none;
     }
     return StaticScope.getDefault();
-  }
-
-  private String myValue;
-
-  StaticScope(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

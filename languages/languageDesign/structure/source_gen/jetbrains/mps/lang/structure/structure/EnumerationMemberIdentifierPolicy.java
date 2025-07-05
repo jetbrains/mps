@@ -4,23 +4,28 @@ package jetbrains.mps.lang.structure.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum EnumerationMemberIdentifierPolicy {
   derive_from_presentation("derive from presentation", "derive_from_presentation"),
   derive_from_internal_value("derive from internal value", "derive_from_internal_value"),
   custom("custom", "custom");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private EnumerationMemberIdentifierPolicy(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<EnumerationMemberIdentifierPolicy> getConstants() {
     List<EnumerationMemberIdentifierPolicy> list = ListSequence.fromList(new LinkedList<EnumerationMemberIdentifierPolicy>());
     ListSequence.fromList(list).addElement(EnumerationMemberIdentifierPolicy.derive_from_presentation);
@@ -28,11 +33,9 @@ public enum EnumerationMemberIdentifierPolicy {
     ListSequence.fromList(list).addElement(EnumerationMemberIdentifierPolicy.custom);
     return list;
   }
-
   public static EnumerationMemberIdentifierPolicy getDefault() {
     return EnumerationMemberIdentifierPolicy.derive_from_presentation;
   }
-
   public static EnumerationMemberIdentifierPolicy parseValue(String value) {
     if (value == null) {
       return EnumerationMemberIdentifierPolicy.getDefault();
@@ -47,16 +50,5 @@ public enum EnumerationMemberIdentifierPolicy {
       return EnumerationMemberIdentifierPolicy.custom;
     }
     return EnumerationMemberIdentifierPolicy.getDefault();
-  }
-
-  private String myValue;
-
-  EnumerationMemberIdentifierPolicy(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

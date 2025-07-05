@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,52 +18,79 @@ package jetbrains.mps.ide.tools;
 import com.intellij.ide.actions.ActivateToolWindowAction;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.KeyboardShortcut;
+import com.intellij.openapi.actionSystem.Shortcut;
 import com.intellij.openapi.keymap.Keymap;
 import com.intellij.openapi.keymap.KeymapManager;
+import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactoryImpl;
 import com.intellij.ui.content.ContentManager;
-import com.intellij.ui.content.ContentManagerListener;
-
 import jetbrains.mps.ide.ThreadUtils;
-import org.apache.log4j.Logger;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
-import javax.swing.SwingUtilities;
+import java.awt.event.InputEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public abstract class BaseTool {
-  private static final Logger LOG = LogManager.getLogger(BaseTool.class);
+  private final static Logger LOG = LogManager.getLogger(BaseTool.class);
 
-  private Project myProject;
-  private String myId;
-  private int myNumber;
+  private final Project myProject;
+  private final String myId;
   private Icon myIcon;
-  private ToolWindowAnchor myAnchor;
-  private boolean mySideTool;
+  private Map<String, KeyStroke> myShortcutsByKeymap;
+  private final ToolWindowAnchor myAnchor;
+  private final boolean mySideTool;
   private boolean myCanCloseContent;
   private boolean myIsRegistered;
   private ToolWindowManager myWindowManager;
-  private ContentManagerListener myListener;
 
   private JComponent myComponent = null;
 
+  @Deprecated
+  @ToRemove(version = 3.5)
   public BaseTool(Project project, String id, int number, Icon icon, ToolWindowAnchor anchor, boolean canCloseContent) {
     this(project, id, number, icon, anchor, false, canCloseContent);
   }
 
+  @Deprecated
+  @ToRemove(version = 3.5)
   public BaseTool(Project project, String id, int number, Icon icon, ToolWindowAnchor anchor, boolean sideTool, boolean canCloseContent) {
+    this(project, id, shortcutsFromNumber(number), icon, anchor, sideTool, canCloseContent);
+  }
+
+  protected static Map<String, KeyStroke> shortcutsFromNumber(int number) {
+    Map<String, KeyStroke> result = new HashMap<>();
+    if (number != -1) {
+      result.put(KeymapManager.DEFAULT_IDEA_KEYMAP, KeyStroke.getKeyStroke("alt " + number));
+      result.put(KeymapManager.MAC_OS_X_KEYMAP, KeyStroke.getKeyStroke("meta " + number));
+    }
+    return result;
+  }
+
+  public BaseTool(Project project, String id, Map<String, KeyStroke> shortcutsByKeymap, Icon icon, ToolWindowAnchor anchor, boolean sideTool,
+      boolean canCloseContent) {
     myAnchor = anchor;
     mySideTool = sideTool;
-    myNumber = number;
+    myShortcutsByKeymap = shortcutsByKeymap;
     myId = id;
     myIcon = icon;
     myCanCloseContent = canCloseContent;
@@ -75,8 +102,21 @@ public abstract class BaseTool {
     return myId;
   }
 
+  @Deprecated
+  @ToRemove(version = 3.5)
   public int getNumber() {
-    return myNumber;
+    if (myShortcutsByKeymap != null) {
+      KeyStroke defaultKeystroke = myShortcutsByKeymap.get(KeymapManager.DEFAULT_IDEA_KEYMAP);
+      if (defaultKeystroke != null) {
+        if (defaultKeystroke.getModifiers() == (InputEvent.ALT_MASK | InputEvent.ALT_DOWN_MASK)) {
+          char keyChar = defaultKeystroke.getKeyChar();
+          if (Character.isDigit(keyChar)) {
+            return Character.digit(keyChar, 10);
+          }
+        }
+      }
+    }
+    return -1;
   }
 
   public Icon getIcon() {
@@ -92,101 +132,117 @@ public abstract class BaseTool {
   }
 
   public boolean toolIsOpened() {
-    if (!ThreadUtils.isEventDispatchThread()) {
-      throw new IllegalStateException("Can't use this outside of EDT");
-    }
+    ThreadUtils.assertEDT();
     return getToolWindow().isVisible();
   }
 
-  /*
-   * Opens the tool's window, shows tool if invisible at the moment
+  /**
+   * Runs {@link jetbrains.mps.ide.tools.BaseTool#openTool} later in EDT event pool.
+   *
+   * @param setActive determine if tool window must be just opened or additionally became active and attract focus
    */
   public void openToolLater(final boolean setActive) {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        openTool(setActive);
-      }
-    });
+    ThreadUtils.runInUIThreadNoWait(() -> openTool(setActive));
   }
 
+  /**
+   * Opens the tool's window, shows tool if invisible at the moment.
+   * Need to be called in EDT.
+   *
+   * @param setActive determine if tool window must be just opened or additionally became active and attract focus
+   */
   public void openTool(boolean setActive) {
+    ThreadUtils.assertEDT();
     ToolWindow window = getToolWindow();
-    if (!isAvailable()) makeAvailable();
-    if (!toolIsOpened()) window.show(null);
-    if (setActive) window.activate(null);
+    if (!isAvailable()) {
+      makeAvailable();
+    }
+    if (!toolIsOpened()) {
+      window.show(null);
+    }
+    if (setActive) {
+      window.activate(null);
+    }
+  }
+
+  /**
+   * Runs {@link jetbrains.mps.ide.tools.BaseTool#close} later in EDT event pool.
+   */
+  // TODO: remove unused?
+  public void closeLater() {
+    ThreadUtils.runInUIThreadNoWait(this::close);
   }
 
   /**
    * Minimizes the window, doesn't remove tool from panel
+   * Need to be called in EDT.
    */
-  public void closeLater() {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        close();
-      }
-    });
-  }
-
   public void close() {
-    if (isAvailable() && toolIsOpened()) getToolWindow().hide(null);
+    ThreadUtils.assertEDT();
+    if (isAvailable() && toolIsOpened()) {
+      getToolWindow().hide(null);
+    }
   }
 
   /**
    * @return whether the tool is visible by user (in the panel)
    */
   public boolean isAvailable() {
-    if (!ThreadUtils.isEventDispatchThread()) {
-      throw new IllegalStateException("Can't use this outside of EDT");
-    }
+    ThreadUtils.assertEDT();
     return getToolWindow().isAvailable();
   }
 
   public void setAvailable(boolean state) {
-    if (state) makeAvailable();
-    else makeUnavailable();
+    ThreadUtils.assertEDT();
+    if (state) {
+      makeAvailable();
+    } else {
+      makeUnavailable();
+    }
+  }
+
+  /**
+   * Runs {@link jetbrains.mps.ide.tools.BaseTool#makeAvailable} later in EDT event pool.
+   */
+  public void makeAvailableLater() {
+    ThreadUtils.runInUIThreadNoWait(this::makeAvailable);
   }
 
   /**
    * If the tool is visible, does nothing, else show the tool in panel in minimized state
    */
-  public void makeAvailableLater() {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        makeAvailable();
-      }
-    });
+  public void makeAvailable() {
+    ThreadUtils.assertEDT();
+    if (!isAvailable()) {
+      getToolWindow().setAvailable(true, null);
+    }
   }
 
-  public void makeAvailable() {
-    if (!isAvailable()) getToolWindow().setAvailable(true, null);
+  /**
+   * Runs {@link jetbrains.mps.ide.tools.BaseTool#makeUnavailable} later in EDT event pool.
+   */
+  public void makeUnavailableLater() {
+    ThreadUtils.runInUIThreadNoWait(this::makeUnavailable);
   }
 
   /**
    * Removes the tool from the panel
    */
-  public void makeUnavailableLater() {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        makeUnavailable();
-      }
-    });
-  }
-
   public void makeUnavailable() {
-    if (isAvailable()) getToolWindow().setAvailable(false, null);
+    ThreadUtils.assertEDT();
+    if (isAvailable()) {
+      getToolWindow().setAvailable(false, null);
+    }
   }
 
   public ToolWindow getToolWindow() {
-    if (!ThreadUtils.isEventDispatchThread()) {
-      throw new IllegalStateException("Can't use this outside of EDT");
-    }
+    ThreadUtils.assertEDT();
 
-    if (!isRegistered()) register();
-    return myWindowManager.getToolWindow(myId);
+    if (!isRegistered()) {
+      register();
+    }
+    // register() may fail if myProject hasn't been initialized - ToolWindowManager is a ProjectComponent
+    return myWindowManager == null ? null : myWindowManager.getToolWindow(myId);
   }
 
   @NonNls
@@ -196,41 +252,62 @@ public abstract class BaseTool {
   }
 
   public void registerLater() {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        register();
-      }
-    });
+    ThreadUtils.runInUIThreadNoWait(() -> DumbService.getInstance(getProject()).runWhenSmart(this::register));
   }
 
   public final void register() {
-    if (myProject.isDisposed()) return;
-    if (isRegistered()) return;
+    if (myProject.isDisposed()) {
+      return;
+    }
+    if (isRegistered()) {
+      return;
+    }
+    ThreadUtils.assertEDT();
     setIsRegistered(true);
 
     myWindowManager = ToolWindowManager.getInstance(myProject);
 
-    if (myNumber != -1) {
+    if (myShortcutsByKeymap != null) {
       String actionId = ActivateToolWindowAction.getActionIdForToolWindow(myId);
 
-      Keymap keymap = KeymapManager.getInstance().getKeymap(KeymapManager.DEFAULT_IDEA_KEYMAP);
-      assert keymap != null;
-      KeyboardShortcut defShortcut = new KeyboardShortcut(KeyStroke.getKeyStroke("alt " + myNumber), null);
-      keymap.addShortcut(actionId, defShortcut);
+      List<Keymap> keymaps = new ArrayList<>(myShortcutsByKeymap.size());
+      for (Entry<String, KeyStroke> keymapItem : myShortcutsByKeymap.entrySet()) {
+        Keymap keymap = KeymapManager.getInstance().getKeymap(keymapItem.getKey());
+        if (keymap == null) {
+          LOG.warn("Keymap " + keymapItem.getKey() + " cannot be found");
+          return;
+        }
+        keymaps.add(keymap);
+      }
+      // keymaps topsort here is needed because we need to remove inherited shortcuts if they are overwritten
+      Collections.sort(keymaps, new Comparator<Keymap>() {
+        @Override
+        public int compare(Keymap o1, Keymap o2) {
+          for (Keymap parent = o1.getParent(); parent != null; parent = parent.getParent()) {
+            if (parent.equals(o2)) {
+              return 1;
+            }
+          }
+          for (Keymap parent = o2.getParent(); parent != null; parent = parent.getParent()) {
+            if (parent.equals(o1)) {
+              return -1;
+            }
+          }
+          return 0;
+        }
+      });
 
-      keymap = KeymapManager.getInstance().getKeymap(KeymapManager.MAC_OS_X_KEYMAP);
-      assert keymap != null;
-      KeyboardShortcut oldShortcut = new KeyboardShortcut(KeyStroke.getKeyStroke("alt " + myNumber), null);
-      keymap.removeShortcut(actionId, oldShortcut);
-      KeyboardShortcut macShortcut = new KeyboardShortcut(KeyStroke.getKeyStroke("meta " + myNumber), null);
-      keymap.addShortcut(actionId, macShortcut);
+      for (Keymap keymap : keymaps) {
+        KeyboardShortcut defShortcut = new KeyboardShortcut(myShortcutsByKeymap.get(keymap.getName()), null);
+        keymap.removeAllActionShortcuts(actionId);
+        keymap.addShortcut(actionId, defShortcut);
+      }
     }
 
     //if we create a new project, tool windows are created for it automatically
     ToolWindow toolWindow = myWindowManager.getToolWindow(myId);
     if (toolWindow == null) {
-      toolWindow = myWindowManager.registerToolWindow(myId, myCanCloseContent, myAnchor, mySideTool);
+      toolWindow = myWindowManager.registerToolWindow(myId, myCanCloseContent, myAnchor, getProject(), true, mySideTool);
     }
     toolWindow.setIcon(myIcon);
 
@@ -240,7 +317,9 @@ public abstract class BaseTool {
 
     doRegister();
 
-    if (myComponent == null) myComponent = getComponent();
+    if (myComponent == null) {
+      myComponent = getComponent();
+    }
     if (myComponent != null) {
       addContent(myComponent, "", null, false);
     }
@@ -250,6 +329,10 @@ public abstract class BaseTool {
     setAvailable(isInitiallyAvailable());
   }
 
+  /**
+   * Override this method to add implementation specific registration.
+   * Called in {@link jetbrains.mps.ide.tools.BaseTool#register} before {@link jetbrains.mps.ide.tools.BaseTool#getComponent()}.
+   */
   protected void doRegister() {
 
   }
@@ -267,28 +350,44 @@ public abstract class BaseTool {
     return false;
   }
 
+
+  /**
+   * Runs {@link jetbrains.mps.ide.tools.BaseTool#unregister instead} later in EDT event pool.
+   */
+  // TODO: remove unused?
   public void unregisterLater() {
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        unregister();
-      }
-    });
+    ThreadUtils.runInUIThreadNoWait(this::unregister);
   }
 
+  /**
+   * Unregister Tool and removes all shortcuts in case of reload.
+   * Need to be called in EDT.
+   * <p>
+   * If project is closing (== not in opened projects) {
+   * <p>
+   * }, but there are some other opened projects,
+   * than shortcuts must not be removed - instance of BaseTool still exists for other projects
+   * and shortcuts are global (registered by ActionId).
+   * In case of BaseTool reload (unregister on opened project) we need do this,
+   * because it will register (probably changed) shortcuts back on load.
+   */
   public final void unregister() {
-    if (!isRegistered()) return;
+    if (!isRegistered()) {
+      return;
+    }
+    ThreadUtils.assertEDT();
 
     doUnregister();
 
-    if (myNumber != -1) {
-      Keymap keymap = KeymapManager.getInstance().getKeymap(KeymapManager.DEFAULT_IDEA_KEYMAP);
-      //noinspection ConstantConditions
-      keymap.removeAllActionShortcuts(ActivateToolWindowAction.getActionIdForToolWindow(myId));
-
-      keymap = KeymapManager.getInstance().getKeymap(KeymapManager.MAC_OS_X_KEYMAP);
-      //noinspection ConstantConditions
-      keymap.removeAllActionShortcuts(ActivateToolWindowAction.getActionIdForToolWindow(myId));
+    // see Javadoc for if condition explanation
+    final List<Project> openedProjects = Arrays.asList(ProjectManager.getInstance().getOpenProjects());
+    if (myShortcutsByKeymap != null && (openedProjects.contains(getProject()) || openedProjects.isEmpty())) {
+      for (Entry<String, KeyStroke> keymapItem : myShortcutsByKeymap.entrySet()) {
+        Keymap keymap = KeymapManager.getInstance().getKeymap(keymapItem.getKey());
+        if (keymap != null) {
+          keymap.removeAllActionShortcuts(ActivateToolWindowAction.getActionIdForToolWindow(myId));
+        }
+      }
     }
 
     ToolWindow toolWindow = getToolWindow();
@@ -303,10 +402,15 @@ public abstract class BaseTool {
     myIsRegistered = false;
   }
 
+  /**
+   * Override this method to add implementation specific unregistration.
+   * Called in {@link jetbrains.mps.ide.tools.BaseTool#unregister} before default unregister process.
+   */
   protected void doUnregister() {
 
   }
 
+  // TODO: make method abstract - fix jetbrains.mps.ide.findusages.view.UsagesViewTool
   public JComponent getComponent() {
     return null;
   }
@@ -331,14 +435,28 @@ public abstract class BaseTool {
   }
 
   protected ContentManager getContentManager() {
-    if (!isRegistered()) register();
+    if (!isRegistered()) {
+      register();
+    }
     if (getToolWindow() == null) {
       return null;
     }
     return getToolWindow().getContentManager();
   }
 
+  @Override
+  public String toString() {
+    return "Tool " + this.getComponentName();
+  }
+
   protected Project getProject() {
     return myProject;
+  }
+
+  public void init(Project project) {
+  }
+
+  public void dispose() {
+
   }
 }

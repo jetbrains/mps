@@ -26,16 +26,25 @@ import org.jetbrains.mps.openapi.model.SNode;
 public interface SubstituteAction {
   SNode getIconNode(String pattern);
 
+  /**
+   * @deprecated This method was used only to distinct concept declaration reference and concept that is given as node.
+   * Now we should use truly concepts in parameter objects, not concept nodes.
+   * FIXME 1 usage: {@code NodeItemCellRenderer#getIcon(SubstituteAction, String)}
+   */
+  @Deprecated
   boolean isReferentPresentation();
 
   SNode getSourceNode();
 
+  @Deprecated
   Object getParameterObject();
 
+  @Deprecated
   SNode getOutputConcept();
 
   SNode getActionType(String pattern);
 
+  @Deprecated
   SNode getActionType(String pattern, EditorCell contextCell);
 
   String getMatchingText(String pattern);
@@ -48,5 +57,8 @@ public interface SubstituteAction {
 
   boolean canSubstitute(String pattern);
 
+  /**
+   * This method should be always executed inside model command.
+   */
   SNode substitute(@Nullable EditorContext context, String pattern);
 }

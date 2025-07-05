@@ -4,7 +4,7 @@ package jetbrains.mps.make.facet.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum TargetDependencyQualifier {
   before("before", "BEFORE"),
@@ -12,16 +12,21 @@ public enum TargetDependencyQualifier {
   after("after", "AFTER"),
   not_after("not after", "NOT_AFTER");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private TargetDependencyQualifier(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<TargetDependencyQualifier> getConstants() {
     List<TargetDependencyQualifier> list = ListSequence.fromList(new LinkedList<TargetDependencyQualifier>());
     ListSequence.fromList(list).addElement(TargetDependencyQualifier.before);
@@ -30,11 +35,9 @@ public enum TargetDependencyQualifier {
     ListSequence.fromList(list).addElement(TargetDependencyQualifier.not_after);
     return list;
   }
-
   public static TargetDependencyQualifier getDefault() {
     return TargetDependencyQualifier.before;
   }
-
   public static TargetDependencyQualifier parseValue(String value) {
     if (value == null) {
       return TargetDependencyQualifier.getDefault();
@@ -52,16 +55,5 @@ public enum TargetDependencyQualifier {
       return TargetDependencyQualifier.not_after;
     }
     return TargetDependencyQualifier.getDefault();
-  }
-
-  private String myValue;
-
-  TargetDependencyQualifier(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

@@ -13,7 +13,6 @@ import jetbrains.mps.util.FileUtil;
 public class FileMerger {
   private FileMerger() {
   }
-
   public static int mergeFiles(AbstractContentMerger contentMerger, File baseFile, File localFile, File latestFile, byte[] conflictStart, byte[] conflictEnd, byte[] separator, boolean overwrite, boolean convertCRLF) {
     contentMerger.setConflictMarks(conflictStart, conflictEnd, separator);
     OutputStream out = null;
@@ -25,14 +24,8 @@ public class FileMerger {
       if (mergeResult == null) {
         mergeResult = MultiTuple.<Integer,byte[]>from(AbstractContentMerger.FATAL_ERROR, localContent.getData());
       }
-      out = (overwrite ?
-        new FileOutputStream(localFile) :
-        System.out
-      );
-      out.write((convertCRLF ?
-        convert(mergeResult._1()) :
-        mergeResult._1()
-      ));
+      out = (overwrite ? new FileOutputStream(localFile) : System.out);
+      out.write((convertCRLF ? convert(mergeResult._1()) : mergeResult._1()));
       return (int) mergeResult._0();
     } catch (IOException e) {
       e.printStackTrace();
@@ -41,7 +34,6 @@ public class FileMerger {
       FileUtil.closeFileSafe(out);
     }
   }
-
   public static byte[] convert(byte[] array) {
     return new String(array, FileUtil.DEFAULT_CHARSET).replace("\r\n", "\n").getBytes(FileUtil.DEFAULT_CHARSET);
   }

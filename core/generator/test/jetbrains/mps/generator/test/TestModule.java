@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,37 +18,33 @@ package jetbrains.mps.generator.test;
 import jetbrains.mps.extapi.model.PersistenceProblem;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.GlobalScope;
+import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.smodel.BaseSpecialModelDescriptor;
+import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.smodel.InvalidSModel;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.SModelRepository;
-import jetbrains.mps.smodel.SModelStereotype;
+import jetbrains.mps.smodel.ModelLoadResult;
+import jetbrains.mps.smodel.RegularModelDescriptor;
+import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
-import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.JDOMUtil;
-import jetbrains.mps.util.SNodeOperations;
-import jetbrains.mps.vfs.IFile;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModel.Problem;
 import org.jetbrains.mps.openapi.model.SModel.Problem.Kind;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.persistence.NullDataSource;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -60,11 +56,10 @@ public class TestModule extends AbstractModule {
 
   private SModule myPeer;
   private Map<String, SModel> myModels = new ConcurrentHashMap<String, SModel>();
-  private Map<SModel, SModel> myOriginalModels = new HashMap<SModel, SModel>();
 
   public TestModule(String namespace, String moduleId, SModule peer) {
     myPeer = peer;
-    SModuleReference reference = new jetbrains.mps.project.structure.modules.ModuleReference(namespace, moduleId);
+    SModuleReference reference = new ModuleReference(namespace, ModuleId.fromString(moduleId));
     setModuleReference(reference);
   }
 
@@ -74,34 +69,19 @@ public class TestModule extends AbstractModule {
     super.dispose();
   }
 
-  @Override
-  public IFile getOutputPath() {
-    return ((AbstractModule) myPeer).getOutputPath();
-  }
-
   private void clearAll() {
     myPeer = null;
     myModels.clear();
-    myOriginalModels.clear();
     dependenciesChanged();
   }
 
-  private boolean isValidName(String modelName) {
-    return SModelRepository.getInstance().getModelDescriptor(modelName) == null
-        && !myModels.containsKey(modelName);
-  }
-
   public SModel createModel(SModel originalModel) {
-    String originalLong = SNodeOperations.getModelLongName(originalModel);
+    String originalLong = originalModel.getName().getLongName();
     String newModelName = originalLong + "@999";
-    while (!isValidName(newModelName)) {
-      newModelName += "_";
-    }
 
     SModel result = new TestSModelDescriptor(newModelName, originalModel);
 
-    myModels.put(result.getReference().getModelName(), result);
-    myOriginalModels.put(result, originalModel);
+    myModels.put(result.getName().getValue(), result);
     return result;
   }
 
@@ -110,78 +90,63 @@ public class TestModule extends AbstractModule {
   }
 
   public String toString() {
-    return "Test Transient models";
-  }
-
-  public List<SModel> getTestModels() {
-    return new ArrayList<SModel>(myModels.values());
-  }
-
-  @Override
-  protected ModuleScope createScope() {
-    return new TestModuleScope();
+    return getModuleName() + " [test transient module]";
   }
 
   @Override
   public ModuleDescriptor getModuleDescriptor() {
     // todo: is it ok?
+    // At least, JavaModuleFacet cares about proper module descriptor (although it's not obvious whether there's JMF for this module at all)
+    // What are scenarios for this TestModule anyway?
     return ((AbstractModule) myPeer).getModuleDescriptor();
   }
 
-  public SModule getPeer() {
-    return myPeer;
+  @Override
+  public SModel getModel(SModelId id) {
+    SModel m = super.getModel(id);
+    if (m == null) {
+      boolean own = id.getModelName() != null && myModels.containsKey(id.getModelName());
+      m = own ? myModels.get(id.getModelName()) : null;
+    }
+    return m;
   }
 
   @Override
-  public SModel resolveInDependencies(SModelId reference) {
-    boolean own = myModels.keySet().contains(SModelStereotype.withoutStereotype(reference.getModelName()));
-    if (!own) return super.resolveInDependencies(reference);
-    return myModels.get(reference.getModelName());
+  public Iterable<SDependency> getDeclaredDependencies() {
+    return myPeer.getDeclaredDependencies();
   }
 
-  public class TestModuleScope extends ModuleScope {
-    @Override
-    protected Set<SModule> getInitialModules() {
-      Set<SModule> result = new HashSet<SModule>();
-      result.add(TestModule.this);
-      for (SModule m : GlobalScope.getInstance().getVisibleModules()) {
-        result.add(m);
-      }
-      return result;
-    }
-
-    @Override
-    protected Set<Language> getInitialUsedLanguages() {
-      return CollectionUtil.filter(Language.class, getInitialModules());
-    }
+  @Override
+  public Set<SLanguage> getUsedLanguages() {
+    return myPeer.getUsedLanguages();
   }
 
-  class TestSModelDescriptor extends BaseSpecialModelDescriptor {
-    private final String myLongName;
+  class TestSModelDescriptor extends RegularModelDescriptor {
     private final SModel myToCopy;
 
     private TestSModelDescriptor(String modelName, SModel toCopy) {
-      super(PersistenceFacade.getInstance().createModelReference(null, jetbrains.mps.smodel.SModelId.generate(), modelName));
-      myLongName = SModelStereotype.withoutStereotype(modelName);
+      super(PersistenceFacade.getInstance().createModelReference(null, jetbrains.mps.smodel.SModelId.generate(), modelName), new NullDataSource());
       myToCopy = toCopy;
     }
 
+    @NotNull
     @Override
-    public jetbrains.mps.smodel.SModel createModel() {
-      Document document = ModelPersistence.saveModel(((SModelBase) myToCopy).getSModelInternal());
+    public ModelLoadResult<jetbrains.mps.smodel.SModel> createModel() {
+      if (!myToCopy.isLoaded()) {
+        // we are going to access internal/implementation model which might be in a partially-loaded
+        // state (only public API guarantees proper loading). With partial model, we could face odd
+        // issues (e.g. incomplete set of implicit imports as implementation node's concepts are not considered)
+        myToCopy.load();
+      }
+      Document document = ModelPersistence.saveModel(((SModelBase) myToCopy).getSModel());
       Element rootElement = document.getRootElement();
-      rootElement.setAttribute(ModelPersistence.MODEL_UID, getSModelReference().toString());
+      rootElement.setAttribute(ModelPersistence.REF, getReference().toString());
       String modelContent = JDOMUtil.asString(document);
       try {
-        return ModelPersistence.readModel(modelContent, false);
+        return new ModelLoadResult<jetbrains.mps.smodel.SModel>(ModelPersistence.readModel(modelContent, false), ModelLoadingState.FULLY_LOADED);
       } catch (ModelReadException e) {
-        return new StubModel(PersistenceFacade.getInstance().createModelReference(myLongName), e);
+        return new ModelLoadResult<jetbrains.mps.smodel.SModel>(new StubModel(PersistenceFacade.getInstance().createModelReference(getName().getLongName()), e), ModelLoadingState.FULLY_LOADED);
       }
-    }
-
-    @Override
-    public SModel resolveModel(SModelReference reference) {
-      throw new UnsupportedOperationException("not supported since 3.0");
     }
   }
 

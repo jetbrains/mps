@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,20 +15,13 @@
  */
 package jetbrains.mps.ide.ui.tree;
 
-import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.editor.colors.ColorKey;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
-import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.icons.IdeIcons;
-import jetbrains.mps.project.Project;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.util.Computable;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.util.Condition;
 
 import javax.swing.Icon;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -39,7 +32,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -50,10 +43,9 @@ import java.util.Set;
 /**
  * @author Kostik
  */
-public abstract class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPSTreeNode> {
+public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPSTreeNode> {
   private static final Logger LOG = LogManager.getLogger(MPSTreeNode.class);
 
-  private IOperationContext myOperationContext;
   private MPSTree myTree;
   private boolean myAdded;
 
@@ -71,45 +63,27 @@ public abstract class MPSTreeNode extends DefaultMutableTreeNode implements Iter
   private final Object myTreeMessagesLock = new Object();
   private List<TreeMessage> myTreeMessages = null;
   private Map<TextAttribute, Object> myFontAttributes = new HashMap<TextAttribute, Object>();
+  private int myToggleClickCount = 2;
 
-  public MPSTreeNode(IOperationContext operationContext) {
-    myOperationContext = operationContext;
+  public MPSTreeNode() {
+    super(null);
   }
 
-  public MPSTreeNode(Object userObject, IOperationContext operationContext) {
+  public MPSTreeNode(Object userObject) {
     super(userObject);
-    myOperationContext = operationContext;
-  }
-
-  public IOperationContext getOperationContext() {
-    return myOperationContext;
   }
 
   @Override
+  @SuppressWarnings("unchecked")
   public Iterator<MPSTreeNode> iterator() {
     if (children == null) {
-      return new Iterator<MPSTreeNode>() {
-        @Override
-        public boolean hasNext() {
-          return false;
-        }
-
-        @Override
-        public MPSTreeNode next() {
-          throw new IllegalStateException();
-        }
-
-        @Override
-        public void remove() {
-          throw new IllegalStateException();
-        }
-      };
+      return Collections.<MPSTreeNode>emptySet().iterator();
     }
     return children.iterator();
   }
 
   public MPSTree getTree() {
-    if (myTree == null && getParent() != null) {
+    if (myTree == null && getParent() instanceof MPSTreeNode) {
       return ((MPSTreeNode) getParent()).getTree();
     }
     return myTree;
@@ -118,13 +92,17 @@ public abstract class MPSTreeNode extends DefaultMutableTreeNode implements Iter
   /**
    *  returns the closest ancestor (nodes or the containing tree) which implements the given class
    */
-  public <T> T getAncestor(@Nullable Class<T> cls) {
+  public <T> T getAncestor(@NotNull Class<T> cls) {
     TreeNode parent = getParent();
     while (parent != null) {
-      if (cls.isInstance(parent)) return (T) parent;
+      if (cls.isInstance(parent)) {
+        return cls.cast(parent);
+      }
       parent = parent.getParent();
     }
-    if (myTree != null && cls.isInstance(myTree)) return (T) myTree;
+    if (myTree != null && cls.isInstance(myTree)) {
+      return cls.cast(myTree);
+    }
     return null;
   }
 
@@ -140,24 +118,6 @@ public abstract class MPSTreeNode extends DefaultMutableTreeNode implements Iter
     return false;
   }
 
-  /**
-   * This method is not called anymore (and so marked as final), the containing tree decides which groups to use on specific nodes.
-   * see ProjectPaneActionGroups.getActionGroup()
-   */
-  @Deprecated
-  public final ActionGroup getActionGroup() {
-    return null;
-  }
-
-  /**
-   * This method is not called anymore (and so marked as final), the containing tree decides which groups to use on specific nodes.
-   * see ProjectPaneActionGroups.getQuickCreateGroup()
-   */
-  @Deprecated
-  public final ActionGroup getQuickCreateGroup(boolean plain) {
-    return null;
-  }
-
   public void doubleClick() {
   }
 
@@ -170,24 +130,32 @@ public abstract class MPSTreeNode extends DefaultMutableTreeNode implements Iter
     getTree().fireTreeNodeAdded(this);
   }
 
+  /**
+   * Deemed for tree clients to ensure node is initialized (i.e. has its children).
+   * If the node is already {@link #isInitialized() initialized}, does nothing.
+   * Otherwise, {@link jetbrains.mps.ide.ui.tree.MPSTree#performInit(MPSTreeNode)}  delegates} to owning tree, if any,
+   * to perform actual initialization, with respect to tree's considerations (e.g. might wrap with model read action or
+   * "Loading..."  notification nodes).
+   * Tree shall call {@link #doInit()} at some point where actual node initialization takes place.
+   * Although not final, extra care should be taken if overriding (FIXME perhaps, shall make final, and move isInitialized field here as well).
+   */
   public void init() {
     if (isInitialized()) {
       return;
     }
-
-    MPSTree tree = ModelAccess.instance().runReadAction(new Computable<MPSTree>() {
-      @Override
-      public MPSTree compute() {
-        doInit();
-        return getTree();
-      }
-    });
-
+    MPSTree tree = getTree();
     if (tree != null) {
-      ((DefaultTreeModel) getTree().getModel()).nodeStructureChanged(this);
+      tree.performInit(this);
+    } else {
+      doInit();
     }
   }
 
+  /**
+   * This method shall not be invoked by code outside of MPSTree framework.
+   * Subclasses shall override and perform actual node initialization here.
+   * Default implementation does nothing, subclasses don't need to invoke <code>super.doInit()</code>
+   */
   protected void doInit() {
   }
 
@@ -252,6 +220,8 @@ public abstract class MPSTreeNode extends DefaultMutableTreeNode implements Iter
     for (MPSTreeNode node : this) {
       node.removeThisAndChildren();
     }
+    setParent(null);
+    children = null;
   }
 
   final void addThisAndChildren() {
@@ -275,11 +245,6 @@ public abstract class MPSTreeNode extends DefaultMutableTreeNode implements Iter
     }
   }
 
-  @Override
-  public boolean isLeaf() {
-    return false;
-  }
-
   public MPSTreeNode findExactChildWith(Object userObject) {
     for (MPSTreeNode child : this) {
       if (child.getUserObject() == userObject) return child;
@@ -287,6 +252,9 @@ public abstract class MPSTreeNode extends DefaultMutableTreeNode implements Iter
     return null;
   }
 
+  /**
+   * Ignores subtree of nodes that have not been initialized yet.
+   */
   @Nullable
   public final MPSTreeNode findDescendantWith(Object userObject) {
     if (getUserObject() == null ? userObject == null : getUserObject().equals(userObject)) return this;
@@ -299,34 +267,23 @@ public abstract class MPSTreeNode extends DefaultMutableTreeNode implements Iter
     return null;
   }
 
-  @Nullable
-  public final <T> MPSTreeNode findDescendantWith(Condition<T> condition) {
-    if (condition.met((T) getUserObject())) return this;
-    if (isInitialized()) {
-      for (int i = 0; i < getChildCount(); i++) {
-        MPSTreeNode result = ((MPSTreeNode) getChildAt(i)).findDescendantWith(condition);
-        if (result != null) return result;
-      }
-    }
-    return null;
-  }
-
-  @Nullable
-  public final <T> MPSTreeNode findStraightAncestorWith(Condition<T> condition) {
-    if (!isInitialized()) init();
-    for (int i = 0; i < getChildCount(); i++) {
-      MPSTreeNode child = (MPSTreeNode) getChildAt(i);
-      if (condition.met((T) child.getUserObject())) return child;
-    }
-    return null;
-  }
-
+  /**
+   * Default value is: 2
+   */
   public int getToggleClickCount() {
-    return 2;
+    return myToggleClickCount;
+  }
+
+  public void setToggleClickCount(int clickCount) {
+    myToggleClickCount = clickCount;
   }
 
   //updates and refreshes tree
   public void renewPresentation() {
+    final MPSTree tree = getTree();
+    if (tree == null || tree.isDisposed()) {
+      return;
+    }
     updatePresentation();
     updateNodePresentationInTree();
   }
@@ -376,57 +333,49 @@ public abstract class MPSTreeNode extends DefaultMutableTreeNode implements Iter
     }
   }
 
-  private void treeMessagesChanged(boolean updatePresentation) {
-    if (updatePresentation) {
-      ThreadUtils.runInUIThreadNoWait(new Runnable() {
-        @Override
-        public void run() {
-          ModelAccess.instance().runReadAction(new Runnable() {
-            @Override
-            public void run() {
-              IOperationContext context = getOperationContext();
-              if (context == null) return;
-              if (!context.isValid()) return;
-              Project project = context.getProject();
-              if (project == null) return;
-              if (project.isDisposed()) return;
-
-              renewPresentation();
-            }
-          });
-        }
-      });
-    }
-  }
-
-  public void addTreeMessage(TreeMessage message) {
-    addTreeMessage(message, true);
-  }
-
-  public void addTreeMessage(@NotNull TreeMessage message, boolean updatePresentation) {
+  /**
+   * Attach an extra message to a node. Messages are identified by their {@link jetbrains.mps.ide.ui.tree.TreeMessageOwner owner}.
+   * This method may be invoked from any thread, and doesn't trigger UI update, use {@link #renewPresentation()} from correct (EDT/UI) thread
+   * if needed (e.g. if messages are attached the moment tree is being constructed, there's no reason to renew each node individually,
+   * they get a chance to update them once tree becomes visible)
+   * @param message message to attach
+   */
+  public void addTreeMessage(@NotNull TreeMessage message) {
     synchronized (myTreeMessagesLock) {
       if (myTreeMessages == null) {
         myTreeMessages = new ArrayList<TreeMessage>(1);
       }
       myTreeMessages.add(message);
-      treeMessagesChanged(updatePresentation);
     }
   }
 
-  public Set<TreeMessage> removeTreeMessages(TreeMessageOwner owner, boolean updatePresentation) {
+  /**
+   * Detach all messages of the specified owner.
+   * This method can be invoked from any thread.
+   * To trigger UI update, use {@link #renewPresentation()} from correct (EDT/UI) thread.
+   * @param owner identifies messages to remove
+   * @return set of detached messages, or empty collection if none found
+   */
+  @NotNull
+  public Set<TreeMessage> removeTreeMessages(TreeMessageOwner owner) {
     Set<TreeMessage> result = new HashSet<TreeMessage>(1);
-    if (owner == null) return result;
+    if (owner == null) {
+      return result;
+    }
+    final ArrayList<TreeMessage> copy;
     synchronized (myTreeMessagesLock) {
-      if (myTreeMessages == null) return result;
-      for (TreeMessage message : new ArrayList<TreeMessage>(myTreeMessages)) {
-        if (owner.equals(message.getOwner())) {
-          result.add(message);
-          myTreeMessages.remove(message);
-        }
+      if (myTreeMessages == null) {
+        return result;
+      }
+      copy = new ArrayList<TreeMessage>(myTreeMessages);
+    }
+    for (TreeMessage message : copy) {
+      if (owner.equals(message.getOwner())) {
+        result.add(message);
       }
     }
-    if (!result.isEmpty()) {
-      treeMessagesChanged(updatePresentation);
+    synchronized (myTreeMessagesLock) {
+      myTreeMessages.removeAll(result);
     }
     return result;
   }
@@ -544,7 +493,7 @@ public abstract class MPSTreeNode extends DefaultMutableTreeNode implements Iter
     return myCombinedErrorState;
   }
 
-  private void updateErrorState() {
+  protected void updateErrorState() {
     ErrorState state = ErrorState.NONE;
     if (propogateErrorUpwards()) {
       for (MPSTreeNode node : this) {

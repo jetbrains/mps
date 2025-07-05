@@ -4,7 +4,7 @@ package jetbrains.mps.transformation.test.inputLang.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum UseInTest {
   test1("test1", "test1"),
@@ -14,18 +14,25 @@ public enum UseInTest {
   dontApplyReductionTwice("dontApplyReductionTwice", "dontApplyReductionTwice"),
   weaveManyToSingularChild("weaveManyToSingularChild", "weaveManyToSingularChild"),
   reduceOneToMany("reduceOneToMany", "reduceOneToMany"),
+  argsInTemplDeclRef("argsInTemplDeclRef", "argsInTemplDeclRef"),
+  argsInTemplateCall("Expressions in ITemplateCall arguments", "argsInTemplateCall"),
   none("none", "none");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private UseInTest(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<UseInTest> getConstants() {
     List<UseInTest> list = ListSequence.fromList(new LinkedList<UseInTest>());
     ListSequence.fromList(list).addElement(UseInTest.test1);
@@ -35,14 +42,14 @@ public enum UseInTest {
     ListSequence.fromList(list).addElement(UseInTest.dontApplyReductionTwice);
     ListSequence.fromList(list).addElement(UseInTest.weaveManyToSingularChild);
     ListSequence.fromList(list).addElement(UseInTest.reduceOneToMany);
+    ListSequence.fromList(list).addElement(UseInTest.argsInTemplDeclRef);
+    ListSequence.fromList(list).addElement(UseInTest.argsInTemplateCall);
     ListSequence.fromList(list).addElement(UseInTest.none);
     return list;
   }
-
   public static UseInTest getDefault() {
     return UseInTest.none;
   }
-
   public static UseInTest parseValue(String value) {
     if (value == null) {
       return UseInTest.getDefault();
@@ -68,20 +75,15 @@ public enum UseInTest {
     if (value.equals(UseInTest.reduceOneToMany.getValueAsString())) {
       return UseInTest.reduceOneToMany;
     }
+    if (value.equals(UseInTest.argsInTemplDeclRef.getValueAsString())) {
+      return UseInTest.argsInTemplDeclRef;
+    }
+    if (value.equals(UseInTest.argsInTemplateCall.getValueAsString())) {
+      return UseInTest.argsInTemplateCall;
+    }
     if (value.equals(UseInTest.none.getValueAsString())) {
       return UseInTest.none;
     }
     return UseInTest.getDefault();
-  }
-
-  private String myValue;
-
-  UseInTest(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

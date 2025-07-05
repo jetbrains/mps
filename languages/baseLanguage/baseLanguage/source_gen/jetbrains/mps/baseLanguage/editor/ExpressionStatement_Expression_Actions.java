@@ -10,33 +10,72 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_CommentOrUncommentNode;
 
 public class ExpressionStatement_Expression_Actions {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new ExpressionStatement_Expression_Actions.ExpressionStatement_Expression_Actions_DELETE(node));
+    editorCell.setAction(CellActionType.COMMENT, new ExpressionStatement_Expression_Actions.ExpressionStatement_Expression_Actions_COMMENT(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new ExpressionStatement_Expression_Actions.ExpressionStatement_Expression_Actions_BACKSPACE(node));
   }
-
   public static class ExpressionStatement_Expression_Actions_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public ExpressionStatement_Expression_Actions_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public String getDescriptionText() {
       return "delete whole statement";
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      if (SConceptOperations.isExactly(SNodeOperations.getConceptDeclaration(SLinkOperations.getTarget(node, "expression", true)), NameUtil.nodeFQName(SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.structure.Expression")))) {
+      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression")))), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")))) {
         SNodeOperations.deleteNode(node);
       } else {
-        SLinkOperations.setTarget(node, "expression", SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.Expression", null), true);
+        SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
+      }
+    }
+  }
+  public static class ExpressionStatement_Expression_Actions_COMMENT extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public ExpressionStatement_Expression_Actions_COMMENT(SNode node) {
+      this.myNode = node;
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      new CellAction_CommentOrUncommentNode(node).execute(editorContext);
+    }
+    @Override
+    public boolean canExecute(EditorContext editorContext) {
+      return this.canExecute_internal(editorContext, this.myNode);
+    }
+    public boolean canExecute_internal(EditorContext editorContext, SNode node) {
+      if (editorContext.getSelectedNode() != SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"))) {
+        return false;
+      }
+      return new CellAction_CommentOrUncommentNode(node).canExecute(editorContext);
+    }
+  }
+  public static class ExpressionStatement_Expression_Actions_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public ExpressionStatement_Expression_Actions_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public String getDescriptionText() {
+      return "delete whole statement";
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression")))), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")))) {
+        SNodeOperations.deleteNode(node);
+      } else {
+        SLinkOperations.setTarget(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
       }
     }
   }

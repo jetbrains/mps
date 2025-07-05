@@ -15,19 +15,28 @@
  */
 package jetbrains.mps.smodel.runtime;
 
-import jetbrains.mps.smodel.IScope;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public interface ReferenceConstraintsDescriptor {
-  String getRole();
+  @Deprecated
+  String getName();
+
+  @Deprecated
+  @ToRemove(version = 3.4)
+  SReferenceLinkId getReferenceLink();
+
+  SReferenceLink getReference();
 
   ConstraintsDescriptor getContainer();
 
   @Nullable
   ReferenceScopeProvider getScopeProvider();
 
-  boolean validate(SNode referenceNode, SNode oldReferentNode, SNode newReferentNode, IScope scope);
+  boolean validate(SNode referenceNode, SNode oldReferentNode, SNode newReferentNode);
 
-  void onReferenceSet(SNode referenceNode, SNode oldReferentNode, SNode newReferentNode, IScope scope);
+  void onReferenceSet(SNode referenceNode, SNode oldReferentNode, SNode newReferentNode);
 }

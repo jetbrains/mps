@@ -4,23 +4,17 @@ package jetbrains.mps.ide.platform.actions.core;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.refactoring.framework.RefactoringUtil;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import org.jetbrains.annotations.NotNull;
-import org.apache.log4j.Priority;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.ide.platform.refactoring.RefactoringAccess;
-import jetbrains.mps.refactoring.framework.RefactoringContext;
-import java.util.Arrays;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 
 public class MoveNodes_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -30,70 +24,51 @@ public class MoveNodes_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
-  public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return RefactoringUtil.isApplicable(RefactoringUtil.getRefactoringByClassName("jetbrains.mps.lang.core.refactorings" + "." + "MoveNodes"), ((List<SNode>) MapSequence.fromMap(_params).get("target")));
-  }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        boolean enabled = this.isApplicable(event, _params);
-        this.setEnabledState(event.getPresentation(), enabled);
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "MoveNodes", t);
-      }
-      this.disable(event.getPresentation());
+    // if old refactoring is overrided we should execute other action instead 
+    boolean oldRefactoringApplicable = RefactoringUtil.isApplicable(RefactoringUtil.getRefactoringByClassName("jetbrains.mps.lang.core.refactorings" + "." + "MoveNodes"), ((List<SNode>) MapSequence.fromMap(_params).get("nodesToMove")));
+
+    if (MoveNodesUtil.areSiblings(((List<SNode>) MapSequence.fromMap(_params).get("nodesToMove")), ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository()) && oldRefactoringApplicable) {
+      MoveNodesAction refactoring = MoveNodesActionHelper.getRefactoring(((MPSProject) MapSequence.fromMap(_params).get("project")), ((List<SNode>) MapSequence.fromMap(_params).get("nodesToMove")));
+      event.getPresentation().setText(refactoring.getName());
+      event.getPresentation().setEnabled(true);
+    } else {
+      event.getPresentation().setEnabled(false);
     }
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
     {
       List<SNode> nodes = event.getData(MPSCommonDataKeys.NODES);
-      boolean error = false;
-      if (nodes != null) {
-      }
-      if (error || nodes == null) {
-        MapSequence.fromMap(_params).put("target", null);
+      if (nodes == null) {
+        MapSequence.fromMap(_params).put("nodesToMove", null);
       } else {
-        MapSequence.fromMap(_params).put("target", ListSequence.fromListWithValues(new ArrayList<SNode>(), nodes));
+        MapSequence.fromMap(_params).put("nodesToMove", ListSequence.fromListWithValues(new ArrayList<SNode>(), nodes));
       }
+      if (nodes == null) {
+        return false;
+      }
+
     }
-    if (MapSequence.fromMap(_params).get("target") == null) {
-      return false;
-    }
-    MapSequence.fromMap(_params).put("project", event.getData(MPSCommonDataKeys.MPS_PROJECT));
-    if (MapSequence.fromMap(_params).get("project") == null) {
-      return false;
+    {
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      MapSequence.fromMap(_params).put("project", p);
+      if (p == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-
-      MoveNodesExecute.execute(((MPSProject) MapSequence.fromMap(_params).get("project")), ((List<SNode>) MapSequence.fromMap(_params).get("target")), new MoveNodesExecute.ExecuteRefactoring() {
-        public void run(Object newLocation) {
-          RefactoringAccess.getInstance().getRefactoringFacade().execute(RefactoringContext.createRefactoringContextByName("jetbrains.mps.lang.core.refactorings.MoveNodes", Arrays.asList("target"), Arrays.asList(newLocation), ((List<SNode>) MapSequence.fromMap(_params).get("target")), ((MPSProject) MapSequence.fromMap(_params).get("project"))));
-        }
-      });
-
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "MoveNodes", t);
-      }
-    }
+    MoveNodesActionHelper.getRefactoring(((MPSProject) MapSequence.fromMap(_params).get("project")), ((List<SNode>) MapSequence.fromMap(_params).get("nodesToMove"))).execute(((MPSProject) MapSequence.fromMap(_params).get("project")), ((List<SNode>) MapSequence.fromMap(_params).get("nodesToMove")));
   }
-
-  protected static Logger LOG = LogManager.getLogger(MoveNodes_Action.class);
 }

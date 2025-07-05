@@ -11,16 +11,14 @@ import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import javax.swing.SwingUtilities;
+import com.intellij.openapi.application.ApplicationManager;
 
 public class MergeDriverInstaller {
   private MergeDriverInstaller() {
   }
-
   public static boolean isApplicable(Project project) {
     return PluginUtil.isGitPluginEnabled() || PluginUtil.isSvnPluginEnabled();
   }
-
   public static AbstractInstaller.State getCompositeState(Project project, boolean allVcses) {
     Iterable<AbstractInstaller> installers = Arrays.asList(new GitGlobalInstaller(project), new GitGlobalInstaller(project), new GitRepositoriesInstaller(project), new SvnInstaller(project, false), new SvnInstaller(project, true));
     if (!(allVcses)) {
@@ -58,9 +56,8 @@ public class MergeDriverInstaller {
       return AbstractInstaller.State.NOT_ENABLED;
     }
   }
-
   public static void installWhereNeeded(final Project project) {
-    SwingUtilities.invokeLater(new Runnable() {
+    ApplicationManager.getApplication().invokeLater(new Runnable() {
       public void run() {
         new MergeDriverOptionsDialog(project).show();
       }

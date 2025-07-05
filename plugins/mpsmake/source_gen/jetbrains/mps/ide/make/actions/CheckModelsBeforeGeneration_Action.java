@@ -7,12 +7,10 @@ import javax.swing.Icon;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.ide.generator.GenerationSettings;
+import jetbrains.mps.generator.GenerationSettingsProvider;
 import com.intellij.icons.AllIcons;
 import com.intellij.util.ui.EmptyIcon;
-import org.apache.log4j.Priority;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.generator.IModifiableGenerationSettings;
 
 public class CheckModelsBeforeGeneration_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -22,47 +20,22 @@ public class CheckModelsBeforeGeneration_Action extends BaseAction {
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(false);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        boolean optionEnabled = GenerationSettings.getInstance().isCheckModelsBeforeGeneration();
-        if (optionEnabled) {
-          event.getPresentation().setIcon(AllIcons.Actions.Checked_small);
-        } else {
-          event.getPresentation().setIcon(new EmptyIcon(18, 18));
-        }
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "CheckModelsBeforeGeneration", t);
-      }
-      this.disable(event.getPresentation());
+    boolean optionEnabled = GenerationSettingsProvider.getInstance().getGenerationSettings().isCheckModelsBeforeGeneration();
+    if (optionEnabled) {
+      event.getPresentation().setIcon(AllIcons.Actions.Checked_small);
+    } else {
+      event.getPresentation().setIcon(new EmptyIcon(18, 18));
     }
   }
-
-  protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
-    if (!(super.collectActionData(event, _params))) {
-      return false;
-    }
-    return true;
-  }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      GenerationSettings settings = GenerationSettings.getInstance();
-      settings.setCheckModelsBeforeGeneration(!(settings.isCheckModelsBeforeGeneration()));
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "CheckModelsBeforeGeneration", t);
-      }
-    }
+    IModifiableGenerationSettings settings = GenerationSettingsProvider.getInstance().getGenerationSettings();
+    settings.setCheckModelsBeforeGeneration(!(settings.isCheckModelsBeforeGeneration()));
   }
-
-  protected static Logger LOG = LogManager.getLogger(CheckModelsBeforeGeneration_Action.class);
 }

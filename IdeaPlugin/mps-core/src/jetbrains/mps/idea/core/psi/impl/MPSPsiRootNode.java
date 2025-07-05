@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,12 @@
 package jetbrains.mps.idea.core.psi.impl;
 
 import com.intellij.lang.FileASTNode;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileTypes.FileType;
+import com.intellij.openapi.util.Ref;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.FileViewProvider;
+import com.intellij.psi.PsiBinaryFile;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
@@ -27,20 +30,19 @@ import com.intellij.psi.PsiFileSystemItem;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.SingleRootFileViewProvider;
 import com.intellij.psi.search.PsiElementProcessor;
-import com.intellij.testFramework.LightVirtualFile;
 import com.intellij.util.IncorrectOperationException;
+import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
-import jetbrains.mps.ide.icons.IconManager;
+import jetbrains.mps.icons.MPSIcons.Nodes;
+import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.idea.core.projectView.edit.SNodeDeleteProvider;
+import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
-import jetbrains.mps.project.ProjectOperationContext;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.workbench.nodesFs.MPSNodesVirtualFileSystem;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -49,42 +51,44 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.persistence.DataSource;
 
 import javax.swing.Icon;
+import java.util.Collections;
 
 /**
  * User: fyodor
  * Date: 3/5/13
  */
-public class MPSPsiRootNode extends MPSPsiNodeBase implements PsiFile, MPSPsiRealNode {
+public class MPSPsiRootNode extends MPSPsiNodeBase implements PsiFile, PsiBinaryFile, MPSPsiRealNode {
 
   private final FileViewProvider myViewProvider;
   private final SNodeId myNodeId;
-  private String myName;
-  private MPSPsiModel myModel;
+  private final String myName;
+  private final MPSPsiModel myModel;
+  private VirtualFile mySeparateFile;
 
-  public MPSPsiRootNode (SNodeId nodeId, String name,  PsiManager manager) {
-    this(nodeId, name, manager, null);
-  }
-
-  public MPSPsiRootNode (SNodeId nodeId, String name,  PsiManager manager, @Nullable VirtualFile virtualFile) {
+  public MPSPsiRootNode(SNodeId nodeId, @NotNull String name, MPSPsiModel containingModel, PsiManager manager) {
     super(manager);
     myNodeId = nodeId;
+    myModel = containingModel;
     myName = name;
-    myViewProvider = virtualFile == null
-      ? new SingleRootFileViewProvider(manager, new LightVirtualFile(), false)
-      : new SingleRootFileViewProvider(manager, virtualFile);
+    myViewProvider = new SingleRootFileViewProvider(manager, NodeVirtualFileSystem.getInstance().getFileFor(getProjectRepository(), getSNodeReference()), false);
+  }
+
+  public MPSPsiRootNode(SNodeId nodeId, @NotNull String name, MPSPsiModel containingModel, PsiManager manager, @NotNull VirtualFile virtualFile) {
+    this(nodeId, name, containingModel, manager);
+    mySeparateFile = virtualFile;
   }
 
   @Override
   protected Icon getBaseIcon() {
-    return ModelAccess.instance().runReadAction(new Computable<Icon>() {
-      @Override
-      public Icon compute() {
-        final SNode node = getSNodeReference().resolve(MPSModuleRepository.getInstance());
-        if(node == null) return IdeIcons.UNKNOWN_ICON;
-        return IconManager.getIconFor(node, true);
-      }
+    SRepository repository = ProjectHelper.getProjectRepository(getProject());
+    return new ModelAccessHelper(repository.getModelAccess()).runReadAction(() -> {
+      final SNode node = getSNodeReference().resolve(repository);
+      if (node == null) return IdeIcons.UNKNOWN_ICON;
+      final GlobalIconManager globalIconManager = ApplicationManager.getApplication().getComponent(GlobalIconManager.class);
+      return globalIconManager == null ? Nodes.Node : globalIconManager.getIconFor(node);
     });
   }
 
@@ -94,21 +98,43 @@ public class MPSPsiRootNode extends MPSPsiNodeBase implements PsiFile, MPSPsiRea
     return getBaseIcon();
   }
 
+  @Override
+  public boolean isValid() {
+    if (!myModel.isValid() || mySeparateFile != null && !mySeparateFile.isValid()) return false;
+    final SRepository repository = getProjectRepository();
+    final Ref<Boolean> result = new Ref<>(false);
+    final SNodeReference nodeRef = getSNodeReference();
+    if (nodeRef == null) return false;
+
+    repository.getModelAccess().runReadAction(() -> {
+      SNode node = nodeRef.resolve(repository);
+      result.set(node != null);
+    });
+
+    return result.get();
+  }
+
   @Nullable
   @Override
   public VirtualFile getVirtualFile() {
-    if(!(myViewProvider.getVirtualFile() instanceof LightVirtualFile))
-      return myViewProvider.getVirtualFile();
-    return MPSNodesVirtualFileSystem.getInstance().getFileFor(getSNodeReference());
+//    return MPSNodesVirtualFileSystem.getInstance().getFileFor(getSNodeReference());
+    if (mySeparateFile != null) {
+      return mySeparateFile;
+    }
+    final SRepository repository = getProjectRepository();
+    return new ModelAccessHelper(repository.getModelAccess()).runReadAction(() -> {
+      SModel sModel = myModel.getSModelReference().resolve(repository);
+      DataSource dataSource = sModel.getSource();
+      if (dataSource instanceof FileDataSource) {
+        return VirtualFileUtils.getProjectVirtualFile(((FileDataSource) dataSource).getFile());
+      }
+      return null;
+    });
   }
 
   @Override
   public boolean processChildren(PsiElementProcessor<PsiFileSystemItem> processor) {
     return false;
-  }
-
-  public void setModel(MPSPsiModel model) {
-    myModel = model;
   }
 
   @Override
@@ -130,8 +156,9 @@ public class MPSPsiRootNode extends MPSPsiNodeBase implements PsiFile, MPSPsiRea
   @Nullable
   @Override
   public PsiDirectory getParent() {
-    if(myViewProvider.getVirtualFile().getFileType() == MPSFileTypeFactory.MPS_ROOT_FILE_TYPE && super.getParent() instanceof MPSPsiModel)
+    if (myViewProvider.getVirtualFile().getFileType() == MPSFileTypeFactory.MPS_ROOT_FILE_TYPE && super.getParent() instanceof MPSPsiModel) {
       return ((MPSPsiModel) super.getParent()).getParentDirectory();
+    }
     return (PsiDirectory) super.getParent();
   }
 
@@ -142,7 +169,8 @@ public class MPSPsiRootNode extends MPSPsiNodeBase implements PsiFile, MPSPsiRea
 
   @Override
   public long getModificationStamp() {
-    return getVirtualFile().getModificationStamp();
+    VirtualFile file = getVirtualFile();
+    return file != null ? file.getModificationStamp() : -1;
   }
 
   @NotNull
@@ -164,6 +192,7 @@ public class MPSPsiRootNode extends MPSPsiNodeBase implements PsiFile, MPSPsiRea
     return MPSFileTypeFactory.MPS_NODE_FILE_TYPE;
   }
 
+  @NotNull
   @Override
   public String getName() {
     return myName;
@@ -172,7 +201,7 @@ public class MPSPsiRootNode extends MPSPsiNodeBase implements PsiFile, MPSPsiRea
   @NotNull
   @Override
   public PsiFile[] getPsiRoots() {
-    return new PsiFile[] {this};
+    return new PsiFile[]{this};
   }
 
   @NotNull
@@ -189,24 +218,21 @@ public class MPSPsiRootNode extends MPSPsiNodeBase implements PsiFile, MPSPsiRea
   @Override
   public void navigate(final boolean requestFocus) {
     final SRepository repository = getProjectRepository();
-    repository.getModelAccess().runWriteInEDT(new Runnable() {
-      @Override
-      public void run() {
-        SModel model = myModel.getSModelReference().resolve(repository);
-        if (model == null) return;
+    repository.getModelAccess().runWriteInEDT(() -> {
+      SModel model = myModel.getSModelReference().resolve(repository);
+      if (model == null) return;
 
-        SNode node = model.getNode(myNodeId);
-        if (node == null) return;
+      SNode node = model.getNode(myNodeId);
+      if (node == null) return;
 
-        IOperationContext context = new ProjectOperationContext(ProjectHelper.toMPSProject(getProject()));
-        NavigationSupport.getInstance().openNode(context, node, requestFocus, false);
-      }
+      NavigationSupport.getInstance().openNode(ProjectHelper.fromIdeaProject(getProject()), node, requestFocus, false);
     });
   }
 
   @Override
   public boolean isPhysical() {
-    return true;
+    // Honestly check that file is physical - per root RootNode will return true
+    return this.getVirtualFile() != null && !this.getVirtualFile().equals(myModel.getSourceVirtualFile());
   }
 
   @Override
@@ -237,9 +263,18 @@ public class MPSPsiRootNode extends MPSPsiNodeBase implements PsiFile, MPSPsiRea
 
   // added for idea search scope to work with our virtual files
   // see PsiSearchScopeUtil.isInScope
+  // The main thing is: return some physical real file that lives well with idea's search scopes
   @Override
   public PsiElement getContext() {
-    return null;
+    VirtualFile vFile = mySeparateFile != null ?
+      mySeparateFile :
+      myModel.getSourceVirtualFile();
+    // TEMP FIX: Guarding vFile == null
+    // model.getSourceFile() gives us null in case model is in a jar file, because its
+    // source.getFile() returns not a virtual file, but a JarEntryFile
+    // Proper solution, i think: exclude them from indexing by MPSFQNameJavaClassIndex and the like
+    // Came here from MPSJavaClassFinder
+    return vFile != null && vFile.isValid() ? PsiManager.getInstance(getProject()).findFile(vFile) : null;
   }
 
   @Override
@@ -254,4 +289,11 @@ public class MPSPsiRootNode extends MPSPsiNodeBase implements PsiFile, MPSPsiRea
     return myViewProvider.getPsi(getLanguage()).getText();
   }
 
+  @Override
+  public void delete() throws IncorrectOperationException {
+    SNodeDeleteProvider deleteProvider = new SNodeDeleteProvider(
+      Collections.singletonList(getSNodeReference()),
+      ProjectHelper.fromIdeaProject(getProject()));
+    getProjectRepository().getModelAccess().executeUndoTransparentCommand(deleteProvider);
+  }
 }

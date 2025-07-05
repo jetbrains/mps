@@ -4,33 +4,36 @@ package jetbrains.mps.baseLanguage.collections.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum LinkedHashMapOrder {
   insertion_order("insertion_order", false),
   access_order("access_order", true);
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final boolean myValue;
+  LinkedHashMapOrder(String name, boolean value) {
+    myName = name;
+    myValue = value;
+  }
+  public boolean getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return "" + this.myValue;
+    return Boolean.toString(myValue);
   }
-
   public static List<LinkedHashMapOrder> getConstants() {
     List<LinkedHashMapOrder> list = ListSequence.fromList(new LinkedList<LinkedHashMapOrder>());
     ListSequence.fromList(list).addElement(LinkedHashMapOrder.insertion_order);
     ListSequence.fromList(list).addElement(LinkedHashMapOrder.access_order);
     return list;
   }
-
   public static LinkedHashMapOrder getDefault() {
     return LinkedHashMapOrder.insertion_order;
   }
-
   public static LinkedHashMapOrder parseValue(String value) {
     if (value == null) {
       return LinkedHashMapOrder.getDefault();
@@ -42,16 +45,5 @@ public enum LinkedHashMapOrder {
       return LinkedHashMapOrder.access_order;
     }
     return LinkedHashMapOrder.getDefault();
-  }
-
-  private boolean myValue;
-
-  LinkedHashMapOrder(String name, boolean value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public boolean getValue() {
-    return this.myValue;
   }
 }

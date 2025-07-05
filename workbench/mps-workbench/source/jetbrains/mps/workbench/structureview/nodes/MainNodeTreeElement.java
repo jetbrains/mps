@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,24 +15,28 @@
  */
 package jetbrains.mps.workbench.structureview.nodes;
 
+import com.intellij.ide.structureView.StructureViewTreeElement;
 import com.intellij.ide.util.treeView.smartTree.TreeElement;
-import com.intellij.openapi.project.Project;
+import com.intellij.navigation.ItemPresentation;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainNodeTreeElement extends NodeTreeElement {
-  private Project myProject;
+public class MainNodeTreeElement implements StructureViewTreeElement {
+  private final MPSProject myProject;
+  private final SNodeReference myNode;
 
-  public MainNodeTreeElement(Project project, SNodeReference node) {
-    super(node);
+  public MainNodeTreeElement(MPSProject project, SNodeReference node) {
     myProject = project;
+    myNode = node;
   }
 
   @Override
@@ -44,21 +48,48 @@ public class MainNodeTreeElement extends NodeTreeElement {
   @Override
   public TreeElement[] getChildren() {
     final List<TreeElement> result = new ArrayList<TreeElement>();
-
-    ModelAccess.instance().runReadAction(new Runnable() {
+    myProject.getModelAccess().runReadAction(new Runnable() {
       @Override
       public void run() {
-        SNode node = myNode.resolve(MPSModuleRepository.getInstance());
-        for (RelationDescriptor tab : ProjectPluginManager.getApplicableTabs(myProject, node)) {
+        SNode node = myNode.resolve(myProject.getRepository());
+        for (RelationDescriptor tab : ProjectPluginManager.getApplicableTabs(myProject.getProject(), node)) {
           for (SNode aspectNode : tab.getNodes(node)) {
             SNode baseNode = tab.getBaseNode(aspectNode);
             boolean bijection = (baseNode == node || baseNode == null);
-            result.add(new AspectTreeElement(new jetbrains.mps.smodel.SNodePointer(aspectNode), tab, bijection));
+            result.add(new AspectTreeElement(MainNodeTreeElement.this, aspectNode, tab, bijection));
           }
         }
       }
     });
 
     return result.toArray(new TreeElement[result.size()]);
+  }
+
+  @Override
+  public ItemPresentation getPresentation() {
+    final SRepository repo = myProject.getRepository();
+    return new ModelAccessHelper(repo).runReadAction(() -> {
+      SNode resolved = myNode.resolve(repo);
+      return resolved == null ? new Presentation(myNode) : new Presentation(resolved);
+    });
+  }
+
+  @Override
+  public boolean canNavigate() {
+    return true;
+  }
+
+  @Override
+  public boolean canNavigateToSource() {
+    return true; // ??? why? Used to be that way in superclass.
+  }
+
+  @Override
+  public void navigate(boolean b) {
+    navigate(myNode);
+  }
+
+  /*package*/ void navigate(SNodeReference nodeRef) {
+    new EditorNavigator(myProject).shallFocus(true).shallSelect(true).open(nodeRef);
   }
 }

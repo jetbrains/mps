@@ -9,12 +9,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 public class SNodeOperation_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createComponent_atlni5_a(editorContext, node);
-  }
-
-  private EditorCell createComponent_atlni5_a(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = editorContext.getCellFactory().createEditorComponentCell(node, "jetbrains.mps.lang.smodel.editor.ReplaceableAlias_Comp");
-    editorCell.setBig(true);
-    return editorCell;
+    return new SNodeOperation_EditorBuilder_a(editorContext, node).createCell();
   }
 }

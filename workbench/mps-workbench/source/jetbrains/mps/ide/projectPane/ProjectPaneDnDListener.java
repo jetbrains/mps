@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,33 +16,33 @@
 package jetbrains.mps.ide.projectPane;
 
 import com.intellij.ide.DataManager;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.wm.WindowManager;
-import com.intellij.util.ui.TextTransferrable;
-import jetbrains.mps.ide.ui.tree.MPSTree;
+import com.intellij.openapi.actionSystem.DataContext;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeGroupTreeNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
+import jetbrains.mps.plugins.relations.RelationDescriptor;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.SNodeUtil;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
-import org.jetbrains.mps.openapi.model.*;
-import jetbrains.mps.smodel.*;
 import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.workbench.MPSDataKeys;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTree;
 import javax.swing.tree.TreePath;
+import java.awt.Frame;
 import java.awt.Point;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -57,10 +57,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class ProjectPaneDnDListener implements DropTargetListener {
-  private static Logger LOG = LogManager.getLogger(ProjectPaneDnDListener.class);
-
-  private JTree myTree;
-  private DataFlavor myDataFlavor;
+  private final JTree myTree;
+  private final DataFlavor myDataFlavor;
 
   public ProjectPaneDnDListener(final JTree tree, DataFlavor dataFlavor) {
     myDataFlavor = dataFlavor;
@@ -105,14 +103,19 @@ public class ProjectPaneDnDListener implements DropTargetListener {
 
     dtde.acceptDrop(dtde.getDropAction());
 
-    Project project = MPSDataKeys.PROJECT.getData(DataManager.getInstance().getDataContext());
-    JFrame frame = WindowManager.getInstance().getFrame(project);
+    final DataContext dataContext = DataManager.getInstance().getDataContext(myTree);
+    final MPSProject project = MPSDataKeys.MPS_PROJECT.getData(dataContext);
+    if (project == null) {
+      dtde.rejectDrop();
+      return;
+    }
+    Frame frame = MPSDataKeys.FRAME.getData(dataContext);
     final String targetPackage = (getTargetVirtualPackage(target) == null) ? "" : getTargetVirtualPackage(target);
     String text = getConfirmLabel(sourceNodes.size(), targetPackage);
     int result = JOptionPane.showConfirmDialog(frame, text, "Move Nodes", JOptionPane.YES_NO_OPTION);
     if (result != JOptionPane.YES_OPTION) return;
 
-    ModelAccess.instance().runWriteActionInCommand(new Runnable() {
+    project.getModelAccess().executeCommand(new Runnable() {
       @Override
       public void run() {
         SModel targetModel = getTargetModel(target);
@@ -122,9 +125,15 @@ public class ProjectPaneDnDListener implements DropTargetListener {
           String fullTargetPack = getFullTargetPack(targetPackage, sourceNode.o2);
           SNodeAccessUtil.setProperty(sourceNode.o1, SNodeUtil.property_BaseConcept_virtualPackage, fullTargetPack);
           if (SNodeOperations.isInstanceOf(sourceNode.o1, SNodeUtil.concept_AbstractConceptDeclaration)) {
-            List<SNode> allAspects = SNodeUtil.findAllAspects(sourceNode.o1);
-            for (SNode aspect : allAspects) {
-              SNodeAccessUtil.setProperty(aspect, SNodeUtil.property_BaseConcept_virtualPackage, fullTargetPack);
+            SNode baseNode = sourceNode.o1;
+            List<RelationDescriptor> tabs = ProjectPluginManager.getApplicableTabs(project.getProject(), baseNode);
+            for (RelationDescriptor tab : tabs) {
+              if (!tab.isApplicable(baseNode)) continue;
+
+              for (SNode aspect : tab.getNodes(baseNode)) {
+                if (tab.getBaseNode(aspect) != baseNode) continue;
+                SNodeAccessUtil.setProperty(aspect, SNodeUtil.property_BaseConcept_virtualPackage, fullTargetPack);
+              }
             }
           }
         }
@@ -132,38 +141,47 @@ public class ProjectPaneDnDListener implements DropTargetListener {
     });
   }
 
+  //must return empty list in case no nodes are available
+  @NotNull
   private List<Pair<SNodeReference, String>> getSourceNodes(DropTargetEvent dtde) {
     try {
-      Object source = null;
-      if (dtde instanceof DropTargetDropEvent)
-        source = ((DropTargetDropEvent)dtde).getTransferable().getTransferData(myDataFlavor);
-      else if (dtde instanceof DropTargetDragEvent)
-        source = ((DropTargetDragEvent)dtde).getTransferable().getTransferData(myDataFlavor);
-      if (source instanceof List)  return (List<Pair<SNodeReference, String>>)source;
+      Transferable transferable = null;
+      if (dtde instanceof DropTargetDropEvent) {
+        transferable = ((DropTargetDropEvent) dtde).getTransferable();
+      } else if (dtde instanceof DropTargetDragEvent) {
+        transferable = ((DropTargetDragEvent) dtde).getTransferable();
+      }
+      if (transferable == null) return Collections.emptyList();
+
+      Object source = transferable.getTransferData(myDataFlavor);
+      if (source instanceof List) {
+        return (List<Pair<SNodeReference, String>>) source;
+      }
+      return Collections.emptyList();
     } catch (UnsupportedFlavorException e) {
-      LOG.error(null, e);
+      return Collections.emptyList();
     } catch (IOException e) {
-      LOG.error(null, e);
+      Logger.getLogger(ProjectPaneDnDListener.class).error(e.toString(), e);
+      return Collections.emptyList();
     }
-    return null;
   }
 
   private MPSTreeNode getTargetTreeNode(DropTargetEvent dtde) {
     Point point;
     if (dtde instanceof DropTargetDropEvent)
-      point = ((DropTargetDropEvent)dtde).getLocation();
+      point = ((DropTargetDropEvent) dtde).getLocation();
     else if (dtde instanceof DropTargetDragEvent)
-      point = ((DropTargetDragEvent)dtde).getLocation();
+      point = ((DropTargetDragEvent) dtde).getLocation();
     else
       return null;
     final TreePath treePath = myTree.getPathForLocation(point.x, point.y);
-    if (treePath == null)  return null;
+    if (treePath == null) return null;
     Object target = treePath.getLastPathComponent();
-    if (!(target instanceof MPSTreeNode))  return null;
-    return (MPSTreeNode)target;
+    if (!(target instanceof MPSTreeNode)) return null;
+    return (MPSTreeNode) target;
   }
 
-  private boolean isDropTargetAcceptable(MPSTreeNode treeNode, List<Pair<SNodeReference, String>> srcNodes) {
+  private boolean isDropTargetAcceptable(MPSTreeNode treeNode, @NotNull List<Pair<SNodeReference, String>> srcNodes) {
     // check all nodes from the same model and drop target is folder in that model or model itself
     SModelReference srcModelRef = null;
     for (Pair<SNodeReference, String> srcNode : srcNodes) {
@@ -175,24 +193,24 @@ public class ProjectPaneDnDListener implements DropTargetListener {
     }
     if (srcModelRef == null) return false;  // empty list is not acceptable
     if (treeNode instanceof SModelTreeNode) {
-      return srcModelRef.equals(((SModelTreeNode)treeNode).getModel().getReference());
+      return srcModelRef.equals(((SModelTreeNode) treeNode).getModel().getReference());
     } else if (treeNode instanceof SNodeGroupTreeNode) {
-      return srcModelRef.equals(((SNodeGroupTreeNode)treeNode).getModelReference());
+      return srcModelRef.equals(((SNodeGroupTreeNode) treeNode).getModelReference());
     }
     return false;
   }
 
   private List<Pair<SNode, String>> getNodesToMove(@NotNull SModel targetModel, String virtualPackage, List<Pair<SNodeReference, String>> sourceNodes) {
-    if (targetModel == null) return Collections.emptyList();
+    final SRepository repo = targetModel.getRepository();
     List<Pair<SNode, String>> result = new ArrayList<Pair<SNode, String>>();
     for (final Pair<SNodeReference, String> node : sourceNodes) {
-      SNode snode = node.o1.resolve(MPSModuleRepository.getInstance());
+      SNode snode = node.o1.resolve(repo);
 
-      if (snode==null) continue;
+      if (snode == null) continue;
       if (EqualUtil.equals(virtualPackage + node.o2, getVirtualPackage(snode))) continue;
       SModel sourceModel = snode.getModel();
       if (EqualUtil.equals(sourceModel, targetModel)) {
-        result.add(new Pair(snode, node.o2));
+        result.add(new Pair<SNode, String>(snode, node.o2));
       }
     }
     return result;
@@ -233,12 +251,6 @@ public class ProjectPaneDnDListener implements DropTargetListener {
   }
 
   private String getConfirmLabel(int size, String target) {
-    StringBuilder builder = new StringBuilder();
-    builder.append("<html>Do you want to move ");
-    builder.append(NameUtil.formatNumericalString(size, "node")).append(" ");
-    builder.append("to ");
-    builder.append(getPackagePresentation(target));
-    builder.append("?</html>");
-    return builder.toString();
+    return String.format("<html>Do you want to move %s to %s?</html>", NameUtil.formatNumericalString(size, "node"), getPackagePresentation(target));
   }
 }

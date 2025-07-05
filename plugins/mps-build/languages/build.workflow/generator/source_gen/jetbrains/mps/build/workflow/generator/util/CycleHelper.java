@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.build.workflow.util.XmlSignature;
@@ -32,39 +33,33 @@ public class CycleHelper {
   private final SNode project;
   private final Map<SNode, CycleHelper.Module> map = new HashMap<SNode, CycleHelper.Module>();
   private final TemplateQueryContext genContext;
-
   public CycleHelper(SNode project, TemplateQueryContext genContext) {
     this.project = project;
     this.genContext = genContext;
   }
-
   public void optimizeDependencies(SNode m) {
     final Set<String> seenDependencies = new HashSet<String>();
-    ListSequence.fromList(SLinkOperations.getTargets(m, "dependencies", true)).removeWhere(new IWhereFilter<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(m, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x41fde5e4adce38c8L, "dependencies"))).removeWhere(new IWhereFilter<SNode>() {
       public boolean accept(SNode dep) {
-        if (!(SNodeOperations.isInstanceOf(dep, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath"))) {
+        if (!(SNodeOperations.isInstanceOf(dep, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath")))) {
           return false;
         }
-        SNode cp = SLinkOperations.getTarget(SNodeOperations.cast(dep, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath"), "classpath", true);
+        SNode cp = SLinkOperations.getTarget(SNodeOperations.cast(dep, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath")), MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, 0x6e014d63c0847621L, "classpath"));
         XmlSignature s = new XmlSignature().add(cp);
-        String id = (s.hasErrors() ?
-          "dep." + cp.getNodeId().toString() :
-          s.getResult()
-        );
+        String id = (s.hasErrors() ? "dep." + cp.getNodeId().toString() : s.getResult());
         return !(seenDependencies.add(id));
       }
     });
   }
-
   public void processCycles() {
     List<SNode> modules = new ArrayList<SNode>();
-    ListSequence.fromList(modules).addSequence(ListSequence.fromList(SLinkOperations.getTargets(project, "parts", true)).where(new IWhereFilter<SNode>() {
+    ListSequence.fromList(modules).addSequence(ListSequence.fromList(SLinkOperations.getChildren(project, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6271L, 0x2670d5989d5ace60L, "parts"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, "jetbrains.mps.build.workflow.structure.BwfJavaModule");
+        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, "jetbrains.mps.build.workflow.structure.BwfJavaModule"));
       }
     }).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SNodeOperations.cast(it, "jetbrains.mps.build.workflow.structure.BwfJavaModule");
+        return SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, "jetbrains.mps.build.workflow.structure.BwfJavaModule"));
       }
     }));
     for (SNode m : ListSequence.fromList(modules)) {
@@ -73,9 +68,9 @@ public class CycleHelper {
     for (SNode jm : modules) {
       CycleHelper.Module module = new CycleHelper.Module(jm);
       map.put(jm, module);
-      if (isEmpty_yc0kju_a0c0d0f(SPropertyOperations.getString(jm, "outputFolder"))) {
+      if (isEmptyString(SPropertyOperations.getString(jm, MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x667edfe4171f2fb7L, "outputFolder")))) {
         genContext.showErrorMessage(jm, "empty output path");
-      } else if (SPropertyOperations.getString(jm, "outputFolder").endsWith("/") || SPropertyOperations.getString(jm, "outputFolder").endsWith("\\")) {
+      } else if (SPropertyOperations.getString(jm, MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x667edfe4171f2fb7L, "outputFolder")).endsWith("/") || SPropertyOperations.getString(jm, MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x667edfe4171f2fb7L, "outputFolder")).endsWith("\\")) {
         genContext.showErrorMessage(jm, "output path shouldn't end with slash");
       }
     }
@@ -102,10 +97,10 @@ public class CycleHelper {
       });
       SNode first = cycle.get(0).getModule();
       SModel model = SNodeOperations.getModel(first);
-      SNode cycleX = SModelOperations.createNewNode(model, null, "jetbrains.mps.build.workflow.structure.BwfJavaModule");
+      SNode cycleX = SModelOperations.createNewNode(model, null, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, "jetbrains.mps.build.workflow.structure.BwfJavaModule"));
       cyclesToName.add(cycleX);
       SNodeOperations.insertPrevSiblingChild(first, cycleX);
-      SPropertyOperations.set(cycleX, "noWarnings", "" + (true));
+      SPropertyOperations.set(cycleX, MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0xcdff0e1a96ccbeeL, "noWarnings"), "" + (true));
 
       // build cycle sources & dependencies; trying to avoid duplication (which is not critical) 
       Set<String> seenSources = new HashSet<String>();
@@ -119,24 +114,21 @@ public class CycleHelper {
       int heapSize = 0;
       for (CycleHelper.Module m : cycle) {
         SNode module = m.getModule();
-        heapSize = Math.max(heapSize, SPropertyOperations.getInteger(module, "heapSize"));
-        ListSequence.fromList(SLinkOperations.getTargets(module, "dependencies", true)).removeWhere(new IWhereFilter<SNode>() {
+        heapSize = Math.max(heapSize, SPropertyOperations.getInteger(module, MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0xcdff0e1a96ccbe3L, "heapSize")));
+        ListSequence.fromList(SLinkOperations.getChildren(module, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x41fde5e4adce38c8L, "dependencies"))).removeWhere(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference") && cycleModules.contains(SLinkOperations.getTarget(SNodeOperations.cast(it, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference"), "target", false));
+            return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference")) && cycleModules.contains(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference")), MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L, 0x41fde5e4adce38c5L, "target")));
           }
         });
-        for (SNode dep : SLinkOperations.getTargets(module, "dependencies", true)) {
-          if (SNodeOperations.isInstanceOf(dep, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference")) {
-            seenModules.add(SLinkOperations.getTarget(SNodeOperations.cast(dep, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference"), "target", false));
-          } else if (SNodeOperations.isInstanceOf(dep, "jetbrains.mps.build.workflow.structure.BwfJavaLibraryReference")) {
-            seenLibraries.add(SLinkOperations.getTarget(SNodeOperations.cast(dep, "jetbrains.mps.build.workflow.structure.BwfJavaLibraryReference"), "target", false));
-          } else if (SNodeOperations.isInstanceOf(dep, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath")) {
-            SNode cp = SLinkOperations.getTarget(SNodeOperations.cast(dep, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath"), "classpath", true);
+        for (SNode dep : SLinkOperations.getChildren(module, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x41fde5e4adce38c8L, "dependencies"))) {
+          if (SNodeOperations.isInstanceOf(dep, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference"))) {
+            seenModules.add(SLinkOperations.getTarget(SNodeOperations.cast(dep, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference")), MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L, 0x41fde5e4adce38c5L, "target")));
+          } else if (SNodeOperations.isInstanceOf(dep, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2021cfb4db759cbL, "jetbrains.mps.build.workflow.structure.BwfJavaLibraryReference"))) {
+            seenLibraries.add(SLinkOperations.getTarget(SNodeOperations.cast(dep, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2021cfb4db759cbL, "jetbrains.mps.build.workflow.structure.BwfJavaLibraryReference")), MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2021cfb4db759cbL, 0x2021cfb4db759ccL, "target")));
+          } else if (SNodeOperations.isInstanceOf(dep, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath"))) {
+            SNode cp = SLinkOperations.getTarget(SNodeOperations.cast(dep, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath")), MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, 0x6e014d63c0847621L, "classpath"));
             XmlSignature s = new XmlSignature().add(cp);
-            String id = (s.hasErrors() ?
-              "dep." + cp.getNodeId().toString() :
-              s.getResult()
-            );
+            String id = (s.hasErrors() ? "dep." + cp.getNodeId().toString() : s.getResult());
             if (seenDependencies.add(id)) {
               deps.add(cp);
             }
@@ -146,9 +138,9 @@ public class CycleHelper {
 
         }
 
-        for (SNode task : ListSequence.fromList(SLinkOperations.getTargets(module, "taskDeps", true)).select(new ISelector<SNode, SNode>() {
+        for (SNode task : ListSequence.fromList(SLinkOperations.getChildren(module, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x5a7e1dc16b102462L, "taskDeps"))).select(new ISelector<SNode, SNode>() {
           public SNode select(SNode it) {
-            return SLinkOperations.getTarget(it, "target", false);
+            return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5ace56L, 0x2670d5989d5ace57L, "target"));
           }
         })) {
           if ((task != null)) {
@@ -156,47 +148,44 @@ public class CycleHelper {
           }
         }
 
-        SNode mref = SModelOperations.createNewNode(model, null, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference");
-        SLinkOperations.setTarget(mref, "target", cycleX, false);
-        ListSequence.fromList(SLinkOperations.getTargets(module, "dependencies", true)).addElement(mref);
+        SNode mref = SModelOperations.createNewNode(model, null, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference"));
+        SLinkOperations.setTarget(mref, MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L, 0x41fde5e4adce38c5L, "target"), cycleX);
+        ListSequence.fromList(SLinkOperations.getChildren(module, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x41fde5e4adce38c8L, "dependencies"))).addElement(mref);
 
-        for (SNode n : ListSequence.fromList(SLinkOperations.getTargets(SLinkOperations.getTarget(module, "sources", true), "elements", true))) {
+        for (SNode n : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(module, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x6e014d63c07ebd25L, "sources")), MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL, 0x6e014d63c07ebd1cL, "elements")))) {
           XmlSignature s = new XmlSignature().add(n);
-          String id = (s.hasErrors() ?
-            "path." + n.getNodeId().toString() :
-            s.getResult()
-          );
+          String id = (s.hasErrors() ? "path." + n.getNodeId().toString() : s.getResult());
           if (seenSources.add(id)) {
             sources.add(n);
           }
         }
       }
-      SPropertyOperations.set(cycleX, "heapSize", "" + (heapSize));
-      SLinkOperations.setNewChild(cycleX, "sources", "jetbrains.mps.build.workflow.structure.BwfFileSet");
-      ListSequence.fromList(SLinkOperations.getTargets(SLinkOperations.getTarget(cycleX, "sources", true), "elements", true)).addSequence(Sequence.fromIterable(((Iterable<SNode>) sources)).select(new ISelector<SNode, SNode>() {
+      SPropertyOperations.set(cycleX, MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0xcdff0e1a96ccbe3L, "heapSize"), "" + (heapSize));
+      SLinkOperations.setNewChild(cycleX, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x6e014d63c07ebd25L, "sources"), MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL, "jetbrains.mps.build.workflow.structure.BwfFileSet"));
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cycleX, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x6e014d63c07ebd25L, "sources")), MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL, 0x6e014d63c07ebd1cL, "elements"))).addSequence(Sequence.fromIterable(((Iterable<SNode>) sources)).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
           return CopyUtil.copy(it);
         }
       }));
       for (SNode dep : deps) {
-        SNode cp = SModelOperations.createNewNode(model, null, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath");
-        SLinkOperations.setTarget(cp, "classpath", CopyUtil.copy(dep), true);
-        ListSequence.fromList(SLinkOperations.getTargets(cycleX, "dependencies", true)).addElement(cp);
+        SNode cp = SModelOperations.createNewNode(model, null, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath"));
+        SLinkOperations.setTarget(cp, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, 0x6e014d63c0847621L, "classpath"), CopyUtil.copy(dep));
+        ListSequence.fromList(SLinkOperations.getChildren(cycleX, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x41fde5e4adce38c8L, "dependencies"))).addElement(cp);
       }
       for (SNode jl : seenLibraries) {
-        SNode mref = SModelOperations.createNewNode(model, null, "jetbrains.mps.build.workflow.structure.BwfJavaLibraryReference");
-        SLinkOperations.setTarget(mref, "target", jl, false);
-        ListSequence.fromList(SLinkOperations.getTargets(cycleX, "dependencies", true)).addElement(mref);
+        SNode mref = SModelOperations.createNewNode(model, null, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2021cfb4db759cbL, "jetbrains.mps.build.workflow.structure.BwfJavaLibraryReference"));
+        SLinkOperations.setTarget(mref, MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2021cfb4db759cbL, 0x2021cfb4db759ccL, "target"), jl);
+        ListSequence.fromList(SLinkOperations.getChildren(cycleX, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x41fde5e4adce38c8L, "dependencies"))).addElement(mref);
       }
       for (SNode jm : seenModules) {
-        SNode mref = SModelOperations.createNewNode(model, null, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference");
-        SLinkOperations.setTarget(mref, "target", jm, false);
-        ListSequence.fromList(SLinkOperations.getTargets(cycleX, "dependencies", true)).addElement(mref);
+        SNode mref = SModelOperations.createNewNode(model, null, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference"));
+        SLinkOperations.setTarget(mref, MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L, 0x41fde5e4adce38c5L, "target"), jm);
+        ListSequence.fromList(SLinkOperations.getChildren(cycleX, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x41fde5e4adce38c8L, "dependencies"))).addElement(mref);
       }
       for (SNode task : taskDependency) {
-        SNode dependency = SModelOperations.createNewNode(model, null, "jetbrains.mps.build.workflow.structure.BwfTaskDependency");
-        SLinkOperations.setTarget(dependency, "target", task, false);
-        ListSequence.fromList(SLinkOperations.getTargets(cycleX, "taskDeps", true)).addElement(dependency);
+        SNode dependency = SModelOperations.createNewNode(model, null, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5ace56L, "jetbrains.mps.build.workflow.structure.BwfTaskDependency"));
+        SLinkOperations.setTarget(dependency, MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5ace56L, 0x2670d5989d5ace57L, "target"), task);
+        ListSequence.fromList(SLinkOperations.getChildren(cycleX, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x5a7e1dc16b102462L, "taskDeps"))).addElement(dependency);
       }
     }
     int cycleCounter = 0;
@@ -206,31 +195,28 @@ public class CycleHelper {
       }
     });
     for (SNode cycleX : cyclesToName) {
-      SPropertyOperations.set(cycleX, "name", "java.modules.cycle." + ++cycleCounter);
-      SPropertyOperations.set(cycleX, "outputFolder", SPropertyOperations.getString(project, "temporaryFolder") + "/" + SPropertyOperations.getString(cycleX, "name"));
+      SPropertyOperations.set(cycleX, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "java.modules.cycle." + ++cycleCounter);
+      SPropertyOperations.set(cycleX, MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x667edfe4171f2fb7L, "outputFolder"), SPropertyOperations.getString(project, MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6271L, 0x667edfe41720f53eL, "temporaryFolder")) + "/" + SPropertyOperations.getString(cycleX, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
     }
   }
-
   public class Module implements IVertex {
     private final SNode module;
     private Set<CycleHelper.Module> targets;
-
     public Module(SNode module) {
       this.module = module;
     }
-
     public Set<? extends IVertex> getNexts() {
       if (targets == null) {
-        if (ListSequence.fromList(SLinkOperations.getTargets(module, "dependencies", true)).isEmpty()) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(module, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x41fde5e4adce38c8L, "dependencies"))).isEmpty()) {
           targets = Collections.emptySet();
         } else {
           targets = new HashSet<CycleHelper.Module>();
-          for (SNode ref : ListSequence.fromList(SLinkOperations.getTargets(module, "dependencies", true)).where(new IWhereFilter<SNode>() {
+          for (SNode ref : ListSequence.fromList(SLinkOperations.getChildren(module, MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x41fde5e4adce38c8L, "dependencies"))).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference");
+              return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference"));
             }
           })) {
-            CycleHelper.Module tm = map.get(SLinkOperations.getTarget(SNodeOperations.cast(ref, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference"), "target", false));
+            CycleHelper.Module tm = map.get(SLinkOperations.getTarget(SNodeOperations.cast(ref, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L, "jetbrains.mps.build.workflow.structure.BwfJavaModuleReference")), MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L, 0x41fde5e4adce38c5L, "target")));
             if (tm == null) {
               genContext.showErrorMessage(ref, "internal problem: unsatisfied local dependency");
             } else {
@@ -241,13 +227,11 @@ public class CycleHelper {
       }
       return targets;
     }
-
     public SNode getModule() {
       return module;
     }
   }
-
-  public static boolean isEmpty_yc0kju_a0c0d0f(String str) {
+  private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
   }
 }

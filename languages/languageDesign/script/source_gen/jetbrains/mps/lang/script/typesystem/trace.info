@@ -1,171 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="TypesystemDescriptor.java" startLine="9" startPosition="0" endLine="25" endPosition="0" unitName="jetbrains.mps.lang.script.typesystem.TypesystemDescriptor" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root>
+    <file name="TypesystemDescriptor.java">
+      <unit at="9,0,25,0" name="jetbrains.mps.lang.script.typesystem.TypesystemDescriptor" />
+    </file>
+  </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590320(jetbrains.mps.lang.script.typesystem)/1177463041902">
-    <nodeInfo nodeId="1177463235295" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="22" startPosition="117" endLine="23" endPosition="205" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1209063748602" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="24" startPosition="5" endLine="25" endPosition="46" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1209063748602" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="25" startPosition="46" endLine="26" endPosition="196" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1209063748602" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="26" startPosition="196" endLine="27" endPosition="288" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="31" startPosition="46" endLine="32" endPosition="74" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="36" startPosition="5" endLine="37" endPosition="130" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="37" startPosition="130" endLine="38" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="42" startPosition="30" endLine="43" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1196777967634" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="46" startPosition="79" endLine="47" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196777967634" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="47" startPosition="63" endLine="48" endPosition="30" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1196777967634" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="48" startPosition="30" endLine="49" endPosition="159" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196777967634" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="49" startPosition="159" endLine="50" endPosition="85" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1196777967634" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="50" startPosition="85" endLine="51" endPosition="24" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="19" startPosition="0" endLine="21" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="typeof_MigrationScriptPart_node_InferenceRule#()V" />
-    <nodeInfo nodeId="1196777967634" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="48" startPosition="30" endLine="50" endPosition="85" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1196777967634" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="48" startPosition="30" endLine="50" endPosition="85" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="31" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="42" startPosition="0" endLine="45" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="overrides#()Z" />
-    <nodeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="35" startPosition="68" endLine="39" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1209063748602" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="23" startPosition="205" endLine="28" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="35" startPosition="0" endLine="41" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="1196777967634" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="46" startPosition="0" endLine="53" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="_quotation_createNode_4okgzg_a0b0b#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="22" startPosition="0" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-    <scopeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="19" startPosition="58" endLine="19" endPosition="58" />
-    <scopeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="31" startPosition="46" endLine="32" endPosition="74" />
-    <scopeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="42" startPosition="30" endLine="43" endPosition="17" />
-    <scopeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="19" startPosition="0" endLine="21" endPosition="0" />
-    <scopeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="36" startPosition="5" endLine="38" endPosition="45">
-      <varInfo nodeId="1177463041902" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196777967634" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="48" startPosition="30" endLine="50" endPosition="85" />
-    <scopeInfo nodeId="1209063748602" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="24" startPosition="5" endLine="27" endPosition="288">
-      <varInfo nodeId="1209063748602" varName="_info_12389875345" />
-      <varInfo nodeId="1209063748602" varName="_nodeToCheck_1029348928467" />
-    </scopeInfo>
-    <scopeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="31" startPosition="0" endLine="34" endPosition="0" />
-    <scopeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="42" startPosition="0" endLine="45" endPosition="0" />
-    <scopeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="35" startPosition="68" endLine="39" endPosition="5" />
-    <scopeInfo nodeId="1196777967634" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="46" startPosition="79" endLine="51" endPosition="24">
-      <varInfo nodeId="1196777967634" varName="facade" />
-      <varInfo nodeId="1196777967634" varName="quotedNode_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="1177463041903" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="22" startPosition="117" endLine="28" endPosition="5">
-      <varInfo nodeId="1177463235296" varName="affectedConcept" />
-    </scopeInfo>
-    <scopeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="35" startPosition="0" endLine="41" endPosition="0">
-      <varInfo nodeId="1177463041902" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="1196777967634" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="46" startPosition="0" endLine="53" endPosition="0">
-      <varInfo nodeId="1196777967634" varName="parameter_1" />
-    </scopeInfo>
-    <scopeInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="22" startPosition="0" endLine="30" endPosition="0">
-      <varInfo nodeId="1177463041902" varName="node" />
-      <varInfo nodeId="1177463041902" varName="status" />
-      <varInfo nodeId="1177463041902" varName="typeCheckingContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1177463041902" fileName="typeof_MigrationScriptPart_node_InferenceRule.java" startLine="18" startPosition="0" endLine="54" endPosition="0" unitName="jetbrains.mps.lang.script.typesystem.typeof_MigrationScriptPart_node_InferenceRule" />
+    <file name="typeof_MigrationScriptPart_node_InferenceRule.java">
+      <node id="1177463235295" at="22,117,23,400" concept="5" />
+      <node id="1209063748602" at="24,5,25,46" concept="5" />
+      <node id="1209063748602" at="25,46,26,196" concept="5" />
+      <node id="1209063748602" at="26,196,27,288" concept="2" />
+      <node id="1177463041902" at="30,50,31,162" concept="6" />
+      <node id="1177463041902" at="33,68,34,102" concept="6" />
+      <node id="1177463041902" at="36,30,37,17" concept="6" />
+      <node id="1196777967634" at="39,79,40,63" concept="5" />
+      <node id="1196777967634" at="40,63,41,30" concept="5" />
+      <node id="1196777967634" at="41,30,42,246" concept="2" />
+      <node id="1196777967634" at="42,246,43,196" concept="2" />
+      <node id="1196777967634" at="43,196,44,24" concept="6" />
+      <node id="1177463041902" at="20,0,22,0" concept="1" trace="typeof_MigrationScriptPart_node_InferenceRule#()V" />
+      <node id="1177463041902" at="30,0,33,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1177463041902" at="33,0,36,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1177463041902" at="36,0,39,0" concept="4" trace="overrides#()Z" />
+      <node id="1209063748602" at="23,400,28,5" concept="0" />
+      <node id="1196777967634" at="39,0,46,0" concept="7" trace="_quotation_createNode_4okgzg_a0b0b#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1177463041902" at="22,0,30,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="1177463041902" at="20,58,20,58" />
+      <scope id="1177463041902" at="30,50,31,162" />
+      <scope id="1177463041902" at="33,68,34,102" />
+      <scope id="1177463041902" at="36,30,37,17" />
+      <scope id="1177463041902" at="20,0,22,0" />
+      <scope id="1209063748602" at="24,5,27,288">
+        <var name="_info_12389875345" id="1209063748602" />
+        <var name="_nodeToCheck_1029348928467" id="1209063748602" />
+      </scope>
+      <scope id="1177463041902" at="30,0,33,0" />
+      <scope id="1177463041902" at="33,0,36,0">
+        <var name="argument" id="1177463041902" />
+      </scope>
+      <scope id="1177463041902" at="36,0,39,0" />
+      <scope id="1196777967634" at="39,79,44,24">
+        <var name="facade" id="1196777967634" />
+        <var name="quotedNode_2" id="1196777967634" />
+      </scope>
+      <scope id="1177463041903" at="22,117,28,5">
+        <var name="affectedConcept" id="1177463235296" />
+      </scope>
+      <scope id="1196777967634" at="39,0,46,0">
+        <var name="parameter_1" id="1196777967634" />
+      </scope>
+      <scope id="1177463041902" at="22,0,30,0">
+        <var name="node" id="1177463041902" />
+        <var name="status" id="1177463041902" />
+        <var name="typeCheckingContext" id="1177463041902" />
+      </scope>
+      <unit id="1177463041902" at="19,0,47,0" name="jetbrains.mps.lang.script.typesystem.typeof_MigrationScriptPart_node_InferenceRule" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590320(jetbrains.mps.lang.script.typesystem)/2598676492883170109">
-    <nodeInfo nodeId="2598676492883176318" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="25" startPosition="117" endLine="26" endPosition="115" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="2598676492883176352" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="28" startPosition="7" endLine="29" endPosition="60" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="2598676492883176352" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="29" startPosition="60" endLine="30" endPosition="426" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="35" startPosition="46" endLine="36" endPosition="76" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="40" startPosition="5" endLine="41" endPosition="130" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="41" startPosition="130" endLine="42" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="46" startPosition="30" endLine="47" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="50" startPosition="63" endLine="51" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="51" startPosition="63" endLine="52" endPosition="30" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="52" startPosition="30" endLine="53" endPosition="30" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="53" startPosition="30" endLine="54" endPosition="165" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="54" startPosition="165" endLine="55" endPosition="241" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="55" startPosition="241" endLine="56" endPosition="165" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="56" startPosition="165" endLine="57" endPosition="314" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="57" startPosition="314" endLine="58" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="58" startPosition="53" endLine="59" endPosition="24" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="22" startPosition="0" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="check_FactoryMigrationScriptPath_NonTypesystemRule#()V" />
-    <nodeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="35" startPosition="0" endLine="38" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="46" startPosition="0" endLine="49" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="overrides#()Z" />
-    <nodeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="55" startPosition="241" endLine="58" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="55" startPosition="241" endLine="58" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="2598676492883176352" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="27" startPosition="123" endLine="31" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="39" startPosition="68" endLine="43" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="53" startPosition="30" endLine="58" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="53" startPosition="30" endLine="58" endPosition="53" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="2598676492883176341" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="26" startPosition="115" endLine="32" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="39" startPosition="0" endLine="45" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="25" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-    <nodeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="50" startPosition="0" endLine="61" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="_quotation_createNode_5hdosv_b0a0b0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <scopeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="22" startPosition="63" endLine="22" endPosition="63" />
-    <scopeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="35" startPosition="46" endLine="36" endPosition="76" />
-    <scopeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="46" startPosition="30" endLine="47" endPosition="17" />
-    <scopeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="22" startPosition="0" endLine="24" endPosition="0" />
-    <scopeInfo nodeId="2598676492883176352" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="28" startPosition="7" endLine="30" endPosition="426">
-      <varInfo nodeId="2598676492883176352" varName="_reporter_2309309498" />
-      <varInfo nodeId="2598676492883176352" varName="errorTarget" />
-    </scopeInfo>
-    <scopeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="40" startPosition="5" endLine="42" endPosition="45">
-      <varInfo nodeId="2598676492883170109" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="35" startPosition="0" endLine="38" endPosition="0" />
-    <scopeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="46" startPosition="0" endLine="49" endPosition="0" />
-    <scopeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="55" startPosition="241" endLine="58" endPosition="53" />
-    <scopeInfo nodeId="2598676492883176342" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="27" startPosition="123" endLine="31" endPosition="7" />
-    <scopeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="39" startPosition="68" endLine="43" endPosition="5" />
-    <scopeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="53" startPosition="30" endLine="58" endPosition="53" />
-    <scopeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="39" startPosition="0" endLine="45" endPosition="0">
-      <varInfo nodeId="2598676492883170109" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="2598676492883170110" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="25" startPosition="117" endLine="32" endPosition="5">
-      <varInfo nodeId="2598676492883176319" varName="returnType" />
-    </scopeInfo>
-    <scopeInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="25" startPosition="0" endLine="34" endPosition="0">
-      <varInfo nodeId="2598676492883170109" varName="part" />
-      <varInfo nodeId="2598676492883170109" varName="status" />
-      <varInfo nodeId="2598676492883170109" varName="typeCheckingContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="50" startPosition="63" endLine="59" endPosition="24">
-      <varInfo nodeId="2598676492883176348" varName="facade" />
-      <varInfo nodeId="2598676492883176348" varName="quotedNode_1" />
-      <varInfo nodeId="2598676492883176348" varName="quotedNode_2" />
-    </scopeInfo>
-    <scopeInfo nodeId="2598676492883176348" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="50" startPosition="0" endLine="61" endPosition="0" />
-    <unitInfo nodeId="2598676492883170109" fileName="check_FactoryMigrationScriptPath_NonTypesystemRule.java" startLine="21" startPosition="0" endLine="62" endPosition="0" unitName="jetbrains.mps.lang.script.typesystem.check_FactoryMigrationScriptPath_NonTypesystemRule" />
+    <file name="check_FactoryMigrationScriptPath_NonTypesystemRule.java">
+      <node id="2598676492883176318" at="25,117,26,231" concept="5" />
+      <node id="2598676492883176352" at="28,7,29,60" concept="5" />
+      <node id="2598676492883176352" at="29,60,30,387" concept="5" />
+      <node id="2598676492883170109" at="34,50,35,169" concept="6" />
+      <node id="2598676492883170109" at="37,68,38,102" concept="6" />
+      <node id="2598676492883170109" at="40,30,41,17" concept="6" />
+      <node id="2598676492883176348" at="43,63,44,63" concept="5" />
+      <node id="2598676492883176348" at="44,63,45,30" concept="5" />
+      <node id="2598676492883176348" at="45,30,46,30" concept="5" />
+      <node id="2598676492883176348" at="46,30,47,252" concept="2" />
+      <node id="2598676492883176348" at="47,252,48,437" concept="2" />
+      <node id="2598676492883176348" at="48,437,49,252" concept="2" />
+      <node id="2598676492883176348" at="49,252,50,486" concept="2" />
+      <node id="2598676492883176348" at="50,486,51,166" concept="2" />
+      <node id="2598676492883176348" at="51,166,52,24" concept="6" />
+      <node id="2598676492883170109" at="23,0,25,0" concept="1" trace="check_FactoryMigrationScriptPath_NonTypesystemRule#()V" />
+      <node id="2598676492883170109" at="34,0,37,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="2598676492883170109" at="37,0,40,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="2598676492883170109" at="40,0,43,0" concept="4" trace="overrides#()Z" />
+      <node id="2598676492883176352" at="27,123,31,7" concept="0" />
+      <node id="2598676492883176341" at="26,231,32,5" concept="3" />
+      <node id="2598676492883170109" at="25,0,34,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <node id="2598676492883176348" at="43,0,54,0" concept="7" trace="_quotation_createNode_5hdosv_b0a0b0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="2598676492883170109" at="23,63,23,63" />
+      <scope id="2598676492883170109" at="34,50,35,169" />
+      <scope id="2598676492883170109" at="37,68,38,102" />
+      <scope id="2598676492883170109" at="40,30,41,17" />
+      <scope id="2598676492883170109" at="23,0,25,0" />
+      <scope id="2598676492883176352" at="28,7,30,387">
+        <var name="_reporter_2309309498" id="2598676492883176352" />
+        <var name="errorTarget" id="2598676492883176352" />
+      </scope>
+      <scope id="2598676492883170109" at="34,0,37,0" />
+      <scope id="2598676492883170109" at="37,0,40,0">
+        <var name="argument" id="2598676492883170109" />
+      </scope>
+      <scope id="2598676492883170109" at="40,0,43,0" />
+      <scope id="2598676492883176342" at="27,123,31,7" />
+      <scope id="2598676492883170110" at="25,117,32,5">
+        <var name="returnType" id="2598676492883176319" />
+      </scope>
+      <scope id="2598676492883170109" at="25,0,34,0">
+        <var name="part" id="2598676492883170109" />
+        <var name="status" id="2598676492883170109" />
+        <var name="typeCheckingContext" id="2598676492883170109" />
+      </scope>
+      <scope id="2598676492883176348" at="43,63,52,24">
+        <var name="facade" id="2598676492883176348" />
+        <var name="quotedNode_1" id="2598676492883176348" />
+        <var name="quotedNode_2" id="2598676492883176348" />
+      </scope>
+      <scope id="2598676492883176348" at="43,0,54,0" />
+      <unit id="2598676492883170109" at="22,0,55,0" name="jetbrains.mps.lang.script.typesystem.check_FactoryMigrationScriptPath_NonTypesystemRule" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590320(jetbrains.mps.lang.script.typesystem)/7867202088808416390">
-    <nodeInfo nodeId="7867202088808423945" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="22" startPosition="7" endLine="23" endPosition="60" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="7867202088808423945" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="23" startPosition="60" endLine="24" endPosition="266" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="29" startPosition="46" endLine="30" endPosition="62" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="34" startPosition="5" endLine="35" endPosition="130" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="35" startPosition="130" endLine="36" endPosition="45" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="40" startPosition="30" endLine="41" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="17" startPosition="0" endLine="19" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="check_PullUpMethod_NonTypesystemRule#()V" />
-    <nodeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="29" startPosition="0" endLine="32" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConceptFQName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="40" startPosition="0" endLine="43" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="overrides#()Z" />
-    <nodeInfo nodeId="7867202088808423945" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="21" startPosition="172" endLine="25" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="33" startPosition="68" endLine="37" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="7941431147613578555" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="20" startPosition="125" endLine="26" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="33" startPosition="0" endLine="39" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-    <nodeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="20" startPosition="0" endLine="28" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-    <scopeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="17" startPosition="49" endLine="17" endPosition="49" />
-    <scopeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="29" startPosition="46" endLine="30" endPosition="62" />
-    <scopeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="40" startPosition="30" endLine="41" endPosition="17" />
-    <scopeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="17" startPosition="0" endLine="19" endPosition="0" />
-    <scopeInfo nodeId="7867202088808423945" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="22" startPosition="7" endLine="24" endPosition="266">
-      <varInfo nodeId="7867202088808423945" varName="_reporter_2309309498" />
-      <varInfo nodeId="7867202088808423945" varName="errorTarget" />
-    </scopeInfo>
-    <scopeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="34" startPosition="5" endLine="36" endPosition="45">
-      <varInfo nodeId="7867202088808416390" varName="b" />
-    </scopeInfo>
-    <scopeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="29" startPosition="0" endLine="32" endPosition="0" />
-    <scopeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="40" startPosition="0" endLine="43" endPosition="0" />
-    <scopeInfo nodeId="7941431147613578557" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="21" startPosition="172" endLine="25" endPosition="7" />
-    <scopeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="33" startPosition="68" endLine="37" endPosition="5" />
-    <scopeInfo nodeId="7867202088808416391" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="20" startPosition="125" endLine="26" endPosition="5" />
-    <scopeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="33" startPosition="0" endLine="39" endPosition="0">
-      <varInfo nodeId="7867202088808416390" varName="argument" />
-    </scopeInfo>
-    <scopeInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="20" startPosition="0" endLine="28" endPosition="0">
-      <varInfo nodeId="7867202088808416390" varName="pullUpMethod" />
-      <varInfo nodeId="7867202088808416390" varName="status" />
-      <varInfo nodeId="7867202088808416390" varName="typeCheckingContext" />
-    </scopeInfo>
-    <unitInfo nodeId="7867202088808416390" fileName="check_PullUpMethod_NonTypesystemRule.java" startLine="16" startPosition="0" endLine="44" endPosition="0" unitName="jetbrains.mps.lang.script.typesystem.check_PullUpMethod_NonTypesystemRule" />
+    <file name="check_PullUpMethod_NonTypesystemRule.java">
+      <node id="7867202088808423945" at="22,7,23,60" concept="5" />
+      <node id="7867202088808423945" at="23,60,24,266" concept="5" />
+      <node id="7867202088808416390" at="28,50,29,154" concept="6" />
+      <node id="7867202088808416390" at="31,68,32,102" concept="6" />
+      <node id="7867202088808416390" at="34,30,35,17" concept="6" />
+      <node id="7867202088808416390" at="18,0,20,0" concept="1" trace="check_PullUpMethod_NonTypesystemRule#()V" />
+      <node id="7867202088808416390" at="28,0,31,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="7867202088808416390" at="31,0,34,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="7867202088808416390" at="34,0,37,0" concept="4" trace="overrides#()Z" />
+      <node id="7867202088808423945" at="21,399,25,7" concept="0" />
+      <node id="7941431147613578555" at="20,125,26,5" concept="3" />
+      <node id="7867202088808416390" at="20,0,28,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="7867202088808416390" at="18,49,18,49" />
+      <scope id="7867202088808416390" at="28,50,29,154" />
+      <scope id="7867202088808416390" at="31,68,32,102" />
+      <scope id="7867202088808416390" at="34,30,35,17" />
+      <scope id="7867202088808416390" at="18,0,20,0" />
+      <scope id="7867202088808423945" at="22,7,24,266">
+        <var name="_reporter_2309309498" id="7867202088808423945" />
+        <var name="errorTarget" id="7867202088808423945" />
+      </scope>
+      <scope id="7867202088808416390" at="28,0,31,0" />
+      <scope id="7867202088808416390" at="31,0,34,0">
+        <var name="argument" id="7867202088808416390" />
+      </scope>
+      <scope id="7867202088808416390" at="34,0,37,0" />
+      <scope id="7941431147613578557" at="21,399,25,7" />
+      <scope id="7867202088808416391" at="20,125,26,5" />
+      <scope id="7867202088808416390" at="20,0,28,0">
+        <var name="pullUpMethod" id="7867202088808416390" />
+        <var name="status" id="7867202088808416390" />
+        <var name="typeCheckingContext" id="7867202088808416390" />
+      </scope>
+      <unit id="7867202088808416390" at="17,0,38,0" name="jetbrains.mps.lang.script.typesystem.check_PullUpMethod_NonTypesystemRule" />
+    </file>
   </root>
-</debugInfo>
+</debug-info>
 

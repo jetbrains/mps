@@ -4,23 +4,28 @@ package jetbrains.mps.transformation.test.inputLang.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum Option {
   option_default("option_default", "option_default"),
   option_1("option_1", "option_1"),
   drop_it("drop it", "drop_it");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private Option(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<Option> getConstants() {
     List<Option> list = ListSequence.fromList(new LinkedList<Option>());
     ListSequence.fromList(list).addElement(Option.option_default);
@@ -28,11 +33,9 @@ public enum Option {
     ListSequence.fromList(list).addElement(Option.drop_it);
     return list;
   }
-
   public static Option getDefault() {
     return Option.option_default;
   }
-
   public static Option parseValue(String value) {
     if (value == null) {
       return Option.getDefault();
@@ -47,16 +50,5 @@ public enum Option {
       return Option.drop_it;
     }
     return Option.getDefault();
-  }
-
-  private String myValue;
-
-  Option(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

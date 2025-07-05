@@ -4,23 +4,28 @@ package jetbrains.mps.lang.editor.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum DefaultBaseLineEnum {
   first_cell_baseline("first cell baseline", "FIRST"),
   collection_center("collection center", "CENTER"),
   last_cell_baseline("last cell baseline", "LAST");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private DefaultBaseLineEnum(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<DefaultBaseLineEnum> getConstants() {
     List<DefaultBaseLineEnum> list = ListSequence.fromList(new LinkedList<DefaultBaseLineEnum>());
     ListSequence.fromList(list).addElement(DefaultBaseLineEnum.first_cell_baseline);
@@ -28,11 +33,9 @@ public enum DefaultBaseLineEnum {
     ListSequence.fromList(list).addElement(DefaultBaseLineEnum.last_cell_baseline);
     return list;
   }
-
   public static DefaultBaseLineEnum getDefault() {
     return DefaultBaseLineEnum.first_cell_baseline;
   }
-
   public static DefaultBaseLineEnum parseValue(String value) {
     if (value == null) {
       return DefaultBaseLineEnum.getDefault();
@@ -47,16 +50,5 @@ public enum DefaultBaseLineEnum {
       return DefaultBaseLineEnum.last_cell_baseline;
     }
     return DefaultBaseLineEnum.getDefault();
-  }
-
-  private String myValue;
-
-  DefaultBaseLineEnum(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

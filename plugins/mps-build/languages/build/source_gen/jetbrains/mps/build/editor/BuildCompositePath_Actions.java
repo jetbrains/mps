@@ -8,6 +8,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.editor.runtime.cells.CellIdManager;
@@ -15,23 +16,34 @@ import jetbrains.mps.editor.runtime.cells.CellIdManager;
 public class BuildCompositePath_Actions {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new BuildCompositePath_Actions.BuildCompositePath_Actions_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new BuildCompositePath_Actions.BuildCompositePath_Actions_BACKSPACE(node));
   }
-
   public static class BuildCompositePath_Actions_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public BuildCompositePath_Actions_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SNode n = SLinkOperations.getTarget(node, "tail", true);
-      SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, "tail", true));
-      SelectionUtil.selectLabelCellAnSetCaret(editorContext, n, CellIdManager.createPropertyId("head"), 0);
+      SNode n = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail"));
+      SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail")));
+      SelectionUtil.selectLabelCellAnSetCaret(editorContext, n, "*" + CellIdManager.createPropertyId("head"), 0);
+    }
+  }
+  public static class BuildCompositePath_Actions_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public BuildCompositePath_Actions_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      SNode n = SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail"));
+      SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail")));
+      SelectionUtil.selectLabelCellAnSetCaret(editorContext, n, "*" + CellIdManager.createPropertyId("head"), 0);
     }
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,11 +25,12 @@ import java.util.Map;
 public abstract class ShowSiteAction extends BaseAction implements DumbAware {
   protected ShowSiteAction(String name) {
     super(name);
+    setExecuteOutsideCommand(true);
     setDisableOnNoProject(false);
   }
 
   protected void doExecute(AnActionEvent e, Map<String, Object> _params) {
-    BrowserUtil.launchBrowser(getSiteURL());
+    BrowserUtil.browse(getSiteURL(), e.getProject());
   }
 
   protected abstract String getSiteURL();

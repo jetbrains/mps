@@ -19,19 +19,21 @@ import jetbrains.mps.ide.bookmark.BookmarkManager.BookmarkListener;
 import jetbrains.mps.nodeEditor.DefaultEditorMessage;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorMessage;
-import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
-import jetbrains.mps.nodeEditor.checking.EditorCheckerAdapter;
-import jetbrains.mps.openapi.editor.EditorContext;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.nodeEditor.checking.BaseEditorChecker;
+import jetbrains.mps.nodeEditor.checking.DisposableEditorChecker;
+import jetbrains.mps.nodeEditor.checking.UpdateResult;
+import jetbrains.mps.nodeEditor.checking.UpdateResult.Completed;
+import jetbrains.mps.util.Cancellable;
 import jetbrains.mps.util.Pair;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.awt.Color;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class BookmarksHighlighter extends EditorCheckerAdapter implements EditorMessageOwner {
+public class BookmarksHighlighter extends BaseEditorChecker implements DisposableEditorChecker {
   private BookmarkManager myBookmarkManager;
   private boolean myChanged = true;
   private BookmarkListener myListener = new BookmarkListener() {
@@ -52,29 +54,29 @@ public class BookmarksHighlighter extends EditorCheckerAdapter implements Editor
   }
 
   @Override
-  public void doDispose() {
+  public void dispose() {
     myBookmarkManager.removeBookmarkListener(myListener);
-    super.doDispose();
   }
 
   @Override
-  public Set<EditorMessage> createMessages(SNode rootNode, List<SModelEvent> events, boolean wasCheckedOnce, EditorContext editorContext) {
-    myChanged = false;
-    Set<EditorMessage> result = new HashSet<EditorMessage>();
-    List<Pair<SNode, Integer>> bookmarks = myBookmarkManager.getBookmarks(rootNode);
-    for (Pair<SNode, Integer> bookmark : bookmarks) {
-      result.add(new DefaultEditorMessage(bookmark.o1, Color.BLACK, "bookmark " + (bookmark.o2 == -1 ? "" : bookmark.o2), this));
-    }
-    return result;
-  }
-
-  @Override
-  public boolean hasDramaticalEvent(List<SModelEvent> events) {
+  public boolean needsUpdate(EditorComponent editorComponent) {
     return myChanged;
   }
 
+  @NotNull
   @Override
-  public void clear(SNode node, EditorComponent editor) {
-    myChanged = true;
+  public UpdateResult update(EditorComponent editorComponent, boolean incremental, boolean applyQuickFixes, Cancellable cancellable) {
+    try {
+      myChanged = false;
+      Set<EditorMessage> result = new HashSet<>();
+      List<Pair<SNode, Integer>> bookmarks = myBookmarkManager.getBookmarks(editorComponent.getEditedNode());
+      for (Pair<SNode, Integer> bookmark : bookmarks) {
+        result.add(new DefaultEditorMessage(bookmark.o1, Color.BLACK, "bookmark " + (bookmark.o2 == -1 ? "" : bookmark.o2), this));
+      }
+      return new Completed(true, result);
+    } catch (RuntimeException e) {
+      myChanged = true;
+      throw e;
+    }
   }
 }

@@ -17,14 +17,15 @@ package jetbrains.mps.ide.projectPane.fileSystem.nodes;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.ide.ui.tree.module.DefaultNamespaceTreeBuilder;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.ide.ui.tree.module.DefaultNamespaceTreeBuilder;
 import jetbrains.mps.ide.ui.tree.module.ModuleTreeNodeComparator;
 import jetbrains.mps.project.AbstractModule;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.StandaloneMPSProject;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SModule;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -38,14 +39,15 @@ public class ProjectTreeNode extends AbstractFileTreeNode {
     myProject = project;
 
     List<ModuleTreeNode> moduleNodes = new LinkedList<ModuleTreeNode>();
-    MPSProject mpsProject = project.getComponent(MPSProject.class);
+    jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(myProject);
     if (mpsProject != null) {
-      List<? extends SModule> modules = mpsProject.getModules();
-      for (SModule m : modules) {
-        if (m instanceof AbstractModule) {
-          if (((AbstractModule) m).getDescriptorFile().exists()) {
-            moduleNodes.add(new ModuleTreeNode(project, (AbstractModule) m));
-          }
+      for (SModule m : mpsProject.getModules()) {
+        if (!(m instanceof AbstractModule)) {
+          continue;
+        }
+        IFile moduleFile = ((AbstractModule) m).getDescriptorFile();
+        if (moduleFile != null && moduleFile.exists()) {
+          moduleNodes.add(new ModuleTreeNode(project, (AbstractModule) m));
         }
       }
     }
@@ -80,7 +82,7 @@ public class ProjectTreeNode extends AbstractFileTreeNode {
     protected String getNamespace(@NotNull MPSTreeNode node) {
       String folder = "";
       if (node instanceof ModuleTreeNode) {
-        StandaloneMPSProject mpsProject = (StandaloneMPSProject) myProject.getComponent(MPSProject.class);
+        StandaloneMPSProject mpsProject = (StandaloneMPSProject) ProjectHelper.toMPSProject(myProject);
         folder = mpsProject.getFolderFor(((ModuleTreeNode) node).getModule());
       }
       if (folder == null) {

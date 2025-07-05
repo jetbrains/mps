@@ -15,10 +15,8 @@
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 
 #************************************ Shortcuts ***********************************************************#
-!define MAIN_MENU_FOLDER "$SMPROGRAMS\${PRODUCT_NAME}"
+!define MAIN_MENU_FOLDER "$SMPROGRAMS\${PRODUCT_PUBLISHER}"
 !define PROGRAM_LINK "${MAIN_MENU_FOLDER}\${APP_NAME}.lnk"
-!define WEB_SITE_LINK "${MAIN_MENU_FOLDER}\${PRODUCT_NAME} Home Page.lnk"
-!define UNINSTALL_LINK "${MAIN_MENU_FOLDER}\Uninstall ${APP_NAME}.lnk"
 !define DESKTOP_LINK "$DESKTOP\${APP_NAME}.lnk"
 !define QL_LINK "$QUICKLAUNCH\${APP_NAME}.lnk"
 
@@ -26,6 +24,7 @@
 !include MUI.nsh
 
 #************************************ Installation Properties *********************************************#
+SetCompressor lzma
 Name "${APP_NAME}"
 OutFile "${PRODUCT_VERSION}-windows.exe"
 InstallDir "$PROGRAMFILES\${PRODUCT_PUBLISHER}\${PRODUCT_NAME} ${PRODUCT_MAJOR_VERSION}"
@@ -33,7 +32,6 @@ ShowInstDetails show
 ShowUnInstDetails show
 !define MUI_WELCOMEPAGE_TEXT "This wizard will guide you through the installation of ${APP_NAME} (build ${PRODUCT_VERSION}).\n\nClick Next to continue."
 !define MUI_ICON "installer.ico"
-!define MUI_UNICON "uninstaller.ico"
 !define MUI_COMPONENTSPAGE_NODESC
 
 #************************************ Install *************************************************************#
@@ -64,18 +62,16 @@ SectionEnd
 Section "Start Menu Folder" setStartMenuFolder
     SetOutPath $INSTDIR
     CreateDirectory "${MAIN_MENU_FOLDER}"
-    CreateShortCut "${PROGRAM_LINK}" "$INSTDIR\mps.bat" "" "$INSTDIR\mps.ico" "" SW_SHOWMINIMIZED
+    CreateShortCut "${PROGRAM_LINK}" "$INSTDIR\bin\mps.bat" "" "$INSTDIR\bin\mps.ico" "" SW_SHOWMINIMIZED
     WriteIniStr "$INSTDIR\${PRODUCT_NAME}.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
-    CreateShortCut "${WEB_SITE_LINK}" "$INSTDIR\${PRODUCT_NAME}.url" "" "$INSTDIR\homepage.ico"
-    CreateShortCut "${UNINSTALL_LINK}" "$INSTDIR\Uninstall.exe"
 SectionEnd
 
 Section "Desktop Shortcut" secDesktop
-    CreateShortCut "${DESKTOP_LINK}" "$INSTDIR\mps.bat" "" "$INSTDIR\mps.ico" "" SW_SHOWMINIMIZED
+    CreateShortCut "${DESKTOP_LINK}" "$INSTDIR\bin\mps.bat" "" "$INSTDIR\bin\mps.ico" "" SW_SHOWMINIMIZED
 SectionEnd
 
 Section "Quick Launch Shortcut" secQuickLaunch
-    CreateShortCut "${QL_LINK}" "$INSTDIR\mps.bat" "" "$INSTDIR\mps.ico" "" SW_SHOWMINIMIZED
+    CreateShortCut "${QL_LINK}" "$INSTDIR\bin\mps.bat" "" "$INSTDIR\bin\mps.ico" "" SW_SHOWMINIMIZED
 SectionEnd
 
 Section -Post
@@ -102,8 +98,6 @@ Section -UN.Install
     SectionIn RO
     Delete "$INSTDIR\${PRODUCT_NAME}.url"
     Delete "${PROGRAM_LINK}"
-    Delete "${WEB_SITE_LINK}"
-    Delete "${UNINSTALL_LINK}"
     RmDir  "${MAIN_MENU_FOLDER}"
     Delete "${QL_LINK}"
     Delete "${DESKTOP_LINK}"

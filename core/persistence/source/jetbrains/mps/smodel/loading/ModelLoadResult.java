@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,15 @@
  */
 package jetbrains.mps.smodel.loading;
 
-import jetbrains.mps.smodel.LazySModel;
+import jetbrains.mps.smodel.SModel;
 import org.jetbrains.annotations.NotNull;
 
 public class ModelLoadResult {
+  private final SModel model;
   private ModelLoadingState state;
-  private LazySModel model;
   private ContentKind contentKind = ContentKind.MODEL;
 
-  public ModelLoadResult(@NotNull LazySModel model, ModelLoadingState state) {
+  public ModelLoadResult(@NotNull SModel model, ModelLoadingState state) {
     this.model = model;
     this.state = state;
   }
@@ -36,7 +36,7 @@ public class ModelLoadResult {
     this.state = state;
   }
 
-  public LazySModel getModel() {
+  public SModel getModel() {
     return model;
   }
 

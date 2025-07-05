@@ -7,104 +7,48 @@ import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicable2Status;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModelUtil_new;
-import jetbrains.mps.lang.pattern.IMatchingPattern;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.lang.pattern.runtime.PatternUtil;
-import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.smodel.SReference;
 
 public class collection_comparableWith_Collection_ComparisonRule extends ComparisonRule_Runtime {
   /*package*/ GeneratedMatchingPattern myMatchingPattern2;
-
   public collection_comparableWith_Collection_ComparisonRule() {
   }
-
   public boolean areComparable(SNode node1, SNode node2, IsApplicable2Status status) {
     return true;
   }
-
   public boolean isWeak() {
     return true;
   }
-
   public IsApplicableStatus isApplicableFirst(SNode node) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(node.getConcept().getQualifiedName(), this.getApplicableConceptFQName1());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(node.getConcept().isSubConceptOf(getApplicableConcept1()), null);
   }
-
   public IsApplicableStatus isApplicableSecond(SNode node) {
     {
-      GeneratedMatchingPattern pattern = new collection_comparableWith_Collection_ComparisonRule.Pattern_5x9es4_a0a0a0a5();
+      GeneratedMatchingPattern pattern = new Pattern_1nx5uajmygsp3(_quotation_createNode_5x9es4_a0a0a0a0f());
       this.myMatchingPattern2 = pattern;
       boolean b = pattern.match(node);
       return new IsApplicableStatus(b, pattern);
     }
   }
 
-  public String getApplicableConceptFQName1() {
-    return "jetbrains.mps.baseLanguage.collections.structure.CollectionType";
+  public SAbstractConcept getApplicableConcept1() {
+    return MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x62e1df06bd2172b2L, "jetbrains.mps.baseLanguage.collections.structure.CollectionType");
   }
-
-  public String getApplicableConceptFQName2() {
-    return "jetbrains.mps.baseLanguage.structure.ClassifierType";
+  public SAbstractConcept getApplicableConcept2() {
+    return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType");
   }
-
-  public static class Pattern_5x9es4_a0a0a0a5 extends GeneratedMatchingPattern implements IMatchingPattern {
-    /*package*/ SNode patternVar_ELEMENT;
-
-    public Pattern_5x9es4_a0a0a0a5() {
-    }
-
-    public boolean match(SNode nodeToMatch) {
-      {
-        SNode nodeToMatch_collection_comparableWith_Collection_uvtyfy_a0a;
-        nodeToMatch_collection_comparableWith_Collection_uvtyfy_a0a = nodeToMatch;
-        if (!("jetbrains.mps.baseLanguage.structure.ClassifierType".equals(nodeToMatch_collection_comparableWith_Collection_uvtyfy_a0a.getConcept().getQualifiedName()))) {
-          return false;
-        }
-        {
-          SNodeReference pointer = SNODE_POINTER_5x9es4_a0a0a0a0b0c0a0a0a0a0a0f;
-          if (!(PatternUtil.matchReferentWithNode(pointer, nodeToMatch_collection_comparableWith_Collection_uvtyfy_a0a.getReferenceTarget("classifier")))) {
-            return false;
-          }
-        }
-        {
-          String childRole_collection_comparableWith_Collection_uvtyfy_ = "parameter";
-          if (!(PatternUtil.hasNChildren(nodeToMatch_collection_comparableWith_Collection_uvtyfy_a0a, childRole_collection_comparableWith_Collection_uvtyfy_, 1))) {
-            return false;
-          }
-          {
-            SNode childVar_collection_comparableWith_Collection_uvtyfy_a0a0 = IterableUtil.get(nodeToMatch_collection_comparableWith_Collection_uvtyfy_a0a.getChildren(childRole_collection_comparableWith_Collection_uvtyfy_), 0);
-            this.patternVar_ELEMENT = childVar_collection_comparableWith_Collection_uvtyfy_a0a0;
-          }
-        }
-      }
-      return true;
-    }
-
-    public boolean hasAntiquotations() {
-      return false;
-    }
-
-    public void fillFieldValuesFrom(GeneratedMatchingPattern pattern) {
-      if (pattern != null && pattern.getClass() == this.getClass()) {
-        patternVar_ELEMENT = (SNode) pattern.getFieldValue("patternVar_ELEMENT");
-      }
-    }
-
-    public Object getFieldValue(String fieldName) {
-      if ("patternVar_ELEMENT".equals(fieldName)) {
-        return patternVar_ELEMENT;
-      }
-      return null;
-    }
-
-    public void performActions(Object o) {
-    }
+  private static SNode _quotation_createNode_5x9es4_a0a0a0a0f() {
+    PersistenceFacade facade = PersistenceFacade.getInstance();
+    SNode quotedNode_1 = null;
+    SNode quotedNode_2 = null;
+    quotedNode_1 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null, false);
+    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), facade.createNodeId("~Collection")));
+    quotedNode_2 = SModelUtil_new.instantiateConceptDeclaration(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c37f506dL, "Type"), null, null, false);
+    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), quotedNode_2);
+    return quotedNode_1;
   }
-
-  private static SNodePointer SNODE_POINTER_5x9es4_a0a0a0a0b0c0a0a0a0a0a0f = new SNodePointer("f:java_stub#6354ebe7-c22a-4a0f-ac54-50b52ab9b065#java.util(JDK/java.util@java_stub)", "~Collection");
 }

@@ -1,179 +1,258 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:95889e99-7e33-4e8a-9f36-e33116f08527(jetbrains.mps.samples.Expressions.sandbox)">
-  <persistence version="8" />
-  <language namespace="7e282943-fc6b-4900-ada5-34c0024cc4f4(jetbrains.mps.samples.Expressions)" />
-  <language namespace="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" />
-  <language namespace="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)" />
-  <language namespace="f2801650-65d5-424e-bb1b-463a8781b786(jetbrains.mps.baseLanguage.javadoc)" />
-  <import index="tpck" modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" implicit="yes" />
-  <import index="tpee" modelUID="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" version="4" implicit="yes" />
-  <import index="vpmn" modelUID="r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)" version="4" implicit="yes" />
-  <import index="m373" modelUID="r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)" version="5" implicit="yes" />
-  <root type="tpee.ClassConcept" typeId="tpee.1068390468198" id="2073504467208336329" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="Main" />
-    <node role="member" roleId="tpee.5375687026011219971" type="tpee.InstanceInitializer" typeId="tpee.1206629501431" id="3453667744252543337" nodeInfo="lgu">
-      <node role="statementList" roleId="tpee.1206629521979" type="tpee.StatementList" typeId="tpee.1068580123136" id="3453667744252543339" nodeInfo="sn">
-        <node role="statement" roleId="tpee.1068581517665" type="vpmn.SimpleMathWrapper" typeId="vpmn.2073504467208335362" id="2073504467208336681" nodeInfo="ng">
-          <node role="expressions" roleId="vpmn.2073504467208335735" type="vpmn.SimpleMathVarDeclaration" typeId="vpmn.2073504467209342143" id="2073504467209441359" nodeInfo="ng">
-            <property name="name" nameId="tpck.1169194664001" value="A" />
-            <node role="initializer" roleId="vpmn.2073504467209342228" type="vpmn.ArithmeticSimpleMathExpression" typeId="vpmn.2073504467208672407" id="2073504467209502377" nodeInfo="nn">
-              <property name="operator" nameId="vpmn.2073504467208672490" value="+" />
-              <node role="left" roleId="vpmn.2073504467207935094" type="vpmn.SimpleMathIntegerConstant" typeId="vpmn.2073504467208541194" id="2073504467209502445" nodeInfo="ng">
-                <property name="value" nameId="vpmn.2073504467208541195" value="10" />
+<model ref="r:95889e99-7e33-4e8a-9f36-e33116f08527(jetbrains.mps.samples.Expressions.sandbox)">
+  <persistence version="9" />
+  <languages>
+    <use id="7e282943-fc6b-4900-ada5-34c0024cc4f4" name="jetbrains.mps.samples.Expressions" version="0" />
+    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="5" />
+  </languages>
+  <imports />
+  <registry>
+    <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu" />
+      <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
+        <child id="1068581517665" name="statement" index="3cqZAp" />
+      </concept>
+      <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
+        <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
+      </concept>
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+        <child id="1178549979242" name="visibility" index="1B3o_S" />
+      </concept>
+      <concept id="1206629501431" name="jetbrains.mps.baseLanguage.structure.InstanceInitializer" flags="lg" index="3KIgzJ">
+        <child id="1206629521979" name="statementList" index="3KIlGz" />
+      </concept>
+      <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
+    </language>
+    <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
+        <child id="8465538089690331502" name="body" index="TZ5H$" />
+      </concept>
+      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
+        <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
+        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      </concept>
+      <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+    </language>
+    <language id="7e282943-fc6b-4900-ada5-34c0024cc4f4" name="jetbrains.mps.samples.Expressions">
+      <concept id="2073504467210944676" name="jetbrains.mps.samples.Expressions.structure.SimpleMathFloatConstant" flags="ng" index="2$zt7R">
+        <property id="2073504467210944677" name="value" index="2$zt7Q" />
+      </concept>
+      <concept id="2073504467207869132" name="jetbrains.mps.samples.Expressions.structure.BinarySimpleMathExpression" flags="ng" index="2$QGev">
+        <child id="2073504467207935094" name="left" index="2$QWk_" />
+        <child id="2073504467207935096" name="right" index="2$QWkF" />
+      </concept>
+      <concept id="2073504467208541194" name="jetbrains.mps.samples.Expressions.structure.SimpleMathIntegerConstant" flags="ng" index="2$S0lp">
+        <property id="2073504467208541195" name="value" index="2$S0lo" />
+      </concept>
+      <concept id="2073504467208542432" name="jetbrains.mps.samples.Expressions.structure.SimpleMathIntegerType" flags="ng" index="2$S0AN" />
+      <concept id="2073504467208335362" name="jetbrains.mps.samples.Expressions.structure.SimpleMathWrapper" flags="ng" index="2$Tu5h">
+        <child id="2073504467208335735" name="expressions" index="2$Tu0$" />
+      </concept>
+      <concept id="2073504467208672407" name="jetbrains.mps.samples.Expressions.structure.ArithmeticSimpleMathExpression" flags="nn" index="2$Vwn4">
+        <property id="2073504467208672490" name="operator" index="2$VwmT" />
+      </concept>
+      <concept id="2073504467209342143" name="jetbrains.mps.samples.Expressions.structure.SimpleMathVarDeclaration" flags="ng" index="2$X5RG">
+        <child id="2073504467209342228" name="initializer" index="2$X5L7" />
+      </concept>
+      <concept id="2073504467209348321" name="jetbrains.mps.samples.Expressions.structure.SimpleMathVarReference" flags="ng" index="2$X7mM">
+        <reference id="2073504467209348322" name="declaration" index="2$X7mL" />
+      </concept>
+      <concept id="2073504467209943018" name="jetbrains.mps.samples.Expressions.structure.SimpleMathLongConstant" flags="ng" index="2$ZmqT">
+        <property id="2073504467209943070" name="value" index="2$Zm_d" />
+      </concept>
+      <concept id="930174696942536268" name="jetbrains.mps.samples.Expressions.structure.SimpleMathAssignment" flags="ng" index="1EIqaT">
+        <child id="930174696942541360" name="variable" index="1EIrV5" />
+        <child id="930174696942541362" name="expression" index="1EIrV7" />
+      </concept>
+      <concept id="8620208551721374838" name="jetbrains.mps.samples.Expressions.structure.SimpleMathTypedVarDeclaration" flags="ng" index="3KwzpR">
+        <child id="8620208551721379933" name="type" index="3KwwDs" />
+      </concept>
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
+      </concept>
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
+        <property id="709746936026609031" name="linkId" index="3V$3ak" />
+        <property id="709746936026609029" name="linkRole" index="3V$3am" />
+      </concept>
+      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
+        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="312cEu" id="1N6$leS8Rf9">
+    <property role="TrG5h" value="Main" />
+    <node concept="3KIgzJ" id="2ZHT8fsps5D" role="jymVt">
+      <node concept="3clFbS" id="2ZHT8fsps5F" role="3KIlGz">
+        <node concept="2$Tu5h" id="1N6$leS8RkD" role="3cqZAp">
+          <node concept="2$X5RG" id="1N6$leSd51f" role="2$Tu0$">
+            <property role="TrG5h" value="A" />
+            <node concept="2$Vwn4" id="1N6$leSdjUD" role="2$X5L7">
+              <property role="2$VwmT" value="+" />
+              <node concept="2$S0lp" id="1N6$leSdjVH" role="2$QWk_">
+                <property role="2$S0lo" value="10" />
               </node>
-              <node role="right" roleId="vpmn.2073504467207935096" type="vpmn.SimpleMathIntegerConstant" typeId="vpmn.2073504467208541194" id="3453667744252541094" nodeInfo="ng">
-                <property name="value" nameId="vpmn.2073504467208541195" value="11" />
+              <node concept="2$S0lp" id="2ZHT8fspryA" role="2$QWkF">
+                <property role="2$S0lo" value="11" />
               </node>
             </node>
           </node>
-          <node role="expressions" roleId="vpmn.2073504467208335735" type="vpmn.SimpleMathVarDeclaration" typeId="vpmn.2073504467209342143" id="2073504467209502868" nodeInfo="ng">
-            <property name="name" nameId="tpck.1169194664001" value="B" />
-            <node role="initializer" roleId="vpmn.2073504467209342228" type="vpmn.ArithmeticSimpleMathExpression" typeId="vpmn.2073504467208672407" id="2073504467210168970" nodeInfo="nn">
-              <property name="operator" nameId="vpmn.2073504467208672490" value="+" />
-              <node role="right" roleId="vpmn.2073504467207935096" type="vpmn.SimpleMathLongConstant" typeId="vpmn.2073504467209943018" id="2073504467210169564" nodeInfo="ng">
-                <property name="value" nameId="vpmn.2073504467209943070" value="200" />
+          <node concept="2$X5RG" id="1N6$leSdk2k" role="2$Tu0$">
+            <property role="TrG5h" value="B" />
+            <node concept="2$Vwn4" id="1N6$leSfQEa" role="2$X5L7">
+              <property role="2$VwmT" value="+" />
+              <node concept="2$ZmqT" id="1N6$leSfQNs" role="2$QWkF">
+                <property role="2$Zm_d" value="200" />
               </node>
-              <node role="left" roleId="vpmn.2073504467207935094" type="vpmn.SimpleMathLongConstant" typeId="vpmn.2073504467209943018" id="2073504467210169200" nodeInfo="ng">
-                <property name="value" nameId="vpmn.2073504467209943070" value="100" />
-              </node>
-            </node>
-          </node>
-          <node role="expressions" roleId="vpmn.2073504467208335735" type="vpmn.SimpleMathVarDeclaration" typeId="vpmn.2073504467209342143" id="2073504467210938823" nodeInfo="ng">
-            <property name="name" nameId="tpck.1169194664001" value="C" />
-            <node role="initializer" roleId="vpmn.2073504467209342228" type="vpmn.ArithmeticSimpleMathExpression" typeId="vpmn.2073504467208672407" id="2073504467210938918" nodeInfo="nn">
-              <property name="operator" nameId="vpmn.2073504467208672490" value="-" />
-              <node role="right" roleId="vpmn.2073504467207935096" type="vpmn.SimpleMathIntegerConstant" typeId="vpmn.2073504467208541194" id="2073504467210939176" nodeInfo="ng">
-                <property name="value" nameId="vpmn.2073504467208541195" value="20" />
-              </node>
-              <node role="left" roleId="vpmn.2073504467207935094" type="vpmn.SimpleMathLongConstant" typeId="vpmn.2073504467209943018" id="2073504467210939014" nodeInfo="ng">
-                <property name="value" nameId="vpmn.2073504467209943070" value="300" />
+              <node concept="2$ZmqT" id="1N6$leSfQHK" role="2$QWk_">
+                <property role="2$Zm_d" value="100" />
               </node>
             </node>
           </node>
-          <node role="expressions" roleId="vpmn.2073504467208335735" type="vpmn.SimpleMathVarDeclaration" typeId="vpmn.2073504467209342143" id="2073504467211039079" nodeInfo="ng">
-            <property name="name" nameId="tpck.1169194664001" value="D" />
-            <node role="initializer" roleId="vpmn.2073504467209342228" type="vpmn.ArithmeticSimpleMathExpression" typeId="vpmn.2073504467208672407" id="2073504467211039144" nodeInfo="nn">
-              <property name="operator" nameId="vpmn.2073504467208672490" value="*" />
-              <node role="left" roleId="vpmn.2073504467207935094" type="vpmn.SimpleMathIntegerConstant" typeId="vpmn.2073504467208541194" id="2073504467211042657" nodeInfo="ng">
-                <property name="value" nameId="vpmn.2073504467208541195" value="10" />
+          <node concept="2$X5RG" id="1N6$leSiMB7" role="2$Tu0$">
+            <property role="TrG5h" value="C" />
+            <node concept="2$Vwn4" id="1N6$leSiMCA" role="2$X5L7">
+              <property role="2$VwmT" value="-" />
+              <node concept="2$S0lp" id="1N6$leSiMGC" role="2$QWkF">
+                <property role="2$S0lo" value="20" />
               </node>
-              <node role="right" roleId="vpmn.2073504467207935096" type="vpmn.SimpleMathFloatConstant" typeId="vpmn.2073504467210944676" id="2073504467211039639" nodeInfo="ng">
-                <property name="value" nameId="vpmn.2073504467210944677" value="2.6" />
+              <node concept="2$ZmqT" id="1N6$leSiME6" role="2$QWk_">
+                <property role="2$Zm_d" value="300" />
               </node>
             </node>
           </node>
-          <node role="expressions" roleId="vpmn.2073504467208335735" type="vpmn.SimpleMathVarDeclaration" typeId="vpmn.2073504467209342143" id="8620208551721818923" nodeInfo="ng">
-            <property name="name" nameId="tpck.1169194664001" value="E" />
-            <node role="initializer" roleId="vpmn.2073504467209342228" type="vpmn.SimpleMathIntegerConstant" typeId="vpmn.2073504467208541194" id="8620208551721818964" nodeInfo="ng">
-              <property name="value" nameId="vpmn.2073504467208541195" value="10" />
+          <node concept="2$X5RG" id="1N6$leSjb5B" role="2$Tu0$">
+            <property role="TrG5h" value="D" />
+            <node concept="2$Vwn4" id="1N6$leSjb6C" role="2$X5L7">
+              <property role="2$VwmT" value="*" />
+              <node concept="2$S0lp" id="1N6$leSjbXx" role="2$QWk_">
+                <property role="2$S0lo" value="10" />
+              </node>
+              <node concept="2$zt7R" id="1N6$leSjben" role="2$QWkF">
+                <property role="2$zt7Q" value="2.6" />
+              </node>
             </node>
           </node>
-          <node role="expressions" roleId="vpmn.2073504467208335735" type="vpmn.SimpleMathAssignment" typeId="vpmn.930174696942536268" id="8620208551721819391" nodeInfo="ng">
-            <node role="expression" roleId="vpmn.930174696942541362" type="vpmn.SimpleMathVarReference" typeId="vpmn.2073504467209348321" id="8620208551721819466" nodeInfo="ng">
-              <link role="declaration" roleId="vpmn.2073504467209348322" targetNodeId="2073504467211039079" resolveInfo="D" />
+          <node concept="2$X5RG" id="7ux8w67atGF" role="2$Tu0$">
+            <property role="TrG5h" value="E" />
+            <node concept="2$S0lp" id="7ux8w67atHk" role="2$X5L7">
+              <property role="2$S0lo" value="10" />
             </node>
-            <node role="variable" roleId="vpmn.930174696942541360" type="vpmn.SimpleMathVarReference" typeId="vpmn.2073504467209348321" id="8620208551721819432" nodeInfo="ng">
-              <link role="declaration" roleId="vpmn.2073504467209348322" targetNodeId="8620208551721818923" resolveInfo="E" />
+          </node>
+          <node concept="1EIqaT" id="7ux8w67atNZ" role="2$Tu0$">
+            <node concept="2$X7mM" id="7ux8w67atPa" role="1EIrV7">
+              <ref role="2$X7mL" node="1N6$leSjb5B" resolve="D" />
+            </node>
+            <node concept="2$X7mM" id="7ux8w67atOC" role="1EIrV5">
+              <ref role="2$X7mL" node="7ux8w67atGF" resolve="E" />
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node role="visibility" roleId="tpee.1178549979242" type="tpee.PublicVisibility" typeId="tpee.1146644602865" id="2073504467208336330" nodeInfo="nn" />
-    <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="m373.ClassifierDocComment" typeId="m373.2068944020170241612" id="8620208551721908613" nodeInfo="ng">
-      <node role="body" roleId="m373.8465538089690331502" type="m373.CommentLine" typeId="m373.8465538089690331500" id="8620208551721908614" nodeInfo="ng">
-        <node role="part" roleId="m373.8970989240999019149" type="m373.TextCommentLinePart" typeId="m373.8970989240999019143" id="8620208551721908615" nodeInfo="ng">
-          <property name="text" nameId="m373.8970989240999019144" value="Illustrates type inference using a dedicated simplified expression language." />
+    <node concept="3Tm1VV" id="1N6$leS8Rfa" role="1B3o_S" />
+    <node concept="3UR2Jj" id="7ux8w67aNA5" role="lGtFl">
+      <node concept="TZ5HA" id="7ux8w67aNA6" role="TZ5H$">
+        <node concept="1dT_AC" id="7ux8w67aNA7" role="1dT_Ay">
+          <property role="1dT_AB" value="Illustrates type inference using a dedicated simplified expression language." />
         </node>
       </node>
-      <node role="body" roleId="m373.8465538089690331502" type="m373.CommentLine" typeId="m373.8465538089690331500" id="8620208551721909760" nodeInfo="ng">
-        <node role="part" roleId="m373.8970989240999019149" type="m373.TextCommentLinePart" typeId="m373.8970989240999019143" id="8620208551721909761" nodeInfo="ng">
-          <property name="text" nameId="m373.8970989240999019144" value="Check types of the variables by inspecting their type - Control/Cmd + Shift + T." />
+      <node concept="TZ5HA" id="7ux8w67aNS0" role="TZ5H$">
+        <node concept="1dT_AC" id="7ux8w67aNS1" role="1dT_Ay">
+          <property role="1dT_AB" value="Check types of the variables by inspecting their type - Control/Cmd + Shift + T." />
         </node>
       </node>
-      <node role="body" roleId="m373.8465538089690331502" type="m373.CommentLine" typeId="m373.8465538089690331500" id="8620208551721909741" nodeInfo="ng">
-        <node role="part" roleId="m373.8970989240999019149" type="m373.TextCommentLinePart" typeId="m373.8970989240999019143" id="8620208551721909742" nodeInfo="ng">
-          <property name="text" nameId="m373.8970989240999019144" value="You may also debug the typesystem engine using Type-system Trace - Control/Cmd + Shift + X." />
+      <node concept="TZ5HA" id="7ux8w67aNRH" role="TZ5H$">
+        <node concept="1dT_AC" id="7ux8w67aNRI" role="1dT_Ay">
+          <property role="1dT_AB" value="You may also debug the typesystem engine using Type-system Trace - Control/Cmd + Shift + X." />
         </node>
       </node>
     </node>
-  </root>
-  <root type="tpee.ClassConcept" typeId="tpee.1068390468198" id="3453667744252544858" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="Simple" />
-    <node role="member" roleId="tpee.5375687026011219971" type="tpee.InstanceInitializer" typeId="tpee.1206629501431" id="3453667744252544873" nodeInfo="lgu">
-      <node role="statementList" roleId="tpee.1206629521979" type="tpee.StatementList" typeId="tpee.1068580123136" id="3453667744252544875" nodeInfo="sn">
-        <node role="statement" roleId="tpee.1068581517665" type="vpmn.SimpleMathWrapper" typeId="vpmn.2073504467208335362" id="3453667744252544930" nodeInfo="ng">
-          <node role="expressions" roleId="vpmn.2073504467208335735" type="vpmn.SimpleMathVarDeclaration" typeId="vpmn.2073504467209342143" id="3453667744252544931" nodeInfo="ng">
-            <property name="name" nameId="tpck.1169194664001" value="aValue" />
-            <node role="initializer" roleId="vpmn.2073504467209342228" type="vpmn.ArithmeticSimpleMathExpression" typeId="vpmn.2073504467208672407" id="3453667744252544932" nodeInfo="nn">
-              <property name="operator" nameId="vpmn.2073504467208672490" value="+" />
-              <node role="right" roleId="vpmn.2073504467207935096" type="vpmn.SimpleMathFloatConstant" typeId="vpmn.2073504467210944676" id="3453667744252545487" nodeInfo="ng">
-                <property name="value" nameId="vpmn.2073504467210944677" value="1.3" />
+  </node>
+  <node concept="312cEu" id="2ZHT8fspstq">
+    <property role="TrG5h" value="Simple" />
+    <node concept="3KIgzJ" id="2ZHT8fspstD" role="jymVt">
+      <node concept="3clFbS" id="2ZHT8fspstF" role="3KIlGz">
+        <node concept="2$Tu5h" id="2ZHT8fspsuy" role="3cqZAp">
+          <node concept="2$X5RG" id="2ZHT8fspsuz" role="2$Tu0$">
+            <property role="TrG5h" value="aValue" />
+            <node concept="2$Vwn4" id="2ZHT8fspsu$" role="2$X5L7">
+              <property role="2$VwmT" value="+" />
+              <node concept="2$zt7R" id="2ZHT8fspsBf" role="2$QWkF">
+                <property role="2$zt7Q" value="1.3" />
               </node>
-              <node role="left" roleId="vpmn.2073504467207935094" type="vpmn.SimpleMathIntegerConstant" typeId="vpmn.2073504467208541194" id="3453667744252544933" nodeInfo="ng">
-                <property name="value" nameId="vpmn.2073504467208541195" value="10" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node role="visibility" roleId="tpee.1178549979242" type="tpee.PublicVisibility" typeId="tpee.1146644602865" id="3453667744252544859" nodeInfo="nn" />
-    <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="m373.ClassifierDocComment" typeId="m373.2068944020170241612" id="8620208551721910208" nodeInfo="ng">
-      <node role="body" roleId="m373.8465538089690331502" type="m373.CommentLine" typeId="m373.8465538089690331500" id="8620208551721910235" nodeInfo="ng">
-        <node role="part" roleId="m373.8970989240999019149" type="m373.TextCommentLinePart" typeId="m373.8970989240999019143" id="8620208551721910236" nodeInfo="ng">
-          <property name="text" nameId="m373.8970989240999019144" value="Illustrates type inference using a dedicated simplified expression language." />
-        </node>
-      </node>
-      <node role="body" roleId="m373.8465538089690331502" type="m373.CommentLine" typeId="m373.8465538089690331500" id="8620208551721910237" nodeInfo="ng">
-        <node role="part" roleId="m373.8970989240999019149" type="m373.TextCommentLinePart" typeId="m373.8970989240999019143" id="8620208551721910238" nodeInfo="ng">
-          <property name="text" nameId="m373.8970989240999019144" value="Check types of the variables by inspecting their type - Control/Cmd + Shift + T." />
-        </node>
-      </node>
-      <node role="body" roleId="m373.8465538089690331502" type="m373.CommentLine" typeId="m373.8465538089690331500" id="8620208551721910239" nodeInfo="ng">
-        <node role="part" roleId="m373.8970989240999019149" type="m373.TextCommentLinePart" typeId="m373.8970989240999019143" id="8620208551721910240" nodeInfo="ng">
-          <property name="text" nameId="m373.8970989240999019144" value="You may also debug the typesystem engine using Type-system Trace - Control/Cmd + Shift + X." />
-        </node>
-      </node>
-    </node>
-  </root>
-  <root type="tpee.ClassConcept" typeId="tpee.1068390468198" id="3453667744252546022" nodeInfo="ig">
-    <property name="name" nameId="tpck.1169194664001" value="TypeError" />
-    <node role="member" roleId="tpee.5375687026011219971" type="tpee.InstanceInitializer" typeId="tpee.1206629501431" id="3453667744252546042" nodeInfo="lgu">
-      <node role="statementList" roleId="tpee.1206629521979" type="tpee.StatementList" typeId="tpee.1068580123136" id="3453667744252546044" nodeInfo="sn">
-        <node role="statement" roleId="tpee.1068581517665" type="tpee.SingleLineComment" typeId="tpee.6329021646629104954" id="1962809150991769646" nodeInfo="nn">
-          <node role="commentPart" roleId="tpee.6329021646629175155" type="tpee.StatementCommentPart" typeId="tpee.6329021646629175143" id="1962809150991769647" nodeInfo="nn">
-            <node role="commentedStatement" roleId="tpee.6329021646629175144" type="vpmn.SimpleMathWrapper" typeId="vpmn.2073504467208335362" id="3453667744252546099" nodeInfo="ng">
-              <node role="expressions" roleId="vpmn.2073504467208335735" type="vpmn.SimpleMathTypedVarDeclaration" typeId="vpmn.8620208551721374838" id="8620208551721817373" nodeInfo="ng">
-                <property name="name" nameId="tpck.1169194664001" value="anotherInt" />
-                <node role="initializer" roleId="vpmn.2073504467209342228" type="vpmn.SimpleMathFloatConstant" typeId="vpmn.2073504467210944676" id="8620208551721817443" nodeInfo="ng">
-                  <property name="value" nameId="vpmn.2073504467210944677" value="1.3" />
-                </node>
-                <node role="type" roleId="vpmn.8620208551721379933" type="vpmn.SimpleMathIntegerType" typeId="vpmn.2073504467208542432" id="8620208551721817398" nodeInfo="ng" />
+              <node concept="2$S0lp" id="2ZHT8fspsu_" role="2$QWk_">
+                <property role="2$S0lo" value="10" />
               </node>
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node role="visibility" roleId="tpee.1178549979242" type="tpee.PublicVisibility" typeId="tpee.1146644602865" id="3453667744252546023" nodeInfo="nn" />
-    <node role="smodelAttribute" roleId="tpck.5169995583184591170" type="m373.ClassifierDocComment" typeId="m373.2068944020170241612" id="8620208551721910297" nodeInfo="ng">
-      <node role="body" roleId="m373.8465538089690331502" type="m373.CommentLine" typeId="m373.8465538089690331500" id="8620208551721910329" nodeInfo="ng">
-        <node role="part" roleId="m373.8970989240999019149" type="m373.TextCommentLinePart" typeId="m373.8970989240999019143" id="8620208551721910330" nodeInfo="ng">
-          <property name="text" nameId="m373.8970989240999019144" value="Illustrates type inference using a dedicated simplified expression language." />
+    <node concept="3Tm1VV" id="2ZHT8fspstr" role="1B3o_S" />
+    <node concept="3UR2Jj" id="7ux8w67aNZ0" role="lGtFl">
+      <node concept="TZ5HA" id="7ux8w67aNZr" role="TZ5H$">
+        <node concept="1dT_AC" id="7ux8w67aNZs" role="1dT_Ay">
+          <property role="1dT_AB" value="Illustrates type inference using a dedicated simplified expression language." />
         </node>
       </node>
-      <node role="body" roleId="m373.8465538089690331502" type="m373.CommentLine" typeId="m373.8465538089690331500" id="8620208551721910331" nodeInfo="ng">
-        <node role="part" roleId="m373.8970989240999019149" type="m373.TextCommentLinePart" typeId="m373.8970989240999019143" id="8620208551721910332" nodeInfo="ng">
-          <property name="text" nameId="m373.8970989240999019144" value="Check types of the variables by inspecting their type - Control/Cmd + Shift + T." />
+      <node concept="TZ5HA" id="7ux8w67aNZt" role="TZ5H$">
+        <node concept="1dT_AC" id="7ux8w67aNZu" role="1dT_Ay">
+          <property role="1dT_AB" value="Check types of the variables by inspecting their type - Control/Cmd + Shift + T." />
         </node>
       </node>
-      <node role="body" roleId="m373.8465538089690331502" type="m373.CommentLine" typeId="m373.8465538089690331500" id="8620208551721910333" nodeInfo="ng">
-        <node role="part" roleId="m373.8970989240999019149" type="m373.TextCommentLinePart" typeId="m373.8970989240999019143" id="8620208551721910334" nodeInfo="ng">
-          <property name="text" nameId="m373.8970989240999019144" value="You may also debug the typesystem engine using Type-system Trace - Control/Cmd + Shift + X." />
+      <node concept="TZ5HA" id="7ux8w67aNZv" role="TZ5H$">
+        <node concept="1dT_AC" id="7ux8w67aNZw" role="1dT_Ay">
+          <property role="1dT_AB" value="You may also debug the typesystem engine using Type-system Trace - Control/Cmd + Shift + X." />
         </node>
       </node>
     </node>
-  </root>
+  </node>
+  <node concept="312cEu" id="2ZHT8fspsJA">
+    <property role="TrG5h" value="TypeError" />
+    <node concept="3KIgzJ" id="2ZHT8fspsJU" role="jymVt">
+      <node concept="3clFbS" id="2ZHT8fspsJW" role="3KIlGz">
+        <node concept="1X3_iC" id="3$ZLRFpTBf4" role="lGtFl">
+          <property role="3V$3am" value="statement" />
+          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+          <node concept="2$Tu5h" id="2ZHT8fspsKN" role="8Wnug">
+            <node concept="3KwzpR" id="7ux8w67atkt" role="2$Tu0$">
+              <property role="TrG5h" value="anotherInt" />
+              <node concept="2$zt7R" id="7ux8w67atlz" role="2$X5L7">
+                <property role="2$zt7Q" value="1.3" />
+              </node>
+              <node concept="2$S0AN" id="7ux8w67atkQ" role="3KwwDs" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3Tm1VV" id="2ZHT8fspsJB" role="1B3o_S" />
+    <node concept="3UR2Jj" id="7ux8w67aO0p" role="lGtFl">
+      <node concept="TZ5HA" id="7ux8w67aO0T" role="TZ5H$">
+        <node concept="1dT_AC" id="7ux8w67aO0U" role="1dT_Ay">
+          <property role="1dT_AB" value="Illustrates type inference using a dedicated simplified expression language." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7ux8w67aO0V" role="TZ5H$">
+        <node concept="1dT_AC" id="7ux8w67aO0W" role="1dT_Ay">
+          <property role="1dT_AB" value="Check types of the variables by inspecting their type - Control/Cmd + Shift + T." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7ux8w67aO0X" role="TZ5H$">
+        <node concept="1dT_AC" id="7ux8w67aO0Y" role="1dT_Ay">
+          <property role="1dT_AB" value="You may also debug the typesystem engine using Type-system Trace - Control/Cmd + Shift + X." />
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

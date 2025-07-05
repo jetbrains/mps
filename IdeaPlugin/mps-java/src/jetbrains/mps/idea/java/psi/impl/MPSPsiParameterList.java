@@ -17,6 +17,7 @@
 package jetbrains.mps.idea.java.psi.impl;
 
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiManager;
 import com.intellij.psi.PsiParameter;
 import com.intellij.psi.PsiParameterList;
 import com.intellij.psi.impl.PsiImplUtil;
@@ -29,29 +30,20 @@ import org.jetbrains.annotations.NotNull;
 
 public class MPSPsiParameterList extends MPSPsiNodeBase implements PsiParameterList {
 
-  public MPSPsiParameterList() {
+  public MPSPsiParameterList(PsiManager manager) {
+    super(manager);
   }
 
   @Override
   public String toString() {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    return "MPSPsiParameterList";
   }
 
   @NotNull
   @Override
   public PsiParameter[] getParameters() {
-    PsiElement parent = getParent();
-    if (!(parent instanceof MPSPsiMethod)) {
-      return PsiParameter.EMPTY_ARRAY;
-    }
-
-    MPSPsiMethod mpsMethod = (MPSPsiMethod) parent;
-    MPSPsiParameter[] params = mpsMethod.getChildrenOfType("parameter", MPSPsiParameter.class);
-    if (params == null) {
-      return PsiParameter.EMPTY_ARRAY;
-    } else {
-      return params;
-    }
+    PsiParameter[] result = getChildrenOfType("parameter", MPSPsiParameter.class);
+    return result == null ? PsiParameter.EMPTY_ARRAY : result;
   }
 
   @Override

@@ -9,12 +9,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 public class ProjectExpression_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createComponent_d816z1_a(editorContext, node);
-  }
-
-  private EditorCell createComponent_d816z1_a(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = editorContext.getCellFactory().createEditorComponentCell(node, "jetbrains.mps.lang.core.editor.alias");
-    editorCell.setBig(true);
-    return editorCell;
+    return new ProjectExpression_EditorBuilder_a(editorContext, node).createCell();
   }
 }

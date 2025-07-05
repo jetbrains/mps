@@ -16,7 +16,6 @@ public class ChangeGroup {
   private Bounds myRightBounds;
   private List<ModelChange> myChanges;
   private ChangeType myChangeType;
-
   public ChangeGroup(Bounds leftBounds, Bounds rightBounds, List<ModelChange> changes, @Nullable final ChangeEditorMessage.ConflictChecker conflictChecker) {
     myLeftBounds = leftBounds;
     myRightBounds = rightBounds;
@@ -27,10 +26,7 @@ public class ChangeGroup {
       }
     }).reduceLeft(new ILeftCombinator<ChangeType, ChangeType>() {
       public ChangeType combine(ChangeType a, ChangeType b) {
-        return (a == b ?
-          a :
-          ChangeType.CHANGE
-        );
+        return (a == b ? a : ChangeType.CHANGE);
       }
     });
     if (conflictChecker != null && ListSequence.fromList(changes).any(new IWhereFilter<ModelChange>() {
@@ -41,26 +37,18 @@ public class ChangeGroup {
       myChangeType = ChangeType.CONFLICTED;
     }
   }
-
   public Bounds getLeftBounds() {
     return myLeftBounds;
   }
-
   public Bounds getRightBounds() {
     return myRightBounds;
   }
-
   public Bounds getBounds(boolean left) {
-    return (left ?
-      myLeftBounds :
-      myRightBounds
-    );
+    return (left ? myLeftBounds : myRightBounds);
   }
-
   public List<ModelChange> getChanges() {
     return myChanges;
   }
-
   public ChangeType getChangeType() {
     return myChangeType;
   }

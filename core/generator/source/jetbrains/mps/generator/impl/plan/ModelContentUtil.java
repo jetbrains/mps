@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,12 @@
  */
 package jetbrains.mps.generator.impl.plan;
 
-import jetbrains.mps.generator.impl.TemplateModelScanner;
-import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.smodel.BootstrapLanguages;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.project.ModelsAutoImportsManager;
+import jetbrains.mps.smodel.ModelDependencyScanner;
 import jetbrains.mps.smodel.SModelStereotype;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -33,38 +31,21 @@ import java.util.Set;
  */
 public class ModelContentUtil {
 
-  public static Collection<String> getUsedLanguageNamespacesInTemplateModel(SModel model) {
-    TemplateModelScanner templateModelScanner = new TemplateModelScanner(model);
-    templateModelScanner.scan();
-    return templateModelScanner.getTargetLanguages();
-  }
-
-  public static Collection<String> getUsedLanguageNamespaces(SModel model, boolean isTemplateModel) {
-    if (isTemplateModel) {
-      return getUsedLanguageNamespacesInTemplateModel(model);
-    }
+  public static Collection<SLanguage> getUsedLanguages(@NotNull SModel model) {
+    Set<SLanguage> namespaces = new HashSet<SLanguage>();
+    namespaces.addAll(((jetbrains.mps.smodel.SModelInternal) model).getLanguagesEngagedOnGeneration());
     if (SModelStereotype.isGeneratorModel(model)) {
-      TemplateModelScanner templateModelScanner = new TemplateModelScanner(model);
-      templateModelScanner.scan();
-      Set<String> namespaces = new HashSet<String>(templateModelScanner.getQueryLanguages());
-      for (SModuleReference ref : ((jetbrains.mps.smodel.SModelInternal) model).engagedOnGenerationLanguages()) {
-        namespaces.add(ref.getModuleName());
-      }
+      ModelScanner templateModelScanner = new ModelScanner();
+      templateModelScanner.scanInLegacyMode(model);
+      namespaces.addAll(templateModelScanner.getQueryLanguages());
       return namespaces;
     }
-    Set<String> namespaces = new HashSet<String>();
-    for (SModuleReference ref : ((jetbrains.mps.smodel.SModelInternal) model).engagedOnGenerationLanguages()) {
-      namespaces.add(ref.getModuleName());
+    for (SLanguage language : new ModelDependencyScanner().usedLanguages(true).crossModelReferences(false).walk(model).getUsedLanguages()) {
+      namespaces.add(language);
     }
-    for (SNode root : model.getRootNodes()) {
-      namespaces.add(root.getConcept().getLanguage().getQualifiedName());
-      for (SNode child : jetbrains.mps.util.SNodeOperations.getDescendants(root, null)) {
-        namespaces.add(child.getConcept().getLanguage().getQualifiedName());
-      }
-    }
-    // empty behavior model should have it's behavior aspect descriptor generated
-    if (model.getModule() instanceof Language && LanguageAspect.BEHAVIOR.is(model)) {
-      namespaces.add(BootstrapLanguages.BEHAVIOR_NAMESPACE);
+    // e.g. empty behavior model should have its behavior aspect descriptor generated
+    for (SLanguage language : ModelsAutoImportsManager.getLanguages(model.getModule(), model)) {
+      namespaces.add(language);
     }
     return namespaces;
   }

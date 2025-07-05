@@ -8,52 +8,40 @@ import com.sun.jdi.Field;
 import com.sun.jdi.Value;
 import com.sun.jdi.ThreadReference;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaValue;
-import jetbrains.mps.debugger.java.api.state.proxy.ValueUtil;
+import jetbrains.mps.debugger.java.api.state.customViewers.CustomViewersManager;
 import jetbrains.mps.debug.api.programState.WatchablesCategory;
 import jetbrains.mps.debugger.java.api.state.watchables.JavaWatchablesCategory;
 import jetbrains.mps.debug.api.programState.IValue;
 import javax.swing.Icon;
 import jetbrains.mps.debugger.java.api.ui.Icons;
-import org.jetbrains.mps.openapi.model.SNode;
 
 /*package*/ class JavaWatchpointWatchable extends JavaWatchable {
   private final FieldWatchpointValue myValue;
-
-  public JavaWatchpointWatchable(Field field, Value currentValue, Value newValue, String classFqName, ThreadReference threadReference) {
-    super(classFqName, threadReference);
-    JavaValue current = ValueUtil.getInstance().fromJDI(currentValue, classFqName, threadReference);
-    JavaValue neww = ValueUtil.getInstance().fromJDI(newValue, classFqName, threadReference);
-    myValue = new FieldWatchpointValue(field, false, current, neww, classFqName, threadReference);
+  public JavaWatchpointWatchable(Field field, Value currentValue, Value newValue, ThreadReference threadReference) {
+    super(threadReference);
+    JavaValue current = CustomViewersManager.getInstance().fromJdi(currentValue, threadReference);
+    JavaValue neww = CustomViewersManager.getInstance().fromJdi(newValue, threadReference);
+    myValue = new FieldWatchpointValue(field, false, current, neww, threadReference);
   }
-
-  public JavaWatchpointWatchable(Field field, Value currentValue, String classFqName, ThreadReference threadReference) {
-    super(classFqName, threadReference);
-    JavaValue current = ValueUtil.getInstance().fromJDI(currentValue, classFqName, threadReference);
-    myValue = new FieldWatchpointValue(field, true, current, null, classFqName, threadReference);
+  public JavaWatchpointWatchable(Field field, Value currentValue, ThreadReference threadReference) {
+    super(threadReference);
+    JavaValue current = CustomViewersManager.getInstance().fromJdi(currentValue, threadReference);
+    myValue = new FieldWatchpointValue(field, true, current, null, threadReference);
   }
-
   @Override
   public String getName() {
     return "field watchpoint";
   }
-
   @Override
   public WatchablesCategory getCategory() {
     return JavaWatchablesCategory.FIELD_WATCHPOINT;
   }
-
   @Override
   public IValue getValue() {
     return myValue;
   }
-
   @Override
   public Icon getPresentationIcon() {
     return Icons.VALUE_OBJECT;
-  }
-
-  @Override
-  public SNode getNode() {
-    return null;
   }
 }

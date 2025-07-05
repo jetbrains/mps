@@ -1,597 +1,654 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <root nodeRef="r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)/1830259054206300940">
-    <nodeInfo nodeId="7381022956662462464" fileName="SConstraintsUtil.java" startLine="9" startPosition="0" endLine="10" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_ConceptConstraints" />
-    <nodeInfo nodeId="1830259054206300953" fileName="SConstraintsUtil.java" startLine="14" startPosition="71" endLine="15" endPosition="66" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1830259054206332557" fileName="SConstraintsUtil.java" startLine="18" startPosition="68" endLine="19" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1830259054206332567" fileName="SConstraintsUtil.java" startLine="22" startPosition="69" endLine="23" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1830259054206332577" fileName="SConstraintsUtil.java" startLine="26" startPosition="67" endLine="27" endPosition="62" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1830259054206300942" fileName="SConstraintsUtil.java" startLine="11" startPosition="0" endLine="13" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="SConstraintsUtil#()V" />
-    <nodeInfo nodeId="1830259054206300946" fileName="SConstraintsUtil.java" startLine="14" startPosition="0" endLine="17" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptConstraints_CanBeAncestor#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="1830259054206332553" fileName="SConstraintsUtil.java" startLine="18" startPosition="0" endLine="21" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptConstraints_CanBeChild#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="1830259054206332563" fileName="SConstraintsUtil.java" startLine="22" startPosition="0" endLine="25" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptConstraints_CanBeParent#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="1830259054206332573" fileName="SConstraintsUtil.java" startLine="26" startPosition="0" endLine="29" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptConstraints_CanBeRoot#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <scopeInfo nodeId="1830259054206300945" fileName="SConstraintsUtil.java" startLine="11" startPosition="29" endLine="11" endPosition="29" />
-    <scopeInfo nodeId="1830259054206300949" fileName="SConstraintsUtil.java" startLine="14" startPosition="71" endLine="15" endPosition="66" />
-    <scopeInfo nodeId="1830259054206332556" fileName="SConstraintsUtil.java" startLine="18" startPosition="68" endLine="19" endPosition="63" />
-    <scopeInfo nodeId="1830259054206332566" fileName="SConstraintsUtil.java" startLine="22" startPosition="69" endLine="23" endPosition="64" />
-    <scopeInfo nodeId="1830259054206332576" fileName="SConstraintsUtil.java" startLine="26" startPosition="67" endLine="27" endPosition="62" />
-    <scopeInfo nodeId="1830259054206300942" fileName="SConstraintsUtil.java" startLine="11" startPosition="0" endLine="13" endPosition="0" />
-    <scopeInfo nodeId="1830259054206300946" fileName="SConstraintsUtil.java" startLine="14" startPosition="0" endLine="17" endPosition="0">
-      <varInfo nodeId="1830259054206300951" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1830259054206332553" fileName="SConstraintsUtil.java" startLine="18" startPosition="0" endLine="21" endPosition="0">
-      <varInfo nodeId="1830259054206332561" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1830259054206332563" fileName="SConstraintsUtil.java" startLine="22" startPosition="0" endLine="25" endPosition="0">
-      <varInfo nodeId="1830259054206332571" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1830259054206332573" fileName="SConstraintsUtil.java" startLine="26" startPosition="0" endLine="29" endPosition="0">
-      <varInfo nodeId="1830259054206332581" varName="node" />
-    </scopeInfo>
-    <unitInfo nodeId="1830259054206300940" fileName="SConstraintsUtil.java" startLine="8" startPosition="0" endLine="30" endPosition="0" unitName="jetbrains.mps.smodel.SConstraintsUtil" />
-  </root>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
   <root nodeRef="r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)/2274990519051114059">
-    <nodeInfo nodeId="780982041803949193" fileName="SNodeUtil.java" startLine="18" startPosition="0" endLine="19" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_IResolveInfo" />
-    <nodeInfo nodeId="4116271674853115043" fileName="SNodeUtil.java" startLine="19" startPosition="0" endLine="20" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_INamedConcept" />
-    <nodeInfo nodeId="780982041803949200" fileName="SNodeUtil.java" startLine="20" startPosition="0" endLine="21" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_BaseConcept" />
-    <nodeInfo nodeId="8169002813519957375" fileName="SNodeUtil.java" startLine="21" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_AbstractConceptDeclaration" />
-    <nodeInfo nodeId="6142653329462313948" fileName="SNodeUtil.java" startLine="22" startPosition="0" endLine="23" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_ConceptDeclaration" />
-    <nodeInfo nodeId="8833246112936955283" fileName="SNodeUtil.java" startLine="23" startPosition="0" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_InterfaceConceptDeclaration" />
-    <nodeInfo nodeId="7897202388613790899" fileName="SNodeUtil.java" startLine="24" startPosition="0" endLine="25" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_LinkDeclaration" />
-    <nodeInfo nodeId="7810181121127037633" fileName="SNodeUtil.java" startLine="25" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_InterfacePart" />
-    <nodeInfo nodeId="7810181121127117104" fileName="SNodeUtil.java" startLine="26" startPosition="0" endLine="27" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_ImplementationPart" />
-    <nodeInfo nodeId="6999738288738574660" fileName="SNodeUtil.java" startLine="27" startPosition="0" endLine="28" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_ImplementationWithStubPart" />
-    <nodeInfo nodeId="5253134957341832993" fileName="SNodeUtil.java" startLine="29" startPosition="0" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="link_ConceptDeclaration_extends" />
-    <nodeInfo nodeId="8642756583111980204" fileName="SNodeUtil.java" startLine="30" startPosition="0" endLine="31" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="link_ConceptDeclaration_implements" />
-    <nodeInfo nodeId="8642756583111980185" fileName="SNodeUtil.java" startLine="31" startPosition="0" endLine="32" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="link_AbstractConceptDeclaration_conceptProperty" />
-    <nodeInfo nodeId="8642756583111980193" fileName="SNodeUtil.java" startLine="32" startPosition="0" endLine="33" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="link_AbstractConceptDeclaration_linkDeclaration" />
-    <nodeInfo nodeId="8642756583111980197" fileName="SNodeUtil.java" startLine="33" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="link_AbstractConceptDeclaration_propertyDeclaration" />
-    <nodeInfo nodeId="5253134957342015602" fileName="SNodeUtil.java" startLine="35" startPosition="0" endLine="36" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="property_INamedConcept_name" />
-    <nodeInfo nodeId="8642756583111986725" fileName="SNodeUtil.java" startLine="36" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="property_LinkDeclaration_role" />
-    <nodeInfo nodeId="7381022956662554396" fileName="SNodeUtil.java" startLine="37" startPosition="0" endLine="38" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="property_IResolveInfo_resolveInfo" />
-    <nodeInfo nodeId="7381022956662554400" fileName="SNodeUtil.java" startLine="38" startPosition="0" endLine="39" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="property_BaseConcept_virtualPackage" />
-    <nodeInfo nodeId="7381022956662554404" fileName="SNodeUtil.java" startLine="39" startPosition="0" endLine="40" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="property_BaseConcept_alias" />
-    <nodeInfo nodeId="7381022956662554408" fileName="SNodeUtil.java" startLine="40" startPosition="0" endLine="41" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="property_BaseConcept_shortDescription" />
-    <nodeInfo nodeId="8833246112936940837" fileName="SNodeUtil.java" startLine="41" startPosition="0" endLine="42" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="link_ReferenceMacro_AnnotationLink" />
-    <nodeInfo nodeId="6435559796485940120" fileName="SNodeUtil.java" startLine="42" startPosition="0" endLine="43" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="link_BaseConcept_smodelAttribute" />
-    <nodeInfo nodeId="8833246112936954839" fileName="SNodeUtil.java" startLine="43" startPosition="0" endLine="44" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="CPR_BaseConcept_alias" />
-    <nodeInfo nodeId="4116271674853115039" fileName="SNodeUtil.java" startLine="44" startPosition="0" endLine="45" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="CPR_BaseConcept_abstract" />
-    <nodeInfo nodeId="73043305440809488" fileName="SNodeUtil.java" startLine="50" startPosition="9" endLine="51" endPosition="123" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="73043305440809494" fileName="SNodeUtil.java" startLine="52" startPosition="27" endLine="53" endPosition="28" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2274990519051271960" fileName="SNodeUtil.java" startLine="57" startPosition="60" endLine="58" endPosition="135" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5858169027486690357" fileName="SNodeUtil.java" startLine="61" startPosition="60" endLine="62" endPosition="203" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6692710561235661113" fileName="SNodeUtil.java" startLine="65" startPosition="56" endLine="66" endPosition="226" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8442551749397192149" fileName="SNodeUtil.java" startLine="69" startPosition="46" endLine="70" endPosition="124" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4383452389582121194" fileName="SNodeUtil.java" startLine="73" startPosition="77" endLine="74" endPosition="70" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="3773819293481018374" fileName="SNodeUtil.java" startLine="78" startPosition="23" endLine="79" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8339862546319979457" fileName="SNodeUtil.java" startLine="80" startPosition="5" endLine="81" endPosition="116" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="3773819293481018387" fileName="SNodeUtil.java" startLine="85" startPosition="23" endLine="86" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8339862546319981457" fileName="SNodeUtil.java" startLine="87" startPosition="5" endLine="88" endPosition="125" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="3773819293481028276" fileName="SNodeUtil.java" startLine="92" startPosition="23" endLine="93" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8339862546319981402" fileName="SNodeUtil.java" startLine="94" startPosition="5" endLine="95" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="8339862546319981419" fileName="SNodeUtil.java" startLine="95" startPosition="64" endLine="96" endPosition="280" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="772617204766501666" fileName="SNodeUtil.java" startLine="100" startPosition="23" endLine="101" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="772617204766501674" fileName="SNodeUtil.java" startLine="102" startPosition="5" endLine="103" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="772617204766503606" fileName="SNodeUtil.java" startLine="103" startPosition="64" endLine="104" endPosition="356" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="772617204766535035" fileName="SNodeUtil.java" startLine="107" startPosition="70" endLine="108" endPosition="84" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="772617204766535048" fileName="SNodeUtil.java" startLine="111" startPosition="96" endLine="112" endPosition="78" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="772617204766503650" fileName="SNodeUtil.java" startLine="116" startPosition="23" endLine="117" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="772617204766503655" fileName="SNodeUtil.java" startLine="118" startPosition="5" endLine="119" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="772617204766503662" fileName="SNodeUtil.java" startLine="119" startPosition="64" endLine="120" endPosition="400" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2594890229324800860" fileName="SNodeUtil.java" startLine="123" startPosition="73" endLine="124" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2594890229324947576" fileName="SNodeUtil.java" startLine="127" startPosition="68" endLine="128" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2594890229324963786" fileName="SNodeUtil.java" startLine="133" startPosition="37" endLine="134" endPosition="61" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5178936997682662844" fileName="SNodeUtil.java" startLine="139" startPosition="95" endLine="140" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5178936997682662867" fileName="SNodeUtil.java" startLine="143" startPosition="76" endLine="144" endPosition="72" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5178936997682694475" fileName="SNodeUtil.java" startLine="147" startPosition="80" endLine="148" endPosition="76" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5178936997682694489" fileName="SNodeUtil.java" startLine="151" startPosition="77" endLine="152" endPosition="72" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5178936997682694514" fileName="SNodeUtil.java" startLine="155" startPosition="72" endLine="156" endPosition="68" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5178936997682694502" fileName="SNodeUtil.java" startLine="159" startPosition="87" endLine="160" endPosition="83" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5178936997682694527" fileName="SNodeUtil.java" startLine="163" startPosition="83" endLine="164" endPosition="79" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5178936997682694553" fileName="SNodeUtil.java" startLine="169" startPosition="37" endLine="170" endPosition="61" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5178936997682694567" fileName="SNodeUtil.java" startLine="175" startPosition="101" endLine="176" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="780982041803948609" fileName="SNodeUtil.java" startLine="179" startPosition="60" endLine="180" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="780982041803940671" fileName="SNodeUtil.java" startLine="183" startPosition="66" endLine="184" endPosition="77" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="780982041803943080" fileName="SNodeUtil.java" startLine="187" startPosition="55" endLine="188" endPosition="66" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="780982041803949214" fileName="SNodeUtil.java" startLine="191" startPosition="51" endLine="192" endPosition="62" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8642756583112002515" fileName="SNodeUtil.java" startLine="196" startPosition="23" endLine="197" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8642756583112002520" fileName="SNodeUtil.java" startLine="198" startPosition="5" endLine="199" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="8642756583112002527" fileName="SNodeUtil.java" startLine="199" startPosition="64" endLine="200" endPosition="90" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8642756583112058442" fileName="SNodeUtil.java" startLine="204" startPosition="23" endLine="205" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8642756583112058447" fileName="SNodeUtil.java" startLine="206" startPosition="5" endLine="207" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="8642756583112058454" fileName="SNodeUtil.java" startLine="207" startPosition="64" endLine="208" endPosition="94" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4116271674853122383" fileName="SNodeUtil.java" startLine="211" startPosition="67" endLine="212" endPosition="62" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="580435652281537371" fileName="SNodeUtil.java" startLine="216" startPosition="23" endLine="217" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="580435652281537376" fileName="SNodeUtil.java" startLine="218" startPosition="5" endLine="219" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="580435652281537383" fileName="SNodeUtil.java" startLine="219" startPosition="64" endLine="220" endPosition="103" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="580435652281619837" fileName="SNodeUtil.java" startLine="224" startPosition="23" endLine="225" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="580435652281619842" fileName="SNodeUtil.java" startLine="226" startPosition="5" endLine="227" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="580435652281619849" fileName="SNodeUtil.java" startLine="227" startPosition="64" endLine="228" endPosition="105" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8642756583112011030" fileName="SNodeUtil.java" startLine="231" startPosition="68" endLine="232" endPosition="85" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4554834459336322265" fileName="SNodeUtil.java" startLine="235" startPosition="81" endLine="236" endPosition="80" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8833246112936954381" fileName="SNodeUtil.java" startLine="239" startPosition="81" endLine="240" endPosition="155" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2773260032861973892" fileName="SNodeUtil.java" startLine="243" startPosition="67" endLine="244" endPosition="174" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4554834459336354021" fileName="SNodeUtil.java" startLine="248" startPosition="23" endLine="249" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4554834459336354026" fileName="SNodeUtil.java" startLine="250" startPosition="5" endLine="251" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4554834459336354033" fileName="SNodeUtil.java" startLine="251" startPosition="64" endLine="252" endPosition="108" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4554834459336354046" fileName="SNodeUtil.java" startLine="256" startPosition="23" endLine="257" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4554834459336354051" fileName="SNodeUtil.java" startLine="258" startPosition="5" endLine="259" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4554834459336354058" fileName="SNodeUtil.java" startLine="259" startPosition="64" endLine="260" endPosition="107" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4554834459336353980" fileName="SNodeUtil.java" startLine="264" startPosition="23" endLine="265" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4554834459336353985" fileName="SNodeUtil.java" startLine="266" startPosition="5" endLine="267" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4554834459336353992" fileName="SNodeUtil.java" startLine="267" startPosition="64" endLine="268" endPosition="108" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8833246112936950440" fileName="SNodeUtil.java" startLine="272" startPosition="23" endLine="273" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8833246112936950445" fileName="SNodeUtil.java" startLine="274" startPosition="5" endLine="275" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="8833246112936950452" fileName="SNodeUtil.java" startLine="275" startPosition="64" endLine="276" endPosition="262" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8833246112936953507" fileName="SNodeUtil.java" startLine="279" startPosition="62" endLine="280" endPosition="76" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4554834459336353902" fileName="SNodeUtil.java" startLine="284" startPosition="113" endLine="285" endPosition="148" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4554834459336353928" fileName="SNodeUtil.java" startLine="286" startPosition="121" endLine="287" endPosition="150" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4554834459336353949" fileName="SNodeUtil.java" startLine="288" startPosition="121" endLine="289" endPosition="26" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4554834459336353961" fileName="SNodeUtil.java" startLine="290" startPosition="5" endLine="291" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6583857619485997677" fileName="SNodeUtil.java" startLine="294" startPosition="68" endLine="295" endPosition="206" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2274990519051114061" fileName="SNodeUtil.java" startLine="46" startPosition="0" endLine="48" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="SNodeUtil#()V" />
-    <nodeInfo nodeId="2274990519051271953" fileName="SNodeUtil.java" startLine="57" startPosition="0" endLine="60" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getDetailedPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-    <nodeInfo nodeId="5858169027486689810" fileName="SNodeUtil.java" startLine="61" startPosition="0" endLine="64" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="isDefaultSubstitutable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="6692710561235661107" fileName="SNodeUtil.java" startLine="65" startPosition="0" endLine="68" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="findAllAspects#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/List;" />
-    <nodeInfo nodeId="8442551749397191602" fileName="SNodeUtil.java" startLine="69" startPosition="0" endLine="72" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getMetaLevel#(Lorg/jetbrains/mps/openapi/model/SNode;)I" />
-    <nodeInfo nodeId="4383452389582120647" fileName="SNodeUtil.java" startLine="73" startPosition="0" endLine="76" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptDeclarationAlias#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-    <nodeInfo nodeId="3773819293481018365" fileName="SNodeUtil.java" startLine="77" startPosition="68" endLine="80" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="3773819293481018378" fileName="SNodeUtil.java" startLine="84" startPosition="77" endLine="87" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="3773819293481028267" fileName="SNodeUtil.java" startLine="91" startPosition="76" endLine="94" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="772617204766501658" fileName="SNodeUtil.java" startLine="99" startPosition="65" endLine="102" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="772617204766535029" fileName="SNodeUtil.java" startLine="107" startPosition="0" endLine="110" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptProperty_Declaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="772617204766535044" fileName="SNodeUtil.java" startLine="111" startPosition="0" endLine="114" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptPropertyDeclaration_IsInheritable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="772617204766503648" fileName="SNodeUtil.java" startLine="115" startPosition="76" endLine="118" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="2594890229324800853" fileName="SNodeUtil.java" startLine="123" startPosition="0" endLine="126" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptDeclaration_IsRootable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="2594890229324947030" fileName="SNodeUtil.java" startLine="127" startPosition="0" endLine="130" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptDeclaration_Extends#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="2594890229324963782" fileName="SNodeUtil.java" startLine="133" startPosition="0" endLine="136" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="5178936997682662841" fileName="SNodeUtil.java" startLine="139" startPosition="0" endLine="142" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptDeclaration_ImplementsReferenceNodes#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-    <nodeInfo nodeId="5178936997682662837" fileName="SNodeUtil.java" startLine="143" startPosition="0" endLine="146" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConcept_LinkDeclarations#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-    <nodeInfo nodeId="5178936997682694468" fileName="SNodeUtil.java" startLine="147" startPosition="0" endLine="150" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConcept_PropertyDeclarations#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-    <nodeInfo nodeId="5178936997682694482" fileName="SNodeUtil.java" startLine="151" startPosition="0" endLine="154" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConcept_ConceptProperties#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-    <nodeInfo nodeId="5178936997682694507" fileName="SNodeUtil.java" startLine="155" startPosition="0" endLine="158" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConcept_ConceptLinks#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-    <nodeInfo nodeId="5178936997682694495" fileName="SNodeUtil.java" startLine="159" startPosition="0" endLine="162" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConcept_ConceptPropertyDeclarations#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-    <nodeInfo nodeId="5178936997682694520" fileName="SNodeUtil.java" startLine="163" startPosition="0" endLine="166" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConcept_ConceptLinkDeclarations#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-    <nodeInfo nodeId="5178936997682694549" fileName="SNodeUtil.java" startLine="169" startPosition="0" endLine="172" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="5178936997682694564" fileName="SNodeUtil.java" startLine="175" startPosition="0" endLine="178" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getInterfaceConceptDeclaration_ExtendsReferenceNodes#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-    <nodeInfo nodeId="780982041803948603" fileName="SNodeUtil.java" startLine="179" startPosition="0" endLine="182" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getNodeShortDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-    <nodeInfo nodeId="780982041803940665" fileName="SNodeUtil.java" startLine="183" startPosition="0" endLine="186" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptShortDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-    <nodeInfo nodeId="780982041803943076" fileName="SNodeUtil.java" startLine="187" startPosition="0" endLine="190" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptAlias#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-    <nodeInfo nodeId="780982041803949207" fileName="SNodeUtil.java" startLine="191" startPosition="0" endLine="194" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getResolveInfo#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-    <nodeInfo nodeId="8642756583112002513" fileName="SNodeUtil.java" startLine="195" startPosition="65" endLine="198" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="8642756583112058440" fileName="SNodeUtil.java" startLine="203" startPosition="69" endLine="206" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="4116271674853122377" fileName="SNodeUtil.java" startLine="211" startPosition="0" endLine="214" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getPropertyDeclaration_DataType#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="580435652281537369" fileName="SNodeUtil.java" startLine="215" startPosition="78" endLine="218" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="580435652281619835" fileName="SNodeUtil.java" startLine="223" startPosition="80" endLine="226" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="8642756583112011023" fileName="SNodeUtil.java" startLine="231" startPosition="0" endLine="234" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getLinkDeclaration_IsReference#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="4554834459336322258" fileName="SNodeUtil.java" startLine="235" startPosition="0" endLine="238" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getLinkDeclaration_IsExactlyOneMultiplicity#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="8833246112936954375" fileName="SNodeUtil.java" startLine="239" startPosition="0" endLine="242" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getLinkDeclaration_IsAtLeastOneMultiplicity#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="2773260032861973346" fileName="SNodeUtil.java" startLine="243" startPosition="0" endLine="246" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getLinkDeclaration_IsSingular#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="4554834459336354019" fileName="SNodeUtil.java" startLine="247" startPosition="72" endLine="250" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="4554834459336354044" fileName="SNodeUtil.java" startLine="255" startPosition="71" endLine="258" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="4554834459336353978" fileName="SNodeUtil.java" startLine="263" startPosition="72" endLine="266" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="8833246112936950438" fileName="SNodeUtil.java" startLine="271" startPosition="61" endLine="274" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="8833246112936953501" fileName="SNodeUtil.java" startLine="279" startPosition="0" endLine="282" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptLink_Declaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-    <nodeInfo nodeId="6583857619485997667" fileName="SNodeUtil.java" startLine="294" startPosition="0" endLine="297" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="hasReferenceMacro#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
-    <nodeInfo nodeId="73043305440809463" fileName="SNodeUtil.java" startLine="49" startPosition="52" endLine="54" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-    <nodeInfo nodeId="2594890229324963752" fileName="SNodeUtil.java" startLine="131" startPosition="81" endLine="136" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5178936997682694537" fileName="SNodeUtil.java" startLine="167" startPosition="87" endLine="172" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8339862546319979449" fileName="SNodeUtil.java" startLine="77" startPosition="0" endLine="83" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="isInstanceOfConceptDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="8339862546319981450" fileName="SNodeUtil.java" startLine="84" startPosition="0" endLine="90" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="isInstanceOfInterfaceConceptDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="2274990519051152612" fileName="SNodeUtil.java" startLine="49" startPosition="0" endLine="56" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-    <nodeInfo nodeId="8339862546319981395" fileName="SNodeUtil.java" startLine="91" startPosition="0" endLine="98" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="isInstanceOfAbstractConceptDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="772617204766501111" fileName="SNodeUtil.java" startLine="99" startPosition="0" endLine="106" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="isInstanceOfConceptProperty#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="772617204766503645" fileName="SNodeUtil.java" startLine="115" startPosition="0" endLine="122" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="isInstanceOfConceptPropertyDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="2594890229324947585" fileName="SNodeUtil.java" startLine="131" startPosition="0" endLine="138" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptDeclaration_Implements#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-    <nodeInfo nodeId="5178936997682694533" fileName="SNodeUtil.java" startLine="167" startPosition="0" endLine="174" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getInterfaceConceptDeclaration_Extends#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-    <nodeInfo nodeId="8642756583112001967" fileName="SNodeUtil.java" startLine="195" startPosition="0" endLine="202" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="isInstanceOfLinkDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="8642756583112057892" fileName="SNodeUtil.java" startLine="203" startPosition="0" endLine="210" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="isInstanceOfPropertyDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="580435652281537362" fileName="SNodeUtil.java" startLine="215" startPosition="0" endLine="222" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="isInstanceOfPrimitiveDataTypeDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="580435652281619831" fileName="SNodeUtil.java" startLine="223" startPosition="0" endLine="230" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="isInstanceOfEnumerationDataTypeDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="4554834459336354015" fileName="SNodeUtil.java" startLine="247" startPosition="0" endLine="254" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="isInstanceOfIntegerConceptProperty#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="4554834459336354040" fileName="SNodeUtil.java" startLine="255" startPosition="0" endLine="262" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="isInstanceOfStringConceptProperty#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="4554834459336353964" fileName="SNodeUtil.java" startLine="263" startPosition="0" endLine="270" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="isInstanceOfBooleanConceptProperty#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="8833246112936950430" fileName="SNodeUtil.java" startLine="271" startPosition="0" endLine="278" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="isInstanceOfConceptLink#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="4554834459336353886" fileName="SNodeUtil.java" startLine="283" startPosition="64" endLine="290" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="4554834459336353870" fileName="SNodeUtil.java" startLine="283" startPosition="0" endLine="293" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptPropertyValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
-    <scopeInfo nodeId="2274990519051114064" fileName="SNodeUtil.java" startLine="46" startPosition="22" endLine="46" endPosition="22" />
-    <scopeInfo nodeId="73043305440809464" fileName="SNodeUtil.java" startLine="50" startPosition="9" endLine="51" endPosition="123" />
-    <scopeInfo nodeId="73043305440809466" fileName="SNodeUtil.java" startLine="52" startPosition="0" endLine="53" endPosition="28">
-      <varInfo nodeId="73043305440809467" varName="t" />
-    </scopeInfo>
-    <scopeInfo nodeId="73043305440809469" fileName="SNodeUtil.java" startLine="52" startPosition="27" endLine="53" endPosition="28" />
-    <scopeInfo nodeId="2274990519051271956" fileName="SNodeUtil.java" startLine="57" startPosition="60" endLine="58" endPosition="135" />
-    <scopeInfo nodeId="5858169027486689813" fileName="SNodeUtil.java" startLine="61" startPosition="60" endLine="62" endPosition="203" />
-    <scopeInfo nodeId="6692710561235661110" fileName="SNodeUtil.java" startLine="65" startPosition="56" endLine="66" endPosition="226" />
-    <scopeInfo nodeId="8442551749397191605" fileName="SNodeUtil.java" startLine="69" startPosition="46" endLine="70" endPosition="124" />
-    <scopeInfo nodeId="4383452389582120650" fileName="SNodeUtil.java" startLine="73" startPosition="77" endLine="74" endPosition="70" />
-    <scopeInfo nodeId="3773819293481018366" fileName="SNodeUtil.java" startLine="78" startPosition="23" endLine="79" endPosition="19" />
-    <scopeInfo nodeId="3773819293481018379" fileName="SNodeUtil.java" startLine="85" startPosition="23" endLine="86" endPosition="19" />
-    <scopeInfo nodeId="3773819293481028268" fileName="SNodeUtil.java" startLine="92" startPosition="23" endLine="93" endPosition="19" />
-    <scopeInfo nodeId="772617204766501660" fileName="SNodeUtil.java" startLine="100" startPosition="23" endLine="101" endPosition="19" />
-    <scopeInfo nodeId="772617204766535032" fileName="SNodeUtil.java" startLine="107" startPosition="70" endLine="108" endPosition="84" />
-    <scopeInfo nodeId="772617204766535047" fileName="SNodeUtil.java" startLine="111" startPosition="96" endLine="112" endPosition="78" />
-    <scopeInfo nodeId="772617204766503649" fileName="SNodeUtil.java" startLine="116" startPosition="23" endLine="117" endPosition="19" />
-    <scopeInfo nodeId="2594890229324800856" fileName="SNodeUtil.java" startLine="123" startPosition="73" endLine="124" endPosition="63" />
-    <scopeInfo nodeId="2594890229324947033" fileName="SNodeUtil.java" startLine="127" startPosition="68" endLine="128" endPosition="64" />
-    <scopeInfo nodeId="2594890229324963783" fileName="SNodeUtil.java" startLine="133" startPosition="37" endLine="134" endPosition="61" />
-    <scopeInfo nodeId="5178936997682662843" fileName="SNodeUtil.java" startLine="139" startPosition="95" endLine="140" endPosition="67" />
-    <scopeInfo nodeId="5178936997682662840" fileName="SNodeUtil.java" startLine="143" startPosition="76" endLine="144" endPosition="72" />
-    <scopeInfo nodeId="5178936997682694474" fileName="SNodeUtil.java" startLine="147" startPosition="80" endLine="148" endPosition="76" />
-    <scopeInfo nodeId="5178936997682694488" fileName="SNodeUtil.java" startLine="151" startPosition="77" endLine="152" endPosition="72" />
-    <scopeInfo nodeId="5178936997682694513" fileName="SNodeUtil.java" startLine="155" startPosition="72" endLine="156" endPosition="68" />
-    <scopeInfo nodeId="5178936997682694501" fileName="SNodeUtil.java" startLine="159" startPosition="87" endLine="160" endPosition="83" />
-    <scopeInfo nodeId="5178936997682694526" fileName="SNodeUtil.java" startLine="163" startPosition="83" endLine="164" endPosition="79" />
-    <scopeInfo nodeId="5178936997682694550" fileName="SNodeUtil.java" startLine="169" startPosition="37" endLine="170" endPosition="61" />
-    <scopeInfo nodeId="5178936997682694566" fileName="SNodeUtil.java" startLine="175" startPosition="101" endLine="176" endPosition="64" />
-    <scopeInfo nodeId="780982041803948606" fileName="SNodeUtil.java" startLine="179" startPosition="60" endLine="180" endPosition="67" />
-    <scopeInfo nodeId="780982041803940668" fileName="SNodeUtil.java" startLine="183" startPosition="66" endLine="184" endPosition="77" />
-    <scopeInfo nodeId="780982041803943079" fileName="SNodeUtil.java" startLine="187" startPosition="55" endLine="188" endPosition="66" />
-    <scopeInfo nodeId="780982041803949210" fileName="SNodeUtil.java" startLine="191" startPosition="51" endLine="192" endPosition="62" />
-    <scopeInfo nodeId="8642756583112002514" fileName="SNodeUtil.java" startLine="196" startPosition="23" endLine="197" endPosition="19" />
-    <scopeInfo nodeId="8642756583112058441" fileName="SNodeUtil.java" startLine="204" startPosition="23" endLine="205" endPosition="19" />
-    <scopeInfo nodeId="4116271674853122380" fileName="SNodeUtil.java" startLine="211" startPosition="67" endLine="212" endPosition="62" />
-    <scopeInfo nodeId="580435652281537370" fileName="SNodeUtil.java" startLine="216" startPosition="23" endLine="217" endPosition="19" />
-    <scopeInfo nodeId="580435652281619836" fileName="SNodeUtil.java" startLine="224" startPosition="23" endLine="225" endPosition="19" />
-    <scopeInfo nodeId="8642756583112011026" fileName="SNodeUtil.java" startLine="231" startPosition="68" endLine="232" endPosition="85" />
-    <scopeInfo nodeId="4554834459336322261" fileName="SNodeUtil.java" startLine="235" startPosition="81" endLine="236" endPosition="80" />
-    <scopeInfo nodeId="8833246112936954380" fileName="SNodeUtil.java" startLine="239" startPosition="81" endLine="240" endPosition="155" />
-    <scopeInfo nodeId="2773260032861973349" fileName="SNodeUtil.java" startLine="243" startPosition="67" endLine="244" endPosition="174" />
-    <scopeInfo nodeId="4554834459336354020" fileName="SNodeUtil.java" startLine="248" startPosition="23" endLine="249" endPosition="19" />
-    <scopeInfo nodeId="4554834459336354045" fileName="SNodeUtil.java" startLine="256" startPosition="23" endLine="257" endPosition="19" />
-    <scopeInfo nodeId="4554834459336353979" fileName="SNodeUtil.java" startLine="264" startPosition="23" endLine="265" endPosition="19" />
-    <scopeInfo nodeId="8833246112936950439" fileName="SNodeUtil.java" startLine="272" startPosition="23" endLine="273" endPosition="19" />
-    <scopeInfo nodeId="8833246112936953504" fileName="SNodeUtil.java" startLine="279" startPosition="62" endLine="280" endPosition="76" />
-    <scopeInfo nodeId="4554834459336353887" fileName="SNodeUtil.java" startLine="284" startPosition="113" endLine="285" endPosition="148" />
-    <scopeInfo nodeId="4554834459336353918" fileName="SNodeUtil.java" startLine="286" startPosition="121" endLine="287" endPosition="150" />
-    <scopeInfo nodeId="4554834459336353940" fileName="SNodeUtil.java" startLine="288" startPosition="121" endLine="289" endPosition="26" />
-    <scopeInfo nodeId="6583857619485997670" fileName="SNodeUtil.java" startLine="294" startPosition="68" endLine="295" endPosition="206" />
-    <scopeInfo nodeId="2274990519051114061" fileName="SNodeUtil.java" startLine="46" startPosition="0" endLine="48" endPosition="0" />
-    <scopeInfo nodeId="2274990519051271953" fileName="SNodeUtil.java" startLine="57" startPosition="0" endLine="60" endPosition="0">
-      <varInfo nodeId="2274990519051271958" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="5858169027486689810" fileName="SNodeUtil.java" startLine="61" startPosition="0" endLine="64" endPosition="0">
-      <varInfo nodeId="5858169027486690355" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="6692710561235661107" fileName="SNodeUtil.java" startLine="65" startPosition="0" endLine="68" endPosition="0">
-      <varInfo nodeId="6692710561235661111" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8442551749397191602" fileName="SNodeUtil.java" startLine="69" startPosition="0" endLine="72" endPosition="0">
-      <varInfo nodeId="8442551749397192147" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="4383452389582120647" fileName="SNodeUtil.java" startLine="73" startPosition="0" endLine="76" endPosition="0">
-      <varInfo nodeId="4383452389582121192" varName="conceptDeclaration" />
-    </scopeInfo>
-    <scopeInfo nodeId="772617204766535029" fileName="SNodeUtil.java" startLine="107" startPosition="0" endLine="110" endPosition="0">
-      <varInfo nodeId="772617204766535033" varName="property" />
-    </scopeInfo>
-    <scopeInfo nodeId="772617204766535044" fileName="SNodeUtil.java" startLine="111" startPosition="0" endLine="114" endPosition="0">
-      <varInfo nodeId="772617204766535052" varName="propertyDeclaration" />
-    </scopeInfo>
-    <scopeInfo nodeId="2594890229324800853" fileName="SNodeUtil.java" startLine="123" startPosition="0" endLine="126" endPosition="0">
-      <varInfo nodeId="2594890229324800857" varName="concept" />
-    </scopeInfo>
-    <scopeInfo nodeId="2594890229324947030" fileName="SNodeUtil.java" startLine="127" startPosition="0" endLine="130" endPosition="0">
-      <varInfo nodeId="2594890229324947574" varName="concept" />
-    </scopeInfo>
-    <scopeInfo nodeId="2594890229324963782" fileName="SNodeUtil.java" startLine="133" startPosition="0" endLine="136" endPosition="0">
-      <varInfo nodeId="2594890229324963782" varName="it" />
-    </scopeInfo>
-    <scopeInfo nodeId="5178936997682662841" fileName="SNodeUtil.java" startLine="139" startPosition="0" endLine="142" endPosition="0">
-      <varInfo nodeId="5178936997682662858" varName="concept" />
-    </scopeInfo>
-    <scopeInfo nodeId="5178936997682662837" fileName="SNodeUtil.java" startLine="143" startPosition="0" endLine="146" endPosition="0">
-      <varInfo nodeId="5178936997682662862" varName="concept" />
-    </scopeInfo>
-    <scopeInfo nodeId="5178936997682694468" fileName="SNodeUtil.java" startLine="147" startPosition="0" endLine="150" endPosition="0">
-      <varInfo nodeId="5178936997682694469" varName="concept" />
-    </scopeInfo>
-    <scopeInfo nodeId="5178936997682694482" fileName="SNodeUtil.java" startLine="151" startPosition="0" endLine="154" endPosition="0">
-      <varInfo nodeId="5178936997682694483" varName="concept" />
-    </scopeInfo>
-    <scopeInfo nodeId="5178936997682694507" fileName="SNodeUtil.java" startLine="155" startPosition="0" endLine="158" endPosition="0">
-      <varInfo nodeId="5178936997682694508" varName="concept" />
-    </scopeInfo>
-    <scopeInfo nodeId="5178936997682694495" fileName="SNodeUtil.java" startLine="159" startPosition="0" endLine="162" endPosition="0">
-      <varInfo nodeId="5178936997682694496" varName="concept" />
-    </scopeInfo>
-    <scopeInfo nodeId="5178936997682694520" fileName="SNodeUtil.java" startLine="163" startPosition="0" endLine="166" endPosition="0">
-      <varInfo nodeId="5178936997682694521" varName="concept" />
-    </scopeInfo>
-    <scopeInfo nodeId="5178936997682694549" fileName="SNodeUtil.java" startLine="169" startPosition="0" endLine="172" endPosition="0">
-      <varInfo nodeId="5178936997682694549" varName="it" />
-    </scopeInfo>
-    <scopeInfo nodeId="5178936997682694564" fileName="SNodeUtil.java" startLine="175" startPosition="0" endLine="178" endPosition="0">
-      <varInfo nodeId="5178936997682694581" varName="concept" />
-    </scopeInfo>
-    <scopeInfo nodeId="780982041803948603" fileName="SNodeUtil.java" startLine="179" startPosition="0" endLine="182" endPosition="0">
-      <varInfo nodeId="780982041803948607" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="780982041803940665" fileName="SNodeUtil.java" startLine="183" startPosition="0" endLine="186" endPosition="0">
-      <varInfo nodeId="780982041803940669" varName="concept" />
-    </scopeInfo>
-    <scopeInfo nodeId="780982041803943076" fileName="SNodeUtil.java" startLine="187" startPosition="0" endLine="190" endPosition="0">
-      <varInfo nodeId="780982041803943084" varName="concept" />
-    </scopeInfo>
-    <scopeInfo nodeId="780982041803949207" fileName="SNodeUtil.java" startLine="191" startPosition="0" endLine="194" endPosition="0">
-      <varInfo nodeId="780982041803949212" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="4116271674853122377" fileName="SNodeUtil.java" startLine="211" startPosition="0" endLine="214" endPosition="0">
-      <varInfo nodeId="4116271674853122381" varName="decl" />
-    </scopeInfo>
-    <scopeInfo nodeId="8642756583112011023" fileName="SNodeUtil.java" startLine="231" startPosition="0" endLine="234" endPosition="0">
-      <varInfo nodeId="8642756583112011028" varName="link" />
-    </scopeInfo>
-    <scopeInfo nodeId="4554834459336322258" fileName="SNodeUtil.java" startLine="235" startPosition="0" endLine="238" endPosition="0">
-      <varInfo nodeId="4554834459336322263" varName="link" />
-    </scopeInfo>
-    <scopeInfo nodeId="8833246112936954375" fileName="SNodeUtil.java" startLine="239" startPosition="0" endLine="242" endPosition="0">
-      <varInfo nodeId="8833246112936954376" varName="link" />
-    </scopeInfo>
-    <scopeInfo nodeId="2773260032861973346" fileName="SNodeUtil.java" startLine="243" startPosition="0" endLine="246" endPosition="0">
-      <varInfo nodeId="2773260032861973890" varName="link" />
-    </scopeInfo>
-    <scopeInfo nodeId="8833246112936953501" fileName="SNodeUtil.java" startLine="279" startPosition="0" endLine="282" endPosition="0">
-      <varInfo nodeId="8833246112936953505" varName="link" />
-    </scopeInfo>
-    <scopeInfo nodeId="6583857619485997667" fileName="SNodeUtil.java" startLine="294" startPosition="0" endLine="297" endPosition="0">
-      <varInfo nodeId="6583857619485997672" varName="node" />
-      <varInfo nodeId="6583857619485997674" varName="role" />
-    </scopeInfo>
-    <scopeInfo nodeId="8339862546319979452" fileName="SNodeUtil.java" startLine="77" startPosition="68" endLine="81" endPosition="116" />
-    <scopeInfo nodeId="8339862546319981453" fileName="SNodeUtil.java" startLine="84" startPosition="77" endLine="88" endPosition="125" />
-    <scopeInfo nodeId="2274990519051152615" fileName="SNodeUtil.java" startLine="49" startPosition="52" endLine="54" endPosition="5" />
-    <scopeInfo nodeId="8339862546319981398" fileName="SNodeUtil.java" startLine="91" startPosition="76" endLine="96" endPosition="280">
-      <varInfo nodeId="8339862546319981403" varName="conceptFqName" />
-    </scopeInfo>
-    <scopeInfo nodeId="772617204766501114" fileName="SNodeUtil.java" startLine="99" startPosition="65" endLine="104" endPosition="356">
-      <varInfo nodeId="772617204766501675" varName="conceptFqName" />
-    </scopeInfo>
-    <scopeInfo nodeId="772617204766503647" fileName="SNodeUtil.java" startLine="115" startPosition="76" endLine="120" endPosition="400">
-      <varInfo nodeId="772617204766503656" varName="conceptFqName" />
-    </scopeInfo>
-    <scopeInfo nodeId="2594890229324947588" fileName="SNodeUtil.java" startLine="131" startPosition="81" endLine="136" endPosition="7" />
-    <scopeInfo nodeId="5178936997682694536" fileName="SNodeUtil.java" startLine="167" startPosition="87" endLine="172" endPosition="7" />
-    <scopeInfo nodeId="8642756583112001970" fileName="SNodeUtil.java" startLine="195" startPosition="65" endLine="200" endPosition="90">
-      <varInfo nodeId="8642756583112002521" varName="conceptFqName" />
-    </scopeInfo>
-    <scopeInfo nodeId="8642756583112057895" fileName="SNodeUtil.java" startLine="203" startPosition="69" endLine="208" endPosition="94">
-      <varInfo nodeId="8642756583112058448" varName="conceptFqName" />
-    </scopeInfo>
-    <scopeInfo nodeId="580435652281537365" fileName="SNodeUtil.java" startLine="215" startPosition="78" endLine="220" endPosition="103">
-      <varInfo nodeId="580435652281537377" varName="conceptFqName" />
-    </scopeInfo>
-    <scopeInfo nodeId="580435652281619834" fileName="SNodeUtil.java" startLine="223" startPosition="80" endLine="228" endPosition="105">
-      <varInfo nodeId="580435652281619843" varName="conceptFqName" />
-    </scopeInfo>
-    <scopeInfo nodeId="4554834459336354018" fileName="SNodeUtil.java" startLine="247" startPosition="72" endLine="252" endPosition="108">
-      <varInfo nodeId="4554834459336354027" varName="conceptFqName" />
-    </scopeInfo>
-    <scopeInfo nodeId="4554834459336354043" fileName="SNodeUtil.java" startLine="255" startPosition="71" endLine="260" endPosition="107">
-      <varInfo nodeId="4554834459336354052" varName="conceptFqName" />
-    </scopeInfo>
-    <scopeInfo nodeId="4554834459336353967" fileName="SNodeUtil.java" startLine="263" startPosition="72" endLine="268" endPosition="108">
-      <varInfo nodeId="4554834459336353986" varName="conceptFqName" />
-    </scopeInfo>
-    <scopeInfo nodeId="8833246112936950433" fileName="SNodeUtil.java" startLine="271" startPosition="61" endLine="276" endPosition="262">
-      <varInfo nodeId="8833246112936950446" varName="conceptFqName" />
-    </scopeInfo>
-    <scopeInfo nodeId="8339862546319979449" fileName="SNodeUtil.java" startLine="77" startPosition="0" endLine="83" endPosition="0">
-      <varInfo nodeId="8339862546319979454" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8339862546319981450" fileName="SNodeUtil.java" startLine="84" startPosition="0" endLine="90" endPosition="0">
-      <varInfo nodeId="8339862546319981455" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="2274990519051152612" fileName="SNodeUtil.java" startLine="49" startPosition="0" endLine="56" endPosition="0">
-      <varInfo nodeId="2274990519051152617" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8339862546319981395" fileName="SNodeUtil.java" startLine="91" startPosition="0" endLine="98" endPosition="0">
-      <varInfo nodeId="8339862546319981400" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="772617204766501111" fileName="SNodeUtil.java" startLine="99" startPosition="0" endLine="106" endPosition="0">
-      <varInfo nodeId="772617204766501656" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="772617204766503645" fileName="SNodeUtil.java" startLine="115" startPosition="0" endLine="122" endPosition="0">
-      <varInfo nodeId="772617204766503683" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="2594890229324947585" fileName="SNodeUtil.java" startLine="131" startPosition="0" endLine="138" endPosition="0">
-      <varInfo nodeId="2594890229324947593" varName="concept" />
-    </scopeInfo>
-    <scopeInfo nodeId="5178936997682694533" fileName="SNodeUtil.java" startLine="167" startPosition="0" endLine="174" endPosition="0">
-      <varInfo nodeId="5178936997682694541" varName="concept" />
-    </scopeInfo>
-    <scopeInfo nodeId="8642756583112001967" fileName="SNodeUtil.java" startLine="195" startPosition="0" endLine="202" endPosition="0">
-      <varInfo nodeId="8642756583112002547" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8642756583112057892" fileName="SNodeUtil.java" startLine="203" startPosition="0" endLine="210" endPosition="0">
-      <varInfo nodeId="8642756583112058437" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="580435652281537362" fileName="SNodeUtil.java" startLine="215" startPosition="0" endLine="222" endPosition="0">
-      <varInfo nodeId="580435652281537366" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="580435652281619831" fileName="SNodeUtil.java" startLine="223" startPosition="0" endLine="230" endPosition="0">
-      <varInfo nodeId="580435652281619854" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="4554834459336354015" fileName="SNodeUtil.java" startLine="247" startPosition="0" endLine="254" endPosition="0">
-      <varInfo nodeId="4554834459336354038" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="4554834459336354040" fileName="SNodeUtil.java" startLine="255" startPosition="0" endLine="262" endPosition="0">
-      <varInfo nodeId="4554834459336354063" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="4554834459336353964" fileName="SNodeUtil.java" startLine="263" startPosition="0" endLine="270" endPosition="0">
-      <varInfo nodeId="4554834459336353969" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="8833246112936950430" fileName="SNodeUtil.java" startLine="271" startPosition="0" endLine="278" endPosition="0">
-      <varInfo nodeId="8833246112936950435" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="4554834459336353873" fileName="SNodeUtil.java" startLine="283" startPosition="64" endLine="291" endPosition="16" />
-    <scopeInfo nodeId="4554834459336353870" fileName="SNodeUtil.java" startLine="283" startPosition="0" endLine="293" endPosition="0">
-      <varInfo nodeId="4554834459336353874" varName="property" />
-    </scopeInfo>
-    <unitInfo nodeId="2594890229324963782" fileName="SNodeUtil.java" startLine="132" startPosition="101" endLine="136" endPosition="5" unitName="jetbrains.mps.smodel.SNodeUtil$1" />
-    <unitInfo nodeId="5178936997682694549" fileName="SNodeUtil.java" startLine="168" startPosition="98" endLine="172" endPosition="5" unitName="jetbrains.mps.smodel.SNodeUtil$2" />
-    <unitInfo nodeId="2274990519051114059" fileName="SNodeUtil.java" startLine="17" startPosition="0" endLine="298" endPosition="0" unitName="jetbrains.mps.smodel.SNodeUtil" />
+    <file name="SNodeUtil.java">
+      <node id="4639682374901816442" at="29,0,30,0" concept="11" trace="property_AbstractConcept_Id" />
+      <node id="9005308665740502805" at="30,0,31,0" concept="11" trace="property_AbstractConcept_LangId" />
+      <node id="5476275209229642801" at="31,0,32,0" concept="11" trace="property_Concept_Rootable" />
+      <node id="241647608300542279" at="32,0,33,0" concept="11" trace="property_Property_Id" />
+      <node id="241647608300543150" at="33,0,34,0" concept="11" trace="property_Link_Id" />
+      <node id="5200543944408736408" at="35,0,36,0" concept="11" trace="concept_PropertyAttribute" />
+      <node id="5200543944408738094" at="36,0,37,0" concept="11" trace="concept_LinkAttribute" />
+      <node id="4102917795241976861" at="42,0,43,0" concept="11" trace="concept_VoidType" />
+      <node id="4102917795241979983" at="43,0,44,0" concept="11" trace="concept_SNodeType" />
+      <node id="4102917795242161345" at="44,0,45,0" concept="11" trace="concept_RuntimeErrorType" />
+      <node id="4102917795242057843" at="45,0,46,0" concept="11" trace="ref_SNodeType_concept" />
+      <node id="5200543944408726446" at="47,0,48,0" concept="11" trace="concept_IType" />
+      <node id="5123098556656084465" at="53,0,54,0" concept="11" trace="link_ConstructorDeclaration_returnType" />
+      <node id="4769340524632244507" at="54,0,55,0" concept="11" trace="concept_Classifier" />
+      <node id="2644386474304208462" at="56,0,57,0" concept="11" trace="concept_IResolveInfo" />
+      <node id="2644386474304208468" at="57,0,58,0" concept="11" trace="concept_INamedConcept" />
+      <node id="2644386474304208474" at="58,0,59,0" concept="11" trace="concept_BaseConcept" />
+      <node id="8786100149933147449" at="59,0,60,0" concept="11" trace="conceptId_BaseConcept" />
+      <node id="2644386474304208480" at="60,0,61,0" concept="11" trace="concept_AbstractConceptDeclaration" />
+      <node id="2644386474304208486" at="61,0,62,0" concept="11" trace="concept_ConceptDeclaration" />
+      <node id="2644386474304208492" at="62,0,63,0" concept="11" trace="concept_InterfaceConceptDeclaration" />
+      <node id="2644386474304208498" at="63,0,64,0" concept="11" trace="concept_LinkDeclaration" />
+      <node id="670386341911946278" at="64,0,65,0" concept="11" trace="concept_PrimitiveDataTypeDeclaration" />
+      <node id="2644386474304208504" at="65,0,66,0" concept="11" trace="concept_InterfacePart" />
+      <node id="2644386474304208510" at="66,0,67,0" concept="11" trace="concept_ImplementationPart" />
+      <node id="2644386474304208516" at="67,0,68,0" concept="11" trace="concept_ImplementationWithStubPart" />
+      <node id="1329021415739870301" at="68,0,69,0" concept="11" trace="concept_RuntimeTypeVariable" />
+      <node id="8557539026538513010" at="69,0,70,0" concept="11" trace="concept_RuntimeHoleType" />
+      <node id="2644386474304208522" at="71,0,72,0" concept="11" trace="link_ConceptDeclaration_extends" />
+      <node id="2644386474304208528" at="72,0,73,0" concept="11" trace="link_ConceptDeclaration_implements" />
+      <node id="3214341154666623737" at="73,0,74,0" concept="11" trace="link_InterfaceConceptDeclaration_extends" />
+      <node id="3214341154666692391" at="74,0,75,0" concept="11" trace="property_ConceptDeclaration_staticScope" />
+      <node id="2644386474304208534" at="76,0,77,0" concept="11" trace="link_AbstractConceptDeclaration_linkDeclaration" />
+      <node id="2644386474304208540" at="77,0,78,0" concept="11" trace="link_AbstractConceptDeclaration_propertyDeclaration" />
+      <node id="2644386474304208552" at="78,0,79,0" concept="11" trace="property_AbstractConceptDeclaration_abstract" />
+      <node id="3214341154666648466" at="79,0,80,0" concept="11" trace="property_AbstractConceptDeclaration_helpURL" />
+      <node id="3214341154666659632" at="80,0,81,0" concept="11" trace="property_AbstractConceptDeclaration_final" />
+      <node id="3214341154666668640" at="81,0,82,0" concept="11" trace="property_AbstractConceptDeclaration_conceptAlias" />
+      <node id="3214341154666671726" at="82,0,83,0" concept="11" trace="property_AbstractConceptDeclaration_conceptShortDescription" />
+      <node id="4307607114582760892" at="84,0,85,0" concept="11" trace="link_InterfaceConceptReference_intfc" />
+      <node id="2644386474304208558" at="86,0,87,0" concept="11" trace="property_INamedConcept_name" />
+      <node id="2644386474304367401" at="87,0,88,0" concept="11" trace="property_LinkDeclaration_role" />
+      <node id="4307607114582885613" at="88,0,89,0" concept="11" trace="property_LinkDeclaration_unordered" />
+      <node id="4307607114582902655" at="89,0,90,0" concept="11" trace="property_LinkDeclaration_metaClass" />
+      <node id="4307607114582905861" at="90,0,91,0" concept="11" trace="property_LinkDeclaration_sourceCardinality" />
+      <node id="4307607114583053333" at="91,0,92,0" concept="11" trace="link_LinkDeclaration_target" />
+      <node id="620478944524243514" at="92,0,93,0" concept="11" trace="link_LinkDeclaration_specializedLink" />
+      <node id="2644386474304208570" at="93,0,94,0" concept="11" trace="property_IResolveInfo_resolveInfo" />
+      <node id="7381022956662554400" at="94,0,95,0" concept="11" trace="propertyName_BaseConcept_virtualPackage" />
+      <node id="2644386474304208576" at="95,0,96,0" concept="11" trace="property_BaseConcept_virtualPackage" />
+      <node id="2644386474304208582" at="96,0,97,0" concept="11" trace="property_BaseConcept_alias" />
+      <node id="2644386474304208588" at="97,0,98,0" concept="11" trace="property_BaseConcept_shortDescription" />
+      <node id="2644386474304208546" at="98,0,99,0" concept="11" trace="link_BaseConcept_smodelAttribute" />
+      <node id="73043305440809488" at="102,9,103,111" concept="8" />
+      <node id="73043305440809494" at="104,27,105,28" concept="8" />
+      <node id="2274990519051271960" at="108,60,109,130" concept="8" />
+      <node id="8632300239542898600" at="116,74,117,277" concept="8" />
+      <node id="8442551749397192149" at="119,46,120,117" concept="8" />
+      <node id="4383452389582121194" at="122,77,123,176" concept="8" />
+      <node id="3773819293481018374" at="126,23,127,19" concept="8" />
+      <node id="5138272413502781217" at="128,5,129,200" concept="8" />
+      <node id="3773819293481018387" at="132,23,133,19" concept="8" />
+      <node id="5138272413502786860" at="134,5,135,210" concept="8" />
+      <node id="3773819293481028276" at="138,23,139,19" concept="8" />
+      <node id="5138272413502794186" at="140,5,141,58" concept="7" />
+      <node id="8339862546319981419" at="141,58,142,510" concept="8" />
+      <node id="2594890229324947576" at="144,68,145,166" concept="8" />
+      <node id="2594890229324963786" at="149,37,150,165" concept="8" />
+      <node id="5178936997682662844" at="154,95,155,174" concept="8" />
+      <node id="5178936997682662867" at="157,76,158,179" concept="8" />
+      <node id="5178936997682694475" at="160,80,161,183" concept="8" />
+      <node id="5178936997682694553" at="165,37,166,165" concept="8" />
+      <node id="5178936997682694567" at="170,101,171,172" concept="8" />
+      <node id="780982041803948609" at="173,60,174,173" concept="8" />
+      <node id="780982041803940671" at="176,66,177,188" concept="8" />
+      <node id="780982041803943080" at="179,55,180,177" concept="8" />
+      <node id="780982041803949214" at="182,51,183,168" concept="8" />
+      <node id="8642756583112002515" at="186,23,187,19" concept="8" />
+      <node id="8642756583112002527" at="188,5,189,197" concept="8" />
+      <node id="8642756583112058442" at="192,23,193,19" concept="8" />
+      <node id="5138272413502644326" at="194,5,195,201" concept="8" />
+      <node id="4116271674853122383" at="197,67,198,164" concept="8" />
+      <node id="580435652281537371" at="201,23,202,19" concept="8" />
+      <node id="580435652281537383" at="203,5,204,210" concept="8" />
+      <node id="580435652281619837" at="207,23,208,19" concept="8" />
+      <node id="580435652281619849" at="209,5,210,212" concept="8" />
+      <node id="8642756583112011030" at="212,68,213,189" concept="8" />
+      <node id="4554834459336322265" at="215,81,216,184" concept="8" />
+      <node id="8833246112936954381" at="218,81,219,363" concept="8" />
+      <node id="4732522968315615043" at="221,67,222,88" concept="7" />
+      <node id="1213877254560" at="222,88,223,399" concept="8" />
+      <node id="5198027307802956735" at="225,76,226,251" concept="8" />
+      <node id="6076559368803236482" at="228,57,229,199" concept="8" />
+      <node id="5138272413502974820" at="231,58,232,58" concept="2" />
+      <node id="4307607114583241312" at="232,58,233,65" concept="8" />
+      <node id="5138272413502971237" at="235,57,236,58" concept="2" />
+      <node id="4307607114583264448" at="236,58,237,65" concept="8" />
+      <node id="5138272413502970672" at="239,72,240,76" concept="9" />
+      <node id="5138272413502976009" at="240,76,241,136" concept="9" />
+      <node id="5138272413502976438" at="241,136,242,69" concept="9" />
+      <node id="5138272413502967944" at="242,69,243,56" concept="8" />
+      <node id="5138272413503136907" at="245,61,246,98" concept="9" />
+      <node id="5138272413503125090" at="246,98,247,62" concept="8" />
+      <node id="2274990519051114061" at="99,0,101,0" concept="1" trace="SNodeUtil#()V" />
+      <node id="2274990519051271953" at="108,0,111,0" concept="12" trace="getDetailedPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="8442551749397191602" at="119,0,122,0" concept="12" trace="getMetaLevel#(Lorg/jetbrains/mps/openapi/model/SNode;)I" />
+      <node id="4383452389582120647" at="122,0,125,0" concept="12" trace="getConceptDeclarationAlias#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="3773819293481018365" at="125,68,128,5" concept="5" />
+      <node id="3773819293481018378" at="131,77,134,5" concept="5" />
+      <node id="3773819293481028267" at="137,76,140,5" concept="5" />
+      <node id="2594890229324947030" at="144,0,147,0" concept="12" trace="getConceptDeclaration_Extends#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2594890229324963782" at="149,0,152,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5178936997682662841" at="154,0,157,0" concept="12" trace="getConceptDeclaration_ImplementsReferenceNodes#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
+      <node id="5178936997682662837" at="157,0,160,0" concept="12" trace="getConcept_LinkDeclarations#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
+      <node id="5178936997682694468" at="160,0,163,0" concept="12" trace="getConcept_PropertyDeclarations#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
+      <node id="5178936997682694549" at="165,0,168,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5178936997682694564" at="170,0,173,0" concept="12" trace="getInterfaceConceptDeclaration_ExtendsReferenceNodes#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
+      <node id="780982041803948603" at="173,0,176,0" concept="12" trace="getNodeShortDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="780982041803940665" at="176,0,179,0" concept="12" trace="getConceptShortDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="780982041803943076" at="179,0,182,0" concept="12" trace="getConceptAlias#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="780982041803949207" at="182,0,185,0" concept="12" trace="getResolveInfo#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="8642756583112002513" at="185,65,188,5" concept="5" />
+      <node id="8642756583112058440" at="191,69,194,5" concept="5" />
+      <node id="4116271674853122377" at="197,0,200,0" concept="12" trace="getPropertyDeclaration_DataType#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="580435652281537369" at="200,78,203,5" concept="5" />
+      <node id="580435652281619835" at="206,80,209,5" concept="5" />
+      <node id="8642756583112011023" at="212,0,215,0" concept="12" trace="getLinkDeclaration_IsReference#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="4554834459336322258" at="215,0,218,0" concept="12" trace="getLinkDeclaration_IsExactlyOneMultiplicity#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="8833246112936954375" at="218,0,221,0" concept="12" trace="getLinkDeclaration_IsAtLeastOneMultiplicity#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="5198027307802956731" at="225,0,228,0" concept="12" trace="hasReferenceMacro#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SReferenceLink;)Z" />
+      <node id="6076559368803204957" at="228,0,231,0" concept="12" trace="isSideTransformInfo#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="8632300239542827454" at="115,0,119,0" concept="12" trace="isDefaultSubstitutable#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />
+      <node id="2773260032861973346" at="221,0,225,0" concept="12" trace="getLinkDeclaration_IsSingular#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="4307607114583235370" at="231,0,235,0" concept="12" trace="isAtLeastOne#(Ljava/lang/String;)Z" />
+      <node id="4307607114583264444" at="235,0,239,0" concept="12" trace="isAtMostOne#(Ljava/lang/String;)Z" />
+      <node id="5138272413503120688" at="245,0,249,0" concept="12" trace="isAssociationLink#(Ljava/lang/String;)Z" />
+      <node id="73043305440809463" at="101,52,106,5" concept="13" />
+      <node id="2594890229324963752" at="147,81,152,7" concept="8" />
+      <node id="5178936997682694537" at="163,87,168,7" concept="8" />
+      <node id="8339862546319979449" at="125,0,131,0" concept="12" trace="isInstanceOfConceptDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="8339862546319981450" at="131,0,137,0" concept="12" trace="isInstanceOfInterfaceConceptDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="8642756583112001967" at="185,0,191,0" concept="12" trace="isInstanceOfLinkDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="8642756583112057892" at="191,0,197,0" concept="12" trace="isInstanceOfPropertyDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="580435652281537362" at="200,0,206,0" concept="12" trace="isInstanceOfPrimitiveDataTypeDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="580435652281619831" at="206,0,212,0" concept="12" trace="isInstanceOfEnumerationDataTypeDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="5138272413502962805" at="239,0,245,0" concept="12" trace="defaultCardinalityIfNotSet#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="2274990519051152612" at="101,0,108,0" concept="12" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="8339862546319981395" at="137,0,144,0" concept="12" trace="isInstanceOfAbstractConceptDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="2594890229324947585" at="147,0,154,0" concept="12" trace="getConceptDeclaration_Implements#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
+      <node id="5178936997682694533" at="163,0,170,0" concept="12" trace="getInterfaceConceptDeclaration_Extends#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
+      <scope id="2274990519051114064" at="99,23,99,23" />
+      <scope id="73043305440809464" at="102,9,103,111" />
+      <scope id="73043305440809466" at="104,0,105,28">
+        <var name="t" id="73043305440809467" />
+      </scope>
+      <scope id="73043305440809469" at="104,27,105,28" />
+      <scope id="2274990519051271956" at="108,60,109,130" />
+      <scope id="8632300239542827457" at="116,74,117,277" />
+      <scope id="8442551749397191605" at="119,46,120,117" />
+      <scope id="4383452389582120650" at="122,77,123,176" />
+      <scope id="3773819293481018366" at="126,23,127,19" />
+      <scope id="3773819293481018379" at="132,23,133,19" />
+      <scope id="3773819293481028268" at="138,23,139,19" />
+      <scope id="2594890229324947033" at="144,68,145,166" />
+      <scope id="2594890229324963783" at="149,37,150,165" />
+      <scope id="5178936997682662843" at="154,95,155,174" />
+      <scope id="5178936997682662840" at="157,76,158,179" />
+      <scope id="5178936997682694474" at="160,80,161,183" />
+      <scope id="5178936997682694550" at="165,37,166,165" />
+      <scope id="5178936997682694566" at="170,101,171,172" />
+      <scope id="780982041803948606" at="173,60,174,173" />
+      <scope id="780982041803940668" at="176,66,177,188" />
+      <scope id="780982041803943079" at="179,55,180,177" />
+      <scope id="780982041803949210" at="182,51,183,168" />
+      <scope id="8642756583112002514" at="186,23,187,19" />
+      <scope id="8642756583112058441" at="192,23,193,19" />
+      <scope id="4116271674853122380" at="197,67,198,164" />
+      <scope id="580435652281537370" at="201,23,202,19" />
+      <scope id="580435652281619836" at="207,23,208,19" />
+      <scope id="8642756583112011026" at="212,68,213,189" />
+      <scope id="4554834459336322261" at="215,81,216,184" />
+      <scope id="8833246112936954380" at="218,81,219,363" />
+      <scope id="5198027307802956734" at="225,76,226,251" />
+      <scope id="6076559368803200954" at="228,57,229,199" />
+      <scope id="2274990519051114061" at="99,0,101,0" />
+      <scope id="2773260032861973349" at="221,67,223,399">
+        <var name="genuineLinkDeclaration" id="4732522968315615044" />
+      </scope>
+      <scope id="4307607114583235374" at="231,58,233,65" />
+      <scope id="4307607114583264447" at="235,57,237,65" />
+      <scope id="5138272413503120692" at="245,61,247,62" />
+      <scope id="2274990519051271953" at="108,0,111,0">
+        <var name="node" id="2274990519051271958" />
+      </scope>
+      <scope id="8442551749397191602" at="119,0,122,0">
+        <var name="node" id="8442551749397192147" />
+      </scope>
+      <scope id="4383452389582120647" at="122,0,125,0">
+        <var name="conceptDeclaration" id="4383452389582121192" />
+      </scope>
+      <scope id="2594890229324947030" at="144,0,147,0">
+        <var name="concept" id="2594890229324947574" />
+      </scope>
+      <scope id="2594890229324963782" at="149,0,152,0">
+        <var name="it" id="2594890229324963782" />
+      </scope>
+      <scope id="5178936997682662841" at="154,0,157,0">
+        <var name="concept" id="5178936997682662858" />
+      </scope>
+      <scope id="5178936997682662837" at="157,0,160,0">
+        <var name="concept" id="5178936997682662862" />
+      </scope>
+      <scope id="5178936997682694468" at="160,0,163,0">
+        <var name="concept" id="5178936997682694469" />
+      </scope>
+      <scope id="5178936997682694549" at="165,0,168,0">
+        <var name="it" id="5178936997682694549" />
+      </scope>
+      <scope id="5178936997682694564" at="170,0,173,0">
+        <var name="concept" id="5178936997682694581" />
+      </scope>
+      <scope id="780982041803948603" at="173,0,176,0">
+        <var name="node" id="780982041803948607" />
+      </scope>
+      <scope id="780982041803940665" at="176,0,179,0">
+        <var name="concept" id="780982041803940669" />
+      </scope>
+      <scope id="780982041803943076" at="179,0,182,0">
+        <var name="concept" id="780982041803943084" />
+      </scope>
+      <scope id="780982041803949207" at="182,0,185,0">
+        <var name="node" id="780982041803949212" />
+      </scope>
+      <scope id="4116271674853122377" at="197,0,200,0">
+        <var name="decl" id="4116271674853122381" />
+      </scope>
+      <scope id="8642756583112011023" at="212,0,215,0">
+        <var name="link" id="8642756583112011028" />
+      </scope>
+      <scope id="4554834459336322258" at="215,0,218,0">
+        <var name="link" id="4554834459336322263" />
+      </scope>
+      <scope id="8833246112936954375" at="218,0,221,0">
+        <var name="link" id="8833246112936954376" />
+      </scope>
+      <scope id="5198027307802956731" at="225,0,228,0">
+        <var name="node" id="5198027307802956744" />
+        <var name="role" id="5198027307802956746" />
+      </scope>
+      <scope id="6076559368803204957" at="228,0,231,0">
+        <var name="node" id="6076559368803208964" />
+      </scope>
+      <scope id="8632300239542827454" at="115,0,119,0">
+        <var name="concept" id="8632300239542827462" />
+      </scope>
+      <scope id="8339862546319979452" at="125,68,129,200" />
+      <scope id="8339862546319981453" at="131,77,135,210" />
+      <scope id="8642756583112001970" at="185,65,189,197" />
+      <scope id="8642756583112057895" at="191,69,195,201" />
+      <scope id="580435652281537365" at="200,78,204,210" />
+      <scope id="580435652281619834" at="206,80,210,212" />
+      <scope id="2773260032861973346" at="221,0,225,0">
+        <var name="link" id="2773260032861973890" />
+      </scope>
+      <scope id="4307607114583235370" at="231,0,235,0">
+        <var name="cardinality" id="4307607114583238486" />
+      </scope>
+      <scope id="4307607114583264444" at="235,0,239,0">
+        <var name="cardinality" id="4307607114583264458" />
+      </scope>
+      <scope id="5138272413502962809" at="239,72,243,56" />
+      <scope id="5138272413503120688" at="245,0,249,0">
+        <var name="metaclass" id="5138272413503124949" />
+      </scope>
+      <scope id="2274990519051152615" at="101,52,106,5" />
+      <scope id="8339862546319981398" at="137,76,142,510">
+        <var name="c" id="5138272413502794187" />
+      </scope>
+      <scope id="2594890229324947588" at="147,81,152,7" />
+      <scope id="5178936997682694536" at="163,87,168,7" />
+      <scope id="8339862546319979449" at="125,0,131,0">
+        <var name="node" id="8339862546319979454" />
+      </scope>
+      <scope id="8339862546319981450" at="131,0,137,0">
+        <var name="node" id="8339862546319981455" />
+      </scope>
+      <scope id="8642756583112001967" at="185,0,191,0">
+        <var name="node" id="8642756583112002547" />
+      </scope>
+      <scope id="8642756583112057892" at="191,0,197,0">
+        <var name="node" id="8642756583112058437" />
+      </scope>
+      <scope id="580435652281537362" at="200,0,206,0">
+        <var name="node" id="580435652281537366" />
+      </scope>
+      <scope id="580435652281619831" at="206,0,212,0">
+        <var name="node" id="580435652281619854" />
+      </scope>
+      <scope id="5138272413502962805" at="239,0,245,0">
+        <var name="cardinality" id="5138272413502967691" />
+      </scope>
+      <scope id="2274990519051152612" at="101,0,108,0">
+        <var name="node" id="2274990519051152617" />
+      </scope>
+      <scope id="8339862546319981395" at="137,0,144,0">
+        <var name="node" id="8339862546319981400" />
+      </scope>
+      <scope id="2594890229324947585" at="147,0,154,0">
+        <var name="concept" id="2594890229324947593" />
+      </scope>
+      <scope id="5178936997682694533" at="163,0,170,0">
+        <var name="concept" id="5178936997682694541" />
+      </scope>
+      <unit id="2594890229324963782" at="148,208,152,5" name="jetbrains.mps.smodel.SNodeUtil$1" />
+      <unit id="5178936997682694549" at="164,206,168,5" name="jetbrains.mps.smodel.SNodeUtil$2" />
+      <unit id="2274990519051114059" at="28,0,250,0" name="jetbrains.mps.smodel.SNodeUtil" />
+    </file>
+  </root>
+  <root nodeRef="r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)/3109406674817557892">
+    <file name="SmartReferentUtil.java">
+      <node id="3109406674817562565" at="18,204,19,309" concept="8" />
+      <node id="3109406674817567140" at="20,5,21,16" concept="8" />
+      <node id="3109406674817569730" at="25,204,26,309" concept="8" />
+      <node id="398063826497180300" at="27,5,28,78" concept="9" />
+      <node id="398063826497184328" at="29,197,30,346" concept="8" />
+      <node id="3109406674817569738" at="31,5,32,16" concept="8" />
+      <node id="3109406674817570457" at="36,204,37,316" concept="8" />
+      <node id="3109406674817570465" at="38,5,39,16" concept="8" />
+      <node id="5245928906752491868" at="43,18,44,57" concept="8" />
+      <node id="5245928906752490550" at="45,12,46,50" concept="8" />
+      <node id="3109406674817571266" at="51,204,52,312" concept="8" />
+      <node id="5245928906752452966" at="53,5,54,60" concept="9" />
+      <node id="3109406674817571274" at="54,60,55,177" concept="8" />
+      <node id="3109406674817602585" at="14,0,16,0" concept="1" trace="SmartReferentUtil#()V" />
+      <node id="5245928906752489807" at="45,10,47,5" concept="0" />
+      <node id="3109406674817559879" at="17,73,20,5" concept="5" />
+      <node id="3109406674817569724" at="24,73,27,5" concept="5" />
+      <node id="398063826497181388" at="28,78,31,5" concept="5" />
+      <node id="3109406674817570451" at="35,80,38,5" concept="5" />
+      <node id="3109406674817571260" at="50,76,53,5" concept="5" />
+      <node id="5245928906752486682" at="42,90,47,5" concept="5" />
+      <node id="3109406674817559715" at="17,0,23,0" concept="12" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="3109406674817570449" at="35,0,41,0" concept="12" trace="getVisibleMatchingText#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="5245928906752486292" at="42,0,49,0" concept="12" trace="getMatchingText#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Z)Ljava/lang/String;" />
+      <node id="3109406674817571258" at="50,0,57,0" concept="12" trace="getDescriptionText#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="3109406674817569722" at="24,0,34,0" concept="12" trace="getMatchingText#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <scope id="3109406674817602589" at="14,31,14,31" />
+      <scope id="3109406674817559881" at="18,204,19,309" />
+      <scope id="3109406674817569729" at="25,204,26,309" />
+      <scope id="398063826497181390" at="29,197,30,346" />
+      <scope id="3109406674817570456" at="36,204,37,316" />
+      <scope id="5245928906752486684" at="43,18,44,57" />
+      <scope id="5245928906752489808" at="45,12,46,50" />
+      <scope id="3109406674817571265" at="51,204,52,312" />
+      <scope id="3109406674817602585" at="14,0,16,0" />
+      <scope id="3109406674817559718" at="17,73,21,16" />
+      <scope id="3109406674817570450" at="35,80,39,16" />
+      <scope id="5245928906752486295" at="42,90,47,5" />
+      <scope id="3109406674817571259" at="50,76,55,177" />
+      <scope id="3109406674817559715" at="17,0,23,0">
+        <var name="reference" id="3109406674817559753" />
+        <var name="referent" id="3109406674817559817" />
+      </scope>
+      <scope id="3109406674817570449" at="35,0,41,0">
+        <var name="reference" id="3109406674817570471" />
+        <var name="referent" id="3109406674817570473" />
+      </scope>
+      <scope id="5245928906752486292" at="42,0,49,0">
+        <var name="reference" id="5245928906752486437" />
+        <var name="referent" id="5245928906752486483" />
+        <var name="visible" id="5245928906752486536" />
+      </scope>
+      <scope id="3109406674817571258" at="50,0,57,0">
+        <var name="reference" id="3109406674817571280" />
+        <var name="referent" id="3109406674817571282" />
+      </scope>
+      <scope id="3109406674817569723" at="24,73,32,16" />
+      <scope id="3109406674817569722" at="24,0,34,0">
+        <var name="reference" id="3109406674817569744" />
+        <var name="referent" id="3109406674817569746" />
+      </scope>
+      <unit id="3109406674817557892" at="12,0,58,0" name="jetbrains.mps.smodel.SmartReferentUtil" />
+    </file>
   </root>
   <root nodeRef="r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)/5073169472575923460">
-    <nodeInfo nodeId="5073169472575947667" fileName="BootstrapLanguages.java" startLine="10" startPosition="0" endLine="11" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="ACTIONS_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947675" fileName="BootstrapLanguages.java" startLine="11" startPosition="0" endLine="12" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="BEHAVIOR_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947671" fileName="BootstrapLanguages.java" startLine="12" startPosition="0" endLine="13" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="CONSTRAINTS_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947786" fileName="BootstrapLanguages.java" startLine="13" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="CORE_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947703" fileName="BootstrapLanguages.java" startLine="14" startPosition="0" endLine="15" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="DATA_FLOW_NAMESPACE" />
-    <nodeInfo nodeId="1723797813329770291" fileName="BootstrapLanguages.java" startLine="15" startPosition="0" endLine="16" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="DESCRIPTOR_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947663" fileName="BootstrapLanguages.java" startLine="16" startPosition="0" endLine="17" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="EDITOR_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947695" fileName="BootstrapLanguages.java" startLine="17" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="FIND_USAGES_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947723" fileName="BootstrapLanguages.java" startLine="18" startPosition="0" endLine="19" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="PROJECT_NAMESPACE" />
-    <nodeInfo nodeId="5690349195651703029" fileName="BootstrapLanguages.java" startLine="19" startPosition="0" endLine="20" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="GENERATOR_NAMESPACE" />
-    <nodeInfo nodeId="6583857619485983103" fileName="BootstrapLanguages.java" startLine="20" startPosition="0" endLine="21" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="GENERATOR_CONTEXT_NAMESPACE" />
-    <nodeInfo nodeId="263434549788685398" fileName="BootstrapLanguages.java" startLine="21" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="GENERATOR_PARAMETERS_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947691" fileName="BootstrapLanguages.java" startLine="22" startPosition="0" endLine="23" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="INTENTIONS_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947699" fileName="BootstrapLanguages.java" startLine="23" startPosition="0" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="PLUGIN_NAMESPACE" />
-    <nodeInfo nodeId="8906678446881547312" fileName="BootstrapLanguages.java" startLine="24" startPosition="0" endLine="25" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="MAKE_FACET_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947683" fileName="BootstrapLanguages.java" startLine="25" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="REFACTORING_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947687" fileName="BootstrapLanguages.java" startLine="26" startPosition="0" endLine="27" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="SCRIPT_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947790" fileName="BootstrapLanguages.java" startLine="27" startPosition="0" endLine="28" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="SHARED_CONCEPTS_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947719" fileName="BootstrapLanguages.java" startLine="28" startPosition="0" endLine="29" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="SMODEL_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947659" fileName="BootstrapLanguages.java" startLine="29" startPosition="0" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="STRUCTURE_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947715" fileName="BootstrapLanguages.java" startLine="30" startPosition="0" endLine="31" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="STUBS_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947707" fileName="BootstrapLanguages.java" startLine="31" startPosition="0" endLine="32" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="TEST_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947711" fileName="BootstrapLanguages.java" startLine="32" startPosition="0" endLine="33" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="TEXT_GEN_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947679" fileName="BootstrapLanguages.java" startLine="33" startPosition="0" endLine="34" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="TYPESYSTEM_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947628" fileName="BootstrapLanguages.java" startLine="34" startPosition="0" endLine="35" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="BASE_LANGUAGE_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947640" fileName="BootstrapLanguages.java" startLine="35" startPosition="0" endLine="36" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="COLLECTIONS_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947651" fileName="BootstrapLanguages.java" startLine="36" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="CLOSURES_NAMESPACE" />
-    <nodeInfo nodeId="5073169472575947655" fileName="BootstrapLanguages.java" startLine="37" startPosition="0" endLine="38" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="TUPLES_NAMESPACE" />
-    <nodeInfo nodeId="7607819906769898451" fileName="BootstrapLanguages.java" startLine="38" startPosition="0" endLine="39" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="UNITTEST_NAMESPACE" />
-    <nodeInfo nodeId="6583857619485986676" fileName="BootstrapLanguages.java" startLine="39" startPosition="0" endLine="40" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="DEVKIT_GENERAL_NAMESPACE" />
-    <nodeInfo nodeId="6583857619485986680" fileName="BootstrapLanguages.java" startLine="40" startPosition="0" endLine="41" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="DEVKIT_BOOTSTRAP_NAMESPACE" />
-    <nodeInfo nodeId="6583857619485986684" fileName="BootstrapLanguages.java" startLine="41" startPosition="0" endLine="42" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="DEVKIT_LANGUAGE_DESIGN_NAMESPACE" />
-    <nodeInfo nodeId="6694894568522585581" fileName="BootstrapLanguages.java" startLine="42" startPosition="0" endLine="43" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="JDK_NAMESPACE" />
-    <nodeInfo nodeId="2140928436687214082" fileName="BootstrapLanguages.java" startLine="43" startPosition="0" endLine="44" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_baseLanguage_Annotation" />
-    <nodeInfo nodeId="2140928436687214089" fileName="BootstrapLanguages.java" startLine="44" startPosition="0" endLine="45" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_baseLanguage_ClassConcept" />
-    <nodeInfo nodeId="2140928436687214093" fileName="BootstrapLanguages.java" startLine="45" startPosition="0" endLine="46" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_baseLanguage_EnumClass" />
-    <nodeInfo nodeId="2140928436687214097" fileName="BootstrapLanguages.java" startLine="46" startPosition="0" endLine="47" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_baseLanguage_Interface" />
-    <nodeInfo nodeId="4116271674853115988" fileName="BootstrapLanguages.java" startLine="47" startPosition="0" endLine="48" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="concept_generator_MappingConfiguration" />
-    <nodeInfo nodeId="6955116391926974405" fileName="BootstrapLanguages.java" startLine="52" startPosition="41" endLine="53" endPosition="197" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6955116391926999211" fileName="BootstrapLanguages.java" startLine="56" startPosition="43" endLine="57" endPosition="196" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6955116391927015033" fileName="BootstrapLanguages.java" startLine="60" startPosition="48" endLine="61" endPosition="209" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6955116391927016428" fileName="BootstrapLanguages.java" startLine="64" startPosition="46" endLine="65" endPosition="199" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6747202917396754705" fileName="BootstrapLanguages.java" startLine="68" startPosition="53" endLine="69" endPosition="217" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6955116391927019081" fileName="BootstrapLanguages.java" startLine="72" startPosition="56" endLine="73" endPosition="220" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6955116391927021236" fileName="BootstrapLanguages.java" startLine="76" startPosition="41" endLine="77" endPosition="194" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6747202917396756208" fileName="BootstrapLanguages.java" startLine="80" startPosition="40" endLine="81" endPosition="200" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6747202917395539956" fileName="BootstrapLanguages.java" startLine="84" startPosition="58" endLine="85" endPosition="136" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6747202917396750969" fileName="BootstrapLanguages.java" startLine="88" startPosition="55" endLine="89" endPosition="133" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="6747202917396764527" fileName="BootstrapLanguages.java" startLine="92" startPosition="52" endLine="93" endPosition="130" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129874620" fileName="BootstrapLanguages.java" startLine="96" startPosition="57" endLine="97" endPosition="135" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129874867" fileName="BootstrapLanguages.java" startLine="100" startPosition="54" endLine="101" endPosition="132" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129875110" fileName="BootstrapLanguages.java" startLine="104" startPosition="55" endLine="105" endPosition="133" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129875359" fileName="BootstrapLanguages.java" startLine="108" startPosition="59" endLine="109" endPosition="137" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129875614" fileName="BootstrapLanguages.java" startLine="112" startPosition="56" endLine="113" endPosition="134" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129875875" fileName="BootstrapLanguages.java" startLine="116" startPosition="58" endLine="117" endPosition="136" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129876142" fileName="BootstrapLanguages.java" startLine="120" startPosition="59" endLine="121" endPosition="137" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129876415" fileName="BootstrapLanguages.java" startLine="124" startPosition="54" endLine="125" endPosition="132" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129876694" fileName="BootstrapLanguages.java" startLine="128" startPosition="58" endLine="129" endPosition="136" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129876979" fileName="BootstrapLanguages.java" startLine="132" startPosition="58" endLine="133" endPosition="136" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129887660" fileName="BootstrapLanguages.java" startLine="136" startPosition="54" endLine="137" endPosition="132" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129887957" fileName="BootstrapLanguages.java" startLine="140" startPosition="56" endLine="141" endPosition="134" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129888260" fileName="BootstrapLanguages.java" startLine="144" startPosition="52" endLine="145" endPosition="130" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129968039" fileName="BootstrapLanguages.java" startLine="148" startPosition="55" endLine="149" endPosition="133" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129888569" fileName="BootstrapLanguages.java" startLine="152" startPosition="53" endLine="153" endPosition="131" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="9198229506099365909" fileName="BootstrapLanguages.java" startLine="156" startPosition="52" endLine="157" endPosition="133" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4173418906129968441" fileName="BootstrapLanguages.java" startLine="160" startPosition="56" endLine="161" endPosition="142" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="9198229506099365566" fileName="BootstrapLanguages.java" startLine="164" startPosition="43" endLine="165" endPosition="110" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="5073169472575923462" fileName="BootstrapLanguages.java" startLine="49" startPosition="0" endLine="51" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="BootstrapLanguages#()V" />
-    <nodeInfo nodeId="5073169472575923466" fileName="BootstrapLanguages.java" startLine="52" startPosition="0" endLine="55" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="baseLanguage#()Ljetbrains/mps/smodel/Language;" />
-    <nodeInfo nodeId="5073169472575923472" fileName="BootstrapLanguages.java" startLine="56" startPosition="0" endLine="59" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="smodelLanguage#()Ljetbrains/mps/smodel/Language;" />
-    <nodeInfo nodeId="5073169472575923478" fileName="BootstrapLanguages.java" startLine="60" startPosition="0" endLine="63" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="collectionsLanguage#()Ljetbrains/mps/smodel/Language;" />
-    <nodeInfo nodeId="5073169472575923484" fileName="BootstrapLanguages.java" startLine="64" startPosition="0" endLine="67" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="generatorLanguage#()Ljetbrains/mps/smodel/Language;" />
-    <nodeInfo nodeId="6747202917396754701" fileName="BootstrapLanguages.java" startLine="68" startPosition="0" endLine="71" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="generatorContextLanguage#()Ljetbrains/mps/smodel/Language;" />
-    <nodeInfo nodeId="263434549788685386" fileName="BootstrapLanguages.java" startLine="72" startPosition="0" endLine="75" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="generatorParametersLanguage#()Ljetbrains/mps/smodel/Language;" />
-    <nodeInfo nodeId="5375364354070859437" fileName="BootstrapLanguages.java" startLine="76" startPosition="0" endLine="79" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="coreLanguage#()Ljetbrains/mps/smodel/Language;" />
-    <nodeInfo nodeId="6747202917396756204" fileName="BootstrapLanguages.java" startLine="80" startPosition="0" endLine="83" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="generalDevKit#()Ljetbrains/mps/project/DevKit;" />
-    <nodeInfo nodeId="6747202917395539741" fileName="BootstrapLanguages.java" startLine="84" startPosition="0" endLine="87" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="descriptorLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="6747202917396750967" fileName="BootstrapLanguages.java" startLine="88" startPosition="0" endLine="91" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="projectLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="6747202917396764525" fileName="BootstrapLanguages.java" startLine="92" startPosition="0" endLine="95" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="coreLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129874618" fileName="BootstrapLanguages.java" startLine="96" startPosition="0" endLine="99" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="structureLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129874865" fileName="BootstrapLanguages.java" startLine="100" startPosition="0" endLine="103" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="editorLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129875108" fileName="BootstrapLanguages.java" startLine="104" startPosition="0" endLine="107" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="actionsLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129875357" fileName="BootstrapLanguages.java" startLine="108" startPosition="0" endLine="111" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="constraintsLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129875612" fileName="BootstrapLanguages.java" startLine="112" startPosition="0" endLine="115" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="behaviorLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129875873" fileName="BootstrapLanguages.java" startLine="116" startPosition="0" endLine="119" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="typesystemLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129876140" fileName="BootstrapLanguages.java" startLine="120" startPosition="0" endLine="123" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="refactoringLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129876413" fileName="BootstrapLanguages.java" startLine="124" startPosition="0" endLine="127" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="scriptLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129876692" fileName="BootstrapLanguages.java" startLine="128" startPosition="0" endLine="131" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="intentionsLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129876977" fileName="BootstrapLanguages.java" startLine="132" startPosition="0" endLine="135" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="findUsagesLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129887658" fileName="BootstrapLanguages.java" startLine="136" startPosition="0" endLine="139" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="pluginLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129887955" fileName="BootstrapLanguages.java" startLine="140" startPosition="0" endLine="143" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="dataFlowLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129888258" fileName="BootstrapLanguages.java" startLine="144" startPosition="0" endLine="147" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="testLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129968037" fileName="BootstrapLanguages.java" startLine="148" startPosition="0" endLine="151" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="textGenLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129888567" fileName="BootstrapLanguages.java" startLine="152" startPosition="0" endLine="155" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="stubsLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="9198229506099365907" fileName="BootstrapLanguages.java" startLine="156" startPosition="0" endLine="159" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="baseLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="4173418906129968439" fileName="BootstrapLanguages.java" startLine="160" startPosition="0" endLine="163" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="unitTestLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <nodeInfo nodeId="9198229506099365564" fileName="BootstrapLanguages.java" startLine="164" startPosition="0" endLine="167" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="jdkRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-    <scopeInfo nodeId="5073169472575923465" fileName="BootstrapLanguages.java" startLine="49" startPosition="31" endLine="49" endPosition="31" />
-    <scopeInfo nodeId="5073169472575923469" fileName="BootstrapLanguages.java" startLine="52" startPosition="41" endLine="53" endPosition="197" />
-    <scopeInfo nodeId="5073169472575923475" fileName="BootstrapLanguages.java" startLine="56" startPosition="43" endLine="57" endPosition="196" />
-    <scopeInfo nodeId="5073169472575923481" fileName="BootstrapLanguages.java" startLine="60" startPosition="48" endLine="61" endPosition="209" />
-    <scopeInfo nodeId="5073169472575923487" fileName="BootstrapLanguages.java" startLine="64" startPosition="46" endLine="65" endPosition="199" />
-    <scopeInfo nodeId="6747202917396754704" fileName="BootstrapLanguages.java" startLine="68" startPosition="53" endLine="69" endPosition="217" />
-    <scopeInfo nodeId="263434549788685389" fileName="BootstrapLanguages.java" startLine="72" startPosition="56" endLine="73" endPosition="220" />
-    <scopeInfo nodeId="5375364354070859440" fileName="BootstrapLanguages.java" startLine="76" startPosition="41" endLine="77" endPosition="194" />
-    <scopeInfo nodeId="6747202917396756207" fileName="BootstrapLanguages.java" startLine="80" startPosition="40" endLine="81" endPosition="200" />
-    <scopeInfo nodeId="6747202917395539744" fileName="BootstrapLanguages.java" startLine="84" startPosition="58" endLine="85" endPosition="136" />
-    <scopeInfo nodeId="6747202917396750968" fileName="BootstrapLanguages.java" startLine="88" startPosition="55" endLine="89" endPosition="133" />
-    <scopeInfo nodeId="6747202917396764526" fileName="BootstrapLanguages.java" startLine="92" startPosition="52" endLine="93" endPosition="130" />
-    <scopeInfo nodeId="4173418906129874619" fileName="BootstrapLanguages.java" startLine="96" startPosition="57" endLine="97" endPosition="135" />
-    <scopeInfo nodeId="4173418906129874866" fileName="BootstrapLanguages.java" startLine="100" startPosition="54" endLine="101" endPosition="132" />
-    <scopeInfo nodeId="4173418906129875109" fileName="BootstrapLanguages.java" startLine="104" startPosition="55" endLine="105" endPosition="133" />
-    <scopeInfo nodeId="4173418906129875358" fileName="BootstrapLanguages.java" startLine="108" startPosition="59" endLine="109" endPosition="137" />
-    <scopeInfo nodeId="4173418906129875613" fileName="BootstrapLanguages.java" startLine="112" startPosition="56" endLine="113" endPosition="134" />
-    <scopeInfo nodeId="4173418906129875874" fileName="BootstrapLanguages.java" startLine="116" startPosition="58" endLine="117" endPosition="136" />
-    <scopeInfo nodeId="4173418906129876141" fileName="BootstrapLanguages.java" startLine="120" startPosition="59" endLine="121" endPosition="137" />
-    <scopeInfo nodeId="4173418906129876414" fileName="BootstrapLanguages.java" startLine="124" startPosition="54" endLine="125" endPosition="132" />
-    <scopeInfo nodeId="4173418906129876693" fileName="BootstrapLanguages.java" startLine="128" startPosition="58" endLine="129" endPosition="136" />
-    <scopeInfo nodeId="4173418906129876978" fileName="BootstrapLanguages.java" startLine="132" startPosition="58" endLine="133" endPosition="136" />
-    <scopeInfo nodeId="4173418906129887659" fileName="BootstrapLanguages.java" startLine="136" startPosition="54" endLine="137" endPosition="132" />
-    <scopeInfo nodeId="4173418906129887956" fileName="BootstrapLanguages.java" startLine="140" startPosition="56" endLine="141" endPosition="134" />
-    <scopeInfo nodeId="4173418906129888259" fileName="BootstrapLanguages.java" startLine="144" startPosition="52" endLine="145" endPosition="130" />
-    <scopeInfo nodeId="4173418906129968038" fileName="BootstrapLanguages.java" startLine="148" startPosition="55" endLine="149" endPosition="133" />
-    <scopeInfo nodeId="4173418906129888568" fileName="BootstrapLanguages.java" startLine="152" startPosition="53" endLine="153" endPosition="131" />
-    <scopeInfo nodeId="9198229506099365908" fileName="BootstrapLanguages.java" startLine="156" startPosition="52" endLine="157" endPosition="133" />
-    <scopeInfo nodeId="4173418906129968440" fileName="BootstrapLanguages.java" startLine="160" startPosition="56" endLine="161" endPosition="142" />
-    <scopeInfo nodeId="9198229506099365565" fileName="BootstrapLanguages.java" startLine="164" startPosition="43" endLine="165" endPosition="110" />
-    <scopeInfo nodeId="5073169472575923462" fileName="BootstrapLanguages.java" startLine="49" startPosition="0" endLine="51" endPosition="0" />
-    <scopeInfo nodeId="5073169472575923466" fileName="BootstrapLanguages.java" startLine="52" startPosition="0" endLine="55" endPosition="0" />
-    <scopeInfo nodeId="5073169472575923472" fileName="BootstrapLanguages.java" startLine="56" startPosition="0" endLine="59" endPosition="0" />
-    <scopeInfo nodeId="5073169472575923478" fileName="BootstrapLanguages.java" startLine="60" startPosition="0" endLine="63" endPosition="0" />
-    <scopeInfo nodeId="5073169472575923484" fileName="BootstrapLanguages.java" startLine="64" startPosition="0" endLine="67" endPosition="0" />
-    <scopeInfo nodeId="6747202917396754701" fileName="BootstrapLanguages.java" startLine="68" startPosition="0" endLine="71" endPosition="0" />
-    <scopeInfo nodeId="263434549788685386" fileName="BootstrapLanguages.java" startLine="72" startPosition="0" endLine="75" endPosition="0" />
-    <scopeInfo nodeId="5375364354070859437" fileName="BootstrapLanguages.java" startLine="76" startPosition="0" endLine="79" endPosition="0" />
-    <scopeInfo nodeId="6747202917396756204" fileName="BootstrapLanguages.java" startLine="80" startPosition="0" endLine="83" endPosition="0" />
-    <scopeInfo nodeId="6747202917395539741" fileName="BootstrapLanguages.java" startLine="84" startPosition="0" endLine="87" endPosition="0" />
-    <scopeInfo nodeId="6747202917396750967" fileName="BootstrapLanguages.java" startLine="88" startPosition="0" endLine="91" endPosition="0" />
-    <scopeInfo nodeId="6747202917396764525" fileName="BootstrapLanguages.java" startLine="92" startPosition="0" endLine="95" endPosition="0" />
-    <scopeInfo nodeId="4173418906129874618" fileName="BootstrapLanguages.java" startLine="96" startPosition="0" endLine="99" endPosition="0" />
-    <scopeInfo nodeId="4173418906129874865" fileName="BootstrapLanguages.java" startLine="100" startPosition="0" endLine="103" endPosition="0" />
-    <scopeInfo nodeId="4173418906129875108" fileName="BootstrapLanguages.java" startLine="104" startPosition="0" endLine="107" endPosition="0" />
-    <scopeInfo nodeId="4173418906129875357" fileName="BootstrapLanguages.java" startLine="108" startPosition="0" endLine="111" endPosition="0" />
-    <scopeInfo nodeId="4173418906129875612" fileName="BootstrapLanguages.java" startLine="112" startPosition="0" endLine="115" endPosition="0" />
-    <scopeInfo nodeId="4173418906129875873" fileName="BootstrapLanguages.java" startLine="116" startPosition="0" endLine="119" endPosition="0" />
-    <scopeInfo nodeId="4173418906129876140" fileName="BootstrapLanguages.java" startLine="120" startPosition="0" endLine="123" endPosition="0" />
-    <scopeInfo nodeId="4173418906129876413" fileName="BootstrapLanguages.java" startLine="124" startPosition="0" endLine="127" endPosition="0" />
-    <scopeInfo nodeId="4173418906129876692" fileName="BootstrapLanguages.java" startLine="128" startPosition="0" endLine="131" endPosition="0" />
-    <scopeInfo nodeId="4173418906129876977" fileName="BootstrapLanguages.java" startLine="132" startPosition="0" endLine="135" endPosition="0" />
-    <scopeInfo nodeId="4173418906129887658" fileName="BootstrapLanguages.java" startLine="136" startPosition="0" endLine="139" endPosition="0" />
-    <scopeInfo nodeId="4173418906129887955" fileName="BootstrapLanguages.java" startLine="140" startPosition="0" endLine="143" endPosition="0" />
-    <scopeInfo nodeId="4173418906129888258" fileName="BootstrapLanguages.java" startLine="144" startPosition="0" endLine="147" endPosition="0" />
-    <scopeInfo nodeId="4173418906129968037" fileName="BootstrapLanguages.java" startLine="148" startPosition="0" endLine="151" endPosition="0" />
-    <scopeInfo nodeId="4173418906129888567" fileName="BootstrapLanguages.java" startLine="152" startPosition="0" endLine="155" endPosition="0" />
-    <scopeInfo nodeId="9198229506099365907" fileName="BootstrapLanguages.java" startLine="156" startPosition="0" endLine="159" endPosition="0" />
-    <scopeInfo nodeId="4173418906129968439" fileName="BootstrapLanguages.java" startLine="160" startPosition="0" endLine="163" endPosition="0" />
-    <scopeInfo nodeId="9198229506099365564" fileName="BootstrapLanguages.java" startLine="164" startPosition="0" endLine="167" endPosition="0" />
-    <unitInfo nodeId="5073169472575923460" fileName="BootstrapLanguages.java" startLine="9" startPosition="0" endLine="170" endPosition="0" unitName="jetbrains.mps.smodel.BootstrapLanguages" />
+    <file name="BootstrapLanguages.java">
+      <node id="4599227844726258628" at="17,41,18,111" concept="8" />
+      <node id="5290480597749205745" at="20,46,21,116" concept="8" />
+      <node id="5290480597749206637" at="23,47,24,134" concept="8" />
+      <node id="5290480597749345296" at="26,41,27,114" concept="8" />
+      <node id="3259206180765807328" at="29,53,30,123" concept="8" />
+      <node id="6984984611814383199" at="32,55,33,117" concept="8" />
+      <node id="6588113594225837732" at="35,60,36,143" concept="8" />
+      <node id="6588113594225851133" at="38,64,39,99" concept="9" />
+      <node id="6588113594225851182" at="39,99,40,33" concept="9" />
+      <node id="6588113594225850907" at="40,33,41,137" concept="8" />
+      <node id="7289482353137615347" at="43,60,44,143" concept="8" />
+      <node id="4551774558264174891" at="46,58,47,136" concept="8" />
+      <node id="4551774558264377026" at="49,55,50,133" concept="8" />
+      <node id="4551774558264447372" at="52,52,53,130" concept="8" />
+      <node id="4551774558264447442" at="55,57,56,135" concept="8" />
+      <node id="4551774558264447495" at="58,54,59,132" concept="8" />
+      <node id="4551774558264447552" at="61,55,62,133" concept="8" />
+      <node id="4551774558264447643" at="64,59,65,137" concept="8" />
+      <node id="4551774558264447700" at="67,56,68,134" concept="8" />
+      <node id="4551774558264447757" at="70,58,71,136" concept="8" />
+      <node id="4551774558264447810" at="73,52,74,133" concept="8" />
+      <node id="4173418906129876142" at="76,59,77,137" concept="8" />
+      <node id="4173418906129876415" at="79,54,80,132" concept="8" />
+      <node id="4173418906129876694" at="82,58,83,136" concept="8" />
+      <node id="4173418906129876979" at="85,58,86,136" concept="8" />
+      <node id="4173418906129887660" at="88,54,89,132" concept="8" />
+      <node id="8569625917345256972" at="91,54,92,132" concept="8" />
+      <node id="4173418906129887957" at="94,56,95,134" concept="8" />
+      <node id="4173418906129888260" at="97,52,98,130" concept="8" />
+      <node id="4173418906129968039" at="100,55,101,133" concept="8" />
+      <node id="5512160570053008241" at="103,57,104,135" concept="8" />
+      <node id="4173418906129968441" at="106,56,107,142" concept="8" />
+      <node id="4551774558264448695" at="109,43,110,110" concept="8" />
+      <node id="7223845917415567190" at="112,48,113,116" concept="8" />
+      <node id="5073169472575923462" at="14,0,17,0" concept="1" trace="BootstrapLanguages#()V" />
+      <node id="4599227844726258198" at="17,0,20,0" concept="12" trace="getLangCore#()Lorg/jetbrains/mps/openapi/language/SLanguage;" />
+      <node id="5290480597749205298" at="20,0,23,0" concept="12" trace="getGeneratorLang#()Lorg/jetbrains/mps/openapi/language/SLanguage;" />
+      <node id="5290480597749206181" at="23,0,26,0" concept="12" trace="getGenContextLang#()Lorg/jetbrains/mps/openapi/language/SLanguage;" />
+      <node id="5290480597749344858" at="26,0,29,0" concept="12" trace="getBaseLang#()Lorg/jetbrains/mps/openapi/language/SLanguage;" />
+      <node id="3259206180765807324" at="29,0,32,0" concept="12" trace="getBaseLangUnitTestLang#()Lorg/jetbrains/mps/openapi/language/SLanguage;" />
+      <node id="6984984611814382750" at="32,0,35,0" concept="12" trace="getLanguageDescriptorLang#()Lorg/jetbrains/mps/openapi/language/SLanguage;" />
+      <node id="6588113594225837133" at="35,0,38,0" concept="12" trace="getGeneralPurposeDevKit#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="7289482353137614679" at="43,0,46,0" concept="12" trace="getLanguageDesignDevKit#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="6747202917395539741" at="46,0,49,0" concept="12" trace="descriptorLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="6747202917396750967" at="49,0,52,0" concept="12" trace="projectLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="6747202917396764525" at="52,0,55,0" concept="12" trace="coreLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="4173418906129874618" at="55,0,58,0" concept="12" trace="structureLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="4173418906129874865" at="58,0,61,0" concept="12" trace="editorLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="4173418906129875108" at="61,0,64,0" concept="12" trace="actionsLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="4173418906129875357" at="64,0,67,0" concept="12" trace="constraintsLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="4173418906129875612" at="67,0,70,0" concept="12" trace="behaviorLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="4173418906129875873" at="70,0,73,0" concept="12" trace="typesystemLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="9198229506099365907" at="73,0,76,0" concept="12" trace="baseLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="4173418906129876140" at="76,0,79,0" concept="12" trace="refactoringLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="4173418906129876413" at="79,0,82,0" concept="12" trace="scriptLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="4173418906129876692" at="82,0,85,0" concept="12" trace="intentionsLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="4173418906129876977" at="85,0,88,0" concept="12" trace="findUsagesLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="4173418906129887658" at="88,0,91,0" concept="12" trace="pluginLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="8569625917345256970" at="91,0,94,0" concept="12" trace="aspectLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="4173418906129887955" at="94,0,97,0" concept="12" trace="dataFlowLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="4173418906129888258" at="97,0,100,0" concept="12" trace="testLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="4173418906129968037" at="100,0,103,0" concept="12" trace="textGenLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="5512160570053008239" at="103,0,106,0" concept="12" trace="migrationLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="4173418906129968439" at="106,0,109,0" concept="12" trace="unitTestLanguageRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="9198229506099365564" at="109,0,112,0" concept="12" trace="jdkRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="7223845917415567188" at="112,0,115,0" concept="12" trace="jdkToolsRef#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="6588113594225850321" at="38,0,43,0" concept="12" trace="getGeneratorTemplatesDevKit#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <scope id="5073169472575923465" at="15,32,15,32" />
+      <scope id="4599227844726258202" at="17,41,18,111" />
+      <scope id="5290480597749205302" at="20,46,21,116" />
+      <scope id="5290480597749206185" at="23,47,24,134" />
+      <scope id="5290480597749344862" at="26,41,27,114" />
+      <scope id="3259206180765807327" at="29,53,30,123" />
+      <scope id="6984984611814382754" at="32,55,33,117" />
+      <scope id="6588113594225837137" at="35,60,36,143" />
+      <scope id="7289482353137614683" at="43,60,44,143" />
+      <scope id="6747202917395539744" at="46,58,47,136" />
+      <scope id="6747202917396750968" at="49,55,50,133" />
+      <scope id="6747202917396764526" at="52,52,53,130" />
+      <scope id="4173418906129874619" at="55,57,56,135" />
+      <scope id="4173418906129874866" at="58,54,59,132" />
+      <scope id="4173418906129875109" at="61,55,62,133" />
+      <scope id="4173418906129875358" at="64,59,65,137" />
+      <scope id="4173418906129875613" at="67,56,68,134" />
+      <scope id="4173418906129875874" at="70,58,71,136" />
+      <scope id="9198229506099365908" at="73,52,74,133" />
+      <scope id="4173418906129876141" at="76,59,77,137" />
+      <scope id="4173418906129876414" at="79,54,80,132" />
+      <scope id="4173418906129876693" at="82,58,83,136" />
+      <scope id="4173418906129876978" at="85,58,86,136" />
+      <scope id="4173418906129887659" at="88,54,89,132" />
+      <scope id="8569625917345256971" at="91,54,92,132" />
+      <scope id="4173418906129887956" at="94,56,95,134" />
+      <scope id="4173418906129888259" at="97,52,98,130" />
+      <scope id="4173418906129968038" at="100,55,101,133" />
+      <scope id="5512160570053008240" at="103,57,104,135" />
+      <scope id="4173418906129968440" at="106,56,107,142" />
+      <scope id="9198229506099365565" at="109,43,110,110" />
+      <scope id="7223845917415567189" at="112,48,113,116" />
+      <scope id="5073169472575923462" at="14,0,17,0" />
+      <scope id="4599227844726258198" at="17,0,20,0" />
+      <scope id="5290480597749205298" at="20,0,23,0" />
+      <scope id="5290480597749206181" at="23,0,26,0" />
+      <scope id="5290480597749344858" at="26,0,29,0" />
+      <scope id="3259206180765807324" at="29,0,32,0" />
+      <scope id="6984984611814382750" at="32,0,35,0" />
+      <scope id="6588113594225837133" at="35,0,38,0" />
+      <scope id="6588113594225850325" at="38,64,41,137" />
+      <scope id="7289482353137614679" at="43,0,46,0" />
+      <scope id="6747202917395539741" at="46,0,49,0" />
+      <scope id="6747202917396750967" at="49,0,52,0" />
+      <scope id="6747202917396764525" at="52,0,55,0" />
+      <scope id="4173418906129874618" at="55,0,58,0" />
+      <scope id="4173418906129874865" at="58,0,61,0" />
+      <scope id="4173418906129875108" at="61,0,64,0" />
+      <scope id="4173418906129875357" at="64,0,67,0" />
+      <scope id="4173418906129875612" at="67,0,70,0" />
+      <scope id="4173418906129875873" at="70,0,73,0" />
+      <scope id="9198229506099365907" at="73,0,76,0" />
+      <scope id="4173418906129876140" at="76,0,79,0" />
+      <scope id="4173418906129876413" at="79,0,82,0" />
+      <scope id="4173418906129876692" at="82,0,85,0" />
+      <scope id="4173418906129876977" at="85,0,88,0" />
+      <scope id="4173418906129887658" at="88,0,91,0" />
+      <scope id="8569625917345256970" at="91,0,94,0" />
+      <scope id="4173418906129887955" at="94,0,97,0" />
+      <scope id="4173418906129888258" at="97,0,100,0" />
+      <scope id="4173418906129968037" at="100,0,103,0" />
+      <scope id="5512160570053008239" at="103,0,106,0" />
+      <scope id="4173418906129968439" at="106,0,109,0" />
+      <scope id="9198229506099365564" at="109,0,112,0" />
+      <scope id="7223845917415567188" at="112,0,115,0" />
+      <scope id="6588113594225850321" at="38,0,43,0" />
+      <unit id="5073169472575923460" at="11,0,117,0" name="jetbrains.mps.smodel.BootstrapLanguages" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)/7408719695775110713">
+    <file name="ConceptDeclarationScanner.java">
+      <node id="7408719695775205644" at="24,0,25,0" concept="3" trace="myExternalConcepts" />
+      <node id="7408719695775214571" at="25,0,26,0" concept="3" trace="myExternalIfaces" />
+      <node id="7408719695775334831" at="26,0,27,0" concept="3" trace="myExtendedModels" />
+      <node id="2645165897092120407" at="27,0,28,0" concept="3" trace="myExtendedModules" />
+      <node id="5903951346632578570" at="28,0,29,0" concept="3" trace="myExcludeLangCore" />
+      <node id="5903951346632584646" at="41,51,42,29" concept="2" />
+      <node id="5903951346632544167" at="42,29,43,16" concept="8" />
+      <node id="7408719695775177094" at="46,51,47,56" concept="7" />
+      <node id="7408719695775234919" at="48,204,49,167" concept="7" />
+      <node id="2645165897092089854" at="49,167,50,62" concept="9" />
+      <node id="7408719695775220632" at="51,60,52,35" concept="2" />
+      <node id="7408719695775272340" at="55,49,56,36" concept="2" />
+      <node id="7408719695775286277" at="62,51,63,38" concept="2" />
+      <node id="7408719695775365952" at="67,41,68,57" concept="2" />
+      <node id="7408719695775407607" at="69,5,70,144" concept="9" />
+      <node id="7408719695775419202" at="70,144,71,156" concept="9" />
+      <node id="7408719695775430801" at="71,156,72,94" concept="9" />
+      <node id="7408719695775390406" at="73,39,74,57" concept="2" />
+      <node id="5903951346632640981" at="76,28,77,79" concept="9" />
+      <node id="5319060661786046450" at="77,79,78,187" concept="7" />
+      <node id="5319060661786045202" at="78,187,79,0" concept="10" />
+      <node id="5319060661786049403" at="81,39,82,68" concept="8" />
+      <node id="2645165897092134874" at="86,40,87,44" concept="2" />
+      <node id="7408719695775115024" at="88,5,89,16" concept="8" />
+      <node id="7408719695775555322" at="92,44,93,57" concept="8" />
+      <node id="2645165897092196125" at="96,46,97,58" concept="8" />
+      <node id="7408719695775594466" at="100,43,101,59" concept="8" />
+      <node id="7408719695775628934" at="104,45,105,57" concept="8" />
+      <node id="5903951346632520827" at="30,0,32,0" concept="1" trace="ConceptDeclarationScanner#()V" />
+      <node id="7408719695775217429" at="50,62,53,7" concept="5" />
+      <node id="7408719695775269131" at="54,328,57,9" concept="5" />
+      <node id="7408719695775283068" at="61,329,64,9" concept="5" />
+      <node id="7408719695775359523" at="66,5,69,5" concept="4" />
+      <node id="7408719695775381150" at="72,94,75,5" concept="4" />
+      <node id="5319060661785968171" at="81,0,84,0" concept="6" trace="test#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
+      <node id="2645165897092161613" at="85,5,88,5" concept="4" />
+      <node id="7408719695775485221" at="92,0,95,0" concept="6" trace="getDependencyModels#()Ljava/util/Set;" />
+      <node id="2645165897092196120" at="96,0,99,0" concept="6" trace="getDependencyModules#()Ljava/util/Set;" />
+      <node id="7408719695775588729" at="100,0,103,0" concept="6" trace="getExternalConcepts#()Ljava/util/Set;" />
+      <node id="7408719695775623077" at="104,0,107,0" concept="6" trace="getExternalInterfaces#()Ljava/util/Set;" />
+      <node id="5903951346632532654" at="41,0,45,0" concept="6" trace="omitLangCore#()Ljetbrains/mps/smodel/ConceptDeclarationScanner;" />
+      <node id="7408719695775237826" at="53,7,58,7" concept="4" />
+      <node id="7408719695775299137" at="60,215,65,7" concept="4" />
+      <node id="5903951346632598891" at="79,0,84,9" concept="2" />
+      <node id="7408719695775188638" at="59,5,66,5" concept="4" />
+      <node id="5903951346632591706" at="75,5,85,5" concept="5" />
+      <node id="7408719695775130626" at="47,56,59,5" concept="4" />
+      <node id="7408719695775111529" at="46,0,91,0" concept="6" trace="scan#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/smodel/ConceptDeclarationScanner;" />
+      <scope id="5903951346632520832" at="30,38,30,38" />
+      <scope id="7408719695775217431" at="51,60,52,35" />
+      <scope id="7408719695775269133" at="55,49,56,36" />
+      <scope id="7408719695775283070" at="62,51,63,38" />
+      <scope id="7408719695775359525" at="67,41,68,57" />
+      <scope id="7408719695775381152" at="73,39,74,57" />
+      <scope id="5319060661785968173" at="81,39,82,68" />
+      <scope id="2645165897092161619" at="86,40,87,44" />
+      <scope id="7408719695775485225" at="92,44,93,57" />
+      <scope id="2645165897092196124" at="96,46,97,58" />
+      <scope id="7408719695775588732" at="100,43,101,59" />
+      <scope id="7408719695775623080" at="104,45,105,57" />
+      <scope id="5903951346632520827" at="30,0,32,0" />
+      <scope id="5903951346632532658" at="41,51,43,16" />
+      <scope id="7408719695775237828" at="54,328,57,9" />
+      <scope id="7408719695775299139" at="61,329,64,9" />
+      <scope id="7408719695775359523" at="66,5,69,5">
+        <var name="cd" id="7408719695775359526" />
+      </scope>
+      <scope id="7408719695775381150" at="72,94,75,5">
+        <var name="cd" id="7408719695775381153" />
+      </scope>
+      <scope id="5319060661785968171" at="81,0,84,0">
+        <var name="m" id="5319060661785968171" />
+      </scope>
+      <scope id="2645165897092161613" at="85,5,88,5">
+        <var name="em" id="2645165897092161620" />
+      </scope>
+      <scope id="7408719695775485221" at="92,0,95,0" />
+      <scope id="2645165897092196120" at="96,0,99,0" />
+      <scope id="7408719695775588729" at="100,0,103,0" />
+      <scope id="7408719695775623077" at="104,0,107,0" />
+      <scope id="5903951346632532654" at="41,0,45,0" />
+      <scope id="7408719695775237826" at="53,7,58,7">
+        <var name="icd" id="7408719695775237829" />
+      </scope>
+      <scope id="7408719695775188640" at="60,215,65,7" />
+      <scope id="7408719695775299137" at="60,215,65,7">
+        <var name="iface" id="7408719695775299140" />
+      </scope>
+      <scope id="7408719695775188638" at="59,5,66,5">
+        <var name="icd" id="7408719695775188641" />
+      </scope>
+      <scope id="5903951346632591708" at="76,28,84,9">
+        <var name="langCoreStructureModelRef" id="5319060661786046451" />
+      </scope>
+      <scope id="7408719695775130629" at="48,204,58,7">
+        <var name="ex" id="7408719695775234920" />
+      </scope>
+      <scope id="7408719695775130626" at="47,56,59,5">
+        <var name="cd" id="7408719695775130630" />
+      </scope>
+      <scope id="7408719695775111533" at="46,51,89,16">
+        <var name="roots" id="7408719695775177095" />
+      </scope>
+      <scope id="7408719695775111529" at="46,0,91,0">
+        <var name="m" id="7408719695775111589" />
+      </scope>
+      <unit id="5319060661785968171" at="80,36,84,7" name="jetbrains.mps.smodel.ConceptDeclarationScanner$1" />
+      <unit id="7408719695775110713" at="23,0,108,0" name="jetbrains.mps.smodel.ConceptDeclarationScanner" />
+    </file>
+  </root>
+</debug-info>
 

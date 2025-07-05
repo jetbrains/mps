@@ -11,6 +11,8 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
 import jetbrains.mps.lang.pattern.util.IMatchModifier;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -21,7 +23,6 @@ public class MethodDuplicatesFinder {
   private final List<SNode> myParameterOrder;
   private Set<SNode> myOutputRefs;
   private Set<SNode> myUsedNodes = SetSequence.fromSet(new HashSet<SNode>());
-
   public MethodDuplicatesFinder(List<SNode> nodesToFind, Map<SNode, SNode> mapping, List<SNode> parametersOrder, Set<SNode> outputReferences) {
     this.myNodesToFind = nodesToFind;
     this.myMapping = mapping;
@@ -29,10 +30,9 @@ public class MethodDuplicatesFinder {
     myOutputRefs = outputReferences;
     SetSequence.fromSet(this.myUsedNodes).addSequence(ListSequence.fromList(this.myNodesToFind));
   }
-
   public List<MethodMatch> findDuplicates(SNode root) {
     List<MethodMatch> found = new ArrayList<MethodMatch>();
-    for (SNode node : ListSequence.fromList(SNodeOperations.getDescendants(root, "jetbrains.mps.lang.core.structure.BaseConcept", false, new String[]{}))) {
+    for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(root, MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept"), false, new SAbstractConcept[]{}))) {
       SNode current = node;
       MethodDuplicatesFinder.MethodMatchModifier modifier = new MethodDuplicatesFinder.MethodMatchModifier();
       boolean hasNoErrors = true;
@@ -62,17 +62,13 @@ public class MethodDuplicatesFinder {
     }
     return found;
   }
-
   public void matchNodes(SNode candidate, SNode node) {
   }
-
   public class MethodMatchModifier implements IMatchModifier {
     private MethodMatch myMatch;
-
     public MethodMatchModifier() {
       this.myMatch = new MethodMatch(MethodDuplicatesFinder.this.myParameterOrder);
     }
-
     @Override
     public boolean accept(SNode candidate, SNode original) {
       if (SetSequence.fromSet(myOutputRefs).contains(original)) {
@@ -83,21 +79,17 @@ public class MethodDuplicatesFinder {
       }
       return false;
     }
-
     @Override
     public boolean acceptList(List<SNode> list1, List<SNode> list2) {
       return false;
     }
-
     @Override
     public void performAction(SNode candidate, SNode original) {
       this.myMatch.putMapping(candidate, MapSequence.fromMap(MethodDuplicatesFinder.this.myMapping).get(original));
     }
-
     @Override
     public void performGroupAction(List<SNode> list1, List<SNode> list2) {
     }
-
     public MethodMatch getMatch() {
       return this.myMatch;
     }

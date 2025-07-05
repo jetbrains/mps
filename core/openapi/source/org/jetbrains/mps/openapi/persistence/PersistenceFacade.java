@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,9 @@
  */
 package org.jetbrains.mps.openapi.persistence;
 
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeId;
@@ -43,6 +45,7 @@ public abstract class PersistenceFacade {
 
   /**
    * Retrieves all registered types of model roots
+   * FIXME shall rename to smth more meaningful (to reflect it's about model roots)
    */
   public abstract Iterable<String> getTypeIds();
 
@@ -60,33 +63,88 @@ public abstract class PersistenceFacade {
 
   /**
    * Retrieves the factory associated with the given file extension.
+   * @deprecated use {@code ModelFactoryRegistry#getDefault(DataSourceType)}
+   *             see <code>jetbrains.mps.extapi.persistence.ModelFactoryService</code>
+   *             see <code>jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService</code>
    */
-  public abstract ModelFactory getModelFactory(String extension);
-
+  @ToRemove(version = 181)
+  @Deprecated
+  public abstract ModelFactory getModelFactory(@Nullable String extension);
 
   /**
    * Retrieves the factory for default MPS storage format (xml-based).
+   * @deprecated unclear contract, use {@code ModelFactoryRegistry#getDefault(DataSourceType)}
+   *             see <code>jetbrains.mps.extapi.persistence.ModelFactoryService</code>
+   *             see <code>jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService</code>
    */
+  @ToRemove(version = 181)
+  @Deprecated
   public abstract ModelFactory getDefaultModelFactory();
 
   /**
-   * Registers the factory with the file extension, overwriting potential earlier registration.
+   * Registers the factory with the file extension, overwriting the potential earlier registration.
    *
    * @param factory The factory to register, null to clear the registration for the given type.
+   * @deprecated ModelFactory notion is isolated from the location by {@link DataSource}.
+   *             Use {@code ModelFactoryRegistry#register} instead.
+   *             see <code>jetbrains.mps.extapi.persistence.ModelFactoryService</code>
+   *             see <code>jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService</code>
    */
-  public abstract void setModelFactory(String extension, ModelFactory factory);
+  @ToRemove(version = 181)
+  @Deprecated
+  public abstract void setModelFactory(@Nullable String extension, ModelFactory factory);
 
   /**
    * Retrieves registered storage formats extensions.
-   * */
+   * @deprecated the model factories are separated from the type of location
+   *             (while file extension as a key clearly violates this idea).
+   *             Thus one might to look at the
+   *             <code>jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryService</code>
+   *             which can be used to register your one custom data source factories.
+   *             <code>jetbrains.mps.extapi.persistence.ModelFactoryService</code> is an extension point
+   *             to register your custom model factory implementation and associate it (if needed)
+   *             with some specific data source type.
+   */
+  @ToRemove(version = 181)
+  @Deprecated
   public abstract Set<String> getModelFactoryExtensions();
 
-  public abstract SModuleReference createModuleReference(String text);
+  /**
+   * @return module identity object created from persistence text
+   * @throws IllegalArgumentException if the text could not be parsed
+   * @since 3.3
+   */
+  @NotNull
+  public abstract SModuleId createModuleId(@NotNull String text);
+
+  /**
+   * @return textual representation of the identifier ready for persistence
+   * @since 3.3
+   */
+  @NotNull
+  public abstract String asString(@NotNull SModuleId moduleId);
+
+  /**
+   * Serialize counterpart for {@link #createModuleReference(String)}.
+   * @param reference module reference to serialize
+   * @return persistence-ready presentation of a module identifier
+   * @since 3.3
+   */
+  public abstract String asString(@NotNull SModuleReference reference);
+
+  public abstract SModuleReference createModuleReference(@NotNull String text);
+
+  /**
+   * @return module identity constructed from the fragments supplied
+   * @since 3.3
+   */
+  public abstract SModuleReference createModuleReference(@NotNull SModuleId moduleId, String moduleName);
 
   /**
    * Creates an SModelId from a given text identifier.
    * Allows implementations to provide their own version of SModelId.
    *
+   * @see #asString(org.jetbrains.mps.openapi.model.SModelId)
    * @param text A text that the custom implementation of SModelIdFactory could use to build its own SModelId.
    *             The text comes in the following format: "type:restInterpretedByTheConcreteTypeProvider"
    *             The actual type of the model id is followed by implementation-specific text.
@@ -95,11 +153,26 @@ public abstract class PersistenceFacade {
   public abstract SModelId createModelId(String text);
 
   /**
+   * Serialize counterpart for {@link #createModelId(String)}, persistence-ready presentation of a model identifier.
+   *
+   * @param modelId model identity
+   * @return textual representation of a model identifier ready for persistence
+   */
+  public abstract String asString(@NotNull SModelId modelId);
+
+  /**
    * Creates an SModelReference from a given text identifier.
    *
    * @throws IllegalArgumentException if the text does not contain a parsable <code>SModelReference</code>.
    */
   public abstract SModelReference createModelReference(String text);
+
+  /**
+   * Serialize counterpart for {@link #createModelReference(String)}, persistence-ready presentation of a model reference
+   * @param modelRef model reference to serialize
+   * @return textual representation of a model reference
+   */
+  public abstract String asString(@NotNull SModelReference modelRef);
 
   /**
    * Creates an SModelReference in a module with a given model id and model name.
@@ -125,6 +198,14 @@ public abstract class PersistenceFacade {
    */
   public abstract SNodeId createNodeId(String text);
 
+  /**
+   * Serialize counterpart for {@link #createNodeReference(String)}, persistence-ready presentation of a node reference.
+   * @param nodeRef node reference to serialize
+   * @return textual representation of node reference
+   */
+  @NotNull
+  public abstract String asString(@NotNull SNodeReference nodeRef);
+
   public abstract SNodeReference createNodeReference(String text);
 
   /**
@@ -140,8 +221,18 @@ public abstract class PersistenceFacade {
    */
   public abstract Set<FindUsagesParticipant> getFindUsagesParticipants();
 
+  /**
+   * @deprecated add/remove methods shall move to PersistenceRegistry (implementation class), instead,
+   *             as components that perform registration may access PersistenceRegistry instance directly.
+   *             I don't see a need to add/remove participants dynamically.
+   */
+  @Deprecated
   public abstract void addFindUsagesParticipant(FindUsagesParticipant participant);
 
+  /**
+   * @deprecated see {@link #addFindUsagesParticipant(FindUsagesParticipant)} for reasons
+   */
+  @Deprecated
   public abstract void removeFindUsagesParticipant(FindUsagesParticipant participant);
 
   /**
@@ -150,8 +241,15 @@ public abstract class PersistenceFacade {
    */
   public abstract Set<NavigationParticipant> getNavigationParticipants();
 
+  /**
+   * @deprecated see {@link #addFindUsagesParticipant(FindUsagesParticipant)} for reasons
+   */
+  @Deprecated
   public abstract void addNavigationParticipant(NavigationParticipant participant);
 
+  /**
+   * @deprecated see {@link #addFindUsagesParticipant(FindUsagesParticipant)} for reasons
+   */
+  @Deprecated
   public abstract void removeNavigationParticipant(NavigationParticipant participant);
-
 }

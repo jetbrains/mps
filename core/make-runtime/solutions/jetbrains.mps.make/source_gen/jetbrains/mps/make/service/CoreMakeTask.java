@@ -5,8 +5,7 @@ package jetbrains.mps.make.service;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.make.script.IResult;
-import jetbrains.mps.make.script.IScript;
-import jetbrains.mps.make.resources.IResource;
+import jetbrains.mps.make.dependencies.MakeSequence;
 import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.messages.IMessageHandler;
 import org.jetbrains.annotations.NotNull;
@@ -15,13 +14,16 @@ import java.util.Map;
 import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Iterator;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.make.script.IScript;
+import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.InternalFlag;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.make.runtime.script.CompositeResult;
 import jetbrains.mps.internal.make.runtime.script.Script;
@@ -32,27 +34,21 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IMapping;
-import jetbrains.mps.logging.MPSAppenderBase;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import org.apache.log4j.Priority;
-import org.jetbrains.annotations.Nullable;
 
 public class CoreMakeTask {
   private static Logger LOG = LogManager.getLogger(CoreMakeTask.class);
+
   private IResult myResult = null;
-  protected final Iterable<IScript> myScripts;
   protected final String myScrName;
-  private final Iterable<? extends Iterable<IResource>> myClInput;
+  private final MakeSequence myMakeSequence;
   private final IScriptController myController;
   private final IMessageHandler myMessageHandler;
 
-  public CoreMakeTask(@NotNull String title, Iterable<IScript> scripts, String scrName, Iterable<? extends Iterable<IResource>> clInput, IScriptController ctl, IMessageHandler mh) {
-    this.myScripts = scripts;
-    this.myScrName = scrName;
-    this.myClInput = clInput;
-    this.myController = ctl;
-    this.myMessageHandler = mh;
+  public CoreMakeTask(@NotNull String scriptName, MakeSequence makeSeq, IScriptController ctl, IMessageHandler mh) {
+    myScrName = scriptName;
+    myMakeSequence = makeSeq;
+    myController = ctl;
+    myMessageHandler = mh;
   }
 
   public void run(@NotNull ProgressMonitor monitor) {
@@ -67,63 +63,58 @@ public class CoreMakeTask {
     }
   }
 
-  protected void doRun(ProgressMonitor monitor) {
+  protected void doRun(final ProgressMonitor monitor) {
     final Map<ITarget.Name, Long> timeStatistic = MapSequence.fromMap(new HashMap<ITarget.Name, Long>());
 
     aboutToStart();
-    final int clsize = Sequence.fromIterable(this.myClInput).count();
+    final int clsize = myMakeSequence.steps();
     if (clsize == 0) {
       return;
     }
     monitor.start("", clsize);
     try {
-      int idx = 0;
-      Iterator<IScript> scit = Sequence.fromIterable(myScripts).iterator();
-      Iterator<? extends Iterable<IResource>> clit = Sequence.fromIterable(myClInput).iterator();
-      while (scit.hasNext() && clit.hasNext()) {
-        Iterable<IResource> cl = clit.next();
-        IScript scr = scit.next();
-
-        if (!(scr.isValid())) {
-          String msg = myScrName + " not started: invalid make script";
-          myMessageHandler.handle(new Message(MessageKind.ERROR, msg));
-          displayInfo(msg);
-          for (IMessage err : scr.validationErrors()) {
-            myMessageHandler.handle(err);
+      final Wrappers._int idx = new Wrappers._int(0);
+      myMakeSequence.iterate(new _FunctionTypes._return_P2_E0<Boolean, IScript, Iterable<IResource>>() {
+        public Boolean invoke(IScript scr, Iterable<IResource> cl) {
+          if (!(scr.isValid())) {
+            String msg = myScrName + " not started: invalid make script";
+            myMessageHandler.handle(new Message(MessageKind.ERROR, msg));
+            displayInfo(msg);
+            for (IMessage err : scr.validationErrors()) {
+              myMessageHandler.handle(err);
+            }
+            CoreMakeTask.this.myResult = new IResult.FAILURE(null);
+            return false;
           }
-          this.myResult = new IResult.FAILURE(null);
-          break;
-        }
 
-        if (InternalFlag.isInternalMode()) {
-          myMessageHandler.handle(new Message(MessageKind.INFORMATION, "Modules cluster " + (idx + 1) + "/" + clsize + " [" + IterableUtils.join(Sequence.fromIterable(cl).select(new ISelector<IResource, String>() {
+          if (InternalFlag.isInternalMode()) {
+            myMessageHandler.handle(new Message(MessageKind.INFORMATION, "Modules cluster " + (idx.value + 1) + "/" + clsize + " [" + IterableUtils.join(Sequence.fromIterable(cl).select(new ISelector<IResource, String>() {
+              public String select(IResource r) {
+                return (r).describe();
+              }
+            }), ", ") + "]"));
+          }
+
+          monitor.step((idx.value + 1) + "/" + clsize + " " + IterableUtils.join(Sequence.fromIterable(cl).select(new ISelector<IResource, String>() {
             public String select(IResource r) {
               return (r).describe();
             }
-          }), ", ") + "]"));
-        }
-
-        monitor.step((idx + 1) + "/" + clsize + " " + IterableUtils.join(Sequence.fromIterable(cl).select(new ISelector<IResource, String>() {
-          public String select(IResource r) {
-            return (r).describe();
+          }), ","));
+          myResult = scr.execute(CoreMakeTask.this.myController, cl, monitor.subTask(1));
+          if (CoreMakeTask.this.myResult instanceof CompositeResult) {
+            IResource timeStatResource = Sequence.fromIterable(((CompositeResult) CoreMakeTask.this.myResult).getResult(Script.TIME_STATISTIC_RESULT_NAME).output()).first();
+            Map<ITarget.Name, Long> currentStatistic = ((TimeStatisticResource) timeStatResource).getStatistic();
+            for (ITarget.Name targetName : SetSequence.fromSet(MapSequence.fromMap(currentStatistic).keySet())) {
+              MapSequence.fromMap(timeStatistic).put(targetName, ((MapSequence.fromMap(timeStatistic).containsKey(targetName) ? MapSequence.fromMap(timeStatistic).get(targetName) : 0)) + MapSequence.fromMap(currentStatistic).get(targetName));
+            }
           }
-        }), ","));
-        this.myResult = scr.execute(this.myController, cl, monitor.subTask(1));
-        if (this.myResult instanceof CompositeResult) {
-          IResource timeStatResource = Sequence.fromIterable(((CompositeResult) this.myResult).getResult(Script.TIME_STATISTIC_RESULT_NAME).output()).first();
-          Map<ITarget.Name, Long> currentStatistic = ((TimeStatisticResource) timeStatResource).getStatistic();
-          for (ITarget.Name targetName : SetSequence.fromSet(MapSequence.fromMap(currentStatistic).keySet())) {
-            MapSequence.fromMap(timeStatistic).put(targetName, ((MapSequence.fromMap(timeStatistic).containsKey(targetName) ?
-              MapSequence.fromMap(timeStatistic).get(targetName) :
-              0
-            )) + MapSequence.fromMap(currentStatistic).get(targetName));
+          if (!(CoreMakeTask.this.myResult.isSucessful()) || monitor.isCanceled()) {
+            return false;
           }
+          idx.value++;
+          return true;
         }
-        if (!(this.myResult.isSucessful()) || monitor.isCanceled()) {
-          break;
-        }
-        idx++;
-      }
+      });
     } finally {
       long overallTime = Sequence.fromIterable(MapSequence.fromMap(timeStatistic).values()).foldLeft(0L, new ILeftCombinator<Long, Long>() {
         public Long combine(Long s, Long it) {
@@ -182,39 +173,5 @@ public class CoreMakeTask {
 
   public IResult getResult() {
     return myResult;
-  }
-
-  public static class RelayingLoggingHandler extends MPSAppenderBase {
-    private static Tuples._2<ThreadGroup, IMessageHandler> GROUP_HANDLER;
-    private ThreadLocal<IMessageHandler> messageHandler = new ThreadLocal<IMessageHandler>() {
-      @Override
-      protected IMessageHandler initialValue() {
-        return (CoreMakeTask.RelayingLoggingHandler.GROUP_HANDLER._0() == Thread.currentThread().getThreadGroup() ?
-          CoreMakeTask.RelayingLoggingHandler.GROUP_HANDLER._1() :
-          null
-        );
-      }
-    };
-
-    public RelayingLoggingHandler(IMessageHandler mh) {
-      this.messageHandler.set(mh);
-      GROUP_HANDLER = MultiTuple.<ThreadGroup,IMessageHandler>from(Thread.currentThread().getThreadGroup(), mh);
-      this.register();
-    }
-
-    public void dispose() {
-      this.unregister();
-      messageHandler.remove();
-    }
-
-    @Override
-    protected void append(@NotNull Priority priority, @NotNull String categoryName, @NotNull String messageText, @Nullable Throwable throwable, @Nullable Object object) {
-      IMessageHandler mh = messageHandler.get();
-      if (mh != null) {
-        Message message = new Message(MessageKind.fromPriority(priority), messageText);
-        message.setHintObject(object);
-        mh.handle(message);
-      }
-    }
   }
 }

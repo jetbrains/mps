@@ -4,7 +4,7 @@ package jetbrains.mps.samples.Kaja.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum LookingDirection {
   north("north", "north"),
@@ -12,16 +12,21 @@ public enum LookingDirection {
   south("south", "south"),
   west("west", "west");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private LookingDirection(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<LookingDirection> getConstants() {
     List<LookingDirection> list = ListSequence.fromList(new LinkedList<LookingDirection>());
     ListSequence.fromList(list).addElement(LookingDirection.north);
@@ -30,11 +35,9 @@ public enum LookingDirection {
     ListSequence.fromList(list).addElement(LookingDirection.west);
     return list;
   }
-
   public static LookingDirection getDefault() {
     return null;
   }
-
   public static LookingDirection parseValue(String value) {
     if (value == null) {
       return LookingDirection.getDefault();
@@ -52,16 +55,5 @@ public enum LookingDirection {
       return LookingDirection.west;
     }
     return LookingDirection.getDefault();
-  }
-
-  private String myValue;
-
-  LookingDirection(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,16 @@
  */
 package jetbrains.mps.generator.runtime;
 
-import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Evgeny Gryaznov, 12/7/10
  */
-public interface TemplateRuleWithCondition {
+public interface TemplateRuleWithCondition extends TemplateRule {
 
-  SNodeReference getRuleNode();
-
-  boolean isApplicable(TemplateExecutionEnvironment environment, TemplateContext context) throws GenerationException;
+  /**
+   * Tell whether rule can be applied in the context
+   * @since 3.3
+   */
+  boolean isApplicable(@NotNull TemplateContext context) throws GenerationException;
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,19 +18,19 @@ package jetbrains.mps.ide.ui.tree.smodel;
 import jetbrains.mps.ide.icons.IconManager;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.MPSTreeNodeEx;
-import jetbrains.mps.ide.ui.tree.SortUtil;
+import jetbrains.mps.ide.ui.tree.TreeElement;
+import jetbrains.mps.ide.ui.tree.TreeNodeTextSource;
+import jetbrains.mps.ide.ui.tree.TreeNodeVisitor;
 import jetbrains.mps.smodel.DependencyRecorder;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.SModelRepository;
-import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.util.ConditionalIterable;
 import jetbrains.mps.util.InternUtil;
-import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.SNodeOperations;
+import jetbrains.mps.util.SNodePresentationComparator;
 import jetbrains.mps.util.ToStringComparator;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -45,78 +45,92 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
-public class SModelTreeNode extends MPSTreeNodeEx {
+public class SModelTreeNode extends MPSTreeNode implements TreeElement {
 
-  private SModel myModelDescriptor;
+  private final SModel myModelDescriptor;
+  private final TreeNodeTextSource<SModelTreeNode> myTextSource;
   private List<SModelTreeNode> myChildModelTreeNodes = new ArrayList<SModelTreeNode>();
 
-  private String myLabel;
   private boolean myInitialized = false;
   private boolean myInitializing = false;
-  private boolean myShowLongName;
-  private int myCountAdditionalNamePart = 0;
   private List<SNodeGroupTreeNode> myRootGroups = new ArrayList<SNodeGroupTreeNode>();
 
-  private Condition<SNode> myNodesCondition;
+  private final Condition<SNode> myNodesCondition;
 
-  private DependencyRecorder<SNodeTreeNode> myDependencyRecorder = new DependencyRecorder<SNodeTreeNode>();
+  private final DependencyRecorder<SNodeTreeNode> myDependencyRecorder = new DependencyRecorder<SNodeTreeNode>();
 
   private Map<String, PackageNode> myPackageNodes = new HashMap<String, PackageNode>();
-  private Icon myIcon;
+  private Icon myBaseIcon;
 
-  public SModelTreeNode(SModel modelDescriptor,
+  @Deprecated
+  @ToRemove(version = 3.3)
+  public SModelTreeNode(SModel model,
       String label,
-      @NotNull IOperationContext operationContext) {
-    this(modelDescriptor, label, operationContext, true);
-  }
-
-  public SModelTreeNode(SModel modelDescriptor,
-      String label,
-      @NotNull IOperationContext operationContext,
-      Condition<SNode> condition) {
-    this(modelDescriptor, label, operationContext, true, condition, 0);
-  }
-
-  public SModelTreeNode(SModel modelDescriptor,
-      String label,
-      IOperationContext operationContext,
-      boolean showLongName) {
-    this(modelDescriptor, label, operationContext, showLongName, Condition.TRUE_CONDITION, 0);
-  }
-
-  public SModelTreeNode(SModel modelDescriptor,
-      String label,
-      IOperationContext operationContext,
-      int countNamePart) {
-    this(modelDescriptor, label, operationContext, false, Condition.TRUE_CONDITION, countNamePart);
-  }
-
-  public SModelTreeNode(SModel modelDescriptor,
-      String label,
-      IOperationContext operationContext,
       boolean showLongName,
       Condition<SNode> condition,
       int countNamePart) {
-    super(operationContext);
-    myShowLongName = showLongName;
-    myModelDescriptor = modelDescriptor;
-    myIcon = IconManager.getIconFor(getSModelDescriptor());
-    myLabel = label;
+    myTextSource = showLongName ? new LongModelNameText() : new ShortModelNameText();
+    myModelDescriptor = model;
     myNodesCondition = condition;
-    myCountAdditionalNamePart = countNamePart;
-    setUserObject(SNodeOperations.getModelLongName(modelDescriptor));
+    setUserObject(NameUtil.getModelLongName(model));
     if (myModelDescriptor != null) {
       setNodeIdentifier(myModelDescriptor.toString());
     } else {
       setNodeIdentifier("");
     }
-    setText(calculateText());
-    setIcon(myIcon);
+    setText(myTextSource.calculateText(this));
+    setBaseIcon(IconManager.getIconFor(model));
+    setIcon(IconManager.getIconFor(model));
   }
 
+  public SModelTreeNode(@NotNull SModel model) {
+    this(model, new LongModelNameText());
+  }
+
+  public SModelTreeNode(@NotNull SModel model, @NotNull TreeNodeTextSource<SModelTreeNode> textSource) {
+    myModelDescriptor = model;
+    myTextSource = textSource;
+    setUserObject(model.getName().getLongName());
+    setNodeIdentifier(model.toString());
+    Icon icon = IconManager.getIconFor(model);
+    setIcon(icon);
+    setBaseIcon(icon);
+    myNodesCondition = Condition.TRUE_CONDITION;
+    // invocation of external code with not completely initialized this is bad. Perhaps, shall rely on doUpdatePresentation invoked from onAdd()?
+    setText(myTextSource.calculateText(this));
+  }
+
+  public void setBaseIcon(@Nullable Icon baseIcon) {
+    myBaseIcon = baseIcon;
+  }
+
+  /**
+   * Base/default icon is not necessarily the one actually displayed, which may include different overlays,
+   * like 'modified' indicator.
+   *
+   * @return base icon, if any
+   */
+  @Nullable
+  public Icon getBaseIcon() {
+    // XXX How come base icon is only for models, not for SNodeTreeNode as well?
+    return myBaseIcon;
+  }
+
+  /**
+   * @deprecated renamed to {@link #getBaseIcon()}
+   */
+  @Deprecated
+  @ToRemove(version = 3.3)
   public Icon getDefaultIcon() {
-    return myIcon;
+    return getBaseIcon();
+  }
+
+  @Override
+  public boolean isLeaf() {
+    return false;
   }
 
   public boolean hasModelsUnder() {
@@ -232,70 +246,28 @@ public class SModelTreeNode extends MPSTreeNodeEx {
     }
   }
 
-  public org.jetbrains.mps.openapi.model.SModel getModel() {
+  public SModel getModel() {
     return myModelDescriptor;
   }
 
-  /**
-   * use getModel
-   */
-  @Deprecated
-  public final SModel getSModel() {
-    return getModel();
-  }
-
-  /**
-   * use getModel
-   */
-  @Deprecated
-  public final SModel getSModelDescriptor() {
-    return getModel();
+  @NotNull
+  public final SNodeTreeNode createSNodeTreeNode(SNode node) {
+    return createSNodeTreeNode(node, (String) null);
   }
 
   @NotNull
-  public final SNodeTreeNode createSNodeTreeNode(SNode node, IOperationContext operationContext) {
-    return createSNodeTreeNode(node, null, operationContext);
+  public final SNodeTreeNode createSNodeTreeNode(SNode node, Condition<SNode> condition) {
+    return createSNodeTreeNode(node, null, condition);
   }
 
   @NotNull
-  public final SNodeTreeNode createSNodeTreeNode(SNode node, IOperationContext operationContext, Condition<SNode> condition) {
-    return createSNodeTreeNode(node, null, operationContext, condition);
+  public final SNodeTreeNode createSNodeTreeNode(SNode node, String role) {
+    return createSNodeTreeNode(node, role, Condition.TRUE_CONDITION);
   }
 
   @NotNull
-  public final SNodeTreeNode createSNodeTreeNode(SNode node, String role, IOperationContext operationContext) {
-    return createSNodeTreeNode(node, role, operationContext, Condition.TRUE_CONDITION);
-  }
-
-  @NotNull
-  public SNodeTreeNode createSNodeTreeNode(SNode node, String role, IOperationContext operationContext, Condition<SNode> condition) {
-    return new SNodeTreeNode(node, role, operationContext, condition);
-  }
-
-  private String calculateText() {
-    org.jetbrains.mps.openapi.model.SModelReference reference;
-
-    if (getModel() != null) {
-      reference = getModel().getReference();
-    } else {
-      return "";
-    }
-
-    String name = calculatePresentationText(reference);
-    String result;
-
-    if (myLabel != null) {
-      result = myLabel + " : " + name;
-    } else {
-      result = name;
-    }
-
-    return InternUtil.intern(result);
-  }
-
-  public void setCountAdditionalNamePart(int count) {
-    myCountAdditionalNamePart = count;
-    updatePresentation();
+  public SNodeTreeNode createSNodeTreeNode(SNode node, String role, Condition<SNode> condition) {
+    return new SNodeTreeNode(node, role, condition);
   }
 
   @Override
@@ -303,24 +275,38 @@ public class SModelTreeNode extends MPSTreeNodeEx {
     return myInitialized;
   }
 
-  public boolean isSubfolderModel(SModel candidate) {
-    if (myModelDescriptor == null) return false;
-    String modelName = SNodeOperations.getModelLongName(myModelDescriptor);
-    String candidateName = SNodeOperations.getModelLongName(candidate);
-    if (candidateName == null || !candidateName.startsWith(modelName) || modelName.equals(candidateName))
+  public boolean isSubfolderModel(@NotNull SModel candidate) {
+    final String modelName = myModelDescriptor.getName().getLongName();
+    String candidateName = candidate.getName().getLongName();
+    if (!candidateName.startsWith(modelName) || modelName.equals(candidateName)) {
       return false;
+    }
     if (candidateName.charAt(modelName.length()) == '.') {
-      String modelStereotype = SModelStereotype.getStereotype(myModelDescriptor);
-      String candidateStereotype = SModelStereotype.getStereotype(candidate);
-      if (!modelStereotype.equals(candidateStereotype)) return false;
-      String shortName = candidateName.replace(modelName + ".", "");
-      if (shortName.contains(".")) {
+      String modelStereotype = myModelDescriptor.getName().getStereotype();
+      String candidateStereotype = candidate.getName().getStereotype();
+      if (!modelStereotype.equals(candidateStereotype)) {
+        return false;
+      }
+      String shortName = candidateName.substring(modelName.length() + 1);
+      if (shortName.indexOf('.') > 0) {
         String maxPackage = candidateName.substring(0, candidateName.lastIndexOf('.'));
-        SModel md = SModelRepository.getInstance().getModelDescriptor(maxPackage);
-        if (md != null) {
-          if (IterableUtil.asCollection(md.getModule().getModels()).contains(myModelDescriptor)) {
-            return false;
-          }
+        // Imagine, we need to figure out whether a.b.c.d is subfolder model of a.b (iow, 'a.b'.isSubfolderModel('a.b.c.d'))
+        // Guess, 'subfolder' means 'shall be displayed as my immediate child' here.
+        // As I understood, the idea is to check whether there's model a.b.c (sic!) inside same module and thus candidate model
+        // shall get reported as its subfolder rather than that of myModelDescriptor.
+        // XXX there's a defect that two models like a.b.x.y1 and a.b.x.y2 (namely, jetbrains.mps.ide solution,
+        //     findusages.findalgorithm.finders.specific and findusages.view.optionseditor)
+        //     are visualized as distinct x.y1 and x.y2 when there's no a.b.x model (i.e. they are not grouped under
+        //     same 'x' node unless there are nodes in 'x' model).
+        //     Another defect in present implementation is that it doesn't take into account actual set of visualized models
+        //     and assumes all models of a module are visible, but this can't be fixed unless the whole approach (see below) is fixed.
+        // FIXME This whole code with implicit assumption of iterating over models from the same module, and recursive processing of
+        //       sorted(!) collection of models with int index (i.e. SModelsSubtree.buildChildModels()) needs refactoring.
+        //       Sorting ensures we didn't create SModelTreeNode for a child before the one for the parent.
+        //       Can't refactor right away as mbeddr subclasses our tree nodes and heavily relies on implementation.
+        final Stream<SModel> modelsInMyModule = StreamSupport.stream(myModelDescriptor.getModule().getModels().spliterator(), false);
+        if (modelsInMyModule.anyMatch(m -> maxPackage.equals(m.getName().getLongName()))) {
+          return false;
         }
       }
       return true;
@@ -355,6 +341,11 @@ public class SModelTreeNode extends MPSTreeNodeEx {
   }
 
   @Override
+  protected void doUpdatePresentation() {
+    setText(myTextSource.calculateText(this));
+  }
+
+  @Override
   protected void doInit() {
     try {
       myInitializing = true;
@@ -369,19 +360,19 @@ public class SModelTreeNode extends MPSTreeNodeEx {
         treeModel.insertNodeInto(newChildModel, this, index);
       }
       org.jetbrains.mps.openapi.model.SModel model = getModel();
-      Iterable<SNode> iter = new ConditionalIterable(model.getRootNodes(), myNodesCondition);
 
       List<SNode> filteredRoots = new ArrayList<SNode>();
-      for (SNode node : iter) {
+      for (SNode node : new ConditionalIterable<SNode>(model.getRootNodes(), myNodesCondition)) {
         filteredRoots.add(node);
       }
-      List<SNode> sortedRoots = SortUtil.sortNodesByPresentation(filteredRoots);
       Comparator<Object> childrenComparator = getTree().getChildrenComparator();
       if (childrenComparator != null) {
-        Collections.sort(sortedRoots, childrenComparator);
+        Collections.sort(filteredRoots, childrenComparator);
+      } else {
+        Collections.sort(filteredRoots, new SNodePresentationComparator());
       }
-      for (SNode sortedRoot : sortedRoots) {
-        MPSTreeNodeEx treeNode = createSNodeTreeNode(sortedRoot, getOperationContext(), myNodesCondition);
+      for (SNode sortedRoot : filteredRoots) {
+        MPSTreeNodeEx treeNode = createSNodeTreeNode(sortedRoot, myNodesCondition);
         MPSTreeNode group = getNodeGroupFor(sortedRoot);
         if (group != null) {
           group.add(treeNode);
@@ -398,22 +389,6 @@ public class SModelTreeNode extends MPSTreeNodeEx {
     }
   }
 
-  private String calculatePresentationText(org.jetbrains.mps.openapi.model.SModelReference reference) {
-    if (myShowLongName) {
-      return reference.getModelName();
-    } else if (myCountAdditionalNamePart == 0) {
-      return NameUtil.shortNameFromLongName(reference.getModelName());
-    }
-    StringBuilder stringBuilder = new StringBuilder();
-    String[] namePart = reference.getModelName().split("\\.");
-    int firstPart = namePart.length - myCountAdditionalNamePart - 1;
-    for (int i = firstPart; i < namePart.length - 1; i++) {
-      stringBuilder.append(namePart[i]).append('.');
-    }
-    stringBuilder.append(NameUtil.shortNameFromLongName(reference.getModelName()));
-    return stringBuilder.toString();
-  }
-
   @Override
   protected final boolean canBeOpened() {
     return false;
@@ -425,7 +400,7 @@ public class SModelTreeNode extends MPSTreeNodeEx {
     DefaultTreeModel treeModel = (DefaultTreeModel) getTree().getModel();
 
     final ArrayList<SNode> allRoots = new ArrayList<SNode>();
-    for (SNode root1 : getSModel().getRootNodes()) {
+    for (SNode root1 : getModel().getRootNodes()) {
       allRoots.add(root1);
     }
     Collections.sort(allRoots, new ToStringComparator(true));
@@ -438,8 +413,11 @@ public class SModelTreeNode extends MPSTreeNodeEx {
       }
     });
 
+    //Assuming that "added" as well as targetNode.children for all targetNodes are sorted already,
+    //so we merge the two by always remembering the last insertion point
+    final HashMap<MPSTreeNode, Integer> lastPositions = new HashMap<MPSTreeNode, Integer>();
     for (SNode root : added) {
-      SNodeTreeNode nodeToInsert = new SNodeTreeNode(root, getOperationContext());
+      SNodeTreeNode nodeToInsert = new SNodeTreeNode(root);
       MPSTreeNode targetNode = getNodeGroupFor(root);
 
       if (targetNode == null) {
@@ -447,7 +425,10 @@ public class SModelTreeNode extends MPSTreeNodeEx {
       }
 
       int index = -1;
-      for (int i = 0; i < targetNode.getChildCount(); i++) {
+      Integer lastPosition = lastPositions.get(targetNode);
+      if (lastPosition == null) lastPosition = 0;
+
+      for (int i = lastPosition; i < targetNode.getChildCount(); i++) {
         if (!(targetNode.getChildAt(i) instanceof SNodeTreeNode)) {
           continue;
         }
@@ -462,7 +443,31 @@ public class SModelTreeNode extends MPSTreeNodeEx {
       if (index == -1) {
         index = targetNode.getChildCount();
       }
+      lastPositions.put(targetNode, index + 1);
       treeModel.insertNodeInto(nodeToInsert, targetNode, index);
+    }
+  }
+
+  @Override
+  public void accept(@NotNull TreeNodeVisitor visitor) {
+    visitor.visitModelNode(this);
+  }
+
+  public static class LongModelNameText implements TreeNodeTextSource<SModelTreeNode> {
+    @Override
+    public String calculateText(SModelTreeNode treeNode) {
+      SModel model = treeNode.getModel();
+      return model == null ? "<null>" : InternUtil.intern(model.getModelName());
+    }
+  }
+
+  public static class ShortModelNameText implements TreeNodeTextSource<SModelTreeNode> {
+    @Override
+    public String calculateText(SModelTreeNode treeNode) {
+      SModel model = treeNode.getModel();
+      // model long name is likely to be encountered more than once. Does it make sense to intern short name?
+      // It's indeed saves some space for aspect models (all are named the same, but are short) at expense of occupied slot in InternUtil.
+      return model == null ? "<null>" : NameUtil.shortNameFromLongName(InternUtil.intern(model.getModelName()));
     }
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,18 +17,19 @@ package jetbrains.mps.ide.vfs;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.AbstractModule;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SModule;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+// XXX Resembles GeneratedFilesExcludePolicy, which deals with generated sources, while this one with artifacts compiled from these sources.
 public class ClassesGenPolicy extends BaseDirectoryIndexExcludePolicy {
   protected ClassesGenPolicy(@NotNull Project project) {
     super(project);
@@ -39,29 +40,39 @@ public class ClassesGenPolicy extends BaseDirectoryIndexExcludePolicy {
   protected Set<VirtualFile> getAllExcludeRoots() {
     final Set<VirtualFile> roots = new HashSet<VirtualFile>();
 
-    ModelAccess.instance().runReadAction(new Runnable() {
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(getProject());
+    mpsProject.getModelAccess().runReadAction(new Runnable() {
       @Override
       public void run() {
-        for (SModule module : MPSModuleRepository.getInstance().getModules()) {
+        for (SModule module : mpsProject.getProjectModulesWithGenerators()) {
           JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
-          if (facet == null) continue;
+          if (facet == null) {
+            continue;
+          }
 
           IFile classesGen = facet.getClassesGen();
-          if (classesGen == null) continue;
+          if (classesGen == null) {
+            continue;
+          }
 
           // todo: this trash should be removed after reconsidering language packaging. see MPS-11757 for details
-          if (classesGen.getName().endsWith("." + MPSExtentions.MPS_ARCH)) continue;
+          // XXX why not IFile.isPackaged()?
+          if (classesGen.getName().endsWith("." + MPSExtentions.MPS_ARCH)) {
+            continue;
+          }
 
-          VirtualFile classesGenVF = VirtualFileUtils.getVirtualFile(classesGen);
+          VirtualFile classesGenVF = VirtualFileUtils.getProjectVirtualFile(classesGen);
           if (classesGenVF != null) {
             roots.add(classesGenVF);
           }
 
-          // todo: =(
-          if (((AbstractModule) module).getModuleSourceDir() != null && ((AbstractModule) module).getModuleSourceDir().getDescendant("classes") != null) {
-            VirtualFile classesVF = VirtualFileUtils.getVirtualFile(((AbstractModule) module).getModuleSourceDir().getDescendant("classes"));
-            if (classesVF != null) {
-              roots.add(classesVF);
+          if (((AbstractModule) module).getModuleSourceDir() != null) {
+            IFile classesDir = ((AbstractModule) module).getModuleSourceDir().getDescendant(AbstractModule.CLASSES);
+            if (classesDir.exists()) {
+              VirtualFile classesVF = VirtualFileUtils.getProjectVirtualFile(classesDir);
+              if (classesVF != null) {
+                roots.add(classesVF);
+              }
             }
           }
         }

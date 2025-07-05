@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,74 +15,113 @@
  */
 package jetbrains.mps.generator;
 
-import jetbrains.mps.generator.impl.plan.GenerationPlan;
+import jetbrains.mps.generator.impl.ExportsSessionContext;
+import jetbrains.mps.generator.impl.GenControllerContext;
+import jetbrains.mps.generator.impl.GenerationSessionLogger;
+import jetbrains.mps.generator.impl.RoleValidation;
+import jetbrains.mps.generator.impl.plan.CrossModelEnvironment;
+import jetbrains.mps.generator.template.ITemplateGenerator;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.project.ProjectRepository;
 import jetbrains.mps.project.StandaloneMPSContext;
+import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.util.IterableUtil;
-import org.jetbrains.mps.openapi.model.SNode;import org.jetbrains.mps.openapi.model.SNodeId;import org.jetbrains.mps.openapi.model.SNodeReference;import org.jetbrains.mps.openapi.model.SReference;import org.jetbrains.mps.openapi.model.SModelId;import org.jetbrains.mps.openapi.model.SModel;import org.jetbrains.mps.openapi.model.SModel;import org.jetbrains.mps.openapi.model.SModelReference;import jetbrains.mps.smodel.*;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.containers.ConcurrentHashSet;
+import jetbrains.mps.util.performance.IPerformanceTracer;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.language.SConceptRepository;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 /**
+ * Available from {@link ITemplateGenerator#getGeneratorSessionContext()}.
+ * Generally shall not get exposed in generated code, however there are templates that cast genContext to TemplateQueryContext and access ITemplateGenerator
+ * from there, with subsequent access to this class (e.g. bl.java.closures - those under BL, not that standalone).
  * Igor Alshannikov
  * Sep 19, 2005
  */
 public class GenerationSessionContext extends StandaloneMPSContext {
 
-  private static final Object COPYED_ROOTS = new Object();
+  private final Object COPIED_ROOTS = new Object();
 
-  private SModel myOriginalInputModel;
+  private final SModel myOriginalInputModel;
 
-  private final IOperationContext myInvocationContext;
-  private final IGenerationTracer myGenerationTracer;
+  private final GenControllerContext myEnvironment;
   private final TransientModelsModule myTransientModule;
-  private final GenerationPlan myGenerationPlan;
-  private final Map<String, Object> myParameters;
+  private final GenerationSessionLogger myLogger;
+  private final RoleValidation myValidation;
+  /*
+   * GenerationSessionContext is not the perfect place for this tracer, as it's not really session object,
+   * however it's per-model object, and generation session is per-model as well (thus, can't put it into e.g. GenControllerContext)
+   */
+  private final IPerformanceTracer myPerfTrace;
 
   private final Object NULL_OBJECT = new Object();
 
-  private Map<Object, Object> myTransientObjects = new ConcurrentHashMap<Object, Object>();
-  // objects survive between transient models but not between generation steps 
-  private Map<Object, Object> myStepObjects = new ConcurrentHashMap<Object, Object>();
-  // objects survive between transient models and between generation steps
-  private Map<Object, Object> mySessionObjects = new ConcurrentHashMap<Object, Object>();
+  /**
+   * Transient objects survive micro-step only
+   */
+  private final Map<Object, Object> myTransientObjects;
+  /**
+   * Step objects survive survive major step
+   */
+  private final Map<Object, Object> myStepObjects;
+  /**
+   * Session objects survive complete generation session for the given model
+   */
+  private final Map<Object, Object> mySessionObjects;
+
+  private final ExportsSessionContext myExportsSession;
 
   // these objects survive through all steps of generation
-  private Set<String> myUsedNames = new ConcurrentHashSet<String>();
+  private final ConcurrentMap<SNodeReference, Set<String>> myUsedNames;
+  private final SNodeReference myFakeNameTopContextNode = new SNodePointer((SModelReference) null, null);
+  private final Map<SNode, String> topToSuffix = new ConcurrentHashMap<SNode, String>();
 
-  public GenerationSessionContext(IOperationContext invocationContext,
-                                  IGenerationTracer generationTracer,
-                                  TransientModelsModule transientModule,
+  public GenerationSessionContext(GenControllerContext environment, TransientModelsModule transientModule,
+                                  GenerationSessionLogger logger,
                                   SModel inputModel,
-                                  GenerationPlan generationPlan,
-                                  Map<String, Object> parameters,
-                                  GenerationSessionContext prevContext) {
+                                  IPerformanceTracer performanceTracer) {
 
-    myInvocationContext = invocationContext;
-    myGenerationTracer = generationTracer;
+    myEnvironment = environment;
     myTransientModule = transientModule;
-    myGenerationPlan = generationPlan;
-    myParameters = parameters;
+    myOriginalInputModel = inputModel;
+    myPerfTrace = performanceTracer;
+    myLogger = logger;
+    myValidation = new RoleValidation(environment.getOptions().isShowBadChildWarning());
+    myExportsSession = new ExportsSessionContext(environment.getExportModels(), this);
+    mySessionObjects = new ConcurrentHashMap<Object, Object>();
+    myTransientObjects = new ConcurrentHashMap<Object, Object>();
+    myStepObjects = new ConcurrentHashMap<Object, Object>();
+    myUsedNames = new ConcurrentHashMap<SNodeReference, Set<String>>();
+  }
 
-    if (prevContext != null) {
-      myOriginalInputModel = prevContext.myOriginalInputModel;
-      mySessionObjects = prevContext.mySessionObjects;
-      myUsedNames = prevContext.myUsedNames;
-    }
-
-    if (!(inputModel .getModule() instanceof TransientModelsModule)) {
-      // new original input model
-      myOriginalInputModel = inputModel;
-      // forget history
-      mySessionObjects.clear();
-      myUsedNames.clear();
-    }
+  /**
+   * copy cons for each major step. Nothing but an odd way to clear step and transient objects
+   */
+  public GenerationSessionContext(@NotNull GenerationSessionContext prevContext) {
+    myEnvironment = prevContext.myEnvironment;
+    myTransientModule = prevContext.myTransientModule;
+    myOriginalInputModel = prevContext.myOriginalInputModel;
+    myPerfTrace = prevContext.myPerfTrace;
+    myLogger = prevContext.myLogger;
+    mySessionObjects = prevContext.mySessionObjects;
+    myUsedNames = prevContext.myUsedNames;
+    myValidation = prevContext.myValidation;
+    myExportsSession = prevContext.myExportsSession;
+    // this copy cons indicate new major step, hence new empty maps
+    myTransientObjects = new ConcurrentHashMap<Object, Object>();
+    myStepObjects = new ConcurrentHashMap<Object, Object>();
   }
 
   public void clearTransientObjects() {
@@ -94,33 +133,34 @@ public class GenerationSessionContext extends StandaloneMPSContext {
   }
 
   @Override
-  public <T> T getComponent(@NotNull Class<T> clazz) {
-    return myInvocationContext.getComponent(clazz);
-  }
-
-  @Override
   @NotNull
   public TransientModelsModule getModule() {
     return myTransientModule;
   }
 
   @Override
+  @ToRemove(version = 3.3)
   public Project getProject() {
-    return myInvocationContext.getProject();
+    SRepository repository = myOriginalInputModel.getModule().getRepository();
+    if (!(repository instanceof ProjectRepository)) {
+      repository = myEnvironment.getRepository();
+    }
+    assert repository instanceof ProjectRepository;
+    return ((ProjectRepository) repository).getProject();
   }
 
-  @Override
-  @NotNull
-  public IScope getScope() {
-    return getModule().getScope();
-  }
-
-  public IOperationContext getInvocationContext() {
-    return myInvocationContext;
+  /**
+   * @deprecated Transitional access to SRepository. Likely, the code that needs a repository shall get refactored
+   *             not to use one. Contract is questionable, provided we head towards distinct repository for transient models.
+   *             For the time being, this repository corresponds to generator's environment, e.g. project it's run from.
+   */
+  @Deprecated
+  public SRepository getRepository() {
+    return myEnvironment.getRepository();
   }
 
   public String toString() {
-    return getClass().getName() + "-> " + "<auto-plan>" + "\ninvoked from: " + myInvocationContext;
+    return String.format("%s: generating %s in", getClass().getSimpleName(), myOriginalInputModel.getName());
   }
 
   public void putTransientObject(Object key, Object o) {
@@ -150,13 +190,16 @@ public class GenerationSessionContext extends StandaloneMPSContext {
     return result == NULL_OBJECT ? null : result;
   }
 
-  private static String nodeUniqueId(SNode node) {
-    StringBuilder sb = new StringBuilder();
+  public ExportsSessionContext getExports() {
+    return myExportsSession;
+  }
+
+  private static void appendNodeUniqueId(SNode node, StringBuilder sb) {
     SNode parent = node.getParent();
 
     boolean sym = true;
     while (parent != null) {
-      int index = IterableUtil.asList(parent.getChildren(node.getRoleInParent())).indexOf(node);
+      int index = IterableUtil.asList(parent.getChildren(node.getContainmentLink())).indexOf(node);
       if (index == 0) {
         sb.append(sym ? 'a' : '0');
       }
@@ -169,147 +212,151 @@ public class GenerationSessionContext extends StandaloneMPSContext {
       node = parent;
       parent = node.getParent();
     }
-    return sb.toString();
   }
 
-  boolean useOldStyleUniqueName = "true".equals(System.getProperty("mps.olduniquename"));
-
-  public String createUniqueNameOldStyle(String roughName, SNode contextNode) {
-    if (contextNode != null) {
-      // find topmost 'named' ancestor
-      SNode topmostNamed = null;
-      SNode node_ = contextNode;
-      while (node_ != null) {
-        if (node_.getConcept().isSubConceptOf(SConceptRepository.getInstance().getConcept(SNodeUtil.concept_INamedConcept))) {
-          topmostNamed = node_;
-        }
-        node_ = node_.getParent();
-      }
-
-      if (topmostNamed != null) {
-        String name = topmostNamed.getName();
-        if (name != null) {
-          String contextSuffix = String.valueOf(name.hashCode());
-          if (contextSuffix.length() > 4) {
-            contextSuffix = contextSuffix.substring(contextSuffix.length() - 4); // make it a bit shorter
-          }
-          // modify roughName
-          roughName = roughName + contextSuffix + "_";
-        }
-      }
-    } // if(contextNode != null)
-
-    String uniqueName;
-    int count = 0;
-    while (true) {
-      uniqueName = roughName + (count++);
-      if (!myUsedNames.contains(uniqueName)) break;
-    }
-    myUsedNames.add(uniqueName);
-    return uniqueName;
-  }
 
   public String createUniqueName(String roughName, SNode contextNode, SNode inputNode) {
-    if (useOldStyleUniqueName) {
-      return createUniqueNameOldStyle(roughName, contextNode);
+    StringBuilder uniqueNameBuffer = new StringBuilder(50);
+    uniqueNameBuffer.append(roughName);
+    if (roughName.length() > 0 && roughName.charAt(roughName.length()-1) == '_') {
+      uniqueNameBuffer.setLength(roughName.length()-1);
     }
-
-    String uniqueSuffix = null;
 
     if (contextNode != null) {
       // find topmost 'named' ancestor
       SNode topmostNamed = null;
       SNode node_ = contextNode;
       while (node_ != null) {
-        if (node_.getConcept().isSubConceptOf(SConceptRepository.getInstance().getConcept(SNodeUtil.concept_INamedConcept))) {
+        if (node_.getConcept().isSubConceptOf(SNodeUtil.concept_INamedConcept)) {
           topmostNamed = node_;
         }
         node_ = node_.getParent();
       }
 
       if (topmostNamed != null) {
-        String name = topmostNamed.getName();
-        if (name != null) {
-          uniqueSuffix = Integer.toString(name.hashCode() >>> 1, Character.MAX_RADIX);
+        String suffix = topToSuffix.get(topmostNamed);
+        if (suffix != null) {
+          uniqueNameBuffer.append('_');
+          uniqueNameBuffer.append(suffix);
+        } else {
+          String name = topmostNamed.getName();
+          if (name != null) {
+            // In fact, ("v2".hashCode >>> 1) == ("v3".hashCode >>> 1) and "unique" names
+            // in two distinct roots (and distinct contextNode) happen to share top suffix.
+            // When such two roots were generated in parallel, unique names weren't truly unique, and got mixed up.
+            // Can't simply get rid of >>>1 as it would require rebuilding all the models where unique names were
+            // used (i.e. almost every model out there).
+            suffix = Integer.toString(name.hashCode() >>> 1, Character.MAX_RADIX);
+            topToSuffix.put(topmostNamed, suffix);
+            uniqueNameBuffer.append('_');
+            uniqueNameBuffer.append(suffix);
+          }
         }
+        contextNode = topmostNamed;
       }
     } // if(contextNode != null)
 
     if (inputNode != null) {
-      if (uniqueSuffix == null) {
-        uniqueSuffix = nodeUniqueId(inputNode);
-      } else {
-        uniqueSuffix = uniqueSuffix + "_" + nodeUniqueId(inputNode);
-      }
+      uniqueNameBuffer.append('_');
+      appendNodeUniqueId(inputNode, uniqueNameBuffer);
     }
 
-    if (uniqueSuffix != null) {
-      roughName = roughName.endsWith("_") ? roughName + uniqueSuffix : roughName + "_" + uniqueSuffix;
-    }
-    String uniqueName = roughName;
+    final boolean suffixAdded = roughName.length() < uniqueNameBuffer.length();
+    String uniqueName = uniqueNameBuffer.toString();
 
-    if (uniqueSuffix == null || myUsedNames.contains(uniqueName)) {
-      roughName += "_";
-      for (int count = 0; ; count++) {
-        uniqueName = roughName + count;
-        if (!myUsedNames.contains(uniqueName)) break;
-      }
+    final Set<String> usedNames = getUsedNames(contextNode);
+
+    if (suffixAdded && usedNames.add(uniqueName)) {
+      return uniqueName;
     }
-    myUsedNames.add(uniqueName);
+    // assumption: !suffixAdded || usedNames.contains(uniqueName);
+    uniqueNameBuffer.append('_');
+    final int trimPos = uniqueNameBuffer.length();
+    for (int count = 0; ; count++) {
+      uniqueNameBuffer.append(count);
+      uniqueName = uniqueNameBuffer.toString();
+      if (usedNames.add(uniqueName)) {
+        break;
+      }
+      uniqueNameBuffer.setLength(trimPos);
+    }
     return uniqueName;
   }
 
-
-  public GenerationPlan getGenerationPlan() {
-    return myGenerationPlan;
+  /**
+   * names are unique within given context, not globally in the session
+   */
+  private Set<String> getUsedNames(SNode contextNode) {
+    SNodeReference key = contextNode == null ? myFakeNameTopContextNode : contextNode.getReference();
+    Set<String> rv = myUsedNames.putIfAbsent(key, new ConcurrentHashSet<String>());
+    return rv == null ? myUsedNames.get(key) : rv;
   }
 
+
   public void clearCopiedRootsSet() {
-    Set<SNode> set = (Set<SNode>) getStepObject(COPYED_ROOTS);
+    Set<SNode> set = getCopiedRoots(false);
     if (set != null) {
       set.clear();
     }
   }
 
   public void registerCopiedRoot(SNode outputRootNode) {
-    Set<SNode> set = (Set<SNode>) getStepObject(COPYED_ROOTS);
-    if (set == null) {
-      set = new HashSet<SNode>();
-      putStepObject(COPYED_ROOTS, set);
-    }
-    set.add(outputRootNode);
+    getCopiedRoots(true).add(outputRootNode);
   }
 
   public boolean isCopiedRoot(SNode inputNode) {
-    Set<SNode> set = (Set<SNode>) getStepObject(COPYED_ROOTS);
-    if (set == null) return false;
-    return set.contains(inputNode);
+    Set<SNode> set = getCopiedRoots(false);
+    return set != null && set.contains(inputNode);
   }
 
-  public IGenerationTracer getGenerationTracer() {
-    return myGenerationTracer;
-  }
-
-  private boolean keepTransientForMessageNavigation() {
-    return !myInvocationContext.isTestMode();
-  }
-
-  public boolean keepTransientModel(SModel model, boolean force) {
-    if (model .getModule() instanceof TransientModelsModule && (force || keepTransientForMessageNavigation())) {
-      return getModule().addModelToKeep(model, force);
+  private Set<SNode> getCopiedRoots(boolean create) {
+    @SuppressWarnings("unchecked")
+    Set<SNode> set = (Set<SNode>) getStepObject(COPIED_ROOTS);
+    if (set == null && create) {
+      putStepObject(COPIED_ROOTS, set = new HashSet<SNode>());
     }
-    return false;
-  }
-
-  public boolean isTransientModelToKeep(SModel model) {
-    return getModule().isModelToKeep(model);
-  }
-
-  public void clearTransientModels() {
-    getModule().clearUnused();
+    return set;
   }
 
   public Object getGenerationParameter(String name) {
-    return myParameters == null ? null : myParameters.get(name);
+    if (getGenerationOptions().getParametersProvider() != null) {
+      final Map<String, Object> parameters = getGenerationOptions().getParametersProvider().getParameters(myOriginalInputModel);
+      return parameters == null ? null : parameters.get(name);
+    }
+    return null;
+  }
+
+  public GenerationOptions getGenerationOptions() {
+    return myEnvironment.getOptions();
+  }
+
+  /**
+   * @return never <code>null</code>
+   */
+  public IGeneratorLogger getLogger() {
+    return myLogger;
+  }
+
+  /**
+   * @return never <code>null</code>
+   */
+  public RoleValidation getRoleValidationFacility() {
+    // XXX in fact, GenerationSessionContext seems to serve as an API (resides in public package and provides public services
+    // to genContext, like unique name), while RoleValidation is implementation class.
+    // However, don't want to refactor GSC now (split iface and impl) - there's e.g. GenerationPlan (impl class) exposed here as well, so it doesn't
+    // look like that intention was to keep it API, rather a facility to keep everything handy.
+    return myValidation;
+  }
+
+  /**
+   * @return never <code>null</code>
+   */
+  public CrossModelEnvironment getCrossModelEnvironment() {
+    // same considerations applies as for #getRoleValidationFacility() above, need a distinct implementation context for TG (could use StepArguments, perhaps).
+    return myEnvironment.getCrossModelEnvironment();
+  }
+
+  public IPerformanceTracer getPerformanceTracer() {
+    return myPerfTrace;
   }
 }

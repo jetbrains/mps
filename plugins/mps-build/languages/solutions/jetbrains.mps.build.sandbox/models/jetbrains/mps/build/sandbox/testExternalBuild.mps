@@ -1,213 +1,308 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:911b64be-e838-4b67-bbec-bce1a5b0b287(jetbrains.mps.build.sandbox.testExternalBuild)">
-  <persistence version="8" />
-  <language namespace="0cf935df-4699-4e9c-a132-fa109541cba3(jetbrains.mps.build.mps)" />
-  <language namespace="798100da-4f0a-421a-b991-71f8c50ce5d2(jetbrains.mps.build)" />
-  <import index="ffeo" modelUID="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)" version="-1" />
-  <import index="tpck" modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" implicit="yes" />
-  <import index="3ior" modelUID="r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)" version="2" implicit="yes" />
-  <import index="kdzh" modelUID="r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)" version="1" implicit="yes" />
-  <root type="3ior.BuildProject" typeId="3ior.5617550519002745363" id="8056730377013685541" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="buildTest" />
-    <property name="fileName" nameId="3ior.4915877860348071612" value="buildTest.xml" />
-    <property name="internalBaseDirectory" nameId="3ior.5204048710541015587" value=".." />
-    <node role="scriptsDir" roleId="3ior.4796668409958418110" type="3ior.BuildSourceProjectRelativePath" typeId="3ior.5481553824944787378" id="8056730377013685542" nodeInfo="ng">
-      <node role="compositePart" roleId="3ior.7321017245477039051" type="3ior.BuildCompositePath" typeId="3ior.8618885170173601777" id="8056730377013685548" nodeInfo="nn">
-        <property name="head" nameId="3ior.8618885170173601779" value="jetbrains.mps.build.sandbox" />
-        <node role="tail" roleId="3ior.8618885170173601778" type="3ior.BuildCompositePath" typeId="3ior.8618885170173601777" id="8056730377013685856" nodeInfo="nn">
-          <property name="head" nameId="3ior.8618885170173601779" value="samples" />
-          <node role="tail" roleId="3ior.8618885170173601778" type="3ior.BuildCompositePath" typeId="3ior.8618885170173601777" id="8056730377013772125" nodeInfo="nn">
-            <property name="head" nameId="3ior.8618885170173601779" value="buildTest" />
+<model ref="r:911b64be-e838-4b67-bbec-bce1a5b0b287(jetbrains.mps.build.sandbox.testExternalBuild)">
+  <persistence version="9" />
+  <languages>
+    <use id="798100da-4f0a-421a-b991-71f8c50ce5d2" name="jetbrains.mps.build" version="0" />
+    <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="3" />
+  </languages>
+  <imports>
+    <import index="ffeo" ref="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)" />
+  </imports>
+  <registry>
+    <language id="798100da-4f0a-421a-b991-71f8c50ce5d2" name="jetbrains.mps.build">
+      <concept id="5481553824944787378" name="jetbrains.mps.build.structure.BuildSourceProjectRelativePath" flags="ng" index="55IIr" />
+      <concept id="7321017245476976379" name="jetbrains.mps.build.structure.BuildRelativePath" flags="ng" index="iG8Mu">
+        <child id="7321017245477039051" name="compositePart" index="iGT6I" />
+      </concept>
+      <concept id="4993211115183325728" name="jetbrains.mps.build.structure.BuildProjectDependency" flags="ng" index="2sgV4H">
+        <reference id="5617550519002745380" name="script" index="1l3spb" />
+      </concept>
+      <concept id="927724900262033858" name="jetbrains.mps.build.structure.BuildSource_JavaOptions" flags="ng" index="2_Ic$z">
+        <property id="6998860900671147996" name="javaLevel" index="TZNOO" />
+      </concept>
+      <concept id="4380385936562003279" name="jetbrains.mps.build.structure.BuildString" flags="ng" index="NbPM2">
+        <child id="4903714810883783243" name="parts" index="3MwsjC" />
+      </concept>
+      <concept id="8618885170173601777" name="jetbrains.mps.build.structure.BuildCompositePath" flags="nn" index="2Ry0Ak">
+        <property id="8618885170173601779" name="head" index="2Ry0Am" />
+        <child id="8618885170173601778" name="tail" index="2Ry0An" />
+      </concept>
+      <concept id="6647099934206700647" name="jetbrains.mps.build.structure.BuildJavaPlugin" flags="ng" index="10PD9b" />
+      <concept id="7389400916848050060" name="jetbrains.mps.build.structure.BuildLayout_NamedContainer" flags="ng" index="3981dR">
+        <child id="4380385936562148502" name="containerName" index="Nbhlr" />
+      </concept>
+      <concept id="7389400916848036984" name="jetbrains.mps.build.structure.BuildLayout_Folder" flags="ng" index="398223" />
+      <concept id="5617550519002745364" name="jetbrains.mps.build.structure.BuildLayout" flags="ng" index="1l3spV" />
+      <concept id="5617550519002745363" name="jetbrains.mps.build.structure.BuildProject" flags="ng" index="1l3spW">
+        <property id="4915877860348071612" name="fileName" index="turDy" />
+        <property id="5204048710541015587" name="internalBaseDirectory" index="2DA0ip" />
+        <child id="4796668409958418110" name="scriptsDir" index="auvoZ" />
+        <child id="6647099934206700656" name="plugins" index="10PD9s" />
+        <child id="7389400916848080626" name="parts" index="3989C9" />
+        <child id="5617550519002745381" name="dependencies" index="1l3spa" />
+        <child id="5617550519002745372" name="layout" index="1l3spN" />
+      </concept>
+      <concept id="4701820937132344003" name="jetbrains.mps.build.structure.BuildLayout_Container" flags="ng" index="1y1bJS">
+        <child id="7389400916848037006" name="children" index="39821P" />
+      </concept>
+      <concept id="841011766566059607" name="jetbrains.mps.build.structure.BuildStringNotEmpty" flags="ng" index="3_J27D" />
+      <concept id="4903714810883702019" name="jetbrains.mps.build.structure.BuildTextStringPart" flags="ng" index="3Mxwew">
+        <property id="4903714810883755350" name="text" index="3MwjfP" />
+      </concept>
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps">
+      <concept id="6592112598314498932" name="jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin" flags="ng" index="m$_wf">
+        <property id="6592112598314498927" name="id" index="m$_wk" />
+        <child id="6592112598314498931" name="version" index="m$_w8" />
+        <child id="6592112598314499050" name="content" index="m$_yh" />
+        <child id="6592112598314499028" name="dependencies" index="m$_yJ" />
+        <child id="6592112598314499021" name="name" index="m$_yQ" />
+        <child id="6592112598314855574" name="containerName" index="m_cZH" />
+      </concept>
+      <concept id="6592112598314498926" name="jetbrains.mps.build.mps.structure.BuildMpsLayout_Plugin" flags="ng" index="m$_wl">
+        <reference id="6592112598314801433" name="plugin" index="m_rDy" />
+      </concept>
+      <concept id="6592112598314499036" name="jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule" flags="ng" index="m$_yB">
+        <reference id="6592112598314499037" name="target" index="m$_yA" />
+      </concept>
+      <concept id="6592112598314499027" name="jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginDependency" flags="ng" index="m$_yC">
+        <reference id="6592112598314499066" name="target" index="m$_y1" />
+      </concept>
+      <concept id="1265949165890536423" name="jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleJars" flags="ng" index="L2wRC">
+        <reference id="1265949165890536425" name="module" index="L2wRA" />
+      </concept>
+      <concept id="868032131020265945" name="jetbrains.mps.build.mps.structure.BuildMPSPlugin" flags="ng" index="3b7kt6" />
+      <concept id="5253498789149381388" name="jetbrains.mps.build.mps.structure.BuildMps_Module" flags="ng" index="3bQrTs">
+        <property id="1500819558096356884" name="doNotCompile" index="2GAjPV" />
+        <child id="5253498789149547704" name="dependencies" index="3bR37C" />
+      </concept>
+      <concept id="5253498789149585690" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnModule" flags="ng" index="3bR9La">
+        <property id="5253498789149547713" name="reexport" index="3bR36h" />
+        <reference id="5253498789149547705" name="module" index="3bR37D" />
+      </concept>
+      <concept id="3189788309731840247" name="jetbrains.mps.build.mps.structure.BuildMps_Solution" flags="ng" index="1E1JtA" />
+      <concept id="322010710375871467" name="jetbrains.mps.build.mps.structure.BuildMps_AbstractModule" flags="ng" index="3LEN3z">
+        <property id="8369506495128725901" name="compact" index="BnDLt" />
+        <property id="322010710375892619" name="uuid" index="3LESm3" />
+        <child id="322010710375956261" name="path" index="3LF7KH" />
+      </concept>
+      <concept id="7259033139236285166" name="jetbrains.mps.build.mps.structure.BuildMps_ExtractedModuleDependency" flags="nn" index="1SiIV0">
+        <child id="7259033139236285167" name="dependency" index="1SiIV1" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="1l3spW" id="6ZfgptGZYO_">
+    <property role="TrG5h" value="buildTest" />
+    <property role="turDy" value="buildTest.xml" />
+    <property role="2DA0ip" value=".." />
+    <node concept="55IIr" id="6ZfgptGZYOA" role="auvoZ">
+      <node concept="2Ry0Ak" id="6ZfgptGZYOG" role="iGT6I">
+        <property role="2Ry0Am" value="jetbrains.mps.build.sandbox" />
+        <node concept="2Ry0Ak" id="6ZfgptGZYTw" role="2Ry0An">
+          <property role="2Ry0Am" value="samples" />
+          <node concept="2Ry0Ak" id="6ZfgptH0jXt" role="2Ry0An">
+            <property role="2Ry0Am" value="buildTest" />
           </node>
         </node>
       </node>
     </node>
-    <node role="layout" roleId="3ior.5617550519002745372" type="3ior.BuildLayout" typeId="3ior.5617550519002745364" id="8056730377013685543" nodeInfo="ng">
-      <node role="children" roleId="3ior.7389400916848037006" type="3ior.BuildLayout_Folder" typeId="3ior.7389400916848036984" id="8056730377013685552" nodeInfo="ng">
-        <node role="containerName" roleId="3ior.4380385936562148502" type="3ior.BuildStringNotEmpty" typeId="3ior.841011766566059607" id="8056730377013685553" nodeInfo="ng">
-          <node role="parts" roleId="3ior.4903714810883783243" type="3ior.BuildTextStringPart" typeId="3ior.4903714810883702019" id="8056730377013685555" nodeInfo="ng">
-            <property name="text" nameId="3ior.4903714810883755350" value="sandbox" />
+    <node concept="1l3spV" id="6ZfgptGZYOB" role="1l3spN">
+      <node concept="398223" id="6ZfgptGZYOK" role="39821P">
+        <node concept="3_J27D" id="6ZfgptGZYOL" role="Nbhlr">
+          <node concept="3Mxwew" id="6ZfgptGZYON" role="3MwsjC">
+            <property role="3MwjfP" value="sandbox" />
           </node>
         </node>
-        <node role="children" roleId="3ior.7389400916848037006" type="kdzh.BuildMpsLayout_ModuleJars" typeId="kdzh.1265949165890536423" id="8056730377013685556" nodeInfo="ng">
-          <link role="module" roleId="kdzh.1265949165890536425" targetNodeId="8056730377013685549" resolveInfo="jetbrains.mps.build.sandbox" />
+        <node concept="L2wRC" id="6ZfgptGZYOO" role="39821P">
+          <ref role="L2wRA" node="6ZfgptGZYOH" resolve="jetbrains.mps.build.sandbox" />
         </node>
       </node>
     </node>
-    <node role="dependencies" roleId="3ior.5617550519002745381" type="3ior.BuildProjectDependency" typeId="3ior.4993211115183325728" id="8056730377013685545" nodeInfo="ng">
-      <link role="script" roleId="3ior.5617550519002745380" targetNodeId="ffeo.4301118715654192646" resolveInfo="mps" />
+    <node concept="2sgV4H" id="6ZfgptGZYOD" role="1l3spa">
+      <ref role="1l3spb" to="ffeo:3IKDaVZmzS6" resolve="mps" />
     </node>
-    <node role="parts" roleId="3ior.7389400916848080626" type="kdzh.BuildMps_Solution" typeId="kdzh.3189788309731840247" id="8056730377013685549" nodeInfo="ng">
-      <property name="compact" nameId="kdzh.8369506495128725901" value="true" />
-      <property name="name" nameId="tpck.1169194664001" value="jetbrains.mps.build.sandbox" />
-      <property name="uuid" nameId="kdzh.322010710375892619" value="d029512f-7357-432e-b758-ecdc37cc94f5" />
-      <property name="doNotCompile" nameId="kdzh.1500819558096356884" value="false" />
-      <node role="path" roleId="kdzh.322010710375956261" type="3ior.BuildSourceProjectRelativePath" typeId="3ior.5481553824944787378" id="8056730377013685550" nodeInfo="ng">
-        <node role="compositePart" roleId="3ior.7321017245477039051" type="3ior.BuildCompositePath" typeId="3ior.8618885170173601777" id="8056730377013686185" nodeInfo="nn">
-          <property name="head" nameId="3ior.8618885170173601779" value="jetbrains.mps.build.sandbox" />
-          <node role="tail" roleId="3ior.8618885170173601778" type="3ior.BuildCompositePath" typeId="3ior.8618885170173601777" id="8056730377013686186" nodeInfo="nn">
-            <property name="head" nameId="3ior.8618885170173601779" value="jetbrains.mps.build.sandbox.msd" />
-          </node>
-        </node>
-      </node>
-      <node role="dependencies" roleId="kdzh.5253498789149547704" type="kdzh.BuildMps_ExtractedModuleDependency" typeId="kdzh.7259033139236285166" id="2488570609615115592" nodeInfo="nn">
-        <node role="dependency" roleId="kdzh.7259033139236285167" type="kdzh.BuildMps_ModuleDependencyOnModule" typeId="kdzh.5253498789149585690" id="2488570609615115591" nodeInfo="ng">
-          <property name="reexport" nameId="kdzh.5253498789149547713" value="false" />
-          <link role="module" roleId="kdzh.5253498789149547705" targetNodeId="ffeo.4697806380739460690" resolveInfo="Annotations" />
-        </node>
-      </node>
-      <node role="dependencies" roleId="kdzh.5253498789149547704" type="kdzh.BuildMps_ExtractedModuleDependency" typeId="kdzh.7259033139236285166" id="2488570609615115594" nodeInfo="nn">
-        <node role="dependency" roleId="kdzh.7259033139236285167" type="kdzh.BuildMps_ModuleDependencyOnModule" typeId="kdzh.5253498789149585690" id="2488570609615115593" nodeInfo="ng">
-          <property name="reexport" nameId="kdzh.5253498789149547713" value="false" />
-          <link role="module" roleId="kdzh.5253498789149547705" targetNodeId="ffeo.2182758403694705590" resolveInfo="MPS.Core" />
-        </node>
-      </node>
-      <node role="dependencies" roleId="kdzh.5253498789149547704" type="kdzh.BuildMps_ExtractedModuleDependency" typeId="kdzh.7259033139236285166" id="2488570609615115596" nodeInfo="nn">
-        <node role="dependency" roleId="kdzh.7259033139236285167" type="kdzh.BuildMps_ModuleDependencyOnModule" typeId="kdzh.5253498789149585690" id="2488570609615115595" nodeInfo="ng">
-          <property name="reexport" nameId="kdzh.5253498789149547713" value="false" />
-          <link role="module" roleId="kdzh.5253498789149547705" targetNodeId="ffeo.2569834391839970945" resolveInfo="MPS.Workbench" />
-        </node>
-      </node>
-      <node role="dependencies" roleId="kdzh.5253498789149547704" type="kdzh.BuildMps_ExtractedModuleDependency" typeId="kdzh.7259033139236285166" id="2488570609615115598" nodeInfo="nn">
-        <node role="dependency" roleId="kdzh.7259033139236285167" type="kdzh.BuildMps_ModuleDependencyOnModule" typeId="kdzh.5253498789149585690" id="2488570609615115597" nodeInfo="ng">
-          <property name="reexport" nameId="kdzh.5253498789149547713" value="false" />
-          <link role="module" roleId="kdzh.5253498789149547705" targetNodeId="ffeo.8939513996048535435" resolveInfo="jetbrains.mps.baseLanguage" />
-        </node>
-      </node>
-      <node role="dependencies" roleId="kdzh.5253498789149547704" type="kdzh.BuildMps_ExtractedModuleDependency" typeId="kdzh.7259033139236285166" id="2488570609615115600" nodeInfo="nn">
-        <node role="dependency" roleId="kdzh.7259033139236285167" type="kdzh.BuildMps_ModuleDependencyOnModule" typeId="kdzh.5253498789149585690" id="2488570609615115599" nodeInfo="ng">
-          <property name="reexport" nameId="kdzh.5253498789149547713" value="false" />
-          <link role="module" roleId="kdzh.5253498789149547705" targetNodeId="ffeo.1388241112193793880" resolveInfo="jetbrains.mps.baseLanguage.scopes" />
-        </node>
-      </node>
-      <node role="dependencies" roleId="kdzh.5253498789149547704" type="kdzh.BuildMps_ExtractedModuleDependency" typeId="kdzh.7259033139236285166" id="2488570609615115602" nodeInfo="nn">
-        <node role="dependency" roleId="kdzh.7259033139236285167" type="kdzh.BuildMps_ModuleDependencyOnModule" typeId="kdzh.5253498789149585690" id="2488570609615115601" nodeInfo="ng">
-          <property name="reexport" nameId="kdzh.5253498789149547713" value="false" />
-          <link role="module" roleId="kdzh.5253498789149547705" targetNodeId="ffeo.8227093612175570784" resolveInfo="jetbrains.mps.ide.build" />
-        </node>
-      </node>
-      <node role="dependencies" roleId="kdzh.5253498789149547704" type="kdzh.BuildMps_ExtractedModuleDependency" typeId="kdzh.7259033139236285166" id="2488570609615115604" nodeInfo="nn">
-        <node role="dependency" roleId="kdzh.7259033139236285167" type="kdzh.BuildMps_ModuleDependencyOnModule" typeId="kdzh.5253498789149585690" id="2488570609615115603" nodeInfo="ng">
-          <property name="reexport" nameId="kdzh.5253498789149547713" value="false" />
-          <link role="module" roleId="kdzh.5253498789149547705" targetNodeId="ffeo.8939513996048536566" resolveInfo="jetbrains.mps.kernel" />
-        </node>
-      </node>
-    </node>
-    <node role="plugins" roleId="3ior.6647099934206700656" type="3ior.BuildJavaPlugin" typeId="3ior.6647099934206700647" id="8056730377013773363" nodeInfo="ng" />
-    <node role="plugins" roleId="3ior.6647099934206700656" type="kdzh.BuildMPSPlugin" typeId="kdzh.868032131020265945" id="8056730377013773365" nodeInfo="ng" />
-  </root>
-  <root type="3ior.BuildProject" typeId="3ior.5617550519002745363" id="8077978191914979020" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="buildTest2" />
-    <property name="fileName" nameId="3ior.4915877860348071612" value="buildTest2.xml" />
-    <property name="internalBaseDirectory" nameId="3ior.5204048710541015587" value=".." />
-    <node role="parts" roleId="3ior.7389400916848080626" type="kdzh.BuildMps_IdeaPlugin" typeId="kdzh.6592112598314498932" id="8077978191914979039" nodeInfo="ng">
-      <property name="id" nameId="kdzh.6592112598314498927" value="jetbrains.mps.buildTest2" />
-      <node role="name" roleId="kdzh.6592112598314499021" type="3ior.BuildStringNotEmpty" typeId="3ior.841011766566059607" id="8077978191914979040" nodeInfo="ng">
-        <node role="parts" roleId="3ior.4903714810883783243" type="3ior.BuildTextStringPart" typeId="3ior.4903714810883702019" id="8077978191914979043" nodeInfo="ng">
-          <property name="text" nameId="3ior.4903714810883755350" value="Build Test SandBox" />
-        </node>
-      </node>
-      <node role="containerName" roleId="kdzh.6592112598314855574" type="3ior.BuildStringNotEmpty" typeId="3ior.841011766566059607" id="8077978191914979041" nodeInfo="ng">
-        <node role="parts" roleId="3ior.4903714810883783243" type="3ior.BuildTextStringPart" typeId="3ior.4903714810883702019" id="8077978191914979044" nodeInfo="ng">
-          <property name="text" nameId="3ior.4903714810883755350" value="mps-buildTest2" />
-        </node>
-      </node>
-      <node role="version" roleId="kdzh.6592112598314498931" type="3ior.BuildStringNotEmpty" typeId="3ior.841011766566059607" id="8077978191914979049" nodeInfo="ng">
-        <node role="parts" roleId="3ior.4903714810883783243" type="3ior.BuildTextStringPart" typeId="3ior.4903714810883702019" id="8077978191914979050" nodeInfo="ng">
-          <property name="text" nameId="3ior.4903714810883755350" value="1.0.0" />
-        </node>
-      </node>
-      <node role="content" roleId="kdzh.6592112598314499050" type="kdzh.BuildMps_IdeaPluginModule" typeId="kdzh.6592112598314499036" id="8077978191914979052" nodeInfo="ng">
-        <link role="target" roleId="kdzh.6592112598314499037" targetNodeId="8077978191914979031" resolveInfo="jetbrains.mps.build.sandbox" />
-      </node>
-      <node role="dependencies" roleId="kdzh.6592112598314499028" type="kdzh.BuildMps_IdeaPluginDependency" typeId="kdzh.6592112598314499027" id="4973949960459706694" nodeInfo="ng">
-        <link role="target" roleId="kdzh.6592112598314499066" targetNodeId="ffeo.4973949960459588488" />
-      </node>
-    </node>
-    <node role="scriptsDir" roleId="3ior.4796668409958418110" type="3ior.BuildSourceProjectRelativePath" typeId="3ior.5481553824944787378" id="8077978191914979021" nodeInfo="ng">
-      <node role="compositePart" roleId="3ior.7321017245477039051" type="3ior.BuildCompositePath" typeId="3ior.8618885170173601777" id="8077978191914979022" nodeInfo="nn">
-        <property name="head" nameId="3ior.8618885170173601779" value="jetbrains.mps.build.sandbox" />
-        <node role="tail" roleId="3ior.8618885170173601778" type="3ior.BuildCompositePath" typeId="3ior.8618885170173601777" id="8077978191914979023" nodeInfo="nn">
-          <property name="head" nameId="3ior.8618885170173601779" value="samples" />
-          <node role="tail" roleId="3ior.8618885170173601778" type="3ior.BuildCompositePath" typeId="3ior.8618885170173601777" id="8077978191914979024" nodeInfo="nn">
-            <property name="head" nameId="3ior.8618885170173601779" value="buildTest" />
+    <node concept="1E1JtA" id="6ZfgptGZYOH" role="3989C9">
+      <property role="BnDLt" value="true" />
+      <property role="TrG5h" value="jetbrains.mps.build.sandbox" />
+      <property role="3LESm3" value="d029512f-7357-432e-b758-ecdc37cc94f5" />
+      <property role="2GAjPV" value="false" />
+      <node concept="55IIr" id="6ZfgptGZYOI" role="3LF7KH">
+        <node concept="2Ry0Ak" id="6ZfgptGZYYD" role="iGT6I">
+          <property role="2Ry0Am" value="jetbrains.mps.build.sandbox" />
+          <node concept="2Ry0Ak" id="6ZfgptGZYYE" role="2Ry0An">
+            <property role="2Ry0Am" value="jetbrains.mps.build.sandbox.msd" />
           </node>
         </node>
       </node>
+      <node concept="1SiIV0" id="2a9bszg_xl8" role="3bR37C">
+        <node concept="3bR9La" id="2a9bszg_xl7" role="1SiIV1">
+          <property role="3bR36h" value="false" />
+          <ref role="3bR37D" to="ffeo:44LXwdzyvTi" resolve="Annotations" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="2a9bszg_xla" role="3bR37C">
+        <node concept="3bR9La" id="2a9bszg_xl9" role="1SiIV1">
+          <property role="3bR36h" value="false" />
+          <ref role="3bR37D" to="ffeo:1TaHNgiIbIQ" resolve="MPS.Core" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="2a9bszg_xlc" role="3bR37C">
+        <node concept="3bR9La" id="2a9bszg_xlb" role="1SiIV1">
+          <property role="3bR36h" value="false" />
+          <ref role="3bR37D" to="ffeo:2eDSGe9d1q1" resolve="MPS.Workbench" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="2a9bszg_xle" role="3bR37C">
+        <node concept="3bR9La" id="2a9bszg_xld" role="1SiIV1">
+          <property role="3bR36h" value="false" />
+          <ref role="3bR37D" to="ffeo:7Kfy9QB6KYb" resolve="jetbrains.mps.baseLanguage" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="2a9bszg_xlg" role="3bR37C">
+        <node concept="3bR9La" id="2a9bszg_xlf" role="1SiIV1">
+          <property role="3bR36h" value="false" />
+          <ref role="3bR37D" to="ffeo:1d41uYMTRXo" resolve="jetbrains.mps.baseLanguage.scopes" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="2a9bszg_xli" role="3bR37C">
+        <node concept="3bR9La" id="2a9bszg_xlh" role="1SiIV1">
+          <property role="3bR36h" value="false" />
+          <ref role="3bR37D" to="ffeo:78GwwOvB3tw" resolve="jetbrains.mps.ide.build" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="2a9bszg_xlk" role="3bR37C">
+        <node concept="3bR9La" id="2a9bszg_xlj" role="1SiIV1">
+          <property role="3bR36h" value="false" />
+          <ref role="3bR37D" to="ffeo:7Kfy9QB6LfQ" resolve="jetbrains.mps.kernel" />
+        </node>
+      </node>
     </node>
-    <node role="layout" roleId="3ior.5617550519002745372" type="3ior.BuildLayout" typeId="3ior.5617550519002745364" id="8077978191914979025" nodeInfo="ng">
-      <node role="children" roleId="3ior.7389400916848037006" type="3ior.BuildLayout_Folder" typeId="3ior.7389400916848036984" id="8077978191914979055" nodeInfo="ng">
-        <node role="containerName" roleId="3ior.4380385936562148502" type="3ior.BuildStringNotEmpty" typeId="3ior.841011766566059607" id="8077978191914979056" nodeInfo="ng">
-          <node role="parts" roleId="3ior.4903714810883783243" type="3ior.BuildTextStringPart" typeId="3ior.4903714810883702019" id="8077978191914979057" nodeInfo="ng">
-            <property name="text" nameId="3ior.4903714810883755350" value="plugins" />
+    <node concept="10PD9b" id="6ZfgptH0kgN" role="10PD9s" />
+    <node concept="3b7kt6" id="6ZfgptH0kgP" role="10PD9s" />
+    <node concept="2_Ic$z" id="7XMK9W6CC9X" role="3989C9">
+      <property role="TZNOO" value="" />
+    </node>
+  </node>
+  <node concept="1l3spW" id="70qJ_RossVc">
+    <property role="TrG5h" value="buildTest2" />
+    <property role="turDy" value="buildTest2.xml" />
+    <property role="2DA0ip" value=".." />
+    <node concept="m$_wf" id="70qJ_RossVv" role="3989C9">
+      <property role="m$_wk" value="jetbrains.mps.buildTest2" />
+      <node concept="3_J27D" id="70qJ_RossVw" role="m$_yQ">
+        <node concept="3Mxwew" id="70qJ_RossVz" role="3MwsjC">
+          <property role="3MwjfP" value="Build Test SandBox" />
+        </node>
+      </node>
+      <node concept="3_J27D" id="70qJ_RossVx" role="m_cZH">
+        <node concept="3Mxwew" id="70qJ_RossV$" role="3MwsjC">
+          <property role="3MwjfP" value="mps-buildTest2" />
+        </node>
+      </node>
+      <node concept="3_J27D" id="70qJ_RossVD" role="m$_w8">
+        <node concept="3Mxwew" id="70qJ_RossVE" role="3MwsjC">
+          <property role="3MwjfP" value="1.0.0" />
+        </node>
+      </node>
+      <node concept="m$_yB" id="70qJ_RossVG" role="m$_yh">
+        <ref role="m$_yA" node="70qJ_RossVn" resolve="jetbrains.mps.build.sandbox" />
+      </node>
+      <node concept="m$_yC" id="4k71ibbLe56" role="m$_yJ">
+        <ref role="m$_y1" to="ffeo:4k71ibbKLe8" resolve="jetbrains.mps.core" />
+      </node>
+    </node>
+    <node concept="55IIr" id="70qJ_RossVd" role="auvoZ">
+      <node concept="2Ry0Ak" id="70qJ_RossVe" role="iGT6I">
+        <property role="2Ry0Am" value="jetbrains.mps.build.sandbox" />
+        <node concept="2Ry0Ak" id="70qJ_RossVf" role="2Ry0An">
+          <property role="2Ry0Am" value="samples" />
+          <node concept="2Ry0Ak" id="70qJ_RossVg" role="2Ry0An">
+            <property role="2Ry0Am" value="buildTest" />
           </node>
         </node>
-        <node role="children" roleId="3ior.7389400916848037006" type="kdzh.BuildMpsLayout_Plugin" typeId="kdzh.6592112598314498926" id="8077978191914979058" nodeInfo="ng">
-          <link role="plugin" roleId="kdzh.6592112598314801433" targetNodeId="8077978191914979039" resolveInfo="jetbrains.mps.buildTest2" />
+      </node>
+    </node>
+    <node concept="1l3spV" id="70qJ_RossVh" role="1l3spN">
+      <node concept="398223" id="70qJ_RossVJ" role="39821P">
+        <node concept="3_J27D" id="70qJ_RossVK" role="Nbhlr">
+          <node concept="3Mxwew" id="70qJ_RossVL" role="3MwsjC">
+            <property role="3MwjfP" value="plugins" />
+          </node>
+        </node>
+        <node concept="m$_wl" id="70qJ_RossVM" role="39821P">
+          <ref role="m_rDy" node="70qJ_RossVv" resolve="jetbrains.mps.buildTest2" />
         </node>
       </node>
     </node>
-    <node role="dependencies" roleId="3ior.5617550519002745381" type="3ior.BuildProjectDependency" typeId="3ior.4993211115183325728" id="8077978191914979030" nodeInfo="ng">
-      <link role="script" roleId="3ior.5617550519002745380" targetNodeId="ffeo.4301118715654192646" resolveInfo="mps" />
+    <node concept="2sgV4H" id="70qJ_RossVm" role="1l3spa">
+      <ref role="1l3spb" to="ffeo:3IKDaVZmzS6" resolve="mps" />
     </node>
-    <node role="parts" roleId="3ior.7389400916848080626" type="kdzh.BuildMps_Solution" typeId="kdzh.3189788309731840247" id="8077978191914979031" nodeInfo="ng">
-      <property name="compact" nameId="kdzh.8369506495128725901" value="true" />
-      <property name="name" nameId="tpck.1169194664001" value="jetbrains.mps.build.sandbox" />
-      <property name="uuid" nameId="kdzh.322010710375892619" value="d029512f-7357-432e-b758-ecdc37cc94f5" />
-      <property name="doNotCompile" nameId="kdzh.1500819558096356884" value="false" />
-      <node role="path" roleId="kdzh.322010710375956261" type="3ior.BuildSourceProjectRelativePath" typeId="3ior.5481553824944787378" id="8077978191914979032" nodeInfo="ng">
-        <node role="compositePart" roleId="3ior.7321017245477039051" type="3ior.BuildCompositePath" typeId="3ior.8618885170173601777" id="8077978191914979033" nodeInfo="nn">
-          <property name="head" nameId="3ior.8618885170173601779" value="jetbrains.mps.build.sandbox" />
-          <node role="tail" roleId="3ior.8618885170173601778" type="3ior.BuildCompositePath" typeId="3ior.8618885170173601777" id="8077978191914979034" nodeInfo="nn">
-            <property name="head" nameId="3ior.8618885170173601779" value="jetbrains.mps.build.sandbox.msd" />
+    <node concept="1E1JtA" id="70qJ_RossVn" role="3989C9">
+      <property role="BnDLt" value="true" />
+      <property role="TrG5h" value="jetbrains.mps.build.sandbox" />
+      <property role="3LESm3" value="d029512f-7357-432e-b758-ecdc37cc94f5" />
+      <property role="2GAjPV" value="false" />
+      <node concept="55IIr" id="70qJ_RossVo" role="3LF7KH">
+        <node concept="2Ry0Ak" id="70qJ_RossVp" role="iGT6I">
+          <property role="2Ry0Am" value="jetbrains.mps.build.sandbox" />
+          <node concept="2Ry0Ak" id="70qJ_RossVq" role="2Ry0An">
+            <property role="2Ry0Am" value="jetbrains.mps.build.sandbox.msd" />
           </node>
         </node>
       </node>
-      <node role="dependencies" roleId="kdzh.5253498789149547704" type="kdzh.BuildMps_ExtractedModuleDependency" typeId="kdzh.7259033139236285166" id="2488570609615115701" nodeInfo="nn">
-        <node role="dependency" roleId="kdzh.7259033139236285167" type="kdzh.BuildMps_ModuleDependencyOnModule" typeId="kdzh.5253498789149585690" id="2488570609615115700" nodeInfo="ng">
-          <property name="reexport" nameId="kdzh.5253498789149547713" value="false" />
-          <link role="module" roleId="kdzh.5253498789149547705" targetNodeId="ffeo.4697806380739460690" resolveInfo="Annotations" />
+      <node concept="1SiIV0" id="2a9bszg_xmP" role="3bR37C">
+        <node concept="3bR9La" id="2a9bszg_xmO" role="1SiIV1">
+          <property role="3bR36h" value="false" />
+          <ref role="3bR37D" to="ffeo:44LXwdzyvTi" resolve="Annotations" />
         </node>
       </node>
-      <node role="dependencies" roleId="kdzh.5253498789149547704" type="kdzh.BuildMps_ExtractedModuleDependency" typeId="kdzh.7259033139236285166" id="2488570609615115703" nodeInfo="nn">
-        <node role="dependency" roleId="kdzh.7259033139236285167" type="kdzh.BuildMps_ModuleDependencyOnModule" typeId="kdzh.5253498789149585690" id="2488570609615115702" nodeInfo="ng">
-          <property name="reexport" nameId="kdzh.5253498789149547713" value="false" />
-          <link role="module" roleId="kdzh.5253498789149547705" targetNodeId="ffeo.2182758403694705590" resolveInfo="MPS.Core" />
+      <node concept="1SiIV0" id="2a9bszg_xmR" role="3bR37C">
+        <node concept="3bR9La" id="2a9bszg_xmQ" role="1SiIV1">
+          <property role="3bR36h" value="false" />
+          <ref role="3bR37D" to="ffeo:1TaHNgiIbIQ" resolve="MPS.Core" />
         </node>
       </node>
-      <node role="dependencies" roleId="kdzh.5253498789149547704" type="kdzh.BuildMps_ExtractedModuleDependency" typeId="kdzh.7259033139236285166" id="2488570609615115705" nodeInfo="nn">
-        <node role="dependency" roleId="kdzh.7259033139236285167" type="kdzh.BuildMps_ModuleDependencyOnModule" typeId="kdzh.5253498789149585690" id="2488570609615115704" nodeInfo="ng">
-          <property name="reexport" nameId="kdzh.5253498789149547713" value="false" />
-          <link role="module" roleId="kdzh.5253498789149547705" targetNodeId="ffeo.2569834391839970945" resolveInfo="MPS.Workbench" />
+      <node concept="1SiIV0" id="2a9bszg_xmT" role="3bR37C">
+        <node concept="3bR9La" id="2a9bszg_xmS" role="1SiIV1">
+          <property role="3bR36h" value="false" />
+          <ref role="3bR37D" to="ffeo:2eDSGe9d1q1" resolve="MPS.Workbench" />
         </node>
       </node>
-      <node role="dependencies" roleId="kdzh.5253498789149547704" type="kdzh.BuildMps_ExtractedModuleDependency" typeId="kdzh.7259033139236285166" id="2488570609615115707" nodeInfo="nn">
-        <node role="dependency" roleId="kdzh.7259033139236285167" type="kdzh.BuildMps_ModuleDependencyOnModule" typeId="kdzh.5253498789149585690" id="2488570609615115706" nodeInfo="ng">
-          <property name="reexport" nameId="kdzh.5253498789149547713" value="false" />
-          <link role="module" roleId="kdzh.5253498789149547705" targetNodeId="ffeo.8939513996048535435" resolveInfo="jetbrains.mps.baseLanguage" />
+      <node concept="1SiIV0" id="2a9bszg_xmV" role="3bR37C">
+        <node concept="3bR9La" id="2a9bszg_xmU" role="1SiIV1">
+          <property role="3bR36h" value="false" />
+          <ref role="3bR37D" to="ffeo:7Kfy9QB6KYb" resolve="jetbrains.mps.baseLanguage" />
         </node>
       </node>
-      <node role="dependencies" roleId="kdzh.5253498789149547704" type="kdzh.BuildMps_ExtractedModuleDependency" typeId="kdzh.7259033139236285166" id="2488570609615115709" nodeInfo="nn">
-        <node role="dependency" roleId="kdzh.7259033139236285167" type="kdzh.BuildMps_ModuleDependencyOnModule" typeId="kdzh.5253498789149585690" id="2488570609615115708" nodeInfo="ng">
-          <property name="reexport" nameId="kdzh.5253498789149547713" value="false" />
-          <link role="module" roleId="kdzh.5253498789149547705" targetNodeId="ffeo.1388241112193793880" resolveInfo="jetbrains.mps.baseLanguage.scopes" />
+      <node concept="1SiIV0" id="2a9bszg_xmX" role="3bR37C">
+        <node concept="3bR9La" id="2a9bszg_xmW" role="1SiIV1">
+          <property role="3bR36h" value="false" />
+          <ref role="3bR37D" to="ffeo:1d41uYMTRXo" resolve="jetbrains.mps.baseLanguage.scopes" />
         </node>
       </node>
-      <node role="dependencies" roleId="kdzh.5253498789149547704" type="kdzh.BuildMps_ExtractedModuleDependency" typeId="kdzh.7259033139236285166" id="2488570609615115711" nodeInfo="nn">
-        <node role="dependency" roleId="kdzh.7259033139236285167" type="kdzh.BuildMps_ModuleDependencyOnModule" typeId="kdzh.5253498789149585690" id="2488570609615115710" nodeInfo="ng">
-          <property name="reexport" nameId="kdzh.5253498789149547713" value="false" />
-          <link role="module" roleId="kdzh.5253498789149547705" targetNodeId="ffeo.8227093612175570784" resolveInfo="jetbrains.mps.ide.build" />
+      <node concept="1SiIV0" id="2a9bszg_xmZ" role="3bR37C">
+        <node concept="3bR9La" id="2a9bszg_xmY" role="1SiIV1">
+          <property role="3bR36h" value="false" />
+          <ref role="3bR37D" to="ffeo:78GwwOvB3tw" resolve="jetbrains.mps.ide.build" />
         </node>
       </node>
-      <node role="dependencies" roleId="kdzh.5253498789149547704" type="kdzh.BuildMps_ExtractedModuleDependency" typeId="kdzh.7259033139236285166" id="2488570609615115713" nodeInfo="nn">
-        <node role="dependency" roleId="kdzh.7259033139236285167" type="kdzh.BuildMps_ModuleDependencyOnModule" typeId="kdzh.5253498789149585690" id="2488570609615115712" nodeInfo="ng">
-          <property name="reexport" nameId="kdzh.5253498789149547713" value="false" />
-          <link role="module" roleId="kdzh.5253498789149547705" targetNodeId="ffeo.8939513996048536566" resolveInfo="jetbrains.mps.kernel" />
+      <node concept="1SiIV0" id="2a9bszg_xn1" role="3bR37C">
+        <node concept="3bR9La" id="2a9bszg_xn0" role="1SiIV1">
+          <property role="3bR36h" value="false" />
+          <ref role="3bR37D" to="ffeo:7Kfy9QB6LfQ" resolve="jetbrains.mps.kernel" />
         </node>
       </node>
     </node>
-    <node role="plugins" roleId="3ior.6647099934206700656" type="3ior.BuildJavaPlugin" typeId="3ior.6647099934206700647" id="8077978191914979035" nodeInfo="ng" />
-    <node role="plugins" roleId="3ior.6647099934206700656" type="kdzh.BuildMPSPlugin" typeId="kdzh.868032131020265945" id="8077978191914979036" nodeInfo="ng" />
-  </root>
+    <node concept="10PD9b" id="70qJ_RossVr" role="10PD9s" />
+    <node concept="3b7kt6" id="70qJ_RossVs" role="10PD9s" />
+    <node concept="2_Ic$z" id="7XMK9W6CC9Y" role="3989C9">
+      <property role="TZNOO" value="" />
+    </node>
+  </node>
 </model>
 

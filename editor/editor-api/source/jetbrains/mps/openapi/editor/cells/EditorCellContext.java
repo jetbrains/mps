@@ -15,6 +15,9 @@
  */
 package jetbrains.mps.openapi.editor.cells;
 
+import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
+import jetbrains.mps.util.annotation.ToRemove;
+
 import java.util.Collection;
 
 /**
@@ -24,5 +27,11 @@ import java.util.Collection;
 public interface EditorCellContext {
   Collection<String> getHints();
 
+  default SNodeLocation getNodeLocation(){
+    return null;
+  }
+
+  @Deprecated
+  @ToRemove(version = 3.4)
   boolean hasContextHint(String hint);
 }

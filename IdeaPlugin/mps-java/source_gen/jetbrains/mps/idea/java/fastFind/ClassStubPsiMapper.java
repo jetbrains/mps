@@ -4,29 +4,30 @@ package jetbrains.mps.idea.java.fastFind;
 
 import jetbrains.mps.idea.core.psi.MPS2PsiMapper;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.persistence.java.library.JavaClassStubModelDescriptor;
 import com.intellij.psi.PsiElement;
 import org.jetbrains.mps.openapi.model.SNode;
 import com.intellij.openapi.project.Project;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiField;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import com.intellij.psi.JavaPsiFacade;
 import com.intellij.psi.search.GlobalSearchScope;
 
 public class ClassStubPsiMapper implements MPS2PsiMapper {
   public boolean hasCorrespondingPsi(SModel model) {
-    ModelAccess.instance().checkReadAccess();
     return model instanceof JavaClassStubModelDescriptor;
   }
 
-
-
   public PsiElement getPsiElement(SNode nodeParam, Project project) {
-    ModelAccess.instance().checkReadAccess();
+    SRepository repository = ProjectHelper.getProjectRepository(project);
+    assert repository.getModelAccess().canRead();
 
     SNode node = nodeParam;
     if (!(hasCorrespondingPsi(SNodeOperations.getModel(node)))) {
@@ -35,23 +36,23 @@ public class ClassStubPsiMapper implements MPS2PsiMapper {
 
     // just in case: anonynous classes shouldn't appear here, as they shouldn't in stubs 
 
-    if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.Classifier")) {
-      return findPsiClass(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.Classifier"), project);
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
+      return findPsiClass(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), project);
 
-    } else if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")) {
-      PsiClass psiClass = findPsiClass(SNodeOperations.getAncestor(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"), "jetbrains.mps.baseLanguage.structure.Classifier", false, false), project);
+    } else if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"))) {
+      PsiClass psiClass = findPsiClass(SNodeOperations.getNodeAncestor(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), false, false), project);
       if (psiClass == null) {
         return null;
       }
       PsiField[] fields = psiClass.getFields();
-      String expectedName = SPropertyOperations.getString(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"), "name");
+      String expectedName = SPropertyOperations.getString(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
       for (PsiField field : fields) {
         if (expectedName.equals(field.getName())) {
           return field;
         }
       }
 
-    } else if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration")) {
+    } else if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"))) {
       // TODO to properly handle methods we have to build node ids in the same way as class stubs do 
       // (based on asm class file parser output) 
     }
@@ -59,10 +60,8 @@ public class ClassStubPsiMapper implements MPS2PsiMapper {
     return null;
   }
 
-
-
   private PsiClass findPsiClass(SNode claz, Project project) {
-    String classFqName = BehaviorReflection.invokeVirtual(String.class, claz, "virtual_getFqName_1213877404258", new Object[]{});
+    String classFqName = ((String) BHReflection.invoke(claz, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
     return JavaPsiFacade.getInstance(project).findClass(classFqName, GlobalSearchScope.allScope(project));
   }
 }

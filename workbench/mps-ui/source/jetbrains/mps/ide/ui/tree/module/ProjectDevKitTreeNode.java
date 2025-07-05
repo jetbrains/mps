@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,35 +18,25 @@ package jetbrains.mps.ide.ui.tree.module;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
 import jetbrains.mps.project.DevKit;
-import jetbrains.mps.project.ModuleContext;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.NotNull;
 
 
 public class ProjectDevKitTreeNode extends ProjectModuleTreeNode {
-  private DevKit myDevKit;
+  private final Project myProject;
   private boolean myShortNameOnly;
   private boolean myInitialized;
 
-  protected ProjectDevKitTreeNode(DevKit devkit, Project project, boolean shortNameOnly) {
-    super(new ModuleContext(devkit, project));
+  protected ProjectDevKitTreeNode(@NotNull DevKit devkit, Project project, boolean shortNameOnly) {
+    super(devkit);
+    myProject = project;
     myShortNameOnly = shortNameOnly;
-    myDevKit = devkit;
 
-    setNodeIdentifier(calculateNodeIdentifier());
+    setNodeIdentifier(devkit.getModuleId().toString()); // Generally, PersistenceFacade.asString() is better, but it's just an unique string, anyway
     setIcon(IdeIcons.DEVKIT_ICON);
-  }
-
-  @Override
-  public DevKit getModule() {
-    return myDevKit;
-  }
-
-  public DevKit getDevKit() {
-    return myDevKit;
   }
 
   @Override
@@ -54,21 +44,24 @@ public class ProjectDevKitTreeNode extends ProjectModuleTreeNode {
     return myInitialized;
   }
 
+  @NotNull
   @Override
-  public void init() {
-    populate();
-    myInitialized = true;
+  public DevKit getModule() {
+    return (DevKit) super.getModule();
   }
 
-  public String calculateNodeIdentifier() {
-    IFile descriptorFile = myDevKit.getDescriptorFile();
-    assert descriptorFile != null;
-    return descriptorFile.getPath();
+  @Override
+  protected void doInit() {
+    ModuleNodeChildrenProvider childrenProvider = getAncestor(ModuleNodeChildrenProvider.class);
+    if (childrenProvider == null || !childrenProvider.populate(this, getModule())) {
+      populate();
+    }
+    myInitialized = true;
   }
 
   @Override
   public String getModuleText() {
-    String name = myDevKit.getModuleDescriptor().getNamespace();
+    String name = getModule().getModuleDescriptor().getNamespace();
 
     if (myShortNameOnly) {
       name = NameUtil.shortNameFromLongName(name);
@@ -81,23 +74,21 @@ public class ProjectDevKitTreeNode extends ProjectModuleTreeNode {
   }
 
   private void populate() {
-    Project project = getOperationContext().getProject();
-
     TextTreeNode extendedDevkits = new TextTreeNode("extended devkits");
-    for (DevKit d : myDevKit.getExtendedDevKits()) {
-      extendedDevkits.add(ProjectModuleTreeNode.createFor(project, d));
+    for (DevKit d : getModule().getExtendedDevKits()) {
+      extendedDevkits.add(ProjectModuleTreeNode.createFor(myProject, d));
     }
     add(extendedDevkits);
 
     TextTreeNode exportedLangs = new TextTreeNode("exported languages");
-    for (Language l : myDevKit.getExportedLanguages()) {
-      exportedLangs.add(ProjectModuleTreeNode.createFor(project, l));
+    for (Language l : getModule().getExportedLanguages()) {
+      exportedLangs.add(ProjectModuleTreeNode.createFor(myProject, l));
     }
     add(exportedLangs);
 
     TextTreeNode exportedSolutions = new TextTreeNode("exported solutions");
-    for (Solution s : myDevKit.getExportedSolutions()) {
-      exportedSolutions.add(ProjectModuleTreeNode.createFor(project, s));
+    for (Solution s : getModule().getExportedSolutions()) {
+      exportedSolutions.add(ProjectModuleTreeNode.createFor(myProject, s));
     }
     add(exportedSolutions);
   }

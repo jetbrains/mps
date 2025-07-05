@@ -6,81 +6,9 @@ import jetbrains.mps.nodeEditor.DefaultNodeEditor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
 
 public class XmlNoSpaceValue_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createCollection_gu0qdg_a(editorContext, node);
-  }
-
-  private EditorCell createCollection_gu0qdg_a(EditorContext editorContext, SNode node) {
-    EditorCell_Collection editorCell = EditorCell_Collection.createIndent2(editorContext, node);
-    editorCell.setCellId("Collection_gu0qdg_a");
-    editorCell.setBig(true);
-    editorCell.addEditorCell(this.createConstant_gu0qdg_a0(editorContext, node));
-    editorCell.addEditorCell(this.createConstant_gu0qdg_b0(editorContext, node));
-    editorCell.addEditorCell(this.createConstant_gu0qdg_c0(editorContext, node));
-    return editorCell;
-  }
-
-  private EditorCell createConstant_gu0qdg_a0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "<-");
-    editorCell.setCellId("Constant_gu0qdg_a0");
-    Style style = new StyleImpl();
-    XmlSS_StyleSheet.applyXmlNoNewLine(style, editorCell);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-    style.set(StyleAttributes.PUNCTUATION_LEFT, XmlNoSpaceValue_Editor._StyleParameter_QueryFunction_gu0qdg_a1a0((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    )));
-    editorCell.getStyle().putAll(style);
-    delete_XmlEntityRefValueDelete.setCellActions(editorCell, node, editorContext);
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
-
-  private static boolean _StyleParameter_QueryFunction_gu0qdg_a1a0(EditorContext editorContext, SNode node) {
-    return !(BehaviorReflection.invokeVirtual(Boolean.TYPE, node, "virtual_isFirstPositionAllowed_3080189811177340436", new Object[]{}));
-  }
-
-  private EditorCell createConstant_gu0qdg_b0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "no space");
-    editorCell.setCellId("Constant_gu0qdg_b0");
-    Style style = new StyleImpl();
-    XmlSS_StyleSheet.applyXmlNoNewLine(style, editorCell);
-    editorCell.getStyle().putAll(style);
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
-
-  private EditorCell createConstant_gu0qdg_c0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "->");
-    editorCell.setCellId("Constant_gu0qdg_c0");
-    Style style = new StyleImpl();
-    XmlSS_StyleSheet.applyXmlNoNewLine(style, editorCell);
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, XmlNoSpaceValue_Editor._StyleParameter_QueryFunction_gu0qdg_a1c0((editorCell == null ?
-      null :
-      editorCell.getContext()
-    ), (editorCell == null ?
-      null :
-      editorCell.getSNode()
-    )));
-    editorCell.getStyle().putAll(style);
-    delete_XmlEntityRefValueDelete.setCellActions(editorCell, node, editorContext);
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
-
-  private static boolean _StyleParameter_QueryFunction_gu0qdg_a1c0(EditorContext editorContext, SNode node) {
-    return !(BehaviorReflection.invokeVirtual(Boolean.TYPE, node, "virtual_isLastPositionAllowed_3080189811177340441", new Object[]{}));
+    return new XmlNoSpaceValue_EditorBuilder_a(editorContext, node).createCell();
   }
 }

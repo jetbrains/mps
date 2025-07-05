@@ -8,15 +8,19 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 public class TypesystemDescriptor extends BaseHelginsDescriptor {
   public TypesystemDescriptor() {
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_BuildMps_GeneratorOptions_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_BuildMps_ModuleDependencyJar_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
-      NonTypesystemRule_Runtime nonTypesystemRule = new check_BuildMps_ModuleJarRuntime_NonTypesystemRule();
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_IdeaPlugin_Dependencies_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
-      NonTypesystemRule_Runtime nonTypesystemRule = new check_IdeaPlugin_Dependencies_NonTypesystemRule();
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_ModuleXml_SpecifiesClasspath_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {

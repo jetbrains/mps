@@ -4,53 +4,37 @@ package jetbrains.mps.baseLanguage.unitTest.execution.tool;
 
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
-import jetbrains.mps.smodel.IOperationContext;
+import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.SModelStereotype;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 
 public class TestCaseTreeNode extends BaseTestTreeNode {
   @NotNull
   protected final ITestNodeWrapper myTestCase;
-
-  public TestCaseTreeNode(@NotNull IOperationContext operationContext, @NotNull ITestNodeWrapper testCase) {
-    super(operationContext);
+  public TestCaseTreeNode(@NotNull Project project, @NotNull ITestNodeWrapper testCase) {
+    super(project);
     myTestCase = testCase;
+    setUserObject(testCase);
+    setToggleClickCount(-1);
     setNodeIdentifier(((SNodePointer) myTestCase.getNodePointer()).toString());
-    setText(SPropertyOperations.getString(SNodeOperations.cast(myTestCase.getNode(), "jetbrains.mps.lang.core.structure.INamedConcept"), "name"));
-    setAdditionalText(SModelStereotype.withoutStereotype(myTestCase.getNodePointer().getModelReference().getModelName()));
+    setText(SPropertyOperations.getString(SNodeOperations.cast(myTestCase.getNode(), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+    setAdditionalText(myTestCase.getNodePointer().getModelReference().getName().getLongName());
   }
-
   public String getClassName() {
     final Wrappers._T<String> className = new Wrappers._T<String>(null);
-    ModelAccess.instance().runReadAction(new Runnable() {
+    myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         className.value = myTestCase.getFqName();
       }
     });
     return className.value;
   }
-
   @Override
   public void doubleClick() {
-    ModelAccess.instance().runWriteAction(new Runnable() {
-      public void run() {
-        NavigationSupport.getInstance().openNode(getOperationContext(), myTestCase.getNode(), true, false);
-      }
-    });
-  }
-
-  @Override
-  public int getToggleClickCount() {
-    return -1;
-  }
-
-  @Override
-  public Object getUserObject() {
-    return myTestCase;
+    new EditorNavigator(myProject).shallFocus(true).open(myTestCase.getNodePointer());
   }
 }

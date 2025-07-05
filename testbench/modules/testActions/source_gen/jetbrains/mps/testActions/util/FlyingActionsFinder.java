@@ -32,6 +32,9 @@ public class FlyingActionsFinder {
     IdeaPluginDescriptor descriptor = PluginManager.getPlugin(pluginId);
     Set<String> ideaCoreActions = new HashSet<String>();
 
+    if (descriptor == null) {
+      return ideaCoreActions;
+    }
     for (Element element : descriptor.getActionsDescriptionElements()) {
       ideaCoreActions.add(element.getAttributeValue("id"));
     }
@@ -40,22 +43,22 @@ public class FlyingActionsFinder {
 
   private void findFlyingActions() {
     myFlyingActions = new HashSet<String>(Arrays.asList(myActionManager.getActionIds("")));
-    Set<String> childrenOrSortCutActionsSet = new HashSet<String>();
+    Set<String> childrenOrShortCutActionsSet = new HashSet<String>();
 
-    AnAction anAction = null;
+    AnAction anAction;
     for (String id : myFlyingActions) {
       anAction = myActionManager.getAction(id);
       if (anAction.getShortcutSet().getShortcuts().length > 0) {
-        childrenOrSortCutActionsSet.add(id);
+        childrenOrShortCutActionsSet.add(id);
       }
       if (ActionGroup.class.isInstance(anAction)) {
         for (AnAction child : ((ActionGroup) anAction).getChildren(null)) {
-          childrenOrSortCutActionsSet.add(myActionManager.getId(child));
+          childrenOrShortCutActionsSet.add(myActionManager.getId(child));
         }
       }
     }
 
-    myFlyingActions.removeAll(childrenOrSortCutActionsSet);
+    myFlyingActions.removeAll(childrenOrShortCutActionsSet);
     myFlyingActions.removeAll(getIdeaCoreActions());
     myFlyingActions.removeAll(getMPSRootActionIds());
   }
@@ -82,6 +85,8 @@ public class FlyingActionsFinder {
     set.add("jetbrains.mps.vcs.platform.actions.ChangesStrip_ActionGroup");
     set.add("jetbrains.mps.vcs.plugin.TestMergeAction_Action");
     set.add("jetbrains.mps.lang.dataFlow.pluginSolution.plugin.DataFlowInternal_ActionGroup");
+    set.add("jetbrains.mps.samples.ActionWithProgress.plugin.ProgressActionsGroup_ActionGroup");
+    set.add("Git.LogContextMenu");
 
     return set;
   }

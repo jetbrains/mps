@@ -4,12 +4,6 @@ package jetbrains.mps.plugin;
 
 import jetbrains.mps.logging.Logger;
 import org.apache.log4j.LogManager;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.components.impl.stores.IProjectStore;
-import com.intellij.openapi.project.ex.ProjectEx;
-import java.io.File;
-import jetbrains.mps.project.MPSProject;
-import com.intellij.openapi.components.StorageScheme;
 import java.rmi.RemoteException;
 import java.rmi.Naming;
 import jetbrains.mps.ide.ThreadUtils;
@@ -19,23 +13,8 @@ public class MPSPlugin {
   private static MPSPlugin ourInstance;
   private IMPSPlugin myPlugin = null;
   private boolean myMessageShown = false;
-
   private MPSPlugin() {
   }
-
-  @Deprecated
-  public IProjectHandler getProjectHandler(Project project) {
-    MPSPlugin.assertNotInEDT();
-    IProjectStore projectStore = ((ProjectEx) project).getStateStore();
-    File mpsProject = project.getComponent(MPSProject.class).getProjectFile();
-    File projectFile = (projectStore.getStorageScheme() == StorageScheme.DEFAULT ?
-      mpsProject.getParentFile() :
-      mpsProject
-    );
-    String projectPath = projectFile.getAbsolutePath();
-    return getProjectHandler(projectPath);
-  }
-
   public IProjectHandler getProjectHandler(String projectPath) {
     try {
       IMPSPlugin plugin = getPlugin();
@@ -47,7 +26,6 @@ public class MPSPlugin {
       return null;
     }
   }
-
   public boolean isIDEAPresent() {
     MPSPlugin.assertNotInEDT();
     try {
@@ -65,7 +43,6 @@ public class MPSPlugin {
       return false;
     }
   }
-
   public boolean openConnectionPresent() {
     MPSPlugin.assertNotInEDT();
     if (myPlugin == null) {
@@ -81,10 +58,9 @@ public class MPSPlugin {
     }
     return myPlugin != null;
   }
-
   private IMPSPlugin getPlugin() {
     try {
-      myPlugin = (IMPSPlugin) Naming.lookup("//localhost:2391/MPSPlugin");
+      myPlugin = (IMPSPlugin) Naming.lookup("//localhost:2390/MPSPlugin");
     } catch (Exception e) {
       if (!(myMessageShown)) {
         myMessageShown = true;
@@ -93,15 +69,13 @@ public class MPSPlugin {
     }
     return myPlugin;
   }
-
   public static MPSPlugin getInstance() {
     if (ourInstance == null) {
       ourInstance = new MPSPlugin();
     }
     return ourInstance;
   }
-
   private static void assertNotInEDT() {
-    LOG.assertLog(!(ThreadUtils.isEventDispatchThread()), "You should not do this in EDT");
+    LOG.assertLog(!(ThreadUtils.isInEDT()), "You should not do this in EDT");
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.project.Project;
+import jetbrains.mps.smodel.undo.UndoContext;
 import jetbrains.mps.util.Computable;
 
 public class DefaultUndoHandler implements UndoHandler {
   @Override
   public void addUndoableAction(SNodeUndoableAction action) {
-
   }
 
   @Override
@@ -30,17 +30,10 @@ public class DefaultUndoHandler implements UndoHandler {
   }
 
   @Override
-  public boolean needRegisterUndo() {
-    return false;
-  }
-
-  @Override
-  public boolean isInsideUndoableCommand() {
-    return false;
-  }
-
-  @Override
   public void flushCommand(Project p) {
+  }
 
+  @Override
+  public void startCommand(UndoContext context) {
   }
 }

@@ -4,6 +4,7 @@ package jetbrains.mps.vcs;
 
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
+import com.intellij.openapi.components.StoragePathMacros;
 import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.project.Project;
@@ -13,35 +14,30 @@ import com.intellij.openapi.roots.impl.ModuleRootEventImpl;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager;
 
-@State(name = "MPSVcsConfiguration", storages = {@Storage(id = "other", file = "$WORKSPACE_FILE$")
-})
+@State(name = "MPSVcsConfiguration", storages = @Storage(value = StoragePathMacros.WORKSPACE_FILE)
+)
 public class MPSVcsProjectConfiguration extends AbstractProjectComponent implements PersistentStateComponent<MPSVcsProjectConfiguration.MyState> {
   private MPSVcsProjectConfiguration.MyState myState = new MPSVcsProjectConfiguration.MyState();
-
   protected MPSVcsProjectConfiguration(Project project) {
     super(project);
   }
-
   @Override
   public MPSVcsProjectConfiguration.MyState getState() {
     return myState;
   }
-
   @Override
   public void loadState(MPSVcsProjectConfiguration.MyState state) {
     myState = state;
   }
-
   public boolean isIgnoreGeneratedFiles() {
     return myState.myIgnoreGeneratedFiles;
   }
-
   public void setIgnoreGeneratedFiles(boolean ignoreGeneratedFiles) {
     if (myState.myIgnoreGeneratedFiles != ignoreGeneratedFiles) {
       myState.myIgnoreGeneratedFiles = ignoreGeneratedFiles;
       ModuleRootListener moduleRootListener = myProject.getMessageBus().asyncPublisher(ProjectTopics.PROJECT_ROOTS);
       moduleRootListener.rootsChanged(new ModuleRootEventImpl(myProject, false));
-      VirtualFileManager.getInstance().refresh(true, new Runnable() {
+      VirtualFileManager.getInstance().asyncRefresh(new Runnable() {
         @Override
         public void run() {
           if (!(myProject.isDisposed())) {
@@ -51,21 +47,13 @@ public class MPSVcsProjectConfiguration extends AbstractProjectComponent impleme
       });
     }
   }
-
-  public static MPSVcsProjectConfiguration getInstance(Project project) {
-    return project.getComponent(MPSVcsProjectConfiguration.class);
-  }
-
   public static class MyState {
     private boolean myIgnoreGeneratedFiles;
-
     public MyState() {
     }
-
     public boolean isIgnoreGeneratedFiles() {
       return myIgnoreGeneratedFiles;
     }
-
     public void setIgnoreGeneratedFiles(boolean ignoreGeneratedFiles) {
       myIgnoreGeneratedFiles = ignoreGeneratedFiles;
     }

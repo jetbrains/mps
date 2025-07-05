@@ -9,12 +9,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 public class BuildLayout_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createComponent_5wtg0a_a(editorContext, node);
-  }
-
-  private EditorCell createComponent_5wtg0a_a(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = editorContext.getCellFactory().createEditorComponentCell(node, "jetbrains.mps.build.editor.BuildLayout_containerElements");
-    editorCell.setBig(true);
-    return editorCell;
+    return new BuildLayout_EditorBuilder_a(editorContext, node).createCell();
   }
 }

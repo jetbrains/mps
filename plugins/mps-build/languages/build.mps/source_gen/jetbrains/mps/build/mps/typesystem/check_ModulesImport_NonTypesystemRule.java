@@ -8,38 +8,36 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.generator.TransientModelsModule;
+import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.build.mps.util.VisibleModules;
 import jetbrains.mps.build.mps.util.PathConverter;
-import jetbrains.mps.build.behavior.BuildProject_Behavior;
-import jetbrains.mps.build.util.Context;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.build.mps.util.ModuleChecker;
 import jetbrains.mps.build.mps.util.ModuleLoader;
 import jetbrains.mps.errors.BaseQuickFixProvider;
-import jetbrains.mps.smodel.SModelUtil_new;
 
 public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ModulesImport_NonTypesystemRule() {
   }
-
   public void applyRule(final SNode buildProject, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.getModel(buildProject).getModule() instanceof TransientModelsModule || SModelStereotype.isGeneratorModel(SNodeOperations.getModel(buildProject)) || !(jetbrains.mps.util.SNodeOperations.isGeneratable(SNodeOperations.getModel(buildProject)))) {
+    if (SNodeOperations.getModel(buildProject).getModule() instanceof TransientSModule || SModelStereotype.isGeneratorModel(SNodeOperations.getModel(buildProject)) || !(jetbrains.mps.util.SNodeOperations.isGeneratable(SNodeOperations.getModel(buildProject)))) {
       return;
     }
 
-    VisibleModules visible = new VisibleModules(buildProject, null);
+    VisibleModules visible = new VisibleModules(buildProject);
     visible.collect();
 
     PathConverter pathConverter = new PathConverter(buildProject);
 
-    String workingDir = BuildProject_Behavior.call_getBasePath_4959435991187146924(buildProject, Context.defaultContext());
+    String workingDir = pathConverter.getWorkingDir();
     if ((workingDir == null || workingDir.length() == 0)) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
@@ -49,9 +47,9 @@ public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystem
     }
 
 
-    for (final SNode module : ListSequence.fromList(SNodeOperations.getDescendants(buildProject, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule", false, new String[]{})).where(new IWhereFilter<SNode>() {
+    for (final SNode module : ListSequence.fromList(SNodeOperations.getNodeDescendants(buildProject, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule"), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, "path", true) != null);
+        return (SLinkOperations.getTarget(it, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path")) != null);
       }
     })) {
       final StringBuilder messages = new StringBuilder();
@@ -78,18 +76,12 @@ public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystem
       }
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.build.structure.BuildProject";
+  public SAbstractConcept getApplicableConcept() {
+    return MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConcept().getQualifiedName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
   }

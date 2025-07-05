@@ -15,101 +15,131 @@
  */
 package jetbrains.mps.util;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * evgeny, 11/18/11
  */
 public class PatternUtil {
-  public static StringBuilder getExactItemPatternBuilder(String text, boolean useDots) {
+
+  private static enum State {
+    NO_QUOTING,
+    QUOTING,
+    SEQUENCE_LETTERS
+  }
+
+  public static boolean matchesPattern(String pattern, String matchingText) {
+    if (pattern == null || pattern.length() == 0) {
+      return true;
+    }
+    if (matchingText == null || matchingText.length() == 0) {
+      return false;
+    }
+    return matchingText.charAt(0) == pattern.charAt(0) &&
+        (matchingText.startsWith(pattern) || matchingText.matches(PatternUtil.getExactItemPatternBuilder(pattern, false, false).toString() + ".*"));
+  }
+
+  public static StringBuilder getExactItemPatternBuilder(String text, boolean useDots, boolean useStarAndQuestionMark) {
     StringBuilder b = new StringBuilder();
-    int state = 0;
+    State state = State.NO_QUOTING;
     for (int i = 0; i < text.length(); i++) {
       char c = text.charAt(i);
-
-      switch (state) {
-        case 0: // no quoting
-          if (c == '*') {
-            b.append(".*");
-          } else if (c == '?') {
-            b.append(".");
-          } else if (c == '.') {
-            if (useDots) {
-              b.append("[^\\.]*\\.");
-            } else {
-              b.append("\\.");
-            }
-          } else if (c == '@') {
-            b.append("[^\\@\\.]*\\@");
-          } else if (Character.isLetterOrDigit(c) || c == '_') {
-            b.append(c);
-            state = 2;
-          } else {
-            b.append("\\Q");
-            b.append(c);
-            state = 1;
-          }
-          break;
-        case 1: // quoting
-          if (c == '*') {
-            b.append("\\E");
-            b.append(".*");
-            state = 0;
-          } else if (c == '?') {
-            b.append("\\E");
-            b.append(".");
-            state = 0;
-          } else if (c == '.') {
-            if (useDots) {
-              b.append("\\E");
-              b.append("[^\\.]*\\.");
-            } else {
-              b.append("\\.");
-            }
-            state = 0;
-          } else if (c == '@') {
-            b.append("\\E");
-            b.append("[^\\@\\.]*\\@");
-            state = 0;
-          } else if (Character.isLetterOrDigit(c) || c == '_') {
-            b.append("\\E");
-            b.append(c);
-            state = 2;
-          } else {
-            b.append(c);
-          }
-          break;
-        case 2: // Sequence of letters, digits and underscores
-          if (c == '*') {
-            b.append(".*");
-            state = 0;
-          } else if (c == '?') {
-            b.append(".");
-            state = 0;
-          } else if (c == '.') {
-            if (useDots) {
-              b.append("[^\\.]*\\.");
-            } else {
-              b.append("\\.");
-            }
-            state = 0;
-          } else if (c == '@') {
-            b.append("[^\\@\\.]*\\@");
-            state = 0;
-          } else if (Character.isUpperCase(c)) {
-            b.append("[a-z0-9_]*");
-            b.append(c);
-          } else if (Character.isLetterOrDigit(c) || c == '_') {
-            b.append(c);
-          } else {
-            b.append("\\Q");
-            b.append(c);
-            state = 1;
-          }
-          break;
-      }
+      state = appendNextChar(c, state, b, useDots, useStarAndQuestionMark);
     }
-    if (state == 1) {
+    if (state == State.QUOTING) {
       b.append("\\E");
     }
     return b;
+  }
+
+  private static State appendNextChar(char c, State state, StringBuilder b, boolean useDots, boolean useStarAndQuestionMark) {
+    if (state == State.SEQUENCE_LETTERS && Character.isUpperCase(c)) {
+      b.append("[a-z0-9_]*");
+      b.append("((").append(c).append(")|((\\s)+[").append(Character.toLowerCase(c)).append(c).append("]))");
+      return State.SEQUENCE_LETTERS;
+    }
+    if (c == '*' || c == '?' || c == '.' || c == '@' || Character.isLetterOrDigit(c) || c == '_') {
+      if (state == State.QUOTING) {
+        b.append("\\E");
+      }
+    } else {
+      if (state != State.QUOTING) {
+        b.append("\\Q");
+      }
+    }
+
+    if (c == '*') {
+      if (useStarAndQuestionMark) {
+        b.append(".*");
+      } else {
+        b.append("\\*");
+      }
+      return State.NO_QUOTING;
+    } else if (c == '?') {
+      if (useStarAndQuestionMark) {
+        b.append(".");
+      } else {
+        b.append("\\?");
+      }
+      return State.NO_QUOTING;
+    } else if (c == '.') {
+      if (useDots) {
+        b.append("[^\\.]*\\.");
+      } else {
+        b.append("\\.");
+      }
+      return State.NO_QUOTING;
+    } else if (c == '@') {
+      b.append("[^\\@\\.]*\\@");
+      return State.NO_QUOTING;
+    } else if (Character.isLetterOrDigit(c) || c == '_') {
+      b.append(c);
+      return State.SEQUENCE_LETTERS;
+    } else {
+      b.append(c);
+      return State.QUOTING;
+    }
+  }
+
+  public static List<Integer> getIndexes(@NotNull String pattern, boolean useDots, @NotNull String matchingText) {
+    List<Integer> indexList = new ArrayList<Integer>();
+    if (addIndexes(matchingText, indexList, pattern)) {
+      return indexList;
+    } else {
+      indexList = new ArrayList<Integer>();
+    }
+    StringBuilder nextSubstring = new StringBuilder();
+    for (int i = 0; i < pattern.length(); i++) {
+      char c = pattern.charAt(i);
+      if (c == '*' || c == '?') {
+        if (!addIndexes(matchingText, indexList, nextSubstring.toString())) return new ArrayList<Integer>();
+        nextSubstring = new StringBuilder();
+      } else if (useDots && c == '.' || c == '@' || Character.isUpperCase(c)) {
+        if (!addIndexes(matchingText, indexList, nextSubstring.toString())) return new ArrayList<Integer>();
+        String upperCase = new String(new char[]{c});
+        String spaceAndLowerCase = " " + Character.toLowerCase(c);
+        if (!addIndexes(matchingText, indexList, upperCase) && !addIndexes(matchingText, indexList, spaceAndLowerCase)) return new ArrayList<Integer>();
+        nextSubstring = new StringBuilder();
+      } else {
+        nextSubstring.append(c);
+      }
+    }
+    if (!addIndexes(matchingText, indexList, nextSubstring.toString())) return new ArrayList<Integer>();
+    return indexList;
+  }
+
+  private static boolean addIndexes(String matchingText, List<Integer> indexList, String nextSubstring) {
+    int curIndex = indexList.isEmpty() ? 0 : indexList.get(indexList.size() - 1) + 1;
+    int indexOf = matchingText.indexOf(nextSubstring, curIndex);
+    if (indexOf == -1) {
+      return false;
+    }
+    for (int j = 0; j < nextSubstring.length(); ++j) {
+      indexList.add(indexOf + j);
+    }
+    return true;
   }
 }

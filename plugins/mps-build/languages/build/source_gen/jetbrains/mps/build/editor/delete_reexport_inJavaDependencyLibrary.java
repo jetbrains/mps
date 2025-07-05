@@ -8,25 +8,35 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class delete_reexport_inJavaDependencyLibrary {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new delete_reexport_inJavaDependencyLibrary.delete_reexport_inJavaDependencyLibrary_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new delete_reexport_inJavaDependencyLibrary.delete_reexport_inJavaDependencyLibrary_BACKSPACE(node));
   }
-
   public static class delete_reexport_inJavaDependencyLibrary_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public delete_reexport_inJavaDependencyLibrary_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SPropertyOperations.set(node, "reexport", "" + (false));
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x52fab202d8f26228L, "reexport"), "" + (false));
+    }
+  }
+  public static class delete_reexport_inJavaDependencyLibrary_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public delete_reexport_inJavaDependencyLibrary_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x52fab202d8f26228L, "reexport"), "" + (false));
     }
   }
 }

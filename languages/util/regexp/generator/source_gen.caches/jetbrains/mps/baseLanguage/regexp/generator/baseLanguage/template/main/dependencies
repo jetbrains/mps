@@ -7,9 +7,11 @@
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.regex.Pattern" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.regexp.behavior.ReplaceRegexpOperation_Behavior" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.regexp.behavior.Regexp__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.regexp.behavior.ReplaceRegexpOperation__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.regexp.constraints.RegexUtil" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.regexp.generator.baseLanguage.template.util.Flags" />
+    <classNode dependClassName="jetbrains.mps.generator.runtime.Generated" />
     <classNode dependClassName="jetbrains.mps.generator.template.BaseMappingRuleContext" />
     <classNode dependClassName="jetbrains.mps.generator.template.IfMacroContext" />
     <classNode dependClassName="jetbrains.mps.generator.template.MappingScriptContext" />
@@ -23,8 +25,8 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
-    <classNode dependClassName="jetbrains.mps.smodel.IOperationContext" />
-    <classNode dependClassName="jetbrains.mps.smodel.behaviour.BehaviorReflection" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
 </dependenciesRoot>

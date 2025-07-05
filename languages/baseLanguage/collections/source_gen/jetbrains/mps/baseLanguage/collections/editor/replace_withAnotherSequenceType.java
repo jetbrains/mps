@@ -7,46 +7,41 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_Group;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.IScope;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.openapi.editor.EditorContext;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.util.NameUtil;
 
 public class replace_withAnotherSequenceType extends AbstractCellMenuComponent {
   public replace_withAnotherSequenceType() {
     super(new SubstituteInfoPartExt[]{new replace_withAnotherSequenceType.Type_customReplace_cellMenu_qhej2e_a0()});
   }
-
   public static class Type_customReplace_cellMenu_qhej2e_a0 extends AbstractCellMenuPart_ReplaceNode_Group {
     public Type_customReplace_cellMenu_qhej2e_a0() {
     }
-
-    public List<?> createParameterObjects(SNode node, IScope scope, IOperationContext operationContext, EditorContext editorContext) {
-      List<SNode> others = ListSequence.fromListAndArray(new ArrayList<SNode>(), SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.collections.structure.SequenceType"), SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.collections.structure.ListType"), SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.collections.structure.SetType"), SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.collections.structure.SortedSetType"));
-      SNode act = SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.collections.structure.AbstractContainerType");
-      return ListSequence.fromList(SConceptOperations.getAllSubConcepts(act, SNodeOperations.getModel(node), scope)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SPropertyOperations.getBoolean(it, "abstract"));
+    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      List<SAbstractConcept> others = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, "jetbrains.mps.baseLanguage.collections.structure.SequenceType"), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType"), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType"), MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c482dd1aL, "jetbrains.mps.baseLanguage.collections.structure.SortedSetType"));
+      SConcept act = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, "jetbrains.mps.baseLanguage.collections.structure.AbstractContainerType");
+      return ListSequence.fromList(others).concat(ListSequence.fromList(SConceptOperations.getAllSubConcepts2(act, SNodeOperations.getModel(node))).where(new IWhereFilter<SConcept>() {
+        public boolean accept(SConcept it) {
+          return !(it.isAbstract());
         }
-      }).concat(ListSequence.fromList(others)).toListSequence();
+      })).toListSequence();
     }
-
-    public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IScope scope, IOperationContext operationContext, EditorContext editorContext) {
-      return this.createReplacementNode_impl((SNode) parameterObject, node, model, scope, operationContext, editorContext);
+    public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      return createReplacementNode_impl((SAbstractConcept) parameterObject, node, model, operationContext, editorContext);
     }
-
-    public SNode createReplacementNode_impl(SNode parameterObject, SNode node, SModel model, IScope scope, IOperationContext operationContext, EditorContext editorContext) {
-      return SNodeFactoryOperations.createNewNode(NameUtil.nodeFQName(parameterObject), node);
+    public SNode createReplacementNode_impl(SAbstractConcept parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      return SNodeFactoryOperations.createNewNode(SNodeFactoryOperations.asInstanceConcept(parameterObject), node);
     }
-
     public boolean isReferentPresentation() {
       return false;
     }

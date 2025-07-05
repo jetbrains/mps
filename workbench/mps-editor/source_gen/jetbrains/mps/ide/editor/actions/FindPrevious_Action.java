@@ -9,10 +9,7 @@ import java.util.Map;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
-import org.apache.log4j.Priority;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 
 public class FindPrevious_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -21,52 +18,39 @@ public class FindPrevious_Action extends BaseAction {
     super("Find Previous", "Repeat the last Find operation in reverse direction", ICON);
     this.setIsAlwaysVisible(true);
     this.setExecuteOutsideCommand(true);
-    this.setMnemonic("V".charAt(0));
+    this.setMnemonic("v".charAt(0));
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     return ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getSearchPanel().isVisible();
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        boolean enabled = this.isApplicable(event, _params);
-        this.setEnabledState(event.getPresentation(), enabled);
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "FindPrevious", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("editorComponent", event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
-    if (MapSequence.fromMap(_params).get("editorComponent") == null) {
-      return false;
+    {
+      EditorComponent editorComponent = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT);
+      if (editorComponent != null && editorComponent.isInvalid()) {
+        editorComponent = null;
+      }
+      MapSequence.fromMap(_params).put("editorComponent", editorComponent);
+      if (editorComponent == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getSearchPanel().goToPrevious();
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "FindPrevious", t);
-      }
-    }
+    ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getSearchPanel().goToPrevious();
   }
-
-  protected static Logger LOG = LogManager.getLogger(FindPrevious_Action.class);
 }

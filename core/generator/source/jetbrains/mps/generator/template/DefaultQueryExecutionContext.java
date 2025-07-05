@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,361 +16,309 @@
 package jetbrains.mps.generator.template;
 
 import jetbrains.mps.generator.impl.GenerationFailureException;
-import jetbrains.mps.generator.impl.RuleUtil;
-import jetbrains.mps.generator.runtime.*;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.util.CollectionUtil;
-import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.QueryMethodGenerated;
+import jetbrains.mps.generator.impl.TemplateQueryException;
+import jetbrains.mps.generator.impl.query.CallArgumentQuery;
+import jetbrains.mps.generator.impl.query.IfMacroCondition;
+import jetbrains.mps.generator.impl.query.InlineSwitchCaseCondition;
+import jetbrains.mps.generator.impl.query.InsertMacroQuery;
+import jetbrains.mps.generator.impl.query.MapNodeQuery;
+import jetbrains.mps.generator.impl.query.MapPostProcessor;
+import jetbrains.mps.generator.impl.query.PropertyValueQuery;
+import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
+import jetbrains.mps.generator.impl.query.SourceNodeQuery;
+import jetbrains.mps.generator.impl.query.SourceNodesQuery;
+import jetbrains.mps.generator.impl.query.VariableValueQuery;
+import jetbrains.mps.generator.runtime.GenerationException;
+import jetbrains.mps.generator.runtime.TemplateContext;
+import jetbrains.mps.generator.runtime.TemplateCreateRootRule;
+import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
+import jetbrains.mps.generator.runtime.TemplateMappingScript;
+import jetbrains.mps.generator.runtime.TemplateReductionRule;
+import jetbrains.mps.generator.runtime.TemplateRootMappingRule;
+import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
+import jetbrains.mps.generator.runtime.TemplateWeavingRule;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
+ * Default implementation that executes queries without any further activity.
+ *
+ * XXX Note, evaluate methods account for any trouble in user code, and wrap them with {@link TemplateQueryException}.
+ * However, {@link jetbrains.mps.generator.impl.interpreted.ReflectiveQueryProvider} handles unexpected exceptions itself,
+ * while generated templates don't use this QEC at all. The only case when these catch() work is non-reflective queries, the one
+ * that we'd like to make primary (and, perhaps, only). See {@link jetbrains.mps.generator.impl.template.QueryExecutor} for
+ * considerations whether we shall keep QE/QEC indirection, or get another provider that would wrap non-reflective queries with
+ * try/catch and unexpected error handling (wrapping could be conditional). I lean towards a distinct provider as it gives
+ * more flexibility (can mix different wrappers) and fine-grained control for wrappers like performance tracer.
  * Evgeny Gryaznov, Feb 10, 2010
  */
 public class DefaultQueryExecutionContext implements QueryExecutionContext {
 
-  private ITemplateGenerator generator;
+  private final ITemplateGenerator myGenerator;
+  private final boolean myIsMultithread;
 
-  public DefaultQueryExecutionContext(ITemplateGenerator generator) {
-    this.generator = generator;
+  public DefaultQueryExecutionContext(@NotNull ITemplateGenerator generator) {
+    this(generator, true);
+  }
+
+  public DefaultQueryExecutionContext(@NotNull ITemplateGenerator generator, boolean isMultithread) {
+    myGenerator = generator;
+    myIsMultithread = isMultithread;
   }
 
   @Override
-  public boolean checkCondition(SNode condition, boolean required, SNode inputNode, SNode ruleNode) throws GenerationFailureException {
-    if (condition == null) {
-      if (required) {
-        generator.showErrorMessage(inputNode, null, ruleNode, "rule condition required");
-        return false;
-      }
-      return true;
-    }
-
-    String methodName = TemplateFunctionMethodName.baseMappingRule_Condition(condition);
+  public boolean evaluate(@NotNull InlineSwitchCaseCondition condition, @NotNull InlineSwitchCaseContext context) throws GenerationFailureException {
     try {
-      return (Boolean) QueryMethodGenerated.invoke(
-        methodName,
-        generator.getGeneratorSessionContext(),
-        new BaseMappingRuleContext(inputNode, ruleNode, generator),
-        ruleNode.getModel(),
-        true);
-    } catch (ClassNotFoundException e) {
-      generator.getLogger().warning(condition, "cannot find condition method '" + methodName + "' : evaluate to FALSE");
-    } catch (NoSuchMethodException e) {
-      generator.getLogger().warning(condition, "cannot find condition method '" + methodName + "' : evaluate to FALSE");
+      return condition.check(context);
+    } catch (GenerationFailureException ex) {
+      throw ex;
     } catch (Throwable t) {
-      generator.getLogger().handleException(t);
-      generator.getLogger().error(condition, "error executing condition " + methodName + ", exception was thrown");
-      throw new GenerationFailureException(t);
+      TemplateQueryException ex = new TemplateQueryException("condition of inline switch failed", t);
+      ex.setQueryContext(context);
+      throw ex;
     }
-    return false;
   }
 
   @Override
-  public boolean checkConditionForIfMacro(SNode inputNode, SNode ifMacro, @NotNull TemplateContext context) throws GenerationFailureException {
-    SNode function = RuleUtil.getIfMacro_ConditionFunction(ifMacro);
-    if (function == null) {
-      generator.showErrorMessage(inputNode, ifMacro, null, "cannot evaluate if-macro condition");
-      throw new GenerationFailureException();
-    }
-
-    String methodName = TemplateFunctionMethodName.ifMacro_Condition(function);
+  public boolean evaluate(@NotNull IfMacroCondition condition, @NotNull IfMacroContext context) throws GenerationFailureException {
     try {
-      return (Boolean) QueryMethodGenerated.invoke(
-        methodName,
-        generator.getGeneratorSessionContext(),
-        new IfMacroContext(inputNode, ifMacro, context, generator),
-        ifMacro.getModel(),
-        true);
-    } catch (ClassNotFoundException e) {
-      generator.getLogger().warning(ifMacro, "cannot find condition method '" + methodName + "' : evaluate to FALSE");
-    } catch (NoSuchMethodException e) {
-      generator.getLogger().warning(ifMacro, "cannot find condition method '" + methodName + "' : evaluate to FALSE");
+    return condition.check(context);
+    } catch (GenerationFailureException ex) {
+      throw ex;
     } catch (Throwable t) {
-      generator.getLogger().handleException(t);
-      generator.getLogger().error(ifMacro, "error executing condition " + methodName + ", exception was thrown");
-      throw new GenerationFailureException(t);
+      TemplateQueryException ex = new TemplateQueryException("IF macro condition failed", t);
+      ex.setQueryContext(context);
+      throw ex;
     }
-
-    return false;
   }
 
+  @Nullable
   @Override
-  public SNode executeMapSrcNodeMacro(SNode inputNode, SNode mapSrcNodeOrListMacro, SNode parentOutputNode, @NotNull TemplateContext context) throws GenerationFailureException {
-    SNode mapperFunction = RuleUtil.getMapSrc_MapperFunction(mapSrcNodeOrListMacro);
-
-    String methodName = TemplateFunctionMethodName.mapSrcMacro_MapperFunction(mapperFunction);
+  public SNode evaluate(@NotNull MapNodeQuery query, @NotNull MapSrcMacroContext context) throws GenerationFailureException {
     try {
-      return (SNode) QueryMethodGenerated.invoke(
-        methodName,
-        generator.getGeneratorSessionContext(),
-        new MapSrcMacroContext(inputNode, mapSrcNodeOrListMacro, parentOutputNode, context, generator),
-        mapSrcNodeOrListMacro.getModel());
+      return query.evaluate(context);
+    } catch (GenerationFailureException ex) {
+      throw ex;
     } catch (Throwable t) {
-      generator.getLogger().handleException(t);
-      generator.showErrorMessage(inputNode, mapSrcNodeOrListMacro, "cannot evaluate macro: mapping func failed, exception was thrown");
-      throw new GenerationFailureException(t);
+      TemplateQueryException ex = new TemplateQueryException("mapping function failed", t);
+      ex.setQueryContext(context);
+      throw ex;
     }
   }
 
   @Override
-  public void executeMapSrcNodeMacro_PostProc(SNode inputNode, SNode mapSrcNodeOrListMacro, SNode outputNode, @NotNull TemplateContext context) throws GenerationFailureException {
-    SNode postMapperFunction = RuleUtil.getMapSrc_PostMapperFunction(mapSrcNodeOrListMacro);
-    // post-proc function is optional
-    if (postMapperFunction == null) return;
-
-    String methodName = TemplateFunctionMethodName.mapSrcMacro_PostMapperFunction(postMapperFunction);
+  public void execute(@NotNull MapPostProcessor codeBlock, @NotNull MapSrcMacroPostProcContext context) throws GenerationFailureException {
     try {
-      QueryMethodGenerated.invoke(
-        methodName,
-        generator.getGeneratorSessionContext(),
-        new MapSrcMacroPostProcContext(inputNode, mapSrcNodeOrListMacro, outputNode, context, generator),
-        mapSrcNodeOrListMacro.getModel());
+      codeBlock.invoke(context);
+    } catch (GenerationFailureException ex) {
+      throw ex;
     } catch (Throwable t) {
-      generator.getLogger().handleException(t);
-      generator.showErrorMessage(inputNode, mapSrcNodeOrListMacro, "cannot evaluate macro: post-processing failed, exception was thrown");
-      throw new GenerationFailureException(t);
+      TemplateQueryException ex = new TemplateQueryException("post-processing query failed", t);
+      ex.setQueryContext(context);
+      throw ex;
     }
   }
 
+  @Nullable
   @Override
-  public void expandPropertyMacro(SNode propertyMacro, SNode inputNode, SNode templateNode, SNode outputNode, @NotNull TemplateContext context) throws GenerationFailureException {
-    String propertyName = AttributeOperations.getPropertyName(propertyMacro);
-
-    SNode function = RuleUtil.getPropertyMacro_ValueFunction(propertyMacro);
-    if (propertyName == null || function == null) {
-      generator.showErrorMessage(inputNode, templateNode, propertyMacro, "cannot evaluate property macro");
-      throw new GenerationFailureException();
-    }
-
-    String templateValue = SNodeAccessUtil.getProperty(templateNode, propertyName);
-    String methodName = TemplateFunctionMethodName.propertyMacro_GetPropertyValue(function);
+  public Object evaluate(@NotNull PropertyValueQuery query, @NotNull PropertyMacroContext context) throws GenerationFailureException {
     try {
-      Object macroValue = QueryMethodGenerated.invoke(
-        methodName,
-        generator.getGeneratorSessionContext(),
-        new PropertyMacroContext(inputNode, templateValue, propertyMacro, context, generator),
-        propertyMacro.getModel());
-      String propertyValue = macroValue == null ? null : String.valueOf(macroValue);
-      SNodeAccessUtil.setProperty(outputNode, propertyName, propertyValue);
+      return query.evaluate(context);
+    } catch (GenerationFailureException ex) {
+      throw ex;
     } catch (Throwable t) {
-      generator.getLogger().handleException(t);
-      generator.showErrorMessage(inputNode, templateNode, propertyMacro, "cannot evaluate property macro, exception was thrown");
-      throw new GenerationFailureException(t);
+      TemplateQueryException ex = new TemplateQueryException("failed to evaluate property value", t);
+      ex.setQueryContext(context);
+      throw ex;
     }
   }
 
+  @Nullable
   @Override
-  public SNode evaluateSourceNodeQuery(SNode inputNode, SNode macroNode, SNode query, @NotNull TemplateContext context) {
-    String methodName = TemplateFunctionMethodName.sourceSubstituteMacro_SourceNodeQuery(query);
+  public SNode evaluate(@NotNull SourceNodeQuery query, @NotNull SourceSubstituteMacroNodeContext context) throws GenerationFailureException {
     try {
-      return (SNode) QueryMethodGenerated.invoke(
-        methodName,
-        generator.getGeneratorSessionContext(),
-        new SourceSubstituteMacroNodeContext(inputNode, macroNode, context, generator),
-        query.getModel());
-    } catch (NoSuchMethodException e) {
-      generator.getLogger().warning(macroNode, "cannot find nodes query '" + methodName + "' : evaluate to null");
-      return null;
-    } catch (Exception e) {
-      generator.getLogger().handleException(e);
-      generator.showErrorMessage(inputNode, query, "cannot evaluate query, exception was thrown");
-      return null;
-    }
-  }
-
-  @Override
-  public Object evaluateArgumentQuery(SNode inputNode, SNode query, @Nullable TemplateContext context) {
-    String methodName = TemplateFunctionMethodName.templateArgumentQuery(query);
-    try {
-      return QueryMethodGenerated.invoke(
-        methodName,
-        generator.getGeneratorSessionContext(),
-        new TemplateQueryContext(inputNode, query.getParent(), context, generator),
-        query.getModel());
-    } catch (NoSuchMethodException e) {
-      generator.getLogger().warning(query.getParent(), "cannot find argument query '" + methodName + "' : evaluate to null");
-      return null;
-    } catch (Exception e) {
-      generator.getLogger().handleException(e);
-      generator.showErrorMessage(inputNode, query, "cannot evaluate query, exception was thrown");
-      return null;
-    }
-  }
-
-  @Override
-  public Object evaluateVariableQuery(SNode inputNode, SNode query, @Nullable TemplateContext context) {
-    String methodName = TemplateFunctionMethodName.varValue_Query(query);
-    try {
-      return QueryMethodGenerated.invoke(
-        methodName,
-        generator.getGeneratorSessionContext(),
-        new TemplateQueryContext(inputNode, query.getParent(), context, generator),
-        query.getModel());
-    } catch (NoSuchMethodException e) {
-      generator.getLogger().warning(query.getParent(), "cannot find variable value query '" + methodName + "' : evaluate to null");
-      return null;
-    } catch (Exception e) {
-      generator.getLogger().handleException(e);
-      generator.showErrorMessage(inputNode, query, "cannot evaluate query, exception was thrown");
-      return null;
-    }
-  }
-
-  /**
-   * used to evaluate 'sourceNodesQuery' in macros and in rules
-   */
-  @Override
-  public List<SNode> evaluateSourceNodesQuery(SNode inputNode, SNode ruleNode, SNode macroNode, SNode query, @NotNull TemplateContext context) {
-    String methodName = TemplateFunctionMethodName.sourceSubstituteMacro_SourceNodesQuery(query);
-    try {
-      Object result = QueryMethodGenerated.invoke(
-        methodName,
-        generator.getGeneratorSessionContext(),
-        new SourceSubstituteMacroNodesContext(inputNode, ruleNode, macroNode, context, generator),
-        query.getModel());
-
-      List<SNode> resultList;
-      if (result instanceof List) {
-        resultList = (List<SNode>) result;
-      } else {
-        resultList = new ArrayList<SNode>(IterableUtil.asCollection((Iterable<SNode>) result));
-      }
-
-      CollectionUtil.checkForNulls(resultList);
-
-      return resultList;
-    } catch (NoSuchMethodException e) {
-      generator.getLogger().warning(macroNode, "cannot find nodes query '" + methodName + "' : evaluate to empty list");
-      return new ArrayList<SNode>();
-    } catch (Exception e) {
-      generator.getLogger().handleException(e);
-      generator.showErrorMessage(inputNode, query, "cannot evaluate query, exception was thrown");
-      return new LinkedList<SNode>();
-    }
-  }
-
-  @Override
-  public SNode evaluateInsertQuery(SNode inputNode, SNode macroNode, SNode query, @NotNull TemplateContext context) {
-    String methodName = TemplateFunctionMethodName.insertMacro_Query(query);
-    try {
-      Object result = QueryMethodGenerated.invoke(
-        methodName,
-        generator.getGeneratorSessionContext(),
-        new TemplateQueryContextWithMacro(inputNode, macroNode, context, generator),
-        query.getModel());
-
-      return (SNode) result;
-    } catch (NoSuchMethodException e) {
-      generator.getLogger().warning(macroNode, "cannot find query '" + methodName + "' : evaluate to null");
-      return null;
-    } catch (Exception e) {
-      generator.getLogger().handleException(e);
-      generator.showErrorMessage(inputNode, query, "cannot evaluate query, exception was thrown");
-      return null;
-    }
-  }
-
-  @Override
-  public SNode getContextNodeForTemplateFragment(SNode templateFragmentNode, SNode mainContextNode, @NotNull TemplateContext context) {
-    SNode fragment = RuleUtil.getTemplateFragmentByAnnotatedNode(templateFragmentNode);
-    // has custom context builder provider?
-    SNode query = RuleUtil.getTemplateFragment_ContextNodeQuery(fragment);
-    if (query != null) {
-      String methodName = TemplateFunctionMethodName.templateFragment_ContextNodeQuery(query);
-      try {
-        return (SNode) QueryMethodGenerated.invoke(
-          methodName,
-          generator.getGeneratorSessionContext(),
-          new TemplateFragmentContext(mainContextNode, templateFragmentNode, context, generator),
-          query.getModel());
-      } catch (NoSuchMethodException e) {
-        generator.getLogger().warning(templateFragmentNode, "cannot find context node method for template fragment '" + methodName + "' : evaluate to null");
-        return null;
-      } catch (Exception e) {
-        generator.getLogger().handleException(e);
-        generator.showErrorMessage(context.getInput(), null, templateFragmentNode, "cannot evaluate template fragment context query, exception was thrown");
-        return null;
-      }
-    }
-
-    // ok, main context node by default
-    return mainContextNode;
-  }
-
-  @Override
-  public Object getReferentTarget(SNode node, SNode outputNode, SNode refMacro, TemplateContext context) {
-    SNode function = RuleUtil.getReferenceMacro_GetReferent(refMacro);
-    if (function == null) {
-      generator.showErrorMessage(node, refMacro, "cannot evaluate reference macro: no function");
-      return null;
-    }
-
-    String methodName = TemplateFunctionMethodName.referenceMacro_GetReferent(function);
-    try {
-      return QueryMethodGenerated.invoke(
-        methodName,
-        generator.getGeneratorSessionContext(),
-        new ReferenceMacroContext(node, outputNode, refMacro, context, generator),
-        refMacro.getModel());
-
+      return query.evaluate(context);
+    } catch (GenerationFailureException ex) {
+      throw ex;
     } catch (Throwable t) {
-      generator.getLogger().handleException(t);
-      generator.showErrorMessage(node, refMacro, "cannot evaluate reference macro, exception was thrown");
+      TemplateQueryException ex = new TemplateQueryException("source node query failed", t);
+      ex.setQueryContext(context);
+      throw ex;
     }
-    return null;
+  }
+
+  @Nullable
+  @Override
+  public Object evaluate(@NotNull CallArgumentQuery query, @NotNull TemplateArgumentContext context) throws GenerationFailureException {
+    try {
+      return query.evaluate(context);
+    } catch (GenerationFailureException ex) {
+      throw ex;
+    } catch (Throwable t) {
+      TemplateQueryException ex = new TemplateQueryException("Query for template call argument failed", t);
+      ex.setQueryContext(context);
+      throw ex;
+    }
+  }
+
+  @Nullable
+  @Override
+  public Object evaluate(@NotNull VariableValueQuery query, @NotNull TemplateVarContext context) throws GenerationFailureException {
+    try {
+      return query.evaluate(context);
+    } catch (GenerationFailureException ex) {
+      throw ex;
+    } catch (Throwable t) {
+      TemplateQueryException ex = new TemplateQueryException("VAR macro query failed", t);
+      ex.setQueryContext(context);
+      throw ex;
+    }
+  }
+
+  @NotNull
+  @Override
+  public Collection<SNode> evaluate(@NotNull SourceNodesQuery query, @NotNull SourceSubstituteMacroNodesContext context) throws GenerationFailureException {
+    try {
+      return query.evaluate(context);
+    } catch (GenerationFailureException ex) {
+      throw ex;
+    } catch (Throwable t) {
+      TemplateQueryException ex = new TemplateQueryException("source nodes query failed", t);
+      ex.setQueryContext(context);
+      throw ex;
+    }
+  }
+
+  @Nullable
+  @Override
+  public SNode evaluate(@NotNull InsertMacroQuery query, @NotNull InsertMacroContext context) throws GenerationFailureException {
+    try {
+      return query.evaluate(context);
+    } catch (GenerationFailureException ex) {
+      throw ex;
+    } catch (Throwable t) {
+      TemplateQueryException ex = new TemplateQueryException("INSERT macro query failed", t);
+      ex.setQueryContext(context);
+      throw ex;
+    }
+  }
+
+  @Nullable
+  @Override
+  public Object evaluate(@NotNull ReferenceTargetQuery query, @NotNull ReferenceMacroContext context) throws GenerationFailureException {
+    try {
+      return query.evaluate(context);
+    } catch (GenerationFailureException ex) {
+      throw ex;
+    } catch (Throwable t) {
+      TemplateQueryException ex = new TemplateQueryException("reference macro target query failed", t);
+      ex.setQueryContext(context);
+      throw ex;
+    }
   }
 
   @Override
-  public void executeInContext(SNode outputNode, TemplateContext context, PostProcessor processor) {
-    processor.process(outputNode, context);
+  public Collection<SNode> applyRule(TemplateReductionRule rule, TemplateContext context) throws GenerationException {
+    try {
+      return rule.apply(context);
+    } catch (GenerationException ex) {
+      throw ex;
+    } catch (Throwable t) {
+      GenerationFailureException ex = new GenerationFailureException("error applying reduction rule", t);
+      ex.setTemplateContext(context);
+      ex.setTemplateModelLocation(rule.getRuleNode());
+      throw ex;
+    }
   }
 
   @Override
-  public SNode executeInContext(SNode outputNode, TemplateContext context, NodeMapper mapper) {
-    return mapper.map(outputNode, context);
+  public boolean isApplicable(@NotNull TemplateRuleWithCondition rule, @NotNull TemplateContext context) throws GenerationFailureException {
+    try {
+      return rule.isApplicable(context);
+    } catch (GenerationFailureException ex) {
+      throw ex;
+    } catch (Throwable t) {
+      TemplateQueryException ex = new TemplateQueryException("error executing rule condition", t);
+      ex.setTemplateContext(context);
+      ex.setTemplateModelLocation(rule.getRuleNode());
+      throw ex;
+    }
   }
 
   @Override
-  public Collection<SNode> tryToApply(TemplateReductionRule rule, TemplateExecutionEnvironment environment, TemplateContext context) throws GenerationException {
-    return rule.tryToApply(environment, context);
-  }
-
-  @Override
-  public boolean isApplicable(TemplateRuleWithCondition rule, TemplateExecutionEnvironment environment, TemplateContext context) throws GenerationException {
-    return rule.isApplicable(environment, context);
-  }
-
-  @Override
-  public Collection<SNode> applyRule(TemplateRootMappingRule rule, TemplateExecutionEnvironment environment, TemplateContext context) throws GenerationException {
-    return rule.apply(environment, context);
+  public Collection<SNode> applyRule(TemplateRootMappingRule rule, TemplateContext context) throws GenerationException {
+    try {
+      return rule.apply(context);
+    } catch (GenerationException ex) {
+      throw ex;
+    } catch (Throwable t) {
+      GenerationFailureException ex = new GenerationFailureException("unexpected exception when applying root rule", t);
+      ex.setTemplateContext(context);
+      ex.setTemplateModelLocation(rule.getRuleNode());
+      throw ex;
+    }
   }
 
   @Override
   public Collection<SNode> applyRule(TemplateCreateRootRule rule, TemplateExecutionEnvironment environment) throws GenerationException {
-    return rule.apply(environment);
+    try {
+      return rule.apply(environment);
+    } catch (GenerationException ex) {
+      throw ex;
+    } catch (Throwable t) {
+      GenerationFailureException ex = new GenerationFailureException("unexpected exception when applying create root rule", t);
+      ex.setTemplateModelLocation(rule.getRuleNode());
+      throw ex;
+    }
   }
 
   @Override
-  public SNode getContextNode(TemplateWeavingRule rule, TemplateExecutionEnvironment environment, TemplateContext context) {
-    return rule.getContextNode(environment, context);
+  public boolean applyRule(TemplateWeavingRule rule, TemplateContext context, SNode outputContextNode) throws GenerationException {
+    try {
+      return rule.apply(context.getEnvironment(), context, outputContextNode);
+    } catch (GenerationException ex) {
+      throw ex;
+    } catch (Throwable t) {
+      GenerationFailureException ex = new GenerationFailureException("unexpected exception when applying weaving rule", t);
+      ex.setTemplateContext(context);
+      ex.setTemplateModelLocation(rule.getRuleNode());
+      throw ex;
+    }
   }
 
   @Override
-  public void executeScript(TemplateMappingScript mappingScript, SModel model) {
-    mappingScript.apply(model, generator);
+  public SNode getContextNode(TemplateWeavingRule rule, TemplateContext context) throws GenerationFailureException {
+    try {
+      return rule.getContextNode(context.getEnvironment(), context);
+    } catch (GenerationFailureException ex) {
+      throw ex;
+    } catch (Throwable t) {
+      TemplateQueryException ex = new TemplateQueryException("cannot evaluate rule context query", t);
+      ex.setTemplateContext(context);
+      ex.setTemplateModelLocation(rule.getRuleNode());
+      throw ex;
+    }
+  }
+
+  @Override
+  public void executeScript(TemplateMappingScript mappingScript, SModel model) throws GenerationFailureException {
+    try {
+      mappingScript.apply(model, myGenerator);
+    } catch (GenerationFailureException ex) {
+      throw ex;
+    } catch (Throwable t) {
+      TemplateQueryException ex = new TemplateQueryException(String.format("error executing script %s", mappingScript.getLongName()), t);
+      ex.setTemplateModelLocation(mappingScript.getScriptNode());
+      throw ex;
+    }
   }
 
   @Override
   public boolean isMultithreaded() {
-    return true;
+    return myIsMultithread;
   }
 }

@@ -4,33 +4,36 @@ package jetbrains.mps.lang.editor.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum TableComponentEnum {
   horizontal_collection("horizontal collection", "HORIZONTAL_COLLECTION"),
   vertical_collection("vertical collection", "VERTICAL_COLLECTION");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private TableComponentEnum(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<TableComponentEnum> getConstants() {
     List<TableComponentEnum> list = ListSequence.fromList(new LinkedList<TableComponentEnum>());
     ListSequence.fromList(list).addElement(TableComponentEnum.horizontal_collection);
     ListSequence.fromList(list).addElement(TableComponentEnum.vertical_collection);
     return list;
   }
-
   public static TableComponentEnum getDefault() {
     return TableComponentEnum.horizontal_collection;
   }
-
   public static TableComponentEnum parseValue(String value) {
     if (value == null) {
       return TableComponentEnum.getDefault();
@@ -42,16 +45,5 @@ public enum TableComponentEnum {
       return TableComponentEnum.vertical_collection;
     }
     return TableComponentEnum.getDefault();
-  }
-
-  private String myValue;
-
-  TableComponentEnum(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

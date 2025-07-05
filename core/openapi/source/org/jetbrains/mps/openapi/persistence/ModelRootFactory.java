@@ -15,10 +15,23 @@
  */
 package org.jetbrains.mps.openapi.persistence;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
- * Factories that create model roots. They are registered through PersistenceFacade and associated with one or more file types.
+ * Factories which create model roots.
+ * They are registered through {@link PersistenceFacade}.
+ * E.g. in the case of model roots associated with files there might be
+ * different factories associated with one or more file types.
+ *
+ * @see ModelRoot
  */
 public interface ModelRootFactory {
-
-  ModelRoot create();
+  /**
+   * Creates a model root, typical factory pattern.
+   * Newly created model root is supposed to initialized with
+   * {@link ModelRoot#load(Memento)}
+   *
+   * @return a new model root
+   */
+  @NotNull ModelRoot create();
 }

@@ -59,13 +59,11 @@ public class VmCreator extends AbstractDebugSessionCreator {
   private final List<ProcessListener> myProcessListeners = new ArrayList<ProcessListener>();
   private ExecutionResult myExecutionResult;
   private final DebugSession myDebuggerSession;
-
   public VmCreator(Project project) {
     myEventsProcessor = new EventsProcessor(project, BreakpointManagerComponent.getInstance(project));
     myDebuggerSession = new DebugSession(myEventsProcessor, project);
     myDebuggerSession.setEvaluationProvider(new EvaluationProvider(myDebuggerSession));
   }
-
   private DebugConnectionSettings createLocalConnectionSettings(RunProfileState state) throws ExecutionException {
     if (state instanceof DebuggerRunProfileState) {
       IDebuggerSettings debuggerSettings = ((DebuggerRunProfileState) state).getDebuggerSettings();
@@ -77,11 +75,10 @@ public class VmCreator extends AbstractDebugSessionCreator {
       throw new ExecutionException("Unknown Run Profile State");
     }
   }
-
   @Nullable
   @Override
   public ExecutionResult startSession(final Executor executor, final ProgramRunner runner, final RunProfileState state, Project project) throws ExecutionException {
-    assert ThreadUtils.isEventDispatchThread() : "must be called from EDT only";
+    ThreadUtils.assertEDT();
     myConnectionSettings = createLocalConnectionSettings(state);
     myEventsProcessor.getSystemMessagesReporter().setProcessName(getConnectionSettings().getPresentation());
     createVirtualMachine();
@@ -107,17 +104,14 @@ public class VmCreator extends AbstractDebugSessionCreator {
     }
     return myExecutionResult;
   }
-
   private void createVmFailed(Throwable t) {
     createVmFailed(t.getMessage());
     LOG.warn("Create VM failed", t);
   }
-
   private void createVmFailed(String message) {
     myEventsProcessor.getSystemMessagesReporter().reportError(message);
     fail();
   }
-
   private void fixStopBugUnderLinux(final ProcessHandler processHandler, final DebugSession session) {
     if (!((processHandler instanceof RemoteProcessHandler))) {
       //  add listener only to non-remote process handler: 
@@ -143,7 +137,6 @@ public class VmCreator extends AbstractDebugSessionCreator {
       });
     }
   }
-
   private void fail() {
     synchronized (this) {
       if (myIsFailed) {
@@ -153,7 +146,6 @@ public class VmCreator extends AbstractDebugSessionCreator {
     }
     myEventsProcessor.stop(false);
   }
-
   private void createVirtualMachine() {
     final Semaphore semaphore = new Semaphore();
     // semaphore - maybe not to call this method multiple times when a VM is not ready 
@@ -208,7 +200,6 @@ public class VmCreator extends AbstractDebugSessionCreator {
     });
     semaphore.waitFor();
   }
-
   private VirtualMachine doCreateVirtualMachine() throws RunFailedException {
     try {
       if (myArguments != null) {
@@ -216,10 +207,7 @@ public class VmCreator extends AbstractDebugSessionCreator {
       }
       if (myConnectionSettings.isServerMode()) {
         LOG.debug("Virtual Machine creation: server mode.");
-        ListeningConnector connector = (ListeningConnector) findConnector((myConnectionSettings.isUseSockets() ?
-          SOCKET_LISTENING_CONNECTOR_NAME :
-          SHMEM_LISTENING_CONNECTOR_NAME
-        ));
+        ListeningConnector connector = (ListeningConnector) findConnector((myConnectionSettings.isUseSockets() ? SOCKET_LISTENING_CONNECTOR_NAME : SHMEM_LISTENING_CONNECTOR_NAME));
         fillConnectorArguments(connector);
         LOG.debug("Start listening");
         connector.startListening(myArguments);
@@ -241,10 +229,7 @@ public class VmCreator extends AbstractDebugSessionCreator {
           }
         }
       } else {
-        AttachingConnector connector = (AttachingConnector) findConnector((myConnectionSettings.isUseSockets() ?
-          SOCKET_ATTACHING_CONNECTOR_NAME :
-          SHMEM_ATTACHING_CONNECTOR_NAME
-        ));
+        AttachingConnector connector = (AttachingConnector) findConnector((myConnectionSettings.isUseSockets() ? SOCKET_ATTACHING_CONNECTOR_NAME : SHMEM_ATTACHING_CONNECTOR_NAME));
         fillConnectorArguments(connector);
         try {
           return connector.attach(myArguments);
@@ -260,7 +245,6 @@ public class VmCreator extends AbstractDebugSessionCreator {
       myArguments = null;
     }
   }
-
   private void fillConnectorArguments(Connector connector) throws RunFailedException {
     if (connector == null) {
       throw new RunFailedException("debug connector not found");
@@ -271,10 +255,7 @@ public class VmCreator extends AbstractDebugSessionCreator {
     }
 
     //  negative port number means the caller leaves to debugger to decide at which hport to listen 
-    Connector.Argument portArg = (myConnectionSettings.isUseSockets() ?
-      myArguments.get("port") :
-      myArguments.get("name")
-    );
+    Connector.Argument portArg = (myConnectionSettings.isUseSockets() ? myArguments.get("port") : myArguments.get("name"));
     if (portArg != null) {
       portArg.setValue(Integer.toString(myConnectionSettings.getPort()));
     }
@@ -290,7 +271,6 @@ public class VmCreator extends AbstractDebugSessionCreator {
       hostArgument.setValue(myConnectionSettings.getHostName());
     }
   }
-
   private Connector findConnector(String connectorName) throws RunFailedException {
     VirtualMachineManager virtualMachineManager = null;
     try {
@@ -315,7 +295,6 @@ public class VmCreator extends AbstractDebugSessionCreator {
     }
     return null;
   }
-
   public void addProcessListener(ProcessListener processListener) {
     synchronized (myProcessListeners) {
       if (myExecutionResult != null) {
@@ -325,7 +304,6 @@ public class VmCreator extends AbstractDebugSessionCreator {
       }
     }
   }
-
   public void removeProcessListener(ProcessListener processListener) {
     synchronized (myProcessListeners) {
       if (myExecutionResult != null) {
@@ -335,7 +313,6 @@ public class VmCreator extends AbstractDebugSessionCreator {
       }
     }
   }
-
   private void executeAfterProcessStarted(final Runnable run) {
     VmCreator.RunsAfterProcessStarted processListener = new VmCreator.RunsAfterProcessStarted(run);
     addProcessListener(processListener);
@@ -345,24 +322,19 @@ public class VmCreator extends AbstractDebugSessionCreator {
       }
     }
   }
-
   @Override
   public DebugSession getDebugSession() {
     return myDebuggerSession;
   }
-
   public DebugConnectionSettings getConnectionSettings() {
     return myConnectionSettings;
   }
-
   private class RunsAfterProcessStarted extends ProcessAdapter {
     private Runnable myRunnable;
     private boolean alreadyRun = false;
-
     public RunsAfterProcessStarted(Runnable runnable) {
       myRunnable = runnable;
     }
-
     public synchronized void run() {
       if (!(alreadyRun)) {
         alreadyRun = true;
@@ -370,7 +342,6 @@ public class VmCreator extends AbstractDebugSessionCreator {
       }
       removeProcessListener(this);
     }
-
     @Override
     public void startNotified(ProcessEvent event) {
       run();

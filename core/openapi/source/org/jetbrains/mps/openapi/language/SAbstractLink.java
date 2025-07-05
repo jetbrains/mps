@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,28 +15,38 @@
  */
 package org.jetbrains.mps.openapi.language;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Represents an abstract meta-definition of node connections. These can express either references or containment relationships.
  */
-public interface SAbstractLink {
-
+public interface SAbstractLink extends SConceptFeature {
   /**
-   * The identifier of the link within the containing concept.
+   * @deprecated use {@link #getName()}
    */
+  @Deprecated
   String getRole();
 
   /**
    * The concept for the nodes that this link points to.
    */
+  @NotNull
   SAbstractConcept getTargetConcept();
 
   /**
    * True for references, false for containment relationships.
+   * @deprecated boolean limits API to two link kinds possible
    */
+  @Deprecated
   boolean isReference();
 
   /**
    * This link may contain no elements.
    */
   boolean isOptional();
+
+  /**
+   * Instance nodes can contain more than one link like this.
+   */
+  boolean isMultiple();
 }

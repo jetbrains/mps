@@ -20,18 +20,20 @@ import gnu.trove.THashMap;
 import gnu.trove.THashSet;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptPropertyOperations;
 import jetbrains.mps.lang.typesystem.runtime.ICheckingRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.newTypesystem.context.TracingTypecheckingContext;
+import jetbrains.mps.typesystem.inference.TypeSubstitution;
+import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.newTypesystem.VariableIdentifier;
+import jetbrains.mps.newTypesystem.context.TracingTypecheckingContext;
 import jetbrains.mps.newTypesystem.operation.AbstractOperation;
 import jetbrains.mps.newTypesystem.operation.AddRemarkOperation;
 import jetbrains.mps.newTypesystem.operation.ApplyRuleOperation;
 import jetbrains.mps.newTypesystem.operation.CheckAllOperation;
 import jetbrains.mps.newTypesystem.operation.ClearNodeTypeOperation;
 import jetbrains.mps.newTypesystem.operation.SolveInequalitiesOperation;
+import jetbrains.mps.newTypesystem.operation.SubstituteTypeOperation;
 import jetbrains.mps.newTypesystem.operation.block.AddBlockOperation;
 import jetbrains.mps.newTypesystem.operation.block.AddDependencyOperation;
 import jetbrains.mps.newTypesystem.operation.block.RemoveBlockOperation;
@@ -44,26 +46,27 @@ import jetbrains.mps.newTypesystem.state.blocks.ConditionKind;
 import jetbrains.mps.newTypesystem.state.blocks.InequalityBlock;
 import jetbrains.mps.newTypesystem.state.blocks.RelationKind;
 import jetbrains.mps.newTypesystem.state.blocks.WhenConcreteBlock;
-import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.smodel.SModelUtil_new;
-import jetbrains.mps.util.IterableUtil;
-import org.apache.log4j.LogManager;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
+import jetbrains.mps.typesystem.inference.util.StructuralNodeSet;
+import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.containers.ManyToManyMap;
+import org.apache.log4j.LogManager;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
 import java.lang.reflect.Array;
 import java.util.AbstractSet;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.EnumMap;
-import java.util.EnumSet;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -90,7 +93,7 @@ public class State {
 
   @StateObject
   private final Map<ConditionKind, ManyToManyMap<SNode, Block>> myBlocksAndInputs =
-    new THashMap<ConditionKind, ManyToManyMap<SNode, Block>>();
+      new THashMap<ConditionKind, ManyToManyMap<SNode, Block>>();
 
   @StateObject
   private final BlockSet myBlocks = new BlockSet();
@@ -244,15 +247,27 @@ public class State {
   }
 
   public void addEquation(SNode left, SNode right, EquationInfo info, boolean checkOnly) {
+
+    // substitute correct type
+    left = lookupTypeSubstitution(left);
+    right = lookupTypeSubstitution(right);
+
     if (!checkOnly) {
       addEquation(left, right, info);
-    } else {
+
+    }
+    else{
       if (myTypeCheckingContext.isSingleTypeComputation()) return; //no need to check if we don't need to report errors)
       addBlock(new CheckEquationBlock(this, left, right, RelationKind.CHECK_EQUATION, info));
     }
   }
 
   public void addInequality(SNode subType, SNode superType, boolean isWeak, boolean check, EquationInfo info, boolean lessThan) {
+
+    // substitute correct type
+    subType = lookupTypeSubstitution(subType);
+    superType = lookupTypeSubstitution(superType);
+
     if (check && myTypeCheckingContext.isSingleTypeComputation()) return; //no need to check if we don't need to report errors
     addBlock(new InequalityBlock(this, subType, superType, lessThan, RelationKind.fromFlags(isWeak, check, false), info));
   }
@@ -289,16 +304,18 @@ public class State {
 
   public void executeOperation(AbstractOperation operation) {
     if (operation == null) return;
-    if (myTypeCheckingContext instanceof TracingTypecheckingContext || operation.hasEffect()) {
+    if (myTypeCheckingContext instanceof TracingTypecheckingContext) {
       if (!myOperationStack.empty()) {
         myOperationStack.peek().addConsequence(operation);
       }
+    }
+    if (myTypeCheckingContext instanceof TracingTypecheckingContext || operation.hasEffect()) {
       myOperationStack.push(operation);
       operation.execute(this);
       if (!myOperationStack.empty()) {
         myOperationStack.pop();
       } else {
-       LOG.warning("Operation stack in type system state was empty");
+        LOG.warning("Operation stack in type system state was empty");
       }
     } else {
       operation.execute(this);   //do not store unneeded operations
@@ -346,7 +363,6 @@ public class State {
     myOperationStack.push(myOperation);
   }
 
-
   public void clearStateObjects() {
     if (!(myTypeCheckingContext instanceof TracingTypecheckingContext)/* && myInequalitySystem == null*/) {
       for (Entry<ConditionKind, ManyToManyMap<SNode, Block>> map : myBlocksAndInputs.entrySet()) {
@@ -358,6 +374,7 @@ public class State {
     }
     clearOperations();
   }
+
 
   public void solveInequalities() {
     if (!myInequalities.getRelationsToSolve().isEmpty()) {
@@ -377,10 +394,11 @@ public class State {
         if (!wCBlock.isSkipError()) {
           SNode node = myNodeMaps.getNode(wCBlock.getArgument());
           if (node != null) {
-            SNode concept = ((jetbrains.mps.smodel.SNode) node).getConceptDeclarationNode();
-            if (!SConceptPropertyOperations.getBoolean(concept, "abstract")) {
+            SConcept concept = node.getConcept();
+            boolean isRuntime = concept.equals(SNodeUtil.concept_RuntimeTypeVariable);
+            if (!concept.isAbstract() && !isRuntime) {
               myTypeCheckingContext.reportWarning(node, "argument of WHEN CONCRETE block is never concrete",
-                wCBlock.getNodeModel(), wCBlock.getNodeId(), null, new NodeMessageTarget());
+                  wCBlock.getNodeModel(), wCBlock.getNodeId(), null, new NodeMessageTarget());
             }
           }
         }
@@ -433,8 +451,7 @@ public class State {
   }
 
   public SNode createNewRuntimeTypesVariable() {
-    SNode typeVar = SModelUtil_new.instantiateConceptDeclaration("jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable",
-      null, GlobalScope.getInstance(), false);
+    SNode typeVar = SModelUtil_new.instantiateConceptDeclaration(SNodeUtil.concept_RuntimeTypeVariable, null, null, false);
     //todo this code should be moved into MPS
     SNodeAccessUtil.setProperty(typeVar, SNodeUtil.property_INamedConcept_name, myVariableIdentifier.getNewVarName());
     return typeVar;
@@ -473,6 +490,33 @@ public class State {
     } else if (fromIndex < toIndex) {
       executeOperationsFromTo(fromIndex, toIndex);
     }
+  }
+
+  @Nullable
+  private SNode lookupTypeSubstitution(SNode origType) {
+    if (origType == null || TypesUtil.isVariable(origType)) return origType;
+
+    SNode newType = origType;
+
+    // exhaustively apply substitutions until the operation has no effect
+    StructuralNodeSet<SNode> seen = new StructuralNodeSet<SNode>();
+
+    TypeSubstitution typeSubs = myTypeCheckingContext.getSubstitution(origType);
+    while (typeSubs != null && typeSubs.isValid()) {
+
+      newType = typeSubs.getNewNode();
+      if (seen.containsStructurally(newType)) {
+        break;
+      }
+      seen.addStructurally(newType);
+
+      executeOperation(new SubstituteTypeOperation(typeSubs));
+
+      // next iteration
+      typeSubs = myTypeCheckingContext.getSubstitution(newType);
+    }
+
+    return newType;
   }
 
   /** Nulls are not allowed. Not serializable. Not cloneable. */

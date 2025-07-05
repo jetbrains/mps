@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2013 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,18 @@
 package jetbrains.mps.generator.template;
 
 import jetbrains.mps.generator.runtime.TemplateContext;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.annotations.NotNull;
 
 public class MapSrcMacroPostProcContext extends TemplateQueryContextWithMacro {
   private SNode myOutputNode;
 
-  public MapSrcMacroPostProcContext(SNode node, SNode macroNode, SNode outputNode, @NotNull TemplateContext context, ITemplateGenerator generator) {
-    super(node, macroNode, context, generator);
-    myOutputNode = outputNode;
-  }
-
-  public MapSrcMacroPostProcContext(SNode node, @NotNull SNodeReference macroNode, SNode outputNode, @NotNull TemplateContext context, @NotNull ITemplateGenerator generator) {
-    super(node, macroNode, context, generator);
+  /**
+   * @since 3.1
+   */
+  public MapSrcMacroPostProcContext(@NotNull TemplateContext context, SNode outputNode, @NotNull SNodeReference macroNode) {
+    super(context, macroNode);
     myOutputNode = outputNode;
   }
 

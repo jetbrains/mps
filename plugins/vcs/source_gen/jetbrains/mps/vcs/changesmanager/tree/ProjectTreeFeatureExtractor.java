@@ -9,8 +9,6 @@ import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.ui.tree.MPSTreeNodeEx;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.util.SNodeOperations;
-import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode;
 import jetbrains.mps.ide.ui.smodel.ConceptTreeNode;
 import jetbrains.mps.vcs.changesmanager.tree.features.NodeFeature;
@@ -18,6 +16,7 @@ import jetbrains.mps.ide.ui.smodel.PropertyTreeNode;
 import jetbrains.mps.vcs.changesmanager.tree.features.PropertyFeature;
 import jetbrains.mps.ide.ui.smodel.ReferenceTreeNode;
 import org.jetbrains.mps.openapi.model.SReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.ide.ui.smodel.PropertiesTreeNode;
 import jetbrains.mps.vcs.changesmanager.tree.features.PropertiesFeature;
 import jetbrains.mps.ide.ui.smodel.ReferencesTreeNode;
@@ -30,7 +29,6 @@ import jetbrains.mps.vcs.changesmanager.tree.features.ModelFeature;
 public class ProjectTreeFeatureExtractor implements TreeNodeFeatureExtractor {
   public ProjectTreeFeatureExtractor() {
   }
-
   @Nullable
   @Override
   public Feature getFeature(@NotNull MPSTreeNode treeNode) {
@@ -40,12 +38,9 @@ public class ProjectTreeFeatureExtractor implements TreeNodeFeatureExtractor {
     } else if (treeNode.getParent() instanceof MPSTreeNodeEx) {
       node = ((MPSTreeNodeEx) treeNode.getParent()).getSNode();
     }
-    SNodeReference nodePointer = null;
-    if (node != null) {
-      if (SNodeOperations.isDisposed(node) || node.getModel() == null) {
-        return null;
-      }
-      nodePointer = new SNodePointer(node);
+    SNodeReference nodePointer = (node == null ? null : node.getReference());
+    if (nodePointer == null || nodePointer.getModelReference() == null) {
+      return null;
     }
     if (treeNode instanceof SNodeTreeNode || treeNode instanceof ConceptTreeNode) {
       return new NodeFeature(nodePointer);
@@ -62,7 +57,7 @@ public class ProjectTreeFeatureExtractor implements TreeNodeFeatureExtractor {
       PackageNode pn = ((PackageNode) treeNode);
       return new VirtualPackageFeature(pn.getModelReference(), pn.getPackage());
     } else if (treeNode instanceof SModelTreeNode) {
-      return new ModelFeature(((SModelTreeNode) treeNode).getSModelDescriptor().getReference());
+      return new ModelFeature(((SModelTreeNode) treeNode).getModel().getReference());
     }
     return null;
   }

@@ -18,6 +18,7 @@ package jetbrains.mps.idea.java.convert;
 
 import com.intellij.facet.FacetManager;
 import com.intellij.facet.FacetTypeRegistry;
+import com.intellij.ide.projectView.ProjectView;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.LangDataKeys;
@@ -42,8 +43,10 @@ import com.intellij.psi.PsiMethod;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.ide.java.newparser.JavaParseException;
 import jetbrains.mps.ide.java.newparser.JavaToMpsConverter;
+import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
-import jetbrains.mps.ide.vfs.IdeaFileSystemProvider;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.idea.core.facet.MPSFacet;
 import jetbrains.mps.idea.core.facet.MPSFacetType;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiNode;
@@ -52,9 +55,9 @@ import jetbrains.mps.idea.java.psiStubs.JavaForeignIdBuilder;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.DynamicReference;
-import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.util.SNodeOperations;
+import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -64,7 +67,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SearchScope;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -110,7 +112,7 @@ public class ConvertPackageToModel extends AnAction {
 
     MPSFacet facet = FacetManager.getInstance(module).getFacetByType(MPSFacetType.ID);
     SModule mpsModule = facet.getSolution();
-    MPSProject mpsProject = e.getProject().getComponent(MPSProject.class);
+    final MPSProject mpsProject = e.getProject().getComponent(MPSProject.class);
 
     List<PsiJavaFile> psiJavaFiles = JavaConverterHelper.getFilesFromSelection(JavaConverterHelper.liftToFiles(Arrays.asList(elements)));
 
@@ -132,8 +134,10 @@ public class ConvertPackageToModel extends AnAction {
       }
     }
 
-    final JavaToMpsConverter parser = new JavaToMpsConverter(mpsModule, mpsProject.getRepository(), true, true);
+    final JavaToMpsConverter parser = new JavaToMpsConverter(mpsModule, mpsProject.getRepository(), true, true, project.getComponent(MessagesViewTool.class).newHandler());
     final List<IFile> javaFiles = toIFiles(psiJavaFiles);
+
+    ApplicationManager.getApplication().saveAll();
 
     ProgressManager.getInstance().run(new Task.Modal(null, "Convert to MPS", false) {
       @Override
@@ -160,19 +164,17 @@ public class ConvertPackageToModel extends AnAction {
         Set<PsiClass> psiClasses = getPsiClasses(parser.getSuccessfulFiles(), PsiManager.getInstance(e.getProject()));
 
         Set<SNode> stubNodes = getStubNodes(psiClasses);
-//        Map<SNode, SNode> stubToMpsNodes = null;
-
-        // this module and those which depend on it
-//        GlobalSearchScope scope = new ModuleWithDependentsScope(module, false);
-        Set<SModel> excludeSet = new HashSet<SModel>(parser.getModels());
-        SearchScope mpsScope = new SearchScopeWithoutModels(module, excludeSet);
-
+        Set<SNode> roots = parser.getRootsBuilt();
         List<SReference> referencesToFix = new ArrayList<SReference>();
 
         boolean wasUnresolved = false;
 
-        Set<SReference> references = FindUsagesFacade.getInstance().findUsages(mpsScope, stubNodes, null);
+        Set<SReference> references = FindUsagesFacade.getInstance().findUsages(mpsProject.getScope(), stubNodes, null);
         for (SReference ref : references) {
+          if (roots.contains(ref.getSourceNode().getContainingRoot())) {
+            continue;
+          }
+
           if (!(ref instanceof StaticReference)) {
             referencesToFix.add(ref);
             continue;
@@ -206,7 +208,10 @@ public class ConvertPackageToModel extends AnAction {
 
           SModel sourceModel = source.getModel();
           ((SModelBase) sourceModel).deleteModelImport(targetModelRef);
-          ((SModelBase) sourceModel).addModelImport(newModelRef, false);
+          if (!newModelRef.equals(sourceModel.getReference())) {
+            // avoiding self-import
+            ((SModelBase) sourceModel).addModelImport(newModelRef, false);
+          }
 
           // better create static references right away
           // changing reference to a static reference pointing to mps node
@@ -241,6 +246,11 @@ public class ConvertPackageToModel extends AnAction {
         ReloadManager.getInstance().flush();
       }
     });
+
+    // if the package wasn't a model before then we want our MPSTreeStructureProvider to do its work with
+    // the directory node for the package
+    ProjectView projectView = ProjectView.getInstance(project);
+    projectView.refresh();
   }
 
   private boolean containsJavaThings(PsiElement[] elements) {
@@ -270,7 +280,7 @@ public class ConvertPackageToModel extends AnAction {
 
     for (PsiFile file : psiFiles) {
       VirtualFile vfile = file.getVirtualFile();
-      IFile ifile = new IdeaFileSystemProvider().getFile(vfile.getPath());
+      IFile ifile = new IdeaFileSystem().getFile(vfile.getPath());
       result.add(ifile);
     }
 
@@ -320,7 +330,7 @@ public class ConvertPackageToModel extends AnAction {
     NodePtr nodePtr = JavaForeignIdBuilder.computeNodePtr(element);
     if (nodePtr == null) return;
     // TODO change to project SRepository
-    SNode node = nodePtr.toSNodeReference().resolve(MPSModuleRepository.getInstance());
+    SNode node = nodePtr.toSNodeReference().resolve(ProjectHelper.getProjectRepository(element.getProject()));
     if (node == null) return;
     result.add(node);
   }

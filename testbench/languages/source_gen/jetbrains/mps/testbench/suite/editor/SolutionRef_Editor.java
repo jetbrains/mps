@@ -6,82 +6,9 @@ import jetbrains.mps.nodeEditor.DefaultNodeEditor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
-import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
-import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
-import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
-import jetbrains.mps.nodeEditor.cells.ModelAccessor;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
-import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.util.EqualUtil;
-import jetbrains.mps.openapi.editor.cells.CellActionType;
-import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 
 public class SolutionRef_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createCollection_ns5ajd_a(editorContext, node);
-  }
-
-  private EditorCell createCollection_ns5ajd_a(EditorContext editorContext, SNode node) {
-    EditorCell_Collection editorCell = EditorCell_Collection.createHorizontal(editorContext, node);
-    editorCell.setCellId("Collection_ns5ajd_a");
-    editorCell.setBig(true);
-    editorCell.addEditorCell(this.createConstant_ns5ajd_a0(editorContext, node));
-    editorCell.addEditorCell(this.createReadOnlyModelAccessor_ns5ajd_b0(editorContext, node));
-    return editorCell;
-  }
-
-  private EditorCell createConstant_ns5ajd_a0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "solution");
-    editorCell.setCellId("Constant_ns5ajd_a0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.EDITABLE, false);
-    editorCell.getStyle().putAll(style);
-    editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(editorContext, new BasicCellContext(node), new SubstituteInfoPartExt[]{new SolutionRef_Editor.ReplaceWith_SolutionRef_cellMenu_ns5ajd_a0a0()}));
-    return editorCell;
-  }
-
-  public static class ReplaceWith_SolutionRef_cellMenu_ns5ajd_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
-    public ReplaceWith_SolutionRef_cellMenu_ns5ajd_a0a0() {
-    }
-
-    public String getReplacementConceptName() {
-      return "jetbrains.mps.testbench.suite.structure.SolutionRef";
-    }
-  }
-
-  private EditorCell createReadOnlyModelAccessor_ns5ajd_b0(final EditorContext editorContext, final SNode node) {
-    EditorCell_Property editorCell = EditorCell_Property.create(editorContext, new ModelAccessor() {
-      public String getText() {
-        return BehaviorReflection.invokeVirtual(SModuleReference.class, node, "virtual_moduleReference_1280144168199513544", new Object[]{}).getModuleName();
-      }
-
-      public void setText(String s) {
-      }
-
-      public boolean isValidText(String s) {
-        return EqualUtil.equals(s, getText());
-      }
-    }, node);
-    editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(editorContext, new BasicCellContext(node), new SubstituteInfoPartExt[]{new SolutionRef_Editor.ReplaceWith_SolutionRef_cellMenu_ns5ajd_a0b0()}));
-    editorCell.setCellId("ReadOnlyModelAccessor_ns5ajd_b0");
-    return editorCell;
-  }
-
-  public static class ReplaceWith_SolutionRef_cellMenu_ns5ajd_a0b0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
-    public ReplaceWith_SolutionRef_cellMenu_ns5ajd_a0b0() {
-    }
-
-    public String getReplacementConceptName() {
-      return "jetbrains.mps.testbench.suite.structure.SolutionRef";
-    }
+    return new SolutionRef_EditorBuilder_a(editorContext, node).createCell();
   }
 }

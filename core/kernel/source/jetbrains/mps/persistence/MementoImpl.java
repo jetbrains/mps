@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import java.util.*;
  * evgeny, 11/16/12
  */
 public class MementoImpl implements Memento {
-
   private String type;
   private Map<String, String> values;
   private Map<String, List<Memento>> children;
@@ -48,6 +47,15 @@ public class MementoImpl implements Memento {
 
   @Override
   public void put(String key, String value) {
+    if (value == null) {
+      if (values != null) {
+        values.remove(key);
+      }
+      return;
+    }
+    if (key == null) {
+      throw new IllegalArgumentException("Null key in memento doesn't make sense");
+    }
     if (values == null) {
       values = new LinkedHashMap<String, String>();
     }

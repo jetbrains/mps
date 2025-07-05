@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,24 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.project.SModelRoot;
-import jetbrains.mps.project.structure.ProjectStructureModelRoot;
+import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.smodel.SModelId.ForeignSModelId;
+import jetbrains.mps.smodel.SModelId.IntegerSModelId;
 import jetbrains.mps.smodel.SModelId.RegularSModelId;
 import jetbrains.mps.smodel.SModelId.RelativePathSModelId;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.FindUsagesParticipant;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
@@ -37,30 +42,42 @@ import org.jetbrains.mps.openapi.persistence.ModelRootFactory;
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant;
 import org.jetbrains.mps.openapi.persistence.SModelIdFactory;
 import org.jetbrains.mps.openapi.persistence.SNodeIdFactory;
+import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
+import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 /**
  * evgeny, 10/23/12
  */
 public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.PersistenceFacade implements CoreComponent {
+  private static final Logger LOG = LogManager.getLogger(PersistenceRegistry.class);
 
   public static final String DEFAULT_MODEL_ROOT = "default";
   public static final String OBSOLETE_MODEL_ROOT = "obsolete";
   public static final String JAVA_CLASSES_ROOT = "java_classes";
 
-  private Map<String, ModelRootFactory> myRootFactories = new HashMap<String, ModelRootFactory>();
-  private Map<String, ModelFactory> myExtensionToModelFactoryMap = new HashMap<String, ModelFactory>();
-  private Map<String, SModelIdFactory> myModelIdFactory = new HashMap<String, SModelIdFactory>();
-  private Map<String, SNodeIdFactory> myNodeIdFactory = new HashMap<String, SNodeIdFactory>();
-  private Set<FindUsagesParticipant> myFindUsagesParticipants = new LinkedHashSet<FindUsagesParticipant>();
-  private Set<NavigationParticipant> myNavigationParticipants = new LinkedHashSet<NavigationParticipant>();
-  private Set<FolderModelFactory> myFolderModelFactories = new LinkedHashSet<FolderModelFactory>();
-  private ModelEnvironmentInfo myModelEnvironmentInfo = new ModelEnvironmentInfoImpl();
+  private final ModelFactoryService MODEL_FACTORY_SERVICE = ModelFactoryService.getInstance();
+
+  @ToRemove(version = 181) private final Map<String, ModelFactory> myLegacyFileExt2ModelFactoryMap = new ConcurrentHashMap<>();
+
+  private final Map<String, ModelRootFactory> myRootFactories = new HashMap<String, ModelRootFactory>();
+  private final Map<String, SModelIdFactory> myModelIdFactory = new HashMap<String, SModelIdFactory>();
+  private final Map<String, SNodeIdFactory> myNodeIdFactory = new HashMap<String, SNodeIdFactory>();
+  private final Set<FindUsagesParticipant> myFindUsagesParticipants = new LinkedHashSet<FindUsagesParticipant>();
+  private final Set<NavigationParticipant> myNavigationParticipants = new LinkedHashSet<NavigationParticipant>();
+
+  private boolean isDisabled = false;
 
   public static PersistenceRegistry getInstance() {
     return (PersistenceRegistry) INSTANCE;
@@ -83,46 +100,100 @@ public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.P
     }
   }
 
+  @Deprecated
   @Override
   public ModelFactory getModelFactory(String extension) {
-    return myExtensionToModelFactoryMap.get(extension);
+    if (myLegacyFileExt2ModelFactoryMap.containsKey(extension)) {
+      return myLegacyFileExt2ModelFactoryMap.get(extension);
+    }
+    return MODEL_FACTORY_SERVICE.getDefaultModelFactory(FileExtensionDataSourceType.of(extension));
   }
 
+  @Deprecated
   @Override
   public ModelFactory getDefaultModelFactory() {
-    return myExtensionToModelFactoryMap.get(MPSExtentions.MODEL);
+    String defaultExt = MPSExtentions.MODEL;
+    return getModelFactory(defaultExt);
   }
 
+  @Deprecated
   @Override
   public void setModelFactory(String extension, ModelFactory factory) {
     if (factory == null) {
-      myExtensionToModelFactoryMap.remove(extension);
+      FileExtensionDataSourceType type = FileExtensionDataSourceType.of(extension);
+      MODEL_FACTORY_SERVICE.getModelFactories(type).forEach(MODEL_FACTORY_SERVICE::unregister);
     } else {
-      myExtensionToModelFactoryMap.put(extension, factory);
+      myLegacyFileExt2ModelFactoryMap.put(extension, factory);
+      if (!Objects.equals(factory.getFileExtension(), extension)) {
+        LOG.error("The model factory '" + factory + "' is trying to register using the legacy mechanism via PersistenceFacade.\n" +
+                  "The declared file extension '" + factory.getFileExtension() + "' is not equal to the passed '" + extension + "'\n" +
+                  "Please fix this.", new Throwable());
+        return;
+      }
+      MODEL_FACTORY_SERVICE.register(factory);
     }
   }
 
+  @Deprecated
   @Override
   public Set<String> getModelFactoryExtensions() {
-    return myExtensionToModelFactoryMap.keySet();
+    Set<String> result = new HashSet<>(myLegacyFileExt2ModelFactoryMap.keySet());
+    for (ModelFactory modelFactory : MODEL_FACTORY_SERVICE.getFactories()) {
+      List<DataSourceType> preferredDataSourceTypes = new ArrayList<>(modelFactory.getPreferredDataSourceTypes());
+      result.addAll(preferredDataSourceTypes.stream()
+                                            .filter(dataSourceType -> dataSourceType instanceof FileExtensionDataSourceType)
+                                            .map(dataSourceType -> ((FileExtensionDataSourceType) dataSourceType).getFileExtension())
+                                            .collect(Collectors.toList()));
+    }
+    return Collections.unmodifiableSet(result);
+  }
+
+  @NotNull
+  @Override
+  public SModuleId createModuleId(@NotNull String text) {
+    return ModuleId.fromString(text);
+  }
+
+  @NotNull
+  @Override
+  public String asString(@NotNull SModuleId moduleId) {
+    return moduleId.toString();
   }
 
   @Override
-  public SModuleReference createModuleReference(String text) {
+  public String asString(@NotNull SModuleReference reference) {
+    return reference.toString();
+  }
+
+  @Override
+  public SModuleReference createModuleReference(@NotNull String text) {
     return ModuleReference.parseReference(text);
+  }
+
+  @Override
+  public SModuleReference createModuleReference(@NotNull SModuleId moduleId, String moduleName) {
+    return new ModuleReference(moduleName, moduleId);
   }
 
   @Override
   public SModelId createModelId(String text) {
     int colon = text.indexOf(':');
     if (colon == -1) {
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException(String.format("No model id factory designator (':') in %s", text));
     }
-    SModelIdFactory factory = myModelIdFactory.get(text.substring(0, colon));
+    final String factoryDesignator = text.substring(0, colon);
+    SModelIdFactory factory = myModelIdFactory.get(factoryDesignator);
     if (factory == null) {
-      return null;
+      throw new IllegalArgumentException(String.format("Unknown model id factory '%s' in %s", factoryDesignator, text));
     }
     return factory.create(text.substring(colon + 1));
+  }
+
+  @Override
+  public String asString(@NotNull SModelId modelId) {
+    // FIXME In fact, shall delegate to proper SModelIdFactory. toString here is just the first step in transition - once all code out there
+    // stops using SModelId.toString() for persistence and switch to PersistenceFacade.asString, this implementation shall change and delegate to factory.
+    return modelId.toString();
   }
 
   @Override
@@ -131,6 +202,12 @@ public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.P
       throw new IllegalArgumentException();
     }
     return jetbrains.mps.smodel.SModelReference.parseReference(text);
+  }
+
+  @Override
+  public String asString(@NotNull SModelReference modelRef) {
+    // FIXME once there's no direct uses of SModelReference#toString in persistence code, this might change to produce another format
+    return modelRef.toString();
   }
 
   @Override
@@ -168,6 +245,12 @@ public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.P
     return factory.create(text.substring(colon + 1));
   }
 
+  @NotNull
+  @Override
+  public String asString(@NotNull SNodeReference nodeRef) {
+    return SNodePointer.serialize(nodeRef);
+  }
+
   @Override
   public SNodeReference createNodeReference(String text) {
     return SNodePointer.deserialize(text);
@@ -199,7 +282,11 @@ public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.P
 
   @Override
   public Set<FindUsagesParticipant> getFindUsagesParticipants() {
-    return Collections.unmodifiableSet(myFindUsagesParticipants);
+    return isDisabled ? Collections.<FindUsagesParticipant>emptySet() : Collections.unmodifiableSet(myFindUsagesParticipants);
+  }
+
+  public boolean isFastSearch() {
+    return !isDisabled;
   }
 
   @Override
@@ -212,38 +299,9 @@ public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.P
     myNavigationParticipants.remove(participant);
   }
 
-  public FolderModelFactory getFolderModelFactory(@NotNull String id) {
-    for (FolderModelFactory folderModelFactory : myFolderModelFactories) {
-      if (id.equals(folderModelFactory.getFactoryId())) {
-        return folderModelFactory;
-      }
-    }
-    return null;
-  }
-
-  public void addFolderModelFactory(FolderModelFactory factory) {
-    myFolderModelFactories.add(factory);
-  }
-
-  public void removeFolderModelFactory(FolderModelFactory factory) {
-    myFolderModelFactories.remove(factory);
-  }
-
-  public Set<FolderModelFactory> getFolderModelFactories() {
-    return Collections.unmodifiableSet(myFolderModelFactories);
-  }
-
   @Override
   public Set<NavigationParticipant> getNavigationParticipants() {
     return myNavigationParticipants;
-  }
-
-  public ModelEnvironmentInfo getModelEnvironmentInfo() {
-    return myModelEnvironmentInfo;
-  }
-
-  public void setModelEnvironmentInfo(ModelEnvironmentInfo modelEnvironmentInfo) {
-    myModelEnvironmentInfo = modelEnvironmentInfo != null ? modelEnvironmentInfo : new ModelEnvironmentInfoImpl();
   }
 
   @Override
@@ -253,55 +311,32 @@ public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.P
     }
     INSTANCE = this;
 
-    setModelRootFactory(DEFAULT_MODEL_ROOT, new ModelRootFactory() {
-      @Override
-      public ModelRoot create() {
-        return new DefaultModelRoot();
-      }
-    });
-    setModelRootFactory(OBSOLETE_MODEL_ROOT, new ModelRootFactory() {
-      @Override
-      public ModelRoot create() {
-        return new SModelRoot();
-      }
-    });
-    setModelRootFactory(ProjectStructureModelRoot.TYPE, new ModelRootFactory() {
-      @Override
-      public ModelRoot create() {
-        return new ProjectStructureModelRoot();
-      }
-    });
-
-    setNodeIdFactory(jetbrains.mps.smodel.SNodeId.TYPE, new SNodeIdFactory() {
-      @Override
-      public SNodeId create(String text) {
-        return jetbrains.mps.smodel.SNodeId.fromString(text);
-      }
-    });
-    setModelIdFactory(RegularSModelId.TYPE, new SModelIdFactory() {
-      @Override
-      public SModelId create(String text) {
-        return jetbrains.mps.smodel.SModelId.regular(text);
-      }
-    });
-    setModelIdFactory(ForeignSModelId.TYPE, new SModelIdFactory() {
-      @Override
-      public SModelId create(String text) {
-        return jetbrains.mps.smodel.SModelId.foreign(text);
-      }
-    });
-    setModelIdFactory(RelativePathSModelId.TYPE, new SModelIdFactory() {
-      @Override
-      public SModelId create(String text) {
-        return new RelativePathSModelId(text);
-      }
-    });
-
-    setModelFactory(MPSExtentions.MODEL_HEADER, new FilePerRootModelPersistence());
+    setModelRootFactory(DEFAULT_MODEL_ROOT, new DefaultModelRootFactory());
+    setNodeIdFactory(jetbrains.mps.smodel.SNodeId.TYPE, jetbrains.mps.smodel.SNodeId::fromString);
+    setModelIdFactory(RegularSModelId.TYPE, jetbrains.mps.smodel.SModelId::regular);
+    setModelIdFactory(ForeignSModelId.TYPE, jetbrains.mps.smodel.SModelId::foreign);
+    setModelIdFactory(RelativePathSModelId.TYPE, RelativePathSModelId::new);
+    setModelIdFactory(IntegerSModelId.TYPE, IntegerSModelId::parse);
   }
 
   @Override
   public void dispose() {
     INSTANCE = null;
+  }
+
+  public void disableFastFindUsages() {
+    isDisabled = true;
+  }
+
+  public void enableFastFindUsages() {
+    isDisabled = false;
+  }
+
+  private static class DefaultModelRootFactory implements ModelRootFactory {
+    @NotNull
+    @Override
+    public ModelRoot create() {
+      return new DefaultModelRoot();
+    }
   }
 }

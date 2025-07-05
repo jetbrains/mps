@@ -15,13 +15,36 @@
  */
 package org.jetbrains.mps.openapi.language;
 
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
+
 /**
  * Represents a concept property
  */
-public interface SProperty {
-
+public interface SProperty extends SConceptFeature {
+  /**
+   * Returns a name of this property
+   * Though in 3.2 the name is still used as id in some cases, it should be treated only as a user-friendly text representation.
+   * Although this method is identical to {@link SConceptFeature#getName()}, it is left here until we find a way to migrate references to
+   * this method in MPS models from <code>SProperty.getName</code> to <code>SConceptFeature.getName</code>
+   */
+  @Override
+  @NotNull
   String getName();
 
+  //left for compatibility with "interpreting" code
+  //use SProperty in code instead
+  @Nullable
+  @Deprecated
+  @ToRemove(version = 3.4)
+  SNode getDeclarationNode();
+
+  /**
+   * @return {@link SDataType} of the given SProperty
+   */
+//  @NotNull
   SDataType getType();
 
   /**

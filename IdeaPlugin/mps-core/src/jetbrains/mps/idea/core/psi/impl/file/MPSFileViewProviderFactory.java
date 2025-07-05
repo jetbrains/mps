@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,17 +27,21 @@ import com.intellij.psi.SingleRootFileViewProvider;
 import com.intellij.testFramework.LightVirtualFile;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.fileTypes.MPSLanguage;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.idea.core.psi.MPSNodeFileViewProvider;
 import jetbrains.mps.idea.core.psi.MPSSingleRootFileViewProvider;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiModel;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiProvider;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiRootNode;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 /**
  * User: fyodor
@@ -46,7 +50,13 @@ import org.jetbrains.mps.openapi.model.SModel;
 public class MPSFileViewProviderFactory implements FileViewProviderFactory {
   @Override
   public FileViewProvider createFileViewProvider(@NotNull VirtualFile file, Language language, @NotNull final PsiManager manager, boolean physical) {
-    return new MyFileViewProvider(manager, file, physical);
+//    return new MyFileViewProvider(manager, file, physical);
+    if (!(file instanceof MPSNodeVirtualFile)) {
+      // todo revert to exception here, we should never be called with files like .mps (de-register their type from being MPSLanguage)
+//      throw new IllegalStateException();
+      return null;
+    }
+    return new MPSNodeFileViewProvider(manager, (MPSNodeVirtualFile) file);
   }
 
   private static class MyFileViewProvider extends MPSSingleRootFileViewProvider {
@@ -83,10 +93,11 @@ public class MPSFileViewProviderFactory implements FileViewProviderFactory {
         ? FileSystem.getInstance().getFileByPath(virtualFile.getParent().getPath())
         : FileSystem.getInstance().getFileByPath(virtualFile.getPath());
 
-      PsiFile psiFile = ModelAccess.instance().runReadAction(new Computable<PsiFile>() {
+      SRepository repository = ProjectHelper.getProjectRepository(getManager().getProject());
+      PsiFile psiFile = new ModelAccessHelper(repository.getModelAccess()).runReadAction(new Computable<PsiFile>() {
         @Override
         public PsiFile compute() {
-          SModel descr = SModelFileTracker.getInstance().findModel(modelFile);
+          SModel descr = SModelFileTracker.getInstance(repository).findModel(modelFile);
           if (descr != null) {
             // force loading the model and updating the PSI tree at this time
             MPSPsiProvider mpsPsiProvider = MPSPsiProvider.getInstance(getManager().getProject());

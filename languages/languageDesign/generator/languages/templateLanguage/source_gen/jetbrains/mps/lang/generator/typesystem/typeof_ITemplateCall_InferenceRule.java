@@ -8,24 +8,23 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.typesystem.inference.EquationInfo;
-import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class typeof_ITemplateCall_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_ITemplateCall_InferenceRule() {
   }
-
   public void applyRule(final SNode iTemplateCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode templateDeclaration = SLinkOperations.getTarget(iTemplateCall, "template", false);
-    boolean b = true;
+    SNode templateDeclaration = SLinkOperations.getTarget(iTemplateCall, MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template"));
     if (templateDeclaration != null) {
-      List<SNode> parameterDeclarations = SLinkOperations.getTargets(templateDeclaration, "parameter", true);
-      List<SNode> actualArguments = SLinkOperations.getTargets(iTemplateCall, "actualArgument", true);
+      List<SNode> parameterDeclarations = SLinkOperations.getChildren(templateDeclaration, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter"));
+      List<SNode> actualArguments = SLinkOperations.getChildren(iTemplateCall, MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument"));
       if (ListSequence.fromList(parameterDeclarations).count() != ListSequence.fromList(actualArguments).count()) {
         {
           MessageTarget errorTarget = new NodeMessageTarget();
@@ -36,24 +35,18 @@ public class typeof_ITemplateCall_InferenceRule extends AbstractInferenceRule_Ru
           {
             SNode _nodeToCheck_1029348928467 = ListSequence.fromList(actualArguments).getElement(i);
             EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "4665309944889675072", 0, null);
-            typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "4665309944889705399", true), (SNode) SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), "type", true), false, true, _info_12389875345);
+            typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "4665309944889705399", true), (SNode) SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type")), false, true, _info_12389875345);
           }
         }
       }
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.lang.generator.structure.ITemplateCall";
+  public SAbstractConcept getApplicableConcept() {
+    return MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, "jetbrains.mps.lang.generator.structure.ITemplateCall");
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConcept().getQualifiedName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
   }

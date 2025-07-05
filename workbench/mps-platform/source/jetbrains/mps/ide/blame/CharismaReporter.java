@@ -28,46 +28,52 @@ import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.blame.dialog.BlameDialog;
 import jetbrains.mps.ide.blame.dialog.BlameDialogComponent;
 import jetbrains.mps.ide.blame.perform.Response;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
+import java.awt.Component;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class CharismaReporter extends ErrorReportSubmitter {
+
+  @NotNull
   @Override
   public String getReportActionText() {
     return "Report To JetBrains MPS Tracker";
   }
 
   @Override
-  public void submitAsync(IdeaLoggingEvent[] events, String additionalInfo, Component parentComponent, Consumer<SubmittedReportInfo> consumer) {
-    assert ThreadUtils.isEventDispatchThread();
+  public boolean submit(@NotNull IdeaLoggingEvent[] events, @Nullable String additionalInfo, @NotNull Component parentComponent,
+                        @NotNull Consumer<SubmittedReportInfo> consumer) {
+    ThreadUtils.assertEDT();
 
     if (events.length == 0) {
       consumer.consume(new SubmittedReportInfo(null, null, SubmissionStatus.FAILED));
-      return;
+      return false;
     }
     final DataContext dataContext = DataManager.getInstance().getDataContext(parentComponent);
     final Project project = PlatformDataKeys.PROJECT.getData(dataContext);
 
     BlameDialog blameDialog = BlameDialogComponent.getInstance().createDialog(project, parentComponent);
-    blameDialog.addEx(events[0].getThrowable());
+    blameDialog.addExceptions(Arrays.stream(events).map(IdeaLoggingEvent::getThrowable).collect(Collectors.toList()));
+    // Use only first message. Other messages will be shown in their stack traces.
     blameDialog.setIssueTitle(events[0].getMessage());
     blameDialog.setDescription(additionalInfo);
+    blameDialog.setPluginDescriptor(getPluginDescriptor());
 
+    blameDialog.initDialog();
     blameDialog.show();
 
     if (blameDialog.isCancelled()) {
       consumer.consume(new SubmittedReportInfo(null, "Cancelled issue submit", SubmissionStatus.FAILED));
-    } else {
-      Response response = blameDialog.getResult();
-      assert response != null : "Response must not be null";
-      assert response.isSuccess() : "Response is not 'cancelled' or 'success'";
-      consumer.consume(new SubmittedReportInfo(null, "", SubmissionStatus.NEW_ISSUE));
+      return false;
     }
-  }
 
-  @Override
-  public SubmittedReportInfo submit(IdeaLoggingEvent[] events, Component parentComponent) {
-    // obsolete API
-    return new SubmittedReportInfo(null, "0", SubmittedReportInfo.SubmissionStatus.FAILED);
+    Response response = blameDialog.getResult();
+    assert response != null : "Response must not be null";
+    assert response.isSuccess() : "Response is not 'cancelled' or 'success'";
+    consumer.consume(new SubmittedReportInfo(null, "", SubmissionStatus.NEW_ISSUE));
+    return true;
   }
 }

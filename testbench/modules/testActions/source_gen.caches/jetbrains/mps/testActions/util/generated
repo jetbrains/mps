@@ -1,10 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-evp7uf5zgblrw7y0djibi0q7ze69e4s">
-  <dep model="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" hash="-8uwjsvoyc0jmxumo62dusu4gaxjguv8" />
-  <common hash="-c1pqhpg4d7p2zicaehfxsu86pk9fxmk" />
-  <source id="1575175756409680350" name="FlyingActionsFinder" hash="7owf1wkqdqt1r11rbzkzbbbefk5il5i">
-    <dep model="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
-    <file name="FlyingActionsFinder.java" />
-  </source>
-</dependencies>
+<dependencies version="2" modelHash="-dpqja9sxc43ytz59k9d4j5v0dd89jrx" />
 

@@ -15,6 +15,9 @@
  */
 package jetbrains.mps.lang.typesystem.runtime;
 
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactoryByName;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 
@@ -62,13 +65,23 @@ public abstract class InequationReplacementRule_Runtime implements IRuleWithTwoA
     return new IsApplicableStatus(b, null);
   }
 
-  public abstract String getApplicableSubtypeConceptFQName();
-
-  public abstract String getApplicableSupertypeConceptFQName();
-
   @Override
   public boolean isApplicable1(SNode node) {
     return isApplicableSubtype(node);
+  }
+
+  public abstract SAbstractConcept getApplicableSubtypeConcept();
+
+  public abstract SAbstractConcept getApplicableSupertypeConcept();
+
+  @Override
+  public SAbstractConcept getApplicableConcept1() {
+    return getApplicableSubtypeConcept();
+  }
+
+  @Override
+  public SAbstractConcept getApplicableConcept2() {
+    return getApplicableSupertypeConcept();
   }
 
   @Override
@@ -76,20 +89,8 @@ public abstract class InequationReplacementRule_Runtime implements IRuleWithTwoA
     return isApplicableSupertype(node);
   }
 
-  @Override
-  public String getApplicableConceptFQName1() {
-    return getApplicableSubtypeConceptFQName();
-  }
-
-  @Override
-  public String getApplicableConceptFQName2() {
-    return getApplicableSupertypeConceptFQName();
-  }
-
   //todo generate this method
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
     return true;
   }
-
-
 }

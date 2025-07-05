@@ -8,29 +8,41 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NegativeSymbolClassRegexp_toPositive {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new NegativeSymbolClassRegexp_toPositive.NegativeSymbolClassRegexp_toPositive_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new NegativeSymbolClassRegexp_toPositive.NegativeSymbolClassRegexp_toPositive_BACKSPACE(node));
   }
-
   public static class NegativeSymbolClassRegexp_toPositive_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public NegativeSymbolClassRegexp_toPositive_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public String getDescriptionText() {
       return "convert to positive class";
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SNodeFactoryOperations.replaceWithNewChild(node, "jetbrains.mps.baseLanguage.regexp.structure.PositiveSymbolClassRegexp");
+      SNodeFactoryOperations.replaceWithNewChild(node, SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e2f48cL, "jetbrains.mps.baseLanguage.regexp.structure.PositiveSymbolClassRegexp")));
+    }
+  }
+  public static class NegativeSymbolClassRegexp_toPositive_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public NegativeSymbolClassRegexp_toPositive_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public String getDescriptionText() {
+      return "convert to positive class";
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      SNodeFactoryOperations.replaceWithNewChild(node, SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e2f48cL, "jetbrains.mps.baseLanguage.regexp.structure.PositiveSymbolClassRegexp")));
     }
   }
 }

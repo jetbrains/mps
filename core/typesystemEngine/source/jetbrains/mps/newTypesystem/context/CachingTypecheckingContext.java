@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,11 @@
 package jetbrains.mps.newTypesystem.context;
 
 import gnu.trove.THashMap;
-import jetbrains.mps.newTypesystem.context.component.SimpleTypecheckingComponent;
-import jetbrains.mps.newTypesystem.context.typechecking.BaseTypechecking;
-import jetbrains.mps.newTypesystem.state.State;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.languageScope.LanguageScopeExecutor;
 import jetbrains.mps.typesystem.inference.TypeChecker;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
+import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Map;
 
@@ -38,12 +36,17 @@ public class CachingTypecheckingContext extends TargetTypecheckingContext {
   }
 
   @Override
-  public SNode getTypeOf_resolveMode(SNode node, TypeChecker typeChecker) {
+  public SNode getTypeOf_resolveMode(final SNode node, TypeChecker typeChecker) {
     Pair <SNode, Boolean> pair = getTypeComputed(node);
     if (pair.o2) {
       return pair.o1;
     }
-    SNode resultType = getTypechecking().computeTypesForNodeDuringResolving(node);
+    SNode resultType = LanguageScopeExecutor.execWithModelScope(node.getModel(), new Computable<SNode>() {
+      @Override
+      public SNode compute() {
+        return getTypechecking().computeTypesForNodeDuringResolving(node);
+      }
+    });
     putTypeComputed(node, resultType);
     return resultType;
   }

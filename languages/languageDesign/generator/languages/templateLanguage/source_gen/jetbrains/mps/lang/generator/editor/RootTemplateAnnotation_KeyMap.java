@@ -10,15 +10,12 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.model.SModel;
 
 public class RootTemplateAnnotation_KeyMap extends KeyMapImpl {
   public RootTemplateAnnotation_KeyMap() {
@@ -27,20 +24,16 @@ public class RootTemplateAnnotation_KeyMap extends KeyMapImpl {
     action = new RootTemplateAnnotation_KeyMap.RootTemplateAnnotation_KeyMap_Action0();
     this.putAction("ctrl+shift", "VK_H", action);
   }
-
   public static class RootTemplateAnnotation_KeyMap_Action0 extends KeyMapActionImpl {
     public RootTemplateAnnotation_KeyMap_Action0() {
       this.setShownInPopupMenu(true);
     }
-
     public String getDescriptionText() {
       return "add root template annotation";
     }
-
     public boolean isMenuAlwaysShown() {
       return false;
     }
-
     public boolean canExecute(final EditorContext editorContext) {
       EditorCell contextCell = editorContext.getContextCell();
       if ((contextCell == null)) {
@@ -52,37 +45,25 @@ public class RootTemplateAnnotation_KeyMap extends KeyMapImpl {
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
     }
-
     public void execute(final EditorContext editorContext) {
       EditorCell contextCell = editorContext.getContextCell();
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
-
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       if (ListSequence.fromList(selectedNodes).count() != 1) {
         return false;
       }
-      SNode applyToNode = SNodeOperations.getContainingRoot(node);
-      Language language = (Language) check_366854_a0a2a0a(SNodeOperations.getConceptDeclaration(((SNode) applyToNode)).getModel());
-      if (language == BootstrapLanguages.generatorLanguage()) {
+      if (!(SModelStereotype.isGeneratorModel(SNodeOperations.getModel(node)))) {
         return false;
       }
-      return AttributeOperations.getAttribute(applyToNode, new IAttributeDescriptor.NodeAttribute(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.generator.structure.RootTemplateAnnotation"))) == null;
+      SNode applyToNode = SNodeOperations.getContainingRoot(node);
+      return AttributeOperations.getAttribute(applyToNode, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation"))) == null;
     }
-
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNodeFactoryOperations.setNewAttribute(SNodeOperations.getContainingRoot(node), new IAttributeDescriptor.NodeAttribute(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.generator.structure.RootTemplateAnnotation")), "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
+      SNodeFactoryOperations.setNewAttribute(SNodeOperations.getContainingRoot(node), new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation")), SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation")));
     }
-
     public String getKeyStroke() {
       return "ctrl shift H";
-    }
-
-    private static SModule check_366854_a0a2a0a(SModel checkedDotOperand) {
-      if (null != checkedDotOperand) {
-        return checkedDotOperand.getModule();
-      }
-      return null;
     }
   }
 }

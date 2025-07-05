@@ -15,8 +15,8 @@ public class TestEventsDispatcher {
   }
 
   public void onProcessTerminated(String message) {
-    message = REPLREGEXP_a0a0c.matcher(message).replaceAll("");
-    if (REGEXP_d0rws9_a0a1a2.matcher(message).matches()) {
+    message = REPLREGEXP_a0a0e.matcher(message).replaceAll("");
+    if (REGEXP_d0rws9_a0a1a4.matcher(message).matches()) {
       // message looks like "Process exited with code 0" 
       // something, space, zero, then non-digit and maybe something else, or line end 
       // normal termination means we lost all unused tests 
@@ -36,19 +36,20 @@ public class TestEventsDispatcher {
   }
 
   public void onTestEvent(TestEvent event) {
-    this.myState.setToken(event.getToken());
-    if (TestEvent.START_TEST_PREFIX.equals(event.getToken())) {
-      this.myState.startTest(event);
-    } else if (TestEvent.END_TEST_PREFIX.equals(event.getToken())) {
-      this.myState.endTest(event);
-    } else if (TestEvent.FAILURE_TEST_PREFIX.equals(event.getToken())) {
-      this.myState.testFailure(event);
-    } else if (TestEvent.ERROR_TEST_PREFIX.equals(event.getToken())) {
-      this.myState.testError(event);
+    String token = event.getToken();
+    this.myState.setToken(token);
+    if (TestEvent.START_TEST_PREFIX.equals(token)) {
+      this.myState.onTestStarted(event);
+    } else if (TestEvent.FINISH_TEST_PREFIX.equals(token)) {
+      this.myState.onTestFinished(event);
+    } else if (TestEvent.ASSUMPTION_FAILURE_TEST_PREFIX.equals(token)) {
+      this.myState.onTestAssumptionFailure(event);
+    } else if (TestEvent.IGNORE_FAILURE_TEST_PREFIX.equals(token)) {
+      this.myState.onTestAssumptionFailure(event);
+    } else if (TestEvent.FAILURE_TEST_PREFIX.equals(token)) {
+      this.myState.onTestFailure(event);
     }
-    this.myState.completeTestEvent(event);
   }
-
-  private static Pattern REPLREGEXP_a0a0c = Pattern.compile("\\n", 0);
-  private static Pattern REGEXP_d0rws9_a0a1a2 = Pattern.compile(".*\\s0(?:\\D+.*|$)", 0);
+  private static Pattern REPLREGEXP_a0a0e = Pattern.compile("\\n", 0);
+  private static Pattern REGEXP_d0rws9_a0a1a4 = Pattern.compile(".*\\s0(?:\\D+.*|$)", 0);
 }

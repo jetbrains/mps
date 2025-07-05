@@ -7,6 +7,7 @@ import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -17,31 +18,24 @@ public class Structure_TabDescriptor extends RelationDescriptor {
 
   public Structure_TabDescriptor() {
   }
-
   public String getTitle() {
     return "Structure";
   }
-
   public Character getShortcutChar() {
     return 'S';
   }
-
   public void startListening() {
   }
-
   public SNode getBaseNode(SNode node) {
     return ConceptEditorOpenHelper.getBaseNode(node);
   }
-
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
   }
-
   @Nullable
   public Icon getIcon() {
     return ICON;
   }
-
   public List<SNode> getNodes(SNode node) {
     List<SNode> list = ListSequence.fromList(new ArrayList<SNode>());
     SNode n = getNode(node);
@@ -51,11 +45,9 @@ public class Structure_TabDescriptor extends RelationDescriptor {
     ListSequence.fromList(list).addElement(n);
     return list;
   }
-
   public boolean isSingle() {
     return true;
   }
-
   public SNode getNode(SNode node) {
     return node;
   }

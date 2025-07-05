@@ -1,148 +1,220 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <root nodeRef="r:3b11b092-1d35-4fd8-b30e-ef91402b7717(jetbrains.mps.execution.common.editor)/946964771156905360">
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="16" startPosition="64" endLine="17" endPosition="44" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="17" startPosition="44" endLine="18" endPosition="55" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="18" startPosition="55" endLine="19" endPosition="54" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="19" startPosition="54" endLine="20" endPosition="60" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="20" startPosition="60" endLine="21" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="25" startPosition="67" endLine="26" endPosition="44" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="26" startPosition="44" endLine="27" endPosition="54" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="27" startPosition="54" endLine="28" endPosition="60" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="28" startPosition="60" endLine="29" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="33" startPosition="65" endLine="34" endPosition="44" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="34" startPosition="44" endLine="35" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="35" startPosition="58" endLine="36" endPosition="107" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="36" startPosition="107" endLine="37" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="41" startPosition="74" endLine="42" endPosition="44" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="42" startPosition="44" endLine="43" endPosition="72" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="43" startPosition="72" endLine="44" endPosition="54" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="44" startPosition="54" endLine="45" endPosition="55" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="45" startPosition="55" endLine="46" endPosition="65" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="46" startPosition="65" endLine="47" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="51" startPosition="75" endLine="52" endPosition="44" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="52" startPosition="44" endLine="53" endPosition="72" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="53" startPosition="72" endLine="54" endPosition="54" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="54" startPosition="54" endLine="55" endPosition="65" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="55" startPosition="65" endLine="56" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="60" startPosition="76" endLine="61" endPosition="44" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="61" startPosition="44" endLine="62" endPosition="68" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="62" startPosition="68" endLine="63" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="63" startPosition="58" endLine="64" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="68" startPosition="77" endLine="69" endPosition="44" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="69" startPosition="44" endLine="70" endPosition="107" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="70" startPosition="107" endLine="71" endPosition="59" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="71" startPosition="59" endLine="72" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="75" startPosition="72" endLine="76" endPosition="55" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="76" startPosition="55" endLine="77" endPosition="54" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="77" startPosition="54" endLine="78" endPosition="60" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="81" startPosition="75" endLine="82" endPosition="54" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="82" startPosition="54" endLine="83" endPosition="60" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="86" startPosition="73" endLine="87" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="87" startPosition="58" endLine="88" endPosition="107" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="91" startPosition="82" endLine="92" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="92" startPosition="67" endLine="93" endPosition="54" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="93" startPosition="54" endLine="94" endPosition="55" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="94" startPosition="55" endLine="95" endPosition="65" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="98" startPosition="83" endLine="99" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="99" startPosition="67" endLine="100" endPosition="54" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="100" startPosition="54" endLine="101" endPosition="65" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="104" startPosition="84" endLine="105" endPosition="63" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="105" startPosition="63" endLine="106" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="109" startPosition="85" endLine="110" endPosition="107" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="110" startPosition="107" endLine="111" endPosition="59" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="81" startPosition="0" endLine="85" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="applyGreaterThen#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="86" startPosition="0" endLine="90" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="applyOperation#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="104" startPosition="0" endLine="108" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="applyConstructorParameter#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="109" startPosition="0" endLine="113" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="applyConceptFunctionHeader#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="75" startPosition="0" endLine="80" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="applyLessThen#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="98" startPosition="0" endLine="103" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="applyRightOperationBrace#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="91" startPosition="0" endLine="97" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="applyLeftOperationBrace#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="24" startPosition="0" endLine="31" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getGreaterThen#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/openapi/editor/style/Style;" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="32" startPosition="0" endLine="39" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getOperation#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/openapi/editor/style/Style;" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="59" startPosition="0" endLine="66" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConstructorParameter#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/openapi/editor/style/Style;" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="67" startPosition="0" endLine="74" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getConceptFunctionHeader#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/openapi/editor/style/Style;" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="15" startPosition="0" endLine="23" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getLessThen#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/openapi/editor/style/Style;" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="50" startPosition="0" endLine="58" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getRightOperationBrace#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/openapi/editor/style/Style;" />
-    <nodeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="40" startPosition="0" endLine="49" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getLeftOperationBrace#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/openapi/editor/style/Style;" />
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="81" startPosition="75" endLine="83" endPosition="60" />
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="86" startPosition="73" endLine="88" endPosition="107" />
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="104" startPosition="84" endLine="106" endPosition="58" />
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="109" startPosition="85" endLine="111" endPosition="59" />
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="75" startPosition="72" endLine="78" endPosition="60" />
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="98" startPosition="83" endLine="101" endPosition="65" />
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="25" startPosition="67" endLine="29" endPosition="17">
-      <varInfo nodeId="946964771156905360" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="33" startPosition="65" endLine="37" endPosition="17">
-      <varInfo nodeId="946964771156905360" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="60" startPosition="76" endLine="64" endPosition="17">
-      <varInfo nodeId="946964771156905360" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="68" startPosition="77" endLine="72" endPosition="17">
-      <varInfo nodeId="946964771156905360" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="81" startPosition="0" endLine="85" endPosition="0">
-      <varInfo nodeId="946964771156905360" varName="editorCell" />
-      <varInfo nodeId="946964771156905360" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="86" startPosition="0" endLine="90" endPosition="0">
-      <varInfo nodeId="946964771156905360" varName="editorCell" />
-      <varInfo nodeId="946964771156905360" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="91" startPosition="82" endLine="95" endPosition="65" />
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="104" startPosition="0" endLine="108" endPosition="0">
-      <varInfo nodeId="946964771156905360" varName="editorCell" />
-      <varInfo nodeId="946964771156905360" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="109" startPosition="0" endLine="113" endPosition="0">
-      <varInfo nodeId="946964771156905360" varName="editorCell" />
-      <varInfo nodeId="946964771156905360" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="16" startPosition="64" endLine="21" endPosition="17">
-      <varInfo nodeId="946964771156905360" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="51" startPosition="75" endLine="56" endPosition="17">
-      <varInfo nodeId="946964771156905360" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="75" startPosition="0" endLine="80" endPosition="0">
-      <varInfo nodeId="946964771156905360" varName="editorCell" />
-      <varInfo nodeId="946964771156905360" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="98" startPosition="0" endLine="103" endPosition="0">
-      <varInfo nodeId="946964771156905360" varName="editorCell" />
-      <varInfo nodeId="946964771156905360" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="41" startPosition="74" endLine="47" endPosition="17">
-      <varInfo nodeId="946964771156905360" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="91" startPosition="0" endLine="97" endPosition="0">
-      <varInfo nodeId="946964771156905360" varName="editorCell" />
-      <varInfo nodeId="946964771156905360" varName="style" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="24" startPosition="0" endLine="31" endPosition="0">
-      <varInfo nodeId="946964771156905360" varName="editorCell" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="32" startPosition="0" endLine="39" endPosition="0">
-      <varInfo nodeId="946964771156905360" varName="editorCell" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="59" startPosition="0" endLine="66" endPosition="0">
-      <varInfo nodeId="946964771156905360" varName="editorCell" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="67" startPosition="0" endLine="74" endPosition="0">
-      <varInfo nodeId="946964771156905360" varName="editorCell" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="15" startPosition="0" endLine="23" endPosition="0">
-      <varInfo nodeId="946964771156905360" varName="editorCell" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="50" startPosition="0" endLine="58" endPosition="0">
-      <varInfo nodeId="946964771156905360" varName="editorCell" />
-    </scopeInfo>
-    <scopeInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="40" startPosition="0" endLine="49" endPosition="0">
-      <varInfo nodeId="946964771156905360" varName="editorCell" />
-    </scopeInfo>
-    <unitInfo nodeId="946964771156905360" fileName="RunConfigurations_StyleSheet.java" startLine="14" startPosition="0" endLine="114" endPosition="0" unitName="jetbrains.mps.execution.common.editor.RunConfigurations_StyleSheet" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="EditorAspectDescriptorImpl.java">
+      <unit at="7,0,12,0" name="jetbrains.mps.execution.common.editor.EditorAspectDescriptorImpl" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:3b11b092-1d35-4fd8-b30e-ef91402b7717(jetbrains.mps.execution.common.editor)/946964771156905360">
+    <file name="RunConfigurations_StyleSheet.java">
+      <node id="946964771156905360" at="22,73,23,69" concept="3" />
+      <node id="946964771156905360" at="23,69,24,88" concept="3" />
+      <node id="946964771156905360" at="24,88,25,102" concept="1" />
+      <node id="946964771156905360" at="32,76,33,69" concept="3" />
+      <node id="946964771156905360" at="33,69,34,88" concept="3" />
+      <node id="946964771156905360" at="34,88,35,105" concept="1" />
+      <node id="946964771156905360" at="42,74,43,69" concept="3" />
+      <node id="946964771156905360" at="43,69,44,88" concept="3" />
+      <node id="946964771156905360" at="44,88,45,103" concept="1" />
+      <node id="946964771156905360" at="52,83,53,69" concept="3" />
+      <node id="946964771156905360" at="53,69,54,88" concept="3" />
+      <node id="946964771156905360" at="54,88,55,112" concept="1" />
+      <node id="946964771156905360" at="62,84,63,69" concept="3" />
+      <node id="946964771156905360" at="63,69,64,88" concept="3" />
+      <node id="946964771156905360" at="64,88,65,113" concept="1" />
+      <node id="946964771156905360" at="72,85,73,69" concept="3" />
+      <node id="946964771156905360" at="73,69,74,88" concept="3" />
+      <node id="946964771156905360" at="74,88,75,114" concept="1" />
+      <node id="946964771156905360" at="82,86,83,69" concept="3" />
+      <node id="946964771156905360" at="83,69,84,88" concept="3" />
+      <node id="946964771156905360" at="84,88,85,115" concept="1" />
+      <node id="946964771156905360" at="89,72,90,33" concept="5" />
+      <node id="946964771156905360" at="94,59,95,57" concept="1" />
+      <node id="946964771156905360" at="95,57,96,56" concept="1" />
+      <node id="946964771156905360" at="96,56,97,62" concept="1" />
+      <node id="946964771156905360" at="102,75,103,33" concept="5" />
+      <node id="946964771156905360" at="107,59,108,56" concept="1" />
+      <node id="946964771156905360" at="108,56,109,62" concept="1" />
+      <node id="946964771156905360" at="114,73,115,33" concept="5" />
+      <node id="946964771156905360" at="119,59,120,60" concept="1" />
+      <node id="946964771156905360" at="120,60,121,109" concept="1" />
+      <node id="946964771156905360" at="126,82,127,33" concept="5" />
+      <node id="946964771156905360" at="131,59,132,86" concept="1" />
+      <node id="946964771156905360" at="132,86,133,56" concept="1" />
+      <node id="946964771156905360" at="133,56,134,57" concept="1" />
+      <node id="946964771156905360" at="134,57,135,67" concept="1" />
+      <node id="946964771156905360" at="140,83,141,33" concept="5" />
+      <node id="946964771156905360" at="145,59,146,86" concept="1" />
+      <node id="946964771156905360" at="146,86,147,56" concept="1" />
+      <node id="946964771156905360" at="147,56,148,67" concept="1" />
+      <node id="946964771156905360" at="153,84,154,33" concept="5" />
+      <node id="946964771156905360" at="158,59,159,82" concept="1" />
+      <node id="946964771156905360" at="159,82,160,60" concept="1" />
+      <node id="946964771156905360" at="165,85,166,33" concept="5" />
+      <node id="946964771156905360" at="170,59,171,109" concept="1" />
+      <node id="946964771156905360" at="171,109,172,61" concept="1" />
+      <node id="946964771156905360" at="89,0,92,0" concept="0" trace="lessThenStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="946964771156905360" at="102,0,105,0" concept="0" trace="greaterThenStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="946964771156905360" at="114,0,117,0" concept="0" trace="operationStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="946964771156905360" at="126,0,129,0" concept="0" trace="leftOperationBraceStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="946964771156905360" at="140,0,143,0" concept="0" trace="rightOperationBraceStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="946964771156905360" at="153,0,156,0" concept="0" trace="constructorParameterStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="946964771156905360" at="165,0,168,0" concept="0" trace="conceptFunctionHeaderStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="946964771156905360" at="106,0,111,0" concept="2" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="946964771156905360" at="118,0,123,0" concept="2" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="946964771156905360" at="157,0,162,0" concept="2" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="946964771156905360" at="169,0,174,0" concept="2" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="946964771156905360" at="21,0,27,0" concept="4" trace="apply_lessThen#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="946964771156905360" at="31,0,37,0" concept="4" trace="apply_greaterThen#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="946964771156905360" at="41,0,47,0" concept="4" trace="apply_operation#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="946964771156905360" at="51,0,57,0" concept="4" trace="apply_leftOperationBrace#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="946964771156905360" at="61,0,67,0" concept="4" trace="apply_rightOperationBrace#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="946964771156905360" at="71,0,77,0" concept="4" trace="apply_constructorParameter#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="946964771156905360" at="81,0,87,0" concept="4" trace="apply_conceptFunctionHeader#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="946964771156905360" at="93,0,99,0" concept="2" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="946964771156905360" at="144,0,150,0" concept="2" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="946964771156905360" at="130,0,137,0" concept="2" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <scope id="946964771156905360" at="89,72,90,33" />
+      <scope id="946964771156905360" at="102,75,103,33" />
+      <scope id="946964771156905360" at="114,73,115,33" />
+      <scope id="946964771156905360" at="126,82,127,33" />
+      <scope id="946964771156905360" at="140,83,141,33" />
+      <scope id="946964771156905360" at="153,84,154,33" />
+      <scope id="946964771156905360" at="165,85,166,33" />
+      <scope id="946964771156905360" at="107,59,109,62" />
+      <scope id="946964771156905360" at="119,59,121,109" />
+      <scope id="946964771156905360" at="158,59,160,60" />
+      <scope id="946964771156905360" at="170,59,172,61" />
+      <scope id="946964771156905360" at="22,73,25,102">
+        <var name="editorContext" id="946964771156905360" />
+        <var name="node" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="32,76,35,105">
+        <var name="editorContext" id="946964771156905360" />
+        <var name="node" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="42,74,45,103">
+        <var name="editorContext" id="946964771156905360" />
+        <var name="node" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="52,83,55,112">
+        <var name="editorContext" id="946964771156905360" />
+        <var name="node" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="62,84,65,113">
+        <var name="editorContext" id="946964771156905360" />
+        <var name="node" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="72,85,75,114">
+        <var name="editorContext" id="946964771156905360" />
+        <var name="node" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="82,86,85,115">
+        <var name="editorContext" id="946964771156905360" />
+        <var name="node" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="89,0,92,0">
+        <var name="editorContext" id="946964771156905360" />
+        <var name="node" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="94,59,97,62" />
+      <scope id="946964771156905360" at="102,0,105,0">
+        <var name="editorContext" id="946964771156905360" />
+        <var name="node" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="114,0,117,0">
+        <var name="editorContext" id="946964771156905360" />
+        <var name="node" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="126,0,129,0">
+        <var name="editorContext" id="946964771156905360" />
+        <var name="node" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="140,0,143,0">
+        <var name="editorContext" id="946964771156905360" />
+        <var name="node" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="145,59,148,67" />
+      <scope id="946964771156905360" at="153,0,156,0">
+        <var name="editorContext" id="946964771156905360" />
+        <var name="node" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="165,0,168,0">
+        <var name="editorContext" id="946964771156905360" />
+        <var name="node" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="131,59,135,67" />
+      <scope id="946964771156905360" at="106,0,111,0">
+        <var name="editorCell" id="946964771156905360" />
+        <var name="style" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="118,0,123,0">
+        <var name="editorCell" id="946964771156905360" />
+        <var name="style" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="157,0,162,0">
+        <var name="editorCell" id="946964771156905360" />
+        <var name="style" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="169,0,174,0">
+        <var name="editorCell" id="946964771156905360" />
+        <var name="style" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="21,0,27,0">
+        <var name="editorCell" id="946964771156905360" />
+        <var name="style" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="31,0,37,0">
+        <var name="editorCell" id="946964771156905360" />
+        <var name="style" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="41,0,47,0">
+        <var name="editorCell" id="946964771156905360" />
+        <var name="style" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="51,0,57,0">
+        <var name="editorCell" id="946964771156905360" />
+        <var name="style" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="61,0,67,0">
+        <var name="editorCell" id="946964771156905360" />
+        <var name="style" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="71,0,77,0">
+        <var name="editorCell" id="946964771156905360" />
+        <var name="style" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="81,0,87,0">
+        <var name="editorCell" id="946964771156905360" />
+        <var name="style" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="93,0,99,0">
+        <var name="editorCell" id="946964771156905360" />
+        <var name="style" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="144,0,150,0">
+        <var name="editorCell" id="946964771156905360" />
+        <var name="style" id="946964771156905360" />
+      </scope>
+      <scope id="946964771156905360" at="130,0,137,0">
+        <var name="editorCell" id="946964771156905360" />
+        <var name="style" id="946964771156905360" />
+      </scope>
+      <unit id="946964771156905360" at="101,0,113,0" name="jetbrains.mps.execution.common.editor.RunConfigurations_StyleSheet$greaterThenStyleClass" />
+      <unit id="946964771156905360" at="113,0,125,0" name="jetbrains.mps.execution.common.editor.RunConfigurations_StyleSheet$operationStyleClass" />
+      <unit id="946964771156905360" at="152,0,164,0" name="jetbrains.mps.execution.common.editor.RunConfigurations_StyleSheet$constructorParameterStyleClass" />
+      <unit id="946964771156905360" at="164,0,176,0" name="jetbrains.mps.execution.common.editor.RunConfigurations_StyleSheet$conceptFunctionHeaderStyleClass" />
+      <unit id="946964771156905360" at="88,0,101,0" name="jetbrains.mps.execution.common.editor.RunConfigurations_StyleSheet$lessThenStyleClass" />
+      <unit id="946964771156905360" at="139,0,152,0" name="jetbrains.mps.execution.common.editor.RunConfigurations_StyleSheet$rightOperationBraceStyleClass" />
+      <unit id="946964771156905360" at="125,0,139,0" name="jetbrains.mps.execution.common.editor.RunConfigurations_StyleSheet$leftOperationBraceStyleClass" />
+      <unit id="946964771156905360" at="16,0,177,0" name="jetbrains.mps.execution.common.editor.RunConfigurations_StyleSheet" />
+    </file>
+  </root>
+</debug-info>
 

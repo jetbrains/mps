@@ -10,6 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -22,31 +23,30 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.backports.Deque;
+import java.util.Deque;
 import jetbrains.mps.internal.collections.runtime.DequeSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class check_ConceptEditorDeclaration_concextHintUniqueness_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ConceptEditorDeclaration_concextHintUniqueness_NonTypesystemRule() {
   }
-
   public void applyRule(final SNode editorDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Language containingLanguage = as_e0tm27_a0a0a1(SNodeOperations.getModel(editorDeclaration).getModule(), Language.class);
-    if (containingLanguage == null || SLinkOperations.getTarget(editorDeclaration, "conceptDeclaration", false) == null) {
+    if (containingLanguage == null || SLinkOperations.getTarget(editorDeclaration, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration")) == null) {
       return;
     }
 
-    if (ListSequence.fromList(SLinkOperations.getTargets(editorDeclaration, "contextHints", true)).isEmpty() && containingLanguage != SNodeOperations.getModel(SLinkOperations.getTarget(editorDeclaration, "conceptDeclaration", false)).getModule()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(editorDeclaration, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, 0x240ba2de0c6c0b6eL, "contextHints"))).isEmpty() && containingLanguage != SNodeOperations.getModel(SLinkOperations.getTarget(editorDeclaration, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration"))).getModule()) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
         errorTarget = new ReferenceMessageTarget("conceptDeclaration");
@@ -55,38 +55,38 @@ public class check_ConceptEditorDeclaration_concextHintUniqueness_NonTypesystemR
       return;
     }
 
-    final Set<SNode> editorHintsSet = SetSequence.fromSetWithValues(new HashSet<SNode>(), ListSequence.fromList(SLinkOperations.getTargets(editorDeclaration, "contextHints", true)).select(new ISelector<SNode, SNode>() {
+    final Set<SNode> editorHintsSet = SetSequence.fromSetWithValues(new HashSet<SNode>(), ListSequence.fromList(SLinkOperations.getChildren(editorDeclaration, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, 0x240ba2de0c6c0b6eL, "contextHints"))).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, "hint", false);
+        return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5eadaecad41188dcL, 0x527faacef66db74dL, "hint"));
       }
     }));
     Collection<SNode> duplicatingEditorDeclarations = CollectionSequence.fromCollection(new ArrayList<SNode>());
-    Deque<Language> languagesToVisit = DequeSequence.fromDeque(new LinkedList<Language>());
+    Deque<Language> languagesToVisit = DequeSequence.fromDequeNew(new LinkedList<Language>());
     Set<String> visitedLanguages = SetSequence.fromSet(new HashSet<String>());
-    DequeSequence.fromDeque(languagesToVisit).addLastElement(containingLanguage);
+    DequeSequence.fromDequeNew(languagesToVisit).addLastElement(containingLanguage);
     SetSequence.fromSet(visitedLanguages).addElement(containingLanguage.getModuleName());
 
-    while (DequeSequence.fromDeque(languagesToVisit).isNotEmpty()) {
-      Language nextLanguage = DequeSequence.fromDeque(languagesToVisit).removeFirstElement();
+    while (DequeSequence.fromDequeNew(languagesToVisit).isNotEmpty()) {
+      Language nextLanguage = DequeSequence.fromDequeNew(languagesToVisit).removeFirstElement();
       // TODO: check extending languages as well 
       for (SModuleReference extendedLanguageRef : SetSequence.fromSet(nextLanguage.getExtendedLanguageRefs())) {
         SModule module = extendedLanguageRef.resolve(nextLanguage.getRepository());
         if (module instanceof Language && !(SetSequence.fromSet(visitedLanguages).contains(module.getModuleName()))) {
-          DequeSequence.fromDeque(languagesToVisit).addLastElement((Language) module);
+          DequeSequence.fromDequeNew(languagesToVisit).addLastElement((Language) module);
           SetSequence.fromSet(visitedLanguages).addElement(module.getModuleName());
         }
       }
-      SModel editorModel = LanguageAspect.EDITOR.get(nextLanguage);
+      SModel editorModel = SModuleOperations.getAspect(nextLanguage, "editor");
       if (editorModel != null) {
-        CollectionSequence.fromCollection(duplicatingEditorDeclarations).addSequence(ListSequence.fromList(SModelOperations.getRoots(editorModel, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration")).where(new IWhereFilter<SNode>() {
+        CollectionSequence.fromCollection(duplicatingEditorDeclarations).addSequence(ListSequence.fromList(SModelOperations.roots(editorModel, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration"))).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, "conceptDeclaration", false) == SLinkOperations.getTarget(editorDeclaration, "conceptDeclaration", false) && it != editorDeclaration;
+            return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration")) == SLinkOperations.getTarget(editorDeclaration, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration")) && it != editorDeclaration;
           }
         }).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return (int) SetSequence.fromSet(editorHintsSet).count() == (int) ListSequence.fromList(SLinkOperations.getTargets(it, "contextHints", true)).distinct().count() && SetSequence.fromSet(editorHintsSet).containsSequence(ListSequence.fromList(SLinkOperations.getTargets(it, "contextHints", true)).select(new ISelector<SNode, SNode>() {
+            return SetSequence.fromSet(editorHintsSet).count() == ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, 0x240ba2de0c6c0b6eL, "contextHints"))).distinct().count() && SetSequence.fromSet(editorHintsSet).containsSequence(ListSequence.fromList(SLinkOperations.getChildren(it, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, 0x240ba2de0c6c0b6eL, "contextHints"))).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
-                return SLinkOperations.getTarget(it, "hint", false);
+                return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5eadaecad41188dcL, 0x527faacef66db74dL, "hint"));
               }
             }));
           }
@@ -99,42 +99,29 @@ public class check_ConceptEditorDeclaration_concextHintUniqueness_NonTypesystemR
         {
           MessageTarget errorTarget = new NodeMessageTarget();
           errorTarget = new ReferenceMessageTarget("conceptDeclaration");
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorDeclaration, "Duplicate editor declaration. Editor for same set of context hints (" + ((ListSequence.fromList(SLinkOperations.getTargets(editorDeclaration, "contextHints", true)).isEmpty() ?
-            "<default>" :
-            ListSequence.fromList(SLinkOperations.getTargets(editorDeclaration, "contextHints", true)).select(new ISelector<SNode, String>() {
-              public String select(SNode it) {
-                return SPropertyOperations.getString(SLinkOperations.getTarget(it, "hint", false), "name");
-              }
-            }).reduceLeft(new ILeftCombinator<String, String>() {
-              public String combine(String a, String b) {
-                return a + " & " + b;
-              }
-            })
-          )) + ") was already defined in: " + BehaviorReflection.invokeVirtual(String.class, duplicatingEditorDecl, "virtual_getFqName_1213877404258", new Object[]{}), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6246554009626560906", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorDeclaration, "Duplicate editor declaration. Editor for same set of context hints (" + ((ListSequence.fromList(SLinkOperations.getChildren(editorDeclaration, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, 0x240ba2de0c6c0b6eL, "contextHints"))).isEmpty() ? "<default>" : ListSequence.fromList(SLinkOperations.getChildren(editorDeclaration, MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, 0x240ba2de0c6c0b6eL, "contextHints"))).select(new ISelector<SNode, String>() {
+            public String select(SNode it) {
+              return SPropertyOperations.getString(SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5eadaecad41188dcL, 0x527faacef66db74dL, "hint")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+            }
+          }).reduceLeft(new ILeftCombinator<String, String>() {
+            public String combine(String a, String b) {
+              return a + " & " + b;
+            }
+          }))) + ") was already defined in: " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(duplicatingEditorDecl), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6246554009626560906", null, errorTarget);
         }
       }
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration";
+  public SAbstractConcept getApplicableConcept() {
+    return MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConcept().getQualifiedName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
   }
-
   private static <T> T as_e0tm27_a0a0a1(Object o, Class<T> type) {
-    return (type.isInstance(o) ?
-      (T) o :
-      null
-    );
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

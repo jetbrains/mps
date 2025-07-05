@@ -7,27 +7,27 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.baseLanguage.behavior.ConstructorDeclaration_Behavior;
+import jetbrains.mps.baseLanguage.behavior.ConstructorDeclaration__BehaviorDescriptor;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typesystem.inference.TypeChecker;
-import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class check_DefaultSuperConstructorThrowables_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_DefaultSuperConstructorThrowables_NonTypesystemRule() {
   }
-
   public void applyRule(final SNode constructorDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ConstructorDeclaration_Behavior.call_containsImplicitSuperConstructorCall_7152041109751551503(constructorDeclaration)) {
-      SNode superConstructor = ConstructorDeclaration_Behavior.call_getSuperDefaultConstructor_7152041109751601013(constructorDeclaration);
+    if ((boolean) ConstructorDeclaration__BehaviorDescriptor.containsImplicitSuperConstructorCall_id6d19RW5IPof.invoke(constructorDeclaration)) {
+      SNode superConstructor = ConstructorDeclaration__BehaviorDescriptor.getSuperDefaultConstructor_id6d19RW5J1tP.invoke(constructorDeclaration);
       if (superConstructor != null) {
         Set<SNode> throwables = SetSequence.fromSet(new HashSet<SNode>());
-        for (SNode superThrowable : ListSequence.fromList(SLinkOperations.getTargets(superConstructor, "throwsItem", true))) {
+        for (SNode superThrowable : ListSequence.fromList(SLinkOperations.getChildren(superConstructor, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem")))) {
           boolean toAdd = true;
-          for (SNode throwable : ListSequence.fromList(SLinkOperations.getTargets(constructorDeclaration, "throwsItem", true))) {
+          for (SNode throwable : ListSequence.fromList(SLinkOperations.getChildren(constructorDeclaration, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem")))) {
             if (TypeChecker.getInstance().getSubtypingManager().isSubtype(superThrowable, throwable)) {
               toAdd = false;
             }
@@ -36,22 +36,16 @@ public class check_DefaultSuperConstructorThrowables_NonTypesystemRule extends A
             SetSequence.fromSet(throwables).addElement(superThrowable);
           }
         }
-        RulesFunctions_BaseLanguage.check(typeCheckingContext, throwables, SLinkOperations.getTarget(constructorDeclaration, "body", true), "Unhandled exceptions in super constructor:");
+        RulesFunctions_BaseLanguage.check(typeCheckingContext, throwables, SLinkOperations.getTarget(constructorDeclaration, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body")), "Unhandled exceptions in super constructor:");
       }
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration";
+  public SAbstractConcept getApplicableConcept() {
+    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConcept().getQualifiedName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
   }

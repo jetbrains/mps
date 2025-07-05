@@ -4,9 +4,13 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import com.intellij.execution.configurations.RuntimeConfigurationError;
 import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.xmlb.XmlSerializer;
@@ -17,32 +21,30 @@ import com.intellij.openapi.project.Project;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.apache.log4j.Priority;
+import org.apache.log4j.Level;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.configurations.RunProfileState;
 import com.intellij.execution.Executor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ExecutionException;
 import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.openapi.util.JDOMExternalizable;
+import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
 import com.intellij.execution.runners.ProgramRunner;
 import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.ide.project.ProjectHelper;
 
 public class DeployPlugins_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
+  private static final Logger LOG = LogManager.getLogger(DeployPlugins_Configuration.class);
   @NotNull
   private DeployPlugins_Configuration.MyState myState = new DeployPlugins_Configuration.MyState();
-  private DeployPluginsSettings_Configuration myPluginsSettings = new DeployPluginsSettings_Configuration();
-
-  public void checkConfiguration() throws RuntimeConfigurationException {
-    this.getPluginsSettings().checkConfiguration();
+  private DeployPluginsSettings_Configuration myPluginsSettings = new DeployPluginsSettings_Configuration(this.getProject());
+  public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
+    this.getPluginsSettings().checkConfiguration(context);
     if (ListSequence.fromList(this.getPluginsSettings().getPluginsListToDeploy()).isEmpty()) {
-      throw new RuntimeConfigurationException("No plugins to deploy selected");
+      throw new RuntimeConfigurationError("No plugins to deploy selected");
     }
   }
-
   @Override
   public void writeExternal(Element element) throws WriteExternalException {
     element.addContent(XmlSerializer.serialize(myState));
@@ -52,7 +54,6 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
       element.addContent(fieldElement);
     }
   }
-
   @Override
   public void readExternal(Element element) throws InvalidDataException {
     if (element == null) {
@@ -70,31 +71,24 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
       }
     }
   }
-
   public DeployPluginsSettings_Configuration getPluginsSettings() {
     return myPluginsSettings;
   }
-
   public boolean getSkipModulesLoading() {
     return myState.mySkipModulesLoading;
   }
-
   public boolean getRestartCurrentInstance() {
     return myState.myRestartCurrentInstance;
   }
-
   public void setSkipModulesLoading(boolean value) {
     myState.mySkipModulesLoading = value;
   }
-
   public void setRestartCurrentInstance(boolean value) {
     myState.myRestartCurrentInstance = value;
   }
-
   public File getPluginsPath() {
     return new File(PathManager.getPluginsPath());
   }
-
   public void removeLanguageLibraries(Element element, Project project) {
     List<Element> toRemove = ListSequence.fromList(new ArrayList<Element>());
     removeLanguageLibraries(element, project, toRemove);
@@ -104,20 +98,18 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
       }
     });
   }
-
   private void removeLanguageLibraries(Element element, Project project, List<Element> toRemove) {
     String mpsLanguageLib = "LanguageLibrary";
     if (element.getName().endsWith(mpsLanguageLib)) {
       ListSequence.fromList(toRemove).addElement(element);
     } else {
-      for (Object child : element.getChildren()) {
+      for (Element child : ListSequence.fromList(element.getChildren())) {
         if (child instanceof Element) {
           removeLanguageLibraries((Element) child, project, toRemove);
         }
       }
     }
   }
-
   @Override
   public DeployPlugins_Configuration clone() {
     DeployPlugins_Configuration clone = null;
@@ -127,20 +119,17 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
       clone.myPluginsSettings = (DeployPluginsSettings_Configuration) myPluginsSettings.clone();
       return clone;
     } catch (CloneNotSupportedException ex) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
+      if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("", ex);
       }
     }
     return clone;
   }
-
   public class MyState {
     public boolean mySkipModulesLoading = true;
     public boolean myRestartCurrentInstance = true;
-
     public MyState() {
     }
-
     @Override
     public Object clone() throws CloneNotSupportedException {
       DeployPlugins_Configuration.MyState state = new DeployPlugins_Configuration.MyState();
@@ -149,45 +138,43 @@ public class DeployPlugins_Configuration extends BaseMpsRunConfiguration impleme
       return state;
     }
   }
-
   public DeployPlugins_Configuration(Project project, DeployPlugins_Configuration_Factory factory, String name) {
     super(project, factory, name);
   }
-
   @Nullable
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment environment) throws ExecutionException {
     return new DeployPlugins_Configuration_RunProfileState(this, executor, environment);
   }
-
   @Nullable
-  public SettingsEditor<JDOMExternalizable> getRunnerSettingsEditor(ProgramRunner runner) {
+  public SettingsEditor<ConfigurationPerRunnerSettings> getRunnerSettingsEditor(ProgramRunner runner) {
     return null;
   }
-
-  public JDOMExternalizable createRunnerSettings(ConfigurationInfoProvider provider) {
+  public ConfigurationPerRunnerSettings createRunnerSettings(ConfigurationInfoProvider provider) {
     return null;
   }
-
   public SettingsEditorEx<DeployPlugins_Configuration> getConfigurationEditor() {
     return (SettingsEditorEx<DeployPlugins_Configuration>) getEditor();
   }
-
   public DeployPlugins_Configuration createCloneTemplate() {
     return (DeployPlugins_Configuration) super.clone();
   }
-
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
     return new DeployPlugins_Configuration_Editor(myPluginsSettings.getEditor());
   }
-
+  @Override
+  public void checkConfiguration() throws RuntimeConfigurationException {
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    checkConfiguration(new PersistentConfigurationContext() {
+      public jetbrains.mps.project.Project getProject() {
+        return mpsProject;
+      }
+    });
+  }
   @Override
   public boolean canExecute(String executorId) {
     return DeployPlugins_Configuration_RunProfileState.canExecute(executorId);
   }
-
   public Object[] createMakedeployscriptsTask() {
     return new Object[]{this.getPluginsSettings().getPluginsListToDeploy()};
   }
-
-  protected static Logger LOG = LogManager.getLogger(DeployPlugins_Configuration.class);
 }

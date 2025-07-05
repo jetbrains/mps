@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,17 @@
 package jetbrains.mps.idea.core.usages;
 
 import com.intellij.openapi.module.Module;
+import com.intellij.openapi.project.Project;
 import com.intellij.psi.search.GlobalSearchScope;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.project.SolutionIdea;
 import jetbrains.mps.smodel.BaseScope;
-import jetbrains.mps.smodel.MPSModuleRepository;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -43,11 +47,18 @@ public class IdeaSearchScope extends BaseScope {
     suppressSearchInLibraries = noLibs;
   }
 
+  @NotNull
   @Override
   public Iterable<SModule> getModules() {
     List<SModule> result = new ArrayList<SModule>();
-
-    for (SModule mod : MPSModuleRepository.getInstance().getModules()) {
+    Project project = ideaScope.getProject();
+    if (project == null) {
+      // working only per-project; Will we have any 'global' repository like we do now?
+      return Collections.emptyList();
+    }
+    SRepository repository = ProjectHelper.getProjectRepository(project);
+    assert repository != null;
+    for (SModule mod : repository.getModules()) {
 
       if (mod instanceof SolutionIdea) {
         Module ideaModule = ((SolutionIdea) mod).getIdeaModule();

@@ -6,6 +6,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -13,28 +14,22 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 public abstract class InlineFieldRefactoring {
   public InlineFieldRefactoring() {
   }
-
   public abstract SNode doRefactoring();
 
-
-
   public Iterable<SNode> findAllReferences(final SNode variable) {
-    return ListSequence.fromList(SModelOperations.getNodes(SNodeOperations.getModel(variable), "jetbrains.mps.baseLanguage.structure.VariableReference")).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(variable), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, "variableDeclaration", false) == variable;
+        return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration")) == variable;
       }
     });
   }
-
   public Iterable<SNode> findAllReferenceOperations(final SNode variable) {
-    return ListSequence.fromList(SModelOperations.getNodes(SNodeOperations.getModel(variable), "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation")).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(variable), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, "fieldDeclaration", false) == variable;
+        return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration")) == variable;
       }
     });
   }
-
-
 
   public void optimizeDeclaration(SNode variable) {
     if (Sequence.fromIterable(findAllReferences(variable)).isEmpty() && Sequence.fromIterable(findAllReferenceOperations(variable)).isEmpty()) {
@@ -42,13 +37,11 @@ public abstract class InlineFieldRefactoring {
     }
   }
 
-
-
   public static InlineFieldRefactoring createRefactoring(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.VariableDeclaration")) {
-      return new InlineFieldAssignmentRefactoring(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"));
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration"))) {
+      return new InlineFieldAssignmentRefactoring(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration")));
     } else {
-      return new InlineFieldReferenceRefactoring(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.VariableReference"));
+      return new InlineFieldReferenceRefactoring(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")));
     }
   }
 }

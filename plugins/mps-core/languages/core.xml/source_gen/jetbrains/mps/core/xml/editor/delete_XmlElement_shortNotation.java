@@ -8,29 +8,41 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class delete_XmlElement_shortNotation {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new delete_XmlElement_shortNotation.delete_XmlElement_shortNotation_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new delete_XmlElement_shortNotation.delete_XmlElement_shortNotation_BACKSPACE(node));
   }
-
   public static class delete_XmlElement_shortNotation_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public delete_XmlElement_shortNotation_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public String getDescriptionText() {
       return "full notation";
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      SPropertyOperations.set(node, "shortEmptyNotation", "" + (false));
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation"), "" + (false));
+    }
+  }
+  public static class delete_XmlElement_shortNotation_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public delete_XmlElement_shortNotation_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public String getDescriptionText() {
+      return "full notation";
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation"), "" + (false));
     }
   }
 }

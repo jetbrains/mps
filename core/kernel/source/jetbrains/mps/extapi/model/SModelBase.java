@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,14 @@
 package jetbrains.mps.extapi.model;
 
 import jetbrains.mps.extapi.module.SModuleBase;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.smodel.DisposedRepository;
-import jetbrains.mps.smodel.IllegalModelAccessError;
+import jetbrains.mps.smodel.IllegalModelAccessException;
 import jetbrains.mps.smodel.InvalidSModel;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.event.ModelEventDispatch;
+import jetbrains.mps.smodel.event.ModelListenerDispatch;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
-import jetbrains.mps.util.containers.ConcurrentHashSet;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -30,8 +31,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelAccessListener;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelListener;
+import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeAccessListener;
+import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -39,120 +43,145 @@ import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * Base implementation of {@link org.jetbrains.mps.openapi.model.SModel}, with actual
+ * {@link jetbrains.mps.extapi.model.SModelData model data} kept separately, ready for e.g. re-load.
+ *
+ * This implementation tracks load state of the model data ({@link #getLoadingState()}) and expects
+ * subclasses to {@link #setLoadingState(ModelLoadingState) update} this state appropriately.
+ *
+ * {@link #getModelData()} provides access to actual node storage.
+ *
+ * TODO relocate to [smodel]
+ */
 public abstract class SModelBase extends SModelDescriptorStub implements SModel {
-  private static Logger LOG = Logger.getLogger(SModelBase.class);
+  private static final Logger LOG = LogManager.getLogger(SModelBase.class);
 
-  private final List<SModelAccessListener> myAccessListeners = new CopyOnWriteArrayList<SModelAccessListener>();
-  private final List<SModelListener> myModelListeners = new CopyOnWriteArrayList<SModelListener>();
+  private final ModelEventDispatch myNodeEventDispatch;
+  // XXX when necessary, shall get exposed with protected accessor. fire* methods kept for now as some of them do delegation to legacy
+  // listeners as well, could get removed once smodel.SModelListener gone. Besides, I'm not yet sure multi-cast approach of
+  // ModelListenerDispatch shall prevail, to limit future changes, let fire* method stay non deprecated for now.
+  private final ModelListenerDispatch myModelEventDispatch;
 
-  @NotNull
-  private final DataSource mySource;
-  @NotNull
-  private SModelReference myModelReference;
+  @NotNull private final DataSource mySource;
+  @NotNull private SModelReference myModelReference;
+  @Nullable private ModelRoot myModelRoot;
 
-  private ModelRoot myModelRoot;
-
-  private final Object REPO_LOCK = new Object();
   private SModule myModule;
   private volatile SRepository myRepository = null;
 
-  private static Set<String> ourErroredModels = new ConcurrentHashSet<String>();
+  /**
+   * model is treated {@link #isLoaded() loaded} when the state == FULLY_LOADED.
+   * There are model implementations with simple NOT_LOADED -- FULLY_LOADED cycle,
+   * and more complex with NOT_LOADED -- INTERFACE_LOADED -- FULLY_LOADED.
+   */
+  private ModelLoadingState myModelLoadState = ModelLoadingState.NOT_LOADED;
 
   protected SModelBase(@NotNull SModelReference modelReference, @NotNull DataSource source) {
     myModelReference = modelReference;
     mySource = source;
+    myNodeEventDispatch = new ModelEventDispatch(this);
+    myModelEventDispatch = new ModelListenerDispatch();
   }
 
   @Override
   public SRepository getRepository() {
-    assertCanRead();
+//    assertCanRead(); we don't require write lock when myRepo is assigned, why would require read to get?
     return myRepository;
   }
 
   @Override
-  public SNode createNode(SConcept concept) {
-    return new jetbrains.mps.smodel.SNode(concept.getQualifiedName());
-  }
-
-  public void attach(SRepository repo) {
-    if (myRepository == repo) return;
-    synchronized (REPO_LOCK) {
-      if (myRepository == repo) return;
-      //assert myModule != null && myModule.getRepository() != null;
-      myRepository = repo;
-    }
+  public SNode createNode(@NotNull SConcept concept) {
+    // nodeId should be model's responsibility, not SNode's as we shall migrate towards model-local node ids, preferably int instead of long,
+    // and at least not random
+    return new jetbrains.mps.smodel.SNode(concept, jetbrains.mps.smodel.SModel.generateUniqueId());
   }
 
   @Override
-  public void dispose() {
-    ModelAccess.assertLegalWrite();
-    synchronized (REPO_LOCK) {
-      // TODO isLoaded is not enough
-      if (isLoaded()) {
-        for (SNode node : getRootNodes()) {
-          ((SNodeBase) node).detach();
-        }
-      }
-      myRepository = DisposedRepository.INSTANCE;
+  public SNode createNode(@NotNull SConcept concept, @Nullable SNodeId nodeId) {
+    if (nodeId == null) {
+      nodeId = jetbrains.mps.smodel.SModel.generateUniqueId();
     }
+    return new jetbrains.mps.smodel.SNode(concept, nodeId);
+  }
+
+  public void attach(@NotNull SRepository repo) {
+    if (myRepository == repo) {
+      LOG.warn("The model " + this + " is already attached to the repository " + repo);
+      return;
+    }
+    if (myRepository != null) {
+      throw new IllegalModelAccessException("Model is already attached to a repository, can't attach to another one");
+    }
+    repo.getModelAccess().checkReadAccess();
+    myRepository = repo;
+    myModelEventDispatch.modelAttached(this, repo);
+  }
+
+  public void detach() {
+    assertCanChange();
+    if (myRepository != null) {
+      myModelEventDispatch.modelDetached(this, myRepository);
+      myRepository = null;
+    }
+    fireBeforeModelDisposed(this);
+    jetbrains.mps.smodel.SModel model = getCurrentModelInternal();
+    if (model != null) {
+      model.dispose();
+    }
+    clearListeners();
   }
 
   @Override
   public Iterable<SNode> getRootNodes() {
     assertCanRead();
-    Iterable<SNode> roots = getSModelInternal().getRootNodes();
-    if (myRepository != null) {
-      for (SNode r : roots) {
-        ((SNodeBase) r).attach(myRepository);
-      }
-    }
-    return roots;
+    return getModelData().getRootNodes();
   }
 
   @Override
   public SNode getNode(SNodeId id) {
-    jetbrains.mps.smodel.SNode node = getSModelInternal().getNode(id);
-    if (node == null) return null;
-    if (myRepository != null) {
-      node.attach(myRepository);
-    }
-    return node;
+    assertCanRead();
+    return getModelData().getNode(id);
   }
 
 
   @Override
   @NotNull
   public SModelReference getReference() {
-    assertCanRead();
+//    assertCanRead(); model reference is read-only attribute, why care about read lock?
     return myModelReference;
   }
 
   @NotNull
   @Override
   public SModelId getModelId() {
-    assertCanRead();
+//    assertCanRead(); model reference is read-only attribute, why care about read lock?
     return myModelReference.getModelId();
   }
 
   @Override
+  @Deprecated
   public String getModelName() {
-    assertCanRead();
+//    assertCanRead(); model reference is read-only attribute, why care about read lock?
     return myModelReference.getModelName();
+  }
+
+  @NotNull
+  @Override
+  public SModelName getName() {
+    return myModelReference.getName();
   }
 
   @Override
   @NotNull
   public DataSource getSource() {
-    assertCanRead();
+//    assertCanRead(); Is source access truly read operation over model?
     return mySource;
   }
 
   public void setModule(SModule module) {
-    assertCanRead();
+    assertCanRead(); // FIXME why not write?
     myModule = module;
   }
 
@@ -162,11 +191,16 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   @Override
   @Nullable
   public SModule getModule() {
-    assertCanRead();
+    // FIXME provided setModule() requires read lock, another read lock here doesn't prevent from
+    // myModule being modified in a parallel read, and the reason to have read check here eludes from me.
+    // Code like SModuleOperations.getOutputRoot(SModel) fails with assert enabled, and
+    // it's not obvious whether it's the client code to fix (to obtain read lock) or
+    // this method shall not check for read access at all.
+//    assertCanRead();
     return myModule;
   }
 
-  public void setModelRoot(ModelRoot modelRoot) {
+  public void setModelRoot(@Nullable ModelRoot modelRoot) {
     assertCanChange();
 //    if (myModelRoot != null && modelRoot != null) {
 //      LOG.error("Duplicate model roots for model " + getLongName() + " in module " + modelRoot.getModule() + ": \n" +
@@ -178,6 +212,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   }
 
   @Override
+  @Nullable
   public ModelRoot getModelRoot() {
     assertCanRead();
     return myModelRoot;
@@ -195,7 +230,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
 
   @Override
   public boolean isReadOnly() {
-    assertCanRead();
+//    assertCanRead(); no apparent reason why we shall demand read lock here. Few subclasses, that override the method, do not check access at all.
     return true;
   }
 
@@ -203,6 +238,23 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
     SModule copy = myModule;
     return copy != null && copy.getRepository() != null;
   }
+
+  /**
+   * Access actual node storage. Might trigger model load if model is not yet loaded.
+   * XXX perhaps, this method shall live in SModelDescriptorStub?
+   * @return node storage. Generally, shall not return <code>null</code> (FIXME revisit contract, enforce)
+   */
+  public SModelData getModelData() {
+    return getSModel();
+  }
+
+  /**
+   * Likely, shall return SModelData eventually
+   *
+   * @return actual model data or <code>null</code> if not initialized yet
+   */
+  @Nullable
+  protected abstract jetbrains.mps.smodel.SModel getCurrentModelInternal();
 
   @NotNull
   @Override
@@ -217,45 +269,94 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
 
   @Override
   public void load() {
-    getSModelInternal();
+    // perhaps, both load() and unload() shall be left to implementors?
+    getModelData();
+  }
+
+  /**
+   * Dispose model data, change model's {@link #getLoadingState() loading state} and
+   * dispatch {@link #fireModelStateChanged(ModelLoadingState, ModelLoadingState) state change event}.
+   * Base implementation does nothing if there's no {@link #getCurrentModelInternal() initialized model data}.
+   * Generally, subclasses shall override {@link #doUnload()} to perform actual cleanup of instance fields.
+   */
+  @Override
+  public void unload() {
+    assertCanChange();
+
+    if (getCurrentModelInternal() == null) {
+      return;
+    }
+
+    final ModelLoadingState oldState = getLoadingState();
+    doUnload();
+    fireModelStateChanged(oldState, getLoadingState());
+
+  }
+
+  /**
+   * Perform actual dispose of model data and {@link #setLoadingState(ModelLoadingState)} changes loading state}.
+   * No loading state event is sent (responsibility of {@link #unload()}. Subclasses shall override to
+   * clean instance fields and generally shall delegate to this implementation first to dispose model data.
+   */
+  protected void doUnload() {
+    jetbrains.mps.smodel.SModel modelData = getCurrentModelInternal();
+    if (modelData == null) {
+      return;
+    }
+    modelData.setModelDescriptor(null);
+    modelData.dispose();
+    setLoadingState(ModelLoadingState.NOT_LOADED);
+  }
+
+  @Override
+  public boolean isLoaded() {
+    return getLoadingState() == ModelLoadingState.FULLY_LOADED;
   }
 
   @Override
   public void addModelListener(SModelListener l) {
-    myModelListeners.add(l);
+    myModelEventDispatch.addListener(l);
   }
 
   @Override
   public void removeModelListener(SModelListener l) {
-    myModelListeners.remove(l);
+    myModelEventDispatch.removeListener(l);
   }
 
   @Override
   public void addAccessListener(SModelAccessListener l) {
-    myAccessListeners.add(l);
+    myNodeEventDispatch.addAccessListener(l);
   }
 
   @Override
   public void removeAccessListener(SModelAccessListener l) {
-    myAccessListeners.remove(l);
+    myNodeEventDispatch.removeAccessListener(l);
   }
 
-  public void fireNodeRead(jetbrains.mps.smodel.SNode node) {
-    for (SModelAccessListener l : myAccessListeners) {
-      l.nodeRead(node);
-    }
+  @Override
+  public void addAccessListener(SNodeAccessListener l) {
+    myNodeEventDispatch.addAccessListener(l);
   }
 
-  public void fireReferenceRead(jetbrains.mps.smodel.SNode node, String role) {
-    for (SModelAccessListener l : myAccessListeners) {
-      l.referenceRead(node, role);
-    }
+  @Override
+  public void removeAccessListener(SNodeAccessListener l) {
+    myNodeEventDispatch.removeAccessListener(l);
   }
 
-  public void firePropertyRead(jetbrains.mps.smodel.SNode node, String propertyName) {
-    for (SModelAccessListener l : myAccessListeners) {
-      l.propertyRead(node, propertyName);
-    }
+  /**
+   * This class doesn't dispatch change events, no listeners are tracked.
+   */
+  @Override
+  public void addChangeListener(SNodeChangeListener l) {
+    // intentionally no-op
+  }
+
+  /**
+   * This class doesn't dispatch change events, no listeners are tracked.
+   */
+  @Override
+  public void removeChangeListener(SNodeChangeListener l) {
+    // intentionally no-op
   }
 
   protected final void fireBeforeModelRenamed(SModelReference newName) {
@@ -272,62 +373,38 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
     }
   }
 
-  @Override
-  protected void fireModelStateChanged(ModelLoadingState newState) {
+  /**
+   * This method sends out proper notifications unless old and new state values are the same.
+   * Note, it's not this method's responsibility to do actual change of the state, do it with {@link #setLoadingState(ModelLoadingState)}
+   */
+  protected void fireModelStateChanged(ModelLoadingState oldState, ModelLoadingState newState) {
+    if (oldState == newState) {
+      return;
+    }
     super.fireModelStateChanged(newState);
-    for (SModelListener l : myModelListeners) {
-      try {
-        if (newState == ModelLoadingState.NOT_LOADED) {
-          l.modelUnloaded(this);
-        } else {
-          l.modelLoaded(this, newState == ModelLoadingState.INTERFACE_LOADED);
-        }
-      } catch (Throwable t) {
-        LOG.error("listener failure", t);
-      }
+    if (newState == ModelLoadingState.NOT_LOADED) {
+      myModelEventDispatch.modelUnloaded(this);
+    } else {
+      myModelEventDispatch.modelLoaded(this, newState == ModelLoadingState.INTERFACE_LOADED);
     }
   }
 
   @Override
   protected void fireModelSaved() {
     super.fireModelSaved();
-    for (SModelListener l : myModelListeners) {
-      try {
-        l.modelSaved(this);
-      } catch (Throwable t) {
-        LOG.error("listener failure", t);
-      }
-    }
+    myModelEventDispatch.modelSaved(this);
   }
 
   protected void fireConflictDetected() {
-    for (SModelListener l : myModelListeners) {
-      try {
-        l.conflictDetected(this);
-      } catch (Throwable t) {
-        LOG.error("listener failure", t);
-      }
-    }
+    myModelEventDispatch.conflictDetected(this);
   }
 
   protected void fireProblemsDetected(Iterable<Problem> problems) {
-    for (SModelListener l : myModelListeners) {
-      try {
-        l.problemsDetected(this, problems);
-      } catch (Throwable t) {
-        LOG.error("listener failure", t);
-      }
-    }
+    myModelEventDispatch.problemsDetected(this, problems);
   }
 
   protected void fireModelReplaced() {
-    for (SModelListener l : myModelListeners) {
-      try {
-        l.modelReplaced(this);
-      } catch (Throwable t) {
-        LOG.error("listener failure", t);
-      }
-    }
+    myModelEventDispatch.modelReplaced(this);
   }
 
   @Override
@@ -336,53 +413,78 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
     myModelReference = newModelReference;
   }
 
+  /**
+   * This method does nothing about model load state, it updates model descriptor of the models passed and dispatches a notification.
+   * Seems reasonable to dispatch proper modelUnloaded/modelLoaded events in addition to modelReplaced as there are listeners that
+   * expect either, not both. Especially, in case if load level is changed due to replacement (i.e. was FULL, became INTERFACE)
+   * FIXME it's synchronized, do we still need that (with RegularModelDescriptor using distinct lock object)
+   * XXX there are two uses in subclasses of not-so-nice EditableSModelBase (lazy and custom) that can't get replaced readily with
+   * nice and convenient RegularModelDescriptor.replace() call.
+   */
+  protected synchronized void replaceModelAndFireEvent(jetbrains.mps.smodel.SModel oldModel, jetbrains.mps.smodel.SModel newModel) {
+    if (oldModel != null) {
+      oldModel.setModelDescriptor(null);
+    }
+    if (newModel != null) {
+      newModel.setModelDescriptor(this);
+    }
+    if (oldModel != null) {
+      notifyModelReplaced(oldModel);
+      // ONCE notifyModelReplaced gone, don't forget to dispose oldModel here (SModelRepository does this in addition to notification dispatch)
+    }
 
-  protected void assertCanRead() {
-//    if (myRepository == null) return;
-//    if (myRepository instanceof DisposedRepository) {
-//      showDisposedMessage();
-//      return;
-//    }
-//
-//    synchronized (REPO_LOCK) {
-//      if (myRepository == null) return;
-//      if (myRepository instanceof DisposedRepository) {
-//        showDisposedMessage();
-//        return;
-//      }
-//      myRepository.getModelAccess().checkReadAccess();
-//    }
-  }
+    fireModelReplaced();
 
-  protected void assertCanChange() {
-//    if (myRepository == null) return;
-//    if (myRepository instanceof DisposedRepository) {
-//      showDisposedMessage();
-//      return;
-//    }
-//
-//    synchronized (REPO_LOCK) {
-//      if (myRepository == null) return;
-//      if (myRepository instanceof DisposedRepository) {
-//        showDisposedMessage();
-//        return;
-//      }
-//      myRepository.getModelAccess().checkWriteAccess();
-//      if (!UndoHelper.getInstance().isInsideUndoableCommand()) {
-//        throw new IllegalModelChangeError("registered model can only be modified inside undoable command");
-//      }
-//    }
-  }
-
-  private void showDisposedMessage() {
-    String modelName = jetbrains.mps.util.SNodeOperations.getModelLongName(this);
-    if (ourErroredModels.add(modelName)) {
-      LOG.error(new IllegalModelAccessError("Accessing disposed model " + modelName));
+    if (getRepository() != null) { // for a model not yet visible to anyone, no reason to drop a cache
+      // FIXME cache invalidation shall be a repository listener, and not done forcefully on model change
+      MPSModuleRepository.getInstance().invalidateCaches();
     }
   }
 
   @Override
-  public final boolean isDisposed() {
-    return myRepository instanceof DisposedRepository;
+  protected void assertCanRead() {
+    final SRepository repo = myRepository;
+    if (repo != null) {
+      repo.getModelAccess().checkReadAccess();
+    }
+  }
+
+  @Override
+  protected void assertCanChange() {
+    final SRepository repo = myRepository;
+    if (repo != null) {
+      repo.getModelAccess().checkWriteAccess();
+    }
+//      if (!UndoHelper.getInstance().isInsideUndoableCommand()) {
+//        throw new IllegalModelChangeError("registered model can only be modified inside undoable command");
+//      }
+  }
+
+  /**
+   * Generally, shall be protected (as well as {@link #setLoadingState(ModelLoadingState)}, but made public for uses in
+   * {@code PartialModelDataSupport} aka {@code jetbrains.mps.smodel.loading.UpdateableModel}.
+   */
+  @NotNull
+  public final ModelLoadingState getLoadingState() {
+    return myModelLoadState;
+  }
+
+  public final void setLoadingState(@NotNull ModelLoadingState modelLoadState) {
+    myModelLoadState = modelLoadState;
+  }
+
+
+  /**
+   * CLIENTS SHALL NOT USE THIS METHOD. It's public merely to overcome java package boundaries (those of SModelData implementation and this class).
+   * FIXME This is a hack. We shall pass myEventDispatch the moment internal model is initialized.
+   * However, it's tricky to find out exact moment with present approach (getSModelInternal() either
+   * returns existing or creates new), fireModeStateChanged is feasible option, but misguiding as well.
+   * Refactoring required to split access to SModel internal from initialization.
+   * To put event dispatch into smodel.SModel doesn't seem to be an option as we need to add listeners without
+   * loading whole model.
+   */
+  @NotNull
+  public final ModelEventDispatch getNodeEventDispatch() {
+    return myNodeEventDispatch;
   }
 }

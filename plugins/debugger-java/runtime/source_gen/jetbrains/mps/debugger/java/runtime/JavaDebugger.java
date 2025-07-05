@@ -12,52 +12,45 @@ import jetbrains.mps.debug.api.AbstractDebugSessionCreator;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.debugger.java.runtime.engine.VmCreator;
 import jetbrains.mps.debug.api.breakpoints.IBreakpointsProvider;
-import jetbrains.mps.debugger.java.runtime.state.values.ValueUtilImpl;
 import jetbrains.mps.debugger.java.runtime.evaluation.proxies.MirrorUtilImpl;
 import jetbrains.mps.debugger.java.runtime.evaluation.EvaluationUtilsImpl;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationUtils;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.MirrorUtil;
-import jetbrains.mps.debugger.java.api.state.proxy.ValueUtil;
 
 public class JavaDebugger extends AbstractDebugger implements ApplicationComponent {
   private final JavaBreakpointsProvider myJavaBreakpointsProvider = new JavaBreakpointsProvider();
-
   public JavaDebugger(Debuggers debuggers, BreakpointProvidersManager breakpointsProviderManager) {
     super("Java", debuggers, breakpointsProviderManager);
   }
-
   @NotNull
   @Override
   public AbstractDebugSessionCreator createDebugSessionCreator(@NotNull Project project) {
     return new VmCreator(project);
   }
-
   @NotNull
   @Override
   public IBreakpointsProvider getBreakpointsProvider() {
     return myJavaBreakpointsProvider;
   }
-
   @NotNull
   @Override
   public String getComponentName() {
     return getName() + " Debugger";
   }
-
   @Override
   public void initComponent() {
     super.init();
     myJavaBreakpointsProvider.init();
-    new ValueUtilImpl().init();
     new MirrorUtilImpl().init();
     new EvaluationUtilsImpl().init();
   }
-
   @Override
   public void disposeComponent() {
     EvaluationUtils.getInstance().dispose();
-    MirrorUtil.getInstance().dispose();
-    ValueUtil.getInstance().dispose();
+    MirrorUtil mirrorUtil = MirrorUtil.getInstance();
+    if (mirrorUtil != null) {
+      mirrorUtil.dispose();
+    }
     myJavaBreakpointsProvider.dispose();
     super.dispose();
   }

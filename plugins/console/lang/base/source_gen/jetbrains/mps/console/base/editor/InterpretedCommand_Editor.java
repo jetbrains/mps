@@ -9,12 +9,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 public class InterpretedCommand_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createComponent_k55s8m_a(editorContext, node);
-  }
-
-  private EditorCell createComponent_k55s8m_a(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = editorContext.getCellFactory().createEditorComponentCell(node, "jetbrains.mps.lang.core.editor.alias");
-    editorCell.setBig(true);
-    return editorCell;
+    return new InterpretedCommand_EditorBuilder_a(editorContext, node).createCell();
   }
 }

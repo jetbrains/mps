@@ -4,27 +4,29 @@ package jetbrains.mps.lang.test.generator.baseLanguage.template.util;
 
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.lang.test.behavior.TestInfo_Behavior;
-import org.jetbrains.mps.openapi.language.SConceptRepository;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.test.behavior.TestInfo__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.apache.log4j.Logger;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.project.FileBasedProject;
 import jetbrains.mps.util.MacrosFactory;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
-import jetbrains.mps.lang.test.behavior.NodesTestCase_Behavior;
+import jetbrains.mps.baseLanguage.unitTest.behavior.ITestCase__BehaviorDescriptor;
+import jetbrains.mps.lang.test.behavior.NodesTestCase__BehaviorDescriptor;
 import java.io.File;
-import jetbrains.mps.project.Project;
 
-public class TestsUtil {
-  public TestsUtil() {
+public final class TestsUtil {
+  private TestsUtil() {
   }
 
   public static String getProjectPath(SModel model, IOperationContext operationContext) {
-    String projectPath = TestInfo_Behavior.call_getProjectPath_5097124989038916375(SConceptRepository.getInstance().getConcept(NameUtil.nodeFQName(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.test.structure.TestInfo"))), model);
+    String projectPath = TestInfo__BehaviorDescriptor.getProjectPath_id4qWC2JVrBcn.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo")), model);
     if (projectPath != null) {
       return projectPath;
     }
-    String url = check_6yh4up_a0c0b(check_6yh4up_a0a2a1(operationContext.getProject()));
+    Logger.getLogger(TestsUtil.class).error(String.format("Model %s (from %s) doesn't specify TestInfo and relies on deprecated way to locate an active project, please FIX!", SModelOperations.getModelName(model), model.getSource()));
+    String url = check_6yh4up_a0d0c(check_6yh4up_a0a3a2(((FileBasedProject) operationContext.getProject())));
     if (url != null) {
       return MacrosFactory.getGlobal().shrinkPath(url);
     }
@@ -32,17 +34,15 @@ public class TestsUtil {
   }
 
   public static String getTestBodyClassName(SNode testCase) {
-    return BehaviorReflection.invokeVirtual(String.class, testCase, "virtual_getClassName_1216136193905", new Object[]{}) + "$" + NodesTestCase_Behavior.call_getTestBodyName_1224602741295(SConceptRepository.getInstance().getConcept(NameUtil.nodeFQName(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.test.structure.NodesTestCase"))));
+    return ITestCase__BehaviorDescriptor.getClassName_idhGBnqtL.invoke(testCase) + "$" + NodesTestCase__BehaviorDescriptor.getTestBodyName_idhOw0ICJ.invoke(SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase")));
   }
-
-  private static String check_6yh4up_a0c0b(File checkedDotOperand) {
+  private static String check_6yh4up_a0d0c(File checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getAbsolutePath();
     }
     return null;
   }
-
-  private static File check_6yh4up_a0a2a1(Project checkedDotOperand) {
+  private static File check_6yh4up_a0a3a2(FileBasedProject checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getProjectFile();
     }

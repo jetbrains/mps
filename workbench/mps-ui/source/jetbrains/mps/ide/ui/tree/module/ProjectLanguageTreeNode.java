@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,20 @@
  */
 package jetbrains.mps.ide.ui.tree.module;
 
+import com.intellij.icons.AllIcons.Nodes;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.SortUtil;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SModelReferenceTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
-import jetbrains.mps.project.ModuleContext;
+import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode.LongModelNameText;
+import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode.ShortModelNameText;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.Generator;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.LanguageAspect;
-import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -37,20 +38,16 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.List;
 
 public class ProjectLanguageTreeNode extends ProjectModuleTreeNode {
-  private Language myLanguage;
   private Project myProject;
   private boolean myShortNameOnly;
   private boolean myInitialized;
 
   protected ProjectLanguageTreeNode(@NotNull Language language, Project project, boolean shortNameOnly) {
-    super(new ModuleContext(language, project));
+    super(language);
     myShortNameOnly = shortNameOnly;
-    myLanguage = language;
     myProject = project;
-
-    setNodeIdentifier(myLanguage.getModuleReference().toString());
-    setIcon(IdeIcons.PROJECT_LANGUAGE_ICON);
-    init();
+    setNodeIdentifier(language.getModuleReference().toString());
+    setIcon(IdeIcons.LANGUAGE_ICON);
   }
 
   @Override
@@ -59,23 +56,23 @@ public class ProjectLanguageTreeNode extends ProjectModuleTreeNode {
   }
 
   @Override
-  public void init() {
-    populate();
+  protected void doInit() {
+    ModuleNodeChildrenProvider childrenProvider = getAncestor(ModuleNodeChildrenProvider.class);
+    if (childrenProvider == null || !childrenProvider.populate(this, getModule())) {
+      populate();
+    }
     myInitialized = true;
   }
 
+  @NotNull
   @Override
   public Language getModule() {
-    return myLanguage;
-  }
-
-  public Language getLanguage() {
-    return myLanguage;
+    return (Language) super.getModule();
   }
 
   @Override
   public String getModuleText() {
-    String languageUID = myLanguage.getModuleName();
+    String languageUID = getModule().getModuleName();
 
     if (myShortNameOnly) {
       languageUID = NameUtil.shortNameFromLongName(languageUID);
@@ -85,61 +82,61 @@ public class ProjectLanguageTreeNode extends ProjectModuleTreeNode {
   }
 
   private void populate() {
-    IOperationContext operationContext = getOperationContext();
-
-    // language aspect
-    for (LanguageAspect aspect : LanguageAspect.values()) {
-      if (aspect.get(getLanguage()) != null) {
-        add(new SModelTreeNode(aspect.get(getLanguage()), null, operationContext, false));
-      }
+    ShortModelNameText textSource = new ShortModelNameText();
+    for (SModel m : LanguageAspectSupport.getAspectModels(getModule())) {
+      add(new SModelTreeNode(m, textSource));
     }
 
     // language accessory models
-    if (myLanguage.getAccessoryModels().size() > 0) {
+    if (getModule().getAccessoryModels().size() > 0) {
       TextTreeNode accessories = new AccessoriesModelTreeNode(this);
 
-      List<SModel> sortedModels = SortUtil.sortModels(myLanguage.getAccessoryModels());
+      List<SModel> sortedModels = SortUtil.sortModels(getModule().getAccessoryModels());
+      LongModelNameText modelText = new LongModelNameText();
       for (SModel model : sortedModels) {
         SModule m = model.getModule();
-        boolean currentModule = m == null || m == myLanguage;
-        SModule module = m == null ? myLanguage : m;
+        boolean currentModule = m == null || m == getModule();
         if (!currentModule) {
-          accessories.add(new SModelReferenceTreeNode(model, new ModuleContext(module, myProject)));
+          accessories.add(new SModelReferenceTreeNode(model, myProject));
         } else {
-          accessories.add(new SModelTreeNode(model, null, new ModuleContext(module, myProject)));
+          accessories.add(new SModelTreeNode(model, modelText));
         }
       }
       this.add(accessories);
     }
 
-    for (Generator generator : myLanguage.getGenerators()) {
-      MPSTreeNode generatorNode = new GeneratorTreeNode(generator, myProject);
+    for (Generator generator : getModule().getGenerators()) {
+      MPSTreeNode generatorNode = createFor(myProject, generator);
       add(generatorNode);
     }
 
     TextTreeNode languageRuntime = new RuntimeModulesTreeNode();
-    for (SModuleReference mr : myLanguage.getRuntimeModulesReferences()) {
-      SModule m = MPSModuleRepository.getInstance().getModule(mr);
-      if (m == null || m == myLanguage) continue;
+    for (SModuleReference mr : getModule().getRuntimeModulesReferences()) {
+      SModule m = ModuleRepositoryFacade.getInstance().getModule(mr);
+      if (m == null || m == getModule()) {
+        continue;
+      }
       languageRuntime.add(createFor(myProject, m));
     }
     add(languageRuntime);
 
-    if (myLanguage.getUtilModels().size() > 0) {
-      TextTreeNode utilModels = new SModelGroupTreeNode(operationContext);
-      SModelsSubtree.create(utilModels, operationContext, (List) myLanguage.getUtilModels(), false);
+    if (getModule().getUtilModels().size() > 0) {
+      TextTreeNode utilModels = new SModelGroupTreeNode();
+      new SModelsSubtree(utilModels).create(getModule().getUtilModels());
       this.add(utilModels);
     }
 
     TextTreeNode allModels = new AllModelsTreeNode();
-    allModels.setIcon(IdeIcons.PROJECT_MODELS_ICON, false);
-    allModels.setIcon(IdeIcons.PROJECT_MODELS_EXPANDED_ICON, true);
-    SModelsSubtree.create(allModels, getOperationContext());
+    allModels.setIcon(Nodes.ModuleGroup);
+    new SModelsSubtree(allModels, false, false).create(getModule());
     add(allModels);
   }
 
-  public class AllModelsTreeNode extends TextTreeNode {
-    public AllModelsTreeNode() {
+  /**
+   * need a dedicated instance as long as ProjectTreeFindHelper uses instanceof to decide whether to descend a node or not.
+   */
+  public static class AllModelsTreeNode extends TextTreeNode {
+    /*package*/ AllModelsTreeNode() {
       super("all models");
     }
   }

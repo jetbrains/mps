@@ -13,7 +13,6 @@ import utils.ParallelLoopException;
 public class SimpleParallelForSample {
   public SimpleParallelForSample() {
   }
-
   public static void main(String[] args) {
 
     final Iterable<Integer> numbers = ListSequence.fromListAndArray(new ArrayList<Integer>(), 1, 2, 3, 4, 5);
@@ -65,9 +64,6 @@ public class SimpleParallelForSample {
   }
 
   public static class Logger {
-    public Logger() {
-    }
-
     private static synchronized void log(String msg) {
       System.out.println(msg);
     }

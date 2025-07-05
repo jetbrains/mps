@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,23 +15,29 @@
  */
 package jetbrains.mps.ide.projectPane.logicalview;
 
-import com.intellij.openapi.project.Project;
-import jetbrains.mps.ide.generator.TransientModelsComponent;
 import jetbrains.mps.generator.TransientModelsModule;
+import jetbrains.mps.generator.TransientModelsProvider;
+import jetbrains.mps.ide.ui.tree.MPSTree;
+import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.ide.ui.tree.TextTreeNode;
 import jetbrains.mps.ide.ui.tree.module.DefaultNamespaceTreeBuilder;
 import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.ide.ui.tree.module.ProjectModulesPoolTreeNode;
 import jetbrains.mps.ide.ui.tree.module.ProjectTreeNode;
 import jetbrains.mps.ide.ui.tree.module.TransientModelsTreeNode;
-import jetbrains.mps.ide.ui.tree.MPSTree;
-import jetbrains.mps.ide.ui.tree.MPSTreeNode;
-import jetbrains.mps.ide.ui.tree.TextTreeNode;
+import jetbrains.mps.ide.ui.tree.smodel.TreeNodeParamProvider;
 import jetbrains.mps.make.IMakeNotificationListener;
 import jetbrains.mps.make.IMakeNotificationListener.Stub;
 import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.make.MakeNotification;
-import org.jetbrains.mps.openapi.module.SModule;import jetbrains.mps.project.*;
+import jetbrains.mps.project.DevKit;
+import jetbrains.mps.project.Project;
+import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.ModelReadRunnable;
+import jetbrains.mps.util.Computable;
+import org.jetbrains.mps.openapi.module.SModule;
 
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
@@ -39,17 +45,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class ProjectTree extends MPSTree {
+public class ProjectTree extends MPSTree implements TreeNodeParamProvider {
   private Project myProject;
   private ProjectTreeNode myProjectTreeNode;
   private ProjectModulesPoolTreeNode myModulesPoolTreeNode;
   private AtomicReference<IMakeNotificationListener> myMakeNotificationListener = new AtomicReference<IMakeNotificationListener>();
+  private Computable<Boolean> myShowStructureCondition;
 
   public ProjectTree(Project project) {
     myProject = project;
-
     getSelectionModel().setSelectionMode(TreeSelectionModel.DISCONTIGUOUS_TREE_SELECTION);
     scrollsOnExpand = false;
+  }
+
+  @Override
+  protected void doInit(MPSTreeNode node, Runnable nodeInitRunnable) {
+    super.doInit(node, new ModelReadRunnable(myProject.getModelAccess(), nodeInitRunnable));
   }
 
   @Override
@@ -58,34 +69,35 @@ public class ProjectTree extends MPSTree {
       return new TextTreeNode("Empty");
     }
 
-    MPSProject project = myProject.getComponent(MPSProject.class);
     MPSTreeNode root = new TextTreeNode("Empty");
-    ProjectTreeNode projectRoot = new ProjectTreeNode(project);
+    ProjectTreeNode projectRoot = new ProjectTreeNode(myProject);
 
     setRootVisible(false);
     List<MPSTreeNode> moduleNodes = new ArrayList<MPSTreeNode>();
 
-    for (Class<? extends SModule> cl: new Class[]{Solution.class,Language.class,DevKit.class}){
-      for (SModule module : project.getProjectModules(cl)) {
-        moduleNodes.add(ProjectModuleTreeNode.createFor(project,module,false));
+    for (Class<? extends SModule> cl : new Class[]{Solution.class, Language.class, DevKit.class}) {
+      for (SModule module : myProject.getProjectModules(cl)) {
+        moduleNodes.add(ProjectModuleTreeNode.createFor(myProject, module, false));
       }
     }
 
-    ModulesNamespaceTreeBuilder builder = new ModulesNamespaceTreeBuilder(project);
+    ModulesNamespaceTreeBuilder builder = new ModulesNamespaceTreeBuilder(myProject);
     for (MPSTreeNode mtn : moduleNodes) {
       builder.addNode(mtn);
     }
     builder.fillNode(projectRoot);
 
-    myModulesPoolTreeNode = new ProjectModulesPoolTreeNode(project);
+    myModulesPoolTreeNode = new ProjectModulesPoolTreeNode(myProject);
     root.add(projectRoot);
     root.add(myModulesPoolTreeNode);
     if (!IMakeService.INSTANCE.isSessionActive()) {
-      for(TransientModelsModule module : myProject.getComponent(TransientModelsComponent.class).getModules()) {
-        root.add(new TransientModelsTreeNode(myProject, module));
+      final TransientModelsProvider tmc = myProject.getComponent(TransientModelsProvider.class);
+      if (tmc != null) {
+        for (TransientModelsModule module : tmc.getModules()) {
+          root.add(new TransientModelsTreeNode(myProject, module));
+        }
       }
-    }
-    else {
+    } else {
       // postpone the update until the make session ends
       if (myMakeNotificationListener.compareAndSet(null, new Stub() {
         @Override
@@ -94,8 +106,7 @@ public class ProjectTree extends MPSTree {
           IMakeService.INSTANCE.get().removeListener(this);
           myMakeNotificationListener.set(null);
         }
-      }))
-      {
+      })) {
         IMakeService.INSTANCE.get().addListener(myMakeNotificationListener.get());
       }
     }
@@ -115,10 +126,19 @@ public class ProjectTree extends MPSTree {
     return myProject;
   }
 
-  private class ModulesNamespaceTreeBuilder extends DefaultNamespaceTreeBuilder {
+  public void setShowStructureCondition(Computable<Boolean> showStructureCondition) {
+    myShowStructureCondition = showStructureCondition;
+  }
+
+  @Override
+  public boolean isShowStructure() {
+    return myShowStructureCondition == null || myShowStructureCondition.compute();
+  }
+
+  private static class ModulesNamespaceTreeBuilder extends DefaultNamespaceTreeBuilder {
     private StandaloneMPSProject myProject;
 
-    protected ModulesNamespaceTreeBuilder(MPSProject project) {
+    protected ModulesNamespaceTreeBuilder(Project project) {
       myProject = (StandaloneMPSProject) project;
     }
 

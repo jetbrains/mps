@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,63 +16,57 @@
 package jetbrains.mps.generator;
 
 import jetbrains.mps.extapi.model.EditableSModelBase;
+import jetbrains.mps.extapi.model.ModelWithAttributes;
 import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.generator.TransientModelsProvider.TransientSwapSpace;
+import jetbrains.mps.generator.impl.ModelVault;
+import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModuleId;
-import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
-import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.Deptype;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.SModelRepository;
-import jetbrains.mps.smodel.SModelStereotype;
+import jetbrains.mps.smodel.FastNodeFinderManager;
+import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.smodel.SModelHeader;
+import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
+import jetbrains.mps.smodel.references.ImmatureReferencesTracker;
 import jetbrains.mps.util.containers.ConcurrentHashSet;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.module.SDependency;
+import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 import org.jetbrains.mps.openapi.persistence.NullDataSource;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.BiConsumer;
 
-public class TransientModelsModule extends AbstractModule {
+public class TransientModelsModule extends AbstractModule implements TransientSModule {
   private static final Logger LOG = LogManager.getLogger(TransientModelsModule.class);
 
-  private static final AtomicInteger ourModuleCounter = new AtomicInteger();
-
-  private final SModule myOriginalModule;
   private final TransientModelsProvider myComponent;
 
-  private Set<String> myModelsToKeep = new ConcurrentHashSet<String>();
-  private Map<String, SModel> myModels = new ConcurrentHashMap<String, SModel>();
   private Set<SModel> myPublished = new ConcurrentHashSet<SModel>();
+  private final ModelVault<TransientSModelDescriptor> myModelVault = new ModelVault<TransientSModelDescriptor>();
 
-  //the second parameter is needed because there is a time dependency -
-  //MPSProject must be disposed after TransientModelsModule for
-  //the module's models to be disposed
+  private final Map<String, GenerationTrace> myTraces = new HashMap<String, GenerationTrace>();
 
-  public TransientModelsModule(SModule original, TransientModelsProvider component) {
-    assert !(original instanceof TransientModelsModule) :
-        "create TransientModelsModule based on another TransientModelsModule with name " + original.getModuleName();
-    myComponent = component;
-    myOriginalModule = original;
-    String fqName = original.getModuleName() + "@transient" + ourModuleCounter.getAndIncrement();
-    SModuleReference reference = new jetbrains.mps.project.structure.modules.ModuleReference(fqName, ModuleId.regular());
-    setModuleReference(reference);
+  /*package*/ TransientModelsModule(@NotNull TransientModelsProvider tmProvider, @NotNull SModuleReference moduleReference) {
+    myComponent = tmProvider;
+    setModuleReference(moduleReference);
   }
 
   public boolean hasPublished() {
@@ -88,161 +82,183 @@ public class TransientModelsModule extends AbstractModule {
   public void clearAll() {
     removeAll();
     dependenciesChanged();
-    myModelsToKeep.clear();
     myPublished.clear();
-    myModels.clear();
+    myModelVault.clear();
   }
 
   public void removeAll() {
-    Collection<SModel> models = this.getTransientModels();
-    for (SModel model : models) {
+    for (SModel model : myModelVault.allModels()) {
       removeModel(model);
     }
   }
 
   public void clearUnused() {
-    Collection<SModel> models = this.getTransientModels();
-    for (SModel model : models) {
-      if (!myModelsToKeep.contains(model.getReference().toString())) {
-        removeModel(model);
-      } else {
-        unloadModel(model);
-      }
+    // mature references as a distinct step (not as part of unload()) just in case there are reference
+    // between the models to publish and unload (hence, mature) in improper order may leave reference broken.
+    for (TransientSModelDescriptor model : myModelVault.modelsToPublish()) {
+      model.makeRefsMature();
+    }
+    for (TransientSModelDescriptor model : myModelVault.modelsToPublish()) {
+      unloadModel(model);
+    }
+    for (SModel model : myModelVault.modelsNotToPublish()) {
+      removeModel(model);
     }
   }
 
-  public boolean addModelToKeep(SModel model, boolean force) {
-    assert model.getModule() instanceof TransientModelsModule;
-    String modelRef = model.getReference().toString();
+  public boolean addModelToKeep(@NotNull SModelReference modelReference, boolean force) {
+    assert isMyTransientModel(modelReference);
     if (force) {
-      myModelsToKeep.add(modelRef);
+      myModelVault.publish(modelReference);
       return true;
     }
-    if (myModelsToKeep.contains(modelRef)) {
+    if (myModelVault.isPublished(modelReference)) {
       return true;
     }
     if (!myComponent.canKeepOneMore()) {
       // maximum number of models reached
-      return myModelsToKeep.contains(modelRef);
+      return false;
     }
-    if (!myModelsToKeep.add(modelRef)) {
-      myComponent.decreaseKeptModels();
-    }
+    myModelVault.publish(modelReference);
+    myComponent.decreaseKeptModels();
     return true;
   }
 
-  public boolean isModelToKeep(SModel model) {
-    assert model.getModule() instanceof TransientModelsModule;
-    return myModelsToKeep.contains(model.getReference().toString());
-  }
-
-  private boolean isValidName(String modelName) {
-    return
-        SModelRepository.getInstance().getModelDescriptor(modelName) == null
-            && !myModels.containsKey(modelName);
-  }
-
-  public boolean publishTransientModel(SModel model) {
-    if (myModels.containsKey(model.getModelName())) {
-      if (myPublished.add(model)) {
-        registerModel((SModelBase) model);
-        return true;
-      }
-    }
-    return false;
-  }
-
-  public void removeModel(SModel md) {
-    if (myModels.remove(md.getModelName()) != null) {
-      if (myPublished.remove(md)) {
-        unregisterModel((SModelBase) md);
-      }
-      if (md instanceof TransientSModelDescriptor) {
-        ((TransientSModelDescriptor) md).dropModel();
-      }
-    }
-  }
-
-  private void unloadModel(SModel model) {
-    if (myModels.containsKey(model.getModelName())) {
-      if (model instanceof TransientSModelDescriptor) {
-        if (((TransientSModelDescriptor) model).unloadModel()) {
-          if (myPublished.contains(model)) {
-//            SModelRepository.getInstance().removeModelDescriptor(model);
+  // to remove published model, one needs write access to a repository,
+  // which is not always possible e.g. when a new checkpoint model replaces existing
+  public void forgetModel(SModel model, boolean forgetDependants) {
+    SModelReference modelReference = model.getReference();
+    assert isMyTransientModel(modelReference);
+    myModelVault.forget(model);
+    if (forgetDependants) {
+      for (TransientSModelDescriptor tm : myModelVault.allModels()) {
+        for (SModelReference importElement : tm.getModelImports()) {
+          if (modelReference.equals(importElement)) {
+            myModelVault.forget(tm);
+            break;
           }
         }
       }
     }
   }
 
-  public void publishAll() {
-    Collection<SModel> models = this.getTransientModels();
-    for (SModel model : models) {
-      publishTransientModel(model);
+  // model removal doesn't affect list of models to publish. To unpublish a model, call #forgetModel() first
+  public void removeModel(SModel md) {
+    // FNF is poor in tracking transients models (unpublished models do not show up in a repository)
+    // This code might need reconsideration once we have a distinct repository for transient modules (we'll either
+    // get capability to track models, or FNFM will attach finders to a specific repo and dispose all of them at once
+    // when transient repo is thrown away).
+    FastNodeFinderManager.dispose(md);
+    myModelVault.remove(md);
+    if (myPublished.remove(md)) {
+      unregisterModel((SModelBase) md);
+    }
+    if (md instanceof TransientSModelDescriptor) {
+      ((TransientSModelDescriptor) md).dropModel();
     }
   }
 
-  public SModel createTransientModel(@NotNull String longName, @NotNull String stereotype) {
-    String modelName = longName + "@" + stereotype;
-    while (!isValidName(modelName)) {
-      modelName += "_";
-    }
+  private void unloadModel(TransientSModelDescriptor model) {
+    model.unloadModelNoSave();
+  }
 
-    SModel result = new TransientSModelDescriptor(modelName);
+  public void publishAll() {
+    for (TransientSModelDescriptor model : myModelVault.modelsToPublish()) {
+      if (myPublished.add(model)) {
+        registerModel(model);
+      }
+    }
+    for (TransientSModelDescriptor model : myModelVault.modelsNotToPublish()) {
+      if (myPublished.contains(model)) {
+        removeModel(model);
+      }
+    }
+  }
+
+  public SModel createTransientModel(SModelReference modelReference) {
+    TransientSModelDescriptor result = new TransientSModelDescriptor(modelReference);
     result.load();
 
-    myModels.put(result.getModelName(), result);
+    myModelVault.add(result);
 
     return result;
   }
 
   public String toString() {
-    return getModuleName();
+    return getModuleName() + " [transient models module]";
   }
 
-  public List<SModel> getTransientModels() {
-    return new ArrayList<SModel>(myModels.values());
+  // Purpose of this implementation is to resolve references to yet not public transient models
+  private SModel findInVault(SModelId reference) {
+    for (SModel m : myModelVault.allModels()) {
+      if (reference.equals(m.getModelId())) {
+        return m;
+      }
+    }
+    return null;
   }
 
   @Override
-  protected ModuleScope createScope() {
-    return new TransientModuleScope();
+  public SModel getModel(SModelId id) {
+    SModel rv = super.getModel(id);
+    if (rv != null) {
+      return rv;
+    }
+    return findInVault(id);
   }
 
-  public SModule getOriginalModule() {
-    return myOriginalModule;
+  public boolean isMyTransientModel(SModelReference modelRef) {
+    return modelRef != null && myModelVault.known(modelRef);
   }
 
+  /**
+   * Module of any referenced model we can access through our repository (one of TransientModelsProvider) is deemed declared dependency.
+   * There's little value to show 'out of scope' errors for transient nodes, that's why everything is here.
+   * It used to be GMDM(originalModule, Compile), but I don't see any reason for that.
+   */
   @Override
-  public SModel resolveInDependencies(SModelId reference) {
-    String name = reference.getModelName();
-    if (name == null) return super.resolveInDependencies(reference);
-    boolean own = myModels.keySet().contains(SModelStereotype.withoutStereotype(name));
-    if (!own) return super.resolveInDependencies(reference);
-    return myModels.get(name);
+  public Iterable<SDependency> getDeclaredDependencies() {
+    assertCanRead();
+    // SModelOperations.validateLanguagesAndImports could update this set for us (if I override addDependency() to record values),
+    // but I don't think the method deserves to survive, and its extra use doesn't help this.
+    HashSet<SModelReference> referencedModels = new HashSet<>();
+    for (SModel m : getModels()) {
+      // I'd love to collect importedModel.getModuleReference(), but GUID model references would leave out quite some module dependencies
+      referencedModels.addAll(new ModelImports(m).getImportedModels());
+    }
+    HashSet<SModule> deps = new HashSet<>();
+    for (SModelReference mr : referencedModels) {
+      SModel model = mr.resolve(myComponent.getRepository());
+      if (model != null && model.getModule() != null) {
+        deps.add(model.getModule());
+      }
+    }
+    ArrayList<SDependency> rv = new ArrayList<>(deps.size());
+    deps.forEach(m -> rv.add(new SDependencyImpl(m, SDependencyScope.DEFAULT, false)));
+    return rv;
   }
 
-  public class TransientModuleScope extends ModuleScope {
-    @Override
-    protected Set<SModule> getInitialModules() {
-      Set<SModule> result = new HashSet<SModule>();
-      result.add(TransientModelsModule.this);
-      result.addAll(new GlobalModuleDependenciesManager(myOriginalModule).getModules(Deptype.COMPILE));
-      return result;
-    }
-
-    @Override
-    protected Set<Language> getInitialUsedLanguages() {
-      return new HashSet<Language>(new GlobalModuleDependenciesManager(myOriginalModule).getUsedLanguages());
-    }
+  public GenerationTrace getTrace(SModelReference model) {
+    return myTraces.get(model.getName().getLongName());
   }
 
-  public class TransientSModelDescriptor extends EditableSModelBase {
-    protected volatile jetbrains.mps.smodel.SModel mySModel;
+  public void publishTrace(@NotNull SModelReference model, @NotNull GenerationTrace trace) {
+    myTraces.put(model.getName().getLongName(), trace);
+  }
+
+  public void changeModelReference(@NotNull SModel transientModel, @NotNull SModelReference newRef) {
+    assert isMyTransientModel(transientModel.getReference());
+    ((TransientSModelDescriptor) transientModel).changeModelReference(newRef);
+  }
+
+  public final class TransientSModelDescriptor extends EditableSModelBase implements jetbrains.mps.extapi.model.TransientSModel, ModelWithAttributes {
+    protected volatile TransientSModel mySModel;
     private boolean wasUnloaded = false;
+    private ImmatureReferencesTracker myRefsTracker = new ImmatureReferencesTracker();
 
-    private TransientSModelDescriptor(String modelName) {
-      super(PersistenceFacade.getInstance().createModelReference(null, jetbrains.mps.smodel.SModelId.generate(), modelName), new NullDataSource());
+    private TransientSModelDescriptor(@NotNull SModelReference modelRef) {
+      super(modelRef, new NullDataSource());
+      myRefsTracker.attach(this,false);
     }
 
     @Override
@@ -255,74 +271,95 @@ public class TransientModelsModule extends AbstractModule {
       if (mySModel != null) {
         return mySModel;
       }
+
+      // FIXME code identical to BaseSpecialModelDescriptor
+      final ModelLoadingState oldState;
       synchronized (this) {
+        oldState = getLoadingState();
         if (mySModel == null) {
           mySModel = createModel();
           mySModel.setModelDescriptor(this);
-          fireModelStateChanged(ModelLoadingState.FULLY_LOADED);
+          if (wasUnloaded) {
+            // ensure imports are back
+            SModelOperations.validateLanguagesAndImports(this, false, false);
+            wasUnloaded = false;
+          }
+          setLoadingState(ModelLoadingState.FULLY_LOADED);
         }
       }
+      fireModelStateChanged(oldState, ModelLoadingState.FULLY_LOADED);
       return mySModel;
     }
 
     @Override
-    public boolean isLoaded() {
-      return mySModel != null;
+    protected void assertCanChange() {
+      // This model descriptor, unlike others, supports 'unloading' of model data.
+      // IOW, has special handling for models that are already attached to a repository but its model data
+      // could be restored and updated on load. Thus, we allow model modifications unless completely loaded.
+      if (isLoaded()) {
+        super.assertCanChange();
+      }
     }
 
-    protected jetbrains.mps.smodel.SModel createModel() {
+    private TransientSModel createModel() {
       if (wasUnloaded) {
-        LOG.debug("Re-loading " + getSModelReference());
+        LOG.debug("Re-loading " + getReference());
 
         TransientSwapSpace swap = myComponent.getTransientSwapSpace();
         if (swap == null) throw new IllegalStateException("no swap space");
 
-        jetbrains.mps.smodel.SModel m = swap.restoreFromSwap(getSModelReference());
-        if (m != null) return m;
+        TransientSModel m = swap.restoreFromSwap(getReference(), new TransientSModel(getReference()));
 
-        throw new IllegalStateException("lost swapped out model");
+        if (m == null) {
+          throw new IllegalStateException("lost swapped out model");
+        }
+        return m;
       } else {
-        return new TransientSModel(getSModelReference());
+        return new TransientSModel(getReference());
       }
     }
 
     @Override
     protected void doUnload() {
-      unloadModel();
-    }
-
-    private boolean unloadModel() {
       if (!wasUnloaded) {
-        LOG.debug("Un-loading " + getSModelReference());
+        LOG.debug("Un-loading " + getReference());
 
         TransientSwapSpace swap = myComponent.getTransientSwapSpace();
-        if (swap == null || !swap.swapOut((TransientSModel) mySModel)) {
-          return false;
+        if (swap == null || !swap.swapOut(mySModel)) {
+          return;
         }
 
-        dropModel();
-
+        super.doUnload(); // changes loading state as recorded in the descriptor
         wasUnloaded = true;
+        mySModel = null;
       }
-      return false;
     }
 
+    // Can't use openapi's unload as EditableSModelBase does save() on unload(), which is (likely? it's guess) not what
+    // originally deemed necessary for transient models (although could have saveModel no-op or subclass  EditableModelDescriptor),
+    // thus mimics what SModelBase#unload does.
+    // XXX consider subclassing EditableModelDescriptor and use unload() instead of this method directly
+    /*package*/ void unloadModelNoSave() {
+      final ModelLoadingState oldState = getLoadingState();
+      doUnload();
+      fireModelStateChanged(oldState, getLoadingState());
+    }
+
+    // unlike unload, doesn't not swap out model data
     private void dropModel() {
+      myRefsTracker.detach();
       if (mySModel != null) {
-        LOG.debug("Dropped " + getSModelReference());
+        LOG.debug("Dropped " + getReference());
+        mySModel.setModelDescriptor(null);
         mySModel.dispose();
         mySModel = null;
+        setLoadingState(ModelLoadingState.NOT_LOADED);
       }
     }
 
     @Override
     public SModule getModule() {
       return TransientModelsModule.this;
-    }
-
-    @Override
-    public SModel resolveModel(SModelReference reference) {
-      throw new UnsupportedOperationException("not supported since 3.0");
     }
 
     @Override
@@ -346,9 +383,29 @@ public class TransientModelsModule extends AbstractModule {
       throw new UnsupportedOperationException();
     }
 
+    public void makeRefsMature() {
+      myRefsTracker.makeMature();
+    }
+
+    private SModelHeader getModelHeader() {
+      getModelData(); // init mySModel field, just in case it hasn't been initialized
+      return mySModel.getSModelHeader();
+    }
+
     @Override
-    public boolean isTransient() {
-      return true;
+    public void setAttribute(@NotNull String key, @Nullable String value) {
+      getModelHeader().setOptionalProperty(key, value);
+    }
+
+    @Nullable
+    @Override
+    public String getAttribute(@NotNull String key) {
+      return getModelHeader().getOptionalProperty(key);
+    }
+
+    @Override
+    public void forEach(@NotNull BiConsumer<String, String> action) {
+      getModelHeader().getOptionalProperties().forEach(action);
     }
   }
 }

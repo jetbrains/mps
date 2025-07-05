@@ -16,37 +16,26 @@
 
 package jetbrains.mps.idea.java.debugger.breakpoints;
 
-import com.intellij.debugger.ui.breakpoints.BreakpointFactory;
-import com.intellij.debugger.ui.breakpoints.BreakpointPropertiesPanel;
 import com.intellij.debugger.ui.breakpoints.BreakpointWithHighlighter;
+import com.intellij.icons.AllIcons.Debugger;
+import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.Constraints;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
-import com.intellij.openapi.application.ApplicationInfo;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.popup.Balloon;
-import com.intellij.openapi.ui.popup.JBPopup;
-import com.intellij.openapi.ui.popup.JBPopupAdapter;
-import com.intellij.openapi.ui.popup.LightweightWindowEvent;
-import com.intellij.openapi.wm.IdeFocusManager;
-import com.intellij.util.ui.UIUtil;
 import com.intellij.xdebugger.impl.actions.EditBreakpointAction.ContextAction;
+import com.intellij.xdebugger.impl.breakpoints.XLineBreakpointImpl;
+import com.intellij.xdebugger.impl.ui.DebuggerUIUtil;
 import jetbrains.mps.debugger.core.breakpoints.BreakpointIconRenderrerEx;
 import jetbrains.mps.idea.java.MpsJavaBundle;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import javax.swing.Icon;
-import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
 import java.awt.Point;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 /*package private*/ class BreakpointIconRenderrer extends BreakpointIconRenderrerEx<BreakpointWithHighlighter> {
   public BreakpointIconRenderrer(BreakpointWithHighlighter breakpoint, EditorComponent component) {
@@ -60,7 +49,11 @@ import java.lang.reflect.Method;
 
   @Override
   public Icon getIcon() {
-    return myBreakpoint.getIcon();
+    Icon icon = myBreakpoint.getIcon();
+    // fixme idea seems to update the icon (which is initialy null) under a series of Swing.invokeLaters
+    // our control flow is such that even if schedule breakpoint.updateUI() it will happen later
+    // Let's be simplistic for now and just return the default icon.
+    return icon != null ? icon : Debugger.Db_set_breakpoint;
   }
 
   @Override
@@ -70,12 +63,17 @@ import java.lang.reflect.Method;
 
   @Override
   public JPopupMenu getPopupMenu() {
-    DefaultActionGroup actions = (DefaultActionGroup) myBreakpoint.getHighlighter().getGutterIconRenderer().getPopupMenuActions();
-    if(actions == null) actions = new DefaultActionGroup();
-    for (AnAction action : actions.getChildActionsOrStubs()) {
-      if (action instanceof ContextAction) {
-        actions.remove(action);
-        break;
+    DefaultActionGroup actions = new DefaultActionGroup();
+    ActionGroup actionGroup = ((XLineBreakpointImpl) myBreakpoint.getXBreakpoint()).getHighlighter().getGutterIconRenderer().getPopupMenuActions();
+    if (actionGroup != null) {
+      if (myBreakpoint.getXBreakpoint() instanceof XLineBreakpointImpl) {
+        actions.addAll(actionGroup);
+      }
+      for (AnAction action : actions.getChildActionsOrStubs()) {
+        if (action instanceof ContextAction) {
+          actions.remove(action);
+          break;
+        }
       }
     }
     actions.add(new EditBreakpointAction(), Constraints.FIRST);
@@ -86,7 +84,7 @@ import java.lang.reflect.Method;
     return (EditorComponent) myComponent;
   }
 
-  @Nullable
+  /*@Nullable
   private static BreakpointFactory findFactory(BreakpointWithHighlighter breakpoint) {
     for (BreakpointFactory factory : ApplicationManager.getApplication().getExtensions(BreakpointFactory.EXTENSION_POINT_NAME)) {
       if (factory.getBreakpointCategory().equals(breakpoint.getCategory())) {
@@ -94,7 +92,7 @@ import java.lang.reflect.Method;
       }
     }
     return null;
-  }
+  }*/
 
   private class EditBreakpointAction extends AnAction {
 
@@ -103,102 +101,12 @@ import java.lang.reflect.Method;
     }
 
     @Override
-    public void update(AnActionEvent e) {
-      BreakpointFactory breakpointFactory = findFactory(myBreakpoint);
-      if (breakpointFactory == null) {
-        e.getPresentation().setEnabled(false);
-      } else {
-        e.getPresentation().setEnabled(true);
-      }
-      super.update(e);
-    }
-
-    @Override
     public void actionPerformed(AnActionEvent e) {
-      BreakpointFactory breakpointFactory = findFactory(myBreakpoint);
-      if (breakpointFactory == null) {
-        return;
-      }
-
-      final BreakpointPropertiesPanel propertiesPanel = breakpointFactory.createBreakpointPropertiesPanel(myBreakpoint.getProject(), true);
-      propertiesPanel.initFrom(myBreakpoint, false);
-      final JComponent mainPanel = propertiesPanel.getPanel();
-
       int y = getComponent().getLeftEditorHighlighter().getIconCoordinate(BreakpointIconRenderrer.this);
       int x = getComponent().getLeftEditorHighlighter().getIconRenderersOffset();
       Point whereToShow = new Point(x + getIcon().getIconWidth() / 2, y + getIcon().getIconHeight() / 2);
 
-      final Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-          UIUtil.invokeLaterIfNeeded(new Runnable() {
-            @Override
-            public void run() {
-              try {
-                if (ApplicationInfo.getInstance().getMajorVersion().equals("12")) {
-                  final Class<?> bpMDPopupFactory = Class.forName("com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsMasterDetailPopupFactory");
-                  final Object bpMDPopupFactoryInstance = bpMDPopupFactory.getDeclaredMethod("getInstance", Project.class).invoke(null, myBreakpoint.getProject());
-                  final JBPopup popup = (JBPopup) bpMDPopupFactory.getDeclaredMethod("createPopup", BreakpointWithHighlighter.class).invoke(bpMDPopupFactoryInstance, myBreakpoint);
-                  if (popup != null) {
-                    popup.showCenteredInCurrentWindow(myBreakpoint.getProject());
-                  }
-                } else {
-                  Class<?> bpDFactory = Class.forName("com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory");
-                  final Object bpDFactoryInstance = bpDFactory.getDeclaredMethod("getInstance", Project.class).invoke(null, myBreakpoint.getProject());
-                  bpDFactory.getDeclaredMethod("showDialog", BreakpointWithHighlighter.class).invoke(bpDFactoryInstance, myBreakpoint);
-                }
-              } catch (ClassNotFoundException e1) {
-              } catch (InvocationTargetException e1) {
-              } catch (NoSuchMethodException e1) {
-              } catch (IllegalAccessException e1) {
-              }
-
-            }
-          });
-        }
-      };
-
-      Balloon balloon[] = new Balloon[1];
-
-      try {
-        final Class<?> debuggerUIUtil = Class.forName("com.intellij.xdebugger.impl.ui.DebuggerUIUtil");
-        Method showBreakpointMethod = null;
-        if(ApplicationInfo.getInstance().getMajorVersion().equals("12")) {
-          showBreakpointMethod = debuggerUIUtil.getDeclaredMethod("showBreakpointEditor", Project.class, JComponent.class, String.class, Point.class, JComponent.class, Runnable.class, Object.class);
-        } else {
-          showBreakpointMethod = debuggerUIUtil.getDeclaredMethod("showBreakpointEditor", Project.class, JComponent.class, Point.class, JComponent.class, Runnable.class, Object.class);
-        }
-        if(ApplicationInfo.getInstance().getMajorVersion().equals("12")) {
-          balloon[0] = (Balloon) showBreakpointMethod.invoke(null, myBreakpoint.getProject(), mainPanel, myBreakpoint.getDisplayName(),
-            whereToShow, getComponent().getLeftEditorHighlighter(), runnable, myBreakpoint);
-        }
-        else {
-          balloon[0] = (Balloon) showBreakpointMethod.invoke(null, myBreakpoint.getProject(), mainPanel,
-            whereToShow, getComponent().getLeftEditorHighlighter(), runnable, myBreakpoint);
-        }
-      } catch (ClassNotFoundException e1) {
-      } catch (NoSuchMethodException e1) {
-      } catch (InvocationTargetException e1) {
-      } catch (IllegalAccessException e1) {
-      }
-
-      balloon[0].addListener(new JBPopupAdapter() {
-        @Override
-        public void onClosed(LightweightWindowEvent event) {
-          propertiesPanel.saveTo(myBreakpoint, new Runnable() {
-            @Override
-            public void run() {
-            }
-          });
-        }
-      });
-
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        @Override
-        public void run() {
-          IdeFocusManager.findInstance().requestFocus(mainPanel, true);
-        }
-      });
+      DebuggerUIUtil.showXBreakpointEditorBalloon(myBreakpoint.getProject(), whereToShow, getComponent().getLeftEditorHighlighter(), false, myBreakpoint.getXBreakpoint());
     }
   }
 }

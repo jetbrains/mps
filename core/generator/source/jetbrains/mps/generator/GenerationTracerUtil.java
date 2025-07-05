@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2014 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,20 +15,27 @@
  */
 package jetbrains.mps.generator;
 
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.model.SNodeId;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class GenerationTracerUtil {
-  public static SNodeReference getSNodePointer(SNode node) {
-    return getSNodePointer(node.getModel(), node);
+  public static List<SNodeId> translateOutput(Collection<SNode> output) {
+    if (output.isEmpty()) {
+      return Collections.emptyList();
+    }
+    if (output.size() == 1) {
+      return Collections.singletonList(output.iterator().next().getNodeId());
+    }
+    SNodeId[] rv = new SNodeId[output.size()];
+    int i = 0;
+    for (SNode n : output) {
+      rv[i++] = n.getNodeId();
+    }
+    return Arrays.asList(rv);
   }
-
-  public static SNodeReference getSNodePointer(SModel model, SNode node) {
-    //this is a hack to somehow show input nodes created during generation (e.g. .type.copy)
-    //actually, we should put another TracerNode here. showing the node is not from an input model at all
-    return new jetbrains.mps.smodel.SNodePointer(model == null ? null : model.getReference(), node.getNodeId());
-  }
-
 }

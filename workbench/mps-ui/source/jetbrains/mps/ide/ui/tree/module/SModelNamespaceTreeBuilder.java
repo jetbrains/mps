@@ -17,20 +17,12 @@ package jetbrains.mps.ide.ui.tree.module;
 
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.smodel.SModelStereotype;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.util.NameUtil;
+import org.jetbrains.mps.openapi.model.SModel;
 
 public class SModelNamespaceTreeBuilder extends DefaultNamespaceTreeBuilder<SModelTreeNode> {
   @Override
   protected String getNamespace(SModelTreeNode node) {
-    SModel d = node.getSModelDescriptor();
-    return NameUtil.namespaceFromLongName(SModelStereotype.withoutStereotype(d.getReference().getModelName()));
-  }
-
-  @Override
-  protected void addNode(SModelTreeNode node, NamespaceTextNode namespace) {
-    int count = SModelsSubtree.getCountNamePart(node.getSModelDescriptor(), namespace.getNamespace());
-    node.setCountAdditionalNamePart(count);
-    super.addNode(node, namespace);
+    return node.getModel().getName().getNamespace();
   }
 }

@@ -12,7 +12,6 @@ import jetbrains.mps.ide.findusages.model.SearchResults;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.project.GlobalScope;
 import java.util.ArrayList;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 
@@ -20,25 +19,21 @@ public class ChangeMethodSignature extends BaseRefactoring {
   public ChangeMethodSignature() {
     this.addTransientParameter("myRefactorings");
   }
-
   public IRefactoringTarget getRefactoringTarget() {
     return new ChangeMethodSignature_Target();
   }
-
   public String getUserFriendlyName() {
     return "Change Method Signature";
   }
-
   public void refactor(final RefactoringContext refactoringContext) {
     for (ChangeMethodSignatureRefactoring ref : ListSequence.fromList(((List<ChangeMethodSignatureRefactoring>) refactoringContext.getParameter("myRefactorings")))) {
       ref.doRefactoring();
     }
   }
-
   public SearchResults getAffectedNodes(final RefactoringContext refactoringContext) {
     SearchResults<SNode> allResults = new SearchResults();
     for (ChangeMethodSignatureRefactoring ref : ListSequence.fromList(((List<ChangeMethodSignatureRefactoring>) refactoringContext.getParameter("myRefactorings")))) {
-      SearchResults<SNode> curResults = FindUtils.getSearchResults(new EmptyProgressMonitor(), ref.getDeclaration(), GlobalScope.getInstance(), "jetbrains.mps.baseLanguage.findUsages.ExactMethodUsages_Finder");
+      SearchResults<SNode> curResults = FindUtils.getSearchResults(new EmptyProgressMonitor(), ref.getDeclaration(), refactoringContext.getCurrentScope(), "jetbrains.mps.baseLanguage.findUsages.ExactMethodUsages_Finder");
       List<SNode> usages = new ArrayList<SNode>();
       for (SearchResult<SNode> result : ListSequence.fromList(curResults.getSearchResults())) {
         ListSequence.fromList(usages).addElement(result.getObject());

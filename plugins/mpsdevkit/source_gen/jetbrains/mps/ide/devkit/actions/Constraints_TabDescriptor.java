@@ -7,48 +7,49 @@ import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.Language;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 import jetbrains.mps.smodel.LanguageAspect;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 
 public class Constraints_TabDescriptor extends RelationDescriptor {
   private static final Icon ICON = MPSIcons.Nodes.Constraint;
 
   public Constraints_TabDescriptor() {
   }
-
   public String getTitle() {
     return "Constraints";
   }
-
   public Character getShortcutChar() {
     return 'C';
   }
-
   public int compareTo(RelationDescriptor descriptor) {
     return new Constraints_Order().compare(this, descriptor);
   }
-
   public void startListening() {
   }
-
   public SNode getBaseNode(SNode node) {
     return ConceptEditorOpenHelper.getBaseNode(node);
   }
-
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(node, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    return SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
   }
-
   @Nullable
   public Icon getIcon() {
     return ICON;
   }
-
   public List<SNode> getNodes(SNode node) {
     List<SNode> list = ListSequence.fromList(new ArrayList<SNode>());
     SNode n = getNode(node);
@@ -58,24 +59,26 @@ public class Constraints_TabDescriptor extends RelationDescriptor {
     ListSequence.fromList(list).addElement(n);
     return list;
   }
-
   public boolean isSingle() {
     return true;
   }
-
   public SNode getNode(SNode node) {
-    List<SNode> nodes = BehaviorReflection.invokeNonVirtual((Class<List<SNode>>) ((Class) Object.class), node, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration", "call_findConceptAspectCollection_1567570417158062208", new Object[]{LanguageAspect.CONSTRAINTS});
-    return (ListSequence.fromList(nodes).isEmpty() ?
-      null :
-      ListSequence.fromList(nodes).first()
-    );
-  }
+    SModule module = SNodeOperations.getModel(node).getModule();
+    if (!((module instanceof Language))) {
+      return null;
+    }
 
-  public List<SNode> getConcepts(final SNode node) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.constraints.structure.ConceptConstraints"));
-  }
+    SModel aspectModel = SModuleOperations.getAspect(module, "constraints");
+    if (aspectModel == null) {
+      return null;
+    }
 
-  public SNode createNode(final SNode node, final SNode concept) {
-    return ConceptEditorHelper.createNewConceptAspectInstance(LanguageAspect.CONSTRAINTS, node, SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.constraints.structure.ConceptConstraints"));
+    return Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke(node, SMethodTrimmedId.create("findConceptAspects", MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"), "4G9PD8$NvPM"), aspectModel))).first();
+  }
+  public Iterable<SConcept> getAspectConcepts(final SNode node) {
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints"));
+  }
+  public SNode createAspect(final SNode node, final SConcept concept) {
+    return ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.CONSTRAINTS, node, SNodeFactoryOperations.createNewNode(SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints")), null));
   }
 }

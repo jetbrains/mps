@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,44 +15,44 @@
  */
 package jetbrains.mps.workbench.goTo.navigation;
 
+import com.intellij.navigation.ItemPresentation;
 import jetbrains.mps.ide.icons.IconManager;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import jetbrains.mps.workbench.choose.base.BasePresentation;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant.NavigationTarget;
 
 import javax.swing.Icon;
 
-public class SNodeDescriptorPresentation extends BasePresentation {
-  private NavigationTarget myNodeResult;
+/*package*/ class SNodeDescriptorPresentation implements ItemPresentation {
+  private final NavigationTarget myNodeResult;
 
   public SNodeDescriptorPresentation(NavigationTarget nodeResult) {
     myNodeResult = nodeResult;
   }
 
-  public String getModelName() {
+  /*package*/ String getModelName() {
     SModelReference modelReference = myNodeResult.getNodeReference().getModelReference();
     return modelReference.getModuleReference() == null
         ? modelReference.getModelName()
-        : modelReference.getModuleReference().getModuleName() + "/" + myNodeResult.getNodeReference().getModelReference().getModelName();
+        : modelReference.getModuleReference().getModuleName() + "/" + modelReference.getModelName();
   }
 
+  @Nullable
   @Override
-  @NotNull
-  public String doGetPresentableText() {
+  public String getPresentableText() {
     return myNodeResult.getPresentation();
   }
 
+  @Nullable
   @Override
-  public String doGetLocationString() {
+  public String getLocationString() {
     return "(" + getModelName() + ")";
   }
 
+  @Nullable
   @Override
-  public Icon doGetIcon() {
-    String conceptFqName = myNodeResult.getConcept().getQualifiedName();
-
+  public Icon getIcon(boolean b) {
     //we don't use alternative icon here since it's very expensive and slows down Ctrl+N popup considerably
-    return IconManager.getIconForConceptFQName(conceptFqName);
+    return IconManager.getIconFor(myNodeResult.getConcept());
   }
 }

@@ -9,12 +9,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 public class Node_GetAllSiblingsOperation_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createComponent_oxb33j_a(editorContext, node);
-  }
-
-  private EditorCell createComponent_oxb33j_a(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = editorContext.getCellFactory().createEditorComponentCell(node, "jetbrains.mps.lang.smodel.editor.ReplaceableAliasAndParms_Comp");
-    editorCell.setBig(true);
-    return editorCell;
+    return new Node_GetAllSiblingsOperation_EditorBuilder_a(editorContext, node).createCell();
   }
 }

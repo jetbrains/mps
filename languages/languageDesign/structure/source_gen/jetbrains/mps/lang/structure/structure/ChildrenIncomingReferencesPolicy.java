@@ -4,23 +4,28 @@ package jetbrains.mps.lang.structure.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum ChildrenIncomingReferencesPolicy {
   allowed("allowed", null),
   local("enforce `same root only'", "local"),
   forbidden("enforce `forbidden'", "forbidden");
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final String myValue;
+  private ChildrenIncomingReferencesPolicy(String name, String value) {
+    myName = name;
+    myValue = value;
+  }
+  public String getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return this.myValue;
+    return myValue;
   }
-
   public static List<ChildrenIncomingReferencesPolicy> getConstants() {
     List<ChildrenIncomingReferencesPolicy> list = ListSequence.fromList(new LinkedList<ChildrenIncomingReferencesPolicy>());
     ListSequence.fromList(list).addElement(ChildrenIncomingReferencesPolicy.allowed);
@@ -28,11 +33,9 @@ public enum ChildrenIncomingReferencesPolicy {
     ListSequence.fromList(list).addElement(ChildrenIncomingReferencesPolicy.forbidden);
     return list;
   }
-
   public static ChildrenIncomingReferencesPolicy getDefault() {
     return ChildrenIncomingReferencesPolicy.allowed;
   }
-
   public static ChildrenIncomingReferencesPolicy parseValue(String value) {
     if (value == null) {
       return ChildrenIncomingReferencesPolicy.getDefault();
@@ -47,16 +50,5 @@ public enum ChildrenIncomingReferencesPolicy {
       return ChildrenIncomingReferencesPolicy.forbidden;
     }
     return ChildrenIncomingReferencesPolicy.getDefault();
-  }
-
-  private String myValue;
-
-  ChildrenIncomingReferencesPolicy(String name, String value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public String getValue() {
-    return this.myValue;
   }
 }

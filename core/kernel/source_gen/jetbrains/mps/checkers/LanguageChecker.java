@@ -7,35 +7,23 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
-import jetbrains.mps.util.Computable;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.util.Cancellable;
 
 public class LanguageChecker implements INodeChecker {
   private Set<AbstractConstraintsChecker> myRules = SetSequence.fromSet(new HashSet<AbstractConstraintsChecker>());
-
   public LanguageChecker() {
     SetSequence.fromSet(myRules).addElement(new ConstraintsChecker());
     SetSequence.fromSet(myRules).addElement(new RefScopeChecker());
-    SetSequence.fromSet(myRules).addElement(new CardinalitiesChecker());
     SetSequence.fromSet(myRules).addElement(new TargetConceptChecker());
   }
-
   @Override
-  public Set<IErrorReporter> getErrors(final SNode rootNode, final IOperationContext context) {
-    return TypeContextManager.getInstance().runResolveAction(new Computable<Set<IErrorReporter>>() {
-      public Set<IErrorReporter> compute() {
-        LanguageErrorsComponent errorsComponent = new LanguageErrorsComponent(rootNode);
-        errorsComponent.check(rootNode, myRules, context);
-        Set<IErrorReporter> result = errorsComponent.getErrors();
-        errorsComponent.dispose();
-        return result;
-      }
-    });
-  }
-
-  @Override
-  public String getCategory() {
-    return "constraints and scopes";
+  public Set<IErrorReporter> getErrors(SNode rootNode, SRepository repoitory) {
+    LanguageErrorsComponent errorsComponent = new LanguageErrorsComponent(SNodeOperations.getModel(rootNode));
+    errorsComponent.check(rootNode, myRules, repoitory, Cancellable.NEVER);
+    Set<IErrorReporter> result = errorsComponent.getErrors();
+    errorsComponent.dispose();
+    return result;
   }
 }

@@ -1,60 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:dfdf3542-dbcf-43df-870a-3c3504b3c840(jetbrains.mps.baseLanguage.collections.custom)" doNotGenerate="true">
-  <persistence version="8" />
-  <language namespace="83888646-71ce-4f1c-9c53-c54016f6ad4f(jetbrains.mps.baseLanguage.collections)" />
-  <language namespace="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)" />
-  <import index="k7g3" modelUID="f:java_stub#6354ebe7-c22a-4a0f-ac54-50b52ab9b065#java.util(JDK/java.util@java_stub)" version="-1" />
-  <import index="msyo" modelUID="f:java_stub#6ed54515-acc8-4d1e-a16c-9fd6cfe951ea#jetbrains.mps.util(MPS.Core/jetbrains.mps.util@java_stub)" version="-1" />
-  <import index="tpee" modelUID="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" version="4" implicit="yes" />
-  <import index="tp2q" modelUID="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)" version="7" implicit="yes" />
-  <import index="tpck" modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" implicit="yes" />
-  <root type="tp2q.CustomContainers" typeId="tp2q.6099516049394485324" id="4498918741262375223" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="WeakCollections" />
-    <node role="containerDeclaration" roleId="tp2q.6099516049394485326" type="tp2q.CustomContainerDeclaration" typeId="tp2q.6099516049394485216" id="4498918741262375224" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="weakHashMap" />
-      <node role="visibility" roleId="tpee.1178549979242" type="tpee.PublicVisibility" typeId="tpee.1146644602865" id="4498918741262375225" nodeInfo="nn" />
-      <node role="containerType" roleId="tp2q.6099516049394485311" type="tp2q.MapType" typeId="tp2q.1197683403723" id="4498918741262375228" nodeInfo="in">
-        <node role="valueType" roleId="tp2q.1197683475734" type="tpee.TypeVariableReference" typeId="tpee.1109283449304" id="4498918741262375234" nodeInfo="in">
-          <link role="typeVariableDeclaration" roleId="tpee.1109283546497" targetNodeId="4498918741262375232" resolveInfo="V" />
+<model ref="r:dfdf3542-dbcf-43df-870a-3c3504b3c840(jetbrains.mps.baseLanguage.collections.custom)" doNotGenerate="true">
+  <persistence version="9" />
+  <languages>
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="0" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="5" />
+  </languages>
+  <imports>
+    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
+    <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
+  </imports>
+  <registry>
+    <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ" />
+      <concept id="1109279851642" name="jetbrains.mps.baseLanguage.structure.GenericDeclaration" flags="ng" index="16eOlS">
+        <child id="1109279881614" name="typeVariableDeclaration" index="16eVyc" />
+      </concept>
+      <concept id="1109283449304" name="jetbrains.mps.baseLanguage.structure.TypeVariableReference" flags="in" index="16syzq">
+        <reference id="1109283546497" name="typeVariableDeclaration" index="16sUi3" />
+      </concept>
+      <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
+        <reference id="1107535924139" name="classifier" index="3uigEE" />
+        <child id="1109201940907" name="parameter" index="11_B2D" />
+      </concept>
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+        <child id="1178549979242" name="visibility" index="1B3o_S" />
+      </concept>
+      <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
+      <concept id="1226511727824" name="jetbrains.mps.baseLanguage.collections.structure.SetType" flags="in" index="2hMVRd">
+        <child id="1226511765987" name="elementType" index="2hN53Y" />
+      </concept>
+      <concept id="6099516049394485216" name="jetbrains.mps.baseLanguage.collections.structure.CustomContainerDeclaration" flags="ng" index="2llx9B">
+        <child id="6099516049394485311" name="containerType" index="2llxQS" />
+        <child id="6099516049394485312" name="runtimeType" index="2llxR7" />
+      </concept>
+      <concept id="6099516049394485324" name="jetbrains.mps.baseLanguage.collections.structure.CustomContainers" flags="ng" index="2llxRb">
+        <child id="6099516049394485326" name="containerDeclaration" index="2llxR9" />
+      </concept>
+      <concept id="1197683403723" name="jetbrains.mps.baseLanguage.collections.structure.MapType" flags="in" index="3rvAFt">
+        <child id="1197683466920" name="keyType" index="3rvQeY" />
+        <child id="1197683475734" name="valueType" index="3rvSg0" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="2llxRb" id="3TJnG96iD$R">
+    <property role="TrG5h" value="WeakCollections" />
+    <node concept="2llx9B" id="3TJnG96iD$S" role="2llxR9">
+      <property role="TrG5h" value="weakHashMap" />
+      <node concept="3Tm1VV" id="3TJnG96iD$T" role="1B3o_S" />
+      <node concept="3rvAFt" id="3TJnG96iD$W" role="2llxQS">
+        <node concept="16syzq" id="3TJnG96iD_2" role="3rvSg0">
+          <ref role="16sUi3" node="3TJnG96iD_0" resolve="V" />
         </node>
-        <node role="keyType" roleId="tp2q.1197683466920" type="tpee.TypeVariableReference" typeId="tpee.1109283449304" id="4498918741262375233" nodeInfo="in">
-          <link role="typeVariableDeclaration" roleId="tpee.1109283546497" targetNodeId="4498918741262375231" resolveInfo="K" />
+        <node concept="16syzq" id="3TJnG96iD_1" role="3rvQeY">
+          <ref role="16sUi3" node="3TJnG96iD$Z" resolve="K" />
         </node>
       </node>
-      <node role="runtimeType" roleId="tp2q.6099516049394485312" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="4498918741262375235" nodeInfo="in">
-        <link role="classifier" roleId="tpee.1107535924139" targetNodeId="k7g3.~WeakHashMap" resolveInfo="WeakHashMap" />
-        <node role="parameter" roleId="tpee.1109201940907" type="tpee.TypeVariableReference" typeId="tpee.1109283449304" id="4498918741262381420" nodeInfo="in">
-          <link role="typeVariableDeclaration" roleId="tpee.1109283546497" targetNodeId="4498918741262375231" resolveInfo="K" />
+      <node concept="3uibUv" id="3TJnG96iD_3" role="2llxR7">
+        <ref role="3uigEE" to="33ny:~WeakHashMap" resolve="WeakHashMap" />
+        <node concept="16syzq" id="3TJnG96iF5G" role="11_B2D">
+          <ref role="16sUi3" node="3TJnG96iD$Z" resolve="K" />
         </node>
-        <node role="parameter" roleId="tpee.1109201940907" type="tpee.TypeVariableReference" typeId="tpee.1109283449304" id="4498918741262381422" nodeInfo="in">
-          <link role="typeVariableDeclaration" roleId="tpee.1109283546497" targetNodeId="4498918741262375232" resolveInfo="V" />
+        <node concept="16syzq" id="3TJnG96iF5I" role="11_B2D">
+          <ref role="16sUi3" node="3TJnG96iD_0" resolve="V" />
         </node>
       </node>
-      <node role="typeVariableDeclaration" roleId="tpee.1109279881614" type="tpee.TypeVariableDeclaration" typeId="tpee.1109279763828" id="4498918741262375231" nodeInfo="ng">
-        <property name="name" nameId="tpck.1169194664001" value="K" />
+      <node concept="16euLQ" id="3TJnG96iD$Z" role="16eVyc">
+        <property role="TrG5h" value="K" />
       </node>
-      <node role="typeVariableDeclaration" roleId="tpee.1109279881614" type="tpee.TypeVariableDeclaration" typeId="tpee.1109279763828" id="4498918741262375232" nodeInfo="ng">
-        <property name="name" nameId="tpck.1169194664001" value="V" />
+      <node concept="16euLQ" id="3TJnG96iD_0" role="16eVyc">
+        <property role="TrG5h" value="V" />
       </node>
     </node>
-    <node role="containerDeclaration" roleId="tp2q.6099516049394485326" type="tp2q.CustomContainerDeclaration" typeId="tp2q.6099516049394485216" id="4498918741262480972" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="weakHashSet" />
-      <node role="visibility" roleId="tpee.1178549979242" type="tpee.PublicVisibility" typeId="tpee.1146644602865" id="4498918741262480973" nodeInfo="nn" />
-      <node role="containerType" roleId="tp2q.6099516049394485311" type="tp2q.SetType" typeId="tp2q.1226511727824" id="4498918741262480976" nodeInfo="in">
-        <node role="elementType" roleId="tp2q.1226511765987" type="tpee.TypeVariableReference" typeId="tpee.1109283449304" id="4498918741262480979" nodeInfo="in">
-          <link role="typeVariableDeclaration" roleId="tpee.1109283546497" targetNodeId="4498918741262480978" resolveInfo="E" />
+    <node concept="2llx9B" id="3TJnG96j3pc" role="2llxR9">
+      <property role="TrG5h" value="weakHashSet" />
+      <node concept="3Tm1VV" id="3TJnG96j3pd" role="1B3o_S" />
+      <node concept="2hMVRd" id="3TJnG96j3pg" role="2llxQS">
+        <node concept="16syzq" id="3TJnG96j3pj" role="2hN53Y">
+          <ref role="16sUi3" node="3TJnG96j3pi" resolve="E" />
         </node>
       </node>
-      <node role="runtimeType" roleId="tp2q.6099516049394485312" type="tpee.ClassifierType" typeId="tpee.1107535904670" id="4498918741262482972" nodeInfo="in">
-        <link role="classifier" roleId="tpee.1107535924139" targetNodeId="msyo.~WeakSet" resolveInfo="WeakSet" />
-        <node role="parameter" roleId="tpee.1109201940907" type="tpee.TypeVariableReference" typeId="tpee.1109283449304" id="4498918741262482974" nodeInfo="in">
-          <link role="typeVariableDeclaration" roleId="tpee.1109283546497" targetNodeId="4498918741262480978" resolveInfo="E" />
+      <node concept="3uibUv" id="3TJnG96j3Ss" role="2llxR7">
+        <ref role="3uigEE" to="18ew:~WeakSet" resolve="WeakSet" />
+        <node concept="16syzq" id="3TJnG96j3Su" role="11_B2D">
+          <ref role="16sUi3" node="3TJnG96j3pi" resolve="E" />
         </node>
       </node>
-      <node role="typeVariableDeclaration" roleId="tpee.1109279881614" type="tpee.TypeVariableDeclaration" typeId="tpee.1109279763828" id="4498918741262480978" nodeInfo="ng">
-        <property name="name" nameId="tpck.1169194664001" value="E" />
+      <node concept="16euLQ" id="3TJnG96j3pi" role="16eVyc">
+        <property role="TrG5h" value="E" />
       </node>
     </node>
-  </root>
+  </node>
 </model>
 

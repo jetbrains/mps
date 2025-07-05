@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,24 +15,26 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.MPSCore;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.module.SRepositoryBase;
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.logging.Logger;
+import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.ProjectManager;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.containers.ManyToManyMap;
 import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.module.RepositoryAccess;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.module.SearchScope;
+import org.jetbrains.mps.openapi.repository.CommandListener;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -42,83 +44,127 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class MPSModuleRepository extends SRepositoryBase implements CoreComponent {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(MPSModuleRepository.class));
-  private final MPSModuleRepository.GlobalModelAccess myGlobalModelAccess;
-  private final ModelAccessListener myCommandListener = new ModelAccessListener() {
-    @Override
-    public void commandStarted() {
-      fireCommandStarted();
-    }
+public class MPSModuleRepository extends SRepositoryBase implements CoreComponent, SRepositoryExt {
+  private static final Logger LOG = LogManager.getLogger(MPSModuleRepository.class);
+  private static MPSModuleRepository ourInstance;
 
-    @Override
-    public void commandFinished() {
-      fireCommandFinished();
-    }
-  };
+  private final GlobalModelAccess myGlobalModelAccess;
+  private final CommandListener myCommandListener;
 
   private Set<SModule> myModules = new LinkedHashSet<SModule>();
   private Map<String, SModule> myFqNameToModulesMap = new ConcurrentHashMap<String, SModule>();
   private Map<SModuleId, SModule> myIdToModuleMap = new ConcurrentHashMap<SModuleId, SModule>();
   private ManyToManyMap<SModule, MPSModuleOwner> myModuleToOwners = new ManyToManyMap<SModule, MPSModuleOwner>();
 
+  /**
+   * Use {@link org.jetbrains.mps.openapi.module.SRepository} from the project whenever it is possible
+   * <p>
+   * Currently the context object is an MPS project class
+   *
+   * @see jetbrains.mps.project.Project
+   * <p>
+   * It can provide a repository and a model access
+   * {@link jetbrains.mps.project.Project#getModelAccess()}
+   * {@link jetbrains.mps.project.Project#getRepository()}}
+   * <p>
+   * So in each case you must have an MPS project within your scope and request SRepository explicitily from the project.
+   * <p/>
+   * To access register/unregister methods for modules, consider using {@link SRepositoryExt}
+   * @since 3.2
+   * @deprecated
+   */
+  @Deprecated
+  @ToRemove(version = 3.4)
   public static MPSModuleRepository getInstance() {
-    return MPSCore.getInstance().getModuleRepository();
+    return ourInstance;
   }
 
   public MPSModuleRepository() {
     myGlobalModelAccess = new GlobalModelAccess();
+    myCommandListener = new CommandListener() {
+      @Override
+      public void commandStarted() {
+        fireCommandStarted();
+      }
+
+      @Override
+      public void commandFinished() {
+        fireCommandFinished();
+      }
+    };
   }
 
   @Override
   public void init() {
     super.init();
-    ModelAccess.instance().addCommandListener(myCommandListener);
+    if (ourInstance != null) {
+      throw new IllegalStateException("already initialized");
+    }
+    ourInstance = this;
+    myGlobalModelAccess.addCommandListener(myCommandListener);
   }
 
   @Override
   public void dispose() {
-    ModelAccess.instance().removeCommandListener(myCommandListener);
+    myGlobalModelAccess.removeCommandListener(myCommandListener);
+    ourInstance = null;
     super.dispose();
   }
 
   //-----------------register/unregister-merge-----------
 
-  public <T extends SModule> T registerModule(T module, MPSModuleOwner owner) {
-    ModelAccess.assertLegalWrite();
+  @Override
+  public <T extends SModule> T registerModule(@NotNull T moduleToRegister, @NotNull MPSModuleOwner owner) {
+    getModelAccess().checkWriteAccess();
 
-    SModuleId moduleId = module.getModuleReference().getModuleId();
-    String moduleFqName = module.getModuleName();
+    SModuleId moduleId = moduleToRegister.getModuleReference().getModuleId();
+    String moduleFqName = moduleToRegister.getModuleName();
 
-    assert moduleId != null : "module with null id is added to repository: fqName=" + moduleFqName + "; file=" + ((AbstractModule) module).getDescriptorFile();
+    AbstractModule aModuleToRegister = (AbstractModule) moduleToRegister;
+    if (moduleId == null) {
+      throw new NullModuleIdException(aModuleToRegister);
+    }
 
-    SModule existing = getModuleById(moduleId);
+    SModule existing = getModule(moduleId);
     if (existing != null) {
+      //paranoid check relates to MPS-24219
+      if (existing.getClass() != moduleToRegister.getClass()) {
+        throw new RuntimeException("Module to register has class " + moduleToRegister.getClass().getSimpleName() +
+            ", while there's already another module with the same id registered with class " + existing.getClass().getSimpleName());
+      }
       myModuleToOwners.addLink(existing, owner);
       return (T) existing;
     }
 
     if (moduleFqName != null) {
       if (myFqNameToModulesMap.containsKey(moduleFqName)) {
-        SModule m = myFqNameToModulesMap.get(moduleFqName);
-        LOG.warning(
-            "duplicate module name " + moduleFqName + " : module with the same UID exists at " + ((AbstractModule) m).getDescriptorFile() + " and " + ((AbstractModule) module).getDescriptorFile(),
-            m);
+        AbstractModule existingModule = (AbstractModule) myFqNameToModulesMap.get(moduleFqName);
+        LOG.error("", new ModuleWithSuchNameAlreadyExistsInTheRepositoryException(aModuleToRegister, existingModule));
+        return (T) existingModule;
       }
-
-      myFqNameToModulesMap.put(moduleFqName, module);
+      myFqNameToModulesMap.put(moduleFqName, moduleToRegister);
     }
 
-    ((SModuleBase) module).attach(this);
+    myIdToModuleMap.put(moduleToRegister.getModuleId(), moduleToRegister);
+    myModules.add(moduleToRegister);
 
-    myIdToModuleMap.put(module.getModuleReference().getModuleId(), module);
-    myModules.add(module);
-
-    ((AbstractModule) module).attach();
-    myModuleToOwners.addLink(module, owner);
+    checkModelsAreNotChanged(aModuleToRegister);
+    aModuleToRegister.attach(this);
+    myModuleToOwners.addLink(moduleToRegister, owner);
     invalidateCaches();
-    fireModuleAdded(module);
-    return module;
+    fireModuleAdded(moduleToRegister);
+    return moduleToRegister;
+  }
+
+  // Adding not saved model can cause data loss, see MPS-18743.
+  private void checkModelsAreNotChanged(AbstractModule aModuleToRegister) {
+    for (org.jetbrains.mps.openapi.model.SModel model : aModuleToRegister.getModels()) {
+      if (model instanceof EditableSModel && ((EditableSModel) model).isChanged()) {
+        LOG.error("Added a module with unsaved model to a repository. " +
+            "Modify models that are not added to a module or modify them when they are in repo already", new Throwable());
+        break;
+      }
+    }
   }
 
   public void unregisterModules(Collection<SModule> modules, MPSModuleOwner owner) {
@@ -131,6 +177,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     if (modulesToDispose.isEmpty()) {
       return;
     }
+
     invalidateCaches();
     for (SModule module : modulesToDispose) {
       fireModuleRemoved(module.getModuleReference());
@@ -138,8 +185,9 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     }
   }
 
-  public void unregisterModule(SModule module, MPSModuleOwner owner) {
-    ModelAccess.assertLegalWrite();
+  @Override
+  public void unregisterModule(@NotNull SModule module, @NotNull MPSModuleOwner owner) {
+    getModelAccess().checkWriteAccess();
 
     boolean moduleRemoved = doUnregisterModule(module, owner);
     invalidateCaches();
@@ -161,9 +209,10 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
    * @return true if module was removed from ModuleRepository
    */
   private boolean doUnregisterModule(SModule module, MPSModuleOwner owner) {
-    ModelAccess.assertLegalWrite();
-    assert myModules.contains(
-        module) : "trying to unregister non-registered module: fqName=" + module.getModuleName() + "; file=" + ((AbstractModule) module).getDescriptorFile();
+    getModelAccess().checkWriteAccess();
+    if  (!myModules.contains(module)) {
+      throw new IllegalArgumentException("Trying to unregister non-registered module: " + module);
+    }
 
     myModuleToOwners.removeLink(module, owner);
     boolean remove = myModuleToOwners.getByFirst(module).isEmpty();
@@ -171,7 +220,9 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
       fireBeforeModuleRemoved(module);
       myModules.remove(module);
       myIdToModuleMap.remove(module.getModuleReference().getModuleId());
-      myFqNameToModulesMap.remove(module.getModuleName());
+      if (module.getModuleName() != null) {
+        myFqNameToModulesMap.remove(module.getModuleName());
+      }
       return true;
     }
     return false;
@@ -179,15 +230,15 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
 
   //---------------get by-----------------------------
 
+  @NotNull
   @Override
   public org.jetbrains.mps.openapi.module.ModelAccess getModelAccess() {
     return myGlobalModelAccess;
   }
 
-  @Deprecated  //3.0, use getModules
-  public Set<SModule> getAllModules() {
-    ModelAccess.assertLegalRead();
-    return Collections.unmodifiableSet(myModules);
+  @Override
+  public RepositoryAccess getRepositoryAccess() {
+    return null;
   }
 
   public Set<SModule> getModules(MPSModuleOwner moduleOwner) {
@@ -197,89 +248,58 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   }
 
   public Set<MPSModuleOwner> getOwners(SModule module) {
-    assertCanRead();
+    getModelAccess().checkReadAccess();
 
     return Collections.unmodifiableSet(myModuleToOwners.getByFirst(module));
   }
 
-  public SModule getModuleByFqName(String fqName) {
+  /**
+   * @deprecated the repository must be able to contain two modules with the same name.
+   * Thus one cannot rely on the module - name one-to-one correspondence.
+   */
+  @Deprecated
+  @ToRemove(version = 3.4)
+  public SModule getModuleByFqName(@NotNull String fqName) {
     //todo assertCanRead();
 
     return myFqNameToModulesMap.get(fqName);
   }
 
   @Override
-  public SRepository getParent() {
-    // root repository
-    return null;
-  }
+  public SModule getModule(@NotNull SModuleId id) {
+    getModelAccess().checkReadAccess();
 
-  @Override
-  public SModule getModule(SModuleId id) {
-    assertCanRead();
-
-    if (id == null) return null;
+    if (id == null) {
+      return null;
+    }
     return myIdToModuleMap.get(id);
   }
 
+  @NotNull
   @Override
   public Iterable<SModule> getModules() {
-    return (Set) getAllModules();
-  }
-
-  @Override
-  public RepositoryAccess getRepositoryAccess() {
-    return new RepositoryAccess() {
-      @Override
-      public void applyChanges(Runnable r) {
-        //todo implement
-      }
-
-      @Override
-      public boolean isUpdating() {
-        //todo implement
-        return false;
-      }
-    };
-  }
-
-  @Deprecated //in 3.0
-  //use getModule()
-  public SModule getModuleById(SModuleId moduleId) {
-    //todo assertCanRead();
-
-    if (moduleId == null) return null;
-    return myIdToModuleMap.get(moduleId);
+    getModelAccess().checkReadAccess();
+    return Collections.unmodifiableSet(myModules);
   }
 
   //--------------------------------------------------
 
+  // TODO: !!
+  // FIXME: we should invalidate caches only in specific modules
+  // The problem is that the scope collects transitive dependencies as well
   public void invalidateCaches() {
-    ModelAccess.instance().runReadAction(new Runnable() {
+    getModelAccess().runReadAction(new Runnable() {
       @Override
       public void run() {
-        for (Project p : ProjectManager.getInstance().getOpenProjects()) {
+        for (Project p : ProjectManager.getInstance().getOpenedProjects()) {
           p.getScope().invalidateCaches();
         }
         for (SModule m : getModules()) {
-          ((AbstractModule) m).invalidateCaches();
-        }
-        SModelUtil.clearCaches();
-
-        // FIXME temporary workaround: modelReplaced event is delivered in EDT, so Language caches
-        // are not cleared properly
-        for (SModule m : getModules()) {
-          if (m instanceof Language) {
-            ((Language) m).invalidateConceptDeclarationsCache();
-          }
+          SearchScope moduleScope = ((AbstractModule) m).getScope();
+          ((AbstractModule.ModuleScope) moduleScope).invalidateCaches();
         }
       }
     });
-  }
-
-  private void assertCanRead() {
-    if (ModelAccess.instance().canRead()) return;
-    throw new IllegalStateException("Can't read");
   }
 
   //------------------listeners--------------------
@@ -287,21 +307,26 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   @Override
   public void saveAll() {
     getModelAccess().checkWriteAccess();
-
-    for (SModule module : getModules()) {
-      if (module instanceof EditableSModule) {
-        EditableSModule editableModule = (EditableSModule) module;
-        if (editableModule.isChanged()) {
-          editableModule.save();
+    long beginTime = System.nanoTime();
+    LOG.debug("Saving repository");
+    try {
+      for (SModule module : getModules()) {
+        if (module instanceof EditableSModule) {
+          EditableSModule editableModule = (EditableSModule) module;
+          if (editableModule.isChanged()) {
+            editableModule.save();
+          }
         }
       }
-    }
 
-    SModelRepository.getInstance().saveAll();
+      SModelRepository.getInstance().saveAll();
+    } finally {
+      LOG.info(String.format("Saving of the repository took %.3f s", (System.nanoTime() - beginTime) / 1e9));
+    }
   }
 
   public void moduleFqNameChanged(SModule module, String oldName) {
-    ModelAccess.assertLegalWrite();
+    getModelAccess().checkWriteAccess();
 
     if (myFqNameToModulesMap.get(oldName) != module || myFqNameToModulesMap.containsKey(module.getModuleName())) {
       throw new IllegalStateException();
@@ -317,65 +342,24 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     return ModuleRepositoryFacade.getInstance().getModule(ref);
   }
 
-  private class GlobalModelAccess implements org.jetbrains.mps.openapi.module.ModelAccess {
-    @Override
-    public boolean canRead() {
-      return jetbrains.mps.smodel.ModelAccess.instance().canRead();
+  private static class ModuleWithSuchNameAlreadyExistsInTheRepositoryException extends RuntimeException {
+    public ModuleWithSuchNameAlreadyExistsInTheRepositoryException(AbstractModule newModule, AbstractModule existingModule) {
+      super(getMessage(newModule, existingModule), new Throwable());
     }
 
-    @Override
-    public void checkReadAccess() {
-      jetbrains.mps.smodel.ModelAccess.instance().checkReadAccess();
+    private static String getMessage(AbstractModule newModule, AbstractModule existingModule) {
+      String moduleName = newModule.getModuleName();
+      assert moduleName.equals(existingModule.getModuleName());
+      return String.format("Trying to register a module with the name %s at %s :" +
+          " module with the same name already exists at %s, ", moduleName, newModule.getDescriptorFile(), existingModule.getDescriptorFile());
     }
+  }
 
-    @Override
-    public boolean canWrite() {
-      return jetbrains.mps.smodel.ModelAccess.instance().canWrite();
-    }
-
-    @Override
-    public void checkWriteAccess() {
-      jetbrains.mps.smodel.ModelAccess.instance().checkWriteAccess();
-    }
-
-    @Override
-    public void runReadAction(Runnable r) {
-      jetbrains.mps.smodel.ModelAccess.instance().runReadAction(r);
-    }
-
-    @Override
-    public void runReadInEDT(Runnable r) {
-      jetbrains.mps.smodel.ModelAccess.instance().runReadInEDT(r);
-    }
-
-    @Override
-    public void runWriteAction(Runnable r) {
-      jetbrains.mps.smodel.ModelAccess.instance().runWriteAction(r);
-    }
-
-    @Override
-    public void runWriteInEDT(Runnable r) {
-      jetbrains.mps.smodel.ModelAccess.instance().runWriteInEDT(r);
-    }
-
-    @Override
-    public void executeCommand(Runnable r) {
-      throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public void executeCommandInEDT(Runnable r) {
-      throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public void executeUndoTransparentCommand(Runnable r) {
-      throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public boolean isCommandAction() {
-      return jetbrains.mps.smodel.ModelAccess.instance().isInsideCommand();
+  private static class NullModuleIdException extends RuntimeException {
+    public NullModuleIdException(AbstractModule aModuleToRegister) {
+      super("Trying to add module with null id to the repository:\n" +
+          "moduleName: " + aModuleToRegister.getModuleName() + ";\n" +
+          "file: '" + aModuleToRegister.getDescriptorFile() + "'");
     }
   }
 }

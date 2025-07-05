@@ -7,8 +7,11 @@ import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.SubtypingRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.InequationReplacementRule_Runtime;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.typesystem.runtime.OverloadedOperationsTypesProvider;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typesystem.inference.SubtypingManager;
 import jetbrains.mps.typesystem.inference.TypeChecker;
@@ -224,359 +227,415 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       InequationReplacementRule_Runtime eliminationRule = new vector_vector_replacement_rule_InequationReplacementRule();
       this.myInequationReplacementRules.add(eliminationRule);
     }
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_f("jetbrains.mps.baseLanguage.structure.ShiftLeftExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_h("jetbrains.mps.baseLanguage.structure.BitwiseAndExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_i("jetbrains.mps.baseLanguage.structure.BitwiseOrExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_j("jetbrains.mps.baseLanguage.structure.BitwiseXorExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_g("jetbrains.mps.baseLanguage.structure.ShiftRightExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_e("jetbrains.mps.baseLanguage.structure.RemExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_k("jetbrains.mps.baseLanguage.structure.LessThanExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_l("jetbrains.mps.baseLanguage.structure.GreaterThanExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_m("jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_n("jetbrains.mps.baseLanguage.structure.GreaterThanOrEqualsExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_a("jetbrains.mps.baseLanguage.structure.PlusExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_b("jetbrains.mps.baseLanguage.structure.MinusExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_c("jetbrains.mps.baseLanguage.structure.MulExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_d("jetbrains.mps.baseLanguage.structure.DivExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_o("jetbrains.mps.baseLanguage.structure.PlusExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_p("jetbrains.mps.baseLanguage.structure.MinusExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_q("jetbrains.mps.baseLanguage.structure.MulExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_r("jetbrains.mps.baseLanguage.structure.MulExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_s("jetbrains.mps.baseLanguage.structure.DivExpression"));
-    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_t("jetbrains.mps.baseLanguage.structure.MulExpression"));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_f(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d6cde9fb9L, "jetbrains.mps.baseLanguage.structure.ShiftLeftExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_h(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d19eede01L, "jetbrains.mps.baseLanguage.structure.BitwiseAndExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_i(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d19ef4652L, "jetbrains.mps.baseLanguage.structure.BitwiseOrExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_j(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d19ef69abL, "jetbrains.mps.baseLanguage.structure.BitwiseXorExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_g(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d6ce051dfL, "jetbrains.mps.baseLanguage.structure.ShiftRightExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_e(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d509af4L, "jetbrains.mps.baseLanguage.structure.RemExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_k(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced3b82aL, "jetbrains.mps.baseLanguage.structure.LessThanExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_l(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced38fcfL, "jetbrains.mps.baseLanguage.structure.GreaterThanExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_m(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d53a915L, "jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_n(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d0fac2cL, "jetbrains.mps.baseLanguage.structure.GreaterThanOrEqualsExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_a(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL, "jetbrains.mps.baseLanguage.structure.PlusExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_b(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f5L, "jetbrains.mps.baseLanguage.structure.MinusExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_c(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfe476b758fL, "jetbrains.mps.baseLanguage.structure.MulExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_d(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xff2bbc13daL, "jetbrains.mps.baseLanguage.structure.DivExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_o(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL, "jetbrains.mps.baseLanguage.structure.PlusExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_p(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f5L, "jetbrains.mps.baseLanguage.structure.MinusExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_q(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfe476b758fL, "jetbrains.mps.baseLanguage.structure.MulExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_r(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfe476b758fL, "jetbrains.mps.baseLanguage.structure.MulExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_s(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xff2bbc13daL, "jetbrains.mps.baseLanguage.structure.DivExpression")));
+    this.myOverloadedOperationsTypesProviders.add(new TypesystemDescriptor.CustomOverloadedOperationsTypesProvider_t(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfe476b758fL, "jetbrains.mps.baseLanguage.structure.MulExpression")));
   }
-
   public static class CustomOverloadedOperationsTypesProvider_f extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_f(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_f(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBigInteger;
       this.myRightOperandType = MathTypeUtil.qInt;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = true;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "1237817153106";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return MathTypeUtil.qBigInteger;
     }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
+    }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_h extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_h(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_h(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBigInteger;
       this.myRightOperandType = MathTypeUtil.qBigInteger;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "1237818502828";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return SNodeOperations.copyNode(MathTypeUtil.qBigInteger);
     }
-
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return SNodeOperations.isInstanceOf(leftOperandType, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType") || SNodeOperations.isInstanceOf(rightOperandType, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType");
+      return SNodeOperations.isInstanceOf(leftOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200944b8b7L, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType")) || SNodeOperations.isInstanceOf(rightOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200944b8b7L, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType"));
+    }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_i extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_i(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_i(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBigInteger;
       this.myRightOperandType = MathTypeUtil.qBigInteger;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "1237818537889";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return SNodeOperations.copyNode(MathTypeUtil.qBigInteger);
     }
-
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return SNodeOperations.isInstanceOf(leftOperandType, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType") || SNodeOperations.isInstanceOf(rightOperandType, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType");
+      return SNodeOperations.isInstanceOf(leftOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200944b8b7L, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType")) || SNodeOperations.isInstanceOf(rightOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200944b8b7L, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType"));
+    }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_j extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_j(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_j(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBigInteger;
       this.myRightOperandType = MathTypeUtil.qBigInteger;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "1237818540255";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return SNodeOperations.copyNode(MathTypeUtil.qBigInteger);
     }
-
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return SNodeOperations.isInstanceOf(leftOperandType, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType") || SNodeOperations.isInstanceOf(rightOperandType, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType");
+      return SNodeOperations.isInstanceOf(leftOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200944b8b7L, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType")) || SNodeOperations.isInstanceOf(rightOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200944b8b7L, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType"));
+    }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_g extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_g(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_g(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBigInteger;
       this.myRightOperandType = MathTypeUtil.qInt;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = true;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "1237819138168";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return MathTypeUtil.qBigInteger;
     }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
+    }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_e extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_e(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_e(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBigInteger;
       this.myRightOperandType = MathTypeUtil.qBigInteger;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "1238338729728";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return SNodeOperations.copyNode(MathTypeUtil.qBigInteger);
     }
-
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return SNodeOperations.isInstanceOf(leftOperandType, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType") || SNodeOperations.isInstanceOf(rightOperandType, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType");
+      return SNodeOperations.isInstanceOf(leftOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200944b8b7L, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType")) || SNodeOperations.isInstanceOf(rightOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200944b8b7L, "jetbrains.mps.baseLanguage.math.structure.BigIntegerType"));
+    }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_k extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_k(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_k(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBigDecimal;
       this.myRightOperandType = MathTypeUtil.qBigDecimal;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = true;
       this.myRightTypeIsExact = true;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "1238937384390";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return SNodeOperations.copyNode(MathTypeUtil.qBoolean);
     }
-
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return !(SNodeOperations.isInstanceOf(leftOperandType, "jetbrains.mps.baseLanguage.structure.NullType") || SNodeOperations.isInstanceOf(rightOperandType, "jetbrains.mps.baseLanguage.structure.NullType"));
+      return !((SNodeOperations.isInstanceOf(leftOperandType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType")) || SNodeOperations.isInstanceOf(rightOperandType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType"))));
+    }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_l extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_l(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_l(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBigDecimal;
       this.myRightOperandType = MathTypeUtil.qBigDecimal;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = true;
       this.myRightTypeIsExact = true;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "1238937415187";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return SNodeOperations.copyNode(MathTypeUtil.qBoolean);
     }
-
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return !(SNodeOperations.isInstanceOf(leftOperandType, "jetbrains.mps.baseLanguage.structure.NullType") || SNodeOperations.isInstanceOf(rightOperandType, "jetbrains.mps.baseLanguage.structure.NullType"));
+      return !((SNodeOperations.isInstanceOf(leftOperandType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType")) || SNodeOperations.isInstanceOf(rightOperandType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType"))));
+    }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_m extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_m(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_m(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBigDecimal;
       this.myRightOperandType = MathTypeUtil.qBigDecimal;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = true;
       this.myRightTypeIsExact = true;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "1238937415928";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return SNodeOperations.copyNode(MathTypeUtil.qBoolean);
     }
-
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return !(SNodeOperations.isInstanceOf(leftOperandType, "jetbrains.mps.baseLanguage.structure.NullType") || SNodeOperations.isInstanceOf(rightOperandType, "jetbrains.mps.baseLanguage.structure.NullType"));
+      return !((SNodeOperations.isInstanceOf(leftOperandType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType")) || SNodeOperations.isInstanceOf(rightOperandType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType"))));
+    }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_n extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_n(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_n(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBigDecimal;
       this.myRightOperandType = MathTypeUtil.qBigDecimal;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = true;
       this.myRightTypeIsExact = true;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "1238937416684";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return SNodeOperations.copyNode(MathTypeUtil.qBoolean);
     }
-
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return !(SNodeOperations.isInstanceOf(leftOperandType, "jetbrains.mps.baseLanguage.structure.NullType") || SNodeOperations.isInstanceOf(rightOperandType, "jetbrains.mps.baseLanguage.structure.NullType"));
+      return !((SNodeOperations.isInstanceOf(leftOperandType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType")) || SNodeOperations.isInstanceOf(rightOperandType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType"))));
+    }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_a extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_a(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_a(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBigComplex;
       this.myRightOperandType = MathTypeUtil.qBigComplex;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "4991719046417198034";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return MathTypeUtil.join(leftOperandType, rightOperandType);
     }
-
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return SNodeOperations.isInstanceOf(leftOperandType, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType") || SNodeOperations.isInstanceOf(rightOperandType, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType");
+      return SNodeOperations.isInstanceOf(leftOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200ff11214L, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType")) || SNodeOperations.isInstanceOf(rightOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200ff11214L, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType"));
+    }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_b extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_b(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_b(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBigComplex;
       this.myRightOperandType = MathTypeUtil.qBigComplex;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "4991719046417344697";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return MathTypeUtil.join(leftOperandType, rightOperandType);
     }
-
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return SNodeOperations.isInstanceOf(leftOperandType, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType") || SNodeOperations.isInstanceOf(rightOperandType, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType");
+      return SNodeOperations.isInstanceOf(leftOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200ff11214L, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType")) || SNodeOperations.isInstanceOf(rightOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200ff11214L, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType"));
+    }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_c extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_c(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_c(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBigComplex;
       this.myRightOperandType = MathTypeUtil.qBigComplex;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "4991719046417346854";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return MathTypeUtil.join(leftOperandType, rightOperandType);
     }
-
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return SNodeOperations.isInstanceOf(leftOperandType, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType") || SNodeOperations.isInstanceOf(rightOperandType, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType");
+      return SNodeOperations.isInstanceOf(leftOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200ff11214L, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType")) || SNodeOperations.isInstanceOf(rightOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200ff11214L, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType"));
+    }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_d extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_d(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_d(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBigComplex;
       this.myRightOperandType = MathTypeUtil.qBigComplex;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "4991719046417346892";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return MathTypeUtil.join(leftOperandType, rightOperandType);
     }
-
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return SNodeOperations.isInstanceOf(leftOperandType, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType") || SNodeOperations.isInstanceOf(rightOperandType, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType");
+      return SNodeOperations.isInstanceOf(leftOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200ff11214L, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType")) || SNodeOperations.isInstanceOf(rightOperandType, MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200ff11214L, "jetbrains.mps.baseLanguage.math.structure.MathPrimitiveType"));
+    }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_o extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_o(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_o(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBCMatrix;
       this.myRightOperandType = MathTypeUtil.qBCMatrix;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "7676695779583458415";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return MathTypeUtil.ML_matrixOp(leftOperandType, rightOperandType, false);
     }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
+    }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_p extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_p(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_p(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBCMatrix;
       this.myRightOperandType = MathTypeUtil.qBCMatrix;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "7676695779583465006";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return MathTypeUtil.ML_matrixOp(leftOperandType, rightOperandType, false);
     }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
+    }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_q extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_q(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_q(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBigComplex;
       this.myRightOperandType = MathTypeUtil.qBCMatrix;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "7676695779583588206";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return MathTypeUtil.typeOfMatrixScalarMultiplication(leftOperandType, rightOperandType);
     }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
+    }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_r extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_r(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_r(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBCMatrix;
       this.myRightOperandType = MathTypeUtil.qBigComplex;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "7676695779583588212";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       if (TypeChecker.getInstance().getSubtypingManager().isSubtype(MathUtil.getUnboxedElementType(leftOperandType), rightOperandType)) {
         return MathTypeUtil.qMatrix(rightOperandType);
@@ -584,19 +643,23 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
         return leftOperandType;
       }
     }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
+    }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_s extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_s(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_s(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBCMatrix;
       this.myRightOperandType = MathTypeUtil.qBigComplex;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "7676695779583590396";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       if (TypeChecker.getInstance().getSubtypingManager().isSubtype(MathUtil.getUnboxedElementType(leftOperandType), rightOperandType)) {
         return MathTypeUtil.qMatrix(rightOperandType);
@@ -604,21 +667,29 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
         return leftOperandType;
       }
     }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
+    }
   }
-
   public static class CustomOverloadedOperationsTypesProvider_t extends OverloadedOperationsTypesProvider {
-    public CustomOverloadedOperationsTypesProvider_t(String conceptFQ) {
+    public CustomOverloadedOperationsTypesProvider_t(SAbstractConcept concept) {
       this.myLeftOperandType = MathTypeUtil.qBCMatrix;
       this.myRightOperandType = MathTypeUtil.qBCMatrix;
-      this.myOperationConceptFQName = conceptFQ;
+      this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
       this.myRightIsStrong = false;
       this.myLeftIsStrong = false;
+      this.myRuleModelId = "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)";
+      this.myRuleNodeId = "7676695779583653135";
     }
-
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return MathTypeUtil.ML_matrixOp(leftOperandType, rightOperandType, true);
+    }
+    @Override
+    public void reportConflict(IRuleConflictWarningProducer producer) {
+      producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
   }
 }

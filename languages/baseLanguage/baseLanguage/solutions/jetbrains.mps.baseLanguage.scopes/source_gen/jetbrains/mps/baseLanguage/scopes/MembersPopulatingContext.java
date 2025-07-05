@@ -6,61 +6,60 @@ import java.util.Stack;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Iterator;
+import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Collections;
 
 public class MembersPopulatingContext {
   private Stack<SNode> classifiers = new Stack<SNode>();
   private boolean isPackageProtectedAvailable = true;
   private final List<SNode> members = new ArrayList<SNode>();
-  private final Set<Signature> hidedSignatures = new HashSet<Signature>();
+  private final Map<Signature, SNode> addedSignatures = new HashMap<Signature, SNode>();
   private Map<SNode, SNode> typeByTypeVariable = new HashMap<SNode, SNode>();
   private Map<Object, Object> userObjects = new HashMap<Object, Object>();
-
   public MembersPopulatingContext() {
     // java collections for speed 
   }
-
   public void hideMembers(Signature signature) {
-    hidedSignatures.add(signature);
+    if (!(addedSignatures.containsKey(signature))) {
+      addedSignatures.put(signature, getCurrentClassifier());
+    }
   }
-
   public void addMember(SNode member, Signature signature) {
-    if (!(hidedSignatures.contains(signature))) {
+    SNode contextClassifier = addedSignatures.get(signature);
+    if (contextClassifier == null || contextClassifier == getCurrentClassifier()) {
+      // exposing all members using following condition: 
+      // 1. member was not "masked" by a member from sub-classifier 
+      // 2. showing all members with same signatures if they are defined in the same classifier 
       members.add(member);
     }
   }
-
   public Iterable<SNode> getMembers() {
     List<SNode> members = new ArrayList<SNode>();
     members.addAll(this.members);
     return members;
   }
-
   public void putUserObject(Object key, Object value) {
     userObjects.put(key, value);
   }
-
   public Object getUserObject(Object key) {
     return userObjects.get(key);
   }
-
   public boolean containsUserObject(Object key) {
     return userObjects.containsKey(key);
   }
-
   public boolean enterClassifierInternal(SNode classifierType) {
-    SNode classifier = BehaviorReflection.invokeVirtual((Class<SNode>) ((Class) Object.class), classifierType, "virtual_getClassifier_7405920559687237513", new Object[]{});
+    SNode classifier = IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(classifierType);
 
     // recursion preventing 
     if (classifiers.contains(classifier)) {
@@ -69,9 +68,9 @@ public class MembersPopulatingContext {
     classifiers.add(classifier);
 
     // set types variables 
-    Iterable<SNode> typeParams = BehaviorReflection.invokeVirtual((Class<Iterable<SNode>>) ((Class) Object.class), classifierType, "virtual_getTypeParameters_7405920559687237518", new Object[]{});
+    Iterable<SNode> typeParams = IClassifierType__BehaviorDescriptor.getTypeParameters_id6r77ob2URYe.invoke(classifierType);
     if (Sequence.fromIterable(typeParams).isNotEmpty()) {
-      Iterator<SNode> typeVars = Sequence.fromIterable(BehaviorReflection.invokeVirtual((Class<Iterable<SNode>>) ((Class) Object.class), classifier, "virtual_getTypeVariables_7405920559687237503", new Object[]{})).iterator();
+      Iterator<SNode> typeVars = Sequence.fromIterable(IClassifier__BehaviorDescriptor.getTypeVariables_id6r77ob2URXZ.invoke(classifier)).iterator();
       for (SNode typeParm : typeParams) {
         if (!(typeVars.hasNext())) {
           break;
@@ -83,9 +82,9 @@ public class MembersPopulatingContext {
 
     // recalc is package protected available 
     isPackageProtectedAvailable = true;
-    String contextClassifierPackage = JavaNameUtil.packageName(SNodeOperations.getModel(classifiers.get(0)));
+    String contextClassifierPackage = retrievePackageName(SNodeOperations.getModel(classifiers.get(0)));
     for (SNode inheritedClassifier : classifiers) {
-      if (!(JavaNameUtil.packageName(SNodeOperations.getModel(inheritedClassifier)).equals(contextClassifierPackage))) {
+      if (!(retrievePackageName(SNodeOperations.getModel(inheritedClassifier)).equals(contextClassifierPackage))) {
         isPackageProtectedAvailable = false;
         break;
       }
@@ -93,29 +92,30 @@ public class MembersPopulatingContext {
 
     return true;
   }
-
-  public void exitClassifierInternal(SNode classifier) {
-    assert classifiers.pop() == BehaviorReflection.invokeVirtual((Class<SNode>) ((Class) Object.class), classifier, "virtual_getClassifier_7405920559687237513", new Object[]{});
+  private String retrievePackageName(SModel model) {
+    return (model != null ? JavaNameUtil.packageName(model) : "");
   }
-
+  public void exitClassifierInternal(SNode classifier) {
+    assert classifiers.pop() == IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(classifier);
+  }
+  private SNode getCurrentClassifier() {
+    return classifiers.lastElement();
+  }
   public boolean isPackageProtectedVisible() {
     return isPackageProtectedAvailable;
   }
-
   public boolean isPrivateVisible() {
     return classifiers.size() == 1;
   }
-
   public boolean isElementVisible(SNode element) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(element, "visibility", true), "jetbrains.mps.baseLanguage.structure.PrivateVisibility")) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(element, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility"))) {
       return isPrivateVisible();
     }
-    if ((SLinkOperations.getTarget(element, "visibility", true) == null)) {
+    if ((SLinkOperations.getTarget(element, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility")) == null)) {
       return isPackageProtectedVisible();
     }
     return true;
   }
-
   public Map<SNode, SNode> getTypeByTypeVariableMapping() {
     return Collections.unmodifiableMap(typeByTypeVariable);
   }

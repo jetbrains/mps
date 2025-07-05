@@ -9,26 +9,27 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.TestNodeWrapperFactory;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
 import java.util.ArrayList;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SConceptRepository;
-import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Set;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 import jetbrains.mps.project.GlobalScope;
 import java.util.Collections;
-import jetbrains.mps.progress.ProgressMonitorAdapter;
-import com.intellij.openapi.progress.ProgressManager;
+import org.jetbrains.mps.openapi.util.SubProgressKind;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import com.intellij.openapi.project.Project;
 
 public class TestListPanel extends ListPanel<ITestNodeWrapper> {
   private boolean myIsTestMethods;
-
 
   @Nullable
   @Override
@@ -46,28 +47,21 @@ public class TestListPanel extends ListPanel<ITestNodeWrapper> {
     return element.getCachedFqName();
   }
 
-  public void init(List<ITestNodeWrapper> nodes, final boolean isTestMethods) {
-    myIsTestMethods = isTestMethods;
-    super.init(nodes);
-  }
-
   @Override
-  protected void collectCandidates() {
-    final List<SNode> nodesList = new ArrayList<SNode>();
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        for (SNode concept : Sequence.fromIterable(TestNodeWrapperFactory.getWrappedRootConcepts())) {
-          SAbstractConcept c = SConceptRepository.getInstance().getConcept(NameUtil.nodeFQName(concept));
-          Set<SNode> usages = FindUsagesFacade.getInstance().findInstances(GlobalScope.getInstance(), Collections.singleton(c), false, new ProgressMonitorAdapter(ProgressManager.getInstance().getProgressIndicator()));
+  protected List<ITestNodeWrapper> collectCandidates(final ProgressMonitor progress) {
+    final SRepository repo = ProjectHelper.fromIdeaProject(myProject).getRepository();
+    return new ModelAccessHelper(repo).runReadAction(new Computable<List<ITestNodeWrapper>>() {
+      public List<ITestNodeWrapper> compute() {
+        List<SNode> nodesList = new ArrayList<SNode>();
+        Iterable<SAbstractConcept> wrappedRootConcepts = TestNodeWrapperFactory.getWrappedRootConcepts();
+        progress.start("Looking up...", Sequence.fromIterable(wrappedRootConcepts).count());
+        for (SAbstractConcept c : Sequence.fromIterable(wrappedRootConcepts)) {
+          Set<SNode> usages = FindUsagesFacade.getInstance().findInstances(GlobalScope.getInstance(), Collections.singleton(c), false, progress.subTask(1, SubProgressKind.REPLACING));
           ListSequence.fromList(nodesList).addSequence(SetSequence.fromSet(usages));
         }
-      }
-    });
-
-    if (myIsTestMethods) {
-      final List<ITestNodeWrapper> methodsList = ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
-      ModelAccess.instance().runReadAction(new Runnable() {
-        public void run() {
+        progress.done();
+        if (myIsTestMethods) {
+          List<ITestNodeWrapper> methodsList = ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
           for (SNode testCase : nodesList) {
             ITestNodeWrapper wrapper = TestNodeWrapperFactory.tryToWrap(testCase);
             if (wrapper == null) {
@@ -75,35 +69,25 @@ public class TestListPanel extends ListPanel<ITestNodeWrapper> {
             }
             ListSequence.fromList(methodsList).addSequence(Sequence.fromIterable(wrapper.getTestMethods()));
           }
+          return methodsList;
+        } else {
+          return ListSequence.fromList(nodesList).select(new ISelector<SNode, ITestNodeWrapper>() {
+            public ITestNodeWrapper select(SNode it) {
+              return wrap(it);
+            }
+          }).where(new IWhereFilter<ITestNodeWrapper>() {
+            public boolean accept(ITestNodeWrapper it) {
+              return it != null;
+            }
+          }).toListSequence();
         }
-      });
-      synchronized (myLock) {
-        ListSequence.fromList(myCandidates).clear();
-        ListSequence.fromList(myCandidates).addSequence(ListSequence.fromList(methodsList));
       }
-    } else {
-      ModelAccess.instance().runReadAction(new Runnable() {
-        public void run() {
-          synchronized (myLock) {
-            ListSequence.fromList(myCandidates).clear();
-            ListSequence.fromList(myCandidates).addSequence(ListSequence.fromList(nodesList).select(new ISelector<SNode, ITestNodeWrapper>() {
-              public ITestNodeWrapper select(SNode it) {
-                return wrap(it);
-              }
-            }).where(new IWhereFilter<ITestNodeWrapper>() {
-              public boolean accept(ITestNodeWrapper it) {
-                return it != null;
-              }
-            }));
-          }
-        }
-      });
-    }
+    });
   }
 
-
-
-  public TestListPanel() {
-    super("Tests");
+  public TestListPanel(Project project, boolean isTestMethods) {
+    super(project, "Tests");
+    myIsTestMethods = isTestMethods;
+    super.setData(ListSequence.fromList(new ArrayList<ITestNodeWrapper>()));
   }
 }

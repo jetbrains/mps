@@ -15,13 +15,10 @@
  */
 package jetbrains.mps.lang.dataFlow.framework.instructions;
 
-import org.jetbrains.mps.openapi.model.SModelId;
-import org.jetbrains.mps.openapi.model.SNodeId;
-
 public class WriteInstruction extends Instruction {
-  private Object myVar;
-  private int myIndex;
-  private Object myValue;
+  protected final Object myVar;
+  protected int myIndex;
+  protected final  Object myValue;
 
   public WriteInstruction(Object var, Object value) {
     myVar = var;

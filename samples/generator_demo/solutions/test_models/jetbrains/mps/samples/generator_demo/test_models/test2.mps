@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:63a6a44c-f24e-44b6-83ad-9204b2e588eb(jetbrains.mps.samples.generator_demo.test_models.test2)">
-  <persistence version="8" />
-  <language namespace="772f6dcd-8c0d-48f7-869c-908e036f7c8e(jetbrains.mps.sampleXML)" />
-  <language-engaged-on-generation namespace="ef47f5be-76c4-4166-8925-2b415ec6b840(jetbrains.mps.samples.generator_demo.demoLang2)" />
-  <import index="tpck" modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" implicit="yes" />
-  <import index="dghb" modelUID="r:ec0ffc91-3a14-4002-ac57-dd36c5dcf10a(jetbrains.mps.sampleXML.structure)" version="-1" implicit="yes" />
-  <root type="dghb.Document" typeId="dghb.1225239603382" id="1228518293172" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="Button" />
-    <node role="rootElement" roleId="dghb.1225239603384" type="dghb.Element" typeId="dghb.1225239603385" id="1228518293173" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="button" />
+<model ref="r:63a6a44c-f24e-44b6-83ad-9204b2e588eb(jetbrains.mps.samples.generator_demo.test_models.test2)">
+  <persistence version="9" />
+  <languages>
+    <use id="772f6dcd-8c0d-48f7-869c-908e036f7c8e" name="jetbrains.mps.sampleXML" version="0" />
+    <engage id="ef47f5be-76c4-4166-8925-2b415ec6b840" name="jetbrains.mps.samples.generator_demo.demoLang2" />
+  </languages>
+  <imports />
+  <registry>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="772f6dcd-8c0d-48f7-869c-908e036f7c8e" name="jetbrains.mps.sampleXML">
+      <concept id="1225239603385" name="jetbrains.mps.sampleXML.structure.Element" flags="ng" index="15YaA$" />
+      <concept id="1225239603382" name="jetbrains.mps.sampleXML.structure.Document" flags="ng" index="15YaAF">
+        <child id="1225239603384" name="rootElement" index="15YaA_" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="15YaAF" id="hS9pnUO">
+    <property role="TrG5h" value="Button" />
+    <node concept="15YaA$" id="hS9pnUP" role="15YaA_">
+      <property role="TrG5h" value="button" />
     </node>
-  </root>
-  <root type="dghb.Document" typeId="dghb.1225239603382" id="1228518293174" nodeInfo="ng">
-    <property name="name" nameId="tpck.1169194664001" value="Label" />
-    <node role="rootElement" roleId="dghb.1225239603384" type="dghb.Element" typeId="dghb.1225239603385" id="1228518293175" nodeInfo="ng">
-      <property name="name" nameId="tpck.1169194664001" value="label" />
+  </node>
+  <node concept="15YaAF" id="hS9pnUQ">
+    <property role="TrG5h" value="Label" />
+    <node concept="15YaA$" id="hS9pnUR" role="15YaA_">
+      <property role="TrG5h" value="label" />
     </node>
-  </root>
+  </node>
 </model>
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,70 +16,67 @@
 package jetbrains.mps.nodeEditor;
 
 import com.intellij.ide.DataManager;
+import com.intellij.ide.plugins.cl.PluginClassLoader;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupManager;
+import com.intellij.openapi.ui.SimpleToolWindowPanel;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.ui.HyperlinkLabel;
 import com.intellij.ui.LightColors;
+import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.tools.BaseTool;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.openapi.editor.EditorInspector;
+import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
-import jetbrains.mps.project.ProjectOperationContext;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
 public class InspectorTool extends BaseTool implements EditorInspector, ProjectComponent {
   public static final String ID = "Inspector";
 
-  private JPanel myComponent;
+  private MyPanel myComponent;
   private InspectorEditorComponent myInspectorComponent;
   private MyMessagePanel myMessagePanel;
   private FileEditor myFileEditor;
 
   public InspectorTool(Project project) {
-    super(project, ID, 2, IdeIcons.INSPECTOR_ICON, ToolWindowAnchor.BOTTOM, true, false);
+    super(project, ID,2, IdeIcons.INSPECTOR_ICON, ToolWindowAnchor.BOTTOM, true, false);
   }
 
   @Override
   public void initComponent() {
     createTool();
-    StartupManager.getInstance(getProject()).registerPostStartupActivity(new Runnable() {
-      @Override
-      public void run() {
-        registerLater();
-      }
-    });
+    StartupManager.getInstance(getProject()).registerPostStartupActivity(this::registerLater);
   }
 
   @Override
   public void disposeComponent() {
-    if (myInspectorComponent == null) return;
-    myInspectorComponent.dispose();
+    if (myInspectorComponent == null) {
+      return;
+    }
+    ThreadUtils.runInUIThreadNoWait(myInspectorComponent::dispose);
     unregister();
   }
 
@@ -94,27 +91,21 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
   }
 
   protected void createTool() {
-    StartupManager.getInstance(getProject()).registerStartupActivity(new Runnable() {
-      @Override
-      public void run() {
-        SwingUtilities.invokeLater(new Runnable() {
-          @Override
-          public void run() {
-            InspectorTool.this.myMessagePanel = new MyMessagePanel();
-            myComponent = new MyPanel();
-            jetbrains.mps.project.Project project = ProjectHelper.toMPSProject(getProject());
-            myInspectorComponent = new InspectorEditorComponent(project.getRepository());
-            myComponent.add(myInspectorComponent.getExternalComponent(), BorderLayout.CENTER);
-            myMessagePanel.setNode(null);
-            myComponent.add(myMessagePanel, BorderLayout.NORTH);
-            AnAction moveDownAction = ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.MoveElementsDown_Action");
-            moveDownAction.registerCustomShortcutSet(moveDownAction.getShortcutSet(), myComponent);
-            AnAction moveUpAction = ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.MoveElementsUp_Action");
-            moveUpAction.registerCustomShortcutSet(moveUpAction.getShortcutSet(), myComponent);
-          }
-        });
-      }
-    });
+    StartupManager.getInstance(getProject()).registerStartupActivity(() -> ApplicationManager.getApplication().invokeLater(() -> {
+      InspectorTool.this.myMessagePanel = new MyMessagePanel();
+      myComponent = new MyPanel();
+      jetbrains.mps.project.Project project = ProjectHelper.toMPSProject(getProject());
+      myInspectorComponent = new InspectorEditorComponent(project.getRepository(),
+                                                          new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(project)).build());
+      EditorExtensionUtil.extendUsingProject(myInspectorComponent, project);
+      myComponent.setContent(myInspectorComponent.getExternalComponent());
+      myMessagePanel.setNode(null);
+      myComponent.setToolbar(myMessagePanel);
+      AnAction moveDownAction = ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.MoveElementsDown_Action");
+      moveDownAction.registerCustomShortcutSet(moveDownAction.getShortcutSet(), myComponent);
+      AnAction moveUpAction = ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.MoveElementsUp_Action");
+      moveUpAction.registerCustomShortcutSet(moveUpAction.getShortcutSet(), myComponent);
+    }));
   }
 
   @Override
@@ -136,8 +127,8 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
     return myComponent;
   }
 
-  public void inspect(SNode node, IOperationContext context, FileEditor fileEditor) {
-    if (node instanceof jetbrains.mps.smodel.SNode && ((jetbrains.mps.smodel.SNode) node).isDisposed()) {
+  public void inspect(SNode node, FileEditor fileEditor, String[] enabledHints) {
+    if (node instanceof jetbrains.mps.smodel.SNode && !SNodeUtil.isAccessible(node, myInspectorComponent.getRepository())) {
       // Note: inspector does not support disposed nodes. If we get one, just clear the tool.
       // The editor holds references to nodes between read actions and these references are updated asynchronously.
       // This means that sometimes an editor may give us an outdated node.
@@ -145,13 +136,18 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
     }
 
     myFileEditor = fileEditor;
-    myInspectorComponent.editNode(node);
+
+    boolean needToEdit = myInspectorComponent.getUpdater().setInitialEditorHints(enabledHints);
+    if (needToEdit || myInspectorComponent.getEditedNode() != node) {
+      myInspectorComponent.editNode(node);
+    }
     myMessagePanel.setNode(node);
   }
 
-  private class MyPanel extends JPanel implements DataProvider {
+  private class MyPanel extends SimpleToolWindowPanel {
     private MyPanel() {
-      super(new BorderLayout());
+      super(true, true);
+      setProvideQuickActions(false);
     }
 
     @Override
@@ -163,7 +159,10 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
       if (PlatformDataKeys.VIRTUAL_FILE.getName().equals(dataId) && myFileEditor != null) {
         return DataManager.getInstance().getDataContext(myFileEditor.getComponent()).getData(dataId);
       }
-      return null;
+      if (PlatformDataKeys.HELP_ID.is(dataId)) {
+        return "ideaInterface.editor.inspector";
+      }
+      return super.getData(dataId);
     }
   }
 
@@ -186,17 +185,13 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
       add(myOpenConceptLabel, BorderLayout.EAST);
 
       myOpenConceptLabel.setOpaque(false);
-      myOpenConceptLabel.addHyperlinkListener(new HyperlinkListener() {
-        @Override
-        public void hyperlinkUpdate(HyperlinkEvent e) {
-          ModelAccess.instance().runWriteActionInCommand(new Runnable() {
-            @Override
-            public void run() {
-              SNode concept = SNodeOperations.getConceptDeclaration(myNode);
-              ProjectOperationContext context = new ProjectOperationContext(ProjectHelper.toMPSProject(getProject()));
-              NavigationSupport.getInstance().openNode(context, concept, true, false);
-            }
-          });
+      myOpenConceptLabel.addHyperlinkListener(e -> {
+        if (myNode == null) {
+          return;
+        }
+        SNodeReference conceptDecl = myNode.getConcept().getSourceNode();
+        if (conceptDecl != null) {
+          new EditorNavigator(ProjectHelper.fromIdeaProject(getProject())).shallFocus(true).shallSelect(false).open(conceptDecl);
         }
       });
     }

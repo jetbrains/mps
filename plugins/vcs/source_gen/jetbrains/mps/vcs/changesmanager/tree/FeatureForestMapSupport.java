@@ -10,8 +10,8 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.smodel.ModelAccess;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -29,37 +29,33 @@ import jetbrains.mps.vcs.changesmanager.tree.features.DeletedChildFeature;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 public class FeatureForestMapSupport extends AbstractProjectComponent {
-  private FeatureForestMap<ModelChange> myMap = new FeatureForestMap<ModelChange>();
+  private final FeatureForestMap<ModelChange> myMap;
   private Map<ModelChange, Feature[]> myChangeToFeaturesMap = MapSequence.fromMap(new HashMap<ModelChange, Feature[]>());
   private CurrentDifferenceRegistry myCurrentDifferenceRegistry;
   private FeatureForestMapSupport.MyListener myListener = new FeatureForestMapSupport.MyListener();
-
-  public FeatureForestMapSupport(Project project, CurrentDifferenceRegistry currentDifferenceRegistry) {
+  public FeatureForestMapSupport(Project project, MPSProject mpsProject, CurrentDifferenceRegistry currentDifferenceRegistry) {
     super(project);
+    myMap = new FeatureForestMap<ModelChange>(mpsProject.getRepository());
     myCurrentDifferenceRegistry = currentDifferenceRegistry;
   }
-
   @Override
   public void initComponent() {
     myCurrentDifferenceRegistry.addGlobalDifferenceListener(myListener);
   }
-
   @Override
   public void disposeComponent() {
     myCurrentDifferenceRegistry.removeGlobalDifferenceListener(myListener);
   }
-
   @NotNull
   public FeatureForestMap<ModelChange> getMap() {
     return myMap;
   }
-
-  private static Feature[] getFeaturesForChange(@NotNull ModelChange change) {
-    ModelAccess.assertLegalRead();
+  /*package*/ static Feature[] getFeaturesForChange(@NotNull ModelChange change) {
     List<Feature> result = ListSequence.fromList(new ArrayList<Feature>());
     SModelReference modelReference = change.getChangeSet().getNewModel().getReference();
     if (change instanceof AddRootChange) {
@@ -90,16 +86,14 @@ public class FeatureForestMapSupport extends AbstractProjectComponent {
     }
     return ListSequence.fromList(result).toGenericArray(Feature.class);
   }
-
   private class MyListener extends CurrentDifferenceAdapter {
     public MyListener() {
     }
-
     @Override
     public void changeAdded(@NotNull final ModelChange change) {
-      ModelAccess.instance().runReadAction(new Runnable() {
+      ProjectHelper.getModelAccess(myProject).runReadAction(new Runnable() {
         public void run() {
-          Feature[] features = getFeaturesForChange(change);
+          Feature[] features = FeatureForestMapSupport.getFeaturesForChange(change);
           MapSequence.fromMap(myChangeToFeaturesMap).put(change, features);
           for (Feature f : MapSequence.fromMap(myChangeToFeaturesMap).get(change)) {
             myMap.put(f, change);
@@ -107,7 +101,6 @@ public class FeatureForestMapSupport extends AbstractProjectComponent {
         }
       });
     }
-
     @Override
     public void changeRemoved(@NotNull ModelChange change) {
       Sequence.fromIterable(Sequence.fromArray(MapSequence.fromMap(myChangeToFeaturesMap).get(change))).visitAll(new IVisitor<Feature>() {

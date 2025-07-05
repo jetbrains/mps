@@ -20,6 +20,8 @@ import java.net.URLClassLoader;
 import java.lang.reflect.Method;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.io.StringWriter;
+import java.io.PrintWriter;
 import org.apache.tools.ant.util.FileUtils;
 import org.apache.tools.ant.types.FilterSetCollection;
 import java.util.Vector;
@@ -29,7 +31,6 @@ public class ConvertToBinaryTask extends Copy {
   private Map<String, String> toConvert = new HashMap<String, String>();
   private boolean myStripImplementation = false;
   private File mpsHome;
-
 
   public ConvertToBinaryTask() {
     FirstMatchMapper mapper = new FirstMatchMapper();
@@ -58,8 +59,6 @@ public class ConvertToBinaryTask extends Copy {
     return myStripImplementation;
   }
 
-
-
   @Override
   public void addFileset(FileSet set) {
     set.setErrorOnMissingDir(false);
@@ -85,6 +84,7 @@ public class ConvertToBinaryTask extends Copy {
       }
       URLClassLoader classLoader = new URLClassLoader(classPathUrls.toArray(new URL[classPathUrls.size()]), this.getClass().getClassLoader());
       try {
+        Thread.currentThread().setContextClassLoader(classLoader);
         Class<?> converterClass = classLoader.loadClass("jetbrains.mps.tool.builder.converter.ConvertToBinaryWorker");
         Object converter = converterClass.newInstance();
         Method method = converterClass.getMethod("convert", Map.class, Boolean.class);
@@ -95,27 +95,22 @@ public class ConvertToBinaryTask extends Copy {
         } else if (t instanceof InvocationTargetException) {
           t = ((InvocationTargetException) t).getTargetException();
         }
-        String message = t.getMessage();
-        if ((message == null || message.length() == 0)) {
-          message = t.getClass().toString();
-        }
-        throw new BuildException("Cannot convert .mps into .mpb: " + message + "\n" + "Used class path: " + classPathUrls.toString(), t);
+        StringWriter sw = new StringWriter();
+        t.printStackTrace(new PrintWriter(sw));
+        String message = sw.toString();
+        throw new BuildException(String.format("Cannot convert .mps into .mpb: %s\nModels:%s\nClasspath:%s", message, toConvert.keySet(), classPathUrls), t);
       }
     }
   }
-
   public class FileUtilsEx extends FileUtils {
     private final FileUtils delegate;
-
     public FileUtilsEx(FileUtils delegate) {
       this.delegate = delegate;
     }
-
     @Override
     public String getDefaultEncoding() {
       return delegate.getDefaultEncoding();
     }
-
     @Override
     public void copyFile(File sourceFile, File destFile, FilterSetCollection filters, Vector filterChains, boolean overwrite, boolean preserveLastModified, boolean append, String inputEncoding, String outputEncoding, Project project, boolean force) throws IOException {
       if (sourceFile.getPath().endsWith(".mps")) {

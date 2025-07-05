@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,45 +16,88 @@
 package jetbrains.mps.ide.ui.dialogs.properties.tables.models;
 
 import com.intellij.util.ui.ItemRemovable;
-import org.jetbrains.mps.openapi.ui.Modifiable;
-import jetbrains.mps.project.DevKit;
-import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
+import jetbrains.mps.project.DevKit;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.util.Computable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.util.Condition;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public abstract class UsedLangsTableModel<T> extends AbstractTableModel implements ItemRemovable, Modifiable {
-  protected List<SModuleReference> myTableItems = new ArrayList<SModuleReference>();
-  protected T myItem;
+public class UsedLangsTableModel extends AbstractTableModel implements ItemRemovable {
+  private final SRepository myRepository;
+  private final String myColumnName;
+  private List<SLanguage> myLanguageItems = new ArrayList<SLanguage>();
+  private List<SModuleReference> myDevKitItems = new ArrayList<SModuleReference>();
 
   public static final int ITEM_COLUMN = 0;
-  private static final String ITEM_COLUMN_NAME = PropertiesBundle.message("mps.properties.configurable.tablemodel.usedlanguages.column.item");
+  private Collection<SLanguage> myInitialLanguages;
+  private Collection<SModuleReference> myInitialDevKits;
 
 
-  public UsedLangsTableModel(T value) {
-    myItem = value;
-    init();
+  public UsedLangsTableModel(SRepository repository) {
+    this(repository, PropertiesBundle.message("mps.properties.configurable.tablemodel.usedlanguages.column.item"));
   }
 
-  public void addItem(SModuleReference item) {
-    if(myTableItems.contains(item))
-      return;
-    myTableItems.add(item);
-    fireTableDataChanged();
+  public UsedLangsTableModel(SRepository repository, String columnName) {
+    myRepository = repository;
+    myColumnName = columnName;
+  }
+
+  public void init(Collection<SLanguage> usedLanguages, Collection<SModuleReference> usedDevKits) {
+    myInitialLanguages = usedLanguages;
+    myInitialDevKits = usedDevKits;
+    myLanguageItems.addAll(usedLanguages);
+    myDevKitItems.addAll(usedDevKits);
+  }
+
+  public void addItem(final SModuleReference item) {
+    SModule m = new ModelAccessHelper(myRepository).runReadAction(new Computable<SModule>() {
+      @Override
+      public SModule compute() {
+        return item.resolve(myRepository);
+      }
+    });
+    if (m instanceof Language) {
+      final SLanguage lang = MetaAdapterFactory.getLanguage(item);
+      addItem(lang);
+    } else if (m instanceof DevKit) {
+      if (!myDevKitItems.contains(item)) {
+        myDevKitItems.add(item);
+      }
+    }
+  }
+
+  public void addItem(SLanguage lang) {
+    if (!myLanguageItems.contains(lang)) {
+      myLanguageItems.add(lang);
+    }
   }
 
   @Override
   public void removeRow(int idx) {
-    myTableItems.remove(idx);
+    if (idx >= myLanguageItems.size()) {
+      idx -= myLanguageItems.size();
+      myDevKitItems.remove(idx);
+    } else {
+      myLanguageItems.remove(idx);
+    }
   }
 
   @Override
   public int getRowCount() {
-    return myTableItems.size();
+    return myLanguageItems.size() + myDevKitItems.size();
   }
 
   @Override
@@ -64,43 +107,94 @@ public abstract class UsedLangsTableModel<T> extends AbstractTableModel implemen
 
   @Override
   public String getColumnName(int column) {
-    if(column == ITEM_COLUMN)
-      return ITEM_COLUMN_NAME;
-    return "";
+    assert column == ITEM_COLUMN;
+    return myColumnName;
   }
 
   @Override
   public Class<?> getColumnClass(int columnIndex) {
-    if(columnIndex == ITEM_COLUMN)
-      return SModuleReference.class;
+    if(columnIndex == ITEM_COLUMN) {
+      return Import.class;
+    }
     return super.getColumnClass(columnIndex);
   }
 
   @Override
   public Object getValueAt(int rowIndex, int columnIndex) {
-    SModuleReference item = myTableItems.get(rowIndex);
-    if(columnIndex == ITEM_COLUMN)
-      return item;
-    return null;
+    assert columnIndex == ITEM_COLUMN;
+    return getValueAt(rowIndex);
   }
 
-  public List<SModuleReference> getUsedLanguages() {
-    List<SModuleReference> list = new ArrayList<SModuleReference>();
-    MPSModuleRepository moduleRepository = MPSModuleRepository.getInstance();
-    for(SModuleReference tableItem : myTableItems)
-      if(moduleRepository.getModuleById(tableItem.getModuleId()) instanceof Language)
-        list.add(tableItem);
-
-    return list;
+  public Import getValueAt(int rowIndex) {
+    if (rowIndex >= myLanguageItems.size()) {
+      rowIndex -= myLanguageItems.size();
+      return new Import(myDevKitItems.get(rowIndex));
+    } else {
+      return new Import(myLanguageItems.get(rowIndex));
+    }
   }
 
-  public List<SModuleReference> getUsedDevkits() {
-    List<SModuleReference> list = new ArrayList<SModuleReference>();
-    MPSModuleRepository moduleRepository = MPSModuleRepository.getInstance();
-    for(SModuleReference tableItem : myTableItems)
-      if(moduleRepository.getModuleById(tableItem.getModuleId()) instanceof DevKit)
-        list.add(tableItem);
+  public boolean isModified() {
+    return !(myLanguageItems.containsAll(myInitialLanguages)
+        && myInitialLanguages.containsAll(myLanguageItems)
+        && myDevKitItems.containsAll(myInitialDevKits)
+        && myInitialDevKits.containsAll(myDevKitItems)
+    );
+  }
 
-    return list;
+  public void fillResult(Collection<SLanguage> languages, Collection<SModuleReference> devkits) {
+    languages.addAll(myLanguageItems);
+    devkits.addAll(myDevKitItems);
+  }
+
+  // union (SLanguage | DevKit)
+  public static final class Import {
+    public final SLanguage myLanguage;
+    public final SModuleReference myDevKit;
+    public Import(SLanguage lang) {
+      myLanguage = lang;
+      myDevKit = null;
+    }
+    public Import(SModuleReference devkit) {
+      myDevKit = devkit;
+      myLanguage = null;
+    }
+
+    @Override
+    public int hashCode() {
+      return 31 * (myLanguage == null ? myDevKit.hashCode() : myLanguage.hashCode());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+      if (obj instanceof Import) {
+        Import o = (Import) obj;
+        return myLanguage == o.myLanguage && myDevKit == o.myDevKit;
+      }
+      return false;
+    }
+
+    @Override
+    public String toString() {
+      return myLanguage != null ? myLanguage.getQualifiedName() : myDevKit.getModuleName();
+    }
+  }
+
+  public static final class ValidImportCondition implements Condition<Import> {
+    private final SRepository myContextRepo;
+    private final LanguageRegistry myLanguageRegistry;
+
+    public ValidImportCondition(@NotNull SRepository contextRepo) {
+      myContextRepo = contextRepo;
+      myLanguageRegistry = LanguageRegistry.getInstance(contextRepo);
+    }
+
+    @Override
+    public boolean met(Import anImport) {
+      if (anImport.myLanguage != null) {
+        return myLanguageRegistry.getLanguage(anImport.myLanguage) != null;
+      }
+      return anImport.myDevKit.resolve(myContextRepo) != null;
+    }
   }
 }

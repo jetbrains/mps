@@ -6,15 +6,26 @@ package jetbrains.mps.debug.api.programState;
 public class WatchablesCategory implements Comparable<WatchablesCategory> {
   public static final WatchablesCategory NONE = new WatchablesCategory("");
   private final String myCategoryName;
-
   public WatchablesCategory(String categoryName) {
     myCategoryName = categoryName;
   }
-
   public String getCategoryName() {
     return myCategoryName;
   }
-
+  @Override
+  public int hashCode() {
+    return this.getCategoryName().hashCode();
+  }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    return this.getCategoryName().equals(((WatchablesCategory) o).getCategoryName());
+  }
   @Override
   public int compareTo(WatchablesCategory o) {
     return this.getCategoryName().compareTo(o.getCategoryName());

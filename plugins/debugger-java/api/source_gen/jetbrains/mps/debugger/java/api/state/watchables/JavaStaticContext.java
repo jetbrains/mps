@@ -9,7 +9,6 @@ import jetbrains.mps.debug.api.programState.WatchablesCategory;
 import jetbrains.mps.debug.api.programState.IValue;
 import javax.swing.Icon;
 import jetbrains.mps.debugger.java.api.ui.Icons;
-import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.ArrayList;
 import com.sun.jdi.Field;
@@ -17,78 +16,61 @@ import com.sun.jdi.Field;
 public class JavaStaticContext extends JavaWatchable implements IWatchable {
   private final ReferenceType myStaticType;
   private final JavaStaticContext.StaticContextValue myValue;
-
-  public JavaStaticContext(ReferenceType staticType, String classFqName, ThreadReference threadReference) {
-    super(classFqName, threadReference);
+  public JavaStaticContext(ReferenceType staticType, ThreadReference threadReference) {
+    super(threadReference);
     myStaticType = staticType;
     myValue = new JavaStaticContext.StaticContextValue();
   }
-
   @Override
   public String getName() {
     return "static";
   }
-
   @Override
   public WatchablesCategory getCategory() {
     return JavaWatchablesCategory.STATIC_CONTEXT;
   }
-
   @Override
   public IValue getValue() {
     assert myValue != null;
     return myValue;
   }
-
   @Override
   public Icon getPresentationIcon() {
     return Icons.WATCHABLE_STATIC;
   }
 
-  @Override
-  public SNode getNode() {
-    return null;
-  }
-
   private class StaticContextValue implements IValue {
     private final String myName;
     private volatile List<IWatchable> mySubvalues;
-
     private StaticContextValue() {
       myName = myStaticType.name();
     }
-
     @Override
     public String getValuePresentation() {
       return myName;
     }
-
     @Override
     public Icon getPresentationIcon() {
       return Icons.VALUE_OBJECT;
     }
-
     @Override
     public boolean isStructure() {
       return true;
     }
-
     public List<IWatchable> calculateSubvalues() {
       List<IWatchable> result = new ArrayList<IWatchable>();
       for (Field field : myStaticType.fields()) {
         if (!(field.isStatic())) {
           continue;
         }
-        result.add(new JavaStaticField(field, myClassFQName, myThreadReference));
+        result.add(new JavaStaticField(field, myThreadReference));
       }
       return result;
     }
-
     @Override
     public List<IWatchable> getSubvalues() {
       return mySubvalues;
     }
-
     @Override
     public void initSubvalues() {
       mySubvalues = calculateSubvalues();

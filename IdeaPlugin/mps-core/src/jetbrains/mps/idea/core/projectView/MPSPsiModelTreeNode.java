@@ -20,6 +20,8 @@ import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.projectView.impl.nodes.BasePsiNode;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.options.ex.SingleConfigurableEditor;
 import com.intellij.openapi.project.Project;
@@ -31,12 +33,10 @@ import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
 import jetbrains.mps.ide.ui.dialogs.properties.ModelPropertiesConfigurable;
 import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiModel;
-import jetbrains.mps.smodel.MPSModuleRepository;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
-import javax.swing.SwingUtilities;
 import java.awt.Color;
 import java.util.Collection;
 
@@ -86,34 +86,30 @@ public class MPSPsiModelTreeNode extends BasePsiNode<MPSPsiModel> implements Nav
   public void navigate(boolean requestFocus) {
     MPSPsiModel psiModel = extractPsiFromValue();
     SModelReference modelReference = psiModel.getSModelReference();
-    SModel sModel = modelReference.resolve(MPSModuleRepository.getInstance());
+    SModel sModel = modelReference.resolve(ProjectHelper.getProjectRepository(getProject()));
 
     MPSPropertiesConfigurable configurable = new ModelPropertiesConfigurable(sModel,
-      ProjectHelper.toMPSProject(MPSPsiModelTreeNode.this.getProject()),
+      ProjectHelper.fromIdeaProject(MPSPsiModelTreeNode.this.getProject()),
       true
     );
 
     final SingleConfigurableEditor dialog = new SingleConfigurableEditor(myProject, configurable);
     configurable.setParentForCallBack(dialog);
 
-    SwingUtilities.invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        dialog.show();
-      }
-    });
+    ApplicationManager.getApplication().invokeLater(dialog::show, ModalityState.current());
   }
 
   @Override
   public boolean canRepresent(Object element) {
-    return super.canRepresent(element) || getVirtualFile() == element;
+    // can't say when element can be null, but PsiFileNode checks for null, too
+    return super.canRepresent(element) || element != null && element.equals(getVirtualFile());
   }
 
   @Nullable
   @Override
   public VirtualFile getVirtualFile() {
     MPSPsiModel psiModel = extractPsiFromValue();
-    if(psiModel == null) return null;
+    if (psiModel == null) return null;
     return psiModel.getSourceVirtualFile();
   }
 

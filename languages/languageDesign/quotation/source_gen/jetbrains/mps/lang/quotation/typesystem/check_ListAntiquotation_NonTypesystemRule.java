@@ -8,16 +8,16 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.SModelUtil_new;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class check_ListAntiquotation_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ListAntiquotation_NonTypesystemRule() {
   }
-
   public void applyRule(final SNode listAntiquotation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode annotatedNode = SNodeOperations.getParent(listAntiquotation);
     {
@@ -27,11 +27,11 @@ public class check_ListAntiquotation_NonTypesystemRule extends AbstractNonTypesy
         {
           SNode matchingNode_5jb8fe_a1a = SNodeOperations.getParent(annotatedNode);
           if (matchingNode_5jb8fe_a1a != null) {
-            matches_5jb8fe_a1a = SModelUtil_new.isAssignableConcept(matchingNode_5jb8fe_a1a.getConcept().getQualifiedName(), "jetbrains.mps.lang.quotation.structure.Quotation");
+            matches_5jb8fe_a1a = matchingNode_5jb8fe_a1a.getConcept().isSubConceptOf(MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation"));
           }
         }
         if (matches_5jb8fe_a1a) {
-          if (SLinkOperations.getTarget(matchedNode_5jb8fe_b0, "quotedNode", true) == annotatedNode) {
+          if (SLinkOperations.getTarget(matchedNode_5jb8fe_b0, MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode")) == annotatedNode) {
             {
               MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(listAntiquotation, "list antiquotation should not be used on a quoted node itself", "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "1202840835255", null, errorTarget);
@@ -41,18 +41,12 @@ public class check_ListAntiquotation_NonTypesystemRule extends AbstractNonTypesy
       }
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.lang.quotation.structure.ListAntiquotation";
+  public SAbstractConcept getApplicableConcept() {
+    return MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465eL, "jetbrains.mps.lang.quotation.structure.ListAntiquotation");
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConcept().getQualifiedName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
   }

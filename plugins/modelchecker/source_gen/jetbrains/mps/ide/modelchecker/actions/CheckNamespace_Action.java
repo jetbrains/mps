@@ -7,22 +7,18 @@ import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import java.util.List;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import javax.swing.tree.TreeNode;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
 import org.jetbrains.annotations.NotNull;
-import org.apache.log4j.Priority;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.smodel.IOperationContext;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.List;
+import javax.swing.tree.TreeNode;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool;
+import java.util.ArrayList;
+import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
 
 public class CheckNamespace_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.General.ModelChecker;
@@ -32,69 +28,52 @@ public class CheckNamespace_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
-    for (TreeNode node : ListSequence.fromList(((List<TreeNode>) MapSequence.fromMap(_params).get("treeNodes")))) {
-      if (!(node instanceof NamespaceTextNode)) {
-        return false;
-      }
-      ListSequence.fromList(modules).addSequence(ListSequence.fromList(((NamespaceTextNode) node).getModulesUnder()));
-    }
-    return ListSequence.fromList(modules).isNotEmpty();
+    return ListSequence.fromList(CheckNamespace_Action.this.modules2check(_params)).isNotEmpty();
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        boolean enabled = this.isApplicable(event, _params);
-        this.setEnabledState(event.getPresentation(), enabled);
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "CheckNamespace", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("project", event.getData(PlatformDataKeys.PROJECT));
-    if (MapSequence.fromMap(_params).get("project") == null) {
-      return false;
+    {
+      Project p = event.getData(CommonDataKeys.PROJECT);
+      MapSequence.fromMap(_params).put("project", p);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("operationContext", event.getData(MPSCommonDataKeys.OPERATION_CONTEXT));
-    if (MapSequence.fromMap(_params).get("operationContext") == null) {
-      return false;
-    }
-    MapSequence.fromMap(_params).put("treeNodes", event.getData(MPSCommonDataKeys.TREE_NODES));
-    if (MapSequence.fromMap(_params).get("treeNodes") == null) {
-      return false;
+    {
+      List<TreeNode> p = event.getData(MPSCommonDataKeys.TREE_NODES);
+      MapSequence.fromMap(_params).put("treeNodes", p);
+      if (p == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
-      for (TreeNode node : ListSequence.fromList(((List<TreeNode>) MapSequence.fromMap(_params).get("treeNodes")))) {
-        ListSequence.fromList(modules).addSequence(ListSequence.fromList(((NamespaceTextNode) node).getModulesUnder()));
-      }
-      ModelCheckerTool.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).checkModules(modules, ((IOperationContext) MapSequence.fromMap(_params).get("operationContext")), true);
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "CheckNamespace", t);
-      }
-    }
+    List<SModule> modules = CheckNamespace_Action.this.modules2check(_params);
+    ModelCheckerTool.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).checkModulesAndShowResult(modules);
   }
-
-  protected static Logger LOG = LogManager.getLogger(CheckNamespace_Action.class);
+  /*package*/ List<SModule> modules2check(final Map<String, Object> _params) {
+    List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
+    for (TreeNode node : ListSequence.fromList(((List<TreeNode>) MapSequence.fromMap(_params).get("treeNodes")))) {
+      if (!(node instanceof NamespaceTextNode)) {
+        return ListSequence.fromList(new ArrayList<SModule>());
+      }
+      ListSequence.fromList(modules).addSequence(ListSequence.fromList(((NamespaceTextNode) node).getModulesUnder()));
+    }
+    return modules;
+  }
 }

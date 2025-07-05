@@ -9,36 +9,34 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.util.Condition;
 import java.util.Map;
 import java.util.LinkedHashMap;
+import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SConceptRepository;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.model.SReference;
 import java.util.LinkedList;
-import java.util.Iterator;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
+import jetbrains.mps.smodel.SNodeUtil;
+import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.Language;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.model.SModelReference;
-import jetbrains.mps.smodel.SModelRepository;
-import java.util.Queue;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.SModuleReference;
+import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.smodel.FastNodeFinder;
-import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.GeneratableSModel;
 
 public class SNodeOperations {
   public SNodeOperations() {
   }
-
+  /**
+   * 
+   * @deprecated use .ancestors.contains() in smodel language
+   */
+  @Deprecated
   public static boolean isAncestor(SNode ancestor, SNode node) {
     if (ancestor == node) {
       return true;
@@ -49,21 +47,25 @@ public class SNodeOperations {
     }
     return isAncestor(ancestor, parentOfChild);
   }
-
+  /**
+   * 
+   * @deprecated there is no full equivalent to this, use SNode.getChildren or node/../.children operations if possible
+   */
+  @Deprecated
   public static List<SNode> getChildren(SNode node, boolean includeAttributes) {
     List<SNode> res = new ArrayList<SNode>();
     for (SNode child : node.getChildren()) {
-      if (child != null && AttributeOperations.isAttribute(child)) {
+      if (child != null && (includeAttributes || !(AttributeOperations.isAttribute(child)))) {
         res.add(((SNode) child));
       }
     }
     return res;
   }
-
-  public static Iterable<SNode> getDescendants(SNode node, Condition<SNode> cond, boolean includeFirst) {
-    return new SNodeOperations.DescendantsIterable(node, cond, includeFirst);
-  }
-
+  /**
+   * 
+   * @deprecated use node/../.ancestors.where 
+   */
+  @Deprecated
   public static SNode findParent(SNode node, Condition<SNode> condition) {
     SNode parent = ((SNode) node.getParent());
     while (parent != null) {
@@ -74,40 +76,24 @@ public class SNodeOperations {
     }
     return null;
   }
-
+  /**
+   * 
+   * @deprecated rewrite to SProperty, don't use strings
+   */
+  @Deprecated
   public static Map<String, String> getProperties(SNode node) {
     Map<String, String> result = new LinkedHashMap<String, String>();
-    for (String name : Sequence.fromIterable(node.getPropertyNames())) {
-      result.put(name, node.getProperty(name));
+    for (SProperty p : Sequence.fromIterable(node.getProperties())) {
+      result.put(p.getName(), node.getProperty(p));
     }
     return result;
   }
-
-  public static List<SNode> getDescendants(SNode node, Condition<SNode> condition) {
-    List<SNode> res = ListSequence.fromList(new ArrayList<SNode>());
-    collectDescendants(node, res, condition);
-    return res;
-  }
-
-  private static void collectDescendants(SNode node, List<SNode> list, Condition<SNode> condition) {
-    for (SNode child : Sequence.fromIterable(node.getChildren())) {
-      if (condition == null || condition == Condition.TRUE_CONDITION || (child instanceof SNode && condition.met(((SNode) child)))) {
-        ListSequence.fromList(list).addElement(((SNode) child));
-      }
-      collectDescendants(child, list, condition);
-    }
-  }
-
   /**
    * todo rewrite the code using this
+   * 
+   * @deprecated rewrite to SContainmentLink, don't use by-name roles, use SNode methods 
    */
-  public static SAbstractConcept getConcept(String name) {
-    return SConceptRepository.getInstance().getInstanceConcept(name);
-  }
-
-  /**
-   * todo rewrite the code using this
-   */
+  @Deprecated
   public static Set<String> getChildRoles(SNode n) {
     Set<String> res = SetSequence.fromSet(new HashSet<String>());
     for (SNode child : Sequence.fromIterable(n.getChildren())) {
@@ -115,32 +101,34 @@ public class SNodeOperations {
     }
     return res;
   }
-
   /**
    * todo rewrite the code using this
+   * 
+   * @deprecated use SNode.getReferences
    */
+  @Deprecated
   public static List<SReference> getReferences(SNode n) {
     List<SReference> res = new LinkedList<SReference>();
     for (SReference ref : Sequence.fromIterable(n.getReferences())) {
-      res.add(((jetbrains.mps.smodel.SReference) ref));
+      res.add(ref);
     }
     return res;
   }
-
   /**
    * todo rewrite the code using this
+   * 
+   * @deprecated use SNode.getChildren
    */
+  @Deprecated
   public static List<SNode> getChildren(SNode n) {
-    List<SNode> res = ListSequence.fromList(new ArrayList<SNode>());
-    for (SNode child : Sequence.fromIterable(n.getChildren())) {
-      ListSequence.fromList(res).addElement((SNode) child);
-    }
-    return res;
+    return IterableUtil.asList(n.getChildren());
   }
-
   /**
    * todo rewrite the code using this
+   * 
+   * @deprecated use either SNode.getReference.select(it->it.role) or SNode.getConcept.getReferenceLinks depending on what you want to get
    */
+  @Deprecated
   public static Set<String> getReferenceRoles(SNode n) {
     Set<String> res = SetSequence.fromSet(new HashSet<String>());
     for (SReference ref : Sequence.fromIterable(n.getReferences())) {
@@ -148,66 +136,85 @@ public class SNodeOperations {
     }
     return res;
   }
-
   /**
    * todo rewrite the code using this
+   * 
+   * @deprecated SNode.getParent!=null mostly (if done in "user" code which operates with nodes inside models)
    */
+  @Deprecated
   public static boolean isRoot(SNode n) {
     return n.getModel() != null && n.getParent() == null;
   }
-
-  /**
-   * todo rewrite the code via snode methods
-   */
-  public static void insertChild(SNode parent, String role, SNode child, SNode anchor, boolean before) {
-    if (before) {
-      parent.insertChildBefore(role, child, anchor);
-    } else {
-      insertChild(parent, role, child, anchor);
-    }
-  }
-
-  /**
-   * todo rewrite the code via snode methods
-   */
-  public static void insertChild(SNode parent, String role, SNode child, SNode anchor) {
-    if (anchor != null) {
-      parent.insertChildBefore(role, child, ((jetbrains.mps.smodel.SNode) anchor).treeNext());
-      return;
-    }
-    Iterator<? extends SNode> it = parent.getChildren().iterator();
-    parent.insertChildBefore(role, child, (it.hasNext() ?
-      it.next() :
-      null
-    ));
-  }
-
-  /**
-   * todo KILL IT! should not be used since nodes are not passed between read actions
-   * todo after killing it, correct migration script to return false instead
-   */
-  @Deprecated
-  public static boolean isDisposed(SNode node) {
-    return ((jetbrains.mps.smodel.SNode) node).isDisposed();
-  }
-
   /**
    * this is an utility method common to all nodes but needed only for our debug purposes, so we don't put it into SNode
+   * 
+   * @deprecated use SNode.getName, SNode.getModel or whatever info you really need. 
    */
+  @Deprecated
   public static String getDebugText(SNode node) {
-    return SNodeUtil.getDebugText(((SNode) node));
+    String roleText = "";
+    if (node.getModel() != null) {
+      SNode parent = node.getParent();
+      roleText = (parent == null ? "[root]" : "[" + node.getContainmentLink().getRoleName() + "]");
+    }
+    String nameText = null;
+    String modelName;
+    try {
+      if (node.getConcept().isSubConceptOf(SNodeUtil.concept_LinkDeclaration)) {
+        String role = SNodeAccessUtil.getProperty(node, SNodeUtil.property_LinkDeclaration_role);
+        if ((role != null && role.length() > 0)) {
+          nameText = '\"' + role + '\"';
+        } else {
+          nameText = "<no ref>";
+        }
+      } else if (node.getConcept().isSubConceptOf(SNodeUtil.concept_INamedConcept)) {
+        String name = SNodeAccessUtil.getProperty(node, SNodeUtil.property_INamedConcept_name);
+        if ((name != null && name.length() > 0)) {
+          nameText = '\"' + name + '\"';
+        } else {
+          nameText = "<no name>";
+        }
+      }
+      nameText = nameText + "[" + node.getNodeId() + "]";
+      SModel model = node.getModel();
+      modelName = (model != null ? model.getModelName() : "<no model>");
+    } catch (Exception e) {
+      nameText = "<??name??>";
+      modelName = "<??model??>";
+    }
+    return roleText + " " + node.getConcept().getName() + " " + nameText + " in " + modelName;
   }
-
-  public static Set<String> getChildRoles(SNode n, boolean includeAttributeRoles) {
-    final Set<String> augend = new HashSet<String>();
+  /**
+   * 
+   * @deprecated use either SNode.getChildren.select(it->it.role) or SNode.getConcept.getContainmentLinks depending on what you want to get
+   */
+  @Deprecated
+  public static Set<SContainmentLink> getChildRoles(SNode n, boolean includeAttributeRoles) {
+    final Set<SContainmentLink> augend = new HashSet<SContainmentLink>();
     for (SNode child : n.getChildren()) {
       if (includeAttributeRoles || !((AttributeOperations.isAttribute(child)))) {
-        augend.add(child.getRoleInParent());
+        augend.add(child.getContainmentLink());
       }
     }
     return augend;
   }
-
+  /**
+   * 
+   * @deprecated use node/../.child or SNode.getChildren
+   */
+  @Deprecated
+  public static SNode getChild(SNode node, SContainmentLink role) {
+    Iterable<? extends SNode> children = node.getChildren(role);
+    if (!(children.iterator().hasNext())) {
+      return null;
+    }
+    return children.iterator().next();
+  }
+  /**
+   * 
+   * @deprecated rewrite using SContainmentLink, don't use by-string roles
+   */
+  @Deprecated
   public static SNode getChild(SNode node, String role) {
     Iterable<? extends SNode> children = node.getChildren(role);
     if (!(children.iterator().hasNext())) {
@@ -215,24 +222,34 @@ public class SNodeOperations {
     }
     return children.iterator().next();
   }
-
   /**
    * This will be replaced by getting resolve info from a reference in a context containing it
+   * 
+   * @deprecated use SNodeUtil.getResolveInfo (note it does not return name in case of !isInstanceOf(IResolveInfo))
    */
+  @Deprecated
   public static String getResolveInfo(SNode n) {
-    String resolveInfo = jetbrains.mps.smodel.SNodeUtil.getResolveInfo(((SNode) n));
+    String resolveInfo = SNodeUtil.getResolveInfo(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo")));
     if (resolveInfo != null) {
       return resolveInfo;
     }
-    return n.getProperty(jetbrains.mps.smodel.SNodeUtil.property_INamedConcept_name);
+    return SPropertyOperations.getString(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
-
+  /**
+   * 
+   * @deprecated use node/../.copy or copy manually
+   */
+  @Deprecated
   public static void copyProperties(SNode from, final SNode to) {
-    for (String name : Sequence.fromIterable(from.getPropertyNames())) {
-      to.setProperty(name, from.getProperty(name));
+    for (SProperty p : Sequence.fromIterable(from.getProperties())) {
+      to.setProperty(p, from.getProperty(p));
     }
   }
-
+  /**
+   * 
+   * @deprecated use SNode.getConcept.getLanguage (+.getSourceModule?)
+   */
+  @Deprecated
   public static Language getLanguage(SNode node) {
     final SLanguage language = node.getConcept().getLanguage();
     if (language == null) {
@@ -240,123 +257,81 @@ public class SNodeOperations {
     }
     return ModuleRepositoryFacade.getInstance().getModule(language.getQualifiedName(), Language.class);
   }
-
+  /**
+   * 
+   * @deprecated don't use user objects, store them separately
+   */
+  @Deprecated
   public static void copyUserObjects(SNode from, final SNode to) {
-    for (Object key : Sequence.fromIterable(from.getUserObjectKeys())) {
+    for (Object key : from.getUserObjectKeys()) {
       to.putUserObject(key, from.getUserObject(key));
     }
   }
 
-  public static SModel getModelFromNodeReference(SNodeReference ref) {
-    SModelReference mr = ref.getModelReference();
-    if (mr == null) {
-      return null;
-    }
-    return SModelRepository.getInstance().getModelDescriptor(mr);
-  }
-
-  private static class DescendantsIterable implements Iterator<SNode>, Iterable<SNode> {
-    private Condition<SNode> condition;
-    private Queue<SNode> queue = new LinkedList<SNode>();
-    private SNode current;
-
-    /*package*/ DescendantsIterable(SNode original, @Nullable Condition<SNode> condition, boolean includeFirst) {
-      this.condition = condition;
-      current = original;
-      if (current != null) {
-        for (SNode child : current.getChildren()) {
-          queue.offer(child);
-        }
-      }
-      if (!(includeFirst)) {
-        current = nextInternal();
-      }
-      while (current != null && condition != null && !(current instanceof SNode && condition.met(((SNode) current)))) {
-        current = nextInternal();
-      }
-    }
-
-    @Override
-    public boolean hasNext() {
-      return current != null;
-    }
-
-    @Override
-    public SNode next() {
-      SNode result = current;
-      do {
-        current = nextInternal();
-      } while (current != null && condition != null && !(current instanceof SNode && condition.met(((SNode) current))));
-      return ((SNode) result);
-    }
-
-    @Override
-    public void remove() {
-      throw new UnsupportedOperationException();
-    }
-
-    private SNode nextInternal() {
-      SNode next = queue.poll();
-      if (next == null) {
-        return null;
-      }
-      for (SNode child : next.getChildren()) {
-        queue.offer(child);
-      }
-      return next;
-    }
-
-    @Override
-    public Iterator<SNode> iterator() {
-      return this;
-    }
-  }
-
+  /**
+   * 
+   * @deprecated not supposed to be used not in MPS core. Use ref.getTargetNode
+   */
+  @Deprecated
   public static SNode getTargetNodeSilently(SReference ref) {
+    boolean needToEnableLogging = false;
     try {
-      jetbrains.mps.smodel.SReference.disableLogging();
+      needToEnableLogging = jetbrains.mps.smodel.SReference.disableLogging();
       return ref.getTargetNode();
     } finally {
-      jetbrains.mps.smodel.SReference.enableLogging();
+      if (needToEnableLogging) {
+        jetbrains.mps.smodel.SReference.enableLogging();
+      }
     }
   }
-
+  /**
+   * 
+   * @deprecated inline
+   */
+  @Deprecated
   public static String getModelStereotype(SModel model) {
-    String name = model.getModelName();
-    int index = name.indexOf("@");
-    return (index == -1 ?
-      "" :
-      name.substring(index + 1)
-    );
+    return (model != null ? SModelStereotype.getStereotype(model) : null);
   }
-
+  /**
+   * 
+   * @deprecated inline
+   */
+  @Deprecated
   public static String getModelLongName(SModel model) {
     return NameUtil.getModelLongName(model);
   }
 
-  public static List<SModuleReference> getUsedLanguages(SModel model) {
-    Iterable<SModuleReference> languages = ((SModelInternal) model).importedLanguages();
-    return Sequence.fromIterable(languages).toListSequence();
-  }
-
+  /**
+   * 
+   * @deprecated use model.getRepository!=null. AP: I tried and it is not the same. Why?
+   */
+  @Deprecated
   public static boolean isModelDisposed(SModel model) {
-    return ((SModelInternal) model).isDisposed();
+    return ((SModelInternal) model).getDisposedStacktrace() != null;
   }
-
-  public static FastNodeFinder getModelFastFinder(SModel model) {
-    return ((SModelInternal) model).getFastNodeFinder();
-  }
-
+  /**
+   * 
+   * @deprecated inline
+   */
+  @Deprecated
   public static int nodesCount(SModel model) {
-    return IterableUtil.asCollection(SNodeUtil.getDescendants(model)).size();
+    return IterableUtil.asCollection(org.jetbrains.mps.openapi.model.SNodeUtil.getDescendants(model)).size();
   }
-
+  /**
+   * 
+   * @deprecated use model.getRepository!=null
+   */
+  @Deprecated
   public static boolean isRegistered(SModel model) {
-    return !(model.getRepository() == null || ((SModelBase) model).isDisposed());
+    return model.getRepository() != null;
   }
-
+  /**
+   * 
+   * @deprecated not supposed to be used outside of MPS core, inline if you use it
+   */
+  @Deprecated
   public static boolean isGeneratable(SModel model) {
-    assert model instanceof SModel;
+    // I wonder why this method doesn't reside in SModelOperations 
     return model instanceof GeneratableSModel && ((GeneratableSModel) model).isGeneratable();
   }
 }

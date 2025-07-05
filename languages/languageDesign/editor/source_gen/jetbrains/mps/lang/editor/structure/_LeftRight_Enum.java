@@ -4,33 +4,36 @@ package jetbrains.mps.lang.editor.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum _LeftRight_Enum {
   left("left", true),
   right("right", false);
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final boolean myValue;
+  _LeftRight_Enum(String name, boolean value) {
+    myName = name;
+    myValue = value;
+  }
+  public boolean getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return "" + this.myValue;
+    return Boolean.toString(myValue);
   }
-
   public static List<_LeftRight_Enum> getConstants() {
     List<_LeftRight_Enum> list = ListSequence.fromList(new LinkedList<_LeftRight_Enum>());
     ListSequence.fromList(list).addElement(_LeftRight_Enum.left);
     ListSequence.fromList(list).addElement(_LeftRight_Enum.right);
     return list;
   }
-
   public static _LeftRight_Enum getDefault() {
     return _LeftRight_Enum.left;
   }
-
   public static _LeftRight_Enum parseValue(String value) {
     if (value == null) {
       return _LeftRight_Enum.getDefault();
@@ -42,16 +45,5 @@ public enum _LeftRight_Enum {
       return _LeftRight_Enum.right;
     }
     return _LeftRight_Enum.getDefault();
-  }
-
-  private boolean myValue;
-
-  _LeftRight_Enum(String name, boolean value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public boolean getValue() {
-    return this.myValue;
   }
 }

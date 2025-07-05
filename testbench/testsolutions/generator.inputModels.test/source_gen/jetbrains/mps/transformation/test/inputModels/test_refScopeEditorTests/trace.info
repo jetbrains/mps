@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <root nodeRef="r:2ab484bd-6d9e-44f0-999f-0e78b0351ba4(jetbrains.mps.transformation.test.inputModels.test_refScopeEditorTests)/3715568794894753648">
+    <file name="refScopeInInputLang_paramConflict_Test.java">
+      <node id="3715568794894753648" at="13,73,14,142" concept="0" />
+      <node id="3715568794894753648" at="14,142,15,155" concept="0" />
+      <node id="3715568794894753648" at="21,51,22,72" concept="0" />
+      <node id="3715568794894764092" at="22,72,23,22" concept="0" />
+      <node id="3715568794894753648" at="12,0,17,0" concept="1" trace="test_refScopeInInputLang_paramConflict#()V" />
+      <node id="3715568794894753648" at="20,0,25,0" concept="1" trace="testMethodImpl#()V" />
+      <scope id="3715568794894753648" at="13,73,15,155" />
+      <scope id="3715568794894753648" at="21,51,23,22" />
+      <scope id="3715568794894753648" at="12,0,17,0" />
+      <scope id="3715568794894753648" at="20,0,25,0" />
+      <unit id="3715568794894753648" at="18,0,26,0" name="jetbrains.mps.transformation.test.inputModels.test_refScopeEditorTests.refScopeInInputLang_paramConflict_Test$TestBody" />
+      <unit id="3715568794894753648" at="10,0,27,0" name="jetbrains.mps.transformation.test.inputModels.test_refScopeEditorTests.refScopeInInputLang_paramConflict_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:2ab484bd-6d9e-44f0-999f-0e78b0351ba4(jetbrains.mps.transformation.test.inputModels.test_refScopeEditorTests)/3715568794894764093">
+    <file name="refScopeInInputLang_superMeth_Test.java">
+      <node id="3715568794894764093" at="13,69,14,142" concept="0" />
+      <node id="3715568794894764093" at="14,142,15,151" concept="0" />
+      <node id="3715568794894764093" at="21,51,22,72" concept="0" />
+      <node id="3715568794894764215" at="22,72,23,27" concept="0" />
+      <node id="3715568794894764093" at="12,0,17,0" concept="1" trace="test_refScopeInInputLang_superMeth#()V" />
+      <node id="3715568794894764093" at="20,0,25,0" concept="1" trace="testMethodImpl#()V" />
+      <scope id="3715568794894764093" at="13,69,15,151" />
+      <scope id="3715568794894764093" at="21,51,23,27" />
+      <scope id="3715568794894764093" at="12,0,17,0" />
+      <scope id="3715568794894764093" at="20,0,25,0" />
+      <unit id="3715568794894764093" at="18,0,26,0" name="jetbrains.mps.transformation.test.inputModels.test_refScopeEditorTests.refScopeInInputLang_superMeth_Test$TestBody" />
+      <unit id="3715568794894764093" at="10,0,27,0" name="jetbrains.mps.transformation.test.inputModels.test_refScopeEditorTests.refScopeInInputLang_superMeth_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:2ab484bd-6d9e-44f0-999f-0e78b0351ba4(jetbrains.mps.transformation.test.inputModels.test_refScopeEditorTests)/5934496548013480005">
+    <file name="refScopesInInputLang_Test.java">
+      <node id="5934496548013480005" at="13,60,14,142" concept="0" />
+      <node id="5934496548013480005" at="14,142,15,142" concept="0" />
+      <node id="5934496548013480005" at="21,51,22,72" concept="0" />
+      <node id="5934496548013480021" at="22,72,23,25" concept="0" />
+      <node id="5934496548013480005" at="12,0,17,0" concept="1" trace="test_refScopesInInputLang#()V" />
+      <node id="5934496548013480005" at="20,0,25,0" concept="1" trace="testMethodImpl#()V" />
+      <scope id="5934496548013480005" at="13,60,15,142" />
+      <scope id="5934496548013480005" at="21,51,23,25" />
+      <scope id="5934496548013480005" at="12,0,17,0" />
+      <scope id="5934496548013480005" at="20,0,25,0" />
+      <unit id="5934496548013480005" at="18,0,26,0" name="jetbrains.mps.transformation.test.inputModels.test_refScopeEditorTests.refScopesInInputLang_Test$TestBody" />
+      <unit id="5934496548013480005" at="10,0,27,0" name="jetbrains.mps.transformation.test.inputModels.test_refScopeEditorTests.refScopesInInputLang_Test" />
+    </file>
+  </root>
+</debug-info>
+

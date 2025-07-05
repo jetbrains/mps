@@ -5,11 +5,15 @@ package jetbrains.mps.analyzers.runtime.framework;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.dataFlow.framework.Program;
 
+/**
+ * 
+ * @deprecated use jetbrains.mps.lang.dataFlow.framework.DataFlowConstructor
+ */
+@Deprecated
 public abstract class DataFlowConstructor {
+  @Deprecated
   public DataFlowConstructor() {
   }
-
   public abstract boolean isApplicable(SNode node);
-
   public abstract void performActions(Program program, SNode node);
 }

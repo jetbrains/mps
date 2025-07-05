@@ -6,14 +6,15 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 
 public class PatternAddingUtil {
   public PatternAddingUtil() {
   }
-
   public static boolean isPatternApplicable(EditorContext context) {
     EditorCell contextCell = context.getSelectedCell();
     if (contextCell == null) {
@@ -23,17 +24,17 @@ public class PatternAddingUtil {
     if (node == null) {
       return false;
     }
-    return SNodeOperations.getAncestor(node, "jetbrains.mps.lang.pattern.structure.PatternExpression", true, false) != null;
+    return SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression"), true, false) != null;
   }
-
   public static void addVariablePattern(EditorContext context) {
     EditorCell contextCell = context.getSelectedCell();
     SNode node = contextCell.getSNode();
     if (contextCell.isReferenceCell()) {
       String role = contextCell.getRole();
-      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.LinkAttribute(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration"), role), "jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration");
+      SReferenceLink ref = ((ConceptMetaInfoConverter) SNodeOperations.getConcept(node)).convertAssociation(role);
+      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.LinkAttribute(MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108d36d955aL, "jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration"), ref), MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108d36d955aL, "jetbrains.mps.lang.pattern.structure.LinkPatternVariableDeclaration"));
     } else {
-      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.pattern.structure.Pattern")), "jetbrains.mps.lang.pattern.structure.PatternVariableDeclaration");
+      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb478fL, "jetbrains.mps.lang.pattern.structure.Pattern")), MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, "jetbrains.mps.lang.pattern.structure.PatternVariableDeclaration"));
     }
   }
 }

@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import org.apache.tools.ant.BuildException;
 import org.jetbrains.annotations.NotNull;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.net.MalformedURLException;
+import java.io.UnsupportedEncodingException;
 import java.util.Set;
 
 public class MPSClasspathUtil {
@@ -18,9 +21,8 @@ public class MPSClasspathUtil {
   private static final String JAR_DELIMITER = "!";
   private static final String PROTOCOL_DELIMITER = ":";
 
-  private static final String[] CLASSPATH = new String[]{"trove4j.jar", "mps-collections.jar", "mps-closures.jar", "mps-tuples.jar", "mps-openapi.jar", "mps-core.jar", "mps-tool.jar"};
-  private static final String[] FORK_CLASSPATH = new String[]{"jdom.jar", "log4j.jar", "ecj-4.2.1.jar", "xstream-1.4.3.jar", "asm4-all.jar", "diffutils-1.2.1.jar", "junit-4.10.jar"};
-
+  private static final String[] CLASSPATH = new String[]{"trove4j.jar", "mps-collections.jar", "mps-closures.jar", "mps-tuples.jar", "mps-openapi.jar", "mps-core.jar", "mps-tool.jar", "mps-behavior-api.jar", "mps-behavior-runtime.jar", "mps-logging.jar", "mps-annotations.jar", "mps-boot-util.jar"};
+  private static final String[] FORK_CLASSPATH = new String[]{"jdom.jar", "log4j.jar", "ecj-4.6.2.jar", "xstream-1.4.8.jar", "asm4-all.jar", "asm-all.jar", "diffutils-1.2.1.jar", "junit-4.12.jar", "javac2.jar"};
 
 
   public static Collection<File> buildClasspath(Project antProject, File mpsHomeArg, boolean fork) {
@@ -53,7 +55,6 @@ public class MPSClasspathUtil {
     MPSClasspathUtil.collectClasspath(CLASSPATH, homeFolders, result);
     return result;
   }
-
   public static List<File> getHomeFolders(Project antProject, File mpsHomeArg) {
     List<File> homeFolders = new ArrayList<File>();
 
@@ -73,7 +74,6 @@ public class MPSClasspathUtil {
 
     return homeFolders;
   }
-
   private static void collectClasspath(String[] fileNames, List<File> homeFolders, List<File> result) {
     for (String name : fileNames) {
       File file = null;
@@ -91,7 +91,6 @@ public class MPSClasspathUtil {
       }
     }
   }
-
   public static File resolveMPSHome(Project antProject, boolean failOtherwise) {
     String mpsHomePath = antProject.getProperty("mps.home");
     if ((mpsHomePath == null || mpsHomePath.length() == 0)) {
@@ -106,7 +105,6 @@ public class MPSClasspathUtil {
     }
     return antProject.resolveFile(mpsHomePath);
   }
-
   private static File getAntJARRelativeHome() {
     String containingJar = getAntMPSJar();
     if (!(containingJar.toLowerCase().endsWith(".jar"))) {
@@ -124,13 +122,11 @@ public class MPSClasspathUtil {
     }
     throw new BuildException("cannot detect jar location, no mps-core.jar `" + containingJar + "'");
   }
-
   @NotNull
   private static String getAntMPSJar() {
     Class aClass = MPSClasspathUtil.class;
     return getResourceRoot(aClass, "/" + aClass.getName().replace('.', '/') + ".class");
   }
-
   /**
    * Attempts to detect classpath entry which contains given resource
    */
@@ -143,15 +139,20 @@ public class MPSClasspathUtil {
     if (url == null) {
       throw new BuildException("cannot detect jar location; no resource `" + path + "'");
     }
+    // try to decode non-latin characters in url (MPS-20091) 
+    try {
+      url = new URL(url.getProtocol(), url.getHost(), url.getPort(), URLDecoder.decode(url.getFile(), "UTF-8"));
+    } catch (MalformedURLException e) {
+    } catch (UnsupportedEncodingException e) {
+    }
     return extractRoot(url, path);
   }
-
   /**
    * Attempts to extract classpath entry part from passed URL.
    */
   @NotNull
   private static String extractRoot(@NotNull URL resourceURL, String resourcePath) {
-    if (!(resourcePath.startsWith("/") || resourcePath.startsWith("\\"))) {
+    if (!((resourcePath.startsWith("/") || resourcePath.startsWith("\\")))) {
       throw new BuildException("cannot detect jar location: precondition failed for" + resourcePath);
     }
     String protocol = resourceURL.getProtocol();
@@ -185,7 +186,6 @@ public class MPSClasspathUtil {
 
     return replace(resultPath, "%20", " ");
   }
-
   @NotNull
   private static String replace(@NotNull String text, @NotNull String from, @NotNull String to) {
     final StringBuilder result = new StringBuilder(text.length());
@@ -200,7 +200,6 @@ public class MPSClasspathUtil {
     }
     return result.toString();
   }
-
   public static List<File> getClassPathRootsFromDependencies(Project project) {
     List<File> roots = new ArrayList<File>();
 
@@ -228,7 +227,6 @@ public class MPSClasspathUtil {
 
     return roots;
   }
-
   public static void gatherAllClassesAndJarsUnder(File dir, Set<File> result) {
     if (dir.getName().equals("classes") || dir.getName().equals("classes_gen") || dir.getName().equals("apiclasses")) {
       result.add(dir);

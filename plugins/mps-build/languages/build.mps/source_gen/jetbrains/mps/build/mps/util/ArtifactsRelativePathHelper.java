@@ -9,19 +9,21 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import java.util.Stack;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 
 public class ArtifactsRelativePathHelper {
   private VisibleArtifacts artifacts;
   private Map<SNode, String> prefixes = MapSequence.fromMap(new HashMap<SNode, String>());
-
   public ArtifactsRelativePathHelper(VisibleArtifacts output, SNode anchor) {
     this.artifacts = output;
 
@@ -29,14 +31,11 @@ public class ArtifactsRelativePathHelper {
     StringBuilder sb = new StringBuilder();
     while (parent.value != null) {
       MapSequence.fromMap(prefixes).put(parent.value, sb.toString());
-      if (SNodeOperations.isInstanceOf(parent.value, "jetbrains.mps.build.structure.BuildLayout_Folder")) {
-        for (SNode sfolder : ListSequence.fromList(SNodeOperations.getAllSiblings(parent.value, false)).where(new IWhereFilter<SNode>() {
+      if (SNodeOperations.isInstanceOf(parent.value, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder"))) {
+        // Although not sure, the code below seems to address multiple folder entiries with the same name under single parent (build language allows that) 
+        for (SNode sfolder : Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(parent.value, false), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder"))).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, "jetbrains.mps.build.structure.BuildLayout_Folder") && it != parent.value && equalFolders(SNodeOperations.cast(parent.value, "jetbrains.mps.build.structure.BuildLayout_Folder"), SNodeOperations.cast(it, "jetbrains.mps.build.structure.BuildLayout_Folder"));
-          }
-        }).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return SNodeOperations.cast(it, "jetbrains.mps.build.structure.BuildLayout_Folder");
+            return it != parent.value && equalFolders(SNodeOperations.as(parent.value, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder")), it);
           }
         })) {
           MapSequence.fromMap(prefixes).put(sfolder, sb.toString());
@@ -47,7 +46,18 @@ public class ArtifactsRelativePathHelper {
     }
   }
 
-  public String getRelativePath(SNode node) throws ArtifactsRelativePathHelper.RelativePathException {
+  /**
+   * It's assumed source path is under same layout as 'container' node
+   */
+  public String getRelativePath(SNode bsp) throws ArtifactsRelativePathHelper.RelativePathException {
+    Tuples._2<SNode, String> location = artifacts.getResource(bsp);
+    if (location._0() == null) {
+      throw new ArtifactsRelativePathHelper.RelativePathException("No such path in local layout");
+    }
+
+    SNode node = location._0();
+
+    //  names: build path to bsp from a location that is common with 'container' node 
     Stack<SNode> names = new Stack<SNode>();
     names.push(node);
     SNode parent = artifacts.parent(node);
@@ -65,76 +75,70 @@ public class ArtifactsRelativePathHelper {
     while (!(names.isEmpty())) {
       SNode elem = names.pop();
       boolean lastElement = names.isEmpty();
-      if (SNodeOperations.isInstanceOf(elem, "jetbrains.mps.build.structure.BuildLayout_TransparentContainer")) {
+      if (SNodeOperations.isInstanceOf(elem, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x286d67dde532a284L, "jetbrains.mps.build.structure.BuildLayout_TransparentContainer"))) {
         continue;
       }
       result.append(getNodeName(elem, lastElement));
       if (!(lastElement)) {
-        result.append("/");
+        result.append('/');
       }
     }
+    result.append(location._1());
     return result.toString();
   }
 
   private String getNodeName(SNode node, boolean isLast) throws ArtifactsRelativePathHelper.RelativePathException {
-    if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.build.structure.BuildLayout_Folder")) {
-      return getBSName(SLinkOperations.getTarget(SNodeOperations.cast(node, "jetbrains.mps.build.structure.BuildLayout_Folder"), "containerName", true));
-    } else if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.build.structure.BuildLayout_Copy") && isLast) {
-      SNode fileset = SLinkOperations.getTarget(SNodeOperations.cast(node, "jetbrains.mps.build.structure.BuildLayout_Copy"), "fileset", true);
-      if (SNodeOperations.isInstanceOf(fileset, "jetbrains.mps.build.structure.BuildInputSingleFile")) {
-        return BehaviorReflection.invokeVirtual(String.class, SLinkOperations.getTarget(SNodeOperations.cast(fileset, "jetbrains.mps.build.structure.BuildInputSingleFile"), "path", true), "virtual_getLastSegment_1368030936106771141", new Object[]{null});
+    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder"))) {
+      return getBSName(SLinkOperations.getTarget(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder")), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName")));
+    } else if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92339b9L, "jetbrains.mps.build.structure.BuildLayout_Copy")) && isLast) {
+      SNode fileset = SLinkOperations.getTarget(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92339b9L, "jetbrains.mps.build.structure.BuildLayout_Copy")), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset"));
+      if (SNodeOperations.isInstanceOf(fileset, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, "jetbrains.mps.build.structure.BuildInputSingleFile"))) {
+        return BuildSourcePath__BehaviorDescriptor.getLastSegment_id1bWeed$oUb5.invoke(SLinkOperations.getTarget(SNodeOperations.cast(fileset, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, "jetbrains.mps.build.structure.BuildInputSingleFile")), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path")), null);
       } else {
-        throw new ArtifactsRelativePathHelper.RelativePathException("cannot build relative path for copy, fileset is " + SPropertyOperations.getString(SNodeOperations.getConceptDeclaration(node), "name"));
+        throw new ArtifactsRelativePathHelper.RelativePathException("cannot build relative path for copy, fileset is " + SNodeOperations.getConcept(node).getName());
       }
-    } else if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.build.structure.BuildLayout_File") && isLast) {
-      return BehaviorReflection.invokeVirtual(String.class, SLinkOperations.getTarget(SNodeOperations.cast(node, "jetbrains.mps.build.structure.BuildLayout_File"), "path", true), "virtual_getLastSegment_1368030936106771141", new Object[]{null});
+    } else if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, "jetbrains.mps.build.structure.BuildLayout_File")) && isLast) {
+      return BuildSourcePath__BehaviorDescriptor.getLastSegment_id1bWeed$oUb5.invoke(SLinkOperations.getTarget(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, "jetbrains.mps.build.structure.BuildLayout_File")), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c11aL, "path")), null);
     }
-    throw new ArtifactsRelativePathHelper.RelativePathException("cannot build relative path for " + SPropertyOperations.getString(SNodeOperations.getConceptDeclaration(node), "name"));
+    throw new ArtifactsRelativePathHelper.RelativePathException("cannot build relative path for " + SNodeOperations.getConcept(node).getName());
   }
-
   private String getBSName(SNode string) throws ArtifactsRelativePathHelper.RelativePathException {
-    if (ListSequence.fromList(SLinkOperations.getTargets(string, "parts", true)).any(new IWhereFilter<SNode>() {
+    if (ListSequence.fromList(SLinkOperations.getChildren(string, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts"))).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, "jetbrains.mps.build.structure.BuildTextStringPart"));
+        return !(SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart")));
       }
     })) {
       throw new ArtifactsRelativePathHelper.RelativePathException("macros are not allowed");
     }
-    return IterableUtils.join(ListSequence.fromList(SLinkOperations.getTargets(string, "parts", true)).select(new ISelector<SNode, String>() {
+    return IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(string, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts"))).select(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        return SPropertyOperations.getString(SNodeOperations.cast(it, "jetbrains.mps.build.structure.BuildTextStringPart"), "text");
+        return SPropertyOperations.getString(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart")), MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text"));
       }
     }), " ");
   }
-
   private boolean equalFolders(SNode left, SNode right) {
     if (SNodeOperations.getParent(left) != SNodeOperations.getParent(right)) {
       return false;
     }
-    if (ListSequence.fromList(SLinkOperations.getTargets(SLinkOperations.getTarget(left, "containerName", true), "parts", true)).all(new IWhereFilter<SNode>() {
+    if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(left, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName")), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts"))).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, "jetbrains.mps.build.structure.BuildTextStringPart");
+        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart"));
       }
-    }) && ListSequence.fromList(SLinkOperations.getTargets(SLinkOperations.getTarget(right, "containerName", true), "parts", true)).all(new IWhereFilter<SNode>() {
+    }) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(right, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName")), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts"))).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, "jetbrains.mps.build.structure.BuildTextStringPart");
+        return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart"));
       }
     })) {
-      return eq_fa9ylc_a0a0b0g(SPropertyOperations.getString(left, "name"), SPropertyOperations.getString(right, "name"));
+      return eq_fa9ylc_a0a0b0i(SPropertyOperations.getString(left, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")), SPropertyOperations.getString(right, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
     }
     return false;
   }
-
   public static class RelativePathException extends Exception {
     public RelativePathException(String p0) {
       super(p0);
     }
   }
-
-  private static boolean eq_fa9ylc_a0a0b0g(Object a, Object b) {
-    return (a != null ?
-      a.equals(b) :
-      a == b
-    );
+  private static boolean eq_fa9ylc_a0a0b0i(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
   }
 }

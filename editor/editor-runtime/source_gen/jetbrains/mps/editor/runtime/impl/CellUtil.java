@@ -4,49 +4,73 @@ package jetbrains.mps.editor.runtime.impl;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.List;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.smodel.runtime.ConceptPresentation;
+import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class CellUtil {
   public CellUtil() {
   }
-
   public static void setupIDeprecatableStyles(SNode node, EditorCell cell) {
-    SNode deprecatable = SNodeOperations.as(node, "jetbrains.mps.lang.core.structure.IDeprecatable");
-    if (deprecatable != null && (BehaviorReflection.invokeVirtual(Boolean.TYPE, deprecatable, "virtual_isDeprecated_1224609060727", new Object[]{}) || BehaviorReflection.invokeVirtual(Boolean.TYPE, SNodeOperations.getConceptDeclaration(deprecatable), "virtual_isDeprecated_1224609060727", new Object[]{}))) {
+    if (isNodeDeprecated(node)) {
       cell.getStyle().set(StyleAttributes.STRIKE_OUT, true);
     }
   }
 
+  private static boolean isNodeDeprecated(SNode node) {
+    if (isConceptDeprecated(node)) {
+      return true;
+    }
+    if (!(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11d205fe38dL, "jetbrains.mps.lang.core.structure.IDeprecatable")))) {
+      return false;
+    }
+    return ((boolean) (Boolean) BHReflection.invoke(SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11d205fe38dL, "jetbrains.mps.lang.core.structure.IDeprecatable")), SMethodTrimmedId.create("isDeprecated", null, "hOwoPtR")));
+  }
+  private static boolean isConceptDeprecated(SNode node) {
+    ConceptPresentation cp = ConceptAspectsHelper.getPresentationAspect(node);
+    if (cp == null) {
+      return false;
+    }
+    return cp.isDeprecated();
+  }
   public static SNode getNodeToDelete(SNode node) {
-    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), "jetbrains.mps.lang.core.structure.IWrapper")) {
+    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11c6fd75034L, "jetbrains.mps.lang.core.structure.IWrapper"))) {
       node = SNodeOperations.getParent(node);
     }
     return node;
   }
-
-  public static SNode getConceptPropertyDeclaration(SNode node, final String conceptPropertyName) {
-    return ListSequence.fromList(BehaviorReflection.invokeNonVirtual((Class<List<SNode>>) ((Class) Object.class), SNodeOperations.getConceptDeclaration(node), "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration", "call_getConceptPropertyDeclarations_1213877394562", new Object[]{})).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return conceptPropertyName.equals(SPropertyOperations.getString(it, "name"));
-      }
-    });
-  }
-
   /**
    * TODO: think of moving jetbrains.mps.lang.editor.generator.internal into MPS
    */
   public static SNode getLinkDeclarationTarget(SNode linkDeclaration) {
-    return SLinkOperations.getTarget(linkDeclaration, "target", false);
+    return SLinkOperations.getTarget(linkDeclaration, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target"));
   }
-
   public static String getLinkDeclarationRole(SNode linkDeclaration) {
-    return SPropertyOperations.getString(linkDeclaration, "role");
+    return SPropertyOperations.getString(linkDeclaration, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role"));
+  }
+  public static SContainmentLink getCellContainmentLink(EditorCell cell) {
+    SNode node = cell.getSNode();
+    if (node == null) {
+      return null;
+    }
+    String role = cell.getRole();
+    if (role == null) {
+      return null;
+    }
+
+    // todo remove getLink(role) when cell will have link 
+    for (SContainmentLink link : node.getConcept().getContainmentLinks()) {
+      if (link.getName().equals(role)) {
+        return link;
+      }
+    }
+    return null;
   }
 }

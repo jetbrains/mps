@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,11 @@ package jetbrains.mps.idea.java.index;
 
 import com.intellij.util.indexing.DataIndexer;
 import com.intellij.util.indexing.FileContent;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.Project;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.util.CollectConsumer;
-import jetbrains.mps.workbench.goTo.index.RootNodeNameIndex;
+import jetbrains.mps.workbench.index.RootNodeNameIndex;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -34,10 +32,12 @@ import org.jetbrains.mps.openapi.util.Consumer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * FIXME see {@link SNodeDescriptorsDataExternalizer} for details
  * User: fyodor
  * Date: 3/28/13
  */
@@ -45,7 +45,7 @@ import java.util.Map;
 
   private static final Logger LOG = Logger.getLogger(AbstractSModelIndexer.class);
 
-  public static final String[] JAVA_CLASS_CONCEPTS = {
+  private static final String[] JAVA_CLASS_CONCEPTS = {
     "jetbrains.mps.baseLanguage.structure.Annotation",
     "jetbrains.mps.baseLanguage.structure.ClassConcept",
     "jetbrains.mps.baseLanguage.structure.EnumClass",
@@ -54,7 +54,7 @@ import java.util.Map;
     "jetbrains.mps.baseLanguage.unitTest.structure.BTestCase",
   };
 
-  public static final String[] JAVA_METHOD_CONCEPTS = {
+  private static final String[] JAVA_METHOD_CONCEPTS = {
     "jetbrains.mps.baseLanguage.closures.structure.FunctionMethodDeclaration",
     "jetbrains.mps.baseLanguage.structure.AnnotationMethodDeclaration",
     "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration",
@@ -62,30 +62,29 @@ import java.util.Map;
     "jetbrains.mps.baseLanguage.unitTest.structure.TestMethod",
   };
 
-  public static final String[] JAVA_FIELD_CONCEPTS = {
+  private static final String[] JAVA_FIELD_CONCEPTS = {
     "jetbrains.mps.baseLanguage.structure.FieldDeclaration",
     "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration",
   };
 
-  protected void getJavaClasses(SModel sModel, Consumer<SNode> consumer) {
+  protected void getJavaClasses(SModelData sModel, Consumer<SNode> consumer) {
     for (SNode root : sModel.getRootNodes()) {
       collectJavaClasses(root, consumer);
     }
   }
 
-  protected void getJavaMethods(SModel sModel, Consumer<SNode> consumer) {
-    CollectConsumer<SNode> classes = new CollectConsumer<SNode>(new ArrayList<SNode>());
+  protected void getJavaMethods(SModelData sModel, Consumer<SNode> consumer) {
+    CollectConsumer<SNode> classes = new CollectConsumer<>(new ArrayList<>());
     for (SNode root : sModel.getRootNodes()) {
       collectJavaClasses(root, classes);
     }
-    ArrayList<SNode> methods = new ArrayList<SNode>();
     for (SNode cls : classes.getResult()) {
       collectJavaMethods(cls, consumer);
     }
   }
 
-  protected void getJavaFields(SModel sModel, Consumer<SNode> consumer) {
-    CollectConsumer<SNode> classes = new CollectConsumer<SNode>(new ArrayList<SNode>());
+  protected void getJavaFields(SModelData sModel, Consumer<SNode> consumer) {
+    CollectConsumer<SNode> classes = new CollectConsumer<>(new ArrayList<>());
     for (SNode root : sModel.getRootNodes()) {
       collectJavaClasses(root, classes);
     }
@@ -121,7 +120,7 @@ import java.util.Map;
         continue;
       }
       collectJavaFields(cand, consumer);
-    }
+     }
   }
 
   private boolean isClassOrInterface(SNode sNode) {
@@ -144,45 +143,38 @@ import java.util.Map;
 
   @NotNull
   @Override
-  public Map<String, Collection<E>> map(final FileContent inputData) {
-    Project mpsProject = ProjectHelper.toMPSProject(inputData.getProject());
+  public Map<String, Collection<E>> map(@NotNull final FileContent inputData) {
+    final HashMap<String, Collection<E>> map = new HashMap<>();
 
-    final HashMap<String, Collection<E>> map = new HashMap<String, Collection<E>>();
-
-    ModelAccess.instance().runIndexing(new Runnable() {
-      @Override
-      public void run() {
-        try {
-          final SModel model = RootNodeNameIndex.doModelParsing(inputData);
-          final SModelReference modelRef = model.getReference();
-          getObjectsToIndex(model, new Consumer<S>() {
-            @Override
-            public void consume(S object) {
-              String[] keys = getKeys(model, object);
-
-              for (String key : keys) {
-                Collection<E> collection = map.get(key);
-                if (collection == null) {
-                  collection = new ArrayList<E>();
-                  map.put(key, collection);
-                }
-
-                updateCollection(modelRef, object, collection);
-              }
-            }
-          });
-        } catch (Exception e) {
-          LOG.error("Error indexing model file " + inputData.getFileName() + "; " + e.getMessage());
-        }
+    try {
+      final SModelData model = RootNodeNameIndex.doModelParsing(inputData);
+      if (model == null) {
+        return Collections.emptyMap();
       }
-    });
+      final SModelReference modelRef = model.getReference();
+      getObjectsToIndex(model, object -> {
+        String[] keys = getKeys(model, object);
+
+        for (String key : keys) {
+          Collection<E> collection = map.get(key);
+          if (collection == null) {
+            collection = new ArrayList<>();
+            map.put(key, collection);
+          }
+
+          updateCollection(modelRef, object, collection);
+        }
+      });
+    } catch (Exception e) {
+      LOG.error("Error indexing model file " + inputData.getFileName(), e);
+    }
 
     return map;
   }
 
-  protected abstract void getObjectsToIndex(SModel sModel, Consumer<S> consumer);
+  protected abstract void getObjectsToIndex(SModelData sModel, Consumer<S> consumer);
 
-  protected abstract String[] getKeys(SModel model, S object);
+  protected abstract String[] getKeys(SModelData model, S object);
 
   protected abstract void updateCollection(SModelReference modelRef, S object, Collection<E> collection);
 

@@ -4,6 +4,7 @@ package jetbrains.mps.ide.editor.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.icons.MPSIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -12,70 +13,63 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.DevKit;
 import org.jetbrains.annotations.NotNull;
-import org.apache.log4j.Priority;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import com.intellij.openapi.project.Project;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.project.LanguageImportHelper;
 
 public class AddLanguageImport_Action extends BaseAction {
-  private static final Icon ICON = null;
+  private static final Icon ICON = MPSIcons.Nodes.Language;
 
   public AddLanguageImport_Action() {
     super("Add Language Import", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setExecuteOutsideCommand(true);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return (((SModel) MapSequence.fromMap(_params).get("model")) != null && ((SModel) MapSequence.fromMap(_params).get("model")) instanceof EditableSModel) || (((SModel) MapSequence.fromMap(_params).get("model")) == null && ((SModule) MapSequence.fromMap(_params).get("module")) instanceof DevKit);
+    // 'editable' flag for a context parameter implies 'required', hence the check 
+    return (((SModel) MapSequence.fromMap(_params).get("model")) instanceof EditableSModel && !(((SModel) MapSequence.fromMap(_params).get("model")).isReadOnly())) || (((SModel) MapSequence.fromMap(_params).get("model")) == null && ((SModule) MapSequence.fromMap(_params).get("module")) instanceof DevKit);
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        boolean enabled = this.isApplicable(event, _params);
-        this.setEnabledState(event.getPresentation(), enabled);
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "AddLanguageImport", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("project", event.getData(PlatformDataKeys.PROJECT));
-    if (MapSequence.fromMap(_params).get("project") == null) {
-      return false;
-    }
-    MapSequence.fromMap(_params).put("module", event.getData(MPSCommonDataKeys.CONTEXT_MODULE));
-    if (MapSequence.fromMap(_params).get("module") == null) {
-      return false;
-    }
-    MapSequence.fromMap(_params).put("model", event.getData(MPSCommonDataKeys.CONTEXT_MODEL));
-    return true;
-  }
-
-  public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      ImportHelper.addLanguageImport(((Project) MapSequence.fromMap(_params).get("project")), ((SModule) MapSequence.fromMap(_params).get("module")), ((SModel) MapSequence.fromMap(_params).get("model")), AddLanguageImport_Action.this);
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "AddLanguageImport", t);
+    {
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      MapSequence.fromMap(_params).put("project", p);
+      if (p == null) {
+        return false;
       }
     }
+    {
+      SModule p = event.getData(MPSCommonDataKeys.CONTEXT_MODULE);
+      MapSequence.fromMap(_params).put("module", p);
+      if (p == null) {
+        return false;
+      }
+    }
+    {
+      SModel p = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
+      MapSequence.fromMap(_params).put("model", p);
+    }
+    return true;
   }
-
-  protected static Logger LOG = LogManager.getLogger(AddLanguageImport_Action.class);
+  @Override
+  public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
+    LanguageImportHelper helper = new LanguageImportHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).setShortcut(getShortcutSet());
+    if (((SModel) MapSequence.fromMap(_params).get("model")) != null) {
+      helper.addUsedLanguage(((SModel) MapSequence.fromMap(_params).get("model")));
+    } else {
+      helper.addExportedLanguage((DevKit) ((SModule) MapSequence.fromMap(_params).get("module")));
+    }
+  }
 }

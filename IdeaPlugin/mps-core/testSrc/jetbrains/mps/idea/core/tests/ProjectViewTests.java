@@ -21,6 +21,7 @@ import com.intellij.facet.FacetType;
 import com.intellij.facet.FacetTypeRegistry;
 import com.intellij.facet.ModifiableFacetModel;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.ui.Queryable;
 import com.intellij.openapi.vfs.VirtualFileManager;
@@ -30,16 +31,17 @@ import jetbrains.mps.idea.core.facet.MPSFacetConfiguration;
 import jetbrains.mps.idea.core.facet.MPSFacetType;
 import jetbrains.mps.idea.core.projectView.MPSTreeStructureProvider;
 import jetbrains.mps.persistence.DefaultModelRoot;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import java.util.Arrays;
+
+import static com.intellij.testFramework.LightPlatformTestCase.getModule;
 
 /**
  * evgeny, 1/25/12
  */
 @SuppressWarnings({"HardCodedStringLiteral"})
 public class ProjectViewTests extends BaseProjectViewTestCase {
-
   public void testShowRoots() throws Exception {
     getProjectTreeStructure().setProviders(new MPSTreeStructureProvider());
     myPrintInfo = new Queryable.PrintInfo();
@@ -53,7 +55,7 @@ public class ProjectViewTests extends BaseProjectViewTestCase {
 
   @Override
   protected String getTestDataPath() {
-    return System.getProperty("idea.plugins.path") + "/tests";
+    return PathManager.getPluginsPath() + "/tests";
   }
 
   @Override

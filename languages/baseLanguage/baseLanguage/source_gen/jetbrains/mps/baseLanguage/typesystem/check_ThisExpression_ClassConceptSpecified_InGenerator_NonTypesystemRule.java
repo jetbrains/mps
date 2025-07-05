@@ -12,20 +12,19 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
-import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class check_ThisExpression_ClassConceptSpecified_InGenerator_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ThisExpression_ClassConceptSpecified_InGenerator_NonTypesystemRule() {
   }
-
   public void applyRule(final SNode expression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SModel model = SNodeOperations.getModel(expression);
     if (model == null) {
@@ -36,20 +35,20 @@ public class check_ThisExpression_ClassConceptSpecified_InGenerator_NonTypesyste
       return;
     }
 
-    if ((SLinkOperations.getTarget(expression, "classConcept", false) != null)) {
+    if ((SLinkOperations.getTarget(expression, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept")) != null)) {
       return;
     }
 
-    boolean expressionInTemplate = ListSequence.fromList(SNodeOperations.getAncestors(expression, null, true)).where(new IWhereFilter<SNode>() {
+    boolean expressionInTemplate = ListSequence.fromList(SNodeOperations.getNodeAncestors(expression, null, true)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.generator.structure.TemplateFragment"))) != null;
+        return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment"))) != null;
       }
-    }).isNotEmpty() || (SNodeOperations.getAncestor(expression, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence", false, false) != null);
-    boolean classifierInTemplate = ListSequence.fromList(SNodeOperations.getAncestors(SLinkOperations.getTarget(expression, "classConcept", false), null, true)).where(new IWhereFilter<SNode>() {
+    }).isNotEmpty() || (SNodeOperations.getNodeAncestor(expression, MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence"), false, false) != null);
+    boolean classifierInTemplate = ListSequence.fromList(SNodeOperations.getNodeAncestors(SLinkOperations.getTarget(expression, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept")), null, true)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.generator.structure.TemplateFragment"))) != null;
+        return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment"))) != null;
       }
-    }).isNotEmpty() || (SNodeOperations.getAncestor(SLinkOperations.getTarget(expression, "classConcept", false), "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence", false, false) != null);
+    }).isNotEmpty() || (SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(expression, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept")), MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence"), false, false) != null);
     if (expressionInTemplate && !(classifierInTemplate)) {
       {
         MessageTarget errorTarget = new NodeMessageTarget();
@@ -57,18 +56,12 @@ public class check_ThisExpression_ClassConceptSpecified_InGenerator_NonTypesyste
       }
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.baseLanguage.structure.ThisExpression";
+  public SAbstractConcept getApplicableConcept() {
+    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConcept().getQualifiedName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
   }

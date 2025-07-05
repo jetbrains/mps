@@ -14,9 +14,13 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.testbench.junit.runners.MpsTestsSupport;
-import jetbrains.mps.testbench.junit.runners.ContextProjextSupport;
+import jetbrains.mps.tool.environment.Environment;
+import jetbrains.mps.tool.environment.MpsEnvironment;
+import jetbrains.mps.tool.environment.EnvironmentConfig;
+import jetbrains.mps.testbench.junit.runners.FromDirWithModulesProjectStrategy;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.scope.Scope;
 import org.junit.Test;
@@ -41,7 +45,7 @@ public class ScopesTest {
         for (SModel model : project.getProjectModels()) {
           for (SNode root : model.getRootNodes()) {
             // todo: use fast nodes finder here 
-            ListSequence.fromList(nodesToCheck).addSequence(ListSequence.fromList(SNodeOperations.getDescendants(root, "jetbrains.mps.lang.test.structure.ScopesTest", true, new String[]{})).select(new ISelector<SNode, SNode[]>() {
+            ListSequence.fromList(nodesToCheck).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(root, MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest"), true, new SAbstractConcept[]{})).select(new ISelector<SNode, SNode[]>() {
               public SNode[] select(SNode it) {
                 return new SNode[]{it};
               }
@@ -53,27 +57,22 @@ public class ScopesTest {
       }
     });
   }
-
   public static Project initTestEnvironmentAndLoadContextProject() throws InvocationTargetException, InterruptedException {
-    MpsTestsSupport.initEnv(false);
-    return ContextProjextSupport.getContextProject();
+    Environment env = MpsEnvironment.getOrCreate(EnvironmentConfig.defaultConfig());
+    return env.createProject(new FromDirWithModulesProjectStrategy());
   }
 
-
   private SNode myNode;
-
   public ScopesTest(SNode node) {
     myNode = node;
   }
-
   public List<SNode> getExpectedNodes(SNode forNode) {
     List<SNode> expected = new ArrayList<SNode>();
-    for (SNode child : SLinkOperations.getTargets(forNode, "nodes", true)) {
-      expected.add(SLinkOperations.getTarget(child, "ref", false));
+    for (SNode child : SLinkOperations.getChildren(forNode, MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x32ba5b0ec25fea03L, "nodes"))) {
+      expected.add(SLinkOperations.getTarget(child, MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x32ba5b0ec25fe9f3L, 0x383e5e55de89bc1fL, "ref")));
     }
     return expected;
   }
-
   public List<SNode> getScopeNodes(Scope scope) {
     List<SNode> scopeSet = new ArrayList<SNode>();
     for (SNode node : scope.getAvailableElements(null)) {
@@ -81,10 +80,9 @@ public class ScopesTest {
     }
     return scopeSet;
   }
-
   public StringBuilder getFailMessage(List<SNode> unExpected, List<SNode> notFounded) {
     StringBuilder builder = new StringBuilder(System.getProperty("line.separator"));
-    builder.append("\tIn node " + SLinkOperations.getTarget(myNode, "checkingReference", false));
+    builder.append("\tIn node " + SLinkOperations.getTarget(myNode, MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x4b9f88d62c795596L, "checkingReference")));
     builder.append(System.getProperty("line.separator"));
 
     if (!(unExpected.isEmpty())) {
@@ -110,7 +108,6 @@ public class ScopesTest {
 
     return builder;
   }
-
   @Test
   public void test() {
     ModelAccess.instance().runReadAction(new Runnable() {
@@ -118,7 +115,7 @@ public class ScopesTest {
       public void run() {
         SReference reference = null;
         for (SReference ref : SNodeOperations.getReferences(SNodeOperations.getParent(ScopesTest.this.myNode))) {
-          if (SLinkOperations.getTargetNode(ref) == SLinkOperations.getTarget(ScopesTest.this.myNode, "checkingReference", false)) {
+          if (SLinkOperations.getTargetNode(ref) == SLinkOperations.getTarget(ScopesTest.this.myNode, MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x4b9f88d62c795596L, "checkingReference"))) {
             reference = ref;
             break;
           }

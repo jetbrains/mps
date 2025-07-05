@@ -15,14 +15,19 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
+import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.optional.WithCaret;
+
 import java.awt.Rectangle;
 
 /**
+ * TODO: push up to openapi package
  * User: shatalin
  * Date: 12/7/12
  */
 public class GeometryUtil {
-  public static Rectangle getBounds(jetbrains.mps.openapi.editor.cells.EditorCell... cells) {
+  public static Rectangle getBounds(EditorCell... cells) {
     assert cells.length > 0;
     Rectangle result = null;
     for (int i = 0; i < cells.length; i++) {
@@ -32,7 +37,47 @@ public class GeometryUtil {
     return result;
   }
 
-  public static boolean contains(jetbrains.mps.openapi.editor.cells.EditorCell cell, int x, int y) {
+  public static boolean contains(EditorCell cell, int x, int y) {
     return getBounds(cell).contains(x, y);
   }
+
+  public static int getHorizontalDistance(EditorCell cell, int x_point) {
+    if (cell.getX() + cell.getLeftGap() <= x_point && x_point <= cell.getX() + cell.getWidth() - cell.getRightGap()) {
+      return 0;
+    }
+    return Math.min(Math.abs(cell.getX() + cell.getLeftGap() - x_point), Math.abs(cell.getX() + cell.getWidth() - cell.getRightGap() - x_point));
+  }
+
+  public static boolean isAbove(EditorCell above, EditorCell below) {
+    return above.getY() + above.getHeight() <= below.getY();
+  }
+
+  public static boolean isLeftToRight(EditorCell left, EditorCell right) {
+    return left.getX() + left.getWidth() <= right.getX();
+  }
+
+  public static boolean isFirstPositionInBigCell(EditorCell cell) {
+    if (cell instanceof WithCaret) {
+      return ((WithCaret) cell).isFirstCaretPosition() && CellTraversalUtil.getFirstLeaf(CellTraversalUtil.getContainingBigCell(cell)) == cell;
+    }
+    if (cell instanceof jetbrains.mps.nodeEditor.cells.EditorCell) {
+      // TODO: remove this option after MPS 3.4
+      return ((jetbrains.mps.nodeEditor.cells.EditorCell) cell).isFirstCaretPosition() &&
+          CellTraversalUtil.getFirstLeaf(CellTraversalUtil.getContainingBigCell(cell)) == cell;
+    }
+    return false;
+  }
+
+  public static boolean isLastPositionInBigCell(EditorCell cell) {
+    if (cell instanceof WithCaret) {
+      return ((WithCaret) cell).isLastCaretPosition() && CellTraversalUtil.getLastLeaf(CellTraversalUtil.getContainingBigCell(cell)) == cell;
+    }
+    if (cell instanceof jetbrains.mps.nodeEditor.cells.EditorCell) {
+      // TODO: remove this option after MPS 3.4
+      return ((jetbrains.mps.nodeEditor.cells.EditorCell) cell).isLastCaretPosition() &&
+          CellTraversalUtil.getLastLeaf(CellTraversalUtil.getContainingBigCell(cell)) == cell;
+    }
+    return false;
+  }
+
 }

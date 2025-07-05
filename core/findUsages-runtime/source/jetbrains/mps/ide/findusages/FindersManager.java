@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,41 @@
  */
 package jetbrains.mps.ide.findusages;
 
+import gnu.trove.TIntArrayList;
+import gnu.trove.TObjectIntHashMap;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
+import jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.ReloadableFinder;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
-import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.*;
+import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
+import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRegistryListener;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.InternUtil;
-import org.jetbrains.mps.openapi.language.SConceptRepository;
+import jetbrains.mps.smodel.runtime.FindUsageAspectDescriptor;
+import jetbrains.mps.smodel.runtime.FinderRegistry;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class FindersManager implements CoreComponent, LanguageRegistryListener {
+public final class FindersManager implements CoreComponent, LanguageRegistryListener {
   private static final Logger LOG = LogManager.getLogger(FindersManager.class.getName());
 
   private static FindersManager INSTANCE;
@@ -43,8 +58,9 @@ public class FindersManager implements CoreComponent, LanguageRegistryListener {
     return INSTANCE;
   }
 
-  private Map<String, Set<GeneratedFinder>> myFinders = new HashMap<String, Set<GeneratedFinder>>();
-  private Map<GeneratedFinder, SNodeReference> myNodesByFinder = new HashMap<GeneratedFinder, SNodeReference>();
+  private final Map<GeneratedFinder, SNodeReference> myNodesByFinder = new HashMap<>();
+  // XXX the only place I use SLanguageId map key is compatibility with legacy #addFinder(), to match SModuleReference to LanguageRuntime
+  private final Map<SLanguageId, LanguageFinders> myLanguageFindersMap = new HashMap<>();
   private boolean myLoaded = false;
 
   private LanguageRegistry myLanguageRegistry;
@@ -69,83 +85,102 @@ public class FindersManager implements CoreComponent, LanguageRegistryListener {
     INSTANCE = null;
   }
 
-  public Set<ReloadableFinder> getAvailableFinders(final SNode node) {
+  public Set<IInterfacedFinder> getAvailableFinders(final SNode node) {
     checkLoaded();
-    return
-      ModelAccess.instance().runReadAction(new Computable<Set<ReloadableFinder>>() {
-        @Override
-        public Set<ReloadableFinder> compute() {
-          Set<ReloadableFinder> result = new HashSet<ReloadableFinder>();
+    final Set<IInterfacedFinder> result = new HashSet<>();
 
-          for (String conceptFQName : myFinders.keySet()) {
-            if (node.getConcept().isSubConceptOf(SConceptRepository.getInstance().getConcept(conceptFQName))) {
-              for (GeneratedFinder finder : Collections.unmodifiableSet(myFinders.get(conceptFQName))) {
-                try {
-                  if (finder.isVisible(node)) {
-                    if (finder.isApplicable(node)) {
-                      result.add(new ReloadableFinder(getFinderModule(finder), finder));
-                    }
-                  }
-                } catch (Throwable t) {
-                  LOG.error("Finder's isApplicable method failed " + t.getMessage(), t);
-                }
-              }
-            }
-          }
-          return Collections.unmodifiableSet(result);
-        }
-      });
+    for (LanguageFinders lf : myLanguageFindersMap.values()) {
+      try {
+        lf.findersForConcept(node.getConcept()).filter(finder -> finder.isVisible(node) && finder.isApplicable(node)).forEach(result::add);
+      } catch (Throwable t) {
+        LOG.error("Finder's isApplicable method failed " + t.getMessage(), t);
+      }
+    }
+    return Collections.unmodifiableSet(result);
   }
 
+  /**
+   * Generally, external code shall not care to get reloadable finder directly, it's for specific scenarios like query persistence in Find Usages view.
+   * @deprecated Though we still use finder implementation class fqn as a finder persistable identity, I don't want this exposed in the method name.
+   *             Left for compatibility with external code (just in case there's some). Perhaps, should bear explicit 'Proxy' or 'Reloadable' part.
+   */
+  @Nullable
+  @Deprecated
+  @ToRemove(version = 3.5)
   public ReloadableFinder getFinderByClassName(String className) {
+    IInterfacedFinder finder = getFinder(className);
+    return finder == null ? null : new ReloadableFinder(className);
+  }
+
+  /**
+   * @param finderIdentity at the moment, fqn of finder implementation class. NOTE, it's not used for classloading as is, merely as identifier to find
+   *                       registered implementation
+   * @return {@code null} if no finder with supplied identity found or identity is null.
+   */
+  @Nullable
+  public IInterfacedFinder getFinder(@Nullable String finderIdentity) {
+    // Function.identity magic is to convey the idea finderIdentity is an identity, not a class name.
+    // and to avoid IDEA's warning, too ;)
+    final String className = Function.<String>identity().apply(finderIdentity);
+    if (className == null) {
+      return null;
+    }
     checkLoaded();
-    for (Set<GeneratedFinder> finders : myFinders.values()) {
-      for (GeneratedFinder finder : finders) {
-        if (finder.getClass().getName().equals(className)) {
-          return new ReloadableFinder(getFinderModule(finder), finder);
-        }
+    final String aspectNameWithDots = '.' + LanguageAspect.FIND_USAGES.getName() + '.';
+    int aspectNamePos = className.lastIndexOf(aspectNameWithDots);
+    final String cnSuffix = "_Finder";
+    if (aspectNamePos == -1 || !className.endsWith(cnSuffix)) {
+      return null;
+    }
+    final String declaringLanguageName = className.substring(0, aspectNamePos);
+    // finderMangledName == NameUtil.toValidIdentifier(finder.name)
+    final String finderMangledName = className.substring(aspectNamePos + aspectNameWithDots.length(), className.length() - cnSuffix.length());
+
+    for (LanguageFinders lf : myLanguageFindersMap.values()) {
+      if (!lf.matchesLanguage(declaringLanguageName)) {
+        continue;
       }
+      return lf.findByMangledName(finderMangledName);
     }
     return null;
   }
 
-  public SNode getNodeByFinder(ReloadableFinder finder) {
-    checkLoaded();
-    return myNodesByFinder.get(finder.getFinder()).resolve(MPSModuleRepository.getInstance());
-  }
-
-  public SNode getNodeByFinder(GeneratedFinder finder) {
-    checkLoaded();
-    return myNodesByFinder.get(finder).resolve(MPSModuleRepository.getInstance());
-  }
-
-  private SModuleReference getFinderModule(GeneratedFinder finder) {
-    SModel finderModel = myNodesByFinder.get(finder).getModelReference() == null ? null : SModelRepository.getInstance().getModelDescriptor(myNodesByFinder.get(finder).getModelReference());
-    Language finderLanguage = Language.getLanguageForLanguageAspect(finderModel);
-    return finderLanguage.getModuleReference();
+  // this reference is part of GeneratedFinder now, the map left for compatibility with old code.
+  // New GeneratedFinder classes override respective method and do not rely on GF.getDeclarationNode implementation
+  @ToRemove(version = 3.5)
+  public SNodeReference getDeclarationNode(GeneratedFinder finder) {
+    return myNodesByFinder.get(finder);
   }
 
   //-------------reloading stuff----------------
 
   private void checkLoaded() {
-    if (myLoaded) return;
+    if (myLoaded) {
+      return;
+    }
     myLoaded = true;
     load();
   }
 
+  /**
+   * @deprecated Aspects generated with MPS 3.4 rely on this method, drop once 3.5 is out.
+   */
+  @Deprecated
+  @ToRemove(version = 3.4)
   public void addFinder(GeneratedFinder finder, SModuleReference moduleRef, SNodeReference np) {
-    String conceptName = finder.getConcept();
-    Set<GeneratedFinder> finders = myFinders.get(conceptName);
-    if (finders == null) {
-      finders = new HashSet<GeneratedFinder>();
-      myFinders.put(InternUtil.intern(conceptName), finders);
+    SLanguageId declaringLanguage = MetaIdByDeclaration.ref2LangId(moduleRef);
+    LanguageFinders languageFinders;
+    if ((languageFinders = myLanguageFindersMap.get(declaringLanguage)) == null) {
+      LOG.warn("shall not happen, provided we've populated the map in #initFindersDescriptor");
+      myLanguageFindersMap.put(declaringLanguage, languageFinders = new LanguageFinders(myLanguageRegistry.getLanguage(declaringLanguage)));
     }
-    finders.add(finder);
+    languageFinders.addLegacy(finder);
+
     myNodesByFinder.put(finder, np);
   }
 
   private void load() {
-    Collection<LanguageRuntime> availableLanguages = LanguageRegistry.getInstance().getAvailableLanguages();
+    Collection<LanguageRuntime> availableLanguages = myLanguageRegistry.getAvailableLanguages();
     if (availableLanguages == null) {
       return;
     }
@@ -155,21 +190,20 @@ public class FindersManager implements CoreComponent, LanguageRegistryListener {
   }
 
   private void clear() {
-    ModelAccess.instance().runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        myFinders.clear();
-        myNodesByFinder.clear();
-        myLoaded = false;
-      }
-    });
+    myLanguageFindersMap.clear();
+    myNodesByFinder.clear();
+    myLoaded = false;
   }
 
   private void initFindersDescriptor(LanguageRuntime language) {
     try {
-      BaseFindUsagesDescriptor descr = language.getFindUsages();
+      FindUsageAspectDescriptor descr = language.getAspect(FindUsageAspectDescriptor.class);
       if (descr != null) {
-        descr.init();
+        // FIXME shall refactor load/clear mechanism to drop/load relevant LanguageFinder instances only.
+        assert !myLanguageFindersMap.containsKey(language.getId()) : "At the moment, there's clear() once any language is unloaded, we shall not replace finders.";
+        LanguageFinders finders = new LanguageFinders(language);
+        myLanguageFindersMap.put(language.getId(), finders);
+        descr.init(finders);
       }
     } catch (Throwable throwable) {
       LOG.error("Error while initializing find usages descriptor for language " + language.getNamespace(), throwable);
@@ -182,6 +216,80 @@ public class FindersManager implements CoreComponent, LanguageRegistryListener {
 
   @Override
   public void beforeLanguagesUnloaded(Iterable<LanguageRuntime> languages) {
+    // FIXME shall drop relevant LanguageFinder instances only!
+    // However myNodesByFinder is global and would either keep stale entries or cleared altogether on any reload.
+    // Perhaps, shall drop it as it's not vital to have getDeclarationNode for legacy (non-migrated) finders.
     clear();
+  }
+
+  // XXX doesn't care about threading, although likely should
+  private static final class LanguageFinders implements FinderRegistry {
+    private final LanguageRuntime myLanguageRuntime;
+    // XXX maps that keep actual instances would cease once 3.5 is out.
+    // Although LF would still keep reference to LR effectively holding its classloader, it's still better to
+    // use new finder instance for each run (to avoid concurrency management inside finders).
+    private final Map<SAbstractConcept, Set<GeneratedFinder>> myLegacyFinders = new HashMap<>();
+    private final Map<String, GeneratedFinder> myNameToFinder = new HashMap<>();
+    private final Map<SAbstractConcept, TIntArrayList> myFinders = new HashMap<>();
+    private final TObjectIntHashMap<String> myNameToFinder2 = new TObjectIntHashMap<>();
+
+    LanguageFinders(LanguageRuntime lr) {
+      myLanguageRuntime = lr;
+    }
+
+    @Override
+    public void add(@NotNull SAbstractConcept concept, int identityToken, @NotNull String mangledName) {
+      TIntArrayList finderTokens = myFinders.get(concept);
+      if (finderTokens == null) {
+        myFinders.put(concept, finderTokens = new TIntArrayList());
+      }
+      if (!finderTokens.contains(identityToken)) {
+        finderTokens.add(identityToken);
+      }
+      myNameToFinder2.put(mangledName, identityToken);
+    }
+
+    void addLegacy(GeneratedFinder finder) {
+      SAbstractConcept concept = finder.getSConcept();
+      Set<GeneratedFinder> finders;
+      if ((finders = myLegacyFinders.get(concept)) == null) {
+        myLegacyFinders.put(concept, finders = new HashSet<>());
+      }
+      finders.add(finder);
+      String cn = finder.getClass().getSimpleName();
+      assert cn.endsWith("_Finder");
+      GeneratedFinder previous = myNameToFinder.put(cn.substring(0, cn.length() - "_Finder".length()), finder);
+      assert previous == null : "Finders with same mangled name would end up as identical java classes";
+    }
+
+    boolean matchesLanguage(String namespace) {
+      return myLanguageRuntime.getNamespace().equals(namespace);
+    }
+
+    IInterfacedFinder findByMangledName(String finderMangledName) {
+      if (myNameToFinder2.contains(finderMangledName)) {
+        return instantiate(myNameToFinder2.get(finderMangledName));
+      }
+      return myNameToFinder.get(finderMangledName);
+    }
+
+    // XXX findersForNode(SNode) instead, to perform filtering isVisible+isApplicable here as well?
+    Stream<IInterfacedFinder> findersForConcept(SAbstractConcept c) {
+      return Stream.concat(myFinders.keySet().stream().filter(c::isSubConceptOf).flatMap(concept -> instantiate(myFinders.get(concept))),
+          myLegacyFinders.keySet().stream().filter(c::isSubConceptOf).flatMap(concept -> myLegacyFinders.get(concept).stream()));
+    }
+
+    private IInterfacedFinder instantiate(int token) {
+      FindUsageAspectDescriptor descr = myLanguageRuntime.getAspect(FindUsageAspectDescriptor.class);
+      // could have passed descr instance as cons argument, otoh LR keeps its instance anyway, why bother.
+      assert descr != null;
+      return descr.instantiate(token);
+    }
+
+    private Stream<IInterfacedFinder> instantiate(TIntArrayList tokens) {
+      FindUsageAspectDescriptor descr = myLanguageRuntime.getAspect(FindUsageAspectDescriptor.class);
+      assert descr != null;
+      return Arrays.stream(tokens.toNativeArray()).mapToObj(descr::instantiate);
+    }
   }
 }

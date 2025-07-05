@@ -6,55 +6,28 @@ import java.util.List;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.smodel.IScope;
-import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.validation.ModelValidator;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.util.NameUtil;
-import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.validation.ValidationUtil;
+import org.jetbrains.mps.openapi.util.Processor;
+import jetbrains.mps.project.validation.ValidationProblem;
 
 public class ModelPropertiesChecker extends SpecificChecker {
   public ModelPropertiesChecker() {
   }
-
   @Override
-  public List<SearchResult<ModelCheckerIssue>> checkModel(SModel model, ProgressMonitor monitor, IOperationContext operationContext) {
+  public List<SearchResult<ModelCheckerIssue>> checkModel(final SModel model, ProgressMonitor monitor) {
     monitor.start("model properties", 1);
 
-    List<SearchResult<ModelCheckerIssue>> results = ListSequence.fromList(new ArrayList<SearchResult<ModelCheckerIssue>>());
+    final List<SearchResult<ModelCheckerIssue>> results = ListSequence.fromList(new ArrayList<SearchResult<ModelCheckerIssue>>());
 
-    SModel modelDescriptor = model;
-    IScope scope = check_t4d01o_a0f0b(((AbstractModule) check_t4d01o_a0a0a5a1(modelDescriptor)));
-    if (false) {
-      List<String> errors = new ModelValidator(modelDescriptor).validate(scope);
-      if (!(ListSequence.fromList(errors).isEmpty())) {
-        String extraMessage = ListSequence.fromList(errors).getElement(0);
-        if ((int) ListSequence.fromList(errors).count() == 2) {
-          extraMessage += "; " + ListSequence.fromList(errors).getElement(1);
-        } else if (ListSequence.fromList(errors).count() > 2) {
-          extraMessage += "; ...";
-        }
-        ListSequence.fromList(results).addElement(ModelCheckerIssue.getSearchResultForModel(model, SModelOperations.getModelName(model) + ": " + NameUtil.formatNumericalString(ListSequence.fromList(errors).count(), "unresolved dependency") + " (" + extraMessage + "; see model properties)", null, ModelChecker.SEVERITY_ERROR, "Model properties"));
+    ValidationUtil.validateModel(model, new Processor<ValidationProblem>() {
+      public boolean process(final ValidationProblem problem) {
+        ListSequence.fromList(results).addElement(ModelCheckerIssue.getSearchResultForModel(model, problem, "Model properties"));
+        return true;
       }
-    }
+    });
     monitor.done();
     return results;
-  }
-
-  private static IScope check_t4d01o_a0f0b(AbstractModule checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getScope();
-    }
-    return null;
-  }
-
-  private static SModule check_t4d01o_a0a0a5a1(SModel checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getModule();
-    }
-    return null;
   }
 }

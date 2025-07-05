@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.extapi.model;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.persistence.FileWithBackupDataSource;
 import jetbrains.mps.smodel.InvalidSModel;
-import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.util.IterableUtil;
@@ -47,7 +46,9 @@ public final class CustomPersistenceSModel extends EditableSModelBase implements
   private Iterable<Problem> myProblems = Collections.emptySet();
 
   public CustomPersistenceSModel(@NotNull SModelReference modelReference, @NotNull StreamDataSource source, @NotNull SModelPersistence persistence) {
-    super(modelReference, source instanceof FileDataSource ? FileWithBackupDataSource.create((FileDataSource) source) : source);
+    super(modelReference, source instanceof FileDataSource
+                          ? FileWithBackupDataSource.create((FileDataSource) source)
+                          : source);
     myPersistence = persistence;
   }
 
@@ -63,12 +64,18 @@ public final class CustomPersistenceSModel extends EditableSModelBase implements
   }
 
   @Override
-  public synchronized SModel getSModelInternal() {
+  public SModel getSModelInternal() {
     if (myModel == null) {
-      myModel = loadSModel();
-      myModel.setModelDescriptor(this);
-      // TODO FIXME listeners are invoked while holding the lock
-      fireModelStateChanged(ModelLoadingState.FULLY_LOADED);
+      final ModelLoadingState oldState;
+      synchronized (this) {
+        oldState = getLoadingState();
+        if (myModel == null) {
+          myModel = loadSModel();
+          myModel.setModelDescriptor(this);
+          setLoadingState(ModelLoadingState.FULLY_LOADED);
+        }
+      }
+      fireModelStateChanged(oldState, getLoadingState());
     }
     return myModel;
   }
@@ -101,7 +108,7 @@ public final class CustomPersistenceSModel extends EditableSModelBase implements
           brokenModel.load();
           // force save
           setChanged(true);
-          return brokenModel.getSModelInternal();
+          return brokenModel.getSModel();
         }
       }
       return (SModel) myPersistence.readModel(getReference(), getSource());
@@ -111,39 +118,34 @@ public final class CustomPersistenceSModel extends EditableSModelBase implements
   }
 
   @Override
-  public boolean isLoaded() {
-    return myModel != null;
-  }
-
-  @Override
   protected void doUnload() {
-    final jetbrains.mps.smodel.SModel oldSModel = myModel;
-
-    if (oldSModel != null) {
-      oldSModel.setModelDescriptor(null);
-      myModel = null;
-    }
+    super.doUnload();
+    myModel = null;
   }
 
   @Override
   protected void reloadContents() {
-    ModelAccess.assertLegalWrite();
+    assertCanChange();
 
-    if (!isLoaded()) return;
+    if (!isLoaded()) {
+      return;
+    }
 
-    final SModel newModel = loadSModel();
+    final SModel oldModel = myModel;
+    myModel = loadSModel();
+    oldModel.setModelDescriptor(null);
+    myModel.setModelDescriptor(this);
+    oldModel.dispose();
     setChanged(false);
-    super.replaceModel(new Runnable() {
-      @Override
-      public void run() {
-        myModel = newModel;
-      }
-    });
+
+    // XXX loadSModel() doesn't change loading state (though it's wrong, as reload might load empty model)
+    //     hence no fireModelStateChanged() call here
+    fireModelReplaced();
   }
 
   @Override
   protected boolean saveModel() throws ModelSaveException, IOException {
-    SModel smodel = getSModelInternal();
+    SModel smodel = getSModel();
     if (smodel instanceof InvalidSModel) {
       // we do not save stub model to not overwrite the real model
       return false;

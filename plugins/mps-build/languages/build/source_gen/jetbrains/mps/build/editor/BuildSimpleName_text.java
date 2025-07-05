@@ -8,11 +8,10 @@ import jetbrains.mps.editor.runtime.cells.KeyMapActionImpl;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
-import org.jetbrains.mps.openapi.language.SConceptRepository;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 
@@ -23,20 +22,16 @@ public class BuildSimpleName_text extends KeyMapImpl {
     action = new BuildSimpleName_text.BuildSimpleName_text_Action0();
     this.putAction("any", "$", action);
   }
-
   public static class BuildSimpleName_text_Action0 extends KeyMapActionImpl {
     public BuildSimpleName_text_Action0() {
       this.setShownInPopupMenu(false);
     }
-
     public String getDescriptionText() {
       return "insert variable reference";
     }
-
     public boolean isMenuAlwaysShown() {
       return false;
     }
-
     public boolean canExecute(final EditorContext editorContext) {
       EditorCell contextCell = editorContext.getContextCell();
       if ((contextCell == null)) {
@@ -46,38 +41,35 @@ public class BuildSimpleName_text extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeUtil.isInstanceOf(contextNode, SConceptRepository.getInstance().getConcept("jetbrains.mps.build.structure.BuildTextStringPart")))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart")))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
     }
-
     public void execute(final EditorContext editorContext) {
       EditorCell contextCell = editorContext.getContextCell();
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
-
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       if (!(editorContext.getSelectedCell() instanceof EditorCell_Label)) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(node, "jetbrains.mps.build.structure.BuildStringPart"))) {
+      if (!(SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7cffL, "jetbrains.mps.build.structure.BuildStringPart")))) {
         return false;
       }
-      return isNotEmpty_4bhgsw_a0c0f1(SPropertyOperations.getString(node, "text"));
+      return isNotEmptyString(SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text")));
     }
-
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       int index = ((EditorCell_Label) editorContext.getSelectedCell()).getCaretPosition();
 
-      String currText = SPropertyOperations.getString(node, "text");
+      String currText = SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text"));
       if (index < currText.length() && index > 0) {
-        SNode newText = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, "jetbrains.mps.build.structure.BuildTextStringPart");
-        SPropertyOperations.set(newText, "text", currText.substring(index));
-        SPropertyOperations.set(node, "text", currText.substring(0, index));
+        SNode newText = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart"));
+        SPropertyOperations.set(newText, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text"), currText.substring(index));
+        SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text"), currText.substring(0, index));
         SNodeOperations.insertNextSiblingChild(node, newText);
       }
-      SNode newRef = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, "jetbrains.mps.build.structure.BuildVarRefStringPart");
+      SNode newRef = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, "jetbrains.mps.build.structure.BuildVarRefStringPart"));
       if (index != 0) {
         SNodeOperations.insertNextSiblingChild(node, newRef);
       } else {
@@ -85,12 +77,10 @@ public class BuildSimpleName_text extends KeyMapImpl {
       }
       editorContext.selectWRTFocusPolicy(newRef);
     }
-
     public String getKeyStroke() {
       return " $";
     }
-
-    public static boolean isNotEmpty_4bhgsw_a0c0f1(String str) {
+    private static boolean isNotEmptyString(String str) {
       return str != null && str.length() > 0;
     }
   }

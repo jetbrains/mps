@@ -18,42 +18,44 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.eclipse.jdt.internal.compiler.ast.AbstractMethodDeclaration;
 import org.eclipse.jdt.internal.compiler.ast.Statement;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.eclipse.jdt.internal.core.util.RecordedParsingInformation;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Comparator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.eclipse.jdt.internal.compiler.ast.ImportReference;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import jetbrains.mps.progress.EmptyProgressMonitor;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
-import jetbrains.mps.smodel.ModelAccess;
-import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.smodel.StaticReference;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.internal.collections.runtime.IMapping;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.StaticReference;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.internal.collections.runtime.backports.Deque;
+import java.util.Deque;
 import jetbrains.mps.internal.collections.runtime.DequeSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
-import org.jetbrains.mps.openapi.model.SModel;
+import java.util.LinkedList;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.DynamicReference;
 
 public class JavaParser {
   private static Logger LOG = LogManager.getLogger(JavaParser.class);
-
   public JavaParser() {
   }
-
   @NotNull
   public JavaParser.JavaParseResult parseCompilationUnit(String code) throws JavaParseException {
     return parse(code, FeatureKind.CLASS, null, true);
   }
-
   @NotNull
   public JavaParser.JavaParseResult parse(String code, FeatureKind what, SNode context, boolean recovery) throws JavaParseException {
     // in eclipse there is full recovery and statement recovery 
@@ -62,12 +64,9 @@ public class JavaParser {
     boolean stubsMode = FeatureKind.CLASS_STUB.equals(what);
     CodeSnippetParsingUtil util = new CodeSnippetParsingUtil(stubsMode);
     Map<String, String> settings = new HashMap<String, String>();
-    settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_1_6);
+    settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_1_8);
     settings.put(CompilerOptions.OPTION_DocCommentSupport, "enabled");
-    ASTConverter converter = (FeatureKind.CLASS_STUB.equals(what) ?
-      new ASTConverter(stubsMode) :
-      new FullASTConverter(null)
-    );
+    ASTConverter converter = (FeatureKind.CLASS_STUB.equals(what) ? new ASTConverterWithExpressions(stubsMode) : new FullASTConverter(null));
 
     List<SNode> resultNodes = new ArrayList<SNode>();
     String resultPackageName = null;
@@ -96,6 +95,7 @@ public class JavaParser {
           }
           resultNodes = roots;
         }
+        attachComments(source, converter, util.recordedParsingInformation);
 
         // there may be no types and still no compilation errors 
         // e.g. package-info.java only includes 'package pkg'; 
@@ -116,6 +116,7 @@ public class JavaParser {
         if (astNodes != null && astNodes.length > 0) {
           resultNodes = converter.convertClassContents(astNodes, context);
         }
+        attachComments(source, converter, util.recordedParsingInformation);
 
         break;
 
@@ -127,12 +128,19 @@ public class JavaParser {
         }
 
         Statement[] stmts = absMethod.statements;
-        // <node> 
 
         if (stmts != null && stmts.length > 0) {
           // TODO construct typeResolver from parent node context 
-          SNode stmtList = SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.StatementList", null);
-          resultNodes = ((FullASTConverter) converter).convertStatementsOf(absMethod, stmtList);
+          SNode stmtList = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"));
+          ((FullASTConverter) converter).convertStatementsInto(absMethod, stmtList);
+          attachComments(source, converter, util.recordedParsingInformation);
+          resultNodes = ListSequence.fromList(new ArrayList<SNode>());
+          // stmtList may have new statements (comments) by now, after attachComments 
+          for (SNode stmt : ListSequence.fromList(SLinkOperations.getChildren(stmtList, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement")))) {
+            SNodeOperations.deleteNode(stmt);
+            ListSequence.fromList(resultNodes).addElement(stmt);
+          }
+
         }
 
         break;
@@ -141,12 +149,8 @@ public class JavaParser {
         throw new IllegalArgumentException("Parsing other than class and statements is not supported yet ");
     }
 
-    // now insert comments 
-    attachComments(source, converter, util.recordedParsingInformation);
-
     return new JavaParser.JavaParseResult(resultNodes, resultPackageName, problemDescription(util.recordedParsingInformation));
   }
-
   public void attachComments(char[] source, ASTConverter converter, RecordedParsingInformation parseInfo) {
 
     char[] content = source;
@@ -171,14 +175,17 @@ public class JavaParser {
       if (comment[1] > 0) {
         // javadoc 
         SNode doc = MapSequence.fromMap(javadocs).get(comment[0]);
+        if (doc == null) {
+          continue;
+        }
 
         List<String> lines = CommentHelper.processJavadoc(CommentHelper.splitString(content, lineends, comment[0], comment[1]));
-        for (String text : ListSequence.fromList(lines)) {
-          SNode commentLine = SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.javadoc.structure.CommentLine", null);
-          SNode part = SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart", null);
-          SPropertyOperations.set(part, "text", text);
-          ListSequence.fromList(SLinkOperations.getTargets(commentLine, "part", true)).addElement(part);
-          ListSequence.fromList(SLinkOperations.getTargets(doc, "body", true)).addElement(commentLine);
+        for (String text : lines) {
+          SNode commentLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine"));
+          SNode part = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart"));
+          SPropertyOperations.set(part, MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text"), text);
+          ListSequence.fromList(SLinkOperations.getChildren(commentLine, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part"))).addElement(part);
+          ListSequence.fromList(SLinkOperations.getChildren(doc, MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body"))).addElement(commentLine);
         }
 
         continue;
@@ -194,21 +201,21 @@ public class JavaParser {
         }
       }
       if ((block != null)) {
-        int pos = ListSequence.fromList(SLinkOperations.getTargets(block, "statement", true)).where(new IWhereFilter<SNode>() {
+        int pos = ListSequence.fromList(SLinkOperations.getChildren(block, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return !(MapSequence.fromMap(positions.value).containsKey(it)) || Math.abs(MapSequence.fromMap(positions.value).get(it)) <= linestart;
           }
         }).count();
-        for (String line : ListSequence.fromList(CommentHelper.processComment(CommentHelper.splitString(content, lineends, linestart, Math.abs(comment[1]))))) {
+        for (String line : CommentHelper.processComment(CommentHelper.splitString(content, lineends, linestart, Math.abs(comment[1])))) {
           String line_ = line;
           if (line.startsWith(" ")) {
             line_ = line.substring(1);
           }
-          SNode commentText = SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.TextCommentPart", null);
-          SPropertyOperations.set(commentText, "text", line_);
-          SNode commentLine = SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.SingleLineComment", null);
-          ListSequence.fromList(SLinkOperations.getTargets(commentLine, "commentPart", true)).addElement(commentText);
-          ListSequence.fromList(SLinkOperations.getTargets(block, "statement", true)).insertElement(pos++, commentLine);
+          SNode commentText = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart"));
+          SPropertyOperations.set(commentText, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text"), line_);
+          SNode commentLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
+          ListSequence.fromList(SLinkOperations.getChildren(commentLine, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart"))).addElement(commentText);
+          ListSequence.fromList(SLinkOperations.getChildren(block, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"))).insertElement(pos++, commentLine);
         }
       } else {
         // no place to insert comment 
@@ -218,41 +225,37 @@ public class JavaParser {
       }
     }
   }
-
   public void annotateWithmports(CompilationUnitDeclaration compResult, SNode clas) {
-    SNode imports = SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.JavaImports", null);
+    SNode imports = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, "jetbrains.mps.baseLanguage.structure.JavaImports"));
 
     // putting first: current package in terms of source code 
     if (compResult.currentPackage != null) {
       SNode currPkg = makeImport(compResult.currentPackage);
-      SPropertyOperations.set(currPkg, "onDemand", "" + (true));
-      ListSequence.fromList(SLinkOperations.getTargets(imports, "entries", true)).addElement(currPkg);
+      SPropertyOperations.set(currPkg, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x64c0181e603bd0L, "onDemand"), "" + (true));
+      ListSequence.fromList(SLinkOperations.getChildren(imports, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, 0x64c0181e6020a7L, "entries"))).addElement(currPkg);
     }
 
     if (compResult.imports != null) {
       for (ImportReference imprt : compResult.imports) {
-        ListSequence.fromList(SLinkOperations.getTargets(imports, "entries", true)).addElement(makeImport(imprt));
+        ListSequence.fromList(SLinkOperations.getChildren(imports, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, 0x64c0181e6020a7L, "entries"))).addElement(makeImport(imprt));
       }
     }
 
     // inserting it in the beginning 
-    clas.addChild("smodelAttribute", imports);
+    clas.addChild(MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"), imports);
 
     // we want to insert imports section before any javadoc 
     // because javadoc is data while imports section is meta-data for assisting class resolving 
 
-    // <node> 
-    // <node> 
   }
-
   private SNode makeImport(ImportReference impRef) {
-    SNode imp = SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.JavaImport", null);
+    SNode imp = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, "jetbrains.mps.baseLanguage.structure.JavaImport"));
 
     boolean onDemand = (impRef.bits & ASTNode.OnDemand) != 0;
     boolean isStatic = impRef.isStatic();
 
-    SPropertyOperations.set(imp, "onDemand", "" + (onDemand));
-    SPropertyOperations.set(imp, "static", "" + (isStatic));
+    SPropertyOperations.set(imp, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x64c0181e603bd0L, "onDemand"), "" + (onDemand));
+    SPropertyOperations.set(imp, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x4d5c30eb30af1572L, "static"), "" + (isStatic));
 
     char[][] toks = impRef.getImportName();
     StringBuffer sb = new StringBuffer();
@@ -261,10 +264,9 @@ public class JavaParser {
       sb.append('.');
     }
     sb.deleteCharAt(sb.length() - 1);
-    SPropertyOperations.set(imp, "tokens", sb.toString());
+    SPropertyOperations.set(imp, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens"), sb.toString());
     return imp;
   }
-
   private String problemDescription(RecordedParsingInformation info) {
     if (info == null) {
       return null;
@@ -275,7 +277,6 @@ public class JavaParser {
       return null;
     }
   }
-
   @Nullable
   public static String peekPackage(String source) {
     // WILL GO AWAY COMPLETELY 
@@ -288,87 +289,119 @@ public class JavaParser {
       }
       packageName.append(c);
     }
-    return (packageName.length() == 0 ?
-      null :
-      packageName.toString()
-    );
+    return (packageName.length() == 0 ? null : packageName.toString());
   }
-
   public static class JavaParseResult {
     public static final JavaParser.JavaParseResult UNKNOWN_ERROR = new JavaParser.JavaParseResult(new ArrayList<SNode>(), "Parse failed and return no errors");
     @NotNull
     private List<SNode> nodes;
     private String pakage;
     private String errorMsg;
-
     public JavaParseResult(List<SNode> ns, String error) {
       nodes = ns;
       errorMsg = error;
     }
-
     public JavaParseResult(List<SNode> ns, String pkg, String error) {
       this(ns, error);
       pakage = pkg;
     }
-
     @NotNull
     public List<SNode> getNodes() {
       return nodes;
     }
-
     public String getPackage() {
       return pakage;
     }
-
     public String getErrorMsg() {
       return errorMsg;
     }
   }
 
-  public static void tryResolveUnknowns(Iterable<SNode> roots) {
-    for (SNode node : Sequence.fromIterable(roots)) {
-      List<SNode> unknowns = SNodeOperations.getDescendants(node, "jetbrains.mps.baseLanguage.structure.IYetUnresolved", false, new String[]{});
-      for (SNode unk : ListSequence.fromList(unknowns)) {
+  /**
+   * Must be called from a context where 1) nodes are attached to a model 2) model modification is allowed.
+   * E.g. either inside a command or during smodel.SModel.isUpdateMode() == true
+   */
+  public static void tryResolveUnknowns(Iterable<SNode> roots, ProgressMonitor progress) {
+    tryResolveUnknowns(roots, progress, IncrementalModelAccess.INSIDE_COMMAND_OR_UPDATE_MODE);
+  }
 
-        final SNode unkNode = unk;
-        final _FunctionTypes._return_P0_E0<? extends SNode> subst = BehaviorReflection.invokeVirtual((Class<_FunctionTypes._return_P0_E0<? extends SNode>>) ((Class) Object.class), unk, "virtual_evaluateSubst_8136348407761606764", new Object[]{});
-        if (subst == null) {
-          continue;
-        }
 
-        ModelAccess.instance().runWriteActionInCommand(new Runnable() {
-          @Override
-          public void run() {
-            final SNode theRightNode = subst.invoke();
-            SNodeOperations.replaceWithAnother(unkNode, theRightNode);
-
-            // FIXME maybe it's better to re-use auto model import 
-            Sequence.fromIterable(JavaToMpsConverter.deepReferences(theRightNode)).where(new IWhereFilter<SReference>() {
-              public boolean accept(SReference it) {
-                return (SReference) it instanceof StaticReference;
-              }
-            }).visitAll(new IVisitor<SReference>() {
-              public void visit(SReference it) {
-                SModelReference targetModel = ((StaticReference) it).getTargetSModelReference();
-                ((SModelInternal) theRightNode.getModel()).addModelImport(targetModel, true);
-
-              }
-            });
-          }
-        });
-
+  /*package*/ static void tryResolveUnknowns(Iterable<SNode> roots, ProgressMonitor progress, IncrementalModelAccess modelAccess) {
+    // make room for this many passes, and just don't advance the progress afterwards 
+    final int PASSES_TO_SHOW_UNDER_PROGRESS = 5;
+    Iterable<SNode> nextPass = roots;
+    int k = 0;
+    while (Sequence.fromIterable(nextPass).isNotEmpty()) {
+      ProgressMonitor progressForThisPass;
+      if (k++ < PASSES_TO_SHOW_UNDER_PROGRESS) {
+        progressForThisPass = progress.subTask(Sequence.fromIterable(nextPass).count());
+      } else {
+        progressForThisPass = new EmptyProgressMonitor();
       }
+      nextPass = tryResolveUnknowns0(nextPass, progressForThisPass, modelAccess);
     }
   }
 
-  public static void tryResolveDynamicRefs(Iterable<SNode> nodes) {
-    Deque<SNode> stack = DequeSequence.fromDeque(new LinkedList<SNode>());
-    DequeSequence.fromDeque(stack).addSequence(Sequence.fromIterable(nodes));
+  private static Iterable<SNode> tryResolveUnknowns0(final Iterable<SNode> roots, final ProgressMonitor progress, IncrementalModelAccess modelAccess) {
+    progress.start("Ambiguous concepts...", Sequence.fromIterable(roots).count());
+    final Map<SNode, SNode> resolutionMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
+    modelAccess.accessModel(new Runnable() {
+      public void run() {
+        for (SNode node : Sequence.fromIterable(roots)) {
+          progress.step((SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")) ? ("node: " + SPropertyOperations.getString(SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"))) : ""));
+          List<SNode> unknowns = SNodeOperations.getNodeDescendants(node, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70ea1dc4c5721865L, "jetbrains.mps.baseLanguage.structure.IYetUnresolved"), false, new SAbstractConcept[]{MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70ea1dc4c5721865L, "jetbrains.mps.baseLanguage.structure.IYetUnresolved")});
+          for (SNode unk : ListSequence.fromList(unknowns)) {
+            final SNode unkNode = unk;
+            final _FunctionTypes._return_P0_E0<? extends SNode> subst = ((_FunctionTypes._return_P0_E0<? extends SNode>) BHReflection.invoke(unk, SMethodTrimmedId.create("evaluateSubst", null, "73E7sj5sxxG")));
+            if (subst == null) {
+              continue;
+            }
 
-    while (DequeSequence.fromDeque(stack).isNotEmpty()) {
-      SNode node = DequeSequence.fromDeque(stack).popElement();
+            SNode theRightNode = subst.invoke();
+            MapSequence.fromMap(resolutionMap).put(unkNode, theRightNode);
+          }
+          progress.advance(1);
+        }
+      }
+    });
+
+    progress.step("replacing nodes");
+    modelAccess.replaceNodes(new Runnable() {
+      public void run() {
+        MapSequence.fromMap(resolutionMap).visitAll(new IVisitor<IMapping<SNode, SNode>>() {
+          public void visit(IMapping<SNode, SNode> it) {
+            SNode unresolved = it.key();
+            SNode resolved = it.value();
+            SNodeOperations.replaceWithAnother(unresolved, resolved);
+
+            // FIXME maybe it's better to re-use auto model import 
+            final SModel sourceModel = resolved.getModel();
+            Sequence.fromIterable(JavaToMpsConverter.deepReferences(resolved)).ofType(StaticReference.class).visitAll(new IVisitor<StaticReference>() {
+              public void visit(StaticReference it) {
+                SModelReference targetModel = it.getTargetSModelReference();
+                if (!(sourceModel.getReference().equals(targetModel))) {
+                  ((SModelInternal) sourceModel).addModelImport(targetModel, true);
+                }
+              }
+            });
+
+          }
+        });
+      }
+    });
+    progress.advance(1);
+    progress.done();
+    return MapSequence.fromMap(resolutionMap).values();
+  }
+
+  public static void tryResolveDynamicRefs(Iterable<SNode> nodes) {
+    Deque<SNode> stack = DequeSequence.fromDequeNew(new LinkedList<SNode>());
+    DequeSequence.fromDequeNew(stack).addSequence(Sequence.fromIterable(nodes));
+
+    while (DequeSequence.fromDequeNew(stack).isNotEmpty()) {
+      SNode node = DequeSequence.fromDequeNew(stack).popElement();
       SModel ourModel = node.getModel();
-      DequeSequence.fromDeque(stack).addSequence(ListSequence.fromList(SNodeOperations.getChildren(node)));
+      DequeSequence.fromDequeNew(stack).addSequence(ListSequence.fromList(SNodeOperations.getChildren(node)));
 
       Iterable<? extends SReference> refs = node.getReferences();
       for (SReference ref : Sequence.fromIterable(refs)) {
@@ -376,8 +409,6 @@ public class JavaParser {
           continue;
         }
         // FIXME temp hack around typesystem looping when resolving certain dyn.references 
-        // <node> 
-        // <node> 
 
         SNode target = ref.getTargetNode();
         if (target == null) {
@@ -386,7 +417,7 @@ public class JavaParser {
         node.setReferenceTarget(ref.getRole(), target);
 
         SModel targetModel = target.getModel();
-        if (targetModel != null) {
+        if (targetModel != null && !(ourModel.getReference().equals(targetModel.getReference()))) {
           ((SModelInternal) ourModel).addModelImport(targetModel.getReference(), true);
         }
       }

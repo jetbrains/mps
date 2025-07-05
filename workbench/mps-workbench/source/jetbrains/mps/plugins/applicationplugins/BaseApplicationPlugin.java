@@ -28,16 +28,21 @@ import jetbrains.mps.workbench.action.MPSActions;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.workbench.action.BaseGroup;
+import org.apache.log4j.Logger;
 
 import java.util.*;
 
 public abstract class BaseApplicationPlugin implements IActionsRegistry {
+  private static final Logger LOG = org.apache.log4j.LogManager.getLogger(BaseApplicationPlugin.class);
+
   private ActionManagerEx myActionManager = ActionManagerEx.getInstanceEx();
 
-  private List<BaseCustomApplicationPlugin> myCustomParts;
+  private List<BaseCustomApplicationPlugin> myCustomPlugins;
   private List<BaseGroup> myGroups = new ArrayList<BaseGroup>();
   private List<BaseKeymapChanges> myKeymapChanges = new ArrayList<BaseKeymapChanges>();
   private Set<Pair<DefaultActionGroup, DefaultActionGroup>> myXmlGroups = new HashSet<Pair<DefaultActionGroup, DefaultActionGroup>>();
+
+  private Map<DefaultActionGroup, DefaultActionGroup> myAdjustedGroups = new HashMap<DefaultActionGroup, DefaultActionGroup>();
 
   //----------plugin id------------
 
@@ -62,26 +67,42 @@ public abstract class BaseApplicationPlugin implements IActionsRegistry {
 
   }
 
-  protected void insertInterfaceGroupIntoAnother(String whatId, String toId, String labelName) {
+  protected void insertInterfaceGroupIntoAnother(String whatId, String toId, String labelName, Anchor anchor) {
     DefaultActionGroup gTo = (DefaultActionGroup) ActionManager.getInstance().getAction(toId);
     DefaultActionGroup gWhat = (DefaultActionGroup) ActionManager.getInstance().getAction(whatId);
-    if (gTo == null || gWhat == null) {
+    if (gTo == null) {
+      LOG.warn("Destination group was not found id: " + toId + ". Trying to insert " + whatId);
+      return;
+    }
+    if (gWhat == null) {
+      LOG.warn("Group to insert was not found id: " + whatId + ". Trying to insert into " + toId);
       return;
     }
     if (!(gTo instanceof BaseGroup) && !(gWhat instanceof BaseGroup)) {
       myXmlGroups.add(new Pair<DefaultActionGroup, DefaultActionGroup>(gTo, gWhat));
     }
 
+    myAdjustedGroups.put(gTo, gWhat);
     if (labelName != null) {
-      Constraints constraints = new Constraints(Anchor.AFTER, labelName);
+      Constraints constraints = new Constraints(anchor, labelName);
       gTo.add(gWhat, constraints);
     } else {
       gTo.add(gWhat);
     }
   }
 
+  protected void insertInterfaceGroupIntoAnother(String whatId, String toId, String labelName) {
+    insertInterfaceGroupIntoAnother(whatId,toId, labelName, Anchor.AFTER);
+  }
+
+
   protected void insertGroupIntoAnother(String whatId, String toId, String labelName) {
     insertInterfaceGroupIntoAnother(whatId, toId, labelName);
+    //todo with this method, we can use Idea's ActionStubs
+  }
+
+  protected void insertGroupIntoAnother(String whatId, String toId, String labelName, Anchor anchor) {
+    insertInterfaceGroupIntoAnother(whatId, toId, labelName, anchor);
     //todo with this method, we can use Idea's ActionStubs
   }
 
@@ -107,7 +128,7 @@ public abstract class BaseApplicationPlugin implements IActionsRegistry {
   //----------custom parts----------
 
   public final void createCustomParts() {
-    myCustomParts = initCustomParts();
+    myCustomPlugins = initCustomParts();
   }
 
   protected List<BaseCustomApplicationPlugin> initCustomParts() {
@@ -132,7 +153,7 @@ public abstract class BaseApplicationPlugin implements IActionsRegistry {
   public final void dispose() {
     //groups are disposed in ActionFactory
     //keymaps are unregistered in ActionFactory
-    for (BaseCustomApplicationPlugin part : myCustomParts) {
+    for (BaseCustomApplicationPlugin part : myCustomPlugins) {
       part.dispose();
     }
 
@@ -140,6 +161,10 @@ public abstract class BaseApplicationPlugin implements IActionsRegistry {
       change.dispose();
     }
     myKeymapChanges.clear();
+
+    for (Map.Entry<DefaultActionGroup, DefaultActionGroup> adjustedGroup : myAdjustedGroups.entrySet()) {
+      adjustedGroup.getKey().remove(adjustedGroup.getValue());
+    }
 
     for (Pair<DefaultActionGroup, DefaultActionGroup> e : myXmlGroups) {
       e.o1.remove(e.o2);

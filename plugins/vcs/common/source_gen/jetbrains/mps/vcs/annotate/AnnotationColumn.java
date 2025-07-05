@@ -30,12 +30,13 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
-import jetbrains.mps.smodel.persistence.def.ModelPersistence;
-import javax.swing.SwingUtilities;
+import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.openapi.vcs.changes.ui.ChangesViewContentManager;
 import com.intellij.openapi.ui.MessageType;
@@ -58,6 +59,7 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import java.awt.Graphics2D;
+import jetbrains.mps.nodeEditor.cells.FontRegistry;
 import java.awt.FontMetrics;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import org.jetbrains.annotations.Nullable;
@@ -76,9 +78,7 @@ import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.Separator;
 import com.intellij.openapi.ide.CopyPasteManager;
-import java.awt.datatransfer.Transferable;
-import com.intellij.openapi.application.ApplicationInfo;
-import java.lang.reflect.InvocationTargetException;
+import com.intellij.util.ui.TextTransferable;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.workbench.action.ActionUtils;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -103,15 +103,18 @@ import java.io.File;
 import com.intellij.openapi.vcs.changes.ContentRevision;
 import com.intellij.openapi.fileTypes.FileType;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
-import jetbrains.mps.persistence.PersistenceUtil;
+import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
+import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
-import com.intellij.openapi.diff.DiffContent;
-import com.intellij.openapi.diff.SimpleContent;
-import com.intellij.openapi.diff.DiffRequest;
-import jetbrains.mps.vcs.diff.ui.common.SimpleDiffRequest;
-import com.intellij.openapi.application.ApplicationManager;
-import jetbrains.mps.vcs.diff.ui.ModelDifferenceDialog;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import com.intellij.diff.contents.DiffContent;
+import com.intellij.diff.DiffContentFactory;
+import com.intellij.diff.requests.DiffRequest;
+import com.intellij.diff.requests.SimpleDiffRequest;
+import jetbrains.mps.vcs.platform.integration.ModelDiffViewer;
+import com.intellij.diff.DiffManager;
 import com.intellij.openapi.vcs.VcsException;
 import jetbrains.mps.vcs.diff.ChangeSet;
 
@@ -137,10 +140,9 @@ public class AnnotationColumn extends AbstractLeftColumn {
   private AnnotationColumn.MyDifferenceListener myDifferenceListener = new AnnotationColumn.MyDifferenceListener();
   private boolean myShowAdditionalInfo = false;
   private MessageBusConnection myMessageBusConnection;
-
   public AnnotationColumn(LeftEditorHighlighter leftEditorHighlighter, SNode root, FileAnnotation fileAnnotation, final AbstractVcs vcs, VirtualFile virtualFile) {
     super(leftEditorHighlighter);
-    Set<SNodeId> descendantIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(SNodeOperations.getDescendants(root, null, true, new String[]{})).select(new ISelector<SNode, SNodeId>() {
+    Set<SNodeId> descendantIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(SNodeOperations.getNodeDescendants(root, null, true, new SAbstractConcept[]{})).select(new ISelector<SNode, SNodeId>() {
       public SNodeId select(SNode n) {
         return n.getNodeId();
       }
@@ -152,12 +154,12 @@ public class AnnotationColumn extends AbstractLeftColumn {
     }
     final Wrappers._T<ModelReadException> mre = new Wrappers._T<ModelReadException>(null);
     try {
-      myFileLineToContent = ModelPersistence.getLineToContentMap(myFileAnnotation.getAnnotatedContent());
+      myFileLineToContent = VCSPersistenceSupport.getLineToContentMap(myFileAnnotation.getAnnotatedContent());
     } catch (ModelReadException e) {
       mre.value = e;
     }
     if (myFileLineToContent == null) {
-      SwingUtilities.invokeLater(new Runnable() {
+      ApplicationManager.getApplication().invokeLater(new Runnable() {
         public void run() {
           String msg = "Couldn't show annotation";
           if (mre.value != null && mre.value.getCause() != null) {
@@ -231,7 +233,6 @@ public class AnnotationColumn extends AbstractLeftColumn {
     myMessageBusConnection = getProject().getMessageBus().connect();
     myMessageBusConnection.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, new AnnotationColumn.MyEditorComponentCreateListener());
   }
-
   private void saveChange(ModelChange ch) {
     if (ch instanceof SetPropertyChange) {
       SetPropertyChange spc = (SetPropertyChange) ch;
@@ -249,12 +250,11 @@ public class AnnotationColumn extends AbstractLeftColumn {
       }).toGenericArray(NodeLineContent.class));
     }
   }
-
   private void calculateCurrentPseudoLinesLater() {
     ModelAccess.instance().runReadInEDT(new Runnable() {
       public void run() {
         myCurrentPseudoLines = SetSequence.fromSet(new HashSet<Integer>());
-        for (LineContent[] lineContents : Sequence.fromIterable(MapSequence.fromMap(myChangesToLineContents).values())) {
+        for (LineContent[] lineContents : MapSequence.fromMap(myChangesToLineContents).values()) {
           for (LineContent lc : lineContents) {
             SetSequence.fromSet(myCurrentPseudoLines).addSequence(Sequence.fromIterable(getPseudoLinesForContent(lc)));
           }
@@ -263,12 +263,10 @@ public class AnnotationColumn extends AbstractLeftColumn {
       }
     });
   }
-
   @Override
   public String getName() {
     return "Annotations";
   }
-
   @Override
   public void paint(Graphics graphics) {
     graphics.setFont(myFont);
@@ -287,10 +285,7 @@ public class AnnotationColumn extends AbstractLeftColumn {
       }
 
       int fileLine = ListSequence.fromList(myPseudoLinesToFileLines).getElement(pseudoLine);
-      int height = (pseudoLine == ListSequence.fromList(myPseudoLinesY).count() - 1 ?
-        getEditorComponent().getHeight() - ListSequence.fromList(myPseudoLinesY).last() :
-        ListSequence.fromList(myPseudoLinesY).getElement(pseudoLine + 1) - ListSequence.fromList(myPseudoLinesY).getElement(pseudoLine)
-      );
+      int height = (pseudoLine == ListSequence.fromList(myPseudoLinesY).count() - 1 ? getEditorComponent().getHeight() - ListSequence.fromList(myPseudoLinesY).last() : ListSequence.fromList(myPseudoLinesY).getElement(pseudoLine + 1) - ListSequence.fromList(myPseudoLinesY).getElement(pseudoLine));
       if (myAuthorAnnotationAspect != null && ViewAction.isSet(ViewAction.COLORS)) {
         String author = myAuthorAnnotationAspect.getValue(fileLine);
         graphics.setColor(MapSequence.fromMap(myAuthorsToColors).get(author));
@@ -299,9 +294,7 @@ public class AnnotationColumn extends AbstractLeftColumn {
 
       graphics.setColor(ANNOTATION_COLOR);
       if (myRevisionRange.isFileLineHighlighted(fileLine)) {
-        graphics.setFont(myFont.deriveFont(Font.BOLD));
-      } else {
-        graphics.setFont(myFont);
+        graphics.setFont(FontRegistry.getInstance().getFont(myFont.getName(), myFont.getStyle() | Font.BOLD, myFont.getSize()));
       }
       FontMetrics metrics = graphics.getFontMetrics();
       if (height < metrics.getHeight()) {
@@ -321,26 +314,18 @@ public class AnnotationColumn extends AbstractLeftColumn {
       }
     }
   }
-
   @Override
   public int getWidth() {
-    return (ListSequence.fromList(myAspectSubcolumns).isEmpty() ?
-      0 :
-      ListSequence.fromList(myAspectSubcolumns).select(new ISelector<AnnotationAspectSubcolumn, Integer>() {
-        public Integer select(AnnotationAspectSubcolumn s) {
-          return (s.isEnabled() || myShowAdditionalInfo ?
-            s.getWidth() :
-            0
-          );
-        }
-      }).reduceLeft(new ILeftCombinator<Integer, Integer>() {
-        public Integer combine(Integer a, Integer b) {
-          return a + mySubcolumnInterval + b;
-        }
-      }) + 1 + mySubcolumnInterval / 2
-    );
+    return (ListSequence.fromList(myAspectSubcolumns).isEmpty() ? 0 : ListSequence.fromList(myAspectSubcolumns).select(new ISelector<AnnotationAspectSubcolumn, Integer>() {
+      public Integer select(AnnotationAspectSubcolumn s) {
+        return (s.isEnabled() || myShowAdditionalInfo ? s.getWidth() : 0);
+      }
+    }).reduceLeft(new ILeftCombinator<Integer, Integer>() {
+      public Integer combine(Integer a, Integer b) {
+        return a + mySubcolumnInterval + b;
+      }
+    }) + 1 + mySubcolumnInterval / 2);
   }
-
   @Nullable
   private EditorCell findCellForContent(@Nullable LineContent content) {
     if (content == null) {
@@ -349,7 +334,7 @@ public class AnnotationColumn extends AbstractLeftColumn {
     EditorComponent editor = getEditorComponent();
     SNode editedNode = editor.getEditedNode();
     SNode node = editedNode.getModel().getNode(content.getNodeId());
-    if (node == null || !(ListSequence.fromList(SNodeOperations.getAncestors(node, null, true)).contains(editedNode))) {
+    if (node == null || !(ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).contains(editedNode))) {
       return null;
     }
 
@@ -364,7 +349,6 @@ public class AnnotationColumn extends AbstractLeftColumn {
     }
 
   }
-
   private Iterable<Integer> getPseudoLinesForContent(@Nullable LineContent content) {
     EditorCell cell = findCellForContent(content);
     if (cell == null) {
@@ -381,7 +365,6 @@ public class AnnotationColumn extends AbstractLeftColumn {
           public Iterator<Integer> iterator() {
             return new YieldingIterator<Integer>() {
               private int __CP__ = 0;
-
               protected boolean moveToNext() {
 __loop__:
                 do {
@@ -419,7 +402,6 @@ __switch__:
                 } while (true);
                 return false;
               }
-
               private int _2_pseudoLine;
             };
           }
@@ -427,11 +409,10 @@ __switch__:
       }
     }.invoke();
   }
-
   @Override
   public void relayout() {
     EditorComponent editor = getEditorComponent();
-    if (editor == null || editor.isDisposed() || editor.getGraphics() == null) {
+    if (editor == null || editor.isDisposed()) {
       return;
     }
     Iterable<EditorCell> nonTrivialCells = Sequence.fromIterable(EditorUtils.getCellDescendants(editor.getRootCell())).where(new IWhereFilter<EditorCell>() {
@@ -458,21 +439,20 @@ __switch__:
     ModelAccess.instance().runReadAction(new Runnable() {
       public void run() {
         for (int fileLine = 0; fileLine < ListSequence.fromList(myFileLineToContent).count(); fileLine++) {
-          for (int pseudoLine : Sequence.fromIterable(getPseudoLinesForContent(ListSequence.fromList(myFileLineToContent).getElement(fileLine)))) {
+          for (int pseudoLine : getPseudoLinesForContent(ListSequence.fromList(myFileLineToContent).getElement(fileLine))) {
             int currentFileLine = ListSequence.fromList(myPseudoLinesToFileLines).getElement(pseudoLine);
             ListSequence.fromList(myPseudoLinesToFileLines).setElement(pseudoLine, getFileLineWithMaxRevision(currentFileLine, fileLine));
           }
         }
       }
     });
-    FontMetrics metrics = editor.getGraphics().getFontMetrics(myFont);
+    FontMetrics metrics = FontRegistry.getInstance().getFontMetrics(myFont);
     for (AnnotationAspectSubcolumn aspectSubcolumn : ListSequence.fromList(myAspectSubcolumns)) {
       aspectSubcolumn.computeWidth(metrics, myPseudoLinesToFileLines);
     }
     mySubcolumnInterval = metrics.stringWidth(" ");
     calculateCurrentPseudoLinesLater();
   }
-
   @Override
   public String getTooltipText(MouseEvent event) {
     int fileLine = findFileLineByY(event.getY());
@@ -482,16 +462,11 @@ __switch__:
       return myFileAnnotation.getToolTip(fileLine);
     }
   }
-
   @Nullable
   @Override
   public Cursor getCursor(MouseEvent event) {
-    return (findFileLineByY(event.getY()) == -1 ?
-      null :
-      new Cursor(Cursor.HAND_CURSOR)
-    );
+    return (findFileLineByY(event.getY()) == -1 ? null : new Cursor(Cursor.HAND_CURSOR));
   }
-
   @Override
   public void mousePressed(MouseEvent event) {
     if (event.getButton() == MouseEvent.BUTTON1 && event.getID() == MouseEvent.MOUSE_RELEASED) {
@@ -502,7 +477,6 @@ __switch__:
       super.mousePressed(event);
     }
   }
-
   @Override
   public void dispose() {
     myMessageBusConnection.disconnect();
@@ -514,12 +488,10 @@ __switch__:
       }
     });
   }
-
   public void close() {
     getLeftEditorHighlighter().removeLeftColumn(this);
     dispose();
   }
-
   private int findPseudoLineByY(int y) {
     int pseudoLine = Collections.binarySearch((List) myPseudoLinesY, y);
     if (pseudoLine < 0) {
@@ -530,7 +502,6 @@ __switch__:
     }
     return pseudoLine;
   }
-
   private int findFileLineByY(int y) {
     int pseudoLine = findPseudoLineByY(y);
     if (pseudoLine == -1) {
@@ -542,7 +513,6 @@ __switch__:
       return ListSequence.fromList(myPseudoLinesToFileLines).getElement(pseudoLine);
     }
   }
-
   @Override
   public JPopupMenu getPopupMenu(MouseEvent event) {
     List<AnAction> actions = ListSequence.fromList(new ArrayList<AnAction>());
@@ -561,17 +531,7 @@ __switch__:
         @Override
         protected void doExecute(AnActionEvent e, Map<String, Object> params) {
           String asString = myFileAnnotation.getLineRevisionNumber(fileLine).asString();
-          try {
-            CopyPasteManager.getInstance().setContents((Transferable) Class.forName((ApplicationInfo.getInstance().getMajorVersion().equals("12") ?
-              "TextTransferrable" :
-              "TextTransferable"
-            )).getDeclaredConstructor(String.class, String.class).newInstance(asString, asString));
-          } catch (InstantiationException e1) {
-          } catch (IllegalAccessException e1) {
-          } catch (InvocationTargetException e1) {
-          } catch (NoSuchMethodException e1) {
-          } catch (ClassNotFoundException e1) {
-          }
+          CopyPasteManager.getInstance().setContents(new TextTransferable(asString, asString));
         }
       });
     }
@@ -582,7 +542,6 @@ __switch__:
     DefaultActionGroup actionGroup = ActionUtils.groupFromActions(ListSequence.fromList(actions).toGenericArray(AnAction.class));
     return ActionManager.getInstance().createActionPopupMenu(ActionPlaces.UNKNOWN, actionGroup).getComponent();
   }
-
   private int getFileLineWithMaxRevision(int a, int b) {
     if (b == -1) {
       return a;
@@ -607,191 +566,159 @@ __switch__:
     }
     return a;
   }
-
   public void invalidateLayout() {
-    SwingUtilities.invokeLater(new Runnable() {
+    ApplicationManager.getApplication().invokeLater(new Runnable() {
       public void run() {
         getLeftEditorHighlighter().relayout(false);
       }
     });
   }
-
   public boolean isShowAdditionalInfo() {
     return myShowAdditionalInfo;
   }
-
   public void setShowAdditionalInfo(boolean showAdditionalInfo) {
     myShowAdditionalInfo = showAdditionalInfo;
     invalidateLayout();
   }
-
   public List<VcsFileRevision> getRevisions() {
     return myFileAnnotation.getRevisions();
   }
-
   public Project getProject() {
     return myVcs.getProject();
   }
-
   private class MyDifferenceListener extends CurrentDifferenceAdapter {
     public MyDifferenceListener() {
     }
-
     @Override
     public void changeUpdateFinished() {
       calculateCurrentPseudoLinesLater();
     }
-
     @Override
     public void changeRemoved(@NotNull ModelChange change) {
       MapSequence.fromMap(myChangesToLineContents).removeKey(change);
     }
-
     @Override
     public void changeAdded(@NotNull ModelChange change) {
       saveChange(change);
     }
   }
-
   private class ShowDiffFromAnnotationAction extends AnAction {
     private int myFileLine;
-
     public ShowDiffFromAnnotationAction(int fileLine) {
       super("Show Diff");
       myFileLine = fileLine;
     }
-
     @Override
     public void actionPerformed(AnActionEvent event) {
       final VcsRevisionNumber revisionNumber = myFileAnnotation.getLineRevisionNumber(myFileLine);
-      if (revisionNumber != null) {
-        final Project project = getProject();
-        ProgressManager.getInstance().run(new Task.Backgroundable(project, "Loading revision " + revisionNumber.asString() + " contents", true, BackgroundFromStartOption.getInstance()) {
-          @Override
-          public void run(@NotNull ProgressIndicator pi) {
-            CommittedChangesProvider<CommittedChangeList, ChangeBrowserSettings> provider = myVcs.getCommittedChangesProvider();
+      if (revisionNumber == null) {
+        return;
+      }
 
-            try {
-              Pair<CommittedChangeList, FilePath> pair = null;
-              if (provider != null) {
-                pair = provider.getOneList(myVirtualFile, revisionNumber);
+      final Project project = getProject();
+      ProgressManager.getInstance().run(new Task.Backgroundable(project, "Loading revision " + revisionNumber.asString() + " contents", true, BackgroundFromStartOption.getInstance()) {
+        @Override
+        public void run(@NotNull ProgressIndicator pi) {
+          CommittedChangesProvider<CommittedChangeList, ChangeBrowserSettings> provider = myVcs.getCommittedChangesProvider();
+
+          try {
+            Pair<CommittedChangeList, FilePath> pair = null;
+            if (provider != null) {
+              pair = provider.getOneList(myVirtualFile, revisionNumber);
+            }
+            FilePath targetPath = (check_5mnya_a0a0c0c0a0a0a0e0c54(pair) == null ? new FilePathImpl(myVirtualFile) : check_5mnya_a0a2a2a0a0a0a4a2tb(pair));
+            CommittedChangeList cl = check_5mnya_a0d0c0a0a0a0e0c54(pair);
+            if (cl == null) {
+              VcsBalloonProblemNotifier.showOverChangesView(project, "Cannot load data for showing diff", MessageType.ERROR);
+              return;
+            }
+            List<Change> changes = Sequence.fromIterable(((Iterable<Change>) cl.getChanges())).sort(new ISelector<Change, String>() {
+              public String select(Change c) {
+                return ChangesUtil.getFilePath(c).getName().toLowerCase();
               }
-              FilePath targetPath = (check_5mnya_a0a0c0c0a0a0a0b0b0c54(pair) == null ?
-                new FilePathImpl(myVirtualFile) :
-                check_5mnya_a0a2a2a0a0a0a1a1a2tb(pair)
-              );
-              CommittedChangeList cl = check_5mnya_a0d0c0a0a0a0b0b0c54(pair);
-              if (cl == null) {
-                VcsBalloonProblemNotifier.showOverChangesView(project, "Cannot load data for showing diff", MessageType.ERROR);
-                return;
+            }, true).toListSequence();
+            final File ioFile = targetPath.getIOFile();
+            Change change = ListSequence.fromList(changes).findFirst(new IWhereFilter<Change>() {
+              public boolean accept(Change c) {
+                return c.getAfterRevision() != null && c.getAfterRevision().getFile().getIOFile().equals(ioFile);
               }
-              List<Change> changes = Sequence.fromIterable(((Iterable<Change>) cl.getChanges())).sort(new ISelector<Change, String>() {
-                public String select(Change c) {
-                  return ChangesUtil.getFilePath(c).getName().toLowerCase();
-                }
-              }, true).toListSequence();
-              final File ioFile = targetPath.getIOFile();
-              Change change = ListSequence.fromList(changes).findFirst(new IWhereFilter<Change>() {
+            });
+            if (change != null) {
+              final String name = ioFile.getName();
+              change = ListSequence.fromList(changes).findFirst(new IWhereFilter<Change>() {
                 public boolean accept(Change c) {
-                  return c.getAfterRevision() != null && c.getAfterRevision().getFile().getIOFile().equals(ioFile);
+                  return c.getAfterRevision() != null && c.getAfterRevision().getFile().getName().equals(name);
                 }
               });
-              if (change != null) {
-                final String name = ioFile.getName();
-                change = ListSequence.fromList(changes).findFirst(new IWhereFilter<Change>() {
-                  public boolean accept(Change c) {
-                    return c.getAfterRevision() != null && c.getAfterRevision().getFile().getName().equals(name);
-                  }
-                });
 
-                ContentRevision before = change.getBeforeRevision();
-                ContentRevision after = change.getAfterRevision();
+              ContentRevision before = change.getBeforeRevision();
+              ContentRevision after = change.getAfterRevision();
 
-                if (pi.isCanceled()) {
-                  return;
-                }
-                pi.setText("Loading model after change");
-
-                assert after != null;
-                FileType[] filetypes = {(before == null ?
-                  null :
-                  before.getFile().getFileType()
-                ), after.getFile().getFileType()};
-                final boolean isPerRoot = MPSFileTypeFactory.MPS_ROOT_FILE_TYPE.equals(filetypes[1]) || MPSFileTypeFactory.MPS_HEADER_FILE_TYPE.equals(filetypes[1]);
-
-                final SModel afterModel = PersistenceUtil.loadModel(after.getContent(), (isPerRoot ?
-                  MPSExtentions.MODEL :
-                  filetypes[1].getDefaultExtension()
-                ));
-
-                if (pi.isCanceled()) {
-                  return;
-                }
-                pi.setText("Loading model before change");
-
-                final Wrappers._T<SModel> beforeModel = new Wrappers._T<SModel>();
-                if (before == null) {
-                  beforeModel.value = new MergeTemporaryModel(myModel.getReference(), true);
-                } else {
-                  beforeModel.value = PersistenceUtil.loadModel(before.getContent(), (isPerRoot ?
-                    MPSExtentions.MODEL :
-                    filetypes[0].getDefaultExtension()
-                  ));
-                }
-
-                final Wrappers._T<SNodeId> rootId = new Wrappers._T<SNodeId>();
-                ModelAccess.instance().runReadAction(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNodeId>() {
-                  public SNodeId invoke() {
-                    SNodeId nodeId = check_5mnya_a0a0a0a22a8a2a0a0a0a1a1a2tb(ListSequence.fromList(myFileLineToContent).getElement(myFileLine));
-                    SNode node = afterModel.getNode(nodeId);
-                    if ((node == null)) {
-                      node = beforeModel.value.getNode(nodeId);
-                    }
-                    return rootId.value = check_5mnya_a0d0a0a22a8a2a0a0a0a1a1a2tb(SNodeOperations.getContainingRoot(node));
-                  }
-                }));
-
-                final String[] titles = {(before == null ?
-                  "<no revision>" :
-                  before.getRevisionNumber().asString()
-                ), after.getRevisionNumber().asString()};
-                DiffContent[] diffContents = new DiffContent[]{new SimpleContent((before == null ?
-                  "" :
-                  before.getContent()
-                ), filetypes[0]), new SimpleContent(after.getContent(), filetypes[1])};
-                final DiffRequest diffRequest = new SimpleDiffRequest(project, diffContents, titles);
-
-                ApplicationManager.getApplication().invokeLater(new Runnable() {
-                  public void run() {
-                    if (isPerRoot || rootId.value != null) {
-                      ModelDifferenceDialog.showRootDifference(project, beforeModel.value, afterModel, rootId.value, titles[0], titles[1], null, diffRequest);
-                    } else {
-                      new ModelDifferenceDialog(project, beforeModel.value, afterModel, titles[0], titles[1], diffRequest).show();
-                    }
-                  }
-                });
+              if (pi.isCanceled()) {
+                return;
               }
-            } catch (final VcsException ve) {
+              pi.setText("Loading model after change");
+
+              assert after != null;
+              FileType[] filetypes = {(before == null ? null : before.getFile().getFileType()), after.getFile().getFileType()};
+              boolean isPerRoot = MPSFileTypeFactory.MPS_ROOT_FILE_TYPE.equals(filetypes[1]) || MPSFileTypeFactory.MPS_HEADER_FILE_TYPE.equals(filetypes[1]);
+
+              final SModel afterModel = VCSPersistenceUtil.loadModel(after.getContent().getBytes(FileUtil.DEFAULT_CHARSET), (isPerRoot ? MPSExtentions.MODEL : filetypes[1].getDefaultExtension()));
+
+              if (pi.isCanceled()) {
+                return;
+              }
+              pi.setText("Loading model before change");
+
+              final Wrappers._T<SModel> beforeModel = new Wrappers._T<SModel>();
+              if (before == null) {
+                beforeModel.value = new MergeTemporaryModel(myModel.getReference(), true);
+              } else {
+                beforeModel.value = VCSPersistenceUtil.loadModel(before.getContent().getBytes(FileUtil.DEFAULT_CHARSET), (isPerRoot ? MPSExtentions.MODEL : filetypes[0].getDefaultExtension()));
+              }
+              final Wrappers._T<SNodeId> rootId = new Wrappers._T<SNodeId>();
+              final Wrappers._T<String> rootName = new Wrappers._T<String>();
+              ProjectHelper.fromIdeaProject(project).getModelAccess().runReadAction(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<String>() {
+                public String invoke() {
+                  SNodeId nodeId = check_5mnya_a0a0a0a22a8a2a0a0a0a4a2tb(ListSequence.fromList(myFileLineToContent).getElement(myFileLine));
+                  SNode node = afterModel.getNode(nodeId);
+                  if ((node == null)) {
+                    node = beforeModel.value.getNode(nodeId);
+                  }
+                  SNode root = SNodeOperations.getContainingRoot(node);
+                  rootId.value = check_5mnya_a0e0a0a22a8a2a0a0a0a4a2tb(root);
+                  return rootName.value = (((root == null) ? "" : root.getName())) + " (" + SModelOperations.getModelName(afterModel) + ")";
+                }
+              }));
+
+              List<DiffContent> contents = ListSequence.fromListAndArray(new ArrayList<DiffContent>(), DiffContentFactory.getInstance().create((before == null ? "" : before.getContent()), filetypes[0]), DiffContentFactory.getInstance().create(after.getContent(), filetypes[1]));
+              List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), (before == null ? "<no revision>" : before.getRevisionNumber().asString()), after.getRevisionNumber().asString());
+              final DiffRequest request = new SimpleDiffRequest(rootName.value, contents, titles);
+              // put hint to show only one root 
+              request.putUserData(ModelDiffViewer.DIFF_SHOW_ROOTID, rootId.value);
               ApplicationManager.getApplication().invokeLater(new Runnable() {
                 public void run() {
-                  VcsBalloonProblemNotifier.showOverChangesView(project, "Cannot show diff: " + ve.getMessage(), MessageType.ERROR);
+                  DiffManager.getInstance().showDiff(project, request);
                 }
               });
             }
+          } catch (final VcsException ve) {
+            ApplicationManager.getApplication().invokeLater(new Runnable() {
+              public void run() {
+                VcsBalloonProblemNotifier.showOverChangesView(project, "Cannot show diff: " + ve.getMessage(), MessageType.ERROR);
+              }
+            });
           }
-        });
-      }
+        }
+      });
     }
   }
-
   private class MyEditorComponentCreateListener implements EditorComponentCreateListener {
     public MyEditorComponentCreateListener() {
     }
-
     @Override
     public void editorComponentCreated(@NotNull EditorComponent ec) {
     }
-
     @Override
     public void editorComponentDisposed(@NotNull EditorComponent ec) {
       if (ec == getEditorComponent()) {
@@ -799,50 +726,43 @@ __switch__:
       }
     }
   }
-
   private static SNodeId check_5mnya_a0b0k0v(LineContent checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNodeId();
     }
     return null;
   }
-
   private static List<ModelChange> check_5mnya_a0a0a0a1a0a0v0v(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }
     return null;
   }
-
-  private static FilePath check_5mnya_a0a2a2a0a0a0a1a1a2tb(Pair<CommittedChangeList, FilePath> checkedDotOperand) {
+  private static FilePath check_5mnya_a0a2a2a0a0a0a4a2tb(Pair<CommittedChangeList, FilePath> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getSecond();
     }
     return null;
   }
-
-  private static FilePath check_5mnya_a0a0c0c0a0a0a0b0b0c54(Pair<CommittedChangeList, FilePath> checkedDotOperand) {
+  private static FilePath check_5mnya_a0a0c0c0a0a0a0e0c54(Pair<CommittedChangeList, FilePath> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getSecond();
     }
     return null;
   }
-
-  private static CommittedChangeList check_5mnya_a0d0c0a0a0a0b0b0c54(Pair<CommittedChangeList, FilePath> checkedDotOperand) {
+  private static CommittedChangeList check_5mnya_a0d0c0a0a0a0e0c54(Pair<CommittedChangeList, FilePath> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getFirst();
     }
     return null;
   }
-
-  private static SNodeId check_5mnya_a0a0a0a22a8a2a0a0a0a1a1a2tb(LineContent checkedDotOperand) {
+  private static SNodeId check_5mnya_a0a0a0a22a8a2a0a0a0a4a2tb(LineContent checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNodeId();
     }
     return null;
   }
-
-  private static SNodeId check_5mnya_a0d0a0a22a8a2a0a0a0a1a1a2tb(SNode checkedDotOperand) {
+  private static SNodeId check_5mnya_a0e0a0a22a8a2a0a0a0a4a2tb(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNodeId();
     }

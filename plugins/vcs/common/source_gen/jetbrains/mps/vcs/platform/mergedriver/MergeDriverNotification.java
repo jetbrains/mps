@@ -18,6 +18,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import com.intellij.openapi.vcs.impl.projectlevelman.AllVcses;
+import jetbrains.mps.smodel.LanguageAspect;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.NotificationListener;
 import org.jetbrains.annotations.NotNull;
@@ -30,23 +31,18 @@ public class MergeDriverNotification {
   private Project myProject;
   private AbstractInstaller.State myCompositeState;
   private Notification myLastNotification;
-
   private MergeDriverNotification(Project project) {
     myProject = project;
   }
-
   private boolean isNotificationSuppressed() {
     return "true".equals(PropertiesComponent.getInstance().getValue(SUPPRESSED_PROPERTY_NAME));
   }
-
   public void setNotificationsSuppressed(boolean value) {
     PropertiesComponent.getInstance().setValue(SUPPRESSED_PROPERTY_NAME, Boolean.toString(value));
   }
-
   private void calculateCompositeState() {
     myCompositeState = MergeDriverInstaller.getCompositeState(myProject, false);
   }
-
   public void showNotificationIfNeeded() {
     if (isNotificationSuppressed()) {
       return;
@@ -63,7 +59,6 @@ public class MergeDriverNotification {
     }
     showNotifications();
   }
-
   private void showNotifications() {
     final Set<String> vcsNames = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(((List<VcsDirectoryMapping>) ProjectLevelVcsManager.getInstance(myProject).getDirectoryMappings())).select(new ISelector<VcsDirectoryMapping, String>() {
       public String select(VcsDirectoryMapping dm) {
@@ -81,11 +76,7 @@ public class MergeDriverNotification {
             return AllVcses.getInstance(myProject).getByName(vn).getDisplayName();
           }
         }), "and");
-        String mainMessage = (myCompositeState == AbstractInstaller.State.OUTDATED ?
-          "You have some of the global settings outdated, you need to <a href=\"install\">update them</a>" :
-          "To make it work better with MPS, it is recommended to <a href=\"install\">update some of their global settings</a>"
-        );
-        String message = String.format("<p>You are using %s. %s.</p><p><a href=\"http://confluence.jetbrains.com/display/MPSD2/Version+Control\">More info</a>.</p><p><a href=\"dismiss\">Don't offer again</a>.</p>", whichVcses, mainMessage);
+        String message = "<p>This project uses " + whichVcses + ". For better integration with MPS, it is recommended to update global VCS settings (<a href=\"" + LanguageAspect.CONFLUENCE_BASE + "Version+Control\">More info</a>).<p><a href=\"install\">Update</a>&nbsp;&nbsp;<a href=\"dismiss\">Dismiss</a></p>";
         myLastNotification = new Notification("MergeDriver", "VCS Addons", message, NotificationType.WARNING, new NotificationListener() {
           @Override
           public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent e) {
@@ -110,7 +101,6 @@ public class MergeDriverNotification {
       }
     });
   }
-
   public static MergeDriverNotification getInstance(Project project) {
     return new MergeDriverNotification(project);
   }

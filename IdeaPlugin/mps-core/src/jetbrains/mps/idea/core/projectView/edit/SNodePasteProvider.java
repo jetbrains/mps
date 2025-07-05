@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,18 +17,18 @@
 package jetbrains.mps.idea.core.projectView.edit;
 
 import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.datatransfer.PasteNodeData;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.nodeEditor.datatransfer.NodePaster;
-import jetbrains.mps.project.ModuleContext;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.resolve.ResolverComponent;
-import jetbrains.mps.util.*;
-import org.jetbrains.mps.openapi.model.SNode;import org.jetbrains.mps.openapi.model.SNodeId;import org.jetbrains.mps.openapi.model.SNodeReference;import org.jetbrains.mps.openapi.model.SReference;import org.jetbrains.mps.openapi.model.SModelId;import org.jetbrains.mps.openapi.model.SModel;import org.jetbrains.mps.openapi.model.SModel;import org.jetbrains.mps.openapi.model.SModelReference;import jetbrains.mps.smodel.*;
-import jetbrains.mps.smodel.descriptor.EditableSModelDescriptor;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SReference;
 
-import javax.swing.SwingUtilities;
 import java.util.List;
 import java.util.Set;
 
@@ -39,9 +39,9 @@ import java.util.Set;
 public class SNodePasteProvider implements com.intellij.ide.PasteProvider, Runnable {
   private Project myProject;
   private SModel myModel;
-  private EditableSModelDescriptor myModelDescriptor;
+  private EditableSModel myModelDescriptor;
 
-  public SNodePasteProvider(SModel sModel, Project project, EditableSModelDescriptor modelDescriptor) {
+  public SNodePasteProvider(SModel sModel, Project project, EditableSModel modelDescriptor) {
     myProject = project;
     myModel = sModel;
     myModelDescriptor = modelDescriptor;
@@ -49,7 +49,7 @@ public class SNodePasteProvider implements com.intellij.ide.PasteProvider, Runna
 
   @Override
   public void performPaste(@NotNull DataContext dataContext) {
-    ModelAccess.instance().runReadInEDT(this);
+    myProject.getModelAccess().runReadInEDT(this);
   }
 
   @Override
@@ -66,47 +66,40 @@ public class SNodePasteProvider implements com.intellij.ide.PasteProvider, Runna
   public void run() {
     // Should be executed inside read action
     PasteNodeData nodeData = CopyPasteUtil.getPasteNodeDataFromClipboard(myModel);
-    IOperationContext operationContext = new ModuleContext(myModel.getModule(), myProject);
-    SwingUtilities.invokeLater(getAddImportsRunnable(nodeData, operationContext));
+    ApplicationManager.getApplication().invokeLater(getAddImportsRunnable(nodeData));
   }
 
-  private Runnable getAddImportsRunnable(final PasteNodeData nodeData, final IOperationContext operationContext) {
+  private Runnable getAddImportsRunnable(final PasteNodeData nodeData) {
     // Should be executed outside of read action in UI thread
-    return new Runnable() {
-      @Override
-      public void run() {
-        Runnable addImportsRunnable = CopyPasteUtil.addImportsWithDialog(nodeData, myModel, operationContext);
-        ModelAccess.instance().runCommandInEDT(getPasteRunnable(nodeData, addImportsRunnable, operationContext), myProject);
-      }
+    return () -> {
+      Runnable addImportsRunnable = CopyPasteUtil.addImportsWithDialog(nodeData, myModel, myProject);
+      myProject.getModelAccess().executeCommandInEDT(getPasteRunnable(nodeData, addImportsRunnable));
     };
   }
 
-  private Runnable getPasteRunnable(final PasteNodeData nodeData, final Runnable addImportsRunnable, final IOperationContext operationContext) {
+  private Runnable getPasteRunnable(final PasteNodeData nodeData, final Runnable addImportsRunnable) {
     // Should be executed inside read action
-    return new Runnable() {
-      @Override
-      public void run() {
-        if (jetbrains.mps.util.SNodeOperations.isModelDisposed(myModel)) {
-          return;
-        }
-        List<SNode> nodesToPaste = nodeData.getNodes();
-        if (nodesToPaste == null || nodesToPaste.isEmpty()) {
-          return;
-        }
-        Set<SReference> referencesToResolve = nodeData.getRequireResolveReferences();
-
-        if (addImportsRunnable != null) {
-          addImportsRunnable.run();
-        }
-
-        NodePaster pasteProcessor = new NodePaster(nodesToPaste);
-        if (!(pasteProcessor.canPasteAsRoots())) {
-          return;
-        }
-        pasteProcessor.pasteAsRoots(myModel, "");
-        ResolverComponent.getInstance().resolveScopesOnly(referencesToResolve, operationContext);
-        myModelDescriptor.save();
+    return () -> {
+      if (myModel.getRepository() == null) {
+        return;
       }
+      List<SNode> nodesToPaste = nodeData.getNodes();
+      if (nodesToPaste == null || nodesToPaste.isEmpty()) {
+        return;
+      }
+      Set<SReference> referencesToResolve = nodeData.getRequireResolveReferences();
+
+      if (addImportsRunnable != null) {
+        addImportsRunnable.run();
+      }
+
+      NodePaster pasteProcessor = new NodePaster(nodesToPaste);
+      if (!(pasteProcessor.canPasteAsRoots())) {
+        return;
+      }
+      pasteProcessor.pasteAsRoots(myModel, "");
+      ResolverComponent.getInstance().resolveScopesOnly(referencesToResolve, myProject.getRepository());
+      myModelDescriptor.save();
     };
   }
 }

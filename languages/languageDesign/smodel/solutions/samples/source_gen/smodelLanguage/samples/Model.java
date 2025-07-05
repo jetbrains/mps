@@ -5,10 +5,10 @@ package smodelLanguage.samples;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.IScope;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -17,40 +17,35 @@ public class Model {
   public void model_long_name(SModel model) {
     String name = SModelOperations.getModelName(model);
   }
-
   public void new_node_1(SModel model) {
-    SNode new_stmt = SModelOperations.createNewNode(model, null, "jetbrains.mps.baseLanguage.structure.IfStatement");
-    SNode new_class = SModelOperations.createNewRootNode(model, "jetbrains.mps.baseLanguage.structure.ClassConcept", null);
-    SModelOperations.addRootNode(model, SConceptOperations.createNewNode("jetbrains.mps.baseLanguage.structure.Statement", null));
-    SModelOperations.addRootNode(model, SConceptOperations.createNewNode(NameUtil.nodeFQName(SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.structure.Statement")), null));
+    SNode new_stmt = SModelOperations.createNewNode(model, null, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
+    SNode new_class = SModelOperations.createNewRootNode(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+    SModelOperations.addRootNode(model, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement")));
+    SModelOperations.addRootNode(model, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement"))));
   }
-
   public void new_node_2(SModel model) {
-    SNode named = SModelOperations.createNewNode(model, null, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    SPropertyOperations.set(named, "name", "a");
+    SNode named = SModelOperations.createNewNode(model, null, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+    SPropertyOperations.set(named, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "a");
   }
-
-  public void roots_access_1(SModel model, IScope scope) {
-    List<SNode> roots1 = SModelOperations.getRoots(model, null);
-    SModelOperations.getRootsIncludingImported(model, scope, null);
-    List<SNode> roots2 = SModelOperations.getRoots(model, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    Iterable<SNode> roots3 = ListSequence.fromList(SModelOperations.getRoots(model, "jetbrains.mps.baseLanguage.structure.ClassConcept")).where(new IWhereFilter<SNode>() {
+  public void roots_access_1(SModel model) {
+    List<SNode> roots1 = SModelOperations.roots(model, null);
+    SModelOperations.rootsIncludingImported(model, null);
+    List<SNode> roots2 = SModelOperations.roots(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+    Iterable<SNode> roots3 = ListSequence.fromList(SModelOperations.roots(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode c) {
-        return SPropertyOperations.hasValue(c, "name", "Utils");
+        return SPropertyOperations.hasValue(c, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "Utils");
       }
     });
   }
-
-  public void roots_access_2(SModel model, IScope scope) {
-    SModelOperations.getRootsIncludingImported(model, scope, "jetbrains.mps.baseLanguage.structure.IfStatement");
+  public void roots_access_2(SModel model) {
+    SModelOperations.rootsIncludingImported(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
   }
-
   public void nodes_access_1(SModel model) {
-    List<SNode> nodes1 = SModelOperations.getNodes(model, null);
-    List<SNode> nodes2 = SModelOperations.getNodes(model, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    Iterable<SNode> nodes3 = ListSequence.fromList(SModelOperations.getNodes(model, "jetbrains.mps.baseLanguage.structure.ClassConcept")).where(new IWhereFilter<SNode>() {
+    List<SNode> nodes1 = SModelOperations.nodes(model, null);
+    List<SNode> nodes2 = SModelOperations.nodes(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+    Iterable<SNode> nodes3 = ListSequence.fromList(SModelOperations.nodes(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode c) {
-        return SPropertyOperations.hasValue(c, "name", "Utils");
+        return SPropertyOperations.hasValue(c, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "Utils");
       }
     });
   }

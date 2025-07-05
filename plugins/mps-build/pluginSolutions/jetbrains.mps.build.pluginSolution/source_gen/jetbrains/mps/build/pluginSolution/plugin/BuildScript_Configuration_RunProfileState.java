@@ -16,10 +16,13 @@ import com.intellij.openapi.project.Project;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.vfs.IFile;
 import java.util.List;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.project.ProjectHelper;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.build.behavior.BuildProject_Behavior;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.build.behavior.BuildProject__BehaviorDescriptor;
 import jetbrains.mps.build.util.Context;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -31,7 +34,6 @@ import com.intellij.execution.process.ProcessHandler;
 import jetbrains.mps.ant.execution.Ant_Command;
 import com.intellij.execution.ui.ConsoleView;
 import jetbrains.mps.execution.api.configurations.ConsoleCreator;
-import jetbrains.mps.execution.api.configurations.ConsoleProcessListener;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionResult;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionConsole;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -42,62 +44,57 @@ public class BuildScript_Configuration_RunProfileState implements RunProfileStat
   private final BuildScript_Configuration myRunConfiguration;
   @NotNull
   private final ExecutionEnvironment myEnvironment;
-
   public BuildScript_Configuration_RunProfileState(@NotNull BuildScript_Configuration configuration, @NotNull Executor executor, @NotNull ExecutionEnvironment environment) {
     myRunConfiguration = configuration;
     myEnvironment = environment;
   }
-
   public ConfigurationPerRunnerSettings getConfigurationSettings() {
     return null;
   }
-
   public RunnerSettings getRunnerSettings() {
     return null;
   }
-
   @Nullable
   public ExecutionResult execute(Executor executor, @NotNull ProgramRunner runner) throws ExecutionException {
     Project project = myEnvironment.getProject();
     final Wrappers._T<IFile> file = new Wrappers._T<IFile>(null);
     final Wrappers._T<String> mainTaskName = new Wrappers._T<String>();
     final Wrappers._T<List<String>> undefinedMacro = new Wrappers._T<List<String>>();
-    ModelAccess.instance().runReadAction(new Runnable() {
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
+    mpsProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        SNode node = SNodeOperations.cast(myRunConfiguration.getNode().getNode(), "jetbrains.mps.build.structure.BuildProject");
-        String scriptsPath = BuildProject_Behavior.call_getScriptsPath_4796668409958419284(node, Context.defaultContext());
+        SNodeReference configuredNode = myRunConfiguration.getNodePointer().getNodeRef();
+        SNode projectNode = SNodeOperations.cast((configuredNode == null ? null : configuredNode.resolve(mpsProject.getRepository())), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
+        String scriptsPath = (projectNode != null ? BuildProject__BehaviorDescriptor.getScriptsPath_id4ahc858UcHk.invoke(projectNode, Context.defaultContext()) : null);
         if (scriptsPath != null) {
-          file.value = FileSystem.getInstance().getFileByPath(scriptsPath);
+          file.value = FileSystem.getInstance().getFile(scriptsPath);
           // todo 
-          file.value = file.value.getDescendant(BuildProject_Behavior.call_getOutputFileName_4915877860351551360(node));
+          file.value = file.value.getDescendant(BuildProject__BehaviorDescriptor.getOutputFileName_id4gSHdTptyu0.invoke(projectNode));
           // todo select task 
-          mainTaskName.value = SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getTargets(SNodeOperations.getNode("r:14f06230-41df-42af-9a25-81de46539bf1(jetbrains.mps.build.workflow.accessories)", "7306485738221408315"), "parts", true)).findFirst(new IWhereFilter<SNode>() {
+          mainTaskName.value = SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:0d66e868-9778-4307-b6f9-4795c00f662f(jetbrains.mps.build.workflow.preset.general)", "7306485738221408315"), MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da114724ce92L, 0x6565da114724ce94L, "parts"))).findFirst(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, "jetbrains.mps.build.workflow.structure.BwfTask");
+              return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6273L, "jetbrains.mps.build.workflow.structure.BwfTask"));
             }
-          }), "jetbrains.mps.build.workflow.structure.BwfTask"), "name");
-          undefinedMacro.value = ListSequence.fromList(SLinkOperations.getTargets(node, "macros", true)).where(new IWhereFilter<SNode>() {
+          }), MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6273L, "jetbrains.mps.build.workflow.structure.BwfTask")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+          undefinedMacro.value = ListSequence.fromList(SLinkOperations.getChildren(projectNode, MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros"))).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, "jetbrains.mps.build.structure.BuildFolderMacro") && (SLinkOperations.getTarget(SNodeOperations.cast(it, "jetbrains.mps.build.structure.BuildFolderMacro"), "defaultPath", true) == null);
+              return SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, "jetbrains.mps.build.structure.BuildFolderMacro")) && (SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, "jetbrains.mps.build.structure.BuildFolderMacro")), MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, 0x668c6cfbafadf0eaL, "defaultPath")) == null);
             }
           }).select(new ISelector<SNode, String>() {
             public String select(SNode it) {
-              return SPropertyOperations.getString(it, "name");
+              return SPropertyOperations.getString(it, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
             }
           }).toListSequence();
         }
       }
     });
     if (file.value == null) {
-      throw new ExecutionException("Can not find xml-file for script " + myRunConfiguration.getNode());
+      throw new ExecutionException("Can not find xml-file for script " + myRunConfiguration.getNodePointer());
     }
     {
-      ProcessHandler _processHandler = new Ant_Command().setTargetName_String(mainTaskName.value).setAntLocation_String((myRunConfiguration.getSettings().getUseOtherAntLocation() ?
-        myRunConfiguration.getSettings().getOtherAntLocation() :
-        null
-      )).setOptions_String(myRunConfiguration.getSettings().getAntOptions()).setMacroToDefine_ListString(undefinedMacro.value).createProcess(file.value.getPath());
+      ProcessHandler _processHandler = new Ant_Command().setTargetName_String(mainTaskName.value).setAntLocation_String((myRunConfiguration.getSettings().getUseOtherAntLocation() ? myRunConfiguration.getSettings().getOtherAntLocation() : null)).setOptions_String(myRunConfiguration.getSettings().getAntOptions()).setMacroToDefine_ListString(undefinedMacro.value).createProcess(file.value.getPath());
       final ConsoleView _consoleView = ConsoleCreator.createConsoleView(project, false);
-      _processHandler.addProcessListener(new ConsoleProcessListener(_consoleView));
+      _consoleView.attachToProcess(_processHandler);
       return new DefaultExecutionResult(_processHandler, new DefaultExecutionConsole(_consoleView.getComponent(), new _FunctionTypes._void_P0_E0() {
         public void invoke() {
           _consoleView.dispose();
@@ -105,7 +102,6 @@ public class BuildScript_Configuration_RunProfileState implements RunProfileStat
       }));
     }
   }
-
   public static boolean canExecute(String executorId) {
     if (DefaultRunExecutor.EXECUTOR_ID.equals(executorId)) {
       return true;

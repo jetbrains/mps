@@ -6,34 +6,9 @@ import jetbrains.mps.nodeEditor.DefaultNodeEditor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
-import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
-import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
-import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 
 public class InheritDocInlineDocTag_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createComponent_ru37wa_a(editorContext, node);
-  }
-
-  private EditorCell createComponent_ru37wa_a(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = editorContext.getCellFactory().createEditorComponentCell(node, "jetbrains.mps.lang.core.editor.alias");
-    editorCell.setBig(true);
-    Style style = new StyleImpl();
-    DocumentationCommentStyleSheet_StyleSheet.applyCommentTag(style, editorCell);
-    editorCell.getStyle().putAll(style);
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(editorContext, new BasicCellContext(node), new SubstituteInfoPartExt[]{new InheritDocInlineDocTag_Editor.ReplaceWith_BaseInlineDocTag_cellMenu_ru37wa_a0a()}));
-    return editorCell;
-  }
-
-  public static class ReplaceWith_BaseInlineDocTag_cellMenu_ru37wa_a0a extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
-    public ReplaceWith_BaseInlineDocTag_cellMenu_ru37wa_a0a() {
-    }
-
-    public String getReplacementConceptName() {
-      return "jetbrains.mps.baseLanguage.javadoc.structure.BaseInlineDocTag";
-    }
+    return new InheritDocInlineDocTag_EditorBuilder_a(editorContext, node).createCell();
   }
 }

@@ -7,42 +7,63 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
-import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 
 public class DeleteStaticInField {
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     editorCell.setAction(CellActionType.DELETE, new DeleteStaticInField.DeleteStaticInField_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, new DeleteStaticInField.DeleteStaticInField_BACKSPACE(node));
   }
-
   public static class DeleteStaticInField_DELETE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public DeleteStaticInField_DELETE(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
-      final SNode field = SNodeFactoryOperations.insertNewNextSiblingChild(node, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
-      SLinkOperations.setTarget(field, "type", SLinkOperations.getTarget(node, "type", true), true);
-      SLinkOperations.setTarget(field, "visibility", SLinkOperations.getTarget(node, "visibility", true), true);
-      SLinkOperations.setTarget(field, "initializer", SLinkOperations.getTarget(node, "initializer", true), true);
-      SPropertyOperations.set(field, "isDeprecated", "" + (SPropertyOperations.getBoolean(node, "isDeprecated")));
-      SPropertyOperations.set(field, "name", SPropertyOperations.getString(node, "name"));
-      SPropertyOperations.set(field, "isFinal", "" + (SPropertyOperations.getBoolean(node, "isFinal")));
-      ListSequence.fromList(SLinkOperations.getTargets(field, "annotation", true)).addSequence(ListSequence.fromList(SLinkOperations.getTargets(node, "annotation", true)));
-      AttributeOperations.setAttribute(field, new IAttributeDescriptor.NodeAttribute(SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment")), AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment"))));
-      SNodeOperations.deleteNode(node);
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))) {
+        editorContext.flushEvents();
+        return;
+      }
+      SNode replacing = SNodeFactoryOperations.replaceWithNewChild(node, SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")));
+      MemberDeclarationRefactoringUtil.rewireFieldReferences(node, replacing);
+
+      if (SPropertyOperations.getBoolean(replacing, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal"))) {
+        SelectionUtil.selectCell(editorContext, replacing, "finalModifier");
+      } else if (SPropertyOperations.getBoolean(replacing, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x776fe644792f90adL, "isTransient"))) {
+        SelectionUtil.selectCell(editorContext, replacing, "transientModifier");
+      } else if (SPropertyOperations.getBoolean(replacing, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x120c4a208a1L, "isVolatile"))) {
+        SelectionUtil.selectCell(editorContext, replacing, "volatileModifier");
+      } else {
+        SelectionUtil.selectNode(editorContext, SLinkOperations.getTarget(replacing, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type")));
+      }
+    }
+  }
+  public static class DeleteStaticInField_BACKSPACE extends AbstractCellAction {
+    /*package*/ SNode myNode;
+    public DeleteStaticInField_BACKSPACE(SNode node) {
+      this.myNode = node;
+    }
+    public void execute(EditorContext editorContext) {
+      this.execute_internal(editorContext, this.myNode);
+    }
+    public void execute_internal(EditorContext editorContext, SNode node) {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface"))) {
+        editorContext.flushEvents();
+        return;
+      }
+      SNode replacing = SNodeFactoryOperations.replaceWithNewChild(node, SNodeFactoryOperations.asInstanceConcept(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")));
+      MemberDeclarationRefactoringUtil.rewireFieldReferences(node, replacing);
+
+      SelectionUtil.selectLabelCellAnSetCaret(editorContext, replacing, SelectionManager.FIRST_EDITABLE_CELL, -1);
     }
   }
 }

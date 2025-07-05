@@ -5,128 +5,90 @@ package jetbrains.mps.refactoring.framework;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import java.util.List;
-import org.jetbrains.mps.openapi.model.SNode;
 import java.util.ArrayList;
-import jetbrains.mps.smodel.ModelAccess;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SConceptRepository;
-import java.util.Set;
-import org.jetbrains.mps.openapi.module.FindUsagesFacade;
-import jetbrains.mps.project.GlobalScope;
-import java.util.Collections;
-import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import java.util.Set;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.util.SNodeOperations;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.classloading.ClassLoaderManager;
+import org.apache.log4j.Level;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Arrays;
-import java.util.Map;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.project.Project;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import java.util.LinkedHashMap;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.extapi.model.GeneratableSModel;
 
 public class RefactoringUtil {
+  private static final Logger LOG_1635700302 = LogManager.getLogger(RefactoringUtil.class);
   private static final Logger LOG = LogManager.getLogger(RefactoringUtil.class);
-
   public RefactoringUtil() {
   }
-
   public static IRefactoring getRefactoringByClassName(String className) {
     for (IRefactoring r : RefactoringUtil.getAllRefactorings()) {
-      Class refClass = (r instanceof OldRefactoringAdapter ?
-        ((OldRefactoringAdapter) r).getRefactoringClass() :
-        r.getClass()
-      );
+      Class refClass = r.getClass();
       if (refClass.getName().equals(className)) {
         return r;
       }
     }
     return null;
   }
-
-  public static List<SNode> getAllRefactoringNodes() {
-    final List<SNode> availableRefactorings = new ArrayList<SNode>();
-    ModelAccess.instance().runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        SAbstractConcept c1 = SConceptRepository.getInstance().getConcept("jetbrains.mps.lang.refactoring.structure.Refactoring");
-        Set<SNode> newRefactorings = FindUsagesFacade.getInstance().findInstances(GlobalScope.getInstance(), Collections.singleton(c1), false, new EmptyProgressMonitor());
-
-        SAbstractConcept c2 = SConceptRepository.getInstance().getConcept("jetbrains.mps.lang.refactoring.structure.OldRefactoring");
-        Set<SNode> oldRefactorings = ((Set) FindUsagesFacade.getInstance().findInstances(GlobalScope.getInstance(), Collections.singleton(c2), false, new EmptyProgressMonitor()));
-        availableRefactorings.addAll(newRefactorings);
-        availableRefactorings.addAll(oldRefactorings);
-      }
-    });
-    return availableRefactorings;
-  }
-
   public static List<IRefactoring> getAllRefactorings() {
     List<IRefactoring> allRefactorings = new ArrayList<IRefactoring>();
-    for (Language language : GlobalScope.getInstance().getVisibleLanguages()) {
+    for (Language language : ModuleRepositoryFacade.getInstance().getAllModules(Language.class)) {
       allRefactorings.addAll(RefactoringUtil.getRefactorings(language));
     }
     return allRefactorings;
   }
-
   public static Set<IRefactoring> getRefactorings(Language language) {
     Set<IRefactoring> result = new HashSet<IRefactoring>();
-    {
-      SModel scriptsModelDescriptor = LanguageAspect.SCRIPTS.get(language);
-      if (scriptsModelDescriptor != null) {
-        SModel scriptsModel = scriptsModelDescriptor;
-        String packageName = SNodeOperations.getModelLongName(scriptsModel);
-        for (SNode refactoring : SModelOperations.getRoots(scriptsModel, "jetbrains.mps.lang.refactoring.structure.OldRefactoring")) {
-          try {
-            String fqName = packageName + "." + SPropertyOperations.getString(refactoring, "name");
-            Class<AbstractLoggableRefactoring> cls = ClassLoaderManager.getInstance().getClass(language, fqName);
-            if (cls == null) {
-              LOG.error("Can't find " + fqName);
-              continue;
-            }
-            Constructor<AbstractLoggableRefactoring> constructor = cls.getConstructor();
-            constructor.setAccessible(false);
-            AbstractLoggableRefactoring oldRefactoring = constructor.newInstance();
-            result.add(OldRefactoringAdapter.createAdapterFor(oldRefactoring));
-          } catch (Throwable t) {
-            LOG.error(null, t);
-          }
-        }
-      }
-    }
-    SModel refModelDescriptor = LanguageAspect.REFACTORINGS.get(language);
+    SModel refModelDescriptor = SModuleOperations.getAspect(language, "refactorings");
     if (refModelDescriptor != null) {
       SModel refactoringsModel = refModelDescriptor;
       String packageName = SNodeOperations.getModelLongName(refactoringsModel);
-      for (SNode refactoring : SModelOperations.getRoots(refactoringsModel, "jetbrains.mps.lang.refactoring.structure.Refactoring")) {
+      for (SNode refactoring : SModelOperations.roots(refactoringsModel, MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, "jetbrains.mps.lang.refactoring.structure.Refactoring"))) {
         try {
-          String fqName = packageName + "." + SPropertyOperations.getString(refactoring, "name");
-          Class<IRefactoring> cls = ClassLoaderManager.getInstance().getClass(language, fqName);
+          String fqName = packageName + "." + SPropertyOperations.getString(refactoring, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+          Class<IRefactoring> cls = null;
+          try {
+            cls = ((Class<IRefactoring>) language.getOwnClass(fqName));
+          } catch (ClassNotFoundException e) {
+            // Class not found - refactoring is not available now 
+          }
           if (cls == null) {
-            LOG.error("Can't find " + fqName);
+            if (LOG_1635700302.isEnabledFor(Level.WARN)) {
+              LOG_1635700302.warn("Can't find class " + fqName + " for refactoring. Refactoring disabled.");
+            }
             continue;
           }
           Constructor<IRefactoring> constructor = cls.getConstructor();
           constructor.setAccessible(false);
           result.add(constructor.newInstance());
-        } catch (Throwable t) {
-          LOG.error(null, t);
+        } catch (InstantiationException e) {
+          if (LOG_1635700302.isEnabledFor(Level.ERROR)) {
+            LOG_1635700302.error("", e);
+          }
+        } catch (InvocationTargetException e) {
+          if (LOG_1635700302.isEnabledFor(Level.ERROR)) {
+            LOG_1635700302.error("", e);
+          }
+        } catch (IllegalAccessException e) {
+          if (LOG_1635700302.isEnabledFor(Level.ERROR)) {
+            LOG_1635700302.error("", e);
+          }
+        } catch (NoSuchMethodException e) {
+          if (LOG_1635700302.isEnabledFor(Level.ERROR)) {
+            LOG_1635700302.error("", e);
+          }
         }
       }
     }
     return result;
   }
-
   public static RefactoringUtil.Applicability getApplicability(IRefactoring refactoring, Collection entities) {
     assert !(entities.isEmpty());
     assert (entities.size() == 1 || refactoring.getRefactoringTarget().allowMultipleTargets());
@@ -144,10 +106,7 @@ public class RefactoringUtil {
       if (!(RefactoringUtil.isApplicableToEntities(r.getUserFriendlyName(), r.getRefactoringTarget(), entities))) {
         continue;
       }
-      Class refClass = (refactoring instanceof OldRefactoringAdapter ?
-        ((OldRefactoringAdapter) refactoring).getRefactoringClass() :
-        refactoring.getClass()
-      );
+      Class refClass = refactoring.getClass();
       if (r.getOverridenRefactoringClass() == null) {
         continue;
       }
@@ -162,7 +121,6 @@ public class RefactoringUtil {
     }
     return RefactoringUtil.Applicability.APPLICABLE;
   }
-
   private static boolean isApplicableToEntities(String refactoringName, IRefactoringTarget target, Collection entities) {
     if (!(target.allowMultipleTargets()) && entities.size() > 1) {
       return false;
@@ -172,7 +130,9 @@ public class RefactoringUtil {
       try {
         applicable = target.isApplicable(entity);
       } catch (Throwable t) {
-        LOG.error("An error occured while executing " + refactoringName + ".isApplicable(). This refactoring will not be available.", t);
+        if (LOG_1635700302.isEnabledFor(Level.ERROR)) {
+          LOG_1635700302.error("An error occured while executing " + refactoringName + ".isApplicable(). This refactoring will not be available.", t);
+        }
         applicable = false;
       }
       if (!(applicable)) {
@@ -181,7 +141,6 @@ public class RefactoringUtil {
     }
     return true;
   }
-
   public static boolean isApplicable(IRefactoring refactoring, Object target) {
     IRefactoringTarget refTarget = refactoring.getRefactoringTarget();
     boolean oneEntity = !(refTarget.allowMultipleTargets());
@@ -196,27 +155,7 @@ public class RefactoringUtil {
     return !(disabled);
   }
 
-  public static Map<SModule, List<SModel>> getLanguageAndItsExtendingLanguageModels(Project project, Language language) {
-    Collection<Language> extendingLangs = ModuleRepositoryFacade.getInstance().getAllExtendingLanguages(language);
-    Map<SModule, List<SModel>> result = new LinkedHashMap<SModule, List<SModel>>(extendingLangs.size() + 1);
-    result.put(language, RefactoringUtil.getLanguageModelsList(language));
-    for (Language l : extendingLangs) {
-      if (!(l.equals(language))) {
-        result.put(l, RefactoringUtil.getLanguageModelsList(l));
-      }
-    }
-    return result;
-  }
-
-  public static List<SModel> getLanguageModelsList(Language l) {
-    return Sequence.fromIterable(Sequence.fromArray(l.getModels().toArray(new SModel[0]))).where(new IWhereFilter<SModel>() {
-      public boolean accept(SModel it) {
-        return it instanceof GeneratableSModel && ((GeneratableSModel) it).isGeneratable();
-      }
-    }).toListSequence();
-  }
-
-  public static   enum Applicability {
+  public enum Applicability {
     APPLICABLE() {
       public boolean lessThan(RefactoringUtil.Applicability level) {
         return false;
@@ -236,9 +175,8 @@ public class RefactoringUtil {
 
     };
 
-    Applicability() {
+    private Applicability() {
     }
-
     public abstract boolean lessThan(RefactoringUtil.Applicability level);
   }
 }

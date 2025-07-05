@@ -5,51 +5,39 @@ package jetbrains.mps.tool.builder.make;
 import jetbrains.mps.tool.builder.MpsWorker;
 import jetbrains.mps.tool.common.Script;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.tool.common.ScriptProperties;
+import jetbrains.mps.tool.common.GeneratorProperties;
+import jetbrains.mps.generator.IModifiableGenerationSettings;
 import jetbrains.mps.generator.GenerationSettingsProvider;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.project.ProjectOperationContext;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.make.MakeSession;
+import jetbrains.mps.make.service.AbstractMakeService;
+import jetbrains.mps.make.script.IScriptController;
+import jetbrains.mps.make.script.IPropertiesPool;
+import jetbrains.mps.internal.make.cfg.JavaCompileFacetInitializer;
+import jetbrains.mps.internal.make.cfg.TextGenFacetInitializer;
 import java.util.concurrent.Future;
 import jetbrains.mps.make.script.IResult;
-import jetbrains.mps.make.MakeSession;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import java.util.concurrent.ExecutionException;
-import java.util.Map;
-import java.io.File;
-import java.util.List;
-import jetbrains.mps.tool.builder.FileMPSProject;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.make.ModuleMaker;
-import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import java.util.List;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.smodel.resources.ModelsToResources;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.messages.IMessageHandler;
-import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.messages.IMessage;
 
-public class BaseGeneratorWorker extends MpsWorker {
+public abstract class BaseGeneratorWorker extends MpsWorker {
   private final BaseGeneratorWorker.MyMessageHandler myMessageHandler = new BaseGeneratorWorker.MyMessageHandler();
-
-  public BaseGeneratorWorker(Script whatToDo) {
-    super(whatToDo);
-  }
-
   public BaseGeneratorWorker(Script whatToDo, MpsWorker.AntLogger logger) {
     super(whatToDo, logger);
   }
@@ -67,19 +55,30 @@ public class BaseGeneratorWorker extends MpsWorker {
   }
 
   protected void setGenerationProperties() {
-    boolean strictMode = Boolean.parseBoolean(myWhatToDo.getProperty(ScriptProperties.STRICT_MODE));
-    GenerationSettingsProvider.getInstance().getGenerationSettings().setStrictMode(strictMode);
+    GeneratorProperties gp = new GeneratorProperties(myWhatToDo);
+    IModifiableGenerationSettings settings = GenerationSettingsProvider.getInstance().getGenerationSettings();
+    boolean strictMode = gp.isStrictMode();
+    boolean parallelMode = gp.isParallelMode();
+    boolean inplace = gp.isInplaceTransform();
+    boolean warnings = !(gp.isHideWarnings());
+    int threadCount = gp.getParallelThreads();
+    final boolean useStaticRefs = gp.isCreateStaticRefs();
+    settings.setStrictMode(strictMode);
     if (strictMode) {
-      boolean parallelMode = Boolean.parseBoolean(myWhatToDo.getProperty(ScriptProperties.PARALLEL_MODE));
-      GenerationSettingsProvider.getInstance().getGenerationSettings().setParallelGenerator(parallelMode);
+      settings.setParallelGenerator(parallelMode);
       if (parallelMode) {
-        GenerationSettingsProvider.getInstance().getGenerationSettings().setNumberOfParallelThreads(8);
+        settings.setNumberOfParallelThreads(threadCount);
       }
-      info("Generating in strict mode, parallel generation = " + ((parallelMode ?
-        "on" :
-        "off"
-      )));
     }
+    String[] onoff = new String[]{"on", "off"};
+    settings.enableInplaceTransformations(inplace);
+    settings.setShowBadChildWarning(warnings);
+    settings.setCreateStaticReferences(useStaticRefs);
+    // incremental generation for Ant build doesn't make sense as we have no way to ensure 'unchanged' artifacts are still there 
+    settings.setIncremental(false);
+    settings.setIncrementalUseCache(false);
+    settings.setCheckModelsBeforeGeneration(false);
+    info(String.format("Generating: strict mode is %s, parallel generation is %s (%d threads), in-place is %s, warnings are %s, static references to replace dynamic is %s", onoff[(strictMode ? 0 : 1)], onoff[(parallelMode ? 0 : 1)], (parallelMode ? threadCount : 1), onoff[(inplace ? 0 : 1)], onoff[(warnings ? 0 : 1)], onoff[(useStaticRefs ? 0 : 1)]));
   }
 
   @Override
@@ -102,11 +101,18 @@ public class BaseGeneratorWorker extends MpsWorker {
       s.append(m);
     }
     info(s.toString());
-    ProjectOperationContext ctx = new ProjectOperationContext(project);
-
-    Iterable<MResource> resources = Sequence.fromIterable(collectResources(ctx, go)).toListSequence();
-    ModelAccess.instance().flushEventQueue();
-    Future<IResult> res = new BuildMakeService().make(new MakeSession(ctx, myMessageHandler, true), resources, null, null, new EmptyProgressMonitor());
+    Iterable<MResource> resources = Sequence.fromIterable(collectResources(project, go)).toListSequence();
+    myEnvironment.flushAllEvents();
+    final MakeSession session = new MakeSession(project, myMessageHandler, true);
+    AbstractMakeService.DefaultMonitor defaultMonitor = new AbstractMakeService.DefaultMonitor(session);
+    IScriptController.Stub controller = new IScriptController.Stub(defaultMonitor, defaultMonitor) {
+      @Override
+      public void setup(IPropertiesPool ppool) {
+        new JavaCompileFacetInitializer().skipCompilation(mySkipCompilation).setJavaCompileOptions(myJavaCompilerOptions).populate(ppool);
+        new TextGenFacetInitializer(session).populate(ppool);
+      }
+    };
+    Future<IResult> res = new BuildMakeService().make(session, resources, null, controller, new EmptyProgressMonitor());
 
     try {
       if (!(res.get().isSucessful())) {
@@ -117,65 +123,7 @@ public class BaseGeneratorWorker extends MpsWorker {
     } catch (ExecutionException e) {
       myErrors.add(e.toString());
     }
-    ModelAccess.instance().flushEventQueue();
-  }
-
-  @Override
-  public void work() {
-    setupEnvironment();
-    boolean doneSomething = false;
-    //  for each project 
-    Map<File, List<String>> mpsProjects = myWhatToDo.getMPSProjectFiles();
-    for (File file : mpsProjects.keySet()) {
-      FileMPSProject p = new FileMPSProject(file);
-      p.init(new FileMPSProject.ProjectDescriptor(file));
-      makeProject();
-      p.projectOpened();
-
-      info("Loaded project " + p);
-
-      executeTask(p, new MpsWorker.ObjectsToProcess(Collections.singleton(p), new HashSet<SModule>(), new HashSet<SModel>()));
-
-      p.projectClosed();
-      doneSomething = true;
-    }
-
-    // the rest -- using dummy project 
-    LinkedHashSet<SModule> modules = new LinkedHashSet<SModule>();
-    LinkedHashSet<SModel> models = new LinkedHashSet<SModel>();
-    collectFromModuleFiles(modules);
-    ModelAccess.instance().runWriteAction(new Runnable() {
-      public void run() {
-        ClassLoaderManager.getInstance().reloadAll(new EmptyProgressMonitor());
-      }
-    });
-    collectFromModelFiles(models);
-    MpsWorker.ObjectsToProcess go = new MpsWorker.ObjectsToProcess(Collections.EMPTY_SET, modules, models);
-    if (go.hasAnythingToGenerate()) {
-      Project project = createDummyProject();
-      executeTask(project, go);
-      doneSomething = true;
-    }
-    if (!(doneSomething)) {
-
-      error("Could not find anything to generate.");
-    }
-
-    dispose();
-    showStatistic();
-  }
-
-  protected void makeProject() {
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        new ModuleMaker().make(IterableUtil.asCollection(MPSModuleRepository.getInstance().getModules()), new EmptyProgressMonitor());
-      }
-    });
-    ModelAccess.instance().runWriteAction(new Runnable() {
-      public void run() {
-        ClassLoaderManager.getInstance().reloadAll(new EmptyProgressMonitor());
-      }
-    });
+    myEnvironment.flushAllEvents();
   }
 
   private Iterable<SModule> withGenerators(Iterable<SModule> modules) {
@@ -202,9 +150,9 @@ public class BaseGeneratorWorker extends MpsWorker {
     });
   }
 
-  protected Iterable<MResource> collectResources(IOperationContext context, final MpsWorker.ObjectsToProcess go) {
+  protected Iterable<MResource> collectResources(Project project, final MpsWorker.ObjectsToProcess go) {
     final Wrappers._T<Iterable<SModel>> models = new Wrappers._T<Iterable<SModel>>(null);
-    ModelAccess.instance().runReadAction(new Runnable() {
+    project.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         for (Project p : go.getProjects()) {
           for (SModule mod : withGenerators((Iterable<SModule>) p.getModules())) {
@@ -220,7 +168,7 @@ public class BaseGeneratorWorker extends MpsWorker {
         }
       }
     });
-    return Sequence.fromIterable(new ModelsToResources(context, Sequence.fromIterable(models.value).where(new IWhereFilter<SModel>() {
+    return Sequence.fromIterable(new ModelsToResources(Sequence.fromIterable(models.value).where(new IWhereFilter<SModel>() {
       public boolean accept(SModel smd) {
         return GenerationFacade.canGenerate(smd);
       }
@@ -231,55 +179,28 @@ public class BaseGeneratorWorker extends MpsWorker {
     });
   }
 
-  public static void main(String[] args) {
-    MpsWorker mpsWorker = new BaseGeneratorWorker(Script.fromDumpInFile(new File(args[0])), new MpsWorker.SystemOutLogger());
-    mpsWorker.workFromMain();
-  }
-
   private class MyMessageHandler implements IMessageHandler {
-    private final List<String> myGenerationErrors = new ArrayList<String>();
-    private final List<String> myGenerationWarnings = new ArrayList<String>();
-
     /*package*/ MyMessageHandler() {
     }
 
     @Override
-    public void handle(IMessage msg) {
+    public void handle(@NotNull IMessage msg) {
       switch (msg.getKind()) {
         case ERROR:
-          BaseGeneratorWorker.this.error(msg.getText());
           if (msg.getException() != null) {
-            myGenerationErrors.add(MpsWorker.extractStackTrace(msg.getException()).toString());
+            BaseGeneratorWorker.this.error(MpsWorker.extractStackTrace(msg.getException()).toString());
           } else {
-            myGenerationErrors.add(msg.getText());
+            BaseGeneratorWorker.this.error(msg.getText());
           }
           break;
         case WARNING:
           BaseGeneratorWorker.this.warning(msg.getText());
-          myGenerationWarnings.add(msg.getText());
           break;
         case INFORMATION:
           BaseGeneratorWorker.this.info(msg.getText());
           break;
         default:
       }
-    }
-
-    public List<String> getGenerationErrors() {
-      return myGenerationErrors;
-    }
-
-    public List<String> getGenerationWarnings() {
-      return myGenerationWarnings;
-    }
-
-    public void clean() {
-      myGenerationErrors.clear();
-      myGenerationWarnings.clear();
-    }
-
-    @Override
-    public void clear() {
     }
   }
 }

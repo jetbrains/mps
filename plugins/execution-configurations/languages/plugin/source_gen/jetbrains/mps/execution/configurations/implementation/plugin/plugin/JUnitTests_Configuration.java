@@ -4,9 +4,12 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitSettings_Configuration;
-import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters_Configuration;
+import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters1_Configuration;
+import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
 import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
@@ -15,7 +18,14 @@ import com.intellij.openapi.util.InvalidDataException;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.ide.project.ProjectHelper;
-import org.apache.log4j.Priority;
+import jetbrains.mps.baseLanguage.unitTest.execution.tool.UnitTestViewComponent;
+import jetbrains.mps.baseLanguage.unitTest.execution.client.TestRunState;
+import com.intellij.execution.process.ProcessHandler;
+import com.intellij.execution.ui.ConsoleView;
+import jetbrains.mps.execution.api.configurations.ConsoleCreator;
+import jetbrains.mps.ide.actions.StandaloneMPSStackTraceFilter;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import org.apache.log4j.Level;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.configurations.RunProfileState;
@@ -23,23 +33,20 @@ import com.intellij.execution.Executor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ExecutionException;
 import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.openapi.util.JDOMExternalizable;
+import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
 import com.intellij.execution.runners.ProgramRunner;
 import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 
 public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
+  private static final Logger LOG = LogManager.getLogger(JUnitTests_Configuration.class);
   @NotNull
   private JUnitTests_Configuration.MyState myState = new JUnitTests_Configuration.MyState();
-  private JUnitSettings_Configuration myJUnitSettings = new JUnitSettings_Configuration();
-  private JavaRunParameters_Configuration myJavaRunParameters = new JavaRunParameters_Configuration();
-
-  public void checkConfiguration() throws RuntimeConfigurationException {
-    this.getJUnitSettings().checkConfiguration();
+  private JUnitSettings_Configuration myJUnitSettings = new JUnitSettings_Configuration(this.getProject());
+  private JavaRunParameters1_Configuration myJavaRunParameters = new JavaRunParameters1_Configuration(this.getProject());
+  public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
+    this.getJUnitSettings().checkConfiguration(context);
   }
-
   @Override
   public void writeExternal(Element element) throws WriteExternalException {
     element.addContent(XmlSerializer.serialize(myState));
@@ -54,7 +61,6 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
       element.addContent(fieldElement);
     }
   }
-
   @Override
   public void readExternal(Element element) throws InvalidDataException {
     if (element == null) {
@@ -82,19 +88,26 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
       }
     }
   }
-
   public JUnitSettings_Configuration getJUnitSettings() {
     return myJUnitSettings;
   }
-
-  public JavaRunParameters_Configuration getJavaRunParameters() {
+  public JavaRunParameters1_Configuration getJavaRunParameters() {
     return myJavaRunParameters;
   }
-
   public List<SNodeReference> getTestsToMake() {
-    return this.getJUnitSettings().getTestsToMake(ProjectHelper.toMPSProject(this.getProject()));
+    return this.getJUnitSettings().getTestsToMake(ProjectHelper.fromIdeaProject(this.getProject()));
   }
-
+  public UnitTestViewComponent createTestViewComponent(TestRunState runState, final ProcessHandler process) {
+    ConsoleView console = ConsoleCreator.createConsoleView(this.getProject(), false);
+    console.addMessageFilter(new StandaloneMPSStackTraceFilter(this.getProject()));
+    return new UnitTestViewComponent(this.getProject(), console, runState, new _FunctionTypes._void_P0_E0() {
+      public void invoke() {
+        if (process != null) {
+          process.destroyProcess();
+        }
+      }
+    });
+  }
   @Override
   public JUnitTests_Configuration clone() {
     JUnitTests_Configuration clone = null;
@@ -102,65 +115,61 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
       clone = createCloneTemplate();
       clone.myState = (JUnitTests_Configuration.MyState) myState.clone();
       clone.myJUnitSettings = (JUnitSettings_Configuration) myJUnitSettings.clone();
-      clone.myJavaRunParameters = (JavaRunParameters_Configuration) myJavaRunParameters.clone();
+      clone.myJavaRunParameters = (JavaRunParameters1_Configuration) myJavaRunParameters.clone();
       return clone;
     } catch (CloneNotSupportedException ex) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
+      if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("", ex);
       }
     }
     return clone;
   }
-
   public class MyState {
     public MyState() {
     }
-
     @Override
     public Object clone() throws CloneNotSupportedException {
       JUnitTests_Configuration.MyState state = new JUnitTests_Configuration.MyState();
       return state;
     }
   }
-
   public JUnitTests_Configuration(Project project, JUnitTests_Configuration_Factory factory, String name) {
     super(project, factory, name);
   }
-
   @Nullable
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment environment) throws ExecutionException {
     return new JUnitTests_Configuration_RunProfileState(this, executor, environment);
   }
-
   @Nullable
-  public SettingsEditor<JDOMExternalizable> getRunnerSettingsEditor(ProgramRunner runner) {
+  public SettingsEditor<ConfigurationPerRunnerSettings> getRunnerSettingsEditor(ProgramRunner runner) {
     return null;
   }
-
-  public JDOMExternalizable createRunnerSettings(ConfigurationInfoProvider provider) {
+  public ConfigurationPerRunnerSettings createRunnerSettings(ConfigurationInfoProvider provider) {
     return null;
   }
-
   public SettingsEditorEx<JUnitTests_Configuration> getConfigurationEditor() {
     return (SettingsEditorEx<JUnitTests_Configuration>) getEditor();
   }
-
   public JUnitTests_Configuration createCloneTemplate() {
     return (JUnitTests_Configuration) super.clone();
   }
-
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
     return new JUnitTests_Configuration_Editor(myJUnitSettings.getEditor(), myJavaRunParameters.getEditor());
   }
-
+  @Override
+  public void checkConfiguration() throws RuntimeConfigurationException {
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    checkConfiguration(new PersistentConfigurationContext() {
+      public jetbrains.mps.project.Project getProject() {
+        return mpsProject;
+      }
+    });
+  }
   @Override
   public boolean canExecute(String executorId) {
     return JUnitTests_Configuration_RunProfileState.canExecute(executorId);
   }
-
   public Object[] createMakeNodePointersTask() {
     return new Object[]{this.getTestsToMake()};
   }
-
-  protected static Logger LOG = LogManager.getLogger(JUnitTests_Configuration.class);
 }

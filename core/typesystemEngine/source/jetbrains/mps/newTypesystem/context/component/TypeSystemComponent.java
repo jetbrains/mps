@@ -53,10 +53,6 @@ import java.util.*;
     myNodesToDependentNodes_B = new THashMap<SNode, Set<SNode>>();
   }
 
-  @Override
-  public void dispose() {
-  }
-
   //returns true if something was invalidated
   @Override
   protected boolean doInvalidate() {
@@ -217,12 +213,16 @@ import java.util.*;
 
   @Override
   protected boolean applyRulesToNode(final SNode node) {
-    final List<Pair<InferenceRule_Runtime, IsApplicableStatus>> newRules = TypeChecker.getInstance().getRulesManager().getInferenceRules(node);
-    if (newRules == null) return false;
+    final List<Pair<SNode, List<Pair<InferenceRule_Runtime, IsApplicableStatus>>>> nodesAndRules = new ArrayList<Pair<SNode, List<Pair<InferenceRule_Runtime, IsApplicableStatus>>>>();
+
+    if (!collectNodesAndRules(node, nodesAndRules)) return false;
+
     return getTypechecking().runApplyRulesTo(node, new Runnable() {
       @Override
       public void run() {
-        applyRulesToNode(node, newRules);
+        for (Pair<SNode, List<Pair<InferenceRule_Runtime, IsApplicableStatus>>> pair : nodesAndRules) {
+          applyRulesToNode(pair.o1, pair.o2);
+        }
       }
     });
   }

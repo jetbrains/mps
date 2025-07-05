@@ -1,81 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root nodeRef="r:ff802b39-fe8b-448c-92e1-659087928d82(jetbrains.mps.baseLanguage.tuples.generator.template.helpers)/1241010420895">
-    <nodeInfo nodeId="8911874220955530338" fileName="TupleDeclarationUtil.java" startLine="13" startPosition="63" endLine="14" endPosition="136" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="8911874220955530346" fileName="TupleDeclarationUtil.java" startLine="14" startPosition="136" endLine="15" endPosition="152" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="8911874220955530359" fileName="TupleDeclarationUtil.java" startLine="16" startPosition="47" endLine="17" endPosition="82" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="8911874220955530380" fileName="TupleDeclarationUtil.java" startLine="18" startPosition="5" endLine="19" endPosition="18" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241010420897" fileName="TupleDeclarationUtil.java" startLine="10" startPosition="0" endLine="12" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="TupleDeclarationUtil#()V" />
-    <nodeInfo nodeId="8911874220955530357" fileName="TupleDeclarationUtil.java" startLine="15" startPosition="152" endLine="18" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="8911874220955530330" fileName="TupleDeclarationUtil.java" startLine="13" startPosition="0" endLine="21" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="getResolveInfo#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-    <scopeInfo nodeId="1241010420900" fileName="TupleDeclarationUtil.java" startLine="10" startPosition="33" endLine="10" endPosition="33" />
-    <scopeInfo nodeId="8911874220955530358" fileName="TupleDeclarationUtil.java" startLine="16" startPosition="47" endLine="17" endPosition="82" />
-    <scopeInfo nodeId="1241010420897" fileName="TupleDeclarationUtil.java" startLine="10" startPosition="0" endLine="12" endPosition="0" />
-    <scopeInfo nodeId="8911874220955530333" fileName="TupleDeclarationUtil.java" startLine="13" startPosition="63" endLine="19" endPosition="18">
-      <varInfo nodeId="8911874220955530339" varName="fqName" />
-      <varInfo nodeId="8911874220955530347" varName="packageName" />
-    </scopeInfo>
-    <scopeInfo nodeId="8911874220955530330" fileName="TupleDeclarationUtil.java" startLine="13" startPosition="0" endLine="21" endPosition="0">
-      <varInfo nodeId="8911874220955530335" varName="tupleDeclaration" />
-    </scopeInfo>
-    <unitInfo nodeId="1241010420895" fileName="TupleDeclarationUtil.java" startLine="9" startPosition="0" endLine="22" endPosition="0" unitName="jetbrains.mps.baseLanguage.tuples.generator.template.helpers.TupleDeclarationUtil" />
+    <file name="TupleDeclarationUtil.java">
+      <node id="8911874220955530338" at="12,63,13,99" concept="5" />
+      <node id="8911874220955530346" at="13,99,14,152" concept="5" />
+      <node id="8911874220955530359" at="15,47,16,82" concept="6" />
+      <node id="8911874220955530380" at="17,5,18,18" concept="6" />
+      <node id="1241010420897" at="10,0,12,0" concept="0" trace="TupleDeclarationUtil#()V" />
+      <node id="8911874220955530357" at="14,152,17,5" concept="3" />
+      <node id="8911874220955530330" at="12,0,20,0" concept="7" trace="getResolveInfo#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <scope id="1241010420900" at="10,33,10,33" />
+      <scope id="8911874220955530358" at="15,47,16,82" />
+      <scope id="1241010420897" at="10,0,12,0" />
+      <scope id="8911874220955530333" at="12,63,18,18">
+        <var name="fqName" id="8911874220955530339" />
+        <var name="packageName" id="8911874220955530347" />
+      </scope>
+      <scope id="8911874220955530330" at="12,0,20,0">
+        <var name="tupleDeclaration" id="8911874220955530335" />
+      </scope>
+      <unit id="1241010420895" at="9,0,21,0" name="jetbrains.mps.baseLanguage.tuples.generator.template.helpers.TupleDeclarationUtil" />
+    </file>
   </root>
   <root nodeRef="r:ff802b39-fe8b-448c-92e1-659087928d82(jetbrains.mps.baseLanguage.tuples.generator.template.helpers)/1241091679770">
-    <nodeInfo nodeId="1241091679792" fileName="Keys.java" startLine="12" startPosition="0" endLine="13" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.FieldDeclaration" propertyString="name" />
-    <nodeInfo nodeId="1241091679810" fileName="Keys.java" startLine="14" startPosition="21" endLine="15" endPosition="29" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241091679775" fileName="Keys.java" startLine="18" startPosition="35" endLine="19" endPosition="47" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241091679798" fileName="Keys.java" startLine="22" startPosition="44" endLine="23" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241091679806" fileName="Keys.java" startLine="14" startPosition="0" endLine="17" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="Keys#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="1241091679771" fileName="Keys.java" startLine="18" startPosition="0" endLine="21" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="compose#(Ljava/lang/Object;)Ljava/lang/String;" />
-    <nodeInfo nodeId="1241091679795" fileName="Keys.java" startLine="22" startPosition="0" endLine="25" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="PREFIX#(Ljava/lang/String;)Ljava/lang/String;" />
-    <scopeInfo nodeId="1241091679809" fileName="Keys.java" startLine="14" startPosition="21" endLine="15" endPosition="29" />
-    <scopeInfo nodeId="1241091679774" fileName="Keys.java" startLine="18" startPosition="35" endLine="19" endPosition="47" />
-    <scopeInfo nodeId="1241091679797" fileName="Keys.java" startLine="22" startPosition="44" endLine="23" endPosition="64" />
-    <scopeInfo nodeId="1241091679806" fileName="Keys.java" startLine="14" startPosition="0" endLine="17" endPosition="0">
-      <varInfo nodeId="1241091679817" varName="name" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241091679771" fileName="Keys.java" startLine="18" startPosition="0" endLine="21" endPosition="0">
-      <varInfo nodeId="1241091679784" varName="o" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241091679795" fileName="Keys.java" startLine="22" startPosition="0" endLine="25" endPosition="0">
-      <varInfo nodeId="1241091679803" varName="str" />
-    </scopeInfo>
-    <unitInfo nodeId="1241091679770" fileName="Keys.java" startLine="6" startPosition="0" endLine="26" endPosition="0" unitName="jetbrains.mps.baseLanguage.tuples.generator.template.helpers.Keys" />
+    <file name="Keys.java">
+      <node id="1241091679792" at="12,0,13,0" concept="2" trace="name" />
+      <node id="1241091679810" at="13,21,14,29" concept="1" />
+      <node id="1241091679775" at="16,35,17,47" concept="6" />
+      <node id="1241091679798" at="19,44,20,64" concept="6" />
+      <node id="1241091679806" at="13,0,16,0" concept="0" trace="Keys#(Ljava/lang/String;)V" />
+      <node id="1241091679771" at="16,0,19,0" concept="4" trace="compose#(Ljava/lang/Object;)Ljava/lang/String;" />
+      <node id="1241091679795" at="19,0,22,0" concept="7" trace="PREFIX#(Ljava/lang/String;)Ljava/lang/String;" />
+      <scope id="1241091679809" at="13,21,14,29" />
+      <scope id="1241091679774" at="16,35,17,47" />
+      <scope id="1241091679797" at="19,44,20,64" />
+      <scope id="1241091679806" at="13,0,16,0">
+        <var name="name" id="1241091679817" />
+      </scope>
+      <scope id="1241091679771" at="16,0,19,0">
+        <var name="o" id="1241091679784" />
+      </scope>
+      <scope id="1241091679795" at="19,0,22,0">
+        <var name="str" id="1241091679803" />
+      </scope>
+      <unit id="1241091679770" at="6,0,23,0" name="jetbrains.mps.baseLanguage.tuples.generator.template.helpers.Keys" />
+    </file>
   </root>
   <root nodeRef="r:ff802b39-fe8b-448c-92e1-659087928d82(jetbrains.mps.baseLanguage.tuples.generator.template.helpers)/1241092045116">
-    <nodeInfo nodeId="1241092045201" fileName="Values.java" startLine="11" startPosition="0" endLine="12" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.FieldDeclaration" propertyString="name" />
-    <nodeInfo nodeId="1241092045191" fileName="Values.java" startLine="13" startPosition="23" endLine="14" endPosition="29" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241092045125" fileName="Values.java" startLine="17" startPosition="45" endLine="18" endPosition="36" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1241092045135" fileName="Values.java" startLine="21" startPosition="33" endLine="22" endPosition="36" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241092045147" fileName="Values.java" startLine="25" startPosition="36" endLine="26" endPosition="44" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241092045161" fileName="Values.java" startLine="29" startPosition="44" endLine="30" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1241092045187" fileName="Values.java" startLine="13" startPosition="0" endLine="16" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="Values#(Ljava/lang/String;)V" />
-    <nodeInfo nodeId="1241092045117" fileName="Values.java" startLine="17" startPosition="0" endLine="20" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="set#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;)V" />
-    <nodeInfo nodeId="1241092045132" fileName="Values.java" startLine="21" startPosition="0" endLine="24" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="get#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
-    <nodeInfo nodeId="1241092045144" fileName="Values.java" startLine="25" startPosition="0" endLine="28" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isSet#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-    <nodeInfo nodeId="1241092045158" fileName="Values.java" startLine="29" startPosition="0" endLine="32" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="PREFIX#(Ljava/lang/String;)Ljava/lang/String;" />
-    <scopeInfo nodeId="1241092045190" fileName="Values.java" startLine="13" startPosition="23" endLine="14" endPosition="29" />
-    <scopeInfo nodeId="1241092045124" fileName="Values.java" startLine="17" startPosition="45" endLine="18" endPosition="36" />
-    <scopeInfo nodeId="1241092045134" fileName="Values.java" startLine="21" startPosition="33" endLine="22" endPosition="36" />
-    <scopeInfo nodeId="1241092045146" fileName="Values.java" startLine="25" startPosition="36" endLine="26" endPosition="44" />
-    <scopeInfo nodeId="1241092045160" fileName="Values.java" startLine="29" startPosition="44" endLine="30" endPosition="64" />
-    <scopeInfo nodeId="1241092045187" fileName="Values.java" startLine="13" startPosition="0" endLine="16" endPosition="0">
-      <varInfo nodeId="1241092045198" varName="name" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241092045117" fileName="Values.java" startLine="17" startPosition="0" endLine="20" endPosition="0">
-      <varInfo nodeId="1241092045118" varName="node" />
-      <varInfo nodeId="1241092045120" varName="value" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241092045132" fileName="Values.java" startLine="21" startPosition="0" endLine="24" endPosition="0">
-      <varInfo nodeId="1241092045142" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241092045144" fileName="Values.java" startLine="25" startPosition="0" endLine="28" endPosition="0">
-      <varInfo nodeId="1241092045156" varName="node" />
-    </scopeInfo>
-    <scopeInfo nodeId="1241092045158" fileName="Values.java" startLine="29" startPosition="0" endLine="32" endPosition="0">
-      <varInfo nodeId="1241092045166" varName="str" />
-    </scopeInfo>
-    <unitInfo nodeId="1241092045116" fileName="Values.java" startLine="7" startPosition="0" endLine="33" endPosition="0" unitName="jetbrains.mps.baseLanguage.tuples.generator.template.helpers.Values" />
+    <file name="Values.java">
+      <node id="1241092045201" at="11,0,12,0" concept="2" trace="name" />
+      <node id="1241092045191" at="12,23,13,29" concept="1" />
+      <node id="1241092045125" at="15,45,16,36" concept="1" />
+      <node id="1241092045135" at="18,33,19,36" concept="6" />
+      <node id="1241092045147" at="21,36,22,44" concept="6" />
+      <node id="1241092045161" at="24,44,25,64" concept="6" />
+      <node id="1241092045187" at="12,0,15,0" concept="0" trace="Values#(Ljava/lang/String;)V" />
+      <node id="1241092045117" at="15,0,18,0" concept="4" trace="set#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;)V" />
+      <node id="1241092045132" at="18,0,21,0" concept="4" trace="get#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
+      <node id="1241092045144" at="21,0,24,0" concept="4" trace="isSet#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="1241092045158" at="24,0,27,0" concept="7" trace="PREFIX#(Ljava/lang/String;)Ljava/lang/String;" />
+      <scope id="1241092045190" at="12,23,13,29" />
+      <scope id="1241092045124" at="15,45,16,36" />
+      <scope id="1241092045134" at="18,33,19,36" />
+      <scope id="1241092045146" at="21,36,22,44" />
+      <scope id="1241092045160" at="24,44,25,64" />
+      <scope id="1241092045187" at="12,0,15,0">
+        <var name="name" id="1241092045198" />
+      </scope>
+      <scope id="1241092045117" at="15,0,18,0">
+        <var name="node" id="1241092045118" />
+        <var name="value" id="1241092045120" />
+      </scope>
+      <scope id="1241092045132" at="18,0,21,0">
+        <var name="node" id="1241092045142" />
+      </scope>
+      <scope id="1241092045144" at="21,0,24,0">
+        <var name="node" id="1241092045156" />
+      </scope>
+      <scope id="1241092045158" at="24,0,27,0">
+        <var name="str" id="1241092045166" />
+      </scope>
+      <unit id="1241092045116" at="7,0,28,0" name="jetbrains.mps.baseLanguage.tuples.generator.template.helpers.Values" />
+    </file>
   </root>
-</debugInfo>
+</debug-info>
 

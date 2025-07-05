@@ -20,6 +20,7 @@ import com.intellij.psi.PsiAnnotation;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiExpression;
 import com.intellij.psi.PsiIdentifier;
+import com.intellij.psi.PsiManager;
 import com.intellij.psi.PsiMethod;
 import com.intellij.psi.PsiModifier.ModifierConstant;
 import com.intellij.psi.PsiModifierList;
@@ -31,9 +32,12 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiNode;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiNodeBase;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.ids.SConceptId;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -46,34 +50,36 @@ public class MPSPsiParameter extends MPSPsiNode implements PsiParameter {
 
   private Boolean myIsVararg;
 
-  public MPSPsiParameter(SNodeId id, String concept, String containingRole) {
-    super(id, concept, containingRole);
+  public MPSPsiParameter(SNodeId id, String concept, String containingRole, PsiManager manager) {
+    super(id, concept, containingRole, manager);
   }
 
   @NotNull
   @Override
   public PsiElement getDeclarationScope() {
-    // copied from PsiParamImpl, there's more there
-    final PsiElement parent = getParent();
+    // originally copied from PsiParamImpl, there was more there
+
+    // we're supposed to be a grandchild of MPSPsiMethod
+    PsiElement parent = getParent();
     if (parent == null) return this;
 
+    parent = parent.getParent();
     if (parent instanceof PsiMethod) {
       return parent;
     }
-    return null;
+    return this;
   }
 
   @Override
   public boolean isVarArgs() {
     if (myIsVararg == null) {
-      final SRepository repository = ProjectHelper.toMPSProject(getProject()).getRepository();
+      final SRepository repository = ProjectHelper.fromIdeaProject(getProject()).getRepository();
       final MPSPsiNode type = getChildOfType("type", MPSPsiNode.class);
-      repository.getModelAccess().runReadAction(new Runnable() {
-        @Override
-        public void run() {
-          SNode typeNode = type.getSNodeReference().resolve(repository);
-          myIsVararg = SNodeOperations.isInstanceOf(typeNode, "jetbrains.mps.baseLanguage.structure.VariableArityType");
-        }
+      repository.getModelAccess().runReadAction(() -> {
+        SNode typeNode = type.getSNodeReference().resolve(repository);
+        // TODO: is there better way to get instance of some concept?
+        final SConcept concept = MetaAdapterFactory.getConcept(SConceptId.deserialize("f3061a53-9226-4cc5-a443-f952ceaf5816/1219920932475"), "jetbrains.mps.baseLanguage.structure.VariableArityType");
+        myIsVararg = SNodeOperations.isInstanceOf(typeNode, concept);
       });
     }
     return myIsVararg;
@@ -93,6 +99,7 @@ public class MPSPsiParameter extends MPSPsiNode implements PsiParameter {
   @Nullable
   @Override
   public PsiTypeElement getTypeElement() {
+    // FIXME return something instead of null or remove unused variable
     MPSPsiNodeBase node = getChildOfType("type", MPSPsiNodeBase.class);
     return null;
   }
@@ -128,10 +135,6 @@ public class MPSPsiParameter extends MPSPsiNode implements PsiParameter {
   @Override
   public PsiElement setName(@NonNls @NotNull String name) throws IncorrectOperationException {
     return null;  //To change body of implemented methods use File | Settings | File Templates.
-  }
-
-  public PsiType getTypeNoResolve() {
-    return getType();
   }
 
   @Nullable

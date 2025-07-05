@@ -4,34 +4,31 @@ package jetbrains.mps.ide.make.actions;
 
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import jetbrains.mps.ide.generator.GenerationSettings;
+import jetbrains.mps.generator.GenerationSettingsProvider;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import jetbrains.mps.ide.icons.IdeIcons;
+import jetbrains.mps.icons.MPSIcons;
 
 public class SaveTransientModelsAction extends ToggleAction {
   public SaveTransientModelsAction() {
     super("Save Transient Models");
   }
-
   @Override
   public boolean isSelected(AnActionEvent e) {
-    return GenerationSettings.getInstance().isSaveTransientModels();
+    return GenerationSettingsProvider.getInstance().getGenerationSettings().isSaveTransientModels();
   }
-
   @Override
   public void update(AnActionEvent e) {
     super.update(e);
     e.getPresentation().setVisible(e.getData(PlatformDataKeys.PROJECT) != null);
     if (e.getPlace().contains("Toolbar")) {
-      e.getPresentation().setIcon(IdeIcons.TRANSIENT_MODELS_ICON);
+      e.getPresentation().setIcon(MPSIcons.Nodes.TransientModule);
     } else {
       e.getPresentation().setIcon(null);
     }
   }
-
   @Override
   public void setSelected(AnActionEvent e, boolean state) {
-    GenerationSettings.getInstance().setSaveTransientModels(state);
+    GenerationSettingsProvider.getInstance().getGenerationSettings().setSaveTransientModels(state);
     TransientModelsNotification.updateWidgets();
   }
 }

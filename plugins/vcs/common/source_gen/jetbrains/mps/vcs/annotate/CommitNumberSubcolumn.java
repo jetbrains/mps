@@ -20,17 +20,14 @@ import java.awt.FontMetrics;
 public class CommitNumberSubcolumn extends AnnotationAspectSubcolumn {
   private FileAnnotation myFileAnnotation;
   private Map<VcsRevisionNumber, Integer> myRevisionsToNumbers;
-
   public CommitNumberSubcolumn(AnnotationColumn annotationColumn, FileAnnotation fileAnnotation) {
     super(annotationColumn, null);
     myFileAnnotation = fileAnnotation;
   }
-
   @Override
   public String getTextForFileLine(int fileLine) {
     return "" + MapSequence.fromMap(myRevisionsToNumbers).get(myFileAnnotation.getLineRevisionNumber(fileLine));
   }
-
   private void computeNumbers(Iterable<Integer> fileLines) {
     myRevisionsToNumbers = MapSequence.fromMap(new HashMap<VcsRevisionNumber, Integer>());
     final Map<VcsRevisionNumber, VcsFileRevision> revisionNumberToRevision = MapSequence.fromMap(new HashMap<VcsRevisionNumber, VcsFileRevision>());
@@ -44,36 +41,27 @@ public class CommitNumberSubcolumn extends AnnotationAspectSubcolumn {
       }
     }))).sort(new ISelector<VcsRevisionNumber, Date>() {
       public Date select(VcsRevisionNumber rn) {
-        return MapSequence.fromMap(revisionNumberToRevision).get(rn).getRevisionDate();
-      }
-    }, true).toListSequence();
-    revisionNumbers = ListSequence.fromList(revisionNumbers).sort(new ISelector<VcsRevisionNumber, Date>() {
-      public Date select(VcsRevisionNumber rn) {
-        return check_efout7_a0a0a0a0f0e(MapSequence.fromMap(revisionNumberToRevision).get(rn));
+        return check_efout7_a0a0a0a0e0e(MapSequence.fromMap(revisionNumberToRevision).get(rn));
       }
     }, true).toListSequence();
     for (int i = 0; i < ListSequence.fromList(revisionNumbers).count(); i++) {
       MapSequence.fromMap(myRevisionsToNumbers).put(ListSequence.fromList(revisionNumbers).getElement(i), i + 1);
     }
   }
-
   @Override
   public void computeWidth(FontMetrics fontMetrics, Iterable<Integer> fileLines) {
     computeNumbers(fileLines);
     super.computeWidth(fontMetrics, fileLines);
   }
-
   @Override
   public String getId() {
     return "Commit number";
   }
-
   @Override
   public boolean isRightAligned() {
     return true;
   }
-
-  private static Date check_efout7_a0a0a0a0f0e(VcsFileRevision checkedDotOperand) {
+  private static Date check_efout7_a0a0a0a0e0e(VcsFileRevision checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRevisionDate();
     }

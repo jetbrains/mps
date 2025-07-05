@@ -9,7 +9,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Set;
 import java.util.LinkedHashSet;
 import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.kernel.model.SModelUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.HashSet;
 import jetbrains.mps.smodel.event.SModelChildEvent;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Arrays;
 import jetbrains.mps.util.FlattenIterable;
-import jetbrains.mps.smodel.event.SModelReferenceEvent;
+import jetbrains.mps.kernel.model.SModelUtil;
 
 /*package*/ class Datasets {
   /*package*/ static final AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache> CONCEPTS_CACHE_CREATOR = new AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache>() {
@@ -41,16 +41,8 @@ import jetbrains.mps.smodel.event.SModelReferenceEvent;
       return new Datasets.LinkDeclarationsDataSet(ownerCache);
     }
   };
-  /*package*/ static final AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache> CONCEPTPROPS_CACHE_CREATOR = new AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache>() {
-    @Override
-    public DataSet create(ConceptAndSuperConceptsCache ownerCache) {
-      return new Datasets.ConceptPropertiesDataSet(ownerCache);
-    }
-  };
-
   /*package*/ Datasets() {
   }
-
   private static void collectImplementedAndExtended(@NotNull SNode top, Set<SNode> result) {
     Set<SNode> frontier = new LinkedHashSet<SNode>();
     Set<SNode> newFrontier = new LinkedHashSet<SNode>();
@@ -85,33 +77,28 @@ import jetbrains.mps.smodel.event.SModelReferenceEvent;
       newFrontier = new LinkedHashSet<SNode>();
     }
   }
-
   /*package*/ static class ConceptsDataSet extends DataSet {
     public static final String ID = "CONCEPTS_DATASET";
     @NotNull
     private final SNode myTopConcept;
     private SNode[] myConcepts;
     private Set<SNode> myDependsOnNodes;
-
     public ConceptsDataSet(ConceptAndSuperConceptsCache ownerCache) {
       super(ID, ownerCache, DataSet.DefaultNodeChangedProcessing.DROP_OWNER_CACHE);
       myTopConcept = ownerCache.getTopConcept();
     }
-
     public SNode[] getConcepts() {
       return myConcepts;
     }
-
     @Override
     public Set<SNode> getDependsOnNodes() {
       return myDependsOnNodes;
     }
-
     @Override
     protected void init() {
       Set<SNode> result = new LinkedHashSet<SNode>();
       Datasets.collectImplementedAndExtended(myTopConcept, result);
-      result.add(SModelUtil.getBaseConcept());
+      result.add(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
       myConcepts = result.toArray(new SNode[result.size()]);
       //  depends on concepts and implemented interface references 
       myDependsOnNodes = new HashSet<SNode>(myConcepts.length * 2);
@@ -135,64 +122,51 @@ import jetbrains.mps.smodel.event.SModelReferenceEvent;
         }
       }
     }
-
     @Override
     public void childAdded(SModelChildEvent event) {
       //  event handling 
       if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
-        String role = event.getChildRole();
         //  don't process adding of smth. to concept unless it is extended/implemented interface-concept 
-        if (SNodeUtil.link_ConceptDeclaration_implements.equals(role) || SNodeUtil.link_ConceptDeclaration_extends.equals(role)) {
+        if (isExtendsImplementsRole(event)) {
           super.childAdded(event);
         }
       }
     }
-
     @Override
     public void childRemoved(SModelChildEvent event) {
       if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
-        String role = event.getChildRole();
         //  don't process removing of smth. from concept unless it is extended/implemented interface-concept 
-        if (SNodeUtil.link_ConceptDeclaration_implements.equals(role) || SNodeUtil.link_ConceptDeclaration_extends.equals(role)) {
+        if (isExtendsImplementsRole(event)) {
           super.childRemoved(event);
         }
       }
     }
-
+    private boolean isExtendsImplementsRole(SModelChildEvent event) {
+      String role = event.getChildRole();
+      return SNodeUtil.link_ConceptDeclaration_implements.getRoleName().equals(role) || SNodeUtil.link_ConceptDeclaration_extends.getRoleName().equals(role);
+    }
     @Override
     public void propertyChanged(SModelPropertyEvent event) {
     }
   }
-
   /*package*/ static class PropertyDeclarationsDataSet extends DataSet {
     public static final String ID = "PROPERTY_DECLARATIONS_DATASET";
     private Map<String, SNode> myPropertyByName = null;
     private List<SNode> myProperties = null;
     private Set<SNode> myDependsOnNodes;
-
     public PropertyDeclarationsDataSet(AbstractCache ownerCache) {
       super(ID, ownerCache, DataSet.DefaultNodeChangedProcessing.DROP_DATA_SET);
     }
-
     @Override
     public Set<SNode> getDependsOnNodes() {
       return myDependsOnNodes;
     }
-
     public SNode getPropertyDeclarationByName(String name) {
-      return (myPropertyByName == null ?
-        null :
-        myPropertyByName.get(name)
-      );
+      return (myPropertyByName == null ? null : myPropertyByName.get(name));
     }
-
     public List<SNode> getPropertyDeclarations() {
-      return (myProperties == null ?
-        Collections.<SNode>emptyList() :
-        new ArrayList<SNode>(myProperties)
-      );
+      return (myProperties == null ? Collections.<SNode>emptyList() : new ArrayList<SNode>(myProperties));
     }
-
     @Override
     protected void init() {
       List<SNode> allProperties = new ArrayList<SNode>();
@@ -229,30 +203,29 @@ import jetbrains.mps.smodel.event.SModelReferenceEvent;
         myDependsOnNodes.add(prop);
       }
     }
-
     @Override
     public void childAdded(SModelChildEvent event) {
       // ------event handling 
       if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
-        String role = event.getChildRole();
         //  don't process adding of smth. to concept unless it is property-declaration 
-        if (SNodeUtil.link_AbstractConceptDeclaration_propertyDeclaration.equals(role)) {
+        if (isPropertyDeclarationRole(event)) {
           super.childAdded(event);
         }
       }
     }
-
     @Override
     public void childRemoved(SModelChildEvent event) {
       if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
-        String role = event.getChildRole();
         //  don't process removing of smth. from concept unless it is property-declaration 
-        if (SNodeUtil.link_AbstractConceptDeclaration_propertyDeclaration.equals(role)) {
+        if (isPropertyDeclarationRole(event)) {
           super.childRemoved(event);
         }
       }
     }
-
+    private boolean isPropertyDeclarationRole(SModelChildEvent event) {
+      String role = event.getChildRole();
+      return SNodeUtil.link_AbstractConceptDeclaration_propertyDeclaration.getRoleName().equals(role);
+    }
     @Override
     public void propertyChanged(SModelPropertyEvent event) {
       //  don't process unless it is property name 
@@ -261,30 +234,22 @@ import jetbrains.mps.smodel.event.SModelReferenceEvent;
       }
     }
   }
-
   /*package*/ static class LinkDeclarationsDataSet extends DataSet {
     public static final String ID = "LINK_DECLARATIONS_DATASET";
     private Map<String, SNode> myLinkByRole = null;
     private Map<SNode, SNode> myMostSpecificLinkBySpecializedLink = null;
     private List<SNode> myMostSpecificLinks = null;
     private Set<SNode> myDependsOnNodes;
-
     public LinkDeclarationsDataSet(AbstractCache ownerCache) {
       super(ID, ownerCache, DataSet.DefaultNodeChangedProcessing.DROP_DATA_SET);
     }
-
     @Override
     public Set<SNode> getDependsOnNodes() {
       return myDependsOnNodes;
     }
-
     public SNode getLinkDeclarationByRole(String role) {
-      return (myLinkByRole == null ?
-        null :
-        myLinkByRole.get(role)
-      );
+      return (myLinkByRole == null ? null : myLinkByRole.get(role));
     }
-
     public SNode getMostSpecificLinkDeclarationByRole(String role) {
       SNode linkDeclaration = getLinkDeclarationByRole(role);
       if (linkDeclaration == null) {
@@ -299,14 +264,9 @@ import jetbrains.mps.smodel.event.SModelReferenceEvent;
       }
       return mostSpecificLinkDeclaration;
     }
-
     public List<SNode> getLinkDeclarationsExcludingOverridden() {
-      return (myMostSpecificLinks == null ?
-        Collections.<SNode>emptyList() :
-        new ArrayList<SNode>(myMostSpecificLinks)
-      );
+      return (myMostSpecificLinks == null ? Collections.<SNode>emptyList() : new ArrayList<SNode>(myMostSpecificLinks));
     }
-
     @Override
     protected void init() {
       myLinkByRole = null;
@@ -362,34 +322,33 @@ import jetbrains.mps.smodel.event.SModelReferenceEvent;
         myDependsOnNodes.add(link);
       }
     }
-
     @Override
     public void childAdded(SModelChildEvent event) {
       //  event handling 
       if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
-        String role = event.getChildRole();
         //  don't process adding of smth. to concept unless it is link-declaration 
-        if (SNodeUtil.link_AbstractConceptDeclaration_linkDeclaration.equals(role)) {
+        if (isLinkDeclarationRole(event)) {
           super.childAdded(event);
         }
       }
     }
-
     @Override
     public void childRemoved(SModelChildEvent event) {
       if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
-        String role = event.getChildRole();
         //  don't process removing of smth. from concept unless it is link-declaration 
-        if (SNodeUtil.link_AbstractConceptDeclaration_linkDeclaration.equals(role)) {
+        if (isLinkDeclarationRole(event)) {
           super.childRemoved(event);
         }
       }
     }
-
+    private boolean isLinkDeclarationRole(SModelChildEvent event) {
+      String role = event.getChildRole();
+      return SNodeUtil.link_AbstractConceptDeclaration_linkDeclaration.getRoleName().equals(role);
+    }
     @Override
     public void propertyChanged(SModelPropertyEvent event) {
       //  don't process unless it is link's role 
-      if (!(SNodeUtil.property_LinkDeclaration_role.equals(event.getPropertyName())) || !(SNodeUtil.isInstanceOfLinkDeclaration(event.getNode()))) {
+      if (!(SNodeUtil.property_LinkDeclaration_role.getName().equals(event.getPropertyName())) || !(SNodeUtil.isInstanceOfLinkDeclaration(event.getNode()))) {
         return;
       }
       String oldRole = event.getOldPropertyValue();
@@ -408,119 +367,6 @@ import jetbrains.mps.smodel.event.SModelReferenceEvent;
       } else
       if (!(myLinkByRole.containsKey(newRole))) {
         myLinkByRole.put(newRole, event.getNode());
-      }
-    }
-  }
-
-  /*package*/ static class ConceptPropertiesDataSet extends DataSet {
-    public static final String ID = "CONCEPT_PROPERTIES_DATASET";
-    private Map<String, SNode> myPropertyByName = null;
-    private Set<SNode> myDependsOnNodes;
-
-    public ConceptPropertiesDataSet(AbstractCache ownerCache) {
-      super(ID, ownerCache, DataSet.DefaultNodeChangedProcessing.DROP_DATA_SET);
-    }
-
-    @Override
-    public Set<SNode> getDependsOnNodes() {
-      return myDependsOnNodes;
-    }
-
-    public SNode getConceptPropertyByName(String name) {
-      return (myPropertyByName == null ?
-        null :
-        myPropertyByName.get(name)
-      );
-    }
-
-    @Override
-    protected void init() {
-      List<SNode> allConceptProperties = new ArrayList<SNode>();
-      Set<SNode> allConceptPropertyDeclarations = new HashSet<SNode>();
-      myPropertyByName = null;
-      SNode[] concepts = ((ConceptAndSuperConceptsCache) getOwnerCache()).getConcepts();
-      //  iterate up-down 
-      for (SNode concept : concepts) {
-        Iterable<SNode> conceptProperties = SNodeUtil.getConcept_ConceptProperties(concept);
-        for (SNode conceptProperty : conceptProperties) {
-          allConceptProperties.add(conceptProperty);
-          SNode conceptPropertyDeclaration = SNodeUtil.getConceptProperty_Declaration(conceptProperty);
-          if (conceptPropertyDeclaration == null) {
-            continue;
-          }
-          allConceptPropertyDeclarations.add(conceptPropertyDeclaration);
-          String propertyName = conceptPropertyDeclaration.getName();
-          if (propertyName == null || propertyName.length() == 0) {
-            continue;
-          }
-          //  property is in 'top' concept or inheritable property 
-          if (!(SNodeUtil.getConceptPropertyDeclaration_IsInheritable(conceptPropertyDeclaration)) && concept != concepts[0]) {
-            continue;
-          }
-          if (myPropertyByName == null) {
-            myPropertyByName = new HashMap<String, SNode>();
-            myPropertyByName.put(propertyName, conceptProperty);
-          } else
-          if (!(myPropertyByName.containsKey(propertyName))) {
-            myPropertyByName.put(propertyName, conceptProperty);
-          }
-        }
-      }
-      //  depends on concepts, concept properties and concept property declarations 
-      myDependsOnNodes = new HashSet<SNode>();
-      myDependsOnNodes.addAll(Arrays.asList(concepts));
-      for (SNode prop : allConceptProperties) {
-        myDependsOnNodes.add(prop);
-      }
-      for (SNode propDecl : allConceptPropertyDeclarations) {
-        myDependsOnNodes.add(propDecl);
-      }
-    }
-
-    @Override
-    public void childAdded(SModelChildEvent event) {
-      //  event handling 
-      if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
-        String role = event.getChildRole();
-        //  don't process adding of smth. to concept unless it is concept property 
-        if (SNodeUtil.link_AbstractConceptDeclaration_conceptProperty.equals(role)) {
-          super.childAdded(event);
-        }
-      }
-    }
-
-    @Override
-    public void childRemoved(SModelChildEvent event) {
-      if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
-        String role = event.getChildRole();
-        //  don't process removing of smth. from concept unless it is concept property 
-        if (SNodeUtil.link_AbstractConceptDeclaration_conceptProperty.equals(role)) {
-          super.childRemoved(event);
-        }
-      }
-    }
-
-    @Override
-    public void propertyChanged(SModelPropertyEvent event) {
-      //  don't process unless it is concept property declaration 'name' or 'inheritable' flag 
-      if (SNodeUtil.isInstanceOfConceptPropertyDeclaration(event.getNode())) {
-        super.propertyChanged(event);
-      }
-    }
-
-    @Override
-    public void referenceAdded(SModelReferenceEvent event) {
-      //  don't process unless it is concept property (ref to concept property declaration) 
-      if (SNodeUtil.isInstanceOfConceptProperty(event.getReference().getSourceNode())) {
-        super.referenceRemoved(event);
-      }
-    }
-
-    @Override
-    public void referenceRemoved(SModelReferenceEvent event) {
-      //  don't process unless it is concept property (ref to concept property declaration) 
-      if (SNodeUtil.isInstanceOfConceptProperty(event.getReference().getSourceNode())) {
-        super.referenceRemoved(event);
       }
     }
   }

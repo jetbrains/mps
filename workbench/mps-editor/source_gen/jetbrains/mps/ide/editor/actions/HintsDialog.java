@@ -17,14 +17,15 @@ import javax.swing.Action;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import java.util.Set;
 import jetbrains.mps.smodel.ModelAccess;
-import com.intellij.uiDesigner.core.GridLayoutManager;
+import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import com.intellij.uiDesigner.core.GridConstraints;
-import java.awt.Dimension;
+import java.awt.GridLayout;
 import javax.swing.JScrollPane;
 import com.intellij.ui.ScrollPaneFactory;
+import javax.swing.border.EmptyBorder;
 import java.awt.Component;
 import org.jetbrains.annotations.NonNls;
 
@@ -36,8 +37,6 @@ public class HintsDialog extends DialogWrapper {
   private JRadioButton myDefaultRadioButton;
   private JRadioButton myCustomRadioButton;
   private ConceptEditorHintSettings mySettings;
-
-
 
   public HintsDialog(Project project, @NotNull ConceptEditorHintPreferencesPage page, ConceptEditorHintSettings settings, EditorComponent component) {
     super(project, true);
@@ -53,8 +52,6 @@ public class HintsDialog extends DialogWrapper {
     return myMainPanel;
   }
 
-
-
   @Override
   @NotNull
   protected Action[] createActions() {
@@ -64,36 +61,32 @@ public class HintsDialog extends DialogWrapper {
     return ListSequence.fromList(actions).toGenericArray(Action.class);
   }
 
-
-
-
-
   @Override
   protected void doOKAction() {
-    if (myDefaultRadioButton.isSelected()) {
-      ((jetbrains.mps.nodeEditor.EditorComponent) myComponent).setUseCustomHints(false);
-    } else {
-      ((jetbrains.mps.nodeEditor.EditorComponent) myComponent).setUseCustomHints(true);
+    String[] initialEditorHints = null;
+
+    if (!(myDefaultRadioButton.isSelected())) {
       myPage.commit();
-      ((jetbrains.mps.nodeEditor.EditorComponent) myComponent).setEnabledHints(mySettings.getEnabledHints());
+      Set<String> enabledHints = mySettings.getEnabledHints();
+      initialEditorHints = enabledHints.toArray(new String[enabledHints.size()]);
     }
-    ModelAccess.instance().runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        myComponent.rebuildEditorContent();
-      }
-    });
+    boolean rebuildRequired = myComponent.getUpdater().setInitialEditorHints(initialEditorHints);
+    if (rebuildRequired) {
+      ModelAccess.instance().runReadAction(new Runnable() {
+        @Override
+        public void run() {
+          myComponent.rebuildEditorContent();
+        }
+      });
+    }
 
     super.doOKAction();
   }
 
-
-
-
-
   @Override
   protected void init() {
-    myMainPanel = new JPanel(new GridLayoutManager(3, 1));
+    myMainPanel = new JPanel(new BorderLayout());
+
     myButtonGroup = new ButtonGroup();
     myDefaultRadioButton = new JRadioButton("Use default hints");
     myDefaultRadioButton.addActionListener(new ActionListener() {
@@ -110,26 +103,21 @@ public class HintsDialog extends DialogWrapper {
     myButtonGroup.add(myDefaultRadioButton);
     myButtonGroup.add(myCustomRadioButton);
 
-    boolean useCustomHints = ((jetbrains.mps.nodeEditor.EditorComponent) myComponent).getUseCustomHints();
+    boolean useCustomHints = myComponent.getUpdater().getInitialEditorHints() != null;
     myDefaultRadioButton.setSelected(!(useCustomHints));
     myCustomRadioButton.setSelected(useCustomHints);
     setPanelEnabled(myPage.getComponent(), useCustomHints);
 
-    GridConstraints c = new GridConstraints();
-    c.setFill(GridConstraints.FILL_BOTH);
-    c.setAnchor(GridConstraints.ANCHOR_NORTHWEST);
+    JPanel buttonsPanel = new JPanel(new GridLayout(2, 1));
+    buttonsPanel.add(myDefaultRadioButton);
+    buttonsPanel.add(myCustomRadioButton);
+    myMainPanel.add(buttonsPanel, BorderLayout.NORTH);
 
-    c.setRow(0);
-    c.setColumn(0);
+    JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(myPage.getComponent());
+    scrollPane.setBorder(new EmptyBorder(0, 30, 0, 0));
+    scrollPane.setBackground(null);
 
-    myMainPanel.add(myDefaultRadioButton, c);
-    c.setRow(1);
-    myMainPanel.add(myCustomRadioButton, c);
-    JComponent component = myPage.getComponent();
-    component.setPreferredSize(new Dimension(330, 250));
-    JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(component);
-
-    myMainPanel.add(scrollPane, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null));
+    myMainPanel.add(scrollPane, BorderLayout.CENTER);
     super.init();
   }
 
@@ -142,15 +130,10 @@ public class HintsDialog extends DialogWrapper {
     }
   }
 
-
-
   @Nullable
   @NonNls
   @Override
   protected String getDimensionServiceKey() {
     return getClass().getName();
   }
-
-
-
 }

@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.findusages.view;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.ui.content.Content;
@@ -22,20 +23,25 @@ import com.intellij.ui.content.ContentManager;
 import com.intellij.ui.content.ContentManagerAdapter;
 import com.intellij.ui.content.ContentManagerEvent;
 import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.classloading.MPSClassesListener;
+import jetbrains.mps.classloading.MPSClassesListenerAdapter;
+import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.tools.BaseProjectTool;
-import jetbrains.mps.reloading.ReloadAdapter;
+import jetbrains.mps.module.ReloadableModuleBase;
 
 import javax.swing.Icon;
-import javax.swing.SwingUtilities;
+import java.util.Set;
 
 public abstract class TabbedUsagesTool extends BaseProjectTool {
 
+  private final ClassLoaderManager myClassLoaderManager;
   private ContentManagerAdapter myContentListener;
-  private ReloadAdapter myReloadHandler;
+  private MPSClassesListener myClassesListener;
   private ContentManager myContentManager;
 
   public TabbedUsagesTool(Project project, String id, int number, Icon icon, ToolWindowAnchor anchor, boolean canCloseContent) {
     super(project, id, number, icon, anchor, canCloseContent);
+    myClassLoaderManager = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getClassLoaderManager();
   }
 
   @Override
@@ -60,19 +66,16 @@ public abstract class TabbedUsagesTool extends BaseProjectTool {
     myContentManager.addContentManagerListener(myContentListener);
 
     if (forceCloseOnReload()) {
-      myReloadHandler = new ReloadAdapter() {
+      myClassesListener = new MPSClassesListenerAdapter() {
         @Override
-        public void unload() {
-          SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-              if (getProject().isDisposed()) return;
-              myContentManager.removeAllContents(true);
-            }
+        public void beforeClassesUnloaded(Set<? extends ReloadableModuleBase> modules) {
+          ApplicationManager.getApplication().invokeLater(() -> {
+            if (getProject().isDisposed()) return;
+            myContentManager.removeAllContents(true);
           });
         }
       };
-      ClassLoaderManager.getInstance().addReloadHandler(myReloadHandler);
+      myClassLoaderManager.addClassesHandler(myClassesListener);
     }
   }
 
@@ -81,8 +84,8 @@ public abstract class TabbedUsagesTool extends BaseProjectTool {
     //this is done automatically on content manager dispose, otherwise a dependency UVT->CM must be added
     //getContentManager().removeContentManagerListener(myContentListener);
 
-    if (myReloadHandler != null) {
-      ClassLoaderManager.getInstance().removeReloadHandler(myReloadHandler);
+    if (myClassesListener != null) {
+      myClassLoaderManager.removeClassesHandler(myClassesListener);
     }
   }
 

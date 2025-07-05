@@ -8,43 +8,37 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.SModelUtil_new;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class checkThrowedByThrowIsCaught_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public checkThrowedByThrowIsCaught_NonTypesystemRule() {
   }
-
   public void applyRule(final SNode throwStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode throwable = SLinkOperations.getTarget(throwStatement, "throwable", true);
+    SNode throwable = SLinkOperations.getTarget(throwStatement, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable"));
     if ((throwable == null)) {
       return;
     }
     SNode throwableType = TypeChecker.getInstance().getTypeOf(throwable);
     Set<SNode> throwables = SetSequence.fromSet(new HashSet<SNode>());
-    if (SNodeOperations.isInstanceOf(TypeChecker.getInstance().getTypeOf(throwable), "jetbrains.mps.baseLanguage.structure.Type")) {
-      SetSequence.fromSet(throwables).addElement(SNodeOperations.cast(throwableType, "jetbrains.mps.baseLanguage.structure.Type"));
+    if (SNodeOperations.isInstanceOf(TypeChecker.getInstance().getTypeOf(throwable), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"))) {
+      SetSequence.fromSet(throwables).addElement(SNodeOperations.cast(throwableType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type")));
     }
-    if (SNodeOperations.isInstanceOf(throwableType, "jetbrains.mps.baseLanguage.structure.Type")) {
+    if (SNodeOperations.isInstanceOf(throwableType, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type"))) {
       RulesFunctions_BaseLanguage.check(typeCheckingContext, throwables, throwStatement);
     }
   }
-
-  public String getApplicableConceptFQName() {
-    return "jetbrains.mps.baseLanguage.structure.ThrowStatement";
+  public SAbstractConcept getApplicableConcept() {
+    return MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
   }
-
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
-    {
-      boolean b = SModelUtil_new.isAssignableConcept(argument.getConcept().getQualifiedName(), this.getApplicableConceptFQName());
-      return new IsApplicableStatus(b, null);
-    }
+    return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
-
   public boolean overrides() {
     return false;
   }

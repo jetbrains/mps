@@ -17,11 +17,16 @@ package jetbrains.mps.codeStyle;
 
 import com.intellij.codeStyle.DefaultCodeStyleFacade;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.baseLanguage.util.CodeStyleSettings;
 import jetbrains.mps.baseLanguage.util.CodeStyleSettingsRegistry;
 import jetbrains.mps.ide.project.ProjectHelper;
 
 public class MPSCodeStyleFacade extends DefaultCodeStyleFacade {
   private final Project myProject;
+
+  public MPSCodeStyleFacade() {
+    this(null);
+  }
 
   public MPSCodeStyleFacade(Project project) {
     myProject = project;
@@ -29,6 +34,7 @@ public class MPSCodeStyleFacade extends DefaultCodeStyleFacade {
 
   @Override
   public String getLineSeparator() {
-    return CodeStyleSettingsRegistry.getSettings(ProjectHelper.toMPSProject(myProject)).getLineSeparatorValue();
+    final CodeStyleSettings settings = CodeStyleSettingsRegistry.getSettings(ProjectHelper.fromIdeaProject(myProject));
+    return settings != null ? settings.getLineSeparatorValue() : System.lineSeparator();
   }
 }

@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GitSharedSettings">
+    <option name="FORCE_PUSH_PROHIBITED_PATTERNS">
+      <list>
+        <option value="master" />
+        <option value="MPS.*" />
+        <option value="20[0-9][0-9](\.[0-9])+" />
+      </list>
+    </option>
+  </component>
   <component name="IssueNavigationConfiguration">
     <option name="links">
       <list>
@@ -14,4 +23,3 @@
     <mapping directory="" vcs="Git" />
   </component>
 </project>
-

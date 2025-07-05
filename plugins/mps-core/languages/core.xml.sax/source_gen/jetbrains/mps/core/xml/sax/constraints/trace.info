@@ -1,336 +1,349 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="ConstraintsAspectDescriptor.java" startLine="9" startPosition="0" endLine="35" endPosition="0" unitName="jetbrains.mps.core.xml.sax.constraints.ConstraintsAspectDescriptor" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="ConstraintsAspectDescriptor.java">
+      <unit at="13,0,39,0" name="jetbrains.mps.core.xml.sax.constraints.ConstraintsAspectDescriptor" />
+    </file>
+  </root>
   <root nodeRef="r:a2a452cd-a0b4-4774-9b7e-00f9c8226bfa(jetbrains.mps.core.xml.sax.constraints)/2264311582634140674">
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="27" startPosition="49" endLine="28" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="32" startPosition="43" endLine="33" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="37" startPosition="200" endLine="38" endPosition="96" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="38" startPosition="96" endLine="39" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="40" startPosition="51" endLine="41" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="42" startPosition="5" endLine="43" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="43" startPosition="0" endLine="44" endPosition="18" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="48" startPosition="83" endLine="49" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="52" startPosition="44" endLine="53" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="61" startPosition="44" endLine="62" endPosition="24" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4720003541459916917" fileName="XMLSAXAttributeReference_Constraints.java" startLine="67" startPosition="199" endLine="68" endPosition="161" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4720003541460239564" fileName="XMLSAXAttributeReference_Constraints.java" startLine="73" startPosition="13" endLine="74" endPosition="86" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="78" startPosition="63" endLine="79" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="84" startPosition="13" endLine="85" endPosition="232" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="94" startPosition="7" endLine="95" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140730" fileName="XMLSAXAttributeReference_Constraints.java" startLine="98" startPosition="148" endLine="99" endPosition="127" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="102" startPosition="0" endLine="103" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="canBeChildBreakingPoint" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="103" startPosition="0" endLine="104" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="breakingNode_4osf4s_a0a2a0a0a1a0b0a1a3" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="27" startPosition="0" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="XMLSAXAttributeReference_Constraints#()V" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="39" startPosition="0" endLine="42" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="98" startPosition="0" endLine="101" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="static_canBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;)Z" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="31" startPosition="0" endLine="35" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnCanBeChildMethod#()Z" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="51" startPosition="0" endLine="55" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnScopeProvider#()Z" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="60" startPosition="0" endLine="64" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasPresentation#()Z" />
-    <nodeInfo nodeId="4720003541460414959" fileName="XMLSAXAttributeReference_Constraints.java" startLine="68" startPosition="161" endLine="72" endPosition="92" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="77" startPosition="0" endLine="81" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="85" startPosition="232" endLine="89" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4720003541460272430" fileName="XMLSAXAttributeReference_Constraints.java" startLine="66" startPosition="128" endLine="73" endPosition="13" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="83" startPosition="122" endLine="90" endPosition="13" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="36" startPosition="0" endLine="46" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="canBeChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="82" startPosition="0" endLine="92" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="65" startPosition="0" endLine="76" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getPresentation#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferencePresentationContext;)Ljava/lang/String;" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="58" startPosition="56" endLine="92" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="56" startPosition="0" endLine="94" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="49" startPosition="75" endLine="94" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="47" startPosition="0" endLine="97" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultReferences#()Ljava/util/Map;" />
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="27" startPosition="49" endLine="28" endPosition="75" />
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="32" startPosition="43" endLine="33" endPosition="16" />
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="40" startPosition="51" endLine="41" endPosition="67" />
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="52" startPosition="44" endLine="53" endPosition="20" />
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="61" startPosition="44" endLine="62" endPosition="24" />
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="78" startPosition="63" endLine="79" endPosition="58" />
-    <scopeInfo nodeId="2264311582634140729" fileName="XMLSAXAttributeReference_Constraints.java" startLine="98" startPosition="148" endLine="99" endPosition="127" />
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="27" startPosition="0" endLine="30" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="98" startPosition="0" endLine="101" endPosition="0">
-      <varInfo nodeId="2264311582634140674" varName="childConcept" />
-      <varInfo nodeId="2264311582634140674" varName="link" />
-      <varInfo nodeId="2264311582634140674" varName="node" />
-      <varInfo nodeId="2264311582634140674" varName="operationContext" />
-      <varInfo nodeId="2264311582634140674" varName="parentNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="31" startPosition="0" endLine="35" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="51" startPosition="0" endLine="55" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="60" startPosition="0" endLine="64" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="77" startPosition="0" endLine="81" endPosition="0" />
-    <scopeInfo nodeId="4720003541460272433" fileName="XMLSAXAttributeReference_Constraints.java" startLine="67" startPosition="199" endLine="72" endPosition="92">
-      <varInfo nodeId="4720003541459916918" varName="nodeRule" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="84" startPosition="13" endLine="89" endPosition="16">
-      <varInfo nodeId="2264311582634140674" varName="scope" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="37" startPosition="200" endLine="44" endPosition="18">
-      <varInfo nodeId="2264311582634140674" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="83" startPosition="122" endLine="90" endPosition="13" />
-    <scopeInfo nodeId="4720003541460204268" fileName="XMLSAXAttributeReference_Constraints.java" startLine="66" startPosition="128" endLine="74" endPosition="86" />
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="36" startPosition="0" endLine="46" endPosition="0">
-      <varInfo nodeId="2264311582634140674" varName="checkingNodeContext" />
-      <varInfo nodeId="2264311582634140674" varName="childConcept" />
-      <varInfo nodeId="2264311582634140674" varName="link" />
-      <varInfo nodeId="2264311582634140674" varName="node" />
-      <varInfo nodeId="2264311582634140674" varName="operationContext" />
-      <varInfo nodeId="2264311582634140674" varName="parentNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="82" startPosition="0" endLine="92" endPosition="0">
-      <varInfo nodeId="2264311582634140674" varName="_context" />
-      <varInfo nodeId="2264311582634140674" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="65" startPosition="0" endLine="76" endPosition="0">
-      <varInfo nodeId="2264311582634140674" varName="_context" />
-      <varInfo nodeId="2264311582634140674" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="58" startPosition="56" endLine="92" endPosition="10" />
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="56" startPosition="0" endLine="94" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="48" startPosition="83" endLine="95" endPosition="22">
-      <varInfo nodeId="2264311582634140674" varName="references" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="47" startPosition="0" endLine="97" endPosition="0" />
-    <unitInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="59" startPosition="19" endLine="92" endPosition="9" unitName="jetbrains.mps.core.xml.sax.constraints.XMLSAXAttributeReference_Constraints$2" />
-    <unitInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="50" startPosition="36" endLine="94" endPosition="5" unitName="jetbrains.mps.core.xml.sax.constraints.XMLSAXAttributeReference_Constraints$1" />
-    <unitInfo nodeId="2264311582634140674" fileName="XMLSAXAttributeReference_Constraints.java" startLine="26" startPosition="0" endLine="105" endPosition="0" unitName="jetbrains.mps.core.xml.sax.constraints.XMLSAXAttributeReference_Constraints" />
+    <file name="XMLSAXAttributeReference_Constraints.java">
+      <node id="2264311582634140674" at="34,49,35,169" concept="10" />
+      <node id="2264311582634140674" at="42,127,43,128" concept="5" />
+      <node id="2264311582634140674" at="43,128,44,0" concept="7" />
+      <node id="2264311582634140674" at="45,55,46,71" concept="2" />
+      <node id="2264311582634140674" at="47,9,48,0" concept="7" />
+      <node id="2264311582634140674" at="48,0,49,22" concept="6" />
+      <node id="2264311582634140674" at="54,90,55,131" concept="5" />
+      <node id="2264311582634140674" at="58,44,59,20" concept="6" />
+      <node id="2264311582634140674" at="66,44,67,24" concept="6" />
+      <node id="4720003541459916917" at="71,297,72,255" concept="5" />
+      <node id="4720003541460414959" at="72,255,73,393" concept="6" />
+      <node id="4720003541460239564" at="74,13,75,192" concept="6" />
+      <node id="2264311582634140674" at="78,63,79,58" concept="6" />
+      <node id="2264311582634140674" at="83,13,84,279" concept="5" />
+      <node id="2264311582634140674" at="84,279,85,64" concept="6" />
+      <node id="2264311582634140674" at="90,7,91,22" concept="6" />
+      <node id="1227128029536581179" at="93,128,94,225" concept="6" />
+      <node id="2264311582634140674" at="96,0,97,0" concept="8" trace="canBeChildBreakingPoint" />
+      <node id="2264311582634140674" at="97,0,98,0" concept="8" trace="breakingNode_4osf4s_a0a2a0a0a1a0b0a1a3" />
+      <node id="2264311582634140674" at="34,0,37,0" concept="1" trace="XMLSAXAttributeReference_Constraints#()V" />
+      <node id="2264311582634140674" at="44,0,47,9" concept="3" />
+      <node id="2264311582634140674" at="93,0,96,0" concept="9" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="2264311582634140674" at="57,0,61,0" concept="4" trace="hasOwnScopeProvider#()Z" />
+      <node id="2264311582634140674" at="65,0,69,0" concept="4" trace="hasPresentation#()Z" />
+      <node id="4720003541460272430" at="70,128,74,13" concept="3" />
+      <node id="2264311582634140674" at="77,0,81,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="2264311582634140674" at="82,122,86,13" concept="0" />
+      <node id="2264311582634140674" at="81,0,88,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="2264311582634140674" at="69,0,77,0" concept="4" trace="getPresentation#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferencePresentationContext;)Ljava/lang/String;" />
+      <node id="2264311582634140674" at="41,0,51,0" concept="4" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="2264311582634140674" at="39,103,51,6" concept="6" />
+      <node id="2264311582634140674" at="38,0,53,0" concept="4" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <node id="2264311582634140674" at="63,56,88,10" concept="6" />
+      <node id="2264311582634140674" at="61,0,90,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="2264311582634140674" at="55,131,90,7" concept="2" />
+      <node id="2264311582634140674" at="53,0,93,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="2264311582634140674" at="34,49,35,169" />
+      <scope id="2264311582634140674" at="45,55,46,71" />
+      <scope id="2264311582634140674" at="58,44,59,20" />
+      <scope id="2264311582634140674" at="66,44,67,24" />
+      <scope id="2264311582634140674" at="78,63,79,58" />
+      <scope id="1227128029536581178" at="93,128,94,225" />
+      <scope id="4720003541460272433" at="71,297,73,393">
+        <var name="nodeRule" id="4720003541459916918" />
+      </scope>
+      <scope id="2264311582634140674" at="83,13,85,64">
+        <var name="scope" id="2264311582634140674" />
+      </scope>
+      <scope id="2264311582634140674" at="34,0,37,0" />
+      <scope id="2264311582634140674" at="93,0,96,0">
+        <var name="childConcept" id="2264311582634140674" />
+        <var name="link" id="2264311582634140674" />
+        <var name="node" id="2264311582634140674" />
+        <var name="parentNode" id="2264311582634140674" />
+      </scope>
+      <scope id="2264311582634140674" at="57,0,61,0" />
+      <scope id="2264311582634140674" at="65,0,69,0" />
+      <scope id="2264311582634140674" at="77,0,81,0" />
+      <scope id="2264311582634140674" at="82,122,86,13" />
+      <scope id="4720003541460204268" at="70,128,75,192" />
+      <scope id="2264311582634140674" at="42,127,49,22">
+        <var name="result" id="2264311582634140674" />
+      </scope>
+      <scope id="2264311582634140674" at="81,0,88,0">
+        <var name="_context" id="2264311582634140674" />
+        <var name="operationContext" id="2264311582634140674" />
+      </scope>
+      <scope id="2264311582634140674" at="69,0,77,0">
+        <var name="_context" id="2264311582634140674" />
+        <var name="operationContext" id="2264311582634140674" />
+      </scope>
+      <scope id="2264311582634140674" at="41,0,51,0">
+        <var name="checkingNodeContext" id="2264311582634140674" />
+        <var name="context" id="2264311582634140674" />
+      </scope>
+      <scope id="2264311582634140674" at="39,103,51,6" />
+      <scope id="2264311582634140674" at="38,0,53,0" />
+      <scope id="2264311582634140674" at="63,56,88,10" />
+      <scope id="2264311582634140674" at="61,0,90,0" />
+      <scope id="2264311582634140674" at="54,90,91,22">
+        <var name="references" id="2264311582634140674" />
+      </scope>
+      <scope id="2264311582634140674" at="53,0,93,0" />
+      <unit id="2264311582634140674" at="40,15,51,5" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXAttributeReference_Constraints$1" />
+      <unit id="2264311582634140674" at="64,19,88,9" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXAttributeReference_Constraints$2$1" />
+      <unit id="2264311582634140674" at="56,157,90,5" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXAttributeReference_Constraints$2" />
+      <unit id="2264311582634140674" at="33,0,99,0" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXAttributeReference_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:a2a452cd-a0b4-4774-9b7e-00f9c8226bfa(jetbrains.mps.core.xml.sax.constraints)/2264311582634140739">
-    <nodeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="23" startPosition="45" endLine="24" endPosition="71" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="28" startPosition="83" endLine="29" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="32" startPosition="44" endLine="33" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140743" fileName="XMLSAXFieldReference_Constraints.java" startLine="41" startPosition="142" endLine="42" endPosition="145" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="2264311582634140754" fileName="XMLSAXFieldReference_Constraints.java" startLine="43" startPosition="30" endLine="44" endPosition="171" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140766" fileName="XMLSAXFieldReference_Constraints.java" startLine="45" startPosition="13" endLine="46" endPosition="24" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="50" startPosition="63" endLine="51" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="55" startPosition="7" endLine="56" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="59" startPosition="0" endLine="60" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="breakingNode_ar46fh_a0a1a0a0a1a0b0a1a1" />
-    <nodeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="23" startPosition="0" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="XMLSAXFieldReference_Constraints#()V" />
-    <nodeInfo nodeId="2264311582634140752" fileName="XMLSAXFieldReference_Constraints.java" startLine="42" startPosition="145" endLine="45" endPosition="13" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="31" startPosition="0" endLine="35" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnScopeProvider#()Z" />
-    <nodeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="49" startPosition="0" endLine="53" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="40" startPosition="0" endLine="48" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createSearchScopeOrListOfNodes#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljava/lang/Object;" />
-    <nodeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="38" startPosition="56" endLine="53" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="36" startPosition="0" endLine="55" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-    <nodeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="29" startPosition="75" endLine="55" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="27" startPosition="0" endLine="58" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultReferences#()Ljava/util/Map;" />
-    <scopeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="23" startPosition="45" endLine="24" endPosition="71" />
-    <scopeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="32" startPosition="44" endLine="33" endPosition="20" />
-    <scopeInfo nodeId="2264311582634140753" fileName="XMLSAXFieldReference_Constraints.java" startLine="43" startPosition="30" endLine="44" endPosition="171" />
-    <scopeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="50" startPosition="63" endLine="51" endPosition="58" />
-    <scopeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="23" startPosition="0" endLine="26" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="31" startPosition="0" endLine="35" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="49" startPosition="0" endLine="53" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140742" fileName="XMLSAXFieldReference_Constraints.java" startLine="41" startPosition="142" endLine="46" endPosition="24">
-      <varInfo nodeId="2264311582634140744" varName="n" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="40" startPosition="0" endLine="48" endPosition="0">
-      <varInfo nodeId="2264311582634140739" varName="_context" />
-      <varInfo nodeId="2264311582634140739" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="38" startPosition="56" endLine="53" endPosition="10" />
-    <scopeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="36" startPosition="0" endLine="55" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="28" startPosition="83" endLine="56" endPosition="22">
-      <varInfo nodeId="2264311582634140739" varName="references" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="27" startPosition="0" endLine="58" endPosition="0" />
-    <unitInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="39" startPosition="19" endLine="53" endPosition="9" unitName="jetbrains.mps.core.xml.sax.constraints.XMLSAXFieldReference_Constraints$2" />
-    <unitInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="30" startPosition="38" endLine="55" endPosition="5" unitName="jetbrains.mps.core.xml.sax.constraints.XMLSAXFieldReference_Constraints$1" />
-    <unitInfo nodeId="2264311582634140739" fileName="XMLSAXFieldReference_Constraints.java" startLine="22" startPosition="0" endLine="61" endPosition="0" unitName="jetbrains.mps.core.xml.sax.constraints.XMLSAXFieldReference_Constraints" />
+    <file name="XMLSAXFieldReference_Constraints.java">
+      <node id="2264311582634140739" at="28,45,29,165" concept="10" />
+      <node id="2264311582634140739" at="33,90,34,131" concept="5" />
+      <node id="2264311582634140739" at="37,44,38,20" concept="6" />
+      <node id="2264311582634140739" at="45,63,46,58" concept="6" />
+      <node id="6836281137582840699" at="50,13,51,243" concept="5" />
+      <node id="6836281137582840710" at="52,32,53,442" concept="6" />
+      <node id="6836281137582840722" at="54,15,55,26" concept="6" />
+      <node id="2264311582634140739" at="60,7,61,22" concept="6" />
+      <node id="2264311582634140739" at="63,0,64,0" concept="8" trace="breakingNode_ar46fh_a0a0a0a0a1a0b0a1a2" />
+      <node id="2264311582634140739" at="28,0,31,0" concept="1" trace="XMLSAXFieldReference_Constraints#()V" />
+      <node id="6836281137582840708" at="51,243,54,15" concept="3" />
+      <node id="2264311582634140739" at="36,0,40,0" concept="4" trace="hasOwnScopeProvider#()Z" />
+      <node id="2264311582634140739" at="44,0,48,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="2264311582634140739" at="49,122,56,13" concept="0" />
+      <node id="2264311582634140739" at="48,0,58,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="2264311582634140739" at="42,56,58,10" concept="6" />
+      <node id="2264311582634140739" at="40,0,60,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="2264311582634140739" at="34,131,60,7" concept="2" />
+      <node id="2264311582634140739" at="32,0,63,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="2264311582634140739" at="28,45,29,165" />
+      <scope id="2264311582634140739" at="37,44,38,20" />
+      <scope id="2264311582634140739" at="45,63,46,58" />
+      <scope id="6836281137582840709" at="52,32,53,442" />
+      <scope id="2264311582634140739" at="28,0,31,0" />
+      <scope id="2264311582634140739" at="36,0,40,0" />
+      <scope id="2264311582634140739" at="44,0,48,0" />
+      <scope id="6836281137582840698" at="50,13,55,26">
+        <var name="n" id="6836281137582840700" />
+      </scope>
+      <scope id="2264311582634140739" at="49,122,56,13" />
+      <scope id="2264311582634140739" at="48,0,58,0">
+        <var name="_context" id="2264311582634140739" />
+        <var name="operationContext" id="2264311582634140739" />
+      </scope>
+      <scope id="2264311582634140739" at="42,56,58,10" />
+      <scope id="2264311582634140739" at="40,0,60,0" />
+      <scope id="2264311582634140739" at="33,90,61,22">
+        <var name="references" id="2264311582634140739" />
+      </scope>
+      <scope id="2264311582634140739" at="32,0,63,0" />
+      <unit id="2264311582634140739" at="43,19,58,9" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXFieldReference_Constraints$1$1" />
+      <unit id="2264311582634140739" at="35,159,60,5" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXFieldReference_Constraints$1" />
+      <unit id="2264311582634140739" at="27,0,65,0" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXFieldReference_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:a2a452cd-a0b4-4774-9b7e-00f9c8226bfa(jetbrains.mps.core.xml.sax.constraints)/2264311582634140768">
-    <nodeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="14" startPosition="48" endLine="15" endPosition="74" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="19" startPosition="43" endLine="20" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="24" startPosition="200" endLine="25" endPosition="96" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="25" startPosition="96" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="27" startPosition="51" endLine="28" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="29" startPosition="5" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="30" startPosition="0" endLine="31" endPosition="18" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140771" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="34" startPosition="148" endLine="35" endPosition="128" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="38" startPosition="0" endLine="39" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="canBeChildBreakingPoint" />
-    <nodeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="14" startPosition="0" endLine="17" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="XMLSAXLocatorExpression_Constraints#()V" />
-    <nodeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="26" startPosition="0" endLine="29" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="34" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="static_canBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;)Z" />
-    <nodeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="18" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnCanBeChildMethod#()Z" />
-    <nodeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="23" startPosition="0" endLine="33" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="canBeChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-    <scopeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="14" startPosition="48" endLine="15" endPosition="74" />
-    <scopeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="19" startPosition="43" endLine="20" endPosition="16" />
-    <scopeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="27" startPosition="51" endLine="28" endPosition="67" />
-    <scopeInfo nodeId="2264311582634140770" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="34" startPosition="148" endLine="35" endPosition="128" />
-    <scopeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="14" startPosition="0" endLine="17" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="34" startPosition="0" endLine="37" endPosition="0">
-      <varInfo nodeId="2264311582634140768" varName="childConcept" />
-      <varInfo nodeId="2264311582634140768" varName="link" />
-      <varInfo nodeId="2264311582634140768" varName="node" />
-      <varInfo nodeId="2264311582634140768" varName="operationContext" />
-      <varInfo nodeId="2264311582634140768" varName="parentNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="18" startPosition="0" endLine="22" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="24" startPosition="200" endLine="31" endPosition="18">
-      <varInfo nodeId="2264311582634140768" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="23" startPosition="0" endLine="33" endPosition="0">
-      <varInfo nodeId="2264311582634140768" varName="checkingNodeContext" />
-      <varInfo nodeId="2264311582634140768" varName="childConcept" />
-      <varInfo nodeId="2264311582634140768" varName="link" />
-      <varInfo nodeId="2264311582634140768" varName="node" />
-      <varInfo nodeId="2264311582634140768" varName="operationContext" />
-      <varInfo nodeId="2264311582634140768" varName="parentNode" />
-    </scopeInfo>
-    <unitInfo nodeId="2264311582634140768" fileName="XMLSAXLocatorExpression_Constraints.java" startLine="13" startPosition="0" endLine="40" endPosition="0" unitName="jetbrains.mps.core.xml.sax.constraints.XMLSAXLocatorExpression_Constraints" />
+    <file name="XMLSAXLocatorExpression_Constraints.java">
+      <node id="2264311582634140768" at="19,48,20,168" concept="10" />
+      <node id="2264311582634140768" at="27,127,28,128" concept="5" />
+      <node id="2264311582634140768" at="28,128,29,0" concept="7" />
+      <node id="2264311582634140768" at="30,55,31,71" concept="2" />
+      <node id="2264311582634140768" at="32,9,33,0" concept="7" />
+      <node id="2264311582634140768" at="33,0,34,22" concept="6" />
+      <node id="1227128029536581190" at="38,128,39,226" concept="6" />
+      <node id="2264311582634140768" at="41,0,42,0" concept="8" trace="canBeChildBreakingPoint" />
+      <node id="2264311582634140768" at="19,0,22,0" concept="1" trace="XMLSAXLocatorExpression_Constraints#()V" />
+      <node id="2264311582634140768" at="29,0,32,9" concept="3" />
+      <node id="2264311582634140768" at="38,0,41,0" concept="9" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="2264311582634140768" at="26,0,36,0" concept="4" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="2264311582634140768" at="24,103,36,6" concept="6" />
+      <node id="2264311582634140768" at="23,0,38,0" concept="4" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <scope id="2264311582634140768" at="19,48,20,168" />
+      <scope id="2264311582634140768" at="30,55,31,71" />
+      <scope id="1227128029536581189" at="38,128,39,226" />
+      <scope id="2264311582634140768" at="19,0,22,0" />
+      <scope id="2264311582634140768" at="38,0,41,0">
+        <var name="childConcept" id="2264311582634140768" />
+        <var name="link" id="2264311582634140768" />
+        <var name="node" id="2264311582634140768" />
+        <var name="parentNode" id="2264311582634140768" />
+      </scope>
+      <scope id="2264311582634140768" at="27,127,34,22">
+        <var name="result" id="2264311582634140768" />
+      </scope>
+      <scope id="2264311582634140768" at="26,0,36,0">
+        <var name="checkingNodeContext" id="2264311582634140768" />
+        <var name="context" id="2264311582634140768" />
+      </scope>
+      <scope id="2264311582634140768" at="24,103,36,6" />
+      <scope id="2264311582634140768" at="23,0,38,0" />
+      <unit id="2264311582634140768" at="25,15,36,5" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXLocatorExpression_Constraints$1" />
+      <unit id="2264311582634140768" at="18,0,43,0" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXLocatorExpression_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:a2a452cd-a0b4-4774-9b7e-00f9c8226bfa(jetbrains.mps.core.xml.sax.constraints)/2264311582634140779">
-    <nodeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="14" startPosition="45" endLine="15" endPosition="71" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="19" startPosition="43" endLine="20" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="24" startPosition="200" endLine="25" endPosition="96" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="25" startPosition="96" endLine="26" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="27" startPosition="51" endLine="28" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="29" startPosition="5" endLine="30" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="30" startPosition="0" endLine="31" endPosition="18" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140782" fileName="XMLSAXBreakStatement_Constraints.java" startLine="34" startPosition="148" endLine="35" endPosition="136" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="38" startPosition="0" endLine="39" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="canBeChildBreakingPoint" />
-    <nodeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="14" startPosition="0" endLine="17" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="XMLSAXBreakStatement_Constraints#()V" />
-    <nodeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="26" startPosition="0" endLine="29" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="34" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="static_canBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;)Z" />
-    <nodeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="18" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnCanBeChildMethod#()Z" />
-    <nodeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="23" startPosition="0" endLine="33" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="canBeChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-    <scopeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="14" startPosition="45" endLine="15" endPosition="71" />
-    <scopeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="19" startPosition="43" endLine="20" endPosition="16" />
-    <scopeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="27" startPosition="51" endLine="28" endPosition="67" />
-    <scopeInfo nodeId="2264311582634140781" fileName="XMLSAXBreakStatement_Constraints.java" startLine="34" startPosition="148" endLine="35" endPosition="136" />
-    <scopeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="14" startPosition="0" endLine="17" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="34" startPosition="0" endLine="37" endPosition="0">
-      <varInfo nodeId="2264311582634140779" varName="childConcept" />
-      <varInfo nodeId="2264311582634140779" varName="link" />
-      <varInfo nodeId="2264311582634140779" varName="node" />
-      <varInfo nodeId="2264311582634140779" varName="operationContext" />
-      <varInfo nodeId="2264311582634140779" varName="parentNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="18" startPosition="0" endLine="22" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="24" startPosition="200" endLine="31" endPosition="18">
-      <varInfo nodeId="2264311582634140779" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="23" startPosition="0" endLine="33" endPosition="0">
-      <varInfo nodeId="2264311582634140779" varName="checkingNodeContext" />
-      <varInfo nodeId="2264311582634140779" varName="childConcept" />
-      <varInfo nodeId="2264311582634140779" varName="link" />
-      <varInfo nodeId="2264311582634140779" varName="node" />
-      <varInfo nodeId="2264311582634140779" varName="operationContext" />
-      <varInfo nodeId="2264311582634140779" varName="parentNode" />
-    </scopeInfo>
-    <unitInfo nodeId="2264311582634140779" fileName="XMLSAXBreakStatement_Constraints.java" startLine="13" startPosition="0" endLine="40" endPosition="0" unitName="jetbrains.mps.core.xml.sax.constraints.XMLSAXBreakStatement_Constraints" />
+    <file name="XMLSAXBreakStatement_Constraints.java">
+      <node id="2264311582634140779" at="19,45,20,165" concept="10" />
+      <node id="2264311582634140779" at="27,127,28,128" concept="5" />
+      <node id="2264311582634140779" at="28,128,29,0" concept="7" />
+      <node id="2264311582634140779" at="30,55,31,71" concept="2" />
+      <node id="2264311582634140779" at="32,9,33,0" concept="7" />
+      <node id="2264311582634140779" at="33,0,34,22" concept="6" />
+      <node id="1227128029536581157" at="38,128,39,234" concept="6" />
+      <node id="2264311582634140779" at="41,0,42,0" concept="8" trace="canBeChildBreakingPoint" />
+      <node id="2264311582634140779" at="19,0,22,0" concept="1" trace="XMLSAXBreakStatement_Constraints#()V" />
+      <node id="2264311582634140779" at="29,0,32,9" concept="3" />
+      <node id="2264311582634140779" at="38,0,41,0" concept="9" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="2264311582634140779" at="26,0,36,0" concept="4" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="2264311582634140779" at="24,103,36,6" concept="6" />
+      <node id="2264311582634140779" at="23,0,38,0" concept="4" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <scope id="2264311582634140779" at="19,45,20,165" />
+      <scope id="2264311582634140779" at="30,55,31,71" />
+      <scope id="1227128029536581156" at="38,128,39,234" />
+      <scope id="2264311582634140779" at="19,0,22,0" />
+      <scope id="2264311582634140779" at="38,0,41,0">
+        <var name="childConcept" id="2264311582634140779" />
+        <var name="link" id="2264311582634140779" />
+        <var name="node" id="2264311582634140779" />
+        <var name="parentNode" id="2264311582634140779" />
+      </scope>
+      <scope id="2264311582634140779" at="27,127,34,22">
+        <var name="result" id="2264311582634140779" />
+      </scope>
+      <scope id="2264311582634140779" at="26,0,36,0">
+        <var name="checkingNodeContext" id="2264311582634140779" />
+        <var name="context" id="2264311582634140779" />
+      </scope>
+      <scope id="2264311582634140779" at="24,103,36,6" />
+      <scope id="2264311582634140779" at="23,0,38,0" />
+      <unit id="2264311582634140779" at="25,15,36,5" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXBreakStatement_Constraints$1" />
+      <unit id="2264311582634140779" at="18,0,43,0" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXBreakStatement_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:a2a452cd-a0b4-4774-9b7e-00f9c8226bfa(jetbrains.mps.core.xml.sax.constraints)/2264311582634140791">
-    <nodeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="20" startPosition="40" endLine="21" endPosition="66" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="25" startPosition="83" endLine="26" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="29" startPosition="44" endLine="30" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140795" fileName="XMLSAXChildRule_Constraints.java" startLine="38" startPosition="142" endLine="39" endPosition="192" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="43" startPosition="63" endLine="44" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="48" startPosition="7" endLine="49" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="52" startPosition="0" endLine="53" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="breakingNode_1y346m_a0a1a0a0a1a0b0a1a1" />
-    <nodeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="20" startPosition="0" endLine="23" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="XMLSAXChildRule_Constraints#()V" />
-    <nodeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="28" startPosition="0" endLine="32" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnScopeProvider#()Z" />
-    <nodeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="37" startPosition="0" endLine="41" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createSearchScopeOrListOfNodes#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljava/lang/Object;" />
-    <nodeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="42" startPosition="0" endLine="46" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="35" startPosition="56" endLine="46" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="33" startPosition="0" endLine="48" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-    <nodeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="26" startPosition="75" endLine="48" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="24" startPosition="0" endLine="51" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultReferences#()Ljava/util/Map;" />
-    <scopeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="20" startPosition="40" endLine="21" endPosition="66" />
-    <scopeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="29" startPosition="44" endLine="30" endPosition="20" />
-    <scopeInfo nodeId="2264311582634140794" fileName="XMLSAXChildRule_Constraints.java" startLine="38" startPosition="142" endLine="39" endPosition="192" />
-    <scopeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="43" startPosition="63" endLine="44" endPosition="58" />
-    <scopeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="20" startPosition="0" endLine="23" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="28" startPosition="0" endLine="32" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="37" startPosition="0" endLine="41" endPosition="0">
-      <varInfo nodeId="2264311582634140791" varName="_context" />
-      <varInfo nodeId="2264311582634140791" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="42" startPosition="0" endLine="46" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="35" startPosition="56" endLine="46" endPosition="10" />
-    <scopeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="33" startPosition="0" endLine="48" endPosition="0" />
-    <scopeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="25" startPosition="83" endLine="49" endPosition="22">
-      <varInfo nodeId="2264311582634140791" varName="references" />
-    </scopeInfo>
-    <scopeInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="24" startPosition="0" endLine="51" endPosition="0" />
-    <unitInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="36" startPosition="19" endLine="46" endPosition="9" unitName="jetbrains.mps.core.xml.sax.constraints.XMLSAXChildRule_Constraints$2" />
-    <unitInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="27" startPosition="31" endLine="48" endPosition="5" unitName="jetbrains.mps.core.xml.sax.constraints.XMLSAXChildRule_Constraints$1" />
-    <unitInfo nodeId="2264311582634140791" fileName="XMLSAXChildRule_Constraints.java" startLine="19" startPosition="0" endLine="54" endPosition="0" unitName="jetbrains.mps.core.xml.sax.constraints.XMLSAXChildRule_Constraints" />
+    <file name="XMLSAXChildRule_Constraints.java">
+      <node id="2264311582634140791" at="26,40,27,160" concept="10" />
+      <node id="2264311582634140791" at="31,90,32,131" concept="5" />
+      <node id="2264311582634140791" at="35,44,36,20" concept="6" />
+      <node id="2264311582634140791" at="43,63,44,58" concept="6" />
+      <node id="6836281137582840883" at="47,122,48,331" concept="6" />
+      <node id="2264311582634140791" at="52,7,53,22" concept="6" />
+      <node id="2264311582634140791" at="55,0,56,0" concept="8" trace="breakingNode_1y346m_a0a0a0a0a1a0b0a1a2" />
+      <node id="2264311582634140791" at="26,0,29,0" concept="1" trace="XMLSAXChildRule_Constraints#()V" />
+      <node id="2264311582634140791" at="34,0,38,0" concept="4" trace="hasOwnScopeProvider#()Z" />
+      <node id="2264311582634140791" at="42,0,46,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="2264311582634140791" at="46,0,50,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="2264311582634140791" at="40,56,50,10" concept="6" />
+      <node id="2264311582634140791" at="38,0,52,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="2264311582634140791" at="32,131,52,7" concept="2" />
+      <node id="2264311582634140791" at="30,0,55,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="2264311582634140791" at="26,40,27,160" />
+      <scope id="2264311582634140791" at="35,44,36,20" />
+      <scope id="2264311582634140791" at="43,63,44,58" />
+      <scope id="2264311582634140791" at="47,122,48,331" />
+      <scope id="2264311582634140791" at="26,0,29,0" />
+      <scope id="2264311582634140791" at="34,0,38,0" />
+      <scope id="2264311582634140791" at="42,0,46,0" />
+      <scope id="2264311582634140791" at="46,0,50,0">
+        <var name="_context" id="2264311582634140791" />
+        <var name="operationContext" id="2264311582634140791" />
+      </scope>
+      <scope id="2264311582634140791" at="40,56,50,10" />
+      <scope id="2264311582634140791" at="38,0,52,0" />
+      <scope id="2264311582634140791" at="31,90,53,22">
+        <var name="references" id="2264311582634140791" />
+      </scope>
+      <scope id="2264311582634140791" at="30,0,55,0" />
+      <unit id="2264311582634140791" at="41,19,50,9" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXChildRule_Constraints$1$1" />
+      <unit id="2264311582634140791" at="33,152,52,5" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXChildRule_Constraints$1" />
+      <unit id="2264311582634140791" at="25,0,57,0" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXChildRule_Constraints" />
+    </file>
   </root>
   <root nodeRef="r:a2a452cd-a0b4-4774-9b7e-00f9c8226bfa(jetbrains.mps.core.xml.sax.constraints)/4720003541456853028">
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="25" startPosition="47" endLine="26" endPosition="73" conceptFqName="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="30" startPosition="43" endLine="31" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="35" startPosition="200" endLine="36" endPosition="96" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="36" startPosition="96" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="38" startPosition="51" endLine="39" endPosition="67" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="40" startPosition="5" endLine="41" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="41" startPosition="0" endLine="42" endPosition="18" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="46" startPosition="83" endLine="47" endPosition="75" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="50" startPosition="44" endLine="51" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="59" startPosition="63" endLine="60" endPosition="58" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="65" startPosition="13" endLine="66" endPosition="232" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="75" startPosition="7" endLine="76" endPosition="22" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4720003541456860222" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="79" startPosition="148" endLine="80" endPosition="127" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="83" startPosition="0" endLine="84" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="canBeChildBreakingPoint" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="84" startPosition="0" endLine="85" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="breakingNode_58jyk7_a0a0a0a0a1a0b0a1a3" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="25" startPosition="0" endLine="28" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="XMLSAXNodeRuleParamRef_Constraints#()V" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="37" startPosition="0" endLine="40" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="79" startPosition="0" endLine="82" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" propertyString="static_canBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;)Z" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="29" startPosition="0" endLine="33" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnCanBeChildMethod#()Z" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="49" startPosition="0" endLine="53" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="hasOwnScopeProvider#()Z" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="58" startPosition="0" endLine="62" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="66" startPosition="232" endLine="70" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="64" startPosition="122" endLine="71" endPosition="13" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="34" startPosition="0" endLine="44" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="canBeChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="63" startPosition="0" endLine="73" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="56" startPosition="56" endLine="73" endPosition="10" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="54" startPosition="0" endLine="75" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="47" startPosition="75" endLine="75" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="45" startPosition="0" endLine="78" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getNotDefaultReferences#()Ljava/util/Map;" />
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="25" startPosition="47" endLine="26" endPosition="73" />
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="30" startPosition="43" endLine="31" endPosition="16" />
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="38" startPosition="51" endLine="39" endPosition="67" />
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="50" startPosition="44" endLine="51" endPosition="20" />
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="59" startPosition="63" endLine="60" endPosition="58" />
-    <scopeInfo nodeId="4720003541456856031" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="79" startPosition="148" endLine="80" endPosition="127" />
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="25" startPosition="0" endLine="28" endPosition="0" />
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="79" startPosition="0" endLine="82" endPosition="0">
-      <varInfo nodeId="4720003541456853028" varName="childConcept" />
-      <varInfo nodeId="4720003541456853028" varName="link" />
-      <varInfo nodeId="4720003541456853028" varName="node" />
-      <varInfo nodeId="4720003541456853028" varName="operationContext" />
-      <varInfo nodeId="4720003541456853028" varName="parentNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="29" startPosition="0" endLine="33" endPosition="0" />
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="49" startPosition="0" endLine="53" endPosition="0" />
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="58" startPosition="0" endLine="62" endPosition="0" />
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="65" startPosition="13" endLine="70" endPosition="16">
-      <varInfo nodeId="4720003541456853028" varName="scope" />
-    </scopeInfo>
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="35" startPosition="200" endLine="42" endPosition="18">
-      <varInfo nodeId="4720003541456853028" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="64" startPosition="122" endLine="71" endPosition="13" />
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="34" startPosition="0" endLine="44" endPosition="0">
-      <varInfo nodeId="4720003541456853028" varName="checkingNodeContext" />
-      <varInfo nodeId="4720003541456853028" varName="childConcept" />
-      <varInfo nodeId="4720003541456853028" varName="link" />
-      <varInfo nodeId="4720003541456853028" varName="node" />
-      <varInfo nodeId="4720003541456853028" varName="operationContext" />
-      <varInfo nodeId="4720003541456853028" varName="parentNode" />
-    </scopeInfo>
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="63" startPosition="0" endLine="73" endPosition="0">
-      <varInfo nodeId="4720003541456853028" varName="_context" />
-      <varInfo nodeId="4720003541456853028" varName="operationContext" />
-    </scopeInfo>
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="56" startPosition="56" endLine="73" endPosition="10" />
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="54" startPosition="0" endLine="75" endPosition="0" />
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="46" startPosition="83" endLine="76" endPosition="22">
-      <varInfo nodeId="4720003541456853028" varName="references" />
-    </scopeInfo>
-    <scopeInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="45" startPosition="0" endLine="78" endPosition="0" />
-    <unitInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="57" startPosition="19" endLine="73" endPosition="9" unitName="jetbrains.mps.core.xml.sax.constraints.XMLSAXNodeRuleParamRef_Constraints$2" />
-    <unitInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="48" startPosition="32" endLine="75" endPosition="5" unitName="jetbrains.mps.core.xml.sax.constraints.XMLSAXNodeRuleParamRef_Constraints$1" />
-    <unitInfo nodeId="4720003541456853028" fileName="XMLSAXNodeRuleParamRef_Constraints.java" startLine="24" startPosition="0" endLine="86" endPosition="0" unitName="jetbrains.mps.core.xml.sax.constraints.XMLSAXNodeRuleParamRef_Constraints" />
+    <file name="XMLSAXNodeRuleParamRef_Constraints.java">
+      <node id="4720003541456853028" at="32,47,33,167" concept="10" />
+      <node id="4720003541456853028" at="40,127,41,128" concept="5" />
+      <node id="4720003541456853028" at="41,128,42,0" concept="7" />
+      <node id="4720003541456853028" at="43,55,44,71" concept="2" />
+      <node id="4720003541456853028" at="45,9,46,0" concept="7" />
+      <node id="4720003541456853028" at="46,0,47,22" concept="6" />
+      <node id="4720003541456853028" at="52,90,53,131" concept="5" />
+      <node id="4720003541456853028" at="56,44,57,20" concept="6" />
+      <node id="4720003541456853028" at="64,63,65,58" concept="6" />
+      <node id="4720003541456853028" at="69,13,70,278" concept="5" />
+      <node id="4720003541456853028" at="70,278,71,64" concept="6" />
+      <node id="4720003541456853028" at="76,7,77,22" concept="6" />
+      <node id="1227128029536581168" at="79,128,80,225" concept="6" />
+      <node id="4720003541456853028" at="82,0,83,0" concept="8" trace="canBeChildBreakingPoint" />
+      <node id="4720003541456853028" at="83,0,84,0" concept="8" trace="breakingNode_58jyk7_a0a0a0a0a1a0b0a1a3" />
+      <node id="4720003541456853028" at="32,0,35,0" concept="1" trace="XMLSAXNodeRuleParamRef_Constraints#()V" />
+      <node id="4720003541456853028" at="42,0,45,9" concept="3" />
+      <node id="4720003541456853028" at="79,0,82,0" concept="9" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="4720003541456853028" at="55,0,59,0" concept="4" trace="hasOwnScopeProvider#()Z" />
+      <node id="4720003541456853028" at="63,0,67,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="4720003541456853028" at="68,122,72,13" concept="0" />
+      <node id="4720003541456853028" at="67,0,74,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="4720003541456853028" at="39,0,49,0" concept="4" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="4720003541456853028" at="37,103,49,6" concept="6" />
+      <node id="4720003541456853028" at="61,56,74,10" concept="6" />
+      <node id="4720003541456853028" at="36,0,51,0" concept="4" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <node id="4720003541456853028" at="59,0,76,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="4720003541456853028" at="53,131,76,7" concept="2" />
+      <node id="4720003541456853028" at="51,0,79,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="4720003541456853028" at="32,47,33,167" />
+      <scope id="4720003541456853028" at="43,55,44,71" />
+      <scope id="4720003541456853028" at="56,44,57,20" />
+      <scope id="4720003541456853028" at="64,63,65,58" />
+      <scope id="1227128029536581167" at="79,128,80,225" />
+      <scope id="4720003541456853028" at="69,13,71,64">
+        <var name="scope" id="4720003541456853028" />
+      </scope>
+      <scope id="4720003541456853028" at="32,0,35,0" />
+      <scope id="4720003541456853028" at="79,0,82,0">
+        <var name="childConcept" id="4720003541456853028" />
+        <var name="link" id="4720003541456853028" />
+        <var name="node" id="4720003541456853028" />
+        <var name="parentNode" id="4720003541456853028" />
+      </scope>
+      <scope id="4720003541456853028" at="55,0,59,0" />
+      <scope id="4720003541456853028" at="63,0,67,0" />
+      <scope id="4720003541456853028" at="68,122,72,13" />
+      <scope id="4720003541456853028" at="40,127,47,22">
+        <var name="result" id="4720003541456853028" />
+      </scope>
+      <scope id="4720003541456853028" at="67,0,74,0">
+        <var name="_context" id="4720003541456853028" />
+        <var name="operationContext" id="4720003541456853028" />
+      </scope>
+      <scope id="4720003541456853028" at="39,0,49,0">
+        <var name="checkingNodeContext" id="4720003541456853028" />
+        <var name="context" id="4720003541456853028" />
+      </scope>
+      <scope id="4720003541456853028" at="37,103,49,6" />
+      <scope id="4720003541456853028" at="61,56,74,10" />
+      <scope id="4720003541456853028" at="36,0,51,0" />
+      <scope id="4720003541456853028" at="59,0,76,0" />
+      <scope id="4720003541456853028" at="52,90,77,22">
+        <var name="references" id="4720003541456853028" />
+      </scope>
+      <scope id="4720003541456853028" at="51,0,79,0" />
+      <unit id="4720003541456853028" at="38,15,49,5" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXNodeRuleParamRef_Constraints$1" />
+      <unit id="4720003541456853028" at="62,19,74,9" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXNodeRuleParamRef_Constraints$2$1" />
+      <unit id="4720003541456853028" at="54,153,76,5" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXNodeRuleParamRef_Constraints$2" />
+      <unit id="4720003541456853028" at="31,0,85,0" name="jetbrains.mps.core.xml.sax.constraints.XMLSAXNodeRuleParamRef_Constraints" />
+    </file>
   </root>
-</debugInfo>
+</debug-info>
 

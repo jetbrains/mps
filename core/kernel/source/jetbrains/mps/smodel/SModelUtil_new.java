@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,201 +15,94 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.smodel.SModelRepositoryListener.SModelRepositoryListenerPriority;
-import jetbrains.mps.smodel.tempmodel.TemporaryModels;
-import org.apache.log4j.LogManager;
-import org.jetbrains.mps.openapi.model.SModel;
-
-import org.jetbrains.mps.openapi.model.SNodeId;import org.jetbrains.mps.openapi.model.SNode;
-
-import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.GlobalScope;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.reloading.ReloadAdapter;
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
+import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactoryByName;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
-import jetbrains.mps.smodel.event.SModelListener.SModelListenerPriority;
-import jetbrains.mps.smodel.event.SModelPropertyEvent;
-import jetbrains.mps.smodel.event.SModelRootEvent;
 import jetbrains.mps.smodel.search.ConceptAndSuperConceptsScope;
 import jetbrains.mps.smodel.search.SModelSearchUtil;
+import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.util.SNodeOperations;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeId;
 
 import java.util.List;
-import java.util.Set;
 
-public class SModelUtil_new implements CoreComponent {
+public class SModelUtil_new {
   private static final Logger LOG = Logger.wrap(LogManager.getLogger(SModelUtil_new.class));
-  private ClassLoaderManager myClManager;
-  private GlobalSModelEventsManager myMeManager;
-  private ReloadAdapter myReloadHandler = new ReloadAdapter() {
-    @Override
-    public void unload() {
-      SModelUtil.clearCaches();
-    }
-  };
-  private SModelAdapter myModelListener = new SModelAdapter(SModelListenerPriority.PLATFORM) {
-    @Override
-    public void rootRemoved(SModelRootEvent p0) {
-      if (!LanguageAspect.STRUCTURE.is(p0.getModel())) {
-        return;
-      }
-      if (!(SNodeUtil.isInstanceOfAbstractConceptDeclaration(p0.getRoot()))) {
-        return;
-      }
-
-      SModelUtil.clearCaches();
-    }
-
-
-    @Override
-    public void propertyChanged(SModelPropertyEvent p0) {
-      if (!LanguageAspect.STRUCTURE.is(p0.getModel())) {
-        return;
-      }
-      if (!(SNodeUtil.isInstanceOfAbstractConceptDeclaration(p0.getNode()))) {
-        return;
-      }
-      if (!p0.getPropertyName().equals("name")) {
-        return;
-      }
-
-      String modelName = jetbrains.mps.util.SNodeOperations.getModelLongName(p0.getNode().getModel());
-      String newName = modelName + "." + p0.getNewPropertyValue();
-      String oldName = modelName + "." + p0.getOldPropertyValue();
-      SModelUtil.conceptRenamed(oldName, newName);
-    }
-  };
-
-  private SModelRepositoryAdapter myRepositoryListener = new SModelRepositoryAdapter(SModelRepositoryListenerPriority.PLATFORM) {
-    @Override
-    public void modelsReplaced(Set<SModel> replacedModels) {
-      for (SModel descriptor : replacedModels) {
-        if (!jetbrains.mps.util.SNodeOperations.isRegistered(descriptor))  {
-          continue;
-        }
-        if (Language.getModelAspect(descriptor) == LanguageAspect.STRUCTURE) {
-          SModelUtil.clearCaches();
-          return;
-        }
-      }
-    }
-  };
-
-  public SModelUtil_new(ClassLoaderManager clManager, GlobalSModelEventsManager meManager) {
-    myClManager = clManager;
-    myMeManager = meManager;
-  }
-
-  @Override
-  public void init() {
-    SModelRepository.getInstance().addModelRepositoryListener(myRepositoryListener);
-    myClManager.addReloadHandler(myReloadHandler);
-    myMeManager.addGlobalModelListener(myModelListener);
-  }
-
-  @Override
-  public void dispose() {
-    myMeManager.removeGlobalModelListener(myModelListener);
-    myClManager.removeReloadHandler(myReloadHandler);
-    SModelRepository.getInstance().removeModelRepositoryListener(myRepositoryListener);
-  }
-
-  /**
-   * use SModelUtil
-   */
-  @Deprecated
-  public static boolean isAssignableConcept(String fromConceptFqName, String toConceptFqName) {
-    return SModelUtil.isAssignableConcept(fromConceptFqName, toConceptFqName);
-  }
 
   public static List<SNode> getConceptAndSuperConcepts(SNode topConcept) {
     return new ConceptAndSuperConceptsScope(topConcept).getConcepts();
   }
 
-  public static jetbrains.mps.smodel.SNode instantiateConceptDeclaration(String conceptFQName, SModel model, IScope scope) {
-    return instantiateConceptDeclaration(conceptFQName, model, scope, true);
-  }
-
-  public static jetbrains.mps.smodel.SNode instantiateConceptDeclaration(SNode conceptDeclaration, SModel model) {
-    return instantiateConceptDeclaration(NameUtil.nodeFQName(conceptDeclaration), model, GlobalScope.getInstance());
-  }
-
   public static jetbrains.mps.smodel.SNode instantiateConceptDeclaration(SNode conceptDeclaration, SModel model, boolean fullNodeStructure) {
-    return instantiateConceptDeclaration(NameUtil.nodeFQName(conceptDeclaration), model, GlobalScope.getInstance(), fullNodeStructure);
+    return instantiateConceptDeclaration(MetaAdapterByDeclaration.getConcept(conceptDeclaration), model, null, fullNodeStructure);
   }
 
-  public static jetbrains.mps.smodel.SNode instantiateConceptDeclaration(@NotNull String conceptFqName, @Nullable SModel model, IScope scope, boolean fullNodeStructure) {
-    return instantiateConceptDeclaration(conceptFqName, model, null, scope, fullNodeStructure);
-  }
-
-  public static jetbrains.mps.smodel.SNode instantiateConceptDeclaration(@NotNull String conceptFqName, @Nullable SModel model, SNodeId nodeId, IScope scope, boolean fullNodeStructure) {
-    boolean isNotProjectModel = model==null || !TemporaryModels.isTemporary(model);
+  public static jetbrains.mps.smodel.SNode instantiateConceptDeclaration(@NotNull SAbstractConcept concept, @Nullable SModel model, SNodeId nodeId,
+      boolean fullNodeStructure) {
+    boolean isNotProjectModel = model == null || !TemporaryModels.isTemporary(model);
     if (isNotProjectModel) {
-      String fqName = ModelConstraints.getDefaultConcreteConceptFqName(conceptFqName);
-      if (fqName != null) {
-        conceptFqName = fqName;
+      SConcept concreteConcept = ModelConstraints.getDefaultConcreteConcept(concept);
+      if (concreteConcept != null) {
+        concept = concreteConcept;
       }
     }
 
-    jetbrains.mps.smodel.SNode newNode = new jetbrains.mps.smodel.SNode(conceptFqName);
-    if (nodeId != null) {
-      newNode.setId(nodeId);
-    }
+    SConcept concreteConcept = MetaAdapterByDeclaration.asInstanceConcept(concept);
+
+    jetbrains.mps.smodel.SNode newNode =
+        nodeId == null ? new jetbrains.mps.smodel.SNode(concreteConcept) : new jetbrains.mps.smodel.SNode(concreteConcept, nodeId);
     // create the node structure
     if (fullNodeStructure &&
-      isNotProjectModel) { //project models can be created and used
+        isNotProjectModel) { //project models can be created and used
       //before project language is loaded
-      SNode conceptDeclaration = SModelUtil.findConceptDeclaration(conceptFqName, scope);
-      createNodeStructure(conceptDeclaration, newNode, model);
+      createNodeStructure(concreteConcept, newNode, model);
     }
     return newNode;
   }
 
-  private static void createNodeStructure(SNode nodeConcept,
-                                          SNode newNode, SModel model) {
-    for (SNode linkDeclaration : SModelSearchUtil.getLinkDeclarations(nodeConcept)) {
-      String role = SModelUtil.getGenuineLinkRole(linkDeclaration);
-      SNode genuineLinkDeclaration = SModelUtil.getGenuineLinkDeclaration(linkDeclaration);
-      if (!SNodeUtil.getLinkDeclaration_IsReference(genuineLinkDeclaration) &&
-        SNodeUtil.getLinkDeclaration_IsAtLeastOneMultiplicity(genuineLinkDeclaration)) {
+  private static void createNodeStructure(SConcept concept, SNode newNode, SModel model) {
+    for (SContainmentLink linkDeclaration : concept.getContainmentLinks()) {
+      if (linkDeclaration.isOptional()) {
+        continue;
+      }
 
-        SNode targetConcept = SModelUtil.getLinkDeclarationTarget(linkDeclaration);
-        LOG.assertLog(targetConcept != null, "link target is null");
-        if (!newNode.getChildren(role).iterator().hasNext()) {
-          SNode childNode = instantiateConceptDeclaration(targetConcept, model);
-          newNode.addChild(role, childNode);
-        }
+      SAbstractConcept target = linkDeclaration.getTargetConcept();
+      LOG.assertLog(target != null, "link target is null");
+      if (!newNode.getChildren(linkDeclaration).iterator().hasNext()) {
+        SNode childNode = instantiateConceptDeclaration(target, model, null, true);
+        newNode.addChild(linkDeclaration, childNode);
       }
     }
   }
 
+  @Deprecated
+  @ToRemove(version = 2017.1)
   public static boolean isAcceptableTarget(SNode sourceNode, String role, SNode targetNode) {
-    SNode conceptDeclaration = ((jetbrains.mps.smodel.SNode) sourceNode).getConceptDeclarationNode();
+    SNode conceptDeclaration = new SNodeLegacy(sourceNode).getConceptDeclarationNode();
     SNode linkDeclaration = SModelSearchUtil.findMostSpecificLinkDeclaration(conceptDeclaration, role);
     if (linkDeclaration == null) {
-      LOG.error("couldn't find link declaration for role '" + role + "' in hierarchy of concept " + org.jetbrains.mps.openapi.model.SNodeUtil.getDebugText(conceptDeclaration), sourceNode);
+      LOG.error("couldn't find link declaration for role '" + role + "' in hierarchy of concept " + SNodeOperations.getDebugText(conceptDeclaration),
+          sourceNode);
       return false;
     }
     return SModelUtil.isAcceptableTarget(linkDeclaration, targetNode);
   }
 
   public static String getAlias(SNode conceptDeclaration) {
-    return SPropertyOperations.getString(conceptDeclaration, "conceptAlias");
-  }
-
-  public static String getStringConceptProperty(SNode conceptDeclaration, String propertyName) {
-    SNode property = SModelSearchUtil.findConceptProperty(conceptDeclaration, propertyName);
-
-    Object value = SNodeUtil.getConceptPropertyValue(property);
-    if (value instanceof String) {
-      return (String) value;
-    }
-    return null;
+    return SNodeUtil.getConceptAlias(conceptDeclaration);
   }
 
   public static boolean isEmptyPropertyValue(String s) {

@@ -1,163 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="QueriesGenerated.java" startLine="11" startPosition="0" endLine="20" endPosition="0" unitName="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_dontApplyReductionTwice.QueriesGenerated" />
-  <unitInfo fileName="TemplateModelImpl.java" startLine="18" startPosition="0" endLine="69" endPosition="0" unitName="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_dontApplyReductionTwice.TemplateModelImpl" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <root>
+    <file name="QueriesGenerated.java">
+      <unit at="10,0,16,0" name="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_dontApplyReductionTwice.QueriesGenerated" />
+    </file>
+    <file name="TemplateModelImpl.java">
+      <unit at="20,0,58,0" name="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_dontApplyReductionTwice.TemplateModelImpl" />
+    </file>
+  </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895905f5(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_dontApplyReductionTwice@generator)/1209604518979">
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="26" startPosition="0" endLine="27" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.FieldDeclaration" propertyString="rootRules" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="27" startPosition="0" endLine="28" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.FieldDeclaration" propertyString="myModel" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="29" startPosition="43" endLine="30" endPosition="25" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="30" startPosition="25" endLine="31" endPosition="103" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="34" startPosition="27" endLine="35" endPosition="18" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="38" startPosition="35" endLine="39" endPosition="24" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="42" startPosition="42" endLine="43" endPosition="201" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="46" startPosition="61" endLine="47" endPosition="16" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="50" startPosition="64" endLine="51" endPosition="34" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="54" startPosition="62" endLine="55" endPosition="34" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="58" startPosition="61" endLine="59" endPosition="21" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="62" startPosition="60" endLine="63" endPosition="34" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="66" startPosition="58" endLine="67" endPosition="34" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="70" startPosition="61" endLine="71" endPosition="34" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="74" startPosition="60" endLine="75" endPosition="34" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="78" startPosition="34" endLine="79" endPosition="17" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="86" startPosition="41" endLine="87" endPosition="42" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="90" startPosition="40" endLine="91" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="94" startPosition="42" endLine="95" endPosition="79" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="98" startPosition="37" endLine="99" endPosition="19" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="103" startPosition="217" endLine="104" endPosition="21" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="105" startPosition="7" endLine="106" endPosition="18" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="109" startPosition="142" endLine="110" endPosition="86" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="110" startPosition="86" endLine="111" endPosition="20" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="115" startPosition="0" endLine="116" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="rootMappingRule_417xrn_a0a1p" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="116" startPosition="0" endLine="117" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="rootMappingRule_417xrn_b0b0a0a5p" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="83" startPosition="0" endLine="85" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="RootMappingRule0#()V" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="34" startPosition="0" endLine="37" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getName#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="38" startPosition="0" endLine="41" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getModel#()Ljetbrains/mps/generator/runtime/TemplateModel;" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="42" startPosition="0" endLine="45" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getMappingNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="46" startPosition="0" endLine="49" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicable#(Ljetbrains/mps/generator/template/ITemplateGenerator;)Z" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="50" startPosition="0" endLine="53" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getReductionRules#()Ljava/util/Collection;" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="54" startPosition="0" endLine="57" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getCreateRules#()Ljava/util/Collection;" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="58" startPosition="0" endLine="61" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getRootRules#()Ljava/util/Collection;" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="62" startPosition="0" endLine="65" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getWeavingRules#()Ljava/util/Collection;" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="66" startPosition="0" endLine="69" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getDropRules#()Ljava/util/Collection;" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="70" startPosition="0" endLine="73" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getPostScripts#()Ljava/util/Collection;" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="74" startPosition="0" endLine="77" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getPreScripts#()Ljava/util/Collection;" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="78" startPosition="0" endLine="81" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isTopPriority#()Z" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="86" startPosition="0" endLine="89" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getRuleNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="90" startPosition="0" endLine="93" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="applyToInheritors#()Z" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="94" startPosition="0" endLine="97" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getApplicableConcept#()Ljava/lang/String;" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="98" startPosition="0" endLine="101" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="keepSourceRoot#()Z" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="102" startPosition="127" endLine="105" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="29" startPosition="0" endLine="33" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="Mappingmain#(Ljetbrains/mps/generator/runtime/TemplateModel;)V" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="109" startPosition="0" endLine="113" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="apply#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Ljetbrains/mps/generator/runtime/TemplateContext;)Ljava/util/Collection;" />
-    <nodeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="102" startPosition="0" endLine="108" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="isApplicable#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Ljetbrains/mps/generator/runtime/TemplateContext;)Z" />
-    <nodeInfo nodeId="1209604582248" fileName="QueriesGenerated.java" startLine="12" startPosition="146" endLine="13" endPosition="108" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="83" startPosition="31" endLine="83" endPosition="31" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="34" startPosition="27" endLine="35" endPosition="18" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="38" startPosition="35" endLine="39" endPosition="24" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="42" startPosition="42" endLine="43" endPosition="201" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="46" startPosition="61" endLine="47" endPosition="16" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="50" startPosition="64" endLine="51" endPosition="34" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="54" startPosition="62" endLine="55" endPosition="34" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="58" startPosition="61" endLine="59" endPosition="21" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="62" startPosition="60" endLine="63" endPosition="34" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="66" startPosition="58" endLine="67" endPosition="34" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="70" startPosition="61" endLine="71" endPosition="34" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="74" startPosition="60" endLine="75" endPosition="34" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="78" startPosition="34" endLine="79" endPosition="17" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="86" startPosition="41" endLine="87" endPosition="42" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="90" startPosition="40" endLine="91" endPosition="19" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="94" startPosition="42" endLine="95" endPosition="79" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="98" startPosition="37" endLine="99" endPosition="19" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="103" startPosition="217" endLine="104" endPosition="21" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="29" startPosition="43" endLine="31" endPosition="103" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="83" startPosition="0" endLine="85" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="109" startPosition="142" endLine="111" endPosition="20">
-      <varInfo nodeId="1209604518979" varName="result" />
-    </scopeInfo>
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="34" startPosition="0" endLine="37" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="38" startPosition="0" endLine="41" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="42" startPosition="0" endLine="45" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="46" startPosition="0" endLine="49" endPosition="0">
-      <varInfo nodeId="1209604518979" varName="generator" />
-    </scopeInfo>
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="50" startPosition="0" endLine="53" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="54" startPosition="0" endLine="57" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="58" startPosition="0" endLine="61" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="62" startPosition="0" endLine="65" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="66" startPosition="0" endLine="69" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="70" startPosition="0" endLine="73" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="74" startPosition="0" endLine="77" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="78" startPosition="0" endLine="81" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="86" startPosition="0" endLine="89" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="90" startPosition="0" endLine="93" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="94" startPosition="0" endLine="97" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="98" startPosition="0" endLine="101" endPosition="0" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="29" startPosition="0" endLine="33" endPosition="0">
-      <varInfo nodeId="1209604518979" varName="model" />
-    </scopeInfo>
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="102" startPosition="127" endLine="106" endPosition="18" />
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="109" startPosition="0" endLine="113" endPosition="0">
-      <varInfo nodeId="1209604518979" varName="context" />
-      <varInfo nodeId="1209604518979" varName="environment" />
-    </scopeInfo>
-    <scopeInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="102" startPosition="0" endLine="108" endPosition="0">
-      <varInfo nodeId="1209604518979" varName="context" />
-      <varInfo nodeId="1209604518979" varName="environment" />
-    </scopeInfo>
-    <scopeInfo nodeId="1209604575153" fileName="QueriesGenerated.java" startLine="12" startPosition="146" endLine="13" endPosition="108" />
-    <unitInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="82" startPosition="0" endLine="114" endPosition="0" unitName="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_dontApplyReductionTwice.Mappingmain$RootMappingRule0" />
-    <unitInfo nodeId="1209604518979" fileName="Mappingmain.java" startLine="25" startPosition="0" endLine="118" endPosition="0" unitName="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_dontApplyReductionTwice.Mappingmain" />
+    <file name="Mapping_main.java">
+      <node id="1209604518979" at="24,0,25,0" concept="3" trace="rootRules" />
+      <node id="1209604518979" at="25,53,26,223" concept="9" />
+      <node id="1209604518979" at="26,223,27,104" concept="2" />
+      <node id="1209604518979" at="30,61,31,21" concept="6" />
+      <node id="1209604518979" at="34,31,35,373" concept="9" />
+      <node id="1209604518979" at="38,94,39,118" concept="6" />
+      <node id="1209604518979" at="42,103,43,80" concept="5" />
+      <node id="1209604518979" at="43,80,44,87" concept="5" />
+      <node id="1209604518979" at="44,87,45,20" concept="6" />
+      <node id="1209604518979" at="34,0,37,0" concept="1" trace="RootMappingRule0#()V" />
+      <node id="1209604518979" at="25,0,29,0" concept="1" trace="Mapping_main#(Ljetbrains/mps/generator/runtime/TemplateModel;)V" />
+      <node id="1209604518979" at="29,0,33,0" concept="4" trace="getRootRules#()Ljava/util/Collection;" />
+      <node id="1209604518979" at="37,0,41,0" concept="4" trace="isApplicable#(Ljetbrains/mps/generator/runtime/TemplateContext;)Z" />
+      <node id="1209604518979" at="41,0,47,0" concept="4" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateContext;)Ljava/util/Collection;" />
+      <scope id="1209604518979" at="30,61,31,21" />
+      <scope id="1209604518979" at="34,31,35,373" />
+      <scope id="1209604518979" at="38,94,39,118" />
+      <scope id="1209604518979" at="25,53,27,104" />
+      <scope id="1209604518979" at="34,0,37,0" />
+      <scope id="1209604518979" at="42,103,45,20">
+        <var name="environment" id="1209604518979" />
+        <var name="result" id="1209604518979" />
+      </scope>
+      <scope id="1209604518979" at="25,0,29,0">
+        <var name="model" id="1209604518979" />
+      </scope>
+      <scope id="1209604518979" at="29,0,33,0" />
+      <scope id="1209604518979" at="37,0,41,0">
+        <var name="context" id="1209604518979" />
+      </scope>
+      <scope id="1209604518979" at="41,0,47,0">
+        <var name="context" id="1209604518979" />
+      </scope>
+      <unit id="1209604518979" at="33,0,48,0" name="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_dontApplyReductionTwice.Mapping_main$RootMappingRule0" />
+      <unit id="1209604518979" at="22,0,49,0" name="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_dontApplyReductionTwice.Mapping_main" />
+    </file>
+    <file name="QueriesGenerated.java">
+      <node id="1209604582248" at="12,104,13,214" concept="6" />
+      <scope id="1209604575153" at="12,104,13,214" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895905f5(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_dontApplyReductionTwice@generator)/1209605205934">
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="22" startPosition="43" endLine="23" endPosition="32" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="26" startPosition="158" endLine="27" endPosition="123" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="28" startPosition="9" endLine="29" endPosition="77" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="29" startPosition="77" endLine="30" endPosition="106" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="30" startPosition="106" endLine="31" endPosition="64" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="31" startPosition="64" endLine="32" endPosition="104" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="32" startPosition="104" endLine="33" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="34" startPosition="7" endLine="35" endPosition="159" conceptFqName="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="36" startPosition="13" endLine="37" endPosition="85" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="37" startPosition="85" endLine="38" endPosition="110" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="38" startPosition="110" endLine="39" endPosition="117" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="39" startPosition="117" endLine="40" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.Statement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="41" startPosition="19" endLine="42" endPosition="125" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="42" startPosition="125" endLine="43" endPosition="86" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="45" startPosition="29" endLine="46" endPosition="49" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="47" startPosition="9" endLine="48" endPosition="31" conceptFqName="jetbrains.mps.baseLanguage.structure.SingleLineComment" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="50" startPosition="15" endLine="51" endPosition="121" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="51" startPosition="121" endLine="52" endPosition="78" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="53" startPosition="5" endLine="54" endPosition="46" conceptFqName="jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="57" startPosition="0" endLine="58" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="template_9pkn2m_a0a1" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="58" startPosition="0" endLine="59" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="templateNode_9pkn2m_a0a0a1a2" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="59" startPosition="0" endLine="60" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" propertyString="templateNode_9pkn2m_a0a0a1a5a1a2" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="19" startPosition="0" endLine="21" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="TemplateoutputRoot#()V" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="22" startPosition="0" endLine="25" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="getTemplateNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="44" startPosition="9" endLine="47" endPosition="9" conceptFqName="jetbrains.mps.baseLanguage.structure.IfStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="35" startPosition="159" endLine="44" endPosition="9" conceptFqName="jetbrains.mps.baseLanguage.structure.TryStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="33" startPosition="0" endLine="49" endPosition="7" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="27" startPosition="123" endLine="53" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.TryStatement" />
-    <nodeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="26" startPosition="0" endLine="56" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="apply#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Ljetbrains/mps/generator/runtime/TemplateContext;)Ljava/util/Collection;" />
-    <scopeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="19" startPosition="31" endLine="19" endPosition="31" />
-    <scopeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="22" startPosition="43" endLine="23" endPosition="32" />
-    <scopeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="45" startPosition="29" endLine="46" endPosition="49" />
-    <scopeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="19" startPosition="0" endLine="21" endPosition="0" />
-    <scopeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="41" startPosition="19" endLine="43" endPosition="86" />
-    <scopeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="50" startPosition="15" endLine="52" endPosition="78" />
-    <scopeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="22" startPosition="0" endLine="25" endPosition="0" />
-    <scopeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="36" startPosition="13" endLine="40" endPosition="0" />
-    <scopeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="34" startPosition="7" endLine="48" endPosition="31">
-      <varInfo nodeId="1209605205934" varName="tnode2" />
-    </scopeInfo>
-    <scopeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="28" startPosition="9" endLine="49" endPosition="7" />
-    <scopeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="26" startPosition="158" endLine="54" endPosition="46">
-      <varInfo nodeId="1209605205934" varName="tnode1" />
-    </scopeInfo>
-    <scopeInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="26" startPosition="0" endLine="56" endPosition="0">
-      <varInfo nodeId="1209605205934" varName="context" />
-      <varInfo nodeId="1209605205934" varName="environment" />
-    </scopeInfo>
-    <unitInfo nodeId="1209605205934" fileName="TemplateoutputRoot.java" startLine="18" startPosition="0" endLine="61" endPosition="0" unitName="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_dontApplyReductionTwice.TemplateoutputRoot" />
+    <file name="Template_outputRoot.java">
+      <node id="1209605205934" at="29,43,30,32" concept="6" />
+      <node id="1209605205934" at="32,158,33,69" concept="5" />
+      <node id="1209605205934" at="34,9,35,106" concept="2" />
+      <node id="1209605205934" at="35,106,36,73" concept="2" />
+      <node id="1209605205934" at="36,73,37,113" concept="2" />
+      <node id="1209605205934" at="37,113,38,54" concept="5" />
+      <node id="1209605205934" at="39,7,40,73" concept="5" />
+      <node id="1209605205934" at="41,13,42,126" concept="2" />
+      <node id="1209605205934" at="44,9,45,55" concept="2" />
+      <node id="1209605205934" at="45,55,46,31" concept="7" />
+      <node id="1209605205934" at="49,5,50,46" concept="6" />
+      <node id="1209605205934" at="54,39,55,36" concept="5" />
+      <node id="1209605205934" at="55,36,56,194" concept="2" />
+      <node id="1209605205934" at="56,194,57,226" concept="2" />
+      <node id="1209605205934" at="57,226,58,14" concept="6" />
+      <node id="1209605205934" at="61,42,62,38" concept="5" />
+      <node id="1209605205934" at="62,38,63,125" concept="2" />
+      <node id="1209605205934" at="63,125,64,125" concept="2" />
+      <node id="1209605205934" at="64,125,65,125" concept="2" />
+      <node id="1209605205934" at="65,125,66,14" concept="6" />
+      <node id="1209605205934" at="69,55,70,52" concept="5" />
+      <node id="1209605205934" at="70,52,71,139" concept="2" />
+      <node id="1209605205934" at="71,139,72,14" concept="6" />
+      <node id="1209605205934" at="74,0,75,0" concept="8" trace="template_ma3vac_a0a3" />
+      <node id="1209605205934" at="26,0,28,0" concept="1" trace="Template_outputRoot#()V" />
+      <node id="1209605205934" at="29,0,32,0" concept="4" trace="getTemplateNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="1209605205934" at="40,73,44,9" concept="10" />
+      <node id="1209605205934" at="68,0,74,0" concept="4" trace="initAggregationLinks#()[Lorg/jetbrains/mps/openapi/language/SContainmentLink;" />
+      <node id="1209605205934" at="53,0,60,0" concept="4" trace="initConcepts#()[Lorg/jetbrains/mps/openapi/language/SConcept;" />
+      <node id="1209605205934" at="60,0,68,0" concept="4" trace="initProperties#()[Lorg/jetbrains/mps/openapi/language/SProperty;" />
+      <node id="1209605205934" at="38,54,47,7" concept="0" />
+      <node id="1209605205934" at="33,69,49,5" concept="10" />
+      <node id="1209605205934" at="32,0,52,0" concept="4" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Ljetbrains/mps/generator/runtime/TemplateContext;)Ljava/util/Collection;" />
+      <scope id="1209605205934" at="26,32,26,32" />
+      <scope id="1209605205934" at="43,19,43,19" />
+      <scope id="1209605205934" at="48,15,48,15" />
+      <scope id="1209605205934" at="29,43,30,32" />
+      <scope id="1209605205934" at="41,13,42,126" />
+      <scope id="1209605205934" at="26,0,28,0" />
+      <scope id="1209605205934" at="29,0,32,0" />
+      <scope id="1209605205934" at="69,55,72,14">
+        <var name="rv" id="1209605205934" />
+      </scope>
+      <scope id="1209605205934" at="54,39,58,14">
+        <var name="rv" id="1209605205934" />
+      </scope>
+      <scope id="1209605205934" at="61,42,66,14">
+        <var name="rv" id="1209605205934" />
+      </scope>
+      <scope id="1209605205934" at="68,0,74,0" />
+      <scope id="1209605205934" at="39,7,46,31">
+        <var name="tnode2" id="1209605205934" />
+      </scope>
+      <scope id="1209605205934" at="53,0,60,0" />
+      <scope id="1209605205934" at="60,0,68,0" />
+      <scope id="1209605205934" at="34,9,47,7">
+        <var name="context1" id="1209605205934" />
+      </scope>
+      <scope id="1209605205934" at="32,158,50,46">
+        <var name="tnode1" id="1209605205934" />
+      </scope>
+      <scope id="1209605205934" at="32,0,52,0">
+        <var name="context" id="1209605205934" />
+        <var name="environment" id="1209605205934" />
+      </scope>
+      <unit id="1209605205934" at="23,0,76,0" name="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_dontApplyReductionTwice.Template_outputRoot" />
+    </file>
   </root>
-</debugInfo>
+</debug-info>
 

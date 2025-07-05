@@ -8,25 +8,28 @@ import com.intellij.execution.process.ProcessHandler;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
-import com.intellij.execution.ExecutionManager;
+import com.intellij.execution.ui.RunContentWithExecutorListener;
 import com.intellij.openapi.project.Project;
+import com.intellij.execution.ui.RunContentDescriptor;
+import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import com.intellij.execution.ui.RunContentDescriptor;
 import com.intellij.execution.ui.RunContentManager;
 import java.util.Set;
 import java.util.HashSet;
-import com.intellij.execution.ui.RunContentListener;
+import com.intellij.execution.Executor;
 
 public class DebugSessionManagerComponent implements ProjectComponent {
   private final Map<ProcessHandler, AbstractDebugSession> myProcessesToSessions = new HashMap<ProcessHandler, AbstractDebugSession>(1);
   private final List<DebugSessionManagerComponent.DebugSessionListener> myCurrentDebugSessionListeners = new ArrayList<DebugSessionManagerComponent.DebugSessionListener>();
-  private final DebugSessionManagerComponent.MyRunContentListener myRunContentListener = new DebugSessionManagerComponent.MyRunContentListener();
-  private final ExecutionManager myExecutionManager;
+  private final RunContentWithExecutorListener myRunContentListener = new DebugSessionManagerComponent.MyRunContentListener();
   private final Project myProject;
 
-  public DebugSessionManagerComponent(ExecutionManager executionManager, Project project) {
-    myExecutionManager = executionManager;
+  private RunContentDescriptor mySelectedContent = null;
+
+  private MessageBusConnection myConnection = null;
+
+  public DebugSessionManagerComponent(Project project) {
     myProject = project;
   }
 
@@ -42,39 +45,37 @@ public class DebugSessionManagerComponent implements ProjectComponent {
 
   @Override
   public void initComponent() {
-    addRunContentListener();
   }
 
   @Override
   public void disposeComponent() {
-    removeRunContentListener();
   }
 
   @Override
   public void projectOpened() {
+    addRunContentListener();
   }
 
   @Override
   public void projectClosed() {
+    removeRunContentListener();
   }
 
   @Nullable
   public AbstractDebugSession getDebugSessionByCurrentTab() {
-    RunContentDescriptor contentDescriptor = myExecutionManager.getContentManager().getSelectedContent();
-    if (contentDescriptor == null) {
+    if (mySelectedContent == null) {
       return null;
     }
-    return getDebugSession(contentDescriptor.getProcessHandler());
+    return getDebugSession(mySelectedContent.getProcessHandler());
   }
 
   private void addRunContentListener() {
-    RunContentManager contentManager = myExecutionManager.getContentManager();
-    contentManager.addRunContentListener(myRunContentListener);
+    myConnection = myProject.getMessageBus().connect(myProject);
+    myConnection.subscribe(RunContentManager.TOPIC, myRunContentListener);
   }
 
   private void removeRunContentListener() {
-    RunContentManager contentManager = myExecutionManager.getContentManager();
-    contentManager.removeRunContentListener(myRunContentListener);
+    myConnection.disconnect();
   }
 
   private void fireSelectedDebugSessionChanged(AbstractDebugSession debugSession) {
@@ -82,29 +83,24 @@ public class DebugSessionManagerComponent implements ProjectComponent {
       listener.currentSessionChanged(debugSession);
     }
   }
-
   private void fireSessionDetached(AbstractDebugSession debugSession) {
     for (DebugSessionManagerComponent.DebugSessionListener listener : getAllCurrentDebugSessionListeners()) {
       listener.detached(debugSession);
     }
   }
-
   private void fireSessionRegistered(AbstractDebugSession debugSession) {
     for (DebugSessionManagerComponent.DebugSessionListener listener : getAllCurrentDebugSessionListeners()) {
       listener.registered(debugSession);
     }
   }
-
   public AbstractDebugSession getDebugSession(ProcessHandler processHandler) {
     return myProcessesToSessions.get(processHandler);
   }
-
   public Set<AbstractDebugSession> getDebugSessions() {
     synchronized (myProcessesToSessions) {
       return new HashSet<AbstractDebugSession>(myProcessesToSessions.values());
     }
   }
-
   public void addDebugSession(AbstractDebugSession session) {
     ProcessHandler processHandler = session.getProcessHandler();
     assert processHandler != null;
@@ -114,73 +110,62 @@ public class DebugSessionManagerComponent implements ProjectComponent {
     session.sessionRegistered(this);
     fireSessionRegistered(session);
   }
-
   public void removeDebugSession(AbstractDebugSession session) {
     fireSessionDetached(session);
     session.sessionUnregistered(this);
     myProcessesToSessions.remove(session.getProcessHandler());
   }
-
   public void addDebugSessionListener(DebugSessionManagerComponent.DebugSessionListener listener) {
     synchronized (myCurrentDebugSessionListeners) {
       myCurrentDebugSessionListeners.add(listener);
     }
   }
-
   public void removeDebugSessionListener(DebugSessionManagerComponent.DebugSessionListener listener) {
     synchronized (myCurrentDebugSessionListeners) {
       myCurrentDebugSessionListeners.remove(listener);
     }
   }
-
   public List<DebugSessionManagerComponent.DebugSessionListener> getAllCurrentDebugSessionListeners() {
     synchronized (myCurrentDebugSessionListeners) {
       return new ArrayList<DebugSessionManagerComponent.DebugSessionListener>(myCurrentDebugSessionListeners);
     }
   }
-
   public static DebugSessionManagerComponent getInstance(@NotNull Project project) {
     return project.getComponent(DebugSessionManagerComponent.class);
   }
-
-  public static interface DebugSessionListener {
-    public void registered(AbstractDebugSession session);
-    public void currentSessionChanged(AbstractDebugSession session);
-    public void detached(AbstractDebugSession session);
+  public interface DebugSessionListener {
+    void registered(AbstractDebugSession session);
+    void currentSessionChanged(AbstractDebugSession session);
+    void detached(AbstractDebugSession session);
   }
-
   public static abstract class DebugSessionAdapter implements DebugSessionManagerComponent.DebugSessionListener {
     public DebugSessionAdapter() {
     }
-
     @Override
     public void registered(AbstractDebugSession session) {
     }
-
     @Override
     public void currentSessionChanged(AbstractDebugSession session) {
     }
-
     @Override
     public void detached(AbstractDebugSession session) {
     }
   }
 
-  private class MyRunContentListener implements RunContentListener {
+  private class MyRunContentListener implements RunContentWithExecutorListener {
     private MyRunContentListener() {
     }
 
-    @Override
-    public void contentSelected(RunContentDescriptor descriptor) {
-      AbstractDebugSession debugSession = null;
+    public void contentSelected(@Nullable RunContentDescriptor descriptor, @NotNull Executor executor) {
+      AbstractDebugSession debugSession;
       if (descriptor != null) {
+        mySelectedContent = descriptor;
         debugSession = getDebugSession(descriptor.getProcessHandler());
         fireSelectedDebugSessionChanged(debugSession);
       }
     }
 
-    @Override
-    public void contentRemoved(RunContentDescriptor descriptor) {
+    public void contentRemoved(@Nullable RunContentDescriptor descriptor, @NotNull Executor executor) {
       // todo maybe do something 
     }
   }

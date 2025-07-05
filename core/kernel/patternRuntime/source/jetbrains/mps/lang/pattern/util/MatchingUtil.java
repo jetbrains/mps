@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2013 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,24 @@
 package jetbrains.mps.lang.pattern.util;
 
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.smodel.PropertySupport;
+import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.util.IterableUtil;
 import org.apache.log4j.LogManager;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.smodel.search.SModelSearchUtil;
-import jetbrains.mps.util.EqualUtil;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class MatchingUtil {
   private static final Logger LOG = Logger.wrap(LogManager.getLogger(MatchingUtil.class));
@@ -41,36 +46,28 @@ public class MatchingUtil {
     if (node1 == node2) return true;
     if (node1 == null) return false;
     if (node2 == null) return false;
-    if (!node1.getConcept().getQualifiedName().equals(node2.getConcept().getQualifiedName())) return false;
+    if (!node1.getConcept().equals(node2.getConcept())) return false;
 
     //properties
-    final Set<String> propertyNames = new HashSet<String>();
+    final Set<SProperty> properties = new HashSet<SProperty>();
+    properties.addAll(IterableUtil.asSet(node1.getProperties()));
+    properties.addAll(IterableUtil.asSet(node2.getProperties()));
 
-    propertyNames.addAll(IterableUtil.asCollection(node1.getPropertyNames()));
-    propertyNames.addAll(IterableUtil.asCollection(node2.getPropertyNames()));
-
-    final HashMap<String, SProperty> propertyDeclarations = new HashMap<String, SProperty>();
-    for (SProperty p : node1.getConcept().getProperties()) {
-      propertyDeclarations.put(p.getName(), p);
-    }
-
-    for (String propertyName : propertyNames) {
-      SProperty propertyDeclaration = propertyDeclarations.get(propertyName);
+    for (SProperty property : properties) {
       // use of SNode.getProperty() directly (not SNodeAccessUtil.getProperty())
       // as we are checking for structural equality. If there's e.g. a 'derived' property
       // == getName() + getNodeId(), its values from SNodeAccessUtil would differ and nodes would not match
       // (assuming NodeId is different and nodes otherwise match).
-      String stringValue1 = node1.getProperty(propertyName);
-      String stringValue2 = node2.getProperty(propertyName);
+      String stringValue1 = node1.getProperty(property);
+      String stringValue2 = node2.getProperty(property);
       Object propertyValue1 = stringValue1;
       Object propertyValue2 = stringValue2;
-      if (propertyDeclaration == null) {
+      if (!IterableUtil.asCollection(node1.getConcept().getProperties()).contains(property)) {
         SNode diagnosticsNode = stringValue1 != null ? node1 : node2;
-        LOG.warning("can't find a property declaration for property " + propertyName + " in a concept " + diagnosticsNode.getConcept().getQualifiedName(), diagnosticsNode);
+        LOG.warning("can't find a property declaration for property `" + property.getName() + "` in a concept " + diagnosticsNode.getConcept().getQualifiedName(), diagnosticsNode);
         LOG.warning("try to compare just properties' internal values");
-      }
-      else {
-        SDataType dataType = propertyDeclaration.getType();
+      } else {
+        SDataType dataType = property.getType();
         if (dataType != null) {
           propertyValue1 = dataType.fromString(stringValue1);
           propertyValue2 = dataType.fromString(stringValue2);
@@ -80,9 +77,14 @@ public class MatchingUtil {
     }
 
     //-- matching references
-    Set<String> referenceRoles = jetbrains.mps.util.SNodeOperations.getReferenceRoles(node1);
-    referenceRoles.addAll(jetbrains.mps.util.SNodeOperations.getReferenceRoles(node2));
-    for (String role : referenceRoles) {
+    Set<SReferenceLink> referenceRoles = new HashSet<SReferenceLink>();
+    for (SReference ref : node1.getReferences()) {
+      referenceRoles.add(ref.getLink());
+    }
+    for (SReference ref : node2.getReferences()) {
+      referenceRoles.add(ref.getLink());
+    }
+    for (SReferenceLink role : referenceRoles) {
       SNode target1 = node1.getReferenceTarget(role);
       SNode target2 = node2.getReferenceTarget(role);
       if (matchModifier.accept(target1, target2)) {
@@ -93,11 +95,11 @@ public class MatchingUtil {
     }
 
     // children
-    Set<String> childRoles = jetbrains.mps.util.SNodeOperations.getChildRoles(node1, matchAttributes);
+    Set<SContainmentLink> childRoles = jetbrains.mps.util.SNodeOperations.getChildRoles(node1, matchAttributes);
     childRoles.addAll(jetbrains.mps.util.SNodeOperations.getChildRoles(node2, matchAttributes));
-    for (String role : childRoles) {
-      List<SNode> children1 = ((List) IterableUtil.asList(node1.getChildren(role)));
-      List<SNode> children2 = ((List) IterableUtil.asList(node2.getChildren(role)));
+    for (SContainmentLink role : childRoles) {
+      List<SNode> children1 = IterableUtil.asList(node1.getChildren(role));
+      List<SNode> children2 = IterableUtil.asList(node2.getChildren(role));
       if (matchModifier.acceptList(children1, children2)) {
         matchModifier.performGroupAction(children1, children2);
         continue;
@@ -126,11 +128,11 @@ public class MatchingUtil {
   }
 
   public static int hash(SNode node) {
-    int result = node.getConcept().getQualifiedName().hashCode();
+    int result = node.getConcept().hashCode();
     for (SReference reference : node.getReferences()) {
       SNode targetNode = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(reference);
       if (targetNode != null) {
-        result = 31 * result + reference.getRole().hashCode();
+        result = 31 * result + reference.getLink().hashCode();
         result = 31 * result + targetNode.hashCode();
       }
     }
@@ -143,7 +145,7 @@ public class MatchingUtil {
     }
     for (SNode child : node.getChildren()) {
       if (AttributeOperations.isAttribute(child)) continue;
-      result = 31 * result + child.getRoleInParent().hashCode();
+      result = 31 * result + child.getContainmentLink().hashCode();
       result = 31 * result + hash(child);
     }
     return result;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,289 +15,71 @@
  */
 package jetbrains.mps.generator.impl;
 
-import jetbrains.mps.generator.IGeneratorLogger;
-import jetbrains.mps.generator.IGeneratorLogger.ProblemDescription;
-import jetbrains.mps.generator.impl.AbstractTemplateGenerator.RoleValidationStatus;
-import jetbrains.mps.generator.impl.reference.PostponedReference;
-import jetbrains.mps.generator.impl.reference.ReferenceInfo_CopiedInputNode;
-import jetbrains.mps.generator.runtime.NodeMapper;
-import jetbrains.mps.generator.runtime.PostProcessor;
-import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.smodel.SNodeUtil;
-import org.jetbrains.mps.openapi.model.*;
-import jetbrains.mps.smodel.*;
+import jetbrains.mps.generator.runtime.NodePostProcessor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SReference;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by: Sergey Dmitriev
- * Date: Jan 25, 2007
+ * Post-processing (end of generation step) code
  */
 public class DelayedChanges {
 
-  public static final String MAP_SRC_TEMP_NODE = "mapSrcTempNode";
+  private static final String MAP_SRC_TEMP_NODE = "mapSrcTempNode";
 
-  private List<Change> myExecuteMapSrcNodeMacroChanges = new ArrayList<Change>();
-  private List<Change> myExecuteMapSrcNodeMacroPostProcChanges = new ArrayList<Change>();
+  private final List<NodePostProcessor> myPostProcessors = new ArrayList<NodePostProcessor>();
 
-  private jetbrains.mps.smodel.SNode attrsHolder = new jetbrains.mps.smodel.SNode(SNodeUtil.concept_BaseConcept);
-
-  private IGeneratorLogger myLogger;
-  private TemplateGenerator myGenerator;
-
-  public DelayedChanges(TemplateGenerator generator) {
-    myGenerator = generator;
-    myLogger = generator.getLogger();
-    attrsHolder.putUserObject(MAP_SRC_TEMP_NODE, MAP_SRC_TEMP_NODE);
+  public DelayedChanges() {
   }
 
   public boolean isEmpty() {
-    return myExecuteMapSrcNodeMacroChanges.isEmpty() && myExecuteMapSrcNodeMacroPostProcChanges.isEmpty();
+    return myPostProcessors.isEmpty();
   }
 
-  public void addExecuteMapSrcNodeMacroChange(SNode mapSrcMacro, SNode childToReplace, @NotNull TemplateContext context, @NotNull ReductionContext reductionContext) {
-    jetbrains.mps.util.SNodeOperations.copyUserObjects(attrsHolder, childToReplace);
-    synchronized (this) {
-      myExecuteMapSrcNodeMacroChanges.add(new ExecuteMapSrcNodeMacroChange(mapSrcMacro, childToReplace, context, reductionContext));
+  public void add(@NotNull NodePostProcessor postProcessor) {
+    // FIXME unlike old code, we mark as temp nodes with post-processing only. Likely, shall get rid of this temp notion altogether,
+    // or let NodePostProcessor tell me here whether it substitutes the node or not
+    markNodeAsTemp(postProcessor.getOutputAnchor());
+    synchronized (myPostProcessors) {
+      myPostProcessors.add(postProcessor);
     }
   }
 
-  public void addExecuteNodeMapper(@NotNull NodeMapper mapper, PostProcessor processor, SNode childToReplace, @NotNull TemplateContext context, @NotNull ReductionContext reductionContext) {
-    jetbrains.mps.util.SNodeOperations.copyUserObjects(attrsHolder, childToReplace);
-    myExecuteMapSrcNodeMacroChanges.add(new MapNodeChange(mapper, processor, childToReplace, context, reductionContext));
-  }
+  public void doAllChanges(@NotNull TemplateGenerator generator) throws GenerationFailureException {
+    SNode[] newOutputNodes = new SNode[myPostProcessors.size()];
+    int i = 0;
+    for (NodePostProcessor p : myPostProcessors) {
+      SNode child = p.substitute();
+      if (child == null) {
+        generator.getLogger().error(p.getTemplateNode(), "Unexpected null value. Transform function of MAP-SRC didn't produce any result. Please check the function and make sure it always supplies a node");
+        continue;
+      }
+      if (child != p.getOutputAnchor()) {
+        ChildAdopter ca = new ChildAdopter(generator);
+        ca.checkIsExpectedLanguage(Collections.singletonList(child), p.getTemplateNode(), p.getTemplateContext());
+        child = ca.adopt(child, p.getTemplateContext());
+        generator.replacePlaceholderNode(p, child);
+      }
 
-  public void addExecuteMapSrcNodeMacroPostProcChange(SNode mapSrcMacro, SNode outputNode, @NotNull TemplateContext context, @NotNull ReductionContext reductionContext) {
-    SNode postMapperFunction = RuleUtil.getMapSrc_PostMapperFunction(mapSrcMacro);
-    if (postMapperFunction == null) return;
-    synchronized (this) {
-      myExecuteMapSrcNodeMacroPostProcChanges.add(new ExecuteMapSrcNodeMacroPostProcChange(mapSrcMacro, outputNode, context, reductionContext));
+      newOutputNodes[i++] = child;
     }
-  }
-
-  public void addExecutePostProcessor(@NotNull PostProcessor processor, SNode outputNode, @NotNull TemplateContext context, @NotNull ReductionContext reductionContext) {
-    synchronized (this) {
-      myExecuteMapSrcNodeMacroPostProcChanges.add(new PostProcessorChange(processor, outputNode, context, reductionContext));
-    }
-  }
-
-  public void doAllChanges() {
-    for (Change executeMapSrcNodeMacroChange : myExecuteMapSrcNodeMacroChanges) {
-      executeMapSrcNodeMacroChange.doChange();
-    }
-    myExecuteMapSrcNodeMacroChanges = null;
-    for (Change executeMapSrcNodeMacroPostProcChange : myExecuteMapSrcNodeMacroPostProcChanges) {
-      executeMapSrcNodeMacroPostProcChange.doChange();
-    }
-  }
-
-  private interface Change {
-    void doChange();
-  }
-
-  private abstract class BaseMapNodeChange implements Change {
-
-    protected final SNode myChildToReplace;
-    protected final TemplateContext myContext;
-    protected final ReductionContext myReductionContext;
-
-    private BaseMapNodeChange(SNode childToReplace, TemplateContext context, ReductionContext reductionContext) {
-      myChildToReplace = childToReplace;
-      myContext = context;
-      myReductionContext = reductionContext;
-    }
-
-    @Override
-    public void doChange() {
-      try {
-        SNode child = mapNode();
-        if (child != null) {
-          // check node languages : prevent 'mapping func' query from returnning node, which language was not counted when
-          // planning the generation steps.
-          Language childLang = jetbrains.mps.util.SNodeOperations.getLanguage(child);
-          if (!myGenerator.getGeneratorSessionContext().getGenerationPlan().isCountedLanguage(childLang)) {
-            if (!childLang.getGenerators().isEmpty()) {
-              myLogger.error(child, "language of output node is '" + childLang.getModuleName() + "' - this language did not show up when computing generation steps!",
-                GeneratorUtil.describe(myContext.getInput(), "input"),
-                GeneratorUtil.describe(getMapSrcMacro(), "template"),
-                new ProblemDescription(null, "workaround: add the language '" + childLang.getModuleName() + "' to list of 'Languages Engaged On Generation' in model '" + myGenerator.getGeneratorSessionContext().getOriginalInputModel().getReference().getModelName() + "'"));
-            }
-          }
-
-          if (child.getModel() != null) {
-            // must be "in air"
-            child = CopyUtil.copy(child);
-          }
-          // replace references back to input model
-          validateReferences(child);
-
-          // check new child
-          SNode parent = myChildToReplace.getParent();
-          if (parent == null) {
-            // root?
-            if (myChildToReplace.getModel() != null && myChildToReplace.getParent() == null) {
-              myChildToReplace.getModel().addRootNode(child);
-              myChildToReplace.getModel().removeRootNode(myChildToReplace);
-              myGenerator.rootReplaced(myChildToReplace, child);
-            }
-          } else {
-            String childRole = myChildToReplace.getRoleInParent();
-            RoleValidationStatus status = myGenerator.validateChild(parent, childRole, child);
-            if (status != null) {
-              status.reportProblem(false, "",
-                GeneratorUtil.describe(myContext.getInput(), "input"),
-                GeneratorUtil.describe(getMapSrcMacro(), "template"));
-            }
-            org.jetbrains.mps.openapi.model.SNodeUtil.replaceWithAnother(myChildToReplace, child);
-          }
-          myGenerator.getGeneratorSessionContext().getGenerationTracer().replaceOutputNode(myChildToReplace, child);
-
-          // post-processing
-          postProcess(child);
-        }
-      } catch (Throwable t) {
-        myGenerator.showErrorMessage(myContext.getInput(), getMapSrcMacro(), "mapping failed: '" + t.getMessage() + "'");
-        myLogger.handleException(t);
+    i = 0;
+    for (NodePostProcessor p : myPostProcessors) {
+      if (newOutputNodes[i] != null) {
+        p.postProcess(newOutputNodes[i++]);
       }
     }
-
-    private void validateReferences(SNode node) {
-      for (SReference reference : node.getReferences()) {
-        validateReference(reference);
-      }
-            for (SNode child : node.getChildren()) {
-        validateReferences(child);
-      }
-    }
-
-    private void validateReference(SReference reference) {
-      // reference to input model - illegal
-      if (myGenerator.getInputModel().getReference().equals(reference.getTargetSModelReference())) {
-        // replace
-        ReferenceInfo_CopiedInputNode refInfo = new ReferenceInfo_CopiedInputNode(
-          reference.getRole(),
-          reference.getSourceNode(),
-          myContext.getInput(),
-          reference.getTargetNode());
-        PostponedReference postponedReference = new PostponedReference(
-          refInfo,
-          myGenerator);
-        reference.getSourceNode().setReference(reference.getRole(), postponedReference);
-      }
-    }
-
-    protected abstract SNode getMapSrcMacro();
-
-    protected abstract SNode mapNode() throws GenerationFailureException;
-
-    protected abstract void postProcess(SNode child) throws GenerationFailureException;
+    myPostProcessors.clear();
   }
 
-  private class ExecuteMapSrcNodeMacroChange extends BaseMapNodeChange {
-    private final SNode myMapSrcMacro;
-
-    public ExecuteMapSrcNodeMacroChange(SNode mapSrcMacro, SNode childToReplace, @NotNull TemplateContext context, @NotNull ReductionContext reductionContext) {
-      super(childToReplace, context, reductionContext);
-      myMapSrcMacro = mapSrcMacro;
-    }
-
-    @Override
-    protected SNode getMapSrcMacro() {
-      return myMapSrcMacro;
-    }
-
-    @Override
-    protected SNode mapNode() throws GenerationFailureException {
-      return myReductionContext.getQueryExecutor().executeMapSrcNodeMacro(myContext.getInput(), getMapSrcMacro(), myChildToReplace.getParent(), myContext);
-    }
-
-    @Override
-    protected void postProcess(SNode child) throws GenerationFailureException {
-      addExecuteMapSrcNodeMacroPostProcChange(myMapSrcMacro, child, myContext, myReductionContext);
-    }
+  public static boolean isTempNode(@NotNull SNode node) {
+    return node.getUserObject(MAP_SRC_TEMP_NODE) != null;
   }
 
-  private class MapNodeChange extends BaseMapNodeChange {
-    private final NodeMapper myMapper;
-    private final PostProcessor myProcessor;
-
-    public MapNodeChange(@NotNull NodeMapper mapper, PostProcessor processor, SNode childToReplace, @NotNull TemplateContext context, @NotNull ReductionContext reductionContext) {
-      super(childToReplace, context, reductionContext);
-      myMapper = mapper;
-      myProcessor = processor;
-    }
-
-    @Override
-    protected SNode getMapSrcMacro() {
-      SNodeReference templateNode = myMapper.getTemplateNode();
-      if(templateNode != null) {
-        return templateNode.resolve(MPSModuleRepository.getInstance());
-      }
-      return null;
-    }
-
-    @Override
-    protected SNode mapNode() throws GenerationFailureException {
-      return myReductionContext.getQueryExecutor().executeInContext(myChildToReplace, myContext, myMapper);
-    }
-
-    @Override
-    protected void postProcess(SNode child) throws GenerationFailureException {
-      if (myProcessor != null) {
-        addExecutePostProcessor(myProcessor, child, myContext, myReductionContext);
-      }
-    }
-  }
-
-  private class ExecuteMapSrcNodeMacroPostProcChange implements Change {
-    private final SNode myMapSrcMacro;
-    private final SNode myOutputChild;
-    private final TemplateContext myContext;
-    private ReductionContext myReductionContext;
-
-    public ExecuteMapSrcNodeMacroPostProcChange(SNode mapSrcMacro, SNode outputChild, @NotNull TemplateContext context, @NotNull ReductionContext reductionContext) {
-      myMapSrcMacro = mapSrcMacro;
-      myOutputChild = outputChild;
-      myContext = context;
-      myReductionContext = reductionContext;
-    }
-
-    @Override
-    public void doChange() {
-      try {
-        myReductionContext.getQueryExecutor().executeMapSrcNodeMacro_PostProc(myContext.getInput(), myMapSrcMacro, myOutputChild, myContext);
-      } catch (Throwable t) {
-        myGenerator.showErrorMessage(myContext.getInput(), myMapSrcMacro, "mapping failed: '" + t.getMessage() + "'");
-        myLogger.handleException(t);
-      }
-    }
-  }
-
-  private class PostProcessorChange implements Change {
-    private final PostProcessor myProcessor;
-    private final SNode myOutputChild;
-    private final TemplateContext myContext;
-    private ReductionContext myReductionContext;
-
-    public PostProcessorChange(PostProcessor processor, SNode outputChild, @NotNull TemplateContext context, @NotNull ReductionContext reductionContext) {
-      myProcessor = processor;
-      myOutputChild = outputChild;
-      myContext = context;
-      myReductionContext = reductionContext;
-    }
-
-    @Override
-    public void doChange() {
-      try {
-        myReductionContext.getQueryExecutor().executeInContext(myOutputChild, myContext, myProcessor);
-      } catch (Throwable t) {
-        myGenerator.showErrorMessage(myContext.getInput(), null, "mapping failed: '" + t.getMessage() + "'");
-        myLogger.handleException(t);
-      }
-    }
+  private void markNodeAsTemp(SNode childToReplace) {
+    childToReplace.putUserObject(MAP_SRC_TEMP_NODE, MAP_SRC_TEMP_NODE);
   }
 }

@@ -4,9 +4,8 @@ package jetbrains.mps.vcs.util;
 
 import java.io.File;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModelName;
 import java.io.IOException;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
 import org.jetbrains.annotations.NotNull;
@@ -15,15 +14,13 @@ import java.util.Date;
 
 public class MergeDriverBackupUtil {
   private static String backupDirPath;
-
   public MergeDriverBackupUtil() {
     // Used in MergeProviderDecorator 
   }
-
-  public static File zipModel(byte[][] contents, @Nullable String modelName) throws IOException {
+  public static File zipModel(byte[][] contents, @Nullable SModelName modelName) throws IOException {
     String shortFileName = "unknown.mps";
     if (modelName != null) {
-      shortFileName = NameUtil.shortNameFromLongName(SModelStereotype.withoutStereotype(modelName)) + MPSExtentions.DOT_MODEL;
+      shortFileName = modelName.getSimpleName() + MPSExtentions.DOT_MODEL;
     }
     File tmp = FileUtil.createTmpDir();
     writeContentsToFile(contents[MergeConstants.ORIGINAL], shortFileName, tmp, MergeVersion.BASE.getSuffix());
@@ -35,16 +32,14 @@ public class MergeDriverBackupUtil {
     FileUtil.delete(tmp);
     return zipfile;
   }
-
   public static void writeContentsToFile(byte[] contents, String name, File tmpDir, String suffix) throws IOException {
     File file = new File(tmpDir.getAbsolutePath() + File.separator + name + "." + suffix);
     FileUtil.write(file, contents);
   }
-
-  public static File chooseZipFileForModelLongName(@NotNull String defaultFileName, @Nullable String modelLongName) {
+  public static File chooseZipFileForModelLongName(@NotNull String defaultFileName, @Nullable SModelName modelName) {
     String fileName = defaultFileName;
-    if (modelLongName != null) {
-      fileName = modelLongName + MPSExtentions.DOT_MODEL;
+    if (modelName != null) {
+      fileName = modelName.getLongName() + MPSExtentions.DOT_MODEL;
     }
     String prefix = getMergeBackupDirPath() + File.separator + fileName;
     prefix = prefix + "." + new SimpleDateFormat("yyyy-MM-dd_HH-mm").format(new Date());
@@ -56,11 +51,9 @@ public class MergeDriverBackupUtil {
     }
     return zipfile;
   }
-
   public static String getMergeBackupDirPath() {
     return backupDirPath;
   }
-
   public static void setMergeBackupDirPath(String path) {
     backupDirPath = path;
   }

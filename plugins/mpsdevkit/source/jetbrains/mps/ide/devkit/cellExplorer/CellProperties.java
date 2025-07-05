@@ -17,12 +17,12 @@ package jetbrains.mps.ide.devkit.cellExplorer;
 
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public class CellProperties {
 
-  private EditorCell myCell;
   private SNode mySNode;
   private String myCellSNode;
   private String myCellNumber;
@@ -36,28 +36,26 @@ public class CellProperties {
   private String myCellText;
 
   public CellProperties(EditorCell cell) {
-    myCell = cell;
     myCellText = null;
-    if (myCell instanceof EditorCell_Label) {
-      myCellText = ((EditorCell_Label) myCell).getRenderedText();
+    if (cell instanceof EditorCell_Label) {
+      myCellText = ((EditorCell_Label) cell).getRenderedText();
     }
-    myCellKind = NameUtil.shortNameFromLongName(myCell.getClass().getName());
-    myCellWidth = myCell.getWidth() + "";
-    myCellHeight = myCell.getHeight() + "";
-    myCellEffectiveWidth = myCell.getEffectiveWidth() + "";
-    myRootCell = (myCell.getEditorComponent().getRootCell() == myCell) ? "Yes" : "No";
-    myCellID = myCell.getCellId();
-    myCellRole = "" + (myCell.getRole());
+    myCellKind = NameUtil.shortNameFromLongName(cell.getClass().getName());
+    myCellWidth = cell.getWidth() + "";
+    myCellHeight = cell.getHeight() + "";
+    myCellEffectiveWidth = cell.getEffectiveWidth() + "";
+    myRootCell = (cell.getEditorComponent().getRootCell() == cell) ? "Yes" : "No";
+    myCellID = cell.getCellId();
+    myCellRole = "" + (cell.getRole());
 
-    mySNode = myCell.getSNode();
+    mySNode = cell.getSNode();
     String name = mySNode.getName();
     name = name != null ? name : "<no name>";
-    myCellSNode = mySNode == null ? "no node" : name + " (" + NameUtil.shortNameFromLongName(mySNode.getConcept().getQualifiedName()) + ") [" + mySNode.getNodeId().toString() + "]";
-  }
-
-
-  public EditorCell getCell() {
-    return myCell;
+    myCellSNode = mySNode == null ? "no node" :
+        name + " (" + NameUtil.shortNameFromLongName(mySNode.getConcept().getQualifiedName()) + ") [" + mySNode.getNodeId().toString() + "]";
+    if (cell.getParent() != null) {
+      myCellNumber = String.valueOf(IterableUtil.indexOf(cell.getParent(), cell));
+    }
   }
 
   public SNode getSNode() {

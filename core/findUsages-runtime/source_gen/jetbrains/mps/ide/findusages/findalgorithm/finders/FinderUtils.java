@@ -9,14 +9,13 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Comparator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
-import jetbrains.mps.smodel.LanguageAspect;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.util.IterableUtil;
 
 public class FinderUtils {
   private FinderUtils() {
   }
-
   public static boolean isAllResultsIsNodes(SearchResults results) {
     for (SearchResult result : ListSequence.fromList(((List<SearchResult>) results.getSearchResults()))) {
       if (!(result.getObject() instanceof SNode)) {
@@ -25,19 +24,19 @@ public class FinderUtils {
     }
     return true;
   }
-
   public static void sortNodeResultsByEditorPosition(SearchResults<SNode> results) {
     List<SearchResult<SNode>> resultList = results.getSearchResults();
-    ListSequence.fromList(resultList).sort(new Comparator<SearchResult<SNode>>() {
+    List<SearchResult<SNode>> sorted = ListSequence.fromList(resultList).sort(new Comparator<SearchResult<SNode>>() {
       public int compare(SearchResult<SNode> a, SearchResult<SNode> b) {
         return FinderUtils.compareNodes(a.getObject(), b.getObject());
       }
-    }, true);
+    }, true).toListSequence();
+    results.getSearchResults().clear();
+    results.getSearchResults().addAll(sorted);
   }
-
   public static int compareNodes(SNode n1, SNode n2) {
-    List<SNode> path1 = ListSequence.fromList(SNodeOperations.getAncestors(n1, null, true)).reversedList();
-    List<SNode> path2 = ListSequence.fromList(SNodeOperations.getAncestors(n2, null, true)).reversedList();
+    List<SNode> path1 = ListSequence.fromList(SNodeOperations.getNodeAncestors(n1, null, true)).reversedList();
+    List<SNode> path2 = ListSequence.fromList(SNodeOperations.getNodeAncestors(n2, null, true)).reversedList();
     for (int i = 0; i < ListSequence.fromList(path1).count() && i < ListSequence.fromList(path2).count(); ++i) {
       if (ListSequence.fromList(path1).getElement(i) != ListSequence.fromList(path2).getElement(i)) {
         return compareBrothers(ListSequence.fromList(path1).getElement(i), ListSequence.fromList(path2).getElement(i));
@@ -45,30 +44,14 @@ public class FinderUtils {
     }
     return ListSequence.fromList(path1).count() - ListSequence.fromList(path2).count();
   }
-
   public static int compareBrothers(SNode n1, SNode n2) {
-    if (SNodeOperations.getContainingLinkRole(n1) == null) {
+    if (SNodeOperations.getContainingLink(n1) == null || SNodeOperations.getContainingLink(n2) == null) {
+      // if one of them is null, both must be null 
+      assert SNodeOperations.getContainingLink(n1) == null && SNodeOperations.getContainingLink(n2) == null : "Root node is supposed to be a 'brother' of another root node only. n1=" + ((String) BHReflection.invoke(n1, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + ", n2=" + ((String) BHReflection.invoke(n2, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
       return n1.getPresentation().compareTo(n2.getPresentation());
     }
-    if (SNodeOperations.getContainingLinkRole(n1).equals(SNodeOperations.getContainingLinkRole(n2))) {
-      return SNodeOperations.getIndexInParent(n1) - SNodeOperations.getIndexInParent(n2);
-    }
-    // try to compare positions in editor of ancestor 
-    SNode l1 = SNodeOperations.getContainingLinkDeclaration(n1);
-    SNode l2 = SNodeOperations.getContainingLinkDeclaration(n2);
-    for (SNode p = SNodeOperations.getParent(n1); (p != null); p = SNodeOperations.getParent(p)) {
-      SNode conceptDeclaration = SNodeOperations.getConceptDeclaration(p);
-      SNode editor = BehaviorReflection.invokeNonVirtual((Class<SNode>) ((Class) Object.class), conceptDeclaration, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration", "call_findConceptAspect_8360039740498068384", new Object[]{LanguageAspect.EDITOR});
-      for (SNode cell : ListSequence.fromList(SNodeOperations.getDescendants(editor, "jetbrains.mps.lang.editor.structure.CellModel_WithRole", false, new String[]{}))) {
-        if (SLinkOperations.getTarget(cell, "relationDeclaration", false) == l1) {
-          return -1;
-        }
-        if (SLinkOperations.getTarget(cell, "relationDeclaration", false) == l2) {
-          return 1;
-        }
-      }
-    }
-    // just compare roles if was not compared in editor 
-    return SNodeOperations.getContainingLinkRole(n1).compareTo(SNodeOperations.getContainingLinkRole(n2));
+
+    List<SNode> children = IterableUtil.asList(SNodeOperations.getParent(n1).getChildren());
+    return ListSequence.fromList(children).indexOf(n1) - ListSequence.fromList(children).indexOf(n2);
   }
 }

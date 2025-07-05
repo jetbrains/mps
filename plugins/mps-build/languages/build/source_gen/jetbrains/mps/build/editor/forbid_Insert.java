@@ -14,24 +14,17 @@ public class forbid_Insert {
     editorCell.setAction(CellActionType.INSERT_BEFORE, new forbid_Insert.forbid_Insert_INSERT_BEFORE(node));
     editorCell.setAction(CellActionType.INSERT, new forbid_Insert.forbid_Insert_INSERT(node));
   }
-
   public static class forbid_Insert_INSERT_BEFORE extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public forbid_Insert_INSERT_BEFORE(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
       EditorCell cell = editorContext.getEditorComponent().findNodeCell(node);
-      EditorCell outerCollection = (cell != null ?
-        EditorActionUtils.getSiblingCollectionForInsert(cell, false) :
-        null
-      );
+      EditorCell outerCollection = (cell != null ? EditorActionUtils.getSiblingCollectionForInsert(cell, false) : null);
       if (outerCollection != null) {
         cell = outerCollection;
       } else {
@@ -49,32 +42,21 @@ public class forbid_Insert {
         EditorActionUtils.callInsertBeforeAction(cell);
       }
     }
-
     private static boolean neq_pledwy_a0b0a0a2a3b(Object a, Object b) {
-      return !((a != null ?
-        a.equals(b) :
-        a == b
-      ));
+      return !(((a != null ? a.equals(b) : a == b)));
     }
   }
-
   public static class forbid_Insert_INSERT extends AbstractCellAction {
     /*package*/ SNode myNode;
-
     public forbid_Insert_INSERT(SNode node) {
       this.myNode = node;
     }
-
     public void execute(EditorContext editorContext) {
       this.execute_internal(editorContext, this.myNode);
     }
-
     public void execute_internal(EditorContext editorContext, SNode node) {
       EditorCell cell = editorContext.getEditorComponent().findNodeCell(node);
-      EditorCell outerCollection = (cell != null ?
-        EditorActionUtils.getSiblingCollectionForInsert(cell, true) :
-        null
-      );
+      EditorCell outerCollection = (cell != null ? EditorActionUtils.getSiblingCollectionForInsert(cell, true) : null);
       if (outerCollection != null) {
         cell = outerCollection;
       } else {
@@ -92,12 +74,8 @@ public class forbid_Insert {
         EditorActionUtils.callInsertAction(cell);
       }
     }
-
     private static boolean neq_pledwy_a0b0a0a2a3c(Object a, Object b) {
-      return !((a != null ?
-        a.equals(b) :
-        a == b
-      ));
+      return !(((a != null ? a.equals(b) : a == b)));
     }
   }
 }

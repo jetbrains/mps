@@ -5,7 +5,6 @@ package jetbrains.mps.ide.java.util;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.ide.java.newparser.FeatureKind;
 import jetbrains.mps.project.Project;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -14,46 +13,42 @@ import com.intellij.ide.CopyPasteManagerEx;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.ide.java.newparser.JavaParser;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import javax.swing.JOptionPane;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.ide.java.newparser.JavaToMpsConverter;
+import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.ide.java.newparser.JavaParseException;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import java.util.ArrayList;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.ide.datatransfer.SModelDataFlavor;
 
 public class JavaPaster {
   private static Logger LOG = LogManager.getLogger(JavaPaster.class);
-
   public JavaPaster() {
   }
-
-  public void pasteJava(SNode anchor, IOperationContext operationContext, FeatureKind featureKind, Project project) {
+  public void pasteJava(SNode anchor, FeatureKind featureKind, Project project) {
     String javaCode = getStringFromClipboard();
     if (javaCode == null) {
       return;
     }
-    pasteJavaAsNode(anchor, anchor.getModel(), javaCode, operationContext, featureKind, project);
+    pasteJavaAsNode(anchor, anchor.getModel(), javaCode, featureKind, project);
   }
-
-  public void pasteJavaAsClass(SModel model, IOperationContext operationContext, Project project) {
+  public void pasteJavaAsClass(SModel model, Project project) {
     String javaCode = getStringFromClipboard();
     if (javaCode == null) {
       return;
     }
-    pasteJavaAsNode(null, model, javaCode, operationContext, FeatureKind.CLASS, project);
+    pasteJavaAsNode(null, model, javaCode, FeatureKind.CLASS, project);
   }
-
   public String getStringFromClipboard() {
     Transferable contents = null;
     for (Transferable trf : CopyPasteManagerEx.getInstanceEx().getAllContents()) {
@@ -79,15 +74,13 @@ public class JavaPaster {
     }
     return null;
   }
-
-  public void pasteJavaAsNode(SNode anchor, final SModel model, String javaCode, IOperationContext operationContext, FeatureKind featureKind, Project project) {
-    SModule module = model.getModule();
+  public void pasteJavaAsNode(SNode anchor, final SModel model, String javaCode, FeatureKind featureKind, Project project) {
     JavaParser parser = new JavaParser();
 
     try {
       SNode context = null;
       if (FeatureKind.CLASS_CONTENT.equals(featureKind)) {
-        context = SNodeOperations.getAncestor(anchor, "jetbrains.mps.baseLanguage.structure.Classifier", true, false);
+        context = SNodeOperations.getNodeAncestor(anchor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"), true, false);
       }
       List<SNode> nodes = parser.parse(javaCode, featureKind, context, true).getNodes();
 
@@ -105,57 +98,54 @@ public class JavaPaster {
           break;
         case CLASS_CONTENT:
           for (SNode node : ListSequence.fromList(nodes)) {
-            if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")) {
-              pasteMember(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"), anchor, SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.structure.Classifier"));
-            } else if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration")) {
-              pasteMember(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration"), anchor, SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.structure.Classifier"));
-            } else if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")) {
-              pasteMember(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"), anchor, SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.structure.ClassConcept"));
-            } else if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration")) {
-              pasteMember(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"), anchor, SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.structure.ClassConcept"));
-            } else if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration")) {
-              pasteMember(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration"), anchor, SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.structure.ClassConcept"));
-            } else if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.AnnotationMethodDeclaration")) {
-              pasteMember(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.AnnotationMethodDeclaration"), anchor, SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.structure.Annotation"));
-            } else if (SNodeOperations.isInstanceOf(node, "jetbrains.mps.baseLanguage.structure.Classifier")) {
-              pasteMember(SNodeOperations.cast(node, "jetbrains.mps.baseLanguage.structure.Classifier"), anchor, SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.structure.Classifier"));
+            if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"))) {
+              pasteMember(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")), anchor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+            } else if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration"))) {
+              pasteMember(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration")), anchor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
+            } else if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"))) {
+              pasteMember(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration")), anchor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+            } else if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"))) {
+              pasteMember(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration")), anchor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+            } else if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration"))) {
+              pasteMember(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration")), anchor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
+            } else if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6a17a27L, "jetbrains.mps.baseLanguage.structure.AnnotationMethodDeclaration"))) {
+              pasteMember(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6a17a27L, "jetbrains.mps.baseLanguage.structure.AnnotationMethodDeclaration")), anchor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation"));
+            } else if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"))) {
+              pasteMember(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")), anchor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"));
             }
           }
           break;
         case STATEMENTS:
           for (SNode node : ListSequence.fromList(nodes)) {
-            pasteAtAnchorInRole(node, anchor, SConceptOperations.findConceptDeclaration("jetbrains.mps.baseLanguage.structure.StatementList"), SLinkOperations.findLinkDeclaration("jetbrains.mps.baseLanguage.structure.StatementList", "statement"));
+            pasteAtAnchorInRole(node, anchor, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"));
           }
           break;
         default:
       }
 
       // trying to resolve names when nodes are already in a model 
-      JavaParser.tryResolveUnknowns(nodes);
-      JavaToMpsConverter mfParser = new JavaToMpsConverter(operationContext.getModule(), operationContext.getProject().getRepository());
+      JavaToMpsConverter mfParser = new JavaToMpsConverter(model, project.getRepository(), project.getComponent(MessagesViewTool.class).newHandler());
       mfParser.tryResolveRefs(nodes, featureKind, new EmptyProgressMonitor());
 
     } catch (JavaParseException ex) {
       JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
     }
   }
-
-  private static boolean pasteAtAnchorInRole(SNode node, SNode anchor, SNode parentConcept, SNode role) {
-    SNode parent = SNodeOperations.getAncestor(anchor, NameUtil.nodeFQName(parentConcept), true, false);
+  private static boolean pasteAtAnchorInRole(SNode node, SNode anchor, SAbstractConcept parentConcept, SContainmentLink role) {
+    SNode parent = SNodeOperations.getNodeAncestor(anchor, SNodeOperations.asSConcept(parentConcept), true, false);
     if ((parent == null)) {
       return false;
     }
-    anchor = SNodeOperations.getAncestor(anchor, NameUtil.nodeFQName(SLinkOperations.getTarget(role, "target", false)), true, false);
+    anchor = SNodeOperations.getNodeAncestor(anchor, SNodeOperations.asSConcept(role.getTargetConcept()), true, false);
     if ((anchor == null) || SNodeOperations.getParent(anchor) != parent) {
-      parent.addChild(SPropertyOperations.getString(role, "role"), node);
+      parent.addChild(role, node);
     } else {
-      jetbrains.mps.util.SNodeOperations.insertChild(parent, SPropertyOperations.getString(role, "role"), node, anchor, true);
+      parent.insertChildBefore(role, node, anchor);
     }
     return true;
   }
-
-  private static boolean pasteMember(SNode member, SNode anchor, SNode parentConcept) {
-    SNode parent = SNodeOperations.getAncestor(anchor, NameUtil.nodeFQName(parentConcept), true, false);
+  private static boolean pasteMember(SNode member, SNode anchor, SConcept parentConcept) {
+    SNode parent = SNodeOperations.getNodeAncestor(anchor, SNodeOperations.asSConcept(parentConcept), true, false);
     if ((parent == null)) {
       return false;
     }
@@ -163,26 +153,16 @@ public class JavaPaster {
       anchor = SNodeOperations.getParent(anchor);
     }
     int index = -1;
-    if (SNodeOperations.isInstanceOf(anchor, "jetbrains.mps.baseLanguage.structure.ClassifierMember")) {
-      index = ListSequence.fromList(SNodeOperations.getChildren(parent, SLinkOperations.findLinkDeclaration("jetbrains.mps.baseLanguage.structure.Classifier", "member"))).indexOf(SNodeOperations.cast(anchor, "jetbrains.mps.baseLanguage.structure.ClassifierMember"));
+    if (SNodeOperations.isInstanceOf(anchor, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember"))) {
+      index = ListSequence.fromList(SNodeOperations.getChildren(parent, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).indexOf(SNodeOperations.cast(anchor, MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember")));
     }
     if (index == -1) {
-      ListSequence.fromList(SLinkOperations.getTargets(parent, "member", true)).addElement(member);
+      ListSequence.fromList(SLinkOperations.getChildren(parent, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).addElement(member);
     } else {
-      ListSequence.fromList(SNodeOperations.getChildren(parent, SLinkOperations.findLinkDeclaration("jetbrains.mps.baseLanguage.structure.Classifier", "member"))).insertElement(index, member);
+      ListSequence.fromList(SNodeOperations.getChildren(parent, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member"))).insertElement(index, member);
     }
     return true;
   }
-
-  @Deprecated
-  public static List<SNode> getStatementsFromJavaText(String javaCode, SModel model, IOperationContext context, Project project) {
-    // Now it's just a stub. The client wants the nodes to be in a model,      
-    // it means we would have to create some fake model... 
-    // It all is needed when pasting text into model and converting it to nodes on the fly. 
-    // We have turned off this functionality 
-    return new ArrayList<SNode>();
-  }
-
   public static boolean areDataAvailableInClipboard() {
     Transferable trf = CopyPasteManagerEx.getInstanceEx().getContents();
     if (trf == null || trf.isDataFlavorSupported(SModelDataFlavor.sNode)) {

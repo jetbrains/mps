@@ -5,10 +5,11 @@ package jetbrains.mps.debugger.java.runtime.ui.evaluation;
 import com.intellij.openapi.ui.DialogWrapper;
 import jetbrains.mps.debugger.java.runtime.evaluation.EvaluationProvider;
 import jetbrains.mps.debugger.java.runtime.state.SessionStopDisposer;
-import jetbrains.mps.smodel.IOperationContext;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.IEvaluationContainer;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
+import jetbrains.mps.ide.project.ProjectHelper;
 import java.awt.Dimension;
 import com.intellij.openapi.application.ApplicationManager;
 import javax.swing.JComponent;
@@ -18,16 +19,15 @@ public abstract class AbstractEvaluationDialog extends DialogWrapper {
   protected final EvaluationProvider myProvider;
   protected final EvaluationPanel myEvaluationPanel;
   private final SessionStopDisposer mySessionStopDisposer;
-
-  public AbstractEvaluationDialog(IOperationContext context, EvaluationProvider provider, IEvaluationContainer model, String title) {
-    super(ProjectHelper.toIdeaProject(context.getProject()));
+  public AbstractEvaluationDialog(@NotNull Project ideaProject, EvaluationProvider provider, IEvaluationContainer model, String title) {
+    super(ideaProject);
     setTitle(title);
 
     setModal(false);
 
     myProvider = provider;
     final DebugSession debugSession = provider.getDebugSession();
-    myEvaluationPanel = new EvaluationPanel(ProjectHelper.toIdeaProject(context.getProject()), debugSession, model, false);
+    myEvaluationPanel = new EvaluationPanel(ProjectHelper.fromIdeaProject(ideaProject), debugSession, model, false);
     myEvaluationPanel.setMinimumSize(new Dimension(500, 500));
     myEvaluationPanel.setErrorTextListener(new EvaluationUi.IErrorTextListener() {
       @Override
@@ -50,21 +50,23 @@ public abstract class AbstractEvaluationDialog extends DialogWrapper {
 
     init();
   }
-
   protected JComponent getMainComponent() {
     return myEvaluationPanel;
   }
-
   @Nullable
   @Override
   protected JComponent createCenterPanel() {
     return myEvaluationPanel;
   }
-
   @Override
   protected void dispose() {
     ApplicationManager.getApplication().assertIsDispatchThread();
     super.dispose();
     myEvaluationPanel.dispose();
+  }
+  @Nullable
+  @Override
+  public JComponent getPreferredFocusedComponent() {
+    return myEvaluationPanel.getPreferredFocusedComponent();
   }
 }

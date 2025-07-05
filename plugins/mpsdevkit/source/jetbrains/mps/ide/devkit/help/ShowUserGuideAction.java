@@ -15,30 +15,14 @@
  */
 package jetbrains.mps.ide.devkit.help;
 
-import com.intellij.openapi.actionSystem.ActionPlaces;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-
-import java.util.Map;
+import jetbrains.mps.workbench.DocumentationHelper;
 
 public class ShowUserGuideAction extends ShowSiteAction {
   public ShowUserGuideAction() {
     super("User Guide");
-
-    getTemplatePresentation().setIcon(Icons.READ_HELP_ICON);
-  }
-
-  @Override
-  protected void doUpdate(AnActionEvent e, Map<String, Object> _params) {
-    super.doUpdate(e, _params);
-
-    if (ActionPlaces.WELCOME_SCREEN.equals(e.getPlace())) {
-      e.getPresentation().setIcon(Icons.READ_HELP_ICON);
-    } else {
-      e.getPresentation().setIcon(null);
-    }
   }
 
   protected String getSiteURL() {
-    return "http://confluence.jetbrains.com/display/MPSD25/MPS+User%27s+Guide";
+    return DocumentationHelper.getConfluenceBase() + "MPS+User%27s+Guide";
   }
 }

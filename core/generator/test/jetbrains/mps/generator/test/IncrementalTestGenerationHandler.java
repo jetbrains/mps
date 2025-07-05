@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,33 +17,31 @@ package jetbrains.mps.generator.test;
 
 import jetbrains.mps.generator.GenerationOptions;
 import jetbrains.mps.generator.GenerationStatus;
-import jetbrains.mps.generator.fileGenerator.FileGenerationUtil;
-import jetbrains.mps.generator.generationTypes.GenerationHandlerBase;
 import jetbrains.mps.generator.generationTypes.StreamHandler;
-import jetbrains.mps.generator.generationTypes.TextGenerator;
 import jetbrains.mps.generator.impl.IncrementalGenerationHandler;
 import jetbrains.mps.generator.impl.IncrementalGenerationHandler.IncrementalReporter;
+import jetbrains.mps.generator.impl.cache.IntermediateCacheHelper;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependencies;
-import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
 import jetbrains.mps.generator.impl.plan.GenerationPlan;
-import jetbrains.mps.generator.traceInfo.TraceInfoCache;
-import jetbrains.mps.make.java.BLDependenciesCache;
-import jetbrains.mps.messages.IMessage;
-import jetbrains.mps.messages.IMessageHandler;
-import jetbrains.mps.messages.MessageKind;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.project.SModuleOperations;
-import jetbrains.mps.smodel.IOperationContext;
-import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.generator.impl.plan.PlanSignature;
+import jetbrains.mps.messages.LogHandler;
+import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.text.TextGenResult;
+import jetbrains.mps.text.TextGeneratorEngine;
+import jetbrains.mps.textgen.trace.TraceInfoCache;
 import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.util.IStatus;
 import jetbrains.mps.util.JDOMUtil;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.util.Status;
+import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.util.performance.IPerformanceTracer.NullPerformanceTracer;
 import jetbrains.mps.vfs.IFile;
+import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jdom.Element;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.junit.Assert;
 
 import java.io.IOException;
@@ -57,9 +55,11 @@ import java.util.Map;
  * <p/>
  * Evgeny Gryaznov, Oct 4, 2010
  */
-public class IncrementalTestGenerationHandler extends GenerationHandlerBase {
+@ToRemove(version = 3.2)
+public class IncrementalTestGenerationHandler {
 
-  private Map<String, String> generatedContent = new HashMap<String, String>();
+  private final Map<String, String> generatedContent = new HashMap<String, String>();
+  private final SRepository myRepository;
   private Map<String, String> existingContent;
   private IFile myFilesDir;
   private int timesCalled = 0;
@@ -68,10 +68,12 @@ public class IncrementalTestGenerationHandler extends GenerationHandlerBase {
 
   private GenerationOptions myGenOptions;
 
-  public IncrementalTestGenerationHandler() {
+  public IncrementalTestGenerationHandler(SRepository repository) {
+    myRepository = repository;
   }
 
-  public IncrementalTestGenerationHandler(Map<String, String> existingContent) {
+  public IncrementalTestGenerationHandler(SRepository repository, Map<String, String> existingContent) {
+    myRepository = repository;
     this.existingContent = existingContent;
   }
 
@@ -86,10 +88,6 @@ public class IncrementalTestGenerationHandler extends GenerationHandlerBase {
 
   public Map<String, String> getGeneratedContent() {
     return generatedContent;
-  }
-
-  public IMessageHandler getMessageHandler() {
-    return new TestMessageHandler();
   }
 
   public Map<String, String> getExistingContent() {
@@ -115,15 +113,9 @@ public class IncrementalTestGenerationHandler extends GenerationHandlerBase {
     }
   }
 
-  @Override
-  public boolean canHandle(SModel inputModel) {
-    return true;
-  }
-
-  @Override
-  public boolean handleOutput(SModule module, SModel inputModel, GenerationStatus status, IOperationContext invocationContext, ProgressMonitor progressMonitor) {
+  public boolean handleOutput(SModel inputModel, GenerationStatus status) {
     myLastDependencies = null;
-    IFile targetDir = FileSystem.getInstance().getFileByPath(SModuleOperations.getOutputPathFor(inputModel));
+    IFile targetDir = inputModel.getModule().getFacet(JavaModuleFacet.class).getOutputLocation(inputModel);
 
     Assert.assertTrue(status.isOk());
     Assert.assertTrue("should be called once", timesCalled++ == 0);
@@ -132,7 +124,8 @@ public class IncrementalTestGenerationHandler extends GenerationHandlerBase {
       GenerationDependencies dep = status.getDependencies();
       if (dep.getFromCacheCount() + dep.getSkippedCount() == 0) {
         final StringBuilder sb = new StringBuilder("Not optimized:\n");
-        new IncrementalGenerationHandler(inputModel, invocationContext, myGenOptions, new GenerationPlan(inputModel).getSignature(), null, new IncrementalReporter() {
+        IntermediateCacheHelper cacheHelper = new IntermediateCacheHelper(myGenOptions.getIncrementalStrategy(), new PlanSignature(inputModel, new GenerationPlan(inputModel)), new NullPerformanceTracer());
+        new IncrementalGenerationHandler(inputModel, myRepository, myGenOptions, cacheHelper, new IncrementalReporter() {
           @Override
           public void report(String message) {
             sb.append(message);
@@ -146,93 +139,64 @@ public class IncrementalTestGenerationHandler extends GenerationHandlerBase {
 
     if (status.isOk()) {
       myLastDependencies = status.getDependencies();
-      myFilesDir = FileGenerationUtil.getDefaultOutputDir(inputModel, targetDir);
-      IFile cachesDir = FileGenerationUtil.getDefaultOutputDir(inputModel, FileGenerationUtil.getCachesDir(targetDir));
+      myFilesDir = targetDir;
 
-      StreamHandler streamHandler = new CollectingStreamHandler(cachesDir);
+      CollectingStreamHandler toStringHandler = new CollectingStreamHandler(generatedContent, getExistingContent());
+
+      TextGeneratorEngine tgEngine = new TextGeneratorEngine(new LogHandler(Logger.getLogger(getClass())));
+      IStatus textGenStatus = new Status.ERROR("");
       try {
-        boolean result = new TextGenerator(streamHandler,
-          //ModelGenerationStatusManager.getInstance().getCacheGenerator(),
-          BLDependenciesCache.getInstance().getGenerator(),
-          //TraceInfoCache.getInstance().getGenerator(),
-          GenerationDependenciesCache.getInstance().getGenerator()
-        ).handleOutput(invocationContext, status);
-        Assert.assertTrue(result);
+        final TextGenResult tgr = tgEngine.generateText(status.getOutputModel()).get();
+        TextFacility2 tf = new TextFacility2(status, tgr);
+        tf.prepare();
+        textGenStatus = tf.serializeOutcome(toStringHandler);
+      } catch (Exception ex) {
+        ex.printStackTrace();
+        Assert.fail(ex.toString());
       } finally {
-        streamHandler.dispose();
+        tgEngine.shutdown();
       }
+      Assert.assertFalse(textGenStatus.isError());
     }
     return true;
   }
 
-  @Override
-  public int estimateCompilationMillis() {
-    return 0;
-  }
+  static class CollectingStreamHandler implements StreamHandler {
+    private final Map<String, String> myCollectedContent;
+    private final Map<String, String> myExistingContent;
 
-  public class CollectingStreamHandler implements StreamHandler {
-
-    public CollectingStreamHandler(IFile caches) {
+    public CollectingStreamHandler(@NotNull Map<String, String> content, @NotNull Map<String, String> existingContent) {
+      myCollectedContent = content;
+      myExistingContent = existingContent;
     }
 
     @Override
-    public void saveStream(String name, String content, boolean isCache) {
-      if (!isCache) {
-        generatedContent.put(name, content);
+    public void saveStream(String name, String content) {
+      myCollectedContent.put(name, content);
+    }
+
+    @Override
+    public void saveStream(String name, Element content) {
+      try {
+        StringWriter writer = new StringWriter();
+        JDOMUtil.writeDocument(new Document(content), writer);
+        saveStream(name, writer.toString());
+      } catch (IOException e) {
+        Assert.fail(e.toString());
       }
     }
 
     @Override
-    public void saveStream(String name, Element content, boolean isCache) {
-      if (!isCache) {
-        try {
-          StringWriter writer = new StringWriter();
-          JDOMUtil.writeDocument(new Document(content), writer);
-          saveStream(name, writer.toString(), isCache);
-        } catch (IOException e) {
-          Assert.fail(e.toString());
-        }
-      }
-    }
-
-    @Override
-    public void saveStream(String name, byte[] content, boolean isCache) {
+    public void saveStream(String name, byte[] content) {
       Assert.fail("byte stream is not expected");
     }
 
     @Override
-    public boolean touch(String name, boolean isCache) {
-      Assert.assertFalse(isCache);
-      String value = getExistingContent().get(name);
+    public boolean touch(String name) {
+      String value = myExistingContent.get(name);
       Assert.assertNotNull("non-existing file touched: " + value);
-      generatedContent.put(name, value);
+      myCollectedContent.put(name, value);
       return true;
-    }
-
-    @Override
-    public void dispose() {
-    }
-  }
-
-  private class TestMessageHandler implements IMessageHandler {
-
-    @Override
-    public void handle(IMessage msg) {
-      switch (msg.getKind()) {
-        case ERROR:
-        case WARNING:
-          Assert.fail((msg.getKind() == MessageKind.ERROR ? "error: " : "warning: ") + msg.getText() + msg.getException());
-          break;
-
-        case INFORMATION:
-          //System.out.println(msg.getText());
-          break;
-      }
-    }
-
-    @Override
-
-    public void clear() {
     }
   }
 }

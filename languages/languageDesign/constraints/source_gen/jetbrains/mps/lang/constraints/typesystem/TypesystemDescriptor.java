@@ -17,6 +17,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_ConstraintFunctionParameter_linkTargetNode_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_ConstraintFunctionParameter_newReferentNode_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -38,10 +42,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_ConstraintsFunctionParameter_propertyValue_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
-      InferenceRule_Runtime inferenceRule = new typeof_ThisNodeExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {

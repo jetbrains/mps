@@ -9,12 +9,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 public class ModelExpression_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return this.createComponent_igs8lh_a(editorContext, node);
-  }
-
-  private EditorCell createComponent_igs8lh_a(EditorContext editorContext, SNode node) {
-    EditorCell editorCell = editorContext.getCellFactory().createEditorComponentCell(node, "jetbrains.mps.lang.core.editor.alias");
-    editorCell.setBig(true);
-    return editorCell;
+    return new ModelExpression_EditorBuilder_a(editorContext, node).createCell();
   }
 }

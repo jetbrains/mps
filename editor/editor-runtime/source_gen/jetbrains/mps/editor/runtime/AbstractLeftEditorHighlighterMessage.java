@@ -8,27 +8,23 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.nodeEditor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import java.awt.Cursor;
 
 public abstract class AbstractLeftEditorHighlighterMessage extends DefaultEditorMessage implements EditorMessageIconRenderer {
   private String myTooltip;
-
   public AbstractLeftEditorHighlighterMessage(SNode node, EditorMessageOwner owner, String tooltip) {
     super(node, null, "", owner);
     myTooltip = tooltip;
   }
-
   @Override
   public void paint(Graphics graphics, EditorComponent component, EditorCell cell) {
   }
-
   @Override
   public boolean isValid(EditorComponent component) {
     return true;
   }
-
   @Override
   public boolean sameAs(SimpleEditorMessage message) {
     if (message instanceof AbstractLeftEditorHighlighterMessage) {
@@ -37,17 +33,14 @@ public abstract class AbstractLeftEditorHighlighterMessage extends DefaultEditor
     }
     return false;
   }
-
   @Override
   public String getTooltipText() {
     return myTooltip;
   }
-
   @Override
   public Cursor getMouseOverCursor() {
     return Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
   }
-
   @Override
   public boolean showInGutter() {
     return false;

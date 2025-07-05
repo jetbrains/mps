@@ -9,18 +9,21 @@ import java.util.Map;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.NotNull;
-import org.apache.log4j.Priority;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.project.MPSProject;
-import com.intellij.openapi.Disposable;
-import jetbrains.mps.ide.platform.dialogs.choosers.FileStructurePopup;
 import com.intellij.openapi.project.Project;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.project.MPSProject;
+import com.intellij.openapi.fileEditor.FileEditor;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import com.intellij.ide.structureView.StructureView;
+import javax.swing.JComponent;
+import com.intellij.ide.structureView.StructureViewModel;
+import com.intellij.ide.util.FileStructurePopup;
 
 public class ShowMembers_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -30,87 +33,94 @@ public class ShowMembers_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return (SNodeOperations.getAncestor(((SNode) MapSequence.fromMap(_params).get("node")), "jetbrains.mps.baseLanguage.structure.IMemberContainer", true, false) != null);
+    return (SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11638b31955L, "jetbrains.mps.baseLanguage.structure.IMemberContainer"), true, false) != null);
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        boolean enabled = this.isApplicable(event, _params);
-        this.setEnabledState(event.getPresentation(), enabled);
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "ShowMembers", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("ideaProject", event.getData(PlatformDataKeys.PROJECT));
-    if (MapSequence.fromMap(_params).get("ideaProject") == null) {
-      return false;
+    {
+      Project p = event.getData(CommonDataKeys.PROJECT);
+      MapSequence.fromMap(_params).put("ideaProject", p);
+      if (p == null) {
+        return false;
+      }
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null) {
-      }
       MapSequence.fromMap(_params).put("node", node);
+      if (node == null) {
+        return false;
+      }
     }
-    if (MapSequence.fromMap(_params).get("node") == null) {
-      return false;
+    {
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      MapSequence.fromMap(_params).put("project", p);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("editorComponent", event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
-    if (MapSequence.fromMap(_params).get("editorComponent") == null) {
-      return false;
-    }
-    MapSequence.fromMap(_params).put("project", event.getData(MPSCommonDataKeys.MPS_PROJECT));
-    if (MapSequence.fromMap(_params).get("project") == null) {
-      return false;
+    {
+      FileEditor p = event.getData(PlatformDataKeys.FILE_EDITOR);
+      MapSequence.fromMap(_params).put("fileEditor", p);
+      if (p == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      final Wrappers._T<String> title = new Wrappers._T<String>();
-      // model contains only SNodePointers 
-      final Wrappers._T<MemberContainerStructureModel> model = new Wrappers._T<MemberContainerStructureModel>();
+    final Wrappers._T<String> title = new Wrappers._T<String>();
+    // model contains only SNodePointers 
+    final MemberContainerStructureModel[] model = new MemberContainerStructureModel[1];
 
-      ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          SNode container = SNodeOperations.getAncestor(((SNode) MapSequence.fromMap(_params).get("node")), "jetbrains.mps.baseLanguage.structure.IMemberContainer", true, false);
-          title.value = container.getPresentation();
-          model.value = new MemberContainerStructureModel(container);
-        }
-      });
-
-      Disposable auxDisposable = new Disposable() {
-        @Override
-        public void dispose() {
-        }
-      };
-
-      FileStructurePopup popup = new FileStructurePopup(model.value, ((Project) MapSequence.fromMap(_params).get("ideaProject")), auxDisposable, false);
-      popup.setTitle(title.value);
-      popup.show();
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "ShowMembers", t);
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        SNode container = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11638b31955L, "jetbrains.mps.baseLanguage.structure.IMemberContainer"), true, false);
+        title.value = (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))), MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")) ? ((String) BHReflection.invoke(SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))), SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) : container.getPresentation());
+        model[0] = new MemberContainerStructureModel(((MPSProject) MapSequence.fromMap(_params).get("project")), container);
       }
-    }
-  }
+    });
 
-  protected static Logger LOG = LogManager.getLogger(ShowMembers_Action.class);
+    // TODO: MPS-23001 Make fabric for StructureView 
+    StructureView structureView = new StructureView() {
+      public FileEditor getFileEditor() {
+        return ((FileEditor) MapSequence.fromMap(_params).get("fileEditor"));
+      }
+      public boolean navigateToSelectedElement(boolean p0) {
+        return false;
+      }
+      public JComponent getComponent() {
+        return null;
+      }
+      public void centerSelectedRow() {
+      }
+      public void restoreState() {
+      }
+      public void storeState() {
+      }
+      @NotNull
+      public StructureViewModel getTreeModel() {
+        return model[0];
+      }
+      public void dispose() {
+      }
+    };
+
+    FileStructurePopup popup = new FileStructurePopup(((Project) MapSequence.fromMap(_params).get("ideaProject")), ((FileEditor) MapSequence.fromMap(_params).get("fileEditor")), structureView, true);
+    popup.setTitle(title.value);
+    popup.show();
+  }
 }

@@ -4,25 +4,27 @@ package jetbrains.mps.baseLanguage.unitTest.execution;
 
 import java.util.List;
 import org.junit.runner.Description;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 
 public class TestEvent {
   public static final String START_TEST_PREFIX = "<START_TEST>";
-  public static final String END_TEST_PREFIX = "<END_TEST>";
-  public static final String ERROR_TEST_PREFIX = "<TEST_ERROR_BEGIN>";
-  public static final String ERROR_TEST_SUFFIX = "<TEST_ERROR_END>";
+  public static final String FINISH_TEST_PREFIX = "<FINISH_TEST>";
   public static final String FAILURE_TEST_PREFIX = "<TEST_FAILURE_BEGIN>";
   public static final String FAILURE_TEST_SUFFIX = "<TEST_FAILURE_END>";
+  public static final String ASSUMPTION_FAILURE_TEST_PREFIX = "<TEST_ASSUMPTION_FAILURE_BEGIN>";
+  public static final String ASSUMPTION_FAILURE_TEST_SUFFIX = "<TEST_ASSUMPTION_FAILURE_END>";
+  public static final String IGNORE_FAILURE_TEST_PREFIX = "<TEST_IGNORE_BEGIN>";
+  public static final String IGNORE_FAILURE_TEST_SUFFIX = "<TEST_IGNORE_END>";
+
   private static List<String> ALL_TOKENS;
   private final String myToken;
   private final String myTestCaseName;
   private final String myTestMethodName;
   private final long myMemoryUsage;
   private final long myTime;
-
   public TestEvent(String token, Description description) {
     myToken = token;
     myTestCaseName = description.getTestClass().getName();
@@ -32,7 +34,7 @@ public class TestEvent {
     myTime = System.currentTimeMillis();
   }
 
-  private TestEvent(String token, String testCaseName, String testMethodName, long memoryUsage, long time) {
+  public TestEvent(String token, String testCaseName, String testMethodName, long memoryUsage, long time) {
     myToken = token;
     myTestCaseName = testCaseName;
     myTestMethodName = testMethodName;
@@ -73,6 +75,10 @@ public class TestEvent {
     return this.myTime;
   }
 
+  public boolean isTestCaseEvent() {
+    return myTestMethodName == null;
+  }
+
   @Override
   public boolean equals(Object p0) {
     if (p0 == null || !(p0 instanceof TestEvent)) {
@@ -84,12 +90,12 @@ public class TestEvent {
 
   @Override
   public int hashCode() {
-    return this.myToken.hashCode() + 10 * this.myTestCaseName.hashCode() + 10 * this.myTestMethodName.hashCode();
+    return this.myToken.hashCode() + 31 * this.myTestCaseName.hashCode() + 19 * this.myTestMethodName.hashCode();
   }
 
   public static String getEventToken(String messageString) {
     String token = null;
-    for (String expectedToken : ListSequence.fromList(TestEvent.ALL_TOKENS)) {
+    for (String expectedToken : TestEvent.ALL_TOKENS) {
       if (messageString.startsWith(expectedToken)) {
         token = expectedToken;
         break;
@@ -112,7 +118,7 @@ public class TestEvent {
     if (messageString.startsWith(expectedToken)) {
       String params = messageString.substring(expectedToken.length());
       {
-        Pattern _pattern_0 = REGEXP_6m48zo_a0a0b0b0y;
+        Pattern _pattern_0 = REGEXP_6m48zo_a0a0b0b0pb;
         Matcher _matcher_0 = _pattern_0.matcher(params);
         if (_matcher_0.matches()) {
           testEvent = new TestEvent(expectedToken, _matcher_0.group(1), _matcher_0.group(2), Long.parseLong(_matcher_0.group(3)), Long.parseLong(_matcher_0.group(4)));
@@ -123,7 +129,7 @@ public class TestEvent {
   }
 
   static {
-    TestEvent.ALL_TOKENS = ListSequence.fromListAndArray(new ArrayList<String>(), TestEvent.START_TEST_PREFIX, TestEvent.END_TEST_PREFIX, TestEvent.ERROR_TEST_PREFIX, TestEvent.ERROR_TEST_SUFFIX, TestEvent.FAILURE_TEST_PREFIX, TestEvent.FAILURE_TEST_SUFFIX);
+    TestEvent.ALL_TOKENS = ListSequence.fromListAndArray(new ArrayList<String>(), TestEvent.START_TEST_PREFIX, TestEvent.FINISH_TEST_PREFIX, TestEvent.FAILURE_TEST_PREFIX, TestEvent.FAILURE_TEST_SUFFIX, TestEvent.ASSUMPTION_FAILURE_TEST_PREFIX, TestEvent.ASSUMPTION_FAILURE_TEST_SUFFIX, TestEvent.IGNORE_FAILURE_TEST_PREFIX, TestEvent.IGNORE_FAILURE_TEST_SUFFIX);
   }
-  private static Pattern REGEXP_6m48zo_a0a0b0b0y = Pattern.compile("([^:]+)(?::([^:]+))?:memory=(\\d+):time=(\\d+)", 0);
+  private static Pattern REGEXP_6m48zo_a0a0b0b0pb = Pattern.compile("([^:]+)(?::([^:]+))?:memory=(\\d+):time=(\\d+)", 0);
 }

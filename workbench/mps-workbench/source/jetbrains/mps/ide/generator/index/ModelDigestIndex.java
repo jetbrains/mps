@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,28 +31,22 @@ import java.util.Map;
 public class ModelDigestIndex extends BaseModelDigestIndex {
   public static final ID<Integer, Map<String, String>> NAME = ID.create("ModelDigest");
 
-  @NotNull
-  @Override
-  public ID<Integer, Map<String, String>> getName() {
-    return NAME;
+  public ModelDigestIndex() {
+    super(NAME, 7);
   }
 
+  @NotNull
   @Override
   public InputFilter getInputFilter() {
     return new InputFilter() {
       @Override
-      public boolean acceptInput(VirtualFile file) {
+      public boolean acceptInput(@NotNull VirtualFile file) {
         FileType fileType = file.getFileType();
         return fileType.equals(MPSFileTypeFactory.MPS_FILE_TYPE)
             || fileType.equals(MPSFileTypeFactory.MPS_ROOT_FILE_TYPE)
             || fileType.equals(MPSFileTypeFactory.MPS_HEADER_FILE_TYPE);
       }
     };
-  }
-
-  @Override
-  public int getVersion() {
-    return 7;
   }
 
   @Override

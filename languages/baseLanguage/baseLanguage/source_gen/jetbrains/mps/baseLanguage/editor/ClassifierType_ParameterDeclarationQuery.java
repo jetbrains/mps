@@ -7,42 +7,40 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.ArrayList;
 import jetbrains.mps.editor.runtime.style.StyledTextPrinter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
+import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 
 public class ClassifierType_ParameterDeclarationQuery implements ParametersInformation<SNode> {
   public ClassifierType_ParameterDeclarationQuery() {
   }
-
   public Iterable<SNode> getMethods(SNode node, EditorContext editorContext) {
-    if (ListSequence.fromList(SLinkOperations.getTargets(SLinkOperations.getTarget(node, "classifier", false), "typeVariableDeclaration", true)).isNotEmpty()) {
-      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(node, "classifier", false));
+    if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")), MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))).isNotEmpty()) {
+      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(node, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier")));
     } else {
       return ListSequence.fromList(new ArrayList<SNode>());
     }
   }
-
   public void getStyledMethodPresentation(SNode node, EditorContext editorContext, SNode parameterObject, StyledTextPrinter styledText) {
-    if (ListSequence.fromList(SLinkOperations.getTargets(parameterObject, "typeVariableDeclaration", true)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(parameterObject, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))).isNotEmpty()) {
       SNode argument = editorContext.getSelectedNode();
-      while (argument != null && !(SNodeOperations.isInstanceOf(argument, "jetbrains.mps.baseLanguage.structure.Type") && ListSequence.fromList(SLinkOperations.getTargets(node, "parameter", true)).contains(SNodeOperations.cast(argument, "jetbrains.mps.baseLanguage.structure.Type")))) {
+      while (argument != null && !((SNodeOperations.isInstanceOf(argument, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type")) && ListSequence.fromList(SLinkOperations.getChildren(node, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"))).contains(SNodeOperations.cast(argument, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type")))))) {
         argument = SNodeOperations.getParent(argument);
       }
-      for (SNode param : SLinkOperations.getTargets(parameterObject, "typeVariableDeclaration", true)) {
+      for (SNode param : SLinkOperations.getChildren(parameterObject, MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration"))) {
         if (SNodeOperations.getIndexInParent(param) > 0) {
           styledText.append(", ");
         }
         if (SNodeOperations.getIndexInParent(param) == SNodeOperations.getIndexInParent(argument)) {
           styledText.setBold(true);
         }
-        styledText.append(BehaviorReflection.invokeVirtual(String.class, param, "virtual_getPresentation_1213877396640", new Object[]{}));
+        styledText.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(param));
         styledText.setBold(false);
       }
     }
   }
-
   public boolean isMethodCurrent(SNode node, EditorContext editorContext, SNode parameterObject) {
     return false;
   }

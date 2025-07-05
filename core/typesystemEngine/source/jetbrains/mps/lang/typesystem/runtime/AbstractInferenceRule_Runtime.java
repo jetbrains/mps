@@ -15,11 +15,12 @@
  */
 package jetbrains.mps.lang.typesystem.runtime;
 
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactoryByName;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 
 public abstract class AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
-
   @Override
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(false, null);
@@ -27,5 +28,20 @@ public abstract class AbstractInferenceRule_Runtime implements InferenceRule_Run
 
   @Override
   public void applyRule(SNode argument, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+  }
+
+  @Override
+  public boolean supercedesAttributed(SNode argument, IsApplicableStatus status) {
+    return false;
+  }
+
+  @Override
+  public boolean overrides(SNode argument, IsApplicableStatus status) {
+    return overrides();
+  }
+
+  @Override
+  public boolean overrides() {
+    return false;
   }
 }

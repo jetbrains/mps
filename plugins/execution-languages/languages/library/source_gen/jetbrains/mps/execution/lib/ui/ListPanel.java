@@ -9,6 +9,8 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.project.ProjectHelper;
 import java.awt.GridBagLayout;
 import java.awt.BorderLayout;
 import com.intellij.ui.components.JBList;
@@ -24,16 +26,16 @@ import com.intellij.ui.components.JBLabel;
 import jetbrains.mps.ide.common.LayoutUtil;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import com.intellij.openapi.progress.ProgressManager;
+import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.ide.platform.dialogs.choosers.NodeChooserDialog;
 import javax.swing.AbstractListModel;
 import jetbrains.mps.workbench.dialogs.project.components.parts.actions.ListAddAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.workbench.dialogs.project.components.parts.actions.ListRemoveAction;
 
 /**
@@ -41,17 +43,20 @@ import jetbrains.mps.workbench.dialogs.project.components.parts.actions.ListRemo
  * TODO: refactor
  */
 public abstract class ListPanel<T> extends JPanel {
-  protected final Object myLock = new Object();
+  private final Object myLock = new Object();
   private final JList myListComponent;
   protected final List<T> myValues = ListSequence.fromList(new ArrayList<T>());
   protected final List<T> myCandidates = ListSequence.fromList(new ArrayList<T>());
   private ActionListener myListener;
   private final ListPanel.MyAbstractListModel myListModel;
   protected Project myProject;
+  private final MPSProject myMpsProject;
   private final String myTitle;
   private boolean isEditable = true;
 
-  public ListPanel(String title) {
+  public ListPanel(Project p, String title) {
+    myProject = p;
+    myMpsProject = ProjectHelper.fromIdeaProject(p);
     myTitle = title;
 
     setLayout(new GridBagLayout());
@@ -79,7 +84,7 @@ public abstract class ListPanel<T> extends JPanel {
 
   protected abstract String getFqName(T element);
 
-  protected abstract void collectCandidates();
+  protected abstract List<T> collectCandidates(ProgressMonitor progress);
 
   public void addItem(T item) {
     ListSequence.fromList(myValues).addElement(item);
@@ -95,13 +100,13 @@ public abstract class ListPanel<T> extends JPanel {
   }
 
   public void clear() {
-    ListSequence.fromList(myValues).removeSequence(ListSequence.fromList(myValues));
+    ListSequence.fromList(myValues).clear();
     myListComponent.updateUI();
   }
 
-  public void init(List<? extends T> nodes) {
+  public void setData(List<? extends T> data) {
     ListSequence.fromList(myValues).clear();
-    ListSequence.fromList(myValues).addSequence(ListSequence.fromList(nodes));
+    ListSequence.fromList(myValues).addSequence(ListSequence.fromList(data));
     myListComponent.updateUI();
   }
 
@@ -115,7 +120,11 @@ public abstract class ListPanel<T> extends JPanel {
       ProgressManager.getInstance().runProcessWithProgressSynchronously(new Runnable() {
         @Override
         public void run() {
-          collectCandidates();
+          List<T> candidates = collectCandidates(new ProgressMonitorAdapter(ProgressManager.getInstance().getProgressIndicator()));
+          synchronized (myLock) {
+            ListSequence.fromList(myCandidates).clear();
+            ListSequence.fromList(myCandidates).addSequence(ListSequence.fromList(candidates));
+          }
         }
       }, "Searching for nodes", false, myProject);
     }
@@ -130,10 +139,6 @@ public abstract class ListPanel<T> extends JPanel {
     }
   }
 
-  public void setProject(Project project) {
-    myProject = project;
-  }
-
   public void setEditable(boolean editable) {
     isEditable = editable;
   }
@@ -145,22 +150,18 @@ public abstract class ListPanel<T> extends JPanel {
   private class MyAbstractListModel extends AbstractListModel {
     public MyAbstractListModel() {
     }
-
     @Override
     public Object getElementAt(int p0) {
       return getFqName(ListSequence.fromList(ListPanel.this.myValues).getElement(p0));
     }
-
     @Override
     public int getSize() {
       return ListSequence.fromList(ListPanel.this.myValues).count();
     }
-
     public void fireSomethingChanged() {
       fireContentsChanged(this, 0, ListSequence.fromList(myValues).count());
     }
   }
-
   private class MyListAddAction extends ListAddAction {
     public MyListAddAction(JList list) {
       super(list);
@@ -178,9 +179,9 @@ public abstract class ListPanel<T> extends JPanel {
         return -1;
       }
       final Wrappers._T<T> wrapper = new Wrappers._T<T>();
-      ModelAccess.instance().runReadAction(new Runnable() {
+      myMpsProject.getModelAccess().runReadAction(new Runnable() {
         public void run() {
-          wrapper.value = wrap(((SNodePointer) resultNode).resolve(MPSModuleRepository.getInstance()));
+          wrapper.value = wrap(((SNodePointer) resultNode).resolve(myMpsProject.getRepository()));
         }
       });
       if (wrapper.value == null) {
@@ -205,14 +206,14 @@ public abstract class ListPanel<T> extends JPanel {
   private class MyListRemoveAction extends ListRemoveAction {
     public MyListRemoveAction(JList list) {
       super(list);
-    }
 
+    }
     @Override
     protected void doRemove(AnActionEvent p0) {
-      for (Object value : ListPanel.this.myListComponent.getSelectedValues()) {
+      for (Object value : ListPanel.this.myListComponent.getSelectedValuesList()) {
         for (final T node : ListPanel.this.myValues) {
           final Wrappers._T<String> fqName = new Wrappers._T<String>();
-          ModelAccess.instance().runReadAction(new Runnable() {
+          myMpsProject.getModelAccess().runReadAction(new Runnable() {
             public void run() {
               fqName.value = getFqName(node);
             }
@@ -229,7 +230,6 @@ public abstract class ListPanel<T> extends JPanel {
       ListPanel.this.myListComponent.updateUI();
       ListPanel.this.myListModel.fireSomethingChanged();
     }
-
     @Override
     public void update(AnActionEvent event) {
       event.getPresentation().setEnabled(isEditable);

@@ -14,6 +14,7 @@ import jetbrains.mps.debugger.java.api.settings.DebugConnectionSettings;
 import java.awt.event.KeyAdapter;
 import java.beans.PropertyChangeListener;
 import java.awt.event.KeyEvent;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import java.awt.Color;
 import java.beans.PropertyChangeEvent;
 import java.text.ParseException;
@@ -26,7 +27,6 @@ public class RemoteSettingsEditor extends JPanel {
   private int myPort;
   private String myHost;
   private String myCommandLine;
-
   public RemoteSettingsEditor() {
     super(new GridBagLayout());
     RemoteSettingsEditor.MyKeyAdapter listener = new RemoteSettingsEditor.MyKeyAdapter();
@@ -48,59 +48,46 @@ public class RemoteSettingsEditor extends JPanel {
     add(new JLabel("Remote JVM command line arguments:"), LayoutUtil.createLabelConstraints(4));
     add(myCommandLineTextField, LayoutUtil.createFieldConstraints(5));
   }
-
   private void updateFieldsFromUi() {
     myHost = myHostTextField.getText();
     myPort = (Integer) myPortTextField.getValue();
     myCommandLine = formClientCommandLine();
     myCommandLineTextField.setText(myCommandLine);
   }
-
   private void updateUiFromFields() {
     myHostTextField.setText(myHost);
     myPortTextField.setValue(myPort);
     myCommandLineTextField.setText(myCommandLine);
   }
-
   private String formClientCommandLine() {
     return RemoteConnectionSettings.getClientCommandLine(true, myPort);
   }
-
   public void reset(DebugConnectionSettings settings) {
     myHost = settings.getHostName();
     myPort = settings.getPort();
     myCommandLine = formClientCommandLine();
     updateUiFromFields();
   }
-
   public void apply(DebugConnectionSettings settings) {
     settings.setHostName(myHost);
     settings.setPort(myPort);
   }
-
   private class MyKeyAdapter extends KeyAdapter implements PropertyChangeListener {
     private MyKeyAdapter() {
     }
-
     @Override
     public void keyReleased(KeyEvent e) {
       updateFieldsFromUi();
-      myPortTextField.setForeground((myPortTextField.isEditValid() ?
-        Color.BLACK :
-        Color.RED
-      ));
+      myPortTextField.setForeground((myPortTextField.isEditValid() ? StyleRegistry.getInstance().getEditorForeground() : Color.RED));
     }
-
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
       updateFieldsFromUi();
     }
   }
-
   private class MyDefaultFormatter extends DefaultFormatter {
     private MyDefaultFormatter() {
     }
-
     @Override
     public Object stringToValue(String text) throws ParseException {
       try {
@@ -109,7 +96,6 @@ public class RemoteSettingsEditor extends JPanel {
         throw new ParseException(text, 0);
       }
     }
-
     @Override
     public String valueToString(@Nullable Object value) throws ParseException {
       if (value == null) {

@@ -13,7 +13,7 @@ import jetbrains.mps.debugger.java.runtime.engine.events.Context;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventsProcessor;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.debug.api.AbstractDebugSession;
 import com.sun.jdi.ThreadReference;
 import jetbrains.mps.debug.api.programState.IThread;
@@ -23,13 +23,11 @@ public abstract class JavaUiStateImpl extends JavaUiState {
   protected final DebugSession myDebugSession;
   protected int myThreadIndex;
   protected final List<JavaThread> myThreads = ListSequence.fromList(new ArrayList<JavaThread>());
-
   public JavaUiStateImpl(@NotNull DebugSession session) {
     super(session);
     myDebugSession = session;
     myThreadIndex = -1;
   }
-
   /**
    * This constructor is called when user selects some thread from ui
    */
@@ -46,12 +44,9 @@ public abstract class JavaUiStateImpl extends JavaUiState {
       }
     });
   }
-
   public abstract Context getContext();
-
   @Override
   public abstract boolean isPausedOnBreakpoint();
-
   @NotNull
   /*package*/ PausedJavaUiState paused(@NotNull Context context) {
     //  changes state on pause/resume 
@@ -59,7 +54,6 @@ public abstract class JavaUiStateImpl extends JavaUiState {
     //  user probably wants to know about new paused contexts 
     return new PausedJavaUiState(context, myDebugSession);
   }
-
   @NotNull
   /*package*/ JavaUiStateImpl resumed(Context context) {
     if (context != getContext()) {
@@ -71,23 +65,20 @@ public abstract class JavaUiStateImpl extends JavaUiState {
     }
     return new PausedJavaUiState(newContext, myDebugSession);
   }
-
   protected Context findContext(@NotNull JavaUiStateImpl previousState) {
     Context newContext = previousState.getContext();
     JavaThread thread = getThread();
     if (thread == null) {
       return null;
     }
-    if (newContext == null || !(eq_vkri5_a0a0d0j(newContext.getThread(), thread))) {
+    if (newContext == null || !((eq_vkri5_a0a0a3a9(newContext.getThread(), thread)))) {
       return getEventProcessor().getContextManager().findContextForThread(thread.getThread());
     }
     return newContext;
   }
-
   protected EventsProcessor getEventProcessor() {
     return myDebugSession.getEventsProcessor();
   }
-
   @Override
   public void invokeEvaluation(_FunctionTypes._void_P0_E0 command) {
     if (getContext() == null) {
@@ -95,31 +86,27 @@ public abstract class JavaUiStateImpl extends JavaUiState {
     }
     myDebugSession.getEventsProcessor().scheduleEvaluation(command, getThread().getThread());
   }
-
   @Override
   @Nullable
-  public <R> R invokeEvaluationUnderProgress(_FunctionTypes._return_P0_E0<? extends R> command) {
+  public <R> R invokeEvaluationSynchronously(_FunctionTypes._return_P0_E0<? extends R> command) {
     if (getContext() == null) {
       return null;
     }
     return myDebugSession.getEventsProcessor().invokeEvaluationUnderProgress(command, getThread().getThread());
   }
-
   protected synchronized void initializeThreads() {
-    assert !(ModelAccess.instance().isInEDT());
+    assert !(ThreadUtils.isInEDT());
     assert getExecutionState().equals(AbstractDebugSession.ExecutionState.Paused);
 
     for (ThreadReference threadReference : getEventProcessor().getVirtualMachine().allThreads()) {
-      ListSequence.fromList(myThreads).addElement(new JavaThread(threadReference));
+      ListSequence.fromList(myThreads).addElement(new JavaThread(myDebugSession, threadReference));
     }
     assert myThreadIndex < ListSequence.fromList(myThreads).count();
   }
-
   @Nullable
   public JavaThread getCurrentThread() {
     return ListSequence.fromList(myThreads).getElement(myThreadIndex);
   }
-
   @Override
   protected JavaUiStateImpl selectThreadInternal(@Nullable IThread thread) {
     //  changes state on user selection 
@@ -129,7 +116,6 @@ public abstract class JavaUiStateImpl extends JavaUiState {
     }
     return new RunningJavaUiState(myDebugSession, index);
   }
-
   @Override
   public void selectThread(@Nullable final IThread thread) {
     myDebugSession.getEventsProcessor().schedule(new _FunctionTypes._void_P0_E0() {
@@ -141,26 +127,19 @@ public abstract class JavaUiStateImpl extends JavaUiState {
       }
     });
   }
-
   @NotNull
   @Override
   public synchronized List<JavaThread> getThreads() {
     return myThreads;
   }
-
   @Override
   public synchronized JavaThread getThread() {
     return (JavaThread) ListSequence.fromList(myThreads).getElement(myThreadIndex);
   }
-
   protected AbstractDebugSession.ExecutionState getExecutionState() {
     return myDebugSession.getExecutionState();
   }
-
-  private static boolean eq_vkri5_a0a0d0j(Object a, Object b) {
-    return (a != null ?
-      a.equals(b) :
-      a == b
-    );
+  private static boolean eq_vkri5_a0a0a3a9(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
   }
 }

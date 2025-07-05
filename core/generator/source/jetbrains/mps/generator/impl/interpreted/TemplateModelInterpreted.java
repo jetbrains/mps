@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,14 @@
 package jetbrains.mps.generator.impl.interpreted;
 
 import jetbrains.mps.generator.impl.RuleUtil;
-import jetbrains.mps.generator.runtime.*;
+import jetbrains.mps.generator.runtime.TemplateDeclaration;
+import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
+import jetbrains.mps.generator.runtime.TemplateModelBase;
+import jetbrains.mps.generator.runtime.TemplateModule;
+import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -29,15 +33,14 @@ import java.util.Collection;
 /**
  * Evgeny Gryaznov, Nov 29, 2010
  */
-public class TemplateModelInterpreted implements TemplateModel {
+public class TemplateModelInterpreted extends TemplateModelBase {
 
-  private final TemplateModule myModule;
   private final SModel myModel;
   private Collection<TemplateSwitchMapping> mySwitches;
   private Collection<TemplateMappingConfiguration> myMappings;
 
   public TemplateModelInterpreted(TemplateModule module, SModel model) {
-    myModule = module;
+    super(module);
     myModel = model;
     mySwitches = new ArrayList<TemplateSwitchMapping>();
     myMappings = new ArrayList<TemplateMappingConfiguration>();
@@ -46,10 +49,10 @@ public class TemplateModelInterpreted implements TemplateModel {
 
   private void init() {
     for (SNode root : myModel.getRootNodes()) {
-      String conceptName = root.getConcept().getQualifiedName();
-      if (conceptName.equals(RuleUtil.concept_TemplateSwitch)) {
+      SConcept c = root.getConcept();
+      if (RuleUtil.concept_TemplateSwitch.equals(c)) {
         mySwitches.add(new TemplateSwitchMappingInterpreted(root));
-      } else if (conceptName.equals(RuleUtil.concept_MappingConfiguration)) {
+      } else if (RuleUtil.concept_MappingConfiguration.equals(c)) {
         myMappings.add(new TemplateMappingConfigurationInterpreted(this, root));
       }
     }
@@ -68,8 +71,8 @@ public class TemplateModelInterpreted implements TemplateModel {
   @Override
   public TemplateDeclaration loadTemplate(SNodeReference template, Object... arguments) {
     assert template.getModelReference().equals(getSModelReference());
-    SNode templateNode = myModel.getNode(((SNodePointer) template).getNodeId());
-    if (templateNode == null || !RuleUtil.concept_TemplateDeclaration.equals(templateNode.getConcept().getQualifiedName())) {
+    SNode templateNode = template.resolve(myModel.getRepository());
+    if (templateNode == null || !RuleUtil.concept_TemplateDeclaration.equals(templateNode.getConcept())) {
       return null;
     }
 
@@ -78,16 +81,11 @@ public class TemplateModelInterpreted implements TemplateModel {
 
   @Override
   public String getLongName() {
-    return jetbrains.mps.util.SNodeOperations.getModelLongName(myModel);
+    return myModel.getName().getLongName();
   }
 
   @Override
   public SModelReference getSModelReference() {
     return myModel.getReference();
-  }
-
-  @Override
-  public TemplateModule getModule() {
-    return myModule;
   }
 }

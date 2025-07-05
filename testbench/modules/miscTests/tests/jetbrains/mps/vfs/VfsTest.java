@@ -17,10 +17,10 @@ package jetbrains.mps.vfs;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import jetbrains.mps.WorkbenchMpsTest;
-import jetbrains.mps.ide.vfs.IdeaFileSystemProvider;
+import jetbrains.mps.PlatformMpsTest;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.util.ReadUtil;
-import jetbrains.mps.vfs.impl.IoFileSystemProvider;
+import jetbrains.mps.vfs.impl.IoFileSystem;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -29,14 +29,14 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Added on Oct 12, 2010
  *
  * @author Evgeny Gerashchenko
  */
-public class VfsTest extends WorkbenchMpsTest {
+public class VfsTest extends PlatformMpsTest {
   private static final String SUBSUBDIR = "subdir" + File.separator + "subsubdir";
   private static final int FILE_SIZE = 20000;
 
@@ -46,34 +46,44 @@ public class VfsTest extends WorkbenchMpsTest {
   private static final TestInvoker IO_TEST_INVOKER = new TestInvoker() {
     @Override
     public void invokeTest(Runnable testRunnable) {
-      FileSystem.getInstance().setFileSystemProvider(new IoFileSystemProvider());
-      testRunnable.run();
+      FileSystem oldFS = FileSystemExtPoint.getFS();
+      try {
+        FileSystemExtPoint.setFS(IoFileSystem.INSTANCE);
+        testRunnable.run();
+      } finally {
+        FileSystemExtPoint.setFS(oldFS);
+      }
     }
   };
 
   private static final TestInvoker IDEA_TEST_INVOKER = new TestInvoker() {
     @Override
     public void invokeTest(final Runnable testRunnable) {
-      FileSystem.getInstance().setFileSystemProvider(new IdeaFileSystemProvider());
-      final Throwable[] ex = new Throwable[1];
-      ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-        @Override
-        public void run() {
-          ApplicationManager.getApplication().runWriteAction(new Runnable() {
-            @Override
-            public void run() {
-              try {
-                testRunnable.run();
-              } catch (Throwable e) {
-                ex[0] = e;
+      FileSystem oldFS = FileSystemExtPoint.getFS();
+      try {
+        FileSystemExtPoint.setFS(new IdeaFileSystem());
+        final Throwable[] ex = new Throwable[1];
+        ApplicationManager.getApplication().invokeAndWait(new Runnable() {
+          @Override
+          public void run() {
+            ApplicationManager.getApplication().runWriteAction(new Runnable() {
+              @Override
+              public void run() {
+                try {
+                  testRunnable.run();
+                } catch (Throwable e) {
+                  ex[0] = e;
+                }
               }
-            }
-          });
+            });
+          }
+        }, ModalityState.defaultModalityState());
+        if (ex[0] != null) {
+          ex[0].printStackTrace();
+          fail();
         }
-      }, ModalityState.defaultModalityState());
-      if (ex[0] != null) {
-        ex[0].printStackTrace();
-        fail();
+      } finally {
+        FileSystemExtPoint.setFS(oldFS);
       }
     }
   };
@@ -120,7 +130,7 @@ public class VfsTest extends WorkbenchMpsTest {
     }
     assertTrue(file1.exists());
     assertEquals(file1.length(), FILE_SIZE);
-    assertEquals(Arrays.asList(file1), subSubDir.getChildren());
+    assertEquals(Collections.singletonList(file1), subSubDir.getChildren());
 
     try {
       InputStream os = file1.openInputStream();
@@ -210,6 +220,6 @@ public class VfsTest extends WorkbenchMpsTest {
   }
 
   private interface TestInvoker {
-    public void invokeTest(Runnable testRunnable); 
+    void invokeTest(Runnable testRunnable);
   }
 }

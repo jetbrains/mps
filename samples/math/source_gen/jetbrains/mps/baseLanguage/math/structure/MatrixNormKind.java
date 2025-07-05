@@ -4,24 +4,29 @@ package jetbrains.mps.baseLanguage.math.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum MatrixNormKind {
   norm1("1", 0),
-  normInfty("\u221e", 1),
+  normInfty("∞", 1),
   norm2F("F", 2),
   normMax("max", 3);
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final int myValue;
+  MatrixNormKind(String name, int value) {
+    myName = name;
+    myValue = value;
+  }
+  public int getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return "" + this.myValue;
+    return Integer.toString(myValue);
   }
-
   public static List<MatrixNormKind> getConstants() {
     List<MatrixNormKind> list = ListSequence.fromList(new LinkedList<MatrixNormKind>());
     ListSequence.fromList(list).addElement(MatrixNormKind.norm1);
@@ -30,11 +35,9 @@ public enum MatrixNormKind {
     ListSequence.fromList(list).addElement(MatrixNormKind.normMax);
     return list;
   }
-
   public static MatrixNormKind getDefault() {
     return MatrixNormKind.normInfty;
   }
-
   public static MatrixNormKind parseValue(String value) {
     if (value == null) {
       return MatrixNormKind.getDefault();
@@ -52,16 +55,5 @@ public enum MatrixNormKind {
       return MatrixNormKind.normMax;
     }
     return MatrixNormKind.getDefault();
-  }
-
-  private int myValue;
-
-  MatrixNormKind(String name, int value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public int getValue() {
-    return this.myValue;
   }
 }

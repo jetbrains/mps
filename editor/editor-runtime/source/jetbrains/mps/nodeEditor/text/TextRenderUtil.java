@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.text;
 
+import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout;
 import jetbrains.mps.openapi.editor.TextBuilder;
@@ -25,16 +26,18 @@ import jetbrains.mps.openapi.editor.selection.Selection;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility methods to render an editor selection as text.
+ *
+ * @see EditorCell#renderText()
+ */
 public class TextRenderUtil {
 
   public static TextBuilder renderText(Selection selection) {
     if (selection == null || selection.getSelectedCells().size() == 0) {
-      return jetbrains.mps.nodeEditor.text.TextBuilder.getEmptyTextBuilder();
+      return new TextBuilderImpl();
     }
-    List<EditorCell> selectedCells = new ArrayList<EditorCell>();
-    for (EditorCell selectedCell : selection.getSelectedCells()) {
-      selectedCells.add(selectedCell);
-    }
+    List<EditorCell> selectedCells = new ArrayList<>(selection.getSelectedCells());
     EditorCell firstSelectedCell = selectedCells.get(0);
     if (selectedCells.size() == 1) {
       return firstSelectedCell.renderText();

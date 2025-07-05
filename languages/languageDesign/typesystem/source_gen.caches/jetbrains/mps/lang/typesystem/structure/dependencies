@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
+  <dependency className="jetbrains.mps.lang.typesystem.structure.ConceptPresentationAspectImpl" file="ConceptPresentationAspectImpl.java">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.lang.typesystem.structure.IconContainer" />
+    <classNode dependClassName="jetbrains.mps.lang.typesystem.structure.LanguageConceptSwitch" />
+    <classNode dependClassName="jetbrains.mps.lang.typesystem.structure.StructureAspectDescriptor" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConceptPresentation" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConceptPresentationBuilder" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.StructureAspectDescriptor" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode extendsClassName="jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase" />
+  </dependency>
   <dependency className="jetbrains.mps.lang.typesystem.structure.EquationDirection_Enum" file="EquationDirection_Enum.java">
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.LinkedList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.backports.LinkedList" />
   </dependency>
   <dependency className="jetbrains.mps.lang.typesystem.structure.EquationDirection_Enum_PropertySupport" file="EquationDirection_Enum_PropertySupport.java">
     <classNode dependClassName="java.lang.String" />
@@ -13,11 +25,15 @@
     <classNode dependClassName="jetbrains.mps.lang.typesystem.structure.EquationDirection_Enum" />
     <classNode extendsClassName="jetbrains.mps.smodel.PropertySupport" />
   </dependency>
+  <dependency className="jetbrains.mps.lang.typesystem.structure.IconContainer" file="IconContainer.java">
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.IconResource" />
+  </dependency>
   <dependency className="jetbrains.mps.lang.typesystem.structure.InequalityProperty" file="InequalityProperty.java">
+    <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.LinkedList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.backports.LinkedList" />
   </dependency>
   <dependency className="jetbrains.mps.lang.typesystem.structure.InequalityProperty_PropertySupport" file="InequalityProperty_PropertySupport.java">
     <classNode dependClassName="java.lang.String" />
@@ -27,10 +43,11 @@
     <classNode extendsClassName="jetbrains.mps.smodel.PropertySupport" />
   </dependency>
   <dependency className="jetbrains.mps.lang.typesystem.structure.InequationPriority" file="InequationPriority.java">
+    <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.LinkedList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.backports.LinkedList" />
   </dependency>
   <dependency className="jetbrains.mps.lang.typesystem.structure.InequationPriority_PropertySupport" file="InequationPriority_PropertySupport.java">
     <classNode dependClassName="java.lang.String" />
@@ -39,11 +56,17 @@
     <classNode dependClassName="jetbrains.mps.lang.typesystem.structure.InequationPriority" />
     <classNode extendsClassName="jetbrains.mps.smodel.PropertySupport" />
   </dependency>
+  <dependency className="jetbrains.mps.lang.typesystem.structure.LanguageConceptSwitch" file="LanguageConceptSwitch.java">
+    <classNode dependClassName="jetbrains.mps.lang.smodel.LanguageConceptIndex" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.LanguageConceptIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SConceptId" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+  </dependency>
   <dependency className="jetbrains.mps.lang.typesystem.structure.RestrictionKind" file="RestrictionKind.java">
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.LinkedList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.backports.LinkedList" />
   </dependency>
   <dependency className="jetbrains.mps.lang.typesystem.structure.RestrictionKind_PropertySupport" file="RestrictionKind_PropertySupport.java">
     <classNode dependClassName="java.lang.String" />
@@ -53,13 +76,18 @@
     <classNode extendsClassName="jetbrains.mps.smodel.PropertySupport" />
   </dependency>
   <dependency className="jetbrains.mps.lang.typesystem.structure.StructureAspectDescriptor" file="StructureAspectDescriptor.java">
-    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Arrays" />
+    <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="jetbrains.mps.lang.typesystem.structure.LanguageConceptSwitch" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SConceptId" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.ConceptDescriptor" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConceptKind" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.StaticScope" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.interpreted.StructureAspectInterpreted" />
-    <classNode extendsClassName="jetbrains.mps.smodel.runtime.StructureAspectDescriptor" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode extendsClassName="jetbrains.mps.smodel.runtime.BaseStructureAspectDescriptor" />
   </dependency>
 </dependenciesRoot>
 

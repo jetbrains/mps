@@ -15,12 +15,15 @@
  */
 package jetbrains.mps.progress;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 
 /**
+ * @deprecated Dubious added value of the class don't justify its existence, will be removed after 3.1
  * Evgeny Gryaznov, 10/3/11
  */
+@Deprecated
 public class CancellationMonitor implements ProgressMonitor {
 
   private final ProgressMonitor wrapped;
@@ -30,7 +33,7 @@ public class CancellationMonitor implements ProgressMonitor {
   }
 
   @Override
-  public void start(String taskName, int totalWork) {
+  public void start(@NotNull String taskName, int totalWork) {
   }
 
   @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,22 @@
  */
 package jetbrains.mps.extapi.persistence;
 
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
+import jetbrains.mps.util.FileUtil;
+import org.jetbrains.mps.openapi.persistence.NullDataSource.NullDataSourceType;
+import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
+import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
+import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
+import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.vfs.FileSystemEvent;
 import jetbrains.mps.vfs.FileSystemListener;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.DataSourceListener;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,27 +41,44 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * evgeny, 11/2/12
+ * A data source which points explicitly to the single file location.
+ * Currently it also knows something about vfs (listens to the events)
+ * but it is going to be cleared away.
+ * Also it is worth considering the merging of this notion with the <code>FolderDataSource</code>
+ * and others which points to some files on the file system.
+ * It seems that it is unnecessary to separate these entities [as soon as there is no additional vfs functionality]
+ * AP
+ *
+ * @author evgeny, 11/2/12
  */
 public class FileDataSource extends DataSourceBase implements StreamDataSource, FileSystemListener, FileSystemBasedDataSource {
-
   private final Object LOCK = new Object();
   private List<DataSourceListener> myListeners = new ArrayList<DataSourceListener>();
 
-  @NotNull
-  private IFile myFile;
-  protected final ModelRoot myModelRoot;
+  @NotNull private IFile myFile;
+  final ModelRoot myModelRoot; // fixme is needed only for the file system dependencies, to be removed
 
+  /**
+   * @deprecated see below
+   */
+  @Deprecated
+  @ToRemove(version = 3.5) // will become package-private
   public FileDataSource(@NotNull IFile file) {
     this(file, null);
   }
 
   /**
+   * FIXME remove modelRoot parameter
    * @param modelRoot (optional) containing model root, which should be notified before the source during the update
+   *
+   * @deprecated use {@link DataSourceFactoryRuleService#getFactory} AND
+   *             {@link DataSourceFactoryFromName#create}
    */
-  public FileDataSource(@NotNull IFile file, ModelRoot modelRoot) {
-    this.myFile = file;
-    this.myModelRoot = modelRoot;
+  @ToRemove(version = 3.5)
+  @Deprecated
+  public FileDataSource(@NotNull IFile file, @Nullable ModelRoot modelRoot) {
+    myFile = file;
+    myModelRoot = modelRoot;
   }
 
   @NotNull
@@ -63,25 +87,18 @@ public class FileDataSource extends DataSourceBase implements StreamDataSource, 
   }
 
   public void setFile(@NotNull IFile file) {
-    ModelAccess.assertLegalWrite();
-
-    myFile = file;
     synchronized (LOCK) {
       if (!(myListeners.isEmpty())) {
         stopListening();
+        myFile = file;
         startListening();
       }
     }
   }
 
   @Override
-  public String toString() {
-    return "FileDataSource(" + myFile.toString() + ")";
-  }
-
-  @Override
   public boolean isReadOnly() {
-    return FileSystem.getInstance().isPackaged(myFile);
+    return myFile.isInArchive() || myFile.isReadOnly();
   }
 
   @NotNull
@@ -102,7 +119,7 @@ public class FileDataSource extends DataSourceBase implements StreamDataSource, 
 
   @Override
   public void refresh() {
-    FileSystem.getInstance().refresh(myFile);
+    myFile.refresh();
   }
 
   @Override
@@ -112,7 +129,7 @@ public class FileDataSource extends DataSourceBase implements StreamDataSource, 
   }
 
   @Override
-  public final void addListener(DataSourceListener listener) {
+  public final void addListener(@NotNull DataSourceListener listener) {
     synchronized (LOCK) {
       if (myListeners.isEmpty()) {
         startListening();
@@ -122,11 +139,11 @@ public class FileDataSource extends DataSourceBase implements StreamDataSource, 
   }
 
   protected void startListening() {
-    FileSystem.getInstance().addListener(this);
+    myFile.getFileSystem().addListener(this);
   }
 
   @Override
-  public final void removeListener(DataSourceListener listener) {
+  public final void removeListener(@NotNull DataSourceListener listener) {
     synchronized (LOCK) {
       myListeners.remove(listener);
       if (myListeners.isEmpty()) {
@@ -135,10 +152,18 @@ public class FileDataSource extends DataSourceBase implements StreamDataSource, 
     }
   }
 
-  protected void stopListening() {
-    FileSystem.getInstance().removeListener(this);
+  @Override
+  public void delete() {
+    if (myFile.exists() && !isReadOnly()) {
+      myFile.delete();
+    }
   }
 
+  protected void stopListening() {
+    myFile.getFileSystem().removeListener(this);
+  }
+
+  @NotNull
   @Override
   public IFile getFileToListen() {
     return myFile;
@@ -153,7 +178,7 @@ public class FileDataSource extends DataSourceBase implements StreamDataSource, 
     return null;
   }
 
-  protected FileSystemListener getParentListener() {
+  FileSystemListener getParentListener() {
     if (myModelRoot instanceof FileSystemListener) {
       return (FileSystemListener) myModelRoot;
     }
@@ -164,7 +189,7 @@ public class FileDataSource extends DataSourceBase implements StreamDataSource, 
   }
 
   @Override
-  public void update(ProgressMonitor monitor, FileSystemEvent event) {
+  public void update(ProgressMonitor monitor, @NotNull FileSystemEvent event) {
     for (IFile file : event.getChanged()) {
       if (file.equals(myFile)) {
         fireChanged(monitor);
@@ -177,7 +202,7 @@ public class FileDataSource extends DataSourceBase implements StreamDataSource, 
   protected void fireChanged(ProgressMonitor monitor) {
     List<DataSourceListener> listeners;
     synchronized (LOCK) {
-      listeners = new ArrayList<DataSourceListener>(myListeners);
+      listeners = new ArrayList<>(myListeners);
     }
     monitor.start("Reloading", listeners.size());
     try {
@@ -190,8 +215,19 @@ public class FileDataSource extends DataSourceBase implements StreamDataSource, 
     }
   }
 
+  @NotNull
   @Override
   public Collection<IFile> getAffectedFiles() {
     return Collections.singleton(myFile);
+  }
+
+  @NotNull
+  @Override
+  public DataSourceType getType() {
+    String extension = FileUtil.getExtension(myFile.getPath());
+    if (extension == null) {
+      return NullDataSourceType.INSTANCE;
+    }
+    return FileExtensionDataSourceType.of(extension);
   }
 }

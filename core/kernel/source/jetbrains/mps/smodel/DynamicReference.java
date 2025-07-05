@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,20 @@
  */
 package jetbrains.mps.smodel;
 
-import org.apache.log4j.LogManager;
-import org.jetbrains.mps.openapi.model.SModelReference;import org.jetbrains.mps.openapi.model.SModel;
-
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.logging.Logger;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
+import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Immutable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SModelName;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -52,6 +54,15 @@ public class DynamicReference extends SReferenceBase {
       return new HashSet<DynamicReference>();
     }
   };
+  // we also keep track of references for which we call reportErrorWithOrigin
+  // we need this because it will call source node's getPresentation() which in turn might resolve us again
+  // we don't want to report loop in this case, rather just return null
+  private static final ThreadLocal<Set<DynamicReference>> currentlySourceNodeLogged = new ThreadLocal<Set<DynamicReference>>() {
+    @Override
+    protected Set<DynamicReference> initialValue() {
+      return new HashSet<DynamicReference>();
+    }
+  };
 
   private boolean myHasBeenResolve;
   private SNode myCachedTargetNode;
@@ -59,6 +70,8 @@ public class DynamicReference extends SReferenceBase {
   /*
    * create 'young' reference
    */
+  @Deprecated
+  @ToRemove(version = 3.5) //maybe possible to remove in 3.4
   public DynamicReference(@NotNull String role, @NotNull SNode sourceNode, @NotNull SNode immatureTargetNode) {
     super(role, sourceNode, null, immatureTargetNode);
   }
@@ -66,18 +79,35 @@ public class DynamicReference extends SReferenceBase {
   /*
    * create 'mature' reference
    */
+  @Deprecated
   public DynamicReference(@NotNull String role, @NotNull SNode sourceNode, @Nullable SModelReference targetModelReference, String resolveInfo) {
+    this(((ConceptMetaInfoConverter) sourceNode.getConcept()).convertAssociation(role), sourceNode, targetModelReference == null ? null : targetModelReference.getName(), resolveInfo);
+  }
+
+  public DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @Nullable SModelReference targetModelReference, String resolveInfo) {
+    this(role, sourceNode, targetModelReference == null ? null : targetModelReference.getName(), resolveInfo);
+  }
+
+  public static DynamicReference createDynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @Nullable String modelName, String resolveInfo) {
+    return new DynamicReference(role, sourceNode, modelName == null ? null : new SModelName(modelName), resolveInfo);
+  }
+
+  private DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @Nullable SModelName modelName, String resolveInfo) {
     super(role, sourceNode, null, null);
-    if (targetModelReference != null && !resolveInfo.startsWith(SModelStereotype.withoutStereotype(targetModelReference.getModelName())) && isTargetClassifier(sourceNode, role)) {
+    if (modelName != null && !resolveInfo.startsWith(modelName.getLongName()) && isTargetClassifier(role)) {
       // hack for classifiers resolving with specified targetModelReference. For now (18/04/2012) targetModelReference used only for Classifiers (in stubs and [model]node construction).
-      setResolveInfo(SModelStereotype.withoutStereotype(targetModelReference.getModelName()) + "." + resolveInfo);
+      setResolveInfo(modelName.getLongName() + '.' + resolveInfo);
     } else {
       setResolveInfo(resolveInfo);
     }
   }
 
-  private boolean isTargetClassifier(SNode node, String role) {
-    return SConceptOperations.isSubConceptOf(SLinkOperations.getTarget(SLinkOperations.findLinkDeclaration(node.getConcept().getQualifiedName(), role), "target", false), "jetbrains.mps.baseLanguage.structure.Classifier");
+  private static boolean isTargetClassifier(@NotNull SReferenceLink role) {
+    SAbstractConcept lnkTarget = role.getTargetConcept();
+    if (lnkTarget == null) {
+      return false;
+    }
+    return lnkTarget.isSubConceptOf(SNodeUtil.concept_Classifier);
   }
 
   @Override
@@ -90,9 +120,13 @@ public class DynamicReference extends SReferenceBase {
 
 
     final Set<DynamicReference> currentRefs = currentlyResolved.get();
+    final Set<DynamicReference> loggedRefs = currentlySourceNodeLogged.get();
     if (currentRefs.contains(this)) {
       // loop detected!
-      LOG.errorWithTrace("Loop detected in dynamic references (number of current dyn. refs: " + currentRefs.size() + ")");
+      if (!loggedRefs.contains(this)) {
+        // it's not spurious loop, via logging. it's real, let's complain
+        LOG.errorWithTrace("Loop detected in dynamic references (number of current dyn. refs: " + currentRefs.size() + ")");
+      }
       return null;
     }
 
@@ -126,6 +160,7 @@ public class DynamicReference extends SReferenceBase {
       }
 
       if (targetNode == null) {
+
         reportErrorWithOrigin("cannot resolve reference by string: '" + getResolveInfo() + "'");
       }
 
@@ -139,32 +174,36 @@ public class DynamicReference extends SReferenceBase {
     }
   }
 
-  private void reportErrorWithOrigin(String message) {
-    if (myOrigin != null) {
-      List<ProblemDescription> result = new ArrayList<ProblemDescription>(2);
-      if (myOrigin.getInputNode() != null) {
-        result.add(new ProblemDescription(myOrigin.getInputNode(), " -- was input: " + myOrigin.getInputNode().toString()));
-      }
-      if (myOrigin.getTemplate() != null) {
-        result.add(new ProblemDescription(myOrigin.getTemplate(), " -- was template: " + myOrigin.getTemplate().toString()));
-      }
-      if (result.size() > 0) {
-        error(message, result.toArray(new ProblemDescription[result.size()]));
-        return;
-      }
+  @Override
+  public SNodeReference getTargetNodeReference() {
+    SNode targetNode = getTargetNode_internal();
+    if (targetNode == null) {
+      return new SNodePointer(null);
     }
-    error(message);
+    return targetNode.getReference();
   }
 
-  private SModule getModule() {
-    SModel model = getSourceNode().getModel();
-    if (model != null) {
-      SModel descr = model;
-      if (descr != null) {
-        return descr.getModule();
+  private void reportErrorWithOrigin(String message) {
+    Set<DynamicReference> refs = currentlySourceNodeLogged.get();
+    try {
+      refs.add(this);
+      if (myOrigin != null) {
+        List<ProblemDescription> result = new ArrayList<ProblemDescription>(2);
+        if (myOrigin.getInputNode() != null) {
+          result.add(new ProblemDescription(myOrigin.getInputNode(), " -- was input: " + myOrigin.getInputNode().toString()));
+        }
+        if (myOrigin.getTemplate() != null) {
+          result.add(new ProblemDescription(myOrigin.getTemplate(), " -- was template: " + myOrigin.getTemplate().toString()));
+        }
+        if (result.size() > 0) {
+          error(message, false, result.toArray(new ProblemDescription[result.size()]));
+          return;
+        }
       }
+      error(message, false);
+    } finally {
+      refs.remove(this);
     }
-    return null;
   }
 
   @Override
@@ -177,14 +216,16 @@ public class DynamicReference extends SReferenceBase {
 
   }
 
+  @Nullable
   public DynamicReferenceOrigin getOrigin() {
     return myOrigin;
   }
 
-  public void setOrigin(DynamicReferenceOrigin origin) {
+  public void setOrigin(@Nullable DynamicReferenceOrigin origin) {
     myOrigin = origin;
   }
 
+  @Immutable
   public static class DynamicReferenceOrigin {
     private final SNodeReference template;
     private final SNodeReference inputNode;

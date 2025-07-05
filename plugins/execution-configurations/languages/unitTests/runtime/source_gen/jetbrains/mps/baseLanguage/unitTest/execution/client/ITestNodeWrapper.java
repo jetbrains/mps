@@ -7,21 +7,20 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NonNls;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import java.util.List;
 
 public interface ITestNodeWrapper<N extends SNode> {
-  public N getNode();
-  public SNodeReference getNodePointer();
-  public boolean isTestCase();
+  N getNode();
+  SNodeReference getNodePointer();
+  boolean isTestCase();
   @Nullable
-  public ITestNodeWrapper getTestCase();
+  ITestNodeWrapper getTestCase();
   @NotNull
-  public Iterable<ITestNodeWrapper> getTestMethods();
+  Iterable<ITestNodeWrapper> getTestMethods();
   @NonNls
-  public String getName();
+  String getName();
   @NonNls
-  public String getFqName();
-  public String getCachedFqName();
-  public Tuples._3<String, List<String>, List<String>> getTestRunParameters();
+  String getFqName();
+  String getCachedFqName();
+  @NotNull
+  TestParameters getTestRunParameters();
 }

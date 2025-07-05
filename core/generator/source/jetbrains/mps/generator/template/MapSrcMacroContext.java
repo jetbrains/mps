@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2013 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,22 +15,30 @@
  */
 package jetbrains.mps.generator.template;
 
+import jetbrains.mps.generator.runtime.NodePostProcessor;
 import jetbrains.mps.generator.runtime.TemplateContext;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.annotations.NotNull;
 
 public class MapSrcMacroContext extends TemplateQueryContextWithMacro {
   private SNode myParentOutputNode;
 
-  public MapSrcMacroContext(SNode node, SNode macroNode, SNode parentOutputNode, TemplateContext context, ITemplateGenerator generator) {
-    super(node, macroNode, context, generator);
+  /**
+   * @since 3.1
+   */
+  public MapSrcMacroContext(@NotNull TemplateContext context, SNode parentOutputNode, @NotNull SNodeReference macroNode) {
+    super(context, macroNode);
     myParentOutputNode = parentOutputNode;
   }
 
-  public MapSrcMacroContext(SNode node, @NotNull SNodeReference macroNode, SNode parentOutputNode, TemplateContext context, @NotNull ITemplateGenerator generator) {
-    super(node, macroNode, context, generator);
-    myParentOutputNode = parentOutputNode;
+  /**
+   * @param postProcessor description of the post-processing code
+   * @since 3.3
+   */
+  public MapSrcMacroContext(@NotNull NodePostProcessor postProcessor) {
+    super(postProcessor.getTemplateContext(), postProcessor.getTemplateNode());
+    myParentOutputNode = postProcessor.getOutputAnchor().getParent();
   }
 
   /**

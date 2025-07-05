@@ -15,10 +15,12 @@
  */
 package jetbrains.mps.nodeEditor.cellProviders;
 
+import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.nodeEditor.AbstractCellProvider;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
+import jetbrains.mps.openapi.editor.update.AttributeKind;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public abstract class CellProviderWithRole extends AbstractCellProvider {
@@ -26,6 +28,7 @@ public abstract class CellProviderWithRole extends AbstractCellProvider {
   protected EditorContext myEditorContext;
 
   // auxiliary cell provider, which may help to create some parts of resulting cell (used in inheritors)
+  @Deprecated
   protected AbstractCellProvider myAuxiliaryCellProvider;
 
   // if the cell to provide "allows" "empty" target of its relation.
@@ -41,7 +44,7 @@ public abstract class CellProviderWithRole extends AbstractCellProvider {
 
 
   //it is important for descendants to have a unique constructor and with the same parameters as this one 
-  public CellProviderWithRole(SNode node, EditorContext context) {
+  public CellProviderWithRole(@NotNull SNode node, EditorContext context) {
     super(node);
     myEditorContext = context;
   }
@@ -54,12 +57,16 @@ public abstract class CellProviderWithRole extends AbstractCellProvider {
   public abstract void setRole(Object role);
 
   //gets an attribute for this provider's node hanging on this provider's role
-  public abstract SNode getRoleAttribute();
+  public SNode getRoleAttribute() {
+    // todo: why only first?
+    return IterableUtils.first(getRoleAttributes());
+  }
+
+  //gets an attribute for this provider's node hanging on this provider's role
+  public abstract Iterable<SNode> getRoleAttributes();
 
   // gets a kind of attributes possibly hanging on this provider's role.
-  //todo replace with AttributeKind
-  public abstract Class getRoleAttributeClass();
-
+  public abstract AttributeKind getRoleAttributeKind();
 
   public abstract SubstituteInfo createDefaultSubstituteInfo();
 
@@ -84,31 +91,19 @@ public abstract class CellProviderWithRole extends AbstractCellProvider {
     myAllowsEmptyTarget = allowsEmptyTarget;
   }
 
+  /**
+   * @deprecated Since MPS 3.5 not used
+   */
+  @Deprecated
   public void setAuxiliaryCellProvider(AbstractCellProvider provider) {
     myAuxiliaryCellProvider = provider;
   }
 
-  public AbstractCellProvider getAuxiliaryCellProvider() {
-    return myAuxiliaryCellProvider;
-  }
-
   /**
-   * Since MPS 3.0 can be removed together with deprecated
-   * <code>createEditorCell(jetbrains.mps.nodeEditor.EditorContext editorContext)</code> method below
-   */
-  @Override
-  public EditorCell createEditorCell(EditorContext editorContext) {
-    throw new RuntimeException("Method not implemented");
-  }
-
-  /**
-   * @deprecated starting from MPS 3.0 another method should be used:
-   *             <code>createEditorCell(jetbrains.mps.openapi.editor.EditorContext editorContext)</code>
+   * @deprecated Since MPS 3.5 not used
    */
   @Deprecated
-  @Override
-  public jetbrains.mps.nodeEditor.cells.EditorCell createEditorCell(jetbrains.mps.nodeEditor.EditorContext editorContext) {
-    // calling new method for the compatibility with generated code
-    return (jetbrains.mps.nodeEditor.cells.EditorCell) createEditorCell((EditorContext) editorContext);
+  public AbstractCellProvider getAuxiliaryCellProvider() {
+    return myAuxiliaryCellProvider;
   }
 }

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.SNodeId;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.psi.impl.light.LightElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiJavaFile;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -20,8 +19,7 @@ import jetbrains.mps.idea.core.facet.MPSFacet;
 import com.intellij.facet.FacetManager;
 import jetbrains.mps.idea.core.facet.MPSFacetType;
 import com.intellij.util.xml.ModuleContentRootSearchScope;
-import jetbrains.mps.ide.java.sourceStubs.Util;
-import jetbrains.mps.smodel.SModelFqName;
+import jetbrains.mps.java.stub.JavaPackageNameStub;
 import jetbrains.mps.smodel.SModelId;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiField;
@@ -33,7 +31,6 @@ import com.intellij.psi.PsiType;
 
 public class JavaForeignIdBuilder {
 
-
   public static NodePtr computeNodePtr(PsiElement element) {
     SNodeId nodeId = computeNodeId(element);
     SModelReference modelRef = computeModelReference(element);
@@ -43,13 +40,8 @@ public class JavaForeignIdBuilder {
     return new NodePtr(modelRef, nodeId);
   }
 
-
-
   @Nullable
   public static SNodeId.Foreign computeNodeId(@NotNull PsiElement element) {
-
-    assert !((element instanceof LightElement)) : "Light psi element " + ((LightElement) element).getName() + " in " + element.getContainingFile();
-
     PsiElement parent = element.getParent();
     String prefix;
     if (parent instanceof PsiFile) {
@@ -69,8 +61,6 @@ public class JavaForeignIdBuilder {
     }
     return computeNodeId(prefix, element);
   }
-
-
 
   @Nullable
   public static SModelReference computeModelReference(PsiElement element) {
@@ -103,10 +93,8 @@ public class JavaForeignIdBuilder {
     if (mpsModule == null) {
       return null;
     }
-    return Util.makeModelReference(packageName, mpsModule);
+    return new JavaPackageNameStub(packageName).asModelReference(mpsModule.getModuleReference());
   }
-
-
 
   /*package*/ static jetbrains.mps.smodel.SModelReference computeModelReference(String packageName, String mpsModuleId) {
     String stereotype = "java_stub";
@@ -114,13 +102,10 @@ public class JavaForeignIdBuilder {
       packageName = "<default package>";
     }
 
-    SModelFqName fqName = new SModelFqName(packageName, stereotype);
-    SModelId modelId = SModelId.foreign(fqName.getStereotype(), mpsModuleId, fqName.getLongName());
+    SModelId modelId = SModelId.foreign(stereotype, packageName);
 
-    return new jetbrains.mps.smodel.SModelReference(fqName, modelId);
+    return new jetbrains.mps.smodel.SModelReference(null, modelId, packageName + "@" + stereotype);
   }
-
-
 
   /*package*/ static SNodeId.Foreign computeNodeId(String prefix, PsiElement element) {
     StringBuilder sb = new StringBuilder(prefix);

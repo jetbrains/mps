@@ -1,235 +1,210 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <unitInfo fileName="DFABuilders.java" startLine="8" startPosition="0" endLine="28" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.DFABuilders" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <root>
+    <file name="DataFlowAspectDescriptorImpl.java">
+      <unit at="15,0,60,0" name="jetbrains.mps.baseLanguage.math.dataFlow.DataFlowAspectDescriptorImpl" />
+    </file>
+  </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/1236428213402">
-    <nodeInfo nodeId="1236428216296" fileName="MathSymbolIndexReference_DataFlow.java" startLine="14" startPosition="102" endLine="15" endPosition="199" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1236428213402" fileName="MathSymbolIndexReference_DataFlow.java" startLine="11" startPosition="0" endLine="13" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MathSymbolIndexReference_DataFlow#()V" />
-    <nodeInfo nodeId="1236428213402" fileName="MathSymbolIndexReference_DataFlow.java" startLine="14" startPosition="0" endLine="17" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="1236428213402" fileName="MathSymbolIndexReference_DataFlow.java" startLine="11" startPosition="46" endLine="11" endPosition="46" />
-    <scopeInfo nodeId="1236428213404" fileName="MathSymbolIndexReference_DataFlow.java" startLine="14" startPosition="102" endLine="15" endPosition="199" />
-    <scopeInfo nodeId="1236428213402" fileName="MathSymbolIndexReference_DataFlow.java" startLine="11" startPosition="0" endLine="13" endPosition="0" />
-    <scopeInfo nodeId="1236428213402" fileName="MathSymbolIndexReference_DataFlow.java" startLine="14" startPosition="0" endLine="17" endPosition="0">
-      <varInfo nodeId="1236428213402" varName="_context" />
-      <varInfo nodeId="1236428213402" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1236428213402" fileName="MathSymbolIndexReference_DataFlow.java" startLine="10" startPosition="0" endLine="18" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.MathSymbolIndexReference_DataFlow" />
+    <file name="MathSymbolIndexReference_DataFlow.java">
+      <node id="1236428216296" at="11,60,12,303" concept="0" />
+      <node id="1236428213402" at="11,0,14,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1236428213404" at="11,60,12,303" />
+      <scope id="1236428213402" at="11,0,14,0">
+        <var name="_context" id="1236428213402" />
+      </scope>
+      <unit id="1236428213402" at="10,0,15,0" name="jetbrains.mps.baseLanguage.math.dataFlow.MathSymbolIndexReference_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/1236428241304">
-    <nodeInfo nodeId="1236595047854" fileName="MathSymbolIndex_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="105" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1236428243667" fileName="MathSymbolIndex_DataFlow.java" startLine="16" startPosition="105" endLine="17" endPosition="154" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1236428241304" fileName="MathSymbolIndex_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MathSymbolIndex_DataFlow#()V" />
-    <nodeInfo nodeId="1236428241304" fileName="MathSymbolIndex_DataFlow.java" startLine="15" startPosition="0" endLine="19" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="1236428241304" fileName="MathSymbolIndex_DataFlow.java" startLine="12" startPosition="37" endLine="12" endPosition="37" />
-    <scopeInfo nodeId="1236428241304" fileName="MathSymbolIndex_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="1236428241306" fileName="MathSymbolIndex_DataFlow.java" startLine="15" startPosition="102" endLine="17" endPosition="154" />
-    <scopeInfo nodeId="1236428241304" fileName="MathSymbolIndex_DataFlow.java" startLine="15" startPosition="0" endLine="19" endPosition="0">
-      <varInfo nodeId="1236428241304" varName="_context" />
-      <varInfo nodeId="1236428241304" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1236428241304" fileName="MathSymbolIndex_DataFlow.java" startLine="11" startPosition="0" endLine="20" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.MathSymbolIndex_DataFlow" />
+    <file name="MathSymbolIndex_DataFlow.java">
+      <node id="1236595047854" at="12,60,13,212" concept="0" />
+      <node id="1236428243667" at="13,212,14,154" concept="0" />
+      <node id="1236428241304" at="12,0,16,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1236428241306" at="12,60,14,154" />
+      <scope id="1236428241304" at="12,0,16,0">
+        <var name="_context" id="1236428241304" />
+      </scope>
+      <unit id="1236428241304" at="11,0,17,0" name="jetbrains.mps.baseLanguage.math.dataFlow.MathSymbolIndex_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/1236428269346">
-    <nodeInfo nodeId="1236428335500" fileName="MathSymbol_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="100" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1236428397970" fileName="MathSymbol_DataFlow.java" startLine="16" startPosition="100" endLine="17" endPosition="109" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1236428409745" fileName="MathSymbol_DataFlow.java" startLine="17" startPosition="109" endLine="18" endPosition="107" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1236428269346" fileName="MathSymbol_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MathSymbol_DataFlow#()V" />
-    <nodeInfo nodeId="1236428269346" fileName="MathSymbol_DataFlow.java" startLine="15" startPosition="0" endLine="20" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="1236428269346" fileName="MathSymbol_DataFlow.java" startLine="12" startPosition="32" endLine="12" endPosition="32" />
-    <scopeInfo nodeId="1236428269346" fileName="MathSymbol_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="1236428269348" fileName="MathSymbol_DataFlow.java" startLine="15" startPosition="102" endLine="18" endPosition="107" />
-    <scopeInfo nodeId="1236428269346" fileName="MathSymbol_DataFlow.java" startLine="15" startPosition="0" endLine="20" endPosition="0">
-      <varInfo nodeId="1236428269346" varName="_context" />
-      <varInfo nodeId="1236428269346" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1236428269346" fileName="MathSymbol_DataFlow.java" startLine="11" startPosition="0" endLine="21" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.MathSymbol_DataFlow" />
+    <file name="MathSymbol_DataFlow.java">
+      <node id="1236428335500" at="12,60,13,207" concept="0" />
+      <node id="1236428397970" at="13,207,14,216" concept="0" />
+      <node id="1236428409745" at="14,216,15,214" concept="0" />
+      <node id="1236428269346" at="12,0,17,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1236428269348" at="12,60,15,214" />
+      <scope id="1236428269346" at="12,0,17,0">
+        <var name="_context" id="1236428269346" />
+      </scope>
+      <unit id="1236428269346" at="11,0,18,0" name="jetbrains.mps.baseLanguage.math.dataFlow.MathSymbol_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/1236595058300">
-    <nodeInfo nodeId="1236595061381" fileName="MathSymbolFromToIndex_DataFlow.java" startLine="16" startPosition="102" endLine="17" endPosition="154" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1236595367597" fileName="MathSymbolFromToIndex_DataFlow.java" startLine="17" startPosition="154" endLine="18" endPosition="101" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1236595372169" fileName="MathSymbolFromToIndex_DataFlow.java" startLine="18" startPosition="101" endLine="19" endPosition="212" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1236595058300" fileName="MathSymbolFromToIndex_DataFlow.java" startLine="13" startPosition="0" endLine="15" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MathSymbolFromToIndex_DataFlow#()V" />
-    <nodeInfo nodeId="1236595058300" fileName="MathSymbolFromToIndex_DataFlow.java" startLine="16" startPosition="0" endLine="21" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="1236595058300" fileName="MathSymbolFromToIndex_DataFlow.java" startLine="13" startPosition="43" endLine="13" endPosition="43" />
-    <scopeInfo nodeId="1236595058300" fileName="MathSymbolFromToIndex_DataFlow.java" startLine="13" startPosition="0" endLine="15" endPosition="0" />
-    <scopeInfo nodeId="1236595058302" fileName="MathSymbolFromToIndex_DataFlow.java" startLine="16" startPosition="102" endLine="19" endPosition="212" />
-    <scopeInfo nodeId="1236595058300" fileName="MathSymbolFromToIndex_DataFlow.java" startLine="16" startPosition="0" endLine="21" endPosition="0">
-      <varInfo nodeId="1236595058300" varName="_context" />
-      <varInfo nodeId="1236595058300" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1236595058300" fileName="MathSymbolFromToIndex_DataFlow.java" startLine="12" startPosition="0" endLine="22" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.MathSymbolFromToIndex_DataFlow" />
+    <file name="MathSymbolFromToIndex_DataFlow.java">
+      <node id="1236595061381" at="13,60,14,154" concept="0" />
+      <node id="1236595367597" at="14,154,15,208" concept="0" />
+      <node id="1236595372169" at="15,208,16,408" concept="0" />
+      <node id="1236595058300" at="13,0,18,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1236595058302" at="13,60,16,408" />
+      <scope id="1236595058300" at="13,0,18,0">
+        <var name="_context" id="1236595058300" />
+      </scope>
+      <unit id="1236595058300" at="12,0,19,0" name="jetbrains.mps.baseLanguage.math.dataFlow.MathSymbolFromToIndex_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/1237104084169">
-    <nodeInfo nodeId="1237104089312" fileName="DivExpressionFraction_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="106" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1237104097196" fileName="DivExpressionFraction_DataFlow.java" startLine="16" startPosition="106" endLine="17" endPosition="108" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1237104084169" fileName="DivExpressionFraction_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="DivExpressionFraction_DataFlow#()V" />
-    <nodeInfo nodeId="1237104084169" fileName="DivExpressionFraction_DataFlow.java" startLine="15" startPosition="0" endLine="19" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="1237104084169" fileName="DivExpressionFraction_DataFlow.java" startLine="12" startPosition="43" endLine="12" endPosition="43" />
-    <scopeInfo nodeId="1237104084169" fileName="DivExpressionFraction_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="1237104084171" fileName="DivExpressionFraction_DataFlow.java" startLine="15" startPosition="102" endLine="17" endPosition="108" />
-    <scopeInfo nodeId="1237104084169" fileName="DivExpressionFraction_DataFlow.java" startLine="15" startPosition="0" endLine="19" endPosition="0">
-      <varInfo nodeId="1237104084169" varName="_context" />
-      <varInfo nodeId="1237104084169" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1237104084169" fileName="DivExpressionFraction_DataFlow.java" startLine="11" startPosition="0" endLine="20" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.DivExpressionFraction_DataFlow" />
+    <file name="DivExpressionFraction_DataFlow.java">
+      <node id="1237104089312" at="12,60,13,213" concept="0" />
+      <node id="1237104097196" at="13,213,14,215" concept="0" />
+      <node id="1237104084169" at="12,0,16,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1237104084171" at="12,60,14,215" />
+      <scope id="1237104084169" at="12,0,16,0">
+        <var name="_context" id="1237104084169" />
+      </scope>
+      <unit id="1237104084169" at="11,0,17,0" name="jetbrains.mps.baseLanguage.math.dataFlow.DivExpressionFraction_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/1418611629042596876">
-    <nodeInfo nodeId="1418611629042596879" fileName="MatrixZero_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="101" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1418611629042596882" fileName="MatrixZero_DataFlow.java" startLine="16" startPosition="101" endLine="17" endPosition="104" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1418611629042596876" fileName="MatrixZero_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MatrixZero_DataFlow#()V" />
-    <nodeInfo nodeId="1418611629042596876" fileName="MatrixZero_DataFlow.java" startLine="15" startPosition="0" endLine="19" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="1418611629042596876" fileName="MatrixZero_DataFlow.java" startLine="12" startPosition="32" endLine="12" endPosition="32" />
-    <scopeInfo nodeId="1418611629042596876" fileName="MatrixZero_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="1418611629042596878" fileName="MatrixZero_DataFlow.java" startLine="15" startPosition="102" endLine="17" endPosition="104" />
-    <scopeInfo nodeId="1418611629042596876" fileName="MatrixZero_DataFlow.java" startLine="15" startPosition="0" endLine="19" endPosition="0">
-      <varInfo nodeId="1418611629042596876" varName="_context" />
-      <varInfo nodeId="1418611629042596876" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1418611629042596876" fileName="MatrixZero_DataFlow.java" startLine="11" startPosition="0" endLine="20" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.MatrixZero_DataFlow" />
+    <file name="MatrixZero_DataFlow.java">
+      <node id="1418611629042596879" at="12,60,13,218" concept="0" />
+      <node id="1418611629042596882" at="13,218,14,221" concept="0" />
+      <node id="1418611629042596876" at="12,0,16,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1418611629042596878" at="12,60,14,221" />
+      <scope id="1418611629042596876" at="12,0,16,0">
+        <var name="_context" id="1418611629042596876" />
+      </scope>
+      <unit id="1418611629042596876" at="11,0,17,0" name="jetbrains.mps.baseLanguage.math.dataFlow.MatrixZero_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/1418611629042596902">
-    <nodeInfo nodeId="1418611629042596923" fileName="LinearSolveOperation_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="103" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1418611629042596936" fileName="LinearSolveOperation_DataFlow.java" startLine="16" startPosition="103" endLine="17" endPosition="103" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1418611629042596927" fileName="LinearSolveOperation_DataFlow.java" startLine="17" startPosition="103" endLine="18" endPosition="223" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="1418611629042596902" fileName="LinearSolveOperation_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="LinearSolveOperation_DataFlow#()V" />
-    <nodeInfo nodeId="1418611629042596902" fileName="LinearSolveOperation_DataFlow.java" startLine="15" startPosition="0" endLine="20" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="1418611629042596902" fileName="LinearSolveOperation_DataFlow.java" startLine="12" startPosition="42" endLine="12" endPosition="42" />
-    <scopeInfo nodeId="1418611629042596902" fileName="LinearSolveOperation_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="1418611629042596904" fileName="LinearSolveOperation_DataFlow.java" startLine="15" startPosition="102" endLine="18" endPosition="223" />
-    <scopeInfo nodeId="1418611629042596902" fileName="LinearSolveOperation_DataFlow.java" startLine="15" startPosition="0" endLine="20" endPosition="0">
-      <varInfo nodeId="1418611629042596902" varName="_context" />
-      <varInfo nodeId="1418611629042596902" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="1418611629042596902" fileName="LinearSolveOperation_DataFlow.java" startLine="11" startPosition="0" endLine="21" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.LinearSolveOperation_DataFlow" />
+    <file name="LinearSolveOperation_DataFlow.java">
+      <node id="1418611629042596923" at="12,60,13,220" concept="0" />
+      <node id="1418611629042596936" at="13,220,14,220" concept="0" />
+      <node id="1418611629042596927" at="14,220,15,340" concept="0" />
+      <node id="1418611629042596902" at="12,0,17,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1418611629042596904" at="12,60,15,340" />
+      <scope id="1418611629042596902" at="12,0,17,0">
+        <var name="_context" id="1418611629042596902" />
+      </scope>
+      <unit id="1418611629042596902" at="11,0,18,0" name="jetbrains.mps.baseLanguage.math.dataFlow.LinearSolveOperation_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/263012178968580059">
-    <nodeInfo nodeId="263012178968580066" fileName="Determinant_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="102" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="263012178968580059" fileName="Determinant_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="Determinant_DataFlow#()V" />
-    <nodeInfo nodeId="263012178968580059" fileName="Determinant_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="263012178968580059" fileName="Determinant_DataFlow.java" startLine="12" startPosition="33" endLine="12" endPosition="33" />
-    <scopeInfo nodeId="263012178968580061" fileName="Determinant_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="102" />
-    <scopeInfo nodeId="263012178968580059" fileName="Determinant_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="263012178968580059" fileName="Determinant_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0">
-      <varInfo nodeId="263012178968580059" varName="_context" />
-      <varInfo nodeId="263012178968580059" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="263012178968580059" fileName="Determinant_DataFlow.java" startLine="11" startPosition="0" endLine="19" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.Determinant_DataFlow" />
+    <file name="Determinant_DataFlow.java">
+      <node id="263012178968580066" at="12,60,13,209" concept="0" />
+      <node id="263012178968580059" at="12,0,15,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="263012178968580061" at="12,60,13,209" />
+      <scope id="263012178968580059" at="12,0,15,0">
+        <var name="_context" id="263012178968580059" />
+      </scope>
+      <unit id="263012178968580059" at="11,0,16,0" name="jetbrains.mps.baseLanguage.math.dataFlow.Determinant_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/3417571330832093636">
-    <nodeInfo nodeId="3417571330832094777" fileName="MatrixConstructor_DataFlow.java" startLine="17" startPosition="114" endLine="18" endPosition="48" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="3417571330832093636" fileName="MatrixConstructor_DataFlow.java" startLine="13" startPosition="0" endLine="15" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MatrixConstructor_DataFlow#()V" />
-    <nodeInfo nodeId="3417571330832093640" fileName="MatrixConstructor_DataFlow.java" startLine="16" startPosition="102" endLine="19" endPosition="5" conceptFqName="jetbrains.mps.baseLanguage.structure.ForeachStatement" />
-    <nodeInfo nodeId="3417571330832093636" fileName="MatrixConstructor_DataFlow.java" startLine="16" startPosition="0" endLine="21" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="3417571330832093636" fileName="MatrixConstructor_DataFlow.java" startLine="13" startPosition="39" endLine="13" endPosition="39" />
-    <scopeInfo nodeId="3417571330832093643" fileName="MatrixConstructor_DataFlow.java" startLine="17" startPosition="114" endLine="18" endPosition="48" />
-    <scopeInfo nodeId="3417571330832093636" fileName="MatrixConstructor_DataFlow.java" startLine="13" startPosition="0" endLine="15" endPosition="0" />
-    <scopeInfo nodeId="3417571330832093638" fileName="MatrixConstructor_DataFlow.java" startLine="16" startPosition="102" endLine="19" endPosition="5" />
-    <scopeInfo nodeId="3417571330832093640" fileName="MatrixConstructor_DataFlow.java" startLine="16" startPosition="102" endLine="19" endPosition="5">
-      <varInfo nodeId="3417571330832093641" varName="item" />
-    </scopeInfo>
-    <scopeInfo nodeId="3417571330832093636" fileName="MatrixConstructor_DataFlow.java" startLine="16" startPosition="0" endLine="21" endPosition="0">
-      <varInfo nodeId="3417571330832093636" varName="_context" />
-      <varInfo nodeId="3417571330832093636" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="3417571330832093636" fileName="MatrixConstructor_DataFlow.java" startLine="12" startPosition="0" endLine="22" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.MatrixConstructor_DataFlow" />
+    <file name="MatrixConstructor_DataFlow.java">
+      <node id="3417571330832094777" at="14,232,15,48" concept="0" />
+      <node id="3417571330832093640" at="13,60,16,5" concept="1" />
+      <node id="3417571330832093636" at="13,0,18,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="3417571330832093643" at="14,232,15,48" />
+      <scope id="3417571330832093638" at="13,60,16,5" />
+      <scope id="3417571330832093640" at="13,60,16,5">
+        <var name="item" id="3417571330832093641" />
+      </scope>
+      <scope id="3417571330832093636" at="13,0,18,0">
+        <var name="_context" id="3417571330832093636" />
+      </scope>
+      <unit id="3417571330832093636" at="12,0,19,0" name="jetbrains.mps.baseLanguage.math.dataFlow.MatrixConstructor_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/4253775830167790686">
-    <nodeInfo nodeId="4253775830167790689" fileName="MathFuncExpression_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="102" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="4253775830167790686" fileName="MathFuncExpression_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MathFuncExpression_DataFlow#()V" />
-    <nodeInfo nodeId="4253775830167790686" fileName="MathFuncExpression_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="4253775830167790686" fileName="MathFuncExpression_DataFlow.java" startLine="12" startPosition="40" endLine="12" endPosition="40" />
-    <scopeInfo nodeId="4253775830167790688" fileName="MathFuncExpression_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="102" />
-    <scopeInfo nodeId="4253775830167790686" fileName="MathFuncExpression_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="4253775830167790686" fileName="MathFuncExpression_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0">
-      <varInfo nodeId="4253775830167790686" varName="_context" />
-      <varInfo nodeId="4253775830167790686" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="4253775830167790686" fileName="MathFuncExpression_DataFlow.java" startLine="11" startPosition="0" endLine="19" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.MathFuncExpression_DataFlow" />
+    <file name="MathFuncExpression_DataFlow.java">
+      <node id="4253775830167790689" at="12,60,13,209" concept="0" />
+      <node id="4253775830167790686" at="12,0,15,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="4253775830167790688" at="12,60,13,209" />
+      <scope id="4253775830167790686" at="12,0,15,0">
+        <var name="_context" id="4253775830167790686" />
+      </scope>
+      <unit id="4253775830167790686" at="11,0,16,0" name="jetbrains.mps.baseLanguage.math.dataFlow.MathFuncExpression_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/5359814223490144978">
-    <nodeInfo nodeId="5359814223490144981" fileName="VectorInitializer_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="107" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5359814223490144984" fileName="VectorInitializer_DataFlow.java" startLine="16" startPosition="107" endLine="17" endPosition="106" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5359814223490146698" fileName="VectorInitializer_DataFlow.java" startLine="17" startPosition="106" endLine="18" endPosition="205" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5359814223490144978" fileName="VectorInitializer_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="VectorInitializer_DataFlow#()V" />
-    <nodeInfo nodeId="5359814223490144978" fileName="VectorInitializer_DataFlow.java" startLine="15" startPosition="0" endLine="20" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="5359814223490144978" fileName="VectorInitializer_DataFlow.java" startLine="12" startPosition="39" endLine="12" endPosition="39" />
-    <scopeInfo nodeId="5359814223490144978" fileName="VectorInitializer_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="5359814223490144980" fileName="VectorInitializer_DataFlow.java" startLine="15" startPosition="102" endLine="18" endPosition="205" />
-    <scopeInfo nodeId="5359814223490144978" fileName="VectorInitializer_DataFlow.java" startLine="15" startPosition="0" endLine="20" endPosition="0">
-      <varInfo nodeId="5359814223490144978" varName="_context" />
-      <varInfo nodeId="5359814223490144978" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="5359814223490144978" fileName="VectorInitializer_DataFlow.java" startLine="11" startPosition="0" endLine="21" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.VectorInitializer_DataFlow" />
+    <file name="VectorInitializer_DataFlow.java">
+      <node id="5359814223490144981" at="12,60,13,224" concept="0" />
+      <node id="5359814223490144984" at="13,224,14,223" concept="0" />
+      <node id="5359814223490146698" at="14,223,15,322" concept="0" />
+      <node id="5359814223490144978" at="12,0,17,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="5359814223490144980" at="12,60,15,322" />
+      <scope id="5359814223490144978" at="12,0,17,0">
+        <var name="_context" id="5359814223490144978" />
+      </scope>
+      <unit id="5359814223490144978" at="11,0,18,0" name="jetbrains.mps.baseLanguage.math.dataFlow.VectorInitializer_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/5359814223490146121">
-    <nodeInfo nodeId="5359814223490146124" fileName="MatrixInitializer_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="107" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5359814223490146136" fileName="MatrixInitializer_DataFlow.java" startLine="16" startPosition="107" endLine="17" endPosition="106" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5359814223490146145" fileName="MatrixInitializer_DataFlow.java" startLine="17" startPosition="106" endLine="18" endPosition="106" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5359814223490146680" fileName="MatrixInitializer_DataFlow.java" startLine="18" startPosition="106" endLine="19" endPosition="205" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5359814223490146689" fileName="MatrixInitializer_DataFlow.java" startLine="19" startPosition="205" endLine="20" endPosition="205" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5359814223490146121" fileName="MatrixInitializer_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MatrixInitializer_DataFlow#()V" />
-    <nodeInfo nodeId="5359814223490146121" fileName="MatrixInitializer_DataFlow.java" startLine="15" startPosition="0" endLine="22" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="5359814223490146121" fileName="MatrixInitializer_DataFlow.java" startLine="12" startPosition="39" endLine="12" endPosition="39" />
-    <scopeInfo nodeId="5359814223490146121" fileName="MatrixInitializer_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="5359814223490146123" fileName="MatrixInitializer_DataFlow.java" startLine="15" startPosition="102" endLine="20" endPosition="205" />
-    <scopeInfo nodeId="5359814223490146121" fileName="MatrixInitializer_DataFlow.java" startLine="15" startPosition="0" endLine="22" endPosition="0">
-      <varInfo nodeId="5359814223490146121" varName="_context" />
-      <varInfo nodeId="5359814223490146121" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="5359814223490146121" fileName="MatrixInitializer_DataFlow.java" startLine="11" startPosition="0" endLine="23" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.MatrixInitializer_DataFlow" />
+    <file name="MatrixInitializer_DataFlow.java">
+      <node id="5359814223490146124" at="12,60,13,224" concept="0" />
+      <node id="5359814223490146136" at="13,224,14,223" concept="0" />
+      <node id="5359814223490146145" at="14,223,15,223" concept="0" />
+      <node id="5359814223490146680" at="15,223,16,322" concept="0" />
+      <node id="5359814223490146689" at="16,322,17,322" concept="0" />
+      <node id="5359814223490146121" at="12,0,19,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="5359814223490146123" at="12,60,17,322" />
+      <scope id="5359814223490146121" at="12,0,19,0">
+        <var name="_context" id="5359814223490146121" />
+      </scope>
+      <unit id="5359814223490146121" at="11,0,20,0" name="jetbrains.mps.baseLanguage.math.dataFlow.MatrixInitializer_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/5359814223490146668">
-    <nodeInfo nodeId="5359814223490146671" fileName="MatrixInitializerIndexReference_DataFlow.java" startLine="14" startPosition="102" endLine="15" endPosition="202" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="5359814223490146668" fileName="MatrixInitializerIndexReference_DataFlow.java" startLine="11" startPosition="0" endLine="13" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MatrixInitializerIndexReference_DataFlow#()V" />
-    <nodeInfo nodeId="5359814223490146668" fileName="MatrixInitializerIndexReference_DataFlow.java" startLine="14" startPosition="0" endLine="17" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="5359814223490146668" fileName="MatrixInitializerIndexReference_DataFlow.java" startLine="11" startPosition="53" endLine="11" endPosition="53" />
-    <scopeInfo nodeId="5359814223490146670" fileName="MatrixInitializerIndexReference_DataFlow.java" startLine="14" startPosition="102" endLine="15" endPosition="202" />
-    <scopeInfo nodeId="5359814223490146668" fileName="MatrixInitializerIndexReference_DataFlow.java" startLine="11" startPosition="0" endLine="13" endPosition="0" />
-    <scopeInfo nodeId="5359814223490146668" fileName="MatrixInitializerIndexReference_DataFlow.java" startLine="14" startPosition="0" endLine="17" endPosition="0">
-      <varInfo nodeId="5359814223490146668" varName="_context" />
-      <varInfo nodeId="5359814223490146668" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="5359814223490146668" fileName="MatrixInitializerIndexReference_DataFlow.java" startLine="10" startPosition="0" endLine="18" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.MatrixInitializerIndexReference_DataFlow" />
+    <file name="MatrixInitializerIndexReference_DataFlow.java">
+      <node id="5359814223490146671" at="11,60,12,316" concept="0" />
+      <node id="5359814223490146668" at="11,0,14,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="5359814223490146670" at="11,60,12,316" />
+      <scope id="5359814223490146668" at="11,0,14,0">
+        <var name="_context" id="5359814223490146668" />
+      </scope>
+      <unit id="5359814223490146668" at="10,0,15,0" name="jetbrains.mps.baseLanguage.math.dataFlow.MatrixInitializerIndexReference_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/7255837154369354655">
-    <nodeInfo nodeId="7255837154369354658" fileName="ExponentialOperation_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="101" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7255837154369354655" fileName="ExponentialOperation_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="ExponentialOperation_DataFlow#()V" />
-    <nodeInfo nodeId="7255837154369354655" fileName="ExponentialOperation_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="7255837154369354655" fileName="ExponentialOperation_DataFlow.java" startLine="12" startPosition="42" endLine="12" endPosition="42" />
-    <scopeInfo nodeId="7255837154369354657" fileName="ExponentialOperation_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="101" />
-    <scopeInfo nodeId="7255837154369354655" fileName="ExponentialOperation_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="7255837154369354655" fileName="ExponentialOperation_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0">
-      <varInfo nodeId="7255837154369354655" varName="_context" />
-      <varInfo nodeId="7255837154369354655" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="7255837154369354655" fileName="ExponentialOperation_DataFlow.java" startLine="11" startPosition="0" endLine="19" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.ExponentialOperation_DataFlow" />
+    <file name="ExponentialOperation_DataFlow.java">
+      <node id="7255837154369354658" at="12,60,13,218" concept="0" />
+      <node id="7255837154369354655" at="12,0,15,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="7255837154369354657" at="12,60,13,218" />
+      <scope id="7255837154369354655" at="12,0,15,0">
+        <var name="_context" id="7255837154369354655" />
+      </scope>
+      <unit id="7255837154369354655" at="11,0,16,0" name="jetbrains.mps.baseLanguage.math.dataFlow.ExponentialOperation_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/758819215871427723">
-    <nodeInfo nodeId="758819215871427726" fileName="MatrixNorm_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="100" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="758819215871427723" fileName="MatrixNorm_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MatrixNorm_DataFlow#()V" />
-    <nodeInfo nodeId="758819215871427723" fileName="MatrixNorm_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="758819215871427723" fileName="MatrixNorm_DataFlow.java" startLine="12" startPosition="32" endLine="12" endPosition="32" />
-    <scopeInfo nodeId="758819215871427725" fileName="MatrixNorm_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="100" />
-    <scopeInfo nodeId="758819215871427723" fileName="MatrixNorm_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="758819215871427723" fileName="MatrixNorm_DataFlow.java" startLine="15" startPosition="0" endLine="18" endPosition="0">
-      <varInfo nodeId="758819215871427723" varName="_context" />
-      <varInfo nodeId="758819215871427723" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="758819215871427723" fileName="MatrixNorm_DataFlow.java" startLine="11" startPosition="0" endLine="19" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.MatrixNorm_DataFlow" />
+    <file name="MatrixNorm_DataFlow.java">
+      <node id="758819215871427726" at="12,60,13,215" concept="0" />
+      <node id="758819215871427723" at="12,0,15,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="758819215871427725" at="12,60,13,215" />
+      <scope id="758819215871427723" at="12,0,15,0">
+        <var name="_context" id="758819215871427723" />
+      </scope>
+      <unit id="758819215871427723" at="11,0,16,0" name="jetbrains.mps.baseLanguage.math.dataFlow.MatrixNorm_DataFlow" />
+    </file>
   </root>
   <root nodeRef="r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/964810815943255970">
-    <nodeInfo nodeId="964810815943255973" fileName="MatrixElementAccessExpression_DataFlow.java" startLine="15" startPosition="102" endLine="16" endPosition="107" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="964810815943257102" fileName="MatrixElementAccessExpression_DataFlow.java" startLine="16" startPosition="107" endLine="17" endPosition="105" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="964810815943257112" fileName="MatrixElementAccessExpression_DataFlow.java" startLine="17" startPosition="105" endLine="18" endPosition="105" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="964810815943255970" fileName="MatrixElementAccessExpression_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" propertyString="MatrixElementAccessExpression_DataFlow#()V" />
-    <nodeInfo nodeId="964810815943255970" fileName="MatrixElementAccessExpression_DataFlow.java" startLine="15" startPosition="0" endLine="20" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="build#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-    <scopeInfo nodeId="964810815943255970" fileName="MatrixElementAccessExpression_DataFlow.java" startLine="12" startPosition="51" endLine="12" endPosition="51" />
-    <scopeInfo nodeId="964810815943255970" fileName="MatrixElementAccessExpression_DataFlow.java" startLine="12" startPosition="0" endLine="14" endPosition="0" />
-    <scopeInfo nodeId="964810815943255972" fileName="MatrixElementAccessExpression_DataFlow.java" startLine="15" startPosition="102" endLine="18" endPosition="105" />
-    <scopeInfo nodeId="964810815943255970" fileName="MatrixElementAccessExpression_DataFlow.java" startLine="15" startPosition="0" endLine="20" endPosition="0">
-      <varInfo nodeId="964810815943255970" varName="_context" />
-      <varInfo nodeId="964810815943255970" varName="operationContext" />
-    </scopeInfo>
-    <unitInfo nodeId="964810815943255970" fileName="MatrixElementAccessExpression_DataFlow.java" startLine="11" startPosition="0" endLine="21" endPosition="0" unitName="jetbrains.mps.baseLanguage.math.dataFlow.MatrixElementAccessExpression_DataFlow" />
+    <file name="MatrixElementAccessExpression_DataFlow.java">
+      <node id="964810815943255973" at="12,60,13,224" concept="0" />
+      <node id="964810815943257102" at="13,224,14,222" concept="0" />
+      <node id="964810815943257112" at="14,222,15,222" concept="0" />
+      <node id="964810815943255970" at="12,0,17,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="964810815943255972" at="12,60,15,222" />
+      <scope id="964810815943255970" at="12,0,17,0">
+        <var name="_context" id="964810815943255970" />
+      </scope>
+      <unit id="964810815943255970" at="11,0,18,0" name="jetbrains.mps.baseLanguage.math.dataFlow.MatrixElementAccessExpression_DataFlow" />
+    </file>
   </root>
-</debugInfo>
+</debug-info>
 

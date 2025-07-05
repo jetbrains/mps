@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@ package jetbrains.mps.idea.core.psi.impl;
 import com.intellij.ide.impl.ProjectViewSelectInTarget;
 import com.intellij.ide.projectView.impl.ProjectViewPane;
 import com.intellij.lang.FileASTNode;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.Ref;
-import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
@@ -34,25 +34,27 @@ import com.intellij.psi.impl.file.impl.FileManager;
 import com.intellij.psi.search.PsiElementProcessor;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.IncorrectOperationException;
+import com.intellij.util.containers.BidirectionalMap;
 import jetbrains.mps.extapi.persistence.FileDataSource;
-import jetbrains.mps.ide.icons.IconManager;
-import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.icons.MPSIcons.Nodes;
+import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.idea.core.MPSBundle;
+import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.smodel.DynamicReference;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.StaticReference;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.workbench.nodesFs.MPSNodesVirtualFileSystem;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SAbstractLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -62,7 +64,6 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 
 import javax.swing.Icon;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -78,10 +79,12 @@ import java.util.Queue;
  */
 public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
 
-  public static final PsiDirectory[] EMPTY_PSI_DIRECTORIES = new PsiDirectory[0];
+  private static final Logger LOG = Logger.getLogger(MPSPsiModel.class);
+
+  private static final PsiDirectory[] EMPTY_PSI_DIRECTORIES = new PsiDirectory[0];
   private final SModelReference myModelReference;
-  private final Map<SNodeId, MPSPsiNode> myNodes = new HashMap<SNodeId, MPSPsiNode>();
-  private final Map<MPSPsiNodeBase, Integer> myNodesOrder = new HashMap<MPSPsiNodeBase, Integer>();
+  private final Map<SNodeId, MPSPsiNode> myNodes = new HashMap<>();
+  private final BidirectionalMap<MPSPsiNodeBase, Integer> myNodesOrder = new BidirectionalMap<>();
   private VirtualFile mySourceVirtualFile;
   private PsiDirectoryImpl myPsiDirectory;
 
@@ -91,13 +94,23 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
   }
 
   @Override
+  public boolean equals(Object obj) {
+    /* TODO: remove after fix in platform:
+    This override fixes check for equality of SmartPointerElementInfo and MPSPsiModel
+    in SmartPsiElementPointerImpl.createElementInfo() */
+    if (obj instanceof PsiDirectory && !(obj instanceof MPSPsiNodeBase)) {
+      return this.getVirtualFile().equals(((PsiDirectory) obj).getVirtualFile());
+    }
+    return super.equals(obj);
+  }
+
+  @Override
   protected Icon getBaseIcon() {
-    return ModelAccess.instance().runReadAction(new Computable<Icon>() {
-      @Override
-      public Icon compute() {
-        return IconManager.getIconFor(myModelReference.resolve(MPSModuleRepository.getInstance()));
-      }
-    });
+    final GlobalIconManager globalIconManager = ApplicationManager.getApplication().getComponent(GlobalIconManager.class);
+    if (globalIconManager == null) {
+      return Nodes.Model;
+    }
+    return new ModelAccessHelper(getProjectRepository()).runReadAction(() -> globalIconManager.getIconFor(myModelReference.resolve(getProjectRepository())));
   }
 
   @Nullable
@@ -124,15 +137,13 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
 
   @Override
   public boolean isValid() {
-    final SRepository repository = ProjectHelper.toMPSProject(getProject()).getRepository();
-    final Ref<Boolean> result = new Ref<Boolean>(false);
+    if (myPsiDirectory == null || !(myPsiDirectory.isValid())) return false;
+    final SRepository repository = getProjectRepository();
+    final Ref<Boolean> result = new Ref<>(false);
 
-    repository.getModelAccess().runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        SModel model = myModelReference.resolve(repository);
-        result.set(model != null);
-      }
+    repository.getModelAccess().runReadAction(() -> {
+      SModel model = myModelReference.resolve(repository);
+      result.set(model != null);
     });
 
     return result.get();
@@ -140,7 +151,14 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
 
   @Override
   public boolean isPhysical() {
-    return true;
+    // See SmartPsiElementPointerImpl.doCreateElementInfo() and LOG.error() in createElementInfo() in the same class
+    // We implement PsiDirectory but don't want DirElementInfo to be created for us, because when it's restored
+    // it creates not an MPSPsiModel obviously but a PsiDirectoryFactory.getInstance().findDirectory() which happens
+    // to be PsiDirectoryImpl or something. Hence, LOG.error() is called.
+    // It affects project pane tests.
+    //
+    // Currently waiting for the change element instanceof PsiDirectory && element.isPhysical() to happen in idea code
+    return false;
   }
 
 
@@ -155,7 +173,7 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
 
   public <T extends PsiElement> T[] getRootNodesOfType(Class<T> aClass) {
     PsiElement[] surrogateRoots = getChildren();
-    List<T> result = new ArrayList<T>();
+    List<T> result = new ArrayList<>();
     for (PsiElement r : surrogateRoots) {
       assert r instanceof MPSPsiRootNode; // a layer between model and real root
       for (PsiElement c : r.getChildren()) {
@@ -171,13 +189,15 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
 
   @Override
   public void checkSetName(String name) throws IncorrectOperationException {
-    throw new IncorrectOperationException("Not implemented");
+    throw new IncorrectOperationException(MPSBundle.message("mps.psi.model.message.not.implemented"));
   }
 
   @NotNull
   @Override
   public VirtualFile getVirtualFile() {
-    return MPSNodesVirtualFileSystem.getInstance().getFileFor((jetbrains.mps.smodel.SModelReference) myModelReference);
+    SRepository repository = getProjectRepository();
+    NodeVirtualFileSystem fs = NodeVirtualFileSystem.getInstance();
+    return new ModelAccessHelper(repository).runReadAction(() -> fs.getFileFor(repository, myModelReference));
   }
 
   @Override
@@ -217,26 +237,26 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
   @Nullable
   @Override
   public PsiFile findFile(@NotNull @NonNls String name) {
-    throw new IncorrectOperationException("Not implemented");
+    return null;
   }
 
   @Override
   public final boolean isWritable() {
-    return myPsiDirectory == null ? false : myPsiDirectory.isWritable();
+    return myPsiDirectory != null && myPsiDirectory.isWritable();
   }
 
   @NotNull
   @Override
   public PsiDirectory createSubdirectory(@NotNull String name) throws IncorrectOperationException {
     if (myPsiDirectory == null)
-      throw new IncorrectOperationException("Parent directory is null");
+      throw new IncorrectOperationException(MPSBundle.message("mps.psi.model.message.null.parent"));
     return myPsiDirectory.createSubdirectory(name);
   }
 
   @Override
   public void checkCreateSubdirectory(@NotNull String name) throws IncorrectOperationException {
     if (myPsiDirectory == null)
-      throw new IncorrectOperationException("Parent directory is null");
+      throw new IncorrectOperationException(MPSBundle.message("mps.psi.model.message.null.parent"));
     myPsiDirectory.checkCreateSubdirectory(name);
   }
 
@@ -244,34 +264,34 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
   @Override
   public PsiFile createFile(@NotNull @NonNls String name) throws IncorrectOperationException {
     if (myPsiDirectory == null)
-      throw new IncorrectOperationException("Parent directory is null");
+      throw new IncorrectOperationException(MPSBundle.message("mps.psi.model.message.null.parent"));
     return myPsiDirectory.createFile(name);
   }
 
   @NotNull
   @Override
   public PsiFile copyFileFrom(@NotNull String newName, @NotNull PsiFile originalFile) throws IncorrectOperationException {
-    throw new IncorrectOperationException("Not implemented");
+    throw new IncorrectOperationException(MPSBundle.message("mps.psi.model.message.not.implemented"));
   }
 
   @Override
   public void checkCreateFile(@NotNull String name) throws IncorrectOperationException {
     if (myPsiDirectory == null)
-      throw new IncorrectOperationException("Parent directory is null");
+      throw new IncorrectOperationException(MPSBundle.message("mps.psi.model.message.null.parent"));
     myPsiDirectory.checkCreateFile(name);
   }
 
   @Override
   public PsiElement add(@NotNull PsiElement element) throws IncorrectOperationException {
     if (myPsiDirectory == null)
-      throw new IncorrectOperationException("Parent directory is null");
+      throw new IncorrectOperationException(MPSBundle.message("mps.psi.model.message.null.parent"));
     return myPsiDirectory.add(element);
   }
 
   @Override
   public void checkAdd(@NotNull PsiElement element) throws IncorrectOperationException {
     if (myPsiDirectory == null)
-      throw new IncorrectOperationException("Parent directory is null");
+      throw new IncorrectOperationException(MPSBundle.message("mps.psi.model.message.null.parent"));
     myPsiDirectory.checkAdd(element);
   }
 
@@ -283,7 +303,7 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
   @NotNull
   @Override
   public PsiElement setName(@NonNls @NotNull String name) throws IncorrectOperationException {
-    throw new IncorrectOperationException("Not implemented");
+    throw new IncorrectOperationException(MPSBundle.message("mps.psi.model.message.not.implemented"));
   }
 
   @Nullable
@@ -314,39 +334,80 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
   }
 
   public VirtualFile getSourceVirtualFile() {
+    if (mySourceVirtualFile == null) {
+      final SRepository repo = getProjectRepository();
+      repo.getModelAccess().runReadAction(() -> {
+        SModel model = myModelReference.resolve(repo);
+        // fixme when DefaultModelRoot.createModel() doesn't do register() anymore, it shouldn't be needed
+        // happens in tests for creating file-per-root persisted model in a directory, when no languages is chosen
+        // i.e. creation of model is cancelled
+        if (model == null) {
+          return;
+        }
+        DataSource source = model.getSource();
+        if (source instanceof FileDataSource) {
+          mySourceVirtualFile = VirtualFileUtils.getProjectVirtualFile(((FileDataSource) source).getFile());
+        } else if (source instanceof FilePerRootDataSource) {
+          // todo remove knowledge about particular PerRoot persistence, should be more generic
+          mySourceVirtualFile = VirtualFileUtils.getProjectVirtualFile(((FilePerRootDataSource) source).getFolder()).findChild(MPSExtentions.DOT_MODEL_HEADER);
+        }
+      });
+    }
     return mySourceVirtualFile;
   }
 
   @Override
   public PsiFile getContainingFile() {
-    return null;
+    // if it's singe-file model then return that file
+    final SRepository repository = getProjectRepository();
+    return new ModelAccessHelper(repository.getModelAccess()).runReadAction(() -> {
+      SModel model = myModelReference.resolve(repository);
+      if (model.getSource() instanceof FileDataSource) {
+        IFile iModelFile = ((FileDataSource) model.getSource()).getFile();
+        VirtualFile vModelFile = VirtualFileUtils.getProjectVirtualFile(iModelFile);
+        if (vModelFile == null) {
+          // extra check due to MPS-21363
+          LOG.warn(String.format(MPSBundle.message("mps.psi.model.warning.containing.file"), iModelFile.toPath().toString()));
+          return null;
+        }
+        return PsiManager.getInstance(getProject()).findFile(vModelFile);
+      } else {
+        return null;
+      }
+    });
   }
 
   /* package */
 
-  MPSPsiNode reload(SNodeId sNodeId) {
-    ModelAccess.assertLegalWrite();
-    MPSPsiNode mpsPsiNode = lookupNode(sNodeId);
-    if (mpsPsiNode == null) return null;
+  boolean isRoot(MPSPsiNode psiNode) {
+    return psiNode.getParent() instanceof MPSPsiRootNode;
+  }
 
-    SNode sNode = mpsPsiNode.getSNodeReference().resolve(MPSModuleRepository.getInstance());
+  MPSPsiNode reload(SNodeId sNodeId) {
+    SRepository repository = getProjectRepository();
+    repository.getModelAccess().checkWriteAccess();
+    MPSPsiNode mpsPsiNode = lookupNode(sNodeId);
+    if (mpsPsiNode == null) {
+      return null;
+    }
+
+    SNode sNode = mpsPsiNode.getSNodeReference().resolve(repository);
     MPSPsiNode replacement = convert(sNode);
 
-    if (mpsPsiNode.getParent() instanceof MPSPsiRootNode) {
+    if (isRoot(mpsPsiNode)) {
       MPSPsiRootNode rootNode = (MPSPsiRootNode) mpsPsiNode.getParent();
       assert rootNode.getContainingModel().equals(this);
 
-      MPSPsiRootNode replacementRoot = null;
+      MPSPsiRootNode replacementRoot;
       if (sNode.getContainingRoot() == sNode && sNode.getModel().getSource() instanceof FilePerRootDataSource) {
         final String name = extractName(sNode);
-        final VirtualFile virtualFile = VirtualFileUtils.getVirtualFile(((FilePerRootDataSource) sNode.getModel().getSource()).getFile(name + MPSExtentions.DOT_MODEL_ROOT));
-        replacementRoot = new MPSPsiRootNode(sNode.getNodeId(), name, getManager(), virtualFile);
+        final VirtualFile virtualFile = VirtualFileUtils.getProjectVirtualFile(((FilePerRootDataSource) sNode.getModel().getSource()).getFile(name + MPSExtentions.DOT_MODEL_ROOT));
+        replacementRoot = new MPSPsiRootNode(sNode.getNodeId(), name, this, getManager(), virtualFile);
       } else {
-        replacementRoot = new MPSPsiRootNode(sNode.getNodeId(), extractName(sNode), getManager());
+        replacementRoot = new MPSPsiRootNode(sNode.getNodeId(), extractName(sNode), this, getManager());
       }
-      replacementRoot.setModel(this);
       replaceChild(rootNode, replacementRoot);
-      ((PsiManagerImpl) getManager()).getFileManager().setViewProvider(rootNode.getVirtualFile(), null);
+      ((PsiManagerEx) getManager()).getFileManager().setViewProvider(rootNode.getVirtualFile(), null);
       replacementRoot.addChildLast(replacement);
     } else {
       ((MPSPsiNodeBase) mpsPsiNode.getParent()).replaceChild(mpsPsiNode, replacement);
@@ -358,8 +419,9 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
   }
 
   public void reloadAll() {
-    ModelAccess.assertLegalWrite();
-    SModel sModel = myModelReference.resolve(MPSModuleRepository.getInstance());
+    final SRepository repository = getProjectRepository();
+    repository.getModelAccess().checkReadAccess();
+    SModel sModel = myModelReference.resolve(repository);
     for (SNode root : sModel.getRootNodes()) {
       MPSPsiNode mpsPsiNode = lookupNode(root.getNodeId());
       if (mpsPsiNode == null) continue;
@@ -377,25 +439,23 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
   }
 
   void reload(SModel model) {
-
     clearChildren();
     for (SNode root : model.getRootNodes()) {
-      String rootName = null;
+      String rootName;
       rootName = extractName(root);
-      MPSPsiRootNode rootNode = null;
+      MPSPsiRootNode rootNode;
       if (model.getSource() instanceof FilePerRootDataSource) {
         final IFile iFile = ((FilePerRootDataSource) model.getSource()).getFile(rootName + MPSExtentions.DOT_MODEL_ROOT);
-        VirtualFile virtualFile = VirtualFileUtils.getVirtualFile(iFile);
-        if (virtualFile == null) virtualFile = VirtualFileUtils.getVirtualFile(iFile.getPath());
+        VirtualFile virtualFile = VirtualFileUtils.getProjectVirtualFile(iFile);
+        if (virtualFile == null) virtualFile = VirtualFileUtils.getVirtualFile(iFile.toPath().toString());
         PsiFile psiFile = virtualFile != null ? tryReuseRootPsiFile(virtualFile) : null;
         rootNode = psiFile != null && psiFile instanceof MPSPsiRootNode
           ? (MPSPsiRootNode) psiFile :
-          new MPSPsiRootNode(root.getNodeId(), rootName, getManager(), virtualFile);
+          new MPSPsiRootNode(root.getNodeId(), rootName, this, getManager(), virtualFile);
 
       } else {
-        rootNode = new MPSPsiRootNode(root.getNodeId(), rootName, getManager());
+        rootNode = new MPSPsiRootNode(root.getNodeId(), rootName, this, getManager());
       }
-      rootNode.setModel(this);
 
       addChildLast(rootNode);
       if (rootNode.getChildren().length == 0)
@@ -408,16 +468,8 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
 
     enumerateNodes();
 
-    // TODO use ModelUtil
-    DataSource source = model.getSource();
-    if (source instanceof FileDataSource) {
-      File file = new File(((FileDataSource) source).getFile().getPath());
-      VirtualFile vfile = LocalFileSystem.getInstance().findFileByIoFile(file);
-      this.mySourceVirtualFile = vfile;
-    } else if (source instanceof FilePerRootDataSource) {
-      this.mySourceVirtualFile = VirtualFileUtils.getVirtualFile(((FilePerRootDataSource) source).getFolder()).findChild(MPSExtentions.DOT_MODEL_HEADER);
-    }
-    if (getSourceVirtualFile() == null || getSourceVirtualFile().getParent() == null)
+    getSourceVirtualFile();
+    if (mySourceVirtualFile == null || mySourceVirtualFile.getParent() == null)
       myPsiDirectory = null;
     else
       myPsiDirectory = new PsiDirectoryImpl((PsiManagerImpl) myManager, getSourceVirtualFile().getParent());
@@ -431,7 +483,7 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
   }
 
   private void fillNodes(MPSPsiRootNode rootNode) {
-    Queue<MPSPsiNode> psiNodes = new LinkedList<MPSPsiNode>();
+    Queue<MPSPsiNode> psiNodes = new LinkedList<>();
     for (PsiElement element : rootNode.getChildren()) {
       if (element instanceof MPSPsiNode)
         psiNodes.add((MPSPsiNode) element);
@@ -447,13 +499,12 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
   }
 
   private MPSPsiNode convert(SNode node) {
-
-    MPSPsiNode psiNode = MPSPsiProvider.getInstance(getProject()).create(node.getNodeId(), node.getConcept(), node.getRoleInParent());
+    MPSPsiNode psiNode = MPSPsiProvider.getInstance(getProject()).create(node.getNodeId(), node.getConcept(), node.getContainmentLink() == null ? null : node.getContainmentLink().getName());
     myNodes.put(node.getNodeId(), psiNode);
 
     // properties
-    for (String key : node.getPropertyNames()) {
-      psiNode.setProperty(key, node.getProperty(key));
+    for (SProperty property : node.getProperties()) {
+      psiNode.setProperty(property.getName(), node.getProperty(property));
     }
 
     // refs
@@ -465,9 +516,9 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
       }
       MPSPsiRef psiRef = null;
       if (ref instanceof StaticReference) {
-        psiRef = MPSPsiProvider.getInstance(getProject()).createReferenceNode(ref.getRole(), linkTargetConcept, ref.getTargetSModelReference(), ref.getTargetNodeId());
+        psiRef = MPSPsiProvider.getInstance(getProject()).createReferenceNode(ref.getLink().getName(), linkTargetConcept, ref.getTargetSModelReference(), ref.getTargetNodeId());
       } else if (ref instanceof DynamicReference) {
-        psiRef = MPSPsiProvider.getInstance(getProject()).createReferenceNode(ref.getRole(), linkTargetConcept, ((DynamicReference) ref).getResolveInfo());
+        psiRef = MPSPsiProvider.getInstance(getProject()).createReferenceNode(ref.getLink().getName(), linkTargetConcept, ((DynamicReference) ref).getResolveInfo());
       }
       if (psiRef != null) {
         psiNode.addChild(null, psiRef);
@@ -475,11 +526,11 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
     }
 
     // children
-    MPSPsiNode last = null;
     for (SNode root : node.getChildren()) {
       MPSPsiNode psiChild = convert(root);
-      psiNode.addChild(last, psiChild);
-      last = psiChild;
+      MPSPsiNodeBase artificialParent = psiNode.getParentFor(psiChild);
+      MPSPsiNodeBase wouldBeParent = artificialParent == null ? psiNode : artificialParent;
+      wouldBeParent.addChildLast(psiChild);
     }
     return psiNode;
   }
@@ -502,13 +553,24 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
     return myNodesOrder.get(node);
   }
 
+  public MPSPsiNodeBase findNodeByPosition(int pos) {
+    List<MPSPsiNodeBase> nodes = myNodesOrder.getKeysByValue(pos);
+    if (nodes == null) {
+      return null;
+    }
+    assert nodes.size() <= 1 : "Non-unique mapping from psi nodes to their positions in the tree";
+    return nodes.isEmpty() ? null : nodes.get(0);
+  }
+
   private String extractName(SNode sNode) {
     return sNode.getName() != null && !sNode.getName().isEmpty() ? sNode.getName() : sNode.getNodeId().toString();
   }
 
+  // todo replace with depth-first; depth is never very big in real models, and memory consumption will be less,
+  // also the order will be more natural
   private void enumerateNodes() {
     myNodesOrder.clear();
-    Deque<MPSPsiNodeBase> stack = new ArrayDeque<MPSPsiNodeBase>();
+    Deque<MPSPsiNodeBase> stack = new ArrayDeque<>();
     stack.add(this);
 
     int k = 0;
@@ -536,6 +598,7 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
 
   @Override
   public void delete() throws IncorrectOperationException {
+    // todo unregister model
     try {
       getSourceVirtualFile().delete(getManager());
     } catch (IOException e) {

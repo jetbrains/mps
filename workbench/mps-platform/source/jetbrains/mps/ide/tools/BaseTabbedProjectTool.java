@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,12 +22,16 @@ import com.intellij.ui.content.ContentManager;
 import com.intellij.ui.content.ContentManagerAdapter;
 import com.intellij.ui.content.ContentManagerEvent;
 import jetbrains.mps.plugins.tool.IComponentDisposer;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
+import javax.swing.KeyStroke;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Replaces {@link jetbrains.mps.plugins.tool.GeneratedTabbedTool}.
@@ -37,24 +41,36 @@ public abstract class BaseTabbedProjectTool extends BaseProjectTool {
   private List<IDisposableTab> myTabList = new ArrayList<IDisposableTab>();
   private boolean myContentRemovedListenerAdded = false;
 
+  @Deprecated
+  @ToRemove(version = 3.5)
   protected BaseTabbedProjectTool(Project project, String id, int number, Icon icon,
       ToolWindowAnchor anchor, boolean canCloseContent) {
     super(project, id, number, icon, anchor, canCloseContent);
   }
 
+  protected BaseTabbedProjectTool(Project project, String id, Map<String, KeyStroke> shortcutsByKeymap, Icon icon,
+      ToolWindowAnchor anchor, boolean canCloseContent) {
+    super(project, id, shortcutsByKeymap, icon, anchor, false, canCloseContent);
+  }
+
   @Override
   protected void doUnregister() {
-    getContentManager().removeAllContents(true);
+    ContentManager contentManager = getContentManager();
+    if (contentManager != null && !contentManager.isDisposed()) {
+      contentManager.removeAllContents(true);
+    }
   }
 
   public void closeTab(JComponent component) {
     ContentManager contentManager = getContentManager();
     Content content = contentManager.getContent(component);
-    contentManager.removeContent(content, true);
+    if (content != null) {
+      contentManager.removeContent(content, true);
+    }
   }
 
   public <T extends JComponent> void addTab(final T tabComponent, @NotNull String title, Icon icon,
-      final IComponentDisposer<T> tabDisposer) {
+      final IComponentDisposer<T> tabDisposer, boolean openTool) {
     IDisposableTab tab = new IDisposableTab() {
       @Override
       public void disposeTab() {
@@ -75,7 +91,9 @@ public abstract class BaseTabbedProjectTool extends BaseProjectTool {
     addContent(tab.getComponent(), title, icon, true);
     setSelectedComponent(tab.getComponent());
     myTabList.add(tab);
-    openToolLater(true);
+    if (openTool) {
+      openToolLater(true);
+    }
   }
 
   public JComponent getSelectedTab() {
@@ -85,6 +103,28 @@ public abstract class BaseTabbedProjectTool extends BaseProjectTool {
       return null;
     } else {
       return selectedContent.getComponent();
+    }
+  }
+
+  /**
+   * Indicate tab is of interest and shall not be closed/replaced with a new one
+   * Does nothing if tab is <code>null</code> or not found
+   */
+  public <T extends JComponent> void pinTab(@Nullable T tab) {
+    Content content = getContentManager().getContent(tab);
+    if (content != null) {
+      content.setPinned(true);
+    }
+  }
+
+  /**
+   * Indicates tab could be replaced with a new one.
+   * Does nothing if tab is <code>null</code> or not found
+   */
+  public <T extends JComponent> void unpinTab(@Nullable T tab) {
+    Content content = getContentManager().getContent(tab);
+    if (content != null) {
+      content.setPinned(false);
     }
   }
 

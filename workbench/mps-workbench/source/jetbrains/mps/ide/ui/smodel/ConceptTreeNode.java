@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,33 +15,27 @@
  */
 package jetbrains.mps.ide.ui.smodel;
 
-import jetbrains.mps.ide.icons.IconManager;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import com.intellij.util.IconUtil;
+import jetbrains.mps.icons.MPSIcons.Nodes;
 import jetbrains.mps.ide.ui.tree.MPSTreeNodeEx;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.ModelAccess;
+import jetbrains.mps.ide.ui.tree.smodel.NodeTargetProvider;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
-public class ConceptTreeNode extends MPSTreeNodeEx {
-  private SNode myNode;
-  private boolean myInitialized;
+public class ConceptTreeNode extends MPSTreeNodeEx implements NodeTargetProvider {
+  private final SNode myNode;
+  private final SNodeReference myConceptDeclaration;
 
-  @Override
-  public boolean isLeaf() {
-    return true;
-  }
-
-  public ConceptTreeNode(IOperationContext operationContext, SNode node) {
-    super(operationContext);
+  public ConceptTreeNode(SNode node) {
     myNode = node;
-
-    SNode concept = getDeclarationNode();
-    if (concept != null) {
-      setIcon(IconManager.getIconFor(concept));
-      setNodeIdentifier(concept.getName());
-    } else {
-      setNodeIdentifier(myNode.getConcept().getQualifiedName());
-    }
+    SConcept concept = myNode.getConcept();
+    setNodeIdentifier("Concept: " + concept.getName());
+    myConceptDeclaration = concept.getSourceNode();
+    // Use grayed out icon because it is less distracting for user [then original green one],
+    // but in the same time looks different in comparison to default node icon.
+    setIcon(IconUtil.desaturate(Nodes.Structure));
   }
 
   @Override
@@ -49,39 +43,15 @@ public class ConceptTreeNode extends MPSTreeNodeEx {
     return myNode;
   }
 
-  public SNode getDeclarationNode() {
-    return ((jetbrains.mps.smodel.SNode) myNode).getConceptDeclarationNode();
+  @Nullable
+  @Override
+  public SNodeReference getNavigationTarget() {
+    // navigate to concept declaration, if any
+    return myConceptDeclaration;
   }
 
   @Override
-  public boolean isInitialized() {
-    return myInitialized;
-  }
-
-  @Override
-  protected void doInit() {
-    super.doInit();
-    myInitialized = true;
-  }
-
-  @Override
-  protected void doUpdate() {
-    super.doUpdate();
-    myInitialized = false;
-  }
-
-  @Override
-  public void doubleClick() {
-    ModelAccess.instance().runWriteInEDT(new Runnable() {
-      @Override
-      public void run() {
-        SNode concept = getSNode();
-        if (concept == null || jetbrains.mps.util.SNodeOperations.isDisposed(concept) || concept.getModel() == null || concept.getModel() == null) {
-          return;
-        }
-        // TODO: use node pointers here
-        NavigationSupport.getInstance().openNode(getOperationContext(), concept, true, true);
-      }
-    });
+  public boolean isLeaf() {
+    return true;
   }
 }

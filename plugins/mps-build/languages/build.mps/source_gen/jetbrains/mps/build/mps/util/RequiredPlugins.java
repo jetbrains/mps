@@ -9,6 +9,8 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.build.util.GenerationUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Set;
@@ -16,7 +18,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.build.util.DependenciesHelper;
 
 public class RequiredPlugins {
   private static final String KEY = "pluginDependency";
@@ -27,7 +28,7 @@ public class RequiredPlugins {
 
   public RequiredPlugins(SNode project, TemplateQueryContext genContext) {
     myContext = genContext;
-    ListSequence.fromList(myPlugins).addSequence(ListSequence.fromList(SNodeOperations.getDescendants(project, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin", false, new String[]{})));
+    ListSequence.fromList(myPlugins).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(project, MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin"), false, new SAbstractConcept[]{})));
     myRoot = project;
     myDependency = GenerationUtil.<SNode>getSessionSet(project, genContext, KEY);
   }
@@ -36,14 +37,14 @@ public class RequiredPlugins {
     myContext = genContext;
     ListSequence.fromList(myPlugins).addElement(initialPlugin);
     myRoot = SNodeOperations.getContainingRoot(initialPlugin);
-    myDependency = GenerationUtil.<SNode>getSessionSet(SNodeOperations.as(myRoot, "jetbrains.mps.build.structure.BuildProject"), genContext, KEY);
+    myDependency = GenerationUtil.<SNode>getSessionSet(SNodeOperations.as(myRoot, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject")), genContext, KEY);
   }
 
   public RequiredPlugins(TemplateQueryContext genContext, SNode root, Iterable<SNode> initialPlugins) {
     myContext = genContext;
     ListSequence.fromList(myPlugins).addSequence(Sequence.fromIterable(initialPlugins));
     myRoot = root;
-    myDependency = GenerationUtil.<SNode>getSessionSet(SNodeOperations.as(myRoot, "jetbrains.mps.build.structure.BuildProject"), genContext, KEY);
+    myDependency = GenerationUtil.<SNode>getSessionSet(SNodeOperations.as(myRoot, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject")), genContext, KEY);
   }
 
   public void collectDependencies() {
@@ -72,21 +73,16 @@ public class RequiredPlugins {
 
   private void collectDependencies(SNode plugin, Set<SNode> visited) {
     SetSequence.fromSet(visited).addElement(plugin);
-    for (SNode dependency : ListSequence.fromList(SLinkOperations.getTargets(plugin, "dependencies", true))) {
-      SNode dependencyPlugin = SLinkOperations.getTarget(dependency, "target", false);
-      if (SNodeOperations.getContainingRoot(dependencyPlugin) != myRoot) {
-        dependencyPlugin = SNodeOperations.as(DependenciesHelper.getOriginalNode(dependencyPlugin, myContext), "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin");
-        if (dependencyPlugin == null) {
-          continue;
-        }
-      }
-      if (!(SetSequence.fromSet(visited).contains(dependencyPlugin))) {
+    for (SNode dependency : ListSequence.fromList(SLinkOperations.getChildren(plugin, MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbd4L, "dependencies")))) {
+      SNode dependencyPlugin = SLinkOperations.getTarget(dependency, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbd3L, 0x5b7be37b4de9bbfaL, "target"));
+      if (dependencyPlugin != null && !(SetSequence.fromSet(visited).contains(dependencyPlugin))) {
         collectDependencies(dependencyPlugin, visited);
       }
     }
   }
 
   public Iterable<SNode> getDependency() {
+    // Usages suggest myDependencies are to come from original (non-transient) model - they used to get passed to DependenciesHelper.artifacts().get() directly 
     return myDependency;
   }
 

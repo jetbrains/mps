@@ -7,97 +7,27 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.IOperationContext;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.resolve.ReferenceResolverUtils;
+import jetbrains.mps.editor.runtime.HeadlessEditorComponent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
-import jetbrains.mps.openapi.editor.cells.SubstituteAction;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.constraints.ModelConstraints;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.nodeEditor.EditorContext;
-import java.util.List;
-import jetbrains.mps.smodel.event.SModelEvent;
-import org.jetbrains.mps.openapi.model.SModel;
+import typesystemIntegration.languageChecker.EditorBasedReferenceResolverUtils;
 
 public class EditorResolver implements IResolver {
   public EditorResolver() {
   }
-
   @Nullable
   @Override
-  public boolean resolve(@NotNull SReference reference, @NotNull SNode sourceNode, @NotNull IOperationContext operationContext) {
-    final String resolveInfo = getResolveInfo(reference, sourceNode);
+  public boolean resolve(@NotNull SReference reference, @NotNull SNode sourceNode, @NotNull SRepository repository) {
+    final String resolveInfo = ReferenceResolverUtils.getResolveInfo(reference, sourceNode);
     if (resolveInfo == null) {
       return false;
     }
-    final EditorResolver.FakeEditorComponent fakeEditor = new EditorResolver.FakeEditorComponent(SNodeOperations.getContainingRoot(sourceNode), operationContext);
+    final HeadlessEditorComponent headlessEditor = new HeadlessEditorComponent(SNodeOperations.getContainingRoot(sourceNode), repository);
     try {
-      EditorCell cellWithRole = fakeEditor.findNodeCellWithRole(sourceNode, reference.getRole());
-      if (cellWithRole == null) {
-        return false;
-      }
-      SubstituteInfo substituteInfo = cellWithRole.getSubstituteInfo();
-      if (substituteInfo == null) {
-        return false;
-      }
-      final SubstituteAction applicableSubstituteAction = getApplicableSubstituteAction(substituteInfo, resolveInfo);
-      if (applicableSubstituteAction == null) {
-        return false;
-      }
-      applicableSubstituteAction.substitute(fakeEditor.getEditorContext(), resolveInfo);
+      return EditorBasedReferenceResolverUtils.resolveInEditor(headlessEditor, sourceNode, resolveInfo, reference.getRole());
     } finally {
-      fakeEditor.dispose();
+      headlessEditor.dispose();
     }
-    return true;
-  }
-
-  private String getResolveInfo(SReference reference, SNode sourceNode) {
-    String result = ((jetbrains.mps.smodel.SReference) reference).getResolveInfo();
-    if (result != null) {
-      return result;
-    }
-    SModule module = check_jllgm1_a0c0c(SNodeOperations.getModel(sourceNode));
-    SNode target = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(reference);
-    if (target != null && module != null) {
-      Scope scope = ModelConstraints.getScope(reference);
-      result = scope.getReferenceText(sourceNode, target);
-    }
-    return result;
-  }
-
-  private SubstituteAction getApplicableSubstituteAction(SubstituteInfo substituteInfo, String resolveInfo) {
-    SubstituteAction result = null;
-    for (SubstituteAction nextAction : ListSequence.fromList(substituteInfo.getMatchingActions(resolveInfo, true))) {
-      if (nextAction.canSubstitute(resolveInfo)) {
-        if (result != null) {
-          return null;
-        }
-        result = nextAction;
-      }
-    }
-    return result;
-  }
-
-  private class FakeEditorComponent extends EditorComponent {
-    public FakeEditorComponent(SNode node, IOperationContext operationContext) {
-      super(operationContext.getProject().getRepository());
-      setEditorContext(new EditorContext(this, SNodeOperations.getModel(node), operationContext.getProject().getRepository()));
-      editNode(node, operationContext);
-    }
-
-    @Override
-    protected jetbrains.mps.nodeEditor.cells.EditorCell createRootCell(List<SModelEvent> events) {
-      return getEditorContext().createRootCell(getEditedNode(), events);
-    }
-  }
-
-  private static SModule check_jllgm1_a0c0c(SModel checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getModule();
-    }
-    return null;
   }
 }

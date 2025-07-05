@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,14 @@ package jetbrains.mps.ide.util;
 
 import com.intellij.ide.IdeBundle;
 import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.openapi.actionSystem.*;
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CustomShortcutSet;
+import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.actionSystem.Presentation;
+import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.VerticalFlowLayout;
@@ -25,7 +32,11 @@ import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.Pair;
 import com.intellij.openapi.util.Ref;
 import com.intellij.openapi.util.SystemInfo;
-import com.intellij.ui.*;
+import com.intellij.ui.ColoredTreeCellRenderer;
+import com.intellij.ui.ScrollPaneFactory;
+import com.intellij.ui.SimpleTextAttributes;
+import com.intellij.ui.SpeedSearchComparator;
+import com.intellij.ui.TreeSpeedSearch;
 import com.intellij.ui.speedSearch.SpeedSearchUtil;
 import com.intellij.ui.treeStructure.Tree;
 import com.intellij.util.PlatformIcons;
@@ -35,27 +46,49 @@ import com.intellij.util.containers.HashMap;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.util.ui.tree.TreeUtil;
 import jetbrains.mps.ide.icons.IconManager;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
-import javax.swing.*;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.KeyStroke;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Enumeration;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 
@@ -105,12 +138,7 @@ public class GroupedNodesChooser extends DialogWrapper {
     myElementToNodeMap.clear();
     myContainerNodes.clear();
 
-    ModelAccess.instance().runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        myTreeModel = buildModel();
-      }
-    });
+    ProjectHelper.getModelAccess(myProject).runReadAction(() -> myTreeModel = buildModel());
 
     myTree.setModel(myTreeModel);
     myTree.setRootVisible(false);
@@ -134,11 +162,12 @@ public class GroupedNodesChooser extends DialogWrapper {
   private DefaultTreeModel buildModel() {
     final DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode();
     final Ref<Integer> count = new Ref<Integer>(0);
+    final SRepository projectRepo = ProjectHelper.getProjectRepository(myProject);
     final FactoryMap<Object, ParentNode> map = new FactoryMap<Object, ParentNode>() {
       @Override
       protected ParentNode create(final Object key) {
         if (key instanceof SNodeReference) {
-          SNode el = ((SNodeReference) key).resolve(MPSModuleRepository.getInstance());
+          SNode el = ((SNodeReference) key).resolve(projectRepo);
           if (el != null) {
             final ContainerNode containerNode = new ContainerNode(rootNode, (SNodeReference) key, getText(el), getIcon(el), count);
             myContainerNodes.add(containerNode);
@@ -154,7 +183,7 @@ public class GroupedNodesChooser extends DialogWrapper {
     };
 
     for (SNodeReference object : myElements) {
-      SNode node = object.resolve(MPSModuleRepository.getInstance());
+      SNode node = object.resolve(projectRepo);
       Object group = getGroupNode(node);
       if (group == null) group = getGroupTitle(node);
       final ParentNode parentNode = map.get(group);

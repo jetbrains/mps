@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,13 @@
 package jetbrains.mps.newTypesystem;
 
 import jetbrains.mps.lang.pattern.IMatchingPattern;
-import jetbrains.mps.lang.typesystem.runtime.*;
-import jetbrains.mps.newTypesystem.rules.LanguageScopeExecutor;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.typesystem.runtime.ComparisonRule_Runtime;
+import jetbrains.mps.lang.typesystem.runtime.InequationReplacementRule_Runtime;
+import jetbrains.mps.lang.typesystem.runtime.IsApplicable2Status;
+import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
+import jetbrains.mps.lang.typesystem.runtime.SubtypingRule_Runtime;
+import jetbrains.mps.languageScope.LanguageScopeExecutor;
+import jetbrains.mps.smodel.ModelDependencyScanner;
 import jetbrains.mps.typesystem.TypeSystemReporter;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystem.inference.SubtypingManager;
@@ -27,7 +31,11 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.util.StructuralNodeSet;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -52,9 +60,8 @@ public class SubTypingManagerNew extends SubtypingManager {
     if (TypesUtil.isVariable(subType)) return false;
     if (TypesUtil.isVariable(superType)) return false;
 
-    return LanguageScopeExecutor.execWithTwoLanguageScope(
-      subType != null ? jetbrains.mps.util.SNodeOperations.getLanguage(subType) : null,
-      superType != null ? jetbrains.mps.util.SNodeOperations.getLanguage(superType) : null,
+    return LanguageScopeExecutor.execWithMultiLanguageScope(
+        collectLanguagesRecursively(subType, superType),
       new Computable<Boolean>() {
         @Override
         public Boolean compute() {
@@ -66,20 +73,32 @@ public class SubTypingManagerNew extends SubtypingManager {
 
   @Override
   public boolean isSubTypeByReplacementRules(final SNode subType, final SNode superType, final boolean isWeak) {
-    return LanguageScopeExecutor.execWithTwoLanguageScope(
-      subType != null ? jetbrains.mps.util.SNodeOperations.getLanguage(subType) : null,
-      superType != null ? jetbrains.mps.util.SNodeOperations.getLanguage(superType) : null,
-      new Computable<Boolean>() {
-        @Override
-        public Boolean compute() {
-          for (Pair<InequationReplacementRule_Runtime, IsApplicable2Status> rule : myTypeChecker.getRulesManager().getReplacementRules(subType, superType)) {
-            if (rule.o1.checkInequation(subType, superType, new EquationInfo(null, null), rule.o2, isWeak)) {
-              return true;
+    return isSubTypeByReplacementRulesAuth(subType, superType, isWeak).o1;
+  }
+
+  /**
+   * Affirmative: true iff is subtype.
+   * Authoritative: true iff can answer yes or no.
+   * Affirmative implies Authoritative.
+   * @return a pair of booleans: affirmative and authoritative
+   */
+  @Override
+  public Pair<Boolean, Boolean> isSubTypeByReplacementRulesAuth(final SNode subType, final SNode superType, final boolean isWeak) {
+    return LanguageScopeExecutor.execWithMultiLanguageScope(
+        collectLanguagesRecursively(subType, superType),
+        // two booleans:  affirmative, authoritative
+        new Computable<Pair<Boolean, Boolean>>() {
+          @Override
+          public Pair<Boolean, Boolean> compute() {
+            for (Pair<InequationReplacementRule_Runtime, IsApplicable2Status> pair : myTypeChecker.getRulesManager().getReplacementRules(subType, superType)) {
+              InequationReplacementRule_Runtime rule = pair.o1;
+              IsApplicable2Status status = pair.o2;
+              boolean affirmative = rule.checkInequation(subType, superType, new EquationInfo(null, null), status, isWeak);
+              return new Pair<Boolean, Boolean>(affirmative, true);
             }
+            return new Pair<Boolean, Boolean>(false, false);
           }
-          return false;
-        }
-      });
+        });
   }
 
   @Override
@@ -148,9 +167,8 @@ public class SubTypingManagerNew extends SubtypingManager {
       return false;
     }
 
-    return LanguageScopeExecutor.execWithTwoLanguageScope(
-        jetbrains.mps.util.SNodeOperations.getLanguage(left),
-        jetbrains.mps.util.SNodeOperations.getLanguage(right),
+    return LanguageScopeExecutor.execWithMultiLanguageScope(
+        collectLanguagesRecursively(left, right),
         new Computable<Boolean>() {
           @Override
           public Boolean compute() {
@@ -180,12 +198,21 @@ public class SubTypingManagerNew extends SubtypingManager {
     return new HashSet<SNode>(SubtypingUtil.leastCommonSuperTypes(typesList, null));
   }
 
+  public static Collection<SLanguage> collectLanguagesRecursively(SNode... type) {
+    ModelDependencyScanner scan = new ModelDependencyScanner().crossModelReferences(false);
+    for (SNode t : type) {
+      scan.walk(SNodeUtil.getDescendants(t));
+    }
+    return scan.getUsedLanguages();
+  }
+
+
   // TODO: wtf
   /*package*/ SNode coerceSubTypingNew(final SNode subtype, final IMatchingPattern pattern, final boolean isWeak, final TypeCheckingContext context) {
     if (subtype == null) return null;
     long start = System.nanoTime();
     SNode sNode = myCoercionManager.coerceSubTypingNew(subtype, pattern, isWeak, context);
-    TypeSystemReporter.getInstance().reportCoerce(subtype, pattern.getConceptFQName(), System.nanoTime()-start);
+    TypeSystemReporter.getInstance().reportCoerce(subtype, pattern.getConcept(), System.nanoTime()-start);
     return sNode;
   }
 }

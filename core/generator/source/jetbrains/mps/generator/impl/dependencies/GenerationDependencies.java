@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,10 @@
 package jetbrains.mps.generator.impl.dependencies;
 
 import jetbrains.mps.extapi.model.GeneratableSModel;
-import jetbrains.mps.generator.IncrementalGenerationStrategy;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.SModelRepository;
-import jetbrains.mps.textGen.TextGenManager;
 import org.jdom.Element;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -64,7 +60,7 @@ public class GenerationDependencies {
   private /* transient */ final int mySkippedCount;
   private /* transient */ final int myFromCacheCount;
 
-  private GenerationDependencies(String modelHash, String parametersHash) {
+  /*package*/ GenerationDependencies(String modelHash, String parametersHash) {
     this.containsIncrementalInfo = false;
     this.myModelHash = modelHash;
     this.myParametersHash = parametersHash;
@@ -77,7 +73,7 @@ public class GenerationDependencies {
     this.myFromCacheCount = 0;
   }
 
-  private GenerationDependencies(List<GenerationRootDependencies> data, String modelHash, String parametersHash, Map<String, String> externalHashes,
+  /*package*/ GenerationDependencies(List<GenerationRootDependencies> data, String modelHash, String parametersHash, Map<String, String> externalHashes,
       List<GenerationRootDependencies> unchanged, int skippedCount, int fromCacheCount, Map<String, String> dependenciesTraces) {
     this.containsIncrementalInfo = true;
     this.myRootDependencies = data;
@@ -87,7 +83,7 @@ public class GenerationDependencies {
     this.myModelHash = modelHash;
     this.myParametersHash = parametersHash;
     this.myUnchanged = unchanged;
-    this.myUsedModelsHashes = externalHashes;
+    this.myUsedModelsHashes = externalHashes.isEmpty() ? Collections.<String, String>emptyMap() : externalHashes;
     for (GenerationRootDependencies rd : data) {
       String id = rd.getRootId();
       myRootDependenciesMap.put(id == null ? GeneratableSModel.HEADER : id, rd);
@@ -149,6 +145,18 @@ public class GenerationDependencies {
     return sb.toString();
   }
 
+  public void update(@Nullable SNodeReference root, @NotNull String fileName) {
+    final GenerationRootDependencies rd;
+    if (root == null) {
+      rd = getDependenciesFor(GeneratableSModel.HEADER);
+    } else {
+      rd = getDependenciesFor(root.getNodeId().toString());
+    }
+    if (rd != null) {
+      rd.addGeneratedFile(fileName);
+    }
+  }
+
   public Element toXml() {
     Element root = new Element(ROOT_ELEMENT);
     root.setAttribute(ATTR_VERSION, Integer.toString(DEPENDENCIES_VERSION));
@@ -169,12 +177,10 @@ public class GenerationDependencies {
       }
       root.addContent(e);
     }
-    if (myRootDependencies != null) {
-      for (GenerationRootDependencies data : myRootDependencies) {
-        Element e = new Element(data.getRootId() != null ? NODE_ROOT : NODE_COMMON);
-        data.saveTo(e);
-        root.addContent(e);
-      }
+    for (GenerationRootDependencies data : myRootDependencies) {
+      Element e = new Element(data.getRootId() != null ? NODE_ROOT : NODE_COMMON);
+      data.saveTo(e);
+      root.addContent(e);
     }
     return root;
   }
@@ -185,20 +191,22 @@ public class GenerationDependencies {
       /* regenerate all */
       return null;
     }
+    // XXX Might be worth sharing intern with other reads/files, but this would take another refactoring round
+    Intern intern = new Intern();
     Map<String, String> externalHashes = new HashMap<String, String>();
-    for (Element e : ((List<Element>) root.getChildren(NODE_MODEL))) {
+    for (Element e : root.getChildren(NODE_MODEL)) {
       String modelReference = GenerationRootDependencies.getValue(e, ATTR_MODEL_ID);
       String rootHash = GenerationRootDependencies.getValue(e, ATTR_HASH);
       if (modelReference != null) {
-        externalHashes.put(modelReference, rootHash);
+        externalHashes.put(intern.value(modelReference), rootHash);
       }
     }
     List<GenerationRootDependencies> data = new ArrayList<GenerationRootDependencies>();
-    for (Element e : ((List<Element>) root.getChildren(NODE_COMMON))) {
-      data.add(GenerationRootDependencies.fromXml(e, true));
+    for (Element e : root.getChildren(NODE_COMMON)) {
+      data.add(GenerationRootDependencies.fromXml(e, true, intern));
     }
-    for (Element e : ((List<Element>) root.getChildren(NODE_ROOT))) {
-      data.add(GenerationRootDependencies.fromXml(e, false));
+    for (Element e : root.getChildren(NODE_ROOT)) {
+      data.add(GenerationRootDependencies.fromXml(e, false, intern));
     }
     String modelHash = GenerationRootDependencies.getValue(root, ATTR_MODEL_HASH);
     String paramsHash = GenerationRootDependencies.getValue(root, ATTR_PARAMS_HASH);
@@ -206,73 +214,5 @@ public class GenerationDependencies {
       return new GenerationDependencies(modelHash, paramsHash);
     }
     return new GenerationDependencies(data, modelHash, paramsHash, externalHashes, Collections.<GenerationRootDependencies>emptyList(), 0, 0, null);
-  }
-
-  public static String getFileName(SNode outputRootNode) {
-    // TODO refactor, use DefaultFileGenerator.getFileName
-    String extension = TextGenManager.instance().getExtension(outputRootNode);
-    return (extension == null) ? outputRootNode.getName() : outputRootNode.getName() + "." + extension;
-  }
-
-  public static GenerationDependencies fromIncremental(Map<SNode, SNode> currentToOriginalMap, RootDependenciesBuilder[] roots, String modelHash,
-      String parametersHash, IOperationContext operationContext, IncrementalGenerationStrategy incrementalStrategy, int skippedCount, int fromCacheCount,
-      Map<String, String> dependenciesTraces) {
-    Map<String, List<String>> generatedFiles = getGeneratedFiles(currentToOriginalMap);
-
-    List<GenerationRootDependencies> unchanged = null;
-    List<GenerationRootDependencies> rootDependencies = new ArrayList<GenerationRootDependencies>(roots.length);
-    Map<String, String> externalHashes = new HashMap<String, String>();
-    for (RootDependenciesBuilder l : roots) {
-      SNode originalRoot = l.getOriginalRoot();
-      List<String> files = generatedFiles.get(originalRoot != null ? originalRoot.getNodeId().toString() : "");
-      if (files == null) {
-        files = Collections.emptyList();
-      }
-      GenerationRootDependencies dep;
-      if (l.isUnchanged()) {
-        dep = l.getSavedDependencies();
-        if (unchanged == null) {
-          unchanged = new ArrayList<GenerationRootDependencies>();
-        }
-        unchanged.add(dep);
-      } else {
-        dep = GenerationRootDependencies.fromData(l, files);
-      }
-      rootDependencies.add(dep);
-      for (String modelReference : dep.getExternal()) {
-        if (!externalHashes.containsKey(modelReference)) {
-          SModel sm = SModelRepository.getInstance().getModelDescriptor(PersistenceFacade.getInstance().createModelReference(modelReference));
-          Map<String, String> hashes = incrementalStrategy.getModelHashes(sm, operationContext);
-          String value = hashes != null ? hashes.get(GeneratableSModel.FILE) : null;
-          externalHashes.put(modelReference, value);
-        }
-      }
-    }
-    return new GenerationDependencies(rootDependencies, modelHash, parametersHash, externalHashes,
-        unchanged == null ? Collections.<GenerationRootDependencies>emptyList() : unchanged, skippedCount, fromCacheCount, dependenciesTraces);
-  }
-
-  public static GenerationDependencies fromNonIncremental(String modelHash, String parametersHash) {
-    return new GenerationDependencies(modelHash, parametersHash);
-  }
-
-  private static Map<String, List<String>> getGeneratedFiles(Map<SNode, SNode> currentToOriginalMap) {
-    Map<String, List<String>> generatedFiles = new HashMap<String, List<String>>();
-
-    for (Map.Entry<SNode, SNode> entry : currentToOriginalMap.entrySet()) {
-      String inputRootId = entry.getValue() != null ? entry.getValue().getNodeId().toString() : "";
-      SNode outputRoot = entry.getKey();
-
-      List<String> filesList = generatedFiles.get(inputRootId);
-      if (filesList == null) {
-        filesList = new ArrayList<String>();
-        generatedFiles.put(inputRootId, filesList);
-      }
-      String fileName = getFileName(outputRoot);
-      if (fileName != null) {
-        filesList.add(fileName);
-      }
-    }
-    return generatedFiles;
   }
 }

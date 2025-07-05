@@ -7,17 +7,16 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.IScope;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 
@@ -25,48 +24,46 @@ public class replace_node_macro extends AbstractCellMenuComponent {
   public replace_node_macro() {
     super(new SubstituteInfoPartExt[]{new replace_node_macro.NodeMacro_generic_cellMenu_f12orh_a0()});
   }
-
   public static class NodeMacro_generic_cellMenu_f12orh_a0 extends AbstractCellMenuPart_Generic_Group {
     public NodeMacro_generic_cellMenu_f12orh_a0() {
     }
-
-    public List<?> createParameterObjects(SNode node, IScope scope, IOperationContext operationContext, EditorContext editorContext) {
-      return ListSequence.fromList(SConceptOperations.getAllSubConcepts(SConceptOperations.findConceptDeclaration("jetbrains.mps.lang.generator.structure.NodeMacro"), SNodeOperations.getModel(node), scope)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !(SPropertyOperations.getBoolean(it, "abstract"));
+    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro"), SNodeOperations.getModel(node))).where(new IWhereFilter<SConcept>() {
+        public boolean accept(SConcept it) {
+          return !(it.isAbstract());
         }
       }).toListSequence();
     }
-
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IScope scope, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((SNode) parameterObject, node, model, scope, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      this.handleAction_impl((SConcept) parameterObject, node, model, operationContext, editorContext);
     }
-
-    public void handleAction_impl(SNode parameterObject, SNode node, SModel model, IScope scope, IOperationContext operationContext, EditorContext editorContext) {
-      SNode macro = SNodeFactoryOperations.createNewNode(NameUtil.nodeFQName(parameterObject), node);
+    public void handleAction_impl(SConcept parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      SNode macro = SNodeFactoryOperations.createNewNode(SNodeFactoryOperations.asInstanceConcept(parameterObject), node);
       SNodeOperations.replaceWithAnother(node, macro);
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, macro, SelectionManager.FIRST_CELL, 1);
       editorContext.openInspector();
     }
-
     public boolean isReferentPresentation() {
       return false;
     }
-
     public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((SNode) parameterObject);
+      return this.getMatchingText_internal((SConcept) parameterObject);
     }
-
-    public String getMatchingText_internal(SNode parameterObject) {
-      return SPropertyOperations.getString(parameterObject, "conceptAlias");
+    public String getMatchingText_internal(SConcept parameterObject) {
+      return parameterObject.getConceptAlias();
     }
-
     public String getDescriptionText(Object parameterObject) {
-      return this.getDescriptionText_internal((SNode) parameterObject);
+      return this.getDescriptionText_internal((SConcept) parameterObject);
     }
-
-    public String getDescriptionText_internal(SNode parameterObject) {
-      return SPropertyOperations.getString(parameterObject, "conceptAlias");
+    public String getDescriptionText_internal(SConcept parameterObject) {
+      if (isNotEmptyString(parameterObject.getShortDescription())) {
+        return parameterObject.getShortDescription();
+      } else {
+        return parameterObject.getConceptAlias();
+      }
+    }
+    private static boolean isNotEmptyString(String str) {
+      return str != null && str.length() > 0;
     }
   }
 }

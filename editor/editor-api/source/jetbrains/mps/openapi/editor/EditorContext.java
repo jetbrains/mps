@@ -15,13 +15,15 @@
  */
 package jetbrains.mps.openapi.editor;
 
+import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCellFactory;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.openapi.editor.update.UpdateSession;
 import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.IScope;
 import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -61,38 +63,6 @@ public interface EditorContext {
 
   void selectRange(SNode first, SNode last);
 
-  /**
-   * This method will be removed after MPS 3.0
-   *
-   * @deprecated Use SelectionManager methods or .select operation from EditorLanguage instead
-   */
-  @Deprecated
-  void select(SNode node, String cellId);
-
-  /**
-   * This method will be removed after MPS 3.0
-   *
-   * @deprecated Use SelectionManager methods or .select operation from EditorLanguage instead
-   */
-  @Deprecated
-  void selectBefore(SNode node);
-
-  /**
-   * This method will be removed after MPS 3.0
-   *
-   * @deprecated Use SelectionManager methods or .select operation from EditorLanguage instead
-   */
-  @Deprecated
-  void selectAfter(SNode node);
-
-  /**
-   * This method will be removed after MPS 3.0
-   *
-   * @deprecated Use SelectionManager methods or .select operation from EditorLanguage instead
-   */
-  @Deprecated
-  void selectAndSetCaret(SNode node, int position);
-
   EditorCell getSelectedCell();
 
   EditorCell getContextCell();
@@ -103,41 +73,55 @@ public interface EditorContext {
 
   void openInspector();
 
+  @NotNull
   EditorComponent getEditorComponent();
 
   IOperationContext getOperationContext();
 
-  void executeCommand(Runnable r);
-
-  <T> T executeCommand(Computable<T> c);
-
-  boolean isInsideCommand();
-
   void flushEvents();
-
-  IScope getScope();
 
   SModel getModel();
 
   boolean isEditable();
 
-  Object createMemento(boolean full);
-
+  /**
+   * @deprecated Since MPS 3.4 use getState()
+   */
+  @Deprecated
   Object createMemento();
 
+  /**
+   * @deprecated Since MPS 3.4 use restoreState()
+   */
+  @Deprecated
   boolean setMemento(Object o);
 
-  EditorCell createNodeCell(SNode node);
+  EditorComponentState getEditorComponentState();
 
-  EditorCell createReferentCell(SNode sourceNode, SNode targetNode, String role);
-
-  EditorCell createRoleAttributeCell(Class attributeKind, EditorCell cellWithRole, SNode roleAttribute);
+  void restoreEditorComponentState(EditorComponentState state);
 
   void runWithContextCell(EditorCell contextCell, Runnable r);
 
   <T> T runWithContextCell(EditorCell contextCell, Computable<T> r);
 
+  /**
+   * @deprecated since MPS 3.5 use {@link UpdateSession#getCellFactory()}
+   */
+  @Deprecated
   EditorCellFactory getCellFactory();
 
   SelectionManager getSelectionManager();
+
+  @NotNull
+  ContextAssistantManager getContextAssistantManager();
+
+  /**
+   * Returning {@link EditorPanelManager} instance allowing manipulations with
+   * other MPS editors if available.
+   *
+   * @return editor panel manager or null if there is no {@link EditorPanelManager}
+   * instance available in the current context
+   */
+  @Nullable
+  EditorPanelManager getEditorPanelManager();
 }

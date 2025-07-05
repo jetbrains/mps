@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2015 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,22 +15,21 @@
  */
 package jetbrains.mps.ide.ui.smodel;
 
-import jetbrains.mps.ide.projectPane.Icons;
+import com.intellij.icons.AllIcons.Nodes;
+import com.intellij.util.IconUtil;
 import jetbrains.mps.ide.ui.tree.MPSTreeNodeEx;
-import jetbrains.mps.smodel.IOperationContext;
+import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
-
-import javax.swing.tree.DefaultTreeModel;
 
 public class PropertiesTreeNode extends MPSTreeNodeEx {
   private SNode myNode;
   private boolean myInitialized = false;
 
-  public PropertiesTreeNode(IOperationContext operationContext, SNode node) {
-    super(operationContext);
+  public PropertiesTreeNode(SNode node) {
     myNode = node;
 
-    setIcon(Icons.PROPERTY_ICON);
+    // TODO: add special icon for node properties
+    setIcon(IconUtil.addText(Nodes.Folder, "P"));
     setNodeIdentifier("properties");
   }
 
@@ -46,15 +45,11 @@ public class PropertiesTreeNode extends MPSTreeNodeEx {
 
   @Override
   protected void doInit() {
-    super.doInit();
-
-    for (String name : myNode.getPropertyNames()) {
-      add(new PropertyTreeNode(getOperationContext(), myNode, name));
+    for (SProperty name : myNode.getProperties()) {
+      add(new PropertyTreeNode(myNode, name));
     }
 
     myInitialized = true;
-
-    ((DefaultTreeModel) getTree().getModel()).nodeStructureChanged(this);
   }
 
   @Override

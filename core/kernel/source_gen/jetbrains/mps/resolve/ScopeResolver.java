@@ -7,70 +7,35 @@ import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.behaviour.BehaviorReflection;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
-import jetbrains.mps.util.Computable;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.scope.ErrorScope;
-import jetbrains.mps.util.NameUtil;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
 public class ScopeResolver implements IResolver {
   private static final Logger LOG = LogManager.getLogger(ScopeResolver.class);
-
   public ScopeResolver() {
   }
-
   @Override
-  public boolean resolve(@NotNull final SReference reference, @NotNull final SNode sourceNode, @NotNull final IOperationContext operationContext) {
-    SNode linkDeclaration = BehaviorReflection.invokeNonVirtual((Class<SNode>) ((Class) Object.class), SNodeOperations.getConceptDeclaration(sourceNode), "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration", "call_findLinkDeclaration_1213877394467", new Object[]{reference.getRole()});
-    if (linkDeclaration == null) {
+  public boolean resolve(@NotNull final SReference reference, @NotNull final SNode sourceNode, @NotNull final SRepository repository) {
+    Scope refScope = ModelConstraints.getScope(reference);
+    if (refScope instanceof ErrorScope) {
+      LOG.error("Couldn't create referent search scope : " + ((ErrorScope) refScope).getMessage());
       return false;
     }
-    final SNode referentConcept = SLinkOperations.getTarget(linkDeclaration, "target", false);
-    return TypeContextManager.getInstance().runResolveAction(new Computable<Boolean>() {
-      @Override
-      public Boolean compute() {
-        Scope refScope = ModelConstraints.getScope(reference);
-        if (refScope instanceof ErrorScope) {
-          LOG.error("Couldn't create referent search scope : " + ((ErrorScope) refScope).getMessage());
-          return false;
-        }
-        SNode result = null;
-        String resolveInfo = ((jetbrains.mps.smodel.SReference) reference).getResolveInfo();
-        if (resolveInfo != null) {
-          try {
-            result = refScope.resolve(sourceNode, resolveInfo);
-          } catch (Throwable t) {
-            LOG.warn("Exception was thrown during reference resolving", t);
-          }
-          if (result == null) {
-            // for compatibility reasons, was copied from old Resolver implementation 
-            for (SNode node : refScope.getAvailableElements(null)) {
-              if (!(SNodeOperations.isInstanceOf(node, NameUtil.nodeFQName(referentConcept)))) {
-                continue;
-              }
-              if (resolveInfo.equals(node.getName()) || resolveInfo.equals(SNodeAccessUtil.getProperty(node, "nestedName"))) {
-                if (result == null) {
-                  result = node;
-                } else {
-                  // ambiguity 
-                  return false;
-                }
-              }
-            }
-          }
-        }
-        if (result == null) {
-          return false;
-        }
-        sourceNode.setReferenceTarget(reference.getRole(), result);
-        return true;
+    SNode result = null;
+    String resolveInfo = ((jetbrains.mps.smodel.SReference) reference).getResolveInfo();
+    if (resolveInfo != null) {
+      try {
+        result = refScope.resolve(sourceNode, resolveInfo);
+      } catch (Throwable t) {
+        LOG.warn("Exception was thrown during reference resolving", t);
       }
-    });
+    }
+    if (result == null) {
+      return false;
+    }
+    sourceNode.setReferenceTarget(reference.getLink(), result);
+    return true;
   }
 }

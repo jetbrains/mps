@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<debugInfo>
-  <root nodeRef="r:e99b0478-397a-402b-a078-57c984a0eca3(jetbrains.mps.transformation.test.errorReporting.textGen)/7287346816896128678">
-    <nodeInfo nodeId="7287346816896135357" fileName="ErrorReportingRoot_TextGen.java" startLine="9" startPosition="42" endLine="10" endPosition="42" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="7287346816896135357" fileName="ErrorReportingRoot_TextGen.java" startLine="9" startPosition="42" endLine="10" endPosition="42" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7287346816896135365" fileName="ErrorReportingRoot_TextGen.java" startLine="10" startPosition="42" endLine="11" endPosition="25" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="7287346816896135365" fileName="ErrorReportingRoot_TextGen.java" startLine="10" startPosition="42" endLine="11" endPosition="25" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7287346816896135370" fileName="ErrorReportingRoot_TextGen.java" startLine="11" startPosition="25" endLine="12" endPosition="21" conceptFqName="jetbrains.mps.baseLanguage.structure.BlockStatement" />
-    <nodeInfo nodeId="7287346816896135370" fileName="ErrorReportingRoot_TextGen.java" startLine="11" startPosition="25" endLine="12" endPosition="21" conceptFqName="jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
-    <nodeInfo nodeId="7287346816896128678" fileName="ErrorReportingRoot_TextGen.java" startLine="9" startPosition="0" endLine="14" endPosition="0" conceptFqName="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" propertyString="doGenerateText#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-    <scopeInfo nodeId="7287346816896135357" fileName="ErrorReportingRoot_TextGen.java" startLine="9" startPosition="42" endLine="10" endPosition="42" />
-    <scopeInfo nodeId="7287346816896135365" fileName="ErrorReportingRoot_TextGen.java" startLine="10" startPosition="42" endLine="11" endPosition="25" />
-    <scopeInfo nodeId="7287346816896135370" fileName="ErrorReportingRoot_TextGen.java" startLine="11" startPosition="25" endLine="12" endPosition="21" />
-    <scopeInfo nodeId="7287346816896128678" fileName="ErrorReportingRoot_TextGen.java" startLine="9" startPosition="42" endLine="12" endPosition="21" />
-    <scopeInfo nodeId="7287346816896128678" fileName="ErrorReportingRoot_TextGen.java" startLine="9" startPosition="0" endLine="14" endPosition="0">
-      <varInfo nodeId="7287346816896128678" varName="node" />
-    </scopeInfo>
-    <unitInfo nodeId="7287346816896128678" fileName="ErrorReportingRoot_TextGen.java" startLine="8" startPosition="0" endLine="15" endPosition="0" unitName="jetbrains.mps.transformation.test.errorReporting.textGen.ErrorReportingRoot_TextGen" />
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <root>
+    <file name="TextGenAspectDescriptor.java">
+      <unit at="15,0,49,0" name="jetbrains.mps.transformation.test.errorReporting.textGen.TextGenAspectDescriptor" />
+    </file>
   </root>
-</debugInfo>
+  <root nodeRef="r:e99b0478-397a-402b-a078-57c984a0eca3(jetbrains.mps.transformation.test.errorReporting.textGen)/7287346816896128678">
+    <file name="ErrorReportingRoot_TextGen.java">
+      <node id="7287346816896128678" at="11,54,12,55" concept="2" />
+      <node id="7287346816896135357" at="12,55,13,41" concept="0" />
+      <node id="7287346816896135365" at="13,41,14,18" concept="0" />
+      <node id="7287346816896135370" at="14,18,15,20" concept="0" />
+      <node id="7287346816896128678" at="10,0,17,0" concept="1" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="7287346816896128678" at="11,54,15,20">
+        <var name="tgs" id="7287346816896128678" />
+      </scope>
+      <scope id="7287346816896128678" at="10,0,17,0">
+        <var name="ctx" id="7287346816896128678" />
+      </scope>
+      <unit id="7287346816896128678" at="9,0,18,0" name="jetbrains.mps.transformation.test.errorReporting.textGen.ErrorReportingRoot_TextGen" />
+    </file>
+  </root>
+</debug-info>
 

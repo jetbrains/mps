@@ -16,28 +16,31 @@
 package jetbrains.mps.ide.editorTabs.tabfactory;
 
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.editorTabs.tabfactory.emptytabs.EmptyTabsComponent;
 import jetbrains.mps.ide.editorTabs.tabfactory.tabs.CreateModeCallback;
 import jetbrains.mps.ide.editorTabs.tabfactory.tabs.buttontabs.ButtonTabsComponent;
 import jetbrains.mps.ide.editorTabs.tabfactory.tabs.plaintabs.PlainTabsComponent;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodeEditor.EditorSettings;
-import jetbrains.mps.nodeEditor.EditorSettings.MyState;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
-import jetbrains.mps.smodel.IOperationContext;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import javax.swing.JComponent;
 import java.util.Set;
 
 public abstract class TabComponentFactory {
-  public static TabsComponent createTabsComponent(final SNodeReference baseNode, final Set<RelationDescriptor> possibleTabs, JComponent component, NodeChangeCallback callback, CreateModeCallback createModeCallback, IOperationContext operationContext) {
-    MyState state = ApplicationManager.getApplication().getComponent(EditorSettings.class).getState();
-    if (!state.isShow()) return new EmptyTabsComponent(baseNode);
+  public static TabsComponent createTabsComponent(final SNodeReference baseNode, final Set<RelationDescriptor> possibleTabs, JComponent component,
+      NodeChangeCallback callback, CreateModeCallback createModeCallback, Project project) {
+    EditorSettings editorSettings = ApplicationManager.getApplication().getComponent(EditorSettings.class);
+    if (!editorSettings.isShow()) {
+      return new EmptyTabsComponent(baseNode, callback, ProjectHelper.fromIdeaProject(project));
+    }
 
-    if (state.isShowPlain()) {
-      return new PlainTabsComponent(baseNode, possibleTabs, component, callback, state.isShowGrayed(), createModeCallback, operationContext);
+    if (editorSettings.isShowPlain()) {
+      return new PlainTabsComponent(baseNode, possibleTabs, component, callback, editorSettings.isShowGrayed(), createModeCallback, project);
     } else {
-      return new ButtonTabsComponent(baseNode, possibleTabs, component, callback, state.isShowGrayed(), operationContext);
+      return new ButtonTabsComponent(baseNode, possibleTabs, component, callback, editorSettings.isShowGrayed(), project);
     }
   }
 }

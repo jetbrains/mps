@@ -12,10 +12,8 @@ import java.util.Arrays;
 
 public abstract class CollectionSequence<T> extends AbstractCollectionSequence<T> implements ICollectionSequence<T>, Collection<T>, Serializable {
   private static final long serialVersionUID = -5323571231659062625L;
-
   protected CollectionSequence() {
   }
-
   @Override
   public ICollectionSequence<T> asUnmodifiable() {
     final Collection<T> unmodifiableCollection = Collections.unmodifiableCollection(getCollection());
@@ -26,7 +24,6 @@ public abstract class CollectionSequence<T> extends AbstractCollectionSequence<T
       }
     };
   }
-
   @Override
   public ICollectionSequence<T> asSynchronized() {
     final Collection<T> synchronizedCollection = CollectionUtils.synchronizedCollection(getCollection());
@@ -37,9 +34,8 @@ public abstract class CollectionSequence<T> extends AbstractCollectionSequence<T
       }
     };
   }
-
   public static <U> ICollectionSequence<U> fromCollection(final Collection<U> coll) {
-    if (USE_NULL_SEQUENCE) {
+    if (AbstractSequence.USE_NULL_SEQUENCE) {
       if (coll == null) {
         return NullCollectionSequence.instance();
       }
@@ -54,10 +50,9 @@ public abstract class CollectionSequence<T> extends AbstractCollectionSequence<T
       }
     };
   }
-
   public static <U> ICollectionSequence<U> fromCollectionWithValues(Collection<U> coll, Iterable<? extends U> it) {
     Collection<U> tmp = coll;
-    if (USE_NULL_SEQUENCE) {
+    if (AbstractSequence.USE_NULL_SEQUENCE) {
       if (coll == null && it == null) {
         return NullCollectionSequence.instance();
       } else
@@ -68,7 +63,7 @@ public abstract class CollectionSequence<T> extends AbstractCollectionSequence<T
         return CollectionSequence.fromCollection(coll);
       }
     }
-    if (IGNORE_NULL_VALUES) {
+    if (AbstractSequence.IGNORE_NULL_VALUES) {
       for (U u : it) {
         if (u != null) {
           tmp.add(u);
@@ -93,14 +88,13 @@ public abstract class CollectionSequence<T> extends AbstractCollectionSequence<T
       }
     };
   }
-
   public static <U> ICollectionSequence<U> fromCollectionAndArray(Collection<U> coll, U... array) {
-    if (NULL_ARRAY_IS_SINGLETON) {
+    if (AbstractSequence.NULL_ARRAY_IS_SINGLETON) {
       if (array == null) {
         array = (U[]) Sequence.nullSingletonArray();
       }
     }
-    if (USE_NULL_SEQUENCE) {
+    if (AbstractSequence.USE_NULL_SEQUENCE) {
       if (coll == null && array == null) {
         return NullCollectionSequence.instance();
       } else
@@ -121,7 +115,7 @@ public abstract class CollectionSequence<T> extends AbstractCollectionSequence<T
       }
     }
     List<U> input = Arrays.asList(array);
-    if (IGNORE_NULL_VALUES) {
+    if (AbstractSequence.IGNORE_NULL_VALUES) {
       for (U u : input) {
         if (u != null) {
           coll.add(u);

@@ -10,16 +10,13 @@ public class NamedElementsScope extends SimpleScope {
   public NamedElementsScope(Iterable<SNode> nodes) {
     super(nodes);
   }
-
   public NamedElementsScope(SNode node) {
     super(node);
   }
-
   @Nullable
   @Override
   public String getReferenceText(@NotNull SNode target) {
     // todo: is it right? 
-    // <node> 
     return target.getName();
   }
 }

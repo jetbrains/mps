@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,47 +15,54 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.project.dependency.ModelDependenciesManager;
-import jetbrains.mps.smodel.SModel.ImportElement;
+import jetbrains.mps.extapi.model.ModelWithDisposeInfo;
 import jetbrains.mps.smodel.event.SModelListener;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.util.Collection;
 import java.util.List;
 
-public interface SModelInternal {
+
+/**
+ * Provisional interface our openapi.SModel implementations shall provide in order to manage model dependencies
+ * and internal housekeeping tasks (also for legacy model listeners, pending removal).
+ *
+ * We are not yet confident about API to add model dependencies (languages, models and alike), that's why we keep this
+ * separate, non-{@code openapi} interface. Questions, among others, include whether we shall demand all models to support
+ * imports editing, how to specify dependencies (extra composite Dependency objects or plain SModelReference/SLanguage is ok),
+ * if this interface is intrinsic part of openapi.SModel or just comes with a help thereof (i.e. model.getDependencies() manager object),
+ * and how to dispatch change notifications.
+ */
+// XXX move to [smodel] once ImportElement and Language dependencies gone
+public interface SModelInternal extends ModelWithDisposeInfo  {
 
   void addModelListener(@NotNull SModelListener listener);
 
   void removeModelListener(@NotNull SModelListener listener);
 
-  //todo get rid of, try to cast, show an error if not casted
-  boolean isDisposed();
+  // FIXME rename to importedLanguages once original is removed
+  java.util.Collection<SLanguage> importedLanguageIds();
 
-  //todo cast if can be
-  StackTraceElement[] getDisposedStacktrace();
+  // FIXME refactor, rename to removeLanguage(SLanguage), expose in SModel
+  void deleteLanguageId(@NotNull SLanguage ref);
 
-  void setModelDescriptor(SModel modelDescriptor);
+  /**
+   * @deprecated use {@link #addLanguage(SLanguage)} instead
+   */
+  @Deprecated
+  @ToRemove(version = 3.4)
+  void addLanguage(Language language); // 2 uses in mbeddr
 
-  boolean canFireEvent();
+  void addLanguage(@NotNull SLanguage language);
 
-  void dispose();
+  void setLanguageImportVersion(@NotNull SLanguage language, int version);
 
-  //todo this is an external functionality. Should be implemented externally
-  FastNodeFinder getFastNodeFinder();
-
-  //todo this is an external functionality. Should be implemented externally
-  void disposeFastNodeFinder();
-
-  ModelDependenciesManager getModelDepsManager();
-
-  List<SModuleReference> importedLanguages();
-
-  void deleteLanguage(@NotNull SModuleReference ref);
-
-  void addLanguage(SModuleReference ref);
+  int getLanguageImportVersion(SLanguage lang);
 
   List<SModuleReference> importedDevkits();
 
@@ -63,42 +70,65 @@ public interface SModelInternal {
 
   void deleteDevKit(@NotNull SModuleReference ref);
 
-  List<ImportElement> importedModels();
+  /**
+   * @return collection of models this one depends from.
+   */
+  @NotNull
+  Collection<SModelReference> getModelImports();
 
+  /**
+   * Tell one model depends from another.
+   * @since 3.4
+   */
+  void addModelImport(@NotNull SModelReference modelReference);
+
+  /**
+   * @deprecated use {@link #addModelImport(SModelReference)} instead, second argument of this method is legacy.
+   */
+  @Deprecated
+  @ToRemove(version = 3.4)
   void addModelImport(SModelReference modelReference, boolean firstVersion);
-
-  void addModelImport(ImportElement importElement);
 
   void deleteModelImport(SModelReference modelReference);
 
-  // create new implicit import list based on used models, explicit import and old implicit import list
-  void calculateImplicitImports();
-
+  /**
+   * @deprecated use {@link #getLanguagesEngagedOnGeneration()} or {@link SModelLegacy#engagedOnGenerationLanguages()} for transition.
+   */
+  @Deprecated
+  @ToRemove(version = 3.4)
   List<SModuleReference> engagedOnGenerationLanguages();
 
+  /**
+   * @since 3.4
+   */
+  @NotNull
+  Collection<SLanguage> getLanguagesEngagedOnGeneration();
+
+  /**
+   * @deprecated use {@link #addEngagedOnGenerationLanguage(SLanguage)} instead
+   * Shall move to SModelLegacy
+   */
+  @Deprecated
+  @ToRemove(version = 3.4)
   void addEngagedOnGenerationLanguage(SModuleReference ref);
 
+  void addEngagedOnGenerationLanguage(SLanguage lang);
+
+  /**
+   * @deprecated use {@link #removeEngagedOnGenerationLanguage(SLanguage)} instead
+   * Shall move to SModelLegacy
+   */
+  @Deprecated
+  @ToRemove(version = 3.4)
   void removeEngagedOnGenerationLanguage(SModuleReference ref);
 
-  List<ImportElement> getAdditionalModelVersions();
+  void removeEngagedOnGenerationLanguage(SLanguage lang);
 
-  void addAdditionalModelVersion(@NotNull SModelReference modelReference, int usedVersion);
-
-  void addAdditionalModelVersion(@NotNull ImportElement element);
-
-  int getVersion();
-
-  void setVersion(int version);
-
-  void updateImportedModelUsedVersion(SModelReference sModelReference, int currentVersion);
-
-  boolean canFireReadEvent();
-
-  boolean updateSModelReferences();
+  /**
+   * Model has a chance to bring its external dependencies to a state manifested by supplied repository
+   * @return <code>true</code> if anything has been changed
+   */
+  boolean updateExternalReferences(@NotNull SRepository repository);
 
   void changeModelReference(SModelReference newModelReference);
-
-  boolean updateModuleReferences();
-
-  void copyPropertiesTo(SModelInternal to);
 }

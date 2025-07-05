@@ -10,21 +10,20 @@ import java.util.Map;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.generator.TransientModelsModule;
-import jetbrains.mps.util.SNodeOperations;
+import jetbrains.mps.extapi.model.TransientSModel;
+import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
-import org.apache.log4j.Priority;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import jetbrains.mps.ide.ui.tree.SortUtil;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import com.intellij.openapi.application.ApplicationManager;
-import jetbrains.mps.vcs.diff.ui.ModelDifferenceDialog;
 import com.intellij.openapi.project.Project;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
+import jetbrains.mps.ide.ui.tree.SortUtil;
+import com.intellij.diff.contents.DiffContent;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.vcs.platform.integration.ModelDiffContent;
+import com.intellij.diff.requests.DiffRequest;
+import com.intellij.diff.requests.SimpleDiffRequest;
+import com.intellij.diff.DiffManager;
 
 public class CompareTransientModels_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.Diff;
@@ -34,71 +33,56 @@ public class CompareTransientModels_Action extends BaseAction {
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
-
   @Override
   public boolean isDumbAware() {
     return true;
   }
-
+  @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((List<SModel>) MapSequence.fromMap(_params).get("models")).size() == 2 && ((List<SModel>) MapSequence.fromMap(_params).get("models")).get(0) instanceof TransientModelsModule.TransientSModelDescriptor && ((List<SModel>) MapSequence.fromMap(_params).get("models")).get(1) instanceof TransientModelsModule.TransientSModelDescriptor && eq_5whyyr_a0a0a3(SNodeOperations.getModelLongName(((List<SModel>) MapSequence.fromMap(_params).get("models")).get(0)), SNodeOperations.getModelLongName(((List<SModel>) MapSequence.fromMap(_params).get("models")).get(1)));
+    return ((List<SModel>) MapSequence.fromMap(_params).get("models")).size() == 2 && ((List<SModel>) MapSequence.fromMap(_params).get("models")).get(0) instanceof TransientSModel && ((List<SModel>) MapSequence.fromMap(_params).get("models")).get(1) instanceof TransientSModel && eq_5whyyr_a0a0a4(NameUtil.getModelLongName(((List<SModel>) MapSequence.fromMap(_params).get("models")).get(0)), NameUtil.getModelLongName(((List<SModel>) MapSequence.fromMap(_params).get("models")).get(1)));
   }
-
+  @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      {
-        boolean enabled = this.isApplicable(event, _params);
-        this.setEnabledState(event.getPresentation(), enabled);
-      }
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action doUpdate method failed. Action:" + "CompareTransientModels", t);
-      }
-      this.disable(event.getPresentation());
-    }
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
-
+  @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
     }
-    MapSequence.fromMap(_params).put("models", event.getData(MPSCommonDataKeys.MODELS));
-    if (MapSequence.fromMap(_params).get("models") == null) {
-      return false;
+    {
+      List<SModel> p = event.getData(MPSCommonDataKeys.MODELS);
+      MapSequence.fromMap(_params).put("models", p);
+      if (p == null) {
+        return false;
+      }
     }
-    MapSequence.fromMap(_params).put("project", event.getData(PlatformDataKeys.PROJECT));
-    if (MapSequence.fromMap(_params).get("project") == null) {
-      return false;
+    {
+      Project p = event.getData(CommonDataKeys.PROJECT);
+      MapSequence.fromMap(_params).put("project", p);
+      if (p == null) {
+        return false;
+      }
     }
     return true;
   }
-
+  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    try {
-      final SModel[] model = SortUtil.sortModels(((List<SModel>) MapSequence.fromMap(_params).get("models"))).toArray(new SModel[((List<SModel>) MapSequence.fromMap(_params).get("models")).size()]);
-      final String[] titles = ModelAccess.instance().runReadAction(new Computable<String[]>() {
-        public String[] compute() {
-          return new String[]{SModelOperations.getModelName(model[0]), SModelOperations.getModelName(model[1])};
-        }
-      });
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          new ModelDifferenceDialog(((Project) MapSequence.fromMap(_params).get("project")), model[0], model[1], titles[0], titles[1], null).show();
-        }
-      });
-    } catch (Throwable t) {
-      if (LOG.isEnabledFor(Priority.ERROR)) {
-        LOG.error("User's action execute method failed. Action:" + "CompareTransientModels", t);
+    List<SModel> sortedModels = SortUtil.sortModels(((List<SModel>) MapSequence.fromMap(_params).get("models")));
+    List<DiffContent> contents = ListSequence.fromList(sortedModels).select(new ISelector<SModel, DiffContent>() {
+      public DiffContent select(SModel model) {
+        return (DiffContent) new ModelDiffContent(model);
       }
-    }
+    }).toListSequence();
+    List<String> titles = ListSequence.fromList(sortedModels).select(new ISelector<SModel, String>() {
+      public String select(SModel model) {
+        return model.getName() + "";
+      }
+    }).toListSequence();
+    DiffRequest request = new SimpleDiffRequest("", contents, titles);
+    DiffManager.getInstance().showDiff(((Project) MapSequence.fromMap(_params).get("project")), request);
   }
-
-  protected static Logger LOG = LogManager.getLogger(CompareTransientModels_Action.class);
-
-  private static boolean eq_5whyyr_a0a0a3(Object a, Object b) {
-    return (a != null ?
-      a.equals(b) :
-      a == b
-    );
+  private static boolean eq_5whyyr_a0a0a4(Object a, Object b) {
+    return (a != null ? a.equals(b) : a == b);
   }
 }

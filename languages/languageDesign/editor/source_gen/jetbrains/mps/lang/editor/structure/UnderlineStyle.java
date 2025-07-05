@@ -4,23 +4,28 @@ package jetbrains.mps.lang.editor.structure;
 
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.backports.LinkedList;
+import java.util.LinkedList;
 
 public enum UnderlineStyle {
   as_is("as_is", 0),
   not_underlined("not_underlined", 1),
   underlined("underlined", 2);
 
-  private String myName;
-
+  private final String myName;
   public String getName() {
-    return this.myName;
+    return myName;
   }
-
+  private final int myValue;
+  UnderlineStyle(String name, int value) {
+    myName = name;
+    myValue = value;
+  }
+  public int getValue() {
+    return myValue;
+  }
   public String getValueAsString() {
-    return "" + this.myValue;
+    return Integer.toString(myValue);
   }
-
   public static List<UnderlineStyle> getConstants() {
     List<UnderlineStyle> list = ListSequence.fromList(new LinkedList<UnderlineStyle>());
     ListSequence.fromList(list).addElement(UnderlineStyle.as_is);
@@ -28,11 +33,9 @@ public enum UnderlineStyle {
     ListSequence.fromList(list).addElement(UnderlineStyle.underlined);
     return list;
   }
-
   public static UnderlineStyle getDefault() {
     return UnderlineStyle.as_is;
   }
-
   public static UnderlineStyle parseValue(String value) {
     if (value == null) {
       return UnderlineStyle.getDefault();
@@ -47,16 +50,5 @@ public enum UnderlineStyle {
       return UnderlineStyle.underlined;
     }
     return UnderlineStyle.getDefault();
-  }
-
-  private int myValue;
-
-  UnderlineStyle(String name, int value) {
-    this.myName = name;
-    this.myValue = value;
-  }
-
-  public int getValue() {
-    return this.myValue;
   }
 }
