@@ -84,6 +84,10 @@ public class NullLinkedListSequence<T> extends NullListSequence<T> implements IL
     return false;
   }
   @Override
+  public NullLinkedListSequence<T> reversed() {
+    return this;
+  }
+  @Override
   public T pushElement(T t) {
     return null;
   }

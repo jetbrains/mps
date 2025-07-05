@@ -14,10 +14,16 @@ import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptNullSafeDotExpression = createDescriptorForNullSafeDotExpression();
   /*package*/ final ConceptDescriptor myConceptNullUnsafeDotExpression = createDescriptorForNullUnsafeDotExpression();
-  private final LanguageConceptSwitch myConceptIndex;
+  private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
-    myConceptIndex = new LanguageConceptSwitch();
+    myIndexSwitch = new LanguageConceptSwitch();
+  }
+
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }
 
   @Override
@@ -28,7 +34,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
-    switch (myConceptIndex.index(id)) {
+    switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.NullSafeDotExpression:
         return myConceptNullSafeDotExpression;
       case LanguageConceptSwitch.NullUnsafeDotExpression:
@@ -38,23 +44,28 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     }
   }
 
+
   /*package*/ int internalIndex(SAbstractConcept c) {
-    return myConceptIndex.index(c);
+    return myIndexSwitch.index(c);
   }
 
   private static ConceptDescriptor createDescriptorForNullSafeDotExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testExtendingAnalyzer", "NullSafeDotExpression", 0x3ac033a0bffa48e3L, 0xa843a40cbdd89859L, 0x13ac54c0e557dc29L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.DotExpression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L);
+    // extends: jetbrains.mps.baseLanguage.structure.DotExpression
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L);
     b.origin("r:ceb05fbc-f573-4746-aba6-e6f7676be055(testExtendingAnalyzer.structure)/1417601170173058089");
+    b.version(3);
     b.alias("safe");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForNullUnsafeDotExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testExtendingAnalyzer", "NullUnsafeDotExpression", 0x3ac033a0bffa48e3L, 0xa843a40cbdd89859L, 0x13ac54c0e557da2eL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.DotExpression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L);
+    // extends: jetbrains.mps.baseLanguage.structure.DotExpression
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L);
     b.origin("r:ceb05fbc-f573-4746-aba6-e6f7676be055(testExtendingAnalyzer.structure)/1417601170173057582");
+    b.version(3);
     b.alias("unsafe");
     return b.create();
   }

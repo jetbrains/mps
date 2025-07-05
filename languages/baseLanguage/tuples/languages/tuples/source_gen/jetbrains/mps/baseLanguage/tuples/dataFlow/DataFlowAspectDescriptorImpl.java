@@ -18,7 +18,7 @@ public class DataFlowAspectDescriptorImpl extends DataFlowAspectDescriptorBase {
   @Override
   public Collection<IDataFlowBuilder> getDataFlowBuilders(SAbstractConcept concept) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
-    switch (index_vhxjlb_a0b.index(cncpt)) {
+    switch (conceptIndex.index(cncpt)) {
       case 0:
         return Collections.<IDataFlowBuilder>singletonList(new IndexedTupleLiteral_DataFlow());
       case 1:
@@ -29,5 +29,5 @@ public class DataFlowAspectDescriptorImpl extends DataFlowAspectDescriptorBase {
     }
     return Collections.<IDataFlowBuilder>emptyList();
   }
-  private static final ConceptSwitchIndex index_vhxjlb_a0b = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL)).seal();
 }

@@ -15,10 +15,14 @@
  */
 package jetbrains.mps.util;
 
+import java.util.function.Supplier;
+
 /**
+ * @deprecated use {@link org.jetbrains.mps.openapi.module.ModelAccess#computeReadAction(Supplier)} instead
  * User: shatalin
  * Date: 09/10/14
  */
+@Deprecated(since = "2023.3", forRemoval = true)
 public abstract class AbstractComputeRunnable<T> implements Runnable {
   private T myResult;
 

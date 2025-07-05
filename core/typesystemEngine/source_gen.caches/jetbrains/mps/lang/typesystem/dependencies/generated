@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="ao1927ol8qmx23od6ti88bvcgota2bt" />
+<product version="3" modelHash="-9iztinlnciv6yhsjvuwa5ocf7stu8qh">
+  <files names="CheckingMethod.java:DependenciesCollector.java:InferenceMethod.java" />
+</product>
 

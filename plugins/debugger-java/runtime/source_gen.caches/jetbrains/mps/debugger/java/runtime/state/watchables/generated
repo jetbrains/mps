@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="7ufd9d2jy6s24ducb5u3r1xiscw0896" />
+<product version="3" modelHash="-istskt7lwsvorq10qkvzk7xcsewosp">
+  <files names="EventWatchablesCreator.java:JavaExceptionWatchable.java:JavaMethodWatchable.java:JavaReturnWatchable.java:JavaWatchpointValueWatchable.java:JavaWatchpointWatchable.java" />
+</product>
 

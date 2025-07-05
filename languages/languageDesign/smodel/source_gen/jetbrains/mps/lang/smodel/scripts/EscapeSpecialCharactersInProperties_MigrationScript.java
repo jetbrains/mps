@@ -5,7 +5,6 @@ package jetbrains.mps.lang.smodel.scripts;
 import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -14,6 +13,8 @@ import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class EscapeSpecialCharactersInProperties_MigrationScript extends BaseMigrationScript {
   public EscapeSpecialCharactersInProperties_MigrationScript() {
@@ -29,13 +30,13 @@ public final class EscapeSpecialCharactersInProperties_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+        return CONCEPTS.BaseConcept$gP;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
         for (SProperty property : Sequence.fromIterable(node.getProperties())) {
-          String value = SNodeAccessUtil.getProperty(node, property);
-          if (value != null && !(value.equals(NameUtil.escapeInvisibleCharacters(value)))) {
+          Object value = SNodeAccessUtil.getPropertyValue(node, property);
+          if (value instanceof String && !(value.equals(NameUtil.escapeInvisibleCharacters((String) value)))) {
             return true;
           }
         }
@@ -44,13 +45,13 @@ public final class EscapeSpecialCharactersInProperties_MigrationScript extends B
       @Override
       public void doUpdateInstanceNode(SNode node) {
         for (SProperty property : Sequence.fromIterable(node.getProperties())) {
-          String value = SNodeAccessUtil.getProperty(node, property);
-          if (value == null) {
+          Object value = SNodeAccessUtil.getPropertyValue(node, property);
+          if (!(value instanceof String)) {
             continue;
           }
-          String escapedValue = NameUtil.escapeInvisibleCharacters(value);
+          String escapedValue = NameUtil.escapeInvisibleCharacters((String) value);
           if (!(value.equals(escapedValue))) {
-            SNodeAccessUtil.setProperty(node, property, escapedValue);
+            SNodeAccessUtil.setPropertyValue(node, property, escapedValue);
           }
         }
       }
@@ -65,5 +66,9 @@ public final class EscapeSpecialCharactersInProperties_MigrationScript extends B
   @Override
   public SNodeReference getScriptNode() {
     return PersistenceFacade.getInstance().createNodeReference("r:00000000-0000-4000-0000-011c89590300(jetbrains.mps.lang.smodel.scripts)/5426775851424578122");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

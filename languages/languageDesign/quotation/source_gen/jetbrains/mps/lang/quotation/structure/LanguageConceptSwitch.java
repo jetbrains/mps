@@ -14,18 +14,25 @@ public final class LanguageConceptSwitch {
   public static final int GeneratorInternal_InternalReferenceHolder = 2;
   public static final int GeneratorInternal_PropertyDescriptor = 3;
   public static final int GeneratorInternal_ReferenceDescriptor = 4;
-  public static final int ListAntiquotation = 5;
-  public static final int NodeBuilder = 6;
-  public static final int NodeBuilderExpression = 7;
-  public static final int NodeBuilderInitLink = 8;
-  public static final int NodeBuilderInitPart = 9;
-  public static final int NodeBuilderInitProperty = 10;
-  public static final int NodeBuilderList = 11;
-  public static final int NodeBuilderNode = 12;
-  public static final int NodeBuilderRef = 13;
-  public static final int PropertyAntiquotation = 14;
-  public static final int Quotation = 15;
-  public static final int ReferenceAntiquotation = 16;
+  public static final int INodeBuilderContainer = 5;
+  public static final int ListAntiquotation = 6;
+  public static final int ModelNodeInitializer = 7;
+  public static final int NodeBuilder = 8;
+  public static final int NodeBuilderExpression = 9;
+  public static final int NodeBuilderInitLink = 10;
+  public static final int NodeBuilderInitLinkValue = 11;
+  public static final int NodeBuilderInitPart = 12;
+  public static final int NodeBuilderInitProperty = 13;
+  public static final int NodeBuilderInitPropertyValue = 14;
+  public static final int NodeBuilderInitValueChild = 15;
+  public static final int NodeBuilderList = 16;
+  public static final int NodeBuilderNode = 17;
+  public static final int NodeBuilderPropertyExpression = 18;
+  public static final int NodeBuilderRef = 19;
+  public static final int PropertyAntiquotation = 20;
+  public static final int Quotation = 21;
+  public static final int ReferenceAntiquotation = 22;
+  public static final int StringToTypedValueMigrationInfo = 23;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L);
@@ -34,18 +41,25 @@ public final class LanguageConceptSwitch {
     builder.put(0x1c4b068f93acf228L, GeneratorInternal_InternalReferenceHolder);
     builder.put(0x746e600f0bda67c7L, GeneratorInternal_PropertyDescriptor);
     builder.put(0x24cfe382a47f973dL, GeneratorInternal_ReferenceDescriptor);
+    builder.put(0xe04f17ec2c78d3eL, INodeBuilderContainer);
     builder.put(0x1168c10465eL, ListAntiquotation);
+    builder.put(0x2e06ff6184da106eL, ModelNodeInitializer);
     builder.put(0x4bb51009d20a4a9dL, NodeBuilder);
     builder.put(0x718e3f4cb7a3132eL, NodeBuilderExpression);
     builder.put(0x4bb51009d20c8e1aL, NodeBuilderInitLink);
+    builder.put(0x16240b8e9e79db00L, NodeBuilderInitLinkValue);
     builder.put(0x4bb51009d20b0339L, NodeBuilderInitPart);
     builder.put(0x4bb51009d20b0325L, NodeBuilderInitProperty);
+    builder.put(0x60f18f425c769982L, NodeBuilderInitPropertyValue);
+    builder.put(0x77f0b79c5e1788feL, NodeBuilderInitValueChild);
     builder.put(0x718e3f4cb7a2df32L, NodeBuilderList);
     builder.put(0x4bb51009d20a4aa0L, NodeBuilderNode);
+    builder.put(0x60f18f425c76d21aL, NodeBuilderPropertyExpression);
     builder.put(0x718e3f4cb7a0fa93L, NodeBuilderRef);
     builder.put(0x116aac96587L, PropertyAntiquotation);
     builder.put(0x1168c104659L, Quotation);
     builder.put(0x1168c10465dL, ReferenceAntiquotation);
+    builder.put(0x384b195d1ed21709L, StringToTypedValueMigrationInfo);
     myIndex = builder.seal();
   }
 

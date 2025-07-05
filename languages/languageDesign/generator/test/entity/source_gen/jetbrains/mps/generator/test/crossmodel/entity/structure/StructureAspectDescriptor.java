@@ -4,45 +4,57 @@ package jetbrains.mps.generator.test.crossmodel.entity.structure;
 
 import jetbrains.mps.smodel.runtime.BaseStructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
+import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
 import java.util.Collection;
 import java.util.Arrays;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
+import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptEntry = createDescriptorForEntry();
   /*package*/ final ConceptDescriptor myConceptNodeA = createDescriptorForNodeA();
-  /*package*/ final ConceptDescriptor myConceptTrivialKeeper = createDescriptorForTrivialKeeper();
-  private final LanguageConceptSwitch myConceptIndex;
+  /*package*/ final EnumerationDescriptor myEnumerationKind = new EnumerationDescriptor_Kind();
+  private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
-    myConceptIndex = new LanguageConceptSwitch();
+    myIndexSwitch = new LanguageConceptSwitch();
+  }
+
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptEntry, myConceptNodeA, myConceptTrivialKeeper);
+    return Arrays.asList(myConceptEntry, myConceptNodeA);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
-    switch (myConceptIndex.index(id)) {
+    switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.Entry:
         return myConceptEntry;
       case LanguageConceptSwitch.NodeA:
         return myConceptNodeA;
-      case LanguageConceptSwitch.TrivialKeeper:
-        return myConceptTrivialKeeper;
       default:
         return null;
     }
   }
 
+  @Override
+  public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
+    return Arrays.asList(myEnumerationKind);
+  }
+
   /*package*/ int internalIndex(SAbstractConcept c) {
-    return myConceptIndex.index(c);
+    return myIndexSwitch.index(c);
   }
 
   private static ConceptDescriptor createDescriptorForEntry() {
@@ -50,7 +62,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:9b56ed90-436a-4093-aab2-2dfe5d09ce42(jetbrains.mps.generator.test.crossmodel.entity.structure)/4355167635271935478");
-    b.prop("kind", 0x3c70a9e3bda9ab7eL, "4355167635271953278");
+    b.version(3);
+    b.property("kind", 0x3c70a9e3bda9ab7eL).type(MetaIdFactory.dataTypeId(0x4d14758c3ecb486dL, 0xb8c8ea5beb8ae408L, 0x3c70a9e3bda9ab86L)).origin("4241665505353453973").done();
     b.associate("owner", 0x29afbc6cd33f5d6eL).target(0x4d14758c3ecb486dL, 0xb8c8ea5beb8ae408L, 0x3c70a9e3bda96463L).optional(false).origin("3003826652066045294").done();
     b.associate("use1", 0x3c70a9e3bda9a808L).target(0x4d14758c3ecb486dL, 0xb8c8ea5beb8ae408L, 0x3c70a9e3bda965f6L).optional(true).origin("4355167635271952392").done();
     b.associate("use2", 0x3c70a9e3bda9a80aL).target(0x4d14758c3ecb486dL, 0xb8c8ea5beb8ae408L, 0x3c70a9e3bda965f6L).optional(true).origin("4355167635271952394").done();
@@ -62,20 +75,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:9b56ed90-436a-4093-aab2-2dfe5d09ce42(jetbrains.mps.generator.test.crossmodel.entity.structure)/4355167635271935075");
+    b.version(3);
     b.aggregate("entries", 0x3c70a9e3bda9ab7cL).target(0x4d14758c3ecb486dL, 0xb8c8ea5beb8ae408L, 0x3c70a9e3bda965f6L).optional(true).ordered(true).multiple(true).origin("4355167635271953276").done();
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForTrivialKeeper() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.generator.test.crossmodel.entity", "TrivialKeeper", 0x4d14758c3ecb486dL, 0xb8c8ea5beb8ae408L, 0x7bb9ef7499a8e15dL);
-    b.class_(false, false, false);
-    b.origin("r:9b56ed90-436a-4093-aab2-2dfe5d09ce42(jetbrains.mps.generator.test.crossmodel.entity.structure)/8915420221429834077");
-    b.prop("string1", 0x7bb9ef7499a8e15eL, "8915420221429834078");
-    b.prop("string2", 0x7bb9ef7499a8e160L, "8915420221429834080");
-    b.prop("string3", 0x7bb9ef7499a8e163L, "8915420221429834083");
-    b.prop("int1", 0x7bb9ef7499a8e167L, "8915420221429834087");
-    b.prop("int2", 0x7bb9ef7499a8e16cL, "8915420221429834092");
-    b.prop("bool1", 0x7bb9ef7499a8e172L, "8915420221429834098");
-    b.prop("bool2", 0x7bb9ef7499a8e179L, "8915420221429834105");
     return b.create();
   }
 }

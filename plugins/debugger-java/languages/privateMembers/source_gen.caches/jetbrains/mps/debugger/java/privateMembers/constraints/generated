@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="asri8g9aq16a60pv7c8h80s2b30hj52" />
+<product version="3" modelHash="-8o04t51wbuk3dpoif5hvfklbyffl7go" parametersHash="a7y06d854is3tqvgak3b8mgxsuvqmq7">
+  <files names="ConstraintsAspectDescriptor.java:PrivateFieldReferenceOperation_Constraints.java:PrivateInstanceMethodCallOperation_Constraints.java:PrivateStaticFieldReference_Constraints.java:PrivateStaticMethodCall_Constraints.java" />
+</product>
 

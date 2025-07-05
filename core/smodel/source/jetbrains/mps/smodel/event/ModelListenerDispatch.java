@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.smodel.event;
 
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModel.Problem;
@@ -30,7 +30,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * (using listener interface to fire events).
  * XXX NOTE: experimental code. I don't like multicast way of dispatch. To me, model instance as cons argument and fire* methods without
  * arguments is more appealing way of dispatching event.
- *
+ * <br/>
  * XXX Perhaps, shall rename {@link ModelEventDispatch} to {@code NodeEventDispatch} to avoid confusion, or even combine the two?
  * @author Artem Tikhomirov
  * @since 3.4
@@ -137,6 +137,35 @@ public final class ModelListenerDispatch implements org.jetbrains.mps.openapi.mo
         reportListenerError(l, t);
       }
     }
+  }
+
+  @Override
+  public void dependenciesChanged(SModel model, DependencyChange change) {
+    for (SModelListener l : myListeners) {
+      try {
+        l.dependenciesChanged(model, change);
+      } catch (Throwable t) {
+        reportListenerError(l, t);
+      }
+    }
+  }
+
+  @Override
+  public void nodesChanged(SModel model) {
+    for (SModelListener l : myListeners) {
+      try {
+        l.nodesChanged(model);
+      } catch (Throwable t) {
+        reportListenerError(l, t);
+      }
+    }
+  }
+
+  /**
+   * To prevent instance retaining, release any reference to user-supplied code when model is discarded.
+   */
+  public void clearListeners() {
+    myListeners.clear();
   }
 
   private void reportListenerError(SModelListener l, Throwable t) {

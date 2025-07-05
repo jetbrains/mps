@@ -8,31 +8,47 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
-import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
-import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
+import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ActionDeclaration_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ActionDeclaration_NonTypesystemRule() {
   }
-  public void applyRule(final SNode a, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isEmptyString(SPropertyOperations.getString(a, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11b1742d216L, "mnemonic")))) {
+  public void applyRule(final SNode ad, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+    if (!(SPropertyOperations.getBoolean(ad, PROPS.updateInBackground$6cga)) || (SLinkOperations.getTarget(ad, LINKS.updateBlock$vQyi) == null)) {
       return;
     }
-    String err = MnemonicChecker.check(SPropertyOperations.getString(a, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1189e8d9a59L, "caption")), SPropertyOperations.getString(a, MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11b1742d216L, "mnemonic")));
-    if (err != null) {
+    // see UpdateActionsInBackground migration for some explanations
+    Iterable<SNode> adpd = SNodeOperations.ofConcept(SLinkOperations.getChildren(ad, LINKS.parameter$dZwh), CONCEPTS.ActionDataParameterDeclaration$Tg);
+    Iterable<SNode> ai = Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(adpd, LINKS.key$K5Gi), LINKS.annotation$K49I)).where((it) -> SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)", "~MPSCommonDataKeys$Description")));
+    Iterable<SNode> aiv = Sequence.fromIterable(SLinkOperations.collectMany(ai, LINKS.value$uK2B)).where((it) -> SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)", "~MPSCommonDataKeys$Description.edtOnAccess()")));
+    if (Sequence.fromIterable(aiv).any((it) -> SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.value$Y7om), CONCEPTS.BooleanConstant$n4), PROPS.value$5y_M))) {
       {
-        MessageTarget errorTarget = new NodeMessageTarget();
-        errorTarget = new PropertyMessageTarget("mnemonic");
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(a, err, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "5908642177599283073", null, errorTarget);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.parameter$dZwh);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(ad, "Parameters assume access in EDT, action update from background thread likely to fail", "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "3662579279367678976", null, errorTarget);
+        {
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.plugin.typesystem.TurnActionBackgrounUpdateOff_QuickFix", "3662579279367693604", false);
+          _reporter_2309309498.addIntentionProvider(intentionProvider);
+        }
       }
     }
+
+
   }
   public SAbstractConcept getApplicableConcept() {
-    return MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, "jetbrains.mps.lang.plugin.structure.ActionDeclaration");
+    return CONCEPTS.ActionDeclaration$T0;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -40,7 +56,26 @@ public class check_ActionDeclaration_NonTypesystemRule extends AbstractNonTypesy
   public boolean overrides() {
     return false;
   }
-  private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink updateBlock$vQyi = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1181d58b8d3L, "updateBlock");
+    /*package*/ static final SContainmentLink parameter$dZwh = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11b737b91a4L, "parameter");
+    /*package*/ static final SReferenceLink key$K5Gi = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, 0x11b69e95df5L, "key");
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink value$uK2B = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a71c697fL, "value");
+    /*package*/ static final SReferenceLink key$bSmV = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
+    /*package*/ static final SContainmentLink value$Y7om = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71c0fc4L, "value");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty updateInBackground$6cga = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x411f75eb1a80b5d1L, "updateInBackground");
+    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept ActionDataParameterDeclaration$Tg = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration");
+    /*package*/ static final SConcept BooleanConstant$n4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
+    /*package*/ static final SConcept ActionDeclaration$T0 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, "jetbrains.mps.lang.plugin.structure.ActionDeclaration");
   }
 }

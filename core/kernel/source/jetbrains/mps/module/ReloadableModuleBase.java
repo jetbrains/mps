@@ -1,0 +1,43 @@
+/*
+ * Copyright 2003-2025 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package jetbrains.mps.module;
+
+import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.classloading.MPSModuleClassLoader;
+import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+/**
+ * ReloadableModule which delegates to ClassLoaderManager
+ * @author apyshkin
+ */
+public class ReloadableModuleBase extends AbstractModule implements ReloadableModule {
+  // the plan is to drop myManager field altogether, once ReloadableModule is reduced to a slim,
+  // independent of SModule, interface for use solely in CLM's own hierarchy
+  private final ClassLoaderManager myManager = ClassLoaderManager.getInstance(); // to remove this I need to insert CLM into constructor and that is not an easy task
+
+  protected ReloadableModuleBase(@Nullable IFile file) {
+    super(file);
+  }
+
+  @NotNull
+  @Override
+  public final MPSModuleClassLoader getClassLoader() {
+    return myManager.getClassLoader(this);
+  }
+}

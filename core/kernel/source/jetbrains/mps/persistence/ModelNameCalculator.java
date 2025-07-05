@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,13 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.extapi.persistence.SourceRoot;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.path.Path;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
-import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 import static jetbrains.mps.project.MPSExtentions.DOT;
@@ -38,7 +36,7 @@ import static jetbrains.mps.project.MPSExtentions.DOT;
  */
 @Immutable
 public final class ModelNameCalculator {
-  private static final Logger LOG = LogManager.getLogger(ModelNameCalculator.class);
+  private static final Logger LOG = Logger.getLogger(ModelNameCalculator.class);
 
   @NotNull private final ModelRoot myModelRoot;
   @NotNull private final SourceRoot mySourceRoot;

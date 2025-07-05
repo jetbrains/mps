@@ -21,31 +21,23 @@ import jetbrains.mps.generator.impl.GenerationController;
 import jetbrains.mps.generator.impl.GeneratorLoggerAdapter;
 import jetbrains.mps.generator.impl.ModelStreamManager;
 import jetbrains.mps.generator.impl.ModelStreamProviderImpl;
-import jetbrains.mps.generator.impl.dependencies.GenerationDependencies;
-import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
+import jetbrains.mps.generator.trace.TraceFacility;
 import jetbrains.mps.messages.IMessageHandler;
-import jetbrains.mps.smodel.LanguageAspect;
-import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
-import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 /**
  * Entry point to model transformation (aka generation) process. Populate with relevant context information:
  * {@link #messages(IMessageHandler)}  to receive generator messages (optional);
  * {@link #transients(TransientModelsProvider)} where to keep transient models (mandatory);
  * {@link #taskHandler(GeneratorTaskListener)} get notified about progress (optional);
+ * {@link #trace(TraceFacility)} to get trace events (optional);
  * then fire off with {@link #process(ProgressMonitor, List)}
  *
  * IMPLEMENTATION NOTE:
@@ -60,59 +52,6 @@ import java.util.Set;
  */
 public final class GenerationFacade {
 
-  public static Collection<SModel> getModifiedModels(Collection<? extends SModel> models) {
-    Set<SModel> result = new LinkedHashSet<>();
-    ModelGenerationStatusManager statusManager = ModelGenerationStatusManager.getInstance();
-    for (SModel sm : models) {
-      if (statusManager.generationRequired(sm)) {
-        result.add(sm);
-        continue;
-      }
-
-      // TODO regenerating all dependant models can be slow, option?
-      if (!(SModelStereotype.DESCRIPTOR.equals(SModelStereotype.getStereotype(sm)) || LanguageAspect.BEHAVIOR.is(sm) || LanguageAspect.CONSTRAINTS.is(sm))) {
-        // temporary solution: only descriptor/behavior/constraints models
-        continue;
-      }
-
-      final SRepository repository = sm.getRepository();
-      if (repository == null) {
-        // no idea how to treat a model which hands in the air; expect it to be editable and tell isChanged if desires re-generation
-        continue;
-      }
-      GenerationDependencies oldDependencies = GenerationDependenciesCache.getInstance().get(sm);
-      // FIXME use SRepository to pick proper GenerationDependenciesCache instance
-      if (oldDependencies == null) {
-        // TODO turn on when generated file will be mandatory
-        //result.add(sm);
-        continue;
-      }
-
-
-
-      Map<String, String> externalHashes = oldDependencies.getExternalHashes();
-      for (Entry<String, String> entry : externalHashes.entrySet()) {
-        String modelReference = entry.getKey();
-        SModel rmd = PersistenceFacade.getInstance().createModelReference(modelReference).resolve(repository);
-        if (rmd == null) {
-          result.add(sm);
-          break;
-        }
-        String oldHash = entry.getValue();
-        if (oldHash == null) {
-          continue;
-        }
-        String newHash = statusManager.currentHash(rmd);
-        if (newHash == null || !oldHash.equals(newHash)) {
-          result.add(sm);
-          break;
-        }
-      }
-    }
-
-    return result;
-  }
-
   public static boolean canGenerate(SModel sm) {
     return sm instanceof GeneratableSModel && ((GeneratableSModel) sm).isGeneratable();
   }
@@ -124,6 +63,7 @@ public final class GenerationFacade {
   private TransientModelsProvider myTransientModelsProvider;
   private IMessageHandler myMessageHandler = IMessageHandler.NULL_HANDLER;
   private ModelStreamManager.Provider myStreamProvider;
+  private TraceFacility myTraceSession;
 
   public GenerationFacade(@NotNull SRepository repository, @NotNull GenerationOptions generationOptions) {
     myRepository = repository;
@@ -158,6 +98,19 @@ public final class GenerationFacade {
    */
   public GenerationFacade messages(@Nullable IMessageHandler messages) {
     myMessageHandler = messages == null ? IMessageHandler.NULL_HANDLER : messages;
+    return this;
+  }
+
+  /**
+   * PROVISIONAL API, PLEASE DON'T USE OUTSIDE OF MPS
+   */
+  public GenerationFacade trace(@Nullable TraceFacility traceSession) {
+    // on one hand, I'd like to have control whether a transformation is traced (e.g. the one from Make should, some
+    // home-grown, e.g. evaluation, likely no). OTOH, would like to keep control over notification dispatch mechanism
+    // not to be abused. If I use ComponentHost to get TR in #process, it means every transformation get traced.
+    // Perhaps, could keep #trace(), but parameterize with ComponentHost, so that (a) it indicates intention to be traced
+    // and therefore, only transformations of interest would get traced, and (b) hides facility/session mediator
+    myTraceSession = traceSession;
     return this;
   }
 
@@ -213,7 +166,7 @@ public final class GenerationFacade {
 
     final GeneratorLoggerAdapter logger = new GeneratorLoggerAdapter(myMessageHandler, myGenerationOptions.isShowInfo(), myGenerationOptions.isShowWarnings());
 
-    GenControllerContext ctx = new GenControllerContext(myRepository, myGenerationOptions, myTransientModelsProvider, myStreamProvider);
+    GenControllerContext ctx = new GenControllerContext(myRepository, myGenerationOptions, myTransientModelsProvider, myStreamProvider, myTraceSession);
     GeneratorTaskListener<GeneratorTask> taskListener;
     if (myTaskListener != null) {
       taskListener = myTaskListener;

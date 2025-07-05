@@ -11,7 +11,7 @@ public class MPS_18030 {
   }
 
   public void test() {
-    new MPS_18030.Subclass(0);
+    new Subclass(0);
   }
 
   private static class Subclass extends MPS_18030 {
@@ -19,12 +19,10 @@ public class MPS_18030 {
       super();
       final Wrappers._int _k = new Wrappers._int(k);
       final Wrappers._int i = new Wrappers._int(0);
-      new _FunctionTypes._return_P0_E0<Integer>() {
-        public Integer invoke() {
-          i.value = 1;
-          return _k.value = 2;
-        }
-      }.invoke();
+      ((_FunctionTypes._return_P0_E0<Integer>) () -> {
+        i.value = 1;
+        return _k.value = 2;
+      }).invoke();
       Assert.assertSame(1, i.value);
       Assert.assertSame(2, _k.value);
     }

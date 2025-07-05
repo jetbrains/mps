@@ -27,6 +27,7 @@ import jetbrains.mps.util.Triplet;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -37,7 +38,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public abstract class DoubleTermRules<K> {
 
-  private ConcurrentHashMap<Object, Set<K>> myCachedRules = new ConcurrentHashMap<Object, Set<K>>();
+  private ConcurrentHashMap<Object, Set<K>> myCachedRules = new ConcurrentHashMap<>();
 
   public Set<K> lookupRules(SNode leftTerm, SNode rightTerm) {
 
@@ -51,14 +52,11 @@ public abstract class DoubleTermRules<K> {
     Set<K> cachedRules = myCachedRules.get(compoundKey);
     if (cachedRules != null) return cachedRules;
 
-    return NodeReadAccessCasterInEditor.runReadTransparentAction(new Computable<Set<K>>() {
-      @Override
-      public Set<K> compute() {
-        Set<K> computedRules = computeRules(leftConcept, rightConcept, langScope);
-        myCachedRules.put(compoundKey, computedRules);
+    return NodeReadAccessCasterInEditor.runReadTransparentAction(() -> {
+      Set<K> computedRules = computeRules(leftConcept, rightConcept, langScope);
+      myCachedRules.put(compoundKey, computedRules);
 
-        return computedRules;
-      }
+      return computedRules;
     });
   }
 
@@ -67,22 +65,31 @@ public abstract class DoubleTermRules<K> {
   }
 
   private Set<K> computeRules(SAbstractConcept leftConcept, SAbstractConcept rightConcept, LanguageScope langScope) {
-    THashSet<K> result = new THashSet<K>();
+    LinkedHashSet<K> result = new LinkedHashSet<>();
 
-    LinkedList<Pair<SAbstractConcept, SAbstractConcept>> queue = new LinkedList<Pair<SAbstractConcept, SAbstractConcept>>();
-    queue.add(new Pair<SAbstractConcept, SAbstractConcept>(leftConcept, rightConcept));
+    LinkedList<Pair<SAbstractConcept, SAbstractConcept>> outerQueue = new LinkedList<>();
+    outerQueue.add(new Pair<>(leftConcept, rightConcept));
     for (SConcept leftSuperConcept : allSuperConcepts(leftConcept)) {
-      queue.add(new Pair<SAbstractConcept, SAbstractConcept>(leftSuperConcept, rightConcept));
+      outerQueue.add(new Pair<>(leftSuperConcept, rightConcept));
     }
 
-    while (!queue.isEmpty()) {
-      Pair<SAbstractConcept, SAbstractConcept> nextConceptPair = queue.remove();
-      for (K applicableRule : allForConceptPair(nextConceptPair.o1, nextConceptPair.o2, langScope)) {
-        result.add(applicableRule);
+    with_outerQueue:
+    while (!outerQueue.isEmpty()) {
+      LinkedList<Pair<SAbstractConcept, SAbstractConcept>> innerQueue = new LinkedList<>();
+      Pair<SAbstractConcept, SAbstractConcept> pair = outerQueue.remove();
+      innerQueue.add(pair);
+      for (SConcept rightSuperConcept : allSuperConcepts(pair.o2)) {
+        innerQueue.add(new Pair<>(pair.o1, rightSuperConcept));
       }
 
-      for (SConcept rightSuperConcept : allSuperConcepts(nextConceptPair.o2)) {
-        queue.add(new Pair<SAbstractConcept, SAbstractConcept>(nextConceptPair.o1, rightSuperConcept));
+      while (!innerQueue.isEmpty()) {
+        Pair<SAbstractConcept, SAbstractConcept> nextConceptPair = innerQueue.remove();
+        for (K applicableRule : allForConceptPair(nextConceptPair.o1, nextConceptPair.o2, langScope)) {
+          result.add(applicableRule);
+          if (isOverriding(applicableRule)) {
+            break with_outerQueue;
+          }
+        }
       }
     }
 
@@ -99,7 +106,7 @@ public abstract class DoubleTermRules<K> {
     }
     // not sure there's much sense in BaseConcept among return values, left as it used to be.
     SConcept c = ((SConcept) concept).getSuperConcept();
-    ArrayList<SConcept> rv = new ArrayList<SConcept>();
+    ArrayList<SConcept> rv = new ArrayList<>();
     while (c != null) {
       rv.add(c);
       c = c.getSuperConcept();
@@ -109,4 +116,5 @@ public abstract class DoubleTermRules<K> {
 
   abstract protected Iterable<K> allForConceptPair(SAbstractConcept leftConcept, SAbstractConcept rightConcept, LanguageScope langScope);
 
+  abstract protected boolean isOverriding(K rule);
 }

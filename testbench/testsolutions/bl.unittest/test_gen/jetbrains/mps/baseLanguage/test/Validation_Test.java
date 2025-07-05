@@ -4,90 +4,127 @@ package jetbrains.mps.baseLanguage.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
+import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
+import java.util.Arrays;
 
 @MPSLaunch
 public class Validation_Test extends BaseTransformationTest {
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Validation_Test.class).projectPath(null).modelRef("r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)").reopenProject(null).build());
+
+  public Validation_Test() {
+    super(ourParametersCacheExtension.getParametersCache());
+  }
+
   @Test
   public void test_NodeRecursiveConstructorInvocationCheck6923385624929443716() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.Validation_Test$TestBody", "test_NodeRecursiveConstructorInvocationCheck6923385624929443716", true);
+    new TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929443716();
   }
   @Test
   public void test_NodeRecursiveConstructorInvocationCheck6923385624929443718() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.Validation_Test$TestBody", "test_NodeRecursiveConstructorInvocationCheck6923385624929443718", true);
+    new TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929443718();
   }
   @Test
   public void test_ErrorMessagesCheck7868761255934329326() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.Validation_Test$TestBody", "test_ErrorMessagesCheck7868761255934329326", true);
+    new TestBody(this).test_ErrorMessagesCheck7868761255934329326();
   }
   @Test
   public void test_NodeRecursiveConstructorInvocationCheck6923385624929451248() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.Validation_Test$TestBody", "test_NodeRecursiveConstructorInvocationCheck6923385624929451248", true);
+    new TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929451248();
   }
   @Test
   public void test_NodeRecursiveConstructorInvocationCheck6923385624929451250() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.Validation_Test$TestBody", "test_NodeRecursiveConstructorInvocationCheck6923385624929451250", true);
+    new TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929451250();
   }
   @Test
   public void test_NodeRecursiveConstructorInvocationCheck6923385624929609456() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.Validation_Test$TestBody", "test_NodeRecursiveConstructorInvocationCheck6923385624929609456", true);
+    new TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929609456();
   }
   @Test
   public void test_NodeRecursiveConstructorInvocationCheck6923385624929609458() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.Validation_Test$TestBody", "test_NodeRecursiveConstructorInvocationCheck6923385624929609458", true);
+    new TestBody(this).test_NodeRecursiveConstructorInvocationCheck6923385624929609458();
   }
   @Test
   public void test_NodeIllegalCombinationOfModifiersCheck6923385624927426848() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.Validation_Test$TestBody", "test_NodeIllegalCombinationOfModifiersCheck6923385624927426848", true);
+    new TestBody(this).test_NodeIllegalCombinationOfModifiersCheck6923385624927426848();
   }
 
-  @MPSLaunch
-  public static class TestBody extends BaseTestBody {
+  /*package*/ static class TestBody extends BaseTestBody {
+
+    /*package*/ TestBody(TransformationTest owner) {
+      super(owner);
+    }
+
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7868761255934329295");
+    }
 
     public void test_NodeRecursiveConstructorInvocationCheck6923385624929443716() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("6923385624929443716"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("3951985765451229135"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("3951985765451229135");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "698255809162976968"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeRecursiveConstructorInvocationCheck6923385624929443718() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("6923385624929443718"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("3951985765451229135"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("3951985765451229135");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "698255809162976968"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_ErrorMessagesCheck7868761255934329326() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7868761255934329326"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7868761255934329296"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7868761255934329296");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(false).exclude(Arrays.<CheckExpectedMessageRunnable>asList(new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("3951985765451229135"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "698255809162976968"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("3951985765451229135"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "698255809162976968"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("3951985765451229787"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "698255809162976968"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("3951985765451229787"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "698255809162976968"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("3951985765451228860"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "698255809162976968"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("3951985765451228860"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "698255809162976968"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("3951985765451231039"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7868761255934417558"), "", myProject.getRepository(), myProject.getPlatform()))).run();
+      });
     }
     public void test_NodeRecursiveConstructorInvocationCheck6923385624929451248() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("6923385624929451248"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("3951985765451229787"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("3951985765451229787");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "698255809162976968"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeRecursiveConstructorInvocationCheck6923385624929451250() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("6923385624929451250"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("3951985765451229787"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("3951985765451229787");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "698255809162976968"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeRecursiveConstructorInvocationCheck6923385624929609456() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("6923385624929609456"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("3951985765451228860"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("3951985765451228860");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "698255809162976968"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeRecursiveConstructorInvocationCheck6923385624929609458() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("6923385624929609458"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("3951985765451228860"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("3951985765451228860");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "698255809162976968"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeIllegalCombinationOfModifiersCheck6923385624927426848() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("6923385624927426848"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("3951985765451231039"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("3951985765451231039");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7868761255934417558"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
 
   }

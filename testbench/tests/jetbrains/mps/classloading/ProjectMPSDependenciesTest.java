@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,22 +15,23 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.CoreMpsTest;
+import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.core.tool.environment.util.SetLibraryContributor;
 import jetbrains.mps.library.LibraryInitializer;
 import jetbrains.mps.library.contributor.LibDescriptor;
 import jetbrains.mps.library.contributor.LibraryContributor;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.tool.environment.EnvironmentConfig;
-import jetbrains.mps.tool.environment.MpsEnvironment;
+import jetbrains.mps.tool.environment.Environment;
+import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.PathManager;
-import jetbrains.mps.vfs.impl.IoFileSystem;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
@@ -49,15 +50,20 @@ import java.util.Set;
  *
  * TODO rewrite using the standard way to collect multiple errors
  */
-public class ProjectMPSDependenciesTest extends CoreMpsTest {
-  private static final org.apache.log4j.Logger LOG = LogManager.getLogger(ProjectMPSDependenciesTest.class);
+public class ProjectMPSDependenciesTest implements EnvironmentAware {
+  private static final Logger LOG = Logger.getLogger(ProjectMPSDependenciesTest.class);
+
+  private Environment myEnvironment;
 
   @Rule
   public final ErrorCollector myErrors = new ErrorCollector();
 
-  @BeforeClass
-  public static void beforeTest(){
-    MpsEnvironment.getOrCreate(EnvironmentConfig.defaultConfig());
+  /**
+   * @param env bare MPS environment suffice
+   */
+  @Override
+  public void setEnvironment(@NotNull Environment env) {
+    myEnvironment = env;
   }
 
   @Test
@@ -80,21 +86,22 @@ public class ProjectMPSDependenciesTest extends CoreMpsTest {
   }
 
   private Collection<String> getCorePaths() {
-    Collection<String> bootstrapPaths = new ArrayList<String>(PathManager.getBootstrapPaths());
+    Collection<String> bootstrapPaths = new ArrayList<>(PathManager.getBootstrapPaths());
     bootstrapPaths.add(PathManager.getLanguagesPath());
     return Collections.unmodifiableCollection(bootstrapPaths);
   }
 
   private void addContributorWithPaths(Iterable<? extends String> paths) {
-    Set<LibDescriptor> libraryPaths = new LinkedHashSet<LibDescriptor>();
+    Set<LibDescriptor> libraryPaths = new LinkedHashSet<>();
+    final IFileSystem fs = myEnvironment.getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
     for (String path : paths) {
-      libraryPaths.add(new LibDescriptor(IoFileSystem.INSTANCE.getFile(path)));
+      libraryPaths.add(new LibDescriptor(fs.getFile(path)));
     }
     addContributor(SetLibraryContributor.fromSet("Library paths", libraryPaths));
   }
 
   private void addContributor(LibraryContributor contributor) {
-    LibraryInitializer.getInstance().load(Collections.singletonList(contributor));
+    getPlatform().findComponent(LibraryInitializer.class).load(Collections.singletonList(contributor));
   }
 
   private void checkDeps(final String levelIndicator) {
@@ -111,10 +118,14 @@ public class ProjectMPSDependenciesTest extends CoreMpsTest {
   }
 
   private ModulesWatcher getModulesWatcher() {
-    return ClassLoaderManager.getInstance().getModulesWatcher();
+    return getPlatform().findComponent(ClassLoaderManager.class).getModulesWatcher();
   }
 
   private SRepository getRepository() {
-    return ENV.getPlatform().findComponent(MPSModuleRepository.class);
+    return getPlatform().findComponent(MPSModuleRepository.class);
+  }
+
+  private Platform getPlatform() {
+    return myEnvironment.getPlatform();
   }
 }

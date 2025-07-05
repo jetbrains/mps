@@ -5,7 +5,6 @@ package jetbrains.mps.internal.collections.runtime;
 import java.io.Serializable;
 import java.util.Deque;
 import java.util.Iterator;
-import jetbrains.mps.baseLanguage.closures.runtime.AdapterClass;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.impl.NullDequeSequence;
 import java.util.LinkedList;
@@ -132,7 +131,7 @@ public class DequeSequence<T> extends AbstractQueueSequence<T> implements IDeque
     return (IDequeSequence<T>) super.removeSequence(seq);
   }
   @Override
-  public IDequeSequence<T> removeWhere(@AdapterClass(value = "IWhereFilter") _FunctionTypes._return_P1_E0<? extends Boolean, ? super T> filter) {
+  public IDequeSequence<T> removeWhere(_FunctionTypes._return_P1_E0<? extends Boolean, ? super T> filter) {
     return (IDequeSequence<T>) super.removeWhere(filter);
   }
   @Override
@@ -148,11 +147,6 @@ public class DequeSequence<T> extends AbstractQueueSequence<T> implements IDeque
   }
 
   public static <U> IDequeSequence<U> fromDeque(Deque<U> deque) {
-    //  change tempaltes to invoke this method and drop fromDequeNew 
-    return fromDequeNew(deque);
-  }
-
-  public static <U> IDequeSequence<U> fromDequeNew(Deque<U> deque) {
     if (deque instanceof IDequeSequence) {
       return (IDequeSequence<U>) deque;
     }
@@ -160,6 +154,15 @@ public class DequeSequence<T> extends AbstractQueueSequence<T> implements IDeque
       return NullDequeSequence.instance();
     }
     return new DequeSequence<U>(deque);
+  }
+
+  /**
+   * 
+   * @deprecated use non-new method
+   */
+  @Deprecated
+  public static <U> IDequeSequence<U> fromDequeNew(Deque<U> deque) {
+    return fromDeque(deque);
   }
 
   public static <U> IDequeSequence<U> fromIterable(Iterable<U> it) {
@@ -190,11 +193,6 @@ public class DequeSequence<T> extends AbstractQueueSequence<T> implements IDeque
   }
 
   public static <U> IDequeSequence<U> fromDequeAndArray(Deque<U> deque, U... array) {
-    //  change templates to invoke this method and remove fromDequeAndArrayNew 
-    return fromDequeAndArrayNew(deque, array);
-  }
-
-  public static <U> IDequeSequence<U> fromDequeAndArrayNew(Deque<U> deque, U... array) {
     if (Sequence.NULL_ARRAY_IS_SINGLETON) {
       if (array == null) {
         array = (U[]) Sequence.nullSingletonArray();
@@ -230,11 +228,16 @@ public class DequeSequence<T> extends AbstractQueueSequence<T> implements IDeque
     return new DequeSequence<U>(deque);
   }
 
-  public static <U> IDequeSequence<U> fromDequeWithValues(Deque<U> deque, Iterable<? extends U> it) {
-    // change generators to use this method and drop fromDequeWithValuesNew 
-    return fromDequeWithValuesNew(deque, it);
+  /**
+   * 
+   * @deprecated use non-new method
+   */
+  @Deprecated
+  public static <U> IDequeSequence<U> fromDequeAndArrayNew(Deque<U> deque, U... array) {
+    return fromDequeAndArray(deque, array);
   }
-  public static <U> IDequeSequence<U> fromDequeWithValuesNew(Deque<U> deque, Iterable<? extends U> it) {
+
+  public static <U> IDequeSequence<U> fromDequeWithValues(Deque<U> deque, Iterable<? extends U> it) {
     Deque<U> tmp = deque;
     if (Sequence.USE_NULL_SEQUENCE) {
       if (deque == null && it == null) {
@@ -265,5 +268,14 @@ public class DequeSequence<T> extends AbstractQueueSequence<T> implements IDeque
       return (IDequeSequence<U>) tmp;
     }
     return new DequeSequence<U>(tmp);
+  }
+  /**
+   * 
+   * @deprecated use non-new method
+   */
+  @Deprecated
+  public static <U> IDequeSequence<U> fromDequeWithValuesNew(Deque<U> deque, Iterable<? extends U> it) {
+    // change generators to use this method and drop fromDequeWithValuesNew
+    return fromDequeWithValues(deque, it);
   }
 }

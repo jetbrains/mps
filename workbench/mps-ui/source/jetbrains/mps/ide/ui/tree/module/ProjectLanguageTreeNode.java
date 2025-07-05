@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode.ShortModelNameText;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
@@ -43,7 +42,7 @@ public class ProjectLanguageTreeNode extends ProjectModuleTreeNode {
   private boolean myInitialized;
 
   protected ProjectLanguageTreeNode(@NotNull Language language, Project project, boolean shortNameOnly) {
-    super(language);
+    super(language, project);
     myShortNameOnly = shortNameOnly;
     myProject = project;
     setNodeIdentifier(language.getModuleReference().toString());
@@ -105,20 +104,18 @@ public class ProjectLanguageTreeNode extends ProjectModuleTreeNode {
       this.add(accessories);
     }
 
-    for (Generator generator : getModule().getGenerators()) {
+    for (Generator generator : getModule().getOwnedGenerators()) {
       MPSTreeNode generatorNode = createFor(myProject, generator);
       add(generatorNode);
     }
 
-    TextTreeNode languageRuntime = new RuntimeModulesTreeNode();
-    for (SModuleReference mr : getModule().getRuntimeModulesReferences()) {
-      SModule m = ModuleRepositoryFacade.getInstance().getModule(mr);
-      if (m == null || m == getModule()) {
-        continue;
+    if (!getModule().getRuntimeModulesReferences().isEmpty()) {
+      TextTreeNode languageRuntime = new RuntimeModulesTreeNode();
+      for (SModuleReference mr : getModule().getRuntimeModulesReferences()) {
+        languageRuntime.add(new SModuleReferenceTreeNode(mr, myProject));
       }
-      languageRuntime.add(createFor(myProject, m));
+      add(languageRuntime);
     }
-    add(languageRuntime);
 
     if (getModule().getUtilModels().size() > 0) {
       TextTreeNode utilModels = new SModelGroupTreeNode();

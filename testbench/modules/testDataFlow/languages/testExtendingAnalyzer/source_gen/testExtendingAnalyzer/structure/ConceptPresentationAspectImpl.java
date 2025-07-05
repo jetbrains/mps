@@ -4,13 +4,13 @@ package testExtendingAnalyzer.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_NullSafeDotExpression = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_NullUnsafeDotExpression = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_NullSafeDotExpression;
+  private ConceptPresentation props_NullUnsafeDotExpression;
 
   @Override
   @Nullable
@@ -18,8 +18,18 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.NullSafeDotExpression:
+        if (props_NullSafeDotExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("safe");
+          props_NullSafeDotExpression = cpb.create();
+        }
         return props_NullSafeDotExpression;
       case LanguageConceptSwitch.NullUnsafeDotExpression:
+        if (props_NullUnsafeDotExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("unsafe");
+          props_NullUnsafeDotExpression = cpb.create();
+        }
         return props_NullUnsafeDotExpression;
     }
     return null;

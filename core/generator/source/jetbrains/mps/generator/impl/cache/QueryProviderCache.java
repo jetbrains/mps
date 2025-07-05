@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,17 +17,17 @@ package jetbrains.mps.generator.impl.cache;
 
 import jetbrains.mps.generator.IGeneratorLogger;
 import jetbrains.mps.generator.ModelGenerationPlan;
-import jetbrains.mps.generator.impl.interpreted.ReflectiveQueryProvider;
 import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
 import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.generator.runtime.TemplateModule;
-import jetbrains.mps.util.QueryMethodGenerated;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
+import java.util.ArrayDeque;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 
 /**
@@ -41,7 +41,16 @@ public class QueryProviderCache implements GeneratorQueryProvider.Source {
   private final IGeneratorLogger myLog;
 
   public QueryProviderCache(@NotNull ModelGenerationPlan plan, @NotNull IGeneratorLogger log) {
-    for (TemplateModule templateModule : plan.getGenerators()) {
+    LinkedHashSet<TemplateModule> modules = new LinkedHashSet<>();
+    ArrayDeque<TemplateModule> q = new ArrayDeque<>(plan.getGenerators());
+    while (!q.isEmpty()) {
+      TemplateModule templateModule = q.removeFirst();
+      if (modules.add(templateModule)) {
+        q.addAll(templateModule.getEmployedGenerators());
+        q.addAll(templateModule.getExtendedGenerators());
+      }
+    }
+    for (TemplateModule templateModule : modules) {
       for (TemplateModel templateModel : templateModule.getModels()) {
         myTemplateModels.put(templateModel.getSModelReference(), templateModel);
       }
@@ -49,8 +58,9 @@ public class QueryProviderCache implements GeneratorQueryProvider.Source {
     myLog = log;
   }
 
+  @NotNull
   @Override
-  public synchronized GeneratorQueryProvider getQueryProvider(SNodeReference templateNode) {
+  public synchronized GeneratorQueryProvider getQueryProvider(@NotNull SNodeReference templateNode) {
     final SModelReference mr = templateNode.getModelReference();
     GeneratorQueryProvider queryProvider = myQueries.get(mr);
 
@@ -60,7 +70,6 @@ public class QueryProviderCache implements GeneratorQueryProvider.Source {
     TemplateModel templateModel = myTemplateModels.get(mr);
     if (templateModel == null) {
       myLog.error(templateNode, "Attempt to generate with generator not included into the plan");
-      queryProvider = instantiateProvider(templateNode, myLog);
     } else {
       queryProvider = templateModel.getQueryProvider();
     }
@@ -71,34 +80,6 @@ public class QueryProviderCache implements GeneratorQueryProvider.Source {
     }
     myQueries.put(mr, queryProvider);
     return queryProvider;
-  }
-
-  /**
-   * PROVISIONAL CODE till we migrate to GQP from TemplateModelBase
-   * Code similar to TMB.getQueryProvider
-   */
-  private static GeneratorQueryProvider instantiateProvider(SNodeReference templateNode, IGeneratorLogger log) {
-    final SModelReference mr = templateNode.getModelReference();
-    try {
-      Class<?> qg = QueryMethodGenerated.getQueriesGeneratedClassFor(mr, true);
-      if (GeneratorQueryProvider.class.isAssignableFrom(qg)) {
-        @SuppressWarnings("unchecked")
-        Class<GeneratorQueryProvider> providerClass = (Class<GeneratorQueryProvider>) qg;
-        GeneratorQueryProvider gqp = providerClass.newInstance();
-        if (((QueryProviderBase) gqp).needsReflectiveFallback()) {
-          ((QueryProviderBase) gqp).useReflectiveFallback(new ReflectiveQueryProvider(qg));
-        }
-        return gqp;
-      } else {
-        return new ReflectiveQueryProvider(qg);
-      }
-    } catch (ClassNotFoundException e) {
-      log.error(templateNode, e.getMessage());
-    } catch (InstantiationException | IllegalAccessException e) {
-      log.handleException(e);
-      log.error(templateNode, e.toString());
-    }
-    return null;
   }
 
   public synchronized void dispose() {

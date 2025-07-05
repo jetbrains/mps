@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.cells.BigCellUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -21,7 +20,13 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
+import jetbrains.mps.nodeEditor.cellMenu.CellContext;
+import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class SConceptOperation_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -39,46 +44,54 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
   }
 
   /*package*/ EditorCell createCell() {
-    return createAlternation_z8oglp_a();
+    return createAlternation_0();
   }
 
-  private EditorCell createAlternation_z8oglp_a() {
+  private EditorCell createAlternation_0() {
     boolean alternationCondition = true;
     alternationCondition = nodeCondition_z8oglp_a0();
     EditorCell editorCell = null;
     if (alternationCondition) {
-      editorCell = createComponent_z8oglp_a0();
+      editorCell = createComponent_0();
     } else {
-      editorCell = createError_z8oglp_a0();
+      editorCell = createError_0();
     }
     EditorCell bigCell = BigCellUtil.findBigCell(editorCell, getNode());
     if (bigCell != null) {
       bigCell.setBig(true);
-      bigCell.setCellContext(getCellFactory().getCellContext());
+      setCellContext(bigCell);
     }
     return editorCell;
   }
   private boolean nodeCondition_z8oglp_a0() {
-    return !(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(myNode)), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5f5952af8843faf9L, "jetbrains.mps.lang.smodel.structure.SConceptOperation")));
+    return !(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(myNode)), CONCEPTS.SConceptOperation$aF));
   }
-  private EditorCell createComponent_z8oglp_a0() {
+  private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
     Style style = new StyleImpl();
     style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
     editorCell.getStyle().putAll(style);
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new SConceptOperation_EditorBuilder_a.ReplaceWith_SConceptOperation_cellMenu_z8oglp_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_SConceptOperation_cellMenu_z8oglp_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_SConceptOperation_cellMenu_z8oglp_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_SConceptOperation_cellMenu_z8oglp_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5f5952af8843faf9L, "jetbrains.mps.lang.smodel.structure.SConceptOperation");
+      return CONCEPTS.SConceptOperation$aF;
+    }
+    @Override
+    protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
+      return new EditorMenuDescriptorBase("replace node (custom node concept: " + "SConceptOperation" + ")", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "6870613620391327201"));
     }
   }
-  private EditorCell createError_z8oglp_a0() {
+  private EditorCell createError_0() {
     EditorCell_Error editorCell = new EditorCell_Error(getEditorContext(), myNode, "<choose operaion>");
     editorCell.setCellId("Error_z8oglp_a0");
     return editorCell;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept SConceptOperation$aF = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5f5952af8843faf9L, "jetbrains.mps.lang.smodel.structure.SConceptOperation");
   }
 }

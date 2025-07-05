@@ -15,10 +15,12 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
+import jetbrains.mps.editor.runtime.HtmlTextBuilderImpl;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.style.DefaultBaseLine;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.TableComponent;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
@@ -64,7 +66,7 @@ public class CellLayout_Table extends AbstractCellLayout {
 
   private Iterable<EditorCell_Collection> getRowsCollection(EditorCell_Collection editorCells) {
     TableComponent tc = editorCells.getStyle().get(StyleAttributes.TABLE_COMPONENT);
-    List<EditorCell_Collection> result = new LinkedList<EditorCell_Collection>();
+    List<EditorCell_Collection> result = new LinkedList<>();
     for (EditorCell childCell : editorCells) {
       EditorCell_Collection col = findCollection(childCell, tc.transpose());
       result.add(col);
@@ -139,8 +141,8 @@ public class CellLayout_Table extends AbstractCellLayout {
   }
 
   private void fillAscentsDescents(Iterable<EditorCell_Collection> rowCollections, TableComponent tc) {
-    List<Integer> columnAscents = new LinkedList<Integer>();
-    List<Integer> columnDescents = new LinkedList<Integer>();
+    List<Integer> columnAscents = new LinkedList<>();
+    List<Integer> columnDescents = new LinkedList<>();
     for (EditorCell_Collection row : rowCollections) {
       if (row == null) {
         continue;
@@ -219,6 +221,15 @@ public class CellLayout_Table extends AbstractCellLayout {
     TextBuilder result = new TextBuilderImpl();
     for (EditorCell editorCell : editorCells) {
       result.appendToTheBottom(editorCell.renderText());
+    }
+    return result;
+  }
+
+  @Override
+  public HtmlTextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    HtmlTextBuilder result = new HtmlTextBuilderImpl();
+    for (EditorCell editorCell : editorCells) {
+      result.appendToTheBottom(editorCell.renderHtml());
     }
     return result;
   }

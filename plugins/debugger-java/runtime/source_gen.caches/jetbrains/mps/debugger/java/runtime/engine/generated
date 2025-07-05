@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="2f0yr3f3ejbch3r28xly1mg8i9iq7p4" />
+<product version="3" modelHash="-8hbz8y5z7lv4k7brmpp3u7mexi41j6h">
+  <files names="DebugProcessAdapter.java:DebugProcessListener.java:DebugProcessMulticaster.java:RequestManager.java:RunFailedException.java:SystemMessagesReporter.java:VMEventsProcessorManagerComponent.java:VmCreator.java" />
+</product>
 

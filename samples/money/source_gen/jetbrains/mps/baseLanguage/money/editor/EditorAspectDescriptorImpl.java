@@ -17,7 +17,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   @NotNull
   public Collection<ConceptEditor> getDeclaredEditors(SAbstractConcept concept) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
-    switch (index_xbvbvu_a0a.index(cncpt)) {
+    switch (conceptIndex.index(cncpt)) {
       case 0:
         return Collections.<ConceptEditor>singletonList(new MoneyCreator_Editor());
       case 1:
@@ -34,7 +34,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   @Override
   public Collection<TransformationMenu> getDeclaredDefaultTransformationMenus(SAbstractConcept concept) {
     SAbstractConcept cncpt = concept;
-    switch (index_xbvbvu_a0d.index(cncpt)) {
+    switch (conceptIndex1.index(cncpt)) {
       case 0:
         return Collections.<TransformationMenu>singletonList(new MoneyMethods_Contribution());
       default:
@@ -42,6 +42,6 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     return Collections.<TransformationMenu>emptyList();
   }
 
-  private static final ConceptSwitchIndex index_xbvbvu_a0a = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L), MetaIdFactory.conceptId(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144ae7606aL), MetaIdFactory.conceptId(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L)).seal();
-  private static final ConceptSwitchIndex index_xbvbvu_a0d = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L), MetaIdFactory.conceptId(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144ae7606aL), MetaIdFactory.conceptId(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L)).seal();
+  private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL)).seal();
 }

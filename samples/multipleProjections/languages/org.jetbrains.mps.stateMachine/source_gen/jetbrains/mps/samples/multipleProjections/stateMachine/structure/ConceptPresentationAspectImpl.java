@@ -4,18 +4,18 @@ package jetbrains.mps.samples.multipleProjections.stateMachine.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_AbstractStateMachineElement = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_Event = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_EventReference = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_State = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_StateMachine = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_StateReference = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_Transition = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_AbstractStateMachineElement;
+  private ConceptPresentation props_Event;
+  private ConceptPresentation props_EventReference;
+  private ConceptPresentation props_State;
+  private ConceptPresentation props_StateMachine;
+  private ConceptPresentation props_StateReference;
+  private ConceptPresentation props_Transition;
 
   @Override
   @Nullable
@@ -23,18 +23,52 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.AbstractStateMachineElement:
+        if (props_AbstractStateMachineElement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_AbstractStateMachineElement = cpb.create();
+        }
         return props_AbstractStateMachineElement;
       case LanguageConceptSwitch.Event:
+        if (props_Event == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_Event = cpb.create();
+        }
         return props_Event;
       case LanguageConceptSwitch.EventReference:
+        if (props_EventReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8457446L, 0xa99ffe1c8457447L, "event", "", "");
+          props_EventReference = cpb.create();
+        }
         return props_EventReference;
       case LanguageConceptSwitch.State:
+        if (props_State == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_State = cpb.create();
+        }
         return props_State;
       case LanguageConceptSwitch.StateMachine:
+        if (props_StateMachine == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("StateMachine");
+          props_StateMachine = cpb.create();
+        }
         return props_StateMachine;
       case LanguageConceptSwitch.StateReference:
+        if (props_StateReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8457444L, 0xa99ffe1c8457445L, "state", "", "");
+          props_StateReference = cpb.create();
+        }
         return props_StateReference;
       case LanguageConceptSwitch.Transition:
+        if (props_Transition == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Transition");
+          props_Transition = cpb.create();
+        }
         return props_Transition;
     }
     return null;

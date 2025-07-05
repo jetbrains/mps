@@ -2,7 +2,7 @@
 <model ref="r:11d950c0-cabb-4b20-860f-4f2898171c08(jetbrains.mps.lang.smodel.query.behavior)">
   <persistence version="9" />
   <languages>
-    <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="1" />
+    <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -91,14 +91,14 @@
         <child id="1068581242865" name="localVariableDeclaration" index="3cpWs9" />
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
       </concept>
       <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
@@ -118,7 +118,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -155,11 +155,11 @@
               <node concept="3bZ5Sz" id="2xELmDxx89k" role="HW$YZ">
                 <ref role="3bZ5Sy" to="3xdn:3J6h25Q2URP" resolve="QueryParameter" />
               </node>
-              <node concept="35c_gC" id="2xELmDxx8fL" role="HW$Y0">
-                <ref role="35c_gD" to="3xdn:3J6h25Q6eOJ" resolve="QueryParameterScope" />
+              <node concept="35c_gC" id="238_VGTNsj_" role="HW$Y0">
+                <ref role="35c_gD" to="3xdn:238_VGTIKuz" resolve="QueryParameterScope" />
               </node>
               <node concept="35c_gC" id="2xELmDxx8lc" role="HW$Y0">
-                <ref role="35c_gD" to="3xdn:3J6h25Q6eM6" resolve="QueryParameterIncludeReadOnly" />
+                <ref role="35c_gD" to="3xdn:3J6h25Q6eM6" resolve="QueryParameterIncludeReadOnly_old" />
               </node>
             </node>
           </node>
@@ -278,7 +278,7 @@
                   <ref role="3cqZAo" node="1fzYukMfy3_" resolve="result" />
                 </node>
                 <node concept="Xl_RD" id="1fzYukMfNsx" role="37vLTx">
-                  <property role="Xl_RC" value="scope  (default = project)   specifies the boundaries of the lookup operation\n" />
+                  <property role="Xl_RC" value="scope  (default = editable)  specifies the boundaries of the lookup operation\n" />
                 </node>
               </node>
             </node>
@@ -286,7 +286,7 @@
           <node concept="2OqwBi" id="1fzYukMfNsz" role="3clFbw">
             <node concept="3JPx81" id="1fzYukMfNs_" role="2OqNvi">
               <node concept="35c_gC" id="5vtvfuzLSU2" role="25WWJ7">
-                <ref role="35c_gD" to="3xdn:3J6h25Q6eOJ" resolve="QueryParameterScope" />
+                <ref role="35c_gD" to="3xdn:238_VGTIKuz" resolve="QueryParameterScope" />
               </node>
             </node>
             <node concept="2OqwBi" id="1fzYukMhea3" role="2Oq$k0">
@@ -320,47 +320,6 @@
               <node concept="1fM9EW" id="1u_ffTozKcP" role="2Oq$k0" />
               <node concept="2qgKlT" id="38NtPr_SSBr" role="2OqNvi">
                 <ref role="37wK5l" node="3J6h25QXCDW" resolve="getSupportedParameters" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="1fzYukMfwEy" role="3cqZAp">
-          <node concept="3clFbS" id="1fzYukMfwEz" role="3clFbx">
-            <node concept="3clFbF" id="1fzYukMfMQL" role="3cqZAp">
-              <node concept="d57v9" id="1fzYukMfMQM" role="3clFbG">
-                <node concept="37vLTw" id="6ZYkX9dOCpg" role="37vLTJ">
-                  <ref role="3cqZAo" node="1fzYukMfy3_" resolve="result" />
-                </node>
-                <node concept="Xl_RD" id="1fzYukMfMQN" role="37vLTx">
-                  <property role="Xl_RC" value="r/o+   (default = false)     also search in read-only models\n" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2OqwBi" id="1fzYukMfwSx" role="3clFbw">
-            <node concept="3JPx81" id="1fzYukMfxGN" role="2OqNvi">
-              <node concept="35c_gC" id="5vtvfuzLT4M" role="25WWJ7">
-                <ref role="35c_gD" to="3xdn:3J6h25Q6eM6" resolve="QueryParameterIncludeReadOnly" />
-              </node>
-            </node>
-            <node concept="2OqwBi" id="1fzYukMheAP" role="2Oq$k0">
-              <node concept="1fM9EW" id="1u_ffTozKcN" role="2Oq$k0" />
-              <node concept="2qgKlT" id="1fzYukMheUP" role="2OqNvi">
-                <ref role="37wK5l" node="3J6h25QXCDW" resolve="getSupportedParameters" />
-              </node>
-            </node>
-          </node>
-          <node concept="9aQIb" id="1fzYukMfRSW" role="9aQIa">
-            <node concept="3clFbS" id="1fzYukMfRSX" role="9aQI4">
-              <node concept="3clFbF" id="1fzYukMfRXN" role="3cqZAp">
-                <node concept="d57v9" id="1fzYukMfS6t" role="3clFbG">
-                  <node concept="37vLTw" id="6ZYkX9dOhV9" role="37vLTJ">
-                    <ref role="3cqZAo" node="1fzYukMfy3_" resolve="result" />
-                  </node>
-                  <node concept="Xl_RD" id="1fzYukMfS$B" role="37vLTx">
-                    <property role="Xl_RC" value="Note: read-only models are included in the search scope\n" />
-                  </node>
-                </node>
               </node>
             </node>
           </node>
@@ -454,11 +413,11 @@
               <node concept="3bZ5Sz" id="2xELmDxx6MC" role="HW$YZ">
                 <ref role="3bZ5Sy" to="3xdn:3J6h25Q2URP" resolve="QueryParameter" />
               </node>
-              <node concept="35c_gC" id="2xELmDxx6T5" role="HW$Y0">
-                <ref role="35c_gD" to="3xdn:3J6h25Q6eOJ" resolve="QueryParameterScope" />
+              <node concept="35c_gC" id="238_VGTNrD8" role="HW$Y0">
+                <ref role="35c_gD" to="3xdn:238_VGTIKuz" resolve="QueryParameterScope" />
               </node>
               <node concept="35c_gC" id="2xELmDxx6Yw" role="HW$Y0">
-                <ref role="35c_gD" to="3xdn:3J6h25Q6eM6" resolve="QueryParameterIncludeReadOnly" />
+                <ref role="35c_gD" to="3xdn:3J6h25Q6eM6" resolve="QueryParameterIncludeReadOnly_old" />
               </node>
             </node>
           </node>
@@ -488,11 +447,11 @@
               <node concept="3bZ5Sz" id="2xELmDxx6ck" role="HW$YZ">
                 <ref role="3bZ5Sy" to="3xdn:3J6h25Q2URP" resolve="QueryParameter" />
               </node>
-              <node concept="35c_gC" id="2xELmDxx6iL" role="HW$Y0">
-                <ref role="35c_gD" to="3xdn:3J6h25Q6eOJ" resolve="QueryParameterScope" />
+              <node concept="35c_gC" id="238_VGTNrqs" role="HW$Y0">
+                <ref role="35c_gD" to="3xdn:238_VGTIKuz" resolve="QueryParameterScope" />
               </node>
               <node concept="35c_gC" id="2xELmDxx6oc" role="HW$Y0">
-                <ref role="35c_gD" to="3xdn:3J6h25Q6eM6" resolve="QueryParameterIncludeReadOnly" />
+                <ref role="35c_gD" to="3xdn:3J6h25Q6eM6" resolve="QueryParameterIncludeReadOnly_old" />
               </node>
             </node>
           </node>
@@ -525,11 +484,11 @@
               <node concept="3bZ5Sz" id="2xELmDxx5zW" role="HW$YZ">
                 <ref role="3bZ5Sy" to="3xdn:3J6h25Q2URP" resolve="QueryParameter" />
               </node>
-              <node concept="35c_gC" id="2xELmDxx5Ep" role="HW$Y0">
-                <ref role="35c_gD" to="3xdn:3J6h25Q6eOJ" resolve="QueryParameterScope" />
+              <node concept="35c_gC" id="238_VGTIMoo" role="HW$Y0">
+                <ref role="35c_gD" to="3xdn:238_VGTIKuz" resolve="QueryParameterScope" />
               </node>
               <node concept="35c_gC" id="2xELmDxx5JO" role="HW$Y0">
-                <ref role="35c_gD" to="3xdn:3J6h25Q6eM6" resolve="QueryParameterIncludeReadOnly" />
+                <ref role="35c_gD" to="3xdn:3J6h25Q6eM6" resolve="QueryParameterIncludeReadOnly_old" />
               </node>
             </node>
           </node>
@@ -562,11 +521,11 @@
               <node concept="3bZ5Sz" id="2xELmDxx4J0" role="HW$YZ">
                 <ref role="3bZ5Sy" to="3xdn:3J6h25Q2URP" resolve="QueryParameter" />
               </node>
-              <node concept="35c_gC" id="2xELmDxx4RV" role="HW$Y0">
-                <ref role="35c_gD" to="3xdn:3J6h25Q6eOJ" resolve="QueryParameterScope" />
+              <node concept="35c_gC" id="238_VGTNqYB" role="HW$Y0">
+                <ref role="35c_gD" to="3xdn:238_VGTIKuz" resolve="QueryParameterScope" />
               </node>
               <node concept="35c_gC" id="2xELmDxx56G" role="HW$Y0">
-                <ref role="35c_gD" to="3xdn:3J6h25Q6eM6" resolve="QueryParameterIncludeReadOnly" />
+                <ref role="35c_gD" to="3xdn:3J6h25Q6eM6" resolve="QueryParameterIncludeReadOnly_old" />
               </node>
               <node concept="35c_gC" id="2xELmDxx4ZP" role="HW$Y0">
                 <ref role="35c_gD" to="3xdn:_BZ6vQW9PK" resolve="QueryParameterExact" />
@@ -650,11 +609,11 @@
               <node concept="3bZ5Sz" id="2xELmDxx7qk" role="HW$YZ">
                 <ref role="3bZ5Sy" to="3xdn:3J6h25Q2URP" resolve="QueryParameter" />
               </node>
-              <node concept="35c_gC" id="2xELmDxx7wL" role="HW$Y0">
-                <ref role="35c_gD" to="3xdn:3J6h25Q6eOJ" resolve="QueryParameterScope" />
+              <node concept="35c_gC" id="238_VGTNs0R" role="HW$Y0">
+                <ref role="35c_gD" to="3xdn:238_VGTIKuz" resolve="QueryParameterScope" />
               </node>
               <node concept="35c_gC" id="2xELmDxx7Ac" role="HW$Y0">
-                <ref role="35c_gD" to="3xdn:3J6h25Q6eM6" resolve="QueryParameterIncludeReadOnly" />
+                <ref role="35c_gD" to="3xdn:3J6h25Q6eM6" resolve="QueryParameterIncludeReadOnly_old" />
               </node>
             </node>
           </node>
@@ -770,11 +729,11 @@
             <node concept="2OqwBi" id="4L5lkpKd4Pw" role="2Oq$k0">
               <node concept="1fM9EW" id="4L5lkpKd4Aj" role="2Oq$k0" />
               <node concept="liA8E" id="4L5lkpKd5d5" role="2OqNvi">
-                <ref role="37wK5l" to="c17a:~SAbstractConcept.getLanguage():org.jetbrains.mps.openapi.language.SLanguage" resolve="getLanguage" />
+                <ref role="37wK5l" to="c17a:~SAbstractConcept.getLanguage()" resolve="getLanguage" />
               </node>
             </node>
             <node concept="liA8E" id="4L5lkpKd5Cf" role="2OqNvi">
-              <ref role="37wK5l" to="c17a:~SLanguage.getQualifiedName():java.lang.String" resolve="getQualifiedName" />
+              <ref role="37wK5l" to="c17a:~SLanguage.getQualifiedName()" resolve="getQualifiedName" />
             </node>
           </node>
         </node>
@@ -818,7 +777,7 @@
                 <node concept="2OqwBi" id="60B$833bwqJ" role="3cqZAk">
                   <node concept="1fM9EW" id="1u_ffTozKcJ" role="2Oq$k0" />
                   <node concept="liA8E" id="1u_ffTozKcK" role="2OqNvi">
-                    <ref role="37wK5l" to="c17a:~SAbstractConcept.getName():java.lang.String" resolve="getName" />
+                    <ref role="37wK5l" to="c17a:~SAbstractConcept.getName()" resolve="getName" />
                   </node>
                 </node>
               </node>

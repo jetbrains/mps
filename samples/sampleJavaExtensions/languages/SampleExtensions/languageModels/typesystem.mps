@@ -2,8 +2,7 @@
 <model ref="r:7da49c71-e19f-4b55-806c-76b351ee48dd(org.jetbrains.mps.samples.IfAndUnless.typesystem)">
   <persistence version="9" />
   <languages>
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="0" />
-    <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
+    <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
   <imports>
     <import index="3v68" ref="r:47174b35-df1c-485d-9362-8e3256f44aca(org.jetbrains.mps.samples.IfAndUnless.structure)" />
@@ -45,10 +44,6 @@
       <concept id="1185788614172" name="jetbrains.mps.lang.typesystem.structure.NormalTypeClause" flags="ng" index="mw_s8">
         <child id="1185788644032" name="normalType" index="mwGJk" />
       </concept>
-      <concept id="1227096774658" name="jetbrains.mps.lang.typesystem.structure.MessageStatement" flags="ng" index="2OEH$v">
-        <child id="1227096802791" name="helginsIntention" index="2OEOjU" />
-        <child id="1227096802790" name="nodeToReport" index="2OEOjV" />
-      </concept>
       <concept id="1216383170661" name="jetbrains.mps.lang.typesystem.structure.TypesystemQuickFix" flags="ng" index="Q5z_Y">
         <child id="1216383424566" name="executeBlock" index="Q6x$H" />
         <child id="1216383476350" name="quickFixArgument" index="Q6Id_" />
@@ -66,6 +61,10 @@
         <child id="1195213635060" name="body" index="18ibNy" />
       </concept>
       <concept id="1195214364922" name="jetbrains.mps.lang.typesystem.structure.NonTypesystemRule" flags="ig" index="18kY7G" />
+      <concept id="3937244445246642777" name="jetbrains.mps.lang.typesystem.structure.AbstractReportStatement" flags="ng" index="1urrMJ">
+        <child id="3937244445246643221" name="helginsIntention" index="1urrFz" />
+        <child id="3937244445246642781" name="nodeToReport" index="1urrMF" />
+      </concept>
       <concept id="1210784285454" name="jetbrains.mps.lang.typesystem.structure.TypesystemIntention" flags="ng" index="3Cnw8n">
         <reference id="1216388525179" name="quickFix" index="QpYPw" />
         <child id="1210784493590" name="actualArgument" index="3Coj4f" />
@@ -106,7 +105,7 @@
       <concept id="1228341669568" name="jetbrains.mps.lang.smodel.structure.Node_DetachOperation" flags="nn" index="3YRAZt" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -192,16 +191,10 @@
         </node>
         <node concept="3clFbS" id="1pi62c$h2KY" role="3clFbx">
           <node concept="a7r0C" id="1pi62c$h4jF" role="3cqZAp">
-            <node concept="3Cnw8n" id="1pi62c$h4tZ" role="2OEOjU">
-              <ref role="QpYPw" node="1pi62c$h2Lp" resolve="Remove_empty_unless_block" />
-              <node concept="3CnSsL" id="1pi62c$h4u0" role="3Coj4f">
-                <ref role="QkamJ" node="1pi62c$h2Ls" resolve="node" />
-                <node concept="1YBJjd" id="1pi62c$h4u2" role="3CoRuB">
-                  <ref role="1YBMHb" node="1pi62c$h2KV" resolve="us" />
-                </node>
-              </node>
+            <node concept="Xl_RD" id="1pi62c$h4jI" role="a7wSD">
+              <property role="Xl_RC" value="Empty statement block" />
             </node>
-            <node concept="2OqwBi" id="1pi62c$h4jK" role="2OEOjV">
+            <node concept="2OqwBi" id="1pi62c$h4jK" role="1urrMF">
               <node concept="1YBJjd" id="1pi62c$h4jJ" role="2Oq$k0">
                 <ref role="1YBMHb" node="1pi62c$h2KV" resolve="us" />
               </node>
@@ -209,8 +202,14 @@
                 <ref role="3Tt5mk" to="3v68:lPhVsfdHKs" resolve="body" />
               </node>
             </node>
-            <node concept="Xl_RD" id="1pi62c$h4jI" role="a7wSD">
-              <property role="Xl_RC" value="Empty statement block" />
+            <node concept="3Cnw8n" id="1pi62c$h4tZ" role="1urrFz">
+              <ref role="QpYPw" node="1pi62c$h2Lp" resolve="Remove_empty_unless_block" />
+              <node concept="3CnSsL" id="1pi62c$h4u0" role="3Coj4f">
+                <ref role="QkamJ" node="1pi62c$h2Ls" resolve="node" />
+                <node concept="1YBJjd" id="1pi62c$h4u2" role="3CoRuB">
+                  <ref role="1YBMHb" node="1pi62c$h2KV" resolve="us" />
+                </node>
+              </node>
             </node>
           </node>
         </node>

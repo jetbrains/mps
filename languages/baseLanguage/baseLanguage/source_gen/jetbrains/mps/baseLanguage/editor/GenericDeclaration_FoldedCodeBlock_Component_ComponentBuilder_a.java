@@ -28,14 +28,14 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.FoldedCell
   }
 
   /*package*/ EditorCell createCell() {
-    return createConstant_2ccpf5_a();
+    return createConstant_0();
   }
 
-  private EditorCell createConstant_2ccpf5_a() {
+  private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "{...}");
     editorCell.setCellId("Constant_2ccpf5_a");
     Style style = new StyleImpl();
-    new FoldedCellStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new FoldedCellStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

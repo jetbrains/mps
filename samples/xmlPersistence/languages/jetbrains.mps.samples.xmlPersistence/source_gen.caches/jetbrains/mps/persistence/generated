@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-biv3wd03bh9z4s75hm23fp7el990h0g" />
+<product version="3" modelHash="b9fxaf692yg4bkdcato6dvnewwxtf6w">
+  <files names="XmlModelPersistence.java:XmlPersistenceModelDescriptor.java" />
+</product>
 

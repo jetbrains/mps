@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.newTypesystem.context;
 import gnu.trove.THashMap;
 import jetbrains.mps.languageScope.LanguageScopeExecutor;
 import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -29,10 +30,10 @@ import java.util.Map;
  * Date: 12/7/12
  */
 public class CachingTypecheckingContext extends TargetTypecheckingContext {
-  private Map<SNode, SNode> myComputedTypes = new THashMap<SNode, SNode>(1);
+  private Map<SNode, SNode> myComputedTypes = new THashMap<>(1);
 
-  public CachingTypecheckingContext(SNode node, TypeChecker typeChecker) {
-    super(node, typeChecker);
+  public CachingTypecheckingContext(SNode node, TypeCheckerHelper typeCheckerHelper) {
+    super(node, typeCheckerHelper);
   }
 
   @Override
@@ -41,21 +42,16 @@ public class CachingTypecheckingContext extends TargetTypecheckingContext {
     if (pair.o2) {
       return pair.o1;
     }
-    SNode resultType = LanguageScopeExecutor.execWithModelScope(node.getModel(), new Computable<SNode>() {
-      @Override
-      public SNode compute() {
-        return getTypechecking().computeTypesForNodeDuringResolving(node);
-      }
-    });
+    SNode resultType = LanguageScopeExecutor.execWithModelScope(node.getModel(), () -> getTypechecking().computeTypesForNodeDuringResolving(node), getTypeCheckerHelper().getScopeFactory());
     putTypeComputed(node, resultType);
     return resultType;
   }
 
   public Pair<SNode, Boolean> getTypeComputed(SNode node) {
     if (myComputedTypes != null && myComputedTypes.containsKey(node)) {
-      return new Pair<SNode, Boolean>(myComputedTypes.get(node), true);
+      return new Pair<>(myComputedTypes.get(node), true);
     } else {
-      return new Pair<SNode, Boolean>(null, false);
+      return new Pair<>(null, false);
     }
   }
 

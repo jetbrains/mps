@@ -4,81 +4,171 @@ package jetbrains.mps.baseLanguage.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
+import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
+import java.util.Arrays;
 
 @MPSLaunch
 public class WildCardTypeIsAValidSubstituteForBoundedParameter_Test extends BaseTransformationTest {
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(WildCardTypeIsAValidSubstituteForBoundedParameter_Test.class).projectPath(null).modelRef("r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)").reopenProject(null).build());
+
+  public WildCardTypeIsAValidSubstituteForBoundedParameter_Test() {
+    super(ourParametersCacheExtension.getParametersCache());
+  }
+
   @Test
   public void test_NodeWarningCheck595838485961914360() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.WildCardTypeIsAValidSubstituteForBoundedParameter_Test$TestBody", "test_NodeWarningCheck595838485961914360", true);
+    new TestBody(this).test_NodeWarningCheck595838485961914360();
+  }
+  @Test
+  public void test_NodeUnusedVariableWarningCheck215889526513022166() throws Throwable {
+    new TestBody(this).test_NodeUnusedVariableWarningCheck215889526513022166();
   }
   @Test
   public void test_NodeErrorCheck595838485955120512() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.WildCardTypeIsAValidSubstituteForBoundedParameter_Test$TestBody", "test_NodeErrorCheck595838485955120512", true);
+    new TestBody(this).test_NodeErrorCheck595838485955120512();
   }
   @Test
   public void test_NodeWarningCheck595838485961915035() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.WildCardTypeIsAValidSubstituteForBoundedParameter_Test$TestBody", "test_NodeWarningCheck595838485961915035", true);
+    new TestBody(this).test_NodeWarningCheck595838485961915035();
+  }
+  @Test
+  public void test_NodeUnusedVariableWarningCheck215889526513024148() throws Throwable {
+    new TestBody(this).test_NodeUnusedVariableWarningCheck215889526513024148();
   }
   @Test
   public void test_NodeWarningCheck595838485961916732() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.WildCardTypeIsAValidSubstituteForBoundedParameter_Test$TestBody", "test_NodeWarningCheck595838485961916732", true);
+    new TestBody(this).test_NodeWarningCheck595838485961916732();
+  }
+  @Test
+  public void test_NodeUnusedVariableWarningCheck215889526513023159() throws Throwable {
+    new TestBody(this).test_NodeUnusedVariableWarningCheck215889526513023159();
   }
   @Test
   public void test_NodeWarningCheck595838485961917399() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.WildCardTypeIsAValidSubstituteForBoundedParameter_Test$TestBody", "test_NodeWarningCheck595838485961917399", true);
+    new TestBody(this).test_NodeWarningCheck595838485961917399();
+  }
+  @Test
+  public void test_NodeUnusedVariableWarningCheck215889526513026116() throws Throwable {
+    new TestBody(this).test_NodeUnusedVariableWarningCheck215889526513026116();
   }
   @Test
   public void test_NodeWarningCheck595838485961918062() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.WildCardTypeIsAValidSubstituteForBoundedParameter_Test$TestBody", "test_NodeWarningCheck595838485961918062", true);
+    new TestBody(this).test_NodeWarningCheck595838485961918062();
+  }
+  @Test
+  public void test_NodeUnusedVariableWarningCheck215889526513027103() throws Throwable {
+    new TestBody(this).test_NodeUnusedVariableWarningCheck215889526513027103();
   }
   @Test
   public void test_ErrorMessagesCheck595838485955141760() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.WildCardTypeIsAValidSubstituteForBoundedParameter_Test$TestBody", "test_ErrorMessagesCheck595838485955141760", true);
+    new TestBody(this).test_ErrorMessagesCheck595838485955141760();
   }
 
-  @MPSLaunch
-  public static class TestBody extends BaseTestBody {
+  /*package*/ static class TestBody extends BaseTestBody {
+
+    /*package*/ TestBody(TransformationTest owner) {
+      super(owner);
+    }
+
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("595838485955086229");
+    }
 
     public void test_NodeWarningCheck595838485961914360() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("595838485961914360"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("595838485955112039"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("595838485955112039");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.WARNING, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
+    }
+    public void test_NodeUnusedVariableWarningCheck215889526513022166() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("595838485955111993");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeErrorCheck595838485955120512() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("595838485955120512"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("595838485955112480"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("595838485955112480");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeWarningCheck595838485961915035() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("595838485961915035"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("595838485955112302"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("595838485955112302");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.WARNING, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
+    }
+    public void test_NodeUnusedVariableWarningCheck215889526513024148() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("595838485955112299");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeWarningCheck595838485961916732() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("595838485961916732"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("595838485955114506"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("595838485955114506");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.WARNING, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
+    }
+    public void test_NodeUnusedVariableWarningCheck215889526513023159() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("595838485955114503");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeWarningCheck595838485961917399() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("595838485961917399"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("595838485955117670"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("595838485955117670");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.WARNING, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
+    }
+    public void test_NodeUnusedVariableWarningCheck215889526513026116() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("595838485955117667");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeWarningCheck595838485961918062() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("595838485961918062"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("595838485955150406"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("595838485955150406");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.WARNING, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
+    }
+    public void test_NodeUnusedVariableWarningCheck215889526513027103() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("595838485955150403");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_ErrorMessagesCheck595838485955141760() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("595838485955141760"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("595838485955086231"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("595838485955086231");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(false).exclude(Arrays.<CheckExpectedMessageRunnable>asList(new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getNodeById("595838485955112039"), MessageStatus.WARNING, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("595838485955111993"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getNodeById("595838485955112480"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getNodeById("595838485955112302"), MessageStatus.WARNING, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("595838485955112299"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getNodeById("595838485955114506"), MessageStatus.WARNING, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("595838485955114503"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getNodeById("595838485955117670"), MessageStatus.WARNING, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("595838485955117667"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getNodeById("595838485955150406"), MessageStatus.WARNING, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("595838485955150403"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "", myProject.getRepository(), myProject.getPlatform()))).run();
+      });
     }
 
   }

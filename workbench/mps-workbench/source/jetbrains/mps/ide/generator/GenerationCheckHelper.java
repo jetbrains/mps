@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,14 @@ package jetbrains.mps.ide.generator;
 
 import jetbrains.mps.generator.GenerationSettingsProvider;
 import jetbrains.mps.generator.IModifiableGenerationSettings;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.runtime.ModuleRuntime;
 import org.jetbrains.mps.openapi.model.SModel;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Utility code to run model check prior to generation according to settings
@@ -28,15 +32,25 @@ import java.util.List;
 public class GenerationCheckHelper {
 
   public boolean checkModelsBeforeGenerationIfNeeded(Project p, List<SModel> modelDescriptors) {
-    final IModifiableGenerationSettings generationSettings = GenerationSettingsProvider.getInstance().getGenerationSettings();
+    final IModifiableGenerationSettings generationSettings = p.getComponent(GenerationSettingsProvider.class).getGenerationSettings();
     if (!generationSettings.isCheckModelsBeforeGeneration()) {
       return true;
     }
+    // FIXME I don't expect ModelValidator implementations and contributions through this extension point, keep for 1 release and then drop
     for (ModelValidator modelValidator : ModelValidator.EP_NAME.getExtensions()) {
+      Logger.getLogger(getClass()).warnDeprecatedUse(String.format("Please stop using mps.ModelValidator extension point for %s", modelValidator.getClass().getName()));
       if (!modelValidator.check(p, modelDescriptors)) {
         return false;
       }
     }
-    return true;
+    // <<< delete up to here
+    AtomicBoolean rv = new AtomicBoolean(true);
+    LanguageRegistry languageRegistry = p.getComponent(LanguageRegistry.class);
+    languageRegistry.withAvailableExtensions(ModelValidator.class, new ModuleRuntime.Extension.MatchRequest() {}, modelValidator -> {
+      if (rv.get() && !modelValidator.check(p, modelDescriptors)) {
+        rv.set(false);
+      }
+    });
+    return rv.get();
   }
 }

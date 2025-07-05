@@ -4,16 +4,16 @@ package jetbrains.mps.lang.util.order.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_Order = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_OrderDeclaration = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_OrderParticipant = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_OrderParticipantReference = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_OrderReference = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_Order;
+  private ConceptPresentation props_OrderDeclaration;
+  private ConceptPresentation props_OrderParticipant;
+  private ConceptPresentation props_OrderParticipantReference;
+  private ConceptPresentation props_OrderReference;
 
   @Override
   @Nullable
@@ -21,14 +21,36 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.Order:
+        if (props_Order == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_Order = cpb.create();
+        }
         return props_Order;
       case LanguageConceptSwitch.OrderDeclaration:
+        if (props_OrderDeclaration == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_OrderDeclaration = cpb.create();
+        }
         return props_OrderDeclaration;
       case LanguageConceptSwitch.OrderParticipant:
+        if (props_OrderParticipant == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_OrderParticipant = cpb.create();
+        }
         return props_OrderParticipant;
       case LanguageConceptSwitch.OrderParticipantReference:
+        if (props_OrderParticipantReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_OrderParticipantReference = cpb.create();
+        }
         return props_OrderParticipantReference;
       case LanguageConceptSwitch.OrderReference:
+        if (props_OrderReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd79211L, 0x22035699bdd79212L, "order", "", "");
+          props_OrderReference = cpb.create();
+        }
         return props_OrderReference;
     }
     return null;

@@ -32,51 +32,49 @@ import jetbrains.mps.editor.runtime.style.Padding;
   }
 
   /*package*/ EditorCell createCell() {
-    return createAlternation_1ltshm_a();
+    return createAlternation_0();
   }
 
-  private EditorCell createAlternation_1ltshm_a() {
+  private EditorCell createAlternation_0() {
     boolean alternationCondition = true;
     alternationCondition = nodeCondition_1ltshm_a0();
     EditorCell editorCell = null;
     if (alternationCondition) {
-      editorCell = createCustom_1ltshm_a0();
+      editorCell = createCustom_0();
     } else {
-      editorCell = createComponent_1ltshm_a0();
+      editorCell = createComponent_0();
     }
     EditorCell bigCell = BigCellUtil.findBigCell(editorCell, getNode());
     if (bigCell != null) {
       bigCell.setBig(true);
-      bigCell.setCellContext(getCellFactory().getCellContext());
+      setCellContext(bigCell);
     }
     return editorCell;
   }
   private boolean nodeCondition_1ltshm_a0() {
     return isEmptyString(SConceptOperations.conceptAlias(SNodeOperations.getConcept(myNode)));
   }
-  private EditorCell createCustom_1ltshm_a0() {
-    AbstractCellProvider provider = new _FunctionTypes._return_P0_E0<AbstractCellProvider>() {
-      public AbstractCellProvider invoke() {
-        return new AbstractCellProvider(myNode) {
-          @Override
-          public EditorCell createEditorCell(EditorContext context) {
-            EditorCell_Error result = new EditorCell_Error(context, myNode, "<" + myNode.getRoleInParent() + ">");
-            result.getStyle().set(StyleAttributes.PADDING_LEFT, new Padding(0.0));
-            result.getStyle().set(StyleAttributes.PADDING_RIGHT, new Padding(0.0));
-            return result;
-          }
-        };
-      }
-    }.invoke();
+  private EditorCell createCustom_0() {
+    AbstractCellProvider provider = ((_FunctionTypes._return_P0_E0<AbstractCellProvider>) () -> {
+      return new AbstractCellProvider(myNode) {
+        @Override
+        public EditorCell createEditorCell(EditorContext context) {
+          EditorCell_Error result = new EditorCell_Error(context, myNode, "<" + SNodeOperations.getContainingLink(myNode).getName() + ">");
+          result.getStyle().set(StyleAttributes.PADDING_LEFT, new Padding(0.0));
+          result.getStyle().set(StyleAttributes.PADDING_RIGHT, new Padding(0.0));
+          return result;
+        }
+      };
+    }).invoke();
     EditorCell editorCell = provider.createEditorCell(getEditorContext());
     editorCell.setCellId("Custom_1ltshm_a0");
     return editorCell;
   }
-  private EditorCell createComponent_1ltshm_a0() {
+  private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
     return editorCell;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 }

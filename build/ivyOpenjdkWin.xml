@@ -1,8 +1,8 @@
 <ivy-module version="2.0">
-  <info organisation="org.jetbrains.mps" module="openJDK/jbsdk_windows_x64.tar.gz"/>
+  <info organisation="org.jetbrains.mps" module="openJDK/jbr-windows-x64.tar.gz"/>
   <dependencies>
-    <dependency org="org" name="MPS_35_Distribution_GetResources" rev="latest.lastSuccessful">
-      <include name="openJDK/jbsdk_windows_x64" ext="tar.gz"/>
+    <dependency org="org" name="MPS_20251_Distribution_Platform" rev="${mps.platform.build}">
+      <include name="openJDK/jbr-windows-x64" ext="tar.gz"/>
     </dependency>
   </dependencies>
 </ivy-module>

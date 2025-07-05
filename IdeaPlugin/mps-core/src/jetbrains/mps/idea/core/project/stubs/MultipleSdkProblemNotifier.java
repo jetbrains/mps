@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,15 +18,14 @@ package jetbrains.mps.idea.core.project.stubs;
 
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
-import com.intellij.notification.Notifications;
-import com.intellij.openapi.application.ApplicationAdapter;
+import com.intellij.openapi.Disposable;
+import com.intellij.openapi.application.ApplicationListener;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.projectRoots.Sdk;
-import jetbrains.mps.idea.core.project.stubs.DifferentSdkException;
-import jetbrains.mps.idea.core.project.stubs.JdkStubSolutionManager;
+import com.intellij.openapi.util.Disposer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -35,62 +34,72 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * MPS multiple SDK problem notifier
  * Created by danilla on 16/02/17.
  */
-public class MultipleSdkProblemNotifier implements ProjectComponent {
+public class MultipleSdkProblemNotifier {
+  // <notificationGroup> extension in mps-core/META-INF/plugin.xml
+  private static final String NOTIFICATION_GROUP = "MPS facet";
   private final Project myProject;
-  private Data myDataToReport;
+  private final Data myDataToReport = new Data();
+  private final Map<Module, String> myBadJdks = new HashMap<>();
+
+  public static MultipleSdkProblemNotifier getInstance(Project project) {
+    return project.getService(MultipleSdkProblemNotifier.class);
+  }
 
   public MultipleSdkProblemNotifier(Project project) {
     myProject = project;
   }
 
-  @Override
-  public void projectOpened() {
-  }
-
-  @Override
-  public void projectClosed() {
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "MPS multiple SDK problem notifier";
-  }
-
   public void reportSdkProblem(Module unluckyModule, DifferentSdkException exc) {
-    ApplicationManager.getApplication().assertWriteAccessAllowed();
-
-    if (myDataToReport == null) {
-      myDataToReport = new Data();
-
-      ApplicationManager.getApplication().addApplicationListener(new ApplicationAdapter() {
-        @Override
-        public void afterWriteActionFinished(@NotNull Object action) {
-          myDataToReport.luckyModules.addAll(ApplicationManager.getApplication().getComponent(JdkStubSolutionManager.class).getModules());
-
-          new Notification("MPS facet",
-            "Multiple SDKs currently not supported in MPS plugin",
-            myDataToReport.createMessage(),
-            NotificationType.WARNING).notify(myProject);
-
-          myDataToReport = null;
-          ApplicationManager.getApplication().removeApplicationListener(this);
-        }
-      });
-    }
-
     myDataToReport.unluckyModules.put(unluckyModule, exc.getRequestedSdk());
     myDataToReport.sdkInUse = exc.getCurrentSdk();
+
+    final Disposable disposable = Disposer.newDisposable("SDK problem notification");
+    ApplicationManager.getApplication().addApplicationListener(new ApplicationListener() {
+      @Override
+      public void afterWriteActionFinished(@NotNull Object action) {
+        if (!myDataToReport.unluckyModules.isEmpty()) {
+          myDataToReport.luckyModules.addAll(ApplicationManager.getApplication().getComponent(JdkStubSolutionManager.class).getModules());
+
+          new Notification(NOTIFICATION_GROUP,
+                           "Multiple SDKs currently not supported in MPS plugin",
+                           myDataToReport.createMessage(),
+                           NotificationType.WARNING).notify(myProject);
+
+          myDataToReport.unluckyModules.clear();
+          myDataToReport.luckyModules.clear();
+          myDataToReport.sdkInUse = null;
+        }
+        disposable.dispose();
+      }
+    }, disposable);
+  }
+
+  public void reportIncorrectJDK(Module module, String versionString) {
+    myBadJdks.put(module, versionString);
+
+    final Disposable disposable = Disposer.newDisposable("Incorrect JDK notification");
+    ApplicationManager.getApplication().addApplicationListener(new ApplicationListener() {
+      @Override
+      public void afterWriteActionFinished(@NotNull Object action) {
+        if (!myBadJdks.isEmpty()) {
+          String title = "Modules with MPS facet only support JDK 17 and later";
+          new Notification(NOTIFICATION_GROUP, title, getBadJdksMessage(myBadJdks), NotificationType.WARNING).notify(myProject);
+          myBadJdks.clear();
+        }
+        disposable.dispose();
+      }
+    }, disposable);
+  }
+
+  private String getBadJdksMessage(Map<Module, String> badJdks) {
+    StringBuilder sb = new StringBuilder();
+    for (Module m: badJdks.keySet()){
+      sb.append(m.getName()+" - " + badJdks.get(m));
+    }
+    return sb.toString();
   }
 
   private class Data {

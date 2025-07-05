@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,9 +59,13 @@ public class SNodeUtil {
     return model.getModule() == inRepository.getModule(model.getModule().getModuleId());
   }
 
-  //todo move to snode class
+  /**
+   * For non-null node, {@link SNode#isInstanceOfConcept(SAbstractConcept)} is straightforward replacement
+   */
   public static boolean isInstanceOf(@Nullable SNode node, @NotNull SAbstractConcept concept) {
-    if (node == null) return false;
+    if (node == null) {
+      return false;
+    }
     SConcept c = node.getConcept();
     return c.isSubConceptOf(concept);
   }
@@ -145,6 +149,7 @@ public class SNodeUtil {
       myIncludeFirst = includeFirst;
     }
 
+    @NotNull
     @Override
     public Iterator<SNode> iterator() {
       Iterator<SNode> it = new DescendantsTreeIterator(myNode);
@@ -152,19 +157,20 @@ public class SNodeUtil {
         it.next();
       }
       if (myCondition != null) {
-        it = new FilterIterator<SNode>(it, myCondition);
+        it = new FilterIterator<>(it, myCondition);
       }
       return it;
     }
   }
 
   private static class NodesIterable implements Iterable<SNode> {
-    private SModel mySModel;
+    private final SModel mySModel;
 
     public NodesIterable(SModel sModel) {
       mySModel = sModel;
     }
 
+    @NotNull
     @Override
     public Iterator<SNode> iterator() {
       return new NodesIterator(mySModel.getRootNodes().iterator());
@@ -172,12 +178,13 @@ public class SNodeUtil {
   }
 
   private static class ConcatNodesIterable implements Iterable<SNode> {
-    private Iterable<SNode> myRoots;
+    private final Iterable<SNode> myRoots;
 
     public ConcatNodesIterable(Iterable<SNode> roots) {
       myRoots = roots;
     }
 
+    @NotNull
     @Override
     public Iterator<SNode> iterator() {
       return new NodesIterator(myRoots.iterator());
@@ -185,12 +192,11 @@ public class SNodeUtil {
   }
 
   private static class NodesIterator implements Iterator<SNode> {
-    private Iterator<SNode> myRoots;
+    private final Iterator<SNode> myRoots;
     private Iterator<SNode> myCurrent;
 
     public NodesIterator(Iterator<SNode> roots) {
       myRoots = roots;
-      myCurrent = getIterForNextRoot(roots);
     }
 
     @Override
@@ -211,19 +217,23 @@ public class SNodeUtil {
     }
 
     private void moveToNextRootIfNeeded() {
-      if (myCurrent.hasNext()) return;
-      if (!myRoots.hasNext()) return;
-
-      while (myRoots.hasNext() && !(myCurrent.hasNext())) {
-        myCurrent = getIterForNextRoot(myRoots);
+      if (myCurrent == null) {
+        myCurrent = getIterForNextRoot();
+      }
+      // order in the check is important - myRoots.hasNext() could be false already,
+      // but there are still elements in myCurrent left
+      while (!myCurrent.hasNext() && myRoots.hasNext()) {
+        myCurrent = getIterForNextRoot();
       }
     }
 
-    private Iterator<SNode> getIterForNextRoot(Iterator<SNode> roots) {
-      if (!roots.hasNext()) return Collections.<SNode>emptyList().iterator();
+    private Iterator<SNode> getIterForNextRoot() {
+      if (!myRoots.hasNext()) {
+        return Collections.<SNode>emptyList().iterator();
+      }
 
-      SNode next = roots.next();
-      return SNodeUtil.getDescendants(next).iterator();
+      SNode next = myRoots.next();
+      return new DescendantsIterable(next, null, true).iterator();
     }
   }
 }

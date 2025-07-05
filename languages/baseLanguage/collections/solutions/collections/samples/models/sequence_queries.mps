@@ -3,8 +3,8 @@
   <persistence version="9" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="5" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
@@ -93,7 +93,7 @@
         <child id="1079359253376" name="expression" index="1eOMHV" />
       </concept>
       <concept id="1081506773034" name="jetbrains.mps.baseLanguage.structure.LessThanExpression" flags="nn" index="3eOVzh" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -120,6 +120,7 @@
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1200830824066" name="jetbrains.mps.baseLanguage.closures.structure.YieldStatement" flags="nn" index="2n63Yl">
         <child id="1200830928149" name="expression" index="2n6tg2" />
       </concept>
@@ -129,7 +130,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -155,7 +156,6 @@
       <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
         <reference id="1153944258490" name="variable" index="2Gs0qQ" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1201792049884" name="jetbrains.mps.baseLanguage.collections.structure.TranslateOperation" flags="nn" index="3goQfb" />
       <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
       <concept id="1202128969694" name="jetbrains.mps.baseLanguage.collections.structure.SelectOperation" flags="nn" index="3$u5V9" />
@@ -225,7 +225,7 @@
               <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
             </node>
             <node concept="liA8E" id="hEWgCOe" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="gMGfN7L" role="37wK5m">
                 <property role="Xl_RC" value="from infinite sequence take first 10 numbers," />
               </node>
@@ -239,7 +239,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="hEWgCPP" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="gMGfN7P" role="37wK5m">
                 <property role="Xl_RC" value="ignore odd numbers," />
               </node>
@@ -253,7 +253,7 @@
               <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
             </node>
             <node concept="liA8E" id="hEWgCI2" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="gMGfN7T" role="37wK5m">
                 <property role="Xl_RC" value="map each even number to two strings" />
               </node>
@@ -281,15 +281,15 @@
               </node>
               <node concept="3goQfb" id="hOD2_C4" role="2OqNvi">
                 <node concept="1bVj0M" id="hOD2_C5" role="23t8la">
-                  <node concept="Rh6nW" id="hOD2_C6" role="1bW2Oz">
+                  <node concept="gl6BB" id="5W7E4fV0XdK" role="1bW2Oz">
                     <property role="TrG5h" value="n" />
-                    <node concept="2jxLKc" id="1P4c1XrzT5B" role="1tU5fm" />
+                    <node concept="2jxLKc" id="5W7E4fV0XdL" role="1tU5fm" />
                   </node>
                   <node concept="3clFbS" id="hOD2_C8" role="1bW5cS">
                     <node concept="3clFbJ" id="hOD2_C9" role="3cqZAp">
                       <node concept="2d3UOw" id="hOD2_Ca" role="3clFbw">
                         <node concept="37vLTw" id="2BHiRxgm1k1" role="3uHU7B">
-                          <ref role="3cqZAo" node="hOD2_C6" resolve="n" />
+                          <ref role="3cqZAo" node="5W7E4fV0XdK" resolve="n" />
                         </node>
                         <node concept="3cmrfG" id="hOD2_Cc" role="3uHU7w">
                           <property role="3cmrfH" value="10" />
@@ -311,7 +311,7 @@
                       <node concept="3y3z36" id="hOD2_Ck" role="3clFbw">
                         <node concept="2dk9JS" id="hOD2_Cl" role="3uHU7B">
                           <node concept="37vLTw" id="2BHiRxghfIP" role="3uHU7B">
-                            <ref role="3cqZAo" node="hOD2_C6" resolve="n" />
+                            <ref role="3cqZAo" node="5W7E4fV0XdK" resolve="n" />
                           </node>
                           <node concept="3cmrfG" id="hOD2_Cn" role="3uHU7w">
                             <property role="3cmrfH" value="2" />
@@ -325,7 +325,7 @@
                     <node concept="2n63Yl" id="hOD2AkO" role="3cqZAp">
                       <node concept="3cpWs3" id="hOD2AkP" role="2n6tg2">
                         <node concept="37vLTw" id="2BHiRxgm2rl" role="3uHU7w">
-                          <ref role="3cqZAo" node="hOD2_C6" resolve="n" />
+                          <ref role="3cqZAo" node="5W7E4fV0XdK" resolve="n" />
                         </node>
                         <node concept="Xl_RD" id="hOD2AkR" role="3uHU7B">
                           <property role="Xl_RC" value="----: " />
@@ -337,7 +337,7 @@
                         <node concept="1eOMI4" id="hOD2AjA" role="3uHU7w">
                           <node concept="17qRlL" id="hOD2AjB" role="1eOMHV">
                             <node concept="37vLTw" id="2BHiRxgkW$p" role="3uHU7B">
-                              <ref role="3cqZAo" node="hOD2_C6" resolve="n" />
+                              <ref role="3cqZAo" node="5W7E4fV0XdK" resolve="n" />
                             </node>
                             <node concept="3cmrfG" id="hOD2AjD" role="3uHU7w">
                               <property role="3cmrfH" value="100" />
@@ -369,7 +369,7 @@
               <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
             </node>
             <node concept="liA8E" id="hEWgCGd" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="3cpWs3" id="gMGePTX" role="37wK5m">
                 <node concept="37vLTw" id="3GM_nagTvZN" role="3uHU7w">
                   <ref role="3cqZAo" node="gMGePTc" resolve="count" />
@@ -396,7 +396,7 @@
                   <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                 </node>
                 <node concept="liA8E" id="hEWgCFG" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+                  <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
                   <node concept="2GrUjf" id="gMLjzHr" role="37wK5m">
                     <ref role="2Gs0qQ" node="gMLjqrG" resolve="s" />
                   </node>
@@ -412,7 +412,7 @@
               <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
             </node>
             <node concept="liA8E" id="hEWgCFq" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="3cpWs3" id="gMGePUd" role="37wK5m">
                 <node concept="37vLTw" id="3GM_nagTBAQ" role="3uHU7w">
                   <ref role="3cqZAo" node="gMGePTc" resolve="count" />
@@ -497,7 +497,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="hEWgCLx" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="gMGgdDf" role="37wK5m">
                 <property role="Xl_RC" value="from infinite sequence take first 10 numbers," />
               </node>
@@ -511,7 +511,7 @@
               <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
             </node>
             <node concept="liA8E" id="hEWgCPi" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="gMGgdDj" role="37wK5m">
                 <property role="Xl_RC" value="ignore odd numbers," />
               </node>
@@ -525,7 +525,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="hEWgCKH" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="gMGgdDn" role="37wK5m">
                 <property role="Xl_RC" value="print even numbers" />
               </node>
@@ -539,15 +539,15 @@
             </node>
             <node concept="2es0OD" id="hOD2_Bk" role="2OqNvi">
               <node concept="1bVj0M" id="hOD2_Bl" role="23t8la">
-                <node concept="Rh6nW" id="hOD2_Bm" role="1bW2Oz">
+                <node concept="gl6BB" id="5W7E4fV0XdM" role="1bW2Oz">
                   <property role="TrG5h" value="n" />
-                  <node concept="2jxLKc" id="1P4c1XrzTgo" role="1tU5fm" />
+                  <node concept="2jxLKc" id="5W7E4fV0XdN" role="1tU5fm" />
                 </node>
                 <node concept="3clFbS" id="hOD2_Bo" role="1bW5cS">
                   <node concept="3clFbJ" id="hOD2_Bp" role="3cqZAp">
                     <node concept="2d3UOw" id="hOD2_Bq" role="3clFbw">
                       <node concept="37vLTw" id="2BHiRxgm$90" role="3uHU7B">
-                        <ref role="3cqZAo" node="hOD2_Bm" resolve="n" />
+                        <ref role="3cqZAo" node="5W7E4fV0XdM" resolve="n" />
                       </node>
                       <node concept="3cmrfG" id="hOD2_Bs" role="3uHU7w">
                         <property role="3cmrfH" value="10" />
@@ -564,7 +564,7 @@
                           <property role="3cmrfH" value="2" />
                         </node>
                         <node concept="37vLTw" id="2BHiRxgmKHE" role="3uHU7B">
-                          <ref role="3cqZAo" node="hOD2_Bm" resolve="n" />
+                          <ref role="3cqZAo" node="5W7E4fV0XdM" resolve="n" />
                         </node>
                       </node>
                       <node concept="3cmrfG" id="hOD2_BD" role="3uHU7w">
@@ -582,9 +582,9 @@
                         <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                       </node>
                       <node concept="liA8E" id="hOD2_BJ" role="2OqNvi">
-                        <ref role="37wK5l" to="guwi:~PrintStream.println(int):void" resolve="println" />
+                        <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.Object)" resolve="println" />
                         <node concept="37vLTw" id="2BHiRxghftm" role="37wK5m">
-                          <ref role="3cqZAo" node="hOD2_Bm" resolve="n" />
+                          <ref role="3cqZAo" node="5W7E4fV0XdM" resolve="n" />
                         </node>
                       </node>
                     </node>
@@ -668,7 +668,7 @@
               <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
             </node>
             <node concept="liA8E" id="hEWgCH0" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="gMGhd3T" role="37wK5m">
                 <property role="Xl_RC" value="from sequence of 10 numbers," />
               </node>
@@ -682,7 +682,7 @@
               <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
             </node>
             <node concept="liA8E" id="hEWgCIP" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="gMGhd3X" role="37wK5m">
                 <property role="Xl_RC" value="where num is even," />
               </node>
@@ -696,7 +696,7 @@
               <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
             </node>
             <node concept="liA8E" id="hEWgCN9" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="gMGhd41" role="37wK5m">
                 <property role="Xl_RC" value="produce string" />
               </node>
@@ -725,9 +725,9 @@
                 </node>
                 <node concept="3zZkjj" id="hOD2_Et" role="2OqNvi">
                   <node concept="1bVj0M" id="hOD2_Eu" role="23t8la">
-                    <node concept="Rh6nW" id="hOD2_Ev" role="1bW2Oz">
+                    <node concept="gl6BB" id="5W7E4fV0XdO" role="1bW2Oz">
                       <property role="TrG5h" value="n" />
-                      <node concept="2jxLKc" id="1P4c1XrzTaV" role="1tU5fm" />
+                      <node concept="2jxLKc" id="5W7E4fV0XdP" role="1tU5fm" />
                     </node>
                     <node concept="3clFbS" id="hOD2_Ex" role="1bW5cS">
                       <node concept="3cpWs6" id="hOD2_Ey" role="3cqZAp">
@@ -740,7 +740,7 @@
                               <property role="3cmrfH" value="2" />
                             </node>
                             <node concept="37vLTw" id="2BHiRxgl3m6" role="3uHU7B">
-                              <ref role="3cqZAo" node="hOD2_Ev" resolve="n" />
+                              <ref role="3cqZAo" node="5W7E4fV0XdO" resolve="n" />
                             </node>
                           </node>
                         </node>
@@ -751,9 +751,9 @@
               </node>
               <node concept="3$u5V9" id="hOD2_CV" role="2OqNvi">
                 <node concept="1bVj0M" id="hOD2_CW" role="23t8la">
-                  <node concept="Rh6nW" id="hOD2_CX" role="1bW2Oz">
+                  <node concept="gl6BB" id="5W7E4fV0XdQ" role="1bW2Oz">
                     <property role="TrG5h" value="n" />
-                    <node concept="2jxLKc" id="1P4c1XrzThN" role="1tU5fm" />
+                    <node concept="2jxLKc" id="5W7E4fV0XdR" role="1tU5fm" />
                   </node>
                   <node concept="3clFbS" id="hOD2_CZ" role="1bW5cS">
                     <node concept="3clFbF" id="hOD2_D0" role="3cqZAp">
@@ -766,7 +766,7 @@
                     <node concept="3cpWs6" id="hOD2_D6" role="3cqZAp">
                       <node concept="3cpWs3" id="hOD2_D7" role="3cqZAk">
                         <node concept="37vLTw" id="2BHiRxgm9wK" role="3uHU7w">
-                          <ref role="3cqZAo" node="hOD2_CX" resolve="n" />
+                          <ref role="3cqZAo" node="5W7E4fV0XdQ" resolve="n" />
                         </node>
                         <node concept="Xl_RD" id="hOD2_D9" role="3uHU7B">
                           <property role="Xl_RC" value="num:" />
@@ -786,7 +786,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="hEWgCOv" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="3cpWs3" id="gMGgEpf" role="37wK5m">
                 <node concept="37vLTw" id="3GM_nagTAFc" role="3uHU7w">
                   <ref role="3cqZAo" node="gMGgEoE" resolve="count" />
@@ -813,7 +813,7 @@
                   <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
                 </node>
                 <node concept="liA8E" id="hEWgCKb" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+                  <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
                   <node concept="2GrUjf" id="gMLjHxy" role="37wK5m">
                     <ref role="2Gs0qQ" node="gMLjDzw" resolve="s" />
                   </node>
@@ -829,7 +829,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="hEWgCQW" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="3cpWs3" id="gMGgEpv" role="37wK5m">
                 <node concept="37vLTw" id="3GM_nagTx44" role="3uHU7w">
                   <ref role="3cqZAo" node="gMGgEoE" resolve="count" />
@@ -914,7 +914,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="hEWgCIk" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="gMLUMHj" role="37wK5m">
                 <property role="Xl_RC" value="from infinite sequence take first 10 numbers," />
               </node>
@@ -928,7 +928,7 @@
               <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
             </node>
             <node concept="liA8E" id="hEWgCNr" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="gMLUMHn" role="37wK5m">
                 <property role="Xl_RC" value="ignore odd numbers," />
               </node>
@@ -942,7 +942,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="hEWgCMk" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
               <node concept="Xl_RD" id="gMLUMHr" role="37wK5m">
                 <property role="Xl_RC" value="print even numbers" />
               </node>
@@ -995,7 +995,7 @@
                   <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
                 </node>
                 <node concept="liA8E" id="hEWgCNW" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:~PrintStream.println(int):void" resolve="println" />
+                  <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.Object)" resolve="println" />
                   <node concept="2GrUjf" id="gMLVwwi" role="37wK5m">
                     <ref role="2Gs0qQ" node="gMLUYkT" resolve="num" />
                   </node>

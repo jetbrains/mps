@@ -5,12 +5,9 @@ package jetbrains.mps.lang.editor.behavior;
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
-import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,12 +18,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class ConceptFunctionParameter_editorContext__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10e76200a6fL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext");
-  private static final BehaviorRegistry REGISTRY = ConceptRegistry.getInstance().getBehaviorRegistry();
 
-  public static final SMethod<Boolean> useGenericAccessor_id1PvcgmUaIFz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useGenericAccessor").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1PvcgmUaIFz").registry(REGISTRY).build();
+  public static final SMethod<Boolean> useGenericAccessor_id1PvcgmUaIFz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useGenericAccessor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2116464250555394787L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(useGenericAccessor_id1PvcgmUaIFz);
 
@@ -35,12 +32,11 @@ public final class ConceptFunctionParameter_editorContext__BehaviorDescriptor ex
 
   /*package*/ static boolean useGenericAccessor_id1PvcgmUaIFz(@NotNull SNode __thisNode__) {
     SNode conceptFunction = ConceptFunctionParameter__BehaviorDescriptor.findConceptFunction_idhEwJh7Q.invoke(__thisNode__);
-    // TODO: remove conceptFunction != null check. It is here only for the compatibility with mbeddr generator 
-    return conceptFunction != null && !((boolean) IEditorContextAccessQualifier__BehaviorDescriptor.useDefaultAccessor_id1PvcgmUaKhn.invoke(SNodeOperations.as(conceptFunction, MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1d5f3105ba2b044bL, "jetbrains.mps.lang.editor.structure.IEditorContextAccessQualifier"))));
+    // TODO: remove conceptFunction != null check. It is here only for the compatibility with mbeddr generator
+    return conceptFunction != null && !((boolean) IEditorContextAccessQualifier__BehaviorDescriptor.useDefaultAccessor_id1PvcgmUaKhn.invoke(SNodeOperations.as(conceptFunction, CONCEPTS.IEditorContextAccessQualifier$Et)));
   }
 
   /*package*/ ConceptFunctionParameter_editorContext__BehaviorDescriptor() {
-    super(REGISTRY);
   }
 
   @Override
@@ -84,5 +80,9 @@ public final class ConceptFunctionParameter_editorContext__BehaviorDescriptor ex
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IEditorContextAccessQualifier$Et = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1d5f3105ba2b044bL, "jetbrains.mps.lang.editor.structure.IEditorContextAccessQualifier");
   }
 }

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="6epaz4obi5pkaf4ki8nt8rnffbxtp7b" />
+<product version="3" modelHash="1ewxwfzi9n7qeaqdv7hrsl5rm78d8va">
+  <files names="Cls.java:ImageExport_Test.java:ImageLoader.java" />
+</product>
 

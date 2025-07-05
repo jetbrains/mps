@@ -13,4 +13,12 @@ public class BaseKeyPack_KeyPack {
       super("LINE_COMMENT", priority);
     }
   }
+  public static class KEYWORD_StyleKey extends AbstractStyleKey {
+    public KEYWORD_StyleKey() {
+      super("KEYWORD");
+    }
+    public KEYWORD_StyleKey(int priority) {
+      super("KEYWORD", priority);
+    }
+  }
 }

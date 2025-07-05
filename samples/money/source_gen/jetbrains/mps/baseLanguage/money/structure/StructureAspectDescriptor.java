@@ -4,14 +4,19 @@ package jetbrains.mps.baseLanguage.money.structure;
 
 import jetbrains.mps.smodel.runtime.BaseStructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
+import jetbrains.mps.smodel.runtime.ConstrainedStringDatatypeDescriptor;
+import jetbrains.mps.smodel.runtime.ConstrainedStringDatatypeDescriptorImpl;
 import java.util.Collection;
 import java.util.Arrays;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
+import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.smodel.runtime.StaticScope;
+import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptMoneyCreator = createDescriptorForMoneyCreator();
@@ -21,10 +26,18 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptMoneyLiteral = createDescriptorForMoneyLiteral();
   /*package*/ final ConceptDescriptor myConceptMoneyMethodCall = createDescriptorForMoneyMethodCall();
   /*package*/ final ConceptDescriptor myConceptMoneyType = createDescriptorForMoneyType();
-  private final LanguageConceptSwitch myConceptIndex;
+  /*package*/ final ConstrainedStringDatatypeDescriptor myCSDatatypeBigDecimal = new ConstrainedStringDatatypeDescriptorImpl(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144aeececfL, "BigDecimal", "r:00000000-0000-4000-0000-011c895903f7(jetbrains.mps.baseLanguage.money.structure)/1186668138191", "[0-9]+(.[0-9]+)?");
+  private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
-    myConceptIndex = new LanguageConceptSwitch();
+    myIndexSwitch = new LanguageConceptSwitch();
+  }
+
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }
 
   @Override
@@ -35,7 +48,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
-    switch (myConceptIndex.index(id)) {
+    switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.MoneyCreator:
         return myConceptMoneyCreator;
       case LanguageConceptSwitch.MoneyGetAmountMethodCall:
@@ -55,15 +68,22 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     }
   }
 
+  @Override
+  public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
+    return Arrays.asList(myCSDatatypeBigDecimal);
+  }
+
   /*package*/ int internalIndex(SAbstractConcept c) {
-    return myConceptIndex.index(c);
+    return myIndexSwitch.index(c);
   }
 
   private static ConceptDescriptor createDescriptorForMoneyCreator() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.money", "MoneyCreator", 0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.AbstractCreator", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab844af9bL);
+    // extends: jetbrains.mps.baseLanguage.structure.AbstractCreator
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab844af9bL);
     b.origin("r:00000000-0000-4000-0000-011c895903f7(jetbrains.mps.baseLanguage.money.structure)/1187340310888");
+    b.version(3);
     b.aggregate("amount", 0x11473383db1L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1187344039345").done();
     b.aggregate("currency", 0x11473390f4aL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1187344093002").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
@@ -73,8 +93,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForMoneyGetAmountMethodCall() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.money", "MoneyGetAmountMethodCall", 0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b5d60L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.money.structure.MoneyMethodCall", 0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L);
+    // extends: jetbrains.mps.baseLanguage.money.structure.MoneyMethodCall
+    b.super_(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L);
     b.origin("r:00000000-0000-4000-0000-011c895903f7(jetbrains.mps.baseLanguage.money.structure)/1187357875552");
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias(". amount");
     return b.create();
@@ -82,8 +104,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForMoneyGetCurrencyMethodCall() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.money", "MoneyGetCurrencyMethodCall", 0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740c6f9bL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.money.structure.MoneyMethodCall", 0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L);
+    // extends: jetbrains.mps.baseLanguage.money.structure.MoneyMethodCall
+    b.super_(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L);
     b.origin("r:00000000-0000-4000-0000-011c895903f7(jetbrains.mps.baseLanguage.money.structure)/1187357945755");
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias(". currency");
     return b.create();
@@ -91,8 +115,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForMoneyIsZeroMethodCall() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.money", "MoneyIsZeroMethodCall", 0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11483863450L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.money.structure.MoneyMethodCall", 0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L);
+    // extends: jetbrains.mps.baseLanguage.money.structure.MoneyMethodCall
+    b.super_(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L);
     b.origin("r:00000000-0000-4000-0000-011c895903f7(jetbrains.mps.baseLanguage.money.structure)/1187617584208");
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias(". isZero");
     return b.create();
@@ -100,18 +126,22 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForMoneyLiteral() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.money", "MoneyLiteral", 0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144ae7606aL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Expression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    // extends: jetbrains.mps.baseLanguage.structure.Expression
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
     b.origin("r:00000000-0000-4000-0000-011c895903f7(jetbrains.mps.baseLanguage.money.structure)/1186667651178");
-    b.prop("currency", 0x1144aebdf40L, "1186667945792");
-    b.prop("amount", 0x1144aec21fdL, "1186667962877");
+    b.version(3);
+    b.property("currency", 0x1144aebdf40L).type(PrimitiveTypeId.STRING).origin("1186667945792").done();
+    b.property("amount", 0x1144aec21fdL).type(MetaIdFactory.dataTypeId(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144aeececfL)).origin("1186667962877").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMoneyMethodCall() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.money", "MoneyMethodCall", 0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L);
     b.class_(false, true, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Expression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    // extends: jetbrains.mps.baseLanguage.structure.Expression
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
     b.origin("r:00000000-0000-4000-0000-011c895903f7(jetbrains.mps.baseLanguage.money.structure)/1187357857395");
+    b.version(3);
     b.aggregate("instance", 0x114740fc5e3L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1187358164451").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
@@ -119,8 +149,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForMoneyType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.money", "MoneyType", 0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144b05194dL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Type", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
+    // extends: jetbrains.mps.baseLanguage.structure.Type
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
     b.origin("r:00000000-0000-4000-0000-011c895903f7(jetbrains.mps.baseLanguage.money.structure)/1186669599053");
+    b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.NONE);
     b.alias("Money");
     return b.create();

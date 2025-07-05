@@ -18,12 +18,16 @@ public class DataFlowAspectDescriptorImpl extends DataFlowAspectDescriptorBase {
   @Override
   public Collection<IDataFlowBuilder> getDataFlowBuilders(SAbstractConcept concept) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
-    switch (index_vhxjlb_a0b.index(cncpt)) {
+    switch (conceptIndex.index(cncpt)) {
       case 0:
         return Collections.<IDataFlowBuilder>singletonList(new DataDependencyReference_DataFlow());
+      case 1:
+        return Collections.<IDataFlowBuilder>singletonList(new GetDataExpression_DataFlow());
+      case 2:
+        return Collections.<IDataFlowBuilder>singletonList(new PutDataExpression_DataFlow());
       default:
     }
     return Collections.<IDataFlowBuilder>emptyList();
   }
-  private static final ConceptSwitchIndex index_vhxjlb_a0b = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x63476c2ad9bcd736L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x63476c2ad9bcd736L), MetaIdFactory.conceptId(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2ba2c81L), MetaIdFactory.conceptId(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c28dce2dL)).seal();
 }

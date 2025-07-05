@@ -17,7 +17,9 @@ package jetbrains.mps.nodeEditor.commands;
 
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.commands.CommandContext;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +79,12 @@ public class CommandContextImpl implements CommandContext {
   @Override
   public SNode getContextNode() {
     return myContextNode;
+  }
+
+  @NotNull
+  @Override
+  public SRepository getRepository() {
+    return myEditorComponent.getEditorContext().getRepository();
   }
 
   public void updateContextNode() {

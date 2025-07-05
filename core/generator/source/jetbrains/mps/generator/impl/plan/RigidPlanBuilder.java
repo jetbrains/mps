@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,13 +25,13 @@ import jetbrains.mps.generator.plan.PlanIdentity;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.generator.runtime.TemplateModule;
-import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.language.GeneratorRuntime;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -53,6 +53,22 @@ public class RigidPlanBuilder implements GenerationPlanBuilder {
   }
 
   @Override
+  public TransformStepBuilder transform(boolean ignored) {
+    return new TransformStepBuilder() {
+      @Override
+      public TransformStepBuilder include(@NotNull SLanguage language, BuilderOption option) {
+        transformLanguage(language); // uses of RigidPlanBuilder don't utilize option functionality
+        return this;
+      }
+
+      @Override
+      public void complete() {
+        //  no-op
+      }
+    };
+  }
+
+  @Override
   public void transformLanguage(@NotNull SLanguage ... languages) {
     ArrayList<TemplateMappingConfiguration> mc = new ArrayList<>();
     for (SLanguage language : languages) {
@@ -71,23 +87,12 @@ public class RigidPlanBuilder implements GenerationPlanBuilder {
   }
 
   @Override
-  public void applyGenerator(@NotNull SModule ... generators) {
-    ArrayList<TemplateMappingConfiguration> mc = new ArrayList<>();
-    for (SModule generator : generators) {
-      if (!(generator instanceof Generator)) {
-        continue; // FIXME throw an RT exception
-      }
-      GeneratorRuntime gr = myLanguageRegistry.getGenerator((Generator) generator);
-      if (gr == null) {
-        continue; // FIXME throw an RT exception
-      }
-      fillMC(gr, mc);
-    }
-    mySteps.add(new Transform(mc));
+  public void applyGeneratorWithExtended(@NotNull SModule ... generator) {
+    throw new UnsupportedOperationException("This implementation of plan builder doesn't support requested functionality");
   }
 
   @Override
-  public void applyGeneratorWithExtended(@NotNull SModule ... generator) {
+  public void applyGenerators(@NotNull Collection<SModuleReference> generators, @NotNull BuilderOption... options) {
     throw new UnsupportedOperationException("This implementation of plan builder doesn't support requested functionality");
   }
 
@@ -115,6 +120,11 @@ public class RigidPlanBuilder implements GenerationPlanBuilder {
   @Override
   public RigidGenerationPlan wrapUp(@NotNull PlanIdentity planIdentity) {
     return new RigidGenerationPlan(planIdentity, mySteps);
+  }
+
+  @Override
+  public GenerationPlanBuilder fork() {
+    throw new UnsupportedOperationException();
   }
 
   private static void fillMC(GeneratorRuntime gr, List<TemplateMappingConfiguration> mc) {

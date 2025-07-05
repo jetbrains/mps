@@ -25,8 +25,8 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ConnectorDecorator
 import jetbrains.jetpad.model.property.ReadableProperty;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 /*package*/ class Specializes_diagram_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -44,14 +44,14 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
   }
 
   /*package*/ EditorCell createCell() {
-    return createDiagramConnector_x5bto0_a();
+    return createDiagramConnector_0();
   }
 
-  private EditorCell createDiagramConnector_x5bto0_a() {
-    final ConnectorCell editorCell = new Specializes_diagram_EditorBuilder_a.ConnectorCellImpl_x5bto0_a(getEditorContext(), myNode);
+  private EditorCell createDiagramConnector_0() {
+    final ConnectorCell editorCell = new ConnectorCellImpl_x5bto0_a(getEditorContext(), myNode);
     editorCell.setCellId("DiagramConnector_x5bto0_a");
     editorCell.setBig(true);
-    editorCell.setCellContext(getCellFactory().getCellContext());
+    setCellContext(editorCell);
     DeleteRelationship.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;
   }
@@ -171,20 +171,21 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 
     public void synchronize() {
-      myInputPort.set(MultiTuple.<SNode>from(SLinkOperations.getTarget(getSNode(), MetaAdapterFactory.getReferenceLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14bad3L, 0x517b79625769ba9eL, "source"))));
-      myOutputPort.set(MultiTuple.<SNode>from(SLinkOperations.getTarget(getSNode(), MetaAdapterFactory.getReferenceLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14bad3L, 0x1198689ff14c5dfL, "target"))));
+      myInputPort.set(MultiTuple.<SNode>from(SLinkOperations.getTarget(getSNode(), LINKS.source$thnF)));
+      myOutputPort.set(MultiTuple.<SNode>from(SLinkOperations.getTarget(getSNode(), LINKS.target$IRrP)));
     }
     private PolyLineConnection createConnection() {
       PolyLineConnection connection = new PolyLineConnection();
-      configureView(connection.view(), new _FunctionTypes._return_P0_E0<Boolean>() {
-        public Boolean invoke() {
-          return true;
-        }
-      });
+      configureView(connection.view(), () -> true);
 
       return connection;
     }
 
 
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink source$thnF = MetaAdapterFactory.getReferenceLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14bad3L, 0x517b79625769ba9eL, "source");
+    /*package*/ static final SReferenceLink target$IRrP = MetaAdapterFactory.getReferenceLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14bad3L, 0x1198689ff14c5dfL, "target");
   }
 }

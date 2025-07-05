@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.api.SMethodId;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -31,12 +30,16 @@ import java.util.Collections;
 import java.util.List;
 
 public final class IllegalBHDescriptor implements BHDescriptor {
-  private static final Logger LOG = LogManager.getLogger(IllegalBHDescriptor.class);
 
   private final SAbstractConcept myConcept;
 
   public IllegalBHDescriptor(@NotNull SAbstractConcept concept) {
     myConcept = concept;
+  }
+
+  @Override
+  public void initNode(@NotNull SNode node) {
+    reportWarn();
   }
 
   @NotNull
@@ -110,7 +113,7 @@ public final class IllegalBHDescriptor implements BHDescriptor {
   }
 
   private void reportWarn() {
-    LOG.warn("IllegalBehaviorDescriptor was created for the concept " + myConcept + " which operates null-safe in this context.");
+    Logger.getLogger(IllegalBHDescriptor.class).warning("IllegalBehaviorDescriptor was created for the concept " + myConcept + " which operates null-safe in this context.");
   }
 
   private void throwException() {

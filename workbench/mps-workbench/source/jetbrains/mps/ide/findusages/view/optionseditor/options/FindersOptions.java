@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.ide.findusages.view.optionseditor.options;
 
-import jetbrains.mps.ide.findusages.CantLoadSomethingException;
+import gnu.trove.THashSet;
 import jetbrains.mps.ide.findusages.FindersManager;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
@@ -36,14 +36,14 @@ public final class FindersOptions extends BaseOptions {
   private static final String CLASS_NAME = "class_name";
 
   @NotNull
-  private List<String> myFindersClassNames = new ArrayList<String>();
+  private List<String> myFindersClassNames = new ArrayList<>();
 
-  public FindersOptions(Element element, Project project) throws CantLoadSomethingException {
+  public FindersOptions(Element element, Project project) {
     read(element, project);
   }
 
   public FindersOptions(String... findersClassNames) {
-    myFindersClassNames = new ArrayList(Arrays.asList(findersClassNames));
+    myFindersClassNames.addAll(Arrays.asList(findersClassNames));
   }
 
   @Override
@@ -64,7 +64,11 @@ public final class FindersOptions extends BaseOptions {
   public FindersOptions cloneWithDefaultForNode(@NotNull SNode node) {
     FindersOptions rv = clone();
     Set<IInterfacedFinder> availableFinders = FindersManager.getInstance().getAvailableFinders(node);
-    availableFinders.stream().filter(f -> f.isUsedByDefault(node)).forEach(f -> rv.myFindersClassNames.add(f.getClass().getName()));
+    final Set<String> findersByDefault = new THashSet<>();
+    availableFinders.stream().filter(f -> f.isUsedByDefault(node)).map(f -> f.getClass().getName()).forEach(findersByDefault::add);
+    // remove duplicates, if any
+    findersByDefault.removeAll(rv.myFindersClassNames);
+    rv.myFindersClassNames.addAll(findersByDefault);
     return rv;
   }
 
@@ -78,7 +82,7 @@ public final class FindersOptions extends BaseOptions {
   }
 
   public IResultProvider getResult() {
-    return FindUtils.makeProvider(myFindersClassNames.toArray(new String[myFindersClassNames.size()]));
+    return FindUtils.makeProvider(myFindersClassNames.toArray(new String[0]));
   }
 
   @Override
@@ -95,7 +99,7 @@ public final class FindersOptions extends BaseOptions {
   @Override
   public void read(Element element, Project project) {
     Element findersXML = element.getChild(FINDERS);
-    for (Element finderXML : (List<Element>) findersXML.getChildren(FINDER)) {
+    for (Element finderXML : findersXML.getChildren(FINDER)) {
       String finderName = finderXML.getAttribute(CLASS_NAME).getValue();
       myFindersClassNames.add(finderName);
     }

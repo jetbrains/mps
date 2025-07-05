@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,21 @@
 package jetbrains.mps.smodel.runtime;
 
 import jetbrains.mps.smodel.adapter.ids.SPropertyId;
+import jetbrains.mps.smodel.adapter.ids.STypeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public interface PropertyDescriptor {
   SPropertyId getId();
 
+  STypeId getDataTypeId();
+
   String getName();
 
   SNodeReference getSourceNode();
+
+  /**
+   * Indicates property that doesn't need to get reflected in persistence
+   * @since 2023.1
+   */
+  boolean isTransient();
 }

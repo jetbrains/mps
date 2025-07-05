@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.generator.impl.query;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 /**
@@ -36,7 +35,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
  *  3. {@link jetbrains.mps.generator.impl.cache.QueryProviderCache} doesn't cache reflective providers at the moment. Reflective providers are
  *     pure stateless factories, so access to a query object (here, get, not check/evaluate) need not be synchronized/guarded.
  *  4. Once/if caching of ReflectiveQP is enabled, we shall address concurrency/parallel initialization issues. As long as each thread gets its
- *     own query instance, and this instances are ntot shared between threads, lazy init in evaluation couldn't break (although might duplicate some stuff
+ *     own query instance, and this instances are not shared between threads, lazy init in evaluation couldn't break (although might duplicate some stuff
  *     in memory).
  *  5. Perhaps, it shall not be {@code QueryProviderCache} to cache queries, but rather shared {@code TemplateNode}. Still, lazy init in evaluate() may
  *     yield concurrency errors. TemplateNode comes from TemplateProcessor, which seems to be 1 per step, so queries are reused between threads.
@@ -46,104 +45,55 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
  */
 public interface GeneratorQueryProvider {
   @NotNull
-  @Deprecated
-  CreateRootCondition getCreateRootRuleCondition(@NotNull SNode rule);
-  @NotNull
   CreateRootCondition getCreateRootRuleCondition(@NotNull QueryKey identity);
 
-  @NotNull
-  @Deprecated
-  MapRootRuleCondition getMapRootRuleCondition(@NotNull SNode rule);
   @NotNull
   MapRootRuleCondition getMapRootRuleCondition(@NotNull QueryKey identity);
 
   @NotNull
-  @Deprecated
-  ReductionRuleCondition getReductionRuleCondition(@NotNull SNode rule);
-  @NotNull
   ReductionRuleCondition getReductionRuleCondition(@NotNull QueryKey identity);
 
-  @NotNull
-  @Deprecated
-  PatternRuleQuery getPatternRuleCondition(@NotNull SNode rule);
   @NotNull
   PatternRuleQuery getPatternRuleCondition(@NotNull QueryKey identity);
 
   @NotNull
-  @Deprecated
-  DropRuleCondition getDropRuleCondition(@NotNull SNode rule);
-  @NotNull
   DropRuleCondition getDropRuleCondition(@NotNull QueryKey identity);
 
-  @NotNull
-  @Deprecated
-  DropAttributeRuleCondition getDropAttributeRuleCondition(@NotNull SNode rule);
   @NotNull
   DropAttributeRuleCondition getDropAttributeRuleCondition(@NotNull QueryKey identity);
 
   @NotNull
-  @Deprecated
-  WeaveRuleCondition getWeaveRuleCondition(@NotNull SNode rule);
-  @NotNull
   WeaveRuleCondition getWeaveRuleCondition(@NotNull QueryKey identity);
 
   /**
-   * @param rule weaving rule
+   * @param identity identity of a weaving rule
    */
-  @NotNull
-  @Deprecated
-  WeaveRuleQuery getWeaveRuleQuery(@NotNull SNode rule);
   @NotNull
   WeaveRuleQuery getWeaveRuleQuery(@NotNull QueryKey identity);
 
   /**
-   * @param ruleOrMacro weaving rule or WeaveMacro
+   * @param identity weaving rule or WeaveMacro
    */
-  @NotNull
-  @Deprecated
-  WeaveAnchorQuery getWeaveAnchorQuery(@NotNull SNode ruleOrMacro);
   @NotNull
   WeaveAnchorQuery getWeaveAnchorQuery(@NotNull QueryKey identity);
 
   @NotNull
-  @Deprecated
-  ScriptCodeBlock getScriptCodeBlock(@NotNull SNode script);
-  @NotNull
   ScriptCodeBlock getScriptCodeBlock(@NotNull QueryKey identity);
 
-  @NotNull
-  @Deprecated
-  MapConfigurationCondition getMapConfigurationCondition(@NotNull SNode mapCfg);
   @NotNull
   MapConfigurationCondition getMapConfigurationCondition(@NotNull QueryKey identity);
 
   @NotNull
-  @Deprecated
-  SourceNodeQuery getSourceNodeQuery(@NotNull SNode query);
-  @NotNull
   SourceNodeQuery getSourceNodeQuery(@NotNull QueryKey identity);
 
-  @NotNull
-  @Deprecated
-  SourceNodesQuery getSourceNodesQuery(@NotNull SNode query);
   @NotNull
   SourceNodesQuery getSourceNodesQuery(@NotNull QueryKey identity);
 
   @NotNull
-  @Deprecated
-  PropertyValueQuery getPropertyValueQuery(@NotNull SNode propertyMacro);
-  @NotNull
   PropertyValueQuery getPropertyValueQuery(@NotNull QueryKey identity);
 
   @NotNull
-  @Deprecated
-  IfMacroCondition getIfMacroCondition(@NotNull SNode ifMacro);
-  @NotNull
   IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity);
-
-  @NotNull
-  @Deprecated
-  InlineSwitchCaseCondition getInlineSwitchCaseCondition(@NotNull SNode caseNode);
 
   @NotNull
   InlineSwitchCaseCondition getInlineSwitchCaseCondition(@NotNull QueryKey identity);
@@ -165,6 +115,9 @@ public interface GeneratorQueryProvider {
 
   @NotNull
   MapPostProcessor getMapPostProcessor(@NotNull QueryKey identity);
+
+  @NotNull
+  LabelInputQuery getLabelInputQuery(@NotNull QueryKey identity);
 
   interface Source {
     @NotNull

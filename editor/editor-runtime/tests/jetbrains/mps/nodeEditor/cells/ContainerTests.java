@@ -20,6 +20,7 @@ import jetbrains.mps.nodeEditor.cells.collections.AbstractContainerParameterized
 import jetbrains.mps.nodeEditor.cells.collections.CellContainer;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -34,6 +35,7 @@ import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.openapi.editor.style.Style;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.util.Condition;
 import org.junit.AfterClass;
@@ -234,12 +236,19 @@ public class ContainerTests<T> extends AbstractContainerParameterizedTest<T> {
       return null;
     }
 
+  @Deprecated(since = "2018.2", forRemoval = true)
     @Override
-    public void setRole(String role) {
+    public String getRole() {
+      return null;
     }
 
     @Override
-    public String getRole() {
+    public void setSRole(SConceptFeature role) {
+
+    }
+
+    @Override
+    public SConceptFeature getSRole() {
       return null;
     }
 
@@ -396,6 +405,11 @@ public class ContainerTests<T> extends AbstractContainerParameterizedTest<T> {
 
     @Override
     public TextBuilder renderText() {
+      return null;
+    }
+
+    @Override
+    public HtmlTextBuilder renderHtml() {
       return null;
     }
 

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-2fgr8sw13ejliuul48q6uqs0f81jy8l" />
+<product version="3" modelHash="apztk1sbmr4rss9iowpk40k10knmwu9">
+  <files names="BaseIntentionDeclaration__BehaviorDescriptor.java:BehaviorAspectDescriptor.java:ChildFilterFunction__BehaviorDescriptor.java:DescriptionBlock__BehaviorDescriptor.java:ExecuteBlock__BehaviorDescriptor.java:IntentionDeclaration__BehaviorDescriptor.java:Intention__BehaviorDescriptor.java:IsApplicableBlock__BehaviorDescriptor.java:Parameter__BehaviorDescriptor.java:ParameterizedIntentionDeclaration__BehaviorDescriptor.java:QueryBlock__BehaviorDescriptor.java" />
+</product>
 

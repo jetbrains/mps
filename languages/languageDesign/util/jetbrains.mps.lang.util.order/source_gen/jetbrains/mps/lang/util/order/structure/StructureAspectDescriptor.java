@@ -19,10 +19,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptOrderParticipant = createDescriptorForOrderParticipant();
   /*package*/ final ConceptDescriptor myConceptOrderParticipantReference = createDescriptorForOrderParticipantReference();
   /*package*/ final ConceptDescriptor myConceptOrderReference = createDescriptorForOrderReference();
-  private final LanguageConceptSwitch myConceptIndex;
+  private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
-    myConceptIndex = new LanguageConceptSwitch();
+    myIndexSwitch = new LanguageConceptSwitch();
+  }
+
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
   }
 
   @Override
@@ -33,7 +39,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
-    switch (myConceptIndex.index(id)) {
+    switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.Order:
         return myConceptOrder;
       case LanguageConceptSwitch.OrderDeclaration:
@@ -49,14 +55,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     }
   }
 
+
   /*package*/ int internalIndex(SAbstractConcept c) {
-    return myConceptIndex.index(c);
+    return myIndexSwitch.index(c);
   }
 
   private static ConceptDescriptor createDescriptorForOrder() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.util.order", "Order", 0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd78145L);
     b.interface_();
     b.origin("r:e2f5b4d9-8319-4ef0-b685-6c50fa28ea4b(jetbrains.mps.lang.util.order.structure)/2450897840534683973");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForOrderDeclaration() {
@@ -65,6 +73,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd78145L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:e2f5b4d9-8319-4ef0-b685-6c50fa28ea4b(jetbrains.mps.lang.util.order.structure)/2450897840534683975");
+    b.version(3);
     b.aggregate("seq", 0x22035699bdd78149L).target(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd7814bL).optional(false).ordered(true).multiple(true).origin("2450897840534683977").done();
     b.alias("Order");
     return b.create();
@@ -73,12 +82,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.util.order", "OrderParticipant", 0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x2085244dcb20c1dcL);
     b.interface_();
     b.origin("r:e2f5b4d9-8319-4ef0-b685-6c50fa28ea4b(jetbrains.mps.lang.util.order.structure)/2343319097655214556");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForOrderParticipantReference() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.util.order", "OrderParticipantReference", 0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd7814bL);
     b.class_(false, true, false);
     b.origin("r:e2f5b4d9-8319-4ef0-b685-6c50fa28ea4b(jetbrains.mps.lang.util.order.structure)/2450897840534683979");
+    b.version(3);
     b.associate("target", 0x22035699bdd7814cL).target(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x2085244dcb20c1dcL).optional(false).origin("2450897840534683980").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
@@ -88,6 +99,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd78145L);
     b.origin("r:e2f5b4d9-8319-4ef0-b685-6c50fa28ea4b(jetbrains.mps.lang.util.order.structure)/2450897840534688273");
+    b.version(3);
     b.associate("order", 0x22035699bdd79212L).target(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd78147L).optional(false).origin("2450897840534688274").done();
     return b.create();
   }

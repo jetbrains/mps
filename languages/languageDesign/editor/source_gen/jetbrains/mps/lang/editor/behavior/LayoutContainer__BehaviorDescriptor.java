@@ -5,13 +5,10 @@ package jetbrains.mps.lang.editor.behavior;
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
-import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -22,9 +19,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
 public final class LayoutContainer__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x49d55275de690fdL, "jetbrains.mps.lang.editor.structure.LayoutContainer");
-  private static final BehaviorRegistry REGISTRY = ConceptRegistry.getInstance().getBehaviorRegistry();
 
-  public static final SMethod<SNode> getLayout_iditlittTD4U = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLayout").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("itlittTD4U").registry(REGISTRY).build();
+  public static final SMethod<SNode> getLayout_iditlittTD4U = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLayout").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(332515575062761786L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLayout_iditlittTD4U);
 
@@ -33,7 +29,6 @@ public final class LayoutContainer__BehaviorDescriptor extends BaseBHDescriptor 
 
 
   /*package*/ LayoutContainer__BehaviorDescriptor() {
-    super(REGISTRY);
   }
 
   @Override

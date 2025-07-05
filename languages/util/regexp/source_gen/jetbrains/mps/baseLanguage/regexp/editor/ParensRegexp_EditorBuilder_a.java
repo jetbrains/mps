@@ -19,10 +19,12 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
+import jetbrains.mps.nodeEditor.cellMenu.CellContext;
+import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.LinkedList;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -32,9 +34,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
+import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.baseLanguage.regexp.editor.RegexpStylesheet_StyleSheet.RightRegexpBraceStyleClass;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class ParensRegexp_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -52,62 +57,66 @@ import jetbrains.mps.baseLanguage.regexp.editor.RegexpStylesheet_StyleSheet.Righ
   }
 
   /*package*/ EditorCell createCell() {
-    return createCollection_igyl5p_a();
+    return createCollection_0();
   }
 
-  private EditorCell createCollection_igyl5p_a() {
+  private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
     editorCell.setCellId("Collection_igyl5p_a");
     editorCell.setBig(true);
-    editorCell.setCellContext(getCellFactory().getCellContext());
+    setCellContext(editorCell);
     RegexpSequenceByEnter.setCellActions(editorCell, myNode, getEditorContext());
-    editorCell.addEditorCell(createConstant_igyl5p_a0());
-    editorCell.addEditorCell(createRefNode_igyl5p_b0());
-    editorCell.addEditorCell(createConstant_igyl5p_c0());
+    editorCell.addEditorCell(createConstant_0());
+    editorCell.addEditorCell(createRefNode_0());
+    editorCell.addEditorCell(createConstant_1());
     return editorCell;
   }
-  private EditorCell createConstant_igyl5p_a0() {
+  private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(");
     editorCell.setCellId("Constant_igyl5p_a0");
     Style style = new StyleImpl();
-    new LeftRegexpBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new LeftRegexpBraceStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     ParensRegexp_Actions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ParensRegexp_EditorBuilder_a.ReplaceWith_ParensRegexp_cellMenu_igyl5p_a0a0(), new ParensRegexp_EditorBuilder_a.ParensRegexp_customReplace_cellMenu_igyl5p_b0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_ParensRegexp_cellMenu_igyl5p_a0a0(), new ParensRegexp_customReplace_cellMenu_igyl5p_b0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
   public static class ReplaceWith_ParensRegexp_cellMenu_igyl5p_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_ParensRegexp_cellMenu_igyl5p_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, "jetbrains.mps.baseLanguage.regexp.structure.ParensRegexp");
+      return CONCEPTS.ParensRegexp$KC;
+    }
+    @Override
+    protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
+      return new EditorMenuDescriptorBase("replace node (custom node concept: " + "ParensRegexp" + ")", new SNodePointer("r:00000000-0000-4000-0000-011c89590516(jetbrains.mps.baseLanguage.regexp.editor)", "8786899561264364946"));
     }
   }
   public static class ParensRegexp_customReplace_cellMenu_igyl5p_b0a0 extends AbstractCellMenuPart_ReplaceNode_Group {
     public ParensRegexp_customReplace_cellMenu_igyl5p_b0a0() {
     }
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       List<SAbstractConcept> res = ListSequence.fromList(new LinkedList<SAbstractConcept>());
-      ListSequence.fromList(res).addElement(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de1f935L, "jetbrains.mps.baseLanguage.regexp.structure.NegativeLookAheadRegexp"));
-      ListSequence.fromList(res).addElement(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de6e3f6L, "jetbrains.mps.baseLanguage.regexp.structure.NegativeLookBehindRegexp"));
-      ListSequence.fromList(res).addElement(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118ddfb973L, "jetbrains.mps.baseLanguage.regexp.structure.PositiveLookAheadRegexp"));
-      ListSequence.fromList(res).addElement(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de6742fL, "jetbrains.mps.baseLanguage.regexp.structure.PositiveLookBehindRegexp"));
-      ListSequence.fromList(res).addElement(MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, "jetbrains.mps.baseLanguage.regexp.structure.MatchParensRegexp"));
+      ListSequence.fromList(res).addElement(CONCEPTS.NegativeLookAheadRegexp$PS);
+      ListSequence.fromList(res).addElement(CONCEPTS.NegativeLookBehindRegexp$f6);
+      ListSequence.fromList(res).addElement(CONCEPTS.PositiveLookAheadRegexp$DM);
+      ListSequence.fromList(res).addElement(CONCEPTS.PositiveLookBehindRegexp$zP);
+      ListSequence.fromList(res).addElement(CONCEPTS.MatchParensRegexp$Ea);
       return res;
     }
-    public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return createReplacementNode_impl((SAbstractConcept) parameterObject, node, model, operationContext, editorContext);
+    protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      final SAbstractConcept parameterObject = (SAbstractConcept) _parameterObject;
+      return SNodeFactoryOperations.createNewNode(parameterObject, node);
     }
-    public SNode createReplacementNode_impl(SAbstractConcept parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return SNodeFactoryOperations.createNewNode(SNodeFactoryOperations.asInstanceConcept(parameterObject), node);
+    @Override
+    protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
+      return new EditorMenuDescriptorBase("replace node (group of custom actions) with parameter: " + ((parameterObject == null ? "null" : parameterObject.toString())), new SNodePointer("r:00000000-0000-4000-0000-011c89590516(jetbrains.mps.baseLanguage.regexp.editor)", "8786899561264147012"));
     }
-    public boolean isReferentPresentation() {
-      return false;
-    }
+
   }
-  private EditorCell createRefNode_igyl5p_b0() {
-    SingleRoleCellProvider provider = new ParensRegexp_EditorBuilder_a.exprSingleRoleHandler_igyl5p_b0(myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, 0x1117521177bL, "expr"), getEditorContext());
+  private EditorCell createRefNode_0() {
+    SingleRoleCellProvider provider = new exprSingleRoleHandler_igyl5p_b0(myNode, LINKS.expr$EXG0, getEditorContext());
     return provider.createCell();
   }
   private static class exprSingleRoleHandler_igyl5p_b0 extends SingleRoleCellProvider {
@@ -127,30 +136,30 @@ import jetbrains.mps.baseLanguage.regexp.editor.RegexpStylesheet_StyleSheet.Righ
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, 0x1117521177bL, "expr"), child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, 0x1117521177bL, "expr"), child));
-      installCellInfo(child, editorCell);
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.expr$EXG0, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.expr$EXG0, child));
+      installCellInfo(child, editorCell, false);
       return editorCell;
     }
 
 
 
-    private void installCellInfo(SNode child, EditorCell editorCell) {
+    private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell, myNode, MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, 0x1117521177bL, "expr"), child));
+        editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
-      if (editorCell.getRole() == null) {
-        editorCell.setRole("expr");
+      if (editorCell.getSRole() == null) {
+        editorCell.setSRole(LINKS.expr$EXG0);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, 0x1117521177bL, "expr")));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.expr$EXG0));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_expr");
-        installCellInfo(null, editorCell);
+        installCellInfo(null, editorCell, true);
         setCellContext(editorCell);
         return editorCell;
       } finally {
@@ -161,14 +170,27 @@ import jetbrains.mps.baseLanguage.regexp.editor.RegexpStylesheet_StyleSheet.Righ
       return "<no expr>";
     }
   }
-  private EditorCell createConstant_igyl5p_c0() {
+  private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
     editorCell.setCellId("Constant_igyl5p_c0");
     Style style = new StyleImpl();
-    new RightRegexpBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new RightRegexpBraceStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     ParensRegexp_Actions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept ParensRegexp$KC = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, "jetbrains.mps.baseLanguage.regexp.structure.ParensRegexp");
+    /*package*/ static final SConcept NegativeLookAheadRegexp$PS = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de1f935L, "jetbrains.mps.baseLanguage.regexp.structure.NegativeLookAheadRegexp");
+    /*package*/ static final SConcept NegativeLookBehindRegexp$f6 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de6e3f6L, "jetbrains.mps.baseLanguage.regexp.structure.NegativeLookBehindRegexp");
+    /*package*/ static final SConcept PositiveLookAheadRegexp$DM = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118ddfb973L, "jetbrains.mps.baseLanguage.regexp.structure.PositiveLookAheadRegexp");
+    /*package*/ static final SConcept PositiveLookBehindRegexp$zP = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de6742fL, "jetbrains.mps.baseLanguage.regexp.structure.PositiveLookBehindRegexp");
+    /*package*/ static final SConcept MatchParensRegexp$Ea = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, "jetbrains.mps.baseLanguage.regexp.structure.MatchParensRegexp");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink expr$EXG0 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, 0x1117521177bL, "expr");
   }
 }

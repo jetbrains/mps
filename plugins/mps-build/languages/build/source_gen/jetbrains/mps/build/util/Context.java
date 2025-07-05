@@ -9,12 +9,15 @@ import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.concurrent.ConcurrentMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.generator.TransientModelsModule;
+import jetbrains.mps.extapi.module.TransientSModule;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Context {
   private Map<String, Object> myProperties = MapSequence.fromMap(new HashMap<String, Object>());
@@ -35,18 +38,22 @@ public class Context {
     return ((T) MapSequence.fromMap(myProperties).get(key));
   }
   protected SNode getBuildProject(SNode node) {
-    return SNodeOperations.getNodeAncestor(node, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"), true, false);
+    return SNodeOperations.getNodeAncestor(node, CONCEPTS.BuildProject$ae, true, false);
   }
+
   public MacroHelper getMacros(SNode context) {
     SNode buildProject = getBuildProject(context);
     if (buildProject == null) {
       return null;
     }
-    buildProject = SNodeOperations.as(DependenciesHelper.getOriginalNode(buildProject, myGenerationContext), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
-    if (buildProject == null) {
-      return null;
+
+    final String mhKey = SPropertyOperations.getString(buildProject, PROPS.name$MnvL) + '.' + "MacroHelper";
+    MacroHelper mh = (MacroHelper) myGenerationContext.getSessionObject(mhKey);
+    if (mh == null) {
+      mh = new MacroHelper.MacroContext(buildProject, myGenerationContext).getProjectHelper();
+      myGenerationContext.putSessionObject(mhKey, mh);
     }
-    return new MacroHelper.MacroContext(buildProject, myGenerationContext).getMacros(buildProject);
+    return mh;
   }
 
   public String getTempPath(SNode node, String name, String... categories) {
@@ -67,11 +74,11 @@ public class Context {
   }
 
   public RelativePathHelper getRelativePathHelper(@NotNull SModel model) {
-    if (model.getModule() instanceof TransientModelsModule && myGenerationContext != null) {
+    if (model.getModule() instanceof TransientSModule && myGenerationContext != null) {
       model = myGenerationContext.getOriginalInputModel();
     }
     SModule module = model.getModule();
-    if (module instanceof TransientModelsModule) {
+    if (module instanceof TransientSModule) {
       return null;
     }
     return RelativePathHelper.forModule(module);
@@ -90,5 +97,13 @@ public class Context {
     }
 
     return new Context(gencontext);
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

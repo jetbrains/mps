@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,13 +33,11 @@ public interface ITemplateGenerator extends GeneratorQueryProvider.Source {
   /**
    * Generally, mapping labels are not available till the end ot structure transformation, which may run in
    * parallel threads and thus access to label would be unpredictable.
-   * Use this method to control retrieve of labels only, it's not suitable to tell whether it's
-   * possible to {@link #registerMappingLabel(SNode, String, SNode) add new label}
-   * @return <code>true</code> if it's proper time to query (!) for label
+   * Use this method to control retrieval of labels only, it's not suitable to tell whether it's
+   * possible to add new label
+   * @return {@code true} if it's proper time to query (!) for label
    */
   boolean areMappingsAvailable();
-
-  void registerMappingLabel(SNode inputNode, String mappingName, SNode outputNode);
 
   /**
    * @param inputNode node from almost any model that may have served as an input for a generator. We tolerate null value now, indicating
@@ -64,9 +62,8 @@ public interface ITemplateGenerator extends GeneratorQueryProvider.Source {
 
   GenerationSessionContext getGeneratorSessionContext();
 
+  // XXX likely, useless as well.
   boolean isStrict();
-
-  boolean isDirty(SNode node);
 
   IGeneratorLogger getLogger();
 }

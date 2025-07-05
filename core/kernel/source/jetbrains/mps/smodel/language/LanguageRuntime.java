@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,13 @@
  */
 package jetbrains.mps.smodel.language;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.BootstrapLanguages;
+import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.runtime.AspectExtensionsAware;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -31,12 +32,15 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 /**
  * Runtime representation of a language, extension point for various language aspects.
@@ -49,9 +53,11 @@ import java.util.concurrent.ConcurrentMap;
  */
 public abstract class LanguageRuntime {
   private final ConcurrentMap<Class<? extends ILanguageAspect>, ILanguageAspect> myAspectDescriptors = new ConcurrentHashMap<>();
-  // FIXME AP: is there a contract on duplication????
   private final List<LanguageRuntime> myExtendingLanguages = new ArrayList<>();
   private final List<LanguageRuntime> myExtendedLanguages = new ArrayList<>();
+  private List<SModuleReference> myRuntimeModules;
+  private List<SLanguageId> myGeneratesIntoTargets;
+  private LanguageRegistry myLanguageRegistry;
 
   /**
    * @return full name of the language, never {@code null}.
@@ -63,11 +69,17 @@ public abstract class LanguageRuntime {
    */
   public abstract SLanguageId getId(); // FIXME supply a cons that takes mandatory values (id, name), rather than overriding methods in generated classes
 
+
+  /**
+   * @return persistable identity of a deployed language
+   */
+  public final SLanguage getIdentity() {
+    // since 2018.2. XXX replace usages MetaAdapterFactory.getLanguage(langRuntime.getId, langRuntime.getNamespace) with this method
+    return MetaAdapterFactory.getLanguage(getId(), getNamespace());
+  }
+
   /**
    * Generated LanguageRuntime classes shall override this method
-   * Denoted with @ToRemove just to ease later discovery, it's method implementation to be removed, not the method itself
-   *
-   * @return 0 now
    * @since 3.2
    */
   public abstract int getVersion();
@@ -146,6 +158,7 @@ public abstract class LanguageRuntime {
 
   /**
    * Closure of all languages that extend this one, exclusive.
+   * FIXME why Iterable?
    *
    * @return unmodifiable collection of languages
    */
@@ -171,16 +184,6 @@ public abstract class LanguageRuntime {
   }
 
   /**
-   * @deprecated override {@link #fillExtendedLanguages(Collection)} instead.
-   */
-  @Deprecated
-  @ToRemove(version = 3.5)
-  protected String[] getExtendedLanguageIDs() {
-    // non-abstract to facilitate transition
-    return new String[0];
-  }
-
-  /**
    * Subclasses shall override to report languages they extend (fill in supplied collection).
    * It's not necessary to override the method if language doesn't extend any other, not to invoke super, this method is no-op.
    * <p/>
@@ -196,20 +199,10 @@ public abstract class LanguageRuntime {
     extendingLanguage.myExtendedLanguages.add(this);
   }
 
-  @ToRemove(version = 3.5)
-  private void fillLegacyExtendedLanguages(Collection<SLanguage> extendedLanguages, LanguageRegistry registry) {
-    for (String namespace : getExtendedLanguageIDs()) {
-      LanguageRuntime l = registry.getLanguage(namespace);
-      if (l != null) {
-        extendedLanguages.add(MetaAdapterFactory.getLanguage(l.getId(), l.getNamespace()));
-      }
-    }
-  }
-
   void initialize(LanguageRegistry registry) {
+    assert myLanguageRegistry == null : "attempt to initialize LanguageRuntime that has been already initialized";
     Queue<SLanguage> extendedLanguageIDs = new ArrayDeque<>();
     fillExtendedLanguages(extendedLanguageIDs);
-    fillLegacyExtendedLanguages(extendedLanguageIDs, registry);
     Set<SLanguageId> visitedLanguages = new HashSet<>();
     visitedLanguages.add(getId());
     while (!extendedLanguageIDs.isEmpty()) {
@@ -218,7 +211,6 @@ public abstract class LanguageRuntime {
       if (extendedLanguage != null && visitedLanguages.add(extendedLanguage.getId())) {
         extendedLanguage.registerExtendingLanguage(this);
         extendedLanguage.fillExtendedLanguages(extendedLanguageIDs);
-        extendedLanguage.fillLegacyExtendedLanguages(extendedLanguageIDs, registry);
       }
     }
     // generally, should never happen, but doesn't hurt to ensure exclusive contract of getExtended/getExtendingLanguages()
@@ -231,16 +223,142 @@ public abstract class LanguageRuntime {
     //
     // XXX OTOH, does it make sense to force generation of explicit extends lang.core in each language?
     LanguageRuntime langCore = registry.getLanguage(BootstrapLanguages.getLangCore());
-    assert langCore != null;
-    if (this != langCore && !visitedLanguages.contains(langCore.getId())) {
-      langCore.registerExtendingLanguage(this);
+    if (langCore != null) {
+      if (this != langCore && !visitedLanguages.contains(langCore.getId())) {
+        langCore.registerExtendingLanguage(this);
+      }
+    } else {
+      // It's odd, yet I've seen it. $git clean -fX languages/, restart.
+      // MPS discovers e.g. core.properties (from plugins/mps-core/, not sure how come), instantiates it LR
+      // (there's no direct dependency to lang.core there, CLM goes ahead) and then fails to get lang.core which has not
+      // been compiled yet. Assertion was too much, imo.
+      final String m = "No language runtime for j.m.lang.core while initializing another language (%s), bootstrap?";
+      Logger.getLogger(LanguageRuntime.class).error(String.format(m, getNamespace()));
     }
+    myLanguageRegistry = registry;
   }
 
   void deinitialize() {
+    myLanguageRegistry = null;
     myExtendingLanguages.clear();
     myExtendedLanguages.clear();
   }
+
+  /*package*/ final void contributeExtensions(LanguageExtensions extensions) {
+    // I keep this method as an entry point for LanguageRegistry instead of using protected #contribute() directly as I expect to add some mandatory
+    // extension registration in here, and don't want to generate super.contribute() calls
+    contribute(extensions);
+  }
+
+  /**
+   * Override to tell that language represented by this runtime class supplies extensions to aspects of some other language.
+   * Method itself is no-op, no need to call super.
+   * Language is not completely initialized the moment method is invoked, no other activity except contributing extensions
+   * by means of LanguageExtensions is allowed.
+   * @param extensions facade to pass contributions through
+   */
+  protected void contribute(@NotNull LanguageExtensions extensions) {
+    // no-op
+  }
+
+  /**
+   * Visit contributions to this language recorded using {@link LanguageExtensions#recordContribution(SLanguage, Class)} with identity of this language as
+   * contribution target.
+   * @param aspectClass  identity of an aspect extensions were contributed with
+   * @param aspectVisitor code to handle extension aspect instance
+   */
+  public final <T extends ILanguageAspect> void forEachContributor(Class<T> aspectClass, Consumer<T> aspectVisitor) {
+    if (myLanguageRegistry == null) {
+      // generally shall not happen
+      String msg = String.format("Attempt to access contributors of non-initialized language runtime, ignored. Requested aspect: %s", aspectClass);
+      Logger.getLogger(LanguageRuntime.class).error(msg, new Throwable());
+      return;
+    }
+    // XXX not sure it's ok to expose LanguageExtensionRegistry, perhaps, shall keep this code inside LanguageRegistry
+    //     so that it can control the moment languages get re-loaded and the extension registry is invalidated.
+    myLanguageRegistry.getExtensionRegistry().forEachContributingAspect(this, aspectClass, aspectVisitor);
+  }
+
+  /**
+   * Same as {@link #forEachContributor(Class, Consumer)} except that gives access to {@link LanguageRuntime} instance for clients that need it.
+   * Prefer {@link #forEachContributor(Class, Consumer)} when possible.
+   *
+   * XXX Has to be final, but there are tests that don't utilize LanguageRegistry and need to tweak LanguageRuntime implementation
+   */
+  public void forEachContributor(Consumer<LanguageRuntime> visitor, Class<? extends ILanguageAspect> aspectClass) {
+    if (myLanguageRegistry == null) {
+      // generally shall not happen
+      String msg = String.format("Attempt to access contributors of non-initialized language runtime, ignored. Requested aspect: %s", aspectClass);
+      Logger.getLogger(LanguageRuntime.class).error(msg, new Throwable());
+      return;
+    }
+    myLanguageRegistry.getExtensionRegistry().forEachContributor(this, aspectClass, visitor);
+  }
+
+  void languageExtensionsChanged() {
+    myAspectDescriptors.forEach((k, a) -> {
+      if (a instanceof AspectExtensionsAware) {
+        ((AspectExtensionsAware) a).extensionsChanged();
+      }
+    });
+  }
+
+  void dispose() {
+    myAspectDescriptors.values().forEach(ILanguageAspect::dispose);
+  }
+
+  /**
+   * Gives a complete set of what's deemed a 'runtime' dependency for the language.
+   * Includes runtime  modules from extended languages as well as languages denoted as generation target.
+   * Note, this set is *wide*, not all uses of the language would consume all of these runtimes.
+   * Once/if we decide to keep relevant runtimes as part of Make output, there's likely no need to use this method
+   *  as it induces too broad set of dependencies.
+   * @since 2021.2
+   */
+  public Collection<SModuleReference> getRuntimeModules() {
+    assert myRuntimeModules != null;
+    assert myGeneratesIntoTargets != null;
+    LinkedHashSet<SModuleReference> rv = new LinkedHashSet<>();
+    rtModulesFromExtendsHierarchy(rv);
+    // need to account for possible cycles, L1 generates into L2, L2 generates into L3, L3 generates into L1,
+    //   there are such scenarios, see SOE in MPS-34452
+    final HashSet<LanguageRuntime> seen = new HashSet<>(myExtendedLanguages);
+    seen.add(this);
+    myLanguageRegistry.withAvailableLanguages(lr -> lr.rtModulesOfGenTarget(rv, seen), myGeneratesIntoTargets.stream());
+    return rv;
+  }
+
+  private void rtModulesFromExtendsHierarchy(Set<SModuleReference> dest) {
+    dest.addAll(myRuntimeModules);
+    myExtendedLanguages.stream().map(lr -> lr.myRuntimeModules).forEach(dest::addAll);
+  }
+
+  private void rtModulesOfGenTarget(Set<SModuleReference> dest, HashSet<LanguageRuntime> seen) {
+    if (seen.add(this)) {
+      rtModulesFromExtendsHierarchy(dest);
+      myLanguageRegistry.withAvailableLanguages(lr -> lr.rtModulesOfGenTarget(dest, seen), myGeneratesIntoTargets.stream());
+    }
+  }
+
+  /**
+   * From time to time, MPS needs runtime modules of a deployed language. Unlike 'extended' dependency, we don't generate
+   * these into LanguageRuntime class yet. Even if we do so, we'd need a compatibility mechanism for old generated
+   * LanguageRuntime classes to answer {@link #getRuntimeModules()} anyway.
+   * For the time being, I decided not to generate respective LR code (don't want to deal with LR versioning nor found
+   * better way to address compatibility with old generated LR classes; besides, hoping for a change in Make process
+   * to write down actual RTs employed for model transformation so that we don't need this explicit set of runtimes.
+   */
+  /*package*/ final void setLanguageRuntimeModules(Collection<SModuleReference> runtimeModules) {
+    // as long as we keep complete set of RTs on demand, there's no need to clear this one in initialize/deinitialize()
+    myRuntimeModules = List.copyOf(runtimeModules);
+  }
+
+  // pretty much the same reasoning as for setLanguageRuntimeModules(). For complete set of language's RTs we need to
+  // account for languages this one targets into, as their runtimes would need to be included, too.
+  /*package*/ final void setGeneratesIntoTargets(Collection<SModuleReference> targetLanguages) {
+    myGeneratesIntoTargets = targetLanguages.stream().map(MetaIdByDeclaration::ref2LangId).collect(Collectors.toList());
+  }
+
 
   @Override
   public String toString() {

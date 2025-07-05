@@ -14,7 +14,6 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.MPSFonts;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 
 /*package*/ class ActionTestSidetransformAbstractChild_EditorBuilder_a extends AbstractEditorBuilder {
@@ -33,23 +32,23 @@ import jetbrains.mps.nodeEditor.MPSColors;
   }
 
   /*package*/ EditorCell createCell() {
-    return createCollection_qo7mxr_a();
+    return createCollection_0();
   }
 
-  private EditorCell createCollection_qo7mxr_a() {
+  private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
     editorCell.setCellId("Collection_qo7mxr_a");
     editorCell.setBig(true);
-    editorCell.setCellContext(getCellFactory().getCellContext());
-    editorCell.addEditorCell(createConstant_qo7mxr_a0());
+    setCellContext(editorCell);
+    editorCell.addEditorCell(createConstant_0());
     return editorCell;
   }
-  private EditorCell createConstant_qo7mxr_a0() {
+  private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "sidetransform abstract child");
     editorCell.setCellId("Constant_qo7mxr_a0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.red));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.red));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

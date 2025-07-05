@@ -2,8 +2,7 @@
 <model ref="r:6d78acb4-911e-4959-8535-0a1b3e5c1b7e(jetbrains.mps.samples.heating.typesystem)">
   <persistence version="9" />
   <languages>
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="0" />
-    <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
+    <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
   <imports>
     <import index="vw7d" ref="r:3b810168-3010-426e-9275-12b4e509a27b(jetbrains.mps.samples.heating.structure)" />
@@ -73,7 +72,7 @@
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1081506762703" name="jetbrains.mps.baseLanguage.structure.GreaterThanExpression" flags="nn" index="3eOSWO" />
       <concept id="1081506773034" name="jetbrains.mps.baseLanguage.structure.LessThanExpression" flags="nn" index="3eOVzh" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
       </concept>
       <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
@@ -83,6 +82,7 @@
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -98,10 +98,6 @@
       <concept id="1175517767210" name="jetbrains.mps.lang.typesystem.structure.ReportErrorStatement" flags="nn" index="2MkqsV">
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
       </concept>
-      <concept id="1227096774658" name="jetbrains.mps.lang.typesystem.structure.MessageStatement" flags="ng" index="2OEH$v">
-        <child id="1227096802791" name="helginsIntention" index="2OEOjU" />
-        <child id="1227096802790" name="nodeToReport" index="2OEOjV" />
-      </concept>
       <concept id="1216383170661" name="jetbrains.mps.lang.typesystem.structure.TypesystemQuickFix" flags="ng" index="Q5z_Y">
         <child id="1216383424566" name="executeBlock" index="Q6x$H" />
         <child id="1216391046856" name="descriptionBlock" index="QzAvj" />
@@ -113,6 +109,10 @@
         <child id="1195213635060" name="body" index="18ibNy" />
       </concept>
       <concept id="1195214364922" name="jetbrains.mps.lang.typesystem.structure.NonTypesystemRule" flags="ig" index="18kY7G" />
+      <concept id="3937244445246642777" name="jetbrains.mps.lang.typesystem.structure.AbstractReportStatement" flags="ng" index="1urrMJ">
+        <child id="3937244445246643221" name="helginsIntention" index="1urrFz" />
+        <child id="3937244445246642781" name="nodeToReport" index="1urrMF" />
+      </concept>
       <concept id="1210784285454" name="jetbrains.mps.lang.typesystem.structure.TypesystemIntention" flags="ng" index="3Cnw8n">
         <property id="1216127910019" name="applyImmediately" index="ARO6o" />
         <reference id="1216388525179" name="quickFix" index="QpYPw" />
@@ -164,7 +164,7 @@
       <concept id="1228341669568" name="jetbrains.mps.lang.smodel.structure.Node_DetachOperation" flags="nn" index="3YRAZt" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -175,7 +175,6 @@
       <concept id="540871147943773365" name="jetbrains.mps.baseLanguage.collections.structure.SingleArgumentSequenceOperation" flags="nn" index="25WWJ4">
         <child id="540871147943773366" name="argument" index="25WWJ7" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="1225727723840" name="jetbrains.mps.baseLanguage.collections.structure.FindFirstOperation" flags="nn" index="1z4cxt" />
       <concept id="1172254888721" name="jetbrains.mps.baseLanguage.collections.structure.ContainsOperation" flags="nn" index="3JPx81" />
@@ -190,10 +189,10 @@
             <node concept="Xl_RD" id="2_khaML2iDn" role="a7wSD">
               <property role="Xl_RC" value="Not a valid value" />
             </node>
-            <node concept="1YBJjd" id="2_khaML2iIz" role="2OEOjV">
+            <node concept="1YBJjd" id="2_khaML2iIz" role="1urrMF">
               <ref role="1YBMHb" node="4p4E$Nw$HTO" resolve="slot" />
             </node>
-            <node concept="3Cnw8n" id="2_khaML2xP5" role="2OEOjU">
+            <node concept="3Cnw8n" id="2_khaML2xP5" role="1urrFz">
               <property role="ARO6o" value="true" />
               <ref role="QpYPw" node="2_khaML2iJo" resolve="AssignCorrectValue" />
             </node>
@@ -257,10 +256,10 @@
             <node concept="Xl_RD" id="4p4E$Nw$JW9" role="2MkJ7o">
               <property role="Xl_RC" value="The event should be scheduled after the one above it" />
             </node>
-            <node concept="1YBJjd" id="4p4E$Nw$Kap" role="2OEOjV">
+            <node concept="1YBJjd" id="4p4E$Nw$Kap" role="1urrMF">
               <ref role="1YBMHb" node="4p4E$Nw$HTO" resolve="slot" />
             </node>
-            <node concept="3Cnw8n" id="4xZSnh_yTC1" role="2OEOjU">
+            <node concept="3Cnw8n" id="4xZSnh_yTC1" role="1urrFz">
               <property role="ARO6o" value="true" />
               <ref role="QpYPw" node="4xZSnh_yKQ3" resolve="MoveItemToTheRightPositionWithinDailyPlan" />
             </node>
@@ -271,10 +270,10 @@
                 <node concept="Xl_RD" id="42WFAKerSpA" role="a7wSD">
                   <property role="Xl_RC" value="This event is not changing the temperature." />
                 </node>
-                <node concept="1YBJjd" id="42WFAKerSA6" role="2OEOjV">
+                <node concept="1YBJjd" id="42WFAKerSA6" role="1urrMF">
                   <ref role="1YBMHb" node="4p4E$Nw$HTO" resolve="slot" />
                 </node>
-                <node concept="3Cnw8n" id="42WFAKerUVK" role="2OEOjU">
+                <node concept="3Cnw8n" id="42WFAKerUVK" role="1urrFz">
                   <ref role="QpYPw" node="42WFAKerSAE" resolve="RemoveSlot" />
                 </node>
               </node>
@@ -338,10 +337,10 @@
             <node concept="Xl_RD" id="NU25Mr1WLm" role="a7wSD">
               <property role="Xl_RC" value="The customizing event is setting the same temperature as the original one" />
             </node>
-            <node concept="1YBJjd" id="NU25Mr1X60" role="2OEOjV">
+            <node concept="1YBJjd" id="NU25Mr1X60" role="1urrMF">
               <ref role="1YBMHb" node="4p4E$Nw$HTO" resolve="slot" />
             </node>
-            <node concept="3Cnw8n" id="NU25Mr26Vx" role="2OEOjU">
+            <node concept="3Cnw8n" id="NU25Mr26Vx" role="1urrFz">
               <ref role="QpYPw" node="42WFAKerSAE" resolve="RemoveSlot" />
             </node>
           </node>
@@ -493,7 +492,7 @@
                         </node>
                         <node concept="2OqwBi" id="4xZSnh_ySEr" role="3uHU7B">
                           <node concept="37vLTw" id="4xZSnh_ySEs" role="2Oq$k0">
-                            <ref role="3cqZAo" node="4xZSnh_ySEu" resolve="it" />
+                            <ref role="3cqZAo" node="5W7E4fV0WZe" resolve="it" />
                           </node>
                           <node concept="3TrcHB" id="4xZSnh_ySEt" role="2OqNvi">
                             <ref role="3TsBF5" to="vw7d:4XSronYa89W" resolve="start" />
@@ -502,9 +501,9 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="Rh6nW" id="4xZSnh_ySEu" role="1bW2Oz">
+                  <node concept="gl6BB" id="5W7E4fV0WZe" role="1bW2Oz">
                     <property role="TrG5h" value="it" />
-                    <node concept="2jxLKc" id="4xZSnh_ySEv" role="1tU5fm" />
+                    <node concept="2jxLKc" id="5W7E4fV0WZf" role="1tU5fm" />
                   </node>
                 </node>
               </node>
@@ -698,7 +697,7 @@
                 <node concept="Xl_RD" id="1RZY6YZNxOV" role="2MkJ7o">
                   <property role="Xl_RC" value="There is a circular dependency in the plan customization scheme involving the current DailyPlan." />
                 </node>
-                <node concept="1YBJjd" id="1RZY6YZNy3F" role="2OEOjV">
+                <node concept="1YBJjd" id="1RZY6YZNy3F" role="1urrMF">
                   <ref role="1YBMHb" node="1RZY6YZNplU" resolve="dailyPlan" />
                 </node>
               </node>

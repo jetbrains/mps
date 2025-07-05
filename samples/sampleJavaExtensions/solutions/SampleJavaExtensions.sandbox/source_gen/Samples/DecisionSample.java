@@ -8,22 +8,20 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 
 public class DecisionSample {
-  public DecisionSample() {
-  }
   public void run(String[] args) {
     Map<String, Object> person = this.createPerson();
 
-    // A decision table gets translated into a series of nested "if" statements 
-    // A table can be manipulated just like any other expression - try selecting one and invoke e.g. "Extract Method" 
+    // A decision table gets translated into a series of nested "if" statements
+    // A table can be manipulated just like any other expression - try selecting one and invoke e.g. "Extract Method"
 
-    String title = decisionTable_1dgfoj_a0f0b(person);
+    String title = decisionTable_1dgfoj_a0f0a(person);
     System.out.println("The title is: " + title);
 
 
-    // The cells in a table may contain more complex expressions 
+    // The cells in a table may contain more complex expressions
 
     Money discount;
-    discount = create(person);
+    discount = createDiscount(person);
     if ((discount.getAmount().compareTo(new Money(40, "USD").getAmount()) > 0 ? true : false) || (discount.getAmount().compareTo(new Money(30, "EUR").getAmount()) >= 0 ? true : false)) {
       discount = new Money(30, "EUR");
     }
@@ -32,15 +30,17 @@ public class DecisionSample {
     System.out.println("Your name: " + MapSequence.fromMap(person).get("name"));
     System.out.println("Your discount: " + discount);
 
-    // type "dectab" and Control + Space to create a new table 
+    // type "dectab" and Control + Space to create a new table
 
   }
-  private Money create(Map<String, Object> person) {
-    return decisionTable_1dgfoj_a0a2(person);
+  private Money createDiscount(Map<String, Object> person) {
+    return decisionTable_1dgfoj_a0a1(person);
   }
+
   private Money seasonalBonus() {
     return new Money(10, "EUR");
   }
+
   private Map<String, Object> createPerson() {
     Map<String, Object> person = MapSequence.fromMap(new HashMap<String, Object>());
     MapSequence.fromMap(person).put("name", "Joe");
@@ -48,6 +48,7 @@ public class DecisionSample {
     MapSequence.fromMap(person).put("gender", "male");
     return person;
   }
+
   public static boolean isBaby(Map<String, Object> person) {
     return (Integer) MapSequence.fromMap(person).get("age") <= 2;
   }
@@ -60,20 +61,20 @@ public class DecisionSample {
   public static boolean isRetired(Map<String, Object> person) {
     return (Integer) MapSequence.fromMap(person).get("age") > 60;
   }
-  public static boolean isMale(Map<String, Object> person) {
+  public static boolean isOneTimeVisitorB(Map<String, Object> person) {
     if ((String) MapSequence.fromMap(person).get("gender") == "male") {
       return true;
     }
     return false;
   }
-  public static boolean isFemale(Map<String, Object> person) {
-    return !(isMale(person));
+  public static boolean isRegularVisitor(Map<String, Object> person) {
+    return !(isOneTimeVisitorB(person));
   }
   public static void main(String[] args) {
     new DecisionSample().run(args);
   }
-  public String decisionTable_1dgfoj_a0f0b(Map<String, Object> person) {
-    if (isMale(person)) {
+  public String decisionTable_1dgfoj_a0f0a(Map<String, Object> person) {
+    if (isOneTimeVisitorB(person)) {
       if (isChild(person)) {
         return "boy";
       }
@@ -81,7 +82,7 @@ public class DecisionSample {
         return "man";
       }
     }
-    if (isFemale(person)) {
+    if (isRegularVisitor(person)) {
       if (isChild(person)) {
         return "girl";
       }
@@ -91,33 +92,33 @@ public class DecisionSample {
     }
     return "Nothing to show here";
   }
-  public Money decisionTable_1dgfoj_a0a2(Map<String, Object> person) {
-    if (isMale(person)) {
+  public Money decisionTable_1dgfoj_a0a1(Map<String, Object> person) {
+    if (isOneTimeVisitorB(person)) {
       if (isBaby(person)) {
-        return new Money(100, "EUR");
+        return new Money(10, "EUR");
       }
       if (isChild(person)) {
         return new Money(50, "EUR");
       }
       if (isAdult(person)) {
-        return new Money(5, "EUR").plus(this.seasonalBonus());
+        return new Money(50, "EUR").plus(this.seasonalBonus());
       }
       if (isRetired(person)) {
         return new Money(20, "EUR");
       }
     }
-    if (isFemale(person)) {
+    if (isRegularVisitor(person)) {
       if (isBaby(person)) {
-        return new Money(100, "EUR");
+        return new Money(0, "EUR");
       }
       if (isChild(person)) {
-        return new Money(50, "EUR");
+        return new Money(40, "EUR");
       }
       if (isAdult(person)) {
         return new Money(10, "EUR").plus(this.seasonalBonus());
       }
       if (isRetired(person)) {
-        return new Money(10, "EUR").plus((((MapSequence.fromMap(person).get("name") == "Susan") ? this.seasonalBonus() : new Money(40, "EUR"))));
+        return new Money(5, "EUR").plus((((MapSequence.fromMap(person).get("address") == null) ? new Money(0, "EUR") : new Money(4, "EUR"))));
       }
     }
     return new Money(0, "EUR");

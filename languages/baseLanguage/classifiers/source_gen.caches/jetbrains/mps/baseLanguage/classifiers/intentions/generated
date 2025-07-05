@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-6znjbr6o8k7ghoinjvhkd5z47uv80jr" />
+<product version="3" modelHash="cmnusyp4vujs6yrlufguws2qpkt5ge4">
+  <files names="CreateReferenceOnClassifier_Intention.java:IntentionsDescriptor.java" />
+</product>
 

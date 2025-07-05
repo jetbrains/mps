@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.ui.dialogs.properties.roots.editors;
 
+import com.intellij.icons.AllIcons.Actions;
 import com.intellij.icons.AllIcons.Modules;
 import com.intellij.ui.DarculaColors;
 import com.intellij.ui.Gray;
@@ -22,7 +23,6 @@ import com.intellij.ui.JBColor;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.ui.roots.IconActionComponent;
-import com.intellij.ui.roots.ResizingWrapper;
 import com.intellij.util.EventDispatcher;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.UIUtil;
@@ -59,19 +59,17 @@ import static java.awt.GridBagConstraints.RELATIVE;
 public final class ModelRootEntryContainer implements ModelRootEntryListener {
   static final Color SOURCES_COLOR = new JBColor(new Color(0x0A50A1), DarculaColors.BLUE);
   static final Color EXCLUDED_COLOR = new JBColor(new Color(0x992E00), DarculaColors.RED);
-  static final Color TESTS_COLOR = new Color(0x008C2E);
-  static final Color SELECTED_CONTENT_COLOR = new Color(0xF0F9FF);
+  static final Color SELECTED_CONTENT_COLOR = new JBColor(new Color(0xF0F9FF), UIUtil.getPanelBackground());
   private static final Color SELECTED_HEADER_COLOR = new JBColor(new Color(0xDEF2FF), UIUtil.getPanelBackground().darker());
   private static final Color HEADER_COLOR = new JBColor(new Color(0xF5F5F5), Gray._82);
   private static final Color CONTENT_COLOR = new JBColor(Color.WHITE, UIUtil.getPanelBackground());
-  private static final Color UNSELECTED_TEXT_COLOR = Gray._51;
+  private static final Color UNSELECTED_TEXT_COLOR = new JBColor(Gray._51, Gray._186);
 
   private final ModelRootEntry myModelRootEntry;
-  protected ModelRootEntryEditor myEditor;
   private EventDispatcher<ContentEntryEditorListener> myEventDispatcher;
   private boolean myIsSelected = false;
 
-  protected JPanel myMainPanel;
+  private JPanel myMainPanel;
   private JComponent myHeader;
   private JComponent myDetailsComponent;
   private JComponent myBottom;
@@ -136,8 +134,8 @@ public final class ModelRootEntryContainer implements ModelRootEntryListener {
 
     myHeaderLabel.setFont(myHeaderLabel.getFont().deriveFont(Font.BOLD));
     myHeaderLabel.setOpaque(false);
-    final IconActionComponent deleteIconComponent = new IconActionComponent(Modules.DeleteContentRoot,
-                                                                            Modules.DeleteContentRootRollover,
+    final IconActionComponent deleteIconComponent = new IconActionComponent(Actions.Close,
+                                                                            Actions.CloseHovered,
                                                                             "Delete Model Root",
                                                                             () -> myEventDispatcher.getMulticaster().delete(ModelRootEntryContainer.this));
     panel.add(myHeaderLabel, new GridBagConstraints(0, RELATIVE, 1, 1, 1.0, 1.0, NORTHWEST, HORIZONTAL, new Insets(0, 2, 0, 0), 0, 0));
@@ -161,8 +159,7 @@ public final class ModelRootEntryContainer implements ModelRootEntryListener {
   protected void setSelected(boolean selected) {
     if (selected) {
       myHeader.setBackground(SELECTED_HEADER_COLOR);
-//      myMainPanel.setBackground(UIUtil.isUnderDarcula() ? UIUtil.getPanelBackground() : SELECTED_CONTENT_COLOR);
-      myDetailsComponent.setBackground(UIUtil.isUnderDarcula() ? UIUtil.getPanelBackground() : SELECTED_CONTENT_COLOR);
+      myDetailsComponent.setBackground(SELECTED_CONTENT_COLOR);
       myBottom.setBackground(SELECTED_HEADER_COLOR);
       if (myModelRootEntry instanceof ModelRootEntryExt) {
         ((ModelRootEntryExt) myModelRootEntry).resetForegroundColor();
@@ -178,7 +175,7 @@ public final class ModelRootEntryContainer implements ModelRootEntryListener {
       }
     }
     if (!myModelRootEntry.isValid()) {
-      myHeader.setBackground(Color.PINK);
+      myHeader.setBackground(JBColor.PINK);
     }
   }
 
@@ -187,10 +184,6 @@ public final class ModelRootEntryContainer implements ModelRootEntryListener {
   }
 
   public ModelRootEntryEditor getEditor() {
-    return myModelRootEntry.getEditor();
-  }
-
-  protected ModelRootEntryEditor createEditor() {
     return myModelRootEntry.getEditor();
   }
 

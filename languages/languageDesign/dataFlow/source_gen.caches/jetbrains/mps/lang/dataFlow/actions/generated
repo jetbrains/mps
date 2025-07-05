@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-atsek06ztesiarmejjk56zd9in6z2qz" />
+<product version="3" modelHash="9ha40y5n6dl46mktthbfigyve4v8y5r">
+  <files names="ActionAspectDescriptorImpl.java:BaseJumps.java" />
+</product>
 

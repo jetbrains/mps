@@ -38,7 +38,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -47,7 +47,7 @@
     <property role="TrG5h" value="org.jetbrains.workflow" />
     <node concept="3OOLNr" id="3c1Y2R7P3yP" role="3OOLFz">
       <property role="TrG5h" value="simpleIssueTracking" />
-      <property role="3OPhhx" value="tabular" />
+      <property role="3OPhhx" value="3c1Y2R7PdzZ/tabular" />
       <node concept="32R9h0" id="3c1Y2R7P3yQ" role="3OOLOy">
         <node concept="32R8Js" id="3c1Y2R7Parj" role="32R9h5">
           <property role="32R8Iw" value="in Open state" />
@@ -89,7 +89,6 @@
     </node>
     <node concept="3OOLNr" id="3c1Y2R7Pasq" role="3OOLFz">
       <property role="TrG5h" value="advancedIssueTracking" />
-      <property role="3OPhhx" value="structural" />
       <node concept="32R9h0" id="3c1Y2R7Pasr" role="3OOLOy">
         <node concept="32R8Js" id="3c1Y2R7Patf" role="32R9h5">
           <property role="32R8Iw" value="in Open state" />

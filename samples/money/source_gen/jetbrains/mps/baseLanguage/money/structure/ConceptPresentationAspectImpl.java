@@ -4,18 +4,18 @@ package jetbrains.mps.baseLanguage.money.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_MoneyCreator = new ConceptPresentationBuilder().shortDesc("money type constructor").create();
-  private final ConceptPresentation props_MoneyGetAmountMethodCall = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_MoneyGetCurrencyMethodCall = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_MoneyIsZeroMethodCall = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_MoneyLiteral = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_MoneyMethodCall = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_MoneyType = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_MoneyCreator;
+  private ConceptPresentation props_MoneyGetAmountMethodCall;
+  private ConceptPresentation props_MoneyGetCurrencyMethodCall;
+  private ConceptPresentation props_MoneyIsZeroMethodCall;
+  private ConceptPresentation props_MoneyLiteral;
+  private ConceptPresentation props_MoneyMethodCall;
+  private ConceptPresentation props_MoneyType;
 
   @Override
   @Nullable
@@ -23,18 +23,53 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.MoneyCreator:
+        if (props_MoneyCreator == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("money type constructor");
+          cpb.rawPresentation("Money");
+          props_MoneyCreator = cpb.create();
+        }
         return props_MoneyCreator;
       case LanguageConceptSwitch.MoneyGetAmountMethodCall:
+        if (props_MoneyGetAmountMethodCall == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation(". amount");
+          props_MoneyGetAmountMethodCall = cpb.create();
+        }
         return props_MoneyGetAmountMethodCall;
       case LanguageConceptSwitch.MoneyGetCurrencyMethodCall:
+        if (props_MoneyGetCurrencyMethodCall == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation(". currency");
+          props_MoneyGetCurrencyMethodCall = cpb.create();
+        }
         return props_MoneyGetCurrencyMethodCall;
       case LanguageConceptSwitch.MoneyIsZeroMethodCall:
+        if (props_MoneyIsZeroMethodCall == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation(". isZero");
+          props_MoneyIsZeroMethodCall = cpb.create();
+        }
         return props_MoneyIsZeroMethodCall;
       case LanguageConceptSwitch.MoneyLiteral:
+        if (props_MoneyLiteral == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("MoneyLiteral");
+          props_MoneyLiteral = cpb.create();
+        }
         return props_MoneyLiteral;
       case LanguageConceptSwitch.MoneyMethodCall:
+        if (props_MoneyMethodCall == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_MoneyMethodCall = cpb.create();
+        }
         return props_MoneyMethodCall;
       case LanguageConceptSwitch.MoneyType:
+        if (props_MoneyType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Money");
+          props_MoneyType = cpb.create();
+        }
         return props_MoneyType;
     }
     return null;

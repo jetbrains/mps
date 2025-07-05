@@ -20,6 +20,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_LocalVariableDeclarationInTuple_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_NamedTupleComponentAccessOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -38,6 +42,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_TupleComponentIsInScope_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      SubtypingRule_Runtime subtypingRule = new Dictionary_supertypeOf_namedTupleType_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
     }
     {
       SubtypingRule_Runtime subtypingRule = new NamedTuple_subtypeOf_extended_SubtypingRule();

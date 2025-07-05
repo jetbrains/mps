@@ -23,13 +23,15 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * tabs, edited and selection nodes for particular editor instance
  */
 public class TabEditorLayout {
-  private final List<Entry> myEntries = new ArrayList<Entry>();
+  private final List<Entry> myEntries = new ArrayList<>();
 
   /**
    * @return <code>true</code> if there's a node to edit for a given aspect
@@ -48,7 +50,7 @@ public class TabEditorLayout {
    */
   @NotNull
   public Collection<Entry> get(RelationDescriptor aspect) {
-    ArrayList<Entry> rv = new ArrayList<Entry>();
+    ArrayList<Entry> rv = new ArrayList<>();
     for (Entry e : myEntries) {
       if (e.getDescriptor().equals(aspect)) {
         rv.add(e);
@@ -57,8 +59,19 @@ public class TabEditorLayout {
     return rv;
   }
 
+  public boolean hasEditor(SNodeReference reference) {
+    if (reference == null) { return false; }
+    return myEntries.stream().map(Entry::getEditNode).anyMatch(reference::equals);
+  }
+
+  public SNodeReference getFirstEditNode() {
+    if (myEntries.isEmpty()) { throw new NoSuchElementException(); }
+    return myEntries.get(0).getEditNode();
+  }
+
   /*package*/void add(@NotNull RelationDescriptor tab, @NotNull SNodeReference editorNode, @Nullable Collection<SNodeReference> selectionNodes) {
     myEntries.add(new Entry(tab, editorNode, selectionNodes));
+    myEntries.sort(Comparator.comparing(Entry::getDescriptor));
   }
 
   /**
@@ -72,7 +85,7 @@ public class TabEditorLayout {
     Entry(@NotNull RelationDescriptor tab, @NotNull SNodeReference editorNode, Collection<SNodeReference> selectionNodes) {
       myDescriptor = tab;
       myEditorNode = editorNode;
-      mySelection = selectionNodes == null ? Collections.<SNodeReference>emptyList() : selectionNodes;
+      mySelection = selectionNodes == null ? Collections.emptyList() : selectionNodes;
     }
 
     @NotNull

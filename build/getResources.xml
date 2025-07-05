@@ -3,8 +3,9 @@
 
   <property name="ivy.jar.dir" value="${basedir}/ivy" />
   <property name="get.dir" location="${resources}"/>
+  <loadproperties srcfile="version.properties" description="Load versions of dependencies"/>
 
-  <target name="getall" depends="getHelp, getMachelp, getJdk, getOpenjdk, getOpenjdkMac, getOpenjdkWin"/>
+  <target name="getall" depends="getOpenjdkMac, getOpenjdkWin"/>
 
   <target name="install-ivy">
     <property name="mps.ivy.home" value="${user.home}" description="Property used to set custom path on TeamCity"/>
@@ -15,34 +16,24 @@
              uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
   </target>
 
-  <target name="getHelp" depends="install-ivy" description="--> Retreive recent help/mpshelp.jar">
-    <ivy:resolve file="ivyHelp.xml"/>
-    <ivy:retrieve file="ivyHelp.xml" pattern="${get.dir}/[artifact].[ext]"/>
-  </target>
-
-  <target name="getMachelp" depends="install-ivy" description="--> Retreive recent help/mac/mpshelp.jar">
-    <ivy:resolve file="ivyMachelp.xml"/>
-    <ivy:retrieve file="ivyMachelp.xml" pattern="${get.dir}/[artifact].[ext]"/>
-  </target>
-
-  <target name="getJdk" depends="install-ivy" description="--> Retreive recent JDK/jdk.zip">
-    <ivy:resolve file="ivyJdk.xml"/>
-    <ivy:retrieve file="ivyJdk.xml" pattern="${get.dir}/[artifact].[ext]"/>
-  </target>
-
-  <target name="getOpenjdk" depends="install-ivy" description="--> Retreive recent openJDK/jdk.tar.gz">
-    <ivy:resolve file="ivyOpenjdk.xml"/>
-    <ivy:retrieve file="ivyOpenjdk.xml" pattern="${get.dir}/[artifact].[ext]"/>
-  </target>
-
-  <target name="getOpenjdkWin" depends="install-ivy" description="--> Retreive openJDK/jbsdk_windows_x64.tar.gz">
+  <target name="getOpenjdkWin" depends="install-ivy" description="--> Retreive openJDK/jbr-windows-x64.tar.gz">
     <ivy:resolve file="ivyOpenjdkWin.xml"/>
     <ivy:retrieve file="ivyOpenjdkWin.xml" pattern="${get.dir}/[artifact].[ext]"/>
   </target>
 
-  <target name="getOpenjdkMac" depends="install-ivy" description="--> Retreive openJDK/jbsdk_ocx_x64.tar.gz">
+  <target name="getOpenjdkMac" depends="install-ivy" description="--> Retreive openJDK/jbr-osx-x64.tar.gz">
     <ivy:resolve file="ivyOpenjdkMac.xml"/>
     <ivy:retrieve file="ivyOpenjdkMac.xml" pattern="${get.dir}/[artifact].[ext]"/>
+  </target>
+
+  <target name="getOpenjdkMacM1" depends="install-ivy" description="--> Retreive openJDK/jbr-osx-aarch64.tar.gz">
+    <ivy:resolve file="ivyOpenjdkMacM1.xml"/>
+    <ivy:retrieve file="ivyOpenjdkMacM1.xml" pattern="${get.dir}/[artifact].[ext]"/>
+  </target>
+
+  <target name="getOpenjdkLinux" depends="install-ivy" description="--> Retreive openJDK/jbr-linux-x64.tar.gz">
+    <ivy:resolve file="ivyOpenjdkLinux.xml"/>
+    <ivy:retrieve file="ivyOpenjdkLinux.xml" pattern="${get.dir}/[artifact].[ext]"/>
   </target>
 
 </project>

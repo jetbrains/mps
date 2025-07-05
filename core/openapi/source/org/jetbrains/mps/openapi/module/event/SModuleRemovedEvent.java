@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,11 @@
 package org.jetbrains.mps.openapi.module.event;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 public class SModuleRemovedEvent extends SRepositoryEvent {
-  private SModuleReference myModuleReference;
+  private final SModuleReference myModuleReference;
 
   public SModuleRemovedEvent(@NotNull SModuleReference mRef, SRepository repository) {
     super(repository);

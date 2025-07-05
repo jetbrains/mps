@@ -1,0 +1,20 @@
+<!--
+ Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ -->
+<!DOCTYPE idea-plugin PUBLIC 'Plugin/DTD' 'http://plugins.intellij.net/plugin.dtd'>
+<idea-plugin>
+  <id>jetbrains.mps.junit5</id>
+  <name>MPS JUnit5 support</name>
+  <category>Custom Languages</category>
+  <description>JUnit5 libraries and stub models for use in MPS tests</description>
+  <version>2025.1.1</version>
+  <vendor url="http://www.jetbrains.com/mps/" email="support@jetbrains.com">JetBrains</vendor>
+  <idea-version since-build="251.1" until-build="252.1"/>
+
+  <depends>jetbrains.mps.core</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <mps.LanguageLibrary dir="/" hide="true"/>
+    <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
+  </extensions>
+</idea-plugin>

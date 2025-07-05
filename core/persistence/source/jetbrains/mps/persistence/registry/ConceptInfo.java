@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,12 +43,14 @@ import java.util.List;
 public final class ConceptInfo extends BaseInfo implements Comparable<ConceptInfo> {
   private final SConceptId myConcept;
   private final String myName;
-  private final HashMap<SPropertyId, PropertyInfo> myProperties = new HashMap<SPropertyId, PropertyInfo>();
-  private final HashMap<SReferenceLinkId, AssociationLinkInfo> myAssociations = new HashMap<SReferenceLinkId, AssociationLinkInfo>();
-  private final HashMap<SContainmentLinkId, AggregationLinkInfo> myAggregations = new HashMap<SContainmentLinkId, AggregationLinkInfo>(8);
+  private final HashMap<SPropertyId, PropertyInfo> myProperties = new HashMap<>();
+  private final HashMap<SReferenceLinkId, AssociationLinkInfo> myAssociations = new HashMap<>();
+  private final HashMap<SContainmentLinkId, AggregationLinkInfo> myAggregations = new HashMap<>(8);
   private ConceptKind myKind = ConceptKind.NORMAL;
   private StaticScope myScope = StaticScope.GLOBAL;
   private SConceptId myStubCounterpart = null; // makes sense only for ConceptKind.IMPLEMENTATION_WITH_STUB
+
+  private boolean myInterfaceConcept = false;
 
   /*package*/ ConceptInfo(@NotNull SConceptId concept, @NotNull String conceptName) {
     myConcept = concept;
@@ -58,17 +60,17 @@ public final class ConceptInfo extends BaseInfo implements Comparable<ConceptInf
     return myConcept;
   }
   public List<PropertyInfo> getPropertiesInUse() {
-    ArrayList<PropertyInfo> rv = new ArrayList<PropertyInfo>(myProperties.values());
+    ArrayList<PropertyInfo> rv = new ArrayList<>(myProperties.values());
     Collections.sort(rv);
     return rv;
   }
   public List<AssociationLinkInfo> getAssociationsInUse() {
-    ArrayList<AssociationLinkInfo> rv = new ArrayList<AssociationLinkInfo>(myAssociations.values());
+    ArrayList<AssociationLinkInfo> rv = new ArrayList<>(myAssociations.values());
     Collections.sort(rv);
     return rv;
   }
   public List<AggregationLinkInfo> getAggregationsInUse() {
-    ArrayList<AggregationLinkInfo> rv = new ArrayList<AggregationLinkInfo>(myAggregations.values());
+    ArrayList<AggregationLinkInfo> rv = new ArrayList<>(myAggregations.values());
     Collections.sort(rv);
     return rv;
   }
@@ -102,7 +104,7 @@ public final class ConceptInfo extends BaseInfo implements Comparable<ConceptInf
   public String constructStubConceptName() {
     return constructStubConceptName(myName);
   }
-  public static String constructStubConceptName(@NotNull String originalConceptQualifiedName) {
+  private static String constructStubConceptName(@NotNull String originalConceptQualifiedName) {
     String ns = NameUtil.namespaceFromLongName(originalConceptQualifiedName);
     String sname = NameUtil.shortNameFromLongName(originalConceptQualifiedName);
     return ((ns == null || ns.isEmpty()) ? "" : ns + '.') + "Stub" + sname;
@@ -127,7 +129,9 @@ public final class ConceptInfo extends BaseInfo implements Comparable<ConceptInf
   public String getImplementationKindText() {
     // see Util9.genNodeInfo(PersistenceRegistry.getInstance().getModelEnvironmentInfo(), node)
     // XXX perhaps, shall refactor ImplKind into dedicated subclass that holds both serialize and parse code
-    char[] res = new char[]{'n', 'g'};
+    char[] res = new char[isInterfaceConcept() ? 3 : 2];
+    res[0] = 'n';
+    res[1] = 'g';
     switch (myKind) {
       case INTERFACE: res[0] = 'i'; break;
       case IMPLEMENTATION: res[0] = 'l'; break;
@@ -136,6 +140,9 @@ public final class ConceptInfo extends BaseInfo implements Comparable<ConceptInf
     switch (myScope) {
       case ROOT: res[1] = 'r'; break;
       case NONE: res[1] = 'n'; break;
+    }
+    if (isInterfaceConcept()) {
+      res[2] = 'I';
     }
     return new String(res);
   }
@@ -156,6 +163,22 @@ public final class ConceptInfo extends BaseInfo implements Comparable<ConceptInf
       case 'n' : myScope = StaticScope.NONE; break;
       default: myScope = StaticScope.GLOBAL;
     }
+    // decided to keep it as implementationKind flag for compatibility with old MPS versions
+    // eventually, once pre-2023.2 versions (or whatever version we introduce separate <interface> tag to replace <concept>)
+    // fade out, we may abandon this approach. Anyway, it has to stay for years to come, don't want to bother now.
+    myInterfaceConcept = kind.length() > 2 && kind.charAt(2) == 'I';
+  }
+
+  /**
+   * Distinction b/w ConceptDeclaration and InterfaceConceptDeclaration, aka SConcept and SInterfaceConcept,
+   * aka 'Concepts' and 'Interface Concepts' as documentation put it.
+   */
+  public boolean isInterfaceConcept() {
+    // see CompiledConceptDescriptor#isInterfaceConcept()
+    return myInterfaceConcept;
+  }
+  public void markAsInterfaceConcept() {
+    myInterfaceConcept = true;
   }
 
   public PropertyInfo addProperty(SPropertyId propertyId, String name) {

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="6usxxw5wi2j854s2kz1emo2pyldt20p" />
+<product version="3" modelHash="-ar8cbrtd3oqyrtca0fn4uu9iwjj8thg">
+  <files names="ChooseFromStubsByNameModel.java:ExceptionChooserDialog.java:StubsClassChooserDialog.java" />
+</product>
 

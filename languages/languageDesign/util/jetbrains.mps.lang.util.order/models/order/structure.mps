@@ -2,9 +2,7 @@
 <model ref="r:e2f5b4d9-8319-4ef0-b685-6c50fa28ea4b(jetbrains.mps.lang.util.order.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="3" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
-    <devkit ref="2677cb18-f558-4e33-bc38-a5139cee06dc(jetbrains.mps.devkit.language-design)" />
+    <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
@@ -37,7 +35,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -49,9 +47,9 @@
     <property role="34LRSv" value="Order" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="283lDAXPS59" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="seq" />
-      <property role="20lbJX" value="1..n" />
+      <property role="20lbJX" value="fLJekj6/1..n" />
       <property role="IQ2ns" value="2450897840534683977" />
       <ref role="20lvS9" node="283lDAXPS5b" resolve="OrderParticipantReference" />
     </node>
@@ -71,9 +69,8 @@
     <property role="EcuMT" value="2450897840534688273" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="283lDAXPT8i" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="order" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2450897840534688274" />
       <ref role="20lvS9" node="283lDAXPS57" resolve="OrderDeclaration" />
     </node>
@@ -83,14 +80,13 @@
   </node>
   <node concept="1TIwiD" id="283lDAXPS5b">
     <property role="TrG5h" value="OrderParticipantReference" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="EcuMT" value="2450897840534683979" />
     <property role="R5$K7" value="true" />
     <property role="R5$K2" value="false" />
     <node concept="1TJgyj" id="283lDAXPS5c" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="target" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2450897840534683980" />
       <ref role="20lvS9" node="22594Rb8c7s" resolve="OrderParticipant" />
     </node>

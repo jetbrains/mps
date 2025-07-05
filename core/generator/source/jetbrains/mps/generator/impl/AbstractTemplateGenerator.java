@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ import java.util.List;
 
 public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
 
-  private GenerationSessionContext myOperationContext;
+  private final GenerationSessionContext myOperationContext;
   protected ProgressMonitor myProgressMonitor;
 
   protected final SModel myInputModel;
@@ -46,11 +46,12 @@ public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
   private final GeneratorMappings myMappings;
   private final Source myQuerySource;
 
-  protected AbstractTemplateGenerator(GenerationSessionContext operationContext, SModel inputModel, SModel outputModel, GeneratorMappings mappings, GeneratorQueryProvider.Source gqps) {
+  protected AbstractTemplateGenerator(GenerationSessionContext operationContext, SModel inputModel, SModel outputModel, GeneratorMappings mappings,
+                                      Source gqps, RoleValidation roleValidation) {
     myOperationContext = operationContext;
     myInputModel = inputModel;
     myOutputModel = outputModel;
-    myValidation = operationContext.getRoleValidationFacility();
+    myValidation = roleValidation;
     myMappings = mappings;
     myQuerySource = gqps;
   }
@@ -91,19 +92,6 @@ public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
   }
 
   @Override
-  public void registerMappingLabel(SNode inputNode, String mappingName, SNode outputNode) {
-    if (inputNode != null) {
-      myMappings.addOutputNodeByInputNodeAndMappingName(inputNode, mappingName, outputNode);
-    } else {
-      myMappings.addNewOutputNode(mappingName, outputNode);
-    }
-  }
-
-  public SNode findOutputNodeByTemplateNodeUnique(String templateNode) {
-    return myMappings.findOutputNodeByTemplateNodeUnique(templateNode);
-  }
-
-  @Override
   public SNode findOutputNodeByInputNodeAndMappingName(SNode inputNode, String mappingName) {
     if (inputNode != null) {
       return myMappings.findOutputNodeByInputNodeAndMappingName(inputNode, mappingName);
@@ -132,11 +120,15 @@ public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
     myMappings.addCopiedOutputNodeForInputNode(inputNode, outputNode);
   }
 
-  public void addOutputNodeByInputAndTemplateNode(SNode inputNode, String templateNodeId, SNode outputNode) {
-    myMappings.addOutputNodeByInputAndTemplateNode(inputNode, templateNodeId, outputNode);
+  public void addOutputNodeByInputAndTemplateNode(TemplateContext templateContext, String templateNodeId, SNode outputNode) {
+    // in fact, no apparent reason not to use addOutputNodeForContext, as this method is in use from weaving rule, which is applied with fresh TC anyway
+    // and hence empty history
+    myMappings.addOutputNodeForContext(templateContext, templateNodeId, outputNode);
   }
 
   void nodeCopied(TemplateContext context, SNode outputNode, String templateNodeId) {
+    // FIXME if template node could not be referenced, no reason to record the mapping. In generated templates, we analyze incoming references,
+    //       in interpreted, can use concept's StaticScope
     myMappings.addOutputNodeForContext(context, templateNodeId, outputNode);
   }
 
@@ -144,10 +136,6 @@ public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
     SNode node = findCopiedOutputNodeForInputNode(inputNode);
     if (myMappings.isInputNodeHasUniqueCopiedOutputNode(inputNode)) return node;
     return null;
-  }
-
-  public SNode findOutputNodeByInputAndTemplateNode(SNode inputNode, String templateNodeId) {
-    return myMappings.findOutputNodeByInputAndTemplateNode(inputNode, templateNodeId);
   }
 
   public SNode findOutputNodeById(SNodeId nodeId) {

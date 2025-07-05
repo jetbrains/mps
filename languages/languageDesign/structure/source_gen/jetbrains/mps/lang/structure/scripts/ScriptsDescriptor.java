@@ -16,7 +16,7 @@ public final class ScriptsDescriptor extends ScriptAspectBase {
     myRefactoringScripts[0] = new DeleteUndeclaredLinksAndProperties_MigrationScript();
     myRefactoringScripts[1] = new RemoveBackslashesFromIconPath_MigrationScript();
     myRefactoringScripts[2] = new CheckRootNodesNamingInternalPolicy_MigrationScript();
-    myRefactoringScripts[3] = new MigrateScopeProviders_MigrationScript();
+    myRefactoringScripts[3] = new EnumerationMigrationScipts_MigrationScript();
   }
 
   @Override

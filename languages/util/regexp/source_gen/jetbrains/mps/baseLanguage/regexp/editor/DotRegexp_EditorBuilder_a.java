@@ -13,7 +13,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 
 /*package*/ class DotRegexp_EditorBuilder_a extends AbstractEditorBuilder {
@@ -32,23 +31,23 @@ import jetbrains.mps.nodeEditor.MPSColors;
   }
 
   /*package*/ EditorCell createCell() {
-    return createCollection_4hi0d_a();
+    return createCollection_0();
   }
 
-  private EditorCell createCollection_4hi0d_a() {
+  private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
     editorCell.setCellId("Collection_4hi0d_a");
     editorCell.setBig(true);
-    editorCell.setCellContext(getCellFactory().getCellContext());
+    setCellContext(editorCell);
     RegexpSequenceByEnter.setCellActions(editorCell, myNode, getEditorContext());
-    editorCell.addEditorCell(createConstant_4hi0d_a0());
+    editorCell.addEditorCell(createConstant_0());
     return editorCell;
   }
-  private EditorCell createConstant_4hi0d_a0() {
+  private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ".");
     editorCell.setCellId("Constant_4hi0d_a0");
     Style style = new StyleImpl();
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_MAGENTA));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_MAGENTA));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

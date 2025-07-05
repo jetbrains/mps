@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="25wdps90rhwcjnenujfeuh18qz69cpl" />
+<product version="3" modelHash="1o90gjjjsdp9x4r0ibsq9tzdfwqcv42">
+  <files names="ConstraintsAspectDescriptor.java:VariableReference_Constraints.java" />
+</product>
 

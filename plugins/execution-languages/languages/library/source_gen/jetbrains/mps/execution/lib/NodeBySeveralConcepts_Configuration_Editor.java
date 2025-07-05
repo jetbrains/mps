@@ -7,32 +7,30 @@ import jetbrains.mps.execution.lib.ui.NodeBySeveralConceptChooser;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.options.ConfigurationException;
 import java.util.List;
-import com.intellij.openapi.util.Factory;
 
 public class NodeBySeveralConcepts_Configuration_Editor extends SettingsEditorEx<NodeBySeveralConcepts_Configuration> {
   private NodeBySeveralConceptChooser myChooser;
   public void disposeEditor() {
   }
+
   @NotNull
   public NodeBySeveralConceptChooser createEditor() {
     myChooser = new NodeBySeveralConceptChooser(myTargets);
     return myChooser;
   }
+
   public void applyEditorTo(final NodeBySeveralConcepts_Configuration configuration) throws ConfigurationException {
     configuration.setNode(myChooser.getNode());
     configuration.setNodeText(myChooser.getText());
   }
+
   public void resetEditorFrom(final NodeBySeveralConcepts_Configuration configuration) {
     myChooser.setNode(configuration.getNode());
     myChooser.setText(configuration.getNodeText());
   }
   private List<NodesDescriptor> myTargets;
   public NodeBySeveralConcepts_Configuration_Editor(final List<NodesDescriptor> targets) {
-    super(new Factory<NodeBySeveralConcepts_Configuration>() {
-      public NodeBySeveralConcepts_Configuration create() {
-        return new NodeBySeveralConcepts_Configuration(targets);
-      }
-    });
+    super(() -> new NodeBySeveralConcepts_Configuration(targets));
     myTargets = targets;
   }
 }

@@ -4,27 +4,60 @@ package jetbrains.mps.baseLanguage.closures.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
-import jetbrains.mps.lang.test.runtime.NodeCheckerUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.test.runtime.TransformationTest;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
+import java.util.Arrays;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 
 @MPSLaunch
 public class ClosureDataFlow_Test extends BaseTransformationTest {
-  @Test
-  public void test_ClosureDataFlow() throws Throwable {
-    initTest("${mps_home}", "r:3d6db45f-d7e0-45ba-9835-ff824ffe21a1(jetbrains.mps.baseLanguage.closures.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.closures.test.ClosureDataFlow_Test$TestBody", "test_ClosureDataFlow", true);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ClosureDataFlow_Test.class).projectPath(null).modelRef("r:3d6db45f-d7e0-45ba-9835-ff824ffe21a1(jetbrains.mps.baseLanguage.closures.test@tests)").reopenProject(null).build());
+
+  public ClosureDataFlow_Test() {
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
-  @MPSLaunch
-  public static class TestBody extends BaseTestBody {
-    public void test_ClosureDataFlow() throws Exception {
-      addNodeById("1227886714746");
-      NodeCheckerUtil.checkNodeForErrorMessages(SNodeOperations.cast(getNodeById("1227886714749"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b204L, "ConstructorDeclaration"))), false, false, false);
+  @Test
+  public void test_ClosureDataFlow() throws Throwable {
+    new TestBody(this).test_ClosureDataFlow();
+  }
+  @Test
+  public void test_ErrorMessagesCheck2501421320959199348() throws Throwable {
+    new TestBody(this).test_ErrorMessagesCheck2501421320959199348();
+  }
+
+  /*package*/ static class TestBody extends BaseTestBody {
+
+    /*package*/ TestBody(TransformationTest owner) {
+      super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1227886714746");
+    }
+
+    public void test_ClosureDataFlow() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        // Check statement was moved to node annotation
+        // check getAnnotatedNode(string):node<> error messages
+      });
+    }
+    public void test_ErrorMessagesCheck2501421320959199348() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("1227886714749");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(false).exclude(Arrays.<CheckExpectedMessageRunnable>asList()).run();
+      });
+    }
 
   }
 }

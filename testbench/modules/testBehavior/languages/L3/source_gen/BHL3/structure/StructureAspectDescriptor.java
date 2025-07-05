@@ -14,10 +14,16 @@ import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptA = createDescriptorForA();
   /*package*/ final ConceptDescriptor myConceptB = createDescriptorForB();
-  private final LanguageConceptSwitch myConceptIndex;
+  private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
-    myConceptIndex = new LanguageConceptSwitch();
+    myIndexSwitch = new LanguageConceptSwitch();
+  }
+
+
+  @Override
+  public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
+    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
   }
 
   @Override
@@ -28,7 +34,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
-    switch (myConceptIndex.index(id)) {
+    switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.A:
         return myConceptA;
       case LanguageConceptSwitch.B:
@@ -38,21 +44,25 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     }
   }
 
+
   /*package*/ int internalIndex(SAbstractConcept c) {
-    return myConceptIndex.index(c);
+    return myIndexSwitch.index(c);
   }
 
   private static ConceptDescriptor createDescriptorForA() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BHL3", "A", 0x9dabd0d4b67a4eefL, 0xb645d5534ca67594L, 0x6ab2e61d35e47365L);
     b.class_(false, false, false);
     b.origin("r:550e598c-d156-49bb-9397-c8a08d52175e(BHL3.structure)/7688460527007462245");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForB() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BHL3", "B", 0x9dabd0d4b67a4eefL, 0xb645d5534ca67594L, 0x6ab2e61d35e475ecL);
     b.class_(false, false, false);
-    b.super_("BHL3.structure.A", 0x9dabd0d4b67a4eefL, 0xb645d5534ca67594L, 0x6ab2e61d35e47365L);
+    // extends: BHL3.structure.A
+    b.super_(0x9dabd0d4b67a4eefL, 0xb645d5534ca67594L, 0x6ab2e61d35e47365L);
     b.origin("r:550e598c-d156-49bb-9397-c8a08d52175e(BHL3.structure)/7688460527007462892");
+    b.version(3);
     return b.create();
   }
 }

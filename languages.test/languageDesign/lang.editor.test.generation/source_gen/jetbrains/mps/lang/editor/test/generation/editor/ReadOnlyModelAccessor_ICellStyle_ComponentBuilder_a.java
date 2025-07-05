@@ -9,12 +9,12 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.ModelAccessor;
-import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.lang.editor.test.generation.editor.TestTargetStyleSheet_StyleSheet.testParentStyleStyleClass;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 
 /*package*/ class ReadOnlyModelAccessor_ICellStyle_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -32,25 +32,21 @@ import jetbrains.mps.lang.editor.test.generation.editor.TestTargetStyleSheet_Sty
   }
 
   /*package*/ EditorCell createCell() {
-    return createReadOnlyModelAccessor_isas8b_a();
+    return createReadOnlyModelAccessor_0();
   }
 
-  private EditorCell createReadOnlyModelAccessor_isas8b_a() {
-    EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor() {
+  private EditorCell createReadOnlyModelAccessor_0() {
+    EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
         return null;
-      }
-      public void setText(String s) {
-      }
-      public boolean isValidText(String s) {
-        return EqualUtil.equals(s, getText());
       }
     }, myNode);
     editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
     editorCell.setCellId("ReadOnlyModelAccessor_isas8b_a");
     Style style = new StyleImpl();
-    new testParentStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new testParentStyleStyleClass(this).apply(style, editorCell);
+    style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }

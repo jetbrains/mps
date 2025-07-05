@@ -40,14 +40,18 @@ public class CompletionActionItemUtil {
     if (item instanceof SubstituteMenuItemAsActionItem) {
       final SubstituteMenuItem substituteItem = ((SubstituteMenuItemAsActionItem) item).getSubstituteItem();
       return SubstituteMenuItemUtil.getReferentNode(substituteItem);
+    } else if (item instanceof ReferenceTransformationMenuItem) {
+      return ((ReferenceTransformationMenuItem) item).getTargetNode();
     }
     return null;
   }
 
-  public static String getVisibleMatchingText(CompletionActionItem item) {
+  public static String getVisibleMatchingText(CompletionActionItem item, String pattern) {
     if (item instanceof SubstituteMenuItemAsActionItem) {
       final SubstituteMenuItem substituteItem = ((SubstituteMenuItemAsActionItem) item).getSubstituteItem();
-      return SubstituteMenuItemUtil.getVisibleMatchingText(substituteItem);
+      return SubstituteMenuItemUtil.getVisibleMatchingText(substituteItem, pattern);
+    } else if (item instanceof ReferenceTransformationMenuItem) {
+      return ((ReferenceTransformationMenuItem) item).getVisibleText(pattern);
     }
     return null;
   }

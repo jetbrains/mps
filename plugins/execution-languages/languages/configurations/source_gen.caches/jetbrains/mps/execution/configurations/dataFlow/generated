@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-1hocf9d32tae5j0swj6a9qr3kl2l5r6" />
+<product version="3" modelHash="-cxxc9iu322cz7vf1sxmzq58yw56ypnk">
+  <files names="DataFlowAspectDescriptorImpl.java:RunConfigurationCreator_DataFlow.java:StartProcessHandlerStatement_DataFlow.java" />
+</product>
 

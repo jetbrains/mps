@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,42 +15,35 @@
  */
 package jetbrains.mps.nodefs;
 
-import com.intellij.openapi.components.AbstractProjectComponent;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.project.Project;
 
 /**
  * Bridge {@link com.intellij.openapi.vfs.VirtualFileSystem} and {@linkplain jetbrains.mps.project.MPSProject mps project's}
- * {@linkplain Project#getRepository() repository}.
+ * {@linkplain jetbrains.mps.project.Project#getRepository() repository}.
+ * <p>Used to be a project component, now {@link MPSProject} initializes one explicitly</p>
  * @author Artem Tikhomirov
  * @since 3.4
  */
-public class FileSystemProjectBridge extends AbstractProjectComponent {
+public class FileSystemProjectBridge {
+  // doesn't look like this class could become a service, we need RVF association w/o explicit call to this bridge
 
   private final MPSProject myProject;
-  private final NodeVirtualFileSystem myFileSystem;
   private RepositoryVirtualFiles myProjectVirtualFiles;
 
-  public FileSystemProjectBridge(MPSProject mpsProject, NodeVirtualFileSystem mpsFileSystem) {
-    super(mpsProject.getProject());
+  public FileSystemProjectBridge(MPSProject mpsProject) {
     myProject = mpsProject;
-    myFileSystem = mpsFileSystem;
   }
 
-  @Override
   public void projectOpened() {
-    super.projectOpened();
-    myProjectVirtualFiles = new RepositoryVirtualFiles(myFileSystem, myProject.getRepository());
+    myProjectVirtualFiles = new RepositoryVirtualFiles(NodeVirtualFileSystem.getInstance(), myProject);
     myProjectVirtualFiles.register();
   }
 
-  @Override
   public void projectClosed() {
     if (myProjectVirtualFiles != null) {
       myProjectVirtualFiles.unregister();
       myProjectVirtualFiles.clear();
       myProjectVirtualFiles = null;
     }
-    super.projectClosed();
   }
 }

@@ -2,7 +2,7 @@
 <model ref="r:9657ec16-7dab-4be4-9ea2-13982a8c441b(jetbrains.mps.baseLanguage.overloadedOperators.util)">
   <persistence version="9" />
   <languages>
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="0" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -92,7 +92,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -105,7 +105,7 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -141,17 +141,18 @@
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="3562215692195599741" name="jetbrains.mps.lang.smodel.structure.SLinkImplicitSelect" flags="nn" index="13MTOL">
         <reference id="3562215692195600259" name="link" index="13MTZf" />
       </concept>
       <concept id="1176109685393" name="jetbrains.mps.lang.smodel.structure.Model_RootsIncludingImportedOperation" flags="nn" index="3lApI0">
-        <reference id="1176109685394" name="concept" index="3lApI3" />
+        <child id="6750920497477143611" name="conceptArgument" index="3MHPDn" />
       </concept>
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
+      <concept id="334628810661441841" name="jetbrains.mps.lang.smodel.structure.AsSConcept" flags="nn" index="1rGIog" />
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
@@ -164,7 +165,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -246,7 +247,9 @@
             <node concept="2OqwBi" id="6oKb3MdZyLn" role="33vP2m">
               <node concept="2OqwBi" id="6oKb3MdZyLo" role="2Oq$k0">
                 <node concept="2RRcyG" id="6oKb3MdZyLp" role="2OqNvi">
-                  <ref role="2RRcyH" to="vgj4:6oKb3MdXML9" resolve="ContainerImport" />
+                  <node concept="chp4Y" id="5QK5AMJp7tK" role="3MHsoP">
+                    <ref role="cht4Q" to="vgj4:6oKb3MdXML9" resolve="ContainerImport" />
+                  </node>
                 </node>
                 <node concept="37vLTw" id="6oKb3MdZyLq" role="2Oq$k0">
                   <ref role="3cqZAo" node="6oKb3MdYOPT" resolve="myModel" />
@@ -270,7 +273,9 @@
                     <ref role="3cqZAo" node="6oKb3MdYOPT" resolve="myModel" />
                   </node>
                   <node concept="3lApI0" id="6oKb3MdZzKG" role="2OqNvi">
-                    <ref role="3lApI3" to="vgj4:qQXsgj0h87" resolve="OverloadedOperatorContainer" />
+                    <node concept="chp4Y" id="5QK5AMJp7tM" role="3MHPDn">
+                      <ref role="cht4Q" to="vgj4:qQXsgj0h87" resolve="OverloadedOperatorContainer" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -652,23 +657,26 @@
                 </node>
                 <node concept="1mIQ4w" id="4nxgFhR8gIL" role="2OqNvi">
                   <node concept="25Kdxt" id="4nxgFhR8gIM" role="cj9EA">
-                    <node concept="2OqwBi" id="4nxgFhR8gIN" role="25KhWn">
-                      <node concept="1PxgMI" id="4nxgFhR8gIO" role="2Oq$k0">
-                        <node concept="2OqwBi" id="4nxgFhR8gIP" role="1m5AlR">
-                          <node concept="37vLTw" id="2BHiRxghelK" role="2Oq$k0">
-                            <ref role="3cqZAo" node="4nxgFhR8gIk" resolve="operator" />
+                    <node concept="2OqwBi" id="e1yJTyGIku" role="25KhWn">
+                      <node concept="2OqwBi" id="4nxgFhR8gIN" role="2Oq$k0">
+                        <node concept="1PxgMI" id="4nxgFhR8gIO" role="2Oq$k0">
+                          <node concept="2OqwBi" id="4nxgFhR8gIP" role="1m5AlR">
+                            <node concept="37vLTw" id="2BHiRxghelK" role="2Oq$k0">
+                              <ref role="3cqZAo" node="4nxgFhR8gIk" resolve="operator" />
+                            </node>
+                            <node concept="3TrEf2" id="4nxgFhR8gIR" role="2OqNvi">
+                              <ref role="3Tt5mk" to="vgj4:2t$Vq$DOzUQ" resolve="operator" />
+                            </node>
                           </node>
-                          <node concept="3TrEf2" id="4nxgFhR8gIR" role="2OqNvi">
-                            <ref role="3Tt5mk" to="vgj4:2t$Vq$DOzUQ" resolve="operator" />
+                          <node concept="chp4Y" id="714IaVdH0Hh" role="3oSUPX">
+                            <ref role="cht4Q" to="vgj4:2t$Vq$DOzUO" resolve="BinaryOperationReference" />
                           </node>
                         </node>
-                        <node concept="chp4Y" id="714IaVdH0Hh" role="3oSUPX">
-                          <ref role="cht4Q" to="vgj4:2t$Vq$DOzUO" resolve="BinaryOperationReference" />
+                        <node concept="3TrEf2" id="4nxgFhR8gIS" role="2OqNvi">
+                          <ref role="3Tt5mk" to="vgj4:2t$Vq$DOzUP" resolve="binaryOperation" />
                         </node>
                       </node>
-                      <node concept="3TrEf2" id="4nxgFhR8gIS" role="2OqNvi">
-                        <ref role="3Tt5mk" to="vgj4:2t$Vq$DOzUP" resolve="binaryOperation" />
-                      </node>
+                      <node concept="1rGIog" id="e1yJTyGIT6" role="2OqNvi" />
                     </node>
                   </node>
                 </node>
@@ -1091,7 +1099,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="4nxgFhR8gNp" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SNode.getUserObject(java.lang.Object):java.lang.Object" resolve="getUserObject" />
+                    <ref role="37wK5l" to="mhbf:~SNode.getUserObject(java.lang.Object)" resolve="getUserObject" />
                     <node concept="Xl_RD" id="4nxgFhR8gNq" role="37wK5m">
                       <property role="Xl_RC" value="operator" />
                     </node>
@@ -1276,7 +1284,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4nxgFhR8gOG" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.putUserObject(java.lang.Object,java.lang.Object):void" resolve="putUserObject" />
+              <ref role="37wK5l" to="mhbf:~SNode.putUserObject(java.lang.Object,java.lang.Object)" resolve="putUserObject" />
               <node concept="Xl_RD" id="4nxgFhR8gOH" role="37wK5m">
                 <property role="Xl_RC" value="operator" />
               </node>
@@ -1294,7 +1302,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4nxgFhR8gON" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.putUserObject(java.lang.Object,java.lang.Object):void" resolve="putUserObject" />
+              <ref role="37wK5l" to="mhbf:~SNode.putUserObject(java.lang.Object,java.lang.Object)" resolve="putUserObject" />
               <node concept="Xl_RD" id="4nxgFhR8gOO" role="37wK5m">
                 <property role="Xl_RC" value="reversed" />
               </node>

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-av57ioqydv3ggq7h2m0amdyarpo5zbi" />
+<product version="3" modelHash="-blv8t3pkil9digtnoycmdzm8y13zhjx">
+  <files names="MenuRoots.java:QueriesUtil.java" />
+</product>
 

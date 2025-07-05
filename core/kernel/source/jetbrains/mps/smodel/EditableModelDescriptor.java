@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.smodel;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import org.jetbrains.mps.openapi.model.SModelChangeListener;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.mps.openapi.persistence.DataSource;
@@ -63,12 +62,6 @@ public abstract class EditableModelDescriptor extends RegularModelDescriptor imp
   }
 
   @Override
-  public boolean isReadOnly() {
-    // FIXME why not this code in SModelBase? Looks pretty general, IMO.
-    return getSource().isReadOnly();
-  }
-
-  @Override
   public void addChangeListener(SNodeChangeListener listener) {
     getNodeEventDispatch().addChangeListener(listener);
   }
@@ -79,16 +72,8 @@ public abstract class EditableModelDescriptor extends RegularModelDescriptor imp
   }
 
   @Override
-  public void addChangeListener(SModelChangeListener l) {
-    // although there's no reason to handle legacy listeners that are scheduled for removal in the new class,
-    // it doesn't hurt to.
-    getNodeEventDispatch().addChangeListener(l);
-  }
-
-  @Override
-  public void removeChangeListener(SModelChangeListener l) {
-    // although there's no reason to handle legacy listeners that are scheduled for removal in the new class,
-    // it doesn't hurt to.
-    getNodeEventDispatch().removeChangeListener(l);
+  public void rename(@NotNull String newModelName, boolean changeFile) {
+    // this method is for EditableSModelBase implementation of EditableSModel only, no reason to force my subclasses override it.
+    throw new UnsupportedOperationException();
   }
 }

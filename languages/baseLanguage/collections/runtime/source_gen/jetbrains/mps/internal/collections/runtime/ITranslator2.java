@@ -4,7 +4,13 @@ package jetbrains.mps.internal.collections.runtime;
 
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
+/**
+ * 
+ * @deprecated use closures, if usage is necessary, create an interface instead of this class
+ */
+@Deprecated
 public abstract class ITranslator2<T, S> implements _FunctionTypes._return_P1_E0<Iterable<S>, T> {
+  @Deprecated
   public ITranslator2() {
   }
   public abstract Iterable<S> translate(T t);

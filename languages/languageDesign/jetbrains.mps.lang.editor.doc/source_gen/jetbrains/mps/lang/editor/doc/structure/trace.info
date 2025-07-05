@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root>
+    <file name="ConceptPresentationAspectImpl.java">
+      <unit at="11,0,54,0" name="jetbrains.mps.lang.editor.doc.structure.ConceptPresentationAspectImpl" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <unit at="10,0,34,0" name="jetbrains.mps.lang.editor.doc.structure.LanguageConceptSwitch" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <unit at="15,0,110,0" name="jetbrains.mps.lang.editor.doc.structure.StructureAspectDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:ac08a7f4-7464-4c43-96f8-ac3a8b69f7ea(jetbrains.mps.lang.editor.doc.structure)/4710646077647677180">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="4710646077647677180" at="14,0,15,0" concept="1" trace="props_CellModel_OpenAngleBracket" />
+      <node id="4710646077647677180" at="37,55,38,76" concept="3" />
+      <node id="4710646077647677180" at="38,76,39,35" concept="0" />
+      <node id="4710646077647677180" at="39,35,40,58" concept="0" />
+      <node id="4710646077647677180" at="41,9,42,48" concept="4" />
+      <node id="4710646077647677180" at="36,60,41,9" concept="2" />
+      <scope id="4710646077647677180" at="37,55,40,58">
+        <var name="cpb" id="4710646077647677180" />
+      </scope>
+      <scope id="4710646077647677180" at="36,60,42,48" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="4710646077647677180" at="14,0,15,0" concept="6" trace="CellModel_OpenAngleBracket" />
+      <node id="4710646077647677180" at="20,56,21,65" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="4710646077647677180" at="18,0,19,0" concept="1" trace="myConceptCellModel_OpenAngleBracket" />
+      <node id="4710646077647677180" at="46,60,47,51" concept="4" />
+      <node id="4710646077647677180" at="87,84,88,190" concept="3" />
+      <node id="4710646077647677180" at="88,190,89,34" concept="0" />
+      <node id="4710646077647677180" at="89,34,90,67" concept="5" />
+      <node id="4710646077647677180" at="90,67,91,70" concept="0" />
+      <node id="4710646077647677180" at="91,70,92,116" concept="0" />
+      <node id="4710646077647677180" at="92,116,93,17" concept="0" />
+      <node id="4710646077647677181" at="93,17,94,117" concept="0" />
+      <node id="4710646077647677180" at="94,117,95,17" concept="0" />
+      <node id="4710646077647677180" at="95,17,96,22" concept="4" />
+      <node id="4710646077647677180" at="87,0,98,0" concept="7" trace="createDescriptorForCellModel_OpenAngleBracket#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="4710646077647677180" at="46,60,47,51" />
+      <scope id="4710646077647677180" at="87,84,96,22">
+        <var name="b" id="4710646077647677180" />
+      </scope>
+      <scope id="4710646077647677180" at="87,0,98,0" />
+    </file>
+  </root>
+  <root nodeRef="r:ac08a7f4-7464-4c43-96f8-ac3a8b69f7ea(jetbrains.mps.lang.editor.doc.structure)/4710646077653326275">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="4710646077653326275" at="12,0,13,0" concept="1" trace="props_CellModel_CloseAngleBracket" />
+      <node id="4710646077653326275" at="23,56,24,76" concept="3" />
+      <node id="4710646077653326275" at="24,76,25,35" concept="0" />
+      <node id="4710646077653326275" at="25,35,26,59" concept="0" />
+      <node id="4710646077653326275" at="27,9,28,49" concept="4" />
+      <node id="4710646077653326275" at="22,61,27,9" concept="2" />
+      <scope id="4710646077653326275" at="23,56,26,59">
+        <var name="cpb" id="4710646077653326275" />
+      </scope>
+      <scope id="4710646077653326275" at="22,61,28,49" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="4710646077653326275" at="12,0,13,0" concept="6" trace="CellModel_CloseAngleBracket" />
+      <node id="4710646077653326275" at="18,116,19,66" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="4710646077653326275" at="16,0,17,0" concept="1" trace="myConceptCellModel_CloseAngleBracket" />
+      <node id="4710646077653326275" at="42,61,43,52" concept="4" />
+      <node id="4710646077653326275" at="60,85,61,191" concept="3" />
+      <node id="4710646077653326275" at="61,191,62,34" concept="0" />
+      <node id="4710646077653326275" at="62,34,63,67" concept="5" />
+      <node id="4710646077653326275" at="63,67,64,70" concept="0" />
+      <node id="4710646077653326275" at="64,70,65,116" concept="0" />
+      <node id="4710646077653326275" at="65,116,66,17" concept="0" />
+      <node id="4710646077653326276" at="66,17,67,118" concept="0" />
+      <node id="4710646077653326275" at="67,118,68,17" concept="0" />
+      <node id="4710646077653326275" at="68,17,69,22" concept="4" />
+      <node id="4710646077653326275" at="60,0,71,0" concept="7" trace="createDescriptorForCellModel_CloseAngleBracket#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="4710646077653326275" at="42,61,43,52" />
+      <scope id="4710646077653326275" at="60,85,69,22">
+        <var name="b" id="4710646077653326275" />
+      </scope>
+      <scope id="4710646077653326275" at="60,0,71,0" />
+    </file>
+  </root>
+  <root nodeRef="r:ac08a7f4-7464-4c43-96f8-ac3a8b69f7ea(jetbrains.mps.lang.editor.doc.structure)/4710646077657337706">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="4710646077657337706" at="15,0,16,0" concept="1" trace="props_CellModel_OpenAngleBracketSlash" />
+      <node id="4710646077657337706" at="44,60,45,76" concept="3" />
+      <node id="4710646077657337706" at="45,76,46,36" concept="0" />
+      <node id="4710646077657337706" at="46,36,47,63" concept="0" />
+      <node id="4710646077657337706" at="48,9,49,53" concept="4" />
+      <node id="4710646077657337706" at="43,65,48,9" concept="2" />
+      <scope id="4710646077657337706" at="44,60,47,63">
+        <var name="cpb" id="4710646077657337706" />
+      </scope>
+      <scope id="4710646077657337706" at="43,65,49,53" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="4710646077657337706" at="15,0,16,0" concept="6" trace="CellModel_OpenAngleBracketSlash" />
+      <node id="4710646077657337706" at="21,65,22,70" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="4710646077657337706" at="19,0,20,0" concept="1" trace="myConceptCellModel_OpenAngleBracketSlash" />
+      <node id="4710646077657337706" at="48,65,49,56" concept="4" />
+      <node id="4710646077657337706" at="98,89,99,195" concept="3" />
+      <node id="4710646077657337706" at="99,195,100,34" concept="0" />
+      <node id="4710646077657337706" at="100,34,101,67" concept="5" />
+      <node id="4710646077657337706" at="101,67,102,70" concept="0" />
+      <node id="4710646077657337706" at="102,70,103,116" concept="0" />
+      <node id="4710646077657337706" at="103,116,104,17" concept="0" />
+      <node id="4710646077657337707" at="104,17,105,122" concept="0" />
+      <node id="4710646077657337706" at="105,122,106,18" concept="0" />
+      <node id="4710646077657337706" at="106,18,107,22" concept="4" />
+      <node id="4710646077657337706" at="98,0,109,0" concept="7" trace="createDescriptorForCellModel_OpenAngleBracketSlash#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="4710646077657337706" at="48,65,49,56" />
+      <scope id="4710646077657337706" at="98,89,107,22">
+        <var name="b" id="4710646077657337706" />
+      </scope>
+      <scope id="4710646077657337706" at="98,0,109,0" />
+    </file>
+  </root>
+  <root nodeRef="r:ac08a7f4-7464-4c43-96f8-ac3a8b69f7ea(jetbrains.mps.lang.editor.doc.structure)/8032738370786720738">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="8032738370786720738" at="13,0,14,0" concept="1" trace="props_CellModel_HtmlTag" />
+      <node id="8032738370786720738" at="30,46,31,76" concept="3" />
+      <node id="8032738370786720738" at="31,76,32,41" concept="0" />
+      <node id="8032738370786720738" at="32,41,33,49" concept="0" />
+      <node id="8032738370786720738" at="34,9,35,39" concept="4" />
+      <node id="8032738370786720738" at="29,51,34,9" concept="2" />
+      <scope id="8032738370786720738" at="30,46,33,49">
+        <var name="cpb" id="8032738370786720738" />
+      </scope>
+      <scope id="8032738370786720738" at="29,51,35,39" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="8032738370786720738" at="13,0,14,0" concept="6" trace="CellModel_HtmlTag" />
+      <node id="8032738370786720738" at="19,66,20,56" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="8032738370786720738" at="17,0,18,0" concept="1" trace="myConceptCellModel_HtmlTag" />
+      <node id="8032738370786720738" at="44,51,45,42" concept="4" />
+      <node id="8032738370786720738" at="71,75,72,181" concept="3" />
+      <node id="8032738370786720738" at="72,181,73,34" concept="0" />
+      <node id="8032738370786720738" at="73,34,74,67" concept="5" />
+      <node id="8032738370786720738" at="74,67,75,70" concept="0" />
+      <node id="8032738370786720738" at="75,70,76,116" concept="0" />
+      <node id="8032738370786720738" at="76,116,77,17" concept="0" />
+      <node id="9185659875393569181" at="77,17,78,199" concept="0" />
+      <node id="6803781190384112358" at="78,199,79,192" concept="0" />
+      <node id="8744622371126097635" at="79,192,80,206" concept="0" />
+      <node id="4710646077655960662" at="80,206,81,207" concept="0" />
+      <node id="4710646077659750112" at="81,207,82,206" concept="0" />
+      <node id="4710646077659750114" at="82,206,83,207" concept="0" />
+      <node id="8032738370786720738" at="83,207,84,23" concept="0" />
+      <node id="8032738370786720738" at="84,23,85,22" concept="4" />
+      <node id="8032738370786720738" at="71,0,87,0" concept="7" trace="createDescriptorForCellModel_HtmlTag#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="8032738370786720738" at="44,51,45,42" />
+      <scope id="8032738370786720738" at="71,75,85,22">
+        <var name="b" id="8032738370786720738" />
+      </scope>
+      <scope id="8032738370786720738" at="71,0,87,0" />
+    </file>
+  </root>
+</debug-info>
+

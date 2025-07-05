@@ -4,225 +4,347 @@ package jetbrains.mps.baseLanguage.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
+import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
+import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
+import java.util.Arrays;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.smodel.SNodePointer;
 
 @MPSLaunch
 public class ShortTypeOfIntegerConstant_Test extends BaseTransformationTest {
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ShortTypeOfIntegerConstant_Test.class).projectPath(null).modelRef("r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)").reopenProject(null).build());
+
+  public ShortTypeOfIntegerConstant_Test() {
+    super(ourParametersCacheExtension.getParametersCache());
+  }
+
   @Test
   public void test_ErrorMessagesCheck7584461597510495229() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_ErrorMessagesCheck7584461597510495229", true);
+    new TestBody(this).test_ErrorMessagesCheck7584461597510495229();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510745219() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510745219", true);
+  public void test_NodeTypeSystemCheck2501421320960572988() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960572988();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510771667() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510771667", true);
+  public void test_NodeTypeSystemCheck2501421320960573790() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960573790();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510791632() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510791632", true);
+  public void test_NodeTypeSystemCheck2501421320960579599() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960579599();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510811609() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510811609", true);
+  public void test_NodeTypeSystemCheck2501421320960579949() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960579949();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495270() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495270", true);
+  public void test_NodeTypeSystemCheck2501421320960580847() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960580847();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495276() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495276", true);
+  public void test_NodeTypeSystemCheck2501421320960580861() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960580861();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495282() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495282", true);
+  public void test_NodeTypeSystemCheck2501421320960581148() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960581148();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495288() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495288", true);
+  public void test_NodeTypeSystemCheck2501421320960581162() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960581162();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495296() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495296", true);
+  public void test_NodeTypeSystemCheck2501421320960581178() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960581178();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495302() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495302", true);
+  public void test_NodeTypeSystemCheck2501421320960581490() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960581490();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495308() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495308", true);
+  public void test_NodeTypeSystemCheck2501421320960581515() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960581515();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510839740() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510839740", true);
+  public void test_NodeTypeSystemCheck2501421320960581540() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960581540();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510839746() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510839746", true);
+  public void test_NodeTypeSystemCheck2501421320960585452() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960585452();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495342() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495342", true);
+  public void test_NodeTypeSystemCheck2501421320960589663() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960589663();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495347() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495347", true);
+  public void test_NodeTypeSystemCheck2501421320960589677() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960589677();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495356() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495356", true);
+  public void test_NodeTypeSystemCheck2501421320960599548() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960599548();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495364() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495364", true);
+  public void test_NodeUnusedAssignmentWarningCheck2501421320960599549() throws Throwable {
+    new TestBody(this).test_NodeUnusedAssignmentWarningCheck2501421320960599549();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495370() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495370", true);
+  public void test_NodeTypeSystemCheck2501421320960589993() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960589993();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495376() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495376", true);
+  public void test_NodeUnusedAssignmentWarningCheck2501421320960599858() throws Throwable {
+    new TestBody(this).test_NodeUnusedAssignmentWarningCheck2501421320960599858();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495386() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495386", true);
+  public void test_NodeTypeSystemCheck2501421320960590022() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960590022();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495441() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495441", true);
+  public void test_NodeUnusedAssignmentWarningCheck2501421320960599890() throws Throwable {
+    new TestBody(this).test_NodeUnusedAssignmentWarningCheck2501421320960599890();
   }
   @Test
-  public void test_NodeErrorCheck7584461597510495450() throws Throwable {
-    initTest("${mps_home}", "r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)", false);
-    runTest("jetbrains.mps.baseLanguage.test.ShortTypeOfIntegerConstant_Test$TestBody", "test_NodeErrorCheck7584461597510495450", true);
+  public void test_NodeTypeSystemCheck2501421320960590043() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960590043();
+  }
+  @Test
+  public void test_NodeUnusedAssignmentWarningCheck2501421320960599914() throws Throwable {
+    new TestBody(this).test_NodeUnusedAssignmentWarningCheck2501421320960599914();
+  }
+  @Test
+  public void test_NodeTypeSystemCheck2501421320960599938() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960599938();
+  }
+  @Test
+  public void test_NodeIncompatibleMethodSignatureCheck1955277442708660283() throws Throwable {
+    new TestBody(this).test_NodeIncompatibleMethodSignatureCheck1955277442708660283();
+  }
+  @Test
+  public void test_NodeTypeSystemCheck2501421320960599967() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960599967();
+  }
+  @Test
+  public void test_NodeTypeSystemCheck2501421320960604807() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck2501421320960604807();
   }
 
-  @MPSLaunch
-  public static class TestBody extends BaseTestBody {
+  /*package*/ static class TestBody extends BaseTestBody {
+
+    /*package*/ TestBody(TransformationTest owner) {
+      super(owner);
+    }
+
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7584461597510495225");
+    }
 
     public void test_ErrorMessagesCheck7584461597510495229() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495229"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495226"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495226");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(false).exclude(Arrays.<CheckExpectedMessageRunnable>asList(new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510745214"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510771662"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510791627"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510811604"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495266"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495272"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495278"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495284"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495290"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495298"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495304"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510839736"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510839742"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495338"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495344"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495350"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("7584461597510495350"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7567158975344997930"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495358"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("7584461597510495358"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7567158975344997930"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495366"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("7584461597510495366"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7567158975344997930"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495372"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("7584461597510495372"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7567158975344997930"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495384"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("7584461597510495383"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2234318170389157992"), "Error: Incompatible method signature", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495439"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("7584461597510495448"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()))).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510745219() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510745219"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510745214"));
+    public void test_NodeTypeSystemCheck2501421320960572988() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510745214");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510771667() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510771667"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510771662"));
+    public void test_NodeTypeSystemCheck2501421320960573790() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510771662");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510791632() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510791632"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510791627"));
+    public void test_NodeTypeSystemCheck2501421320960579599() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510791627");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510811609() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510811609"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510811604"));
+    public void test_NodeTypeSystemCheck2501421320960579949() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510811604");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495270() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495270"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495266"));
+    public void test_NodeTypeSystemCheck2501421320960580847() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495266");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495276() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495276"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495272"));
+    public void test_NodeTypeSystemCheck2501421320960580861() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495272");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495282() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495282"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495278"));
+    public void test_NodeTypeSystemCheck2501421320960581148() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495278");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495288() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495288"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495284"));
+    public void test_NodeTypeSystemCheck2501421320960581162() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495284");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495296() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495296"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495290"));
+    public void test_NodeTypeSystemCheck2501421320960581178() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495290");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495302() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495302"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495298"));
+    public void test_NodeTypeSystemCheck2501421320960581490() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495298");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495308() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495308"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495304"));
+    public void test_NodeTypeSystemCheck2501421320960581515() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495304");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510839740() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510839740"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510839736"));
+    public void test_NodeTypeSystemCheck2501421320960581540() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510839736");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510839746() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510839746"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510839742"));
+    public void test_NodeTypeSystemCheck2501421320960585452() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510839742");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495342() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495342"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495338"));
+    public void test_NodeTypeSystemCheck2501421320960589663() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495338");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495347() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495347"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495344"));
+    public void test_NodeTypeSystemCheck2501421320960589677() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495344");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495356() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495356"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495350"));
+    public void test_NodeTypeSystemCheck2501421320960599548() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495350");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495364() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495364"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495358"));
+    public void test_NodeUnusedAssignmentWarningCheck2501421320960599549() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495350");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7567158975344997930"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495370() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495370"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495366"));
+    public void test_NodeTypeSystemCheck2501421320960589993() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495358");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495376() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495376"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495372"));
+    public void test_NodeUnusedAssignmentWarningCheck2501421320960599858() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495358");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7567158975344997930"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495386() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495386"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495384"));
+    public void test_NodeTypeSystemCheck2501421320960590022() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495366");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495441() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495441"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495439"));
+    public void test_NodeUnusedAssignmentWarningCheck2501421320960599890() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495366");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7567158975344997930"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
-    public void test_NodeErrorCheck7584461597510495450() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("7584461597510495450"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("7584461597510495448"));
+    public void test_NodeTypeSystemCheck2501421320960590043() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495372");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
+    }
+    public void test_NodeUnusedAssignmentWarningCheck2501421320960599914() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495372");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7567158975344997930"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
+    }
+    public void test_NodeTypeSystemCheck2501421320960599938() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495384");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
+    }
+    public void test_NodeIncompatibleMethodSignatureCheck1955277442708660283() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495383");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2234318170389157992"), "Error: Incompatible method signature", myProject.getRepository(), myProject.getPlatform()).run();
+      });
+    }
+    public void test_NodeTypeSystemCheck2501421320960599967() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495439");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
+    }
+    public void test_NodeTypeSystemCheck2501421320960604807() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("7584461597510495448");
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
 
   }

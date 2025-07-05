@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.smodel.persistence.def.v9;
 
-import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.registry.AggregationLinkInfo;
 import jetbrains.mps.persistence.registry.AssociationLinkInfo;
@@ -24,19 +22,18 @@ import jetbrains.mps.persistence.registry.ConceptInfo;
 import jetbrains.mps.persistence.registry.IdInfoRegistry;
 import jetbrains.mps.persistence.registry.LangInfo;
 import jetbrains.mps.persistence.registry.PropertyInfo;
+import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.smodel.SModel.ImportElement;
 import jetbrains.mps.smodel.SModelHeader;
-import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
 import jetbrains.mps.smodel.persistence.def.IModelWriter;
-import jetbrains.mps.util.ToStringComparator;
+import jetbrains.mps.smodel.persistence.def.UserObjectEncoder;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -47,7 +44,6 @@ import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -57,18 +53,19 @@ import java.util.Set;
 public class ModelWriter9 implements IModelWriter {
   public static final int VERSION = 9;
   private final MetaModelInfoProvider myMetaInfoProvider;
+  private final UserObjectEncoder myUserObjectEncoder;
 
   private IdInfoRegistry myMetaInfo;
   private ImportsHelper myImportsHelper;
   private final IdEncoder myIdEncoder = new IdEncoder();
 
-  public ModelWriter9(@NotNull MetaModelInfoProvider mmiProvider) {
+  public ModelWriter9(@NotNull MetaModelInfoProvider mmiProvider, boolean saveUserObjects) {
     myMetaInfoProvider = mmiProvider;
+    myUserObjectEncoder = saveUserObjects ? new UserObjectEncoder() : null;
   }
 
   @Override
   public Document saveModel(SModel sourceModel) {
-
     myMetaInfo = new IdInfoRegistry();
     new IdInfoCollector(myMetaInfo, myMetaInfoProvider).fill(sourceModel.getRootNodes());
     myImportsHelper = new ImportsHelper(sourceModel.getReference());
@@ -163,12 +160,11 @@ public class ModelWriter9 implements IModelWriter {
   }
 
   private void saveAdditionalProps(SModel sourceModel, Element rootElement) {
-    if (!(sourceModel instanceof DefaultSModel)) return;
+    if (!(sourceModel instanceof DefaultSModel)) {
+      return;
+    }
 
     SModelHeader header = ((DefaultSModel) sourceModel).getSModelHeader();
-    if (header.isDoNotGenerate()) {
-      rootElement.setAttribute(SModelHeader.DO_NOT_GENERATE, Boolean.TRUE.toString());
-    }
 
     for (Map.Entry<String, String> en : header.getOptionalProperties().entrySet()) {
       Element attr = new Element(ModelPersistence9.MODEL_ATTRIBUTE);
@@ -186,8 +182,6 @@ public class ModelWriter9 implements IModelWriter {
       final String index = myImportsHelper.addModelImport(modelRef);
       rootElement.addContent(createImportElement(modelRef, index, false));
     }
-    SModelReference[] implicitImports = crossModelReferences.toArray(new SModelReference[crossModelReferences.size()]);
-    Arrays.sort(implicitImports, new ToStringComparator());
     for (SModelReference implicitImport : crossModelReferences) {
       final String index = myImportsHelper.addModelImport(implicitImport);
       rootElement.addContent(createImportElement(implicitImport, index, true));
@@ -198,10 +192,13 @@ public class ModelWriter9 implements IModelWriter {
 //    Would be nice to re-use existing code, but don't have openapi.SModel here, unfortunately
 //    ModelDependencyScanner depScan = new ModelDependencyScanner().crossModelReferences(true).usedLanguages(false);
 //    depScan.walk(sourceModel);
-    Set<SModelReference> crossModelRefs = new LinkedHashSet<SModelReference>();
+    Set<SModelReference> crossModelRefs = new LinkedHashSet<>();
     for (SNode r : model.getRootNodes()) {
       for (SNode n : SNodeUtil.getDescendants(r)) {
         for (SReference ref : n.getReferences()) {
+          if (myMetaInfo.isTransient(ref.getLink())) {
+            continue;
+          }
           SModelReference target = ref.getTargetSModelReference();
           if (target != null) {
             crossModelRefs.add(target);
@@ -263,10 +260,13 @@ public class ModelWriter9 implements IModelWriter {
     final SContainmentLink roleInParent = node.getContainmentLink();
     if (roleInParent != null) {
       final AggregationLinkInfo aggregationLinkInfo = myMetaInfo.find(roleInParent);
-      setNotNullAttribute(nodeElement, ModelPersistence9.ROLE_ID, aggregationLinkInfo.getIndex());
+      nodeElement.setAttribute(ModelPersistence9.ROLE_ID, aggregationLinkInfo.getIndex());
     }
 
     for (SProperty pid : node.getProperties()) {
+      if (myMetaInfo.isTransient(pid)) {
+        continue;
+      }
       Element propertyElement = new Element(ModelPersistence9.NODE_PROPERTY);
       final PropertyInfo propertyInfo = myMetaInfo.find(pid);
       propertyElement.setAttribute(ModelPersistence9.ROLE_ID, propertyInfo.getIndex());
@@ -275,6 +275,9 @@ public class ModelWriter9 implements IModelWriter {
     }
 
     for (SReference reference : node.getReferences()) {
+      if (myMetaInfo.isTransient(reference.getLink())) {
+        continue;
+      }
       Element linkElement = new Element(ModelPersistence9.NODE_REFERENCE);
       final AssociationLinkInfo associationLinkInfo = myMetaInfo.find(reference.getLink());
       linkElement.setAttribute(ModelPersistence9.ROLE_ID, associationLinkInfo.getIndex());
@@ -288,14 +291,41 @@ public class ModelWriter9 implements IModelWriter {
       nodeElement.addContent(linkElement);
     }
 
+    if (myUserObjectEncoder != null) {
+      for (Object key : node.getUserObjectKeys()) {
+        if (!myUserObjectEncoder.supported(key)) {
+          // perhaps, could report unsupported keys through myUserObjectEncoder (to keep record of already reported to warn only once)
+          continue;
+        }
+        final Object value = node.getUserObject(key);
+        if (!myUserObjectEncoder.supported(value)) {
+          continue;
+        }
+        try {
+          Element uoElement = new Element("uo");
+          uoElement.setAttribute("k", myUserObjectEncoder.toText(key));
+          uoElement.setAttribute("v", myUserObjectEncoder.toText(value));
+          nodeElement.addContent(uoElement);
+        } catch (IllegalArgumentException ex) {
+          // ignore
+        }
+      }
+    }
+
     for (SNode childNode : node.getChildren()) {
-      nodeElement.addContent(saveNode(childNode));
+      if (!myMetaInfo.isTransient(childNode.getContainmentLink())) {
+        nodeElement.addContent(saveNode(childNode));
+      }
     }
     return nodeElement;
   }
 
   @Override
   public Map<String, Document> saveModelAsMultiStream(SModel sourceModel) {
+    // we are going to build individual myMetaInfo for each root, but before that, we need one
+    // with an overall model knowledge e.g. to help figure out which x-model references need to be written down into header
+    myMetaInfo = new IdInfoRegistry();
+    new IdInfoCollector(myMetaInfo, myMetaInfoProvider).fill(sourceModel.getRootNodes());
     myImportsHelper = new ImportsHelper(sourceModel.getReference()); // saveModelProperties->saveImports fills it
 
     // header
@@ -306,10 +336,10 @@ public class ModelWriter9 implements IModelWriter {
 
     final ImportsHelper wholeModelImports = myImportsHelper;
 
-    Map<String, Document> result = new HashMap<String, Document>();
-    result.put(FilePerRootDataSource.HEADER_FILE, new Document(headerRoot));
+    Map<String, Document> result = new HashMap<>();
+    result.put(MPSExtentions.DOT_MODEL_HEADER, new Document(headerRoot));
     // roots
-    Map<SNodeId, String> rootToFile = FilePerRootFormatUtil.getStreamNames(sourceModel);
+    Map<SNodeId, String> rootToFile = FilePerRootFormatUtil.getStreamNames(sourceModel.getRootNodes());
     for (SNode root : sourceModel.getRootNodes()) {
       Element rootElement = new Element(ModelPersistence9.MODEL);
       rootElement.setAttribute(ModelPersistence9.REF, myIdEncoder.toText(sourceModel.getReference()));
@@ -317,7 +347,7 @@ public class ModelWriter9 implements IModelWriter {
       rootElement.addContent(createPersistenceElement());
 
       // collect imports of this particular root
-      final LinkedHashSet<SModelReference> usedImports = new LinkedHashSet<SModelReference>();
+      final LinkedHashSet<SModelReference> usedImports = new LinkedHashSet<>();
       myImportsHelper = new ImportsHelper(sourceModel.getReference()) {
         @Override
         public String getIndex(@NotNull SModelReference modelReference) {
@@ -349,23 +379,18 @@ public class ModelWriter9 implements IModelWriter {
     return result;
   }
 
-  private static String genResolveInfo(@NotNull SReference ref) {
-    if (!(RuntimeFlags.isMergeDriverMode())) {
-      SNode target = (ref instanceof StaticReference ? ref.getTargetNode() : null);
-      if ((target != null)) {
-        String resolveInfo = jetbrains.mps.util.SNodeOperations.getResolveInfo(target);
-        if (resolveInfo != null) {
-          return resolveInfo;
-        }
-      }
+  /**
+   * @param ref != null
+   */
+  private String genResolveInfo(SReference ref) {
+    if (ref instanceof jetbrains.mps.smodel.SReference) {
+      return ((jetbrains.mps.smodel.SReference) ref).getResolveInfo();
     }
-    return ((jetbrains.mps.smodel.SReference) ref).getResolveInfo();
+    return null;
   }
 
-  public static void setNotNullAttribute(
-      @NotNull Element element,
-      @NotNull String attrName,
-      @Nullable String attrValue) {
+  // element and attrName are not null, attrValue can be null
+  private static void setNotNullAttribute(Element element, String attrName, String attrValue) {
     if (attrValue != null) {
       element.setAttribute(attrName, attrValue);
     }

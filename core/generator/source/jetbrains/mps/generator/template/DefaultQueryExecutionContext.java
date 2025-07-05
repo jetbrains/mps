@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,26 +48,15 @@ import java.util.Collection;
  * Default implementation that executes queries without any further activity.
  *
  * XXX Note, evaluate methods account for any trouble in user code, and wrap them with {@link TemplateQueryException}.
- * However, {@link jetbrains.mps.generator.impl.interpreted.ReflectiveQueryProvider} handles unexpected exceptions itself,
- * while generated templates don't use this QEC at all. The only case when these catch() work is non-reflective queries, the one
- * that we'd like to make primary (and, perhaps, only). See {@link jetbrains.mps.generator.impl.template.QueryExecutor} for
- * considerations whether we shall keep QE/QEC indirection, or get another provider that would wrap non-reflective queries with
+ *
+ * See {@link jetbrains.mps.generator.impl.template.QueryExecutor} for
+ * considerations whether we shall keep QE/QEC indirection, or get another GQP provider that would wrap queries with
  * try/catch and unexpected error handling (wrapping could be conditional). I lean towards a distinct provider as it gives
  * more flexibility (can mix different wrappers) and fine-grained control for wrappers like performance tracer.
  * Evgeny Gryaznov, Feb 10, 2010
  */
 public class DefaultQueryExecutionContext implements QueryExecutionContext {
-
-  private final ITemplateGenerator myGenerator;
-  private final boolean myIsMultithread;
-
-  public DefaultQueryExecutionContext(@NotNull ITemplateGenerator generator) {
-    this(generator, true);
-  }
-
-  public DefaultQueryExecutionContext(@NotNull ITemplateGenerator generator, boolean isMultithread) {
-    myGenerator = generator;
-    myIsMultithread = isMultithread;
+  public DefaultQueryExecutionContext() {
   }
 
   @Override
@@ -264,9 +253,9 @@ public class DefaultQueryExecutionContext implements QueryExecutionContext {
   }
 
   @Override
-  public Collection<SNode> applyRule(TemplateCreateRootRule rule, TemplateExecutionEnvironment environment) throws GenerationException {
+  public Collection<SNode> applyRule(TemplateCreateRootRule rule, TemplateContext context) throws GenerationException {
     try {
-      return rule.apply(environment);
+      return rule.apply(context);
     } catch (GenerationException ex) {
       throw ex;
     } catch (Throwable t) {
@@ -305,9 +294,9 @@ public class DefaultQueryExecutionContext implements QueryExecutionContext {
   }
 
   @Override
-  public void executeScript(TemplateMappingScript mappingScript, SModel model) throws GenerationFailureException {
+  public void executeScript(TemplateMappingScript mappingScript, SModel model, TemplateExecutionEnvironment env) throws GenerationFailureException {
     try {
-      mappingScript.apply(model, myGenerator);
+      mappingScript.apply(model, env);
     } catch (GenerationFailureException ex) {
       throw ex;
     } catch (Throwable t) {
@@ -315,10 +304,5 @@ public class DefaultQueryExecutionContext implements QueryExecutionContext {
       ex.setTemplateModelLocation(mappingScript.getScriptNode());
       throw ex;
     }
-  }
-
-  @Override
-  public boolean isMultithreaded() {
-    return myIsMultithread;
   }
 }

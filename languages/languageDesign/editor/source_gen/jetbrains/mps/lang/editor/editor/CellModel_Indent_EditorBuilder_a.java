@@ -12,8 +12,10 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.lang.editor.editor.Styles_StyleSheet.rootCellModelStyleStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import jetbrains.mps.nodeEditor.MPSColors;
+import java.awt.Color;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.editor.colors.TextAttributesKey;
 
 /*package*/ class CellModel_Indent_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -31,19 +33,24 @@ import jetbrains.mps.nodeEditor.MPSColors;
   }
 
   /*package*/ EditorCell createCell() {
-    return createConstant_l8ulis_a();
+    return createConstant_0();
   }
 
-  private EditorCell createConstant_l8ulis_a() {
+  private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "--->");
     editorCell.setCellId("Constant_l8ulis_a");
     editorCell.setBig(true);
-    editorCell.setCellContext(getCellFactory().getCellContext());
+    setCellContext(editorCell);
     Style style = new StyleImpl();
-    new rootCellModelStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.lightGray));
+    new rootCellModelStyleStyleClass(this).apply(style, editorCell);
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_l8ulis_a0a()));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+  private Color _StyleParameter_QueryFunction_l8ulis_a0a() {
+    EditorColorsScheme scheme = EditorColorsManager.getInstance().getSchemeForCurrentUITheme();
+    Color foregroundColor = scheme.getAttributes(TextAttributesKey.createTextAttributesKey("DEFAULT_LINE_COMMENT")).getForegroundColor();
+    return foregroundColor;
   }
 }

@@ -9,7 +9,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.cells.BigCellUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
@@ -17,6 +16,8 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordSty
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.Measure;
+import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class SortDirection_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -34,46 +35,50 @@ import jetbrains.mps.editor.runtime.style.Measure;
   }
 
   /*package*/ EditorCell createCell() {
-    return createAlternation_hdhct1_a();
+    return createAlternation_0();
   }
 
-  private EditorCell createAlternation_hdhct1_a() {
+  private EditorCell createAlternation_0() {
     boolean alternationCondition = true;
     alternationCondition = nodeCondition_hdhct1_a0();
     EditorCell editorCell = null;
     if (alternationCondition) {
-      editorCell = createConstant_hdhct1_a0();
+      editorCell = createConstant_0();
     } else {
-      editorCell = createConstant_hdhct1_a0_0();
+      editorCell = createConstant_1();
     }
     EditorCell bigCell = BigCellUtil.findBigCell(editorCell, getNode());
     if (bigCell != null) {
       bigCell.setBig(true);
-      bigCell.setCellContext(getCellFactory().getCellContext());
+      setCellContext(bigCell);
     }
     return editorCell;
   }
   private boolean nodeCondition_hdhct1_a0() {
-    return SPropertyOperations.getBoolean(myNode, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"));
+    return SPropertyOperations.getBoolean(myNode, PROPS.value$5y_M);
   }
-  private EditorCell createConstant_hdhct1_a0() {
+  private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "asc");
     editorCell.setCellId("Constant_hdhct1_a0");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.0, Measure.SPACES));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createConstant_hdhct1_a0_0() {
+  private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "desc");
     editorCell.setCellId("Constant_hdhct1_a0_0");
     Style style = new StyleImpl();
-    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new KeyWordStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.0, Measure.SPACES));
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

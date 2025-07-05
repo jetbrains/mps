@@ -16,16 +16,15 @@
 package jetbrains.mps.persistence;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.persistence.DataSource;
+import org.jetbrains.mps.openapi.persistence.MFProblem;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 
+/**
+ * @author apyshkin
+ */
 public final class FactoryCannotCreateModelException extends ModelCannotBeCreatedException {
-  public FactoryCannotCreateModelException(@NotNull ModelFactory modelFactory, @NotNull SModelName modelName) {
-    super(String.format("Model factory '%s' cannot create a model with a given name '%s'", modelFactory, modelName));
-  }
-
-  public FactoryCannotCreateModelException(@NotNull ModelFactory modelFactory, @NotNull DataSource dataSource) {
-    super(String.format("Model factory '%s' cannot create a model with a given data source '%s'", modelFactory, modelFactory));
+  public FactoryCannotCreateModelException(@NotNull ModelFactory factory, @NotNull DataSource dataSource, @NotNull MFProblem problem) {
+    super(String.format("'%s' cannot create a model in '%s': %s", factory, dataSource, problem.getDescription()));
   }
 }

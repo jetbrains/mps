@@ -17,18 +17,20 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   @Override
   public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
     SAbstractConcept cncpt = concept;
-    switch (index_2qnle6_a0c.index(cncpt)) {
+    switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new NamedTupleComponentAccessOperation_Constraints();
+        return new LocalVariableDeclarationInTuple_Constraints();
       case 1:
-        return new NamedTupleComponentDeclaration_Constraints();
+        return new NamedTupleComponentAccessOperation_Constraints();
       case 2:
-        return new NamedTupleComponentReference_Constraints();
+        return new NamedTupleComponentDeclaration_Constraints();
       case 3:
+        return new NamedTupleComponentReference_Constraints();
+      case 4:
         return new NamedTupleType_Constraints();
       default:
     }
     return new BaseConstraintsDescriptor(concept);
   }
-  private static final ConceptSwitchIndex index_2qnle6_a0c = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209c84a4eaL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x387e75e5416d26cbL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209c84a4eaL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L)).seal();
 }
