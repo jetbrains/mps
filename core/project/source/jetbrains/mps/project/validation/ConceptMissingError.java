@@ -1,0 +1,43 @@
+/*
+ * Copyright 2003-2015 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package jetbrains.mps.project.validation;
+
+import jetbrains.mps.errors.MessageStatus;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.model.SNode;
+
+import java.text.MessageFormat;
+import java.util.ResourceBundle;
+
+public class ConceptMissingError extends LanguageFeatureMissingError {
+  private final SAbstractConcept myConcept;
+
+  public ConceptMissingError(SNode node, SAbstractConcept concept) {
+    super(MessageStatus.ERROR, node.getReference(),
+          MessageFormat.format(msgFromBundle(), concept.getName(), concept.getLanguage().getQualifiedName()));
+    myConcept = concept;
+  }
+
+  private static String msgFromBundle() {
+    ResourceBundle bundle = ResourceBundle.getBundle("jetbrains.mps.project.validation.CoreBundle");
+    return bundle.getString("concept.not.found");
+  }
+
+  public SAbstractConcept getLanguageFeature() {
+    return myConcept;
+  }
+
+}

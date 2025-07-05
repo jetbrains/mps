@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<product version="3" modelHash="-2fq2pd5w14yzyh162m8rhkkectt5qwv">
+=======
+<product version="3" modelHash="-1m0p0n0crd9mz00shhxnv8w1i8ybsgc">
+>>>>>>> upstream/2024.1_projectPane
+  <files names="AbstractJUnitTestMixin.java:CommandOutputStream.java:DefaultRunListener.java:DefaultTestExecutionListener.java:DefaultTestExecutor.java:ExecutorScript.java:JUnit4TestExecutor.java:JUnit5TestContributor.java:JUnit5TestContributorConverter.java:JUnit5TestExecutor.java:LegacyTestLauncher.java:StoppableRunner.java:TestExecutor.java:TestsContributor.java:WithPlatformTestExecutor.java" />
+</product>
+

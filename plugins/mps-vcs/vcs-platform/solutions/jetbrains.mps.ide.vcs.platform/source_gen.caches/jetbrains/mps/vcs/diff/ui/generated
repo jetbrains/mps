@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<product version="3" modelHash="b06f3d9ag3pn3mq5jpv1mefverwx7ix">
+=======
+<product version="3" modelHash="b2tdjqhyjja596upn9eyl7ktoq147sa">
+>>>>>>> upstream/2024.1_projectPane
+  <files names="DiffButtonsPainter.java:DiffEditorSettingsAction.java:IHighlighter.java:MetadataUtil.java:ModelDifferenceViewer.java:RevertRootsAction.java:RevisionsExtractor.java:RootDifferencePane.java:RootDifferencePaneBase.java:RootFileHistoryExtractor.java:RootHistoryDialog.java:RootModelHistoryExtractor.java:StructDiffButtonsPainter.java:StructDifferenceDialog.java:StructDifferencePane.java:ThreeSideRootDifferencePane.java:TwoSideRootDifferencePane.java" />
+</product>
+

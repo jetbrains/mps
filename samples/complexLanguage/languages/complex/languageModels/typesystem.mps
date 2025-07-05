@@ -1,200 +1,383 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)">
-  <persistence version="4" />
-  <refactoringHistory />
-  <language namespace="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)" />
-  <language namespace="7866978e-a0f0-4cc7-81bc-4d213d9375e1(jetbrains.mps.lang.smodel)" />
-  <language namespace="7a5dda62-9140-4668-ab76-d5ed1746f2b2(jetbrains.mps.lang.typesystem)" />
-  <language namespace="83888646-71ce-4f1c-9c53-c54016f6ad4f(jetbrains.mps.baseLanguage.collections)" />
-  <language namespace="ed6d7656-532c-4bc2-81d1-af945aeb8280(jetbrains.mps.baseLanguage.blTypes)" />
-  <language namespace="3a13115c-633c-4c5c-bbcc-75c4219e9555(jetbrains.mps.lang.quotation)" />
-  <language namespace="ff24ab03-965e-4d15-9aed-52dc276658f4(jetbrains.mps.samples.complex)" />
-  <language namespace="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)" version="83" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" version="3" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)" version="21" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" version="16" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590307(jetbrains.mps.lang.constraints.constraints)" version="9" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c8959030d(jetbrains.mps.lang.constraints.structure)" version="8" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)" version="17" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590283(jetbrains.mps.lang.core.constraints)" version="2" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590328(jetbrains.mps.baseLanguage.collections.constraints)" version="6" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)" version="7" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c895902db(jetbrains.mps.baseLanguage.blTypes.constraints)" version="0" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590338(jetbrains.mps.baseLanguage.closures.structure)" version="3" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590334(jetbrains.mps.baseLanguage.closures.constraints)" version="2" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)" version="11" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c895902ba(jetbrains.mps.lang.sharedConcepts.constraints)" version="0" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590340(jetbrains.mps.lang.pattern.constraints)" version="2" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c895903e4(jetbrains.mps.internal.collections.constraints)" version="2" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590425(jetbrains.mps.samples.complex.structure)" version="4" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" version="0" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c895902bc(jetbrains.mps.lang.sharedConcepts.structure)" version="0" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c8959033d(jetbrains.mps.lang.annotations.structure)" version="0" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c8959034b(jetbrains.mps.lang.quotation.structure)" version="0" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)" version="0" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)" version="3" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c895903fe(jetbrains.mps.baseLanguage.strings.constraints)" version="1" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590402(jetbrains.mps.baseLanguage.strings.structure)" version="9" />
-  <maxImportIndex value="6" />
-  <import index="1" modelUID="r:00000000-0000-4000-0000-011c89590425(jetbrains.mps.samples.complex.structure)" version="4" />
-  <import index="2" modelUID="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" version="3" />
-  <import index="4" modelUID="r:00000000-0000-4000-0000-011c895902dd(jetbrains.mps.baseLanguage.blTypes.structure)" version="-1" />
-  <import index="5" modelUID="r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)" version="-1" />
-  <import index="6" modelUID="f:java_stub#java.lang(java.lang@java_stub)" version="-1" />
-  <node type="jetbrains.mps.lang.typesystem.structure.InferenceRule:3" id="1196267612159">
-    <property name="name:3" value="typeof_ComplexExpression" />
-    <node role="body:3" type="jetbrains.mps.baseLanguage.structure.StatementList:3" id="1196267612160">
-      <node role="statement:3" type="jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement:3" id="1196268989250">
-        <node role="leftExpression:3" type="jetbrains.mps.lang.typesystem.structure.NormalTypeClause:3" id="1196268989251">
-          <node role="normalType:3" type="jetbrains.mps.lang.typesystem.structure.TypeOfExpression:3" id="1196268989252">
-            <node role="term:3" type="jetbrains.mps.baseLanguage.structure.DotExpression:3" id="1217625376157">
-              <node role="operand:3" type="jetbrains.mps.lang.typesystem.structure.ApplicableNodeReference:3" id="1196268989254">
-                <link role="applicableNode:3" targetNodeId="1196267612161" resolveInfo="nodeToCheck" />
+<model ref="r:00000000-0000-4000-0000-011c89590424(jetbrains.mps.samples.complex.typesystem)">
+  <persistence version="9" />
+  <languages>
+    <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
+  </languages>
+  <imports>
+    <import index="tpo9" ref="r:00000000-0000-4000-0000-011c89590425(jetbrains.mps.samples.complex.structure)" />
+    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
+    <import index="tpdt" ref="r:00000000-0000-4000-0000-011c895902dd(jetbrains.mps.baseLanguage.blTypes.structure)" />
+    <import index="tpdu" ref="r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)" />
+    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
+  </imports>
+  <registry>
+    <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
+        <child id="1197027771414" name="operand" index="2Oq$k0" />
+        <child id="1197027833540" name="operation" index="2OqNvi" />
+      </concept>
+      <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
+        <child id="1068581517665" name="statement" index="3cqZAp" />
+      </concept>
+      <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
+        <child id="1068581517676" name="expression" index="3cqZAk" />
+      </concept>
+    </language>
+    <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
+      <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
+        <reference id="5455284157994012188" name="link" index="2pIpSl" />
+        <child id="1595412875168045827" name="initValue" index="28nt2d" />
+      </concept>
+      <concept id="5455284157993863837" name="jetbrains.mps.lang.quotation.structure.NodeBuilder" flags="nn" index="2pJPEk">
+        <child id="5455284157993863838" name="quotedNode" index="2pJPEn" />
+      </concept>
+      <concept id="5455284157993863840" name="jetbrains.mps.lang.quotation.structure.NodeBuilderNode" flags="nn" index="2pJPED">
+        <reference id="5455284157993910961" name="concept" index="2pJxaS" />
+        <child id="5455284157993911099" name="values" index="2pJxcM" />
+      </concept>
+      <concept id="8182547171709614739" name="jetbrains.mps.lang.quotation.structure.NodeBuilderRef" flags="nn" index="36bGnv">
+        <reference id="8182547171709614741" name="target" index="36bGnp" />
+      </concept>
+    </language>
+    <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
+      <concept id="1185788614172" name="jetbrains.mps.lang.typesystem.structure.NormalTypeClause" flags="ng" index="mw_s8">
+        <child id="1185788644032" name="normalType" index="mwGJk" />
+      </concept>
+      <concept id="1175147569072" name="jetbrains.mps.lang.typesystem.structure.AbstractSubtypingRule" flags="ig" index="2sgdUx">
+        <property id="1175607673137" name="isWeak" index="2RFo0w" />
+        <child id="1175147624276" name="body" index="2sgrp5" />
+      </concept>
+      <concept id="1175147670730" name="jetbrains.mps.lang.typesystem.structure.SubtypingRule" flags="ig" index="2sgARr" />
+      <concept id="1320713984677695202" name="jetbrains.mps.lang.typesystem.structure.DefaultGroupReference" flags="ng" index="KNH2X" />
+      <concept id="1179832490862" name="jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement" flags="nn" index="2NvLDW" />
+      <concept id="1212056081426" name="jetbrains.mps.lang.typesystem.structure.AbstractInequationStatement" flags="ng" index="Ob1k8">
+        <child id="1320713984677695199" name="inequationGroup" index="KNH20" />
+      </concept>
+      <concept id="1195213580585" name="jetbrains.mps.lang.typesystem.structure.AbstractCheckingRule" flags="ig" index="18hYwZ">
+        <child id="1195213635060" name="body" index="18ibNy" />
+      </concept>
+      <concept id="1174642788531" name="jetbrains.mps.lang.typesystem.structure.ConceptReference" flags="ig" index="1YaCAy">
+        <reference id="1174642800329" name="concept" index="1YaFvo" />
+      </concept>
+      <concept id="1174643105530" name="jetbrains.mps.lang.typesystem.structure.InferenceRule" flags="ig" index="1YbPZF" />
+      <concept id="1174648085619" name="jetbrains.mps.lang.typesystem.structure.AbstractRule" flags="ng" index="1YuPPy">
+        <child id="1174648101952" name="applicableNode" index="1YuTPh" />
+      </concept>
+      <concept id="1174650418652" name="jetbrains.mps.lang.typesystem.structure.ApplicableNodeReference" flags="nn" index="1YBJjd">
+        <reference id="1174650432090" name="applicableNode" index="1YBMHb" />
+      </concept>
+      <concept id="1174657487114" name="jetbrains.mps.lang.typesystem.structure.TypeOfExpression" flags="nn" index="1Z2H0r">
+        <child id="1174657509053" name="term" index="1Z2MuG" />
+      </concept>
+      <concept id="1174658326157" name="jetbrains.mps.lang.typesystem.structure.CreateEquationStatement" flags="nn" index="1Z5TYs" />
+      <concept id="1174660718586" name="jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement" flags="nn" index="1Zf1VF">
+        <child id="1174660783413" name="leftExpression" index="1ZfhK$" />
+        <child id="1174660783414" name="rightExpression" index="1ZfhKB" />
+      </concept>
+    </language>
+    <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="1138056143562" name="jetbrains.mps.lang.smodel.structure.SLinkAccess" flags="nn" index="3TrEf2">
+        <reference id="1138056516764" name="link" index="3Tt5mk" />
+      </concept>
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="1YbPZF" id="hq76MvZ">
+    <property role="TrG5h" value="typeof_ComplexExpression" />
+    <node concept="3clFbS" id="hq76Mw0" role="18ibNy">
+      <node concept="2NvLDW" id="hq7c2H2" role="3cqZAp">
+        <node concept="mw_s8" id="hq7c2H3" role="1ZfhK$">
+          <node concept="1Z2H0r" id="hq7c2H4" role="mwGJk">
+            <node concept="2OqwBi" id="hI08cmt" role="1Z2MuG">
+              <node concept="1YBJjd" id="hq7c2H6" role="2Oq$k0">
+                <ref role="1YBMHb" node="hq76Mw1" resolve="nodeToCheck" />
               </node>
-              <node role="operation:3" type="jetbrains.mps.lang.smodel.structure.SLinkAccess:16" id="1196268989255">
-                <link role="link:16" targetNodeId="1.1196260892801:4" />
+              <node concept="3TrEf2" id="hq7c2H7" role="2OqNvi">
+                <ref role="3Tt5mk" to="tpo9:hq6Ha21" resolve="complexExpression" />
               </node>
             </node>
           </node>
         </node>
-        <node role="rightExpression:3" type="jetbrains.mps.lang.typesystem.structure.NormalTypeClause:3" id="1196268989256">
-          <node role="normalType:3" type="jetbrains.mps.lang.quotation.structure.Quotation:0" id="1196268989257">
-            <node role="quotedNode:0" type="jetbrains.mps.samples.complex.structure.ComplexType:4" id="1196268989258" />
-          </node>
-        </node>
-        <node role="inequationGroup:3" type="jetbrains.mps.lang.typesystem.structure.DefaultGroupReference:3" id="5970100369440882775" />
-      </node>
-      <node role="statement:3" type="jetbrains.mps.lang.typesystem.structure.CreateEquationStatement:3" id="1196267675385">
-        <node role="rightExpression:3" type="jetbrains.mps.lang.typesystem.structure.NormalTypeClause:3" id="1196267679060">
-          <node role="normalType:3" type="jetbrains.mps.baseLanguage.structure.DotExpression:3" id="1217625331279">
-            <node role="operand:3" type="jetbrains.mps.baseLanguage.structure.DotExpression:3" id="1217625365238">
-              <node role="operand:3" type="jetbrains.mps.lang.typesystem.structure.ApplicableNodeReference:3" id="1196418615810">
-                <link role="applicableNode:3" targetNodeId="1196267612161" resolveInfo="nodeToCheck" />
-              </node>
-              <node role="operation:3" type="jetbrains.mps.lang.smodel.structure.SConceptLinkAccess:16" id="1196418615811">
-                <link role="conceptLinkDeclaration:16" targetNodeId="1.1196418498814:4" resolveInfo="returnType" />
-              </node>
-            </node>
-            <node role="operation:3" type="jetbrains.mps.baseLanguage.collections.structure.GetFirstOperation:7" id="1196418612230" />
-          </node>
-        </node>
-        <node role="leftExpression:3" type="jetbrains.mps.lang.typesystem.structure.NormalTypeClause:3" id="1196267675387">
-          <node role="normalType:3" type="jetbrains.mps.lang.typesystem.structure.TypeOfExpression:3" id="1196267668258">
-            <node role="term:3" type="jetbrains.mps.lang.typesystem.structure.ApplicableNodeReference:3" id="1196267671119">
-              <link role="applicableNode:3" targetNodeId="1196267612161" resolveInfo="nodeToCheck" />
+        <node concept="mw_s8" id="hq7c2H8" role="1ZfhKB">
+          <node concept="2pJPEk" id="6$OCvf8JDzl" role="mwGJk">
+            <node concept="2pJPED" id="6$OCvf8JDzk" role="2pJPEn">
+              <ref role="2pJxaS" to="tpo9:hq6C48E" resolve="ComplexType" />
             </node>
           </node>
         </node>
+        <node concept="KNH2X" id="5bq3EuLWW1n" role="KNH20" />
       </node>
     </node>
-    <node role="applicableNode:3" type="jetbrains.mps.lang.typesystem.structure.ConceptReference:3" id="1196267612161">
-      <property name="name:3" value="nodeToCheck" />
-      <link role="concept:3" targetNodeId="1.1196260832413:4" resolveInfo="ComplexExpression" />
+    <node concept="1YaCAy" id="hq76Mw1" role="1YuTPh">
+      <property role="TrG5h" value="nodeToCheck" />
+      <ref role="1YaFvo" to="tpo9:hq6GVit" resolve="SingleComplexExpression" />
     </node>
   </node>
-  <node type="jetbrains.mps.lang.typesystem.structure.InferenceRule:3" id="1196422182398">
-    <property name="name:3" value="typeof_DegreeComplexExpression" />
-    <node role="body:3" type="jetbrains.mps.baseLanguage.structure.StatementList:3" id="1196422182399">
-      <node role="statement:3" type="jetbrains.mps.lang.typesystem.structure.CreateEquationStatement:3" id="1196422206628">
-        <node role="rightExpression:3" type="jetbrains.mps.lang.typesystem.structure.NormalTypeClause:3" id="1196422212475">
-          <node role="normalType:3" type="jetbrains.mps.lang.quotation.structure.Quotation:0" id="1196422212476">
-            <node role="quotedNode:0" type="jetbrains.mps.baseLanguage.structure.IntegerType:3" id="1196422226135" />
+  <node concept="1YbPZF" id="hqgkrnY">
+    <property role="TrG5h" value="typeof_DegreeComplexExpression" />
+    <node concept="3clFbS" id="hqgkrnZ" role="18ibNy">
+      <node concept="1Z5TYs" id="laJ$RSTsbv" role="3cqZAp">
+        <node concept="mw_s8" id="laJ$RSTscX" role="1ZfhKB">
+          <node concept="2pJPEk" id="6$OCvf8JDHy" role="mwGJk">
+            <node concept="2pJPED" id="6$OCvf8JDHx" role="2pJPEn">
+              <ref role="2pJxaS" to="tpo9:hq6C48E" resolve="ComplexType" />
+            </node>
           </node>
         </node>
-        <node role="leftExpression:3" type="jetbrains.mps.lang.typesystem.structure.NormalTypeClause:3" id="1196422206630">
-          <node role="normalType:3" type="jetbrains.mps.lang.typesystem.structure.TypeOfExpression:3" id="1196422187043">
-            <node role="term:3" type="jetbrains.mps.baseLanguage.structure.DotExpression:3" id="1217625355106">
-              <node role="operand:3" type="jetbrains.mps.lang.typesystem.structure.ApplicableNodeReference:3" id="1196422191982">
-                <link role="applicableNode:3" targetNodeId="1196422182400" resolveInfo="nodeToCheck" />
+        <node concept="mw_s8" id="laJ$RSTsby" role="1ZfhK$">
+          <node concept="1Z2H0r" id="laJ$RSTs4d" role="mwGJk">
+            <node concept="1YBJjd" id="laJ$RSTs5K" role="1Z2MuG">
+              <ref role="1YBMHb" node="hqgkro0" resolve="nodeToCheck" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1Z5TYs" id="hqgkxi$" role="3cqZAp">
+        <node concept="mw_s8" id="hqgkyHV" role="1ZfhKB">
+          <node concept="2pJPEk" id="6$OCvf8JDJ8" role="mwGJk">
+            <node concept="2pJPED" id="6$OCvf8JDJ7" role="2pJPEn">
+              <ref role="2pJxaS" to="tpee:f_0OyhT" resolve="IntegerType" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="hqgkxiA" role="1ZfhK$">
+          <node concept="1Z2H0r" id="hqgkswz" role="mwGJk">
+            <node concept="2OqwBi" id="hI087dy" role="1Z2MuG">
+              <node concept="1YBJjd" id="hqgktHI" role="2Oq$k0">
+                <ref role="1YBMHb" node="hqgkro0" resolve="nodeToCheck" />
               </node>
-              <node role="operation:3" type="jetbrains.mps.lang.smodel.structure.SLinkAccess:16" id="1196422198736">
-                <link role="link:16" targetNodeId="1.1196422043474:4" />
+              <node concept="3TrEf2" id="hqgkvng" role="2OqNvi">
+                <ref role="3Tt5mk" to="tpo9:hqgjTti" resolve="degree" />
               </node>
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node role="applicableNode:3" type="jetbrains.mps.lang.typesystem.structure.ConceptReference:3" id="1196422182400">
-      <property name="name:3" value="nodeToCheck" />
-      <link role="concept:3" targetNodeId="1.1196421957108:4" resolveInfo="DegreeComplexExpression" />
+    <node concept="1YaCAy" id="hqgkro0" role="1YuTPh">
+      <property role="TrG5h" value="nodeToCheck" />
+      <ref role="1YaFvo" to="tpo9:hqgj$nO" resolve="DegreeComplexExpression" />
     </node>
   </node>
-  <node type="jetbrains.mps.lang.typesystem.structure.SubtypingRule:3" id="1196427128503">
-    <property name="name:3" value="subtype_ComplexType" />
-    <node role="body:3" type="jetbrains.mps.baseLanguage.structure.StatementList:3" id="1196427128504">
-      <node role="statement:3" type="jetbrains.mps.baseLanguage.structure.ReturnStatement:3" id="1196427154993">
-        <node role="expression:3" type="jetbrains.mps.lang.quotation.structure.Quotation:0" id="1196427158386">
-          <node role="quotedNode:0" type="jetbrains.mps.samples.complex.structure.ComplexType:4" id="1196427683248" />
+  <node concept="2sgARr" id="hqgBiUR">
+    <property role="TrG5h" value="subtype_ComplexType" />
+    <node concept="3clFbS" id="hqgBiUS" role="2sgrp5">
+      <node concept="3cpWs6" id="hqgBpoL" role="3cqZAp">
+        <node concept="2pJPEk" id="6$OCvf8JDn7" role="3cqZAk">
+          <node concept="2pJPED" id="6$OCvf8JDn6" role="2pJPEn">
+            <ref role="2pJxaS" to="tpo9:hq6C48E" resolve="ComplexType" />
+          </node>
         </node>
       </node>
     </node>
-    <node role="applicableNode:3" type="jetbrains.mps.lang.typesystem.structure.ConceptReference:3" id="1196427135116">
-      <property name="name:3" value="doubleType" />
-      <link role="concept:3" targetNodeId="2.1070534513062:3" resolveInfo="DoubleType" />
+    <node concept="1YaCAy" id="hqgBkyc" role="1YuTPh">
+      <property role="TrG5h" value="doubleType" />
+      <ref role="1YaFvo" to="tpee:f_0P56A" resolve="DoubleType" />
     </node>
   </node>
-  <node type="jetbrains.mps.lang.typesystem.structure.SubtypingRule:3" id="1196434481781">
-    <property name="name:3" value="Complex_is_Numeric" />
-    <node role="body:3" type="jetbrains.mps.baseLanguage.structure.StatementList:3" id="1196434481782">
-      <node role="statement:3" type="jetbrains.mps.baseLanguage.structure.ReturnStatement:3" id="1196434496770">
-        <node role="expression:3" type="jetbrains.mps.baseLanguage.structure.DotExpression:3" id="1217625360457">
-          <node role="operand:3" type="jetbrains.mps.lang.quotation.structure.Quotation:0" id="1196434498632">
-            <node role="quotedNode:0" type="jetbrains.mps.baseLanguage.blTypes.structure.PrimitiveTypeRef" id="1196434532010">
-              <link role="descriptor" targetNodeId="5.1196683729865" resolveInfo="Numeric" />
+  <node concept="2sgARr" id="hqh3m9P">
+    <property role="TrG5h" value="Complex_is_Numeric" />
+    <node concept="3clFbS" id="hqh3m9Q" role="2sgrp5">
+      <node concept="3cpWs6" id="hqh3pO2" role="3cqZAp">
+        <node concept="2OqwBi" id="hI088x9" role="3cqZAk">
+          <node concept="2pJPEk" id="6$OCvf8JDd_" role="2Oq$k0">
+            <node concept="2pJPED" id="6$OCvf8JDdy" role="2pJPEn">
+              <ref role="2pJxaS" to="tpdt:gRDMZzC" resolve="PrimitiveTypeRef" />
+              <node concept="2pIpSj" id="6$OCvf8JDdz" role="2pJxcM">
+                <ref role="2pIpSl" to="tpdt:gRDMZzB" resolve="descriptor" />
+                <node concept="36bGnv" id="6$OCvf8JDd$" role="28nt2d">
+                  <ref role="36bGnp" to="tpdu:hqvU9J9" resolve="Numeric" />
+                </node>
+              </node>
             </node>
           </node>
-          <node role="operation:3" type="jetbrains.mps.lang.smodel.structure.SLinkAccess:16" id="1196434535983">
-            <link role="link:16" targetNodeId="4.1159268661479" />
+          <node concept="3TrEf2" id="hqh3zoJ" role="2OqNvi">
+            <ref role="3Tt5mk" to="tpdt:gRDMZzB" resolve="descriptor" />
           </node>
         </node>
       </node>
     </node>
-    <node role="applicableNode:3" type="jetbrains.mps.lang.typesystem.structure.ConceptReference:3" id="1196434492332">
-      <property name="name:3" value="complexType" />
-      <link role="concept:3" targetNodeId="1.1196259557930:4" resolveInfo="ComplexType" />
+    <node concept="1YaCAy" id="hqh3oIG" role="1YuTPh">
+      <property role="TrG5h" value="complexType" />
+      <ref role="1YaFvo" to="tpo9:hq6C48E" resolve="ComplexType" />
     </node>
   </node>
-  <node type="jetbrains.mps.lang.typesystem.structure.InferenceRule:3" id="1196436222736">
-    <property name="name:3" value="typeof_ImaginaryUnit" />
-    <node role="body:3" type="jetbrains.mps.baseLanguage.structure.StatementList:3" id="1196436222737">
-      <node role="statement:3" type="jetbrains.mps.lang.typesystem.structure.CreateEquationStatement:3" id="1196436242603">
-        <node role="rightExpression:3" type="jetbrains.mps.lang.typesystem.structure.NormalTypeClause:3" id="1196436252435">
-          <node role="normalType:3" type="jetbrains.mps.lang.quotation.structure.Quotation:0" id="1196436252436">
-            <node role="quotedNode:0" type="jetbrains.mps.samples.complex.structure.ComplexType:4" id="1196436257625" />
+  <node concept="1YbPZF" id="hqh9Zcg">
+    <property role="TrG5h" value="typeof_ImaginaryUnit" />
+    <node concept="3clFbS" id="hqh9Zch" role="18ibNy">
+      <node concept="1Z5TYs" id="hqha42F" role="3cqZAp">
+        <node concept="mw_s8" id="hqha6sj" role="1ZfhKB">
+          <node concept="2pJPEk" id="6$OCvf8JDNY" role="mwGJk">
+            <node concept="2pJPED" id="6$OCvf8JDNX" role="2pJPEn">
+              <ref role="2pJxaS" to="tpo9:hq6C48E" resolve="ComplexType" />
+            </node>
           </node>
         </node>
-        <node role="leftExpression:3" type="jetbrains.mps.lang.typesystem.structure.NormalTypeClause:3" id="1196436242605">
-          <node role="normalType:3" type="jetbrains.mps.lang.typesystem.structure.TypeOfExpression:3" id="1196436225615">
-            <node role="term:3" type="jetbrains.mps.lang.typesystem.structure.ApplicableNodeReference:3" id="1196436233555">
-              <link role="applicableNode:3" targetNodeId="1196436222738" resolveInfo="nodeToCheck" />
+        <node concept="mw_s8" id="hqha42H" role="1ZfhK$">
+          <node concept="1Z2H0r" id="hqh9ZTf" role="mwGJk">
+            <node concept="1YBJjd" id="hqha1Pj" role="1Z2MuG">
+              <ref role="1YBMHb" node="hqh9Zci" resolve="nodeToCheck" />
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node role="applicableNode:3" type="jetbrains.mps.lang.typesystem.structure.ConceptReference:3" id="1196436222738">
-      <property name="name:3" value="nodeToCheck" />
-      <link role="concept:3" targetNodeId="1.1196434001121:4" resolveInfo="ImaginaryUnit" />
+    <node concept="1YaCAy" id="hqh9Zci" role="1YuTPh">
+      <property role="TrG5h" value="nodeToCheck" />
+      <ref role="1YaFvo" to="tpo9:hqh1wNx" resolve="ImaginaryUnit" />
     </node>
   </node>
-  <node type="jetbrains.mps.lang.typesystem.structure.SubtypingRule:3" id="7587029747152134035">
-    <property name="name:3" value="Complex_is_Object_weak" />
-    <property name="isWeak:3" value="true" />
-    <node role="body:3" type="jetbrains.mps.baseLanguage.structure.StatementList:3" id="7587029747152134036">
-      <node role="statement:3" type="jetbrains.mps.baseLanguage.structure.ReturnStatement:3" id="7587029747152134039">
-        <node role="expression:3" type="jetbrains.mps.lang.quotation.structure.Quotation:0" id="7587029747152134041">
-          <node role="quotedNode:0" type="jetbrains.mps.baseLanguage.structure.ClassifierType:3" id="7587029747152134044">
-            <link role="classifier:3" targetNodeId="6.~Object" resolveInfo="Object" />
+  <node concept="2sgARr" id="6_ayPHNkLYj">
+    <property role="2RFo0w" value="true" />
+    <property role="TrG5h" value="Complex_is_Object_weak" />
+    <node concept="3clFbS" id="6_ayPHNkLYk" role="2sgrp5">
+      <node concept="3cpWs6" id="6_ayPHNkLYn" role="3cqZAp">
+        <node concept="2pJPEk" id="6$OCvf8JDiU" role="3cqZAk">
+          <node concept="2pJPED" id="6$OCvf8JDiR" role="2pJPEn">
+            <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
+            <node concept="2pIpSj" id="6$OCvf8JDiS" role="2pJxcM">
+              <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
+              <node concept="36bGnv" id="6$OCvf8JDiT" role="28nt2d">
+                <ref role="36bGnp" to="wyt6:~Object" resolve="Object" />
+              </node>
+            </node>
           </node>
         </node>
       </node>
     </node>
-    <node role="applicableNode:3" type="jetbrains.mps.lang.typesystem.structure.ConceptReference:3" id="7587029747152134038">
-      <property name="name:3" value="complexType" />
-      <link role="concept:3" targetNodeId="1.1196259557930:4" resolveInfo="ComplexType" />
+    <node concept="1YaCAy" id="6_ayPHNkLYm" role="1YuTPh">
+      <property role="TrG5h" value="complexType" />
+      <ref role="1YaFvo" to="tpo9:hq6C48E" resolve="ComplexType" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="4PZKMKmRpfI">
+    <property role="TrG5h" value="typeof_AbsExpression" />
+    <node concept="3clFbS" id="4PZKMKmRpjN" role="18ibNy">
+      <node concept="1Z5TYs" id="4PZKMKmRpvx" role="3cqZAp">
+        <node concept="mw_s8" id="4PZKMKmRpwh" role="1ZfhKB">
+          <node concept="2pJPEk" id="6$OCvf8JDqM" role="mwGJk">
+            <node concept="2pJPED" id="6$OCvf8JDqL" role="2pJPEn">
+              <ref role="2pJxaS" to="tpee:f_0P56A" resolve="DoubleType" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="4PZKMKmRpv$" role="1ZfhK$">
+          <node concept="1Z2H0r" id="4PZKMKmRpkX" role="mwGJk">
+            <node concept="1YBJjd" id="4PZKMKmRpmv" role="1Z2MuG">
+              <ref role="1YBMHb" node="4PZKMKmRpjP" resolve="absExpression" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="4PZKMKmRpjP" role="1YuTPh">
+      <property role="TrG5h" value="absExpression" />
+      <ref role="1YaFvo" to="tpo9:hq6T8Yv" resolve="AbsExpression" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="laJ$RSTEbb">
+    <property role="TrG5h" value="typeof_ArgExpression" />
+    <node concept="3clFbS" id="laJ$RSTEbc" role="18ibNy">
+      <node concept="1Z5TYs" id="laJ$RSTErd" role="3cqZAp">
+        <node concept="mw_s8" id="laJ$RSTExG" role="1ZfhKB">
+          <node concept="2pJPEk" id="6$OCvf8JDtP" role="mwGJk">
+            <node concept="2pJPED" id="6$OCvf8JDtO" role="2pJPEn">
+              <ref role="2pJxaS" to="tpee:f_0P56A" resolve="DoubleType" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="laJ$RSTErg" role="1ZfhK$">
+          <node concept="1Z2H0r" id="laJ$RSTEiA" role="mwGJk">
+            <node concept="1YBJjd" id="laJ$RSTEjY" role="1Z2MuG">
+              <ref role="1YBMHb" node="laJ$RSTEbe" resolve="argExpression" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="laJ$RSTEbe" role="1YuTPh">
+      <property role="TrG5h" value="argExpression" />
+      <ref role="1YaFvo" to="tpo9:hq6Sqks" resolve="ArgExpression" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="laJ$RSTF8u">
+    <property role="TrG5h" value="typeof_ConjugateComplexExpression" />
+    <node concept="3clFbS" id="laJ$RSTF8v" role="18ibNy">
+      <node concept="1Z5TYs" id="laJ$RSTFsL" role="3cqZAp">
+        <node concept="mw_s8" id="laJ$RSTFtN" role="1ZfhKB">
+          <node concept="2pJPEk" id="6$OCvf8JDAo" role="mwGJk">
+            <node concept="2pJPED" id="6$OCvf8JDAn" role="2pJPEn">
+              <ref role="2pJxaS" to="tpo9:hq6C48E" resolve="ComplexType" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="laJ$RSTFsO" role="1ZfhK$">
+          <node concept="1Z2H0r" id="laJ$RSTFme" role="mwGJk">
+            <node concept="1YBJjd" id="laJ$RSTFnA" role="1Z2MuG">
+              <ref role="1YBMHb" node="laJ$RSTF8x" resolve="conjugateComplexExpression" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="laJ$RSTF8x" role="1YuTPh">
+      <property role="TrG5h" value="conjugateComplexExpression" />
+      <ref role="1YaFvo" to="tpo9:hqg7PvO" resolve="ConjugateComplexExpression" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="laJ$RSTFvC">
+    <property role="TrG5h" value="typeof_ImExpression" />
+    <node concept="3clFbS" id="laJ$RSTFvD" role="18ibNy">
+      <node concept="1Z5TYs" id="laJ$RSTFIj" role="3cqZAp">
+        <node concept="mw_s8" id="laJ$RSTFIm" role="1ZfhK$">
+          <node concept="1Z2H0r" id="laJ$RSTFvM" role="mwGJk">
+            <node concept="1YBJjd" id="laJ$RSTFxa" role="1Z2MuG">
+              <ref role="1YBMHb" node="laJ$RSTFvF" resolve="imExpression" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="laJ$RSTFNS" role="1ZfhKB">
+          <node concept="2pJPEk" id="6$OCvf8JDRo" role="mwGJk">
+            <node concept="2pJPED" id="6$OCvf8JDRn" role="2pJPEn">
+              <ref role="2pJxaS" to="tpee:f_0P56A" resolve="DoubleType" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="laJ$RSTFvF" role="1YuTPh">
+      <property role="TrG5h" value="imExpression" />
+      <ref role="1YaFvo" to="tpo9:hq6KPYo" resolve="ImExpression" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="laJ$RSTFPs">
+    <property role="TrG5h" value="typeof_ReExpression" />
+    <node concept="3clFbS" id="laJ$RSTFPt" role="18ibNy">
+      <node concept="1Z5TYs" id="laJ$RSTFWc" role="3cqZAp">
+        <node concept="mw_s8" id="laJ$RSTFWR" role="1ZfhKB">
+          <node concept="2pJPEk" id="6$OCvf8JDUr" role="mwGJk">
+            <node concept="2pJPED" id="6$OCvf8JDUq" role="2pJPEn">
+              <ref role="2pJxaS" to="tpee:f_0P56A" resolve="DoubleType" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="laJ$RSTFWf" role="1ZfhK$">
+          <node concept="1Z2H0r" id="laJ$RSTFPD" role="mwGJk">
+            <node concept="1YBJjd" id="laJ$RSTFR1" role="1Z2MuG">
+              <ref role="1YBMHb" node="laJ$RSTFPv" resolve="reExpression" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="laJ$RSTFPv" role="1YuTPh">
+      <property role="TrG5h" value="reExpression" />
+      <ref role="1YaFvo" to="tpo9:hq6G_uh" resolve="ReExpression" />
     </node>
   </node>
 </model>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<product version="3" modelHash="-7oxm3uyiedwi87t7v5kl3ta1jdniis3">
+  <files names="AbstractLeftEditorHighlighterMessage.java:DocumentationProvider.java:EditorCell_Empty.java:EditorUtil.java:ErrorComponents.java:HeadlessEditorComponent.java:HighlightUsagesSupport.java:IntelligentNodeMover.java:LanguageEditorChecker.java:LanguageErrorsComponent.java:ReferenceResolveInEditor.java:SideTransformInfoUtil.java" />
+=======
+<product version="3" modelHash="bu1girbjuabox2x955j9rfo52u845p2">
+  <files names="AbstractLeftEditorHighlighterMessage.java:DocumentationProvider.java:EditorCell_Empty.java:EditorUtil.java:ErrorComponents.java:HeadlessEditorComponent.java:HighlightUsagesSupport.java:IntelligentNodeMover.java:LanguageEditorChecker.java:ReferenceResolveInEditor.java:SideTransformInfoUtil.java" />
+>>>>>>> upstream/2024.1_projectPane
+</product>
+

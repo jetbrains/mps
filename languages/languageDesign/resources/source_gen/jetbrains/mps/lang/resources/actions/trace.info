@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
+  <root>
+    <file name="ActionAspectDescriptorImpl.java">
+      <unit at="12,0,28,0" name="jetbrains.mps.lang.resources.actions.ActionAspectDescriptorImpl" />
+    </file>
+  </root>
+  <root nodeRef="r:b921e97e-c79b-49a1-bb6f-d836bc131175(jetbrains.mps.lang.resources.actions)/1860120738943413795">
+    <file name="InitTextIcon.java">
+      <node id="1860120738943467684" at="14,102,15,89" concept="0" />
+      <node id="1860120738943413795" at="20,0,21,0" concept="4" trace="iconId$SZ3g" />
+      <node id="1860120738943413796" at="14,0,17,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <scope id="1860120738943413796" at="14,102,15,89" />
+      <scope id="1860120738943413796" at="14,0,17,0">
+        <var name="enclosingNode" id="1860120738943413796" />
+        <var name="index" id="1860120738943413796" />
+        <var name="model" id="1860120738943413796" />
+        <var name="newNode" id="1860120738943413796" />
+        <var name="sampleNode" id="1860120738943413796" />
+      </scope>
+      <unit id="1860120738943413795" at="19,0,22,0" name="jetbrains.mps.lang.resources.actions.InitTextIcon$PROPS" />
+      <unit id="1860120738943413796" at="13,0,18,0" name="jetbrains.mps.lang.resources.actions.InitTextIcon$NodeFactory_1860120738943413796" />
+      <unit id="1860120738943413795" at="12,0,23,0" name="jetbrains.mps.lang.resources.actions.InitTextIcon" />
+    </file>
+  </root>
+  <root nodeRef="r:b921e97e-c79b-49a1-bb6f-d836bc131175(jetbrains.mps.lang.resources.actions)/8130203123066046342">
+    <file name="IconHelper.java">
+      <node id="1621432408996497093" at="17,43,18,217" concept="2" />
+      <node id="1621432408996507763" at="18,217,19,15" concept="2" />
+      <node id="1621432408996535712" at="20,57,21,11" concept="0" />
+      <node id="1621432408996541930" at="22,5,23,19" concept="3" />
+      <node id="8130203123066046342" at="27,0,28,0" concept="4" trace="TextIcon$X0" />
+      <node id="8130203123066046342" at="31,0,32,0" concept="4" trace="iconId$SZ3g" />
+      <node id="1621432408996516048" at="19,15,22,5" concept="6" />
+      <node id="8130203123066046468" at="17,0,25,0" concept="5" trace="createId#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/String;" />
+      <scope id="1621432408996516050" at="20,57,21,11" />
+      <scope id="8130203123066046474" at="17,43,23,19">
+        <var name="id" id="1621432408996507766" />
+        <var name="used" id="1621432408996497096" />
+      </scope>
+      <scope id="8130203123066046468" at="17,0,25,0">
+        <var name="m" id="8130203123066046635" />
+      </scope>
+      <unit id="8130203123066046342" at="26,0,29,0" name="jetbrains.mps.lang.resources.actions.IconHelper$CONCEPTS" />
+      <unit id="8130203123066046342" at="30,0,33,0" name="jetbrains.mps.lang.resources.actions.IconHelper$PROPS" />
+      <unit id="8130203123066046342" at="16,0,34,0" name="jetbrains.mps.lang.resources.actions.IconHelper" />
+    </file>
+  </root>
+</debug-info>
+

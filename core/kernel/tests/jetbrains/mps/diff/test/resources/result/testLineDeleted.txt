@@ -1,8 +1,0 @@
-**** old text
----- generated text
-*****************
-**** 2, 4 ****
- diff
- test
--case
--content

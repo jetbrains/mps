@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<product version="3" modelHash="e4vbmh6gc3xlzlxkicgh1bfltgfeif5">
+=======
+<product version="3" modelHash="-bs2xd0ss8qiblntg6x7ylatvw94mop5">
+>>>>>>> upstream/2024.1_projectPane
+  <files names="AbstractBreakpointsTree.java:BreakpointIconRenderer.java:BreakpointPainter.java:BreakpointViewSettingsComponent.java:BreakpointsBrowserDialog.java:BreakpointsTable.java:BreakpointsTree.java:BreakpointsUiComponent.java:BreakpointsUtil.java:BreakpointsView.java:GroupedTree.java:JPanelWithCheckbox.java" />
+</product>
+

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root nodeRef="r:3391afe4-c131-4e6c-87cf-990834a43a93(jetbrains.mps.kotlin.stubs.smodel)/3758303616303218970">
+    <file name="KotlinLanguageUtil.java">
+      <node id="4309254202308976243" at="26,0,27,0" concept="4" trace="languageId" />
+      <node id="8219844031683724820" at="27,0,28,0" concept="4" trace="javaRefsLanguageId" />
+      <node id="3758303616303541434" at="29,65,30,88" concept="1" />
+      <node id="3758303616303541442" at="30,88,31,0" concept="3" />
+      <node id="3758303616303541443" at="31,0,32,64" concept="1" />
+      <node id="3758303616303541449" at="32,64,33,64" concept="0" />
+      <node id="3758303616303541455" at="33,64,34,16" concept="2" />
+      <node id="3618847927238580455" at="37,76,38,84" concept="0" />
+      <node id="2226917154460414911" at="41,74,42,101" concept="1" />
+      <node id="3758303616305178106" at="42,101,43,42" concept="0" />
+      <node id="3758303616305178128" at="43,42,44,0" concept="3" />
+      <node id="3758303616305259195" at="44,0,45,93" concept="0" />
+      <node id="3758303616305178129" at="45,93,46,24" concept="2" />
+      <node id="4324907694463382464" at="49,68,50,47" concept="2" />
+      <node id="3758303616303218970" at="54,0,55,0" concept="4" trace="KotlinFile$4h" />
+      <node id="3758303616303218970" at="58,0,59,0" concept="4" trace="name$MnvL" />
+      <node id="3758303616303218970" at="62,0,63,0" concept="4" trace="declarations$NgHw" />
+      <node id="3618847927238580432" at="37,0,40,0" concept="5" trace="addDeclarations#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/List;)V" />
+      <node id="4324907694463382464" at="49,0,52,0" concept="5" trace="as_ctnfz1_a0a0a0a7#(Ljava/lang/Object;Ljava/lang/Class;)null" />
+      <node id="3758303616303541423" at="29,0,36,0" concept="5" trace="createKotlinFileRootNode#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="3758303616305142821" at="41,0,48,0" concept="5" trace="createClassRootNode#(Lkotlin/metadata/ClassKind;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="3618847927238580433" at="37,76,38,84" />
+      <scope id="4324907694463382464" at="49,68,50,47" />
+      <scope id="3618847927238580432" at="37,0,40,0">
+        <var name="declarations" id="3618847927238580467" />
+        <var name="file" id="3618847927238580465" />
+      </scope>
+      <scope id="4324907694463382464" at="49,0,52,0">
+        <var name="o" id="4324907694463382464" />
+        <var name="type" id="4324907694463382464" />
+      </scope>
+      <scope id="3758303616303541428" at="29,65,34,16">
+        <var name="lazy" id="3758303616303541435" />
+        <var name="node" id="3758303616303541444" />
+      </scope>
+      <scope id="3758303616305142824" at="41,74,46,24">
+        <var name="node" id="4324907694463382451" />
+      </scope>
+      <scope id="3758303616303541423" at="29,0,36,0">
+        <var name="fileName" id="3758303616303541426" />
+      </scope>
+      <scope id="3758303616305142821" at="41,0,48,0">
+        <var name="fqName" id="3758303616305144354" />
+        <var name="kind" id="3758303616305144100" />
+      </scope>
+      <unit id="3758303616303218970" at="53,0,56,0" name="jetbrains.mps.kotlin.stubs.smodel.KotlinLanguageUtil$CONCEPTS" />
+      <unit id="3758303616303218970" at="57,0,60,0" name="jetbrains.mps.kotlin.stubs.smodel.KotlinLanguageUtil$PROPS" />
+      <unit id="3758303616303218970" at="61,0,64,0" name="jetbrains.mps.kotlin.stubs.smodel.KotlinLanguageUtil$LINKS" />
+      <unit id="3758303616303218970" at="24,0,65,0" name="jetbrains.mps.kotlin.stubs.smodel.KotlinLanguageUtil" />
+    </file>
+  </root>
+</debug-info>
+

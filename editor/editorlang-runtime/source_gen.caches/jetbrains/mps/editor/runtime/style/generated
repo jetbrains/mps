@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<product version="3" modelHash="-6vt5bsqb405a08bklacw91uqsvus5we">
+=======
+<product version="3" modelHash="btlctup92zz2id5qs0mhnhs6c5z5crp">
+>>>>>>> upstream/2024.1_projectPane
+  <files names="AbstractStyleClass.java:AbstractStyleKey.java:ParametersInformation.java:SideTransformTagUtils.java:StyledTextPrinter.java" />
+</product>
+

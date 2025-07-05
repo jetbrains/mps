@@ -1,0 +1,82 @@
+<project name="buildDmg" default="makeall" basedir="../">
+  <property environment="env"/>
+
+  <property name="build.artifacts" location="${basedir}"/>
+  <property name="build.tmp" location="${basedir}/mac"/>
+  <property name="build.layout" location="${basedir}"/>
+  <loadproperties srcfile="${build.artifacts}/build.properties"/>
+
+  <property name="build.code" value="${mps.build.number}" />
+  <property name="mps-macos.zip" location="${build.artifacts}/${mps.build.number}-macos.zip"/>
+  <property name="mps-macos-m1.zip" location="${build.artifacts}/${mps.build.number}-macos-aarch64.zip"/>
+  <property name="jdk.tar.gz" location="${build.artifacts}/jbr-osx-x64.tar.gz"/>
+  <property name="jdk-m1.tar.gz" location="${build.artifacts}/jbr-osx-aarch64.tar.gz"/>
+
+  <property name="mac.host" value=""/>
+  <property name="mac.user" value=""/>
+  <property name="mac.password" value=""/>
+  <property name="mac.codesign.string" value=""/>
+  <property name="mac.keychain" value="/Users/${mac.user}/Library/Keychains/login.keychain"/>
+  <property name="remote.dir.base" value="intellij-builds"/>
+  <property name="remote.dir" value="${remote.dir.base}/${build.code}"/>
+
+
+  <target name="makeall">
+    <mkdir dir="${build.tmp}"/>
+    <copy file="${basedir}/build/resources/DMG_background.tiff" tofile="${build.tmp}/${build.code}.png"/>
+    <copy file="${basedir}/build/resources/mps-sign.sh" tofile="${build.tmp}/${build.code}-sign.sh"/>
+    <copy file="${basedir}/build/tools/mac/scripts/notarize.sh" tofile="${build.tmp}/notarize.sh"/>
+    <copy file="${basedir}/build/resources/mps-dmg.sh" tofile="${build.tmp}/${build.code}-dmg.sh"/>
+    <copy file="${basedir}/build/resources/makedmg.py" tofile="${build.tmp}/${build.code}.py"/>
+    <copy file="${basedir}/build/tools/mac/scripts/entitlements.xml" tofile="${build.tmp}/entitlements.xml"/>
+
+    <exec command="ssh -o 'StrictHostKeyChecking no' ${mac.user}@${mac.host} 'mkdir ${remote.dir}'"/>
+
+    <exec command="scp -p ${build.tmp}/${build.code}.png ${mac.user}@${mac.host}:${remote.dir}"/>
+
+    <exec command="chmod 777 ${build.tmp}/${build.code}-sign.sh ${build.tmp}/${build.code}-dmg.sh ${build.tmp}/${build.code}.py ${build.tmp}/notarize.sh"/>
+    <exec command="scp -p ${build.tmp}/${build.code}-sign.sh ${build.tmp}/${build.code}-dmg.sh ${build.tmp}/${build.code}.py ${build.tmp}/entitlements.xml ${build.tmp}/notarize.sh ${mac.user}@${mac.host}:${remote.dir}"/>
+
+    <!-- create -macos.dmg -->
+    <move file="${mps-macos.zip}" tofile="${build.tmp}/${build.code}.zip"/>
+    <exec command="scp -p ${build.tmp}/${build.code}.zip ${mac.user}@${mac.host}:${remote.dir}"/>
+
+    <move file="${jdk.tar.gz}" tofile="${build.tmp}/${build.code}-jdk.tar.gz"/>
+    <exec command="scp -p ${build.tmp}/${build.code}-jdk.tar.gz ${mac.user}@${mac.host}:${remote.dir}"/>
+
+    <exec command="ssh ${mac.user}@${mac.host} 'bash -l ${remote.dir}/${build.code}-sign.sh ${build.code} ${mac.keychain} ${mac.password} ${remote.dir} ${mac.codesign.string}'"/>
+    <exec command="ssh ${mac.user}@${mac.host} 'bash -l ${remote.dir}/${build.code}-dmg.sh ${build.code} ${remote.dir}'"/>
+
+    <exec command="scp -p ${mac.user}@${mac.host}:${remote.dir}/${build.code}.dmg ${build.layout}/${build.code}-macos.dmg" />
+
+    <!-- create -macos-aarch64.dmg -->
+    <move file="${mps-macos-m1.zip}" tofile="${build.tmp}/${build.code}.zip"/>
+    <exec command="scp -p ${build.tmp}/${build.code}.zip ${mac.user}@${mac.host}:${remote.dir}"/>
+
+    <move file="${jdk-m1.tar.gz}" tofile="${build.tmp}/${build.code}-jdk.tar.gz"/>
+    <exec command="scp -p ${build.tmp}/${build.code}-jdk.tar.gz ${mac.user}@${mac.host}:${remote.dir}"/>
+
+    <exec command="ssh ${mac.user}@${mac.host} 'bash -l ${remote.dir}/${build.code}-sign.sh ${build.code} ${mac.keychain} ${mac.password} ${remote.dir} ${mac.codesign.string}'"/>
+    <exec command="ssh ${mac.user}@${mac.host} 'bash -l ${remote.dir}/${build.code}-dmg.sh ${build.code} ${remote.dir}'"/>
+
+    <exec command="scp -p ${mac.user}@${mac.host}:${remote.dir}/${build.code}.dmg ${build.layout}/${build.code}-macos-aarch64.dmg" />
+
+    <!-- clean-up -->
+    <exec command="ssh ${mac.user}@${mac.host} 'rm ${remote.dir}/*'"/>
+    <exec command="ssh ${mac.user}@${mac.host} 'rmdir ${remote.dir}'"/>
+    <delete dir="${build.tmp}"/>
+
+    <fail message=".dmg build failed">
+      <condition>
+        <not>
+          <and>
+            <available file="${build.layout}/${build.code}-macos.dmg"/>
+            <available file="${build.layout}/${build.code}-macos-aarch64.dmg"/>
+          </and>
+        </not>
+      </condition>
+    </fail>
+
+  </target>
+
+</project>

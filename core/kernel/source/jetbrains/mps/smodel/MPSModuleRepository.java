@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2010 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,687 +15,481 @@
  */
 package jetbrains.mps.smodel;
 
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.fileTypes.FileTypeManager;
-import jetbrains.mps.generator.fileGenerator.BaseModelCache;
+import jetbrains.mps.RuntimeFlags;
+import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.extapi.model.StorageMemoryConflictResolver;
+import jetbrains.mps.extapi.module.EditableSModule;
+import jetbrains.mps.extapi.module.SModuleBase;
+import jetbrains.mps.extapi.module.SRepositoryBase;
+import jetbrains.mps.extapi.module.SRepositoryExt;
+import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.*;
-import jetbrains.mps.project.AbstractModule.StubPath;
-import jetbrains.mps.project.structure.model.RootReference;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.util.Condition;
-import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.ManyToManyMap;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.MPSExtentions;
-import org.jetbrains.annotations.NonNls;
+import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.scope.Scope;
+import jetbrains.mps.smodel.runtime.EvaluateScopeContext;
+import jetbrains.mps.util.containers.ManyToManyMap;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelId;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleId;
+import org.jetbrains.mps.openapi.repository.CommandListener;
+import org.jetbrains.mps.openapi.repository.ReadActionListener;
 
-import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.Function;
 
-public class MPSModuleRepository implements ApplicationComponent {
+public class MPSModuleRepository extends SRepositoryBase implements CoreComponent, SRepositoryExt, ReferenceScopeHelper.Source {
   private static final Logger LOG = Logger.getLogger(MPSModuleRepository.class);
+  private static MPSModuleRepository ourInstance;
 
+  private final GlobalModelAccess myGlobalModelAccess;
+  private final CommandListener myCommandListener;
+  private final CachingReferenceScopeHelper myScopeCache;
+
+  private final Set<SModule> myModules = new LinkedHashSet<>();
+  private final Map<SModuleId, SModule> myIdToModuleMap = new ConcurrentHashMap<>();
+  private final ManyToManyMap<SModule, MPSModuleOwner> myModuleToOwners = new ManyToManyMap<>();
+
+  /**
+   * Compatibility code, the instance available through SModelRepository.getInstance for legacy code.
+   * As we move forward, shall decide whether we need to keep list of models or can live without it.
+   */
+  private final SModelRepository myModelRepository;
+
+  /**
+   * Use {@link org.jetbrains.mps.openapi.module.SRepository} from the project whenever it is possible
+   * <p>
+   * Currently the context object is an MPS project class
+   *
+   * @see jetbrains.mps.project.Project
+   * <p>
+   * It can provide a repository and a model access
+   * {@link jetbrains.mps.project.Project#getModelAccess()}
+   * {@link jetbrains.mps.project.Project#getRepository()}}
+   * <p>
+   * So in each case you must have an MPS project within your scope and request SRepository explicitily from the project.
+   * <p/>
+   * To access register/unregister methods for modules, consider using {@link SRepositoryExt}
+   * @since 3.2
+   * @deprecated
+   */
+  @Deprecated(since = "3.4", forRemoval = true)
   public static MPSModuleRepository getInstance() {
-    return ApplicationManager.getApplication().getComponent(MPSModuleRepository.class);
+    return ourInstance;
   }
 
-  private Map<String, IModule> myFileToModuleMap = new ConcurrentHashMap<String, IModule>();
-  private Map<String, IModule> myFqNameToModulesMap = new ConcurrentHashMap<String, IModule>();
-  private Map<ModuleId, IModule> myIdToModuleMap = new ConcurrentHashMap<ModuleId, IModule>();
+  public MPSModuleRepository(SRepositoryRegistry repositoryRegistry) {
+    super(repositoryRegistry);
+    myGlobalModelAccess = new GlobalModelAccess();
+    myCommandListener = new CommandListener() {
+      @Override
+      public void commandStarted() {
+        fireCommandStarted();
+      }
 
-  private Set<IModule> myModules = new LinkedHashSet<IModule>();
-
-  private ManyToManyMap<IModule, MPSModuleOwner> myModuleToOwners = new ManyToManyMap<IModule, MPSModuleOwner>();
-
-  private List<ModuleRepositoryListener> myModuleListeners = new CopyOnWriteArrayList<ModuleRepositoryListener>();
-  private List<MPSModuleRepositoryListener> myListeners = new CopyOnWriteArrayList<MPSModuleRepositoryListener>();
-
-  private boolean myDirtyFlag = false;
-
-  private Map<String, Class<? extends IModule>> myExtensionsToModuleTypes = new LinkedHashMap<String, Class<? extends IModule>>();
-
-  public MPSModuleRepository() {
-    initializeExtensionsToModuleTypesMap();
+      @Override
+      public void commandFinished() {
+        fireCommandFinished();
+      }
+    };
+    myScopeCache = new CachingReferenceScopeHelper();
+    myModelRepository = new SModelRepository(this);
   }
 
-  public void initComponent() {
-  }
-
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return "MPS Module Repository";
-  }
-
-  public void disposeComponent() {
-
-  }
-
-  private void initializeExtensionsToModuleTypesMap() {
-    myExtensionsToModuleTypes.put(MPSExtentions.LANGUAGE, Language.class);
-    myExtensionsToModuleTypes.put(MPSExtentions.SOLUTION, Solution.class);
-    myExtensionsToModuleTypes.put(MPSExtentions.DEVKIT, DevKit.class);
-  }
-
-  public Set<String> getModuleExtensions() {
-    return new HashSet<String>(myExtensionsToModuleTypes.keySet());
-  }
-
-  public void addRepositoryListener(MPSModuleRepositoryListener l) {
-    myListeners.add(l);
-  }
-
-  public void removeRepositoryListener(MPSModuleRepositoryListener l) {
-    myListeners.remove(l);
-  }
-
-  private void fireRepositoryChanged() {
-    invalidateCaches();
-
-    for (MPSModuleRepositoryListener l : myListeners) {
-      l.repositoryChanged();
+  @Override
+  public void init() {
+    super.init();
+    if (ourInstance != null) {
+      throw new IllegalStateException("already initialized");
     }
+    ourInstance = this;
+    myGlobalModelAccess.addCommandListener(myCommandListener);
+    myGlobalModelAccess.addReadActionListener(myScopeCache);
+    myModelRepository.init();
   }
 
-  public void invalidateCaches() {
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        MPSProjects projects = MPSProjects.instance();
-        if (projects != null) {
-          for (MPSProject p : projects.getProjects()) {
-            p.getProject().getComponent(ProjectScope.class).invalidateCaches();
-          }
-        }
+  @Override
+  public void dispose() {
+    myModelRepository.dispose();
+    myGlobalModelAccess.removeReadActionListener(myScopeCache);
+    myGlobalModelAccess.removeCommandListener(myCommandListener);
+    ourInstance = null;
+    super.dispose();
+  }
 
-        for (IModule m : getAllModules()) {
-          m.invalidateCaches();
-        }
+  // friend-only access, for ModuleRepositoryFacade.
+  /*package*/ SModelRepository getModelRepository() {
+    return myModelRepository;
+  }
+
+  //-----------------register/unregister-merge-----------
+
+  @Override
+  public <T extends SModule> T registerModule(@NotNull T moduleToRegister, @NotNull MPSModuleOwner owner) {
+    getModelAccess().checkWriteAccess();
+
+    SModuleId moduleId = moduleToRegister.getModuleReference().getModuleId();
+    String moduleFqName = moduleToRegister.getModuleName();
+
+    SModule existing = getModule(moduleId);
+    if (existing != null) {
+      //paranoid check relates to MPS-24219
+      if (existing.getClass() != moduleToRegister.getClass()) {
+        throw new RuntimeException("Module to register has class " + moduleToRegister.getClass().getSimpleName() +
+            ", while there's already another module with the same id registered with class " + existing.getClass().getSimpleName());
+      }
+      if (!Objects.equals(existing.getModuleName(), moduleFqName)) {
+        String msg = "Trying to register a module with the same identity but different name. There's module '%s' in the repository, and new module is '%s'.\n" +
+                     "Original module comes from %s, contesting from %s";
+        Object existingModuleLocation = existing instanceof AbstractModule ? ((AbstractModule) existing).getDescriptorFile() : "<unknown>";
+        Object newModuleLocation = moduleToRegister instanceof AbstractModule ? ((AbstractModule) moduleToRegister).getDescriptorFile() : "<unknown>";
+        LOG.error(String.format(msg, existing.getModuleName(), moduleFqName, existingModuleLocation, newModuleLocation));
+      }
+      myModuleToOwners.addLink(existing, owner);
+      return (T) existing;
+    }
+
+    myIdToModuleMap.put(moduleToRegister.getModuleId(), moduleToRegister);
+    myModules.add(moduleToRegister);
+    // XXX for now, decided to let AbstractModule.attach to control whether it has incomplete model set; although might be reasonable
+    //     to keep this logic here, without the need for markIncompleteModelSet() callback or an SRepositoryListener notifications?
+
+    checkModelsAreNotChanged(moduleToRegister);
+    if (moduleToRegister instanceof SModuleBase) {
+      ((SModuleBase) moduleToRegister).attach(this);
+    }
+    myModuleToOwners.addLink(moduleToRegister, owner);
+    invalidateCaches();
+    fireModuleAdded(moduleToRegister);
+    return moduleToRegister;
+  }
+
+  // Adding not saved model can cause data loss, see MPS-18743.
+  private void checkModelsAreNotChanged(SModule aModuleToRegister) {
+    aModuleToRegister.forEachRegisteredModel(model -> {
+      if (model instanceof EditableSModel && ((EditableSModel) model).isChanged()) {
+        LOG.error("Added a module with unsaved model to a repository. " +
+                  "Modify models that are not added to a module or modify them when they are in repo already", new Throwable());
       }
     });
   }
 
-  public void addModuleRepositoryListener(ModuleRepositoryListener l) {
-    myModuleListeners.add(l);
-  }
-
-  public void removeModuleRepositoryListener(ModuleRepositoryListener l) {
-    myModuleListeners.remove(l);
-  }
-
-  private void fireModuleAdded(IModule module) {
-    for (ModuleRepositoryListener l : myModuleListeners) {
-      try {
-        l.moduleAdded(module);
-      } catch (Throwable t) {
-        LOG.error(t);
+  /**
+   * @deprecated use of this method is discouraged as it's specific to this {@code SRepository} implementation.
+   *             It shall not get exposed in {@code SRepositoryExt} unless there's thorough justification.
+   *             The only rationale behind this method was slow 'invalidateCaches()' when multiple modules were
+   *             un-registered during project close/MPS shutdown. Now, with no-op invalidateCaches(), there's
+   *             no performance gain in using this method.
+   *             However, might be reasonable to update {@code SRepositoryExt} API to accommodate collection instead of a single object
+   *             for register/unregister operations. The method left as a reminder.
+   */
+  @Deprecated
+  public void unregisterModules(Collection<SModule> modules, MPSModuleOwner owner) {
+    Collection<SModule> modulesToDispose = new ArrayList<>();
+    for (SModule module : modules) {
+      if (doUnregisterModule(module, owner)) {
+        modulesToDispose.add(module);
       }
     }
-  }
-
-  private void fireBeforeModuleRemoved(IModule module) {
-    for (ModuleRepositoryListener l : myModuleListeners) {
-      try {
-        l.beforeModuleRemoved(module);
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  private void fireModuleRemoved(IModule module) {
-    for (ModuleRepositoryListener l : myModuleListeners) {
-      try {
-        l.moduleRemoved(module);
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  public boolean isKnownModule(IModule m) {
-    return myModules.contains(m);
-  }
-
-  public void fireModuleChanged(IModule m) {
-    if (!myModules.contains(m)) return;
-
-    for (ModuleRepositoryListener l : myModuleListeners) {
-      try {
-        l.moduleChanged(m);
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  public void fireModuleInitialized(IModule module) {
-    assertCanRead();
-
-    for (ModuleRepositoryListener l : myModuleListeners) {
-      l.moduleInitialized(module);
-    }
-  }
-
-  public Set<MPSModuleOwner> getOwners(IModule module) {
-    assertCanRead();
-
-    return myModuleToOwners.getByFirst(module);
-  }
-
-  public Language registerLanguage(IFile file, MPSModuleOwner owner) {
-    return registerModule(file, owner, Language.class);
-  }
-
-  public DevKit registerDevKit(IFile file, MPSModuleOwner owner) {
-    return registerModule(file, owner, DevKit.class);
-  }
-
-  public Solution registerSolution(IFile file, MPSModuleOwner owner) {
-    return registerModule(file, owner, Solution.class);
-  }
-
-  public IModule getModuleByFile(File file) {
-    assertCanRead();
-
-    return myFileToModuleMap.get(FileUtil.getCanonicalPath(file));
-  }
-
-  public IModule getModuleByPath(String path) {
-    assertCanRead();
-
-    return myFileToModuleMap.get(path);
-  }
-
-  //todo rename to getByFqName
-  public IModule getModuleByUID(String moduleUID) {
-    return myFqNameToModulesMap.get(moduleUID);
-  }
-
-  public IModule getModuleById(ModuleId moduleId) {
-    assertCanRead();
-
-    if (moduleId == null) return null;
-    return myIdToModuleMap.get(moduleId);
-  }
-
-  public void moduleFqNameChanged(IModule module, String oldName) {
-    assertCanWrite();
-
-    if (myFqNameToModulesMap.get(oldName) != module || myFqNameToModulesMap.containsKey(module.getModuleFqName())) {
-      throw new IllegalStateException();
-    }
-    myFqNameToModulesMap.remove(oldName);
-    myFqNameToModulesMap.put(module.getModuleFqName(), module);
-  }
-
-  public IModule getModule(@NotNull ModuleReference ref) {
-    if (ref.getModuleId() != null) {
-      return myIdToModuleMap.get(ref.getModuleId());
-    }
-    return myFqNameToModulesMap.get(ref.getModuleFqName());
-  }
-
-  public <TM extends IModule> TM registerModule(IFile file, MPSModuleOwner owner, Class<TM> cls) {
-    assertCanWrite();
-
-    myDirtyFlag = true;
-    String canonicalPath = file.getCanonicalPath();
-    IModule module = myFileToModuleMap.get(canonicalPath);
-    if (module == null) {
-      if (cls == Language.class) {
-        module = Language.createLanguage(null, file, owner);
-      } else if (cls == Solution.class) {
-        module = Solution.newInstance(file, owner);
-      } else {
-        module = DevKit.newInstance(file, owner);
-      }
-      /* if (module instanceof AbstractModule) {
-        ((AbstractModule)module).convertRenamedDependencies();
-      }*/
-    } else {
-      if (!cls.isInstance(module)) {
-        LOG.error("can't register module " + module + " : module of another kind with the same name already exists", module);
-      }
-      if (owner == module) {
-        LOG.warning("module " + module + " wants to owe itself: will be collected very quickly", module);
-      }
-      myModuleToOwners.addLink(module, owner);
-      myModules.add(module);
-    }
-    fireRepositoryChanged();
-    return (TM) module;
-  }
-
-  public boolean existsModule(ModuleReference ref) {
-    return getModule(ref) != null;
-  }
-
-  public boolean existsModule(IModule module, MPSModuleOwner owner) {
-    assertCanRead();
-
-    return myModuleToOwners.contains(module, owner);
-  }
-
-  public void addModule(IModule module, MPSModuleOwner owner) {
-    assertCanWrite();
-
-    myDirtyFlag = true;
-    if (existsModule(module, owner)) {
-      throw new RuntimeException("Couldn't add module \"" + module.getModuleFqName() + "\" : this module is already registered with this very owner: " + owner);
-    }
-    IFile descriptorFile = module.getDescriptorFile();
-    String canonicalDescriptorPath;
-    if (descriptorFile == null) {
-      canonicalDescriptorPath = null;
-    } else {
-      canonicalDescriptorPath = descriptorFile.getCanonicalPath();
-    }
-    if (canonicalDescriptorPath != null && !myFileToModuleMap.containsKey(canonicalDescriptorPath)) {
-      myFileToModuleMap.put(canonicalDescriptorPath, module);
-    }
-
-    String moduleFqName = module.getModuleFqName();
-
-    if (myFqNameToModulesMap.containsKey(moduleFqName)) {
-      IModule m = myFqNameToModulesMap.get(moduleFqName);
-      LOG.error("duplicate module name " + moduleFqName + " : module with the same UID exists at " + m.getDescriptorFile() + " and " + module.getDescriptorFile(), m);
-    }
-
-    myFqNameToModulesMap.put(moduleFqName, module);
-
-    ModuleId moduleId = module.getModuleId();
-    if (moduleId != null) {
-      if (myIdToModuleMap.containsKey(moduleId)) {
-        LOG.warning("duplicate module name " + module.getModuleReference() + " module with the same id already exists " + myIdToModuleMap.get(moduleId).getModuleReference());
-      }
-
-      myIdToModuleMap.put(module.getModuleId(), module);
-    }
-
-    myModuleToOwners.addLink(module, owner);
-    myModules.add(module);
-
-    fireModuleAdded(module);
-  }
-
-  public void unRegisterModules(MPSModuleOwner owner, Condition<IModule> condition) {
-    assertCanWrite();
-
-    myDirtyFlag = true;
-    Set<IModule> modules = new HashSet<IModule>(myModuleToOwners.getBySecond(owner));
-    for (IModule m : modules) {
-      if (condition.met(m)) {
-        myModuleToOwners.removeLink(m, owner);
-      }
-    }
-    fireRepositoryChanged();
-  }
-
-  public void unRegisterModules(MPSModuleOwner owner) {
-    assertCanWrite();
-
-    myDirtyFlag = true;
-    myModuleToOwners.clearSecond(owner);
-    fireRepositoryChanged();
-  }
-
-  public void removeUnusedModules() {
-    assertCanWrite();
-
-    if (!myDirtyFlag) return;
-
-    myDirtyFlag = false;
-    for (IModule m : getModulesToBeRemoved()) {
-      fireBeforeModuleRemoved(m);
-      m.dispose();
-      removeModule(m);
-    }
-    //todo: do the similar thing with module stubs
-  }
-
-  private Set<IModule> getModulesToBeRemoved() {
-    Set<MPSModuleOwner> rootOwners = new HashSet<MPSModuleOwner>();
-    for (IModule m : myModules) {
-      for (MPSModuleOwner owner : myModuleToOwners.getByFirst(m)) {
-        if (owner instanceof IModule) continue;
-        rootOwners.add(owner);
-      }
-    }
-
-    Set<IModule> visibleModules = new HashSet<IModule>();
-    for (IModule m : myModules) {
-      if (m instanceof Solution && ((Solution) m).isStub()) {
-        visibleModules.add(m);
-        continue;
-      }
-
-      for (MPSModuleOwner r : rootOwners) {
-        if (myModuleToOwners.contains(m, r)) {
-          visibleModules.add(m);
-        }
-      }
-    }
-
-    Set<IModule> toAdd;
-    do {
-      toAdd = new HashSet<IModule>();
-      for (IModule m : myModules) {
-        if (visibleModules.contains(m)) continue;
-        for (IModule v : visibleModules) {
-          if (!(v instanceof MPSModuleOwner)) continue;
-          if (!myModuleToOwners.contains(m, (MPSModuleOwner) v)) continue;
-          toAdd.add(m);
-        }
-      }
-      visibleModules.addAll(toAdd);
-    } while (!toAdd.isEmpty());
-
-    Set<IModule> toBeRemoved = new HashSet<IModule>(myModules);
-    toBeRemoved.removeAll(visibleModules);
-    return toBeRemoved;
-  }
-
-  public void removeModule(IModule module) {
-    assertCanWrite();
-
-    if (!myModules.contains(module)) {
+    if (modulesToDispose.isEmpty()) {
       return;
     }
 
-    IFile descriptorFile = module.getDescriptorFile();
-
-    myModuleToOwners.clearFirst(module);
-    myModules.remove(module);
-    myFqNameToModulesMap.remove(module.getModuleFqName());
-    if (module.getModuleId() != null) {
-      myIdToModuleMap.remove(module.getModuleId());
-    }
-
-    if (descriptorFile != null) {
-      myFileToModuleMap.remove(descriptorFile.getCanonicalPath());
-    }
-
-    fireModuleRemoved(module);
-  }
-
-  public void readModuleDescriptors(Iterator<? extends RootReference> roots, MPSModuleOwner owner) {
-    assertCanWrite();
-
-    while (roots.hasNext()) {
-      RootReference root = roots.next();
-      IFile moduleRoot = FileSystem.getFile(root.getPath());
-
-      if (moduleRoot.exists()) {
-        readModuleDescriptors(moduleRoot, owner);
-      } else {
-        String error = "Couldn't load modules from " + moduleRoot.getAbsolutePath() + " for owner " + owner +
-          "\nDirectory doesn't exist: ";
-        LOG.error(error);
-      }
+    invalidateCaches();
+    for (SModule module : modulesToDispose) {
+      fireModuleRemoved(module.getModuleReference());
+      ((SModuleBase) module).dispose();
     }
   }
 
-  public List<IModule> readModuleDescriptors(IFile dir, MPSModuleOwner owner) {
-    return readModuleDescriptors(dir, owner, new HashSet<IFile>());
+  @Override
+  public void unregisterModule(@NotNull SModule module, @NotNull MPSModuleOwner owner) {
+    getModelAccess().checkWriteAccess();
+
+    boolean moduleRemoved = doUnregisterModule(module, owner);
+    invalidateCaches();
+    if (moduleRemoved) {
+      fireModuleRemoved(module.getModuleReference());
+      ((SModuleBase) module).dispose();
+    }
   }
 
-  private List<IModule> readModuleDescriptors(IFile dir, MPSModuleOwner owner, Set<IFile> excludes) {
-    assertCanWrite();
-
-    List<IModule> result = new ArrayList<IModule>();
-    String dirName = dir.getName();
-
-    if (FileTypeManager.getInstance().isFileIgnored(dirName)) return result;
-
-    List<IFile> files = dir.list();
-    if (files == null) {
-      return result;
+  /**
+   * Unregister specified module from specified owner and conditionally remove module from ModuleRepository if there
+   * are no more owners.
+   * <p/>
+   * Clients are responsible for:
+   * - calling invalidateCaches()
+   * - firing moduleRemoved/repositoryChanged notifications if module was removed/was not removed from ModuleRepository
+   * - disposing module if it was removed
+   *
+   * @return true if module was removed from ModuleRepository
+   */
+  private boolean doUnregisterModule(SModule module, MPSModuleOwner owner) {
+    getModelAccess().checkWriteAccess();
+    if  (!myModules.contains(module)) {
+      throw new IllegalArgumentException("Trying to unregister non-registered module: " + module);
     }
 
-    for (IFile file : files) {
-      if (hasModuleExtension(file.getName())) {
-        IModule module = readModuleDescriptor_internal(file, owner, getModuleExtension(file.getName()), excludes);
-        if (module != null) {
-          result.add(module);
+    if (!myModuleToOwners.containsSecond(owner)) {
+      LOG.warning(String.format("Attempt to unlink module %s from unexpected owner %s", module, owner), new Throwable());
+      return false;
+    }
+
+    myModuleToOwners.removeLink(module, owner);
+    boolean remove = myModuleToOwners.getByFirst(module).isEmpty();
+    if (remove) {
+      fireBeforeModuleRemoved(module);
+      myIncompleteModelLoad.forget(module);
+      myModules.remove(module);
+      myIdToModuleMap.remove(module.getModuleReference().getModuleId());
+      return true;
+    }
+    return false;
+  }
+
+  //---------------get by-----------------------------
+
+  @NotNull
+  @Override
+  public org.jetbrains.mps.openapi.module.ModelAccess getModelAccess() {
+    return myGlobalModelAccess;
+  }
+
+  public Set<SModule> getModules(MPSModuleOwner moduleOwner) {
+    getModelAccess().checkReadAccess();
+
+    return Collections.unmodifiableSet(myModuleToOwners.getBySecond(moduleOwner));
+  }
+
+  public Set<MPSModuleOwner> getOwners(@NotNull SModule module) {
+    getModelAccess().checkReadAccess();
+
+    return Collections.unmodifiableSet(myModuleToOwners.getByFirst(module));
+  }
+
+  @Override
+  public SModule getModule(@NotNull SModuleId id) {
+    getModelAccess().checkReadAccess();
+    return myIdToModuleMap.get(id);
+  }
+
+  @NotNull
+  @Override
+  public Iterable<SModule> getModules() {
+    getModelAccess().checkReadAccess();
+    return Collections.unmodifiableSet(myModules);
+  }
+
+  @Nullable
+  @Override
+  public SModel getModel(@NotNull SModelId modelId) {
+    if (modelId.isGloballyUnique()) {
+      //noinspection deprecation
+      final SModel md = myModelRepository.getModelDescriptor(modelId);
+      if (md == null) {
+        final Collection<SModule> incompleteModules = myIncompleteModelLoad.detachedCopy();
+        for (SModule peek : incompleteModules) {
+          final SModel model = peek.getModel(modelId);
+          if (model != null) {
+            return model;
+          }
         }
       }
+      return md;
     }
-
-    for (IFile childDir : files) {
-      if (FileTypeManager.getInstance().isFileIgnored(childDir.getName())) continue;
-      if (hasModuleExtension(childDir.getName())) continue;
-      if (excludes.contains(childDir)) continue;
-
-      if (childDir.getName().endsWith(AbstractModule.PACKAGE_SUFFIX)) {
-        IFile dirInJar = FileSystem.getFile(childDir.getAbsolutePath() + "!/" + AbstractModule.MODULE_DIR);
-        result.addAll(readModuleDescriptors(dirInJar, owner, excludes));
-      }
-
-      result.addAll(readModuleDescriptors(childDir, owner, excludes));
-    }
-    return result;
+    return super.getModel(modelId);
   }
 
-  private boolean hasModuleExtension(String name) {
-    return getModuleExtension(name) != null;
+  //--------------------------------------------------
+
+  public void invalidateCaches() {
+    // used to invalidate ModuleScope, but since it's gone, does this method make any sense?
+    // left empty for now as its uses record places we need to pay attention to (e.g. if we need to drop some caches in the future)
   }
 
-  private String getModuleExtension(String name) {
-    if (name.endsWith(MPSExtentions.DOT_LANGUAGE)) return MPSExtentions.LANGUAGE;
-    if (name.endsWith(MPSExtentions.DOT_SOLUTION)) return MPSExtentions.SOLUTION;
-    if (name.endsWith(MPSExtentions.DOT_DEVKIT)) return MPSExtentions.DEVKIT;
-    return null;
+  private final GuardedSet<SModule> myIncompleteModelLoad = new GuardedSet<>();
+  @Override
+  public void markIncompleteModelSet(SModule module) {
+    myIncompleteModelLoad.offer(module);
   }
 
-  private IModule readModuleDescriptor_internal(IFile dir, MPSModuleOwner owner, String extension, Set<IFile> excludes) {
-    AbstractModule module = null;
+  @Override
+  public void markCompleteModelSet(SModule module) {
+    myIncompleteModelLoad.forget(module);
+  }
+
+  //------------------listeners--------------------
+
+  @Override
+  public void saveAll() {
+    getModelAccess().checkWriteAccess();
+    long beginTime = System.nanoTime();
     try {
-      Class<? extends IModule> cls = myExtensionsToModuleTypes.get(extension);
-      module = (AbstractModule) registerModule(dir, owner, cls);
-
-      for (String sourceDir : module.getSourcePaths()) {
-        excludes.add(FileSystem.getFile(sourceDir));
-      }
-      if (module.getGeneratorOutputPath() != null) {
-        excludes.add(BaseModelCache.getCachesDir(module, module.getGeneratorOutputPath()));
-      }
-      if (module.getTestsGeneratorOutputPath() != null) {
-        excludes.add(BaseModelCache.getCachesDir(module, module.getTestsGeneratorOutputPath()));
-      }
-      for (SModelRoot root : module.getSModelRoots()) {
-        excludes.add(FileSystem.getFile(root.getPath()));
-      }
-
-      if (module.getClassesGen() != null) {
-        excludes.add(module.getClassesGen());
-      }
-      for (StubPath sp : module.getStubPaths()) {
-        excludes.add(FileSystem.getFile(sp.getPath()));
-      }
-    } catch (Throwable t) {
-      LOG.error("Fail to load module from descriptor " + dir.getAbsolutePath(), t);
-    }
-
-    return module;
-  }
-
-  public Language getLanguageSafe(String namespace) {
-    assertCanRead();
-
-    Language result = getLanguage(namespace);
-    if (result == null) {
-      throw new NullPointerException();
-    }
-    return result;
-  }
-
-  public Language getLanguage(String namespace) {
-    return (Language) myFqNameToModulesMap.get(namespace);
-  }
-
-  public Language getLanguage(ModuleReference ref) {
-    return (Language) getModule(ref);
-  }
-
-  public Generator getGenerator(ModuleReference ref) {
-    return (Generator) getModule(ref);
-  }
-
-  public DevKit getDevKit(String namespace) {
-    return (DevKit) myFqNameToModulesMap.get(namespace);
-  }
-
-  public DevKit getDevKit(ModuleReference ref) {
-    return (DevKit) getModule(ref);
-  }
-
-  public Solution getSolution(String namespace) {
-    return (Solution) myFqNameToModulesMap.get(namespace);
-  }
-
-  public Solution getSolution(ModuleReference ref) {
-    return (Solution) getModule(ref);
-  }
-
-  public <MT extends IModule> List<MT> getModules(MPSModuleOwner moduleOwner, Class<MT> cls) {
-    assertCanRead();
-
-    List<MT> list = new LinkedList<MT>();
-    Set<IModule> modules = myModuleToOwners.getBySecond(moduleOwner);
-    if (modules != null) {
-      for (IModule m : modules) {
-        if (cls == null || cls.isInstance(m)) {
-          list.add((MT) m);
+      for (SModule module : getModules()) {
+        if (module instanceof EditableSModule) {
+          EditableSModule editableModule = (EditableSModule) module;
+          if (editableModule.isChanged()) {
+            editableModule.save();
+          }
         }
       }
-    }
-    return list;
-  }
 
-  public List<Language> getLanguages(MPSModuleOwner moduleOwner) {
-    return getModules(moduleOwner, Language.class);
-  }
-
-  public List<DevKit> getDevKits(MPSModuleOwner moduleOwner) {
-    return getModules(moduleOwner, DevKit.class);
-  }
-
-  public List<IModule> getModules(MPSModuleOwner moduleOwner) {
-    return getModules(moduleOwner, IModule.class);
-  }
-
-  public <MT extends IModule> List<MT> getAllModules(Class<MT> cls) {
-    assertCanRead();
-
-    List<MT> result = new ArrayList<MT>();
-    for (IModule module : myModules) {
-      if (cls.isInstance(module)) result.add((MT) module);
-    }
-    return result;
-  }
-
-  public List<Language> getAllLanguages() {
-    return getAllModules(Language.class);
-  }
-
-  public List<Solution> getAllSolutions() {
-    return getAllModules(Solution.class);
-  }
-
-  public List<DevKit> getAllDevkits() {
-    return getAllModules(DevKit.class);
-  }
-
-  public List<Generator> getAllGenerators() {
-    return getAllModules(Generator.class);
-  }
-
-  public List<IModule> getAllModules() {
-    return getAllModules(IModule.class);
-  }
-
-  public List<IModule> getAllModulesInDirectory(File file) {
-    assertCanRead();
-
-    String path = FileUtil.getCanonicalPath(file);
-    List<IModule> result = new ArrayList<IModule>();
-    for (IModule m : getAllModules()) {
-      IFile descriptorFile = m.getDescriptorFile();
-
-      if (descriptorFile == null) {
-        continue;
-      }
-
-      String modulePath = descriptorFile.getCanonicalPath();
-      if (modulePath != null && modulePath.startsWith(path)) {
-        result.add(m);
+      myModelRepository.saveAll();
+    } finally {
+      final long msElapsed = (System.nanoTime() - beginTime) / 1000000;
+      final long magicLongSaveMS = 2000;
+      final String fmt = "Saving of the repository took %.3f s";
+      if (RuntimeFlags.isInternalMode() || msElapsed > magicLongSaveMS) {
+        LOG.info(String.format(fmt, msElapsed / 1e3));
+      } else if (LOG.isDebugLevel()) {
+        LOG.debug(String.format(fmt, msElapsed / 1e3));
       }
     }
-    return result;
   }
 
-  public Set<Language> getAllExtendingLanguages(Language l) {
-    Set<Language> result = new HashSet<Language>();
-    for (Language lang : getAllLanguages()) {
-      if (lang.getExtendedLanguages().contains(l)) {
-        result.add(lang);
+  @Override
+  public boolean needsSave() {
+    if (getModelAccess().canRead()) {
+      return checkModulesModelsChanged();
+    }
+    return getModelAccess().computeReadAction(this::checkModulesModelsChanged);
+  }
+
+  private boolean checkModulesModelsChanged() {
+    boolean changedModule = myModules.stream().filter(EditableSModule.class::isInstance).map(EditableSModule.class::cast).anyMatch(EditableSModule::isChanged);
+    return changedModule || myModelRepository.hasModelsToSave();
+  }
+
+  // provisional duplication of ConflictResolver logic from ProjectRepository for the time while this one is the true
+  // owner of all modules. Once we keep project modules inside ProjectRepository only, can keep independent resolvers (or no resolver at all for this one)
+  private StorageMemoryConflictResolver<EditableSModel> myConflictResolver;
+
+  @Override
+  public StorageMemoryConflictResolver<EditableSModel> getConflictResolver() {
+    if (myConflictResolver != null) {
+      return myConflictResolver;
+    }
+    return SRepositoryExt.super.getConflictResolver();
+  }
+
+  public void setConflictResolver(StorageMemoryConflictResolver<? super EditableSModel> resolver) {
+    // null value resets to a default resolver logic.
+    myConflictResolver = (StorageMemoryConflictResolver<EditableSModel>) resolver;
+  }
+
+  //
+
+
+  @Override
+  public ReferenceScopeHelper getReferenceScopeHelper() {
+    return myScopeCache;
+  }
+
+  private static class CachingReferenceScopeHelper extends ReferenceScopeHelper implements ReadActionListener {
+    /*
+     * Can not be sure Scope implementations are written with multi-thread access in mind, hence keep
+     * distinct scope instances per thread.
+     */
+    private ThreadLocal<Map<SReference, Scope>> myCache;
+    private ThreadLocal<EvaluateScopeContext> myContextCache;
+
+
+    @Override
+    public Scope getScope(@NotNull SReference reference) {
+      if (myCache == null) {
+        // perfectly legal scenario, e.g. inside model write, where we don't cache values.
+        // XXX perhaps, shall come up with a better approach (now can not tell whether it's
+        //     write or just a defect in read notification dispatch as it used to be with old
+        //     ActionDispatcher implementation)
+        return super.getScope(reference);
+      }
+      final Map<SReference, Scope> thisThreadCache = myCache.get();
+      Scope scope = thisThreadCache.get(reference);
+      if (scope == null) {
+        thisThreadCache.put(reference, scope = super.getScope(reference));
+      }
+      return scope;
+    }
+
+    @Override
+    public EvaluateScopeContext getContext() {
+      if (myContextCache == null) {
+        // see @getScope(), above
+        return super.getContext();
+      }
+      return myContextCache.get();
+    }
+
+    @Override
+    public void readStarted() {
+      myCache = ThreadLocal.withInitial(ConcurrentHashMap::new);
+      myContextCache = ThreadLocal.withInitial(RefScopeCacheContext::new);
+    }
+
+    @Override
+    public void readFinished() {
+      myCache = null;
+      myContextCache = null;
+    }
+  }
+
+  private static class RefScopeCacheContext extends EvaluateScopeContext {
+    private final HashMap<Object, Map<SModel, Scope>> myScopeCache = new HashMap<>();
+
+    /*package*/ RefScopeCacheContext() {
+    }
+
+    @Override
+    public Scope ofModel(@NotNull SModel model, @NotNull Object equalityKey, @NotNull Function<SModel, Scope> factory) {
+      final Map<SModel, Scope> modelScopeMap = myScopeCache.computeIfAbsent(equalityKey, k -> new HashMap<>());
+      return modelScopeMap.computeIfAbsent(model, factory);
+    }
+  }
+
+  private static class GuardedSet<V> {
+    private final Set<V> myElements = new HashSet<>();
+
+    void forget(V element) {
+      synchronized (myElements) {
+        myElements.remove(element);
       }
     }
-    return result;
-  }
 
-  public IModule getModuleForModelFile(String path) {
-    assertCanRead();
-
-    for (IModule module : getAllModules()) {
-      List<SModelRoot> smodelRoots = module.getSModelRoots();
-      for (SModelRoot root : smodelRoots) {
-        String rootPath = root.getPath();
-        if (path.startsWith(rootPath)) {
-          return module;
+    Collection<V> detachedCopy() {
+      synchronized (myElements) {
+        return new ArrayList<>(myElements);
+      }
+    }
+    @Nullable
+    V removeAny() {
+      synchronized (myElements) {
+        final Iterator<V> it = myElements.iterator();
+        if (it.hasNext()) {
+          final V rv = it.next();
+          it.remove();
+          return rv;
         }
+        return null;
       }
     }
-    return null;
-  }
-
-  public void updateReferences() {
-    assertCanWrite();
-
-    for (IModule m : getAllModules()) {
-      AbstractModule module = (AbstractModule) m;
-
-      boolean needSaving = false;
-
-      if (module.updateSModelReferences()) {
-        needSaving = true;
+    void offer(V element) {
+      synchronized (myElements) {
+        myElements.add(element);
       }
-
-      if (module.updateModuleReferences()) {
-        needSaving = true;
-      }
-
-      if (needSaving && !module.isPackaged()) {
-        module.save();
-      }
-    }
-  }
-
-  private void assertCanRead() {
-    if (!ModelAccess.instance().canRead()) {
-      throw new IllegalStateException("Can't read");
-    }
-  }
-
-  private void assertCanWrite() {
-    if (!ModelAccess.instance().canWrite()) {
-      throw new IllegalStateException("Can't write");
     }
   }
 }

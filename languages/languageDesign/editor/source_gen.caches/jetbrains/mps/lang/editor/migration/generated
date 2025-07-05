@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product version="3" modelHash="3xgzwqay01vjg48l742akflhu3tpd6t">
+  <files names="DependentModulesUtil.java:MigrateEnumPropertyUsages.java:Migrate_CellModelTxPropertyToExtendCellModel_WithRole.java:Migrate_ExplicitMenuForSmartReferences.java:Migrate_InlineReferencePresentations.java:Migrate_MergeNamedAndDefaultMenus.java:Migrate_SCAPartsForSmartReferences.java:MigrationDescriptor.java:RefPresentationFunctionUtil.java:RefScopeFactories.java:RemoveCellModelCollectionDeprecatedProps.java" />
+</product>
+

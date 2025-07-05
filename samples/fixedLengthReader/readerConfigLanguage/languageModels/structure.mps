@@ -1,91 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:00000000-0000-4000-0000-011c89590436(jetbrains.mps.samples.readerConfigLanguage.structure)">
-  <persistence version="4" />
-  <refactoringHistory>
-    <refactoringContext modelVersion="0">
-      <refactoring refactoringClass="jetbrains.mps.refactoring.renameLanguage.LanguageRenamer$MyRefactoring" />
-      <moveMap />
-      <conceptFeatureMap>
-        <entry>
-          <key featureName="Field" conceptFQName="readerConfigLanguage.structure.Field" featureKind="CONCEPT" />
-          <value featureName="Field" conceptFQName="jetbrains.mps.samples.readerConfigLanguage.structure.Field" featureKind="CONCEPT" />
-        </entry>
-        <entry>
-          <key featureName="Mapping" conceptFQName="readerConfigLanguage.structure.Mapping" featureKind="CONCEPT" />
-          <value featureName="Mapping" conceptFQName="jetbrains.mps.samples.readerConfigLanguage.structure.Mapping" featureKind="CONCEPT" />
-        </entry>
-        <entry>
-          <key featureName="ReaderConfiguration" conceptFQName="readerConfigLanguage.structure.ReaderConfiguration" featureKind="CONCEPT" />
-          <value featureName="ReaderConfiguration" conceptFQName="jetbrains.mps.samples.readerConfigLanguage.structure.ReaderConfiguration" featureKind="CONCEPT" />
-        </entry>
-      </conceptFeatureMap>
-    </refactoringContext>
-  </refactoringHistory>
-  <language namespace="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)" version="11" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" version="1" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" version="0" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)" version="1" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590338(jetbrains.mps.baseLanguage.closures.structure)" version="0" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590283(jetbrains.mps.lang.core.constraints)" version="2" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590334(jetbrains.mps.baseLanguage.closures.constraints)" version="2" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)" version="21" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)" version="83" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590328(jetbrains.mps.baseLanguage.collections.constraints)" version="6" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c895903e4(jetbrains.mps.internal.collections.constraints)" version="2" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590436(jetbrains.mps.samples.readerConfigLanguage.structure)" version="0" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" version="0" />
-  <maxImportIndex value="1" />
-  <import index="1" modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" />
-  <node type="jetbrains.mps.lang.structure.structure.ConceptDeclaration:0" id="1116534870455">
-    <property name="rootable:0" value="true" />
-    <property name="name:0" value="ReaderConfiguration" />
-    <link role="extends:0" targetNodeId="1.1133920641626:0" />
-    <node role="implements:0" type="jetbrains.mps.lang.structure.structure.InterfaceConceptReference:0" id="1175153786600">
-      <link role="intfc:0" targetNodeId="1.1169194658468:0" />
+<model ref="r:00000000-0000-4000-0000-011c89590436(jetbrains.mps.samples.readerConfigLanguage.structure)">
+  <persistence version="9" />
+  <languages>
+    <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
+  </languages>
+  <imports>
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
+  </imports>
+  <registry>
+    <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
+        <property id="6714410169261853888" name="conceptId" index="EcuMT" />
+        <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
+        <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
+      </concept>
+      <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
+        <reference id="1169127628841" name="intfc" index="PrY4T" />
+      </concept>
+      <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
+        <property id="1096454100552" name="rootable" index="19KtqR" />
+        <reference id="1071489389519" name="extends" index="1TJDcQ" />
+        <child id="1169129564478" name="implements" index="PzmwI" />
+      </concept>
+      <concept id="1071489288299" name="jetbrains.mps.lang.structure.structure.PropertyDeclaration" flags="ig" index="1TJgyi">
+        <property id="241647608299431129" name="propertyId" index="IQ2nx" />
+        <reference id="1082985295845" name="dataType" index="AX2Wp" />
+      </concept>
+      <concept id="1071489288298" name="jetbrains.mps.lang.structure.structure.LinkDeclaration" flags="ig" index="1TJgyj">
+        <property id="1071599776563" name="role" index="20kJfa" />
+        <property id="1071599893252" name="sourceCardinality" index="20lbJX" />
+        <property id="1071599937831" name="metaClass" index="20lmBu" />
+        <property id="241647608299431140" name="linkId" index="IQ2ns" />
+        <reference id="1071599976176" name="target" index="20lvS9" />
+      </concept>
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="1TIwiD" id="gfQEx6R">
+    <property role="19KtqR" value="true" />
+    <property role="TrG5h" value="ReaderConfiguration" />
+    <property role="EcuMT" value="1116534870455" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="h6sBVVC" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
-    <node role="linkDeclaration:0" type="jetbrains.mps.lang.structure.structure.LinkDeclaration:0" id="1116535202619">
-      <property name="sourceCardinality:0" value="0..n" />
-      <property name="role:0" value="mapping" />
-      <property name="metaClass:0" value="aggregation" />
-      <link role="target:0" targetNodeId="1116534914096:0" />
-    </node>
-  </node>
-  <node type="jetbrains.mps.lang.structure.structure.ConceptDeclaration:0" id="1116534914096">
-    <property name="name:0" value="Mapping" />
-    <link role="extends:0" targetNodeId="1.1133920641626:0" />
-    <node role="implements:0" type="jetbrains.mps.lang.structure.structure.InterfaceConceptReference:0" id="1175153780615">
-      <link role="intfc:0" targetNodeId="1.1169194658468:0" />
-    </node>
-    <node role="linkDeclaration:0" type="jetbrains.mps.lang.structure.structure.LinkDeclaration:0" id="1116535614925">
-      <property name="sourceCardinality:0" value="0..n" />
-      <property name="role:0" value="field" />
-      <property name="metaClass:0" value="aggregation" />
-      <link role="target:0" targetNodeId="1116534962441:0" />
-    </node>
-    <node role="propertyDeclaration:0" type="jetbrains.mps.lang.structure.structure.PropertyDeclaration:0" id="1116534988614">
-      <property name="name:0" value="code" />
-      <link role="dataType:0" targetNodeId="1.1082983041843:0" />
-    </node>
-    <node role="propertyDeclaration:0" type="jetbrains.mps.lang.structure.structure.PropertyDeclaration:0" id="1116534997224">
-      <property name="name:0" value="targetClass" />
-      <link role="dataType:0" targetNodeId="1.1082983041843:0" />
+    <node concept="1TJgyj" id="gfQFMcV" role="1TKVEi">
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="20kJfa" value="mapping" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="IQ2ns" value="1116535202619" />
+      <ref role="20lvS9" node="gfQEFKK" resolve="Mapping" />
     </node>
   </node>
-  <node type="jetbrains.mps.lang.structure.structure.ConceptDeclaration:0" id="1116534962441">
-    <property name="name:0" value="Field" />
-    <link role="extends:0" targetNodeId="1.1133920641626:0" />
-    <node role="implements:0" type="jetbrains.mps.lang.structure.structure.InterfaceConceptReference:0" id="1175153775082">
-      <link role="intfc:0" targetNodeId="1.1169194658468:0" />
+  <node concept="1TIwiD" id="gfQEFKK">
+    <property role="TrG5h" value="Mapping" />
+    <property role="EcuMT" value="1116534914096" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="h6sBUu7" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
-    <node role="propertyDeclaration:0" type="jetbrains.mps.lang.structure.structure.PropertyDeclaration:0" id="1116535027491">
-      <property name="name:0" value="start" />
-      <link role="dataType:0" targetNodeId="1.1082983657062:0" />
+    <node concept="1TJgyj" id="gfQHmRd" role="1TKVEi">
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="20kJfa" value="field" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="IQ2ns" value="1116535614925" />
+      <ref role="20lvS9" node="gfQER$9" resolve="Field" />
     </node>
-    <node role="propertyDeclaration:0" type="jetbrains.mps.lang.structure.structure.PropertyDeclaration:0" id="1116535032695">
-      <property name="name:0" value="end" />
-      <link role="dataType:0" targetNodeId="1.1082983657062:0" />
+    <node concept="1TJgyi" id="gfQEXX6" role="1TKVEl">
+      <property role="TrG5h" value="code" />
+      <property role="IQ2nx" value="1116534988614" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="gfQF03C" role="1TKVEl">
+      <property role="TrG5h" value="targetClass" />
+      <property role="IQ2nx" value="1116534997224" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="gfQER$9">
+    <property role="TrG5h" value="Field" />
+    <property role="EcuMT" value="1116534962441" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="h6sBT7E" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="1TJgyi" id="gfQF7sz" role="1TKVEl">
+      <property role="TrG5h" value="start" />
+      <property role="IQ2nx" value="1116535027491" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    </node>
+    <node concept="1TJgyi" id="gfQF8HR" role="1TKVEl">
+      <property role="TrG5h" value="end" />
+      <property role="IQ2nx" value="1116535032695" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
     </node>
   </node>
 </model>

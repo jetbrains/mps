@@ -1,0 +1,98 @@
+/*
+ * Copyright 2003-2025 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package jetbrains.mps.smodel;
+
+import com.intellij.openapi.options.SearchableConfigurable;
+import jetbrains.mps.validation.ValidationSettings;
+import org.jetbrains.annotations.Nls;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import javax.swing.Box;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+
+public class ModelValidationConfigurable implements SearchableConfigurable {
+  @NotNull
+  private final ModelValidationSettings myModelValidationSettings;
+
+  private JPanel myJPanel = new JPanel(new BorderLayout());
+  private JCheckBox myCheckBoxTypeWasNotCalculated = new JCheckBox("Enable 'type was not calculated' check");
+
+  public ModelValidationConfigurable() {
+    // XXX see InstallSettings_AppPluginPart for reasons why getInstance() and not findComponent()
+    myModelValidationSettings = (ModelValidationSettings) ValidationSettings.getInstance().getModelValidationSettings();
+    Box box = Box.createVerticalBox();
+    box.add(myCheckBoxTypeWasNotCalculated);
+    myJPanel.add(box, BorderLayout.WEST);
+  }
+
+  @NotNull
+  @Override
+  public String getId() {
+    // have to match one in MPSComponents.xml
+    return "preferences.modelValidationSettings";
+  }
+
+  @Nls
+  @Override
+  public String getDisplayName() {
+    // have to match one in MPSComponents.xml
+    return "Model Validation";
+  }
+
+  @Nullable
+  @Override
+  public String getHelpTopic() {
+    return getId();
+  }
+
+  @Override
+  public void apply() {
+    myModelValidationSettings.setDisableTypeWasNotCalculated(!myCheckBoxTypeWasNotCalculated.isSelected());
+  }
+
+  @Override
+  public void reset() {
+    myCheckBoxTypeWasNotCalculated.setSelected(!myModelValidationSettings.isDisableTypeWasNotCalculated());
+  }
+
+  public boolean isModified() {
+    // Shown value is inverted, so check for equality to avoid double negation
+    return myModelValidationSettings.isDisableTypeWasNotCalculated() == myCheckBoxTypeWasNotCalculated.isSelected();
+  }
+
+  @Override
+  public void disposeUIResources() {
+    myCheckBoxTypeWasNotCalculated = null;
+    myJPanel = null;
+  }
+
+  @Nullable
+  @Override
+  public JComponent createComponent() {
+    return myJPanel;
+  }
+
+
+  @Nullable
+  @Override
+  public Runnable enableSearch(String option) {
+    return null;
+  }
+}

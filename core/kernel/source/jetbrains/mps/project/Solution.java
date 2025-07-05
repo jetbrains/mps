@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2010 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,33 +15,29 @@
  */
 package jetbrains.mps.project;
 
-import com.intellij.openapi.progress.EmptyProgressIndicator;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.persistence.SolutionDescriptorPersistence;
+import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.project.io.DescriptorIO;
+import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.reloading.ClassLoaderManager;
-import jetbrains.mps.runtime.BytecodeLocator;
-import jetbrains.mps.smodel.MPSModuleOwner;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.SModelRepository;
-import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
-import java.io.File;
-import java.util.Set;
-import java.util.UUID;
-
-/**
- * Igor Alshannikov
- * Aug 26, 2005
- */
-public class Solution extends AbstractModule {
-  private static final Logger LOG = Logger.getLogger(Solution.class);
-
+public class Solution extends AbstractModule implements ReloadableModule {
   private SolutionDescriptor mySolutionDescriptor;
+  public static final String SOLUTION_MODELS = "models";
 
+<<<<<<< HEAD
+  /* TODO make package local, move to appropriate package */
+  public Solution(SolutionDescriptor descriptor, @Nullable IFile file) {
+    super(file);
+    mySolutionDescriptor = descriptor;
+    setModuleReference(descriptor.getModuleReference());
+=======
   // -------------------------------------------------------------------
 
   private Solution() {
@@ -108,27 +104,30 @@ public class Solution extends AbstractModule {
         fireModuleInitialized();
       }
     }
+>>>>>>> origin/MPS1.5
   }
 
+  @NotNull
+  @Override
   public SolutionDescriptor getModuleDescriptor() {
     return mySolutionDescriptor;
   }
 
-  public void setModuleDescriptor(ModuleDescriptor moduleDescriptor, boolean reloadClasses) {
-    setSolutionDescriptor((SolutionDescriptor) moduleDescriptor, reloadClasses);
-  }
-
-  public void setSolutionDescriptor(SolutionDescriptor newDescriptor, boolean reloadClasses) {
-    mySolutionDescriptor = newDescriptor;
-
-    ModuleReference mp;
-    if (isExternallyVisible() && mySolutionDescriptor.getNamespace() != null) {
-      mp = new ModuleReference(mySolutionDescriptor.getNamespace(), mySolutionDescriptor.getUUID());
+  @Override
+  protected void doSetModuleDescriptor(ModuleDescriptor moduleDescriptor) {
+    mySolutionDescriptor = (SolutionDescriptor) moduleDescriptor;
+    SModuleReference mp;
+    if (mySolutionDescriptor.getNamespace() != null) {
+      mp = new jetbrains.mps.project.structure.modules.ModuleReference(mySolutionDescriptor.getNamespace(), mySolutionDescriptor.getId());
     } else {
-      assert myDescriptorFile != null;
-      mp = new ModuleReference(FileUtil.getCanonicalPath(myDescriptorFile.getAbsolutePath()), mySolutionDescriptor.getUUID());
+      IFile descriptorFile = getDescriptorFile();
+      assert descriptorFile != null;
+      mp = new jetbrains.mps.project.structure.modules.ModuleReference(descriptorFile.getPath(), mySolutionDescriptor.getId());
     }
 
+<<<<<<< HEAD
+    setModuleReference(mp);
+=======
     setModulePointer(mp);
 
     reloadAfterDescriptorChange();
@@ -196,21 +195,45 @@ public class Solution extends AbstractModule {
 
   public boolean areJavaStubsEnabled() {
     return getModuleDescriptor().getEnableJavaStubs() || !getModuleDescriptor().getSourcePaths().isEmpty();
+>>>>>>> origin/MPS1.5
   }
 
   @Override
-  protected SolutionDescriptor loadDescriptor() {
-    IFile file = getDescriptorFile();
-    assert file != null;
-    return SolutionDescriptorPersistence.loadSolutionDescriptor(file);
+  public void save() {
+    // in StubSolutions myDescriptorFile is null, so preventing NPE here (MPS-16793)
+    if (getDescriptorFile() == null || isReadOnly()) {
+      return;
+    }
+    if (mySolutionDescriptor.getLoadException() != null){
+      return;
+    }
+
+    super.save();
+
+    try {
+      DescriptorIO<SolutionDescriptor> io = new DescriptorIOFacade().standardProvider().solutionDescriptorIO();
+      io.writeToFile(getModuleDescriptor(), getDescriptorFile());
+    } catch (Exception ex) {
+      Logger.getLogger(getClass()).error("Save failed", ex);
+    }
   }
 
-  public BytecodeLocator getBytecodeLocator() {
-    return new ModuleBytecodeLocator() {
-      public byte[] find(String fqName) {
-        if (getModuleDescriptor().isDontLoadClasses()) return null;
-        return super.find(fqName);
-      }
-    };
+  @Override
+  public boolean isReadOnly() {
+    return super.isReadOnly() || getModuleDescriptor().isReadOnlyStubModule();
+  }
+
+  public String toString() {
+    return getModuleName() + " [solution]";
+  }
+
+  /**
+   * @deprecated no direct replacement, check {@link jetbrains.mps.project.facets.JavaModuleFacet.LoadExtensions}
+   */
+  @Deprecated(since = "2022.3", forRemoval = true)
+  public SolutionKind getKind() {
+    // there are uses of the method in JMFI to set up defaults
+    // Logger.getLogger(getClass()).warnDeprecatedUse("Solution.getKind() and SolutionKind are deprecated, don't use");
+    return getModuleDescriptor().getKind();
   }
 }

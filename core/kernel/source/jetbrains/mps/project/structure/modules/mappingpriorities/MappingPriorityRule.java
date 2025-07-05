@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2010 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,17 @@
  */
 package jetbrains.mps.project.structure.modules.mappingpriorities;
 
-import jetbrains.mps.project.structure.modules.RefUpdateUtil;
+import jetbrains.mps.generator.runtime.TemplateMappingPriorityRule;
+import jetbrains.mps.project.structure.modules.Copyable;
+import jetbrains.mps.util.io.ModelInputStream;
+import jetbrains.mps.util.io.ModelOutputStream;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SRepository;
 
-public class MappingPriorityRule {
+import java.io.IOException;
+import java.util.Objects;
+
+public class MappingPriorityRule implements TemplateMappingPriorityRule, Copyable<MappingPriorityRule> {
   public static final String LEFT = "left";
   public static final String TYPE = "type";
   public static final String RIGHT = "right";
@@ -55,20 +63,73 @@ public class MappingPriorityRule {
     myRight = right;
   }
 
-  public MappingPriorityRule getCopy() {
-    MappingPriorityRule result = new MappingPriorityRule();
-
-    result.myLeft = myLeft != null ? myLeft.getCopy() : null;
-    result.myRight = myRight != null ? myRight.getCopy() : null;
-    result.myType = myType;
-
-    return result;
+  /**
+   * IMPORTANT: Use this method for MPRs coming from module descriptor of a project module (i.e. design time).
+   * @param repository FIXME in fact, MPR is two-fold and addresses both RT API and design time API for priority rules.
+   *                   As RT API, it doesn't need SRepository (SRepository is vital for design time, while deployed modules should
+   *                   have this information generated).
+   */
+  public String asString(SRepository repository) {
+    String left = myLeft == null ? "???" : myLeft.asString(repository);
+    String right = myRight == null ? "???" : myRight.asString(repository);
+    return left + ' ' + getType().getName() + ' ' + right;
   }
 
-  public boolean updateReferences() {
-    return RefUpdateUtil.composeUpdates(
-      myRight.updateReferences(),
-      myLeft.updateReferences()
-    );
+  /**
+   * Deployment-time {@code toString()}
+   */
+  public String asString() {
+    String left = myLeft == null ? "???" : myLeft.asString();
+    String right = myRight == null ? "???" : myRight.asString();
+    return left + ' ' + getType().getName() + ' ' + right;
+  }
+
+  @Override
+  public String toString() {
+    return asString();
+  }
+
+  public boolean updateReferences(SRepository repository) {
+    return myRight.updateReferences(repository) | myLeft.updateReferences(repository);
+  }
+
+  public void save(ModelOutputStream stream) throws IOException {
+    stream.writeString(myType.name());
+    MappingConfig_AbstractRef.save(myLeft, stream);
+    MappingConfig_AbstractRef.save(myRight, stream);
+  }
+
+  public void load(ModelInputStream stream) throws IOException {
+    myType = RuleType.valueOf(stream.readString());
+    myLeft = MappingConfig_AbstractRef.load(stream);
+    myRight = MappingConfig_AbstractRef.load(stream);
+  }
+
+  @NotNull
+  @Override
+  public MappingPriorityRule copy() {
+    MappingPriorityRule copy = new MappingPriorityRule();
+    copy.setType(myType);
+    if (myLeft != null) {
+      copy.setLeft(myLeft.copy());
+    }
+    if (myRight != null) {
+      copy.setRight(myRight.copy());
+    }
+    return copy;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(myType, myLeft, myRight);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof MappingPriorityRule) {
+      MappingPriorityRule pr = (MappingPriorityRule) obj;
+      return myType == pr.myType && Objects.equals(myLeft, pr.myLeft) && Objects.equals(myRight, pr.myRight);
+    }
+    return false;
   }
 }

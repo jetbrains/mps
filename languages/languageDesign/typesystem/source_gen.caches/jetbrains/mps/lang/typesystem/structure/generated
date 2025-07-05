@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<product version="3" modelHash="-29o4js7esfb31girv87y8diribxexbl">
+=======
+<product version="3" modelHash="-a4r5m5vj7ufe4zcw4one1zgahu7xqsy">
+>>>>>>> upstream/2024.1_projectPane
+  <files names="ConceptPresentationAspectImpl.java:EnumerationDescriptor_InequalityProperty.java:EnumerationDescriptor_InequationPriority.java:IconContainer.java:LanguageConceptSwitch.java:StructureAspectDescriptor.java" />
+</product>
+

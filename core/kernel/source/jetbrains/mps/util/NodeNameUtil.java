@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2010 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,15 +19,20 @@ package jetbrains.mps.util;
  * @author Kostik
  */
 public class NodeNameUtil {
+
+  /**
+   * @deprecated use {@link NameUtil#shortNameFromLongName(String)}
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public static String getName(String fqName) {
-    int lastIndex = fqName.lastIndexOf('.');
-    if (lastIndex == -1) return fqName;
-    return fqName.substring(lastIndex + 1);
+    return NameUtil.shortNameFromLongName(fqName);
   }
 
+  /**
+   * @deprecated use {@link NameUtil#namespaceFromLongName(String)}
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public static String getNamespace(String fqName) {
-    int lastIndex = fqName.lastIndexOf('.');
-    if (lastIndex == -1) return "";
-    return fqName.substring(0, lastIndex);
+    return NameUtil.namespaceFromLongName(fqName);
   }
 }

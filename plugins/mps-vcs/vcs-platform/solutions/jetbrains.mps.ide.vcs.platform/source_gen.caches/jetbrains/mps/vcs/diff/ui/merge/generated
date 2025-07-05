@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<product version="3" modelHash="-e3e87e9uv833v26rvitfzh5x3yehkcm">
+=======
+<product version="3" modelHash="ervfn7ireoab0idlj20tr2h5tp1m2ly">
+>>>>>>> upstream/2024.1_projectPane
+  <files names="AcceptYoursTheirs.java:ApplyNonConflictsForRoot.java:ISaveMergedModel.java:MergeButtonsPainter.java:MergeConfirmation.java:MergeModelsPanel.java:MergeNonConflictingRoots.java:MergeRootsPane.java:ResetState.java" />
+</product>
+

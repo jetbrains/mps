@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<product version="3" modelHash="-436kxu3iqi5g06ndw0mz91xhh9u4l88">
+=======
+<product version="3" modelHash="5azyaw3tko2pi980jpf4jgtcn0mxfup">
+>>>>>>> upstream/2024.1_projectPane
+  <files names="ConceptPresentationAspectImpl.java:LanguageConceptSwitch.java:StructureAspectDescriptor.java" />
+</product>
+

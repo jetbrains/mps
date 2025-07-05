@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2010 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,540 +15,270 @@
  */
 package jetbrains.mps.smodel;
 
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.command.CommandProcessor;
-import com.intellij.openapi.command.UndoConfirmationPolicy;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.Computable;
-import com.intellij.util.containers.ConcurrentHashSet;
-import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.workbench.InternalFlag;
+import jetbrains.mps.smodel.references.ImmatureReferences;
+import jetbrains.mps.smodel.references.UnregisteredNodes;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeId;
 
-import javax.swing.SwingUtilities;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.IdentityHashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
- * We access IDEA locking mechanism here in order to prevent different way of acquiring locks
- * We always first acquire IDEA's lock and only then acquire MPS's lock
+ * This if front-end for legacy code that deals with a single instance of MA (available through MA.instance()).
+ * There are 2 implementations generally available, DefaultModelAccess and WorkbenchModelAccess. Neither is an openapi.ModelAccess available
+ * from SRepository#getModelAccess() call, opeanpi.MA instances from repository now merely delegate to the singleton available from #instance() method.
+ *
+ * For now, WMA provides implementation of methods that deal with Project (i.e. undo support), therefore we keep methods with Project as part of this class
+ * implementation API. Instead, we shall implement execute* methods in respective openapi.MA implementations bound to project repositories and remove
+ * Project-aware methods from this class altogether. We may want to keep this class for another release as DMA and WMA have different perspective on
+ * platform locking (latter adds IDEA platform locks), and with that, we may still delegate general read/write actions of repository's MA to this singleton.
+ *
+ * The actual implementation of {@link org.jetbrains.mps.openapi.module.ModelAccess} interface methods
+ * Probably it is better to merge it with
+ * {@link jetbrains.mps.project.ProjectModelAccess} and
+ * {@link jetbrains.mps.smodel.ModelAccessBase}
+ * which currently simply delegate all methods to this class
+ *
+ * @see org.jetbrains.mps.openapi.module.ModelAccess
  */
-public class ModelAccess {
-  private static final Logger LOG = Logger.getLogger(ModelAccess.class);
+public abstract class ModelAccess extends AbstractModelAccess implements org.jetbrains.mps.openapi.module.ModelAccess, ModelCommandContext.Provider {
+  protected static final Logger LOG = Logger.getLogger(ModelAccess.class);
 
-  private static final ModelAccess ourInstance = new ModelAccess();
-  private static Set<String> ourErroredModels = new HashSet<String>();
+  protected static ModelAccess ourInstance = newInstance();
 
-  private ReentrantReadWriteLock myReadWriteLock = new ReentrantReadWriteLock();
-  private EDTExecutor myEDTExecutor = new EDTExecutor();
-  private Set<Thread> myIndexingThreads = new ConcurrentHashSet<Thread>();
-
-  /* support of temporary downgrading write lock to shared read lock */
-  private ReentrantReadWriteLock mySharedReadInWriteLock = new ReentrantReadWriteLock();
-  private volatile boolean mySharedReadInWriteMode = false;
-
-  private boolean allowSharedRead;
-
-  private ModelAccess() {
-    allowSharedRead = isSharedReadMode();
+  /**
+   * INTERNAL, TRANSITION CODE, DON'T USE!
+   */
+  public static ModelAccess newInstance() {
+    return new DefaultModelAccess();
   }
 
+  private final ReentrantReadWriteLockEx myReadWriteLock = new ReentrantReadWriteLockEx();
+
+  private final CommandContextProvider myCommandContextProvider = new CommandContextProvider();
+
+  protected ModelAccess() {
+  }
+
+  /**
+   * It is better to use {@link org.jetbrains.mps.openapi.module.SRepository#getModelAccess()} method to get
+   * the repository access.
+   * @deprecated
+   * @since 3.1
+   */
+@Deprecated(since = "3.3", forRemoval = true)
   public static ModelAccess instance() {
     return ourInstance;
   }
 
-  private Lock getReadLock() {
-    if (allowSharedRead) {
-      return myReadWriteLock.readLock();
-    } else {
-      return myReadWriteLock.writeLock();
-    }
+  /*package*/ static void setInstance(@NotNull ModelAccess modelAccess) {
+    ourInstance = modelAccess;
   }
 
-  private Lock getWriteLock() {
+  protected Lock getReadLock() {
+    return myReadWriteLock.readLock();
+  }
+
+  protected Lock getWriteLock() {
     return myReadWriteLock.writeLock();
   }
 
-  public <T> T runReadInWriteAction(final Computable<T> c) {
-    assertLegalWrite();
-
-    mySharedReadInWriteLock.writeLock().lock();
-    mySharedReadInWriteMode = true;
-    mySharedReadInWriteLock.writeLock().unlock();
-    try {
-      return c.compute();
-    } finally {
-      mySharedReadInWriteLock.writeLock().lock();
-      mySharedReadInWriteMode = false;
-      mySharedReadInWriteLock.writeLock().unlock();
-    }
-  }
-
-  public void runReadAction(final Runnable r) {
+  protected final void assertNotWriteFromRead() {
     if (canRead()) {
-      r.run();
-      return;
-    }
-    if (mySharedReadInWriteMode) {
-      try {
-        mySharedReadInWriteLock.readLock().lock();
-        r.run();
-      } finally {
-        mySharedReadInWriteLock.readLock().unlock();
-      }
-      return;
-    }
-    ApplicationManager.getApplication().runReadAction(new Runnable() {
-      public void run() {
-        getReadLock().lock();
-        try {
-          r.run();
-        } finally {
-          getReadLock().unlock();
-        }
-      }
-    });
-  }
-
-  public void runWriteAction(final Runnable r) {
-    if (canWrite()) {
-      r.run();
-      return;
-    }
-    assertNotWriteFromRead();
-    Runnable runnable = new Runnable() {
-      public void run() {
-        getWriteLock().lock();
-        try {
-          r.run();
-        } finally {
-          getWriteLock().unlock();
-        }
-      }
-    };
-    if (ThreadUtils.isEventDispatchThread()) {
-      ApplicationManager.getApplication().runWriteAction(runnable);
-    } else {
-      ApplicationManager.getApplication().runReadAction(runnable);
+      throw new IllegalStateException("deadlock prevention: do not start write action from read");
     }
   }
 
-  private void assertNotWriteFromRead() {
-    if (InternalFlag.isInternalMode()) {
-      assert !canRead() : "Deadlock: Write action should not be executed from within read.";
-    }
+  public boolean hasScheduledWrites() {
+    return myReadWriteLock.hasScheduledWrites();
   }
 
-  public <T> T runReadAction(final Computable<T> c) {
-    if (canRead()) {
-      return c.compute();
-    }
-    if (mySharedReadInWriteMode) {
-      try {
-        mySharedReadInWriteLock.readLock().lock();
-        return c.compute();
-      } finally {
-        mySharedReadInWriteLock.readLock().unlock();
-      }
-    }
-    return ApplicationManager.getApplication().runReadAction(new Computable<T>() {
-      public T compute() {
-        getReadLock().lock();
-        try {
-          return c.compute();
-        } finally {
-          getReadLock().unlock();
-        }
-      }
-    });
-  }
-
-  public <T> T runWriteAction(final Computable<T> c) {
-    if (canWrite()) {
-      return c.compute();
-    }
-    assertNotWriteFromRead();
-    Computable<T> computable = new Computable<T>() {
-      public T compute() {
-        getWriteLock().lock();
-        try {
-          return c.compute();
-        } finally {
-          getWriteLock().unlock();
-        }
-      }
-    };
-    if (ThreadUtils.isEventDispatchThread()) {
-      return ApplicationManager.getApplication().runWriteAction(computable);
-    } else {
-      return ApplicationManager.getApplication().runReadAction(computable);
-    }
-  }
-
-  public void flushEventQueue() {
-    myEDTExecutor.flushEventQueue();
-  }
-
-  public void runReadInEDT(Runnable r) {
-    myEDTExecutor.invokeReadInEDT(r);
-  }
-
-  public void runCommandInEDT(Runnable r) {
-    myEDTExecutor.invokeCommandInEDT(r);
-  }
-
-  public boolean isInEDT() {
-    return myEDTExecutor.isInEDT();
-  }
-
-  public boolean tryRead(final Runnable r) {
-    return ApplicationManager.getApplication().runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        if (getReadLock().tryLock()) {
-          try {
-            r.run();
-          } finally {
-            getReadLock().unlock();
-          }
-          return true;
-        } else {
-          return false;
-        }
-      }
-    });
-  }
-
-  public <T> T tryRead(final Computable<T> c) {
-    return ApplicationManager.getApplication().runReadAction(new Computable<T>() {
-      public T compute() {
-        if (getReadLock().tryLock()) {
-          try {
-            return c.compute();
-          } finally {
-            getReadLock().unlock();
-          }
-        } else {
-          return null;
-        }
-      }
-    });
-  }
-
-  /**
-   * use tryWriteInCommand(final Runnable r, Project project)
-   */
-  @Deprecated
-  public boolean tryWriteInCommand(final Runnable r) {
-    return tryWriteInCommand(r, CurrentProjectAccessUtil.getProjectFromUI());
-  }
-
-  public boolean tryWriteInCommand(final Runnable r, Project project) {
-    final boolean[] res = new boolean[]{false};
-
-    //todo this is a hack but it works
-    if (!getWriteLock().tryLock()) {
-      return false;
-    }
-    getWriteLock().unlock();
-
-    executeCommand(new Runnable() {
-      public void run() {
-        ApplicationManager.getApplication().runWriteAction(new Runnable() {
-          public void run() {
-            if (getWriteLock().tryLock()) {
-              try {
-                new CommandRunnable(r).run();
-              } finally {
-                getWriteLock().unlock();
-              }
-              res[0] = true;
-            }
-          }
-        });
-      }
-    }, project);
-
-    return res[0];
-  }
-
+  @Override
   public boolean canRead() {
-    if (allowSharedRead) {
-      if (myReadWriteLock.getReadHoldCount() != 0) {
-        return true;
-      }
-    }
-    return myReadWriteLock.isWriteLockedByCurrentThread() ||
-      (mySharedReadInWriteMode && mySharedReadInWriteLock.getReadHoldCount() != 0);
+    return isReadEnabledFlag() || myReadWriteLock.getReadHoldCount() != 0 || myReadWriteLock.isWriteLockedByCurrentThread();
   }
 
+  @Override
   public boolean canWrite() {
-    if (mySharedReadInWriteMode) {
-      return false;
-    }
     return myReadWriteLock.isWriteLockedByCurrentThread();
   }
 
-  public void checkReadAccess() {
+  // ExecuteCommandStatement with repo == null generates into executeCommand(Runnable)
+  // left abstract method (though could have deleted method) as there might be references from MPS code to the implementation that used to be here
+  @Override
+  public abstract void executeCommand(Runnable r);
+
+  @Override
+  public final void executeCommandInEDT(Runnable r) {
+    // this method is not invoked from generated code (generated code uses MA.instance().runCommandInEDT(R, P)), and hand-written shall not
+    // use MA.instance() any longer. Therefore neither DefaultModelAccess nor WorkbenchModelAccess shall override this method.
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public final void executeUndoTransparentCommand(Runnable r) {
+    // see executeCommandInEDT() above for reasons why it's final. Templates generate repo.getModelAccess().executeUndoTC(), never MA.instance().eUTC()
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public boolean isCommandAction() {
+    return canWrite() && myCommandActionDispatcher.isInsideAction();
+  }
+
+  protected void onCommandStarted() {
+    myCommandContextProvider.engage();
+  }
+
+  protected void onCommandFinished() {
+    myCommandContextProvider.discard();
+  }
+
+  @Nullable
+  @Override
+  public ModelCommandContext getCommandContext(SModel model) {
+    // isCommandAction might be excessive, just want to make sure there's not access to MCC from a thread other than the command one.
+    return isCommandAction() ? myCommandContextProvider.get(model, getUndoHandler(model)) : null;
+  }
+
+  @Nullable
+  protected abstract UndoHandler getUndoHandler(/*NotNull*/ SModel model);
+
+  protected final void sharedReadIsOver() {
+    ReadAccessToken token = myReadFlagTokens.get();
+    if (token != null) {
+      token.revoke();
+      myReadFlagTokens.remove();
+      myAllReadFlagTokens.remove(token);
+    }
+  }
+
+  /*package*/ ReadAccessToken shareRead() {
     if (!canRead()) {
-      throw new IllegalStateException();
+      throw new IllegalModelAccessException("Can share a read in progress only!");
+    }
+    ReadAccessToken token = myReadFlagTokens.get();
+    // XXX not sure about sharing original read, need to give it more thought/investigation
+    //     e.g. what happens if/when 'nested' read reports sharedReadIsOver(). If this is the case, perhaps, need "usage counter" for the token?
+    //     Keep in mind, token is bound to the current thread, another thread (running under 'read enabled') would get another instance.
+    //     ^^^ sounds like we can get into a state when original thread releases platform read, but there are 2 threads with 'read enabled' state.
+    //     (thread0 shared its read for thread1, thread1 was in 'read enabled' and shared its state for thread2, thread0 ends, platform lock gone)
+    if (token == null) {
+      token = new ReadAccessToken();
+      myReadFlagTokens.set(token);
+      myAllReadFlagTokens.add(token);
+    }
+    return token;
+  }
+
+  private final ConcurrentLinkedQueue<ReadAccessToken> myAllReadFlagTokens = new ConcurrentLinkedQueue<>();
+  private final ThreadLocal<ReadAccessToken> myReadFlagTokens = new ThreadLocal<>();
+
+  private boolean isReadEnabledFlag() {
+    // FIXME I wonder if we shall filter isActive (or make it part of isReadInProgressCurrentThread)
+    return myAllReadFlagTokens.stream().anyMatch(ReadAccessToken::isReadInProgressCurrentThread);
+  }
+
+
+  private static class ReentrantReadWriteLockEx extends ReentrantReadWriteLock {
+
+    public ReentrantReadWriteLockEx() {
+      super(true);
+    }
+
+    public boolean hasScheduledWrites() {
+      return !this.getQueuedWriterThreads().isEmpty();
     }
   }
 
-  public void checkWriteAccess() {
-    if (!canWrite()) {
-      throw new IllegalStateException();
+  private static class CommandContextProvider {
+    // don't care about multi-threaded access as command are executed inside 1 thread only
+    private boolean myEngaged = false;
+    private final Map<SModel, CommandContextImpl> myModel2Context = new IdentityHashMap<>();
+
+    /**/CommandContextProvider() {
     }
-  }
 
-  /**
-   * use executeCommand(Runnable r, Project project)
-   */
-  @Deprecated
-  public void executeCommand(Runnable r) {
-    executeCommand(r, CurrentProjectAccessUtil.getProjectFromUI());
-  }
+    void engage() {
+      assert !myEngaged;
+      myEngaged = true;
+    }
 
-  public void executeCommand(Runnable r, Project project) {
-    CommandProcessor.getInstance().executeCommand(project, new CommandRunnable(r), "", null, UndoConfirmationPolicy.DO_NOT_REQUEST_CONFIRMATION);
-  }
+    void discard() {
+      myModel2Context.values().forEach(CommandContextImpl::onCommandOver);
+      myModel2Context.clear();
+      assert myEngaged;
+      myEngaged = false;
+    }
 
-  /**
-   * use runWriteActionInCommand(final Computable<T> c, Project project)
-   */
-  @Deprecated
-  public <T> T runWriteActionInCommand(Computable<T> c) {
-    return runWriteActionInCommand(c, CurrentProjectAccessUtil.getProjectFromUI());
-  }
-
-  public <T> T runWriteActionInCommand(Computable<T> c, Project project) {
-    return runWriteActionInCommand(c, null, UndoConfirmationPolicy.DO_NOT_REQUEST_CONFIRMATION, project);
-  }
-
-  /**
-   * use runWriteActionInCommand(final Computable<T> c, final String name, final UndoConfirmationPolicy policy, Project project)
-   */
-  @Deprecated
-  public <T> T runWriteActionInCommand(Computable<T> c, String name, UndoConfirmationPolicy policy) {
-    return runWriteActionInCommand(c, name, policy, CurrentProjectAccessUtil.getProjectFromUI());
-  }
-
-  public <T> T runWriteActionInCommand(final Computable<T> c, final String name, final UndoConfirmationPolicy policy, Project project) {
-    final Object[] result = new Object[1];
-    CommandProcessor.getInstance().executeCommand(project, new Runnable() {
-      public void run() {
-        result[0] = new CommandComputable(c).compute();
+    ModelCommandContext get(SModel model, UndoHandler undoHandler) {
+      if (myEngaged) {
+        return myModel2Context.computeIfAbsent(model, m -> new CommandContextImpl(undoHandler, m));
       }
-    }, name, null, policy);
-    return (T) result[0];
-  }
-
-  /**
-   * use runWriteActionInCommand(Runnable r, Project project)
-   */
-  @Deprecated
-  public void runWriteActionInCommand(Runnable r) {
-    runWriteActionInCommand(r, CurrentProjectAccessUtil.getProjectFromUI());
-  }
-
-  public void runWriteActionInCommand(Runnable r, Project project) {
-    runWriteActionInCommand(r, null, UndoConfirmationPolicy.DO_NOT_REQUEST_CONFIRMATION, project);
-  }
-
-  /**
-   * use runWriteActionInCommand(Runnable r, String name, UndoConfirmationPolicy policy, Project project)
-   */
-  @Deprecated
-  public void runWriteActionInCommand(Runnable r, String name, UndoConfirmationPolicy policy) {
-    runWriteActionInCommand(r, name, policy, CurrentProjectAccessUtil.getProjectFromUI());
-  }
-
-  public void runWriteActionInCommand(Runnable r, String name, UndoConfirmationPolicy policy, Project project) {
-    CommandProcessor.getInstance().executeCommand(project, new CommandRunnable(r), name, null, policy);
-  }
-
-  /**
-   * use runWriteActionInCommandAsync(final Runnable r, final Project project)
-   */
-  @Deprecated
-  public void runWriteActionInCommandAsync(final Runnable r) {
-    runWriteActionInCommandAsync(r, CurrentProjectAccessUtil.getProjectFromUI());
-  }
-
-  public void runWriteActionInCommandAsync(final Runnable r, final Project project) {
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        runWriteActionInCommand(r, project);
-      }
-    });
-  }
-
-  public void runIndexing(Runnable r) {
-    boolean needToRemove = myIndexingThreads.add(Thread.currentThread());
-    try {
-      r.run();
-    } finally {
-      if (needToRemove) {
-        myIndexingThreads.remove(Thread.currentThread());
-      }
+      return null;
     }
   }
 
-  static final void assertLegalWrite() {
-    if (!instance().canWrite()) {
-      throw new IllegalModelAccessError("You can write model only inside write actions");
-    }
-  }
+  private static class CommandContextImpl implements ModelCommandContext {
+    private final UndoHandler myUndoHandler;
+    private final SModel myModel;
+    private final UnregisteredNodes myUN;
+    private ImmatureReferences myIR;
 
-  public static void assertLegalRead() {
-    if (!instance().canRead()) {
-      LOG.error(new IllegalModelAccessError("You can read model only inside read actions"));
-      // TODO throw
-    }
-  }
-
-  static final void assertLegalRead(SNode node) {
-    if (node.isDisposed()) {
-      if (!ourErroredModels.contains(node.getModelName_internal())) {
-        ourErroredModels.add(node.getModelName_internal());
-        System.err.println("CRITICAL: INVALID OPERATION DETECTED");
-        System.err.println("model: " + node.getModelName_internal());
-        new IllegalModelAccessError("Accessing disposed node").printStackTrace(System.err);
-      }
-    }
-    ModelAccess modelAccess = ModelAccess.instance();
-    if (!modelAccess.canRead() && !modelAccess.myIndexingThreads.contains(Thread.currentThread())) {
-      throw new IllegalModelAccessError("You can read model only inside read actions");
-    }
-  }
-
-  private static boolean isSharedReadMode() {
-    return "true".equals(System.getProperty("mps.sharedread"));
-  }
-
-  //--------command events listening
-
-  private List<ModelAccessListener> myListeners = new ArrayList<ModelAccessListener>();
-  private final Object myListenersLock = new Object();
-
-  private int myCommandLevel = 0;
-
-  private void incCommandLevel() {
-    assertLegalWrite();
-    if (myCommandLevel != 0) {
-      // LOG.error("command level>0", new Exception());
-    } else {
-      onCommandStarted();
-    }
-    myCommandLevel++;
-  }
-
-  private void decCommandLevel() {
-    assertLegalWrite();
-    myCommandLevel--;
-    if (myCommandLevel == 0) {
-      onCommandFinished();
-    }
-  }
-
-  public void addCommandListener(ModelAccessListener l) {
-    synchronized (myListenersLock) {
-      myListeners.add(l);
-    }
-  }
-
-  public void removeCommandListener(ModelAccessListener l) {
-    synchronized (myListenersLock) {
-      myListeners.remove(l);
-    }
-  }
-
-  private void onCommandStarted() {
-    UnregisteredNodes.instance().enable();
-    ImmatureReferences.getInstance().enable();
-    ArrayList<ModelAccessListener> listeners;
-    synchronized (myListenersLock) {
-      listeners = new ArrayList<ModelAccessListener>(myListeners);
+    public CommandContextImpl(@Nullable UndoHandler undoHandler, /*NotNull*/ SModel m) {
+      myUndoHandler = undoHandler == null ? new DefaultUndoHandler() : undoHandler;
+      myModel = m;
+      myUN = new UnregisteredNodes(myModel.getReference());
     }
 
-    for (ModelAccessListener l : listeners) {
-      try {
-        l.commandStarted();
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-  }
-
-  private void onCommandFinished() {
-    ArrayList<ModelAccessListener> listeners;
-    synchronized (myListenersLock) {
-      listeners = new ArrayList<ModelAccessListener>(myListeners);
+    @Override
+    public void nodeAttached(/*NotNull*/ SNode node) {
+      myUN.remove(node);
     }
 
-    for (ModelAccessListener l : listeners) {
-      try {
-        l.beforeCommandFinished();
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
+    @Override
+    public void nodeDetached(/*NotNull*/ SNode node) {
+      myUN.put(node);
     }
 
-    for (ModelAccessListener l : listeners) {
-      try {
-        l.commandFinished();
-      } catch (Throwable t) {
-        LOG.error(t);
-      }
-    }
-    ImmatureReferences.getInstance().disable();
-    UnregisteredNodes.instance().disable();
-  }
-
-  private class CommandRunnable implements Runnable {
-    private final Runnable myRunnable;
-
-    public CommandRunnable(Runnable r) {
-      myRunnable = r;
-    }
-
-    public void run() {
-      runWriteAction(new Runnable() {
-        public void run() {
-          incCommandLevel();
-          try {
-            myRunnable.run();
-          } finally {
-            decCommandLevel();
-          }
+    @Override
+    public void associationSet(SNode node, SReferenceLink link, AssociationData association) {
+      if (association != null && association.isDirectNode()) {
+        if (myIR == null) {
+          myIR = new ImmatureReferences();
         }
-      });
-    }
-  }
-
-  private class CommandComputable<T> implements Computable<T> {
-    private final Computable<T> myComputable;
-
-    public CommandComputable(Computable<T> c) {
-      myComputable = c;
+        myIR.add(node, link);
+      }
     }
 
-    public T compute() {
-      return runWriteAction(new Computable<T>() {
-        public T compute() {
-          incCommandLevel();
-          T result = null;
-          try {
-            result = myComputable.compute();
-          } finally {
-            decCommandLevel();
-          }
-          return result;
-        }
-      });
+    @Nullable
+    @Override
+    public SNode resolveUnregistered(SNodeId nodeId) {
+      return myUN.get(myModel.getReference(), nodeId);
+    }
+
+    @Override
+    public void registerActionWithUndo(SNodeUndoableAction action) {
+      myUndoHandler.addUndoableAction(action);
+    }
+
+    @Override
+    public void registerActionWithUndo(ModelRenameUndoableAction action) {
+      myUndoHandler.addUndoableAction(action);
+    }
+
+    /*package*/void onCommandOver() {
+      if (myIR != null) {
+        myIR.cleanup();
+      }
     }
   }
 }

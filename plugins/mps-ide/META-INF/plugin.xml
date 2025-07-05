@@ -1,0 +1,24 @@
+<!DOCTYPE idea-plugin
+        PUBLIC
+        "Plugin/DTD"
+        "http://plugins.intellij.net/plugin.dtd"
+        >
+<idea-plugin>
+  <id>jetbrains.mps.ide</id>
+  <name>MPS IDE Facilities</name>
+  <description>Provides various actions and tools handy for MPS-based IDE, on top of basic stuff available for RCP/Platform</description>
+  <category>Custom Languages</category>
+  <version>2025.1</version>
+  <vendor url="http://www.jetbrains.com/mps/" email="support@jetbrains.com">JetBrains</vendor>
+  <idea-version since-build="251.1" until-build="252.1"/>
+  <dependencies>
+    <plugin id="jetbrains.mps.core"/>
+  </dependencies>
+  <depends>jetbrains.mps.core</depends>
+  <depends>jetbrains.mps.rcp</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <mps.LanguageLibrary dir="/" hide="true"/>
+    <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"></errorHandler>
+  </extensions>
+</idea-plugin>

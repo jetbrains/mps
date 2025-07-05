@@ -1,60 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model modelUID="r:00000000-0000-4000-0000-011c89590433(jetbrains.mps.samples.readerConfigLanguage.readerConfigs)">
-  <persistence version="4" />
-  <refactoringHistory />
-  <language namespace="089e26c5-bfc3-4a60-9953-f68169a4608a(jetbrains.mps.samples.readerConfigLanguage)" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590436(jetbrains.mps.samples.readerConfigLanguage.structure)" version="0" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590283(jetbrains.mps.lang.core.constraints)" version="2" />
-  <languageAspect modelUID="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" version="0" />
-  <maxImportIndex value="0" />
-  <node type="jetbrains.mps.samples.readerConfigLanguage.structure.ReaderConfiguration:0" id="1127341420738">
-    <property name="name:0" value="Config1" />
-    <node role="mapping:0" type="jetbrains.mps.samples.readerConfigLanguage.structure.Mapping:0" id="1127341428473">
-      <property name="code:0" value="SVCL" />
-      <property name="targetClass:0" value="jetbrains.mps.samples.readerConfigLanguage.dsl.ServiceCall" />
-      <node role="field:0" type="jetbrains.mps.samples.readerConfigLanguage.structure.Field:0" id="1127341587349">
-        <property name="start:0" value="4" />
-        <property name="end:0" value="18" />
-        <property name="name:0" value="CustomerName" />
+<model ref="r:00000000-0000-4000-0000-011c89590433(jetbrains.mps.samples.readerConfigLanguage.readerConfigs)">
+  <persistence version="9" />
+  <languages>
+    <use id="089e26c5-bfc3-4a60-9953-f68169a4608a" name="jetbrains.mps.samples.readerConfigLanguage" version="0" />
+  </languages>
+  <imports />
+  <registry>
+    <language id="089e26c5-bfc3-4a60-9953-f68169a4608a" name="jetbrains.mps.samples.readerConfigLanguage">
+      <concept id="1116534870455" name="jetbrains.mps.samples.readerConfigLanguage.structure.ReaderConfiguration" flags="ng" index="3QEx2O">
+        <child id="1116535202619" name="mapping" index="3QFM8S" />
+      </concept>
+      <concept id="1116534914096" name="jetbrains.mps.samples.readerConfigLanguage.structure.Mapping" flags="ng" index="3QEFON">
+        <property id="1116534988614" name="code" index="3QEXT5" />
+        <property id="1116534997224" name="targetClass" index="3QF07F" />
+        <child id="1116535614925" name="field" index="3QHmNe" />
+      </concept>
+      <concept id="1116534962441" name="jetbrains.mps.samples.readerConfigLanguage.structure.Field" flags="ng" index="3QERwa">
+        <property id="1116535027491" name="start" index="3QF7ow" />
+        <property id="1116535032695" name="end" index="3QF8DO" />
+      </concept>
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+  </registry>
+  <node concept="3QEx2O" id="gpUMf32">
+    <property role="TrG5h" value="Config1" />
+    <node concept="3QEFON" id="gpUMgVT" role="3QFM8S">
+      <property role="3QEXT5" value="SVCL" />
+      <property role="3QF07F" value="jetbrains.mps.samples.readerConfigLanguage.dsl.ServiceCall" />
+      <node concept="3QERwa" id="gpUMRIl" role="3QHmNe">
+        <property role="3QF7ow" value="4" />
+        <property role="3QF8DO" value="18" />
+        <property role="TrG5h" value="CustomerName" />
       </node>
-      <node role="field:0" type="jetbrains.mps.samples.readerConfigLanguage.structure.Field:0" id="1127341592366">
-        <property name="start:0" value="19" />
-        <property name="end:0" value="23" />
-        <property name="name:0" value="CustomerID" />
+      <node concept="3QERwa" id="gpUMSWI" role="3QHmNe">
+        <property role="3QF7ow" value="19" />
+        <property role="3QF8DO" value="23" />
+        <property role="TrG5h" value="CustomerID" />
       </node>
-      <node role="field:0" type="jetbrains.mps.samples.readerConfigLanguage.structure.Field:0" id="1127341627429">
-        <property name="start:0" value="24" />
-        <property name="end:0" value="27" />
-        <property name="name:0" value="CallTypeCode" />
+      <node concept="3QERwa" id="gpUN1w_" role="3QHmNe">
+        <property role="3QF7ow" value="24" />
+        <property role="3QF8DO" value="27" />
+        <property role="TrG5h" value="CallTypeCode" />
       </node>
-      <node role="field:0" type="jetbrains.mps.samples.readerConfigLanguage.structure.Field:0" id="1127341645509">
-        <property name="start:0" value="28" />
-        <property name="end:0" value="35" />
-        <property name="name:0" value="DateOfCallString" />
+      <node concept="3QERwa" id="gpUN5V5" role="3QHmNe">
+        <property role="3QF7ow" value="28" />
+        <property role="3QF8DO" value="35" />
+        <property role="TrG5h" value="DateOfCallString" />
       </node>
     </node>
-    <node role="mapping:0" type="jetbrains.mps.samples.readerConfigLanguage.structure.Mapping:0" id="1127341677293">
-      <property name="code:0" value="USGE" />
-      <property name="targetClass:0" value="jetbrains.mps.samples.readerConfigLanguage.dsl.Usage" />
-      <node role="field:0" type="jetbrains.mps.samples.readerConfigLanguage.structure.Field:0" id="1127341692184">
-        <property name="start:0" value="4" />
-        <property name="end:0" value="8" />
-        <property name="name:0" value="CustomerID" />
+    <node concept="3QEFON" id="gpUNdFH" role="3QFM8S">
+      <property role="3QEXT5" value="USGE" />
+      <property role="3QF07F" value="jetbrains.mps.samples.readerConfigLanguage.dsl.Usage" />
+      <node concept="3QERwa" id="gpUNhko" role="3QHmNe">
+        <property role="3QF7ow" value="4" />
+        <property role="3QF8DO" value="8" />
+        <property role="TrG5h" value="CustomerID" />
       </node>
-      <node role="field:0" type="jetbrains.mps.samples.readerConfigLanguage.structure.Field:0" id="1127341706154">
-        <property name="start:0" value="9" />
-        <property name="end:0" value="22" />
-        <property name="name:0" value="CustomerName" />
+      <node concept="3QERwa" id="gpUNkIE" role="3QHmNe">
+        <property role="3QF7ow" value="9" />
+        <property role="3QF8DO" value="22" />
+        <property role="TrG5h" value="CustomerName" />
       </node>
-      <node role="field:0" type="jetbrains.mps.samples.readerConfigLanguage.structure.Field:0" id="1127341709999">
-        <property name="start:0" value="23" />
-        <property name="end:0" value="30" />
-        <property name="name:0" value="Cycle" />
+      <node concept="3QERwa" id="gpUNlEJ" role="3QHmNe">
+        <property role="3QF7ow" value="23" />
+        <property role="3QF8DO" value="30" />
+        <property role="TrG5h" value="Cycle" />
       </node>
-      <node role="field:0" type="jetbrains.mps.samples.readerConfigLanguage.structure.Field:0" id="1127341746234">
-        <property name="start:0" value="31" />
-        <property name="end:0" value="36" />
-        <property name="name:0" value="ReadDate" />
+      <node concept="3QERwa" id="gpUNuwU" role="3QHmNe">
+        <property role="3QF7ow" value="31" />
+        <property role="3QF8DO" value="36" />
+        <property role="TrG5h" value="ReadDate" />
       </node>
     </node>
   </node>

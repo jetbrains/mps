@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<product version="3" modelHash="-4ntk7w2vcv5ywzz3knrp6knw94cevo2">
+=======
+<product version="3" modelHash="5i9fupeaj1ni02jqvkkm1ot5sw0r41s">
+>>>>>>> upstream/2024.1_projectPane
+  <files names="AbstractInProcessTestContributor.java:AbstractTestConverter.java:AssumptionFailedRunner.java:CommandLineTestExecutor.java:InProcessExecutionFilter.java:JUnit5InprocessTestsContributor.java:JUnit5ScriptTestContributor.java:NodeWrappersTestsContributor.java:ScriptTestContributor.java" />
+</product>
+

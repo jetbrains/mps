@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<product version="3" modelHash="bz842bno2qr3xet6911rfljj32skaci">
+  <files names="BaseURLFunction__BehaviorDescriptor.java:BaseURLLiteral__BehaviorDescriptor.java:BaseURL__BehaviorDescriptor.java:BehaviorAspectDescriptor.java:Circle__BehaviorDescriptor.java:ColorLiteral__BehaviorDescriptor.java:Color__BehaviorDescriptor.java:ConstantFieldIcon__BehaviorDescriptor.java:FileIcon__BehaviorDescriptor.java:IconLayerDescription__BehaviorDescriptor.java:Icon__BehaviorDescriptor.java:Image__BehaviorDescriptor.java:Rect__BehaviorDescriptor.java:ResourceGenerationException.java:Resource__BehaviorDescriptor.java:TextIcon__BehaviorDescriptor.java:Text__BehaviorDescriptor.java" />
+=======
+<product version="3" modelHash="-701p5qrns86hlg7h2kdcwalu3b1t8fq">
+  <files names="BaseURLFunction__BehaviorDescriptor.java:BaseURLLiteral__BehaviorDescriptor.java:BaseURL__BehaviorDescriptor.java:BehaviorAspectDescriptor.java:Circle__BehaviorDescriptor.java:ColorLiteral__BehaviorDescriptor.java:Color__BehaviorDescriptor.java:FileIcon__BehaviorDescriptor.java:IconLayerDescription__BehaviorDescriptor.java:Icon__BehaviorDescriptor.java:Image__BehaviorDescriptor.java:Rect__BehaviorDescriptor.java:ResourceGenerationException.java:Resource__BehaviorDescriptor.java:TextIcon__BehaviorDescriptor.java:Text__BehaviorDescriptor.java" />
+>>>>>>> upstream/2024.1_projectPane
+</product>
+

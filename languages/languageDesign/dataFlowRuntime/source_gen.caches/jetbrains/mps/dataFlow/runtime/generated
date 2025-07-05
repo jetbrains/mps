@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD:languages/languageDesign/dataFlowRuntime/source_gen.caches/jetbrains/mps/dataFlow/runtime/generated
+<product version="3" modelHash="4cu3rncisc8w15co5hvkdtcjjxv7v3j">
+=======
+<product version="3" modelHash="57wbmfike51vzurfazenhhs3bcv5zmi">
+>>>>>>> upstream/2024.1_projectPane:languages/util/ext.plug/source_gen.caches/jetbrains/mps/lang/extension/plug/generated
+  <files names="ModuleActivator.java" />
+</product>
+

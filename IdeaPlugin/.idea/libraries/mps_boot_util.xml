@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="mps-boot-util">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/mps-core/lib/mps-boot-util.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../startup/startup-util/source" />
+    </SOURCES>
+  </library>
+</component>

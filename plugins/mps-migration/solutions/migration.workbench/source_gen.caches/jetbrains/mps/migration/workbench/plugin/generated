@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<product version="3" modelHash="-cjdzr4go9qg5qeohmly1otr7nzjdkzk">
+=======
+<product version="3" modelHash="eqaspjeueiwnji32i1qhntpyeuw9v1d">
+>>>>>>> upstream/2024.1_projectPane
+  <files names="ExecuteRerunnableMigrations_Action.java:FindDeprecatedCodeWithNoUsages_Action.java:FindDeprecatedCode_Action.java:FindUsagesOfDeprecated_Action.java:LanguageMigrations_ActionGroup.java:MigrationIssueHandler_ProjectPluginPart.java:MigrationTestConfigDialog.java:MigrationsMenuLegacyCode_ActionGroup.java:MigrationsMenu_ActionGroup.java:Migrations_ActionGroup.java:PrepareNewProject_AppPluginPart.java:ProjectMigrations_ActionGroup.java:RebuildHandler_ProjectPluginPart.java:RunMigration.java:RunMigrationAssistant_Action.java:RunPreUpdateCheck_Action.java:RunProjectMigration_Action.java:TestMigrationSession.java:TestMigrationWizard_Action.java:ToolsInternalAddition_ActionGroup.java:UsagesFormattingUtil.java:Workbench_ApplicationPlugin.java:Workbench_ProjectPlugin.java:startup.properties" />
+</product>
+

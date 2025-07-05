@@ -15,11 +15,9 @@ public class mySalary extends JFrame {
     public void insertUpdate(DocumentEvent p0) {
       update();
     }
-
     public void removeUpdate(DocumentEvent p0) {
       update();
     }
-
     public void changedUpdate(DocumentEvent p0) {
       update();
     }
@@ -27,6 +25,15 @@ public class mySalary extends JFrame {
   private JTextField inputField_a = new JTextField();
   private JTextField inputField_b = new JTextField();
   private JTextField outputField_a = new JTextField();
+<<<<<<< HEAD
+  public mySalary() {
+    setTitle("mySalary");
+    setLayout(new GridLayout(0, 2));
+    inputField_a.getDocument().addDocumentListener(this.listener);
+    add(new JLabel("Java Hours"));
+    add(inputField_a);
+    inputField_b.getDocument().addDocumentListener(this.listener);
+=======
 
   public mySalary() {
     setTitle("mySalary");
@@ -35,6 +42,7 @@ public class mySalary extends JFrame {
     add(new JLabel("Java Hours"));
     add(inputField_a);
     inputField_b.getDocument().addDocumentListener(listener);
+>>>>>>> origin/MPS1.5
     add(new JLabel("PHP Hours"));
     add(inputField_b);
     add(new JLabel("Output"));
@@ -44,7 +52,6 @@ public class mySalary extends JFrame {
     pack();
     setVisible(true);
   }
-
   public void update() {
     int i_a = 0;
     int i_b = 0;
@@ -55,6 +62,10 @@ public class mySalary extends JFrame {
     }
     outputField_a.setText("" + (i_a * 10 + i_b * 5));
   }
+<<<<<<< HEAD
+  public static void main(String[] args) {
+    SwingUtilities.invokeLater(() -> new mySalary());
+=======
 
   public static void main(String[] args) {
     SwingUtilities.invokeLater(new Runnable() {
@@ -62,5 +73,6 @@ public class mySalary extends JFrame {
         new mySalary();
       }
     });
+>>>>>>> origin/MPS1.5
   }
 }

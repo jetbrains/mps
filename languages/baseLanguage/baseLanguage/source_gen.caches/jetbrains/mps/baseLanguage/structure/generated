@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<product version="3" modelHash="8qfkiw2wi34ty6oxh5uw49yr4rwlzq0">
+=======
+<product version="3" modelHash="-djkohz343304wach5glj73zmzxvz0qz">
+>>>>>>> upstream/2024.1_projectPane
+  <files names="ConceptPresentationAspectImpl.java:EnumerationDescriptor_TrimKind.java:IconContainer.java:LanguageConceptSwitch.java:StructureAspectDescriptor.java" />
+</product>
+

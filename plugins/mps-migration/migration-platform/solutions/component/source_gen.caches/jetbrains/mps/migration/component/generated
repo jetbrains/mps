@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<product version="3" modelHash="-bx3a9ihalu3mjhgliygv3ks8vggz4vg">
+=======
+<product version="3" modelHash="bfl5nf1im38ucmrgyl8rhjt4i3d0umo">
+>>>>>>> upstream/2024.1_projectPane
+  <files names="MigrationAccess.java:ModuleActivator.java" />
+</product>
+

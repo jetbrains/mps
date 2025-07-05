@@ -4,7 +4,7 @@ package jetbrains.mps.samples.lambdaCalculus.typesystem;
 
 import jetbrains.mps.lang.typesystem.runtime.BaseHelginsDescriptor;
 import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
-import jetbrains.mps.lang.typesystem.runtime.AbstractDependentComputation_Runtime;
+import jetbrains.mps.lang.typesystem.runtime.InequationReplacementRule_Runtime;
 
 public class TypesystemDescriptor extends BaseHelginsDescriptor {
   public TypesystemDescriptor() {
@@ -33,6 +33,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_LambdaExpression_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       InferenceRule_Runtime inferenceRule = new typeof_LetExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -57,8 +61,12 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      AbstractDependentComputation_Runtime dependentComputation = new LetReferenceTypeComputation_DependentComputation();
-      this.myDependentComputations.add(dependentComputation);
+      InferenceRule_Runtime inferenceRule = new typeof_Variable_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InequationReplacementRule_Runtime eliminationRule = new AnyType_subtypeOf_AllTypes_InequationReplacementRule();
+      this.myInequationReplacementRules.add(eliminationRule);
     }
   }
 }

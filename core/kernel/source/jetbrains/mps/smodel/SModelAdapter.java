@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2010 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +15,30 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.smodel.event.*;
+import jetbrains.mps.smodel.event.SModelChildEvent;
+import jetbrains.mps.smodel.event.SModelDevKitEvent;
+import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.smodel.event.SModelImportEvent;
+import jetbrains.mps.smodel.event.SModelLanguageEvent;
+import jetbrains.mps.smodel.event.SModelListener;
+import jetbrains.mps.smodel.event.SModelPropertyEvent;
+import jetbrains.mps.smodel.event.SModelReferenceEvent;
+import jetbrains.mps.smodel.event.SModelRenamedEvent;
+import jetbrains.mps.smodel.event.SModelRootEvent;
+import jetbrains.mps.smodel.loading.ModelLoadingState;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Comparator;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelListener.DependencyChange;
 
 /**
+ * @deprecated With SModelInternal and its {@link SModelListener} fading into oblivion, no reason to use this class.
+ *             Prefer {@code openapi} {@link org.jetbrains.mps.openapi.model.SNodeChangeListener} and {@link org.jetbrains.mps.openapi.model.SModelListener} instead.
+ *             Besides, naming is awfully misguiding, the class is worth deletion just for that.
  * @author Kostik
  */
+@Deprecated(since = "2025.1", forRemoval = true)
 public class SModelAdapter implements SModelListener {
-  public static final SModelListenerComparator COMPARATOR = new SModelListenerComparator();
-  private SModelListenerPriority myPriority;
+  private final SModelListenerPriority myPriority;
 
   public SModelAdapter() {
     this(SModelListenerPriority.CLIENT);
@@ -35,114 +48,126 @@ public class SModelAdapter implements SModelListener {
     myPriority = priority;
   }
 
+  @Override
   public void languageAdded(SModelLanguageEvent event) {
     eventFired(event);
     modelChanged(event.getModel());
   }
 
+  @Override
   public void languageRemoved(SModelLanguageEvent event) {
     eventFired(event);
     modelChanged(event.getModel());
   }
 
+  @Override
   public void importAdded(SModelImportEvent event) {
     eventFired(event);
     modelChanged(event.getModel());
   }
 
+  @Override
   public void importRemoved(SModelImportEvent event) {
     eventFired(event);
     modelChanged(event.getModel());
   }
 
+  @Override
   public void devkitAdded(SModelDevKitEvent event) {
     eventFired(event);
     modelChanged(event.getModel());
   }
 
 
+  @Override
   public void devkitRemoved(SModelDevKitEvent event) {
     eventFired(event);
     modelChanged(event.getModel());
   }
 
+  @Override
   public void rootAdded(SModelRootEvent event) {
     eventFired(event);
     modelChangedDramatically(event.getModel());
   }
 
+  @Override
   public void rootRemoved(SModelRootEvent event) {
     eventFired(event);
     modelChangedDramatically(event.getModel());
   }
 
+  @Override
   public void beforeRootRemoved(SModelRootEvent event) {
   }
 
+  @Override
   public void propertyChanged(SModelPropertyEvent event) {
     eventFired(event);
     modelChanged(event.getModel());
   }
 
+  @Override
   public void childAdded(SModelChildEvent event) {
     eventFired(event);
     modelChangedDramatically(event.getModel());
   }
 
+  @Override
   public void childRemoved(SModelChildEvent event) {
     eventFired(event);
     modelChangedDramatically(event.getModel());
   }
 
+  @Override
   public void beforeChildRemoved(SModelChildEvent event) {
   }
 
+  @Override
   public void referenceAdded(SModelReferenceEvent event) {
     eventFired(event);
     modelChangedDramatically(event.getModel());
   }
 
+  @Override
   public void referenceRemoved(SModelReferenceEvent event) {
     eventFired(event);
     modelChangedDramatically(event.getModel());
   }
 
+  @Override
   public void beforeModelRenamed(SModelRenamedEvent event) {
   }
 
+  @Override
   public void modelRenamed(SModelRenamedEvent event) {
     eventFired(event);
   }
 
-  public void beforeModelFileChanged(SModelFileChangedEvent event) {
+  @Override
+  public void modelLoadingStateChanged(SModel sm, ModelLoadingState newState) {
   }
 
-  public void modelFileChanged(SModelFileChangedEvent event) {
-    eventFired(event);
-  }
-
-  public void loadingStateChanged(SModelDescriptor model, boolean isLoading) {
-  }
-
-  public void modelInitialized(SModelDescriptor sm) {
-  }
-
+  @Override
   public void beforeModelDisposed(SModel sm) {
   }
 
   @Override
-  public void modelReplaced(SModelDescriptor md) {
-  }
-
-  public void modelSaved(SModelDescriptor sm) {
+  public void modelSaved(SModel sm) {
   }
 
   public void eventFired(SModelEvent event) {
   }
 
+  /**
+   * There's {@link org.jetbrains.mps.openapi.model.SModelListener#dependenciesChanged(SModel, DependencyChange)} that covers most of the same causes.
+   */
   public void modelChanged(SModel model) {
   }
 
+  /**
+   * There's {@link org.jetbrains.mps.openapi.model.SModelListener#nodesChanged(SModel)} to serve as a replacement
+   */
   public void modelChangedDramatically(SModel model) {
   }
 
@@ -150,13 +175,5 @@ public class SModelAdapter implements SModelListener {
   @Override
   public SModelListenerPriority getPriority() {
     return myPriority;
-  }
-
-  private static class SModelListenerComparator implements Comparator<SModelListener> {
-
-    @Override
-    public int compare(SModelListener listener1, SModelListener listener2) {
-      return listener1.getPriority().ordinal() - listener2.getPriority().ordinal();
-    }
   }
 }

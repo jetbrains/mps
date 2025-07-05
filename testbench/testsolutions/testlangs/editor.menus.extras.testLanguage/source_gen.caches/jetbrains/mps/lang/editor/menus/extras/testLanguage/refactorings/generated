@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product version="3" modelHash="d6a6jf81qiuqom7cau0va3ckhyebuts">
+  <files names="ApplicableRefactoring.java:ApplicableRefactoring_Target.java:InapplicableRefactoring.java:InapplicableRefactoring_Target.java:RefactoringAspectDescriptor.java" />
+</product>
+

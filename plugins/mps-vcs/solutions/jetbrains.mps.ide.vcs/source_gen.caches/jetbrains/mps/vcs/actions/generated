@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<product version="3" modelHash="2kclppup7i5dwwvx28lwa6lq6kdl719">
+=======
+<product version="3" modelHash="cz6glktkgmos7y07pos2mwuw4cokt0a">
+>>>>>>> upstream/2024.1_projectPane
+  <files names="AbstractShowInFileView.java:SetExtensionChangesGroupingAction.java:ShowInFileView.java:ShowInLogicalView.java" />
+</product>
+

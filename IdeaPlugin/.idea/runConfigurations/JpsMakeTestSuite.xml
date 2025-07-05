@@ -1,0 +1,38 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="JpsMakeTestSuite" type="JUnit" factoryName="JUnit">
+    <module name="mps-jps-plugin" />
+    <useClassPathOnly />
+    <option name="PACKAGE_NAME" value="jetbrains.mps.jps.make.tests" />
+    <option name="MAIN_CLASS_NAME" value="jetbrains.mps.jps.make.tests.JpsMakeTestSuite" />
+    <option name="METHOD_NAME" value="" />
+    <option name="TEST_OBJECT" value="class" />
+    <option name="VM_PARAMETERS" value="-ea -Dmps.make.debug=false -Didea.system.path=$PROJECT_DIR$/sandbox/tests.jps/system -Didea.log.path=$PROJECT_DIR$/sandbox/tests.jps/log -Didea.home.path=$PROJECT_DIR$/idea_home -Djdk.home.path=&quot;$APPLICATION_HOME_DIR$/jdk/Contents/Home/&quot; -Xmx512m -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5073" />
+    <option name="PARAMETERS" value="" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <option name="TEST_SEARCH_SCOPE">
+      <value defaultName="moduleWithDependencies" />
+    </option>
+    <RunnerSettings RunnerId="Debug">
+      <option name="DEBUG_PORT" value="" />
+      <option name="TRANSPORT" value="0" />
+      <option name="LOCAL" value="true" />
+    </RunnerSettings>
+    <RunnerSettings RunnerId="Profile ">
+      <option name="myExternalizedOptions" />
+    </RunnerSettings>
+    <RunnerSettings RunnerId="Run" />
+    <ConfigurationWrapper RunnerId="Debug" />
+    <ConfigurationWrapper RunnerId="Profile " />
+    <ConfigurationWrapper RunnerId="Run" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+      <option name="BuildArtifacts" enabled="true">
+        <artifact name="mps-common:jar" />
+        <artifact name="mps-core-jps-plugin-j8:jar" />
+        <artifact name="mps-core-jps-plugin:jar" />
+        <artifact name="mps-java-jps-plugin-j8:jar" />
+        <artifact name="mps-java-jps-plugin:jar" />
+      </option>
+    </method>
+  </configuration>
+</component>

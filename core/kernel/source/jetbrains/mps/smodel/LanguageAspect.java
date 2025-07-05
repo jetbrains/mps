@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2010 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,96 +15,99 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.ide.projectPane.Icons;
-import jetbrains.mps.lang.actions.structure.Actions_Language;
-import jetbrains.mps.lang.behavior.structure.Behavior_Language;
-import jetbrains.mps.lang.constraints.structure.Constraints_Language;
-import jetbrains.mps.lang.dataFlow.structure.DataFlow_Language;
-import jetbrains.mps.lang.editor.structure.Editor_Language;
-import jetbrains.mps.lang.findUsages.structure.FindUsages_Language;
-import jetbrains.mps.lang.intentions.structure.Intentions_Language;
-import jetbrains.mps.lang.plugin.structure.Plugin_Language;
-import jetbrains.mps.lang.script.structure.Script_Language;
-import jetbrains.mps.lang.structure.structure.Structure_Language;
-import jetbrains.mps.lang.test.structure.Test_Language;
-import jetbrains.mps.lang.textGen.structure.TextGen_Language;
-import jetbrains.mps.lang.typesystem.structure.Typesystem_Language;
-import jetbrains.mps.lang.refactoring.structure.Refactoring_Language;
-import jetbrains.mps.lang.stubs.structure.Stubs_Language;
-import jetbrains.mps.project.SModelRoot;
-import jetbrains.mps.project.structure.modules.ModuleReference;
+import jetbrains.mps.logging.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelName;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
-import javax.swing.Icon;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
+// NOTE, although quite some of these enums are not in use in MPS, there are uses in mbeddr!
 public enum LanguageAspect {
-  STRUCTURE("structure") {
-    public ModuleReference getMainLanguage() {
-      return Structure_Language.MODULE_REFERENCE;
-    }
+  //mostly migrated
+  STRUCTURE("structure"),
 
-    public Icon getIcon() {
-      return Icons.STRUCTURE_MODEL_ICON;
-    }
+  //mostly migrated
+  EDITOR("editor"),
 
+<<<<<<< HEAD
+  //mostly migrated (no uses in MPS)
+  ACTIONS("actions"),
+=======
     public String getHelpURL() {
       return "http://www.jetbrains.net/confluence/display/MPSD1/Structure";
     }
   },
+>>>>>>> origin/MPS1.5
 
-  EDITOR("editor") {
-    public ModuleReference getMainLanguage() {
-      return Editor_Language.MODULE_REFERENCE;
-    }
+  //mostly migrated
+  CONSTRAINTS("constraints"),
 
-    public Icon getIcon() {
-      return Icons.EDITOR_MODEL_ICON;
-    }
+  //mostly migrated
+  BEHAVIOR("behavior"),
 
+<<<<<<< HEAD
+  //mostly migrated
+  TYPESYSTEM("typesystem"),
+=======
     public String getHelpURL() {
       return "http://www.jetbrains.net/confluence/display/MPSD1/Editor";
     }
   },
+>>>>>>> origin/MPS1.5
 
-  ACTIONS("actions") {
-    public ModuleReference getMainLanguage() {
-      return Actions_Language.MODULE_REFERENCE;
-    }
+  //mostly migrated (no uses in MPS)
+  REFACTORINGS("refactorings"),
 
-    public Icon getIcon() {
-      return Icons.ACTIONS_MODEL_ICON;
-    }
+  //mostly migrated (no uses in MPS)
+  SCRIPTS("scripts"),
 
+<<<<<<< HEAD
+  //mostly migrated (no uses in MPS)
+  INTENTIONS("intentions"),
+=======
     public String getHelpURL() {
       return "http://www.jetbrains.net/confluence/display/MPSD1/Editor+Actions";
     }
   },
+>>>>>>> origin/MPS1.5
 
-  CONSTRAINTS("constraints") {
-    public ModuleReference getMainLanguage() {
-      return Constraints_Language.MODULE_REFERENCE;
-    }
+  //mostly migrated
+  FIND_USAGES("findUsages"),
 
-    public Icon getIcon() {
-      return Icons.CONSTRAINTS_MODEL_ICON;
-    }
+  //migrated, uncomment when migration is finished [compatibility] and deprecate this class
+  // (no uses in MPS)
+  PLUGIN("plugin"),
 
+<<<<<<< HEAD
+  //mostly migrated (no uses in MPS)
+  DATA_FLOW("dataFlow"),
+=======
     public String getHelpURL() {
       return "http://www.jetbrains.net/confluence/display/MPSD1/Constraints";
     }
   },
+>>>>>>> origin/MPS1.5
 
-  BEHAVIOR("behavior") {
-    public ModuleReference getMainLanguage() {
-      return Behavior_Language.MODULE_REFERENCE;
-    }
+  //mostly migrated (no uses in MPS)
+  TEST("test"),
 
-    public Icon getIcon() {
-      return Icons.BEHAVIOR_MODEL_ICON;
-    }
+  //mostly migrated (no uses in MPS)
+  TEXT_GEN("textGen"),
 
+<<<<<<< HEAD
+  //mostly migrated. No uses in MPS, 1 in mbeddr
+  MIGRATION("migration");
+
+  //TODO must be changed for each major/minor version release
+  public static final String HELP_CENTER_BASE = "https://www.jetbrains.com/help/mps/2024.1/";
+=======
     public String getHelpURL() {
       return "http://www.jetbrains.net/confluence/display/MPSD1/Behavior";
     }
@@ -263,6 +266,7 @@ public enum LanguageAspect {
       return "";
     }
   },;
+>>>>>>> origin/MPS1.5
 
   private String myName;
 
@@ -270,64 +274,85 @@ public enum LanguageAspect {
     myName = name;
   }
 
-
-  public boolean is(SModel model) {
-    return is(model.getModelDescriptor());
+  /**
+   * INTERNAL USE ONLY.
+   * Builds a class name of an aspect class according to hardcoded MPS convention.
+   */
+  public String getAspectQualifiedClassName(@NotNull SAbstractConcept concept) {
+    return concept.getLanguage().getQualifiedName() + '.' + getName() + '.' + concept.getName();
   }
 
-  public boolean is(SModelDescriptor sm) {
-    return Language.getModelAspect(sm) == this;
+  public boolean is(@NotNull SModel sm) {
+    SModule module = sm.getModule();
+    if (!(module instanceof Language)) return false;
+    return get(((Language) module)) == sm;
   }
 
-
-  public Icon getIcon() {
-    return Icons.MODEL_ICON;
+  @Nullable
+  public SModel get(Language l) {
+    return get_internal(l, false);
   }
 
-  public SModelDescriptor get(Language l) {
-    return SModelRepository.getInstance().getModelDescriptor(new SModelReference(l.getNamespace() + "." + myName, null), l);
+  public SModel getOrCreate(Language l) {
+    Logger.getLogger(LanguageAspect.class).warnDeprecatedUse("Don't use legacy LanguageAspect class to create new aspect models");
+    return get_internal(l, true);
   }
 
-  public SModelReference get(ModuleReference l) {
-    return new SModelReference(l.getModuleFqName() + "." + myName, null);
+  private SModel get_internal(Language l, boolean doCreate) {
+    final String aspectModelName = l.getModuleName() + '.' + myName;
+    for (SModel md : l.getModels()) {
+      if (aspectModelName.equals(md.getModelName())) {
+        return md;
+      }
+    }
+    return doCreate ? createNew(l) : null;
   }
 
   public String getName() {
     return myName;
   }
 
-  public SModelDescriptor createNew(Language l) {
+  /**
+   * @deprecated use {@link jetbrains.mps.smodel.language.LanguageAspectDescriptor} alternative.
+   *             There are no known uses, the method will be removed after 2025.2
+   */
+  @Deprecated(forRemoval = true)
+  public SModel createNew(Language l) {
     return createNew(l, true);
   }
 
-  public SModelDescriptor createNew(final Language l, final boolean saveModel) {
+  /**
+   * @deprecated use {@link jetbrains.mps.smodel.language.LanguageAspectDescriptor} alternative.
+   *             There are no known uses, the method will be removed after 2025.2
+   */
+  @Deprecated(forRemoval = true)
+  public SModel createNew(final Language l, final boolean saveModel) {
     assert get(l) == null;
+    Logger.getLogger(LanguageAspect.class).warnDeprecatedUse("Don't use legacy LanguageAspect class to create new aspect models");
 
-    SModelRoot modelRoot;
-    SModelDescriptor structureModel = l.getStructureModelDescriptor();
+    SModel structureModel = l.getStructureModelDescriptor();
+    ModelRoot modelRoot;
     if (structureModel == null) {
-      modelRoot = l.getSModelRoots().get(0);
+      modelRoot = l.getModelRoots().iterator().next();
     } else {
-      modelRoot = ModelRootUtil.getSModelRoot(structureModel);
+      modelRoot = structureModel.getModelRoot();
     }
-    final SModelDescriptor model = l.createModel(getModuleUID(l), modelRoot);
-    return model;
+    // I don't care there's no ModelsAutoImportManager, this is deprecated way to instantiate aspect models anyway
+    return modelRoot.createModel(new SModelName(l.getModuleName(), getName(), null));
   }
 
-  public List<ModuleReference> getAllLanguagesToImport(Language l) {
-    List<ModuleReference> result = new ArrayList<ModuleReference>();
-    if (getMainLanguage() != null) {
-      result.add(getMainLanguage());
+  //not used in MPS
+  //use jetbrains.mps.smodel.language.LanguageAspectSupport.getAspectModels()
+  // [2025] still 2 uses in mps-extensions
+  @Deprecated(since = "3.3", forRemoval = true)
+  public static Collection<SModel> getAspectModels(Language l) {
+    Set<SModel> result = new HashSet<>();
+    for (LanguageAspect aspect : LanguageAspect.values()) {
+      SModel asp = aspect.get(l);
+      if (asp != null) {
+        result.add(asp);
+      }
     }
     return result;
-  }
-
-  @Nullable
-  public abstract String getHelpURL();
-
-  public abstract ModuleReference getMainLanguage();
-
-  private SModelFqName getModuleUID(Language l) {
-    return new SModelFqName(l.getNamespace() + "." + getName(), "");
   }
 }

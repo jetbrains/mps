@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root>
+    <file name="ActionAspectDescriptorImpl.java">
+      <unit at="14,0,26,0" name="jetbrains.mps.baseLanguage.classifiers.actions.ActionAspectDescriptorImpl" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c8959036c(jetbrains.mps.baseLanguage.classifiers.actions)/1090488322150856065">
+    <file name="MethodToClassifierMethod_PasteWrapper_0.java">
+      <node id="1090488322150856066" at="25,46,26,47" concept="5" />
+      <node id="1090488322150856066" at="29,46,30,58" concept="5" />
+      <node id="1090488322151047964" at="33,39,34,86" concept="4" />
+      <node id="1090488322151794763" at="34,86,35,133" concept="4" />
+      <node id="1090488322151811535" at="35,133,36,115" concept="4" />
+      <node id="1090488322151818271" at="36,115,37,158" concept="4" />
+      <node id="1090488322150919270" at="37,158,38,306" concept="5" />
+      <node id="1090488322150919266" at="40,179,41,30" concept="4" />
+      <node id="1090488322150919266" at="41,30,42,30" concept="4" />
+      <node id="1090488322150919266" at="42,30,43,30" concept="4" />
+      <node id="1090488322150919266" at="43,30,44,31" concept="4" />
+      <node id="1090488322150919266" at="44,31,45,31" concept="4" />
+      <node id="1090488322150919266" at="45,31,46,31" concept="4" />
+      <node id="1090488322150919266" at="46,31,47,31" concept="4" />
+      <node id="1090488322150919266" at="47,31,48,31" concept="4" />
+      <node id="1090488322150919266" at="48,31,49,31" concept="4" />
+      <node id="1090488322150919266" at="49,31,50,31" concept="4" />
+      <node id="1090488322150919266" at="50,31,51,257" concept="4" />
+      <node id="1090488322150919266" at="51,257,52,34" concept="0" />
+      <node id="1090488322150919266" at="52,34,53,187" concept="0" />
+      <node id="1090488322150919266" at="54,51,55,192" concept="0" />
+      <node id="1090488322150919266" at="56,5,57,39" concept="0" />
+      <node id="1090488322150919266" at="58,31,59,202" concept="0" />
+      <node id="1090488322150919266" at="60,5,61,40" concept="0" />
+      <node id="1090488322150919266" at="62,32,63,201" concept="0" />
+      <node id="1090488322150919266" at="64,5,65,224" concept="4" />
+      <node id="1090488322150919266" at="65,224,66,36" concept="0" />
+      <node id="1090488322150919266" at="67,51,68,193" concept="0" />
+      <node id="1090488322150919266" at="69,5,70,160" concept="0" />
+      <node id="1090488322150919266" at="71,51,72,208" concept="0" />
+      <node id="1090488322150919266" at="73,5,74,24" concept="5" />
+      <node id="1090488322150856066" at="78,0,79,0" concept="6" trace="StaticMethodDeclaration$FJ" />
+      <node id="1090488322150856066" at="79,0,80,0" concept="6" trace="DefaultClassifierMethodDeclaration$Zx" />
+      <node id="1090488322150856066" at="83,0,84,0" concept="6" trace="typeVariableDeclaration$Lipp" />
+      <node id="1090488322150856066" at="84,0,85,0" concept="6" trace="parameter$5xBj" />
+      <node id="1090488322150856066" at="85,0,86,0" concept="6" trace="body$5xQk" />
+      <node id="1090488322150856066" at="86,0,87,0" concept="6" trace="statement$53DE" />
+      <node id="1090488322150856066" at="87,0,88,0" concept="6" trace="visibility$Yyua" />
+      <node id="1090488322150856066" at="88,0,89,0" concept="6" trace="returnType$5xoi" />
+      <node id="1090488322150856066" at="92,0,93,0" concept="6" trace="name$MnvL" />
+      <node id="1090488322150919266" at="53,187,56,5" concept="1" />
+      <node id="1090488322150919266" at="57,39,60,5" concept="2" />
+      <node id="1090488322150919266" at="61,40,64,5" concept="2" />
+      <node id="1090488322150919266" at="66,36,69,5" concept="1" />
+      <node id="1090488322150919266" at="70,160,73,5" concept="1" />
+      <node id="1090488322150856066" at="24,0,28,0" concept="3" trace="getSourceConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1090488322150856066" at="28,0,32,0" concept="3" trace="getTargetConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1090488322150856066" at="32,0,40,0" concept="3" trace="wrap#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1090488322150919266" at="40,0,76,0" concept="7" trace="_quotation_createNode_sqg5bj_a4a0a#(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="1090488322150856066" at="25,46,26,47" />
+      <scope id="1090488322150856066" at="29,46,30,58" />
+      <scope id="1090488322150919266" at="54,51,55,192" />
+      <scope id="1090488322150919266" at="58,31,59,202" />
+      <scope id="1090488322150919266" at="62,32,63,201" />
+      <scope id="1090488322150919266" at="67,51,68,193" />
+      <scope id="1090488322150919266" at="71,51,72,208" />
+      <scope id="1090488322150919266" at="53,187,56,5">
+        <var name="child" id="1090488322150919266" />
+      </scope>
+      <scope id="1090488322150919266" at="66,36,69,5">
+        <var name="child" id="1090488322150919266" />
+      </scope>
+      <scope id="1090488322150919266" at="70,160,73,5">
+        <var name="child" id="1090488322150919266" />
+      </scope>
+      <scope id="1090488322150856066" at="24,0,28,0" />
+      <scope id="1090488322150856066" at="28,0,32,0" />
+      <scope id="1090488322150856068" at="33,39,38,306">
+        <var name="body" id="1090488322151818272" />
+        <var name="paramMapping" id="1090488322151047967" />
+        <var name="typeParam" id="1090488322151794764" />
+        <var name="types" id="1090488322151811536" />
+      </scope>
+      <scope id="1090488322150856066" at="32,0,40,0">
+        <var name="sourceNode" id="1090488322150856066" />
+      </scope>
+      <scope id="1090488322150919266" at="40,179,74,24">
+        <var name="nb" id="1090488322150919266" />
+        <var name="nb1" id="1090488322150919266" />
+        <var name="quotedNode_10" id="1090488322150919266" />
+        <var name="quotedNode_11" id="1090488322150919266" />
+        <var name="quotedNode_12" id="1090488322150919266" />
+        <var name="quotedNode_13" id="1090488322150919266" />
+        <var name="quotedNode_14" id="1090488322150919266" />
+        <var name="quotedNode_15" id="1090488322150919266" />
+        <var name="quotedNode_16" id="1090488322150919266" />
+        <var name="quotedNode_7" id="1090488322150919266" />
+        <var name="quotedNode_8" id="1090488322150919266" />
+        <var name="quotedNode_9" id="1090488322150919266" />
+      </scope>
+      <scope id="1090488322150919266" at="40,0,76,0">
+        <var name="parameter_1" id="1090488322150919266" />
+        <var name="parameter_2" id="1090488322150919266" />
+        <var name="parameter_3" id="1090488322150919266" />
+        <var name="parameter_4" id="1090488322150919266" />
+        <var name="parameter_5" id="1090488322150919266" />
+        <var name="parameter_6" id="1090488322150919266" />
+      </scope>
+      <unit id="1090488322150856066" at="91,0,94,0" name="jetbrains.mps.baseLanguage.classifiers.actions.MethodToClassifierMethod_PasteWrapper_0$PROPS" />
+      <unit id="1090488322150856066" at="77,0,81,0" name="jetbrains.mps.baseLanguage.classifiers.actions.MethodToClassifierMethod_PasteWrapper_0$CONCEPTS" />
+      <unit id="1090488322150856066" at="82,0,90,0" name="jetbrains.mps.baseLanguage.classifiers.actions.MethodToClassifierMethod_PasteWrapper_0$LINKS" />
+      <unit id="1090488322150856066" at="23,0,95,0" name="jetbrains.mps.baseLanguage.classifiers.actions.MethodToClassifierMethod_PasteWrapper_0" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c8959036c(jetbrains.mps.baseLanguage.classifiers.actions)/1827366433118293076">
+    <file name="adapt_toBL_PasteWrapper_0.java">
+      <node id="1827366433118293699" at="21,46,22,58" concept="5" />
+      <node id="1827366433118293699" at="25,46,26,40" concept="5" />
+      <node id="1827366433118313390" at="29,39,30,203" concept="4" />
+      <node id="1827366433118323141" at="30,203,31,113" concept="0" />
+      <node id="1827366433118394411" at="31,113,32,180" concept="0" />
+      <node id="1827366433118707247" at="32,180,33,120" concept="0" />
+      <node id="1827366433118846682" at="33,120,34,108" concept="0" />
+      <node id="1827366433119009787" at="34,108,35,182" concept="0" />
+      <node id="1827366433119293536" at="35,182,36,208" concept="0" />
+      <node id="1827366433119620148" at="36,208,37,120" concept="0" />
+      <node id="1827366433119864331" at="37,120,38,134" concept="0" />
+      <node id="1827366433120339319" at="38,134,39,120" concept="0" />
+      <node id="1827366433120637366" at="39,120,40,300" concept="0" />
+      <node id="1827366433118322592" at="40,300,41,15" concept="5" />
+      <node id="1827366433118293699" at="45,0,46,0" concept="6" trace="DefaultClassifierMethodDeclaration$Zx" />
+      <node id="1827366433118293699" at="46,0,47,0" concept="6" trace="ClassifierMember$At" />
+      <node id="1827366433118293699" at="47,0,48,0" concept="6" trace="ThisClassifierExpression$xB" />
+      <node id="1827366433118293699" at="48,0,49,0" concept="6" trace="ThisExpression$$o" />
+      <node id="1827366433118293699" at="52,0,53,0" concept="6" trace="name$MnvL" />
+      <node id="1827366433118293699" at="53,0,54,0" concept="6" trace="isFinal$eVPk" />
+      <node id="1827366433118293699" at="54,0,55,0" concept="6" trace="isSynchronized$58UL" />
+      <node id="1827366433118293699" at="58,0,59,0" concept="6" trace="parameter$5xBj" />
+      <node id="1827366433118293699" at="59,0,60,0" concept="6" trace="returnType$5xoi" />
+      <node id="1827366433118293699" at="60,0,61,0" concept="6" trace="body$5xQk" />
+      <node id="1827366433118293699" at="61,0,62,0" concept="6" trace="throwsItem$CdW$" />
+      <node id="1827366433118293699" at="62,0,63,0" concept="6" trace="typeVariableDeclaration$Lipp" />
+      <node id="1827366433118293699" at="63,0,64,0" concept="6" trace="visibility$Yyua" />
+      <node id="1827366433118293699" at="20,0,24,0" concept="3" trace="getSourceConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1827366433118293699" at="24,0,28,0" concept="3" trace="getTargetConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1827366433118293699" at="28,0,43,0" concept="3" trace="wrap#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="1827366433118293699" at="21,46,22,58" />
+      <scope id="1827366433118293699" at="25,46,26,40" />
+      <scope id="1827366433118293699" at="20,0,24,0" />
+      <scope id="1827366433118293699" at="24,0,28,0" />
+      <scope id="1827366433118293701" at="29,39,41,15">
+        <var name="imd" id="1827366433118313393" />
+      </scope>
+      <scope id="1827366433118293699" at="28,0,43,0">
+        <var name="sourceNode" id="1827366433118293699" />
+      </scope>
+      <unit id="1827366433118293699" at="51,0,56,0" name="jetbrains.mps.baseLanguage.classifiers.actions.adapt_toBL_PasteWrapper_0$PROPS" />
+      <unit id="1827366433118293699" at="44,0,50,0" name="jetbrains.mps.baseLanguage.classifiers.actions.adapt_toBL_PasteWrapper_0$CONCEPTS" />
+      <unit id="1827366433118293699" at="57,0,65,0" name="jetbrains.mps.baseLanguage.classifiers.actions.adapt_toBL_PasteWrapper_0$LINKS" />
+      <unit id="1827366433118293699" at="19,0,66,0" name="jetbrains.mps.baseLanguage.classifiers.actions.adapt_toBL_PasteWrapper_0" />
+    </file>
+  </root>
+</debug-info>
+

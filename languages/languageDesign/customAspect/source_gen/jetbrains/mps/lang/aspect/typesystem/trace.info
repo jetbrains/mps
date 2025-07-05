@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <root>
+    <file name="TypesystemDescriptor.java">
+      <unit at="8,0,16,0" name="jetbrains.mps.lang.aspect.typesystem.TypesystemDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:6fc198d3-4608-4f97-ad36-1c3a4d4eae24(jetbrains.mps.lang.aspect.typesystem)/1728071633589998099">
+    <file name="TypesystemDescriptor.java">
+      <node id="1728071633589998099" at="10,5,11,107" concept="5" />
+      <node id="1728071633589998099" at="11,107,12,55" concept="2" />
+      <node id="1728071633589998099" at="9,33,13,5" concept="0" />
+      <scope id="1728071633589998099" at="10,5,12,55">
+        <var name="nonTypesystemRule" id="1728071633589998099" />
+      </scope>
+    </file>
+    <file name="check_SpecificAspectRootConfig_NonTypesystemRule.java">
+      <node id="1728071633590041832" at="29,9,30,68" concept="5" />
+      <node id="1728071633590041832" at="30,68,31,248" concept="5" />
+      <node id="1728071633589998099" at="36,50,37,48" concept="6" />
+      <node id="1728071633589998099" at="39,68,40,102" concept="6" />
+      <node id="1728071633589998099" at="42,30,43,17" concept="6" />
+      <node id="1728071633589998099" at="47,0,48,0" concept="7" trace="primary$7jJ7" />
+      <node id="1728071633589998099" at="48,0,49,0" concept="7" trace="secondary$7kd9" />
+      <node id="1728071633589998099" at="49,0,50,0" concept="7" trace="auxiliary$7pPx" />
+      <node id="1728071633589998099" at="50,0,51,0" concept="7" trace="cpnt$Miim" />
+      <node id="1728071633589998099" at="54,0,55,0" concept="7" trace="rootable$_9pz" />
+      <node id="1728071633589998099" at="58,0,59,0" concept="7" trace="SpecificAspectRootConfig$HU" />
+      <node id="1728071633589998099" at="24,0,26,0" concept="1" trace="check_SpecificAspectRootConfig_NonTypesystemRule#()V" />
+      <node id="1728071633589998099" at="36,0,39,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1728071633589998099" at="39,0,42,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1728071633589998099" at="42,0,45,0" concept="4" trace="overrides#()Z" />
+      <node id="1728071633590041832" at="28,115,32,9" concept="0" />
+      <node id="1728071633590034861" at="27,268,33,7" concept="3" />
+      <node id="1728071633589998228" at="26,116,34,7" concept="2" />
+      <node id="1728071633589998099" at="26,0,36,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="1728071633589998099" at="24,61,24,61" />
+      <scope id="1728071633589998099" at="36,50,37,48" />
+      <scope id="1728071633589998099" at="39,68,40,102" />
+      <scope id="1728071633589998099" at="42,30,43,17" />
+      <scope id="1728071633589998099" at="24,0,26,0" />
+      <scope id="1728071633590041832" at="29,9,31,248">
+        <var name="_reporter_2309309498" id="1728071633590041832" />
+        <var name="errorTarget" id="1728071633590041832" />
+      </scope>
+      <scope id="1728071633589998099" at="36,0,39,0" />
+      <scope id="1728071633589998099" at="39,0,42,0">
+        <var name="argument" id="1728071633589998099" />
+      </scope>
+      <scope id="1728071633589998099" at="42,0,45,0" />
+      <scope id="1728071633590034863" at="28,115,32,9" />
+      <scope id="1728071633590034755" at="27,268,33,7" />
+      <scope id="1728071633589998100" at="26,116,34,7" />
+      <scope id="1728071633589998099" at="26,0,36,0">
+        <var name="arc" id="1728071633589998099" />
+        <var name="status" id="1728071633589998099" />
+        <var name="typeCheckingContext" id="1728071633589998099" />
+      </scope>
+      <unit id="1728071633589998099" at="53,0,56,0" name="jetbrains.mps.lang.aspect.typesystem.check_SpecificAspectRootConfig_NonTypesystemRule$PROPS" />
+      <unit id="1728071633589998099" at="57,0,60,0" name="jetbrains.mps.lang.aspect.typesystem.check_SpecificAspectRootConfig_NonTypesystemRule$CONCEPTS" />
+      <unit id="1728071633589998099" at="46,0,52,0" name="jetbrains.mps.lang.aspect.typesystem.check_SpecificAspectRootConfig_NonTypesystemRule$LINKS" />
+      <unit id="1728071633589998099" at="23,0,61,0" name="jetbrains.mps.lang.aspect.typesystem.check_SpecificAspectRootConfig_NonTypesystemRule" />
+    </file>
+  </root>
+</debug-info>
+

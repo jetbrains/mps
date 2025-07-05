@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2010 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,41 +15,55 @@
  */
 package jetbrains.mps.project.structure.modules;
 
-import jetbrains.mps.smodel.SModelReference;
+import jetbrains.mps.util.io.ModelInputStream;
+import jetbrains.mps.util.io.ModelOutputStream;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class LanguageDescriptor extends ModuleDescriptor {
   private String myGenPath;
 
-  private List<SModelReference> myAccessoryModels;
+  private int myLanguageVersion;
+
+  private Set<SModelReference> myAccessoryModels;
   private List<GeneratorDescriptor> myGenerators;
-  private List<ModuleReference> myExtendedLanguages;
-  private List<Dependency> myRuntimeModules;
-  private List<StubModelsEntry> myRuntimeStubModels;
-  private List<StubSolution> myStubSolutions;
-  private boolean myDoNotGenerateAdapters = false;
+  private Set<SModuleReference> myExtendedLanguages;
+  private Set<SModuleReference> myRuntimeModules;
 
   public LanguageDescriptor() {
     super();
-    myAccessoryModels = new ArrayList<SModelReference>();
-    myGenerators = new ArrayList<GeneratorDescriptor>();
-    myExtendedLanguages = new ArrayList<ModuleReference>();
-    myRuntimeModules = new ArrayList<Dependency>();
-    myRuntimeStubModels = new ArrayList<StubModelsEntry>();
-    myStubSolutions = new ArrayList<StubSolution>(); 
+    myAccessoryModels = new LinkedHashSet<>();
+    myGenerators = new ArrayList<>();
+    myExtendedLanguages = new LinkedHashSet<>();
+    myRuntimeModules = new LinkedHashSet<>();
   }
 
+  /**
+   * @deprecated use {@link ModuleDescriptor#getOutputRoot()}, instead
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public String getGenPath() {
     return myGenPath;
   }
 
+  /**
+   * @deprecated use {@link ModuleDescriptor#setOutputRoot(String)}, instead
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public void setGenPath(String genPath) {
     myGenPath = genPath;
   }
 
-  public List<SModelReference> getAccessoryModels() {
+  public Set<SModelReference> getAccessoryModels() {
     return myAccessoryModels;
   }
 
@@ -57,44 +71,121 @@ public class LanguageDescriptor extends ModuleDescriptor {
     return myGenerators;
   }
 
-  public List<ModuleReference> getExtendedLanguages() {
+  public Set<SModuleReference> getExtendedLanguages() {
     return myExtendedLanguages;
   }
 
-  public List<Dependency> getRuntimeModules() {
+  public Set<SModuleReference> getRuntimeModules() {
     return myRuntimeModules;
   }
-  
-  public List<StubModelsEntry> getRuntimeStubModels() {
-    return myRuntimeStubModels;
-  }
 
-  public List<StubSolution> getStubSolutions() {
-    return myStubSolutions;
-  }
-
-  public boolean isDoNotGenerateAdapters() {
-    return myDoNotGenerateAdapters;
-  }
-
-  public void setDoNotGenerateAdapters(boolean doNotGenerateAdapters) {
-    myDoNotGenerateAdapters = doNotGenerateAdapters;
+  @Override
+  public boolean getCompileInMPS() {
+    return true;
   }
 
   @Override
-  public boolean updateModelRefs() {
+  public boolean updateModelRefs(SRepository repository) {
     return RefUpdateUtil.composeUpdates(
-      super.updateModelRefs(),
-      RefUpdateUtil.updateModelRefs(myAccessoryModels)
+        super.updateModelRefs(repository),
+        new RefUpdateUtil(repository).updateModelRefs(myAccessoryModels)
     );
   }
 
   @Override
-  public boolean updateModuleRefs() {
+  public boolean updateModuleRefs(SRepository repository) {
+    RefUpdateUtil uu = new RefUpdateUtil(repository);
     return RefUpdateUtil.composeUpdates(
-      super.updateModuleRefs(),
-      RefUpdateUtil.updateDependencies(myRuntimeModules),
-      RefUpdateUtil.updateModuleRefs(myExtendedLanguages)
+      super.updateModuleRefs(repository),
+      uu.updateModuleRefs(myRuntimeModules),
+      uu.updateModuleRefs(myExtendedLanguages)
     );
+  }
+
+  @Override
+  protected int getHeaderMarker() {
+    return 0x123abcd;
+  }
+
+  @Override
+  public void save(ModelOutputStream stream) throws IOException {
+    super.save(stream);
+    stream.writeInt(myLanguageVersion);
+    stream.writeString(myGenPath);
+
+    stream.writeInt(myAccessoryModels.size());
+    for (SModelReference ref : myAccessoryModels) {
+      stream.writeModelReference(ref);
+    }
+
+    stream.writeInt(myGenerators.size());
+    for (GeneratorDescriptor gen : myGenerators) {
+      gen.save(stream);
+    }
+
+    stream.writeInt(myExtendedLanguages.size());
+    for (SModuleReference ref : myExtendedLanguages) {
+      stream.writeModuleReference(ref);
+    }
+
+    stream.writeInt(myRuntimeModules.size());
+    for (SModuleReference ref : myRuntimeModules) {
+      stream.writeModuleReference(ref);
+    }
+
+    stream.writeByte(0x1e);
+  }
+
+  @Override
+  public void load(ModelInputStream stream) throws IOException {
+    super.load(stream);
+    myLanguageVersion = stream.readInt();
+    myGenPath = stream.readString();
+
+    myAccessoryModels.clear();
+    for (int size = stream.readInt(); size > 0; size--) {
+      myAccessoryModels.add(stream.readModelReference());
+    }
+
+    myGenerators.clear();
+    for (int size = stream.readInt(); size > 0; size--) {
+      GeneratorDescriptor desc = new GeneratorDescriptor();
+      desc.load(stream);
+      myGenerators.add(desc);
+    }
+
+    myExtendedLanguages.clear();
+    for (int size = stream.readInt(); size > 0; size--) {
+      myExtendedLanguages.add(stream.readModuleReference());
+    }
+
+    myRuntimeModules.clear();
+    for (int size = stream.readInt(); size > 0; size--) {
+      myRuntimeModules.add(stream.readModuleReference());
+    }
+
+    if (stream.readByte() != 0x1e) throw new IOException("bad stream");
+  }
+
+  @Override
+  @NotNull
+  public LanguageDescriptor copy() {
+    LanguageDescriptor target = super.copy0(LanguageDescriptor::new);
+
+    target.setGenPath(getGenPath());
+    target.setLanguageVersion(getLanguageVersion());
+    target.getAccessoryModels().addAll(getAccessoryModels());
+    target.getGenerators().addAll(getGenerators().stream().map(GeneratorDescriptor::copy).collect(Collectors.toList()));
+    target.getExtendedLanguages().addAll(getExtendedLanguages());
+    target.getRuntimeModules().addAll(getRuntimeModules());
+    return target;
+  }
+
+  public int getLanguageVersion() {
+    return myLanguageVersion;
+  }
+
+  public void setLanguageVersion(int languageVersion) {
+    myLanguageVersion = languageVersion;
   }
 }

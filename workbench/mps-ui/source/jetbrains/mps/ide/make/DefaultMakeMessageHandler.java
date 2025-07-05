@@ -1,0 +1,65 @@
+/*
+ * Copyright 2003-2022 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package jetbrains.mps.ide.make;
+
+import com.intellij.openapi.ui.MessageType;
+import com.intellij.openapi.wm.ToolWindow;
+import com.intellij.openapi.wm.ToolWindowId;
+import com.intellij.openapi.wm.ToolWindowManager;
+import jetbrains.mps.ide.messages.MessageListOptions;
+import jetbrains.mps.ide.messages.MessagesViewTool;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.make.IMakeService;
+import jetbrains.mps.messages.IMessage;
+import jetbrains.mps.messages.IMessageHandler;
+import jetbrains.mps.messages.IMessageList;
+import jetbrains.mps.messages.LogHandler;
+import jetbrains.mps.project.Project;
+import jetbrains.mps.logging.Logger;
+import org.jetbrains.annotations.NotNull;
+
+/**
+ * Message handler to use for all make sessions that
+ * has to pipe messages to shared (common) 'Make' view.
+ */
+public class DefaultMakeMessageHandler implements IMessageHandler {
+  private final IMessageHandler myDelegate;
+
+  public DefaultMakeMessageHandler(Project mpsProject) {
+    MessagesViewTool tool = MessagesViewTool.getInstance(mpsProject);
+    if (tool != null) {
+      Runnable balloonHandler = () -> {
+        final ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(ProjectHelper.toIdeaProject(mpsProject));
+        ToolWindow toolWindow = toolWindowManager.getToolWindow(ToolWindowId.MESSAGES_WINDOW);
+        boolean visible = toolWindow != null && toolWindow.isVisible();
+        if (!visible) {
+          toolWindowManager.notifyByBalloon(ToolWindowId.MESSAGES_WINDOW, MessageType.INFO, "Make successful");
+        }
+      };
+      IMessageList list = tool.getMessageList("Make", balloonHandler, MessageListOptions.ActivateOnMessage, MessageListOptions.ReuseExisting);
+      list.clear();
+      myDelegate = list;
+    } else {
+      //it might happen if we haven't opened IDE yet
+      myDelegate = new LogHandler(Logger.getLogger(IMakeService.class));
+    }
+  }
+
+  @Override
+  public void handle(@NotNull IMessage msg) {
+    myDelegate.handle(msg);
+  }
+}

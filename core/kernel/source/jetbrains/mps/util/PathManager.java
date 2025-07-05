@@ -1,359 +1,176 @@
 /*
- * Copyright 2003-2010 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.util;
 
-import jetbrains.mps.build.SamplesExtractor;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.structure.model.ModelRoot;
-import jetbrains.mps.smodel.SModelReference;
-import jetbrains.mps.smodel.persistence.def.ModelPersistence;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.MPSExtentions;
+import org.jetbrains.mps.annotations.Internal;
+import org.jetbrains.mps.annotations.Singleton;
 
 import java.io.File;
-import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 
 /**
- * Author: Sergey Dmitriev
- * Created Nov 9, 2003
+ * Responsible for different predefined paths in the distribution layout
+ *
+ * IMPORTANT: this class is not for MPS startup, rather to figure out relevant values when there's MPS instance running.
  */
-public class PathManager {
-  private static final Logger LOG = Logger.getLogger(PathManager.class);
+@Singleton
+public final class PathManager {
+  private static final String FILE_PROTO = "file";
+  private static final String JAR_PROTO = "jar";
 
-  public static final String PROPERTY_CONFIG_PATH = "mps.config.path";
-  public static final String PROPERTY_HOME_PATH = "mps.home.path";
-  public static final String PROPERTY_MODEL_PATH = "mps.model.path";
-
-  private static final String FILE = "file";
-  private static final String JAR = "jar";
-  private static final String JAR_DELIMITER = "!";
-  private static final String PROTOCOL_DELIMITER = ":";
+  private static final String LAUNCHER_CLASS = "jetbrains/mps/Launcher.class";
 
   private static String ourHomePath;
-  private static String ourConfigPath;
-  private static String ourHelpPath;
-  private static String ourHelpIndexPath;
-  private static String ourTutorialPath;
 
-  private static Pattern MODEL_UID_PATTERN = Pattern.compile(ModelPersistence.MODEL_UID + "=\"(.*?)\"");
-
-  public static String getUserHome() {
-    return System.getProperty("user.home");
+  private PathManager() {
   }
 
-  public static File getUserHomeFile() {
-    return new File(getUserHome());
-  }
-
-  public static void resetHomePath() {
-    ourHomePath = null;
-  }
-
-  public static void setHomePath(String newHomePath) {
-    ourHomePath = FileUtil.getCanonicalPath(newHomePath);
-  }
-
+  /**
+   * The thing is that we have two main #getHomePath implementations: here and in IDEA's PathManager#getHomePath.
+   * These almost always should return the same value, however the method here answers to the question where the MPS classes are located,
+   * while the IDEA's method answers where the IDEA classes are located.
+   * Also this paths are configurable from the outside by the properties.
+   * In MPS IDE we obviously have these two pointing to the same location, however
+   * in MPS IDEA plugin the one below point to the root of the mps-core plugin, while the IDEA's method returns
+   * the location of the IDEA distribution.
+   * @see #getPlatformLibPath()
+   *
+   * @return the MPS home path
+   */
   public static String getHomePath() {
+    // [AT] it's odd to use different PathManager with different idea about 'home path' from various parts of MPS
     if (ourHomePath != null) {
       return ourHomePath;
     }
 
-    if (System.getProperty(PROPERTY_HOME_PATH) != null) {
-      ourHomePath = getAbsolutePath(System.getProperty(PROPERTY_HOME_PATH));
-      return ourHomePath;
-    }
-
-    final Class aClass = PathManager.class;
-
-    String rootPath = getResourceRoot(aClass, "/" + aClass.getName().replace('.', '/') + ".class");
-    if (rootPath != null) {
-      File root = new File(rootPath);
-      root = root.getAbsoluteFile();
-
-      if (!root.isDirectory() || root.getName().toLowerCase().endsWith(".zip") || root.getName().toLowerCase().endsWith(".jar")) {
-        root = new File(root.getParent()); // one step back to getCollectionClass folder
+//    ContainingJar(PAthManager.class): /.../mps/lib/mps-core.jar
+//    CL.SystemResource(Launcher):      file:/.../mps/startup/classes/jetbrains/mps/Launcher.class
+//    CL.SystemResource(PathManager):   jar:file:/.../mps/lib/mps-core.jar!/jetbrains/mps/util/PathManager.class
+    try {
+      // we know PathManager.class is part of [kernel], which always goes into lib/mps-core.jar (in sources - as an IDEA project artifact)
+      final String thisClassQualifiedFile = PathManager.class.getName().replace('.', '/') + ".class";
+      URI thisClassURI;
+      URL sr = ClassLoader.getSystemResource(thisClassQualifiedFile);
+      if (sr == null) {
+        // For "Run IDEA Tests" scenarios, where we do have .jar artifacts in classpath, but don't specify IDEA's CL as system CL
+        sr = PathManager.class.getClassLoader().getResource(thisClassQualifiedFile);
       }
-      root = root.getAbsoluteFile();
-
-      while (true) {
-        if (isMpsDir(root)) break;
-        if (root.getParentFile() == null) {
-          break;
-        }
-
+      thisClassURI = sr.toURI();
+      assert JAR_PROTO.equals(thisClassURI.getScheme());
+      // FWIW, sr.getPath() == null
+      String path = thisClassURI.getRawSchemeSpecificPart();
+      int delim = path.indexOf("!/");
+      if (delim > 0) {
+        path = path.substring(0, delim);
+      }
+      URI file = new URI(path);
+      assert FILE_PROTO.equals(file.getScheme());
+      File root = new File(file.getSchemeSpecificPart());
+      // {mps_home}/lib
+      root = root.getParentFile();
+      if (root != null) {
+        // {mps_home}
         root = root.getParentFile();
       }
-
-      ourHomePath = root.getAbsolutePath();    // one step back to getCollectionClass rid of "lib" or "classes" folder
-      return ourHomePath;
+      ourHomePath = root == null ? "/" : root.getAbsolutePath();
+    } catch (URISyntaxException ex) {
+      throw new RuntimeException(ex);
     }
-
-    return new File(".").getAbsolutePath(); //we need this for build server on which stuff written above
-    //for somne reason doesn't work
-  }
-
-  private static boolean isMpsDir(File file) {
-    return new File(file, "build.number").exists();
-  }
-
-  public static void setConfigPath(String newConfigPath) {
-    ourConfigPath = newConfigPath;
-  }
-
-  public static String getHelpPath() {
-    if (ourHelpPath != null) {
-      return ourHelpPath;
+    if ("/".equals(ourHomePath)) {
+      // XXX not sure `new File("c:/").getAbsolutePath()` translates to "/" on Windows, likely incomplete check here
+      throw new IllegalStateException("cannot detect MPS location");
     }
-    ourHelpPath = getHomePath() + File.separator + "help" + File.separator + "help.html";
-    return ourHelpPath;
+    return ourHomePath;
   }
 
-  public static String getTutorialPath() {
-    if (ourTutorialPath != null) {
-      return ourTutorialPath;
+  /**
+   * Defines whether we are starting from sources not from distribution
+   */
+  @Internal
+  public static boolean isFromSources() {
+    final URL launcherURL = ClassLoader.getSystemResource(LAUNCHER_CLASS);
+    return launcherURL != null && launcherURL.getProtocol().equals(FILE_PROTO);
+  }
+
+  /**
+   * Returns the classpath entry corresponding to {@code jetbrains.mps.Launcher} class used to bootstrap MPS.
+   * Only makes sense if {@link PathManager#isFromSources()} returns true.
+   */
+  @Internal
+  public static String getLauncherClassPathEntry() {
+    URL launcherURL = ClassLoader.getSystemResource(LAUNCHER_CLASS);
+    if (launcherURL != null && launcherURL.getProtocol().equals(FILE_PROTO)) {
+      return launcherURL.getFile().substring(0, launcherURL.getFile().length() - LAUNCHER_CLASS.length() - 1); // drop trailing File.separator
     }
-    ourTutorialPath = getHomePath() + File.separator + "docs" + File.separator + "help" + File.separator + "regexps.html";
-    return ourTutorialPath;
+    
+    return null;
   }
 
-  public static String getHelpIndexPath() {
-    if (ourHelpIndexPath != null) {
-      return ourHelpIndexPath;
+  public static String getLibExtPath() {
+    return getLibPath() + File.separator + "ext";
+  }
+
+  /**
+   * @return <MPS home>/lib location, where IDEA platform jars reside. Is the same as {@link #getLibPath()}
+   */
+  public static String getPlatformLibPath() {
+    return getLibPath();
+  }
+
+  public static Collection<String> getBootstrapPaths() {
+    Collection<String> paths = new ArrayList<>(4);
+    if (new File(getCorePath()).exists()) {
+      paths.add(getCorePath());
     }
-    ourHelpIndexPath = getHomePath() + File.separator + "docs" + File.separator + "help" + File.separator + "index.html";
-    return ourHelpIndexPath;
+    if (new File(getEditorPath()).exists()) {
+      paths.add(getEditorPath());
+    }
+    return paths;
   }
 
-  public static String getAcknowledgementsPath() {
-    return getHomePath() + File.separator + File.separator + "docs" + File.separator + "help" + File.separator + "acknowledgements.html";
-  }
-
-  public static String getLanguageDesignPath() {
-    return getHomePath() + File.separator + "core" + File.separator + "languageDesign";
-  }
-
-  public static String getBootstrapPath() {
-    return getHomePath() + File.separator + "core";
-  }
-
-  public static String getSamplesPath() {
-    return SamplesExtractor.getInstance().getSamplesPath();
-  }
-
-  public static String getPlatformPath() {
-    return getHomePath() + File.separator + "platform";
-  }
-
-  public static String getWorkbenchPath() {
-    return getHomePath() + File.separator + "workbench";
-  }
-
-  public static String getProjectsPath() {
-    return getHomePath() + File.separator + "projects";
-  }
-
-  public static String getAppPath() {
-    return getHomePath() + File.separator + "app";
-  }
-
-  public static String getBaseLanguagePath() {
-    return getHomePath() + File.separator + "core" + File.separator + "baseLanguage";
-  }
-
-  public static String getBaseAppPath() {
-    return getHomePath() + File.separator + "app";
-  }
-
-  public static String getVCSPath() {
-    return getHomePath() + File.separator + "core" + File.separator + "kernel" + File.separator + "vcs" + File.separator + "generic";
+  /**
+   * @return <MPS home>/lib location, where mps own jars reside. Now is the same as {@link #getPlatformLibPath()}
+   */
+  public static String getLibPath() {
+    // Given getIdeaPath() + getHomePath(), I assume we face few scenarios with location for MPS libraries:
+    // I) "Big" MPS aka MPS as IDE
+    //    there's one <MPS Installation>/lib folder to host both IDEA and MPS libraries
+    // II) MPS as IDEA plugin -- NO LONGER ACTUAL
+    //    there's <IDEA installation>/lib for IDEA jars
+    //    <mps-core plugin>/lib with MPS jars
+    // III) MPS started from sources
+    //    there's <checkout dir>/lib with IDEA jars
+    //    there's lib/ with MPS jars (IDEA project artifacts)
+    //    getLibPath() == getPlatformLibPath().
+    return getHomePath() + File.separator + "lib";
   }
 
   public static String getLanguagesPath() {
     return getHomePath() + File.separator + "languages";
   }
 
-  private static String getAbsolutePath(String path) {
-    if (path.startsWith("~/") || path.startsWith("~\\")) {
-      path = System.getProperty("user.home") + path.substring(1);
-    }
-
-    File file = new File(path);
-    if (!file.exists()) return path;
-    file = file.getAbsoluteFile();
-    return FileUtil.getCanonicalPath(file.getAbsolutePath());
+  public static String getWorkbenchPath() {
+    return getHomePath() + File.separator + "workbench";
   }
 
-  /**
-   * Attempts to detect classpath entry which contains given resource
-   */
-  public static String getResourceRoot(Class context, String path) {
-    URL url = context.getResource(path);
-    if (url == null) {
-      url = ClassLoader.getSystemResource(path.substring(1));
-    }
-    if (url == null) {
-      return null;
-    }
-    return extractRoot(url, path);
+  public static String getCorePath() {
+    return getHomePath() + File.separator + "core";
   }
 
-  /**
-   * Attempts to extract classpath entry part from passed URL.
-   */
-  private static String extractRoot(URL resourceURL, String resourcePath) {
-    if (!(resourcePath.startsWith("/") || resourcePath.startsWith("\\"))) {
-      LOG.error("precondition failed for" + resourcePath);
-      return null;
-    }
-    String protocol = resourceURL.getProtocol();
-    String resultPath = null;
-
-    if (FILE.equals(protocol)) {
-      String path = resourceURL.getFile();
-      String testPath = path.replace('\\', '/').toLowerCase();
-      String testResourcePath = resourcePath.replace('\\', '/').toLowerCase();
-      if (testPath.endsWith(testResourcePath)) {
-        resultPath = path.substring(0, path.length() - resourcePath.length());
-      }
-    } else if (JAR.equals(protocol)) {
-      String fullPath = resourceURL.getFile();
-      int delimiter = fullPath.indexOf(JAR_DELIMITER);
-      if (delimiter >= 0) {
-        String archivePath = fullPath.substring(0, delimiter);
-        if (archivePath.startsWith(FILE + PROTOCOL_DELIMITER)) {
-          resultPath = archivePath.substring(FILE.length() + PROTOCOL_DELIMITER.length());
-        }
-      }
-    }
-
-    if (resultPath != null && resultPath.endsWith(File.separator)) {
-      resultPath = resultPath.substring(0, resultPath.length() - 1);
-    }
-
-    resultPath = StringUtil.replace(resultPath, "%20", " ");
-    return resultPath;
+  public static String getEditorPath() {
+    return getHomePath() + File.separator + "editor";
   }
 
-
-  public static String findModelPath(Collection<ModelRoot> modelRoots, SModelReference modelReference) {
-    for (ModelRoot modelRoot : modelRoots) {
-      String path = findModelPath(modelRoot, modelReference);
-      if (path != null) {
-        return path;
-      }
-    }
-    return null;
+  public static String getPreInstalledPluginsPath() {
+    return getHomePath() + File.separator + "plugins";
   }
 
-  public static String findModelPath(Iterator<ModelRoot> modelRoots, SModelReference modelReference) {
-    while (modelRoots.hasNext()) {
-      ModelRoot modelRoot = modelRoots.next();
-      String path = findModelPath(modelRoot, modelReference);
-      if (path != null) {
-        return path;
-      }
-    }
-    return null;
-  }
-
-
-  public static String findModelPath(ModelRoot modelRoot, SModelReference modelReference) {
-    String modelFQName = modelReference.getLongName();
-    String name = modelFQName;
-    String packagePrefix = modelRoot.getPrefix();
-    if (packagePrefix != null && packagePrefix.length() > 0) {
-      if (modelFQName.startsWith(packagePrefix + '.')) {
-        name = modelFQName.substring(packagePrefix.length());
-      } else {
-        return null;
-      }
-    }
-    String path = name.replace('.', File.separatorChar);
-    if (!path.startsWith(File.separator)) {
-      path = File.separator + path;
-    }
-
-    if (!modelReference.getStereotype().equals("")) {
-      String littleName = path.substring(path.lastIndexOf(File.separator) + 1);
-      String rawPath = path.substring(0, path.lastIndexOf(File.separator) + 1);
-      System.err.println("littleName = " + littleName + ", rawPath = " + rawPath);
-      path = rawPath + modelReference.getStereotype() + "@" + littleName;
-    }
-    path = modelRoot.getPath() + path + MPSExtentions.DOT_MODEL;
-    if (!(new File(path)).exists()) {
-      return null;
-    }
-    return path;
-  }
-
-  public static SModelReference getModelUID(IFile modelFile, IFile root, String namespacePrefix) {
-    SModelReference fromFile = getFileUID(modelFile);
-    if (fromFile != null) {
-      return fromFile;
-    }
-    String rawLongName = getModelUIDString(modelFile, root, namespacePrefix);
-    return SModelReference.fromString(rawLongName);
-  }
-
-  private static SModelReference getFileUID(IFile modelFile) {
-    try {
-      String secondLine = FileUtil.readLine(modelFile.openReader(), 1);
-      if (secondLine == null) {
-        return null;
-      }
-
-      Matcher m = MODEL_UID_PATTERN.matcher(secondLine);
-      if (m.find()) {
-        return SModelReference.fromString(m.group(1));
-      }
-
-      return null;
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-  public static String getModelUIDString(IFile modelFile, IFile root, String namespacePrefix) {
-    String longName = cropModelPath(modelFile, root);
-    if (longName == null) return null;
-
-    String namespace = NameUtil.namespaceFromLongName(longName);
-    namespace = namespace.replace(File.separatorChar, '.').replace('/', '.');
-
-    if (namespacePrefix != null && namespacePrefix.length() > 0) {
-      namespace = namespacePrefix + ((namespace.length() > 0) ? "." + namespace : "");
-    }
-    return namespace;
-  }
-
-  private static String cropModelPath(IFile modelFile, IFile root) {
-    String modelPath = modelFile.getCanonicalPath();
-    String rootPath = root.getCanonicalPath();
-    if (!modelPath.startsWith(rootPath)) return null;
-
-    int length = rootPath.length();
-    if (rootPath.endsWith(File.separator) || rootPath.endsWith("!")) {
-      length--;
-    }
-    return modelPath.substring(length + 1);
+  public static String getUserDir() {
+    return System.getProperty("user.dir");
   }
 }

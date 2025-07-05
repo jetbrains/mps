@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <root nodeRef="r:6ff1dacd-2ea5-47a0-9336-2eaecdee8a37(jetbrains.mps.execution.languages.plugin)/6863272677075182370">
+    <file name="plugin.xml">
+      <unit id="6863272677075182370" at="1,0,20,14" name="jetbrains.mps.execution.languages.plugin.plugin" />
+    </file>
+  </root>
+</debug-info>
+

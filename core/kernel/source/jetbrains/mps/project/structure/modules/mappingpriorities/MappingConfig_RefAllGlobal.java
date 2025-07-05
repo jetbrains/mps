@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2010 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,40 @@
  */
 package jetbrains.mps.project.structure.modules.mappingpriorities;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SRepository;
+
 public class MappingConfig_RefAllGlobal extends MappingConfig_AbstractRef {
-  public MappingConfig_RefAllGlobal getCopy() {
+  public static final int PERSISTENCE_ID = 0x55550005;
+
+  @NotNull
+  @Override
+  public MappingConfig_RefAllGlobal copy() {
     return new MappingConfig_RefAllGlobal();
   }
 
   @Override
   public boolean isIncomplete() {
     return false;
+  }
+
+  @Override
+  public String asString(SRepository repository) {
+    return "[*:*]";
+  }
+
+  @Override
+  public String asString() {
+    return "[*:*]";
+  }
+
+  @Override
+  public int hashCode() {
+    return MappingConfig_RefAllGlobal.class.hashCode();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    return obj instanceof MappingConfig_RefAllGlobal;
   }
 }

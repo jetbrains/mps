@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.w3.org/2001/XInclude
+   http://www.w3.org/2001/XInclude.xsd">
+
+  <xi:include href="/META-INF/MPSCore.xml"/>
+  <xi:include href="/META-INF/MPSEditor.xml"/>
+  <xi:include href="/META-INF/MPSUI.xml"/>
+
+  <application-components>
+    <component>
+      <implementation-class>jetbrains.mps.repository.RepositoryInitializingComponent</implementation-class>
+    </component>
+  </application-components>
+
+  <project-components>
+    <component>
+      <interface-class>jetbrains.mps.project.MPSProject</interface-class>
+      <implementation-class>jetbrains.mps.project.StandaloneMPSProject</implementation-class>
+    </component>
+
+    <component>
+      <implementation-class>jetbrains.mps.plugins.projectplugins.ProjectPluginManager</implementation-class>
+    </component>
+  </project-components>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <appStarter implementation="jetbrains.mps.tool.environment.MPSHeadlessPlatformStarter"/>
+
+    <!-- This is needed for JDK solution loading. Is better to be replaced by lazy loading. Also a possible solution is to load JDK solution with IO FS -->
+    <virtualFileSystem implementationClass="com.intellij.openapi.vfs.impl.jrt.JrtFileSystemImpl" key="jrt" physical="true"/>
+
+    <projectConfigurable parentId="build"   displayName="Project Settings" instance="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesPrefsPage"
+                         id="project.options.prefs.page" nonDefaultProject="true" groupWeight="-10"/>
+    <applicationConfigurable parentId="build" groupWeight="150" instance="jetbrains.mps.smodel.ModelValidationConfigurable" id="preferences.modelValidationSettings" displayName="Model Validation"/>
+    <applicationConfigurable parentId="build" groupWeight="140" instance="jetbrains.mps.ide.generator.GenerationSettingsPreferencesPage" id="preferences.generationSettings" displayName="Generator"/>
+
+    <fileEditorProvider implementation="jetbrains.mps.workbench.editors.MPSLanguageEditorProvider"/>
+
+    <virtualFileSystem implementationClass="jetbrains.mps.workbench.languagesFs.MPSLanguagesVirtualFileSystem" key="mpslang" physical="true"/>
+
+    <fileType extensions="java" hashBangs="java" name="JAVA" language="JAVA" fieldName="INSTANCE" implementationClass="com.intellij.ide.highlighter.JavaFileType"/>
+    <fileType extensions="class" name="CLASS" fieldName="INSTANCE" implementationClass="com.intellij.ide.highlighter.JavaClassFileType"/>
+    <idIndexer filetype="CLASS" implementationClass="jetbrains.mps.workbench.findusages.JavaStubIdIndexer"/>
+    <postStartupActivity implementation="jetbrains.mps.ide.generator.index.IndexBasedModelDigest" />
+    <postStartupActivity implementation="jetbrains.mps.workbench.findusages.StubModelsFastFindSupport$Plug" />
+    <postStartupActivity implementation="jetbrains.mps.ide.make.StartupModuleMakerImpl" />
+    <postStartupActivity implementation="jetbrains.mps.ide.vfs.ProjectStoreDirAddToVFSSnapshot" />
+    <projectService serviceImplementation="jetbrains.mps.ide.findusages.view.optionseditor.DefaultSearchOptionsComponent"/>
+    <projectService serviceImplementation="jetbrains.mps.ide.editor.tabs.TabRootNodesTracker"/>
+    <projectService serviceImplementation="jetbrains.mps.ide.editor.tabs.FileStatusChangeListener"/>
+    <projectService serviceImplementation="jetbrains.mps.ide.bookmark.BookmarksUIComponent"/>
+    <projectService serviceImplementation="jetbrains.mps.project.ProjectLibraryManager" />
+    <projectService serviceInterface="jetbrains.mps.project.MissionControl"
+                    serviceImplementation="jetbrains.mps.project.MissionControl$Impl"
+                    testServiceImplementation="jetbrains.mps.project.MissionControl$TestImpl"/>
+    <projectService serviceImplementation="jetbrains.mps.ide.bookmark.BookmarksTool" /> <!-- in use from toolWindow extension, below -->
+    <projectService serviceImplementation="jetbrains.mps.ide.bookmark.BookmarkManager" /> <!-- in use from toolWindow extension, below -->
+    <applicationService serviceInterface="jetbrains.mps.ide.platform.watching.FileSystemListenersContainer"
+                        serviceImplementation="jetbrains.mps.ide.vfs.WatchingFileSystemListenersContainer" />
+    <applicationService serviceImplementation="jetbrains.mps.ide.generator.TransientSwapOwnerComponent" />
+    <applicationService serviceImplementation="jetbrains.mps.watching.WatchedRootsUpdater" />
+    <applicationService serviceImplementation="jetbrains.mps.library.AdditionalLibrariesManager"/>
+    <applicationService serviceInterface="jetbrains.mps.make.IMakeService"
+                        serviceImplementation="jetbrains.mps.ide.make.WorkbenchMakeService"/>
+    <projectService serviceInterface="jetbrains.mps.generator.TransientModelsProvider"
+                    serviceImplementation="jetbrains.mps.ide.generator.TransientModelsComponent"/>
+
+    <notificationGroup id="jetbrains.mps.ide.make.StartupModuleMaker" displayType="STICKY_BALLOON" key="smm.group.name" bundle="jetbrains.mps.ide.make.Messages"/>
+    <applicationService serviceImplementation="jetbrains.mps.ide.generator.GeneratorCacheComponent"/>
+    <!-- next app service and app init listeners work together -->
+    <applicationService serviceImplementation="jetbrains.mps.plugins.PluginLoaderRegistry"/>
+    <applicationInitializedListener implementation="jetbrains.mps.plugins.MPSApplicationInitializedListener"/>
+
+    <applicationService serviceImplementation="jetbrains.mps.plugins.applicationplugins.ApplicationPluginManager"/>
+
+    <toolWindow factoryClass="jetbrains.mps.ide.bookmark.BookmarksTool$Factory"
+                id="Bookmarks tool" anchor="left" canCloseContents="true" secondary="false"
+                icon="AllIcons.Toolwindows.ToolWindowBookmarks" doNotActivateOnStart="true"/>
+    <applicationService serviceImplementation="jetbrains.mps.smodel.ModelValidationSettings" />
+    <applicationService serviceImplementation="jetbrains.mps.ide.generator.GenerationSettings" />
+
+    <projectService serviceImplementation="jetbrains.mps.ide.projectPane.TreeNodeSortService"/>
+    <projectService serviceImplementation="jetbrains.mps.ide.make.MakeServiceConfiguration"/>
+    <mps.projectPrefsPanel implementation="jetbrains.mps.ide.make.MakeSettingsPanel"/>
+    <registryKey key="mps.actions.about.libraries" defaultValue="true" description="MPS: Show app/project libraries in About dialog" restartRequired="false"/>
+    <aboutPopupDescriptionProvider implementation="jetbrains.mps.library.GlobalLibraryDescriptionProvider" id="GlobalLibraryDescriptionProvider"/>
+    <aboutPopupDescriptionProvider implementation="jetbrains.mps.library.ProjectLibraryDescriptionProvider" order="after GlobalLibraryDescriptionProvider"/>
+  </extensions>
+
+  <extensions defaultExtensionNs="jetbrains.mps">
+    <NodeEditorFactory implementation="jetbrains.mps.workbench.editors.TabsMPSEditorFactory"/>
+    <nodeStructureViewProvider implementation="jetbrains.mps.workbench.structureview.NodeStructureViewProviderImpl"/>
+    <editor.highlighter.contributor implementation="jetbrains.mps.ide.bookmark.BookmarkManager"/>
+  </extensions>
+
+  <applicationListeners>
+    <listener class="jetbrains.mps.intellij.integration.LafFixer$MyAppLifecycleListener" topic="com.intellij.ide.AppLifecycleListener"/>
+    <listener class="jetbrains.mps.ide.blame.IntelliJReporterReplacer" topic="com.intellij.ide.AppLifecycleListener"/>
+    <listener class="jetbrains.mps.intellij.integration.LoggerLevelOverride" topic="com.intellij.ide.AppLifecycleListener"/>
+    <listener class="jetbrains.mps.watching.ModelFocusSynchronizer" topic="com.intellij.ide.FrameStateListener"/>
+    <listener class="jetbrains.mps.watching.WatchedRootsUpdater$ProjectListener" topic="com.intellij.openapi.project.ProjectManagerListener"
+              activeInHeadlessMode="false" activeInTestMode="false"/>
+    <!-- Needed in headless and test mode to load projects libraries for some tasks (eg. migration from ant or tests out of process from IDE, see MPS-36880). -->
+    <listener class="jetbrains.mps.project.ProjectLibraryManager$ProjectListener" topic="com.intellij.openapi.project.ProjectManagerListener"
+              activeInHeadlessMode="true" activeInTestMode="true"/>
+
+    <listener class="jetbrains.mps.ide.vfs.DirectoryIndexExcludeUpdater" topic="com.intellij.openapi.vfs.newvfs.BulkFileListener" />
+  </applicationListeners>
+
+  <projectListeners>
+    <listener class="jetbrains.mps.ide.bookmark.BookmarksUIComponent$EditorComponentListener"
+              topic="jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener"
+              activeInHeadlessMode="false"
+              activeInTestMode="false"/>
+  </projectListeners>
+
+</idea-plugin>

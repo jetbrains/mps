@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<product version="3" modelHash="-apio2o2d94pl6fn1wv4gaz5ewl7sh0r">
+  <files names="BaseEditorTestBody.java:BaseMigrationTestBody.java:BaseTestBody.java:BaseTransformationTest.java:CellReference.java:CheckErrorMessagesRunnable.java:CheckExpectedMessageRunnable.java:CheckScopesAction.java:CheckTypesAction.java:CouldNotFindModelException.java:EditorTestUtil.java:EnvironmentIsNullException.java:ExecuteCommandExtension.java:ExpandedProjectPathIsNullException.java:Fixture.java:FixtureTestable.java:IntentionTester.java:KeyEventsDispatcher.java:LanguageTestDiscoveryParticipants.java:MPSTestModelInitializationException.java:MatchIntentionById.java:MatchIntentionByIdAndParameter.java:ModuleActivator.java:MouseEventsDispatcher.java:NodeCheckerUtil.java:NodeDataFlowCheckerUtil.java:ProjectPathIsNullException.java:ProjectTestHelper.java:RunWithCommand.java:TestParametersCache.java:TestParametersCacheBuilder.java:TestParametersCacheExtension.java:Testable.java:TestsErrorsChecker.java:TransformationTest.java" />
+=======
+<product version="3" modelHash="-3mj6rb31lqqhsh2eamw36v3gqog20km">
+  <files names="BaseEditorTestBody.java:BaseMigrationTestBody.java:BaseTestBody.java:BaseTransformationTest.java:CellReference.java:CheckErrorMessagesRunnable.java:CheckExpectedMessageRunnable.java:CheckScopesAction.java:CheckTypesAction.java:CouldNotFindModelException.java:EditorTestUtil.java:EnvironmentIsNullException.java:ExecuteCommandExtension.java:ExpandedProjectPathIsNullException.java:Fixture.java:FixtureTestable.java:IntentionTester.java:KeyEventsDispatcher.java:LanguageTestDiscoveryParticipants.java:MPSTestModelInitializationException.java:MatchIntentionById.java:MatchIntentionByIdAndParameter.java:ModuleActivator.java:MouseEventsDispatcher.java:NodeCheckerUtil.java:NodeDataFlowCheckerUtil.java:ProjectPathIsNullException.java:ProjectTestHelper.java:RunWithCommand.java:TestParametersCache.java:TestParametersCacheExtension.java:Testable.java:TestsErrorsChecker.java:TransformationTest.java" />
+>>>>>>> upstream/2024.1_projectPane
+</product>
+

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root nodeRef="r:3ad93d2f-47fe-4070-8a77-383dab3a6def(jetbrains.mps.baseLanguage.overloadedOerators.sandbox.test)/4226637275972869608">
+    <file name="Complex.java">
+      <node id="4226637275972869621" at="7,0,8,0" concept="2" trace="re" />
+      <node id="4226637275972869627" at="8,0,9,0" concept="2" trace="im" />
+      <node id="4226637275972869642" at="11,39,12,16" concept="1" />
+      <node id="4226637275972869651" at="12,16,13,16" concept="1" />
+      <node id="4226637275972869664" at="15,25,16,19" concept="6" />
+      <node id="4226637275972869674" at="18,25,19,19" concept="6" />
+      <node id="4226637275972869685" at="21,23,22,54" concept="1" />
+      <node id="4226637275972869610" at="9,0,11,0" concept="0" trace="Complex#()V" />
+      <node id="4226637275972869659" at="15,0,18,0" concept="4" trace="getIm#()D" />
+      <node id="4226637275972869669" at="18,0,21,0" concept="4" trace="getRe#()D" />
+      <node id="4226637275972869678" at="21,0,24,0" concept="4" trace="print#()V" />
+      <node id="4226637275972869633" at="11,0,15,0" concept="4" trace="set#(DD)V" />
+      <scope id="4226637275972869613" at="9,20,9,20" />
+      <scope id="4226637275972869662" at="15,25,16,19" />
+      <scope id="4226637275972869672" at="18,25,19,19" />
+      <scope id="4226637275972869681" at="21,23,22,54" />
+      <scope id="4226637275972869610" at="9,0,11,0" />
+      <scope id="4226637275972869636" at="11,39,13,16" />
+      <scope id="4226637275972869659" at="15,0,18,0" />
+      <scope id="4226637275972869669" at="18,0,21,0" />
+      <scope id="4226637275972869678" at="21,0,24,0" />
+      <scope id="4226637275972869633" at="11,0,15,0">
+        <var name="i" id="4226637275972869639" />
+        <var name="r" id="4226637275972869637" />
+      </scope>
+      <unit id="4226637275972869608" at="6,0,25,0" name="jetbrains.mps.baseLanguage.overloadedOerators.sandbox.test.Complex" />
+    </file>
+  </root>
+  <root nodeRef="r:3ad93d2f-47fe-4070-8a77-383dab3a6def(jetbrains.mps.baseLanguage.overloadedOerators.sandbox.test)/4226637275972869614">
+    <file name="TestComplex.java">
+      <node id="4226637275972870394" at="9,42,10,32" concept="5" />
+      <node id="4226637275972873357" at="10,32,11,32" concept="5" />
+      <node id="4226637275972873363" at="11,32,12,17" concept="1" />
+      <node id="4226637275972873374" at="12,17,13,16" concept="1" />
+      <node id="162210779026732155" at="13,16,14,79" concept="5" />
+      <node id="162210779026732167" at="14,79,15,78" concept="5" />
+      <node id="162210779026732177" at="15,78,16,14" concept="1" />
+      <node id="162210779026732185" at="16,14,17,14" concept="1" />
+      <node id="162210779026732193" at="17,14,18,14" concept="1" />
+      <node id="162210779026732201" at="18,14,19,14" concept="1" />
+      <node id="4888428037514421011" at="19,14,20,23" concept="5" />
+      <node id="4888428037514503266" at="20,23,21,0" concept="7" />
+      <node id="4888428037514423988" at="22,93,23,0" concept="7" />
+      <node id="2673276898228773531" at="24,5,25,63" concept="1" />
+      <node id="2673276898228773758" at="25,63,26,63" concept="1" />
+      <node id="4226637275972869616" at="7,0,9,0" concept="0" trace="TestComplex#()V" />
+      <node id="4888428037514423986" at="21,0,24,5" concept="3" />
+      <node id="4226637275972870384" at="9,0,28,0" concept="8" trace="main#([Ljava/lang/String;)V" />
+      <scope id="4226637275972869619" at="7,24,7,24" />
+      <scope id="4888428037514423987" at="22,93,23,0" />
+      <scope id="4226637275972869616" at="7,0,9,0" />
+      <scope id="4226637275972870387" at="9,42,26,63">
+        <var name="a" id="4226637275972870395" />
+        <var name="b" id="4226637275972873358" />
+        <var name="c" id="162210779026732156" />
+        <var name="d" id="162210779026732168" />
+        <var name="str" id="4888428037514421012" />
+      </scope>
+      <scope id="4226637275972870384" at="9,0,28,0">
+        <var name="args" id="4226637275972870388" />
+      </scope>
+      <unit id="4226637275972869614" at="6,0,29,0" name="jetbrains.mps.baseLanguage.overloadedOerators.sandbox.test.TestComplex" />
+    </file>
+  </root>
+  <root nodeRef="r:3ad93d2f-47fe-4070-8a77-383dab3a6def(jetbrains.mps.baseLanguage.overloadedOerators.sandbox.test)/4226637275972869620">
+    <file name="ComplexOperators.java">
+      <node id="4226637275972873407" at="9,91,10,32" concept="5" />
+      <node id="4226637275972878678" at="10,32,11,72" concept="1" />
+      <node id="4226637275972878717" at="11,72,12,15" concept="6" />
+      <node id="162210779026732094" at="14,90,15,32" concept="5" />
+      <node id="162210779026732099" at="15,32,16,134" concept="1" />
+      <node id="162210779026732117" at="16,134,17,15" concept="6" />
+      <node id="6517886960437940046" at="19,94,20,34" concept="5" />
+      <node id="6517886960437940051" at="20,34,21,72" concept="1" />
+      <node id="6517886960437940069" at="21,72,22,15" concept="6" />
+      <node id="6517886960437940081" at="24,96,25,34" concept="5" />
+      <node id="6517886960437940086" at="25,34,26,72" concept="1" />
+      <node id="6517886960437940104" at="26,72,27,15" concept="6" />
+      <node id="2673276898228773427" at="29,82,30,32" concept="5" />
+      <node id="2673276898228773433" at="30,32,31,56" concept="1" />
+      <node id="2673276898228773424" at="31,56,32,15" concept="6" />
+      <node id="4226637275972869620" at="7,0,9,0" concept="0" trace="ComplexOperators#()V" />
+      <node id="4226637275972873397" at="9,0,14,0" concept="8" trace="apply_PlusExpression_Complex_Complex#(Ljetbrains/mps/baseLanguage/overloadedOerators/sandbox/test/Complex;Ljetbrains/mps/baseLanguage/overloadedOerators/sandbox/test/Complex;)Ljetbrains/mps/baseLanguage/overloadedOerators/sandbox/test/Complex;" />
+      <node id="162210779026732085" at="14,0,19,0" concept="8" trace="apply_MulExpression_Complex_Complex#(Ljetbrains/mps/baseLanguage/overloadedOerators/sandbox/test/Complex;Ljetbrains/mps/baseLanguage/overloadedOerators/sandbox/test/Complex;)Ljetbrains/mps/baseLanguage/overloadedOerators/sandbox/test/Complex;" />
+      <node id="6517886960437940037" at="19,0,24,0" concept="8" trace="apply_PlusExpression_Complex_Complex2#(Ljetbrains/mps/baseLanguage/overloadedOerators/sandbox/test/Complex;Ljetbrains/mps/baseLanguage/overloadedOerators/sandbox/test/Complex2;)Ljetbrains/mps/baseLanguage/overloadedOerators/sandbox/test/Complex2;" />
+      <node id="6517886960437940072" at="24,0,29,0" concept="8" trace="apply_PlusExpression_Complex2_Complex2#(Ljetbrains/mps/baseLanguage/overloadedOerators/sandbox/test/Complex2;Ljetbrains/mps/baseLanguage/overloadedOerators/sandbox/test/Complex2;)Ljetbrains/mps/baseLanguage/overloadedOerators/sandbox/test/Complex2;" />
+      <node id="2673276898228773414" at="29,0,34,0" concept="8" trace="apply_MulExpression_int_Complex#(ILjetbrains/mps/baseLanguage/overloadedOerators/sandbox/test/Complex;)Ljetbrains/mps/baseLanguage/overloadedOerators/sandbox/test/Complex;" />
+      <scope id="4226637275972869620" at="7,29,7,29" />
+      <scope id="4226637275972869620" at="7,0,9,0" />
+      <scope id="4226637275972873401" at="9,91,12,15">
+        <var name="res" id="4226637275972873408" />
+      </scope>
+      <scope id="162210779026732089" at="14,90,17,15">
+        <var name="res" id="162210779026732095" />
+      </scope>
+      <scope id="6517886960437940041" at="19,94,22,15">
+        <var name="res" id="6517886960437940047" />
+      </scope>
+      <scope id="6517886960437940076" at="24,96,27,15">
+        <var name="res" id="6517886960437940082" />
+      </scope>
+      <scope id="2673276898228773419" at="29,82,32,15">
+        <var name="res" id="2673276898228773428" />
+      </scope>
+      <scope id="4226637275972873397" at="9,0,14,0">
+        <var name="left" id="4226637275972873397" />
+        <var name="right" id="4226637275972873397" />
+      </scope>
+      <scope id="162210779026732085" at="14,0,19,0">
+        <var name="left" id="162210779026732085" />
+        <var name="right" id="162210779026732085" />
+      </scope>
+      <scope id="6517886960437940037" at="19,0,24,0">
+        <var name="left" id="6517886960437940037" />
+        <var name="right" id="6517886960437940037" />
+      </scope>
+      <scope id="6517886960437940072" at="24,0,29,0">
+        <var name="left" id="6517886960437940072" />
+        <var name="right" id="6517886960437940072" />
+      </scope>
+      <scope id="2673276898228773414" at="29,0,34,0">
+        <var name="left" id="2673276898228773414" />
+        <var name="right" id="2673276898228773414" />
+      </scope>
+      <unit id="4226637275972869620" at="6,0,35,0" name="jetbrains.mps.baseLanguage.overloadedOerators.sandbox.test.ComplexOperators" />
+    </file>
+  </root>
+  <root nodeRef="r:3ad93d2f-47fe-4070-8a77-383dab3a6def(jetbrains.mps.baseLanguage.overloadedOerators.sandbox.test)/4888428037514503250">
+    <file name="StringOperators.java">
+      <node id="4888428037514503278" at="9,107,10,32" concept="6" />
+      <node id="4888428037514503250" at="7,0,9,0" concept="0" trace="StringOperators#()V" />
+      <node id="4888428037514503269" at="9,0,12,0" concept="8" trace="apply_customOperator_4888428037514503287_string_string#(Ljava/lang/String;Ljava/lang/String;)Z" />
+      <scope id="4888428037514503250" at="7,28,7,28" />
+      <scope id="4888428037514503274" at="9,107,10,32" />
+      <scope id="4888428037514503250" at="7,0,9,0" />
+      <scope id="4888428037514503269" at="9,0,12,0">
+        <var name="left" id="4888428037514503269" />
+        <var name="right" id="4888428037514503269" />
+      </scope>
+      <unit id="4888428037514503250" at="6,0,13,0" name="jetbrains.mps.baseLanguage.overloadedOerators.sandbox.test.StringOperators" />
+    </file>
+  </root>
+  <root nodeRef="r:3ad93d2f-47fe-4070-8a77-383dab3a6def(jetbrains.mps.baseLanguage.overloadedOerators.sandbox.test)/6517886960437939909">
+    <file name="Complex2.java">
+      <node id="6517886960437939964" at="10,23,11,35" concept="1" />
+      <node id="6517886960437940022" at="12,27,13,28" concept="1" />
+      <node id="6517886960437940007" at="15,28,16,45" concept="1" />
+      <node id="6517886960437939911" at="7,0,9,0" concept="0" trace="Complex2#()V" />
+      <node id="6517886960437939952" at="11,35,14,5" concept="3" />
+      <node id="6517886960437939993" at="14,5,17,5" concept="3" />
+      <node id="6517886960437939916" at="9,0,19,0" concept="4" trace="print#()V" />
+      <scope id="6517886960437939914" at="7,21,7,21" />
+      <scope id="6517886960437939953" at="12,27,13,28" />
+      <scope id="6517886960437939994" at="15,28,16,45" />
+      <scope id="6517886960437939911" at="7,0,9,0" />
+      <scope id="6517886960437939919" at="10,23,17,5" />
+      <scope id="6517886960437939916" at="9,0,19,0" />
+      <unit id="6517886960437939909" at="6,0,20,0" name="jetbrains.mps.baseLanguage.overloadedOerators.sandbox.test.Complex2" />
+    </file>
+  </root>
+</debug-info>
+
