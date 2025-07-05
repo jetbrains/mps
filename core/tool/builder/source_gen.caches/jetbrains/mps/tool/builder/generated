@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <product version="3" modelHash="-ektwmvl6gd648dv3heiwj3dyddi49rr">
+=======
+<product version="3" modelHash="6l3ou3t93vfybaccgpr2ds91jgrt6o4">
+>>>>>>> upstream/2024.1_projectPane
   <files names="CoreWorker.java:MpsWorkerTest.java:WorkerBase.java:WorkerHelper.java:WorkerMessageHandler.java" />
 </product>
 

@@ -317,9 +317,12 @@
       <concept id="1210184105060" name="jetbrains.mps.lang.plugin.structure.PreferencesComponentType" flags="in" index="34_ZPX">
         <reference id="1210184138184" name="componentDeclaration" index="34A7Nh" />
       </concept>
+<<<<<<< HEAD
       <concept id="471625927503601927" name="jetbrains.mps.lang.plugin.structure.NumberToolShortcut" flags="ng" index="15feLf">
         <property id="471625927503601955" name="number" index="15feLF" />
       </concept>
+=======
+>>>>>>> upstream/2024.1_projectPane
       <concept id="6193305307616715384" name="jetbrains.mps.lang.plugin.structure.ShortcutChange" flags="ngI" index="1bYyw_">
         <reference id="6193305307616734326" name="action" index="1bYAoF" />
       </concept>
@@ -51433,6 +51436,15 @@
                             <node concept="37vLTw" id="6vjnGs7KUij" role="37wK5m">
                               <ref role="3cqZAo" node="6vjnGs7KEb1" resolve="project" />
                             </node>
+<<<<<<< HEAD
+=======
+                            <node concept="3TrcHB" id="6Feqspol7_q" role="2OqNvi">
+                              <ref role="3TsBF5" to="tpck:hnGE5uv" resolve="virtualPackage" />
+                            </node>
+                          </node>
+                          <node concept="37vLTw" id="6D$xo9OA6iI" role="37vLTx">
+                            <ref role="3cqZAo" node="6D$xo9OA6iD" resolve="newValue" />
+>>>>>>> upstream/2024.1_projectPane
                           </node>
                         </node>
                       </node>
@@ -52394,8 +52406,30 @@
                                   <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                                 </node>
                               </node>
+<<<<<<< HEAD
                               <node concept="liA8E" id="6vjnGs7IZ87" role="2OqNvi">
                                 <ref role="37wK5l" to="c17a:~SAbstractConcept.getSourceNode()" resolve="getSourceNode" />
+=======
+                            </node>
+                            <node concept="2GrKxI" id="2_rBhBgOKd3" role="2Gsz3X">
+                              <property role="TrG5h" value="aspect" />
+                            </node>
+                            <node concept="3clFbS" id="2_rBhBgOKd5" role="2LFqv$">
+                              <node concept="3clFbF" id="6Feqspol7_y" role="3cqZAp">
+                                <node concept="37vLTI" id="6Feqspol7_M" role="3clFbG">
+                                  <node concept="37vLTw" id="6D$xo9OA6iJ" role="37vLTx">
+                                    <ref role="3cqZAo" node="6D$xo9OA6iD" resolve="newValue" />
+                                  </node>
+                                  <node concept="2OqwBi" id="6Feqspol7_H" role="37vLTJ">
+                                    <node concept="3TrcHB" id="6Feqspol7_L" role="2OqNvi">
+                                      <ref role="3TsBF5" to="tpck:hnGE5uv" resolve="virtualPackage" />
+                                    </node>
+                                    <node concept="2GrUjf" id="6Feqspol7_F" role="2Oq$k0">
+                                      <ref role="2Gs0qQ" node="2_rBhBgOKd3" resolve="aspect" />
+                                    </node>
+                                  </node>
+                                </node>
+>>>>>>> upstream/2024.1_projectPane
                               </node>
                             </node>
                           </node>

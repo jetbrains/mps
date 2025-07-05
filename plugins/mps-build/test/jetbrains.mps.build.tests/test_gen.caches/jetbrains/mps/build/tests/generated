@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <product version="3" modelHash="-35htpplj8jh5lz0g171rhgx7sez9zcw">
+=======
+<product version="3" modelHash="ame67ipym3gngfn9133toywi3qrcvtt">
+>>>>>>> upstream/2024.1_projectPane
   <files names="MacroTest_Test.java:TestContext.java:TestRelativePathHelper_Test.java:TestTemporalPaths_Test.java" />
 </product>
 

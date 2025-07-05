@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <product version="3" modelHash="-5eq6evw3rzx888dntxazk7hy7o8mn6i">
   <files names="DefaultRefactoringUI.java:ExtensionDescriptor.java:MoveNodesAction.java:MoveNodesActionBase.java:MoveNodesActionHelper.java:MoveNodesUtil.java:RenameRefactoringBody.java:SelectOptionsDialog.java" />
+=======
+<product version="3" modelHash="5v91oxsh83nt64id5kelaw4rbh42yy8">
+  <files names="DefaultRefactoringUI.java:MoveNodesAction.java:MoveNodesActionBase.java:MoveNodesActionHelper.java:MoveNodesUtil.java:RenameRefactoringBody.java:SelectOptionsDialog.java" />
+>>>>>>> upstream/2024.1_projectPane
 </product>
 

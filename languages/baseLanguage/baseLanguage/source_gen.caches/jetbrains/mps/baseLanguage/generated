@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <product version="3" modelHash="-aqk4shj675w5tpyqjx3lll2n39tclxp">
+=======
+<product version="3" modelHash="4kzwt5jd5qyg3r6redaj0sbf0yb2dok">
+>>>>>>> upstream/2024.1_projectPane
   <files names="Language.java" />
 </product>
 

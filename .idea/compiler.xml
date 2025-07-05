@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <option name="BUILD_PROCESS_HEAP_SIZE" value="1024" />
     <excludeFromCompile>
       <directory url="file://$PROJECT_DIR$/languages.test/languageDesign/lang.editor.editorTest.extension/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages.test/languageDesign/lang.editor.editorTest.extension/source_gen" includeSubdirectories="true" />
@@ -851,31 +850,21 @@
       <directory url="file://$PROJECT_DIR$/IdeaPlugin" includeSubdirectories="true" />
     </excludeFromCompile>
     <wildcardResourcePatterns>
-      <entry name="!?*.java" />
-      <entry name="!?*.form" />
-      <entry name="!?*.class" />
-      <entry name="!?*.groovy" />
-      <entry name="!?*.scala" />
-      <entry name="!?*.flex" />
-      <entry name="!?*.kt" />
-      <entry name="!?*.clj" />
-      <entry name="!*.mps" />
-      <entry name="!*.mpsr" />
-      <entry name="!*.model" />
+      <entry name="?*.properties" />
+      <entry name="?*.xml" />
+      <entry name="?*.html" />
+      <entry name="?*.dtd" />
+      <entry name="?*.tld" />
+      <entry name="?*.gif" />
+      <entry name="?*.png" />
+      <entry name="?*.jpeg" />
+      <entry name="?*.jpg" />
+      <entry name="?*.txt" />
+      <entry name="?*.js" />
+      <entry name="?*.css" />
+      <entry name="?*.ico" />
+      <entry name="?*.zip" />
+      <entry name="?*.info" />
     </wildcardResourcePatterns>
-    <bytecodeTargetLevel target="21" />
-  </component>
-  <component name="EclipseCompilerSettings">
-    <option name="MAXIMUM_HEAP_SIZE" value="1024" />
-  </component>
-  <component name="JavacSettings">
-    <option name="DEPRECATION" value="false" />
-    <option name="ADDITIONAL_OPTIONS_STRING" value="-Xlint:-deprecation,-removal" />
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="debugger-java-api" options="--add-modules jdk.jdi" />
-      <module name="debugger-java-customViewers" options="--add-modules jdk.jdi" />
-      <module name="debugger-java-runtime" options="--add-modules jdk.jdi" />
-    </option>
-    <option name="MAXIMUM_HEAP_SIZE" value="1024" />
   </component>
 </project>

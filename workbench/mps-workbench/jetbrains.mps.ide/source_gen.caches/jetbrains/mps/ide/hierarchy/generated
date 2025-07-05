@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <product version="3" modelHash="-a8xu7zpwthiat5s723tp1na14a1ry7a">
   <files names="AbstractHierarchyTree.java:AbstractHierarchyViewState.java:BaseLanguageHierarchyViewToolState.java:ChildHierarchyTreeNode.java:CircularHierarchyException.java:ConceptHierarchyListener.java:ConceptHierarchyTree.java:HierarchyTreeNode.java:HierarchyViewToolState.java:LanguageHierarchiesComponent.java" />
+=======
+<product version="3" modelHash="4iy9qxm4kgrx843y8a7orf3ab9lz4oi">
+  <files names="AbstractHierarchyTree.java:AbstractHierarchyView.java:BaseLanguageHierarchyViewTool.java:ChildHierarchyTreeNode.java:CircularHierarchyException.java:ConceptHierarchyListener.java:ConceptHierarchyTree.java:HierarchyTreeNode.java:HierarchyViewTool.java:LanguageHierarchiesComponent.java" />
+>>>>>>> upstream/2024.1_projectPane
 </product>
 

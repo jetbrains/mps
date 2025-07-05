@@ -1945,11 +1945,35 @@
             </node>
           </node>
           <node concept="3clFbS" id="KL8Aqlj5r8" role="3clFbx">
+<<<<<<< HEAD
             <node concept="3clFbF" id="1xUpa7QRXq6" role="3cqZAp">
               <node concept="1rXfSq" id="1xUpa7QRXq5" role="3clFbG">
                 <ref role="37wK5l" node="1xUpa7QRXpG" resolve="forceFailBuild" />
                 <node concept="37vLTw" id="1xUpa7QRXq4" role="37wK5m">
                   <ref role="3cqZAo" node="KL8Aqlj5ri" resolve="name" />
+=======
+            <node concept="YS8fn" id="KL8Aqlj5r9" role="3cqZAp">
+              <node concept="2ShNRf" id="KL8Aqlj5ra" role="YScLw">
+                <node concept="1pGfFk" id="6ABb3DqLlTf" role="2ShVmc">
+                  <ref role="37wK5l" node="72FoXGcqNgl" resolve="WorkerBase.BuildFailureException" />
+                  <node concept="2OqwBi" id="KL8Aqlj5rc" role="37wK5m">
+                    <node concept="2OqwBi" id="KL8Aqlj5rd" role="2Oq$k0">
+                      <node concept="Xjq3P" id="KL8Aqlj5re" role="2Oq$k0" />
+                      <node concept="liA8E" id="KL8Aqlj5rf" role="2OqNvi">
+                        <ref role="37wK5l" node="KL8Aqlj5pG" resolve="formatErrorsReport" />
+                        <node concept="37vLTw" id="2BHiRxgm93n" role="37wK5m">
+                          <ref role="3cqZAo" node="KL8Aqlj5ri" resolve="name" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="KL8Aqlj5rh" role="2OqNvi">
+                      <ref role="37wK5l" to="wyt6:~StringBuffer.toString()" resolve="toString" />
+                    </node>
+                  </node>
+                  <node concept="3cmrfG" id="72FoXGcr6M2" role="37wK5m">
+                    <property role="3cmrfH" value="-13" />
+                  </node>
+>>>>>>> upstream/2024.1_projectPane
                 </node>
               </node>
             </node>

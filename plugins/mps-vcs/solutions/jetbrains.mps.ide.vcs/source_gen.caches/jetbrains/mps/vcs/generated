@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <product version="3" modelHash="-3op0awhzmqgme4ixmjjl1xxtr3zfbw0">
+=======
+<product version="3" modelHash="egsdc6fpya4ulf8jc41ace1na6nio9w">
+>>>>>>> upstream/2024.1_projectPane
   <files names="MPSVcsManager.java:MergeDriverPackerImpl.java:ModelMergeConflictTracker.java:TestMergeDialog.java" />
 </product>
 

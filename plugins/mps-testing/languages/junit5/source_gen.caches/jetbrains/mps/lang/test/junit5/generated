@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <product version="3" modelHash="6nbybs9i5amgvhww6zwxj622jpomm2r">
+=======
+<product version="3" modelHash="-a5omalnc9dqqueyo1ww48cyp9owuetj">
+>>>>>>> upstream/2024.1_projectPane
   <files names="AbstractJUnit5Launcher.java:FailureDetector.java:ModuleFilesListProjectStrategy.java:ScriptJUnit5Launcher.java:SimpleJUnit5Launcher.java:TestDiscovery.java:TestDiscoveryVisitor.java" />
 </product>
 

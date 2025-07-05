@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
+  <root nodeRef="r:e74490a1-7013-47e5-9f40-14c310c80a86(jetbrains.mps.vcs.suspicious)/4707157387247635635">
+    <file name="BaseTaskQueue.java">
+      <node id="4707157387247635643" at="26,0,27,0" concept="2" trace="myTasks" />
+      <node id="4757360427193533875" at="27,0,28,0" concept="2" trace="myProcessingSemaphore" />
+      <node id="4757360427193682082" at="28,0,29,0" concept="2" trace="myScheduler" />
+      <node id="4757360427194117062" at="29,0,30,0" concept="2" trace="myTimerTask" />
+      <node id="4757360427193684646" at="31,26,32,46" concept="1" />
+      <node id="4757360427194173913" at="36,30,37,40" concept="9" />
+      <node id="4757360427193696430" at="38,5,39,99" concept="8" />
+      <node id="4757360427194780039" at="39,99,40,68" concept="8" />
+      <node id="4757360427194120839" at="40,68,41,103" concept="1" />
+      <node id="4757360427194108605" at="48,30,49,32" concept="1" />
+      <node id="4757360427194129722" at="49,32,50,25" concept="1" />
+      <node id="4757360427194138609" at="50,25,51,22" concept="1" />
+      <node id="4757360427193721694" at="56,28,57,13" concept="7" />
+      <node id="4757360427193695418" at="58,5,59,125" concept="8" />
+      <node id="4757360427193776061" at="59,125,60,117" concept="8" />
+      <node id="4757360427193692473" at="62,33,63,18" concept="1" />
+      <node id="4757360427193693560" at="63,18,64,40" concept="1" />
+      <node id="4707157387247635677" at="69,31,70,22" concept="1" />
+      <node id="4757360427193732994" at="70,22,71,25" concept="1" />
+      <node id="4757360427193731505" at="75,35,76,13" concept="7" />
+      <node id="4707157387247635707" at="77,5,78,41" concept="6" />
+      <node id="4757360427193778232" at="78,41,79,27" concept="1" />
+      <node id="4707157387247635706" at="80,26,81,13" concept="7" />
+      <node id="4707157387247635724" at="82,5,83,23" concept="1" />
+      <node id="4707157387247635727" at="89,0,90,0" concept="5" trace="isProcessingAllowed#()Z" />
+      <node id="4707157387247635731" at="93,0,94,0" concept="5" trace="processTask#(Ljava/util/List;)V" />
+      <node id="4707157387247635653" at="31,0,34,0" concept="0" trace="BaseTaskQueue#()V" />
+      <node id="4757360427194171122" at="35,49,38,5" concept="4" />
+      <node id="4757360427193710565" at="55,41,58,5" concept="4" />
+      <node id="4757360427193729083" at="74,30,77,5" concept="4" />
+      <node id="4707157387247635701" at="79,27,82,5" concept="4" />
+      <node id="4757360427193690071" at="61,45,65,9" concept="1" />
+      <node id="4707157387247635668" at="69,0,73,0" concept="5" trace="addTask#(null)V" />
+      <node id="4757360427194131948" at="47,22,52,5" concept="4" />
+      <node id="4757360427193676465" at="60,117,66,5" concept="4" />
+      <node id="4757360427194090905" at="47,0,54,0" concept="5" trace="stop#()V" />
+      <node id="4757360427194162324" at="35,0,43,0" concept="5" trace="start#(JLjava/util/concurrent/TimeUnit;)V" />
+      <node id="4707157387247635693" at="74,0,85,0" concept="5" trace="process#()V" />
+      <node id="4757360427193518935" at="55,0,68,0" concept="5" trace="scheduleProcessing#()V" />
+      <scope id="4707157387247635656" at="31,26,32,46" />
+      <scope id="4757360427194171124" at="36,30,37,40" />
+      <scope id="4757360427193710567" at="56,28,57,13" />
+      <scope id="4757360427193729085" at="75,35,76,13" />
+      <scope id="4707157387247635705" at="80,26,81,13" />
+      <scope id="4707157387247635727" at="89,0,90,0" />
+      <scope id="4707157387247635731" at="93,0,94,0">
+        <var name="tasks" id="4707157387247635734" />
+      </scope>
+      <scope id="4757360427193691824" at="62,33,64,40" />
+      <scope id="4707157387247635673" at="69,31,71,25" />
+      <scope id="4707157387247635653" at="31,0,34,0" />
+      <scope id="4757360427194131950" at="48,30,51,22" />
+      <scope id="4757360427193676467" at="61,45,65,9" />
+      <scope id="4707157387247635668" at="69,0,73,0">
+        <var name="task" id="4707157387247635671" />
+      </scope>
+      <scope id="4757360427194090908" at="47,22,52,5" />
+      <scope id="4757360427194162327" at="35,49,41,103" />
+      <scope id="4757360427194090905" at="47,0,54,0" />
+      <scope id="4757360427194162324" at="35,0,43,0">
+        <var name="period" id="4757360427194176645" />
+        <var name="unit" id="4757360427194180171" />
+      </scope>
+      <scope id="4707157387247635696" at="74,30,83,23">
+        <var name="tasks" id="4707157387247635708" />
+      </scope>
+      <scope id="4757360427193518939" at="55,41,66,5" />
+      <scope id="4707157387247635693" at="74,0,85,0" />
+      <scope id="4757360427193518935" at="55,0,68,0" />
+      <unit id="4707157387247635635" at="24,0,95,0" name="jetbrains.mps.vcs.suspicious.BaseTaskQueue" />
+    </file>
+  </root>
+  <root nodeRef="r:e74490a1-7013-47e5-9f40-14c310c80a86(jetbrains.mps.vcs.suspicious)/4707157387247635742">
+    <file name="PlatformActivityTracker.java">
+      <node id="4707157387247635787" at="20,0,21,0" concept="2" trace="myVirtualFileManagerListener" />
+      <node id="4707157387247635792" at="21,0,22,0" concept="2" trace="myReloadListener" />
+      <node id="4707157387247635797" at="22,0,23,0" concept="2" trace="myProjectManager" />
+      <node id="4707157387247635803" at="23,0,24,0" concept="2" trace="myVirtualFileManager" />
+      <node id="4774203567244824733" at="24,0,25,0" concept="2" trace="myReloadManager" />
+      <node id="4707157387247635817" at="26,135,27,31" concept="1" />
+      <node id="4707157387247635825" at="27,31,28,46" concept="1" />
+      <node id="4774203567244824740" at="28,46,29,36" concept="1" />
+      <node id="4774203567244818537" at="32,26,33,56" concept="1" />
+      <node id="5944398735201323086" at="33,56,34,36" concept="8" />
+      <node id="4707157387247635834" at="34,36,35,91" concept="1" />
+      <node id="4774203567244901118" at="38,28,39,59" concept="1" />
+      <node id="4707157387247635848" at="39,59,40,88" concept="1" />
+      <node id="4707157387247635876" at="45,84,46,21" concept="7" />
+      <node id="4707157387247635892" at="48,5,49,88" concept="7" />
+      <node id="4707157387247635750" at="53,0,54,0" concept="2" trace="myVFMBan" />
+      <node id="4707157387247635900" at="58,18,59,15" concept="7" />
+      <node id="4707157387247635901" at="60,7,61,17" concept="1" />
+      <node id="4707157387247635908" at="65,18,66,15" concept="7" />
+      <node id="4707157387247635909" at="67,7,68,17" concept="1" />
+      <node id="4707157387247635913" at="70,31,71,27" concept="7" />
+      <node id="4707157387247635772" at="76,0,77,0" concept="2" trace="myReloadBan" />
+      <node id="4707157387247635920" at="80,33,81,20" concept="1" />
+      <node id="4707157387247635924" at="84,34,85,20" concept="1" />
+      <node id="4707157387247635928" at="87,31,88,30" concept="7" />
+      <node id="4707157387247635753" at="54,0,56,0" concept="0" trace="BanVFMListener#()V" />
+      <node id="4707157387247635775" at="77,0,79,0" concept="0" trace="BanReloadListener#()V" />
+      <node id="4707157387247635871" at="44,58,47,7" concept="4" />
+      <node id="4707157387247635897" at="57,51,60,7" concept="4" />
+      <node id="4707157387247635905" at="64,51,67,7" concept="4" />
+      <node id="4707157387247635766" at="70,0,73,0" concept="5" trace="isBanned#()Z" />
+      <node id="4707157387247635784" at="87,0,90,0" concept="5" trace="isBanned#()Z" />
+      <node id="4707157387247635839" at="38,0,42,0" concept="5" trace="deactivate#()V" />
+      <node id="4707157387247635778" at="79,0,83,0" concept="5" trace="reloadStarted#()V" />
+      <node id="4707157387247635781" at="83,0,87,0" concept="5" trace="reloadFinished#()V" />
+      <node id="4707157387247635806" at="26,0,31,0" concept="0" trace="PlatformActivityTracker#(Lcom/intellij/openapi/project/ProjectManager;Lcom/intellij/openapi/vfs/VirtualFileManager;Ljetbrains/mps/ide/platform/watching/ReloadManagerComponent;)V" />
+      <node id="4757360427193998606" at="32,0,37,0" concept="5" trace="activate#()V" />
+      <node id="4707157387247635857" at="43,40,48,5" concept="3" />
+      <node id="4707157387247635756" at="56,0,63,0" concept="5" trace="beforeRefreshStart#(Z)V" />
+      <node id="4707157387247635761" at="63,0,70,0" concept="5" trace="afterRefreshFinish#(Z)V" />
+      <node id="4707157387247635853" at="43,0,51,0" concept="5" trace="isProcessingAllowed#()Z" />
+      <scope id="4707157387247635895" at="54,30,54,30" />
+      <scope id="4707157387247635918" at="77,33,77,33" />
+      <scope id="4707157387247635875" at="45,84,46,21" />
+      <scope id="4707157387247635899" at="58,18,59,15" />
+      <scope id="4707157387247635907" at="65,18,66,15" />
+      <scope id="4707157387247635912" at="70,31,71,27" />
+      <scope id="4707157387247635919" at="80,33,81,20" />
+      <scope id="4707157387247635923" at="84,34,85,20" />
+      <scope id="4707157387247635927" at="87,31,88,30" />
+      <scope id="4707157387247635842" at="38,28,40,88" />
+      <scope id="4707157387247635753" at="54,0,56,0" />
+      <scope id="4707157387247635775" at="77,0,79,0" />
+      <scope id="4707157387247635815" at="26,135,29,36" />
+      <scope id="4757360427193998609" at="32,26,35,91" />
+      <scope id="4707157387247635863" at="44,58,47,7" />
+      <scope id="4707157387247635766" at="70,0,73,0" />
+      <scope id="4707157387247635784" at="87,0,90,0" />
+      <scope id="4707157387247635839" at="38,0,42,0" />
+      <scope id="4707157387247635896" at="57,51,61,17" />
+      <scope id="4707157387247635904" at="64,51,68,17" />
+      <scope id="4707157387247635778" at="79,0,83,0" />
+      <scope id="4707157387247635781" at="83,0,87,0" />
+      <scope id="4707157387247635806" at="26,0,31,0">
+        <var name="manager" id="4707157387247635809" />
+        <var name="reloadManager" id="4774203567244781965" />
+        <var name="virtualFileManager" id="4707157387247635813" />
+      </scope>
+      <scope id="4757360427193998606" at="32,0,37,0" />
+      <scope id="4707157387247635857" at="43,40,48,5">
+        <var name="p" id="4707157387247635861" />
+      </scope>
+      <scope id="4707157387247635856" at="43,40,49,88" />
+      <scope id="4707157387247635756" at="56,0,63,0">
+        <var name="async" id="4707157387247635759" />
+      </scope>
+      <scope id="4707157387247635761" at="63,0,70,0">
+        <var name="async" id="4707157387247635764" />
+      </scope>
+      <scope id="4707157387247635853" at="43,0,51,0" />
+      <unit id="4707157387247635769" at="75,0,91,0" name="jetbrains.mps.vcs.suspicious.PlatformActivityTracker$BanReloadListener" />
+      <unit id="4707157387247635747" at="52,0,74,0" name="jetbrains.mps.vcs.suspicious.PlatformActivityTracker$BanVFMListener" />
+      <unit id="4707157387247635742" at="18,0,92,0" name="jetbrains.mps.vcs.suspicious.PlatformActivityTracker" />
+    </file>
+  </root>
+</debug-info>
+
