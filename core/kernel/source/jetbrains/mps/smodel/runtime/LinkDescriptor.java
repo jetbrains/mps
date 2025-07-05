@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,13 @@
  */
 package jetbrains.mps.smodel.runtime;
 
-
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
+// there's little reason to keep interface and impl classes; they are
+// not supposed to get exposed to clients. Might be worth merging both into one.
 public interface LinkDescriptor {
   SContainmentLinkId getId();
 
@@ -34,4 +36,18 @@ public interface LinkDescriptor {
   boolean isUnordered();
 
   SNodeReference getSourceNode();
+
+  /**
+   * Gives identity of a specialized link, if any.
+   * Target link is not necessarily the 'origin' one, and may further specialize another one.
+   * since 2021.3
+   */
+  @Nullable
+  SContainmentLinkId getSpecializedLink();
+
+  /**
+   * Indicates containment that doesn't need to get reflected in persistence. No child from this role get serialized
+   * @since 2023.1
+   */
+  boolean isTransient();
 }

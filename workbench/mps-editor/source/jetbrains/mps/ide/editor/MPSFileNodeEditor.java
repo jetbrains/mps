@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,25 +21,17 @@ import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.DocumentsEditor;
-import com.intellij.openapi.fileEditor.FileEditorDataProviderManager;
 import com.intellij.openapi.fileEditor.FileEditorLocation;
 import com.intellij.openapi.fileEditor.FileEditorState;
 import com.intellij.openapi.fileEditor.FileEditorStateLevel;
 import com.intellij.openapi.util.UserDataHolderBase;
-import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.editor.BaseNodeEditor.BaseEditorState;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
-import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.editor.EditorState;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.smodel.CommandListenerAdapter;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.smodel.SModelFileTracker;
-import jetbrains.mps.util.AbstractComputeRunnable;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -60,61 +52,15 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
 
   private Editor myNodeEditor;
   private final JPanel myComponent = new MPSFileNodeEditorComponent();
-  private final MPSProject myProject;
-  private MPSNodeVirtualFile myFile;
+  protected final MPSProject myProject;
+  private final MPSNodeVirtualFile myFile;
   private boolean myDisposed = false;
   // See: https://youtrack.jetbrains.com/issue/MPS-24409
   private EditorState myDelayedState = null;
   private boolean mySelected;
 
-  // do not duplicate code that obtains MPSNodeVirtualFile from regular IDEA VirtualFile
-  // in MPSFileNodeEditorProvider and MPSFileNodeEditor
-  /*package*/ static class NodeFileComputable implements Computable<MPSNodeVirtualFile> {
-    private final SRepository myRepository;
-    private final IFile myFile;
-    private final String myNameToMatch;
-
-    public NodeFileComputable(SRepository repository, VirtualFile file) {
-      myRepository = repository;
-      myFile = VirtualFileUtils.toIFile(file.getParent());
-      myNameToMatch = file.getNameWithoutExtension();
-    }
-
-    @Override
-    public MPSNodeVirtualFile compute() {
-      SModel model = SModelFileTracker.getInstance(myRepository).findModel(myFile);
-      if (model != null) {
-        for (SNode node : model.getRootNodes()) {
-          if (myNameToMatch.equals(node.getName()) || myNameToMatch.equals(node.getNodeId().toString())) {
-            return NodeVirtualFileSystem.getInstance().getFileFor(myRepository, node);
-          }
-        }
-      }
-      return null;
-    }
-  }
-
-  public MPSFileNodeEditor(@NotNull MPSProject project, @NotNull VirtualFile file) {
-    this(project, null);
-    // FIXME MPSNodeVirtualFile is subclass of VirtualFile, how do we ensure proper cons is invoked?
-    assert !(file instanceof MPSNodeVirtualFile);
-    final SRepository repository = project.getRepository();
-    final NodeFileComputable nodeFileComputable = new NodeFileComputable(repository, file);
-    // we expect new models (that may come from the file) could show up in the repository only as a command(repository modification) result
-    repository.getModelAccess().addCommandListener(new CommandListenerAdapter() {
-      @Override
-      public void commandFinished() {
-        MPSNodeVirtualFile mpsNodeVirtualFile = nodeFileComputable.compute();
-        if (mpsNodeVirtualFile != null) {
-          myFile = mpsNodeVirtualFile;
-          MPSFileNodeEditor.this.initEditor();
-          repository.getModelAccess().removeCommandListener(this);
-        }
-      }
-    });
-  }
-
   public MPSFileNodeEditor(@NotNull MPSProject project, MPSNodeVirtualFile file) {
+    // there's at least 1 scenario when file == null, although I'd like it to become @NotNull
     myProject = project;
     myFile = file;
 
@@ -151,13 +97,11 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
   @NonNls
   @NotNull
   public String getName() {
-    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> {
-      if (waitingForNodeFile()) {
-        return "Editor waiting for node";
-      }
-      assert myFile.getNode() != null : String.format("File does not contain node: %s", myFile.toString());
-      return myFile.getNode().getName();
-    });
+    if (waitingForNodeFile()) {
+      return "Editor waiting for node";
+    }
+    // that's what EditorTabTitleProviderImpl does, see no reason to differ.
+    return myFile.getPresentableName();
   }
 
   @Override
@@ -181,7 +125,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
 
   @Override
   public void setState(final @NotNull FileEditorState state) {
-    if (myNodeEditor == null) {
+    if (myNodeEditor == null || !(state instanceof MPSEditorStateWrapper)) {
       return;
     }
     final MPSEditorStateWrapper wrapper = (MPSEditorStateWrapper) state;
@@ -195,14 +139,8 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
       myProject.getModelAccess().runWriteAction(() -> myNodeEditor.loadState(editorState));
     } else {
       myNodeEditor.loadState(editorState);
-      AbstractComputeRunnable<EditorState> runnable = new AbstractComputeRunnable<EditorState>() {
-        @Override
-        protected EditorState compute() {
-          return myNodeEditor.saveState();
-        }
-      };
-      myProject.getModelAccess().runReadAction(runnable);
-      if (runnable.getResult().getClass() != editorState.getClass()) {
+      final EditorState result = myProject.getModelAccess().computeReadAction(myNodeEditor::saveState);
+      if (result.getClass() != editorState.getClass()) {
         myDelayedState = editorState;
       }
     }
@@ -213,9 +151,21 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
     if (waitingForNodeFile()) {
       return false;
     }
-    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> {
-      assert myFile.getNode() != null : String.format("File does not contain node: %s", myFile.toString());
-      SModel md = myFile.getNode().getModel();
+    if (!myFile.isValid()) {
+      // XXX I wonder if we can recognize read-only files (e.g. for transient or stub models) and shortcut isModified === false?
+      return false;
+    }
+    // XXX I believe it's sort of implicit assumption that editor's context has project repository, too.
+    //     To use same repo editor uses seems to me fair approach, however. Just requires a lot of changes in this class
+//    final SRepository repo = myNodeEditor.getEditorContext().getRepository();
+    final SRepository repo = myProject.getRepository();
+    return repo.getModelAccess().computeReadAction(() -> {
+      final SNode fileNode = myFile.getSNodePointer().resolve(repo);
+      if (fileNode == null) {
+        Logger.getLogger(MPSFileNodeEditor.class).info(String.format("File does not contain node: %s", myFile));
+        return false;
+      }
+      SModel md = fileNode.getModel();
       return md instanceof EditableSModel && ((EditableSModel) md).isChanged();
     });
   }
@@ -296,7 +246,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
 
   // expects model read, and likely EDT?
   private void recreateEditor(EditorState state) {
-    if (myProject.isDisposed() || !isValid() || waitingForNodeFile()) {
+    if (myProject.isDisposed() || !isValid() || waitingForNodeFile() || myFile.getNode() == null) {
       return;
     }
 
@@ -337,7 +287,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
   public Document[] getDocuments() {
     if (!isDisposed() && myNodeEditor != null) {
       List<Document> result = ((BaseNodeEditor) myNodeEditor).getAllEditedDocuments();
-      return result.toArray(new Document[result.size()]);
+      return result.toArray(new Document[0]);
     }
     return new Document[0];
   }
@@ -352,21 +302,23 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
     }
 
     @Override
-    public Object getData(@NonNls String dataId) {
+    public Object getData(@NotNull String dataId) {
+      // FIXME what's behind this logic? What does getParent() == null mean?
       if (getParent() == null) {
-        if (dataId.equals(PlatformDataKeys.FILE_EDITOR.getName())) {
+        if (PlatformDataKeys.FILE_EDITOR.is(dataId)) {
           return MPSFileNodeEditor.this;
         }
-        if (dataId.equals(PlatformDataKeys.PROJECT.getName())) {
+        if (PlatformDataKeys.PROJECT.is(dataId)) {
           return myProject.getProject();
         }
-      } else {
-        if (!myProject.isDisposed() && !waitingForNodeFile()) {
-          final Object data = FileEditorDataProviderManager.getInstance(myProject.getProject()).getData(dataId, MPSFileNodeEditor.this, myFile);
-          if (data != null) {
-            return data;
-          }
-        }
+      }
+      if (PlatformDataKeys.VIRTUAL_FILE.is(dataId)) {
+        // MPS-15532, seems that IDEA doesn't expect VF of an editor to change. For MPS tabbed editor,
+        //  can't use VF based on SNode of active tab (aspect). Using something like
+        //  NodeEditorComponent.getVirtualFile() or CommandContextWithVF.getContextVirtualFile() would lead to
+        //  changing VF for an editor (as it used to be with EC.getData(), removed by otherwise erroneous
+        //  commit 1fa2b4a8 (original MPS-15532 fix))
+        return MPSFileNodeEditor.this.getFile();
       }
       return null;
     }

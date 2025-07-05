@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,11 @@
  */
 package jetbrains.mps.smodel.event;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 
 @Immutable
 public class SModelLanguageEvent extends SModelEvent {
@@ -44,15 +42,6 @@ public class SModelLanguageEvent extends SModelEvent {
    */
   public SLanguage getEventLanguage() {
     return myLanguage;
-  }
-
-  /**
-   * @deprecated use {@link #getEventLanguage()} instead. We stick to {@link SLanguage} for model's used languages.
-   */
-  @Deprecated
-  @ToRemove(version = 2017.1)
-  public SModuleReference getLanguageNamespace() {
-    return myLanguage.getSourceModuleReference();
   }
 
   public boolean isAdded() {

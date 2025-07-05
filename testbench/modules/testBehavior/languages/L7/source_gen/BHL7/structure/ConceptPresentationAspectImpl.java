@@ -4,23 +4,25 @@ package BHL7.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_A = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_B = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_C = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_D = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_E = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_F = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_G = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_H = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_I1 = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_I2 = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_I3 = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_K = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_A;
+  private ConceptPresentation props_B;
+  private ConceptPresentation props_C;
+  private ConceptPresentation props_D;
+  private ConceptPresentation props_E;
+  private ConceptPresentation props_F;
+  private ConceptPresentation props_G;
+  private ConceptPresentation props_H;
+  private ConceptPresentation props_I1;
+  private ConceptPresentation props_I2;
+  private ConceptPresentation props_I3;
+  private ConceptPresentation props_K;
+  private ConceptPresentation props_L;
+  private ConceptPresentation props_M;
 
   @Override
   @Nullable
@@ -28,29 +30,99 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.A:
+        if (props_A == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("A");
+          props_A = cpb.create();
+        }
         return props_A;
       case LanguageConceptSwitch.B:
+        if (props_B == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("B");
+          props_B = cpb.create();
+        }
         return props_B;
       case LanguageConceptSwitch.C:
+        if (props_C == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("C");
+          props_C = cpb.create();
+        }
         return props_C;
       case LanguageConceptSwitch.D:
+        if (props_D == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("D");
+          props_D = cpb.create();
+        }
         return props_D;
       case LanguageConceptSwitch.E:
+        if (props_E == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("E");
+          props_E = cpb.create();
+        }
         return props_E;
       case LanguageConceptSwitch.F:
+        if (props_F == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("F");
+          props_F = cpb.create();
+        }
         return props_F;
       case LanguageConceptSwitch.G:
+        if (props_G == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("G");
+          props_G = cpb.create();
+        }
         return props_G;
       case LanguageConceptSwitch.H:
+        if (props_H == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("H");
+          props_H = cpb.create();
+        }
         return props_H;
       case LanguageConceptSwitch.I1:
+        if (props_I1 == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_I1 = cpb.create();
+        }
         return props_I1;
       case LanguageConceptSwitch.I2:
+        if (props_I2 == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_I2 = cpb.create();
+        }
         return props_I2;
       case LanguageConceptSwitch.I3:
+        if (props_I3 == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_I3 = cpb.create();
+        }
         return props_I3;
       case LanguageConceptSwitch.K:
+        if (props_K == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("K");
+          props_K = cpb.create();
+        }
         return props_K;
+      case LanguageConceptSwitch.L:
+        if (props_L == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_L = cpb.create();
+        }
+        return props_L;
+      case LanguageConceptSwitch.M:
+        if (props_M == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("M");
+          props_M = cpb.create();
+        }
+        return props_M;
     }
     return null;
   }

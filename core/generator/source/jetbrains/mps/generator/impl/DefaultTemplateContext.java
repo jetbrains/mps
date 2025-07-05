@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
  */
 package jetbrains.mps.generator.impl;
 
+import jetbrains.mps.generator.runtime.PatternMatch;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
-import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -34,10 +34,12 @@ public class DefaultTemplateContext implements TemplateContext {
   private final DefaultTemplateContext myParent;
   private final SNode myInputNode;
   private final String myInputName;
+  private final int myExecutionPathId;
 
-  private final GeneratedMatchingPattern myPattern;
+  private final PatternMatch myPattern;
   private final Map<String, Object> myVars;
 
+  // FWIW, there's no uses of this cons in generated code since 2020.1 (2019.3 instantiates it in CreateRootRule)
   public DefaultTemplateContext(@NotNull TemplateExecutionEnvironment env, @Nullable SNode inputNode, @Nullable String inputName) {
     myEnv = env;
     myParent = null;
@@ -45,6 +47,7 @@ public class DefaultTemplateContext implements TemplateContext {
     myInputNode = inputNode;
     myPattern = null;
     myVars = null;
+    myExecutionPathId = System.identityHashCode(this);
   }
 
   /**
@@ -61,19 +64,40 @@ public class DefaultTemplateContext implements TemplateContext {
     this(parent, null, parent.getInput(), null, variables);
   }
 
-  private DefaultTemplateContext(DefaultTemplateContext parent, String inputName, SNode inputNode, GeneratedMatchingPattern pattern, Map<String,Object> vars) {
+  private DefaultTemplateContext(DefaultTemplateContext parent, String inputName, SNode inputNode, PatternMatch pattern, Map<String,Object> vars) {
     myParent = parent;
-    myEnv = parent == null ? null : parent.myEnv;
+    myEnv = parent.myEnv;
     myInputName = inputName;
     myInputNode = inputNode;
     myPattern = pattern;
     myVars = vars;
+    myExecutionPathId = parent.executionPathIdentity();
+  }
+
+  private DefaultTemplateContext(DefaultTemplateContext parent, int ignored) {
+    myParent = parent;
+    myEnv = parent.myEnv;
+    myInputName = parent.getInputName();
+    myInputNode = parent.getInput();
+    myPattern = null;
+    myVars = null;
+    myExecutionPathId = System.identityHashCode(this);
   }
 
   @NotNull
   @Override
   public TemplateExecutionEnvironment getEnvironment() {
     return myEnv;
+  }
+
+  @Override
+  public int executionPathIdentity() {
+    return myExecutionPathId;
+  }
+
+  @Override
+  public TemplateContext withNewExecutionPath() {
+    return new DefaultTemplateContext(this, 0);
   }
 
   public DefaultTemplateContext getParent() {
@@ -94,7 +118,7 @@ public class DefaultTemplateContext implements TemplateContext {
   public Object getPatternVariable(String id) {
     for (DefaultTemplateContext current = this; current != null; current = current.myParent) {
       if (current.myPattern != null) {
-        return current.myPattern.getFieldValue(id);
+        return current.myPattern.getValue(id);
       }
     }
     return null;
@@ -132,49 +156,44 @@ public class DefaultTemplateContext implements TemplateContext {
 
   @Override
   public Iterable<SNode> getInputHistory() {
-    return new Iterable<SNode>() {
+    return () -> new Iterator<SNode>() {
+      SNode previous;
+      DefaultTemplateContext current;
+
+      {
+        current = DefaultTemplateContext.this;
+        while (current != null && current.myInputNode == null) {
+          current = current.myParent;
+        }
+        previous = current != null ? current.myInputNode : null;
+      }
+
       @Override
-      public Iterator<SNode> iterator() {
-        return new Iterator<SNode>() {
-          SNode previous;
-          DefaultTemplateContext current;
+      public boolean hasNext() {
+        skipOdd();
+        return current != null;
+      }
 
-          {
-            current = DefaultTemplateContext.this;
-            while (current != null && current.myInputNode == null) {
-              current = current.myParent;
-            }
-            previous = current != null ? current.myInputNode : null;
-          }
+      @Override
+      public SNode next() {
+        skipOdd();
+        if (current != null) {
+          previous = current.myInputNode;
+          current = current.myParent;
+          return previous;
+        }
+        return null;
+      }
 
-          @Override
-          public boolean hasNext() {
-            skipOdd();
-            return current != null;
-          }
+      private void skipOdd() {
+        while (current != null && (current.myInputNode == null || current.myInputNode == previous)) {
+          current = current.myParent;
+        }
+      }
 
-          @Override
-          public SNode next() {
-            skipOdd();
-            if (current != null) {
-              previous = current.myInputNode;
-              current = current.myParent;
-              return previous;
-            }
-            return null;
-          }
-
-          private void skipOdd() {
-            while (current != null && (current.myInputNode == null || current.myInputNode == previous)) {
-              current = current.myParent;
-            }
-          }
-
-          @Override
-          public void remove() {
-            throw new UnsupportedOperationException();
-          }
-        };
+      @Override
+      public void remove() {
+        throw new UnsupportedOperationException();
       }
     };
   }
@@ -213,7 +232,17 @@ public class DefaultTemplateContext implements TemplateContext {
   }
 
   @Override
-  public TemplateContext subContext(GeneratedMatchingPattern pattern) {
+  public TemplateContext withCallSiteNode(SNode callSiteNode) {
+    return withVariable("::callsite", callSiteNode);
+  }
+
+  @Override
+  public SNode getCallSiteNode() {
+    return (SNode) getVariable("::callsite");
+  }
+
+  @Override
+  public TemplateContext subContext(PatternMatch pattern) {
     return new DefaultTemplateContext(this, null, getInput(), pattern, null);
   }
 

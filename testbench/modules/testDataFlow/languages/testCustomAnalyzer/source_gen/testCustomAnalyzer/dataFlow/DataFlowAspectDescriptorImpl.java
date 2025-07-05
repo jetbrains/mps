@@ -6,10 +6,10 @@ import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptorBase;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 import jetbrains.mps.lang.dataFlow.framework.DataFlowConstructor;
-import java.util.Arrays;
 import java.util.Collections;
 import jetbrains.mps.lang.dataFlow.framework.IDataFlowBuilder;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import java.util.Arrays;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
@@ -18,10 +18,10 @@ public class DataFlowAspectDescriptorImpl extends DataFlowAspectDescriptorBase {
   @NotNull
   @Override
   public Collection<DataFlowConstructor> getConstructors(String analyzerId) {
-    switch (Arrays.binarySearch(stringSwitchCases_vhxjlb_a0a0a, analyzerId)) {
-      case 0:
+    switch (analyzerId) {
+      case "testCustomAnalyzer.dataFlow.CounterAnalyzerWithConstructor":
         return Collections.<DataFlowConstructor>singletonList(new ChildRule());
-      case 1:
+      case "testCustomAnalyzer.dataFlow.CustomAnalyzerWithMode":
         return Collections.<DataFlowConstructor>singletonList(new ChildIntraModeRule());
       default:
     }
@@ -32,7 +32,7 @@ public class DataFlowAspectDescriptorImpl extends DataFlowAspectDescriptorBase {
   @Override
   public Collection<IDataFlowBuilder> getDataFlowBuilders(SAbstractConcept concept) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
-    switch (index_vhxjlb_a0c.index(cncpt)) {
+    switch (conceptIndex.index(cncpt)) {
       case 0:
         return Arrays.asList(new IDataFlowBuilder[]{new Child_IntraProceduralSpecific_BuilderMode_DataFlow(), new Child_IntraProcedural_BuilderMode_DataFlow()});
       case 1:
@@ -47,6 +47,5 @@ public class DataFlowAspectDescriptorImpl extends DataFlowAspectDescriptorBase {
     }
     return Collections.<IDataFlowBuilder>emptyList();
   }
-  private static final ConceptSwitchIndex index_vhxjlb_a0c = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x73a316f7f5468ed5L), MetaIdFactory.conceptId(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x623d57b40400d6bbL), MetaIdFactory.conceptId(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x623d57b40400d6baL), MetaIdFactory.conceptId(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x623d57b40400d6bcL), MetaIdFactory.conceptId(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x73a316f7f5468ed4L)).seal();
-  private static String[] stringSwitchCases_vhxjlb_a0a0a = new String[]{"testCustomAnalyzer.dataFlow.CounterAnalyzerWithConstructor", "testCustomAnalyzer.dataFlow.CustomAnalyzerWithMode"};
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x73a316f7f5468ed5L), MetaIdFactory.conceptId(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x623d57b40400d6bbL), MetaIdFactory.conceptId(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x623d57b40400d6baL), MetaIdFactory.conceptId(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x623d57b40400d6bcL), MetaIdFactory.conceptId(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x73a316f7f5468ed4L)).seal();
 }

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="rqy94qomkric2j0upha5w9pabfr0ru" />
+<product version="3" modelHash="8pj6qqji4p6arn3rnbtuxtqpkr2zg6x">
+  <files names="ConceptPresentationAspectImpl.java:EnumerationDescriptor_BuildMps_CodeKind.java:EnumerationDescriptor_BuildMps_GeneratorOptions_MessageLevel.java:EnumerationDescriptor_BuildMps_GeneratorOptions_SkipUnmodifiedModels.java:EnumerationDescriptor_BuildMps_ModuleSourcesKind.java:IconContainer.java:LanguageConceptSwitch.java:StructureAspectDescriptor.java" />
+</product>
 

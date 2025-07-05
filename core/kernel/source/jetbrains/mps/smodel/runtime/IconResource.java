@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,35 +16,39 @@
 package jetbrains.mps.smodel.runtime;
 
 import jetbrains.mps.classloading.ModuleClassLoader;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
+/**
+ * handy mechanism for image/icon resources referenced from generated code (where it's easy to access Class/ClassLoader)
+ * There's no uniform way to access a resource for both source and deployed module; most scenarios in MPS resort
+ * to {@code ${module}/path} and {@code MacrosFactory} which has its own issues with handling files inside bundled module jar.
+ * <p>
+ *   Note, however, with a rise of {@link ModuleRuntime#getOwnResource(String)}, there's a slight chance we can come up
+ *   with unified approach w/o need to resort to AbstractModule, IFile and MacroFactory.
+ * </p>
+ */
 public class IconResource {
-  private static final Logger LOG = LogManager.getLogger(IconResource.class);
+  private final String myIconResId;
+  private final String myClassName; //used to make IconResources unique and avoid things like MPS-24005
+  private final WeakReference<Class<?>> myResourceProvider;
 
-  private String myIconResId;
-  private String myClassName; //used to make IconResources unique and avoid things like MPS-24005
-  private WeakReference<Class> myResourceProvider;
-
-  //in 3.5, both parameters must become @NotNull
-  public IconResource(String iconResId, Class resourceProvider) {
+  /**
+   * iconResId has the same contract as the Class.getResource(String)'s parameter
+   */
+  public IconResource(@NotNull String iconResId, @NotNull Class<?> resourceProvider) {
     myIconResId = iconResId;
-    myClassName = resourceProvider == null ? null : resourceProvider.getName();
-    myResourceProvider = new WeakReference<Class>(resourceProvider);
+    myClassName = resourceProvider.getName();
+    myResourceProvider = new WeakReference<>(resourceProvider);
   }
 
   /**
    * For internal use only
    * Tmp solution until we migrate to non-static IconManager.
    */
-  @Deprecated
-  @ToRemove(version = 3.5)
+@Deprecated(since = "3.5", forRemoval = true)
   public boolean isAlreadyReloaded() {
     Class c = myResourceProvider.get();
     if (c == null) {
@@ -54,27 +58,6 @@ public class IconResource {
     return cl instanceof ModuleClassLoader && ((ModuleClassLoader) cl).isDisposed();
   }
 
-  @Deprecated
-  @ToRemove(version = 3.4)
-  //left for compatibility purposes. Does not allow to use 2x & dark icons
-  public InputStream getResource() {
-    Class c = myResourceProvider.get();
-    if (c == null) {
-      showDisposedError("<class already GC'ed>");
-      return null;
-    }
-    ClassLoader cl = c.getClassLoader();
-    if (cl instanceof ModuleClassLoader && ((ModuleClassLoader) cl).isDisposed()) {
-      String rp = c.getSimpleName();
-      showDisposedError(rp);
-    }
-    InputStream result = c.getResourceAsStream(myIconResId);
-    if (result == null) {
-      LOG.warn("Unable to get icon's InputStream. Resource provider=" + c.getSimpleName() + "; iconId:=" + myIconResId);
-    }
-    return result;
-  }
-
   public String getResourceId() {
     return myIconResId;
   }
@@ -82,12 +65,6 @@ public class IconResource {
   @Nullable
   public Class getProvider() {
     return myResourceProvider.get();
-  }
-
-  private void showDisposedError(String rp) {
-    LOG.error("Icon is acquired from a disposed classloader. This will lead to a memleak. \n" +
-        "Do care about classes reloading when you hold an IconResource for a long time. \n" +
-        "Resource provider=" + rp + "; iconId=" + myIconResId, new Throwable());
   }
 
   @Override
@@ -112,5 +89,13 @@ public class IconResource {
     int result = myIconResId != null ? myIconResId.hashCode() : 0;
     result = 31 * result + (myClassName != null ? myClassName.hashCode() : 0);
     return result;
+  }
+
+  @Override
+  public String toString() {
+    return "IconResource{" +
+           "myIconResId='" + myIconResId + '\'' +
+           ", myClassName='" + myClassName + '\'' +
+           '}';
   }
 }

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:0f6e0ac5-6758-4c48-a618-b40d4f02a1a6(jetbrains.mps.lang.doctext.test.tests@tests)/251376545710365342">
+    <file name="AddSpaceBeforeTextNodeReference_Test.java">
+      <node id="251376545710365342" at="19,49,20,60" concept="4" />
+      <node id="251376545710365342" at="24,71,25,36" concept="1" />
+      <node id="251376545710365342" at="30,52,31,19" concept="4" />
+      <node id="251376545710365342" at="35,51,36,70" concept="1" />
+      <node id="251376545710373845" at="36,70,37,22" concept="1" />
+      <node id="251376545710365342" at="16,0,18,0" concept="3" trace="ourParametersCacheExtension" />
+      <node id="251376545710365342" at="19,0,22,0" concept="0" trace="AddSpaceBeforeTextNodeReference_Test#()V" />
+      <node id="251376545710365342" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="251376545710365342" at="23,0,27,0" concept="2" trace="test_AddSpaceBeforeTextNodeReference#()V" />
+      <node id="251376545710365342" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="251376545710365342" at="19,49,20,60" />
+      <scope id="251376545710365342" at="24,71,25,36" />
+      <scope id="251376545710365342" at="30,52,31,19" />
+      <scope id="251376545710365342" at="35,51,37,22" />
+      <scope id="251376545710365342" at="19,0,22,0" />
+      <scope id="251376545710365342" at="30,0,33,0">
+        <var name="owner" id="251376545710365342" />
+      </scope>
+      <scope id="251376545710365342" at="23,0,27,0" />
+      <scope id="251376545710365342" at="34,0,39,0" />
+      <unit id="251376545710365342" at="28,0,40,0" name="jetbrains.mps.lang.doctext.test.tests.AddSpaceBeforeTextNodeReference_Test$TestBody" />
+      <unit id="251376545710365342" at="14,0,41,0" name="jetbrains.mps.lang.doctext.test.tests.AddSpaceBeforeTextNodeReference_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:0f6e0ac5-6758-4c48-a618-b40d4f02a1a6(jetbrains.mps.lang.doctext.test.tests@tests)/251376545710371846">
+    <file name="AddSpaceAfterTextNodeReference_Test.java">
+      <node id="251376545710371846" at="19,48,20,60" concept="4" />
+      <node id="251376545710371846" at="24,70,25,36" concept="1" />
+      <node id="251376545710371846" at="30,52,31,19" concept="4" />
+      <node id="251376545710371846" at="35,51,36,70" concept="1" />
+      <node id="251376545710374107" at="36,70,37,22" concept="1" />
+      <node id="251376545710371846" at="16,0,18,0" concept="3" trace="ourParametersCacheExtension" />
+      <node id="251376545710371846" at="19,0,22,0" concept="0" trace="AddSpaceAfterTextNodeReference_Test#()V" />
+      <node id="251376545710371846" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="251376545710371846" at="23,0,27,0" concept="2" trace="test_AddSpaceAfterTextNodeReference#()V" />
+      <node id="251376545710371846" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="251376545710371846" at="19,48,20,60" />
+      <scope id="251376545710371846" at="24,70,25,36" />
+      <scope id="251376545710371846" at="30,52,31,19" />
+      <scope id="251376545710371846" at="35,51,37,22" />
+      <scope id="251376545710371846" at="19,0,22,0" />
+      <scope id="251376545710371846" at="30,0,33,0">
+        <var name="owner" id="251376545710371846" />
+      </scope>
+      <scope id="251376545710371846" at="23,0,27,0" />
+      <scope id="251376545710371846" at="34,0,39,0" />
+      <unit id="251376545710371846" at="28,0,40,0" name="jetbrains.mps.lang.doctext.test.tests.AddSpaceAfterTextNodeReference_Test$TestBody" />
+      <unit id="251376545710371846" at="14,0,41,0" name="jetbrains.mps.lang.doctext.test.tests.AddSpaceAfterTextNodeReference_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:0f6e0ac5-6758-4c48-a618-b40d4f02a1a6(jetbrains.mps.lang.doctext.test.tests@tests)/251376545710377625">
+    <file name="AddNewLineBeforeTextNodeReference_Test.java">
+      <node id="251376545710377625" at="19,51,20,60" concept="4" />
+      <node id="251376545710377625" at="24,73,25,36" concept="1" />
+      <node id="251376545710377625" at="30,52,31,19" concept="4" />
+      <node id="251376545710377625" at="35,51,36,70" concept="1" />
+      <node id="474718489011465445" at="36,70,37,69" concept="1" />
+      <node id="251376545710377625" at="16,0,18,0" concept="3" trace="ourParametersCacheExtension" />
+      <node id="251376545710377625" at="19,0,22,0" concept="0" trace="AddNewLineBeforeTextNodeReference_Test#()V" />
+      <node id="251376545710377625" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="251376545710377625" at="23,0,27,0" concept="2" trace="test_AddNewLineBeforeTextNodeReference#()V" />
+      <node id="251376545710377625" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="251376545710377625" at="19,51,20,60" />
+      <scope id="251376545710377625" at="24,73,25,36" />
+      <scope id="251376545710377625" at="30,52,31,19" />
+      <scope id="251376545710377625" at="35,51,37,69" />
+      <scope id="251376545710377625" at="19,0,22,0" />
+      <scope id="251376545710377625" at="30,0,33,0">
+        <var name="owner" id="251376545710377625" />
+      </scope>
+      <scope id="251376545710377625" at="23,0,27,0" />
+      <scope id="251376545710377625" at="34,0,39,0" />
+      <unit id="251376545710377625" at="28,0,40,0" name="jetbrains.mps.lang.doctext.test.tests.AddNewLineBeforeTextNodeReference_Test$TestBody" />
+      <unit id="251376545710377625" at="14,0,41,0" name="jetbrains.mps.lang.doctext.test.tests.AddNewLineBeforeTextNodeReference_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:0f6e0ac5-6758-4c48-a618-b40d4f02a1a6(jetbrains.mps.lang.doctext.test.tests@tests)/251376545710378632">
+    <file name="AddNewLineAfterTextNodeReference_Test.java">
+      <node id="251376545710378632" at="19,50,20,60" concept="4" />
+      <node id="251376545710378632" at="24,72,25,36" concept="1" />
+      <node id="251376545710378632" at="30,52,31,19" concept="4" />
+      <node id="251376545710378632" at="35,51,36,70" concept="1" />
+      <node id="251376545710379007" at="36,70,37,69" concept="1" />
+      <node id="251376545710378632" at="16,0,18,0" concept="3" trace="ourParametersCacheExtension" />
+      <node id="251376545710378632" at="19,0,22,0" concept="0" trace="AddNewLineAfterTextNodeReference_Test#()V" />
+      <node id="251376545710378632" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="251376545710378632" at="23,0,27,0" concept="2" trace="test_AddNewLineAfterTextNodeReference#()V" />
+      <node id="251376545710378632" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="251376545710378632" at="19,50,20,60" />
+      <scope id="251376545710378632" at="24,72,25,36" />
+      <scope id="251376545710378632" at="30,52,31,19" />
+      <scope id="251376545710378632" at="35,51,37,69" />
+      <scope id="251376545710378632" at="19,0,22,0" />
+      <scope id="251376545710378632" at="30,0,33,0">
+        <var name="owner" id="251376545710378632" />
+      </scope>
+      <scope id="251376545710378632" at="23,0,27,0" />
+      <scope id="251376545710378632" at="34,0,39,0" />
+      <unit id="251376545710378632" at="28,0,40,0" name="jetbrains.mps.lang.doctext.test.tests.AddNewLineAfterTextNodeReference_Test$TestBody" />
+      <unit id="251376545710378632" at="14,0,41,0" name="jetbrains.mps.lang.doctext.test.tests.AddNewLineAfterTextNodeReference_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:0f6e0ac5-6758-4c48-a618-b40d4f02a1a6(jetbrains.mps.lang.doctext.test.tests@tests)/251376545710385449">
+    <file name="BackspaceSpaceBetweenWordAndTextNodeReference2_Test.java">
+      <node id="251376545710385449" at="19,64,20,60" concept="4" />
+      <node id="251376545710385449" at="24,86,25,36" concept="1" />
+      <node id="251376545710385449" at="30,52,31,19" concept="4" />
+      <node id="251376545710385449" at="35,51,36,70" concept="1" />
+      <node id="251376545710385451" at="36,70,37,72" concept="1" />
+      <node id="251376545710385449" at="16,0,18,0" concept="3" trace="ourParametersCacheExtension" />
+      <node id="251376545710385449" at="19,0,22,0" concept="0" trace="BackspaceSpaceBetweenWordAndTextNodeReference2_Test#()V" />
+      <node id="251376545710385449" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="251376545710385449" at="23,0,27,0" concept="2" trace="test_BackspaceSpaceBetweenWordAndTextNodeReference2#()V" />
+      <node id="251376545710385449" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="251376545710385449" at="19,64,20,60" />
+      <scope id="251376545710385449" at="24,86,25,36" />
+      <scope id="251376545710385449" at="30,52,31,19" />
+      <scope id="251376545710385449" at="35,51,37,72" />
+      <scope id="251376545710385449" at="19,0,22,0" />
+      <scope id="251376545710385449" at="30,0,33,0">
+        <var name="owner" id="251376545710385449" />
+      </scope>
+      <scope id="251376545710385449" at="23,0,27,0" />
+      <scope id="251376545710385449" at="34,0,39,0" />
+      <unit id="251376545710385449" at="28,0,40,0" name="jetbrains.mps.lang.doctext.test.tests.BackspaceSpaceBetweenWordAndTextNodeReference2_Test$TestBody" />
+      <unit id="251376545710385449" at="14,0,41,0" name="jetbrains.mps.lang.doctext.test.tests.BackspaceSpaceBetweenWordAndTextNodeReference2_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:0f6e0ac5-6758-4c48-a618-b40d4f02a1a6(jetbrains.mps.lang.doctext.test.tests@tests)/251376545710386552">
+    <file name="BackspaceSpaceBetweenTextNodeReferences_Test.java">
+      <node id="251376545710386552" at="20,57,21,60" concept="4" />
+      <node id="251376545710386552" at="25,79,26,36" concept="1" />
+      <node id="251376545710386552" at="31,52,32,19" concept="4" />
+      <node id="251376545710386552" at="36,51,37,70" concept="1" />
+      <node id="6328114375522082587" at="37,70,38,124" concept="1" />
+      <node id="251376545710386552" at="17,0,19,0" concept="3" trace="ourParametersCacheExtension" />
+      <node id="251376545710386552" at="20,0,23,0" concept="0" trace="BackspaceSpaceBetweenTextNodeReferences_Test#()V" />
+      <node id="251376545710386552" at="31,0,34,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="251376545710386552" at="24,0,28,0" concept="2" trace="test_BackspaceSpaceBetweenTextNodeReferences#()V" />
+      <node id="251376545710386552" at="35,0,40,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="251376545710386552" at="20,57,21,60" />
+      <scope id="251376545710386552" at="25,79,26,36" />
+      <scope id="251376545710386552" at="31,52,32,19" />
+      <scope id="251376545710386552" at="36,51,38,124" />
+      <scope id="251376545710386552" at="20,0,23,0" />
+      <scope id="251376545710386552" at="31,0,34,0">
+        <var name="owner" id="251376545710386552" />
+      </scope>
+      <scope id="251376545710386552" at="24,0,28,0" />
+      <scope id="251376545710386552" at="35,0,40,0" />
+      <unit id="251376545710386552" at="29,0,41,0" name="jetbrains.mps.lang.doctext.test.tests.BackspaceSpaceBetweenTextNodeReferences_Test$TestBody" />
+      <unit id="251376545710386552" at="15,0,42,0" name="jetbrains.mps.lang.doctext.test.tests.BackspaceSpaceBetweenTextNodeReferences_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:0f6e0ac5-6758-4c48-a618-b40d4f02a1a6(jetbrains.mps.lang.doctext.test.tests@tests)/251376545710388985">
+    <file name="BackspaceSpaceBetweenWrapperAndTextNodeReference_Test.java">
+      <node id="251376545710388985" at="20,66,21,60" concept="4" />
+      <node id="251376545710388985" at="25,88,26,36" concept="1" />
+      <node id="251376545710388985" at="31,52,32,19" concept="4" />
+      <node id="251376545710388985" at="36,51,37,70" concept="1" />
+      <node id="251376545710390042" at="37,70,38,124" concept="1" />
+      <node id="251376545710388985" at="17,0,19,0" concept="3" trace="ourParametersCacheExtension" />
+      <node id="251376545710388985" at="20,0,23,0" concept="0" trace="BackspaceSpaceBetweenWrapperAndTextNodeReference_Test#()V" />
+      <node id="251376545710388985" at="31,0,34,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="251376545710388985" at="24,0,28,0" concept="2" trace="test_BackspaceSpaceBetweenWrapperAndTextNodeReference#()V" />
+      <node id="251376545710388985" at="35,0,40,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="251376545710388985" at="20,66,21,60" />
+      <scope id="251376545710388985" at="25,88,26,36" />
+      <scope id="251376545710388985" at="31,52,32,19" />
+      <scope id="251376545710388985" at="36,51,38,124" />
+      <scope id="251376545710388985" at="20,0,23,0" />
+      <scope id="251376545710388985" at="31,0,34,0">
+        <var name="owner" id="251376545710388985" />
+      </scope>
+      <scope id="251376545710388985" at="24,0,28,0" />
+      <scope id="251376545710388985" at="35,0,40,0" />
+      <unit id="251376545710388985" at="29,0,41,0" name="jetbrains.mps.lang.doctext.test.tests.BackspaceSpaceBetweenWrapperAndTextNodeReference_Test$TestBody" />
+      <unit id="251376545710388985" at="15,0,42,0" name="jetbrains.mps.lang.doctext.test.tests.BackspaceSpaceBetweenWrapperAndTextNodeReference_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:0f6e0ac5-6758-4c48-a618-b40d4f02a1a6(jetbrains.mps.lang.doctext.test.tests@tests)/251376545710396745">
+    <file name="DeleteSpaceBetweenTextNodeReferenceAndTextNodeReference_Test.java">
+      <node id="251376545710396745" at="19,73,20,60" concept="4" />
+      <node id="251376545710396745" at="24,95,25,36" concept="1" />
+      <node id="251376545710396745" at="30,52,31,19" concept="4" />
+      <node id="251376545710396745" at="35,51,36,70" concept="1" />
+      <node id="251376545710399918" at="36,70,37,69" concept="1" />
+      <node id="251376545710396745" at="16,0,18,0" concept="3" trace="ourParametersCacheExtension" />
+      <node id="251376545710396745" at="19,0,22,0" concept="0" trace="DeleteSpaceBetweenTextNodeReferenceAndTextNodeReference_Test#()V" />
+      <node id="251376545710396745" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="251376545710396745" at="23,0,27,0" concept="2" trace="test_DeleteSpaceBetweenTextNodeReferenceAndTextNodeReference#()V" />
+      <node id="251376545710396745" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="251376545710396745" at="19,73,20,60" />
+      <scope id="251376545710396745" at="24,95,25,36" />
+      <scope id="251376545710396745" at="30,52,31,19" />
+      <scope id="251376545710396745" at="35,51,37,69" />
+      <scope id="251376545710396745" at="19,0,22,0" />
+      <scope id="251376545710396745" at="30,0,33,0">
+        <var name="owner" id="251376545710396745" />
+      </scope>
+      <scope id="251376545710396745" at="23,0,27,0" />
+      <scope id="251376545710396745" at="34,0,39,0" />
+      <unit id="251376545710396745" at="28,0,40,0" name="jetbrains.mps.lang.doctext.test.tests.DeleteSpaceBetweenTextNodeReferenceAndTextNodeReference_Test$TestBody" />
+      <unit id="251376545710396745" at="14,0,41,0" name="jetbrains.mps.lang.doctext.test.tests.DeleteSpaceBetweenTextNodeReferenceAndTextNodeReference_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:0f6e0ac5-6758-4c48-a618-b40d4f02a1a6(jetbrains.mps.lang.doctext.test.tests@tests)/251376545710398634">
+    <file name="DeleteSpaceBetweenTextNodeReferenceAndTextNodeReference2_Test.java">
+      <node id="251376545710398634" at="20,74,21,60" concept="4" />
+      <node id="251376545710398634" at="25,96,26,36" concept="1" />
+      <node id="251376545710398634" at="31,52,32,19" concept="4" />
+      <node id="251376545710398634" at="36,51,37,70" concept="1" />
+      <node id="251376545710398636" at="37,70,38,121" concept="1" />
+      <node id="251376545710398634" at="17,0,19,0" concept="3" trace="ourParametersCacheExtension" />
+      <node id="251376545710398634" at="20,0,23,0" concept="0" trace="DeleteSpaceBetweenTextNodeReferenceAndTextNodeReference2_Test#()V" />
+      <node id="251376545710398634" at="31,0,34,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="251376545710398634" at="24,0,28,0" concept="2" trace="test_DeleteSpaceBetweenTextNodeReferenceAndTextNodeReference2#()V" />
+      <node id="251376545710398634" at="35,0,40,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="251376545710398634" at="20,74,21,60" />
+      <scope id="251376545710398634" at="25,96,26,36" />
+      <scope id="251376545710398634" at="31,52,32,19" />
+      <scope id="251376545710398634" at="36,51,38,121" />
+      <scope id="251376545710398634" at="20,0,23,0" />
+      <scope id="251376545710398634" at="31,0,34,0">
+        <var name="owner" id="251376545710398634" />
+      </scope>
+      <scope id="251376545710398634" at="24,0,28,0" />
+      <scope id="251376545710398634" at="35,0,40,0" />
+      <unit id="251376545710398634" at="29,0,41,0" name="jetbrains.mps.lang.doctext.test.tests.DeleteSpaceBetweenTextNodeReferenceAndTextNodeReference2_Test$TestBody" />
+      <unit id="251376545710398634" at="15,0,42,0" name="jetbrains.mps.lang.doctext.test.tests.DeleteSpaceBetweenTextNodeReferenceAndTextNodeReference2_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:0f6e0ac5-6758-4c48-a618-b40d4f02a1a6(jetbrains.mps.lang.doctext.test.tests@tests)/474718489011272201">
+    <file name="BackspaceSpaceBetweenWordAndTextNodeReference1_Test.java">
+      <node id="474718489011272201" at="19,64,20,60" concept="4" />
+      <node id="474718489011272201" at="24,86,25,36" concept="1" />
+      <node id="474718489011272201" at="30,52,31,19" concept="4" />
+      <node id="474718489011272201" at="35,51,36,70" concept="1" />
+      <node id="474718489011272214" at="36,70,37,72" concept="1" />
+      <node id="474718489011272201" at="16,0,18,0" concept="3" trace="ourParametersCacheExtension" />
+      <node id="474718489011272201" at="19,0,22,0" concept="0" trace="BackspaceSpaceBetweenWordAndTextNodeReference1_Test#()V" />
+      <node id="474718489011272201" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="474718489011272201" at="23,0,27,0" concept="2" trace="test_BackspaceSpaceBetweenWordAndTextNodeReference1#()V" />
+      <node id="474718489011272201" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="474718489011272201" at="19,64,20,60" />
+      <scope id="474718489011272201" at="24,86,25,36" />
+      <scope id="474718489011272201" at="30,52,31,19" />
+      <scope id="474718489011272201" at="35,51,37,72" />
+      <scope id="474718489011272201" at="19,0,22,0" />
+      <scope id="474718489011272201" at="30,0,33,0">
+        <var name="owner" id="474718489011272201" />
+      </scope>
+      <scope id="474718489011272201" at="23,0,27,0" />
+      <scope id="474718489011272201" at="34,0,39,0" />
+      <unit id="474718489011272201" at="28,0,40,0" name="jetbrains.mps.lang.doctext.test.tests.BackspaceSpaceBetweenWordAndTextNodeReference1_Test$TestBody" />
+      <unit id="474718489011272201" at="14,0,41,0" name="jetbrains.mps.lang.doctext.test.tests.BackspaceSpaceBetweenWordAndTextNodeReference1_Test" />
+    </file>
+  </root>
+</debug-info>
+

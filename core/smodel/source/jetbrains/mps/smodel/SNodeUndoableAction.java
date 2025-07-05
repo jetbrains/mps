@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,51 +15,42 @@
  */
 package jetbrains.mps.smodel;
 
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public abstract class SNodeUndoableAction {
+public abstract class SNodeUndoableAction implements UndoItem {
   private final SNode myAffectedNode;
 
   protected SNodeUndoableAction(SNode affectedNode) {
     myAffectedNode = affectedNode;
   }
 
+  @Nullable
   public SNode getAffectedNode() {
     return myAffectedNode;
   }
 
   /**
-   * Answers the question if this action may be associate with VirtualFile/Document using default logic (rootNode -> VirtualFile).
-   * This is not true for deleted root nodes (probably to not have memory leak).
-   * By default clients should use getAffectedNode() method to access affected node and use it's root node in order to access VF associated with it.
+   * Some {@link SNodeUndoableAction}s may cause VFS state change. For example, new root node
+   * creation may potentially cause new VirtualFile creation. Root deletion, in turn, VirtualFile
+   * deletion. Such actions should return corresponding {@link VFSChange} member in order to
+   * indicate that VFS state may require update during undo/redo operations for such actions.
+   * <p>
+   * It is supposed that only single file may be affected by such actions. This means, there is only
+   * one (same) virtual file available in NodeVirtualFileSystem for the node (all nodes), returned
+   * from UndoContext.getVirtualFileNodes() for such actions.
    *
-   * @return true if VirtualFile may be calculated from the getAffectedNode() node
+   * @return FILE_CREATED or FILE_DELETED for {@link AddRootUndoableAction} or {@link RemoveRootUndoableAction}
+   * in accordance.
    */
-  public boolean hasVirtualFile() {
-    return true;
+  public VFSChange getAssociatedVfsChange() {
+    return VFSChange.NOT_CHANGED;
   }
 
-  /**
-   * @deprecated since MPS 2017.1 getAffectedNode() & hasVirtualFile() methods are used, to this method will be dropped after MPS 2017.1
-   */
-  @Deprecated
-  public SNode getRoot() {
-    return myAffectedNode.getContainingRoot();
-  }
-
-  protected abstract void doUndo();
-
-  protected abstract void doRedo();
-
-  public final void undo() {
-    doUndo();
-  }
-
-  public final void redo() {
-    doRedo();
-  }
-
-  public boolean isGlobal() {
-    return false;
+  public enum VFSChange {
+    NOT_CHANGED,
+    FILE_CREATED,
+    FILE_DELETED,
   }
 }

@@ -16,6 +16,9 @@
 package jetbrains.mps.openapi.editor.cells;
 
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
+import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstitutionAcceptable;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -42,6 +45,13 @@ public interface SubstituteAction {
   @Deprecated
   SNode getOutputConcept();
 
+  /**
+   * Checks if the action is acceptable with passed {@param acceptable}.
+   */
+  default boolean isAcceptable(String pattern, SubstitutionAcceptable acceptable) {
+    return false;
+  }
+
   SNode getActionType(String pattern);
 
   @Deprecated
@@ -61,4 +71,13 @@ public interface SubstituteAction {
    * This method should be always executed inside model command.
    */
   SNode substitute(@Nullable EditorContext context, String pattern);
+
+  @Nullable
+  default EditorMenuTraceInfo getEditorMenuTraceInfo() {
+    return null;
+  }
+
+  default void customize(String pattern, EditorMenuItemStyle style) {
+
+  }
 }

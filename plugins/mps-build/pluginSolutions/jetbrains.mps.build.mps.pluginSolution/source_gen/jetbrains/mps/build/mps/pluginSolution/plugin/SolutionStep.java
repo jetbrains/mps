@@ -7,8 +7,6 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 
 public class SolutionStep extends TwoOptionsStep<SModule> {
   private final Project myMpsProject;
@@ -58,15 +56,7 @@ public class SolutionStep extends TwoOptionsStep<SModule> {
   }
   @Override
   protected SModule[] getVariants() {
-    return Sequence.fromIterable(((Iterable<SModule>) this.myMpsProject.getProjectModules())).where(new IWhereFilter<SModule>() {
-      public boolean accept(SModule it) {
-        return it instanceof Solution;
-      }
-    }).select(new ISelector<SModule, SModule>() {
-      public SModule select(SModule it) {
-        return it;
-      }
-    }).toGenericArray(SModule.class);
+    return Sequence.fromIterable(((Iterable<SModule>) this.myMpsProject.getProjectModules())).ofType(Solution.class).toGenericArray(Solution.class);
   }
   @Override
   protected boolean isCheckBoxEnabled() {

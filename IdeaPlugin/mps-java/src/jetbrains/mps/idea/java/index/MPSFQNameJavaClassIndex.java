@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.java.index;
 
 import com.intellij.util.indexing.DataIndexer;
@@ -68,7 +67,7 @@ public class MPSFQNameJavaClassIndex extends AbstractMPSModelFileIndex {
 
     @Override
     protected String[] getKeys(SModelData model, final SNode node) {
-      return new String[]{ClassUtil.getClassFQName(model.getReference(), node)};
+      return new String[]{ClassUtil.getClassFQName(model.getModelName(), node)};
 
     }
   }

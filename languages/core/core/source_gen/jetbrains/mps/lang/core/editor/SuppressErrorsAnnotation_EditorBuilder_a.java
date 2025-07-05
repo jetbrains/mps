@@ -7,8 +7,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.editor.runtime.cells.BigCellUtil;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 /*package*/ class SuppressErrorsAnnotation_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -26,14 +32,43 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
   }
 
   /*package*/ EditorCell createCell() {
-    return createAttributedNodeCell_tmyyum_a();
+    return createAlternation_0();
   }
 
-  private EditorCell createAttributedNodeCell_tmyyum_a() {
+  private EditorCell createAlternation_0() {
+    boolean alternationCondition = true;
+    alternationCondition = nodeCondition_tmyyum_a0();
+    EditorCell editorCell = null;
+    if (alternationCondition) {
+      editorCell = createComponent_0();
+    } else {
+      editorCell = createAttributedNodeCell_0();
+    }
+    EditorCell bigCell = BigCellUtil.findBigCell(editorCell, getNode());
+    if (bigCell != null) {
+      bigCell.setBig(true);
+      setCellContext(bigCell);
+    }
+    return editorCell;
+  }
+  private boolean nodeCondition_tmyyum_a0() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(myNode, false), CONCEPTS.SuppressErrorsAnnotation$D1)).concat(Sequence.fromIterable(Sequence.<SNode>singleton(myNode))).any((it) -> it.getProperty(PROPS.comment$_sJ2) != null);
+  }
+  private EditorCell createComponent_0() {
+    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.SuppressedErrorComponent");
+    return editorCell;
+  }
+  private EditorCell createAttributedNodeCell_0() {
     EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
     EditorCell editorCell = getUpdateSession().getAttributedCell(AttributeKind.NODE, myNode);
-    editorCell.setBig(true);
-    editorCell.setCellContext(getCellFactory().getCellContext());
     return editorCell;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept SuppressErrorsAnnotation$D1 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty comment$_sJ2 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x7701afb3667b38fbL, "comment");
   }
 }

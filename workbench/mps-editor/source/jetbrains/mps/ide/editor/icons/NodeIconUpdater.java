@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,71 +15,51 @@
  */
 package jetbrains.mps.ide.editor.icons;
 
-import com.intellij.openapi.components.AbstractProjectComponent;
-import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
+import com.intellij.openapi.Disposable;
+import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileAdapter;
-import com.intellij.openapi.vfs.VirtualFileEvent;
-import com.intellij.openapi.vfs.VirtualFileListener;
-import com.intellij.openapi.vfs.VirtualFilePropertyEvent;
-import jetbrains.mps.nodefs.MPSNodeVirtualFile;
-import jetbrains.mps.nodefs.NodeVirtualFileSystem;
-import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.nodefs.NodeFileEventListener;
 
-import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * FIXME: MPSNodesVirtualFileSystem listens to node deletion and rename, why doesn't it send out file changed events as well, why do we
  *        need this distinct component? Does IDEA listen to file changes or it's indeed our responsibility to update editors on VF change?
  * XXX Why it's distinct from NodeFileIconProvider?
  */
-public class NodeIconUpdater extends AbstractProjectComponent {
-  private final FileEditorManagerEx myFileEditorManagerEx;
-  private final NodeVirtualFileSystem myNodeVFS;
-  private final VirtualFileListener myFileListener;
+public class NodeIconUpdater implements NodeFileEventListener {
+  private final Project myProject;
 
-  public NodeIconUpdater(Project project, FileEditorManagerEx fileEditorManager, NodeVirtualFileSystem nodeVFS) {
-    super(project);
-    myFileEditorManagerEx = fileEditorManager;
-    myNodeVFS = nodeVFS;
-    // TODO Would be more effective to be an ApplicationComponent and listen to bulk changes (BulkFileListener)
-    // however, there's no way to find out MPSProject from MPSNodeVirtualFile at the moment, and without a project
-    // can't access FileEditorManagerEx.
-    myFileListener = new VirtualFileAdapter() {
-      @Override
-      public void propertyChanged(@NotNull VirtualFilePropertyEvent event) {
-        refresh(event.getFile());
-      }
-
-      @Override
-      public void contentsChanged(@NotNull VirtualFileEvent event) {
-        refresh(event.getFile());
-      }
-
-      @Override
-      public void fileDeleted(@NotNull VirtualFileEvent event) {
-        refresh(event.getFile());
-      }
-    };
+  public NodeIconUpdater(Project project) {
+    myProject = project;
+    // FWIW, there's no reason to implement Disposable for projectListener; it is removed automatically w/o notification (as of this writing, 23.2)
   }
 
   @Override
-  public void projectOpened() {
-    myNodeVFS.addVirtualFileListener(myFileListener);
-  }
-
-  @Override
-  public void projectClosed() {
-    myNodeVFS.removeVirtualFileListener(myFileListener);
-  }
-
-  void refresh(VirtualFile vf) {
-    if (false == vf instanceof MPSNodeVirtualFile) {
+  public void changed(Collection<VirtualFile> vf) {
+    if (!myProject.isInitialized() || !myProject.isOpen()) {
+      // see beforeDelete()
       return;
     }
-    if (Arrays.<VirtualFile>asList(myFileEditorManagerEx.getOpenFiles()).contains(vf)) {
-      myFileEditorManagerEx.updateFilePresentation(vf);
+    final FileEditorManager fm = FileEditorManager.getInstance(myProject);
+    vf.forEach(fm::updateFilePresentation);
+  }
+
+  @Override
+  public void beforeDelete(Collection<VirtualFile> vf) {
+    if (!myProject.isInitialized() || !myProject.isOpen()) {
+      // with this listener being registered with <projectListener>, it may get initialized and receive notifications in inappropriate moment of time:
+      // There's project P1 open, and users open P2 in the same window.
+      // P1 closes and sends node file "delete" events. Closing means subscribers of its MB, including NodeIconUpdater(P1), get removed and don't receive
+      // notifications. At the same moment, P2 starts to initialize, and NodeIconUpdater(P2) is there as a projectListener, receiving notifications for a
+      // new MB connection. The project, P2, is not initialized at this moment, there's no FileEditorManager instance for it, and MPS fails with MPS-36385.
+      // FTR, before NodeIconUpdater became projectListener, it used to be ProjectComponent with another initialization sequence. I believe NodeIconUpdater(P2)
+      // was not initialized the moment NodeVirtualFileSystem(P1) dispatched "deleted" events (not all (any?) ProjectComponents got initialized by that time)
+      return;
     }
+    final FileEditorManager fm = FileEditorManager.getInstance(myProject);
+    vf.forEach(fm::closeFile);
   }
 }

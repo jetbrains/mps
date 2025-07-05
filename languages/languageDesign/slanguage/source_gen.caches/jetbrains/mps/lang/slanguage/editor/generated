@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-7fgjcjlayzbpwszo2bef62p9wml3vyw" />
+<product version="3" modelHash="-bqht6yzns6thqm335cnhygcd6tro8w7">
+  <files names="AspectModelRefExpression_Editor.java:AspectModelRefExpression_EditorBuilder_a.java:AspectName_StyleSheet.java:EditorAspectDescriptorImpl.java:Model_IsAspectOperation_Editor.java:Model_IsAspectOperation_EditorBuilder_a.java:OfAspectOperation_Editor.java:OfAspectOperation_EditorBuilder_a.java:OfAspectOperation_SubstituteMenu.java" />
+</product>
 

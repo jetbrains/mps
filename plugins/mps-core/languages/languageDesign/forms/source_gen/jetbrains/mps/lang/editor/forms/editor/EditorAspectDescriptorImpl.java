@@ -16,7 +16,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   @NotNull
   public Collection<ConceptEditor> getDeclaredEditors(SAbstractConcept concept) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
-    switch (index_xbvbvu_a0a.index(cncpt)) {
+    switch (conceptIndex.index(cncpt)) {
       case 0:
         return Collections.<ConceptEditor>singletonList(new CellModel_Checkbox_Editor());
       case 1:
@@ -32,5 +32,5 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
 
 
 
-  private static final ConceptSwitchIndex index_xbvbvu_a0a = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x455f8dda63d6378L), MetaIdFactory.conceptId(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x617bb6da72073973L), MetaIdFactory.conceptId(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x1298d6f05780e83bL), MetaIdFactory.conceptId(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x455f8dda63eef06L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x455f8dda63d6378L), MetaIdFactory.conceptId(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x617bb6da72073973L), MetaIdFactory.conceptId(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x1298d6f05780e83bL), MetaIdFactory.conceptId(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x455f8dda63eef06L)).seal();
 }

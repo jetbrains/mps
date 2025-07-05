@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <root>
+    <file name="DataFlowAspectDescriptorImpl.java">
+      <unit at="15,0,32,0" name="jetbrains.mps.core.xml.sax.dataFlow.DataFlowAspectDescriptorImpl" />
+    </file>
+  </root>
+  <root nodeRef="r:76061731-6bef-4f14-8b77-5192fe01b30b(jetbrains.mps.core.xml.sax.dataFlow)/1564648967342928937">
+    <file name="XMLSAXChildRule_DataFlow.java">
+      <node id="1564648967342939449" at="14,99,15,48" concept="0" />
+      <node id="1564648967342928937" at="20,0,21,0" concept="4" trace="actualArgument$mGKO" />
+      <node id="1564648967342929335" at="13,60,16,5" concept="1" />
+      <node id="1564648967342928937" at="13,0,18,0" concept="3" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1564648967342929338" at="14,99,15,48" />
+      <scope id="1564648967342928939" at="13,60,16,5" />
+      <scope id="1564648967342929335" at="13,60,16,5">
+        <var name="expr" id="1564648967342929336" />
+      </scope>
+      <scope id="1564648967342928937" at="13,0,18,0">
+        <var name="_context" id="1564648967342928937" />
+      </scope>
+      <unit id="1564648967342928937" at="19,0,22,0" name="jetbrains.mps.core.xml.sax.dataFlow.XMLSAXChildRule_DataFlow$LINKS" />
+      <unit id="1564648967342928937" at="12,0,23,0" name="jetbrains.mps.core.xml.sax.dataFlow.XMLSAXChildRule_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:76061731-6bef-4f14-8b77-5192fe01b30b(jetbrains.mps.core.xml.sax.dataFlow)/1564648967342946743">
+    <file name="XMLSAXBreakStatement_DataFlow.java">
+      <node id="1564648967342952126" at="14,85,15,108" concept="0" />
+      <node id="1564648967342946743" at="20,0,21,0" concept="4" trace="result$z_yu" />
+      <node id="1564648967342946908" at="13,60,16,5" concept="2" />
+      <node id="1564648967342946743" at="13,0,18,0" concept="3" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1564648967342946910" at="14,85,15,108" />
+      <scope id="1564648967342946745" at="13,60,16,5" />
+      <scope id="1564648967342946743" at="13,0,18,0">
+        <var name="_context" id="1564648967342946743" />
+      </scope>
+      <unit id="1564648967342946743" at="19,0,22,0" name="jetbrains.mps.core.xml.sax.dataFlow.XMLSAXBreakStatement_DataFlow$LINKS" />
+      <unit id="1564648967342946743" at="12,0,23,0" name="jetbrains.mps.core.xml.sax.dataFlow.XMLSAXBreakStatement_DataFlow" />
+    </file>
+  </root>
+</debug-info>
+

@@ -4,13 +4,13 @@ package references.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_NewComponentRef = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_OldComponentRef = new ConceptPresentationBuilder().deprecated(true).create();
+  private ConceptPresentation props_NewComponentRef;
+  private ConceptPresentation props_OldComponentRef;
 
   @Override
   @Nullable
@@ -18,8 +18,19 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.NewComponentRef:
+        if (props_NewComponentRef == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104932a6c9L, 0x6aff2c104932a6caL, "target", "", "");
+          props_NewComponentRef = cpb.create();
+        }
         return props_NewComponentRef;
       case LanguageConceptSwitch.OldComponentRef:
+        if (props_OldComponentRef == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
+          cpb.presentationByReference(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104931574dL, 0x6aff2c104932a69aL, "target", "", "");
+          props_OldComponentRef = cpb.create();
+        }
         return props_OldComponentRef;
     }
     return null;

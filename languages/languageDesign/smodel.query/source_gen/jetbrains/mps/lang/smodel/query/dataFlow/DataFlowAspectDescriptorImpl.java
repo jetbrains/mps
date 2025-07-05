@@ -18,12 +18,24 @@ public class DataFlowAspectDescriptorImpl extends DataFlowAspectDescriptorBase {
   @Override
   public Collection<IDataFlowBuilder> getDataFlowBuilders(SAbstractConcept concept) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
-    switch (index_vhxjlb_a0b.index(cncpt)) {
+    switch (conceptIndex.index(cncpt)) {
       case 0:
+        return Collections.<IDataFlowBuilder>singletonList(new CustomScope_DataFlow());
+      case 1:
+        return Collections.<IDataFlowBuilder>singletonList(new InstancesExpression_DataFlow());
+      case 2:
+        return Collections.<IDataFlowBuilder>singletonList(new ModelsScope_DataFlow());
+      case 3:
+        return Collections.<IDataFlowBuilder>singletonList(new ModulesScope_DataFlow());
+      case 4:
+        return Collections.<IDataFlowBuilder>singletonList(new QueryExpression_DataFlow());
+      case 5:
+        return Collections.<IDataFlowBuilder>singletonList(new QueryParameterScope_DataFlow());
+      case 6:
         return Collections.<IDataFlowBuilder>singletonList(new WithStatement_DataFlow());
       default:
     }
     return Collections.<IDataFlowBuilder>emptyList();
   }
-  private static final ConceptSwitchIndex index_vhxjlb_a0b = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3ac2ae2c0bcf368bL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a9L), MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x6b643f33718aa10dL), MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a7L), MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a5L), MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL), MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a3L), MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3ac2ae2c0bcf368bL)).seal();
 }

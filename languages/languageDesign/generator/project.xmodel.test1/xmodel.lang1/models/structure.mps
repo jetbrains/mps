@@ -2,9 +2,7 @@
 <model ref="r:5bb332e4-50df-4f1b-a6f0-dc360c0111d5(jetbrains.mps.generator.test.xmodel.lang1.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="3" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
-    <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
+    <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
@@ -37,7 +35,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -48,16 +46,16 @@
     <property role="EcuMT" value="7618674748894117707" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="6AUY56j4CHK" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT" />
       <property role="20kJfa" value="props" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5" />
       <property role="IQ2ns" value="7618674748894120816" />
       <ref role="20lvS9" node="6AUY56j4BXe" resolve="Property" />
     </node>
     <node concept="1TJgyj" id="6AUY56j4CHM" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT" />
       <property role="20kJfa" value="ops" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5" />
       <property role="IQ2ns" value="7618674748894120818" />
       <ref role="20lvS9" node="6AUY56j4BXh" resolve="Operation" />
     </node>
@@ -78,16 +76,14 @@
     <property role="EcuMT" value="7618674748894117713" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="6AUY56j4CHP" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="bean" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4" />
       <property role="IQ2ns" value="7618674748894120821" />
       <ref role="20lvS9" node="6AUY56j4BXb" resolve="Bean" />
     </node>
     <node concept="1TJgyj" id="6AUY56j4CHV" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="prop" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4" />
       <property role="IQ2ns" value="7618674748894120827" />
       <ref role="20lvS9" node="6AUY56j4BXe" resolve="Property" />
     </node>

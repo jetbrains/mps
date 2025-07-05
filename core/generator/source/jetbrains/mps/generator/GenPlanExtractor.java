@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,9 @@
 package jetbrains.mps.generator;
 
 import jetbrains.mps.generator.GenerationOptions.OptionsBuilder;
-import jetbrains.mps.generator.impl.GenPlanTranslator;
-import jetbrains.mps.generator.impl.plan.EngagedGeneratorCollector;
-import jetbrains.mps.generator.impl.plan.RegularPlanBuilder;
+import jetbrains.mps.messages.IMessageHandler;
+import jetbrains.mps.messages.Message;
+import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -34,13 +34,16 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.Set;
 
 /**
  * For a given model, figure out generation plan associated either with module's custom facet or through devkit
  * and populate generator options appropriately.
- * @implNote doesn't address model read. may cache information about plans found
+ * @implNote Implementation doesn't address model read.
+ *           May cache information about plans found.
+ *           Note, caching not necessarily respects model changes, plan changes or language/generator deployment state.
  * @author Artem Tikhomirov
  * @since 3.4
  */
@@ -51,15 +54,21 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
   private final Set<SModule> myOwnerModulesNoCustomFacet = new HashSet<>();
   // null value indicates there's no plan associated with devkit (or the plan couldn't get instantiated).
   private final Map<SModuleReference, PlanProviderInfo> myDevkitToPlan = new HashMap<>();
+  private final IMessageHandler myMessageHandler;
 
-  public GenPlanExtractor(@NotNull SRepository repository) {
+  // cache GP, separately per the method obtained
+  private final IdentityHashMap<SModel, ModelGenerationPlan> myFacetPlans = new IdentityHashMap<>(), myDevkitPlans = new IdentityHashMap<>();
+
+  public GenPlanExtractor(@NotNull SRepository repository, @Nullable IMessageHandler messageHandler) {
     myRepository = repository;
     myOptions = null;
+    myMessageHandler = messageHandler == null ? IMessageHandler.NULL_HANDLER : messageHandler;
   }
 
-  public GenPlanExtractor(@NotNull SRepository repository, @NotNull GenerationOptions.OptionsBuilder options) {
+  public GenPlanExtractor(@NotNull SRepository repository, @NotNull GenerationOptions.OptionsBuilder options, @Nullable IMessageHandler messageHandler) {
     myRepository = repository;
     myOptions = options;
+    myMessageHandler = messageHandler == null ? IMessageHandler.NULL_HANDLER : messageHandler;
   }
 
   /**
@@ -73,6 +82,9 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
 
   @Nullable
   private ModelGenerationPlan planFromCustomFacet(SModel model) {
+    if (myFacetPlans.containsKey(model)) {
+      return myFacetPlans.get(model);
+    }
     final SModule ownerModule = model.getModule();
     final ModelGenerationPlan.Provider facet = myOwnerModuleToFacet.get(ownerModule);
     if (facet != null) {
@@ -82,8 +94,13 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
       // ok, it's the first time we see the module
       ModelGenerationPlan.Provider f = fromModuleFacets(ownerModule);
       if (f != null) {
+        myMessageHandler.handle(Message.info(GenPlanExtractor.class, String.format("Module %s has facet that provides generation plans", ownerModule.getModuleName()), ownerModule.getModuleReference(), null));
         myOwnerModuleToFacet.put(ownerModule, f);
-        return f.getPlan(model);
+        ModelGenerationPlan plan = f.getPlan(model);
+        if (plan != null) {
+          myFacetPlans.put(model, plan);
+        }
+        return plan;
       } else {
         myOwnerModulesNoCustomFacet.add(ownerModule);
         // fall-through
@@ -109,10 +126,23 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
    */
   @Nullable
   private ModelGenerationPlan planFromDevKit(SModel model) {
+    ModelGenerationPlan plan = myDevkitPlans.get(model);
+    if (plan != null) {
+      return plan;
+    }
+    plan = planFromDevKitImpl(model);
+    if (plan != null) {
+      myDevkitPlans.put(model, plan);
+    }
+    return plan;
+  }
+
+  @Nullable
+  private ModelGenerationPlan planFromDevKitImpl(SModel model) {
     // plans associated directly with devkit property has higher precedence than plans coming from DevKit's facets plan providers
     ArrayList<ModelGenerationPlan.Provider> facetAssociatedPlan = new ArrayList<>();
+    ArrayList<ModelGenerationPlan.Provider> directPlan = new ArrayList<>();
     for (SModuleReference dkRef : ((SModelInternal) model).importedDevkits()) {
-      final SModelReference dkPlan;
       if (myDevkitToPlan.containsKey(dkRef)) {
         final PlanProviderInfo rv = myDevkitToPlan.get(dkRef);
         if (rv == null) {
@@ -120,7 +150,7 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
           continue;
         }
         if (rv.isDirect) {
-          return rv.provider.getPlan(model);
+          directPlan.add(rv.provider);
         } else {
           facetAssociatedPlan.add(rv.provider);
           // FALL-THROUGH, continue;
@@ -132,13 +162,16 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
         }
         DevKit devkit = (DevKit) dkModule;
         ModelGenerationPlan.Provider mgpProvider;
+        final SModelReference dkPlan;
         if (devkit.getModuleDescriptor() != null && (dkPlan = devkit.getModuleDescriptor().getAssociatedGenPlan()) != null) {
-          mgpProvider = new InterpretedPlanProvider(dkPlan, myRepository);
+          myMessageHandler.handle(Message.info(GenPlanExtractor.class, String.format("Devkit %s has associated plan %s", devkit.getModuleName(), dkPlan.getName()), dkPlan, null));
+          mgpProvider = new InterpretedPlanProvider(LanguageRegistry.getInstance(myRepository), myMessageHandler, dkPlan, myRepository);
           myDevkitToPlan.put(dkRef, new PlanProviderInfo(mgpProvider, true));
-          return mgpProvider.getPlan(model);
+          directPlan.add(mgpProvider);
         } else {
           mgpProvider = fromModuleFacets(devkit);
           if (mgpProvider != null) {
+            myMessageHandler.handle(Message.info(GenPlanExtractor.class, String.format("Devkit %s has module facet that provides generation plans", devkit.getModuleName()), devkit.getModuleReference(), null));
             myDevkitToPlan.put(dkRef, new PlanProviderInfo(mgpProvider, false));
             facetAssociatedPlan.add(mgpProvider);
           } else {
@@ -146,6 +179,15 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
           }
         }
       }
+    }
+    if (directPlan.size() == 1) {
+      return directPlan.get(0).getPlan(model);
+    }
+    else if (directPlan.size() > 1) {
+      // construct the composite provider
+      CompositeInterpretedPlanProvider planProvider =
+          new CompositeInterpretedPlanProvider(LanguageRegistry.getInstance(myRepository), myMessageHandler, directPlan);
+      return planProvider.getPlan(model);
     }
     for (ModelGenerationPlan.Provider p : facetAssociatedPlan) {
       // we can get here only if there's no GP directly associated with any imported devkit
@@ -169,10 +211,14 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
   public ModelGenerationPlan getPlan(@NotNull SModel model) throws IllegalArgumentException {
     ModelGenerationPlan rv = planFromCustomFacet(model);
     if (rv != null) {
+      String m = String.format("Generation plan for model %s defined with a custom module facet", model.getName());
+      myMessageHandler.handle(new Message(MessageKind.INFORMATION, GenPlanExtractor.class, m));
       return rv;
     }
     rv = planFromDevKit(model);
     if (rv != null) {
+      String m = String.format("Generation plan for model %s defined with an employed devkit", model.getName());
+      myMessageHandler.handle(new Message(MessageKind.INFORMATION, GenPlanExtractor.class, m));
       return rv;
     }
     assert !hasPlan(model) : "API consistency check";
@@ -188,35 +234,8 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
     myOptions.customPlan(model, p);
   }
 
-  final class InterpretedPlanProvider implements ModelGenerationPlan.Provider {
-
-    private final SModelReference myPlanModelRef;
-    private final SRepository myRepository;
-
-    public InterpretedPlanProvider(SModelReference planModelRef, SRepository repository) {
-      myPlanModelRef = planModelRef;
-      myRepository = repository;
-    }
-
-    @Nullable
-    @Override
-    public ModelGenerationPlan getPlan(@NotNull SModel model) {
-      final SModel planModel = myPlanModelRef.resolve(myRepository);
-      if (planModel == null) {
-        return null;
-      }
-      GenPlanTranslator gpt = new GenPlanTranslator(planModel.getRootNodes().iterator().next());
-      // FIXME in fact, shall respect additional languages passed through GenerationParametersProviderEx.getAdditionalLanguages(SModel), like
-      // original GenerationPlan did. However, it's rarely (if ever) used feature and contemporary GPs replace it completely, so I do not bother.
-      EngagedGeneratorCollector egc = new EngagedGeneratorCollector(model, null);
-      RegularPlanBuilder planBuilder = new RegularPlanBuilder(LanguageRegistry.getInstance(myRepository), egc.getGenerators());
-      gpt.feed(planBuilder);
-      return planBuilder.wrapUp(gpt.getPlanIdentity());
-    }
-  }
-
-  final class PlanProviderInfo {
-    final boolean isDirect; // true if MGP is assocated with a devkit directly, false if comes through facets
+  static final class PlanProviderInfo {
+    final boolean isDirect; // true if MGP is associated with a devkit directly, false if comes through facets
     final ModelGenerationPlan.Provider provider;
 
     PlanProviderInfo(ModelGenerationPlan.Provider p, boolean direct) {

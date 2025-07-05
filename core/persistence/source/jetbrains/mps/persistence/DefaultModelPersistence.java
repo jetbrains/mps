@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,12 @@
  */
 package jetbrains.mps.persistence;
 
+import jetbrains.mps.extapi.model.PersistenceProblem;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
+import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MetaModelInfoProvider.MetaInfoLoadingOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
@@ -28,25 +31,28 @@ import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.SModelId;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
+import jetbrains.mps.smodel.persistence.def.IModelPersistence;
+import jetbrains.mps.smodel.persistence.def.IModelWriter;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
-import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.util.JDOMUtil;
+import org.jdom.Document;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.persistence.DataSource;
-import org.jetbrains.mps.openapi.persistence.ModelCreationException;
+import org.jetbrains.mps.openapi.persistence.DataSourceNotSupportedProblem;
+import org.jetbrains.mps.openapi.persistence.MFProblem;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.ModelLoadingOption;
-import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
+import org.jetbrains.mps.openapi.persistence.ModelSaveException;
+import org.jetbrains.mps.openapi.persistence.ModelSaveOption;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
@@ -54,85 +60,34 @@ import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
+
+import static org.jetbrains.mps.openapi.persistence.MFProblem.NO_PROBLEM;
 
 /**
  * Factory for models stored in .mps files.
  */
-public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFactory {
-  private static final Logger LOG = LogManager.getLogger(DefaultModelPersistence.class);
-
-  /**
-   * Boolean option for model loading, indicates loaded model doesn't care about implementation node.
-   * For the time being, implementation node is the one with appropriate ConceptKind (designated according to concept's implemented interfaces).
-   *
-   * @deprecated use {@link ContentLoadingExtentOptions} instead
-   */
-  @ToRemove(version = 3.7)
-  @Deprecated
-  public static final String OPTION_STRIP_IMPLEMENTATION = "load-without-impl";
-
-  /**
-   * Boolean option for model loading, indicates loaded model cares about its interface aspects only.
-   *
-   * @deprecated use {@link ContentLoadingExtentOptions} instead
-   */
-  @ToRemove(version = 3.7)
-  @Deprecated
-  public static final String OPTION_INTERFACE_ONLY = "load-interface-only";
+public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFactory, DataLocationAwareModelFactory {
+  private static final Logger LOG = Logger.getLogger(DefaultModelPersistence.class);
 
   public enum ContentLoadingExtentOptions implements ModelLoadingOption {
+    /**
+     * An option for model loading, indicates loaded model doesn't care about implementation node.
+     * For the time being, implementation node is the one with appropriate ConceptKind (designated according to concept's implemented interfaces).
+     */
     STRIP_IMPLEMENTATION,
+    /**
+     * Boolean option for model loading, indicates loaded model cares about its interface aspects only.
+     *
+     */
     INTERFACE_ONLY
   }
 
   @Internal
   public DefaultModelPersistence() {
     // do not delete, it is a java service
-  }
-
-  @NotNull
-  @Override
-  public SModel load(@NotNull DataSource dataSource, @NotNull Map<String, String> options) throws IOException {
-    List<ModelLoadingOption> newOptions = new ArrayList<>();
-    if (Boolean.parseBoolean(options.get(MetaModelInfoProvider.OPTION_KEEP_READ_METAINFO))) {
-      newOptions.add(MetaInfoLoadingOption.KEEP_READ);
-    }
-    if (options.containsKey(OPTION_STRIP_IMPLEMENTATION) && Boolean.parseBoolean(options.get(OPTION_STRIP_IMPLEMENTATION))) {
-      newOptions.add(ContentLoadingExtentOptions.STRIP_IMPLEMENTATION);
-    } else if (options.containsKey(OPTION_INTERFACE_ONLY) && Boolean.parseBoolean(options.get(OPTION_INTERFACE_ONLY))) {
-      newOptions.add(ContentLoadingExtentOptions.INTERFACE_ONLY);
-    }
-    try {
-      return load(dataSource, newOptions.toArray(new ModelLoadingOption[newOptions.size()]));
-    } catch (ModelLoadException e) {
-      throw new IOException(e);
-    }
-  }
-
-  @NotNull
-  @Override
-  public SModel create(@NotNull DataSource dataSource, @NotNull Map<String, String> options) throws IOException {
-    String modelName = options.get(OPTION_MODELNAME);
-    if (modelName == null) {
-      throw new IOException("modelName is not provided");
-    }
-    try {
-      return create(dataSource, new SModelName(modelName));
-    } catch (ModelCreationException e) {
-      throw new IOException(e);
-    }
-  }
-
-  @Override
-  public boolean canCreate(@NotNull DataSource dataSource, @NotNull Map<String, String> options) {
-    return dataSource instanceof StreamDataSource;
   }
 
   @Override
@@ -142,16 +97,29 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
 
   @NotNull
   @Override
+  public MFProblem canCreate(@NotNull DataSource dataSource, @NotNull SModelName modelName, @NotNull ModelLoadingOption... options) {
+    if (!supports(dataSource)) {
+      return new DataSourceNotSupportedProblem(dataSource);
+    }
+    if (dataSource instanceof FileSystemBasedDataSource) {
+      if (((FileSystemBasedDataSource) dataSource).exists()) {
+          return () -> "Some of the data source paths already exist on the disk";
+      }
+    }
+    return NO_PROBLEM;
+  }
+
+  @NotNull
+  @Override
   public SModel create(@NotNull DataSource dataSource,
                        @NotNull SModelName modelName,
-                       @NotNull ModelLoadingOption... options) throws UnsupportedDataSourceException,
-                                                                      ModelCreationException {
+                       @NotNull ModelLoadingOption... options) throws UnsupportedDataSourceException {
     if (!(supports(dataSource))) {
       throw new UnsupportedDataSourceException(dataSource);
     }
 
     final SModelHeader header = SModelHeader.create(ModelPersistence.LAST_VERSION);
-    final SModelReference modelReference = PersistenceFacade.getInstance().createModelReference(null, SModelId.generate(), modelName.getValue());
+    final SModelReference modelReference = PersistenceFacade.getInstance().createModelReference(null, SModelId.generate(), modelName);
     header.setModelReference(modelReference);
     final DefaultSModelDescriptor rv = new DefaultSModelDescriptor(new PersistenceFacility(this, (StreamDataSource) dataSource), header);
     // Hack to ensure newly created model is indeed empty. Otherwise, with StreamDataSource pointing to existing model stream, an attempt to
@@ -181,7 +149,7 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     LOG.debug("Getting model " + header.getModelReference() + " from " + dataSource.getLocation());
 
     if (Arrays.asList(options).contains(MetaInfoLoadingOption.KEEP_READ)) {
-      header.setMetaInfoProvider(new StuffedMetaModelInfo(new RegularMetaModelInfo(header.getModelReference())));
+      header.setMetaInfoProvider(new StuffedMetaModelInfo(new RegularMetaModelInfo()));
     }
 
     // If there are any load options, process them and fill the model with desired model data, otherwise return a lightweight descriptor.
@@ -246,7 +214,6 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
       throw new UnsupportedDataSourceException(dataSource);
     }
     try {
-
       SModelHeader header = ModelPersistence.loadDescriptor((StreamDataSource) dataSource);
       return header.getPersistenceVersion() < ModelPersistence.LAST_VERSION;
     } catch (ModelReadException ex) {
@@ -254,23 +221,10 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     }
   }
 
-  @Override
-  public void upgrade(@NotNull DataSource dataSource) throws IOException {
-    if (!(dataSource instanceof StreamDataSource)) {
-      throw new UnsupportedDataSourceException(dataSource);
-    }
 
-    StreamDataSource source = (StreamDataSource) dataSource;
-    try {
-      DefaultSModel model = ModelPersistence.readModel(source, false);
-      ModelPersistence.saveModel(model, source, ModelPersistence.LAST_VERSION);
-    } catch (ModelReadException ex) {
-      throw new IOException(ex.getMessage(), ex);
-    }
-  }
-
+  // XXX if this method is removed and replaced with the one with ModelSaveOption..., please make sure mmiProvider extraction from SModelHeader is there!
   @Override
-  public void save(@NotNull SModel model, @NotNull DataSource dataSource) throws IOException {
+  public void save(@NotNull SModel model, @NotNull DataSource dataSource) throws ModelSaveException, UnsupportedDataSourceException {
     if (!(dataSource instanceof StreamDataSource)) {
       throw new UnsupportedDataSourceException(dataSource);
     }
@@ -286,29 +240,38 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
   }
 
   @Override
+  public void save(@NotNull SModel model, @NotNull DataSource dataSource, @Nullable ModelSaveOption... options) throws ModelSaveException {
+    checkSaveStreamDataSource(dataSource, model.getReference());
+    // improved alternative to ModelPersistence.saveModel
+    checkSaveReadOnlyDataSource(dataSource);
+
+    if (model instanceof PersistenceVersionAware) {
+      int persistenceVersion = ((PersistenceVersionAware) model).getPersistenceVersion();
+      // this save() method was introduced in v9 persistence aka LAST_VERSION, don't care to upgrade persistence version.
+      // XXX note, this logic is valid unless there's v10!
+      if (persistenceVersion != ModelPersistence.LAST_VERSION) {
+        ((PersistenceVersionAware) model).setPersistenceVersion(ModelPersistence.LAST_VERSION);
+      }
+    }
+    try {
+      final IModelPersistence mpImpl = ModelPersistence.getPersistence(ModelPersistence.LAST_VERSION);
+      final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(((SModelBase) model).getModelData());
+      final IModelWriter modelWriter = mpImpl.getModelWriter(mmiProvider, options);
+      Document document = modelWriter.saveModel(((SModelBase) model).getSModel());
+      JDOMUtil.writeDocument(document, (StreamDataSource) dataSource);
+    } catch (Exception ex) {
+      throw new ModelSaveException(ex.getMessage(), Collections.emptySet(), ex);
+    }
+  }
+
+  @Override
   public void index(@NotNull InputStream input, @NotNull Callback callback) throws IOException {
     ModelPersistence.index(input, callback);
   }
 
   @Override
-  public SModelData parseSingleStream(@NotNull String name, @NotNull InputStream input) throws IOException {
+  public SModelData parseSingleStream(@NotNull String name, @NotNull InputStream input) throws IOException, ModelReadException {
     return ModelPersistence.getModelData(input);
-  }
-
-  @Override
-  public boolean isBinary() {
-    return false;
-  }
-
-  @Override
-  public String getFileExtension() {
-    return MPSExtentions.MODEL;
-  }
-
-  @NotNull
-  @Override
-  public String getFormatTitle() {
-    return "Universal XML-based format";
   }
 
   @NotNull
@@ -317,43 +280,51 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     return PreinstalledModelFactoryTypes.PLAIN_XML;
   }
 
+  @Nullable
+  @Override
+  public DataSource getNodeLocation(@NotNull SNode node) {
+    CorrectnessChecker correctnessChecker = new CorrectnessChecker(this);
+    SModel model = node.getModel();
+    if (model == null) return null;
+    correctnessChecker.checkAndWarn(model);
+    if (!correctnessChecker.doesMFSupportDS(model)) {
+      return null;
+    }
+    return model.getSource();
+  }
+
+  @Nullable
+  public DataSource getMetaInfoLocation(@NotNull SModel model) {
+    return getDataLocation(model);
+  }
+
+  @Nullable
+  @Override
+  public DataSource getDataLocation(@NotNull SModel model) {
+    CorrectnessChecker correctnessChecker = new CorrectnessChecker(this);
+    correctnessChecker.checkAndWarn(model);
+    if (!correctnessChecker.doesMFSupportDS(model)) {
+      return null;
+    }
+    return model.getSource();
+  }
+
   @NotNull
   @Override
   public List<DataSourceType> getPreferredDataSourceTypes() {
     return Collections.singletonList(PreinstalledDataSourceTypes.MPS);
   }
 
-  public static Map<String, String> getDigestMap(@NotNull MultiStreamDataSource source, String streamName) {
-    InputStream is = null;
-    try {
-      is = source.openInputStream(streamName);
-      return getDigestMap(new InputStreamReader(is, FileUtil.DEFAULT_CHARSET));
-    } catch (IOException e) {
-      /* ignore */
-    } finally {
-      FileUtil.closeFileSafe(is);
+  /*package*/ static void checkSaveStreamDataSource(DataSource dataSource, SModelReference modelReference) throws ModelSaveException {
+    if (!(dataSource instanceof StreamDataSource)) {
+      String m = String.format("Incompatible data source %s(%s) for model %s", dataSource.getType(), dataSource.getLocation(), modelReference);
+      throw new ModelSaveException(PersistenceProblem.errorSave(m, dataSource));
     }
-    return null;
   }
 
-  public static Map<String, String> getDigestMap(@NotNull StreamDataSource source) {
-    InputStream is = null;
-    try {
-      is = source.openInputStream();
-      return getDigestMap(new InputStreamReader(is, FileUtil.DEFAULT_CHARSET));
-    } catch (IOException e) {
-      /* ignore */
-    } finally {
-      FileUtil.closeFileSafe(is);
-    }
-    return null;
-  }
-
-  public static Map<String, String> getDigestMap(Reader input) {
-    try {
-      return ModelPersistence.calculateHashes(FileUtil.read(input));
-    } catch (ModelReadException e) {
-      return null;
+  /*package*/ static void checkSaveReadOnlyDataSource(DataSource dataSource) throws ModelSaveException {
+    if (dataSource.isReadOnly()) {
+      throw new ModelSaveException(PersistenceProblem.errorSave(String.format("`%s' is read-only", dataSource.getLocation()), dataSource));
     }
   }
 
@@ -368,35 +339,24 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
 
   private static class PersistenceFacility extends LazyLoadFacility {
     /*package*/ PersistenceFacility(DefaultModelPersistence modelFactory, StreamDataSource dataSource) {
-      super(modelFactory, dataSource);
+      super(modelFactory, dataSource, true);
     }
 
     @NotNull
-    @Override
-    public StreamDataSource getSource() {
+    private StreamDataSource getSource0() {
       return (StreamDataSource) super.getSource();
-    }
-
-    @Override
-    public Map<String, String> getGenerationHashes() {
-      Map<String, String> generationHashes = ModelDigestHelper.getInstance().getGenerationHashes(getSource());
-      if (generationHashes != null) {
-        return generationHashes;
-      }
-
-      return DefaultModelPersistence.getDigestMap(getSource());
     }
 
     @NotNull
     @Override
     public SModelHeader readHeader() throws ModelReadException {
-      return ModelPersistence.loadDescriptor(getSource());
+      return ModelPersistence.loadDescriptor(getSource0());
     }
 
     @NotNull
     @Override
-    public ModelLoadResult readModel(@NotNull SModelHeader header, ModelLoadingState state) throws ModelReadException {
-      return ModelPersistence.readModel(header, getSource(), state);
+    public ModelLoadResult readModel(@NotNull SModelHeader header, @NotNull ModelLoadingState state) throws ModelReadException {
+      return ModelPersistence.readModel(header, getSource0(), state);
     }
 
     @Override
@@ -406,8 +366,8 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     }
 
     @Override
-    public void saveModel(@NotNull SModelHeader header, SModelData modelData) throws IOException {
-      ModelPersistence.saveModel((jetbrains.mps.smodel.SModel) modelData, getSource(), header.getPersistenceVersion());
+    public void saveModel(@NotNull SModelHeader header, SModelData modelData) throws ModelSaveException {
+      ModelPersistence.saveModel((jetbrains.mps.smodel.SModel) modelData, getSource0(), header.getPersistenceVersion());
     }
   }
 }

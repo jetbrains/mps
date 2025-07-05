@@ -4,12 +4,12 @@ package jetbrains.mps.baseLanguage.jdk7.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_StringSwitchStatement = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_StringSwitchStatement;
 
   @Override
   @Nullable
@@ -17,6 +17,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.StringSwitchStatement:
+        if (props_StringSwitchStatement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
+          cpb.rawPresentation("switch");
+          props_StringSwitchStatement = cpb.create();
+        }
         return props_StringSwitchStatement;
     }
     return null;

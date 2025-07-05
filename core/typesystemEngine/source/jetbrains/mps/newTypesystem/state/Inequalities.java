@@ -32,11 +32,11 @@ import java.util.*;
 
 public class Inequalities {
   private final State myState;
-  private ManyToManyMap<SNode, SNode> myInputsToOutputsInc = new ManyToManyMap<SNode, SNode>();
-  private ManyToManyMap<SNode, RelationBlock> myNodesToBlocksInc = new ManyToManyMap<SNode, RelationBlock>();
-  private Set<SNode> myNodesInc = new THashSet<SNode>();
-  private Set<SNode> mySolvableLeft = new THashSet<SNode>();
-  private Set<SNode> mySolvableRight = new THashSet<SNode>();
+  private ManyToManyMap<SNode, SNode> myInputsToOutputsInc = new ManyToManyMap<>();
+  private ManyToManyMap<SNode, RelationBlock> myNodesToBlocksInc = new ManyToManyMap<>();
+  private Set<SNode> myNodesInc = new THashSet<>();
+  private Set<SNode> mySolvableLeft = new THashSet<>();
+  private Set<SNode> mySolvableRight = new THashSet<>();
   private boolean mySolveOnlyRight = false;
 
   private static final ComparableRelation comparableRelation = new ComparableRelation();
@@ -98,8 +98,8 @@ public class Inequalities {
   }
 
   private boolean isIndependent(Set<SNode> used, SNode var) {
-    Queue<SNode> dependsOn = new LinkedList<SNode>();
-    Set<SNode> passed = new HashSet<SNode>();
+    Queue<SNode> dependsOn = new LinkedList<>();
+    Set<SNode> passed = new HashSet<>();
     dependsOn.addAll(myInputsToOutputsInc.getBySecond(var));
     while (!dependsOn.isEmpty()) {
       SNode node = dependsOn.remove();
@@ -117,7 +117,7 @@ public class Inequalities {
   }
 
   public List<RelationBlock> getRelationsToSolve() {
-    List<RelationBlock> result = new LinkedList<RelationBlock>();
+    List<RelationBlock> result = new LinkedList<>();
     for (Block block : myState.getBlocks()) {
       if (block.getBlockKind() != BlockKind.WHEN_CONCRETE && block.getBlockKind() != BlockKind.TARGET) {
         RelationBlock relationBlock = (RelationBlock) block;
@@ -166,7 +166,7 @@ public class Inequalities {
 
   public void onEquationAdded(SNode child, SNode parent) {
     if (!solvingInProcess) return;
-    for (RelationBlock block : new ArrayList<RelationBlock>(myNodesToBlocksInc.getByFirst(child))) {
+    for (RelationBlock block : new ArrayList<>(myNodesToBlocksInc.getByFirst(child))) {
       myNodesToBlocksInc.removeLink(child, block);
       if (TypesUtil.isVariable(parent)) {
         myNodesToBlocksInc.addLink(parent, block);
@@ -176,13 +176,13 @@ public class Inequalities {
     substituteVarInSet(child, parent, mySolvableLeft);
     substituteVarInSet(child, parent, mySolvableRight);
     List<SNode> variables = TypesUtil.getVariables(parent, myState);
-    for (SNode outputVar : new ArrayList<SNode>(myInputsToOutputsInc.getByFirst(child))) {
+    for (SNode outputVar : new ArrayList<>(myInputsToOutputsInc.getByFirst(child))) {
       for (SNode inputVar : variables) {
         addVariablesLinkInc(inputVar, outputVar);
       }
       myInputsToOutputsInc.removeLink(child, outputVar);
     }
-    for (SNode inputVar : new ArrayList<SNode>(myInputsToOutputsInc.getBySecond(child))) {
+    for (SNode inputVar : new ArrayList<>(myInputsToOutputsInc.getBySecond(child))) {
       for (SNode outputVar : variables) {
         addVariablesLinkInc(inputVar, outputVar);
       }
@@ -244,15 +244,10 @@ public class Inequalities {
         }
       }
     }
-    Set<SNode> usedNodes = new HashSet<SNode>();
-    LinkedList<SNode> tempNodes = new LinkedList<SNode>(nodes);
+    Set<SNode> usedNodes = new HashSet<>();
+    LinkedList<SNode> tempNodes = new LinkedList<>(nodes);
     // sort once to avoid n^2
-    Collections.sort(tempNodes, new Comparator<SNode>() {
-      @Override
-      public int compare(SNode a, SNode b) {
-        return ((SNodeId)a.getNodeId()).compareTo((SNodeId)b.getNodeId());
-      }
-    });
+    Collections.sort(tempNodes, (a, b) -> ((SNodeId)a.getNodeId()).compareTo((SNodeId)b.getNodeId()));
 
     while (tempNodes.size() > 0) {
       SNode current = getNodeWithNoInput(tempNodes, usedNodes);
@@ -279,8 +274,7 @@ public class Inequalities {
     // but this slows down inequations elimination substantially
     if (trySolvingRecursive(inequalities)) return true;
 
-    if (lastChance(inequalities)) return true;
-    return false;
+    return lastChance(inequalities);
   }
 
   private boolean isRecursive(RelationBlock inequality) {
@@ -311,19 +305,15 @@ public class Inequalities {
     }
     return false;
   }
-
-  private void collectNodesTransitive(SNode node, Set<SNode> collected, boolean isLeft, Map<SNode, RelationBlock> typesToBlocks, AbstractRelation relation, Set<SNode> alreadyPassed) {
+  
+  private void collectNodesTransitive(SNode toSolve, Set<SNode> collectForward, Set<SNode> collectBackward, boolean isLeft, Map<SNode, RelationBlock> typesToBlocks, AbstractRelation relation, Set<SNode> alreadyPassed) {
     // Patching a deficiency of this algorithm: we're listening to equation/inequation adding, but not removing
     // TODO: update the incremental maps on equation/inequation removal
-    Set<RelationBlock> blocks = new THashSet<RelationBlock>(myNodesToBlocksInc.getByFirst(node));
+    Set<RelationBlock> blocks = new THashSet<>(myNodesToBlocksInc.getByFirst(toSolve));
     final Set<Block> stateBlocks = myState.getBlocks();
-    for(Iterator<RelationBlock> it = blocks.iterator(); it.hasNext();) {
-      final RelationBlock next = it.next();
-      if(!stateBlocks.contains(next) || isRecursive(next)) { // recursive relations are solved at the end
-        it.remove();
-      }
-    }
-    alreadyPassed.add(node);
+    // recursive relations are solved at the end
+    blocks.removeIf(next -> !stateBlocks.contains(next) || isRecursive(next));
+    alreadyPassed.add(toSolve);
     blocks = getRelationBlocks(blocks, relation);
     for (RelationBlock block : blocks) {
       if (block.isCheckOnly()) {
@@ -334,17 +324,19 @@ public class Inequalities {
       if (right == left) {
         continue;
       }
-      SNode cur = isLeft ? left : right;
-      SNode other = isLeft ? right : left;
-      if (cur == node) {
-        if (!TypesUtil.isVariable(other)) {
-          SNode type = myState.expand(other);
-          collected.add(type);
+      SNode nowSolving = isLeft ? left : right;
+      SNode nowOpposite = isLeft ? right : left;
+      if (nowSolving == toSolve || nowOpposite == toSolve) {
+        boolean forward = nowSolving == toSolve;
+        Set<SNode> cfwd = forward ? collectForward : collectBackward;
+        Set<SNode> cbwd = forward ? collectBackward : collectForward;
+        SNode nextToSolve = forward ? nowOpposite : nowSolving;
+        if (!TypesUtil.isVariable(nextToSolve)) {
+          SNode type = myState.expand(nextToSolve);
+          cfwd.add(type);
           typesToBlocks.put(type, block);
-        } else {
-          if (!alreadyPassed.contains(other)){
-            collectNodesTransitive(other, collected, isLeft, typesToBlocks, relation, alreadyPassed);
-          }
+        } else if (!alreadyPassed.contains(nextToSolve)){
+          collectNodesTransitive(nextToSolve, cfwd, cbwd, forward == isLeft, typesToBlocks, relation, alreadyPassed);
         }
       }
     }
@@ -361,7 +353,7 @@ public class Inequalities {
   }
 
   private Set<RelationBlock> getRelationBlocks(Set<RelationBlock> blocks, AbstractRelation relation) {
-    Set<RelationBlock> result = new THashSet<RelationBlock>();
+    Set<RelationBlock> result = new THashSet<>();
     for (RelationBlock block : blocks) {
       if (relation.accept(block.getRelationKind())) {
         result.add(block);
@@ -371,21 +363,22 @@ public class Inequalities {
   }
 
   private boolean solveRelationForNode(SNode node, AbstractRelation relation) {
-    Map<SNode, RelationBlock> typesToBlocks = new THashMap<SNode, RelationBlock>();
+    Map<SNode, RelationBlock> typesToBlocks = new THashMap<>();
     assert TypesUtil.isVariable(node);
-    Set<SNode> rightTypes = new LinkedHashSet<SNode>();
-    Set<SNode> leftTypes = new LinkedHashSet<SNode>();
-    collectNodesTransitive(node, leftTypes, false, typesToBlocks, relation, new HashSet<SNode>());
-    if (!mySolveOnlyRight) {
-      collectNodesTransitive(node, rightTypes, true, typesToBlocks, relation, new HashSet<SNode>());
-    }
+    Set<SNode> rightTypes = new LinkedHashSet<>();
+    Set<SNode> leftTypes = new LinkedHashSet<>();
+    // to handle the following system: y <= x, TypeA <= y, y <= TypeB
+    // (solving for x we get TypeA with mySolveOnlyRight, while TypeB may be preferrable)
+    // collect all types, moving in both directions at once
+    // ignore mySolveOnlyRight (seems to be unnecessary now)
+    collectNodesTransitive(node, leftTypes, rightTypes, false, typesToBlocks, relation, new HashSet<>());
     return relation.solve(node, leftTypes, rightTypes, myState, typesToBlocks);
   }
 
   public Map<Set<SNode>, Set<InequalityBlock>> getInequalityGroups(Set<Block> inequalities) {
-    Map<SNode, Set<SNode>> components = new HashMap<SNode, Set<SNode>>(1);
-    Map<Set<SNode>, Set<InequalityBlock>> groupsToInequalities = new HashMap<Set<SNode>, Set<InequalityBlock>>();
-    Set<SNode> emptySet = new HashSet<SNode>(1);
+    Map<SNode, Set<SNode>> components = new HashMap<>(1);
+    Map<Set<SNode>, Set<InequalityBlock>> groupsToInequalities = new HashMap<>();
+    Set<SNode> emptySet = new HashSet<>(1);
     for (Block block : inequalities) {
       InequalityBlock inequality = (InequalityBlock) block;
 
@@ -394,15 +387,15 @@ public class Inequalities {
       if (variables.size() == 0) {
         Set<InequalityBlock> emptyBlocks = groupsToInequalities.get(emptySet);
         if (emptyBlocks == null) {
-          emptyBlocks = new HashSet<InequalityBlock>(1);
+          emptyBlocks = new HashSet<>(1);
           groupsToInequalities.put(emptySet, emptyBlocks);
         }
         emptyBlocks.add(inequality);
         continue;
       }
-      Set<SNode> currentResult = new HashSet<SNode>();
+      Set<SNode> currentResult = new HashSet<>();
 
-      Set<InequalityBlock> currentInequalities = new HashSet<InequalityBlock>();
+      Set<InequalityBlock> currentInequalities = new HashSet<>();
       currentInequalities.add(inequality);
       for (SNode var : variables) {
         var = myState.getRepresentative(var);

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="1ywktoqoz9mk6n7fo8uuhbkpkxg7s49" />
+<product version="3" modelHash="1i2e89idid0vjm5dkrdwsvfujdbyije">
+  <files names="GoToNodeById_Action.java:MPSStackTraceFilter.java:PlatformActions.xml" />
+</product>
 

@@ -18,10 +18,9 @@ package jetbrains.mps.workbench;
 import com.intellij.openapi.application.ApplicationInfo;
 
 public final class DocumentationHelper {
-  public static String getConfluenceBase() {
-    return String.format("http://confluence.jetbrains.com/display/MPSD%s%s/",
-        ApplicationInfo.getInstance().getMajorVersion(),
-        ApplicationInfo.getInstance().getMinorVersion()
-    );
+  public static String getHelpCenterBase() {
+    ApplicationInfo info = ApplicationInfo.getInstance();
+    return String.format("https://www.jetbrains.com/help/mps/%s.%s/",
+                         info.getMajorVersion(), info.getMinorVersionMainPart());
   }
 }

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-ckuacftdg5czanhmlomba7cmijf90vl" />
+<product version="3" modelHash="c99ht53jwftkflo70o47a31xp55og7k">
+  <files names="AddMessageAnnotation_Intention.java:ConvertPatternRule_Intention.java:CreateQFixFromUsageHelper.java:CreateQFixFromUsageInREStmt_Intention.java:CreateQFixFromUsageInTSIntention_Intention.java:CreateTypesystemIntention_Intention.java:FlipInequality_Intention.java:IntentionsDescriptor.java:MakeInequalityCheckOnly_Intention.java" />
+</product>
 

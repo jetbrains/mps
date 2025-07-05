@@ -28,18 +28,18 @@ import jetbrains.mps.lang.editor.styleTests.editor.TestStylesheet_StyleSheet.pri
   }
 
   /*package*/ EditorCell createCell() {
-    return createComponent_y5s67_a();
+    return createComponent_0();
   }
 
-  private EditorCell createComponent_y5s67_a() {
+  private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.styleTests.editor.StyleTest_EditorComponent");
     EditorCell bigCell = BigCellUtil.findBigCell(editorCell, getNode());
     if (bigCell != null) {
       bigCell.setBig(true);
-      bigCell.setCellContext(getCellFactory().getCellContext());
+      setCellContext(bigCell);
     }
     Style style = new StyleImpl();
-    new priorityStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new priorityStyleStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }

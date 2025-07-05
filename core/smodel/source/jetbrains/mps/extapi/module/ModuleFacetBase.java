@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,31 @@
  */
 package jetbrains.mps.extapi.module;
 
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.DetachableFacet;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
 /**
  * Base class for all module facets.
+ *
+ * fixme not thread-safe
  */
-public abstract class ModuleFacetBase implements SModuleFacet {
+public abstract class ModuleFacetBase implements SModuleFacet, DetachableFacet {
+  private static final Logger LOG = Logger.getLogger(ModuleFacetBase.class);
+
   private final String myFacetType;
   private SModule myModule;
-  private boolean isRegistered;
 
-  protected ModuleFacetBase(@NotNull String facetType) {
+  /**
+   * attach happens automatically so you can initialize a facet in one line
+   */
+  protected ModuleFacetBase(@NotNull String facetType, @NotNull SModule module) {
     myFacetType = facetType;
+    attach(module);
   }
 
   @NotNull
@@ -38,53 +48,36 @@ public abstract class ModuleFacetBase implements SModuleFacet {
     return myFacetType;
   }
 
-  public String getFacetPresentation() {
-    return getFacetType();
-  }
-
-  @NotNull
+  @Nullable
   @Override
-  public SModule getModule() {
+  public final SModule getModule() {
     return myModule;
   }
 
   /**
-   * FIXME javadoc @return and do we need both setModule + attach?
-   * Returns null if the facet cannot work within the passed module.
+   * #attach and #detach are designed final, doing the simplest thing (resetting the field #myModule)
+   * If a client of this class needs to perform a custom initialization when the owning module is being changed,
+   * we may offer a single callback instead of overridable #attach methods
+   *
+   * @param module will be returned from #getModule afterwards
    */
-  public boolean setModule(SModule module) {
-    checkNotRegistered();
-    myModule = module;
-    return true;
-  }
-
-  protected void checkNotRegistered() {
-    if (isRegistered()) {
-      throw new IllegalStateException("cannot change properties of the registered root");
+  public final void attach(@NotNull SModule module) {
+    if (myModule != null) {
+      LOG.error("Could not attach to the module, already attached to " + myModule, new IllegalStateException());
+      return;
     }
+    myModule = module;
   }
 
-  public boolean isRegistered() {
-    return isRegistered;
-  }
-
-  public void attach() {
-    assert myModule != null;
-    isRegistered = true;
-  }
-
-  public void dispose() {
-    isRegistered = false;
-  }
-
-
-  @Override
-  public void save(Memento memento) {
-    // no-op
+  public final void detach() {
+    myModule = null;
   }
 
   @Override
-  public void load(Memento memento) {
-    checkNotRegistered();
+  public void save(@NotNull Memento memento) {
+  }
+
+  @Override
+  public void load(@NotNull Memento memento) {
   }
 }

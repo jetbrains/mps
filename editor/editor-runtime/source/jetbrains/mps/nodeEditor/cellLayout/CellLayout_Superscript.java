@@ -15,11 +15,13 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
+import jetbrains.mps.editor.runtime.HtmlTextBuilderImpl;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.style.ScriptKind;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
@@ -115,20 +117,20 @@ public class CellLayout_Superscript extends AbstractCellLayout {
       switch (skind) {
         case NORMAL:
           floor2x = Math.max(floor2x, Math.max(floor1x, floor3x));
-          cell.setY(y + floor3);
-          cell.setX(floor2x);
+          cell.moveTo(floor2x,y + floor3);
+          cell.relayout();
           floor2x += cell.getWidth();
           floor3x = floor2x;
           floor1x = floor2x;
           break;
         case SUBSCRIPT:
-          cell.setX(floor1x);
-          cell.setY(y + floor2 + floor3);
+          cell.moveTo(floor1x, y + floor2 + floor3);
+          cell.relayout();
           floor1x += cell.getWidth();
           break;
         case SUPERSCRIPT:
-          cell.setX(floor3x);
-          cell.setY(y);
+          cell.moveTo(floor3x, y);
+          cell.relayout();
           floor3x += cell.getWidth();
           break;
       }
@@ -146,6 +148,15 @@ public class CellLayout_Superscript extends AbstractCellLayout {
     TextBuilder result = new TextBuilderImpl();
     for (EditorCell editorCell : editorCells) {
       result.appendToTheBottom(editorCell.renderText());
+    }
+    return result;
+  }
+
+  @Override
+  public HtmlTextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    HtmlTextBuilder result = new HtmlTextBuilderImpl();
+    for (EditorCell editorCell : editorCells) {
+      result.appendToTheBottom(editorCell.renderHtml());
     }
     return result;
   }

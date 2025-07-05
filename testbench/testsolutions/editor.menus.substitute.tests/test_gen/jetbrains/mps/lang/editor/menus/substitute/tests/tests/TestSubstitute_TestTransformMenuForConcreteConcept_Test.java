@@ -4,20 +4,34 @@ package jetbrains.mps.lang.editor.menus.substitute.tests.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
-import junit.framework.Assert;
+import jetbrains.mps.lang.test.runtime.TransformationTest;
+import org.junit.Assert;
 
 @MPSLaunch
 public class TestSubstitute_TestTransformMenuForConcreteConcept_Test extends BaseTransformationTest {
-  @Test
-  public void test_TestSubstitute_TestTransformMenuForConcreteConcept() throws Throwable {
-    initTest("${mps_home}", "r:62873c84-7a76-488a-9b84-4e0ffdbec8db(jetbrains.mps.lang.editor.menus.substitute.tests.tests@tests)");
-    runTest("jetbrains.mps.lang.editor.menus.substitute.tests.tests.TestSubstitute_TestTransformMenuForConcreteConcept_Test$TestBody", "testMethod", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestSubstitute_TestTransformMenuForConcreteConcept_Test.class).projectPath(null).modelRef("r:62873c84-7a76-488a-9b84-4e0ffdbec8db(jetbrains.mps.lang.editor.menus.substitute.tests.tests@tests)").reopenProject(false).build());
+
+  public TestSubstitute_TestTransformMenuForConcreteConcept_Test() {
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
-  @MPSLaunch
-  public static class TestBody extends BaseEditorTestBody {
+  @Test
+  public void test_TestSubstitute_TestTransformMenuForConcreteConcept() throws Throwable {
+    new TestBody(this).testMethod();
+  }
+
+  /*package*/ static class TestBody extends BaseEditorTestBody {
+
+    /*package*/ TestBody(TransformationTest owner) {
+      super(owner);
+    }
+
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("9151323058739140353", "9151323058739140355");

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <root nodeRef="r:9d4a2511-a545-4776-ae79-2974069a3ee1(jetbrains.mps.java.core)/4823129786885617827">
+    <file name="ModuleActivator.java">
+      <node id="4823129786886440860" at="13,0,14,0" concept="2" trace="myPlatform" />
+      <node id="4823129786886458298" at="14,0,15,0" concept="2" trace="myFindParticipant" />
+      <node id="2432913164248268884" at="16,50,17,26" concept="1" />
+      <node id="4823129786886459799" at="21,26,22,61" concept="1" />
+      <node id="4823129786886443816" at="22,61,23,81" concept="4" />
+      <node id="4823129786886470128" at="23,81,24,51" concept="1" />
+      <node id="4823129786886454218" at="27,28,28,81" concept="4" />
+      <node id="4823129786886475815" at="28,81,29,54" concept="1" />
+      <node id="4823129786886479920" at="29,54,30,29" concept="1" />
+      <node id="2432913164248265487" at="16,0,19,0" concept="0" trace="ModuleActivator#(Ljetbrains/mps/components/ComponentHost;)V" />
+      <node id="4823129786886424882" at="20,0,26,0" concept="3" trace="activate#()V" />
+      <node id="4823129786886424894" at="26,0,32,0" concept="3" trace="deactivate#()V" />
+      <scope id="2432913164248265492" at="16,50,17,26" />
+      <scope id="2432913164248265487" at="16,0,19,0">
+        <var name="platform" id="2432913164248268820" />
+      </scope>
+      <scope id="4823129786886424887" at="21,26,24,51">
+        <var name="pf" id="4823129786886443817" />
+      </scope>
+      <scope id="4823129786886424899" at="27,28,30,29">
+        <var name="pf" id="4823129786886454219" />
+      </scope>
+      <scope id="4823129786886424882" at="20,0,26,0" />
+      <scope id="4823129786886424894" at="26,0,32,0" />
+      <unit id="4823129786885617827" at="11,0,33,0" name="jetbrains.mps.java.core.ModuleActivator" />
+    </file>
+  </root>
+</debug-info>
+

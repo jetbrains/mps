@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,30 +15,33 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.extapi.model.ModelWithAttributes;
+import jetbrains.mps.extapi.model.PersistenceProblem;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.LazyLoadFacility;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import jetbrains.mps.smodel.DefaultSModel.InvalidDefaultSModel;
-import jetbrains.mps.smodel.loading.ModelLoadResult;
+import jetbrains.mps.smodel.event.SModelRenamedEvent;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel.Problem.Kind;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
+import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 
 import java.io.IOException;
-import java.util.Map;
+import java.util.Collections;
+import java.util.Objects;
 import java.util.function.BiConsumer;
-
 
 public class DefaultSModelDescriptor extends LazyEditableSModelBase implements GeneratableSModel, PersistenceVersionAware, ModelWithAttributes {
   private static final String MODEL_FOLDER_FOR_GENERATION = "useModelFolderForGeneration";
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(DefaultSModelDescriptor.class));
+  private static final Logger LOG = Logger.getLogger(DefaultSModelDescriptor.class);
   private final LazyLoadFacility myPersistence;
 
   private SModelHeader myHeader;
@@ -61,45 +64,37 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
   }
 
   @Override
-  protected ModelLoadResult loadSModel(ModelLoadingState state) {
+  protected ModelLoadResult<SModel> loadSModel(ModelLoadingState state) {
     DataSource source = getSource();
     if (!source.isReadOnly() && source.getTimestamp() == -1) {
       // no file on disk
       DefaultSModel model = new DefaultSModel(getReference(), myHeader);
-      return new ModelLoadResult(model, ModelLoadingState.FULLY_LOADED);
+      return new ModelLoadResult<>(model, ModelLoadingState.FULLY_LOADED);
     }
 
-    ModelLoadResult result;
+    jetbrains.mps.smodel.loading.ModelLoadResult result;
     try {
       result = myPersistence.readModel(myHeader, state);
     } catch (ModelReadException e) {
       LOG.warning(String.format("Failed to load model %s: %s", getSource().getLocation(), e.toString()));
-      SuspiciousModelHandler.getHandler().handleSuspiciousModel(this, false);
+      fireProblemsDetected(Collections.singleton(new PersistenceProblem(Kind.Load, e.toString(), getSource().getLocation(), true)));
       InvalidDefaultSModel newModel = new InvalidDefaultSModel(getReference(), e);
-      return new ModelLoadResult(newModel, ModelLoadingState.NOT_LOADED);
+      return new ModelLoadResult<>(newModel, ModelLoadingState.NOT_LOADED);
     }
 
     jetbrains.mps.smodel.SModel model = result.getModel();
-    if (result.getState() == ModelLoadingState.FULLY_LOADED && getRepository() != null) {
-      boolean needToSave = model.updateExternalReferences(getRepository());
 
-      if (needToSave && !source.isReadOnly()) {
-        setChanged(true);
-      }
+    if (!model.getReference().equals(getReference())) {
+      LOG.errorWithTrace(
+          "\nError loading model from: \"" + source.getLocation() + "\"\n" +
+          "expected model UID     : \"" + getReference() + "\"\n" +
+          "but was UID            : \"" + model.getReference() + "\"\n" +
+          "the model will not be available.\n" +
+          "Make sure that all project's roots and/or the model namespace is correct");
     }
-
-    LOG.assertLog(model.getReference().equals(getReference()),
-        "\nError loading model from: \"" + source.getLocation() + "\"\n" +
-            "expected model UID     : \"" + getReference() + "\"\n" +
-            "but was UID            : \"" + model.getReference() + "\"\n" +
-            "the model will not be available.\n" +
-            "Make sure that all project's roots and/or the model namespace is correct");
-    return result;
+    return new ModelLoadResult<>(result.getModel(), result.getState());
   }
 
-  protected boolean shouldCorrectModelRef(){
-    return false;
-  }
 
   /**
    * Since we expose persistence aspects of a model from (openapi)SModel, it's reasonable to keep
@@ -126,7 +121,7 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
   }
 
   @Override
-  protected boolean saveModel() throws IOException {
+  protected boolean saveModel() throws ModelSaveException, IOException {
     SModel smodel = getSModel();
     if (smodel instanceof InvalidSModel) {
       // we do not save stub model to not overwrite the real model
@@ -166,26 +161,38 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
   }
 
   @Override
-  public Map<String, String> getGenerationHashes() {
-    return myPersistence.getGenerationHashes();
-  }
-
-  @Override
   public void setDoNotGenerate(boolean value) {
     assertCanChange();
 
-    getModelHeader().setDoNotGenerate(value);
+    if (isDoNotGenerate() == value) {
+      return;
+    }
+    if (!value) {
+      // false is default, no need to keep this explicitly
+      getModelHeader().removeOptionalProperty(GeneratableSModel.DO_NOT_GENERATE);
+    } else {
+      getModelHeader().setOptionalProperty(GeneratableSModel.DO_NOT_GENERATE, Boolean.toString(value));
+    }
     setChanged(true);
   }
 
   @Override
   public boolean isDoNotGenerate() {
-    return getModelHeader().isDoNotGenerate();
+    return Boolean.parseBoolean(getModelHeader().getOptionalProperty(GeneratableSModel.DO_NOT_GENERATE));
   }
 
   @Override
   public void setAttribute(@NotNull String key, @Nullable String value) {
-    getModelHeader().setOptionalProperty(key, value);
+    final String oldValue = getModelHeader().getOptionalProperty(key);
+    if (Objects.equals(oldValue, value)) {
+      return;
+    }
+    if (value == null) {
+      getModelHeader().removeOptionalProperty(key);
+    } else {
+      getModelHeader().setOptionalProperty(key, value);
+    }
+    setChanged(true);
   }
 
   @Nullable
@@ -195,7 +202,7 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
   }
 
   @Override
-  public void forEach(@NotNull BiConsumer<String, String> action) {
+  public void forEachAttribute(@NotNull BiConsumer<String, String> action) {
     getModelHeader().getOptionalProperties().forEach(action);
   }
 
@@ -209,7 +216,7 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
       myHeader = myPersistence.readHeader();
     } catch (ModelReadException e) {
       myTimestampTracker.updateTimestamp(getSource());
-      SuspiciousModelHandler.getHandler().handleSuspiciousModel(this, false);
+      fireProblemsDetected(Collections.singleton(new PersistenceProblem(Kind.Load, e.toString(), getSource().getLocation(), true)));
       return;
     }
 
@@ -218,5 +225,15 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
 
   public SModelHeader getHeaderCopy() {
     return myHeader.createCopy();
+  }
+
+  @Override
+  public void setChanged(boolean changed) {
+    if (changed && getRepository() != null && getSource().isReadOnly()) {
+      if (RuntimeFlags.isInternalMode() || LOG.isInfoLevel()) {
+        LOG.error("Attempt to change a model with read-only data source; subsequent save() would fail!", new Throwable());
+      }
+    }
+    super.setChanged(changed);
   }
 }

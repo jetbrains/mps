@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
  * Represents a unique identification for {@link SMethod} within the containing {@link SAbstractConcept} (along with all its ancestors).
  * One needs to think of it as a method signature abstraction.
  * For instance, in Java we would have it as a composite of method name and its' parameter types.
- * Currently we have it as a SNodeId of the corresponding MethodDeclaration node in the behavior model.
+ * Currently, we have it as a SNodeId of the corresponding MethodDeclaration node in the behavior model.
  *
  * Each {@link SMethod} must have an id.
  * Uniqueness must be provided within all methods belonging to all the concepts in the hierarchy

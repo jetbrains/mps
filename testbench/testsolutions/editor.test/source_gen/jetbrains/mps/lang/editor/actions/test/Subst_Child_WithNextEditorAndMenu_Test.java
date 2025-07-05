@@ -4,22 +4,36 @@ package jetbrains.mps.lang.editor.actions.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
-import junit.framework.Assert;
+import jetbrains.mps.lang.test.runtime.TransformationTest;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 
 @MPSLaunch
 public class Subst_Child_WithNextEditorAndMenu_Test extends BaseTransformationTest {
-  @Test
-  public void test_Subst_Child_WithNextEditorAndMenu() throws Throwable {
-    initTest("${mps_home}", "r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)");
-    runTest("jetbrains.mps.lang.editor.actions.test.Subst_Child_WithNextEditorAndMenu_Test$TestBody", "testMethod", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Subst_Child_WithNextEditorAndMenu_Test.class).projectPath(null).modelRef("r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)").reopenProject(false).build());
+
+  public Subst_Child_WithNextEditorAndMenu_Test() {
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
-  @MPSLaunch
-  public static class TestBody extends BaseEditorTestBody {
+  @Test
+  public void test_Subst_Child_WithNextEditorAndMenu() throws Throwable {
+    new TestBody(this).testMethod();
+  }
+
+  /*package*/ static class TestBody extends BaseEditorTestBody {
+
+    /*package*/ TestBody(TransformationTest owner) {
+      super(owner);
+    }
+
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("583472190600188434", "583472190600188436");

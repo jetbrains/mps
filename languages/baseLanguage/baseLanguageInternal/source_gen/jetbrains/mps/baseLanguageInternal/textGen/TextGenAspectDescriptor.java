@@ -29,6 +29,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new InternalClassExpression_TextGen();
       case LanguageConceptSwitch.InternalClassifierType:
         return new InternalClassifierType_TextGen();
+      case LanguageConceptSwitch.InternalLambdaExpression:
+        return new InternalLambdaExpression_TextGen();
       case LanguageConceptSwitch.InternalNewExpression:
         return new InternalNewExpression_TextGen();
       case LanguageConceptSwitch.InternalPartialFieldReference:
@@ -45,8 +47,6 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new InternalThisExpression_TextGen();
       case LanguageConceptSwitch.InternalVariableReference:
         return new InternalVariableReference_TextGen();
-      case LanguageConceptSwitch.TypeHintExpression:
-        return new TypeHintExpression_TextGen();
     }
     return null;
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,8 +30,11 @@ import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.smodel.action.NodeFactoryManager;
+import jetbrains.mps.smodel.language.ConceptRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -45,47 +48,9 @@ public abstract class SingleRoleCellProvider extends AbstractEditorBuilder imple
 
   protected final SContainmentLink myContainmentLink;
 
-  /**
-   * @deprecated since MPS 3.5 use {@link #getNode()} method, this field will be removed in the next release
-   */
-  @Deprecated
-  protected final SNode myOwnerNode;
-
-  /**
-   * @deprecated since MPS 3.5 use {@link #getEditorContext()} method, this field will be removed in the next release
-   */
-  @Deprecated
-  protected final EditorContext myEditorContext;
-
-  /**
-   * @deprecated since MPS 3.5 use {@link #SingleRoleCellProvider(SContainmentLink, EditorContext)} constructor
-   */
-  @Deprecated
-  public SingleRoleCellProvider(final SNode ownerNode, final SContainmentLink containmentLink, EditorContext editorContext) {
-    super(editorContext);
-    myOwnerNode = ownerNode;
-    myContainmentLink = containmentLink;
-    myEditorContext = editorContext;
-  }
-
   public SingleRoleCellProvider(final SContainmentLink containmentLink, EditorContext editorContext) {
     super(editorContext);
-    myOwnerNode = null;
     myContainmentLink = containmentLink;
-    myEditorContext = editorContext;
-  }
-
-  /**
-   * This is a compatibility implementation of corresponding method from super-class.
-   * Since MPS 3.5 this method will be generated in sub-classes.
-   * After MPS 3.5 this method should be removed, so sub-classes will implement it directly.
-   *
-   * @return
-   */
-  @NotNull
-  @Override
-  public SNode getNode() {
-    return myOwnerNode;
   }
 
   protected EditorCell createChildCell(SNode child) {
@@ -155,7 +120,17 @@ public abstract class SingleRoleCellProvider extends AbstractEditorBuilder imple
   }
 
   protected SNode createNodeToInsert() {
-    return NodeFactoryManager.createNode(myContainmentLink.getTargetConcept(), null, getNode(), getNode().getModel());
+    SAbstractConcept targetConcept = getTargetConcept();
+    // FWIW, there's ModelConstraints.getDefaultConcreteConcept(), not null
+    SConcept defaultConcreteConcept = ConceptRegistry.getInstance().getConstraintsDescriptor(targetConcept).getDefaultConcreteConcept();
+    if (defaultConcreteConcept != null) {
+      targetConcept = defaultConcreteConcept;
+    }
+    return NodeFactoryManager.createNode(targetConcept, null, getNode(), getNode().getModel());
+  }
+
+  protected SAbstractConcept getTargetConcept(){
+    return myContainmentLink.getTargetConcept();
   }
 
   protected EditorCell createEmptyCell() {

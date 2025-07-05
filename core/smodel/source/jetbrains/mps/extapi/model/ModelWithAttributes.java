@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-202o JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,7 +66,9 @@ public interface ModelWithAttributes extends SModel {
    *
    * @param action action to perform for each key-value attribute pair
    */
-  void forEach(@NotNull BiConsumer<String, String> action);
+  default void forEachAttribute(@NotNull BiConsumer<String, String> action) {
+    // no-op, no attributes by default
+  }
 
   /**
    * @param key attribute identity

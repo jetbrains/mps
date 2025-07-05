@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,14 @@
  */
 package jetbrains.mps.persistence;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRule;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
-import org.apache.log4j.LogManager;
-import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
-import org.picocontainer.PicoContainer;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -32,53 +31,38 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * A platform-level extension point to client custom data source factories
  * delegates to the {@link DataSourceFactoryRuleService}
  *
+ * FIXME (a) could be a service, not an app component (b) with extensions come and go, would be better for this class to become
+ *       'provider' answering based on actual extpoint state; rather than simply add/remove code from extensions.
  * @author apyshkin
  */
 @Internal
 @Immutable
-public final class DataSourceFactoryRuleRegistrar implements ApplicationComponent {
+public final class DataSourceFactoryRuleRegistrar implements Disposable {
   private final List<DataSourceFactoryRule> myRegisteredRules = new CopyOnWriteArrayList<>();
-  private final PicoContainer PICO_CONTAINER = ApplicationManager.getApplication().getPicoContainer();
-  private final DataSourceFactoryRuleService SERVICE = DataSourceFactoryRuleService.getInstance();
+  private final MPSCoreComponents myCoreComponents;
 
   public DataSourceFactoryRuleRegistrar() {
-  }
-
-  @Override
-  public void initComponent() {
+    myCoreComponents = MPSCoreComponents.getInstance();
+    DataSourceFactoryRuleService dsRegistry = myCoreComponents.getPlatform().findComponent(DataSourceFactoryRuleService.class);
     for (DataSourceFactoryRuleProvider provider : DataSourceFactoryRuleProvider.EP_DATA_SOURCE_FACTORY.getExtensions()) {
       try {
-        DataSourceFactoryRule factoryRule = provider.instantiate(provider.getImplementationClass(), PICO_CONTAINER);
+        // TODO: 232 platform API change
+        DataSourceFactoryRule factoryRule = provider.instantiate(provider.getImplementationClass(), null);//ApplicationManager.getApplication().getPicoContainer());
         myRegisteredRules.add(factoryRule);
-        register(factoryRule);
+        dsRegistry.register(factoryRule);
       } catch (ClassNotFoundException e) {
         String message = String.format("Failed to load %s in the plugin %s",
                                        provider.getImplementationClass(),
                                        provider.getPluginDescriptor().getPluginId());
-        LogManager.getLogger(DataSourceFactoryRuleRegistrar.class).error(message, e);
+        Logger.getLogger(DataSourceFactoryRuleRegistrar.class).error(message, e);
       }
     }
   }
 
-  private void register(@NotNull DataSourceFactoryRule rule) {
-    myRegisteredRules.add(rule);
-    SERVICE.register(rule);
-  }
-
-  private void unregister(@NotNull DataSourceFactoryRule rule) {
-    SERVICE.unregister(rule);
-    myRegisteredRules.remove(rule);
-  }
-
   @Override
-  public void disposeComponent() {
-    myRegisteredRules.forEach(this::unregister);
+  public void dispose() {
+    DataSourceFactoryRuleService dsRegistry = myCoreComponents.getPlatform().findComponent(DataSourceFactoryRuleService.class);
+    myRegisteredRules.forEach(dsRegistry::unregister);
+    myRegisteredRules.clear();
   }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "DataSourceFactoryRegistrar";
-  }
-
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,15 @@
  */
 package jetbrains.mps.util;
 
-import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 
 /**
+ * @deprecated to be replaced with {@link PathSpec}
  * Created by Radimir.Sorokin on 7/26/2016.
  */
+@Deprecated(since = "2023.1")
 public final class PathConverters {
   public static final ModulePathConverter ID_CONVERTER = new IDModulePathConverter();
 
@@ -30,7 +31,7 @@ public final class PathConverters {
   }
 
   public static ModulePathConverter forModules(@NotNull SModule source, @NotNull SModule target) {
-    return forMacroHelpers(MacrosFactory.forModule(((AbstractModule) source)), MacrosFactory.forModule(((AbstractModule) target)));
+    return forMacroHelpers(MacrosFactory.forModule(source), MacrosFactory.forModule( target));
   }
 
   public static ModulePathConverter forDescriptorFiles(@NotNull IFile source, @NotNull IFile target) {

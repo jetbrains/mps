@@ -31,7 +31,7 @@ public class ProjectDevKitTreeNode extends ProjectModuleTreeNode {
   private boolean myInitialized;
 
   protected ProjectDevKitTreeNode(@NotNull DevKit devkit, Project project, boolean shortNameOnly) {
-    super(devkit);
+    super(devkit, project);
     myProject = project;
     myShortNameOnly = shortNameOnly;
 

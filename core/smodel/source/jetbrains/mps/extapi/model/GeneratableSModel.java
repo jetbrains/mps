@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,14 +17,14 @@ package jetbrains.mps.extapi.model;
 
 import org.jetbrains.mps.openapi.model.SModel;
 
-import java.util.Map;
-
 /**
  * evgeny, 2/14/13
  */
 public interface GeneratableSModel extends SModel {
-  String HEADER = "header";
-  String FILE = "model";
+  /**
+   * Key to keep in {@link ModelWithAttributes}
+   */
+  public static final String DO_NOT_GENERATE = "doNotGenerate";
 
   /**
    * Generally, {@link #isDoNotGenerate() doNotGenerate} is a primary reason to generate (or not) the model.
@@ -43,13 +43,6 @@ public interface GeneratableSModel extends SModel {
   void setGenerateIntoModelFolder(boolean value);
 
   String getModelHash();
-
-  /**
-   *  rootId => root hash
-   *  HEADER => header hash
-   *  FILE => model hash
-   */
-  Map<String, String> getGenerationHashes();
 
   void setDoNotGenerate(boolean value);
 

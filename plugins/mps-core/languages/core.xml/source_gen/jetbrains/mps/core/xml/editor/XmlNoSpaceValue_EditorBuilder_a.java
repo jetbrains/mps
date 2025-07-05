@@ -32,24 +32,24 @@ import jetbrains.mps.core.xml.behavior.XmlValuePart__BehaviorDescriptor;
   }
 
   /*package*/ EditorCell createCell() {
-    return createCollection_gu0qdg_a();
+    return createCollection_0();
   }
 
-  private EditorCell createCollection_gu0qdg_a() {
+  private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
     editorCell.setCellId("Collection_gu0qdg_a");
     editorCell.setBig(true);
-    editorCell.setCellContext(getCellFactory().getCellContext());
-    editorCell.addEditorCell(createConstant_gu0qdg_a0());
-    editorCell.addEditorCell(createConstant_gu0qdg_b0());
-    editorCell.addEditorCell(createConstant_gu0qdg_c0());
+    setCellContext(editorCell);
+    editorCell.addEditorCell(createConstant_0());
+    editorCell.addEditorCell(createConstant_1());
+    editorCell.addEditorCell(createConstant_2());
     return editorCell;
   }
-  private EditorCell createConstant_gu0qdg_a0() {
+  private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "<-");
     editorCell.setCellId("Constant_gu0qdg_a0");
     Style style = new StyleImpl();
-    new xmlNoNewLineStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new xmlNoNewLineStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     style.set(StyleAttributes.PUNCTUATION_LEFT, _StyleParameter_QueryFunction_gu0qdg_a1a0());
     editorCell.getStyle().putAll(style);
@@ -60,20 +60,20 @@ import jetbrains.mps.core.xml.behavior.XmlValuePart__BehaviorDescriptor;
   private boolean _StyleParameter_QueryFunction_gu0qdg_a1a0() {
     return !((boolean) XmlValuePart__BehaviorDescriptor.isFirstPositionAllowed_id2EZ251g0bSk.invoke(getNode()));
   }
-  private EditorCell createConstant_gu0qdg_b0() {
+  private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "no space");
     editorCell.setCellId("Constant_gu0qdg_b0");
     Style style = new StyleImpl();
-    new xmlNoNewLineStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new xmlNoNewLineStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createConstant_gu0qdg_c0() {
+  private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "->");
     editorCell.setCellId("Constant_gu0qdg_c0");
     Style style = new StyleImpl();
-    new xmlNoNewLineStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    new xmlNoNewLineStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     style.set(StyleAttributes.PUNCTUATION_RIGHT, _StyleParameter_QueryFunction_gu0qdg_a1c0());
     editorCell.getStyle().putAll(style);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,10 @@
  */
 package jetbrains.mps.ide.ui.dialogs.properties.roots.editors;
 
+import com.intellij.icons.AllIcons.Actions;
 import com.intellij.icons.AllIcons.Modules;
 import com.intellij.openapi.util.SystemInfo;
+import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.Gray;
 import com.intellij.ui.HoverHyperlinkLabel;
@@ -31,11 +33,13 @@ import com.intellij.util.EventDispatcher;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
-import jetbrains.mps.extapi.persistence.SourceRootKind;
 import jetbrains.mps.extapi.persistence.SourceRoot;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.extapi.persistence.SourceRootKind;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.util.IStatus;
+import jetbrains.mps.util.Status;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.IFileSystem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry;
@@ -59,7 +63,6 @@ import java.awt.Stroke;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
 
 import static com.intellij.uiDesigner.core.GridConstraints.ANCHOR_EAST;
 import static com.intellij.uiDesigner.core.GridConstraints.ANCHOR_NORTHWEST;
@@ -72,13 +75,65 @@ import static jetbrains.mps.ide.ui.dialogs.properties.roots.editors.FileBasedMod
 
 public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedModelRoot>, ModelRootEntryExt {
   private final EventDispatcher<ModelRootEntryListener> myEventDispatcher = EventDispatcher.create(ModelRootEntryListener.class);
+  private final MPSProject myProject;
   private final FileBasedModelRoot myFileBasedModelRoot;
   private final Map<JComponent, Color> myComponentToForegroundMap = new HashMap<>();
 
   private FileBasedModelRootEditor myFileBasedModelRootEditor;
 
-  public FileBasedModelRootEntry(@NotNull FileBasedModelRoot modelRoot) {
+  public FileBasedModelRootEntry(@NotNull MPSProject mpsProject, @NotNull FileBasedModelRoot modelRoot) {
+    // XXX alternatively, may supply idea project right into getEditor, as this set of API depends on IDEA anyway
+    ///    (ModelRootEntry extends Disposable), which might be easier from migration standpoint.
+    //     However, decided to pass it into cons as there might be project settings one may need to access
+    //     prior to editor construction.
+    myProject = mpsProject;
     myFileBasedModelRoot = modelRoot;
+  }
+
+  /*package*/ IFile getContentDirectory() {
+    return myFileBasedModelRoot.getContentDirectory();
+  }
+
+  /*package*/ void setContentDirectory(IFile contentDirectory) {
+    myFileBasedModelRoot.setContentDirectory(contentDirectory);
+  }
+
+  @Nullable
+  /*package*/ SourceRootKind isFileUnderRoot(VirtualFile file) {
+    final String filePath = file.getPath();
+    for (SourceRootKind kind : myFileBasedModelRoot.getSupportedFileKinds1()) {
+      Collection<SourceRoot> sr = myFileBasedModelRoot.getSourceRoots(kind);
+      for (SourceRoot r : sr) {
+        @SuppressWarnings("removal")
+        final String srFilePath = r.getAbsolutePath().getPath();
+        if (filePath.equals(srFilePath) || filePath.startsWith(srFilePath + IFileSystem.SEPARATOR_CHAR)) {
+          return kind;
+        }
+      }
+    }
+    return null;
+  }
+
+  /*package*/ Collection<SourceRootKind> getFileKinds() {
+    return myFileBasedModelRoot.getSupportedFileKinds1();
+  }
+
+  @Nullable
+  /*package*/ SourceRoot getSourceRootByPath(SourceRootKind kind, IFile path) {
+    //noinspection removal
+    return myFileBasedModelRoot.getSourceRoots(kind).stream().filter(sourceRoot -> sourceRoot.getAbsolutePath().equals(path)).findAny().orElse(null);
+  }
+
+  /*package*/ void addSourceRoot(SourceRootKind kind, SourceRoot sourceRoot) {
+    myFileBasedModelRoot.addSourceRoot(kind, sourceRoot);
+  }
+
+  /*package*/ void removeSourceRoot(SourceRootKind kind, SourceRoot sourceRoot) {
+    myFileBasedModelRoot.removeSourceRoot(sourceRoot);
+  }
+
+  /*package*/ MPSProject getProject() {
+    return myProject;
   }
 
   @NotNull
@@ -96,7 +151,8 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
   @Nullable
   @Override
   public JComponent getDetailsComponent() {
-    JBPanel panel = new JBPanel(new GridBagLayout());
+    @SuppressWarnings("rawtypes")
+    JBPanel<JBPanel> panel = new JBPanel<>(new GridBagLayout());
     for (SourceRootKind kind : myFileBasedModelRoot.getSupportedFileKinds1()) {
       Collection<SourceRoot> sourceRoots = myFileBasedModelRoot.getSourceRoots(kind);
 
@@ -123,15 +179,15 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
     }
   }
 
-  protected Color getKindColor(@NotNull SourceRootKind kind) {
+  /*package*/ Color getKindColor(@NotNull SourceRootKind kind) {
     return kind.isExcluded() ? ModelRootEntryContainer.EXCLUDED_COLOR : ModelRootEntryContainer.SOURCES_COLOR;
   }
 
-  protected Icon getKindIcon(SourceRootKind kind) {
+  /*package*/ Icon getKindIcon(SourceRootKind kind) {
     return kind.isExcluded() ? Modules.ExcludeRoot : Modules.SourceRoot;
   }
 
-  protected JComponent createKindGroupComponent(String title, Collection<SourceRoot> sourceRoots, Color foregroundColor)   {
+  private JComponent createKindGroupComponent(String title, Collection<SourceRoot> sourceRoots, Color foregroundColor)   {
     if (sourceRoots.isEmpty()) {
       return new JBPanel<>();
     }
@@ -158,7 +214,8 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
     titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 2, 0, 0));
     registerTextComponent(titleLabel, foregroundColor);
 
-    final JBPanel groupPanel = new JBPanel(new BorderLayout());
+    @SuppressWarnings("rawtypes")
+    final JBPanel<JBPanel> groupPanel = new JBPanel<>(new BorderLayout());
     groupPanel.setOpaque(false);
     groupPanel.add(titleLabel, BorderLayout.NORTH);
     groupPanel.add(panel, BorderLayout.CENTER);
@@ -168,17 +225,22 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
 
   private JComponent createKindFileComponent(@NotNull SourceRoot sourceRoot, @NotNull Color foreground) {
     String pathPresentation = sourceRoot.getPath();
-    if (pathPresentation.equals("")) {
+    if (pathPresentation.isEmpty()) {
       pathPresentation = ".";
     }
 
     JLabel label2Return = new JLabel(pathPresentation);
 
-    VirtualFile virtualFile = VirtualFileUtils.getProjectVirtualFile(sourceRoot.getAbsolutePath());
-    if (virtualFile != null && virtualFile.exists()) {
+    @SuppressWarnings("removal")
+    final IFile srcRootFile = sourceRoot.getAbsolutePath();
+    if (srcRootFile != null && srcRootFile.exists()) {
       HoverHyperlinkLabel hyperlinkLabel = new HoverHyperlinkLabel(pathPresentation, foreground);
       hyperlinkLabel.setMinimumSize(new Dimension(0, 0));
-      hyperlinkLabel.addHyperlinkListener(e -> myFileBasedModelRootEditor.selectFile(sourceRoot.getAbsolutePath()));
+      hyperlinkLabel.addHyperlinkListener(e -> {
+        if (myFileBasedModelRootEditor != null) {
+          myFileBasedModelRootEditor.selectFile(srcRootFile);
+        }
+      });
       registerTextComponent(hyperlinkLabel, foreground);
       label2Return = hyperlinkLabel;
     }
@@ -192,7 +254,7 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
 
   private JComponent createKindFileDeleteComponent(final SourceRoot sourceRoot) {
     final String tooltipText = "Remove";
-    return new IconActionComponent(Modules.DeleteContentFolder, Modules.DeleteContentFolderRollover, tooltipText, () -> {
+    return new IconActionComponent(Actions.Close, Actions.CloseHovered, tooltipText, () -> {
       myFileBasedModelRoot.removeSourceRoot(sourceRoot);
       updateUI();
     });
@@ -236,10 +298,29 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
 
   public void updateUI() {
     myEventDispatcher.getMulticaster().fireDataChanged();
+    myFileBasedModelRootEditor.myTree.repaint();
   }
 
   @Override
   public void dispose() {
+  }
+
+  @NotNull
+  @Override
+  public IStatus conflictsWith(@NotNull ModelRootEntry<FileBasedModelRoot> other) {
+    IFile otherCD = ((FileBasedModelRootEntry) other).getContentDirectory();
+    IFile contentDirectory = myFileBasedModelRoot.getContentDirectory();
+    if (contentDirectory == null || otherCD == null) {
+      return new Status.OK("No content directory specified");
+    }
+    if (contentDirectory.getFS() != otherCD.getFS()) {
+      return new Status.OK("Different file systems");
+    }
+    if (contentDirectory.isDescendant(otherCD) || otherCD.isDescendant(contentDirectory)) {
+      String m = "<html>Content directory (%s) intersects with another model root's content directory:<br><b>%s</b><br><br>Please, choose another folder.</html>";
+      return new Status.ERROR(String.format(m, StringUtil.escapeXmlEntities(otherCD.getPath()), StringUtil.escapeXmlEntities((contentDirectory.getPath()))));
+    }
+    return Status.NO_ERRORS;
   }
 
   private static class UnderlinedPathLabel extends ResizingWrapper {
@@ -284,7 +365,8 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
       if (UIUtil.isUnderDarcula()) {
         UIUtil.drawDottedLine(g, x1, y1, x2, y2, null, g.getColor());
       } else {
-        UIUtil.drawLine(g, x1, y1, x2, y2);
+        // TODO: verify this is correct
+        UIUtil.drawLine(g, x1, y1, x2, y2, null, null);
       }
 
       g.setStroke(saved);

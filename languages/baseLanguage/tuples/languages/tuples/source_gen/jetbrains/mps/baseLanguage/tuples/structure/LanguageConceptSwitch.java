@@ -12,18 +12,20 @@ public final class LanguageConceptSwitch {
   public static final int IndexedTupleLiteral = 0;
   public static final int IndexedTupleMemberAccessExpression = 1;
   public static final int IndexedTupleType = 2;
-  public static final int NamedTupleComponentAccessOperation = 3;
-  public static final int NamedTupleComponentDeclaration = 4;
-  public static final int NamedTupleComponentReference = 5;
-  public static final int NamedTupleDeclaration = 6;
-  public static final int NamedTupleLiteral = 7;
-  public static final int NamedTupleType = 8;
+  public static final int LocalVariableDeclarationInTuple = 3;
+  public static final int NamedTupleComponentAccessOperation = 4;
+  public static final int NamedTupleComponentDeclaration = 5;
+  public static final int NamedTupleComponentReference = 6;
+  public static final int NamedTupleDeclaration = 7;
+  public static final int NamedTupleLiteral = 8;
+  public static final int NamedTupleType = 9;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xa247e09e243545baL, 0xb8d207e93feba96aL);
     builder.put(0x12071708c13L, IndexedTupleLiteral);
     builder.put(0x12071acfb50L, IndexedTupleMemberAccessExpression);
     builder.put(0x1207157a8dcL, IndexedTupleType);
+    builder.put(0x387e75e5416d26cbL, LocalVariableDeclarationInTuple);
     builder.put(0x1209c84a4eaL, NamedTupleComponentAccessOperation);
     builder.put(0x12095b3e54fL, NamedTupleComponentDeclaration);
     builder.put(0x1209b917141L, NamedTupleComponentReference);

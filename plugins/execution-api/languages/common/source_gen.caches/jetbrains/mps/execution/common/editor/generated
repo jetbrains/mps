@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-d0lyvofpfv1oto2bpfwkw8z5wscasyo" />
+<product version="3" modelHash="1wxrm2u5iiqem9jlywlcaikfnrm5sq8">
+  <files names="EditorAspectDescriptorImpl.java:RunConfigurations_StyleSheet.java" />
+</product>
 

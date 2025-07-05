@@ -4,36 +4,59 @@ package TestConstraints.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
+import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.smodel.SNodePointer;
 
 @MPSLaunch
 public class ConstraintsInvocation_Test extends BaseTransformationTest {
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ConstraintsInvocation_Test.class).projectPath(null).modelRef("r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)").reopenProject(null).build());
+
+  public ConstraintsInvocation_Test() {
+    super(ourParametersCacheExtension.getParametersCache());
+  }
+
   @Test
   public void test_NodeUnknownRuleCheck730305212589682236() throws Throwable {
-    initTest("${mps_home}", "r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)", false);
-    runTest("TestConstraints.test.ConstraintsInvocation_Test$TestBody", "test_NodeUnknownRuleCheck730305212589682236", true);
+    new TestBody(this).test_NodeUnknownRuleCheck730305212589682236();
   }
   @Test
   public void test_NodeUnknownRuleCheck730305212589682205() throws Throwable {
-    initTest("${mps_home}", "r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)", false);
-    runTest("TestConstraints.test.ConstraintsInvocation_Test$TestBody", "test_NodeUnknownRuleCheck730305212589682205", true);
+    new TestBody(this).test_NodeUnknownRuleCheck730305212589682205();
   }
 
-  @MPSLaunch
-  public static class TestBody extends BaseTestBody {
+  /*package*/ static class TestBody extends BaseTestBody {
+
+    /*package*/ TestBody(TransformationTest owner) {
+      super(owner);
+    }
+
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8374682609824962306", "730305212589682189");
+    }
 
     public void test_NodeUnknownRuleCheck730305212589682236() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("730305212589682236"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("730305212589577115"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("730305212589577115");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "730305212589401486"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
     public void test_NodeUnknownRuleCheck730305212589682205() throws Exception {
-      SNode operation = SNodeOperations.cast(getRealNodeById("730305212589682205"), MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod"));
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(operation, getRealNodeById("730305212589682202"));
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("730305212589682202");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "730305212589427430"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
     }
 
   }

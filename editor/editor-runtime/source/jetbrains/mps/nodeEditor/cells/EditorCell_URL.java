@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,10 @@ import com.intellij.ide.BrowserUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
 import jetbrains.mps.smodel.NodeReadAccessInEditorListener;
+import jetbrains.mps.util.Pair;
+import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.util.Pair;
 
 import java.awt.Color;
 import java.awt.event.InputEvent;
@@ -46,9 +47,9 @@ public class EditorCell_URL extends EditorCell_Property {
     }
   }
 
-  public static EditorCell_URL create(EditorContext editorContext, SNode node, String propertyName) {
+  public static EditorCell_URL create(EditorContext editorContext, SNode node, SProperty property) {
     NodeReadAccessInEditorListener listener = NodeReadAccessCasterInEditor.getReadAccessListener();
-    ModelAccessor accessor = new PropertyAccessor(node, propertyName, false, true, editorContext);
+    ModelAccessor accessor = new SPropertyAccessor(node, property, false, true);
     if (listener != null) {
       listener.clearCleanlyReadAccessProperties();
     }

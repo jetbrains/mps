@@ -18,7 +18,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   @NotNull
   public Collection<ConceptEditor> getDeclaredEditors(SAbstractConcept concept) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
-    switch (index_xbvbvu_a0a.index(cncpt)) {
+    switch (conceptIndex.index(cncpt)) {
       case 0:
         return Collections.<ConceptEditor>singletonList(new IndexedTupleLiteral_Editor());
       case 1:
@@ -26,16 +26,18 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       case 2:
         return Collections.<ConceptEditor>singletonList(new IndexedTupleType_Editor());
       case 3:
-        return Collections.<ConceptEditor>singletonList(new NamedTupleComponentAccessOperation_Editor());
+        return Collections.<ConceptEditor>singletonList(new LocalVariableDeclarationInTuple_Editor());
       case 4:
-        return Collections.<ConceptEditor>singletonList(new NamedTupleComponentDeclaration_Editor());
+        return Collections.<ConceptEditor>singletonList(new NamedTupleComponentAccessOperation_Editor());
       case 5:
-        return Collections.<ConceptEditor>singletonList(new NamedTupleComponentReference_Editor());
+        return Collections.<ConceptEditor>singletonList(new NamedTupleComponentDeclaration_Editor());
       case 6:
-        return Collections.<ConceptEditor>singletonList(new NamedTupleDeclaration_Editor());
+        return Collections.<ConceptEditor>singletonList(new NamedTupleComponentReference_Editor());
       case 7:
-        return Collections.<ConceptEditor>singletonList(new NamedTupleLiteral_Editor());
+        return Collections.<ConceptEditor>singletonList(new NamedTupleDeclaration_Editor());
       case 8:
+        return Collections.<ConceptEditor>singletonList(new NamedTupleLiteral_Editor());
+      case 9:
         return Collections.<ConceptEditor>singletonList(new NamedTupleType_Editor());
       default:
     }
@@ -47,7 +49,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   @Override
   public Collection<TransformationMenu> getDeclaredDefaultTransformationMenus(SAbstractConcept concept) {
     SAbstractConcept cncpt = concept;
-    switch (index_xbvbvu_a0d.index(cncpt)) {
+    switch (conceptIndex1.index(cncpt)) {
       case 0:
         return Collections.<TransformationMenu>singletonList(new tuple_member_access_Contribution());
       case 1:
@@ -60,7 +62,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   @Override
   public Collection<SubstituteMenu> getDeclaredDefaultSubstituteMenus(SAbstractConcept concept) {
     SAbstractConcept cncpt = concept;
-    switch (index_xbvbvu_a0e.index(cncpt)) {
+    switch (conceptIndex2.index(cncpt)) {
       case 0:
         return Collections.<SubstituteMenu>singletonList(new namedTupleDeclaration_extends_Contribution());
       case 1:
@@ -68,15 +70,23 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       case 2:
         return Collections.<SubstituteMenu>singletonList(new IndexedTupleMemberAccessExpression_SubstituteMenu());
       case 3:
-        return Collections.<SubstituteMenu>singletonList(new NamedTupleType_SubstituteMenu());
+        return Collections.<SubstituteMenu>singletonList(new LocalVariableDeclarationInTuple_SubstituteMenu());
       case 4:
+        return Collections.<SubstituteMenu>singletonList(new NamedTupleComponentAccessOperation_SubstituteMenu());
+      case 5:
+        return Collections.<SubstituteMenu>singletonList(new NamedTupleComponentReference_SubstituteMenu());
+      case 6:
+        return Collections.<SubstituteMenu>singletonList(new NamedTupleLiteral_SubstituteMenu());
+      case 7:
+        return Collections.<SubstituteMenu>singletonList(new NamedTupleType_SubstituteMenu());
+      case 8:
         return Collections.<SubstituteMenu>singletonList(new NamedTupleType_Contribution());
       default:
     }
     return Collections.<SubstituteMenu>emptyList();
   }
 
-  private static final ConceptSwitchIndex index_xbvbvu_a0a = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209c84a4eaL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L)).seal();
-  private static final ConceptSwitchIndex index_xbvbvu_a0d = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL)).seal();
-  private static final ConceptSwitchIndex index_xbvbvu_a0e = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x387e75e5416d26cbL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209c84a4eaL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L)).seal();
+  private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL)).seal();
+  private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x387e75e5416d26cbL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209c84a4eaL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL), MetaIdFactory.conceptId(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL)).seal();
 }

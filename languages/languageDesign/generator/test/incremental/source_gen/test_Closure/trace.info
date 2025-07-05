@@ -10,34 +10,29 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <root nodeRef="r:8996236a-10cc-4947-8fd2-f9b4ae2db88b(test_Closure)/8250748122682152731">
     <file name="User.java">
-      <node id="8250748122682269369" at="13,27,14,19" concept="6" />
-      <node id="8250748122682269201" at="16,22,17,30" concept="5" />
-      <node id="8250748122682269351" at="17,30,18,30" concept="5" />
-      <node id="8250748122682269348" at="20,50,21,63" concept="6" />
-      <node id="8250748122682269325" at="23,7,24,15" concept="1" />
-      <node id="8250748122682269375" at="24,15,25,48" concept="5" />
-      <node id="8250748122682152733" at="11,0,13,0" concept="0" trace="User#()V" />
-      <node id="8250748122682269699" at="27,0,29,0" concept="4" trace="testRename2#()V" />
-      <node id="8250748122682269364" at="13,0,16,0" concept="4" trace="getName#()Ljava/lang/String;" />
-      <node id="8250748122682269346" at="20,0,23,0" concept="4" trace="invoke#()Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
-      <node id="8250748122682269333" at="18,30,23,7" concept="1" />
-      <node id="8250748122682163159" at="16,0,27,0" concept="4" trace="test#()V" />
-      <scope id="8250748122682152736" at="11,17,11,17" />
-      <scope id="8250748122682269702" at="27,29,27,29" />
-      <scope id="8250748122682269367" at="13,27,14,19" />
-      <scope id="8250748122682269347" at="20,50,21,63" />
-      <scope id="8250748122682152733" at="11,0,13,0" />
-      <scope id="8250748122682269699" at="27,0,29,0" />
-      <scope id="8250748122682269364" at="13,0,16,0" />
-      <scope id="8250748122682269346" at="20,0,23,0" />
-      <scope id="8250748122682163162" at="16,22,25,48">
+      <node id="8250748122682269369" at="12,27,13,19" concept="6" />
+      <node id="8250748122682269201" at="15,22,16,30" concept="5" />
+      <node id="8250748122682269351" at="16,30,17,30" concept="5" />
+      <node id="8250748122682269333" at="17,30,18,100" concept="1" />
+      <node id="8250748122682269325" at="18,100,19,15" concept="1" />
+      <node id="8250748122682269375" at="19,15,20,48" concept="5" />
+      <node id="8250748122682152733" at="10,0,12,0" concept="0" trace="User#()V" />
+      <node id="8250748122682269699" at="22,0,24,0" concept="4" trace="testRename2#()V" />
+      <node id="8250748122682269364" at="12,0,15,0" concept="4" trace="getName#()Ljava/lang/String;" />
+      <node id="8250748122682163159" at="15,0,22,0" concept="4" trace="test#()V" />
+      <scope id="8250748122682152736" at="10,17,10,17" />
+      <scope id="8250748122682269702" at="22,29,22,29" />
+      <scope id="8250748122682269367" at="12,27,13,19" />
+      <scope id="8250748122682152733" at="10,0,12,0" />
+      <scope id="8250748122682269699" at="22,0,24,0" />
+      <scope id="8250748122682269364" at="12,0,15,0" />
+      <scope id="8250748122682163162" at="15,22,20,48">
         <var name="l" id="8250748122682269202" />
         <var name="res" id="8250748122682269352" />
         <var name="s" id="8250748122682269376" />
       </scope>
-      <scope id="8250748122682163159" at="16,0,27,0" />
-      <unit id="8250748122682269346" at="19,49,23,5" name="test_Closure.User$1" />
-      <unit id="8250748122682152731" at="10,0,30,0" name="test_Closure.User" />
+      <scope id="8250748122682163159" at="15,0,22,0" />
+      <unit id="8250748122682152731" at="9,0,25,0" name="test_Closure.User" />
     </file>
   </root>
   <root nodeRef="r:8996236a-10cc-4947-8fd2-f9b4ae2db88b(test_Closure)/8250748122682163163">
@@ -70,11 +65,11 @@
   </root>
   <root nodeRef="r:8996236a-10cc-4947-8fd2-f9b4ae2db88b(test_Closure)/8250748122682269925">
     <file name="Singleton.java">
-      <node id="8250748122682269935" at="7,22,8,65" concept="7" />
+      <node id="8250748122682269935" at="7,22,8,64" concept="7" />
       <node id="8250748122682269931" at="10,0,12,0" concept="4" trace="defaultMeth#()V" />
       <node id="8250748122682269927" at="7,0,10,0" concept="0" trace="Singleton#()V" />
       <scope id="8250748122682269934" at="10,29,10,29" />
-      <scope id="8250748122682269930" at="7,22,8,65" />
+      <scope id="8250748122682269930" at="7,22,8,64" />
       <scope id="8250748122682269931" at="10,0,12,0" />
       <scope id="8250748122682269927" at="7,0,10,0" />
       <unit id="8250748122682269925" at="6,0,13,0" name="test_Closure.Singleton" />

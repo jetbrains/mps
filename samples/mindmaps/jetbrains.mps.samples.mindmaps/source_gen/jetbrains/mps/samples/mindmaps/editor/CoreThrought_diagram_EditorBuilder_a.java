@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.jetpad.BlockCell;
 import jetbrains.mps.nodeEditor.cells.jetpad.PropertyMapperCell;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
@@ -20,9 +19,9 @@ import jetbrains.jetpad.mapper.Synchronizers;
 import jetbrains.jetpad.mapper.MapperFactory;
 import jetbrains.mps.lang.editor.figures.library.NamedBoxFigure;
 import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.MovableContentView;
-import jetbrains.jetpad.model.property.WritableProperty;
 import jetbrains.jetpad.geometry.Rectangle;
 import jetbrains.jetpad.projectional.view.View;
+import jetbrains.jetpad.model.property.WritableProperty;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.nodeEditor.cells.jetpad.JetpadUtils;
@@ -31,6 +30,8 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.NodeDecoratorView;
 import jetbrains.jetpad.model.property.Properties;
 import jetbrains.jetpad.geometry.Vector;
 import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableContentView;
+import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class CoreThrought_diagram_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -48,14 +49,14 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableContentVi
   }
 
   /*package*/ EditorCell createCell() {
-    return createDiagramNode_pr685x_a();
+    return createDiagramNode_0();
   }
 
-  private EditorCell createDiagramNode_pr685x_a() {
-    BlockCell editorCell = new CoreThrought_diagram_EditorBuilder_a.BlockCellImpl_pr685x_a(getEditorContext(), myNode);
+  private EditorCell createDiagramNode_0() {
+    BlockCell editorCell = new BlockCellImpl_pr685x_a(getEditorContext(), myNode);
     editorCell.setCellId("DiagramNode_pr685x_a");
     editorCell.setBig(true);
-    editorCell.setCellContext(getCellFactory().getCellContext());
+    setCellContext(editorCell);
     DefaultDiagramElementActionMap_0.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;
   }
@@ -67,30 +68,30 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableContentVi
       super(editorContext, node);
       myPropertyCell_pr685x_a0a = new PropertyMapperCell<Integer>(editorContext, node) {
         protected Integer getModelPropertyValueImpl() {
-          return SPropertyOperations.getInteger(node, MetaAdapterFactory.getProperty(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff15ca26L, 0x1198689ff15ca27L, "x"));
+          return SPropertyOperations.getInteger(node, PROPS.x$a57l);
         }
         protected void setModelPropertyValueImpl(Integer value) {
-          SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff15ca26L, 0x1198689ff15ca27L, "x"), "" + (value));
+          SPropertyOperations.assign(node, PROPS.x$a57l, value);
         }
       };
       addEditorCell(myPropertyCell_pr685x_a0a);
       myPropertyCell_pr685x_a0a.getEditorComponent().getUpdater().getCurrentUpdateSession().registerCleanDependency(myPropertyCell_pr685x_a0a, new Pair<SNodeReference, String>(new SNodePointer(node), "x"));
       myPropertyCell_pr685x_a1a = new PropertyMapperCell<Integer>(editorContext, node) {
         protected Integer getModelPropertyValueImpl() {
-          return SPropertyOperations.getInteger(node, MetaAdapterFactory.getProperty(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff15ca26L, 0x1198689ff15ca29L, "y"));
+          return SPropertyOperations.getInteger(node, PROPS.y$aawG);
         }
         protected void setModelPropertyValueImpl(Integer value) {
-          SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff15ca26L, 0x1198689ff15ca29L, "y"), "" + (value));
+          SPropertyOperations.assign(node, PROPS.y$aawG, value);
         }
       };
       addEditorCell(myPropertyCell_pr685x_a1a);
       myPropertyCell_pr685x_a1a.getEditorComponent().getUpdater().getCurrentUpdateSession().registerCleanDependency(myPropertyCell_pr685x_a1a, new Pair<SNodeReference, String>(new SNodePointer(node), "y"));
       myPropertyCell_pr685x_a2a = new PropertyMapperCell<String>(editorContext, node) {
         protected String getModelPropertyValueImpl() {
-          return SPropertyOperations.getString(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+          return SPropertyOperations.getString(node, PROPS.name$MnvL);
         }
         protected void setModelPropertyValueImpl(String value) {
-          SPropertyOperations.set(node, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), value);
+          SPropertyOperations.assign(node, PROPS.name$MnvL, value);
         }
       };
       addEditorCell(myPropertyCell_pr685x_a2a);
@@ -115,21 +116,11 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableContentVi
                 @Override
                 protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
                   super.registerSynchronizers(configuration);
-                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_X), new Runnable() {
-                    public void run() {
-                      updatePositionsFromModel(getTarget(), diagramNodeView);
-                    }
-                  }));
-                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_Y), new Runnable() {
-                    public void run() {
-                      updatePositionsFromModel(getTarget(), diagramNodeView);
-                    }
-                  }));
-                  configuration.add(Synchronizers.forProperty(getTarget().bounds(), new WritableProperty<Rectangle>() {
-                    public void set(Rectangle bounds) {
-                      getTarget().prop(MovableContentView.POSITION_X).set(bounds.origin.x);
-                      getTarget().prop(MovableContentView.POSITION_Y).set(bounds.origin.y);
-                    }
+                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_X), () -> updatePositionsFromModel(getTarget(), diagramNodeView)));
+                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_Y), () -> updatePositionsFromModel(getTarget(), diagramNodeView)));
+                  configuration.add(Synchronizers.forProperty(getTarget().bounds(), (Rectangle bounds) -> {
+                    getTarget().prop(MovableContentView.POSITION_X).set(bounds.origin.x);
+                    getTarget().prop(MovableContentView.POSITION_Y).set(bounds.origin.y);
                   }));
                   myPropertyCell_pr685x_a0a.registerSynchronizers(configuration, getTarget().prop(MovableContentView.POSITION_X));
                   myPropertyCell_pr685x_a1a.registerSynchronizers(configuration, getTarget().prop(MovableContentView.POSITION_Y));
@@ -193,20 +184,24 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ResizableContentVi
           final NamedBoxFigure contentView = (NamedBoxFigure) getContentView();
           configuration.add(Synchronizers.forProperty(contentView.bounds(), getTarget().bounds));
           configuration.add(Synchronizers.forProperty(Properties.constant(Boolean.TRUE), getTarget().resizable));
-          configuration.add(Synchronizers.forProperty(getTarget().boundsDelta, new WritableProperty<Rectangle>() {
-            public void set(Rectangle delta) {
-              if (delta == null) {
-                return;
-              }
-              Vector positionDelta = delta.origin;
-              Vector sizeDelta = delta.dimension;
-              blockMapper.getTarget().move(positionDelta);
-              contentView.prop(ResizableContentView.PREFERRED_SIZE).set(contentView.prop(ResizableContentView.PREFERRED_SIZE).get().add(sizeDelta));
+          configuration.add(Synchronizers.forProperty(getTarget().boundsDelta, (Rectangle delta) -> {
+            if (delta == null) {
+              return;
             }
+            Vector positionDelta = delta.origin;
+            Vector sizeDelta = delta.dimension;
+            blockMapper.getTarget().move(positionDelta);
+            contentView.prop(ResizableContentView.PREFERRED_SIZE).set(contentView.prop(ResizableContentView.PREFERRED_SIZE).get().add(sizeDelta));
           }));
 
         }
       };
     }
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty x$a57l = MetaAdapterFactory.getProperty(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff15ca26L, 0x1198689ff15ca27L, "x");
+    /*package*/ static final SProperty y$aawG = MetaAdapterFactory.getProperty(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff15ca26L, 0x1198689ff15ca29L, "y");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

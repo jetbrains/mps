@@ -38,14 +38,13 @@ public final class LanguageConceptSwitch {
   public static final int InsertBeforePosition = 26;
   public static final int InsertPosition = 27;
   public static final int Instruction = 28;
-  public static final int InstructionClassKeeper = 29;
-  public static final int InstructionParameter = 30;
-  public static final int InstructionReference = 31;
-  public static final int IsOperation = 32;
-  public static final int PatternCondition = 33;
-  public static final int ProgramParameter = 34;
-  public static final int Rule = 35;
-  public static final int RuleReference = 36;
+  public static final int InstructionParameter = 29;
+  public static final int InstructionReference = 30;
+  public static final int IsOperation = 31;
+  public static final int PatternCondition = 32;
+  public static final int ProgramParameter = 33;
+  public static final int Rule = 34;
+  public static final int RuleReference = 35;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x97a52717898f4598L, 0x8150573d9fd03868L);
@@ -78,7 +77,6 @@ public final class LanguageConceptSwitch {
     builder.put(0x74ea0fbaafce9c9fL, InsertBeforePosition);
     builder.put(0x74ea0fbaafcebf23L, InsertPosition);
     builder.put(0x5bd9e43c93f4678aL, Instruction);
-    builder.put(0x57e18a43f31d0ef6L, InstructionClassKeeper);
     builder.put(0x5faaa6bbd583aa0L, InstructionParameter);
     builder.put(0x3a887e9da0b4cedcL, InstructionReference);
     builder.put(0x6ed2c546d46ea462L, IsOperation);

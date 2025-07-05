@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="p8iutjpq4aby0xoh7agej2pe14tkgp" />
+<product version="3" modelHash="1qob8i93hbpkfyh98va4lfijzv8jrnb">
+  <files names="CustomWatchable_Editor.java:CustomWatchable_EditorBuilder_a.java:CustomWatchablesContainer_Editor.java:CustomWatchablesContainer_EditorBuilder_a.java:EditorAspectDescriptorImpl.java:HighLevelCustomViewer_Editor.java:HighLevelCustomViewer_EditorBuilder_a.java:HighLevelWatchableCreator_Editor.java:HighLevelWatchableCreator_EditorBuilder_a.java:ToProcessMethod_Editor.java:ToProcessMethod_EditorBuilder_a.java:WatchableListType_Editor.java:WatchableListType_EditorBuilder_a.java:WatchableType_Editor.java:WatchableType_EditorBuilder_a.java:WatchablesListCreator_Editor.java:WatchablesListCreator_EditorBuilder_a.java" />
+</product>
 

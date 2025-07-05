@@ -21,6 +21,7 @@ import java.io.File;
 
 /**
  * A project which stores its state in the file on the disk
+ * XXX review usages, seems that
  */
 public interface FileBasedProject {
   /**

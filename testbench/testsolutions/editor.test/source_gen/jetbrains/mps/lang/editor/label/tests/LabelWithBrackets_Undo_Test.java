@@ -4,19 +4,33 @@ package jetbrains.mps.lang.editor.label.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
+import jetbrains.mps.lang.test.runtime.TransformationTest;
 
 @MPSLaunch
 public class LabelWithBrackets_Undo_Test extends BaseTransformationTest {
-  @Test
-  public void test_LabelWithBrackets_Undo() throws Throwable {
-    initTest("${mps_home}", "r:40a702b4-7737-42f4-8412-0355208396f3(jetbrains.mps.lang.editor.label.tests)");
-    runTest("jetbrains.mps.lang.editor.label.tests.LabelWithBrackets_Undo_Test$TestBody", "testMethod", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(LabelWithBrackets_Undo_Test.class).projectPath(null).modelRef("r:40a702b4-7737-42f4-8412-0355208396f3(jetbrains.mps.lang.editor.label.tests)").reopenProject(false).build());
+
+  public LabelWithBrackets_Undo_Test() {
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
-  @MPSLaunch
-  public static class TestBody extends BaseEditorTestBody {
+  @Test
+  public void test_LabelWithBrackets_Undo() throws Throwable {
+    new TestBody(this).testMethod();
+  }
+
+  /*package*/ static class TestBody extends BaseEditorTestBody {
+
+    /*package*/ TestBody(TransformationTest owner) {
+      super(owner);
+    }
+
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("6546125805699826789", "6546125805699826791");

@@ -4,39 +4,39 @@ package jetbrains.mps.execution.commands.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_BuilderBlockStatement = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_BuilderParameter = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_CommandBuilderExpression = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_CommandDebuggerOperation = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_CommandDeclaration = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_CommandMethod = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_CommandParameterAssignment = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_CommandParameterDeclaration = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_CommandParameterReference = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_CommandPartLengthOperation = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_CommandPartToListOperation = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_CommandProcessType = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_CommandReferenceExpression = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_CommandType = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_DebuggerSettingsCommandParameterDeclaration = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ExecuteCommandPart = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ExplicitCommandParameterDeclaration = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_KeyValueCommandPart = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ListCommandPart = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_NewProcessBuilderExpression = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ProcessBuilderCommandPart = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ProcessBuilderCommandPartType = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ProcessType = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_PropertyCommandPart = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_RedirectOutputExpression = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ReportErrorStatement = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ReportExecutionError = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_StartAndWaitOperation = new ConceptPresentationBuilder().shortDesc("start process and wait while it is finished").create();
+  private ConceptPresentation props_BuilderBlockStatement;
+  private ConceptPresentation props_BuilderParameter;
+  private ConceptPresentation props_CommandBuilderExpression;
+  private ConceptPresentation props_CommandDebuggerOperation;
+  private ConceptPresentation props_CommandDeclaration;
+  private ConceptPresentation props_CommandMethod;
+  private ConceptPresentation props_CommandParameterAssignment;
+  private ConceptPresentation props_CommandParameterDeclaration;
+  private ConceptPresentation props_CommandParameterReference;
+  private ConceptPresentation props_CommandPartLengthOperation;
+  private ConceptPresentation props_CommandPartToListOperation;
+  private ConceptPresentation props_CommandProcessType;
+  private ConceptPresentation props_CommandReferenceExpression;
+  private ConceptPresentation props_CommandType;
+  private ConceptPresentation props_DebuggerSettingsCommandParameterDeclaration;
+  private ConceptPresentation props_ExecuteCommandPart;
+  private ConceptPresentation props_ExplicitCommandParameterDeclaration;
+  private ConceptPresentation props_KeyValueCommandPart;
+  private ConceptPresentation props_ListCommandPart;
+  private ConceptPresentation props_NewProcessBuilderExpression;
+  private ConceptPresentation props_ProcessBuilderCommandPart;
+  private ConceptPresentation props_ProcessBuilderCommandPartType;
+  private ConceptPresentation props_ProcessType;
+  private ConceptPresentation props_PropertyCommandPart;
+  private ConceptPresentation props_RedirectOutputExpression;
+  private ConceptPresentation props_ReportErrorStatement;
+  private ConceptPresentation props_ReportExecutionError;
+  private ConceptPresentation props_StartAndWaitOperation;
 
   @Override
   @Nullable
@@ -44,60 +44,198 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.BuilderBlockStatement:
+        if (props_BuilderBlockStatement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("BuilderBlockStatement");
+          props_BuilderBlockStatement = cpb.create();
+        }
         return props_BuilderBlockStatement;
       case LanguageConceptSwitch.BuilderParameter:
+        if (props_BuilderParameter == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("BuilderParameter");
+          props_BuilderParameter = cpb.create();
+        }
         return props_BuilderParameter;
       case LanguageConceptSwitch.CommandBuilderExpression:
+        if (props_CommandBuilderExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("build command");
+          props_CommandBuilderExpression = cpb.create();
+        }
         return props_CommandBuilderExpression;
       case LanguageConceptSwitch.CommandDebuggerOperation:
+        if (props_CommandDebuggerOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("debugger");
+          props_CommandDebuggerOperation = cpb.create();
+        }
         return props_CommandDebuggerOperation;
       case LanguageConceptSwitch.CommandDeclaration:
+        if (props_CommandDeclaration == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_CommandDeclaration = cpb.create();
+        }
         return props_CommandDeclaration;
       case LanguageConceptSwitch.CommandMethod:
+        if (props_CommandMethod == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_CommandMethod = cpb.create();
+        }
         return props_CommandMethod;
       case LanguageConceptSwitch.CommandParameterAssignment:
+        if (props_CommandParameterAssignment == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be4L, 0xbe3a0d5ba1a2be5L, "parameterDeclaration", "", "");
+          props_CommandParameterAssignment = cpb.create();
+        }
         return props_CommandParameterAssignment;
       case LanguageConceptSwitch.CommandParameterDeclaration:
+        if (props_CommandParameterDeclaration == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_CommandParameterDeclaration = cpb.create();
+        }
         return props_CommandParameterDeclaration;
       case LanguageConceptSwitch.CommandParameterReference:
+        if (props_CommandParameterReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bdcL, 0xbe3a0d5ba1a2bdeL, "parameter", "", "");
+          props_CommandParameterReference = cpb.create();
+        }
         return props_CommandParameterReference;
       case LanguageConceptSwitch.CommandPartLengthOperation:
+        if (props_CommandPartLengthOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("length");
+          props_CommandPartLengthOperation = cpb.create();
+        }
         return props_CommandPartLengthOperation;
       case LanguageConceptSwitch.CommandPartToListOperation:
+        if (props_CommandPartToListOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("toList");
+          props_CommandPartToListOperation = cpb.create();
+        }
         return props_CommandPartToListOperation;
       case LanguageConceptSwitch.CommandProcessType:
+        if (props_CommandProcessType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("command process");
+          props_CommandProcessType = cpb.create();
+        }
         return props_CommandProcessType;
       case LanguageConceptSwitch.CommandReferenceExpression:
+        if (props_CommandReferenceExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("command reference");
+          props_CommandReferenceExpression = cpb.create();
+        }
         return props_CommandReferenceExpression;
       case LanguageConceptSwitch.CommandType:
+        if (props_CommandType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("command");
+          props_CommandType = cpb.create();
+        }
         return props_CommandType;
       case LanguageConceptSwitch.DebuggerSettingsCommandParameterDeclaration:
+        if (props_DebuggerSettingsCommandParameterDeclaration == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_DebuggerSettingsCommandParameterDeclaration = cpb.create();
+        }
         return props_DebuggerSettingsCommandParameterDeclaration;
       case LanguageConceptSwitch.ExecuteCommandPart:
+        if (props_ExecuteCommandPart == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_ExecuteCommandPart = cpb.create();
+        }
         return props_ExecuteCommandPart;
       case LanguageConceptSwitch.ExplicitCommandParameterDeclaration:
+        if (props_ExplicitCommandParameterDeclaration == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_ExplicitCommandParameterDeclaration = cpb.create();
+        }
         return props_ExplicitCommandParameterDeclaration;
       case LanguageConceptSwitch.KeyValueCommandPart:
+        if (props_KeyValueCommandPart == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("[key value]");
+          props_KeyValueCommandPart = cpb.create();
+        }
         return props_KeyValueCommandPart;
       case LanguageConceptSwitch.ListCommandPart:
+        if (props_ListCommandPart == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("list command part");
+          props_ListCommandPart = cpb.create();
+        }
         return props_ListCommandPart;
       case LanguageConceptSwitch.NewProcessBuilderExpression:
+        if (props_NewProcessBuilderExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("process builder");
+          props_NewProcessBuilderExpression = cpb.create();
+        }
         return props_NewProcessBuilderExpression;
       case LanguageConceptSwitch.ProcessBuilderCommandPart:
+        if (props_ProcessBuilderCommandPart == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_ProcessBuilderCommandPart = cpb.create();
+        }
         return props_ProcessBuilderCommandPart;
       case LanguageConceptSwitch.ProcessBuilderCommandPartType:
+        if (props_ProcessBuilderCommandPartType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("process builder command part");
+          props_ProcessBuilderCommandPartType = cpb.create();
+        }
         return props_ProcessBuilderCommandPartType;
       case LanguageConceptSwitch.ProcessType:
+        if (props_ProcessType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("process");
+          props_ProcessType = cpb.create();
+        }
         return props_ProcessType;
       case LanguageConceptSwitch.PropertyCommandPart:
+        if (props_PropertyCommandPart == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("-Dkey=value");
+          props_PropertyCommandPart = cpb.create();
+        }
         return props_PropertyCommandPart;
       case LanguageConceptSwitch.RedirectOutputExpression:
+        if (props_RedirectOutputExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("output redirect");
+          props_RedirectOutputExpression = cpb.create();
+        }
         return props_RedirectOutputExpression;
       case LanguageConceptSwitch.ReportErrorStatement:
+        if (props_ReportErrorStatement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_ReportErrorStatement = cpb.create();
+        }
         return props_ReportErrorStatement;
       case LanguageConceptSwitch.ReportExecutionError:
+        if (props_ReportExecutionError == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("execution error");
+          props_ReportExecutionError = cpb.create();
+        }
         return props_ReportExecutionError;
       case LanguageConceptSwitch.StartAndWaitOperation:
+        if (props_StartAndWaitOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("start process and wait while it is finished");
+          cpb.rawPresentation("startAndWait");
+          props_StartAndWaitOperation = cpb.create();
+        }
         return props_StartAndWaitOperation;
     }
     return null;

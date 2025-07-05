@@ -4,16 +4,16 @@ package org.jetbrains.mps.samples.ParallelFor.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_NonThreadSafeClass = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ParallelFor = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ParallelLoopVariable = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ThreadPool = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ThreadSafe = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_NonThreadSafeClass;
+  private ConceptPresentation props_ParallelFor;
+  private ConceptPresentation props_ParallelLoopVariable;
+  private ConceptPresentation props_ThreadPool;
+  private ConceptPresentation props_ThreadSafe;
 
   @Override
   @Nullable
@@ -21,14 +21,39 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.NonThreadSafeClass:
+        if (props_NonThreadSafeClass == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("NonThreadSafeClass");
+          props_NonThreadSafeClass = cpb.create();
+        }
         return props_NonThreadSafeClass;
       case LanguageConceptSwitch.ParallelFor:
+        if (props_ParallelFor == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("parallelFor");
+          props_ParallelFor = cpb.create();
+        }
         return props_ParallelFor;
       case LanguageConceptSwitch.ParallelLoopVariable:
+        if (props_ParallelLoopVariable == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_ParallelLoopVariable = cpb.create();
+        }
         return props_ParallelLoopVariable;
       case LanguageConceptSwitch.ThreadPool:
+        if (props_ThreadPool == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("thread pool");
+          props_ThreadPool = cpb.create();
+        }
         return props_ThreadPool;
       case LanguageConceptSwitch.ThreadSafe:
+        if (props_ThreadSafe == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ThreadSafe");
+          props_ThreadSafe = cpb.create();
+        }
         return props_ThreadSafe;
     }
     return null;

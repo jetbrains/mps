@@ -2,8 +2,7 @@
 <model ref="r:f7ab8cfc-135f-4339-bd76-ff57cf78dd74(jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="3" />
-    <devkit ref="2677cb18-f558-4e33-bc38-a5139cee06dc(jetbrains.mps.devkit.language-design)" />
+    <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
@@ -39,7 +38,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -61,7 +60,7 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="3owEWSkkEDd" role="1TKVEi">
       <property role="IQ2ns" value="3900306178895424077" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="deletedParent" />
       <ref role="20lvS9" node="3owEWSkktvY" resolve="DeletedParent" />
     </node>
@@ -77,22 +76,21 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="3owEWSkkEDk" role="1TKVEi">
       <property role="IQ2ns" value="3900306178895424084" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="deletedParentReference" />
       <ref role="20lvS9" node="3owEWSkktvY" resolve="DeletedParent" />
     </node>
     <node concept="1TJgyj" id="3owEWSkkEDg" role="1TKVEi">
       <property role="IQ2ns" value="3900306178895424080" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="deletedChild" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <ref role="20lvS9" node="3owEWSkkEDf" resolve="DeletedChild" />
     </node>
     <node concept="1TJgyj" id="2V5Y3Kmb$sE" role="1TKVEi">
       <property role="IQ2ns" value="3370372833110542122" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="abstractDeletedChild" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <ref role="20lvS9" node="1A9qTDfpVEf" resolve="DeletedAbstractChild" />
     </node>
     <node concept="1TJgyi" id="3owEWSkkEDi" role="1TKVEl">

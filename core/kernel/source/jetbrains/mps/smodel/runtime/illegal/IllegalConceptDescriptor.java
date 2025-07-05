@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.runtime.illegal;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
@@ -28,8 +29,6 @@ import jetbrains.mps.smodel.runtime.ReferenceDescriptor;
 import jetbrains.mps.smodel.runtime.StaticScope;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.containers.ConcurrentHashSet;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -40,7 +39,7 @@ import java.util.List;
 import java.util.Set;
 
 public class IllegalConceptDescriptor implements ConceptDescriptor {
-  private static final Logger LOG = LogManager.getLogger(IllegalConceptDescriptor.class);
+  private static final Logger LOG = Logger.getLogger(IllegalConceptDescriptor.class);
   private static final Set<String> ourReportedConcepts = new ConcurrentHashSet<>();
   private static final Set<SConceptId> ourReportedConceptIds = new ConcurrentHashSet<>();
   private boolean myReported = false;
@@ -83,12 +82,12 @@ public class IllegalConceptDescriptor implements ConceptDescriptor {
     if (myLanguageName != null) {
       if (ourReportedConcepts.add(myConceptName)) {
         String msg = "IllegalConceptDescriptor created for concept %s. Please check the language %s is built and compiled.";
-        LOG.warn(String.format(msg, myConceptName, myLanguageName));
+        LOG.warning(String.format(msg, myConceptName, myLanguageName));
       }
     } else {
       if (ourReportedConceptIds.add(myConceptId)) {
         String msg = "IllegalConceptDescriptor created for concept %s.";
-        LOG.warn(String.format(msg, myConceptId));
+        LOG.warning(String.format(msg, myConceptId));
       }
     }
   }
@@ -107,21 +106,9 @@ public class IllegalConceptDescriptor implements ConceptDescriptor {
   }
 
   @Override
-  public String getSuperConcept() {
-    reportWarn();
-    return null;
-  }
-
-  @Override
   public boolean isInterfaceConcept() {
     reportWarn();
     return false;
-  }
-
-  @Override
-  public Set<SReferenceLinkId> getReferenceIds() {
-    reportWarn();
-    return Collections.emptySet();
   }
 
   @Override
@@ -134,30 +121,6 @@ public class IllegalConceptDescriptor implements ConceptDescriptor {
   public ReferenceDescriptor getRefDescriptor(SReferenceLinkId id) {
     reportWarn();
     return null;
-  }
-
-  @Override
-  public PropertyDescriptor getPropertyDescriptor(String name) {
-    reportWarn();
-    return null;
-  }
-
-  @Override
-  public ReferenceDescriptor getRefDescriptor(String name) {
-    reportWarn();
-    return null;
-  }
-
-  @Override
-  public LinkDescriptor getLinkDescriptor(String name) {
-    reportWarn();
-    return null;
-  }
-
-  @Override
-  public Set<SContainmentLinkId> getLinkIds() {
-    reportWarn();
-    return Collections.emptySet();
   }
 
   @Override
@@ -176,12 +139,6 @@ public class IllegalConceptDescriptor implements ConceptDescriptor {
   public StaticScope getStaticScope() {
     reportWarn();
     return StaticScope.GLOBAL;
-  }
-
-  @Override
-  public Set<SPropertyId> getPropertyIds() {
-    reportWarn();
-    return Collections.emptySet();
   }
 
   @Override
@@ -226,18 +183,6 @@ public class IllegalConceptDescriptor implements ConceptDescriptor {
     return "";
   }
 
-  @Override
-  public String getConceptShortDescription() {
-    reportWarn();
-    return "";
-  }
-
-  @Override
-  public String getHelpUrl() {
-    reportWarn();
-    return "";
-  }
-
   @Nullable
   @Override
   public SNodeReference getSourceNode() {
@@ -267,5 +212,23 @@ public class IllegalConceptDescriptor implements ConceptDescriptor {
   public Set<SConceptId> getAncestorsIds() {
     reportWarn();
     return Collections.emptySet();
+  }
+
+  @Override
+  public SConceptId getStubConceptId() {
+    return null;
+  }
+
+  @NotNull
+  @Override
+  public String getName() {
+    reportWarn();
+    return NameUtil.shortNameFromLongName(myConceptName);
+  }
+
+  @Override
+  public int getVersion() {
+    // we are capable to tell getStubConceptId()
+    return 2;
   }
 }

@@ -1,17 +1,414 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
     <file name="ConceptPresentationAspectImpl.java">
-      <unit at="11,0,49,0" name="jetbrains.mps.baseLanguage.tuples.structure.ConceptPresentationAspectImpl" />
+      <unit at="11,0,109,0" name="jetbrains.mps.baseLanguage.tuples.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="7,0,10,0" name="jetbrains.mps.baseLanguage.tuples.structure.IconContainer" />
+      <unit at="8,0,11,0" name="jetbrains.mps.baseLanguage.tuples.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,44,0" name="jetbrains.mps.baseLanguage.tuples.structure.LanguageConceptSwitch" />
+      <unit at="10,0,46,0" name="jetbrains.mps.baseLanguage.tuples.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="16,0,166,0" name="jetbrains.mps.baseLanguage.tuples.structure.StructureAspectDescriptor" />
+      <unit at="17,0,204,0" name="jetbrains.mps.baseLanguage.tuples.structure.StructureAspectDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:309aeee7-bee8-445c-b31d-35928d1da75f(jetbrains.mps.baseLanguage.tuples.structure)/1238852151516">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="1238852151516" at="14,0,15,0" concept="1" trace="props_IndexedTupleType" />
+      <node id="1238852151516" at="45,45,46,76" concept="3" />
+      <node id="1238852151516" at="46,76,47,46" concept="0" />
+      <node id="1238852151516" at="47,46,48,35" concept="0" />
+      <node id="1238852151516" at="48,35,49,48" concept="0" />
+      <node id="1238852151516" at="50,9,51,38" concept="4" />
+      <node id="1238852151516" at="44,50,50,9" concept="2" />
+      <scope id="1238852151516" at="45,45,49,48">
+        <var name="cpb" id="1238852151516" />
+      </scope>
+      <scope id="1238852151516" at="44,50,51,38" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="1238852151516" at="14,0,15,0" concept="6" trace="IndexedTupleType" />
+      <node id="1238852151516" at="26,68,27,50" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="1238852151516" at="20,0,21,0" concept="1" trace="myConceptIndexedTupleType" />
+      <node id="1238852151516" at="55,50,56,41" concept="4" />
+      <node id="1238852151516" at="107,74,108,179" concept="3" />
+      <node id="1238852151516" at="108,179,109,34" concept="0" />
+      <node id="1238852151516" at="109,34,110,57" concept="5" />
+      <node id="1238852151516" at="110,57,111,70" concept="0" />
+      <node id="1238852151516" at="111,70,112,76" concept="0" />
+      <node id="1238852151516" at="112,76,113,114" concept="0" />
+      <node id="1238852151516" at="113,114,114,17" concept="0" />
+      <node id="1238852204892" at="114,17,115,188" concept="0" />
+      <node id="1238852151516" at="115,188,116,52" concept="0" />
+      <node id="1238852151516" at="116,52,117,17" concept="0" />
+      <node id="1238852151516" at="117,17,118,22" concept="4" />
+      <node id="1238852151516" at="107,0,120,0" concept="7" trace="createDescriptorForIndexedTupleType#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1238852151516" at="55,50,56,41" />
+      <scope id="1238852151516" at="107,74,118,22">
+        <var name="b" id="1238852151516" />
+      </scope>
+      <scope id="1238852151516" at="107,0,120,0" />
+    </file>
+  </root>
+  <root nodeRef="r:309aeee7-bee8-445c-b31d-35928d1da75f(jetbrains.mps.baseLanguage.tuples.structure)/1238853782547">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="1238853782547" at="12,0,13,0" concept="1" trace="props_IndexedTupleLiteral" />
+      <node id="1238853782547" at="29,48,30,76" concept="3" />
+      <node id="1238853782547" at="30,76,31,41" concept="0" />
+      <node id="1238853782547" at="31,41,32,35" concept="0" />
+      <node id="1238853782547" at="32,35,33,51" concept="0" />
+      <node id="1238853782547" at="34,9,35,41" concept="4" />
+      <node id="1238853782547" at="28,53,34,9" concept="2" />
+      <scope id="1238853782547" at="29,48,33,51">
+        <var name="cpb" id="1238853782547" />
+      </scope>
+      <scope id="1238853782547" at="28,53,35,41" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="1238853782547" at="12,0,13,0" concept="6" trace="IndexedTupleLiteral" />
+      <node id="1238853782547" at="24,116,25,53" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="1238853782547" at="18,0,19,0" concept="1" trace="myConceptIndexedTupleLiteral" />
+      <node id="1238853782547" at="51,53,52,44" concept="4" />
+      <node id="1238853782547" at="81,77,82,182" concept="3" />
+      <node id="1238853782547" at="82,182,83,34" concept="0" />
+      <node id="1238853782547" at="83,34,84,63" concept="5" />
+      <node id="1238853782547" at="84,63,85,70" concept="0" />
+      <node id="1238853782547" at="85,70,86,71" concept="0" />
+      <node id="1238853782547" at="86,71,87,114" concept="0" />
+      <node id="1238853782547" at="87,114,88,17" concept="0" />
+      <node id="1238853845806" at="88,17,89,184" concept="0" />
+      <node id="1238853782547" at="89,184,90,49" concept="0" />
+      <node id="1238853782547" at="90,49,91,17" concept="0" />
+      <node id="1238853782547" at="91,17,92,22" concept="4" />
+      <node id="1238853782547" at="81,0,94,0" concept="7" trace="createDescriptorForIndexedTupleLiteral#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1238853782547" at="51,53,52,44" />
+      <scope id="1238853782547" at="81,77,92,22">
+        <var name="b" id="1238853782547" />
+      </scope>
+      <scope id="1238853782547" at="81,0,94,0" />
+    </file>
+  </root>
+  <root nodeRef="r:309aeee7-bee8-445c-b31d-35928d1da75f(jetbrains.mps.baseLanguage.tuples.structure)/1238857743184">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="1238857743184" at="13,0,14,0" concept="1" trace="props_IndexedTupleMemberAccessExpression" />
+      <node id="1238857743184" at="37,63,38,76" concept="3" />
+      <node id="1238857743184" at="38,76,39,56" concept="0" />
+      <node id="1238857743184" at="39,56,40,35" concept="0" />
+      <node id="1238857743184" at="40,35,41,66" concept="0" />
+      <node id="1238857743184" at="42,9,43,56" concept="4" />
+      <node id="1238857743184" at="36,68,42,9" concept="2" />
+      <scope id="1238857743184" at="37,63,41,66">
+        <var name="cpb" id="1238857743184" />
+      </scope>
+      <scope id="1238857743184" at="36,68,43,56" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="1238857743184" at="13,0,14,0" concept="6" trace="IndexedTupleMemberAccessExpression" />
+      <node id="1238857743184" at="25,53,26,68" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="1238857743184" at="19,0,20,0" concept="1" trace="myConceptIndexedTupleMemberAccessExpression" />
+      <node id="1238857743184" at="53,68,54,59" concept="4" />
+      <node id="1238857743184" at="94,92,95,197" concept="3" />
+      <node id="1238857743184" at="95,197,96,34" concept="0" />
+      <node id="1238857743184" at="96,34,97,63" concept="5" />
+      <node id="1238857743184" at="97,63,98,70" concept="0" />
+      <node id="1238857743184" at="98,70,99,114" concept="0" />
+      <node id="1238857743184" at="99,114,100,17" concept="0" />
+      <node id="1238857764950" at="100,17,101,182" concept="0" />
+      <node id="1238857834412" at="101,182,102,182" concept="0" />
+      <node id="1238857743184" at="102,182,103,49" concept="0" />
+      <node id="1238857743184" at="103,49,104,17" concept="0" />
+      <node id="1238857743184" at="104,17,105,22" concept="4" />
+      <node id="1238857743184" at="94,0,107,0" concept="7" trace="createDescriptorForIndexedTupleMemberAccessExpression#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1238857743184" at="53,68,54,59" />
+      <scope id="1238857743184" at="94,92,105,22">
+        <var name="b" id="1238857743184" />
+      </scope>
+      <scope id="1238857743184" at="94,0,107,0" />
+    </file>
+  </root>
+  <root nodeRef="r:309aeee7-bee8-445c-b31d-35928d1da75f(jetbrains.mps.baseLanguage.tuples.structure)/1239360506533">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="1239360506533" at="19,0,20,0" concept="1" trace="props_NamedTupleDeclaration" />
+      <node id="1239360506533" at="81,50,82,76" concept="3" />
+      <node id="1239360506533" at="82,76,83,51" concept="0" />
+      <node id="1239360506533" at="83,51,84,35" concept="0" />
+      <node id="1239360506533" at="84,35,85,55" concept="0" />
+      <node id="1239360506533" at="85,55,86,53" concept="0" />
+      <node id="1239360506533" at="87,9,88,43" concept="4" />
+      <node id="1239360506533" at="80,55,87,9" concept="2" />
+      <scope id="1239360506533" at="81,50,86,53">
+        <var name="cpb" id="1239360506533" />
+      </scope>
+      <scope id="1239360506533" at="80,55,88,43" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="1239360506533" at="19,0,20,0" concept="6" trace="NamedTupleDeclaration" />
+      <node id="1239360506533" at="31,62,32,55" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="1239360506533" at="25,0,26,0" concept="1" trace="myConceptNamedTupleDeclaration" />
+      <node id="1239360506533" at="65,55,66,46" concept="4" />
+      <node id="1239360506533" at="163,79,164,184" concept="3" />
+      <node id="1239360506533" at="164,184,165,33" concept="0" />
+      <node id="1239360506533" at="165,33,166,63" concept="5" />
+      <node id="1239360506533" at="166,63,167,71" concept="0" />
+      <node id="1239360506533" at="167,71,168,71" concept="0" />
+      <node id="1239360506533" at="168,71,169,114" concept="0" />
+      <node id="1239360506533" at="169,114,170,17" concept="0" />
+      <node id="1239529553065" at="170,17,171,185" concept="0" />
+      <node id="322547369016009796" at="171,185,172,194" concept="0" />
+      <node id="2423993921025641700" at="172,194,173,197" concept="0" />
+      <node id="1500000307918327556" at="173,197,174,277" concept="0" />
+      <node id="1239360506533" at="174,277,175,21" concept="0" />
+      <node id="1239360506533" at="175,21,176,22" concept="4" />
+      <node id="1239360506533" at="163,0,178,0" concept="7" trace="createDescriptorForNamedTupleDeclaration#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1239360506533" at="65,55,66,46" />
+      <scope id="1239360506533" at="163,79,176,22">
+        <var name="b" id="1239360506533" />
+      </scope>
+      <scope id="1239360506533" at="163,0,178,0" />
+    </file>
+  </root>
+  <root nodeRef="r:309aeee7-bee8-445c-b31d-35928d1da75f(jetbrains.mps.baseLanguage.tuples.structure)/1239462176079">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="1239462176079" at="17,0,18,0" concept="1" trace="props_NamedTupleComponentDeclaration" />
+      <node id="1239462176079" at="67,59,68,76" concept="3" />
+      <node id="1239462176079" at="68,76,69,35" concept="0" />
+      <node id="1239462176079" at="69,35,70,62" concept="0" />
+      <node id="1239462176079" at="71,9,72,52" concept="4" />
+      <node id="1239462176079" at="66,64,71,9" concept="2" />
+      <scope id="1239462176079" at="67,59,70,62">
+        <var name="cpb" id="1239462176079" />
+      </scope>
+      <scope id="1239462176079" at="66,64,72,52" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="1239462176079" at="17,0,18,0" concept="6" trace="NamedTupleComponentDeclaration" />
+      <node id="1239462176079" at="29,68,30,64" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="1239462176079" at="23,0,24,0" concept="1" trace="myConceptNamedTupleComponentDeclaration" />
+      <node id="1239462176079" at="61,64,62,55" concept="4" />
+      <node id="1239462176079" at="140,88,141,193" concept="3" />
+      <node id="1239462176079" at="141,193,142,34" concept="0" />
+      <node id="1239462176079" at="142,34,143,71" concept="0" />
+      <node id="1239462176079" at="143,71,144,71" concept="0" />
+      <node id="1239462176079" at="144,71,145,71" concept="0" />
+      <node id="1239462176079" at="145,71,146,71" concept="0" />
+      <node id="1239462176079" at="146,71,147,71" concept="0" />
+      <node id="1239462176079" at="147,71,148,114" concept="0" />
+      <node id="1239462176079" at="148,114,149,17" concept="0" />
+      <node id="1240400839614" at="149,17,150,101" concept="0" />
+      <node id="1239462974287" at="150,101,151,181" concept="0" />
+      <node id="1239462176079" at="151,181,152,22" concept="4" />
+      <node id="1239462176079" at="140,0,154,0" concept="7" trace="createDescriptorForNamedTupleComponentDeclaration#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1239462176079" at="61,64,62,55" />
+      <scope id="1239462176079" at="140,88,152,22">
+        <var name="b" id="1239462176079" />
+      </scope>
+      <scope id="1239462176079" at="140,0,154,0" />
+    </file>
+  </root>
+  <root nodeRef="r:309aeee7-bee8-445c-b31d-35928d1da75f(jetbrains.mps.baseLanguage.tuples.structure)/1239531918181">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="1239531918181" at="21,0,22,0" concept="1" trace="props_NamedTupleType" />
+      <node id="1239531918181" at="98,43,99,76" concept="3" />
+      <node id="1239531918181" at="99,76,100,64" concept="0" />
+      <node id="1239531918181" at="100,64,101,139" concept="0" />
+      <node id="1239531918181" at="101,139,102,46" concept="0" />
+      <node id="1239531918181" at="103,9,104,36" concept="4" />
+      <node id="1239531918181" at="97,48,103,9" concept="2" />
+      <scope id="1239531918181" at="98,43,102,46">
+        <var name="cpb" id="1239531918181" />
+      </scope>
+      <scope id="1239531918181" at="97,48,104,36" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="1239531918181" at="21,0,22,0" concept="6" trace="NamedTupleType" />
+      <node id="1239531918181" at="33,51,34,48" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="1239531918181" at="27,0,28,0" concept="1" trace="myConceptNamedTupleType" />
+      <node id="1239531918181" at="69,48,70,39" concept="4" />
+      <node id="1239531918181" at="190,72,191,177" concept="3" />
+      <node id="1239531918181" at="191,177,192,34" concept="0" />
+      <node id="1239531918181" at="192,34,193,67" concept="5" />
+      <node id="1239531918181" at="193,67,194,71" concept="0" />
+      <node id="1239531918181" at="194,71,195,76" concept="0" />
+      <node id="1239531918181" at="195,76,196,114" concept="0" />
+      <node id="1239531918181" at="196,114,197,17" concept="0" />
+      <node id="1239531948650" at="197,17,198,249" concept="0" />
+      <node id="1239548562987" at="198,249,199,273" concept="0" />
+      <node id="1239531918181" at="199,273,200,52" concept="0" />
+      <node id="1239531918181" at="200,52,201,22" concept="4" />
+      <node id="1239531918181" at="190,0,203,0" concept="7" trace="createDescriptorForNamedTupleType#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1239531918181" at="69,48,70,39" />
+      <scope id="1239531918181" at="190,72,201,22">
+        <var name="b" id="1239531918181" />
+      </scope>
+      <scope id="1239531918181" at="190,0,203,0" />
+    </file>
+  </root>
+  <root nodeRef="r:309aeee7-bee8-445c-b31d-35928d1da75f(jetbrains.mps.baseLanguage.tuples.structure)/1239559992092">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="1239559992092" at="20,0,21,0" concept="1" trace="props_NamedTupleLiteral" />
+      <node id="1239559992092" at="90,46,91,76" concept="3" />
+      <node id="1239559992092" at="91,76,92,41" concept="0" />
+      <node id="1239559992092" at="92,41,93,148" concept="0" />
+      <node id="1239559992092" at="93,148,94,49" concept="0" />
+      <node id="1239559992092" at="95,9,96,39" concept="4" />
+      <node id="1239559992092" at="89,51,95,9" concept="2" />
+      <scope id="1239559992092" at="90,46,94,49">
+        <var name="cpb" id="1239559992092" />
+      </scope>
+      <scope id="1239559992092" at="89,51,96,39" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="1239559992092" at="20,0,21,0" concept="6" trace="NamedTupleLiteral" />
+      <node id="1239559992092" at="32,55,33,51" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="1239559992092" at="26,0,27,0" concept="1" trace="myConceptNamedTupleLiteral" />
+      <node id="1239559992092" at="67,51,68,42" concept="4" />
+      <node id="1239559992092" at="178,75,179,180" concept="3" />
+      <node id="1239559992092" at="179,180,180,34" concept="0" />
+      <node id="1239559992092" at="180,34,181,63" concept="5" />
+      <node id="1239559992092" at="181,63,182,70" concept="0" />
+      <node id="1239559992092" at="182,70,183,114" concept="0" />
+      <node id="1239559992092" at="183,114,184,17" concept="0" />
+      <node id="1239560008022" at="184,17,185,164" concept="0" />
+      <node id="1239560910577" at="185,164,186,188" concept="0" />
+      <node id="1239559992092" at="186,188,187,49" concept="0" />
+      <node id="1239559992092" at="187,49,188,22" concept="4" />
+      <node id="1239559992092" at="178,0,190,0" concept="7" trace="createDescriptorForNamedTupleLiteral#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1239559992092" at="67,51,68,42" />
+      <scope id="1239559992092" at="178,75,188,22">
+        <var name="b" id="1239559992092" />
+      </scope>
+      <scope id="1239559992092" at="178,0,190,0" />
+    </file>
+  </root>
+  <root nodeRef="r:309aeee7-bee8-445c-b31d-35928d1da75f(jetbrains.mps.baseLanguage.tuples.structure)/1239560581441">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="1239560581441" at="18,0,19,0" concept="1" trace="props_NamedTupleComponentReference" />
+      <node id="1239560581441" at="74,57,75,76" concept="3" />
+      <node id="1239560581441" at="75,76,76,144" concept="0" />
+      <node id="1239560581441" at="76,144,77,60" concept="0" />
+      <node id="1239560581441" at="78,9,79,50" concept="4" />
+      <node id="1239560581441" at="73,62,78,9" concept="2" />
+      <scope id="1239560581441" at="74,57,77,60">
+        <var name="cpb" id="1239560581441" />
+      </scope>
+      <scope id="1239560581441" at="73,62,79,50" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="1239560581441" at="18,0,19,0" concept="6" trace="NamedTupleComponentReference" />
+      <node id="1239560581441" at="30,64,31,62" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="1239560581441" at="24,0,25,0" concept="1" trace="myConceptNamedTupleComponentReference" />
+      <node id="1239560581441" at="63,62,64,53" concept="4" />
+      <node id="1239560581441" at="154,86,155,191" concept="3" />
+      <node id="1239560581441" at="155,191,156,34" concept="0" />
+      <node id="1239560581441" at="156,34,157,114" concept="0" />
+      <node id="1239560581441" at="157,114,158,17" concept="0" />
+      <node id="1239560595302" at="158,17,159,168" concept="0" />
+      <node id="1239560837729" at="159,168,160,182" concept="0" />
+      <node id="1239560581441" at="160,182,161,22" concept="4" />
+      <node id="1239560581441" at="154,0,163,0" concept="7" trace="createDescriptorForNamedTupleComponentReference#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1239560581441" at="63,62,64,53" />
+      <scope id="1239560581441" at="154,86,161,22">
+        <var name="b" id="1239560581441" />
+      </scope>
+      <scope id="1239560581441" at="154,0,163,0" />
+    </file>
+  </root>
+  <root nodeRef="r:309aeee7-bee8-445c-b31d-35928d1da75f(jetbrains.mps.baseLanguage.tuples.structure)/1239576519914">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="1239576519914" at="16,0,17,0" concept="1" trace="props_NamedTupleComponentAccessOperation" />
+      <node id="1239576519914" at="60,63,61,76" concept="3" />
+      <node id="1239576519914" at="61,76,62,133" concept="0" />
+      <node id="1239576519914" at="62,133,63,66" concept="0" />
+      <node id="1239576519914" at="64,9,65,56" concept="4" />
+      <node id="1239576519914" at="59,68,64,9" concept="2" />
+      <scope id="1239576519914" at="60,63,63,66">
+        <var name="cpb" id="1239576519914" />
+      </scope>
+      <scope id="1239576519914" at="59,68,65,56" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="1239576519914" at="16,0,17,0" concept="6" trace="NamedTupleComponentAccessOperation" />
+      <node id="1239576519914" at="28,70,29,68" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="1239576519914" at="22,0,23,0" concept="1" trace="myConceptNamedTupleComponentAccessOperation" />
+      <node id="1239576519914" at="59,68,60,59" concept="4" />
+      <node id="1239576519914" at="130,92,131,197" concept="3" />
+      <node id="1239576519914" at="131,197,132,34" concept="0" />
+      <node id="1239576519914" at="132,34,133,71" concept="0" />
+      <node id="1239576519914" at="133,71,134,114" concept="0" />
+      <node id="1239576519914" at="134,114,135,17" concept="0" />
+      <node id="1239576542472" at="135,17,136,157" concept="0" />
+      <node id="1239576519914" at="136,157,137,49" concept="0" />
+      <node id="1239576519914" at="137,49,138,22" concept="4" />
+      <node id="1239576519914" at="130,0,140,0" concept="7" trace="createDescriptorForNamedTupleComponentAccessOperation#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1239576519914" at="59,68,60,59" />
+      <scope id="1239576519914" at="130,92,138,22">
+        <var name="b" id="1239576519914" />
+      </scope>
+      <scope id="1239576519914" at="130,0,140,0" />
+    </file>
+  </root>
+  <root nodeRef="r:309aeee7-bee8-445c-b31d-35928d1da75f(jetbrains.mps.baseLanguage.tuples.structure)/4070820740695140043">
+    <file name="ConceptPresentationAspectImpl.java">
+      <node id="4070820740695140043" at="15,0,16,0" concept="1" trace="props_LocalVariableDeclarationInTuple" />
+      <node id="4070820740695140043" at="53,60,54,76" concept="3" />
+      <node id="4070820740695140043" at="54,76,55,65" concept="0" />
+      <node id="4070820740695140043" at="55,65,56,63" concept="0" />
+      <node id="4070820740695140043" at="57,9,58,53" concept="4" />
+      <node id="4070820740695140043" at="52,65,57,9" concept="2" />
+      <scope id="4070820740695140043" at="53,60,56,63">
+        <var name="cpb" id="4070820740695140043" />
+      </scope>
+      <scope id="4070820740695140043" at="52,65,58,53" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <node id="4070820740695140043" at="15,0,16,0" concept="6" trace="LocalVariableDeclarationInTuple" />
+      <node id="4070820740695140043" at="27,50,28,70" concept="0" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <node id="4070820740695140043" at="21,0,22,0" concept="1" trace="myConceptLocalVariableDeclarationInTuple" />
+      <node id="4070820740695140043" at="57,65,58,56" concept="4" />
+      <node id="4070820740695140043" at="120,89,121,199" concept="3" />
+      <node id="4070820740695140043" at="121,199,122,34" concept="0" />
+      <node id="4070820740695140043" at="122,34,123,63" concept="5" />
+      <node id="4070820740695140043" at="123,63,124,70" concept="0" />
+      <node id="4070820740695140043" at="124,70,125,120" concept="0" />
+      <node id="4070820740695140043" at="125,120,126,17" concept="0" />
+      <node id="4070820740695140184" at="126,17,127,196" concept="0" />
+      <node id="4070820740695140043" at="127,196,128,22" concept="4" />
+      <node id="4070820740695140043" at="120,0,130,0" concept="7" trace="createDescriptorForLocalVariableDeclarationInTuple#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="4070820740695140043" at="57,65,58,56" />
+      <scope id="4070820740695140043" at="120,89,128,22">
+        <var name="b" id="4070820740695140043" />
+      </scope>
+      <scope id="4070820740695140043" at="120,0,130,0" />
     </file>
   </root>
 </debug-info>

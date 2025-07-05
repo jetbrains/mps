@@ -4,12 +4,12 @@ package jetbrains.mps.traceInfo.tracemacro.testlang.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_GeneratedForeach = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_GeneratedForeach;
 
   @Override
   @Nullable
@@ -17,6 +17,11 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.GeneratedForeach:
+        if (props_GeneratedForeach == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("GeneratedForeach");
+          props_GeneratedForeach = cpb.create();
+        }
         return props_GeneratedForeach;
     }
     return null;

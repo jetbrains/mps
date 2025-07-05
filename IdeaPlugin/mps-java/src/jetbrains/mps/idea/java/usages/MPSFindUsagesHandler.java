@@ -56,7 +56,9 @@ public class MPSFindUsagesHandler extends FindUsagesHandler {
   }
 
   @Override
-  public boolean processElementUsages(@NotNull final PsiElement element, @NotNull final Processor<UsageInfo> processor, @NotNull final FindUsagesOptions options) {
+  public boolean processElementUsages(@NotNull final PsiElement element,
+                                      @NotNull final Processor<? super UsageInfo> processor,
+                                      @NotNull final FindUsagesOptions options) {
     final Project project = element.getProject();
     final SearchScope scope = options.searchScope;
     final SRepository repository = ProjectHelper.getProjectRepository(element.getProject());

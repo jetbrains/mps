@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,31 +15,36 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
+import com.intellij.openapi.util.IconLoader;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.ide.icons.IconLoadHelper;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.MacrosFactory;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
-import java.util.HashMap;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Stream;
 
 public class EditorCell_Image extends EditorCell_Basic {
-  private static Map<String, Icon> ourIconCache = new HashMap<String, Icon>();
-
   private ImageAlignment myAlignment = ImageAlignment.justify;
   private Icon myIcon;
 
@@ -51,8 +56,15 @@ public class EditorCell_Image extends EditorCell_Basic {
     getStyle().set(StyleAttributes.PUNCTUATION_RIGHT, true);
   }
 
+  /**
+   * @param imageFileName path to an image with respect to macros of {@code node's} module.
+   */
   public static EditorCell_Image createImageCell(EditorContext editorContext, SNode node, String imageFileName) {
-    return createImageCell(editorContext, node, getModule(node), imageFileName);
+    SModule module = getModule(node);
+    if (module == null) {
+      return createImageCell(editorContext, node, (Image) null);
+    }
+    return createImageCell(editorContext, node, new ModuleImageDescriptor(module, imageFileName));
   }
 
   @Nullable
@@ -64,15 +76,22 @@ public class EditorCell_Image extends EditorCell_Basic {
     return model.getModule();
   }
 
-  public static EditorCell_Image createImageCell(EditorContext editorContext, SNode node, @Nullable SModule imageModule, String imagePath) {
-    EditorCell_Image result = new EditorCell_Image(editorContext, node);
-    result.setIcon(loadIcon(editorContext, imageModule, imagePath));
-    return result;
+  /**
+   * @param imagePath path is expanded with respect to macros of {@code imageModule} context.
+   */
+  public static EditorCell_Image createImageCell(EditorContext editorContext, SNode node, @NotNull SModule imageModule, String imagePath) {
+    return createImageCell(editorContext, node, new ModuleImageDescriptor(imageModule, imagePath));
   }
 
   public static EditorCell_Image createImageCell(EditorContext editorContext, SNode node, Image image) {
     EditorCell_Image result = new EditorCell_Image(editorContext, node);
     result.setImage(image);
+    return result;
+  }
+
+  public static EditorCell_Image createImageCell(EditorContext editorContext, SNode node, @NotNull ImageDescriptor image) {
+    EditorCell_Image result = new EditorCell_Image(editorContext, node);
+    result.setIcon(image.loadIcon(editorContext, node));
     return result;
   }
 
@@ -136,12 +155,8 @@ public class EditorCell_Image extends EditorCell_Basic {
     }
 
     if (myDescent < 0) {
-      myDescent = getFontMetrics().getDescent();
+      myDescent = EditorSettings.getInstance().getDefaultEditorFontMetrics().getDescent();
     }
-  }
-
-  private FontMetrics getFontMetrics() {
-    return FontRegistry.getInstance().getFontMetrics(EditorSettings.getInstance().getDefaultEditorFont());
   }
 
   @Override
@@ -151,7 +166,7 @@ public class EditorCell_Image extends EditorCell_Basic {
 
   @Override
   public int getDescent() {
-    return myDescent >= 0 ? myDescent : 0;
+    return Math.max(myDescent, 0);
   }
 
   public void setDescent(int descent) {
@@ -160,33 +175,6 @@ public class EditorCell_Image extends EditorCell_Basic {
 
   public void setAlignment(ImageAlignment alignment) {
     myAlignment = alignment;
-  }
-
-  protected void setImageFileName(String fileName) {
-    if (fileName != null && FileSystem.getInstance().getFileByPath(fileName).exists()) {
-      setImage(Toolkit.getDefaultToolkit().getImage(fileName));
-    } else {
-      setImage(null);
-    }
-  }
-
-  private static Icon loadIcon(EditorContext context, SModule module, String iconPath) {
-    String fullPath = MacrosFactory.forModule((AbstractModule) module).expandPath(iconPath);
-    if (fullPath == null) {
-      return null;
-    }
-    if (!ourIconCache.containsKey(fullPath)){
-      ourIconCache.put(fullPath, IconLoadHelper.loadIcon(fullPath));
-    }
-    return ourIconCache.get(fullPath);
-  }
-
-  @Nullable
-  private static AbstractModule toAbstractModule(SModule module) {
-    if (!(module instanceof AbstractModule)) {
-      return null;
-    }
-    return (AbstractModule) module;
   }
 
   protected void setImage(Image image) {
@@ -201,7 +189,114 @@ public class EditorCell_Image extends EditorCell_Basic {
     return myIcon;
   }
 
-  public static enum ImageAlignment {
-    justify, center, title;
+  public enum ImageAlignment {
+    justify, center, title
+  }
+
+  /**
+   * Abstracts mechanism to describe image source and control its loading
+   */
+  public interface ImageDescriptor {
+    @Nullable
+    Icon loadIcon(EditorContext context, SNode node);
+  }
+
+  /**
+   * Loads an image from a path expanded with respect to module macros.
+   */
+  public static final class ModuleImageDescriptor implements ImageDescriptor {
+
+    private final SModule myModule;
+    private final SModuleReference myModuleRef;
+    private final String myPath;
+
+    public ModuleImageDescriptor(@NotNull SModule module, @Nullable String path) {
+      myModule = module;
+      myModuleRef = null;
+      myPath = path;
+    }
+
+    public ModuleImageDescriptor(@NotNull SModuleReference module, @Nullable String path) {
+      myModuleRef = module;
+      myModule = null;
+      myPath = path;
+    }
+
+    @Nullable
+    @Override
+    public Icon loadIcon(EditorContext context, SNode node) {
+      assert myModule != null || myModuleRef != null;
+      // try deployed location first
+      // Note, we don't care if myModuleRef points to deployed, packaged module or one from sources of an actual project.
+      // For module deployed from sources, there's IClassPathItem extension to supply resources under ${module} location, see LocalResourceClassPathItem.
+      // For packaged deployed modules, it's build language responsibility to add respective icons into jar with binaries.
+      if (myPath.startsWith(MacrosFactory.MODULE) && myPath.length() > MacrosFactory.MODULE.length()+1) {
+        // there's '/' b/w module macro and the rest of the path, we gonna strip it off, make sure we don't get out of bounds
+        AtomicReference<Icon> loaded = new AtomicReference<>(null);
+        LanguageRegistry.getInstance(context.getRepository()).withModuleRuntime(Stream.of(myModuleRef == null ? myModule.getModuleReference() : myModuleRef), mr -> {
+          final String asAbsoluteResourcePath = myPath.substring(MacrosFactory.MODULE.length() );
+          // see below for explanation why do we handle svg and png in a different way
+          try (InputStream is = mr.getOwnResource(asAbsoluteResourcePath.substring(1))) {
+            // not sure if I need to remove leading slash, just seen iconUtil.kt strips one off before passing the value to CL.getResource(), and I know
+            // "startup.properties" lookup doesn't use one. However, seems that CL shall take absolute path, need to investigate more.
+            //
+            // getOwnResource() helps us make sure file exists (IconLoader.findIcon, despite its contract, give != null value for non-existent resource)
+            if (asAbsoluteResourcePath.toLowerCase().endsWith(".svg") || asAbsoluteResourcePath.toLowerCase().endsWith(".png")) {
+              loaded.set(IconLoader.findIcon(asAbsoluteResourcePath, mr.getModuleClassLoader()));
+            } else {
+              loaded.set(new ImageIcon(is.readAllBytes(), asAbsoluteResourcePath));
+            }
+          } catch (IOException e) {
+            LOG.info(String.format("Can't load icon [%s]%s", mr.getSourceModule().getModuleName(), asAbsoluteResourcePath));
+            // ignore, try regular file and macro resolution
+          }
+        });
+        if (loaded.get() != null) {
+          return loaded.get();
+        }
+      }
+      SModule m = myModule != null ? myModule : myModuleRef.resolve(context.getRepository());
+      if (m == null) {
+        return null;
+      }
+      String fullPath = MacrosFactory.forModule(m).expandPath(myPath);
+      if (fullPath == null || !(m instanceof AbstractModule)) {
+        return null;
+      }
+
+      jetbrains.mps.nodeEditor.EditorContext ec = (jetbrains.mps.nodeEditor.EditorContext) context;
+      Map<String, Icon> iconCache = ec.getIconCache();
+      if (!iconCache.containsKey(fullPath)) {
+        // MPS-29452: we need this to work with bundled icons (java.io.File -> URL doesn't mix well with jar protocol),
+        //            therefore we stick to IFile that is capable constructing proper URL.
+        //            However, perhaps using InputStream/byte[] instead of URL is a better alternative
+        //            (at least ImageIcon can handle these). AbstractModule.getOwnResource():InputStream?
+        // Broader context: here we need to reference resource both from source and deployed modules. For deployed
+        // resource scenario, there's IconResource; there's no proper one when we need both. Consider hiding this logic
+        // into EditorContext implementation (which could use ModuleRuntime.getOwnResource() for deployed modules)
+        // or even under some IconManager (BaseIconManager alternative) so that there's single place to look for modules
+        // come and go.
+        IFile iconFile = ((AbstractModule) m).getFileSystem().findExistingFile(fullPath);
+        if (iconFile == null) {
+          LOG.info(String.format("Can't find image '%s' in module %s", myPath, m.getModuleName()));
+          return null;
+        }
+
+        try {
+          URL iconUrl = iconFile.getUrl();
+          String extension = FileUtil.getExtension(iconFile.getName());
+          if ("svg".equalsIgnoreCase(extension) || "png".equalsIgnoreCase(extension)) {
+            // IconLoader only supports SVG and PNG, which are also the supported formats for MPS images
+            iconCache.put(fullPath, IconLoader.findIcon(iconUrl, false));
+          } else {
+            // ImageIcon supports more formats than IconLoader, but not SVG, which is why we use both here
+            iconCache.put(fullPath, new ImageIcon(iconUrl));
+          }
+        } catch (MalformedURLException e) {
+          LOG.error("can't convert icon path to url: " + fullPath, e);
+        }
+      }
+      return iconCache.get(fullPath);
+    }
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,35 +15,42 @@
  */
 package jetbrains.mps.classloading;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 
-public class GraphHolder<V> {
-  private static final Logger LOG = LogManager.getLogger(GraphHolder.class);
+/**
+ * @param <V> vertex of a graph
+ * @param <W> value associated with a vertex
+ */
+public final class GraphHolder<V, W> {
+  private static final Logger LOG = Logger.getLogger(GraphHolder.class);
   private final Graph<V> myGraph;
   private final Graph<V> myConjugateGraph; // transposed graph
+  // inv: for each vertex in myGraph or myConjucatedGraph, there's a value W in myValueStorage, and vice versa
+  private final Map<V, W> myValueStorage = new HashMap<>();
 
   public GraphHolder() {
-    myGraph = new Graph<V>();
-    myConjugateGraph = new Graph<V>();
+    myGraph = new Graph<>();
+    myConjugateGraph = new Graph<>();
   }
 
   public int getEdgesCount() {
-    checkGraphsCorrectness();
     return myGraph.getEdgesCount();
   }
 
   public int getVerticesCount() {
-    checkGraphsCorrectness();
     return myGraph.getVerticesCount();
   }
 
@@ -54,6 +61,10 @@ public class GraphHolder<V> {
     if (myGraph.getEdgesCount() != myConjugateGraph.getEdgesCount()) {
       throw new GraphsInconsistencyException("Difference in edges' count");
     }
+    if (myValueStorage.size() != myGraph.getVerticesCount()) {
+      String m = String.format("Different number of verticies (%d) and associated values (%d)", myGraph.getVerticesCount(), myValueStorage.size());
+      throw new GraphsInconsistencyException(m);
+    }
   }
 
   public Collection<V> getVertices() {
@@ -61,15 +72,29 @@ public class GraphHolder<V> {
     return Collections.unmodifiableCollection(myGraph.getVertices());
   }
 
-  public void add(V v) {
-    if (getVertices().contains(v)) {
+  public W add(V v, W value) {
+    assert v != null;
+    assert value != null;
+    if (myGraph.containsVertex(v)) {
       LOG.debug("Already watching vertex " + v);
-      return;
+      W old = update(v, value);// FIXME perhaps, shall rather be an exception thrown here
+      return old;
     }
     myGraph.addVertex(v);
     myConjugateGraph.addVertex(v);
+    myValueStorage.put(v, value);
+    return null;
   }
 
+  @Nullable
+  public W update(V v, W value) {
+    assert v != null;
+    assert value != null;
+    if (!myGraph.containsVertex(v)) {
+      throw new IllegalStateException();
+    }
+    return myValueStorage.put(v, value);
+  }
 
   /**
    * removes vertex with all its outs and ins
@@ -80,8 +105,13 @@ public class GraphHolder<V> {
     Collection<? extends V> backOuts = myConjugateGraph.getOuts(v);
     myGraph.removeVertex(v);
     myConjugateGraph.removeVertex(v);
+    myValueStorage.remove(v);
     for (V v1 : outs) myConjugateGraph.removeEdge(v1, v);
     for (V v1 : backOuts) myGraph.removeEdge(v1, v);
+  }
+
+  public W get(V v) {
+    return myValueStorage.get(v);
   }
 
   public boolean addEdge(V v1, V v2) {
@@ -96,27 +126,68 @@ public class GraphHolder<V> {
     return edgeRemoved;
   }
 
-  public Graph<V> getGraph() {
-    return myGraph;
-  }
-
-  public Graph<V> getConjugateGraph() {
-    return myConjugateGraph;
-  }
-
   public boolean contains(V v) {
     checkGraphsCorrectness();
-    return getVertices().contains(v);
+    return myGraph.containsVertex(v);
   }
 
-  public Collection<? extends V> getOutgoingEdges(V v) {
+  public void fillOutgoingEdgesShallow(Iterable<? extends V> vv, Collection<? super V> result) {
     checkGraphsCorrectness();
-    return myGraph.getOuts(v);
+    for(V v : vv) {
+      result.addAll(myGraph.getOuts(v));
+    }
+  }
+
+  public void fillOutgoingEdgesDeep(Iterable<? extends V> vv, Consumer<? super V> result) {
+    checkGraphsCorrectness();
+    myGraph.dfs(vv, result);
+  }
+
+  public void visitOutgoingDeep(Iterable<? extends V> vv, Consumer<? super W> result) {
+    myGraph.dfs(vv, v -> result.accept(get(v)));
+  }
+
+  public void cleanOutgoingEdges(Iterable<? extends V> vv) {
+    checkGraphsCorrectness();
+    for (V v : vv) {
+      for (V out : myGraph.getOuts(v)) {
+        boolean removed = myConjugateGraph.removeEdge(out, v);
+        assert removed;
+      }
+      myGraph.removeEdgesOf(v);
+    }
+  }
+
+  public int countIncomingEdges(V v) {
+    return myConjugateGraph.getOuts(v).size();
+  }
+
+  public boolean hasIncomingEdges(V v) {
+    return !myConjugateGraph.getOuts(v).isEmpty();
+  }
+
+  // exclusive
+  public void fillIncomingEdgesShallow(Iterable<? extends V> vv, Collection<? super V> result) {
+    checkGraphsCorrectness();
+    for(V v : vv) {
+      result.addAll(myConjugateGraph.getOuts(v));
+    }
+  }
+
+  // inclusive
+  public void fillIncomingEdgesDeep(Iterable<? extends V> vv, Consumer<? super V> result) {
+    checkGraphsCorrectness();
+    myConjugateGraph.dfs(vv, result);
+  }
+
+  public void visitIncomingDeep(Iterable<? extends V> vv, Consumer<? super W> result) {
+    myConjugateGraph.dfs(vv, v -> result.accept(get(v)));
   }
 
   // TODO : merge with jetbrains.mps.util.Graph (mps.util.Graph needs to be modified for a bit)
-  static class Graph<V> {
-    private final Map<V, Set<V>> myOuts = new LinkedHashMap<V, Set<V>>();
+  //    FWIF, there's no more j.m.util.Graph, but jetbrains.mps.make.unittest.Graph, bidirectional.
+  private static class Graph<V> {
+    private final Map<V, Set<V>> myOuts = new LinkedHashMap<>();
     private int myEdgesCount;
 
     public int getEdgesCount() {
@@ -133,7 +204,7 @@ public class GraphHolder<V> {
 
     public boolean addVertex(V v) {
       if (containsVertex(v)) return false;
-      myOuts.put(v, new LinkedHashSet<V>());
+      myOuts.put(v, new LinkedHashSet<>());
       return true;
     }
 
@@ -168,13 +239,19 @@ public class GraphHolder<V> {
       return false;
     }
 
+    public void removeEdgesOf(V v) {
+      Set<V> edges = myOuts.get(v);
+      myEdgesCount -= edges.size();
+      edges.clear();
+    }
+
     @NotNull
     public Collection<? extends V> getOuts(V v) {
       return myOuts.get(v);
     }
 
-    public void dfs(Iterable<? extends V> starts, VertexVisitor<V> visitor) {
-      new DfsTraversal<V>(this, starts, visitor).dfs();
+    public void dfs(Iterable<? extends V> starts, Consumer<? super V> visitor) {
+      new DfsTraversal<>(this, starts, visitor).dfs();
     }
 
     public Collection<V> getVertices() {
@@ -183,11 +260,11 @@ public class GraphHolder<V> {
 
     private static class DfsTraversal<V> {
       private final Graph<V> myGraph;
-      private final Set<V> myVisited = new HashSet<V>();
+      private final Set<V> myVisited = new HashSet<>();
       private final Iterable<? extends V> myStartVs;
-      private final VertexVisitor<V> myVisitor;
+      private final Consumer<? super V> myVisitor;
 
-      public DfsTraversal(Graph<V> graph, Iterable<? extends V> startVs, VertexVisitor<V> visitor) {
+      public DfsTraversal(Graph<V> graph, Iterable<? extends V> startVs, Consumer<? super V> visitor) {
         myGraph = graph;
         myStartVs = startVs;
         myVisitor = visitor;
@@ -195,24 +272,23 @@ public class GraphHolder<V> {
 
       public void dfs() {
         for (V v : myStartVs) {
-          if (myVisited.contains(v)) continue;
-          dfs0(v);
+          assert myGraph.containsVertex(v) : "Graph does not contain vertex " + v;
+          if (!myVisited.contains(v)) {
+            dfs0(v);
+          }
         }
       }
 
+      // pre: v belongs to the graph and hasn't beed visited yeet
       private void dfs0(V v) {
-        assert myGraph.containsVertex(v) : "Graph does not contain vertex " + v;
         myVisited.add(v);
-        myVisitor.visit(v);
+        myVisitor.accept(v); // DFS despite the name doesn't mandate visit of the vertex as the last element (*after* visit of adjunct verticies, not *before*)
         for (V vOut : myGraph.getOuts(v)) {
-          if (myVisited.contains(vOut)) continue;
-          dfs0(vOut);
+          if (!myVisited.contains(vOut)) {
+            dfs0(vOut);
+          }
         }
       }
-    }
-
-    public interface VertexVisitor<V> {
-      void visit(V v);
     }
   }
 

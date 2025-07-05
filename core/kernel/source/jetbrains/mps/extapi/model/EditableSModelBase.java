@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,31 +15,27 @@
  */
 package jetbrains.mps.extapi.model;
 
+import jetbrains.mps.extapi.model.StorageMemoryConflictResolver.ConflictResolved;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.persistence.ModelSourceChangeTracker;
-import jetbrains.mps.extapi.persistence.ModelSourceChangeTracker.ReloadCallback;
-import jetbrains.mps.extapi.persistence.SourceRoot;
-import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.persistence.DataSourceFactoryBridge.CompositeResult;
 import jetbrains.mps.persistence.DataSourceFactoryNotFoundException;
 import jetbrains.mps.persistence.DefaultModelRoot;
-import jetbrains.mps.persistence.DataSourceFactoryBridge;
 import jetbrains.mps.persistence.NoSourceRootsInModelRootException;
 import jetbrains.mps.persistence.SourceRootDoesNotExistException;
-import jetbrains.mps.smodel.event.SModelFileChangedEvent;
+import jetbrains.mps.smodel.ModelCommandContext;
+import jetbrains.mps.smodel.ModelCommandContext.Provider;
+import jetbrains.mps.smodel.ModelRenameUndoableAction;
 import jetbrains.mps.smodel.event.SModelRenamedEvent;
-import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.StringUtil;
-import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import org.jetbrains.mps.openapi.model.SModelChangeListener;
-import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeChangeListener;
+import org.jetbrains.mps.openapi.model.SaveOptions;
+import org.jetbrains.mps.openapi.model.SaveResult;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -47,7 +43,9 @@ import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Editable model (generally) backed up by file. Implicitly bound to files due to
@@ -56,19 +54,32 @@ import java.util.List;
  */
 public abstract class EditableSModelBase extends SModelBase implements EditableSModel {
 
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(EditableSModelBase.class));
+  private static final Logger LOG = Logger.getLogger(EditableSModelBase.class);
   protected final ModelSourceChangeTracker myTimestampTracker;
+  @NotNull private volatile StorageMemoryConflictResolver<EditableSModel> myConflictResolver = createDefaultResolver();
+  private final AtomicBoolean myResolveConflictInProgress = new AtomicBoolean();
 
   private boolean myChanged = false;
 
   protected EditableSModelBase(@NotNull SModelReference modelReference, @NotNull DataSource source) {
     super(modelReference, source);
-    myTimestampTracker = new ModelSourceChangeTracker(new ReloadCallback() {
+    myTimestampTracker = new ModelSourceChangeTracker(this::doReloadFromDiskSafe);
+  }
+
+  @NotNull
+  private static StorageMemoryConflictResolver<EditableSModel> createDefaultResolver() {
+    // just force-save in case of a conflict
+    return new StorageMemoryConflictResolver<EditableSModel>() {
+      @NotNull
       @Override
-      public void reloadFromDiskSafe() {
-        doReloadFromDiskSafe();
+      public CompletionStage<ConflictResolved> resolveConflict(@NotNull EditableSModel model) {
+        LOG.warning("Conflict happens, we always choose memory data by default", new Throwable());
+        model.save(new SaveOptions.SaveOptionsBuilder()
+                       .forceSave()
+                       .build());
+        return CompletableFuture.completedFuture(ConflictResolved.MEMORY_CHOSEN);
       }
-    });
+    };
   }
 
   @Override
@@ -93,6 +104,19 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
     myChanged = changed;
   }
 
+  /**
+   * AP: leaving here for 2020.3, to be pulled up.
+   * I want to ensure that the proposed solution is ok
+   * @param resolver null will reset to the default resolver
+   */
+  @NotNull
+  public final StorageMemoryConflictResolver<EditableSModel> setConflictResolver(@Nullable StorageMemoryConflictResolver<EditableSModel> resolver) {
+    var oldImpl = myConflictResolver;
+    myConflictResolver = resolver != null ? resolver
+                                          : createDefaultResolver();
+    return oldImpl;
+  }
+
   @Override
   public void addRootNode(@NotNull org.jetbrains.mps.openapi.model.SNode node) {
     assertCanChange();
@@ -112,9 +136,11 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
 
   @Override
   public final void unload() {
-    save();
-    if (needsReloading()) {
-      throw new IllegalStateException("cannot unload model in a conflicting state");
+    if (isChanged()) {
+      if (needsReloading()) {
+        return;
+      }
+      save();
     }
     super.unload();
   }
@@ -122,8 +148,11 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
   @Override
   public void reloadFromSource() {
     assertCanChange();
+    if (isChanged()) {
+      LOG.warning("Reloading " + this + " while it is not saved. The current changes will be dropped");
+    }
 
-    if (getSource().getTimestamp() == -1) {
+    if (!getSource().isAlive()) {
       SModuleBase module = (SModuleBase) getModule();
       if (module != null) {
         module.unregisterModel(this);
@@ -138,96 +167,150 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
 
   @SuppressWarnings("WeakerAccess")
   /*package*/ void doReloadFromDiskSafe() {
-    assertCanChange();
-    if (isChanged()) {
-      resolveDiskConflict();
-    } else {
-      reloadFromSource();
+    final SRepository repo = getRepository();
+    if (repo == null) {
+      // detached model, why would anyone care to receive notifications from detached model or to keep it up-to-date?
+      return;
     }
+    repo.getModelAccess().runWriteAction(() -> {
+      if (!needsReloading()) {
+        return;
+      }
+      if (!isChanged()) {
+        reloadFromSource();
+      } else {
+        resolveConflict0();
+      }
+    });
   }
 
+  /**
+   * Employs the model factory in order to re-load the data content from the data source
+   */
   protected abstract void reloadContents();
 
-  public void resolveDiskConflict() {
+  public final void resolveDiskConflict() {
     fireConflictDetected();
   }
 
-  private boolean checkAndResolveConflictOnSave() {
-    if (needsReloading()) {
+  @NotNull
+  private CompletionStage<SaveResult> resolveConflict0() {
+    if (myResolveConflictInProgress.compareAndSet(false, true)) {
+      // fixme obviously the warning is here because MPS is not ideal in this matter: saveAll on each fs reload
       LOG.warning("Model file " + getReference().getModelName() + " was modified externally! " +
                   "You might want to turn \"Synchronize files on frame activation/deactivation\" option on to avoid conflicts.");
-      resolveDiskConflict();
-      return false;
+      return myConflictResolver.resolveConflict(this)
+                               .thenApply(EditableSModelBase::convert)
+                               .handle((saveResult, throwable) -> {
+                                 myResolveConflictInProgress.set(false);
+                                 return saveResult;
+                               });
+    } else {
+      return CompletableFuture.completedFuture(SaveResult.RESOLVING_CONFLICT_IN_PROGRESS);
     }
-
-    // FIXME!!!!!!!!!!!!!
-    // Paranoid check to avoid saving model during update (hack for MPS-6772)
-    return !needsReloading();
   }
 
-  private void changeModelFile(IFile newModelFile) {
-    assertCanChange();
-    if (!(getSource() instanceof FileDataSource)) {
-      throw new UnsupportedOperationException("cannot change model file on non-file data source");
+  /**
+   * nb: resolving conflict might happen much later (hence CompletionStage is returned).
+   *
+   * @return null iff there are no conflicts
+   */
+  @Nullable
+  private CompletionStage<SaveResult> resolveConflictsOnSave() {
+    if (needsReloading()) {
+      return resolveConflict0();
     }
-
-    FileDataSource source = (FileDataSource) getSource();
-    if (source.getFile().getPath().equals(newModelFile.getPath())) return;
-
-    IFile oldFile = source.getFile();
-    jetbrains.mps.smodel.SModel model = getSModel();
-    fireBeforeModelFileChanged(new SModelFileChangedEvent(model.getModelDescriptor(), oldFile, newModelFile));
-    source.setFile(newModelFile);
-    updateTimestamp();
-    fireModelFileChanged(new SModelFileChangedEvent(model.getModelDescriptor(), oldFile, newModelFile));
+    return null;
   }
 
   @Override
   public final void save() {
     assertCanChange();
 
-    // probably should be changed to assert
-    // see MPS-18545 SModel api: createModel(), setChanged(), isLoaded(), save()
     if (!isChanged() && !isLoaded()) {
       return;
     }
 
-    //we must be in command since model save might change model by adding model/language imports
-    //if (!mySModel.isLoading()) LOG.assertInCommand();
+    LOG.debug("Saving the model " + getName().getLongName());
 
-    LOG.debug("Saving model " + getName().getLongName());
-
-    if (!checkAndResolveConflictOnSave()) {
+    CompletionStage<SaveResult> asyncRes = resolveConflictsOnSave();
+    if (asyncRes != null) {
       return;
     }
 
-    boolean isSaved = false;
+    save0();
+  }
+
+  @Override
+  public CompletionStage<SaveResult> save(@NotNull SaveOptions options) {
+    assertCanChange();
+    if (!isLoaded()) {
+      if (options.preloadModel() || options.forceSave()) {
+        load();
+      } else {
+        return CompletableFuture.completedFuture(SaveResult.NOT_LOADED);
+      }
+    }
+    assert isLoaded();
+    if (options.forceSave()) {
+      setChanged(true);
+    }
+    if (options.updateResolveInfoInRefs()) {
+      new ResolveInfoUpdater().updateResolveInfoInRefs(this);
+    }
+    if (!isChanged()) {
+      return CompletableFuture.completedFuture(SaveResult.NOT_CHANGED);
+    }
+
+    LOG.debug(" Saving the model " + getName().getLongName());
+
+    if (options.refreshDataSource()) {
+      getSource().refresh();
+    }
+    if (options.resolveConflicts()) {
+      CompletionStage<SaveResult> conflictFuture = resolveConflictsOnSave();
+      if (conflictFuture != null) {
+        return conflictFuture;
+      }
+    }
+
+    return save0();
+  }
+
+  @NotNull
+  private CompletionStage<SaveResult> save0() {
     try {
       boolean reload = saveModel();
       setChanged(false);
       if (reload) {
         reloadContents();
       }
-      isSaved = true;
     } catch (IOException e) {
-      LOG.error("Can't save " + getModelName() + ": " + e.getMessage(), e);
+      LOG.error("Can't save " + getName().getLongName() + ": " + e.getMessage(), e);
+      SaveResult saveProblem = SaveResult.IO_PROBLEM;
+      saveProblem.attachTrace(e);
+      return CompletableFuture.completedFuture(saveProblem);
     } catch (ModelSaveException e) {
       fireProblemsDetected(e.getProblems());
+      SaveResult saveProblem = SaveResult.SAVE_PROBLEM;
+      saveProblem.attachTrace(e);
+      return CompletableFuture.completedFuture(saveProblem);
     }
 
+    // note: I am not updating the timestamp in case of an exception (why should we?)
     updateTimestamp();
-    if (isSaved) {
-      fireModelSaved();
-    }
+    fireModelSaved();
+    return CompletableFuture.completedFuture(SaveResult.SAVED_TO_DATA_SOURCE);
   }
 
   /**
    * returns true if the content should be reloaded from storage after save
+   * fixme why? after save the data source and the disk must be equal?
    */
   protected abstract boolean saveModel() throws IOException, ModelSaveException;
 
   @Override
-  public void rename(String newModelName, boolean changeFile) {
+  public void rename(@NotNull String newModelName, boolean changeFile) {
     assertCanChange();
 
     SModelReference oldName = getReference();
@@ -240,61 +323,39 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
                                                                                              newModelName);
     fireBeforeModelRenamed(newModelReference);
     changeModelReference(newModelReference);
+    setChanged(true);
 
-    if (!changeFile) {
-      save();
-    } else {
-      if (!(getSource() instanceof FileDataSource)) {
-        throw new UnsupportedOperationException("cannot change model file on non-file data source");
-      }
+    try {
+      if (changeFile) {
+        if (!(getSource() instanceof FileDataSource)) {
+          throw new UnsupportedOperationException("cannot change model file on non-file data source");
+        }
 
-      try {
         ModelRoot root = getModelRoot();
         if (root instanceof DefaultModelRoot) { // todo only default model root? this code does not belong here but model root
-          DefaultModelRoot defaultModelRoot = (DefaultModelRoot) root;
-          IFile oldFile = ((FileDataSource) getSource()).getFile();
-          SourceRoot sourceRoot = findSourceRootOfMyself(oldFile, defaultModelRoot);
-          CompositeResult<DataSource> result = new DataSourceFactoryBridge(defaultModelRoot).createFileDataSource(new SModelName(newModelName), sourceRoot);
-          FileDataSource source = (FileDataSource) result.getDataSource();
-          IFile newFile = source.getFile();
-          if (!newFile.equals(oldFile)) {
-            newFile.getParent().mkdirs();
-            newFile.createNewFile();
-            changeModelFile(newFile);
-            deleteOldFile(oldFile);
-          }
-          save();
+          ((DefaultModelRoot) root).rename(((FileDataSource) getSource()), newModelName);
+          updateTimestamp();
         }
-      } catch (DataSourceFactoryNotFoundException | NoSourceRootsInModelRootException | SourceRootDoesNotExistException e) {
-        LOG.error(e);
       }
+    } catch (DataSourceFactoryNotFoundException | NoSourceRootsInModelRootException | SourceRootDoesNotExistException e) {
+      LOG.error(e);
     }
+    save();
 
     fireModelRenamed(new SModelRenamedEvent(this, oldName.getModelName(), newModelName));
     fireModelRenamed(oldName);
-  }
 
-  @SuppressWarnings("ConstantConditions")
-  private void deleteOldFile(IFile oldFile) {
-    FileUtil.deleteWithAllEmptyDirs(oldFile);
-  }
-
-  private SourceRoot findSourceRootOfMyself(IFile oldFile, DefaultModelRoot defaultModelRoot) {
-    List<SourceRoot> sourceRoots = defaultModelRoot.getSourceRoots(SourceRootKinds.SOURCES);
-    SourceRoot sourceRoot = sourceRoots.get(0); // first one by default
-    for (SourceRoot sourceRoot0 : sourceRoots) {
-      if (oldFile.getPath().startsWith(sourceRoot0.getAbsolutePath().getPath())) {
-        // using the same sourceRoot
-        sourceRoot = sourceRoot0;
-        break;
+    //TODO apply to normal persistence as well to fix MPS-32728
+    if (!changeFile) {
+      //per-root persistence
+      ModelAccess modelAccess = getRepository().getModelAccess();
+      if (modelAccess instanceof ModelCommandContext.Provider) {
+        final ModelCommandContext cc = ((Provider) modelAccess).getCommandContext(this);
+        if (cc != null) {
+          cc.registerActionWithUndo(new ModelRenameUndoableAction(this, oldName.getModelName(), newModelName));
+        }
       }
     }
-    return sourceRoot;
-  }
-
-  @NotNull
-  private String getExtension(IFile oldFile) {
-    return StringUtil.emptyIfNull(FileUtil.getExtension(oldFile.getName()));
   }
 
   @Override
@@ -305,16 +366,6 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
   @Override
   public boolean needsReloading() {
     return myTimestampTracker.needsReloading(getSource());
-  }
-
-  @Override
-  public void addChangeListener(SModelChangeListener l) {
-    getNodeEventDispatch().addChangeListener(l);
-  }
-
-  @Override
-  public void removeChangeListener(SModelChangeListener l) {
-    getNodeEventDispatch().removeChangeListener(l);
   }
 
   @Override
@@ -329,5 +380,16 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
 
   public String toString() {
     return getReference().toString() + " in " + getSource().getLocation();
+  }
+
+  @NotNull
+  private static SaveResult convert(@NotNull ConflictResolved conflictResolved) {
+    switch (conflictResolved) {
+      case STORAGE_CHOSEN:
+        return SaveResult.LOADED_FROM_DATA_SOURCE;
+      case MEMORY_CHOSEN:
+      default:
+        return SaveResult.SAVED_TO_DATA_SOURCE;
+    }
   }
 }

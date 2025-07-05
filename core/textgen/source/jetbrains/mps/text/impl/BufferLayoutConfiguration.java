@@ -24,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Facility to describe layout of TextBuffer, i.e. areas and their location in respect to other.
  * The class needs {@link TextBuffer}/{@link BufferLayout}, but since unit layout is generally known
- * before {@link TextBuffer} is available, parameterizes {@link jetbrains.mps.text.impl.RegularTextUnit2#setBufferLayout(BufferLayoutConfiguration)} TextUnit}
+ * before {@link TextBuffer} is available, parameterizes {@link jetbrains.mps.text.impl.RegularTextUnit#setBufferLayout(BufferLayoutConfiguration)} TextUnit}
  * implementation instead.
  * TODO Perhaps, it's an overkill, and we shall expose TextBuffer from TextUnit, and configure BufferLayout directly, without this extra layer?
  *

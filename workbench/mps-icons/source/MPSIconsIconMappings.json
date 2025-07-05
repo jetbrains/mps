@@ -1,0 +1,105 @@
+{
+  "expUi": {
+    "MPS.svg": "mps_16.svg",
+    "actions": {
+      "addToVcs.svg": "actions/addToVcs.png",
+      "groupByCategory.svg": "actions/groupByCategory.png",
+      "groupByModel.svg": "actions/groupByModel.png",
+      "groupByModule.svg": "actions/groupByModule.png",
+      "groupByRoot.svg": "actions/groupByRoot.png",
+      "groupSearched.svg": "actions/groupSearched.png",
+      "importModulesFromFolder.svg": "actions/importModulesFromFolder.png",
+      "migrationBulb.svg": "actions/migrationBulb.png",
+      "searchedNodes.svg": "actions/searchedNodes.png",
+      "showCellInExplorer.svg": "actions/showCellInExplorer.png",
+      "showOnlyStrongSubtypes.svg": "actions/showOnlyStrongSubtypes.png"
+    },
+    "ant": {
+    },
+    "cellExplorer": {
+      "cellActionKey.svg": "cellExplorer/cellActionKey.png",
+      "cellComponent.svg": "cellExplorer/cellComponent.png",
+      "cellConst.svg": "cellExplorer/cellConst.png",
+      "cellDefault.svg": "cellExplorer/cellDefault.png",
+      "cellError.svg": "cellExplorer/cellError.png",
+      "cellExplorer.svg": "cellExplorer/cellExplorer.png",
+      "celKeyMap.svg": "cellExplorer/celKeyMap.png",
+      "cellProperty.svg": "cellExplorer/cellProperty.png",
+      "cells.svg": "cellExplorer/cells.png"
+    },
+    "debugger": {
+      "goToSource.svg": "debugger/goToSource.png"
+    },
+    "general": {
+      "dependencies.svg": "general/dependencies.png",
+      "generatorPriorities.svg": "general/generatorPriorities.png",
+      "java.svg": "general/java.png",
+      "modelChecker.svg": "general/modelChecker.png",
+      "runtime.svg": "general/runtime.png",
+      "usedLanguages.svg": "general/usedLanguages.png"
+    },
+    "generator": {
+      "copyOperation.svg": "generator/copy-operation.png",
+      "input.svg": "generator/input.png",
+      "macro.svg": "generator/macro.png",
+      "mappingScript.svg": "generator/mapping-script.png",
+      "output.svg": "generator/output.png",
+      "rule.svg": "generator/rule.png",
+      "ruleConsequence.svg": "generator/ruleConsequence.png",
+      "switch.svg": "generator/switch.png",
+      "template.svg": "generator/template.png"
+    },
+    "ideaIntegration": {
+      "connected.svg": "ideaIntegration/connected.png",
+      "connected_with_errors.svg": "ideaIntegration/connected_with_errors.png",
+      "disconnected.svg": "ideaIntegration/disconnected.png",
+      "trying.svg": "ideaIntegration/trying.png"
+    },
+    "nodes": {
+      "models": {
+        "accessoryModel.svg": "nodes/models/accessoryModel.png",
+        "aspect.svg": "nodes/models/aspect.png",
+        "templatesModel.svg": "nodes/models/templatesModel.png",
+        "tests.svg": "nodes/models/tests.png"
+      },
+      "action.svg": "nodes/action.png",
+      "behavior.svg": "nodes/behavior.png",
+      "constraint.svg": "nodes/constraint.png",
+      "dataFlow.svg": "nodes/dataFlow.png",
+      "default.svg": "nodes/default.png",
+      "devKit.svg": "nodes/devkit.png",
+      "editor.svg": "nodes/editor.png",
+      "generator.svg": "nodes/generator.png",
+      "language.svg": "nodes/language.png",
+      "mappingConf.svg": "nodes/mappingConf.png",
+      "model.svg": "nodes/model.png",
+      "node.svg": "nodes/node.png",
+      "projectModels.svg": "nodes/projectModels.png",
+      "reduction.svg": "nodes/reduction.png",
+      "refactoring.svg": "nodes/refactoring.png",
+      "rootNode.svg": "nodes/rootNode.png",
+      "rule.svg": "nodes/rule.png",
+      "solution.svg": "nodes/solution.png",
+      "structure.svg": "nodes/structure.png",
+      "textGen.svg": "nodes/textGen.png",
+      "transient.svg": "nodes/transient.svg",
+      "transientDisable.svg": "nodes/transientDisable.png",
+      "type.svg": "nodes/type.png",
+      "unknown.svg": "nodes/unknown.png",
+      "usagesFinder.svg": "nodes/usagesFinder.png",
+      "usagesResultOverlay.svg": "nodes/usagesResultOverlay.png"
+    },
+    "projectPane": {
+      "logicalView.svg": "projectPane/logicalView.png"
+    },
+    "small": {
+      "error.svg": "small/error.png"
+    },
+    "toolWindows": {
+      "cellExplorer.svg": "toolWindows/cellExplorer.png",
+      "default.svg": "toolWindows/default.png",
+      "modelChecker.svg": "toolWindows/modelChecker.png"
+    }
+  }
+}
+

@@ -17,7 +17,6 @@ package jetbrains.mps.smodel.runtime;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 /**
  * Presents a constraint function.
@@ -40,7 +39,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
  *
  * Example:
  *
- * Assuming, there is concepts A, B, C, D:
+ * Assuming, there are concepts A, B, C, D:
  *  A extends B, C;
  *  B extends D;
  *  C extends D.

@@ -18,7 +18,6 @@ import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.lang.editor.test.generation.editor.TestTargetStyleSheet_StyleSheet.testStyleStyleClass;
 import jetbrains.mps.lang.editor.test.generation.editor.TestTargetStyleKeyPack_KeyPack.testKey_StyleKey;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import java.awt.Color;
 import jetbrains.mps.editor.runtime.style.CaretPosition;
@@ -31,6 +30,8 @@ import jetbrains.mps.editor.runtime.style.TableComponent;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Superscript;
 import jetbrains.mps.editor.runtime.style.ScriptKind;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class ModelAccess_IStyleContainer_ComponentBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -48,17 +49,17 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
   }
 
   /*package*/ EditorCell createCell() {
-    return createCollection_ilv66b_a();
+    return createCollection_0();
   }
 
-  private EditorCell createCollection_ilv66b_a() {
+  private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
     editorCell.setCellId("Collection_ilv66b_a");
-    editorCell.addEditorCell(createModelAccess_ilv66b_a0());
-    editorCell.addEditorCell(createCollection_ilv66b_b0());
+    editorCell.addEditorCell(createModelAccess_0());
+    editorCell.addEditorCell(createCollection_1());
     return editorCell;
   }
-  private EditorCell createModelAccess_ilv66b_a0() {
+  private EditorCell createModelAccess_0() {
     ModelAccessor modelAccessor = new ModelAccessor() {
       public String getText() {
         return null;
@@ -74,13 +75,13 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
     editorCell.setCellId("ModelAccess_ilv66b_a0");
     Style style = new StyleImpl();
-    new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-    new testKey_StyleKey().apply(style);
+    new testStyleStyleClass(this).apply(style, editorCell);
+    new testKey_StyleKey().apply(this, style);
     if (_StyleParameter_QueryFunction_ilv66b_a2a0()) {
-      new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new testStyleStyleClass(this).apply(style, editorCell);
     }
     if (_StyleParameter_QueryFunction_ilv66b_a3a0()) {
-      new testStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new testStyleStyleClass(this).apply(style, editorCell);
     }
     style.set(StyleAttributes.getInstance().<String>getAttribute("jetbrains.mps.lang.editor.test.generation", "testStringAttribute"), _StyleParameter_QueryFunction_ilv66b_a4a0());
     style.set(StyleAttributes.AUTO_DELETABLE, true);
@@ -115,30 +116,30 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
     style.set(StyleAttributes.SELECTABLE, _StyleParameter_QueryFunction_ilv66b_a43a0());
     style.set(StyleAttributes.STRIKE_OUT, true);
     style.set(StyleAttributes.STRIKE_OUT, _StyleParameter_QueryFunction_ilv66b_a63a0());
-    style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.blue));
-    style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_ilv66b_a83a0()));
-    style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-    style.set(StyleAttributes.BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_ilv66b_a04a0().o1 : _StyleParameter_QueryFunction_ilv66b_a04a0().o2));
-    style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
-    style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_ilv66b_a24a0()));
-    style.set(StyleAttributes.BRACKETS_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-    style.set(StyleAttributes.BRACKETS_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_ilv66b_a44a0().o1 : _StyleParameter_QueryFunction_ilv66b_a44a0().o2));
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan)));
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_ilv66b_a64a0()));
-    style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-    style.set(StyleAttributes.TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_ilv66b_a84a0().o1 : _StyleParameter_QueryFunction_ilv66b_a84a0().o2));
-    style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-    style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_ilv66b_a05a0()));
-    style.set(StyleAttributes.NULL_TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-    style.set(StyleAttributes.NULL_TEXT_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_ilv66b_a25a0().o1 : _StyleParameter_QueryFunction_ilv66b_a25a0().o2));
-    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_GREEN));
-    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_ilv66b_a45a0()));
-    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_ilv66b_a65a0().o1 : _StyleParameter_QueryFunction_ilv66b_a65a0().o2));
-    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.cyan));
-    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_ilv66b_a85a0()));
-    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(new Color(291)));
-    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(StyleRegistry.getInstance().isDarkTheme()) ? _StyleParameter_QueryFunction_ilv66b_a06a0().o1 : _StyleParameter_QueryFunction_ilv66b_a06a0().o2));
+    style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.blue));
+    style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_ilv66b_a83a0()));
+    style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+    style.set(StyleAttributes.BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_ilv66b_a04a0().o1 : _StyleParameter_QueryFunction_ilv66b_a04a0().o2));
+    style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_BLUE));
+    style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_ilv66b_a24a0()));
+    style.set(StyleAttributes.BRACKETS_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+    style.set(StyleAttributes.BRACKETS_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_ilv66b_a44a0().o1 : _StyleParameter_QueryFunction_ilv66b_a44a0().o2));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN, getStyleRegistry().getSimpleColor(MPSColors.cyan)));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_ilv66b_a64a0()));
+    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+    style.set(StyleAttributes.TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_ilv66b_a84a0().o1 : _StyleParameter_QueryFunction_ilv66b_a84a0().o2));
+    style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+    style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_ilv66b_a05a0()));
+    style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+    style.set(StyleAttributes.NULL_TEXT_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_ilv66b_a25a0().o1 : _StyleParameter_QueryFunction_ilv66b_a25a0().o2));
+    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.DARK_GREEN));
+    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_ilv66b_a45a0()));
+    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+    style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_ilv66b_a65a0().o1 : _StyleParameter_QueryFunction_ilv66b_a65a0().o2));
+    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.cyan));
+    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_ilv66b_a85a0()));
+    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(291)));
+    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_ilv66b_a06a0().o1 : _StyleParameter_QueryFunction_ilv66b_a06a0().o2));
     style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
     style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.FIRST);
     style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.LAST);
@@ -159,18 +160,16 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
     style.set(StyleAttributes.MAX_WIDTH, 10);
     style.set(StyleAttributes.MAX_WIDTH, _StyleParameter_QueryFunction_ilv66b_a97a0());
     style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_ilv66b_a08a0());
-    style.set(StyleAttributes.NAVIGATABLE_REFERENCE, "navigable");
+    style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$$_JE);
     style.set(StyleAttributes.PARAMETERS_INFORMATION, new TestTargetParametersInformation());
     style.set(StyleAttributes.POSITION_CHILDREN, "next-line");
     style.set(StyleAttributes.POSITION, "indented");
     style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
-    style.set(StyleAttributes.RT_ANCHOR_TAG, "ext_1_RTransform");
-    style.set(StyleAttributes.RT_ANCHOR_TAG, "ext_1_RTransform|ext_2_RTransform");
     style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
-    new testStyleStyleClass(getEditorContext(), getNode()).unapply(style, editorCell);
-    new testKey_StyleKey().unapply(style);
+    new testStyleStyleClass(this).unapply(style, editorCell);
+    new testKey_StyleKey().unapply(this, style);
     style.set(StyleAttributes.UNDERLINED, false);
-    style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_ilv66b_a29a0());
+    style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_ilv66b_a09a0());
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -319,20 +318,20 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
     boolean var = getEditorContext() != null || getNode() != null;
     return (var ? null : null);
   }
-  private boolean _StyleParameter_QueryFunction_ilv66b_a29a0() {
+  private boolean _StyleParameter_QueryFunction_ilv66b_a09a0() {
     boolean var = getEditorContext() != null || getNode() != null;
     return var;
   }
-  private EditorCell createCollection_ilv66b_b0() {
+  private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Superscript());
     editorCell.setCellId("Collection_ilv66b_b0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(createModelAccess_ilv66b_a1a());
+    editorCell.addEditorCell(createModelAccess_1());
     return editorCell;
   }
-  private EditorCell createModelAccess_ilv66b_a1a() {
+  private EditorCell createModelAccess_1() {
     ModelAccessor modelAccessor = new ModelAccessor() {
       public String getText() {
         return "";
@@ -354,5 +353,9 @@ import jetbrains.mps.editor.runtime.style.ScriptKind;
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink navigable$$_JE = MetaAdapterFactory.getReferenceLink(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, 0xbde895319b644cL, "navigable");
   }
 }

@@ -15,9 +15,11 @@
  */
 package jetbrains.mps.codeInsight.hint.actions;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PopupAction;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * <p>Mock action for mandatory actionId 'QuickImplementations' in platform.</p>
@@ -26,6 +28,17 @@ import com.intellij.openapi.actionSystem.PopupAction;
  * Better to create dummy action for required actionId, that use real one, which needs more components and introduces unexpected exceptions.
  */
 public class MockShowImplementationsAction extends AnAction implements PopupAction {
+  @Override
+  public void update(AnActionEvent e) {
+    // Always hide this action
+    e.getPresentation().setEnabledAndVisible(false);
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.EDT;
+  }
+
   @Override
   public void actionPerformed(AnActionEvent e) {
     // Do nothing

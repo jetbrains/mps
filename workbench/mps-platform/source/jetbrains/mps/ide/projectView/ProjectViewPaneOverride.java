@@ -16,7 +16,6 @@
 package jetbrains.mps.ide.projectView;
 
 import com.intellij.ide.projectView.impl.AbstractProjectViewPane;
-import com.intellij.openapi.project.Project;
 
 /**
  * An interface to be implemented by a subclass of {@link AbstractProjectViewPane}, in order to enable a
@@ -24,6 +23,7 @@ import com.intellij.openapi.project.Project;
  *
  * @author fyodor on 08.07.2015.
  */
+@Deprecated(forRemoval = true)
 public interface ProjectViewPaneOverride  {
 
   /**

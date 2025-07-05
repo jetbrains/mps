@@ -4,115 +4,198 @@ package jetbrains.mps.lang.smodel.query.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_AbstractPrintExpression_old = new ConceptPresentationBuilder().deprecated(true).deprecated().create();
-  private final ConceptPresentation props_BLCommand_old = new ConceptPresentationBuilder().deprecated(true).deprecated().shortDesc("baseLanguage statements").create();
-  private final ConceptPresentation props_BLExpression_old = new ConceptPresentationBuilder().deprecated(true).deprecated().shortDesc("baseLanguage expression").create();
-  private final ConceptPresentation props_CustomScope = new ConceptPresentationBuilder().shortDesc("? extends SearchScope").create();
-  private final ConceptPresentation props_ExpressionHelpProvider = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_GlobalScope_old = new ConceptPresentationBuilder().deprecated(true).create();
-  private final ConceptPresentation props_HelpProvider = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_InstancesExpression = new ConceptPresentationBuilder().shortDesc("instances of a concept in scope").create();
-  private final ConceptPresentation props_ModelScope = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ModelsExpression = new ConceptPresentationBuilder().shortDesc("all models in scope").create();
-  private final ConceptPresentation props_ModulesExpression = new ConceptPresentationBuilder().shortDesc("all modules in scope").create();
-  private final ConceptPresentation props_ModulesScope = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_NodesExpression = new ConceptPresentationBuilder().shortDesc("all nodes in scope").create();
-  private final ConceptPresentation props_OperationHelpProvider = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_PrintExpression_old = new ConceptPresentationBuilder().deprecated(true).shortDesc("smart print depending on content").create();
-  private final ConceptPresentation props_PrintNodeExpression_old = new ConceptPresentationBuilder().deprecated(true).shortDesc("print node copy").create();
-  private final ConceptPresentation props_PrintNodeReferenceExpression_old = new ConceptPresentationBuilder().deprecated(true).shortDesc("print reference to the node").create();
-  private final ConceptPresentation props_PrintSequenceExpression_old = new ConceptPresentationBuilder().deprecated(true).shortDesc("print size with link to usages view").create();
-  private final ConceptPresentation props_PrintTextExpression_old = new ConceptPresentationBuilder().deprecated(true).shortDesc("print as string").create();
-  private final ConceptPresentation props_ProjectExpression_old = new ConceptPresentationBuilder().deprecated(true).shortDesc("the current project").create();
-  private final ConceptPresentation props_ProjectScope_old = new ConceptPresentationBuilder().deprecated(true).create();
-  private final ConceptPresentation props_QueryExpression = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_QueryExpressionScopeProvider = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_QueryParameter = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_QueryParameterExact = new ConceptPresentationBuilder().shortDesc("exact instances").create();
-  private final ConceptPresentation props_QueryParameterIncludeReadOnly = new ConceptPresentationBuilder().shortDesc("include read only").create();
-  private final ConceptPresentation props_QueryParameterList = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_QueryParameterScope = new ConceptPresentationBuilder().shortDesc("used search scope").create();
-  private final ConceptPresentation props_ReferencesExpression = new ConceptPresentationBuilder().shortDesc("all references in scope").create();
-  private final ConceptPresentation props_ScopeParameter = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ShowExpression_old = new ConceptPresentationBuilder().deprecated(true).deprecated().shortDesc("show in usage view").create();
-  private final ConceptPresentation props_UsagesExpression = new ConceptPresentationBuilder().shortDesc("direct references to a node in scope").create();
-  private final ConceptPresentation props_WithStatement = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_CustomScope;
+  private ConceptPresentation props_ExpressionHelpProvider;
+  private ConceptPresentation props_HelpProvider;
+  private ConceptPresentation props_InstancesExpression;
+  private ConceptPresentation props_ModelsExpression;
+  private ConceptPresentation props_ModelsScope;
+  private ConceptPresentation props_ModulesExpression;
+  private ConceptPresentation props_ModulesScope;
+  private ConceptPresentation props_NodesExpression;
+  private ConceptPresentation props_OperationHelpProvider;
+  private ConceptPresentation props_QueryExpression;
+  private ConceptPresentation props_QueryExpressionScopeProvider;
+  private ConceptPresentation props_QueryParameter;
+  private ConceptPresentation props_QueryParameterExact;
+  private ConceptPresentation props_QueryParameterIncludeReadOnly_old;
+  private ConceptPresentation props_QueryParameterList;
+  private ConceptPresentation props_QueryParameterScope;
+  private ConceptPresentation props_ReferencesExpression;
+  private ConceptPresentation props_ScopeParameter;
+  private ConceptPresentation props_ScopeParameter_old;
+  private ConceptPresentation props_UsagesExpression;
+  private ConceptPresentation props_WithStatement;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
-      case LanguageConceptSwitch.AbstractPrintExpression_old:
-        return props_AbstractPrintExpression_old;
-      case LanguageConceptSwitch.BLCommand_old:
-        return props_BLCommand_old;
-      case LanguageConceptSwitch.BLExpression_old:
-        return props_BLExpression_old;
       case LanguageConceptSwitch.CustomScope:
+        if (props_CustomScope == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("? extends SearchScope");
+          cpb.rawPresentation("custom");
+          props_CustomScope = cpb.create();
+        }
         return props_CustomScope;
       case LanguageConceptSwitch.ExpressionHelpProvider:
+        if (props_ExpressionHelpProvider == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_ExpressionHelpProvider = cpb.create();
+        }
         return props_ExpressionHelpProvider;
-      case LanguageConceptSwitch.GlobalScope_old:
-        return props_GlobalScope_old;
       case LanguageConceptSwitch.HelpProvider:
+        if (props_HelpProvider == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_HelpProvider = cpb.create();
+        }
         return props_HelpProvider;
       case LanguageConceptSwitch.InstancesExpression:
+        if (props_InstancesExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("instances of a concept in scope");
+          cpb.rawPresentation("#instances");
+          props_InstancesExpression = cpb.create();
+        }
         return props_InstancesExpression;
-      case LanguageConceptSwitch.ModelScope:
-        return props_ModelScope;
       case LanguageConceptSwitch.ModelsExpression:
+        if (props_ModelsExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("all models in scope");
+          cpb.rawPresentation("#models");
+          props_ModelsExpression = cpb.create();
+        }
         return props_ModelsExpression;
+      case LanguageConceptSwitch.ModelsScope:
+        if (props_ModelsScope == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("specified models");
+          cpb.rawPresentation("models");
+          props_ModelsScope = cpb.create();
+        }
+        return props_ModelsScope;
       case LanguageConceptSwitch.ModulesExpression:
+        if (props_ModulesExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("all modules in scope");
+          cpb.rawPresentation("#modules");
+          props_ModulesExpression = cpb.create();
+        }
         return props_ModulesExpression;
       case LanguageConceptSwitch.ModulesScope:
+        if (props_ModulesScope == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("specified modules");
+          cpb.rawPresentation("modules");
+          props_ModulesScope = cpb.create();
+        }
         return props_ModulesScope;
       case LanguageConceptSwitch.NodesExpression:
+        if (props_NodesExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("all nodes in scope");
+          cpb.rawPresentation("#nodes");
+          props_NodesExpression = cpb.create();
+        }
         return props_NodesExpression;
       case LanguageConceptSwitch.OperationHelpProvider:
+        if (props_OperationHelpProvider == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_OperationHelpProvider = cpb.create();
+        }
         return props_OperationHelpProvider;
-      case LanguageConceptSwitch.PrintExpression_old:
-        return props_PrintExpression_old;
-      case LanguageConceptSwitch.PrintNodeExpression_old:
-        return props_PrintNodeExpression_old;
-      case LanguageConceptSwitch.PrintNodeReferenceExpression_old:
-        return props_PrintNodeReferenceExpression_old;
-      case LanguageConceptSwitch.PrintSequenceExpression_old:
-        return props_PrintSequenceExpression_old;
-      case LanguageConceptSwitch.PrintTextExpression_old:
-        return props_PrintTextExpression_old;
-      case LanguageConceptSwitch.ProjectExpression_old:
-        return props_ProjectExpression_old;
-      case LanguageConceptSwitch.ProjectScope_old:
-        return props_ProjectScope_old;
       case LanguageConceptSwitch.QueryExpression:
+        if (props_QueryExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_QueryExpression = cpb.create();
+        }
         return props_QueryExpression;
       case LanguageConceptSwitch.QueryExpressionScopeProvider:
+        if (props_QueryExpressionScopeProvider == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_QueryExpressionScopeProvider = cpb.create();
+        }
         return props_QueryExpressionScopeProvider;
       case LanguageConceptSwitch.QueryParameter:
+        if (props_QueryParameter == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_QueryParameter = cpb.create();
+        }
         return props_QueryParameter;
       case LanguageConceptSwitch.QueryParameterExact:
+        if (props_QueryParameterExact == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("exact instances");
+          cpb.rawPresentation("exact");
+          props_QueryParameterExact = cpb.create();
+        }
         return props_QueryParameterExact;
-      case LanguageConceptSwitch.QueryParameterIncludeReadOnly:
-        return props_QueryParameterIncludeReadOnly;
+      case LanguageConceptSwitch.QueryParameterIncludeReadOnly_old:
+        if (props_QueryParameterIncludeReadOnly_old == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
+          cpb.shortDesc("include read only");
+          cpb.rawPresentation("r/o+");
+          props_QueryParameterIncludeReadOnly_old = cpb.create();
+        }
+        return props_QueryParameterIncludeReadOnly_old;
       case LanguageConceptSwitch.QueryParameterList:
+        if (props_QueryParameterList == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("< .. >");
+          props_QueryParameterList = cpb.create();
+        }
         return props_QueryParameterList;
       case LanguageConceptSwitch.QueryParameterScope:
+        if (props_QueryParameterScope == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("used search scope");
+          cpb.rawPresentation("scope");
+          props_QueryParameterScope = cpb.create();
+        }
         return props_QueryParameterScope;
       case LanguageConceptSwitch.ReferencesExpression:
+        if (props_ReferencesExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("all references in scope");
+          cpb.rawPresentation("#references");
+          props_ReferencesExpression = cpb.create();
+        }
         return props_ReferencesExpression;
       case LanguageConceptSwitch.ScopeParameter:
+        if (props_ScopeParameter == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_ScopeParameter = cpb.create();
+        }
         return props_ScopeParameter;
-      case LanguageConceptSwitch.ShowExpression_old:
-        return props_ShowExpression_old;
+      case LanguageConceptSwitch.ScopeParameter_old:
+        if (props_ScopeParameter_old == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
+          props_ScopeParameter_old = cpb.create();
+        }
+        return props_ScopeParameter_old;
       case LanguageConceptSwitch.UsagesExpression:
+        if (props_UsagesExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("direct references to a node in scope");
+          cpb.rawPresentation("#usages");
+          props_UsagesExpression = cpb.create();
+        }
         return props_UsagesExpression;
       case LanguageConceptSwitch.WithStatement:
+        if (props_WithStatement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("with");
+          props_WithStatement = cpb.create();
+        }
         return props_WithStatement;
     }
     return null;

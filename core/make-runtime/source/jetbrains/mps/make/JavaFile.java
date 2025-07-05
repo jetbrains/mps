@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.make;
 
 import jetbrains.mps.util.FileUtil;
+import org.jetbrains.annotations.TestOnly;
 import org.jetbrains.mps.annotations.Immutable;
 
 import java.io.File;
@@ -36,11 +37,12 @@ public class JavaFile {
     myLastModified = lastModified;
   }
 
-  File getFile() {
+  @TestOnly
+  public File getFile() {
     return myFile;
   }
 
-  String getClassName() {
+  public String getClassName() {
     return myClassName;
   }
 
@@ -48,7 +50,7 @@ public class JavaFile {
     return myLastModified;
   }
 
-  String getContents() {
+  public String getContents() {
     return FileUtil.read(myFile, FileUtil.DEFAULT_CHARSET_NAME);
   }
 
@@ -64,9 +66,7 @@ public class JavaFile {
     JavaFile javaFile = (JavaFile) o;
 
     if (!myClassName.equals(javaFile.myClassName)) return false;
-    if (!myFile.equals(javaFile.myFile)) return false;
-
-    return true;
+    return myFile.equals(javaFile.myFile);
   }
 
   @Override

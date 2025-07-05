@@ -88,7 +88,7 @@ public class MPSPackageItemProviderTests {
   @Test
   public void sortFullHumpMatchFirst() {
     checkEntriesFound(new String[]{"justOneMy_Entry3", "justOnMy_Entry2", "justOneMyEntry1"}, "OnMyEn",
-        new String[]{"justOnMy_Entry2", "justOneMyEntry1", "justOneMy_Entry3"});
+        new String[]{"justOneMyEntry1", "justOnMy_Entry2", "justOneMy_Entry3"});
   }
 
   @Test

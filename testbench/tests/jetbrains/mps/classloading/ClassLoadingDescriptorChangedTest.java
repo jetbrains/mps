@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,37 +15,45 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.CoreMpsTest;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.testbench.junit.runners.FromProjectPathProjectStrategy;
 import jetbrains.mps.tool.environment.Environment;
-import jetbrains.mps.tool.environment.EnvironmentConfig;
-import jetbrains.mps.tool.environment.MpsEnvironment;
+import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.PathManager;
+import org.jetbrains.annotations.NotNull;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;
 
-public class ClassLoadingDescriptorChangedTest extends CoreMpsTest {
+public class ClassLoadingDescriptorChangedTest implements EnvironmentAware {
+  private Environment myEnvironment;
   private Project myProject;
+
+  /**
+   * @param env bare MPS environment suffice
+   */
+  @Override
+  public void setEnvironment(@NotNull Environment env) {
+    myEnvironment = env;
+  }
 
   @Before
   public void beforeTest() {
-    Environment env = MpsEnvironment.getOrCreate(EnvironmentConfig.defaultConfig());
     String homePath = PathManager.getHomePath();
     assert homePath != null;
     // env.openProject doesn't make project, while FromProjectPathProjectStrategy does.
     // createProject seems to be just a mechanism to employ a strategy, and it's up to strategy to decide whether to open a project or create a new one
-    myProject = env.createProject(new FromProjectPathProjectStrategy(homePath));
+    myProject = myEnvironment.createProject(new FromProjectPathProjectStrategy(homePath));
   }
 
   @After
   public void afterTest() {
-    myProject.dispose();
+    myEnvironment.closeProject(myProject);
+    myProject = null;
   }
 
   /**
@@ -54,7 +62,7 @@ public class ClassLoadingDescriptorChangedTest extends CoreMpsTest {
    * class from the generators G1 and G2.
    */
   @Test
-  public void testClassLoadingDescriptorChanged() {
+  public void testClassLoadingDescriptorChanged() throws ClassNotFoundException {
     final Language language1 = getLanguage("L1");
     assert language1 != null;
     final Language language2 = getLanguage("L2");
@@ -66,15 +74,22 @@ public class ClassLoadingDescriptorChangedTest extends CoreMpsTest {
     performCheck(generator1);
   }
 
+  private Language getLanguage(String name) {
+    return myProject.getProjectModules(Language.class).stream().filter(l -> name.equals(l.getModuleName())).findFirst().orElse(null);
+  }
+
   private void reloadAfterDescriptorChange(final Language language2) {
     myProject.getModelAccess().runWriteAction(language2::reloadAfterDescriptorChange);
   }
 
-  private void performCheck(Generator generator1) {
-    Class aClass = ClassLoaderManager.getInstance().getClass(generator1, "L1.generator.template.main.QueriesGenerated");
-    Class aClass2 = ClassLoaderManager.getInstance().getClass(generator1, "L2.generator.template.main.QueriesGenerated");
-    assertTrue(aClass != null);
-    assertTrue(aClass2 != null);
+  private void performCheck(Generator generator1) throws ClassNotFoundException{
+    final ClassLoaderManager clm = myEnvironment.getPlatform().findComponent(ClassLoaderManager.class);
+    final MPSModuleClassLoader generatorCL = clm.getClassLoader(generator1);
+    Class<?> aClass = generatorCL.loadClass("L1.generator.template.main.QueriesGenerated");
+    Class<?> aClass2 = generatorCL.loadClass("L2.generator.template.main.QueriesGenerated");
+    // loadClass != null, assert is useless?
+    assertNotNull(aClass);
+    assertNotNull(aClass2);
   }
 
   private class TakeGenerator implements Runnable {

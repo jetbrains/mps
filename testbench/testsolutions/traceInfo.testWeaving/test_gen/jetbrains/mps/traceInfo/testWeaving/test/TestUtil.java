@@ -7,9 +7,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.ArrayList;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import jetbrains.mps.textgen.trace.DebugInfo;
 import jetbrains.mps.textgen.trace.DefaultTraceInfoProvider;
@@ -17,6 +16,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class TestUtil {
@@ -29,15 +29,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   public void testWeave(final SNode root, List<SNode> nodes, int startLine) {
     final Wrappers._int line = new Wrappers._int(startLine);
     final int delta = 3;
-    ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), it);
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getTracedNode(root, line.value));
-          Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-        }
-        line.value += delta;
+    ListSequence.fromList(nodes).visitAll((it) -> {
+      {
+        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), it);
+        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getTracedNode(root, line.value));
+        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
       }
+      line.value += delta;
     });
   }
 
@@ -45,16 +43,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     final Wrappers._int line = new Wrappers._int(startLine);
     final int delta = 3;
     final int howMany = 3;
-    ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        for (int i = 0; i < howMany; i++) {
-          {
-            List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), it);
-            List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getTracedNode(root, line.value));
-            Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-          }
-          line.value += delta;
+    ListSequence.fromList(nodes).visitAll((it) -> {
+      for (int i = 0; i < howMany; i++) {
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), it);
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getTracedNode(root, line.value));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
+        line.value += delta;
       }
     });
   }
@@ -64,7 +60,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     if (di == null) {
       return null;
     }
-    List<SNodeReference> tracedNodes = di.getTracedNodesForPosition(SPropertyOperations.getString(root, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ".java", line);
+    List<SNodeReference> tracedNodes = di.getTracedNodesForPosition(SPropertyOperations.getString(root, PROPS.name$MnvL) + ".java", line);
     return (tracedNodes.isEmpty() ? null : tracedNodes.get(0).resolve(myProject.getRepository()));
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

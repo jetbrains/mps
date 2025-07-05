@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-7oyk6ab4thryedl2deqe6uvhocwzyxu" />
+<product version="3" modelHash="-3u9rc92tggv9s1dd7ivpk0mvflxtxi">
+  <files names="BuildAspect_MpsTestModules_Constraints.java:BuildMps_TestModuleGroup_Constraints.java:BuildMps_TestModule_Constraints.java:BuildMps_TestModules_Options_Constraints.java:ConstraintsAspectDescriptor.java" />
+</product>
 

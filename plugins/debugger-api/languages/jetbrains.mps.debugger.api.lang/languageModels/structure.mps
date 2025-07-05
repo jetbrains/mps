@@ -2,8 +2,8 @@
 <model ref="r:f516737e-c915-4042-896e-de34190042b2(jetbrains.mps.debugger.api.lang.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="3" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
@@ -45,7 +45,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -60,9 +60,9 @@
     <property role="EcuMT" value="3157158168562217892" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="16yMc0kzA8N" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="breakpointableConcepts" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1270798772176052787" />
       <ref role="20lvS9" node="2JguE20RV$R" resolve="BreakpointableNodeItem" />
     </node>
@@ -73,29 +73,27 @@
     <property role="EcuMT" value="3157158168562219319" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="2JguE20RV$S" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="createBreakpoint" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="3157158168562219320" />
       <ref role="20lvS9" node="2JguE20RV$U" resolve="ConceptFunction_CreateBreakpoint" />
     </node>
     <node concept="1TJgyj" id="2Gmwjaanh7Q" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="isApplicableBreakpoint" />
       <property role="IQ2ns" value="3104811047188238838" />
       <ref role="20lvS9" node="2GmwjaankH$" resolve="ConceptFunction_IsApplicableBreakpoint" />
     </node>
     <node concept="1TJgyj" id="51oHb9yZXnw" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="conceptsToCreateBreakpoint" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="5789575999242884576" />
       <ref role="20lvS9" node="51oHb9yZXnu" resolve="ConceptDeclarationReference" />
     </node>
     <node concept="1TJgyj" id="2JguE20RV$T" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="declaration" />
-      <property role="20lbJX" value="0..1" />
       <property role="IQ2ns" value="3157158168562219321" />
       <ref role="20lvS9" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
     </node>
@@ -107,7 +105,7 @@
   </node>
   <node concept="1TIwiD" id="2JguE20RV$U">
     <property role="TrG5h" value="ConceptFunction_CreateBreakpoint" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="breakpoints.conceptFunctions" />
     <property role="EcuMT" value="3157158168562219322" />
     <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
@@ -116,7 +114,7 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="ConceptFunctionParameter_Debug_Project" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="breakpoints.conceptFunctions" />
     <property role="34LRSv" value="project" />
     <property role="EcuMT" value="1270798772176052876" />
@@ -126,7 +124,7 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="ConceptFunctionParameter_DebuggableNode" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="breakpoints.conceptFunctions" />
     <property role="34LRSv" value="debuggableNode" />
     <property role="EcuMT" value="1270798772176052880" />
@@ -138,9 +136,8 @@
     <property role="EcuMT" value="5789575999242884574" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="51oHb9yZXnv" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="conceptDeclaration" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5789575999242884575" />
       <ref role="20lvS9" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
     </node>
@@ -149,7 +146,7 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="DebuggerType" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="settings" />
     <property role="34LRSv" value="debugger type" />
     <property role="EcuMT" value="1104094430779063683" />
@@ -164,7 +161,7 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="DebuggerReference" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="settings" />
     <property role="34LRSv" value="debugger" />
     <property role="EcuMT" value="1104094430779068753" />
@@ -179,7 +176,7 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="CreateBreakpointOperation" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="breakpoints" />
     <property role="34LRSv" value="create breakpoint" />
     <property role="EcuMT" value="2569394751387978473" />
@@ -198,16 +195,16 @@
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="1TJgyj" id="2eCkIB4eWFW" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="nodeExpression" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2569394751387978492" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
     <node concept="1TJgyj" id="2eCkIB4eWFX" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="projectExpression" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2569394751387978493" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
@@ -216,7 +213,7 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="GetDebuggerSettings_Function" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="settings" />
     <property role="34LRSv" value="get debugger settings" />
     <property role="EcuMT" value="6720907903633266914" />
@@ -228,16 +225,16 @@
     <property role="EcuMT" value="6720907903633266421" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5P5ty4$bhzw" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="debugger" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="6720907903633266912" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
     <node concept="1TJgyj" id="5P5ty4$bhzx" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="getSettings" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="6720907903633266913" />
       <ref role="20lvS9" node="5P5ty4$bhzy" resolve="GetDebuggerSettings_Function" />
     </node>
@@ -246,7 +243,7 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="ConceptFunctionParameter_Concept" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="breakpoints.conceptFunctions" />
     <property role="34LRSv" value="concept" />
     <property role="EcuMT" value="8751745335399632077" />
@@ -256,7 +253,7 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="ConceptFunction_IsApplicableBreakpoint" />
-    <property role="2_RsDV" value="none" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="breakpoints.conceptFunctions" />
     <property role="34LRSv" value="isApplicable" />
     <property role="EcuMT" value="3104811047188253540" />

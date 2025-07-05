@@ -21,16 +21,17 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.platform.dialogs.choosers.NodeChooserDialog;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public abstract class NodeChooser extends TextFieldWithBrowseButton.NoPathCompletion {
   @Nullable
@@ -51,15 +52,7 @@ public abstract class NodeChooser extends TextFieldWithBrowseButton.NoPathComple
         final Wrappers._T<List<SNodeReference>> toChooseFrom = new Wrappers._T<List<SNodeReference>>();
         ProgressManager.getInstance().run(new Task.Modal(project, "Searching for nodes", false) {
           public void run(@NotNull final ProgressIndicator indicator) {
-            mpsProject.getModelAccess().runReadAction(new Runnable() {
-              public void run() {
-                toChooseFrom.value = ListSequence.fromList(findToChooseFromOnInit(findUsegesManager, new ProgressMonitorAdapter(indicator))).select(new ISelector<SNode, SNodeReference>() {
-                  public SNodeReference select(SNode it) {
-                    return SNodeOperations.getPointer(it);
-                  }
-                }).toListSequence();
-              }
-            });
+            mpsProject.getModelAccess().runReadAction(() -> toChooseFrom.value = ListSequence.fromList(findToChooseFromOnInit(findUsegesManager, mpsProject.getScope(), new ProgressMonitorAdapter(indicator))).select((it) -> SNodeOperations.getPointer(it)).toList());
           }
         });
 
@@ -68,20 +61,18 @@ public abstract class NodeChooser extends TextFieldWithBrowseButton.NoPathComple
         final SNodeReference result = chooserDialog.getResult();
         if (result != null) {
           setNode(result);
-          setText(new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(new Computable<String>() {
-            public String compute() {
-              SNode resultNode = result.resolve(mpsProject.getRepository());
-              return (resultNode == null ? null : getFqName(resultNode));
-            }
+          setText(new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(() -> {
+            SNode resultNode = result.resolve(mpsProject.getRepository());
+            return (resultNode == null ? null : getFqName(resultNode));
           }));
         }
       }
     });
-    // we don't support entering name of the node manually 
+    // we don't support entering name of the node manually
     setEditable(false);
   }
 
-  protected abstract List<SNode> findToChooseFromOnInit(FindUsagesFacade manager, ProgressMonitor monitor);
+  protected abstract List<SNode> findToChooseFromOnInit(FindUsagesFacade manager, SearchScope scope, ProgressMonitor monitor);
 
   @Nullable
   public SNodeReference getNode() {
@@ -95,10 +86,10 @@ public abstract class NodeChooser extends TextFieldWithBrowseButton.NoPathComple
   public static String getFqName(SNode node) {
     String modelName = SModelOperations.getModelName(SNodeOperations.getModel(node));
 
-    // XXX why not node.getFqName or node/.getPresentation? 
+    // XXX why not node.getFqName or node/.getPresentation?
     String nodeName;
-    if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept"))) {
-      nodeName = SPropertyOperations.getString(SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd)) {
+      nodeName = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
     } else {
       nodeName = node.getNodeId().toString();
     }
@@ -107,5 +98,13 @@ public abstract class NodeChooser extends TextFieldWithBrowseButton.NoPathComple
       return nodeName;
     }
     return modelName + '.' + nodeName;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

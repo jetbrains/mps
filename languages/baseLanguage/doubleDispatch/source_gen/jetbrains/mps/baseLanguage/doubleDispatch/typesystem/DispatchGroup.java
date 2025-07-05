@@ -6,68 +6,58 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 
 public class DispatchGroup {
   private DispatchGroupDescriptor myDescriptor;
-  private List<DispatchGroup.ClassMethodGroup> myGroupsByClass = ListSequence.fromList(new ArrayList<DispatchGroup.ClassMethodGroup>());
+  private List<ClassMethodGroup> myGroupsByClass = ListSequence.fromList(new ArrayList<ClassMethodGroup>());
   public DispatchGroup(DispatchGroupDescriptor descriptor, SNode cls) {
     myDescriptor = descriptor;
     startNewClass(cls);
   }
   public void startNewClass(SNode cls) {
-    ListSequence.fromList(myGroupsByClass).addElement(new DispatchGroup.ClassMethodGroup(cls));
+    ListSequence.fromList(myGroupsByClass).addElement(new ClassMethodGroup(cls));
   }
   public void addMethod(SNode method) {
     ListSequence.fromList(myGroupsByClass).last().addMethod(method);
   }
   @Override
   public void finalize() {
-    List<DispatchGroup.ClassMethodGroup> filtered = ListSequence.fromList(myGroupsByClass).where(new IWhereFilter<DispatchGroup.ClassMethodGroup>() {
-      public boolean accept(DispatchGroup.ClassMethodGroup it) {
-        return MapSequence.fromMap(it.methods).isNotEmpty();
-      }
-    }).toListSequence();
+    List<ClassMethodGroup> filtered = ListSequence.fromList(myGroupsByClass).where((it) -> MapSequence.fromMap(it.methods).isNotEmpty()).toList();
     myGroupsByClass = filtered;
   }
-  public DispatchGroup.Error check() {
+  public Error check() {
 
-    DispatchGroup.ClassMethodGroup thisClassGroup = ListSequence.fromList(myGroupsByClass).first();
-    Iterable<DispatchGroup.ClassMethodGroup> superClassesGroups = ListSequence.fromList(myGroupsByClass).skip(1);
+    ClassMethodGroup thisClassGroup = ListSequence.fromList(myGroupsByClass).first();
+    Iterable<ClassMethodGroup> superClassesGroups = ListSequence.fromList(myGroupsByClass).skip(1);
     Set<SNode> roots = thisClassGroup.getRoots();
 
     if (ListSequence.fromList(myGroupsByClass).count() == 1) {
-      // this group is local to our class, doesn't span to superclasses 
+      // this group is local to our class, doesn't span to superclasses
 
       if (SetSequence.fromSet(roots).count() == 1) {
         return null;
       }
 
-      // more than one root 
+      // more than one root
       Iterable<SNode> methodsForRoots = thisClassGroup.methodsByDispatchTypes(roots);
-      return new DispatchGroup.Error("Dispatch parameter type hierarchy must have a single root", methodsForRoots);
+      return new Error("Dispatch parameter type hierarchy must have a single root", methodsForRoots);
     }
 
-    // The group spans to super-classes. 
+    // The group spans to super-classes.
 
-    // dispatch param classes that are not handled in superclasses 
+    // dispatch param classes that are not handled in superclasses
     Set<SNode> badRoots = SetSequence.fromSet(new HashSet<SNode>());
     for (final SNode root : SetSequence.fromSet(roots)) {
-      if (!(Sequence.fromIterable(superClassesGroups).any(new IWhereFilter<DispatchGroup.ClassMethodGroup>() {
-        public boolean accept(DispatchGroup.ClassMethodGroup it) {
-          return MapSequence.fromMap(it.methods).containsKey(root);
-        }
-      }))) {
+      if (!(Sequence.fromIterable(superClassesGroups).any((it) -> MapSequence.fromMap(it.methods).containsKey(root)))) {
         SetSequence.fromSet(badRoots).addElement(root);
       }
     }
@@ -79,29 +69,27 @@ public class DispatchGroup {
     Iterable<SNode> methodsForBadRoots = thisClassGroup.methodsByDispatchTypes(badRoots);
 
     if (SetSequence.fromSet(badRoots).count() == 1) {
-      // check if the class is the superclass for any other dispatch param classes in group 
+      // check if the class is the superclass for any other dispatch param classes in group
 
       final SNode cls = SetSequence.fromSet(badRoots).first();
-      boolean isGlobalRoot = Sequence.fromIterable(superClassesGroups).all(new IWhereFilter<DispatchGroup.ClassMethodGroup>() {
-        public boolean accept(DispatchGroup.ClassMethodGroup it) {
-          return SetSequence.fromSet(MapSequence.fromMap(it.methods).keySet()).all(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return DispatchUtil.isParent(cls, it);
-            }
-          });
-        }
+      boolean isGlobalRoot = Sequence.fromIterable(superClassesGroups).all((it) -> {
+        return SetSequence.fromSet(MapSequence.fromMap(it.methods).keySet()).all(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+          public Boolean invoke(SNode it) {
+            return DispatchUtil.isParent(cls, it);
+          }
+        });
       });
 
       if (!(isGlobalRoot)) {
-        return new DispatchGroup.Error("Dispatch type not present in super classes and is not a supertype for other param types", methodsForBadRoots);
+        return new Error("Dispatch type not present in super classes and is not a supertype for other param types", methodsForBadRoots);
       }
 
     } else {
-      // there are bad roots 
-      return new DispatchGroup.Error("Dispatch type not present in super classes", methodsForBadRoots);
+      // there are bad roots
+      return new Error("Dispatch type not present in super classes", methodsForBadRoots);
     }
 
-    // no errors 
+    // no errors
     return null;
   }
   public class ClassMethodGroup {
@@ -118,11 +106,7 @@ public class DispatchGroup {
     public Set<SNode> getRoots() {
       Set<SNode> roots = SetSequence.fromSet(new HashSet<SNode>());
 
-      Iterable<Iterator<SNode>> paths = MapSequence.fromMap(methods).select(new ISelector<IMapping<SNode, SNode>, Iterator<SNode>>() {
-        public Iterator<SNode> select(IMapping<SNode, SNode> it) {
-          return Sequence.fromIterable(DispatchUtil.ancestors(it.key(), false)).iterator();
-        }
-      });
+      Iterable<Iterator<SNode>> paths = MapSequence.fromMap(methods).select((it) -> Sequence.fromIterable(DispatchUtil.ancestors(it.key(), false)).iterator());
 
       while (Sequence.fromIterable(paths).isNotEmpty()) {
         List<Iterator<SNode>> unendedPaths = ListSequence.fromList(new ArrayList<Iterator<SNode>>());
@@ -141,15 +125,7 @@ public class DispatchGroup {
       return roots;
     }
     public Iterable<SNode> methodsByDispatchTypes(final Set<SNode> classes) {
-      return MapSequence.fromMap(methods).where(new IWhereFilter<IMapping<SNode, SNode>>() {
-        public boolean accept(IMapping<SNode, SNode> it) {
-          return SetSequence.fromSet(classes).contains(it.key());
-        }
-      }).select(new ISelector<IMapping<SNode, SNode>, SNode>() {
-        public SNode select(IMapping<SNode, SNode> it) {
-          return it.value();
-        }
-      });
+      return MapSequence.fromMap(methods).where((it) -> SetSequence.fromSet(classes).contains(it.key())).select((it) -> it.value());
     }
   }
   public class Error {

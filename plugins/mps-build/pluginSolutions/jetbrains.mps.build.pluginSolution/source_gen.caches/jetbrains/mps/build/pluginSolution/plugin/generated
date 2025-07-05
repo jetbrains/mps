@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-b1kkcos64iu4u699v69aw891ywhnmrf" />
+<product version="3" modelHash="-k4a2qdzbqa1ueo3aprsdpe4coz1jcx">
+  <files names="BuildScript_Configuration.java:BuildScript_Configuration_Editor.java:BuildScript_Configuration_RunProfileState.java:BuildScript_Producer.java:IconContainer.java:PluginSolution_ApplicationPlugin.java:RunConfigurationsInitializer_AppPluginPart.java" />
+</product>
 

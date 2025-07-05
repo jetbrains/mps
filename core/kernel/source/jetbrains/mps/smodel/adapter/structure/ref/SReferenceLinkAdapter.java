@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.smodel.adapter.structure.ref;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
+import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.adapter.structure.FormatException;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
@@ -31,13 +32,16 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SScope;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public abstract class SReferenceLinkAdapter implements SReferenceLink {
   public static final String ID_DELIM = ":";
 
-  protected String myName;
+  protected final SReferenceLinkId myRoleId;
+  protected final String myName;
 
-  protected SReferenceLinkAdapter(@NotNull String name) {
+  protected SReferenceLinkAdapter(@NotNull SReferenceLinkId linkId, @NotNull String name) {
+    myRoleId = linkId;
     myName = name;
   }
 
@@ -48,7 +52,7 @@ public abstract class SReferenceLinkAdapter implements SReferenceLink {
   }
 
   @Nullable
-  public abstract ReferenceDescriptor getReferenceDescriptor();
+  protected abstract ReferenceDescriptor getReferenceDescriptor();
 
   @Override
   public boolean isValid() {
@@ -106,6 +110,24 @@ public abstract class SReferenceLinkAdapter implements SReferenceLink {
     return new SScopeAdapter(scope, contextNode);
   }
 
+  @Nullable
+  @Override
+  public SNodeReference getSourceNode() {
+    ReferenceDescriptor rd = getReferenceDescriptor();
+    return rd == null ? null : rd.getSourceNode();
+  }
+
+  @NotNull
+  public SReferenceLinkId getId() {
+    return myRoleId;
+  }
+
+  @Override
+  public boolean isTransient() {
+    ReferenceDescriptor rd = getReferenceDescriptor();
+    return rd != null && rd.isTransient();
+  }
+
   private static class SScopeAdapter implements SScope {
     private final SNode myContextNode;
     private final Scope myScope;
@@ -136,7 +158,7 @@ public abstract class SReferenceLinkAdapter implements SReferenceLink {
 
   @Override
   public String toString() {
-    return myName;
+    return getName();
   }
 
   public abstract String serialize();

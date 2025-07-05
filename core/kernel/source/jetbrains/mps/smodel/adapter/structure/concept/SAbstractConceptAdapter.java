@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,11 +18,9 @@ package jetbrains.mps.smodel.adapter.structure.concept;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
-import jetbrains.mps.smodel.adapter.ids.SPropertyId;
-import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.adapter.structure.FormatException;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.adapter.structure.SNamedElementAdapter;
 import jetbrains.mps.smodel.adapter.structure.link.InvalidContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.link.SContainmentLinkAdapterById;
 import jetbrains.mps.smodel.adapter.structure.property.InvalidProperty;
@@ -34,21 +32,17 @@ import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import jetbrains.mps.smodel.runtime.LinkDescriptor;
+import jetbrains.mps.smodel.runtime.NamedElementDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceDescriptor;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SAbstractLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -72,16 +66,13 @@ import java.util.Collections;
  * needs to use the method {@link #isValid()}. (!)
  * <p/>
  * Currently a lot of "hacks" introduced to fix some common cases (e.g. not valid concept still is a subconcept of the BaseConcept).
- * Also there is an editor issue when an instance of abstract concept (interface concept) might be created.
- * (E.g. the method {@link #isSubConceptOf(SAbstractConcept)} works not as expected for such concepts)
+ * Also one have to keep in mind an editor issue when an instance of abstract concept (interface concept) might be created.
  */
-public abstract class SAbstractConceptAdapter implements SAbstractConcept, ConceptMetaInfoConverter {
+public abstract class SAbstractConceptAdapter extends SNamedElementAdapter implements SAbstractConcept, ConceptMetaInfoConverter {
   public static final String ID_DELIM = ":";
 
-  protected String myFqName;
-
   protected SAbstractConceptAdapter(String fqName) {
-    myFqName = fqName;
+    super(fqName);
   }
 
   /**
@@ -90,27 +81,15 @@ public abstract class SAbstractConceptAdapter implements SAbstractConcept, Conce
   @Nullable
   public abstract ConceptDescriptor getConceptDescriptor();
 
+  protected final NamedElementDescriptor getDescriptor() {
+    return getConceptDescriptor();
+  }
+
   /**
    * a helper method to get a declaration node for this concept
    * in the case of the legacy concept resolving (by string id)
    */
   protected abstract SNode findInModel(SModel structureModel);
-
-  @Nullable
-  @Override
-  public SNodeReference getSourceNode() {
-    ConceptDescriptor d = getConceptDescriptor();
-    if (d == null) {
-      return null;
-    }
-    return d.getSourceNode();
-  }
-
-  @NotNull
-  @Override
-  public String getName() {
-    return NameUtil.shortNameFromLongName(getQualifiedName());
-  }
 
   @Override
   public Collection<SReferenceLink> getReferenceLinks() {
@@ -119,7 +98,7 @@ public abstract class SAbstractConceptAdapter implements SAbstractConcept, Conce
       return Collections.emptyList();
     }
 
-    ArrayList<SReferenceLink> result = new ArrayList<SReferenceLink>();
+    ArrayList<SReferenceLink> result = new ArrayList<>();
     for (ReferenceDescriptor rd : d.getReferenceDescriptors()) {
       result.add(MetaAdapterFactory.getReferenceLink(rd.getId(), rd.getName()));
     }
@@ -142,7 +121,7 @@ public abstract class SAbstractConceptAdapter implements SAbstractConcept, Conce
       return Collections.emptyList();
     }
 
-    ArrayList<SContainmentLink> result = new ArrayList<SContainmentLink>();
+    ArrayList<SContainmentLink> result = new ArrayList<>();
     for (LinkDescriptor ld : d.getLinkDescriptors()) {
       result.add(MetaAdapterFactory.getContainmentLink(ld.getId(), ld.getName()));
     }
@@ -157,66 +136,6 @@ public abstract class SAbstractConceptAdapter implements SAbstractConcept, Conce
 
     ConceptDescriptor d = getConceptDescriptor();
     return d != null && d.getLinkDescriptor(((SContainmentLinkAdapterById) l).getId()) != null;
-  }
-
-  @Override
-  @Deprecated
-  public SAbstractLink getLink(String role) {
-    // INTENTIONALLY DISTURBING
-    Logger.getLogger(SAbstractConceptAdapter.class).error("The method is scheduled for removal. There were no uses, do not introduce a new one", new Throwable());
-    ConceptDescriptor nodeConcept = getConceptDescriptor();
-    if (nodeConcept == null) {
-      return null;
-    }
-
-    LinkDescriptor d = nodeConcept.getLinkDescriptor(role);
-    if (d != null) {
-      SContainmentLinkId linkId = d.getId();
-      return MetaAdapterFactory.getContainmentLink(linkId, role);
-    } else {
-      ReferenceDescriptor r = nodeConcept.getRefDescriptor(role);
-      if (r == null) {
-        return null;
-      }
-
-      SReferenceLinkId linkId = r.getId();
-      return MetaAdapterFactory.getReferenceLink(linkId, role);
-    }
-  }
-
-  @Override
-  public Iterable<SAbstractLink> getLinks() {
-    // INTENTIONALLY DISTURBING
-    Logger.getLogger(SAbstractConceptAdapter.class).error("The method is scheduled for removal. There were no uses, do not introduce a new one", new Throwable());
-    ArrayList<SAbstractLink> result = new ArrayList<SAbstractLink>();
-    ConceptDescriptor cd = getConceptDescriptor();
-    if (cd == null) {
-      return Collections.emptyList();
-    }
-
-    for (LinkDescriptor ld : cd.getLinkDescriptors()) {
-      result.add(MetaAdapterFactory.getContainmentLink(ld.getId(), ld.getName()));
-    }
-    return result;
-  }
-
-  @Override
-  @Deprecated
-  public SProperty getProperty(String name) {
-    // INTENTIONALLY DISTURBING
-    Logger.getLogger(SAbstractConceptAdapter.class).error("The method is scheduled for removal. There were no uses, do not introduce a new one", new Throwable());
-    ConceptDescriptor cd = getConceptDescriptor();
-    if (cd == null) {
-      return null;
-    }
-
-    PropertyDescriptor d = cd.getPropertyDescriptor(name);
-    if (d == null) {
-      return new InvalidProperty(myFqName, name);
-    }
-
-    SPropertyId pid = d.getId();
-    return MetaAdapterFactory.getProperty(pid, name);
   }
 
   public boolean hasProperty(SProperty p) {
@@ -237,7 +156,7 @@ public abstract class SAbstractConceptAdapter implements SAbstractConcept, Conce
       return Collections.emptyList();
     }
 
-    ArrayList<SProperty> result = new ArrayList<SProperty>();
+    ArrayList<SProperty> result = new ArrayList<>();
     for (PropertyDescriptor pd : descriptor.getPropertyDescriptors()) {
       result.add(MetaAdapterFactory.getProperty(pd.getId(), pd.getName()));
     }
@@ -269,13 +188,6 @@ public abstract class SAbstractConceptAdapter implements SAbstractConcept, Conce
     if (anotherDescriptor == null) {
       return false;
     }
-    if (anotherDescriptor.isInterfaceConcept() && anotherConcept instanceof SConceptAdapter) {
-      // anotherDescriptor is in fact an interface concept
-      // however is created as a SConceptAdapter, not a SInterfaceConceptAdapter (!)
-      // currently the editor has to perform hacky operations as this
-      return false;
-    }
-
     return isSubConceptOfSpecial(descriptor, anotherDescriptor, anotherConcept);
   }
 
@@ -290,8 +202,7 @@ public abstract class SAbstractConceptAdapter implements SAbstractConcept, Conce
 
   @Nullable
   @Override
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public SNode getDeclarationNode() {
     Language lang = ((Language) getLanguage().getSourceModule());
     if (lang == null) {
@@ -323,12 +234,7 @@ public abstract class SAbstractConceptAdapter implements SAbstractConcept, Conce
     if (pres != null) {
       return pres.getShortDescription();
     }
-    // fallback for legacy code
-    ConceptDescriptor d = getConceptDescriptor();
-    if (d == null) {
-      return "";
-    }
-    return d.getConceptShortDescription();
+    return "";
   }
 
   @NotNull
@@ -338,11 +244,7 @@ public abstract class SAbstractConceptAdapter implements SAbstractConcept, Conce
     if (pres != null) {
       return pres.getHelpUrl();
     }
-    ConceptDescriptor d = getConceptDescriptor();
-    if (d == null) {
-      return "";
-    }
-    return d.getHelpUrl();
+    return "";
   }
 
   /**
@@ -361,7 +263,7 @@ public abstract class SAbstractConceptAdapter implements SAbstractConcept, Conce
         return p;
       }
     }
-    return new InvalidProperty(getQualifiedName(), propertyName);
+    return new InvalidProperty(getQualifiedName(), propertyName == null ? "" : propertyName);
   }
 
   @NotNull
@@ -372,7 +274,7 @@ public abstract class SAbstractConceptAdapter implements SAbstractConcept, Conce
         return r;
       }
     }
-    return new InvalidReferenceLink(getQualifiedName(), role);
+    return new InvalidReferenceLink(getQualifiedName(), role == null ? "" : role);
   }
 
   @NotNull
@@ -383,12 +285,12 @@ public abstract class SAbstractConceptAdapter implements SAbstractConcept, Conce
         return l;
       }
     }
-    return new InvalidContainmentLink(getQualifiedName(), role);
+    return new InvalidContainmentLink(getQualifiedName(), role == null ? "" : role);
   }
 
   @Override
   public String toString() {
-    return myFqName;
+    return getQualifiedName();
   }
 
   public abstract String serialize();

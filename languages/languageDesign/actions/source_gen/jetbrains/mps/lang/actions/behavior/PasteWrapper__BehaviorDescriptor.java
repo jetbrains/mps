@@ -5,12 +5,9 @@ package jetbrains.mps.lang.actions.behavior;
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
-import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,12 +18,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class PasteWrapper__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51563250L, "jetbrains.mps.lang.actions.structure.PasteWrapper");
-  private static final BehaviorRegistry REGISTRY = ConceptRegistry.getInstance().getBehaviorRegistry();
 
-  public static final SMethod<String> getClassName_id5CTPYn2wJN2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5CTPYn2wJN2").registry(REGISTRY).build();
+  public static final SMethod<String> getClassName_id5CTPYn2wJN2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6501464918896868546L).languageId(0xaef20004f6a1cdbdL, 0xaee9cad2acd44608L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassName_id5CTPYn2wJN2);
 
@@ -35,11 +32,10 @@ public final class PasteWrapper__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static String getClassName_id5CTPYn2wJN2(@NotNull SNode __thisNode__) {
     SNode parent = (SNode) SNodeOperations.getParent(__thisNode__);
-    return SPropertyOperations.getString(parent, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "_PasteWrapper_" + SNodeOperations.getIndexInParent(__thisNode__);
+    return SPropertyOperations.getString(parent, PROPS.name$MnvL) + "_PasteWrapper_" + SNodeOperations.getIndexInParent(__thisNode__);
   }
 
   /*package*/ PasteWrapper__BehaviorDescriptor() {
-    super(REGISTRY);
   }
 
   @Override
@@ -83,5 +79,9 @@ public final class PasteWrapper__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

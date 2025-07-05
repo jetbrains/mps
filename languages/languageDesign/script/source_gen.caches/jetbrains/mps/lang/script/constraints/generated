@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-8bhgfnwsljltauy2c1r2tjdqya56e8j" />
+<product version="3" modelHash="1t3qy73cfkrcrl9wya2xvo7kavplko">
+  <files names="ConstraintsAspectDescriptor.java:DirectMethodSpecification_Constraints.java:MigrationScriptPart_Constraints.java:PullUpMethod_Constraints.java" />
+</product>
 

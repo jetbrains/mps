@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.persistence.java.library.JavaClassesPersistence;
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.tool.environment.Environment;
+import jetbrains.mps.tool.environment.EnvironmentAware;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,62 +31,25 @@ import static org.junit.Assert.assertEquals;
 /**
  * evgeny, 3/15/13
  */
-public class SModelReferenceTest {
+public class SModelReferenceTest implements EnvironmentAware {
+  private Environment myEnv;
   private PersistenceRegistry myPersistenceRegistry = null;
+
+  @Override
+  public void setEnvironment(@NotNull Environment env) {
+    myEnv = env;
+  }
 
   @Before
   public void setUp() {
-    if (PersistenceFacade.getInstance() == null) {
-      myPersistenceRegistry = new PersistenceRegistry();
-      myPersistenceRegistry.init();
-      new JavaClassesPersistence(myPersistenceRegistry).init();
-    }
-    Assert.assertNotNull(PersistenceFacade.getInstance());
-  }
-
-  @After
-  public void tearDown() {
-    if (myPersistenceRegistry != null) {
-      myPersistenceRegistry.dispose();
-      myPersistenceRegistry = null;
-    }
+    myPersistenceRegistry = myEnv.getPlatform().findComponent(PersistenceRegistry.class);
+    Assert.assertNotNull(myPersistenceRegistry);
   }
 
   private PersistenceFacade getPersistenceFacade() {
-    return myPersistenceRegistry == null ? PersistenceFacade.getInstance() : myPersistenceRegistry;
+    return myPersistenceRegistry;
   }
 
-  /**
-   * We've changed persistence for java stub model references, hence no reason to check they are serialized in the same way we can understand.
-   * Instead, we ensure that once they got parsed, they do match our hand-crafted reference reference (sorry ;)
-   */
-  @Test
-  @ToRemove(version = 3.3)
-  public void testLegacyJavaStub() {
-    SModelReference r1 = getPersistenceFacade().createModelReference("f:java_stub#6354ebe7-c22a-4a0f-ac54-50b52ab9b065#java.util(JDK/java.util@java_stub)");
-    SModelReference r2 = getPersistenceFacade().createModelReference("f:java_stub#6354ebe7-c22a-4a0f-ac54-50b52ab9b065#java.util(java.util@java_stub)");
-    SModelReference r3 = getPersistenceFacade().createModelReference(
-        "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/f:java_stub#6354ebe7-c22a-4a0f-ac54-50b52ab9b065#java.util(JDK/java.util@java_stub)");
-    SModelReference r4 = getPersistenceFacade().createModelReference(
-        "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/f:java_stub#java.util(JDK/java.util@java_stub)");
-
-    // need () otherwise id is treated as module name
-    SModuleReference moduleRefNoName = getPersistenceFacade().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065()");
-    SModuleReference moduleRefWithName = getPersistenceFacade().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)");
-    org.jetbrains.mps.openapi.model.SModelId modelId = getPersistenceFacade().createModelId("java:java.util");
-    SModelReference expected1 = getPersistenceFacade().createModelReference(moduleRefNoName, modelId, "java.util@java_stub");
-    SModelReference expected2 = getPersistenceFacade().createModelReference(moduleRefWithName, modelId, "java.util@java_stub");
-    assertEquals("[sanity]", expected1, expected2);
-    // model references shall be equal regardless module name and module id present
-    assertEquals(expected1, r1);
-    assertEquals(expected1, r2);
-    assertEquals(expected1, r3);
-    assertEquals(expected1, r4);
-    assertEquals(expected2, r1);
-    assertEquals(expected2, r2);
-    assertEquals(expected2, r3);
-    assertEquals(expected2, r4);
-  }
 
   @Test
   public void testSerialization() throws Exception {

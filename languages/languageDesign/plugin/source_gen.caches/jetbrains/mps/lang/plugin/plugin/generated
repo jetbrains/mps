@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-sqa9ug35mox8nmrbgggf8n49oo4n0f" />
+<product version="3" modelHash="exjx3cq6o5orw40syl9cwdeuy4ad1ae">
+  <files names="CopyPluginXml_Facet.java:ExtensionDescriptor.java:FacetAspectDescriptor.java:FacetManifest.java:IconContainer.java:LanguageAspectsEP_extension.java:URLFunction_HelpCenterDocUrl.java" />
+</product>
 

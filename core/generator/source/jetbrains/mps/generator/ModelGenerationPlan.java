@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2018 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -102,10 +102,18 @@ public interface ModelGenerationPlan {
 
   final class Transform implements Step {
     private final TemplateMappingConfiguration[] myMapCfg;
+    private final boolean myKeepLabeledTransformations;
 
     public Transform(@NotNull Collection<TemplateMappingConfiguration> tmc) {
-      myMapCfg = tmc.toArray(new TemplateMappingConfiguration[tmc.size()]);
+      myMapCfg = tmc.toArray(new TemplateMappingConfiguration[0]);
+      myKeepLabeledTransformations = false;
     }
+
+    public Transform(@NotNull Collection<TemplateMappingConfiguration> tmc, boolean keepLabeledTransforms) {
+      myMapCfg = tmc.toArray(new TemplateMappingConfiguration[0]);
+      myKeepLabeledTransformations = keepLabeledTransforms;
+    }
+
 
     @NotNull
     public List<TemplateMappingConfiguration> getTransformations() {
@@ -114,7 +122,7 @@ public interface ModelGenerationPlan {
 
     // Do I need this?
     public List<TemplateModel> getTemplateModels() {
-      ArrayList<TemplateModel> rv = new ArrayList<TemplateModel>(myMapCfg.length);
+      ArrayList<TemplateModel> rv = new ArrayList<>(myMapCfg.length);
       // generally, there are very few distinct template models per step, don't care about performance here
       for (TemplateMappingConfiguration mc : myMapCfg) {
         if (!rv.contains(mc.getModel())) {
@@ -122,6 +130,10 @@ public interface ModelGenerationPlan {
         }
       }
       return rv;
+    }
+
+    public boolean isLabeledTransformationsKept() {
+      return myKeepLabeledTransformations;
     }
 
     // alternatively, why not to give control over rule/switch manager to the step?
@@ -140,6 +152,27 @@ public interface ModelGenerationPlan {
     }
   }
 
+  final class Fork implements Step {
+    private final List<Step> myBranch;
+    private String myGenerationTarget;
+
+    public Fork(List<Step> branch) {
+      myBranch = branch;
+    }
+
+    public Fork(List<Step> branch, String generationTarget) {
+      this(branch);
+      myGenerationTarget = generationTarget;
+    }
+
+    public List<Step> getBranch() {
+      return myBranch;
+    }
+
+    public String getGenerationTarget() {
+      return myGenerationTarget;
+    }
+  }
 
   /**
    * Marker to indicate source capable to supply ModelGenerationPlan for a model

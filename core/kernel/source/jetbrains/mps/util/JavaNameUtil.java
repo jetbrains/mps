@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,29 +19,25 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 
-/**
- * User: Dmitriev.
- * Date: Jan 13, 2004
- */
 public final class JavaNameUtil {
-
-  private static Set<String> JAVA_KEYWORDS = new HashSet<String>();
+  public static final Pattern VALID_ID_PATTERN = Pattern.compile("[a-zA-Z$[_]][a-zA-Z0-9$[_]]*");
+  private static final Pattern DIGITS = Pattern.compile("\\d+");
+  private static Set<String> JAVA_KEYWORDS = new HashSet<>();
 
   static {
     JAVA_KEYWORDS.addAll(Arrays.asList(
-      "abstract", "continue", "for", "new", "switch", "assert", "default", "if", "package", "synchronized", "boolean", "do", "goto", "private",
-      "this", "break", "double", "implements", "protected", "throw", "byte", "else", "import", "public", "throws", "case", "enum", "instanceof",
-      "return", "transient", "catch", "extends", "int", "short", "try", "char", "final", "interface", "static", "void", "class", "finally", "long",
-      "strictfp", "volatile", "const", "float", "native", "super", "while", "true", "false", "null"));
+        "abstract", "continue", "for", "new", "switch", "assert", "default", "if", "package", "synchronized", "boolean", "do", "goto", "private",
+        "this", "break", "double", "implements", "protected", "throw", "byte", "else", "import", "public", "throws", "case", "enum", "instanceof",
+        "return", "transient", "catch", "extends", "int", "short", "try", "char", "final", "interface", "static", "void", "class", "finally", "long",
+        "strictfp", "volatile", "const", "float", "native", "super", "while", "true", "false", "null"));
   }
-
 
   private JavaNameUtil() {
   }
@@ -61,8 +57,21 @@ public final class JavaNameUtil {
     return fqClassName(node.getModel(), shortClassName);
   }
 
-  public static String packageNameForModelUID(@NotNull SModelReference modelReference) {
-    return modelReference.getName().getLongName();
+  public static boolean isAnonymous(String className) {
+    if (!isInnerClass(className)) {
+      return false;
+    }
+
+    for (String part : className.split("\\$")) {
+      if (DIGITS.matcher(part).matches()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public static boolean isInnerClass(String className) {
+    return className.contains("$");
   }
 
   public static String packageName(@NotNull SModel model) {
@@ -112,6 +121,26 @@ public final class JavaNameUtil {
       }
     }
 
-    return !JAVA_KEYWORDS.contains(text);
+    return !isJavaReserved(text);
+  }
+
+  public static boolean isJavaReserved(String s) {
+    return JAVA_KEYWORDS.contains(s);
+  }
+
+  @Contract(value = "null -> null; !null -> !null")
+  public static String toJavaIdentifierSuffix(@Nullable String text) {
+    if (text == null) {
+      return null;
+    }
+    StringBuilder sb = new StringBuilder(text.length());
+
+    for (int i = 0; i < text.length(); i++) {
+      char ch = text.charAt(i);
+      if (Character.isJavaIdentifierPart(ch)) {
+        sb.append(ch);
+      }
+    }
+    return sb.toString();
   }
 }

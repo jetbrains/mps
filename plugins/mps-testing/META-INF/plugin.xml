@@ -14,20 +14,22 @@
   ~ limitations under the License.
   -->
 
-<idea-plugin version="2" xmlns:xi="http://www.w3.org/2001/XInclude">
+<idea-plugin>
   <id>jetbrains.mps.testing</id>
   <name>MPS Testing</name>
   <category>Custom Languages</category>
   <description>Languages unit-testing java code and MPS aspects such as editor and typesystem</description>
-  <version>2017.1.4</version>
-  <vendor url="http://www.jetbrains.com/mps/" logo="/MPS_16.png">JetBrains</vendor>
-  <idea-version since-build="171.1" until-build="172.1"/>
+  <version>2024.1.5</version>
+  <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
+  <idea-version since-build="241.1" until-build="242.1"/>
 
   <depends>jetbrains.mps.core</depends>
+  <depends optional="true">jetbrains.mps.ide</depends> <!-- FIXME 'optional' is a provisional workaround -->
+  <depends>jetbrains.mps.junit5</depends>
   <depends>com.intellij.modules.lang</depends>
 
   <extensions defaultExtensionNs="com.intellij">
-    <mps.LanguageLibrary dir="/"/>
+    <mps.LanguageLibrary dir="/" hide="true"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
   </extensions>
 </idea-plugin>

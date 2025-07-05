@@ -35,6 +35,12 @@ public class RH_conflicting2_RequestHandler extends HttpRequestHandlerBase {
     if (!(myCorrectRequest) || !(super.canHandle())) {
       return false;
     }
+    switch (request.getMethod()) {
+      case "GET":
+        break;
+      default:
+        return false;
+    }
 
     return true;
   }

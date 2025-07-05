@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
  */
 package jetbrains.mps.aspects;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.containers.MultiMap;
 import jetbrains.mps.util.containers.SetBasedMultiMap;
-import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -41,7 +41,7 @@ public class InOrderSorter<T extends OrderParticipant<String>> {
       return Math.max(r1, -r2);
     };
 
-    MultiMap<T, T> greater = new SetBasedMultiMap<T, T>();
+    MultiMap<T, T> greater = new SetBasedMultiMap<>();
     for (T item1: myItems) {
       for (T item2: myItems) {
         if (sourceIndependent.compare(item1, item2) > 0) {
@@ -54,7 +54,7 @@ public class InOrderSorter<T extends OrderParticipant<String>> {
       do {
         changed = false;
         for (T item1 : myItems) {
-          for (T item2 : new ArrayList<T>(greater.get(item1))) {
+          for (T item2 : new ArrayList<>(greater.get(item1))) {
             Collection<T> toAdd = greater.get(item2);
             changed |= !greater.get(item1).containsAll(toAdd);
             greater.putValues(item1, toAdd);

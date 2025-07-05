@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-7vnmbmbv2l6qsd7vqzi7vdo5vxvmxi3" />
+<product version="3" modelHash="bu8a0vx0qwkd23icybgcpaact1j69fr">
+  <files names="DemoApplication_Configuration.java:DemoApplication_Configuration_Editor.java:DemoApplication_Configuration_RunProfileState.java:DemoApplication_Producer.java:IconContainer.java:PluginSolution_ApplicationPlugin.java:RunConfigurationsInitializer_AppPluginPart.java:plugin.xml" />
+</product>
 

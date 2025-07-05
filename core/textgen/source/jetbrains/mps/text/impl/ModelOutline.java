@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.text.impl;
 
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.text.TextUnit;
 import jetbrains.mps.text.rt.TextGenModelOutline;
 import org.jetbrains.annotations.NotNull;
@@ -32,10 +33,12 @@ import java.util.List;
 public final class ModelOutline implements TextGenModelOutline {
 
   private final SModel myModel;
-  private final List<TextUnit> myTextUnits = new ArrayList<TextUnit>();
+  private final ComponentHost myPlatform;
+  private final List<TextUnit> myTextUnits = new ArrayList<>();
 
-  public ModelOutline(@NotNull SModel model) {
+  public ModelOutline(@NotNull SModel model, @NotNull ComponentHost platform) {
     myModel = model;
+    myPlatform = platform;
   }
   @NotNull
   @Override
@@ -44,22 +47,37 @@ public final class ModelOutline implements TextGenModelOutline {
   }
 
   @Override
+  public ComponentHost getPlatform() {
+    return myPlatform;
+  }
+
+  @Override
   public void registerTextUnit(@NotNull TextUnit textUnit) {
     myTextUnits.add(textUnit);
   }
 
   @Override
-  public void registerTextUnit(@NotNull String unitName, SNode... input) {
-    // XXX Do I need to consider distinction between java and plain text units? lang.BL already has custom units (RegularTextUnit2) is there
-    // any other language that needs dependencies and trace info collected?
-//    final boolean needsJava = SModelOperations.getAllLanguageImports(model).contains(MetaAdapterFactory.getLanguage(BootstrapLanguages.baseLanguageRef()));
-//    registerTextUnit(needsJava ? new JavaTextUnit(root, name) : new RegularTextUnit(root, name));
-    registerTextUnit(new RegularTextUnit(input[0], unitName));
+  public void registerTextUnit(@NotNull String unitName, @Nullable String unitPath, @Nullable Charset encoding, SNode... input) {
+    registerTextUnit(new RegularTextUnit(input[0], unitName, unitPath, encoding, getPlatform()));
   }
 
   @Override
-  public void registerTextUnit(@NotNull String unitName, @Nullable Charset encoding, SNode... input) {
-    registerTextUnit(new RegularTextUnit(input[0], unitName, encoding));
+  public UnitBuilder unitBuilder(@NotNull final String unitName, @Nullable final SNode input) {
+    return new UnitBuilder() {
+      @Override
+      public TextUnit build() {
+        final RegularTextUnit tu = new RegularTextUnit(input, unitName, this.unitPath, this.encoding, getPlatform());
+        if (this.layout != null) {
+          tu.setBufferLayout(this.layout);
+        } else if (this.layoutBuilder != null) {
+          tu.setBufferLayout(this.layoutBuilder.create());
+        }
+        if (this.contextObjects != null) {
+          this.contextObjects.forEach(p -> tu.addContextObject(p.o1, p.o2));
+        }
+        return tu;
+      }
+    };
   }
 
   @NotNull

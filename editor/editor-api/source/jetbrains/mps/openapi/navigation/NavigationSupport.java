@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,14 +26,28 @@ import org.jetbrains.mps.openapi.module.SModule;
 
 /**
  * Facility to reveal different aspects of an mps project, either in a project tree or in an editor.
+ * This is low-level, implementation API and shall not be used unless there's justification to do so (e.g. you've got an SNode
+ * and need to do something with an {@link Editor} from {@link #openNode(Project, SNode, boolean, boolean)}. Otherwise, use
+ * {@link EditorNavigator} or {@link ProjectPaneNavigator}
  * FIXME it's odd to require external methods to wrap into read/write/EDT if we can do it ourselves here (with project and its model access available)
  * FIXME it's odd this class lives in [editor-api], why not in platform/ui?
  */
 public abstract class NavigationSupport implements CoreComponent {
   private static NavigationSupport INSTANCE;
 
+  /**
+   * @deprecated use {@link EditorNavigator} or {@link ProjectPaneNavigator} instead.
+   *             If utterly necessary, for transition purposes can use {@link #getInstance(Project)}
+   */
+  @Deprecated(forRemoval = true, since = "2024.1")
   public static NavigationSupport getInstance() {
     return INSTANCE;
+  }
+
+  public static NavigationSupport getInstance(@SuppressWarnings("unused") Project mpsProject) {
+    // I'd love to initialize instance from MPSEditorPlugin, and access it with mpsProject.getComponent() here,
+    // but at the moment NavigationSupportImpl is part of [mps-workbench], no luck
+    return getInstance();
   }
 
   @Override
@@ -52,10 +66,7 @@ public abstract class NavigationSupport implements CoreComponent {
 
 
   /**
-   * Opens node in the editor. Requires: model write, EDT.
-   *
-   * Model write is required because saveAll() will be called by implementation
-   * of this method (IDEA API calls).
+   * Opens node in the editor. Requires: model read, EDT.
    *
    * Unless you care about return value or do some extra stuff with the node, use {@link EditorNavigator#open(SNodeReference)} instead
    *

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product version="3" modelHash="1156b4tmu0qkqk9i3eirx5ya2ae5cn0">
+  <files names="AbstractInProcessTestContributor.java:AbstractTestConverter.java:AssumptionFailedRunner.java:CommandLineTestExecutor.java:InProcessExecutionFilter.java:JUnit5InprocessTestsContributor.java:JUnit5ScriptTestContributor.java:NodeWrappersTestsContributor.java:ScriptTestContributor.java" />
+</product>
+

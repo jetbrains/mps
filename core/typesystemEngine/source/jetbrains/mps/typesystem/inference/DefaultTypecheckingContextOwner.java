@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,22 @@
  */
 package jetbrains.mps.typesystem.inference;
 
+import jetbrains.mps.newTypesystem.context.IncrementalTypecheckingContext;
 import jetbrains.mps.typesystem.inference.util.ConcurrentSubtypingCache;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.util.SubtypingCache;
+import org.jetbrains.mps.openapi.model.SNode;
 
 /**
+ * remove once 2023.3 is out (mbeddr instantiates this class in versions < 2023.2)
  * User: fyodor
  * Date: 11/27/12
  */
+@Deprecated(forRemoval = true)
 public class DefaultTypecheckingContextOwner implements ITypeContextOwner {
 
   @Override
   public TypeCheckingContext createTypecheckingContext(SNode sNode, TypeContextManager typeContextManager) {
-    return typeContextManager.createTypeCheckingContext(sNode);
+    return new IncrementalTypecheckingContext(sNode, TypeChecker.getInstance().getTypeCheckerHelper(), null);
   }
 
   @Override

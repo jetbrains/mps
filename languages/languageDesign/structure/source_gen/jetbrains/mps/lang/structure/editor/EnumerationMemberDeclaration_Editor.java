@@ -11,4 +11,7 @@ public class EnumerationMemberDeclaration_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
     return new EnumerationMemberDeclaration_EditorBuilder_a(editorContext, node).createCell();
   }
+  public EditorCell createInspectedCell(EditorContext editorContext, SNode node) {
+    return new EnumerationMemberDeclaration_InspectorBuilder_a(editorContext, node).createCell();
+  }
 }

@@ -4,12 +4,12 @@ package jetbrains.mps.baseLanguage.checkedDots.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_CheckedDotExpression = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_CheckedDotExpression;
 
   @Override
   @Nullable
@@ -17,6 +17,11 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.CheckedDotExpression:
+        if (props_CheckedDotExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("CheckedDotExpression");
+          props_CheckedDotExpression = cpb.create();
+        }
         return props_CheckedDotExpression;
     }
     return null;

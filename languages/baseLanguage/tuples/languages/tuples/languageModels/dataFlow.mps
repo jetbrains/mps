@@ -2,11 +2,7 @@
 <model ref="r:584f574a-ff70-48d8-8e32-f847d7f18b78(jetbrains.mps.baseLanguage.tuples.dataFlow)">
   <persistence version="9" />
   <languages>
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="0" />
-    <use id="7fa12e9c-b949-4976-b4fa-19accbc320b4" name="jetbrains.mps.lang.dataFlow" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="8" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="5" />
-    <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
+    <devkit ref="00000000-0000-4000-0000-443879f56b80(jetbrains.mps.devkit.aspect.dataflow)" />
   </languages>
   <imports>
     <import index="cx9y" ref="r:309aeee7-bee8-445c-b31d-35928d1da75f(jetbrains.mps.baseLanguage.tuples.structure)" />
@@ -90,7 +86,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -130,6 +126,22 @@
                     </node>
                     <node concept="3TrEf2" id="i1LCz8y" role="2OqNvi">
                       <ref role="3Tt5mk" to="tpee:fzcqZ_w" resolve="variableDeclaration" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3_FXB6" id="3xYtul1Re4S" role="3cqZAp">
+                  <node concept="2OqwBi" id="3xYtul1Re4T" role="3_H1SZ">
+                    <node concept="1PxgMI" id="3xYtul1Re4U" role="2Oq$k0">
+                      <property role="1BlNFB" value="true" />
+                      <node concept="37vLTw" id="3xYtul1Re4V" role="1m5AlR">
+                        <ref role="3cqZAo" node="i1LAY0j" resolve="mbr" />
+                      </node>
+                      <node concept="chp4Y" id="3xYtul1Re4W" role="3oSUPX">
+                        <ref role="cht4Q" to="cx9y:3xYtul1rirb" resolve="LocalVariableDeclarationInTuple" />
+                      </node>
+                    </node>
+                    <node concept="3TrEf2" id="3xYtul1Re4X" role="2OqNvi">
+                      <ref role="3Tt5mk" to="cx9y:3xYtul1rito" resolve="variable" />
                     </node>
                   </node>
                 </node>

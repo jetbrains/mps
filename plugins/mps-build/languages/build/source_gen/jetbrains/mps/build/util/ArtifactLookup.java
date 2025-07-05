@@ -4,13 +4,15 @@ package jetbrains.mps.build.util;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildLayout_Node__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ArtifactLookup {
   private final DependenciesHelper myDependencyHelper;
@@ -25,10 +27,6 @@ public class ArtifactLookup {
     myDependencyHelper = helper;
   }
 
-  public SNode toOriginalNode(SNode node) {
-    return (myDependencyHelper == null ? node : myDependencyHelper.getOriginalNode(node));
-  }
-
   public Tuples._2<SNode, String> getResource(SNode path) {
     SNode result = findArtifact(path);
     if (result != null) {
@@ -36,10 +34,10 @@ public class ArtifactLookup {
     }
 
     StringBuilder suffix = new StringBuilder();
-    SNode current = SNodeOperations.as(path, MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath"));
+    SNode current = SNodeOperations.as(path, CONCEPTS.BuildRelativePath$Kc);
     if (current != null) {
-      suffix.append("/").append(BuildSourcePath__BehaviorDescriptor.getLastSegment_id1bWeed$oUb5.invoke(path, null));
-      current = SNodeOperations.as(BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(current), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath"));
+      suffix.append("/").append(BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(path));
+      current = SNodeOperations.as(BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(current), CONCEPTS.BuildRelativePath$Kc);
     }
     SNode containingRoot = SNodeOperations.getContainingRoot(path);
     while (current != null) {
@@ -48,8 +46,8 @@ public class ArtifactLookup {
         return MultiTuple.<SNode,String>from(result, suffix.toString());
       }
 
-      suffix.insert(0, BuildSourcePath__BehaviorDescriptor.getLastSegment_id1bWeed$oUb5.invoke(current, null)).insert(0, "/");
-      current = SNodeOperations.as(BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(current), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath"));
+      suffix.insert(0, BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(current)).insert(0, "/");
+      current = SNodeOperations.as(BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(current), CONCEPTS.BuildRelativePath$Kc);
     }
 
     return MultiTuple.<SNode,String>from((SNode) null, (String) null);
@@ -58,18 +56,11 @@ public class ArtifactLookup {
   public SNode findArtifact(Object id) {
     if (id instanceof SNode) {
       SNode node = (SNode) id;
-      if (SNodeOperations.isInstanceOf(node, MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement")) && myArtifacts.parent(SNodeOperations.as(node, MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement"))) != null) {
-        return SNodeOperations.cast(node, MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement"));
+      // FIXME any idea what's the purpose of this code?
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_PathElement$ei) && myArtifacts.parent(SNodeOperations.as(node, CONCEPTS.BuildLayout_PathElement$ei)) != null) {
+        return SNodeOperations.cast(node, CONCEPTS.BuildLayout_PathElement$ei);
       }
-      SNode rv = doFind(id);
-      if (rv == null) {
-        SNode originalId = toOriginalNode((SNode) id);
-        if (originalId == id) {
-          return null;
-        }
-        // try with original node 
-        return doFind(originalId);
-      }
+      // fall-through, just doFind()
     }
     return doFind(id);
   }
@@ -96,7 +87,7 @@ public class ArtifactLookup {
     if (myDependencyHelper == null) {
       return null;
     }
-    return SNodeOperations.as(myDependencyHelper.artifacts().get(id), MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node"));
+    return SNodeOperations.as(myDependencyHelper.artifacts().get(id), CONCEPTS.BuildLayout_Node$Rb);
   }
 
   protected void cache(Object id, SNode element) {
@@ -104,22 +95,28 @@ public class ArtifactLookup {
       return;
     }
     if (id instanceof String) {
-      myDependencyHelper.putArtifact(as_arca2u_a0a0a0b0q(id, String.class), element);
+      myDependencyHelper.putArtifact(as_arca2u_a0a0a0b0o(id, String.class), element);
     } else if (id instanceof LocalSourcePathArtifact) {
-      myDependencyHelper.putArtifact(as_arca2u_a0a0a0a1a61(id, LocalSourcePathArtifact.class), element);
+      myDependencyHelper.putArtifact(as_arca2u_a0a0a0a1a41(id, LocalSourcePathArtifact.class), element);
     } else if (id instanceof SNode) {
-      myDependencyHelper.putArtifact(as_arca2u_a0a0a0b1a61(id, SNode.class), element);
+      myDependencyHelper.putArtifact(as_arca2u_a0a0a0b1a41(id, SNode.class), element);
     } else {
       throw new IllegalStateException("Unexpected way to identify artifacts:" + String.valueOf(id));
     }
   }
-  private static <T> T as_arca2u_a0a0a0b0q(Object o, Class<T> type) {
+  private static <T> T as_arca2u_a0a0a0b0o(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_arca2u_a0a0a0a1a61(Object o, Class<T> type) {
+  private static <T> T as_arca2u_a0a0a0a1a41(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_arca2u_a0a0a0b1a61(Object o, Class<T> type) {
+  private static <T> T as_arca2u_a0a0a0b1a41(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept BuildRelativePath$Kc = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath");
+    /*package*/ static final SInterfaceConcept BuildLayout_PathElement$ei = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement");
+    /*package*/ static final SConcept BuildLayout_Node$Rb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
   }
 }

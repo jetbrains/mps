@@ -7,74 +7,58 @@ import jetbrains.mps.generator.runtime.MapConfigBase;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import java.util.Collection;
 import jetbrains.mps.generator.runtime.TemplateReductionRule;
-import jetbrains.mps.generator.runtime.TemplateWeavingRule;
+import jetbrains.mps.generator.runtime.LabelDeclaration;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.runtime.TemplateUtil;
-import jetbrains.mps.generator.template.ITemplateGenerator;
-import jetbrains.mps.generator.template.TemplateQueryContext;
+import java.util.Arrays;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
-import jetbrains.mps.generator.runtime.WeaveRuleBase;
-import jetbrains.mps.generator.template.WeavingMappingRuleContext;
-import jetbrains.mps.generator.runtime.NodeWeaveFacility;
-import jetbrains.mps.generator.impl.WeaveContextImpl;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @Generated
 public class Mapping_mc_concept_switch extends MapConfigBase implements TemplateMappingConfiguration {
   private final Collection<TemplateReductionRule> rules;
-  private final Collection<TemplateWeavingRule> weavings;
+  private final Collection<LabelDeclaration> myPrivateLabels;
   public Mapping_mc_concept_switch(@NotNull TemplateModel model) {
-    super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1717381292179408189"), "mc_concept_switch", model, false);
-    rules = TemplateUtil.<TemplateReductionRule>asCollection(new Mapping_mc_concept_switch.ReductionRule0());
-    weavings = TemplateUtil.<TemplateWeavingRule>asCollection(new Mapping_mc_concept_switch.WeavingRule0());
-  }
-  @Override
-  public boolean isApplicable(@NotNull ITemplateGenerator generator) {
-    return QueriesGenerated.mappingConfiguration_Condition_4887314812989114152(new TemplateQueryContext(getMappingNode(), generator));
+    super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1717381292179408189"), "mc_concept_switch", model, false, new MO());
+    rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0());
+    myPrivateLabels = Arrays.asList(this.label("switchVar", true));
   }
   @Override
   public Collection<TemplateReductionRule> getReductionRules() {
     return rules;
   }
+  @NotNull
   @Override
-  public Collection<TemplateWeavingRule> getWeavingRules() {
-    return weavings;
+  public Collection<LabelDeclaration> getLabels() {
+    return myPrivateLabels;
   }
-  public final class ReductionRule0 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6039268229364247704"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, "jetbrains.mps.lang.smodel.structure.ConceptSwitchStatement"), false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6039268229364247704"), CONCEPTS.ConceptSwitchStatement$br, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_ConceptSwitch().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_ConceptSwitch(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7723526804945925519")).apply(context);
       return tlist1;
     }
   }
-  public class WeavingRule0 extends WeaveRuleBase implements TemplateWeavingRule {
-    public WeavingRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7723526804945740913"), MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, "jetbrains.mps.lang.smodel.structure.ConceptSwitchStatement"), false);
-    }
-    @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.baseMappingRule_Condition_75056552358653294(new WeavingMappingRuleContext(context, getRuleNode()));
-    }
-    @NotNull
-    @Override
-    public SNode getContextNode(TemplateExecutionEnvironment environment, TemplateContext context) {
-      return QueriesGenerated.weaving_MappingRule_ContextNodeQuery_7723526804945740915(new WeavingMappingRuleContext(context, getRuleNode()));
-    }
-    @Override
-    public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
-      NodeWeaveFacility.WeaveContext weaveContext = new WeaveContextImpl(outputContextNode, context, WeavingRule0.this);
-      Collection<SNode> tlist1 = environment.prepareWeave(weaveContext, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7723526804945759568")).weaveTemplate(new Template_weave_ConceptSwitchMap());
-      return tlist1 != null && !(tlist1.isEmpty());
-    }
+
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept ConceptSwitchStatement$br = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, "jetbrains.mps.lang.smodel.structure.ConceptSwitchStatement");
   }
 }

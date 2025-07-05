@@ -4,27 +4,41 @@ package jetbrains.mps.lang.editor.forms.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
+import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 
 @MPSLaunch
 public class PlatformCheckbox_CLICK_Toggles_Test extends BaseTransformationTest {
-  @Test
-  public void test_PlatformCheckbox_CLICK_Toggles() throws Throwable {
-    initTest("${mps_home}", "r:9dd38274-05d8-45ba-a41e-44ac52909443(jetbrains.mps.lang.editor.forms.test@tests)");
-    runTest("jetbrains.mps.lang.editor.forms.test.PlatformCheckbox_CLICK_Toggles_Test$TestBody", "testMethod", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(PlatformCheckbox_CLICK_Toggles_Test.class).projectPath(null).modelRef("r:9dd38274-05d8-45ba-a41e-44ac52909443(jetbrains.mps.lang.editor.forms.test@tests)").reopenProject(false).build());
+
+  public PlatformCheckbox_CLICK_Toggles_Test() {
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
-  @MPSLaunch
-  public static class TestBody extends BaseEditorTestBody {
+  @Test
+  public void test_PlatformCheckbox_CLICK_Toggles() throws Throwable {
+    new TestBody(this).testMethod();
+  }
+
+  /*package*/ static class TestBody extends BaseEditorTestBody {
+
+    /*package*/ TestBody(TransformationTest owner) {
+      super(owner);
+    }
+
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("7013563450911367694", "7013563450911367697");
       {
-        int x_y07yvj_a0 = 0;
-        int y_y07yvj_a0 = 0;
+        int x_y07yvj_a0 = 5;
+        int y_y07yvj_a0 = 5;
         Component eventTargetComponent_y07yvj_a0 = processMouseEvent(x_y07yvj_a0, y_y07yvj_a0, MouseEvent.MOUSE_PRESSED);
         processSecondaryMouseEvent(eventTargetComponent_y07yvj_a0, x_y07yvj_a0, y_y07yvj_a0, MouseEvent.MOUSE_RELEASED);
         processSecondaryMouseEvent(eventTargetComponent_y07yvj_a0, x_y07yvj_a0, y_y07yvj_a0, MouseEvent.MOUSE_CLICKED);

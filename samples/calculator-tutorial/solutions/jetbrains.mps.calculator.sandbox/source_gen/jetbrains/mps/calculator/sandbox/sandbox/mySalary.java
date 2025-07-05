@@ -52,10 +52,6 @@ public class mySalary extends JFrame {
     outputField_a.setText("" + (i_a * 10 + i_b * 5));
   }
   public static void main(String[] args) {
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        new mySalary();
-      }
-    });
+    SwingUtilities.invokeLater(() -> new mySalary());
   }
 }

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="8lwu1dazofcg44zq8in8f0adyd50xl" />
+<product version="3" modelHash="et4bxc2kwr28q7noqedox349o3ps4mv">
+  <files names="TypesystemDescriptor.java:check_Order_NonTypesystemRule.java" />
+</product>
 

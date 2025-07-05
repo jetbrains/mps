@@ -2,9 +2,7 @@
 <model ref="r:812dd537-4bc6-4b23-8ff0-eed686398e8b(jetbrains.mps.lang.textGen.dataFlow)">
   <persistence version="9" />
   <languages>
-    <use id="7fa12e9c-b949-4976-b4fa-19accbc320b4" name="jetbrains.mps.lang.dataFlow" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="8" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="5" />
+    <devkit ref="00000000-0000-4000-0000-443879f56b80(jetbrains.mps.devkit.aspect.dataflow)" />
   </languages>
   <imports>
     <import index="2omo" ref="r:de0d3c0c-d049-41cf-bbf9-a920ba513cd3(jetbrains.mps.lang.textGen.structure)" />
@@ -71,7 +69,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -404,22 +402,6 @@
             <property role="TrG5h" value="node" />
             <node concept="3Tqbb2" id="i0vLbiy" role="1tU5fm">
               <ref role="ehGHo" to="2omo:hXbweBj" resolve="OperationDeclaration" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
-  <node concept="3_zdsH" id="5ZG7NfXc0G$">
-    <property role="3GE5qa" value="operation.append.part" />
-    <ref role="3_znuS" to="2omo:5ZG7NfXc0vS" resolve="ReferenceAppendPart" />
-    <node concept="3__wT9" id="5ZG7NfXc0G_" role="3_A6iZ">
-      <node concept="3clFbS" id="5ZG7NfXc0GA" role="2VODD2">
-        <node concept="3AgYrR" id="5ZG7NfXc0GB" role="3cqZAp">
-          <node concept="2OqwBi" id="5ZG7NfXc0GE" role="3Ah4Yx">
-            <node concept="3__QtB" id="5ZG7NfXc0GD" role="2Oq$k0" />
-            <node concept="3TrEf2" id="5ZG7NfXc0GI" role="2OqNvi">
-              <ref role="3Tt5mk" to="2omo:5ZG7NfXc0vV" resolve="reference" />
             </node>
           </node>
         </node>

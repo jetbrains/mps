@@ -21,7 +21,6 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.editor.runtime.cells.KeyMapActionImpl;
 import jetbrains.mps.editor.runtime.cells.KeyMapImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.CellSide;
 import jetbrains.mps.nodeEditor.cellActions.SideTransformSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellActions.SideTransformSubstituteInfo.Side;
 import jetbrains.mps.nodeEditor.cells.DefaultCellInfo;
@@ -36,7 +35,6 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCellContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.openapi.editor.cells.KeyMap;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -61,19 +59,6 @@ public class EditorCell_STHint extends EditorCell_Constant {
   public static EditorCell_STHint getSTHintCell(SNode node, @NotNull EditorComponent editorComponent) {
     EditorCell stHintCell = editorComponent.findCellWithId(node, CELL_ID);
     return stHintCell instanceof EditorCell_STHint ? (EditorCell_STHint) stHintCell : null;
-  }
-
-
-  /**
-   * @deprecated after MPS 3.4 side transform actions will be migrated from actions aspect to editor aspect
-   * so the will be referenced directly from editor and  anchor tag will not be used.
-   * Use {@link EditorCell_STHint#EditorCell_STHint(EditorCell, EditorCell, Side, CellInfo)}  }
-   */
-  @Deprecated
-  @ToRemove(version = 2017.2)
-  public EditorCell_STHint(@NotNull EditorCell bigCell, @NotNull EditorCell anchorCell, @NotNull CellSide oldSide, @NotNull String sideTransformTag,
-                           @Nullable CellInfo restoreSelectionCellInto) {
-    this(bigCell, anchorCell, oldSide == CellSide.LEFT ? Side.LEFT : Side.RIGHT, restoreSelectionCellInto);
   }
 
   public EditorCell_STHint(@NotNull EditorCell bigCell, @NotNull EditorCell anchorCell, @NotNull Side side, @Nullable CellInfo restoreSelectionCellInto) {
@@ -124,7 +109,7 @@ public class EditorCell_STHint extends EditorCell_Constant {
   @Override
   public void changeText(String text) {
     super.changeText(text);
-    if ("".equals(getText())) {
+    if (getText() != null && getText().isEmpty()) {
       SideTransformInfoUtil.removeTransformInfo(getSNode());
     }
   }

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-5hgtd32ha1y1ord0vcbmpfy73fiuba7" />
+<product version="3" modelHash="-by9jqcdp8dyyqlop5gplgxa3fd7qu3e">
+  <files names="FieldWatchpointValue.java" />
+</product>
 
