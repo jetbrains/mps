@@ -2,10 +2,9 @@
 <model ref="r:4a0301da-c964-420c-8e35-486843de9df5(jetbrains.mps.debug.api.evaluation)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="4" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
-    <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
@@ -17,7 +16,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
@@ -34,9 +33,7 @@
         <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
-      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_">
-        <property id="1178608670077" name="isAbstract" index="1EzhhJ" />
-      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
@@ -46,14 +43,14 @@
         <reference id="1107535924139" name="classifier" index="3uigEE" />
         <child id="1109201940907" name="parameter" index="11_B2D" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -62,7 +59,6 @@
     <property role="TrG5h" value="IEvaluationProvider" />
     <node concept="3Tm1VV" id="3SnNvqCaJu2" role="1B3o_S" />
     <node concept="3clFb_" id="3SnNvqCaJu3" role="jymVt">
-      <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="showEvaluationDialog" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="3SnNvqCaJu4" role="1B3o_S" />
@@ -77,7 +73,6 @@
       <node concept="3clFbS" id="3SnNvqCaJu8" role="3clF47" />
     </node>
     <node concept="3clFb_" id="3SnNvqCaJu9" role="jymVt">
-      <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="showEvaluationDialog" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="3SnNvqCaJua" role="1B3o_S" />
@@ -102,7 +97,6 @@
       <node concept="3clFbS" id="3SnNvqCaJuh" role="3clF47" />
     </node>
     <node concept="3clFb_" id="3SnNvqCaJui" role="jymVt">
-      <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="createWatchesPanel" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="3SnNvqCaJuj" role="1B3o_S" />
@@ -115,7 +109,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="3SnNvqCaJun" role="jymVt">
-      <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="canEvaluate" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="3SnNvqCaJuo" role="1B3o_S" />

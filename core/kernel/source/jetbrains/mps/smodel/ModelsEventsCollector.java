@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,73 +15,82 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.smodel.event.SModelChildEvent;
-import jetbrains.mps.smodel.event.SModelDevKitEvent;
+import jetbrains.mps.smodel.event.DependencyChangeBridge;
+import jetbrains.mps.smodel.event.NodeChangeBridge;
 import jetbrains.mps.smodel.event.SModelEvent;
-import jetbrains.mps.smodel.event.SModelFileChangedEvent;
-import jetbrains.mps.smodel.event.SModelImportEvent;
-import jetbrains.mps.smodel.event.SModelLanguageEvent;
-import jetbrains.mps.smodel.event.SModelListener;
-import jetbrains.mps.smodel.event.SModelPropertyEvent;
-import jetbrains.mps.smodel.event.SModelReferenceEvent;
-import jetbrains.mps.smodel.event.SModelRenamedEvent;
-import jetbrains.mps.smodel.event.SModelRootEvent;
-import jetbrains.mps.smodel.loading.ModelLoadingState;
+import jetbrains.mps.smodel.event.SModelReplacedEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelListener;
+import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.mps.openapi.repository.CommandListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 /**
+ * NOTE: USE OF THIS CLASS IS DISCOURAGED AS IT DEALS WITH LEGACY MODEL CHANGE NOTIFICATIONS
+ *
  * This class serves as a composite listener to events which come from multiple models during Command
  *
  * @see org.jetbrains.mps.openapi.module.ModelAccess#executeCommand(Runnable)
  */
 public abstract class ModelsEventsCollector {
-  private List<SModelEvent> myEvents = new ArrayList<SModelEvent>();
-  private SModelListener myModelListener = new SModelDelegateListener();
-  private Set<SModel> myModelsToListen = new LinkedHashSet<SModel>();
+  private final org.jetbrains.mps.openapi.module.ModelAccess myModelAccess;
+
+  private MyModelListener myModelListener = new MyModelListener();
+  private Set<SModel> myModelsToListen = new LinkedHashSet<>();
   private CommandListener myCommandListener = new MyCommandAdapter();
   private volatile boolean myDisposed;
 
   private boolean myIsInCommand;
 
-  public ModelsEventsCollector() {
-    ModelAccess.instance().addCommandListener(myCommandListener);
-    myIsInCommand = ModelAccess.instance().isInsideCommand();
+  /**
+   * Support transition from legacy listeners to contemporary.
+   */
+  public ModelsEventsCollector(@NotNull org.jetbrains.mps.openapi.module.ModelAccess modelAccess) {
+    myModelAccess = modelAccess;
+    // XXX In fact, I don't see a reason to care about isInCommand state (and keep isCommandAction).
+    myIsInCommand = modelAccess.isCommandAction();
+    myModelAccess.addCommandListener(myCommandListener);
   }
 
   public void startListeningToModel(@NotNull SModel sm) {
     checkNotDisposed();
-    //assert !myModelsToListen.contains(sm) : "EventsCollector was already configured to listen for changes in this model descriptor: " + sm.getSModelReference().toString();
+    assert !myModelsToListen.contains(sm) :
+        "EventsCollector was already configured to listen for changes in this model descriptor: " + sm.getReference().toString();
     myModelsToListen.add(sm);
-    ((SModelInternal) sm).addModelListener(myModelListener);
+    sm.addModelListener(myModelListener);
+    sm.addChangeListener(myModelListener);
   }
 
   public void stopListeningToModel(@NotNull SModel sm) {
     checkNotDisposed();
 
-    ((SModelInternal) sm).removeModelListener(myModelListener);
+    sm.removeChangeListener(myModelListener);
+    sm.removeModelListener(myModelListener);
     myModelsToListen.remove(sm);
   }
 
   public void flush() {
     checkNotDisposed();
 
-    if (myEvents.isEmpty()) return;
-    ModelAccess.instance().runWriteAction(new Runnable() {
-      @Override
-      public void run() {
-        List<SModelEvent> wrappedEvents = Collections.unmodifiableList(myEvents);
-        myEvents = new ArrayList<SModelEvent>();
-        eventsHappened(wrappedEvents);
-      }
-    });
+    final List<SModelEvent> wrappedEvents = myModelListener.flush();
+
+    if (wrappedEvents.isEmpty()) {
+      return;
+    }
+
+    if (myModelAccess.canWrite()) {
+      // in most cases, we are inside commandFinished() which is part of write action already
+      eventsHappened(wrappedEvents);
+    } else {
+      // there is code in editor that doesn flush() from unidentified state.
+      myModelAccess.runWriteAction(() -> eventsHappened(wrappedEvents));
+    }
   }
 
   /**
@@ -91,19 +100,16 @@ public abstract class ModelsEventsCollector {
 
   protected void clearCollectedEvents() {
     checkNotDisposed();
-
-    if (myEvents.isEmpty()) return;
-    ModelAccess.assertLegalWrite();
-    myEvents.clear();
+    myModelListener.reset();
   }
 
   public void dispose() {
     checkNotDisposed();
 
-    for (SModel sm : new LinkedHashSet<SModel>(myModelsToListen)) {
+    for (SModel sm : new ArrayList<>(myModelsToListen)) {
       stopListeningToModel(sm);
     }
-    ModelAccess.instance().removeCommandListener(myCommandListener);
+    myModelAccess.removeCommandListener(myCommandListener);
     myDisposed = true;
   }
 
@@ -119,8 +125,8 @@ public abstract class ModelsEventsCollector {
       if (myDisposed) {
         return;
       }
-      myEvents.clear();
-      myIsInCommand = true;
+      myModelListener.reset();
+      myModelListener.active(true);
     }
 
     @Override
@@ -129,131 +135,40 @@ public abstract class ModelsEventsCollector {
         return;
       }
       flush();
-      myIsInCommand = false;
+      myModelListener.active(false);
     }
   }
 
-  private class SModelDelegateListener implements SModelListener {
+  private class MyModelListener extends NodeChangeBridge implements SNodeChangeListener, SModelListener {
+
+    /*package*/  List<SModelEvent> flush() {
+      return drainToList();
+    }
+
+    /*package*/ void reset() {
+      // == myEvents.clear(); + O(n) for no-op iteration
+      drain((e) -> {});
+    }
+
+
     @Override
-    public void languageAdded(SModelLanguageEvent event) {
-      listenerInvoked(event);
+    public void modelReplaced(SModel model) {
+      // XXX in fact, MEC never dispatched SModelReplacedEvent, which was introduced into set of SModelEvent solely for Highlighter
+      //     and there used to be dedicated code in highlighter to inject this event, while MEC never did that, but I decided to
+      //     add one now - the only place we use this MEC is Editor updater, where UpdaterModelListener/ModelEventsVisitor does visit
+      //     this sort of events. I hope to throw this code away some day, anyway.
+      recordEvents(Stream.of(new SModelReplacedEvent(model)));
     }
 
     @Override
-    public void languageRemoved(SModelLanguageEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void importAdded(SModelImportEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void importRemoved(SModelImportEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void devkitAdded(SModelDevKitEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void devkitRemoved(SModelDevKitEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void rootAdded(SModelRootEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void rootRemoved(SModelRootEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void beforeRootRemoved(SModelRootEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void beforeModelRenamed(SModelRenamedEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void modelRenamed(SModelRenamedEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void beforeModelFileChanged(SModelFileChangedEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void modelFileChanged(SModelFileChangedEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void propertyChanged(SModelPropertyEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void childAdded(SModelChildEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void childRemoved(SModelChildEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void beforeChildRemoved(SModelChildEvent event) {
-    }
-
-    @Override
-    public void referenceAdded(SModelReferenceEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void referenceRemoved(SModelReferenceEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void modelSaved(SModel sm) {
-    }
-
-    @Override
-    public void modelLoadingStateChanged(SModel sm, ModelLoadingState newState) {
-    }
-
-    @Override
-    public void beforeModelDisposed(SModel sm) {
-    }
-
-    @NotNull
-    @Override
-    public SModelListenerPriority getPriority() {
-      return SModelListenerPriority.CLIENT;
-    }
-
-    private void listenerInvoked(SModelEvent event) {
-      checkNotDisposed();
-
-      if (event != null) {
-        if (!myIsInCommand && !(event instanceof SModelFileChangedEvent)) {
-          throw new IllegalStateException("Event outside of a command");
-        }
-        myEvents.add(event);
+    public void dependenciesChanged(SModel model, DependencyChange change) {
+      if (!(isActive())) {
+        return;
+      }
+      if (change instanceof DependencyChangeBridge) {
+        recordEvents(((DependencyChangeBridge) change).originalEvents());
+      } else {
+        assert false : "FIXME implement visitor for DependencyChange";
       }
     }
   }

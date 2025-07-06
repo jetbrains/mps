@@ -2,18 +2,14 @@
 <model ref="r:00000000-0000-4000-0000-011c89590320(jetbrains.mps.lang.script.typesystem)">
   <persistence version="9" />
   <languages>
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="0" />
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="4" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="4" />
-    <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
+    <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
   <imports>
     <import index="tp33" ref="r:00000000-0000-4000-0000-011c89590323(jetbrains.mps.lang.script.structure)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="nvof" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.script.runtime(MPS.Core/)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" />
+    <import index="nvof" ref="3330376f-82a0-45ed-ae50-a320ee8b0b63/java:jetbrains.mps.lang.script.runtime(jetbrains.mps.lang.script.rt/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -50,7 +46,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
       </concept>
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
@@ -64,7 +60,7 @@
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
-      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ng" index="2c44t0">
+      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ngI" index="2c44t0">
         <child id="1196350785111" name="expression" index="2c44t1" />
       </concept>
       <concept id="1196350785117" name="jetbrains.mps.lang.quotation.structure.ReferenceAntiquotation" flags="ng" index="2c44tb" />
@@ -79,13 +75,13 @@
       <concept id="1175517767210" name="jetbrains.mps.lang.typesystem.structure.ReportErrorStatement" flags="nn" index="2MkqsV">
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
       </concept>
-      <concept id="1227096774658" name="jetbrains.mps.lang.typesystem.structure.MessageStatement" flags="ng" index="2OEH$v">
-        <child id="1227096802790" name="nodeToReport" index="2OEOjV" />
-      </concept>
       <concept id="1195213580585" name="jetbrains.mps.lang.typesystem.structure.AbstractCheckingRule" flags="ig" index="18hYwZ">
         <child id="1195213635060" name="body" index="18ibNy" />
       </concept>
       <concept id="1195214364922" name="jetbrains.mps.lang.typesystem.structure.NonTypesystemRule" flags="ig" index="18kY7G" />
+      <concept id="3937244445246642777" name="jetbrains.mps.lang.typesystem.structure.AbstractReportStatement" flags="ng" index="1urrMJ">
+        <child id="3937244445246642781" name="nodeToReport" index="1urrMF" />
+      </concept>
       <concept id="1176543928247" name="jetbrains.mps.lang.typesystem.structure.IsSubtypeExpression" flags="nn" index="3JuTUA">
         <child id="1176543945045" name="subtypeExpression" index="3JuY14" />
         <child id="1176543950311" name="supertypeExpression" index="3JuZjQ" />
@@ -135,10 +131,10 @@
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="3364660638048049745" name="jetbrains.mps.lang.core.structure.LinkAttribute" flags="ng" index="A9Btn">
-        <property id="1757699476691236116" name="linkRole" index="2qtEX8" />
+        <property id="1757699476691236116" name="role_DebugInfo" index="2qtEX8" />
         <property id="1341860900488019036" name="linkId" index="P3scX" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -166,7 +162,7 @@
               </node>
             </node>
             <node concept="3TrEf2" id="h8AhK3Y" role="2OqNvi">
-              <ref role="3Tt5mk" to="tp33:h8_XDD_" />
+              <ref role="3Tt5mk" to="tp33:h8_XDD_" resolve="affectedInstanceConcept" />
             </node>
           </node>
         </node>
@@ -212,7 +208,7 @@
                 <ref role="1YBMHb" node="2ggmC1WtpcZ" resolve="part" />
               </node>
               <node concept="3TrEf2" id="2ggmC1WtqGw" role="2OqNvi">
-                <ref role="3Tt5mk" to="tp33:2ggmC1WtnKJ" />
+                <ref role="3Tt5mk" to="tp33:2ggmC1WtnKJ" resolve="factoryMethod" />
               </node>
             </node>
             <node concept="3JvlWi" id="2ggmC1WtqGU" role="2OqNvi" />
@@ -222,9 +218,6 @@
       <node concept="3clFbJ" id="2ggmC1WtqIl" role="3cqZAp">
         <node concept="3clFbS" id="2ggmC1WtqIm" role="3clFbx">
           <node concept="2MkqsV" id="2ggmC1WtqIw" role="3cqZAp">
-            <node concept="1YBJjd" id="2ggmC1WtqI$" role="2OEOjV">
-              <ref role="1YBMHb" node="2ggmC1WtpcZ" resolve="part" />
-            </node>
             <node concept="3cpWs3" id="2ggmC1Wtr0k" role="2MkJ7o">
               <node concept="Xl_RD" id="2ggmC1Wtr0h" role="3uHU7w">
                 <property role="Xl_RC" value="\&quot;)" />
@@ -242,6 +235,9 @@
                   </node>
                 </node>
               </node>
+            </node>
+            <node concept="1YBJjd" id="2ggmC1WtqI$" role="1urrMF">
+              <ref role="1YBMHb" node="2ggmC1WtpcZ" resolve="part" />
             </node>
           </node>
         </node>
@@ -277,7 +273,7 @@
             <node concept="10Nm6u" id="7Ndp1gLjBRY" role="3uHU7w" />
             <node concept="2OqwBi" id="6SPCoQxIKxp" role="3uHU7B">
               <node concept="3TrEf2" id="6SPCoQxILwX" role="2OqNvi">
-                <ref role="3Tt5mk" to="tp33:49356IxH1a1" />
+                <ref role="3Tt5mk" to="tp33:49356IxH1a1" resolve="oldMethodSpecification" />
               </node>
               <node concept="1YBJjd" id="6SPCoQxIKqq" role="2Oq$k0">
                 <ref role="1YBMHb" node="6OHUDSnCKi9" resolve="pullUpMethod" />
@@ -287,7 +283,7 @@
           <node concept="3clFbC" id="6SPCoQxIKeh" role="3uHU7B">
             <node concept="2OqwBi" id="6SPCoQxIIsm" role="3uHU7B">
               <node concept="3TrEf2" id="6SPCoQxIJrE" role="2OqNvi">
-                <ref role="3Tt5mk" to="tp33:3FxWUsVB_nq" />
+                <ref role="3Tt5mk" to="tp33:3FxWUsVB_nq" resolve="newMethodDeclaration" />
               </node>
               <node concept="1YBJjd" id="6SPCoQxIIlB" role="2Oq$k0">
                 <ref role="1YBMHb" node="6OHUDSnCKi9" resolve="pullUpMethod" />
@@ -301,7 +297,7 @@
             <node concept="Xl_RD" id="6OHUDSnCNOu" role="2MkJ7o">
               <property role="Xl_RC" value="Either old or new method should be specified" />
             </node>
-            <node concept="1YBJjd" id="6OHUDSnCM8C" role="2OEOjV">
+            <node concept="1YBJjd" id="6OHUDSnCM8C" role="1urrMF">
               <ref role="1YBMHb" node="6OHUDSnCKi9" resolve="pullUpMethod" />
             </node>
           </node>

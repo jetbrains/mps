@@ -19,6 +19,7 @@ import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 
 import javax.swing.Icon;
 
+@Deprecated(forRemoval = true)
 public class IconNodeUpdate extends NodeUpdate {
   private Icon myIcon;
 
@@ -28,7 +29,7 @@ public class IconNodeUpdate extends NodeUpdate {
 
   @Override
   public boolean needed(MPSTreeNode node) {
-    return node.getIcon(false) != myIcon;
+    return node.getIcon() != myIcon;
   }
 
   @Override

@@ -4,39 +4,74 @@ package testSpaceCompletion.structure;
 
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspectBase;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_ABC = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ABCDE = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ABCDEF = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ABCDEG = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_ABCEEG = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_BAC = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_BCA = new ConceptPresentationBuilder().create();
+  private ConceptPresentation props_TABC;
+  private ConceptPresentation props_TABCDE;
+  private ConceptPresentation props_TABCDEF;
+  private ConceptPresentation props_TABCDEG;
+  private ConceptPresentation props_TABCEEG;
+  private ConceptPresentation props_TBAC;
+  private ConceptPresentation props_TBCA;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
-      case 0:
-        return props_ABC;
-      case 1:
-        return props_ABCDE;
-      case 2:
-        return props_ABCDEF;
-      case 3:
-        return props_ABCDEG;
-      case 4:
-        return props_ABCEEG;
-      case 5:
-        return props_BAC;
-      case 6:
-        return props_BCA;
+      case LanguageConceptSwitch.TABC:
+        if (props_TABC == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("tabc");
+          props_TABC = cpb.create();
+        }
+        return props_TABC;
+      case LanguageConceptSwitch.TABCDE:
+        if (props_TABCDE == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("tabc de");
+          props_TABCDE = cpb.create();
+        }
+        return props_TABCDE;
+      case LanguageConceptSwitch.TABCDEF:
+        if (props_TABCDEF == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("tabc de f");
+          props_TABCDEF = cpb.create();
+        }
+        return props_TABCDEF;
+      case LanguageConceptSwitch.TABCDEG:
+        if (props_TABCDEG == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("tabc de g");
+          props_TABCDEG = cpb.create();
+        }
+        return props_TABCDEG;
+      case LanguageConceptSwitch.TABCEEG:
+        if (props_TABCEEG == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("tabc Ee G");
+          props_TABCEEG = cpb.create();
+        }
+        return props_TABCEEG;
+      case LanguageConceptSwitch.TBAC:
+        if (props_TBAC == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("tbac");
+          props_TBAC = cpb.create();
+        }
+        return props_TBAC;
+      case LanguageConceptSwitch.TBCA:
+        if (props_TBCA == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("tbca");
+          props_TBCA = cpb.create();
+        }
+        return props_TBCA;
     }
-    throw new IllegalStateException("Unknown concept " + c);
+    return null;
   }
 }

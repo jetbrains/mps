@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1160998861373:jetbrains.mps.baseLanguage.structure.AssertStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
+  <root nodeRef="r:dc1e5ac6-993e-4ca9-bf73-f993261504b8(testModelRenaming.tests@tests)/1432101570225893008">
+    <file name="RenameModel_Test.java">
+      <node id="1432101570225893008" at="34,29,35,60" concept="9" />
+      <node id="1432101570225893106" at="39,51,40,42" concept="2" />
+      <node id="1432101570225956383" at="43,64,44,55" concept="2" />
+      <node id="1432101570225893008" at="49,52,50,19" concept="9" />
+      <node id="1432101570225893008" at="54,36,55,25" concept="2" />
+      <node id="1432101570225893106" at="58,53,59,22" concept="2" />
+      <node id="1432101570225932562" at="60,30,61,66" concept="5" />
+      <node id="433099870934571333" at="62,36,63,17" concept="6" />
+      <node id="433099870934572109" at="64,9,65,0" concept="7" />
+      <node id="1432101570225950927" at="65,0,66,70" concept="5" />
+      <node id="1432101570225951824" at="66,70,67,58" concept="2" />
+      <node id="1432101570227606723" at="67,58,68,117" concept="5" />
+      <node id="1432101570227606739" at="68,117,69,99" concept="2" />
+      <node id="1432101570227606252" at="69,99,70,0" concept="7" />
+      <node id="1432101570225928497" at="70,0,71,82" concept="2" />
+      <node id="1432101570227607503" at="71,82,72,0" concept="7" />
+      <node id="1432101570225955002" at="72,0,73,70" concept="5" />
+      <node id="1432101570225955008" at="73,70,74,61" concept="2" />
+      <node id="1432101570227602138" at="74,61,75,117" concept="5" />
+      <node id="1432101570227603662" at="75,117,76,102" concept="2" />
+      <node id="1432101570225956383" at="79,66,80,22" concept="2" />
+      <node id="433099870934575183" at="81,30,82,66" concept="5" />
+      <node id="433099870934575191" at="83,36,84,17" concept="6" />
+      <node id="433099870934574217" at="85,9,86,0" concept="7" />
+      <node id="1432101570225956411" at="86,0,87,70" concept="5" />
+      <node id="1432101570225956417" at="87,70,88,58" concept="2" />
+      <node id="1432101570227648306" at="88,58,89,117" concept="5" />
+      <node id="1432101570227648322" at="89,117,90,99" concept="2" />
+      <node id="1432101570227648023" at="90,99,91,0" concept="7" />
+      <node id="1432101570225956420" at="91,0,92,79" concept="2" />
+      <node id="1432101570227648916" at="92,79,93,0" concept="7" />
+      <node id="1432101570225956429" at="93,0,94,70" concept="5" />
+      <node id="1432101570225956435" at="94,70,95,58" concept="2" />
+      <node id="1432101570227650849" at="95,58,96,117" concept="5" />
+      <node id="1432101570227650865" at="96,117,97,99" concept="2" />
+      <node id="743317908309870634" at="101,58,102,62" concept="6" />
+      <node id="433099870933490873" at="104,62,105,100" concept="5" />
+      <node id="433099870934609064" at="106,31,107,20" concept="6" />
+      <node id="433099870934615038" at="108,7,109,0" concept="7" />
+      <node id="433099870933358734" at="109,0,110,67" concept="5" />
+      <node id="433099870933558925" at="110,67,111,77" concept="5" />
+      <node id="433099870933535747" at="111,77,112,74" concept="5" />
+      <node id="433099870933502942" at="112,74,113,127" concept="5" />
+      <node id="433099870933524201" at="113,127,114,0" concept="7" />
+      <node id="433099870933727251" at="114,0,115,74" concept="5" />
+      <node id="433099870933967169" at="115,74,116,130" concept="5" />
+      <node id="433099870934051378" at="116,130,117,66" concept="5" />
+      <node id="433099870934626055" at="117,66,118,0" concept="7" />
+      <node id="433099870933737759" at="118,0,119,48" concept="5" />
+      <node id="433099870933751891" at="119,48,120,60" concept="5" />
+      <node id="433099870933766989" at="120,60,121,0" concept="7" />
+      <node id="433099870933772981" at="122,11,123,59" concept="5" />
+      <node id="433099870934681024" at="123,59,124,66" concept="5" />
+      <node id="433099870933135120" at="124,66,125,39" concept="2" />
+      <node id="3420873454562183634" at="125,39,126,130" concept="0" />
+      <node id="3420873454557741209" at="126,130,127,72" concept="2" />
+      <node id="433099870933837444" at="127,72,128,18" concept="2" />
+      <node id="433099870934519477" at="128,18,129,28" concept="2" />
+      <node id="433099870934617530" at="129,28,130,18" concept="6" />
+      <node id="433099870933801379" at="131,50,132,28" concept="2" />
+      <node id="433099870933776972" at="132,28,133,94" concept="2" />
+      <node id="433099870934035051" at="133,94,134,20" concept="6" />
+      <node id="1432101570225893008" at="31,0,33,0" concept="8" trace="ourParametersCacheExtension" />
+      <node id="1432101570225893008" at="34,0,37,0" concept="1" trace="RenameModel_Test#()V" />
+      <node id="1432101570225893008" at="49,0,52,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="433099870934569273" at="61,66,64,9" concept="3" />
+      <node id="433099870934575189" at="82,66,85,9" concept="3" />
+      <node id="743317908309865375" at="101,0,104,0" concept="4" trace="fileNameWithoutPrefix#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="433099870934595184" at="105,100,108,7" concept="3" />
+      <node id="1432101570225893106" at="38,0,42,0" concept="4" trace="test_renameModel#()V" />
+      <node id="1432101570225956383" at="42,0,46,0" concept="4" trace="test_caseSensitiveRenameModel#()V" />
+      <node id="1432101570225893008" at="53,0,57,0" concept="4" trace="initTestNodes#()V" />
+      <node id="433099870933770734" at="121,0,135,7" concept="10" />
+      <node id="1432101570225893106" at="59,22,77,9" concept="2" />
+      <node id="1432101570225956383" at="80,22,98,9" concept="2" />
+      <node id="1432101570225893106" at="58,0,79,0" concept="4" trace="test_renameModel#()V" />
+      <node id="1432101570225956383" at="79,0,100,0" concept="4" trace="test_caseSensitiveRenameModel#()V" />
+      <node id="433099870934555409" at="104,0,137,0" concept="4" trace="initializeModel#(Ljava/lang/String;)Ljetbrains/mps/extapi/model/EditableSModelBase;" />
+      <scope id="1432101570225893008" at="34,29,35,60" />
+      <scope id="1432101570225893106" at="39,51,40,42" />
+      <scope id="1432101570225956383" at="43,64,44,55" />
+      <scope id="1432101570225893008" at="49,52,50,19" />
+      <scope id="1432101570225893008" at="54,36,55,25" />
+      <scope id="433099870934569275" at="62,36,63,17" />
+      <scope id="433099870934575190" at="83,36,84,17" />
+      <scope id="743317908309865375" at="101,58,102,62" />
+      <scope id="433099870934595186" at="106,31,107,20" />
+      <scope id="1432101570225893008" at="34,0,37,0" />
+      <scope id="1432101570225893008" at="49,0,52,0">
+        <var name="owner" id="1432101570225893008" />
+      </scope>
+      <scope id="743317908309865375" at="101,0,104,0">
+        <var name="fileName" id="743317908309870167" />
+      </scope>
+      <scope id="433099870933770738" at="131,50,134,20" />
+      <scope id="1432101570225893106" at="38,0,42,0" />
+      <scope id="1432101570225956383" at="42,0,46,0" />
+      <scope id="1432101570225893008" at="53,0,57,0" />
+      <scope id="433099870933770737" at="131,7,135,7">
+        <var name="e" id="433099870933770739" />
+      </scope>
+      <scope id="433099870933770735" at="122,11,130,18">
+        <var name="createdModel" id="433099870933772982" />
+        <var name="em" id="433099870934681025" />
+      </scope>
+      <scope id="1432101570225893106" at="60,30,76,102">
+        <var name="modelToRename" id="1432101570225932563" />
+        <var name="newFileName" id="1432101570227602139" />
+        <var name="newName" id="1432101570225955003" />
+        <var name="oldFileName" id="1432101570227606724" />
+        <var name="oldName" id="1432101570225950928" />
+      </scope>
+      <scope id="1432101570225956383" at="81,30,97,99">
+        <var name="modelToRename" id="433099870934575184" />
+        <var name="newFileName" id="1432101570227650850" />
+        <var name="newName" id="1432101570225956430" />
+        <var name="oldFileName" id="1432101570227648307" />
+        <var name="oldName" id="1432101570225956412" />
+      </scope>
+      <scope id="1432101570225893106" at="58,53,77,9" />
+      <scope id="1432101570225956383" at="79,66,98,9" />
+      <scope id="1432101570225893106" at="58,0,79,0" />
+      <scope id="1432101570225956383" at="79,0,100,0" />
+      <scope id="433099870934555409" at="104,62,135,7">
+        <var name="basePath" id="433099870933558926" />
+        <var name="ds" id="433099870933737760" />
+        <var name="iFile" id="433099870934051379" />
+        <var name="modelFile" id="433099870933967170" />
+        <var name="mpsProject" id="433099870933490874" />
+        <var name="name" id="433099870933751892" />
+        <var name="persistence" id="433099870933727252" />
+        <var name="producer" id="433099870933358735" />
+        <var name="solutionsDirAbsolutePath" id="433099870933535748" />
+        <var name="testSolution" id="433099870933502943" />
+      </scope>
+      <scope id="433099870934555409" at="104,0,137,0">
+        <var name="testId" id="3420873454557909382" />
+      </scope>
+      <unit id="1432101570225893008" at="47,0,138,0" name="testModelRenaming.tests.RenameModel_Test$TestBody" />
+      <unit id="1432101570225893008" at="29,0,139,0" name="testModelRenaming.tests.RenameModel_Test" />
+    </file>
+  </root>
+</debug-info>
+

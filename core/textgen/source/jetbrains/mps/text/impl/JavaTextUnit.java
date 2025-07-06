@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,28 @@
  */
 package jetbrains.mps.text.impl;
 
+import jetbrains.mps.components.ComponentHost;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
+import java.nio.charset.StandardCharsets;
+
 /**
  * Holds stuff relevant to generated java files, like debug/scope positions
+ * Not actually in use, left as a reminder about idea to give language's TextGen author control
+ * over TU instantiation (breakDownToUnits), so that they could instantiate language-aware TU implementation
+ * (e.g. pre-initialized with context objects or encoding enforced)
+ * XXX I wonder if there's a reason to get TextUnitXML (can I get use of Element/Document knowledge?)
  * @author Artem Tikhomirov
  */
 public class JavaTextUnit extends RegularTextUnit {
+
+  @Deprecated(forRemoval = true, since = "2023.3")
   public JavaTextUnit(@NotNull SNode root, @NotNull String filename) {
     super(root, filename);
+  }
+  public JavaTextUnit(@NotNull SNode root, @NotNull String filename, @NotNull ComponentHost mpsPlatform) {
+    super(root, filename, null, StandardCharsets.UTF_8, mpsPlatform);
   }
 }
 

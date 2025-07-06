@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-105xkiif42lclggdsaahc9s519bffj6" />
+<product version="3" modelHash="hcge1qchcfj8mao9rq1n9zz9n4q0et">
+  <files names="ModelCreateHelper.java:NewGeneratorDialog.java:NewModelDialog.java:NewModelDialogDefaultSettings.java:NewModelDialogSettings.java" />
+</product>
 

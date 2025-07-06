@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,37 +49,28 @@ public class ProjectPaneNavigator {
   }
 
   public void select(@NotNull final SNodeReference node) {
-    myProject.getModelAccess().runReadInEDT(new Runnable() {
-      @Override
-      public void run() {
-        SNode n = node.resolve(myProject.getRepository());
-        if (n != null) {
-          NavigationSupport.getInstance().selectInTree(myProject, n, myFocus);
-        }
+    myProject.getModelAccess().runReadInEDT(() -> {
+      SNode n = node.resolve(myProject.getRepository());
+      if (n != null) {
+        NavigationSupport.getInstance(myProject).selectInTree(myProject, n, myFocus);
       }
     });
   }
 
   public void select(@NotNull final SModelReference model) {
-    myProject.getModelAccess().runReadInEDT(new Runnable() {
-      @Override
-      public void run() {
-        SModel m = model.resolve(myProject.getRepository());
-        if (m != null) {
-          NavigationSupport.getInstance().selectInTree(myProject, m, myFocus);
-        }
+    myProject.getModelAccess().runReadInEDT(() -> {
+      SModel m = model.resolve(myProject.getRepository());
+      if (m != null) {
+        NavigationSupport.getInstance(myProject).selectInTree(myProject, m, myFocus);
       }
     });
   }
 
   public void select(@NotNull final SModuleReference module) {
-    myProject.getModelAccess().runReadInEDT(new Runnable() {
-      @Override
-      public void run() {
-        SModule m = module.resolve(myProject.getRepository());
-        if (m != null) {
-          NavigationSupport.getInstance().selectInTree(myProject, m, myFocus);
-        }
+    myProject.getModelAccess().runReadInEDT(() -> {
+      SModule m = module.resolve(myProject.getRepository());
+      if (m != null) {
+        NavigationSupport.getInstance(myProject).selectInTree(myProject, m, myFocus);
       }
     });
   }

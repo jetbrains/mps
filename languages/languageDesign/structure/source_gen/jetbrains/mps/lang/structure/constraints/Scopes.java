@@ -5,34 +5,91 @@ package jetbrains.mps.lang.structure.constraints;
 import jetbrains.mps.scope.Scope;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.scope.EmptyScope;
-import jetbrains.mps.scope.FilteringScope;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.scope.VisibleDepsSearchScope;
+import jetbrains.mps.scope.FilteringScope;
+import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
+import jetbrains.mps.scope.ModelsScope;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Scopes {
   public static Scope forConceptsInSameLanguage(SModel model, SAbstractConcept metaConcept) {
-    return new FullyQualifiedNamedElementsScope(Concepts.getConceptsInSameLanguage(model, metaConcept));
+    Language language = as_kflra7_a0a0a0(model.getModule(), Language.class);
+    if (language == null) {
+      return new EmptyScope();
+    }
+    return structureRootsScope(Sequence.<Language>singleton(language), metaConcept);
   }
   public static Scope forConcepts(SNode contextNode, SAbstractConcept metaConcept) {
-    return new FullyQualifiedNamedElementsScope(Concepts.getAvailableConcepts(contextNode, metaConcept));
+    return forConcepts(SNodeOperations.getModel(contextNode), metaConcept);
   }
+  public static Scope forConcepts(SModel contextModel, SAbstractConcept metaConcept) {
+    if (contextModel == null) {
+      return new EmptyScope();
+    }
+    SModule contextModule = contextModel.getModule();
+    if (contextModule == null) {
+      return new EmptyScope();
+    }
+    Iterable<SModule> visibleModules = new VisibleDepsSearchScope(contextModule.getRepository(), contextModule).getModules();
+
+    return structureRootsScope(Sequence.fromIterable(visibleModules).ofType(Language.class), metaConcept);
+  }
+
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.lang.structure.constraints.Scopes#forConcepts(SNode, SAbstractConcept) } instead
+   */
+  @Deprecated(forRemoval = true, since = "2023.2")
   public static Scope forLanguageConcepts(SNode contextNode, SAbstractConcept metaConcept) {
-    return new FullyQualifiedNamedElementsScope(Concepts.getAvailableLanguageConcepts(contextNode, metaConcept));
+    return forConcepts(contextNode, metaConcept);
+  }
+  public static Scope forSubconcepts(SNode contextNode, final SNode conceptNode) {
+    if (conceptNode == null) {
+      return new EmptyScope();
+    }
+
+    return new FilteringScope(forConcepts(contextNode, CONCEPTS.AbstractConceptDeclaration$KA)) {
+      @Override
+      public boolean isExcluded(SNode node) {
+        return !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), conceptNode));
+      }
+    };
   }
   public static Scope forConceptDeclarationExtends(final SNode conceptNode, SNode contextNode) {
     if (conceptNode == null) {
       return new EmptyScope();
     }
 
-    return new FilteringScope(forConcepts(contextNode, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"))) {
+    return new FilteringScope(forConcepts(contextNode, CONCEPTS.ConceptDeclaration$gH)) {
       @Override
       public boolean isExcluded(SNode node) {
-        return node == conceptNode || Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(SNodeOperations.cast(node, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration")), ((boolean) true))).contains(conceptNode);
+        return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH), conceptNode);
       }
     };
+  }
+
+  /**
+   * 
+   * @return Scope that covers definite roots of structure aspect
+   */
+  /*package*/ static Scope structureRootsScope(Iterable<Language> languages, SAbstractConcept metaConcept) {
+    return new ModelsScope(Sequence.fromIterable(languages).select((it) -> SModuleOperations.getAspect(it, "structure")).where(new NotNullWhereFilter()), true, metaConcept);
+  }
+  private static <T> T as_kflra7_a0a0a0(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
   }
 }

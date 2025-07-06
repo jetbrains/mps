@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="9jce4snsrz5wkbzdux8doo2gffjckmw" />
+<product version="3" modelHash="-7c2copyc7te706lnyvh0x1ki5z6yge2">
+  <files names="CopyModuleHelper.java:DescriptorCopyOrganizer.java" />
+</product>
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package org.jetbrains.mps.openapi.language;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -25,26 +24,32 @@ import org.jetbrains.mps.openapi.model.SNode;
  */
 public interface SReferenceLink extends SAbstractLink {
   /**
+   * @deprecated use {@link SNamedElement#getName()} instead
    * Returns a name of this reference
    * Though in 3.2 the name is still used as id in some cases, it should be treated only as a user-friendly text representation.
    */
-  @Deprecated //use SConceptFeature.getPresentableName
+  @Deprecated
   //ToRemove after 3.3
-  String getRoleName();
+  default String getRoleName() {
+    return getName();
+  }
 
   /**
    * Instance nodes can contain more than one target element.
    */
   @Deprecated
   //always false
-  boolean isMultiple();
+  default boolean isMultiple() {
+    return false;
+  }
 
   //left for compatibility with "interpreting" code
   //use SReferenceLink in code instead
   @Nullable
-  @Deprecated
-  @ToRemove(version = 3.4)
-  SNode getDeclarationNode();
+  @Deprecated(since = "3.4", forRemoval = true)
+  default SNode getDeclarationNode() {
+    return null;
+  }
 
   /**
    * Builds and returns a scope for this reference in the given context.

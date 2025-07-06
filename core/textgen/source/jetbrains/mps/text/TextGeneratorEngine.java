@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.text;
 
+import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.Message;
@@ -28,25 +30,23 @@ import jetbrains.mps.smodel.TrivialModelDescriptor;
 import jetbrains.mps.text.TextUnit.Status;
 import jetbrains.mps.text.impl.ModelOutline;
 import jetbrains.mps.text.impl.RegularTextUnit;
-import jetbrains.mps.text.impl.RegularTextUnit2;
 import jetbrains.mps.text.impl.TextGenRegistry;
-import jetbrains.mps.text.rt.TextGenAspectBase;
 import jetbrains.mps.text.rt.TextGenAspectDescriptor;
 import jetbrains.mps.util.NamedThreadFactory;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -62,9 +62,27 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class TextGeneratorEngine {
   private final ExecutorService myExecutor;
   private final IMessageHandler myMessages;
+  private final ComponentHost myPlatform;
 
+  /**
+   * @deprecated use {@link #TextGeneratorEngine(IMessageHandler, ComponentHost)} constructor
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public TextGeneratorEngine(@NotNull IMessageHandler messageHandler) {
+    this(messageHandler, new ComponentHost() {
+      @Override
+      public <T extends CoreComponent> @Nullable T findComponent(@NotNull Class<T> componentClass) {
+        if (componentClass == TextGenRegistry.class) {
+          return componentClass.cast(TextGenRegistry.getInstance());
+        }
+        return null;
+      }
+    });
+  }
+
+  public TextGeneratorEngine(@NotNull IMessageHandler messageHandler, ComponentHost mpsPlatform) {
     myMessages = messageHandler;
+    myPlatform = mpsPlatform;
     // availableProcessors()*2 ?
     myExecutor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors(), new NamedThreadFactory("textgen-thread-"));
   }
@@ -79,14 +97,13 @@ public final class TextGeneratorEngine {
    * @return future result, use {@link Future#get()} to retrieve
    */
   public Future<TextGenResult> generateText(@NotNull final SModel model) {
-    final ArrayBlockingQueue<TextGenResult> queue = new ArrayBlockingQueue<TextGenResult>(1);
+    final ArrayBlockingQueue<TextGenResult> queue = new ArrayBlockingQueue<>(1);
     schedule(model, queue);
-    return new FutureTask<TextGenResult>(new Callable<TextGenResult>() {
-      @Override
-      public TextGenResult call() throws Exception {
-        return queue.take();
-      }
-    });
+    return myExecutor.submit(queue::take);
+  }
+
+  public void schedule(@NotNull final SModel model, @NotNull final BlockingQueue<TextGenResult> resultQueue) {
+    schedule(model, resultQueue, null);
   }
 
   /**
@@ -96,54 +113,53 @@ public final class TextGeneratorEngine {
    * might add schedule(SModel):Future&lt;Result&gt; (one more async alternative) and generate(SModel):Result (synchronous alternative)
    * @param model model to produce text for
    */
-  public void schedule(@NotNull final SModel model, @NotNull final BlockingQueue<TextGenResult> resultQueue) {
-    final List<TextUnit> textUnits = breakdownToUnits(model);
-    if (textUnits.size() == 0) {
-      resultQueue.offer(new TextGenResult(model, textUnits));
+  public void schedule(@NotNull final SModel model, @NotNull final BlockingQueue<TextGenResult> resultQueue, String generationTarget) {
+    final List<TextUnit> textUnits = breakdownToUnits(model, myPlatform);
+    if (textUnits.isEmpty()) {
+      resultQueue.offer(new TextGenResult(model, textUnits, generationTarget));
     }
     final ModelAccess modelAccess = model.getRepository() != null ? model.getRepository().getModelAccess() : null;
     final AtomicInteger unitsCount = new AtomicInteger(textUnits.size());
     for (final TextUnit tu : textUnits) {
-      final Runnable tuGenerate = new Runnable() {
-        @Override
-        public void run() {
+      final Runnable tuGenerate = () -> {
+        try {
+          // XXX shall pass settings, e.g. needDebug, IMessageHandler, etc.
           try {
-            // XXX shall pass settings, e.g. needDebug, IMessageHandler, etc.
-            try {
-              tu.generate();
-            } finally {
-              if (tu instanceof RegularTextUnit) {
-                // even if there's exception, report messages first, as they 'happen-before' the error.
-                for (IMessage msg : ((RegularTextUnit) tu).getMessages()) {
-                  myMessages.handle(msg);
-                }
-              }
-              // once the last unit of the model is completed (either failed or succeeded), notify consumer
-              if (unitsCount.decrementAndGet() == 0) {
-                try {
-                  resultQueue.put(new TextGenResult(model, textUnits));
-                } catch (InterruptedException ex) {
-                  // it's ok, it's likely caller to stop the queue, thus it knows how to deal with incomplete state
-                  myMessages.handle(new Message(MessageKind.WARNING, String.format("TextGen interrupted for model %s", model.getName())).setException(ex));
-                }
+            tu.generate();
+          } finally {
+            if (tu instanceof RegularTextUnit) {
+              // even if there's exception, report messages first, as they 'happen-before' the error.
+              for (IMessage msg : ((RegularTextUnit) tu).getMessages()) {
+                myMessages.handle(msg);
               }
             }
-          } catch (Throwable ex) {
-            myMessages.handle(new Message(MessageKind.ERROR, String.format("TextGen threw an exception for model %s", model.getName())).setException(ex));
+            // once the last unit of the model is completed (either failed or succeeded), notify consumer
+            if (unitsCount.decrementAndGet() == 0) {
+              try {
+                resultQueue.put(new TextGenResult(model, textUnits, generationTarget));
+              } catch (InterruptedException ex) {
+                // it's ok, it's likely caller to stop the queue, thus it knows how to deal with incomplete state
+                myMessages.handle(new Message(MessageKind.WARNING, String.format("TextGen interrupted for model %s", model.getName())).setException(ex));
+              }
+            }
           }
+        } catch (Throwable ex) {
+          myMessages.handle(new Message(MessageKind.ERROR, String.format("TextGen threw an exception for model %s", model.getName())).setException(ex));
         }
       };
       myExecutor.execute(modelAccess == null ? tuGenerate : new ModelReadRunnable(modelAccess, tuGenerate));
     }
   }
 
-  private static List<TextUnit> breakdownToUnits(@NotNull SModel model) {
-    Collection<TextGenAspectDescriptor> tgad = TextGenRegistry.getInstance().getAspects(model);
-    ModelOutline rv = new ModelOutline(model);
+  private static List<TextUnit> breakdownToUnits(@NotNull SModel model, @NotNull ComponentHost platform) {
+    final TextGenRegistry tgr = platform.findComponent(TextGenRegistry.class);
+    if (tgr == null) {
+      return Collections.emptyList();
+    }
+    Collection<TextGenAspectDescriptor> tgad = tgr.getAspects(model);
+    ModelOutline rv = new ModelOutline(model, platform);
     for (TextGenAspectDescriptor d : tgad) {
-      if (d instanceof TextGenAspectBase) {
-        ((TextGenAspectBase) d).breakdownToUnits(rv);
-      }
+      d.breakdownToUnits(rv);
     }
     return rv.getUnits();
   }
@@ -152,7 +168,7 @@ public final class TextGeneratorEngine {
    * PROVISIONAL API INTENDED TO REPLACE TextGen.generateText(). DO NOT USE OUTSIDE OF MPS.
    * FIXME need better API to deal with outputs other than text
    * Assumes at least read access to node's repository
-   * @param node
+   * @param node starting input
    * @return either character data of the outcome, or an error message
    */
   public static String generateText(SNode node) {
@@ -163,12 +179,22 @@ public final class TextGeneratorEngine {
     final SnapshotModelData modelData = new SnapshotModelData(new SModelReference(null, SModelId.generate(), "textgen"));
     modelData.addRootNode(CopyUtil.copyAndPreserveId(node));
     TrivialModelDescriptor model = new TrivialModelDescriptor(modelData);
-    final List<TextUnit> textUnits = breakdownToUnits(model);
+    // FIXME needs access to ComponentHost
+    final ComponentHost ch = new ComponentHost() {
+      @Override
+      public <T extends CoreComponent> @Nullable T findComponent(@NotNull Class<T> componentClass) {
+        if (componentClass == TextGenRegistry.class) {
+          return componentClass.cast(TextGenRegistry.getInstance());
+        }
+        return null;
+      }
+    };
+    final List<TextUnit> textUnits = breakdownToUnits(model, ch);
     final TextUnit textUnit;
     if (textUnits.size() == 1) {
       textUnit = textUnits.get(0);
     } else {
-      textUnit = new RegularTextUnit2(node, "dummy.txt", null);
+      textUnit = new RegularTextUnit(node, "dummy.txt", null, null, ch);
     }
 
     textUnit.generate();

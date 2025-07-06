@@ -5,13 +5,16 @@ package jetbrains.mps.build.util;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public class LocalSourcePathArtifact {
-  private SNode root;
-  private String sourcePath;
-  private boolean isFolder;
-  public LocalSourcePathArtifact(SNode root, String sourcePath, boolean isFolder) {
+  private final SNode root;
+  private final String sourcePath;
+
+  private final Integer myMarkValue;
+
+  public LocalSourcePathArtifact(SNode root, String sourcePath) {
     this.root = root;
     this.sourcePath = sourcePath;
-    this.isFolder = isFolder;
+    // unless already initialized, record whatever random value, I just utilize the fact user objects get propagated through transformation steps unchanged
+    myMarkValue = markRoot(root, root.hashCode());
   }
   public SNode getRoot() {
     return root;
@@ -19,9 +22,7 @@ public class LocalSourcePathArtifact {
   public String getSourcePath() {
     return sourcePath;
   }
-  public boolean isFolder() {
-    return isFolder;
-  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -32,24 +33,49 @@ public class LocalSourcePathArtifact {
     }
 
     LocalSourcePathArtifact that = (LocalSourcePathArtifact) o;
-    if ((root != null ? !(((Object) root).equals(that.root)) : that.root != null)) {
+    if (!(matchingRoot(that.root))) {
       return false;
     }
-    if ((sourcePath != null ? !((sourcePath).equals(that.sourcePath)) : that.sourcePath != null)) {
+    if ((sourcePath != null ? !(sourcePath.equals(that.sourcePath)) : that.sourcePath != null)) {
       return false;
     }
-    if (isFolder != that.isFolder) {
-      return false;
-    }
-
     return true;
   }
   @Override
   public int hashCode() {
-    int result = 0;
-    result = 31 * result + ((root != null ? ((Object) root).hashCode() : 0));
+    int result = myMarkValue.intValue();
     result = 31 * result + ((sourcePath != null ? String.valueOf(sourcePath).hashCode() : 0));
-    result = 31 * result + ((isFolder ? 1 : 0));
     return result;
+  }
+
+  private boolean matchingRoot(SNode another) {
+    // although I check for null root, I'm unaware of a case when LSPA could get created with no root node
+    if (root == null || another == null) {
+      return another == root;
+    }
+    if (root.equals(another)) {
+      return true;
+    }
+    // Need to match LSPA(root@2_0) with LSPA(root@4_1)
+    Integer mine = getMarkValue(root);
+    Integer foreign = getMarkValue(another);
+    // mine couldn't be null, we initialize/check the mark at construction time
+    return mine.equals(foreign);
+  }
+
+  public static Integer markRoot(SNode n, int value) {
+    // generally, root can't be null, check is just for safety
+    if ((n == null)) {
+      return -1;
+    }
+    Integer mark = getMarkValue(n);
+    if (mark != null) {
+      return mark;
+    }
+    n.putUserObject(LocalSourcePathArtifact.class.getSimpleName(), value);
+    return value;
+  }
+  private static Integer getMarkValue(SNode n) {
+    return (Integer) n.getUserObject(LocalSourcePathArtifact.class.getSimpleName());
   }
 }

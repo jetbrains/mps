@@ -4,7 +4,13 @@ package jetbrains.mps.internal.collections.runtime;
 
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
+/**
+ * 
+ * @deprecated use closures, if usage is necessary, create an interface instead of this class
+ */
+@Deprecated
 public abstract class ILeftCombinator<T, S> implements _FunctionTypes._return_P2_E0<S, S, T> {
+  @Deprecated
   public ILeftCombinator() {
   }
   public abstract S combine(S s, T t);

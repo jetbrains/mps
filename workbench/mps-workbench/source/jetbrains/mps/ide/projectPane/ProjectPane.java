@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,138 +15,128 @@
  */
 package jetbrains.mps.ide.projectPane;
 
+import com.intellij.ide.FileEditorProvider;
+import com.intellij.ide.SelectInContext;
 import com.intellij.ide.SelectInTarget;
+import com.intellij.ide.dnd.DnDManager;
+import com.intellij.ide.dnd.DnDSource;
+import com.intellij.ide.dnd.DnDTarget;
+import com.intellij.ide.dnd.aware.DnDAwareTree;
 import com.intellij.ide.projectView.ProjectView;
+import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.impl.ProjectViewPane;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataProvider;
+import com.intellij.ide.projectView.impl.ProjectViewTree;
+import com.intellij.ide.util.treeView.AbstractTreeStructureBase;
+import com.intellij.ide.util.treeView.NodeDescriptor;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
-import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.State;
-import com.intellij.openapi.components.Storage;
-import com.intellij.openapi.components.StoragePathMacros;
-import com.intellij.openapi.fileEditor.FileEditor;
-import com.intellij.openapi.fileEditor.FileEditorManagerAdapter;
-import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
-import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.ActionCallback;
-import com.intellij.openapi.util.Disposer;
-import com.intellij.openapi.util.InvalidDataException;
-import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowId;
 import com.intellij.openapi.wm.ToolWindowManager;
-import com.intellij.ui.components.JBScrollPane;
+import com.intellij.problems.ProblemListener;
+import com.intellij.util.IJSwingUtilities;
+import com.intellij.util.concurrency.ThreadingAssertions;
 import com.intellij.util.messages.MessageBusConnection;
-import com.intellij.util.ui.update.MergingUpdateQueue;
-import com.intellij.util.ui.update.Update;
-import jetbrains.mps.RuntimeFlags;
+import com.intellij.util.ui.tree.TreeUtil;
+import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.ide.ThreadUtils;
-import jetbrains.mps.ide.editor.MPSFileNodeEditor;
+import jetbrains.mps.ide.editor.tabs.TabbedEditor;
+import jetbrains.mps.ide.editor.tabs.TabbedEditor.TabChangedListener;
 import jetbrains.mps.ide.platform.watching.ReloadListener;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
-import jetbrains.mps.ide.projectPane.logicalview.ProjectPaneTree;
-import jetbrains.mps.ide.projectPane.logicalview.ProjectTree;
-import jetbrains.mps.ide.projectPane.logicalview.ProjectTreeFindHelper;
-import jetbrains.mps.ide.projectView.ProjectViewPaneOverride;
-import jetbrains.mps.ide.ui.tree.MPSTree;
-import jetbrains.mps.ide.ui.tree.MPSTreeNode;
-import jetbrains.mps.ide.ui.tree.TreeHighlighterExtension;
-import jetbrains.mps.openapi.editor.EditorComponent;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.projectPane.logicalview.LogicalViewDragSource;
+import jetbrains.mps.ide.projectPane.logicalview.LogicalViewDropTarget;
+import jetbrains.mps.ide.projectView.MPSProjectViewState;
+import jetbrains.mps.ide.ui.tree.VirtualFolder.Transients;
+import jetbrains.mps.ide.vfs.IdeaFile;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.nodefs.NodeVirtualFileSystem;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.smodel.ModelReadRunnable;
+import jetbrains.mps.project.MessagesUpdate;
+import jetbrains.mps.project.MissionControl;
+import jetbrains.mps.project.MissionControlListener;
+import jetbrains.mps.project.MissionControlRefreshRequest;
+import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.util.annotation.Hack;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-import org.jdom.Element;
-import org.jetbrains.annotations.NonNls;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.module.SRepositoryListenerBase;
+import org.jetbrains.mps.openapi.persistence.DataSource;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
-import java.awt.Component;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.Comparator;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
-@State(
-    name = "MPSProjectPane",
-    storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
-)
-public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectViewPaneOverride {
-  private static final Logger LOG = LogManager.getLogger(ProjectPane.class);
-  private final SRepositoryListenerBase myRepositoryListener = new SRepositoryListenerBase() {
-    @Override
-    public void moduleAdded(@NotNull SModule module) {
-      ProjectPane.this.updateFromRoot(true);
-    }
+public class ProjectPane extends BaseLogicalViewProjectPane {
 
-    @Override
-    public void moduleRemoved(@NotNull SModuleReference module) {
-      ProjectPane.this.updateFromRoot(true);
-    }
-  };
+  private static final Logger LOG = Logger.getLogger(ProjectPane.class);
 
-  private MyScrollPane myScrollPane;
-  // FIXME there's update queue in MPSTree, do really we need both?
-  private final MergingUpdateQueue myUpdateQueue = new MergingUpdateQueue("Project Pane Updates Queue", 500, true, myScrollPane, null, null, true);
+  private DnDTarget myDropTarget;
+  private DnDSource myDragSource;
+
+  private final ReloadListener myReloadListener;
 
   public static final String ID = ProjectViewPane.ID;
 
-  private final FileEditorManagerAdapter myEditorListener = new FileEditorManagerAdapter() {
-    @Override
-    public void selectionChanged(FileEditorManagerEvent event) {
-      FileEditor fileEditor = event.getNewEditor();
-      if (fileEditor instanceof MPSFileNodeEditor) {
-        final MPSFileNodeEditor editor = (MPSFileNodeEditor) fileEditor;
-        if (getProjectView().isAutoscrollFromSource(ID)) {
-          EditorComponent editorComponent = editor.getNodeEditor().getCurrentEditorComponent();
-          if (editorComponent == null) {
-            return;
-          }
-          final SNode sNode = editorComponent.getEditedNode();
-          selectNodeWithoutExpansion(sNode.getReference());
-        }
-      }
-    }
-  };
-  private List<List<String>> myExpandedPathsRaw = Collections.emptyList();
-  private List<List<String>> mySelectedPathsRaw = Collections.emptyList();
   private MessageBusConnection myConnection;
-  private final ShowDescriptorModelsAction myShowDescriptorModelsAction;
 
-  public ProjectPane(final Project project, ProjectView projectView) {
-    super(project, projectView);
-    myUpdateQueue.setRestartTimerOnAdd(true);
-    ReloadManager.getInstance().addReloadListener(new ReloadListener() {
+  public ProjectPane(final Project project) {
+    super(project);
+    myReloadListener = new ReloadListener() {
       @Override
       public void reloadStarted() {
-
       }
 
       @Override
       public void reloadFinished() {
         rebuild();
       }
-    });
-    myShowDescriptorModelsAction = new ShowDescriptorModelsAction(this);
+    };
+    // XXX provided we add a listener, perhaps, shall keep instance in a field or introduce a method to take Disposable with listener (IDEA style)
+    ReloadManager.getInstance().addReloadListener(myReloadListener);
+  }
+
+  @Override
+  protected void enableDnD() {
+    if (!ApplicationManager.getApplication().isHeadlessEnvironment()) {
+      myDragSource = new LogicalViewDragSource(getTree());
+      myDropTarget = new LogicalViewDropTarget(getTree());
+      DnDManager dndManager = DnDManager.getInstance();
+      dndManager.registerSource(myDragSource, myTree);
+      dndManager.registerTarget(myDropTarget, myTree);
+    }
   }
 
   @Override
   public void dispose() {
-    myUpdateQueue.dispose();
+    if (myDropTarget != null) {
+      DnDManager.getInstance().unregisterTarget(myDropTarget, myTree);
+      myDropTarget = null;
+    }
+    if (myDragSource != null) {
+      DnDManager.getInstance().unregisterSource(myDragSource, myTree);
+      myDragSource = null;
+    }
+    ReloadManager.getInstance().removeReloadListener(myReloadListener);
     super.dispose();
   }
 
@@ -155,7 +145,6 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     super.removeListeners();
     myConnection.disconnect();
     myConnection = null;
-    getMPSProject().getRepository().removeRepositoryListener(myRepositoryListener);
   }
 
   @Override
@@ -163,8 +152,12 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     super.addListeners();
     assert myConnection == null; // double initialization
     myConnection = getProject().getMessageBus().connect();
-    myConnection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, myEditorListener);
-    getMPSProject().getRepository().addRepositoryListener(myRepositoryListener);
+    myConnection.subscribe(TabbedEditor.TAB_CHANGES, (TabChangedListener) nodeRef -> {
+      if (getProjectView().isAutoscrollFromSource(ID) && !IJSwingUtilities.hasFocus(getComponentToFocus())) {
+        selectNodeWithoutExpansion(nodeRef);
+      }
+    });
+    myConnection.subscribe(MissionControlListener.MISSION_CONTROL_UPDATE, (MissionControlListener) this::refresh);
   }
 
   @Hack
@@ -189,17 +182,16 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   }
 
   @Override
-  public ProjectTree getTree() {
-    return (jetbrains.mps.ide.projectPane.logicalview.ProjectTree) myTree;
+  public ProjectViewTree getTree() {
+    return (ProjectViewTree) myTree;
   }
-
+  
   /*package*/ MPSProject getMPSProject() {
-    // Shall I use getTree().getProject() instead?
-    return getProject().getComponent(MPSProject.class);
+    return myProjectMPS;
   }
 
   @Override
-  public String getTitle() {
+  public @NotNull String getTitle() {
     return "Logical View";
   }
 
@@ -215,74 +207,51 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   }
 
   @Override
-  public SelectInTarget createSelectInTarget() {
-    return new ProjectPaneSelectInTarget(getMPSProject(), true);
+  public @NotNull SelectInTarget createSelectInTarget() {
+    return new ProjectPaneSelectInTarget(this, getTitle(), true);
   }
 
   @Override
-  public Icon getIcon() {
+  public @NotNull Icon getIcon() {
     return MPSIcons.ProjectPane.LogicalView;
   }
 
-  @NotNull
   @Override
-  public ActionCallback updateFromRoot(boolean restoreExpandedPaths) {
-    // XXX why not MPSTree.rebuildLater?
-    // FIXME what's the difference with #rebuildTree?
-    myUpdateQueue.queue(new AbstractUpdate(UpdateID.REBUILD) {
+  public @NotNull JComponent createComponent() {
+    boolean alreadyCreated = myTreeStructure != null;
+    JComponent component = super.createComponent();
+    if (!alreadyCreated) {
+      addListeners();
+    }
+    // at this point initTree() has been called
+    myTree.addKeyListener(new KeyAdapter() {
       @Override
-      public void run() {
-        if (getTree() == null) {
-          return;
+      public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_F5 && e.getModifiersEx() == 0) {
+          e.consume();
+          MissionControl.getInstance(myProject).refresh();
+          ProjectView.getInstance(myProject).refresh();
         }
-        getTree().rebuildNow();
       }
     });
-    return new ActionCallback(); // todo
-  }
-
-  @Override
-  public void select(Object element, final VirtualFile file, final boolean requestFocus) {
-
-  }
-
-  @Override
-  public JComponent createComponent() {
-    if (isComponentCreated()) {
-      return myScrollPane;
-    }
-
-    ProjectPaneTree tree = new ProjectPaneTree(this, myProject);
-    Disposer.register(this, tree);
-    tree.setShowStructureCondition(this::showNodeStructure);
-    myTree = tree;
-
-    myScrollPane = new MyScrollPane(getTree());
-    addListeners();
-    if (!RuntimeFlags.isTestMode()) {
-      rebuild();
-    }
-    TreeHighlighterExtension.attachHighlighters(tree, myProject);
-    return myScrollPane;
+    return component;
   }
 
   @Override
   protected boolean isComponentCreated() {
-    return myScrollPane != null;
+    return myTreeStructure != null;
   }
 
-  public void rebuildTree() {
-    // @see #updateFromRoot
-    myUpdateQueue.queue(new AbstractUpdate(UpdateID.REBUILD) {
-      @Override
-      public void run() {
-        if (getTree() == null || getProject().isDisposed()) {
-          return;
-        }
-        getTree().rebuildNow();
-        getTree().expandProjectNode();
-      }
-    });
+  @NotNull
+  @Override
+  protected AbstractTreeStructureBase createStructure() {
+    return new ProjectPaneTreeStructure(myProject, getId());
+  }
+
+  @NotNull
+  @Override
+  protected DnDAwareTree createTree(@NotNull DefaultTreeModel treeModel) {
+    return new ProjectViewTree(treeModel);
   }
 
   public void activate() {
@@ -290,158 +259,142 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     activatePane(null, true);
   }
 
-  @Override
-  public void rebuild() {
-    // This method can be called from different threads, however rebuildTree()
-    // merely adds an update to the update queue, and thus it's safe to invoke it
-    // without runReadInEDT or runInUIThreadNoWait as it used to be.
-    rebuildTree();
+  protected void refresh(MissionControlRefreshRequest refreshRequest) {
+    ApplicationManager.getApplication().executeOnPooledThread(() -> {
+      for (var messagesUpdate : new MessagesUpdate[] {MessagesUpdate.APPEARED, MessagesUpdate.DISAPPEARED}) {
+        for (SObject toUpdate : refreshRequest.getToUpdatePresentation(messagesUpdate)) {
+          if (!toUpdate.ifHasSModel((Consumer<SModel>) model -> forEachFile(model, f -> fireMessageUpdate(messagesUpdate, f)))) {
+            toUpdate.ifHasSModule((Consumer<SModule>) module -> forEachFile(module, f -> fireMessageUpdate(messagesUpdate, f)));
+          }
+        }
+      };
+    });
   }
 
-  @Override
-  public void addToolbarActions(DefaultActionGroup group) {
-    super.addToolbarActions(group);
-    group.add(myShowDescriptorModelsAction);
-  }
+  @SuppressWarnings("removal")
+  private void fireMessageUpdate(MessagesUpdate messagesUpdate, IFile iFile) {
+    ProblemListener problemListener = getProject().getMessageBus().syncPublisher(ProblemListener.TOPIC);
+    IdeaFileSystem fileSystem = myProjectMPS.getFileSystem();
 
-  @Override
-  protected void saveExpandedPaths() {
-    // this gets called from the IDEA's implementation of ProjectViewImpl
-    // thankfully, the method is declared protected
-    if (myTree != null) {
-      myExpandedPathsRaw = ((MPSTree) myTree).getExpandedPathsRaw();
-      mySelectedPathsRaw = ((MPSTree) myTree).getSelectedPathsRaw();
-    } else {
-      myExpandedPathsRaw = Collections.emptyList();
-      mySelectedPathsRaw = Collections.emptyList();
-    }
-  }
-
-  @Override
-  public void restoreExpandedPathsOverride() {
-    // this gets called from the MPS's implementation of ProjectViewImpl
-    // we must resort to this hack because the method in the superclass is declared private
-
-    if (myTree != null) {
-      myUpdateQueue.queue(new AbstractUpdate(UpdateID.RESTORE_EXPAND) {
-        @Override
-        public void run() {
-          ((MPSTree) myTree).loadState(myExpandedPathsRaw, mySelectedPathsRaw);
+    VirtualFile virtualFile = fileSystem.asVirtualFile(iFile);
+    if (virtualFile != null) {
+      ApplicationManager.getApplication().runReadAction(() -> {
+        if (messagesUpdate == MessagesUpdate.APPEARED) {
+          problemListener.problemsAppeared(virtualFile);
+        } else if (messagesUpdate == MessagesUpdate.DISAPPEARED) {
+          problemListener.problemsDisappeared(virtualFile);
         }
       });
     }
   }
 
   @Override
-  public void writeExternal(Element element) throws WriteExternalException {
-    saveExpandedPaths();
-
-    // keep the binary format in sync with what IDEA writes
-    Element subPane = new Element("subPane");
-    // we probably don't need this...
-    if (getSubId() != null) {
-      subPane.setAttribute("subId", getSubId());
-    }
-
-    writePaths(subPane, myExpandedPathsRaw, "PATH");
-    writePaths(subPane, mySelectedPathsRaw, "SELECTED");
-    if (!myShowDescriptorModelsAction.isDefaultState()) {
-      Element option1 = new Element(ShowDescriptorModelsAction.KEY);
-      option1.setAttribute("value", Boolean.toString(myShowDescriptorModelsAction.isSelected()));
-      subPane.addContent(option1);
-    }
-
-    element.addContent(subPane);
-  }
-
-  private void writePaths(Element parentElement, List<List<String>> pathsRaw, String elementName) {
-    for (List<String> path : pathsRaw) {
-      Element pathElement = new Element(elementName);
-      writePath(path, pathElement);
-      parentElement.addContent(pathElement);
-    }
-  }
-
-  private void writePath(List<String> path, Element pathElement) {
-    for (String treeNodeId : path) {
-      Element elm = new Element("PATH_ELEMENT");
-      writeNodeId(treeNodeId, elm);
-      pathElement.addContent(elm);
-    }
-  }
-
-  private void writeNodeId(String treeNodeId, Element elm) {
-    Element option1 = new Element("option");
-    option1.setAttribute("name", "myItemId");
-    option1.setAttribute("value", treeNodeId);
-    elm.addContent(option1);
-    Element option2 = new Element("option");
-    option2.setAttribute("name", "myItemType");
-    option2.setAttribute("value", "");
-    elm.addContent(option2);
+  public void rebuild() {
+    // This method can be called from different threads, however updateFromRoot()
+    // merely adds an update to the update queue, and thus it's safe to invoke it
+    // without runReadInEDT or runInUIThreadNoWait as it used to be.
+    updateFromRoot(true);
   }
 
   @Override
-  public void readExternal(Element element) throws InvalidDataException {
-    // emulate the superclass's readExternal using the same binary format
-    List<Element> subPanes = element.getChildren("subPane");
-    for (Element subPane : subPanes) {
-      myExpandedPathsRaw = readPaths(subPane, "PATH");
-      mySelectedPathsRaw = readPaths(subPane, "SELECTED");
-      Element option1 = subPane.getChild(ShowDescriptorModelsAction.KEY);
-      if (option1 != null) {
-        myShowDescriptorModelsAction.setState(Boolean.parseBoolean(option1.getAttributeValue("value")));
-      }
-    }
-  }
-
-  private List<List<String>> readPaths(Element parentElement, String name) {
-    List<List<String>> result = new ArrayList<List<String>>();
-
-    for (Element pathElement : parentElement.getChildren(name)) {
-      List<String> path = readPath(pathElement);
-      result.add(path);
-    }
-    return result;
-  }
-
-  @NotNull
-  private List<String> readPath(Element pathElement) {
-    List<String> path = new ArrayList<String>();
-    for (Element elm : pathElement.getChildren("PATH_ELEMENT")) {
-      String treeNodeId = readNodeId(elm);
-      if (treeNodeId != null) {
-        path.add(treeNodeId);
-      }
-    }
-    return path;
-  }
-
-  @Nullable
-  private String readNodeId(Element elm) {
-    List<Element> options = elm.getChildren("option");
-    String treeNodeId = null;
-    for (Element option : options) {
-      if ("myItemId".equals(option.getAttributeValue("name"))) {
-        treeNodeId = option.getAttributeValue("value");
-        break;
-      }
-    }
-    return treeNodeId;
+  public void addToolbarActions(DefaultActionGroup group) {
+    super.addToolbarActions(group);
   }
 
   //----selection----
 
+  private class MySelectInContext implements SelectInContext {
+
+    private final VirtualFile myVirtualFile;
+
+    private MySelectInContext(VirtualFile virtualFile) {
+      myVirtualFile = virtualFile;
+    }
+
+    @Override
+    public @NotNull Project getProject() {
+      return myProject;
+    }
+
+    @Override
+    public @NotNull VirtualFile getVirtualFile() {
+      return myVirtualFile;
+    }
+
+    @Override
+    public @Nullable Object getSelectorInFile() {
+      return myVirtualFile;
+    }
+
+    @Override
+    public @Nullable FileEditorProvider getFileEditorProvider() {
+      return null;
+    }
+  }
+
   public void selectModule(@NotNull final SModule module, final boolean autofocus) {
-    ThreadUtils.assertEDT();
-    Runnable lookupAndSelect = new LookupAndSelect(module.getModuleReference());
-    activatePane(new ScheduleUpdateRunnable(myUpdateQueue, createModelReadUpdate(UpdateID.SELECT, lookupAndSelect)), autofocus);
+    if (module instanceof AbstractModule) {
+      IFile descriptorFile = ((AbstractModule) module).getDescriptorFile();
+      if (descriptorFile != null) {
+        selectLater(autofocus).accept(descriptorFile);
+      }
+    }
   }
 
   public void selectModel(@NotNull final SModel model, boolean autofocus) {
-    ThreadUtils.assertEDT();
-    Runnable lookupAndSelect = new LookupAndSelect(model.getReference());
-    activatePane(new ScheduleUpdateRunnable(myUpdateQueue, createModelReadUpdate(UpdateID.SELECT, lookupAndSelect)), autofocus);
+    DataSource source = model.getSource();
+    if (source instanceof FileSystemBasedDataSource) {
+      var ds = (FileSystemBasedDataSource) source;
+      ds.getAffectedFiles().stream()
+        .findFirst()
+        .ifPresent(selectLater(autofocus));
+    }
+  }
+
+  private @NotNull Consumer<IFile> selectLater(boolean autofocus) {
+    return file -> ApplicationManager.getApplication().executeOnPooledThread(() -> {
+      // getVirtualFile requires a resource-heavy operation
+      VirtualFile virtualFile = getVirtualFile(file);
+      if (virtualFile != null) {
+        ApplicationManager.getApplication().invokeLater(() ->
+            // selection is done in EDT
+            createSelectInTarget().selectIn(new MySelectInContext(virtualFile), autofocus));
+      } else {
+        LOG.warning("unable to select node corresponding to path: " + file.getPath());
+      }
+    });
+  }
+
+  public void selectNode(@NotNull final SNode node, boolean autofocus) {
+    createSelectInTarget().selectIn(new MySelectInContext(NodeVirtualFileSystem.getInstance().getFileFor(getMPSProject().getRepository(), node)), autofocus);
+  }
+
+  public void selectNode(@NotNull SNodeReference node, boolean autofocus) {
+    createSelectInTarget().selectIn(new MySelectInContext(NodeVirtualFileSystem.getInstance().getFileFor(getMPSProject().getRepository(), node)), autofocus);
+  }
+
+  /**
+   * A hackish way to select and expand the "checkpoints and transients models" folder. See MPS-38077
+   */
+  @Deprecated
+  public void selectTransientsFolder() {
+    TreeModel model = getTree().getModel();
+    Object o = TreeUtil.nodeChildren(model.getRoot(), model).find(n -> isTransientsFolderNode(TreeUtil.getUserObject(n)));
+    TreeNode toSelect = o instanceof TreeNode ? (TreeNode) o : null;
+    if (toSelect != null) {
+      TreePath path = TreeUtil.getPath((TreeNode) model.getRoot(), toSelect);
+      getTree().expandPath(path);
+      TreeUtil.selectInTree((DefaultMutableTreeNode) toSelect, true, getTree());
+      getTree().scrollPathToVisible(path);
+    }
+  }
+
+  private boolean isTransientsFolderNode(Object abstractNode) {
+    return abstractNode instanceof ProjectViewNode && ((ProjectViewNode<?>) abstractNode).getValue() instanceof Transients;
+  }
+
+  private void selectNodeWithoutExpansion(@NotNull SNodeReference nodeRef) {
+    createSelectInTarget().selectIn(new MySelectInContext(NodeVirtualFileSystem.getInstance().getFileFor(getMPSProject().getRepository(), nodeRef)), false);
   }
 
   private void activatePane(@Nullable final Runnable postActivate, boolean autoFocusContents) {
@@ -449,247 +402,79 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     if (isDisposed()) {
       return;
     }
+
     ToolWindowManager windowManager = ToolWindowManager.getInstance(getProject());
     ToolWindow projectViewToolWindow = windowManager.getToolWindow(ToolWindowId.PROJECT_VIEW);
+    final Runnable wrapper = () -> {
+      if (postActivate != null) {
+        postActivate.run();
+      }
+    };
+
     //In unit test mode projectViewToolWindow == null
     // besides, https://youtrack.jetbrains.com/issue/MPS-24516 suggests tool window may be missing even in non-test mode (in plugin?)
     if (!ApplicationManager.getApplication().isUnitTestMode() && projectViewToolWindow != null) {
-      projectViewToolWindow.activate(new Runnable() {
-        @Override
-        public void run() {
-          // I'm not quite sure next changeView is essential (what does toolWindow.activate() does then?),
+      if (autoFocusContents && !projectViewToolWindow.isActive()) {
+        projectViewToolWindow.activate(() -> {
+          if (isDisposed()) {
+            return;
+          }// I'm not quite sure next changeView is essential (what does toolWindow.activate() does then?),
           // but since there's no documentation what to expect, leave it the way it used to be in PaneActivator.
           getProjectView().changeView(getId());
-          if (postActivate != null) {
-            postActivate.run();
-          }
-        }
-      }, autoFocusContents);
+          wrapper.run();
+        }, true);
+      } else {
+        wrapper.run();
+      }
     }
   }
 
-  public void selectNode(@NotNull final SNode node, boolean autofocus) {
-    ThreadUtils.assertEDT();
-    final Runnable lookupAndSelect = new LookupAndSelect(node.getReference());
-    activatePane(new ScheduleUpdateRunnable(myUpdateQueue, createModelReadUpdate(UpdateID.SELECT, lookupAndSelect)), autofocus);
-  }
-
-  private void selectNodeWithoutExpansion(@NotNull SNodeReference nodeRef) {
-    final Runnable lookupAndSelect = new LookupAndSelect(nodeRef);
-    myUpdateQueue.queue(createModelReadUpdate(UpdateID.SELECT, new Runnable() {
-      @Override
-      public void run() {
-        getTree().runWithoutExpansion(lookupAndSelect);
-      }
-    }));
-  }
 
   /**
-   * @return update code block with the given id, that runs supplied delegate with read access to project repository
+   * Must never be called from EDT.
    */
-  private Update createModelReadUpdate(@NotNull UpdateID id, @NotNull Runnable delegate) {
-    return new UpdateAdapter(id, new ModelReadRunnable(getMPSProject().getModelAccess(), delegate));
+  @SuppressWarnings("removal")
+  @Nullable
+  private VirtualFile getVirtualFile(IFile descriptorFile) {
+    ThreadingAssertions.assertBackgroundThread();
+    IdeaFileSystem fileSystem = myProjectMPS.getFileSystem();
+    VirtualFile virtualFile = fileSystem.asVirtualFile(descriptorFile);
+    if (virtualFile == null) {
+      IdeaFile ideaFile = fileSystem.getFile(descriptorFile.getPath());
+      if (ideaFile != null) {
+        virtualFile = ideaFile.getVirtualFile();
+      }
+    }
+    return virtualFile;
   }
 
-  //----select next queries----
+  @Deprecated(forRemoval = true)
+  /*package*/ boolean isDescriptorModelInGeneratorVisible() {
+    return MPSProjectViewState.getInstance(getProject()).isShowDescriptorModels();
+  }
+
+  @Deprecated(forRemoval = true)
+  /*package*/ boolean isDescriptorModelInSolutionVisible() {
+    return MPSProjectViewState.getInstance(getProject()).isShowDescriptorModels();
+  }
+
+  @Deprecated(forRemoval = true)
+  /*package*/ Supplier<Boolean> errorIndicatorVisible() {
+    return () -> false;
+  }
+
+  @Deprecated(forRemoval = true)
+  /*package*/ Supplier<Boolean> underlineErrorNodes() {
+    return () -> false;
+  }
+
+  @Deprecated(forRemoval = true)
+  /*package*/ Supplier<Boolean> showErrorsOnly() {
+    return () -> MPSProjectViewState.getInstance(getProject()).isShowErrorsOnly();
+  }
 
   @Override
-  public void selectNextModel(SModel modelDescriptor) {
-    final MPSTreeNode mpsTreeNode = createFindHelper().findNextTreeNode(modelDescriptor);
-    // FIXME selectNextNode does the same, refactor. Check callers if need ThreadUtils at all
-    ThreadUtils.runInUIThreadNoWait(new Runnable() {
-      @Override
-      public void run() {
-        ProjectTree tree = getTree();
-        if (tree != null) {
-          tree.selectNode(mpsTreeNode);
-        }
-      }
-    });
-  }
-
-  public void selectNextNode(SNode node) {
-    final MPSTreeNode mpsTreeNode = createFindHelper().findNextTreeNode(node);
-    ThreadUtils.runInUIThreadNoWait(new Runnable() {
-      @Override
-      public void run() {
-        getTree().selectNode(mpsTreeNode);
-      }
-    });
-  }
-
-  //----tree node selection queries---
-
-  public MPSTreeNode findNextTreeNode(SNode node) {
-    return createFindHelper().findNextTreeNode(node);
-  }
-
-  public boolean isDescriptorModelInGeneratorVisible() {
-    return myShowDescriptorModelsAction.isSelected();
-  }
-
-  @NotNull
-  /*package*/ ProjectTreeFindHelper createFindHelper() {
-    return new ProjectTreeFindHelper(getTree());
-  }
-
-  //----UI----
-
-  private class MyScrollPane extends JBScrollPane implements DataProvider {
-    private MyScrollPane(Component view) {
-      super(view);
-    }
-
-    @Override
-    @Nullable
-    public Object getData(@NonNls String dataId) {
-      return ProjectPane.this.getData(dataId);
-    }
-  }
-
-  private enum UpdateID {
-    REBUILD(20),
-    SELECT(30),
-    RESTORE_EXPAND(40);
-
-    private int myPriority;
-
-    UpdateID(int priority) {
-      myPriority = priority;
-    }
-
-    public int getPriority() {
-      return myPriority;
-    }
-  }
-
-  private abstract static class AbstractUpdate extends Update {
-    /*package*/ AbstractUpdate(UpdateID id) {
-      super(id, id.getPriority());
-    }
-  }
-
-  private static class UpdateAdapter extends Update {
-    private final Runnable myDelegate;
-
-    /*package*/ UpdateAdapter(@NotNull UpdateID id, @NotNull Runnable delegate) {
-      super(id, id.getPriority());
-      myDelegate = delegate;
-    }
-
-    @Override
-    public void run() {
-      myDelegate.run();
-    }
-  }
-
-  // handy runnable that places an update into given queue
-  private static class ScheduleUpdateRunnable implements Runnable {
-    private final MergingUpdateQueue myQueue;
-    private final Update myUpdate;
-
-    /*package*/ ScheduleUpdateRunnable(@NotNull MergingUpdateQueue queue, @NotNull Update update) {
-      myQueue = queue;
-      myUpdate = update;
-    }
-
-    @Override
-    public void run() {
-      myQueue.queue(myUpdate);
-    }
-  }
-
-  // resolve a reference, look up a corresponding tree node, and select it if found
-  // XXX split to Computable<TreeNode> and runnable that takes it?
-  private class LookupAndSelect implements Runnable {
-    private SNodeReference myNode;
-    private SModelReference myModel;
-    private SModuleReference myModule;
-
-    public LookupAndSelect(SModuleReference module) {
-      myModule = module;
-    }
-
-    public LookupAndSelect(SModelReference model) {
-      myModel = model;
-    }
-
-    public LookupAndSelect(SNodeReference node) {
-      myNode = node;
-    }
-
-    @Override
-    public void run() {
-      MPSTreeNode toSelect = null;
-      if (myModule != null) {
-        SModule module = myModule.resolve(getMPSProject().getRepository());
-        if (module == null) {
-          // likely, by the time we got to this point (selection update), the reference is no longer valid, exit gracefully
-          return;
-        }
-        toSelect = createFindHelper().findMostSuitableModuleTreeNode(module);
-        if (toSelect == null) {
-          LOG.warn("Couldn't select module \"" + myModule.getModuleName() + "\" : tree node not found.");
-          return;
-        }
-      } else if (myModel != null) {
-        SModel model = myModel.resolve(getMPSProject().getRepository());
-        if (model == null) {
-          return;
-        }
-        toSelect = createFindHelper().findMostSuitableModelTreeNode(model);
-        if (toSelect == null) {
-          LOG.warn("Couldn't select model \"" + myModel.getModelName() + "\" : tree node not found.");
-          return;
-        }
-      } else if (myNode != null) {
-        SNode node = myNode.resolve(getMPSProject().getRepository());
-        if (node == null) {
-          return;
-        }
-        toSelect = createFindHelper().findMostSuitableSNodeTreeNode(node);
-        if (toSelect == null) {
-          LOG.warn("Couldn't select node \"" + myNode.toString() + "\" : tree node not found.");
-          return;
-        }
-      }
-      if (toSelect != null) {
-        getTree().selectNode(toSelect);
-      }
-    }
-  }
-
-  private static class ShowDescriptorModelsAction extends ToggleAction {
-    private final ProjectPane myProjectPane;
-    private boolean myState = false;
-    /*package*/ static final String KEY = "showGeneratorDescriptor";
-
-    ShowDescriptorModelsAction(ProjectPane projectPane) {
-      super("Show @descriptor models in Generators");
-      myProjectPane = projectPane;
-    }
-
-    public boolean isSelected() {
-      return myState;
-    }
-
-    /*package*/ boolean isDefaultState() {
-      return !isSelected();
-    }
-    /*package*/ void setState(boolean selected) {
-      myState = selected;
-    }
-
-
-    @Override
-    public boolean isSelected(AnActionEvent e) {
-      return isSelected();
-    }
-
-    @Override
-    public void setSelected(AnActionEvent e, boolean state) {
-      myState = state;
-      myProjectPane.rebuild();
-    }
+  protected @NotNull Comparator<NodeDescriptor<?>> createComparator() {
+    return super.createComparator();
   }
 }

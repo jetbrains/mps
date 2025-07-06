@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <root nodeRef="r:fe7488dc-8af1-464d-b887-a8f72fc824ff(jetbrains.mps.dataFlow.runtime)/4198074041669436749">
+    <file name="ModuleActivator.java">
+      <node id="4198074041669446014" at="13,0,14,0" concept="2" trace="myPlatform" />
+      <node id="4198074041669446018" at="15,53,16,29" concept="1" />
+      <node id="4198074041669502466" at="20,71,21,101" concept="4" />
+      <node id="4198074041669450492" at="21,101,22,154" concept="1" />
+      <node id="4198074041669444807" at="15,0,18,0" concept="0" trace="ModuleActivator#(Ljetbrains/mps/components/ComponentHost;)V" />
+      <node id="4198074041669448484" at="19,0,24,0" concept="3" trace="contribute#(Ljetbrains/mps/smodel/runtime/ModuleRuntime/ActivatorContext;)V" />
+      <scope id="4198074041669444811" at="15,53,16,29" />
+      <scope id="4198074041669448492" at="20,71,22,154" />
+      <scope id="4198074041669444807" at="15,0,18,0">
+        <var name="mpsPlatform" id="4198074041669445849" />
+      </scope>
+      <scope id="4198074041669448484" at="19,0,24,0">
+        <var name="ctx" id="4198074041669448489" />
+      </scope>
+      <unit id="4198074041669436749" at="12,0,25,0" name="jetbrains.mps.dataFlow.runtime.ModuleActivator" />
+    </file>
+  </root>
+</debug-info>
+

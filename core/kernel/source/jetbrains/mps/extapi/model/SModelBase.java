@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,26 @@
 package jetbrains.mps.extapi.model;
 
 import jetbrains.mps.extapi.module.SModuleBase;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.IllegalModelAccessException;
 import jetbrains.mps.smodel.InvalidSModel;
 import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.NodeIdentityComponent;
+import jetbrains.mps.smodel.event.DependencyChangeBridge;
 import jetbrains.mps.smodel.event.ModelEventDispatch;
 import jetbrains.mps.smodel.event.ModelListenerDispatch;
+import jetbrains.mps.smodel.event.SModelDevKitEvent;
+import jetbrains.mps.smodel.event.SModelImportEvent;
+import jetbrains.mps.smodel.event.SModelLanguageEvent;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelAccessListener;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelListener;
+import org.jetbrains.mps.openapi.model.SModelListener.DependencyChange;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -36,6 +43,7 @@ import org.jetbrains.mps.openapi.model.SNodeAccessListener;
 import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -54,18 +62,17 @@ import java.util.Collections;
  * TODO relocate to [smodel]
  */
 public abstract class SModelBase extends SModelDescriptorStub implements SModel {
+  private static final Logger LOG = Logger.getLogger(SModelBase.class);
+
   private final ModelEventDispatch myNodeEventDispatch;
   // XXX when necessary, shall get exposed with protected accessor. fire* methods kept for now as some of them do delegation to legacy
   // listeners as well, could get removed once smodel.SModelListener gone. Besides, I'm not yet sure multi-cast approach of
   // ModelListenerDispatch shall prevail, to limit future changes, let fire* method stay non deprecated for now.
   private final ModelListenerDispatch myModelEventDispatch;
 
-  @NotNull
-  private final DataSource mySource;
-  @NotNull
-  private SModelReference myModelReference;
-
-  private ModelRoot myModelRoot;
+  @NotNull private final DataSource mySource;
+  @NotNull private SModelReference myModelReference;
+  @Nullable private ModelRoot myModelRoot;
 
   private SModule myModule;
   private volatile SRepository myRepository = null;
@@ -80,7 +87,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   protected SModelBase(@NotNull SModelReference modelReference, @NotNull DataSource source) {
     myModelReference = modelReference;
     mySource = source;
-    myNodeEventDispatch = new ModelEventDispatch(this);
+    myNodeEventDispatch = new ModelEventDispatch(this, this::fireModelNodesChanged);
     myModelEventDispatch = new ModelListenerDispatch();
   }
 
@@ -94,20 +101,20 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   public SNode createNode(@NotNull SConcept concept) {
     // nodeId should be model's responsibility, not SNode's as we shall migrate towards model-local node ids, preferably int instead of long,
     // and at least not random
-    return new jetbrains.mps.smodel.SNode(concept, jetbrains.mps.smodel.SModel.generateUniqueId());
+    return new jetbrains.mps.smodel.SNode(concept, NodeIdentityComponent.getInstance().issue(this));
   }
 
   @Override
   public SNode createNode(@NotNull SConcept concept, @Nullable SNodeId nodeId) {
     if (nodeId == null) {
-      nodeId = jetbrains.mps.smodel.SModel.generateUniqueId();
+      nodeId = NodeIdentityComponent.getInstance().issue(this);
     }
     return new jetbrains.mps.smodel.SNode(concept, nodeId);
   }
 
   public void attach(@NotNull SRepository repo) {
     if (myRepository == repo) {
-      // warn? why it's ok to attach model several times, isn't it an error?
+      LOG.warning("The model " + this + " is already attached to the repository " + repo);
       return;
     }
     if (myRepository != null) {
@@ -125,11 +132,27 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
       myRepository = null;
     }
     fireBeforeModelDisposed(this);
+    setModelRoot(null);
     jetbrains.mps.smodel.SModel model = getCurrentModelInternal();
     if (model != null) {
+      // XXX In fact, seems reasonable to call doUnload() here, as subclasses might need to clear their state on detach in
+      //     a manner similar to unload (just w/o event dispatch, though this is questionable as well - why detach doesn't
+      //     need to send out 'unloaded' event?). However, at the moment TransientModel does swap out on doUnload, and it's
+      //     NOT what we want on model detach. Need a better contract for unload, detach and cleanup of instance fields.
+      // OTOH, it's not apparent why detach of a model shall dispose its data. Perhaps, all we need to do here
+      //     is to clean fields to free references, and leave model data intact?
       model.dispose();
+      setLoadingState(ModelLoadingState.NOT_LOADED);
     }
     clearListeners();
+    setModule(null);
+  }
+
+  @Override
+  protected void clearListeners() {
+    super.clearListeners();
+    myModelEventDispatch.clearListeners();
+    myNodeEventDispatch.clearListeners();
   }
 
   @Override
@@ -148,20 +171,18 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   @Override
   @NotNull
   public SModelReference getReference() {
-//    assertCanRead(); model reference is read-only attribute, why care about read lock?
     return myModelReference;
   }
 
   @NotNull
   @Override
   public SModelId getModelId() {
-//    assertCanRead(); model reference is read-only attribute, why care about read lock?
     return myModelReference.getModelId();
   }
 
   @Override
+  @Deprecated
   public String getModelName() {
-//    assertCanRead(); model reference is read-only attribute, why care about read lock?
     return myModelReference.getModelName();
   }
 
@@ -174,7 +195,6 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   @Override
   @NotNull
   public DataSource getSource() {
-//    assertCanRead(); Is source access truly read operation over model?
     return mySource;
   }
 
@@ -198,7 +218,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
     return myModule;
   }
 
-  public void setModelRoot(ModelRoot modelRoot) {
+  public void setModelRoot(@Nullable ModelRoot modelRoot) {
     assertCanChange();
 //    if (myModelRoot != null && modelRoot != null) {
 //      LOG.error("Duplicate model roots for model " + getLongName() + " in module " + modelRoot.getModule() + ": \n" +
@@ -210,6 +230,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   }
 
   @Override
+  @Nullable
   public ModelRoot getModelRoot() {
     assertCanRead();
     return myModelRoot;
@@ -227,13 +248,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
 
   @Override
   public boolean isReadOnly() {
-//    assertCanRead(); no apparent reason why we shall demand read lock here. Few subclasses, that override the method, do not check access at all.
-    return true;
-  }
-
-  public boolean isRegistered() {
-    SModule copy = myModule;
-    return copy != null && copy.getRepository() != null;
+    return getSource().isReadOnly(); // reasonable default
   }
 
   /**
@@ -257,9 +272,9 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   @Override
   public Iterable<Problem> getProblems() {
     assertCanRead();
-    jetbrains.mps.smodel.SModel sModelInternal = getSModelInternal();
-    if (sModelInternal instanceof InvalidSModel) {
-      return ((InvalidSModel) sModelInternal).getProblems();
+    SModelData modelData = getModelData();
+    if (modelData instanceof InvalidSModel) {
+      return ((InvalidSModel) modelData).getProblems();
     }
     return Collections.emptySet();
   }
@@ -286,8 +301,13 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
 
     final ModelLoadingState oldState = getLoadingState();
     doUnload();
-    fireModelStateChanged(oldState, getLoadingState());
+    ModelLoadingState newState = getLoadingState();
 
+    //we'd like to have this at least until all usages will be corrected (and maybe even after that since
+    // the model is actually replaced)
+    fireModelReplaced();
+
+    fireModelStateChanged(oldState, newState);
   }
 
   /**
@@ -300,7 +320,6 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
     if (modelData == null) {
       return;
     }
-    modelData.setModelDescriptor(null);
     modelData.dispose();
     setLoadingState(ModelLoadingState.NOT_LOADED);
   }
@@ -318,16 +337,6 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   @Override
   public void removeModelListener(SModelListener l) {
     myModelEventDispatch.removeListener(l);
-  }
-
-  @Override
-  public void addAccessListener(SModelAccessListener l) {
-    myNodeEventDispatch.addAccessListener(l);
-  }
-
-  @Override
-  public void removeAccessListener(SModelAccessListener l) {
-    myNodeEventDispatch.removeAccessListener(l);
   }
 
   @Override
@@ -392,6 +401,9 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
     myModelEventDispatch.modelSaved(this);
   }
 
+  /**
+   * why is it here if and not in EditableSModel? what is conflict?
+   */
   protected void fireConflictDetected() {
     myModelEventDispatch.conflictDetected(this);
   }
@@ -405,10 +417,64 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   }
 
   @Override
+  protected void fireUsedLanguageAdded(SLanguage language) {
+    myModelEventDispatch.dependenciesChanged(this, new DependencyChangeBridge(new SModelLanguageEvent(this, language, true)));
+  }
+
+  @Override
+  protected void fireUsedLanguageRemoved(SLanguage language) {
+    myModelEventDispatch.dependenciesChanged(this, new DependencyChangeBridge(new SModelLanguageEvent(this, language, false)));
+  }
+
+  @Override
+  protected void fireDevKitAdded(SModuleReference ref) {
+    myModelEventDispatch.dependenciesChanged(this, new DependencyChangeBridge(new SModelDevKitEvent(this, ref, true)));
+  }
+
+  @Override
+  protected void fireDevKitRemoved(SModuleReference ref) {
+    myModelEventDispatch.dependenciesChanged(this, new DependencyChangeBridge(new SModelDevKitEvent(this, ref, false)));
+  }
+
+  @Override
+  protected void fireModelImportAdded(SModelReference ref) {
+    myModelEventDispatch.dependenciesChanged(this, new DependencyChangeBridge(new SModelImportEvent(this, ref, true)));
+  }
+
+  @Override
+  protected void fireModelImportRemoved(SModelReference ref) {
+    myModelEventDispatch.dependenciesChanged(this, new DependencyChangeBridge(new SModelImportEvent(this, ref, false)));
+  }
+
+  protected void fireModelNodesChanged() {
+    myModelEventDispatch.nodesChanged(this);
+  }
+
+  @Override
   public void changeModelReference(SModelReference newModelReference) {
     super.changeModelReference(newModelReference);
     myModelReference = newModelReference;
   }
+
+  @Override
+  public boolean isDisposed() {
+    final jetbrains.mps.smodel.SModel mi = getCurrentModelInternal();
+    if (mi == null) {
+      return false;
+    }
+    return mi.isDisposed();
+  }
+
+  @Override
+  @Nullable
+  public final StackTraceElement[] getDisposedStacktrace() {
+    final jetbrains.mps.smodel.SModel mi = getCurrentModelInternal();
+    if (mi == null) {
+      return null;
+    }
+    return mi.getDisposedStacktrace();
+  }
+
 
   /**
    * This method does nothing about model load state, it updates model descriptor of the models passed and dispatches a notification.
@@ -418,23 +484,25 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
    * XXX there are two uses in subclasses of not-so-nice EditableSModelBase (lazy and custom) that can't get replaced readily with
    * nice and convenient RegularModelDescriptor.replace() call.
    */
-  protected synchronized void replaceModelAndFireEvent(jetbrains.mps.smodel.SModel oldModel, jetbrains.mps.smodel.SModel newModel) {
+  protected void replaceModelAndFireEvent(jetbrains.mps.smodel.SModel oldModel, jetbrains.mps.smodel.SModel newModel) {
     if (oldModel != null) {
-      oldModel.setModelDescriptor(null);
+      oldModel.dispose();
     }
     if (newModel != null) {
-      newModel.setModelDescriptor(this);
-    }
-    if (oldModel != null) {
-      notifyModelReplaced(oldModel);
-      // ONCE notifyModelReplaced gone, don't forget to dispose oldModel here (SModelRepository does this in addition to notification dispatch)
+      newModel.setModelDescriptor(this, getNodeEventDispatch());
     }
 
-    fireModelReplaced();
+    if (oldModel != null && newModel != null) {
+      // there are events like model 'loaded' (null to something) and 'unloaded' (something to null), I don't see a reason
+      // to distrubute 'replaced' unless both are 'something'. However, there are exceptions (defects), see #unload(),
+      // where explicit fireModelReplaced() is necessary
+      fireModelReplaced();
+    }
 
-    if (getRepository() != null) { // for a model not yet visible to anyone, no reason to drop a cache
+    if (getRepository() instanceof MPSModuleRepository) { // for a model not yet visible to anyone, no reason to drop a cache
       // FIXME cache invalidation shall be a repository listener, and not done forcefully on model change
-      MPSModuleRepository.getInstance().invalidateCaches();
+      //       Besides, invalidateCaches() doesn't really care about model contents at all, it refreshes module scope which deals with modules only.
+      ((MPSModuleRepository) getRepository()).invalidateCaches();
     }
   }
 
@@ -481,7 +549,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
    * loading whole model.
    */
   @NotNull
-  public final ModelEventDispatch getNodeEventDispatch() {
+  protected final ModelEventDispatch getNodeEventDispatch() {
     return myNodeEventDispatch;
   }
 }

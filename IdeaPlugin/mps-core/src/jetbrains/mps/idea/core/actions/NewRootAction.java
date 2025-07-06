@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.actions;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataKey;
@@ -30,6 +30,7 @@ import com.intellij.openapi.util.Ref;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
 import jetbrains.mps.icons.MPSIcons.Nodes;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.icons.GlobalIconManager;
@@ -42,7 +43,7 @@ import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.action.NodeFactoryManager;
-import jetbrains.mps.smodel.constraints.ModelConstraints;
+import jetbrains.mps.smodel.constraints.ConstraintsCanBeFacade;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -97,6 +98,11 @@ public class NewRootAction extends AnAction {
       FileEditorManager.getInstance(myProject).openFile(
         NodeVirtualFileSystem.getInstance().getFileFor(ProjectHelper.getProjectRepository(myProject), createdNode.get()), true);
     }
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
 
   @Override
@@ -158,7 +164,8 @@ public class NewRootAction extends AnAction {
       Set<SLanguage> modelLanguages = SModelOperations.getAllLanguageImports(model);
       for (SLanguage language : modelLanguages) {
         for (SAbstractConcept concept : language.getConcepts()) {
-          if (ModelConstraints.canBeRoot(concept, model)) {
+          // XXX perhaps, shall exclude abstract concepts/interfaces right away, w/o need to go to constraints
+          if (ConstraintsCanBeFacade.checkCanBeRoot(new CanBeRootContext(concept, model)).isEmpty()) {
             myConceptFqNameToNodePointerMap.put(concept.getQualifiedName(), concept);
           }
         }
@@ -176,7 +183,7 @@ public class NewRootAction extends AnAction {
         for (Map.Entry<String, SAbstractConcept> entry : concepts.entrySet()) {
           String conceptFqName = entry.getKey();
           SAbstractConcept concept = entry.getValue();
-          final GlobalIconManager globalIconManager = ApplicationManager.getApplication().getComponent(GlobalIconManager.class);
+          final GlobalIconManager globalIconManager = GlobalIconManager.getInstance();
           final Icon conceptIcon = globalIconManager == null ? Nodes.RootNode : globalIconManager.getIconFor(concept);
           dialog.getKindCombo().addItem(concept.getConceptAlias(), conceptIcon, conceptFqName);
           dialog.setTemplateKindComponentsVisible(true);

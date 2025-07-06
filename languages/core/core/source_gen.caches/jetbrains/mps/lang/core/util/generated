@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-5lhlyom1idwyjlkcbp1ldqj474264vh" />
+<product version="3" modelHash="d6suwjkdobekdjov0bxyv6wiamyfvt2">
+  <files names="OldCommentContainerMigration.java" />
+</product>
 

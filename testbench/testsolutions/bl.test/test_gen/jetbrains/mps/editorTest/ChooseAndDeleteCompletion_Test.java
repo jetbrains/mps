@@ -4,26 +4,40 @@ package jetbrains.mps.editorTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
+import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 
 @MPSLaunch
 public class ChooseAndDeleteCompletion_Test extends BaseTransformationTest {
-  @Test
-  public void test_ChooseAndDeleteCompletion() throws Throwable {
-    initTest("${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)");
-    runTest("jetbrains.mps.editorTest.ChooseAndDeleteCompletion_Test$TestBody", "testMethod", false);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ChooseAndDeleteCompletion_Test.class).projectPath(null).modelRef("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)").reopenProject(false).build());
+
+  public ChooseAndDeleteCompletion_Test() {
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
-  @MPSLaunch
-  public static class TestBody extends BaseEditorTestBody {
+  @Test
+  public void test_ChooseAndDeleteCompletion() throws Throwable {
+    new TestBody(this).testMethod();
+  }
+
+  /*package*/ static class TestBody extends BaseEditorTestBody {
+
+    /*package*/ TestBody(TransformationTest owner) {
+      super(owner);
+    }
+
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("8933061889659446777", "8933061889659446787");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-      typeString("aDe");
+      typeString("taDe");
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " DOWN"));
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " BACK_SPACE"));
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " BACK_SPACE"));

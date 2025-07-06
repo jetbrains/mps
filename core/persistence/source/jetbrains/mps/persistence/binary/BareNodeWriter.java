@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.function.Predicate;
 
 /**
  * Minimalistic binary persistence, straightforward, to serialize nodes individually.
@@ -53,12 +54,18 @@ public class BareNodeWriter {
   static final byte REF_THIS_MODEL = 17;
   static final byte REF_OTHER_MODEL = 18;
 
-  protected final SModelReference myModelReference;
+  protected final Predicate<SModelReference> myLocalModelReference;
   protected final ModelOutputStream myOut;
+  private boolean myWriteUserObjects = true; // true is legacy setting
 
-  public BareNodeWriter(@NotNull SModelReference modelReference, @NotNull ModelOutputStream os) {
-    myModelReference = modelReference;
+  public BareNodeWriter(@NotNull Predicate<SModelReference> localModelRefPredicate, @NotNull ModelOutputStream os, boolean writeUserObjects) {
+    myLocalModelReference = localModelRefPredicate;
     myOut = os;
+    myWriteUserObjects = writeUserObjects;
+  }
+
+  public BareNodeWriter(@NotNull ModelOutputStream os) {
+    this(x -> false, os, true);
   }
 
   public void writeNodes(Collection<SNode> nodes) throws IOException {
@@ -68,6 +75,15 @@ public class BareNodeWriter {
     }
   }
 
+  /**
+   * By default, recognized user objects are written (legacy setting)
+   * @return {@code this} for chaining
+   */
+  public BareNodeWriter keepUserObjects(boolean needUserObjects) {
+    myWriteUserObjects = needUserObjects;
+    return this;
+  }
+
   public final void writeNode(SNode node) throws IOException {
     writeNodePrim(node);
 
@@ -75,11 +91,13 @@ public class BareNodeWriter {
 
     writeProperties(node);
 
-    writeUserObjects(node);
+    if (myWriteUserObjects) {
+      writeUserObjects(node);
+    }
 
     writeReferences(node);
 
-    writeNodes(IterableUtil.asCollection(node.getChildren()));
+    writeChildren(node);
 
     myOut.writeByte('}');
   }
@@ -99,6 +117,10 @@ public class BareNodeWriter {
     }
   }
 
+  protected void writeChildren(SNode node) throws IOException {
+    writeNodes(IterableUtil.asCollection(node.getChildren()));
+  }
+
   protected void writeReferenceTarget(SReference reference) throws IOException {
     SModelReference targetModelReference = reference.getTargetSModelReference();
     if (reference instanceof StaticReference) {
@@ -116,7 +138,7 @@ public class BareNodeWriter {
     } else {
       throw new IOException("cannot store reference: " + reference.toString());
     }
-    if (targetModelReference != null && targetModelReference.equals(myModelReference)) {
+    if (myLocalModelReference.test(targetModelReference)) {
       myOut.writeByte(REF_THIS_MODEL);
     } else {
       myOut.writeByte(REF_OTHER_MODEL);
@@ -137,7 +159,7 @@ public class BareNodeWriter {
 
 
   protected void writeUserObjects(SNode node) throws IOException {
-    final ArrayList<Object> knownUserObject = new ArrayList<Object>();
+    final ArrayList<Object> knownUserObject = new ArrayList<>();
     for (Object key : node.getUserObjectKeys()) {
       Object value = node.getUserObject(key);
       if (isKnownUserObject(key) && isKnownUserObject(value)) {

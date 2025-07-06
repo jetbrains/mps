@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,132 +13,87 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.jps.persistence;
 
+import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.persistence.FileDataSource;
+import jetbrains.mps.extapi.persistence.ModelRootBase;
 import jetbrains.mps.idea.core.module.CachedModelData;
+import jetbrains.mps.idea.core.module.CachedModelData.Kind;
 import jetbrains.mps.idea.core.module.CachedModuleData;
 import jetbrains.mps.idea.core.module.CachedRepositoryData;
-import jetbrains.mps.persistence.DefaultModelRoot;
-import jetbrains.mps.persistence.BinaryModelPersistence;
+import jetbrains.mps.persistence.BinaryModelFactory;
 import jetbrains.mps.persistence.DefaultModelPersistence;
-import jetbrains.mps.smodel.Generator;
+import jetbrains.mps.persistence.DefaultModelRoot;
+import jetbrains.mps.persistence.FilePerRootDataSource;
+import jetbrains.mps.persistence.FilePerRootModelFactory;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.model.SModelId;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
+import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * evgeny, 12/11/12
  */
-public class CachedDefaultModelRoot extends DefaultModelRoot {
+public class CachedDefaultModelRoot extends ModelRootBase {
 
-  private CachedRepositoryData myCachedRepository;
+  private final DefaultModelRoot myDelegate;
 
-  public CachedDefaultModelRoot(CachedRepositoryData repo) {
-    myCachedRepository = repo;
+  public CachedDefaultModelRoot(CachedRepositoryData repo, DefaultModelRoot delegate) {
+    myDelegate = delegate;
   }
 
   @Override
-  public Iterable<SModel> loadModels() {
-    SModule module = getModule();
-    if (module instanceof Generator) {
-      module = ((Generator) module).getSourceLanguage();
-    }
-    if (module == null) {
-      return super.loadModels();
-    }
-
-    CachedModuleData moduleData = myCachedRepository.getModuleData(module.getModuleReference());
-    if (moduleData == null) {
-      return super.loadModels();
-    }
-
-    List<CachedModelData> models = moduleData.getModels(this);
-    if (models == null) {
-      return super.loadModels();
-    }
-
-    List<SModel> result = new ArrayList<SModel>();
-    Map<String, String> options = new HashMap<String, String>();
-    options.put(ModelFactory.OPTION_MODULEREF, module.getModuleReference().toString());
-
-    for (CachedModelData mdata : models) {
-      IFile file = myFileSystem.getFile(mdata.getFile());
-      FileDataSource source = new FileDataSource(file, this);
-      Object header = mdata.getHeader();
-      if (mdata.getCacheKind() == CachedModelData.Kind.Binary) {
-        result.add(BinaryModelPersistence.createFromHeader(((SModelHeader) header), source));
-      } else if (mdata.getCacheKind() == CachedModelData.Kind.Regular) {
-        result.add(DefaultModelPersistence.createFromHeader((SModelHeader) header, source));
-      } else {
-        String fileName = file.getName();
-        String extension = FileUtil.getExtension(fileName);
-
-        if (extension == null) continue;
-        ModelFactory modelFactory = PersistenceFacade.getInstance().getModelFactory(extension);
-        if (modelFactory == null) continue;
-
-        fillOptions(file, options);
-        try {
-          SModel model = modelFactory.load(source, Collections.unmodifiableMap(options));
-          result.add(model);
-        } catch (IOException e) {
-          // TODO handle errors
-        }
-      }
-    }
-    return result;
+  public String getType() {
+    return myDelegate.getType();
   }
 
-  private void fillOptions(IFile file, Map<String, String> options) {
-    String relPath = null;
-    String filePath = file.getPath().replace("\\", "/");
-    for (String path : getFiles(SOURCE_ROOTS)) {
-      String normalized = FileUtil.getAbsolutePath(path).replace("\\", "/");
-      if (!normalized.endsWith("/")) {
-        normalized = normalized + "/";
-      }
-      if (filePath.startsWith(normalized)) {
-        relPath = filePath.substring(normalized.length());
-        break;
-      }
-    }
+  @Override
+  public String getPresentation() {
+    return getClass().getName();
+  }
 
-    options.put(ModelFactory.OPTION_RELPATH, makeRelative(getContentRoot(), filePath));
-    options.remove(ModelFactory.OPTION_PACKAGE);
-    options.remove(ModelFactory.OPTION_MODELNAME);
-    if (relPath != null) {
-      StringBuilder p = new StringBuilder();
-      int slash = relPath.indexOf('/');
-      int start = 0;
-      while (slash >= 0) {
-        String part = relPath.substring(0, slash);
-        if (JavaNameUtil.isJavaIdentifier(part)) {
-          return;
-        }
-        start = slash + 1;
-        slash = relPath.indexOf('/', start);
-        if (p.length() != 0) {
-          p.append(".");
-        }
-        p.append(part);
-      }
-      options.put(ModelFactory.OPTION_PACKAGE, p.toString());
-      String fileNameWE = FileUtil.getNameWithoutExtension(relPath.substring(start));
-      if (p.length() != 0) {
-        p.append(".");
-      }
-      p.append(fileNameWE);
-      options.put(ModelFactory.OPTION_MODELNAME, p.toString());
-    }
+  @Override
+  public boolean canCreateModels() {
+    return false;
+  }
+
+
+  @Override
+  public void save(@NotNull Memento memento) {
+    // intentionally no-op
+  }
+
+  @Override
+  public void load(@NotNull Memento memento) {
+    // get delegate ready to load models if we fail
+    myDelegate.load(memento);
+  }
+
+  @Override
+  public void setModule(@NotNull SModuleBase module) {
+    super.setModule(module);
+    // get delegate ready to load models, just in case there's no cached data.
+    // delegate needs access to module to find out model creation options, see j.m.persistence.ParametersCalculator
+    myDelegate.setModule(module);
+  }
+
+  @NotNull
+  @Override
+  public Iterable<SModel> loadModels() {
+    return Collections.emptyList();
   }
 }

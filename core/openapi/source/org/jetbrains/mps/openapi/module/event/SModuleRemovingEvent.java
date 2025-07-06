@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,19 @@ package org.jetbrains.mps.openapi.module.event;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
 public class SModuleRemovingEvent extends SRepositoryModuleEvent {
+  private final SModuleReference myModuleReference;
 
   public SModuleRemovingEvent(@NotNull SModule module) {
     super(module);
+    // keep a copy, just in case SModule impl has some weird logic inside getModuleReference() that won't work (produce different result) for a detached module
+    myModuleReference = module.getModuleReference();
+  }
+
+  public SModuleReference getModuleReference() {
+    return myModuleReference;
   }
 
   @Override

@@ -5,148 +5,183 @@ package jetbrains.mps.lang.resources.behavior;
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
-import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
+import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
+import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
+import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
-import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.generator.fileGenerator.FileGenerationUtil;
-import jetbrains.mps.util.MacrosFactory;
-import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
+import java.util.Objects;
+import com.intellij.ui.icons.ImageDescriptor;
+import com.intellij.ui.icons.ImageDescriptorKt;
+import com.intellij.ui.scale.ScaleContext;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import java.io.InputStream;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.util.ReadUtil;
 import java.io.IOException;
-import org.apache.log4j.Level;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.util.MacroHelper;
-import javax.swing.ImageIcon;
+import java.io.File;
+import java.io.FileInputStream;
+import javax.imageio.ImageIO;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, "jetbrains.mps.lang.resources.structure.FileIcon");
-  private static final BehaviorRegistry REGISTRY = ConceptRegistry.getInstance().getBehaviorRegistry();
 
-  public static final SMethod<List<Tuples._2<IFile, byte[]>>> generate_id7Mb2akaesv8 = new SMethodBuilder<List<Tuples._2<IFile, byte[]>>>(new SJavaCompoundTypeImpl((Class<List<Tuples._2<IFile, byte[]>>>) ((Class) Object.class))).name("generate").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7Mb2akaesv8").registry(REGISTRY).build(SMethodBuilder.createJavaParameter(IFile.class, ""));
-  /*package*/ static final SMethod<Tuples._2<IFile, byte[]>> copyFile_id34SjXUxB1C6 = new SMethodBuilder<Tuples._2<IFile, byte[]>>(new SJavaCompoundTypeImpl((Class<Tuples._2<IFile, byte[]>>) ((Class) Object.class))).name("copyFile").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("34SjXUxB1C6").registry(REGISTRY).build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(IFile.class, ""));
-  public static final SMethod<Boolean> isValid_id7Mb2akaestJ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValid").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7Mb2akaestJ").registry(REGISTRY).build();
-  public static final SMethod<String> getFilename_id7Mb2akaesuN = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFilename").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7Mb2akaesuN").registry(REGISTRY).build();
-  public static final SMethod<String> getResourceId_id2p1v3tOadt0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getResourceId").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2p1v3tOadt0").registry(REGISTRY).build();
+  public static final SMethod<String> getNamingConventionNewuiFileName_id1$fQzw7$wcx = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNamingConventionNewuiFileName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805901909778891553L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  public static final SMethod<String> getNewuiFileName_id1$fQzw7yhpR = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNewuiFileName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805901909778306679L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  public static final SMethod<List<Tuples._2<IFile, byte[]>>> generate_id7Mb2akaesv8 = new SMethodBuilder<List<Tuples._2<IFile, byte[]>>>(new SJavaCompoundTypeImpl((Class<List<Tuples._2<IFile, byte[]>>>) ((Class) Object.class))).name("generate").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8974276187400030152L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(IFile.class, ""));
+  public static final SMethod<List<String>> getAdditionalFiles_id2NwO_B0ZkCe = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getAdditionalFiles").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3233815815383763470L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  /*package*/ static final SMethod<Tuples._2<IFile, byte[]>> copyFile_id34SjXUxB1C6 = new SMethodBuilder<Tuples._2<IFile, byte[]>>(new SJavaCompoundTypeImpl((Class<Tuples._2<IFile, byte[]>>) ((Class) Object.class))).name("copyFile").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(3546672524166961670L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(IFile.class, ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<Boolean> isValid_id7Mb2akaestJ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8974276187400030063L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  public static final SMethod<Boolean> isExplicitNewuiFileValid_id1$fQzw7$eeH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isExplicitNewuiFileValid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805901909778817965L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  public static final SMethod<Boolean> isNewuiFileAvailable_id1$fQzw7$tKW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isNewuiFileAvailable").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805901909778881596L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  /*package*/ static final SMethod<Boolean> isFileValid_id1$fQzw7$hd7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFileValid").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1805901909778830151L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<String> getResourceId_id2p1v3tOadt0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getResourceId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2756621024541333312L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  public static final SMethod<String> getNewuiResourceId_id1$fQzw7$LYY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNewuiResourceId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805901909778964414L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(generate_id7Mb2akaesv8, copyFile_id34SjXUxB1C6, isValid_id7Mb2akaestJ, getFilename_id7Mb2akaesuN, getResourceId_id2p1v3tOadt0);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNamingConventionNewuiFileName_id1$fQzw7$wcx, getNewuiFileName_id1$fQzw7yhpR, generate_id7Mb2akaesv8, getAdditionalFiles_id2NwO_B0ZkCe, copyFile_id34SjXUxB1C6, isValid_id7Mb2akaestJ, isExplicitNewuiFileValid_id1$fQzw7$eeH, isNewuiFileAvailable_id1$fQzw7$tKW, isFileValid_id1$fQzw7$hd7, getResourceId_id2p1v3tOadt0, getNewuiResourceId_id1$fQzw7$LYY);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static List<Tuples._2<IFile, byte[]>> generate_id7Mb2akaesv8(@NotNull SNode __thisNode__, IFile outputRoot) {
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x26417c377428f6b3L, "file")))) {
-      // todo compatibility code to be removed after 3.4 
-      return null;
-    }
-
-    SModel model = SNodeOperations.getModel(__thisNode__);
-    IFile outputDir = FileGenerationUtil.getDefaultOutputDir(model, outputRoot);
-
-    String source = MacrosFactory.forModule((AbstractModule) model.getModule()).expandPath(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x26417c377428f6b3L, "file")));
-    final String name = FileUtil.getNameWithoutExtension(source);
-    final String ext = FileUtil.getExtension(source);
-
-    // copy 
-    List<Tuples._2<IFile, byte[]>> res = ListSequence.fromList(new ArrayList<Tuples._2<IFile, byte[]>>());
-    ListSequence.fromList(res).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invoke(__thisNode__, source, outputDir));
-    // list of suffixes can be found in ImageLoader.ImgeDescList.create() 
-    ListSequence.fromList(res).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invoke(__thisNode__, name + "@2x." + ext, outputDir));
-    ListSequence.fromList(res).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invoke(__thisNode__, name + "@2x_dark." + ext, outputDir));
-    ListSequence.fromList(res).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invoke(__thisNode__, name + "_dark." + ext, outputDir));
-    return ListSequence.fromList(res).where(new IWhereFilter<Tuples._2<IFile, byte[]>>() {
-      public boolean accept(Tuples._2<IFile, byte[]> it) {
-        return it != null;
-      }
-    }).toListSequence();
+  /*package*/ static String getNamingConventionNewuiFileName_id1$fQzw7$wcx(@NotNull SNode __thisNode__) {
+    return FileUtil.getNameWithoutExtension(SPropertyOperations.getString(__thisNode__, PROPS.file$686H)) + "_newui.svg";
   }
-  protected static Logger LOG = LogManager.getLogger(FileIcon__BehaviorDescriptor.class);
-  /*package*/ static Tuples._2<IFile, byte[]> copyFile_id34SjXUxB1C6(@NotNull SNode __thisNode__, String source, IFile outputDir) {
-    if (source == null) {
+  /*package*/ static String getNewuiFileName_id1$fQzw7yhpR(@NotNull SNode __thisNode__) {
+    if (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.newuiFile$Eed5))) {
+      return SPropertyOperations.getString(__thisNode__, PROPS.newuiFile$Eed5);
+    } else {
+      return FileIcon__BehaviorDescriptor.getNamingConventionNewuiFileName_id1$fQzw7$wcx.invoke(__thisNode__);
+    }
+  }
+  /*package*/ static List<Tuples._2<IFile, byte[]>> generate_id7Mb2akaesv8(@NotNull final SNode __thisNode__, final IFile outputDir) {
+    String fileName = SPropertyOperations.getString(__thisNode__, PROPS.file$686H);
+    if ((fileName == null || fileName.length() == 0)) {
       return null;
     }
-    IFile sourceFile = FileSystem.getInstance().getFileByPath(source);
-    IFile toFile = outputDir.getDescendant(sourceFile.getName());
+
+    List<Tuples._2<IFile, byte[]>> additional = ListSequence.fromList(new ArrayList<>());
+    // we copy files with non-module relative path only, and assume module-relative files get copied as files into deployed jar or made available as CL resource on sources.
+    if (!(fileName.startsWith(MacrosFactory.MODULE))) {
+      String source = MacrosFactory.forModule(SNodeOperations.getModel(__thisNode__).getModule()).expandPath(fileName);
+      // copy all possible selected files
+      ListSequence.fromList(additional).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invokeSpecial(__thisNode__, source, outputDir, ((boolean) true)));
+      ListSequence.fromList(additional).addSequence(ListSequence.fromList(FileIcon__BehaviorDescriptor.getAdditionalFiles_id2NwO_B0ZkCe.invoke(__thisNode__, source)).select((it) -> ((Tuples._2<IFile, byte[]>) FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invokeSpecial(__thisNode__, it, outputDir, ((boolean) false)))).where(new NotNullWhereFilter()));
+    }
+    if (!(Objects.equals(Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(__thisNode__), Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(__thisNode__))) && !(FileIcon__BehaviorDescriptor.getNewuiFileName_id1$fQzw7yhpR.invoke(__thisNode__).startsWith(MacrosFactory.MODULE))) {
+      //  old id != new id is condition employed in templates. Here, used to get emulated with copyFile(newuiSource,..., _false_)
+      String newuiSource = MacrosFactory.forModule(SNodeOperations.getModel(__thisNode__).getModule()).expandPath(FileIcon__BehaviorDescriptor.getNewuiFileName_id1$fQzw7yhpR.invoke(__thisNode__));
+      ListSequence.fromList(additional).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invokeSpecial(__thisNode__, newuiSource, outputDir, ((boolean) false)));
+      ListSequence.fromList(additional).addSequence(ListSequence.fromList(FileIcon__BehaviorDescriptor.getAdditionalFiles_id2NwO_B0ZkCe.invoke(__thisNode__, newuiSource)).select((it) -> ((Tuples._2<IFile, byte[]>) FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invokeSpecial(__thisNode__, it, outputDir, ((boolean) false)))).where(new NotNullWhereFilter()));
+    }
+    return additional;
+  }
+  /*package*/ static List<String> getAdditionalFiles_id2NwO_B0ZkCe(@NotNull SNode __thisNode__, final String sourcePath) {
+    if ((sourcePath == null || sourcePath.length() == 0)) {
+      return ListSequence.fromList(new ArrayList<String>());
+    }
+
+    final String ext = FileUtil.getExtension(sourcePath);
+
+    if (Objects.equals(ext, "svg") || Objects.equals(ext, "png")) {
+      // All possibly needed files
+      List<ImageDescriptor> imageDescriptors = ImageDescriptorKt.getImageDescriptors(sourcePath, true, true, ScaleContext.createIdentity());
+
+      final String prefix = FileUtil.getNameWithoutExtension(sourcePath);
+      return imageDescriptors.stream().map((desc) -> desc.pathTransform.invoke(prefix, ext)).filter((path) -> !(Objects.equals(path, sourcePath))).distinct().toList();
+    } else {
+      // Other formats are not supported by IconLoader, there is no point in loading dark and retina images as they will not be loaded by the same logic
+      // If we add support for other formats to be used in MPS with the same dark/retina logic in the future, we could remove this if and use the same logic as above (as it is compatible with any extension)
+      return ListSequence.fromList(new ArrayList<String>());
+    }
+  }
+  /*package*/ static Tuples._2<IFile, byte[]> copyFile_id34SjXUxB1C6(@NotNull SNode __thisNode__, String source, IFile outputDir, boolean mustExist) {
+    IFile sourceFile;
+    try {
+      sourceFile = outputDir.getFS().getFile(source);
+    } catch (PathFormatChecker.PathFormatException fe) {
+      if (!(mustExist)) {
+        return null;
+      }
+      throw new ResourceGenerationException("Failed to obtain source file " + source, fe);
+    }
+    IFile toFile = outputDir.findChild(sourceFile.getName());
 
     if (!(sourceFile.exists())) {
-      return null;
+      if (!(mustExist)) {
+        return null;
+      }
+      throw new ResourceGenerationException("File to copy does not exist: " + source);
     }
 
-    InputStream is = null;
-    Tuples._2<IFile, byte[]> res = null;
-    try {
-      is = sourceFile.openInputStream();
-      res = MultiTuple.<IFile,byte[]>from(toFile, ReadUtil.read(is));
+    try (InputStream is = sourceFile.openInputStream()) {
+      return MultiTuple.<IFile,byte[]>from(toFile, ReadUtil.read(is));
     } catch (IOException e) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
-        LOG.error("", e);
-      }
-    } finally {
-      FileUtil.closeFileSafe(is);
+      throw new ResourceGenerationException("Exception on copying" + source, e);
     }
-    return res;
   }
   /*package*/ static boolean isValid_id7Mb2akaestJ(@NotNull SNode __thisNode__) {
+    return ((boolean) FileIcon__BehaviorDescriptor.isFileValid_id1$fQzw7$hd7.invokeSpecial(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.file$686H)));
+  }
+  /*package*/ static boolean isExplicitNewuiFileValid_id1$fQzw7$eeH(@NotNull SNode __thisNode__) {
+    // TODO use in the editor
+    return ((boolean) FileIcon__BehaviorDescriptor.isFileValid_id1$fQzw7$hd7.invokeSpecial(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.newuiFile$Eed5)));
+  }
+  /*package*/ static boolean isNewuiFileAvailable_id1$fQzw7$tKW(@NotNull SNode __thisNode__) {
+    return ((boolean) FileIcon__BehaviorDescriptor.isFileValid_id1$fQzw7$hd7.invokeSpecial(__thisNode__, FileIcon__BehaviorDescriptor.getNewuiFileName_id1$fQzw7yhpR.invoke(__thisNode__)));
+  }
+  /*package*/ static boolean isFileValid_id1$fQzw7$hd7(@NotNull SNode __thisNode__, String name) {
     SModule module = SNodeOperations.getModel(__thisNode__).getModule();
-    if (!(module instanceof AbstractModule)) {
+    if (module == null) {
       return false;
     }
-    MacroHelper macroHelper = MacrosFactory.forModule((AbstractModule) module);
-    if (macroHelper == null) {
-      return false;
-    }
-    String path = macroHelper.expandPath(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x26417c377428f6b3L, "file")));
+    MacroHelper macroHelper = MacrosFactory.forModule(module);
+    String path = macroHelper.expandPath(name);
     if (path == null) {
       return false;
     }
-    IFile file = FileSystem.getInstance().getFileByPath(path);
-    if (!(file.exists())) {
-      return false;
-    }
-    try {
-      new ImageIcon(path);
+    File file = new File(path);
+    try (InputStream is = new FileInputStream(file)) {
+      // ImageIcon does not throw anything, ImageIO will. Still, it is not a great idea for SVG files
+      ImageIO.read(is);
       return true;
-    } catch (Throwable t) {
+    } catch (Throwable ex) {
       return false;
     }
-  }
-  @Deprecated
-  /*package*/ static String getFilename_id7Mb2akaesuN(@NotNull SNode __thisNode__) {
-    return ((String) Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(__thisNode__));
   }
   /*package*/ static String getResourceId_id2p1v3tOadt0(@NotNull SNode __thisNode__) {
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x26417c377428f6b3L, "file")))) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.file$686H))) {
       return null;
     }
-    return SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x26417c377428f6b3L, "file")).substring(SPropertyOperations.getString(__thisNode__, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x26417c377428f6b3L, "file")).lastIndexOf("/") + 1);
+    return SPropertyOperations.getString(__thisNode__, PROPS.file$686H).substring(SPropertyOperations.getString(__thisNode__, PROPS.file$686H).lastIndexOf('/') + 1);
+  }
+  /*package*/ static String getNewuiResourceId_id1$fQzw7$LYY(@NotNull SNode __thisNode__) {
+    if ((((boolean) FileIcon__BehaviorDescriptor.isNewuiFileAvailable_id1$fQzw7$tKW.invoke(__thisNode__)))) {
+      String newuiFileName = FileIcon__BehaviorDescriptor.getNewuiFileName_id1$fQzw7yhpR.invoke(__thisNode__);
+      return newuiFileName.substring(newuiFileName.lastIndexOf('/') + 1);
+    } else {
+      return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(__thisNode__);
+    }
   }
 
   /*package*/ FileIcon__BehaviorDescriptor() {
-    super(REGISTRY);
   }
 
   @Override
@@ -162,15 +197,27 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((List<Tuples._2<IFile, byte[]>>) generate_id7Mb2akaesv8(node, (IFile) parameters[0]));
+        return (T) ((String) getNamingConventionNewuiFileName_id1$fQzw7$wcx(node));
       case 1:
-        return (T) ((Tuples._2<IFile, byte[]>) copyFile_id34SjXUxB1C6(node, (String) parameters[0], (IFile) parameters[1]));
+        return (T) ((String) getNewuiFileName_id1$fQzw7yhpR(node));
       case 2:
-        return (T) ((Boolean) isValid_id7Mb2akaestJ(node));
+        return (T) ((List<Tuples._2<IFile, byte[]>>) generate_id7Mb2akaesv8(node, (IFile) parameters[0]));
       case 3:
-        return (T) ((String) getFilename_id7Mb2akaesuN(node));
+        return (T) ((List<String>) getAdditionalFiles_id2NwO_B0ZkCe(node, (String) parameters[0]));
       case 4:
+        return (T) ((Tuples._2<IFile, byte[]>) copyFile_id34SjXUxB1C6(node, (String) parameters[0], (IFile) parameters[1], ((boolean) (Boolean) parameters[2])));
+      case 5:
+        return (T) ((Boolean) isValid_id7Mb2akaestJ(node));
+      case 6:
+        return (T) ((Boolean) isExplicitNewuiFileValid_id1$fQzw7$eeH(node));
+      case 7:
+        return (T) ((Boolean) isNewuiFileAvailable_id1$fQzw7$tKW(node));
+      case 8:
+        return (T) ((Boolean) isFileValid_id1$fQzw7$hd7(node, (String) parameters[0]));
+      case 9:
         return (T) ((String) getResourceId_id2p1v3tOadt0(node));
+      case 10:
+        return (T) ((String) getNewuiResourceId_id1$fQzw7$LYY(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -199,7 +246,15 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
+  }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty file$686H = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x26417c377428f6b3L, "file");
+    /*package*/ static final SProperty newuiFile$Eed5 = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x190fda380786ee29L, "newuiFile");
   }
 }

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="a3dsgofqjv8y14v8egp15g7mten5zv2" />
+<product version="3" modelHash="-env1nsnhoste36gvx0h1908teaxtchk">
+  <files names="BaseToolDeclaration_number.java:CleanEditorTabCommandOnCreateProperty.java:CleanIdeaInitializerDescriptorVendorLogoProperty.java:ClearActionParameterIsOptional.java:MigrationDescriptor.java:UpdateActionsInBackground.java" />
+</product>
 

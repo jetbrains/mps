@@ -14,14 +14,14 @@ public class ThreadSafeSample {
   public ThreadSafeSample() {
   }
   public static void main(String[] args) throws InterruptedException {
-    // This sample shows that classes marked thread-safe will not be reported 
-    //  as inproperly used from within parallel for loops 
+    // This sample shows that classes marked thread-safe will not be reported
+    //  as inproperly used from within parallel for loops
 
-    // This is a thread safe class to exchange a single value between a producer and a consumer 
-    // Open the DropBox class definition and notice the "@thread safe" annotation for the class 
+    // This is a thread safe class to exchange a single value between a producer and a consumer
+    // Open the DropBox class definition and notice the "@thread safe" annotation for the class
     final DropBox<String> box = new DropBox<String>();
 
-    // A consumer thread reading and printing values exchanged through the drop box 
+    // A consumer thread reading and printing values exchanged through the drop box
     Thread thread = new Thread(new Runnable() {
       @Override
       public void run() {
@@ -45,23 +45,20 @@ public class ThreadSafeSample {
       for (final String name : names) {
 
         final String localA = name;
-
-        final Runnable runnable = new Runnable() {
-          public void run() {
+        final Runnable runnable = () -> {
+          try {
             try {
-              try {
-                // Notice no warning nor error reported 
-                box.store(localA);
-                // If the DropBox class was annotated as "@non thread safe", we would get an error reported 
-                // No annotation on the class would result in a warning 
-              } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-              }
-            } catch (RuntimeException e) {
-              ListSequence.fromList(exceptions_n0c).addElement(e);
-            } finally {
-              latch_n0c.countDown();
+              // Notice no warning nor error reported
+              box.store(localA);
+              // If the DropBox class was annotated as "@non thread safe", we would get an error reported
+              // No annotation on the class would result in a warning
+            } catch (InterruptedException e) {
+              throw new RuntimeException(e);
             }
+          } catch (RuntimeException e) {
+            ListSequence.fromList(exceptions_n0c).addElement(e);
+          } finally {
+            latch_n0c.countDown();
           }
         };
 
@@ -79,9 +76,9 @@ public class ThreadSafeSample {
 
     }
 
-    // By annotating a local variable, field or parameter declaration as thread safe you indicate that calling methods 
-    // on the object is thread-safe 
-    // Alt + Enter on variable declarations will let you mark and unmark them as thread-safe 
+    // By annotating a local variable, field or parameter declaration as thread safe you indicate that calling methods
+    // on the object is thread-safe
+    // Alt + Enter on variable declarations will let you mark and unmark them as thread-safe
     final String fixedValue = " fixed value ";
 
     {
@@ -91,17 +88,14 @@ public class ThreadSafeSample {
       for (final String name : names) {
 
         final String localA = name;
-
-        final Runnable runnable = new Runnable() {
-          public void run() {
-            try {
-              String finalString = localA + fixedValue.toUpperCase() + fixedFieldValue;
-              log("Result: " + finalString);
-            } catch (RuntimeException e) {
-              ListSequence.fromList(exceptions_u0c).addElement(e);
-            } finally {
-              latch_u0c.countDown();
-            }
+        final Runnable runnable = () -> {
+          try {
+            String finalString = localA + fixedValue.toUpperCase() + fixedFieldValue;
+            log("Result: " + finalString);
+          } catch (RuntimeException e) {
+            ListSequence.fromList(exceptions_u0c).addElement(e);
+          } finally {
+            latch_u0c.countDown();
           }
         };
 

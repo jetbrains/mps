@@ -2,8 +2,8 @@
 <model ref="r:b1dbf313-2794-40ca-90ec-f498ea7f9c90(jetbrains.mps.lang.resources.intentions)">
   <persistence version="9" />
   <languages>
-    <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="0" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="1" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -72,7 +72,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -101,7 +101,7 @@
             <node concept="2OqwBi" id="33BZsHocn3z" role="33vP2m">
               <node concept="2Sf5sV" id="33BZsHocn3$" role="2Oq$k0" />
               <node concept="3TrEf2" id="33BZsHocn3_" role="2OqNvi">
-                <ref role="3Tt5mk" to="1oap:7Mb2akaesr5" />
+                <ref role="3Tt5mk" to="1oap:7Mb2akaesr5" resolve="icon" />
               </node>
             </node>
           </node>
@@ -119,7 +119,7 @@
                 </node>
               </node>
               <node concept="3TrEf2" id="33BZsHocnGj" role="2OqNvi">
-                <ref role="3Tt5mk" to="1oap:5bVxHVEur_0" />
+                <ref role="3Tt5mk" to="1oap:5bVxHVEur_0" resolve="icon" />
               </node>
             </node>
           </node>

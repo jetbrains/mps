@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,16 +25,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
-import org.jetbrains.mps.openapi.module.SModuleId;
-import org.jetbrains.mps.openapi.module.SModuleListener;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -43,56 +38,27 @@ import java.util.Set;
  */
 public class FakeReloadableModule implements ReloadableModule {
   private final SModuleReference myModuleReference;
-  private final List<SDependency> myDeps = new ArrayList<>();
 
   public FakeReloadableModule(String name) {
     myModuleReference = new ModuleReference(name, ModuleId.regular());
   }
 
-  public void addDependency(SDependency dep) {
-    myDeps.add(dep);
+  @NotNull
+  @Override
+  public Class<?> getClass(@NotNull String classFqName) {
+    throw new UnsupportedOperationException("Not implemented");
   }
 
   @NotNull
   @Override
-  public Class<?> getClass(String classFqName) throws ClassNotFoundException, ModuleClassNotFoundException, ModuleIsNotLoadableException {
-    throw new NotImplementedException();
+  public Class<?> getOwnClass(@NotNull String classFqName) {
+    throw new UnsupportedOperationException("Not implemented");
   }
 
   @NotNull
   @Override
-  public Class<?> getOwnClass(String classFqName) throws ClassNotFoundException, ModuleClassNotFoundException, ModuleIsNotLoadableException {
-    throw new NotImplementedException();
-  }
-
-  @Nullable
-  @Override
-  public ClassLoader getClassLoader() {
-    throw new NotImplementedException();
-  }
-
-  @Override
-  public ClassLoader getRootClassLoader() {
-    return null;
-  }
-
-  @Override
-  public void reload() {
-  }
-
-  @Override
-  public boolean willLoad() {
-    return true;
-  }
-
-  @Override
-  public SModuleId getModuleId() {
-    return myModuleReference.getModuleId();
-  }
-
-  @Override
-  public String getModuleName() {
-    return myModuleReference.getModuleName();
+  public MPSModuleClassLoader getClassLoader() {
+    throw new UnsupportedOperationException("Not implemented");
   }
 
   @NotNull
@@ -118,23 +84,12 @@ public class FakeReloadableModule implements ReloadableModule {
 
   @Override
   public Iterable<SDependency> getDeclaredDependencies() {
-    return myDeps;
+    return Collections.emptyList();
   }
 
   @Override
   public Set<SLanguage> getUsedLanguages() {
-    return null;
-  }
-
-  @Override
-  public int getUsedLanguageVersion(@NotNull SLanguage usedLanguage) {
-    return 0;
-  }
-
-  @Nullable
-  @Override
-  public SModel resolveInDependencies(SModelId ref) {
-    return null;
+    return Collections.emptySet();
   }
 
   @Nullable
@@ -143,34 +98,20 @@ public class FakeReloadableModule implements ReloadableModule {
     return null;
   }
 
+  @NotNull
   @Override
   public Iterable<SModel> getModels() {
     return Collections.emptyList();
   }
 
+  @NotNull
   @Override
   public Iterable<SModuleFacet> getFacets() {
-    return null;
-  }
-
-  @Nullable
-  @Override
-  public <T extends SModuleFacet> T getFacet(Class<T> clazz) {
-    return null;
+    return Collections.emptyList();
   }
 
   @Override
   public Iterable<ModelRoot> getModelRoots() {
     return Collections.emptyList();
-  }
-
-  @Override
-  public void addModuleListener(SModuleListener listener) {
-
-  }
-
-  @Override
-  public void removeModuleListener(SModuleListener listener) {
-
   }
 }

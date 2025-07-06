@@ -4,3005 +4,640 @@ package jetbrains.mps.debug.evaluation.transform.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
+import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.debugger.java.api.evaluation.transform.TransformatorBuilder;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 
 @MPSLaunch
 public class TransformationUtil_Complex_Test extends BaseTransformationTest {
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TransformationUtil_Complex_Test.class).projectPath(null).modelRef("r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)").reopenProject(null).build());
+
+  public TransformationUtil_Complex_Test() {
+    super(ourParametersCacheExtension.getParametersCache());
+  }
+
   @Test
   public void test_localIntVariableDeclaration() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_localIntVariableDeclaration", true);
+    new TestBody(this).test_localIntVariableDeclaration();
   }
   @Test
   public void test_localBoxedIntVariableDeclaration() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_localBoxedIntVariableDeclaration", true);
+    new TestBody(this).test_localBoxedIntVariableDeclaration();
   }
   @Test
   public void test_localBoxedIntVariableSecondDeclaration() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_localBoxedIntVariableSecondDeclaration", true);
+    new TestBody(this).test_localBoxedIntVariableSecondDeclaration();
   }
   @Test
   public void test_localIntVariableAssignment() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_localIntVariableAssignment", true);
+    new TestBody(this).test_localIntVariableAssignment();
   }
   @Test
   public void test_localBoxedIntVariableAssignment() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_localBoxedIntVariableAssignment", true);
+    new TestBody(this).test_localBoxedIntVariableAssignment();
   }
   @Test
   public void test_localObjectVariableDeclaration() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_localObjectVariableDeclaration", true);
+    new TestBody(this).test_localObjectVariableDeclaration();
   }
   @Test
   public void test_localObjectVariableAssignment() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_localObjectVariableAssignment", true);
+    new TestBody(this).test_localObjectVariableAssignment();
   }
   @Test
   public void test_localUnBoxedIntVarAssignment() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_localUnBoxedIntVarAssignment", true);
+    new TestBody(this).test_localUnBoxedIntVarAssignment();
   }
   @Test
   public void test_localUnBoxedIntVarDeclaration() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_localUnBoxedIntVarDeclaration", true);
+    new TestBody(this).test_localUnBoxedIntVarDeclaration();
   }
   @Test
   public void test_andAssignmentExpression() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_andAssignmentExpression", true);
+    new TestBody(this).test_andAssignmentExpression();
   }
   @Test
   public void test_divAssignmentExpression() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_divAssignmentExpression", true);
+    new TestBody(this).test_divAssignmentExpression();
   }
   @Test
   public void test_leftShiftAssignmentExpression() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_leftShiftAssignmentExpression", true);
+    new TestBody(this).test_leftShiftAssignmentExpression();
   }
   @Test
   public void test_minusAssignmentExpression() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_minusAssignmentExpression", true);
+    new TestBody(this).test_minusAssignmentExpression();
   }
   @Test
   public void test_mulAssignmentExpression() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_mulAssignmentExpression", true);
+    new TestBody(this).test_mulAssignmentExpression();
   }
   @Test
   public void test_orAssignmentExpression() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_orAssignmentExpression", true);
+    new TestBody(this).test_orAssignmentExpression();
   }
   @Test
   public void test_plusAssignmentExpression() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_plusAssignmentExpression", true);
+    new TestBody(this).test_plusAssignmentExpression();
   }
   @Test
   public void test_remAssignmentExpression() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_remAssignmentExpression", true);
+    new TestBody(this).test_remAssignmentExpression();
   }
   @Test
   public void test_rightShiftAssignmentExpression() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_rightShiftAssignmentExpression", true);
+    new TestBody(this).test_rightShiftAssignmentExpression();
   }
   @Test
   public void test_xorAssignmentExpression() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_xorAssignmentExpression", true);
+    new TestBody(this).test_xorAssignmentExpression();
   }
   @Test
   public void test_lowLevelVariableInForeach() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_lowLevelVariableInForeach", true);
+    new TestBody(this).test_lowLevelVariableInForeach();
   }
   @Test
   public void test_lowLevelIntVariableInForeach() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_lowLevelIntVariableInForeach", true);
+    new TestBody(this).test_lowLevelIntVariableInForeach();
   }
   @Test
   public void test_notNullString() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_notNullString", true);
+    new TestBody(this).test_notNullString();
   }
   @Test
   public void test_nodeReferenceCountViewer() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_nodeReferenceCountViewer", true);
+    new TestBody(this).test_nodeReferenceCountViewer();
   }
   @Test
   public void test_arrayInForeach() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_arrayInForeach", true);
+    new TestBody(this).test_arrayInForeach();
   }
   @Test
   public void test_newArrayOfString() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_newArrayOfString", true);
+    new TestBody(this).test_newArrayOfString();
   }
   @Test
   public void test_newEmptyArrayOfString() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_newEmptyArrayOfString", true);
+    new TestBody(this).test_newEmptyArrayOfString();
   }
   @Test
   public void test_newEmptyArrayOfInt() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_newEmptyArrayOfInt", true);
+    new TestBody(this).test_newEmptyArrayOfInt();
   }
   @Test
   public void test_optimizeToStringForString() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_optimizeToStringForString", true);
+    new TestBody(this).test_optimizeToStringForString();
   }
   @Test
   public void test_ternaryOperatorForString() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_ternaryOperatorForString", true);
+    new TestBody(this).test_ternaryOperatorForString();
   }
   @Test
   public void test_ternaryOperatorForStringIfTrue() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_ternaryOperatorForStringIfTrue", true);
+    new TestBody(this).test_ternaryOperatorForStringIfTrue();
   }
   @Test
   public void test_ternaryOperatorForStringCondition() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_ternaryOperatorForStringCondition", true);
+    new TestBody(this).test_ternaryOperatorForStringCondition();
   }
   @Test
   public void test_urlClassloaderCast() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_urlClassloaderCast", true);
+    new TestBody(this).test_urlClassloaderCast();
   }
   @Test
   public void test_primitiveCast() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_primitiveCast", true);
+    new TestBody(this).test_primitiveCast();
   }
   @Test
   public void test_objectCast() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_objectCast", true);
+    new TestBody(this).test_objectCast();
   }
   @Test
   public void test_arrayCast() throws Throwable {
-    initTest("${mps_home}", "r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)", false);
-    runTest("jetbrains.mps.debug.evaluation.transform.tests.TransformationUtil_Complex_Test$TestBody", "test_arrayCast", true);
+    new TestBody(this).test_arrayCast();
   }
 
-  @MPSLaunch
-  public static class TestBody extends BaseTestBody {
+  /*package*/ static class TestBody extends BaseTestBody {
+
+    /*package*/ TestBody(TransformationTest owner) {
+      super(owner);
+    }
+
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7696059916860905166", "7696059916860905175", "7413144797245913930", "7413144797245913907", "770214570644685900", "770214570644685874", "5325372602757295234", "5325372602757295196", "7413144797245913984", "7413144797245913951", "770214570644685972", "770214570644685987", "7413144797245757993", "7413144797245757970", "7413144797245923854", "7413144797245923874", "7413144797245923956", "7413144797245923931", "89292631370179155", "89292631370179171", "89292631370193169", "89292631370193137", "89292631370193120", "89292631370193088", "89292631370192751", "89292631370192719", "89292631370192827", "89292631370192795", "89292631370193071", "89292631370193039", "89292631370193022", "89292631370192990", "89292631370192973", "89292631370192941", "89292631370192924", "89292631370192892", "89292631370196920", "89292631370196888", "8638796163619025272", "8638796163619040050", "1774703052633005919", "1774703052633005889", "6583956526375658284", "6583956526375658318", "4322674958982459622", "4322674958982459586", "2281056005883150415", "2281056005883150385", "8071722462615359839", "8071722462615359818", "335932010435400773", "335932010435400761", "4609929908986493501", "4609929908986493490", "4816137365279714844", "4816137365279714834", "4587766555754887082", "4587766555754887052", "4587766555754950813", "4587766555754950780", "4587766555754950763", "4587766555754950730", "1247401079809823523", "1247401079809823496", "5586226261252332122", "5586226261252332105", "3525964900474412382", "3525964900474412366", "5586226261252332093", "5586226261252332076");
+    }
+
     public void test_localIntVariableDeclaration() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("7696059916860905171"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("7696059916860905171"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("7696059916860905177"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("localIntVarDeclaration"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localIntVarDeclaration"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localIntVarDeclarationResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_localBoxedIntVariableDeclaration() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("770214570644685905"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("770214570644685905"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("770214570644685876"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("localBoxedIntVarDeclaration"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localBoxedIntVarDeclaration"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localBoxedIntVarDeclarationResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_localBoxedIntVariableSecondDeclaration() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("5325372602757295239"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("5325372602757295239"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("5325372602757295198"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("localBoxedIntVarSecondDeclaration"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localBoxedIntVarSecondDeclaration"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localBoxedIntVarSecondDeclarationResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_localIntVariableAssignment() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("7413144797245913935"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("7413144797245913935"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("7413144797245913909"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("localIntVarAssignment"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localIntVarAssignment"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localIntVarAssignmentResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_localBoxedIntVariableAssignment() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("7413144797245913989"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("7413144797245913989"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("7413144797245913953"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("localBoxedIntVarAssignment"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localBoxedIntVarAssignment"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localBoxedIntVarAssignmentResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_localObjectVariableDeclaration() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("770214570644685977"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("770214570644685977"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("770214570644685989"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("localObjectVarDeclaration"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localObjectVarDeclaration"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localObjectVarDeclarationResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_localObjectVariableAssignment() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("7413144797245757998"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("7413144797245757998"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("7413144797245757972"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("localObjectVarAssignment"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localObjectVarAssignment"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localObjectVarAssignmentResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_localUnBoxedIntVarAssignment() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("7413144797245923859"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("7413144797245923859"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("7413144797245923876"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("localUnBoxedIntVarAssignment"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localUnBoxedIntVarAssignment"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localUnBoxedIntVarAssignmentResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_localUnBoxedIntVarDeclaration() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("7413144797245923961"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("7413144797245923961"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("7413144797245923933"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("localUnBoxedIntVarDeclaration"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localUnBoxedIntVarDeclaration"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("localUnBoxedIntVarDeclarationResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_andAssignmentExpression() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("89292631370179160"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370179160"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370179173"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("andAssignmentExpression"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("andAssignmentExpression"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("andAssignmentExpressionResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_divAssignmentExpression() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("89292631370192756"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370192756"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370192721"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("divAssignmentExpression"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("divAssignmentExpression"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("divAssignmentExpressionResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_leftShiftAssignmentExpression() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("89292631370192832"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370192832"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370192797"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("leftShiftAssignmentExpression"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("leftShiftAssignmentExpression"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("leftShiftAssignmentExpressionResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_minusAssignmentExpression() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("89292631370193076"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370193076"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370193041"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("minusAssignmentExpression"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("minusAssignmentExpression"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("minusAssignmentExpressionResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_mulAssignmentExpression() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("89292631370193027"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370193027"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370192992"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("mulAssignmentExpression"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("mulAssignmentExpression"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("mulAssignmentExpressionResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_orAssignmentExpression() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("89292631370193174"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370193174"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370193139"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("orAssignmentExpression"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("orAssignmentExpression"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("orAssignmentExpressionResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_plusAssignmentExpression() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("89292631370192978"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370192978"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370192943"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("plusAssignmentExpression"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("plusAssignmentExpression"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("plusAssignmentExpressionResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_remAssignmentExpression() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("89292631370192929"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370192929"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370192894"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("remAssignmentExpression"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("remAssignmentExpression"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("remAssignmentExpressionResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_rightShiftAssignmentExpression() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("89292631370196925"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370196925"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370196890"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("rightShiftAssignmentExpression"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("rightShiftAssignmentExpression"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("rightShiftAssignmentExpressionResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_xorAssignmentExpression() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("89292631370193125"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370193125"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("89292631370193090"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("xorAssignmentExpression"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("xorAssignmentExpression"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("xorAssignmentExpressionResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_lowLevelVariableInForeach() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("8638796163619040027"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("8638796163619040027"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("8638796163619040052"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("lowLevelVarInForeach"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("lowLevelVarInForeach"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("lowLevelVarInForeachResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_lowLevelIntVariableInForeach() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("1774703052633005927"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1774703052633005927"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1774703052633005891"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("lowLevelIntVarInForeach"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("lowLevelIntVarInForeach"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("lowLevelIntVarInForeachResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_notNullString() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("6583956526375658290"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("6583956526375658290"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("6583956526375658320"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("notNullString"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("notNullString"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("notNullStringResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_nodeReferenceCountViewer() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("4322674958982459627"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("4322674958982459627"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("4322674958982459588"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("nodeReferenceCountViewer"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("nodeReferenceCountViewer"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("nodeReferenceCountViewerResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_arrayInForeach() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("2281056005883150420"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("2281056005883150420"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("2281056005883150387"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("arrayInForeach"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("arrayInForeach"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("arrayInForeachResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_newArrayOfString() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("8071722462615359845"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("8071722462615359845"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("8071722462615359820"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("newArrayOfString"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("newArrayOfString"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("newArrayOfStringResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_newEmptyArrayOfString() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("335932010435400776"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("335932010435400776"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("335932010435400763"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("newEmptyArrayOfString"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("newEmptyArrayOfString"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("newEmptyArrayOfStringResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_newEmptyArrayOfInt() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("4609929908986493504"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("4609929908986493504"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("4609929908986493492"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("newEmptyArrayOfInt"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("newEmptyArrayOfInt"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("newEmptyArrayOfIntResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_optimizeToStringForString() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("4816137365279714846"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("4816137365279714846"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("4816137365279714835"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("optimizeToStringForString"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("optimizeToStringForString"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("optimizeToStringForStringResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_ternaryOperatorForString() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("4587766555754887084"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("4587766555754887084"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("4587766555754887053"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("ternaryOperatorForString"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("ternaryOperatorForString"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("ternaryOperatorForStringResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_ternaryOperatorForStringIfTrue() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("4587766555754950815"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("4587766555754950815"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("4587766555754950781"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("ternaryOperatorForStringIfTrue"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("ternaryOperatorForStringIfTrue"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("ternaryOperatorForStringIfTrueResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_ternaryOperatorForStringCondition() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("4587766555754950765"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("4587766555754950765"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("4587766555754950731"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("ternaryOperatorForStringCondition"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("ternaryOperatorForStringCondition"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("ternaryOperatorForStringConditionResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_urlClassloaderCast() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("1247401079809823525"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1247401079809823525"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1247401079809823497"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("urlClassloaderCast"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("urlClassloaderCast"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("urlClassloaderCastResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_primitiveCast() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("5586226261252332124"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("5586226261252332124"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("5586226261252332106"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("primitiveCast"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("primitiveCast"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("primitiveCastResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_objectCast() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("3525964900474412386"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("3525964900474412386"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("3525964900474412367"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("objectCast"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("objectCast"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("objectCastResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
     public void test_arrayCast() throws Exception {
-      addNodeById("7696059916860905166");
-      addNodeById("7696059916860905175");
-      addNodeById("7413144797245913930");
-      addNodeById("7413144797245913907");
-      addNodeById("770214570644685900");
-      addNodeById("770214570644685874");
-      addNodeById("5325372602757295234");
-      addNodeById("5325372602757295196");
-      addNodeById("7413144797245913984");
-      addNodeById("7413144797245913951");
-      addNodeById("770214570644685972");
-      addNodeById("770214570644685987");
-      addNodeById("7413144797245757993");
-      addNodeById("7413144797245757970");
-      addNodeById("7413144797245923854");
-      addNodeById("7413144797245923874");
-      addNodeById("7413144797245923956");
-      addNodeById("7413144797245923931");
-      addNodeById("89292631370179155");
-      addNodeById("89292631370179171");
-      addNodeById("89292631370193169");
-      addNodeById("89292631370193137");
-      addNodeById("89292631370193120");
-      addNodeById("89292631370193088");
-      addNodeById("89292631370192751");
-      addNodeById("89292631370192719");
-      addNodeById("89292631370192827");
-      addNodeById("89292631370192795");
-      addNodeById("89292631370193071");
-      addNodeById("89292631370193039");
-      addNodeById("89292631370193022");
-      addNodeById("89292631370192990");
-      addNodeById("89292631370192973");
-      addNodeById("89292631370192941");
-      addNodeById("89292631370192924");
-      addNodeById("89292631370192892");
-      addNodeById("89292631370196920");
-      addNodeById("89292631370196888");
-      addNodeById("8638796163619025272");
-      addNodeById("8638796163619040050");
-      addNodeById("1774703052633005919");
-      addNodeById("1774703052633005889");
-      addNodeById("6583956526375658284");
-      addNodeById("6583956526375658318");
-      addNodeById("4322674958982459622");
-      addNodeById("4322674958982459586");
-      addNodeById("2281056005883150415");
-      addNodeById("2281056005883150385");
-      addNodeById("8071722462615359839");
-      addNodeById("8071722462615359818");
-      addNodeById("335932010435400773");
-      addNodeById("335932010435400761");
-      addNodeById("4609929908986493501");
-      addNodeById("4609929908986493490");
-      addNodeById("4816137365279714844");
-      addNodeById("4816137365279714834");
-      addNodeById("4587766555754887082");
-      addNodeById("4587766555754887052");
-      addNodeById("4587766555754950813");
-      addNodeById("4587766555754950780");
-      addNodeById("4587766555754950763");
-      addNodeById("4587766555754950730");
-      addNodeById("1247401079809823523");
-      addNodeById("1247401079809823496");
-      addNodeById("5586226261252332122");
-      addNodeById("5586226261252332105");
-      addNodeById("3525964900474412382");
-      addNodeById("3525964900474412366");
-      addNodeById("5586226261252332093");
-      addNodeById("5586226261252332076");
-      this.init();
-      TransformatorBuilder.getInstance().build(SNodeOperations.cast(getNodeById("5586226261252332095"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")), false).transformEvaluator();
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("5586226261252332095"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("5586226261252332077"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        Assert.assertNull("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher().match(nodesBefore, nodesAfter));
-      }
-      this.dispose();
+      initTestNodes();
+      runWithinCommand(() -> {
+        TestBody.this.init();
+        TransformatorBuilder.getInstance().build(getAnnotatedNode("arrayCast"), false).transformEvaluator();
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("arrayCast"));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getAnnotatedNode("arrayCastResult"));
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        TestBody.this.dispose();
+      });
     }
-
 
     public void init() {
-      DebuggerInitializer.init();
     }
     public void dispose() {
-      DebuggerInitializer.dispose();
     }
   }
 }

@@ -5,38 +5,36 @@ package jetbrains.mps.baseLanguage.collections.behavior;
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
-import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Set;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class IApplicableToNothing__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x53310200e8d9eaf6L, "jetbrains.mps.baseLanguage.collections.structure.IApplicableToNothing");
-  private static final BehaviorRegistry REGISTRY = ConceptRegistry.getInstance().getBehaviorRegistry();
 
-  public static final SMethod<List<SNode>> getApplicableTypes_id5cL0w3DYzxf = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getApplicableTypes").modifiers(SModifiersImpl.create(13, AccessPrivileges.PROTECTED)).concept(CONCEPT).id("5cL0w3DYzxf").registry(REGISTRY).build();
-  public static final SMethod<Set<SNode>> getAllApplicableTypes_id5cL0w3DYWgB = new SMethodBuilder<Set<SNode>>(new SJavaCompoundTypeImpl((Class<Set<SNode>>) ((Class) Object.class))).name("getAllApplicableTypes").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5cL0w3DYWgB").registry(REGISTRY).build();
-  /*package*/ static final SMethod<Boolean> hasApplicableTypes_id1QUKo_K_4f7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasApplicableTypes").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("1QUKo_K_4f7").registry(REGISTRY).build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> expectedOperandType_id5xvLnyYzY1Q = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("expectedOperandType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5xvLnyYzY1Q").registry(REGISTRY).build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<List<SNode>> getApplicableTypes_id5cL0w3DYzxf = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getApplicableTypes").modifiers(13, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(5994574781955586127L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
+  public static final SMethod<Set<SNode>> getAllApplicableTypes_id5cL0w3DYWgB = new SMethodBuilder<Set<SNode>>(new SJavaCompoundTypeImpl((Class<Set<SNode>>) ((Class) Object.class))).name("getAllApplicableTypes").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5994574781955687463L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
+  /*package*/ static final SMethod<Boolean> hasApplicableTypes_id1QUKo_K_4f7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasApplicableTypes").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(2142237368811537351L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> expectedOperandType_id5xvLnyYzY1Q = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("expectedOperandType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6368025520509018230L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getApplicableTypes_id5cL0w3DYzxf, getAllApplicableTypes_id5cL0w3DYWgB, hasApplicableTypes_id1QUKo_K_4f7, expectedOperandType_id5xvLnyYzY1Q);
 
@@ -44,60 +42,37 @@ public final class IApplicableToNothing__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static Set<SNode> getAllApplicableTypes_id5cL0w3DYWgB(@NotNull final SAbstractConcept __thisConcept__) {
-    Set<SNode> result = SetSequence.fromSet(new HashSet<SNode>());
-    List<SNode> implementList;
+    final Set<SNode> result = SetSequence.fromSet(new HashSet<SNode>());
 
-    SNode thisc = __thisConcept__.getDeclarationNode();
-    if (SNodeOperations.isInstanceOf(thisc, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"))) {
-      implementList = ListSequence.fromList(SLinkOperations.getChildren(((SNode) thisc), MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements"))).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc"));
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ((boolean) IApplicableToNothing__BehaviorDescriptor.hasApplicableTypes_id1QUKo_K_4f7.invoke(__thisConcept__, it));
-        }
-      }).toListSequence();
+    // [MM] I don't understand this code and have just wrote an equivalent to the previous version w/o conceptNodes
+    // [MM] I suppose what's meant here is concept.hierarchy.subconcepts(IApplicableToNothing).selectMany(it->it.getApplicableTypes())
+    // [MM] this differs much from the current code: getAT() is only called for direct super-interfaces
+    SAbstractConcept tt = __thisConcept__;
+    final Iterable<SInterfaceConcept> supers = tt.getSuperInterfaces();
 
-    } else {
+    if (tt instanceof SInterfaceConcept) {
+      // this is some crooked logic to handle case when we get InterfaceConceptDeclaration here explicitly
+      // which I believe happens in 1 out of 3 existing calls (namely, the one in constraints). Otherwise, we
+      // get node.concept as an argument, which always gives SConcept. We know this is IApplicableToNothing (sub)concept,
+      // although don't care to check it it's !isExactly(IATN), see hasApplicableTypes, for whatever reason.
+      // In my struggle to unite SConcept and SInterfaceConcept, I'd need a mechanism to find out whether 
+      // concept<> this represents an ICD or a proper CD if I care this code to survive.
       SetSequence.fromSet(result).addSequence(ListSequence.fromList(IApplicableToNothing__BehaviorDescriptor.getApplicableTypes_id5cL0w3DYzxf.invoke(__thisConcept__)));
-      implementList = ListSequence.fromList(SLinkOperations.getChildren(((SNode) thisc), MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends"))).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SLinkOperations.getTarget(it, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc"));
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return ((boolean) IApplicableToNothing__BehaviorDescriptor.hasApplicableTypes_id1QUKo_K_4f7.invoke(__thisConcept__, it));
-        }
-      }).toListSequence();
     }
-
-    for (SNode impl : ListSequence.fromList(implementList)) {
-      // casting twice to avoid "not comparable" type error 
-      SNode conceptNode = impl;
-      SetSequence.fromSet(result).addSequence(ListSequence.fromList(IApplicableToNothing__BehaviorDescriptor.getApplicableTypes_id5cL0w3DYzxf.invoke(SNodeOperations.asSConcept(((SNode) conceptNode)))));
-    }
+    // can not do ofType() first and simplify hasApplicableTypes by removing isSubConceptOf check
+    // as ofType() doesn't really check anything but instananceOf SAbstractConcept, I use it here just to simplify cast.
+    Sequence.fromIterable(supers).where((it) -> ((boolean) IApplicableToNothing__BehaviorDescriptor.hasApplicableTypes_id1QUKo_K_4f7.invoke(__thisConcept__, it))).ofType(SAbstractConcept.class).visitAll((it) -> SetSequence.fromSet(result).addSequence(ListSequence.fromList(IApplicableToNothing__BehaviorDescriptor.getApplicableTypes_id5cL0w3DYzxf.invoke(SNodeOperations.asSConcept(it)))));
     return result;
   }
-  /*package*/ static boolean hasApplicableTypes_id1QUKo_K_4f7(@NotNull SAbstractConcept __thisConcept__, SNode concept) {
-    return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), MetaAdapterFactory.getInterfaceConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x53310200e8d9eaf6L, "jetbrains.mps.baseLanguage.collections.structure.IApplicableToNothing")) && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), MetaAdapterFactory.getInterfaceConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x53310200e8d9eaf6L, "jetbrains.mps.baseLanguage.collections.structure.IApplicableToNothing")));
+  /*package*/ static boolean hasApplicableTypes_id1QUKo_K_4f7(@NotNull SAbstractConcept __thisConcept__, SAbstractConcept concept) {
+    return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.IApplicableToNothing$j7) && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.IApplicableToNothing$j7));
   }
   /*package*/ static SNode expectedOperandType_id5xvLnyYzY1Q(@NotNull SNode __thisNode__, SNode elementType) {
-    SNode jt = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType"));
-    for (SNode et : IApplicableToNothing__BehaviorDescriptor.getAllApplicableTypes_id5cL0w3DYWgB.invoke(SNodeOperations.asSConcept(SNodeOperations.getConceptDeclaration(__thisNode__)))) {
-      if ((et != null)) {
-        SNode rt = SNodeOperations.copyNode(et);
-        if (ListSequence.fromList(SNodeOperations.getChildren(rt)).isNotEmpty()) {
-          SNodeOperations.replaceWithAnother(ListSequence.fromList(SNodeOperations.getChildren(rt)).first(), SNodeOperations.copyNode(elementType));
-        }
-        ListSequence.fromList(SLinkOperations.getChildren(jt, MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument"))).addElement(rt);
-      }
-    }
-    return jt;
+    // Do not use getAllApplicableTypes as we do not really care at this point. Constraints and scopes would report the issue should the operator not be applicable anymore.
+    return createSequenceType_hry4nn_a1a3(elementType);
   }
 
   /*package*/ IApplicableToNothing__BehaviorDescriptor() {
-    super(REGISTRY);
   }
 
   @Override
@@ -129,7 +104,7 @@ public final class IApplicableToNothing__BehaviorDescriptor extends BaseBHDescri
       case 1:
         return (T) ((Set<SNode>) getAllApplicableTypes_id5cL0w3DYWgB(concept));
       case 2:
-        return (T) ((Boolean) hasApplicableTypes_id1QUKo_K_4f7(concept, (SNode) parameters[0]));
+        return (T) ((Boolean) hasApplicableTypes_id1QUKo_K_4f7(concept, (SAbstractConcept) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -145,5 +120,20 @@ public final class IApplicableToNothing__BehaviorDescriptor extends BaseBHDescri
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+  private static SNode createSequenceType_hry4nn_a1a3(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SequenceType$_s);
+    n0.forChild(LINKS.elementType$KpjL).initNode(p0, CONCEPTS.Type$bu, true);
+    return n0.getResult();
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IApplicableToNothing$j7 = MetaAdapterFactory.getInterfaceConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x53310200e8d9eaf6L, "jetbrains.mps.baseLanguage.collections.structure.IApplicableToNothing");
+    /*package*/ static final SConcept SequenceType$_s = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, "jetbrains.mps.baseLanguage.collections.structure.SequenceType");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink elementType$KpjL = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
   }
 }

@@ -3,55 +3,59 @@
   <id>jetbrains.mps.debugger.java</id>
   <name>Java Debugger for MPS</name>
   <description>Provides java debugger implementation for MPS</description>
-  <version>3.4.5</version>
-  <vendor url="http://www.jetbrains.com/mps/" logo="/MPS_16.png">JetBrains</vendor>
-  <idea-version since-build="145.1" until-build="163.1"/>
+  <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
 
   <depends>jetbrains.mps.debugger.api</depends>
   <depends>jetbrains.mps.core</depends>
   <depends>com.intellij.modules.mps</depends>
 
-  <application-components>
-    <!--api-->
-    <component>
-      <interface-class>jetbrains.mps.debugger.java.api.state.customViewers.CustomViewersManager</interface-class>
-      <implementation-class>jetbrains.mps.debugger.java.runtime.state.customViewers.CustomViewersManagerImpl</implementation-class>
-    </component>
-    <!--runtime-->
-    <component>
-      <implementation-class>jetbrains.mps.debugger.java.runtime.state.customViewers.BaseLanguageCustomViewers</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.debugger.java.runtime.JavaDebugger</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.debugger.java.runtime.ui.actions.Runtime_PluginInitializer</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.debugger.java.customViewers.plugin.plugin.Plugin_PluginInitializer</implementation-class>
-    </component>
-  </application-components>
-
-  <project-components>
-    <!--api-->
-    <!--runtime-->
-    <component>
-      <implementation-class>jetbrains.mps.debugger.java.runtime.JavaNodePositionProvider</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.debugger.java.runtime.engine.VMEventsProcessorManagerComponent</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.debugger.java.runtime.breakpoints.BreakpointsIconCache</implementation-class>
-    </component>
-  </project-components>
-
-  <actions>
-  </actions>
+  <extensionPoints>
+    <extensionPoint qualifiedName="jetbrains.mps.debugger.valueViewer" interface="jetbrains.mps.debugger.java.api.state.proxy.ValueWrapperFactory" dynamic="true" />
+  </extensionPoints>
 
   <extensions defaultExtensionNs="com.intellij">
     <!--runtime-->
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
-    <mps.LanguageLibrary dir="/"/>
+    <mps.LanguageLibrary dir="/" hide="true"/>
+    <mps.PluginComponentContributor application="jetbrains.mps.debugger.java.customViewers.plugin.plugin.Plugin_ApplicationPlugin" />
+    <mps.PluginComponentContributor application="jetbrains.mps.debugger.java.runtime.ui.actions.Runtime_ApplicationPlugin" />
+    <projectService serviceImplementation="jetbrains.mps.debugger.java.runtime.engine.VMEventsProcessorManagerComponent"/>
+    <projectService serviceImplementation="jetbrains.mps.debugger.java.runtime.breakpoints.BreakpointsIconCache" />
+    <applicationService
+            serviceInterface="jetbrains.mps.debugger.java.api.state.customViewers.CustomViewersManager"
+            serviceImplementation="jetbrains.mps.debugger.java.runtime.state.customViewers.CustomViewersManagerImpl" />
+
+    <applicationService
+            serviceInterface="jetbrains.mps.debugger.java.api.evaluation.EvaluationUtils"
+            serviceImplementation="jetbrains.mps.debugger.java.runtime.evaluation.EvaluationUtilsImpl"/>
+    <applicationService
+            serviceInterface="jetbrains.mps.debugger.java.api.evaluation.proxies.MirrorUtil"
+            serviceImplementation="jetbrains.mps.debugger.java.runtime.evaluation.proxies.MirrorUtilImpl" />
+    <applicationService
+            serviceInterface="jetbrains.mps.debugger.java.api.evaluation.transform.TransformatorBuilder"
+            serviceImplementation="jetbrains.mps.debugger.java.runtime.evaluation.transform.TransformatorBuilderImpl" />
+  </extensions>
+
+  <projectListeners>
+    <listener class="jetbrains.mps.debugger.java.runtime.state.customViewers.CustomViewersManagerImpl$DebugSessionListener"
+              topic="jetbrains.mps.debug.api.DebugSessionManagerComponent$DebugSessionListener"
+              activeInTestMode="false"
+              activeInHeadlessMode="false"/>
+  </projectListeners>
+
+  <extensions defaultExtensionNs="jetbrains.mps">
+    <!-- JavaNodePositionProvider comes with higher priority for NodePositionProvider key -->
+    <debugger.PositionProvider key="jetbrains.mps.debug.api.source.NodePositionProvider"
+                               weight="200"
+                               class="jetbrains.mps.debugger.java.runtime.JavaNodePositionProvider"/>
+
+    <!-- Base Language Custom Viewers -->
+    <debugger.valueViewer implementation="jetbrains.mps.debugger.java.runtime.state.customViewers.ObjectWrapperFactory" />
+    <debugger.valueViewer implementation="jetbrains.mps.debugger.java.runtime.state.customViewers.ArrayWrapperFactory" />
+    <debugger.valueViewer implementation="jetbrains.mps.debugger.java.runtime.state.customViewers.PrimitiveWrapperFactory" />
+    <debugger.valueViewer implementation="jetbrains.mps.debugger.java.runtime.state.customViewers.StringWrapperFactory" />
+
+    <debugger.implementation id="Java" class="jetbrains.mps.debugger.java.runtime.JavaDebugger"/>
+    <debugger.breakpointProvider id="Java" class="jetbrains.mps.debugger.java.runtime.breakpoints.JavaBreakpointsProvider" />
   </extensions>
 </idea-plugin>

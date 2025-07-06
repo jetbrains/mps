@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <debug-info version="2">
-  <root nodeRef="r:91fb18c7-a74a-4784-95fb-46b200b2b62a(org.jetbrains.mps.samples.Build.build)/6792046066743130">
-    <file name="build.xml">
-      <unit id="6792046066743130" at="1,0,902,10" name="org.jetbrains.mps.samples.Build.build.build" />
+  <root nodeRef="r:91fb18c7-a74a-4784-95fb-46b200b2b62a(org.jetbrains.mps.samples.Build.build)/8968584541678373554">
+    <file name="buildOfSampleJavaExtensions.xml">
+      <unit id="8968584541678373554" at="1,0,1371,10" name="org.jetbrains.mps.samples.Build.build.buildOfSampleJavaExtensions" />
     </file>
   </root>
 </debug-info>

@@ -14,81 +14,75 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
   <root nodeRef="r:00000000-0000-4000-0000-011c895903bf(jetbrains.mps.baseLanguage.collections.unittest.generics_test)/1170878927223">
     <file name="MySequence.java">
-      <node id="1224596674955" at="19,0,20,0" concept="5" trace="__CP__" />
-      <node id="1224596674955" at="25,28,26,54" concept="0" />
-      <node id="1224596674955" at="26,54,27,35" concept="10" />
-      <node id="1224596674966" at="29,44,30,40" concept="4" />
-      <node id="1224596674966" at="30,40,31,30" concept="1" />
-      <node id="1224596674966" at="32,23,33,39" concept="4" />
-      <node id="1224596674966" at="33,39,34,28" concept="1" />
-      <node id="1224596674957" at="36,33,37,40" concept="4" />
-      <node id="1224596674957" at="37,40,38,30" concept="1" />
-      <node id="1224596674957" at="39,23,40,38" concept="4" />
-      <node id="1224596674957" at="40,38,41,28" concept="1" />
-      <node id="1224596674955" at="43,34,44,40" concept="4" />
-      <node id="1224596674955" at="44,40,45,30" concept="1" />
-      <node id="1224596674955" at="46,23,47,38" concept="4" />
-      <node id="1224596674955" at="47,38,48,28" concept="1" />
-      <node id="1224596680384" at="49,28,50,38" concept="4" />
-      <node id="1224596680384" at="50,38,51,42" concept="4" />
-      <node id="1224596680384" at="51,42,52,34" concept="10" />
-      <node id="1224596674955" at="53,27,54,38" concept="4" />
-      <node id="1224596674955" at="54,38,55,28" concept="1" />
-      <node id="1224596674956" at="56,27,57,38" concept="4" />
-      <node id="1224596674956" at="57,38,58,28" concept="1" />
-      <node id="1224596674960" at="59,27,60,63" concept="4" />
-      <node id="1224596674959" at="60,63,61,38" concept="4" />
-      <node id="1224596674959" at="61,38,62,28" concept="1" />
-      <node id="1224596674970" at="63,27,64,38" concept="4" />
-      <node id="1224596674970" at="64,38,65,28" concept="1" />
-      <node id="1224596674955" at="66,28,67,37" concept="1" />
-      <node id="1224596674955" at="69,31,70,29" concept="10" />
-      <node id="1224596674961" at="72,0,73,0" concept="5" trace="_7_next" />
-      <node id="1170879079306" at="79,27,80,16" concept="10" />
-      <node id="6961198619552942001" at="11,0,13,0" concept="2" trace="MySequence#()V" />
-      <node id="1170879062052" at="79,0,82,0" concept="8" trace="getNext#()null" />
-      <node id="1224596674966" at="28,27,32,23" concept="7" />
-      <node id="1224596674957" at="35,27,39,23" concept="7" />
-      <node id="1224596674955" at="42,27,46,23" concept="7" />
-      <node id="1224596674955" at="22,20,68,19" concept="11" />
-      <node id="1224596674955" at="20,46,69,31" concept="3" />
-      <node id="1224596674955" at="20,0,72,0" concept="8" trace="moveToNext#()Z" />
-      <node id="1224596674955" at="17,41,73,14" concept="10" />
-      <node id="1224596674955" at="17,0,75,0" concept="8" trace="iterator#()Ljava/util/Iterator;" />
-      <node id="1224596674955" at="15,37,75,10" concept="10" />
-      <node id="1224596674955" at="15,0,77,0" concept="8" trace="iterable#()Ljava/lang/Iterable;" />
-      <node id="1170878998354" at="13,33,77,7" concept="10" />
-      <node id="1170878984788" at="13,0,79,0" concept="8" trace="get#()Ljava/lang/Iterable;" />
-      <scope id="6961198619552942003" at="11,23,11,23" />
-      <scope id="1224596674955" at="66,28,67,37" />
-      <scope id="1170879062054" at="79,27,80,16" />
-      <scope id="6961198619552942001" at="11,0,13,0" />
-      <scope id="1224596674955" at="25,28,27,35" />
-      <scope id="1224596674966" at="29,44,31,30" />
-      <scope id="1224596674957" at="36,33,38,30" />
-      <scope id="1224596674955" at="43,34,45,30" />
-      <scope id="1224596674955" at="53,27,55,28" />
-      <scope id="1224596674956" at="56,27,58,28" />
-      <scope id="1224596674970" at="63,27,65,28" />
-      <scope id="1224596680384" at="49,28,52,34" />
-      <scope id="1224596674959" at="59,27,62,28" />
-      <scope id="1170879062052" at="79,0,82,0" />
-      <scope id="1224596674966" at="28,27,34,28" />
-      <scope id="1224596674957" at="35,27,41,28" />
-      <scope id="1224596674955" at="42,27,48,28" />
-      <scope id="1224596674955" at="22,20,68,19" />
-      <scope id="1224596674955" at="20,46,70,29" />
-      <scope id="1224596674955" at="20,0,72,0" />
-      <scope id="1224596674955" at="17,41,73,14" />
-      <scope id="1224596674955" at="17,0,75,0" />
-      <scope id="1224596674955" at="15,37,75,10" />
-      <scope id="1224596674955" at="15,0,77,0" />
-      <scope id="1170878984790" at="13,33,77,7" />
-      <scope id="1170878984788" at="13,0,79,0" />
-      <unit id="1224596674955" at="18,23,73,13" name="jetbrains.mps.baseLanguage.collections.unittest.generics_test.MySequence$3" />
-      <unit id="1224596674955" at="16,19,75,9" name="jetbrains.mps.baseLanguage.collections.unittest.generics_test.MySequence$2" />
-      <unit id="1224596674955" at="14,36,77,5" name="jetbrains.mps.baseLanguage.collections.unittest.generics_test.MySequence$1" />
-      <unit id="1170878927223" at="10,0,83,0" name="jetbrains.mps.baseLanguage.collections.unittest.generics_test.MySequence" />
+      <node id="1224596674955" at="15,0,16,0" concept="5" trace="__CP__" />
+      <node id="1224596674955" at="21,24,22,50" concept="0" />
+      <node id="1224596674955" at="22,50,23,31" concept="10" />
+      <node id="1224596674966" at="25,40,26,36" concept="4" />
+      <node id="1224596674966" at="26,36,27,26" concept="1" />
+      <node id="1224596674966" at="28,19,29,35" concept="4" />
+      <node id="1224596674966" at="29,35,30,24" concept="1" />
+      <node id="1224596674957" at="32,29,33,36" concept="4" />
+      <node id="1224596674957" at="33,36,34,26" concept="1" />
+      <node id="1224596674957" at="35,19,36,34" concept="4" />
+      <node id="1224596674957" at="36,34,37,24" concept="1" />
+      <node id="1224596674955" at="39,30,40,36" concept="4" />
+      <node id="1224596674955" at="40,36,41,26" concept="1" />
+      <node id="1224596674955" at="42,19,43,34" concept="4" />
+      <node id="1224596674955" at="43,34,44,24" concept="1" />
+      <node id="1224596680384" at="45,24,46,34" concept="4" />
+      <node id="1224596680384" at="46,34,47,38" concept="4" />
+      <node id="1224596680384" at="47,38,48,30" concept="10" />
+      <node id="1224596674955" at="49,23,50,34" concept="4" />
+      <node id="1224596674955" at="50,34,51,24" concept="1" />
+      <node id="1224596674956" at="52,23,53,34" concept="4" />
+      <node id="1224596674956" at="53,34,54,24" concept="1" />
+      <node id="1224596674960" at="55,23,56,59" concept="4" />
+      <node id="1224596674959" at="56,59,57,34" concept="4" />
+      <node id="1224596674959" at="57,34,58,24" concept="1" />
+      <node id="1224596674970" at="59,23,60,34" concept="4" />
+      <node id="1224596674970" at="60,34,61,24" concept="1" />
+      <node id="1224596674955" at="62,24,63,33" concept="1" />
+      <node id="1224596674955" at="65,27,66,25" concept="10" />
+      <node id="1224596674961" at="68,0,69,0" concept="5" trace="_7_next" />
+      <node id="1170879079306" at="73,27,74,16" concept="10" />
+      <node id="6961198619552942001" at="9,0,11,0" concept="2" trace="MySequence#()V" />
+      <node id="1170879062052" at="73,0,76,0" concept="8" trace="getNext#()null" />
+      <node id="1224596674966" at="24,23,28,19" concept="7" />
+      <node id="1224596674957" at="31,23,35,19" concept="7" />
+      <node id="1224596674955" at="38,23,42,19" concept="7" />
+      <node id="1224596674955" at="18,16,64,15" concept="11" />
+      <node id="1224596674955" at="16,42,65,27" concept="3" />
+      <node id="1224596674955" at="16,0,68,0" concept="8" trace="moveToNext#()Z" />
+      <node id="1224596674955" at="13,34,69,10" concept="10" />
+      <node id="1224596674955" at="12,39,70,8" concept="10" />
+      <node id="1170878998354" at="11,33,71,7" concept="10" />
+      <node id="1170878984788" at="11,0,73,0" concept="8" trace="get#()Ljava/lang/Iterable;" />
+      <scope id="6961198619552942003" at="9,23,9,23" />
+      <scope id="1224596674955" at="62,24,63,33" />
+      <scope id="1170879062054" at="73,27,74,16" />
+      <scope id="6961198619552942001" at="9,0,11,0" />
+      <scope id="1224596674955" at="21,24,23,31" />
+      <scope id="1224596674966" at="25,40,27,26" />
+      <scope id="1224596674957" at="32,29,34,26" />
+      <scope id="1224596674955" at="39,30,41,26" />
+      <scope id="1224596674955" at="49,23,51,24" />
+      <scope id="1224596674956" at="52,23,54,24" />
+      <scope id="1224596674970" at="59,23,61,24" />
+      <scope id="1224596680384" at="45,24,48,30" />
+      <scope id="1224596674959" at="55,23,58,24" />
+      <scope id="1170879062052" at="73,0,76,0" />
+      <scope id="1224596674966" at="24,23,30,24" />
+      <scope id="1224596674957" at="31,23,37,24" />
+      <scope id="1224596674955" at="38,23,44,24" />
+      <scope id="1224596674955" at="18,16,64,15" />
+      <scope id="1224596674955" at="16,42,66,25" />
+      <scope id="1224596674955" at="16,0,68,0" />
+      <scope id="1224596674955" at="13,34,69,10" />
+      <scope id="1224596674955" at="12,39,70,8" />
+      <scope id="1170878984790" at="11,33,71,7" />
+      <scope id="1170878984788" at="11,0,73,0" />
+      <unit id="1224596674955" at="14,19,69,9" name="jetbrains.mps.baseLanguage.collections.unittest.generics_test.MySequence$1" />
+      <unit id="1170878927223" at="8,0,77,0" name="jetbrains.mps.baseLanguage.collections.unittest.generics_test.MySequence" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903bf(jetbrains.mps.baseLanguage.collections.unittest.generics_test)/1170879883276">
@@ -127,34 +121,34 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903bf(jetbrains.mps.baseLanguage.collections.unittest.generics_test)/1172029167443">
     <file name="Generics1_Test.java">
-      <node id="1172029188738" at="10,45,11,50" concept="9" />
-      <node id="1172029260167" at="12,61,13,45" concept="4" />
-      <node id="1172029203862" at="16,45,17,49" concept="9" />
-      <node id="1172029203866" at="17,49,18,18" concept="9" />
-      <node id="1172029277744" at="19,57,20,47" concept="4" />
-      <node id="1172029203880" at="20,47,21,14" concept="4" />
-      <node id="1172029188742" at="11,50,14,5" concept="6" />
-      <node id="1172029203870" at="18,18,22,5" concept="6" />
-      <node id="1172029180836" at="10,0,16,0" concept="8" trace="test_test1#()V" />
-      <node id="1172029195858" at="16,0,24,0" concept="8" trace="test_test2#()V" />
-      <scope id="1172029188746" at="12,61,13,45" />
-      <scope id="1172029203874" at="19,57,21,14" />
-      <scope id="1172029188742" at="11,50,14,5">
+      <node id="1172029188738" at="11,45,12,50" concept="9" />
+      <node id="1172029260167" at="13,61,14,45" concept="4" />
+      <node id="1172029203862" at="18,45,19,49" concept="9" />
+      <node id="1172029203866" at="19,49,20,18" concept="9" />
+      <node id="1172029277744" at="21,57,22,81" concept="4" />
+      <node id="1172029203880" at="22,81,23,14" concept="4" />
+      <node id="1172029188742" at="12,50,15,5" concept="6" />
+      <node id="1172029203870" at="20,18,24,5" concept="6" />
+      <node id="1172029180836" at="10,0,17,0" concept="8" trace="test_test1#()V" />
+      <node id="1172029195858" at="17,0,26,0" concept="8" trace="test_test2#()V" />
+      <scope id="1172029188746" at="13,61,14,45" />
+      <scope id="1172029203874" at="21,57,23,14" />
+      <scope id="1172029188742" at="12,50,15,5">
         <var name="bool" id="1172029188743" />
       </scope>
-      <scope id="1172029180837" at="10,45,14,5">
+      <scope id="1172029180837" at="11,45,15,5">
         <var name="bools" id="1172029188739" />
       </scope>
-      <scope id="1172029203870" at="18,18,22,5">
+      <scope id="1172029203870" at="20,18,24,5">
         <var name="i" id="1172029203871" />
       </scope>
-      <scope id="1172029180836" at="10,0,16,0" />
-      <scope id="1172029195859" at="16,45,22,5">
+      <scope id="1172029195859" at="18,45,24,5">
         <var name="count" id="1172029203867" />
         <var name="ints" id="1172029203863" />
       </scope>
-      <scope id="1172029195858" at="16,0,24,0" />
-      <unit id="1172029167443" at="9,0,25,0" name="jetbrains.mps.baseLanguage.collections.unittest.generics_test.Generics1_Test" />
+      <scope id="1172029180836" at="10,0,17,0" />
+      <scope id="1172029195858" at="17,0,26,0" />
+      <unit id="1172029167443" at="9,0,27,0" name="jetbrains.mps.baseLanguage.collections.unittest.generics_test.Generics1_Test" />
     </file>
   </root>
 </debug-info>

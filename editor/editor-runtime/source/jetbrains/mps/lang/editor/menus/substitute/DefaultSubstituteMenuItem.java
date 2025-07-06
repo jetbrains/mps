@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,36 +16,42 @@
 package jetbrains.mps.lang.editor.menus.substitute;
 
 import jetbrains.mps.actions.runtime.impl.ActionsUtil;
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
+import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
+import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorManager;
-import jetbrains.mps.nodeEditor.cellMenu.AbstractNodeSubstituteInfo;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.menus.EditorMenuTrace;
+import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstitutionAcceptable;
 import jetbrains.mps.smodel.action.NodeFactoryManager;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
-import jetbrains.mps.typesystem.inference.TypeChecker;
-import jetbrains.mps.util.PatternUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 /**
  * @author simon
  */
 public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
 
-  private static final Logger LOG = LogManager.getLogger(DefaultSubstituteMenuItem.class);
+  private static final Logger LOG = Logger.getLogger(DefaultSubstituteMenuItem.class);
 
   @NotNull
-  private SAbstractConcept myConcept;
+  private final SAbstractConcept myConcept;
 
   @NotNull
   private final SNode myParentNode;
@@ -54,13 +60,33 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
   private final SNode myCurrentChild;
 
   @NotNull
-  private EditorContext myEditorContext;
+  private final EditorContext myEditorContext;
+  private EditorMenuTraceInfo myTraceInfo;
 
-  public DefaultSubstituteMenuItem(@NotNull SAbstractConcept concept, @NotNull SNode parentNode, @Nullable SNode currentChild, @NotNull EditorContext editorContext) {
+  protected final SubstituteMenuContext myContext;
+
+  public DefaultSubstituteMenuItem(@NotNull SAbstractConcept concept, @NotNull SubstituteMenuContext context) {
     myConcept = concept;
-    myParentNode = parentNode;
-    myCurrentChild = currentChild;
-    myEditorContext = editorContext;
+    myParentNode = context.getParentNode();
+    myCurrentChild = context.getCurrentTargetNode();
+    myEditorContext = context.getEditorContext();
+    myTraceInfo = context.getEditorMenuTrace().getTraceInfo();
+    myContext = context;
+  }
+
+  // occasionally there's a need to change EMTraceInfo *after* creation of an item.
+  // Proper way is to pass correct info right into cons, however present templates for parameterized actions
+  // access this item's information to build description, hence this update() method. Keep 'protected' to limit uses to specific
+  // scenarios. Would be great to pass as arg cons, eventually.
+  protected void updateTraceInfo(String description, SNodeReference menuPointer) {
+    final EditorMenuTrace emt = myContext.getEditorMenuTrace();
+    emt.pushTraceInfo();
+    try {
+      emt.setDescriptor(new EditorMenuDescriptorBase(description, menuPointer));
+      myTraceInfo = emt.getTraceInfo();
+    } finally {
+      emt.popTraceInfo();
+    }
   }
 
   @Nullable
@@ -69,46 +95,59 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
     return myConcept;
   }
 
+  @Override
+  public boolean isAcceptable(String pattern, SubstitutionAcceptable acceptable) {
+    SNode type = getType(pattern);
+    if (type != null) return acceptable.acceptType(type);
+
+    SNode node = createNode(pattern);
+    if (node == null) {
+      return false;
+    }
+    if (node.getParent() != null) {
+      LOG.warning("Node, created by " + this.getClass() + " action already has parent node.", new Throwable());
+    }
+
+    if (ActionsUtil.isInstanceOfIType(node)) {
+      return acceptable.acceptType(node);
+    } else {
+      return acceptable.acceptNode(node);
+    }
+  }
+
   @Nullable
   @Override
   public SNode getType(@NotNull String pattern) {
     SNode node = createNode(pattern);
-    if (node == null) return null;
+    if (node == null) {
+      return null;
+    }
     if (node.getParent() != null) {
-      LOG.warn("Node, created by " + this.getClass() + " action already has parent node.", new Throwable());
+      LOG.warning("Node, created by " + this.getClass() + " action already has parent node.", new Throwable());
     }
 
-    if (ActionsUtil.isInstanceOfIType(node)) return node;
-
-    //the following is for smart-type completion
-
-    AbstractNodeSubstituteInfo.getModelForTypechecking().addRootNode(node);
-    try {
-      return TypeChecker.getInstance().getTypeOf(node);
-    } finally {
-      AbstractNodeSubstituteInfo.getModelForTypechecking().removeRootNode(node);
+    if (ActionsUtil.isInstanceOfIType(node)) {
+      return node;
     }
+
+    return null;
   }
 
   @Nullable
   @Override
   public String getMatchingText(@NotNull String pattern) {
-    return NodePresentationUtil.matchingText(myConcept, false);
+    return NodePresentationUtil.matchingText(myConcept);
   }
 
   @Nullable
   @Override
   public String getDescriptionText(@NotNull String pattern) {
-    if (myConcept instanceof SConcept) {
-      return NodePresentationUtil.descriptionText(myConcept, false);
-    }
-    //todo...
-    return "";
+    return NodePresentationUtil.descriptionText(myConcept);
   }
 
   @Override
   public boolean canExecute(@NotNull String pattern) {
-    return PatternUtil.matchesPattern(pattern, getMatchingText(pattern));
+    return true;
   }
 
   @Override
@@ -157,5 +196,61 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
   @NotNull
   protected SNode getParentNode() {
     return myParentNode;
+  }
+
+  @Override
+  public EditorMenuTraceInfo getTraceInfo() {
+    return myTraceInfo;
+  }
+
+
+  @NotNull
+  protected CompletionItemInformation createInformation(String pattern) {
+    return new CompletionItemInformation(null, myConcept, getMatchingText(pattern), getDescriptionText(pattern));
+  }
+
+  @Override
+  public void customize(String pattern, EditorMenuItemStyle style) {
+    if (myContext != null) {
+      SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext =
+          new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(myContext, myConcept);
+      SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext
+          modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(myContext);
+      CompletionMenuItemCustomizationContext customizationContext = new CompletionMenuItemCustomizationContext(createInformation(pattern));
+      EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(creatingContext, modifyingContext, customizationContext);
+      for (EditorMenuItemCustomizer customizer : myContext.getCustomizers()) {
+        customizer.customize(style, compositeContext);
+      }
+    }
+  }
+
+  protected final String defaultMatchingTextForParameter(Object parameterObject, String pattern) {
+    if (parameterObject instanceof SNode) {
+      return NodePresentationUtil.visibleMatchingText((SNode) parameterObject, null);
+    }
+    if (parameterObject instanceof SAbstractConcept) {
+      return NodePresentationUtil.matchingText((SAbstractConcept) parameterObject);
+    }
+    return String.valueOf(parameterObject);
+  }
+
+  protected final String defaultDescriptionTextForParameter(Object parameterObject, String pattern) {
+    if (parameterObject instanceof SNode) {
+      return NodePresentationUtil.descriptionText((SNode) parameterObject);
+    }
+    if (parameterObject instanceof SAbstractConcept) {
+      return NodePresentationUtil.descriptionText((SAbstractConcept) parameterObject);
+    }
+    return String.valueOf(parameterObject);
+  }
+
+  protected final IconResource defaultIconForParameter(Object parameterObject, String pattern) {
+    if (parameterObject instanceof SNode) {
+      return IconResourceUtil.getIconResourceForNode((SNode) parameterObject);
+    }
+    if (parameterObject instanceof SAbstractConcept) {
+      return IconResourceUtil.getIconResourceForConcept((SAbstractConcept) parameterObject);
+    }
+    return null;
   }
 }

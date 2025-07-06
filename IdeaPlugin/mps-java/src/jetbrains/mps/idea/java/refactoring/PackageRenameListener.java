@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,14 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.java.refactoring;
 
 import com.intellij.facet.FacetManager;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.roots.impl.DirectoryIndex;
-import com.intellij.openapi.roots.impl.DirectoryInfo;
+import com.intellij.openapi.roots.ProjectFileIndex;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiPackage;
@@ -68,16 +66,20 @@ public class PackageRenameListener implements RefactoringElementListenerProvider
 
     final PsiPackage pkg = (PsiPackage) element;
     final Project project = pkg.getProject();
-    DirectoryIndex dirIndex = DirectoryIndex.getInstance(project);
+    ProjectFileIndex projectIndex = ProjectFileIndex.getInstance(project);
 
     final Set<SModelReference> modelRefs = new HashSet<>();
 
     for (PsiDirectory dir : pkg.getDirectories()) {
-      DirectoryInfo dirInfo = dirIndex.getInfoForFile(dir.getVirtualFile());
-      Module module = dirInfo.getModule();
-      if (module == null) continue;
+      // // honor exclusion as I suppose packages are not excluded.
+      Module module = projectIndex.getModuleForFile(dir.getVirtualFile(), true);
+      if (module == null) {
+        continue;
+      }
       MPSFacet facet = FacetManager.getInstance(module).getFacetByType(MPSFacetType.ID);
-      if (facet == null) continue;
+      if (facet == null) {
+        continue;
+      }
       modelRefs.add(new JavaPackageNameStub(pkg.getQualifiedName()).asModelReference(facet.getSolution().getModuleReference()));
     }
 

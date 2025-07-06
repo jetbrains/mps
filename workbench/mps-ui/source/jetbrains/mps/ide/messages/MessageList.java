@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,12 +24,14 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.ActionToolbar;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ToggleAction;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.ui.InputValidatorEx;
 import com.intellij.openapi.ui.Messages;
@@ -37,7 +39,6 @@ import com.intellij.openapi.ui.SimpleToolWindowPanel;
 import com.intellij.pom.NavigatableAdapter;
 import com.intellij.ui.ScrollPaneFactory;
 import com.intellij.ui.components.JBList;
-import com.intellij.ui.components.JBPanel;
 import com.intellij.usageView.UsageViewBundle;
 import com.intellij.util.ExceptionUtil;
 import com.intellij.util.ui.update.MergingUpdateQueue;
@@ -46,7 +47,9 @@ import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.ide.actions.MPSActionPlaces;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.search.SearchHistoryStorage;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.messages.IMessage;
+import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.IMessageList;
 import jetbrains.mps.messages.MessageKind;
 import org.jetbrains.annotations.NonNls;
@@ -54,14 +57,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import sun.font.FontDesignMetrics;
 
 import javax.swing.AbstractAction;
 import javax.swing.AbstractListModel;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JList;
-import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.KeyStroke;
@@ -89,23 +90,23 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Distinction between MessageList and its sole subclass in MessagesViewTool is subtle and perhaps not worth
  * effort. Latter knows about IDEA's MessageView and Content, former is more about Swing UI and actions, both though depend
- * from IDEA platform. I doubt anyone would reuse this class any time soon.
+ * on IDEA platform. I doubt anyone would reuse this class any time soon.
  */
 public abstract class MessageList implements IMessageList, SearchHistoryStorage, Disposable {
 
-  private final MyToggleAction myWarningsAction = new MyToggleAction("Show Warning Messages", Icons.WARNING_ICON) {
+  private final MessageListToggleAction myWarningsAction = new MessageListToggleAction("Warning Messages", "Show Warning Messages", Icons.WARNING_ICON) {
     @Override
     protected boolean isEnabled() {
       return hasWarnings();
     }
   };
-  private final MyToggleAction myInfoAction = new MyToggleAction("Show Informational Messages", Icons.INFORMATION_ICON) {
+  private final MessageListToggleAction myInfoAction = new MessageListToggleAction("Informational Messages", "Show Informational Messages", Icons.INFORMATION_ICON) {
     @Override
     protected boolean isEnabled() {
       return hasInfo();
     }
   };
-  private final MyToggleAction myAutoscrollToSourceAction = new MyToggleAction("Autoscroll to Source", Icons.AUTOSCROLLS_ICON) {
+  private final MessageListToggleAction myAutoscrollToSourceAction = new MessageListToggleAction("Autoscroll to Source", "Autoscroll to Source", Icons.AUTOSCROLLS_ICON) {
     @Override
     protected boolean isEnabled() {
       return hasHintObjects();
@@ -119,27 +120,27 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
   protected int myErrors;
   protected int myHintObjects;
   private final List<String> mySearches = new ArrayList<>();
-  private int myMaxListSize = 10000;
 
-  protected final FastListModel<IMessage> myModel = new FastListModel<>(this.myMaxListSize);
+  protected final FastListModel<IMessage> myModel = new FastListModel<>(10000);
   private final RootPanel myComponent = new RootPanel();
   protected final JList myList = new JBList(myModel);
   private ActionToolbar myToolbar;
   private final AtomicInteger myMessagesInProgress = new AtomicInteger();
   private MessageToolSearchPanel mySearchPanel = null;
-  private final MergingUpdateQueue myUpdateQueue = new MergingUpdateQueue("MessageList", 500, false, myComponent, null, null, true);
+  private final MergingUpdateQueue myUpdateQueue = new MergingUpdateQueue("MessageList", 500, false, myComponent, this, null, true);
   private final Object myUpdateIdentity = new Object();
   private final ConcurrentLinkedQueue<IMessage> myMessagesQueue = new ConcurrentLinkedQueue<>();
   private volatile boolean myIsDisposed = false;
   private boolean myActivateOnMessage = false;
+  private Runnable myNonActivationHandler = null;
 
   protected MessageList() {
     myUpdateQueue.setRestartTimerOnAdd(true);
     // Recreate render to update colors after scheme change
-    EditorColorsManager.getInstance().addEditorColorsListener(scheme -> {
+    ApplicationManager.getApplication().getMessageBus().connect(this).subscribe(EditorColorsManager.TOPIC, scheme -> {
       myCellRenderer = new MessagesListCellRenderer();
       myList.setCellRenderer(myCellRenderer);
-    }, this);
+    });
   }
 
   /**
@@ -156,6 +157,14 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     myActivateOnMessage = activateOnMessage;
   }
 
+  /**
+   * If not null, the provided handler is run if the obtained messages do not activate the tool window.
+   * This can typically be used to notify the user with a balloon about an operation that has finished without showing any relevant messages.
+   */
+  public void setNonActivationHandler(Runnable nonActivationHandler) {
+    myNonActivationHandler = nonActivationHandler;
+  }
+
   @Override
   public void dispose() {
     myUpdateQueue.dispose();
@@ -164,7 +173,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
 
   @Override
   public void clear() {
-    if (RuntimeFlags.isTestMode()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
 
@@ -195,8 +204,8 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
   }
 
   @Override
-  public void add(IMessage message) {
-    if (RuntimeFlags.isTestMode()) {
+  public void add(@NotNull IMessage message) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
 
@@ -222,25 +231,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
           updateMessageCounters(message, 1);
         }
 
-        int messagesToRemove = 0;
-        if (myMessages.size() > MessageList.this.myMaxListSize) {
-          for (int i = Math.min(myMessages.size() - MessageList.this.myMaxListSize, myMessages.size()); i > 0; i--) {
-            IMessage toRemove = myMessages.remove();
-            updateMessageCounters(toRemove, -1);
-            if (isVisible(toRemove)) {
-              messagesToRemove++;
-            }
-          }
-          if (messagesToRemove > myModel.getSize()) {
-            messagesToAdd = messagesToAdd.subList(messagesToRemove - myModel.getSize(), messagesToAdd.size());
-            messagesToRemove = myModel.getSize();
-          }
-        }
-
-        if (messagesToRemove > 0) {
-          myModel.removeFirst(messagesToRemove);
-        }
-        myModel.addAll(messagesToAdd);
+        messagesToAdd = safelyAdd(messagesToAdd);
 
         int maxWidth = -1;
         for (IMessage message : messagesToAdd) {
@@ -263,6 +254,10 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
         updateActions();
         if (myActivateOnMessage && messagesToAdd.size() > 0) {
           bringToFront();
+        } else {
+          if (myNonActivationHandler != null) {
+            myNonActivationHandler.run();
+          }
         }
       }
 
@@ -279,6 +274,47 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
         if (m.getHintObject() != null) {
           myHintObjects += delta;
         }
+      }
+
+      private List<IMessage> safelyAdd(List<IMessage> messagesToAdd) {
+        int messagesToRemove = 0;
+        if (myMessages.size() > myModel.capacity()) {
+          for (int i = myMessages.size() - myModel.capacity(); i > 0; i--) {
+            IMessage toRemove = myMessages.remove();
+            updateMessageCounters(toRemove, -1);
+            if (isVisible(toRemove)) {
+              messagesToRemove++;
+            }
+          }
+          if (messagesToRemove > myModel.getSize()) {
+            messagesToRemove = myModel.getSize();
+          }
+          messagesToAdd = messagesToAdd.subList(
+              Math.max(messagesToAdd.size() - myModel.capacity(), 0),
+              messagesToAdd.size());
+        }
+
+        if (messagesToRemove > 0) {
+          myModel.removeFirst(messagesToRemove);
+        }
+        myModel.addAll(messagesToAdd);
+        return messagesToAdd;
+      }
+    });
+  }
+
+  @Override
+  public void wake() {
+    // for reasons why I use new identity for each call see #clear().
+    // I don't expect a lot of wake calls, and see no reason to merge these calls (unless can ensure the last one added is respected)
+    myUpdateQueue.queue(new Update(new Object()) {
+      @Override
+      public void run() {
+        if (myIsDisposed) {
+          return;
+        }
+        // perhaps, could record a state with number of messages and bring tool window to front only if the number has changed since last 'toFront' call?
+        bringToFront();
       }
     });
   }
@@ -309,8 +345,8 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     group.add(new MessagesLimitAction());
     group.add(new ClearAction());
 
-    myToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, false);
-
+    myToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, false);
+    myToolbar.setTargetComponent(myComponent);
     myComponent.setToolbar(myToolbar.getComponent());
     final JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(myList, true);
     // Add MouseWheelListener to scrollPane instead of myList itself, because otherwise scrollPane default behaviour will be blocked
@@ -332,8 +368,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
       }
     }, KeyStroke.getKeyStroke('F', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
-
-    myList.setFixedCellHeight(FontDesignMetrics.getMetrics(myList.getFont()).getHeight() + 5);
+    myList.setFixedCellHeight(myList.getFontMetrics(myList.getFont()).getHeight() + 5);
 
     final AbstractAction openCurrentMessage = new AbstractAction() {
       @Override
@@ -352,7 +387,8 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     }, KeyStroke.getKeyStroke("F1"), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
     myList.registerKeyboardAction(e -> selectAll(),
-        KeyStroke.getKeyStroke('A', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+                                  KeyStroke.getKeyStroke('A', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()),
+                                  JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
     myList.addMouseListener(new MouseAdapter() {
       // Holds index of item, that was under cursor on mouse press action
@@ -398,7 +434,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
         int index = myList.locationToIndex(event.getPoint());
 
         final IMessage message = index != -1 && index >= myList.getFirstVisibleIndex() && index <= myList.getLastVisibleIndex()
-            ? myModel.getElementAt(index) : null;
+                                 ? myModel.getElementAt(index) : null;
         if (message == null || !myAutoscrollToSourceAction.isSelected(null)) {
           myList.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
           myCellRenderer.setIndexUnderMouse(-1);
@@ -479,6 +515,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
 
     JPopupMenu menu = ActionManager.getInstance().createActionPopupMenu(MPSActionPlaces.MPS_MESSAGES_POPUP, group).getComponent();
     menu.show(myList, event.getX(), event.getY());
+    event.consume();
   }
 
   @SuppressWarnings({"ThrowableInstanceNeverThrown", "unchecked"})
@@ -490,7 +527,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
       final StringBuilder sb = new StringBuilder();
       for (IMessage message : selectedValues) {
         sb.append(message.getText());
-        sb.append("\n");
+        sb.append('\n');
 
         if (message.getException() != null) {
           sb.append(ExceptionUtil.getThrowableText(message.getException()));
@@ -510,11 +547,17 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
 
     group.add(new AnAction("Show Help for This Message", null, null) {
       @Override
-      public void update(AnActionEvent e) {
+      public void update(@NotNull AnActionEvent e) {
         boolean enabled = getHelpUrlForCurrentMessage() != null;
         Presentation presentation = e.getPresentation();
         presentation.setEnabled(enabled);
         presentation.setVisible(enabled);
+      }
+
+      @Override
+      public @NotNull ActionUpdateThread getActionUpdateThread() {
+        // JList.getSelectedValuesList()
+        return ActionUpdateThread.EDT;
       }
 
       @Override
@@ -564,6 +607,10 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
       }
     }
     myList.setFixedCellWidth(width);
+
+    messagesToAdd = messagesToAdd.subList(
+        Math.max(messagesToAdd.size() - myModel.capacity(), 0),
+        messagesToAdd.size());
 
     myModel.addAll(messagesToAdd);
   }
@@ -624,7 +671,12 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     }
 
     @Override
-    public void update(AnActionEvent e) {
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
+
+    @Override
+    public void update(@NotNull AnActionEvent e) {
       super.update(e);
       e.getPresentation().setEnabled(myTextToCopy != null);
     }
@@ -635,14 +687,20 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     }
   }
 
-  private class MyToggleAction extends ToggleAction {
+  private class MessageListToggleAction extends ToggleAction {
     private boolean mySelected;
     private final Icon myIcon;
 
-    public MyToggleAction(String tooltip, Icon icon) {
-      super("", tooltip, icon);
+    public MessageListToggleAction(String text, String tooltip, Icon icon) {
+      super(text, tooltip, icon);
       myIcon = icon;
       mySelected = true;
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      // Hope UIManager.getDisabledIcon() doesn't need EDT
+      return ActionUpdateThread.BGT;
     }
 
     @Override
@@ -681,41 +739,48 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
       String result = Messages.showInputDialog(MessageList.this.myComponent, "Set max number of showing messages", "Messages Limit", null,
-          String.valueOf(MessageList.this.myMaxListSize),
-          new InputValidatorEx() {
-            @Nullable
-            @Override
-            public String getErrorText(String inputString) {
-              return checkInput(inputString) ? null : "Enter correct number";
-            }
+                                               String.valueOf(myModel.capacity()),
+                                               new InputValidatorEx() {
+                                                 @Nullable
+                                                 @Override
+                                                 public String getErrorText(String inputString) {
+                                                   return checkInput(inputString) ? null : "Enter correct number";
+                                                 }
 
-            @Override
-            public boolean checkInput(String inputString) {
-              try {
-                final Integer i = Integer.valueOf(inputString);
-                if (i < 1) {
-                  return false;
-                }
-              } catch (NumberFormatException nfe) {
-                return false;
-              }
-              return true;
-            }
+                                                 @Override
+                                                 public boolean checkInput(String inputString) {
+                                                   try {
+                                                     final Integer i = Integer.valueOf(inputString);
+                                                     if (i < 1) {
+                                                       return false;
+                                                     }
+                                                   } catch (NumberFormatException nfe) {
+                                                     return false;
+                                                   }
+                                                   return true;
+                                                 }
 
-            @Override
-            public boolean canClose(String inputString) {
-              return checkInput(inputString);
-            }
-          });
+                                                 @Override
+                                                 public boolean canClose(String inputString) {
+                                                   return checkInput(inputString);
+                                                 }
+                                               });
       if (result != null) {
-        MessageList.this.myMaxListSize = Integer.valueOf(result);
+        try {
+          myModel.resize(Integer.parseUnsignedInt(result));
+          rebuildModel();
+        } catch (NumberFormatException ex) {
+          Logger.getLogger(MessageList.this.getClass()).warning(ex.getMessage(), ex);
+        }
       }
     }
   }
 
   /*package*/ MessageListState getState() {
-    return new MessageListState(myWarningsAction.isSelected(null), myInfoAction.isSelected(null), myAutoscrollToSourceAction.isSelected(null), mySearches,
-        myMaxListSize);
+    final boolean warn = myWarningsAction.isSelected(null);
+    final boolean info = myInfoAction.isSelected(null);
+    final boolean scroll = myAutoscrollToSourceAction.isSelected(null);
+    return new MessageListState(warn, info, scroll, mySearches, myModel.capacity());
   }
 
   /*package*/ void loadState(MessageListState state) {
@@ -723,7 +788,14 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     myInfoAction.setSelected(null, state.isInfo());
     myAutoscrollToSourceAction.setSelected(null, state.isAutoscrollToSource());
     setSearches(state.getSearches());
-    myMaxListSize = state.getMaxListSize();
+    myModel.resize(state.getMaxListSize());
+  }
+
+  @Override
+  public IMessageHandler restrict(@NotNull MessageKind atLeastOfKind) {
+    setWarningsEnabled(MessageKind.WARNING.isSameOrGreaterSeverityThan(atLeastOfKind));
+    setInfoEnabled(MessageKind.INFORMATION.isSameOrGreaterSeverityThan(atLeastOfKind));
+    return this;
   }
 
   public void setWarningsEnabled(boolean enabled) {
@@ -738,7 +810,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     private int myStart;
     private int myEnd;
     private int mySize;
-    private final T[] myItems;
+    private T[] myItems;
 
     @SuppressWarnings("unchecked")
     FastListModel(int size) {
@@ -750,6 +822,38 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     @Override
     public int getSize() {
       return mySize;
+    }
+
+    public void resize(int newCapacity) {
+      assert newCapacity > 0;
+      if (newCapacity == capacity()) {
+        return;
+      }
+      Object[] newItems = new Object[newCapacity];
+      if (mySize == 0 || myStart == myEnd) {
+        myItems = (T[]) newItems;
+        myStart = myEnd = mySize = 0;
+        return;
+      }
+      final int count = Math.min(newCapacity, mySize);
+      if (myStart < myEnd) {
+        System.arraycopy(myItems, myStart, newItems, 0, count);
+      } else {
+        final int from = Math.max(0, myEnd - count);
+        final int copied = myEnd - from;
+        // start by copying last elements into tail
+        System.arraycopy(myItems, from, newItems, count - copied, copied);
+        final int left = count - copied;
+        // add (left = count - copied) elements into head
+        System.arraycopy(myItems, Math.max(myStart, myItems.length - left), newItems, 0, left);
+      }
+      myStart = 0; // we always copy 'count' elements
+      myEnd = mySize = count;
+      myItems = (T[]) newItems;
+    }
+
+    public int capacity() {
+      return myItems.length;
     }
 
     @Override
@@ -820,6 +924,8 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     }
   }
 
+  // unused methods necessary for IDEA's state persistence logic
+  @SuppressWarnings("unused")
   public static class MessageListState {
     private boolean myWarnings;
     private boolean myInfo;

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="bb064w4gwqyyn337cm95o4fyrqzbk4w" />
+<product version="3" modelHash="-5lzxf79e9o4q5qmuu2219gtuhrf9wow">
+  <files names="SuppressErrorsChecker.java:SuppressErrorsMessage.java" />
+</product>
 

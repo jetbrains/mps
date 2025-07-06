@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-79bc4z7w8bcofln315ifn08w0jkrwo0" />
+<product version="3" modelHash="-dxtl975dc2zl4j7qnh3cvxp1og74rlp">
+  <files names="ActionAspectDescriptorImpl.java:LogicalOperatorFactory.java" />
+</product>
 

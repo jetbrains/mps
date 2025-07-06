@@ -4,33 +4,49 @@ package jetbrains.mps.refactoringTest;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
+import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
+import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.InlineMethodRefactoring;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class CheckStaticVisibility_Test extends BaseTransformationTest {
-  @Test
-  public void test_CheckStaticVisibility() throws Throwable {
-    initTest("${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
-    runTest("jetbrains.mps.refactoringTest.CheckStaticVisibility_Test$TestBody", "test_CheckStaticVisibility", true);
+  @RegisterExtension
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(CheckStaticVisibility_Test.class).projectPath(null).modelRef("r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)").reopenProject(null).build());
+
+  public CheckStaticVisibility_Test() {
+    super(ourParametersCacheExtension.getParametersCache());
   }
 
-  @MPSLaunch
-  public static class TestBody extends BaseTestBody {
-    public void test_CheckStaticVisibility() throws Exception {
-      addNodeById("1230053114802");
-      addNodeById("1230053114815");
-      addNodeById("1230053114829");
-      InlineMethodRefactoring ref = new InlineMethodRefactoring(SNodeOperations.cast(getNodeById("1230053114810"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall")));
-      Assert.assertTrue(ref.getProblems().length() > 0);
-      ref = new InlineMethodRefactoring(SNodeOperations.cast(getNodeById("1230053114813"), MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall")));
-      Assert.assertTrue(ref.getProblems().length() > 0);
+  @Test
+  public void test_CheckStaticVisibility() throws Throwable {
+    new TestBody(this).test_CheckStaticVisibility();
+  }
+
+  /*package*/ static class TestBody extends BaseTestBody {
+
+    /*package*/ TestBody(TransformationTest owner) {
+      super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053114802", "1230053114815", "1230053114829");
+    }
+
+    public void test_CheckStaticVisibility() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        InlineMethodRefactoring ref = new InlineMethodRefactoring(getAnnotatedNode("call_1"));
+        Assert.assertTrue(ref.getProblems().length() > 0);
+        ref = new InlineMethodRefactoring(getAnnotatedNode("call_2"));
+        Assert.assertTrue(ref.getProblems().length() > 0);
+      });
+    }
 
   }
 }

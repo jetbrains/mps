@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2010 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,199 +15,143 @@
  */
 package jetbrains.mps.reloading;
 
-import gnu.trove.THashSet;
-import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.util.ConditionalIterable;
-import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.InternUtil;
 import jetbrains.mps.util.ReadUtil;
+import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.FileSystemFile;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.impl.IoFileSystem;
-import jetbrains.mps.vfs.openapi.FileSystem;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.util.Condition;
+import jetbrains.mps.vfs.MPSExtentions;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 public class JarFileClassPathItem extends RealClassPathItem {
-  private static final Logger LOG = LogManager.getLogger(JarFileClassPathItem.class);
+  private static final Logger LOG = Logger.getLogger(JarFileClassPathItem.class);
+
+  private IFile myIFile;
 
   //computed during init
   private boolean myIsInitialized = false;
+  private ZipFile myZipFile;
   private String myPrefix;
   private File myFile;
 
-  private final MyCache myCache = new MyCache();
-  private final String myPath;
+  private Map<String, ZipEntry> myEntries = new HashMap<String, ZipEntry>();
+  private MyCache myCache = new MyCache();
 
-  JarFileClassPathItem(FileSystem fileSystem, String path) {
-    myPath = path;
-    if (path.endsWith("!/")) {
-      path = path.substring(0, path.length() - 2);
-    }
+  private static final HashSet<String> DEFAULT_VALUE = new HashSet<String>(0);
+
+  protected JarFileClassPathItem(String path) {
+    this(FileSystem.getFile(path));
+  }
+
+  private JarFileClassPathItem(IFile file) {
+    myIFile = file;
+
     try {
-      myFile = transformFile(fileSystem.getFile(path));
-      myPrefix = "jar:" + myFile.toURI().toURL() + "!/";
+      myFile = transformFile(myIFile);
+      myPrefix = "jar:" + myFile.toURL() + "!/";
+      myZipFile = new ZipFile(myFile);
     } catch (IOException e) {
-      LOG.error("invalid class path: " + path, e);
+      LOG.error(e);
     }
   }
 
-  @Override
-  public String getPath() {
-    return myPath;
-  }
-
-  public String getAbsolutePath() {
-    return myFile.getAbsolutePath();
+  public IFile getIFile() {
+    checkValidity();
+    return myIFile;
   }
 
   public File getFile() {
+    checkValidity();
     return myFile;
   }
 
-  @Override
-  public boolean hasClass(String qualifiedClassName) {
+  public byte[] getClass(String name) {
+    checkValidity();
     ensureInitialized();
-    final int ix = qualifiedClassName.lastIndexOf('.');
-    String packageName = ix == -1 ? "" : qualifiedClassName.substring(0, ix);
-    String className = qualifiedClassName.substring(ix + 1);
-    return myCache.hasClass(packageName, className);
-  }
-
-  @Override
-  public boolean hasPackage(@NotNull String packageName) {
-    ensureInitialized();
-    return myCache.hasPackage(packageName);
-  }
-
-  @Override
-  public synchronized ClassBytes getClassBytes(String qualifiedClassName) {
-    ensureInitialized();
+    ZipEntry entry = myEntries.get(name);
+    if (entry == null) return null;
     InputStream inp = null;
-    ZipFile zf = null;
     try {
-      zf = new ZipFile(myFile);
-      String entryName = toClassEntry(qualifiedClassName);
-      ZipEntry entry = zf.getEntry(entryName);
-      if (entry == null) {
-        return null;
-      }
-      inp = zf.getInputStream(entry);
-      if (inp == null) {
-        return null;
-      }
-      // safe to assume int as class files have size limit way lower than 2^31
-      byte[] bytes = ReadUtil.read(inp, (int) entry.getSize());
-      return bytes == null ? null : new DefaultClassBytes(bytes, myFile.toURI().toURL());
+      inp = myZipFile.getInputStream(entry);
+      byte[] result = new byte[(int) entry.getSize()];
+
+      ReadUtil.read(result, inp);
+
+      return result;
     } catch (IOException e) {
-      LOG.error(getClass().getName(), e);
       return null;
     } finally {
-      FileUtil.closeFileSafe(inp);
-      closeZipFile(zf);
-    }
-  }
-
-  private static String toClassEntry(String classQualifiedName) {
-    StringBuilder sb = new StringBuilder(classQualifiedName);
-    for (int i = 0; i < classQualifiedName.length(); i++) {
-      if (sb.charAt(i) == '.') {
-        sb.setCharAt(i, '/');
-      }
-    }
-    sb.append(MPSExtentions.DOT_CLASSFILE);
-    return sb.toString();
-  }
-
-  private static void closeZipFile(ZipFile zf) {
-    if (zf != null) {
-      try {
-        zf.close();
-      } catch (IOException e) {
-        LOG.error(JarFileClassPathItem.class.getName(), e);
-      }
-    }
-  }
-
-  @Override
-  public URL getResource(String name) {
-    ZipFile zf = null;
-    try {
-      zf = new ZipFile(myFile);
-      if (zf.getEntry(name) == null) return null;
-      return new URL(myPrefix + name);
-    } catch (MalformedURLException e) {
-      LOG.error(null, e);
-      return null;
-    } catch (IOException e) {
-      LOG.error(null, e);
-      return null;
-    } finally {
-      if (zf != null) {
+      if (inp != null) {
         try {
-          zf.close();
+          inp.close();
         } catch (IOException e) {
-          LOG.error(null, e);
+          LOG.error(e);
         }
       }
     }
   }
 
-  @Override
-  public synchronized Iterable<String> getAvailableClasses(String namespace) {
-    ensureInitialized();
-    Collection<String> start = myCache.getClassesSetFor(namespace);
-    Condition<String> cond = new Condition<String>() {
-      @Override
-      public boolean met(String className) {
-        return !isAnonymous(className);
-      }
-    };
-    return new ConditionalIterable<String>(start, cond);
+  public URL getResource(String name) {
+    checkValidity();
+    try {
+      if (myZipFile.getEntry(name) == null) return null;
+      return new URL(myPrefix + name);
+    } catch (MalformedURLException e) {
+      return null;
+    }
   }
 
-  @Override
-  public synchronized Iterable<String> getSubpackages(String namespace) {
+  public void collectAvailableClasses(Set<String> classes, String namespace) {
+    checkValidity();
     ensureInitialized();
-    return myCache.getSubpackagesSetFor(namespace);
+    classes.addAll(myCache.getClassesSetFor(namespace));
   }
 
-  @Override
-  public List<RealClassPathItem> flatten() {
-    List<RealClassPathItem> result = new ArrayList<RealClassPathItem>();
+  public void collectSubpackages(Set<String> subpackages, String namespace) {
+    checkValidity();
+    ensureInitialized();
+    subpackages.addAll(myCache.getSubpackagesSetFor(namespace));
+  }
+
+  public long getClassesTimestamp(String namespace) {
+    checkValidity();
+    long timestamp = 0;
+    for (String cls : getAvailableClasses(namespace)) {
+      timestamp = Math.max(timestamp, getClassTimestamp(namespace.equals("") ? cls : namespace + "." + cls));
+    }
+    return timestamp;
+  }
+
+  public long getTimestamp() {
+    checkValidity();
+    return myIFile.lastModified();
+  }
+
+  public List<IClassPathItem> flatten() {
+    checkValidity();
+    List<IClassPathItem> result = new ArrayList<IClassPathItem>();
     result.add(this);
     return result;
   }
 
-  @Override
   public void accept(IClassPathItemVisitor visitor) {
+    checkValidity();
     visitor.visit(this);
   }
 
   public String toString() {
-    return "jar-cp: " + myFile;
+    return "jar-cp: " + myIFile;
   }
 
-  private void ensureInitialized() {
+  private void ensureInitialized(){
     if (myIsInitialized) return;
     myIsInitialized = true;
     buildCaches();
@@ -215,70 +159,72 @@ public class JarFileClassPathItem extends RealClassPathItem {
 
   private long getClassTimestamp(String name) {
     String path = name.replace('.', '/') + ".class";
-    ZipFile zf = null;
-    try {
-      zf = new ZipFile(myFile);
+    ZipEntry entry = myZipFile.getEntry(path);
+    assert entry != null : path;
+    return entry.getTime();
+  }
 
-      ZipEntry entry = zf.getEntry(path);
-      assert entry != null : path;
-      return entry.getTime();
-    } catch (IOException e) {
-      LOG.error(null, e);
-      return 0;
-    } finally {
-      if (zf != null) {
-        try {
-          zf.close();
-        } catch (IOException e) {
-          LOG.error(null, e);
+
+  private void buildCaches() {
+    Iterable<? extends ZipEntry> entries = CollectionUtil.asIterable(myZipFile.entries());
+
+    for (ZipEntry entry : entries) {
+      if (entry.isDirectory()) {
+        String name = entry.getName();
+        if (name.endsWith("/")) {
+          name = name.substring(0, name.length() - 1);
+        }
+
+        //directry having a '.' in its name can't contain classes.
+        // See http://youtrack.jetbrains.net/issue/MPS-7012 for details 
+        if (name.contains(".")) continue;
+
+        String pack = name.replace('/', '.');
+        buildPackageCaches(pack);
+      } else {
+        String name = entry.getName();
+
+        if (!name.endsWith(MPSExtentions.DOT_CLASSFILE)) continue;
+
+        int packEnd = name.lastIndexOf('/');
+        String pack;
+        String className;
+        if (packEnd == -1) {
+          pack = "";
+          className = name.substring(0, name.length() - MPSExtentions.DOT_CLASSFILE.length());
+        } else {
+          pack = packEnd > 0 ? name.substring(0, packEnd).replace('/', '.') : name;
+          className = name.substring(packEnd + 1, name.length() - ".class".length());
+        }
+
+        buildPackageCaches(pack);
+        myCache.addClass(pack, className);
+
+        if (pack.length() > 0) {
+          myEntries.put(InternUtil.intern(pack + "." + className), entry);
+        } else {
+          myEntries.put(InternUtil.intern(className), entry);
         }
       }
     }
   }
 
-  private synchronized void buildCaches() {
-    ZipFile zf = null;
-    try {
-      zf = new ZipFile(myFile);
-      Enumeration<? extends ZipEntry> entries = zf.entries();
+  private void buildPackageCaches(String namespace) {
+    String parent = getParentPackage(namespace);
+    if (parent.equals(namespace)) return;
+    myCache.addPackage(namespace, parent);
+    buildPackageCaches(parent);
+  }
 
-      while (entries.hasMoreElements()) {
-        ZipEntry entry = entries.nextElement();
-        if (!entry.isDirectory()) {
-          String name = entry.getName();
-
-          if (!name.endsWith(MPSExtentions.DOT_CLASSFILE)) continue;
-
-          int packEnd = name.lastIndexOf('/');
-          String pack;
-          String className;
-          if (packEnd == -1) {
-            pack = "";
-            className = name.substring(0, name.length() - MPSExtentions.DOT_CLASSFILE.length());
-          } else {
-            pack = packEnd > 0 ? name.substring(0, packEnd).replace('/', '.') : name;
-            className = name.substring(packEnd + 1, name.length() - MPSExtentions.DOT_CLASSFILE.length());
-          }
-
-          myCache.addClass(pack, InternUtil.intern(className));
-        }
-      }
-    } catch (IOException e) {
-      LOG.error(String.format("Path %s (%s) \nFile exists: %s", myFile.getPath(), myFile.getAbsolutePath(), myFile.exists()), e);
-    } finally {
-      if (zf != null) {
-        try {
-          zf.close();
-        } catch (IOException e) {
-          LOG.error(null, e);
-        }
-      }
-    }
+  private String getParentPackage(String pack) {
+    int lastDot = pack.lastIndexOf(".");
+    if (lastDot == -1) return "";
+    return pack.substring(0, lastDot);
   }
 
   private static File transformFile(IFile f) throws IOException {
-    if (!f.isInArchive()) {
-      return new File(f.getPath());
+    if (f instanceof FileSystemFile) {
+      return ((FileSystemFile) f).getFile();
     }
 
     File tmpFile = File.createTempFile(f.getName(), "tmp");
@@ -306,176 +252,36 @@ public class JarFileClassPathItem extends RealClassPathItem {
   }
 
   //do not touch this class if you are not sure in your changes - this can lead to excess memory consumption (see #53513)
-  private static class MyCache {
-    private final Entry myTopPackage = new Entry("");
+  private static class MyCache{
+    private Map<String, Set<String>> myClasses = new HashMap<String, Set<String>>();
+    private Map<String, Set<String>> mySubpackages = new HashMap<String, Set<String>>();
 
-    private Entry getEntry(String pack) {
-      Entry e = myTopPackage;
-      PackageNameIterator it = new PackageNameIterator(pack);
-      while (it.hasNext() && e != null) {
-        e = e.getSubPackage(it.next());
+    public Set<String> getClassesSetFor(String pack) {
+      if (!myClasses.containsKey(pack)) {
+        return DEFAULT_VALUE;
       }
-      return e;
-    }
-    public Collection<String> getClassesSetFor(String pack) {
-      Entry e = getEntry(pack);
-      return e == null ? Collections.<String>emptyList() : e.getClasses();
+      return myClasses.get(pack);
     }
 
-    public boolean hasClass(String pack, String className) {
-      Entry e = getEntry(pack);
-      return e != null && e.hasClass(className);
-    }
-
-    public boolean hasPackage(String pack) {
-      return getEntry(pack) != null;
-    }
-
-    public Collection<String> getSubpackagesSetFor(String pack) {
-      Entry e = getEntry(pack);
-      return e == null ? Collections.<String>emptyList() : e.getImmediateSubPackages(pack);
+    public Set<String> getSubpackagesSetFor(String pack) {
+      if (!mySubpackages.containsKey(pack)) {
+        return DEFAULT_VALUE;
+      }
+      return mySubpackages.get(pack);
     }
 
     public void addClass(String pack, String className) {
-      //namespace is never null;
-      Entry e = myTopPackage;
-      PackageNameIterator it = new PackageNameIterator(pack);
-      while (it.hasNext()) {
-        e = e.createSubPackage(it.next());
+      if (!myClasses.containsKey(pack)){
+        myClasses.put(pack,new HashSet<String>(2));
       }
-      e.addClass(className);
-    }
-  }
-
-  /**
-   * PackageNameIterator("").hasNext() == false
-   *  PackageNameIterator("a").hasNext() == true
-   *  PackageNameIterator("a").hasNext().hasNext() == false
-   */
-  private static class PackageNameIterator implements Iterator<String> {
-    private final String myPackageName;
-    private int start = 0;
-    private int dotIndex;
-
-    public PackageNameIterator(String packageName) {
-      myPackageName = packageName;
-      advance();
+      myClasses.get(pack).add(className);
     }
 
-    @Override
-    public boolean hasNext() {
-      return dotIndex > 0 && dotIndex <= myPackageName.length();
-    }
-
-    @Override
-    public String next() {
-      String rv = myPackageName.substring(start, dotIndex);
-      start = dotIndex + 1;
-      advance();
-      return rv;
-    }
-
-    private void advance() {
-      dotIndex = myPackageName.indexOf('.', start);
-      if (dotIndex == -1 && start < myPackageName.length()) {
-        dotIndex = myPackageName.length();
+    public void addPackage(String namespace, String pack) {
+      if (!mySubpackages.containsKey(pack)){
+        mySubpackages.put(pack,new HashSet<String>(2));
       }
-    }
-
-    @Override
-    public void remove() {
-      throw new UnsupportedOperationException();
-    }
-  }
-
-  private static class Entry {
-    private final String myPackageName;
-    private ArrayList<Entry> mySubpackages;
-    private THashSet<String> myClassNames;
-
-    public Entry(String packageName) {
-      myPackageName = packageName;
-    }
-
-    public Entry createSubPackage(String packageNamePart) {
-      if (mySubpackages == null) {
-        mySubpackages = new ArrayList<Entry>(4);
-        final Entry rv = new Entry(new String(packageNamePart));
-        mySubpackages.add(rv);
-        return rv;
-      }
-      final int ix = indexOf(packageNamePart);
-      if (ix < 0) {
-        final Entry rv = new Entry(new String(packageNamePart));
-        mySubpackages.add(-ix - 1, rv);
-        return rv;
-      } else {
-        return mySubpackages.get(ix);
-      }
-    }
-
-    public Entry getSubPackage(String packageNamePart) {
-      final int ix = indexOf(packageNamePart);
-      if (ix < 0) {
-        return null;
-      }
-      return mySubpackages.get(ix);
-    }
-
-    public void addClass(String className) {
-      if (myClassNames == null) {
-        myClassNames = new THashSet<String>();
-      }
-      myClassNames.add(className);
-    }
-
-    public boolean hasClass(String className) {
-      return myClassNames != null && myClassNames.contains(className);
-    }
-
-    public Collection<String> getImmediateSubPackages(String parent) {
-      if (mySubpackages == null) {
-        return Collections.emptyList();
-      }
-      ArrayList<String> rv = new ArrayList<String>(mySubpackages.size());
-      for (Entry e : mySubpackages) {
-        if (parent == null || parent.isEmpty()) {
-          rv.add(e.myPackageName);
-        } else {
-          rv.add(parent + '.' + e.myPackageName);
-        }
-      }
-      return rv;
-    }
-
-    public Collection<String> getClasses() {
-      return myClassNames == null ? Collections.<String>emptyList() : myClassNames;
-    }
-
-    @Override
-    public String toString() {
-      return String.format("%s - %d;%d", myPackageName, mySubpackages == null ? 0 : mySubpackages.size(), myClassNames == null ? 0 : myClassNames.size());
-    }
-
-    private int indexOf(String packageName) {
-      if (mySubpackages == null) {
-        return -1;
-      }
-      int low = 0;
-      int high = mySubpackages.size() - 1;
-      while (low <= high) {
-        int mid = (low + high) >>> 1;
-        Entry c = mySubpackages.get(mid);
-        int cmp = packageName.compareTo(c.myPackageName);
-        if (cmp < 0) {
-          high = mid - 1;
-        } else if (cmp > 0) {
-          low = mid + 1;
-        } else {
-          return mid;
-        }
-      }
-      return -(low + 1);
+      mySubpackages.get(pack).add(namespace);
     }
   }
 }

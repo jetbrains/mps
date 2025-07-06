@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,33 +15,24 @@
  */
 package jetbrains.mps.text.rt;
 
-import jetbrains.mps.smodel.adapter.ids.SConceptId;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
-import jetbrains.mps.smodel.runtime.LanguageAspectDescriptor;
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-
-import java.util.Collection;
-import java.util.Collections;
 
 /**
  * Aspect of a language which describes the ways to produce text from a node
  * @author Artem Tikhomirov
  * @since 3.3
  */
-public interface TextGenAspectDescriptor extends LanguageAspectDescriptor {
-  /**
-   * @param concept input kind for textgen
-   * @return descriptor for the concept, or <code>null</code> if this aspect knows nothing about the concept
-   */
-  @Deprecated
-  @ToRemove(version = 3.4)
-  @Nullable
-  TextGenDescriptor getDescriptor(@NotNull SConceptId concept);
-
+public interface TextGenAspectDescriptor extends ILanguageAspect {
   @Nullable
   TextGenDescriptor getDescriptor(@NotNull SAbstractConcept concept);
+
+  /**
+   * Gives control over TextUnits created for the model
+   */
+  default void breakdownToUnits(@NotNull TextGenModelOutline modelOutline) {
+    // no-op by default, descriptors generated with MPS 3.3 override, if any root textgen present
+  }
 }

@@ -9,7 +9,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 
 public class MigrationDescriptor implements MigrationAspectDescriptor {
-  private Map<Integer, MigrationScript> myScripts = MapSequence.<Integer, MigrationScript>fromMapAndKeysArray(new HashMap<Integer, MigrationScript>(), 0, 1, 2, 3).withValues(new AddNecessaryParenthsToNotExpressions(), new ReplaceSingleLineCommentsWithGenericComments(), new RemoveUsagesOfDeprecatedProperty(), new ReplaceOldCommentWithGenericComment_CommentedStatementsBlock());
+  private Map<Integer, MigrationScript> myScripts = MapSequence.fromMapAndEntryArray(new HashMap<Integer, MigrationScript>(), Map.entry(0, new AddNecessaryParenthsToNotExpressions()), Map.entry(1, new ReplaceSingleLineCommentsWithGenericComments()), Map.entry(2, new RemoveUsagesOfDeprecatedProperty()), Map.entry(3, new ReplaceOldCommentWithGenericComment_CommentedStatementsBlock()), Map.entry(4, new ReplaceDeprecatedVarReferencesWithVariableReference()), Map.entry(5, new AddReturnTypeToConstructorDeclaration()), Map.entry(6, new Remove_IBLDeprecatable_IsDeprecated_Property()), Map.entry(7, new SetIsAbstractPropertyInInterfaceMethods()), Map.entry(8, new UpdateSingleLineCommentToUseTextLang()), Map.entry(9, new UpdateSingleLineCommentToUseLinePerComment()), Map.entry(10, new MigrateTryStatement()), Map.entry(11, new UseDeprecatedInsteadOfToRemoveOrScheduledForRemoval()));
   public MigrationScript getScript(int fromVersion) {
     return MapSequence.fromMap(myScripts).get(fromVersion);
   }

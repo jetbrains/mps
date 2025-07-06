@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,11 @@
 package jetbrains.mps.ide.project;
 
 import com.intellij.openapi.wm.WindowManager;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.ProjectRepository;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.apache.log4j.LogManager;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -31,18 +31,11 @@ import java.awt.Frame;
  * Evgeny Gryaznov, 9/29/11
  */
 public class ProjectHelper {
-
-  /**
-   * @deprecated use {@link MPSProject#getProject()} instead
-   */
-  @Deprecated
-  @ToRemove(version = 3.4)
-  @Nullable
   public static com.intellij.openapi.project.Project toIdeaProject(Project p) {
     if (p instanceof MPSProject) {
       return ((MPSProject) p).getProject();
     }
-    LogManager.getLogger(ProjectHelper.class).debug("The project " + p + " is not an instance of MPSProject");
+    Logger.getLogger(ProjectHelper.class).debug("The project " + p + " is not an instance of MPSProject");
     return null;
   }
 
@@ -53,24 +46,44 @@ public class ProjectHelper {
   @Deprecated
   @Nullable
   public static Project toMPSProject(com.intellij.openapi.project.Project p) {
-    if (p != null) {
-      return p.getComponent(MPSProject.class);
-    }
-    return null;
+    return fromIdeaProject(p);
   }
 
+  /**
+   * Can return null at least for default project in case if the corresponding project component
+   * is not configured as loadForDefaultProject in its plugin descriptor file.
+   */
   @Nullable
-  public static MPSProject fromIdeaProject(com.intellij.openapi.project.Project p) {
+  public static MPSProject fromIdeaProject(@Nullable com.intellij.openapi.project.Project p) {
     if (p != null) {
       return p.getComponent(MPSProject.class);
     }
     return null;
   }
 
+  /**
+   * Use in scenarios, where no doubt about MPSProject presence is tolerated.
+   * E.g. to address IDEA's crusade to get rid of dependency injection in components and
+   * extensions, we can no longer pass MPSProject instead of IDEA's Project into our own
+   * extensions. For these scenarios, prefer this method so that MPS-dependent extensions
+   * don't even start with improper assumptions.
+   */
+  @NotNull
+  public static MPSProject fromIdeaProjectOrFail(@NotNull com.intellij.openapi.project.Project p) {
+    final MPSProject mpsProject = fromIdeaProject(p);
+    if (mpsProject == null) {
+      throw new IllegalArgumentException(String.format("Project '%s' got no MPS counterpart", p));
+    }
+    return mpsProject;
+  }
+
+  /**
+   * See {@link ProjectHelper#fromIdeaProject(com.intellij.openapi.project.Project)} for nullability condition
+   */
   @Nullable
   public static SRepository getProjectRepository(com.intellij.openapi.project.Project p) {
     if (p != null) {
-      Project project = p.getComponent(MPSProject.class);
+      Project project = fromIdeaProject(p);
       if (project != null) {
         return project.getRepository();
       }
@@ -78,6 +91,9 @@ public class ProjectHelper {
     return null;
   }
 
+  /**
+   * See {@link ProjectHelper#fromIdeaProject(com.intellij.openapi.project.Project)} for nullability condition
+   */
   @Nullable
   public static ModelAccess getModelAccess(com.intellij.openapi.project.Project p) {
     SRepository repository = getProjectRepository(p);
@@ -90,12 +106,7 @@ public class ProjectHelper {
 
   @Nullable
   public static Frame toMainFrame(Project p) {
-    if (p instanceof MPSProject) {
-      com.intellij.openapi.project.Project project = ((MPSProject) p).getProject();
-      if (project == null) return null;
-      return WindowManager.getInstance().getFrame(project);
-    }
-    return null;
+    return p instanceof MPSProject ? WindowManager.getInstance().getFrame(((MPSProject) p).getProject()) : null;
   }
 
   @Nullable

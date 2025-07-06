@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,46 +15,15 @@
  */
 package jetbrains.mps;
 
+
+/**
+ * @deprecated use {@link RuntimeFlags}
+  */
+@Deprecated(since = "2018.2", forRemoval = true)
 public class InternalFlag {
 
-  private static InternalFlag ourInstance;
-
-  private boolean myInternalFlag;
-
-  private InternalFlag() {
-    myInternalFlag = isSystemInternal();
-  }
-
-  public static InternalFlag getInstance() {
-    if (ourInstance == null) {
-      ourInstance = new InternalFlag();
-    }
-    return ourInstance;
-  }
-
-  @Deprecated
-  /**
-   * Use method isInternalMode
-   * @Deprecated in 3.4
-   */
-  public static boolean isSystemInternal() {
-    return "true".equals(System.getProperty("mps.internal"));
-  }
-
   public static boolean isInternalMode() {
-    if (ourInstance == null) {
-      return isSystemInternal();
-    } else {
-      return ourInstance.getInternalFlag();
-    }
+    // uses in mbeddr
+    return RuntimeFlags.isInternalMode();
   }
-
-  public boolean getInternalFlag() {
-    return myInternalFlag;
-  }
-
-  public void setInternalFlag(boolean flag) {
-    myInternalFlag = flag;
-  }
-
 }

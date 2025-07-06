@@ -17,12 +17,14 @@ package jetbrains.mps.openapi.editor.cells;
 
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuLookup;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.openapi.editor.style.Style;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.util.Condition;
 
@@ -122,9 +124,15 @@ public interface EditorCell {
 
   String getCellId();
 
-  void setRole(String role);
-
+  //use getSRole
+@Deprecated(since = "2018.3", forRemoval = true)
   String getRole();
+
+  //it would be better to have typing here, however introducing generics may lead to compilation incompatibility
+  void setSRole(SConceptFeature role);
+
+  //it would be better to have typing here, however introducing generics may lead to compilation incompatibility
+  SConceptFeature getSRole();
 
   boolean isErrorState();
 
@@ -204,6 +212,7 @@ public interface EditorCell {
 
   boolean isSingleNodeCell();
 
+  @Nullable
   SNode getSNode();
 
   void putUserObject(Object key, Object value);
@@ -237,6 +246,7 @@ public interface EditorCell {
 
   @Nullable
   TransformationMenuLookup getTransformationMenuLookup();
+
   void setTransformationMenuLookup(@Nullable TransformationMenuLookup transformationMenuLookup);
 
   /**
@@ -246,12 +256,28 @@ public interface EditorCell {
    */
   TextBuilder renderText();
 
+  HtmlTextBuilder renderHtml();
+
+  /**
+   * Marking current cell as "big" cell - the top-most cell available in the editor for associated node.
+   * Note: all big cells are expected to hold non-null {@link EditorCellContext} see {@link #getCellContext()}
+   *
+   * @param big true if this cell is "big" one
+   */
   void setBig(boolean big);
 
   boolean isBig();
 
   void setCellContext(EditorCellContext cellContext);
 
+  /**
+   * Return non-null value for:
+   * - any "big" cell
+   * - "non-big" cell if the context was changed by it's parent (e.g. parent collection cell
+   * pushes down some additional hints)
+   *
+   * @return cellContext or null if no exact context was specified
+   */
   EditorCellContext getCellContext();
 
   void setReferenceCell(boolean isReference);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,10 +37,7 @@ public class CellAction_CutNode extends CellAction_CopyNode {
       return false;
     }
     SNode node = selectedNodes.get(0);
-    if (SNodeOperations.getParent(node) == null || context.getEditorComponent().getEditedNode() == node) {
-      return false;
-    }
-    return true;
+    return SNodeOperations.getParent(node) != null && context.getEditorComponent().getEditedNode() != node;
     // todo: what about read-only models?
   }
 
@@ -49,7 +46,8 @@ public class CellAction_CutNode extends CellAction_CopyNode {
     _4<List<SNode>, List<SNode>, Map<SNode, Set<SNode>>, String> tuple = extractSelection(context);
     if (tuple == null) return;
     final List<SNode> sNodes = tuple._1();
-    CopyPasteUtil.copyNodesAndTextToClipboard(tuple._0(), tuple._2(), tuple._3());
+    // putAsFresh(), not simply put(), as we are to remove original nodes and those in clipboard are "fresh" like new
+    context.getClipboard().putAsFresh(tuple._0(), tuple._3(), tuple._2());
     SNode nodeToSelect = null;
     for (SNode node : sNodes) {
       nodeToSelect = findNodeToSelect(node);

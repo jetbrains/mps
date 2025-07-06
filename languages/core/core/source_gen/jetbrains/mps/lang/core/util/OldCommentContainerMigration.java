@@ -8,18 +8,19 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.IOldCommentContainer__BehaviorDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
+import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class OldCommentContainerMigration {
   private SAbstractConcept concept;
@@ -30,17 +31,9 @@ public class OldCommentContainerMigration {
   }
 
   public void migrate() {
-    Iterable<SNode> oldComments = Sequence.fromIterable(((Iterable<SModel>) module.getModels())).translate(new ITranslator2<SModel, SNode>() {
-      public Iterable<SNode> translate(SModel it) {
-        return it.getRootNodes();
-      }
-    }).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SNodeOperations.getNodeDescendants(((SNode) it), SNodeOperations.asSConcept(concept), false, new SAbstractConcept[]{});
-      }
-    });
+    Iterable<SNode> oldComments = Sequence.fromIterable(((Iterable<SModel>) module.getModels())).translate((it) -> it.getRootNodes()).translate((it) -> SNodeOperations.getNodeDescendants(((SNode) it), SNodeOperations.asSConcept(concept), false, new SAbstractConcept[]{}));
     for (SNode comment : Sequence.fromIterable(oldComments)) {
-      Iterable<SNode> commentedNodes = IOldCommentContainer__BehaviorDescriptor.getCommentedNodes_id3$Sh7m_tmZE.invoke(SNodeOperations.cast(comment, MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x39384475a5756fb0L, "jetbrains.mps.lang.core.structure.IOldCommentContainer")));
+      Iterable<SNode> commentedNodes = IOldCommentContainer__BehaviorDescriptor.getCommentedNodes_id3$Sh7m_tmZE.invoke(SNodeOperations.cast(comment, CONCEPTS.IOldCommentContainer$6s));
       if (Sequence.fromIterable(commentedNodes).isNotEmpty()) {
         SNode next = comment;
         for (SNode commentedNode : Sequence.fromIterable(commentedNodes)) {
@@ -56,18 +49,18 @@ public class OldCommentContainerMigration {
   }
   public Iterable<Problem> check() {
     {
-      final SearchScope scope = CommandUtil.createScope(module);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.createConsoleScope(null, false, context), SNodeOperations.asSConcept(concept), false)).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
+      SearchScope scope_7l65wi_a0f = CommandUtil.createScope(module);
+      final SearchScope scope_7l65wi_a0f_0 = new EditableFilteringScope(scope_7l65wi_a0f);
+      QueryExecutionContext context = () -> scope_7l65wi_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(concept), false)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
+        public Problem invoke(SNode it) {
           return ((Problem) new DeprecatedConceptNotMigratedProblem(it));
         }
       });
     }
   }
 
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IOldCommentContainer$6s = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x39384475a5756fb0L, "jetbrains.mps.lang.core.structure.IOldCommentContainer");
+  }
 }

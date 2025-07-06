@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,105 +15,63 @@
  */
 package jetbrains.mps.plugins.applicationplugins;
 
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.Disposable;
+import com.intellij.openapi.application.Application;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.extensions.PluginId;
+import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.plugins.BasePluginManager;
 import jetbrains.mps.plugins.PluginContributor;
-import jetbrains.mps.plugins.PluginLoaderRegistry;
-import jetbrains.mps.workbench.action.IActionsRegistry;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
-import jetbrains.mps.workbench.action.IRegistryManager;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * Is a {@link BasePluginManager} which is responsible for loading application plugins {@link BaseApplicationPlugin};
  * Triggered from the superclass (#afterPluginsCreated)
+ * <p>
+ *   Used to be IDEA App Component, now it's an App Service (although as long as its initialization is explicit, doesn't need to be integrated into
+ *   IDEA story altogether, both this class and PluginLoaderRegistry could be POJO components.
+ *   FIXME Besides, register/unregister() shall become external operations, rather than shared behavior of superclass
+ * </p>
  */
-public class ApplicationPluginManager extends BasePluginManager<BaseApplicationPlugin> implements ApplicationComponent, IRegistryManager {
-  private static final Logger LOG = LogManager.getLogger(ApplicationPluginManager.class);
+public class ApplicationPluginManager extends BasePluginManager<BaseApplicationPlugin> implements Disposable {
+  private static final Logger LOG = Logger.getLogger(ApplicationPluginManager.class);
 
-  private volatile boolean myInitialized = false;
-  /**
-   * FIXME
-   * WARNING: the dependency on Ide_PluginInitializer is a hack. We need either to init ide plugin explicitly or remove the plugin factories at all,
-   * replace them with usual application_components and project_components.
-   */
-  public ApplicationPluginManager(MPSCoreComponents coreComponents, PluginLoaderRegistry pluginLoaderRegistry) {
-    super(coreComponents.getModuleRepository(), pluginLoaderRegistry);
-  }
+  private final Platform myPlatform;
 
-  public BaseApplicationPlugin getPlugin(PluginId id) {
-    for (BaseApplicationPlugin p : getPlugins()) {
-      if (p.getId() == id) {
-        return p;
-      }
-    }
-    return null;
-  }
-
-  @Override
-  public IActionsRegistry getActionsRegistry(PluginId id) {
-    return getPlugin(id);
+  public ApplicationPluginManager() {
+    myPlatform = MPSCoreComponents.getInstance().getPlatform();
+    register();
   }
 
   @Override
   protected BaseApplicationPlugin createPlugin(PluginContributor contributor) {
-    return contributor.createApplicationPlugin();
+    BaseApplicationPlugin rv = contributor.createApplicationPlugin();
+    if (rv != null) {
+      rv.setPlatform(myPlatform);
+    }
+    return rv;
   }
 
   @Override
   protected void afterPluginsCreated(List<BaseApplicationPlugin> plugins) {
-    createKeyMaps(plugins);
-    createGroups(plugins);
-    adjustGroups(plugins);
-    createCustomParts(plugins);
+    // XXX it's odd ProjectPluginManager does the same with single BaseProjectPlugin.init() call
+    //     Why do we care about distinct steps of AppPlugin here?
+    //     The only reason I can imagine is that some plugins got dependencies between
+    //     their groups, so that they need to create all groups prior to adjustGroups()
+    //     This is a pure guess, however; git blame doesn't support this idea (nor
+    //     contradicts it. As usual, just keeps silence).
+    plugins.forEach(BaseApplicationPlugin::createKeymaps);
+    plugins.forEach(BaseApplicationPlugin::createGroups1);
+    plugins.forEach(BaseApplicationPlugin::adjustGroups);
+    plugins.forEach(BaseApplicationPlugin::createCustomParts);
     GroupAdjuster.adjustTopLevelGroups();
     GroupAdjuster.refreshCustomizations();
-  }
-
-  private void createKeyMaps(List<BaseApplicationPlugin> plugins) {
-    for (BaseApplicationPlugin plugin : plugins) {
-      try {
-        plugin.createKeymaps();
-      } catch (Throwable t1) {
-        LOG.error("Plugin " + plugin + " threw an exception during key maps creating ", t1);
-      }
-    }
-  }
-
-  private void createGroups(List<BaseApplicationPlugin> plugins) {
-    for (BaseApplicationPlugin plugin : plugins) {
-      try {
-        plugin.createGroups();
-      } catch (Throwable t1) {
-        LOG.error("Plugin " + plugin + " threw an exception during groups creating ", t1);
-      }
-    }
-  }
-
-  private void adjustGroups(List<BaseApplicationPlugin> plugins) {
-    for (BaseApplicationPlugin plugin : plugins) {
-      try {
-        plugin.adjustGroups();
-      } catch (Throwable t1) {
-        LOG.error("Plugin " + plugin + " threw an exception during groups adjusting ", t1);
-      }
-    }
-  }
-
-  private void createCustomParts(List<BaseApplicationPlugin> plugins) {
-    for (BaseApplicationPlugin plugin : plugins) {
-      try {
-        plugin.createCustomParts();
-      } catch (Throwable t1) {
-        LOG.error("Plugin " + plugin + " threw an exception during creating custom parts ", t1);
-      }
-    }
   }
 
   @Override
@@ -126,36 +84,13 @@ public class ApplicationPluginManager extends BasePluginManager<BaseApplicationP
   }
 
   @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return ApplicationPluginManager.class.getName();
-  }
-
-  /**
-   * Cannot load existing plugins here since:
-   * 1. we need to initialize ide plugin at the first place here (other plugins' actions depend on it)
-   * 2. it has some action which recursively addresses this component via Application#getComponent which leads to infinite recursive initialization
-   *    fixme we can get rid of that but probably some generated code needs to be rewritten (the only place is {@link jetbrains.mps.plugins.actions.GeneratedActionGroup}
-   *
-   * Thus we state that currently there must be no loaded modules in the repository when #initComponent() is called
-   */
-  @Override
-  public void initComponent() {
-    LOG.debug("Running startup activity");
-    register();
-    LOG.debug("Finished running startup activity");
+  public boolean isDisposed() {
+    Application application = ApplicationManager.getApplication();
+    return application == null || application.isDisposed();
   }
 
   @Override
-  public void disposeComponent() {
-    LOG.debug("Running shutdown app activity");
+  public void dispose() {
     unregister();
-    LOG.debug("Finished running shutdown app activity");
-  }
-
-  @Override
-  public String toString() {
-    return "ApplicationPluginManager";
   }
 }

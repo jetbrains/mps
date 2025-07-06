@@ -2,19 +2,17 @@
 <model ref="r:640618e1-83da-4da2-a799-af20502fa1d8(TestCompileSolution.testModel)">
   <persistence version="9" />
   <languages>
-    <use id="fdcdc48f-bfd8-4831-aa76-5abac2ffa010" name="jetbrains.mps.baseLanguage.jdk8" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
-    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
-    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="487m" ref="a2e9b672-d7f0-4804-bc04-9161af907fda/java:test(TestCompileSolution/)" />
+    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
-      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
         <reference id="2820489544401957798" name="classifier" index="HV5vE" />
       </concept>
@@ -71,7 +69,7 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -85,18 +83,16 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
-    </language>
-    <language id="fdcdc48f-bfd8-4831-aa76-5abac2ffa010" name="jetbrains.mps.baseLanguage.jdk8">
-      <concept id="1719162360409810393" name="jetbrains.mps.baseLanguage.jdk8.structure.SuperInterfaceMethodCall" flags="ng" index="3WEljn">
+      <concept id="1719162360409810393" name="jetbrains.mps.baseLanguage.structure.SuperInterfaceMethodCall" flags="ng" index="3WEljn">
         <reference id="1719162360409958622" name="classifier" index="3WFDBg" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -119,7 +115,7 @@
             <property role="TrG5h" value="staticTestValue" />
             <node concept="10Oyi0" id="4ep0Y$Xs$6o" role="1tU5fm" />
             <node concept="2YIFZM" id="4ep0Y$Xs$6r" role="33vP2m">
-              <ref role="37wK5l" to="487m:~TestInterface.getStaticTestValue():int" resolve="getStaticTestValue" />
+              <ref role="37wK5l" to="487m:~TestInterface.getStaticTestValue()" resolve="getStaticTestValue" />
               <ref role="1Pybhc" to="487m:~TestInterface" resolve="TestInterface" />
             </node>
           </node>
@@ -131,7 +127,7 @@
               <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
             </node>
             <node concept="liA8E" id="4ep0Y$XsDjf" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(int):void" resolve="println" />
+              <ref role="37wK5l" to="guwi:~PrintStream.println(int)" resolve="println" />
               <node concept="2OqwBi" id="4ep0Y$XsDKT" role="37wK5m">
                 <node concept="2ShNRf" id="4ep0Y$XsDmo" role="2Oq$k0">
                   <node concept="HV5vD" id="4ep0Y$XsDJf" role="2ShVmc">
@@ -156,8 +152,8 @@
         <node concept="3clFbF" id="4ep0Y$Xs_Kl" role="3cqZAp">
           <node concept="3cpWs3" id="4ep0Y$XsCal" role="3clFbG">
             <node concept="3WEljn" id="4ep0Y$Xs_Kk" role="3uHU7B">
+              <ref role="37wK5l" to="487m:~TestInterface.getDefaultTestValue()" resolve="getDefaultTestValue" />
               <ref role="3WFDBg" to="487m:~TestInterface" resolve="TestInterface" />
-              <ref role="37wK5l" to="487m:~TestInterface.getDefaultTestValue():int" resolve="getDefaultTestValue" />
             </node>
             <node concept="3cmrfG" id="4ep0Y$XsCCW" role="3uHU7w">
               <property role="3cmrfH" value="1" />

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <root>
+    <file name="MigrationDescriptor.java">
+      <unit at="11,0,17,0" name="jetbrains.mps.lang.checkedName.migration.MigrationDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:38dd8dd5-5b67-40f9-bf61-6fde1b2e816a(jetbrains.mps.lang.checkedName.migration)/8267787266002216851">
+    <file name="MigrateEnumPropertyUsages.java">
+      <node id="8267787266002216851" at="26,0,27,0" concept="2" trace="description" />
+      <node id="8267787266002216851" at="27,30,28,23" concept="6" />
+      <node id="8267787266002216851" at="31,33,32,16" concept="6" />
+      <node id="8267787266002216851" at="34,41,35,17" concept="1" />
+      <node id="8267787266002216851" at="35,17,36,16" concept="6" />
+      <node id="2025969025285286094" at="38,42,39,62" concept="5" />
+      <node id="8267787266002252295" at="40,5,41,64" concept="5" />
+      <node id="8267787266002252295" at="41,64,42,90" concept="5" />
+      <node id="8267787266002252295" at="42,90,43,63" concept="5" />
+      <node id="2025969025285286835" at="44,165,45,81" concept="1" />
+      <node id="3899612785644128069" at="51,5,52,64" concept="5" />
+      <node id="3899612785644128069" at="52,64,53,90" concept="5" />
+      <node id="3899612785644128069" at="53,90,54,63" concept="5" />
+      <node id="3899612785644111903" at="54,63,55,449" concept="6" />
+      <node id="8267787266002216851" at="58,60,59,223" concept="6" />
+      <node id="8267787266002216851" at="61,50,62,151" concept="6" />
+      <node id="8267787266002216851" at="66,0,67,0" concept="7" trace="propertyDeclaration$KMe2" />
+      <node id="8267787266002216851" at="70,0,71,0" concept="7" trace="PropertyRefExpression$8m" />
+      <node id="8267787266002216851" at="71,0,72,0" concept="7" trace="EnumPropertyMigrationInfo$O3" />
+      <node id="8267787266002216851" at="27,0,30,0" concept="4" trace="getCaption#()Ljava/lang/String;" />
+      <node id="8267787266002264182" at="43,63,46,7" concept="3" />
+      <node id="8267787266002216851" at="58,0,61,0" concept="4" trace="executeAfter#()Ljava/lang/Iterable;" />
+      <node id="8267787266002216851" at="61,0,64,0" concept="4" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="8267787266002216851" at="30,0,34,0" concept="4" trace="isRerunnable#()Z" />
+      <node id="8267787266002216851" at="34,0,38,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="3899612785644128069" at="50,45,56,5" concept="0" />
+      <node id="8267787266002252295" at="39,62,47,5" concept="0" />
+      <node id="8267787266002216851" at="49,0,58,0" concept="4" trace="check#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/Iterable;" />
+      <node id="8267787266002216851" at="38,0,49,0" concept="4" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <scope id="8267787266002216851" at="27,30,28,23" />
+      <scope id="8267787266002216851" at="31,33,32,16" />
+      <scope id="8267787266002264188" at="44,165,45,81" />
+      <scope id="8267787266002216851" at="58,60,59,223" />
+      <scope id="8267787266002216851" at="61,50,62,151" />
+      <scope id="8267787266002216851" at="34,41,36,16" />
+      <scope id="8267787266002216851" at="27,0,30,0" />
+      <scope id="8267787266002264182" at="43,63,46,7">
+        <var name="node" id="8267787266002264184" />
+      </scope>
+      <scope id="8267787266002216851" at="58,0,61,0" />
+      <scope id="8267787266002216851" at="61,0,64,0" />
+      <scope id="8267787266002216851" at="30,0,34,0" />
+      <scope id="8267787266002216851" at="34,0,38,0">
+        <var name="m" id="8267787266002216851" />
+      </scope>
+      <scope id="3899612785644128069" at="51,5,55,449">
+        <var name="context" id="3899612785644128069" />
+        <var name="scope_32rjqx_a0f" id="3899612785644128069" />
+        <var name="scope_32rjqx_a0f_0" id="3899612785644128069" />
+      </scope>
+      <scope id="8267787266002252295" at="40,5,46,7">
+        <var name="context" id="8267787266002252295" />
+        <var name="scope_32rjqx_b0e" id="8267787266002252295" />
+        <var name="scope_32rjqx_b0e_0" id="8267787266002252295" />
+      </scope>
+      <scope id="8267787266002216851" at="50,45,56,5" />
+      <scope id="8267787266002216851" at="38,42,47,5">
+        <var name="migration" id="2025969025285286095" />
+      </scope>
+      <scope id="8267787266002216851" at="49,0,58,0">
+        <var name="m" id="8267787266002216851" />
+      </scope>
+      <scope id="8267787266002216851" at="38,0,49,0">
+        <var name="m" id="8267787266002216851" />
+      </scope>
+      <unit id="8267787266002216851" at="65,0,68,0" name="jetbrains.mps.lang.checkedName.migration.MigrateEnumPropertyUsages$LINKS" />
+      <unit id="8267787266002216851" at="69,0,73,0" name="jetbrains.mps.lang.checkedName.migration.MigrateEnumPropertyUsages$CONCEPTS" />
+      <unit id="8267787266002216851" at="25,0,74,0" name="jetbrains.mps.lang.checkedName.migration.MigrateEnumPropertyUsages" />
+    </file>
+  </root>
+</debug-info>
+

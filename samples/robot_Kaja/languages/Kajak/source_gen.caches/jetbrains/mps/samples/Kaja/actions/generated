@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dependencies version="2" modelHash="-dutca0xag7y4xscj0jneuvl5zem5nkq" />
+<product version="3" modelHash="-ee8imjjo1ub5d2ieg2byli6m8ln2vdq">
+  <files names="ActionAspectDescriptorImpl.java:IfAndWhile.java" />
+</product>
 

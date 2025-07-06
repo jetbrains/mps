@@ -9,13 +9,15 @@ public enum Values {
   CHUNK_OF_STATEMENTS("chunk_of_statements"),
   RETURN_TYPE("return_type"),
   LITERAL("literal"),
+  LITERAL_TYPE("literal_type"),
   LITERAL_TARGET("literal_target"),
   TYPE_MAP("type_map"),
   ADAPTABLE("adaptable"),
   THE_MAP("the_map"),
   CLOSURE_DATA("closure_data"),
   PREP_DATA("prep_data"),
-  POST_DATA("post_data");
+  POST_DATA("post_data"),
+  LITERAL_RETURN_DEPEDENCY("literal_depends_on");
 
   private String name;
   Values(String name) {
