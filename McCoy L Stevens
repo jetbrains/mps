@@ -1,0 +1,4 @@
+git branch -m master Remastered
+git fetch origin
+git branch -u origin/Remastered Remastered
+git remote set-head origin -a
